@@ -712,6 +712,46 @@ def validate_migration_file(sql_file: str) -> bool:
     return True
 
 
+def extract_pg_diagnostics(diag) -> dict:
+    """Safely extract PostgreSQL diagnostic fields from a psycopg Diagnostic object.
+
+    NEVER raises an exception. Returns a dict with all known diagnostic fields.
+    Fields not available return 'N/A'.
+    """
+    result: dict = {}
+    if diag is None:
+        return result
+    diag_fields = {
+        "sqlstate": "sqlstate",
+        "message_primary": "message_primary",
+        "message_detail": "message_detail",
+        "message_hint": "message_hint",
+        "schema_name": "schema_name",
+        "table_name": "table_name",
+        "column_name": "column_name",
+        "constraint_name": "constraint_name",
+        "datatype_name": "datatype_name",
+        "context": "context",
+        "internal_position": "internal_position",
+        "internal_query": "internal_query",
+        "statement_position": "statement_position",
+        "severity": "severity",
+        "severity_nonlocalized": "severity_nonlocalized",
+        "source_file": "source_file",
+        "source_line": "source_line",
+        "source_function": "source_function",
+    }
+    for display_name, attr_name in diag_fields.items():
+        try:
+            val = getattr(diag, attr_name, "N/A")
+            if val is None:
+                val = "N/A"
+        except Exception:
+            val = "N/A"
+        result[display_name] = val
+    return result
+
+
 def run_migration(engine, sql_file: str) -> bool:
     """Run migration SQL file inside a SQLAlchemy-managed transaction.
 
@@ -768,24 +808,22 @@ def run_migration(engine, sql_file: str) -> bool:
                     orig = getattr(stmt_err, "orig", None)
                     if orig is not None:
                         print(f"Original exception type: {type(orig).__name__}")
-                        pgcode = getattr(orig, "pgcode", None)
-                        if pgcode:
-                            print(f"SQLSTATE (pgcode): {pgcode}")
-                        sqlstate = getattr(orig, "sqlstate", None)
-                        if sqlstate:
-                            print(f"SQLSTATE: {sqlstate}")
-                        diag = getattr(orig, "diag", None)
-                        if diag:
-                            print(f"PG Diag - SQLSTATE: {diag.sqlstate}")
-                            print(f"PG Diag - Table: {diag.table_name}")
-                            print(f"PG Diag - Column: {diag.column_name}")
-                            print(f"PG Diag - Constraint: {diag.constraint_name}")
-                            print(f"PG Diag - Context: {diag.context}")
-                            print(f"PG Diag - Hint: {diag.hint}")
-                            print(f"PG Diag - Detail: {diag.detail}")
+                    pgcode = getattr(orig, "pgcode", None) if orig is not None else None
+                    if pgcode:
+                        print(f"SQLSTATE (pgcode): {pgcode}")
+                    sqlstate = getattr(orig, "sqlstate", None) if orig is not None else None
+                    if sqlstate:
+                        print(f"SQLSTATE: {sqlstate}")
+                    diag = getattr(orig, "diag", None) if orig is not None else None
+                    diag_info = extract_pg_diagnostics(diag)
+                    if diag_info:
+                        print("PG Diag:")
+                        for key, value in diag_info.items():
+                            if value != "N/A":
+                                print(f"  {key}: {value}")
 
                     preview = stmt[:500] + "..." if len(stmt) > 500 else stmt
-                    print(f"\nFailing SQL statement (first 500 chars):")
+                    print(f"\nFailing SQL statement (statement index {i} of {len(statements)}):</")
                     print(f"  {preview}")
 
                     print("\nTransaction rolled back — no partial data written.")
@@ -808,15 +846,13 @@ def run_migration(engine, sql_file: str) -> bool:
                 if sqlstate:
                     print(f"SQLSTATE: {sqlstate}")
                 diag = getattr(orig, "diag", None)
-                if diag:
-                    print(f"PG Diag - SQLSTATE: {diag.sqlstate}")
-                    print(f"PG Diag - Table: {diag.table_name}")
-                    print(f"PG Diag - Column: {diag.column_name}")
-                    print(f"PG Diag - Constraint: {diag.constraint_name}")
-                    print(f"PG Diag - Context: {diag.context}")
-                    print(f"PG Diag - Hint: {diag.hint}")
-                    print(f"PG Diag - Detail: {diag.detail}")
-                print("Transaction rolled back — no partial data written.")
+                diag_info = extract_pg_diagnostics(diag)
+                if diag_info:
+                    print("PG Diag:")
+                    for key, value in diag_info.items():
+                        if value != "N/A":
+                            print(f"  {key}: {value}")
+            print("Transaction rolled back — no partial data written.")
             raise
 
     elapsed = time.time() - start

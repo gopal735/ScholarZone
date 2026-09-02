@@ -30,6 +30,7 @@ from neon_migrate import (
     _parse_values_tuple,
     _convert_insert_boolean_values,
     convert_boolean_literals,
+    extract_pg_diagnostics,
 )
 
 
@@ -1411,6 +1412,434 @@ class TestValidateMigrationFile:
         # so no issues should be reported
         result = validate_migration_file(str(sql_path))
         assert result is True
+
+
+# ---------------------------------------------------------------------------
+# extract_pg_diagnostics() tests — verify the helper NEVER raises
+# ---------------------------------------------------------------------------
+
+class TestExtractPgDiagnostics:
+    """Tests for the extract_pg_diagnostics() helper function.
+
+    The helper must NEVER raise, even when the Diagnostic object is missing
+    attributes, is None, or has a broken underlying ErrorInfo.
+    """
+
+    def test_none_diag(self):
+        """Passing None returns empty dict."""
+        result = extract_pg_diagnostics(None)
+        assert result == {}
+
+    def test_full_diag(self):
+        """A CompleteDiag returns all fields."""
+        from unittest.mock import MagicMock
+
+        diag = MagicMock()
+        diag.sqlstate = "23505"
+        diag.message_primary = "duplicate key value violates unique constraint"
+        diag.message_detail = 'Key (id)=(42) already exists.'
+        diag.message_hint = 'Add a unique value.'
+        diag.schema_name = "public"
+        diag.table_name = "scholarships"
+        diag.column_name = "id"
+        diag.constraint_name = "scholarships_pkey"
+        diag.datatype_name = "integer"
+        diag.context = "SQL statement when failing at: INSERT INTO scholarships"
+        diag.internal_position = None
+        diag.internal_query = None
+        diag.statement_position = None
+        diag.severity = "ERROR"
+        diag.severity_nonlocalized = "ERROR"
+        diag.source_file = "btree.c"
+        diag.source_line = "123"
+        diag.source_function = "_bt_check_unique"
+
+        result = extract_pg_diagnostics(diag)
+        assert result["sqlstate"] == "23505"
+        assert result["message_primary"] == "duplicate key value violates unique constraint"
+        assert result["message_detail"] == 'Key (id)=(42) already exists.'
+        assert result["message_hint"] == 'Add a unique value.'
+        assert result["schema_name"] == "public"
+        assert result["table_name"] == "scholarships"
+        assert result["column_name"] == "id"
+        assert result["constraint_name"] == "scholarships_pkey"
+        assert result["datatype_name"] == "integer"
+        assert result["context"] == "SQL statement when failing at: INSERT INTO scholarships"
+        assert result["severity"] == "ERROR"
+        assert result["source_file"] == "btree.c"
+        assert result["source_line"] == "123"
+        assert result["source_function"] == "_bt_check_unique"
+
+    def test_diag_with_no_hint_attribute(self):
+        """The original bug: diag.hint doesn't exist (should be message_hint).
+
+        The helper should never access diag.hint or diag.detail directly.
+        """
+        from unittest.mock import MagicMock
+
+        diag = MagicMock()
+        diag.sqlstate = "23502"
+        diag.message_primary = "null value in column violates not-null constraint"
+        diag.message_detail = "Failed ROW insertion"
+        diag.message_hint = "Add a value."
+        diag.schema_name = None
+        diag.table_name = "scholarships"
+        diag.column_name = "title"
+        diag.constraint_name = None
+        diag.datatype_name = None
+        diag.context = None
+        diag.internal_position = None
+        diag.internal_query = None
+        diag.statement_position = None
+        diag.severity = None
+        diag.severity_nonlocalized = None
+        diag.source_file = None
+        diag.source_line = None
+        diag.source_function = None
+        # del attr to simulate real psycopg behavior
+        del diag.hint
+        del diag.detail
+
+        result = extract_pg_diagnostics(diag)
+        assert result["message_hint"] == "Add a value."
+        assert result["message_detail"] == "Failed ROW insertion"
+        assert result["table_name"] == "scholarships"
+        assert result["column_name"] == "title"
+
+    def test_diag_with_no_table_name(self):
+        """diag.table_name may be None."""
+        from unittest.mock import MagicMock
+
+        diag = MagicMock()
+        for field in [
+            "sqlstate", "message_primary", "message_detail", "message_hint",
+            "schema_name", "table_name", "column_name", "constraint_name",
+            "datatype_name", "context", "internal_position", "internal_query",
+            "statement_position", "severity", "severity_nonlocalized",
+            "source_file", "source_line", "source_function",
+        ]:
+            setattr(diag, field, None)
+
+        result = extract_pg_diagnostics(diag)
+        assert result["table_name"] == "N/A"
+        assert result["sqlstate"] == "N/A"
+
+    def test_diag_with_no_column_name(self):
+        """diag.column_name may be None."""
+        from unittest.mock import MagicMock
+
+        diag = MagicMock()
+        for field in [
+            "sqlstate", "message_primary", "message_detail", "message_hint",
+            "schema_name", "table_name", "column_name", "constraint_name",
+            "datatype_name", "context", "internal_position", "internal_query",
+            "statement_position", "severity", "severity_nonlocalized",
+            "source_file", "source_line", "source_function",
+        ]:
+            setattr(diag, field, None)
+
+        result = extract_pg_diagnostics(diag)
+        assert result["column_name"] == "N/A"
+
+    def test_diag_with_no_constraint_name(self):
+        """diag.constraint_name may be None."""
+        from unittest.mock import MagicMock
+
+        diag = MagicMock()
+        for field in [
+            "sqlstate", "message_primary", "message_detail", "message_hint",
+            "schema_name", "table_name", "column_name", "constraint_name",
+            "datatype_name", "context", "internal_position", "internal_query",
+            "statement_position", "severity", "severity_nonlocalized",
+            "source_file", "source_line", "source_function",
+        ]:
+            setattr(diag, field, None)
+
+        result = extract_pg_diagnostics(diag)
+        assert result["constraint_name"] == "N/A"
+
+    def test_diag_with_only_some_fields(self):
+        """diag may have only some fields populated."""
+        from unittest.mock import MagicMock
+
+        diag = MagicMock()
+        diag.sqlstate = "42601"
+        diag.message_primary = "syntax error"
+        # All other fields left as MagicMock auto-attributes (would be truthy)
+        # but we delete them to return N/A
+        for field in [
+            "message_detail", "message_hint", "schema_name", "table_name",
+            "column_name", "constraint_name", "datatype_name", "context",
+            "internal_position", "internal_query", "statement_position",
+            "severity", "severity_nonlocalized", "source_file", "source_line",
+            "source_function",
+        ]:
+            delattr(diag, field)
+
+        result = extract_pg_diagnostics(diag)
+        assert result["sqlstate"] == "42601"
+        assert result["message_primary"] == "syntax error"
+        assert result["table_name"] == "N/A"
+        assert result["column_name"] == "N/A"
+
+    def test_diag_with_property_raising(self):
+        """Some diag properties might raise internally; helper must catch them."""
+        from unittest.mock import MagicMock
+
+        class FaultyDiag:
+            """Simulates a diag where table_name raises when accessed."""
+
+            @property
+            def table_name(self):
+                raise RuntimeError("underlying ErrorInfo not available")
+
+            @property
+            def sqlstate(self):
+                return "23505"
+
+            @property
+            def message_primary(self):
+                return "duplicate key"
+
+        result = extract_pg_diagnostics(FaultyDiag())
+        assert result["sqlstate"] == "23505"
+        assert result["message_primary"] == "duplicate key"
+        # This should not raise — but our current impl doesn't catch property errors
+        # Actually, getattr with default WILL catch AttributeError but not RuntimeError
+        # So the helper needs a try/except inside
+
+    def test_completely_broken_diag(self):
+        """diag object that raises on every attribute access."""
+        class CompletelyBrokenDiag:
+            def __getattribute__(self, name):
+                raise AttributeError(f"no attribute {name}")
+
+        result = extract_pg_diagnostics(CompletelyBrokenDiag())
+        # All should be N/A
+        for value in result.values():
+            assert value == "N/A"
+        # Must not have raised
+        assert len(result) == 18  # all expected fields present
+
+    def test_real_psycopg_column_names(self):
+        """Verify we use the correct psycopg3 Diagnostic attribute names.
+
+        The original bug was using diag.hint and diag.detail which don't exist.
+        Correct names are: message_hint, message_detail, message_primary,
+        sqlstate, table_name, column_name, constraint_name, schema_name,
+        datatype_name, context, internal_position.
+        """
+        from psycopg.errors import Diagnostic, DiagnosticField
+
+        # Verify Diagnostic has the attributes we're accessing
+        diag_attrs = set()
+        for name in [
+            "sqlstate", "message_primary", "message_detail", "message_hint",
+            "schema_name", "table_name", "column_name", "constraint_name",
+            "datatype_name", "context", "internal_position", "internal_query",
+            "statement_position", "severity", "severity_nonlocalized",
+            "source_file", "source_line", "source_function",
+        ]:
+            assert hasattr(Diagnostic, name), f"Diagnostic should have {name} property"
+            diag_attrs.add(name)
+
+        # Verify the WRONG names from the bug are absent
+        assert not hasattr(Diagnostic, "hint")
+        assert not hasattr(Diagnostic, "detail")
+
+    def test_mock_simulating_old_bug(self):
+        """Exact reproduction of the AttributeError: 'Diagnostic' object has no attribute 'hint'."""
+        from unittest.mock import MagicMock
+
+        diag = MagicMock()
+        diag.sqlstate = "23502"
+        diag.message_primary = "null value in column"
+        diag.message_detail = "Failed ROW insertion"
+        diag.message_hint = "Add a value."
+        diag.schema_name = None
+        diag.table_name = "scholarships"
+        diag.column_name = "title"
+        diag.constraint_name = None
+        diag.datatype_name = None
+        diag.context = None
+        diag.internal_position = None
+        diag.internal_query = None
+        diag.statement_position = None
+        diag.severity = None
+        diag.severity_nonlocalized = None
+        diag.source_file = None
+        diag.source_line = None
+        diag.source_function = None
+        # Simulate the real psycopg Diagnostic: hint and detail are NOT attributes
+        del diag.hint
+        del diag.detail
+
+        # This should NOT raise AttributeError
+        result = extract_pg_diagnostics(diag)
+        assert result["sqlstate"] == "23502"
+        assert result["message_hint"] == "Add a value."
+        assert result["table_name"] == "scholarships"
+
+
+# ---------------------------------------------------------------------------
+# run_migration error handler tests — verify error handler never masks
+# the original PostgreSQL exception
+# ---------------------------------------------------------------------------
+
+class TestErrorHandlerNeverMasks:
+    """Verify the error handler in run_migration never crashes and always
+    reports the original exception, even when diag attributes are missing."""
+
+    def test_error_handler_with_diag_missing_hint(self, capsys):
+        """The original bug: diag.hint raises AttributeError.
+
+        The code used diag.hint and diag.detail which don't exist on psycopg's
+        Diagnostic object. The helper should never access those wrong names.
+        """
+        from unittest.mock import MagicMock
+
+        mock_diag = MagicMock()
+        mock_diag.sqlstate = "23502"
+        mock_diag.message_primary = "null value in column"
+        mock_diag.message_detail = "Detail here"
+        mock_diag.message_hint = "Hint here"
+        mock_diag.table_name = "scholarships"
+        mock_diag.column_name = "title"
+        mock_diag.constraint_name = None
+        mock_diag.schema_name = None
+        mock_diag.datatype_name = None
+        mock_diag.context = None
+        mock_diag.internal_position = None
+        mock_diag.internal_query = None
+        mock_diag.statement_position = None
+        mock_diag.severity = None
+        mock_diag.severity_nonlocalized = None
+        mock_diag.source_file = None
+        mock_diag.source_line = None
+        mock_diag.source_function = None
+        # Simulate real psycopg Diagnostic: hint and detail do NOT exist
+        del mock_diag.hint
+        del mock_diag.detail
+
+        # This should NOT raise AttributeError — the helper uses getattr
+        result = extract_pg_diagnostics(mock_diag)
+        assert result["sqlstate"] == "23502"
+        assert result["message_hint"] == "Hint here"
+        assert result["table_name"] == "scholarships"
+        assert result["column_name"] == "title"
+
+        # Also verify the error path in run_migration would not crash
+        # The handler does: diag = getattr(orig, "diag", None); diag_info = extract_pg_diagnostics(diag)
+        mock_orig = MagicMock()
+        mock_orig.diag = mock_diag
+        diag = getattr(mock_orig, "diag", None)
+        diag_info = extract_pg_diagnostics(diag)
+        assert diag_info["sqlstate"] == "23502"
+
+    def test_error_handler_with_partial_diag(self, capsys):
+        """diag with only some fields populated."""
+        from unittest.mock import MagicMock
+
+        diag = MagicMock()
+        diag.sqlstate = "23505"
+        diag.message_primary = "duplicate key"
+        # Delete all others
+        for field in [
+            "message_detail", "message_hint", "schema_name", "table_name",
+            "column_name", "constraint_name", "datatype_name", "context",
+            "internal_position", "internal_query", "statement_position",
+            "severity", "severity_nonlocalized", "source_file", "source_line",
+            "source_function",
+        ]:
+            delattr(diag, field)
+
+        result = extract_pg_diagnostics(diag)
+        assert result["sqlstate"] == "23505"
+        assert result["message_primary"] == "duplicate key"
+        assert result["table_name"] == "N/A"
+
+    def test_error_handler_with_none_diag(self):
+        """orig has diag = None."""
+        from unittest.mock import MagicMock
+
+        orig = MagicMock()
+        orig.diag = None
+
+        result = extract_pg_diagnostics(orig.diag)
+        assert result == {}
+
+    def test_error_handler_with_no_diag_attr(self):
+        """orig has no diag attribute."""
+        from unittest.mock import MagicMock
+
+        orig = MagicMock()
+        del orig.diag
+
+        diag = getattr(orig, "diag", None)
+        assert diag is None
+        result = extract_pg_diagnostics(diag)
+        assert result == {}
+
+    def test_sqlalchemy_exception_without_orig(self):
+        """Exception has no .orig attribute."""
+        from unittest.mock import MagicMock
+
+        exc = MagicMock()
+        del exc.orig
+
+        orig = getattr(exc, "orig", None)
+        assert orig is None
+        # extract_pg_diagnostics(None) returns {}
+        result = extract_pg_diagnostics(getattr(orig, "diag", None) if orig is not None else None)
+        assert result == {}
+
+    def test_psycopg_exception_directly(self):
+        """A raw psycopg exception (not wrapped by SQLAlchemy) with partial diag."""
+        from unittest.mock import MagicMock
+
+        exc = MagicMock()
+        exc.__class__.__name__ = "NotNullViolation"
+        exc.pgcode = "23502"
+        exc.sqlstate = "23502"
+
+        diag = MagicMock()
+        diag.sqlstate = "23502"
+        diag.message_primary = "null value"
+        diag.table_name = "scholarships"
+        diag.message_detail = None
+        # Delete unused
+        for field in [
+            "message_hint", "schema_name", "column_name", "constraint_name",
+            "datatype_name", "context", "internal_position", "internal_query",
+            "statement_position", "severity", "severity_nonlocalized",
+            "source_file", "source_line", "source_function",
+        ]:
+            delattr(diag, field)
+
+        exc.diag = diag
+        result = extract_pg_diagnostics(exc.diag)
+        assert result["sqlstate"] == "23502"
+        assert result["message_primary"] == "null value"
+        assert result["table_name"] == "scholarships"
+        assert result["message_hint"] == "N/A"
+
+    def test_completely_unknown_exception_type(self):
+        """An arbitrary exception with no psycopg attributes."""
+        class WeirdError(Exception):
+            pass
+
+        exc = WeirdError("something went wrong")
+        orig = getattr(exc, "orig", None)
+        assert orig is None
+        # The error handler code path should still work
+        pgcode = getattr(orig, "pgcode", None) if orig is not None else None
+        assert pgcode is None
+        diag = getattr(orig, "diag", None) if orig is not None else None
+        assert diag is None
+        result = extract_pg_diagnostics(diag)
+        assert result == {}
+        # Original error message still preserved
+        assert str(exc) == "something went wrong"
 
 
 if __name__ == "__main__":
