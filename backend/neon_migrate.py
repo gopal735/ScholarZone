@@ -752,6 +752,37 @@ def extract_pg_diagnostics(diag) -> dict:
     return result
 
 
+def _exec_raw_sql(conn, stmt: str):
+    """Execute a raw, fully-rendered SQL statement without parameter binding.
+
+    Uses the DBAPI cursor directly instead of SQLAlchemy's ``exec_driver_sql``
+    to prevent two layers of parameter-style parsing from corrupting the data:
+
+    1. ``sqlalchemy.text()`` treats ``:name`` patterns inside string literals
+       as bind parameters (breaks CSS pseudo-classes like ``:after``).
+    2. SQLAlchemy's ``exec_driver_sql`` converts ``None`` parameters to ``{}``
+       (an empty dict) before calling ``cursor.execute()``.  psycopg3 sees
+       a non-``None`` dict and runs ``%``-style formatting on the SQL text,
+       which raises ``IncompletePlaceholderError`` on literal ``%`` characters
+       (breaks CSS like ``width: 100%`` and URLs containing ``%``).
+
+    By calling ``cursor.execute(stmt)`` with **no** second argument, psycopg3
+    receives ``params=None`` and skips all formatting, sending the SQL bytes
+    to PostgreSQL exactly as written.
+
+    The cursor is created from ``conn.connection`` (the current DBAPI
+    connection inside the SQLAlchemy transaction), so transaction
+    atomicity is preserved — a failure in any statement rolls back the
+    entire transaction when ``engine.begin()`` exits.
+    """
+    dbapi_conn = conn.connection
+    cur = dbapi_conn.cursor()
+    try:
+        cur.execute(stmt)
+    finally:
+        cur.close()
+
+
 def run_migration(engine, sql_file: str) -> bool:
     """Run migration SQL file inside a SQLAlchemy-managed transaction.
 
@@ -797,7 +828,7 @@ def run_migration(engine, sql_file: str) -> bool:
             for i, stmt in enumerate(statements, 1):
                 _log_progress(i, len(statements), start)
                 try:
-                    conn.exec_driver_sql(stmt)
+                    _exec_raw_sql(conn, stmt)
                 except Exception as stmt_err:
                     elapsed = time.time() - start
                     print(f"\nMIGRATION FAILED after {elapsed:.1f}s")

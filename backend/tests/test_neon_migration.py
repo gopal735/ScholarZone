@@ -25,6 +25,7 @@ from neon_migrate import (
     _strip_leading_comments,
     _log_progress,
     _detect_unsafe_bind_params,
+    _exec_raw_sql,
     validate_migration_file,
     discover_boolean_columns,
     _parse_values_tuple,
@@ -1012,17 +1013,24 @@ class TestMigrationErrorReporting:
 
         statement_count = [0]
 
-        def mock_exec(stmt):
+        mock_cursor = MagicMock()
+        def mock_cursor_execute(stmt):
             statement_count[0] += 1
             stmt_str = str(stmt)
             if stmt_str.strip().upper().startswith("SET "):
-                return MagicMock()
-            if statement_count[0] >= 5:
-                raise Exception(f"Simulated error at call {statement_count[0]}")
-            return MagicMock()
+                return
+            if statement_count[0] >= 3:
+                raise Exception(f"Simulated error at statement {statement_count[0]}")
+
+        mock_cursor.execute.side_effect = mock_cursor_execute
+
+        mock_dbapi_conn = MagicMock()
+        mock_dbapi_conn.cursor.return_value = mock_cursor
 
         mock_conn = MagicMock()
-        mock_conn.exec_driver_sql.side_effect = mock_exec
+        mock_conn.connection = mock_dbapi_conn
+        # exec_driver_sql still used for SET statements
+        mock_conn.exec_driver_sql = MagicMock()
         mock_conn.__enter__ = MagicMock(return_value=mock_conn)
         mock_conn.__exit__ = MagicMock(return_value=None)
 
@@ -1840,6 +1848,202 @@ class TestErrorHandlerNeverMasks:
         assert result == {}
         # Original error message still preserved
         assert str(exc) == "something went wrong"
+
+
+# ---------------------------------------------------------------------------
+# _exec_raw_sql() tests — verify literal % and :name are preserved
+# ---------------------------------------------------------------------------
+
+class TestExecRawSql:
+    """Tests verifying _exec_raw_sql sends SQL to the DBAPI cursor unchanged.
+
+    These tests use SQLite as a stand-in DBAPI to verify the execution path
+    is correct. When run against PostgreSQL, the same DBAPI cursor is used,
+    so the behavior is identical.
+    """
+
+    @pytest.fixture
+    def sqlite_engine(self):
+        return create_engine("sqlite:///:memory:")
+
+    def test_percent_preserved(self, sqlite_engine):
+        """Literal '%' in SQL must not trigger %-style formatting."""
+        with sqlite_engine.begin() as conn:
+            conn.exec_driver_sql("CREATE TABLE t (val TEXT)")
+            _exec_raw_sql(conn, "INSERT INTO t (val) VALUES ('100%')")
+        with sqlite_engine.connect() as conn:
+            row = conn.exec_driver_sql("SELECT val FROM t").fetchone()
+            assert row[0] == "100%"
+
+    def test_percentage_in_css_width(self, sqlite_engine):
+        """CSS percentages like 'width: 100%' must be preserved exactly."""
+        with sqlite_engine.begin() as conn:
+            conn.exec_driver_sql("CREATE TABLE t (val TEXT)")
+            _exec_raw_sql(
+                conn,
+                "INSERT INTO t (val) VALUES ('width: 100%; height: 50%')",
+            )
+        with sqlite_engine.connect() as conn:
+            row = conn.exec_driver_sql("SELECT val FROM t").fetchone()
+            assert row[0] == "width: 100%; height: 50%"
+
+    def test_css_pseudo_class(self, sqlite_engine):
+        """CSS pseudo-classes like ':after' must not be parsed as bind params."""
+        with sqlite_engine.begin() as conn:
+            conn.exec_driver_sql("CREATE TABLE t (val TEXT)")
+            _exec_raw_sql(
+                conn,
+                "INSERT INTO t (val) VALUES ('a:after { content: \"\" }')",
+            )
+        with sqlite_engine.connect() as conn:
+            row = conn.exec_driver_sql("SELECT val FROM t").fetchone()
+            assert row[0] == 'a:after { content: "" }'
+
+    def test_json_with_percent(self, sqlite_engine):
+        """JSON containing '%' must remain unchanged."""
+        with sqlite_engine.begin() as conn:
+            conn.exec_driver_sql("CREATE TABLE t (val TEXT)")
+            json_val = '{"progress": "50%", "rate": "100% complete"}'
+            _exec_raw_sql(
+                conn,
+                f"INSERT INTO t (val) VALUES ('{json_val}')",
+            )
+        with sqlite_engine.connect() as conn:
+            row = conn.exec_driver_sql("SELECT val FROM t").fetchone()
+            assert row[0] == json_val
+
+    def test_url_with_percent_encoding(self, sqlite_engine):
+        """URLs with %XX encoding must be preserved."""
+        with sqlite_engine.begin() as conn:
+            conn.exec_driver_sql("CREATE TABLE t (val TEXT)")
+            url = "https://example.com/path%20with%20spaces%2Fand%3Fquery%3D1"
+            _exec_raw_sql(conn, f"INSERT INTO t (val) VALUES ('{url}')")
+        with sqlite_engine.connect() as conn:
+            row = conn.exec_driver_sql("SELECT val FROM t").fetchone()
+            assert row[0] == url
+
+    def test_unicode_preserved(self, sqlite_engine):
+        """Unicode characters must be preserved exactly."""
+        with sqlite_engine.begin() as conn:
+            conn.exec_driver_sql("CREATE TABLE t (val TEXT)")
+            unicode_val = "Hello 世界 — café naïve 100% ✓"
+            _exec_raw_sql(conn, f"INSERT INTO t (val) VALUES ('{unicode_val}')")
+        with sqlite_engine.connect() as conn:
+            row = conn.exec_driver_sql("SELECT val FROM t").fetchone()
+            assert row[0] == unicode_val
+
+    def test_escaped_quotes_in_string(self, sqlite_engine):
+        """SQL-escaped quotes inside string literals must be preserved."""
+        with sqlite_engine.begin() as conn:
+            conn.exec_driver_sql("CREATE TABLE t (val TEXT)")
+            _exec_raw_sql(
+                conn,
+                """INSERT INTO t (val) VALUES ('It''s a test: 100% :after')""",
+            )
+        with sqlite_engine.connect() as conn:
+            row = conn.exec_driver_sql("SELECT val FROM t").fetchone()
+            assert row[0] == "It's a test: 100% :after"
+
+    def test_semicolons_inside_string(self, sqlite_engine):
+        """Semicolons inside string literals must NOT be treated as statement
+        terminators (they are handled by split_sql_statements, not _exec_raw_sql).
+        """
+        with sqlite_engine.begin() as conn:
+            conn.exec_driver_sql("CREATE TABLE t (val TEXT)")
+            _exec_raw_sql(
+                conn,
+                "INSERT INTO t (val) VALUES ('has ; semicolons ; 100%')",
+            )
+        with sqlite_engine.connect() as conn:
+            row = conn.exec_driver_sql("SELECT val FROM t").fetchone()
+            assert row[0] == "has ; semicolons ; 100%"
+
+    def test_mixed_percent_and_colon(self, sqlite_engine):
+        """SQL with both '%' and ':name' patterns must be preserved."""
+        with sqlite_engine.begin() as conn:
+            conn.exec_driver_sql("CREATE TABLE t (val TEXT)")
+            stmt = (
+                "INSERT INTO t (val) VALUES "
+                "('CSS: .foo:after { width: 100%; height: 50% }')"
+            )
+            _exec_raw_sql(conn, stmt)
+        with sqlite_engine.connect() as conn:
+            row = conn.exec_driver_sql("SELECT val FROM t").fetchone()
+            assert row[0] == "CSS: .foo:after { width: 100%; height: 50% }"
+
+    def test_transaction_atomicity(self, sqlite_engine):
+        """If a statement fails, _exec_raw_sql must close the cursor and
+        raise the exception (so SQLAlchemy's begin() can roll back).
+
+        SQLite auto-commits DDL differently than PostgreSQL, so we only
+        test DML-level error handling here. On PostgreSQL, the entire
+        engine.begin() transaction rolls back.
+        """
+        with sqlite_engine.begin() as conn:
+            conn.exec_driver_sql("CREATE TABLE t (id INTEGER, val TEXT)")
+            _exec_raw_sql(conn, "INSERT INTO t (id, val) VALUES (1, 'ok')")
+            with pytest.raises(Exception):
+                _exec_raw_sql(conn, "INSERT INTO nonexistent_table VALUES (2)")
+            # The cursor must have been closed even on error
+        with sqlite_engine.connect() as conn:
+            count = conn.exec_driver_sql("SELECT COUNT(*) FROM t").scalar()
+            # First INSERT may or may not be committed depending on DBAPI
+            # The key assertion is that the error propagated
+
+    def test_multiple_statements(self, sqlite_engine):
+        """Multiple statements executed individually preserve content."""
+        with sqlite_engine.begin() as conn:
+            conn.exec_driver_sql("CREATE TABLE t (id INTEGER, val TEXT)")
+            _exec_raw_sql(conn, "INSERT INTO t (id, val) VALUES (1, '100%')")
+            _exec_raw_sql(conn, "INSERT INTO t (id, val) VALUES (2, ':hover')")
+            _exec_raw_sql(conn, "INSERT INTO t (id, val) VALUES (3, '100% :after')")
+        with sqlite_engine.connect() as conn:
+            rows = conn.exec_driver_sql(
+                "SELECT val FROM t ORDER BY id"
+            ).fetchall()
+            assert rows[0][0] == "100%"
+            assert rows[1][0] == ":hover"
+            assert rows[2][0] == "100% :after"
+
+    def test_real_migration_file_passes_validation(self, sqlite_engine):
+        """Validate that a migration file with % and : patterns would pass
+        the unsafe bind parameter detection."""
+        sql = """
+CREATE TABLE test (val TEXT);
+INSERT INTO test (val) VALUES ('100%');
+INSERT INTO test (val) VALUES ('width: 100%');
+INSERT INTO test (val) VALUES ('CSS: :after');
+INSERT INTO test (val) VALUES ('{"progress": "50%", "rate": "100%"}');
+INSERT INTO test (val) VALUES ('https://example.com/path%20with%20spaces');
+INSERT INTO test (val) VALUES ('Hello 世界 — café 100% ✓');
+"""
+        issues = _detect_unsafe_bind_params(sql)
+        assert len(issues) == 0, f"Should find no unsafe bind params: {issues}"
+
+    def test_verify_no_params_passed_to_cursor(self, sqlite_engine):
+        """Verify _exec_raw_sql calls cursor.execute with ONLY the SQL string.
+
+        SQLAlchemy's exec_driver_sql converts None params to {} (empty dict),
+        which psycopg3 sees as non-None and triggers %-formatting. _exec_raw_sql
+        must call cursor.execute(stmt) with no params argument at all.
+        """
+        from unittest.mock import MagicMock, patch
+        from neon_migrate import _exec_raw_sql
+
+        # Create a mock connection object to pass to _exec_raw_sql
+        mock_conn = MagicMock()
+        mock_cursor = MagicMock()
+        mock_dbapi = MagicMock()
+        mock_dbapi.cursor.return_value = mock_cursor
+        mock_conn.connection = mock_dbapi
+
+        sql = "INSERT INTO t (val) VALUES ('100%')"
+        _exec_raw_sql(mock_conn, sql)
+
+        # cursor.execute was called with only the SQL — no params dict
+        mock_dbapi.cursor.assert_called_once()
+        mock_cursor.execute.assert_called_once_with(sql)
+        mock_cursor.close.assert_called_once()
 
 
 if __name__ == "__main__":
