@@ -535,20 +535,24 @@ def run_migration(engine, sql_file: str) -> bool:
                     print(f"Exception type: {type(stmt_err).__name__}")
                     print(f"Error message: {stmt_err}")
 
-                    if hasattr(stmt_err, "orig"):
-                        orig = stmt_err.orig
+                    orig = getattr(stmt_err, "orig", None)
+                    if orig is not None:
                         print(f"Original exception type: {type(orig).__name__}")
-                        if hasattr(orig, "pgcode"):
-                            print(f"SQLSTATE (pgcode): {orig.pgcode}")
-                        if hasattr(orig, "diag"):
-                            print(f"PG Diag - SQLSTATE: {orig.diag.sqlstate if orig.diag else 'N/A'}")
-                            print(f"PG Diag - Table: {orig.diag.table_name if orig.diag else 'N/A'}")
-                            print(f"PG Diag - Column: {orig.diag.column_name if orig.diag else 'N/A'}")
-                            print(f"PG Diag - Context: {orig.diag.context if orig.diag else 'N/A'}")
-                            print(f"PG Diag - Hint: {orig.diag.hint if orig.diag else 'N/A'}")
-                            print(f"PG Diag - Detail: {orig.diag.detail if orig.diag else 'N/A'}")
-                        if hasattr(orig, "sqlstate"):
-                            print(f"SQLSTATE: {orig.sqlstate}")
+                        pgcode = getattr(orig, "pgcode", None)
+                        if pgcode:
+                            print(f"SQLSTATE (pgcode): {pgcode}")
+                        sqlstate = getattr(orig, "sqlstate", None)
+                        if sqlstate:
+                            print(f"SQLSTATE: {sqlstate}")
+                        diag = getattr(orig, "diag", None)
+                        if diag:
+                            print(f"PG Diag - SQLSTATE: {diag.sqlstate}")
+                            print(f"PG Diag - Table: {diag.table_name}")
+                            print(f"PG Diag - Column: {diag.column_name}")
+                            print(f"PG Diag - Constraint: {diag.constraint_name}")
+                            print(f"PG Diag - Context: {diag.context}")
+                            print(f"PG Diag - Hint: {diag.hint}")
+                            print(f"PG Diag - Detail: {diag.detail}")
 
                     preview = stmt[:500] + "..." if len(stmt) > 500 else stmt
                     print(f"\nFailing SQL statement (first 500 chars):")
@@ -565,19 +569,27 @@ def run_migration(engine, sql_file: str) -> bool:
             print(f"\nMIGRATION FAILED after {elapsed:.1f}s")
             print(f"Error: {e}")
             print(f"Exception type: {type(e).__name__}")
-            if hasattr(e, "orig") and hasattr(e, "orig", None):
-                orig = e.orig
-                if hasattr(orig, "pgcode"):
-                    print(f"SQLSTATE: {orig.pgcode}")
-                if hasattr(orig, "diag"):
-                    print(f"PG Diag - SQLSTATE: {orig.diag.sqlstate if orig.diag else 'N/A'}")
-                    print(f"PG Diag - Table: {orig.diag.table_name if orig.diag else 'N/A'}")
-                    print(f"PG Diag - Column: {orig.diag.column_name if orig.diag else 'N/A'}")
-                    print(f"PG Diag - Context: {orig.diag.context if orig.diag else 'N/A'}")
-                    print(f"PG Diag - Hint: {orig.diag.hint if orig.diag else 'N/A'}")
-                    print(f"PG Diag - Detail: {orig.diag.detail if orig.diag else 'N/A'}")
-            print("Transaction rolled back — no partial data written.")
-        raise
+
+            orig = getattr(e, "orig", None)
+            if orig is not None:
+                print(f"Original exception type: {type(orig).__name__}")
+                pgcode = getattr(orig, "pgcode", None)
+                if pgcode:
+                    print(f"SQLSTATE (pgcode): {pgcode}")
+                sqlstate = getattr(orig, "sqlstate", None)
+                if sqlstate:
+                    print(f"SQLSTATE: {sqlstate}")
+                diag = getattr(orig, "diag", None)
+                if diag:
+                    print(f"PG Diag - SQLSTATE: {diag.sqlstate}")
+                    print(f"PG Diag - Table: {diag.table_name}")
+                    print(f"PG Diag - Column: {diag.column_name}")
+                    print(f"PG Diag - Constraint: {diag.constraint_name}")
+                    print(f"PG Diag - Context: {diag.context}")
+                    print(f"PG Diag - Hint: {diag.hint}")
+                    print(f"PG Diag - Detail: {diag.detail}")
+                print("Transaction rolled back — no partial data written.")
+            raise
 
     elapsed = time.time() - start
     print(f"Migration completed in {elapsed:.1f}s ({len(statements)} statements)")

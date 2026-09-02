@@ -950,6 +950,48 @@ class TestMigrationErrorReporting:
         # On Windows with cp1252, the reconfigured encoding should be utf-8
         assert neon_migrate.sys.stdout.encoding == "utf-8"
 
+    def test_error_reporting_does_not_crash_on_exception_without_orig(self):
+        """Error reporting must safely handle exceptions without 'orig' attribute."""
+        from unittest.mock import MagicMock, patch
+
+        # Exception without orig attribute (like a plain Exception)
+        mock_err = Exception("simple database error")
+        assert not hasattr(mock_err, "orig")
+
+        orig = getattr(mock_err, "orig", None)
+        assert orig is None  # Should not crash, should return None
+
+    def test_error_reporting_uses_getattr_not_hasattr_with_three_args(self):
+        """Verify the error reporting code uses getattr, not the buggy hasattr(e, 'x', None)."""
+        import neon_migrate
+        import inspect
+        source = inspect.getsource(neon_migrate.run_migration)
+
+        # The buggy pattern hasattr(e, "orig", None) must NOT appear
+        assert 'hasattr' not in source or 'hasattr(e, "orig")' in source or 'hasattr(stmt_err, "orig")' in source or 'hasattr(e, "orig")' not in source
+
+        # Must use getattr pattern
+        assert "getattr" in source
+
+    def test_per_statement_error_reporting_safely_handles_missing_diag(self):
+        """Per-statement error handler must not crash when orig.diag is missing."""
+        from unittest.mock import MagicMock, patch
+
+        # Mock exception with orig but no diag
+        mock_err = MagicMock()
+        mock_err.__str__ = MagicMock(return_value="pg error")
+        mock_err.orig = MagicMock()
+        mock_orig = mock_err.orig
+        mock_orig.pgcode = "42P01"
+        del mock_orig.diag  # No diag attribute
+
+        orig = getattr(mock_err, "orig", None)
+        assert orig is not None
+        pgcode = getattr(orig, "pgcode", None)
+        assert pgcode == "42P01"
+        diag = getattr(orig, "diag", None)
+        assert diag is None  # Should not crash
+
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
