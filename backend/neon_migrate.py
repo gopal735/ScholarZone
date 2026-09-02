@@ -212,6 +212,274 @@ def filter_migration_statements(statements: list[str]) -> list[str]:
     return filtered
 
 
+def discover_boolean_columns(engine) -> dict[str, set[str]]:
+    """Query PostgreSQL for all boolean columns.
+
+    Returns a dict mapping table_name -> set of boolean column names.
+    Used as a safety net to convert SQLite integer (1/0) literals to
+    PostgreSQL TRUE/FALSE in INSERT statements.
+    """
+    results: dict[str, set[str]] = {}
+    with engine.connect() as conn:
+        rows = conn.execute(text(
+            "SELECT table_name, column_name "
+            "FROM information_schema.columns "
+            "WHERE data_type = 'boolean' "
+            "AND table_schema = 'public'"
+        )).fetchall()
+        for table, col in rows:
+            results.setdefault(table, set()).add(col)
+    return results
+
+
+def _parse_values_tuple(values_str: str) -> list[str]:
+    """Parse a comma-separated VALUES tuple into individual value strings.
+
+    Respects single-quoted strings (with '' escaping), double-quoted identifiers,
+    and nested parentheses. Returns the raw value substrings (without surrounding
+    parentheses).
+    """
+    values = []
+    buf = []
+    in_single_quote = False
+    in_double_quote = False
+    paren_depth = 0
+    i = 0
+
+    while i < len(values_str):
+        char = values_str[i]
+        next_char = values_str[i + 1] if i + 1 < len(values_str) else ""
+
+        if in_single_quote:
+            buf.append(char)
+            if char == "'":
+                if next_char == "'":
+                    buf.append(next_char)
+                    i += 2
+                    continue
+                in_single_quote = False
+            i += 1
+            continue
+
+        if in_double_quote:
+            buf.append(char)
+            if char == '"':
+                if next_char == '"':
+                    buf.append(next_char)
+                    i += 2
+                    continue
+                in_double_quote = False
+            i += 1
+            continue
+
+        if char == "'":
+            in_single_quote = True
+            buf.append(char)
+            i += 1
+            continue
+
+        if char == '"':
+            in_double_quote = True
+            buf.append(char)
+            i += 1
+            continue
+
+        if char == "(":
+            paren_depth += 1
+            buf.append(char)
+            i += 1
+            continue
+
+        if char == ")":
+            if paren_depth > 0:
+                paren_depth -= 1
+                buf.append(char)
+                i += 1
+                continue
+            # Closing paren of the VALUES tuple — stop
+            break
+
+        if char == "," and paren_depth == 0 and not in_single_quote and not in_double_quote:
+            values.append("".join(buf).strip())
+            buf = []
+            i += 1
+            continue
+
+        buf.append(char)
+        i += 1
+
+    # Don't forget the last value
+    val = "".join(buf).strip()
+    if val:
+        values.append(val)
+
+    return values
+
+
+def _convert_insert_boolean_values(stmt: str, boolean_cols: set[str]) -> str:
+    """Convert bare integer 1/0 to TRUE/FALSE for boolean columns in an INSERT.
+
+    Only transforms values at positions matching known boolean column names.
+    Leaves all other values (strings, JSON, dates) untouched.
+    """
+    # Extract table name and column list
+    insert_match = re.match(
+        r'INSERT\s+INTO\s+(\w+)\s*\(([^)]*)\)\s*VALUES\s*\(',
+        stmt,
+        re.IGNORECASE | re.DOTALL,
+    )
+    if not insert_match:
+        return stmt
+
+    table_name = insert_match.group(1)
+    if table_name not in _discover_boolean_columns_cache:
+        return stmt
+
+    table_booleans = _discover_boolean_columns_cache[table_name]
+    if not (table_booleans & boolean_cols):
+        return stmt
+
+    # Parse column list
+    col_text = insert_match.group(2)
+    columns = [c.strip().strip('"') for c in col_text.split(",")]
+
+    # Find the VALUES tuple content
+    values_start = stmt.find("(", insert_match.end() - 1)
+    if values_start < 0:
+        return stmt
+
+    # Find the matching closing parenthesis (respecting string literals)
+    values_content = _extract_parenthesized(stmt, values_start)
+    if values_content is None:
+        return stmt
+
+    # Parse values
+    values = _parse_values_tuple(values_content)
+
+    # If column count != value count, leave statement unchanged (safety)
+    if len(columns) != len(values):
+        return stmt
+
+    # Convert boolean column values from 1/0 to TRUE/FALSE
+    modified = False
+    for idx, col_name in enumerate(columns):
+        if col_name in table_booleans:
+            val = values[idx].strip()
+            if val == "1":
+                values[idx] = "TRUE"
+                modified = True
+            elif val == "0":
+                values[idx] = "FALSE"
+                modified = True
+
+    if not modified:
+        return stmt
+
+    # Reconstruct the statement
+    prefix = stmt[:values_start + 1]
+    suffix_start = values_start + 1 + len(values_content) + 1  # +1 for closing paren
+    suffix = stmt[suffix_start:] if suffix_start < len(stmt) else ""
+
+    new_values = ", ".join(v if not v.startswith("'") else v for v in values)
+    # Need to handle comma spacing consistently with original
+    new_values = ", ".join(values)
+    return prefix + new_values + ")" + suffix
+
+
+def _extract_parenthesized(stmt: str, start_idx: int) -> str | None:
+    """Extract content between parentheses starting at start_idx.
+
+    Respects string literals to handle commas and closing parens inside
+    quoted strings.
+    """
+    i = start_idx + 1
+    in_single_quote = False
+    in_double_quote = False
+    depth = 1
+
+    while i < len(stmt):
+        char = stmt[i]
+        next_char = stmt[i + 1] if i + 1 < len(stmt) else ""
+
+        if in_single_quote:
+            if char == "'" and next_char != "'":
+                in_single_quote = False
+            elif char == "'" and next_char == "'":
+                i += 2
+                continue
+            i += 1
+            continue
+
+        if in_double_quote:
+            if char == '"':
+                in_double_quote = False
+            i += 1
+            continue
+
+        if char == "'":
+            in_single_quote = True
+            i += 1
+            continue
+
+        if char == '"':
+            in_double_quote = True
+            i += 1
+            continue
+
+        if char == "(":
+            depth += 1
+        elif char == ")":
+            depth -= 1
+            if depth == 0:
+                return stmt[start_idx + 1:i]
+        i += 1
+
+    return None
+
+
+def convert_boolean_literals(statements: list[str], engine) -> list[str]:
+    """Safety net: convert bare integer literals to TRUE/FALSE for boolean columns.
+
+    Queries the PostgreSQL schema for BOOLEAN columns, then transforms any
+    INSERT statements that use integer 1/0 instead of TRUE/FALSE for those columns.
+    This handles SQL files exported from SQLite where booleans were stored as integers.
+    """
+    global _discover_boolean_columns_cache
+    _discover_boolean_columns_cache = discover_boolean_columns(engine)
+
+    if not _discover_boolean_columns_cache:
+        print("  No boolean columns found — skipping boolean conversion")
+        return statements
+
+    all_boolean_cols = set()
+    for cols in _discover_boolean_columns_cache.values():
+        all_boolean_cols.update(cols)
+
+    print(f"  Found boolean columns: {all_boolean_cols}")
+
+    converted = 0
+    result = []
+    for stmt in statements:
+        stripped = _strip_leading_comments(stmt)
+        if stripped.upper().startswith("INSERT"):
+            new_stmt = _convert_insert_boolean_values(stmt, all_boolean_cols)
+            if new_stmt != stmt:
+                converted += 1
+            result.append(new_stmt)
+        else:
+            result.append(stmt)
+
+    if converted:
+        print(f"  Converted {converted} INSERT statement(s) for boolean columns")
+    else:
+        print("  No boolean literal conversions needed")
+
+    return result
+
+
+_discover_boolean_columns_cache: dict[str, set[str]] = {}
+
+
 def run_migration(engine, sql_file: str) -> bool:
     """Run migration SQL file inside a SQLAlchemy-managed transaction.
 
@@ -235,6 +503,10 @@ def run_migration(engine, sql_file: str) -> bool:
     # Filter out transaction control statements (BEGIN/COMMIT)
     statements = filter_migration_statements(all_statements)
     print(f"  Will execute {len(statements)} data statements")
+
+    # Safety net: convert bare integer literals to TRUE/FALSE for boolean columns
+    statements = convert_boolean_literals(statements, engine)
+    print(f"  After boolean conversion: {len(statements)} statements")
 
     start = time.time()
 

@@ -23,6 +23,10 @@ from neon_migrate import (
     validate,
     confirm_empty,
     _strip_leading_comments,
+    discover_boolean_columns,
+    _parse_values_tuple,
+    _convert_insert_boolean_values,
+    convert_boolean_literals,
 )
 
 
@@ -653,6 +657,207 @@ class TestConnectEncodingDiagnostic:
         finally:
             neon_migrate.create_engine = original_create_engine
         engine.dispose()
+
+class TestBooleanConversion:
+    """Regression tests for SQLite → PostgreSQL boolean literal conversion.
+
+    SQLite stores booleans as integers (1/0). PostgreSQL BOOLEAN columns
+    reject integer literals. The migration must convert is_verified=1 to
+    is_verified=TRUE before sending SQL to PostgreSQL.
+    """
+
+    def test_parse_values_simple(self):
+        """_parse_values_tuple handles simple comma-separated values."""
+        result = _parse_values_tuple("1, 'hello', NULL, TRUE")
+        assert len(result) == 4
+        assert result[0] == "1"
+        assert result[1] == "'hello'"
+        assert result[2] == "NULL"
+        assert result[3] == "TRUE"
+
+    def test_parse_values_with_json(self):
+        """_parse_values_tuple handles JSON arrays inside single-quoted strings."""
+        json_str = '["Item 1; with semicolon", "Item 2"]'
+        sql_values = f"1, 'test', '{json_str}', TRUE"
+        result = _parse_values_tuple(sql_values)
+        assert len(result) == 4
+        assert "'test'" in result[1]
+        assert json_str in result[2]
+
+    def test_parse_values_with_escaped_quotes(self):
+        """_parse_values_tuple handles '' escaped quotes in strings."""
+        result = _parse_values_tuple("1, 'it''s a test', TRUE")
+        assert len(result) == 3
+        assert "it''s a test" in result[1]
+
+    def test_parse_values_with_nested_parens(self):
+        """_parse_values_tuple handles function calls with parentheses."""
+        result = _parse_values_tuple("1, NOW(), 'test'")
+        assert len(result) == 3
+        assert "NOW()" in result[1]
+
+    def test_parse_values_empty(self):
+        """_parse_values_tuple returns empty for empty input."""
+        assert _parse_values_tuple("") == []
+        assert _parse_values_tuple("   ") == []
+
+    def test_convert_insert_boolean_value_true(self):
+        """is_verified=1 is converted to TRUE for BOOLEAN columns."""
+        global _discover_boolean_columns_cache
+        from neon_migrate import _discover_boolean_columns_cache as cache_ref
+        import neon_migrate
+        neon_migrate._discover_boolean_columns_cache = {"scholarships": {"is_verified"}}
+
+        stmt = (
+            "INSERT INTO scholarships (id, title, is_verified, created_at) "
+            "VALUES (1, 'Test Scholarship', 1, '2026-08-07 12:48:06')"
+        )
+        result = _convert_insert_boolean_values(stmt, {"is_verified"})
+        assert "TRUE" in result
+        assert ", 1, '2026-08-07" not in result
+
+    def test_convert_insert_boolean_value_false(self):
+        """is_verified=0 is converted to FALSE for BOOLEAN columns."""
+        import neon_migrate
+        neon_migrate._discover_boolean_columns_cache = {"scholarships": {"is_verified"}}
+
+        stmt = (
+            "INSERT INTO scholarships (id, title, is_verified, created_at) "
+            "VALUES (2, 'Another Scholarship', 0, '2026-08-07 12:48:06')"
+        )
+        result = _convert_insert_boolean_values(stmt, {"is_verified"})
+        assert "FALSE" in result
+        assert ", 0, '2026-08-07" not in result
+
+    def test_convert_does_not_touch_string_values(self):
+        """String values are not affected by boolean conversion."""
+        import neon_migrate
+        neon_migrate._discover_boolean_columns_cache = {"scholarships": {"is_verified"}}
+
+        stmt = (
+            "INSERT INTO scholarships (id, title, is_verified, status) "
+            "VALUES (3, 'Test', TRUE, 'open')"
+        )
+        result = _convert_insert_boolean_values(stmt, {"is_verified"})
+        assert "TRUE" in result
+        assert "open" in result
+
+    def test_convert_preserves_json_strings(self):
+        """JSON arrays in single-quoted strings are not affected."""
+        import neon_migrate
+        neon_migrate._discover_boolean_columns_cache = {"scholarships": {"is_verified"}}
+
+        json_arr = '["Item 1; with semicolon", "Item 2"]'
+        stmt = (
+            f"INSERT INTO scholarships (id, title, is_verified, eligibility) "
+            f"VALUES (1, 'Test', 1, '{json_arr}')"
+        )
+        result = _convert_insert_boolean_values(stmt, {"is_verified"})
+        assert "TRUE" in result
+        assert json_arr in result
+        assert "semicolon" in result
+
+    def test_convert_non_boolean_table_unchanged(self):
+        """INSERTs into tables without boolean columns are not modified."""
+        import neon_migrate
+        neon_migrate._discover_boolean_columns_cache = {}
+
+        stmt = "INSERT INTO scholarships (id, is_verified) VALUES (1, 1)"
+        result = _convert_insert_boolean_values(stmt, {"is_verified"})
+        # No boolean columns discovered, so no conversion
+        assert result == stmt
+
+    def test_convert_no_boolean_cols_in_table(self):
+        """If table has no boolean columns, INSERT is unchanged."""
+        import neon_migrate
+        neon_migrate._discover_boolean_columns_cache = {"other_table": set()}
+
+        stmt = "INSERT INTO scholarships (id, is_verified) VALUES (1, 1)"
+        result = _convert_insert_boolean_values(stmt, {"is_active"})
+        assert result == stmt
+
+    def test_convert_preserves_null_values(self):
+        """NULL values in boolean columns are preserved."""
+        import neon_migrate
+        neon_migrate._discover_boolean_columns_cache = {"scholarships": {"is_verified"}}
+
+        stmt = (
+            "INSERT INTO scholarships (id, title, is_verified, created_at) "
+            "VALUES (4, 'Test', NULL, '2026-08-07 12:48:06')"
+        )
+        result = _convert_insert_boolean_values(stmt, {"is_verified"})
+        assert "NULL" in result
+
+    def test_convert_multiple_boolean_columns(self):
+        """Multiple boolean columns in the same INSERT are all converted."""
+        import neon_migrate
+        neon_migrate._discover_boolean_columns_cache = {
+            "mixed_table": {"is_verified", "is_active"}
+        }
+
+        stmt = (
+            "INSERT INTO mixed_table (is_verified, is_active, name) "
+            "VALUES (1, 0, 'test_name')"
+        )
+        result = _convert_insert_boolean_values(stmt, {"is_verified", "is_active"})
+        assert "TRUE" in result
+        assert "FALSE" in result
+
+    def test_convert_column_misalignment_safe(self):
+        """If column count != value count, statement is returned unchanged (safe)."""
+        import neon_migrate
+        neon_migrate._discover_boolean_columns_cache = {"scholarships": {"is_verified"}}
+
+        stmt = "INSERT INTO scholarships (id, is_verified) VALUES (1)"
+        original = stmt
+        result = _convert_insert_boolean_values(stmt, {"is_verified"})
+        assert result == original
+
+    def test_convert_boolean_in_middle_of_statement(self):
+        """Boolean conversion works when boolean column is in the middle of the column list."""
+        import neon_migrate
+        neon_migrate._discover_boolean_columns_cache = {"scholarships": {"is_verified"}}
+
+        stmt = (
+            "INSERT INTO scholarships (id, title, country, is_verified, status, created_at) "
+            "VALUES (1, 'Test', 'USA', 1, 'open', '2026-08-07 12:48:06')"
+        )
+        result = _convert_insert_boolean_values(stmt, {"is_verified"})
+        assert "TRUE" in result
+        # Non-boolean values should be unchanged
+        assert "'Test'" in result
+        assert "'USA'" in result
+        assert "'open'" in result
+
+    def test_migration_sql_has_true_not_integers(self):
+        """The actual migration_export.sql should use TRUE/FALSE, not 1/0 for is_verified."""
+        import pathlib
+        sql_path = pathlib.Path(__file__).parent.parent / "migration_export.sql"
+        with open(sql_path, "r", encoding="utf-8") as f:
+            content = f.read()
+
+        # The is_verified column values should be TRUE/FALSE
+        assert "TRUE" in content
+        # Check that is_verified values are not bare integers
+        # is_verified is the 10th column (index 9) in the INSERT
+        lines = content.split("\n")
+        insert_count = 0
+        true_count = 0
+        false_count = 0
+        for line in lines:
+            if line.strip().startswith("INSERT INTO scholarships"):
+                insert_count += 1
+                if ", TRUE," in line or line.endswith(", TRUE)"):
+                    true_count += 1
+                if ", FALSE," in line or line.endswith(", FALSE)"):
+                    false_count += 1
+
+        assert insert_count == 303, f"Expected 303 scholarship INSERTs, got {insert_count}"
+        assert true_count + false_count == 303, \
+            f"Expected all 303 inserts to have TRUE or FALSE, got {true_count + false_count}"
+        assert true_count == 300, f"Expected 300 TRUE, got {true_count}"
+        assert false_count == 3, f"Expected 3 FALSE, got {false_count}"
+
 
 @pytest.fixture
 def sqlite_engine():

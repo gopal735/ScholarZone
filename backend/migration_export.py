@@ -131,6 +131,10 @@ def format_value_for_pg(value, pg_type="TEXT"):
     if isinstance(value, bool):
         return "TRUE" if value else "FALSE"
     
+    if pg_type == "BOOLEAN" and isinstance(value, int) and not isinstance(value, bool):
+        # SQLite stores booleans as integers (1/0); convert to PostgreSQL TRUE/FALSE
+        return "TRUE" if value == 1 else "FALSE"
+    
     if isinstance(value, (int, float)):
         return str(value)
     
