@@ -935,6 +935,21 @@ class TestMigrationErrorReporting:
         result = filter_migration_statements([stmt])
         assert result == [stmt]
 
+    def test_filter_migration_statements_handles_unicode_print(self, capsys):
+        """filter_migration_statements should not crash when printing statements with Unicode."""
+        stmt = "BEGIN;\n-- some unicode: → em-dash — en-dash"
+        result = filter_migration_statements([stmt])
+        assert result == []  # BEGIN is filtered out
+        captured = capsys.readouterr()
+        assert "Skipping" in captured.out
+
+    def test_stdout_reconfigured_for_utf8(self):
+        """Verify that stdout has been reconfigured to UTF-8 at import time."""
+        import neon_migrate
+        # After import, stdout should have utf-8 encoding (or the reconfigure was attempted)
+        # On Windows with cp1252, the reconfigured encoding should be utf-8
+        assert neon_migrate.sys.stdout.encoding == "utf-8"
+
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])

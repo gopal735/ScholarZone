@@ -14,6 +14,13 @@ import re
 import sys
 import time
 
+# Ensure UTF-8 output regardless of Windows console code page (cp1252 etc.)
+try:
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+except (AttributeError, OSError):
+    pass
+
 from sqlalchemy import create_engine, inspect, text
 
 
