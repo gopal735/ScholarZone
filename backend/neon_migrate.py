@@ -34,10 +34,10 @@ def connect(url: str):
     engine = create_engine(url, pool_pre_ping=True, client_encoding="UTF8")
     with engine.connect() as conn:
         conn.execute(text("SET client_encoding = 'UTF8'"))
-        result = conn.execute(text("SHOW server_encoding; SHOW client_encoding;"))
-        encodings = result.fetchall()
-        print(f"Server encoding: {encodings[0][0]}")
-        print(f"Client encoding: {encodings[1][0]}")
+        server_enc = conn.execute(text("SHOW server_encoding")).scalar()
+        client_enc = conn.execute(text("SHOW client_encoding")).scalar()
+        print(f"Server encoding: {server_enc}")
+        print(f"Client encoding: {client_enc}")
         version = conn.execute(text("SELECT version()")).scalar()
         print(f"Connected to: {version[:60]}...")
     return engine

@@ -380,8 +380,54 @@ class TestUtf8Encoding:
 
 
 # ---------------------------------------------------------------------------
-# Fixtures
+# connect() encoding diagnostic tests
 # ---------------------------------------------------------------------------
+
+class TestConnectEncodingDiagnostic:
+    """Regression tests for the connect() encoding diagnostic bug.
+
+    Previously, connect() executed SHOW server_encoding; SHOW client_encoding;
+    as a single multi-statement text() call, then assumed fetchall() returned
+    two rows. With psycopg v3, multi-statement execution only returns the
+    first statement's result, causing IndexError on encodings[1][0].
+    """
+
+    def test_connect_does_not_use_multistatement_fetchall(self):
+        """connect() should execute SHOW statements individually, not as a
+        combined multi-statement text() call with fetchall().
+
+        The old buggy code executed 'SHOW server_encoding; SHOW client_encoding;'
+        as one text() and then indexed encodings[1][0], which crashed under
+        psycopg v3 where multi-statement execution only returns the first result.
+        """
+        from unittest.mock import MagicMock
+        import neon_migrate
+
+        conn_mock = MagicMock()
+        result_mock = MagicMock()
+        result_mock.scalar.side_effect = ["UTF8", "UTF8", "PostgreSQL 16..."]
+        conn_mock.execute.return_value = result_mock
+        conn_mock.__enter__ = MagicMock(return_value=conn_mock)
+        conn_mock.__exit__ = MagicMock(return_value=None)
+
+        mock_engine = MagicMock()
+        mock_engine.connect.return_value = conn_mock
+
+        original_create_engine = neon_migrate.create_engine
+        neon_migrate.create_engine = MagicMock(return_value=mock_engine)
+
+        try:
+            engine = connect("postgresql://user:pass@host.neon.tech/db")
+            executed_sqls = [str(c[0][0]) for c in conn_mock.execute.call_args_list]
+
+            # Each SHOW should be a separate text() call, NOT combined
+            assert "SHOW server_encoding" in executed_sqls
+            assert "SHOW client_encoding" in executed_sqls
+            assert not any("; SHOW" in s for s in executed_sqls), \
+                "SHOW statements must not be combined in a single text() call"
+        finally:
+            neon_migrate.create_engine = original_create_engine
+        engine.dispose()
 
 @pytest.fixture
 def sqlite_engine():
