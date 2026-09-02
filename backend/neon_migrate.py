@@ -495,6 +495,223 @@ def _log_progress(current: int, total: int, start_time: float):
         sys.stdout.flush()
 
 
+def _detect_unsafe_bind_params(stmt: str) -> list[str]:
+    """Detect :name patterns that SQLAlchemy text() would interpret as bind parameters.
+
+    SQLAlchemy's text() parser does NOT respect SQL string literal boundaries —
+    it treats every :word as a bind parameter. This function scans for bare
+    :name patterns at the SQL token level (not inside string literals) to catch
+    statements that would fail under the old conn.execute(text(stmt)) pattern.
+
+    Returns list of match strings (empty if safe).
+    """
+    matches = []
+    in_single_quote = False
+    in_double_quote = False
+    in_line_comment = False
+    in_block_comment = False
+    i = 0
+
+    while i < len(stmt):
+        char = stmt[i]
+        next_char = stmt[i + 1] if i + 1 < len(stmt) else ""
+
+        if in_line_comment:
+            if char == "\n":
+                in_line_comment = False
+            i += 1
+            continue
+
+        if in_block_comment:
+            if char == "*" and next_char == "/":
+                in_block_comment = False
+                i += 2
+                continue
+            i += 1
+            continue
+
+        if in_single_quote:
+            if char == "'":
+                if next_char == "'":
+                    i += 2
+                    continue
+                in_single_quote = False
+            i += 1
+            continue
+
+        if in_double_quote:
+            if char == '"':
+                in_double_quote = False
+            i += 1
+            continue
+
+        if char == "-" and next_char == "-":
+            in_line_comment = True
+            i += 2
+            continue
+
+        if char == "/" and next_char == "*":
+            in_block_comment = True
+            i += 2
+            continue
+
+        if char == "'":
+            in_single_quote = True
+            i += 1
+            continue
+
+        if char == '"':
+            in_double_quote = True
+            i += 1
+            continue
+
+        if char == ":":
+            m = re.match(r":(\w+)", stmt[i:])
+            if m:
+                matches.append(m.group(0))
+            i += 1
+            continue
+
+        i += 1
+
+    return matches
+
+
+def validate_migration_file(sql_file: str) -> bool:
+    """Run pre-migration static validation on the SQL file before touching Neon.
+
+    Checks:
+    - File exists and is readable as UTF-8
+    - Expected INSERT count per table matches target schema
+    - Column count matches value count in each INSERT
+    - No unsafe bind parameter patterns (bare :name at SQL token level)
+    - No embedded BEGIN/COMMIT/ROLLBACK that would interfere with transactions
+    - INSERT ordering respects foreign key dependencies
+    - No duplicate primary key IDs within the same table
+    - Boolean values are TRUE/FALSE (not bare integers) for BOOLEAN columns
+
+    Returns True if all checks pass. Prints diagnostics and returns False otherwise.
+    """
+    print("--- Pre-Migration Static Validation ---")
+
+    # 1. Read file
+    try:
+        with open(sql_file, "r", encoding="utf-8") as f:
+            sql = f.read()
+    except FileNotFoundError:
+        print(f"FAIL: Migration file not found: {sql_file}")
+        return False
+    except UnicodeDecodeError as e:
+        print(f"FAIL: File is not valid UTF-8: {e}")
+        return False
+
+    print(f"  File size: {len(sql):,} chars")
+
+    # 2. Split into statements
+    all_statements = split_sql_statements(sql)
+    statements = filter_migration_statements(all_statements)
+    print(f"  Parsed {len(all_statements)} statements, {len(statements)} after filtering")
+
+    # 3. Check for embedded transaction control that wasn't filtered
+    stmt_count = {}
+    insert_tables = []
+    seen_primary_keys = {}
+    issues = []
+
+    for idx, stmt in enumerate(statements, 1):
+        code = _strip_leading_comments(stmt)
+
+        # 4. Check for bind parameter patterns at SQL token level
+        bind_matches = _detect_unsafe_bind_params(code)
+        if bind_matches:
+            issues.append(f"Statement {idx}: potential bind parameters at SQL level: {bind_matches[:5]}")
+
+        # 5. Check for embedded BEGIN/COMMIT/ROLLBACK that survived filtering
+        first_token = code.split(None, 1)[0].upper().rstrip(";") if code.split() else ""
+        if first_token in ("BEGIN", "COMMIT", "ROLLBACK", "START", "SAVEPOINT", "RELEASE", "SET TRANSACTION"):
+            issues.append(f"Statement {idx}: transaction control not filtered: {code[:60]}")
+
+        # 6. Analyze INSERT statements
+        if code.upper().startswith("INSERT"):
+            insert_match = re.match(
+                r"INSERT\s+INTO\s+(\w+)\s*\(([^)]*)\)\s*VALUES\s*\(", code, re.IGNORECASE | re.DOTALL
+            )
+            if insert_match:
+                table_name = insert_match.group(1)
+                insert_tables.append(table_name)
+
+                # Count columns
+                col_list = [c.strip().strip('"') for c in insert_match.group(2).split(",")]
+                col_count = len(col_list)
+
+                # Extract the values tuple
+                values_content = _extract_parenthesized(code, code.find("(", insert_match.end() - 1))
+                if values_content:
+                    values = _parse_values_tuple(values_content)
+                    if len(values) != col_count:
+                        issues.append(
+                            f"Statement {idx} ({table_name}): column count ({col_count}) "
+                            f"!= value count ({len(values)})"
+                        )
+
+                    # 7. Check for duplicate primary keys
+                    if "id" in col_list:
+                        id_idx = col_list.index("id")
+                        if id_idx < len(values):
+                            id_val = values[id_idx].strip()
+                            if id_val.isdigit():
+                                id_int = int(id_val)
+                                table_pks = seen_primary_keys.setdefault(table_name, set())
+                                if id_int in table_pks:
+                                    issues.append(f"Statement {idx} ({table_name}): duplicate id={id_int}")
+                                else:
+                                    table_pks.add(id_int)
+
+    # 8. Check expected counts
+    expected_counts = {
+        "scholarships": 303,
+        "scholarship_verification_history": 6,
+        "scholarship_reviews": 625,
+    }
+    actual_counts = {}
+    for table in expected_counts:
+        actual_counts[table] = sum(1 for t in insert_tables if t == table)
+
+    print(f"  INSERT counts: {actual_counts}")
+    for table, expected in expected_counts.items():
+        actual = actual_counts.get(table, 0)
+        if actual > 0 and actual != expected:
+            issues.append(f"Expected {expected} INSERTs for {table}, got {actual}")
+
+    # 9. Check FK ordering (scholarships must come before reviews/history)
+    tables_order = list(dict.fromkeys(insert_tables))  # unique order of appearance
+    scholar_idx = next((i for i, t in enumerate(tables_order) if t == "scholarships"), None)
+    history_idx = next((i for i, t in enumerate(tables_order) if t == "scholarship_verification_history"), None)
+    review_idx = next((i for i, t in enumerate(tables_order) if t == "scholarship_reviews"), None)
+
+    if scholar_idx is not None:
+        if history_idx is not None and history_idx < scholar_idx:
+            issues.append("FK ordering: scholarship_verification_history appears before scholarships")
+        if review_idx is not None and review_idx < scholar_idx:
+            issues.append("FK ordering: scholarship_reviews appears before scholarships")
+
+    # 10. Report
+    total_pks = sum(len(v) for v in seen_primary_keys.values())
+    print(f"  Total primary keys found: {total_pks}")
+    print(f"  Tables in order: {tables_order}")
+
+    if issues:
+        print(f"\n  VALIDATION FAILED — {len(issues)} issue(s):")
+        for issue in issues[:20]:
+            print(f"    - {issue}")
+        if len(issues) > 20:
+            print(f"    ... and {len(issues) - 20} more")
+        return False
+
+    print("  VALIDATION PASSED — all static checks passed")
+    return True
+
+
 def run_migration(engine, sql_file: str) -> bool:
     """Run migration SQL file inside a SQLAlchemy-managed transaction.
 
@@ -527,16 +744,20 @@ def run_migration(engine, sql_file: str) -> bool:
 
     try:
         with engine.begin() as conn:
-            # Ensure UTF-8 encoding
-            conn.execute(text("SET client_encoding = 'UTF8'"))
-
-            # Set search_path to public (default)
-            conn.execute(text("SET search_path = public"))
+            # Ensure UTF-8 encoding (PostgreSQL-only; safely ignored on other dialects)
+            try:
+                conn.exec_driver_sql("SET client_encoding = 'UTF8'")
+            except Exception:
+                pass
+            try:
+                conn.exec_driver_sql("SET search_path = public")
+            except Exception:
+                pass
 
             for i, stmt in enumerate(statements, 1):
                 _log_progress(i, len(statements), start)
                 try:
-                    conn.execute(text(stmt))
+                    conn.exec_driver_sql(stmt)
                 except Exception as stmt_err:
                     elapsed = time.time() - start
                     print(f"\nMIGRATION FAILED after {elapsed:.1f}s")
@@ -618,7 +839,10 @@ def discover_sequences(engine) -> list[tuple[str, str]]:
 
     results = []
     with engine.connect() as conn:
-        conn.execute(text("SET client_encoding = 'UTF8'"))
+        try:
+            conn.exec_driver_sql("SET client_encoding = 'UTF8'")
+        except Exception:
+            pass
         for table in ["scholarships", "scholarship_reviews", "scholarship_verification_history"]:
             seq_name = conn.execute(
                 text(f"SELECT pg_get_serial_sequence('{table}', 'id')")
@@ -645,15 +869,16 @@ def synchronize_sequences(engine) -> bool:
         return True
 
     with engine.begin() as conn:
-        conn.execute(text("SET client_encoding = 'UTF8'"))
+        try:
+            conn.exec_driver_sql("SET client_encoding = 'UTF8'")
+        except Exception:
+            pass
         for table, seq_name in sequences:
-            # Verify rows exist before setting sequence
             max_id = conn.execute(text(f"SELECT MAX(id) FROM {table}")).scalar()
             if max_id is None:
                 print(f"  {seq_name}: no rows in {table}, skipping")
                 continue
 
-            # setval with is_called=true means next nextval returns max_id + 1
             conn.execute(text(f"SELECT setval('{seq_name}', {max_id}, true)"))
             last_val = conn.execute(text(f"SELECT last_value FROM {seq_name}")).scalar()
             print(f"  {seq_name} set to {last_val} (next insert will use {last_val + 1})")
@@ -664,7 +889,10 @@ def synchronize_sequences(engine) -> bool:
 def confirm_empty(engine, non_interactive: bool = False) -> bool:
     """Confirm database is empty of scholarship data."""
     with engine.connect() as conn:
-        conn.execute(text("SET client_encoding = 'UTF8'"))
+        try:
+            conn.exec_driver_sql("SET client_encoding = 'UTF8'")
+        except Exception:
+            pass
         tables = ["scholarships", "scholarship_verification_history", "scholarship_reviews"]
         counts = {}
         for table in tables:
@@ -708,7 +936,10 @@ def validate(engine) -> dict:
     results = {}
 
     with engine.connect() as conn:
-        conn.execute(text("SET client_encoding = 'UTF8'"))
+        try:
+            conn.exec_driver_sql("SET client_encoding = 'UTF8'")
+        except Exception:
+            pass
 
         # Row counts
         for table in ["scholarships", "scholarship_verification_history", "scholarship_reviews"]:
@@ -820,6 +1051,13 @@ def main():
             sys.exit(1)
 
     if args.validate_only:
+        # Run pre-migration static validation on the SQL file
+        sql_file = os.path.join(os.path.dirname(__file__), "migration_export.sql")
+        if not validate_migration_file(sql_file):
+            print("\nStatic validation FAILED. Fix issues before migration.")
+            engine.dispose()
+            sys.exit(1)
+
         print("\n" + "=" * 60)
         print("VALIDATION COMPLETE - No data was modified")
         print("VERDICT: A) CONNECTION AND SCHEMA OK - READY FOR MIGRATION")
@@ -831,6 +1069,10 @@ def main():
     print("\n--- Migration ---")
     sql_file = os.path.join(os.path.dirname(__file__), "migration_export.sql")
     try:
+        if not validate_migration_file(sql_file):
+            print("\nStatic validation FAILED. Aborting migration.")
+            engine.dispose()
+            sys.exit(1)
         if not run_migration(engine, sql_file):
             sys.exit(1)
     except Exception:

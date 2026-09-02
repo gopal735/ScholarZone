@@ -24,6 +24,8 @@ from neon_migrate import (
     confirm_empty,
     _strip_leading_comments,
     _log_progress,
+    _detect_unsafe_bind_params,
+    validate_migration_file,
     discover_boolean_columns,
     _parse_values_tuple,
     _convert_insert_boolean_values,
@@ -1007,20 +1009,19 @@ class TestMigrationErrorReporting:
             encoding="utf-8",
         )
 
-        # Use a mock connection that fails on the 4th call (3rd data statement)
         statement_count = [0]
 
-        def mock_execute(stmt):
+        def mock_exec(stmt):
             statement_count[0] += 1
             stmt_str = str(stmt)
             if stmt_str.strip().upper().startswith("SET "):
                 return MagicMock()
-            if statement_count[0] >= 5:  # SET, SET, stmt1, stmt2, stmt3
+            if statement_count[0] >= 5:
                 raise Exception(f"Simulated error at call {statement_count[0]}")
             return MagicMock()
 
         mock_conn = MagicMock()
-        mock_conn.execute.side_effect = mock_execute
+        mock_conn.exec_driver_sql.side_effect = mock_exec
         mock_conn.__enter__ = MagicMock(return_value=mock_conn)
         mock_conn.__exit__ = MagicMock(return_value=None)
 
@@ -1090,6 +1091,326 @@ class TestProgressLogging:
         _log_progress(1, 10, start)
         captured = capsys.readouterr()
         assert "elapsed" in captured.out
+
+
+# ---------------------------------------------------------------------------
+# Bind parameter detection tests
+# ---------------------------------------------------------------------------
+
+class TestBindParameterDetection:
+    """Tests for _detect_unsafe_bind_params() — the core fix for the :after bug.
+
+    SQLAlchemy's text() parses :name patterns as bind parameters regardless of
+    whether they're inside string literals. The migration SQL contains CSS
+    pseudo-classes (:after, :hover, :var, etc.) inside HTML content in string
+    values. Using text() on statements with these patterns causes:
+
+        sqlalchemy.exc.InvalidRequestError: A value is required for bind parameter 'after'
+
+    Fix: use conn.exec_driver_sql(stmt) instead of conn.execute(text(stmt)),
+    and pre-validate that no bare bind params exist at SQL token level.
+    """
+
+    def test_detect_no_bind_params_in_plain_sql(self):
+        """Plain SQL without bind params returns empty list."""
+        stmt = "INSERT INTO t (val) VALUES ('hello world')"
+        result = _detect_unsafe_bind_params(stmt)
+        assert result == []
+
+    def test_detect_bind_params_outside_string_literal(self):
+        """Bare :name outside strings IS a bind parameter."""
+        stmt = "SELECT :paramname FROM t"
+        result = _detect_unsafe_bind_params(stmt)
+        assert ":paramname" in result
+
+    def test_detect_bind_params_inside_single_quoted_string(self):
+        """:after inside a single-quoted SQL string is NOT a SQL-level bind param."""
+        stmt = "INSERT INTO t (val) VALUES ('css :after content')"
+        result = _detect_unsafe_bind_params(stmt)
+        assert result == []
+
+    def test_detect_bind_params_inside_json_string(self):
+        """CSS pseudo-classes inside JSON (inside single-quoted SQL string) are NOT bind params."""
+        stmt = (
+            "INSERT INTO t (val) "
+            "VALUES ('''[''body:hover:after{background:red}''']'')"
+        )
+        result = _detect_unsafe_bind_params(stmt)
+        assert result == []
+
+    def test_detect_bind_params_with_escaped_quotes_in_string(self):
+        """Escaped single quotes ('' inside string) don't end the string context."""
+        stmt = "INSERT INTO t (val) VALUES ('it''s :after a test')"
+        result = _detect_unsafe_bind_params(stmt)
+        assert result == []
+
+    def test_detect_bind_params_in_double_quoted_identifier(self):
+        """:name inside double-quoted identifiers should NOT be detected."""
+        stmt = 'SELECT "col:after" FROM t'
+        result = _detect_unsafe_bind_params(stmt)
+        assert result == []
+
+    def test_detect_bind_params_in_line_comment(self):
+        """:name inside SQL comments should NOT be detected."""
+        stmt = "SELECT 1 -- this uses :paramname\n"
+        result = _detect_unsafe_bind_params(stmt)
+        assert result == []
+
+    def test_detect_bind_params_in_block_comment(self):
+        """:name inside block comments should NOT be detected."""
+        stmt = "/* uses :paramname */ SELECT 1"
+        result = _detect_unsafe_bind_params(stmt)
+        assert result == []
+
+    def test_detect_bind_params_mixed_safe_and_unsafe(self):
+        """Only bare bind params outside string literals are detected."""
+        stmt = "SELECT :real_param, 'text with :hover and :after' FROM t"
+        result = _detect_unsafe_bind_params(stmt)
+        assert ":real_param" in result
+        assert ":hover" not in result
+        assert ":after" not in result
+
+    def test_detect_bind_params_multiple_outside_strings(self):
+        """Multiple bare bind params outside strings are all detected."""
+        stmt = "INSERT INTO t (a, b) VALUES (:param1, :param2)"
+        result = _detect_unsafe_bind_params(stmt)
+        assert ":param1" in result
+        assert ":param2" in result
+
+    def test_detect_bind_params_real_migration_file_has_none(self):
+        """The actual migration_export.sql should have NO SQL-level bind params."""
+        import pathlib
+        sql_path = pathlib.Path(__file__).parent.parent / "migration_export.sql"
+        with open(sql_path, "r", encoding="utf-8") as f:
+            content = f.read()
+
+        stmts = split_sql_statements(content)
+        filtered = filter_migration_statements(stmts)
+
+        violations = []
+        for i, stmt in enumerate(filtered, 1):
+            code = _strip_leading_comments(stmt)
+            matches = _detect_unsafe_bind_params(code)
+            if matches:
+                violations.append(f"Statement {i}: {matches[:5]}")
+
+        assert violations == [], \
+            f"Found SQL-level bind params (should use exec_driver_sql): {violations[:5]}"
+
+
+# ---------------------------------------------------------------------------
+# exec_driver_sql usage tests
+# ---------------------------------------------------------------------------
+
+class TestRawSqlExecution:
+    """Tests verifying that exec_driver_sql preserves :name patterns that text() would break."""
+
+    def test_text_execution_fails_with_colon_in_string(self, sqlite_engine):
+        """SQLAlchemy text() interprets :after inside string literals as bind params.
+
+        This proves WHY exec_driver_sql is required for migration SQL.
+        """
+        from sqlalchemy import text
+
+        with sqlite_engine.begin() as conn:
+            conn.exec_driver_sql("CREATE TABLE colon_test (id INTEGER PRIMARY KEY, val TEXT)")
+
+        # text() WILL fail - SQLAlchemy parses :after as a bind parameter
+        # The error is StatementError wrapping InvalidRequestError
+        with pytest.raises(Exception, match="bind parameter"):
+            with sqlite_engine.begin() as conn:
+                conn.execute(text("INSERT INTO colon_test (id, val) VALUES (1, 'css :after content')"))
+
+    def test_exec_driver_sql_preserves_colon_literals(self, sqlite_engine):
+        """exec_driver_sql preserves :name patterns inside string literals."""
+        with sqlite_engine.begin() as conn:
+            conn.exec_driver_sql("CREATE TABLE colon_test (id INTEGER PRIMARY KEY, val TEXT)")
+            conn.exec_driver_sql(
+                "INSERT INTO colon_test (id, val) VALUES (1, 'css :after :hover :var')"
+            )
+            conn.exec_driver_sql(
+                "INSERT INTO colon_test (id, val) VALUES (2, 'no colons here')"
+            )
+
+        with sqlite_engine.connect() as conn:
+            rows = conn.exec_driver_sql("SELECT val FROM colon_test ORDER BY id").fetchall()
+            assert ":after" in rows[0][0]
+            assert ":hover" in rows[0][0]
+            assert ":var" in rows[0][0]
+            assert rows[1][0] == "no colons here"
+
+    def test_run_migration_uses_exec_driver_sql_not_text(self, tmp_path):
+        """run_migration must use exec_driver_sql, not conn.execute(text(stmt)).
+
+        Uses a mock engine to avoid SQLite incompatibility with SET statements.
+        """
+        from unittest.mock import patch, MagicMock, call
+        import neon_migrate
+
+        sql_path = tmp_path / "test_bind_params.sql"
+        sql_path.write_text(
+            "INSERT INTO test_table (id, val) VALUES (1, 'css :after content');\n"
+            "INSERT INTO test_table (id, val) VALUES (2, 'a:hover b');\n",
+            encoding="utf-8",
+        )
+
+        mock_conn = MagicMock()
+        mock_conn.__enter__ = MagicMock(return_value=mock_conn)
+        mock_conn.__exit__ = MagicMock(return_value=None)
+
+        mock_engine = MagicMock()
+        mock_engine.begin.return_value = mock_conn
+
+        with patch.object(neon_migrate, "convert_boolean_literals", side_effect=lambda stmts, engine: stmts), \
+             patch.object(neon_migrate, "discover_boolean_columns", return_value={}), \
+             patch.object(neon_migrate, "_discover_boolean_columns_cache", {}):
+            result = run_migration(mock_engine, str(sql_path))
+            assert result is True
+
+        # Verify exec_driver_sql was called (not execute(text()))
+        method_calls = mock_conn.method_calls
+        exec_driver_calls = [c for c in method_calls if c[0] == "exec_driver_sql"]
+        text_calls = [c for c in method_calls if c[0] == "execute"]
+
+        # exec_driver_sql should have been called for data statements
+        assert len(exec_driver_calls) > 0, "exec_driver_sql must be called for data statements"
+        # The data statement calls should contain :after
+        for call_obj in exec_driver_calls:
+            args = call_obj.args
+            if args and "INSERT" in str(args[0]):
+                assert ":after" in str(args[0]) or ":hover" in str(args[0]), \
+                    "exec_driver_sql should be called with raw SQL containing CSS colons"
+
+    def test_migration_preserves_html_with_colons(self, sqlite_engine, tmp_path):
+        """Full migration pipeline preserves :after/:hover in HTML evidence_text."""
+        import neon_migrate
+        from unittest.mock import patch
+
+        with sqlite_engine.begin() as conn:
+            conn.exec_driver_sql(
+                "CREATE TABLE scholarship_reviews ("
+                "id INTEGER PRIMARY KEY, field_name TEXT, evidence_text TEXT, "
+                "decision TEXT, created_at TEXT, source_urls TEXT, "
+                "scholarship_id INTEGER, conflict_reason TEXT, "
+                "verification_state TEXT, confidence TEXT, reviewed_at TEXT)"
+            )
+
+        css_html = '<style>body:hover{background:red}:after{content:"x"};</style>'
+        escaped_html = css_html.replace("'", "''")
+        sql_path = tmp_path / "css_test.sql"
+        sql_path.write_text(
+            f"INSERT INTO scholarship_reviews (id, scholarship_id, field_name, "
+            f"evidence_text, conflict_reason, verification_state, confidence, "
+            f"decision, source_urls, created_at, reviewed_at) VALUES "
+            f"(1, 1, 'eligibility', '{escaped_html}', 'missing_evidence', "
+            f"'needs_review', 'low', 'pending', '[]', '2026-09-01 10:00:00', NULL);\n",
+            encoding="utf-8",
+        )
+
+        with patch.object(neon_migrate, "convert_boolean_literals", side_effect=lambda stmts, engine: stmts), \
+             patch.object(neon_migrate, "discover_boolean_columns", return_value={}), \
+             patch.object(neon_migrate, "_discover_boolean_columns_cache", {}):
+            result = run_migration(sqlite_engine, str(sql_path))
+            assert result is True
+
+        with sqlite_engine.connect() as conn:
+            row = conn.exec_driver_sql(
+                "SELECT evidence_text FROM scholarship_reviews WHERE id = 1"
+            ).scalar()
+            assert ":after" in row
+            assert ":hover" in row
+
+
+# ---------------------------------------------------------------------------
+# Pre-migration validation tests
+# ---------------------------------------------------------------------------
+
+class TestValidateMigrationFile:
+    """Tests for the pre-migration static validation function."""
+
+    def test_validate_real_migration_file(self):
+        """validate_migration_file should pass on the real migration_export.sql."""
+        import pathlib
+        sql_path = pathlib.Path(__file__).parent.parent / "migration_export.sql"
+        result = validate_migration_file(str(sql_path))
+        assert result is True
+
+    def test_validate_real_file_in_report(self):
+        """Validation report shows correct counts for the real file."""
+        import pathlib
+        from io import StringIO
+        import sys
+
+        sql_path = pathlib.Path(__file__).parent.parent / "migration_export.sql"
+        old_stderr = sys.stderr
+        sys.stderr = StringIO()
+        try:
+            result = validate_migration_file(str(sql_path))
+            assert result is True
+        finally:
+            sys.stderr = old_stderr
+
+    def test_validate_detects_column_value_mismatch(self, tmp_path):
+        """Validation catches INSERTs where column count != value count."""
+        sql_path = tmp_path / "bad_count.sql"
+        sql_path.write_text(
+            "INSERT INTO t (col1, col2, col3) VALUES ('a', 'b');\n",
+            encoding="utf-8",
+        )
+        result = validate_migration_file(str(sql_path))
+        assert result is False
+
+    def test_validate_detects_duplicate_primary_key(self, tmp_path):
+        """Validation catches duplicate id values within the same table."""
+        sql_path = tmp_path / "dup_id.sql"
+        sql_path.write_text(
+            "INSERT INTO t (id, val) VALUES (1, 'a');\n"
+            "INSERT INTO t (id, val) VALUES (1, 'b');\n",
+            encoding="utf-8",
+        )
+        result = validate_migration_file(str(sql_path))
+        assert result is False
+
+    def test_validate_detects_missing_file(self):
+        """Validation fails gracefully when file doesn't exist."""
+        result = validate_migration_file("/nonexistent/path.sql")
+        assert result is False
+
+    def test_validate_checks_expected_counts(self, tmp_path):
+        """Validation reports expected INSERT counts per table."""
+        sql_path = tmp_path / "partial.sql"
+        sql_path.write_text(
+            "INSERT INTO scholarships (id, title) VALUES (1, 'Test');\n",
+            encoding="utf-8",
+        )
+        result = validate_migration_file(str(sql_path))
+        assert result is False
+
+    def test_validate_passes_valid_sql(self, tmp_path):
+        """Validation passes for well-formed SQL with matching counts."""
+        sql_path = tmp_path / "valid.sql"
+        sql_path.write_text(
+            "INSERT INTO t (id, val) VALUES (1, 'a');\n"
+            "INSERT INTO t (id, val) VALUES (2, 'b');\n"
+            "INSERT INTO t (id, val) VALUES (3, 'c');\n",
+            encoding="utf-8",
+        )
+        result = validate_migration_file(str(sql_path))
+        assert result is True
+
+    def test_validate_detects_transaction_control_not_filtered(self, tmp_path):
+        """Validation catches unfiltered transaction control statements."""
+        sql_path = tmp_path / "tx_not_filtered.sql"
+        sql_path.write_text(
+            "BEGIN;\n"
+            "INSERT INTO t (id, val) VALUES (1, 'a');\n"
+            "COMMIT;\n",
+            encoding="utf-8",
+        )
+        # BEGIN/COMMIT should be filtered by filter_migration_statements,
+        # so no issues should be reported
+        result = validate_migration_file(str(sql_path))
+        assert result is True
 
 
 if __name__ == "__main__":
