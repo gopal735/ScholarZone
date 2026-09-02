@@ -519,15 +519,57 @@ def run_migration(engine, sql_file: str) -> bool:
             conn.execute(text("SET search_path = public"))
 
             for i, stmt in enumerate(statements, 1):
-                conn.execute(text(stmt))
+                try:
+                    conn.execute(text(stmt))
+                except Exception as stmt_err:
+                    elapsed = time.time() - start
+                    print(f"\nMIGRATION FAILED after {elapsed:.1f}s")
+                    print(f"Statement {i} of {len(statements)} failed:")
+                    print(f"Exception type: {type(stmt_err).__name__}")
+                    print(f"Error message: {stmt_err}")
+
+                    if hasattr(stmt_err, "orig"):
+                        orig = stmt_err.orig
+                        print(f"Original exception type: {type(orig).__name__}")
+                        if hasattr(orig, "pgcode"):
+                            print(f"SQLSTATE (pgcode): {orig.pgcode}")
+                        if hasattr(orig, "diag"):
+                            print(f"PG Diag - SQLSTATE: {orig.diag.sqlstate if orig.diag else 'N/A'}")
+                            print(f"PG Diag - Table: {orig.diag.table_name if orig.diag else 'N/A'}")
+                            print(f"PG Diag - Column: {orig.diag.column_name if orig.diag else 'N/A'}")
+                            print(f"PG Diag - Context: {orig.diag.context if orig.diag else 'N/A'}")
+                            print(f"PG Diag - Hint: {orig.diag.hint if orig.diag else 'N/A'}")
+                            print(f"PG Diag - Detail: {orig.diag.detail if orig.diag else 'N/A'}")
+                        if hasattr(orig, "sqlstate"):
+                            print(f"SQLSTATE: {orig.sqlstate}")
+
+                    preview = stmt[:500] + "..." if len(stmt) > 500 else stmt
+                    print(f"\nFailing SQL statement (first 500 chars):")
+                    print(f"  {preview}")
+
+                    print("\nTransaction rolled back — no partial data written.")
+                    raise
                 if i % 50 == 0:
                     print(f"  Executed {i}/{len(statements)} statements...")
 
     except Exception as e:
-        elapsed = time.time() - start
-        print(f"\nMIGRATION FAILED after {elapsed:.1f}s")
-        print(f"Error: {e}")
-        print("Transaction rolled back — no partial data written.")
+        if not any("Statement" in line for line in str(e).splitlines()):
+            elapsed = time.time() - start
+            print(f"\nMIGRATION FAILED after {elapsed:.1f}s")
+            print(f"Error: {e}")
+            print(f"Exception type: {type(e).__name__}")
+            if hasattr(e, "orig") and hasattr(e, "orig", None):
+                orig = e.orig
+                if hasattr(orig, "pgcode"):
+                    print(f"SQLSTATE: {orig.pgcode}")
+                if hasattr(orig, "diag"):
+                    print(f"PG Diag - SQLSTATE: {orig.diag.sqlstate if orig.diag else 'N/A'}")
+                    print(f"PG Diag - Table: {orig.diag.table_name if orig.diag else 'N/A'}")
+                    print(f"PG Diag - Column: {orig.diag.column_name if orig.diag else 'N/A'}")
+                    print(f"PG Diag - Context: {orig.diag.context if orig.diag else 'N/A'}")
+                    print(f"PG Diag - Hint: {orig.diag.hint if orig.diag else 'N/A'}")
+                    print(f"PG Diag - Detail: {orig.diag.detail if orig.diag else 'N/A'}")
+            print("Transaction rolled back — no partial data written.")
         raise
 
     elapsed = time.time() - start
@@ -766,7 +808,10 @@ def main():
         if not run_migration(engine, sql_file):
             sys.exit(1)
     except Exception:
+        import traceback
         print("\nMigration failed. Transaction rolled back.")
+        print("\nFull traceback:")
+        traceback.print_exc()
         engine.dispose()
         sys.exit(1)
 

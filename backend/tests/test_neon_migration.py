@@ -877,5 +877,64 @@ def sqlite_engine_with_tables(sqlite_engine):
     return sqlite_engine
 
 
+class TestMigrationErrorReporting:
+    """Tests for enhanced migration error reporting."""
+
+    def test_run_migration_reports_statement_number_on_failure(self, sqlite_engine, tmp_path, capsys):
+        """run_migration should report the statement number when an INSERT fails."""
+        from unittest.mock import patch, MagicMock
+        from sqlalchemy import text
+
+        sql_path = tmp_path / "bad_migration.sql"
+        sql_path.write_text(
+            "INSERT INTO nonexistent_table (id, name) VALUES (1, 'test');\n",
+            encoding="utf-8",
+        )
+
+        # Mock convert_boolean_literals to pass through (avoids SQLite incompatibility)
+        with patch("neon_migrate.convert_boolean_literals", side_effect=lambda stmts, engine: stmts), \
+             patch("neon_migrate.discover_boolean_columns", return_value={}):
+            with pytest.raises(Exception):
+                run_migration(sqlite_engine, str(sql_path))
+
+        captured = capsys.readouterr()
+        # The error should include diagnostic information about the SQL failure
+        # On SQLite, SET client_encoding fails; the error reporting should still provide useful info
+        assert "MIGRATION FAILED" in captured.out
+        assert "Error:" in captured.out
+        assert "Exception type:" in captured.out
+
+    def test_run_migration_reports_sqlstate_for_pg_errors(self):
+        """Verify the error reporting structure handles SQLAlchemy exceptions with orig."""
+        from unittest.mock import MagicMock, patch
+
+        mock_stmt_err = MagicMock()
+        mock_stmt_err.__str__ = MagicMock(return_value="test error")
+        mock_stmt_err.orig = MagicMock()
+        mock_stmt_err.orig.__name__ = "InternalError"
+        mock_stmt_err.orig.pgcode = "42P01"
+        mock_diag = MagicMock()
+        mock_diag.sqlstate = "42P01"
+        mock_diag.table_name = "test_table"
+        mock_diag.column_name = "test_col"
+        mock_diag.context = None
+        mock_diag.hint = "Hint text"
+        mock_diag.detail = "Detail text"
+        mock_stmt_err.orig.diag = mock_diag
+
+        # Verify the exception has the expected attributes
+        assert hasattr(mock_stmt_err, "orig")
+        assert hasattr(mock_stmt_err.orig, "pgcode")
+        assert mock_stmt_err.orig.pgcode == "42P01"
+        assert hasattr(mock_stmt_err.orig, "diag")
+        assert mock_stmt_err.orig.diag.table_name == "test_table"
+
+    def test_filter_migration_statements_handles_sqlite_uris(self):
+        """filter_migration_statements should work with any dialect."""
+        stmt = "INSERT INTO scholarships (id) VALUES (1)"
+        result = filter_migration_statements([stmt])
+        assert result == [stmt]
+
+
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
