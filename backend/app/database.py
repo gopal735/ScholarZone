@@ -37,6 +37,11 @@ def _enforce_test_isolation(database_url: str) -> None:
 def get_engine() -> Engine:
     database_url = get_settings().database_url
     _enforce_test_isolation(database_url)
+    # SQLAlchemy 2.0 defaults postgresql:// to the psycopg2 driver.
+    # The installed driver is psycopg (v3), so rewrite the URL scheme
+    # to postgresql+psycopg:// when no explicit driver is specified.
+    if database_url.startswith("postgresql://"):
+        database_url = "postgresql+psycopg://" + database_url[len("postgresql://"):]
     connect_args = {"check_same_thread": False} if database_url.startswith("sqlite") else {}
     return create_engine(database_url, connect_args=connect_args, pool_pre_ping=True)
 

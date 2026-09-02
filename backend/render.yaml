@@ -1,31 +1,32 @@
 # ScholarZone Backend - Deployment Configuration
-# 
-# This file configures deployment to Render.com with:
-# - Web Service: FastAPI application
-# - Cron Job: Automated scholarship verification trigger
-# - PostgreSQL Database: Production database
 #
-# SCHEDULE: Every 12 hours (0 */12 * * *)
-# This means verification runs at 00:00 and 12:00 UTC daily.
+# This file configures deployment to Render.com with:
+# - Web Service: FastAPI application (Docker)
+#
+# PostgreSQL is provided by Neon (free tier, no credit card).
+# Scheduled verification is provided by GitHub Actions (free).
+#
+# SCHEDULE: Every 12 hours via GitHub Actions cron (7 */12 * * *)
+# This means verification runs at 00:07 and 12:07 UTC daily.
 #
 # To deploy:
 # 1. Push code to GitHub
 # 2. Connect repository to Render
-# 3. Render will auto-detect render.yaml and create resources
+# 3. Render will auto-detect render.yaml and create the web service
+# 4. Set SCHOLARZONE_DATABASE_URL to your Neon connection string in Render dashboard
 
 services:
   - type: web
     name: scholarzone-api
     runtime: docker
     plan: starter
+    dockerfilePath: backend/Dockerfile
     healthCheckPath: /health
     envVars:
       - key: SCHOLARZONE_ENVIRONMENT
         value: production
       - key: SCHOLARZONE_DATABASE_URL
-        fromDatabase:
-          name: scholarzone-db
-          property: connectionString
+        sync: false
       - key: SCHOLARZONE_ALLOWED_ORIGINS
         sync: false
       - key: SCHOLARZONE_VERIFICATION_SECRET
@@ -34,28 +35,3 @@ services:
         sync: false
       - key: NOTIFICATION_EMAIL
         sync: false
-
-  - type: cron
-    name: scholarzone-verification-trigger
-    runtime: docker
-    plan: starter
-    schedule: "0 */12 * * *"
-    dockerCommand: >
-      curl -sf -X POST "http://$$SCHOLARZONE_API_HOST/internal/verify/trigger"
-      -H "X-Verification-Secret: $$SCHOLARZONE_VERIFICATION_SECRET"
-    envVars:
-      - key: SCHOLARZONE_API_HOST
-        fromService:
-          name: scholarzone-api
-          type: web
-          envVarKey: RENDER_EXTERNAL_URL
-      - key: SCHOLARZONE_VERIFICATION_SECRET
-        fromService:
-          name: scholarzone-api
-          type: web
-          envVarKey: SCHOLARZONE_VERIFICATION_SECRET
-
-databases:
-  - name: scholarzone-db
-    plan: starter
-    postgresMajorVersion: "16"

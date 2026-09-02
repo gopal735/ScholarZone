@@ -1,0 +1,74 @@
+name: ScholarZone Verification Trigger
+
+on:
+  schedule:
+    - cron: '7 */12 * * *'
+  workflow_dispatch:
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    env:
+      API_URL: ${{ vars.SCHOLARZONE_API_URL }}
+      SECRET: ${{ secrets.SCHOLARZONE_VERIFICATION_SECRET }}
+    steps:
+      - name: Validate configuration
+        run: |
+          if [ -z "$API_URL" ]; then
+            echo "::error::SCHOLARZONE_API_URL repository variable is not set."
+            exit 1
+          fi
+          if [ -z "$SECRET" ]; then
+            echo "::error::SCHOLARZONE_VERIFICATION_SECRET repository secret is not set."
+            exit 1
+          fi
+
+      - name: Trigger verification with cold-start retry
+        run: |
+          MAX_ATTEMPTS=3
+          RETRY_DELAY=30
+          SUCCESS=0
+
+          for attempt in $(seq 1 $MAX_ATTEMPTS); do
+            echo "Attempt $attempt of $MAX_ATTEMPTS..."
+
+            HTTP_CODE=$(curl -s -o /tmp/response.json -w "%{http_code}" \
+              --max-time 120 \
+              --retry 0 \
+              -X POST \
+              -H "X-Verification-Secret: $SECRET" \
+              -H "Content-Type: application/json" \
+              "$API_URL/internal/verify/trigger")
+
+            echo "HTTP response code: $HTTP_CODE"
+
+            if [ "$HTTP_CODE" = "202" ]; then
+              echo "Verification round accepted."
+              cat /tmp/response.json
+              SUCCESS=1
+              break
+            elif [ "$HTTP_CODE" = "429" ]; then
+              echo "Rate-limited (429). Verification already in progress or too recent."
+              cat /tmp/response.json
+              SUCCESS=1
+              break
+            elif [ "$HTTP_CODE" = "000" ]; then
+              echo "Connection failed. Render service may be cold-starting."
+              if [ $attempt -lt $MAX_ATTEMPTS ]; then
+                echo "Waiting ${RETRY_DELAY}s before retry..."
+                sleep $RETRY_DELAY
+              fi
+            else
+              echo "Unexpected response code: $HTTP_CODE"
+              cat /tmp/response.json
+              if [ $attempt -lt $MAX_ATTEMPTS ]; then
+                echo "Waiting ${RETRY_DELAY}s before retry..."
+                sleep $RETRY_DELAY
+              fi
+            fi
+          done
+
+          if [ $SUCCESS -eq 0 ]; then
+            echo "::error::All $MAX_ATTEMPTS attempts failed."
+            exit 1
+          fi
