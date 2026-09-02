@@ -14,13 +14,16 @@ from .seed import seed_database
 
 
 logger = logging.getLogger(__name__)
-settings = get_settings()
 
 
 @asynccontextmanager
 async def lifespan(_: FastAPI):
+    settings = get_settings()
     init_database()
-    seed_database()
+    if settings.environment != "production":
+        seed_database()
+    else:
+        logger.info("Skipping scholarship seeding in production; database is populated via migration.")
     yield
     close_database()
 
@@ -28,15 +31,16 @@ async def lifespan(_: FastAPI):
 app = FastAPI(
     title="ScholarZone API",
     version="1.0.0",
-    docs_url="/docs" if settings.environment != "production" else None,
+    docs_url="/docs" if get_settings().environment != "production" else None,
     redoc_url=None,
     lifespan=lifespan,
 )
 
-if settings.allowed_origins:
+allowed_origins = get_settings().allowed_origins
+if allowed_origins:
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=list(settings.allowed_origins),
+        allow_origins=list(allowed_origins),
         allow_credentials=True,
         allow_methods=["GET"],
         allow_headers=["Accept", "Content-Type"],
