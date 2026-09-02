@@ -23,6 +23,7 @@ from neon_migrate import (
     validate,
     confirm_empty,
     _strip_leading_comments,
+    _log_progress,
     discover_boolean_columns,
     _parse_values_tuple,
     _convert_insert_boolean_values,
@@ -991,6 +992,104 @@ class TestMigrationErrorReporting:
         assert pgcode == "42P01"
         diag = getattr(orig, "diag", None)
         assert diag is None  # Should not crash
+
+    def test_per_statement_error_includes_statement_number(self, sqlite_engine, tmp_path, capsys):
+        """Error output should include the exact statement number."""
+        import neon_migrate
+        from unittest.mock import patch, MagicMock
+
+        sql_path = tmp_path / "fail_at_third.sql"
+        sql_path.write_text(
+            "INSERT INTO test_table (id, name) VALUES (1, 'a');\n"
+            "INSERT INTO test_table (id, name) VALUES (2, 'b');\n"
+            "INSERT INTO nonexistent_table VALUES (3);\n"
+            "INSERT INTO test_table (id, name) VALUES (4, 'd');\n",
+            encoding="utf-8",
+        )
+
+        # Use a mock connection that fails on the 4th call (3rd data statement)
+        statement_count = [0]
+
+        def mock_execute(stmt):
+            statement_count[0] += 1
+            stmt_str = str(stmt)
+            if stmt_str.strip().upper().startswith("SET "):
+                return MagicMock()
+            if statement_count[0] >= 5:  # SET, SET, stmt1, stmt2, stmt3
+                raise Exception(f"Simulated error at call {statement_count[0]}")
+            return MagicMock()
+
+        mock_conn = MagicMock()
+        mock_conn.execute.side_effect = mock_execute
+        mock_conn.__enter__ = MagicMock(return_value=mock_conn)
+        mock_conn.__exit__ = MagicMock(return_value=None)
+
+        mock_engine = MagicMock()
+        mock_engine.begin.return_value = mock_conn
+
+        with patch.object(neon_migrate, "convert_boolean_literals", side_effect=lambda stmts, engine: stmts), \
+             patch.object(neon_migrate, "discover_boolean_columns", return_value={}), \
+             patch.object(neon_migrate, "_discover_boolean_columns_cache", {}):
+            with pytest.raises(Exception):
+                run_migration(mock_engine, str(sql_path))
+
+        captured = capsys.readouterr()
+        assert "MIGRATION FAILED" in captured.out
+        assert "Statement" in captured.out
+        assert "3 of 4" in captured.out
+
+
+class TestProgressLogging:
+    """Tests for _log_progress() function that reports migration progress."""
+
+    def test_log_progress_reports_statement_1(self, capsys):
+        """Progress log fires for statement 1 (first statement)."""
+        import time
+        start = time.time()
+        _log_progress(1, 934, start)
+        captured = capsys.readouterr()
+        assert "1/934" in captured.out
+        assert "Executing statement" in captured.out
+
+    def test_log_progress_reports_at_50(self, capsys):
+        """Progress log fires at statement 50."""
+        import time
+        start = time.time()
+        _log_progress(50, 934, start)
+        captured = capsys.readouterr()
+        assert "50/934" in captured.out
+
+    def test_log_progress_reports_at_100(self, capsys):
+        """Progress log fires at statement 100."""
+        import time
+        start = time.time()
+        _log_progress(100, 934, start)
+        captured = capsys.readouterr()
+        assert "100/934" in captured.out
+
+    def test_log_progress_no_output_at_75(self, capsys):
+        """No progress log at statement 75 (not 1, not multiple of 50, not total)."""
+        import time
+        start = time.time()
+        _log_progress(75, 934, start)
+        captured = capsys.readouterr()
+        assert captured.out == ""
+
+    def test_log_progress_reports_final_statement(self, capsys):
+        """Progress log fires for the final statement."""
+        import time
+        start = time.time()
+        _log_progress(934, 934, start)
+        captured = capsys.readouterr()
+        assert "934/934" in captured.out
+
+    def test_log_progress_includes_elapsed_time(self, capsys):
+        """Progress log includes elapsed time."""
+        import time
+        start = time.time()
+        _log_progress(1, 10, start)
+        captured = capsys.readouterr()
+        assert "elapsed" in captured.out
 
 
 if __name__ == "__main__":

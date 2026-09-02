@@ -487,6 +487,14 @@ def convert_boolean_literals(statements: list[str], engine) -> list[str]:
 _discover_boolean_columns_cache: dict[str, set[str]] = {}
 
 
+def _log_progress(current: int, total: int, start_time: float):
+    """Log migration progress every 50 statements with elapsed time."""
+    if current == 1 or current == total or current % 50 == 0:
+        elapsed = time.time() - start_time
+        print(f"  Executing statement {current}/{total} (elapsed {elapsed:.1f}s)")
+        sys.stdout.flush()
+
+
 def run_migration(engine, sql_file: str) -> bool:
     """Run migration SQL file inside a SQLAlchemy-managed transaction.
 
@@ -526,6 +534,7 @@ def run_migration(engine, sql_file: str) -> bool:
             conn.execute(text("SET search_path = public"))
 
             for i, stmt in enumerate(statements, 1):
+                _log_progress(i, len(statements), start)
                 try:
                     conn.execute(text(stmt))
                 except Exception as stmt_err:
@@ -560,8 +569,6 @@ def run_migration(engine, sql_file: str) -> bool:
 
                     print("\nTransaction rolled back — no partial data written.")
                     raise
-                if i % 50 == 0:
-                    print(f"  Executed {i}/{len(statements)} statements...")
 
     except Exception as e:
         if not any("Statement" in line for line in str(e).splitlines()):
