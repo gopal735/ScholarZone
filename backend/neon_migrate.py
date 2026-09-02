@@ -130,11 +130,13 @@ def split_sql_statements(sql: str) -> list[str]:
 
         # Not in any quoted/comment context
         if char == "-" and next_char == "-":
+            buf.append("--")
             in_line_comment = True
             i += 2
             continue
 
         if char == "/" and next_char == "*":
+            buf.append("/*")
             in_block_comment = True
             i += 2
             continue
@@ -170,17 +172,39 @@ def split_sql_statements(sql: str) -> list[str]:
     return statements
 
 
+def _strip_leading_comments(stmt: str) -> str:
+    """Strip leading SQL line comments (--) and blank lines from a statement.
+
+    Returns the remaining content with leading comments removed, so the first
+    actual SQL token can be identified even when a comment header precedes it.
+    """
+    lines = stmt.split("\n")
+    idx = 0
+    while idx < len(lines):
+        stripped = lines[idx].strip()
+        if stripped.startswith("--") or stripped == "":
+            idx += 1
+        else:
+            break
+    return "\n".join(lines[idx:]).strip()
+
+
 def filter_migration_statements(statements: list[str]) -> list[str]:
     """Filter out BEGIN/COMMIT/transaction-control statements.
 
     SQLAlchemy's engine.begin() manages the transaction.
     The migration file has embedded BEGIN; and COMMIT; which would
     interfere with SQLAlchemy's transaction context manager.
+
+    Leading SQL comment lines (-- ...) are stripped before checking the
+    first token, so that statements like '-- header\nBEGIN' are still
+    recognized as transaction-control and filtered out.
     """
     tx_keywords = {"BEGIN", "COMMIT", "ROLLBACK", "START", "SAVEPOINT", "RELEASE", "SET TRANSACTION"}
     filtered = []
     for stmt in statements:
-        first_token = stmt.split(None, 1)[0].upper().rstrip(";") if stmt.split() else ""
+        code_part = _strip_leading_comments(stmt)
+        first_token = code_part.split(None, 1)[0].upper().rstrip(";") if code_part.split() else ""
         if first_token in tx_keywords:
             print(f"  Skipping transaction control statement: {stmt[:50]}")
             continue
