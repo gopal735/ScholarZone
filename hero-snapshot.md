@@ -1,0 +1,144 @@
+- generic [ref=f2e3]:
+  - generic [aria-hidden]: ScholarZone
+  - banner [ref=f2e4]:
+    - navigation "Primary navigation" [ref=f2e5]:
+      - link "ScholarZone" [ref=f2e6] [cursor=pointer]:
+        - /url: /
+        - generic [aria-hidden] [ref=f2e7]: S
+      - generic [ref=f2e9]:
+        - generic [ref=f2e10]:
+          - link "Home" [ref=f2e11] [cursor=pointer]:
+            - /url: /
+          - link "Scholarships" [ref=f2e12] [cursor=pointer]:
+            - /url: /scholarships
+          - link "Countries" [ref=f2e13] [cursor=pointer]:
+            - /url: /countries
+        - generic [ref=f2e14]:
+          - 'link "Saved scholarships: 0" [ref=f2e15] [cursor=pointer]':
+            - /url: /saved
+            - text: Saved
+          - 'link "Compare scholarships: 0" [ref=f2e16] [cursor=pointer]':
+            - /url: /compare
+            - text: Compare
+          - link "Sign in" [ref=f2e17] [cursor=pointer]:
+            - /url: /login
+          - button "Switch to light mode" [pressed] [ref=f2e18] [cursor=pointer]:
+            - generic [ref=f2e21]: Light
+  - main [ref=f2e22]:
+    - generic [ref=f2e23]:
+      - link "Back to scholarships" [ref=f2e24] [cursor=pointer]:
+        - /url: /scholarships
+        - generic [aria-hidden] [ref=f2e25]: ←
+        - text: Back to scholarships
+      - generic [ref=f2e26]:
+        - generic [ref=f2e27]:
+          - generic [ref=f2e28]:
+            - generic [ref=f2e29]: Verified listing
+            - generic [ref=f2e32]: Partial
+            - generic [ref=f2e33]: Open
+          - heading "Study in India (SII) Scholarship" [level=1] [ref=f2e34]
+          - generic "Scholarship summary" [ref=f2e35]:
+            - generic [ref=f2e36]: India
+            - generic [ref=f2e37]: Undergraduate, Postgraduate, Diploma, Certificate degree
+          - paragraph [ref=f2e38]: Review the essential funding and study details, then confirm requirements with the scholarship provider before you apply.
+          - paragraph [ref=f2e39]: Verified Sep 1, 2026
+          - generic [ref=f2e41]:
+            - button "Save" [ref=f2e42] [cursor=pointer]
+            - button "Compare" [ref=f2e45] [cursor=pointer]
+        - 'complementary "Application deadline: Varies by institution and admission cycle" [ref=f2e48]':
+          - generic [ref=f2e51]:
+            - generic [ref=f2e52]: Application deadline
+            - strong [ref=f2e53]: Varies by institution and admission cycle
+      - generic [ref=f2e54]:
+        - article [ref=f2e55]:
+          - generic [ref=f2e56]:
+            - generic [ref=f2e57]:
+              - paragraph [ref=f2e58]: Opportunity overview
+              - heading "Key information" [level=2] [ref=f2e59]
+            - generic [aria-hidden] [ref=f2e60]: "01"
+          - generic [ref=f2e61]:
+            - generic [ref=f2e62]:
+              - term [ref=f2e63]: Country or region
+              - definition [ref=f2e64]: India
+            - generic [ref=f2e65]:
+              - term [ref=f2e66]: Degree level
+              - definition [ref=f2e67]: Undergraduate, Postgraduate, Diploma, Certificate
+            - generic [ref=f2e68]:
+              - term [ref=f2e69]: Funding coverage
+              - definition [ref=f2e70]: Partial
+        - complementary [ref=f2e71]:
+          - generic [ref=f2e72]:
+            - generic [ref=f2e73]:
+              - paragraph [ref=f2e74]: Apply with confidence
+              - heading "Before you apply" [level=2] [ref=f2e75]
+            - generic [aria-hidden] [ref=f2e76]: "02"
+          - paragraph [ref=f2e77]: Prepare your documents early and use the official scholarship source to confirm eligibility, requirements and dates.
+          - link "Continue exploring" [ref=f2e78] [cursor=pointer]:
+            - /url: /scholarships
+            - text: Continue exploring
+            - generic [aria-hidden] [ref=f2e79]: →
+      - generic [ref=f2e80]:
+        - article [ref=f2e81]:
+          - generic [ref=f2e83]:
+            - paragraph [ref=f2e84]: Funding support
+            - heading "Benefits" [level=2] [ref=f2e85]
+          - list [ref=f2e86]:
+            - listitem [ref=f2e87]: ✓ Tuition fee waivers/concessions up to USD 3,200 per annum at partner institutions
+        - article [ref=f2e88]:
+          - generic [ref=f2e90]:
+            - paragraph [ref=f2e91]: Who can apply
+            - heading "Eligibility" [level=2] [ref=f2e92]
+          - list [ref=f2e93]:
+            - listitem [ref=f2e94]: ✓ International students from partner countries (South Asia, South-East Asia, Middle East, Africa)
+            - listitem [ref=f2e95]: ✓ Merit-based selection
+            - listitem [ref=f2e96]: "✓ Entry-level eligibility: 10+2 years of schooling for undergraduate, Bachelor's degree for postgraduate, Master's degree for doctoral programmes"
+            - listitem [ref=f2e97]: ✓ Specific eligibility criteria vary by institute and programme
+            - listitem [ref=f2e98]: ✓ NRIs are eligible for Study in India program but NOT for SII Scholarship
+        - article [ref=f2e99]:
+          - generic [ref=f2e101]:
+            - paragraph [ref=f2e102]: Prepare your application
+            - heading "Requirements" [level=2] [ref=f2e103]
+          - list [ref=f2e104]:
+            - listitem [ref=f2e105]: ✓ Academic transcripts
+            - listitem [ref=f2e106]: ✓ Passport
+            - listitem [ref=f2e107]: ✓ Proof of nationality
+            - listitem [ref=f2e108]: ✓ Admission offer
+      - generic [ref=f2e109]:
+        - article [ref=f2e110]:
+          - generic [ref=f2e112]:
+            - paragraph [ref=f2e113]: Plan ahead
+            - heading "Application timeline" [level=2] [ref=f2e114]
+          - generic [ref=f2e115]:
+            - generic [ref=f2e116]:
+              - term [ref=f2e117]: Listing status
+              - definition [ref=f2e118]: Open
+            - generic [ref=f2e119]:
+              - term [ref=f2e120]: Deadline
+              - definition [ref=f2e121]: Varies by institution and admission cycle
+            - generic [ref=f2e122]:
+              - term [ref=f2e123]: Date precision
+              - definition [ref=f2e124]: Provider date
+        - article [ref=f2e125]:
+          - generic [ref=f2e127]:
+            - paragraph [ref=f2e128]: Apply safely
+            - heading "Official application source" [level=2] [ref=f2e129]
+          - link "Ministry of Education, Government of India (implemented by EdCIL India Limited)" [ref=f2e130] [cursor=pointer]:
+            - /url: https://www.studyinindia.gov.in
+            - text: Ministry of Education, Government of India (implemented by EdCIL India Limited)
+            - generic [aria-hidden] [ref=f2e131]: "&nearr;"
+      - region [ref=f2e132]:
+        - generic [ref=f2e133]:
+          - generic [ref=f2e134]:
+            - paragraph [ref=f2e135]: Keep exploring
+            - heading "Related scholarships" [level=2] [ref=f2e136]
+          - link "Browse all" [ref=f2e137] [cursor=pointer]:
+            - /url: /scholarships
+            - text: Browse all
+            - generic [aria-hidden] [ref=f2e138]: →
+        - link "Fully Funded ICCR Scholarship (Suborno Jayanti Scheme) India / UG/PG/PhD" [ref=f2e140] [cursor=pointer]:
+          - /url: /scholarships/2
+          - generic [ref=f2e141]: Fully Funded
+          - strong [ref=f2e142]: ICCR Scholarship (Suborno Jayanti Scheme)
+          - generic [ref=f2e143]: India / UG/PG/PhD
+  - contentinfo [ref=f2e144]:
+    - paragraph [ref=f2e145]: ScholarZone · Where Ambition Meets Opportunity.

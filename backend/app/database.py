@@ -1,0 +1,188 @@
+"""SQLAlchemy engine and session lifecycle utilities."""
+
+from collections.abc import Generator
+from functools import lru_cache
+from pathlib import Path
+
+from sqlalchemy import Engine, create_engine, inspect, text
+from sqlalchemy.orm import Session, sessionmaker
+
+from .core.config import get_settings
+
+_PRODUCTION_DB_PATH = (Path(__file__).resolve().parents[2] / "scholarzone.db").as_posix()
+
+
+def _enforce_test_isolation(database_url: str) -> None:
+    """Prevent tests from accidentally connecting to the production SQLite database.
+
+    When SCHOLARZONE_ENVIRONMENT=test, any attempt to use the production
+    SQLite file (backend/scholarzone.db) is a fatal error. Tests MUST use
+    an isolated database (temp file or in-memory).
+    """
+    settings = get_settings()
+    if settings.environment != "test":
+        return
+    if database_url.startswith("sqlite"):
+        normalized = database_url.replace("sqlite:///", "")
+        if normalized.startswith("./"):
+            normalized = normalized[2:]
+        if Path(normalized).as_posix() == _PRODUCTION_DB_PATH:
+            raise RuntimeError(
+                "SAFETY VIOLATION: Tests must not use the production SQLite database. "
+                "Set SCHOLARZONE_DATABASE_URL to a temp file or use sqlite:///:memory:."
+            )
+
+
+@lru_cache
+def get_engine() -> Engine:
+    database_url = get_settings().database_url
+    _enforce_test_isolation(database_url)
+    connect_args = {"check_same_thread": False} if database_url.startswith("sqlite") else {}
+    return create_engine(database_url, connect_args=connect_args, pool_pre_ping=True)
+
+
+@lru_cache
+def get_session_factory() -> sessionmaker[Session]:
+    return sessionmaker(bind=get_engine(), autoflush=False, autocommit=False, expire_on_commit=False)
+
+
+def get_db() -> Generator[Session, None, None]:
+    session = get_session_factory()()
+    try:
+        yield session
+    finally:
+        session.close()
+
+
+def init_database() -> None:
+    # Importing here prevents metadata/model import cycles during app setup.
+    from .models import Base
+
+    engine = get_engine()
+    Base.metadata.create_all(bind=engine)
+    if engine.dialect.name == "sqlite":
+        _upgrade_sqlite_schema(engine)
+
+
+def _upgrade_sqlite_schema(engine: Engine) -> None:
+    """Keep the lightweight local database compatible as fields are added.
+
+    Production PostgreSQL deployments should use a reviewed migration workflow.
+    The statements below are static and only target a developer's SQLite database.
+    """
+    columns = {column["name"] for column in inspect(engine).get_columns("scholarships")}
+    additions = {
+        "status": "VARCHAR(20) NOT NULL DEFAULT 'open'",
+        "last_verified_at": "DATE",
+        "last_verified_date": "DATE",
+        "region": "VARCHAR(255)",
+        "duration": "TEXT",
+        "application_period": "TEXT",
+        "official_source": "VARCHAR(255)",
+        "official_source_url": "VARCHAR(2048)",
+        "catalogue_url": "VARCHAR(2048)",
+        "official_updates_url": "VARCHAR(2048)",
+        "application_link": "VARCHAR(2048)",
+        "eligibility": "JSON NOT NULL DEFAULT '[]'",
+        "eligibility_summary": "TEXT",
+        "benefits": "JSON NOT NULL DEFAULT '[]'",
+        "coverage": "JSON NOT NULL DEFAULT '[]'",
+        "requirements": "JSON NOT NULL DEFAULT '[]'",
+        "documents": "JSON NOT NULL DEFAULT '[]'",
+        "english_requirement": "TEXT",
+        "application_method": "JSON NOT NULL DEFAULT '[]'",
+        "selection_notes": "TEXT",
+        "program_type": "VARCHAR(255)",
+        "best_fit": "TEXT",
+        "notes": "TEXT",
+        "verification_status": "TEXT NOT NULL DEFAULT 'active'",
+        "next_verification_due": "DATE",
+        "verified_by": "VARCHAR(120)",
+        "verification_notes": "TEXT",
+    }
+
+    with engine.begin() as connection:
+        for name, definition in additions.items():
+            if name not in columns:
+                connection.execute(text(f"ALTER TABLE scholarships ADD COLUMN {name} {definition}"))
+
+        connection.execute(text("CREATE INDEX IF NOT EXISTS ix_scholarships_status ON scholarships (status)"))
+        connection.execute(text("CREATE INDEX IF NOT EXISTS ix_scholarships_status_deadline ON scholarships (status, deadline_date)"))
+
+        _create_content_fingerprints_table(connection)
+        _upgrade_discovery_candidates_table(connection)
+
+    schema = inspect(engine)
+    unique_source_constraints = (
+        list(schema.get_unique_constraints("scholarships"))
+        + [index for index in schema.get_indexes("scholarships") if index.get("unique")]
+    )
+    has_unique_source_url = any(
+        constraint.get("column_names") == ["official_source_url"]
+        for constraint in unique_source_constraints
+    )
+    if not has_unique_source_url:
+        with engine.begin() as connection:
+            duplicate_source_urls = connection.execute(
+                text(
+                    "SELECT official_source_url FROM scholarships "
+                    "WHERE official_source_url IS NOT NULL "
+                    "GROUP BY official_source_url HAVING COUNT(*) > 1"
+                )
+            ).scalars().all()
+            if duplicate_source_urls:
+                raise RuntimeError(
+                    "Cannot enforce official_source_url uniqueness while duplicate values exist: "
+                    + ", ".join(duplicate_source_urls)
+                )
+            connection.execute(
+                text(
+                    "CREATE UNIQUE INDEX IF NOT EXISTS ux_scholarships_official_source_url "
+                    "ON scholarships (official_source_url)"
+                )
+            )
+
+
+def _create_content_fingerprints_table(connection) -> None:
+    """Create the content_fingerprints table if it doesn't exist."""
+    connection.execute(text("""
+        CREATE TABLE IF NOT EXISTS content_fingerprints (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            source_url VARCHAR(2048) NOT NULL,
+            normalized_content_hash VARCHAR(64) NOT NULL,
+            content_length INTEGER NOT NULL DEFAULT 0,
+            etag VARCHAR(255),
+            last_modified VARCHAR(255),
+            algorithm_version VARCHAR(16) NOT NULL DEFAULT 'v1',
+            generated_at DATETIME NOT NULL,
+            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+        )
+    """))
+    connection.execute(text("CREATE INDEX IF NOT EXISTS ix_fingerprints_source_url ON content_fingerprints (source_url)"))
+    connection.execute(text("CREATE INDEX IF NOT EXISTS ix_fingerprints_source_hash ON content_fingerprints (source_url, normalized_content_hash)"))
+    connection.execute(text("CREATE INDEX IF NOT EXISTS ix_fingerprints_generated ON content_fingerprints (source_url, generated_at)"))
+
+
+def _upgrade_discovery_candidates_table(connection) -> None:
+    """Add missing columns to discovery_candidates table if needed."""
+    columns = {column["name"] for column in inspect(connection).get_columns("discovery_candidates")}
+    additions = {
+        "retry_count": "INTEGER NOT NULL DEFAULT 0",
+        "last_error": "VARCHAR(255)",
+        "fetched_at": "DATETIME",
+        "created_at": "DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP",
+    }
+    for name, definition in additions.items():
+        if name not in columns:
+            connection.execute(text(f"ALTER TABLE discovery_candidates ADD COLUMN {name} {definition}"))
+
+
+def close_database() -> None:
+    get_engine().dispose()
+
+
+def reset_database_connections() -> None:
+    """Clear cached database connections for isolated tests only."""
+    close_database()
+    get_session_factory.cache_clear()
+    get_engine.cache_clear()

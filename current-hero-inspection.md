@@ -1,0 +1,311 @@
+- generic [ref=e3]:
+  - generic [aria-hidden]: ScholarZone
+  - banner [ref=e4]:
+    - navigation "Primary navigation" [ref=e5]:
+      - link "ScholarZone" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - generic [aria-hidden] [ref=e7]: S
+      - generic [ref=e9]:
+        - generic [ref=e10]:
+          - link "Home" [ref=e11] [cursor=pointer]:
+            - /url: /
+          - link "Scholarships" [ref=e12] [cursor=pointer]:
+            - /url: /scholarships
+          - link "Countries" [ref=e13] [cursor=pointer]:
+            - /url: /countries
+        - generic [ref=e14]:
+          - 'link "Saved scholarships: 0" [ref=e15] [cursor=pointer]':
+            - /url: /saved
+            - text: Saved
+          - 'link "Compare scholarships: 0" [ref=e16] [cursor=pointer]':
+            - /url: /compare
+            - text: Compare
+          - link "Sign in" [ref=e300] [cursor=pointer]:
+            - /url: /login
+          - button "Switch to light mode" [pressed] [ref=e18] [cursor=pointer]:
+            - generic [ref=e21]: Light
+  - main [ref=e22]:
+    - generic [ref=e23]:
+      - region "ScholarZone introduction" [ref=e24]:
+        - img [ref=e26]:
+          - generic [ref=e42]: Scholarship
+          - generic [ref=e47]: Country
+          - generic [ref=e51]: University
+          - generic [ref=e55]: Degree
+          - generic [ref=e59]: Funding
+          - generic [ref=e63]: Deadline
+          - generic [ref=e67]: Verified
+        - generic:
+          - generic [ref=e72] [cursor=pointer]:
+            - generic [ref=e73]: Oxford
+            - generic [ref=e74]: Fully Funded
+          - generic [ref=e76] [cursor=pointer]:
+            - generic [ref=e77]: MIT
+            - generic [ref=e78]: Research
+          - generic [ref=e80] [cursor=pointer]:
+            - generic [ref=e81]: Copenhagen
+            - generic [ref=e82]: Deadline 15 Jan
+          - generic [ref=e84] [cursor=pointer]:
+            - generic [ref=e85]: DAAD
+            - generic [ref=e86]: Verified
+        - generic:
+          - generic:
+            - generic [ref=e90]:
+              - paragraph [ref=e92]: Verified scholarships, clearly organised
+              - heading [level=1] [ref=e96]:
+                - text: Find the right
+                - emphasis [ref=e97]: scholarship
+                - text: with confidence.
+              - paragraph [ref=e99]: ScholarZone brings funding, degree level, location and deadlines into one focused directory — so you spend less time searching and more time preparing your application.
+              - generic [ref=e101]:
+                - link "Explore Scholarships" [ref=e102] [cursor=pointer]:
+                  - /url: /scholarships
+                - link "How ScholarZone Works" [ref=e105] [cursor=pointer]:
+                  - /url: /countries
+              - generic [ref=e106]: 63 opportunities · 62 verified · 20 countries
+            - generic [ref=e111]:
+              - generic [ref=e113]:
+                - generic [ref=e301]: "63"
+                - generic [ref=e115]: opportunities listed
+              - generic [ref=e117]:
+                - generic [ref=e302]: "34"
+                - generic [ref=e119]: fully funded
+              - generic [ref=e121]:
+                - generic [ref=e122]: Country, degree, funding and deadlines at a glance
+                - generic [ref=e126]: Verification status clearly marked on every listing
+                - generic [ref=e130]: Updated regularly from official sources
+      - generic [ref=e135]:
+        - generic [ref=e136]:
+          - strong [ref=e137]: 63+
+          - generic [ref=e138]: Scholarships
+        - generic [ref=e140]:
+          - strong [ref=e141]: "20"
+          - generic [ref=e142]: Countries
+        - generic [ref=e144]:
+          - strong [ref=e145]: "62"
+          - generic [ref=e146]: Verified
+        - generic [ref=e148]:
+          - strong [ref=e149]: "34"
+          - generic [ref=e150]: Fully Funded
+      - region "Featured scholarships" [ref=e151]:
+        - generic [ref=e152]:
+          - generic [ref=e153]: Featured
+          - heading "Recently added & closing soon" [level=2] [ref=e154]
+          - paragraph [ref=e155]: New opportunities and those with approaching deadlines — updated from official sources.
+        - generic [ref=e156]:
+          - region [ref=e157]:
+            - generic [ref=e158]:
+              - generic [ref=e159]:
+                - heading "Recently added" [level=2] [ref=e160]
+                - paragraph [ref=e161]: New opportunities entering the directory.
+              - link "Explore all" [ref=e162] [cursor=pointer]:
+                - /url: /scholarships
+                - text: Explore all →
+            - generic [ref=e303]:
+              - 'link "Fully Funded Open Hubert H. Humphrey Fellowship Program USA / Non-degree professional fellowship (graduate-level study) Deadline: Varies by country — U.S. Embassies/Fulbright Commissions must submit nominations by mid-September" [ref=e304] [cursor=pointer]':
+                - /url: /scholarships/53
+                - generic [ref=e305]:
+                  - generic [ref=e306]: Fully Funded
+                  - generic [ref=e307]: Open
+                - strong [ref=e308]: Hubert H. Humphrey Fellowship Program
+                - paragraph [ref=e309]: USA / Non-degree professional fellowship (graduate-level study)
+                - generic [ref=e310]: "Deadline: Varies by country — U.S. Embassies/Fulbright Commissions must submit nominations by mid-September"
+              - 'link "Fully Funded Open University of Miami Stamps Scholarship USA / Bachelor''s (undergraduate) Deadline: November 1 (Early Decision I and Early Action)" [ref=e311] [cursor=pointer]':
+                - /url: /scholarships/54
+                - generic [ref=e312]:
+                  - generic [ref=e313]: Fully Funded
+                  - generic [ref=e314]: Open
+                - strong [ref=e315]: University of Miami Stamps Scholarship
+                - paragraph [ref=e316]: USA / Bachelor's (undergraduate)
+                - generic [ref=e317]: "Deadline: November 1 (Early Decision I and Early Action)"
+              - 'link "Fully Funded Open American University Emerging Global Leader Scholarship USA / Bachelor''s (undergraduate) Deadline: January 15" [ref=e318] [cursor=pointer]':
+                - /url: /scholarships/55
+                - generic [ref=e319]:
+                  - generic [ref=e320]: Fully Funded
+                  - generic [ref=e321]: Open
+                - strong [ref=e322]: American University Emerging Global Leader Scholarship
+                - paragraph [ref=e323]: USA / Bachelor's (undergraduate)
+                - generic [ref=e324]: "Deadline: January 15"
+          - region [ref=e167]:
+            - generic [ref=e168]:
+              - generic [ref=e169]:
+                - heading "Deadline soon" [level=2] [ref=e170]
+                - paragraph [ref=e171]: Prioritise opportunities with the nearest recorded deadlines.
+              - link "Explore all" [ref=e172] [cursor=pointer]:
+                - /url: /scholarships
+                - text: Explore all →
+            - generic [ref=e325]:
+              - 'link "Monthly stipend, health insurance, and some travel costs Closed Eiffel Excellence Scholarship France / PG/PhD only (Master''s and Doctoral) Deadline: Call opens ~October 1, national deadline ~January 8 (exact dates shift slightly each year)" [ref=e326] [cursor=pointer]':
+                - /url: /scholarships/6
+                - generic [ref=e327]:
+                  - generic [ref=e328]: Monthly stipend, health insurance, and some travel costs
+                  - generic [ref=e329]: Closed
+                - strong [ref=e330]: Eiffel Excellence Scholarship
+                - paragraph [ref=e331]: France / PG/PhD only (Master's and Doctoral)
+                - generic [ref=e332]: "Deadline: Call opens ~October 1, national deadline ~January 8 (exact dates shift slightly each year)"
+              - 'link "Fully Funded Closed ICCR Scholarship (Suborno Jayanti Scheme) India / UG/PG/PhD Deadline: 27 February - 22 April 2026 (AY 2026-27 application window)" [ref=e333] [cursor=pointer]':
+                - /url: /scholarships/2
+                - generic [ref=e334]:
+                  - generic [ref=e335]: Fully Funded
+                  - generic [ref=e336]: Closed
+                - strong [ref=e337]: ICCR Scholarship (Suborno Jayanti Scheme)
+                - paragraph [ref=e338]: India / UG/PG/PhD
+                - generic [ref=e339]: "Deadline: 27 February - 22 April 2026 (AY 2026-27 application window)"
+              - 'link "Partial to Full Closed DAAD Study Scholarships for STEM Disciplines Germany / Master''s Deadline: Typically October annually (2026 deadline: 31 August 2026 for some countries; varies by country)" [ref=e340] [cursor=pointer]':
+                - /url: /scholarships/22
+                - generic [ref=e341]:
+                  - generic [ref=e342]: Partial to Full
+                  - generic [ref=e343]: Closed
+                - strong [ref=e344]: DAAD Study Scholarships for STEM Disciplines
+                - paragraph [ref=e345]: Germany / Master's
+                - generic [ref=e346]: "Deadline: Typically October annually (2026 deadline: 31 August 2026 for some countries; varies by country)"
+          - region [ref=e177]:
+            - generic [ref=e178]:
+              - generic [ref=e179]:
+                - heading "Fully funded opportunities" [level=2] [ref=e180]
+                - paragraph [ref=e181]: Explore listings marked as fully funded.
+              - link "Explore all" [ref=e182] [cursor=pointer]:
+                - /url: /scholarships
+                - text: Explore all →
+            - generic [ref=e347]:
+              - 'link "Fully Funded Closed ICCR Scholarship (Suborno Jayanti Scheme) India / UG/PG/PhD Deadline: 27 February - 22 April 2026 (AY 2026-27 application window)" [ref=e348] [cursor=pointer]':
+                - /url: /scholarships/2
+                - generic [ref=e349]:
+                  - generic [ref=e350]: Fully Funded
+                  - generic [ref=e351]: Closed
+                - strong [ref=e352]: ICCR Scholarship (Suborno Jayanti Scheme)
+                - paragraph [ref=e353]: India / UG/PG/PhD
+                - generic [ref=e354]: "Deadline: 27 February - 22 April 2026 (AY 2026-27 application window)"
+              - 'link "Fully Funded Open Erasmus Mundus Joint Masters (EMJM) EU (multiple) / PG only (Joint Master''s) Deadline: Varies by consortium/programme - typically Dec-Feb for a Sept/Oct intake; no single central deadline" [ref=e355] [cursor=pointer]':
+                - /url: /scholarships/1
+                - generic [ref=e356]:
+                  - generic [ref=e357]: Fully Funded
+                  - generic [ref=e358]: Open
+                - strong [ref=e359]: Erasmus Mundus Joint Masters (EMJM)
+                - paragraph [ref=e360]: EU (multiple) / PG only (Joint Master's)
+                - generic [ref=e361]: "Deadline: Varies by consortium/programme - typically Dec-Feb for a Sept/Oct intake; no single central deadline"
+              - 'link "Fully Funded Open DAAD Scholarship Germany / Mostly Master''s/PhD (a few UG-eligible programmes exist but are rare) Deadline: Varies by programme - Master''s typically ~30 Oct; PhD programmes vary (3 Sept or 21 Oct for 2026/27 cycle). Deadlines updated annually in Q2." [ref=e362] [cursor=pointer]':
+                - /url: /scholarships/3
+                - generic [ref=e363]:
+                  - generic [ref=e364]: Fully Funded
+                  - generic [ref=e365]: Open
+                - strong [ref=e366]: DAAD Scholarship
+                - paragraph [ref=e367]: Germany / Mostly Master's/PhD (a few UG-eligible programmes exist but are rare)
+                - generic [ref=e368]: "Deadline: Varies by programme - Master's typically ~30 Oct; PhD programmes vary (3 Sept or 21 Oct for 2026/27 cycle). Deadlines updated annually in Q2."
+      - region "Browse by category" [ref=e187]:
+        - generic [ref=e188]:
+          - generic [ref=e189]: Browse
+          - heading "Find by what matters to you" [level=2] [ref=e190]
+        - generic [ref=e191]:
+          - generic [ref=e192]:
+            - heading "Country" [level=3] [ref=e193]
+            - generic [ref=e194]:
+              - link "United Kingdom" [ref=e195] [cursor=pointer]:
+                - /url: /scholarships?country=United%20Kingdom
+                - generic [aria-hidden] [ref=e196]: 🇬🇧
+                - text: United Kingdom
+              - link "United States" [ref=e197] [cursor=pointer]:
+                - /url: /scholarships?country=United%20States
+                - generic [aria-hidden] [ref=e198]: 🇺🇸
+                - text: United States
+              - link "Germany" [ref=e199] [cursor=pointer]:
+                - /url: /scholarships?country=Germany
+                - generic [aria-hidden] [ref=e200]: 🇩🇪
+                - text: Germany
+              - link "Canada" [ref=e201] [cursor=pointer]:
+                - /url: /scholarships?country=Canada
+                - generic [aria-hidden] [ref=e202]: 🇨🇦
+                - text: Canada
+              - link "Australia" [ref=e203] [cursor=pointer]:
+                - /url: /scholarships?country=Australia
+                - generic [aria-hidden] [ref=e204]: 🇦🇺
+                - text: Australia
+              - link "Europe" [ref=e205] [cursor=pointer]:
+                - /url: /scholarships?country=Europe
+                - generic [aria-hidden] [ref=e206]: 🇪🇺
+                - text: Europe
+          - generic [ref=e207]:
+            - heading "Degree" [level=3] [ref=e208]
+            - generic [ref=e209]:
+              - link "Masters" [ref=e210] [cursor=pointer]:
+                - /url: /scholarships?degree=Masters
+              - link "PhD" [ref=e211] [cursor=pointer]:
+                - /url: /scholarships?degree=PhD
+              - link "Bachelors" [ref=e212] [cursor=pointer]:
+                - /url: /scholarships?degree=Bachelors
+              - link "Postgraduate" [ref=e213] [cursor=pointer]:
+                - /url: /scholarships?degree=Postgraduate
+          - generic [ref=e214]:
+            - heading "Funding" [level=3] [ref=e215]
+            - generic [ref=e216]:
+              - link "Fully Funded" [ref=e217] [cursor=pointer]:
+                - /url: /scholarships?funding=Fully%20Funded
+              - link "Partial" [ref=e218] [cursor=pointer]:
+                - /url: /scholarships?funding=Partial
+              - link "Tuition Waiver" [ref=e219] [cursor=pointer]:
+                - /url: /scholarships?funding=Tuition%20Waiver
+      - region "Why ScholarZone" [ref=e220]:
+        - generic [ref=e221]:
+          - generic [ref=e222]: Why ScholarZone
+          - heading "Scholarship information, made trustworthy" [level=2] [ref=e223]
+        - generic [ref=e224]:
+          - generic [ref=e225]:
+            - heading "Verified Listings" [level=3] [ref=e229]
+            - paragraph [ref=e230]: Each scholarship is checked against official sources. Status is clearly marked so you know what you're working with.
+          - generic [ref=e231]:
+            - heading "Current Deadlines" [level=3] [ref=e236]
+            - paragraph [ref=e237]: Opening and closing dates are tracked and updated. Closing-soon alerts help you prioritise applications.
+          - generic [ref=e238]:
+            - heading "Global Coverage" [level=3] [ref=e243]
+            - paragraph [ref=e244]: Opportunities across dozens of countries and degree levels — from Masters to PhD, bursaries to full scholarships.
+          - generic [ref=e245]:
+            - heading "Clear Details" [level=3] [ref=e250]
+            - paragraph [ref=e251]: Funding amount, eligibility, required documents and application links — all in one structured view.
+      - region "How verification works" [ref=e252]:
+        - generic [ref=e253]:
+          - generic [ref=e254]:
+            - generic [ref=e255]: Process
+            - heading "How we verify scholarships" [level=2] [ref=e256]
+            - paragraph [ref=e257]: Every listing goes through a structured verification process before it reaches you.
+          - generic [ref=e258]:
+            - generic [ref=e259]:
+              - generic [ref=e260]: "01"
+              - heading "Source Collection" [level=3] [ref=e261]
+              - paragraph [ref=e262]: Scholarships are gathered from official university portals, government databases, and institutional announcements.
+            - generic [ref=e263]:
+              - generic [ref=e264]: "02"
+              - heading "Cross-Reference" [level=3] [ref=e265]
+              - paragraph [ref=e266]: Each listing is checked against primary sources — confirming deadlines, funding details, and eligibility criteria.
+            - generic [ref=e267]:
+              - generic [ref=e268]: "03"
+              - heading "Status Assignment" [level=3] [ref=e269]
+              - paragraph [ref=e270]: "Every scholarship receives a verification status: active, needs review, or inactive — so you always know the confidence level."
+            - generic [ref=e271]:
+              - generic [ref=e272]: "04"
+              - heading "Regular Updates" [level=3] [ref=e273]
+              - paragraph [ref=e274]: Listings are re-verified on a rolling basis. Deadlines and details stay current as information changes.
+      - region "ScholarZone statistics" [ref=e275]:
+        - generic [ref=e276]:
+          - generic [ref=e277]:
+            - strong [ref=e278]: "63"
+            - generic [ref=e279]: Total opportunities
+          - generic [ref=e280]:
+            - strong [ref=e281]: "20"
+            - generic [ref=e282]: Countries covered
+          - generic [ref=e283]:
+            - strong [ref=e284]: "34"
+            - generic [ref=e285]: Fully funded
+          - generic [ref=e286]:
+            - strong [ref=e287]: "62"
+            - generic [ref=e288]: Verified active
+      - region "Get started" [ref=e289]:
+        - generic [ref=e290]:
+          - heading "Ready to find your scholarship?" [level=2] [ref=e291]
+          - paragraph [ref=e292]: Browse the full directory, save opportunities that fit, and compare your options side by side.
+          - generic [ref=e293]:
+            - link "Browse All Scholarships" [ref=e294] [cursor=pointer]:
+              - /url: /scholarships
+            - link "Explore by Country" [ref=e297] [cursor=pointer]:
+              - /url: /countries
+  - contentinfo [ref=e298]:
+    - paragraph [ref=e299]: ScholarZone · Where Ambition Meets Opportunity.

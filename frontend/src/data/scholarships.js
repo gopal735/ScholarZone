@@ -1,0 +1,38 @@
+export const scholarships = [
+  {
+    id: 1,
+    title: 'Erasmus Mundus Joint Masters (EMJM)',
+    country: 'Europe',
+    degree: 'Master',
+    funding: 'Fully Funded',
+    deadline: null,
+    verified: true,
+  },
+  {
+    id: 2,
+    title: 'ICCR Scholarship',
+    country: 'India',
+    degree: 'Bachelor',
+    funding: 'Fully Funded',
+    deadline: 'April 2027',
+    verified: true,
+  },
+  {
+    id: 3,
+    title: 'DAAD Scholarship',
+    country: 'Germany',
+    degree: 'Master',
+    funding: 'Fully Funded',
+    deadline: 'October 2026',
+    verified: true,
+  },
+  {
+    id: 4,
+    title: 'Global Korea Scholarship (GKS)',
+    country: 'South Korea',
+    degree: "UG (Bachelor's/Associate)",
+    funding: 'Fully Funded',
+    deadline: null,
+    verified: true,
+  },
+]

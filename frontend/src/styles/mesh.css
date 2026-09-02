@@ -1,0 +1,56 @@
+@property --mesh-1x { syntax: '<percentage>'; inherits: false; initial-value: 15%; }
+@property --mesh-1y { syntax: '<percentage>'; inherits: false; initial-value: 25%; }
+@property --mesh-2x { syntax: '<percentage>'; inherits: false; initial-value: 75%; }
+@property --mesh-2y { syntax: '<percentage>'; inherits: false; initial-value: 20%; }
+@property --mesh-3x { syntax: '<percentage>'; inherits: false; initial-value: 50%; }
+@property --mesh-3y { syntax: '<percentage>'; inherits: false; initial-value: 70%; }
+@property --mesh-4x { syntax: '<percentage>'; inherits: false; initial-value: 85%; }
+@property --mesh-4y { syntax: '<percentage>'; inherits: false; initial-value: 60%; }
+@property --mesh-5x { syntax: '<percentage>'; inherits: false; initial-value: 30%; }
+@property --mesh-5y { syntax: '<percentage>'; inherits: false; initial-value: 80%; }
+
+@property --mesh-c1 { syntax: '<color>'; inherits: false; initial-value: #0f1a2e; }
+@property --mesh-c2 { syntax: '<color>'; inherits: false; initial-value: #1a1f2e; }
+@property --mesh-c3 { syntax: '<color>'; inherits: false; initial-value: #1e3a5f; }
+@property --mesh-c4 { syntax: '<color>'; inherits: false; initial-value: #2563eb; }
+@property --mesh-c5 { syntax: '<color>'; inherits: false; initial-value: #0b1120; }
+
+.mesh-layer {
+  position: fixed;
+  inset: -15%;
+  z-index: 0;
+  pointer-events: none;
+  scale: 1.22;
+  filter: blur(70px) saturate(1.0);
+  background:
+    radial-gradient(circle at var(--mesh-1x) var(--mesh-1y), var(--mesh-c1), transparent 50%),
+    radial-gradient(circle at var(--mesh-2x) var(--mesh-2y), var(--mesh-c2), transparent 50%),
+    radial-gradient(circle at var(--mesh-3x) var(--mesh-3y), var(--mesh-c3), transparent 50%),
+    radial-gradient(circle at var(--mesh-4x) var(--mesh-4y), var(--mesh-c4), transparent 50%),
+    radial-gradient(circle at var(--mesh-5x) var(--mesh-5y), var(--mesh-c5), transparent 50%),
+    var(--mesh-base, #0f172a);
+  animation: mesh-drift 36s cubic-bezier(0.4, 0, 0.6, 1) infinite alternate;
+  transition: --mesh-c1 1.6s ease, --mesh-c2 1.6s ease, --mesh-c3 1.6s ease, --mesh-c4 1.6s ease, --mesh-c5 1.6s ease;
+}
+
+@keyframes mesh-drift {
+  to {
+    --mesh-1x: 55%;
+    --mesh-1y: 65%;
+    --mesh-2x: 25%;
+    --mesh-2y: 70%;
+    --mesh-3x: 70%;
+    --mesh-3y: 30%;
+    --mesh-4x: 40%;
+    --mesh-4y: 45%;
+    --mesh-5x: 60%;
+    --mesh-5y: 85%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mesh-layer {
+    animation: none;
+    transition: none;
+  }
+}

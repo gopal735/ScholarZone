@@ -1,0 +1,77 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# SQLite databases (production data) - explicit paths
+*.db
+*.sqlite
+*.sqlite3
+backend/scholarzone.db
+backend/scholarzone_backup_*.db
+backend/scholarzone_final_backup_*.db
+backend/scholarzone_test.db
+
+# Migration artifacts containing production data
+backend/migration_export.sql
+backend/migration_validation.sql
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/
+*.egg-info/
+.pytest_cache/
+.pytest_cache/
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+
+# Build artifacts
+build/
+dist/
+*.egg
+*.manifest
+*.spec
+
+# Node modules
+node_modules/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.log
+*.tmp
+temp_*.txt
+*.bak
+
+# Migration artifacts containing data (keep scripts, exclude data files)
+migration_export.sql
+migration_validation.sql
+
+# Test artifacts
+.playwright-mcp/
+
+# Documentation images (keep source docs)
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# Archive
+archive/

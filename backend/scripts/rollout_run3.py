@@ -1,0 +1,252 @@
+"""
+CONTROLLED PRODUCTION ROLLOUT - Run 3
+Batch size: 10 scholarships
+"""
+import json
+import logging
+import sqlite3
+import sys
+import time
+from datetime import date, datetime
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s %(levelname)s %(name)s: %(message)s',
+    handlers=[
+        logging.StreamHandler(sys.stdout),
+        logging.FileHandler('rollout_run3.log', mode='w'),
+    ]
+)
+
+sys.path.insert(0, 'C:/Users/GopaL/Desktop/Projects folder/ScholarZone/backend')
+
+from app.services.scheduler_config import SchedulerConfig
+from app.services.scheduler_engine import SchedulerEngine
+from app.database import get_session_factory
+
+def main():
+    print("=" * 70)
+    print("CONTROLLED PRODUCTION ROLLOUT - RUN 3")
+    print("=" * 70)
+
+    # Pre-run state
+    db = sqlite3.connect('scholarzone.db')
+    db.row_factory = sqlite3.Row
+
+    cur = db.cursor()
+    cur.execute('SELECT COUNT(*) as cnt FROM scholarships')
+    pre_total = cur.fetchone()['cnt']
+
+    cur.execute('SELECT status, COUNT(*) as cnt FROM scholarships GROUP BY status')
+    pre_status = {r['status']: r['cnt'] for r in cur.fetchall()}
+
+    cur.execute('SELECT COUNT(*) as cnt FROM scholarship_verification_history')
+    pre_history = cur.fetchone()['cnt']
+
+    print(f"\nPRE-RUN STATE:")
+    print(f"  Total scholarships: {pre_total}")
+    print(f"  Status breakdown: {pre_status}")
+    print(f"  Verification history entries: {pre_history}")
+
+    # Get IDs that will be selected (next 10 due candidates)
+    today = date.today().isoformat()
+    cur.execute('''
+        SELECT id, title, official_source_url
+        FROM scholarships
+        WHERE official_source_url IS NOT NULL
+        AND (next_verification_due <= ? OR next_verification_due IS NULL)
+        AND is_verified = 0
+        ORDER BY next_verification_due ASC
+        LIMIT 10
+    ''', (today,))
+    selected = cur.fetchall()
+    selected_ids = [r['id'] for r in selected]
+
+    print(f"\nSELECTED SCHOLARSHIPS (will be processed):")
+    for r in selected:
+        title = r['title'][:50] if r['title'] else 'N/A'
+        try:
+            print(f"  ID={r['id']}: {title}")
+        except UnicodeEncodeError:
+            print(f"  ID={r['id']}: [title contains special chars]")
+
+    # Capture pre-run field values
+    pre_fields = {}
+    for sid in selected_ids:
+        cur.execute('''
+            SELECT id, title, status, is_verified, verification_status,
+                   deadline_display, application_link, last_verified_at,
+                   next_verification_due
+            FROM scholarships WHERE id = ?
+        ''', (sid,))
+        row = cur.fetchone()
+        if row:
+            pre_fields[sid] = dict(row)
+
+    db.close()
+
+    if not selected_ids:
+        print("\nNo unverified scholarships due. Run 3 skipped.")
+        return True
+
+    # Start scheduler with batch_size=10
+    print(f"\n{'='*70}")
+    print(f"STARTING SCHEDULER (batch_size=10)")
+    print(f"{'='*70}")
+
+    config = SchedulerConfig(batch_size=10, max_workers=4)
+    session_factory = get_session_factory()
+
+    engine = SchedulerEngine(
+        session_factory=session_factory,
+        config=config,
+    )
+
+    start_time = datetime.now()
+    print(f"  Start time: {start_time.isoformat()}")
+
+    engine.start()
+
+    retries = engine.process_due_retries()
+    print(f"  Retries processed: {retries}")
+
+    submitted = engine.submit_batch()
+    print(f"  Jobs submitted: {submitted}")
+
+    engine.shutdown(wait=True)
+
+    end_time = datetime.now()
+    duration = (end_time - start_time).total_seconds()
+
+    print(f"  End time: {end_time.isoformat()}")
+    print(f"  Duration: {duration:.2f}s")
+
+    # Post-run state
+    print(f"\n{'='*70}")
+    print(f"POST-RUN STATE")
+    print(f"{'='*70}")
+
+    db = sqlite3.connect('scholarzone.db')
+    db.row_factory = sqlite3.Row
+
+    cur = db.cursor()
+    cur.execute('SELECT COUNT(*) as cnt FROM scholarships')
+    post_total = cur.fetchone()['cnt']
+
+    cur.execute('SELECT status, COUNT(*) as cnt FROM scholarships GROUP BY status')
+    post_status = {r['status']: r['cnt'] for r in cur.fetchall()}
+
+    cur.execute('SELECT COUNT(*) as cnt FROM scholarship_verification_history')
+    post_history = cur.fetchone()['cnt']
+
+    print(f"  Total scholarships: {post_total} (delta: {post_total - pre_total})")
+    print(f"  Status breakdown: {post_status}")
+    print(f"  Verification history entries: {post_history} (delta: {post_history - pre_history})")
+
+    # Detailed changes
+    print(f"\nCHANGES FOR SELECTED SCHOLARSHIPS:")
+    for sid in selected_ids:
+        cur.execute('''
+            SELECT id, title, status, is_verified, verification_status,
+                   deadline_display, application_link, last_verified_at,
+                   next_verification_due
+            FROM scholarships WHERE id = ?
+        ''', (sid,))
+        row = cur.fetchone()
+        post_fields = dict(row) if row else {}
+
+        pre = pre_fields.get(sid, {})
+
+        changes = []
+        for key in post_fields:
+            if key in pre and pre.get(key) != post_fields.get(key):
+                changes.append(f"    {key}: {pre.get(key)} -> {post_fields.get(key)}")
+
+        if changes:
+            title = post_fields.get('title', 'N/A')[:50]
+            try:
+                print(f"  ID={sid}: {title}")
+            except UnicodeEncodeError:
+                print(f"  ID={sid}: [title contains special chars]")
+            for c in changes:
+                print(c)
+        else:
+            print(f"  ID={sid}: No field changes")
+
+    # New verification history entries
+    print(f"\nNEW VERIFICATION HISTORY ENTRIES:")
+    if selected_ids:
+        cur.execute('''
+            SELECT h.id, h.scholarship_id, h.field_name, h.old_value, h.new_value,
+                   h.change_type, h.verification_status, h.source_url, h.created_at
+            FROM scholarship_verification_history h
+            WHERE h.scholarship_id IN ({})
+            ORDER BY h.created_at DESC
+        '''.format(','.join('?' * len(selected_ids))), selected_ids)
+
+        history_entries = cur.fetchall()
+        if history_entries:
+            for h in history_entries:
+                print(f"  Scholarship {h['scholarship_id']}: {h['field_name']}")
+                print(f"    old: {h['old_value']}")
+                print(f"    new: {h['new_value']}")
+                print(f"    status: {h['verification_status']}")
+                print(f"    created: {h['created_at']}")
+        else:
+            print("  (none)")
+
+    # Safety checks
+    print(f"\n{'='*70}")
+    print(f"SAFETY CHECKS")
+    print(f"{'='*70}")
+
+    cur.execute('SELECT COUNT(*) as cnt FROM scholarships')
+    final_count = cur.fetchone()['cnt']
+    dup_check = "PASS" if final_count == pre_total else "FAIL"
+    print(f"  [dup_check] Total records unchanged: {final_count} == {pre_total} -> {dup_check}")
+
+    cur.execute('''
+        SELECT official_source_url, COUNT(*) as cnt
+        FROM scholarships
+        WHERE official_source_url IS NOT NULL
+        GROUP BY official_source_url
+        HAVING cnt > 1
+    ''')
+    dup_urls = cur.fetchall()
+    url_check = "PASS" if len(dup_urls) == 0 else "FAIL"
+    print(f"  [url_check] Duplicate URLs: {len(dup_urls)} -> {url_check}")
+
+    cur.execute('SELECT COUNT(*) as cnt FROM scholarships WHERE title LIKE "%test%" OR title LIKE "%TEST%" OR title LIKE "%Test%"')
+    test_records = cur.fetchone()['cnt']
+    test_check = "PASS" if test_records == 0 else "FAIL"
+    print(f"  [test_check] Test records found: {test_records} -> {test_check}")
+
+    db.close()
+
+    # Summary
+    print(f"\n{'='*70}")
+    print(f"RUN 3 SUMMARY")
+    print(f"{'='*70}")
+    print(f"  Start time: {start_time.isoformat()}")
+    print(f"  End time: {end_time.isoformat()}")
+    print(f"  Duration: {duration:.2f}s")
+    print(f"  Scholarships selected: {len(selected_ids)}")
+    print(f"  Jobs submitted: {submitted}")
+    print(f"  Retries processed: {retries}")
+    print(f"  New history entries: {post_history - pre_history}")
+    print(f"  Total records delta: {post_total - pre_total}")
+    print(f"\n  Safety checks:")
+    print(f"    Duplicate records: {dup_check}")
+    print(f"    Duplicate URLs: {url_check}")
+    print(f"    Test records: {test_check}")
+
+    all_pass = all(x == "PASS" for x in [dup_check, url_check, test_check])
+    print(f"\n  RESULT: {'CLEAN' if all_pass else 'ISSUES DETECTED'}")
+
+    return all_pass
+
+
+if __name__ == '__main__':
+    success = main()
+    sys.exit(0 if success else 1)

@@ -1,0 +1,100 @@
+- generic [ref=e3]:
+  - generic [aria-hidden]: ScholarZone
+  - banner [ref=e4]:
+    - navigation "Primary navigation" [ref=e5]:
+      - link "ScholarZone" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - generic [aria-hidden] [ref=e7]: S
+      - generic [ref=e9]:
+        - generic [ref=e10]:
+          - link "Home" [ref=e11] [cursor=pointer]:
+            - /url: /
+          - link "Scholarships" [ref=e12] [cursor=pointer]:
+            - /url: /scholarships
+          - link "Countries" [ref=e13] [cursor=pointer]:
+            - /url: /countries
+        - generic [ref=e14]:
+          - 'link "Saved scholarships: 0" [ref=e15] [cursor=pointer]':
+            - /url: /saved
+            - text: Saved
+          - 'link "Compare scholarships: 0" [ref=e16] [cursor=pointer]':
+            - /url: /compare
+            - text: Compare
+          - link "Sign in" [ref=e17] [cursor=pointer]:
+            - /url: /login
+          - button "Switch to light mode" [pressed] [ref=e207] [cursor=pointer]:
+            - generic [ref=e21]: Light
+  - main [ref=e22]:
+    - generic [ref=e360]:
+      - generic [ref=e361]:
+        - generic [ref=e362]:
+          - paragraph [ref=e363]: Scholarship discovery
+          - heading "All Scholarships" [level=1] [ref=e364]
+          - paragraph [ref=e365]: Compare key funding details, degree levels, countries and deadlines in one focused directory.
+        - paragraph [ref=e369]:
+          - strong [ref=e370]: Trust the details, then verify.
+          - generic [ref=e371]: Always check the official provider before you apply.
+      - region "Scholarship directory" [ref=e372]:
+        - search [ref=e373]:
+          - generic [ref=e374]:
+            - paragraph [ref=e375]: Find your fit
+            - generic [ref=e376]: Search names, countries, degrees or funding, then refine by deadline and listing status.
+          - generic [ref=e377]:
+            - generic [ref=e378]:
+              - generic [ref=e379]: Search scholarships by name
+              - searchbox "Search scholarships by name" [ref=e380]
+            - generic [ref=e381]:
+              - generic [ref=e382]: Country
+              - combobox "Country" [ref=e383] [cursor=pointer]:
+                - option "All countries" [selected]
+                - option "India"
+                - option "Germany"
+                - option "Europe"
+                - option "South Korea"
+            - generic [ref=e384]:
+              - generic [ref=e385]: Degree
+              - combobox "Degree" [ref=e386] [cursor=pointer]:
+                - option "All degrees" [selected]
+                - option "Bachelor"
+                - option "Master"
+                - option "UG (Bachelor's/Associate)"
+            - generic [ref=e387]:
+              - generic [ref=e388]: Funding
+              - combobox "Funding" [ref=e389] [cursor=pointer]:
+                - option "All funding" [selected]
+                - option "Fully funded"
+            - generic [ref=e390]:
+              - generic [ref=e391]: Deadline month
+              - combobox "Deadline month" [ref=e392] [cursor=pointer]:
+                - option "Any month" [selected]
+                - option "January"
+                - option "April"
+                - option "October"
+            - generic [ref=e393]:
+              - generic [ref=e394]: Status
+              - combobox "Status" [ref=e395] [cursor=pointer]:
+                - option "All statuses" [selected]
+                - option "Open"
+                - option "Closing soon"
+                - option "Closed"
+            - generic [ref=e396]:
+              - generic [ref=e397]: Sort by
+              - combobox "Sort by" [ref=e398] [cursor=pointer]:
+                - option "Recommended" [selected]
+                - option "Recently added"
+                - option "Recently updated"
+                - option "Deadline soon"
+                - option "Fully funded"
+                - 'option "Deadline: Earliest first"'
+                - 'option "Deadline: Latest first"'
+                - 'option "Name: A → Z"'
+                - 'option "Name: Z → A"'
+        - generic [ref=e399]:
+          - paragraph [ref=e400]:
+            - strong [ref=e401]: "0"
+            - text: scholarships found
+          - generic [ref=e402]: Compare funding, location and key dates.
+        - generic "Loading scholarships"
+        - generic [ref=e403]: Search scholarship names. Press Escape to clear your search.
+  - contentinfo [ref=e205]:
+    - paragraph [ref=e206]: ScholarZone · Where Ambition Meets Opportunity.
