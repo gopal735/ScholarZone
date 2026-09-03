@@ -11,6 +11,21 @@
 
 set -e
 
+# Load environment variables from .env if it exists (supports container deployments
+# that mount .env as a file rather than setting individual env vars)
+if [ -f ".env" ]; then
+    set -a
+    source .env
+    set +a
+fi
+
+# Also check parent directory for .env (common in Docker deployments)
+if [ -f "../.env" ]; then
+    set -a
+    source ../.env
+    set +a
+fi
+
 # Default values
 export SCHOLARZONE_ENVIRONMENT="${SCHOLARZONE_ENVIRONMENT:-production}"
 export PORT="${PORT:-8000}"
@@ -18,6 +33,7 @@ export PORT="${PORT:-8000}"
 # Validate required environment variables
 if [ -z "$SCHOLARZONE_DATABASE_URL" ]; then
     echo "ERROR: SCHOLARZONE_DATABASE_URL is not set"
+    echo "Set it with: export SCHOLARZONE_DATABASE_URL=postgresql+psycopg://username:password@host:5432/scholarzone"
     exit 1
 fi
 
