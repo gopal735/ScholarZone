@@ -32,9 +32,10 @@ export PORT="${PORT:-8000}"
 
 # Validate required environment variables
 if [ -z "$SCHOLARZONE_DATABASE_URL" ]; then
-    echo "ERROR: SCHOLARZONE_DATABASE_URL is not set"
-    echo "Set it with: export SCHOLARZONE_DATABASE_URL=postgresql+psycopg://username:password@host:5432/scholarzone"
-    exit 1
+    echo "CRITICAL WARNING: SCHOLARZONE_DATABASE_URL is not set."
+    echo "The application will start with SQLite fallback. This is NOT suitable for production."
+    echo "Set SCHOLARZONE_DATABASE_URL in your deployment environment to use PostgreSQL/Neon."
+    echo "Falling back to SQLite..."
 fi
 
 # In production, require PostgreSQL (not SQLite)
