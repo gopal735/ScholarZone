@@ -25,7 +25,7 @@ jobs:
 
       - name: Trigger verification with cold-start retry
         run: |
-          MAX_ATTEMPTS=3
+          MAX_ATTEMPTS=8
           RETRY_DELAY=30
           SUCCESS=0
 
@@ -33,6 +33,7 @@ jobs:
             echo "Attempt $attempt of $MAX_ATTEMPTS..."
 
             HTTP_CODE=$(curl -s -o /tmp/response.json -w "%{http_code}" \
+              --connect-timeout 15 \
               --max-time 120 \
               --retry 0 \
               -X POST \
@@ -52,8 +53,14 @@ jobs:
               cat /tmp/response.json
               SUCCESS=1
               break
+            elif [ "$HTTP_CODE" = "503" ]; then
+              echo "Service unavailable (503). SnapDeploy container is warming up."
+              if [ $attempt -lt $MAX_ATTEMPTS ]; then
+                echo "Waiting ${RETRY_DELAY}s before retry..."
+                sleep $RETRY_DELAY
+              fi
             elif [ "$HTTP_CODE" = "000" ]; then
-              echo "Connection failed. Render service may be cold-starting."
+              echo "Connection failed. SnapDeploy service may be cold-starting."
               if [ $attempt -lt $MAX_ATTEMPTS ]; then
                 echo "Waiting ${RETRY_DELAY}s before retry..."
                 sleep $RETRY_DELAY
@@ -70,5 +77,6 @@ jobs:
 
           if [ $SUCCESS -eq 0 ]; then
             echo "::error::All $MAX_ATTEMPTS attempts failed."
+            cat /tmp/response.json
             exit 1
           fi
