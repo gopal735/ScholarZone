@@ -31,11 +31,15 @@ export SCHOLARZONE_ENVIRONMENT="${SCHOLARZONE_ENVIRONMENT:-production}"
 export PORT="${PORT:-8000}"
 
 # Validate required environment variables
+# Production MUST have a PostgreSQL (Neon) connection string — no silent SQLite fallback.
+# Local development/testing falls back to SQLite when SCHOLARZONE_DATABASE_URL is unset.
 if [ -z "$SCHOLARZONE_DATABASE_URL" ]; then
-    echo "CRITICAL WARNING: SCHOLARZONE_DATABASE_URL is not set."
-    echo "The application will start with SQLite fallback. This is NOT suitable for production."
-    echo "Set SCHOLARZONE_DATABASE_URL in your deployment environment to use PostgreSQL/Neon."
-    echo "Falling back to SQLite..."
+    if [ "$SCHOLARZONE_ENVIRONMENT" = "production" ]; then
+        echo "FATAL: SCHOLARZONE_DATABASE_URL is required in production."
+        echo "Configure a PostgreSQL (Neon) connection string before starting the application."
+        exit 1
+    fi
+    echo "WARNING: SCHOLARZONE_DATABASE_URL is not set. Using SQLite for local development only."
 fi
 
 # In production, require PostgreSQL (not SQLite)

@@ -120,7 +120,10 @@ def test_lifespan_always_calls_init_database(monkeypatch):
 
     for env in ["production", "development", "test"]:
         monkeypatch.setenv("SCHOLARZONE_ENVIRONMENT", env)
-        monkeypatch.setenv("SCHOLARZONE_DATABASE_URL", "sqlite:///./test.db")
+        if env == "production":
+            monkeypatch.setenv("SCHOLARZONE_DATABASE_URL", "postgresql://user:pass@localhost:5432/testdb")
+        else:
+            monkeypatch.setenv("SCHOLARZONE_DATABASE_URL", "sqlite:///./test.db")
 
         init_called = False
 
@@ -202,6 +205,73 @@ def test_seed_database_idempotent_on_empty_sqlite():
         reset_database_connections()
 
 
+class TestProductionConfigValidation:
+    """Tests for production startup configuration validation.
+
+    Verifies that production mode fails fast when SCHOLARZONE_DATABASE_URL
+    is missing or points to SQLite, and that development/test environments
+    still fall back to SQLite.
+    """
+
+    def test_production_missing_database_url_raises(self):
+        """get_settings() raises RuntimeError when DATABASE_URL is missing in production."""
+        with patch.dict(os.environ, {"SCHOLARZONE_ENVIRONMENT": "production"}, clear=True):
+            # Remove SCHOLARZONE_DATABASE_URL if set by conftest
+            os.environ.pop("SCHOLARZONE_DATABASE_URL", None)
+            from app.core.config import get_settings
+            with pytest.raises(RuntimeError, match="required in production"):
+                get_settings()
+
+    def test_production_sqlite_url_rejected(self):
+        """get_settings() raises RuntimeError when DATABASE_URL is SQLite in production."""
+        with patch.dict(os.environ, {
+            "SCHOLARZONE_ENVIRONMENT": "production",
+            "SCHOLARZONE_DATABASE_URL": "sqlite:///backend/scholarzone.db",
+        }):
+            from app.core.config import get_settings
+            with pytest.raises(RuntimeError, match="requires PostgreSQL"):
+                get_settings()
+
+    def test_production_sqlite_memory_rejected(self):
+        """get_settings() raises RuntimeError even for sqlite:///:memory: in production."""
+        with patch.dict(os.environ, {
+            "SCHOLARZONE_ENVIRONMENT": "production",
+            "SCHOLARZONE_DATABASE_URL": "sqlite:///:memory:",
+        }):
+            from app.core.config import get_settings
+            with pytest.raises(RuntimeError, match="requires PostgreSQL"):
+                get_settings()
+
+    def test_production_postgresql_accepted(self):
+        """get_settings() succeeds when production uses a PostgreSQL URL."""
+        with patch.dict(os.environ, {
+            "SCHOLARZONE_ENVIRONMENT": "production",
+            "SCHOLARZONE_DATABASE_URL": "postgresql://user:pass@host:5432/db",
+        }):
+            from app.core.config import get_settings
+            settings = get_settings()
+            assert settings.environment == "production"
+            assert settings.database_url.startswith("postgresql")
+
+    def test_development_missing_database_url_defaults_sqlite(self):
+        """get_settings() defaults to SQLite when DATABASE_URL is missing in development."""
+        with patch.dict(os.environ, {"SCHOLARZONE_ENVIRONMENT": "development"}, clear=True):
+            os.environ.pop("SCHOLARZONE_DATABASE_URL", None)
+            from app.core.config import get_settings
+            settings = get_settings()
+            assert settings.environment == "development"
+            assert settings.database_url.startswith("sqlite")
+
+    def test_test_missing_database_url_defaults_sqlite(self):
+        """get_settings() defaults to SQLite when DATABASE_URL is missing in test mode."""
+        with patch.dict(os.environ, {"SCHOLARZONE_ENVIRONMENT": "test"}, clear=True):
+            os.environ.pop("SCHOLARZONE_DATABASE_URL", None)
+            from app.core.config import get_settings
+            settings = get_settings()
+            assert settings.environment == "test"
+            assert settings.database_url.startswith("sqlite")
+
+
 def test_production_empty_database_startup_simulation(monkeypatch):
     """Simulate production startup on empty database - should succeed without seeding."""
     import asyncio
@@ -209,7 +279,7 @@ def test_production_empty_database_startup_simulation(monkeypatch):
     from fastapi import FastAPI
 
     monkeypatch.setenv("SCHOLARZONE_ENVIRONMENT", "production")
-    monkeypatch.setenv("SCHOLARZONE_DATABASE_URL", "sqlite:///:memory:")
+    monkeypatch.setenv("SCHOLARZONE_DATABASE_URL", "postgresql://user:pass@localhost:5432/testdb")
 
     init_called = False
     seed_called = False
