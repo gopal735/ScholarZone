@@ -9,7 +9,6 @@ jobs:
     env:
       API_URL: ${{ vars.SCHOLARZONE_API_URL }}
       SECRET: ${{ secrets.SCHOLARZONE_VERIFICATION_SECRET }}
-      DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -18,9 +17,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-
-      - name: Install dependencies
-        run: pip install sqlalchemy psycopg
 
       - name: Capture BEFORE state (API)
         run: |
@@ -32,12 +28,7 @@ jobs:
           curl -s --max-time 30 "$API_URL/internal/verify/status"
           echo ""
 
-      - name: Capture BEFORE state (Database)
-        run: |
-          cd backend
-          python scripts/db_state.py
-
-      - name: Wait for rate-limit window (60s minimum)
+      - name: Wait for scheduler to complete (if running)
         run: |
           echo "Waiting 65 seconds to ensure we're past the 60s rate limit..."
           sleep 65
@@ -117,11 +108,6 @@ jobs:
           echo ""
           curl -s --max-time 30 "$API_URL/internal/verify/status"
           echo ""
-
-      - name: Capture AFTER state (Database)
-        run: |
-          cd backend
-          python scripts/db_state.py
 
       - name: Test Authentication - Missing Secret
         run: |
