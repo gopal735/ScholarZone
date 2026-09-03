@@ -20,7 +20,7 @@ from datetime import datetime, timezone
 from fastapi import APIRouter, Header, HTTPException, status
 
 from ..core.config import get_settings
-from ..scheduler_v2 import run_verification_round
+from ..scheduler_v2 import VerificationRoundResult, run_verification_round
 
 logger = logging.getLogger(__name__)
 
@@ -96,7 +96,7 @@ async def trigger_verification(
     started_at = datetime.now(timezone.utc).isoformat()
 
     try:
-        jobs_submitted = run_verification_round()
+        result: VerificationRoundResult = run_verification_round()
     except Exception as exc:
         logger.exception("Verification round failed: %s", exc)
         raise HTTPException(
@@ -107,15 +107,19 @@ async def trigger_verification(
     completed_at = datetime.now(timezone.utc).isoformat()
 
     logger.info(
-        "Verification round completed. jobs_submitted=%d started=%s completed=%s",
-        jobs_submitted,
+        "Verification round completed. jobs_submitted=%d jobs_completed=%d jobs_failed=%d started=%s completed=%s",
+        result.jobs_submitted,
+        result.jobs_completed,
+        result.jobs_failed,
         started_at,
         completed_at,
     )
 
     return {
         "status": "accepted",
-        "jobs_submitted": jobs_submitted,
+        "jobs_submitted": result.jobs_submitted,
+        "jobs_completed": result.jobs_completed,
+        "jobs_failed": result.jobs_failed,
         "started_at": started_at,
         "completed_at": completed_at,
     }

@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import logging
 from datetime import date
+from dataclasses import dataclass
 
 from .database import get_session_factory
 from .services.scheduler_config import SchedulerConfig
@@ -19,7 +20,18 @@ from .services.scheduler_engine import SchedulerEngine
 
 logger = logging.getLogger(__name__)
 
+
 _engine: SchedulerEngine | None = None
+
+
+@dataclass
+class VerificationRoundResult:
+    """Result of a verification round."""
+
+    jobs_submitted: int
+    jobs_completed: int
+    jobs_failed: int
+
 
 # SAFETY FREEZE: Set to False to enable the intelligent scheduler.
 # Telemetry bug fixed, transaction boundary verified, regression tests pass.
@@ -56,22 +68,45 @@ def shutdown_scheduler() -> None:
         _engine = None
 
 
-def run_verification_round() -> int:
+def run_verification_round() -> VerificationRoundResult:
     """Run a verification round.
 
-    SAFETY: Returns 0 immediately if the intelligent scheduler is frozen.
+    SAFETY: Returns a result with 0 jobs if the intelligent scheduler is frozen.
     This prevents production data mutations until the telemetry contract
     bug and transaction boundary are fixed.
+
+    The scheduler engine is started, jobs are submitted and awaited to
+    completion, and the engine is shut down before returning. This ensures
+    that when the return value is produced, all background work is done
+    and ``scheduler_running`` correctly reflects ``False``.
     """
+    global _engine
+
     if _INTELLIGENT_SCHEDULER_FROZEN:
         logger.warning(
             "Intelligent scheduler is FROZEN. "
             "run_verification_round() returned 0 to prevent production mutations. "
             "Set _INTELLIGENT_SCHEDULER_FROZEN = False after fixing the telemetry bug."
         )
-        return 0
+        return VerificationRoundResult(jobs_submitted=0, jobs_completed=0, jobs_failed=0)
+
     if _engine is None:
         start_scheduler()
     assert _engine is not None
+
     _engine.process_due_retries()
-    return _engine.submit_batch()
+    submitted = _engine.submit_batch()
+
+    _engine.wait_for_completion()
+
+    completed = _engine.completed_count
+    failed = _engine.failed_count
+
+    _engine.shutdown(wait=True)
+    _engine = None
+
+    return VerificationRoundResult(
+        jobs_submitted=submitted,
+        jobs_completed=completed,
+        jobs_failed=failed,
+    )

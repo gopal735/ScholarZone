@@ -510,3 +510,170 @@ class TestSchedulerConfig:
         assert cfg.staleness_weight > 0
         assert cfg.deadline_urgency_weight > 0
         assert cfg.change_frequency_weight > 0
+
+
+# ===========================================================================
+# REGRESSION TESTS — Scheduler lifecycle and completion tracking
+# ===========================================================================
+
+
+class TestSchedulerLifecycleRegression:
+    """Regression tests for scheduler_running state and completion tracking.
+
+    Bug: run_verification_round() used to start the engine but never shut it
+    down, leaving scheduler_running=true indefinitely even after all jobs
+    completed. The trigger endpoint returned a misleading completed_at
+    timestamp while background jobs were still running.
+    """
+
+    def test_run_verification_round_shuts_down_engine(self, session_factory):
+        """After run_verification_round completes, scheduler_running should be False."""
+        from app.scheduler_v2 import run_verification_round, get_engine, shutdown_scheduler
+        from app.services.scheduler_engine import SchedulerEngine
+        from unittest.mock import patch
+
+        shutdown_scheduler()
+        assert get_engine() is None
+
+        test_engine = SchedulerEngine(session_factory=session_factory)
+
+        with patch("app.scheduler_v2.get_session_factory", return_value=session_factory):
+            with patch("app.scheduler_v2.create_engine", return_value=test_engine):
+                with patch("app.services.scheduler_engine.verify_scholarship", return_value=None):
+                    result = run_verification_round()
+
+        assert result.jobs_submitted >= 0
+        assert get_engine() is None, "Engine should be shut down and set to None after round completes"
+
+    def test_wait_for_completion_blocks_until_done(self, session_factory):
+        """wait_for_completion should block until all submitted futures finish."""
+        from unittest.mock import MagicMock, patch
+
+        engine = SchedulerEngine(session_factory=session_factory, config=SchedulerConfig(max_workers=2, batch_size=10))
+        engine.start()
+
+        session = session_factory()
+        s = Scholarship(
+            title="Test", country="Germany", degree="Masters", funding="Full",
+            official_source_url="https://a.com/1",
+            next_verification_due=date.today() - timedelta(days=1),
+        )
+        session.add(s)
+        session.commit()
+        scholarship_id = s.id
+        session.close()
+
+        mock_result = MagicMock()
+        mock_result.scholarship_id = scholarship_id
+        mock_result.fetch_status = "success"
+        mock_result.automatic_update_candidates = []
+        mock_result.uncertain_fields = []
+        mock_result.verification_status = "active"
+        mock_result.official_source_url = "https://a.com/1"
+
+        with patch("app.services.scheduler_engine.verify_scholarship", return_value=mock_result):
+            with patch("app.services.scheduler_engine.SchedulerEngine._run_single_verification_inner") as mock_inner:
+                with patch("app.services.scheduler_engine.compute_adaptive_policy") as mock_policy:
+                    mock_policy.return_value = MagicMock(next_due_at=date.today() + timedelta(days=30))
+                    submitted = engine.submit_batch()
+                    assert submitted >= 1
+
+                    engine.wait_for_completion()
+                    assert engine.completed_count >= 1
+                    assert engine.failed_count == 0
+
+        engine.shutdown(wait=True)
+
+    def test_completed_and_failed_count_increment(self, session_factory):
+        """completed_count and failed_count should accurately reflect job outcomes."""
+        from unittest.mock import MagicMock, patch
+
+        engine = SchedulerEngine(session_factory=session_factory, config=SchedulerConfig(max_workers=2, batch_size=10))
+
+        session = session_factory()
+        s = Scholarship(
+            title="Test", country="Germany", degree="Masters", funding="Full",
+            official_source_url="https://a.com/1",
+            next_verification_due=date.today() - timedelta(days=1),
+        )
+        session.add(s)
+        session.commit()
+        scholarship_id = s.id
+        session.close()
+
+        success_result = MagicMock()
+        success_result.scholarship_id = scholarship_id
+        success_result.fetch_status = "success"
+        success_result.automatic_update_candidates = []
+        success_result.uncertain_fields = []
+        success_result.verification_status = "active"
+        success_result.official_source_url = "https://a.com/1"
+
+        engine.start()
+        with patch("app.services.scheduler_engine.verify_scholarship", return_value=success_result):
+            with patch("app.services.scheduler_engine.SchedulerEngine._run_single_verification_inner") as mock_inner:
+                with patch("app.services.scheduler_engine.compute_adaptive_policy") as mock_policy:
+                    mock_policy.return_value = MagicMock(next_due_at=date.today() + timedelta(days=30))
+                    engine.submit_batch()
+                    engine.wait_for_completion()
+
+                    assert engine.completed_count >= 1
+                    assert engine.failed_count == 0
+
+        engine.shutdown(wait=True)
+
+    def test_pending_futures_tracked_after_submit(self, session_factory):
+        """After submit_batch, futures should be tracked for wait_for_completion."""
+        from unittest.mock import MagicMock, patch
+
+        engine = SchedulerEngine(session_factory=session_factory, config=SchedulerConfig(max_workers=2, batch_size=10))
+
+        session = session_factory()
+        s = Scholarship(
+            title="Test", country="Germany", degree="Masters", funding="Full",
+            official_source_url="https://a.com/1",
+            next_verification_due=date.today() - timedelta(days=1),
+        )
+        session.add(s)
+        session.commit()
+        scholarship_id = s.id
+        session.close()
+
+        mock_result = MagicMock()
+        mock_result.scholarship_id = scholarship_id
+        mock_result.fetch_status = "success"
+        mock_result.automatic_update_candidates = []
+        mock_result.uncertain_fields = []
+        mock_result.verification_status = "active"
+        mock_result.official_source_url = "https://a.com/1"
+
+        engine.start()
+        with patch("app.services.scheduler_engine.verify_scholarship", return_value=mock_result):
+            with patch("app.services.scheduler_engine.SchedulerEngine._run_single_verification_inner") as mock_inner:
+                with patch("app.services.scheduler_engine.compute_adaptive_policy") as mock_policy:
+                    mock_policy.return_value = MagicMock(next_due_at=date.today() + timedelta(days=30))
+                    submitted = engine.submit_batch()
+                    assert submitted >= 1
+                    assert len(engine._pending_futures) >= 1
+
+        engine.wait_for_completion()
+        engine.shutdown(wait=True)
+
+    def test_engine_not_running_after_run_verification_round(self, session_factory):
+        """The trigger endpoint's scheduler_running should be False after a round."""
+        from app.scheduler_v2 import run_verification_round, get_engine, shutdown_scheduler, create_engine
+        from app.services.scheduler_engine import SchedulerEngine
+        from unittest.mock import patch
+
+        shutdown_scheduler()
+
+        test_engine = SchedulerEngine(session_factory=session_factory)
+
+        with patch("app.scheduler_v2.get_session_factory", return_value=session_factory):
+            with patch("app.scheduler_v2.create_engine", return_value=test_engine):
+                with patch("app.services.scheduler_engine.verify_scholarship", return_value=None):
+                    result = run_verification_round()
+
+        engine = get_engine()
+        if engine is not None:
+            assert not engine.is_running, "Engine should not be running after round completes"

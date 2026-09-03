@@ -48,6 +48,9 @@ class SchedulerEngine:
         self._shutdown = threading.Event()
         self._lock = threading.Lock()
         self._started = False
+        self._pending_futures: list = []
+        self._completed_count = 0
+        self._failed_count = 0
 
     def start(self) -> None:
         with self._lock:
@@ -64,15 +67,40 @@ class SchedulerEngine:
     def shutdown(self, wait: bool = True) -> None:
         self._shutdown.set()
         with self._lock:
-            if self._executor is not None:
-                self._executor.shutdown(wait=wait)
-                self._executor = None
+            executor = self._executor
+            self._executor = None
             self._started = False
+        if executor is not None:
+            executor.shutdown(wait=wait)
         logger.info("SchedulerEngine shut down")
 
     @property
     def is_running(self) -> bool:
         return self._started and not self._shutdown.is_set()
+
+    @property
+    def completed_count(self) -> int:
+        return self._completed_count
+
+    @property
+    def failed_count(self) -> int:
+        return self._failed_count
+
+    def wait_for_completion(self, timeout: float | None = None) -> None:
+        """Block until all submitted background jobs finish.
+
+        Uses the futures stored from submit_batch(). No-op if the engine is
+        shutting down or no jobs were submitted.
+        """
+        if self._shutdown.is_set():
+            return
+        with self._lock:
+            futures = list(self._pending_futures)
+        for future in futures:
+            try:
+                future.result(timeout=timeout)
+            except Exception:
+                pass
 
     def _new_session(self) -> Session:
         return self.session_factory()
@@ -149,12 +177,17 @@ class SchedulerEngine:
             return 0
 
         submitted = 0
+        futures = []
         while not self._shutdown.is_set():
             job = self.queue.dequeue()
             if job is None:
                 break
-            self._executor.submit(self._execute_job, job)
+            future = self._executor.submit(self._execute_job, job)
+            futures.append(future)
             submitted += 1
+
+        with self._lock:
+            self._pending_futures.extend(futures)
 
         batch_duration_ms = (time.monotonic() - batch_start) * 1000.0
         record_event(
@@ -172,8 +205,12 @@ class SchedulerEngine:
         except Exception:
             logger.exception("Job failed for scholarship %s", job.scholarship_id)
             self.queue.mark_failed(job)
+            with self._lock:
+                self._failed_count += 1
         else:
             self.queue.mark_completed(job)
+            with self._lock:
+                self._completed_count += 1
 
     def _run_single_verification(self, job: QueuedJob) -> None:
         correlation_id = f"job-{job.scholarship_id}-{int(time.time())}"
