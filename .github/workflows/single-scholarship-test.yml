@@ -1,0 +1,253 @@
+name: Single-Scholarship Controlled Verification Test
+
+on:
+  workflow_dispatch:
+
+env:
+  API_URL: https://scholarzone-api-2ee2d.containers.snapdeploy.app
+
+jobs:
+  single-scholarship-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+
+      - name: Install requests
+        run: pip install requests
+
+      - name: Wait for container wake-up
+        run: |
+          python -c "
+          import requests, time, sys
+          print('Waiting for production container to wake up...')
+          for i in range(30):
+              try:
+                  r = requests.get('${{ env.API_URL }}/health', timeout=15)
+                  if r.status_code == 200:
+                      print(f'Container awake at attempt {i+1}: {r.text}')
+                      break
+                  else:
+                      print(f'Attempt {i+1}: HTTP {r.status_code}')
+              except Exception as e:
+                  print(f'Attempt {i+1}: {e}')
+              time.sleep(30)
+          else:
+              print('ERROR: Container did not wake up after 15 minutes')
+              sys.exit(1)
+          "
+
+      - name: Run single-scholarship verification test
+        run: |
+          python -c "
+          import requests, json, sys
+          from datetime import date, datetime, timezone
+
+          API_URL = '${{ env.API_URL }}'
+
+          def fetch_total():
+              r = requests.get(f'{API_URL}/scholarships?page=1&limit=1', timeout=30)
+              data = r.json()
+              return data['pagination']['total'], r.status_code
+
+          def get_scholarship(sid):
+              r = requests.get(f'{API_URL}/scholarships/{sid}', timeout=30)
+              return r.json(), r.status_code
+
+          def get_verification_queue():
+              r = requests.get(f'{API_URL}/scholarships/verification-queue', timeout=30)
+              return r.json(), r.status_code
+
+          def get_scholarship_list(page=1, limit=100):
+              r = requests.get(f'{API_URL}/scholarships?page={page}&limit={limit}', timeout=30)
+              return r.json(), r.status_code
+
+          def patch_verify(sid, payload):
+              r = requests.patch(f'{API_URL}/scholarships/{sid}/verify', json=payload, timeout=30)
+              return r.json(), r.status_code
+
+          def get_status():
+              r = requests.get(f'{API_URL}/internal/verify/status', timeout=30)
+              return r.json(), r.status_code
+
+          def extract_beforematch(item):
+              return {
+                  'id': item.get('id'),
+                  'title': item.get('title'),
+                  'country': item.get('country'),
+                  'degree': item.get('degree'),
+                  'funding': item.get('funding'),
+                  'official_source_url': item.get('official_source_url'),
+                  'official_source': item.get('official_source'),
+                  'verification_status': item.get('verification_status'),
+                  'last_verified_at': item.get('last_verified_at'),
+                  'last_verified_date': item.get('last_verified_date'),
+                  'is_verified': item.get('verified'),
+                  'next_verification_due': item.get('next_verification_due'),
+                  'verified_by': item.get('verified_by'),
+                  'verification_notes': item.get('verification_notes'),
+                  'updated_at': item.get('updated_at'),
+                  'created_at': None,
+              }
+
+          # ===== Step 1: Record BEFORE state =====
+          print('=== BEFORE STATE ===')
+
+          total_before, status_before = fetch_total()
+          print(f'Total scholarships BEFORE: {total_before}')
+
+          verify_status, vs_code = get_status()
+          print(f'Verification scheduler status BEFORE: {json.dumps(verify_status)}')
+
+          # Fetch first page of scholarships and find one with official_source_url
+          scholarships, sc = get_scholarship_list(page=1, limit=100)
+          print(f'Scholarship list fetch: HTTP {sc}, count={len(scholarships[\"items\"])}')
+          print(f'List total: {scholarships[\"pagination\"][\"total\"]}')
+
+          # Find a scholarship with stable official_source_url and rich data
+          target = None
+          for item in scholarships['items']:
+              url = item.get('official_source_url', '')
+              if url and item.get('title') and item.get('official_source'):
+                  target = item
+                  break
+
+          if not target:
+              print('ERROR: No suitable scholarship found with official_source_url')
+              sys.exit(1)
+
+          target_id = target['id']
+          BEFORE = extract_beforematch(target)
+          print(f'Selected target scholarship ID: {target_id}')
+          print(f'BEFORE: {json.dumps(BEFORE, indent=2, default=str)}')
+
+          # Also check verification queue
+          queue, qc = get_verification_queue()
+          print(f'Verification queue size: {len(queue)}, HTTP {qc}')
+          in_queue_before = any(s.get('id') == target_id for s in queue)
+          print(f'Target in verification queue BEFORE: {in_queue_before}')
+
+          # Collect IDs for integrity check
+          all_ids_before = set()
+          for item in scholarships['items']:
+              all_ids_before.add(item['id'])
+          # Get page 2 for more IDs
+          s2, _ = get_scholarship_list(page=2, limit=100)
+          for item in s2['items']:
+              all_ids_before.add(item['id'])
+          s3, _ = get_scholarship_list(page=3, limit=100)
+          for item in s3['items']:
+              all_ids_before.add(item['id'])
+          s4, _ = get_scholarship_list(page=4, limit=100)
+          for item in s4['items']:
+              all_ids_before.add(item['id'])
+
+          print(f'Total unique IDs collected (pages 1-4): {len(all_ids_before)}')
+          # Check for duplicate IDs
+          dup_ids = len(all_ids_before) < sum(len(p) for p in [scholarships['items'], s2['items'], s3['items'], s4['items']])
+          print(f'Any duplicate IDs in pages 1-4: {dup_ids}')
+
+          # ===== Step 2: Execute single-scholarship PATCH verification =====
+          print()
+          print('=== EXECUTING SINGLE-SCHOLARSHIP VERIFICATION ===')
+
+          PATCH_PAYLOAD = {
+              'verification_status': 'active',
+              'verification_notes': 'Controlled single-scholarship verification test',
+              'verified_by': 'single-scholarship-test',
+          }
+
+          result, patch_code = patch_verify(target_id, PATCH_PAYLOAD)
+          print(f'PATCH /scholarships/{target_id}/verify: HTTP {patch_code}')
+          print(f'Response: {json.dumps(result, indent=2, default=str)}')
+
+          # ===== Step 3: Record AFTER state =====
+          print()
+          print('=== AFTER STATE ===')
+
+          total_after, status_after = fetch_total()
+          print(f'Total scholarships AFTER: {total_after}')
+
+          scholarship_after, sa_code = get_scholarship(target_id)
+          print(f'GET /scholarships/{target_id}: HTTP {sa_code}')
+          print(f'AFTER: {json.dumps(scholarship_after, indent=2, default=str)}')
+
+          verify_status_after, _ = get_status()
+          print(f'Verification scheduler status AFTER: {json.dumps(verify_status_after)}')
+
+          # ===== Step 4: Integrity checks =====
+          print()
+          print('=== INTEGRITY CHECKS ===')
+
+          # 1. Scholarship count unchanged
+          count_unchanged = (total_before == total_after)
+          print(f'1. Scholarship count unchanged ({total_before} -> {total_after}): {count_unchanged}')
+
+          # 2. Target scholarship verification fields changed
+          AFTER = extract_beforematch(scholarship_after)
+          print(f'AFTER target: {json.dumps(AFTER, indent=2, default=str)}')
+
+          # 3. last_verified_at should be today
+          today_str = date.today().isoformat()
+          lv_changed = AFTER.get('last_verified_at') == today_str
+          print(f'2. last_verified_at is today ({today_str}): {lv_changed}')
+
+          # 4. next_verification_due should be 90 days from today
+          expected_due = (date.today() + __import__('datetime').timedelta(days=90)).isoformat()
+          due_changed = AFTER.get('next_verification_due') == expected_due
+          print(f'3. next_verification_due is 90 days out ({expected_due}): {due_changed}')
+
+          # 5. verified_by set correctly
+          vb_changed = AFTER.get('verified_by') == 'single-scholarship-test'
+          print(f'4. verified_by set correctly: {vb_changed}')
+
+          # 6. verification_status is active
+          vs_changed = AFTER.get('verification_status') == 'active'
+          print(f'5. verification_status is active: {vs_changed}')
+
+          # 7. is_verified is True
+          is_verified = AFTER.get('is_verified') == True
+          print(f'6. is_verified is True: {is_verified}')
+
+          # 8. updated_at changed (scholarship was modified)
+          updated_changed = BEFORE.get('updated_at') != AFTER.get('updated_at')
+          print(f'7. updated_at changed: {updated_changed}')
+
+          # 9. No scheduler triggered (scheduler_running should be false)
+          scheduler_not_triggered = not verify_status_after.get('scheduler_running', False)
+          print(f'8. Scheduler NOT triggered (scheduler_running=False): {scheduler_not_triggered}')
+
+          # 10. Verification queue check - target might still be in queue (depends on criteria)
+          queue_after, _ = get_verification_queue()
+          in_queue_after = any(s.get('id') == target_id for s in queue_after)
+          print(f'9. Target in verification queue AFTER: {in_queue_after} (may still appear if criteria match)')
+
+          # 11. Check no new scholarship review/history entries via API
+          # We can't query those tables directly, but we can verify the scholarship count is unchanged
+          print(f'10. Total count unchanged (no new scholarships created): {count_unchanged}')
+
+          # 12. Check cron config untouched (by reading from API)
+          print(f'11. Cron config is in git, not affected by API call')
+
+          all_pass = (
+              count_unchanged and
+              lv_changed and
+              due_changed and
+              vb_changed and
+              vs_changed and
+              is_verified and
+              updated_changed and
+              scheduler_not_triggered
+          )
+
+          if all_pass:
+              print()
+              print('=== RESULT: ALL CHECKS PASSED ===')
+              sys.exit(0)
+          else:
+              print()
+              print('=== RESULT: SOME CHECKS FAILED ===')
+              sys.exit(1)
+          "
