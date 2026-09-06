@@ -12,6 +12,10 @@
   transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
 }
 
+.scholarship-card__image {
+  margin-bottom: 20px;
+}
+
 .scholarship-card::before {
   position: absolute;
   top: 0;

@@ -41,9 +41,8 @@ git push origin main
 3. Connect your GitHub repository
 4. Render will auto-detect `render.yaml`
 5. Review the resources:
-   - **scholarzone-api** (Web Service, Docker)
-   - **scholarzone-verification-trigger** (Cron Job)
-   - **scholarzone-db** (PostgreSQL 16)
+    - **scholarzone-api** (Web Service, Docker)
+    - **scholarzone-db** (PostgreSQL 16)
 6. Click **Apply**
 
 ### Step 3: Set Environment Variables
@@ -276,23 +275,62 @@ Modify the verification to process only a few records:
 
 ---
 
-## Phase 9: Enable Cron
+## Phase 9: Enable Scheduled Verification (GitHub Actions)
 
 **ONLY AFTER ALL PREVIOUS PHASES PASS**
 
-1. Go to scholarzone-verification-trigger in Render Dashboard
-2. Verify schedule: `0 */12 * * *` (every 12 hours)
-3. Verify it targets the correct endpoint with the correct secret
-4. Enable the cron
+The autonomous verification trigger is provided by a GitHub Actions scheduled
+workflow. It runs every 12 hours and calls the existing
+`POST /internal/verify/trigger` endpoint.
 
-### Cron Configuration
+### Required GitHub Repository Settings
 
-```yaml
-schedule: "0 */12 * * *"
-dockerCommand: >
-  curl -sf -X POST "http://$SCHOLARZONE_API_HOST/internal/verify/trigger"
-  -H "X-Verification-Secret: $SCHOLARZONE_VERIFICATION_SECRET"
+1. Go to your GitHub repository → **Settings** → **Secrets and variables** → **Actions**
+2. Create the following **Repository secret**:
+
+   | Name | Description |
+   |------|-------------|
+   | `SCHOLARZONE_VERIFICATION_SECRET` | Must match the `SCHOLARZONE_VERIFICATION_SECRET` value configured in Render for `scholarzone-api`. Generate a strong random string (e.g., `openssl rand -hex 32`). |
+
+3. Create the following **Repository variable**:
+
+   | Name | Description |
+   |------|-------------|
+   | `SCHOLARZONE_API_URL` | Public HTTPS URL of the deployed Render web service (e.g., `https://scholarzone-api.onrender.com`). |
+
+### Verify the Workflow
+
+The workflow file `.github/workflows/verification-cron.yml` is already present in
+the repository and configured with:
+
+- **Schedule**: `7 */12 * * *` (runs at 00:07 and 12:07 UTC daily)
+- **Manual trigger**: `workflow_dispatch` available in the GitHub Actions UI
+- **Overlap protection**: `concurrency` group `verification-trigger` with `cancel-in-progress: true`
+
+To manually test before relying on the schedule:
+
+```bash
+# In GitHub repository → Actions → ScholarZone Verification Trigger → Run workflow
 ```
+
+Or from a local shell (replace with your actual values):
+
+```bash
+curl -sf -X POST "https://your-api.onrender.com/internal/verify/trigger" \
+  -H "X-Verification-Secret: your-secret-here"
+```
+
+Expected response: `202 Accepted`
+
+### Troubleshooting
+
+If the workflow fails:
+
+1. Verify `SCHOLARZONE_VERIFICATION_SECRET` is set in GitHub repository secrets
+2. Verify `SCHOLARZONE_API_URL` is set in GitHub repository variables
+3. Confirm the secret value matches the Render environment variable for `scholarzone-api`
+4. Check the Render web service is running and reachable
+5. Review GitHub Actions run logs for HTTP response codes
 
 ---
 
@@ -302,9 +340,9 @@ dockerCommand: >
 
 - [ ] Web service is running remotely
 - [ ] PostgreSQL is provisioned and accessible
-- [ ] Cron job is configured and enabled
+- [ ] GitHub Actions workflow is configured with secrets/variables
 - [ ] Verification trigger works remotely
-- [ ] Scheduler execution is visible in Render logs
+- [ ] Scheduler execution is visible in GitHub Actions and Render logs
 - [ ] Database changes/history are visible remotely
 
 ### Confirm Independence
@@ -337,11 +375,13 @@ dockerCommand: >
 2. Verify schema is created first
 3. Check for data type mismatches
 
-### Cron Job Fails
+### Scheduled Verification Fails
 
-1. Verify `SCHOLARZONE_VERIFICATION_SECRET` is set
-2. Check endpoint URL
-3. Review Render Cron logs
+1. Verify `SCHOLARZONE_VERIFICATION_SECRET` is set in GitHub repository secrets
+2. Verify `SCHOLARZONE_API_URL` is set in GitHub repository variables
+3. Confirm the secret matches the Render environment variable for `scholarzone-api`
+4. Review GitHub Actions run logs for HTTP response codes
+5. Check Render logs for endpoint errors
 
 ---
 

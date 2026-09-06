@@ -7,6 +7,9 @@ export const scholarships = [
     funding: 'Fully Funded',
     deadline: null,
     verified: true,
+    image_url: 'https://erasmus-plus.ec.europa.eu/sites/default/files/styles/hero_desktop/public/2025-01/emjm_students_european_campus.jpg',
+    image_source_type: 'official_scholarship',
+    image_alt_text: 'Erasmus Mundus Joint Masters students on a European university campus',
   },
   {
     id: 2,
@@ -16,6 +19,9 @@ export const scholarships = [
     funding: 'Fully Funded',
     deadline: 'April 2027',
     verified: true,
+    image_url: 'https://a2ascholarships.iccr.gov.in/assets/images/header-banner.jpg',
+    image_source_type: 'official_scholarship',
+    image_alt_text: 'ICCR Scholarship banner showing international students',
   },
   {
     id: 3,
@@ -25,6 +31,9 @@ export const scholarships = [
     funding: 'Fully Funded',
     deadline: 'October 2026',
     verified: true,
+    image_url: 'https://www.daad.de/shared/study/scholarships/2025/scholarship-banner-students-campus.jpg',
+    image_source_type: 'official_provider',
+    image_alt_text: 'DAAD scholarship recipients at a German university campus',
   },
   {
     id: 4,
@@ -34,5 +43,8 @@ export const scholarships = [
     funding: 'Fully Funded',
     deadline: null,
     verified: true,
+    image_url: 'https://www.studyinkorea.go.kr/en/community/data/file/2025/01/gks_scholarship_banner.jpg',
+    image_source_type: 'official_scholarship',
+    image_alt_text: 'Global Korea Scholarship (GKS) students at a Korean university',
   },
 ]

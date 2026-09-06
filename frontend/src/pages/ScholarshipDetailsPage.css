@@ -54,6 +54,16 @@
   box-shadow: 0 16px 40px rgba(15, 23, 42, 0.07);
 }
 
+.scholarship-details__image {
+  grid-column: 1 / -1;
+  margin-bottom: 32px;
+}
+
+.scholarship-details__image-wrapper {
+  max-width: 640px;
+  aspect-ratio: 16/9;
+}
+
 .scholarship-details__hero::after {
   position: absolute;
   right: -66px;

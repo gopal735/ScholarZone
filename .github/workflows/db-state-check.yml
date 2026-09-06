@@ -1,0 +1,33 @@
+name: DB State Check
+
+on:
+  workflow_dispatch:
+    inputs:
+      phase:
+        description: 'Phase (before/after)'
+        required: true
+        default: 'before'
+
+jobs:
+  db-state:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          cd backend
+          pip install sqlalchemy psycopg
+
+      - name: Run DB State Query
+        run: |
+          cd backend
+          python scripts/db_state.py
+        env:
+          SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}

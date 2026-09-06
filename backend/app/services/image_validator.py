@@ -29,9 +29,10 @@ when they produce no non-content signals.
 
 import io
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from enum import Enum
 from urllib.parse import urlparse
+import time
 
 import httpx
 from PIL import Image
@@ -357,7 +358,12 @@ def _detect_error_signals(filename: str, alt_text: str | None, full_url: str) ->
                 "not-found", "notfound", "error-page", "error_image",
                 "internal-server-error", "forbidden", "gone"]
 
-    scan_text = f"{filename} {full_url}".lower()
+    # Strip dimension patterns like 400x300 or 1920x1080 before checking for
+    # HTTP error codes to avoid false positives on legitimate CMS filenames.
+    import re
+    filename_clean = re.sub(r'\d{3,5}[x×]\d{3,5}', '', filename)
+    scan_text = re.sub(r'\d{3,5}[x×]\d{3,5}', '', full_url)
+    scan_text = f"{filename_clean} {scan_text}".lower()
     for kw in error_kw:
         if kw in scan_text:
             signals.append(NonContentSignal(
@@ -393,7 +399,8 @@ def _detect_logo_emblem_signals(image_url: str, alt_text: str | None,
 
     # Strong filename signals — but NOT if filename indicates absence of logo
     strong_logo_filenames = ["logo", "emblem", "crest", "brand_mark",
-                             "logotype", "brandmark", "symbol-mark", "coat-of-arms"]
+                             "logotype", "brandmark", "symbol-mark", "coat-of-arms",
+                             "logga"]
     for kw in strong_logo_filenames:
         if filename_lower == kw or filename_lower.startswith(f"{kw}.") or filename_lower.startswith(f"{kw}_"):
             signals.append(NonContentSignal(
@@ -547,10 +554,12 @@ def _detect_og_thumbnail_signals(image_url: str, filename: str,
             break
 
     # og:image discovery method combined with generic-looking thumbnail paths
-    if discovery_method == "og:image" and any(p in path for p in ["/common/", "/assets/common", "/default/", "/og", "/og-image", "/ogimg", "/og_thumb"]):
-        signals.append(NonContentSignal(
-            label="og:image from common/default/og path",
-            weight=1.5, source="url_path"))
+    if discovery_method == "og:image":
+        is_drupal_content_style = "/sites/default/files/styles/" in path
+        if not is_drupal_content_style and any(p in path for p in ["/common/", "/assets/common", "/default/", "/og", "/og-image", "/ogimg", "/og_thumb"]):
+            signals.append(NonContentSignal(
+                label="og:image from common/default/og path",
+                weight=1.5, source="url_path"))
 
     return signals
 
@@ -592,6 +601,8 @@ class ValidationStatus(str, Enum):
     HUMAN_REVIEW = "human_review"
     REJECTED = "rejected"
     NOT_CHECKED = "not_checked"
+    TEMP_UNAVAILABLE = "temp_unavailable"
+    GENUINELY_MISSING = "genuinely_missing"
 
 
 @dataclass
@@ -629,6 +640,10 @@ class ImageValidationResult:
     image_analysis: ImageAnalysisResult | None = None
     image_kind: str | None = None
     result_id: int = 0
+    retry_count: int = 0
+    last_attempt_at: datetime | None = None
+    next_retry_at: datetime | None = None
+    failure_reason: str | None = None
 
 
 @dataclass
@@ -671,10 +686,7 @@ class ImageValidator:
         result.image_domain = extract_domain(candidate.image_url)
 
         result = self._check_reachability(result)
-        if not result.is_reachable:
-            result.status = ValidationStatus.REJECTED
-            result.confidence = "LOW"
-            result.rejection_reasons.append(f"Image unreachable (HTTP {result.http_status})")
+        if result.status in (ValidationStatus.REJECTED, ValidationStatus.TEMP_UNAVAILABLE, ValidationStatus.GENUINELY_MISSING):
             result.checked_at = datetime.now(timezone.utc)
             self._finalize_decision(result, scholarship_title, official_source_url)
             return result
@@ -731,22 +743,103 @@ class ImageValidator:
         reviewed = [r for r in results if r.status == ValidationStatus.HUMAN_REVIEW]
         if reviewed:
             return max(reviewed, key=lambda r: r.relevance_score)
+        temp_unavail = [r for r in results if r.status == ValidationStatus.TEMP_UNAVAILABLE]
+        if temp_unavail:
+            return max(temp_unavail, key=lambda r: r.relevance_score)
+        _ = [r for r in results if r.status == ValidationStatus.GENUINELY_MISSING]
         return None
 
     def _check_reachability(self, result: ImageValidationResult) -> ImageValidationResult:
-        try:
-            response = httpx.head(
-                result.candidate.image_url,
-                headers={"User-Agent": BROWSER_UA},
-                timeout=self.timeout,
-                follow_redirects=True,
+        TRANSIENT_STATUS_CODES = {408, 429, 500, 502, 503, 504}
+        BLOCKED_STATUS_CODES = {403, 412}
+        tried_enhanced = False
+        for attempt in range(3):
+            try:
+                headers = {"User-Agent": BROWSER_UA}
+                if tried_enhanced:
+                    headers = {
+                        **headers,
+                        "Accept": "image/webp,image/apng,image/*,*/*;q=0.8",
+                        "Accept-Language": "en-US,en;q=0.9",
+                        "Referer": result.candidate.page_url or "",
+                    }
+
+                response = httpx.head(
+                    result.candidate.image_url,
+                    headers=headers,
+                    timeout=self.timeout,
+                    follow_redirects=True,
+                )
+                result.http_status = response.status_code
+                result.content_type = response.headers.get("content-type")
+                result.is_reachable = response.status_code == 200
+
+                if not result.is_reachable and result.http_status not in (404, 410):
+                    response = httpx.get(
+                        result.candidate.image_url,
+                        headers=headers,
+                        timeout=self.timeout,
+                        follow_redirects=True,
+                    )
+                    result.http_status = response.status_code
+                    result.content_type = response.headers.get("content-type")
+                    result.is_reachable = response.status_code == 200
+
+                if result.is_reachable:
+                    result.retry_count = attempt + 1
+                    result.last_attempt_at = datetime.now(timezone.utc)
+                    return result
+
+                if result.http_status in (404, 410):
+                    result.status = ValidationStatus.GENUINELY_MISSING
+                    result.confidence = "LOW"
+                    result.retry_count = attempt + 1
+                    result.last_attempt_at = datetime.now(timezone.utc)
+                    result.failure_reason = f"Image not found (HTTP {result.http_status}) — genuinely missing"
+                    result.rejection_reasons.append(result.failure_reason)
+                    return result
+
+                if result.http_status in BLOCKED_STATUS_CODES and not tried_enhanced and attempt < 2:
+                    tried_enhanced = True
+                    time.sleep(min(1.0 * (2 ** attempt), 8.0))
+                    continue
+
+                if result.http_status in TRANSIENT_STATUS_CODES and attempt < 2:
+                    time.sleep(min(1.0 * (2 ** attempt), 8.0))
+                    continue
+
+                break
+
+            except httpx.TimeoutException:
+                result.http_status = None
+                result.is_reachable = False
+                if attempt < 2:
+                    time.sleep(min(1.0 * (2 ** attempt), 8.0))
+                    continue
+                break
+            except httpx.RequestError:
+                result.http_status = None
+                result.is_reachable = False
+                if attempt < 2:
+                    time.sleep(min(1.0 * (2 ** attempt), 8.0))
+                    continue
+                break
+
+        result.retry_count = 3
+        result.last_attempt_at = datetime.now(timezone.utc)
+        if result.http_status in (*BLOCKED_STATUS_CODES, *TRANSIENT_STATUS_CODES) or result.http_status is None:
+            result.status = ValidationStatus.TEMP_UNAVAILABLE
+            result.confidence = "LOW"
+            result.next_retry_at = datetime.now(timezone.utc) + timedelta(minutes=5)
+            result.failure_reason = (
+                f"Temporarily unavailable (HTTP {result.http_status or 'timeout/connection error'})"
             )
-            result.http_status = response.status_code
-            result.content_type = response.headers.get("content-type")
-            result.is_reachable = response.status_code == 200
-        except httpx.RequestError:
-            result.http_status = None
-            result.is_reachable = False
+            result.rejection_reasons.append(result.failure_reason)
+        else:
+            result.status = ValidationStatus.REJECTED
+            result.confidence = "LOW"
+            result.failure_reason = f"Image unreachable (HTTP {result.http_status})"
+            result.rejection_reasons.append(result.failure_reason)
         return result
 
     def _check_content_type(self, result: ImageValidationResult) -> ImageValidationResult:
@@ -790,10 +883,20 @@ class ImageValidator:
 
         if result.width and result.height:
             if result.width < MIN_IMAGE_DIMENSION or result.height < MIN_IMAGE_DIMENSION:
-                result.is_generic_image = True
-                result.rejection_reasons.append(
-                    f"Image too small ({result.width}x{result.height})"
+                # Don't reject small official logos from official domains.
+                filename = urlparse(result.candidate.image_url).path.rsplit("/", 1)[-1].lower()
+                is_official_logo = (
+                    result.image_domain and is_official_domain(result.image_domain) and
+                    any(filename.startswith(kw) for kw in [
+                        "logo", "emblem", "crest", "brand_mark", "logotype",
+                        "brandmark", "symbol-mark", "coat-of-arms", "logga",
+                    ])
                 )
+                if not is_official_logo:
+                    result.is_generic_image = True
+                    result.rejection_reasons.append(
+                        f"Image too small ({result.width}x{result.height})"
+                    )
 
             if result.width > 1 and result.height > 1:
                 ratio = result.width / result.height
@@ -1048,7 +1151,11 @@ class ImageValidator:
         check_height = result.height or result.candidate.height
         if check_width and check_height:
             min_dim = min(check_width, check_height)
-            if min_dim < MIN_COVER_IMAGE_DIMENSION:
+            # Don't penalize small official logos from official domains — logos
+            # are legitimately small and are already validated as fallback only.
+            logo_signals = [s for s in signals if s.label.startswith("logo") or s.label.startswith("emblem") or s.label.startswith("brand")]
+            is_official_logo = bool(logo_signals) and result.image_domain and is_official_domain(result.image_domain)
+            if not is_official_logo and min_dim < MIN_COVER_IMAGE_DIMENSION:
                 signals.append(NonContentSignal(
                     label=f"Low resolution ({check_width}x{check_height}) — too small for cover",
                     weight=1.5, source="dimensions"))
@@ -1057,13 +1164,13 @@ class ImageValidator:
         non_logo_signals = [s for s in signals if s not in logo_signals]
 
         result.non_content_signals = signals
-        result.non_content_total_weight = round(sum(s.weight for s in non_logo_signals), 4)
+        result.non_content_total_weight = round(sum(s.weight for s in signals), 4)
         result.non_content_logo_weight = round(sum(s.weight for s in logo_signals), 4)
 
         if result.non_content_total_weight >= NON_CONTENT_REJECTION_THRESHOLD:
             result.is_generic_image = True
             result.is_ui_asset = True
-            signal_labels = "; ".join(s.label for s in non_logo_signals[:3])
+            signal_labels = "; ".join(s.label for s in signals[:3])
             result.rejection_reasons.append(
                 f"Non-content image (evidence weight {result.non_content_total_weight:.1f}/"
                 f"{NON_CONTENT_REJECTION_THRESHOLD}): {signal_labels}"
@@ -1266,6 +1373,11 @@ class ImageValidator:
             pass
 
     def _finalize_decision(self, result: ImageValidationResult, scholarship_title: str | None, official_source_url: str | None) -> None:
+        if result.status == ValidationStatus.TEMP_UNAVAILABLE:
+            return
+        if result.status == ValidationStatus.GENUINELY_MISSING:
+            return
+
         if not result.is_reachable:
             result.confidence = "LOW"
             result.status = ValidationStatus.REJECTED

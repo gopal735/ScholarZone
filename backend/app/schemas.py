@@ -22,6 +22,7 @@ class ScholarshipSort(str, Enum):
 
 class ScholarshipStatus(str, Enum):
     OPEN = "open"
+    UPCOMING = "upcoming"
     CLOSING_SOON = "closing-soon"
     CLOSED = "closed"
 

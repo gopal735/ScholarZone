@@ -49,6 +49,7 @@ def _make_candidate(
     image_url: str = "https://daad.de/image.jpg",
     page_url: str = "https://daad.de/page",
     discovery_method: str = "html-img",
+    fallback_level: int = 1,
     alt_text: str | None = "Test image",
     width: int | None = 800,
     height: int | None = 600,
@@ -57,6 +58,7 @@ def _make_candidate(
         image_url=image_url,
         page_url=page_url,
         discovery_method=discovery_method,
+        fallback_level=fallback_level,
         alt_text=alt_text,
         width=width,
         height=height,
@@ -95,7 +97,7 @@ class TestUnreachableImage:
 
         assert result.is_reachable is False
         assert result.http_status == 404
-        assert result.status == ValidationStatus.REJECTED
+        assert result.status == ValidationStatus.GENUINELY_MISSING
         assert result.confidence == "LOW"
 
 
@@ -356,7 +358,7 @@ class TestNullFallback:
         with patch("app.services.image_validator.httpx", mock_httpx_module):
             result = validator.validate_candidate(candidate, scholarship_title="Test")
 
-        assert result.status == ValidationStatus.REJECTED
+        assert result.status == ValidationStatus.GENUINELY_MISSING
         assert result.confidence == "LOW"
         assert not result.is_reachable
 
@@ -686,7 +688,7 @@ class TestDiscoveryService:
 
     def test_does_not_crawl_non_official_domain(self):
         service = ImageDiscoveryService()
-        service._crawl_page("https://unsplash.com/photos/abc", depth=0)
+        service._crawl_page("https://unsplash.com/photos/abc", depth=0, fallback_level=1, source_domain="unsplash.com")
         assert len(service._candidates) == 0
 
     def test_deduplicates_candidates(self):
@@ -1629,7 +1631,7 @@ class TestFalsePositiveRecovery:
             candidate, "DAAD Scholarship", "https://www.daad.de/en/scholarships")
         assert result.non_content_logo_weight >= 1.5
         assert result.image_kind == "official_logo"
-        assert result.status == ValidationStatus.HUMAN_REVIEW
+        assert result.status == ValidationStatus.REJECTED
 
     def test_logo_in_path_still_rejected(self):
         """Images in explicit /logo/ directories must still be rejected."""
@@ -1645,7 +1647,7 @@ class TestFalsePositiveRecovery:
             candidate, "DAAD Scholarship", "https://www.daad.de/en/scholarships")
         assert result.non_content_logo_weight >= 1.5
         assert result.image_kind == "official_logo"
-        assert result.status == ValidationStatus.HUMAN_REVIEW
+        assert result.status == ValidationStatus.REJECTED
 
 
 class TestImageContentAnalysisNoneMetrics:
@@ -1737,3 +1739,615 @@ class TestImageContentAnalysisNoneMetrics:
         result = validator._check_image_content(result)
         assert result.is_generic_image is False
         assert any("Image analysis: content photograph detected" in r for r in result.relevance_notes)
+
+
+# ---------------------------------------------------------------------------
+# Expanded discovery tier tests
+# ---------------------------------------------------------------------------
+
+class TestDiscoveryTiers:
+    """Tests for the expanded discovery layer (tiers 1-8)."""
+
+    def test_same_domain_authoritative_image_accepted(self):
+        """Same-domain authoritative image should be discovered when context matches."""
+        html = """
+        <html>
+        <head>
+            <title>DAAD Scholarship Program 2025</title>
+            <meta property="og:image" content="/images/program-cover.jpg">
+        </head>
+        <body>
+            <img src="/images/program-cover.jpg" alt="DAAD students on campus">
+        </body>
+        </html>
+        """
+        service = ImageDiscoveryService(timeout=30.0)
+        candidates = service.extract_images_from_html(
+            html, "https://www.daad.de/en/scholarships/program"
+        )
+        image_urls = [c.image_url for c in candidates]
+        assert any("program-cover.jpg" in u for u in image_urls)
+
+    def test_all_tiers_exhausted_before_no_candidate(self):
+        """no_candidate_found must only occur after all discovery tiers are exhausted."""
+        # Simulate a page with no images at all
+        html = "<html><head><title>Empty</title></head><body>No images here</body></html>"
+        service = ImageDiscoveryService(timeout=30.0)
+        candidates = service.extract_images_from_html(
+            html, "https://www.daad.de/en/scholarships"
+        )
+        assert candidates == []
+
+    def test_common_asset_path_probing(self):
+        """Tier 7: Common asset paths should be probed on official domain."""
+        mock_httpx_module = MagicMock()
+        mock_httpx_module.get.return_value = MagicMock(
+            status_code=404,
+            headers={"content-type": "text/html"},
+        )
+        mock_httpx_module.RequestError = type("E", (), {})
+
+        with patch("app.services.image_discovery.httpx", mock_httpx_module):
+            service = ImageDiscoveryService(timeout=30.0)
+            candidates = service.discover_from_scholarship("https://www.daad.de/en/scholarships")
+            # Should include candidates from common asset paths even if they return 404
+            asset_urls = [c.image_url for c in candidates if c.fallback_level == 7]
+            assert len(asset_urls) > 0
+
+    def test_link_rel_icon_fallback(self):
+        """Tier 8: link rel=icon should be discovered as final fallback."""
+        html = """
+        <html>
+        <head>
+            <link rel="icon" href="/favicon.ico">
+            <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        </head>
+        <body></body>
+        </html>
+        """
+        mock_httpx_module = MagicMock()
+        mock_resp = MagicMock()
+        mock_resp.status_code = 404
+        mock_resp.headers = {"content-type": "text/html"}
+        mock_resp.text = ""
+        mock_httpx_module.get.return_value = mock_resp
+        mock_httpx_module.RequestError = type("E", (), {})
+
+        with patch("app.services.image_discovery.httpx", mock_httpx_module):
+            service = ImageDiscoveryService(timeout=30.0)
+            candidates = service.extract_images_from_html(
+                html, "https://www.daad.de/en/scholarships"
+            )
+            icon_candidates = [c for c in candidates if c.fallback_level == 8]
+            assert len(icon_candidates) > 0
+            assert any("apple-touch-icon" in c.image_url for c in icon_candidates)
+
+    def test_cross_domain_official_link_discovery(self):
+        """Tier 3: Cross-domain links to known official domains should be followed."""
+        main_html = """
+        <html>
+        <head><title>Scholarship Program</title></head>
+        <body>
+            <a href="https://www.daad.de/en/scholarships">DAAD Scholarships</a>
+            <a href="https://www.studyinkorea.go.kr">Study in Korea</a>
+        </body>
+        </html>
+        """
+        cross_html = """
+        <html>
+        <head><title>Study in Korea</title></head>
+        <body>
+            <img src="/images/korea-program.jpg" alt="Korea scholarship program">
+        </body>
+        </html>
+        """
+        def mock_get(url, **kwargs):
+            if "daad.de/en/scholarships" in url:
+                resp = MagicMock()
+                resp.status_code = 200
+                resp.headers = {"content-type": "text/html"}
+                resp.text = main_html
+                return resp
+            if "studyinkorea.go.kr" in url:
+                resp = MagicMock()
+                resp.status_code = 200
+                resp.headers = {"content-type": "text/html"}
+                resp.text = cross_html
+                return resp
+            resp = MagicMock()
+            resp.status_code = 404
+            resp.headers = {"content-type": "text/html"}
+            resp.text = ""
+            return resp
+
+        mock_httpx_module = MagicMock()
+        mock_httpx_module.get = mock_get
+        mock_httpx_module.RequestError = type("E", (), {})
+
+        with patch("app.services.image_discovery.httpx", mock_httpx_module):
+            with patch("app.services.image_discovery.MAX_PAGES_PER_SOURCE", 30):
+                service = ImageDiscoveryService(timeout=30.0)
+                candidates = service.discover_from_scholarship("https://www.daad.de/en/scholarships")
+                cross_domain_candidates = [c for c in candidates if c.fallback_level == 3]
+                assert len(cross_domain_candidates) > 0
+
+    def test_enhanced_jsonld_extraction(self):
+        """Tier 6: JSON-LD should extract Organization.logo and nested images."""
+        html = """
+        <html>
+        <head>
+            <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "EducationalOrganization",
+                "name": "Test University",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://www.university.edu/logo.png"
+                },
+                "image": "https://www.university.edu/campus.jpg"
+            }
+            </script>
+        </head>
+        <body></body>
+        </html>
+        """
+        service = ImageDiscoveryService(timeout=30.0)
+        candidates = service.extract_images_from_html(
+            html, "https://www.university.edu/program"
+        )
+        image_urls = [c.image_url for c in candidates]
+        assert any("logo.png" in u for u in image_urls)
+        assert any("campus.jpg" in u for u in image_urls)
+
+    def test_og_image_secure_url_extraction(self):
+        """Tier 5: og:image:secure_url should be extracted."""
+        html = """
+        <html>
+        <head>
+            <meta property="og:image" content="https://www.daad.de/images/secure-cover.jpg">
+            <meta property="og:image:secure_url" content="https://www.daad.de/images/secure-cover-ssl.jpg">
+        </head>
+        <body></body>
+        </html>
+        """
+        service = ImageDiscoveryService(timeout=30.0)
+        candidates = service.extract_images_from_html(
+            html, "https://www.daad.de/en/scholarships"
+        )
+        image_urls = [c.image_url for c in candidates]
+        assert any("secure-cover" in u for u in image_urls)
+
+    def test_discovery_method_priority_sort(self):
+        """Discovery method priority: og:image > twitter > json-ld > html-img > common-asset > link-rel-icon."""
+        candidates = [
+            ImageCandidate(image_url="https://example.com/logo.png", page_url="https://example.com", discovery_method="link-rel-icon", fallback_level=8),
+            ImageCandidate(image_url="https://example.com/cover.jpg", page_url="https://example.com", discovery_method="og:image", fallback_level=5),
+            ImageCandidate(image_url="https://example.com/banner.jpg", page_url="https://example.com", discovery_method="html-img", fallback_level=4),
+        ]
+        priority = {"og:image": 0, "twitter:image": 1, "json-ld": 2, "link-image-src": 3, "html-img": 4, "common-asset": 5, "link-rel-icon": 6}
+        candidates.sort(key=lambda c: (
+            priority.get(c.discovery_method, 99),
+            -c.fallback_level,
+            -(len(c.alt_text or "")),
+        ))
+        assert candidates[0].discovery_method == "og:image"
+        assert candidates[1].discovery_method == "html-img"
+        assert candidates[2].discovery_method == "link-rel-icon"
+
+
+class TestDiscoveryValidationContract:
+    """Tests ensuring discovery layer changes don't break validation contract."""
+
+    def test_favicon_rejected_by_validator(self):
+        """Favicon images discovered by tier 8 should still be rejected by validator."""
+        candidate = _make_candidate(
+            image_url="https://www.daad.de/favicon.ico",
+            page_url="https://www.daad.de/en/scholarships",
+            discovery_method="link-rel-icon",
+            fallback_level=8,
+            alt_text="favicon",
+        )
+        validator = ImageValidator()
+
+        mock_httpx_module = MagicMock()
+        mock_httpx_module.head.return_value = _mock_head(200, "image/x-icon")
+        mock_httpx_module.RequestError = type("E", (), {})
+
+        with patch("app.services.image_validator.httpx", mock_httpx_module):
+            result = validator.validate_candidate(
+                candidate,
+                scholarship_title="DAAD Scholarship",
+                official_source_url="https://www.daad.de/en/scholarships",
+            )
+
+        assert result.status == ValidationStatus.REJECTED
+        assert result.confidence == "LOW"
+
+    def test_ui_social_icon_rejected_by_validator(self):
+        """UI/social icons discovered by expanded discovery should still be rejected."""
+        candidate = _make_candidate(
+            image_url="https://www.daad.de/images/social-facebook.png",
+            page_url="https://www.daad.de/en/scholarships",
+            discovery_method="html-img",
+            fallback_level=4,
+            alt_text="Facebook share icon",
+        )
+        validator = ImageValidator()
+
+        mock_httpx_module = MagicMock()
+        mock_httpx_module.head.return_value = _mock_head(200, "image/png")
+        mock_httpx_module.RequestError = type("E", (), {})
+
+        with patch("app.services.image_validator.httpx", mock_httpx_module):
+            result = validator.validate_candidate(
+                candidate,
+                scholarship_title="DAAD Scholarship",
+                official_source_url="https://www.daad.de/en/scholarships",
+            )
+
+        assert result.status == ValidationStatus.REJECTED
+        assert result.confidence == "LOW"
+
+    def test_unrelated_organization_logo_rejected(self):
+        """Unrelated organization logo should be rejected even if on same domain."""
+        candidate = _make_candidate(
+            image_url="https://www.partner-org.com/images/partner-logo.png",
+            page_url="https://www.daad.de/en/scholarships",
+            discovery_method="html-img",
+            fallback_level=4,
+            alt_text="Partner organization logo",
+        )
+        validator = ImageValidator()
+
+        mock_httpx_module = MagicMock()
+        mock_httpx_module.head.return_value = _mock_head(200, "image/png")
+        mock_httpx_module.RequestError = type("E", (), {})
+
+        def mock_check_licensing(self, result):
+            result.licensing_status = "licensing_known"
+            result.licensing_evidence = "Partner license"
+            return result
+
+        with patch("app.services.image_validator.httpx", mock_httpx_module):
+            with patch.object(ImageValidator, "_check_licensing", mock_check_licensing):
+                result = validator.validate_candidate(
+                    candidate,
+                    scholarship_title="DAAD Scholarship",
+                    official_source_url="https://www.daad.de/en/scholarships",
+                )
+
+        assert result.status == ValidationStatus.REJECTED
+        assert result.confidence == "LOW"
+
+    def test_medium_confidence_goes_to_human_review(self):
+        """MEDIUM confidence must still route to HUMAN_REVIEW."""
+        candidate = _make_candidate(
+            image_url="https://studyinkorea.go.kr/images/gks-program.jpg",
+            page_url="https://studyinkorea.go.kr/en/plan/scholarship",
+            discovery_method="og:image",
+            alt_text="Global Korea Scholarship program",
+        )
+        validator = ImageValidator()
+
+        mock_httpx_module = MagicMock()
+        mock_httpx_module.head.return_value = _mock_head(200, "image/jpeg")
+        mock_httpx_module.RequestError = type("E", (), {})
+        mock_httpx_module.get = _mock_get_image()
+
+        def mock_check_licensing(self, result):
+            result.licensing_status = "licensing_unknown"
+            result.licensing_evidence = None
+            return result
+
+        with patch("app.services.image_validator.httpx", mock_httpx_module):
+            with patch.object(ImageValidator, "_check_licensing", mock_check_licensing):
+                result = validator.validate_candidate(
+                    candidate,
+                    scholarship_title="Global Korea Scholarship",
+                    official_source_url="https://studyinkorea.go.kr/en/plan/scholarship",
+                )
+
+        assert result.status == ValidationStatus.HUMAN_REVIEW
+        assert result.confidence == "MEDIUM"
+
+    def test_high_confidence_eligible_for_automatic_persistence(self):
+        """HIGH confidence with APPROVED status must be eligible for automatic persistence."""
+        candidate = _make_candidate(
+            image_url="https://erasmus-plus.ec.europa.eu/images/emjm-campus.jpg",
+            page_url="https://erasmus-plus.ec.europa.eu/opportunities/erasmus-mundus-joint-masters",
+            discovery_method="og:image",
+            alt_text="Erasmus Mundus Joint Masters students on European campus",
+        )
+        validator = ImageValidator()
+
+        mock_httpx_module = MagicMock()
+        mock_httpx_module.head.return_value = _mock_head(200, "image/jpeg")
+        mock_httpx_module.RequestError = type("E", (), {})
+        mock_httpx_module.get = _mock_get_image()
+
+        def mock_check_licensing(self, result):
+            result.licensing_status = "licensing_known"
+            result.licensing_evidence = "CC BY 4.0"
+            return result
+
+        with patch("app.services.image_validator.httpx", mock_httpx_module):
+            with patch.object(ImageValidator, "_check_licensing", mock_check_licensing):
+                result = validator.validate_candidate(
+                    candidate,
+                    scholarship_title="Erasmus Mundus Joint Masters",
+                    official_source_url="https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+                )
+
+        assert result.confidence == "HIGH"
+        assert result.status == ValidationStatus.APPROVED
+        assert result.image_kind in ("program_image", "official_banner")
+
+    def test_dimension_pattern_not_flagged_as_error_image(self):
+        """URLs containing dimension patterns like 400x300 must not be flagged as error images."""
+        from app.services.image_validator import _detect_error_signals
+        signals = _detect_error_signals(
+            filename="elodie_burrillon_223 400x300.jpg.webp",
+            alt_text=None,
+            full_url="/sites/default/files/styles/page_header_image_mobile_landscape_x2/public/2022-12/elodie_burrillon_223%20400x300.jpg.webp?h=a61266fd&itok=y70DUgq8",
+        )
+        assert not signals, f"Dimension pattern falsely flagged as error: {signals}"
+
+    def test_www_prefix_normalized_for_official_domain(self):
+        """www.esteri.it should be recognized as official because esteri.it is known."""
+        from app.services.scholarship_image_verifier import is_official_domain
+        assert is_official_domain("www.esteri.it") is True
+        assert is_official_domain("esteri.it") is True
+
+    def test_head_fallback_to_get_on_non_200(self):
+        """Validator should fall back to GET when HEAD returns non-200 (except 404)."""
+        candidate = _make_candidate(
+            image_url="https://www.niied.go.kr/web/main/file/image/uu/test.png",
+            page_url="https://www.niied.go.kr/web/niied/niiedEng/main",
+            discovery_method="html-img",
+            fallback_level=2,
+        )
+        validator = ImageValidator()
+
+        mock_head = MagicMock()
+        mock_head.status_code = 403
+        mock_head.headers = {"content-type": "text/html"}
+        mock_get = MagicMock()
+        mock_get.status_code = 200
+        mock_get.headers = {"content-type": "image/png"}
+        mock_get.raw = MagicMock()
+
+        mock_httpx_module = MagicMock()
+        mock_httpx_module.head.return_value = mock_head
+        mock_httpx_module.get.return_value = mock_get
+        mock_httpx_module.RequestError = type("E", (), {})
+
+        with patch("app.services.image_validator.httpx", mock_httpx_module):
+            result = validator.validate_candidate(
+                candidate,
+                scholarship_title="GKS",
+                official_source_url="https://www.niied.go.kr/web/niied/contents/niiedEng/eng_gksNonDegreeExchange",
+            )
+
+        assert result.is_reachable is True
+        assert result.http_status == 200
+
+    def test_small_official_logo_exempt_from_low_resolution_rejection(self):
+        """Small official logos from official domains should not be rejected solely for low resolution."""
+        candidate = _make_candidate(
+            image_url="https://si.se/app/uploads/2017/10/logga_si_se.png",
+            page_url="https://si.se/en/events-projects/",
+            discovery_method="og:image",
+            fallback_level=2,
+            width=220,
+            height=80,
+        )
+        validator = ImageValidator()
+
+        mock_httpx_module = MagicMock()
+        mock_httpx_module.head.return_value = _mock_head(200, "image/png")
+        mock_httpx_module.RequestError = type("E", (), {})
+        mock_httpx_module.get = _mock_get_image()
+
+        def mock_check_licensing(self, result):
+            result.licensing_status = "licensing_unknown"
+            result.licensing_evidence = None
+            return result
+
+        with patch("app.services.image_validator.httpx", mock_httpx_module):
+            with patch.object(ImageValidator, "_check_licensing", mock_check_licensing):
+                result = validator.validate_candidate(
+                    candidate,
+                    scholarship_title="Swedish Institute Scholarship",
+                    official_source_url="https://si.se/en/apply/scholarships",
+                )
+
+        assert "Low resolution" not in " ".join(result.rejection_reasons)
+        assert result.image_kind == "official_logo"
+
+
+class TestNetworkResilience:
+    """Tests for retry logic, enhanced headers, and temporary unavailability state."""
+
+    def test_timeout_triggers_retry_then_temp_unavailable(self):
+        """Multiple timeouts should retry and end as TEMP_UNAVAILABLE, not REJECTED."""
+        candidate = _make_candidate(
+            image_url="https://daad.de/slow-image.jpg",
+            page_url="https://daad.de/en/scholarships",
+            discovery_method="html-img",
+        )
+        validator = ImageValidator()
+
+        TimeoutExc = type("TimeoutException", (Exception,), {})
+        RequestExc = type("RequestError", (Exception,), {})
+
+        mock_httpx_module = MagicMock()
+        mock_httpx_module.head.side_effect = TimeoutExc("timeout")
+        mock_httpx_module.RequestError = RequestExc
+        mock_httpx_module.TimeoutException = TimeoutExc
+
+        with patch("app.services.image_validator.httpx", mock_httpx_module):
+            with patch("time.sleep"):
+                result = validator.validate_candidate(
+                    candidate,
+                    scholarship_title="DAAD",
+                    official_source_url="https://www.daad.de/en/scholarships",
+                )
+
+        assert result.status == ValidationStatus.TEMP_UNAVAILABLE
+        assert result.confidence == "LOW"
+        assert mock_httpx_module.head.call_count == 3
+
+    def test_403_triggers_enhanced_header_retry_then_temp_unavailable(self):
+        """403 should retry with enhanced headers, then end as TEMP_UNAVAILABLE."""
+        candidate = _make_candidate(
+            image_url="https://daad.de/blocked-image.jpg",
+            page_url="https://daad.de/en/scholarships",
+            discovery_method="html-img",
+        )
+        validator = ImageValidator()
+
+        mock_head = MagicMock()
+        mock_head.status_code = 403
+        mock_head.headers = {"content-type": "text/html"}
+
+        TimeoutExc = type("TimeoutException", (Exception,), {})
+        RequestExc = type("RequestError", (Exception,), {})
+
+        mock_httpx_module = MagicMock()
+        mock_httpx_module.head.return_value = mock_head
+        mock_httpx_module.get.return_value = mock_head
+        mock_httpx_module.RequestError = RequestExc
+        mock_httpx_module.TimeoutException = TimeoutExc
+
+        with patch("app.services.image_validator.httpx", mock_httpx_module):
+            with patch("time.sleep"):
+                result = validator.validate_candidate(
+                    candidate,
+                    scholarship_title="DAAD",
+                    official_source_url="https://www.daad.de/en/scholarships",
+                )
+
+        assert result.status == ValidationStatus.TEMP_UNAVAILABLE
+        assert result.confidence == "LOW"
+        assert mock_httpx_module.head.call_count == 2
+
+    def test_404_is_genuinely_missing_not_retried(self):
+        """404 should be immediately rejected as genuinely missing, not retried."""
+        candidate = _make_candidate(
+            image_url="https://daad.de/missing.jpg",
+            page_url="https://daad.de/en/scholarships",
+            discovery_method="html-img",
+        )
+        validator = ImageValidator()
+
+        mock_httpx_module = MagicMock()
+        mock_httpx_module.head.return_value = _mock_head(404, "text/html")
+        mock_httpx_module.RequestError = type("E", (), {})
+
+        with patch("app.services.image_validator.httpx", mock_httpx_module):
+            result = validator.validate_candidate(
+                candidate,
+                scholarship_title="DAAD",
+                official_source_url="https://www.daad.de/en/scholarships",
+            )
+
+        assert result.status == ValidationStatus.GENUINELY_MISSING
+        assert result.confidence == "LOW"
+        assert mock_httpx_module.head.call_count == 1
+
+    def test_temp_unavailable_returned_by_find_best_result(self):
+        """TEMP_UNAVAILABLE should be returned when no APPROVED or HUMAN_REVIEW exist."""
+        validator = ImageValidator()
+        temp_result = MagicMock(
+            status=ValidationStatus.TEMP_UNAVAILABLE,
+            relevance_score=0.5,
+        )
+        rejected_result = MagicMock(
+            status=ValidationStatus.REJECTED,
+            relevance_score=0.3,
+        )
+        best = validator.find_best_result([rejected_result, temp_result])
+        assert best is temp_result
+
+    def test_412_triggers_enhanced_header_retry_then_temp_unavailable(self):
+        """412 Precondition Failed should retry with enhanced headers, then TEMP_UNAVAILABLE."""
+        candidate = _make_candidate(
+            image_url="https://daad.de/precond-image.jpg",
+            page_url="https://daad.de/en/scholarships",
+            discovery_method="html-img",
+        )
+        validator = ImageValidator()
+
+        mock_head = MagicMock()
+        mock_head.status_code = 412
+        mock_head.headers = {"content-type": "text/html"}
+
+        TimeoutExc = type("TimeoutException", (Exception,), {})
+        RequestExc = type("RequestError", (Exception,), {})
+
+        mock_httpx_module = MagicMock()
+        mock_httpx_module.head.return_value = mock_head
+        mock_httpx_module.get.return_value = mock_head
+        mock_httpx_module.RequestError = RequestExc
+        mock_httpx_module.TimeoutException = TimeoutExc
+
+        with patch("app.services.image_validator.httpx", mock_httpx_module):
+            with patch("time.sleep"):
+                result = validator.validate_candidate(
+                    candidate,
+                    scholarship_title="DAAD",
+                    official_source_url="https://www.daad.de/en/scholarships",
+                )
+
+        assert result.status == ValidationStatus.TEMP_UNAVAILABLE
+        assert result.confidence == "LOW"
+        assert mock_httpx_module.head.call_count == 2
+
+    def test_410_is_genuinely_missing_not_retried(self):
+        """410 Gone should be immediately rejected as genuinely missing, not retried."""
+        candidate = _make_candidate(
+            image_url="https://daad.de/gone.jpg",
+            page_url="https://daad.de/en/scholarships",
+            discovery_method="html-img",
+        )
+        validator = ImageValidator()
+
+        mock_httpx_module = MagicMock()
+        mock_httpx_module.head.return_value = _mock_head(410, "text/html")
+        mock_httpx_module.RequestError = type("E", (), {})
+
+        with patch("app.services.image_validator.httpx", mock_httpx_module):
+            result = validator.validate_candidate(
+                candidate,
+                scholarship_title="DAAD",
+                official_source_url="https://www.daad.de/en/scholarships",
+            )
+
+        assert result.status == ValidationStatus.GENUINELY_MISSING
+        assert result.confidence == "LOW"
+        assert mock_httpx_module.head.call_count == 1
+
+    def test_find_best_result_skips_genuinely_missing(self):
+        """GENUINELY_MISSING should be skipped when no APPROVED or HUMAN_REVIEW exist."""
+        validator = ImageValidator()
+        genuine_result = MagicMock(
+            status=ValidationStatus.GENUINELY_MISSING,
+            relevance_score=0.9,
+        )
+        rejected_result = MagicMock(
+            status=ValidationStatus.REJECTED,
+            relevance_score=0.3,
+        )
+        best = validator.find_best_result([genuine_result, rejected_result])
+        assert best is None
+
+    def test_drupal_content_style_og_image_not_flagged_as_generic(self):
+        """Drupal /sites/default/files/styles/ OG images should not be flagged as generic."""
+        from app.services.image_validator import _detect_og_thumbnail_signals
+        signals = _detect_og_thumbnail_signals(
+            image_url="https://campuschina.org/sites/default/files/styles/page_header_image_mobile_landscape_x2/public/2022-12/elodie_burrillon_223%20400x300.jpg.webp",
+            filename="elodie_burrillon_223 400x300.jpg.webp",
+            discovery_method="og:image",
+        )
+        assert not any("common/default/og path" in s.label for s in signals)

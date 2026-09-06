@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import ScholarshipImage from './ScholarshipImage'
 import ScholarshipActions from './ScholarshipActions'
 import { getDeadlineLabel, getLastVerifiedLabel, getScholarshipStatus } from '../utils/scholarshipPresentation'
 import './ScholarshipCard.css'
@@ -9,6 +10,8 @@ export default function ScholarshipCard({ scholarship }) {
 
   return (
     <article className={`scholarship-card scholarship-card--${deadlineStatus.className}`}>
+      <ScholarshipImage scholarship={scholarship} className="scholarship-card__image" />
+
       <div className="scholarship-card__header">
         <div className="scholarship-card__topline">
           <span className="scholarship-card__badge">{scholarship.funding}</span>

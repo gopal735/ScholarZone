@@ -113,6 +113,7 @@ _KNOWN_OFFICIAL_HOST_SUFFIXES = (
     ".iccr.gov.in",
     ".studyinkorea.go.kr",
     ".studyinjapan.go.jp",
+    ".esteri.it",
 )
 
 
@@ -121,6 +122,8 @@ def is_official_domain(domain: str | None) -> bool:
     if not domain:
         return False
     domain = domain.lower()
+    if domain.startswith("www."):
+        domain = domain[4:]
     if domain in _KNOWN_OFFICIAL_DOMAINS:
         return True
     official_suffixes = (

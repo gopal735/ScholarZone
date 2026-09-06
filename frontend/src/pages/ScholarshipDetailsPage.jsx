@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import ScholarshipImage from '../components/ScholarshipImage'
 import ScholarshipActions from '../components/ScholarshipActions'
 import { fetchScholarshipById, ScholarshipApiError } from '../services/scholarshipService'
 import { useScholarshipDirectory } from '../hooks/useScholarshipDirectory'
@@ -176,6 +177,12 @@ export default function ScholarshipDetailsPage() {
       )}
 
       <div className="scholarship-details__hero">
+        {scholarship.image_url && (
+          <div className="scholarship-details__image">
+            <ScholarshipImage scholarship={scholarship} className="scholarship-details__image-wrapper" />
+          </div>
+        )}
+
         <div className="scholarship-details__hero-content">
           <div className="scholarship-details__status">
             <span className={isVerified ? 'scholarship-details__verified' : 'scholarship-details__unverified'}>

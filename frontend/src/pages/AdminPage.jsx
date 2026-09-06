@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 import '../styles/glass.css'
 import './AdminPage.css'
+import { fetchReviewQueue, approveReview, rejectReview } from '../services/adminImageReviewService'
 
 const API = (import.meta.env.VITE_API_BASE_URL || '/api').replace(/\/$/, '')
 
@@ -295,6 +296,108 @@ function NeedsReviewPanel({ scholarships, onVerify, onFlag }) {
   )
 }
 
+function ReviewCard({ review, index, onApprove, onReject, onOpenSource, actionLoading }) {
+  const tiltRef = useTilt(4)
+
+  const imageSrc = review.image_url
+  const hasImage = Boolean(imageSrc)
+
+  return (
+    <div
+      ref={tiltRef}
+      className="review-card"
+      style={{ animationDelay: `${index * 60}ms` }}
+    >
+      <div className="review-card-inner">
+        <div className="review-card-header">
+          <div className="review-card-title-group">
+            <span className="review-card-id">#{review.scholarship_id}</span>
+            <h3 className="review-card-title">{review.scholarship_title || 'Untitled Scholarship'}</h3>
+          </div>
+          <span className={`status-pill status-pill--review`}>
+            <span className="status-dot status-dot--review" />
+            {review.confidence || 'MEDIUM'}
+          </span>
+        </div>
+
+        <div className="review-card-body">
+          {hasImage && (
+            <div className="review-card-image">
+              <img src={imageSrc} alt={review.scholarship_title || 'Review candidate'} />
+            </div>
+          )}
+          <div className="review-card-meta">
+            <div className="review-meta-row">
+              <span className="review-meta-label">Image Kind</span>
+              <span className="review-meta-value">{review.image_kind}</span>
+            </div>
+            <div className="review-meta-row">
+              <span className="review-meta-label">Source Type</span>
+              <span className="review-meta-value">{review.source_type || '—'}</span>
+            </div>
+            <div className="review-meta-row">
+              <span className="review-meta-label">Reason</span>
+              <span className="review-meta-value">{review.reason_for_review || '—'}</span>
+            </div>
+            {review.relevance_evidence && (
+              <div className="review-meta-row">
+                <span className="review-meta-label">Relevance</span>
+                <span className="review-meta-value review-meta-value--multiline">{review.relevance_evidence}</span>
+              </div>
+            )}
+            <div className="review-meta-row">
+              <span className="review-meta-label">Licensing</span>
+              <span className="review-meta-value">{review.licensing_status || 'Unknown'}</span>
+            </div>
+            {review.licensing_evidence && (
+              <div className="review-meta-row">
+                <span className="review-meta-label">License Evidence</span>
+                <span className="review-meta-value review-meta-value--multiline">{review.licensing_evidence}</span>
+              </div>
+            )}
+            {review.source_page && (
+              <div className="review-meta-row">
+                <span className="review-meta-label">Source Page</span>
+                <a className="review-meta-link" href={review.source_page} target="_blank" rel="noreferrer">
+                  {review.source_page}
+                </a>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div className="review-card-actions">
+          <button
+            className={`glass-btn glass-btn--active ${actionLoading ? 'btn-loading' : ''}`}
+            disabled={actionLoading}
+            onClick={onApprove}
+          >
+            {actionLoading ? <span className="btn-spinner" /> : <span className="btn-icon">✓</span>}
+            <span className="btn-text">{actionLoading ? '' : 'Approve'}</span>
+          </button>
+          <button
+            className={`glass-btn glass-btn--inactive ${actionLoading ? 'btn-loading' : ''}`}
+            disabled={actionLoading}
+            onClick={onReject}
+          >
+            {actionLoading ? <span className="btn-spinner" /> : <span className="btn-icon">✕</span>}
+            <span className="btn-text">{actionLoading ? '' : 'Reject'}</span>
+          </button>
+          {review.source_page && (
+            <button
+              className="glass-btn glass-btn--ghost"
+              onClick={onOpenSource}
+            >
+              <span className="btn-icon">↗</span>
+              <span className="btn-text">Open Source</span>
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function Orb({ style, size, blur }) {
   return <div className="ambient-orb" style={{ ...style, width: size, height: size, filter: `blur(${blur})` }} />
 }
@@ -306,6 +409,12 @@ export default function AdminPage() {
   const [search, setSearch] = useState('')
   const [filter, setFilter] = useState('all')
   const [loadedOnce, setLoadedOnce] = useState(false)
+  const [adminSecret, setAdminSecret] = useState('')
+  const [activeTab, setActiveTab] = useState('scholarships')
+  const [reviewQueue, setReviewQueue] = useState([])
+  const [reviewLoading, setReviewLoading] = useState(false)
+  const [reviewError, setReviewError] = useState(null)
+  const [reviewActionLoading, setReviewActionLoading] = useState({})
   const load = useCallback(async () => {
     setLoading(true)
     setError(null)
@@ -355,6 +464,52 @@ export default function AdminPage() {
     load()
   }
 
+  async function loadReviewQueue() {
+    if (!adminSecret) return
+    setReviewLoading(true)
+    setReviewError(null)
+    try {
+      const data = await fetchReviewQueue(adminSecret)
+      setReviewQueue(Array.isArray(data) ? data : [])
+    } catch (err) {
+      setReviewError(err.message)
+      setReviewQueue([])
+    } finally {
+      setReviewLoading(false)
+    }
+  }
+
+  function switchTab(tab) {
+    setActiveTab(tab)
+    if (tab === 'image-review' && adminSecret) {
+      loadReviewQueue()
+    }
+  }
+
+  async function handleApprove(reviewId) {
+    setReviewActionLoading(prev => ({ ...prev, [reviewId]: true }))
+    try {
+      await approveReview(reviewId, adminSecret, '')
+      await loadReviewQueue()
+    } catch (err) {
+      setReviewError(err.message)
+    } finally {
+      setReviewActionLoading(prev => ({ ...prev, [reviewId]: false }))
+    }
+  }
+
+  async function handleReject(reviewId) {
+    setReviewActionLoading(prev => ({ ...prev, [reviewId]: true }))
+    try {
+      await rejectReview(reviewId, adminSecret, '')
+      await loadReviewQueue()
+    } catch (err) {
+      setReviewError(err.message)
+    } finally {
+      setReviewActionLoading(prev => ({ ...prev, [reviewId]: false }))
+    }
+  }
+
   const today = new Date().toISOString().slice(0, 10)
   const verifiedToday = useMemo(() => scholarships.filter(s => s.last_verified_at === today).length, [scholarships, today])
   const reviewCount = useMemo(() => scholarships.filter(s => s.verification_status === 'needs_review').length, [scholarships])
@@ -397,6 +552,28 @@ export default function AdminPage() {
             </div>
             <div className="admin-nav-meta">
               <span className="nav-stat">{scholarships.length} scholarships</span>
+              <div className="admin-tabs">
+                <button
+                  className={`admin-tab ${activeTab === 'scholarships' ? 'admin-tab--active' : ''}`}
+                  onClick={() => switchTab('scholarships')}
+                >
+                  Scholarships
+                </button>
+                <button
+                  className={`admin-tab ${activeTab === 'image-review' ? 'admin-tab--active' : ''}`}
+                  onClick={() => switchTab('image-review')}
+                >
+                  Image Review
+                  {reviewQueue.length > 0 && <span className="admin-tab-badge">{reviewQueue.length}</span>}
+                </button>
+              </div>
+              <input
+                type="password"
+                className="admin-secret-input"
+                placeholder="Admin secret"
+                value={adminSecret}
+                onChange={e => setAdminSecret(e.target.value)}
+              />
               <button className="glass-btn glass-btn--ghost glass-btn--sm" onClick={load}>
                 <span className="btn-icon">↺</span>
                 <span className="btn-text">Refresh</span>
@@ -468,6 +645,56 @@ export default function AdminPage() {
             <span className="result-count">{gridItems.length} {gridItems.length === 1 ? 'result' : 'results'}</span>
           </div>
         </div>
+
+        {activeTab === 'image-review' && (
+          <div className="review-section">
+            <div className="review-section-header">
+              <h2 className="review-section-title">Image Review Queue</h2>
+              <button className="glass-btn glass-btn--ghost glass-btn--sm" onClick={loadReviewQueue} disabled={reviewLoading || !adminSecret}>
+                {reviewLoading ? <span className="btn-spinner" /> : <span className="btn-icon">↺</span>}
+                <span className="btn-text">{reviewLoading ? '' : 'Refresh'}</span>
+              </button>
+            </div>
+
+            {reviewError && (
+              <div className="glass state-box state-box--error">
+                <p>{reviewError}</p>
+                <button className="glass-btn" onClick={loadReviewQueue}>Retry</button>
+              </div>
+            )}
+
+            {!reviewError && reviewLoading && (
+              <div className="glass state-box">
+                <div className="spinner" />
+                <p>Loading review queue…</p>
+              </div>
+            )}
+
+            {!reviewError && !reviewLoading && reviewQueue.length === 0 && (
+              <div className="glass empty-state">
+                <div className="empty-icon" aria-hidden="true">✓</div>
+                <p className="empty-title">All caught up</p>
+                <p className="empty-sub">No pending image reviews</p>
+              </div>
+            )}
+
+            {!reviewError && !reviewLoading && reviewQueue.length > 0 && (
+              <div className="review-grid">
+                {reviewQueue.map((review, index) => (
+                  <ReviewCard
+                    key={review.id}
+                    review={review}
+                    index={index}
+                    onApprove={() => handleApprove(review.id)}
+                    onReject={() => handleReject(review.id)}
+                    onOpenSource={() => window.open(review.source_page, '_blank', 'noopener,noreferrer')}
+                    actionLoading={reviewActionLoading[review.id]}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
+        )}
 
         {loading && !loadedOnce && (
           <div className="glass state-box">

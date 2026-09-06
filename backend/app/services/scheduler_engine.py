@@ -28,6 +28,7 @@ from .scholarship_updater import apply_verified_updates
 from .scholarship_verifier import VerificationStatus, verify_scholarship
 from .scholarship_image_verifier import ImageVerifier
 from .adaptive_policy import compute_adaptive_policy
+from .lifecycle_manager import apply_lifecycle_transition, evaluate_lifecycle
 from .telemetry import PipelineStages, record_event, record_retry, record_terminal_failure
 from .telemetry_tracing import CorrelationContext, trace_operation
 
@@ -242,6 +243,22 @@ class SchedulerEngine:
 
             if result.uncertain_fields:
                 self._create_reviews(session, result)
+
+            evaluation = evaluate_lifecycle(
+                scholarship,
+                verification_result={
+                    "fetch_status": result.fetch_status,
+                },
+            )
+            if evaluation.should_transition:
+                transition = apply_lifecycle_transition(
+                    session, scholarship, evaluation, source_url=scholarship.official_source_url
+                )
+                if transition:
+                    logger.info(
+                        "Lifecycle transition: scholarship_id=%d %s -> %s",
+                        scholarship.id, transition.from_state, transition.to_state,
+                    )
 
             self._update_verification_timestamp(session, scholarship, result)
 
