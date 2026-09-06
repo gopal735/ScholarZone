@@ -26,6 +26,12 @@ class ScholarshipStatus(str, Enum):
     CLOSED = "closed"
 
 
+class ImageKind(str, Enum):
+    PROGRAM_IMAGE = "program_image"
+    OFFICIAL_BANNER = "official_banner"
+    OFFICIAL_LOGO = "official_logo"
+
+
 class ScholarshipQuery(BaseModel):
     """Validated values accepted by the directory endpoint."""
 
@@ -64,6 +70,9 @@ class ScholarshipResponse(BaseModel):
     verified_by: str | None = None
     verification_notes: str | None = None
     updated_at: datetime
+    image_url: str | None = None
+    image_source_type: str | None = None
+    image_kind: str | None = None
 
 
 class ScholarshipDetailResponse(ScholarshipResponse):
@@ -76,6 +85,12 @@ class ScholarshipDetailResponse(ScholarshipResponse):
     catalogue_url: str | None = None
     official_updates_url: str | None = None
     application_link: str | None = None
+    image_url: str | None = None
+    image_source_url: str | None = None
+    image_source_type: str | None = None
+    image_kind: str | None = None
+    image_verified_at: datetime | None = None
+    image_alt_text: str | None = None
     eligibility: list[str] = Field(default_factory=list)
     eligibility_summary: str | None = None
     benefits: list[str] = Field(default_factory=list)
@@ -105,6 +120,47 @@ class PaginationMetadata(BaseModel):
 class ScholarshipListResponse(BaseModel):
     items: list[ScholarshipResponse]
     pagination: PaginationMetadata
+
+
+class ScholarshipImageVerifyRequest(BaseModel):
+    scholarship_id: int = Field(ge=1)
+    image_url: str = Field(max_length=2048)
+    image_source_url: str = Field(max_length=2048)
+    image_source_type: Literal[
+        "official_scholarship",
+        "official_university",
+        "official_government",
+        "official_provider",
+    ]
+    image_kind: ImageKind | None = None
+    image_alt_text: str | None = Field(default=None, max_length=512)
+
+
+class ImageReviewDecision(BaseModel):
+    approved: bool
+    reviewer_note: str | None = Field(default=None, max_length=1024)
+
+
+class ImageReviewResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    scholarship_id: int
+    scholarship_title: str | None = None
+    image_url: str
+    image_kind: str
+    source_page: str | None = None
+    source_type: str | None = None
+    relevance_evidence: str | None = None
+    licensing_status: str | None = None
+    licensing_evidence: str | None = None
+    confidence: str
+    reason_for_review: str | None = None
+    decision: str
+    reviewed_by: str | None = None
+    reviewed_at: datetime | None = None
+    reviewer_note: str | None = None
+    created_at: datetime
 
 
 class ScholarshipVerificationUpdate(BaseModel):

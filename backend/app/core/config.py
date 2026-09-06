@@ -24,6 +24,7 @@ class Settings:
     allowed_origins: tuple[str, ...]
     resend_api_key: str | None = None
     verification_secret: str | None = None
+    admin_secret: str | None = None
 
 
 def get_settings() -> Settings:
@@ -57,4 +58,5 @@ def get_settings() -> Settings:
         allowed_origins=_split_origins(os.getenv("SCHOLARZONE_ALLOWED_ORIGINS", DEFAULT_ALLOWED_ORIGINS)),
         resend_api_key=os.getenv("RESEND_API_KEY"),
         verification_secret=os.getenv("SCHOLARZONE_VERIFICATION_SECRET"),
+        admin_secret=os.getenv("SCHOLARZONE_ADMIN_SECRET"),
     )

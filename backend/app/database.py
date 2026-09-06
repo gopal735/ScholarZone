@@ -67,6 +67,55 @@ def init_database() -> None:
     Base.metadata.create_all(bind=engine)
     if engine.dialect.name == "sqlite":
         _upgrade_sqlite_schema(engine)
+    elif engine.dialect.name == "postgresql":
+        _upgrade_postgresql_schema(engine)
+
+
+def _upgrade_postgresql_schema(engine: Engine) -> None:
+    """Apply idempotent schema changes required by newer models on Neon.
+
+    Uses PostgreSQL-specific DDL with IF NOT EXISTS guards so this is safe
+    to run on every application startup without dropping tables or modifying
+    existing data.
+    """
+    with engine.begin() as connection:
+        columns = {column["name"] for column in inspect(engine).get_columns("scholarships")}
+        additions = {
+            "image_url": "VARCHAR(2048)",
+            "image_source_url": "VARCHAR(2048)",
+            "image_source_type": "VARCHAR(32)",
+            "image_kind": "VARCHAR(32)",
+            "image_verified_at": "TIMESTAMPTZ",
+            "image_alt_text": "VARCHAR(512)",
+        }
+        for name, definition in additions.items():
+            if name not in columns:
+                connection.execute(text(f"ALTER TABLE scholarships ADD COLUMN IF NOT EXISTS {name} {definition}"))
+
+        if not inspect(engine).has_table("image_reviews"):
+            connection.execute(text("""
+                CREATE TABLE IF NOT EXISTS image_reviews (
+                    id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+                    scholarship_id INTEGER NOT NULL REFERENCES scholarships(id),
+                    image_url VARCHAR(2048) NOT NULL,
+                    image_kind VARCHAR(32) NOT NULL,
+                    source_page VARCHAR(2048),
+                    source_type VARCHAR(32),
+                    relevance_evidence TEXT,
+                    licensing_status VARCHAR(32),
+                    licensing_evidence TEXT,
+                    confidence VARCHAR(32) NOT NULL,
+                    reason_for_review VARCHAR(255),
+                    decision VARCHAR(16) NOT NULL DEFAULT 'pending',
+                    reviewed_by VARCHAR(120),
+                    reviewed_at TIMESTAMPTZ,
+                    reviewer_note TEXT,
+                    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+                )
+            """))
+
+        connection.execute(text("CREATE INDEX IF NOT EXISTS ix_image_reviews_scholarship_decision ON image_reviews (scholarship_id, decision)"))
+        connection.execute(text("CREATE INDEX IF NOT EXISTS ix_image_reviews_created_at ON image_reviews (created_at)"))
 
 
 def _upgrade_sqlite_schema(engine: Engine) -> None:
@@ -88,6 +137,12 @@ def _upgrade_sqlite_schema(engine: Engine) -> None:
         "catalogue_url": "VARCHAR(2048)",
         "official_updates_url": "VARCHAR(2048)",
         "application_link": "VARCHAR(2048)",
+        "image_url": "VARCHAR(2048)",
+        "image_source_url": "VARCHAR(2048)",
+        "image_source_type": "VARCHAR(32)",
+        "image_kind": "VARCHAR(32)",
+        "image_verified_at": "DATETIME",
+        "image_alt_text": "VARCHAR(512)",
         "eligibility": "JSON NOT NULL DEFAULT '[]'",
         "eligibility_summary": "TEXT",
         "benefits": "JSON NOT NULL DEFAULT '[]'",
@@ -116,6 +171,7 @@ def _upgrade_sqlite_schema(engine: Engine) -> None:
 
         _create_content_fingerprints_table(connection)
         _upgrade_discovery_candidates_table(connection)
+        _create_image_reviews_table(connection)
 
     schema = inspect(engine)
     unique_source_constraints = (
@@ -180,6 +236,33 @@ def _upgrade_discovery_candidates_table(connection) -> None:
     for name, definition in additions.items():
         if name not in columns:
             connection.execute(text(f"ALTER TABLE discovery_candidates ADD COLUMN {name} {definition}"))
+
+
+def _create_image_reviews_table(connection) -> None:
+    """Create the image_reviews table if it doesn't exist."""
+    connection.execute(text("""
+        CREATE TABLE IF NOT EXISTS image_reviews (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            scholarship_id INTEGER NOT NULL,
+            image_url VARCHAR(2048) NOT NULL,
+            image_kind VARCHAR(32) NOT NULL,
+            source_page VARCHAR(2048),
+            source_type VARCHAR(32),
+            relevance_evidence TEXT,
+            licensing_status VARCHAR(32),
+            licensing_evidence TEXT,
+            confidence VARCHAR(32) NOT NULL,
+            reason_for_review VARCHAR(255),
+            decision VARCHAR(16) NOT NULL DEFAULT 'pending',
+            reviewed_by VARCHAR(120),
+            reviewed_at DATETIME,
+            reviewer_note TEXT,
+            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (scholarship_id) REFERENCES scholarships (id)
+        )
+    """))
+    connection.execute(text("CREATE INDEX IF NOT EXISTS ix_image_reviews_scholarship_decision ON image_reviews (scholarship_id, decision)"))
+    connection.execute(text("CREATE INDEX IF NOT EXISTS ix_image_reviews_created_at ON image_reviews (created_at)"))
 
 
 def close_database() -> None:

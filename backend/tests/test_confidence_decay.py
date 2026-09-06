@@ -903,7 +903,7 @@ class TestEdgeCases:
 
     def test_datetime_input(self):
         """Should accept datetime inputs, not just date."""
-        dt = datetime.now(timezone.utc) - timedelta(days=30)
+        dt = datetime.combine(date.today(), datetime.min.time(), tzinfo=timezone.utc) - timedelta(days=30)
         profile = evaluate_field_confidence_decay(
             field_name="deadline",
             original_confidence=0.8,

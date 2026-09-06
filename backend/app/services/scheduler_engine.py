@@ -26,6 +26,7 @@ from .scholarship_history import HistoryEntry, write_verification_history
 from .scholarship_review_coordinator import create_reviews_from_verification
 from .scholarship_updater import apply_verified_updates
 from .scholarship_verifier import VerificationStatus, verify_scholarship
+from .scholarship_image_verifier import ImageVerifier
 from .adaptive_policy import compute_adaptive_policy
 from .telemetry import PipelineStages, record_event, record_retry, record_terminal_failure
 from .telemetry_tracing import CorrelationContext, trace_operation
@@ -243,6 +244,14 @@ class SchedulerEngine:
                 self._create_reviews(session, result)
 
             self._update_verification_timestamp(session, scholarship, result)
+
+            if scholarship.image_url:
+                try:
+                    image_verifier = ImageVerifier(session)
+                    image_verifier.revalidate_stored_image(scholarship.id)
+                except Exception:
+                    logger.exception("Image revalidation failed for scholarship %s", job.scholarship_id)
+
             session.commit()
         except Exception:
             session.rollback()

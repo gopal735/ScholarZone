@@ -10,6 +10,7 @@ from .core.config import get_settings
 from .database import close_database, init_database
 from .routers.scholarships import router as scholarships_router
 from .routers.verification import router as verification_router
+from .routers.admin_image_review import router as admin_image_review_router
 from .seed import seed_database
 
 
@@ -75,3 +76,4 @@ def health() -> dict[str, str]:
 
 app.include_router(scholarships_router)
 app.include_router(verification_router)
+app.include_router(admin_image_review_router)

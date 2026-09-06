@@ -17,10 +17,14 @@ import logging
 import time
 from datetime import datetime, timezone
 
-from fastapi import APIRouter, Header, HTTPException, status
+from fastapi import APIRouter, Depends, Header, HTTPException, status
 
 from ..core.config import get_settings
+from ..schemas import ScholarshipImageVerifyRequest
+from ..services.image_validator import ImageCandidate, ImageValidator
+from ..services.scholarship_image_verifier import ImageVerifier, is_valid_source_type
 from ..scheduler_v2 import VerificationRoundResult, run_verification_round
+from ..database import get_db
 
 logger = logging.getLogger(__name__)
 
@@ -145,4 +149,178 @@ async def verification_status() -> dict:
         ),
         "min_trigger_interval_seconds": _min_interval_seconds,
         "timestamp": datetime.now(timezone.utc).isoformat(),
+    }
+
+
+@router.post("/images/verify", status_code=status.HTTP_200_OK)
+async def verify_image(
+    payload: ScholarshipImageVerifyRequest,
+    x_verification_secret: str | None = Header(None, alias="X-Verification-Secret"),
+    session = Depends(get_db),
+) -> dict:
+    """Persist a single HIGH-confidence image for a scholarship.
+
+    Authentication:
+    - Requires X-Verification-Secret header matching SCHOLARZONE_VERIFICATION_SECRET.
+
+    Behavior:
+    - Fetches the scholarship by ID.
+    - Revalidates the provided image using the existing ImageValidator.
+    - Requires HIGH confidence.
+    - Rejects UI/logo/error/social/OG/generic/non-cover images.
+    - Rejects HUMAN_REVIEW and REJECTED candidates.
+    - Persists ONLY image fields via ImageVerifier.mark_image_verified().
+    - Creates ScholarshipVerificationHistory audit for NULL -> image.
+    - Idempotent: same image submitted again returns success without duplicate audit.
+    - Invalid scholarship ID returns 404.
+    """
+    if not _verify_secret(x_verification_secret):
+        logger.warning(
+            "Unauthorized image verification attempt from %s",
+            "unknown",
+        )
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid or missing verification secret.",
+        )
+
+    from ..models import Scholarship
+
+    scholarship = session.get(Scholarship, payload.scholarship_id)
+    if scholarship is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Scholarship not found.",
+        )
+
+    if not is_valid_source_type(payload.image_source_type):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Invalid image_source_type: {payload.image_source_type}",
+        )
+
+    candidate = ImageCandidate(
+        image_url=payload.image_url,
+        page_url=scholarship.official_source_url or payload.image_source_url,
+        discovery_method="manual_verify",
+        alt_text=payload.image_alt_text,
+    )
+
+    validator = ImageValidator(timeout=30.0)
+    result = validator.validate_candidate(
+        candidate,
+        scholarship_title=scholarship.title,
+        official_source_url=scholarship.official_source_url,
+    )
+
+    result.image_kind = validator._classify_image_kind(result)
+
+    if result.confidence != "HIGH":
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Image confidence is {result.confidence}, required HIGH.",
+        )
+
+    if result.status.value not in ("approved",):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Image validation status is {result.status.value}, required approved.",
+        )
+
+    if result.is_generic_image or result.is_ui_asset:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Image rejected as non-content (UI, logo, generic, or error asset).",
+        )
+
+    image_verifier = ImageVerifier(session)
+    updated = image_verifier.mark_image_verified(
+        scholarship_id=payload.scholarship_id,
+        image_url=payload.image_url,
+        image_source_url=payload.image_source_url,
+        source_type=payload.image_source_type,
+        alt_text=payload.image_alt_text,
+        image_kind=payload.image_kind or result.image_kind,
+    )
+
+    if not updated:
+        refreshed = session.get(Scholarship, payload.scholarship_id)
+        if refreshed.image_url == payload.image_url and refreshed.image_source_url == payload.image_source_url:
+            return {
+                "status": "unchanged",
+                "scholarship_id": payload.scholarship_id,
+                "image_url": payload.image_url,
+            }
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Image was not persisted.",
+        )
+
+    return {
+        "status": "updated",
+        "scholarship_id": payload.scholarship_id,
+        "image_url": payload.image_url,
+    }
+
+
+@router.post("/images/revalidate", status_code=status.HTTP_200_OK)
+async def revalidate_stored_image(
+    payload: dict,
+    x_verification_secret: str | None = Header(None, alias="X-Verification-Secret"),
+    session = Depends(get_db),
+) -> dict:
+    """Revalidate a persisted image against the current official page.
+
+    Authentication:
+    - Requires X-Verification-Secret header matching SCHOLARZONE_VERIFICATION_SECRET.
+
+    Behavior:
+    - Fetches the scholarship by ID.
+    - If no image is stored, returns HUMAN_REVIEW without mutation.
+    - Fetches the current official source page.
+    - Checks whether the stored image is still present.
+    - CURRENT: updates image_verified_at, writes lightweight audit record.
+    - CHANGED / REMOVED / SOURCE_INACCESSIBLE: creates a pending ScholarshipReview
+      (if one does not already exist) and writes a stale_detected audit record.
+    - Never silently replaces or clears a verified image.
+    - Idempotent: repeated identical runs do not create duplicate reviews or
+      duplicate stale-detection history within 12 hours.
+    """
+    if not _verify_secret(x_verification_secret):
+        logger.warning(
+            "Unauthorized image revalidation attempt from %s",
+            "unknown",
+        )
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid or missing verification secret.",
+        )
+
+    from ..models import Scholarship
+
+    scholarship_id = payload.get("scholarship_id")
+    if scholarship_id is None:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="scholarship_id is required.",
+        )
+
+    scholarship = session.get(Scholarship, scholarship_id)
+    if scholarship is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Scholarship not found.",
+        )
+
+    image_verifier = ImageVerifier(session)
+    result = image_verifier.revalidate_stored_image(scholarship_id)
+
+    return {
+        "scholarship_id": result.scholarship_id,
+        "status": result.status.value,
+        "image_url": result.image_url,
+        "official_source_url": result.official_source_url,
+        "found_image_urls": result.found_image_urls,
+        "evidence": result.evidence,
+        "action_taken": result.action_taken,
     }

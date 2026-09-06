@@ -46,6 +46,11 @@ class ScholarshipIngestionRecord(BaseModel):
     program_type: str | None = None
     best_fit: str | None = None
     notes: str | None = None
+    image_url: str | None = None
+    image_source_url: str | None = None
+    image_source_type: str | None = None
+    image_verified_at: date | None = None
+    image_alt_text: str | None = None
 
     # Migration-only metadata: never stored as scholarship content.
     legacy_titles: tuple[str, ...] = ()
@@ -106,6 +111,11 @@ class ScholarshipIngestionRecord(BaseModel):
             "program_type": "program_type",
             "best_fit": "best_fit",
             "notes": "notes",
+            "image_url": "image_url",
+            "image_source_url": "image_source_url",
+            "image_source_type": "image_source_type",
+            "image_verified_at": "image_verified_at",
+            "image_alt_text": "image_alt_text",
         }
         for source_field, database_field in mappings.items():
             if source_field in self.model_fields_set:

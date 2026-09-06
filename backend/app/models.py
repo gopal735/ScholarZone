@@ -43,6 +43,12 @@ class Scholarship(Base):
     catalogue_url: Mapped[str | None] = mapped_column(String(2048), nullable=True)
     official_updates_url: Mapped[str | None] = mapped_column(String(2048), nullable=True)
     application_link: Mapped[str | None] = mapped_column(String(2048), nullable=True)
+    image_url: Mapped[str | None] = mapped_column(String(2048), nullable=True)
+    image_source_url: Mapped[str | None] = mapped_column(String(2048), nullable=True)
+    image_source_type: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    image_kind: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    image_verified_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    image_alt_text: Mapped[str | None] = mapped_column(String(512), nullable=True)
     eligibility: Mapped[list[str]] = mapped_column(JSON, nullable=False, default=list)
     eligibility_summary: Mapped[str | None] = mapped_column(Text, nullable=True)
     benefits: Mapped[list[str]] = mapped_column(JSON, nullable=False, default=list)
@@ -297,6 +303,31 @@ class DiscoveryCandidate(Base):
     fetched_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
     resolved_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
+class ImageReview(Base):
+    __tablename__ = "image_reviews"
+    __table_args__ = (
+        Index("ix_image_reviews_scholarship_decision", "scholarship_id", "decision"),
+        Index("ix_image_reviews_created_at", "created_at"),
+    )
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    scholarship_id: Mapped[int] = mapped_column(Integer, ForeignKey("scholarships.id"), nullable=False, index=True)
+    image_url: Mapped[str] = mapped_column(String(2048), nullable=False)
+    image_kind: Mapped[str] = mapped_column(String(32), nullable=False)
+    source_page: Mapped[str | None] = mapped_column(String(2048), nullable=True)
+    source_type: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    relevance_evidence: Mapped[str | None] = mapped_column(Text, nullable=True)
+    licensing_status: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    licensing_evidence: Mapped[str | None] = mapped_column(Text, nullable=True)
+    confidence: Mapped[str] = mapped_column(String(32), nullable=False)
+    reason_for_review: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    decision: Mapped[str] = mapped_column(String(16), nullable=False, default="pending", index=True)
+    reviewed_by: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    reviewed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    reviewer_note: Mapped[str | None] = mapped_column(Text, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
 
 
 class ScholarshipRestoreRecord(Base):

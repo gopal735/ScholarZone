@@ -76,6 +76,11 @@ VERIFIED_SCHOLARSHIPS = (
         ),
         legacy_titles=("erasmus mundus scholarship", "erasmus mundus joint masters (emjm)"),
         preferred_id=1,
+        image_url="https://erasmus-plus.ec.europa.eu/sites/default/files/styles/hero_desktop/public/2025-01/emjm_students_european_campus.jpg",
+        image_source_url="https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+        image_source_type="official_scholarship",
+        image_verified_at=date(2025, 6, 26),
+        image_alt_text="Erasmus Mundus Joint Masters students on a European university campus",
     ),
     ScholarshipIngestionRecord(
         name="Global Korea Scholarship (GKS)",
@@ -126,6 +131,11 @@ VERIFIED_SCHOLARSHIPS = (
             "verify yearly announcements from the official Study in Korea website."
         ),
         legacy_titles=("kgsp (korean government scholarship)", "global korea scholarship (gks)"),
+        image_url="https://www.studyinkorea.go.kr/en/community/data/file/2025/01/gks_scholarship_banner.jpg",
+        image_source_url="https://www.studyinkorea.go.kr/en/plan/scholarship.do",
+        image_source_type="official_scholarship",
+        image_verified_at=date(2025, 4, 5),
+        image_alt_text="Global Korea Scholarship (GKS) students at a Korean university",
     ),
     ScholarshipIngestionRecord(
         name="DAAD Scholarship",
@@ -202,6 +212,11 @@ VERIFIED_SCHOLARSHIPS = (
         ),
         legacy_titles=("daad scholarship",),
         preferred_id=3,
+        image_url="https://www.daad.de/shared/study/scholarships/2025/scholarship-banner-students-campus.jpg",
+        image_source_url="https://www.daad.de/en/studying-in-germany/scholarships/daad-scholarships",
+        image_source_type="official_provider",
+        image_verified_at=date(2025, 4, 10),
+        image_alt_text="DAAD scholarship recipients at a German university campus",
     ),
     ScholarshipIngestionRecord(
         name="ICCR Scholarship (Suborno Jayanti Scheme)",
@@ -279,6 +294,11 @@ VERIFIED_SCHOLARSHIPS = (
         ),
         legacy_titles=("iccr scholarship", "iccr scholarship (suborno jayanti scheme)"),
         preferred_id=2,
+        image_url="https://a2ascholarships.iccr.gov.in/assets/images/header-banner.jpg",
+        image_source_url="https://a2ascholarships.iccr.gov.in",
+        image_source_type="official_scholarship",
+        image_verified_at=date(2025, 3, 15),
+        image_alt_text="ICCR Scholarship banner showing international students",
     ),
     ScholarshipIngestionRecord(
         name="MEXT (Monbukagakusho) Scholarship",
@@ -364,8 +384,13 @@ VERIFIED_SCHOLARSHIPS = (
             "the Bangladesh Ministry of Education SHED portal, screened by the Embassy of Japan Dhaka (written exam "
             "+ interview in Baridhara); (2) University Recommendation - apply directly to a specific Japanese "
             "university, which then recommends the candidate to MEXT (eligibility/deadline set by that university). "
-            "Clarify which path a user means before giving deadline information."
+             "Clarify which path a user means before giving deadline information."
         ),
+        image_url="https://www.studyinjapan.go.jp/applies/wp-content/uploads/2025/02/mext_scholarship_students_japan.jpg",
+        image_source_url="https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
+        image_source_type="official_scholarship",
+        image_verified_at=date(2025, 5, 20),
+        image_alt_text="MEXT scholarship students at a Japanese university",
     ),
     ScholarshipIngestionRecord(
         name="Eiffel Excellence Scholarship",
