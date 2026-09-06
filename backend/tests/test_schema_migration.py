@@ -155,3 +155,66 @@ class TestDryRun:
         run_migration(sqlite_engine)
         assert column_exists(sqlite_engine, "scholarships", "image_kind") is True
         assert len(expected) > 0
+
+
+class TestPostgreSQLSchemaValidation:
+    """Focused tests for the read-only PostgreSQL schema validation logic."""
+
+    def test_validation_passes_when_schema_complete(self, sqlite_engine):
+        from app.database import _validate_postgresql_schema
+
+        run_migration(sqlite_engine)
+        _validate_postgresql_schema(sqlite_engine)
+
+    def test_validation_fails_when_image_kind_missing(self, sqlite_engine):
+        from app.database import _validate_postgresql_schema
+
+        with sqlite_engine.begin() as conn:
+            conn.execute(text("""
+                CREATE TABLE image_reviews (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    scholarship_id INTEGER NOT NULL,
+                    image_url VARCHAR(2048) NOT NULL,
+                    image_kind VARCHAR(32) NOT NULL,
+                    decision VARCHAR(16) NOT NULL DEFAULT 'pending',
+                    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+                )
+            """))
+            conn.execute(text("CREATE INDEX ix_image_reviews_scholarship_decision ON image_reviews (scholarship_id, decision)"))
+            conn.execute(text("CREATE INDEX ix_image_reviews_created_at ON image_reviews (created_at)"))
+
+        with pytest.raises(RuntimeError, match="STATUS: INVALID"):
+            _validate_postgresql_schema(sqlite_engine)
+
+    def test_validation_fails_when_image_reviews_missing(self, sqlite_engine):
+        from app.database import _validate_postgresql_schema
+
+        run_migration(sqlite_engine)
+        with sqlite_engine.begin() as conn:
+            conn.execute(text("DROP TABLE IF EXISTS image_reviews"))
+
+        with pytest.raises(RuntimeError, match="STATUS: INVALID"):
+            _validate_postgresql_schema(sqlite_engine)
+
+    def test_validation_fails_when_index_missing(self, sqlite_engine):
+        from app.database import _validate_postgresql_schema
+
+        run_migration(sqlite_engine)
+        with sqlite_engine.begin() as conn:
+            conn.execute(text("DROP INDEX IF EXISTS ix_image_reviews_scholarship_decision"))
+
+        with pytest.raises(RuntimeError, match="STATUS: INVALID"):
+            _validate_postgresql_schema(sqlite_engine)
+
+    def test_validation_logs_success(self, sqlite_engine, caplog):
+        import logging
+        from app.database import _validate_postgresql_schema
+
+        caplog.set_level(logging.INFO)
+        run_migration(sqlite_engine)
+        _validate_postgresql_schema(sqlite_engine)
+
+        assert "[SCHEMA VALIDATION] image_kind: OK" in caplog.text
+        assert "[SCHEMA VALIDATION] image_reviews: OK" in caplog.text
+        assert "[SCHEMA VALIDATION] indexes: OK" in caplog.text
+        assert "[SCHEMA VALIDATION] STATUS: VALID" in caplog.text

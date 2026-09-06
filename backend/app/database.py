@@ -1,5 +1,6 @@
 """SQLAlchemy engine and session lifecycle utilities."""
 
+import logging
 from collections.abc import Generator
 from functools import lru_cache
 from pathlib import Path
@@ -69,6 +70,7 @@ def init_database() -> None:
         _upgrade_sqlite_schema(engine)
     elif engine.dialect.name == "postgresql":
         _upgrade_postgresql_schema(engine)
+        _validate_postgresql_schema(engine)
 
 
 def _upgrade_postgresql_schema(engine: Engine) -> None:
@@ -116,6 +118,49 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
 
         connection.execute(text("CREATE INDEX IF NOT EXISTS ix_image_reviews_scholarship_decision ON image_reviews (scholarship_id, decision)"))
         connection.execute(text("CREATE INDEX IF NOT EXISTS ix_image_reviews_created_at ON image_reviews (created_at)"))
+
+
+def _validate_postgresql_schema(engine: Engine) -> None:
+    """Validate required PostgreSQL schema objects exist after startup migration.
+
+    This is a read-only safety check. It does not modify data or schema.
+    """
+    logger = logging.getLogger(__name__)
+    inspector = inspect(engine)
+
+    image_kind_ok = any(
+        column["name"] == "image_kind" for column in inspector.get_columns("scholarships")
+    )
+    image_reviews_ok = inspector.has_table("image_reviews")
+
+    try:
+        image_review_indexes = {index["name"] for index in inspector.get_indexes("image_reviews")}
+    except Exception:
+        image_review_indexes = set()
+
+    idx_decision_ok = "ix_image_reviews_scholarship_decision" in image_review_indexes
+    idx_created_ok = "ix_image_reviews_created_at" in image_review_indexes
+    indexes_ok = idx_decision_ok and idx_created_ok
+
+    logger.info("[SCHEMA VALIDATION] image_kind: %s", "OK" if image_kind_ok else "MISSING")
+    logger.info("[SCHEMA VALIDATION] image_reviews: %s", "OK" if image_reviews_ok else "MISSING")
+    logger.info("[SCHEMA VALIDATION] indexes: %s", "OK" if indexes_ok else "MISSING")
+
+    if not (image_kind_ok and image_reviews_ok and indexes_ok):
+        missing = []
+        if not image_kind_ok:
+            missing.append("scholarships.image_kind")
+        if not image_reviews_ok:
+            missing.append("image_reviews")
+        if not idx_decision_ok:
+            missing.append("ix_image_reviews_scholarship_decision")
+        if not idx_created_ok:
+            missing.append("ix_image_reviews_created_at")
+        raise RuntimeError(
+            "[SCHEMA VALIDATION] STATUS: INVALID - Missing: " + ", ".join(missing)
+        )
+
+    logger.info("[SCHEMA VALIDATION] STATUS: VALID")
 
 
 def _upgrade_sqlite_schema(engine: Engine) -> None:
