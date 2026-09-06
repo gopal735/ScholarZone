@@ -8,6 +8,9 @@ on:
 jobs:
   trigger:
     runs-on: ubuntu-latest
+    concurrency:
+      group: verification-trigger
+      cancel-in-progress: true
     env:
       API_URL: ${{ vars.SCHOLARZONE_API_URL }}
       SECRET: ${{ secrets.SCHOLARZONE_VERIFICATION_SECRET }}
@@ -23,60 +26,93 @@ jobs:
             exit 1
           fi
 
-      - name: Trigger verification with cold-start retry
+      - name: Wake container and trigger verification
         run: |
-          MAX_ATTEMPTS=8
-          RETRY_DELAY=30
-          SUCCESS=0
+          MAX_WAIT=480
+          WAITED=0
+          BACKOFFS=(10 20 30 45 60 90 120 120)
+          AWAKE=0
 
-          for attempt in $(seq 1 $MAX_ATTEMPTS); do
-            echo "Attempt $attempt of $MAX_ATTEMPTS..."
+          for delay in "${BACKOFFS[@]}"; do
+            if [ $AWAKE -eq 0 ]; then
+              echo "Polling container status (GET $API_URL/health)..."
+              HTTP_CODE=$(curl -s -o /tmp/health.json -w "%{http_code}" \
+                --connect-timeout 15 \
+                --max-time 30 \
+                -X GET \
+                "$API_URL/health")
 
-            HTTP_CODE=$(curl -s -o /tmp/response.json -w "%{http_code}" \
-              --connect-timeout 15 \
-              --max-time 120 \
-              --retry 0 \
-              -X POST \
-              -H "X-Verification-Secret: $SECRET" \
-              -H "Content-Type: application/json" \
-              "$API_URL/internal/verify/trigger")
+              echo "Health check HTTP response code: $HTTP_CODE"
 
-            echo "HTTP response code: $HTTP_CODE"
-
-            if [ "$HTTP_CODE" = "202" ]; then
-              echo "Verification round accepted."
-              cat /tmp/response.json
-              SUCCESS=1
-              break
-            elif [ "$HTTP_CODE" = "429" ]; then
-              echo "Rate-limited (429). Verification already in progress or too recent."
-              cat /tmp/response.json
-              SUCCESS=1
-              break
-            elif [ "$HTTP_CODE" = "503" ]; then
-              echo "Service unavailable (503). SnapDeploy container is warming up."
-              if [ $attempt -lt $MAX_ATTEMPTS ]; then
-                echo "Waiting ${RETRY_DELAY}s before retry..."
-                sleep $RETRY_DELAY
-              fi
-            elif [ "$HTTP_CODE" = "000" ]; then
-              echo "Connection failed. SnapDeploy service may be cold-starting."
-              if [ $attempt -lt $MAX_ATTEMPTS ]; then
-                echo "Waiting ${RETRY_DELAY}s before retry..."
-                sleep $RETRY_DELAY
-              fi
-            else
-              echo "Unexpected response code: $HTTP_CODE"
-              cat /tmp/response.json
-              if [ $attempt -lt $MAX_ATTEMPTS ]; then
-                echo "Waiting ${RETRY_DELAY}s before retry..."
-                sleep $RETRY_DELAY
+              if [ "$HTTP_CODE" = "200" ]; then
+                echo "Container is awake."
+                AWAKE=1
+              elif [ "$HTTP_CODE" = "401" ] || [ "$HTTP_CODE" = "403" ]; then
+                echo "::error::Authentication failure on health check (HTTP $HTTP_CODE). Check API_URL and X-Verification-Secret."
+                exit 1
+              elif [ "$HTTP_CODE" = "404" ]; then
+                echo "::error::Health endpoint not found (HTTP $HTTP_CODE). Check API_URL."
+                exit 1
+              elif [ "$HTTP_CODE" = "503" ]; then
+                BODY=$(cat /tmp/health.json)
+                if echo "$BODY" | grep -qi "waking"; then
+                  echo "Container is cold-starting (503 + waking message)."
+                else
+                  echo "Service unavailable (503). Treating as cold-start."
+                fi
+              elif [ "$HTTP_CODE" = "000" ]; then
+                echo "Connection failed. Container may be cold-starting."
+              else
+                echo "Unexpected HTTP $HTTP_CODE during wake poll. Treating as transient."
               fi
             fi
+
+            if [ $AWAKE -eq 1 ]; then
+              echo "Triggering verification (POST $API_URL/internal/verify/trigger)..."
+              HTTP_CODE=$(curl -s -o /tmp/response.json -w "%{http_code}" \
+                --connect-timeout 15 \
+                --max-time 120 \
+                -X POST \
+                -H "X-Verification-Secret: $SECRET" \
+                -H "Content-Type: application/json" \
+                "$API_URL/internal/verify/trigger")
+
+              echo "HTTP response code: $HTTP_CODE"
+
+              if [ "$HTTP_CODE" = "202" ]; then
+                echo "Verification round accepted."
+                cat /tmp/response.json
+                exit 0
+              elif [ "$HTTP_CODE" = "429" ]; then
+                echo "Rate-limited (429). Verification already in progress or too recent."
+                cat /tmp/response.json
+                exit 0
+              elif [ "$HTTP_CODE" = "401" ] || [ "$HTTP_CODE" = "403" ]; then
+                echo "::error::Authentication failure (HTTP $HTTP_CODE). Check X-Verification-Secret."
+                exit 1
+              elif [ "$HTTP_CODE" = "404" ]; then
+                echo "::error::Endpoint not found (HTTP $HTTP_CODE). Check API_URL."
+                exit 1
+              elif [ "$HTTP_CODE" = "503" ]; then
+                echo "Service unavailable (503) on trigger. Retrying..."
+              elif [ "$HTTP_CODE" = "000" ]; then
+                echo "Connection failed on trigger. Retrying..."
+              else
+                echo "::error::Unexpected HTTP $HTTP_CODE from trigger endpoint."
+                cat /tmp/response.json
+                exit 1
+              fi
+            fi
+
+            if [ $WAITED -ge $MAX_WAIT ]; then
+              echo "::error::Wake budget exhausted after ${WAITED}s."
+              exit 1
+            fi
+
+            echo "Waiting ${delay}s before retry..."
+            sleep $delay
+            WAITED=$((WAITED + delay))
           done
 
-          if [ $SUCCESS -eq 0 ]; then
-            echo "::error::All $MAX_ATTEMPTS attempts failed."
-            cat /tmp/response.json
-            exit 1
-          fi
+          echo "::error::All attempts failed or wake budget exhausted."
+          exit 1
