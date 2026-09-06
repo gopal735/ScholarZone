@@ -1,0 +1,33 @@
+name: Promote Validated Scholarships
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: production-promotion
+  cancel-in-progress: true
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          cd backend
+          pip install -r requirements.txt
+
+      - name: Run production promotion
+        run: |
+          cd backend
+          python scripts/insert_validated_scholarships.py
+        env:
+          SCHOLARZONE_ENVIRONMENT: production
+          SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
