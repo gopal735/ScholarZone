@@ -1,30 +1,10 @@
-import { useSearchParams, useLocation } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import ScholarshipList from '../components/ScholarshipList'
-import { defaultTheme } from '../data/countryThemes'
 import './ScholarshipsPage.css'
-import '../styles/mesh.css'
-
-function getMeshColors(primary, secondary) {
-  const t = primary ? { primary, secondary } : defaultTheme
-  return {
-    '--mesh-c1': t.primary,
-    '--mesh-c2': t.secondary,
-    '--mesh-c3': t.tertiary || t.primary,
-    '--mesh-c4': t.accent || t.secondary,
-    '--mesh-c5': t.base || '#0f172a',
-    '--mesh-base': t.base || '#0f172a',
-  }
-}
 
 export default function ScholarshipsPage() {
   const [searchParams] = useSearchParams()
   const countryParam = searchParams.get('country') || undefined
-  const location = useLocation()
-  const countryColors = location.state || {}
-
-  const primary = countryColors.primary
-  const secondary = countryColors.secondary
-  const meshColors = getMeshColors(primary, secondary)
 
   const headerTitle = countryParam || 'All Scholarships'
   const headerDescription = countryParam
@@ -33,7 +13,6 @@ export default function ScholarshipsPage() {
 
   return (
     <div className="scholarships-page">
-      <div className="mesh-layer" style={meshColors} aria-hidden="true" />
       <div className="scholarships-page__content">
         <div className="page-heading">
           <div>

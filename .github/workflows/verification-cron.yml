@@ -82,11 +82,9 @@ jobs:
               if [ "$HTTP_CODE" = "202" ]; then
                 echo "Verification round accepted."
                 cat /tmp/response.json
-                exit 0
               elif [ "$HTTP_CODE" = "429" ]; then
                 echo "Rate-limited (429). Verification already in progress or too recent."
                 cat /tmp/response.json
-                exit 0
               elif [ "$HTTP_CODE" = "401" ] || [ "$HTTP_CODE" = "403" ]; then
                 echo "::error::Authentication failure (HTTP $HTTP_CODE). Check X-Verification-Secret."
                 exit 1
@@ -116,3 +114,39 @@ jobs:
 
           echo "::error::All attempts failed or wake budget exhausted."
           exit 1
+
+      - name: Trigger country-level discovery
+        if: always()
+        run: |
+          echo "Triggering discovery (POST $API_URL/internal/discover/trigger)..."
+          HTTP_CODE=$(curl -s -o /tmp/discovery_response.json -w "%{http_code}" \
+            --connect-timeout 15 \
+            --max-time 120 \
+            -X POST \
+            -H "X-Verification-Secret: $SECRET" \
+            -H "Content-Type: application/json" \
+            "$API_URL/internal/discover/trigger")
+
+          echo "Discovery HTTP response code: $HTTP_CODE"
+
+          if [ "$HTTP_CODE" = "202" ]; then
+            echo "Discovery round accepted."
+            cat /tmp/discovery_response.json
+          elif [ "$HTTP_CODE" = "429" ]; then
+            echo "Rate-limited (429). Discovery already in progress or too recent."
+            cat /tmp/discovery_response.json
+          elif [ "$HTTP_CODE" = "401" ] || [ "$HTTP_CODE" = "403" ]; then
+            echo "::error::Authentication failure (HTTP $HTTP_CODE). Check X-Verification-Secret."
+            exit 1
+          elif [ "$HTTP_CODE" = "404" ]; then
+            echo "::error::Discovery endpoint not found (HTTP $HTTP_CODE). Check API_URL."
+            exit 1
+          elif [ "$HTTP_CODE" = "503" ]; then
+            echo "Service unavailable (503) on discovery trigger. Treating as transient."
+          elif [ "$HTTP_CODE" = "000" ]; then
+            echo "Connection failed on discovery trigger. Treating as transient."
+          else
+            echo "::error::Unexpected HTTP $HTTP_CODE from discovery trigger endpoint."
+            cat /tmp/discovery_response.json
+            exit 1
+          fi

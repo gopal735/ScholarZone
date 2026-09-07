@@ -538,9 +538,9 @@ export default function AdminPage() {
   return (
     <div className="admin-page">
       <div className="ambient-bg" aria-hidden="true">
-        <Orb size="900px" blur="180px" style={{ top: '-18%', left: '-12%', background: 'rgba(99,70,255,0.14)', animation: 'orbFloat1 26s ease-in-out infinite' }} />
-        <Orb size="700px" blur="200px" style={{ top: '40%', right: '-14%', background: 'rgba(0,122,255,0.10)', animation: 'orbFloat2 30s ease-in-out infinite' }} />
-        <Orb size="500px" blur="160px" style={{ bottom: '-10%', left: '20%', background: 'rgba(255,255,255,0.03)', animation: 'orbFloat3 22s ease-in-out infinite reverse' }} />
+        <Orb size="900px" blur="180px" style={{ top: '-18%', left: '-12%', background: 'rgba(196,164,74,0.08)', animation: 'orbFloat1 26s ease-in-out infinite' }} />
+        <Orb size="700px" blur="200px" style={{ top: '40%', right: '-14%', background: 'rgba(27,42,74,0.10)', animation: 'orbFloat2 30s ease-in-out infinite' }} />
+        <Orb size="500px" blur="160px" style={{ bottom: '-10%', left: '20%', background: 'rgba(255,255,255,0.02)', animation: 'orbFloat3 22s ease-in-out infinite reverse' }} />
       </div>
 
       <div className="admin-inner">

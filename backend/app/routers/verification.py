@@ -23,7 +23,7 @@ from ..core.config import get_settings
 from ..schemas import ScholarshipImageVerifyRequest
 from ..services.image_validator import ImageCandidate, ImageValidator
 from ..services.scholarship_image_verifier import ImageVerifier, is_valid_source_type
-from ..scheduler_v2 import VerificationRoundResult, run_verification_round
+from ..scheduler_v2 import DiscoveryRoundResult, VerificationRoundResult, run_discovery_round, run_verification_round
 from ..database import get_db
 
 logger = logging.getLogger(__name__)
@@ -149,6 +149,86 @@ async def verification_status() -> dict:
         ),
         "min_trigger_interval_seconds": _min_interval_seconds,
         "timestamp": datetime.now(timezone.utc).isoformat(),
+    }
+
+
+@router.post("/discover/trigger", status_code=status.HTTP_202_ACCEPTED)
+async def trigger_discovery(
+    x_verification_secret: str | None = Header(None, alias="X-Verification-Secret"),
+    dry_run: bool = False,
+    max_workers: int = 4,
+) -> dict:
+    """Trigger a country-level new-scholarship discovery round.
+
+    This endpoint is designed to be called by cloud scheduler services
+    alongside the verification trigger. Authentication is required via
+    the X-Verification-Secret header.
+
+    Returns 202 Accepted if the discovery round was initiated.
+    Returns 401 Unauthorized if the secret is missing or invalid.
+    Returns 503 Service Unavailable if the scheduler is not configured.
+    """
+    if not _verify_secret(x_verification_secret):
+        logger.warning(
+            "Unauthorized discovery trigger attempt from %s",
+            "unknown",
+        )
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid or missing verification secret.",
+        )
+
+    settings = get_settings()
+    if settings.verification_secret is None:
+        logger.error(
+            "Verification secret not configured. "
+            "Set SCHOLARZONE_VERIFICATION_SECRET environment variable."
+        )
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="Discovery scheduler not configured.",
+        )
+
+    started_at = datetime.now(timezone.utc).isoformat()
+
+    try:
+        result: DiscoveryRoundResult = run_discovery_round(
+            dry_run=dry_run,
+            max_workers=max_workers,
+        )
+    except Exception as exc:
+        logger.exception("Discovery round failed: %s", exc)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Discovery round failed.",
+        )
+
+    completed_at = datetime.now(timezone.utc).isoformat()
+
+    logger.info(
+        "Discovery round completed. countries_scanned=%d inserted=%d duplicates=%d rejected=%d errors=%d images=%d started=%s completed=%s",
+        result.countries_scanned,
+        result.inserted_scholarships,
+        result.duplicates,
+        result.rejected_candidates,
+        result.errors,
+        result.image_discoveries_triggered,
+        started_at,
+        completed_at,
+    )
+
+    return {
+        "status": "accepted",
+        "dry_run": dry_run,
+        "countries_scanned": result.countries_scanned,
+        "inserted_scholarships": result.inserted_scholarships,
+        "duplicates": result.duplicates,
+        "rejected_candidates": result.rejected_candidates,
+        "errors": result.errors,
+        "image_discoveries_triggered": result.image_discoveries_triggered,
+        "runtime_ms": result.runtime_ms,
+        "started_at": started_at,
+        "completed_at": completed_at,
     }
 
 

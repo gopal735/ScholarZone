@@ -15,6 +15,7 @@ from datetime import date
 from dataclasses import dataclass
 
 from .database import get_session_factory
+from .services.discovery_scheduler import DiscoveryScheduler
 from .services.scheduler_config import SchedulerConfig
 from .services.scheduler_engine import SchedulerEngine
 
@@ -109,4 +110,50 @@ def run_verification_round() -> VerificationRoundResult:
         jobs_submitted=submitted,
         jobs_completed=completed,
         jobs_failed=failed,
+    )
+
+
+@dataclass
+class DiscoveryRoundResult:
+    countries_scanned: int
+    inserted_scholarships: int
+    duplicates: int
+    rejected_candidates: int
+    errors: int
+    image_discoveries_triggered: int
+    runtime_ms: float
+
+
+def run_discovery_round(
+    dry_run: bool = False,
+    max_workers: int = 4,
+) -> DiscoveryRoundResult:
+    """Run a country-level new-scholarship discovery round.
+
+    Discovers new scholarships for every country currently represented
+    in the database, deduplicates against existing records, auto-approves
+    verified pending candidates, and enqueues image discovery for newly
+    inserted scholarships with NULL image_url.
+
+    Args:
+        dry_run: If True, reports expected inserts without mutating data.
+        max_workers: Maximum concurrent country discovery workers.
+
+    Returns:
+        DiscoveryRoundResult with aggregate metrics.
+    """
+    scheduler = DiscoveryScheduler(
+        dry_run=dry_run,
+        max_workers=max_workers,
+    )
+    metrics = scheduler.run()
+
+    return DiscoveryRoundResult(
+        countries_scanned=metrics.countries_scanned,
+        inserted_scholarships=metrics.inserted_scholarships,
+        duplicates=metrics.duplicates,
+        rejected_candidates=metrics.rejected_candidates,
+        errors=metrics.errors,
+        image_discoveries_triggered=metrics.image_discoveries_triggered,
+        runtime_ms=metrics.runtime_ms,
     )

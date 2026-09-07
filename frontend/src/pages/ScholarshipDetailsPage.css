@@ -8,7 +8,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: #1d4ed8;
+  color: var(--accent);
   font-size: 0.875rem;
   font-weight: 800;
   text-decoration: none;
@@ -23,18 +23,18 @@
 }
 
 .scholarship-details__back:hover {
-  color: #1e40af;
-  background: #eff6ff;
+  color: var(--accent-hover);
+  background: var(--accent-soft);
 }
 
 .scholarship-details__text-link:hover {
-  color: #1e40af;
+  color: var(--accent-hover);
 }
 
 .scholarship-details__back:focus-visible,
 .scholarship-details__text-link:focus-visible,
 .scholarship-details__action:focus-visible {
-  outline: 3px solid rgba(37, 99, 235, 0.28);
+  outline: 2px solid var(--focus-ring);
   outline-offset: 4px;
 }
 
@@ -49,9 +49,9 @@
   background:
     radial-gradient(circle at 95% 12%, rgba(147, 197, 253, 0.55), transparent 31%),
     linear-gradient(135deg, #ffffff, #f8fbff);
-  border: 1px solid #dce8f8;
+  border: 1px solid var(--border);
   border-radius: 22px;
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.07);
+  box-shadow: var(--shadow-card);
 }
 
 .scholarship-details__image {
@@ -103,7 +103,7 @@
   display: inline-flex;
   align-items: center;
   padding: 6px 9px;
-  color: var(--accent, #1d4ed8);
+  color: var(--accent);
   font-size: 0.75rem;
   font-weight: 800;
   background: var(--surface-subtle, #f8fafc);
@@ -421,7 +421,7 @@
   align-items: center;
   gap: 7px;
   margin-top: 20px;
-  color: var(--accent, #1d4ed8);
+  color: var(--accent);
   font-size: 0.875rem;
   font-weight: 800;
   text-decoration: none;
@@ -485,7 +485,7 @@
 }
 
 .scholarship-details__related-card span {
-  color: var(--accent, #1d4ed8);
+  color: var(--accent);
   font-size: 0.6875rem;
   font-weight: 800;
 }
@@ -568,7 +568,7 @@
 .scholarship-details__source-notice button {
   min-height: 34px;
   padding: 7px 10px;
-  color: var(--accent, #1d4ed8);
+  color: var(--accent);
   font-size: 0.75rem;
   font-weight: 800;
   cursor: pointer;
@@ -580,7 +580,7 @@
 .scholarship-details__source-notice button:hover {
   color: #ffffff;
   background: var(--accent, #1d4ed8);
-  border-color: var(--accent, #1d4ed8);
+  border-color: var(--accent);
 }
 
 .scholarship-details__source-notice button:focus-visible {

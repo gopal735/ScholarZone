@@ -8,7 +8,7 @@
 
 .compare-page__eyebrow {
   margin-bottom: 9px;
-  color: #2563eb;
+  color: var(--accent);
   font-size: 0.75rem;
   font-weight: 850;
   letter-spacing: 0.1em;
@@ -23,7 +23,7 @@
 .compare-page__heading > div > p:last-child {
   max-width: 610px;
   margin-top: 12px;
-  color: #64748b;
+  color: var(--text-secondary);
   font-size: 1rem;
   line-height: 1.6;
 }
@@ -31,11 +31,11 @@
 .compare-page__count {
   flex: 0 0 auto;
   padding: 8px 10px;
-  color: #1d4ed8;
+  color: var(--accent);
   font-size: 0.8125rem;
   font-weight: 800;
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-border);
   border-radius: 999px;
 }
 
@@ -48,25 +48,25 @@
 }
 
 .compare-page__toolbar p {
-  color: #64748b;
+  color: var(--text-secondary);
   font-size: 0.8125rem;
 }
 
 .compare-page__toolbar button {
   padding: 7px 9px;
-  color: #1d4ed8;
+  color: var(--accent);
   font-size: 0.8125rem;
   font-weight: 800;
   cursor: pointer;
   background: transparent;
-  border: 1px solid #bfdbfe;
+  border: 1px solid var(--accent-border);
   border-radius: 8px;
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .compare-page__toolbar button:hover {
-  background: #eff6ff;
-  border-color: #93c5fd;
+  background: var(--accent-soft);
+  border-color: var(--accent-border);
 }
 
 .compare-page__toolbar button:focus-visible,
@@ -108,7 +108,7 @@
 
 .compare-page__table thead th:first-child {
   min-width: 150px;
-  color: #64748b;
+  color: var(--text-secondary);
   font-size: 0.75rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -120,13 +120,13 @@
 }
 
 .compare-page__table thead a:hover {
-  color: #1d4ed8;
+  color: var(--accent);
 }
 
 .compare-page__table thead button {
   padding: 0;
   margin-top: 8px;
-  color: #1d4ed8;
+  color: var(--accent);
   font-size: 0.75rem;
   font-weight: 800;
   cursor: pointer;
@@ -134,7 +134,7 @@
 }
 
 .compare-page__table tbody th {
-  color: #64748b;
+  color: var(--text-secondary);
   font-size: 0.75rem;
   font-weight: 750;
   background: #fbfdff;
@@ -167,9 +167,9 @@
   width: 42px;
   height: 42px;
   place-items: center;
-  color: #1d4ed8;
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-border);
   border-radius: 12px;
 }
 
@@ -192,7 +192,7 @@
 .compare-page__empty p {
   max-width: 440px;
   margin: 10px auto 22px;
-  color: #64748b;
+  color: var(--text-secondary);
   line-height: 1.6;
 }
 

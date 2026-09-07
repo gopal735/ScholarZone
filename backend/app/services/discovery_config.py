@@ -36,7 +36,6 @@ _DEFAULT_SOURCES: list[ApprovedSourceData] = [
     ApprovedSourceData("chevening.org", "Chevening", "official_program", "UK", 95, ["https://www.chevening.org/"]),
     ApprovedSourceData("campusfrance.org", "Campus France", "official_government", "France", 90, ["https://www.campusfrance.org/"]),
     ApprovedSourceData("swissuniversities.ch", "Swissuniversities", "official_government", "Switzerland", 85, []),
-    ApprovedSourceData("swissuniversities.ch", "Swissuniversities", "official_government", "Switzerland", 85, []),
     ApprovedSourceData("nuffic.nl", "Nuffic", "official_government", "Netherlands", 85, []),
     ApprovedSourceData("studyinsweden.se", "Study in Sweden", "official_government", "Sweden", 85, []),
     ApprovedSourceData("studyinaustria.at", "Study in Austria", "official_government", "Austria", 85, []),

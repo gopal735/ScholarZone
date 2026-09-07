@@ -375,6 +375,22 @@ class DiscoveryPipeline:
         self, session: Session, source_url: str, normalized_url: str, fetch_result: OfficialSourceFetchResult
     ) -> DiscoveryResult:
         discovery_hash = compute_discovery_hash(normalized_url, None, None)
+        existing = session.scalar(
+            select(DiscoveryCandidate).where(DiscoveryCandidate.discovery_hash == discovery_hash)
+        )
+        if existing is not None:
+            existing.last_error = fetch_result.error_type or "unknown"
+            existing.review_reason = f"Fetch failed: {fetch_result.error_reason}"
+            existing.retry_count = (existing.retry_count or 0) + 1
+            existing.fetched_at = self.now_fn()
+            session.commit()
+            return DiscoveryResult(
+                candidate_id=existing.id,
+                status=existing.status,
+                match_type="error",
+                review_reason=existing.review_reason,
+            )
+
         candidate = DiscoveryCandidate(
             source_url=source_url,
             normalized_url=normalized_url,

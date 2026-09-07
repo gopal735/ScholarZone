@@ -239,6 +239,44 @@ class TestDiscoveryPipeline:
             assert result.status == "error"
             assert "Fetch failed" in (result.review_reason or "")
 
+    def test_error_candidate_idempotent_retry(self, pipeline, session):
+        with patch("app.services.discovery_pipeline.fetch_official_source") as mock_fetch:
+            mock_fetch.return_value = OfficialSourceFetchResult(
+                success=False,
+                final_url="https://example.com/scholarship",
+                error_type="not_found",
+                error_reason="404 Not Found",
+            )
+            result1 = pipeline.discover_from_url("https://example.com/scholarship")
+            assert result1.status == "error"
+            result2 = pipeline.discover_from_url("https://example.com/scholarship")
+            assert result2.status == "error"
+            assert result1.candidate_id == result2.candidate_id
+            candidates = session.query(DiscoveryCandidate).all()
+            assert len(candidates) == 1
+
+    def test_error_candidate_retry_updates_reason(self, pipeline, session):
+        with patch("app.services.discovery_pipeline.fetch_official_source") as mock_fetch:
+            mock_fetch.return_value = OfficialSourceFetchResult(
+                success=False,
+                final_url="https://example.com/scholarship",
+                error_type="not_found",
+                error_reason="404 Not Found",
+            )
+            result1 = pipeline.discover_from_url("https://example.com/scholarship")
+            mock_fetch.return_value = OfficialSourceFetchResult(
+                success=False,
+                final_url="https://example.com/scholarship",
+                error_type="timeout",
+                error_reason="Request timed out",
+            )
+            result2 = pipeline.discover_from_url("https://example.com/scholarship")
+            assert result1.candidate_id == result2.candidate_id
+            candidate = session.get(DiscoveryCandidate, result2.candidate_id)
+            assert candidate.last_error == "timeout"
+            assert candidate.retry_count == 2
+            assert "timed out" in (candidate.review_reason or "")
+
     def test_detects_duplicate(self, pipeline, session, existing_scholarship):
         with patch("app.services.discovery_pipeline.fetch_official_source") as mock_fetch:
             mock_fetch.return_value = OfficialSourceFetchResult(

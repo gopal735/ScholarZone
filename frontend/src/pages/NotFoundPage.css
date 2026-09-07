@@ -12,12 +12,12 @@
 .not-found__code {
   display: inline-flex;
   padding: 6px 10px;
-  color: #1d4ed8;
+  color: var(--accent);
   font-size: 0.75rem;
   font-weight: 850;
   letter-spacing: 0.08em;
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-border);
   border-radius: 999px;
 }
 

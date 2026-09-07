@@ -6,10 +6,10 @@
 .admin-page {
   position: relative;
   min-height: 100vh;
-  background: #07070c;
+  background: #0B0F19;
   background-image:
-    radial-gradient(ellipse 80% 60% at 15% 5%, rgba(99, 70, 255, 0.14) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 80% at 85% 90%, rgba(0, 122, 255, 0.10) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 60% at 15% 5%, rgba(196, 164, 74, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 80% at 85% 90%, rgba(27, 42, 74, 0.12) 0%, transparent 55%),
     radial-gradient(ellipse 50% 50% at 50% 50%, rgba(255, 255, 255, 0.015) 0%, transparent 100%);
   color: var(--text-primary);
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
@@ -82,7 +82,6 @@
   border: 1px solid rgba(255,255,255,0.10);
   border-radius: var(--glass-radius-lg);
   box-shadow: 0 16px 48px rgba(0,0,0,0.28);
-  animation: fadeUp 0.6s var(--ease-out) both;
 }
 
 .admin-nav-inner {
@@ -725,10 +724,10 @@
 }
 
 .filter-tab--on {
-  background: rgba(99,70,255,0.22) !important;
-  border-color: rgba(99,70,255,0.50) !important;
+  background: rgba(196, 164, 74, 0.22) !important;
+  border-color: rgba(196, 164, 74, 0.50) !important;
   color: #fff !important;
-  box-shadow: 0 0 20px rgba(99,70,255,0.25), inset 0 1px 0 rgba(255,255,255,0.18) !important;
+  box-shadow: 0 0 20px rgba(196, 164, 74, 0.25), inset 0 1px 0 rgba(255,255,255,0.18) !important;
 }
 
 .controls-meta {
@@ -1178,10 +1177,10 @@
 }
 
 .admin-tab--active {
-  background: rgba(99,70,255,0.18);
-  border-color: rgba(99,70,255,0.45);
+  background: rgba(196, 164, 74, 0.18);
+  border-color: rgba(196, 164, 74, 0.45);
   color: #fff;
-  box-shadow: 0 0 16px rgba(99,70,255,0.20), inset 0 1px 0 rgba(255,255,255,0.14);
+  box-shadow: 0 0 16px rgba(196, 164, 74, 0.20), inset 0 1px 0 rgba(255,255,255,0.14);
 }
 
 .admin-tab-badge {
@@ -1220,8 +1219,8 @@
 
 .admin-secret-input:focus {
   background: rgba(255,255,255,0.10);
-  border-color: rgba(99,70,255,0.50);
-  box-shadow: 0 0 0 3px rgba(99,70,255,0.12);
+  border-color: rgba(196, 164, 74, 0.50);
+  box-shadow: 0 0 0 3px rgba(196, 164, 74, 0.12);
 }
 
 /* ── Review Section ── */

@@ -6,7 +6,18 @@
   align-items: center;
   padding: 120px 0 80px;
   overflow: hidden;
-  background: #08090a;
+  background: var(--page-bg);
+}
+
+.sz-hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-border), transparent);
+  opacity: 0.6;
 }
 
 .sz-hero__glows {
@@ -34,15 +45,15 @@
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.4;
+  opacity: 0.3;
 }
 
 .sz-hero__grid-lines {
   width: 100%;
   height: 100%;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
   background-size: 64px 64px;
   mask-image: radial-gradient(ellipse at 50% 50%, black 0%, transparent 70%);
   -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 0%, transparent 70%);
@@ -74,9 +85,9 @@
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.04em;
-  color: rgba(255, 255, 255, 0.7);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-border);
   border-radius: 100px;
   padding: 8px 16px;
   margin-bottom: 32px;
@@ -96,24 +107,20 @@
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: -0.02em;
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--text-primary);
   margin: 0 0 24px;
 }
 
 .sz-hero__heading em {
   font-style: italic;
-  color: #82a8ff;
-  background: linear-gradient(135deg, #82a8ff 0%, #afc6ff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--accent);
 }
 
 .sz-hero__description {
   font-family: Inter, ui-sans-serif, system-ui, sans-serif;
   font-size: 1.125rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--text-secondary);
   margin: 0 0 32px;
   max-width: 480px;
 }
@@ -143,14 +150,15 @@
 }
 
 .sz-hero__cta--primary {
-  color: #08090a;
-  background: linear-gradient(135deg, #82a8ff 0%, #638fff 100%);
-  box-shadow: 0 4px 16px rgba(130, 168, 255, 0.25);
+  color: #ffffff;
+  background: var(--sz-ink);
+  border: 1px solid var(--sz-ink);
+  box-shadow: 0 2px 8px rgba(27, 42, 74, 0.1);
 }
 
 .sz-hero__cta--primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(130, 168, 255, 0.35);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(27, 42, 74, 0.15);
 }
 
 .sz-hero__cta--primary svg {
@@ -162,17 +170,15 @@
 }
 
 .sz-hero__cta--secondary {
-  color: rgba(255, 255, 255, 0.8);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  color: var(--sz-ink);
+  background: transparent;
+  border: 1px solid var(--sz-mist);
 }
 
 .sz-hero__cta--secondary:hover {
-  transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+  background: var(--surface);
+  border-color: var(--sz-ink);
 }
 
 .sz-hero__live-data {
@@ -181,26 +187,25 @@
   gap: 8px;
   font-family: Inter, ui-sans-serif, system-ui, sans-serif;
   font-size: 0.8125rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--text-muted);
 }
 
 .sz-hero__live-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #55d9ad;
-  box-shadow: 0 0 8px rgba(85, 217, 173, 0.5);
-  animation: live-pulse 2s ease-in-out infinite;
+  background: var(--success);
+  box-shadow: 0 0 8px rgba(74, 124, 89, 0.4);
 }
 
 @keyframes live-pulse {
   0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.6; transform: scale(0.85); }
+  50% { opacity: 0.7; transform: scale(0.9); }
 }
 
 .sz-hero__live-label {
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--text-secondary);
 }
 
 .sz-hero__live-stats {
@@ -211,12 +216,12 @@
 
 .sz-hero__live-stats strong {
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-primary);
   font-variant-numeric: tabular-nums;
 }
 
 .sz-hero__live-divider {
-  color: rgba(255, 255, 255, 0.15);
+  color: var(--border);
 }
 
 .sz-hero__cards {
@@ -234,19 +239,18 @@
 
 .sz-hero-card {
   position: relative;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
   border-radius: 12px;
+  box-shadow: var(--shadow-card);
   will-change: transform;
   transition: border-color 0.15s cubic-bezier(0.4, 0, 0.2, 1),
               box-shadow 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .sz-hero-card:hover {
-  border-color: rgba(130, 168, 255, 0.4);
-  box-shadow: 0 8px 32px rgba(130, 168, 255, 0.1);
+  border-color: var(--accent-border);
+  box-shadow: var(--shadow-hover);
 }
 
 .sz-hero-card:nth-child(2) {
@@ -278,7 +282,7 @@
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--text-muted);
 }
 
 .sz-hero-card__verified {
@@ -288,9 +292,9 @@
   font-family: Inter, ui-sans-serif, system-ui, sans-serif;
   font-size: 0.625rem;
   font-weight: 500;
-  color: #55d9ad;
-  background: rgba(85, 217, 173, 0.1);
-  border: 1px solid rgba(85, 217, 173, 0.2);
+  color: var(--success);
+  background: var(--success-soft);
+  border: 1px solid var(--success-border);
   border-radius: 100px;
   padding: 3px 8px;
 }
@@ -300,7 +304,7 @@
   font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.3;
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--text-primary);
   margin: 0 0 16px;
 }
 
@@ -316,14 +320,14 @@
   font-weight: 500;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.3);
+  color: var(--text-muted);
   margin-bottom: 2px;
 }
 
 .sz-hero-card__detail dd {
   font-family: Inter, ui-sans-serif, system-ui, sans-serif;
   font-size: 0.8125rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-secondary);
   margin: 0;
 }
 
@@ -333,15 +337,15 @@
   gap: 8px;
   font-family: Inter, ui-sans-serif, system-ui, sans-serif;
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--text-muted);
   margin: 16px 0 0;
   padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid var(--border);
 }
 
 .sz-hero-card__deadline span:first-child {
   font-weight: 500;
-  color: #ffc27a;
+  color: var(--accent);
 }
 
 .sz-hero-card--skeleton {

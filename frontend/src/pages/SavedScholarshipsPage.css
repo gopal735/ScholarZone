@@ -31,11 +31,11 @@
 .saved-scholarships-page__count {
   flex: 0 0 auto;
   padding: 8px 10px;
-  color: #1d4ed8;
+  color: var(--accent);
   font-size: 0.8125rem;
   font-weight: 800;
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-border);
   border-radius: 999px;
 }
 
@@ -55,9 +55,9 @@
   width: 42px;
   height: 42px;
   place-items: center;
-  color: #1d4ed8;
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-border);
   border-radius: 12px;
 }
 
