@@ -123,6 +123,20 @@ class ScholarshipListResponse(BaseModel):
     pagination: PaginationMetadata
 
 
+class ScholarshipStatsResponse(BaseModel):
+    """Live aggregate statistics served from the database."""
+
+    total: int
+    countries: int
+    open: int
+    closing_soon: int
+    upcoming: int
+    verified_active: int
+    fully_funded: int
+    with_image: int
+    with_official_source: int
+
+
 class ScholarshipImageVerifyRequest(BaseModel):
     scholarship_id: int = Field(ge=1)
     image_url: str = Field(max_length=2048)

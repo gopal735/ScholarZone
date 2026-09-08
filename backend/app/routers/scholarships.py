@@ -4,10 +4,20 @@ from datetime import date
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException, Path, Query, status
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from ..database import get_db
-from ..schemas import ScholarshipDetailResponse, ScholarshipListResponse, ScholarshipQuery, ScholarshipSort, ScholarshipStatus, ScholarshipVerificationUpdate
+from ..models import Scholarship
+from ..schemas import (
+    ScholarshipDetailResponse,
+    ScholarshipListResponse,
+    ScholarshipQuery,
+    ScholarshipSort,
+    ScholarshipStatus,
+    ScholarshipStatsResponse,
+    ScholarshipVerificationUpdate,
+)
 from ..services.scholarships import get_scholarship_details, get_scholarship_directory, get_verification_queue, verify_scholarship
 
 
@@ -39,6 +49,59 @@ def list_scholarships_endpoint(
         limit=limit,
     )
     return get_scholarship_directory(session, query)
+
+
+@router.get("/stats", response_model=ScholarshipStatsResponse)
+def get_scholarship_stats(
+    session: Session = Depends(get_db),
+) -> ScholarshipStatsResponse:
+    """Live aggregate statistics for the public homepage and trust bar."""
+    total = session.execute(select(func.count(Scholarship.id))).scalar() or 0
+    countries = session.execute(select(func.count(func.distinct(Scholarship.country)))).scalar() or 0
+    open_count = session.execute(
+        select(func.count(Scholarship.id)).where(Scholarship.status == "open")
+    ).scalar() or 0
+    closing_soon = session.execute(
+        select(func.count(Scholarship.id)).where(Scholarship.status == "closing-soon")
+    ).scalar() or 0
+    upcoming = session.execute(
+        select(func.count(Scholarship.id)).where(Scholarship.status == "upcoming")
+    ).scalar() or 0
+    verified_active = session.execute(
+        select(func.count(Scholarship.id)).where(
+            Scholarship.verification_status == "active"
+        )
+    ).scalar() or 0
+    fully_funded = session.execute(
+        select(func.count(Scholarship.id)).where(
+            Scholarship.funding.ilike("%fully funded%"),
+                       Scholarship.funding.not_ilike("%partial%"),
+        )
+    ).scalar() or 0
+    with_image = session.execute(
+        select(func.count(Scholarship.id)).where(
+            Scholarship.image_url.isnot(None),
+            Scholarship.image_url != "",
+        )
+    ).scalar() or 0
+    with_official_source = session.execute(
+        select(func.count(Scholarship.id)).where(
+            Scholarship.official_source.isnot(None),
+            Scholarship.official_source != "",
+        )
+    ).scalar() or 0
+
+    return ScholarshipStatsResponse(
+        total=total,
+        countries=countries,
+        open=open_count,
+        closing_soon=closing_soon,
+        upcoming=upcoming,
+        verified_active=verified_active,
+        fully_funded=fully_funded,
+        with_image=with_image,
+        with_official_source=with_official_source,
+    )
 
 
 @router.get("/verification-queue", response_model=list[ScholarshipDetailResponse])
