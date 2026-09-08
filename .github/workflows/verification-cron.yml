@@ -33,9 +33,18 @@ jobs:
           BACKOFFS=(10 20 30 45 60 90 120 120)
           AWAKE=0
 
+          # Explicit warm-up to trigger platform wake
+          echo "Warming up container (GET $API_URL/health)..."
+          curl -s -o /dev/null -w "%{http_code}" \
+            --connect-timeout 15 \
+            --max-time 30 \
+            -X GET \
+            "$API_URL/health" || true
+          echo ""
+
           for delay in "${BACKOFFS[@]}"; do
             if [ $AWAKE -eq 0 ]; then
-              echo "Polling container status (GET $API_URL/health)..."
+              echo "Polling readiness (GET $API_URL/health)..."
               HTTP_CODE=$(curl -s -o /tmp/health.json -w "%{http_code}" \
                 --connect-timeout 15 \
                 --max-time 30 \
@@ -45,7 +54,7 @@ jobs:
               echo "Health check HTTP response code: $HTTP_CODE"
 
               if [ "$HTTP_CODE" = "200" ]; then
-                echo "Container is awake."
+                echo "Container is ready."
                 AWAKE=1
               elif [ "$HTTP_CODE" = "401" ] || [ "$HTTP_CODE" = "403" ]; then
                 echo "::error::Authentication failure on health check (HTTP $HTTP_CODE). Check API_URL and X-Verification-Secret."
@@ -55,15 +64,18 @@ jobs:
                 exit 1
               elif [ "$HTTP_CODE" = "503" ]; then
                 BODY=$(cat /tmp/health.json)
+                echo "Readiness detail: $BODY"
                 if echo "$BODY" | grep -qi "waking"; then
                   echo "Container is cold-starting (503 + waking message)."
+                elif echo "$BODY" | grep -qi "database"; then
+                  echo "Database not ready yet (503 + database detail)."
                 else
                   echo "Service unavailable (503). Treating as cold-start."
                 fi
               elif [ "$HTTP_CODE" = "000" ]; then
                 echo "Connection failed. Container may be cold-starting."
               else
-                echo "Unexpected HTTP $HTTP_CODE during wake poll. Treating as transient."
+                echo "Unexpected HTTP $HTTP_CODE during readiness poll. Treating as transient."
               fi
             fi
 
@@ -104,6 +116,9 @@ jobs:
 
             if [ $WAITED -ge $MAX_WAIT ]; then
               echo "::error::Wake budget exhausted after ${WAITED}s."
+              echo "::error::Last health response:"
+              cat /tmp/health.json 2>/dev/null || echo "  (none)"
+              echo "::error::Check SnapDeploy logs for container startup errors."
               exit 1
             fi
 
@@ -113,6 +128,8 @@ jobs:
           done
 
           echo "::error::All attempts failed or wake budget exhausted."
+          echo "::error::Last health response:"
+          cat /tmp/health.json 2>/dev/null || echo "  (none)"
           exit 1
 
       - name: Trigger country-level discovery

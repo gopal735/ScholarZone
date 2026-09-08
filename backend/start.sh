@@ -8,6 +8,9 @@
 # - SCHOLARZONE_DATABASE_URL must be set
 # - In production, DATABASE_URL must point to PostgreSQL (not SQLite)
 # - SCHOLARZONE_VERIFICATION_SECRET should be set for production
+#
+# Database initialization is handled asynchronously by the FastAPI lifespan
+# so that the health endpoint is available immediately for readiness probes.
 
 set -e
 
@@ -60,15 +63,8 @@ echo "Environment: $SCHOLARZONE_ENVIRONMENT"
 echo "Port: $PORT"
 echo "Database: ${SCHOLARZONE_DATABASE_URL%%:*}://***"  # Only show driver, hide credentials
 
-# Initialize database
-echo "Initializing database..."
-python -c "
-from app.database import init_database
-init_database()
-print('Database initialized successfully')
-"
-
-# Start uvicorn
+# Start uvicorn immediately; database initialization runs in the FastAPI lifespan
+# so that /health is available for platform readiness probes during startup.
 echo "Starting uvicorn..."
 exec uvicorn app.main:app \
     --host 0.0.0.0 \

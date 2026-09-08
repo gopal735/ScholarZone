@@ -44,7 +44,14 @@ def get_engine() -> Engine:
     if database_url.startswith("postgresql://"):
         database_url = "postgresql+psycopg://" + database_url[len("postgresql://"):]
     connect_args = {"check_same_thread": False} if database_url.startswith("sqlite") else {}
-    return create_engine(database_url, connect_args=connect_args, pool_pre_ping=True)
+    if database_url.startswith("postgresql"):
+        connect_args["connect_timeout"] = 10
+    return create_engine(
+        database_url,
+        connect_args=connect_args,
+        pool_pre_ping=True,
+        pool_timeout=10,
+    )
 
 
 @lru_cache

@@ -1,13 +1,15 @@
 from contextlib import asynccontextmanager
 import logging
+from threading import Lock, Thread
 
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from sqlalchemy import text
 
 from .core.config import get_settings
-from .database import close_database, init_database
+from .database import close_database, get_engine, init_database
 from .routers.scholarships import router as scholarships_router
 from .routers.verification import router as verification_router
 from .routers.admin_image_review import router as admin_image_review_router
@@ -18,17 +20,46 @@ from .seed import seed_database
 
 logger = logging.getLogger(__name__)
 
+_db_ready = False
+_db_init_error: str | None = None
+_db_lock = Lock()
+
+
+def _run_init() -> None:
+    global _db_ready, _db_init_error
+    try:
+        init_database()
+        with get_engine().connect() as conn:
+            conn.execute(text("SELECT 1"))
+        _db_ready = True
+    except Exception as exc:
+        logger.exception("Database initialization failed: %s", exc)
+        _db_init_error = str(exc)
+        _db_ready = False
+        return
+    settings = get_settings()
+    if settings.environment != "production":
+        try:
+            seed_database()
+        except Exception:
+            logger.exception("Database seeding failed", exc_info=True)
+    else:
+        logger.info("Skipping scholarship seeding in production; database is populated via migration.")
+
 
 @asynccontextmanager
 async def lifespan(_: FastAPI):
     settings = get_settings()
-    init_database()
-    if settings.environment != "production":
-        seed_database()
+    if settings.environment == "test":
+        _run_init()
+        yield
+        close_database()
     else:
-        logger.info("Skipping scholarship seeding in production; database is populated via migration.")
-    yield
-    close_database()
+        thread = Thread(target=_run_init, daemon=True)
+        thread.start()
+        yield
+        thread.join(timeout=5)
+        close_database()
 
 
 app = FastAPI(
@@ -67,8 +98,18 @@ def home() -> dict[str, str]:
 
 
 @app.get("/health")
-def health() -> dict[str, str]:
-    return {"status": "ok"}
+def health() -> JSONResponse:
+    with _db_lock:
+        if not _db_ready:
+            detail = _db_init_error or "Database not ready"
+            return JSONResponse(status_code=503, content={"status": "error", "detail": detail})
+        try:
+            with get_engine().connect() as conn:
+                conn.execute(text("SELECT 1"))
+            return JSONResponse(status_code=200, content={"status": "ok"})
+        except Exception as exc:
+            logger.warning("Health check failed: %s", exc)
+            return JSONResponse(status_code=503, content={"status": "error", "detail": "Database unreachable"})
 
 
 # NOTE: Legacy APScheduler is intentionally NOT started in production.
