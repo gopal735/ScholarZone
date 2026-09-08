@@ -52,10 +52,14 @@ def get_settings() -> Settings:
     else:
         database_url = os.getenv("SCHOLARZONE_DATABASE_URL", DEFAULT_DATABASE_URL).strip() or DEFAULT_DATABASE_URL
 
+    allowed_origins = _split_origins(os.getenv("SCHOLARZONE_ALLOWED_ORIGINS", DEFAULT_ALLOWED_ORIGINS))
+    if "https://gopal735.github.io" not in allowed_origins:
+        allowed_origins = allowed_origins + ("https://gopal735.github.io",)
+
     return Settings(
         environment=environment,
         database_url=database_url,
-        allowed_origins=_split_origins(os.getenv("SCHOLARZONE_ALLOWED_ORIGINS", DEFAULT_ALLOWED_ORIGINS)),
+        allowed_origins=allowed_origins,
         resend_api_key=os.getenv("RESEND_API_KEY"),
         verification_secret=os.getenv("SCHOLARZONE_VERIFICATION_SECRET"),
         admin_secret=os.getenv("SCHOLARZONE_ADMIN_SECRET"),
