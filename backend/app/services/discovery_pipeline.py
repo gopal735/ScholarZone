@@ -441,11 +441,11 @@ class DiscoveryPipeline:
                 region=candidate.extracted_fields.get("region"),
                 duration=candidate.extracted_fields.get("duration"),
                 deadline_display=candidate.extracted_fields.get("deadline"),
-                eligibility=candidate.extracted_fields.get("eligibility", []),
-                benefits=candidate.extracted_fields.get("coverage", []),
-                requirements=candidate.extracted_fields.get("requirements", []),
-                documents=candidate.extracted_fields.get("documents", []),
-                application_method=candidate.extracted_fields.get("application_method", []),
+                eligibility=candidate.extracted_fields.get("eligibility") or [],
+                benefits=candidate.extracted_fields.get("coverage") or [],
+                requirements=candidate.extracted_fields.get("requirements") or [],
+                documents=candidate.extracted_fields.get("documents") or [],
+                application_method=candidate.extracted_fields.get("application_method") or [],
             )
             session.add(scholarship)
             session.flush()

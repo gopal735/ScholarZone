@@ -25,7 +25,28 @@ def get_scholarship_directory(session: Session, query: ScholarshipQuery) -> Scho
 
 
 def get_scholarship_details(session: Session, scholarship_id: int):
-    return get_scholarship_by_id(session, scholarship_id)
+    scholarship = get_scholarship_by_id(session, scholarship_id)
+    if scholarship is None:
+        return None
+
+    dirty = False
+    for field in (
+        "eligibility",
+        "benefits",
+        "coverage",
+        "requirements",
+        "documents",
+        "application_method",
+    ):
+        if getattr(scholarship, field) is None:
+            setattr(scholarship, field, [])
+            dirty = True
+
+    if dirty:
+        session.commit()
+        session.refresh(scholarship)
+
+    return scholarship
 
 
 def get_verification_queue(session: Session) -> list[Scholarship]:

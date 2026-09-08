@@ -4,7 +4,7 @@ from datetime import date, datetime
 from enum import Enum
 from typing import Literal
 
-from pydantic import AliasChoices, BaseModel, ConfigDict, Field
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, field_validator
 
 
 class ScholarshipSort(str, Enum):
@@ -109,6 +109,22 @@ class ScholarshipDetailResponse(ScholarshipResponse):
     best_fit: str | None = None
     last_verified_date: date | None = None
     notes: str | None = None
+
+    @field_validator(
+        "eligibility",
+        "benefits",
+        "coverage",
+        "requirements",
+        "documents",
+        "required_documents",
+        "application_method",
+        mode="before",
+    )
+    @classmethod
+    def _coerce_none_to_empty_list(cls, value):
+        if value is None:
+            return []
+        return value
 
 
 class PaginationMetadata(BaseModel):
