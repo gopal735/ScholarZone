@@ -153,7 +153,7 @@ def debug_raw_scholarship(
     return raw
 
 
-@router.post("/debug/fix-null-lists")
+@router.get("/debug/fix-null-lists")
 def debug_fix_null_lists(
     session: Session = Depends(get_db),
 ):
