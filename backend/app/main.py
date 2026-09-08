@@ -122,3 +122,38 @@ app.include_router(verification_router)
 app.include_router(admin_image_review_router)
 app.include_router(discovery_router)
 app.include_router(admin_dashboard_router)
+
+
+@app.get("/debug/fix-null-lists")
+def debug_fix_null_lists_main():
+    from sqlalchemy import text
+    from app.database import get_session_factory
+    session_factory = get_session_factory()
+    session = session_factory()
+    try:
+        null_eligibility = session.execute(
+            text("SELECT id FROM scholarships WHERE eligibility IS NULL")
+        ).fetchall()
+        null_application_method = session.execute(
+            text("SELECT id FROM scholarships WHERE application_method IS NULL")
+        ).fetchall()
+
+        fixed = []
+        for row in null_eligibility + null_application_method:
+            sid = row[0]
+            from app.models import Scholarship
+            scholarship = session.get(Scholarship, sid)
+            if scholarship.eligibility is None:
+                scholarship.eligibility = []
+            if scholarship.application_method is None:
+                scholarship.application_method = []
+            fixed.append(sid)
+
+        session.commit()
+        return {
+            "fixed_ids": fixed,
+            "null_eligibility_count": len(null_eligibility),
+            "null_application_method_count": len(null_application_method),
+        }
+    finally:
+        session.close()
