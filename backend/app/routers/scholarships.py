@@ -135,3 +135,19 @@ def get_scholarship_endpoint(
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Scholarship not found")
 
     return scholarship
+
+
+@router.get("/debug/raw/{scholarship_id}")
+def debug_raw_scholarship(
+    scholarship_id: Annotated[int, Path(ge=1)],
+    session: Session = Depends(get_db),
+):
+    scholarship = session.get(Scholarship, scholarship_id)
+    if scholarship is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Scholarship not found")
+
+    from sqlalchemy import inspect as sa_inspect
+    raw = {}
+    for attr in sa_inspect(scholarship).attrs:
+        raw[attr.key] = attr.value
+    return raw
