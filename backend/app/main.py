@@ -106,7 +106,7 @@ def health() -> JSONResponse:
         try:
             with get_engine().connect() as conn:
                 conn.execute(text("SELECT 1"))
-            return JSONResponse(status_code=200, content={"status": "ok", "test": "redeploy-check"})
+            return JSONResponse(status_code=200, content={"status": "ok"})
         except Exception as exc:
             logger.warning("Health check failed: %s", exc)
             return JSONResponse(status_code=503, content={"status": "error", "detail": "Database unreachable"})
