@@ -1,0 +1,107 @@
+name: ScholarZone Image Persistence Pilot
+
+on:
+  workflow_dispatch:
+
+jobs:
+  persist-pilot-images:
+    runs-on: ubuntu-latest
+    env:
+      API_URL: ${{ vars.SCHOLARZONE_API_URL }}
+      SECRET: ${{ secrets.SCHOLARZONE_VERIFICATION_SECRET }}
+    steps:
+      - name: Validate configuration
+        run: |
+          if [ -z "$API_URL" ]; then
+            echo "::error::SCHOLARZONE_API_URL repository variable is not set."
+            exit 1
+          fi
+          if [ -z "$SECRET" ]; then
+            echo "::error::SCHOLARZONE_VERIFICATION_SECRET repository secret is not set."
+            exit 1
+          fi
+
+      - name: Wake container
+        run: |
+          echo "Warming up container (GET $API_URL/health)..."
+          curl.exe -s -o /dev/null -w "%{http_code}" \
+            --connect-timeout 15 \
+            --max-time 30 \
+            -X GET \
+            "$API_URL/health" || true
+          echo ""
+
+      - name: Wait for container readiness
+        run: |
+          MAX_ATTEMPTS=30
+          DELAY=15
+          for i in $(seq 1 $MAX_ATTEMPTS); do
+            HTTP_CODE=$(curl.exe -s -o /tmp/health.json -w "%{http_code}" \
+              --connect-timeout 15 \
+              --max-time 30 \
+              -X GET \
+              "$API_URL/health")
+            echo "Health check attempt $i: HTTP $HTTP_CODE"
+            if [ "$HTTP_CODE" = "200" ]; then
+              echo "Container is ready."
+              break
+            fi
+            if [ $i -eq $MAX_ATTEMPTS ]; then
+              echo "::error::Health check timed out."
+              cat /tmp/health.json 2>/dev/null || true
+              exit 1
+            fi
+            echo "Waiting ${DELAY}s..."
+            sleep $DELAY
+          done
+
+      - name: Persist ID 296 — International Visegrad Fund
+        run: |
+          echo "Persisting ID 296..."
+          HTTP_CODE=$(curl.exe -s -o /tmp/verify_296.json -w "%{http_code}" \
+            --connect-timeout 15 \
+            --max-time 120 \
+            -X POST \
+            -H "X-Verification-Secret: $SECRET" \
+            -H "Content-Type: application/json" \
+            "$API_URL/internal/images/verify" \
+            -d '{
+              "scholarship_id": 296,
+              "image_url": "https://www.visegradfund.org/og-default.png",
+              "image_source_url": "https://www.visegradfund.org/scholarships",
+              "image_source_type": "official_scholarship",
+              "image_kind": "program_image",
+              "image_alt_text": "International Visegrad Fund"
+            }')
+          echo "HTTP response code: $HTTP_CODE"
+          cat /tmp/verify_296.json
+
+      - name: Persist ID 277 — BI Future African Leader
+        run: |
+          echo "Persisting ID 277..."
+          HTTP_CODE=$(curl.exe -s -o /tmp/verify_277.json -w "%{http_code}" \
+            --connect-timeout 15 \
+            --max-time 120 \
+            -X POST \
+            -H "X-Verification-Secret: $SECRET" \
+            -H "Content-Type: application/json" \
+            "$API_URL/internal/images/verify" \
+            -d '{
+              "scholarship_id": 277,
+              "image_url": "https://media.bi.no/asset/f6bf9a41-2dc4-4690-8a04-bf602df37577/Large/Marked-Heltid-internasjonal-FW25-07.jpg",
+              "image_source_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/future-african-leader-scholarship/",
+              "image_source_type": "official_university",
+              "image_kind": "program_image",
+              "image_alt_text": "BI Future African Leader Scholarship"
+            }')
+          echo "HTTP response code: $HTTP_CODE"
+          cat /tmp/verify_277.json
+
+      - name: Upload verification results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pilot-image-persistence-results
+          path: |
+            /tmp/verify_296.json
+            /tmp/verify_277.json
