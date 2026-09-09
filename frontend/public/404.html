@@ -31,6 +31,7 @@
       if (path.match(/\.\w+$/)) return;
       var repoRoot = path.split('/').slice(0, 2).join('/') || '/';
       if (repoRoot === '') repoRoot = '/';
+      sessionStorage.setItem('redirect', repoRoot + path.slice(repoRoot.length));
       window.location.replace(repoRoot + '/');
     })();
   </script>
