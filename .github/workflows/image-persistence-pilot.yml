@@ -24,7 +24,7 @@ jobs:
       - name: Wake container
         run: |
           echo "Warming up container (GET $API_URL/health)..."
-          curl.exe -s -o /dev/null -w "%{http_code}" \
+          curl -s -o /dev/null -w "%{http_code}" \
             --connect-timeout 15 \
             --max-time 30 \
             -X GET \
@@ -36,7 +36,7 @@ jobs:
           MAX_ATTEMPTS=30
           DELAY=15
           for i in $(seq 1 $MAX_ATTEMPTS); do
-            HTTP_CODE=$(curl.exe -s -o /tmp/health.json -w "%{http_code}" \
+            HTTP_CODE=$(curl -s -o /tmp/health.json -w "%{http_code}" \
               --connect-timeout 15 \
               --max-time 30 \
               -X GET \
@@ -58,7 +58,7 @@ jobs:
       - name: Persist ID 296 — International Visegrad Fund
         run: |
           echo "Persisting ID 296..."
-          HTTP_CODE=$(curl.exe -s -o /tmp/verify_296.json -w "%{http_code}" \
+          HTTP_CODE=$(curl -s -o /tmp/verify_296.json -w "%{http_code}" \
             --connect-timeout 15 \
             --max-time 120 \
             -X POST \
@@ -79,7 +79,7 @@ jobs:
       - name: Persist ID 277 — BI Future African Leader
         run: |
           echo "Persisting ID 277..."
-          HTTP_CODE=$(curl.exe -s -o /tmp/verify_277.json -w "%{http_code}" \
+          HTTP_CODE=$(curl -s -o /tmp/verify_277.json -w "%{http_code}" \
             --connect-timeout 15 \
             --max-time 120 \
             -X POST \
