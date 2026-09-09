@@ -1,0 +1,260 @@
+name: ScholarZone CI
+
+on:
+  pull_request:
+    branches: [main, master]
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: backend-tests
+            shell: bash
+            run: |
+              cd backend
+              pip install -r requirements.txt
+              python -m pytest tests/ -x --tb=short
+          - name: frontend-lint
+            shell: bash
+            run: |
+              cd frontend
+              npm install
+              npm run lint
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+        if: ${{ matrix.name == 'backend-tests' }}
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+        if: ${{ matrix.name == 'backend-tests' }}
+
+      - name: Cache npm dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('frontend/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+        if: ${{ matrix.name == 'frontend-lint' }}
+
+      - name: Run ${{ matrix.name }}
+        shell: ${{ matrix.shell }}
+        run: ${{ matrix.run }}
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: ${{ matrix.name }}-logs
+          path: |
+            backend/pytest.log
+            frontend/eslint.log
+
+  import-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          cd backend
+          pip install -r requirements.txt
+
+      - name: Run import smoke test
+        run: |
+          cd backend
+          python scripts/import_smoke_test.py
+
+      - name: Upload smoke test logs
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: import-smoke-logs
+          path: backend/import_smoke_test.log
+
+  git-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run git integrity check
+        run: python backend/scripts/git_integrity_check.py
+
+      - name: Upload integrity logs
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: git-integrity-logs
+          path: backend/git_integrity.log
+
+  env-config:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run env config check
+        run: |
+          cd backend
+          python scripts/env_config_check.py
+
+      - name: Upload env config logs
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: env-config-logs
+          path: backend/env_config_check.log
+
+  schema-compat:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          cd backend
+          pip install -r requirements.txt
+
+      - name: Run schema compat check
+        run: |
+          cd backend
+          python scripts/schema_compat_check.py
+
+      - name: Upload schema compat logs
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: schema-compat-logs
+          path: backend/schema_compat_check.log
+
+  build-and-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          cd backend
+          pip install -r requirements.txt
+
+      - name: Build Docker image
+        run: |
+          cd backend
+          docker build -t scholarzone-api:${{ github.sha }} -t scholarzone-api:latest .
+
+      - name: Run artifact smoke test
+        run: |
+          cd backend
+          python scripts/artifact_smoke_test.py
+
+      - name: Upload smoke test logs
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: build-and-smoke-logs
+          path: backend/artifact_smoke_test.log
+
+  preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          cd backend
+          pip install -r requirements.txt
+
+      - name: Run preflight
+        run: python backend/scripts/preflight.py
+
+      - name: Upload preflight logs
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: preflight-logs
+          path: backend/preflight.log
