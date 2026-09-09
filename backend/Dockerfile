@@ -31,5 +31,3 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
 
 # Run the application via start.sh (validates SCHOLARZONE_DATABASE_URL before startup)
 CMD ["bash", "start.sh"]
-
-# Force rebuild: fix null JSON list fields
