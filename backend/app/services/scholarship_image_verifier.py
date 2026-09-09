@@ -127,9 +127,20 @@ def is_official_domain(domain: str | None) -> bool:
     if domain in _KNOWN_OFFICIAL_DOMAINS:
         return True
     official_suffixes = (
-        ".gov", ".edu", ".ac.uk", ".ac.in", ".ac.jp", ".ac.kr", ".ac.cn",
+        ".gov", ".gov.sg", ".gov.tw", ".gov.pl", ".gov.hu", ".gov.ie",
+        ".gov.it", ".gov.se", ".gov.be", ".gov.no", ".gov.fi", ".gov.pt",
+        ".gov.at", ".gov.dk", ".gov.nz", ".gov.au", ".gov.ca", ".gov.fr",
+        ".gov.es", ".gov.nl", ".gov.ch", ".gov.il",
+        ".edu", ".edu.sg", ".edu.tw", ".edu.pl", ".edu.hu", ".edu.ie",
+        ".edu.it", ".edu.se", ".edu.be", ".edu.no", ".edu.fi", ".edu.pt",
+        ".edu.at", ".edu.dk", ".edu.nz", ".edu.au", ".edu.ca", ".edu.fr",
+        ".edu.es", ".edu.nl", ".edu.ch", ".edu.il",
+        ".ac.uk", ".ac.in", ".ac.jp", ".ac.kr", ".ac.cn", ".ac.nz",
+        ".ac.au", ".ac.ca", ".ac.il",
         ".go.kr", ".go.jp", ".gov.in", ".gov.cn", ".gov.uk", ".gov.au",
         ".org", ".int", ".admin.ch", ".ch", ".de",
+        ".fi", ".pt", ".hu", ".ie", ".it", ".se", ".be", ".no",
+        ".at", ".dk", ".nz", ".au", ".ca", ".es", ".nl", ".il",
     )
     for suffix in official_suffixes:
         if domain == suffix[1:] or domain.endswith(suffix):
