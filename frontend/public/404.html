@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ScholarZone</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0f172a;
+      color: #e2e8f0;
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .container {
+      text-align: center;
+    }
+    .container h1 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      opacity: 0.9;
+    }
+  </style>
+  <script type="text/javascript">
+    (function () {
+      var path = window.location.pathname;
+      if (path.match(/\.\w+$/)) return;
+      var repoRoot = path.split('/').slice(0, 2).join('/') || '/';
+      if (repoRoot === '') repoRoot = '/';
+      window.location.replace(repoRoot + '/');
+    })();
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Loading ScholarZone…</h1>
+  </div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+/* =========================================================
+   HomeStats — Live Metrics Bar
+   ========================================================= */
+
+.home-stats {
+  padding: 0 32px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.home-stats__inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  padding: clamp(48px, 8vw, 80px);
+  background: var(--sz-ink);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.home-stats__inner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--sz-gold), transparent);
+  opacity: 0.4;
+}
+
+.home-stats__item {
+  text-align: center;
+  position: relative;
+}
+
+.home-stats__item strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  font-weight: 400;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.home-stats__item span {
+  display: block;
+  margin-top: 12px;
+  color: var(--sz-stone-light);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 720px) {
+  .home-stats__inner {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-stats {
+    padding: 0 20px;
+  }
+}
