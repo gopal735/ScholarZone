@@ -51,32 +51,16 @@ jobs:
       - name: Debug - test critical imports
         run: |
           cd backend
-          python -c "
-import sys
-print(f'Python: {sys.version}')
-print('Testing imports...')
-try:
-    import psycopg
-    print('psycopg: OK')
-except Exception as e:
-    print(f'psycopg: FAIL - {e}')
-    import traceback
-    traceback.print_exc()
-try:
-    import sqlalchemy
-    print('sqlalchemy: OK')
-except Exception as e:
-    print(f'sqlalchemy: FAIL - {e}')
-    import traceback
-    traceback.print_exc()
-try:
-    import fastapi
-    print('fastapi: OK')
-except Exception as e:
-    print(f'fastapi: FAIL - {e}')
-    import traceback
-    traceback.print_exc()
-" 2>&1
+          python -c "import psycopg; print('psycopg: OK')" 2>&1 || echo "psycopg: FAIL"
+          python -c "import sqlalchemy; print('sqlalchemy: OK')" 2>&1 || echo "sqlalchemy: FAIL"
+          python -c "import fastapi; print('fastapi: OK')" 2>&1 || echo "fastapi: FAIL"
+          python -c "import pydantic; print('pydantic: OK')" 2>&1 || echo "pydantic: FAIL"
+          python -c "import httpx; print('httpx: OK')" 2>&1 || echo "httpx: FAIL"
+          python -c "import PIL; print('PIL: OK')" 2>&1 || echo "PIL: FAIL"
+          python -c "import bs4; print('bs4: OK')" 2>&1 || echo "bs4: FAIL"
+          python -c "import apscheduler; print('apscheduler: OK')" 2>&1 || echo "apscheduler: FAIL"
+          python -c "import resend; print('resend: OK')" 2>&1 || echo "resend: FAIL"
+          python -c "import dotenv; print('dotenv: OK')" 2>&1 || echo "dotenv: FAIL"
 
       - name: Debug - verify environment
         run: |
