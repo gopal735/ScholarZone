@@ -549,3 +549,5 @@ Available after running the backend locally:
 
 Distributed under the MIT License.
 See the **LICENSE** file for details.
+#   C I   t r i g g e r  
+ 
