@@ -62,38 +62,39 @@ jobs:
     if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     environment: production
     env:
-      RENDER_API_URL: https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/deploys
+      SNAPDEPLOY_API_URL: https://snapdeploy.dev/api
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.workflow_run.head_branch || github.ref }}
 
-      - name: Trigger Render deployment
+      - name: Trigger SnapDeploy deployment
         run: |
-          HTTP_CODE=$(curl -s -o /tmp/render_deploy.json -w "%{http_code}" \
+          HTTP_CODE=$(curl -s -o /tmp/deploy_response.json -w "%{http_code}" \
             -X POST \
-            -H "Authorization: Bearer $RENDER_API_KEY" \
+            -H "X-API-Key: $SNAPDEPLOY_API_KEY" \
             -H "Content-Type: application/json" \
-            "$RENDER_API_URL")
-          echo "Render deploy HTTP response code: $HTTP_CODE"
-          cat /tmp/render_deploy.json
+            -d '{"containerName":"scholarzone-api-2ee2d"}' \
+            "$SNAPDEPLOY_API_URL/containers/deploy")
+          echo "Deploy HTTP response code: $HTTP_CODE"
+          cat /tmp/deploy_response.json
 
           if [ "$HTTP_CODE" = "201" ] || [ "$HTTP_CODE" = "200" ]; then
-            echo "Render deployment triggered successfully."
+            echo "Deployment triggered successfully."
           else
-            echo "::error::Render deployment trigger failed with HTTP $HTTP_CODE."
+            echo "::error::Deployment trigger failed with HTTP $HTTP_CODE."
             exit 1
           fi
         env:
-          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          SNAPDEPLOY_API_KEY: ${{ secrets.SNAPDEPLOY_API_KEY }}
 
       - name: Upload deploy response
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: render-deploy-response
-          path: /tmp/render_deploy.json
+          name: deploy-response
+          path: /tmp/deploy_response.json
 
   post-deploy-health:
     runs-on: ubuntu-latest
