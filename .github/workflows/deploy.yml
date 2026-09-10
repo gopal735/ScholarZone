@@ -69,48 +69,33 @@ jobs:
 
       - name: Trigger deployment
         run: |
-          # Trigger deploy via Render API (legacy) or SnapDeploy API
-          if [ -n "$RENDER_API_KEY" ] && [ -n "$RENDER_SERVICE_ID" ]; then
-            echo "Using Render API to trigger deployment..."
-            HTTP_CODE=$(curl -s -o /tmp/deploy_response.json -w "%{http_code}" \
-              -X POST \
-              -H "Authorization: Bearer $RENDER_API_KEY" \
-              -H "Content-Type: application/json" \
-              "https://api.render.com/v1/services/$RENDER_SERVICE_ID/deploys")
-            echo "Render deploy HTTP response code: $HTTP_CODE"
-            cat /tmp/deploy_response.json
-
-            if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "201" ]; then
-              echo "Render deployment triggered successfully."
-            else
-              echo "::warning::Render deployment failed (HTTP $HTTP_CODE). Will try SnapDeploy..."
-            fi
+          # Trigger deploy via SnapDeploy API (production is on SnapDeploy, not Render)
+          API_KEY="${SNAPDEPLOY_API_KEY:-${RENDER_API_KEY}}"
+          
+          if [ -z "$API_KEY" ]; then
+            echo "::warning::No API key found. Container should auto-deploy on push via SnapDeploy GitHub integration."
+            exit 0
           fi
 
-          if [ -n "$SNAPDEPLOY_API_KEY" ]; then
-            echo "Using SnapDeploy API to trigger deployment..."
-            HTTP_CODE=$(curl -s -o /tmp/deploy_response.json -w "%{http_code}" \
-              -X POST \
-              -H "X-API-Key: $SNAPDEPLOY_API_KEY" \
-              -H "Content-Type: application/json" \
-              -d '{"containerName":"scholarzone-api-2ee2d"}' \
-              "https://snapdeploy.dev/api/containers/deploy")
-            echo "SnapDeploy deploy HTTP response code: $HTTP_CODE"
-            cat /tmp/deploy_response.json
+          echo "Triggering SnapDeploy deployment..."
+          HTTP_CODE=$(curl -s -o /tmp/deploy_response.json -w "%{http_code}" \
+            -X POST \
+            -H "X-API-Key: $API_KEY" \
+            -H "Content-Type: application/json" \
+            -d '{"containerName":"scholarzone-api-2ee2d"}' \
+            "https://snapdeploy.dev/api/containers/deploy")
+          echo "Deploy HTTP response code: $HTTP_CODE"
+          cat /tmp/deploy_response.json
 
-            if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "201" ]; then
-              echo "SnapDeploy deployment triggered successfully."
-            else
-              echo "::error::SnapDeploy deployment trigger failed with HTTP $HTTP_CODE."
-              exit 1
-            fi
-          elif [ ! -f /tmp/deploy_response.json ]; then
-            echo "::warning::No deployment API keys found. Container should auto-deploy on push via SnapDeploy GitHub integration."
+          if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "201" ]; then
+            echo "Deployment triggered successfully."
+          else
+            echo "::error::Deployment trigger failed with HTTP $HTTP_CODE."
+            exit 1
           fi
         env:
-          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
-          RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
           SNAPDEPLOY_API_KEY: ${{ secrets.SNAPDEPLOY_API_KEY }}
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
 
       - name: Upload deploy response
         uses: actions/upload-artifact@v4
