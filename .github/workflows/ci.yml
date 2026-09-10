@@ -43,6 +43,11 @@ jobs:
           cd backend
           pip install -r requirements.txt
 
+      - name: Debug - verify environment
+        run: |
+          cd backend
+          python -c "import sys; print(f'Python: {sys.version}'); import app; print('app import ok'); import pytest; print('pytest ok')"
+
       - name: Run backend tests
         run: |
           cd backend
