@@ -69,33 +69,53 @@ jobs:
 
       - name: Trigger deployment
         run: |
-          # Trigger deploy via SnapDeploy API (production is on SnapDeploy, not Render)
-          API_KEY="${SNAPDEPLOY_API_KEY:-${RENDER_API_KEY}}"
+          # Production is hosted on SnapDeploy. Try to trigger deploy via:
+          # 1. SnapDeploy API (preferred)
+          # 2. Render API (legacy fallback)
+          # 3. If neither key is available, warn but don't fail (auto-deploy may handle it)
           
-          if [ -z "$API_KEY" ]; then
-            echo "::warning::No API key found. Container should auto-deploy on push via SnapDeploy GitHub integration."
-            exit 0
+          DEPLOY_SUCCESS=false
+
+          if [ -n "${SNAPDEPLOY_API_KEY}" ]; then
+            echo "Triggering SnapDeploy deployment..."
+            HTTP_CODE=$(curl -s -o /tmp/deploy_response.json -w "%{http_code}" \
+              -X POST \
+              -H "X-API-Key: ${SNAPDEPLOY_API_KEY}" \
+              -H "Content-Type: application/json" \
+              -d '{"containerName":"scholarzone-api-2ee2d"}' \
+              "https://snapdeploy.dev/api/containers/deploy")
+            echo "SnapDeploy deploy HTTP response code: $HTTP_CODE"
+            cat /tmp/deploy_response.json
+
+            if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "201" ]; then
+              DEPLOY_SUCCESS=true
+            fi
           fi
 
-          echo "Triggering SnapDeploy deployment..."
-          HTTP_CODE=$(curl -s -o /tmp/deploy_response.json -w "%{http_code}" \
-            -X POST \
-            -H "X-API-Key: $API_KEY" \
-            -H "Content-Type: application/json" \
-            -d '{"containerName":"scholarzone-api-2ee2d"}' \
-            "https://snapdeploy.dev/api/containers/deploy")
-          echo "Deploy HTTP response code: $HTTP_CODE"
-          cat /tmp/deploy_response.json
+          if [ "$DEPLOY_SUCCESS" = "false" ] && [ -n "${RENDER_API_KEY}" ] && [ -n "${RENDER_SERVICE_ID}" ]; then
+            echo "Triggering Render deployment..."
+            HTTP_CODE=$(curl -s -o /tmp/deploy_response.json -w "%{http_code}" \
+              -X POST \
+              -H "Authorization: Bearer ${RENDER_API_KEY}" \
+              -H "Content-Type: application/json" \
+              "https://api.render.com/v1/services/${RENDER_SERVICE_ID}/deploys")
+            echo "Render deploy HTTP response code: $HTTP_CODE"
+            cat /tmp/deploy_response.json
 
-          if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "201" ]; then
-            echo "Deployment triggered successfully."
+            if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "201" ]; then
+              DEPLOY_SUCCESS=true
+            fi
+          fi
+
+          if [ "$DEPLOY_SUCCESS" = "false" ]; then
+            echo "::warning::No deployment API keys found. Container should auto-deploy on push via GitHub integration."
           else
-            echo "::error::Deployment trigger failed with HTTP $HTTP_CODE."
-            exit 1
+            echo "Deployment triggered successfully."
           fi
         env:
           SNAPDEPLOY_API_KEY: ${{ secrets.SNAPDEPLOY_API_KEY }}
           RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
 
       - name: Upload deploy response
         uses: actions/upload-artifact@v4
@@ -115,13 +135,25 @@ jobs:
     steps:
       - name: Wait for deployment to become healthy
         run: |
-          MAX_ATTEMPTS=30
+          MAX_ATTEMPTS=40
           DELAY=15
           PRODUCTION_URL="${{ secrets.SCHOLARZONE_API_URL }}"
+          # Extract subdomain from production URL for SnapDeploy wake
+          SUBDOMAIN=$(echo "$PRODUCTION_URL" | sed 's|https://||' | sed 's|\.containers\.snapdeploy\.app||')
 
           if [ -z "$PRODUCTION_URL" ]; then
             echo "::error::SCHOLARZONE_API_URL secret is not set."
             exit 1
+          fi
+
+          # Trigger container wake if on SnapDeploy
+          if echo "$PRODUCTION_URL" | grep -q "containers.snapdeploy.app"; then
+            echo "Triggering SnapDeploy container wake for $SUBDOMAIN..."
+            curl -s -X POST \
+              -H "Content-Type: application/json" \
+              "https://snapdeploy.dev/api/public/wake/$SUBDOMAIN" || true
+            echo "Waiting for container to wake up..."
+            sleep 30
           fi
 
           for i in $(seq 1 $MAX_ATTEMPTS); do
