@@ -58,6 +58,14 @@ jobs:
             ${{ runner.os }}-npm-v2-
         if: ${{ matrix.name == 'frontend-lint' }}
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+        if: ${{ matrix.name == 'frontend-lint' }}
+
       - name: Run ${{ matrix.name }}
         shell: ${{ matrix.shell }}
         run: ${{ matrix.run }}
