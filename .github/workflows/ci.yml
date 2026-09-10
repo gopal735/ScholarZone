@@ -43,10 +43,15 @@ jobs:
           cd backend
           pip install -r requirements.txt
 
+      - name: Debug - verify pip install
+        run: |
+          cd backend
+          pip list | grep -E "(fastapi|pydantic|sqlalchemy|psycopg|httpx|pillow|beautifulsoup4|apscheduler|resend|python-dotenv)"
+
       - name: Debug - verify environment
         run: |
           cd backend
-          python -c "import sys; print(f'Python: {sys.version}'); import app; print('app import ok'); import pytest; print('pytest ok')"
+          python -c "import sys; print(f'Python: {sys.version}'); import app; print('app import ok'); import pytest; print('pytest ok')" 2>&1
 
       - name: Run backend tests
         run: |
