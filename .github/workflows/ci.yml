@@ -12,24 +12,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  lint-and-test:
+  backend-tests:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - name: backend-tests
-            shell: bash
-            run: |
-              cd backend
-              pip install -r requirements.txt
-              python -m pytest tests/ -x --tb=short
-          - name: frontend-lint
-            shell: bash
-            run: |
-              cd frontend
-              npm install
-              npm run lint
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -38,7 +22,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-        if: ${{ matrix.name == 'backend-tests' }}
 
       - name: Cache pip dependencies
         uses: actions/cache@v4
@@ -47,7 +30,36 @@ jobs:
           key: ${{ runner.os }}-pip-v2-${{ hashFiles('backend/requirements.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-v2-
-        if: ${{ matrix.name == 'backend-tests' }}
+
+      - name: Install dependencies
+        run: |
+          cd backend
+          pip install -r requirements.txt
+
+      - name: Run backend tests
+        run: |
+          cd backend
+          python -m pytest tests/ -x --tb=short
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: backend-tests-logs
+          path: backend/pytest.log
+
+  frontend-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
 
       - name: Cache npm dependencies
         uses: actions/cache@v4
@@ -56,28 +68,23 @@ jobs:
           key: ${{ runner.os }}-npm-v2-${{ hashFiles('frontend/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-npm-v2-
-        if: ${{ matrix.name == 'frontend-lint' }}
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: frontend/package-lock.json
-        if: ${{ matrix.name == 'frontend-lint' }}
+      - name: Install dependencies
+        run: |
+          cd frontend
+          npm install
 
-      - name: Run ${{ matrix.name }}
-        shell: ${{ matrix.shell }}
-        run: ${{ matrix.run }}
+      - name: Run frontend lint
+        run: |
+          cd frontend
+          npm run lint
 
-      - name: Upload test results
+      - name: Upload lint results
         uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: ${{ matrix.name }}-logs
-          path: |
-            backend/pytest.log
-            frontend/eslint.log
+          name: frontend-lint-logs
+          path: frontend/eslint.log
 
   import-smoke:
     runs-on: ubuntu-latest
