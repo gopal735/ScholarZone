@@ -11,9 +11,10 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-jobs:
-  backend-tests:
+backend-tests:
     runs-on: ubuntu-latest
+    env:
+      SCHOLARZONE_ENVIRONMENT: test
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -93,6 +94,8 @@ jobs:
 
   import-smoke:
     runs-on: ubuntu-latest
+    env:
+      SCHOLARZONE_ENVIRONMENT: test
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -134,6 +137,8 @@ jobs:
 
   git-integrity:
     runs-on: ubuntu-latest
+    env:
+      SCHOLARZONE_ENVIRONMENT: test
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -170,6 +175,8 @@ jobs:
 
   env-config:
     runs-on: ubuntu-latest
+    env:
+      SCHOLARZONE_ENVIRONMENT: test
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -206,6 +213,8 @@ jobs:
 
   schema-compat:
     runs-on: ubuntu-latest
+    env:
+      SCHOLARZONE_ENVIRONMENT: test
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -247,6 +256,8 @@ jobs:
 
   build-and-smoke:
     runs-on: ubuntu-latest
+    env:
+      SCHOLARZONE_ENVIRONMENT: test
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -293,6 +304,8 @@ jobs:
 
   preflight:
     runs-on: ubuntu-latest
+    env:
+      SCHOLARZONE_ENVIRONMENT: test
     steps:
       - name: Checkout
         uses: actions/checkout@v4
