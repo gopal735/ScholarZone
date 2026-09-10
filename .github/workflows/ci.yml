@@ -44,18 +44,18 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+          key: ${{ runner.os }}-pip-v2-${{ hashFiles('backend/requirements.txt') }}
           restore-keys: |
-            ${{ runner.os }}-pip-
+            ${{ runner.os }}-pip-v2-
         if: ${{ matrix.name == 'backend-tests' }}
 
       - name: Cache npm dependencies
         uses: actions/cache@v4
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('frontend/package-lock.json') }}
+          key: ${{ runner.os }}-npm-v2-${{ hashFiles('frontend/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-npm-
+            ${{ runner.os }}-npm-v2-
         if: ${{ matrix.name == 'frontend-lint' }}
 
       - name: Run ${{ matrix.name }}
