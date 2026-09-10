@@ -48,6 +48,36 @@ jobs:
           cd backend
           pip list | grep -E "(fastapi|pydantic|sqlalchemy|psycopg|httpx|pillow|beautifulsoup4|apscheduler|resend|python-dotenv)" || true
 
+      - name: Debug - test critical imports
+        run: |
+          cd backend
+          python -c "
+import sys
+print(f'Python: {sys.version}')
+print('Testing imports...')
+try:
+    import psycopg
+    print('psycopg: OK')
+except Exception as e:
+    print(f'psycopg: FAIL - {e}')
+    import traceback
+    traceback.print_exc()
+try:
+    import sqlalchemy
+    print('sqlalchemy: OK')
+except Exception as e:
+    print(f'sqlalchemy: FAIL - {e}')
+    import traceback
+    traceback.print_exc()
+try:
+    import fastapi
+    print('fastapi: OK')
+except Exception as e:
+    print(f'fastapi: FAIL - {e}')
+    import traceback
+    traceback.print_exc()
+" 2>&1
+
       - name: Debug - verify environment
         run: |
           cd backend
