@@ -2,10 +2,13 @@ name: ScholarZone Deploy
 
 on:
   workflow_run:
-    workflow: ScholarZone CI
+    workflows: [ScholarZone CI]
     types: [completed]
-    branches: [main, master]
+    branches: [master]
   workflow_dispatch:
+
+permissions:
+  actions: read
 
 concurrency:
   group: production-deploy
