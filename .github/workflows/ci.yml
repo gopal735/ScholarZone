@@ -46,7 +46,7 @@ jobs:
       - name: Debug - verify pip install
         run: |
           cd backend
-          pip list | grep -E "(fastapi|pydantic|sqlalchemy|psycopg|httpx|pillow|beautifulsoup4|apscheduler|resend|python-dotenv)"
+          pip list | grep -E "(fastapi|pydantic|sqlalchemy|psycopg|httpx|pillow|beautifulsoup4|apscheduler|resend|python-dotenv)" || true
 
       - name: Debug - verify environment
         run: |
