@@ -588,7 +588,7 @@ def is_field_within_sla(field_name: str, last_verified_at: datetime | None, toda
     if last_verified_at is None:
         return False
 
-    max_age = get_freshness_max_age(field_name)
+    max_age = get_freshness_threshold(field_name)
     staleness = compute_field_staleness(field_name, last_verified_at, today)
     return staleness.freshness_state == FRESH
 

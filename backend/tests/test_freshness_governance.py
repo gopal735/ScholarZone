@@ -580,25 +580,25 @@ class TestPolicyDefinitions:
 
 class TestHelperFunctions:
     def test_is_field_within_sla_true(self, today):
-        assert is_field_within_sla("deadline_date", today - timedelta(days=1)) is True
+        assert is_field_within_sla("deadline_date", today - timedelta(days=1), today=today) is True
 
     def test_is_field_within_sla_false_when_stale(self, today):
-        assert is_field_within_sla("deadline_date", today - timedelta(days=100)) is False
+        assert is_field_within_sla("deadline_date", today - timedelta(days=100), today=today) is False
 
     def test_is_field_within_sla_false_when_none(self, today):
-        assert is_field_within_sla("deadline_date", None) is False
+        assert is_field_within_sla("deadline_date", None, today=today) is False
 
     def test_is_field_sla_breached_true(self, today):
-        assert is_field_sla_breached("deadline_date", today - timedelta(days=100)) is True
+        assert is_field_sla_breached("deadline_date", today - timedelta(days=100), today=today) is True
 
     def test_is_field_sla_breached_false_when_fresh(self, today):
-        assert is_field_sla_breached("deadline_date", today - timedelta(days=1)) is False
+        assert is_field_sla_breached("deadline_date", today - timedelta(days=1), today=today) is False
 
     def test_is_field_sla_breached_critical_field_never_verified(self, today):
-        assert is_field_sla_breached("deadline_date", None) is True
+        assert is_field_sla_breached("deadline_date", None, today=today) is True
 
     def test_is_field_sla_breached_low_field_never_verified(self, today):
-        assert is_field_sla_breached("notes", None) is False
+        assert is_field_sla_breached("notes", None, today=today) is False
 
 
 class TestFreshnessSummary:
