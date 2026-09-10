@@ -8,7 +8,7 @@ import time
 import urllib.error
 import urllib.request
 
-REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 BACKEND_DIR = os.path.join(REPO_ROOT, "backend")
 IMAGE_TAG = "scholarzone:smoke-test"
 CONTAINER_NAME = "scholarzone-smoke-test"

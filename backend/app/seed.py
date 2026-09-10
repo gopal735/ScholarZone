@@ -6,7 +6,8 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from .data.verified_scholarships import VERIFIED_SCHOLARSHIPS
-from .models import Scholarship
+from .models import Scholarship, ScholarshipVerificationHistory
+from .services.lifecycle_manager import apply_lifecycle_transition, evaluate_lifecycle
 from .services.scholarship_ingestion import upsert_verified_scholarships
 
 
@@ -57,11 +58,22 @@ def get_deadline_status(deadline: date | None, today: date | None = None) -> str
 def refresh_scholarship_statuses(session: Session) -> int:
     updated_count = 0
     for scholarship in session.scalars(select(Scholarship)):
-        status = get_deadline_status(scholarship.deadline_date)
-        if scholarship.status != status:
-            scholarship.status = status
-            updated_count += 1
+        has_authored_status = session.scalar(
+            select(ScholarshipVerificationHistory).where(
+                ScholarshipVerificationHistory.scholarship_id == scholarship.id,
+                ScholarshipVerificationHistory.field_name == "status",
+            )
+        ) is not None
+        if has_authored_status:
+            continue
 
+        evaluation = evaluate_lifecycle(scholarship)
+        if evaluation.should_transition and evaluation.transition_allowed:
+            result = apply_lifecycle_transition(session, scholarship, evaluation)
+            if result is not None:
+                updated_count += 1
+
+    session.flush()
     return updated_count
 
 

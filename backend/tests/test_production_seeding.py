@@ -52,6 +52,9 @@ def test_lifespan_production_does_not_seed(monkeypatch):
     monkeypatch.setenv("SCHOLARZONE_ENVIRONMENT", "production")
     monkeypatch.setenv("SCHOLARZONE_DATABASE_URL", "postgresql://user:pass@localhost:5432/testdb")
 
+    from app.database import reset_database_connections  # noqa: E402
+    reset_database_connections()
+
     # Track if seed_database was called
     seed_called = False
     original_seed = None
@@ -76,6 +79,7 @@ def test_lifespan_production_does_not_seed(monkeypatch):
         asyncio.run(run_lifespan())
 
     assert seed_called is False, "seed_database() should NOT be called in production"
+    reset_database_connections()
 
 
 def test_lifespan_development_does_seed(monkeypatch):
@@ -86,6 +90,9 @@ def test_lifespan_development_does_seed(monkeypatch):
 
     monkeypatch.setenv("SCHOLARZONE_ENVIRONMENT", "development")
     monkeypatch.setenv("SCHOLARZONE_DATABASE_URL", "sqlite:///./dev.db")
+
+    from app.database import reset_database_connections  # noqa: E402
+    reset_database_connections()
 
     seed_called = False
 
@@ -110,6 +117,7 @@ def test_lifespan_development_does_seed(monkeypatch):
         asyncio.run(run_lifespan())
 
     assert seed_called is True, "seed_database() should be called in development"
+    reset_database_connections()
 
 
 def test_lifespan_always_calls_init_database(monkeypatch):
