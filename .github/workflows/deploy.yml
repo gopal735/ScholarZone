@@ -67,55 +67,31 @@ jobs:
         with:
           ref: ${{ github.event.workflow_run.head_branch || github.ref }}
 
-      - name: Trigger deployment
+      - name: Trigger SnapDeploy deployment
         run: |
-          # Production is hosted on SnapDeploy. Try to trigger deploy via:
-          # 1. SnapDeploy API (preferred)
-          # 2. Render API (legacy fallback)
-          # 3. If neither key is available, warn but don't fail (auto-deploy may handle it)
-          
-          DEPLOY_SUCCESS=false
-
-          if [ -n "${SNAPDEPLOY_API_KEY}" ]; then
-            echo "Triggering SnapDeploy deployment..."
-            HTTP_CODE=$(curl -s -o /tmp/deploy_response.json -w "%{http_code}" \
-              -X POST \
-              -H "X-API-Key: ${SNAPDEPLOY_API_KEY}" \
-              -H "Content-Type: application/json" \
-              -d '{"containerName":"scholarzone-api-2ee2d"}' \
-              "https://snapdeploy.dev/api/containers/deploy")
-            echo "SnapDeploy deploy HTTP response code: $HTTP_CODE"
-            cat /tmp/deploy_response.json
-
-            if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "201" ]; then
-              DEPLOY_SUCCESS=true
-            fi
+          if [ -z "${SNAPDEPLOY_API_KEY}" ]; then
+            echo "::error::SNAPDEPLOY_API_KEY secret is not set. Cannot trigger deployment."
+            exit 1
           fi
 
-          if [ "$DEPLOY_SUCCESS" = "false" ] && [ -n "${RENDER_API_KEY}" ] && [ -n "${RENDER_SERVICE_ID}" ]; then
-            echo "Triggering Render deployment..."
-            HTTP_CODE=$(curl -s -o /tmp/deploy_response.json -w "%{http_code}" \
-              -X POST \
-              -H "Authorization: Bearer ${RENDER_API_KEY}" \
-              -H "Content-Type: application/json" \
-              "https://api.render.com/v1/services/${RENDER_SERVICE_ID}/deploys")
-            echo "Render deploy HTTP response code: $HTTP_CODE"
-            cat /tmp/deploy_response.json
+          echo "Triggering SnapDeploy GitHub deployment..."
+          HTTP_CODE=$(curl -s -o /tmp/deploy_response.json -w "%{http_code}" \
+            -X POST \
+            -H "X-API-Key: ${SNAPDEPLOY_API_KEY}" \
+            -H "Content-Type: application/json" \
+            -d '{"repoUrl":"https://github.com/gopal735/ScholarZone.git","branch":"master","containerName":"scholarzone-api-2ee2d"}' \
+            "https://snapdeploy.dev/api/deployments/github")
+          echo "SnapDeploy deploy HTTP response code: $HTTP_CODE"
+          cat /tmp/deploy_response.json
 
-            if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "201" ]; then
-              DEPLOY_SUCCESS=true
-            fi
+          if [ "$HTTP_CODE" != "200" ] && [ "$HTTP_CODE" != "201" ]; then
+            echo "::error::SnapDeploy deployment API returned HTTP $HTTP_CODE."
+            exit 1
           fi
 
-          if [ "$DEPLOY_SUCCESS" = "false" ]; then
-            echo "::warning::No deployment API keys found. Container should auto-deploy on push via GitHub integration."
-          else
-            echo "Deployment triggered successfully."
-          fi
+          echo "SnapDeploy deployment triggered successfully."
         env:
           SNAPDEPLOY_API_KEY: ${{ secrets.SNAPDEPLOY_API_KEY }}
-          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
-          RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
 
       - name: Upload deploy response
         uses: actions/upload-artifact@v4
@@ -130,19 +106,19 @@ jobs:
     if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     environment: production
     env:
-      SCHOLARZONE_API_URL: ${{ secrets.SCHOLARZONE_API_URL }}
+      SCHOLARZONE_API_URL: ${{ vars.SCHOLARZONE_API_URL }}
       SCHOLARZONE_VERIFICATION_SECRET: ${{ secrets.SCHOLARZONE_VERIFICATION_SECRET }}
     steps:
       - name: Wait for deployment to become healthy
         run: |
           MAX_ATTEMPTS=40
           DELAY=15
-          PRODUCTION_URL="${{ secrets.SCHOLARZONE_API_URL }}"
+          PRODUCTION_URL="${{ vars.SCHOLARZONE_API_URL }}"
           # Extract subdomain from production URL for SnapDeploy wake
           SUBDOMAIN=$(echo "$PRODUCTION_URL" | sed 's|https://||' | sed 's|\.containers\.snapdeploy\.app||')
 
           if [ -z "$PRODUCTION_URL" ]; then
-            echo "::error::SCHOLARZONE_API_URL secret is not set."
+            echo "::error::SCHOLARZONE_API_URL repository variable is not set."
             exit 1
           fi
 
@@ -183,7 +159,7 @@ jobs:
 
       - name: Validate scholarships stats endpoint
         run: |
-          PRODUCTION_URL="${{ secrets.SCHOLARZONE_API_URL }}"
+          PRODUCTION_URL="${{ vars.SCHOLARZONE_API_URL }}"
           HTTP_CODE=$(curl -s -o /tmp/stats.json -w "%{http_code}" \
             --connect-timeout 10 \
             --max-time 20 \
@@ -203,7 +179,7 @@ jobs:
 
       - name: Validate internal verify status
         run: |
-          PRODUCTION_URL="${{ secrets.SCHOLARZONE_API_URL }}"
+          PRODUCTION_URL="${{ vars.SCHOLARZONE_API_URL }}"
           HTTP_CODE=$(curl -s -o /tmp/verify_status.json -w "%{http_code}" \
             --connect-timeout 10 \
             --max-time 20 \
