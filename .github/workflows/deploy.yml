@@ -1,4 +1,4 @@
-name: ScholarZone Deploy
+name: ScholarZone Native GitHub Deployment Verification
 
 on:
   workflow_run:
@@ -11,161 +11,78 @@ permissions:
   actions: read
 
 concurrency:
-  group: production-deploy
+  group: production-deployment-verification
   cancel-in-progress: true
 
 jobs:
-  preflight:
+  verify-native-github-deployment:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.workflow_run.head_branch || github.ref }}
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Cache pip dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-
-      - name: Install dependencies
-        run: |
-          cd backend
-          pip install -r requirements.txt
-
-      - name: Run preflight
-        run: |
-          cd backend
-          python scripts/preflight.py 2>&1 | tee preflight.log
-        env:
-          SCHOLARZONE_ENVIRONMENT: test
-
-      - name: Upload preflight logs
-        uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: deploy-preflight-logs
-          path: backend/preflight.log
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: preflight
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
-    environment: production
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.workflow_run.head_branch || github.ref }}
-
-      - name: Trigger SnapDeploy deployment
-        run: |
-          if [ -z "${SNAPDEPLOY_API_KEY}" ]; then
-            echo "::error::SNAPDEPLOY_API_KEY secret is not set. Cannot trigger deployment."
-            exit 1
-          fi
-
-          echo "Triggering SnapDeploy GitHub deployment..."
-          HTTP_CODE=$(curl -s -o /tmp/deploy_response.json -w "%{http_code}" \
-            -X POST \
-            -H "X-API-Key: ${SNAPDEPLOY_API_KEY}" \
-            -H "Content-Type: application/json" \
-            -d '{"repoUrl":"https://github.com/gopal735/ScholarZone.git","branch":"master","containerName":"scholarzone-api-2ee2d"}' \
-            "https://snapdeploy.dev/api/deployments/github")
-          echo "SnapDeploy deploy HTTP response code: $HTTP_CODE"
-          cat /tmp/deploy_response.json
-
-          if [ "$HTTP_CODE" != "200" ] && [ "$HTTP_CODE" != "201" ]; then
-            echo "::error::SnapDeploy deployment API returned HTTP $HTTP_CODE."
-            exit 1
-          fi
-
-          echo "SnapDeploy deployment triggered successfully."
-        env:
-          SNAPDEPLOY_API_KEY: ${{ secrets.SNAPDEPLOY_API_KEY }}
-
-      - name: Upload deploy response
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: deploy-response
-          path: /tmp/deploy_response.json
-
-  post-deploy-health:
-    runs-on: ubuntu-latest
-    needs: deploy
     if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     environment: production
     env:
       SCHOLARZONE_API_URL: ${{ vars.SCHOLARZONE_API_URL }}
       SCHOLARZONE_VERIFICATION_SECRET: ${{ secrets.SCHOLARZONE_VERIFICATION_SECRET }}
     steps:
-      - name: Wait for deployment to become healthy
+      - name: Validate production configuration
         run: |
-          MAX_ATTEMPTS=40
-          DELAY=15
-          PRODUCTION_URL="${{ vars.SCHOLARZONE_API_URL }}"
-          # Extract subdomain from production URL for SnapDeploy wake
-          SUBDOMAIN=$(echo "$PRODUCTION_URL" | sed 's|https://||' | sed 's|\.containers\.snapdeploy\.app||')
+          set -euo pipefail
 
-          if [ -z "$PRODUCTION_URL" ]; then
+          if [ -z "$SCHOLARZONE_API_URL" ]; then
             echo "::error::SCHOLARZONE_API_URL repository variable is not set."
             exit 1
           fi
 
-          # Trigger container wake if on SnapDeploy
-          if echo "$PRODUCTION_URL" | grep -q "containers.snapdeploy.app"; then
-            echo "Triggering SnapDeploy container wake for $SUBDOMAIN..."
-            curl -s -X POST \
-              -H "Content-Type: application/json" \
-              "https://snapdeploy.dev/api/public/wake/$SUBDOMAIN" || true
-            echo "Waiting for container to wake up..."
-            sleep 30
+          if [ -z "$SCHOLARZONE_VERIFICATION_SECRET" ]; then
+            echo "::error::SCHOLARZONE_VERIFICATION_SECRET repository secret is not set."
+            exit 1
           fi
 
-          for i in $(seq 1 $MAX_ATTEMPTS); do
+          echo "SnapDeploy GitHub integration owns production deployment; this workflow verifies the deployed container."
+
+      - name: Wait for SnapDeploy deployment to become healthy
+        run: |
+          set -euo pipefail
+
+          MAX_ATTEMPTS=40
+          DELAY=15
+
+          for i in $(seq 1 "$MAX_ATTEMPTS"); do
             echo "Health check attempt $i of $MAX_ATTEMPTS..."
             HTTP_CODE=$(curl -s -o /tmp/health.json -w "%{http_code}" \
               --connect-timeout 10 \
               --max-time 20 \
-              -X GET \
-              "$PRODUCTION_URL/health")
+              -H "Cache-Control: no-cache" \
+              -H "X-Cache-Bypass: 1" \
+              "$SCHOLARZONE_API_URL/health" || true)
             echo "Health HTTP response code: $HTTP_CODE"
 
-            if [ "$HTTP_CODE" = "200" ]; then
+            if [ "$HTTP_CODE" = "200" ] && grep -Eq '"status"[[:space:]]*:[[:space:]]*"ok"' /tmp/health.json; then
               echo "Health endpoint is ready."
               cat /tmp/health.json
               break
             fi
 
-            if [ $i -eq $MAX_ATTEMPTS ]; then
+            if [ "$i" -eq "$MAX_ATTEMPTS" ]; then
               echo "::error::Health check timed out after $MAX_ATTEMPTS attempts."
               cat /tmp/health.json 2>/dev/null || echo "  (no response body)"
               exit 1
             fi
 
             echo "Waiting ${DELAY}s before retry..."
-            sleep $DELAY
+            sleep "$DELAY"
           done
 
       - name: Validate scholarships stats endpoint
         run: |
-          PRODUCTION_URL="${{ vars.SCHOLARZONE_API_URL }}"
+          set -euo pipefail
+
           HTTP_CODE=$(curl -s -o /tmp/stats.json -w "%{http_code}" \
             --connect-timeout 10 \
             --max-time 20 \
-            -X GET \
+            -H "Cache-Control: no-cache" \
+            -H "X-Cache-Bypass: 1" \
             -H "X-Verification-Secret: $SCHOLARZONE_VERIFICATION_SECRET" \
-            "$PRODUCTION_URL/scholarships/stats")
+            "$SCHOLARZONE_API_URL/scholarships/stats" || true)
           echo "Scholarships stats HTTP response code: $HTTP_CODE"
 
           if [ "$HTTP_CODE" != "200" ]; then
@@ -179,13 +96,15 @@ jobs:
 
       - name: Validate internal verify status
         run: |
-          PRODUCTION_URL="${{ vars.SCHOLARZONE_API_URL }}"
+          set -euo pipefail
+
           HTTP_CODE=$(curl -s -o /tmp/verify_status.json -w "%{http_code}" \
             --connect-timeout 10 \
             --max-time 20 \
-            -X GET \
+            -H "Cache-Control: no-cache" \
+            -H "X-Cache-Bypass: 1" \
             -H "X-Verification-Secret: $SCHOLARZONE_VERIFICATION_SECRET" \
-            "$PRODUCTION_URL/internal/verify/status")
+            "$SCHOLARZONE_API_URL/internal/verify/status" || true)
           echo "Internal verify status HTTP response code: $HTTP_CODE"
 
           if [ "$HTTP_CODE" != "200" ]; then
