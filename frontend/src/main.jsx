@@ -16,7 +16,7 @@ createRoot(document.getElementById('root')).render(
       <AuthProvider>
         <SavedScholarshipsProvider>
           <CompareProvider>
-            <BrowserRouter>
+            <BrowserRouter basename="/ScholarZone">
               <RedirectHandler />
               <App />
             </BrowserRouter>
