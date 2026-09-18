@@ -23,10 +23,22 @@ jobs:
 
       - name: Wake container
         run: |
+          SUBDOMAIN="${API_URL#https://}"
+          SUBDOMAIN="${SUBDOMAIN%%.*}"
+          echo "Waking SnapDeploy container (POST https://snapdeploy.dev/api/public/wake/$SUBDOMAIN)..."
+          curl -s -X POST \
+            -H "Content-Type: application/json" \
+            -d '{}' \
+            "https://snapdeploy.dev/api/public/wake/$SUBDOMAIN" || true
+          echo ""
           echo "Warming up container (GET $API_URL/health)..."
           curl -s -o /dev/null -w "%{http_code}" \
             --connect-timeout 15 \
             --max-time 30 \
+            -H "User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
+            -H "Accept: application/json" \
+            -H "Cache-Control: no-cache" \
+            -H "X-Cache-Bypass: 1" \
             -X GET \
             "$API_URL/health" || true
           echo ""
@@ -39,6 +51,10 @@ jobs:
             HTTP_CODE=$(curl -s -o /tmp/health.json -w "%{http_code}" \
               --connect-timeout 15 \
               --max-time 30 \
+              -H "User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
+              -H "Accept: application/json" \
+              -H "Cache-Control: no-cache" \
+              -H "X-Cache-Bypass: 1" \
               -X GET \
               "$API_URL/health")
             echo "Health check attempt $i: HTTP $HTTP_CODE"
