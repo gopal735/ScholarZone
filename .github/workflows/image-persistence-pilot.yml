@@ -35,7 +35,7 @@ jobs:
           curl -s -o /dev/null -w "%{http_code}" \
             --connect-timeout 15 \
             --max-time 30 \
-            -H "User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
+            -H "User-Agent: GitHub-Hooksocat/1.0" \
             -H "Accept: application/json" \
             -H "Cache-Control: no-cache" \
             -H "X-Cache-Bypass: 1" \
@@ -51,7 +51,7 @@ jobs:
             HTTP_CODE=$(curl -s -o /tmp/health.json -w "%{http_code}" \
               --connect-timeout 15 \
               --max-time 30 \
-              -H "User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
+              -H "User-Agent: GitHub-Hooksocat/1.0" \
               -H "Accept: application/json" \
               -H "Cache-Control: no-cache" \
               -H "X-Cache-Bypass: 1" \
