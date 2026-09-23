@@ -56,9 +56,13 @@ jobs:
               if [ "$HTTP_CODE" = "200" ]; then
                 echo "Container is ready."
                 AWAKE=1
-              elif [ "$HTTP_CODE" = "401" ] || [ "$HTTP_CODE" = "403" ]; then
+              elif [ "$HTTP_CODE" = "401" ]; then
                 echo "::error::Authentication failure on health check (HTTP $HTTP_CODE). Check API_URL and X-Verification-Secret."
                 exit 1
+              elif [ "$HTTP_CODE" = "403" ]; then
+                BODY=$(cat /tmp/health.json)
+                echo "Readiness detail: $BODY"
+                echo "HTTP 403 on /health is an edge/Cloudflare block (not an API-secret failure). Retrying..."
               elif [ "$HTTP_CODE" = "404" ]; then
                 echo "::error::Health endpoint not found (HTTP $HTTP_CODE). Check API_URL."
                 exit 1
