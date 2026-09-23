@@ -37,6 +37,7 @@ from app.services.image_validator import (  # noqa: E402
     ImageValidator,
     ImageValidationResult,
     ValidationStatus,
+    _fetch_bounded_image,
     determine_image_source_type,
 )
 from app.services.scholarship_image_verifier import (  # noqa: E402
@@ -81,6 +82,32 @@ def _mock_get_image(content_type: str = "image/jpeg"):
         resp.raw = MagicMock()
         return resp
     return mock_get
+
+
+def test_bounded_image_fetch_uses_supported_httpx_kwargs():
+    response = MagicMock()
+    response.status_code = 200
+    response.headers = {"content-type": "image/png"}
+    response.iter_bytes.return_value = [b"test"]
+    response.__enter__.return_value = response
+    response.__exit__.return_value = False
+    stream = MagicMock(return_value=response)
+
+    with patch("app.services.image_validator.httpx.stream", stream):
+        status_code, headers, content, exceeded = _fetch_bounded_image(
+            "https://example.com/image.png", 30.0
+        )
+
+    assert status_code == 200
+    assert headers["content-type"] == "image/png"
+    assert content == b"test"
+    assert exceeded is False
+    assert stream.call_args.kwargs == {
+        "headers": {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"},
+        "timeout": 30.0,
+        "follow_redirects": True,
+    }
+    assert "max_redirects" not in stream.call_args.kwargs
 
 
 class TestUnreachableImage:
@@ -186,7 +213,76 @@ class TestGenericBannerRejection:
         assert result.status == ValidationStatus.REJECTED
 
 
-class TestDuplicateImageDetection:
+    def test_generic_image_with_logo_evidence_is_rejected(self):
+        candidate = _make_candidate(
+            image_url="https://daad.de/images/logo-main.png",
+            page_url="https://daad.de/page",
+            discovery_method="html-img",
+            alt_text="Scholarship program image",
+        )
+        result = ImageValidationResult(
+            candidate=candidate,
+            is_reachable=True,
+            is_valid_image=True,
+            is_official_domain=True,
+            is_generic_image=True,
+            non_content_logo_weight=1.5,
+            relevance_score=1.0,
+            licensing_status="licensing_known",
+        )
+        validator = ImageValidator()
+
+        validator._finalize_decision(result, "DAAD Scholarship", "https://daad.de")
+
+        assert result.status == ValidationStatus.REJECTED
+        assert result.confidence == "LOW"
+
+    def test_svg_extreme_aspect_ratio_is_detected(self):
+        candidate = _make_candidate(
+            image_url="https://daad.de/images/wide.svg",
+            page_url="https://daad.de/page",
+            discovery_method="html-img",
+            alt_text="Wide SVG",
+            width=1000,
+            height=100,
+        )
+        result = ImageValidationResult(
+            candidate=candidate,
+            is_svg=True,
+            is_official_domain=True,
+            width=1000,
+            height=100,
+        )
+        validator = ImageValidator()
+
+        validator._check_image_dimensions(result)
+
+        assert result.aspect_ratio == 10.0
+        assert result.is_generic_image is True
+        assert any("Extreme aspect ratio" in reason for reason in result.rejection_reasons)
+
+    def test_hyphenated_logo_filename_is_detected(self):
+        from app.services.image_validator import _detect_logo_emblem_signals
+
+        signals = _detect_logo_emblem_signals(
+            "https://daad.de/images/logo-main.png",
+            None,
+            "logo-main.png",
+        )
+
+        assert any(signal.label.startswith("logo/emblem filename") for signal in signals)
+
+    def test_nologo_hyphenated_filename_is_not_detected(self):
+        from app.services.image_validator import _detect_logo_emblem_signals
+
+        signals = _detect_logo_emblem_signals(
+            "https://daad.de/images/nologo-main.png",
+            None,
+            "nologo-main.png",
+        )
+
+        assert not any(signal.label.startswith("logo/emblem filename") for signal in signals)
+
     def test_duplicate_image_detected(self):
         candidate = _make_candidate(
             image_url="https://daad.de/images/banner.jpg",
@@ -704,6 +800,107 @@ class TestDiscoveryService:
         service = ImageDiscoveryService()
         candidates = service.extract_images_from_html(html_content, "https://daad.de/page")
         assert len(candidates) == 1
+
+    def test_discovers_css_background_and_normalizes_tracking_query(self):
+        html_content = """
+        <html>
+        <head><title>DAAD Scholarship</title></head>
+        <body>
+            <section class="hero" style="background-image: url('/assets/hero%20cover.jpg?utm_source=test&amp;v=1')"></section>
+        </body>
+        </html>
+        """
+        service = ImageDiscoveryService()
+        candidates = service.extract_images_from_html(
+            html_content, "https://www.daad.de/en/scholarships"
+        )
+
+        assert len(candidates) == 1
+        candidate = candidates[0]
+        assert candidate.discovery_method == "css-background"
+        assert candidate.normalized_url == "https://www.daad.de/assets/hero%20cover.jpg?v=1"
+        assert candidate.image_region == "css-background"
+
+    def test_deduplicates_tracking_query_variants(self):
+        html_content = """
+        <html>
+        <head><title>DAAD Scholarship</title></head>
+        <body>
+            <img src="/images/program.jpg?utm_source=test&amp;v=1" alt="Program">
+            <img src="/images/program.jpg?v=1&amp;utm_term=campaign" alt="Program">
+        </body>
+        </html>
+        """
+        service = ImageDiscoveryService()
+        candidates = service.extract_images_from_html(
+            html_content, "https://www.daad.de/en/scholarships"
+        )
+
+        assert len(candidates) == 1
+        assert candidates[0].normalized_url == "https://www.daad.de/images/program.jpg?v=1"
+
+    def test_redirect_preserves_effective_page_provenance(self):
+        original_url = "https://www.daad.de/en/scholarships/old"
+        final_url = "https://www.daad.de/en/scholarships/current"
+        html_content = """
+        <html>
+        <head><title>DAAD Scholarship</title></head>
+        <body><img src="/images/program.jpg" alt="DAAD program"></body>
+        </html>
+        """
+        mock_get = MagicMock()
+
+        def get_response(url, **_kwargs):
+            response = MagicMock()
+            response.status_code = 200 if url == original_url else 404
+            response.headers = {"content-type": "text/html"}
+            response.text = html_content if response.status_code == 200 else ""
+            response.url = final_url if url == original_url else url
+            return response
+
+        mock_get.side_effect = get_response
+        with patch("app.services.image_discovery.httpx.get", mock_get):
+            service = ImageDiscoveryService(max_retries=0, max_candidates=100)
+            candidates = service.discover_from_scholarship(original_url)
+
+        program_candidates = [
+            candidate
+            for candidate in candidates
+            if candidate.discovery_method == "html-img"
+        ]
+        assert program_candidates
+        assert program_candidates[0].page_url == final_url
+        assert program_candidates[0].provenance["source_page"] == final_url
+        assert final_url in service._canonical_page_urls
+        assert all("max_redirects" not in call.kwargs for call in mock_get.call_args_list)
+
+    def test_cross_domain_image_link_is_not_crawled(self):
+        html_content = """
+        <html>
+        <head><title>DAAD Scholarship</title></head>
+        <body>
+            <a href="https://www.studyinkorea.go.kr/assets/program.jpg">Program image</a>
+        </body>
+        </html>
+        """
+        mock_get = MagicMock()
+        response = MagicMock()
+        response.status_code = 200
+        response.headers = {"content-type": "text/html"}
+        response.text = html_content
+        response.url = "https://www.daad.de/en/scholarships"
+        mock_get.return_value = response
+        with patch("app.services.image_discovery.httpx.get", mock_get):
+            service = ImageDiscoveryService(max_retries=0, max_candidates=100)
+            candidates = service.discover_from_scholarship(
+                "https://www.daad.de/en/scholarships"
+            )
+
+        assert not [
+            candidate
+            for candidate in candidates
+            if candidate.fallback_level == 3
+        ]
 
 
 class TestNonContentImageRegression:

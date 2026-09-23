@@ -139,6 +139,42 @@ class TestStaleImageRemoved:
         assert result.status == StaleImageStatus.REMOVED
 
 
+    def test_removed_result_preserves_image_kind_and_audit_evidence(self, in_memory_session):
+        scholarship_id = _make_scholarship(
+            in_memory_session,
+            image_url="https://example.com/images/old-cover.jpg",
+            official_source_url="https://example.com/program/test",
+        )
+        scholarship = in_memory_session.get(Scholarship, scholarship_id)
+        scholarship.image_kind = "program_image"
+        in_memory_session.commit()
+
+        html = '<html><head><meta property="og:image" content="https://other-domain.com/images/cover.jpg"></head></html>'
+        mock_discovery = MagicMock()
+        mock_discovery.fetch_page.return_value = MockPageResult(
+            url="https://example.com/program/test",
+            content=html,
+        )
+        mock_discovery.extract_images_from_html.return_value = [
+            MagicMock(image_url="https://other-domain.com/images/cover.jpg"),
+        ]
+
+        verifier = ImageVerifier(in_memory_session)
+        with patch("app.services.image_discovery.ImageDiscoveryService", return_value=mock_discovery):
+            result = verifier.revalidate_stored_image(scholarship_id)
+
+        assert result.image_kind == "program_image"
+        history = in_memory_session.execute(
+            select(ScholarshipVerificationHistory).where(
+                ScholarshipVerificationHistory.scholarship_id == scholarship_id,
+                ScholarshipVerificationHistory.change_type == "stale_detected",
+            )
+        ).scalar_one_or_none()
+        assert history is not None
+        assert history.evidence_text == result.evidence
+        assert history.new_value is None
+
+
 class TestStaleImageChanged:
     def test_image_changed_same_domain_returns_changed(self, in_memory_session):
         scholarship_id = _make_scholarship(

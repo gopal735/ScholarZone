@@ -50,6 +50,7 @@ class StaleImageResult:
     found_image_urls: list[str]
     evidence: str
     action_taken: str
+    image_kind: str | None = None
 
 
 def _normalize_url(url: str) -> str:
@@ -63,13 +64,16 @@ def _normalize_url(url: str) -> str:
     return f"{scheme}://{netloc}{path}"
 
 
+def _urls_equal(left: str | None, right: str | None) -> bool:
+    if left is None or right is None:
+        return left is right
+    return _normalize_url(left) == _normalize_url(right)
+
+
 def _is_image_present(stored_url: str, found_urls: list[str]) -> bool:
     """Return True if the stored image URL is present among discovered candidates."""
     stored_norm = _normalize_url(stored_url)
-    for found in found_urls:
-        if _normalize_url(found) == stored_norm:
-            return True
-    return False
+    return any(_normalize_url(found) == stored_norm for found in found_urls)
 
 
 def is_valid_source_type(value: str | None) -> bool:
@@ -171,10 +175,13 @@ class ImageVerifier:
         source_type: str,
         alt_text: str | None = None,
         image_kind: str | None = None,
+        automatic: bool = False,
     ) -> bool:
         """Record an image as verified, tracking changes via the audit history.
 
-        Returns True if the image was updated, False if unchanged or rejected.
+        Automatic discovery must never replace an existing verified image.
+        Explicit manual verification can still update an image through the
+        existing API contract.
         """
         if not is_valid_source_type(source_type):
             return False
@@ -182,13 +189,16 @@ class ImageVerifier:
         scholarship = self.session.get(Scholarship, scholarship_id)
         if scholarship is None:
             return False
+        if automatic and scholarship.image_verified_at is not None:
+            return False
 
         old_image_url = scholarship.image_url
         old_source_url = scholarship.image_source_url
         old_source_type = scholarship.image_source_type
         old_image_kind = scholarship.image_kind
+        changed = False
 
-        if image_url == old_image_url and image_source_url == old_source_url:
+        if _urls_equal(image_url, old_image_url) and _urls_equal(image_source_url, old_source_url):
             if alt_text and alt_text != scholarship.image_alt_text:
                 old_alt = scholarship.image_alt_text
                 scholarship.image_alt_text = alt_text
@@ -199,7 +209,9 @@ class ImageVerifier:
                     alt_text,
                     image_source_url,
                     "modified",
+                    evidence_text=image_source_url,
                 )
+                changed = True
             if image_kind and image_kind != old_image_kind:
                 old_kind = scholarship.image_kind
                 scholarship.image_kind = image_kind
@@ -210,11 +222,29 @@ class ImageVerifier:
                     image_kind,
                     image_source_url,
                     "modified",
+                    evidence_text=image_source_url,
                 )
-            scholarship.image_verified_at = datetime.now(timezone.utc)
+                changed = True
+            if source_type != old_source_type:
+                old_type = scholarship.image_source_type
+                scholarship.image_source_type = source_type
+                self._record_audit(
+                    scholarship_id,
+                    "image_source_type",
+                    old_type,
+                    source_type,
+                    image_source_url,
+                    "modified",
+                    evidence_text=image_source_url,
+                )
+                changed = True
+            if changed:
+                scholarship.image_verified_at = datetime.now(timezone.utc)
+                self.session.commit()
+                self.session.refresh(scholarship)
             return False
 
-        if old_image_url is not None and old_image_url != image_url:
+        if old_image_url is not None and not _urls_equal(old_image_url, image_url):
             self._record_audit(
                 scholarship_id,
                 "image_url",
@@ -222,6 +252,18 @@ class ImageVerifier:
                 image_url,
                 old_source_url,
                 "modified",
+                evidence_text=image_source_url,
+            )
+
+        if old_image_url is not None and not _urls_equal(image_source_url, old_source_url):
+            self._record_audit(
+                scholarship_id,
+                "image_source_url",
+                old_source_url,
+                image_source_url,
+                image_source_url,
+                "modified",
+                evidence_text=image_source_url,
             )
 
         if old_image_url is None and image_url is not None:
@@ -232,12 +274,14 @@ class ImageVerifier:
                 image_url,
                 old_source_url,
                 "verified",
+                evidence_text=image_source_url,
             )
 
         scholarship.image_url = image_url
         scholarship.image_source_url = image_source_url
         scholarship.image_source_type = source_type
-        scholarship.image_kind = image_kind
+        if image_kind is not None:
+            scholarship.image_kind = image_kind
         scholarship.image_verified_at = datetime.now(timezone.utc)
         if alt_text:
             scholarship.image_alt_text = alt_text
@@ -263,6 +307,7 @@ class ImageVerifier:
             None,
             old_source_url,
             "removed",
+            evidence_text=f"Image cleared; prior source: {old_source_url}" if old_source_url else "Image cleared",
         )
         if old_image_kind:
             self._record_audit(
@@ -272,6 +317,7 @@ class ImageVerifier:
                 None,
                 old_source_url,
                 "removed",
+                evidence_text=f"Image kind cleared: {old_image_kind}",
             )
 
         scholarship.image_url = None
@@ -306,6 +352,7 @@ class ImageVerifier:
         new_value: str | None,
         source_url: str | None,
         change_type: str,
+        evidence_text: str | None = None,
     ) -> None:
         record = ScholarshipVerificationHistory(
             scholarship_id=scholarship_id,
@@ -314,7 +361,7 @@ class ImageVerifier:
             new_value=new_value,
             change_type=change_type,
             source_url=source_url,
-            evidence_text=None,
+            evidence_text=evidence_text,
             confidence="high" if change_type == "verified" else "medium",
             verification_status="active",
         )
@@ -354,6 +401,7 @@ class ImageVerifier:
                 official_source_url=official_source_url,
                 found_image_urls=[],
                 evidence="Missing image_url or official_source_url",
+                image_kind=scholarship.image_kind,
                 action_taken="none",
             )
 
@@ -368,6 +416,7 @@ class ImageVerifier:
                 official_source_url=official_source_url,
                 found_image_urls=[],
                 evidence=f"Source fetch failed: {page_result.error or f'HTTP {page_result.status_code}'}",
+                image_kind=scholarship.image_kind,
                 action_taken="none",
             )
 
@@ -384,6 +433,7 @@ class ImageVerifier:
                 official_source_url=official_source_url,
                 found_image_urls=found_urls,
                 evidence="Stored image found on current official page",
+                image_kind=scholarship.image_kind,
                 action_taken="none",
             )
 
@@ -403,6 +453,7 @@ class ImageVerifier:
                 official_source_url=official_source_url,
                 found_image_urls=found_urls,
                 evidence=f"Stored image removed; replacement from same domain found: {replacement}",
+                image_kind=scholarship.image_kind,
                 action_taken="none",
             )
 
@@ -413,6 +464,7 @@ class ImageVerifier:
             official_source_url=official_source_url,
             found_image_urls=found_urls,
             evidence="Stored image not present on current official page and no same-domain replacement found",
+            image_kind=scholarship.image_kind,
             action_taken="none",
         )
 
@@ -420,7 +472,7 @@ class ImageVerifier:
         """Revalidate a stored image against the current official page and take safe action.
 
         Safe actions:
-        - CURRENT: update image_verified_at, write lightweight audit record
+        - CURRENT: update image_verified_at without writing an audit record
         - CHANGED / REMOVED / SOURCE_INACCESSIBLE / HUMAN_REVIEW:
             create a pending ScholarshipReview if one does not already exist,
             write an audit record, and leave image data untouched.
@@ -439,8 +491,10 @@ class ImageVerifier:
                 official_source_url=None,
                 found_image_urls=[],
                 evidence="Scholarship not found",
+                image_kind=None,
                 action_taken="none",
             )
+
 
         result = self.check_stale_image(scholarship)
         now = datetime.now(timezone.utc)
@@ -470,6 +524,9 @@ class ImageVerifier:
             return result
 
         conflict_reason = f"stale_image_{result.status.value}"
+        review_evidence = result.evidence
+        if result.image_kind:
+            review_evidence = f"{review_evidence}; image_kind={result.image_kind}"
         create_review(
             session=self.session,
             scholarship_id=scholarship_id,
@@ -479,16 +536,17 @@ class ImageVerifier:
             conflict_reason=conflict_reason,
             verification_state="needs_review",
             source_urls=[scholarship.official_source_url] if scholarship.official_source_url else [],
-            evidence_text=result.evidence,
+            evidence_text=review_evidence,
         )
 
         self._record_audit(
             scholarship_id,
             "image_url",
             scholarship.image_url,
-            scholarship.image_url,
+            None,
             scholarship.official_source_url,
             "stale_detected",
+            evidence_text=result.evidence,
         )
         self.session.commit()
         result.action_taken = "review_created"

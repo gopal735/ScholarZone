@@ -243,6 +243,16 @@ class DiscoveryScheduler:
             pending_count = sum(1 for r in batch.discovered if r.status == "pending")
             metrics.verified_new_scholarships += pending_count
             metrics.inserted_scholarships += pending_count
+            metrics.image_discoveries_triggered += pending_count
+            metrics.image_review += pending_count
+            country_metrics["image_discovery_metrics"] = {
+                "triggered": pending_count,
+                "high": 0,
+                "medium": 0,
+                "low": 0,
+                "review": pending_count,
+                "estimated": True,
+            }
             logger.info(
                 "DRY RUN [%s]: candidates=%d pending=%d duplicates=%d rejected=%d errors=%d runtime_ms=%.1f",
                 country,
@@ -307,16 +317,13 @@ class DiscoveryScheduler:
         try:
             from ..models import Scholarship
             scholarship = session.get(Scholarship, scholarship_id)
-            if scholarship is None or scholarship.image_url:
+            if scholarship is None or scholarship.image_verified_at is not None:
                 return
             if not scholarship.official_source_url:
                 return
 
-            metrics.image_discoveries_triggered += 1
-
             from .image_discovery import ImageDiscoveryService
             from .image_validator import ImageCandidate, ImageValidator
-            from ..models import ImageReview
 
             discovery = ImageDiscoveryService()
             candidates = discovery.discover_from_scholarship(scholarship.official_source_url)
@@ -334,6 +341,7 @@ class DiscoveryScheduler:
             if best is None:
                 return
 
+            metrics.image_discoveries_triggered += 1
             if best.status.value == "approved" and best.confidence == "HIGH":
                 from .scholarship_image_verifier import ImageVerifier
                 image_verifier = ImageVerifier(session)
@@ -344,12 +352,15 @@ class DiscoveryScheduler:
                     source_type="official_scholarship",
                     alt_text=best.candidate.alt_text,
                     image_kind=best.image_kind,
+                    automatic=True,
                 )
                 if updated:
                     metrics.image_high += 1
                     session.commit()
             elif best.status.value == "human_review" and best.confidence == "MEDIUM":
-                review = ImageReview(
+                from .admin_image_review import create_image_review
+                review_result = create_image_review(
+                    session=session,
                     scholarship_id=scholarship_id,
                     image_url=best.candidate.image_url,
                     image_kind=best.image_kind or "unknown",
@@ -358,16 +369,16 @@ class DiscoveryScheduler:
                     relevance_evidence="; ".join(best.relevance_notes[:3]) if best.relevance_notes else None,
                     confidence=best.confidence,
                     reason_for_review=best.human_review_reason or "Auto-discovered image requires review",
-                    decision="pending",
                 )
-                session.add(review)
-                session.commit()
+                if review_result.created:
+                    session.commit()
+                    metrics.image_review += 1
                 metrics.image_medium += 1
-                metrics.image_review += 1
             else:
                 metrics.image_low += 1
         except Exception:
             session.rollback()
+            metrics.errors += 1
             logger.exception("Image discovery failed for scholarship %s", scholarship_id)
         finally:
             session.close()

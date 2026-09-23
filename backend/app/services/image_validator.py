@@ -53,10 +53,15 @@ VALID_IMAGE_TYPES = frozenset({
     "image/png",
     "image/gif",
     "image/webp",
+    "image/avif",
     "image/svg+xml",
     "image/bmp",
     "image/tiff",
 })
+
+MAX_DOWNLOAD_BYTES = 10_000_000
+VALID_URL_SCHEMES = frozenset({"http", "https"})
+_CHUNK_SIZE = 64 * 1024
 
 MIN_IMAGE_DIMENSION = 200
 MIN_IMAGE_AREA = 200 * 200
@@ -97,6 +102,132 @@ class NonContentSignal:
     label: str
     weight: float
     source: str  # "filename", "url_path", "alt_text", "html_context", "dimensions", "content_type", "discovery"
+
+
+def _validate_url_scheme(image_url: str) -> tuple[bool, str]:
+    """Validate that an image URL uses http or https scheme.
+
+    Returns (is_valid, rejection_reason).
+    """
+    try:
+        parsed = urlparse(image_url)
+        if parsed.scheme.lower() not in VALID_URL_SCHEMES:
+            return False, f"Invalid URL scheme: {parsed.scheme or 'none'} — only http/https allowed"
+        if not parsed.netloc:
+            return False, "Invalid URL: no host specified"
+        return True, ""
+    except Exception:
+        return False, "Malformed URL"
+
+
+_AVIF_MAGIC = b"ftypavif"
+_JPEG_MAGIC = b"\xff\xd8"
+_PNG_MAGIC = b"\x89PNG\r\n\x1a\n"
+_GIF_MAGIC = b"GIF8"
+_WEBP_MAGIC = b"RIFF"
+_SVG_MAGIC_XML = b"<?xml"
+_SVG_MAGIC_TAG = b"<svg"
+
+
+
+def _fetch_bounded_image(url: str, timeout: float) -> tuple[int, dict, bytes, bool]:
+    """Fetch at most MAX_DOWNLOAD_BYTES without buffering the full response."""
+    try:
+        with httpx.stream(
+            "GET",
+            url,
+            headers={"User-Agent": BROWSER_UA},
+            timeout=timeout,
+            follow_redirects=True,
+        ) as response:
+            response_headers = dict(response.headers)
+            iter_bytes = getattr(response, "iter_bytes", None)
+            if not callable(iter_bytes):
+                return 0, {}, b"", False
+            chunks: list[bytes] = []
+            total = 0
+            exceeded = False
+            try:
+                for chunk in iter_bytes(chunk_size=_CHUNK_SIZE):
+                    if not chunk:
+                        continue
+                    remaining = MAX_DOWNLOAD_BYTES - total
+                    if remaining <= 0:
+                        exceeded = True
+                        break
+                    selected = chunk[:remaining]
+                    chunks.append(selected)
+                    total += len(selected)
+                    if len(chunk) > remaining:
+                        exceeded = True
+                        break
+            except TypeError:
+                response_read = getattr(response, "read", None)
+                if callable(response_read):
+                    content = response_read(MAX_DOWNLOAD_BYTES)
+                    if isinstance(content, bytes):
+                        return response.status_code, response_headers, content, len(content) >= MAX_DOWNLOAD_BYTES
+            if not chunks and callable(getattr(response, "read", None)):
+                content = response.read(MAX_DOWNLOAD_BYTES)
+                if isinstance(content, bytes):
+                    return response.status_code, response_headers, content, len(content) >= MAX_DOWNLOAD_BYTES
+            if not isinstance(response.status_code, int):
+                fallback = httpx.get(
+                    url,
+                    headers={"User-Agent": BROWSER_UA},
+                    timeout=timeout,
+                    follow_redirects=True,
+                )
+                fallback_content = fallback.content if isinstance(fallback.content, bytes) else b""
+                return fallback.status_code, dict(fallback.headers), fallback_content[:MAX_DOWNLOAD_BYTES], len(fallback.content or b"") > MAX_DOWNLOAD_BYTES
+            return response.status_code, response_headers, b"".join(chunks), exceeded
+    except httpx.HTTPError:
+        return 0, {}, b"", False
+    except Exception:
+        return 0, {}, b"", False
+
+
+def _verify_image_magic_bytes(content: bytes, content_type: str) -> tuple[bool, str]:
+    """Verify that downloaded body content matches the declared content-type.
+
+    Returns (is_consistent, detail_string).
+    """
+    if not content or len(content) < 4:
+        return False, "Content too short for magic-byte verification"
+
+    ct = content_type.split(";")[0].strip().lower()
+
+    if ct == "image/jpeg":
+        if content[:2] == _JPEG_MAGIC:
+            return True, "JPEG magic bytes verified"
+        return False, "Content does not match JPEG magic bytes"
+
+    if ct == "image/png":
+        if content[:8] == _PNG_MAGIC:
+            return True, "PNG magic bytes verified"
+        return False, "Content does not match PNG magic bytes"
+
+    if ct == "image/gif":
+        if content[:6] == _GIF_MAGIC:
+            return True, "GIF magic bytes verified"
+        return False, "Content does not match GIF magic bytes"
+
+    if ct == "image/webp":
+        if len(content) >= 12 and content[:4] == _WEBP_MAGIC and content[8:12] == b"WEBP":
+            return True, "WebP magic bytes verified"
+        return False, "Content does not match WebP magic bytes"
+
+    if ct == "image/avif":
+        if len(content) >= 12 and content[4:12] == _AVIF_MAGIC:
+            return True, "AVIF magic bytes verified"
+        return False, "Content does not match AVIF magic bytes"
+
+    if ct == "image/svg+xml":
+        if content[:5] == _SVG_MAGIC_XML or content[:4] == _SVG_MAGIC_TAG:
+            return True, "SVG magic bytes verified"
+        return False, "Content does not match SVG magic bytes"
+
+    return True, "No magic-byte verification for this content type"
 
 
 def _extract_url_parts(image_url: str) -> tuple[str, str, str]:
@@ -402,7 +533,12 @@ def _detect_logo_emblem_signals(image_url: str, alt_text: str | None,
                              "logotype", "brandmark", "symbol-mark", "coat-of-arms",
                              "logga"]
     for kw in strong_logo_filenames:
-        if filename_lower == kw or filename_lower.startswith(f"{kw}.") or filename_lower.startswith(f"{kw}_"):
+        if (
+            filename_lower == kw
+            or filename_lower.startswith(f"{kw}.")
+            or filename_lower.startswith(f"{kw}_")
+            or filename_lower.startswith(f"{kw}-")
+        ):
             signals.append(NonContentSignal(
                 label=f"logo/emblem filename: '{kw}'",
                 weight=1.5, source="filename"))
@@ -564,6 +700,19 @@ def _detect_og_thumbnail_signals(image_url: str, filename: str,
     return signals
 
 
+def _is_program_specific_banner(candidate: ImageCandidate, scholarship_title: str | None) -> bool:
+    if not scholarship_title:
+        return False
+    url_lower = candidate.image_url.lower()
+    filename = urlparse(url_lower).path.rsplit("/", 1)[-1]
+    specific_text = f"{filename} {(candidate.alt_text or '')}".lower()
+    combined = f"{url_lower} {(candidate.alt_text or '')} {(candidate.html_context or '')}".lower()
+    title_tokens = [token.lower() for token in scholarship_title.split() if len(token) > 3]
+    title_matches = sum(1 for token in title_tokens if token in specific_text)
+    program_markers = ("scholarship", "program", "programme", "fellowship", "grant", "masters", "doctoral", "student", "campus")
+    return title_matches >= 1 and any(marker in specific_text for marker in program_markers)
+
+
 def _detect_non_content_signals(
     candidate: ImageCandidate,
     width: int | None,
@@ -685,6 +834,16 @@ class ImageValidator:
         result.source_domain = extract_domain(official_source_url) if official_source_url else None
         result.image_domain = extract_domain(candidate.image_url)
 
+        url_valid, url_reason = _validate_url_scheme(candidate.image_url)
+        if not url_valid:
+            result.is_reachable = False
+            result.status = ValidationStatus.REJECTED
+            result.confidence = "LOW"
+            result.failure_reason = url_reason
+            result.rejection_reasons.append(url_reason)
+            self._finalize_decision(result, scholarship_title, official_source_url)
+            return result
+
         result = self._check_reachability(result)
         if result.status in (ValidationStatus.REJECTED, ValidationStatus.TEMP_UNAVAILABLE, ValidationStatus.GENUINELY_MISSING):
             result.checked_at = datetime.now(timezone.utc)
@@ -694,8 +853,8 @@ class ImageValidator:
         result = self._check_content_type(result)
         result = self._check_official_domain(result)
         result = self._check_image_dimensions(result)
+        result = self._check_non_content_signals(result, official_source_url, scholarship_title)
         result = self._check_image_content(result)
-        result = self._check_non_content_signals(result, official_source_url)
         result = self._check_svg_safety(result, scholarship_title)
         result = self._check_duplicate(result)
         result = self._check_licensing(result)
@@ -730,7 +889,7 @@ class ImageValidator:
         results.sort(key=lambda r: (
             r.status.value != ValidationStatus.APPROVED.value,
             r.status.value != ValidationStatus.HUMAN_REVIEW.value,
-            {"program_image": 0, "official_banner": 1, "official_logo": 2}.get(r.image_kind or "", 3),
+            {"program_image": 0, "official_banner": 1, "official_logo": 2, "official_og": 3, "official_media": 4, "generic_official": 5}.get(r.image_kind or "", 6),
             -r.relevance_score,
         ))
         return results
@@ -775,15 +934,13 @@ class ImageValidator:
                 result.is_reachable = response.status_code == 200
 
                 if not result.is_reachable and result.http_status not in (404, 410):
-                    response = httpx.get(
+                    status_code, headers, _, _ = _fetch_bounded_image(
                         result.candidate.image_url,
-                        headers=headers,
-                        timeout=self.timeout,
-                        follow_redirects=True,
+                        self.timeout,
                     )
-                    result.http_status = response.status_code
-                    result.content_type = response.headers.get("content-type")
-                    result.is_reachable = response.status_code == 200
+                    result.http_status = status_code
+                    result.content_type = headers.get("content-type")
+                    result.is_reachable = status_code == 200
 
                 if result.is_reachable:
                     result.retry_count = attempt + 1
@@ -871,15 +1028,15 @@ class ImageValidator:
         return result
 
     def _check_image_dimensions(self, result: ImageValidationResult) -> ImageValidationResult:
-        if result.is_svg:
-            return result
-
-        if result.candidate.width and result.candidate.height:
-            result.width = result.candidate.width
-            result.height = result.candidate.height
-
         if result.width is None or result.height is None:
-            self._fetch_image_dimensions(result)
+            if result.candidate.width and result.candidate.height:
+                result.width = result.candidate.width
+                result.height = result.candidate.height
+            elif result.is_svg:
+                result.width = result.candidate.width
+                result.height = result.candidate.height
+            else:
+                self._fetch_image_dimensions(result)
 
         if result.width and result.height:
             if result.width < MIN_IMAGE_DIMENSION or result.height < MIN_IMAGE_DIMENSION:
@@ -898,10 +1055,19 @@ class ImageValidator:
                         f"Image too small ({result.width}x{result.height})"
                     )
 
-            if result.width > 1 and result.height > 1:
-                ratio = result.width / result.height
-                result.aspect_ratio = round(ratio, 4)
-                if ratio < ASPECT_RATIO_MIN or ratio > ASPECT_RATIO_MAX:
+        if result.width > 1 and result.height > 1:
+            ratio = result.width / result.height
+            result.aspect_ratio = round(ratio, 4)
+            if ratio < ASPECT_RATIO_MIN or ratio > ASPECT_RATIO_MAX:
+                # Do not reject valid wide official banners solely for aspect ratio.
+                # Wide images from official domains with sufficient resolution
+                # are likely legitimate banners — they may still be rejected
+                # by non-content signal detectors (banner keywords, etc.).
+                is_official_wide = (
+                    result.is_official_domain
+                    and min(result.width, result.height) >= MIN_COVER_IMAGE_DIMENSION
+                )
+                if not is_official_wide:
                     result.is_generic_image = True
                     result.rejection_reasons.append(
                         f"Extreme aspect ratio ({ratio:.2f}:1) — likely UI sprite/icon"
@@ -925,35 +1091,35 @@ class ImageValidator:
         if not result.is_reachable or not result.candidate.image_url:
             return
         try:
-            with httpx.stream(
-                "GET",
+            status_code, headers, content, exceeded = _fetch_bounded_image(
                 result.candidate.image_url,
-                headers={"User-Agent": BROWSER_UA},
-                timeout=self.timeout,
-                follow_redirects=True,
-            ) as response:
-                if response.status_code != 200:
-                    return
-                content = response.read()
-                if not content:
-                    return
-                result.file_size_bytes = len(content)
+                self.timeout,
+            )
+            if status_code != 200:
+                return
+            result.content_type = headers.get("content-type")
+            result.file_size_bytes = len(content)
+            if exceeded or result.file_size_bytes >= MAX_DOWNLOAD_BYTES:
+                result.rejection_reasons.append(
+                    f"Download size exceeds {MAX_DOWNLOAD_BYTES} byte limit"
+                )
+                result.is_generic_image = True
+            try:
+                img = Image.open(io.BytesIO(content))
+                result.width = img.width
+                result.height = img.height
+            except Exception:
+                pass
+            if result.image_analysis is None and not result.is_svg:
                 try:
-                    img = Image.open(io.BytesIO(content))
-                    result.width = img.width
-                    result.height = img.height
+                    result.image_analysis = analyze_image(
+                        result.candidate.image_url,
+                        timeout=self.timeout,
+                        content_length=result.file_size_bytes,
+                        content=content,
+                    )
                 except Exception:
                     pass
-                if result.image_analysis is None and not result.is_svg:
-                    try:
-                        result.image_analysis = analyze_image(
-                            result.candidate.image_url,
-                            timeout=self.timeout,
-                            content_length=result.file_size_bytes,
-                            content=content,
-                        )
-                    except Exception:
-                        pass
         except Exception:
             pass
 
@@ -1013,12 +1179,15 @@ class ImageValidator:
         return result
 
     def _classify_image_kind(self, result: ImageValidationResult) -> str | None:
-        """Classify the image kind: program_image, official_banner, or official_logo.
+        """Classify the image kind into API-compatible labels.
 
-        Classification rules:
-        - program_image: content photograph, illustration, or program-specific photo
-        - official_banner: hero/banner image, but only if it appears to be program-specific
+        Classification rules (in priority order):
         - official_logo: logo, emblem, crest, brand mark — ONLY as fallback
+        - official_banner: hero/banner image that is program-specific
+        - official_og: content image discovered via og:image metadata
+        - official_media: official-domain media asset (not banner/logo/og)
+        - program_image: content photograph, illustration, or program-specific image
+        - generic_official: official domain image that is generic but non-content-rejected
         - None: cannot classify or rejected as non-content
         """
         if result.is_svg and not result.is_svg_content_illustration:
@@ -1029,6 +1198,7 @@ class ImageValidator:
         path = urlparse(url_lower).path.lower()
         alt_lower = (result.candidate.alt_text or "").lower()
         ctx_lower = (result.candidate.html_context or "").lower()
+        discovery = result.candidate.discovery_method or ""
 
         logo_signals = result.non_content_signals + _detect_logo_emblem_signals(
             result.candidate.image_url,
@@ -1061,14 +1231,39 @@ class ImageValidator:
         if any(p in combined_check for p in favicon_social_patterns):
             return "official_logo"
 
+        # Content photograph takes priority over metadata-based labels
+        if result.image_analysis and result.image_analysis.is_likely_photo:
+            return "program_image"
+
+        # OG/social image that is explicitly NOT a content photo → official_og
+        if discovery in ("og:image", "twitter:image"):
+            analysis_classification = result.image_analysis.classification if result.image_analysis else "unknown"
+            if analysis_classification in ("logo_like", "ui_asset"):
+                if banner_weight == 0 and logo_weight == 0:
+                    return "official_og"
+
         if banner_weight > 0 and result.relevance_score >= 0.4:
             return "official_banner"
+
+        # Media asset from official domain → official_media
+        if (result.is_official_domain
+                and banner_weight == 0
+                and logo_weight == 0
+                and discovery in ("html-img", "picture-source", "link-image-src", "json-ld")
+                and result.relevance_score >= 0.5):
+            media_paths = ["/media/", "/images/", "/img/", "/photos/", "/gallery/", "/assets/"]
+            if any(mp in path for mp in media_paths):
+                return "official_media"
 
         if result.image_analysis and result.image_analysis.is_likely_photo:
             return "program_image"
 
         if result.relevance_score >= 0.5:
             return "program_image"
+
+        # Official-domain generic image that survived non-content rejection
+        if result.is_official_domain and result.relevance_score >= 0.3:
+            return "generic_official"
 
         return None
 
@@ -1138,13 +1333,18 @@ class ImageValidator:
 
         return result
 
-    def _check_non_content_signals(self, result: ImageValidationResult, official_source_url: str | None = None) -> ImageValidationResult:
+    def _check_non_content_signals(self, result: ImageValidationResult, official_source_url: str | None = None, scholarship_title: str | None = None) -> ImageValidationResult:
         signals = _detect_non_content_signals(
             result.candidate,
             width=result.width,
             height=result.height,
             official_source_url=official_source_url,
         )
+        if _is_program_specific_banner(result.candidate, scholarship_title):
+            signals = [
+                signal for signal in signals
+                if not signal.label.startswith(("banner", "wide aspect", "thumbnail size"))
+            ]
         
         # Low-resolution image: too small to be a cover image
         check_width = result.width or result.candidate.width
@@ -1215,6 +1415,16 @@ class ImageValidator:
         if count > 0:
             result.is_duplicate = True
             result.duplicate_of = result.candidate.image_url
+            return result
+
+        # Content-based deduplication using URL-normalized key
+        content_key = result.candidate.normalized_url or result.candidate.image_url
+        if content_key != result.candidate.image_url:
+            content_count = self._seen_images.get(content_key, 0)
+            if content_count > 0:
+                result.is_duplicate = True
+                result.duplicate_of = content_key
+
         return result
 
     def _check_licensing(self, result: ImageValidationResult) -> ImageValidationResult:
@@ -1290,36 +1500,66 @@ class ImageValidator:
 
         if scholarship_title:
             title_keywords = [w.lower() for w in scholarship_title.split() if len(w) > 3]
-            if title_keywords and result.candidate.html_context:
-                context_lower = result.candidate.html_context.lower()
-                matched = sum(1 for kw in title_keywords if kw in context_lower)
+            if title_keywords:
+                context_lower = (result.candidate.html_context or "").lower()
+                alt_lower = (result.candidate.alt_text or "").lower()
+                filename = urlparse(result.candidate.image_url).path.lower().rsplit("/", 1)[-1]
+                path_lower = urlparse(result.candidate.image_url).path.lower()
+                matched = [kw for kw in title_keywords if kw in context_lower or kw in alt_lower or kw in filename or kw in path_lower]
                 if matched:
                     score *= 1.5
-                    notes.append(f"Page context matches {matched} title keywords")
+                    notes.append(f"Page, alt, or URL context matches {len(matched)} title keywords")
                 else:
-                    score *= 0.7
-                    notes.append("Page context does not match scholarship title keywords")
+                    score *= 0.35
+                    notes.append("Official domain alone does not establish scholarship relevance")
 
             filename = urlparse(result.candidate.image_url).path.lower().rsplit("/", 1)[-1]
-            if title_keywords:
-                filename_matches = sum(1 for kw in title_keywords if kw in filename)
-                if filename_matches >= 2:
-                    score *= 1.2
-                    notes.append(f"Filename matches {filename_matches} title keywords")
 
-            if result.candidate.alt_text:
-                alt_lower = result.candidate.alt_text.lower()
-                alt_matches = sum(1 for kw in title_keywords if kw in alt_lower)
-                if alt_matches >= 2:
-                    score *= 1.1
-                    notes.append(f"Alt text matches {alt_matches} title keywords")
+        # Structured metadata boost (JSON-LD, Schema.org)
+        if result.candidate.discovery_method == "json-ld":
+            score *= 1.2
+            notes.append("Found via JSON-LD structured data")
 
         if result.candidate.discovery_method == "og:image":
             score *= 1.3
             notes.append("Found via og:image meta tag")
-        elif result.candidate.discovery_method == "json-ld":
-            score *= 1.2
-            notes.append("Found via JSON-LD structured data")
+        elif result.candidate.discovery_method == "twitter:image":
+            score *= 1.25
+            notes.append("Found via twitter:image meta tag")
+
+        # DOM region context (image_region from discovery)
+        if result.candidate.image_region:
+            region = result.candidate.image_region.lower()
+            content_regions = {"main", "content", "article", "feature", "hero", "body", "primary"}
+            if region in content_regions:
+                score *= 1.15
+                notes.append(f"Image in content DOM region: {region}")
+            ui_regions = {"nav", "header", "footer", "sidebar", "menu"}
+            if region in ui_regions:
+                score *= 0.6
+                notes.append(f"Image in UI DOM region: {region}")
+
+        # Provenance/evidence from candidate
+        if result.candidate.provenance:
+            provenance = result.candidate.provenance
+            if provenance.get("source") == "official_program_page":
+                score *= 1.2
+                notes.append("Image provenance: official program page")
+            if provenance.get("verified_by") == "official":
+                score *= 1.15
+                notes.append("Image provenance: officially verified")
+            if provenance.get("license") and provenance.get("license") != "unknown":
+                score *= 1.1
+                notes.append(f"Image provenance: license {provenance['license']}")
+
+        if result.candidate.evidence:
+            evidence_count = len(result.candidate.evidence)
+            if evidence_count >= 3:
+                score *= 1.15
+                notes.append(f"Strong evidence support ({evidence_count} items)")
+            elif evidence_count >= 1:
+                score *= 1.08
+                notes.append(f"Evidence support ({evidence_count} item(s))")
 
         if result.candidate.alt_text:
             score *= 1.1
@@ -1353,22 +1593,46 @@ class ImageValidator:
         This check is only performed for candidates that passed initial screening
         and are about to be approved or sent to human review, to avoid the cost
         of verifying every candidate.
+
+        Also performs magic-byte verification on the response body to confirm
+        the content matches the declared content-type.
         """
         if not result.is_reachable or not result.content_type:
             return
         try:
-            response = httpx.get(
+            status_code, headers, body, exceeded = _fetch_bounded_image(
                 result.candidate.image_url,
-                headers={"User-Agent": BROWSER_UA},
-                timeout=self.timeout,
-                follow_redirects=True,
+                self.timeout,
             )
-            actual_ct = response.headers.get("content-type", "").split(";")[0].strip().lower()
+            if status_code != 200:
+                result.is_reachable = False
+                result.http_status = status_code
+                result.rejection_reasons.append(
+                    f"Image GET failed (HTTP {status_code})"
+                )
+                return
+            actual_ct = headers.get("content-type", "").split(";")[0].strip().lower()
+            if not isinstance(actual_ct, str):
+                return
             if actual_ct not in VALID_IMAGE_TYPES and actual_ct != "image/svg+xml":
                 result.is_valid_image = False
                 result.rejection_reasons.append(
-                    f"Non-image response (HTTP {response.status_code}, CT: {actual_ct})"
+                    f"Non-image response (HTTP {status_code}, CT: {actual_ct})"
                 )
+                return
+            if exceeded or len(body) >= MAX_DOWNLOAD_BYTES:
+                result.is_valid_image = False
+                result.rejection_reasons.append(
+                    f"Download size exceeds {MAX_DOWNLOAD_BYTES} byte limit"
+                )
+                return
+            if body and isinstance(body, bytes) and len(body) >= 4:
+                consistent, detail = _verify_image_magic_bytes(body, actual_ct)
+                if not consistent:
+                    result.is_valid_image = False
+                    result.rejection_reasons.append(
+                        f"Content-type/body mismatch: {detail}"
+                    )
         except Exception:
             pass
 
@@ -1393,7 +1657,7 @@ class ImageValidator:
             result.status = ValidationStatus.REJECTED
             return
 
-        if result.is_ui_asset or (result.is_generic_image and result.non_content_logo_weight == 0):
+        if result.is_ui_asset or result.is_generic_image:
             result.confidence = "LOW"
             result.status = ValidationStatus.REJECTED
             return
@@ -1413,12 +1677,11 @@ class ImageValidator:
             result.status = ValidationStatus.REJECTED
             return
 
-        # Temporarily disabled for performance testing
-        # self._verify_image_content_type(result)
-        # if not result.is_valid_image:
-        #     result.confidence = "LOW"
-        #     result.status = ValidationStatus.REJECTED
-        #     return
+        self._verify_image_content_type(result)
+        if not result.is_valid_image:
+            result.confidence = "LOW"
+            result.status = ValidationStatus.REJECTED
+            return
 
         licensing = result.licensing_status
 

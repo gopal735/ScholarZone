@@ -31,6 +31,9 @@ class ImageKind(str, Enum):
     PROGRAM_IMAGE = "program_image"
     OFFICIAL_BANNER = "official_banner"
     OFFICIAL_LOGO = "official_logo"
+    OFFICIAL_OG = "official_og"
+    OFFICIAL_MEDIA = "official_media"
+    GENERIC_OFFICIAL = "generic_official"
 
 
 class ScholarshipQuery(BaseModel):

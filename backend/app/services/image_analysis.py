@@ -32,6 +32,8 @@ ImageClassification = Literal[
 ]
 
 _THUMB_SIZE = 64
+_MAX_ANALYSIS_BYTES = 10_000_000
+_ANALYSIS_CHUNK_SIZE = 64 * 1024
 _MIN_PHOTO_COLORS = 128
 _MIN_GRAPHIC_COLORS = 32
 _MAX_UI_COLORS = 16
@@ -96,7 +98,20 @@ def analyze_image(
                 if response.status_code != 200:
                     result.analysis_error = f"HTTP {response.status_code}"
                     return result
-                content = response.read()
+                chunks: list[bytes] = []
+                total = 0
+                for chunk in response.iter_bytes(chunk_size=_ANALYSIS_CHUNK_SIZE):
+                    remaining = _MAX_ANALYSIS_BYTES - total
+                    if remaining <= 0:
+                        result.analysis_error = "image exceeds analysis download limit"
+                        return result
+                    selected = chunk[:remaining]
+                    chunks.append(selected)
+                    total += len(selected)
+                    if len(chunk) > remaining:
+                        result.analysis_error = "image exceeds analysis download limit"
+                        return result
+                content = b"".join(chunks)
         except Exception as exc:
             result.analysis_error = str(exc)
             return result

@@ -359,7 +359,7 @@ async def revalidate_stored_image(
     - If no image is stored, returns HUMAN_REVIEW without mutation.
     - Fetches the current official source page.
     - Checks whether the stored image is still present.
-    - CURRENT: updates image_verified_at, writes lightweight audit record.
+    - CURRENT: updates image_verified_at only.
     - CHANGED / REMOVED / SOURCE_INACCESSIBLE: creates a pending ScholarshipReview
       (if one does not already exist) and writes a stale_detected audit record.
     - Never silently replaces or clears a verified image.

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from datetime import datetime
 from unittest.mock import patch
 
 import pytest
@@ -15,7 +16,7 @@ from app.models import (
     Scholarship,
 )
 from app.services.discovery_config import seed_approved_sources
-from app.services.discovery_pipeline import DiscoveryPipeline
+from app.services.discovery_pipeline import DiscoveryBatch, DiscoveryPipeline, DiscoveryResult
 from app.services.discovery_scheduler import DiscoveryScheduler, DiscoverySchedulerMetrics
 
 
@@ -106,7 +107,6 @@ class TestCountryDiscoveryScheduler:
         finally:
             session.close()
 
-        from app.services.discovery_pipeline import DiscoveryPipeline
         original_discover_batch = DiscoveryPipeline.discover_batch
 
         def failing_discover_batch(self, source_urls):
@@ -123,6 +123,31 @@ class TestCountryDiscoveryScheduler:
             metrics = scheduler.run()
 
         assert metrics.errors >= 1
+
+    def test_image_discovery_failure_increments_error(self, session_factory, seeded_sources):
+        session = session_factory()
+        try:
+            scholarship = Scholarship(
+                title="Image Failure",
+                country="Germany",
+                degree="Masters",
+                funding="Full",
+                official_source_url="https://example.com/program",
+            )
+            session.add(scholarship)
+            session.commit()
+            scholarship_id = scholarship.id
+        finally:
+            session.close()
+
+        scheduler = DiscoveryScheduler(session_factory=session_factory, dry_run=True)
+        metrics = DiscoverySchedulerMetrics()
+
+        with patch("app.services.image_discovery.ImageDiscoveryService") as mock_discovery:
+            mock_discovery.return_value.discover_from_scholarship.side_effect = RuntimeError("simulated discovery failure")
+            scheduler._trigger_image_discovery(object(), scholarship_id, metrics)
+
+        assert metrics.errors == 1
 
     def test_duplicate_prevention(self, session_factory, seeded_sources):
         scheduler = DiscoveryScheduler(
@@ -152,7 +177,32 @@ class TestCountryDiscoveryScheduler:
 
         assert metrics1.countries_scanned == metrics2.countries_scanned
 
-    def test_metrics_structure(self, session_factory, seeded_sources):
+    def test_image_discovery_skips_verified_image(self, session_factory, seeded_sources):
+        session = session_factory()
+        try:
+            scholarship = Scholarship(
+                title="Verified Image",
+                country="Germany",
+                degree="Masters",
+                funding="Full",
+                official_source_url="https://www.daad.de/en/program",
+                image_url="https://www.daad.de/images/existing.jpg",
+                image_verified_at=datetime(2026, 1, 1),
+            )
+            session.add(scholarship)
+            session.commit()
+            scholarship_id = scholarship.id
+        finally:
+            session.close()
+
+        scheduler = DiscoveryScheduler(session_factory=session_factory, dry_run=False)
+        metrics = DiscoverySchedulerMetrics()
+        with patch("app.services.image_discovery.ImageDiscoveryService") as mock_discovery:
+            scheduler._trigger_image_discovery(object(), scholarship_id, metrics)
+
+        mock_discovery.assert_not_called()
+        assert metrics.image_discoveries_triggered == 0
+
         scheduler = DiscoveryScheduler(
             session_factory=session_factory,
             dry_run=True,
@@ -169,6 +219,38 @@ class TestCountryDiscoveryScheduler:
         assert hasattr(metrics, "runtime_ms")
         assert hasattr(metrics, "country_results")
         assert hasattr(metrics, "operation_id")
+
+    def test_dry_run_reports_estimated_image_metrics(self, session_factory, seeded_sources):
+        scheduler = DiscoveryScheduler(
+            session_factory=session_factory,
+            dry_run=True,
+            max_workers=1,
+        )
+        session = session_factory()
+        try:
+            session.add(Scholarship(title="Dry Run", country="Germany", degree="Masters", funding="Full"))
+            session.commit()
+        finally:
+            session.close()
+
+        batch = DiscoveryBatch(
+            source_urls=["https://www.daad.de/en/"],
+            discovered=[
+                DiscoveryResult(
+                    candidate_id=1,
+                    status="pending",
+                    match_type="unmatched",
+                )
+            ],
+        )
+        with patch.object(scheduler, "_build_source_urls", return_value=["https://www.daad.de/en/"]):
+            with patch("app.services.discovery_scheduler.DiscoveryPipeline") as mock_pipeline:
+                mock_pipeline.return_value.discover_batch.return_value = batch
+                metrics = scheduler.run()
+
+        assert metrics.image_discoveries_triggered == 1
+        assert metrics.image_review == 1
+        assert metrics.country_results["Germany"]["image_discovery_metrics"]["estimated"] is True
 
     def test_dry_run_no_scholarships_inserted(self, session_factory, seeded_sources):
         scheduler = DiscoveryScheduler(

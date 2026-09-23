@@ -10,7 +10,7 @@ Covers:
 """
 
 import os
-from datetime import date
+from datetime import date, datetime, timezone
 from pathlib import Path
 import tempfile
 from uuid import uuid4
@@ -106,6 +106,7 @@ class TestValidImage:
             image_source_url="https://www.daad.de/en/scholarships/test",
             source_type="official_provider",
             alt_text="DAAD Scholarship banner",
+            image_kind="program_image",
         )
         assert result is True
 
@@ -113,6 +114,7 @@ class TestValidImage:
         assert updated.image_url == "https://www.daad.de/images/scholarship-banner.jpg"
         assert updated.image_source_url == "https://www.daad.de/en/scholarships/test"
         assert updated.image_source_type == "official_provider"
+        assert updated.image_kind == "program_image"
         assert updated.image_verified_at is not None
         assert updated.image_alt_text == "DAAD Scholarship banner"
 
@@ -154,6 +156,187 @@ class TestValidImage:
             source_type="official_provider",
         )
         assert result is False
+
+    def test_mark_image_verified_normalizes_urls_for_idempotency(self, in_memory_session):
+        session, _ = in_memory_session
+        verifier = ImageVerifier(session)
+
+        scholarship = Scholarship(
+            **SCHOLARSHIP_DATA,
+            image_url="https://www.daad.de/images/banner.jpg/",
+            image_source_url="https://www.daad.de/en/scholarships/test/",
+            image_source_type="official_provider",
+        )
+        session.add(scholarship)
+        session.commit()
+        first_timestamp = scholarship.image_verified_at
+
+        result = verifier.mark_image_verified(
+            scholarship.id,
+            image_url="https://daad.de/images/banner.jpg",
+            image_source_url="https://daad.de/en/scholarships/test",
+            source_type="official_provider",
+        )
+
+        assert result is False
+        refreshed = session.get(Scholarship, scholarship.id)
+        assert refreshed.image_url == "https://www.daad.de/images/banner.jpg/"
+        assert refreshed.image_source_url == "https://www.daad.de/en/scholarships/test/"
+        assert refreshed.image_verified_at == first_timestamp
+        assert session.scalar(
+            select(func.count(ScholarshipVerificationHistory.id)).where(
+                ScholarshipVerificationHistory.scholarship_id == scholarship.id
+            )
+        ) == 0
+
+    def test_automatic_discovery_does_not_overwrite_existing_image(self, in_memory_session):
+        session, _ = in_memory_session
+        verifier = ImageVerifier(session)
+
+        scholarship = Scholarship(
+            **SCHOLARSHIP_DATA,
+            image_url="https://www.daad.de/images/existing.jpg",
+            image_source_url="https://www.daad.de/en/scholarships/test",
+            image_source_type="official_provider",
+            image_kind="program_image",
+            image_verified_at=datetime(2026, 1, 1, tzinfo=timezone.utc),
+            image_alt_text="Existing program image",
+        )
+        session.add(scholarship)
+        session.commit()
+
+        result = verifier.mark_image_verified(
+            scholarship.id,
+            image_url="https://www.daad.de/images/new.jpg",
+            image_source_url="https://www.daad.de/en/scholarships/test",
+            source_type="official_provider",
+            image_kind="program_image",
+            automatic=True,
+        )
+
+        assert result is False
+        refreshed = session.get(Scholarship, scholarship.id)
+        assert refreshed.image_url == "https://www.daad.de/images/existing.jpg"
+        assert refreshed.image_source_url == "https://www.daad.de/en/scholarships/test"
+        assert refreshed.image_source_type == "official_provider"
+        assert refreshed.image_kind == "program_image"
+        assert refreshed.image_verified_at is not None
+        assert refreshed.image_verified_at.replace(tzinfo=timezone.utc) == datetime(2026, 1, 1, tzinfo=timezone.utc)
+        assert refreshed.image_alt_text == "Existing program image"
+        assert session.scalars(
+            select(ScholarshipVerificationHistory).where(
+                ScholarshipVerificationHistory.scholarship_id == scholarship.id
+            )
+        ).all() == []
+
+    def test_automatic_discovery_can_replace_unverified_image(self, in_memory_session):
+        session, _ = in_memory_session
+        verifier = ImageVerifier(session)
+        scholarship = Scholarship(
+            **SCHOLARSHIP_DATA,
+            image_url="https://www.daad.de/images/unverified.jpg",
+            image_source_url="https://www.daad.de/en/scholarships/test",
+            image_source_type="official_provider",
+            image_kind="program_image",
+        )
+        session.add(scholarship)
+        session.commit()
+
+        result = verifier.mark_image_verified(
+            scholarship.id,
+            image_url="https://www.daad.de/images/new.jpg",
+            image_source_url="https://www.daad.de/en/scholarships/test",
+            source_type="official_provider",
+            image_kind="official_banner",
+            automatic=True,
+        )
+
+        assert result is True
+        refreshed = session.get(Scholarship, scholarship.id)
+        assert refreshed.image_url == "https://www.daad.de/images/new.jpg"
+        assert refreshed.image_kind == "official_banner"
+        assert refreshed.image_verified_at is not None
+
+    def test_image_kind_none_preserves_existing_kind(self, in_memory_session):
+        session, _ = in_memory_session
+        verifier = ImageVerifier(session)
+
+        scholarship = Scholarship(
+            **SCHOLARSHIP_DATA,
+            image_url="https://www.daad.de/images/existing.jpg",
+            image_source_url="https://www.daad.de/en/scholarships/test",
+            image_source_type="official_provider",
+            image_kind="program_image",
+        )
+        session.add(scholarship)
+        session.commit()
+
+        verifier.mark_image_verified(
+            scholarship.id,
+            image_url="https://www.daad.de/images/new.jpg",
+            image_source_url="https://www.daad.de/en/scholarships/test",
+            source_type="official_provider",
+            image_kind=None,
+        )
+
+        assert session.get(Scholarship, scholarship.id).image_kind == "program_image"
+
+    def test_verification_audit_contains_source_evidence(self, in_memory_session):
+        session, _ = in_memory_session
+        verifier = ImageVerifier(session)
+
+        scholarship = Scholarship(**SCHOLARSHIP_DATA)
+        session.add(scholarship)
+        session.commit()
+
+        verifier.mark_image_verified(
+            scholarship.id,
+            image_url="https://www.daad.de/images/scholarship-banner.jpg",
+            image_source_url="https://www.daad.de/en/scholarships/test",
+            source_type="official_provider",
+            image_kind="program_image",
+        )
+
+        history = session.scalars(
+            select(ScholarshipVerificationHistory).where(
+                ScholarshipVerificationHistory.scholarship_id == scholarship.id
+            )
+        ).one()
+        assert history.evidence_text == "https://www.daad.de/en/scholarships/test"
+
+    def test_repeated_identical_submission_is_idempotent(self, in_memory_session):
+        session, _ = in_memory_session
+        verifier = ImageVerifier(session)
+
+        scholarship = Scholarship(**SCHOLARSHIP_DATA)
+        session.add(scholarship)
+        session.commit()
+
+        kwargs = {
+            "scholarship_id": scholarship.id,
+            "image_url": "https://www.daad.de/images/idempotent.jpg",
+            "image_source_url": "https://www.daad.de/en/scholarships/test",
+            "source_type": "official_provider",
+            "image_kind": "program_image",
+            "alt_text": "Program image",
+        }
+        assert verifier.mark_image_verified(**kwargs) is True
+        first_timestamp = session.get(Scholarship, scholarship.id).image_verified_at
+        first_history_count = session.scalar(
+            select(func.count(ScholarshipVerificationHistory.id)).where(
+                ScholarshipVerificationHistory.scholarship_id == scholarship.id
+            )
+        )
+
+        assert verifier.mark_image_verified(**kwargs) is False
+
+        refreshed = session.get(Scholarship, scholarship.id)
+        assert refreshed.image_verified_at == first_timestamp
+        assert session.scalar(
+            select(func.count(ScholarshipVerificationHistory.id)).where(
+                ScholarshipVerificationHistory.scholarship_id == scholarship.id
+            )
+        ) == first_history_count == 1
 
 
 class TestImageUrlChangeAudited:
