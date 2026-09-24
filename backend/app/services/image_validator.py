@@ -1055,7 +1055,7 @@ class ImageValidator:
                         f"Image too small ({result.width}x{result.height})"
                     )
 
-        if result.width > 1 and result.height > 1:
+        if result.width and result.height and result.width > 1 and result.height > 1:
             ratio = result.width / result.height
             result.aspect_ratio = round(ratio, 4)
             if ratio < ASPECT_RATIO_MIN or ratio > ASPECT_RATIO_MAX:

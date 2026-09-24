@@ -1231,9 +1231,20 @@ def _extract_jsonld_images(soup: BeautifulSoup, page_url: str) -> list[JsonLdIma
         seen.add(img_url)
         results.append((img_url, description, fallback_type))
 
+    def _normalize_type(value: object) -> str | None:
+        """JSON-LD @type may be a str, a list of str, or absent; normalize to a single str."""
+        if isinstance(value, str):
+            return value or None
+        if isinstance(value, list):
+            for item in value:
+                if isinstance(item, str) and item:
+                    return item
+            return None
+        return None
+
     def walk(value: object, inherited_type: str | None = None) -> None:
         if isinstance(value, dict):
-            node_type = value.get("@type") or inherited_type
+            node_type = _normalize_type(value.get("@type")) or inherited_type
             for key in ("image", "logo", "photo"):
                 child = value.get(key)
                 if isinstance(child, dict):
