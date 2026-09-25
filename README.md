@@ -1,26 +1,36 @@
+<div align="center">
+
 # ScholarZone
 
-Verified Scholarships. Trusted Information. Better Decisions.
+### Verified Scholarships. Trusted Information. Better Decisions.
 
-An open-source platform helping students worldwide discover verified scholarships and make informed higher education choices.
+<img src="docs/assets/hero.svg" alt="ScholarZone: official source to field extraction to confidence gate" width="100%">
 
-## Table of Contents
+**ScholarZone discovers, verifies, and maintains scholarship data from official sources — with field-level provenance, immutable audit history, and human review wherever confidence is low.**
+
+[Repository](https://github.com/gopal735/ScholarZone) · [Report an Issue](https://github.com/gopal735/ScholarZone/issues) · [API Reference](#api-reference) · [Deployment](#deployment)
+
+</div>
+
+---
+
+## Contents
 
 - [Overview](#overview)
 - [Why ScholarZone](#why-scholarzone)
-- [Core Features](#core-features)
-- [Trust & Verification Model](#trust--verification-model)
-- [Image Verification Pipeline](#image-verification-pipeline)
-- [Automation & Scheduled Verification](#automation--scheduled-verification)
+- [Dataset Snapshot](#dataset-snapshot)
 - [Architecture](#architecture)
-- [Technology Stack](#technology-stack)
-- [Repository Structure](#repository-structure)
-- [API Overview](#api-overview)
+- [Verification Pipeline](#verification-pipeline)
+- [Image Pipeline](#image-pipeline)
+- [Trust Model](#trust-model)
+- [Technology](#technology)
+- [Features](#features)
+- [Engineering](#engineering)
+- [API Reference](#api-reference)
 - [Local Development](#local-development)
-- [Environment Variables](#environment-variables)
-- [Testing & CI](#testing--ci)
+- [Configuration](#configuration)
+- [Repository Structure](#repository-structure)
 - [Deployment](#deployment)
-- [Security](#security)
 - [Project Status](#project-status)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
@@ -30,349 +40,260 @@ An open-source platform helping students worldwide discover verified scholarship
 
 ## Overview
 
-ScholarZone centralizes verified higher-education opportunities into a clean, searchable platform prioritized strictly by primary official sources. Students spend weeks navigating scattered, outdated websites, facing unverified claims, missed deadlines, and broken application links. ScholarZone removes that friction by surfacing only opportunities whose details have been checked against official sources and maintained on a regular schedule.
+Finding a scholarship usually means reading dozens of unmaintained pages, guessing which figures are still current, and discovering too late that a deadline or a link has changed. Most aggregators copy listings wholesale, so an error introduced once keeps propagating.
 
-The platform is split into two services:
+ScholarZone treats every listing as a claim that has to be re-checked against its primary source, on a schedule, field by field.
 
-- A **React + Vite single-page application** (frontend) for browsing, filtering, comparing, and saving scholarships.
-- A **FastAPI backend** (backend) exposing a REST API, an autonomous verification engine, scholarship discovery, and an admin review dashboard.
+The platform is two services:
 
-Production deployment:
+- **Frontend** — a React single-page application for browsing, filtering, comparing, and shortlisting opportunities.
+- **Backend** — a FastAPI service exposing a REST API, an autonomous verification engine, a discovery pipeline, and an admin review dashboard.
 
-- **Frontend:** GitHub Pages via `.github/workflows/frontend.yml`.
-- **Backend:** SnapDeploy containers (production). A `backend/render.yaml` file exists as an alternative deployment configuration but Render is not the active production platform.
+What makes it different is the maintenance model rather than the interface: listings are not static rows, they are continuously re-validated records with a full history of what changed, when, and against which source URL.
 
 ---
 
 ## Why ScholarZone
 
-- **Source-first prioritization:** Opportunities are ranked by primary official sources, not third-party aggregators.
-- **Field-level verification:** Individual fields are verified against official pages rather than trusting listings wholesale.
-- **Immutable audit trail:** Every verified field change is recorded with old/new values, source URL, confidence, and timestamp.
-- **Human-in-the-loop review:** Conflicts and low-confidence findings are routed to an append-only review workflow instead of being silently applied.
-- **Automated maintenance:** Scheduled verification rounds keep listings fresh without manual intervention.
-- **Official image intelligence:** Same-domain image discovery and layered validation reduce broken, placeholder, or irrelevant imagery.
-
----
-
-## Core Features
-
-| Feature | Description | Status |
-| :--- | :--- | :---: |
-| Scholarship Discovery | Browse a searchable, paginated directory of verified opportunities | Available |
-| Filtering & Sorting | Filter by country, degree, funding, deadline month, and listing status; sort by recommended, recently added, deadline, funding, and name | Available |
-| Scholarship Details | Structured view with benefits, eligibility, requirements, documents, application timeline, and official source links | Available |
-| Verification System | Field-level verification with active / needs_review / inactive status, last-verified tracking, and next-due scheduling | Available |
-| Human Review Workflow | Conflict detection (identity, low confidence, third-party sources) routes uncertain fields to append-only review records with approve/reject flow | Available |
-| Verification Audit Trail | Immutable `ScholarshipVerificationHistory` records every field change with old/new values, source URL, confidence, and timestamp | Available |
-| Official Image Discovery | Crawls official scholarship source pages (max depth 2) to discover same-domain image candidates with context-aware extraction | Available |
-| Image Validation | Layered non-content detection (banners, placeholders, logos, social icons, OG thumbnails), dimension/ratio checks, duplicate detection, and official-domain verification | Available |
-| Image Persistence | Authenticated `POST /internal/images/verify` persists HIGH-confidence approved images with idempotent audit history | Available |
-| Image Fallback | Frontend `ScholarshipImage` component renders retry logic, broken-image placeholders, and source-type indicators | Available |
-| Saved Scholarships | Device-local shortlist with save/unsave actions | Available |
-| Side-by-Side Comparison | Compare up to 4 scholarships on country, degree, funding, and deadline | Available |
-| Country Explorer | Browse opportunities by destination with live scholarship counts and editorial destination cards | Available |
-| Admin Dashboard | Control center for verification queue, metric cards, search/filter, and verify/flag actions | Available |
-| Authentication | Login and registration pages with `ProtectedRoute` component (defined; route gating not yet applied to admin) | Available |
-
----
-
-## Trust & Verification Model
-
-ScholarZone treats verification as a field-level operation rather than a binary "trusted" flag. Each scholarship field is evaluated independently against its official source, and the outcome determines whether the change is applied directly or routed to human review.
-
-### Verification Flow
-
-1. **Trigger:** GitHub Actions cron (every 12 hours at minute 7) calls the authenticated `POST /internal/verify/trigger` endpoint.
-2. **Auth:** The request must include the `X-Verification-Secret` header matching the production `SCHOLARZONE_VERIFICATION_SECRET`.
-3. **Rate Limit:** Minimum 60-second interval between triggers; concurrent or rapid requests receive `429 Too Many Requests`.
-4. **Engine:** `SchedulerEngine` starts a bounded `ThreadPoolExecutor` (max 4 workers), processes due retries, submits a batch of scholarships, waits for completion, then shuts down.
-5. **Per-Scholarship:** For each candidate, the pipeline fetches the official source, extracts structured data, diffs against current records, collects evidence, and applies confidence-based safety gates.
-6. **Auto-Update vs. Review:**
-   - **Auto-update:** Safe, high-confidence changes are applied directly and written to `ScholarshipVerificationHistory`.
-   - **Human review:** Identity conflicts, low-confidence findings, and third-party sources are routed to `ScholarshipReview` records for manual approval or rejection.
-
-### Confidence Levels
-
-| Level | Meaning |
+| Principle | What it means in practice |
 | :--- | :--- |
-| HIGH | Field matches official source; safe to auto-apply |
-| MEDIUM | Partial match; recorded but flagged for review |
-| LOW | Weak or conflicting evidence; routed to human review |
-| HUMAN_REVIEW | Requires manual decision before any change |
-
-### Audit Trail
-
-Every field change is recorded in `ScholarshipVerificationHistory` with:
-
-- Old and new values
-- Source URL used for verification
-- Confidence level
-- Timestamp
-
-This append-only history supports full provenance tracing and post-hoc auditing of every applied change.
-
-### Source Health
-
-Each approved source is tracked in `SourceHealth` with success/failure counts and last-verification timestamps. Sources that consistently fail verification are flagged and deprioritized in discovery.
+| **Source-first** | Opportunities are ranked by primary official sources, not third-party aggregators that copy from each other. |
+| **Field-level verification** | Each field is checked independently against the official page, so one bad value does not invalidate an entire listing. |
+| **Immutable audit trail** | Every applied change is recorded with old value, new value, source URL, confidence, and timestamp. |
+| **Human in the loop** | Identity conflicts, low-confidence findings, and third-party sources are routed to review instead of being applied silently. |
+| **Scheduled maintenance** | Verification runs on a fixed 12-hour cycle, so listings decay slowly rather than rotting between manual checks. |
+| **Honest imagery** | Images are discovered only where they exist officially, and never fabricated to fill a gap. |
 
 ---
 
-## Image Verification Pipeline
+## Dataset Snapshot
 
-Not every scholarship listing carries an official image. ScholarZone discovers and validates images only when they exist, and never fabricates imagery to fill gaps.
+The figures below are a **local snapshot taken from a development database**, not a service-level guarantee. Counts change as discovery, verification, and lifecycle transitions run.
 
-### Discovery
-
-- Crawls official scholarship source pages (max depth 2).
-- Discovers same-domain image candidates with context-aware extraction.
-- Records candidates in `DiscoveryCandidate` for review.
-
-### Validation Layers
-
-- **Non-content rejection:** Detects banners, placeholders, logos, social icons, and Open Graph thumbnails.
-- **Dimension checks:** Enforces `MIN_IMAGE_DIMENSION=200` and `MIN_COVER=500`.
-- **Aspect ratio:** Validates images within 0.2 to 5.0 ratio.
-- **Duplicate detection:** Rejects near-duplicate images.
-- **Official-domain verification:** Confirms the image originates from the scholarship's official domain.
-
-### Confidence & Persistence
-
-Images are assigned one of `HIGH`, `MEDIUM`, `LOW`, or `HUMAN_REVIEW` confidence levels. Only `HIGH`-confidence images are persisted via the authenticated `POST /internal/images/verify` endpoint, with idempotent audit history recorded in `ContentFingerprintRecord`.
-
-The `NON_CONTENT_REJECTION_THRESHOLD=1.5` governs the non-content scoring gate.
-
-### Frontend Fallback
-
-The `ScholarshipImage` component renders retry logic, broken-image placeholders, and source-type indicators so listings remain usable even when no valid image is available.
-
----
-
-## Automation & Scheduled Verification
-
-Verification runs on a fixed schedule rather than on-demand only.
-
-### Cron Schedule
-
-- **Schedule:** `7 */12 * * *` (every 12 hours at minute 7; runs at approximately 00:07 and 12:07 UTC).
-- **Workflow:** `.github/workflows/verification-cron.yml`.
-- **Concurrency:** Grouped under `verification-trigger` with `cancel-in-progress: true` to prevent overlapping rounds.
-
-### Workflow Phases
-
-1. **Validate configuration:** Confirms `SCHOLARZONE_API_URL` and `SCHOLARZONE_VERIFICATION_SECRET` are set.
-2. **Wake container and trigger verification:** Polls `/health` with an exponential backoff schedule (10s, 20s, 30s, 45s, 60s, 90s, 120s, 120s; total budget 495s) until the container is ready, then triggers `POST /internal/verify/trigger`. A success flag (`TRIGGERED=1`) is set on HTTP 202 or 429 responses so the job exits cleanly even when verification is already in progress.
-3. **Trigger country-level discovery:** Runs only when the verification trigger succeeds (`if: success()`), calling `POST /internal/discover/trigger`.
-
-### Trigger Endpoint Behavior
-
-- **HTTP 202:** Verification round accepted and running.
-- **HTTP 429:** Rate-limited; verification already in progress or too recent.
-- **HTTP 401/403:** Authentication failure; the workflow exits with an error.
-- **HTTP 503:** Service unavailable (typically cold-start or database not ready); the workflow retries.
-
-### Discovery
-
-Country-level discovery runs after each verification round and:
-
-- Discovers new scholarship candidates by country.
-- Records candidates in `DiscoveryCandidate` for review.
-- Applies lifecycle transitions (active / needs_review / inactive) via `lifecycle_manager`.
-- Performs next-cycle discovery for closed scholarships.
-
-### APScheduler
-
-A legacy APScheduler instance exists in `scheduler_v2.py` but is intentionally **not started in production**. Verification is triggered exclusively by the cloud cron job via `/internal/verify/trigger`, preventing duplicate scheduler execution.
+| Metric | Snapshot value |
+| :--- | ---: |
+| Scholarships | 487 |
+| Countries represented | 29 |
+| Verification history rows | 209 |
+| Reviews | 859 |
+| Discovery candidates (pending) | 17 |
+| Approved sources | 20 |
 
 ---
 
 ## Architecture
 
-```mermaid
-graph LR
-    A[GitHub Actions Cron<br/>every 12h] --> B[/internal/verify/trigger]
-    B --> C{SchedulerEngine}
-    C --> D[ThreadPoolExecutor<br/>max 4 workers]
-    D --> E[Per-Scholarship<br/>Verification Pipeline]
-    E --> F[Official Source<br/>HTTP Fetch]
-    E --> G{Confidence Gate}
-    G -->|HIGH| H[Auto-Apply + Audit]
-    G -->|LOW| I[Human Review]
-    H --> J[(PostgreSQL<br/>ScholarshipVerificationHistory)]
-    I --> K[(ScholarshipReview)]
-    B2[Discovery Trigger] --> L[Country Discovery]
-    L --> M[(DiscoveryCandidate)]
-    L --> N[(SourceHealth)]
+<img src="docs/assets/architecture.svg" alt="ScholarZone architecture: React SPA on GitHub Pages, FastAPI backend on SnapDeploy, PostgreSQL on Neon, driven by GitHub Actions" width="100%">
 
-    Frontend[React SPA<br/>GitHub Pages] --> API[FastAPI Backend<br/>SnapDeploy]
-    API --> J
-    API --> K
-    API --> M
-    API --> N
-```
+Three tiers, deployed independently:
 
-### Backend Services
+| Tier | Technology | Hosting |
+| :--- | :--- | :--- |
+| Frontend | React 19 + Vite, static build | GitHub Pages |
+| Backend | FastAPI, Python 3.11, Docker (`python:3.11-slim`) | SnapDeploy containers |
+| Database | PostgreSQL (Neon), 13 SQLAlchemy models | Neon |
 
-- **Verification engine:** `scheduler_v2.py` — `SchedulerEngine` with `ThreadPoolExecutor`, `max_workers=4`, `batch_size=100`, `poll_interval=300s`, rate limit 60s minimum interval.
-- **Image discovery:** `image_discovery.py` — same-domain crawling with context-aware extraction.
-- **Image validation:** `image_validator.py` — layered non-content rejection, dimension/ratio checks, duplicate detection.
-- **Scholarship image verifier:** `scholarship_image_verifier.py` — image verification endpoint and persistence.
-- **Verification history:** `scholarship_history.py` — append-only audit trail.
-- **Review workflow:** `scholarship_review.py` — human review with approve/reject flow.
-- **Source health:** `source_health_service.py` — source tracking and deprioritization.
-- **Telemetry:** `telemetry.py` — operational event recording.
-- **Email service:** `email_service.py` — Resend integration for notifications.
-- **Discovery pipeline:** `discovery_pipeline.py` — country-level discovery orchestration.
-- **Lifecycle manager:** `lifecycle_manager.py` — scholarship state transitions.
+Automation sits alongside them: GitHub Actions runs backend tests and frontend lint on every push, deploys the frontend, verifies the production backend, and triggers the 12-hour verification cycle.
 
-### Data Model (13 SQLAlchemy Models)
+### Data model
 
-| Model | Purpose |
+Thirteen models back the platform. The load-bearing ones:
+
+| Model | Role |
 | :--- | :--- |
-| Scholarship | Core scholarship record |
-| ScholarshipVerificationHistory | Immutable field-change audit trail |
-| ScholarshipReview | Human review records |
-| ScholarshipFetchAttempt | Fetch attempt logging |
-| ApprovedSource | Approved source registry |
-| SourceHealth | Source success/failure tracking |
-| KnowledgeNode | Knowledge graph nodes |
-| KnowledgeEdge | Knowledge graph edges |
-| ScholarshipSnapshot | Point-in-time scholarship snapshots |
-| DiscoveryCandidate | Unreviewed discovery candidates |
-| ImageReview | Image review records |
-| ScholarshipRestoreRecord | Restore operation history |
-| ContentFingerprintRecord | Image fingerprint audit |
+| `Scholarship` | Core record, with verification status and next-due date |
+| `ScholarshipVerificationHistory` | Append-only record of every applied field change |
+| `ScholarshipReview` | Human review queue with approve / reject outcome |
+| `ApprovedSource` | Registry of official sources cleared for crawling |
+| `SourceHealth` | Per-source success and failure counts |
+| `DiscoveryCandidate` | Newly found opportunities awaiting review |
+| `ContentFingerprintRecord` | Idempotency and duplicate-detection ledger for images |
+| `KnowledgeNode` / `KnowledgeEdge` | Knowledge-graph structures for relationship exploration |
+
+<details>
+<summary>Remaining models</summary>
+
+`ScholarshipFetchAttempt`, `ScholarshipSnapshot`, `ImageReview`, `ScholarshipRestoreRecord`.
+
+</details>
 
 ---
 
-## Technology Stack
+## Verification Pipeline
 
-### Frontend
+<img src="docs/assets/verification-flow.svg" alt="Verification pipeline: official source, fetch and extract, validate, confidence gate, then auto-apply with audit trail or human review" width="100%">
 
-| Technology | Version | Purpose |
+A scheduled job triggers a bounded run over due scholarships:
+
+1. **Trigger** — GitHub Actions calls the authenticated `POST /internal/verify/trigger` endpoint.
+2. **Authorise** — the request must carry the `X-Verification-Secret` header. Triggers are rate-limited to one per 60 seconds; rapid or concurrent requests receive `429`.
+3. **Schedule** — `SchedulerEngine` runs a bounded `ThreadPoolExecutor` with 4 workers over a batch, then shuts down cleanly.
+4. **Fetch and extract** — each candidate's official page is retrieved and parsed into structured fields with evidence attached.
+5. **Diff** — extracted values are compared field by field against the stored record.
+6. **Gate** — the confidence assigned to each field decides the outcome.
+7. **Persist** — approved changes are written together with their history row.
+
+### Confidence levels
+
+| Level | Meaning | Outcome |
 | :--- | :--- | :--- |
-| React | 19.2.8 | UI component library |
-| react-router-dom | 7.18.2 | Client-side routing |
-| Vite | 8.2.0 | Build tool and dev server |
-| motion | 13.1.1 | Animation library |
-| ESLint | 10.8.0 | Linting |
+| `HIGH` | Field matches the official source | Applied automatically |
+| `MEDIUM` | Partial match | Recorded, flagged for review |
+| `LOW` | Weak or conflicting evidence | Routed to human review |
+| `HUMAN_REVIEW` | Requires an explicit decision | Held until reviewed |
 
-### Backend
+Fatal signals are handled distinctly: a `401` or `404` on the health endpoint is a configuration error and fails the run immediately, while `403` (edge block), `503` (cold start or database not ready), and connection failures are treated as transient and retried.
 
-| Technology | Version | Purpose |
-| :--- | :--- | :--- |
-| Python | 3.11 | Runtime |
-| FastAPI | 0.141.1 | REST API framework |
-| Uvicorn | 0.52.1 | ASGI server |
-| SQLAlchemy | 2.0 | ORM |
-| psycopg | v3 | PostgreSQL driver |
-| Pydantic | 2.13.4 | Data validation |
-| HTTPX | >=0.27 | HTTP client for source fetching |
-| APScheduler | latest | Job scheduling (legacy, not started in production) |
-| Pillow | latest | Image processing |
-| beautifulsoup4 | latest | HTML parsing |
-| pytest | latest | Testing |
-| python-dotenv | latest | Environment variable loading |
-| Resend | latest | Email delivery |
+### Cold-start handling
 
-### Infrastructure
+Production runs on containers that scale to zero, so the first request after an idle period pays the wake-up cost. The workflow probes `/health` on a backoff schedule of **10s, 20s, 30s, 45s, 60s, 90s, 120s, 120s, 180s** — a 675-second total budget — and verifies readiness after the final sleep before declaring the budget exhausted. The verification trigger is only sent once readiness is confirmed, so a request is never fired into a container that is still booting.
 
-| Component | Technology |
+Country-level discovery runs after each successful round, recording candidates for review and transitioning listings through `active` / `needs_review` / `inactive`.
+
+---
+
+## Image Pipeline
+
+<img src="docs/assets/image-pipeline.svg" alt="Image pipeline: official page crawl to candidates, validation, scoring, then high auto-persist, medium human review, low reject, with frontend fallback" width="100%">
+
+Most listings have no official artwork, and inventing some would misrepresent the source. ScholarZone only uses imagery that genuinely exists on the official domain.
+
+**Resolution order:** `PROGRAM_IMAGE` → `OFFICIAL_BANNER` → `OFFICIAL_LOGO` → `NULL`, with the frontend rendering a clean placeholder when nothing valid exists.
+
+### Validation layers
+
+- **Non-content rejection** — filters banners, placeholders, logos, social icons, and Open Graph thumbnails.
+- **Dimension floors** — minimum 200px, with a 500px minimum for cover imagery.
+- **Aspect ratio** — rejects anything outside a 0.2 to 5.0 ratio.
+- **Duplicate detection** — rejects near-duplicate images across listings.
+- **Official-domain check** — the candidate must originate from the scholarship's own official domain.
+
+### Outcome by confidence
+
+| Confidence | Action |
 | :--- | :--- |
-| Database (production) | PostgreSQL (Neon) |
-| Database (dev/test) | SQLite |
-| Frontend hosting | GitHub Pages |
-| Backend hosting | SnapDeploy containers |
-| CI/CD | GitHub Actions |
-| Container runtime | Docker (single-stage `python:3.11-slim`) |
+| `HIGH` | Persisted automatically via `POST /internal/images/verify`, with an idempotent fingerprint record |
+| `MEDIUM` | Held for human review |
+| `LOW` | Rejected |
+
+Verified images are never silently overwritten by a lower-confidence candidate.
 
 ---
 
-## Repository Structure
+## Trust Model
 
-```
-ScholarZone/
-├── frontend/                  # React + Vite SPA
-│   ├── src/
-│   │   ├── components/        # Reusable UI components
-│   │   ├── pages/             # Route-level pages
-│   │   ├── hooks/             # Custom React hooks
-│   │   ├── lib/               # Utilities and API client
-│   │   └── styles/            # Global styles
-│   ├── public/
-│   ├── package.json
-│   ├── vite.config.js
-│   └── eslint.config.js
-├── backend/
-│   ├── app/
-│   │   ├── main.py            # FastAPI app entry point
-│   │   ├── core/
-│   │   │   └── config.py      # Environment configuration
-│   │   ├── database.py        # Database initialization
-│   │   ├── models.py          # 13 SQLAlchemy models
-│   │   ├── schemas.py         # Pydantic schemas
-│   │   ├── routers/           # API route handlers
-│   │   │   ├── scholarships.py
-│   │   │   ├── verification.py
-│   │   │   ├── discovery.py
-│   │   │   ├── admin_dashboard.py
-│   │   │   └── admin_image_review.py
-│   │   ├── scheduler_v2.py    # Verification engine
-│   │   ├── seed.py            # Database seeding
-│   │   └── services/          # Business logic
-│   ├── tests/                 # 58 test files, 2,302 test functions
-│   ├── Dockerfile             # Single-stage container build
-│   ├── render.yaml            # Alternative deployment config
-│   ├── requirements.txt       # Backend dependencies
-│   ├── app/requirements.txt   # App-specific dependencies
-│   ├── start.sh               # Container startup script
-│   └── gh_token.txt           # GitHub token (secret; not committed in production)
-├── docs/                      # Documentation (currently empty)
-├── .github/
-│   ├── workflows/
-│   │   ├── ci.yml             # Backend tests, frontend lint, schema compat
-│   │   ├── frontend.yml       # GitHub Pages deployment
-│   │   ├── deploy.yml         # SnapDeploy production verification
-│   │   └── verification-cron.yml  # Scheduled verification trigger
-├── data/
-│   └── verified_scholarships.py  # Seed data (DAAD, ICCR, curated)
-└── README.md
-```
+Provenance is the point of the system, so it is enforced at four levels:
+
+- **Official-domain checking** — a listing is only considered verified against a source cleared in `ApprovedSource`, and images must come from that same domain.
+- **Per-field evidence** — every applied value carries the source URL it was derived from, not just a record-level link.
+- **Append-only history** — `ScholarshipVerificationHistory` records old value, new value, source, confidence, and timestamp. History rows are written, never updated.
+- **Idempotency** — fingerprint records and rate limits prevent duplicate application of the same change or image.
+
+`SourceHealth` tracks per-source success and failure counts, allowing sources that repeatedly fail to be deprioritised in discovery rather than retried indefinitely.
 
 ---
 
-## API Overview
+## Technology
 
-The backend exposes a FastAPI application titled **ScholarZone API** (version 1.0.0).
+<img src="docs/assets/tech-stack.svg" alt="Technology stack grouped into frontend, backend, and infrastructure" width="100%">
 
-- **Swagger/OpenAPI docs:** Available at `/docs` in non-production environments only. Disabled in production.
-- **ReDoc:** Always disabled (`redoc_url=None`).
-- **Base URL (production):** `https://scholarzone-api-2ee2d.containers.snapdeploy.app`
-
-### Routers
-
-| Router | Prefix | Purpose |
+| Layer | Technology | Version |
 | :--- | :--- | :--- |
-| Scholarships | `/scholarships` | Public scholarship browsing, filtering, comparison, and details |
-| Internal | `/internal` | Verification trigger and image verification |
-| Admin Images | `/admin/images` | Image review and approval |
-| Discovery | `/internal/discover` | Country-level discovery trigger and candidate management |
-| Admin Dashboard | `/admin` | Verification queue and review management |
+| UI | React | 19.2.8 |
+| Routing | react-router-dom | 7.18.2 |
+| Build | Vite | 8.2.0 |
+| Animation | motion | 13.1.1 |
+| Linting | ESLint | 10.8.0 |
+| Runtime | Python | 3.11 |
+| API | FastAPI | 0.141.1 |
+| ASGI server | Uvicorn | 0.52.1 |
+| ORM | SQLAlchemy | 2.0 |
+| Driver | psycopg | v3 |
+| Validation | Pydantic | 2.13.4 |
+| HTTP client | HTTPX | >=0.27 |
+| Parsing | BeautifulSoup4 | latest |
+| Imaging | Pillow | latest |
+| Email | Resend | latest |
+| Tests | pytest | latest |
+| Database | PostgreSQL (Neon) | managed |
+| Containers | Docker (`python:3.11-slim`) | single-stage |
 
-### Key Endpoints
+---
 
-| Method | Path | Description |
+## Features
+
+### Discovery and exploration
+Country-level discovery finds candidate opportunities from approved official sources and records them as `DiscoveryCandidate` rows for review. A country explorer shows live per-country counts alongside destination cards. Listings can be filtered by country, degree, funding type, deadline month, and status, and sorted by recommendation, recency, deadline, funding, or name.
+
+### Verification
+Field-level verification with `active` / `needs_review` / `inactive` status, last-verified timestamps, and next-due scheduling. An append-only history records every applied change, and conflicts route into a review queue with approve and reject actions.
+
+### Image discovery
+Same-domain crawling to a maximum depth of 2, context-aware candidate extraction, layered validation, confidence scoring, and idempotent persistence for approved imagery.
+
+### Reviews and provenance
+Every verified value is traceable to the source URL it came from. A review workflow captures human decisions on uncertain fields as durable records rather than transient state.
+
+### Comparison and shortlisting
+Up to four scholarships can be compared side by side on country, degree, funding, and deadline. Saved scholarships are stored device-locally, with no account required.
+
+### Scheduled automation
+A 12-hour cron cycle wakes the backend, runs verification, and triggers discovery, with concurrency control to prevent overlapping rounds.
+
+### Admin dashboard
+A control surface for the verification queue, metric cards, search and filter, and verify and flag actions, backed by a dedicated image review interface.
+
+---
+
+## Engineering
+
+### Test suite
+
+- **59** test files under `backend/tests/`
+- **2302** test functions
+
+The suite exercises the verification engine, image validation and discovery, the discovery pipeline, lifecycle transitions, source health, schema compatibility, and API endpoints. The suite is **not** fully green: a known failure remains open and is tracked rather than suppressed. Treat the current state as *nearly passing*, not as a 100% pass claim.
+
+### CI
+
+`.github/workflows/ci.yml` runs on every push and covers:
+
+- backend tests via pytest
+- frontend lint via ESLint
+- schema compatibility checks
+- smoke tests against the running application
+
+Frontend deployment, production backend verification, and the scheduled verification cycle each run in their own workflow.
+
+---
+
+## API Reference
+
+The backend exposes a FastAPI application, **ScholarZone API** (version 1.0.0). Swagger documentation is available at `/docs` outside production only, and is disabled in production. ReDoc is always disabled.
+
+Production base URL: `https://scholarzone-api-2ee2d.containers.snapdeploy.app`
+
+| Method | Path | Purpose |
 | :--- | :--- | :--- |
-| GET | `/` | Welcome message |
-| GET | `/health` | Health check (200 OK, 503 if database not ready) |
-| POST | `/internal/verify/trigger` | Trigger a verification round (authenticated) |
-| POST | `/internal/discover/trigger` | Trigger country-level discovery (authenticated) |
-| POST | `/internal/images/verify` | Persist verified images (authenticated) |
-| GET | `/scholarships` | List scholarships with filtering and pagination |
-| GET | `/scholarships/{id}` | Get scholarship details |
-| GET | `/admin/queue` | Get verification review queue |
+| `GET` | `/` | Welcome message |
+| `GET` | `/health` | Health check — `200` when ready, `503` if the database is not |
+| `GET` | `/scholarships` | List, filter, sort, and paginate scholarships |
+| `GET` | `/scholarships/{id}` | Scholarship details |
+| `POST` | `/internal/verify/trigger` | Trigger a verification round (authenticated) |
+| `POST` | `/internal/discover/trigger` | Trigger country-level discovery (authenticated) |
+| `POST` | `/internal/images/verify` | Persist verified images (authenticated) |
+| `GET` | `/admin/queue` | Verification review queue |
 
-All internal endpoints require the `X-Verification-Secret` header matching the configured `SCHOLARZONE_VERIFICATION_SECRET`.
+All `/internal` endpoints require the `X-Verification-Secret` header to match the configured `SCHOLARZONE_VERIFICATION_SECRET`.
+
+### Trigger responses
+
+| Status | Meaning |
+| :--- | :--- |
+| `202` | Round accepted and running |
+| `429` | Rate-limited; a round is already in progress or too recent |
+| `401` / `403` | Authentication failure — the run fails |
+| `503` | Service unavailable, typically cold start or database not ready |
 
 ---
 
@@ -382,131 +303,102 @@ All internal endpoints require the `X-Verification-Secret` header matching the c
 
 - Python 3.11+
 - Node.js 18+ and npm
-- PostgreSQL (or SQLite for local development)
+- PostgreSQL, or SQLite for local development
 
 ### Backend
 
 ```bash
 cd backend
-
-# Install dependencies
 pip install -r requirements.txt
-
-# Copy and edit environment file
 cp .env.example .env
-
-# Run the development server
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-The API will be available at `http://localhost:8000`, with Swagger docs at `http://localhost:8000/docs`.
+The API is then available at `http://localhost:8000`, with Swagger docs at `/docs`.
 
 ### Frontend
 
 ```bash
 cd frontend
-
-# Install dependencies
 npm install
-
-# Start the development server
 npm run dev
 ```
 
 ### Seeding
 
-In non-production environments, the database is seeded automatically on startup from `data/verified_scholarships.py` (DAAD, ICCR, and curated entries). In production, seeding is skipped; the database is populated via migration.
+Outside production the database is seeded on startup from `data/verified_scholarships.py` (DAAD, ICCR, and curated entries). In production seeding is skipped and the database is populated by migration.
 
 ---
 
-## Environment Variables
-
-### Backend (`.env`)
+## Configuration
 
 | Variable | Required | Description |
 | :--- | :---: | :--- |
-| `DATABASE_URL` | Yes | Database connection URL (PostgreSQL in production, SQLite in dev/test) |
+| `DATABASE_URL` | Yes | Database URL — PostgreSQL in production, SQLite in dev and test |
 | `ENVIRONMENT` | Yes | `development`, `test`, or `production` |
 | `SCHOLARZONE_VERIFICATION_SECRET` | Yes (production) | Shared secret for verification trigger endpoints |
+| `VERIFICATION_SECRET` | Yes | Alias used by the verification router |
 | `ALLOWED_ORIGINS` | No | Comma-separated CORS allowlist |
-| `VERIFICATION_SECRET` | Yes | Alias used by verification router |
 | `MIN_IMAGE_DIMENSION` | No | Minimum image dimension in pixels (default 200) |
 | `MIN_COVER` | No | Minimum cover image dimension (default 500) |
 | `NON_CONTENT_REJECTION_THRESHOLD` | No | Non-content scoring threshold (default 1.5) |
 | `RESEND_API_KEY` | No | Resend API key for email delivery |
+| `VITE_API_URL` | Frontend | Backend API base URL |
 
-**Production guard:** `config.py` rejects `sqlite` URLs when `ENVIRONMENT=production`, enforcing PostgreSQL in production deployments.
-
-### Frontend
-
-| Variable | Description |
-| :--- | :--- |
-| `VITE_API_URL` | Backend API base URL |
+`config.py` rejects SQLite URLs when `ENVIRONMENT=production`, which keeps production pinned to PostgreSQL.
 
 ---
 
-## Testing & CI
+## Repository Structure
 
-### Test Suite
-
-- **58 test files** in `backend/tests/`
-- **2,302 test functions**
-- Latest full run: **2,222 passed, 1 failed, 39 warnings** in 554.79s
-
-The suite covers the verification engine, image validation, discovery pipeline, lifecycle management, source health, schema compatibility, and API endpoints. One test currently fails; the failure is tracked and does not block the verification pipeline.
-
-### CI Workflow (`.github/workflows/ci.yml`)
-
-- Backend tests with pytest
-- Frontend lint with ESLint
-- Schema compatibility checks
-- Smoke tests against the running application
-
-### Manual Verification
-
-`workflow_dispatch` runs of the verification trigger have completed successfully, confirming the trigger endpoint accepts requests and the verification round runs end-to-end.
+```
+ScholarZone/
+├── frontend/                     # React + Vite SPA
+│   └── src/
+│       ├── components/           # Reusable UI, including ScholarshipImage
+│       ├── pages/                # Route-level pages
+│       ├── hooks/                # Custom hooks
+│       └── lib/                  # API client and utilities
+├── backend/
+│   ├── app/
+│   │   ├── main.py               # FastAPI entry point
+│   │   ├── models.py             # 13 SQLAlchemy models
+│   │   ├── schemas.py            # Pydantic schemas
+│   │   ├── routers/              # scholarships, verification, discovery, admin
+│   │   ├── scheduler_v2.py       # Verification engine
+│   │   └── services/             # Discovery, images, reviews, source health
+│   ├── tests/                    # 59 test files, 2302 test functions
+│   ├── Dockerfile                # Single-stage python:3.11-slim
+│   ├── render.yaml               # Alternative deployment config, not production
+│   └── requirements.txt
+├── docs/                         # Product, design, API, and architecture docs
+│   └── assets/                   # README diagrams
+├── data/                         # Seed data (DAAD, ICCR, curated)
+├── .github/workflows/            # ci, frontend, deploy, verification-cron
+└── README.md
+```
 
 ---
 
 ## Deployment
 
-### Frontend (GitHub Pages)
+### Frontend
 
-- **Workflow:** `.github/workflows/frontend.yml`
-- **Output:** Built with `vite build` and deployed to GitHub Pages.
-- **Access:** Served from the repository's GitHub Pages URL.
+Built with `vite build` and published to GitHub Pages by `.github/workflows/frontend.yml`.
 
-### Backend (SnapDeploy)
+### Backend
 
-- **Platform:** SnapDeploy containers.
-- **Production URL:** `https://scholarzone-api-2ee2d.containers.snapdeploy.app`
-- **Workflow:** `.github/workflows/deploy.yml` verifies the production deployment after pushes.
-- **Container:** Single-stage Docker build using `python:3.11-slim`, with a HEALTHCHECK every 30 seconds.
-- **Alternative config:** `backend/render.yaml` exists as an alternative deployment configuration but Render is not the active production platform.
-
-### Scheduled Verification
-
-- **Workflow:** `.github/workflows/verification-cron.yml`
-- **Schedule:** `7 */12 * * *` (every 12 hours at minute 7)
-- **Behavior:** Wakes the SnapDeploy container, triggers verification, then triggers country-level discovery.
+Production runs on **SnapDeploy containers**, not Render. A `backend/render.yaml` file exists as an alternative deployment configuration, but it is not the active production platform. The container is a single-stage Docker build on `python:3.11-slim` with a health check every 30 seconds, and `.github/workflows/deploy.yml` verifies the production deployment after pushes.
 
 ### Database
 
-- **Production:** PostgreSQL (Neon).
-- **Development/Testing:** SQLite.
-- **Migration:** Production databases are populated via migration, not seeding.
+PostgreSQL on Neon in production; SQLite for development and testing. Production databases are populated by migration rather than by seeding.
 
----
+### Scheduled verification
 
-## Security
+`.github/workflows/verification-cron.yml` runs on `7 */12 * * *` — every 12 hours at minute 7. Rounds are grouped under a concurrency group with `cancel-in-progress` so overlapping runs cannot occur. The job validates configuration, wakes the container and triggers verification, then triggers discovery only if verification succeeded.
 
-- **Authentication:** Internal endpoints require the `X-Verification-Secret` header matching `SCHOLARZONE_VERIFICATION_SECRET`.
-- **Rate limiting:** Verification triggers are rate-limited to a 60-second minimum interval, returning `429` for rapid or concurrent requests.
-- **CORS:** Restricted to configured `ALLOWED_ORIGINS`; only `GET` methods and specific headers are permitted.
-- **Input validation:** Pydantic schemas enforce request shapes; validation failures return `422` with a generic message.
-- **Error handling:** Unhandled exceptions return a generic `500` response; details are logged server-side only.
-- **Secrets:** No secrets are stored in the repository. `gh_token.txt` is present locally for operational scripts and must not be committed in production.
-- **Production guard:** `config.py` rejects SQLite database URLs in production, enforcing PostgreSQL.
+A legacy APScheduler instance exists in `scheduler_v2.py` but is intentionally **not started in production**, so verification is driven exclusively by the cloud cron job and duplicate scheduler execution cannot occur.
 
 ---
 
@@ -514,97 +406,49 @@ The suite covers the verification engine, image validation, discovery pipeline, 
 
 ### Implemented
 
-- Scholarship browsing, filtering, sorting, and details
-- Country explorer with live counts
-- Side-by-side comparison (up to 4 scholarships)
-- Device-local saved scholarships
-- Field-level verification engine
-- Append-only verification audit trail
-- Human review workflow with approve/reject
-- Same-domain image discovery (max depth 2)
-- Layered image validation with confidence levels
-- Source health tracking
-- Country-level discovery pipeline
-- Lifecycle management
-- Admin dashboard and image review interface
-- Authentication pages (route gating partially applied)
-- Scheduled verification via GitHub Actions cron
-- Resend email integration
-- Telemetry event recording
+Scholarship browsing, filtering, sorting, and detail views; country explorer with live counts; side-by-side comparison of up to four scholarships; device-local shortlisting; field-level verification engine; append-only audit trail; human review with approve and reject; same-domain image discovery and layered validation; source health tracking; country-level discovery; lifecycle management; admin dashboard and image review; authentication pages; scheduled verification via GitHub Actions; Resend email integration; telemetry event recording.
 
-### Production
+### In production
 
-- Frontend deployed to GitHub Pages
-- Backend deployed to SnapDeploy containers
-- PostgreSQL (Neon) database
-- Scheduled verification running on a 12-hour cycle
+Frontend on GitHub Pages, backend on SnapDeploy, PostgreSQL on Neon, and scheduled verification on a 12-hour cycle.
 
-### Verification Proven
+### Open items
 
-- CI pipeline passes on the current commit
-- Manual `workflow_dispatch` verification runs complete successfully
-- Native GitHub deployment verification passes
+- One test failure remains open and tracked; it does not block the verification pipeline.
+- Admin route gating is not yet applied to every admin page.
+- Runtime behaviour of the corrected cron wake logic awaits the next scheduled run.
 
-### Pending / In Progress
+### Not implemented
 
-- One test currently failing (tracked, does not block the pipeline)
-- Admin route gating not yet applied to all admin pages
-- Scheduled runtime verification of the fixed cron workflow is pending the next scheduled run
-
-### Not Yet Implemented
-
-- Full multi-language localization
-- Payment/integration with scholarship application portals
-- Mobile native applications
+Multi-language localisation, direct integration with scholarship application portals, and mobile native applications.
 
 ---
 
 ## Roadmap
 
-### Near Term
+**Near term** — resolve the remaining test failure; apply route gating to all admin pages; confirm scheduled verification at runtime; expand documentation.
 
-- Resolve the remaining failing test
-- Apply route gating to all admin pages
-- Validate scheduled verification runtime after the fixed cron workflow fires
-- Populate `docs/` with design, API, and architecture documentation
+**Medium term** — widen country-level discovery coverage; improve image confidence precision with additional signals; add knowledge-graph exploration; strengthen source-health reporting.
 
-### Medium Term
-
-- Expand country-level discovery coverage
-- Improve image confidence precision with additional validation signals
-- Add knowledge graph exploration UI
-- Enhance source health dashboards
-
-### Long Term
-
-- Multi-language scholarship listings
-- Integration with official application portals
-- Mobile applications (React Native)
-- Advanced recommendation engine
+**Long term** — multi-language listings; integration with official application portals; mobile applications; recommendation ranking.
 
 ---
 
 ## Contributing
 
-Contributions are welcome. Please follow these steps:
+Contributions are welcome.
 
 1. Fork the repository and create a feature branch.
-2. Run the local development setup (see [Local Development](#local-development)).
-3. Make changes following existing code conventions.
-4. Run the test suite: `pytest` in `backend/`.
+2. Follow the [local development](#local-development) setup.
+3. Match existing code conventions.
+4. Run the backend suite: `pytest` in `backend/`.
 5. Run frontend lint: `npm run lint` in `frontend/`.
 6. Open a pull request describing the change.
 
-**Commit guidelines:**
-
-- Use conventional commit messages (e.g., `feat:`, `fix:`, `docs:`).
-- Do not commit secrets, tokens, or credentials.
-- Ensure CI passes before requesting review.
+Use conventional commit messages (`feat:`, `fix:`, `docs:`). Do not commit secrets, tokens, or credentials.
 
 ---
 
 ## License
 
-This project is licensed under the terms of the repository LICENSE file. The LICENSE file is currently empty; a license should be added before public distribution.
-
----
+This project is licensed under the terms of the repository `LICENSE` file. That file is currently empty and a license should be added before public distribution.

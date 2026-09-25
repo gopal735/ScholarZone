@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" role="img" aria-label="ScholarZone image discovery and validation pipeline">
+<defs>
+<linearGradient id="ibg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b1f3a"/><stop offset="1" stop-color="#0a1628"/></linearGradient>
+<linearGradient id="icard" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#12264a"/><stop offset="1" stop-color="#0d1c36"/></linearGradient>
+<filter id="ish" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#000" flood-opacity="0.45"/></filter>
+<marker id="ia" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#c9a96a"/></marker>
+<marker id="ig" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#4ade80"/></marker>
+<marker id="iy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#fbbf24"/></marker>
+<marker id="ir" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#f87171"/></marker>
+<marker id="ib" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#5fa8ff"/></marker>
+</defs>
+<rect width="960" height="560" fill="url(#ibg)"/>
+<text x="480" y="28" text-anchor="middle" fill="#e8cf9a" font-family="Georgia, serif" font-size="16" font-weight="bold">Image Discovery and Validation Pipeline</text>
+<text x="480" y="52" text-anchor="middle" fill="#9fb3d1" font-family="system-ui, sans-serif" font-size="11">Frontend resolution order: PROGRAM_IMAGE -&gt; OFFICIAL_BANNER -&gt; OFFICIAL_LOGO -&gt; NULL</text>
+<line x1="150" y1="64" x2="810" y2="64" stroke="#c9a96a" stroke-width="1.2" stroke-dasharray="6,5"/>
+
+<g filter="url(#ish)"><rect x="40" y="90" width="170" height="64" rx="9" fill="url(#icard)" stroke="#c9a96a" stroke-width="1.5"/><text x="125" y="117" text-anchor="middle" fill="#e8cf9a" font-family="Georgia, serif" font-size="13" font-weight="bold">OFFICIAL PAGE</text><text x="125" y="137" text-anchor="middle" fill="#9fb3d1" font-family="system-ui, sans-serif" font-size="10">same-domain crawl</text></g>
+<g filter="url(#ish)"><rect x="265" y="90" width="170" height="64" rx="9" fill="url(#icard)" stroke="#c9a96a" stroke-width="1.5"/><text x="350" y="117" text-anchor="middle" fill="#e8cf9a" font-family="Georgia, serif" font-size="13" font-weight="bold">CANDIDATES</text><text x="350" y="137" text-anchor="middle" fill="#9fb3d1" font-family="system-ui, sans-serif" font-size="10">max depth 2</text></g>
+<g filter="url(#ish)"><rect x="490" y="90" width="170" height="64" rx="9" fill="url(#icard)" stroke="#c9a96a" stroke-width="1.5"/><text x="575" y="117" text-anchor="middle" fill="#e8cf9a" font-family="Georgia, serif" font-size="13" font-weight="bold">VALIDATE</text><text x="575" y="137" text-anchor="middle" fill="#9fb3d1" font-family="system-ui, sans-serif" font-size="10">size, ratio, duplicates</text></g>
+<g filter="url(#ish)"><rect x="715" y="90" width="205" height="64" rx="9" fill="url(#icard)" stroke="#c9a96a" stroke-width="1.5"/><text x="817" y="117" text-anchor="middle" fill="#e8cf9a" font-family="Georgia, serif" font-size="13" font-weight="bold">SCORE</text><text x="817" y="137" text-anchor="middle" fill="#9fb3d1" font-family="system-ui, sans-serif" font-size="10">HIGH / MEDIUM / LOW</text></g>
+
+<line x1="210" y1="122" x2="258" y2="122" stroke="#c9a96a" stroke-width="2" marker-end="url(#ia)"/>
+<line x1="435" y1="122" x2="483" y2="122" stroke="#c9a96a" stroke-width="2" marker-end="url(#ia)"/>
+<line x1="660" y1="122" x2="708" y2="122" stroke="#c9a96a" stroke-width="2" marker-end="url(#ia)"/>
+
+<line x1="817" y1="154" x2="817" y2="200" stroke="#c9a96a" stroke-width="2"/>
+<line x1="125" y1="200" x2="817" y2="200" stroke="#c9a96a" stroke-width="2"/>
+<line x1="125" y1="200" x2="125" y2="244" stroke="#4ade80" stroke-width="2" marker-end="url(#ig)"/>
+<line x1="350" y1="200" x2="350" y2="244" stroke="#fbbf24" stroke-width="2" marker-end="url(#iy)"/>
+<line x1="575" y1="200" x2="575" y2="244" stroke="#f87171" stroke-width="2" marker-end="url(#ir)"/>
+
+<g filter="url(#ish)"><rect x="40" y="250" width="170" height="64" rx="9" fill="url(#icard)" stroke="#4ade80" stroke-width="1.5"/><text x="125" y="277" text-anchor="middle" fill="#86efac" font-family="Georgia, serif" font-size="13" font-weight="bold">HIGH</text><text x="125" y="297" text-anchor="middle" fill="#9fb3d1" font-family="system-ui, sans-serif" font-size="10">auto-persist</text></g>
+<g filter="url(#ish)"><rect x="265" y="250" width="170" height="64" rx="9" fill="url(#icard)" stroke="#fbbf24" stroke-width="1.5"/><text x="350" y="277" text-anchor="middle" fill="#fcd34d" font-family="Georgia, serif" font-size="13" font-weight="bold">MEDIUM</text><text x="350" y="297" text-anchor="middle" fill="#9fb3d1" font-family="system-ui, sans-serif" font-size="10">human review</text></g>
+<g filter="url(#ish)"><rect x="490" y="250" width="170" height="64" rx="9" fill="url(#icard)" stroke="#f87171" stroke-width="1.5"/><text x="575" y="277" text-anchor="middle" fill="#fca5a5" font-family="Georgia, serif" font-size="13" font-weight="bold">LOW</text><text x="575" y="297" text-anchor="middle" fill="#9fb3d1" font-family="system-ui, sans-serif" font-size="10">reject</text></g>
+
+<line x1="125" y1="314" x2="125" y2="394" stroke="#4ade80" stroke-width="2" marker-end="url(#ig)"/>
+<line x1="210" y1="432" x2="258" y2="432" stroke="#4ade80" stroke-width="2" marker-end="url(#ig)"/>
+<polyline points="920,122 942,122 942,432 668,432" fill="none" stroke="#5fa8ff" stroke-width="1.5" stroke-dasharray="6,5" marker-end="url(#ib)"/>
+<text x="934" y="300" text-anchor="end" fill="#8ab4ff" font-family="system-ui, sans-serif" font-size="10">no valid image found</text>
+
+<g filter="url(#ish)"><rect x="40" y="400" width="170" height="64" rx="9" fill="url(#icard)" stroke="#c9a96a" stroke-width="1.5"/><text x="125" y="427" text-anchor="middle" fill="#e8cf9a" font-family="Georgia, serif" font-size="13" font-weight="bold">PERSIST</text><text x="125" y="447" text-anchor="middle" fill="#9fb3d1" font-family="system-ui, sans-serif" font-size="10">idempotent write</text></g>
+<g filter="url(#ish)"><rect x="265" y="400" width="170" height="64" rx="9" fill="url(#icard)" stroke="#c9a96a" stroke-width="1.5"/><text x="350" y="427" text-anchor="middle" fill="#e8cf9a" font-family="Georgia, serif" font-size="13" font-weight="bold">AUDIT</text><text x="350" y="447" text-anchor="middle" fill="#9fb3d1" font-family="system-ui, sans-serif" font-size="10">content fingerprint</text></g>
+<g filter="url(#ish)"><rect x="490" y="400" width="170" height="64" rx="9" fill="url(#icard)" stroke="#5fa8ff" stroke-width="1.5"/><text x="575" y="427" text-anchor="middle" fill="#8ab4ff" font-family="Georgia, serif" font-size="13" font-weight="bold">FALLBACK</text><text x="575" y="447" text-anchor="middle" fill="#9fb3d1" font-family="system-ui, sans-serif" font-size="10">placeholder renders</text></g>
+</svg>

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 490" width="960" height="490" role="img" aria-label="ScholarZone architecture: React SPA and GitHub Actions and official sources feed a FastAPI backend on SnapDeploy, which persists to PostgreSQL on Neon">
+<defs>
+<linearGradient id="abg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b1f3a"/><stop offset="1" stop-color="#0a1628"/></linearGradient>
+<linearGradient id="acard" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#12264a"/><stop offset="1" stop-color="#0d1c36"/></linearGradient>
+<linearGradient id="abox" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#16305c"/><stop offset="1" stop-color="#101f3d"/></linearGradient>
+<filter id="ash" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#000" flood-opacity="0.45"/></filter>
+<marker id="aa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#c9a96a"/></marker>
+</defs>
+<rect width="960" height="490" fill="url(#abg)"/>
+<text x="480" y="30" text-anchor="middle" fill="#e8cf9a" font-family="Georgia, serif" font-size="16" font-weight="bold">ScholarZone Architecture</text>
+<text x="480" y="52" text-anchor="middle" fill="#9fb3d1" font-family="system-ui, sans-serif" font-size="11">Static frontend and containerised API over managed PostgreSQL</text>
+
+<g filter="url(#ash)"><rect x="40" y="70" width="280" height="64" rx="9" fill="url(#acard)" stroke="#5fa8ff" stroke-width="1.5"/><text x="180" y="97" text-anchor="middle" fill="#8ab4ff" font-family="Georgia, serif" font-size="13" font-weight="bold">React SPA</text><text x="180" y="117" text-anchor="middle" fill="#9fb3d1" font-family="system-ui, sans-serif" font-size="10">static build on GitHub Pages</text></g>
+<g filter="url(#ash)"><rect x="350" y="70" width="280" height="64" rx="9" fill="url(#acard)" stroke="#c9a96a" stroke-width="1.5"/><text x="490" y="97" text-anchor="middle" fill="#e8cf9a" font-family="Georgia, serif" font-size="13" font-weight="bold">GitHub Actions</text><text x="490" y="117" text-anchor="middle" fill="#9fb3d1" font-family="system-ui, sans-serif" font-size="10">CI, deploy, 12h cron</text></g>
+<g filter="url(#ash)"><rect x="660" y="70" width="280" height="64" rx="9" fill="url(#acard)" stroke="#c9a96a" stroke-width="1.5"/><text x="800" y="97" text-anchor="middle" fill="#e8cf9a" font-family="Georgia, serif" font-size="13" font-weight="bold">Official Sources</text><text x="800" y="117" text-anchor="middle" fill="#9fb3d1" font-family="system-ui, sans-serif" font-size="10">ministries, embassies, bodies</text></g>
+
+<line x1="180" y1="134" x2="180" y2="222" stroke="#c9a96a" stroke-width="2" marker-end="url(#aa)"/>
+<line x1="490" y1="134" x2="490" y2="222" stroke="#c9a96a" stroke-width="2" marker-end="url(#aa)"/>
+<line x1="800" y1="134" x2="800" y2="222" stroke="#c9a96a" stroke-width="2" marker-end="url(#aa)"/>
+<text x="192" y="182" fill="#9fb3d1" font-family="system-ui, sans-serif" font-size="10">HTTPS / REST</text>
+<text x="502" y="182" fill="#9fb3d1" font-family="system-ui, sans-serif" font-size="10">authenticated trigger</text>
+<text x="812" y="182" fill="#9fb3d1" font-family="system-ui, sans-serif" font-size="10">fetch + parse</text>
+
+<g filter="url(#ash)"><rect x="40" y="230" width="880" height="112" rx="12" fill="url(#abox)" stroke="#c9a96a" stroke-width="2"/><text x="480" y="260" text-anchor="middle" fill="#e8cf9a" font-family="Georgia, serif" font-size="15" font-weight="bold">FastAPI Backend</text><text x="480" y="279" text-anchor="middle" fill="#9fb3d1" font-family="system-ui, sans-serif" font-size="10">SnapDeploy containers - single-stage Docker on python:3.11-slim - health check every 30s</text>
+<rect x="70" y="292" width="260" height="34" rx="7" fill="#0d1c36" stroke="#5fa8ff" stroke-width="1.2"/><text x="200" y="314" text-anchor="middle" fill="#8ab4ff" font-family="system-ui, sans-serif" font-size="11">REST API + Pydantic schemas</text>
+<rect x="350" y="292" width="260" height="34" rx="7" fill="#0d1c36" stroke="#c9a96a" stroke-width="1.2"/><text x="480" y="314" text-anchor="middle" fill="#e8cf9a" font-family="system-ui, sans-serif" font-size="11">Verification engine - 4 workers</text>
+<rect x="630" y="292" width="260" height="34" rx="7" fill="#0d1c36" stroke="#c9a96a" stroke-width="1.2"/><text x="760" y="314" text-anchor="middle" fill="#e8cf9a" font-family="system-ui, sans-serif" font-size="11">Discovery + image pipelines</text>
+</g>
+
+<line x1="480" y1="342" x2="480" y2="396" stroke="#c9a96a" stroke-width="2" marker-end="url(#aa)"/>
+<text x="492" y="374" fill="#9fb3d1" font-family="system-ui, sans-serif" font-size="10">SQLAlchemy 2.0 / psycopg v3</text>
+
+<g filter="url(#ash)"><rect x="280" y="402" width="400" height="64" rx="9" fill="url(#acard)" stroke="#5fa8ff" stroke-width="1.5"/><text x="480" y="429" text-anchor="middle" fill="#8ab4ff" font-family="Georgia, serif" font-size="13" font-weight="bold">PostgreSQL on Neon</text><text x="480" y="449" text-anchor="middle" fill="#9fb3d1" font-family="system-ui, sans-serif" font-size="10">13 models - history, reviews, sources, candidates</text></g>
+</svg>
