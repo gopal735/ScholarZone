@@ -28,13 +28,62 @@ jobs:
 
       - name: Wake container and trigger verification
         run: |
-          BACKOFFS=(10 20 30 45 60 90 120 120)
+          BACKOFFS=(10 20 30 45 60 90 120 120 180)
           # MAX_WAIT must equal the total backoff schedule so the budget guard
-          # is consistent with the actual retry plan (10+20+30+45+60+90+120+120 = 495).
-          MAX_WAIT=495
+          # is consistent with the actual retry plan (10+20+30+45+60+90+120+120+180 = 675).
+          MAX_WAIT=675
           WAITED=0
           AWAKE=0
           TRIGGERED=0
+
+          # check_health performs a single readiness probe.
+          # Returns 0 when the container is ready (HTTP 200) and 1 otherwise.
+          # 401 and 404 are fatal configuration errors and exit the workflow.
+          # 403 (edge/Cloudflare block), 503 (cold-start), 000 (connection failed),
+          # and any other code are treated as transient and retried.
+          check_health() {
+            echo "Polling readiness (GET $API_URL/health)..."
+            HTTP_CODE=$(curl -s -o /tmp/health.json -w "%{http_code}" \
+              --connect-timeout 15 \
+              --max-time 30 \
+              -X GET \
+              "$API_URL/health")
+
+            echo "Health check HTTP response code: $HTTP_CODE"
+
+            if [ "$HTTP_CODE" = "200" ]; then
+              echo "Container is ready."
+              return 0
+            elif [ "$HTTP_CODE" = "401" ]; then
+              echo "::error::Authentication failure on health check (HTTP $HTTP_CODE). Check API_URL and X-Verification-Secret."
+              exit 1
+            elif [ "$HTTP_CODE" = "403" ]; then
+              BODY=$(cat /tmp/health.json)
+              echo "Readiness detail: $BODY"
+              echo "HTTP 403 on /health is an edge/Cloudflare block (not an API-secret failure). Retrying..."
+              return 1
+            elif [ "$HTTP_CODE" = "404" ]; then
+              echo "::error::Health endpoint not found (HTTP $HTTP_CODE). Check API_URL."
+              exit 1
+            elif [ "$HTTP_CODE" = "503" ]; then
+              BODY=$(cat /tmp/health.json)
+              echo "Readiness detail: $BODY"
+              if echo "$BODY" | grep -qi "waking"; then
+                echo "Container is cold-starting (503 + waking message)."
+              elif echo "$BODY" | grep -qi "database"; then
+                echo "Database not ready yet (503 + database detail)."
+              else
+                echo "Service unavailable (503). Treating as cold-start."
+              fi
+              return 1
+            elif [ "$HTTP_CODE" = "000" ]; then
+              echo "Connection failed. Container may be cold-starting."
+              return 1
+            else
+              echo "Unexpected HTTP $HTTP_CODE during readiness poll. Treating as transient."
+              return 1
+            fi
+          }
 
           # Explicit warm-up to trigger platform wake
           echo "Warming up container (GET $API_URL/health)..."
@@ -45,84 +94,23 @@ jobs:
             "$API_URL/health" || true
           echo ""
 
+          # Initial readiness check before entering the retry loop.
+          if check_health; then
+            AWAKE=1
+          fi
+
+          # Retry loop: probe readiness at the top of each iteration, then sleep
+          # the current backoff before the next probe. A successful 200 breaks out
+          # immediately so a ready container never waits through an unnecessary
+          # delay. The final 180s window is consumed by the post-loop check below.
           for delay in "${BACKOFFS[@]}"; do
-            if [ $AWAKE -eq 0 ]; then
-              echo "Polling readiness (GET $API_URL/health)..."
-              HTTP_CODE=$(curl -s -o /tmp/health.json -w "%{http_code}" \
-                --connect-timeout 15 \
-                --max-time 30 \
-                -X GET \
-                "$API_URL/health")
-
-              echo "Health check HTTP response code: $HTTP_CODE"
-
-              if [ "$HTTP_CODE" = "200" ]; then
-                echo "Container is ready."
-                AWAKE=1
-              elif [ "$HTTP_CODE" = "401" ]; then
-                echo "::error::Authentication failure on health check (HTTP $HTTP_CODE). Check API_URL and X-Verification-Secret."
-                exit 1
-              elif [ "$HTTP_CODE" = "403" ]; then
-                BODY=$(cat /tmp/health.json)
-                echo "Readiness detail: $BODY"
-                echo "HTTP 403 on /health is an edge/Cloudflare block (not an API-secret failure). Retrying..."
-              elif [ "$HTTP_CODE" = "404" ]; then
-                echo "::error::Health endpoint not found (HTTP $HTTP_CODE). Check API_URL."
-                exit 1
-              elif [ "$HTTP_CODE" = "503" ]; then
-                BODY=$(cat /tmp/health.json)
-                echo "Readiness detail: $BODY"
-                if echo "$BODY" | grep -qi "waking"; then
-                  echo "Container is cold-starting (503 + waking message)."
-                elif echo "$BODY" | grep -qi "database"; then
-                  echo "Database not ready yet (503 + database detail)."
-                else
-                  echo "Service unavailable (503). Treating as cold-start."
-                fi
-              elif [ "$HTTP_CODE" = "000" ]; then
-                echo "Connection failed. Container may be cold-starting."
-              else
-                echo "Unexpected HTTP $HTTP_CODE during readiness poll. Treating as transient."
-              fi
+            if [ $AWAKE -eq 1 ]; then
+              break
             fi
 
-            if [ $AWAKE -eq 1 ]; then
-              echo "Triggering verification (POST $API_URL/internal/verify/trigger)..."
-              HTTP_CODE=$(curl -s -o /tmp/response.json -w "%{http_code}" \
-                --connect-timeout 15 \
-                --max-time 120 \
-                -X POST \
-                -H "X-Verification-Secret: $SECRET" \
-                -H "Content-Type: application/json" \
-                "$API_URL/internal/verify/trigger")
-
-              echo "HTTP response code: $HTTP_CODE"
-
-              if [ "$HTTP_CODE" = "202" ]; then
-                echo "Verification round accepted."
-                cat /tmp/response.json
-                TRIGGERED=1
-                break
-              elif [ "$HTTP_CODE" = "429" ]; then
-                echo "Rate-limited (429). Verification already in progress or too recent."
-                cat /tmp/response.json
-                TRIGGERED=1
-                break
-              elif [ "$HTTP_CODE" = "401" ] || [ "$HTTP_CODE" = "403" ]; then
-                echo "::error::Authentication failure (HTTP $HTTP_CODE). Check X-Verification-Secret."
-                exit 1
-              elif [ "$HTTP_CODE" = "404" ]; then
-                echo "::error::Endpoint not found (HTTP $HTTP_CODE). Check API_URL."
-                exit 1
-              elif [ "$HTTP_CODE" = "503" ]; then
-                echo "Service unavailable (503) on trigger. Retrying..."
-              elif [ "$HTTP_CODE" = "000" ]; then
-                echo "Connection failed on trigger. Retrying..."
-              else
-                echo "::error::Unexpected HTTP $HTTP_CODE from trigger endpoint."
-                cat /tmp/response.json
-                exit 1
-              fi
+            if check_health; then
+              AWAKE=1
+              break
             fi
 
             if [ $WAITED -ge $MAX_WAIT ]; then
@@ -133,10 +121,67 @@ jobs:
               exit 1
             fi
 
-            echo "Waiting ${delay}s before retry..."
-            sleep $delay
+            echo "Waiting ${delay}s before next readiness check..."
+            sleep "$delay"
             WAITED=$((WAITED + delay))
           done
+
+          # Final readiness check: consume the last backoff window before
+          # declaring wake-budget exhaustion. Without this probe the final 180s
+          # sleep is never followed by a health check and the last wake
+          # opportunity is silently dropped.
+          if [ $AWAKE -eq 0 ] && check_health; then
+            AWAKE=1
+          fi
+
+          if [ $AWAKE -ne 1 ]; then
+            echo "::error::All attempts failed or wake budget exhausted."
+            echo "::error::Last health response:"
+            cat /tmp/health.json 2>/dev/null || echo "  (none)"
+            echo "::error::Check SnapDeploy logs for container startup errors."
+            exit 1
+          fi
+
+          echo "Triggering verification (POST $API_URL/internal/verify/trigger)..."
+          HTTP_CODE=$(curl -s -o /tmp/response.json -w "%{http_code}" \
+            --connect-timeout 15 \
+            --max-time 120 \
+            -X POST \
+            -H "X-Verification-Secret: $SECRET" \
+            -H "Content-Type: application/json" \
+            "$API_URL/internal/verify/trigger")
+
+          echo "HTTP response code: $HTTP_CODE"
+
+          if [ "$HTTP_CODE" = "202" ]; then
+            echo "Verification round accepted."
+            cat /tmp/response.json
+            TRIGGERED=1
+          elif [ "$HTTP_CODE" = "429" ]; then
+            echo "Rate-limited (429). Verification already in progress or too recent."
+            cat /tmp/response.json
+            TRIGGERED=1
+          elif [ "$HTTP_CODE" = "401" ] || [ "$HTTP_CODE" = "403" ]; then
+            echo "::error::Authentication failure (HTTP $HTTP_CODE). Check X-Verification-Secret."
+            exit 1
+          elif [ "$HTTP_CODE" = "404" ]; then
+            echo "::error::Endpoint not found (HTTP $HTTP_CODE). Check API_URL."
+            exit 1
+          elif [ "$HTTP_CODE" = "503" ]; then
+            echo "Service unavailable (503) on trigger after container readiness confirmed."
+            echo "::error::Last health response:"
+            cat /tmp/health.json 2>/dev/null || echo "  (none)"
+            exit 1
+          elif [ "$HTTP_CODE" = "000" ]; then
+            echo "Connection failed on trigger after container readiness confirmed."
+            echo "::error::Last health response:"
+            cat /tmp/health.json 2>/dev/null || echo "  (none)"
+            exit 1
+          else
+            echo "::error::Unexpected HTTP $HTTP_CODE from trigger endpoint."
+            cat /tmp/response.json
+            exit 1
+          fi
 
           if [ "$TRIGGERED" -eq 1 ]; then
             echo "Verification trigger completed successfully."
