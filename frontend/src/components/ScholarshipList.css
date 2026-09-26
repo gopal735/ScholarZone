@@ -1,42 +1,22 @@
-/* The filter panel is the directory's L2 container: a pearl slab that
-   the L1 cards below it sit against. Blur stays off here — a full-width
-   blurred region behind a scrolling grid is the one place the cost is
-   not worth it — but the rim, inset bloom and warm underlight still
-   make it read as a distinct, thicker material. */
+/* The filter panel is the directory's one functional surface, so it
+   keeps a material — but it is now a light pearl slab with a hairline
+   rather than a blurred one. It sits on open canvas above the grid, and
+   the cards below it are opaque, so nothing stacks glass on glass. */
 .filter-section {
   position: relative;
   display: grid;
   grid-template-columns: minmax(210px, 0.28fr) minmax(0, 0.72fr);
   gap: var(--space-6);
   align-items: start;
-  padding: var(--space-5);
-  overflow: hidden;
-  background: var(--sz-glass-tint-2);
+  padding: var(--space-6);
+  background: var(--sz-glass-solid-2);
   border: 1px solid var(--sz-glass-border);
   border-radius: var(--radius-panel);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.8) inset,
-    0 10px 28px rgba(74, 60, 38, 0.06);
-}
-
-.filter-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: var(--sz-glass-specular), var(--sz-glass-underlight);
-  border-radius: inherit;
-  pointer-events: none;
-}
-
-.filter-section > * {
-  position: relative;
-  z-index: 1;
+  box-shadow: var(--sz-glass-shadow-1);
 }
 
 [data-theme='dark'] .filter-section {
-  background: var(--sz-glass-tint-2);
-  box-shadow: 0 1px 0 rgba(255, 240, 210, 0.07) inset;
+  background: var(--sz-glass-solid-2);
 }
 
 .filter-section__intro p {

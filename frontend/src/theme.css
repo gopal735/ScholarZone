@@ -6,54 +6,62 @@
      with a deep warm ground and smoked pearl.
      ═══════════════════════════════════════════════════════════════ */
 
-  /* ── Color: Surface ─────────────────────────────────────────── */
-  --page-bg: #F4EEE2;
-  --page-glow: rgba(197, 165, 106, 0.1);
-  --surface: #FCF9F2;
-  --surface-raised: #FFFCF6;
-  --surface-subtle: #EDE5D6;
-  --surface-accent: rgba(197, 165, 106, 0.1);
+  /* ── Color: Surface ─────────────────────────────────────────────
+     Warm, but low-chroma on purpose. A heavily saturated beige reads
+     as "muddy" rather than "luxury" — the warmth has to come from the
+     light layers on top, not from the canvas pigment. */
+  --page-bg: #FAF7F1;
+  --page-glow: rgba(197, 165, 106, 0.08);
+  --surface: #FFFDF9;
+  --surface-raised: #FFFFFF;
+  --surface-subtle: #F4EFE5;
+  --surface-accent: rgba(197, 165, 106, 0.08);
 
   /* ── Color: Text (warm charcoal, never navy) ────────────────── */
-  --text-primary: #2B2620;
-  --text-secondary: #574F44;
-  --text-muted: #857A6B;
-  --text-faint: #A99C89;
+  --text-primary: #2A2521;
+  --text-secondary: #56504A;
+  --text-muted: #837C73;
+  --text-faint: #A79F95;
 
-  /* ── Color: Border ──────────────────────────────────────────── */
-  --border: #E6DCC9;
-  --border-strong: #D4C5A9;
+  /* ── Color: Border ────────────────────────────────────────────
+     Hue-consistent and low-contrast. Structure should come from space,
+     not from lines; these only need to catch light at the edge. */
+  --border: #EAE3D7;
+  --border-strong: #DBD1BF;
 
   /* ── Color: Accent (restrained champagne) ───────────────────── */
-  --accent: #B9974E;
-  --accent-hover: #A17F38;
-  --accent-soft: rgba(185, 151, 78, 0.12);
-  --accent-border: rgba(185, 151, 78, 0.34);
+  --accent: #AD8C46;
+  --accent-hover: #967535;
+  --accent-soft: rgba(173, 140, 70, 0.1);
+  --accent-border: rgba(173, 140, 70, 0.28);
 
   /* ── Color: Semantic ────────────────────────────────────────── */
-  --success: #4F7A56;
-  --success-soft: rgba(79, 122, 86, 0.11);
-  --success-border: rgba(79, 122, 86, 0.32);
-  --warning: #A8761A;
-  --warning-strong: #8C6112;
-  --warning-soft: rgba(168, 118, 26, 0.11);
-  --warning-border: rgba(168, 118, 26, 0.32);
-  --danger: #A25F51;
-  --danger-soft: rgba(162, 95, 81, 0.11);
-  --danger-border: rgba(162, 95, 81, 0.32);
+  --success: #4E7455;
+  --success-soft: rgba(78, 116, 85, 0.1);
+  --success-border: rgba(78, 116, 85, 0.28);
+  --warning: #9E6F18;
+  --warning-strong: #845C11;
+  --warning-soft: rgba(158, 111, 24, 0.1);
+  --warning-border: rgba(158, 111, 24, 0.28);
+  --danger: #9A5B4D;
+  --danger-soft: rgba(154, 91, 77, 0.1);
+  --danger-border: rgba(154, 91, 77, 0.28);
 
   /* ── Color: Focus ───────────────────────────────────────────── */
-  --focus-ring: rgba(185, 151, 78, 0.42);
+  --focus-ring: rgba(173, 140, 70, 0.45);
   --focus-ring-width: 2px;
   --focus-ring-offset: 2px;
 
   /* ── Color: Header ──────────────────────────────────────────── */
-  --header-bg: rgba(250, 246, 238, 0.72);
+  --header-bg: rgba(250, 247, 241, 0.7);
 
-  /* ── Shadow (warm, never blue-black) ────────────────────────── */
-  --shadow-card: 0 1px 2px rgba(74, 60, 38, 0.05), 0 6px 16px rgba(74, 60, 38, 0.05);
-  --shadow-elevated: 0 2px 6px rgba(74, 60, 38, 0.06), 0 16px 38px rgba(74, 60, 38, 0.08);
-  --shadow-hover: 0 6px 18px rgba(74, 60, 38, 0.08), 0 12px 30px rgba(74, 60, 38, 0.06);
+  /* ── Shadow ───────────────────────────────────────────────────
+     Two layers, as a real surface casts two: a tight contact shadow
+     where it meets the canvas, and a broad ambient one. Every value is
+     warm-tinted so nothing on the page reads as blue-grey. */
+  --shadow-card: 0 1px 2px rgba(88, 72, 48, 0.04), 0 6px 18px rgba(88, 72, 48, 0.05);
+  --shadow-elevated: 0 2px 4px rgba(88, 72, 48, 0.05), 0 14px 34px rgba(88, 72, 48, 0.07);
+  --shadow-hover: 0 4px 10px rgba(88, 72, 48, 0.06), 0 22px 48px rgba(88, 72, 48, 0.09);
 
   /* ── Typography: Families ───────────────────────────────────── */
   --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
@@ -141,77 +149,87 @@
   --sz-grid-max: var(--grid-max);
 
   /* ── ScholarZone Editorial Tokens ───────────────────────────── */
-  --sz-ink: #2B2620;
-  --sz-ink-soft: #574F44;
-  --sz-paper: #F4EEE2;
-  --sz-paper-soft: #EDE5D6;
-  --sz-gold: #B9974E;
-  --sz-gold-deep: #96762F;
-  --sz-gold-soft: rgba(185, 151, 78, 0.12);
-  --sz-stone: #857A6B;
-  --sz-stone-light: #A99C89;
-  --sz-mist: #E6DCC9;
-  --sz-mist-soft: rgba(230, 220, 201, 0.55);
+  --sz-ink: #2A2521;
+  --sz-ink-soft: #56504A;
+  --sz-paper: #FAF7F1;
+  --sz-paper-soft: #F4EFE5;
+  --sz-gold: #AD8C46;
+  --sz-gold-deep: #8E7031;
+  --sz-gold-soft: rgba(173, 140, 70, 0.1);
+  --sz-stone: #837C73;
+  --sz-stone-light: #A79F95;
+  --sz-mist: #EAE3D7;
+  --sz-mist-soft: rgba(234, 227, 215, 0.5);
 
-  /* ── Pearl Liquid Glass System ─────────────────────────────────
-     Level 1 content cards · 2 floating panels · 3 nav/modals · 4 toasts
-     Tints are warm ivory rather than neutral white, so stacked glass
-     reads as one continuous material instead of separate panes.
-     Solid pairs provide the no-backdrop-filter / high-contrast fallback. */
-  --sz-glass-tint-1: rgba(255, 252, 245, 0.58);
-  --sz-glass-tint-2: rgba(255, 251, 243, 0.72);
-  --sz-glass-tint-3: rgba(255, 250, 241, 0.86);
-  --sz-glass-tint-4: rgba(255, 249, 239, 0.94);
+  /* ── Selective Glass System ────────────────────────────────────
+     Glass is a FUNCTIONAL layer, not a content layer. Per Apple's
+     guidance it is reserved for the few surfaces that float above the
+     document and carry interaction: the navigation pill, primary
+     actions, and the auth panel. Content cards are opaque and live on
+     the open canvas — stacking glass on glass is what made the last
+     pass read as heavy.
 
-  --sz-glass-tint-1-hover: rgba(255, 253, 248, 0.7);
-  --sz-glass-tint-2-hover: rgba(255, 252, 245, 0.82);
-  --sz-glass-tint-3-hover: rgba(255, 251, 244, 0.92);
-  --sz-glass-tint-4-hover: rgba(255, 252, 245, 0.97);
+     Level 1 content cards (opaque) · 2 floating panels · 3 nav · 4 toasts */
+  --sz-glass-tint-1: rgba(255, 253, 249, 0.86);
+  --sz-glass-tint-2: rgba(255, 253, 249, 0.78);
+  --sz-glass-tint-3: rgba(252, 249, 243, 0.7);
+  --sz-glass-tint-4: rgba(250, 247, 241, 0.82);
 
-  --sz-glass-solid-1: #FDFAF3;
-  --sz-glass-solid-2: #FFFCF6;
-  --sz-glass-solid-3: #FFFCF6;
-  --sz-glass-solid-4: #FFFBF4;
+  --sz-glass-tint-1-hover: rgba(255, 255, 255, 0.94);
+  --sz-glass-tint-2-hover: rgba(255, 255, 255, 0.86);
+  --sz-glass-tint-3-hover: rgba(255, 254, 250, 0.8);
+  --sz-glass-tint-4-hover: rgba(252, 249, 243, 0.9);
 
-  --sz-glass-border: rgba(120, 100, 68, 0.13);
-  --sz-glass-border-hover: rgba(185, 151, 78, 0.42);
-  --sz-glass-edge: rgba(255, 255, 255, 0.85);
-  --sz-glass-edge-soft: rgba(120, 100, 68, 0.07);
+  --sz-glass-solid-1: #FFFDF9;
+  --sz-glass-solid-2: #FFFDF9;
+  --sz-glass-solid-3: #FDFAF4;
+  --sz-glass-solid-4: #FAF7F1;
 
-  --sz-glass-blur: blur(20px) saturate(150%);
-  --sz-glass-blur-strong: blur(30px) saturate(170%);
+  --sz-glass-border: rgba(122, 104, 74, 0.11);
+  --sz-glass-border-hover: rgba(173, 140, 70, 0.34);
+  --sz-glass-edge: rgba(255, 255, 255, 0.8);
+  --sz-glass-edge-soft: rgba(122, 104, 74, 0.07);
 
-  /* The liquid cue: a soft elliptical bloom sitting just under the top
-     edge, plus a thin bright rim. Together they read as light pooling
-     on a curved, slightly wet surface. */
-  --sz-glass-specular: radial-gradient(
-    120% 78% at 26% -8%,
-    rgba(255, 255, 255, 0.92) 0%,
-    rgba(255, 252, 242, 0.42) 34%,
-    rgba(255, 250, 236, 0) 66%
+  /* Only the floating layer actually blurs. Everything below it is a
+     tint over a known backdrop, so the blur budget stays flat no
+     matter how many cards are on screen. */
+  --sz-glass-blur: blur(24px) saturate(140%);
+  --sz-glass-blur-strong: blur(32px) saturate(150%);
+
+  /* A single, restrained edge light. Real glass catches one bright
+     line where the surface turns away from the light — not a stack of
+     gradients. */
+  --sz-glass-specular: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.72) 0%,
+    rgba(255, 255, 255, 0.12) 26%,
+    rgba(255, 255, 255, 0) 52%
   );
   --sz-glass-rim: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.9) 0%,
-    rgba(255, 255, 255, 0.16) 30%,
-    rgba(255, 255, 255, 0) 58%
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 255, 255, 0.08) 22%,
+    rgba(255, 255, 255, 0) 44%
   );
-  /* Warm bounce light along the bottom edge — what sells "thick". */
+  /* Warm bounce along the bottom edge. Kept faint — at full strength
+     it yellows the surface and the palette starts to look muddy. */
   --sz-glass-underlight: radial-gradient(
-    100% 60% at 50% 108%,
-    rgba(214, 184, 128, 0.24) 0%,
-    rgba(214, 184, 128, 0) 70%
+    100% 56% at 50% 110%,
+    rgba(206, 178, 124, 0.12) 0%,
+    rgba(206, 178, 124, 0) 66%
   );
 
-  --sz-glass-shadow-1: 0 1px 2px rgba(74, 60, 38, 0.05), 0 6px 18px rgba(74, 60, 38, 0.06);
-  --sz-glass-shadow-2: 0 2px 6px rgba(74, 60, 38, 0.06), 0 16px 40px rgba(74, 60, 38, 0.09);
-  --sz-glass-shadow-3: 0 4px 10px rgba(74, 60, 38, 0.07), 0 26px 58px rgba(74, 60, 38, 0.11);
-  --sz-glass-shadow-4: 0 10px 20px rgba(74, 60, 38, 0.09), 0 38px 80px rgba(74, 60, 38, 0.15);
+  --sz-glass-shadow-1: 0 1px 2px rgba(88, 72, 48, 0.04), 0 6px 18px rgba(88, 72, 48, 0.05);
+  --sz-glass-shadow-2: 0 2px 4px rgba(88, 72, 48, 0.05), 0 14px 34px rgba(88, 72, 48, 0.07);
+  --sz-glass-shadow-3: 0 4px 8px rgba(88, 72, 48, 0.06), 0 24px 52px rgba(88, 72, 48, 0.09);
+  --sz-glass-shadow-4: 0 8px 16px rgba(88, 72, 48, 0.08), 0 32px 70px rgba(88, 72, 48, 0.12);
 
-  /* ── Premium Depth System ──────────────────────────────────── */
-  --sz-depth-1: 0 0 0 1px rgba(120, 100, 68, 0.06);
-  --sz-depth-2: 0 1px 0 rgba(255, 255, 255, 0.7) inset, 0 0 0 1px rgba(120, 100, 68, 0.08), 0 10px 24px rgba(74, 60, 38, 0.06);
-  --sz-depth-3: 0 1px 0 rgba(255, 255, 255, 0.82) inset, 0 0 0 1px rgba(120, 100, 68, 0.1), 0 22px 48px rgba(74, 60, 38, 0.09);
+  /* ── Premium Depth System ────────────────────────────────────
+     Depth 1 is a hairline, not a shadow. Most content should sit at
+     this level; elevation is what the floating layer earns. */
+  --sz-depth-1: 0 0 0 1px rgba(122, 104, 74, 0.07);
+  --sz-depth-2: 0 1px 2px rgba(88, 72, 48, 0.04), 0 6px 18px rgba(88, 72, 48, 0.05);
+  --sz-depth-3: 0 2px 4px rgba(88, 72, 48, 0.05), 0 14px 34px rgba(88, 72, 48, 0.07);
 
   --sz-orb-opacity: 0.55;
   --sz-skeleton-base: rgba(120, 100, 68, 0.08);
@@ -229,15 +247,15 @@
      so the fill sits slightly darker than the card behind it rather than
      lighter — a lighter field reads as raised. The border plus inset
      shadow carry the rest of the recess. */
-  --sz-input-border: rgba(120, 100, 68, 0.2);
-  --sz-input-bg: rgba(126, 104, 66, 0.05);
-  --sz-input-bg-hover: rgba(126, 104, 66, 0.08);
-  --sz-input-inset: inset 0 1px 2px rgba(74, 60, 38, 0.08);
+  --sz-input-border: rgba(122, 104, 74, 0.18);
+  --sz-input-bg: rgba(122, 104, 74, 0.04);
+  --sz-input-bg-hover: rgba(122, 104, 74, 0.07);
+  --sz-input-inset: inset 0 1px 2px rgba(88, 72, 48, 0.05);
 
   /* On-tint text — AA (4.5:1) on the matching *-soft fills above */
-  --sz-success-text: #3A6141;
-  --sz-accent-text: #6E5620;
-  --sz-warning-text: #6B4A0C;
+  --sz-success-text: #3A5C41;
+  --sz-accent-text: #6B5420;
+  --sz-warning-text: #68480B;
 
   /* ── Champagne solid ───────────────────────────────────────────
      The single "primary" material: a poured-gold lozenge used by every
@@ -263,115 +281,113 @@
    The material is identical to light; only the pigment changes.
    ═══════════════════════════════════════════════════════════════════ */
 :root[data-theme='dark'] {
-  --page-bg: #16120D;
-  --page-glow: rgba(197, 165, 106, 0.14);
-  --surface: #1D1811;
-  --surface-raised: #241E15;
-  --surface-subtle: #2A2318;
-  --surface-accent: rgba(197, 165, 106, 0.1);
-  --text-primary: #F6F1E6;
-  --text-secondary: #DCD3C2;
-  --text-muted: #A79B87;
-  --text-faint: #7E7362;
-  --border: #362D20;
-  --border-strong: #4C4030;
-  --accent: #D2B067;
-  --accent-hover: #E0C289;
-  --accent-soft: rgba(210, 176, 103, 0.14);
-  --accent-border: rgba(210, 176, 103, 0.34);
-  --success: #6FBE86;
-  --success-soft: rgba(111, 190, 134, 0.13);
-  --success-border: rgba(111, 190, 134, 0.32);
-  --warning: #E5B765;
-  --warning-strong: #F0C87F;
-  --warning-soft: rgba(229, 183, 101, 0.13);
-  --warning-border: rgba(229, 183, 101, 0.32);
-  --danger: #E39B8B;
-  --danger-soft: rgba(227, 155, 139, 0.13);
-  --danger-border: rgba(227, 155, 139, 0.32);
-  --focus-ring: rgba(210, 176, 103, 0.45);
-  --header-bg: rgba(22, 18, 13, 0.72);
-  --shadow-card: 0 10px 26px rgba(0, 0, 0, 0.34);
-  --shadow-elevated: 0 22px 48px rgba(0, 0, 0, 0.42);
-  --shadow-hover: 0 6px 18px rgba(0, 0, 0, 0.38);
+  --page-bg: #131110;
+  --page-glow: rgba(197, 165, 106, 0.1);
+  --surface: #1B1917;
+  --surface-raised: #211E1B;
+  --surface-subtle: #262320;
+  --surface-accent: rgba(197, 165, 106, 0.08);
+  --text-primary: #F4F0E8;
+  --text-secondary: #CFC8BC;
+  --text-muted: #9C948A;
+  --text-faint: #746D64;
+  --border: #302C28;
+  --border-strong: #423D37;
+  --accent: #C9A85F;
+  --accent-hover: #D8BA79;
+  --accent-soft: rgba(201, 168, 95, 0.12);
+  --accent-border: rgba(201, 168, 95, 0.3);
+  --success: #74B98A;
+  --success-soft: rgba(116, 185, 138, 0.12);
+  --success-border: rgba(116, 185, 138, 0.28);
+  --warning: #DCAE5E;
+  --warning-strong: #E7BF77;
+  --warning-soft: rgba(220, 174, 94, 0.12);
+  --warning-border: rgba(220, 174, 94, 0.28);
+  --danger: #DB9686;
+  --danger-soft: rgba(219, 150, 134, 0.12);
+  --danger-border: rgba(219, 150, 134, 0.28);
+  --focus-ring: rgba(201, 168, 95, 0.48);
+  --header-bg: rgba(19, 17, 16, 0.7);
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.24), 0 6px 18px rgba(0, 0, 0, 0.22);
+  --shadow-elevated: 0 2px 4px rgba(0, 0, 0, 0.26), 0 14px 34px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 4px 10px rgba(0, 0, 0, 0.28), 0 22px 48px rgba(0, 0, 0, 0.34);
 
-  --sz-ink: #F6F1E6;
-  --sz-ink-soft: #DCD3C2;
-  --sz-paper: #16120D;
-  --sz-paper-soft: #241E15;
-  --sz-gold: #D2B067;
-  --sz-gold-deep: #E0C289;
-  --sz-gold-soft: rgba(210, 176, 103, 0.15);
-  --sz-stone: #A79B87;
-  --sz-stone-light: #7E7362;
-  --sz-mist: #362D20;
-  --sz-mist-soft: rgba(54, 45, 32, 0.6);
+  --sz-ink: #F4F0E8;
+  --sz-ink-soft: #CFC8BC;
+  --sz-paper: #131110;
+  --sz-paper-soft: #211E1B;
+  --sz-gold: #C9A85F;
+  --sz-gold-deep: #D8BA79;
+  --sz-gold-soft: rgba(201, 168, 95, 0.12);
+  --sz-stone: #9C948A;
+  --sz-stone-light: #746D64;
+  --sz-mist: #302C28;
+  --sz-mist-soft: rgba(48, 44, 40, 0.55);
 
-  /* Smoked pearl: warm-neutral translucency, never blue-black. */
-  --sz-glass-tint-1: rgba(52, 44, 33, 0.5);
-  --sz-glass-tint-2: rgba(58, 49, 37, 0.6);
-  --sz-glass-tint-3: rgba(62, 52, 39, 0.74);
-  --sz-glass-tint-4: rgba(38, 32, 24, 0.86);
+  /* Smoked pearl, and the same restraint: one edge light, not a stack. */
+  --sz-glass-tint-1: rgba(43, 40, 36, 0.72);
+  --sz-glass-tint-2: rgba(48, 45, 41, 0.66);
+  --sz-glass-tint-3: rgba(34, 32, 29, 0.76);
+  --sz-glass-tint-4: rgba(19, 17, 16, 0.8);
 
-  --sz-glass-tint-1-hover: rgba(64, 54, 41, 0.62);
-  --sz-glass-tint-2-hover: rgba(70, 59, 45, 0.72);
-  --sz-glass-tint-3-hover: rgba(76, 64, 48, 0.84);
-  --sz-glass-tint-4-hover: rgba(48, 40, 30, 0.92);
+  --sz-glass-tint-1-hover: rgba(56, 52, 47, 0.8);
+  --sz-glass-tint-2-hover: rgba(60, 56, 50, 0.74);
+  --sz-glass-tint-3-hover: rgba(44, 41, 37, 0.84);
+  --sz-glass-tint-4-hover: rgba(28, 26, 23, 0.88);
 
-  --sz-glass-solid-1: #221C14;
-  --sz-glass-solid-2: #292218;
-  --sz-glass-solid-3: #2E2619;
-  --sz-glass-solid-4: #1B1610;
+  --sz-glass-solid-1: #211E1B;
+  --sz-glass-solid-2: #262320;
+  --sz-glass-solid-3: #1B1917;
+  --sz-glass-solid-4: #131110;
 
-  --sz-glass-border: rgba(206, 186, 146, 0.15);
-  --sz-glass-border-hover: rgba(210, 176, 103, 0.44);
-  --sz-glass-edge: rgba(255, 244, 220, 0.14);
+  --sz-glass-border: rgba(226, 210, 178, 0.12);
+  --sz-glass-border-hover: rgba(201, 168, 95, 0.38);
+  --sz-glass-edge: rgba(255, 245, 224, 0.12);
   --sz-glass-edge-soft: rgba(0, 0, 0, 0.3);
 
-  /* Dark glass gets a cooler, tighter bloom plus a stronger warm
-     underlight, because warm bounce reads far more on a dark ground. */
-  --sz-glass-specular: radial-gradient(
-    120% 78% at 26% -8%,
-    rgba(255, 238, 205, 0.2) 0%,
-    rgba(255, 232, 190, 0.07) 34%,
-    rgba(255, 226, 180, 0) 66%
+  --sz-glass-specular: linear-gradient(
+    180deg,
+    rgba(255, 240, 212, 0.14) 0%,
+    rgba(255, 236, 200, 0.04) 26%,
+    rgba(255, 230, 190, 0) 52%
   );
   --sz-glass-rim: linear-gradient(
     180deg,
-    rgba(255, 240, 210, 0.22) 0%,
-    rgba(255, 236, 200, 0.06) 30%,
-    rgba(255, 230, 190, 0) 58%
+    rgba(255, 240, 212, 0.16) 0%,
+    rgba(255, 236, 200, 0.04) 22%,
+    rgba(255, 230, 190, 0) 44%
   );
   --sz-glass-underlight: radial-gradient(
-    100% 60% at 50% 108%,
-    rgba(210, 168, 96, 0.2) 0%,
-    rgba(210, 168, 96, 0) 70%
+    100% 56% at 50% 110%,
+    rgba(201, 165, 100, 0.1) 0%,
+    rgba(201, 165, 100, 0) 66%
   );
 
-  --sz-glass-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 18px rgba(0, 0, 0, 0.3);
-  --sz-glass-shadow-2: 0 2px 6px rgba(0, 0, 0, 0.34), 0 16px 40px rgba(0, 0, 0, 0.4);
-  --sz-glass-shadow-3: 0 4px 10px rgba(0, 0, 0, 0.36), 0 26px 58px rgba(0, 0, 0, 0.46);
-  --sz-glass-shadow-4: 0 10px 20px rgba(0, 0, 0, 0.4), 0 38px 80px rgba(0, 0, 0, 0.54);
+  --sz-glass-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.26), 0 6px 18px rgba(0, 0, 0, 0.24);
+  --sz-glass-shadow-2: 0 2px 4px rgba(0, 0, 0, 0.28), 0 14px 34px rgba(0, 0, 0, 0.32);
+  --sz-glass-shadow-3: 0 4px 8px rgba(0, 0, 0, 0.3), 0 24px 52px rgba(0, 0, 0, 0.38);
+  --sz-glass-shadow-4: 0 8px 16px rgba(0, 0, 0, 0.32), 0 32px 70px rgba(0, 0, 0, 0.44);
 
-  --sz-depth-1: 0 0 0 1px rgba(206, 186, 146, 0.09);
-  --sz-depth-2: 0 1px 0 rgba(255, 240, 210, 0.07) inset, 0 0 0 1px rgba(206, 186, 146, 0.12), 0 10px 24px rgba(0, 0, 0, 0.34);
-  --sz-depth-3: 0 1px 0 rgba(255, 240, 210, 0.09) inset, 0 0 0 1px rgba(206, 186, 146, 0.14), 0 22px 48px rgba(0, 0, 0, 0.4);
+  --sz-depth-1: 0 0 0 1px rgba(226, 210, 178, 0.08);
+  --sz-depth-2: 0 1px 2px rgba(0, 0, 0, 0.24), 0 6px 18px rgba(0, 0, 0, 0.22);
+  --sz-depth-3: 0 2px 4px rgba(0, 0, 0, 0.26), 0 14px 34px rgba(0, 0, 0, 0.3);
 
   --sz-orb-opacity: 0.42;
-  --sz-skeleton-base: rgba(206, 186, 146, 0.1);
-  --sz-skeleton-sheen: rgba(255, 244, 220, 0.14);
+  --sz-skeleton-base: rgba(226, 210, 178, 0.09);
+  --sz-skeleton-sheen: rgba(255, 245, 224, 0.12);
   --sz-atmo-opacity: 1;
-  --sz-atmo-drift: 2.4;
-  --sz-atmo-duration: 78s;
+  --sz-atmo-drift: 2;
+  --sz-atmo-duration: 84s;
 
-  --sz-input-border: rgba(206, 186, 146, 0.28);
-  --sz-input-bg: rgba(0, 0, 0, 0.24);
-  --sz-input-bg-hover: rgba(0, 0, 0, 0.3);
-  --sz-input-inset: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+  --sz-input-border: rgba(226, 210, 178, 0.24);
+  --sz-input-bg: rgba(0, 0, 0, 0.22);
+  --sz-input-bg-hover: rgba(0, 0, 0, 0.28);
+  --sz-input-inset: inset 0 1px 2px rgba(0, 0, 0, 0.34);
 
-  --sz-success-text: #8FD3A4;
-  --sz-accent-text: #E0C289;
-  --sz-warning-text: #F0CE8E;
+  --sz-success-text: #8FCFA3;
+  --sz-accent-text: #D8BA79;
+  --sz-warning-text: #EDC88A;
 
   /* Dark keeps the same poured-champagne material, with a deeper base so
      it separates from a dark ground rather than glowing against it. */

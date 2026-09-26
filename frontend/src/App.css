@@ -1,9 +1,13 @@
 /* ═══════════════════════════════════════════════════════════════════
    Liquid Atmosphere
-   A living light field, not a static background. Four organic bodies
-   drift on long, mutually-diverse cycles and overlap translucently so
-   the intersections read as thicker liquid. Everything animates
-   transform only — the field never triggers layout or paint.
+
+   Three bodies, not four. Fewer, larger, lower-chroma fields read as
+   light in a room; many small tinted fields read as visual noise. The
+   chroma is deliberately low — a saturated warm wash over cream is what
+   turns a luminous canvas muddy.
+
+   Everything animates transform only, so the field stays on the
+   compositor and never triggers layout or paint.
    ═══════════════════════════════════════════════════════════════════ */
 .app-atmosphere {
   position: fixed;
@@ -13,23 +17,22 @@
   pointer-events: none;
   user-select: none;
   background:
-    radial-gradient(120% 80% at 50% -10%, rgba(255, 252, 244, 0.85) 0%, rgba(255, 250, 238, 0) 58%),
-    linear-gradient(180deg, #F8F3E9 0%, #F4EEE2 42%, #EFE7D8 100%);
+    radial-gradient(130% 70% at 50% -14%, rgba(255, 255, 253, 0.9) 0%, rgba(255, 253, 248, 0) 60%),
+    linear-gradient(180deg, #FCFAF5 0%, #FAF7F1 46%, #F6F2EA 100%);
 }
 
 [data-theme='dark'] .app-atmosphere {
   background:
-    radial-gradient(120% 80% at 50% -10%, rgba(74, 60, 38, 0.5) 0%, rgba(30, 24, 16, 0) 58%),
-    linear-gradient(180deg, #1B1610 0%, #16120D 46%, #120E09 100%);
+    radial-gradient(130% 70% at 50% -14%, rgba(72, 64, 54, 0.4) 0%, rgba(28, 25, 22, 0) 60%),
+    linear-gradient(180deg, #1A1816 0%, #131110 48%, #0E0C0B 100%);
 }
 
 /* One organic body.
-   The softness is carried entirely by an elliptical radial gradient that
-   reaches full transparency well inside the element box. There is
-   deliberately NO border-radius here: any shape on the element would
-   clip the gradient and expose a hard edge, which reads as a flat circle
-   rather than as light. Asymmetry comes from the gradient's own centre
-   offset and axis ratio, which costs nothing and cannot band. */
+   The softness is carried entirely by an elliptical radial gradient
+   that reaches full transparency well inside the element box. There is
+   deliberately no border-radius here: any shape on the element would
+   clip the gradient and expose a hard edge, which reads as a flat
+   circle rather than as light. */
 .app-atmosphere__wash {
   position: absolute;
   opacity: var(--sz-atmo-opacity);
@@ -39,105 +42,88 @@
   background: radial-gradient(
     ellipse var(--sz-atmo-extent) at var(--sz-atmo-cx) var(--sz-atmo-cy),
     var(--sz-atmo-color) 0%,
-    rgba(0, 0, 0, 0) 72%
+    rgba(0, 0, 0, 0) 70%
   );
 }
 
 /* Pearl — the brightest body, top-left, reads as window light. */
 .app-atmosphere__wash--pearl {
-  top: -34vh;
-  left: -22vw;
-  width: 92vw;
-  height: 96vh;
-  --sz-atmo-color: rgba(255, 254, 250, 0.98);
-  --sz-atmo-extent: 62% 58%;
+  top: -36vh;
+  left: -24vw;
+  width: 96vw;
+  height: 104vh;
+  --sz-atmo-color: rgba(255, 255, 253, 0.9);
+  --sz-atmo-extent: 64% 60%;
   --sz-atmo-cx: 46%;
-  --sz-atmo-cy: 44%;
+  --sz-atmo-cy: 42%;
   animation: sz-liquid-drift-a var(--sz-atmo-duration) ease-in-out infinite;
 }
 
-/* Champagne — the accent body, lower-right, warms the canvas. */
+/* Champagne — the accent body, right, warms the canvas. Kept faint:
+   this is ambient light, not a coloured gel. */
 .app-atmosphere__wash--champagne {
-  top: 12vh;
-  right: -30vw;
-  width: 86vw;
-  height: 96vh;
-  --sz-atmo-color: rgba(214, 184, 124, 0.3);
+  top: 18vh;
+  right: -32vw;
+  width: 90vw;
+  height: 100vh;
+  --sz-atmo-color: rgba(223, 202, 158, 0.17);
   --sz-atmo-extent: 58% 54%;
   --sz-atmo-cx: 52%;
-  --sz-atmo-cy: 52%;
-  animation: sz-liquid-drift-b calc(var(--sz-atmo-duration) * 1.25) ease-in-out infinite;
+  --sz-atmo-cy: 50%;
+  animation: sz-liquid-drift-b calc(var(--sz-atmo-duration) * 1.3) ease-in-out infinite;
 }
 
-/* Warm beige — the grounding body, mid-right, keeps the field from
-   reading as two separate lights. */
+/* Warm beige — grounds the lower half so the page does not fade out. */
 .app-atmosphere__wash--beige {
-  top: 30vh;
-  right: -26vw;
-  width: 74vw;
-  height: 84vh;
-  --sz-atmo-color: rgba(201, 181, 145, 0.24);
+  bottom: -34vh;
+  left: -20vw;
+  width: 88vw;
+  height: 82vh;
+  --sz-atmo-color: rgba(206, 188, 152, 0.13);
   --sz-atmo-extent: 56% 52%;
-  --sz-atmo-cx: 48%;
-  --sz-atmo-cy: 46%;
-  animation: sz-liquid-drift-c calc(var(--sz-atmo-duration) * 0.85) ease-in-out infinite;
-}
-
-/* Clay — a low, wide, very soft body near the fold. */
-.app-atmosphere__wash--clay {
-  bottom: -30vh;
-  left: -18vw;
-  width: 84vw;
-  height: 74vh;
-  --sz-atmo-color: rgba(190, 164, 122, 0.2);
-  --sz-atmo-extent: 54% 50%;
   --sz-atmo-cx: 50%;
   --sz-atmo-cy: 50%;
-  animation: sz-liquid-drift-b calc(var(--sz-atmo-duration) * 1.5) ease-in-out infinite reverse;
+  animation: sz-liquid-drift-c calc(var(--sz-atmo-duration) * 0.9) ease-in-out infinite;
 }
 
 [data-theme='dark'] .app-atmosphere__wash--pearl {
-  --sz-atmo-color: rgba(228, 206, 162, 0.13);
+  --sz-atmo-color: rgba(226, 210, 180, 0.09);
 }
 
 [data-theme='dark'] .app-atmosphere__wash--champagne {
-  --sz-atmo-color: rgba(200, 162, 96, 0.16);
+  --sz-atmo-color: rgba(198, 168, 116, 0.1);
 }
 
 [data-theme='dark'] .app-atmosphere__wash--beige {
-  --sz-atmo-color: rgba(146, 122, 86, 0.13);
+  --sz-atmo-color: rgba(150, 130, 100, 0.08);
 }
 
-[data-theme='dark'] .app-atmosphere__wash--clay {
-  --sz-atmo-color: rgba(118, 96, 64, 0.12);
-}
-
-/* A single very slow sheen across the whole field. It is the only
-   decorative element allowed to read as "movement" at a glance. */
+/* A single very slow sheen. It is the only element allowed to read as
+   movement at a glance. */
 .app-atmosphere__sheen {
   position: absolute;
   top: -10%;
   left: 0;
-  width: 45%;
+  width: 42%;
   height: 120%;
   pointer-events: none;
   background: linear-gradient(
     100deg,
     rgba(255, 255, 255, 0) 0%,
-    rgba(255, 253, 246, 0.5) 46%,
+    rgba(255, 255, 255, 0.34) 48%,
     rgba(255, 255, 255, 0) 100%
   );
   transform: translate3d(-30%, 0, 0);
-  animation: sz-liquid-sheen 34s ease-in-out infinite;
+  animation: sz-liquid-sheen 44s ease-in-out infinite;
   will-change: transform, opacity;
 }
 
 [data-theme='dark'] .app-atmosphere__sheen {
   background: linear-gradient(
     100deg,
-    rgba(255, 240, 210, 0) 0%,
-    rgba(255, 238, 202, 0.07) 46%,
-    rgba(255, 240, 210, 0) 100%
+    rgba(255, 244, 224, 0) 0%,
+    rgba(255, 244, 224, 0.05) 48%,
+    rgba(255, 244, 224, 0) 100%
   );
 }
 
@@ -148,14 +134,18 @@
   min-height: 100vh;
 }
 
-/* ── Floating glass header ──────────────────────────────────────
-   Transparent at rest so the hero's light field reads through it; the
-   pearl surface is only mounted once Layout marks it scrolled. */
+/* ── Floating glass navigation ───────────────────────────────────
+   The one surface that genuinely floats. Per Apple's guidance the
+   navigation is a distinct functional layer above the content — thin,
+   light and quiet, so it never competes with the page it sits on. It is
+   transparent at rest and only materialises once Layout marks it
+   scrolled, at which point content is passing underneath and legibility
+   actually requires it. */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 20;
-  padding: var(--space-3) var(--space-4) 0;
+  padding: var(--space-3) var(--space-5) 0;
   background: transparent;
   border-bottom: 1px solid transparent;
   -webkit-backdrop-filter: none;
@@ -163,43 +153,46 @@
   transition:
     padding var(--duration-smooth) var(--timing-smooth),
     background-color var(--duration-smooth) var(--timing-smooth),
-    border-color var(--duration-smooth) var(--timing-smooth),
-    box-shadow var(--duration-smooth) var(--timing-smooth);
+    border-color var(--duration-smooth) var(--timing-smooth);
 }
 
-/* The floating pill: an inset surface with its own margin so the page
-   reads as glass resting above the canvas rather than a full bar. */
 .site-header.is-scrolled {
-  padding: var(--space-3) var(--space-5) var(--space-2);
+  padding: var(--space-2) var(--space-5) var(--space-1);
   background: transparent;
 }
 
 .site-header .nav-bar {
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-pill);
+}
+
+/* Scroll edge: a soft gradient just under the bar so text passing
+   beneath fades out instead of colliding with the controls. */
+.site-header.is-scrolled::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -28px;
+  left: 0;
+  height: 28px;
+  background: linear-gradient(180deg, rgba(250, 247, 241, 0.6) 0%, rgba(250, 247, 241, 0) 100%);
+  pointer-events: none;
+}
+
+[data-theme='dark'] .site-header.is-scrolled::after {
+  background: linear-gradient(180deg, rgba(19, 17, 16, 0.6) 0%, rgba(19, 17, 16, 0) 100%);
 }
 
 .site-header.is-scrolled .nav-bar {
   background: var(--sz-glass-tint-3);
   border: 1px solid var(--sz-glass-border);
-  box-shadow: var(--sz-glass-shadow-2);
+  box-shadow: var(--sz-glass-shadow-1);
   -webkit-backdrop-filter: var(--sz-glass-blur-strong);
   backdrop-filter: var(--sz-glass-blur-strong);
 }
 
-/* Rim + specular on the floating nav, so the pill has real thickness. */
+/* A single edge light along the top of the pill. One line, not a
+   stack of gradients — that is what was making it feel pressed. */
 .site-header .nav-bar::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: var(--sz-glass-specular), var(--sz-glass-underlight);
-  border-radius: inherit;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity var(--duration-smooth) var(--timing-smooth);
-}
-
-.site-header .nav-bar::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -211,8 +204,7 @@
   transition: opacity var(--duration-smooth) var(--timing-smooth);
 }
 
-.site-header.is-scrolled .nav-bar::before,
-.site-header.is-scrolled .nav-bar::after {
+.site-header.is-scrolled .nav-bar::before {
   opacity: 1;
 }
 
@@ -221,13 +213,16 @@
   z-index: 1;
 }
 
+/* Generous, editorial vertical rhythm. The content column is narrow
+   enough to stay readable but the section gaps are what actually make
+   the page feel expensive — they let each block land on its own. */
 .app-content {
   position: relative;
   z-index: 1;
   width: min(100%, var(--grid-max));
   flex: 1;
   margin: 0 auto;
-  padding: var(--space-10) var(--space-6) var(--space-16);
+  padding: var(--space-16) var(--space-6) var(--space-24);
 }
 
 .app-footer {
@@ -236,28 +231,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 76px;
-  padding: var(--space-5) var(--space-6);
+  min-height: 88px;
+  padding: var(--space-6);
   color: var(--text-muted);
   font-size: var(--text-sm);
   text-align: center;
-  background: var(--sz-glass-tint-2);
-  border-top: 1px solid var(--sz-glass-border);
-  -webkit-backdrop-filter: var(--sz-glass-blur);
-  backdrop-filter: var(--sz-glass-blur);
+  border-top: 1px solid var(--sz-glass-edge-soft);
 }
 
-[data-theme='dark'] .site-header:not(.is-scrolled) .nav-bar {
-  background: transparent;
-}
-
-[data-theme='dark'] .app-footer {
-  background: var(--sz-glass-tint-3);
-  border-color: var(--sz-glass-border);
-}
-
-/* Watermark. Light mode only — on a warm cream ground the dark glyph
-   read as a smudge rather than as depth. */
 .watermark {
   position: fixed;
   inset: 0;
@@ -268,7 +249,7 @@
   font-size: clamp(4rem, 10vw, 10rem);
   font-weight: 400;
   color: var(--sz-ink);
-  opacity: 0.03;
+  opacity: 0.025;
   pointer-events: none;
   z-index: 0;
   user-select: none;
@@ -282,14 +263,21 @@
 
 @media (prefers-contrast: more) {
   .app-atmosphere,
-  .watermark {
+  .watermark,
+  .site-header.is-scrolled::after {
     display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .app-content {
+    padding: var(--space-12) var(--space-5) var(--space-20);
   }
 }
 
 @media (max-width: 640px) {
   .app-content {
-    padding: var(--space-8) var(--space-4) var(--space-12);
+    padding: var(--space-10) var(--space-4) var(--space-16);
   }
 
   .site-header,
@@ -299,11 +287,10 @@
 }
 
 /* Mobile keeps the material but drops the decoration, and stops the
-   drift entirely — a 4-body animated field is wasted motion on a
-   small, often-battery-constrained viewport. */
+   drift entirely — an animated field is wasted motion on a small,
+   often battery-constrained viewport. */
 @media (max-width: 768px) {
   .app-atmosphere__wash--beige,
-  .app-atmosphere__wash--clay,
   .app-atmosphere__sheen {
     display: none;
   }
@@ -322,8 +309,7 @@
 @media (prefers-reduced-motion: reduce) {
   .site-header,
   .app-footer,
-  .site-header .nav-bar::before,
-  .site-header .nav-bar::after {
+  .site-header .nav-bar::before {
     transition: none;
   }
 

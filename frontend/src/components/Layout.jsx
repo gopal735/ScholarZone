@@ -35,7 +35,6 @@ export default function Layout() {
         <span className="app-atmosphere__wash app-atmosphere__wash--pearl" />
         <span className="app-atmosphere__wash app-atmosphere__wash--champagne" />
         <span className="app-atmosphere__wash app-atmosphere__wash--beige" />
-        <span className="app-atmosphere__wash app-atmosphere__wash--clay" />
         <span className="app-atmosphere__sheen" />
       </div>
 

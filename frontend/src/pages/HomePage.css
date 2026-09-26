@@ -162,8 +162,11 @@
 /* ═══════════════════════════════════════════════════════════════
     TRUST BAR
     ═══════════════════════════════════════════════════════════════ */
+/* The trust bar was a tinted panel with a border. It is a single line
+   of figures, and a box around it added weight without adding meaning —
+   hairlines between the items do the separating instead. */
 .sz-trust-bar {
-  margin: 0 auto clamp(56px, 10vw, 96px);
+  margin: 0 auto clamp(64px, 11vw, 112px);
   max-width: var(--sz-grid-max);
   padding: 0 32px;
 }
@@ -173,11 +176,9 @@
   align-items: center;
   justify-content: center;
   gap: clamp(24px, 5vw, 56px);
-  padding: var(--space-6) clamp(24px, 4vw, 48px);
-  background: var(--sz-glass-tint-1);
-  border: 1px solid var(--sz-glass-border);
-  border-radius: var(--radius-panel);
-  box-shadow: var(--sz-depth-1);
+  padding: var(--space-7) 0;
+  border-top: 1px solid var(--sz-glass-edge-soft);
+  border-bottom: 1px solid var(--sz-glass-edge-soft);
 }
 
 .sz-trust-bar__item {
@@ -208,7 +209,7 @@
 .sz-trust-bar__divider {
   width: 1px;
   height: 36px;
-  background: var(--sz-glass-border);
+  background: var(--sz-glass-edge-soft);
 }
 
 @media (max-width: 640px) {
@@ -313,10 +314,15 @@
   padding-top: calc(var(--sz-section-gap) * 0.75);
 }
 
+/* The "why" cards were four more tinted panels with borders, stacked
+   after the trust bar and before the process steps. On a page this
+   long they blended into one continuous field of boxes. They now sit on
+   the open canvas, separated by space and a hairline, and only lift on
+   hover. */
 .sz-why-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: var(--space-6);
 }
 
 @media (max-width: 720px) {
@@ -326,20 +332,13 @@
 }
 
 .sz-why-card {
-  padding: 28px;
-  background: var(--sz-glass-tint-1);
-  border: 1px solid var(--sz-glass-border);
-  border-radius: var(--sz-radius-md);
-  transition:
-    transform var(--sz-duration-micro) var(--sz-timing-micro),
-    box-shadow var(--sz-duration-micro) var(--sz-timing-micro),
-    border-color var(--sz-duration-micro) var(--sz-timing-micro);
+  padding: var(--space-7) 0;
+  border-top: 1px solid var(--sz-glass-edge-soft);
+  transition: transform var(--sz-duration-micro) var(--sz-timing-micro);
 }
 
 .sz-why-card:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-card);
-  border-color: var(--sz-gold);
 }
 
 .sz-why-card__icon {
@@ -347,7 +346,7 @@
   place-items: center;
   width: 40px;
   height: 40px;
-  margin-bottom: 18px;
+  margin-bottom: var(--space-5);
   color: var(--sz-gold);
   background: var(--sz-gold-soft);
   border-radius: var(--sz-radius-sm);
@@ -410,32 +409,32 @@
 
 .sz-process__steps {
   display: grid;
-  gap: 16px;
+  gap: var(--space-4);
 }
 
+/* A numbered sequence reads better as a continuous rule than as four
+   stacked cards, so the steps share one hairline and the number does the
+   separating. */
 .sz-process__step {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 20px;
-  padding: 24px;
-  background: var(--sz-glass-tint-1);
-  border: 1px solid var(--sz-glass-border);
-  border-radius: var(--sz-radius-md);
-  transition:
-    transform var(--sz-duration-micro) var(--sz-timing-micro),
-    box-shadow var(--sz-duration-micro) var(--sz-timing-micro),
-    border-color var(--sz-duration-micro) var(--sz-timing-micro);
+  gap: var(--space-5);
+  padding: var(--space-5) 0;
+  border-top: 1px solid var(--sz-glass-edge-soft);
+  transition: transform var(--sz-duration-micro) var(--sz-timing-micro);
+}
+
+.sz-process__step:last-child {
+  border-bottom: 1px solid var(--sz-glass-edge-soft);
 }
 
 .sz-process__step:hover {
   transform: translateX(4px);
-  box-shadow: var(--shadow-card);
-  border-color: var(--sz-gold);
 }
 
 .sz-process__number {
   font-family: var(--sz-display);
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 400;
   color: var(--sz-gold);
   line-height: 1;
@@ -595,19 +594,15 @@
    DARK MODE ADJUSTMENTS
    ═══════════════════════════════════════════════════════════════ */
 /* The old hero's own dark overrides moved out with the hero itself.
-   The hero now lives entirely in ScholarZoneHero.css. */
+   The hero now lives entirely in ScholarZoneHero.css.
 
-[data-theme='dark'] .sz-trust-bar__inner {
-  background: var(--surface-raised);
-  border-color: var(--border);
-}
+   The why/process/trust surfaces are no longer panels, so they need no
+   dark overrides — the hairlines and text tokens already flip. The
+   overrides that used to re-tint them as cards are gone with the
+   panels. */
 
 [data-theme='dark'] .sz-trust-bar__item strong {
   color: var(--text-primary);
-}
-
-[data-theme='dark'] .sz-trust-bar__divider {
-  background: var(--border);
 }
 
 [data-theme='dark'] .sz-tag {
@@ -621,44 +616,16 @@
   border-color: var(--accent);
 }
 
-[data-theme='dark'] .sz-why-card {
-  background: var(--surface-raised);
-  border-color: var(--border);
-}
-
-[data-theme='dark'] .sz-why-card:hover {
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
-}
-
 [data-theme='dark'] .sz-why-card h3 {
   color: var(--text-primary);
-}
-
-[data-theme='dark'] .sz-process__step {
-  background: var(--surface-raised);
-  border-color: var(--border);
-}
-
-[data-theme='dark'] .sz-process__step:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 [data-theme='dark'] .sz-process__step h3 {
   color: var(--text-primary);
 }
 
-[data-theme='dark'] .sz-stats {
-  background: var(--surface-raised);
-  border: 1px solid var(--border);
-}
-
 [data-theme='dark'] .sz-stats__item strong {
-  color: var(--text-primary);
-}
-
-[data-theme='dark'] .sz-cta-banner {
-  background: var(--surface-raised);
-  border-color: var(--border);
+  color: #FBF6EC;
 }
 
 [data-theme='dark'] .sz-cta-banner h2 {
@@ -682,11 +649,12 @@
 
 @media (max-width: 480px) {
   .sz-why-card {
-    padding: 24px;
+    padding: var(--space-6) 0;
   }
 
   .sz-process__step {
-    padding: 20px;
+    padding: var(--space-4) 0;
+    gap: var(--space-4);
   }
 
   .sz-stats {

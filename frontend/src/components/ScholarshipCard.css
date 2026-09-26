@@ -1,100 +1,90 @@
 /* ═══════════════════════════════════════════════════════════════════
-   Scholarship Card — the visual signature of ScholarZone.
+   Scholarship Card
 
-   A pearl-glass slab sitting in the liquid light field. The card owns a
-   real 3D response: a CSS-variable tilt driven by pointer position
-   (set in ScholarshipCard.jsx) plus a specular highlight that tracks the
-   same point, so the surface appears to catch light as it turns.
+   The previous pass treated this as glass: a four-layer material stack
+   over a 900px perspective, on every card in a grid. That is the
+   literal "glass on glass everywhere" case, and it is why the directory
+   read as heavy.
 
-   The tilt is deliberately tiny (max ~3deg) and the content plane is
-   counter-raised, so text never distorts or shifts. Urgency is carried
-   by a champagne/sienna hairline, never by tinting the whole card.
+   A card is CONTENT, so it gets content treatment: one opaque luminous
+   surface, one hairline, one two-layer shadow (a tight contact shadow
+   where it meets the canvas plus a broad ambient one), and generous
+   internal padding. Depth on hover comes from a small lift and a
+   travelling highlight only — enough to feel tactile, never enough to
+   look like it is tipping toward the viewer.
+
+   Glass is reserved for the surfaces that float: the nav and the
+   primary actions.
    ═══════════════════════════════════════════════════════════════════ */
 
 .scholarship-card {
-  --lg-rx: 0deg;
-  --lg-ry: 0deg;
-  --lg-hx: 26%;
+  --lg-hx: 50%;
   --lg-hy: 0%;
   --lg-lift: 0px;
 
   position: relative;
-  isolation: isolate;
   display: flex;
   flex-direction: column;
-  gap: 0;
   min-height: 100%;
-  padding: 0;
   overflow: hidden;
-  background: var(--sz-glass-tint-2);
+  background: var(--sz-glass-solid-1);
   border: 1px solid var(--sz-glass-border);
   border-radius: var(--radius-card);
-  box-shadow: var(--sz-depth-2);
-  transform: perspective(900px) translate3d(0, var(--lg-lift), 0) rotateX(var(--lg-rx)) rotateY(var(--lg-ry));
-  transform-style: preserve-3d;
+  box-shadow: var(--sz-glass-shadow-1);
+  transform: translate3d(0, var(--lg-lift), 0);
   transition:
-    transform 420ms var(--timing-smooth),
+    transform 400ms var(--timing-smooth),
     border-color var(--duration-hover) var(--timing-smooth),
     box-shadow var(--duration-lift) var(--timing-smooth);
 }
 
-/* Inner bloom + warm bounce. Sits under content, above the tint. */
-.scholarship-card::before {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  content: '';
-  background: var(--sz-glass-specular), var(--sz-glass-underlight);
-  border-radius: inherit;
-  pointer-events: none;
-}
-
-/* The travelling highlight. It fades in on hover and is positioned from
-   the same pointer variables as the tilt, so the two read as one effect. */
+/* The travelling highlight is the only decoration. It tracks the same
+   pointer position as ScholarshipCard.jsx sets, so the light and the
+   lift read as one effect rather than two. */
 .scholarship-card::after {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 3;
   content: '';
   background: radial-gradient(
-    46% 38% at var(--lg-hx) var(--lg-hy),
-    rgba(255, 255, 255, 0.62) 0%,
-    rgba(255, 250, 236, 0.16) 46%,
-    rgba(255, 250, 236, 0) 74%
+    52% 40% at var(--lg-hx) var(--lg-hy),
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 253, 248, 0.14) 48%,
+    rgba(255, 253, 248, 0) 76%
   );
   opacity: 0;
   pointer-events: none;
-  transition: opacity 520ms var(--timing-smooth);
+  transition: opacity 480ms var(--timing-smooth);
 }
 
 [data-theme='dark'] .scholarship-card::after {
   background: radial-gradient(
-    46% 38% at var(--lg-hx) var(--lg-hy),
-    rgba(255, 236, 196, 0.2) 0%,
-    rgba(255, 230, 180, 0.06) 46%,
-    rgba(255, 230, 180, 0) 74%
+    52% 40% at var(--lg-hx) var(--lg-hy),
+    rgba(255, 240, 212, 0.11) 0%,
+    rgba(255, 234, 200, 0.03) 48%,
+    rgba(255, 234, 200, 0) 76%
   );
 }
 
-/* Urgency hairline. Sits above the highlight so it never washes out. */
+/* Urgency hairline, sitting above the highlight so it never washes out. */
 .scholarship-card__edge {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  z-index: 3;
+  z-index: 4;
   height: 2px;
   content: '';
-  background: linear-gradient(90deg, var(--sz-gold) 0%, var(--sz-gold-deep) 55%, transparent 100%);
-  opacity: 0.3;
+  background: linear-gradient(90deg, var(--sz-gold) 0%, rgba(142, 112, 49, 0.35) 55%, transparent 100%);
+  opacity: 0;
   transition: opacity var(--duration-hover) var(--timing-smooth);
 }
 
 .scholarship-card:hover,
 .scholarship-card:focus-within {
-  --lg-lift: -6px;
+  --lg-lift: -3px;
   border-color: var(--sz-glass-border-hover);
-  box-shadow: var(--sz-glass-shadow-3);
+  box-shadow: var(--sz-glass-shadow-2);
 }
 
 .scholarship-card:hover::after,
@@ -104,46 +94,43 @@
 
 .scholarship-card:hover .scholarship-card__edge,
 .scholarship-card:focus-within .scholarship-card__edge {
-  opacity: 0.9;
+  opacity: 0.85;
 }
 
 .scholarship-card--closing-soon .scholarship-card__edge {
-  background: linear-gradient(90deg, var(--warning) 0%, var(--warning-border) 60%, transparent 100%);
-  opacity: 0.55;
+  background: linear-gradient(90deg, var(--warning) 0%, rgba(158, 111, 24, 0.3) 55%, transparent 100%);
 }
 
 .scholarship-card--closed {
-  opacity: 0.8;
+  background: var(--surface-subtle);
 }
 
 .scholarship-card--closed .scholarship-card__edge {
-  background: linear-gradient(90deg, var(--danger) 0%, var(--danger-border) 60%, transparent 100%);
-  opacity: 0.5;
+  background: linear-gradient(90deg, var(--danger) 0%, rgba(154, 91, 77, 0.3) 55%, transparent 100%);
 }
 
-/* Content rides above the material layers and is counter-raised in Z so
-   the tilt never shears the text. */
+[data-theme='dark'] .scholarship-card {
+  background: var(--sz-glass-solid-1);
+  box-shadow: var(--sz-glass-shadow-1);
+}
+
+[data-theme='dark'] .scholarship-card--closed {
+  background: var(--surface-subtle);
+}
+
+/* Content sits above the highlight. No 3D plane — the card is a flat
+   sheet that lifts, not an object that pivots. */
 .scholarship-card > * {
   position: relative;
   z-index: 2;
-  transform: translateZ(24px);
-}
-
-/* The image is flush with the card, so it counter-raises less — lifting
-   it as far as the text would detach it visually from the card. */
-.scholarship-card > .scholarship-card__image {
-  transform: translateZ(12px);
-  margin-bottom: 0;
-  border-top: 0;
-  border-right: 0;
-  border-left: 0;
-  border-radius: 0;
 }
 
 /* ── Header ────────────────────────────────────────────────────── */
 .scholarship-card__header {
-  padding: var(--space-5) var(--space-5) 0;
-  margin-bottom: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6) var(--space-6) var(--space-5);
 }
 
 .scholarship-card__topline,
@@ -187,9 +174,8 @@
 
 .scholarship-card__status {
   color: var(--text-secondary);
-  background: var(--sz-glass-tint-3);
-  border: 1px solid var(--sz-glass-border);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset;
+  background: var(--surface-subtle);
+  border: 1px solid var(--sz-glass-edge-soft);
 }
 
 .scholarship-card__status--closing-soon {
@@ -208,9 +194,9 @@
   margin: 0;
   color: var(--text-primary);
   font-family: var(--font-display);
-  font-size: 1.375rem;
+  font-size: 1.25rem;
   font-weight: 400;
-  line-height: 1.22;
+  line-height: 1.28;
   letter-spacing: -0.01em;
   text-wrap: balance;
 }
@@ -265,7 +251,7 @@
   flex: 1;
   flex-direction: column;
   gap: 0;
-  padding: 0 var(--space-5);
+  padding: 0 var(--space-6);
   margin: 0;
 }
 
@@ -273,8 +259,8 @@
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: var(--space-3);
-  padding: var(--space-3) 0;
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
   border-bottom: 1px solid var(--sz-glass-edge-soft);
 }
 
@@ -302,15 +288,12 @@
    its own material — a small pearl well inside the card. */
 .scholarship-card__detail--deadline {
   align-items: center;
-  padding: var(--space-3);
-  margin-bottom: var(--space-3);
-  background: var(--sz-glass-tint-3);
-  border: 1px solid var(--sz-glass-border);
-  border-left: 3px solid var(--sz-gold);
-  border-radius: var(--radius-md);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.7) inset,
-    0 1px 3px rgba(74, 60, 38, 0.06);
+  padding: var(--space-4);
+  margin-bottom: var(--space-2);
+  background: var(--surface-subtle);
+  border: 1px solid var(--sz-glass-edge-soft);
+  border-left: 2px solid var(--sz-gold);
+  border-radius: var(--radius-sm);
 }
 
 .scholarship-card__detail--deadline dt {
@@ -343,7 +326,7 @@
 
 /* ── Action zone ───────────────────────────────────────────────── */
 .scholarship-card__footer {
-  padding: var(--space-4) var(--space-5) var(--space-5);
+  padding: var(--space-5) var(--space-6) var(--space-6);
   margin-top: auto;
 }
 
@@ -355,46 +338,41 @@
    rather than a solid pour. A directory renders this button once per
    card, so a solid gold fill would turn the accent into the dominant
    colour of the page. Gold stays reserved for one primary per view. */
+/* A quiet outline at rest, filled only on hover. A directory renders
+   this once per card, so a solid champagne fill at rest would put a
+   gold mass in every column; the interaction still resolves to a solid
+   control the moment intent is expressed. */
 .scholarship-card__button {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-2);
+  gap: 6px;
   width: 100%;
   min-height: 44px;
   padding: var(--space-3) var(--space-4);
-  overflow: hidden;
   color: var(--sz-ink);
   font-size: var(--text-sm);
-  font-weight: 700;
+  font-weight: 600;
   text-decoration: none;
-  background: var(--sz-glass-tint-2);
-  border: 1px solid var(--sz-glass-border);
-  border-radius: var(--radius-md);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.8) inset,
-    0 1px 3px rgba(74, 60, 38, 0.06);
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-pill);
   transition:
     color var(--duration-hover) var(--timing-smooth),
     background-color var(--duration-hover) var(--timing-smooth),
     border-color var(--duration-hover) var(--timing-smooth),
-    box-shadow var(--duration-lift) var(--timing-smooth),
-    transform var(--duration-lift) var(--timing-smooth);
+    transform var(--duration-hover) var(--timing-smooth);
 }
 
 .scholarship-card__button:hover {
   color: var(--sz-solid-ink);
   background: var(--sz-solid-bg);
   border-color: var(--sz-solid-border);
-  box-shadow: var(--sz-solid-shadow);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .scholarship-card__button:active {
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.6) inset,
-    0 1px 3px rgba(74, 60, 38, 0.08);
   transform: translateY(0);
 }
 
@@ -430,25 +408,31 @@
    instead. */
 @media (max-width: 1280px) {
   .scholarship-card h2 {
-    font-size: 1.25rem;
+    font-size: 1.1875rem;
   }
 }
 
 @media (max-width: 640px) {
   .scholarship-card h2 {
-    font-size: 1.1875rem;
+    font-size: 1.125rem;
   }
 
   .scholarship-card__header {
-    padding: var(--space-4) var(--space-4) 0;
+    gap: var(--space-2);
+    padding: var(--space-5) var(--space-5) var(--space-4);
   }
 
   .scholarship-card__details {
-    padding: 0 var(--space-4);
+    padding: 0 var(--space-5);
+  }
+
+  .scholarship-card__detail {
+    gap: var(--space-3);
+    padding: var(--space-3) 0;
   }
 
   .scholarship-card__footer {
-    padding: var(--space-4);
+    padding: var(--space-4) var(--space-5) var(--space-5);
   }
 }
 
@@ -469,7 +453,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .scholarship-card,
-  .scholarship-card::before,
   .scholarship-card::after,
   .scholarship-card__edge,
   .scholarship-card__button,
@@ -478,12 +461,8 @@
     animation: none;
   }
 
-  /* No 3D, no lift — but the highlight may stay, since it is a static
-     state change rather than motion. */
   .scholarship-card:hover,
   .scholarship-card:focus-within {
-    --lg-rx: 0deg;
-    --lg-ry: 0deg;
     --lg-lift: 0px;
   }
 
@@ -497,14 +476,10 @@
   }
 }
 
-/* Touch and coarse pointers get the material without the 3D response —
-   there is no hover state to drive it, and the tilt would only ever fire
-   as a stuck transform after a tap. */
+/* Touch and coarse pointers get no travelling highlight — there is no
+   hover state to drive it, and it would only ever fire as a stuck
+   gradient after a tap. */
 @media (hover: none), (pointer: coarse) {
-  .scholarship-card {
-    transform: none;
-  }
-
   .scholarship-card::after {
     display: none;
   }
@@ -513,10 +488,9 @@
 @media (prefers-contrast: more) {
   .scholarship-card {
     background: var(--sz-glass-solid-1);
-    border-color: var(--sz-glass-edge-soft);
+    border-color: var(--text-faint);
   }
 
-  .scholarship-card::before,
   .scholarship-card::after,
   .scholarship-card__edge {
     display: none;

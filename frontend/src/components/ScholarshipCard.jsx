@@ -5,13 +5,9 @@ import ScholarshipActions from './ScholarshipActions'
 import { getDeadlineLabel, getLastVerifiedLabel, getScholarshipStatus } from '../utils/scholarshipPresentation'
 import './ScholarshipCard.css'
 
-/* Max tilt in degrees. Deliberately small: the surface should appear to
-   turn slightly under the pointer, never to tip toward the viewer. */
-const MAX_TILT = 3
-
 /* Pointer input is ignored on touch and coarse pointers — there is no
-   hover state there, and a tilt would be left stuck after a tap. The
-   stylesheet also neutralises the transform for those input types; this
+   hover state there, and a highlight would be left stuck after a tap.
+   The stylesheet also neutralises the layer for those input types; this
    just avoids attaching listeners at all. Evaluated once at module load
    rather than per card per render. */
 const CAN_TILT =
@@ -23,10 +19,11 @@ export default function ScholarshipCard({ scholarship }) {
   const isVerified = scholarship.verified ?? true
   const cardRef = useRef(null)
 
-  /* Writes four custom properties straight to the node. No React state
+  /* Writes two custom properties straight to the node. No React state
      and no animation loop, so a pointer sweep across a grid only costs a
-     style recalc on the one card under the cursor. CSS owns the easing
-     and the transition back to rest. */
+     style recalc on the one card under the cursor. The card lifts on
+     its own in CSS; only the light position is driven from here, which
+     is what keeps the interaction from reading as a pivoting object. */
   const handlePointerMove = useCallback((event) => {
     const card = cardRef.current
     if (!card) return
@@ -37,8 +34,6 @@ export default function ScholarshipCard({ scholarship }) {
     const x = (event.clientX - rect.left) / rect.width
     const y = (event.clientY - rect.top) / rect.height
 
-    card.style.setProperty('--lg-ry', `${(x - 0.5) * 2 * MAX_TILT}deg`)
-    card.style.setProperty('--lg-rx', `${(0.5 - y) * 2 * MAX_TILT}deg`)
     card.style.setProperty('--lg-hx', `${x * 100}%`)
     card.style.setProperty('--lg-hy', `${y * 100}%`)
   }, [])
@@ -47,8 +42,8 @@ export default function ScholarshipCard({ scholarship }) {
     const card = cardRef.current
     if (!card) return
 
-    card.style.setProperty('--lg-ry', '0deg')
-    card.style.setProperty('--lg-rx', '0deg')
+    card.style.setProperty('--lg-hx', '50%')
+    card.style.setProperty('--lg-hy', '0%')
   }, [])
 
   return (

@@ -74,29 +74,56 @@
   transition-duration: 1400ms;
 }
 
-/* Fallbacks share one quiet treatment so a missing image reads as a
-   deliberate slot rather than a broken asset. These are modifier
-   classes on the root element, so the selectors use the two-hyphen
-   form the component actually renders. The ratio class supplies the
-   height, so none is declared here. */
+/* Fallbacks share one deliberate treatment so a missing image reads as
+   an intentional editorial slot rather than a hole. A soft diagonal
+   weave plus a centred mark: enough to look composed, not enough to
+   compete with a real photograph. These are modifier classes on the
+   root element, so the selectors use the two-hyphen form the component
+   actually renders. The ratio class supplies the height. */
 .scholarship-image--placeholder,
 .scholarship-image--broken {
   display: grid;
   place-items: center;
-  color: var(--sz-stone);
-  background:
-    radial-gradient(90% 70% at 30% 20%, rgba(255, 253, 246, 0.9) 0%, rgba(255, 250, 238, 0) 62%),
-    linear-gradient(150deg, var(--sz-paper-soft) 0%, var(--sz-mist-soft) 100%);
+  color: var(--sz-stone-light);
+  background-color: var(--surface-subtle);
+  background-image:
+    repeating-linear-gradient(
+      58deg,
+      rgba(122, 104, 74, 0.05) 0px,
+      rgba(122, 104, 74, 0.05) 1px,
+      transparent 1px,
+      transparent 11px
+    ),
+    radial-gradient(100% 80% at 26% 14%, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0) 66%);
 }
 
-/* On a dark ground the light-mode wash would read as a blown-out
-   highlight, so the slot inverts to a dim pearl well instead. */
 [data-theme='dark'] .scholarship-image--placeholder,
 [data-theme='dark'] .scholarship-image--broken {
-  color: var(--sz-stone-light);
-  background:
-    radial-gradient(90% 70% at 30% 20%, rgba(255, 240, 210, 0.09) 0%, rgba(255, 230, 180, 0) 62%),
-    linear-gradient(150deg, #2A2318 0%, #1B1610 100%);
+  color: var(--sz-stone);
+  background-color: var(--surface-subtle);
+  background-image:
+    repeating-linear-gradient(
+      58deg,
+      rgba(255, 244, 224, 0.04) 0px,
+      rgba(255, 244, 224, 0.04) 1px,
+      transparent 1px,
+      transparent 11px
+    ),
+    radial-gradient(100% 80% at 26% 14%, rgba(255, 240, 212, 0.05) 0%, rgba(255, 240, 212, 0) 66%);
+}
+
+/* The fallback mark is a hairline, not a solid glyph — it should sit
+   behind the content hierarchy rather than in front of it. */
+.scholarship-image--placeholder .scholarship-image__icon,
+.scholarship-image--broken .scholarship-image__icon {
+  width: 26px;
+  height: 26px;
+  opacity: 0.4;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.2;
 }
 
 .scholarship-image__icon {

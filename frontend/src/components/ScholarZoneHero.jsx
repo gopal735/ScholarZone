@@ -40,16 +40,33 @@ function LiveDataIndicator({ count, countries, fullyFunded, verified }) {
   )
 }
 
+/* The hero's single visual anchor. One scholarship, presented large and
+   slightly offset, so the first viewport has one thing to look at rather
+   than a wall of equal cards. The full grid sits directly below. */
+function HeroShowcase({ scholarship }) {
+  if (!scholarship) return null
+
+  return (
+    <div className="sz-hero__showcase">
+      <div className="sz-hero__showcase-card">
+        <ScholarshipCard scholarship={scholarship} />
+      </div>
+      <p className="sz-hero__showcase-note">
+        Every listing is checked against the awarding body&rsquo;s own page before it
+        appears here.
+      </p>
+    </div>
+  )
+}
+
 function HeroSkeleton() {
   return (
-    <div className="sz-hero__grid sz-hero__grid--loading" aria-hidden="true">
-      {[1, 2, 3, 4].map((item) => (
-        <div key={item} className="sz-hero-card-skeleton">
-          <span className="sz-hero-card-skeleton__media" />
-          <span className="sz-hero-card-skeleton__line" />
-          <span className="sz-hero-card-skeleton__line sz-hero-card-skeleton__line--short" />
-        </div>
-      ))}
+    <div className="sz-hero__showcase" aria-hidden="true">
+      <div className="sz-hero__showcase-card">
+        <span className="sz-hero-card-skeleton__media" />
+        <span className="sz-hero-card-skeleton__line" />
+        <span className="sz-hero-card-skeleton__line sz-hero-card-skeleton__line--short" />
+      </div>
     </div>
   )
 }
@@ -127,6 +144,8 @@ export default function ScholarZoneHero() {
             />
           )}
         </div>
+
+        {isLoading ? <HeroSkeleton /> : <HeroShowcase scholarship={previewScholarships[0]} />}
       </div>
 
       <section className="sz-hero__preview" aria-label="Recently added opportunities">
@@ -138,7 +157,15 @@ export default function ScholarZoneHero() {
         </div>
 
         {isLoading ? (
-          <HeroSkeleton />
+          <div className="sz-hero__grid" aria-hidden="true">
+            {[1, 2, 3, 4].map((item) => (
+              <div key={item} className="sz-hero-card-skeleton">
+                <span className="sz-hero-card-skeleton__media" />
+                <span className="sz-hero-card-skeleton__line" />
+                <span className="sz-hero-card-skeleton__line sz-hero-card-skeleton__line--short" />
+              </div>
+            ))}
+          </div>
         ) : (
           <div className="sz-hero__grid">
             {previewScholarships.map((scholarship) => (

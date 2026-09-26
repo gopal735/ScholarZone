@@ -38,23 +38,24 @@
   outline-offset: 4px;
 }
 
-/* L3 focal surface. The old treatment baked a blue radial spotlight and
-   a white-to-blue linear wash into the hero; depth now comes from the
-   shared atmosphere behind the page plus one restrained material. */
+/* The details hero is CONTENT, not a floating control layer, so it is
+   an opaque surface with a hairline rather than a blurred one. The old
+   treatment baked a blue radial spotlight and a white-to-blue wash
+   into it; depth now comes from the shared atmosphere behind the page.
+   Blurring a panel this large also put a full-width backdrop region
+   directly behind the page's main content. */
 .scholarship-details__hero {
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(230px, 0.32fr);
   gap: 32px;
   align-items: end;
-  padding: clamp(24px, 4vw, 40px);
+  padding: clamp(28px, 4vw, 48px);
   overflow: hidden;
-  background: var(--sz-glass-tint-3);
+  background: var(--sz-glass-solid-2);
   border: 1px solid var(--sz-glass-border);
   border-radius: var(--radius-panel);
-  box-shadow: var(--sz-glass-shadow-2);
-  -webkit-backdrop-filter: var(--sz-glass-blur-strong);
-  backdrop-filter: var(--sz-glass-blur-strong);
+  box-shadow: var(--sz-glass-shadow-1);
 }
 
 .scholarship-details__image {
