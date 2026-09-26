@@ -8,6 +8,7 @@ export function useScholarshipDirectory() {
   const [scholarships, setScholarships] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [isUsingFallback, setIsUsingFallback] = useState(false)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     const controller = new AbortController()
@@ -20,14 +21,16 @@ export function useScholarshipDirectory() {
 
         setScholarships(directory.items)
         setIsUsingFallback(false)
+        setError(null)
       })
-      .catch(() => {
+      .catch((error) => {
         if (controller.signal.aborted) {
           return
         }
 
         setScholarships(fallbackScholarships)
         setIsUsingFallback(true)
+        setError(error)
       })
       .finally(() => {
         if (!controller.signal.aborted) {
@@ -38,5 +41,5 @@ export function useScholarshipDirectory() {
     return () => controller.abort()
   }, [])
 
-  return { scholarships, isLoading, isUsingFallback }
+  return { scholarships, isLoading, isUsingFallback, error }
 }

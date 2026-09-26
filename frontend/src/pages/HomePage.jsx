@@ -94,7 +94,7 @@ function formatNumber(value) {
 }
 
 export default function HomePage() {
-  const { scholarships, isLoading } = useScholarshipDirectory()
+  const { scholarships, isLoading, isUsingFallback } = useScholarshipDirectory()
 
   const totalScholarships = scholarships.length
   const fullyFundedCount = scholarships.filter((s) => s.funding === 'Fully Funded').length
@@ -136,6 +136,12 @@ export default function HomePage() {
           </div>
         </div>
       </ScrollReveal>
+
+      {isUsingFallback && (
+        <div className="sz-home__fallback-notice" role="status">
+          <span>⚠️ Live directory unavailable — showing local data.</span>
+        </div>
+      )}
 
       {/* 03 — TRUST: the verification model, as a connected sequence */}
       <section className="sz-section sz-section--verify" aria-label="How ScholarZone verifies listings">

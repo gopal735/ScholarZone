@@ -1,9 +1,9 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useMemo, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { scholarships as localScholarships } from '../data/scholarships'
-import { fetchScholarships } from '../services/scholarshipService'
 import ScholarshipCard from './ScholarshipCard'
+import ScholarshipCardSkeleton from './ScholarshipCardSkeleton'
 import { getDeadlineLabel } from '../utils/scholarshipPresentation'
+import { useScholarshipDirectory } from '../hooks/useScholarshipDirectory'
 import './ScholarZoneHero.css'
 
 /* Pointer input is ignored on touch and coarse pointers: there is no
@@ -55,7 +55,11 @@ function LiveDataIndicator({ count, countries, fullyFunded, verified }) {
  * media plane, with two smaller information cards overlapping its lower
  * edge at different depths. The overlap is what produces the sense of
  * layered space — a single card on a canvas reads as a card, a card with
- * two satellites crossing its boundary reads as a scene. */
+ * two satellites crossing its boundary reads as a scene.
+ *
+ * The centrepiece is built from live directory data, so it can never
+ * drift out of sync with the product. Nothing in it is a mockup.
+ * ═════════════════════════════════════════════════════════════════════ */
 function HeroShowcase({ scholarship, ref, onPointerMove, onPointerLeave }) {
   return (
     <div className="sz-hero__showcase" ref={ref} onPointerMove={onPointerMove} onPointerLeave={onPointerLeave}>
@@ -68,80 +72,48 @@ function HeroShowcase({ scholarship, ref, onPointerMove, onPointerLeave }) {
             {scholarship ? (
               <ScholarshipCard scholarship={scholarship} />
             ) : (
-              <>
-                <span className="sz-hero-card-skeleton__media" />
-                <span className="sz-hero-card-skeleton__line" />
-                <span className="sz-hero-card-skeleton__line sz-hero-card-skeleton__line--short" />
-              </>
+              <ScholarshipCardSkeleton />
             )}
+            {scholarship ? (
+              <>
+                <aside className="sz-hero__chip sz-hero__chip--deadline" aria-label={`Application deadline: ${getDeadlineLabel(scholarship)}`}>
+                  <span className="sz-hero__chip-label">Deadline</span>
+                  <strong className="sz-hero__chip-value">{getDeadlineLabel(scholarship)}</strong>
+                  <span className="sz-hero__chip-note">
+                    {scholarship.deadline_precision === 'month' ? 'Month only' : 'Confirmed date'}
+                  </span>
+                </aside>
+
+                <aside className="sz-hero__chip sz-hero__chip--funding">
+                  <span className="sz-hero__chip-label">Funding</span>
+                  <strong className="sz-hero__chip-value">{scholarship.funding}</strong>
+                  <span className="sz-hero__chip-note">{scholarship.degree}</span>
+                </aside>
+              </>
+            ) : null}
           </div>
 
-          {/* Satellite cards. They cross the media boundary, so the
-              composition reads as layered rather than as one panel. */}
-          {scholarship ? (
-            <>
-              <aside className="sz-hero__chip sz-hero__chip--deadline" aria-label={`Application deadline: ${getDeadlineLabel(scholarship)}`}>
-                <span className="sz-hero__chip-label">Deadline</span>
-                <strong className="sz-hero__chip-value">{getDeadlineLabel(scholarship)}</strong>
-                <span className="sz-hero__chip-note">
-                  {scholarship.deadline_precision === 'month' ? 'Month only' : 'Confirmed date'}
-                </span>
-              </aside>
-
-              <aside className="sz-hero__chip sz-hero__chip--funding">
-                <span className="sz-hero__chip-label">Funding</span>
-                <strong className="sz-hero__chip-value">{scholarship.funding}</strong>
-                <span className="sz-hero__chip-note">{scholarship.degree}</span>
-              </aside>
-            </>
-          ) : null}
+          {/* Depth plane 2 — offset down-right, closest to the viewer. */}
+          <span className="sz-hero__plane sz-hero__plane--near" aria-hidden="true" />
         </div>
 
-        {/* Depth plane 2 — offset down-right, closest to the viewer. */}
-        <span className="sz-hero__plane sz-hero__plane--near" aria-hidden="true" />
+        <p className="sz-hero__showcase-note">
+          Every listing is checked against the awarding body&rsquo;s own page before it
+          appears here.
+        </p>
       </div>
-
-      <p className="sz-hero__showcase-note">
-        Every listing is checked against the awarding body&rsquo;s own page before it
-        appears here.
-      </p>
     </div>
   )
 }
 
 export default function ScholarZoneHero() {
-  const [scholarships, setScholarships] = useState([])
-  const [stats, setStats] = useState({ count: 0, countries: 0, fullyFunded: 0, verified: 0 })
-  const [isLoading, setIsLoading] = useState(true)
-  const showcaseRef = useRef(null)
+  const { scholarships, isLoading, isUsingFallback, error } = useScholarshipDirectory()
 
-  useEffect(() => {
-    const controller = new AbortController()
-
-    fetchScholarships({ page: 1, limit: 100 }, { signal: controller.signal })
-      .then((data) => {
-        if (controller.signal.aborted) return
-
-        const items = data.items
-        setScholarships(items.slice(0, MAX_PREVIEW))
-        setStats(summarise(items))
-        setIsLoading(false)
-      })
-      .catch(() => {
-        if (controller.signal.aborted) return
-
-        // The showcase already falls back to the bundled directory when
-        // the API is unavailable. The hero does the same so the figures
-        // and preview never render as an empty, zeroed block.
-        setScholarships(localScholarships.slice(0, MAX_PREVIEW))
-        setStats(summarise(localScholarships))
-        setIsLoading(false)
-      })
-
-    return () => controller.abort()
-  }, [])
+  const stats = useMemo(() => summarise(scholarships), [scholarships])
 
   const previewScholarships = useMemo(() => scholarships.slice(0, MAX_PREVIEW), [scholarships])
+
+  const showcaseRef = useRef(null)
 
   /* Writes two custom properties to one node. No state, no animation
      frame, no measurement beyond the rect the browser already has for
@@ -201,13 +173,36 @@ export default function ScholarZoneHero() {
             </Link>
           </div>
 
-          {!isLoading && (
-            <LiveDataIndicator
-              count={stats.count}
-              countries={stats.countries}
-              fullyFunded={stats.fullyFunded}
-              verified={stats.verified}
-            />
+          {isLoading ? (
+            <div className="sz-hero__loading" aria-label="Loading scholarship data">
+              <span className="sz-hero__loading-spinner" aria-hidden="true" />
+              <span>Loading scholarship data...</span>
+            </div>
+          ) : (
+            <>
+              {!isUsingFallback && (
+                <LiveDataIndicator
+                  count={stats.count}
+                  countries={stats.countries}
+                  fullyFunded={stats.fullyFunded}
+                  verified={stats.verified}
+                />
+              )}
+              {isUsingFallback && (
+                <p className="sz-hero__fallback-notice" role="status">
+                  ⚠️ Live directory unavailable — showing local data.
+                </p>
+              )}
+            </>
+          )}
+
+          {error && (
+            <div className="sz-hero__error" role="alert">
+              <span>⚠️ Failed to load scholarship data. </span>
+              <button type="button" onClick={() => window.location.reload()}>
+                Retry
+              </button>
+            </div>
           )}
         </div>
 
@@ -230,11 +225,7 @@ export default function ScholarZoneHero() {
         {isLoading ? (
           <div className="sz-hero__grid" aria-hidden="true">
             {[1, 2, 3, 4].map((item) => (
-              <div key={item} className="sz-hero-card-skeleton">
-                <span className="sz-hero-card-skeleton__media" />
-                <span className="sz-hero-card-skeleton__line" />
-                <span className="sz-hero-card-skeleton__line sz-hero-card-skeleton__line--short" />
-              </div>
+              <ScholarshipCardSkeleton key={item} />
             ))}
           </div>
         ) : (

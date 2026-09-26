@@ -1,10 +1,12 @@
 import { useSearchParams } from 'react-router-dom'
+import { useScholarshipDirectory } from '../hooks/useScholarshipDirectory'
 import ScholarshipList from '../components/ScholarshipList'
 import './ScholarshipsPage.css'
 
 export default function ScholarshipsPage() {
   const [searchParams] = useSearchParams()
   const countryParam = searchParams.get('country') || undefined
+  const { isUsingFallback } = useScholarshipDirectory()
 
   const headerTitle = countryParam || 'All Scholarships'
   const headerDescription = countryParam
@@ -32,6 +34,11 @@ export default function ScholarshipsPage() {
           </div>
         </div>
         <ScholarshipList initialCountry={countryParam} />
+        {isUsingFallback && (
+          <div className="scholarships-page__fallback-notice" role="status">
+            <span>⚠️ Live directory unavailable — showing local data.</span>
+          </div>
+        )}
       </div>
     </div>
   )
