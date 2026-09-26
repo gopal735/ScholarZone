@@ -110,7 +110,7 @@
 }
 
 .sz-cta--primary {
-  color: #ffffff;
+  color: var(--sz-paper);
   background: var(--sz-ink);
   border: 1px solid var(--sz-ink);
 }
@@ -125,7 +125,7 @@
 .sz-cta--secondary {
   color: var(--sz-ink);
   background: transparent;
-  border: 1px solid var(--sz-mist);
+  border: 1px solid var(--sz-glass-border);
 }
 
 .sz-cta--secondary:hover {
@@ -137,11 +137,11 @@
 .sz-cta--ghost {
   color: var(--sz-ink);
   background: transparent;
-  border: 1px solid var(--sz-mist);
+  border: 1px solid var(--sz-glass-border);
 }
 
 .sz-cta--ghost:hover {
-  background: #ffffff;
+  background: var(--sz-glass-tint-1);
   border-color: var(--sz-ink);
 }
 
@@ -206,7 +206,7 @@
 .sz-trust-bar__divider {
   width: 1px;
   height: 36px;
-  background: var(--sz-mist);
+  background: var(--sz-glass-border);
 }
 
 @media (max-width: 640px) {
@@ -279,8 +279,8 @@
   font-size: 0.875rem;
   font-weight: 500;
   text-decoration: none;
-  background: #ffffff;
-  border: 1px solid var(--sz-mist);
+  background: var(--sz-glass-tint-1);
+  border: 1px solid var(--sz-glass-border);
   border-radius: 999px;
   transition:
     background-color var(--sz-duration-micro) var(--sz-timing-micro),
@@ -325,8 +325,8 @@
 
 .sz-why-card {
   padding: 28px;
-  background: #ffffff;
-  border: 1px solid var(--sz-mist);
+  background: var(--sz-glass-tint-1);
+  border: 1px solid var(--sz-glass-border);
   border-radius: var(--sz-radius-md);
   transition:
     transform var(--sz-duration-micro) var(--sz-timing-micro),
@@ -416,8 +416,8 @@
   grid-template-columns: auto 1fr;
   gap: 20px;
   padding: 24px;
-  background: #ffffff;
-  border: 1px solid var(--sz-mist);
+  background: var(--sz-glass-tint-1);
+  border: 1px solid var(--sz-glass-border);
   border-radius: var(--sz-radius-md);
   transition:
     transform var(--sz-duration-micro) var(--sz-timing-micro),
@@ -519,25 +519,25 @@
   padding-bottom: calc(var(--sz-section-gap) * 0.5);
 }
 
+/* Deliberately not a card. The page already stacks L1 surfaces in the
+   browse, why and process sections; the closing statement stays open so
+   the vertical rhythm resolves rather than repeating. */
 .sz-cta-banner {
   text-align: center;
-  padding: clamp(56px, 10vw, 96px);
-  background: linear-gradient(135deg, var(--sz-paper-soft) 0%, #ffffff 100%);
-  border: 1px solid var(--sz-mist);
-  border-radius: var(--sz-radius-lg);
+  padding: clamp(48px, 8vw, 80px) var(--space-6);
   position: relative;
-  overflow: hidden;
 }
 
 .sz-cta-banner::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
+  left: 50%;
+  width: min(220px, 40%);
+  height: 1px;
   background: linear-gradient(90deg, transparent, var(--sz-gold), transparent);
-  opacity: 0.5;
+  opacity: 0.7;
+  transform: translateX(-50%);
 }
 
 .sz-cta-banner h2 {

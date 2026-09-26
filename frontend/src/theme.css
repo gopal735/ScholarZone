@@ -1325,73 +1325,10 @@ h2 {
   background: var(--accent-soft);
 }
 
-[data-theme='dark'] .auth-form-card {
-  background: linear-gradient(145deg, var(--surface-raised), var(--surface));
-  border-color: var(--border);
-  box-shadow: var(--shadow-elevated);
-}
-
-[data-theme='dark'] .auth-form-card__heading p,
-[data-theme='dark'] .auth-form-card__switch,
-[data-theme='dark'] .auth-form__label-row span {
-  color: var(--text-muted);
-}
-
-[data-theme='dark'] .auth-form label,
-[data-theme='dark'] .auth-form__label-row label {
-  color: var(--text-secondary);
-}
-
-[data-theme='dark'] .auth-form input {
-  color: var(--text-primary);
-  background: var(--surface-subtle);
-  border-color: var(--border-strong);
-  box-shadow: none;
-}
-
-[data-theme='dark'] .auth-form input:hover {
-  border-color: var(--accent-border);
-}
-
-[data-theme='dark'] .auth-form input:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 4px var(--focus-ring);
-}
-
-[data-theme='dark'] .auth-form input[aria-invalid='true'] {
-  border-color: var(--danger);
-}
-
-[data-theme='dark'] .auth-form__password-wrap button,
-[data-theme='dark'] .auth-form-card__switch a {
-  color: var(--accent);
-}
-
-[data-theme='dark'] .auth-form__password-wrap button:hover {
-  background: var(--accent-soft);
-}
-
-[data-theme='dark'] .auth-form__field-error,
-[data-theme='dark'] .auth-form__notice--error {
-  color: var(--danger);
-}
-
-[data-theme='dark'] .auth-form__notice--info {
-  color: var(--accent-hover);
-  background: var(--accent-soft);
-  border-color: var(--accent-border);
-}
-
-[data-theme='dark'] .auth-form__notice--error {
-  background: var(--danger-soft);
-  border-color: var(--danger-border);
-}
-
-[data-theme='dark'] .auth-form__notice--success {
-  color: var(--success);
-  background: var(--success-soft);
-  border-color: var(--success-border);
-}
+/* Auth dark-mode overrides moved into AuthForm.css, which now owns the
+   whole component. The old block here used a near-transparent
+   --surface gradient for the card, so the auth surface vanished in dark
+   mode, and it outranked the component's own rules at 0,2,0. */
 
 [data-theme='dark'] .compare-page__toolbar p {
   color: var(--text-muted);

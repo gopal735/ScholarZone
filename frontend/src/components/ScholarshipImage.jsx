@@ -4,6 +4,14 @@ import './ScholarshipImage.css'
 const IMAGE_ASPECT_RATIO_CLASS = 'scholarship-image__ratio'
 const RETRY_ATTEMPTS = 2
 
+/* The API returns an enum such as "official_scholarship". Rendering it
+   raw put OFFICIAL_SCHOLARSHIP in the pill. This only reformats the
+   existing value; the untouched value stays in the title attribute. */
+function formatSourceType(sourceType) {
+  if (typeof sourceType !== 'string' || !sourceType.trim()) return sourceType
+  return sourceType.trim().replace(/[_-]+/g, ' ')
+}
+
 function ImageContent({ imageUrl, altText, onError, onLoad }) {
   return (
     <img
@@ -82,7 +90,7 @@ export default function ScholarshipImage({ scholarship, className = '' }) {
       />
       {sourceType && (
         <span className="scholarship-image__source-indicator" title={`Source type: ${sourceType}`}>
-          {sourceType}
+          {formatSourceType(sourceType)}
         </span>
       )}
     </div>
