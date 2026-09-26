@@ -1,67 +1,73 @@
 :root {
   /* ═══════════════════════════════════════════════════════════════
-     ScholarZone — Warm Cream & Pearl Liquid Glass
-     Light is the primary direction: warm cream canvas, pearl glass,
-     champagne illumination. Dark preserves the same material language
-     with a deep warm ground and smoked pearl.
+     ScholarZone — Graphite & Steel
+
+     Dark is the primary direction: a near-black canvas, concentric
+     charcoal surfaces, a steel-blue accent and 1px frost hairlines.
+     Light is the cool porcelain counterpart — the same structure with
+     the tone inverted, and deliberately without a warm cast.
      ═══════════════════════════════════════════════════════════════ */
 
   /* ── Color: Surface ─────────────────────────────────────────────
-     Warm, but low-chroma on purpose. A heavily saturated beige reads
-     as "muddy" rather than "luxury" — the warmth has to come from the
-     light layers on top, not from the canvas pigment. */
-  --page-bg: #FAF7F1;
-  --page-glow: rgba(197, 165, 106, 0.08);
-  --surface: #FFFDF9;
+     Cool porcelain. Deliberately neutral: a warm cast here reads as
+     cream no matter how low the chroma, and the whole system is meant
+     to read as graphite and steel rather than as a warm luxury theme. */
+  --page-bg: #F6F7F9;
+  --page-glow: rgba(94, 147, 214, 0.06);
+  --surface: #FFFFFF;
   --surface-raised: #FFFFFF;
-  --surface-subtle: #F4EFE5;
-  --surface-accent: rgba(197, 165, 106, 0.08);
+  --surface-subtle: #EEF1F4;
+  --surface-accent: rgba(94, 147, 214, 0.07);
 
-  /* ── Color: Text (warm charcoal, never navy) ────────────────── */
-  --text-primary: #2A2521;
-  --text-secondary: #56504A;
-  --text-muted: #837C73;
-  --text-faint: #A79F95;
+  /* ── Color: Text (cool near-black, never warm) ──────────────── */
+  --text-primary: #0E141C;
+  --text-secondary: #47525F;
+  --text-muted: #6B7684;
+  --text-faint: #98A2AF;
 
   /* ── Color: Border ────────────────────────────────────────────
-     Hue-consistent and low-contrast. Structure should come from space,
-     not from lines; these only need to catch light at the edge. */
-  --border: #EAE3D7;
-  --border-strong: #DBD1BF;
+     Cool hairline. Structure comes from spacing first; these only
+     need to catch light at an edge. */
+  --border: rgba(15, 25, 40, 0.1);
+  --border-strong: rgba(15, 25, 40, 0.17);
 
-  /* ── Color: Accent (restrained champagne) ───────────────────── */
-  --accent: #AD8C46;
-  --accent-hover: #967535;
-  --accent-soft: rgba(173, 140, 70, 0.1);
-  --accent-border: rgba(173, 140, 70, 0.28);
+  /* ── Color: Accent (steel blue) ───────────────────────────────
+     One accent, used sparingly. Graphite's system keeps conversion
+     controls monochrome and reserves saturation for emphasis; a
+     saturated blue across every control would read as a SaaS theme
+     rather than as an instrument panel. */
+  --accent: #2563A8;
+  --accent-hover: #1D5290;
+  --accent-soft: rgba(37, 99, 168, 0.09);
+  --accent-border: rgba(37, 99, 168, 0.28);
 
   /* ── Color: Semantic ────────────────────────────────────────── */
-  --success: #4E7455;
-  --success-soft: rgba(78, 116, 85, 0.1);
-  --success-border: rgba(78, 116, 85, 0.28);
-  --warning: #9E6F18;
-  --warning-strong: #845C11;
-  --warning-soft: rgba(158, 111, 24, 0.1);
-  --warning-border: rgba(158, 111, 24, 0.28);
-  --danger: #9A5B4D;
-  --danger-soft: rgba(154, 91, 77, 0.1);
-  --danger-border: rgba(154, 91, 77, 0.28);
+  --success: #2F6E4A;
+  --success-soft: rgba(47, 110, 74, 0.1);
+  --success-border: rgba(47, 110, 74, 0.26);
+  --warning: #8A6216;
+  --warning-strong: #6F4E10;
+  --warning-soft: rgba(138, 98, 22, 0.1);
+  --warning-border: rgba(138, 98, 22, 0.26);
+  --danger: #9A3F3F;
+  --danger-soft: rgba(154, 63, 63, 0.09);
+  --danger-border: rgba(154, 63, 63, 0.26);
 
   /* ── Color: Focus ───────────────────────────────────────────── */
-  --focus-ring: rgba(173, 140, 70, 0.45);
+  --focus-ring: rgba(37, 99, 168, 0.45);
   --focus-ring-width: 2px;
   --focus-ring-offset: 2px;
 
   /* ── Color: Header ──────────────────────────────────────────── */
-  --header-bg: rgba(250, 247, 241, 0.7);
+  --header-bg: rgba(246, 247, 249, 0.72);
 
   /* ── Shadow ───────────────────────────────────────────────────
-     Two layers, as a real surface casts two: a tight contact shadow
-     where it meets the canvas, and a broad ambient one. Every value is
-     warm-tinted so nothing on the page reads as blue-grey. */
-  --shadow-card: 0 1px 2px rgba(88, 72, 48, 0.04), 0 6px 18px rgba(88, 72, 48, 0.05);
-  --shadow-elevated: 0 2px 4px rgba(88, 72, 48, 0.05), 0 14px 34px rgba(88, 72, 48, 0.07);
-  --shadow-hover: 0 4px 10px rgba(88, 72, 48, 0.06), 0 22px 48px rgba(88, 72, 48, 0.09);
+     Cool, two layers: a tight contact shadow plus a broad ambient
+     one. Depth in this system is primarily tonal, so these stay
+     deliberately shallow. */
+  --shadow-card: 0 1px 2px rgba(15, 25, 40, 0.04), 0 6px 18px rgba(15, 25, 40, 0.05);
+  --shadow-elevated: 0 2px 4px rgba(15, 25, 40, 0.05), 0 14px 34px rgba(15, 25, 40, 0.07);
+  --shadow-hover: 0 4px 10px rgba(15, 25, 40, 0.06), 0 22px 48px rgba(15, 25, 40, 0.09);
 
   /* ── Typography: Families ───────────────────────────────────── */
   --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
@@ -149,59 +155,59 @@
   --sz-grid-max: var(--grid-max);
 
   /* ── ScholarZone Editorial Tokens ───────────────────────────── */
-  --sz-ink: #2A2521;
-  --sz-ink-soft: #56504A;
-  --sz-paper: #FAF7F1;
-  --sz-paper-soft: #F4EFE5;
-  --sz-gold: #AD8C46;
-  --sz-gold-deep: #8E7031;
-  --sz-gold-soft: rgba(173, 140, 70, 0.1);
-  --sz-stone: #837C73;
-  --sz-stone-light: #A79F95;
-  --sz-mist: #EAE3D7;
-  --sz-mist-soft: rgba(234, 227, 215, 0.5);
+  --sz-ink: #0E141C;
+  --sz-ink-soft: #47525F;
+  --sz-paper: #F6F7F9;
+  --sz-paper-soft: #EEF1F4;
+  --sz-accent: #2563A8;
+  --sz-accent-deep: #1D5290;
+  --sz-accent-soft: rgba(37, 99, 168, 0.09);
+  --sz-stone: #6B7684;
+  --sz-stone-light: #98A2AF;
+  --sz-mist: rgba(15, 25, 40, 0.1);
+  --sz-mist-soft: rgba(15, 25, 40, 0.06);
+
+  /* Frost borders. A cool blue-tinted hairline is the one structural
+     device this system relies on, so it gets its own token. */
+  --sz-frost: rgba(196, 216, 240, 0.16);
+  --sz-frost-strong: rgba(196, 216, 240, 0.3);
 
   /* ── Selective Glass System ────────────────────────────────────
-     Glass is a FUNCTIONAL layer, not a content layer. Per Apple's
-     guidance it is reserved for the few surfaces that float above the
-     document and carry interaction: the navigation pill, primary
-     actions, and the auth panel. Content cards are opaque and live on
-     the open canvas — stacking glass on glass is what made the last
-     pass read as heavy.
+     Glass is optional here, not the identity. It is reserved for the
+     floating navigation, selected controls and temporary surfaces.
+     Content is opaque and gets its depth from tonal steps instead —
+     stacking translucent layers is what made the previous pass read
+     as heavy.
 
-     Level 1 content cards (opaque) · 2 floating panels · 3 nav · 4 toasts */
-  --sz-glass-tint-1: rgba(255, 253, 249, 0.86);
-  --sz-glass-tint-2: rgba(255, 253, 249, 0.78);
-  --sz-glass-tint-3: rgba(252, 249, 243, 0.7);
-  --sz-glass-tint-4: rgba(250, 247, 241, 0.82);
+     Level 1 content (opaque) · 2 floating panels · 3 nav · 4 toasts */
+  --sz-glass-tint-1: rgba(255, 255, 255, 0.88);
+  --sz-glass-tint-2: rgba(255, 255, 255, 0.78);
+  --sz-glass-tint-3: rgba(250, 251, 252, 0.7);
+  --sz-glass-tint-4: rgba(246, 247, 249, 0.8);
 
-  --sz-glass-tint-1-hover: rgba(255, 255, 255, 0.94);
+  --sz-glass-tint-1-hover: rgba(255, 255, 255, 0.95);
   --sz-glass-tint-2-hover: rgba(255, 255, 255, 0.86);
-  --sz-glass-tint-3-hover: rgba(255, 254, 250, 0.8);
-  --sz-glass-tint-4-hover: rgba(252, 249, 243, 0.9);
+  --sz-glass-tint-3-hover: rgba(255, 255, 255, 0.82);
+  --sz-glass-tint-4-hover: rgba(252, 253, 254, 0.9);
 
-  --sz-glass-solid-1: #FFFDF9;
-  --sz-glass-solid-2: #FFFDF9;
-  --sz-glass-solid-3: #FDFAF4;
-  --sz-glass-solid-4: #FAF7F1;
+  --sz-glass-solid-1: #FFFFFF;
+  --sz-glass-solid-2: #FFFFFF;
+  --sz-glass-solid-3: #FAFBFC;
+  --sz-glass-solid-4: #F6F7F9;
 
-  --sz-glass-border: rgba(122, 104, 74, 0.11);
-  --sz-glass-border-hover: rgba(173, 140, 70, 0.34);
-  --sz-glass-edge: rgba(255, 255, 255, 0.8);
-  --sz-glass-edge-soft: rgba(122, 104, 74, 0.07);
+  --sz-glass-border: rgba(15, 25, 40, 0.1);
+  --sz-glass-border-hover: rgba(37, 99, 168, 0.32);
+  --sz-glass-edge: rgba(255, 255, 255, 0.9);
+  --sz-glass-edge-soft: rgba(15, 25, 40, 0.07);
 
-  /* Only the floating layer actually blurs. Everything below it is a
-     tint over a known backdrop, so the blur budget stays flat no
-     matter how many cards are on screen. */
-  --sz-glass-blur: blur(24px) saturate(140%);
-  --sz-glass-blur-strong: blur(32px) saturate(150%);
+  --sz-glass-blur: blur(24px) saturate(120%);
+  --sz-glass-blur-strong: blur(32px) saturate(130%);
 
-  /* A single, restrained edge light. Real glass catches one bright
-     line where the surface turns away from the light — not a stack of
-     gradients. */
+  /* A single edge light. Real glass catches one bright line where the
+     surface turns away from the light — not a stack of gradients. */
   --sz-glass-specular: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.72) 0%,
+    rgba(255, 255, 255, 0.75) 0%,
     rgba(255, 255, 255, 0.12) 26%,
     rgba(255, 255, 255, 0) 52%
   );
@@ -211,29 +217,29 @@
     rgba(255, 255, 255, 0.08) 22%,
     rgba(255, 255, 255, 0) 44%
   );
-  /* Warm bounce along the bottom edge. Kept faint — at full strength
-     it yellows the surface and the palette starts to look muddy. */
+  /* Cool bounce along the bottom edge, in the accent family rather
+     than a warm one. */
   --sz-glass-underlight: radial-gradient(
     100% 56% at 50% 110%,
-    rgba(206, 178, 124, 0.12) 0%,
-    rgba(206, 178, 124, 0) 66%
+    rgba(94, 147, 214, 0.1) 0%,
+    rgba(94, 147, 214, 0) 66%
   );
 
-  --sz-glass-shadow-1: 0 1px 2px rgba(88, 72, 48, 0.04), 0 6px 18px rgba(88, 72, 48, 0.05);
-  --sz-glass-shadow-2: 0 2px 4px rgba(88, 72, 48, 0.05), 0 14px 34px rgba(88, 72, 48, 0.07);
-  --sz-glass-shadow-3: 0 4px 8px rgba(88, 72, 48, 0.06), 0 24px 52px rgba(88, 72, 48, 0.09);
-  --sz-glass-shadow-4: 0 8px 16px rgba(88, 72, 48, 0.08), 0 32px 70px rgba(88, 72, 48, 0.12);
+  --sz-glass-shadow-1: 0 1px 2px rgba(15, 25, 40, 0.04), 0 6px 18px rgba(15, 25, 40, 0.05);
+  --sz-glass-shadow-2: 0 2px 4px rgba(15, 25, 40, 0.05), 0 14px 34px rgba(15, 25, 40, 0.07);
+  --sz-glass-shadow-3: 0 4px 8px rgba(15, 25, 40, 0.06), 0 24px 52px rgba(15, 25, 40, 0.09);
+  --sz-glass-shadow-4: 0 8px 16px rgba(15, 25, 40, 0.08), 0 32px 70px rgba(15, 25, 40, 0.12);
 
   /* ── Premium Depth System ────────────────────────────────────
      Depth 1 is a hairline, not a shadow. Most content should sit at
      this level; elevation is what the floating layer earns. */
-  --sz-depth-1: 0 0 0 1px rgba(122, 104, 74, 0.07);
-  --sz-depth-2: 0 1px 2px rgba(88, 72, 48, 0.04), 0 6px 18px rgba(88, 72, 48, 0.05);
-  --sz-depth-3: 0 2px 4px rgba(88, 72, 48, 0.05), 0 14px 34px rgba(88, 72, 48, 0.07);
+  --sz-depth-1: 0 0 0 1px rgba(15, 25, 40, 0.07);
+  --sz-depth-2: 0 1px 2px rgba(15, 25, 40, 0.04), 0 6px 18px rgba(15, 25, 40, 0.05);
+  --sz-depth-3: 0 2px 4px rgba(15, 25, 40, 0.05), 0 14px 34px rgba(15, 25, 40, 0.07);
 
   --sz-orb-opacity: 0.55;
   --sz-skeleton-base: rgba(120, 100, 68, 0.08);
-  --sz-skeleton-sheen: rgba(255, 253, 246, 0.75);
+  --sz-skeleton-sheen: rgba(255, 255, 255, 0.75);
   --sz-skeleton-radius: var(--radius-sm);
 
   /* Global atmosphere master knob. Per-field tint is set in App.css. */
@@ -247,162 +253,169 @@
      so the fill sits slightly darker than the card behind it rather than
      lighter — a lighter field reads as raised. The border plus inset
      shadow carry the rest of the recess. */
-  --sz-input-border: rgba(122, 104, 74, 0.18);
-  --sz-input-bg: rgba(122, 104, 74, 0.04);
-  --sz-input-bg-hover: rgba(122, 104, 74, 0.07);
-  --sz-input-inset: inset 0 1px 2px rgba(88, 72, 48, 0.05);
+  --sz-input-border: rgba(15, 25, 40, 0.18);
+  --sz-input-bg: rgba(15, 25, 40, 0.04);
+  --sz-input-bg-hover: rgba(15, 25, 40, 0.07);
+  --sz-input-inset: inset 0 1px 2px rgba(15, 25, 40, 0.05);
 
   /* On-tint text — AA (4.5:1) on the matching *-soft fills above */
-  --sz-success-text: #3A5C41;
-  --sz-accent-text: #6B5420;
-  --sz-warning-text: #68480B;
+  --sz-success-text: #245237;
+  --sz-accent-text: #1D5290;
+  --sz-warning-text: #5C400C;
 
-  /* ── Champagne solid ───────────────────────────────────────────
-     The single "primary" material: a poured-gold lozenge used by every
-     primary call to action. Defined once here so the hero, cards, auth,
-     saved, compare and empty states all pour the same object instead of
-     each approximating it. */
-  --sz-solid-bg: linear-gradient(146deg, #F2E5C2 0%, #D8B771 48%, #C09C51 100%);
-  --sz-solid-bg-hover: linear-gradient(146deg, #F8EED6 0%, #E2C489 48%, #CBA963 100%);
-  --sz-solid-ink: #3E3010;
-  --sz-solid-ink-hover: #3A2C0C;
-  --sz-solid-border: rgba(255, 255, 255, 0.44);
-  --sz-solid-border-hover: rgba(255, 255, 255, 0.62);
+  /* ── Solid control ─────────────────────────────────────────────
+     Graphite inverts its primary to a light fill with dark text, which
+     makes the conversion control the brightest object on the hero.
+     That is the pattern used here: the primary is a near-white plane,
+     not a coloured one, so the accent stays available for emphasis
+     rather than for every button. */
+  --sz-solid-bg: #F0F3F7;
+  --sz-solid-bg-hover: #FFFFFF;
+  --sz-solid-ink: #0B1119;
+  --sz-solid-ink-hover: #000000;
+  --sz-solid-border: rgba(15, 25, 40, 0.16);
+  --sz-solid-border-hover: rgba(15, 25, 40, 0.3);
   --sz-solid-shadow:
     0 1px 0 rgba(255, 255, 255, 0.7) inset,
-    0 4px 14px rgba(146, 116, 58, 0.28);
+    0 2px 6px rgba(15, 25, 40, 0.1);
   --sz-solid-shadow-hover:
-    0 1px 0 rgba(255, 255, 255, 0.82) inset,
-    0 10px 28px rgba(146, 116, 58, 0.34);
+    0 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 10px 26px rgba(15, 25, 40, 0.14);
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-   Dark Mode — warm ground, smoked pearl glass, champagne illumination.
+   Dark Mode — cinematic graphite. Depth is tonal: stepped charcoal
+   surfaces plus a frost hairline, not stacked shadows.
    The material is identical to light; only the pigment changes.
    ═══════════════════════════════════════════════════════════════════ */
 :root[data-theme='dark'] {
-  --page-bg: #131110;
-  --page-glow: rgba(197, 165, 106, 0.1);
-  --surface: #1B1917;
-  --surface-raised: #211E1B;
-  --surface-subtle: #262320;
-  --surface-accent: rgba(197, 165, 106, 0.08);
-  --text-primary: #F4F0E8;
-  --text-secondary: #CFC8BC;
-  --text-muted: #9C948A;
-  --text-faint: #746D64;
-  --border: #302C28;
-  --border-strong: #423D37;
-  --accent: #C9A85F;
-  --accent-hover: #D8BA79;
-  --accent-soft: rgba(201, 168, 95, 0.12);
-  --accent-border: rgba(201, 168, 95, 0.3);
-  --success: #74B98A;
-  --success-soft: rgba(116, 185, 138, 0.12);
-  --success-border: rgba(116, 185, 138, 0.28);
-  --warning: #DCAE5E;
-  --warning-strong: #E7BF77;
-  --warning-soft: rgba(220, 174, 94, 0.12);
-  --warning-border: rgba(220, 174, 94, 0.28);
-  --danger: #DB9686;
-  --danger-soft: rgba(219, 150, 134, 0.12);
-  --danger-border: rgba(219, 150, 134, 0.28);
-  --focus-ring: rgba(201, 168, 95, 0.48);
-  --header-bg: rgba(19, 17, 16, 0.7);
-  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.24), 0 6px 18px rgba(0, 0, 0, 0.22);
-  --shadow-elevated: 0 2px 4px rgba(0, 0, 0, 0.26), 0 14px 34px rgba(0, 0, 0, 0.3);
-  --shadow-hover: 0 4px 10px rgba(0, 0, 0, 0.28), 0 22px 48px rgba(0, 0, 0, 0.34);
+  --page-bg: #08090B;
+  --page-glow: rgba(94, 147, 214, 0.1);
+  --surface: #0D0F12;
+  --surface-raised: #131619;
+  --surface-subtle: #191D22;
+  --surface-accent: rgba(94, 147, 214, 0.08);
+  --text-primary: #F0F3F7;
+  --text-secondary: #AFB8C2;
+  --text-muted: #7C8794;
+  --text-faint: #5A636E;
+  --border: rgba(196, 216, 240, 0.11);
+  --border-strong: rgba(196, 216, 240, 0.19);
+  --accent: #5E93D6;
+  --accent-hover: #7BA8E4;
+  --accent-soft: rgba(94, 147, 214, 0.14);
+  --accent-border: rgba(94, 147, 214, 0.34);
+  --success: #62B37F;
+  --success-soft: rgba(98, 179, 127, 0.13);
+  --success-border: rgba(98, 179, 127, 0.3);
+  --warning: #D9A441;
+  --warning-strong: #E8BC69;
+  --warning-soft: rgba(217, 164, 65, 0.13);
+  --warning-border: rgba(217, 164, 65, 0.3);
+  --danger: #DE7A7A;
+  --danger-soft: rgba(222, 122, 122, 0.13);
+  --danger-border: rgba(222, 122, 122, 0.3);
+  --focus-ring: rgba(94, 147, 214, 0.5);
+  --header-bg: rgba(8, 9, 11, 0.72);
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.28), 0 6px 18px rgba(0, 0, 0, 0.24);
+  --shadow-elevated: 0 2px 4px rgba(0, 0, 0, 0.3), 0 14px 34px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 4px 10px rgba(0, 0, 0, 0.32), 0 22px 48px rgba(0, 0, 0, 0.34);
 
-  --sz-ink: #F4F0E8;
-  --sz-ink-soft: #CFC8BC;
-  --sz-paper: #131110;
-  --sz-paper-soft: #211E1B;
-  --sz-gold: #C9A85F;
-  --sz-gold-deep: #D8BA79;
-  --sz-gold-soft: rgba(201, 168, 95, 0.12);
-  --sz-stone: #9C948A;
-  --sz-stone-light: #746D64;
-  --sz-mist: #302C28;
-  --sz-mist-soft: rgba(48, 44, 40, 0.55);
+  --sz-ink: #F0F3F7;
+  --sz-ink-soft: #AFB8C2;
+  --sz-paper: #08090B;
+  --sz-paper-soft: #131619;
+  --sz-accent: #5E93D6;
+  --sz-accent-deep: #7BA8E4;
+  --sz-accent-soft: rgba(94, 147, 214, 0.14);
+  --sz-stone: #7C8794;
+  --sz-stone-light: #5A636E;
+  --sz-mist: rgba(196, 216, 240, 0.11);
+  --sz-mist-soft: rgba(196, 216, 240, 0.06);
 
-  /* Smoked pearl, and the same restraint: one edge light, not a stack. */
-  --sz-glass-tint-1: rgba(43, 40, 36, 0.72);
-  --sz-glass-tint-2: rgba(48, 45, 41, 0.66);
-  --sz-glass-tint-3: rgba(34, 32, 29, 0.76);
-  --sz-glass-tint-4: rgba(19, 17, 16, 0.8);
+  --sz-frost: rgba(196, 216, 240, 0.19);
+  --sz-frost-strong: rgba(196, 216, 240, 0.34);
 
-  --sz-glass-tint-1-hover: rgba(56, 52, 47, 0.8);
-  --sz-glass-tint-2-hover: rgba(60, 56, 50, 0.74);
-  --sz-glass-tint-3-hover: rgba(44, 41, 37, 0.84);
-  --sz-glass-tint-4-hover: rgba(28, 26, 23, 0.88);
+  /* Concentric charcoal. Depth here is tonal, the way Graphite and
+     Atlantic build it — stepped surfaces plus a 1px frost hairline,
+     not stacked shadows. */
+  --sz-glass-tint-1: rgba(19, 22, 25, 0.86);
+  --sz-glass-tint-2: rgba(25, 29, 34, 0.78);
+  --sz-glass-tint-3: rgba(11, 13, 16, 0.82);
+  --sz-glass-tint-4: rgba(8, 9, 11, 0.86);
 
-  --sz-glass-solid-1: #211E1B;
-  --sz-glass-solid-2: #262320;
-  --sz-glass-solid-3: #1B1917;
-  --sz-glass-solid-4: #131110;
+  --sz-glass-tint-1-hover: rgba(30, 35, 41, 0.92);
+  --sz-glass-tint-2-hover: rgba(34, 39, 45, 0.86);
+  --sz-glass-tint-3-hover: rgba(16, 19, 23, 0.9);
+  --sz-glass-tint-4-hover: rgba(14, 17, 21, 0.92);
 
-  --sz-glass-border: rgba(226, 210, 178, 0.12);
-  --sz-glass-border-hover: rgba(201, 168, 95, 0.38);
-  --sz-glass-edge: rgba(255, 245, 224, 0.12);
+  --sz-glass-solid-1: #0D0F12;
+  --sz-glass-solid-2: #131619;
+  --sz-glass-solid-3: #08090B;
+  --sz-glass-solid-4: #08090B;
+
+  --sz-glass-border: var(--sz-frost);
+  --sz-glass-border-hover: rgba(94, 147, 214, 0.42);
+  --sz-glass-edge: rgba(196, 216, 240, 0.1);
   --sz-glass-edge-soft: rgba(0, 0, 0, 0.3);
 
   --sz-glass-specular: linear-gradient(
     180deg,
-    rgba(255, 240, 212, 0.14) 0%,
-    rgba(255, 236, 200, 0.04) 26%,
-    rgba(255, 230, 190, 0) 52%
+    rgba(196, 216, 240, 0.12) 0%,
+    rgba(196, 216, 240, 0.03) 26%,
+    rgba(196, 216, 240, 0) 52%
   );
   --sz-glass-rim: linear-gradient(
     180deg,
-    rgba(255, 240, 212, 0.16) 0%,
-    rgba(255, 236, 200, 0.04) 22%,
-    rgba(255, 230, 190, 0) 44%
+    rgba(196, 216, 240, 0.16) 0%,
+    rgba(196, 216, 240, 0.04) 22%,
+    rgba(196, 216, 240, 0) 44%
   );
   --sz-glass-underlight: radial-gradient(
     100% 56% at 50% 110%,
-    rgba(201, 165, 100, 0.1) 0%,
-    rgba(201, 165, 100, 0) 66%
+    rgba(94, 147, 214, 0.12) 0%,
+    rgba(94, 147, 214, 0) 66%
   );
 
-  --sz-glass-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.26), 0 6px 18px rgba(0, 0, 0, 0.24);
-  --sz-glass-shadow-2: 0 2px 4px rgba(0, 0, 0, 0.28), 0 14px 34px rgba(0, 0, 0, 0.32);
-  --sz-glass-shadow-3: 0 4px 8px rgba(0, 0, 0, 0.3), 0 24px 52px rgba(0, 0, 0, 0.38);
-  --sz-glass-shadow-4: 0 8px 16px rgba(0, 0, 0, 0.32), 0 32px 70px rgba(0, 0, 0, 0.44);
+  --sz-glass-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 18px rgba(0, 0, 0, 0.26);
+  --sz-glass-shadow-2: 0 2px 4px rgba(0, 0, 0, 0.32), 0 14px 34px rgba(0, 0, 0, 0.34);
+  --sz-glass-shadow-3: 0 4px 8px rgba(0, 0, 0, 0.34), 0 24px 52px rgba(0, 0, 0, 0.4);
+  --sz-glass-shadow-4: 0 8px 16px rgba(0, 0, 0, 0.36), 0 32px 70px rgba(0, 0, 0, 0.46);
 
-  --sz-depth-1: 0 0 0 1px rgba(226, 210, 178, 0.08);
-  --sz-depth-2: 0 1px 2px rgba(0, 0, 0, 0.24), 0 6px 18px rgba(0, 0, 0, 0.22);
-  --sz-depth-3: 0 2px 4px rgba(0, 0, 0, 0.26), 0 14px 34px rgba(0, 0, 0, 0.3);
+  --sz-depth-1: 0 0 0 1px rgba(196, 216, 240, 0.09);
+  --sz-depth-2: 0 1px 2px rgba(0, 0, 0, 0.28), 0 6px 18px rgba(0, 0, 0, 0.24);
+  --sz-depth-3: 0 2px 4px rgba(0, 0, 0, 0.3), 0 14px 34px rgba(0, 0, 0, 0.3);
 
   --sz-orb-opacity: 0.42;
-  --sz-skeleton-base: rgba(226, 210, 178, 0.09);
-  --sz-skeleton-sheen: rgba(255, 245, 224, 0.12);
+  --sz-skeleton-base: rgba(196, 216, 240, 0.08);
+  --sz-skeleton-sheen: rgba(196, 216, 240, 0.1);
   --sz-atmo-opacity: 1;
-  --sz-atmo-drift: 2;
-  --sz-atmo-duration: 84s;
+  --sz-atmo-drift: 2.2;
+  --sz-atmo-duration: 88s;
 
-  --sz-input-border: rgba(226, 210, 178, 0.24);
-  --sz-input-bg: rgba(0, 0, 0, 0.22);
-  --sz-input-bg-hover: rgba(0, 0, 0, 0.28);
+  --sz-input-border: rgba(196, 216, 240, 0.2);
+  --sz-input-bg: rgba(0, 0, 0, 0.24);
+  --sz-input-bg-hover: rgba(0, 0, 0, 0.3);
   --sz-input-inset: inset 0 1px 2px rgba(0, 0, 0, 0.34);
 
-  --sz-success-text: #8FCFA3;
-  --sz-accent-text: #D8BA79;
-  --sz-warning-text: #EDC88A;
+  --sz-success-text: #7FCB9A;
+  --sz-accent-text: #8FB8E8;
+  --sz-warning-text: #EBC578;
 
-  /* Dark keeps the same poured-champagne material, with a deeper base so
-     it separates from a dark ground rather than glowing against it. */
-  --sz-solid-bg: linear-gradient(146deg, #F0E1B8 0%, #CDA863 48%, #B08F45 100%);
-  --sz-solid-bg-hover: linear-gradient(146deg, #F7EBD0 0%, #D8B771 48%, #C09C51 100%);
-  --sz-solid-ink: #241C0C;
-  --sz-solid-ink-hover: #1C1508;
-  --sz-solid-border: rgba(255, 255, 255, 0.3);
-  --sz-solid-border-hover: rgba(255, 255, 255, 0.45);
+  /* On a dark canvas the inversion still applies: the primary control
+     is the brightest plane on the page. */
+  --sz-solid-bg: #EDF1F6;
+  --sz-solid-bg-hover: #FFFFFF;
+  --sz-solid-ink: #0B1119;
+  --sz-solid-ink-hover: #000000;
+  --sz-solid-border: rgba(196, 216, 240, 0.24);
+  --sz-solid-border-hover: rgba(255, 255, 255, 0.4);
   --sz-solid-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.42) inset,
-    0 4px 14px rgba(0, 0, 0, 0.36);
+    0 1px 0 rgba(255, 255, 255, 0.5) inset,
+    0 2px 6px rgba(0, 0, 0, 0.4);
   --sz-solid-shadow-hover:
-    0 1px 0 rgba(255, 255, 255, 0.55) inset,
-    0 10px 28px rgba(0, 0, 0, 0.44);
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 10px 26px rgba(0, 0, 0, 0.5);
 }
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -543,7 +556,7 @@ h2 {
 }
 
 .sz-btn--secondary:hover {
-  border-color: var(--sz-gold);
+  border-color: var(--sz-accent);
   background: var(--sz-glass-tint-1);
   transform: translateY(-1px);
 }
@@ -560,7 +573,7 @@ h2 {
 }
 
 .sz-btn:focus-visible {
-  outline: 2px solid var(--sz-gold);
+  outline: 2px solid var(--sz-accent);
   outline-offset: 2px;
 }
 
@@ -674,7 +687,7 @@ h2 {
    Levels 1 and 2 are blur-free so card grids never create unbounded
    backdrop-filter regions; only the small number of L3/L4 overlays blur.
    The material is built from four stacked layers:
-     tint      → translucent pearl body
+     tint      → translucent surface body
      specular  → elliptical bloom just under the top edge
      rim       → thin bright highlight on the upper surface
      underlight→ warm bounce along the bottom edge (makes it read thick) */
@@ -1372,16 +1385,11 @@ h2 {
   color: var(--text-primary);
 }
 
-[data-theme='dark'] .sz-cta--primary {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--sz-paper);
-}
-
+/* The primary keeps its inverted light fill in dark mode — that
+   inversion is the whole point. Only the hover lift is deepened for
+   the dark canvas. */
 [data-theme='dark'] .sz-cta--primary:hover {
-  background: var(--accent-hover);
-  border-color: var(--accent-hover);
-  box-shadow: 0 8px 24px rgba(212, 184, 90, 0.3);
+  box-shadow: var(--sz-solid-shadow-hover);
 }
 
 [data-theme='dark'] .sz-cta--secondary,

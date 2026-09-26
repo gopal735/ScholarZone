@@ -26,7 +26,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--sz-gold), transparent);
+  background: linear-gradient(90deg, transparent, var(--sz-accent), transparent);
   opacity: 0.4;
 }
 

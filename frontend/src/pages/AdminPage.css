@@ -6,9 +6,9 @@
 .admin-page {
   position: relative;
   min-height: 100vh;
-  background: #14100B;
+  background: #08090B;
   background-image:
-    radial-gradient(ellipse 80% 60% at 15% 5%, rgba(198, 166, 106, 0.09) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 60% at 15% 5%, rgba(94, 147, 214, 0.09) 0%, transparent 55%),
     radial-gradient(ellipse 60% 80% at 85% 90%, rgba(120, 98, 62, 0.14) 0%, transparent 55%),
     radial-gradient(ellipse 50% 50% at 50% 50%, rgba(255, 246, 226, 0.02) 0%, transparent 100%);
   color: var(--text-primary);

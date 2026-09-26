@@ -1,9 +1,9 @@
 :root {
-  /* Warm cream ground. These values are fallbacks only — theme.css owns
-     the real tokens and is imported after this file. */
-  --brand: #B9974E;
-  --brand-strong: #A17F38;
-  --brand-soft: rgba(185, 151, 78, 0.12);
+  /* Cool porcelain ground. These values are fallbacks only — theme.css
+     owns the real tokens and is imported after this file. */
+  --brand: #2563A8;
+  --brand-strong: #1D5290;
+  --brand-soft: rgba(37, 99, 168, 0.09);
   --ink: #2B2620;
   --muted: #857A6B;
   --surface: #FCF9F2;

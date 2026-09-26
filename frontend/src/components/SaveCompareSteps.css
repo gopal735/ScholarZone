@@ -1,0 +1,142 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Save & Compare
+
+   The decision loop, stated as four connected steps. Unlike the
+   verification flow this one is not scroll-driven — the arrow marks
+   simply brighten in sequence on a slow loop, which is enough to read
+   as a progression without becoming a loading animation.
+
+   It links to the real routes, so the section is a working entry point
+   rather than an illustration of one.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.sz-decision {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-4);
+  counter-reset: sz-step;
+}
+
+.sz-decision__step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6) 0;
+  border-top: 1px solid var(--sz-frost);
+  transition: border-color 400ms var(--timing-smooth);
+}
+
+.sz-decision__step:hover {
+  border-top-color: var(--accent-border);
+}
+
+.sz-decision__step::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 520ms var(--timing-smooth);
+  transition-delay: calc(var(--sz-step-index, 0) * 130ms);
+}
+
+.sz-decision__step:hover::after {
+  width: 100%;
+}
+
+/* A right-pointing connector between the columns, hidden on the last
+   step and on the vertical layout. */
+.sz-decision__step:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  top: calc(var(--space-6) - 5px);
+  right: calc(var(--space-4) * -1 + 1px);
+  width: 6px;
+  height: 6px;
+  border-top: 1px solid var(--sz-frost);
+  border-right: 1px solid var(--sz-frost);
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+
+.sz-decision__index {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-faint);
+  letter-spacing: 0.08em;
+}
+
+.sz-decision__step:hover .sz-decision__index {
+  color: var(--accent);
+}
+
+.sz-decision__title {
+  color: var(--sz-ink);
+  font-size: var(--text-base);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.sz-decision__note {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+}
+
+.sz-decision__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: auto;
+  padding-top: var(--space-2);
+  color: var(--sz-accent-text);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.sz-decision__link span {
+  transition: transform var(--duration-hover) var(--timing-smooth);
+}
+
+.sz-decision__link:hover span {
+  transform: translateX(3px);
+}
+
+.sz-decision__link:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+@media (max-width: 1024px) {
+  .sz-decision {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-5) var(--space-4);
+  }
+
+  .sz-decision__step:nth-child(2)::before {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .sz-decision {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sz-decision__step::before {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sz-decision__step,
+  .sz-decision__step::after,
+  .sz-decision__link span {
+    transition: none;
+  }
+}

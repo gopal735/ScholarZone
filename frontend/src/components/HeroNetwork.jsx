@@ -181,13 +181,13 @@ export default function HeroNetwork() {
       >
         <defs>
           <radialGradient id="sz-network-glow-core" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="var(--sz-gold)" stopOpacity="0.35" />
-            <stop offset="60%" stopColor="var(--sz-gold)" stopOpacity="0.08" />
-            <stop offset="100%" stopColor="var(--sz-gold)" stopOpacity="0" />
+            <stop offset="0%" stopColor="var(--sz-accent)" stopOpacity="0.35" />
+            <stop offset="60%" stopColor="var(--sz-accent)" stopOpacity="0.08" />
+            <stop offset="100%" stopColor="var(--sz-accent)" stopOpacity="0" />
           </radialGradient>
           <radialGradient id="sz-network-glow-node" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="var(--sz-gold)" stopOpacity="0.2" />
-            <stop offset="100%" stopColor="var(--sz-gold)" stopOpacity="0" />
+            <stop offset="0%" stopColor="var(--sz-accent)" stopOpacity="0.2" />
+            <stop offset="100%" stopColor="var(--sz-accent)" stopOpacity="0" />
           </radialGradient>
           <filter id="sz-network-blur" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur in="SourceGraphic" stdDeviation="0.3" />
@@ -218,7 +218,7 @@ export default function HeroNetwork() {
             cx="50"
             cy="50"
             r="0.4"
-            fill="var(--sz-gold)"
+            fill="var(--sz-accent)"
           />
         ))}
 
@@ -262,7 +262,7 @@ export default function HeroNetwork() {
                 cx={node.x}
                 cy={node.y}
                 r={node.core ? 1.6 : 1.0}
-                fill={node.core ? 'var(--sz-gold)' : 'var(--sz-ink)'}
+                fill={node.core ? 'var(--sz-accent)' : 'var(--sz-ink)'}
               />
               {node.core && (
                 <circle
@@ -271,7 +271,7 @@ export default function HeroNetwork() {
                   cy={node.y}
                   r="2.8"
                   fill="none"
-                  stroke="var(--sz-gold)"
+                  stroke="var(--sz-accent)"
                   strokeWidth="0.08"
                   strokeOpacity="0.4"
                 />

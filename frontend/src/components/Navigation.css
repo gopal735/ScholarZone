@@ -44,28 +44,37 @@
   transition: color var(--duration-smooth) var(--timing-smooth);
 }
 
+/* The mark is a cool graphite lozenge with one steel-blue edge light.
+   It is the only chrome element carrying the accent, which keeps the
+   brand anchored without spending the accent on decoration. */
 .nav-brand__mark {
   display: inline-grid;
   width: 30px;
   height: 30px;
   place-items: center;
-  color: #4A3A14;
+  color: #E8EEF6;
   font-family: var(--font-body);
   font-size: 0.8125rem;
   font-weight: 800;
   letter-spacing: -0.05em;
-  background: linear-gradient(150deg, #E4D2A2 0%, #C4A45C 100%);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: linear-gradient(150deg, #232A33 0%, #0E141C 100%);
+  border: 1px solid rgba(94, 147, 214, 0.32);
   border-radius: 9px;
-  box-shadow: 0 1px 3px rgba(146, 116, 58, 0.2);
+  box-shadow:
+    0 1px 0 rgba(196, 216, 240, 0.1) inset,
+    0 2px 8px rgba(15, 25, 40, 0.18);
   transition:
     transform var(--duration-lift) var(--timing-smooth),
+    border-color var(--duration-lift) var(--timing-smooth),
     box-shadow var(--duration-lift) var(--timing-smooth);
 }
 
 .nav-brand:hover .nav-brand__mark {
   transform: translateY(-1px);
-  box-shadow: 0 3px 9px rgba(146, 116, 58, 0.26);
+  border-color: rgba(94, 147, 214, 0.55);
+  box-shadow:
+    0 1px 0 rgba(196, 216, 240, 0.14) inset,
+    0 4px 12px rgba(15, 25, 40, 0.24);
 }
 
 [data-theme='dark'] .nav-brand {
@@ -73,22 +82,29 @@
 }
 
 [data-theme='dark'] .nav-brand__mark {
-  color: #241C0C;
-  background: linear-gradient(150deg, #E8D6A8 0%, #C4A45C 100%);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  color: #CFE0F5;
+  background: linear-gradient(150deg, #1B222B 0%, #0A0E13 100%);
+  border-color: rgba(94, 147, 214, 0.4);
+  box-shadow:
+    0 1px 0 rgba(196, 216, 240, 0.12) inset,
+    0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
-/* ── Menu structure ─────────────────────────────────────────────── */
-.nav-menu,
+/* ── Menu ────────────────────────────────────────────────────────
+   Links and utilities sit on one row at desktop. The split only
+   happens at the narrow breakpoint below, where a single row can no
+   longer hold both groups at a readable size. */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-5);
+}
+
 .nav-links,
 .nav-utilities {
   display: flex;
   align-items: center;
-}
-
-.nav-menu {
-  justify-content: flex-end;
-  gap: var(--space-5);
 }
 
 /* Primary links carry no container. The previous pass nested a tinted
@@ -120,7 +136,7 @@
 
 .nav-links a:hover {
   color: var(--sz-ink);
-  background: rgba(122, 104, 74, 0.05);
+  background: rgba(15, 25, 40, 0.05);
 }
 
 /* Active = a soft fill only. No border, no inset highlight, no
@@ -128,15 +144,15 @@
    heavy. */
 .nav-links a.active {
   color: var(--sz-ink);
-  background: rgba(122, 104, 74, 0.09);
+  background: rgba(15, 25, 40, 0.09);
 }
 
 [data-theme='dark'] .nav-links a:hover {
-  background: rgba(255, 244, 224, 0.06);
+  background: rgba(196, 216, 240, 0.06);
 }
 
 [data-theme='dark'] .nav-links a.active {
-  background: rgba(255, 244, 224, 0.1);
+  background: rgba(196, 216, 240, 0.1);
 }
 
 .nav-links a:focus-visible {
@@ -171,12 +187,12 @@
 
 .nav-utility-link:hover {
   color: var(--sz-ink);
-  background: rgba(122, 104, 74, 0.05);
+  background: rgba(15, 25, 40, 0.05);
 }
 
 .nav-utility-link.active {
   color: var(--sz-ink);
-  background: rgba(122, 104, 74, 0.09);
+  background: rgba(15, 25, 40, 0.09);
 }
 
 .nav-utility-link span {
@@ -197,9 +213,9 @@
    element on the count so the animation only plays on a real change. */
 
 /* Sign in is the header's one filled control — a crisp outline, not
-   glass and not a gold pour. The hero owns the only large champagne
-   surface on the page, and duplicating it up here was what made the
-   header compete with the content underneath it. */
+   glass and not a filled plane. The hero owns the only inverted
+   light control on the page, and duplicating it up here was what made
+   the header compete with the content underneath it. */
 .nav-sign-in {
   color: var(--sz-ink);
   background: transparent;
@@ -208,13 +224,13 @@
 
 .nav-sign-in:hover {
   color: var(--sz-ink);
-  background: rgba(122, 104, 74, 0.05);
+  background: rgba(15, 25, 40, 0.05);
   border-color: var(--text-faint);
 }
 
 .nav-sign-in.active {
   color: var(--sz-ink);
-  background: rgba(122, 104, 74, 0.09);
+  background: rgba(15, 25, 40, 0.09);
   border-color: var(--border-strong);
 }
 
@@ -227,14 +243,14 @@
 
 /* ── Transparent-at-rest legibility ───────────────────────────────
    The bar is transparent until it scrolls, so links need a soft warm
-   halo to stay above 4.5:1 over a moving champagne body. */
+   halo to stay above 4.5:1 over a moving light field. */
 .site-header:not(.is-scrolled) .nav-links a,
 .site-header:not(.is-scrolled) .nav-utility-link {
-  text-shadow: 0 1px 3px rgba(255, 253, 248, 0.85);
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.85);
 }
 
 .site-header:not(.is-scrolled) .nav-brand {
-  text-shadow: 0 1px 3px rgba(255, 252, 244, 0.8);
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
 }
 
 [data-theme='dark'] .site-header:not(.is-scrolled) .nav-links a,
@@ -264,7 +280,7 @@
 [data-theme='dark'] .nav-links a.active,
 [data-theme='dark'] .nav-utility-link.active {
   color: var(--text-primary);
-  background: rgba(255, 244, 224, 0.08);
+  background: rgba(196, 216, 240, 0.08);
 }
 
 [data-theme='dark'] .nav-utility-link span {
@@ -281,7 +297,7 @@
 [data-theme='dark'] .nav-sign-in:hover,
 [data-theme='dark'] .nav-sign-in.active {
   color: var(--text-primary);
-  background: rgba(255, 244, 224, 0.08);
+  background: rgba(196, 216, 240, 0.08);
   border-color: var(--border-strong);
 }
 
@@ -311,7 +327,7 @@
 
 .theme-toggle:hover {
   color: var(--sz-ink);
-  background: rgba(122, 104, 74, 0.05);
+  background: rgba(15, 25, 40, 0.05);
 }
 
 .theme-toggle:focus-visible {
@@ -338,7 +354,7 @@
 
 [data-theme='dark'] .theme-toggle:hover {
   color: var(--text-primary);
-  background: rgba(255, 244, 224, 0.06);
+  background: rgba(196, 216, 240, 0.06);
 }
 
 /* ── Responsive ─────────────────────────────────────────────────── */
@@ -350,6 +366,7 @@
   }
 
   .nav-menu {
+    display: flex;
     align-items: flex-end;
     flex-direction: column;
     gap: var(--space-2);
@@ -403,6 +420,7 @@
   }
 
   .nav-menu {
+    display: flex;
     width: 100%;
     align-items: stretch;
     gap: var(--space-2);

@@ -1,5 +1,5 @@
 /* The filter panel is the directory's one functional surface, so it
-   keeps a material — but it is now a light pearl slab with a hairline
+   keeps a material — but it is now a light slab with a hairline
    rather than a blurred one. It sits on open canvas above the grid, and
    the cards below it are opaque, so nothing stacks glass on glass. */
 .filter-section {

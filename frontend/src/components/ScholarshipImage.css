@@ -36,15 +36,15 @@
   inset: 0;
   z-index: 1;
   background:
-    radial-gradient(120% 90% at 24% -12%, rgba(255, 252, 244, 0.3) 0%, rgba(255, 250, 236, 0) 58%),
+    radial-gradient(120% 90% at 24% -12%, rgba(255, 255, 255, 0.3) 0%, rgba(248, 250, 252, 0) 58%),
     linear-gradient(180deg, rgba(255, 250, 238, 0.1) 0%, rgba(120, 98, 60, 0.06) 100%);
   pointer-events: none;
 }
 
 [data-theme='dark'] .scholarship-image__ratio::after {
   background:
-    radial-gradient(120% 90% at 24% -12%, rgba(255, 236, 198, 0.1) 0%, rgba(255, 230, 180, 0) 58%),
-    linear-gradient(180deg, rgba(255, 240, 210, 0.04) 0%, rgba(0, 0, 0, 0.22) 100%);
+    radial-gradient(120% 90% at 24% -12%, rgba(255, 236, 198, 0.1) 0%, rgba(196, 216, 240, 0) 58%),
+    linear-gradient(180deg, rgba(196, 216, 240, 0.04) 0%, rgba(0, 0, 0, 0.22) 100%);
 }
 
 /* Absolute fill: the ratio owns the box, the image only covers it. */
@@ -75,7 +75,7 @@
 }
 
 /* Fallbacks share one deliberate treatment so a missing image reads as
-   an intentional editorial slot rather than a hole. A soft diagonal
+   an intentional editorial slot rather than a hole. A cool hairline
    weave plus a centred mark: enough to look composed, not enough to
    compete with a real photograph. These are modifier classes on the
    root element, so the selectors use the two-hyphen form the component
@@ -84,17 +84,17 @@
 .scholarship-image--broken {
   display: grid;
   place-items: center;
-  color: var(--sz-stone-light);
+  color: var(--text-faint);
   background-color: var(--surface-subtle);
   background-image:
     repeating-linear-gradient(
       58deg,
-      rgba(122, 104, 74, 0.05) 0px,
-      rgba(122, 104, 74, 0.05) 1px,
+      rgba(15, 25, 40, 0.045) 0px,
+      rgba(15, 25, 40, 0.045) 1px,
       transparent 1px,
       transparent 11px
     ),
-    radial-gradient(100% 80% at 26% 14%, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0) 66%);
+    radial-gradient(100% 80% at 26% 14%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 66%);
 }
 
 [data-theme='dark'] .scholarship-image--placeholder,
@@ -104,12 +104,12 @@
   background-image:
     repeating-linear-gradient(
       58deg,
-      rgba(255, 244, 224, 0.04) 0px,
-      rgba(255, 244, 224, 0.04) 1px,
+      rgba(196, 216, 240, 0.04) 0px,
+      rgba(196, 216, 240, 0.04) 1px,
       transparent 1px,
       transparent 11px
     ),
-    radial-gradient(100% 80% at 26% 14%, rgba(255, 240, 212, 0.05) 0%, rgba(255, 240, 212, 0) 66%);
+    radial-gradient(100% 80% at 26% 14%, rgba(196, 216, 240, 0.05) 0%, rgba(196, 216, 240, 0) 66%);
 }
 
 /* The fallback mark is a hairline, not a solid glyph — it should sit

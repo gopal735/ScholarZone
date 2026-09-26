@@ -77,7 +77,7 @@
   left: 0;
   height: 2px;
   content: '';
-  background: linear-gradient(90deg, var(--sz-gold) 0%, var(--sz-gold-deep) 50%, transparent 100%);
+  background: linear-gradient(90deg, var(--sz-accent) 0%, var(--sz-accent-deep) 50%, transparent 100%);
   opacity: 0.4;
 }
 

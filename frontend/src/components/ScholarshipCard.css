@@ -49,8 +49,8 @@
   background: radial-gradient(
     52% 40% at var(--lg-hx) var(--lg-hy),
     rgba(255, 255, 255, 0.55) 0%,
-    rgba(255, 253, 248, 0.14) 48%,
-    rgba(255, 253, 248, 0) 76%
+    rgba(255, 255, 255, 0.14) 48%,
+    rgba(255, 255, 255, 0) 76%
   );
   opacity: 0;
   pointer-events: none;
@@ -60,9 +60,9 @@
 [data-theme='dark'] .scholarship-card::after {
   background: radial-gradient(
     52% 40% at var(--lg-hx) var(--lg-hy),
-    rgba(255, 240, 212, 0.11) 0%,
-    rgba(255, 234, 200, 0.03) 48%,
-    rgba(255, 234, 200, 0) 76%
+    rgba(196, 216, 240, 0.11) 0%,
+    rgba(196, 216, 240, 0.03) 48%,
+    rgba(196, 216, 240, 0) 76%
   );
 }
 
@@ -75,7 +75,7 @@
   z-index: 4;
   height: 2px;
   content: '';
-  background: linear-gradient(90deg, var(--sz-gold) 0%, rgba(142, 112, 49, 0.35) 55%, transparent 100%);
+  background: linear-gradient(90deg, var(--sz-accent) 0%, rgba(37, 99, 168, 0.35) 55%, transparent 100%);
   opacity: 0;
   transition: opacity var(--duration-hover) var(--timing-smooth);
 }
@@ -285,14 +285,14 @@
 }
 
 /* The deadline is the scan anchor, so it reads as a labelled panel of
-   its own material — a small pearl well inside the card. */
+   its own surface — a small well inside the card. */
 .scholarship-card__detail--deadline {
   align-items: center;
   padding: var(--space-4);
   margin-bottom: var(--space-2);
   background: var(--surface-subtle);
   border: 1px solid var(--sz-glass-edge-soft);
-  border-left: 2px solid var(--sz-gold);
+  border-left: 2px solid var(--sz-accent);
   border-radius: var(--radius-sm);
 }
 
@@ -334,14 +334,10 @@
   margin-bottom: var(--space-3);
 }
 
-/* The card's primary action is pearl glass with a champagne hairline
-   rather than a solid pour. A directory renders this button once per
-   card, so a solid gold fill would turn the accent into the dominant
-   colour of the page. Gold stays reserved for one primary per view. */
 /* A quiet outline at rest, filled only on hover. A directory renders
-   this once per card, so a solid champagne fill at rest would put a
-   gold mass in every column; the interaction still resolves to a solid
-   control the moment intent is expressed. */
+   this once per card, so a filled control at rest would put a mass in
+   every column; the interaction still resolves to a filled control the
+   moment intent is expressed. */
 .scholarship-card__button {
   position: relative;
   display: inline-flex;
@@ -393,7 +389,7 @@
   color: var(--text-primary);
   background: var(--sz-glass-tint-2);
   border-color: var(--sz-glass-border);
-  box-shadow: 0 1px 0 rgba(255, 240, 210, 0.08) inset;
+  box-shadow: 0 1px 0 rgba(196, 216, 240, 0.08) inset;
 }
 
 [data-theme='dark'] .scholarship-card__button:hover {

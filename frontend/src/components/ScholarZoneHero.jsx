@@ -40,33 +40,38 @@ function LiveDataIndicator({ count, countries, fullyFunded, verified }) {
   )
 }
 
-/* The hero's single visual anchor. One scholarship, presented large and
-   slightly offset, so the first viewport has one thing to look at rather
-   than a wall of equal cards. The full grid sits directly below. */
+/* The hero's visual centrepiece. A single real scholarship floating in
+   front of two offset depth planes, inside a slow orbital ring. Every
+   value shown comes from the live directory, so the composition can
+   never drift out of sync with the product. */
 function HeroShowcase({ scholarship }) {
-  if (!scholarship) return null
-
   return (
     <div className="sz-hero__showcase">
-      <div className="sz-hero__showcase-card">
-        <ScholarshipCard scholarship={scholarship} />
+      <div className="sz-hero__showcase-stage">
+        <span className="sz-hero__ring sz-hero__ring--outer" aria-hidden="true">
+          <span className="sz-hero__ring-node" />
+        </span>
+        <span className="sz-hero__ring sz-hero__ring--inner" aria-hidden="true" />
+        <span className="sz-hero__plane sz-hero__plane--far" aria-hidden="true" />
+        <span className="sz-hero__plane sz-hero__plane--near" aria-hidden="true" />
+
+        <div className="sz-hero__showcase-card">
+          {scholarship ? (
+            <ScholarshipCard scholarship={scholarship} />
+          ) : (
+            <>
+              <span className="sz-hero-card-skeleton__media" />
+              <span className="sz-hero-card-skeleton__line" />
+              <span className="sz-hero-card-skeleton__line sz-hero-card-skeleton__line--short" />
+            </>
+          )}
+        </div>
       </div>
+
       <p className="sz-hero__showcase-note">
         Every listing is checked against the awarding body&rsquo;s own page before it
         appears here.
       </p>
-    </div>
-  )
-}
-
-function HeroSkeleton() {
-  return (
-    <div className="sz-hero__showcase" aria-hidden="true">
-      <div className="sz-hero__showcase-card">
-        <span className="sz-hero-card-skeleton__media" />
-        <span className="sz-hero-card-skeleton__line" />
-        <span className="sz-hero-card-skeleton__line sz-hero-card-skeleton__line--short" />
-      </div>
     </div>
   )
 }
@@ -145,7 +150,7 @@ export default function ScholarZoneHero() {
           )}
         </div>
 
-        {isLoading ? <HeroSkeleton /> : <HeroShowcase scholarship={previewScholarships[0]} />}
+        <HeroShowcase scholarship={previewScholarships[0]} />
       </div>
 
       <section className="sz-hero__preview" aria-label="Recently added opportunities">

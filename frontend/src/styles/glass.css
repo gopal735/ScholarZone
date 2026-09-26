@@ -55,11 +55,11 @@
   --status-inactive-glow: rgba(255, 69, 58, 0.35);
 
   /* Page background — warm smoked mesh, matched to the public site's
-     champagne material language so admin does not read as a separate
+     graphite material language so admin does not read as a separate
      product. */
-  --admin-bg: #14100b;
-  --mesh-1: radial-gradient(ellipse 80% 60% at 20% 10%, rgba(198, 166, 106, 0.16) 0%, transparent 60%);
-  --mesh-2: radial-gradient(ellipse 60% 80% at 80% 90%, rgba(126, 102, 66, 0.16) 0%, transparent 60%);
+  --admin-bg: #08090B;
+  --mesh-1: radial-gradient(ellipse 80% 60% at 20% 10%, rgba(94, 147, 214, 0.16) 0%, transparent 60%);
+  --mesh-2: radial-gradient(ellipse 60% 80% at 80% 90%, rgba(94, 147, 214, 0.16) 0%, transparent 60%);
   --mesh-3: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(255, 246, 226, 0.02) 0%, transparent 100%);
 
   /* Typography tokens are owned by theme.css. This file used to

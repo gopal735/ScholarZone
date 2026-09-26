@@ -129,9 +129,9 @@
 }
 
 [data-theme='dark'] .scholarship-actions__button.is-active:hover {
-  color: var(--sz-paper);
-  background: var(--accent);
-  border-color: var(--accent);
+  color: var(--sz-solid-ink);
+  background: var(--sz-solid-bg);
+  border-color: var(--sz-solid-border);
 }
 
 [data-theme='dark'] .scholarship-actions__button.is-at-limit:not(.is-active),

@@ -1,0 +1,213 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Trust Flow
+
+   The verification model as a connected sequence rather than a list of
+   cards: DISCOVER → SOURCE → VERIFY → UPDATE → TRUST. A single hairline
+   runs behind the nodes and fills progressively as each stage becomes
+   active, which is the "connected line, node activation" pattern from
+   premium product pages.
+
+   The fill is a transform on a scaleX pseudo-element, so it runs on the
+   compositor and costs nothing per frame. Nothing here is animated on a
+   timer — the sequence advances when it scrolls into view, once.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.sz-flow {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+
+.sz-flow__stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-top: var(--space-6);
+}
+
+/* The connective hairline, sitting behind the node row. */
+.sz-flow__stage::before {
+  content: '';
+  position: absolute;
+  top: 13px;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: var(--sz-frost);
+}
+
+/* The first stage has nothing to its left, so the rule starts at its
+   own node rather than running off the edge of the grid. */
+.sz-flow__stage:first-child::before {
+  left: 14px;
+}
+
+.sz-flow__stage:last-child::before {
+  right: calc(100% - 14px);
+}
+
+/* Progress fill. Driven by --sz-flow-step on the parent, which the
+   component sets as each stage activates. */
+.sz-flow__stage::after {
+  content: '';
+  position: absolute;
+  top: 13px;
+  left: 14px;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transform-origin: left center;
+  transition: width 900ms var(--timing-smooth);
+}
+
+.sz-flow__stage:last-child::after {
+  left: 14px;
+  width: 0;
+}
+
+.sz-flow.is-active .sz-flow__stage:nth-child(1)::after {
+  width: calc(100% - 14px);
+}
+
+.sz-flow.is-active .sz-flow__stage:nth-child(2)::after {
+  transition-delay: 120ms;
+}
+
+.sz-flow.is-active .sz-flow__stage:nth-child(3)::after {
+  transition-delay: 240ms;
+}
+
+.sz-flow.is-active .sz-flow__stage:nth-child(4)::after {
+  transition-delay: 360ms;
+}
+
+.sz-flow.is-active .sz-flow__stage:nth-child(5)::after {
+  width: 0;
+}
+
+/* The node. One square, hairline stroke; it fills as its stage
+   activates. */
+.sz-flow__node {
+  position: relative;
+  z-index: 1;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--page-bg);
+  border: 1px solid var(--sz-frost);
+  border-radius: 7px;
+  transition:
+    color 420ms var(--timing-smooth),
+    border-color 420ms var(--timing-smooth),
+    background-color 420ms var(--timing-smooth);
+}
+
+.sz-flow.is-active .sz-flow__node {
+  color: var(--accent);
+  border-color: var(--accent-border);
+  background: var(--accent-soft);
+}
+
+/* Stacked label-over-note at every width. Without this the two spans
+   sit on one line and the stage reads as a run-on sentence. */
+.sz-flow__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.sz-flow__label {
+  color: var(--sz-ink);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+
+.sz-flow__note {
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  line-height: 1.6;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────
+   Below 900px the horizontal rule stops carrying the sequence, so the
+   stages become a vertical run and the line turns to follow the nodes
+   down the page. */
+@media (max-width: 900px) {
+  .sz-flow {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+  }
+
+  .sz-flow__stage {
+    display: grid;
+    grid-template-columns: 26px 1fr;
+    align-items: start;
+    gap: var(--space-4);
+    padding-top: 0;
+  }
+
+  .sz-flow__body {
+    padding-bottom: var(--space-2);
+  }
+
+  .sz-flow__stage::before {
+    top: 26px;
+    bottom: calc(var(--space-4) * -1);
+    left: 13px;
+    right: auto;
+    width: 1px;
+    height: auto;
+  }
+
+  .sz-flow__stage:first-child::before {
+    top: 13px;
+  }
+
+  .sz-flow__stage:last-child::before {
+    display: none;
+  }
+
+  .sz-flow__stage::after {
+    top: 13px;
+    bottom: calc(var(--space-4) * -1);
+    left: 13px;
+    width: 1px;
+    height: 0;
+    transition: height 900ms var(--timing-smooth);
+  }
+
+  .sz-flow.is-active .sz-flow__stage::after {
+    width: 1px;
+    height: calc(100% + var(--space-4) - 26px);
+  }
+
+  .sz-flow.is-active .sz-flow__stage:nth-child(2)::after {
+    transition-delay: 120ms;
+  }
+
+  .sz-flow.is-active .sz-flow__stage:nth-child(3)::after {
+    transition-delay: 240ms;
+  }
+
+  .sz-flow.is-active .sz-flow__stage:nth-child(4)::after {
+    transition-delay: 360ms;
+  }
+
+  .sz-flow.is-active .sz-flow__stage:last-child::after {
+    height: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sz-flow__stage::after {
+    transition: none;
+  }
+}

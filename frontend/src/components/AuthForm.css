@@ -45,7 +45,7 @@
   margin-top: var(--space-7);
   background: var(--sz-glass-tint-1);
   border: 1px solid var(--sz-glass-border);
-  border-left: 3px solid var(--sz-gold);
+  border-left: 3px solid var(--sz-accent);
   border-radius: var(--radius-md);
 }
 
@@ -90,7 +90,7 @@
   border-radius: var(--radius-panel);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.85) inset,
-    0 16px 44px rgba(74, 60, 38, 0.08);
+    0 16px 44px rgba(15, 25, 40, 0.08);
   -webkit-backdrop-filter: var(--sz-glass-blur);
   backdrop-filter: var(--sz-glass-blur);
 }
@@ -112,7 +112,7 @@
 
 [data-theme='dark'] .auth-form-card {
   background: var(--sz-glass-tint-2);
-  box-shadow: 0 1px 0 rgba(255, 240, 210, 0.08) inset;
+  box-shadow: 0 1px 0 rgba(196, 216, 240, 0.08) inset;
 }
 
 .auth-form-card__heading h2 {
@@ -305,15 +305,11 @@
   opacity: 0.72;
 }
 
-[data-theme='dark'] .auth-form__submit {
-  color: var(--sz-paper);
-  background: var(--accent);
-  box-shadow: none;
-}
-
+/* The submit keeps the inverted light fill in dark mode — that
+   inversion is the pattern, and it makes the primary the brightest
+   object on the panel. Only the lift is deepened for the dark canvas. */
 [data-theme='dark'] .auth-form__submit:hover:not(:disabled) {
-  background: var(--accent-hover);
-  box-shadow: 0 10px 24px rgba(212, 184, 90, 0.22);
+  box-shadow: var(--sz-solid-shadow-hover);
 }
 
 .auth-form__submit:focus-visible {

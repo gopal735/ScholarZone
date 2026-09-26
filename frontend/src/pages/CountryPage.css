@@ -52,7 +52,7 @@
 .country-explorer__rule {
   margin-top: clamp(20px, 2.5vw, 36px);
   height: 1px;
-  background: linear-gradient(90deg, var(--sz-gold), transparent 70%);
+  background: linear-gradient(90deg, var(--sz-accent), transparent 70%);
   opacity: 0.5;
 }
 

@@ -135,15 +135,7 @@
   outline-offset: 3px;
 }
 
-[data-theme='dark'] .saved-scholarships-page__action {
-  color: var(--sz-paper);
-  background: var(--accent);
-  box-shadow: none;
-}
 
-[data-theme='dark'] .saved-scholarships-page__action:hover {
-  background: var(--accent-hover);
-}
 
 @media (max-width: 640px) {
   .saved-scholarships-page__heading {

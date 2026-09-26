@@ -1,14 +1,14 @@
 /* ═══════════════════════════════════════════════════════════════════
    Hero
 
-   An asymmetric editorial spread, not a stacked splash. The type
-   occupies the left column and a single scholarship, presented large
-   and slightly lifted, holds the right. One focal point means the eye
-   knows where to land; a row of equal cards gives it nowhere to go.
+   An asymmetric cinematic spread. Type owns the left column; a layered
+   composition owns the right — one real scholarship floating in front
+   of offset data planes, inside a slow orbital light ring. One focal
+   point means the eye knows where to land; a row of equal cards gives
+   it nowhere to go.
 
-   The stats are a quiet text row, not a panel. Anything boxed here
-   competes with the showcase card for attention, and the showcase card
-   is the thing worth looking at.
+   The centrepiece is built from live directory data, so it can never
+   drift out of sync with the product. Nothing in it is a mockup.
    ═══════════════════════════════════════════════════════════════════ */
 
 .sz-hero {
@@ -23,7 +23,7 @@
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
   align-items: center;
   gap: var(--space-16);
   width: 100%;
@@ -51,7 +51,7 @@
 .sz-hero__eyebrow-dot {
   width: 6px;
   height: 6px;
-  background: var(--sz-gold);
+  background: var(--sz-accent);
   border-radius: 50%;
 }
 
@@ -68,7 +68,7 @@
 }
 
 .sz-hero__heading em {
-  color: var(--sz-gold-deep);
+  color: var(--sz-accent-deep);
   font-style: italic;
 }
 
@@ -88,10 +88,9 @@
 }
 
 /* ── Calls to action ─────────────────────────────────────────────
-   The primary is a solid champagne lozenge — the one place on the
-   homepage where the accent is allowed to carry weight. The secondary
-   is pearl glass, so the two sit in adjacent tiers of the same
-   material rather than reading as "dark button" plus "light button". */
+   Graphite inverts its primary to a light fill with dark text so the
+   conversion control becomes the brightest object on the hero. The
+   secondary stays a plain outline, so the accent is not spent twice. */
 .sz-hero__cta {
   position: relative;
   display: inline-flex;
@@ -113,30 +112,25 @@
     color var(--duration-hover) var(--timing-smooth);
 }
 
-/* One solid primary, one quiet outline. The primary is the only large
-   champagne surface in the product, which is what lets it read as a
-   deliberate accent rather than as a theme colour. The gradient is a
-   single top-to-bottom pour, not a diagonal — a diagonal reads as a
-   decorative gel, a vertical one reads as a lit surface. */
+/* One solid primary, one quiet outline. Graphite inverts its primary
+   to a light fill with dark text, which makes the conversion control
+   the brightest object on the hero. That is the pattern used here:
+   the primary is a near-white plane rather than a coloured one, so
+   the accent stays available for emphasis instead of being spent on
+   every button in the product. */
 .sz-hero__cta--primary {
-  color: #33280C;
-  background: linear-gradient(180deg, #C9A85F 0%, #B08F45 100%);
-  border-color: rgba(120, 96, 40, 0.3);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.22) inset,
-    0 2px 6px rgba(122, 98, 44, 0.14),
-    0 12px 28px rgba(122, 98, 44, 0.14);
+  color: var(--sz-solid-ink);
+  background: var(--sz-solid-bg);
+  border-color: var(--sz-solid-border);
+  box-shadow: var(--sz-solid-shadow);
 }
 
 .sz-hero__cta--primary:hover {
-  color: #2C220A;
-  background: linear-gradient(180deg, #D4B46D 0%, #BB9A50 100%);
-  border-color: rgba(120, 96, 40, 0.42);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.28) inset,
-    0 2px 8px rgba(122, 98, 44, 0.18),
-    0 18px 38px rgba(122, 98, 44, 0.18);
+  color: var(--sz-solid-ink-hover);
+  background: var(--sz-solid-bg-hover);
+  border-color: var(--sz-solid-border-hover);
   transform: translateY(-2px);
+  box-shadow: var(--sz-solid-shadow-hover);
 }
 
 .sz-hero__cta--primary svg {
@@ -157,26 +151,21 @@
 
 .sz-hero__cta--secondary:hover {
   color: var(--sz-ink);
-  background: rgba(122, 104, 74, 0.05);
+  background: rgba(15, 25, 40, 0.05);
   border-color: var(--text-faint);
   transform: translateY(-2px);
 }
 
 [data-theme='dark'] .sz-hero__cta--primary {
-  color: #2C220A;
-  background: linear-gradient(180deg, #D4B46D 0%, #B08F45 100%);
-  border-color: rgba(255, 240, 200, 0.18);
   box-shadow:
-    0 1px 0 rgba(255, 245, 220, 0.16) inset,
-    0 12px 28px rgba(0, 0, 0, 0.32);
+    0 1px 0 rgba(196, 216, 240, 0.16) inset,
+    0 12px 30px rgba(0, 0, 0, 0.42);
 }
 
 [data-theme='dark'] .sz-hero__cta--primary:hover {
-  color: #241C08;
-  background: linear-gradient(180deg, #DFC17D 0%, #BF9A55 100%);
   box-shadow:
-    0 1px 0 rgba(255, 245, 220, 0.22) inset,
-    0 18px 38px rgba(0, 0, 0, 0.38);
+    0 1px 0 rgba(196, 216, 240, 0.2) inset,
+    0 18px 40px rgba(0, 0, 0, 0.5);
 }
 
 [data-theme='dark'] .sz-hero__cta--secondary {
@@ -185,7 +174,7 @@
 }
 
 [data-theme='dark'] .sz-hero__cta--secondary:hover {
-  background: rgba(255, 244, 224, 0.06);
+  background: rgba(196, 216, 240, 0.06);
   border-color: var(--text-faint);
 }
 
@@ -232,58 +221,134 @@
   text-transform: uppercase;
 }
 
-/* ── Visual anchor ─────────────────────────────────────────────────
-   One scholarship, presented large. It is offset downward against the
-   type column so the two halves of the composition sit at different
-   heights — the asymmetry is what stops this reading as a two-up
-   feature table.
-
-   Height-capped: the whole hero has to resolve inside roughly one
-   viewport, otherwise the composition is a card you scroll past rather
-   than an image you arrive at. */
+/* ── Visual centrepiece ────────────────────────────────────────────
+   Three depth planes plus a slow orbital ring, the way Graphite builds
+   its hero motif: pure light on a dark plane, no rendered object. The
+   planes behind the card are empty surfaces, not content — they exist
+   to give the composition depth and to make the single card read as
+   the subject rather than as one item in a list. */
 .sz-hero__showcase {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
-  padding-top: var(--space-6);
-  max-width: 480px;
+  gap: var(--space-5);
+  max-width: 460px;
   margin-left: auto;
+  isolation: isolate;
 }
 
+.sz-hero__showcase-stage {
+  position: relative;
+  padding: var(--space-8) 0;
+}
+
+/* The orbital ring. Two concentric ellipses on a long rotation, drawn
+   entirely in the frost hairline colour. This is the hero's slowest
+   moving element and the only thing on the page that rotates. */
+.sz-hero__ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+  border: 1px solid var(--sz-frost);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.sz-hero__ring--outer {
+  width: 118%;
+  aspect-ratio: 1;
+  opacity: 0.55;
+  animation: sz-hero-orbit 68s linear infinite;
+}
+
+.sz-hero__ring--inner {
+  width: 82%;
+  aspect-ratio: 1;
+  opacity: 0.3;
+  animation: sz-hero-orbit 44s linear infinite reverse;
+}
+
+[data-theme='dark'] .sz-hero__ring--outer {
+  opacity: 0.85;
+}
+
+[data-theme='dark'] .sz-hero__ring--inner {
+  opacity: 0.45;
+}
+
+/* A single node travelling the outer ring — the "signal" motif. */
+.sz-hero__ring-node {
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+/* Depth plane 1 — furthest back, smallest, offset left. */
+.sz-hero__plane {
+  position: absolute;
+  border: 1px solid var(--sz-frost);
+  border-radius: var(--radius-card);
+  background: var(--sz-glass-tint-2);
+  pointer-events: none;
+}
+
+.sz-hero__plane--far {
+  top: 4%;
+  right: -6%;
+  width: 78%;
+  height: 78%;
+  opacity: 0.55;
+  transform: translate3d(0, 0, -30px) rotate(3.2deg);
+}
+
+.sz-hero__plane--near {
+  bottom: 2%;
+  left: -7%;
+  width: 72%;
+  height: 72%;
+  opacity: 0.4;
+  transform: translate3d(0, 0, -18px) rotate(-2.4deg);
+}
+
+/* Depth plane 2 — the card itself, front and centre. */
 .sz-hero__showcase-card {
   position: relative;
+  z-index: 2;
   border-radius: var(--radius-card);
   box-shadow: var(--sz-glass-shadow-3);
+  animation: sz-hero-float 9s var(--timing-smooth) infinite;
 }
 
-/* A shorter crop than the directory cards. The anchor only needs to
-   read as a photograph, and a 16:9 slot at this size is mostly void. */
 .sz-hero__showcase-card .scholarship-image__ratio {
   aspect-ratio: 2/1;
 }
 
-/* The offset is a static, very small rotation. It reads as a sheet
-   resting at a slight angle on the canvas rather than as a floating
-   3D object, which is the failure mode to avoid here. */
 .sz-hero__showcase-card .scholarship-card {
-  transform: rotate(-0.7deg);
   transition: transform 600ms var(--timing-smooth);
 }
 
 .sz-hero__showcase-card:hover .scholarship-card {
-  transform: rotate(0deg) translateY(-4px);
+  transform: translateY(-4px);
 }
 
 .sz-hero__showcase-note {
-  max-width: 40ch;
+  position: relative;
+  z-index: 2;
+  max-width: 42ch;
   margin: 0;
   color: var(--text-muted);
   font-size: var(--text-xs);
   line-height: 1.6;
 }
 
-/* Loading state mirrors the real showcase geometry so nothing shifts
+/* Loading state mirrors the real composition geometry so nothing shifts
    when the figures arrive. */
 .sz-hero__showcase .sz-hero-card-skeleton__media {
   aspect-ratio: 2/1;
@@ -296,6 +361,25 @@
 
 .sz-hero__showcase .sz-hero-card-skeleton__line {
   margin-inline: var(--space-6);
+}
+
+@keyframes sz-hero-orbit {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes sz-hero-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -9px, 0);
+  }
 }
 
 /* ── Below-the-fold preview ─────────────────────────────────────
@@ -425,6 +509,17 @@
     padding-top: 0;
   }
 
+  /* The depth planes and orbit are the whole point of the composition
+     at desktop; below 1024 they only add cost and noise. */
+  .sz-hero__ring,
+  .sz-hero__plane {
+    display: none;
+  }
+
+  .sz-hero__showcase-stage {
+    padding: 0;
+  }
+
   .sz-hero__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -506,21 +601,27 @@
 @media (prefers-reduced-motion: reduce) {
   .sz-hero__cta,
   .sz-hero__cta svg,
-  .sz-hero__showcase-card .scholarship-card {
+  .sz-hero__showcase-card,
+  .sz-hero__showcase-card .scholarship-card,
+  .sz-hero__ring,
+  .sz-hero__ring-node {
     transition: none;
     animation: none;
   }
 
   .sz-hero__cta:hover,
-  .sz-hero__cta--primary:hover svg {
+  .sz-hero__cta--primary:hover svg,
+  .sz-hero__showcase-card:hover .scholarship-card {
     transform: none;
   }
 
-  /* The showcase offset is a 3D treatment, so it goes even though it
-     is static — a rotated surface reads as perspective to someone who
-     has asked for less of it. */
-  .sz-hero__showcase-card .scholarship-card,
-  .sz-hero__showcase-card:hover .scholarship-card {
-    transform: none;
+  /* The orbital ring still draws — it is light, not movement — but it
+     stops, and the node sits at the top rather than frozen mid-travel. */
+  .sz-hero__ring--outer {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  .sz-hero__ring--inner {
+    transform: translate(-50%, -50%) rotate(0deg);
   }
 }

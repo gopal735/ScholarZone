@@ -36,11 +36,16 @@
   }
 }
 
-/* ── Editorial Heading Styles ─────────────────────────────── */
+/* ── Editorial Heading Styles ───────────────────────────────────
+   Four levels, and the serif only appears at level 1 (the hero) and
+   level 4 (scholarship titles, where it gives the catalogue its
+   voice). Section headings are the sans at display scale with tight
+   tracking — Graphite's pattern — because a serif at every level makes
+   the whole page read as one undifferentiated block. */
 .sz-section__eyebrow {
   display: inline-block;
   margin-bottom: 20px;
-  color: var(--sz-gold);
+  color: var(--sz-accent);
   font-family: var(--sz-body);
   font-size: 0.6875rem;
   font-weight: 600;
@@ -49,25 +54,31 @@
 }
 
 .sz-section__title {
-  font-family: var(--sz-display);
-  font-size: clamp(2rem, 4vw, 3.25rem);
-  font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  font-family: var(--sz-body);
+  font-size: clamp(1.875rem, 3.6vw, 3rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.032em;
+  text-wrap: balance;
   color: var(--sz-ink);
 }
 
 .sz-section__description {
   margin-top: 20px;
-  max-width: 560px;
+  max-width: 58ch;
+  margin-inline: auto;
   color: var(--sz-stone);
   font-size: 1rem;
   line-height: 1.75;
 }
 
+.sz-section__header--left .sz-section__description {
+  margin-inline: 0;
+}
+
 .sz-section__header {
   text-align: center;
-  margin-bottom: clamp(48px, 8vw, 80px);
+  margin-bottom: clamp(48px, 8vw, 84px);
 }
 
 .sz-section__header--left {
@@ -148,7 +159,7 @@
 }
 
 .sz-cta:focus-visible {
-  outline: 2px solid var(--sz-gold);
+  outline: 2px solid var(--sz-accent);
   outline-offset: 2px;
 }
 
@@ -300,7 +311,7 @@
 }
 
 .sz-tag:focus-visible {
-  outline: 2px solid var(--sz-gold);
+  outline: 2px solid var(--sz-accent);
   outline-offset: 2px;
 }
 
@@ -347,8 +358,8 @@
   width: 40px;
   height: 40px;
   margin-bottom: var(--space-5);
-  color: var(--sz-gold);
-  background: var(--sz-gold-soft);
+  color: var(--sz-accent);
+  background: var(--sz-accent-soft);
   border-radius: var(--sz-radius-sm);
 }
 
@@ -377,82 +388,24 @@
   line-height: 1.65;
 }
 
-/* ── Process / How Verification Works ──────────────────────── */
-.sz-section--process {
-  padding-top: calc(var(--sz-section-gap) * 0.75);
+/* ── 03 Trust flow ───────────────────────────────────────────
+   The verification model as a connected sequence. The component
+   owns the progressive fill; this is only the vertical rhythm. */
+.sz-section--verify {
+  padding-top: var(--sz-section-gap);
 }
 
-.sz-process {
-  display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-  gap: clamp(48px, 8vw, 96px);
-  align-items: start;
+.sz-flow-wrap {
+  padding-top: var(--space-6);
 }
 
-@media (max-width: 720px) {
-  .sz-process {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
+/* ── 07 Save & compare ─────────────────────────────────────── */
+.sz-section--decide {
+  padding-top: var(--sz-section-gap);
 }
 
-.sz-process__intro {
-  position: sticky;
-  top: 100px;
-}
-
-@media (max-width: 720px) {
-  .sz-process__intro {
-    position: static;
-  }
-}
-
-.sz-process__steps {
-  display: grid;
-  gap: var(--space-4);
-}
-
-/* A numbered sequence reads better as a continuous rule than as four
-   stacked cards, so the steps share one hairline and the number does the
-   separating. */
-.sz-process__step {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: var(--space-5);
-  padding: var(--space-5) 0;
-  border-top: 1px solid var(--sz-glass-edge-soft);
-  transition: transform var(--sz-duration-micro) var(--sz-timing-micro);
-}
-
-.sz-process__step:last-child {
-  border-bottom: 1px solid var(--sz-glass-edge-soft);
-}
-
-.sz-process__step:hover {
-  transform: translateX(4px);
-}
-
-.sz-process__number {
-  font-family: var(--sz-display);
-  font-size: 1.75rem;
-  font-weight: 400;
-  color: var(--sz-gold);
-  line-height: 1;
-  letter-spacing: -0.02em;
-}
-
-.sz-process__step h3 {
-  margin-bottom: 6px;
-  font-family: var(--sz-body);
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--sz-ink);
-}
-
-.sz-process__step p {
-  color: var(--sz-stone);
-  font-size: 0.8125rem;
-  line-height: 1.6;
+.sz-decision-wrap {
+  padding-top: var(--space-4);
 }
 
 /* ── Statistics ─────────────────────────────────────────────── */
@@ -462,10 +415,9 @@
 
 /* The one deliberately dark band on the page. It exists to give the
    long scroll a contrast anchor — without it every section would be the
-   same pearl weight and the eye would have nowhere to rest. It is warm
-   espresso rather than navy, and it carries the same rim and underlight
-   as every other surface so it reads as polished stone inside the
-   system instead of a hole punched through it. */
+   same surface weight as the cards above it and the eye would have
+   nowhere to rest. It inverts to the darkest plane in the system, so
+   the scroll resolves on a tonal shift rather than on a box. */
 .sz-stats {
   position: relative;
   display: grid;
@@ -473,27 +425,26 @@
   gap: 32px;
   padding: clamp(48px, 8vw, 80px);
   overflow: hidden;
-  background: linear-gradient(168deg, #322B22 0%, #241E17 58%, #1B1710 100%);
-  border: 1px solid rgba(214, 186, 130, 0.22);
+  background: #08090B;
+  border: 1px solid var(--sz-frost);
   border-radius: var(--radius-panel);
-  box-shadow:
-    0 1px 0 rgba(255, 240, 210, 0.12) inset,
-    0 20px 50px rgba(74, 60, 38, 0.22);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
 }
 
-/* Warm bounce from the lower edge plus a champagne bloom from above. */
+/* A cool key light from above and a steel-blue counter-light from
+   below — film colour grading, not a glow. */
 .sz-stats::after {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(100% 70% at 50% -10%, rgba(226, 196, 138, 0.16) 0%, rgba(226, 196, 138, 0) 62%),
-    radial-gradient(90% 60% at 50% 112%, rgba(206, 168, 96, 0.2) 0%, rgba(206, 168, 96, 0) 66%);
+    radial-gradient(100% 70% at 50% -10%, rgba(104, 146, 200, 0.18) 0%, rgba(104, 146, 200, 0) 62%),
+    radial-gradient(90% 60% at 50% 112%, rgba(64, 108, 164, 0.2) 0%, rgba(64, 108, 164, 0) 66%);
   border-radius: inherit;
   pointer-events: none;
 }
 
-/* A single hairline of champagne across the top edge. */
+/* A single hairline of the accent across the top edge. */
 .sz-stats > .sz-stats__item:first-child::before {
   content: '';
   position: absolute;
@@ -501,7 +452,7 @@
   right: 12%;
   left: 12%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--sz-gold), transparent);
+  background: linear-gradient(90deg, transparent, var(--sz-accent), transparent);
   opacity: 0.5;
 }
 
@@ -513,10 +464,11 @@
 
 .sz-stats__item strong {
   display: block;
-  font-family: var(--font-display);
-  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
-  font-weight: 400;
-  color: #FBF6EC;
+  font-family: var(--sz-body);
+  font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  color: #F0F3F7;
   letter-spacing: -0.03em;
   line-height: 1;
 }
@@ -560,7 +512,7 @@
   left: 50%;
   width: min(220px, 40%);
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--sz-gold), transparent);
+  background: linear-gradient(90deg, transparent, var(--sz-accent), transparent);
   opacity: 0.7;
   transform: translateX(-50%);
 }
@@ -620,12 +572,8 @@
   color: var(--text-primary);
 }
 
-[data-theme='dark'] .sz-process__step h3 {
-  color: var(--text-primary);
-}
-
 [data-theme='dark'] .sz-stats__item strong {
-  color: #FBF6EC;
+  color: #F0F3F7;
 }
 
 [data-theme='dark'] .sz-cta-banner h2 {
@@ -650,11 +598,6 @@
 @media (max-width: 480px) {
   .sz-why-card {
     padding: var(--space-6) 0;
-  }
-
-  .sz-process__step {
-    padding: var(--space-4) 0;
-    gap: var(--space-4);
   }
 
   .sz-stats {

@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ScholarshipShowcase from '../components/ScholarshipShowcase'
 import ScholarZoneHero from '../components/ScholarZoneHero'
+import TrustFlow from '../components/TrustFlow'
+import SaveCompareSteps from '../components/SaveCompareSteps'
 import { useScholarshipDirectory } from '../hooks/useScholarshipDirectory'
 import './HomePage.css'
 
@@ -128,7 +130,77 @@ export default function HomePage() {
         </div>
       </ScrollReveal>
 
-      {/* FEATURED SCHOLARSHIPS */}
+      {/* 03 — TRUST: the verification model, as a connected sequence */}
+      <section className="sz-section sz-section--verify" aria-label="How ScholarZone verifies listings">
+        <ScrollReveal className="sz-section__header">
+          <span className="sz-section__eyebrow">Verification</span>
+          <h2 className="sz-section__title">Every listing has a provenance</h2>
+          <p className="sz-section__description">
+            A scholarship page can look authoritative and still be out of date. ScholarZone records
+            where each listing came from and publishes a verification status alongside it, so you can
+            tell a confirmed opportunity from one that needs a second look.
+          </p>
+        </ScrollReveal>
+
+        <ScrollReveal className="sz-flow-wrap">
+          <TrustFlow />
+        </ScrollReveal>
+      </section>
+
+      {/* 04 — HOW SCHOLARZONE WORKS: the editorial feature band */}
+      <section className="sz-section sz-section--why" aria-label="Why ScholarZone">
+        <ScrollReveal className="sz-section__header sz-section__header--left">
+          <span className="sz-section__eyebrow">Why ScholarZone</span>
+          <h2 className="sz-section__title">Built for the decision, not the scroll</h2>
+        </ScrollReveal>
+
+        <div className="sz-why-grid">
+          <ScrollReveal className="sz-why-card" delay={0}>
+            <div className="sz-why-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="m9 12 2 2 4-4m5-4v6c0 5-3.4 8.7-8 10-4.6-1.3-8-5-8-10V6l8-3 8 3Z" />
+              </svg>
+            </div>
+            <h3>Verified listings</h3>
+            <p>Each scholarship is checked against official sources. Status is published on the listing so you know what you are working with.</p>
+          </ScrollReveal>
+
+          <ScrollReveal className="sz-why-card" delay={100}>
+            <div className="sz-why-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 6v6l4 2" />
+              </svg>
+            </div>
+            <h3>Tracked deadlines</h3>
+            <p>Opening and closing dates are recorded and updated. Closing-soon status surfaces what needs attention first.</p>
+          </ScrollReveal>
+
+          <ScrollReveal className="sz-why-card" delay={200}>
+            <div className="sz-why-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </div>
+            <h3>Global coverage</h3>
+            <p>Opportunities across dozens of countries and every degree level — from undergraduate bursaries to doctoral funding.</p>
+          </ScrollReveal>
+
+          <ScrollReveal className="sz-why-card" delay={300}>
+            <div className="sz-why-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" />
+              </svg>
+            </div>
+            <h3>Structured detail</h3>
+            <p>Funding, eligibility, required documents and the application link — in one structured view you can act on.</p>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* 05 — FEATURED SCHOLARSHIPS */}
       <section className="sz-section sz-section--featured" aria-label="Featured scholarships">
         <ScrollReveal className="sz-section__header">
           <span className="sz-section__eyebrow">Featured</span>
@@ -145,10 +217,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* BROWSE BY CATEGORY */}
+      {/* 06 — COUNTRIES / GLOBAL REACH: browse by category */}
       <section className="sz-section sz-section--browse" aria-label="Browse by category">
         <ScrollReveal className="sz-section__header">
-          <span className="sz-section__eyebrow">Browse</span>
+          <span className="sz-section__eyebrow">Global reach</span>
           <h2 className="sz-section__title">Find by what matters to you</h2>
         </ScrollReveal>
 
@@ -201,99 +273,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* WHY SCHOLARZONE */}
-      <section className="sz-section sz-section--why" aria-label="Why ScholarZone">
-        <ScrollReveal className="sz-section__header sz-section__header--left">
-          <span className="sz-section__eyebrow">Why ScholarZone</span>
-          <h2 className="sz-section__title">Scholarship information, made trustworthy</h2>
+      {/* 07 — SAVE + COMPARE */}
+      <section className="sz-section sz-section--decide" aria-label="Save and compare scholarships">
+        <ScrollReveal className="sz-section__header">
+          <span className="sz-section__eyebrow">Decide</span>
+          <h2 className="sz-section__title">Narrow it down, then commit</h2>
+          <p className="sz-section__description">
+            Scholarship search is only useful if it helps you choose. Save what looks serious, put
+            the shortlist side by side, and apply directly with the awarding body.
+          </p>
         </ScrollReveal>
 
-        <div className="sz-why-grid">
-          <ScrollReveal className="sz-why-card" delay={0}>
-            <div className="sz-why-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="m9 12 2 2 4-4m5-4v6c0 5-3.4 8.7-8 10-4.6-1.3-8-5-8-10V6l8-3 8 3Z" />
-              </svg>
-            </div>
-            <h3>Verified Listings</h3>
-            <p>Each scholarship is checked against official sources. Status is clearly marked so you know what you're working with.</p>
-          </ScrollReveal>
-
-          <ScrollReveal className="sz-why-card" delay={100}>
-            <div className="sz-why-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 6v6l4 2" />
-              </svg>
-            </div>
-            <h3>Current Deadlines</h3>
-            <p>Opening and closing dates are tracked and updated. Closing-soon alerts help you prioritise applications.</p>
-          </ScrollReveal>
-
-          <ScrollReveal className="sz-why-card" delay={200}>
-            <div className="sz-why-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>
-            </div>
-            <h3>Global Coverage</h3>
-            <p>Opportunities across dozens of countries and degree levels — from Masters to PhD, bursaries to full scholarships.</p>
-          </ScrollReveal>
-
-          <ScrollReveal className="sz-why-card" delay={300}>
-            <div className="sz-why-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
-                <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" />
-              </svg>
-            </div>
-            <h3>Clear Details</h3>
-            <p>Funding amount, eligibility, required documents and application links — all in one structured view.</p>
-          </ScrollReveal>
-        </div>
+        <ScrollReveal className="sz-decision-wrap">
+          <SaveCompareSteps />
+        </ScrollReveal>
       </section>
 
-      {/* HOW VERIFICATION WORKS */}
-      <section className="sz-section sz-section--process" aria-label="How verification works">
-        <div className="sz-process">
-          <ScrollReveal className="sz-process__intro">
-            <span className="sz-section__eyebrow">Process</span>
-            <h2 className="sz-section__title">How we verify scholarships</h2>
-            <p className="sz-section__description">
-              Every listing goes through a structured verification process before it reaches you.
-            </p>
-          </ScrollReveal>
-
-          <div className="sz-process__steps">
-            <ScrollReveal className="sz-process__step" delay={0}>
-              <div className="sz-process__number">01</div>
-              <h3>Source Collection</h3>
-              <p>Scholarships are gathered from official university portals, government databases, and institutional announcements.</p>
-            </ScrollReveal>
-
-            <ScrollReveal className="sz-process__step" delay={100}>
-              <div className="sz-process__number">02</div>
-              <h3>Cross-Reference</h3>
-              <p>Each listing is checked against primary sources — confirming deadlines, funding details, and eligibility criteria.</p>
-            </ScrollReveal>
-
-            <ScrollReveal className="sz-process__step" delay={200}>
-              <div className="sz-process__number">03</div>
-              <h3>Status Assignment</h3>
-              <p>Every scholarship receives a verification status: active, needs review, or inactive — so you always know the confidence level.</p>
-            </ScrollReveal>
-
-            <ScrollReveal className="sz-process__step" delay={300}>
-              <div className="sz-process__number">04</div>
-              <h3>Regular Updates</h3>
-              <p>Listings are re-verified on a rolling basis. Deadlines and details stay current as information changes.</p>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* STATISTICS */}
+      {/* 08 — STATISTICS: the figures the directory actually holds */}
       <section className="sz-section sz-section--stats" aria-label="ScholarZone statistics">
         <ScrollReveal className="sz-stats">
           <div className="sz-stats__item">
@@ -315,11 +311,11 @@ export default function HomePage() {
         </ScrollReveal>
       </section>
 
-      {/* FINAL CTA */}
+      {/* 09 — FINAL CTA */}
       <section className="sz-section sz-section--cta" aria-label="Get started">
         <ScrollReveal className="sz-cta-banner">
-          <h2>Ready to find your scholarship?</h2>
-          <p>Browse the full directory, save opportunities that fit, and compare your options side by side.</p>
+          <h2>Start with the directory</h2>
+          <p>Browse every opportunity on ScholarZone, save the ones worth applying to, and compare them properly.</p>
           <div className="sz-cta-banner__actions">
             <Link to="/scholarships" className="sz-cta sz-cta--primary">
               Browse All Scholarships

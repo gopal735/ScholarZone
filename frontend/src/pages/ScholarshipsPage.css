@@ -33,9 +33,9 @@
   text-transform: uppercase;
 }
 
-/* Page mastheads use the display serif, matching the hero, the saved and
-   compare mastheads and the card titles. A sans masthead here was the
-   last place the product read as two different designs. */
+/* Interior page mastheads use the display serif, matching the hero and
+   the country pages. Section headings inside the page are sans — the
+   serif marks an editorial statement, the sans marks structure. */
 .page-heading h1 {
   font-family: var(--font-display);
   font-size: var(--text-display);
@@ -54,7 +54,7 @@
   line-height: 1.65;
 }
 
-/* A small pearl note, on the same shelf as the filter panel. Kept as a
+/* A small note, on the same shelf as the filter panel. Kept as a
    panel because it is genuinely a separate note, not a content block —
    but it is a light surface with a hairline, not a blurred one. */
 .page-heading__trust {

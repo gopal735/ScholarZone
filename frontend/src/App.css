@@ -17,14 +17,14 @@
   pointer-events: none;
   user-select: none;
   background:
-    radial-gradient(130% 70% at 50% -14%, rgba(255, 255, 253, 0.9) 0%, rgba(255, 253, 248, 0) 60%),
-    linear-gradient(180deg, #FCFAF5 0%, #FAF7F1 46%, #F6F2EA 100%);
+    radial-gradient(120% 62% at 50% -18%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 58%),
+    linear-gradient(180deg, #FBFCFD 0%, #F6F7F9 44%, #F0F2F5 100%);
 }
 
 [data-theme='dark'] .app-atmosphere {
   background:
-    radial-gradient(130% 70% at 50% -14%, rgba(72, 64, 54, 0.4) 0%, rgba(28, 25, 22, 0) 60%),
-    linear-gradient(180deg, #1A1816 0%, #131110 48%, #0E0C0B 100%);
+    radial-gradient(120% 62% at 50% -18%, rgba(64, 82, 108, 0.34) 0%, rgba(10, 12, 16, 0) 58%),
+    linear-gradient(180deg, #0B0D11 0%, #08090B 46%, #050608 100%);
 }
 
 /* One organic body.
@@ -46,56 +46,58 @@
   );
 }
 
-/* Pearl — the brightest body, top-left, reads as window light. */
-.app-atmosphere__wash--pearl {
-  top: -36vh;
-  left: -24vw;
-  width: 96vw;
-  height: 104vh;
-  --sz-atmo-color: rgba(255, 255, 253, 0.9);
-  --sz-atmo-extent: 64% 60%;
-  --sz-atmo-cx: 46%;
-  --sz-atmo-cy: 42%;
+/* Key — the broad cool light from above. It is the reason the page
+   reads as lit rather than as a flat fill. */
+.app-atmosphere__wash--key {
+  top: -40vh;
+  left: -26vw;
+  width: 100vw;
+  height: 108vh;
+  --sz-atmo-color: rgba(255, 255, 255, 0.92);
+  --sz-atmo-extent: 64% 58%;
+  --sz-atmo-cx: 44%;
+  --sz-atmo-cy: 40%;
   animation: sz-liquid-drift-a var(--sz-atmo-duration) ease-in-out infinite;
 }
 
-/* Champagne — the accent body, right, warms the canvas. Kept faint:
-   this is ambient light, not a coloured gel. */
-.app-atmosphere__wash--champagne {
-  top: 18vh;
-  right: -32vw;
-  width: 90vw;
-  height: 100vh;
-  --sz-atmo-color: rgba(223, 202, 158, 0.17);
+/* Rim — a cold counter-light from the lower right. It keeps the dark
+   theme from going flat without introducing a second accent. */
+.app-atmosphere__wash--rim {
+  top: 22vh;
+  right: -34vw;
+  width: 94vw;
+  height: 104vh;
+  --sz-atmo-color: rgba(150, 186, 230, 0.16);
   --sz-atmo-extent: 58% 54%;
   --sz-atmo-cx: 52%;
-  --sz-atmo-cy: 50%;
+  --sz-atmo-cy: 52%;
   animation: sz-liquid-drift-b calc(var(--sz-atmo-duration) * 1.3) ease-in-out infinite;
 }
 
-/* Warm beige — grounds the lower half so the page does not fade out. */
-.app-atmosphere__wash--beige {
-  bottom: -34vh;
-  left: -20vw;
-  width: 88vw;
-  height: 82vh;
-  --sz-atmo-color: rgba(206, 188, 152, 0.13);
+/* Deep — a wide, very soft body near the fold so the lower page does
+   not fade into nothing. */
+.app-atmosphere__wash--deep {
+  bottom: -36vh;
+  left: -22vw;
+  width: 92vw;
+  height: 86vh;
+  --sz-atmo-color: rgba(168, 196, 232, 0.11);
   --sz-atmo-extent: 56% 52%;
   --sz-atmo-cx: 50%;
   --sz-atmo-cy: 50%;
   animation: sz-liquid-drift-c calc(var(--sz-atmo-duration) * 0.9) ease-in-out infinite;
 }
 
-[data-theme='dark'] .app-atmosphere__wash--pearl {
-  --sz-atmo-color: rgba(226, 210, 180, 0.09);
+[data-theme='dark'] .app-atmosphere__wash--key {
+  --sz-atmo-color: rgba(104, 146, 200, 0.16);
 }
 
-[data-theme='dark'] .app-atmosphere__wash--champagne {
-  --sz-atmo-color: rgba(198, 168, 116, 0.1);
+[data-theme='dark'] .app-atmosphere__wash--rim {
+  --sz-atmo-color: rgba(72, 116, 172, 0.15);
 }
 
-[data-theme='dark'] .app-atmosphere__wash--beige {
-  --sz-atmo-color: rgba(150, 130, 100, 0.08);
+[data-theme='dark'] .app-atmosphere__wash--deep {
+  --sz-atmo-color: rgba(46, 78, 120, 0.13);
 }
 
 /* A single very slow sheen. It is the only element allowed to read as
@@ -107,23 +109,22 @@
   width: 42%;
   height: 120%;
   pointer-events: none;
-  background: linear-gradient(
-    100deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.34) 48%,
-    rgba(255, 255, 255, 0) 100%
+  background:
+    radial-gradient(100deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.32) 48%,
+      rgba(255, 255, 255, 0) 100%
   );
   transform: translate3d(-30%, 0, 0);
-  animation: sz-liquid-sheen 44s ease-in-out infinite;
+  animation: sz-liquid-sheen 46s ease-in-out infinite;
   will-change: transform, opacity;
 }
-
 [data-theme='dark'] .app-atmosphere__sheen {
   background: linear-gradient(
     100deg,
-    rgba(255, 244, 224, 0) 0%,
-    rgba(255, 244, 224, 0.05) 48%,
-    rgba(255, 244, 224, 0) 100%
+    rgba(196, 216, 240, 0) 0%,
+    rgba(196, 216, 240, 0.05) 48%,
+    rgba(196, 216, 240, 0) 100%
   );
 }
 
@@ -174,12 +175,12 @@
   bottom: -28px;
   left: 0;
   height: 28px;
-  background: linear-gradient(180deg, rgba(250, 247, 241, 0.6) 0%, rgba(250, 247, 241, 0) 100%);
+  background: linear-gradient(180deg, rgba(246, 247, 249, 0.7) 0%, rgba(246, 247, 249, 0) 100%);
   pointer-events: none;
 }
 
 [data-theme='dark'] .site-header.is-scrolled::after {
-  background: linear-gradient(180deg, rgba(19, 17, 16, 0.6) 0%, rgba(19, 17, 16, 0) 100%);
+  background: linear-gradient(180deg, rgba(8, 9, 11, 0.7) 0%, rgba(8, 9, 11, 0) 100%);
 }
 
 .site-header.is-scrolled .nav-bar {
@@ -290,7 +291,7 @@
    drift entirely — an animated field is wasted motion on a small,
    often battery-constrained viewport. */
 @media (max-width: 768px) {
-  .app-atmosphere__wash--beige,
+  .app-atmosphere__wash--deep,
   .app-atmosphere__sheen {
     display: none;
   }
