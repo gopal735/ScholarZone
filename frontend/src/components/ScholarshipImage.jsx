@@ -4,7 +4,7 @@ import './ScholarshipImage.css'
 const IMAGE_ASPECT_RATIO_CLASS = 'scholarship-image__ratio'
 const RETRY_ATTEMPTS = 2
 
-function ImageContent({ imageUrl, altText, onError }) {
+function ImageContent({ imageUrl, altText, onError, onLoad }) {
   return (
     <img
       src={imageUrl}
@@ -13,6 +13,7 @@ function ImageContent({ imageUrl, altText, onError }) {
       loading="lazy"
       decoding="async"
       onError={onError}
+      onLoad={onLoad}
     />
   )
 }
@@ -23,18 +24,27 @@ export default function ScholarshipImage({ scholarship, className = '' }) {
   const sourceType = scholarship?.image_source_type || scholarship?.imageSourceType || null
   const [hasError, setHasError] = useState(false)
   const [retryKey, setRetryKey] = useState(0)
+  const [isLoaded, setIsLoaded] = useState(false)
 
   const handleError = () => {
     if (retryKey < RETRY_ATTEMPTS) {
+      setIsLoaded(false)
       setRetryKey((prev) => prev + 1)
     } else {
       setHasError(true)
     }
   }
 
+  const handleLoad = () => {
+    setIsLoaded(true)
+  }
+
   if (!imageUrl || typeof imageUrl !== 'string' || imageUrl.trim() === '') {
     return (
-      <div className={`scholarship-image scholarship-image--placeholder ${className}`} aria-label="No image available">
+      <div
+        className={`scholarship-image scholarship-image--placeholder ${IMAGE_ASPECT_RATIO_CLASS} ${className}`.trim()}
+        aria-label="No image available"
+      >
         <svg className="scholarship-image__icon" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M21 12v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h3m4 0 3 3 3-3m0 0V5a2 2 0 0 1 2-2h3" />
         </svg>
@@ -44,7 +54,10 @@ export default function ScholarshipImage({ scholarship, className = '' }) {
 
   if (hasError) {
     return (
-      <div className={`scholarship-image scholarship-image--broken ${className}`} aria-label="Image failed to load">
+      <div
+        className={`scholarship-image scholarship-image--broken ${IMAGE_ASPECT_RATIO_CLASS} ${className}`.trim()}
+        aria-label="Image failed to load"
+      >
         <svg className="scholarship-image__icon" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M21 12v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h3m4 0 3 3 3-3m0 0V5a2 2 0 0 1 2-2h3" />
         </svg>
@@ -59,13 +72,13 @@ export default function ScholarshipImage({ scholarship, className = '' }) {
   ].filter(Boolean).join(' ')
 
   return (
-    <div className={wrapperClasses}>
+    <div className={wrapperClasses} data-loaded={isLoaded || undefined}>
       <ImageContent
         key={retryKey}
         imageUrl={imageUrl}
         altText={altText}
-        sourceType={sourceType}
         onError={handleError}
+        onLoad={handleLoad}
       />
       {sourceType && (
         <span className="scholarship-image__source-indicator" title={`Source type: ${sourceType}`}>

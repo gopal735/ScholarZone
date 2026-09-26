@@ -1,48 +1,90 @@
-.scholarship-card {
+/* ═══════════════════════════════════════════════════════════════════
+   Scholarship Card
+   Single owner of every .scholarship-card* rule. The surface reuses
+   the Phase 1 glass tokens but stays blur-free (level 1), because a
+   directory renders this many times and a backdrop-filter per card
+   would be unbounded. The card is editorial, not a glass container.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* AdminPage.css declares its own .scholarship-card for a local review
+   row and loads after this file, so the bare class ties on specificity
+   and the admin surface would win. Scoping the base surface to the
+   <article> element this component actually renders keeps the two
+   components from colliding without renaming either one. */
+article.scholarship-card {
   position: relative;
   display: flex;
   flex-direction: column;
+  gap: 0;
   min-height: 100%;
-  padding: 24px;
+  padding: 0;
   overflow: hidden;
-  background: var(--surface-raised, #ffffff);
-  border: 1px solid var(--border, #e2e8f0);
-  border-radius: 18px;
-  box-shadow: var(--shadow-card, 0 5px 16px rgba(15, 23, 42, 0.045));
-  transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
+  background: var(--sz-glass-tint-1);
+  border: 1px solid var(--sz-glass-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--sz-depth-2);
+  animation: none;
+  transition:
+    transform var(--duration-lift) var(--timing-spring),
+    border-color var(--duration-hover) var(--timing-smooth),
+    box-shadow var(--duration-lift) var(--timing-smooth);
 }
 
-.scholarship-card__image {
-  margin-bottom: 20px;
+article.scholarship-card:hover,
+article.scholarship-card:focus-within {
+  transform: translateY(-4px) scale(1.006);
+  border-color: var(--sz-glass-border-hover);
+  box-shadow: var(--sz-glass-shadow-2);
 }
 
+/* Restrained gold hairline that reads as a top edge, not a glow. */
 .scholarship-card::before {
   position: absolute;
   top: 0;
-  right: 24px;
-  left: 24px;
-  height: 3px;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  height: 2px;
   content: '';
-  background: linear-gradient(90deg, var(--accent, #2563eb), var(--accent-border, #93c5fd));
-  border-radius: 0 0 4px 4px;
-  opacity: 0;
-  transition: opacity 0.24s ease;
-}
-
-.scholarship-card:hover,
-.scholarship-card:focus-within {
-  transform: translateY(-2px);
-  border-color: var(--accent-border);
-  box-shadow: var(--shadow-elevated);
+  background: linear-gradient(90deg, var(--sz-gold) 0%, var(--sz-gold-deep) 55%, transparent 100%);
+  opacity: 0.28;
+  transition: opacity var(--duration-hover) var(--timing-smooth);
 }
 
 .scholarship-card:hover::before,
 .scholarship-card:focus-within::before {
-  opacity: 1;
+  opacity: 0.85;
 }
 
+/* Urgency is carried by the hairline, not by a coloured card. */
+.scholarship-card--closing-soon::before {
+  background: linear-gradient(90deg, var(--warning) 0%, var(--warning-border) 60%, transparent 100%);
+  opacity: 0.5;
+}
+
+.scholarship-card--closed {
+  opacity: 0.78;
+}
+
+.scholarship-card--closed::before {
+  background: linear-gradient(90deg, var(--danger) 0%, var(--danger-border) 60%, transparent 100%);
+  opacity: 0.45;
+}
+
+/* ── Image ──────────────────────────────────────────────────────
+   Full-bleed to the card edges; the card clips it to its radius. */
+.scholarship-card .scholarship-card__image {
+  margin-bottom: 0;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  border-radius: 0;
+}
+
+/* ── Header ────────────────────────────────────────────────────── */
 .scholarship-card__header {
-  margin-bottom: var(--space-5);
+  padding: var(--space-5) var(--space-5) 0;
+  margin-bottom: var(--space-4);
 }
 
 .scholarship-card__topline,
@@ -65,27 +107,33 @@
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  padding: var(--space-1) var(--space-2);
+  max-width: 100%;
+  padding: 3px var(--space-2);
+  overflow: hidden;
   font-size: var(--text-xs);
   font-weight: 700;
-  line-height: 1.25;
+  line-height: 1.3;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   border-radius: var(--radius-pill);
 }
 
+/* On-tint tokens keep these above 4.5:1; raw --accent on a 10% gold
+   fill only reaches 2.6:1 on paper. */
 .scholarship-card__badge {
-  color: var(--accent);
+  color: var(--sz-accent-text);
   background: var(--accent-soft);
   border: 1px solid var(--accent-border);
 }
 
 .scholarship-card__status {
-  color: var(--accent);
-  background: var(--surface-subtle);
-  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  background: var(--sz-glass-tint-2);
+  border: 1px solid var(--sz-glass-border);
 }
 
 .scholarship-card__status--closing-soon {
-  color: var(--warning);
+  color: var(--sz-warning-text);
   background: var(--warning-soft);
   border-color: var(--warning-border);
 }
@@ -97,15 +145,18 @@
 }
 
 .scholarship-card h2 {
+  margin: 0;
   color: var(--text-primary);
-  font-size: var(--text-xl);
-  font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: -0.025em;
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 400;
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
 }
 
 .scholarship-card__provider {
-  margin-top: var(--space-1);
+  margin: var(--space-1) 0 0;
   color: var(--text-secondary);
   font-size: var(--text-base);
   font-weight: 600;
@@ -118,21 +169,22 @@
 }
 
 .scholarship-card__verified {
-  color: var(--success, #047857);
-  background: var(--success-soft, #ecfdf5);
-  border: 1px solid var(--success-border, #bbf7d0);
+  color: var(--sz-success-text);
+  background: var(--success-soft);
+  border: 1px solid var(--success-border);
 }
 
 .scholarship-card__unverified {
-  color: var(--warning, #9a3412);
-  background: var(--warning-soft, #fff7ed);
-  border: 1px solid var(--warning-border, #fed7aa);
+  color: var(--sz-warning-text);
+  background: var(--warning-soft);
+  border: 1px solid var(--warning-border);
 }
 
 .scholarship-card__verified svg,
 .scholarship-card__unverified svg {
   width: 13px;
   height: 13px;
+  flex: 0 0 auto;
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
@@ -141,15 +193,19 @@
 }
 
 .scholarship-card__verification-date {
-  color: var(--text-muted, #64748b);
+  color: var(--text-muted);
   font-size: 0.6875rem;
   font-weight: 700;
+  font-variant-numeric: tabular-nums;
 }
 
+/* ── Facts ─────────────────────────────────────────────────────── */
 .scholarship-card__details {
-  display: grid;
+  display: flex;
   flex: 1;
-  gap: 8px;
+  flex-direction: column;
+  gap: 0;
+  padding: 0 var(--space-5);
   margin: 0;
 }
 
@@ -157,100 +213,207 @@
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 14px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border, #eef2f7);
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--sz-glass-edge-soft);
 }
 
 .scholarship-card__details dt {
-  color: var(--text-muted, #64748b);
-  font-size: 0.75rem;
+  flex: 0 0 auto;
+  color: var(--text-muted);
+  font-size: 0.6875rem;
   font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .scholarship-card__details dd {
+  min-width: 0;
   margin: 0;
-  color: var(--text-secondary, #334155);
-  font-size: 0.875rem;
-  font-weight: 750;
+  color: var(--text-primary);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  line-height: 1.35;
   text-align: right;
+  overflow-wrap: anywhere;
 }
 
+/* The deadline is the scan anchor, so it reads as a labelled panel. */
 .scholarship-card__detail--deadline {
   align-items: center;
-  padding: 12px;
-  margin-bottom: 4px;
-  background: var(--surface-subtle, #f8fafc);
-  border: 1px solid var(--border, #e2e8f0);
-  border-radius: 10px;
+  padding: var(--space-3);
+  margin-bottom: var(--space-3);
+  background: var(--sz-glass-tint-2);
+  border: 1px solid var(--sz-glass-border);
+  border-left: 3px solid var(--sz-gold);
+  border-radius: var(--radius-md);
 }
 
-.scholarship-card__detail--closing-soon {
-  background: var(--warning-soft, #fff7ed);
-  border-color: var(--warning-border, #fed7aa);
+.scholarship-card__detail--deadline dt {
+  letter-spacing: 0.06em;
 }
 
-.scholarship-card__detail--closed {
-  background: var(--danger-soft, #fef2f2);
-  border-color: var(--danger-border, #fecaca);
+.scholarship-card__detail--closing-soon.scholarship-card__detail--deadline {
+  background: var(--warning-soft);
+  border-color: var(--warning-border);
+  border-left-color: var(--warning);
+}
+
+.scholarship-card__detail--closed.scholarship-card__detail--deadline {
+  background: var(--danger-soft);
+  border-color: var(--danger-border);
+  border-left-color: var(--danger);
 }
 
 .scholarship-card__detail--closing-soon dt,
-.scholarship-card__detail--closing-soon dd {
-  color: var(--warning, #9a3412);
+.scholarship-card__detail--closing-soon dd,
+.scholarship-card__detail--closed dt,
+.scholarship-card__detail--closed dd {
+  color: var(--sz-warning-text);
 }
 
 .scholarship-card__detail--closed dt,
 .scholarship-card__detail--closed dd {
-  color: var(--danger, #b91c1c);
+  color: var(--danger);
 }
 
+/* ── Action zone ───────────────────────────────────────────────── */
 .scholarship-card__footer {
-  margin-top: 20px;
+  padding: var(--space-4) var(--space-5) var(--space-5);
+  margin-top: auto;
 }
 
 .scholarship-card .scholarship-actions {
-  margin-bottom: 10px;
+  margin-bottom: var(--space-3);
 }
 
 .scholarship-card__button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 9px;
+  gap: var(--space-2);
   width: 100%;
   min-height: 44px;
-  padding: 10px 16px;
-  color: var(--accent);
-  font-size: 0.875rem;
-  font-weight: 800;
+  padding: var(--space-3) var(--space-4);
+  color: var(--sz-ink);
+  font-size: var(--text-sm);
+  font-weight: 700;
   text-decoration: none;
-  background: var(--surface-raised);
-  border: 1px solid var(--accent-border);
-  border-radius: 10px;
-  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  background: var(--sz-glass-tint-2);
+  border: 1px solid var(--sz-glass-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--sz-depth-1);
+  transition:
+    color var(--duration-hover) var(--timing-smooth),
+    background-color var(--duration-hover) var(--timing-smooth),
+    border-color var(--duration-hover) var(--timing-smooth),
+    box-shadow var(--duration-lift) var(--timing-smooth),
+    transform var(--duration-lift) var(--timing-smooth);
 }
 
 .scholarship-card__button:hover {
-  color: #ffffff;
-  background: var(--accent);
-  border-color: var(--accent);
-  box-shadow: 0 4px 12px rgba(196, 164, 74, 0.2);
-  transform: translateY(-1px);
+  color: var(--sz-paper);
+  background: var(--sz-ink);
+  border-color: var(--sz-ink);
+  box-shadow: 0 8px 22px rgba(27, 42, 74, 0.18);
+  transform: translateY(-2px);
 }
 
 .scholarship-card__button:active {
-  box-shadow: none;
-  transform: translateY(1px);
+  box-shadow: var(--sz-depth-1);
+  transform: translateY(0);
 }
 
 .scholarship-card__button:focus-visible {
-  outline: 2px solid var(--focus-ring);
-  outline-offset: 3px;
+  outline: var(--focus-ring-width) solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.scholarship-card__button span {
+  transition: transform var(--duration-hover) var(--timing-smooth);
+}
+
+.scholarship-card__button:hover span {
+  transform: translateX(3px);
+}
+
+[data-theme='dark'] .scholarship-card__button {
+  color: var(--sz-ink);
+  background: var(--sz-glass-tint-2);
+  border-color: var(--sz-glass-border);
+}
+
+[data-theme='dark'] .scholarship-card__button:hover {
+  color: var(--sz-paper);
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
+}
+
+/* ── Responsive ──────────────────────────────────────────────────
+   Critical data is never hidden; the type scale and padding tighten
+   instead. */
+@media (max-width: 1280px) {
+  .scholarship-card h2 {
+    font-size: 1.25rem;
+  }
 }
 
 @media (max-width: 640px) {
+  .scholarship-card h2 {
+    font-size: 1.1875rem;
+  }
+
+  .scholarship-card__header {
+    padding: var(--space-4) var(--space-4) 0;
+  }
+
+  .scholarship-card__details {
+    padding: 0 var(--space-4);
+  }
+
+  .scholarship-card__footer {
+    padding: var(--space-4);
+  }
+}
+
+@media (max-width: 380px) {
+  .scholarship-card h2 {
+    font-size: 1.0625rem;
+  }
+
+  .scholarship-card__topline {
+    gap: var(--space-1);
+  }
+
+  .scholarship-card__badge,
+  .scholarship-card__status {
+    font-size: 0.625rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scholarship-card,
+  .scholarship-card::before,
+  .scholarship-card__button,
+  .scholarship-card__button span {
+    transition: none;
+    animation: none;
+  }
+
+  .scholarship-card:hover,
+  .scholarship-card:focus-within {
+    transform: none;
+  }
+}
+
+@media (prefers-contrast: more) {
   .scholarship-card {
-    padding: 20px;
+    background: var(--sz-glass-solid-1);
+    border-color: var(--sz-glass-edge-soft);
+  }
+
+  .scholarship-card::before {
+    display: none;
   }
 }

@@ -1,50 +1,66 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Scholarship Image
+   Shared by the scholarship card and the scholarship details hero, so
+   the 16/9 ratio and every fallback state stay untouched. Only the
+   presentation changes.
+   ═══════════════════════════════════════════════════════════════════ */
+
 .scholarship-image {
   position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
   overflow: hidden;
-  background: var(--surface-subtle, #f8fafc);
-  border: 1px solid var(--border, #e2e8f0);
-  border-radius: 12px;
+  background: var(--sz-glass-tint-2);
+  border: 1px solid var(--sz-glass-border);
+  border-radius: var(--radius-md);
 }
 
+/* Reserved before the bytes arrive, so the fade cannot shift layout.
+   flex: 0 0 auto stops the card's column flex from resizing the slot. */
 .scholarship-image__ratio {
+  position: relative;
+  flex: 0 0 auto;
   aspect-ratio: 16/9;
   width: 100%;
 }
 
+/* Absolute fill: the ratio owns the box, the image only covers it. */
 .scholarship-image__img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
-  border-radius: calc(12px - 1px);
+  opacity: 0;
+  transform: scale(1.015);
+  transition:
+    opacity var(--duration-page) var(--timing-smooth),
+    transform var(--duration-page) var(--timing-smooth);
 }
 
-.scholarship-image__img,
-.scholarship-image__placeholder,
-.scholarship-image__broken,
-.scholarship-image__ratio {
-  width: 100%;
-  height: 100%;
+.scholarship-image[data-loaded] .scholarship-image__img {
+  opacity: 1;
+  transform: scale(1);
 }
 
-.scholarship-image__placeholder {
-  display: inline-grid;
+/* Fallbacks share one quiet treatment so a missing image reads as a
+   deliberate slot rather than a broken asset. These are modifier
+   classes on the root element, so the selectors use the two-hyphen
+   form the component actually renders. The ratio class supplies the
+   height, so none is declared here. */
+.scholarship-image--placeholder,
+.scholarship-image--broken {
+  display: grid;
   place-items: center;
-  color: var(--text-muted, #94a3b8);
-}
-
-.scholarship-image__broken {
-  display: inline-grid;
-  place-items: center;
-  color: var(--text-muted, #94a3b8);
+  color: var(--text-faint);
+  background: linear-gradient(150deg, var(--sz-glass-tint-2) 0%, var(--sz-mist-soft) 100%);
 }
 
 .scholarship-image__icon {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.5;
@@ -54,21 +70,39 @@
 
 .scholarship-image__source-indicator {
   position: absolute;
-  bottom: 6px;
-  right: 6px;
-  padding: 2px 8px;
-  font-size: 0.625rem;
+  right: var(--space-2);
+  bottom: var(--space-2);
+  z-index: 1;
+  max-width: calc(100% - var(--space-4));
+  padding: 3px var(--space-2);
+  overflow: hidden;
+  color: #ffffff;
+  font-size: 0.5625rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.9);
-  background: rgba(0, 0, 0, 0.55);
-  border-radius: 4px;
+  line-height: 1.3;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
+  background: rgba(15, 23, 41, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-pill);
 }
 
 @media (max-width: 640px) {
   .scholarship-image__icon {
-    width: 26px;
-    height: 26px;
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scholarship-image__img {
+    transition: none;
+    transform: none;
+  }
+
+  .scholarship-image[data-loaded] .scholarship-image__img {
+    transform: none;
   }
 }

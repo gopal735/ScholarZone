@@ -1,3 +1,11 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Scholarship Actions
+   Shared by the card and the details hero (variant="details"). All
+   state classes, aria wiring and feedback messaging are owned by
+   ScholarshipActions.jsx and are unchanged; this file is presentation
+   only.
+   ═══════════════════════════════════════════════════════════════════ */
+
 .scholarship-actions {
   position: relative;
 }
@@ -5,28 +13,39 @@
 .scholarship-actions__buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: var(--space-2);
 }
 
 .scholarship-actions__button {
   display: inline-flex;
+  flex: 1 1 auto;
   align-items: center;
-  gap: 6px;
-  min-height: 34px;
-  padding: 7px 9px;
-  color: var(--text-muted);
-  font-size: 0.75rem;
-  font-weight: 800;
+  justify-content: center;
+  gap: var(--space-2);
+  min-width: 44px;
+  min-height: 44px;
+  padding: var(--space-2) var(--space-3);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 700;
   cursor: pointer;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  background: var(--sz-glass-tint-2);
+  border: 1px solid var(--sz-glass-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--sz-depth-1);
+  transition:
+    color var(--duration-hover) var(--timing-smooth),
+    background-color var(--duration-hover) var(--timing-smooth),
+    border-color var(--duration-hover) var(--timing-smooth),
+    box-shadow var(--duration-lift) var(--timing-smooth),
+    transform var(--duration-lift) var(--timing-smooth);
 }
 
 .scholarship-actions__button svg {
-  width: 14px;
-  height: 14px;
+  width: 15px;
+  height: 15px;
+  flex: 0 0 auto;
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
@@ -35,15 +54,23 @@
 }
 
 .scholarship-actions__button:hover {
-  color: var(--accent);
-  background: var(--accent-soft);
-  border-color: var(--accent-border);
+  color: var(--sz-ink);
+  background: var(--sz-glass-tint-3);
+  border-color: var(--sz-glass-border-hover);
+  transform: translateY(-2px);
 }
 
 .scholarship-actions__button.is-active {
-  color: var(--accent);
+  color: var(--sz-accent-text);
   background: var(--accent-soft);
   border-color: var(--accent-border);
+  box-shadow: none;
+}
+
+.scholarship-actions__button.is-active:hover {
+  color: var(--sz-paper);
+  background: var(--accent);
+  border-color: var(--accent);
 }
 
 .scholarship-actions__button.is-active svg:first-child {
@@ -55,29 +82,85 @@
 }
 
 .scholarship-actions__button.is-at-limit:not(.is-active) {
-  color: var(--warning-strong);
+  color: var(--sz-warning-text);
   border-color: var(--warning-border);
 }
 
 .scholarship-actions__button:active {
-  transform: translateY(1px);
+  transform: translateY(0);
+  box-shadow: var(--sz-depth-1);
 }
 
 .scholarship-actions__button:focus-visible {
-  outline: 2px solid var(--focus-ring);
-  outline-offset: 3px;
+  outline: var(--focus-ring-width) solid var(--focus-ring);
+  outline-offset: 2px;
 }
 
 .scholarship-actions__feedback {
-  margin-top: 8px;
-  color: var(--warning-strong);
-  font-size: 0.75rem;
+  margin: var(--space-2) 0 0;
+  color: var(--sz-warning-text);
+  font-size: var(--text-xs);
   font-weight: 700;
   line-height: 1.45;
 }
 
 .scholarship-actions--details .scholarship-actions__button {
-  min-height: 40px;
-  padding: 9px 12px;
-  font-size: 0.8125rem;
+  min-height: 44px;
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+}
+
+[data-theme='dark'] .scholarship-actions__button {
+  color: var(--text-muted);
+  background: var(--sz-glass-tint-2);
+  border-color: var(--sz-glass-border);
+}
+
+[data-theme='dark'] .scholarship-actions__button:hover {
+  color: var(--text-primary);
+  background: var(--sz-glass-tint-3);
+  border-color: var(--sz-glass-border-hover);
+}
+
+[data-theme='dark'] .scholarship-actions__button.is-active {
+  color: var(--sz-accent-text);
+  background: var(--accent-soft);
+  border-color: var(--accent-border);
+}
+
+[data-theme='dark'] .scholarship-actions__button.is-active:hover {
+  color: var(--sz-paper);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+[data-theme='dark'] .scholarship-actions__button.is-at-limit:not(.is-active),
+[data-theme='dark'] .scholarship-actions__feedback {
+  color: var(--sz-warning-text);
+}
+
+@media (max-width: 480px) {
+  .scholarship-actions__button {
+    padding: var(--space-2);
+    font-size: 0.6875rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scholarship-actions__button {
+    transition: none;
+    animation: none;
+  }
+
+  .scholarship-actions__button:hover,
+  .scholarship-actions__button:active {
+    transform: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .scholarship-actions__button {
+    background: var(--sz-glass-solid-1);
+    border-color: var(--sz-glass-edge-soft);
+  }
 }
