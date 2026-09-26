@@ -60,10 +60,10 @@
   --mesh-2: radial-gradient(ellipse 60% 80% at 80% 90%, rgba(0, 122, 255, 0.14) 0%, transparent 60%);
   --mesh-3: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
 
-  /* Typography */
-  --text-primary: rgba(255, 255, 255, 0.92);
-  --text-secondary: rgba(255, 255, 255, 0.55);
-  --text-tertiary: rgba(255, 255, 255, 0.32);
+  /* Typography tokens are owned by theme.css. This file used to
+     redefine --text-primary/--secondary/--tertiary in :root, which
+     leaked admin-only white values into every route. Admin text now
+     resolves from the same theme tokens as the public site. */
 
   /* Spring easing — Apple-style */
   --spring: cubic-bezier(0.34, 1.56, 0.64, 1);

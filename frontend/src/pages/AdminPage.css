@@ -744,7 +744,7 @@
 }
 
 /* ── Scholarship Grid ── */
-.scholarship-grid {
+.admin-review-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 14px;
@@ -752,7 +752,7 @@
 }
 
 /* ── Scholarship Card ── */
-.scholarship-card {
+.admin-review-row {
   position: relative;
   border-radius: var(--glass-radius-lg);
   background: rgba(255,255,255,0.03);
@@ -770,7 +770,7 @@
   padding: 18px;
 }
 
-.scholarship-card:hover {
+.admin-review-row:hover {
   background: rgba(255,255,255,0.06);
   border-color: rgba(255,255,255,0.12);
   box-shadow:
@@ -779,7 +779,7 @@
   transform: translateY(-2px);
 }
 
-.scholarship-card--alert {
+.admin-review-row--alert {
   border-color: rgba(255,159,10,0.24);
   box-shadow:
     0 8px 24px rgba(0,0,0,0.14),
@@ -787,7 +787,7 @@
     0 0 20px rgba(255,159,10,0.08);
 }
 
-.scholarship-card--alert:hover {
+.admin-review-row--alert:hover {
   border-color: rgba(255,159,10,0.38);
   box-shadow:
     0 16px 40px rgba(0,0,0,0.22),
@@ -795,20 +795,20 @@
     0 0 32px rgba(255,159,10,0.12);
 }
 
-.scholarship-card-header {
+.admin-review-row-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.scholarship-card-id {
+.admin-review-row-id {
   font-size: 11px;
   color: var(--text-tertiary);
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.04em;
 }
 
-.scholarship-card-title {
+.admin-review-row-title {
   font-size: 14px;
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -817,14 +817,14 @@
   line-height: 1.35;
 }
 
-.scholarship-card-country {
+.admin-review-row-country {
   font-size: 12px;
   color: var(--text-secondary);
   letter-spacing: -0.01em;
   margin: 0;
 }
 
-.scholarship-card-actions {
+.admin-review-row-actions {
   display: flex;
   gap: 6px;
 }
@@ -1126,7 +1126,7 @@
   .hero-side {
     flex-direction: column;
   }
-  .scholarship-grid {
+  .admin-review-grid {
     grid-template-columns: 1fr;
   }
 }

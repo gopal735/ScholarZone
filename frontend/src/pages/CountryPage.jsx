@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { countryImages, FALLBACK_IMAGE } from '../data/countryImages'
 import { countryThemes, defaultTheme } from '../data/countryThemes'
 import './CountryPage.css'
-import '../styles/liquid-bg.css'
 
 const FEATURED_COUNTRIES = ['Japan', 'USA', 'Germany', 'UK', 'Australia', 'Canada']
 
@@ -82,15 +81,6 @@ export default function CountryPage() {
 
   return (
     <div className="country-explorer">
-      <div className="liquid-bg" aria-hidden="true">
-        <div className="liquid-bg__orb liquid-bg__orb--1" />
-        <div className="liquid-bg__orb liquid-bg__orb--2" />
-        <div className="liquid-bg__orb liquid-bg__orb--3" />
-        <div className="liquid-bg__orb liquid-bg__orb--4" />
-        <div className="liquid-bg__orb liquid-bg__orb--5" />
-        <div className="liquid-bg__orb liquid-bg__orb--6" />
-      </div>
-
       <div className="country-explorer__content">
         <header className="country-explorer__header">
           <span className="country-explorer__kicker">Destinations</span>

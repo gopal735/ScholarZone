@@ -6,12 +6,10 @@
    would be unbounded. The card is editorial, not a glass container.
    ═══════════════════════════════════════════════════════════════════ */
 
-/* AdminPage.css declares its own .scholarship-card for a local review
-   row and loads after this file, so the bare class ties on specificity
-   and the admin surface would win. Scoping the base surface to the
-   <article> element this component actually renders keeps the two
-   components from colliding without renaming either one. */
-article.scholarship-card {
+/* The admin review row previously borrowed this class name, which tied
+   on specificity with the shared card. It now owns .admin-review-row,
+   so the bare class is unambiguous again. */
+.scholarship-card {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -30,8 +28,8 @@ article.scholarship-card {
     box-shadow var(--duration-lift) var(--timing-smooth);
 }
 
-article.scholarship-card:hover,
-article.scholarship-card:focus-within {
+.scholarship-card:hover,
+.scholarship-card:focus-within {
   transform: translateY(-4px) scale(1.006);
   border-color: var(--sz-glass-border-hover);
   box-shadow: var(--sz-glass-shadow-2);

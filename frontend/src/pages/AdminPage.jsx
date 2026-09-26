@@ -205,19 +205,19 @@ function ScholarshipCard({ scholarship, onVerify, onFlag, index }) {
   return (
     <div
       ref={tiltRef}
-      className={`scholarship-card ${status === 'needs_review' ? 'scholarship-card--alert' : ''}`}
+      className={`admin-review-row ${status === 'needs_review' ? 'admin-review-row--alert' : ''}`}
       style={{ animationDelay: `${0.2 + index * 40}ms` }}
     >
-      <div className="scholarship-card-header">
+      <div className="admin-review-row-header">
         <span className={`status-pill ${st.cls}`}>
           <span className={`status-dot ${st.dot}`} />
           {st.label}
         </span>
-        <span className="scholarship-card-id">#{scholarship.id}</span>
+        <span className="admin-review-row-id">#{scholarship.id}</span>
       </div>
-      <h3 className="scholarship-card-title">{scholarship.title}</h3>
-      <p className="scholarship-card-country">{scholarship.country}</p>
-      <div className="scholarship-card-actions">
+      <h3 className="admin-review-row-title">{scholarship.title}</h3>
+      <p className="admin-review-row-country">{scholarship.country}</p>
+      <div className="admin-review-row-actions">
         <button
           className={`glass-btn glass-btn--sm glass-btn--active ${loading ? 'btn-loading' : ''}`}
           disabled={loading}
@@ -711,7 +711,7 @@ export default function AdminPage() {
         )}
 
         {!loading && !error && (
-          <div className="scholarship-grid glass-scroll">
+          <div className="admin-review-grid glass-scroll">
             {gridItems.length === 0 ? (
               <div className="glass empty-state">
                 <div className="empty-icon" aria-hidden="true">⊘</div>

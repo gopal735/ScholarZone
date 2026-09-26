@@ -38,20 +38,23 @@
   outline-offset: 4px;
 }
 
+/* L3 focal surface. The old treatment baked a blue radial spotlight and
+   a white-to-blue linear wash into the hero; depth now comes from the
+   shared atmosphere behind the page plus one restrained material. */
 .scholarship-details__hero {
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(230px, 0.32fr);
   gap: 32px;
   align-items: end;
-  padding: clamp(28px, 5vw, 48px);
+  padding: clamp(24px, 4vw, 40px);
   overflow: hidden;
-  background:
-    radial-gradient(circle at 95% 12%, rgba(147, 197, 253, 0.55), transparent 31%),
-    linear-gradient(135deg, #ffffff, #f8fbff);
-  border: 1px solid var(--border);
-  border-radius: 22px;
-  box-shadow: var(--shadow-card);
+  background: var(--sz-glass-tint-3);
+  border: 1px solid var(--sz-glass-border);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--sz-glass-shadow-2);
+  -webkit-backdrop-filter: var(--sz-glass-blur-strong);
+  backdrop-filter: var(--sz-glass-blur-strong);
 }
 
 .scholarship-details__image {
@@ -64,15 +67,17 @@
   aspect-ratio: 16/9;
 }
 
+/* The old hero carried a floating blue ring as decoration. It added
+   noise without meaning, so the hero now ends on a single gold hairline. */
 .scholarship-details__hero::after {
   position: absolute;
-  right: -66px;
-  bottom: -78px;
-  width: 200px;
-  height: 200px;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2px;
   content: '';
-  border: 1px solid rgba(59, 130, 246, 0.18);
-  border-radius: 50%;
+  background: linear-gradient(90deg, var(--sz-gold) 0%, var(--sz-gold-deep) 50%, transparent 100%);
+  opacity: 0.4;
 }
 
 .scholarship-details__hero-content,
@@ -269,13 +274,15 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+/* L2 information panels. These were hardcoded #ffffff / #e2e8f0, which
+   left every panel opaque white in dark mode. Tokens fix both. */
 .scholarship-details__panel,
 .scholarship-details__empty {
-  padding: 28px;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 18px;
-  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.045);
+  padding: var(--space-6);
+  background: var(--sz-glass-tint-2);
+  border: 1px solid var(--sz-glass-border);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--sz-depth-1);
 }
 
 .scholarship-details__panel-heading {
@@ -287,23 +294,26 @@
 
 .scholarship-details__eyebrow {
   margin-bottom: 7px;
-  color: #2563eb;
+  color: var(--sz-accent-text);
   font-size: 0.6875rem;
-  font-weight: 850;
+  font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .scholarship-details__panel h2,
 .scholarship-details__empty h1 {
-  font-size: 1.25rem;
-  font-weight: 800;
+  color: var(--sz-ink);
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 400;
+  letter-spacing: -0.015em;
 }
 
 .scholarship-details__panel-mark {
-  color: #93c5fd;
+  color: var(--sz-stone);
   font-size: 1.25rem;
-  font-weight: 850;
+  font-weight: 700;
   letter-spacing: -0.05em;
 }
 

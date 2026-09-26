@@ -1,7 +1,8 @@
+/* Depth comes from the shared .app-atmosphere layer, so this page does
+   not need its own background treatment. */
 .country-explorer {
   position: relative;
-  min-height: 100vh;
-  padding: clamp(60px, 8vw, 140px) clamp(20px, 4vw, 64px) clamp(60px, 8vw, 160px);
+  padding: clamp(48px, 6vw, 96px) clamp(20px, 4vw, 64px) clamp(48px, 6vw, 112px);
 }
 
 .country-explorer__content {
@@ -11,46 +12,48 @@
   margin: 0 auto;
 }
 
+/* The header sits directly on the page background. It previously relied
+   on the deleted dark .liquid-bg layer, so its white text was invisible
+   in light mode. It now uses the shared ink hierarchy. */
 .country-explorer__header {
-  margin-bottom: clamp(48px, 6vw, 96px);
-  padding-bottom: clamp(24px, 3vw, 48px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: clamp(40px, 5vw, 80px);
+  padding-bottom: clamp(24px, 3vw, 40px);
+  border-bottom: 1px solid var(--sz-glass-border);
 }
 
 .country-explorer__kicker {
   display: block;
-  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.25em;
+  font-weight: 700;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--sz-accent-text);
   margin-bottom: clamp(10px, 1.2vw, 18px);
 }
 
 .country-explorer__title {
-  font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-  font-size: clamp(48px, 7vw, 100px);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 0.95;
-  color: #ffffff;
-  margin-bottom: clamp(14px, 1.8vw, 24px);
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5.6vw, 76px);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--sz-ink);
+  margin-bottom: clamp(14px, 1.8vw, 20px);
 }
 
 .country-explorer__subtitle {
   margin-top: 0;
-  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  color: var(--sz-ink-soft);
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.5);
-  max-width: 480px;
+  max-width: 48ch;
 }
 
 .country-explorer__rule {
-  margin-top: clamp(20px, 2.5vw, 40px);
+  margin-top: clamp(20px, 2.5vw, 36px);
   height: 1px;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), transparent 70%);
+  background: linear-gradient(90deg, var(--sz-gold), transparent 70%);
+  opacity: 0.5;
 }
 
 .country-editorial-grid {

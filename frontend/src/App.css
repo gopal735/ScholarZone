@@ -1,15 +1,62 @@
-/* Quiet depth wash inside the header band. Scoped here rather than to
-   the whole shell because page sections paint opaque backgrounds over
-   a document-level ambient, which would cost GPU time invisibly. */
-.site-header__ambient {
-  position: absolute;
+/* ── Global atmosphere ───────────────────────────────────────────
+   One restrained light layer for the whole product. Deliberately
+   asymmetric and edge-weighted so it never reads as the old
+   top-centre "spotlight" gradient. Washes are pure radial gradients,
+   so there is no blur filter and no continuous repaint. */
+.app-atmosphere {
+  position: fixed;
   inset: 0;
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
+  user-select: none;
+}
+
+.app-atmosphere__wash {
+  position: absolute;
+  border-radius: 50%;
+  opacity: var(--sz-atmo-opacity);
+  background: radial-gradient(circle at center, var(--sz-atmo-color) 0%, transparent 70%);
+}
+
+.app-atmosphere__wash--navy {
+  top: -28vh;
+  left: -14vw;
+  width: 78vw;
+  height: 78vw;
+  --sz-atmo-color: rgba(27, 42, 74, 0.13);
+}
+
+.app-atmosphere__wash--gold {
+  right: -18vw;
+  bottom: -32vh;
+  width: 66vw;
+  height: 66vw;
+  --sz-atmo-color: rgba(196, 164, 74, 0.16);
+}
+
+.app-atmosphere__wash--sky {
+  top: 32vh;
+  right: -24vw;
+  width: 54vw;
+  height: 54vw;
+  --sz-atmo-color: rgba(57, 95, 165, 0.1);
+}
+
+[data-theme='dark'] .app-atmosphere__wash--navy {
+  --sz-atmo-color: rgba(99, 130, 200, 0.2);
+}
+
+[data-theme='dark'] .app-atmosphere__wash--gold {
+  --sz-atmo-color: rgba(212, 184, 90, 0.14);
+}
+
+[data-theme='dark'] .app-atmosphere__wash--sky {
+  --sz-atmo-color: rgba(72, 108, 190, 0.18);
 }
 
 .app-shell {
+  position: relative;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -32,8 +79,11 @@
     box-shadow var(--duration-smooth) var(--timing-smooth);
 }
 
+/* tint-4 rather than tint-3: still a real glass surface (blur, hairline,
+   shadow) but opaque enough that a large page heading scrolling underneath
+   does not read through it and compete with the navigation. */
 .site-header.is-scrolled {
-  background: var(--sz-glass-tint-3);
+  background: var(--sz-glass-tint-4);
   border-bottom: 1px solid var(--sz-glass-border);
   box-shadow: var(--sz-glass-shadow-1);
   -webkit-backdrop-filter: var(--sz-glass-blur);
@@ -60,8 +110,10 @@
   color: var(--text-muted);
   font-size: var(--text-sm);
   text-align: center;
-  background: rgba(255, 255, 255, 0.82);
-  border-top: 1px solid var(--border);
+  background: var(--sz-glass-tint-2);
+  border-top: 1px solid var(--sz-glass-border);
+  -webkit-backdrop-filter: var(--sz-glass-blur);
+  backdrop-filter: var(--sz-glass-blur);
 }
 
 [data-theme='dark'] .site-header {
@@ -70,27 +122,39 @@
 }
 
 [data-theme='dark'] .app-footer {
-  color: var(--text-muted);
-  background: var(--surface);
-  border-color: var(--border);
+  background: var(--sz-glass-tint-3);
+  border-color: var(--sz-glass-border);
 }
 
+/* Dark mode only. In light mode it ghosted through the translucent
+   card surfaces and read as a smudge behind body text. */
 .watermark {
   position: fixed;
   inset: 0;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   font-family: var(--font-display);
   font-size: clamp(4rem, 10vw, 10rem);
   font-weight: 400;
-  color: #ffffff;
-  opacity: 0.04;
+  color: var(--sz-ink);
+  opacity: 0.05;
   pointer-events: none;
   z-index: 0;
   user-select: none;
   letter-spacing: -0.02em;
   line-height: 1;
+}
+
+[data-theme='dark'] .watermark {
+  display: flex;
+}
+
+@media (prefers-contrast: more) {
+  .app-atmosphere,
+  .watermark {
+    display: none;
+  }
 }
 
 @media (max-width: 640px) {

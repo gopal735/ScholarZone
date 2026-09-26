@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { scholarships } from '../data/scholarships'
 import { fetchScholarships } from '../services/scholarshipService'
-import { getDeadlineLabel, getScholarshipStatus } from '../utils/scholarshipPresentation'
+import ScholarshipCard from './ScholarshipCard'
 import './ScholarshipShowcase.css'
 
 function getFallbackItems({ funding, sort }) {
@@ -21,7 +21,16 @@ function getFallbackItems({ funding, sort }) {
 function ShowcaseLoading() {
   return (
     <div className="scholarship-showcase__grid scholarship-showcase__grid--loading" aria-label="Loading scholarship collection" aria-busy="true">
-      {[1, 2, 3].map((item) => <span key={item} className="scholarship-showcase__skeleton" aria-hidden="true" />)}
+      {[1, 2, 3].map((item) => (
+        <div key={item} className="scholarship-card-skeleton" aria-hidden="true">
+          <span className="scholarship-card-skeleton__line scholarship-card-skeleton__line--badge" />
+          <span className="scholarship-card-skeleton__line scholarship-card-skeleton__line--title" />
+          <span className="scholarship-card-skeleton__line" />
+          <span className="scholarship-card-skeleton__line" />
+          <span className="scholarship-card-skeleton__line scholarship-card-skeleton__line--deadline" />
+          <span className="scholarship-card-skeleton__line scholarship-card-skeleton__line--button" />
+        </div>
+      ))}
     </div>
   )
 }
@@ -72,20 +81,9 @@ export default function ScholarshipShowcase({ title, description, query }) {
           {loadState === 'fallback' && <p className="scholarship-showcase__fallback" role="status">Showing local directory data.</p>}
           {items.length > 0 ? (
             <div className="scholarship-showcase__grid">
-              {items.map((scholarship) => {
-                const deadlineStatus = getScholarshipStatus(scholarship)
-                return (
-                  <Link key={scholarship.id} to={`/scholarships/${scholarship.id}`} className="scholarship-showcase__card">
-                    <div className="scholarship-showcase__card-topline">
-                      <span>{scholarship.funding}</span>
-                      <small className={`is-${deadlineStatus.className}`}>{deadlineStatus.label}</small>
-                    </div>
-                    <strong>{scholarship.title}</strong>
-                    <p>{scholarship.country} / {scholarship.degree}</p>
-                    <small>Deadline: {getDeadlineLabel(scholarship)}</small>
-                  </Link>
-                )
-              })}
+              {items.map((scholarship) => (
+                <ScholarshipCard key={scholarship.id} scholarship={scholarship} />
+              ))}
             </div>
           ) : (
             <p className="scholarship-showcase__empty">No scholarships match this collection yet.</p>

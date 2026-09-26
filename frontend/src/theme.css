@@ -197,6 +197,9 @@
   --sz-skeleton-sheen: rgba(255, 255, 255, 0.65);
   --sz-skeleton-radius: var(--radius-sm);
 
+  /* Global atmosphere master knob. Per-wash tint is set in App.css. */
+  --sz-atmo-opacity: 1;
+
   /* On-tint text — AA (4.5:1) on the matching *-soft fills above */
   --sz-success-text: #2F5C3C;
   --sz-accent-text: #7A6220;
@@ -288,6 +291,7 @@
   --sz-orb-opacity: 0.4;
   --sz-skeleton-base: rgba(160, 180, 210, 0.1);
   --sz-skeleton-sheen: rgba(255, 255, 255, 0.14);
+  --sz-atmo-opacity: 1;
 
   --sz-success-text: #7fdcae;
   --sz-accent-text: #e0c878;
@@ -305,9 +309,7 @@ body,
 
 body {
   color: var(--text-primary);
-  background:
-    radial-gradient(circle at 50% -25%, var(--page-glow), transparent 39%),
-    var(--page-bg);
+  background: var(--page-bg);
   font-family: var(--font-body);
   font-size: var(--text-base);
   line-height: var(--text-base-lh);
