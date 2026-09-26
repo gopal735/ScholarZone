@@ -14,7 +14,21 @@
   background: transparent;
 }
 
-/* ── Scroll Reveal Animation ──────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════
+   Scroll choreography
+
+   The rule this file exists to enforce: no two sections move the same
+   way. A page where every block rises by the same 16px reads as one
+   animation applied repeatedly, which is the failure the brief calls
+   out by name. Each section below is assigned a distinct role.
+
+   The static end state is the default. The scroll-linked versions are
+   additive, inside @supports, so a browser without view() timelines —
+   or a reader with reduced motion — still gets the composed page.
+
+   Every keyframe here touches only transform, opacity and clip-path. A
+   single layout-triggering property in a keyframe block would push the
+   whole animation back onto the main thread and undo the point. */
 .sz-reveal {
   opacity: 0;
   transform: translateY(16px);
@@ -28,10 +42,127 @@
   transform: translateY(0);
 }
 
+/* ROLE: HEADINGS rise, short distance. Type should arrive, not perform. */
+.sz-section__header {
+  transition:
+    opacity 700ms var(--timing-smooth),
+    transform 700ms var(--timing-smooth);
+}
+
+.sz-section__header .sz-reveal {
+  transform: translateY(24px);
+}
+
+/* ROLE: MEDIA masks open. Applied to the story stage and the country
+   visuals, so imagery is uncovered rather than faded. */
+.sz-story-wrap,
+.sz-browse {
+  transition:
+    opacity 900ms var(--timing-smooth),
+    transform 900ms var(--timing-smooth);
+}
+
+.sz-story-wrap.sz-reveal {
+  clip-path: inset(0 0 22% 0);
+}
+
+.sz-story-wrap.sz-reveal.is-visible {
+  clip-path: inset(0 0 -6% 0);
+}
+
+/* ROLE: PAIRS arrive from opposite sides, so the two halves read as a
+   composition rather than as a stack. */
+.sz-flow-wrap {
+  transition:
+    opacity 820ms var(--timing-smooth),
+    transform 820ms var(--timing-smooth);
+}
+
+.sz-flow-wrap.sz-reveal {
+  transform: translateX(-28px);
+}
+
+.sz-flow-wrap.sz-reveal.is-visible {
+  transform: none;
+}
+
+/* ROLE: STEPS stagger horizontally. The why/process rows are a
+   sequence, so they sweep in rather than rise together. */
+.sz-why-card {
+  transition:
+    opacity 620ms var(--timing-smooth),
+    transform 620ms var(--timing-smooth);
+}
+
+.sz-why-card.sz-reveal {
+  transform: translateX(-22px);
+}
+
+.sz-why-card.sz-reveal.is-visible {
+  transform: none;
+}
+
+/* ROLE: THE TALL BANDS scale from slightly smaller. A large surface
+   that merely fades in looks like a loading state; one that settles
+   into place looks composed. */
+.sz-stats.sz-reveal {
+  transform: scale(0.975);
+}
+
+.sz-stats.sz-reveal.is-visible {
+  transform: none;
+}
+
+.sz-cta-banner.sz-reveal {
+  transform: translateY(28px) scale(0.99);
+}
+
+.sz-cta-banner.sz-reveal.is-visible {
+  transform: none;
+}
+
+/* ── Scroll-linked depth ───────────────────────────────────────
+   Where view() timelines exist, the hero and the big bands gain a slow
+   parallax on the way out. This is the only continuous motion on the
+   page, and its range is deliberately small. */
+@supports (animation-timeline: view()) {
+  .sz-stats {
+    animation: sz-motion-drift-back linear both;
+    animation-timeline: view();
+    animation-range: entry 20% exit 100%;
+  }
+
+  .sz-why-grid,
+  .sz-browse {
+    animation: sz-motion-drift-forward linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 70%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .sz-reveal {
+  .sz-reveal,
+  .sz-reveal.is-visible {
     opacity: 1;
     transform: none;
+    transition: none;
+  }
+
+  .sz-story-wrap.sz-reveal,
+  .sz-story-wrap.sz-reveal.is-visible {
+    clip-path: none;
+  }
+
+  .sz-stats,
+  .sz-why-grid,
+  .sz-browse {
+    animation: none !important;
+  }
+
+  .sz-why-card,
+  .sz-section__header,
+  .sz-flow-wrap,
+  .sz-story-wrap {
     transition: none;
   }
 }
@@ -386,6 +517,15 @@
   color: var(--sz-stone);
   font-size: 0.8125rem;
   line-height: 1.65;
+}
+
+/* ── 02 Featured story ───────────────────────────────────────── */
+.sz-section--story {
+  padding-top: var(--sz-section-gap);
+}
+
+.sz-story-wrap {
+  padding-top: var(--space-6);
 }
 
 /* ── 03 Trust flow ───────────────────────────────────────────

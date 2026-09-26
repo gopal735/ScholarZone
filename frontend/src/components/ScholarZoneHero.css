@@ -15,8 +15,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: var(--space-24);
-  padding: var(--space-20) 0 var(--space-8);
+  gap: var(--space-16);
+  padding: var(--space-12) 0 var(--space-8);
 }
 
 .sz-hero__inner {
@@ -272,107 +272,73 @@
 }
 
 /* ── Visual centrepiece ────────────────────────────────────────────
-   Three depth planes plus a slow orbital ring, the way Graphite builds
-   its hero motif: pure light on a dark plane, no rendered object. The
-   planes behind the card are empty surfaces, not content — they exist
-   to give the composition depth and to make the single card read as
-   the subject rather than as one item in a list. */
+   The reference composition: one large media plane as the anchor,
+   with two smaller information cards crossing its lower edge at
+   different depths. The overlap is what makes it read as a scene —
+   a single card on a canvas is just a card.
+
+   Two empty depth planes sit behind and in front. They carry no
+   content; they exist so the eye reads three distances rather than
+   one, and so the anchor has somewhere to sit. */
 .sz-hero__showcase {
   position: relative;
   display: flex;
   flex-direction: column;
   gap: var(--space-5);
-  max-width: 460px;
+  max-width: 620px;
+  width: 100%;
   margin-left: auto;
   isolation: isolate;
 }
 
-.sz-hero__showcase-stage {
+.sz-hero__stage {
   position: relative;
-  padding: var(--space-8) 0;
+  padding: var(--space-6) 0 var(--space-10);
 }
 
-/* The orbital ring. Two concentric ellipses on a long rotation, drawn
-   entirely in the frost hairline colour. This is the hero's slowest
-   moving element and the only thing on the page that rotates. */
-.sz-hero__ring {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 0;
-  border: 1px solid var(--sz-frost);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
+/* The frame owns the stacking context and the pointer surface. The
+   satellites are positioned against it, so they stay glued to the
+   media edge rather than to the page. */
+.sz-hero__frame {
+  position: relative;
+  z-index: 2;
 }
 
-.sz-hero__ring--outer {
-  width: 118%;
-  aspect-ratio: 1;
-  opacity: 0.55;
-  animation: sz-hero-orbit 68s linear infinite;
-}
-
-.sz-hero__ring--inner {
-  width: 82%;
-  aspect-ratio: 1;
-  opacity: 0.3;
-  animation: sz-hero-orbit 44s linear infinite reverse;
-}
-
-[data-theme='dark'] .sz-hero__ring--outer {
-  opacity: 0.85;
-}
-
-[data-theme='dark'] .sz-hero__ring--inner {
-  opacity: 0.45;
-}
-
-/* A single node travelling the outer ring — the "signal" motif. */
-.sz-hero__ring-node {
-  position: absolute;
-  top: -3px;
-  left: 50%;
-  width: 6px;
-  height: 6px;
-  background: var(--accent);
-  border-radius: 50%;
-  box-shadow: 0 0 0 3px var(--accent-soft);
-}
-
-/* Depth plane 1 — furthest back, smallest, offset left. */
 .sz-hero__plane {
   position: absolute;
+  z-index: 1;
   border: 1px solid var(--sz-frost);
   border-radius: var(--radius-card);
   background: var(--sz-glass-tint-2);
   pointer-events: none;
 }
 
+/* Offset up and right — the furthest plane. */
 .sz-hero__plane--far {
-  top: 4%;
-  right: -6%;
-  width: 78%;
-  height: 78%;
-  opacity: 0.55;
-  transform: translate3d(0, 0, -30px) rotate(3.2deg);
+  top: -4%;
+  right: -5%;
+  width: 84%;
+  height: 82%;
+  opacity: 0.5;
+  transform: rotate(2.4deg);
 }
 
+/* Offset down and left, crossing in front of the lower edge. */
 .sz-hero__plane--near {
-  bottom: 2%;
-  left: -7%;
-  width: 72%;
-  height: 72%;
-  opacity: 0.4;
-  transform: translate3d(0, 0, -18px) rotate(-2.4deg);
+  bottom: -3%;
+  left: -5%;
+  width: 78%;
+  height: 76%;
+  opacity: 0.34;
+  transform: rotate(-1.8deg);
 }
 
-/* The centrepiece unmasks from the bottom edge, on a slower beat than
-   the type, so the image settles after the words it supports. */
+/* The anchor unmasks from the bottom edge on a slower beat than the
+   type, so the image settles after the words it supports. */
 @keyframes sz-hero-media-in {
   from {
     clip-path: inset(100% 0 0 0 round var(--radius-card));
-    opacity: 0.4;
+    opacity: 0.3;
   }
   to {
     clip-path: inset(0 0 0 0 round var(--radius-card));
@@ -386,30 +352,158 @@
   border-radius: var(--radius-card);
   box-shadow: var(--sz-glass-shadow-3);
   animation:
-    sz-hero-media-in 1100ms var(--timing-smooth) 260ms both,
-    sz-hero-float 9s var(--timing-smooth) 1400ms infinite;
+    sz-hero-media-in 1200ms var(--timing-smooth) 240ms both,
+    sz-hero-float 11s var(--timing-smooth) 1500ms infinite;
 }
 
+/* The anchor is a preview, not a directory card. The full card carries
+   three action buttons and three fact rows; here those would push the
+   composition past a viewport and duplicate what the two satellite
+   cards already say. So the hero variant keeps the media, the title
+   and the deadline, and lets the satellites carry funding and level. */
 .sz-hero__showcase-card .scholarship-image__ratio {
-  aspect-ratio: 2/1;
+  aspect-ratio: 3/2;
 }
 
-.sz-hero__showcase-card .scholarship-card {
-  transition: transform 600ms var(--timing-smooth);
+.sz-hero__showcase-card .scholarship-card__header {
+  gap: var(--space-2);
+  padding: var(--space-5) var(--space-5) var(--space-3);
+}
+
+.sz-hero__showcase-card .scholarship-card__header h2 {
+  font-size: 1.125rem;
+}
+
+/* Funding and level are on the satellites; keeping them here too would
+   say the same thing twice inside 400px. */
+.sz-hero__showcase-card .scholarship-card__detail:not(.scholarship-card__detail--deadline) {
+  display: none;
+}
+
+.sz-hero__showcase-card .scholarship-card__footer {
+  display: none;
+}
+
+.sz-hero__showcase-card .scholarship-card__signals {
+  margin-top: 0;
+  padding-top: var(--space-2);
+}
+
+.sz-hero__showcase-card .scholarship-card__button:hover span {
+  transform: none;
 }
 
 .sz-hero__showcase-card:hover .scholarship-card {
   transform: translateY(-4px);
 }
 
+/* ── Satellite cards ──────────────────────────────────────────────
+   They cross the media boundary. The left one sits in front, the
+   right one behind, which is what stops the pair reading as a row
+   of stickers. */
+.sz-hero__chip {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 168px;
+  padding: var(--space-4) var(--space-5);
+  background: var(--sz-glass-tint-3);
+  border: 1px solid var(--sz-glass-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--sz-glass-shadow-2);
+  -webkit-backdrop-filter: var(--sz-glass-blur);
+  backdrop-filter: var(--sz-glass-blur);
+  animation: sz-hero-line-in 800ms var(--timing-smooth) both;
+}
+
+[data-theme='dark'] .sz-hero__chip {
+  background: var(--sz-glass-tint-2);
+}
+
+/* Left satellite — crosses the lower-left corner, in front. */
+.sz-hero__chip--deadline {
+  bottom: -6%;
+  left: -7%;
+  animation-delay: 780ms;
+}
+
+/* Right satellite — rides higher, behind the media edge. */
+.sz-hero__chip--funding {
+  top: 14%;
+  right: -6%;
+  min-width: 148px;
+  animation-delay: 900ms;
+}
+
+.sz-hero__chip-label {
+  color: var(--text-muted);
+  font-size: var(--text-2xs);
+  font-weight: 600;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+}
+
+.sz-hero__chip-value {
+  color: var(--sz-ink);
+  font-size: var(--text-base);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.sz-hero__chip-note {
+  color: var(--text-faint);
+  font-size: var(--text-xs);
+}
+
 .sz-hero__showcase-note {
   position: relative;
   z-index: 2;
-  max-width: 42ch;
+  max-width: 46ch;
   margin: 0;
   color: var(--text-muted);
   font-size: var(--text-xs);
   line-height: 1.6;
+}
+
+/* ── Pointer depth ───────────────────────────────────────────────
+   Two planes shift against each other by a few pixels. Written as
+   custom properties set from one pointermove handler, so the work
+   is two custom-property writes on a single node — no layout reads,
+   no per-frame loop, and nothing runs at all on touch. */
+@supports (animation-timeline: view()) {
+  .sz-hero__showcase {
+    --sx-px: 0px;
+    --sx-py: 0px;
+  }
+
+  .sz-hero__showcase-card {
+    transform: translate3d(var(--sx-px), var(--sx-py), 0) rotate(-0.6deg);
+  }
+
+  .sz-hero__plane--far {
+    transform: translate3d(calc(var(--sx-px) * -0.5), calc(var(--sx-py) * -0.5), 0) rotate(2.4deg);
+  }
+
+  .sz-hero__plane--near {
+    transform: translate3d(calc(var(--sx-px) * 0.8), calc(var(--sx-py) * 0.8), 0) rotate(-1.8deg);
+  }
+
+  /* Scroll-linked exit. The composition recedes as the hero leaves,
+     so the next section arrives rather than cutting in. */
+  .sz-hero__inner {
+    animation: sz-motion-drift-forward linear both;
+    animation-timeline: view();
+    animation-range: exit 0% exit 100%;
+  }
+
+  .sz-hero__plane--far {
+    animation: sz-motion-drift-back linear both;
+    animation-timeline: view();
+    animation-range: exit 0% exit 100%;
+  }
 }
 
 /* Loading state mirrors the real composition geometry so nothing shifts

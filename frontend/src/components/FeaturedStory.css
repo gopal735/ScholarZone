@@ -1,0 +1,320 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Featured Story — centre stage with edge peers
+
+   The composition comes from the interaction reference: one active
+   item centred, its neighbours cropped by the viewport edge, and a tab
+   bar crossing the stage's lower boundary. The crop is deliberate — it
+   is what tells the reader the set continues.
+
+   Motion role here is LATERAL: the active card enters from the side it
+   came from, so stepping feels like turning a page rather than like a
+   crossfade.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.sz-story {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.sz-story__stage {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 520px) 1fr;
+  align-items: start;
+  gap: var(--space-5);
+  width: 100%;
+  padding-bottom: var(--space-2);
+  border-radius: var(--radius-card);
+  outline: none;
+}
+
+.sz-story__stage:focus-visible {
+  box-shadow: 0 0 0 2px var(--focus-ring);
+}
+
+/* ── Edge peers ───────────────────────────────────────────────────
+   Pushed past the container so they crop against the page edge. They
+   are decorative duplicates of the real navigation target, so they are
+   hidden from assistive tech and removed from the tab order.
+
+   They carry a media-shaped well rather than plain copy, so the centre
+   item reads as the full card and these as the same card sliced —
+   which is what makes the crop legible as a crop. */
+.sz-story__edge {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  min-width: 0;
+  height: 300px;
+  padding: var(--space-5);
+  overflow: hidden;
+  text-decoration: none;
+  background: var(--surface-subtle);
+  border: 1px solid var(--sz-glass-border);
+  border-radius: var(--radius-card);
+  opacity: 0.5;
+  transition: opacity var(--duration-hover) var(--timing-smooth);
+}
+
+/* The same diagonal weave the image fallbacks use, so an edge peer
+   reads as an unfetched card rather than as an empty box. */
+.sz-story__edge::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      58deg,
+      rgba(15, 25, 40, 0.04) 0px,
+      rgba(15, 25, 40, 0.04) 1px,
+      transparent 1px,
+      transparent 12px
+    );
+  pointer-events: none;
+}
+
+[data-theme='dark'] .sz-story__edge::before {
+  background-image:
+    repeating-linear-gradient(
+      58deg,
+      rgba(196, 216, 240, 0.035) 0px,
+      rgba(196, 216, 240, 0.035) 1px,
+      transparent 1px,
+      transparent 12px
+    );
+}
+
+.sz-story__edge--left {
+  justify-self: end;
+  width: 78%;
+  margin-right: calc(var(--space-10) * -1);
+  mask-image: linear-gradient(90deg, #000 45%, transparent 100%);
+}
+
+.sz-story__edge--right {
+  justify-self: start;
+  width: 78%;
+  margin-left: calc(var(--space-10) * -1);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 55%);
+}
+
+.sz-story__edge:hover {
+  opacity: 0.78;
+}
+
+.sz-story__edge-funding,
+.sz-story__edge-title {
+  position: relative;
+  z-index: 1;
+}
+
+.sz-story__edge-funding {
+  align-self: flex-start;
+  padding: 3px 9px;
+  color: var(--sz-accent-text);
+  font-size: var(--text-2xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--accent-soft);
+  border-radius: var(--radius-pill);
+}
+
+.sz-story__edge-title {
+  color: var(--sz-ink);
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  line-height: 1.3;
+}
+
+/* ── Active item ───────────────────────────────────────────────── */
+.sz-story__active {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+  animation: sz-motion-from-right 620ms var(--timing-smooth) both;
+}
+
+.sz-story__count {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 2px;
+  margin: var(--space-3) 0 0;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+}
+
+.sz-story__count strong {
+  color: var(--sz-ink);
+  font-weight: 600;
+}
+
+/* ── Tab bar ──────────────────────────────────────────────────────
+   Crosses the stage's lower boundary. The negative margin is what
+   produces the overlap; without it this is just a row of buttons
+   below a card. */
+.sz-story__tabs {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-6);
+  width: 100%;
+  padding-top: var(--space-4);
+  margin-top: calc(var(--space-3) * -1);
+  border-top: 1px solid var(--sz-glass-edge-soft);
+}
+
+.sz-story__tab {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-height: 44px;
+  padding: var(--space-3) 0 0;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  text-align: left;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  transition: color var(--duration-micro) var(--timing-micro);
+}
+
+.sz-story__tab::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 1px;
+  opacity: 0;
+  transform: scaleX(0.3);
+  transition:
+    opacity var(--duration-hover) var(--timing-smooth),
+    transform var(--duration-lift) var(--timing-smooth);
+}
+
+.sz-story__tab:hover {
+  color: var(--sz-ink);
+}
+
+.sz-story__tab.is-active {
+  color: var(--sz-ink);
+}
+
+.sz-story__tab.is-active::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.sz-story__tab:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+.sz-story__tab-name {
+  max-width: 20ch;
+  overflow: hidden;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sz-story__tab-country {
+  color: var(--text-faint);
+  font-size: var(--text-xs);
+}
+
+.sz-story__hint {
+  margin: 0;
+  color: var(--text-faint);
+  font-size: var(--text-xs);
+}
+
+.sz-story__empty {
+  margin: 0;
+  padding: var(--space-10);
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────
+   Below 900px the crop is dropped rather than scaled down: a narrower
+   slice of the same idea stops reading as depth and starts reading as
+   a broken layout. */
+@media (max-width: 1180px) {
+  .sz-story__stage {
+    grid-template-columns: 1fr minmax(0, 440px) 1fr;
+  }
+
+  .sz-story__edge--left {
+    margin-right: calc(var(--space-8) * -1);
+  }
+
+  .sz-story__edge--right {
+    margin-left: calc(var(--space-8) * -1);
+  }
+}
+
+@media (max-width: 900px) {
+  .sz-story__stage {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sz-story__edge {
+    display: none;
+  }
+
+  .sz-story__tabs {
+    gap: var(--space-4);
+    overflow-x: auto;
+    justify-content: flex-start;
+    scrollbar-width: none;
+  }
+
+  .sz-story__tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sz-story__hint {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sz-story__active {
+    animation: none;
+  }
+
+  .sz-story__edge,
+  .sz-story__tab,
+  .sz-story__tab::after {
+    transition: none;
+  }
+
+  .sz-story__tab::after {
+    transform: none;
+  }
+
+  .sz-story__tab.is-active::after {
+    transform: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .sz-story__edge {
+    opacity: 1;
+    filter: none;
+  }
+}

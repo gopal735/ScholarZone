@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ScholarshipShowcase from '../components/ScholarshipShowcase'
 import ScholarZoneHero from '../components/ScholarZoneHero'
 import TrustFlow from '../components/TrustFlow'
 import SaveCompareSteps from '../components/SaveCompareSteps'
+import FeaturedStory from '../components/FeaturedStory'
 import { useScholarshipDirectory } from '../hooks/useScholarshipDirectory'
 import './HomePage.css'
 
@@ -99,6 +100,12 @@ export default function HomePage() {
   const fullyFundedCount = scholarships.filter((s) => s.funding === 'Fully Funded').length
   const countriesCount = new Set(scholarships.map((s) => s.country)).size
   const verifiedCount = scholarships.filter((s) => s.verified || s.verification_status === 'active').length
+
+  /* The story needs a stable set to step through. Taking the first few
+     in directory order keeps it deterministic between renders, and the
+     count is clamped again inside the component in case the directory
+     shrinks underneath it. */
+  const featuredItems = useMemo(() => scholarships.slice(0, 5), [scholarships])
 
   return (
     <div className="sz-home">
@@ -200,11 +207,28 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 05 — FEATURED SCHOLARSHIPS */}
-      <section className="sz-section sz-section--featured" aria-label="Featured scholarships">
+      {/* 02 — FEATURED STORY: one active opportunity centre-stage with
+          its neighbours cropping at the page edges. */}
+      <section className="sz-section sz-section--story" aria-label="Featured opportunity">
         <ScrollReveal className="sz-section__header">
           <span className="sz-section__eyebrow">Featured</span>
-          <h2 className="sz-section__title">Recently added &amp; closing soon</h2>
+          <h2 className="sz-section__title">Worth a closer look</h2>
+          <p className="sz-section__description">
+            Step through a few of the opportunities currently in the directory. Each one links
+            straight to its full listing.
+          </p>
+        </ScrollReveal>
+
+        <ScrollReveal className="sz-story-wrap">
+          <FeaturedStory items={featuredItems} label="Featured scholarships" />
+        </ScrollReveal>
+      </section>
+
+      {/* 03 — DISCOVERY COLLECTIONS */}
+      <section className="sz-section sz-section--featured" aria-label="Featured scholarships">
+        <ScrollReveal className="sz-section__header">
+          <span className="sz-section__eyebrow">Recently added</span>
+          <h2 className="sz-section__title">New &amp; closing soon</h2>
           <p className="sz-section__description">
             New opportunities and those with approaching deadlines — updated from official sources.
           </p>

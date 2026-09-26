@@ -128,6 +128,14 @@
   --space-14: 80px;
   --space-15: 96px;
   --space-16: 128px;
+  --space-17: 160px;
+  --space-18: 192px;
+  --space-19: 224px;
+  --space-20: 256px;
+  --space-21: 288px;
+  --space-22: 320px;
+  --space-23: 352px;
+  --space-24: 384px;
 
   /* ── Radius ─────────────────────────────────────────────────── */
   --radius-xs: 4px;
@@ -283,23 +291,23 @@
   --sz-warning-text: #5C400C;
 
   /* ── Solid control ─────────────────────────────────────────────
-     Graphite inverts its primary to a light fill with dark text, which
-     makes the conversion control the brightest object on the hero.
-     That is the pattern used here: the primary is a near-white plane,
-     not a coloured one, so the accent stays available for emphasis
-     rather than for every button. */
-  --sz-solid-bg: #F0F3F7;
-  --sz-solid-bg-hover: #FFFFFF;
-  --sz-solid-ink: #0B1119;
-  --sz-solid-ink-hover: #000000;
-  --sz-solid-border: rgba(15, 25, 40, 0.16);
-  --sz-solid-border-hover: rgba(15, 25, 40, 0.3);
+     The primary inverts against its canvas, so it is always the
+     strongest object on the page. On the light canvas that means a
+     near-black plane with light text; on the dark canvas, a near-white
+     plane with dark text. A near-white button on a near-white canvas
+     is the one combination that reads as a disabled control. */
+  --sz-solid-bg: #12181F;
+  --sz-solid-bg-hover: #050A10;
+  --sz-solid-ink: #F7FAFC;
+  --sz-solid-ink-hover: #FFFFFF;
+  --sz-solid-border: rgba(255, 255, 255, 0.12);
+  --sz-solid-border-hover: rgba(255, 255, 255, 0.24);
   --sz-solid-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.7) inset,
-    0 2px 6px rgba(15, 25, 40, 0.1);
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 2px 6px rgba(15, 25, 40, 0.14);
   --sz-solid-shadow-hover:
-    0 1px 0 rgba(255, 255, 255, 0.8) inset,
-    0 10px 26px rgba(15, 25, 40, 0.14);
+    0 1px 0 rgba(255, 255, 255, 0.1) inset,
+    0 10px 26px rgba(15, 25, 40, 0.2);
 }
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -1065,6 +1073,124 @@ h2 {
   .sz-liquid-drift,
   .sz-liquid-sheen {
     animation: none !important;
+  }
+}
+
+/* ── Scroll Motion System ──────────────────────────────────────────
+   Per-role choreography. The rule that matters: no two sections share
+   a movement. A page where every block rises by the same amount reads
+   as one animation applied repeatedly, which is the failure the brief
+   calls out. Each role below moves differently, on a different axis,
+   with a different easing.
+
+   Scroll-linked motion uses CSS view()/scroll() timelines, which run on
+   the compositor with no scroll listener and no main-thread cost. Every
+   one is wrapped in @supports, and the static end state is the default
+   — so Firefox, or a browser without support, simply shows the composed
+   page rather than an empty one.
+
+   Only transform, opacity and clip-path appear in these keyframes. A
+   single layout-triggering property in a keyframe block pushes the
+   whole animation back onto the main thread. */
+@supports (animation-timeline: view()) {
+  /* ROLE: MEDIA — images grow from a slightly smaller, blurred state as
+     they enter. Scale reads as a camera settling. */
+  @keyframes sz-motion-media {
+    from {
+      transform: scale(0.94);
+      opacity: 0;
+      filter: blur(6px);
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+      filter: blur(0);
+    }
+  }
+
+  /* ROLE: TEXT — a short rise with no scale. Type should arrive, not
+     perform. */
+  @keyframes sz-motion-rise {
+    from {
+      transform: translateY(28px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  /* ROLE: MASK — a clip that opens upward. Used for headlines and
+     panels that should feel uncovered rather than faded in. */
+  @keyframes sz-motion-unmask {
+    from {
+      clip-path: inset(0 0 100% 0);
+      opacity: 0.2;
+      transform: translateY(10px);
+    }
+    to {
+      clip-path: inset(0 0 -8% 0);
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ROLE: LATERAL — enters from the side, for paired content where the
+     two halves should feel as though they arrive from opposite
+     directions. */
+  @keyframes sz-motion-from-left {
+    from {
+      transform: translateX(-40px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes sz-motion-from-right {
+    from {
+      transform: translateX(40px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  /* ROLE: DEPTH — a slow parallax on the home hero. Small range on
+     purpose: enough to separate planes, not enough to notice as
+     movement. */
+  @keyframes sz-motion-drift-back {
+    from {
+      transform: translateY(0) scale(1.02);
+    }
+    to {
+      transform: translateY(70px) scale(1);
+    }
+  }
+
+  @keyframes sz-motion-drift-forward {
+    from {
+      transform: translateY(-30px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  /* ROLE: NAV — a scroll-linked shrink. The bar is densest immediately
+     after the hero and stays there. */
+  @keyframes sz-motion-nav-shrink {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(0.86);
+    }
   }
 }
 
