@@ -6,11 +6,11 @@
 .admin-page {
   position: relative;
   min-height: 100vh;
-  background: #0B0F19;
+  background: #14100B;
   background-image:
-    radial-gradient(ellipse 80% 60% at 15% 5%, rgba(196, 164, 74, 0.08) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 80% at 85% 90%, rgba(27, 42, 74, 0.12) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 50% at 50% 50%, rgba(255, 255, 255, 0.015) 0%, transparent 100%);
+    radial-gradient(ellipse 80% 60% at 15% 5%, rgba(198, 166, 106, 0.09) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 80% at 85% 90%, rgba(120, 98, 62, 0.14) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 50% at 50% 50%, rgba(255, 246, 226, 0.02) 0%, transparent 100%);
   color: var(--text-primary);
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;

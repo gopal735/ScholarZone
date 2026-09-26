@@ -110,16 +110,18 @@
 }
 
 .sz-cta--primary {
-  color: var(--sz-paper);
-  background: var(--sz-ink);
-  border: 1px solid var(--sz-ink);
+  color: var(--sz-solid-ink);
+  background: var(--sz-solid-bg);
+  border: 1px solid var(--sz-solid-border);
+  box-shadow: var(--sz-solid-shadow);
 }
 
 .sz-cta--primary:hover {
-  background: #0f1d35;
-  border-color: #0f1d35;
+  color: var(--sz-solid-ink-hover);
+  background: var(--sz-solid-bg-hover);
+  border-color: var(--sz-solid-border-hover);
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(27, 42, 74, 0.15);
+  box-shadow: var(--sz-solid-shadow-hover);
 }
 
 .sz-cta--secondary {
@@ -459,46 +461,63 @@
   padding-top: calc(var(--sz-section-gap) * 0.5);
 }
 
+/* The one deliberately dark band on the page. It exists to give the
+   long scroll a contrast anchor — without it every section would be the
+   same pearl weight and the eye would have nowhere to rest. It is warm
+   espresso rather than navy, and it carries the same rim and underlight
+   as every other surface so it reads as polished stone inside the
+   system instead of a hole punched through it. */
 .sz-stats {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 32px;
   padding: clamp(48px, 8vw, 80px);
-  background: var(--sz-ink);
-  border-radius: var(--sz-radius-lg);
-  position: relative;
   overflow: hidden;
+  background: linear-gradient(168deg, #322B22 0%, #241E17 58%, #1B1710 100%);
+  border: 1px solid rgba(214, 186, 130, 0.22);
+  border-radius: var(--radius-panel);
+  box-shadow:
+    0 1px 0 rgba(255, 240, 210, 0.12) inset,
+    0 20px 50px rgba(74, 60, 38, 0.22);
 }
 
-.sz-stats::before {
+/* Warm bounce from the lower edge plus a champagne bloom from above. */
+.sz-stats::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(100% 70% at 50% -10%, rgba(226, 196, 138, 0.16) 0%, rgba(226, 196, 138, 0) 62%),
+    radial-gradient(90% 60% at 50% 112%, rgba(206, 168, 96, 0.2) 0%, rgba(206, 168, 96, 0) 66%);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* A single hairline of champagne across the top edge. */
+.sz-stats > .sz-stats__item:first-child::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
+  right: 12%;
+  left: 12%;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--sz-gold), transparent);
-  opacity: 0.4;
-}
-
-@media (max-width: 720px) {
-  .sz-stats {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-  }
+  opacity: 0.5;
 }
 
 .sz-stats__item {
-  text-align: center;
   position: relative;
+  z-index: 1;
+  text-align: center;
 }
 
 .sz-stats__item strong {
   display: block;
-  font-family: var(--sz-display);
+  font-family: var(--font-display);
   font-size: clamp(2.25rem, 4.5vw, 3.5rem);
   font-weight: 400;
-  color: #ffffff;
+  color: #FBF6EC;
   letter-spacing: -0.03em;
   line-height: 1;
 }
@@ -506,11 +525,18 @@
 .sz-stats__item span {
   display: block;
   margin-top: 12px;
-  color: var(--sz-stone-light);
+  color: rgba(214, 196, 160, 0.82);
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+
+@media (max-width: 720px) {
+  .sz-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
 }
 
 /* ── Final CTA ─────────────────────────────────────────────── */
@@ -637,18 +663,6 @@
 
 [data-theme='dark'] .sz-cta-banner h2 {
   color: var(--text-primary);
-}
-
-[data-theme='dark'] .sz-cta--primary {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #0d1420;
-}
-
-[data-theme='dark'] .sz-cta--primary:hover {
-  background: var(--accent-hover);
-  border-color: var(--accent-hover);
-  box-shadow: 0 8px 24px rgba(130, 168, 255, 0.3);
 }
 
 [data-theme='dark'] .sz-cta--secondary,

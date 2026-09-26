@@ -11,9 +11,10 @@
   flex-direction: column;
   width: 100%;
   overflow: hidden;
-  background: var(--sz-glass-tint-2);
+  background: var(--sz-glass-tint-3);
   border: 1px solid var(--sz-glass-border);
   border-radius: var(--radius-md);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
 }
 
 /* Reserved before the bytes arrive, so the fade cannot shift layout.
@@ -23,6 +24,27 @@
   flex: 0 0 auto;
   aspect-ratio: 16/9;
   width: 100%;
+  overflow: hidden;
+}
+
+/* A warm gradient wash over the media so photography sits inside the
+   material rather than on top of it. Very light — this is a tint, not
+   a scrim. */
+.scholarship-image__ratio::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(120% 90% at 24% -12%, rgba(255, 252, 244, 0.3) 0%, rgba(255, 250, 236, 0) 58%),
+    linear-gradient(180deg, rgba(255, 250, 238, 0.1) 0%, rgba(120, 98, 60, 0.06) 100%);
+  pointer-events: none;
+}
+
+[data-theme='dark'] .scholarship-image__ratio::after {
+  background:
+    radial-gradient(120% 90% at 24% -12%, rgba(255, 236, 198, 0.1) 0%, rgba(255, 230, 180, 0) 58%),
+    linear-gradient(180deg, rgba(255, 240, 210, 0.04) 0%, rgba(0, 0, 0, 0.22) 100%);
 }
 
 /* Absolute fill: the ratio owns the box, the image only covers it. */
@@ -34,15 +56,22 @@
   object-fit: cover;
   object-position: center;
   opacity: 0;
-  transform: scale(1.015);
+  transform: scale(1.03);
   transition:
     opacity var(--duration-page) var(--timing-smooth),
-    transform var(--duration-page) var(--timing-smooth);
+    transform 900ms var(--timing-smooth);
 }
 
 .scholarship-image[data-loaded] .scholarship-image__img {
   opacity: 1;
   transform: scale(1);
+}
+
+/* A very slow, very small zoom on hover — enough to feel alive, not
+   enough to crop the subject. */
+.scholarship-card:hover .scholarship-image__img {
+  transform: scale(1.045);
+  transition-duration: 1400ms;
 }
 
 /* Fallbacks share one quiet treatment so a missing image reads as a
@@ -54,8 +83,20 @@
 .scholarship-image--broken {
   display: grid;
   place-items: center;
-  color: var(--text-faint);
-  background: linear-gradient(150deg, var(--sz-glass-tint-2) 0%, var(--sz-mist-soft) 100%);
+  color: var(--sz-stone);
+  background:
+    radial-gradient(90% 70% at 30% 20%, rgba(255, 253, 246, 0.9) 0%, rgba(255, 250, 238, 0) 62%),
+    linear-gradient(150deg, var(--sz-paper-soft) 0%, var(--sz-mist-soft) 100%);
+}
+
+/* On a dark ground the light-mode wash would read as a blown-out
+   highlight, so the slot inverts to a dim pearl well instead. */
+[data-theme='dark'] .scholarship-image--placeholder,
+[data-theme='dark'] .scholarship-image--broken {
+  color: var(--sz-stone-light);
+  background:
+    radial-gradient(90% 70% at 30% 20%, rgba(255, 240, 210, 0.09) 0%, rgba(255, 230, 180, 0) 62%),
+    linear-gradient(150deg, #2A2318 0%, #1B1610 100%);
 }
 
 .scholarship-image__icon {
@@ -84,8 +125,8 @@
   white-space: nowrap;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  background: rgba(15, 23, 41, 0.62);
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(58, 46, 28, 0.66);
+  border: 1px solid rgba(255, 246, 226, 0.3);
   border-radius: var(--radius-pill);
 }
 

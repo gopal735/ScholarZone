@@ -1,77 +1,138 @@
 /* ═══════════════════════════════════════════════════════════════════
-   Scholarship Card
-   Single owner of every .scholarship-card* rule. The surface reuses
-   the Phase 1 glass tokens but stays blur-free (level 1), because a
-   directory renders this many times and a backdrop-filter per card
-   would be unbounded. The card is editorial, not a glass container.
+   Scholarship Card — the visual signature of ScholarZone.
+
+   A pearl-glass slab sitting in the liquid light field. The card owns a
+   real 3D response: a CSS-variable tilt driven by pointer position
+   (set in ScholarshipCard.jsx) plus a specular highlight that tracks the
+   same point, so the surface appears to catch light as it turns.
+
+   The tilt is deliberately tiny (max ~3deg) and the content plane is
+   counter-raised, so text never distorts or shifts. Urgency is carried
+   by a champagne/sienna hairline, never by tinting the whole card.
    ═══════════════════════════════════════════════════════════════════ */
 
-/* The admin review row previously borrowed this class name, which tied
-   on specificity with the shared card. It now owns .admin-review-row,
-   so the bare class is unambiguous again. */
 .scholarship-card {
+  --lg-rx: 0deg;
+  --lg-ry: 0deg;
+  --lg-hx: 26%;
+  --lg-hy: 0%;
+  --lg-lift: 0px;
+
   position: relative;
+  isolation: isolate;
   display: flex;
   flex-direction: column;
   gap: 0;
   min-height: 100%;
   padding: 0;
   overflow: hidden;
-  background: var(--sz-glass-tint-1);
+  background: var(--sz-glass-tint-2);
   border: 1px solid var(--sz-glass-border);
   border-radius: var(--radius-card);
   box-shadow: var(--sz-depth-2);
-  animation: none;
+  transform: perspective(900px) translate3d(0, var(--lg-lift), 0) rotateX(var(--lg-rx)) rotateY(var(--lg-ry));
+  transform-style: preserve-3d;
   transition:
-    transform var(--duration-lift) var(--timing-spring),
+    transform 420ms var(--timing-smooth),
     border-color var(--duration-hover) var(--timing-smooth),
     box-shadow var(--duration-lift) var(--timing-smooth);
 }
 
-.scholarship-card:hover,
-.scholarship-card:focus-within {
-  transform: translateY(-4px) scale(1.006);
-  border-color: var(--sz-glass-border-hover);
-  box-shadow: var(--sz-glass-shadow-2);
+/* Inner bloom + warm bounce. Sits under content, above the tint. */
+.scholarship-card::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  content: '';
+  background: var(--sz-glass-specular), var(--sz-glass-underlight);
+  border-radius: inherit;
+  pointer-events: none;
 }
 
-/* Restrained gold hairline that reads as a top edge, not a glow. */
-.scholarship-card::before {
+/* The travelling highlight. It fades in on hover and is positioned from
+   the same pointer variables as the tilt, so the two read as one effect. */
+.scholarship-card::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  content: '';
+  background: radial-gradient(
+    46% 38% at var(--lg-hx) var(--lg-hy),
+    rgba(255, 255, 255, 0.62) 0%,
+    rgba(255, 250, 236, 0.16) 46%,
+    rgba(255, 250, 236, 0) 74%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 520ms var(--timing-smooth);
+}
+
+[data-theme='dark'] .scholarship-card::after {
+  background: radial-gradient(
+    46% 38% at var(--lg-hx) var(--lg-hy),
+    rgba(255, 236, 196, 0.2) 0%,
+    rgba(255, 230, 180, 0.06) 46%,
+    rgba(255, 230, 180, 0) 74%
+  );
+}
+
+/* Urgency hairline. Sits above the highlight so it never washes out. */
+.scholarship-card__edge {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  z-index: 2;
+  z-index: 3;
   height: 2px;
   content: '';
   background: linear-gradient(90deg, var(--sz-gold) 0%, var(--sz-gold-deep) 55%, transparent 100%);
-  opacity: 0.28;
+  opacity: 0.3;
   transition: opacity var(--duration-hover) var(--timing-smooth);
 }
 
-.scholarship-card:hover::before,
-.scholarship-card:focus-within::before {
-  opacity: 0.85;
+.scholarship-card:hover,
+.scholarship-card:focus-within {
+  --lg-lift: -6px;
+  border-color: var(--sz-glass-border-hover);
+  box-shadow: var(--sz-glass-shadow-3);
 }
 
-/* Urgency is carried by the hairline, not by a coloured card. */
-.scholarship-card--closing-soon::before {
+.scholarship-card:hover::after,
+.scholarship-card:focus-within::after {
+  opacity: 1;
+}
+
+.scholarship-card:hover .scholarship-card__edge,
+.scholarship-card:focus-within .scholarship-card__edge {
+  opacity: 0.9;
+}
+
+.scholarship-card--closing-soon .scholarship-card__edge {
   background: linear-gradient(90deg, var(--warning) 0%, var(--warning-border) 60%, transparent 100%);
-  opacity: 0.5;
+  opacity: 0.55;
 }
 
 .scholarship-card--closed {
-  opacity: 0.78;
+  opacity: 0.8;
 }
 
-.scholarship-card--closed::before {
+.scholarship-card--closed .scholarship-card__edge {
   background: linear-gradient(90deg, var(--danger) 0%, var(--danger-border) 60%, transparent 100%);
-  opacity: 0.45;
+  opacity: 0.5;
 }
 
-/* ── Image ──────────────────────────────────────────────────────
-   Full-bleed to the card edges; the card clips it to its radius. */
-.scholarship-card .scholarship-card__image {
+/* Content rides above the material layers and is counter-raised in Z so
+   the tilt never shears the text. */
+.scholarship-card > * {
+  position: relative;
+  z-index: 2;
+  transform: translateZ(24px);
+}
+
+/* The image is flush with the card, so it counter-raises less — lifting
+   it as far as the text would detach it visually from the card. */
+.scholarship-card > .scholarship-card__image {
+  transform: translateZ(12px);
   margin-bottom: 0;
   border-top: 0;
   border-right: 0;
@@ -126,8 +187,9 @@
 
 .scholarship-card__status {
   color: var(--text-secondary);
-  background: var(--sz-glass-tint-2);
+  background: var(--sz-glass-tint-3);
   border: 1px solid var(--sz-glass-border);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset;
 }
 
 .scholarship-card__status--closing-soon {
@@ -236,15 +298,19 @@
   overflow-wrap: anywhere;
 }
 
-/* The deadline is the scan anchor, so it reads as a labelled panel. */
+/* The deadline is the scan anchor, so it reads as a labelled panel of
+   its own material — a small pearl well inside the card. */
 .scholarship-card__detail--deadline {
   align-items: center;
   padding: var(--space-3);
   margin-bottom: var(--space-3);
-  background: var(--sz-glass-tint-2);
+  background: var(--sz-glass-tint-3);
   border: 1px solid var(--sz-glass-border);
   border-left: 3px solid var(--sz-gold);
   border-radius: var(--radius-md);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 1px 3px rgba(74, 60, 38, 0.06);
 }
 
 .scholarship-card__detail--deadline dt {
@@ -285,7 +351,12 @@
   margin-bottom: var(--space-3);
 }
 
+/* The card's primary action is pearl glass with a champagne hairline
+   rather than a solid pour. A directory renders this button once per
+   card, so a solid gold fill would turn the accent into the dominant
+   colour of the page. Gold stays reserved for one primary per view. */
 .scholarship-card__button {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -293,6 +364,7 @@
   width: 100%;
   min-height: 44px;
   padding: var(--space-3) var(--space-4);
+  overflow: hidden;
   color: var(--sz-ink);
   font-size: var(--text-sm);
   font-weight: 700;
@@ -300,7 +372,9 @@
   background: var(--sz-glass-tint-2);
   border: 1px solid var(--sz-glass-border);
   border-radius: var(--radius-md);
-  box-shadow: var(--sz-depth-1);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 1px 3px rgba(74, 60, 38, 0.06);
   transition:
     color var(--duration-hover) var(--timing-smooth),
     background-color var(--duration-hover) var(--timing-smooth),
@@ -310,15 +384,17 @@
 }
 
 .scholarship-card__button:hover {
-  color: var(--sz-paper);
-  background: var(--sz-ink);
-  border-color: var(--sz-ink);
-  box-shadow: 0 8px 22px rgba(27, 42, 74, 0.18);
+  color: var(--sz-solid-ink);
+  background: var(--sz-solid-bg);
+  border-color: var(--sz-solid-border);
+  box-shadow: var(--sz-solid-shadow);
   transform: translateY(-2px);
 }
 
 .scholarship-card__button:active {
-  box-shadow: var(--sz-depth-1);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 1px 3px rgba(74, 60, 38, 0.08);
   transform: translateY(0);
 }
 
@@ -336,16 +412,17 @@
 }
 
 [data-theme='dark'] .scholarship-card__button {
-  color: var(--sz-ink);
+  color: var(--text-primary);
   background: var(--sz-glass-tint-2);
   border-color: var(--sz-glass-border);
+  box-shadow: 0 1px 0 rgba(255, 240, 210, 0.08) inset;
 }
 
 [data-theme='dark'] .scholarship-card__button:hover {
-  color: var(--sz-paper);
-  background: var(--accent);
-  border-color: var(--accent);
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
+  color: var(--sz-solid-ink);
+  background: var(--sz-solid-bg);
+  border-color: var(--sz-solid-border);
+  box-shadow: var(--sz-solid-shadow);
 }
 
 /* ── Responsive ──────────────────────────────────────────────────
@@ -393,15 +470,43 @@
 @media (prefers-reduced-motion: reduce) {
   .scholarship-card,
   .scholarship-card::before,
+  .scholarship-card::after,
+  .scholarship-card__edge,
   .scholarship-card__button,
   .scholarship-card__button span {
     transition: none;
     animation: none;
   }
 
+  /* No 3D, no lift — but the highlight may stay, since it is a static
+     state change rather than motion. */
   .scholarship-card:hover,
   .scholarship-card:focus-within {
+    --lg-rx: 0deg;
+    --lg-ry: 0deg;
+    --lg-lift: 0px;
+  }
+
+  .scholarship-card:hover::after,
+  .scholarship-card:focus-within::after {
+    opacity: 0;
+  }
+
+  .scholarship-card__button:hover {
     transform: none;
+  }
+}
+
+/* Touch and coarse pointers get the material without the 3D response —
+   there is no hover state to drive it, and the tilt would only ever fire
+   as a stuck transform after a tap. */
+@media (hover: none), (pointer: coarse) {
+  .scholarship-card {
+    transform: none;
+  }
+
+  .scholarship-card::after {
+    display: none;
   }
 }
 
@@ -411,7 +516,9 @@
     border-color: var(--sz-glass-edge-soft);
   }
 
-  .scholarship-card::before {
+  .scholarship-card::before,
+  .scholarship-card::after,
+  .scholarship-card__edge {
     display: none;
   }
 }

@@ -1,8 +1,10 @@
-/* ── Global atmosphere ───────────────────────────────────────────
-   One restrained light layer for the whole product. Deliberately
-   asymmetric and edge-weighted so it never reads as the old
-   top-centre "spotlight" gradient. Washes are pure radial gradients,
-   so there is no blur filter and no continuous repaint. */
+/* ═══════════════════════════════════════════════════════════════════
+   Liquid Atmosphere
+   A living light field, not a static background. Four organic bodies
+   drift on long, mutually-diverse cycles and overlap translucently so
+   the intersections read as thicker liquid. Everything animates
+   transform only — the field never triggers layout or paint.
+   ═══════════════════════════════════════════════════════════════════ */
 .app-atmosphere {
   position: fixed;
   inset: 0;
@@ -10,49 +12,133 @@
   overflow: hidden;
   pointer-events: none;
   user-select: none;
+  background:
+    radial-gradient(120% 80% at 50% -10%, rgba(255, 252, 244, 0.85) 0%, rgba(255, 250, 238, 0) 58%),
+    linear-gradient(180deg, #F8F3E9 0%, #F4EEE2 42%, #EFE7D8 100%);
 }
 
+[data-theme='dark'] .app-atmosphere {
+  background:
+    radial-gradient(120% 80% at 50% -10%, rgba(74, 60, 38, 0.5) 0%, rgba(30, 24, 16, 0) 58%),
+    linear-gradient(180deg, #1B1610 0%, #16120D 46%, #120E09 100%);
+}
+
+/* One organic body.
+   The softness is carried entirely by an elliptical radial gradient that
+   reaches full transparency well inside the element box. There is
+   deliberately NO border-radius here: any shape on the element would
+   clip the gradient and expose a hard edge, which reads as a flat circle
+   rather than as light. Asymmetry comes from the gradient's own centre
+   offset and axis ratio, which costs nothing and cannot band. */
 .app-atmosphere__wash {
   position: absolute;
-  border-radius: 50%;
   opacity: var(--sz-atmo-opacity);
-  background: radial-gradient(circle at center, var(--sz-atmo-color) 0%, transparent 70%);
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  background: radial-gradient(
+    ellipse var(--sz-atmo-extent) at var(--sz-atmo-cx) var(--sz-atmo-cy),
+    var(--sz-atmo-color) 0%,
+    rgba(0, 0, 0, 0) 72%
+  );
 }
 
-.app-atmosphere__wash--navy {
-  top: -28vh;
-  left: -14vw;
-  width: 78vw;
-  height: 78vw;
-  --sz-atmo-color: rgba(27, 42, 74, 0.13);
+/* Pearl — the brightest body, top-left, reads as window light. */
+.app-atmosphere__wash--pearl {
+  top: -34vh;
+  left: -22vw;
+  width: 92vw;
+  height: 96vh;
+  --sz-atmo-color: rgba(255, 254, 250, 0.98);
+  --sz-atmo-extent: 62% 58%;
+  --sz-atmo-cx: 46%;
+  --sz-atmo-cy: 44%;
+  animation: sz-liquid-drift-a var(--sz-atmo-duration) ease-in-out infinite;
 }
 
-.app-atmosphere__wash--gold {
-  right: -18vw;
-  bottom: -32vh;
-  width: 66vw;
-  height: 66vw;
-  --sz-atmo-color: rgba(196, 164, 74, 0.16);
+/* Champagne — the accent body, lower-right, warms the canvas. */
+.app-atmosphere__wash--champagne {
+  top: 12vh;
+  right: -30vw;
+  width: 86vw;
+  height: 96vh;
+  --sz-atmo-color: rgba(214, 184, 124, 0.3);
+  --sz-atmo-extent: 58% 54%;
+  --sz-atmo-cx: 52%;
+  --sz-atmo-cy: 52%;
+  animation: sz-liquid-drift-b calc(var(--sz-atmo-duration) * 1.25) ease-in-out infinite;
 }
 
-.app-atmosphere__wash--sky {
-  top: 32vh;
-  right: -24vw;
-  width: 54vw;
-  height: 54vw;
-  --sz-atmo-color: rgba(57, 95, 165, 0.1);
+/* Warm beige — the grounding body, mid-right, keeps the field from
+   reading as two separate lights. */
+.app-atmosphere__wash--beige {
+  top: 30vh;
+  right: -26vw;
+  width: 74vw;
+  height: 84vh;
+  --sz-atmo-color: rgba(201, 181, 145, 0.24);
+  --sz-atmo-extent: 56% 52%;
+  --sz-atmo-cx: 48%;
+  --sz-atmo-cy: 46%;
+  animation: sz-liquid-drift-c calc(var(--sz-atmo-duration) * 0.85) ease-in-out infinite;
 }
 
-[data-theme='dark'] .app-atmosphere__wash--navy {
-  --sz-atmo-color: rgba(99, 130, 200, 0.2);
+/* Clay — a low, wide, very soft body near the fold. */
+.app-atmosphere__wash--clay {
+  bottom: -30vh;
+  left: -18vw;
+  width: 84vw;
+  height: 74vh;
+  --sz-atmo-color: rgba(190, 164, 122, 0.2);
+  --sz-atmo-extent: 54% 50%;
+  --sz-atmo-cx: 50%;
+  --sz-atmo-cy: 50%;
+  animation: sz-liquid-drift-b calc(var(--sz-atmo-duration) * 1.5) ease-in-out infinite reverse;
 }
 
-[data-theme='dark'] .app-atmosphere__wash--gold {
-  --sz-atmo-color: rgba(212, 184, 90, 0.14);
+[data-theme='dark'] .app-atmosphere__wash--pearl {
+  --sz-atmo-color: rgba(228, 206, 162, 0.13);
 }
 
-[data-theme='dark'] .app-atmosphere__wash--sky {
-  --sz-atmo-color: rgba(72, 108, 190, 0.18);
+[data-theme='dark'] .app-atmosphere__wash--champagne {
+  --sz-atmo-color: rgba(200, 162, 96, 0.16);
+}
+
+[data-theme='dark'] .app-atmosphere__wash--beige {
+  --sz-atmo-color: rgba(146, 122, 86, 0.13);
+}
+
+[data-theme='dark'] .app-atmosphere__wash--clay {
+  --sz-atmo-color: rgba(118, 96, 64, 0.12);
+}
+
+/* A single very slow sheen across the whole field. It is the only
+   decorative element allowed to read as "movement" at a glance. */
+.app-atmosphere__sheen {
+  position: absolute;
+  top: -10%;
+  left: 0;
+  width: 45%;
+  height: 120%;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 253, 246, 0.5) 46%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: translate3d(-30%, 0, 0);
+  animation: sz-liquid-sheen 34s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+[data-theme='dark'] .app-atmosphere__sheen {
+  background: linear-gradient(
+    100deg,
+    rgba(255, 240, 210, 0) 0%,
+    rgba(255, 238, 202, 0.07) 46%,
+    rgba(255, 240, 210, 0) 100%
+  );
 }
 
 .app-shell {
@@ -62,32 +148,77 @@
   min-height: 100vh;
 }
 
-/* ── Sticky header ───────────────────────────────────────────────
-   Transparent at rest so the editorial hero reads through it; the
-   L3 glass surface is only mounted once Layout marks it scrolled. */
+/* ── Floating glass header ──────────────────────────────────────
+   Transparent at rest so the hero's light field reads through it; the
+   pearl surface is only mounted once Layout marks it scrolled. */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 20;
+  padding: var(--space-3) var(--space-4) 0;
   background: transparent;
   border-bottom: 1px solid transparent;
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
   transition:
+    padding var(--duration-smooth) var(--timing-smooth),
     background-color var(--duration-smooth) var(--timing-smooth),
     border-color var(--duration-smooth) var(--timing-smooth),
     box-shadow var(--duration-smooth) var(--timing-smooth);
 }
 
-/* tint-4 rather than tint-3: still a real glass surface (blur, hairline,
-   shadow) but opaque enough that a large page heading scrolling underneath
-   does not read through it and compete with the navigation. */
+/* The floating pill: an inset surface with its own margin so the page
+   reads as glass resting above the canvas rather than a full bar. */
 .site-header.is-scrolled {
-  background: var(--sz-glass-tint-4);
-  border-bottom: 1px solid var(--sz-glass-border);
-  box-shadow: var(--sz-glass-shadow-1);
-  -webkit-backdrop-filter: var(--sz-glass-blur);
-  backdrop-filter: var(--sz-glass-blur);
+  padding: var(--space-3) var(--space-5) var(--space-2);
+  background: transparent;
+}
+
+.site-header .nav-bar {
+  border-radius: var(--radius-xl);
+}
+
+.site-header.is-scrolled .nav-bar {
+  background: var(--sz-glass-tint-3);
+  border: 1px solid var(--sz-glass-border);
+  box-shadow: var(--sz-glass-shadow-2);
+  -webkit-backdrop-filter: var(--sz-glass-blur-strong);
+  backdrop-filter: var(--sz-glass-blur-strong);
+}
+
+/* Rim + specular on the floating nav, so the pill has real thickness. */
+.site-header .nav-bar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--sz-glass-specular), var(--sz-glass-underlight);
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-smooth) var(--timing-smooth);
+}
+
+.site-header .nav-bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--sz-glass-rim);
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-smooth) var(--timing-smooth);
+}
+
+.site-header.is-scrolled .nav-bar::before,
+.site-header.is-scrolled .nav-bar::after {
+  opacity: 1;
+}
+
+.site-header .nav-bar > * {
+  position: relative;
+  z-index: 1;
 }
 
 .app-content {
@@ -96,7 +227,7 @@
   width: min(100%, var(--grid-max));
   flex: 1;
   margin: 0 auto;
-  padding: var(--space-12) var(--space-6) var(--space-16);
+  padding: var(--space-10) var(--space-6) var(--space-16);
 }
 
 .app-footer {
@@ -116,9 +247,8 @@
   backdrop-filter: var(--sz-glass-blur);
 }
 
-[data-theme='dark'] .site-header {
-  background: var(--sz-glass-tint-3);
-  border-color: var(--sz-glass-border);
+[data-theme='dark'] .site-header:not(.is-scrolled) .nav-bar {
+  background: transparent;
 }
 
 [data-theme='dark'] .app-footer {
@@ -126,8 +256,8 @@
   border-color: var(--sz-glass-border);
 }
 
-/* Dark mode only. In light mode it ghosted through the translucent
-   card surfaces and read as a smudge behind body text. */
+/* Watermark. Light mode only — on a warm cream ground the dark glyph
+   read as a smudge rather than as depth. */
 .watermark {
   position: fixed;
   inset: 0;
@@ -161,11 +291,45 @@
   .app-content {
     padding: var(--space-8) var(--space-4) var(--space-12);
   }
+
+  .site-header,
+  .site-header.is-scrolled {
+    padding: var(--space-2) var(--space-3) 0;
+  }
+}
+
+/* Mobile keeps the material but drops the decoration, and stops the
+   drift entirely — a 4-body animated field is wasted motion on a
+   small, often-battery-constrained viewport. */
+@media (max-width: 768px) {
+  .app-atmosphere__wash--beige,
+  .app-atmosphere__wash--clay,
+  .app-atmosphere__sheen {
+    display: none;
+  }
+
+  .app-atmosphere__wash {
+    animation: none;
+    will-change: auto;
+  }
+
+  .site-header.is-scrolled .nav-bar {
+    -webkit-backdrop-filter: var(--sz-glass-blur);
+    backdrop-filter: var(--sz-glass-blur);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .site-header,
-  .app-footer {
+  .app-footer,
+  .site-header .nav-bar::before,
+  .site-header .nav-bar::after {
     transition: none;
+  }
+
+  .app-atmosphere__wash,
+  .app-atmosphere__sheen {
+    animation: none !important;
+    will-change: auto;
   }
 }

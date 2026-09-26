@@ -1,56 +1,59 @@
 :root {
   /* ═══════════════════════════════════════════════════════════════
-     ScholarZone 2026 — Consolidated Design Tokens
+     ScholarZone — Warm Cream & Pearl Liquid Glass
+     Light is the primary direction: warm cream canvas, pearl glass,
+     champagne illumination. Dark preserves the same material language
+     with a deep warm ground and smoked pearl.
      ═══════════════════════════════════════════════════════════════ */
 
   /* ── Color: Surface ─────────────────────────────────────────── */
-  --page-bg: #F7F5F0;
-  --page-glow: rgba(196, 164, 74, 0.08);
-  --surface: #ffffff;
-  --surface-raised: #ffffff;
-  --surface-subtle: #EFEEE9;
-  --surface-accent: rgba(196, 164, 74, 0.08);
+  --page-bg: #F4EEE2;
+  --page-glow: rgba(197, 165, 106, 0.1);
+  --surface: #FCF9F2;
+  --surface-raised: #FFFCF6;
+  --surface-subtle: #EDE5D6;
+  --surface-accent: rgba(197, 165, 106, 0.1);
 
-  /* ── Color: Text ────────────────────────────────────────────── */
-  --text-primary: #1B2A4A;
-  --text-secondary: #3D4F6B;
-  --text-muted: #6B7A8F;
-  --text-faint: #94A3B8;
+  /* ── Color: Text (warm charcoal, never navy) ────────────────── */
+  --text-primary: #2B2620;
+  --text-secondary: #574F44;
+  --text-muted: #857A6B;
+  --text-faint: #A99C89;
 
   /* ── Color: Border ──────────────────────────────────────────── */
-  --border: #E8E6E1;
-  --border-strong: #D5D0C8;
+  --border: #E6DCC9;
+  --border-strong: #D4C5A9;
 
-  /* ── Color: Accent (Gold) ───────────────────────────────────── */
-  --accent: #C4A44A;
-  --accent-hover: #B08F3A;
-  --accent-soft: rgba(196, 164, 74, 0.1);
-  --accent-border: rgba(196, 164, 74, 0.3);
+  /* ── Color: Accent (restrained champagne) ───────────────────── */
+  --accent: #B9974E;
+  --accent-hover: #A17F38;
+  --accent-soft: rgba(185, 151, 78, 0.12);
+  --accent-border: rgba(185, 151, 78, 0.34);
 
   /* ── Color: Semantic ────────────────────────────────────────── */
-  --success: #4A7C59;
-  --success-soft: rgba(74, 124, 89, 0.1);
-  --success-border: rgba(74, 124, 89, 0.3);
-  --warning: #B8860B;
-  --warning-strong: #9A7209;
-  --warning-soft: rgba(184, 134, 11, 0.1);
-  --warning-border: rgba(184, 134, 11, 0.3);
-  --danger: #A85C5C;
-  --danger-soft: rgba(168, 92, 92, 0.1);
-  --danger-border: rgba(168, 92, 92, 0.3);
+  --success: #4F7A56;
+  --success-soft: rgba(79, 122, 86, 0.11);
+  --success-border: rgba(79, 122, 86, 0.32);
+  --warning: #A8761A;
+  --warning-strong: #8C6112;
+  --warning-soft: rgba(168, 118, 26, 0.11);
+  --warning-border: rgba(168, 118, 26, 0.32);
+  --danger: #A25F51;
+  --danger-soft: rgba(162, 95, 81, 0.11);
+  --danger-border: rgba(162, 95, 81, 0.32);
 
   /* ── Color: Focus ───────────────────────────────────────────── */
-  --focus-ring: rgba(196, 164, 74, 0.3);
+  --focus-ring: rgba(185, 151, 78, 0.42);
   --focus-ring-width: 2px;
   --focus-ring-offset: 2px;
 
   /* ── Color: Header ──────────────────────────────────────────── */
-  --header-bg: rgba(247, 245, 240, 0.92);
+  --header-bg: rgba(250, 246, 238, 0.72);
 
-  /* ── Shadow ─────────────────────────────────────────────────── */
-  --shadow-card: 0 1px 3px rgba(27, 42, 74, 0.04), 0 4px 12px rgba(27, 42, 74, 0.03);
-  --shadow-elevated: 0 2px 8px rgba(27, 42, 74, 0.04), 0 12px 32px rgba(27, 42, 74, 0.06);
-  --shadow-hover: 0 4px 16px rgba(27, 42, 74, 0.06), 0 8px 24px rgba(27, 42, 74, 0.04);
+  /* ── Shadow (warm, never blue-black) ────────────────────────── */
+  --shadow-card: 0 1px 2px rgba(74, 60, 38, 0.05), 0 6px 16px rgba(74, 60, 38, 0.05);
+  --shadow-elevated: 0 2px 6px rgba(74, 60, 38, 0.06), 0 16px 38px rgba(74, 60, 38, 0.08);
+  --shadow-hover: 0 6px 18px rgba(74, 60, 38, 0.08), 0 12px 30px rgba(74, 60, 38, 0.06);
 
   /* ── Typography: Families ───────────────────────────────────── */
   --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
@@ -138,173 +141,252 @@
   --sz-grid-max: var(--grid-max);
 
   /* ── ScholarZone Editorial Tokens ───────────────────────────── */
-  --sz-ink: #1B2A4A;
-  --sz-ink-soft: #3D4F6B;
-  --sz-paper: #F7F5F0;
-  --sz-paper-soft: #EFEEE9;
-  --sz-gold: #C4A44A;
-  --sz-gold-deep: #A88B3A;
-  --sz-gold-soft: rgba(196, 164, 74, 0.1);
-  --sz-stone: #8A8070;
-  --sz-stone-light: #B5AA9A;
-  --sz-mist: #E8E6E1;
-  --sz-mist-soft: rgba(232, 230, 225, 0.5);
+  --sz-ink: #2B2620;
+  --sz-ink-soft: #574F44;
+  --sz-paper: #F4EEE2;
+  --sz-paper-soft: #EDE5D6;
+  --sz-gold: #B9974E;
+  --sz-gold-deep: #96762F;
+  --sz-gold-soft: rgba(185, 151, 78, 0.12);
+  --sz-stone: #857A6B;
+  --sz-stone-light: #A99C89;
+  --sz-mist: #E6DCC9;
+  --sz-mist-soft: rgba(230, 220, 201, 0.55);
 
-  /* ── Premium Glass System ──────────────────────────────────────
+  /* ── Pearl Liquid Glass System ─────────────────────────────────
      Level 1 content cards · 2 floating panels · 3 nav/modals · 4 toasts
+     Tints are warm ivory rather than neutral white, so stacked glass
+     reads as one continuous material instead of separate panes.
      Solid pairs provide the no-backdrop-filter / high-contrast fallback. */
-  --sz-glass-tint-1: rgba(255, 255, 255, 0.62);
-  --sz-glass-tint-2: rgba(255, 255, 255, 0.74);
-  --sz-glass-tint-3: rgba(255, 255, 255, 0.86);
-  --sz-glass-tint-4: rgba(255, 255, 255, 0.94);
+  --sz-glass-tint-1: rgba(255, 252, 245, 0.58);
+  --sz-glass-tint-2: rgba(255, 251, 243, 0.72);
+  --sz-glass-tint-3: rgba(255, 250, 241, 0.86);
+  --sz-glass-tint-4: rgba(255, 249, 239, 0.94);
 
-  --sz-glass-tint-1-hover: rgba(255, 255, 255, 0.72);
-  --sz-glass-tint-2-hover: rgba(255, 255, 255, 0.84);
-  --sz-glass-tint-3-hover: rgba(255, 255, 255, 0.93);
-  --sz-glass-tint-4-hover: rgba(255, 255, 255, 0.98);
+  --sz-glass-tint-1-hover: rgba(255, 253, 248, 0.7);
+  --sz-glass-tint-2-hover: rgba(255, 252, 245, 0.82);
+  --sz-glass-tint-3-hover: rgba(255, 251, 244, 0.92);
+  --sz-glass-tint-4-hover: rgba(255, 252, 245, 0.97);
 
-  --sz-glass-solid-1: #FDFCFA;
-  --sz-glass-solid-2: #FFFFFF;
-  --sz-glass-solid-3: #FFFFFF;
-  --sz-glass-solid-4: #FFFFFF;
+  --sz-glass-solid-1: #FDFAF3;
+  --sz-glass-solid-2: #FFFCF6;
+  --sz-glass-solid-3: #FFFCF6;
+  --sz-glass-solid-4: #FFFBF4;
 
-  --sz-glass-border: rgba(27, 42, 74, 0.08);
-  --sz-glass-border-hover: rgba(196, 164, 74, 0.34);
-  --sz-glass-edge: rgba(255, 255, 255, 0.72);
-  --sz-glass-edge-soft: rgba(27, 42, 74, 0.05);
+  --sz-glass-border: rgba(120, 100, 68, 0.13);
+  --sz-glass-border-hover: rgba(185, 151, 78, 0.42);
+  --sz-glass-edge: rgba(255, 255, 255, 0.85);
+  --sz-glass-edge-soft: rgba(120, 100, 68, 0.07);
 
-  --sz-glass-blur: blur(18px) saturate(140%);
-  --sz-glass-blur-strong: blur(26px) saturate(160%);
-  --sz-glass-specular: linear-gradient(
+  --sz-glass-blur: blur(20px) saturate(150%);
+  --sz-glass-blur-strong: blur(30px) saturate(170%);
+
+  /* The liquid cue: a soft elliptical bloom sitting just under the top
+     edge, plus a thin bright rim. Together they read as light pooling
+     on a curved, slightly wet surface. */
+  --sz-glass-specular: radial-gradient(
+    120% 78% at 26% -8%,
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(255, 252, 242, 0.42) 34%,
+    rgba(255, 250, 236, 0) 66%
+  );
+  --sz-glass-rim: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.6) 0%,
-    rgba(255, 255, 255, 0.1) 36%,
-    transparent 72%
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.16) 30%,
+    rgba(255, 255, 255, 0) 58%
+  );
+  /* Warm bounce light along the bottom edge — what sells "thick". */
+  --sz-glass-underlight: radial-gradient(
+    100% 60% at 50% 108%,
+    rgba(214, 184, 128, 0.24) 0%,
+    rgba(214, 184, 128, 0) 70%
   );
 
-  --sz-glass-shadow-1: 0 1px 2px rgba(27, 42, 74, 0.04), 0 6px 18px rgba(27, 42, 74, 0.05);
-  --sz-glass-shadow-2: 0 2px 6px rgba(27, 42, 74, 0.05), 0 14px 36px rgba(27, 42, 74, 0.08);
-  --sz-glass-shadow-3: 0 4px 10px rgba(27, 42, 74, 0.06), 0 22px 52px rgba(27, 42, 74, 0.1);
-  --sz-glass-shadow-4: 0 8px 18px rgba(27, 42, 74, 0.08), 0 32px 72px rgba(27, 42, 74, 0.14);
+  --sz-glass-shadow-1: 0 1px 2px rgba(74, 60, 38, 0.05), 0 6px 18px rgba(74, 60, 38, 0.06);
+  --sz-glass-shadow-2: 0 2px 6px rgba(74, 60, 38, 0.06), 0 16px 40px rgba(74, 60, 38, 0.09);
+  --sz-glass-shadow-3: 0 4px 10px rgba(74, 60, 38, 0.07), 0 26px 58px rgba(74, 60, 38, 0.11);
+  --sz-glass-shadow-4: 0 10px 20px rgba(74, 60, 38, 0.09), 0 38px 80px rgba(74, 60, 38, 0.15);
 
   /* ── Premium Depth System ──────────────────────────────────── */
-  --sz-depth-1: 0 0 0 1px rgba(27, 42, 74, 0.05);
-  --sz-depth-2: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 0 0 1px rgba(27, 42, 74, 0.06), 0 10px 24px rgba(27, 42, 74, 0.05);
-  --sz-depth-3: 0 1px 0 rgba(255, 255, 255, 0.72) inset, 0 0 0 1px rgba(27, 42, 74, 0.07), 0 20px 44px rgba(27, 42, 74, 0.08);
+  --sz-depth-1: 0 0 0 1px rgba(120, 100, 68, 0.06);
+  --sz-depth-2: 0 1px 0 rgba(255, 255, 255, 0.7) inset, 0 0 0 1px rgba(120, 100, 68, 0.08), 0 10px 24px rgba(74, 60, 38, 0.06);
+  --sz-depth-3: 0 1px 0 rgba(255, 255, 255, 0.82) inset, 0 0 0 1px rgba(120, 100, 68, 0.1), 0 22px 48px rgba(74, 60, 38, 0.09);
 
   --sz-orb-opacity: 0.55;
-  --sz-skeleton-base: rgba(27, 42, 74, 0.07);
-  --sz-skeleton-sheen: rgba(255, 255, 255, 0.65);
+  --sz-skeleton-base: rgba(120, 100, 68, 0.08);
+  --sz-skeleton-sheen: rgba(255, 253, 246, 0.75);
   --sz-skeleton-radius: var(--radius-sm);
 
-  /* Global atmosphere master knob. Per-wash tint is set in App.css. */
+  /* Global atmosphere master knob. Per-field tint is set in App.css. */
   --sz-atmo-opacity: 1;
+  /* How far the liquid field drifts, in vmax. Kept small so the motion
+     reads as atmosphere rather than as a moving object. */
+  --sz-atmo-drift: 3.2;
+  --sz-atmo-duration: 68s;
 
-  /* Form field well. Inputs need more presence than a content card,
-     because the field and its containing panel resolve to nearly the
-     same tint otherwise. */
-  --sz-input-border: rgba(27, 42, 74, 0.16);
-  --sz-input-inset: inset 0 1px 2px rgba(27, 42, 74, 0.07);
+  /* Form field well. Inputs need to read as *recessed* into their panel,
+     so the fill sits slightly darker than the card behind it rather than
+     lighter — a lighter field reads as raised. The border plus inset
+     shadow carry the rest of the recess. */
+  --sz-input-border: rgba(120, 100, 68, 0.2);
+  --sz-input-bg: rgba(126, 104, 66, 0.05);
+  --sz-input-bg-hover: rgba(126, 104, 66, 0.08);
+  --sz-input-inset: inset 0 1px 2px rgba(74, 60, 38, 0.08);
 
   /* On-tint text — AA (4.5:1) on the matching *-soft fills above */
-  --sz-success-text: #2F5C3C;
-  --sz-accent-text: #7A6220;
-  --sz-warning-text: #6B4E05;
+  --sz-success-text: #3A6141;
+  --sz-accent-text: #6E5620;
+  --sz-warning-text: #6B4A0C;
+
+  /* ── Champagne solid ───────────────────────────────────────────
+     The single "primary" material: a poured-gold lozenge used by every
+     primary call to action. Defined once here so the hero, cards, auth,
+     saved, compare and empty states all pour the same object instead of
+     each approximating it. */
+  --sz-solid-bg: linear-gradient(146deg, #F2E5C2 0%, #D8B771 48%, #C09C51 100%);
+  --sz-solid-bg-hover: linear-gradient(146deg, #F8EED6 0%, #E2C489 48%, #CBA963 100%);
+  --sz-solid-ink: #3E3010;
+  --sz-solid-ink-hover: #3A2C0C;
+  --sz-solid-border: rgba(255, 255, 255, 0.44);
+  --sz-solid-border-hover: rgba(255, 255, 255, 0.62);
+  --sz-solid-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 4px 14px rgba(146, 116, 58, 0.28);
+  --sz-solid-shadow-hover:
+    0 1px 0 rgba(255, 255, 255, 0.82) inset,
+    0 10px 28px rgba(146, 116, 58, 0.34);
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-   Dark Mode — Consistent warm gold accent
+   Dark Mode — warm ground, smoked pearl glass, champagne illumination.
+   The material is identical to light; only the pigment changes.
    ═══════════════════════════════════════════════════════════════════ */
 :root[data-theme='dark'] {
-  --page-bg: #0f1729;
-  --page-glow: rgba(196, 164, 74, 0.12);
-  --surface: #121c2b;
-  --surface-raised: #172235;
-  --surface-subtle: #1a283b;
-  --surface-accent: rgba(196, 164, 74, 0.1);
-  --text-primary: #f1f5f9;
-  --text-secondary: #d7e1ef;
-  --text-muted: #9aaac0;
-  --text-faint: #71829a;
-  --border: #2a3a52;
-  --border-strong: #40536f;
-  --accent: #d4b85a;
-  --accent-hover: #e0c878;
-  --accent-soft: rgba(212, 184, 90, 0.12);
-  --accent-border: rgba(212, 184, 90, 0.3);
-  --success: #55d9ad;
-  --success-soft: rgba(85, 217, 173, 0.12);
-  --success-border: rgba(85, 217, 173, 0.3);
-  --warning: #ffc27a;
-  --warning-strong: #f5a958;
-  --warning-soft: rgba(255, 194, 122, 0.12);
-  --warning-border: rgba(255, 194, 122, 0.3);
-  --danger: #fca5a5;
-  --danger-soft: rgba(252, 165, 165, 0.12);
-  --danger-border: rgba(252, 165, 165, 0.3);
-  --focus-ring: rgba(212, 184, 90, 0.35);
-  --header-bg: rgba(15, 23, 41, 0.88);
-  --shadow-card: 0 10px 26px rgba(0, 0, 0, 0.24);
-  --shadow-elevated: 0 22px 48px rgba(0, 0, 0, 0.32);
+  --page-bg: #16120D;
+  --page-glow: rgba(197, 165, 106, 0.14);
+  --surface: #1D1811;
+  --surface-raised: #241E15;
+  --surface-subtle: #2A2318;
+  --surface-accent: rgba(197, 165, 106, 0.1);
+  --text-primary: #F6F1E6;
+  --text-secondary: #DCD3C2;
+  --text-muted: #A79B87;
+  --text-faint: #7E7362;
+  --border: #362D20;
+  --border-strong: #4C4030;
+  --accent: #D2B067;
+  --accent-hover: #E0C289;
+  --accent-soft: rgba(210, 176, 103, 0.14);
+  --accent-border: rgba(210, 176, 103, 0.34);
+  --success: #6FBE86;
+  --success-soft: rgba(111, 190, 134, 0.13);
+  --success-border: rgba(111, 190, 134, 0.32);
+  --warning: #E5B765;
+  --warning-strong: #F0C87F;
+  --warning-soft: rgba(229, 183, 101, 0.13);
+  --warning-border: rgba(229, 183, 101, 0.32);
+  --danger: #E39B8B;
+  --danger-soft: rgba(227, 155, 139, 0.13);
+  --danger-border: rgba(227, 155, 139, 0.32);
+  --focus-ring: rgba(210, 176, 103, 0.45);
+  --header-bg: rgba(22, 18, 13, 0.72);
+  --shadow-card: 0 10px 26px rgba(0, 0, 0, 0.34);
+  --shadow-elevated: 0 22px 48px rgba(0, 0, 0, 0.42);
+  --shadow-hover: 0 6px 18px rgba(0, 0, 0, 0.38);
 
-  --sz-ink: #f1f5f9;
-  --sz-ink-soft: #d7e1ef;
-  --sz-paper: #0f1729;
-  --sz-gold: #d4b85a;
-  --sz-gold-deep: #e0c878;
-  --sz-gold-soft: rgba(212, 184, 90, 0.15);
-  --sz-stone: #9aaac0;
-  --sz-stone-light: #71829a;
-  --sz-mist: #2a3a52;
-  --sz-mist-soft: rgba(42, 58, 82, 0.5);
+  --sz-ink: #F6F1E6;
+  --sz-ink-soft: #DCD3C2;
+  --sz-paper: #16120D;
+  --sz-paper-soft: #241E15;
+  --sz-gold: #D2B067;
+  --sz-gold-deep: #E0C289;
+  --sz-gold-soft: rgba(210, 176, 103, 0.15);
+  --sz-stone: #A79B87;
+  --sz-stone-light: #7E7362;
+  --sz-mist: #362D20;
+  --sz-mist-soft: rgba(54, 45, 32, 0.6);
 
-  --sz-glass-tint-1: rgba(18, 28, 43, 0.5);
-  --sz-glass-tint-2: rgba(23, 34, 53, 0.6);
-  --sz-glass-tint-3: rgba(23, 34, 53, 0.74);
-  --sz-glass-tint-4: rgba(15, 23, 41, 0.86);
+  /* Smoked pearl: warm-neutral translucency, never blue-black. */
+  --sz-glass-tint-1: rgba(52, 44, 33, 0.5);
+  --sz-glass-tint-2: rgba(58, 49, 37, 0.6);
+  --sz-glass-tint-3: rgba(62, 52, 39, 0.74);
+  --sz-glass-tint-4: rgba(38, 32, 24, 0.86);
 
-  --sz-glass-tint-1-hover: rgba(26, 39, 58, 0.62);
-  --sz-glass-tint-2-hover: rgba(30, 44, 68, 0.72);
-  --sz-glass-tint-3-hover: rgba(30, 44, 68, 0.86);
-  --sz-glass-tint-4-hover: rgba(20, 31, 48, 0.94);
+  --sz-glass-tint-1-hover: rgba(64, 54, 41, 0.62);
+  --sz-glass-tint-2-hover: rgba(70, 59, 45, 0.72);
+  --sz-glass-tint-3-hover: rgba(76, 64, 48, 0.84);
+  --sz-glass-tint-4-hover: rgba(48, 40, 30, 0.92);
 
-  --sz-glass-solid-1: #131E2F;
-  --sz-glass-solid-2: #172235;
-  --sz-glass-solid-3: #172235;
-  --sz-glass-solid-4: #0F1729;
+  --sz-glass-solid-1: #221C14;
+  --sz-glass-solid-2: #292218;
+  --sz-glass-solid-3: #2E2619;
+  --sz-glass-solid-4: #1B1610;
 
-  --sz-glass-border: rgba(160, 180, 210, 0.14);
-  --sz-glass-border-hover: rgba(212, 184, 90, 0.4);
-  --sz-glass-edge: rgba(255, 255, 255, 0.1);
-  --sz-glass-edge-soft: rgba(0, 0, 0, 0.24);
+  --sz-glass-border: rgba(206, 186, 146, 0.15);
+  --sz-glass-border-hover: rgba(210, 176, 103, 0.44);
+  --sz-glass-edge: rgba(255, 244, 220, 0.14);
+  --sz-glass-edge-soft: rgba(0, 0, 0, 0.3);
 
-  --sz-glass-specular: linear-gradient(
+  /* Dark glass gets a cooler, tighter bloom plus a stronger warm
+     underlight, because warm bounce reads far more on a dark ground. */
+  --sz-glass-specular: radial-gradient(
+    120% 78% at 26% -8%,
+    rgba(255, 238, 205, 0.2) 0%,
+    rgba(255, 232, 190, 0.07) 34%,
+    rgba(255, 226, 180, 0) 66%
+  );
+  --sz-glass-rim: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.02) 36%,
-    transparent 72%
+    rgba(255, 240, 210, 0.22) 0%,
+    rgba(255, 236, 200, 0.06) 30%,
+    rgba(255, 230, 190, 0) 58%
+  );
+  --sz-glass-underlight: radial-gradient(
+    100% 60% at 50% 108%,
+    rgba(210, 168, 96, 0.2) 0%,
+    rgba(210, 168, 96, 0) 70%
   );
 
-  --sz-glass-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.24), 0 6px 18px rgba(0, 0, 0, 0.22);
-  --sz-glass-shadow-2: 0 2px 6px rgba(0, 0, 0, 0.28), 0 14px 36px rgba(0, 0, 0, 0.3);
-  --sz-glass-shadow-3: 0 4px 10px rgba(0, 0, 0, 0.3), 0 22px 52px rgba(0, 0, 0, 0.36);
-  --sz-glass-shadow-4: 0 8px 18px rgba(0, 0, 0, 0.34), 0 32px 72px rgba(0, 0, 0, 0.44);
+  --sz-glass-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 18px rgba(0, 0, 0, 0.3);
+  --sz-glass-shadow-2: 0 2px 6px rgba(0, 0, 0, 0.34), 0 16px 40px rgba(0, 0, 0, 0.4);
+  --sz-glass-shadow-3: 0 4px 10px rgba(0, 0, 0, 0.36), 0 26px 58px rgba(0, 0, 0, 0.46);
+  --sz-glass-shadow-4: 0 10px 20px rgba(0, 0, 0, 0.4), 0 38px 80px rgba(0, 0, 0, 0.54);
 
-  --sz-depth-1: 0 0 0 1px rgba(160, 180, 210, 0.08);
-  --sz-depth-2: 0 1px 0 rgba(255, 255, 255, 0.06) inset, 0 0 0 1px rgba(160, 180, 210, 0.1), 0 10px 24px rgba(0, 0, 0, 0.26);
-  --sz-depth-3: 0 1px 0 rgba(255, 255, 255, 0.08) inset, 0 0 0 1px rgba(160, 180, 210, 0.12), 0 20px 44px rgba(0, 0, 0, 0.32);
+  --sz-depth-1: 0 0 0 1px rgba(206, 186, 146, 0.09);
+  --sz-depth-2: 0 1px 0 rgba(255, 240, 210, 0.07) inset, 0 0 0 1px rgba(206, 186, 146, 0.12), 0 10px 24px rgba(0, 0, 0, 0.34);
+  --sz-depth-3: 0 1px 0 rgba(255, 240, 210, 0.09) inset, 0 0 0 1px rgba(206, 186, 146, 0.14), 0 22px 48px rgba(0, 0, 0, 0.4);
 
-  --sz-orb-opacity: 0.4;
-  --sz-skeleton-base: rgba(160, 180, 210, 0.1);
-  --sz-skeleton-sheen: rgba(255, 255, 255, 0.14);
+  --sz-orb-opacity: 0.42;
+  --sz-skeleton-base: rgba(206, 186, 146, 0.1);
+  --sz-skeleton-sheen: rgba(255, 244, 220, 0.14);
   --sz-atmo-opacity: 1;
+  --sz-atmo-drift: 2.4;
+  --sz-atmo-duration: 78s;
 
-  --sz-input-border: rgba(160, 180, 210, 0.26);
-  --sz-input-inset: inset 0 1px 2px rgba(0, 0, 0, 0.34);
+  --sz-input-border: rgba(206, 186, 146, 0.28);
+  --sz-input-bg: rgba(0, 0, 0, 0.24);
+  --sz-input-bg-hover: rgba(0, 0, 0, 0.3);
+  --sz-input-inset: inset 0 1px 2px rgba(0, 0, 0, 0.4);
 
-  --sz-success-text: #7fdcae;
-  --sz-accent-text: #e0c878;
-  --sz-warning-text: #f5c98a;
+  --sz-success-text: #8FD3A4;
+  --sz-accent-text: #E0C289;
+  --sz-warning-text: #F0CE8E;
+
+  /* Dark keeps the same poured-champagne material, with a deeper base so
+     it separates from a dark ground rather than glowing against it. */
+  --sz-solid-bg: linear-gradient(146deg, #F0E1B8 0%, #CDA863 48%, #B08F45 100%);
+  --sz-solid-bg-hover: linear-gradient(146deg, #F7EBD0 0%, #D8B771 48%, #C09C51 100%);
+  --sz-solid-ink: #241C0C;
+  --sz-solid-ink-hover: #1C1508;
+  --sz-solid-border: rgba(255, 255, 255, 0.3);
+  --sz-solid-border-hover: rgba(255, 255, 255, 0.45);
+  --sz-solid-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.42) inset,
+    0 4px 14px rgba(0, 0, 0, 0.36);
+  --sz-solid-shadow-hover:
+    0 1px 0 rgba(255, 255, 255, 0.55) inset,
+    0 10px 28px rgba(0, 0, 0, 0.44);
 }
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -424,16 +506,18 @@ h2 {
 }
 
 .sz-btn--primary {
-  color: #ffffff;
-  background: var(--sz-ink);
-  border: 1px solid var(--sz-ink);
+  color: var(--sz-solid-ink);
+  background: var(--sz-solid-bg);
+  border: 1px solid var(--sz-solid-border);
+  box-shadow: var(--sz-solid-shadow);
 }
 
 .sz-btn--primary:hover {
-  background: #0f1d35;
-  border-color: #0f1d35;
+  color: var(--sz-solid-ink-hover);
+  background: var(--sz-solid-bg-hover);
+  border-color: var(--sz-solid-border-hover);
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(27, 42, 74, 0.15);
+  box-shadow: var(--sz-solid-shadow-hover);
 }
 
 .sz-btn--secondary {
@@ -443,8 +527,8 @@ h2 {
 }
 
 .sz-btn--secondary:hover {
-  border-color: var(--sz-ink);
-  background: rgba(255, 255, 255, 0.5);
+  border-color: var(--sz-gold);
+  background: var(--sz-glass-tint-1);
   transform: translateY(-1px);
 }
 
@@ -544,17 +628,19 @@ h2 {
   color: var(--text-primary);
   font-family: var(--font-body);
   font-size: var(--text-base);
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background: var(--sz-input-bg);
+  border: 1px solid var(--sz-input-border);
   border-radius: var(--radius-md);
-  box-shadow: none;
+  box-shadow: var(--sz-input-inset);
   transition:
     border-color var(--duration-micro) var(--timing-micro),
+    background-color var(--duration-micro) var(--timing-micro),
     box-shadow var(--duration-micro) var(--timing-micro);
 }
 
 .sz-input:hover {
   border-color: var(--accent-border);
+  background: var(--sz-input-bg-hover);
 }
 
 .sz-input:focus {
@@ -567,10 +653,15 @@ h2 {
   color: var(--text-faint);
 }
 
-/* ── Glass Surface ─────────────────────────────────────────────
+/* ── Liquid Glass Surface ───────────────────────────────────────
    Level 1 content cards · 2 floating panels · 3 nav/modals · 4 toasts
    Levels 1 and 2 are blur-free so card grids never create unbounded
-   backdrop-filter regions; only the small number of L3/L4 overlays blur. */
+   backdrop-filter regions; only the small number of L3/L4 overlays blur.
+   The material is built from four stacked layers:
+     tint      → translucent pearl body
+     specular  → elliptical bloom just under the top edge
+     rim       → thin bright highlight on the upper surface
+     underlight→ warm bounce along the bottom edge (makes it read thick) */
 .sz-glass {
   position: relative;
   isolation: isolate;
@@ -583,12 +674,22 @@ h2 {
   transition: transform var(--duration-lift) var(--timing-smooth);
 }
 
+.sz-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--sz-glass-specular), var(--sz-glass-underlight);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
 .sz-glass::after {
   content: '';
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: var(--sz-glass-specular);
+  background: var(--sz-glass-rim);
   border-radius: inherit;
   pointer-events: none;
 }
@@ -631,9 +732,11 @@ h2 {
 }
 
 .sz-glass--4::after {
-  background:
-    var(--sz-glass-specular),
-    linear-gradient(180deg, var(--sz-glass-edge) 0%, transparent 42%);
+  background: var(--sz-glass-rim);
+}
+
+.sz-glass--4::before {
+  background: var(--sz-glass-specular), var(--sz-glass-underlight);
 }
 
 .sz-glass--muted {
@@ -683,6 +786,7 @@ h2 {
     backdrop-filter: none;
   }
 
+  .sz-glass::before,
   .sz-glass::after {
     display: none;
   }
@@ -746,31 +850,19 @@ h2 {
 }
 
 .sz-glass-button--primary {
-  color: var(--sz-paper);
-  background: var(--sz-ink);
-  border-color: var(--sz-ink);
+  color: var(--sz-solid-ink);
+  background: var(--sz-solid-bg);
+  border-color: var(--sz-solid-border);
+  box-shadow: var(--sz-solid-shadow);
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
 }
 
 .sz-glass-button--primary:hover:not(:disabled):not([aria-disabled='true']) {
-  color: var(--sz-paper);
-  background: #0f1d35;
-  border-color: #0f1d35;
-  box-shadow: 0 8px 24px rgba(27, 42, 74, 0.18);
-}
-
-[data-theme='dark'] .sz-glass-button--primary {
-  color: var(--sz-paper);
-  background: var(--accent);
-  border-color: var(--accent);
-}
-
-[data-theme='dark'] .sz-glass-button--primary:hover:not(:disabled):not([aria-disabled='true']) {
-  color: var(--sz-paper);
-  background: var(--accent-hover);
-  border-color: var(--accent-hover);
-  box-shadow: 0 8px 24px rgba(212, 184, 90, 0.24);
+  color: var(--sz-solid-ink-hover);
+  background: var(--sz-solid-bg-hover);
+  border-color: var(--sz-solid-border-hover);
+  box-shadow: var(--sz-solid-shadow-hover);
 }
 
 .sz-glass-button--secondary {
@@ -855,6 +947,76 @@ h2 {
   .sz-glass-button__spinner {
     transition: none;
     animation: none;
+  }
+}
+
+/* ── Liquid Motion System ────────────────────────────────────────
+   One shared vocabulary for slow ambient drift. Every field animates
+   transform only, so the whole atmosphere stays on the compositor and
+   never triggers layout or paint. Durations are deliberately long and
+   mutually prime-ish so the loop never visibly repeats. */
+@keyframes sz-liquid-drift-a {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  }
+  33% {
+    transform: translate3d(calc(var(--sz-atmo-drift) * 1vmax), calc(var(--sz-atmo-drift) * -1.4vmax), 0) scale(1.09) rotate(4deg);
+  }
+  66% {
+    transform: translate3d(calc(var(--sz-atmo-drift) * -1.2vmax), calc(var(--sz-atmo-drift) * 1.1vmax), 0) scale(0.95) rotate(-3deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes sz-liquid-drift-b {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1.04) rotate(0deg);
+  }
+  40% {
+    transform: translate3d(calc(var(--sz-atmo-drift) * -1.6vmax), calc(var(--sz-atmo-drift) * 1.3vmax), 0) scale(0.92) rotate(-5deg);
+  }
+  70% {
+    transform: translate3d(calc(var(--sz-atmo-drift) * 1.1vmax), calc(var(--sz-atmo-drift) * -0.8vmax), 0) scale(1.12) rotate(3deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1.04) rotate(0deg);
+  }
+}
+
+@keyframes sz-liquid-drift-c {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.98) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(calc(var(--sz-atmo-drift) * 0.9vmax), calc(var(--sz-atmo-drift) * 1.7vmax), 0) scale(1.14) rotate(-6deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(0.98) rotate(0deg);
+  }
+}
+
+/* A slow light sweep, used sparingly on hero glass accents. */
+@keyframes sz-liquid-sheen {
+  0%,
+  100% {
+    transform: translate3d(-30%, 0, 0);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.7;
+  }
+  70% {
+    transform: translate3d(130%, 0, 0);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sz-liquid-drift,
+  .sz-liquid-sheen {
+    animation: none !important;
   }
 }
 
@@ -1041,7 +1203,7 @@ h2 {
 }
 
 .sz-ambient__orb[data-variant='1']::before {
-  background: radial-gradient(circle, rgba(57, 95, 165, 0.34) 0%, transparent 68%);
+  background: radial-gradient(circle, rgba(198, 176, 132, 0.3) 0%, transparent 68%);
 }
 
 .sz-ambient__orb[data-variant='2']::before {
@@ -1288,14 +1450,14 @@ h2 {
    ═══════════════════════════════════════════════════════════════════ */
 [data-theme='dark'] .scholarship-details__hero {
   background:
-    radial-gradient(circle at 95% 12%, rgba(57, 95, 165, 0.34), transparent 31%),
+    radial-gradient(circle at 95% 12%, rgba(198, 176, 132, 0.3), transparent 31%),
     linear-gradient(135deg, var(--surface-raised), var(--surface));
   border-color: var(--border);
   box-shadow: var(--shadow-elevated);
 }
 
 [data-theme='dark'] .scholarship-details__hero::after {
-  border-color: rgba(130, 168, 255, 0.2);
+  border-color: rgba(214, 186, 130, 0.24);
 }
 
 [data-theme='dark'] .scholarship-details__meta span {

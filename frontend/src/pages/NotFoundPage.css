@@ -50,27 +50,35 @@
   justify-content: center;
   gap: 8px;
   min-height: 44px;
-  padding: 10px 16px;
+  padding: 10px 20px;
   margin-top: 26px;
-  color: #ffffff;
+  color: var(--sz-solid-ink);
   font-size: 0.875rem;
   font-weight: 800;
   text-decoration: none;
-  background: #1d4ed8;
-  border-radius: 10px;
-  box-shadow: 0 7px 14px rgba(29, 78, 216, 0.18);
-  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  background: var(--sz-solid-bg);
+  border: 1px solid var(--sz-solid-border);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--sz-solid-shadow);
+  transition:
+    color 0.2s var(--timing-smooth),
+    background-color 0.2s var(--timing-smooth),
+    border-color 0.2s var(--timing-smooth),
+    box-shadow 0.2s var(--timing-smooth),
+    transform 0.2s var(--timing-smooth);
 }
 
 .not-found__action:hover {
-  background: #1e40af;
-  box-shadow: 0 10px 18px rgba(29, 78, 216, 0.23);
-  transform: translateY(-1px);
+  color: var(--sz-solid-ink-hover);
+  background: var(--sz-solid-bg-hover);
+  border-color: var(--sz-solid-border-hover);
+  box-shadow: var(--sz-solid-shadow-hover);
+  transform: translateY(-2px);
 }
 
 .not-found__action:focus-visible {
-  outline: 3px solid rgba(37, 99, 235, 0.3);
-  outline-offset: 4px;
+  outline: var(--focus-ring-width) solid var(--focus-ring);
+  outline-offset: 3px;
 }
 
 @media (max-width: 640px) {

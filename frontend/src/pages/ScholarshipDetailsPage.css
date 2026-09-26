@@ -111,8 +111,8 @@
   color: var(--accent);
   font-size: 0.75rem;
   font-weight: 800;
-  background: var(--surface-subtle, #f8fafc);
-  border: 1px solid var(--border, #e2e8f0);
+  background: var(--surface-subtle);
+  border: 1px solid var(--border);
   border-radius: 999px;
 }
 
@@ -170,9 +170,9 @@
 }
 
 .scholarship-details__funding {
-  color: #1d4ed8;
-  background: #eff6ff;
-  border: 1px solid #dbeafe;
+  color: var(--sz-accent-text);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-border);
 }
 
 .scholarship-details h1 {
@@ -195,7 +195,7 @@
   font-size: 0.8125rem;
   font-weight: 700;
   background: rgba(255, 255, 255, 0.85);
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border);
   border-radius: 8px;
 }
 
@@ -326,7 +326,7 @@
 
 .scholarship-details__facts div {
   padding: 14px;
-  background: #f8fafc;
+  background: var(--surface-subtle);
   border: 1px solid #eaf0f6;
   border-radius: 11px;
 }
@@ -368,7 +368,7 @@
 .scholarship-details__checklist li {
   position: relative;
   padding-left: 23px;
-  color: var(--text-secondary, #334155);
+  color: var(--text-secondary);
   font-size: 0.875rem;
   font-weight: 700;
   line-height: 1.5;
@@ -420,7 +420,7 @@
 
 .scholarship-details__timeline dd {
   margin: 0;
-  color: var(--text-secondary, #334155);
+  color: var(--text-secondary);
   font-size: 0.8125rem;
   font-weight: 800;
   text-align: right;
@@ -438,12 +438,12 @@
 }
 
 .scholarship-details__source-link:hover {
-  color: var(--accent-hover, #1e40af);
+  color: var(--accent-hover);
 }
 
 .scholarship-details__source-link:focus-visible,
 .scholarship-details__related-card:focus-visible {
-  outline: 3px solid var(--focus-ring, rgba(37, 99, 235, 0.28));
+  outline: var(--focus-ring-width) solid var(--focus-ring);
   outline-offset: 4px;
 }
 
@@ -451,7 +451,7 @@
   margin-top: 22px;
   padding: 28px;
   background: var(--surface-raised, #ffffff);
-  border: 1px solid var(--border, #e2e8f0);
+  border: 1px solid var(--border);
   border-radius: 18px;
   box-shadow: var(--shadow-card, 0 6px 18px rgba(15, 23, 42, 0.045));
 }
@@ -482,14 +482,14 @@
   padding: 15px;
   color: var(--text-primary, #172033);
   text-decoration: none;
-  background: var(--surface-subtle, #f8fafc);
+  background: var(--surface-subtle);
   border: 1px solid var(--border, #eaf0f6);
   border-radius: 12px;
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .scholarship-details__related-card:hover {
-  border-color: var(--accent-border, #bfdbfe);
+  border-color: var(--accent-border);
   box-shadow: var(--shadow-card, 0 6px 18px rgba(15, 23, 42, 0.045));
   transform: translateY(-2px);
 }
@@ -531,10 +531,10 @@
   height: 38px;
   place-items: center;
   margin-bottom: 16px;
-  color: #1d4ed8;
+  color: var(--sz-accent-text);
   font-weight: 850;
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-border);
   border-radius: 12px;
 }
 
@@ -548,16 +548,35 @@
   justify-content: center;
   gap: 8px;
   min-height: 44px;
-  padding: 10px 16px;
-  color: #ffffff;
+  padding: 10px 20px;
+  color: var(--sz-solid-ink);
   font-size: 0.875rem;
   font-weight: 800;
   cursor: pointer;
   text-decoration: none;
-  background: #1d4ed8;
-  border-radius: 10px;
-  box-shadow: 0 7px 14px rgba(29, 78, 216, 0.18);
-  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  background: var(--sz-solid-bg);
+  border: 1px solid var(--sz-solid-border);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--sz-solid-shadow);
+  transition:
+    color 0.2s var(--timing-smooth),
+    background-color 0.2s var(--timing-smooth),
+    border-color 0.2s var(--timing-smooth),
+    box-shadow 0.2s var(--timing-smooth),
+    transform 0.2s var(--timing-smooth);
+}
+
+.scholarship-details__action:hover {
+  color: var(--sz-solid-ink-hover);
+  background: var(--sz-solid-bg-hover);
+  border-color: var(--sz-solid-border-hover);
+  box-shadow: var(--sz-solid-shadow-hover);
+  transform: translateY(-2px);
+}
+
+.scholarship-details__action:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring);
+  outline-offset: 3px;
 }
 
 .scholarship-details__source-notice {
@@ -567,11 +586,11 @@
   gap: 16px;
   padding: 12px 14px;
   margin: -8px 0 18px;
-  color: var(--text-secondary, #334155);
+  color: var(--text-secondary);
   font-size: 0.8125rem;
   font-weight: 700;
-  background: var(--surface-subtle, #f8fafc);
-  border: 1px solid var(--border, #e2e8f0);
+  background: var(--surface-subtle);
+  border: 1px solid var(--border);
   border-radius: 12px;
 }
 
@@ -583,18 +602,18 @@
   font-weight: 800;
   cursor: pointer;
   background: var(--surface-raised, #ffffff);
-  border: 1px solid var(--accent-border, #bfdbfe);
+  border: 1px solid var(--accent-border);
   border-radius: 8px;
 }
 
 .scholarship-details__source-notice button:hover {
   color: #ffffff;
-  background: var(--accent, #1d4ed8);
+  background: var(--accent);
   border-color: var(--accent);
 }
 
 .scholarship-details__source-notice button:focus-visible {
-  outline: 3px solid var(--focus-ring, rgba(37, 99, 235, 0.28));
+  outline: var(--focus-ring-width) solid var(--focus-ring);
   outline-offset: 3px;
 }
 
@@ -615,7 +634,7 @@
   display: block;
   width: 100%;
   height: 16px;
-  background: linear-gradient(90deg, var(--surface-subtle, #f1f5f9) 25%, var(--accent-soft, #eff6ff) 50%, var(--surface-subtle, #f1f5f9) 75%);
+  background: linear-gradient(90deg, var(--surface-subtle) 25%, var(--accent-soft) 50%, var(--surface-subtle) 75%);
   background-size: 200% 100%;
   border-radius: 999px;
   animation: scholarship-details-shimmer 1.4s ease-in-out infinite;
@@ -641,12 +660,6 @@
   to {
     background-position: -200% 0;
   }
-}
-
-.scholarship-details__action:hover {
-  background: #1e40af;
-  box-shadow: 0 10px 18px rgba(29, 78, 216, 0.23);
-  transform: translateY(-1px);
 }
 
 @media (max-width: 800px) {

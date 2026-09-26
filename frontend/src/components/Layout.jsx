@@ -29,10 +29,14 @@ export default function Layout() {
 
   return (
     <div className="app-shell">
+      {/* Living light field. Purely decorative, so it is hidden from
+          assistive tech and never takes pointer events. */}
       <div className="app-atmosphere" aria-hidden="true">
-        <span className="app-atmosphere__wash app-atmosphere__wash--navy" />
-        <span className="app-atmosphere__wash app-atmosphere__wash--gold" />
-        <span className="app-atmosphere__wash app-atmosphere__wash--sky" />
+        <span className="app-atmosphere__wash app-atmosphere__wash--pearl" />
+        <span className="app-atmosphere__wash app-atmosphere__wash--champagne" />
+        <span className="app-atmosphere__wash app-atmosphere__wash--beige" />
+        <span className="app-atmosphere__wash app-atmosphere__wash--clay" />
+        <span className="app-atmosphere__sheen" />
       </div>
 
       <div className="watermark" aria-hidden="true">ScholarZone</div>

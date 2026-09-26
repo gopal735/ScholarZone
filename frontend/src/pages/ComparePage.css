@@ -96,13 +96,34 @@
   outline-offset: 2px;
 }
 
-/* ── Table surface ───────────────────────────────────────────── */
+/* ── Table surface ───────────────────────────────────────────────
+   overflow-x is load-bearing here (the table has a min-width), so the
+   glass layers are painted on a ::before that is not itself a scroll
+   container. */
 .compare-page__table-wrap {
+  position: relative;
   overflow-x: auto;
-  background: var(--sz-glass-tint-1);
+  background: var(--sz-glass-tint-2);
   border: 1px solid var(--sz-glass-border);
   border-radius: var(--radius-panel);
-  box-shadow: var(--sz-depth-2);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 14px 36px rgba(74, 60, 38, 0.07);
+}
+
+.compare-page__table-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--sz-glass-specular), var(--sz-glass-underlight);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+[data-theme='dark'] .compare-page__table-wrap {
+  background: var(--sz-glass-tint-2);
+  box-shadow: 0 1px 0 rgba(255, 240, 210, 0.07) inset;
 }
 
 .compare-page__table {
@@ -271,22 +292,26 @@
   gap: var(--space-2);
   min-height: 44px;
   padding: 0 var(--space-5);
-  color: var(--sz-paper);
+  color: var(--sz-solid-ink);
   font-size: var(--text-sm);
   font-weight: 600;
   text-decoration: none;
-  background: var(--sz-ink);
-  border-radius: var(--radius-md);
-  box-shadow: 0 4px 14px rgba(27, 42, 74, 0.16);
+  background: var(--sz-solid-bg);
+  border: 1px solid var(--sz-solid-border);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--sz-solid-shadow);
   transition:
-    transform var(--duration-lift) var(--timing-spring),
+    transform var(--duration-lift) var(--timing-smooth),
     background-color var(--duration-hover) var(--timing-smooth),
+    border-color var(--duration-hover) var(--timing-smooth),
     box-shadow var(--duration-lift) var(--timing-smooth);
 }
 
 .compare-page__action:hover {
-  background: #0f1d35;
-  box-shadow: 0 10px 24px rgba(27, 42, 74, 0.2);
+  color: var(--sz-solid-ink-hover);
+  background: var(--sz-solid-bg-hover);
+  border-color: var(--sz-solid-border-hover);
+  box-shadow: var(--sz-solid-shadow-hover);
   transform: translateY(-2px);
 }
 

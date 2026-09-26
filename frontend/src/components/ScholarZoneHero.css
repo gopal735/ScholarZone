@@ -78,37 +78,50 @@
   margin-bottom: var(--space-10);
 }
 
+/* ── Calls to action ─────────────────────────────────────────────
+   The primary is a solid champagne lozenge — the one place on the
+   homepage where the accent is allowed to carry weight. The secondary
+   is pearl glass, so the two sit in adjacent tiers of the same
+   material rather than reading as "dark button" plus "light button". */
 .sz-hero__cta {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
   min-height: 48px;
   padding: 0 var(--space-6);
+  overflow: hidden;
   font-size: var(--text-base);
   font-weight: 600;
   letter-spacing: 0.01em;
   text-decoration: none;
   border: 1px solid transparent;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-pill);
   transition:
-    transform var(--duration-lift) var(--timing-spring),
+    transform var(--duration-lift) var(--timing-smooth),
     background-color var(--duration-hover) var(--timing-smooth),
     border-color var(--duration-hover) var(--timing-smooth),
-    box-shadow var(--duration-lift) var(--timing-smooth);
+    box-shadow var(--duration-lift) var(--timing-smooth),
+    color var(--duration-hover) var(--timing-smooth);
 }
 
 .sz-hero__cta--primary {
-  color: var(--sz-paper);
-  background: var(--sz-ink);
-  border-color: var(--sz-ink);
-  box-shadow: 0 2px 10px rgba(27, 42, 74, 0.12);
+  color: #3E3010;
+  background: linear-gradient(146deg, #F2E5C2 0%, #D8B771 48%, #C09C51 100%);
+  border-color: rgba(255, 255, 255, 0.44);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 4px 14px rgba(146, 116, 58, 0.28);
 }
 
 .sz-hero__cta--primary:hover {
-  background: #0f1d35;
-  border-color: #0f1d35;
-  box-shadow: 0 10px 28px rgba(27, 42, 74, 0.18);
+  color: #3A2C0C;
+  background: linear-gradient(146deg, #F8EED6 0%, #E2C489 48%, #CBA963 100%);
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 10px 28px rgba(146, 116, 58, 0.34);
   transform: translateY(-2px);
 }
 
@@ -120,29 +133,49 @@
   transform: translateX(3px);
 }
 
+/* Pearl glass secondary: real blur, inset bloom and a rim. */
 .sz-hero__cta--secondary {
   color: var(--sz-ink);
-  background: var(--sz-glass-tint-1);
+  background: var(--sz-glass-tint-2);
   border-color: var(--sz-glass-border);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 2px 8px rgba(74, 60, 38, 0.07);
+  -webkit-backdrop-filter: var(--sz-glass-blur);
+  backdrop-filter: var(--sz-glass-blur);
 }
 
 .sz-hero__cta--secondary:hover {
-  background: var(--sz-glass-tint-2);
+  color: var(--sz-ink);
+  background: var(--sz-glass-tint-3);
   border-color: var(--sz-glass-border-hover);
   transform: translateY(-2px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 8px 22px rgba(74, 60, 38, 0.11);
 }
 
 [data-theme='dark'] .sz-hero__cta--primary {
-  color: var(--sz-paper);
-  background: var(--accent);
-  border-color: var(--accent);
-  box-shadow: none;
+  color: #241C0C;
+  background: linear-gradient(146deg, #F0E1B8 0%, #CDA863 48%, #B08F45 100%);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.42) inset,
+    0 4px 14px rgba(0, 0, 0, 0.36);
 }
 
 [data-theme='dark'] .sz-hero__cta--primary:hover {
-  background: var(--accent-hover);
-  border-color: var(--accent-hover);
-  box-shadow: 0 10px 28px rgba(212, 184, 90, 0.22);
+  color: #1C1508;
+  background: linear-gradient(146deg, #F7EBD0 0%, #D8B771 48%, #C09C51 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.55) inset,
+    0 10px 28px rgba(0, 0, 0, 0.44);
+}
+
+[data-theme='dark'] .sz-hero__cta--secondary {
+  background: var(--sz-glass-tint-2);
+  border-color: var(--sz-glass-border);
+  box-shadow: 0 1px 0 rgba(255, 240, 210, 0.08) inset;
 }
 
 .sz-hero__cta:focus-visible {
@@ -150,17 +183,75 @@
   outline-offset: 2px;
 }
 
-/* ── Live figures ───────────────────────────────────────────────── */
+/* ── Live figures ───────────────────────────────────────────────────
+   The stats row is the hero's one real glass object: a shallow pearl
+   panel with a top rim and a warm underlight, so the headline sits on
+   the open canvas while the figures read as a physical card resting in
+   the light field. */
 .sz-hero__stats {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-8);
-  padding-top: var(--space-6);
+  padding: var(--space-5) var(--space-6);
   margin: 0;
-  border-top: 1px solid var(--sz-glass-border);
+  overflow: hidden;
+  background: var(--sz-glass-tint-1);
+  border: 1px solid var(--sz-glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 2px 10px rgba(74, 60, 38, 0.05);
+  -webkit-backdrop-filter: var(--sz-glass-blur);
+  backdrop-filter: var(--sz-glass-blur);
+}
+
+.sz-hero__stats::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--sz-glass-specular), var(--sz-glass-underlight);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* A single slow sheen across the panel — the hero's only decorative
+   motion, kept faint enough to read as light rather than as animation. */
+.sz-hero__stats::after {
+  content: '';
+  position: absolute;
+  top: -40%;
+  left: 0;
+  width: 38%;
+  height: 180%;
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 48%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: translate3d(-120%, 0, 0);
+  animation: sz-liquid-sheen 22s ease-in-out infinite;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+[data-theme='dark'] .sz-hero__stats {
+  background: var(--sz-glass-tint-1);
+  box-shadow: 0 1px 0 rgba(255, 240, 210, 0.07) inset;
+}
+
+[data-theme='dark'] .sz-hero__stats::after {
+  background: linear-gradient(
+    100deg,
+    rgba(255, 240, 210, 0) 0%,
+    rgba(255, 240, 210, 0.07) 48%,
+    rgba(255, 240, 210, 0) 100%
+  );
 }
 
 .sz-hero__stat {
+  position: relative;
   display: flex;
   flex-direction: column-reverse;
   gap: 2px;
@@ -368,5 +459,9 @@
   .sz-hero__cta:hover,
   .sz-hero__cta--primary:hover svg {
     transform: none;
+  }
+
+  .sz-hero__stats::after {
+    display: none;
   }
 }
