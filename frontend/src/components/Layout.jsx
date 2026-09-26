@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import Navigation from './Navigation'
+import AmbientOrbs from './ui/AmbientOrbs'
 
 export default function Layout() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -32,6 +33,9 @@ export default function Layout() {
       <div className="watermark" aria-hidden="true">ScholarZone</div>
 
       <header className={headerClass}>
+        <div className="site-header__ambient" aria-hidden="true">
+          <AmbientOrbs count={2} intensity="soft" />
+        </div>
         <Navigation />
       </header>
 

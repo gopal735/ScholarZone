@@ -1,37 +1,52 @@
+/* Quiet depth wash inside the header band. Scoped here rather than to
+   the whole shell because page sections paint opaque backgrounds over
+   a document-level ambient, which would cost GPU time invisibly. */
+.site-header__ambient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
 .app-shell {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
+/* ── Sticky header ───────────────────────────────────────────────
+   Transparent at rest so the editorial hero reads through it; the
+   L3 glass surface is only mounted once Layout marks it scrolled. */
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 20;
   background: transparent;
   border-bottom: 1px solid transparent;
+  -webkit-backdrop-filter: none;
   backdrop-filter: none;
-  transition: background-color 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease, min-height 0.3s ease, padding 0.3s ease;
+  transition:
+    background-color var(--duration-smooth) var(--timing-smooth),
+    border-color var(--duration-smooth) var(--timing-smooth),
+    box-shadow var(--duration-smooth) var(--timing-smooth);
 }
 
 .site-header.is-scrolled {
-  background: rgba(255, 255, 255, 0.88);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
-  backdrop-filter: blur(18px);
-}
-
-[data-theme='dark'] .site-header.is-scrolled {
-  background: var(--header-bg);
-  border-bottom: 1px solid var(--border);
+  background: var(--sz-glass-tint-3);
+  border-bottom: 1px solid var(--sz-glass-border);
+  box-shadow: var(--sz-glass-shadow-1);
+  -webkit-backdrop-filter: var(--sz-glass-blur);
+  backdrop-filter: var(--sz-glass-blur);
 }
 
 .app-content {
   position: relative;
   z-index: 1;
-  width: min(100%, 1280px);
+  width: min(100%, var(--grid-max));
   flex: 1;
   margin: 0 auto;
-  padding: 52px 32px 80px;
+  padding: var(--space-12) var(--space-6) var(--space-16);
 }
 
 .app-footer {
@@ -41,18 +56,23 @@
   align-items: center;
   justify-content: center;
   min-height: 76px;
-  padding: 22px 24px;
-  color: #64748b;
-  font-size: 0.8125rem;
+  padding: var(--space-5) var(--space-6);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
   text-align: center;
   background: rgba(255, 255, 255, 0.82);
-  border-top: 1px solid #e6eaf0;
+  border-top: 1px solid var(--border);
 }
 
-@media (max-width: 640px) {
-  .app-content {
-    padding: 32px 16px 56px;
-  }
+[data-theme='dark'] .site-header {
+  background: var(--sz-glass-tint-3);
+  border-color: var(--sz-glass-border);
+}
+
+[data-theme='dark'] .app-footer {
+  color: var(--text-muted);
+  background: var(--surface);
+  border-color: var(--border);
 }
 
 .watermark {
@@ -61,7 +81,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  font-family: var(--font-display);
   font-size: clamp(4rem, 10vw, 10rem);
   font-weight: 400;
   color: #ffffff;
@@ -71,4 +91,17 @@
   user-select: none;
   letter-spacing: -0.02em;
   line-height: 1;
+}
+
+@media (max-width: 640px) {
+  .app-content {
+    padding: var(--space-8) var(--space-4) var(--space-12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header,
+  .app-footer {
+    transition: none;
+  }
 }
