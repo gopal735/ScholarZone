@@ -200,6 +200,12 @@
   /* Global atmosphere master knob. Per-wash tint is set in App.css. */
   --sz-atmo-opacity: 1;
 
+  /* Form field well. Inputs need more presence than a content card,
+     because the field and its containing panel resolve to nearly the
+     same tint otherwise. */
+  --sz-input-border: rgba(27, 42, 74, 0.16);
+  --sz-input-inset: inset 0 1px 2px rgba(27, 42, 74, 0.07);
+
   /* On-tint text — AA (4.5:1) on the matching *-soft fills above */
   --sz-success-text: #2F5C3C;
   --sz-accent-text: #7A6220;
@@ -292,6 +298,9 @@
   --sz-skeleton-base: rgba(160, 180, 210, 0.1);
   --sz-skeleton-sheen: rgba(255, 255, 255, 0.14);
   --sz-atmo-opacity: 1;
+
+  --sz-input-border: rgba(160, 180, 210, 0.26);
+  --sz-input-inset: inset 0 1px 2px rgba(0, 0, 0, 0.34);
 
   --sz-success-text: #7fdcae;
   --sz-accent-text: #e0c878;

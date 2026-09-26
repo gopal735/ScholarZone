@@ -67,8 +67,8 @@
 }
 
 .compare-page__toolbar button {
-  min-height: 36px;
-  padding: 0 var(--space-3);
+  min-height: 44px;
+  padding: 0 var(--space-4);
   color: var(--sz-accent-text);
   font-size: var(--text-xs);
   font-weight: 700;
@@ -142,7 +142,10 @@
   background: var(--sz-glass-tint-2);
 }
 
+/* Block so the title owns its own row and the remove chip below it
+   cannot share an inline line-box with it. */
 .compare-page__table thead a {
+  display: block;
   color: var(--sz-ink);
   font-family: var(--font-display);
   font-size: 1.0625rem;
@@ -155,23 +158,33 @@
   color: var(--sz-accent-text);
 }
 
-/* Block, otherwise the remove control butts straight up against the
-   scholarship title on the same inline run. */
+/* Sits on its own row below the scholarship title. The measured gap to
+   the title was already 8px, but the control was only 28px tall, well
+   under the 44px touch target, so it read as a caption rather than a
+   control. It is now a full-height chip that matches the toolbar. */
 .compare-page__table thead button {
-  display: block;
-  min-height: 28px;
-  padding: 0;
-  margin-top: var(--space-2);
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--space-3);
+  margin-top: var(--space-3);
   color: var(--sz-accent-text);
   font-size: var(--text-xs);
   font-weight: 700;
   cursor: pointer;
-  background: transparent;
-  border: 0;
+  background: var(--sz-glass-tint-2);
+  border: 1px solid var(--sz-glass-border);
+  border-radius: var(--radius-sm);
+  transition:
+    color var(--duration-micro) var(--timing-micro),
+    background-color var(--duration-micro) var(--timing-micro),
+    border-color var(--duration-micro) var(--timing-micro);
 }
 
 .compare-page__table thead button:hover {
   color: var(--danger);
+  background: var(--danger-soft);
+  border-color: var(--danger-border);
 }
 
 .compare-page__table tbody th {

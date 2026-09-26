@@ -133,7 +133,11 @@
   font-weight: 700;
 }
 
-/* tint-1 so the field reads as an interactive well inside the tint-2 card */
+/* Measured against the browser, tint-1 on tint-2 resolves to a 1.01:1
+   luminance difference — the field and the card behind it were
+   effectively the same surface, leaving only an 8% hairline to define
+   the well. A stronger border plus an inset top shadow now carries the
+   recess, which is the standard signal for a form field. */
 .auth-form input {
   width: 100%;
   min-height: 46px;
@@ -141,12 +145,13 @@
   color: var(--text-primary);
   font-size: 0.9375rem;
   background: var(--sz-glass-tint-1);
-  border: 1px solid var(--sz-glass-border);
+  border: 1px solid var(--sz-input-border);
   border-radius: 10px;
-  box-shadow: none;
+  box-shadow: var(--sz-input-inset);
   transition:
     border-color var(--duration-micro) var(--timing-micro),
-    background-color var(--duration-micro) var(--timing-micro);
+    background-color var(--duration-micro) var(--timing-micro),
+    box-shadow var(--duration-micro) var(--timing-micro);
 }
 
 .auth-form input:hover {
