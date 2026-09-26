@@ -74,23 +74,42 @@
   --font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-  /* ── Typography: Scale ──────────────────────────────────────── */
-  --text-xs: 0.6875rem;
-  --text-xs-lh: 1.4;
-  --text-sm: 0.8125rem;
-  --text-sm-lh: 1.5;
-  --text-base: 0.9375rem;
-  --text-base-lh: 1.6;
-  --text-md: 1rem;
-  --text-md-lh: 1.7;
-  --text-lg: 1.0625rem;
-  --text-lg-lh: 1.75;
-  --text-xl: clamp(1.25rem, 2vw, 1.5rem);
-  --text-xl-lh: 1.3;
-  --text-2xl: clamp(1.5rem, 3vw, 2rem);
-  --text-2xl-lh: 1.2;
-  --text-display: clamp(2.75rem, 6vw, 5rem);
-  --text-display-lh: 1.05;
+  /* ── Typography: Scale ──────────────────────────────────────────
+     Four tiers with real separation between them. The previous scale
+     bunched 11/13/15/16/17px together, so the body and the metadata
+     were nearly the same size and the page read small and dense.
+
+       METADATA   2xs–sm   compact, precise, for labels and indices
+       BODY       base–lg  16px floor for sustained reading
+       SECTION    xl–2xl   strong, quieter than display
+       DISPLAY    display  one size, used once per view
+
+     16px is the body floor. Nothing persistent sits below 12px. */
+  --text-2xs: 0.6875rem;
+  --text-2xs-lh: 1.4;
+  --text-xs: 0.75rem;
+  --text-xs-lh: 1.45;
+  --text-sm: 0.875rem;
+  --text-sm-lh: 1.55;
+  --text-base: 1rem;
+  --text-base-lh: 1.65;
+  --text-md: 1.0625rem;
+  --text-md-lh: 1.68;
+  --text-lg: 1.1875rem;
+  --text-lg-lh: 1.7;
+  --text-xl: clamp(1.25rem, 1.8vw, 1.5rem);
+  --text-xl-lh: 1.32;
+  --text-2xl: clamp(1.75rem, 3.2vw, 2.5rem);
+  --text-2xl-lh: 1.14;
+  --text-display: clamp(3rem, 7.4vw, 6.25rem);
+  --text-display-lh: 0.99;
+
+  /* Tracking, kept with the scale so a size and its tracking move
+     together. Display and section heads tighten; metadata opens up. */
+  --track-display: -0.035em;
+  --track-section: -0.03em;
+  --track-body: -0.005em;
+  --track-meta: 0.085em;
 
   /* ── Spacing: 4px base ──────────────────────────────────────── */
   --space-1: 4px;

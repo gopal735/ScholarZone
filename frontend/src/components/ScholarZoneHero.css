@@ -33,7 +33,7 @@
 }
 
 .sz-hero__text {
-  max-width: 640px;
+  max-width: 660px;
 }
 
 .sz-hero__eyebrow {
@@ -44,7 +44,7 @@
   color: var(--sz-accent-text);
   font-size: var(--text-xs);
   font-weight: 600;
-  letter-spacing: 0.09em;
+  letter-spacing: var(--track-meta);
   text-transform: uppercase;
 }
 
@@ -55,15 +55,18 @@
   border-radius: 50%;
 }
 
+/* Display: one size per view, tightened hard. The measure is capped at
+   13ch so the line breaks inside the phrase rather than after it —
+   that is what keeps a large serif from running long. */
 .sz-hero__heading {
   max-width: 13ch;
   margin: 0 0 var(--space-7);
   color: var(--sz-ink);
   font-family: var(--font-display);
-  font-size: clamp(3.25rem, 7.4vw, 6rem);
+  font-size: var(--text-display);
   font-weight: 400;
-  line-height: 0.98;
-  letter-spacing: -0.035em;
+  line-height: var(--text-display-lh);
+  letter-spacing: var(--track-display);
   text-wrap: balance;
 }
 
@@ -73,11 +76,12 @@
 }
 
 .sz-hero__description {
-  max-width: 46ch;
+  max-width: 48ch;
   margin: 0 0 var(--space-9);
   color: var(--sz-ink-soft);
   font-size: var(--text-lg);
-  line-height: 1.7;
+  line-height: var(--text-lg-lh);
+  letter-spacing: var(--track-body);
 }
 
 .sz-hero__actions {
@@ -85,6 +89,52 @@
   flex-wrap: wrap;
   gap: var(--space-3);
   margin-bottom: var(--space-12);
+}
+
+/* ── Staggered entrance ──────────────────────────────────────────
+   The hero is above the fold and carries the LCP image, so it is not
+   gated on an observer — the sequence runs on mount and each line of
+   type arrives on its own beat. Clip rather than scale, so nothing
+   appears to inflate. */
+@keyframes sz-hero-line-in {
+  from {
+    opacity: 0;
+    clip-path: inset(0 0 105% 0);
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 -12% 0);
+    transform: none;
+  }
+}
+
+.sz-hero__eyebrow,
+.sz-hero__heading,
+.sz-hero__description,
+.sz-hero__actions,
+.sz-hero__stats {
+  animation: sz-hero-line-in 900ms var(--timing-smooth) both;
+}
+
+.sz-hero__eyebrow {
+  animation-delay: 60ms;
+}
+
+.sz-hero__heading {
+  animation-delay: 160ms;
+}
+
+.sz-hero__description {
+  animation-delay: 300ms;
+}
+
+.sz-hero__actions {
+  animation-delay: 420ms;
+}
+
+.sz-hero__stats {
+  animation-delay: 540ms;
 }
 
 /* ── Calls to action ─────────────────────────────────────────────
@@ -317,13 +367,27 @@
   transform: translate3d(0, 0, -18px) rotate(-2.4deg);
 }
 
-/* Depth plane 2 — the card itself, front and centre. */
+/* The centrepiece unmasks from the bottom edge, on a slower beat than
+   the type, so the image settles after the words it supports. */
+@keyframes sz-hero-media-in {
+  from {
+    clip-path: inset(100% 0 0 0 round var(--radius-card));
+    opacity: 0.4;
+  }
+  to {
+    clip-path: inset(0 0 0 0 round var(--radius-card));
+    opacity: 1;
+  }
+}
+
 .sz-hero__showcase-card {
   position: relative;
   z-index: 2;
   border-radius: var(--radius-card);
   box-shadow: var(--sz-glass-shadow-3);
-  animation: sz-hero-float 9s var(--timing-smooth) infinite;
+  animation:
+    sz-hero-media-in 1100ms var(--timing-smooth) 260ms both,
+    sz-hero-float 9s var(--timing-smooth) 1400ms infinite;
 }
 
 .sz-hero__showcase-card .scholarship-image__ratio {
@@ -604,7 +668,12 @@
   .sz-hero__showcase-card,
   .sz-hero__showcase-card .scholarship-card,
   .sz-hero__ring,
-  .sz-hero__ring-node {
+  .sz-hero__ring-node,
+  .sz-hero__eyebrow,
+  .sz-hero__heading,
+  .sz-hero__description,
+  .sz-hero__actions,
+  .sz-hero__stats {
     transition: none;
     animation: none;
   }
