@@ -343,14 +343,21 @@ _COVERAGE_VERB_RE = re.compile(
     re.IGNORECASE,
 )
 
-# A captured value that begins with one of these is almost certainly a
-# mid-sentence continuation rather than the value belonging to the label.
+# Connectives that, at the START of a value, indicate a mid-sentence
+# continuation rather than a real fact (for example "of Excellence at KAIST").
+#
+# A previous revision rejected ANY value starting with a function word, which
+# silently threw away every well-formed sentence beginning "A ", "The ", "In "
+# or "It ". That was a real defect: it suppressed large amounts of legitimate
+# official prose, and is part of why so many records stayed empty. The rule is
+# now correctly scoped -- a value is a fragment only when it begins with one
+# of these connectives AND is not capitalised, because mid-sentence captures
+# preserve the source casing.
 _FRAGMENT_STARTERS = frozenset(
     {
-        "of", "and", "or", "for", "to", "in", "on", "at", "the", "a", "an",
-        "which", "that", "with", "from", "by", "as", "is", "are", "was", "were",
-        "be", "been", "it", "its", "this", "these", "those", "if", "when",
-        "per", "such", "including", "except", "however", "but", "so", "then",
+        "of", "and", "or", "which", "that", "whose", "whom", "with",
+        "without", "including", "except", "however", "thereby", "whereby",
+        "whilst", "per", "such",
     }
 )
 
@@ -383,11 +390,16 @@ def _is_usable_detail_value(value: str, *, financial: bool = False) -> bool:
     if text.count("[") != text.count("]"):
         return False
 
-    # Strip leading punctuation before the fragment test: "(Including ..." is
-    # just as much a mid-sentence fragment as "of Excellence ...".
-    probe = text.lstrip(" \t([{\"'*-").lower()
+    # Fragment test. Leading punctuation is stripped first, because
+    # "(Including ..." is just as much a mid-sentence capture as "of ...".
+    # The capitalisation requirement is what keeps a real sentence such as
+    # "In 2024 the programme opens..." while rejecting "in 2024 the..." cut
+    # out of the middle of a sentence.
+    stripped = text.lstrip(" \t([{\"'*-")
+    probe = stripped.lower()
     first_word = re.split(r"[\s,;:]+", probe, maxsplit=1)[0]
-    if first_word in _FRAGMENT_STARTERS:
+    starts_capitalised = bool(stripped[:1].isupper())
+    if first_word in _FRAGMENT_STARTERS and not starts_capitalised:
         return False
 
     # A value ending in an unbalanced conjunction is a truncated capture.

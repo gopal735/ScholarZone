@@ -410,6 +410,9 @@ _SCALAR_PROJECTION: dict[str, str] = {
 # `study_mode` and `intake` are extracted and carried in evidence but have no
 # Scholarship column, so they are deliberately absent rather than being folded
 # into a near-miss column such as `application_period`.
+#
+# SECTION_LIST_FIELD / SECTION_TEXT_FIELD are added by the section-aware path
+# further down this module, so this set is finalised there once they exist.
 WRITABLE_FIELDS: frozenset[str] = frozenset(
     set(_LIST_PROJECTION)
     | set(_TEXT_PROJECTION)
@@ -657,6 +660,90 @@ def _text_fill_decision(existing: str | None, incoming: str | None) -> tuple[str
     return "keep", "existing value retained; official value would overwrite existing data", ""
 
 
+def _proposals_from_sections(html: str) -> dict[str, dict[str, Any]]:
+    """Turn section-aware facts into mergeable proposals.
+
+    Section extraction is what lifts the coverage ceiling: the strict
+    label-only extractor missed everything published as prose, bullets or
+    tables. Only genuine JSON-list columns are mapped here, so they flow
+    through the existing union-merge and preservation rules unchanged.
+    Text columns are handled separately by _text_proposals_from_sections,
+    which uses the fill-if-empty / more-specific policy.
+    """
+    from .section_extractor import extract_all
+
+    proposals: dict[str, dict[str, Any]] = {}
+    for fact in extract_all(html):
+        target = SECTION_LIST_FIELD.get(fact.field_name)
+        if not target:
+            continue
+        value = fact.value.strip()
+        if not value:
+            continue
+        entry = proposals.setdefault(
+            target,
+            {"value": [], "confidence": ExtractionConfidence.MEDIUM, "sources": []},
+        )
+        entry["value"].append(value)
+        if fact.confidence == ExtractionConfidence.HIGH:
+            entry["confidence"] = ExtractionConfidence.HIGH
+        if fact.structure not in entry["sources"]:
+            entry["sources"].append(fact.structure)
+    return proposals
+
+
+# Canonical JSON-list columns fed by section extraction.
+SECTION_LIST_FIELD: dict[str, str] = {
+    "eligibility": "eligibility",
+    "requirements": "requirements",
+    "coverage": "coverage",
+    "benefits": "benefits",
+    "application_method": "application_method",
+}
+
+# Canonical text columns fed by section extraction. These are filled only when
+# empty (or replaced when strictly more specific), never overwritten blindly.
+SECTION_TEXT_FIELD: dict[str, str] = {
+    "description": "description",
+    "english_requirement": "english_requirement",
+    "selection_notes": "selection_notes",
+    "best_fit": "best_fit",
+    "duration": "duration",
+    "application_period": "application_period",
+}
+
+# The section-aware path can additionally fill these canonical columns.
+WRITABLE_FIELDS = WRITABLE_FIELDS | set(SECTION_LIST_FIELD) | set(SECTION_TEXT_FIELD)
+
+
+def _text_proposals_from_sections(html: str) -> dict[str, dict[str, Any]]:
+    """Text-column proposals from section extraction, best value per column."""
+    from .section_extractor import extract_all
+
+    proposals: dict[str, dict[str, Any]] = {}
+    for fact in extract_all(html):
+        target = SECTION_TEXT_FIELD.get(fact.field_name)
+        if not target:
+            continue
+        value = fact.value.strip()
+        if not value or not _clean(value):
+            continue
+        existing = proposals.get(target)
+        # Prefer a confident, reasonably sized statement over a fragment.
+        if existing is None or (
+            fact.confidence == ExtractionConfidence.HIGH
+            and existing.get("confidence") != ExtractionConfidence.HIGH
+        ):
+            proposals[target] = {
+                "value": value,
+                "confidence": ExtractionConfidence.HIGH
+                if fact.confidence == ExtractionConfidence.HIGH
+                else ExtractionConfidence.MEDIUM,
+                "sources": [fact.structure],
+            }
+    return proposals
+
+
 def _merge_projections(
     proposals_list: list[dict[str, dict[str, Any]]],
 ) -> dict[str, dict[str, Any]]:
@@ -816,6 +903,16 @@ class ScholarshipEnrichmentService:
         extracted = extract_scholarship_information(content, final_url)
         proposals = project_enrichment(extracted)
 
+        # Section-aware extraction runs on the same HTML and is merged in, so
+        # facts published as prose, bullets or tables are picked up without
+        # displacing anything the strict extractor already found.
+        section_proposals = _proposals_from_sections(content)
+        if section_proposals:
+            proposals = _merge_projections([section_proposals, proposals])
+        section_text = _text_proposals_from_sections(content)
+        if section_text:
+            proposals = _merge_projections([section_text, proposals])
+
         result = EnrichmentResult(
             scholarship_id=scholarship_id,
             outcome=EnrichmentOutcome.UNCHANGED,
@@ -842,6 +939,12 @@ class ScholarshipEnrichmentService:
                 page_proposals = project_enrichment(
                     extract_scholarship_information(page_fetch.content, page_url)
                 )
+                extra = _proposals_from_sections(page_fetch.content)
+                if extra:
+                    page_proposals = _merge_projections([extra, page_proposals])
+                extra_text = _text_proposals_from_sections(page_fetch.content)
+                if extra_text:
+                    page_proposals = _merge_projections([extra_text, page_proposals])
                 if page_proposals:
                     combined.append(page_proposals)
             proposals = _merge_projections(combined)
