@@ -90,8 +90,20 @@ def _is_generic_site_asset(url: str | None, alt_text: str | None = None) -> bool
     return False
 
 
-# Site-wide social cards, theme/template assets, and tracking pixels. These are
-# not scholarship imagery no matter how relevant the surrounding page is.
+# Site-wide social cards, theme/template assets, ad beacons and tracking
+# pixels. These are not scholarship imagery no matter how relevant the
+# surrounding page is.
+#
+# The list is broader than it first looks because a real sweep accepted
+# `https://dc.ads.linkedin.com/collect/?pid=960156&fmt=gif` -- a LinkedIn
+# advertising tracking beacon -- and `fct-og.png` (an opengraph card). Both are
+# third-party or generic, and both are exactly what must never be persisted.
+#
+# Deliberately NOT matched: a bare `-og` / `_og` filename suffix. That pattern
+# also matches legitimate official headers such as ETH Zurich's
+# `eth_default_og.jpg`, which is a real, relevant, first-party programme image.
+# Ambiguous og-suffixed assets are routed to human review instead of being
+# rejected or auto-accepted on a weak URL signal.
 _GENERIC_ASSET_MARKERS = (
     "opengraph",
     "og-image",
@@ -106,6 +118,16 @@ _GENERIC_ASSET_MARKERS = (
     "pixel.gif",
     "1x1",
     "tracking",
+    # Ad beacons and analytics collectors
+    "linkedin",
+    "ads.",
+    "collect/?pid",
+    "fmt=gif",
+    "beacon",
+    "analytics",
+    "/g/collect",
+    "doubleclick",
+    "googletagmanager",
 )
 
 

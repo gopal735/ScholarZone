@@ -19,10 +19,13 @@ from dataclasses import dataclass, field
 from typing import Callable
 from urllib.parse import urlparse
 
+import httpx
+
 from sqlalchemy import select
 from sqlalchemy.orm import Session, sessionmaker
 
 from ..models import Scholarship
+from .image_discovery import BROWSER_UA
 from .image_discovery_orchestrator import (
     ImageDiscoveryOrchestrator,
     OrchestratorRunResult,
@@ -43,6 +46,45 @@ MAX_WORKERS = 16
 # this, a catalogue sweep re-pays the full per-record budget once per record on
 # the same blocked domain.
 DOMAIN_FAILURE_THRESHOLD = 2
+
+# Cheap reachability probe run before the full orchestrator. Most official sites
+# in the catalogue answer 403 to automated requests, and discovering that with a
+# full 5-phase crawl costs ~90s per record. One short probe settles it in ~2s.
+PREFLIGHT_TIMEOUT_SECONDS = 8.0
+
+
+@dataclass(frozen=True)
+class PreflightResult:
+    reachable: bool
+    status_code: int | None
+    reason: str
+
+
+def preflight_check(url: str | None, timeout: float = PREFLIGHT_TIMEOUT_SECONDS) -> PreflightResult:
+    """Single cheap GET to decide whether the full crawl is worth attempting."""
+    if not url:
+        return PreflightResult(False, None, "no_source_url")
+    try:
+        response = httpx.get(
+            url,
+            headers={"User-Agent": BROWSER_UA, "Accept": "text/html"},
+            timeout=timeout,
+            follow_redirects=True,
+        )
+    except httpx.TimeoutException:
+        return PreflightResult(False, None, "timeout")
+    except httpx.HTTPError as exc:
+        return PreflightResult(False, None, "connection_error")
+    except Exception:  # noqa: BLE001
+        return PreflightResult(False, None, "unexpected")
+
+    if response.status_code == 200:
+        return PreflightResult(True, 200, "ok")
+    if response.status_code in (403, 401, 412, 429):
+        return PreflightResult(False, response.status_code, "blocked")
+    if response.status_code == 404:
+        return PreflightResult(True, 404, "page_missing_root_may_exist")
+    return PreflightResult(True, response.status_code, "reachable")
 
 
 @dataclass
@@ -151,12 +193,15 @@ class ImageCoverageRunner:
         batch_size: int = DEFAULT_BATCH_SIZE,
         only_missing: bool = True,
         max_workers: int = DEFAULT_MAX_WORKERS,
+        preflight_fn=None,
     ) -> None:
         self._session_factory = session_factory
         self.dry_run = dry_run
         self.batch_size = max(1, min(batch_size, MAX_BATCH_SIZE))
         self.only_missing = only_missing
         self.max_workers = max(1, min(max_workers, MAX_WORKERS))
+        # Injectable so tests never perform real network access.
+        self._preflight_fn = preflight_fn or preflight_check
 
     def _in_scope_ids(
         self,
@@ -215,6 +260,15 @@ class ImageCoverageRunner:
                 return None, scholarship_id, None
             if breaker.is_open(source_url):
                 return None, scholarship_id, "domain_blocked"
+
+            # Cheap gate first: do not pay the full crawl budget to discover
+            # that the domain blocks us.
+            probe = self._preflight_fn(source_url)
+            if not probe.reachable:
+                if breaker.record_failure(source_url):
+                    logger.info("domain %s opened as blocked (preflight)", breaker.domain_of(source_url))
+                return None, scholarship_id, f"preflight:{probe.reason}"
+
             orchestrator = ImageDiscoveryOrchestrator(
                 session_factory=self._session_factory,
                 dry_run=self.dry_run,
@@ -298,7 +352,47 @@ class ImageCoverageRunner:
                         continue
 
                     if result is None:
-                        metrics.skipped_existing += 1
+                        sid_reason = url or ""
+                        if sid_reason.startswith("preflight:"):
+                            reason = sid_reason.split(":", 1)[1]
+                            if reason in ("blocked", "timeout", "connection_error", "unexpected"):
+                                metrics.source_blocked += 1
+                                status = "source_blocked"
+                            else:
+                                metrics.source_unreachable += 1
+                                status = "source_unreachable"
+                            metrics.outcomes.append(
+                                {
+                                    "scholarship_id": sid,
+                                    "title": (title or "")[:80],
+                                    "status": status,
+                                    "image_url": None,
+                                    "persisted": False,
+                                    "candidates": 0,
+                                    "requests_made": 1,
+                                    "page_error": f"preflight_{reason}",
+                                    "timed_out": reason == "timeout",
+                                    "error": None,
+                                }
+                            )
+                        elif sid_reason == "domain_blocked":
+                            metrics.domain_blocked_skipped += 1
+                            metrics.outcomes.append(
+                                {
+                                    "scholarship_id": sid,
+                                    "title": (title or "")[:80],
+                                    "status": "source_blocked",
+                                    "image_url": None,
+                                    "persisted": False,
+                                    "candidates": 0,
+                                    "requests_made": 0,
+                                    "page_error": "domain_blocked_after_repeated_failures",
+                                    "timed_out": False,
+                                    "error": None,
+                                }
+                            )
+                        else:
+                            metrics.skipped_existing += 1
                         processed += 1
                         continue
 

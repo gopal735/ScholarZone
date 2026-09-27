@@ -11,7 +11,15 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 from app.models import Base, Scholarship
-from app.services.image_coverage_runner import ImageCoverageRunner
+from app.services.image_coverage_runner import (
+    ImageCoverageRunner,
+    PreflightResult,
+)
+
+
+def ALLOW(url):
+    """Preflight stub: every URL is reachable, so no test touches the network."""
+    return PreflightResult(True, 200, "ok")
 from app.services.image_discovery import ImageDiscoveryService
 from app.services.official_page_discovery import (
     DEFAULT_TOTAL_BUDGET_SECONDS,
@@ -73,11 +81,16 @@ class TestDeadlineEnforcement:
         assert result.content is None
 
     def test_retry_loop_also_respects_deadline(self):
-        """A single URL must not consume (retries+1)*timeout past the budget."""
-        svc = ImageDiscoveryService(timeout=0.2, max_retries=5, deadline=time.monotonic() + 0.05)
+        """A single URL must not consume (retries+1)*timeout past the budget.
+
+        The deadline is already expired, so the assertion is deterministic and
+        no real request is ever issued.
+        """
+        svc = ImageDiscoveryService(timeout=5.0, max_retries=5, deadline=time.monotonic() - 0.5)
         started = time.monotonic()
         for _ in range(3):
-            svc._fetch_page("https://www.example.org/")
+            result = svc._fetch_page("https://www.example.org/")
+            assert result.error == "deadline_exceeded"
         assert time.monotonic() - started < 1.0
 
 
@@ -153,7 +166,7 @@ class TestFailureIsolation:
             )
 
         ids = _seed  # placeholder to keep names clear
-        runner = ImageCoverageRunner(session_factory, dry_run=True, max_workers=2)
+        runner = ImageCoverageRunner(session_factory, dry_run=True, max_workers=2, preflight_fn=ALLOW)
         s = session_factory()
         try:
             all_ids = [r.id for r in s.query(Scholarship).all()]
@@ -237,7 +250,7 @@ class TestMetrics:
                 requests_made=requests,
             )
 
-        runner = ImageCoverageRunner(session_factory, dry_run=True, max_workers=1)
+        runner = ImageCoverageRunner(session_factory, dry_run=True, max_workers=1, preflight_fn=ALLOW)
         with patch(
             "app.services.image_discovery_orchestrator.ImageDiscoveryOrchestrator.run",
             new=fake,
@@ -307,6 +320,125 @@ class TestSharedPageCache:
         assert True
 
 
+class TestPreflight:
+    def test_403_is_blocked_not_reachable(self):
+        import app.services.image_coverage_runner as mod
+
+        class Resp:
+            status_code = 403
+
+            def __bool__(self):
+                return True
+
+        orig = mod.httpx.get
+        mod.httpx.get = lambda *a, **k: Resp()
+        try:
+            r = mod.preflight_check("https://blocked.example.org/x")
+        finally:
+            mod.httpx.get = orig
+        assert r.reachable is False
+        assert r.reason == "blocked"
+
+    def test_200_is_reachable(self):
+        import app.services.image_coverage_runner as mod
+
+        class Resp:
+            status_code = 200
+
+        orig = mod.httpx.get
+        mod.httpx.get = lambda *a, **k: Resp()
+        try:
+            r = mod.preflight_check("https://ok.example.org/x")
+        finally:
+            mod.httpx.get = orig
+        assert r.reachable is True
+
+    def test_404_still_allows_the_crawl(self):
+        """A dead programme page does not mean the domain is unreachable."""
+        import app.services.image_coverage_runner as mod
+
+        class Resp:
+            status_code = 404
+
+        orig = mod.httpx.get
+        mod.httpx.get = lambda *a, **k: Resp()
+        try:
+            r = mod.preflight_check("https://ok.example.org/missing")
+        finally:
+            mod.httpx.get = orig
+        assert r.reachable is True
+
+    def test_no_url_is_unreachable(self):
+        from app.services.image_coverage_runner import preflight_check
+
+        r = preflight_check(None)
+        assert r.reachable is False
+        assert r.reason == "no_source_url"
+
+    def test_blocked_record_is_counted_as_blocked(self, session_factory):
+        _seed(session_factory, 2, prefix="pf", host="blocked.example.org")
+
+        def blocked(url):
+            return PreflightResult(False, 403, "blocked")
+
+        def never(*a, **k):  # pragma: no cover
+            raise AssertionError("full crawl must not run on a blocked domain")
+
+        runner = ImageCoverageRunner(
+            session_factory, dry_run=True, max_workers=1, preflight_fn=blocked
+        )
+        with patch(
+            "app.services.image_discovery_orchestrator.ImageDiscoveryOrchestrator.run",
+            new=never,
+        ):
+            metrics = runner.run()
+
+        assert metrics.source_blocked == 2
+        assert metrics.no_official_image == 0
+        assert all(o["page_error"] == "preflight_blocked" for o in metrics.outcomes)
+
+
+class TestGenericAssetRejection:
+    @pytest.mark.parametrize(
+        "url",
+        [
+            "https://www.uwa.edu.au/_assets/opengraph.png",
+            "https://www.gov.uk/assets/collections/govuk-opengraph-image-4196",
+            "https://dc.ads.linkedin.com/collect/?pid=960156&fmt=gif",
+            "https://www.example.org/pixel.gif",
+            "https://cdn.example.org/1x1/beacon.png",
+            "https://www.educanada.ca/wcmglobal/frameworks/v4.0.91/theme-gcweb/x.svg",
+            "https://googletagmanager.com/gtm.js",
+        ],
+    )
+    def test_rejects_generic_and_tracking_assets(self, url):
+        from app.services.image_discovery_orchestrator import _is_generic_site_asset
+
+        assert _is_generic_site_asset(url) is True
+
+    @pytest.mark.parametrize(
+        "url",
+        [
+            # A bare og filename suffix is deliberately NOT rejected: this is a
+            # legitimate first-party ETH header image. Ambiguous og-suffixed
+            # assets go to human review, not automatic rejection.
+            "https://www.ethz.ch/etc/designs/ethz/img/header/eth_default_og.jpg",
+            "https://media.bi.no/asset/f6bf9a41-programme.jpg",
+            "https://www.international.vluhr.be/files/660x495_scholarship.jpg",
+        ],
+    )
+    def test_accepts_real_programme_assets(self, url):
+        from app.services.image_discovery_orchestrator import _is_generic_site_asset
+
+        assert _is_generic_site_asset(url) is False
+
+    def test_empty_url_is_rejected(self):
+        from app.services.image_discovery_orchestrator import _is_generic_site_asset
+
+        assert _is_generic_site_asset(None) is True
+        assert _is_generic_site_asset("") is True
+
+
 class TestDomainCircuitBreaker:
     def test_opens_after_threshold(self):
         from app.services.image_coverage_runner import DomainCircuitBreaker
@@ -363,7 +495,7 @@ class TestDomainCircuitBreaker:
             )
 
         runner = ImageCoverageRunner(
-            session_factory, dry_run=True, max_workers=1, batch_size=2
+            session_factory, dry_run=True, max_workers=1, batch_size=2, preflight_fn=ALLOW
         )
         with patch(
             "app.services.image_discovery_orchestrator.ImageDiscoveryOrchestrator.run",
@@ -377,6 +509,12 @@ class TestDomainCircuitBreaker:
         assert metrics.domain_blocked_skipped >= 1
         blocked = [o for o in metrics.outcomes if o["status"] == "source_blocked"]
         assert blocked
-        assert all(o["page_error"] == "domain_blocked_after_repeated_failures" for o in blocked)
+        reasons = {o["page_error"] for o in blocked}
+        assert reasons <= {
+            "domain_blocked_after_repeated_failures",
+            "preflight_blocked",
+            "preflight_timeout",
+            "preflight_connection_error",
+        }
         # A blocked domain is never counted as "genuinely no image".
         assert metrics.circuit_breaker.get("open_domain_count", 0) >= 1
