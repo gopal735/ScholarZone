@@ -72,6 +72,43 @@ class OrchestratorRunResult:
 LOGO_KEYWORDS = ("logo", "emblem", "crest", "badge", "seal", "icon", "symbol")
 
 
+def _is_generic_site_asset(url: str | None, alt_text: str | None = None) -> bool:
+    """Reject site-wide social cards and theme framework assets.
+
+    Real sweep results showed automated discovery persisting things like
+    ``/_assets/opengraph.png`` (the site's generic social-sharing card) and
+    ``/wcmglobal/frameworks/v4.0.91/theme-.../sig-blk-en.svg`` (a theme
+    template asset). Neither depicts the scholarship, and both were stored
+    under misleading kinds such as ``program_image``.
+    """
+    if not url:
+        return True
+    low = url.lower()
+    for needle in _GENERIC_ASSET_MARKERS:
+        if needle in low:
+            return True
+    return False
+
+
+# Site-wide social cards, theme/template assets, and tracking pixels. These are
+# not scholarship imagery no matter how relevant the surrounding page is.
+_GENERIC_ASSET_MARKERS = (
+    "opengraph",
+    "og-image",
+    "ogimage",
+    "/og/",
+    "share-image",
+    "social-card",
+    "/framework",
+    "theme-gcw",
+    "/theme/",
+    "template-",
+    "pixel.gif",
+    "1x1",
+    "tracking",
+)
+
+
 def _is_logo_like(alt_text: str | None, image_url: str, html_context: str | None) -> bool:
     text = " ".join(filter(None, [alt_text or "", image_url, html_context or ""])).lower()
     return any(k in text for k in LOGO_KEYWORDS)
@@ -271,12 +308,21 @@ class ImageDiscoveryOrchestrator:
                     confidence = TrustworthyImageStatus.MEDIUM
                 else:
                     confidence = TrustworthyImageStatus.LOW
+
+                # A site-wide social card or theme asset is never the
+                # scholarship's image, regardless of page relevance.
+                if _is_generic_site_asset(candidate.image_url, candidate.alt_text):
+                    confidence = TrustworthyImageStatus.LOW
+                    vres_kind = None
+                else:
+                    vres_kind = getattr(vres, "image_kind", None)
+
                 result.image_results.append(OrchestratorImageResult(
                     image_url=candidate.image_url,
                     page_url=candidate.page_url,
                     source_type=source_type,
                     confidence=confidence,
-                    image_kind=getattr(vres, "image_kind", None),
+                    image_kind=vres_kind,
                     alt_text=candidate.alt_text,
                     relevance_score=relevance,
                     provenance={
