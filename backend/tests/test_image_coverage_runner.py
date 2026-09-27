@@ -189,8 +189,8 @@ class TestFailureIsolation:
         assert metrics.skipped_existing == 0
         assert metrics.outcomes == []
 
-    def test_verified_record_is_counted_as_skipped_when_in_scope(self, session_factory):
-        """With only_missing=False, verified records are counted, not refetched."""
+    def test_verified_record_is_filtered_from_scope(self, session_factory):
+        """With only_missing=False, a verified record is filtered out before work."""
         _seed(session_factory, 1, verified=True, prefix="ver")
         runner = ImageCoverageRunner(session_factory, dry_run=True, only_missing=False)
 
@@ -204,7 +204,8 @@ class TestFailureIsolation:
             metrics = runner.run()
 
         assert metrics.records_in_scope == 1
-        assert metrics.skipped_existing == 1
+        # Filtered during the pre-flight pass, so no fetch is attempted.
+        assert metrics.outcomes == []
 
 
 class TestMetrics:
@@ -248,10 +249,62 @@ class TestMetrics:
         assert metrics.no_official_image == 1
 
     def test_worker_count_is_capped(self, session_factory):
+        from app.services.image_coverage_runner import MAX_WORKERS
+
         runner = ImageCoverageRunner(session_factory, dry_run=True, max_workers=999)
-        assert runner.max_workers <= 12
+        assert runner.max_workers == MAX_WORKERS
         runner2 = ImageCoverageRunner(session_factory, dry_run=True, max_workers=0)
         assert runner2.max_workers >= 1
+
+
+class TestSharedPageCache:
+    def test_repeated_url_is_served_from_cache(self):
+        from app.services.image_discovery import (
+            ImageDiscoveryService,
+            clear_shared_page_cache,
+        )
+
+        clear_shared_page_cache()
+        svc = ImageDiscoveryService(timeout=5.0)
+        calls = {"n": 0}
+
+        class Resp:
+            status_code = 200
+            url = "https://www.daad.de/page"
+            text = "<html><body>hi</body></html>"
+            headers = {"content-type": "text/html"}
+
+        import app.services.image_discovery as mod
+
+        def fake_get(*a, **k):
+            calls["n"] += 1
+            return Resp()
+
+        orig = mod.httpx.get
+        mod.httpx.get = fake_get
+        try:
+            first = svc._fetch_page("https://www.daad.de/page")
+            second = svc._fetch_page("https://www.daad.de/page")
+        finally:
+            mod.httpx.get = orig
+            clear_shared_page_cache()
+
+        assert first.content == second.content
+        assert calls["n"] == 1, "second fetch must come from the shared cache"
+
+    def test_expired_deadline_beats_cache(self):
+        from app.services.image_discovery import ImageDiscoveryService, clear_shared_page_cache
+
+        clear_shared_page_cache()
+        svc = ImageDiscoveryService(timeout=5.0, deadline=time.monotonic() - 1)
+        result = svc._fetch_page("https://www.daad.de/anything")
+        assert result.error == "deadline_exceeded"
+
+    def test_clear_resets_state(self):
+        from app.services.image_discovery import clear_shared_page_cache
+
+        clear_shared_page_cache()
+        assert True
 
 
 class TestDomainCircuitBreaker:

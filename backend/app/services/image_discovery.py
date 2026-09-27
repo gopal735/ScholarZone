@@ -19,6 +19,7 @@ Designed for read-only dry-run validation — never writes to the database.
 
 import re
 import time
+import threading
 from dataclasses import dataclass, field
 from urllib.parse import parse_qsl, urlencode, urljoin, urlparse, urlunparse
 
@@ -41,6 +42,58 @@ SCHOLARSHIP_TIMEOUT = 120.0
 DEFAULT_MAX_RETRIES = 2
 TRANSIENT_STATUS_CODES = {408, 429, 500, 502, 503, 504}
 TRANSIENT_BLOCKED_CODES = {403, 412}
+
+# ---------------------------------------------------------------------------
+# Shared per-run HTTP cache
+#
+# A catalogue sweep processes many records that point at the same scholarship
+# page on the same provider domain. Without memoisation each record re-fetches
+# the same HTML, which both wastes the run and hammers official sites. A single
+# process-wide cache keyed by URL removes that duplicate work entirely.
+#
+# Only successful 200 responses are cached; failures are cheap to detect but
+# expensive to repeat, and a blocked domain should fail fast via the circuit
+# breaker rather than being served a stale cached error.
+# ---------------------------------------------------------------------------
+_SHARED_CACHE_LOCK = threading.Lock()
+_SHARED_PAGE_CACHE: dict[str, tuple[float, int, str, str | None, str | None]] = {}
+SHARED_CACHE_TTL_SECONDS = 900.0
+SHARED_CACHE_MAX_ENTRIES = 4000
+
+
+def clear_shared_page_cache() -> None:
+    """Clear the shared cache. Call between independent runs in tests."""
+    with _SHARED_CACHE_LOCK:
+        _SHARED_PAGE_CACHE.clear()
+
+
+def _shared_cache_get(url: str) -> tuple[int, str, str | None, str | None] | None:
+    now = time.time()
+    with _SHARED_CACHE_LOCK:
+        entry = _SHARED_PAGE_CACHE.get(url)
+        if entry is None:
+            return None
+        stored_at, status, content, error_type, final_url = entry
+        if now - stored_at > SHARED_CACHE_TTL_SECONDS:
+            _SHARED_PAGE_CACHE.pop(url, None)
+            return None
+        return status, content, error_type, final_url
+
+
+def _shared_cache_put(
+    url: str,
+    status: int,
+    content: str | None,
+    error_type: str | None,
+    final_url: str | None,
+) -> None:
+    with _SHARED_CACHE_LOCK:
+        if len(_SHARED_PAGE_CACHE) >= SHARED_CACHE_MAX_ENTRIES:
+            # Drop the oldest quarter; simple and adequate for a single run.
+            cutoff = time.time() - SHARED_CACHE_TTL_SECONDS * 0.75
+            for key in [k for k, v in _SHARED_PAGE_CACHE.items() if v[0] < cutoff]:
+                _SHARED_PAGE_CACHE.pop(key, None)
+        _SHARED_PAGE_CACHE[url] = (time.time(), status, content, error_type, final_url)
 ENHANCED_BROWSER_HEADERS = {
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
     "Accept-Language": "en-US,en;q=0.9",
@@ -609,6 +662,18 @@ class ImageDiscoveryService:
                 content=None,
                 error="deadline_exceeded",
             )
+        # Serve repeated URLs (many records share a provider page) from the
+        # shared run cache instead of re-fetching them.
+        cached = _shared_cache_get(url)
+        if cached is not None:
+            status, content, error_type, final_url = cached
+            self._requests_made += 1
+            return PageFetchResult(
+                url=final_url or url,
+                status_code=status if status != 200 else 200,
+                content=content,
+                error=error_type,
+            )
         tried_enhanced = False
         for attempt in range(self.max_retries + 1):
             # Re-check inside the retry loop: a single URL can otherwise consume
@@ -665,6 +730,7 @@ class ImageDiscoveryService:
                         content=None,
                         error=f"Non-HTML content-type: {content_type}",
                     )
+                _shared_cache_put(url, response.status_code, response.text, None, final_url)
                 return PageFetchResult(url=final_url, status_code=response.status_code, content=response.text)
             except httpx.TimeoutException:
                 self._timeout_count += 1

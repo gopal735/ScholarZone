@@ -36,13 +36,13 @@ MAX_BATCH_SIZE = 40
 # Bounded concurrency. Kept deliberately small: each worker performs real
 # requests to official sites, so this is a politeness limit as much as a
 # resource limit. The DomainRateLimiter remains the hard per-domain guard.
-DEFAULT_MAX_WORKERS = 6
-MAX_WORKERS = 12
+DEFAULT_MAX_WORKERS = 10
+MAX_WORKERS = 16
 # A domain that has refused us this many times in a row is almost certainly
 # blocking automated access rather than being temporarily unavailable. Without
 # this, a catalogue sweep re-pays the full per-record budget once per record on
 # the same blocked domain.
-DOMAIN_FAILURE_THRESHOLD = 3
+DOMAIN_FAILURE_THRESHOLD = 2
 
 
 @dataclass
@@ -228,20 +228,53 @@ class ImageCoverageRunner:
             return result, scholarship_id, source_url
 
         processed = 0
+        skipped_ids: set[int] = set()
         for index in range(0, len(rows), self.batch_size):
             batch = rows[index : index + self.batch_size]
+            # Record-level breaker check: domains opened while a previous batch
+            # was running are skipped here, not merely on the next batch.
+            pending = []
+            for row in batch:
+                sid, title, source_url, source_name, verified_at = row
+                if verified_at is not None:
+                    skipped_ids.add(sid)
+                    continue
+                if breaker.is_open(source_url):
+                    metrics.domain_blocked_skipped += 1
+                    metrics.outcomes.append(
+                        {
+                            "scholarship_id": sid,
+                            "title": (title or "")[:80],
+                            "status": "source_blocked",
+                            "image_url": None,
+                            "persisted": False,
+                            "candidates": 0,
+                            "requests_made": 0,
+                            "page_error": "domain_blocked_after_repeated_failures",
+                            "timed_out": False,
+                            "error": None,
+                        }
+                    )
+                    processed += 1
+                    continue
+                pending.append(row)
+
+            if not pending:
+                continue
+
             logger.info(
-                "image coverage batch %d: %d records (workers=%d, open_domains=%d)",
+                "image coverage batch %d: %d of %d records (workers=%d, open_domains=%d)",
                 index // self.batch_size + 1,
+                len(pending),
                 len(batch),
                 self.max_workers,
                 len(breaker.open_domains),
             )
             with ThreadPoolExecutor(max_workers=self.max_workers) as pool:
-                futures = {pool.submit(_work, row): row for row in batch}
+                futures = {pool.submit(_work, row): row for row in pending}
                 for future in as_completed(futures):
-                    scholarship_id = futures[future][0]
-                    source_url = futures[future][2]
+                    row = futures[future]
+                    sid, title, source_url = row[0], row[1], row[2]
                     try:
                         result, sid, url = future.result()
                     except Exception as exc:  # noqa: BLE001 - one record must not kill the batch
@@ -250,7 +283,7 @@ class ImageCoverageRunner:
                         metrics.outcomes.append(
                             {
                                 "scholarship_id": sid,
-                                "title": "",
+                                "title": (title or "")[:80],
                                 "status": "error",
                                 "image_url": None,
                                 "persisted": False,
@@ -265,24 +298,7 @@ class ImageCoverageRunner:
                         continue
 
                     if result is None:
-                        if url == "domain_blocked":
-                            metrics.domain_blocked_skipped += 1
-                            metrics.outcomes.append(
-                                {
-                                    "scholarship_id": sid,
-                                    "title": futures[future][1][:80],
-                                    "status": "source_blocked",
-                                    "image_url": None,
-                                    "persisted": False,
-                                    "candidates": 0,
-                                    "requests_made": 0,
-                                    "page_error": "domain_blocked_after_repeated_failures",
-                                    "timed_out": False,
-                                    "error": None,
-                                }
-                            )
-                        else:
-                            metrics.skipped_existing += 1
+                        metrics.skipped_existing += 1
                         processed += 1
                         continue
 

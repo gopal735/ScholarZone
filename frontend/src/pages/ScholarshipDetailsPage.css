@@ -103,11 +103,18 @@
   display: block;
   width: 100%;
   aspect-ratio: 4/3;
-  object-fit: cover;
-  object-position: center;
+  object-fit: cover;  object-position: center;
   transform: scale(1.06);
   transition: transform 1400ms var(--timing-smooth);
 }
+/* Logos and wordmarks are letterboxed on the hero for the same reason as on
+   the card: object-fit: cover crops a square mark inside a 4/3 frame. */
+.sz-detail-hero__image[data-fit='contain'] {
+  object-fit: contain;
+  padding: var(--space-6);
+  background-color: var(--surface-subtle);
+}
+
 
 .sz-detail-hero__media:hover .sz-detail-hero__image {
   transform: scale(1.025);

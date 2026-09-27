@@ -16,3 +16,21 @@ sys.modules["app.scheduler"] = fake_scheduler
 # using the production SQLite file.
 if os.getenv("SCHOLARZONE_ENVIRONMENT") == "test" and not os.getenv("SCHOLARZONE_DATABASE_URL"):
     os.environ["SCHOLARZONE_DATABASE_URL"] = "sqlite:///:memory:"
+
+import pytest
+
+
+@pytest.fixture(autouse=True)
+def _clear_shared_page_cache():
+    """Keep the process-wide discovery page cache out of test isolation.
+
+    The cache exists so a catalogue sweep does not re-fetch the same provider
+    page for every record on that domain. It is deliberately process-wide, so
+    without this fixture one test's fetched page would satisfy another test's
+    request and mask real behaviour.
+    """
+    from app.services.image_discovery import clear_shared_page_cache
+
+    clear_shared_page_cache()
+    yield
+    clear_shared_page_cache()

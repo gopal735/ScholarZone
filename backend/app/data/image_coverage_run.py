@@ -8,9 +8,11 @@ from app.database import get_session_factory
 from app.services.image_coverage_runner import ImageCoverageRunner
 
 PERSIST = "--persist" in sys.argv
-BATCH = 8
+BATCH = 25
+WORKERS = 10
 args = [a for a in sys.argv[1:] if a != "--persist"]
 LIMIT = int(args[0]) if args else None
+START_AFTER = int(args[1]) if len(args) > 1 else None
 
 
 def progress(done: int, total: int, result) -> None:
@@ -26,12 +28,19 @@ def progress(done: int, total: int, result) -> None:
 
 
 def main() -> None:
+    # Each run starts with a clean shared page cache so a resumed run re-reads
+    # live pages rather than serving a previous run's snapshot.
+    from app.services.image_discovery import clear_shared_page_cache
+
+    clear_shared_page_cache()
+
     runner = ImageCoverageRunner(
         get_session_factory(),
         dry_run=not PERSIST,
         batch_size=BATCH,
+        max_workers=WORKERS,
     )
-    metrics = runner.run(limit=LIMIT, progress=progress)
+    metrics = runner.run(limit=LIMIT, start_after=START_AFTER, progress=progress)
 
     print("\n" + "=" * 78)
     print("OFFICIAL IMAGE COVERAGE REPORT" + ("  (PERSISTING)" if PERSIST else "  (DRY RUN)"))

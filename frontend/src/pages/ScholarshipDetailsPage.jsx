@@ -314,6 +314,7 @@ export default function ScholarshipDetailsPage() {
           {image && !imageFailed ? (
             <img
               className="sz-detail-hero__image"
+              data-fit={image.fit ?? 'cover'}
               src={image.url}
               alt={image.alt}
               loading="eager"

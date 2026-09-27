@@ -245,6 +245,20 @@ export function buildVerificationRecord(scholarship) {
  * Prefers a real verified image; falls back to null so the caller can
  * render the designed placeholder rather than a broken frame.
  */
+/* Logos and wordmarks are square or wide, not banner-shaped. Cropping them with
+   object-fit: cover inside a 4/3 or 16/9 frame removes most of the mark, which
+   is what makes such images look wrongly placed in cards and on the detail
+   hero. Those assets are letterboxed with `contain` instead. Photographic
+   programme images keep `cover`, which gives the card a consistent frame.
+   Shared by ScholarshipImage and the detail hero so both agree. */
+const CONTAIN_FIT_KINDS = new Set(['official_logo', 'generic_official', 'logo'])
+
+export function imageFitMode(imageKind) {
+  return CONTAIN_FIT_KINDS.has(String(imageKind ?? '').trim().toLowerCase())
+    ? 'contain'
+    : 'cover'
+}
+
 export function detailImage(scholarship) {
   const url = readUrl(scholarship?.image_url)
   if (!url) return null
@@ -252,5 +266,6 @@ export function detailImage(scholarship) {
     url,
     alt: readText(scholarship?.image_alt_text) || readText(scholarship?.title) || 'Scholarship',
     sourceType: imageSourceLabel(scholarship?.image_source_type),
+    fit: imageFitMode(scholarship?.image_kind),
   }
 }

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { imageFitMode } from '../utils/scholarshipDetail'
 import './ScholarshipImage.css'
 
 const IMAGE_ASPECT_RATIO_CLASS = 'scholarship-image__ratio'
@@ -11,6 +12,13 @@ function formatSourceType(sourceType) {
   if (typeof sourceType !== 'string' || !sourceType.trim()) return sourceType
   return sourceType.trim().replace(/[_-]+/g, ' ')
 }
+
+/* Logos and wordmarks are usually square or wide, not 16:9. Rendering them
+   with object-fit: cover inside a 16:9 frame crops away most of the mark, which
+   is the "image sits wrong in the card" defect. Those assets are letterboxed
+   with object-fit: contain instead, so the whole logo stays visible.
+   Photographic programme images and banners keep cover, which is what gives the
+   card a consistent editorial frame. */
 
 function ImageContent({ imageUrl, altText, onError, onLoad }) {
   return (
@@ -30,6 +38,8 @@ export default function ScholarshipImage({ scholarship, className = '' }) {
   const imageUrl = scholarship?.image_url || scholarship?.imageUrl
   const altText = scholarship?.image_alt_text || `${scholarship?.title ?? 'Scholarship'} official image`
   const sourceType = scholarship?.image_source_type || scholarship?.imageSourceType || null
+  const imageKind = scholarship?.image_kind || scholarship?.imageKind || null
+  const fit = imageFitMode(imageKind)
   const [hasError, setHasError] = useState(false)
   const [retryKey, setRetryKey] = useState(0)
   const [isLoaded, setIsLoaded] = useState(false)
@@ -80,7 +90,7 @@ export default function ScholarshipImage({ scholarship, className = '' }) {
   ].filter(Boolean).join(' ')
 
   return (
-    <div className={wrapperClasses} data-loaded={isLoaded || undefined}>
+    <div className={wrapperClasses} data-loaded={isLoaded || undefined} data-fit={fit}>
       <ImageContent
         key={retryKey}
         imageUrl={imageUrl}

@@ -67,6 +67,31 @@
   transform: scale(1);
 }
 
+/* Logos and wordmarks are letterboxed rather than cropped. A square mark
+   inside a 16/9 frame loses most of itself to object-fit: cover, which is the
+   "image sits wrong in the card" defect. Contain keeps the whole mark visible
+   and the tint behind it supplies the editorial frame instead. */
+.scholarship-image[data-fit='contain'] .scholarship-image__img {
+  object-fit: contain;
+  padding: var(--space-4);
+  transform: none;
+}
+
+.scholarship-image[data-fit='contain'][data-loaded] .scholarship-image__img {
+  transform: none;
+}
+
+.scholarship-image[data-fit='contain']:hover .scholarship-image__img,
+.scholarship-card:hover .scholarship-image[data-fit='contain'] .scholarship-image__img {
+  transform: none;
+}
+
+/* A contained mark needs a calmer backdrop than a photograph does, so the
+   gradient wash is softened to keep the logo the only thing drawing the eye. */
+.scholarship-image[data-fit='contain']::after {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(120, 98, 60, 0.05) 100%);
+}
+
 /* A very slow, very small zoom on hover — enough to feel alive, not
    enough to crop the subject. */
 .scholarship-card:hover .scholarship-image__img {
@@ -172,5 +197,27 @@
 
   .scholarship-image[data-loaded] .scholarship-image__img {
     transform: none;
+  }
+}
+
+/* Cards sit in grids of differing column counts, so the media slot is pinned
+   to an exact responsive height rather than left to aspect-ratio alone. That
+   keeps every card's image band identical in a row, which is what stops cards
+   from appearing to "not sit correctly" next to one another. */
+@media (max-width: 1024px) {
+  .scholarship-image__ratio {
+    aspect-ratio: 2 / 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .scholarship-image__ratio {
+    aspect-ratio: 16 / 9;
+  }
+
+  /* A narrower frame plus the same padding would shrink a contained mark too
+     far, so the inset is reduced on small screens. */
+  .scholarship-image[data-fit='contain'] .scholarship-image__img {
+    padding: var(--space-3);
   }
 }
