@@ -70,12 +70,18 @@ try:
     # report the outcome distribution rather than just the success count.
     outcomes: dict[str, int] = {}
     for r in rows:
-        key = r.image_evaluation_status or "unevaluated"
+        if r.image_verified_at is not None:
+            # A stored, provenanced image is a terminal 'verified' outcome. The
+            # discovery orchestrator writes the image before the runner records
+            # the outcome, and the runner refuses to overwrite a verified row,
+            # so the status column is correctly left null here. Deriving it
+            # prevents a provenanced image from being reported as unevaluated.
+            key = r.image_evaluation_status or "verified"
+        else:
+            key = r.image_evaluation_status or "unevaluated"
         outcomes[key] = outcomes.get(key, 0) + 1
     evaluated = total - outcomes.get("unevaluated", 0)
-    unverified_evaluated = evaluated - len(
-        [r for r in rows if r.image_verified_at is not None and r.image_evaluation_status == "verified"]
-    )
+    unverified_evaluated = evaluated - outcomes.get("verified", 0)
 
     # ---- status
     status: dict[str, int] = {}
@@ -106,6 +112,7 @@ try:
             "by_outcome": dict(sorted(outcomes.items(), key=lambda kv: -kv[1])),
             "reached_terminal_outcome": evaluated,
             "pct_evaluated": round(100 * evaluated / total, 1),
+            "still_unevaluated": outcomes.get("unevaluated", 0),
             "third_party_images": 0,
         },
         "status": dict(sorted(status.items(), key=lambda kv: -kv[1])),
