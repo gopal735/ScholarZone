@@ -174,11 +174,12 @@ class DiscoveryScheduler:
     def _get_all_countries(self) -> list[str]:
         session = self._new_session()
         try:
-            from ..models import Scholarship
+            from ..models import ApprovedSource
             results = session.scalars(
-                select(Scholarship.country)
+                select(ApprovedSource.country)
                 .distinct()
-                .where(Scholarship.country.is_not(None))
+                .where(ApprovedSource.country.is_not(None))
+                .where(ApprovedSource.is_active.is_(True))
             ).all()
             return [r for r in results if r]
         finally:
@@ -213,7 +214,10 @@ class DiscoveryScheduler:
             metrics.country_results[country] = country_metrics
             return
 
-        pipeline = DiscoveryPipeline(session_factory=self.session_factory)
+        pipeline = DiscoveryPipeline(
+            session_factory=self.session_factory,
+            rate_limiter=self.rate_limiter,
+        )
         batch = pipeline.discover_batch(source_urls)
 
         country_metrics["sources_checked"] = len(source_urls)

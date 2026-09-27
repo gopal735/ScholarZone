@@ -20,6 +20,7 @@ from ..core.config import get_settings
 from ..database import get_db
 from ..models import ApprovedSource, DiscoveryCandidate, Scholarship
 from ..services.discovery_pipeline import DiscoveryPipeline
+from ..services.discovery_scheduler import DomainRateLimiter
 from ..services.lifecycle_manager import apply_lifecycle_transition, evaluate_lifecycle
 from ..services.next_cycle_discovery import (
     NextCycleDiscoveryResult,
@@ -182,7 +183,8 @@ def discover_country_scholarships(
             "errors": 0,
         }
 
-    pipeline = DiscoveryPipeline(session_factory=None)
+    rate_limiter = DomainRateLimiter(min_interval_seconds=1.0)
+    pipeline = DiscoveryPipeline(session_factory=None, rate_limiter=rate_limiter)
     pipeline.now_fn = lambda: datetime.now(timezone.utc)
 
     all_urls: list[str] = []

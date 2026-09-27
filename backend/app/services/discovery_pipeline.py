@@ -72,10 +72,12 @@ class DiscoveryPipeline:
         session_factory: sessionmaker[Session] | None = None,
         registry: SourceRegistry | None = None,
         now_fn=None,
+        rate_limiter=None,
     ) -> None:
         self.session_factory = session_factory or get_session_factory()
         self.registry = registry or StaticSourceRegistry()
         self.now_fn = now_fn or (lambda: datetime.now(timezone.utc))
+        self.rate_limiter = rate_limiter
 
     def _new_session(self) -> Session:
         return self.session_factory()
@@ -149,6 +151,13 @@ class DiscoveryPipeline:
                 session, source_url, "source_not_approved",
                 f"Source domain not in approved registry: {normalized_url}"
             )
+
+        # Enforce per-domain rate limiting if a rate limiter is provided
+        if self.rate_limiter is not None:
+            from urllib.parse import urlparse
+            domain = urlparse(normalized_url).netloc
+            if domain:
+                self.rate_limiter.wait_if_needed(domain)
 
         fetch_result = fetch_official_source(normalized_url)
         if not fetch_result.success:
@@ -449,14 +458,9 @@ class DiscoveryPipeline:
                 verification_status="active",
                 region=extracted.get("region"),
                 duration=extracted.get("duration"),
-                application_period=extracted.get("application_period"),
                 eligibility_summary=extracted.get("eligibility_summary"),
                 eligibility=extracted.get("eligibility") or [],
                 coverage=extracted.get("coverage") or [],
-                required_documents=extracted.get("documents") or [],
-                catalogue_url=extracted.get("catalogue_url"),
-                official_updates_url=extracted.get("official_updates_url"),
-                official_source=candidate.official_source,
                 english_requirement=extracted.get("language_requirement"),
                 requirements=extracted.get("requirements") or [],
                 application_method=extracted.get("application_method") or [],
@@ -470,38 +474,8 @@ class DiscoveryPipeline:
                 image_kind=extracted.get("image_kind"),
                 image_verified_at=extracted.get("image_verified_at"),
                 image_alt_text=extracted.get("image_alt_text"),
-                eligibility_summary=extracted.get("eligibility_summary"),
                 benefits=extracted.get("benefits") or [],
-                coverage=extracted.get("coverage") or [],
-                requirements=extracted.get("requirements") or [],
                 documents=extracted.get("documents") or [],
-                english_requirement=extracted.get("language_requirement"),
-                application_method=extracted.get("application_method") or [],
-                selection_notes=extracted.get("selection_notes"),
-                program_type=extracted.get("program_type"),
-                best_fit=extracted.get("best_fit"),
-                notes=extracted.get("notes"),
-                deadline_display=extracted.get("deadline"),
-                deadline_date=extracted.get("deadline_date"),
-                deadline_precision=extracted.get("deadline_type", "month"),
-                eligibility_summary=extracted.get("eligibility_summary"),
-                eligibility=extracted.get("eligibility") or [],
-                benefits=extracted.get("benefits") or [],
-                coverage=extracted.get("coverage") or [],
-                requirements=extracted.get("requirements") or [],
-                documents=extracted.get("documents") or [],
-                english_requirement=extracted.get("language_requirement"),
-                application_method=extracted.get("application_method") or [],
-                selection_notes=extracted.get("selection_notes"),
-                program_type=extracted.get("program_type"),
-                best_fit=extracted.get("best_fit"),
-                notes=extracted.get("notes"),
-                image_url=extracted.get("image_url"),
-                image_source_url=extracted.get("image_source_url"),
-                image_source_type=extracted.get("image_source_type"),
-                image_kind=extracted.get("image_kind"),
-                image_verified_at=extracted.get("image_verified_at"),
-                image_alt_text=extracted.get("image_alt_text"),
             )
             session.add(scholarship)
             session.flush()

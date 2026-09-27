@@ -1,9 +1,10 @@
-import { useCallback, useMemo, useRef } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ScholarshipCard from './ScholarshipCard'
 import ScholarshipCardSkeleton from './ScholarshipCardSkeleton'
 import { getDeadlineLabel } from '../utils/scholarshipPresentation'
 import { useScholarshipDirectory } from '../hooks/useScholarshipDirectory'
+import { fetchScholarshipStats, fetchScholarships } from '../services/scholarshipService'
 import './ScholarZoneHero.css'
 
 /* Pointer input is ignored on touch and coarse pointers: there is no
@@ -14,16 +15,6 @@ const CAN_TILT =
   window.matchMedia('(hover: hover) and (pointer: fine)').matches
 
 const MAX_PREVIEW = 4
-
-function summarise(items) {
-  const countries = new Set(items.map((s) => s.country).filter(Boolean))
-  return {
-    count: items.length,
-    countries: countries.size,
-    fullyFunded: items.filter((s) => s.funding === 'Fully Funded').length,
-    verified: items.filter((s) => s.verified).length,
-  }
-}
 
 function LiveDataIndicator({ count, countries, fullyFunded, verified }) {
   return (
@@ -108,12 +99,73 @@ function HeroShowcase({ scholarship, ref, onPointerMove, onPointerLeave }) {
 
 export default function ScholarZoneHero() {
   const { scholarships, isLoading, isUsingFallback, error } = useScholarshipDirectory()
-
-  const stats = useMemo(() => summarise(scholarships), [scholarships])
-
-  const previewScholarships = useMemo(() => scholarships.slice(0, MAX_PREVIEW), [scholarships])
+  const [stats, setStats] = useState(null)
+  const [statsLoading, setStatsLoading] = useState(true)
+  const [recentScholarships, setRecentScholarships] = useState([])
+  const [recentLoading, setRecentLoading] = useState(true)
+  const [recentError, setRecentError] = useState(null)
 
   const showcaseRef = useRef(null)
+
+  // Fetch live stats from dedicated endpoint
+  useEffect(() => {
+    let cancelled = false
+    fetchScholarshipStats()
+      .then((data) => {
+        if (!cancelled) {
+          setStats({
+            count: data.total,
+            countries: data.countries,
+            fullyFunded: data.fully_funded,
+            verified: data.verified_active,
+          })
+          setStatsLoading(false)
+        }
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setStatsLoading(false)
+        }
+      })
+    return () => { cancelled = true }
+  }, [])
+
+  // Fetch recently added scholarships for preview section
+  useEffect(() => {
+    let cancelled = false
+    fetchScholarships({ sort: 'recently-added', limit: MAX_PREVIEW })
+      .then((directory) => {
+        if (!cancelled) {
+          setRecentScholarships(directory.items)
+          setRecentLoading(false)
+        }
+      })
+      .catch((err) => {
+        if (!cancelled) {
+          setRecentError(err)
+          setRecentLoading(false)
+        }
+      })
+    return () => { cancelled = true }
+  }, [])
+
+  const previewScholarships = useMemo(
+    () => (recentScholarships.length > 0 ? recentScholarships : scholarships.slice(0, MAX_PREVIEW)),
+    [recentScholarships, scholarships]
+  )
+
+  // Select a scholarship with an image for the hero showcase
+  // Prefer recently added with images, then fall back to directory data
+  const showcaseScholarship = useMemo(() => {
+    // First try recently added
+    let withImage = previewScholarships.find((s) => s.image_url)
+    if (withImage) return withImage
+    // Then try the full directory data
+    withImage = scholarships.find((s) => s.image_url)
+    if (withImage) return withImage
+    // Fall back to first available
+    return previewScholarships[0] ?? scholarships[0]
+  }, [previewScholarships, scholarships])
 
   /* Writes two custom properties to one node. No state, no animation
      frame, no measurement beyond the rect the browser already has for
@@ -180,7 +232,7 @@ export default function ScholarZoneHero() {
             </div>
           ) : (
             <>
-              {!isUsingFallback && (
+              {stats && !isUsingFallback && (
                 <LiveDataIndicator
                   count={stats.count}
                   countries={stats.countries}
@@ -188,9 +240,20 @@ export default function ScholarZoneHero() {
                   verified={stats.verified}
                 />
               )}
+              {statsLoading && !isUsingFallback && !stats && (
+                <div className="sz-hero__loading" aria-label="Loading directory figures">
+                  <span className="sz-hero__loading-spinner" aria-hidden="true" />
+                  <span>Loading directory figures...</span>
+                </div>
+              )}
               {isUsingFallback && (
                 <p className="sz-hero__fallback-notice" role="status">
                   ⚠️ Live directory unavailable — showing local data.
+                </p>
+              )}
+              {!stats && !statsLoading && !isUsingFallback && (
+                <p className="sz-hero__fallback-notice" role="status">
+                  ⚠️ Live stats unavailable — showing directory data.
                 </p>
               )}
             </>
@@ -208,7 +271,7 @@ export default function ScholarZoneHero() {
 
         <HeroShowcase
           ref={showcaseRef}
-          scholarship={previewScholarships[0]}
+          scholarship={showcaseScholarship}
           onPointerMove={CAN_TILT ? handlePointerMove : undefined}
           onPointerLeave={CAN_TILT ? handlePointerLeave : undefined}
         />
@@ -222,10 +285,16 @@ export default function ScholarZoneHero() {
           </Link>
         </div>
 
-        {isLoading ? (
+        {(recentLoading || isLoading) ? (
           <div className="sz-hero__grid" aria-hidden="true">
             {[1, 2, 3, 4].map((item) => (
               <ScholarshipCardSkeleton key={item} />
+            ))}
+          </div>
+        ) : recentError ? (
+          <div className="sz-hero__grid">
+            {previewScholarships.map((scholarship) => (
+              <ScholarshipCard key={scholarship.id} scholarship={scholarship} />
             ))}
           </div>
         ) : (

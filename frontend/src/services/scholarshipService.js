@@ -60,3 +60,8 @@ export async function fetchScholarshipById(id, options) {
   const payload = await request(`/scholarships/${encodeURIComponent(id)}`, undefined, options)
   return normalizeScholarship(payload)
 }
+
+export async function fetchScholarshipStats(options) {
+  const payload = await request('/scholarships/stats', undefined, options)
+  return payload
+}

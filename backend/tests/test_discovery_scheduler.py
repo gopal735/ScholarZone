@@ -243,10 +243,11 @@ class TestCountryDiscoveryScheduler:
                 )
             ],
         )
-        with patch.object(scheduler, "_build_source_urls", return_value=["https://www.daad.de/en/"]):
-            with patch("app.services.discovery_scheduler.DiscoveryPipeline") as mock_pipeline:
-                mock_pipeline.return_value.discover_batch.return_value = batch
-                metrics = scheduler.run()
+        with patch.object(scheduler, "_get_all_countries", return_value=["Germany"]):
+            with patch.object(scheduler, "_build_source_urls", return_value=["https://www.daad.de/en/"]):
+                with patch("app.services.discovery_scheduler.DiscoveryPipeline") as mock_pipeline:
+                    mock_pipeline.return_value.discover_batch.return_value = batch
+                    metrics = scheduler.run()
 
         assert metrics.image_discoveries_triggered == 1
         assert metrics.image_review == 1
