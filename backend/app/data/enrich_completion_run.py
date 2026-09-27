@@ -37,13 +37,15 @@ def progress(done: int, total: int, result) -> None:
 
 
 def main() -> None:
+    from app.services.official_source_fetcher import clear_official_source_cache
+
     factory = get_session_factory()
     ids = None
     if SPARSE_FIRST:
         from sqlalchemy import select
 
         from app.models import Scholarship
-        from app.services.catalogue_quarantine import FACT_FIELDS
+        from app.data.sparseness_rank import FACT_FIELDS
 
         session = factory()
         try:
@@ -68,8 +70,9 @@ def main() -> None:
 
     for pass_no in range(1, MAX_PASSES + 1):
         print(f"\n=== enrichment pass {pass_no} ===", flush=True)
+        clear_official_source_cache()
         runner = EnrichmentBatchRunner(
-            factory, dry_run=not PERSIST, batch_size=15, max_attempts=2
+            factory, dry_run=not PERSIST, batch_size=20, max_attempts=2, max_workers=8
         )
         report = runner.run(ids=ids, progress=progress)
         for k, v in report.metrics.as_dict().items():

@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+import threading
+import time
+
 import httpx
 from pydantic import BaseModel, ConfigDict
 
@@ -39,6 +42,52 @@ def _is_html_content(content_type: str) -> bool:
     return "text/html" in normalized or "application/xhtml+xml" in normalized
 
 
+# ---------------------------------------------------------------------------
+# Shared per-run cache
+#
+# A catalogue enrichment pass visits the same provider domain many times, and
+# multi-page research additionally revisits links already fetched from the
+# landing page. Memoising successful HTML responses removes that duplicate work
+# and, just as importantly, avoids hammering official sites with the same GET.
+# Failures are deliberately not cached: a blocked domain should fail fast
+# through the circuit breaker, not be served a stale cached error.
+# ---------------------------------------------------------------------------
+_CACHE_LOCK = threading.Lock()
+_CACHE: dict[str, tuple[float, OfficialSourceFetchResult]] = {}
+CACHE_TTL_SECONDS = 900.0
+CACHE_MAX_ENTRIES = 3000
+
+
+def clear_official_source_cache() -> None:
+    """Clear the shared fetch cache. Call between independent runs."""
+    with _CACHE_LOCK:
+        _CACHE.clear()
+
+
+def _cache_get(url: str) -> OfficialSourceFetchResult | None:
+    now = time.time()
+    with _CACHE_LOCK:
+        entry = _CACHE.get(url)
+        if entry is None:
+            return None
+        stored_at, result = entry
+        if now - stored_at > CACHE_TTL_SECONDS:
+            _CACHE.pop(url, None)
+            return None
+        return result
+
+
+def _cache_put(url: str, result: OfficialSourceFetchResult) -> None:
+    if not result.success:
+        return
+    with _CACHE_LOCK:
+        if len(_CACHE) >= CACHE_MAX_ENTRIES:
+            cutoff = time.time() - CACHE_TTL_SECONDS * 0.75
+            for key in [k for k, v in _CACHE.items() if v[0] < cutoff]:
+                _CACHE.pop(key, None)
+        _CACHE[url] = (time.time(), result)
+
+
 def fetch_official_source(url: str) -> OfficialSourceFetchResult:
     """Fetch an official scholarship source URL and return a structured result.
 
@@ -50,6 +99,10 @@ def fetch_official_source(url: str) -> OfficialSourceFetchResult:
             error_type="invalid_url",
             error_reason="URL is empty or missing",
         )
+
+    cached = _cache_get(url)
+    if cached is not None:
+        return cached
 
     try:
         with httpx.Client(
@@ -78,13 +131,15 @@ def fetch_official_source(url: str) -> OfficialSourceFetchResult:
                         error_type="invalid_content_type",
                         error_reason=f"Expected HTML content, got {content_type or 'unknown'}",
                     )
-                return OfficialSourceFetchResult(
+                result_ok = OfficialSourceFetchResult(
                     success=True,
                     status_code=response.status_code,
                     final_url=final_url,
                     content=content,
                     content_type=content_type,
                 )
+                _cache_put(url, result_ok)
+                return result_ok
 
             if response.status_code == httpx.codes.NOT_FOUND:
                 return OfficialSourceFetchResult(

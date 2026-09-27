@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import logging
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass, field
 from typing import Callable, Iterable
 
@@ -170,10 +171,12 @@ class EnrichmentBatchRunner:
         batch_size: int = DEFAULT_BATCH_SIZE,
         max_attempts: int = 2,
         rate_limiter: DomainRateLimiter | None = None,
+        max_workers: int = 1,
     ) -> None:
         self._session_factory = session_factory
         self.dry_run = dry_run
         self.batch_size = max(1, min(batch_size, MAX_BATCH_SIZE))
+        self.max_workers = max(1, max_workers)
         self.rate_limiter = rate_limiter or DomainRateLimiter(min_interval_seconds=1.0)
         self._service = ScholarshipEnrichmentService(
             session_factory,
@@ -220,7 +223,14 @@ class EnrichmentBatchRunner:
         only_missing_source: bool = False,
         progress: Callable[[int, int, EnrichmentResult], None] | None = None,
     ) -> EnrichmentRunReport:
-        """Execute the run. Records are processed one at a time, in id order."""
+        """Execute the run.
+
+        Records are processed one at a time when max_workers == 1. Above that,
+        records run concurrently, each through its own session, so a slow or
+        blocked source on one record never holds up the rest. Per-domain
+        politeness remains enforced by DomainRateLimiter and the shared fetch
+        cache, which is what makes cross-domain parallelism safe.
+        """
         started = time.monotonic()
         target_ids = self.list_ids(
             ids=ids,
@@ -233,17 +243,44 @@ class EnrichmentBatchRunner:
         batch_count = 0
         last_id = start_after
 
+        workers = max(1, self.max_workers)
+        done = 0
+
         for index in range(0, len(target_ids), self.batch_size):
             batch = target_ids[index : index + self.batch_size]
             batch_count += 1
-            logger.info("enrichment batch %d: %d records", batch_count, len(batch))
-            for scholarship_id in batch:
-                result = self._service.enrich_one(scholarship_id)
-                metrics.record(result)
-                results.append(result)
-                last_id = scholarship_id
-                if progress is not None:
-                    progress(index + len(batch), len(target_ids), result)
+            logger.info("enrichment batch %d: %d records (workers=%d)", batch_count, len(batch), workers)
+
+            if workers == 1:
+                for scholarship_id in batch:
+                    result = self._service.enrich_one(scholarship_id)
+                    metrics.record(result)
+                    results.append(result)
+                    last_id = scholarship_id
+                    done += 1
+                    if progress is not None:
+                        progress(done, len(target_ids), result)
+                continue
+
+            with ThreadPoolExecutor(max_workers=workers) as pool:
+                futures = {pool.submit(self._service.enrich_one, sid): sid for sid in batch}
+                for future in as_completed(futures):
+                    sid = futures[future]
+                    try:
+                        result = future.result()
+                    except Exception as exc:  # noqa: BLE001 - one record must not kill the batch
+                        logger.exception("enrichment crashed for id=%s", sid)
+                        result = EnrichmentResult(
+                            scholarship_id=sid,
+                            outcome=EnrichmentOutcome.ERROR,
+                            fetch_error=f"{type(exc).__name__}: {exc}",
+                        )
+                    metrics.record(result)
+                    results.append(result)
+                    last_id = sid
+                    done += 1
+                    if progress is not None:
+                        progress(done, len(target_ids), result)
 
         metrics.runtime_ms = (time.monotonic() - started) * 1000.0
         return EnrichmentRunReport(
