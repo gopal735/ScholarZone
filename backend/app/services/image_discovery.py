@@ -114,11 +114,16 @@ class ImageDiscoveryService:
         max_candidates: int = MAX_CANDIDATES,
         max_retries: int = DEFAULT_MAX_RETRIES,
         scholarship_timeout: float = SCHOLARSHIP_TIMEOUT,
+        deadline: float | None = None,
     ):
         self.timeout = timeout
         self.max_candidates = max_candidates
         self.max_retries = max_retries
         self.scholarship_timeout = scholarship_timeout
+        # Optional wall-clock deadline (time.monotonic). Callers that fan out
+        # many sequential fetches across several phases need a hard stop: the
+        # per-request timeout alone does not bound total work.
+        self.deadline = deadline
         self._seen_pages: set[str] = set()
         self._candidates: list[ImageCandidate] = []
         self._candidate_keys: set[str] = set()
@@ -595,8 +600,26 @@ class ImageDiscoveryService:
         return links[:5]
 
     def _fetch_page(self, url: str) -> PageFetchResult:
+        # Single choke point for every HTTP request made during discovery, so
+        # this is where the caller's wall-clock deadline is enforced.
+        if self.deadline is not None and time.monotonic() >= self.deadline:
+            return PageFetchResult(
+                url=url,
+                status_code=None,
+                content=None,
+                error="deadline_exceeded",
+            )
         tried_enhanced = False
         for attempt in range(self.max_retries + 1):
+            # Re-check inside the retry loop: a single URL can otherwise consume
+            # (max_retries + 1) * timeout seconds, well past the caller's budget.
+            if self.deadline is not None and time.monotonic() >= self.deadline:
+                return PageFetchResult(
+                    url=url,
+                    status_code=None,
+                    content=None,
+                    error="deadline_exceeded",
+                )
             try:
                 headers = {"User-Agent": BROWSER_UA, "Accept": "text/html"}
                 if tried_enhanced:

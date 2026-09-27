@@ -15,6 +15,7 @@ from .routers.verification import router as verification_router
 from .routers.admin_image_review import router as admin_image_review_router
 from .routers.discovery import router as discovery_router
 from .routers.admin_dashboard import router as admin_dashboard_router
+from .routers.enrichment import router as enrichment_router
 from .seed import seed_database
 
 
@@ -122,6 +123,7 @@ app.include_router(verification_router)
 app.include_router(admin_image_review_router)
 app.include_router(discovery_router)
 app.include_router(admin_dashboard_router)
+app.include_router(enrichment_router)
 
 
 @app.get("/debug/fix-null-lists")

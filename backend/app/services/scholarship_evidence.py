@@ -51,13 +51,57 @@ _GOVERNMENT_HOST_PATTERNS: list[re.Pattern[str]] = [
     re.compile(r"^www\.gov\.", re.IGNORECASE),
     re.compile(r"^gov\.", re.IGNORECASE),
     re.compile(r"\.gov\.", re.IGNORECASE),
+    re.compile(r"\.gov$", re.IGNORECASE),          # exchanges.state.gov
     re.compile(r"\.gob\.", re.IGNORECASE),
     re.compile(r"\.go\.", re.IGNORECASE),
     re.compile(r"\.gc\.ca$", re.IGNORECASE),
     re.compile(r"\.admin\.ch$", re.IGNORECASE),
     re.compile(r"\.bund\.de$", re.IGNORECASE),
     re.compile(r"\.gouv\.fr$", re.IGNORECASE),
+    re.compile(r"\.gouv\.qc\.ca$", re.IGNORECASE),  # frq.gouv.qc.ca
+    re.compile(r"\.govt\.nz$", re.IGNORECASE),       # www.education.govt.nz
+    re.compile(r"\.europa\.eu$", re.IGNORECASE),    # EU institutions
+    re.compile(r"^europa\.eu$", re.IGNORECASE),
 ]
+
+# Host normalisation: strip a leading "www" / "www2" / "web" label so that
+# www2.daad.de is recognised as the same official host as www.daad.de.
+_HOST_PREFIX_RE = re.compile(r"^(?:www|web|www\d+|en|fr|de|it)\d*\.", re.IGNORECASE)
+
+
+def _normalize_host(hostname: str) -> str:
+    host = hostname.lower().split(":")[0]
+    previous = None
+    while previous != host:
+        previous = host
+        host = _HOST_PREFIX_RE.sub("", host)
+    return host
+
+
+# Public-suffix fragments that must not be treated as the registrable domain.
+# Without these, "www.temasek.com.sg" reduces to "com.sg" and every curated
+# entry under a multi-part suffix silently stops matching.
+_MULTI_PART_SUFFIXES: frozenset[str] = frozenset({
+    "com.sg", "com.au", "com.br", "com.tr", "co.uk", "org.uk", "ac.uk",
+    "gov.uk", "co.jp", "or.jp", "ne.jp", "ac.jp", "go.jp", "co.kr", "or.kr",
+    "co.nz", "govt.nz", "co.za", "org.za", "ac.za", "co.il", "co.in", "org.in",
+    "gov.in", "com.cn", "gov.cn", "edu.cn", "ac.cn", "com.hk", "org.hk",
+    "com.tw", "org.tw", "edu.tw", "co.hu", "gov.hu", "com.pl", "gov.pl",
+    "com.es", "gob.es", "edu.es", "com.pt", "edu.pt", "com.gr", "edu.gr",
+    "com.ua", "com.ru", "com.vn", "edu.vn", "com.my", "edu.my", "com.ph",
+    "co.id", "or.id", "ac.id", "co.th", "in.th", "ac.th", "co.ke", "or.ke",
+})
+
+
+def _registrable(host: str) -> str:
+    """Best-effort registrable domain, respecting multi-part public suffixes."""
+    parts = host.split(".")
+    if len(parts) <= 2:
+        return host
+    tail2 = ".".join(parts[-2:])
+    if tail2 in _MULTI_PART_SUFFIXES:
+        return ".".join(parts[-3:])
+    return tail2
 
 # Official university domains
 _UNIVERSITY_DOMAINS: frozenset[str] = frozenset({
@@ -73,7 +117,103 @@ _UNIVERSITY_HOST_PATTERNS: list[re.Pattern[str]] = [
     re.compile(r"^uni-", re.IGNORECASE),
     re.compile(r"\.edu$", re.IGNORECASE),
     re.compile(r"\.ac\.\w+$", re.IGNORECASE),
+    re.compile(r"\.cern$", re.IGNORECASE),          # careers.cern (CERN programmes)
+    # European university naming conventions. Many universities outside the
+    # UK/US do not use .ac or .edu, so the original patterns missed the
+    # majority of the catalogue.
+    re.compile(r"^(?:www\d*\.)?uni[a-z0-9-]*\.", re.IGNORECASE),   # unipd.it, unitn.it, unibo.it
+    re.compile(r"\.(?:www\d*\.)?uni[a-z0-9-]*\.", re.IGNORECASE),  # bandi.unibo.it
+    re.compile(r"\.universit(?:e|é|ae)[\w-]*\.", re.IGNORECASE),     # universite-paris-saclay.fr
+    re.compile(r"\.university[\w-]*\.", re.IGNORECASE),             # lunduniversity.lu.se
+    re.compile(r"\.unibe$", re.IGNORECASE),                         # rhodes.unibe.ch
+    re.compile(r"\.univie$", re.IGNORECASE),
 ]
+
+# Curated registrable domains of universities that appear in the catalogue.
+# A real dry run showed 261 of 489 records (53%) misclassified as third party,
+# which blocked enrichment for every one of them. Structural patterns alone
+# cannot separate "www.kth.se" from an arbitrary .se site, so genuine
+# institutions are listed explicitly. Each entry is a real awarding body.
+_OFFICIAL_UNIVERSITY_DOMAINS: frozenset[str] = frozenset({
+    "aalto.fi", "abo.fi", "aau.dk", "akf.org", "ares-ac.be", "bme.hu",
+    "cbs.dk", "cern.ch", "cuni.cz", "cvut.cz", "dcu.ie", "dtu.dk",
+    "epfl.ch", "ethz.ch", "galway.ie", "hanken.fi", "helsinki.fi",
+    "ip-paris.fr", "jku.at", "kth.se", "ku.dk", "kuleuven.be",
+    "li.se", "lu.se", "lunduniversity.lu.se", "lut.fi", "mau.se",
+    "mcmaster.ca", "muni.cz", "pasteur.fr", "polimi.it", "rug.nl",
+    "ru.nl", "sciencespo.fr", "sdu.dk", "sorbonne-universite.fr",
+    "su.se", "tcd.ie", "tudelft.nl", "tugraz.at", "ucd.ie",
+    "uni-graz.at", "unibas.ch", "unibocconi.it", "unibo.it", "unibs.it",
+    "unige.ch", "unil.ch", "unimib.it", "unipd.it", "uniroma1.it",
+    "unisg.ch", "unitn.it", "universite-paris-saclay.fr",
+    "universiteitleiden.nl", "universityofgalway.ie", "up.pt", "usu.se",
+    "ut.ee", "utu.fi", "utwente.nl", "uva.nl", "uwaterloo.ca",
+    "uu.nl", "uu.se", "uzh.ch", "ulisboa.pt", "vu.nl",
+    "wur.nl", "yorku.ca", "ubc.ca", "maastrichtuniversity.nl",
+    "vluhr.be", "unsw.edu.au", "eur.nl", "bi.no", "tuni.fi",
+    "chalmers.se", "liu.se", "umu.se", "tuwien.at", "ens-lyon.fr",
+    "ki.se", "ugent.be", "fct.pt", "novasbe.unl.pt", "utoronto.ca",
+    "au.dk", "cemm.at", "oulu.fi", "uef.fi", "semmelweis.hu",
+})
+
+# Public research bodies and intergovernmental agencies that administer their
+# own named funding programmes.
+_OFFICIAL_RESEARCH_DOMAINS: frozenset[str] = frozenset({
+    "cern.ch", "esa.int", "insaindia.res.in", "cis.chinese.cn",
+    "snf.ch", "knaw.nl", "akf.org", "kitlv.nl", "tka.hu",
+})
+
+# National study-abroad promotion agencies and scholarship portals.
+_OFFICIAL_AGENCY_DOMAINS: frozenset[str] = frozenset({
+    "studyinfinland.fi", "studyindenmark.dk", "studyinbelgium.be",
+    "daad-bangladesh.org", "fulbright.fi", "ireland.ie",
+    "research.ie", "hea.ie", "campusfrance.org",
+    # Erasmus Mundus joint master / doctoral networks
+    "marihe.eu", "clinical-linguistics.eu",
+    # Government research councils and provincial study-aid portals
+    "sshrc-crsh.canada.ca", "studentaid.alberta.ca",
+    # Fulbright-Boren and comparable national fellowship portals
+    "borenawards.org",
+})
+
+# National study-abroad promotion agencies declared official by the
+# ApprovedSource registry (discovery_config._DEFAULT_SOURCES). Kept in sync
+# with that registry by tests/test_source_classification.py::RegistryAgreement.
+_REGISTRY_DECLARED_DOMAINS: frozenset[str] = frozenset({
+    "swissuniversities.ch", "nuffic.nl", "studyinsweden.se",
+    "studyinaustria.at", "studyinbelgium.be", "educationusa.state.gov",
+    "studyinjapan.go.jp", "korea.kr", "moe.gov.sg", "gov.uk",
+    "australia.gov.au", "gc.ca",
+})
+
+# Curated registrable domains of official scholarship programmes, government
+# agencies, and funding foundations that administer a named programme. These are
+# official for their own programme even though they are not .gov/.edu.
+_OFFICIAL_PROGRAMME_DOMAINS: frozenset[str] = frozenset({
+    # EU programmes and agencies
+    "erasmus-plus.ec.europa.eu", "eacea.ec.europa.eu",
+    "marie-sklodowska-curie-actions.ec.europa.eu", "master-ediss.eu",
+    "master-bioceb.eu", "master-europeanforestry.eu",
+    # National scholarship schemes, agencies and ministries
+    "daad.de", "campusfrance.org", "campuschina.org", "studyinnl.org",
+    "fulbrightonline.org", "si.se", "educanada.ca", "oead.at",
+    "aecid.es", "esteri.it", "instituto-camoes.pt", "nzscholarships.govt.nz",
+    "stipendiumhungaricum.hu", "diasporascholarship.hu", "momentummsca.mta.hu",
+    "visegradfund.mvcr.cz", "visegradfund.org", "bse.eu", "uhr.no",
+    "nwo.nl", "knaw.nl", "researchireland.ie", "temasek.com.sg",
+    "study-uk.britishcouncil.org", "twas.org", "wipo.int", "worldbank.org",
+    # Foundations and trusts administering named programmes
+    "nokiafoundation.com", "snf.ch", "foundation.scg.ch", "postf.org",
+    "rotary.org", "rotary-yoneyama.or.jp", "humboldt-foundation.de",
+    "akf.org", "royalsociety.org", "royalsociety.org.nz",
+    "phikappaphi.org", "aauw.org", "anrfonline.in", "borenaawards.org",
+    "cambridgetrust.org", "gatescambridge.org", "gilmanscholarship.org",
+    "humphreyfellowship.org", "jeffersonscholars.org",
+    "mccallmacbainscholars.org", "schulichleaders.com",
+    "trudeaufoundation.ca", "youarewelcomehereusa.org",
+    "eastwestcenter.org", "aai-salzburg.at", "boell.de", "cern.ch",
+    "research.google",
+})
 
 # Known scholarship program domains
 _SCHOLARSHIP_PROGRAM_HOSTS: frozenset[str] = frozenset({
@@ -85,7 +225,6 @@ _SCHOLARSHIP_PROGRAM_HOSTS: frozenset[str] = frozenset({
     "www.deutschlandstipendium.de",
     "www.chevening.org",
     "csc.edu.cn",
-    "www.scholars4dev.com",
 })
 
 # Known application portal domains
@@ -210,34 +349,57 @@ def classify_source(source_url: str) -> SourceType:
     """Classify a source URL by its authority level.
 
     Deterministic classification based on domain patterns.
+
+    Order matters: programme hosts are checked before government and university
+    patterns, because a programme operator (for example an EU funding agency) may
+    also sit on a domain that would otherwise look governmental.
     """
     if not source_url:
         return SourceType.THIRD_PARTY
 
     parsed = urlsplit(source_url)
-    hostname = parsed.netloc.lower()
+    raw_host = parsed.netloc.lower().split(":")[0]
+    hostname = _normalize_host(raw_host)
+    if not hostname:
+        return SourceType.THIRD_PARTY
 
-    # Remove port if present
-    if ":" in hostname:
-        hostname = hostname.split(":")[0]
+    registrable = _registrable(hostname)
+    # Curated sets are checked against the normalised host, the raw host, and
+    # the registrable domain, so both "www.daad.de" and "www2.daad.de" resolve
+    # regardless of which form the catalogue happens to store.
+    hosts = {hostname, raw_host, registrable}
 
-    # Check known scholarship program hosts first (most specific)
-    if hostname in _SCHOLARSHIP_PROGRAM_HOSTS:
-        return SourceType.OFFICIAL_SCHOLARSHIP_PROGRAM
-
-    # Check known application portal hosts
-    if hostname in _APPLICATION_PORTAL_HOSTS:
+    # A specific application portal wins over its parent domain: with
+    # registrable-domain matching enabled, "apply.daad.de" would otherwise be
+    # claimed by the curated "daad.de" programme entry.
+    if hostname in _APPLICATION_PORTAL_HOSTS or raw_host in _APPLICATION_PORTAL_HOSTS:
         return SourceType.OFFICIAL_APPLICATION_PORTAL
 
-    # Check government patterns
+    # Curated programme operators and named scholarship foundations.
+    if hosts & _SCHOLARSHIP_PROGRAM_HOSTS or hosts & _OFFICIAL_PROGRAMME_DOMAINS:
+        return SourceType.OFFICIAL_SCHOLARSHIP_PROGRAM
+
+    if hosts & _OFFICIAL_RESEARCH_DOMAINS:
+        return SourceType.OFFICIAL_SCHOLARSHIP_PROGRAM
+
+    if hosts & _OFFICIAL_AGENCY_DOMAINS:
+        return SourceType.OFFICIAL_SCHOLARSHIP_PROGRAM
+
+    if hosts & _REGISTRY_DECLARED_DOMAINS:
+        return SourceType.OFFICIAL_GOVERNMENT
+
+    # Government / public-institution patterns.
     for pattern in _GOVERNMENT_HOST_PATTERNS:
-        if pattern.search(hostname):
+        if pattern.search(hostname) or pattern.search(raw_host):
             return SourceType.OFFICIAL_GOVERNMENT
 
-    # Check university patterns
+    # University patterns: structural conventions first, then curated domains.
     for pattern in _UNIVERSITY_HOST_PATTERNS:
-        if pattern.search(hostname):
+        if pattern.search(hostname) or pattern.search(raw_host):
             return SourceType.OFFICIAL_UNIVERSITY
+
+    if hosts & _OFFICIAL_UNIVERSITY_DOMAINS:
+        return SourceType.OFFICIAL_UNIVERSITY
 
     return SourceType.THIRD_PARTY
 

@@ -557,10 +557,15 @@ class ScholarshipExtractorTests(unittest.TestCase):
         """
         result = extract_scholarship_information(html, "https://example.com")
         self.assertEqual(result.award_amount, "$25,000 per year")
-        self.assertEqual(result.tuition_coverage, "coverage")
-        self.assertEqual(result.living_stipend, "of $15,000")
+        # "Full tuition coverage" carries no amount and no coverage outcome, so
+        # it is not a usable coverage fact. An earlier revision stored the bare
+        # word "coverage" here.
+        self.assertIsNone(result.tuition_coverage)
+        # "Living stipend of $15,000" must yield the amount, not the fragment
+        # "of $15,000" that an earlier revision captured.
+        self.assertEqual(result.living_stipend, "$15,000")
         self.assertEqual(result.confidence["award_amount"], ExtractionConfidence.MEDIUM)
-        self.assertEqual(result.confidence["tuition_coverage"], ExtractionConfidence.MEDIUM)
+        self.assertNotIn("tuition_coverage", result.confidence)
         self.assertEqual(result.confidence["living_stipend"], ExtractionConfidence.MEDIUM)
 
     def test_eligibility_extraction(self):

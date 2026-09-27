@@ -45,6 +45,9 @@ class ScholarshipExtractionResult(BaseModel):
     deadline_type: str | None = None
     scholarship_cycle: str | None = None
     status: str | None = None
+    program_type: str | None = None
+    study_mode: str | None = None
+    intake: str | None = None
 
     confidence: dict[str, str] = Field(default_factory=dict)
     extraction_notes: list[str] = Field(default_factory=list)
@@ -189,73 +192,302 @@ def _extract_fields(text: str, title: str | None) -> tuple[dict[str, object], di
 
     provider_match = re.search(r"(?:offered?\s+by|provided?\s+by|funded?\s+by|sponsored?\s+by)[:\s]+([^\n]+)", text, re.IGNORECASE)
     if provider_match:
-        candidate = _normalize_whitespace(provider_match.group(1))
-        if candidate:
-            fields["provider"] = candidate
-            confidence["provider"] = ExtractionConfidence.MEDIUM
+        _store(fields, confidence, "provider", provider_match.group(1), ExtractionConfidence.MEDIUM)
 
     degree_match = re.search(r'(?:degree|level)[:\s]+([^\n]+)', text, re.IGNORECASE)
     if degree_match:
-        candidate = _normalize_whitespace(degree_match.group(1))
-        if candidate:
-            fields["degree_level"] = candidate
-            confidence["degree_level"] = ExtractionConfidence.MEDIUM
+        _store(fields, confidence, "degree_level", degree_match.group(1), ExtractionConfidence.MEDIUM)
 
-    award_match = re.search(r'(?:award|amount|value)[:\s]+([^\n]+)', text, re.IGNORECASE)
+    # "Award" also appears in interface chrome ("Select award type",
+    # "Award type:"). A mandatory separator keeps the label/value reading while
+    # dropping both forms, because neither is followed directly by a separator.
+    award_match = re.search(
+        r'(?:award amount|total award|value|amount|award)\s*[:\-]\s*([^\n]{2,180})',
+        text,
+        re.IGNORECASE,
+    )
     if award_match:
-        candidate = _normalize_whitespace(award_match.group(1))
-        if candidate:
-            fields["award_amount"] = candidate
-            confidence["award_amount"] = ExtractionConfidence.MEDIUM
+        _store(fields, confidence, "award_amount", award_match.group(1), ExtractionConfidence.MEDIUM)
 
-    tuition_match = re.search(r'(?:full[\s-]?tuition|tuition)[:\s]+(.+)', text, re.IGNORECASE)
+    tuition_match = re.search(r'(?:full[\s-]?tuition|tuition)[:\s]+([^\n]{2,200})', text, re.IGNORECASE)
     if tuition_match:
-        candidate = _normalize_whitespace(tuition_match.group(1))
-        if candidate:
-            fields["tuition_coverage"] = candidate
-            confidence["tuition_coverage"] = ExtractionConfidence.MEDIUM
+        _store(fields, confidence, "tuition_coverage", tuition_match.group(1), ExtractionConfidence.MEDIUM)
 
-    stipend_match = re.search(r'(?:living\s+stipend|stipend)[:\s]+([^\n]+)', text, re.IGNORECASE)
+    # "Living stipend of $15,000" is the common phrasing; consume the connective
+    # so the captured value is the amount rather than the fragment "of $15,000".
+    stipend_match = re.search(
+        r'(?:living\s+stipend|stipend)(?:\s+of)?[:\s]+([^\n]{2,200})', text, re.IGNORECASE
+    )
     if stipend_match:
-        candidate = _normalize_whitespace(stipend_match.group(1))
-        if candidate:
-            fields["living_stipend"] = candidate
-            confidence["living_stipend"] = ExtractionConfidence.MEDIUM
-    if tuition_match:
-        candidate = _normalize_whitespace(tuition_match.group(1))
-        if candidate:
-            fields["tuition_coverage"] = candidate
-            confidence["tuition_coverage"] = ExtractionConfidence.MEDIUM
+        _store(fields, confidence, "living_stipend", stipend_match.group(1), ExtractionConfidence.MEDIUM)
 
     duration_match = re.search(r'(?:duration|length)[:\s]+([^\n]+)', text, re.IGNORECASE)
     if duration_match:
-        candidate = _normalize_whitespace(duration_match.group(1))
-        if candidate:
-            fields["duration"] = candidate
-            confidence["duration"] = ExtractionConfidence.MEDIUM
+        _store(fields, confidence, "duration", duration_match.group(1), ExtractionConfidence.MEDIUM)
 
     gpa_match = re.search(r'(?:gpa|grade\s+point\s+average)[:\s]+([^\n]+)', text, re.IGNORECASE)
     if gpa_match:
-        candidate = _normalize_whitespace(gpa_match.group(1))
-        if candidate:
-            fields["gpa_requirement"] = candidate
-            confidence["gpa_requirement"] = ExtractionConfidence.MEDIUM
+        _store(fields, confidence, "gpa_requirement", gpa_match.group(1), ExtractionConfidence.MEDIUM)
 
     language_match = re.search(r'(?:language|english|ielts|toefl)[:\s]+([^\n]+)', text, re.IGNORECASE)
     if language_match:
-        candidate = _normalize_whitespace(language_match.group(1))
-        if candidate:
-            fields["language_requirement"] = candidate
-            confidence["language_requirement"] = ExtractionConfidence.MEDIUM
+        _store(fields, confidence, "language_requirement", language_match.group(1), ExtractionConfidence.MEDIUM)
 
-    eligibility_match = re.search(r'(?:eligib(?:ility)\s+criteria|criteria|eligib(?:ility)|requirements?)[:\s]+([^\n]+)', text, re.IGNORECASE)
+    # Two real page shapes exist for eligibility:
+    #   1. "Eligibility: <criteria>"   (label and value on one line)
+    #   2. "Eligibility Criteria" as a heading, criteria on the following line
+    # A mandatory separator is required for (1) because a dry run captured
+    # "requirements, attracting candidates that show excellent academic
+    # performance" -- a mid-sentence fragment, not a fact.
+    eligibility_match = re.search(
+        r'(?:eligib(?:ility)\s+criteria|eligibility\s+criteria|eligibility|requirements?)\s*[:\-]\s*([^\n]{2,200})',
+        text,
+        re.IGNORECASE,
+    )
     if eligibility_match:
-        candidate = _normalize_whitespace(eligibility_match.group(1))
-        if candidate:
-            fields["eligibility"] = candidate
-            confidence["eligibility"] = ExtractionConfidence.MEDIUM
+        _store(fields, confidence, "eligibility", eligibility_match.group(1), ExtractionConfidence.MEDIUM)
+    else:
+        heading_value = _value_after_label_heading(
+            text,
+            r'(?:eligib(?:ility)\s+criteria|eligibility\s+criteria|admission requirements?)\s*:?\s*$',
+        )
+        if heading_value:
+            _store(fields, confidence, "eligibility", heading_value, ExtractionConfidence.MEDIUM)
+
+    fields, confidence = _extract_labelled_detail(text, fields, confidence)
 
     return fields, confidence, notes
+
+
+# Label-anchored detail patterns for enrichment fields.
+#
+# SAFETY RULES (learned from a real dry run over 489 official pages):
+#
+# 1. The separator is MANDATORY (`:` or `-`). An earlier revision allowed it to
+#    be optional, which made patterns match label words inside running prose and
+#    produced fragments like "of Excellence at KAIST".
+# 2. The label is anchored to the start of a line. The text extractor emits one
+#    DOM text node per line, so line-start is a reliable "this is a field label"
+#    signal.
+# 3. The value is bounded and structurally validated by _is_usable_detail_value.
+#    Prose, negations, and unbalanced fragments are rejected.
+#
+# Consequence: pages without structured "Label: value" content simply do not
+# enrich. That is the intended, honest behaviour.
+_LABELLED_DETAIL_PATTERNS: tuple[tuple[str, str], ...] = (
+    ("eligible_nationalities", r"^(?:Eligible nationalities?|Nationality)\s*[:\-]\s*([^\n]{2,180})"),
+    ("eligible_fields", r"^(?:Fields? of study|Study (?:fields|areas|subjects)|Eligible fields?|Disciplines?)\s*[:\-]\s*([^\n]{2,180})"),
+    ("academic_requirements", r"^(?:Academic (?:and |entry )?requirements?|Educational requirements?|Entry requirements?|Qualifications?)\s*[:\-]\s*([^\n]{2,180})"),
+    ("test_requirements", r"^(?:IELTS|TOEFL|GRE|GMAT|SAT|ACT|English (?:language )?test)\s*(?:score|minimum|min\.)?\s*[:\-]\s*([^\n]{2,120})"),
+    ("housing", r"^(?:Housing|Accommodation|Dormitor(?:y|ies)|Room and board|Residence)\s*[:\-]\s*([^\n]{2,180})"),
+    ("travel", r"^(?:Travel (?:allowance|grant|support|benefits?)?|Airfare|Air ticket|Flights?)\s*[:\-]\s*([^\n]{2,180})"),
+    ("insurance", r"^(?:Health insurance|Insurance|Medical (?:insurance|cover))\s*[:\-]\s*([^\n]{2,180})"),
+    ("renewal_conditions", r"^(?:Renewal|Renewable|Continuation)\s*[:\-]\s*([^\n]{2,180})"),
+    ("application_method", r"^(?:How to apply|Application process|Application steps?|Applying|Apply through)\s*[:\-]\s*([^\n]{2,180})"),
+    ("program_type", r"^(?:Programme? type|Program type|Type of (?:programme|program|award))\s*[:\-]\s*([^\n]{2,120})"),
+    ("study_mode", r"^(?:Study mode|Mode of study|Delivery)\s*[:\-]\s*([^\n]{2,120})"),
+    ("intake", r"^(?:Intake|Application (?:intake|round)s?|Start dates?)\s*[:\-]\s*([^\n]{2,120})"),
+)
+
+# Values that state a NEGATIVE must never be recorded as a positive benefit or
+# coverage item. "Tuition fees are not covered" stored under "coverage" actively
+# misinforms the reader, so it is rejected outright.
+_NEGATION_RE = re.compile(
+    r"\b(?:not\s+covered|are\s+not|is\s+not|isn't|aren't|does\s+not|do\s+not|no\s+support|"
+    r"not\s+included|excluded|not\s+available|not\s+offered|unavailable|none)\b",
+    re.IGNORECASE,
+)
+
+# Bare noun labels that appear where a *value* is expected. A dry run over 489
+# official pages produced coverage entries of literally "fees" and benefits
+# entries of "Select award type" / "Eligibility", which are page chrome rather
+# than facts.
+_GENERIC_VALUES: frozenset[str] = frozenset({
+    "fees", "fee", "tuition", "tuition fees", "tuition waiver", "stipend",
+    "stipends", "amount", "award", "awards", "scholarship", "scholarships",
+    "benefits", "benefit", "coverage", "eligibility", "requirements",
+    "requirement", "documents", "document", "apply", "application",
+    "assistance", "support", "funding", "grant", "award type", "amount type",
+    "level", "type", "duration", "period", "deadline", "language", "level of study",
+    "course", "program", "programme", "n/a", "tbc", "see below", "see website",
+    "more", "read more", "details", "click here", "apply now", "select award type",
+    "select", "choose", "enter", "submit", "view", "next", "back", "home",
+    # Form labels that appear in the value position on real application pages.
+    "open date", "close date", "start date", "end date", "scholarship type",
+    "application type", "study level", "number of scholarships awarded",
+    "number of awards", "award type", "amount type", "course type",
+    "scholarship name", "programme name", "program name", "results",
+    "search", "filter", "sort", "sort by", "showing", "no results",
+    "terms and conditions", "terms & conditions", "terms and conditions apply",
+    "eligibility criteria", "admission requirements", "how to apply",
+    "application procedure", "important dates", "key dates", "overview",
+})
+
+# The text extractor wraps anchor text in these markers so links can be
+# identified later. They must never survive into a stored fact.
+_LINK_MARKER_RE = re.compile(r"\[/?LINK\]", re.IGNORECASE)
+
+# Interface verbs that indicate navigation chrome rather than a fact.
+_UI_VERB_RE = re.compile(
+    r"^\s*(?:select|choose|click|view|see|read|learn|explore|discover|apply|submit|"
+    r"register|download|print|share|save|browse|search|find|contact|check|get)\b",
+    re.IGNORECASE,
+)
+
+# A financial value is only informative if it states an amount or an explicit
+# coverage outcome. "fees" and "tuition" state neither.
+_CURRENCY_RE = re.compile(r"[€$£¥₹₽\d]|\b(?:EUR|USD|GBP|CHF|JPY|CAD|AUD|NOK|SEK|DKK|INR|euros?|dollars?|pounds?|yen|euro)\b", re.IGNORECASE)
+_COVERAGE_VERB_RE = re.compile(
+    r"\b(?:covered?|covers|waived?|funded|provided|included|granted|paid|offered|"
+    r"awarded|receives?|entitled|receipt|reimburse[ds]?|reimbursed)\b",
+    re.IGNORECASE,
+)
+
+# A captured value that begins with one of these is almost certainly a
+# mid-sentence continuation rather than the value belonging to the label.
+_FRAGMENT_STARTERS = frozenset(
+    {
+        "of", "and", "or", "for", "to", "in", "on", "at", "the", "a", "an",
+        "which", "that", "with", "from", "by", "as", "is", "are", "was", "were",
+        "be", "been", "it", "its", "this", "these", "those", "if", "when",
+        "per", "such", "including", "except", "however", "but", "so", "then",
+    }
+)
+
+
+def _is_usable_detail_value(value: str, *, financial: bool = False) -> bool:
+    """Reject prose, fragments, negations, chrome, and placeholders.
+
+    ``financial=True`` additionally requires the value to state an amount or an
+    explicit coverage outcome, which is what stopped bare "fees" from being
+    recorded as a coverage item.
+    """
+    text = value.strip()
+    if len(text) < 2 or len(text) > 200:
+        return False
+
+    text = _LINK_MARKER_RE.sub("", text).strip()
+    if len(text) < 2:
+        return False
+
+    lowered = text.lower().rstrip(".")
+    if lowered in _GENERIC_VALUES:
+        return False
+
+    if _UI_VERB_RE.match(text):
+        return False
+
+    # Balanced delimiters: unbalanced means we cut mid-clause.
+    if text.count("(") != text.count(")"):
+        return False
+    if text.count("[") != text.count("]"):
+        return False
+
+    # Strip leading punctuation before the fragment test: "(Including ..." is
+    # just as much a mid-sentence fragment as "of Excellence ...".
+    probe = text.lstrip(" \t([{\"'*-").lower()
+    first_word = re.split(r"[\s,;:]+", probe, maxsplit=1)[0]
+    if first_word in _FRAGMENT_STARTERS:
+        return False
+
+    # A value ending in an unbalanced conjunction is a truncated capture.
+    if lowered.endswith((",", ";", "and", "or", "of", "the", "a", "an", "to", "in")):
+        return False
+
+    if financial and not (_CURRENCY_RE.search(text) or _COVERAGE_VERB_RE.search(text)):
+        return False
+
+    return True
+
+
+# Fields that describe what an award PROVIDES. A negated statement in one of
+# these is not a benefit and must never be recorded as one.
+_POSITIVE_FIELDS = frozenset(
+    {"award_amount", "tuition_coverage", "living_stipend", "housing", "travel", "insurance"}
+)
+
+
+def _value_after_label_heading(text: str, heading_pattern: str) -> str | None:
+    """Return the first substantive line following a label heading.
+
+    Handles the common page shape where a section is introduced by a heading
+    ("Eligibility Criteria") and the content begins on the following line.
+    Returns None when the heading is absent or nothing usable follows it.
+    """
+    lines = text.split("\n")
+    rx = re.compile(heading_pattern, re.IGNORECASE)
+    for index, line in enumerate(lines):
+        if not rx.search(line.strip()):
+            continue
+        for candidate in lines[index + 1 : index + 4]:
+            cleaned = _normalize_whitespace(candidate)
+            if not cleaned:
+                continue
+            if not _is_usable_detail_value(cleaned):
+                # Skip over chrome but keep scanning a little further.
+                continue
+            return cleaned
+        return None
+    return None
+
+
+def _store(
+    fields: dict[str, object],
+    confidence: dict[str, str],
+    name: str,
+    value: str | None,
+    conf: str,
+) -> None:
+    """Validate a captured value and store it only if it survives review.
+
+    Applying this to the ORIGINAL loose patterns as well as the new anchored
+    ones is deliberate: a real dry run showed `tuition[:\\s]+(.+)` capturing
+    "fees are not covered by the programme", which would have been stored as
+    coverage and actively misled the reader.
+    """
+    if not value:
+        return
+    candidate = _normalize_whitespace(value)
+    if not candidate:
+        return
+    is_financial = name in _POSITIVE_FIELDS
+    if not _is_usable_detail_value(candidate, financial=is_financial):
+        return
+    if is_financial and _NEGATION_RE.search(candidate):
+        return
+    fields[name] = candidate
+    confidence[name] = conf
+
+
+def _extract_labelled_detail(
+    text: str,
+    fields: dict[str, object],
+    confidence: dict[str, str],
+) -> tuple[dict[str, object], dict[str, str]]:
+    """Populate enrichment fields from strict "Label: value" lines.
+
+    A field already populated by a higher-specificity pattern above is never
+    overwritten here.
+    """
+    for field_name, pattern in _LABELLED_DETAIL_PATTERNS:
+        if field_name in fields:
+            continue
+        for line in text.split("\n"):
+            match = re.match(pattern, line.strip(), re.IGNORECASE)
+            if not match:
+                continue
+            candidate = _normalize_whitespace(match.group(1))
+            if not candidate:
+                continue
+            is_financial = field_name in ("coverage", "benefits", "housing", "travel", "insurance")
+            if not _is_usable_detail_value(candidate, financial=is_financial):
+                continue
+            if is_financial and _NEGATION_RE.search(candidate):
+                continue
+            fields[field_name] = candidate
+            confidence[field_name] = ExtractionConfidence.MEDIUM
+            break
+    return fields, confidence
 
 
 def extract_scholarship_information(html_content: str, base_url: str = "") -> ScholarshipExtractionResult:

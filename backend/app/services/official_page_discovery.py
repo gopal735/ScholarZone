@@ -33,6 +33,9 @@ DEFAULT_MAX_REQUESTS_PER_SCHOLARSHIP = 40
 DEFAULT_MAX_CRAWL_DEPTH = 2
 DEFAULT_TIMEOUT_SECONDS = 20.0
 DEFAULT_REQUEST_INTERVAL_SECONDS = 0.25
+# Total wall-clock budget for one discover() call across every phase. The
+# per-request timeout does not bound total work, so this is the real limit.
+DEFAULT_TOTAL_BUDGET_SECONDS = 45.0
 
 # Common announcement / news / press path fragments (lowercased, matched as
 # substrings of the page path). These are intentionally broad so we can find
@@ -1082,6 +1085,7 @@ class OfficialPageDiscoveryService:
         max_crawl_depth: int = DEFAULT_MAX_CRAWL_DEPTH,
         timeout_seconds: float = DEFAULT_TIMEOUT_SECONDS,
         request_interval: float = DEFAULT_REQUEST_INTERVAL_SECONDS,
+        total_budget_seconds: float = DEFAULT_TOTAL_BUDGET_SECONDS,
     ) -> None:
         self._discovery = discovery
         self._registry = registry
@@ -1090,13 +1094,22 @@ class OfficialPageDiscoveryService:
         self._max_depth = max_crawl_depth
         self._timeout = timeout_seconds
         self._interval = request_interval
+        # Wall-clock budget for one discover() call across ALL phases. Without
+        # this, five sequential phases of up to max_requests fetches each can run
+        # for far longer than timeout_seconds, which previously made
+        # discover() appear to hang.
+        self._total_budget = total_budget_seconds
         self._domain_resolver = DomainResolver(registry)
 
     def _get_discovery(self) -> "ImageDiscoveryService":
         if self._discovery is not None:
-            return self._discovery
-        from .image_discovery import ImageDiscoveryService
-        return ImageDiscoveryService(timeout=self._timeout)
+            discovery = self._discovery
+        else:
+            from .image_discovery import ImageDiscoveryService
+            discovery = ImageDiscoveryService(timeout=self._timeout)
+        # Enforce the wall-clock budget at the shared fetch layer.
+        discovery.deadline = time.monotonic() + self._total_budget
+        return discovery
 
     def discover(
         self,
@@ -1187,7 +1200,7 @@ class OfficialPageDiscoveryService:
         # Separate trustworthy candidates.
         outcome.trusted_candidates = [c for c in outcome.candidates if c.is_trustworthy]
 
-        if time.time() - start > self._timeout:
+        if time.time() - start > self._total_budget:
             outcome.timed_out = True
         if outcome.requests_made >= self._max_requests:
             outcome.bounded = True
