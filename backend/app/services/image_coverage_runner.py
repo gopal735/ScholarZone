@@ -17,6 +17,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass, field
 from typing import Callable
+from urllib.parse import urlparse
 
 from sqlalchemy import select
 from sqlalchemy.orm import Session, sessionmaker
@@ -37,6 +38,59 @@ MAX_BATCH_SIZE = 40
 # resource limit. The DomainRateLimiter remains the hard per-domain guard.
 DEFAULT_MAX_WORKERS = 6
 MAX_WORKERS = 12
+# A domain that has refused us this many times in a row is almost certainly
+# blocking automated access rather than being temporarily unavailable. Without
+# this, a catalogue sweep re-pays the full per-record budget once per record on
+# the same blocked domain.
+DOMAIN_FAILURE_THRESHOLD = 3
+
+
+@dataclass
+class DomainCircuitBreaker:
+    """Tracks per-domain hard failures so blocked domains are not hammered.
+
+    This is a politeness mechanism, not a correctness shortcut: every skipped
+    record is still reported as ``source_blocked`` so the outcome is never
+    silently converted into "no image exists".
+    """
+
+    failures: dict[str, int] = field(default_factory=dict)
+    open_domains: set[str] = field(default_factory=set)
+    threshold: int = DOMAIN_FAILURE_THRESHOLD
+
+    @staticmethod
+    def domain_of(url: str | None) -> str:
+        if not url:
+            return ""
+        return urlparse(url).netloc.lower().removeprefix("www.")
+
+    def is_open(self, url: str | None) -> bool:
+        return self.domain_of(url) in self.open_domains
+
+    def record_success(self, url: str | None) -> None:
+        domain = self.domain_of(url)
+        if domain:
+            self.failures.pop(domain, None)
+            self.open_domains.discard(domain)
+
+    def record_failure(self, url: str | None) -> bool:
+        """Count a hard failure. Returns True when the domain just opened."""
+        domain = self.domain_of(url)
+        if not domain:
+            return False
+        count = self.failures.get(domain, 0) + 1
+        self.failures[domain] = count
+        if count >= self.threshold and domain not in self.open_domains:
+            self.open_domains.add(domain)
+            return True
+        return False
+
+    def report(self) -> dict[str, object]:
+        return {
+            "threshold": self.threshold,
+            "open_domains": sorted(self.open_domains),
+            "open_domain_count": len(self.open_domains),
+        }
 
 
 @dataclass
@@ -58,7 +112,10 @@ class ImageCoverageMetrics:
     # no-image result.
     source_blocked: int = 0
     source_unreachable: int = 0
+    # Records skipped because their whole domain is a confirmed bot block.
+    domain_blocked_skipped: int = 0
     runtime_ms: float = 0.0
+    circuit_breaker: dict[str, object] = field(default_factory=dict)
 
     # Per-record outcomes for auditing.
     outcomes: list[dict[str, object]] = field(default_factory=list)
@@ -77,6 +134,8 @@ class ImageCoverageMetrics:
             "persisted": self.persisted,
             "source_blocked": self.source_blocked,
             "source_unreachable": self.source_unreachable,
+            "domain_blocked_skipped": self.domain_blocked_skipped,
+            "circuit_breaker": self.circuit_breaker,
             "runtime_ms": round(self.runtime_ms, 1),
         }
 
@@ -148,10 +207,14 @@ class ImageCoverageRunner:
 
         # Each worker owns its own orchestrator and session: a record's DB work
         # must never be interleaved with another record's.
-        def _work(row) -> tuple[OrchestratorRunResult, int]:
+        breaker = DomainCircuitBreaker()
+
+        def _work(row) -> tuple[OrchestratorRunResult | None, int, str | None]:
             scholarship_id, title, source_url, source_name, verified_at = row
             if verified_at is not None:
-                return None, scholarship_id
+                return None, scholarship_id, None
+            if breaker.is_open(source_url):
+                return None, scholarship_id, "domain_blocked"
             orchestrator = ImageDiscoveryOrchestrator(
                 session_factory=self._session_factory,
                 dry_run=self.dry_run,
@@ -162,34 +225,39 @@ class ImageCoverageRunner:
                 official_source_url=source_url,
                 official_source_name=source_name,
             )
-            return result, scholarship_id
+            return result, scholarship_id, source_url
 
         processed = 0
         for index in range(0, len(rows), self.batch_size):
             batch = rows[index : index + self.batch_size]
             logger.info(
-                "image coverage batch %d: %d records (workers=%d)",
+                "image coverage batch %d: %d records (workers=%d, open_domains=%d)",
                 index // self.batch_size + 1,
                 len(batch),
                 self.max_workers,
+                len(breaker.open_domains),
             )
             with ThreadPoolExecutor(max_workers=self.max_workers) as pool:
-                futures = {pool.submit(_work, row): row[0] for row in batch}
+                futures = {pool.submit(_work, row): row for row in batch}
                 for future in as_completed(futures):
+                    scholarship_id = futures[future][0]
+                    source_url = futures[future][2]
                     try:
-                        result, scholarship_id = future.result()
+                        result, sid, url = future.result()
                     except Exception as exc:  # noqa: BLE001 - one record must not kill the batch
-                        logger.exception("image discovery crashed for id=%s", futures[future])
+                        logger.exception("image discovery crashed for id=%s", sid)
                         metrics.failed += 1
                         metrics.outcomes.append(
                             {
-                                "scholarship_id": futures[future],
+                                "scholarship_id": sid,
                                 "title": "",
                                 "status": "error",
                                 "image_url": None,
                                 "persisted": False,
                                 "candidates": 0,
                                 "requests_made": 0,
+                                "page_error": None,
+                                "timed_out": False,
                                 "error": f"{type(exc).__name__}: {exc}",
                             }
                         )
@@ -197,15 +265,42 @@ class ImageCoverageRunner:
                         continue
 
                     if result is None:
-                        metrics.skipped_existing += 1
+                        if url == "domain_blocked":
+                            metrics.domain_blocked_skipped += 1
+                            metrics.outcomes.append(
+                                {
+                                    "scholarship_id": sid,
+                                    "title": futures[future][1][:80],
+                                    "status": "source_blocked",
+                                    "image_url": None,
+                                    "persisted": False,
+                                    "candidates": 0,
+                                    "requests_made": 0,
+                                    "page_error": "domain_blocked_after_repeated_failures",
+                                    "timed_out": False,
+                                    "error": None,
+                                }
+                            )
+                        else:
+                            metrics.skipped_existing += 1
                         processed += 1
                         continue
 
                     self._tally(metrics, result)
+
+                    # Feed the breaker: only genuine access failures count.
+                    page_error = getattr(result.page_discovery, "error", None)
+                    if page_error or getattr(result.page_discovery, "timed_out", False) or result.requests_made == 0:
+                        if breaker.record_failure(source_url):
+                            logger.info("domain %s opened as blocked", breaker.domain_of(source_url))
+                    else:
+                        breaker.record_success(source_url)
+
                     processed += 1
                     if progress is not None:
                         progress(processed, len(rows), result)
 
+        metrics.circuit_breaker = breaker.report()
         metrics.runtime_ms = (time.monotonic() - started) * 1000.0
         return metrics
 

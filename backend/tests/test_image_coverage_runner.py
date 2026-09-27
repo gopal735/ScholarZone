@@ -26,7 +26,7 @@ def session_factory():
     return sessionmaker(bind=engine)
 
 
-def _seed(session_factory, n: int, *, verified: bool = False, prefix: str = "p") -> list[int]:
+def _seed(session_factory, n: int, *, verified: bool = False, prefix: str = "p", host: str = "daad.de") -> list[int]:
     """Seed records. official_source_url is UNIQUE, so each call needs a prefix."""
     ids = []
     s = session_factory()
@@ -38,7 +38,7 @@ def _seed(session_factory, n: int, *, verified: bool = False, prefix: str = "p")
                 degree="Master",
                 funding="Full",
                 official_source="Org",
-                official_source_url=f"https://www.daad.de/{prefix}-{i}",
+                official_source_url=f"https://www.{host}/{prefix}-{i}",
                 image_verified_at=datetime(2026, 1, 1) if verified else None,
             )
             s.add(row)
@@ -126,7 +126,10 @@ class TestCoverageScope:
 
 class TestFailureIsolation:
     def test_one_crashing_record_does_not_abort_the_run(self, session_factory):
-        _seed(session_factory, 4)
+        # Distinct domains per record so the circuit breaker cannot legitimately
+        # skip any of them; this test is about crash isolation only.
+        for i in range(4):
+            _seed(session_factory, 1, prefix=f"d{i}", host=f"host{i}.example.org")
 
         class Boom(Exception):
             pass
@@ -249,3 +252,78 @@ class TestMetrics:
         assert runner.max_workers <= 12
         runner2 = ImageCoverageRunner(session_factory, dry_run=True, max_workers=0)
         assert runner2.max_workers >= 1
+
+
+class TestDomainCircuitBreaker:
+    def test_opens_after_threshold(self):
+        from app.services.image_coverage_runner import DomainCircuitBreaker
+
+        br = DomainCircuitBreaker(threshold=3)
+        url = "https://www.daad.de/x"
+        assert not br.is_open(url)
+        assert br.record_failure(url) is False
+        assert br.record_failure(url) is False
+        assert br.record_failure(url) is True
+        assert br.is_open(url)
+
+    def test_www_variant_shares_state(self):
+        from app.services.image_coverage_runner import DomainCircuitBreaker
+
+        br = DomainCircuitBreaker(threshold=2)
+        br.record_failure("https://daad.de/a")
+        assert br.record_failure("https://www.daad.de/b") is True
+        assert br.is_open("https://daad.de/c")
+
+    def test_success_resets_domain(self):
+        from app.services.image_coverage_runner import DomainCircuitBreaker
+
+        br = DomainCircuitBreaker(threshold=2)
+        br.record_failure("https://x.org/a")
+        br.record_success("https://x.org/a")
+        assert not br.is_open("https://x.org/a")
+        assert br.failures.get("x.org") is None
+
+    def test_open_domain_records_records_as_blocked_not_missing(self, session_factory):
+        """A skipped record must be reported as blocked, never as 'no image'.
+
+        The breaker is evaluated between batches, because a batch is submitted
+        as a unit; the test therefore uses several small batches.
+        """
+        _seed(session_factory, 6, prefix="blk")
+        from app.services.image_discovery_orchestrator import (
+            OrchestratorRunResult,
+            TrustworthyImageStatus,
+        )
+
+        counter = {"n": 0}
+
+        def fake(self, scholarship_id, scholarship_title, official_source_url,
+                 official_source_name=None, session=None):
+            counter["n"] += 1
+            pd = type("PD", (), {"error": "forbidden", "timed_out": False})()
+            return OrchestratorRunResult(
+                scholarship_id=scholarship_id,
+                scholarship_title=scholarship_title or "",
+                status=TrustworthyImageStatus.NO_TRUSTWORTHY_IMAGE,
+                page_discovery=pd,
+                requests_made=0,
+            )
+
+        runner = ImageCoverageRunner(
+            session_factory, dry_run=True, max_workers=1, batch_size=2
+        )
+        with patch(
+            "app.services.image_discovery_orchestrator.ImageDiscoveryOrchestrator.run",
+            new=fake,
+        ):
+            metrics = runner.run()
+
+        assert metrics.records_in_scope == 6
+        # After the first batch the domain opens, so later batches are skipped.
+        assert counter["n"] < metrics.records_in_scope
+        assert metrics.domain_blocked_skipped >= 1
+        blocked = [o for o in metrics.outcomes if o["status"] == "source_blocked"]
+        assert blocked
+        assert all(o["page_error"] == "domain_blocked_after_repeated_failures" for o in blocked)
+        # A blocked domain is never counted as "genuinely no image".
+        assert metrics.circuit_breaker.get("open_domain_count", 0) >= 1

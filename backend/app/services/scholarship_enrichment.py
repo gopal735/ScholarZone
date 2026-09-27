@@ -51,6 +51,71 @@ from .scholarship_extractor import (
 logger = logging.getLogger(__name__)
 
 
+# Related official pages worth opening, keyed to the facts each typically
+# carries. Following these is the difference between one page of facts and the
+# full official picture: eligibility, funding and application detail usually
+# live on their own pages rather than the programme landing page.
+_RELATED_PAGE_KEYWORDS: tuple[str, ...] = (
+    "eligib", "who-can-apply", "requirements", "criteria", "admission-requirements",
+    "funding", "benefi", "tuition", "stipend", "financial", "fees", "scholarship-amount",
+    "how-to-apply", "apply", "application", "apply-now", "submission",
+    "document", "checklist", "required-document", "supporting-document",
+    "faq", "frequently-asked", "questions",
+    "update", "announcement", "news", "deadline",
+)
+
+MAX_RELATED_PAGES = 4
+
+
+def _related_official_links(page_html: str, base_url: str) -> list[str]:
+    """Find same-domain official links that likely carry additional facts."""
+    if not page_html:
+        return []
+    try:
+        from bs4 import BeautifulSoup
+
+        soup = BeautifulSoup(page_html[:400_000], "html.parser")
+    except Exception:  # noqa: BLE001
+        return []
+
+    base_netloc = urlparse(base_url).netloc.lower().removeprefix("www.")
+    base_path = urlparse(base_url).path.rstrip("/")
+    found: list[str] = []
+    seen: set[str] = set()
+
+    for anchor in soup.find_all("a", href=True):
+        href = (anchor.get("href") or "").strip()
+        if not href or href.startswith(("#", "mailto:", "javascript:", "tel:")):
+            continue
+        try:
+            absolute = urljoin(base_url, href)
+        except Exception:  # noqa: BLE001
+            continue
+        parsed = urlparse(absolute)
+        if parsed.scheme not in ("http", "https"):
+            continue
+        if parsed.netloc.lower().removeprefix("www.") != base_netloc:
+            continue
+
+        normalized = f"{parsed.netloc.lower()}{parsed.path.rstrip('/')}"
+        if normalized == f"{base_netloc}{base_path}" or normalized in seen:
+            continue
+
+        haystack = f"{parsed.path} {anchor.get_text(' ', strip=True)}".lower()
+        if not any(kw in haystack for kw in _RELATED_PAGE_KEYWORDS):
+            continue
+        if any(
+            bad in parsed.path.lower()
+            for bad in ("/login", "/register", "/logout", "/cart", "/privacy", "/terms", "/cookie")
+        ):
+            continue
+        seen.add(normalized)
+        found.append(absolute)
+        if len(found) >= MAX_RELATED_PAGES:
+            break
+    return found
+
+
 # --------------------------------------------------------------------------
 # Status vocabulary
 #
@@ -101,6 +166,7 @@ class EnrichmentResult:
     deadline_changed: bool = False
     fetch_error: str | None = None
     fetch_attempts: int = 0
+    related_pages_followed: int = 0
     retryable: bool = False
     dry_run: bool = True
     runtime_ms: float = 0.0
@@ -591,6 +657,38 @@ def _text_fill_decision(existing: str | None, incoming: str | None) -> tuple[str
     return "keep", "existing value retained; official value would overwrite existing data", ""
 
 
+def _merge_projections(
+    proposals_list: list[dict[str, dict[str, Any]]],
+) -> dict[str, dict[str, Any]]:
+    """Merge proposals from several official pages, earliest page winning.
+
+    List-valued fields accumulate across pages (union, so no page can delete
+    what another established). Scalar fields keep the first value seen, because
+    the landing page is the most authoritative statement about identity.
+    Confidence is the strongest observed for that field.
+    """
+    merged: dict[str, dict[str, Any]] = {}
+    for proposals in proposals_list:
+        for field_name, proposal in proposals.items():
+            if field_name not in merged:
+                merged[field_name] = {
+                    "value": proposal["value"],
+                    "confidence": proposal.get("confidence"),
+                    "sources": list(proposal.get("sources") or []),
+                }
+                continue
+            existing = merged[field_name]
+            if isinstance(existing["value"], list) and isinstance(proposal["value"], list):
+                combined, _ = merge_list(existing["value"], proposal["value"])
+                existing["value"] = combined
+            for src in proposal.get("sources") or []:
+                if src not in existing["sources"]:
+                    existing["sources"].append(src)
+            if proposal.get("confidence") == ExtractionConfidence.HIGH:
+                existing["confidence"] = ExtractionConfidence.HIGH
+    return merged
+
+
 # --------------------------------------------------------------------------
 # Service
 # --------------------------------------------------------------------------
@@ -613,6 +711,7 @@ class ScholarshipEnrichmentService:
         dry_run: bool = True,
         rate_limiter: DomainRateLimiter | None = None,
         max_attempts: int = 2,
+        follow_related_pages: bool = True,
         now_fn=None,
     ) -> None:
         if session_factory is None:
@@ -623,6 +722,10 @@ class ScholarshipEnrichmentService:
         self.dry_run = dry_run
         self.rate_limiter = rate_limiter or DomainRateLimiter(min_interval_seconds=1.0)
         self.max_attempts = max(1, max_attempts)
+        # Following related official pages multiplies requests per record. It is
+        # the right default for a catalogue enrichment pass and is disabled in
+        # unit tests that only care about a single page.
+        self.follow_related_pages = follow_related_pages
         self._now_fn = now_fn or (lambda: datetime.now(timezone.utc))
 
     # -- fetching ---------------------------------------------------------
@@ -709,7 +812,8 @@ class ScholarshipEnrichmentService:
             )
 
         content = fetch_result.content or ""
-        extracted = extract_scholarship_information(content, fetch_result.final_url or resolved.url)
+        final_url = fetch_result.final_url or resolved.url
+        extracted = extract_scholarship_information(content, final_url)
         proposals = project_enrichment(extracted)
 
         result = EnrichmentResult(
@@ -719,6 +823,29 @@ class ScholarshipEnrichmentService:
             source_type=resolved.source_type.value,
             fetch_attempts=attempts,
         )
+
+        # Multi-page official research: the landing page rarely carries the
+        # full official picture. Follow same-domain eligibility / funding /
+        # application / documents links and merge whatever additional facts
+        # they state. Earlier pages win ties, because the landing page is the
+        # most authoritative for the record's identity.
+        related = _related_official_links(content, final_url)
+        if related and self.follow_related_pages:
+            combined: list[dict[str, dict[str, Any]]] = [proposals] if proposals else []
+            combined_text: list[str] = [content]
+            for page_url in related:
+                page_fetch, _n, _err, _retry = self._fetch_with_retry(page_url)
+                if page_fetch is None or not page_fetch.success or not page_fetch.content:
+                    continue
+                result.related_pages_followed += 1
+                combined_text.append(page_fetch.content)
+                page_proposals = project_enrichment(
+                    extract_scholarship_information(page_fetch.content, page_url)
+                )
+                if page_proposals:
+                    combined.append(page_proposals)
+            proposals = _merge_projections(combined)
+            content = "\n".join(combined_text)
 
         if not proposals and not _clean(extracted.status) and not _clean(extracted.deadline):
             result.outcome = EnrichmentOutcome.NO_USABLE_EXTRACTION

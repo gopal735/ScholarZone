@@ -29,6 +29,8 @@ from app.services.scholarship_enrichment import (
     project_enrichment,
     resolve_official_source,
     _trim_to_clause,
+    _merge_projections,
+    _related_official_links,
 )
 from app.services.scholarship_extractor import (
     ExtractionConfidence,
@@ -563,6 +565,108 @@ class TestEnrichmentService:
         skipped = [u for u in unverified_result.updates if u.field_name == "last_verified_at"]
         assert skipped and skipped[0].action == "skipped"
         assert any(u.field_name == "last_verified_at" for u in verified_result.updates)
+
+
+# ---------------------------------------------------------------- rate limiting
+
+
+class TestMultiPageResearch:
+    def _service(self, session_factory, **kw):
+        return ScholarshipEnrichmentService(session_factory, dry_run=False, **kw)
+
+    def test_finds_same_domain_related_links(self):
+        html = """
+        <html><body>
+          <a href="/scholarships/eligibility">Eligibility</a>
+          <a href="/scholarships/funding">Funding and benefits</a>
+          <a href="/scholarships/how-to-apply">How to apply</a>
+          <a href="/privacy">Privacy</a>
+          <a href="https://other.example.org/eligibility">Other domain</a>
+          <a href="#top">Anchor</a>
+        </body></html>
+        """
+        links = _related_official_links(html, "https://www.daad.de/en/scholarships/")
+        joined = " ".join(links)
+        assert "/scholarships/eligibility" in joined
+        assert "/scholarships/funding" in joined
+        assert "/how-to-apply" in joined
+        assert "privacy" not in joined
+        assert "other.example.org" not in joined
+
+    def test_excludes_the_page_itself(self):
+        html = '<a href="/en/scholarships/">Self</a><a href="/en/scholarships/eligibility">Elig</a>'
+        links = _related_official_links(html, "https://www.daad.de/en/scholarships/")
+        assert all("/eligibility" in u for u in links)
+        assert len(links) == 1
+
+    def test_projection_merge_unions_lists_and_keeps_first_scalar(self):
+        a = {"coverage": {"value": ["Tuition"], "confidence": "medium", "sources": ["tuition_coverage"]},
+             "program_type": {"value": "Government", "confidence": "medium", "sources": ["program_type"]}}
+        b = {"coverage": {"value": ["Stipend", "Tuition"], "confidence": "high", "sources": ["living_stipend"]},
+             "program_type": {"value": "Private", "confidence": "high", "sources": ["program_type"]},
+             "benefits": {"value": ["Airfare"], "confidence": "low", "sources": ["award_amount"]}}
+        merged = _merge_projections([a, b])
+        assert merged["coverage"]["value"] == ["Tuition", "Stipend"]
+        assert merged["coverage"]["confidence"] == "high"
+        assert merged["program_type"]["value"] == "Government"
+        assert merged["benefits"]["value"] == ["Airfare"]
+
+    def test_follows_related_page_and_merges_its_facts(self, session_factory):
+        sid = _make_scholarship(session_factory, coverage=[], benefits=[], requirements=[])
+        landing = (
+            '<html><body><h1>Programme</h1>'
+            '<a href="/en/funding">Funding details</a>'
+            "</body></html>"
+        )
+        funding = "<html><body><p>Stipend: 900 EUR per month</p><p>Housing: provided</p></body></html>"
+
+        from app.services.official_source_fetcher import OfficialSourceFetchResult
+
+        def fake_fetch(url, *a, **k):
+            if "funding" in url:
+                return OfficialSourceFetchResult(
+                    success=True, status_code=200, final_url=url,
+                    content=funding, content_type="text/html",
+                )
+            return OfficialSourceFetchResult(
+                success=True, status_code=200, final_url=url,
+                content=landing, content_type="text/html",
+            )
+
+        svc = self._service(session_factory)
+        with patch("app.services.scholarship_enrichment.fetch_official_source", side_effect=fake_fetch):
+            result = svc.enrich_one(sid)
+
+        assert result.related_pages_followed >= 1
+        s = session_factory()
+        try:
+            stored = " | ".join(s.get(Scholarship, sid).coverage)
+            assert "900 EUR per month" in stored
+        finally:
+            s.close()
+
+    def test_related_pages_can_be_disabled(self, session_factory):
+        sid = _make_scholarship(session_factory)
+        from app.services.official_source_fetcher import OfficialSourceFetchResult
+
+        landing = '<html><body><a href="/x/funding">Funding</a></body></html>'
+        calls = {"n": 0}
+
+        def fake_fetch(url, *a, **k):
+            calls["n"] += 1
+            return OfficialSourceFetchResult(
+                success=True, status_code=200, final_url=url,
+                content=landing, content_type="text/html",
+            )
+
+        svc = ScholarshipEnrichmentService(
+            session_factory, dry_run=True, follow_related_pages=False
+        )
+        with patch("app.services.scholarship_enrichment.fetch_official_source", side_effect=fake_fetch):
+            result = svc.enrich_one(sid)
+
+        assert calls["n"] == 1
+        assert result.related_pages_followed == 0
 
 
 # ---------------------------------------------------------------- rate limiting
