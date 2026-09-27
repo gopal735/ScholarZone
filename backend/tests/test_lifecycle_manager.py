@@ -2,6 +2,13 @@
 
 from datetime import date, datetime, timedelta, timezone
 
+# ``evaluate_lifecycle`` measures deadlines against the UTC date, but these
+# fixtures were built from the local date. The two differ for part of every day,
+# which made a genuinely-past deadline (yesterday, local) evaluate to delta 0
+# and report ``closing-soon`` instead of ``closed``. Fixtures use the same clock
+# as the code under test so assertions hold whenever the suite runs.
+LIFECYCLE_TODAY = datetime.now(timezone.utc).date()
+
 import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -79,7 +86,7 @@ class TestEvaluateLifecycle:
     def test_open_with_future_deadline(self, session, scholarship_factory):
         s = scholarship_factory(
             status="open",
-            deadline_date=date.today() + timedelta(days=60),
+            deadline_date=LIFECYCLE_TODAY + timedelta(days=60),
             is_verified=True,
         )
         evaluation = evaluate_lifecycle(s)
@@ -89,7 +96,7 @@ class TestEvaluateLifecycle:
     def test_open_deadline_passed(self, session, scholarship_factory):
         s = scholarship_factory(
             status="open",
-            deadline_date=date.today() - timedelta(days=1),
+            deadline_date=LIFECYCLE_TODAY - timedelta(days=1),
             is_verified=True,
         )
         evaluation = evaluate_lifecycle(s)
@@ -100,7 +107,7 @@ class TestEvaluateLifecycle:
     def test_open_closing_soon(self, session, scholarship_factory):
         s = scholarship_factory(
             status="open",
-            deadline_date=date.today() + timedelta(days=10),
+            deadline_date=LIFECYCLE_TODAY + timedelta(days=10),
             is_verified=True,
         )
         evaluation = evaluate_lifecycle(s)
@@ -161,7 +168,7 @@ class TestApplyLifecycleTransition:
     def test_transition_creates_history(self, session, scholarship_factory):
         s = scholarship_factory(
             status="open",
-            deadline_date=date.today() - timedelta(days=1),
+            deadline_date=LIFECYCLE_TODAY - timedelta(days=1),
             is_verified=True,
         )
         evaluation = evaluate_lifecycle(s)
@@ -184,7 +191,7 @@ class TestApplyLifecycleTransition:
     def test_invalid_transition_blocked(self, session, scholarship_factory):
         s = scholarship_factory(
             status="open",
-            deadline_date=date.today() - timedelta(days=1),
+            deadline_date=LIFECYCLE_TODAY - timedelta(days=1),
             is_verified=True,
         )
         evaluation = evaluate_lifecycle(s)
@@ -200,7 +207,7 @@ class TestApplyLifecycleTransition:
     def test_no_transition_when_already_in_state(self, session, scholarship_factory):
         s = scholarship_factory(
             status="open",
-            deadline_date=date.today() + timedelta(days=60),
+            deadline_date=LIFECYCLE_TODAY + timedelta(days=60),
             is_verified=True,
         )
         evaluation = evaluate_lifecycle(s)
@@ -209,8 +216,8 @@ class TestApplyLifecycleTransition:
 
 class TestBatchEvaluateLifecycle:
     def test_batch_evaluation(self, session, scholarship_factory):
-        s1 = scholarship_factory(status="open", deadline_date=date.today() + timedelta(days=60), is_verified=True)
-        s2 = scholarship_factory(status="open", deadline_date=date.today() - timedelta(days=1), is_verified=True)
+        s1 = scholarship_factory(status="open", deadline_date=LIFECYCLE_TODAY + timedelta(days=60), is_verified=True)
+        s2 = scholarship_factory(status="open", deadline_date=LIFECYCLE_TODAY - timedelta(days=1), is_verified=True)
         s3 = scholarship_factory(status="closed", is_verified=True, notes="Next cycle 2027")
 
         results = batch_evaluate_lifecycle(session, [s1, s2, s3])

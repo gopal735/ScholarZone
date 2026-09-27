@@ -24,9 +24,16 @@ OUT = (
 
 
 def outstanding(factory) -> int:
+    """Valid records that are neither verified nor terminally evaluated.
+
+    A record that was evaluated and produced no trustworthy image is finished,
+    not outstanding. Counting it as outstanding would make the sweep retry the
+    same negative result forever and would report 100% coverage as impossible.
+    """
     from sqlalchemy import func, select
 
     from app.models import Scholarship
+    from app.services.image_evaluation_status import TERMINAL_STATUSES
 
     session = factory()
     try:
@@ -36,6 +43,10 @@ def outstanding(factory) -> int:
                 .select_from(Scholarship)
                 .where(Scholarship.image_verified_at.is_(None))
                 .where(Scholarship.verification_status != "quarantined")
+                .where(
+                    Scholarship.image_evaluation_status.is_(None)
+                    | Scholarship.image_evaluation_status.not_in(tuple(TERMINAL_STATUSES))
+                )
             )
             or 0
         )
@@ -65,6 +76,7 @@ def main() -> None:
             batch_size=25,
             max_workers=10,
             exclude_quarantined=True,
+            skip_terminally_evaluated=True,
         )
         before = remaining
         metrics = runner.run()

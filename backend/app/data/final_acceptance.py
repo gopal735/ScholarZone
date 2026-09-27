@@ -65,6 +65,18 @@ try:
     )
     without_image = total - len(images)
 
+    # ---- image evaluation outcomes
+    # Coverage is only provable if every record reached a terminal state, so
+    # report the outcome distribution rather than just the success count.
+    outcomes: dict[str, int] = {}
+    for r in rows:
+        key = r.image_evaluation_status or "unevaluated"
+        outcomes[key] = outcomes.get(key, 0) + 1
+    evaluated = total - outcomes.get("unevaluated", 0)
+    unverified_evaluated = evaluated - len(
+        [r for r in rows if r.image_verified_at is not None and r.image_evaluation_status == "verified"]
+    )
+
     # ---- status
     status: dict[str, int] = {}
     for r in rows:
@@ -91,6 +103,9 @@ try:
             "pct_verified": round(100 * len(images) / total, 1),
             "full_provenance": prov,
             "by_kind": dict(sorted(kinds.items(), key=lambda kv: -kv[1])),
+            "by_outcome": dict(sorted(outcomes.items(), key=lambda kv: -kv[1])),
+            "reached_terminal_outcome": evaluated,
+            "pct_evaluated": round(100 * evaluated / total, 1),
             "third_party_images": 0,
         },
         "status": dict(sorted(status.items(), key=lambda kv: -kv[1])),
@@ -118,10 +133,13 @@ try:
     print("IMAGES")
     print("=" * 66)
     for k, v in payload["images"].items():
-        if k != "by_kind":
+        if k not in ("by_kind", "by_outcome"):
             print(f"  {k:24s} {v}")
     print("  by kind:")
     for k, v in kinds.items():
+        print(f"     {k:24s} {v}")
+    print("  terminal outcome:")
+    for k, v in sorted(outcomes.items(), key=lambda kv: -kv[1]):
         print(f"     {k:24s} {v}")
 
     print("\n" + "=" * 66)

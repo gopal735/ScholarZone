@@ -93,7 +93,9 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
             "image_source_type": "VARCHAR(32)",
             "image_kind": "VARCHAR(32)",
             "image_verified_at": "TIMESTAMPTZ",
-            "image_alt_text": "VARCHAR(512)",
+        "image_alt_text": "VARCHAR(512)",
+        "image_evaluation_status": "VARCHAR(32)",
+        "image_evaluated_at": "TIMESTAMPTZ",
         }
         for name, definition in additions.items():
             if name not in columns:
@@ -193,6 +195,8 @@ def _upgrade_sqlite_schema(engine: Engine) -> None:
         "image_kind": "VARCHAR(32)",
         "image_verified_at": "DATETIME",
         "image_alt_text": "VARCHAR(512)",
+        "image_evaluation_status": "VARCHAR(32)",
+        "image_evaluated_at": "DATETIME",
         "eligibility": "JSON NOT NULL DEFAULT '[]'",
         "eligibility_summary": "TEXT",
         "benefits": "JSON NOT NULL DEFAULT '[]'",

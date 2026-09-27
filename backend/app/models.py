@@ -49,6 +49,13 @@ class Scholarship(Base):
     image_kind: Mapped[str | None] = mapped_column(String(32), nullable=True)
     image_verified_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     image_alt_text: Mapped[str | None] = mapped_column(String(512), nullable=True)
+    # Terminal image-evaluation outcome. ``image_verified_at`` alone cannot
+    # distinguish "we looked and nothing trustworthy exists" from "we never
+    # looked", so an evaluated record with no image would otherwise be
+    # indistinguishable from an unprocessed one. Every valid record must reach
+    # exactly one terminal state; see ImageEvaluationStatus.
+    image_evaluation_status: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    image_evaluated_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     eligibility: Mapped[list[str]] = mapped_column(JSON, nullable=False, default=list)
     eligibility_summary: Mapped[str | None] = mapped_column(Text, nullable=True)
     benefits: Mapped[list[str]] = mapped_column(JSON, nullable=False, default=list)

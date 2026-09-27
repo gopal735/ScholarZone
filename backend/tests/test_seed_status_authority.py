@@ -1,6 +1,6 @@
 """Regression tests for seed.py status authority fix."""
 
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta, timezone
 
 import pytest
 from sqlalchemy import create_engine, select
@@ -12,6 +12,14 @@ from app.services.lifecycle_manager import (
     apply_lifecycle_transition,
     evaluate_lifecycle,
 )
+
+# ``evaluate_lifecycle`` measures deadlines against the UTC date, but these
+# fixtures were built from the local date. The two differ for part of every
+# day, which made a genuinely-past deadline (yesterday, local) evaluate to
+# delta 0 and report ``closing-soon`` instead of ``closed``. Fixtures use the
+# same clock as the code under test so the assertions are deterministic
+# regardless of when the suite runs.
+LIFECYCLE_TODAY = datetime.now(timezone.utc).date()
 
 
 @pytest.fixture
@@ -74,7 +82,7 @@ class TestPreserveUpcoming:
     def test_upcoming_with_future_deadline_remains_upcoming(self, session, scholarship_factory):
         s = scholarship_factory(
             status="upcoming",
-            deadline_date=date.today() + timedelta(days=60),
+            deadline_date=LIFECYCLE_TODAY + timedelta(days=60),
             is_verified=True,
         )
         _record_authored_status(session, s, "open", "upcoming")
@@ -106,7 +114,7 @@ class TestPreserveVerifiedLifecycleStates:
     def test_closing_soon_not_overwritten(self, session, scholarship_factory):
         s = scholarship_factory(
             status="closing-soon",
-            deadline_date=date.today() + timedelta(days=5),
+            deadline_date=LIFECYCLE_TODAY + timedelta(days=5),
             is_verified=True,
         )
         _record_authored_status(session, s, "open", "closing-soon")
@@ -120,7 +128,7 @@ class TestPreserveVerifiedLifecycleStates:
     def test_closed_not_reopened_by_seed(self, session, scholarship_factory):
         s = scholarship_factory(
             status="closed",
-            deadline_date=date.today() - timedelta(days=10),
+            deadline_date=LIFECYCLE_TODAY - timedelta(days=10),
             is_verified=True,
         )
         _record_authored_status(session, s, "open", "closed")
@@ -138,7 +146,7 @@ class TestSeedIdempotency:
     def test_seed_twice_produces_no_status_changes(self, session, scholarship_factory):
         s1 = scholarship_factory(
             status="open",
-            deadline_date=date.today() + timedelta(days=60),
+            deadline_date=LIFECYCLE_TODAY + timedelta(days=60),
             is_verified=True,
         )
         s2 = scholarship_factory(
@@ -163,7 +171,7 @@ class TestLifecycleAuthority:
     def test_lifecycle_manager_is_only_authority_for_transitions(self, session, scholarship_factory):
         s = scholarship_factory(
             status="open",
-            deadline_date=date.today() - timedelta(days=1),
+            deadline_date=LIFECYCLE_TODAY - timedelta(days=1),
             is_verified=True,
         )
         evaluation = evaluate_lifecycle(s)
@@ -185,7 +193,7 @@ class TestLifecycleAuthority:
         """Requirement 6: seed must not bulk-correct existing records."""
         s = scholarship_factory(
             status="open",
-            deadline_date=date.today() - timedelta(days=1),
+            deadline_date=LIFECYCLE_TODAY - timedelta(days=1),
             is_verified=True,
         )
         _record_authored_status(session, s, "open", "closed")
@@ -205,7 +213,7 @@ class TestAuditHistory:
     def test_seed_writes_audit_for_never_evaluated_records(self, session, scholarship_factory):
         s = scholarship_factory(
             status="open",
-            deadline_date=date.today() - timedelta(days=1),
+            deadline_date=LIFECYCLE_TODAY - timedelta(days=1),
             is_verified=True,
         )
 
@@ -230,7 +238,7 @@ class TestAuditHistory:
     def test_seed_writes_audit_for_closing_soon(self, session, scholarship_factory):
         s = scholarship_factory(
             status="open",
-            deadline_date=date.today() + timedelta(days=5),
+            deadline_date=LIFECYCLE_TODAY + timedelta(days=5),
             is_verified=True,
         )
 
@@ -258,7 +266,7 @@ class TestNoDirectStatusAssignment:
         """Verify the seed path uses apply_lifecycle_transition, not direct assignment."""
         s = scholarship_factory(
             status="open",
-            deadline_date=date.today() - timedelta(days=1),
+            deadline_date=LIFECYCLE_TODAY - timedelta(days=1),
             is_verified=True,
         )
 

@@ -16,6 +16,7 @@ import logging
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass, field
+from datetime import datetime, timezone
 from typing import Callable
 from urllib.parse import urlparse
 
@@ -30,6 +31,11 @@ from .image_discovery_orchestrator import (
     ImageDiscoveryOrchestrator,
     OrchestratorRunResult,
     TrustworthyImageStatus,
+)
+from .image_evaluation_status import (
+    ImageEvaluationStatus,
+    evaluation_status_for,
+    preflight_status_for,
 )
 
 logger = logging.getLogger(__name__)
@@ -195,6 +201,7 @@ class ImageCoverageRunner:
         max_workers: int = DEFAULT_MAX_WORKERS,
         preflight_fn=None,
         exclude_quarantined: bool = True,
+        skip_terminally_evaluated: bool = False,
     ) -> None:
         self._session_factory = session_factory
         self.dry_run = dry_run
@@ -202,8 +209,35 @@ class ImageCoverageRunner:
         self.only_missing = only_missing
         self.max_workers = max(1, min(max_workers, MAX_WORKERS))
         self.exclude_quarantined = exclude_quarantined
+        # A record that already reached a terminal outcome must not be crawled
+        # again: re-running a confirmed negative costs a full request budget and
+        # changes nothing.
+        self.skip_terminally_evaluated = skip_terminally_evaluated
         # Injectable so tests never perform real network access.
         self._preflight_fn = preflight_fn or preflight_check
+
+    def _record_evaluation(self, scholarship_id: int, status: str) -> None:
+        """Persist one record's terminal image outcome.
+
+        A record that already carries a verified image is never downgraded: the
+        evaluator's own write is the authority, and a later negative outcome
+        must not erase a good image. Dry runs never write.
+        """
+        if self.dry_run:
+            return
+        session = self._session_factory()
+        try:
+            row = session.get(Scholarship, scholarship_id)
+            if row is None or row.image_verified_at is not None:
+                return
+            row.image_evaluation_status = str(status)
+            row.image_evaluated_at = datetime.now(timezone.utc)
+            session.commit()
+        except Exception:  # noqa: BLE001 - auditing must not abort a sweep
+            session.rollback()
+            logger.exception("failed to record image evaluation for id=%s", scholarship_id)
+        finally:
+            session.close()
 
     def _in_scope_ids(
         self,
@@ -238,6 +272,13 @@ class ImageCoverageRunner:
                 stmt = stmt.where(Scholarship.id > start_after)
             if self.only_missing:
                 stmt = stmt.where(Scholarship.image_verified_at.is_(None))
+            if self.skip_terminally_evaluated:
+                from .image_evaluation_status import TERMINAL_STATUSES
+
+                stmt = stmt.where(
+                    Scholarship.image_evaluation_status.is_(None)
+                    | Scholarship.image_evaluation_status.not_in(tuple(TERMINAL_STATUSES))
+                )
             stmt = stmt.order_by(Scholarship.id)
             rows = list(session.execute(stmt).all())
             total_in_scope = len(rows)
@@ -305,6 +346,9 @@ class ImageCoverageRunner:
                     continue
                 if breaker.is_open(source_url):
                     metrics.domain_blocked_skipped += 1
+                    self._record_evaluation(
+                        sid, ImageEvaluationStatus.SOURCE_BLOCKED
+                    )
                     metrics.outcomes.append(
                         {
                             "scholarship_id": sid,
@@ -344,6 +388,7 @@ class ImageCoverageRunner:
                     except Exception as exc:  # noqa: BLE001 - one record must not kill the batch
                         logger.exception("image discovery crashed for id=%s", sid)
                         metrics.failed += 1
+                        self._record_evaluation(sid, ImageEvaluationStatus.ERROR)
                         metrics.outcomes.append(
                             {
                                 "scholarship_id": sid,
@@ -385,8 +430,12 @@ class ImageCoverageRunner:
                                     "error": None,
                                 }
                             )
+                            self._record_evaluation(sid, preflight_status_for(reason))
                         elif sid_reason == "domain_blocked":
                             metrics.domain_blocked_skipped += 1
+                            self._record_evaluation(
+                                sid, ImageEvaluationStatus.SOURCE_BLOCKED
+                            )
                             metrics.outcomes.append(
                                 {
                                     "scholarship_id": sid,
@@ -407,6 +456,18 @@ class ImageCoverageRunner:
                         continue
 
                     self._tally(metrics, result)
+                    self._record_evaluation(
+                        sid,
+                        evaluation_status_for(
+                            trusted_status=result.status.value,
+                            candidate_count=len(result.image_results),
+                            page_error=getattr(result.page_discovery, "error", None),
+                            timed_out=bool(
+                                getattr(result.page_discovery, "timed_out", False)
+                            ),
+                            requests_made=result.requests_made,
+                        ),
+                    )
 
                     # Feed the breaker: only genuine access failures count.
                     page_error = getattr(result.page_discovery, "error", None)
