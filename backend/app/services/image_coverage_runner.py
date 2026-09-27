@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import logging
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass, field
 from typing import Callable
 
@@ -31,6 +32,11 @@ logger = logging.getLogger(__name__)
 
 DEFAULT_BATCH_SIZE = 10
 MAX_BATCH_SIZE = 40
+# Bounded concurrency. Kept deliberately small: each worker performs real
+# requests to official sites, so this is a politeness limit as much as a
+# resource limit. The DomainRateLimiter remains the hard per-domain guard.
+DEFAULT_MAX_WORKERS = 6
+MAX_WORKERS = 12
 
 
 @dataclass
@@ -47,6 +53,11 @@ class ImageCoverageMetrics:
     failed: int = 0
     skipped_existing: int = 0
     persisted: int = 0
+    # Distinguishes "we looked and the page genuinely has no usable image" from
+    # "the site refused us", which is a source-access failure, not a true
+    # no-image result.
+    source_blocked: int = 0
+    source_unreachable: int = 0
     runtime_ms: float = 0.0
 
     # Per-record outcomes for auditing.
@@ -64,6 +75,8 @@ class ImageCoverageMetrics:
             "failed": self.failed,
             "skipped_existing": self.skipped_existing,
             "persisted": self.persisted,
+            "source_blocked": self.source_blocked,
+            "source_unreachable": self.source_unreachable,
             "runtime_ms": round(self.runtime_ms, 1),
         }
 
@@ -78,11 +91,13 @@ class ImageCoverageRunner:
         dry_run: bool = True,
         batch_size: int = DEFAULT_BATCH_SIZE,
         only_missing: bool = True,
+        max_workers: int = DEFAULT_MAX_WORKERS,
     ) -> None:
         self._session_factory = session_factory
         self.dry_run = dry_run
         self.batch_size = max(1, min(batch_size, MAX_BATCH_SIZE))
         self.only_missing = only_missing
+        self.max_workers = max(1, min(max_workers, MAX_WORKERS))
 
     def _in_scope_ids(
         self,
@@ -100,7 +115,9 @@ class ImageCoverageRunner:
                 Scholarship.official_source,
                 Scholarship.image_verified_at,
             )
-            if ids:
+            if ids is not None:
+                # An explicit empty list means "nothing selected". Falling
+                # through would silently process the whole catalogue.
                 if not ids:
                     return [], 0
                 stmt = stmt.where(Scholarship.id.in_(ids))
@@ -129,31 +146,65 @@ class ImageCoverageRunner:
         rows, total_in_scope = self._in_scope_ids(ids=ids, start_after=start_after, limit=limit)
         metrics = ImageCoverageMetrics(records_in_scope=total_in_scope)
 
-        orchestrator = ImageDiscoveryOrchestrator(
-            session_factory=self._session_factory,
-            dry_run=self.dry_run,
-        )
+        # Each worker owns its own orchestrator and session: a record's DB work
+        # must never be interleaved with another record's.
+        def _work(row) -> tuple[OrchestratorRunResult, int]:
+            scholarship_id, title, source_url, source_name, verified_at = row
+            if verified_at is not None:
+                return None, scholarship_id
+            orchestrator = ImageDiscoveryOrchestrator(
+                session_factory=self._session_factory,
+                dry_run=self.dry_run,
+            )
+            result = orchestrator.run(
+                scholarship_id=scholarship_id,
+                scholarship_title=title,
+                official_source_url=source_url,
+                official_source_name=source_name,
+            )
+            return result, scholarship_id
 
         processed = 0
         for index in range(0, len(rows), self.batch_size):
             batch = rows[index : index + self.batch_size]
-            logger.info("image coverage batch: %d records", len(batch))
-            for row in batch:
-                scholarship_id, title, source_url, source_name, verified_at = row
-                if verified_at is not None:
-                    metrics.skipped_existing += 1
-                    continue
+            logger.info(
+                "image coverage batch %d: %d records (workers=%d)",
+                index // self.batch_size + 1,
+                len(batch),
+                self.max_workers,
+            )
+            with ThreadPoolExecutor(max_workers=self.max_workers) as pool:
+                futures = {pool.submit(_work, row): row[0] for row in batch}
+                for future in as_completed(futures):
+                    try:
+                        result, scholarship_id = future.result()
+                    except Exception as exc:  # noqa: BLE001 - one record must not kill the batch
+                        logger.exception("image discovery crashed for id=%s", futures[future])
+                        metrics.failed += 1
+                        metrics.outcomes.append(
+                            {
+                                "scholarship_id": futures[future],
+                                "title": "",
+                                "status": "error",
+                                "image_url": None,
+                                "persisted": False,
+                                "candidates": 0,
+                                "requests_made": 0,
+                                "error": f"{type(exc).__name__}: {exc}",
+                            }
+                        )
+                        processed += 1
+                        continue
 
-                result = orchestrator.run(
-                    scholarship_id=scholarship_id,
-                    scholarship_title=title,
-                    official_source_url=source_url,
-                    official_source_name=source_name,
-                )
-                self._tally(metrics, result)
-                processed += 1
-                if progress is not None:
-                    progress(processed, len(rows), result)
+                    if result is None:
+                        metrics.skipped_existing += 1
+                        processed += 1
+                        continue
+
+                    self._tally(metrics, result)
+                    processed += 1
+                    if progress is not None:
+                        progress(processed, len(rows), result)
 
         metrics.runtime_ms = (time.monotonic() - started) * 1000.0
         return metrics
@@ -173,7 +224,16 @@ class ImageCoverageRunner:
         elif result.status == TrustworthyImageStatus.LOW:
             metrics.low_confidence += 1
         elif result.status == TrustworthyImageStatus.NO_TRUSTWORTHY_IMAGE:
-            metrics.no_official_image += 1
+            # Distinguish a genuine absence from an access failure: a blocked or
+            # unreachable source is not evidence that no image exists.
+            page_error = (getattr(result.page_discovery, "error", None) or "").lower()
+            timed_out = bool(getattr(result.page_discovery, "timed_out", False))
+            if page_error:
+                metrics.source_unreachable += 1
+            elif timed_out or result.requests_made == 0:
+                metrics.source_blocked += 1
+            else:
+                metrics.no_official_image += 1
         elif result.status in (TrustworthyImageStatus.ERROR, TrustworthyImageStatus.SKIPPED):
             metrics.failed += 1
 
@@ -196,6 +256,8 @@ class ImageCoverageRunner:
                 "persisted": result.persisted,
                 "candidates": len(result.image_results),
                 "requests_made": result.requests_made,
+                "page_error": getattr(result.page_discovery, "error", None),
+                "timed_out": bool(getattr(result.page_discovery, "timed_out", False)),
                 "error": result.error,
             }
         )

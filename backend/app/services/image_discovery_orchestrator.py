@@ -17,6 +17,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from enum import Enum
+import time
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:  # pragma: no cover
@@ -147,10 +148,17 @@ class ImageDiscoveryOrchestrator:
         session_factory=None,
         page_discovery_service: OfficialPageDiscoveryService | None = None,
         dry_run: bool = True,
+        total_budget_seconds: float = 90.0,
     ) -> None:
         self._session_factory = session_factory
         self._page_discovery_service = page_discovery_service
         self._dry_run = dry_run
+        # Wall-clock budget for the ENTIRE run, covering page discovery AND the
+        # per-candidate page fetches and image validations that follow it.
+        # Without this, a record with many trusted candidates can spend
+        # (candidates x image_timeout) seconds in the validation phase alone,
+        # which is what made a catalogue-wide sweep impractical.
+        self._total_budget_seconds = total_budget_seconds
 
     def run(
         self,
@@ -173,6 +181,7 @@ class ImageDiscoveryOrchestrator:
         )
 
         own_session = False
+        deadline = time.monotonic() + self._total_budget_seconds
         if session is None and self._session_factory is not None:
             session = self._session_factory()
             own_session = True
@@ -206,6 +215,12 @@ class ImageDiscoveryOrchestrator:
 
             all_candidates = []
             for page in page_discovery.trusted_candidates:
+                # Stop fetching pages once the run budget is spent; a partial
+                # candidate set is reported rather than an unbounded stall.
+                if time.monotonic() >= deadline:
+                    result.status = TrustworthyImageStatus.ERROR
+                    result.error = "deadline_exceeded_during_page_fetch"
+                    return result
                 fetch = image_discovery.fetch_page(page.url)
                 if fetch.error or not fetch.content:
                     continue
