@@ -194,12 +194,14 @@ class ImageCoverageRunner:
         only_missing: bool = True,
         max_workers: int = DEFAULT_MAX_WORKERS,
         preflight_fn=None,
+        exclude_quarantined: bool = True,
     ) -> None:
         self._session_factory = session_factory
         self.dry_run = dry_run
         self.batch_size = max(1, min(batch_size, MAX_BATCH_SIZE))
         self.only_missing = only_missing
         self.max_workers = max(1, min(max_workers, MAX_WORKERS))
+        self.exclude_quarantined = exclude_quarantined
         # Injectable so tests never perform real network access.
         self._preflight_fn = preflight_fn or preflight_check
 
@@ -218,7 +220,14 @@ class ImageCoverageRunner:
                 Scholarship.official_source_url,
                 Scholarship.official_source,
                 Scholarship.image_verified_at,
+                Scholarship.verification_status,
             )
+            # Quarantined rows are site landing pages, not scholarships. They are
+            # never a valid image target, so they are excluded from scope rather
+            # than being reported as "no trustworthy image" for a programme that
+            # does not exist.
+            if self.exclude_quarantined:
+                stmt = stmt.where(Scholarship.verification_status != "quarantined")
             if ids is not None:
                 # An explicit empty list means "nothing selected". Falling
                 # through would silently process the whole catalogue.
@@ -255,7 +264,7 @@ class ImageCoverageRunner:
         breaker = DomainCircuitBreaker()
 
         def _work(row) -> tuple[OrchestratorRunResult | None, int, str | None]:
-            scholarship_id, title, source_url, source_name, verified_at = row
+            scholarship_id, title, source_url, source_name, verified_at = row[:5]
             if verified_at is not None:
                 return None, scholarship_id, None
             if breaker.is_open(source_url):
@@ -289,7 +298,8 @@ class ImageCoverageRunner:
             # was running are skipped here, not merely on the next batch.
             pending = []
             for row in batch:
-                sid, title, source_url, source_name, verified_at = row
+                sid, title, source_url = row[0], row[1], row[2]
+                verified_at = row[4]
                 if verified_at is not None:
                     skipped_ids.add(sid)
                     continue
