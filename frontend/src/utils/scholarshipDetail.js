@@ -146,6 +146,10 @@ const IMAGE_SOURCE_LABELS = {
   official_university: 'Official university page',
   official_government: 'Official government page',
   official_provider: 'Official provider page',
+  // The issuer's own logo, taken from its own site. A fallback identity, and
+  // labelled as such so it is never mistaken for programme artwork.
+  official_page_logo: 'Official issuer logo',
+  official_page: 'Official page',
 }
 
 /** Human label for image_source_type, or null when unrecognised. */
@@ -159,6 +163,9 @@ const IMAGE_KIND_LABELS = {
   program_image: 'Programme photograph',
   official_banner: 'Official banner',
   official_logo: 'Official logo',
+  official_provider: 'Official provider image',
+  official_university: 'Official university image',
+  official_government: 'Official government image',
   official_og: 'Open Graph image',
   official_media: 'Official media asset',
   generic_official: 'Generic official artwork',

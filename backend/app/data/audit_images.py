@@ -80,11 +80,11 @@ GENERIC_SITE_IMAGE = re.compile(
 
 VALID_KINDS = {
     "program_image",
-    "official_logo",
     "official_banner",
-    "official_programme_image",
-    "official_provider_image",
-    "generic_official",
+    "official_provider",
+    "official_university",
+    "official_government",
+    "official_logo",
 }
 
 
@@ -168,6 +168,29 @@ def classify(reasons: list[str], row) -> tuple[bool, list[str]]:
     ]
     soft = [r for r in reasons if r not in hard]
     return bool(hard), hard + soft
+
+
+def normalise_kind(kind: str | None, host: str, official_host: str) -> str:
+    """Map a stored kind onto the canonical vocabulary.
+
+    ``generic_official`` said nothing about *who* issued the asset, and
+    ``official_media`` said nothing at all. Both are resolved against the
+    issuing host so a card can state whether the identity belongs to a
+    university, a government body or a provider. An issuer we cannot classify
+    falls back to official_logo, which is honest: a logo is a last-resort
+    fallback, never presented as programme artwork.
+    """
+    key = (kind or "").strip()
+    if key in VALID_KINDS:
+        return key
+    base = host_of(host)
+    gov = (".gov.", ".gov", "-gov.", "europa.eu", "un.org", "who.int", "undp.org")
+    if any(token in base for token in gov):
+        return "official_government"
+    edu = (".edu", ".ac.", ".univ", "university", "hochschule", "unibe")
+    if any(token in base for token in edu):
+        return "official_university"
+    return "official_logo"
 
 
 def reasons_for(row) -> list[str]:
@@ -285,8 +308,9 @@ def main() -> None:
                     row.image_source_type = "official_page"
                 if not row.image_alt_text:
                     row.image_alt_text = (row.title or "")[:255]
-                if not row.image_kind:
-                    row.image_kind = "official_banner"
+                row.image_kind = normalise_kind(
+                    row.image_kind, row.image_url, row.official_source_url
+                )
                 if row.image_verified_at is None:
                     row.image_verified_at = row.image_evaluated_at or datetime.now(
                         timezone.utc
