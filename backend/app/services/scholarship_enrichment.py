@@ -29,6 +29,7 @@ from __future__ import annotations
 import logging
 import re
 import time
+from collections import Counter
 from dataclasses import dataclass, field
 from datetime import date, datetime, timedelta, timezone
 from enum import Enum
@@ -40,7 +41,7 @@ from sqlalchemy.orm import Session, sessionmaker
 
 from ..models import Scholarship
 from .discovery_scheduler import DomainRateLimiter
-from .official_source_fetcher import fetch_official_source
+from .official_source_fetcher import OfficialSourceFetchResult, fetch_official_source
 from .scholarship_evidence import SourceType, classify_source, is_authoritative_source
 from .scholarship_extractor import (
     ExtractionConfidence,
@@ -167,6 +168,12 @@ class EnrichmentResult:
     fetch_error: str | None = None
     fetch_attempts: int = 0
     related_pages_followed: int = 0
+    #: Official circulars that were fetched, and how many produced readable
+    #: text. A PDF without a text layer is a rejection, not a read, so the two
+    #: counters must not be conflated.
+    pdfs_attempted: int = 0
+    pdfs_parsed: int = 0
+    pdf_rejections: Counter = field(default_factory=Counter)
     retryable: bool = False
     dry_run: bool = True
     runtime_ms: float = 0.0
@@ -535,6 +542,30 @@ def project_enrichment(
                 "confidence": _confidence_for(extracted, ("deadline",)),
                 "sources": ["deadline"],
             }
+        else:
+            # No calendar date, but the provider may still have published a
+            # deadline policy: "rolling basis", "open year-round", "30 November
+            # annually". That is a real published fact and must be recorded as
+            # such, with its precision, rather than leaving the field blank
+            # and making it indistinguishable from "the provider never said".
+            # The wording is preserved verbatim in deadline_display above.
+            precision = normalise_deadline_precision(False, deadline)
+            if precision != "unknown":
+                proposals["deadline_precision"] = {
+                    "value": precision,
+                    "confidence": _confidence_for(extracted, ("deadline",)),
+                    "sources": ["deadline"],
+                }
+                if precision in ("rolling", "recurring"):
+                    # A continuing or repeating deadline is a genuine
+                    # application state, not an absence of one, so the record
+                    # must not be presented as having no deadline at all. The
+                    # provider's own wording is quoted so nothing is invented.
+                    proposals["notes"] = {
+                        "value": f"Application deadline: {deadline}".strip()[:300],
+                        "confidence": _confidence_for(extracted, ("deadline",)),
+                        "sources": ["deadline"],
+                    }
 
     return proposals
 
@@ -961,6 +992,58 @@ def _with_record_derived_fields(
     return proposals
 
 
+from .headless_source_fetcher import HeadlessSourceFetcher, should_try_browser
+from .deadline_semantics import (  # noqa: F401
+    DeadlineKind,
+    classify_deadline_text,
+    is_rolling_or_recurring,
+    normalise_deadline_precision,
+)
+from .official_pdf_extractor import OfficialPdfExtractor, find_official_pdf_links
+from .prose_fact_isolation import (
+    extract_documents_from_prose,
+    extract_selection_from_prose,
+)
+
+
+def _document_proposals_from_prose(text: str) -> dict[str, dict[str, Any]]:
+    """Documents stated inside ordinary prose, as an explicit list proposal.
+
+    The list merge unions these with anything the section extractor found, so a
+    document named in a paragraph and the same document named in a bullet list
+    collapse onto one entry rather than being stored twice.
+    """
+    items = extract_documents_from_prose(text)
+    if not items:
+        return {}
+    return {
+        "documents": {
+            "value": items,
+            "confidence": ExtractionConfidence.MEDIUM,
+            "sources": ["prose"],
+        }
+    }
+
+
+def _selection_proposals_from_prose(text: str) -> dict[str, dict[str, Any]]:
+    """Selection-process statements found in prose.
+
+    ``selection_notes`` is a single text column, so the recovered statements
+    are joined rather than listed: the column is prose by contract, and the
+    section extractor fills it the same way.
+    """
+    items = extract_selection_from_prose(text)
+    if not items:
+        return {}
+    return {
+        "selection_notes": {
+            "value": " ".join(items)[:1000],
+            "confidence": ExtractionConfidence.MEDIUM,
+            "sources": ["prose"],
+        }
+    }
+
+
 def _text_proposals_from_sections(html: str) -> dict[str, dict[str, Any]]:
     """Text-column proposals from section extraction, best value per column."""
     from .section_extractor import extract_all
@@ -1045,6 +1128,10 @@ class ScholarshipEnrichmentService:
         max_attempts: int = 2,
         follow_related_pages: bool = True,
         now_fn=None,
+        pdf_link_limit: int = 4,
+        pdf_extractor: OfficialPdfExtractor | None = None,
+        headless_fetcher: HeadlessSourceFetcher | None = None,
+        use_headless_fallback: bool = True,
     ) -> None:
         if session_factory is None:
             from ..database import get_session_factory
@@ -1059,6 +1146,24 @@ class ScholarshipEnrichmentService:
         # unit tests that only care about a single page.
         self.follow_related_pages = follow_related_pages
         self._now_fn = now_fn or (lambda: datetime.now(timezone.utc))
+        # Circular links followed per page. Bounded so one document index cannot
+        # turn a single record into a download loop.
+        self.pdf_link_limit = max(0, pdf_link_limit)
+        self._pdf_extractor = pdf_extractor or OfficialPdfExtractor()
+        # Browser fallback for sources that refuse plain HTTP. Off by default in
+        # unit tests: launching a browser is a network side effect, so it is
+        # opt-in per instance and only reachable behind a bot-management
+        # classification.
+        if headless_fetcher is not None:
+            self._headless = headless_fetcher
+        elif use_headless_fallback:
+            self._headless = HeadlessSourceFetcher()
+        else:
+            self._headless = None
+        #: Counted so a maintenance report can separate "the page was blocked"
+        #: from "the page was blocked and a browser got it anyway".
+        self.headless_attempts = 0
+        self.headless_recovered = 0
 
     # -- fetching ---------------------------------------------------------
 
@@ -1081,6 +1186,28 @@ class ScholarshipEnrichmentService:
             if not retryable or attempt == self.max_attempts - 1:
                 break
             time.sleep(min(2 ** attempt, 5))
+        # A refusal that a real browser would not receive is worth one second
+        # attempt. This is a fallback for bot management, not a way around an
+        # access control: if the browser is also refused, the original blocked
+        # classification stands and nothing is invented.
+        if self._headless is not None and result is not None and not result.success:
+            if should_try_browser(result.status_code, result.error_type):
+                self.headless_attempts += 1
+                rendered = self._headless.fetch(url)
+                if rendered.usable:
+                    self.headless_recovered += 1
+                    return (
+                        OfficialSourceFetchResult(
+                            success=True,
+                            status_code=rendered.status,
+                            final_url=rendered.final_url or url,
+                            content=rendered.html,
+                            content_type="text/html",
+                        ),
+                        attempts,
+                        None,
+                        False,
+                    )
         return result, attempts, last_error, retryable
 
     # -- main entry point -------------------------------------------------
@@ -1195,9 +1322,47 @@ class ScholarshipEnrichmentService:
                 )
                 if extra_links:
                     page_proposals = _merge_projections([extra_links, page_proposals])
+                # Official circulars linked from this very page carry the
+                # substance of the award: document lists, selection procedure,
+                # closing date. Reading them is part of reading the page, not a
+                # separate crawl.
+                for pdf_url in find_official_pdf_links(
+                    page_fetch.content,
+                    page_fetch.final_url or page_url,
+                    resolved.url,
+                    limit=self.pdf_link_limit,
+                ):
+                    extraction = self._pdf_extractor.fetch(pdf_url, resolved.url)
+                    result.pdfs_attempted += 1
+                    if not extraction.usable:
+                        result.pdf_rejections[extraction.error or "unusable"] += 1
+                        continue
+                    result.pdfs_parsed += 1
+                    combined_text.append(extraction.text)
+                    pdf_proposals = _proposals_from_sections(extraction.text)
+                    if pdf_proposals:
+                        page_proposals = _merge_projections([pdf_proposals, page_proposals])
+                    pdf_text = _text_proposals_from_sections(extraction.text)
+                    if pdf_text:
+                        page_proposals = _merge_projections([pdf_text, page_proposals])
+                    pdf_docs = _document_proposals_from_prose(extraction.text)
+                    if pdf_docs:
+                        page_proposals = _merge_projections([pdf_docs, page_proposals])
+                    pdf_selection = _selection_proposals_from_prose(extraction.text)
+                    if pdf_selection:
+                        page_proposals = _merge_projections([pdf_selection, page_proposals])
                 if page_proposals:
                     combined.append(page_proposals)
             proposals = _merge_projections(combined)
+            # Requirements and selection criteria are frequently stated in the
+            # middle of an eligibility or funding sentence, so they are isolated
+            # from the joined page text as well as read from sections.
+            prose_docs = _document_proposals_from_prose(content)
+            if prose_docs:
+                proposals = _merge_projections([prose_docs, proposals])
+            prose_selection = _selection_proposals_from_prose(content)
+            if prose_selection:
+                proposals = _merge_projections([prose_selection, proposals])
             proposals = _with_record_derived_fields(scholarship, proposals)
             content = "\n".join(combined_text)
 
