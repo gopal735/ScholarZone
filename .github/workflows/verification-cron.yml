@@ -1,229 +1,79 @@
-name: ScholarZone Verification Trigger
+name: ScholarZone scheduled maintenance
+
+# Runs the maintenance worker in-process against Neon.
+#
+# This workflow previously woke the SnapDeploy container and called the
+# production API over HTTP. SnapDeploy Free containers sleep, and the wake is
+# not guaranteed, so a scheduled verification run depended on a platform
+# behaviour it does not control - and verification is precisely the job that
+# matters most when nobody is watching.
+#
+# The worker imports the same service layer the API uses and connects straight
+# to the database, so a scheduled run and an operator-triggered run cannot
+# drift apart. SnapDeploy remains the API runtime for the frontend; it is simply
+# not on the maintenance path any more.
+#
+# Concurrency prevents a long run from overlapping the next scheduled one.
 
 on:
   schedule:
+    # Every twelve hours, off the hour so it does not pile onto the top of the
+    # hour when every other cron fires.
     - cron: '7 */12 * * *'
   workflow_dispatch:
+    inputs:
+      stage:
+        description: 'Stage to run (verify, enrich, images, discover, or all)'
+        required: false
+        default: 'all'
+      limit:
+        description: 'Maximum records per stage'
+        required: false
+        default: '60'
+
+concurrency:
+  group: scholarzone-maintenance
+  cancel-in-progress: false
 
 jobs:
-  trigger:
+  maintain:
     runs-on: ubuntu-latest
-    concurrency:
-      group: verification-trigger
-      cancel-in-progress: true
-    env:
-      API_URL: ${{ vars.SCHOLARZONE_API_URL }}
-      SECRET: ${{ secrets.SCHOLARZONE_VERIFICATION_SECRET }}
+    timeout-minutes: 45
     steps:
-      - name: Validate configuration
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+
+      - name: Install dependencies
+        working-directory: backend
         run: |
-          if [ -z "$API_URL" ]; then
-            echo "::error::SCHOLARZONE_API_URL repository variable is not set."
-            exit 1
-          fi
-          if [ -z "$SECRET" ]; then
-            echo "::error::SCHOLARZONE_VERIFICATION_SECRET repository secret is not set."
-            exit 1
-          fi
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-      - name: Wake container and trigger verification
+      - name: Run maintenance worker
+        working-directory: backend
+        env:
+          # Secret values are passed as environment variables and are never
+          # echoed. `set -x` is deliberately not enabled, and no command
+          # interpolates the URL into its output.
+          SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
+          SCHOLARZONE_VERIFICATION_SECRET: ${{ secrets.SCHOLARZONE_VERIFICATION_SECRET }}
+          SCHOLARZONE_ADMIN_SECRET: ${{ secrets.SCHOLARZONE_ADMIN_SECRET }}
+          # The setting name is SCHOLARZONE_ENVIRONMENT, not SCHOLARZONE_ENV.
+          # With the wrong name the app stays in development mode, and a
+          # development-mode database_url falls back to a local SQLite file -
+          # which would make this job quietly maintain the wrong database
+          # instead of Neon.
+          SCHOLARZONE_ENVIRONMENT: production
+          PYTHONPATH: '.'
         run: |
-          BACKOFFS=(10 20 30 45 60 90 120 120 180)
-          # MAX_WAIT must equal the total backoff schedule so the budget guard
-          # is consistent with the actual retry plan (10+20+30+45+60+90+120+120+180 = 675).
-          MAX_WAIT=675
-          WAITED=0
-          AWAKE=0
-          TRIGGERED=0
-
-          # check_health performs a single readiness probe.
-          # Returns 0 when the container is ready (HTTP 200) and 1 otherwise.
-          # 401 and 404 are fatal configuration errors and exit the workflow.
-          # 403 (edge/Cloudflare block), 503 (cold-start), 000 (connection failed),
-          # and any other code are treated as transient and retried.
-          check_health() {
-            echo "Polling readiness (GET $API_URL/health)..."
-            HTTP_CODE=$(curl -s -o /tmp/health.json -w "%{http_code}" \
-              --connect-timeout 15 \
-              --max-time 30 \
-              -X GET \
-              "$API_URL/health")
-
-            echo "Health check HTTP response code: $HTTP_CODE"
-
-            if [ "$HTTP_CODE" = "200" ]; then
-              echo "Container is ready."
-              return 0
-            elif [ "$HTTP_CODE" = "401" ]; then
-              echo "::error::Authentication failure on health check (HTTP $HTTP_CODE). Check API_URL and X-Verification-Secret."
-              exit 1
-            elif [ "$HTTP_CODE" = "403" ]; then
-              BODY=$(cat /tmp/health.json)
-              echo "Readiness detail: $BODY"
-              echo "HTTP 403 on /health is an edge/Cloudflare block (not an API-secret failure). Retrying..."
-              return 1
-            elif [ "$HTTP_CODE" = "404" ]; then
-              echo "::error::Health endpoint not found (HTTP $HTTP_CODE). Check API_URL."
-              exit 1
-            elif [ "$HTTP_CODE" = "503" ]; then
-              BODY=$(cat /tmp/health.json)
-              echo "Readiness detail: $BODY"
-              if echo "$BODY" | grep -qi "waking"; then
-                echo "Container is cold-starting (503 + waking message)."
-              elif echo "$BODY" | grep -qi "database"; then
-                echo "Database not ready yet (503 + database detail)."
-              else
-                echo "Service unavailable (503). Treating as cold-start."
-              fi
-              return 1
-            elif [ "$HTTP_CODE" = "000" ]; then
-              echo "Connection failed. Container may be cold-starting."
-              return 1
-            else
-              echo "Unexpected HTTP $HTTP_CODE during readiness poll. Treating as transient."
-              return 1
-            fi
-          }
-
-          # Explicit warm-up to trigger platform wake
-          echo "Warming up container (GET $API_URL/health)..."
-          curl -s -o /dev/null -w "%{http_code}" \
-            --connect-timeout 15 \
-            --max-time 30 \
-            -X GET \
-            "$API_URL/health" || true
-          echo ""
-
-          # Initial readiness check before entering the retry loop.
-          if check_health; then
-            AWAKE=1
-          fi
-
-          # Retry loop: probe readiness at the top of each iteration, then sleep
-          # the current backoff before the next probe. A successful 200 breaks out
-          # immediately so a ready container never waits through an unnecessary
-          # delay. The final 180s window is consumed by the post-loop check below.
-          for delay in "${BACKOFFS[@]}"; do
-            if [ $AWAKE -eq 1 ]; then
-              break
-            fi
-
-            if check_health; then
-              AWAKE=1
-              break
-            fi
-
-            if [ $WAITED -ge $MAX_WAIT ]; then
-              echo "::error::Wake budget exhausted after ${WAITED}s."
-              echo "::error::Last health response:"
-              cat /tmp/health.json 2>/dev/null || echo "  (none)"
-              echo "::error::Check SnapDeploy logs for container startup errors."
-              exit 1
-            fi
-
-            echo "Waiting ${delay}s before next readiness check..."
-            sleep "$delay"
-            WAITED=$((WAITED + delay))
-          done
-
-          # Final readiness check: consume the last backoff window before
-          # declaring wake-budget exhaustion. Without this probe the final 180s
-          # sleep is never followed by a health check and the last wake
-          # opportunity is silently dropped.
-          if [ $AWAKE -eq 0 ] && check_health; then
-            AWAKE=1
-          fi
-
-          if [ $AWAKE -ne 1 ]; then
-            echo "::error::All attempts failed or wake budget exhausted."
-            echo "::error::Last health response:"
-            cat /tmp/health.json 2>/dev/null || echo "  (none)"
-            echo "::error::Check SnapDeploy logs for container startup errors."
-            exit 1
-          fi
-
-          echo "Triggering verification (POST $API_URL/internal/verify/trigger)..."
-          HTTP_CODE=$(curl -s -o /tmp/response.json -w "%{http_code}" \
-            --connect-timeout 15 \
-            --max-time 120 \
-            -X POST \
-            -H "X-Verification-Secret: $SECRET" \
-            -H "Content-Type: application/json" \
-            "$API_URL/internal/verify/trigger")
-
-          echo "HTTP response code: $HTTP_CODE"
-
-          if [ "$HTTP_CODE" = "202" ]; then
-            echo "Verification round accepted."
-            cat /tmp/response.json
-            TRIGGERED=1
-          elif [ "$HTTP_CODE" = "429" ]; then
-            echo "Rate-limited (429). Verification already in progress or too recent."
-            cat /tmp/response.json
-            TRIGGERED=1
-          elif [ "$HTTP_CODE" = "401" ] || [ "$HTTP_CODE" = "403" ]; then
-            echo "::error::Authentication failure (HTTP $HTTP_CODE). Check X-Verification-Secret."
-            exit 1
-          elif [ "$HTTP_CODE" = "404" ]; then
-            echo "::error::Endpoint not found (HTTP $HTTP_CODE). Check API_URL."
-            exit 1
-          elif [ "$HTTP_CODE" = "503" ]; then
-            echo "Service unavailable (503) on trigger after container readiness confirmed."
-            echo "::error::Last health response:"
-            cat /tmp/health.json 2>/dev/null || echo "  (none)"
-            exit 1
-          elif [ "$HTTP_CODE" = "000" ]; then
-            echo "Connection failed on trigger after container readiness confirmed."
-            echo "::error::Last health response:"
-            cat /tmp/health.json 2>/dev/null || echo "  (none)"
-            exit 1
-          else
-            echo "::error::Unexpected HTTP $HTTP_CODE from trigger endpoint."
-            cat /tmp/response.json
-            exit 1
-          fi
-
-          if [ "$TRIGGERED" -eq 1 ]; then
-            echo "Verification trigger completed successfully."
-          else
-            echo "::error::All attempts failed or wake budget exhausted."
-            echo "::error::Last health response:"
-            cat /tmp/health.json 2>/dev/null || echo "  (none)"
-            exit 1
-          fi
-
-      - name: Trigger country-level discovery
-        if: success()
-        run: |
-          echo "Triggering discovery (POST $API_URL/internal/discover/trigger)..."
-          HTTP_CODE=$(curl -s -o /tmp/discovery_response.json -w "%{http_code}" \
-            --connect-timeout 15 \
-            --max-time 120 \
-            -X POST \
-            -H "X-Verification-Secret: $SECRET" \
-            -H "Content-Type: application/json" \
-            "$API_URL/internal/discover/trigger")
-
-          echo "Discovery HTTP response code: $HTTP_CODE"
-
-          if [ "$HTTP_CODE" = "202" ]; then
-            echo "Discovery round accepted."
-            cat /tmp/discovery_response.json
-          elif [ "$HTTP_CODE" = "429" ]; then
-            echo "Rate-limited (429). Discovery already in progress or too recent."
-            cat /tmp/discovery_response.json
-          elif [ "$HTTP_CODE" = "401" ] || [ "$HTTP_CODE" = "403" ]; then
-            echo "::error::Authentication failure (HTTP $HTTP_CODE). Check X-Verification-Secret."
-            exit 1
-          elif [ "$HTTP_CODE" = "404" ]; then
-            echo "::error::Discovery endpoint not found (HTTP $HTTP_CODE). Check API_URL."
-            exit 1
-          elif [ "$HTTP_CODE" = "503" ]; then
-            echo "Service unavailable (503) on discovery trigger. Treating as transient."
-          elif [ "$HTTP_CODE" = "000" ]; then
-            echo "Connection failed on discovery trigger. Treating as transient."
-          else
-            echo "::error::Unexpected HTTP $HTTP_CODE from discovery trigger endpoint."
-            cat /tmp/discovery_response.json
-            exit 1
-          fi
+          python -m app.jobs.scholarzone_maintenance \
+            --stage "${{ github.event.inputs.stage || 'all' }}" \
+            --limit "${{ github.event.inputs.limit || '60' }}" \
+            --workers 4
