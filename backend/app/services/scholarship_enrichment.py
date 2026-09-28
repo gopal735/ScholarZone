@@ -1131,7 +1131,7 @@ class ScholarshipEnrichmentService:
         pdf_link_limit: int = 4,
         pdf_extractor: OfficialPdfExtractor | None = None,
         headless_fetcher: HeadlessSourceFetcher | None = None,
-        use_headless_fallback: bool = True,
+        use_headless_fallback: bool = False,
     ) -> None:
         if session_factory is None:
             from ..database import get_session_factory
@@ -1150,10 +1150,11 @@ class ScholarshipEnrichmentService:
         # turn a single record into a download loop.
         self.pdf_link_limit = max(0, pdf_link_limit)
         self._pdf_extractor = pdf_extractor or OfficialPdfExtractor()
-        # Browser fallback for sources that refuse plain HTTP. Off by default in
-        # unit tests: launching a browser is a network side effect, so it is
-        # opt-in per instance and only reachable behind a bot-management
-        # classification.
+        # Browser fallback is OFF by default. Launching Chromium costs tens of
+        # seconds, and doing that inside the per-record loop of a whole-catalogue
+        # pass turns a 20 minute run into hours for the handful of records that
+        # are actually blocked. It belongs in a separate, targeted pass over
+        # blocked sources only, which is what enable_headless is for.
         if headless_fetcher is not None:
             self._headless = headless_fetcher
         elif use_headless_fallback:

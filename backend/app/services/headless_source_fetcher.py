@@ -139,15 +139,17 @@ class HeadlessSourceFetcher:
     def fetch(self, url: str) -> BrowserFetch:
         if not self.available() or not self._ensure():
             return BrowserFetch(url=url, ok=False, error="browser_unavailable")
+        page = None
         try:
-            response = self._context.goto(
+            page = self._context.new_page()
+            response = page.goto(
                 url,
                 timeout=self.timeout_ms,
                 wait_until="domcontentloaded",
             )
             status = response.status if response is not None else None
-            html = self._context.content() or ""
-            final_url = self._context.page.url
+            html = page.content() or ""
+            final_url = page.url
             return BrowserFetch(
                 url=url,
                 ok=bool(status and status < 400 and len(html) >= MIN_HTML_CHARS),
@@ -158,6 +160,12 @@ class HeadlessSourceFetcher:
             )
         except Exception as exc:  # noqa: BLE001
             return BrowserFetch(url=url, ok=False, error=type(exc).__name__)
+        finally:
+            if page is not None:
+                try:
+                    page.close()
+                except Exception:  # noqa: BLE001
+                    pass
 
     def fetch_many(self, urls: list[str], *, max_urls: int = 40) -> list[BrowserFetch]:
         """Render several official pages, stopping at a bounded batch size."""
