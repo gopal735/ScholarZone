@@ -398,6 +398,12 @@ _LIST_PROJECTION: dict[str, tuple[str, ...]] = {
     # benefits and coverage are distinct contracts and must not be duplicated.
     "benefits": ("award_amount",),
     "application_method": ("application_method",),
+    # Proof the applicant must send. It is a list column like the others, and
+    # omitting it here meant every document proposal fell through to the text
+    # branch of the writer and was discarded - which is why the documents
+    # column stayed empty on 413 records whose official pages listed every
+    # required document by name.
+    "documents": ("required_documents", "documents"),
 }
 
 _TEXT_PROJECTION: dict[str, tuple[str, ...]] = {

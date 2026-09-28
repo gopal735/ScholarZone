@@ -223,3 +223,72 @@ class TestSelectionIsolation:
 
     def test_no_selection_language_yields_nothing(self):
         assert extract_selection_from_prose("The award covers full tuition fees.") == []
+
+
+class TestDocumentsIsAWritableListColumn:
+    """Regression: documents was not a list projection, so every document
+    proposal was written through the text branch and discarded."""
+
+    def test_documents_is_a_list_column(self):
+        from app.services.scholarship_enrichment import _LIST_PROJECTION
+
+        assert "documents" in _LIST_PROJECTION
+
+    def test_documents_is_writable(self):
+        from app.services.scholarship_enrichment import WRITABLE_FIELDS
+
+        assert "documents" in WRITABLE_FIELDS
+
+    def test_a_document_proposal_reaches_the_row(self, tmp_path):
+        """End to end: a prose requirement must land in the documents column."""
+        from sqlalchemy import create_engine
+        from sqlalchemy.orm import sessionmaker
+
+        from app.models import Base, Scholarship
+        from app.services.scholarship_enrichment import ScholarshipEnrichmentService
+
+        engine = create_engine(f"sqlite:///{tmp_path / 'd.db'}")
+        Base.metadata.create_all(bind=engine)
+        factory = sessionmaker(bind=engine, autoflush=False, expire_on_commit=False)
+        session = factory()
+        row = Scholarship(
+            title="Test",
+            country="Germany",
+            degree="Master",
+            funding="Full",
+            verification_status="active",
+        )
+        session.add(row)
+        session.commit()
+        sid = row.id
+        session.close()
+
+        service = ScholarshipEnrichmentService(
+            session_factory=factory,
+            dry_run=False,
+            follow_related_pages=False,
+            use_headless_fallback=False,
+        )
+        proposals = {
+            "documents": {
+                "value": ["Applicants must submit a certified transcript of records"],
+                "confidence": "medium",
+                "sources": ["prose"],
+            }
+        }
+        from app.services.scholarship_extractor import ExtractionConfidence
+
+        proposals["documents"]["confidence"] = ExtractionConfidence.MEDIUM
+        check = factory()
+        try:
+            service._apply_proposals(check, check.get(Scholarship, sid), proposals, "https://x.org")
+            check.commit()
+        finally:
+            check.close()
+
+        verify = factory()
+        try:
+            stored = verify.get(Scholarship, sid).documents
+            assert stored, "documents stayed empty despite a proposal"
+        finally:
+            verify.close()
