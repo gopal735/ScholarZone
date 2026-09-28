@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 import '../styles/glass.css'
 import './AdminPage.css'
-import { fetchReviewQueue, approveReview, rejectReview } from '../services/adminImageReviewService'
+import { fetchReviewQueue, decideReview } from '../services/adminImageReviewService'
 
 const API = (import.meta.env.VITE_API_BASE_URL || '/api').replace(/\/$/, '')
 
@@ -412,6 +412,23 @@ export default function AdminPage() {
   const [adminSecret, setAdminSecret] = useState('')
   const [activeTab, setActiveTab] = useState('scholarships')
   const [reviewQueue, setReviewQueue] = useState([])
+  /* Counts come from the database, not from the loaded page of scholarships.
+     The dashboard requests 100 records; deriving "pending reviews" from those
+     100 reported a number that had nothing to do with the real backlog. */
+  const [reviewCounts, setReviewCounts] = useState({
+    pending_image_reviews: 0,
+    decided_image_reviews: 0,
+    all_image_reviews: 0,
+    pending_scholarship_reviews: 0,
+    scholarships_needing_review: 0,
+  })
+  const [reviewPagination, setReviewPagination] = useState({ page: 1, limit: 25, pages: 0, has_next: false, has_prev: false })
+  const [reviewPage, setReviewPage] = useState(1)
+  const [reviewLimit] = useState(25)
+  const [reviewSearch, setReviewSearch] = useState('')
+  const [reviewKind, setReviewKind] = useState('')
+  const [reviewConfidence, setReviewConfidence] = useState('')
+  const [reviewSort, setReviewSort] = useState('oldest')
   const [reviewLoading, setReviewLoading] = useState(false)
   const [reviewError, setReviewError] = useState(null)
   const [reviewActionLoading, setReviewActionLoading] = useState({})
@@ -464,13 +481,22 @@ export default function AdminPage() {
     load()
   }
 
-  async function loadReviewQueue() {
+  async function loadReviewQueue(page = reviewPage) {
     if (!adminSecret) return
     setReviewLoading(true)
     setReviewError(null)
     try {
-      const data = await fetchReviewQueue(adminSecret)
-      setReviewQueue(Array.isArray(data) ? data : [])
+      const data = await fetchReviewQueue(adminSecret, {
+        page,
+        limit: reviewLimit,
+        search: reviewSearch || undefined,
+        kind: reviewKind || undefined,
+        confidence: reviewConfidence || undefined,
+        sort: reviewSort,
+      })
+      setReviewQueue(data.items)
+      setReviewCounts(data.counts)
+      setReviewPagination(data.pagination)
     } catch (err) {
       setReviewError(err.message)
       setReviewQueue([])
@@ -482,14 +508,18 @@ export default function AdminPage() {
   function switchTab(tab) {
     setActiveTab(tab)
     if (tab === 'image-review' && adminSecret) {
-      loadReviewQueue()
+      setReviewPage(1)
+      loadReviewQueue(1)
     }
   }
 
   async function handleApprove(reviewId) {
     setReviewActionLoading(prev => ({ ...prev, [reviewId]: true }))
     try {
-      await approveReview(reviewId, adminSecret, '')
+      // The decision endpoint returns the refreshed database-wide counts, so
+      // the badge cannot drift from reality until a manual reload.
+      const result = await decideReview(reviewId, true, adminSecret, '')
+      if (result?.counts) setReviewCounts(result.counts)
       await loadReviewQueue()
     } catch (err) {
       setReviewError(err.message)
@@ -501,7 +531,8 @@ export default function AdminPage() {
   async function handleReject(reviewId) {
     setReviewActionLoading(prev => ({ ...prev, [reviewId]: true }))
     try {
-      await rejectReview(reviewId, adminSecret, '')
+      const result = await decideReview(reviewId, false, adminSecret, '')
+      if (result?.counts) setReviewCounts(result.counts)
       await loadReviewQueue()
     } catch (err) {
       setReviewError(err.message)
@@ -512,7 +543,8 @@ export default function AdminPage() {
 
   const today = new Date().toISOString().slice(0, 10)
   const verifiedToday = useMemo(() => scholarships.filter(s => s.last_verified_at === today).length, [scholarships, today])
-  const reviewCount = useMemo(() => scholarships.filter(s => s.verification_status === 'needs_review').length, [scholarships])
+  /* Database-wide, not derived from the 100 loaded records. */
+  const reviewCount = reviewCounts.pending_image_reviews || reviewCounts.scholarships_needing_review || 0
 
   const featured = useMemo(() => {
     if (scholarships.length === 0) return null
@@ -675,6 +707,103 @@ export default function AdminPage() {
                 <div className="empty-icon" aria-hidden="true">✓</div>
                 <p className="empty-title">All caught up</p>
                 <p className="empty-sub">No pending image reviews</p>
+              </div>
+            )}
+
+            {!reviewError && (
+              /* The question this must answer on arrival is "what do I need to
+                 review right now", so the real backlog counts and the controls
+                 that reach it come first, above the cards. */
+              <div className="review-center__controls">
+                <div className="review-center__counts">
+                  <span className="review-center__count review-center__count--pending">
+                    <strong>{reviewCounts.pending_image_reviews}</strong> Pending image reviews
+                  </span>
+                  <span className="review-center__count">
+                    <strong>{reviewCounts.scholarships_needing_review}</strong> Scholarships needing review
+                  </span>
+                  <span className="review-center__count">
+                    <strong>{reviewCounts.all_image_reviews}</strong> Reviewed to date
+                  </span>
+                </div>
+
+                <div className="review-center__toolbar">
+                  <input
+                    type="search"
+                    className="review-center__search"
+                    placeholder="Search title, provider, country or id…"
+                    value={reviewSearch}
+                    onChange={(e) => setReviewSearch(e.target.value)}
+                    onKeyDown={(e) => { if (e.key === 'Enter') { setReviewPage(1); loadReviewQueue(1) } }}
+                    aria-label="Search review queue"
+                  />
+                  <select
+                    className="review-center__select"
+                    value={reviewKind}
+                    onChange={(e) => { setReviewKind(e.target.value); setReviewPage(1); loadReviewQueue(1) }}
+                    aria-label="Filter by image kind"
+                  >
+                    <option value="">All image kinds</option>
+                    <option value="program_image">Programme image</option>
+                    <option value="official_banner">Official banner</option>
+                    <option value="official_logo">Official logo</option>
+                    <option value="official_university">University image</option>
+                    <option value="official_government">Government image</option>
+                  </select>
+                  <select
+                    className="review-center__select"
+                    value={reviewConfidence}
+                    onChange={(e) => { setReviewConfidence(e.target.value); setReviewPage(1); loadReviewQueue(1) }}
+                    aria-label="Filter by confidence"
+                  >
+                    <option value="">Any confidence</option>
+                    <option value="HIGH">High</option>
+                    <option value="MEDIUM">Medium</option>
+                    <option value="LOW">Low</option>
+                  </select>
+                  <select
+                    className="review-center__select"
+                    value={reviewSort}
+                    onChange={(e) => { setReviewSort(e.target.value); loadReviewQueue() }}
+                    aria-label="Sort reviews"
+                  >
+                    <option value="oldest">Oldest first</option>
+                    <option value="newest">Newest first</option>
+                    <option value="confidence">Confidence</option>
+                  </select>
+                  <button
+                    type="button"
+                    className="glass-btn glass-btn--sm"
+                    onClick={() => loadReviewQueue()}
+                    disabled={reviewLoading}
+                  >
+                    {reviewLoading ? 'Loading…' : 'Refresh queue'}
+                  </button>
+                </div>
+
+                {reviewPagination.pages > 1 && (
+                  <div className="review-center__pager">
+                    <button
+                      type="button"
+                      className="glass-btn glass-btn--sm"
+                      onClick={() => { const p = reviewPage - 1; setReviewPage(p); loadReviewQueue(p) }}
+                      disabled={!reviewPagination.has_prev || reviewLoading}
+                    >
+                      Previous
+                    </button>
+                    <span>
+                      Page {reviewPagination.page} of {reviewPagination.pages} · showing {reviewQueue.length} of {reviewCounts.pending_image_reviews} pending
+                    </span>
+                    <button
+                      type="button"
+                      className="glass-btn glass-btn--sm"
+                      onClick={() => { const p = reviewPage + 1; setReviewPage(p); loadReviewQueue(p) }}
+                      disabled={!reviewPagination.has_next || reviewLoading}
+                    >
+                      Next
+                    </button>
+                  </div>
+                )}
               </div>
             )}
 

@@ -292,9 +292,15 @@ class TestAdminReviewAccess:
         )
         assert response.status_code == 200
         data = response.json()
-        assert len(data) == 1
-        assert data[0]["image_url"] == "https://example.com/img.jpg"
-        assert data[0]["image_kind"] == "program_image"
+        # The queue now returns a paginated object with database-wide counts
+        # rather than a bare array. A bare array is why the owner could not
+        # tell a backlog of six from a page of one, or navigate past the first
+        # page at all.
+        assert data["total"] == 1
+        assert len(data["items"]) == 1
+        assert data["counts"]["pending_image_reviews"] == 1
+        assert data["items"][0]["image_url"] == "https://example.com/img.jpg"
+        assert data["items"][0]["image_kind"] == "program_image"
 
 
 class TestPublicUserCannotAccessReviewData:

@@ -1447,3 +1447,84 @@
     justify-content: center;
   }
 }
+
+/* -- Review Center -------------------------------------------------
+   The queue has to answer "what needs a decision now" on arrival, so the
+   real counts and the controls that reach every page sit above the cards. */
+.review-center__controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.review-center__counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.review-center__count {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.14));
+  border-radius: 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--text-muted, rgba(255, 255, 255, 0.72));
+}
+
+.review-center__count strong {
+  font-size: 1.125rem;
+  color: var(--text-primary, #fff);
+}
+
+/* Pending work is the number an owner acts on, so it is the one that reads
+   as an alarm rather than as ordinary metadata. */
+.review-center__count--pending {
+  border-color: rgba(255, 196, 84, 0.45);
+  background: rgba(255, 196, 84, 0.08);
+}
+
+.review-center__count--pending strong {
+  color: #ffc454;
+}
+
+.review-center__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.review-center__search,
+.review-center__select {
+  min-height: 2.5rem;
+  padding: 0.45rem 0.7rem;
+  border-radius: 0.6rem;
+  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.14));
+  background: rgba(12, 16, 24, 0.6);
+  color: inherit;
+  font: inherit;
+  font-size: 0.875rem;
+}
+
+.review-center__search {
+  flex: 1 1 16rem;
+  min-width: 12rem;
+}
+
+.review-center__pager {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--text-muted, rgba(255, 255, 255, 0.72));
+}
+
+@media (max-width: 40rem) {
+  .review-center__toolbar > * {
+    flex: 1 1 100%;
+  }
+}

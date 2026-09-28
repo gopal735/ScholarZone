@@ -1,13 +1,24 @@
+# ScholarZone - public crawl policy
+#
+# The public catalogue is meant to be indexed: the directory, the country
+# pages and every scholarship detail page are the product.
+#
+# The private surface is not. Admin, Saved and Compare either require a session
+# or render per-user state, and a search engine reaching them sees an empty or
+# broken shell. Compare and Saved are additionally near-duplicates of the
+# directory, so indexing them would dilute the pages that matter.
+
 User-agent: *
 Allow: /ScholarZone/
-Allow: /ScholarZone/scholarships/
-Allow: /ScholarZone/scholarships/
-Allow: /ScholarZone/countries/
+Allow: /ScholarZone/scholarships
 
 Disallow: /ScholarZone/admin
 Disallow: /ScholarZone/login
 Disallow: /ScholarZone/register
 Disallow: /ScholarZone/saved
 Disallow: /ScholarZone/compare
+
+# Crawling the single-page app shell is pointless and can be expensive.
+Disallow: /*?*
 
 Sitemap: https://gopal735.github.io/ScholarZone/sitemap.xml

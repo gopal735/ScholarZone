@@ -17,6 +17,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from ..models import ImageReview, Scholarship, ScholarshipVerificationHistory
+from .image_evaluation_status import ImageEvaluationStatus
 from .scholarship_image_verifier import ImageVerifier, is_valid_source_type
 
 
@@ -148,12 +149,26 @@ def approve_image_review(
         return result
 
     image_verifier = ImageVerifier(session)
+    # An approved image must be traceable. The review normally carries the page
+    # it was found on, but if it does not, fall back to the scholarship's own
+    # official source. Writing an image with an empty source URL would produce
+    # a verified asset nobody can trace back to anything, which is exactly what
+    # the provenance columns exist to prevent.
+    provenance_url = (
+        review.source_page or scholarship.official_source_url or ""
+    ).strip()
+    if not provenance_url:
+        result.error = "Cannot approve an image without a source page to trace it to."
+        return result
+
     updated = image_verifier.mark_image_verified(
         scholarship_id=review.scholarship_id,
         image_url=review.image_url,
-        image_source_url=review.source_page or scholarship.official_source_url or "",
+        image_source_url=provenance_url,
         source_type=source_type,
-        alt_text=None,
+        # Alt text defaults to the record's own title rather than being left
+        # blank, so a card never renders an image with no accessible name.
+        alt_text=scholarship.title or None,
         image_kind=review.image_kind,
     )
 
@@ -170,6 +185,13 @@ def approve_image_review(
     review.reviewed_at = now
     review.reviewed_by = reviewed_by
     review.reviewer_note = reviewer_note
+
+    # A human-approved image is a terminal 'verified' outcome for this record.
+    # Without this the record keeps whatever the automated sweep concluded
+    # (often no_official_image), so the catalogue reports an image-less record
+    # while a verified image is rendered on its card.
+    scholarship.image_evaluation_status = ImageEvaluationStatus.VERIFIED
+    scholarship.image_evaluated_at = now
 
     session.add(ScholarshipVerificationHistory(
         scholarship_id=review.scholarship_id,

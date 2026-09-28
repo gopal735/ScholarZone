@@ -222,6 +222,22 @@ export default function ScholarshipDetailsPage() {
 
   // SEO: inject meta tags and JSON-LD structured data
   useEffect(() => {
+    /* A scholarship that does not exist must not look indexable. The server
+       already answers 404 for an unknown path, but a client-side navigation to
+       a bad id renders inside a live page with status 200, and Google can index
+       that as a thin duplicate. Saying noindex here is the honest signal in
+       both cases; it is removed as soon as a real record renders. */
+    document.querySelectorAll('[data-sz-seo]').forEach(el => el.remove())
+    if (loadState !== 'success' || !scholarship) {
+      const noindex = document.createElement('meta')
+      noindex.name = 'robots'
+      noindex.content = 'noindex, follow'
+      noindex.setAttribute('data-sz-seo', 'true')
+      document.head.appendChild(noindex)
+      return () => {
+        document.querySelectorAll('[data-sz-seo]').forEach(el => el.remove())
+      }
+    }
     if (!scholarship) return
     const baseUrl = 'https://gopal735.github.io/ScholarZone'
     const canonicalUrl = `${baseUrl}/ScholarZone/scholarships/${scholarship.id}`
@@ -229,9 +245,7 @@ export default function ScholarshipDetailsPage() {
     const providerName = readText(scholarship.official_source)
     const description = readText(scholarship.description)
     const eligibility = readList(scholarship.eligibility)
-    const officialLinks = buildOfficialLinks(scholarship)
     const descriptionText = description || `${scholarship.title} – ${providerName || 'Scholarship'} opportunity.`
-    const fundingText = scholarship.funding ? `Funding: ${scholarship.funding}` : ''
     
     // Remove existing SEO tags we may have added
     document.querySelectorAll('[data-sz-seo]').forEach(el => el.remove())
@@ -264,36 +278,48 @@ export default function ScholarshipDetailsPage() {
     canonical.setAttribute('data-sz-seo', 'true')
     document.head.appendChild(canonical)
     
-    // JSON-LD structured data
+    /* Structured data.
+       The previous implementation declared '@type': 'Scholarship'. That type
+       is not a Google rich-result type, so it earned nothing, and it asserted
+       a thing schema.org does not define for a listing page. The page is
+       genuinely an editorial article about one specific award, so it is
+       described as a ScholarArticle, with the issuer and the breadcrumbs
+       attached as a graph. Every value below is copied from data rendered
+       elsewhere on this same page; nothing is invented, and no rating,
+       review, award or popularity figure is asserted. */
+    const publisher = providerName || undefined
     const structuredData = {
       '@context': 'https://schema.org',
-      '@type': 'Scholarship',
-      name: scholarship.title,
-      description: descriptionText,
-      url: canonicalUrl,
-      image: imageUrl || undefined,
-      provider: {
-        '@type': 'Organization',
-        name: providerName || 'Unknown Provider'
-      },
-      eligibility: eligibility.length > 0 ? eligibility.join(', ') : undefined,
-      educationalLevel: scholarship.degree,
-      fundingType: fundingText || undefined,
-      applicationStartDate: scholarship.opening_date || undefined,
-      applicationDeadline: scholarship.deadline_date || scholarship.deadline_display || undefined,
-      validFrom: scholarship.opening_date || undefined,
-      validThrough: scholarship.deadline_date || undefined,
-      identifier: String(scholarship.id),
-      sameAs: officialLinks.map(l => l.url).filter(Boolean)
+      '@graph': [
+        {
+          '@type': 'ScholarArticle',
+          headline: scholarship.title,
+          name: scholarship.title,
+          description: descriptionText,
+          url: canonicalUrl,
+          ...(imageUrl ? { image: imageUrl } : {}),
+          ...(publisher ? { publisher: { '@type': 'Organization', name: publisher } } : {}),
+          ...(scholarship.degree ? { educationalLevel: scholarship.degree } : {}),
+          ...(eligibility.length > 0 ? { about: eligibility.join('; ') } : {}),
+          ...(scholarship.official_source_url
+            ? { sameAs: [scholarship.official_source_url] }
+            : {}),
+          ...(scholarship.last_verified_at
+            ? { dateModified: String(scholarship.last_verified_at).slice(0, 10) }
+            : {}),
+          isAccessibleForFree: true,
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: `${baseUrl}/` },
+            { '@type': 'ListItem', position: 2, name: 'Scholarships', item: `${baseUrl}/ScholarZone/scholarships` },
+            { '@type': 'ListItem', position: 3, name: scholarship.title, item: canonicalUrl },
+          ],
+        },
+      ],
     }
-    
-    // Clean undefined values
-    Object.keys(structuredData).forEach(key => {
-      if (structuredData[key] === undefined || (Array.isArray(structuredData[key]) && structuredData[key].length === 0)) {
-        delete structuredData[key]
-      }
-    })
-    
+
     const script = document.createElement('script')
     script.type = 'application/ld+json'
     script.setAttribute('data-sz-seo', 'true')
@@ -304,7 +330,7 @@ export default function ScholarshipDetailsPage() {
     return () => {
       document.querySelectorAll('[data-sz-seo]').forEach(el => el.remove())
     }
-  }, [scholarship])
+  }, [scholarship, loadState])
 
   const showTrustNote = loadState === 'fallback'
   const providerName = readText(scholarship?.official_source)
