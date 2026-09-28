@@ -18,8 +18,8 @@ export default function ScholarshipsPage() {
   useEffect(() => {
     const baseUrl = 'https://gopal735.github.io/ScholarZone'
     const canonicalUrl = countryParam
-      ? `${baseUrl}/ScholarZone/scholarships?country=${encodeURIComponent(countryParam)}`
-      : `${baseUrl}/ScholarZone/scholarships`
+      ? `${baseUrl}/scholarships?country=${encodeURIComponent(countryParam)}`
+      : `${baseUrl}/scholarships`
     const title = countryParam ? `${countryParam} Scholarships | ScholarZone` : 'All Scholarships | ScholarZone'
     const description = countryParam
       ? `Explore verified scholarship opportunities in ${countryParam}. Filter by degree, funding, and deadline. Every listing has a verified official source.`

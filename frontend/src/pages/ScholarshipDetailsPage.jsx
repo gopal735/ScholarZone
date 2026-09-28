@@ -240,7 +240,7 @@ export default function ScholarshipDetailsPage() {
     }
     if (!scholarship) return
     const baseUrl = 'https://gopal735.github.io/ScholarZone'
-    const canonicalUrl = `${baseUrl}/ScholarZone/scholarships/${scholarship.id}`
+    const canonicalUrl = `${baseUrl}/scholarships/${scholarship.id}`
     const imageUrl = detailImage(scholarship)?.url
     const providerName = readText(scholarship.official_source)
     const description = readText(scholarship.description)
@@ -313,7 +313,7 @@ export default function ScholarshipDetailsPage() {
           '@type': 'BreadcrumbList',
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: 'Home', item: `${baseUrl}/` },
-            { '@type': 'ListItem', position: 2, name: 'Scholarships', item: `${baseUrl}/ScholarZone/scholarships` },
+            { '@type': 'ListItem', position: 2, name: 'Scholarships', item: `${baseUrl}/scholarships` },
             { '@type': 'ListItem', position: 3, name: scholarship.title, item: canonicalUrl },
           ],
         },

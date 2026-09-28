@@ -80,7 +80,7 @@ export default function CountryPage() {
       { name: 'description', content: 'Explore scholarships by country. Discover verified scholarship opportunities across the world\'s top study abroad destinations with verified official sources.' },
       { property: 'og:title', content: 'Explore Destinations | ScholarZone' },
       { property: 'og:description', content: 'Discover verified scholarship opportunities across the world\'s top study abroad destinations with verified official sources.' },
-      { property: 'og:url', content: `${baseUrl}/ScholarZone/countries` },
+      { property: 'og:url', content: `${baseUrl}/countries` },
       { property: 'og:type', content: 'website' },
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:title', content: 'Explore Destinations | ScholarZone' },
@@ -99,7 +99,7 @@ export default function CountryPage() {
     
     const canonical = document.createElement('link')
     canonical.rel = 'canonical'
-    canonical.href = `${baseUrl}/ScholarZone/countries`
+    canonical.href = `${baseUrl}/countries`
     canonical.setAttribute('data-sz-seo', 'true')
     document.head.appendChild(canonical)
     
@@ -111,7 +111,7 @@ export default function CountryPage() {
       '@type': 'CollectionPage',
       name: 'Explore Destinations',
       description: 'Discover verified scholarship opportunities across the world\'s top study abroad destinations.',
-      url: `${baseUrl}/ScholarZone/countries`,
+      url: `${baseUrl}/countries`,
       mainEntity: {
         '@type': 'ItemList',
         itemListElement: []
