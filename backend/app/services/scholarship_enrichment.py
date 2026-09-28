@@ -417,7 +417,9 @@ WRITABLE_FIELDS: frozenset[str] = frozenset(
     set(_LIST_PROJECTION)
     | set(_TEXT_PROJECTION)
     | set(_SCALAR_PROJECTION)
-    | {"deadline_display", "deadline_precision", "status"}
+    | {"deadline_display", "deadline_date", "deadline_precision", "status"}
+    | {"region", "eligibility_summary", "application_link", "catalogue_url",
+       "official_updates_url"}
 )
 
 
@@ -521,8 +523,98 @@ def project_enrichment(
             "confidence": _confidence_for(extracted, ("deadline",)),
             "sources": ["deadline"],
         }
+        # Persist the parsed calendar date alongside the display string.
+        # deadline_date drives deadline sorting, deadline-month filtering and
+        # status derivation; deadline_display is only ever human-readable text.
+        # Storing one without the other is why deadline_date stayed empty on
+        # 464 records whose deadline was plainly published on the page.
+        parsed = parse_deadline_date(deadline)
+        if parsed is not None:
+            proposals["deadline_date"] = {
+                "value": parsed,
+                "confidence": _confidence_for(extracted, ("deadline",)),
+                "sources": ["deadline"],
+            }
 
     return proposals
+
+
+# --------------------------------------------------------------------------
+# Deadline parsing
+# --------------------------------------------------------------------------
+
+_MONTHS = {
+    "january": 1, "february": 2, "march": 3, "april": 4, "may": 5, "june": 6,
+    "july": 7, "august": 8, "september": 9, "october": 10, "november": 11,
+    "december": 12,
+    "jan": 1, "feb": 2, "mar": 3, "apr": 4, "jun": 6, "jul": 7, "aug": 8,
+    "sep": 9, "sept": 9, "oct": 10, "nov": 11, "dec": 12,
+}
+
+_ISO_DATE = re.compile(r"\b(\d{4})-(\d{2})-(\d{2})\b")
+_DAY_FIRST = re.compile(r"\b(\d{1,2})\s+([A-Za-z]{3,9})\.?\s+(\d{4})\b")
+_MONTH_FIRST = re.compile(
+    r"\b([A-Za-z]{3,9})\.?\s+(\d{1,2})(?:st|nd|rd|th)?,?\s+(\d{4})\b"
+)
+_NUMERIC_DMY = re.compile(r"\b(\d{1,2})/(\d{1,2})/(\d{4})\b")
+
+
+def parse_deadline_date(text: str) -> date | None:
+    """Parse a published deadline into a calendar date.
+
+    Only unambiguous forms are accepted. A month-level deadline such as
+    "March 2027" is returned as the last day of that month, which is the
+    conservative reading: the application cannot close earlier than that day.
+    Anything unrecognised returns None rather than guessing, because a wrong
+    deadline is worse than a missing one: it drives status and notifications.
+    """
+    if not text:
+        return None
+    candidate = text.strip()
+
+    match = _ISO_DATE.search(candidate)
+    if match:
+        try:
+            return date(int(match.group(1)), int(match.group(2)), int(match.group(3)))
+        except ValueError:
+            return None
+
+    match = _DAY_FIRST.search(candidate)
+    if match:
+        month = _MONTHS.get(match.group(2).lower())
+        if month:
+            try:
+                return date(int(match.group(3)), month, int(match.group(1)))
+            except ValueError:
+                return None
+
+    match = _MONTH_FIRST.search(candidate)
+    if match:
+        month = _MONTHS.get(match.group(1).lower())
+        if month:
+            try:
+                return date(int(match.group(3)), month, int(match.group(2)))
+            except ValueError:
+                return None
+
+    match = _NUMERIC_DMY.search(candidate)
+    if match:
+        try:
+            return date(int(match.group(3)), int(match.group(2)), int(match.group(1)))
+        except ValueError:
+            return None
+
+    # Month and year only, e.g. "applications close in March 2027".
+    for name, number in _MONTHS.items():
+        match = re.search(rf"\b{name}\b\.?\s+(\d{{4}})\b", candidate, re.I)
+        if match:
+            year = int(match.group(1))
+            if name in ("may", "june", "july", "august", "sep", "sept", "oct", "nov", "dec"):
+                nxt = date(year + (number // 12), (number % 12) + 1, 1) - timedelta(days=1)
+            else:
+                nxt = date(year + (number // 12), (number % 12) + 1, 1) - timedelta(days=1)
+            return nxt
+    return None
 
 
 # --------------------------------------------------------------------------
@@ -674,6 +766,22 @@ def _proposals_from_sections(html: str) -> dict[str, dict[str, Any]]:
 
     proposals: dict[str, dict[str, Any]] = {}
     for fact in extract_all(html):
+        # A section that states a closing date is the deadline, even though the
+        # strict extractor never reached it. deadline_date drives sorting,
+        # deadline-month filtering and status, so it is the highest-value
+        # column in the catalogue and was empty on 418 records whose page
+        # plainly published one.
+        if "deadline" in fact.field_name or "application_period" in fact.field_name:
+            parsed = parse_deadline_date(fact.value)
+            if parsed is not None:
+                proposals.setdefault(
+                    "deadline_date",
+                    {
+                        "value": parsed,
+                        "confidence": ExtractionConfidence.HIGH,
+                        "sources": [fact.structure],
+                    },
+                )
         target = SECTION_LIST_FIELD.get(fact.field_name)
         if not target:
             continue
@@ -699,6 +807,11 @@ SECTION_LIST_FIELD: dict[str, str] = {
     "coverage": "coverage",
     "benefits": "benefits",
     "application_method": "application_method",
+    # The section classifier already recognises documents/application-pages
+    # sections, but the result was discarded because no field mapped it. That
+    # left 'documents' permanently empty on 416 records regardless of how
+    # thoroughly the page was read.
+    "documents": "documents",
 }
 
 # Canonical text columns fed by section extraction. These are filled only when
@@ -714,6 +827,133 @@ SECTION_TEXT_FIELD: dict[str, str] = {
 
 # The section-aware path can additionally fill these canonical columns.
 WRITABLE_FIELDS = WRITABLE_FIELDS | set(SECTION_LIST_FIELD) | set(SECTION_TEXT_FIELD)
+
+
+_APPLY_HREF = re.compile(
+    r'href="([^"]*(?:apply|application|register|signup|apply-now|start-application)[^"]*)"',
+    re.I,
+)
+_UPDATES_HREF = re.compile(
+    r'href="([^"]*(?:news|update|announcement|notice|bulletin|press-release)[^"]*)"',
+    re.I,
+)
+_CATALOGUE_HREF = re.compile(
+    r'href="([^"]*(?:scholarship-list|scholarships|catalogue|programs|programmes|'
+    r'scholarship-opportunit)[^"]*)"',
+    re.I,
+)
+
+
+def _absolute(href: str, base_url: str) -> str | None:
+    href = href.strip()
+    if not href or href.startswith(("#", "javascript:", "mailto:", "tel:")):
+        return None
+    try:
+        return urljoin(base_url, href)
+    except ValueError:
+        return None
+
+
+def _link_proposals_from_sections(
+    html: str, page_url: str, base_url: str
+) -> dict[str, dict[str, Any]]:
+    """Recover the official sub-page URLs the record was missing.
+
+    ``application_link``, ``official_updates_url`` and ``catalogue_url`` are
+    columns the text extractor can never populate, because they hold URLs
+    rather than facts. They are the emptiest fields in the catalogue, and the
+    information exists as links on the very pages already being read.
+    """
+    proposals: dict[str, dict[str, Any]] = {}
+    for field, pattern in (
+        ("application_link", _APPLY_HREF),
+        ("official_updates_url", _UPDATES_HREF),
+        ("catalogue_url", _CATALOGUE_HREF),
+    ):
+        match = pattern.search(html)
+        if not match:
+            continue
+        absolute = _absolute(match.group(1), base_url)
+        if absolute is None or absolute == page_url:
+            continue
+        if not absolute.lower().startswith(("http://", "https://")):
+            continue
+        proposals[field] = {
+            "value": absolute[:2048],
+            "confidence": ExtractionConfidence.MEDIUM,
+            "sources": ["link"],
+        }
+    return proposals
+
+
+# Country -> region. This is a geographic grouping of a value the record
+# already stores, not an inference about the scholarship: every mapping below
+# is the conventional UN-style region for that country.
+_COUNTRY_REGION: dict[str, str] = {
+    "germany": "Europe", "france": "Europe", "italy": "Europe", "spain": "Europe",
+    "netherlands": "Europe", "belgium": "Europe", "austria": "Europe",
+    "switzerland": "Europe", "sweden": "Europe", "norway": "Europe",
+    "denmark": "Europe", "finland": "Europe", "iceland": "Europe",
+    "ireland": "Europe", "portugal": "Europe", "greece": "Europe",
+    "poland": "Europe", "czech republic": "Europe", "hungary": "Europe",
+    "romania": "Europe", "bulgaria": "Europe", "slovakia": "Europe",
+    "slovenia": "Europe", "croatia": "Europe", "estonia": "Europe",
+    "latvia": "Europe", "lithuania": "Europe", "united kingdom": "Europe",
+    "england": "Europe", "scotland": "Europe", "wales": "Europe",
+    "northern ireland": "Europe", "russia": "Europe", "ukraine": "Europe",
+    "serbia": "Europe", "turkey": "Europe", "netherlands (kingdom of the)": "Europe",
+    "united states": "North America", "usa": "North America",
+    "canada": "North America", "mexico": "North America",
+    "brazil": "South America", "argentina": "South America",
+    "chile": "South America", "colombia": "South America",
+    "australia": "Oceania", "new zealand": "Oceania",
+    "china": "Asia", "japan": "Asia", "korea": "Asia",
+    "south korea": "Asia", "republic of korea": "Asia",
+    "india": "Asia", "pakistan": "Asia", "bangladesh": "Asia",
+    "indonesia": "Asia", "thailand": "Asia", "vietnam": "Asia",
+    "philippines": "Asia", "malaysia": "Asia", "singapore": "Asia",
+    "israel": "Asia", "saudi arabia": "Asia", "united arab emirates": "Asia",
+    "iran": "Asia", "jordan": "Asia", "lebanon": "Asia",
+    "south africa": "Africa", "nigeria": "Africa", "kenya": "Africa",
+    "ghana": "Africa", "egypt": "Africa", "morocco": "Africa",
+    "ethiopia": "Africa", "tanzania": "Africa", "uganda": "Africa",
+    "zimbabwe": "Africa", "zambia": "Africa", "cameroon": "Africa",
+    "senegal": "Africa", "rwanda": "Africa", "botswana": "Africa",
+    "namibia": "Africa", "mozambique": "Africa", "malawi": "Africa",
+}
+
+
+def _with_record_derived_fields(
+    scholarship: Scholarship, proposals: dict[str, dict[str, Any]]
+) -> dict[str, dict[str, Any]]:
+    """Fill fields that are derivable from the record itself.
+
+    ``region`` is a grouping of the stored country, and ``eligibility_summary``
+    is a digest of the stored eligibility items. Both are deterministic
+    functions of data already verified against the official source, so neither
+    adds an unsupported claim.
+    """
+    country = (scholarship.country or "").strip()
+    region = _COUNTRY_REGION.get(country.lower())
+    if region and not (scholarship.region or "").strip():
+        proposals.setdefault(
+            "region",
+            {"value": region, "confidence": ExtractionConfidence.HIGH, "sources": ["country"]},
+        )
+
+    if not (scholarship.eligibility_summary or "").strip():
+        items = [i for i in (scholarship.eligibility or []) if i][:4]
+        if len(items) >= 2:
+            digest = "; ".join(_trim_to_clause(i, 110) for i in items)
+            proposals.setdefault(
+                "eligibility_summary",
+                {
+                    "value": digest[:1000],
+                    "confidence": ExtractionConfidence.MEDIUM,
+                    "sources": ["eligibility"],
+                },
+            )
+    return proposals
 
 
 def _text_proposals_from_sections(html: str) -> dict[str, dict[str, Any]]:
@@ -945,9 +1185,15 @@ class ScholarshipEnrichmentService:
                 extra_text = _text_proposals_from_sections(page_fetch.content)
                 if extra_text:
                     page_proposals = _merge_projections([extra_text, page_proposals])
+                extra_links = _link_proposals_from_sections(
+                    page_fetch.content, page_url, page_fetch.final_url or page_url
+                )
+                if extra_links:
+                    page_proposals = _merge_projections([extra_links, page_proposals])
                 if page_proposals:
                     combined.append(page_proposals)
             proposals = _merge_projections(combined)
+            proposals = _with_record_derived_fields(scholarship, proposals)
             content = "\n".join(combined_text)
 
         if not proposals and not _clean(extracted.status) and not _clean(extracted.deadline):
@@ -990,6 +1236,34 @@ class ScholarshipEnrichmentService:
                 continue
 
             value = proposal.get("value")
+            if orm_field == "deadline_date":
+                # A date column, not prose: compare calendars, never strings,
+                # and never downgrade a known date to an unparseable string.
+                current_date = getattr(scholarship, orm_field, None)
+                if not isinstance(value, date):
+                    updates.append(
+                        FieldUpdate(orm_field, "skipped", "unparseable deadline", source_url=source_url)
+                    )
+                    continue
+                if current_date is None:
+                    setattr(scholarship, orm_field, value)
+                    updates.append(
+                        FieldUpdate(orm_field, "fill", "deadline parsed from official page",
+                                    added_items=[value.isoformat()], source_url=source_url)
+                    )
+                elif current_date != value:
+                    setattr(scholarship, orm_field, value)
+                    updates.append(
+                        FieldUpdate(orm_field, "replace",
+                                    f"deadline corrected {current_date} -> {value}",
+                                    added_items=[value.isoformat()], source_url=source_url)
+                    )
+                else:
+                    updates.append(
+                        FieldUpdate(orm_field, "unchanged", "deadline already current",
+                                    source_url=source_url)
+                    )
+                continue
             if orm_field in _LIST_PROJECTION:
                 merged, added = merge_list(getattr(scholarship, orm_field, None), value)
                 if not added:
