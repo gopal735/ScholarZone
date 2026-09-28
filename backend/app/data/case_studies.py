@@ -27,9 +27,11 @@ try:
     for row in rows:
         empty = sum(1 for f in FACT_FIELDS if getattr(row, f, None) in (None, "", []))
         scored.append((empty, row))
-    scored.sort(key=lambda t: (t[0], t[1].id))
+    scored.sort(key=lambda t: (-t[0], t[1].id))
 
-    # Sparsest records that nonetheless received real official facts.
+    # Sparsest records that nonetheless hold real official facts. Sorting by
+    # descending empty count is the point: these are the information-poor
+    # records the deep pass was meant to help.
     picked = []
     for empty, row in scored:
         populated = [f for f in FACT_FIELDS if getattr(row, f, None) not in (None, "", [])]

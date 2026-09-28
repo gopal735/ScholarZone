@@ -66,6 +66,18 @@ GENERIC_ASSET = re.compile(
     re.IGNORECASE,
 )
 
+#: Filename fragments that identify a site-wide asset rather than scholarship
+#: artwork. Contao/CMS sites publish one "default" OpenGraph image and one
+#: contact/footer/decorative image and reuse them everywhere; those are exactly
+#: the generic site images the acceptance rules forbid being presented as
+#: scholarship imagery.
+GENERIC_SITE_IMAGE = re.compile(
+    r"(default[_-]?og|default[_-]?image|og[_-]?default|placeholder|spacer|"
+    r"kontakt|contact[_-]?us|footer[_-]?|dibai|bg[_-]?decoration|"
+    r"news[_-]?thumb|breaking[_-]?news|site[_-]?logo|header[_-]?bg)",
+    re.IGNORECASE,
+)
+
 VALID_KINDS = {
     "program_image",
     "official_logo",
@@ -152,6 +164,7 @@ def classify(reasons: list[str], row) -> tuple[bool, list[str]]:
         for r in reasons
         if r.split(":")[0] in ("advertising_or_tracking_beacon", "beacon_path")
         or (r == "third_party_host" and any(j in host_of(row.image_url) for j in JUNK_HOSTS))
+        or r == "generic_site_image"
     ]
     soft = [r for r in reasons if r not in hard]
     return bool(hard), hard + soft
@@ -171,6 +184,10 @@ def reasons_for(row) -> list[str]:
         reasons.append("beacon_path")
     if GENERIC_ASSET.search(urlparse(url).path):
         reasons.append("generic_site_asset")
+    if GENERIC_SITE_IMAGE.search(urlparse(url).path):
+        # A site-wide default/OG/contact image is not scholarship artwork, no
+        # matter which column it was stored in.
+        reasons.append("generic_site_image")
 
     official_host = host_of(row.official_source_url)
     if official_host and registrable(host) and registrable(host) != registrable(official_host):
