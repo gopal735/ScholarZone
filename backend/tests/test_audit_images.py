@@ -117,3 +117,35 @@ class TestJunkList:
     def test_no_official_university_is_on_the_junk_list(self):
         for host in ("daad.de", "ku.dk", "aau.dk", "state.gov", "ubc.ca"):
             assert host not in JUNK_HOSTS
+
+
+class TestTestimonialPortrait:
+    """A captioned awardee photo is a testimonial, not scholarship artwork.
+
+    The KTH India Scholarship page illustrates itself with a portrait of a past
+    awardee. It is hosted on the official domain and is a genuine photo of a
+    genuine recipient, and it is still useless as a card image: nothing about
+    it identifies the scholarship or the programme.
+    """
+
+    def test_awardee_caption_is_detected(self):
+        row = Row(
+            image_url="https://www.kth.se/polopoly_fs/1.1032093!/image/ari.jpg",
+            **FULL,
+        )
+        row.image_source_type = "awardee photo, KTH India Scholarship awardee 2020"
+        assert "testimonial_portrait" in reasons_for(row)
+
+    def test_a_testimonial_portrait_is_cleared_not_repaired(self):
+        row = Row(image_url="https://www.kth.se/x/ari.jpg", **FULL)
+        row.image_source_type = "scholarship awardee testimonial"
+        assert classify(reasons_for(row), row)[0] is True
+
+    def test_a_genuine_programme_image_is_not_caught(self):
+        row = Row(image_url="https://www.kth.se/x/programme.jpg", **FULL)
+        assert "testimonial_portrait" not in reasons_for(row)
+
+    def test_an_ordinary_alt_text_is_not_caught(self):
+        row = Row(image_url="https://www.kth.se/x/scholarship-banner.jpg", **FULL)
+        row.image_alt_text = "KTH scholarship programme banner"
+        assert "testimonial_portrait" not in reasons_for(row)

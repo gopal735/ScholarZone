@@ -78,6 +78,31 @@ GENERIC_SITE_IMAGE = re.compile(
     re.IGNORECASE,
 )
 
+#: A scholarship page often illustrates itself with a photograph of a past
+#: awardee, captioned with that person's name. It is a testimonial, not
+#: programme artwork: a user cannot tell from it what the scholarship or the
+#: programme is. A person photo must never be the card image, however
+#: official the domain hosting it.
+_TESTIMONIAL_CAPTION = re.compile(
+    r"(awardee|scholarship\s+recipient|beneficiary|alumnus|alumni|"
+    r"current\s+student|testimonial|student\s+story|graduate\s+story|"
+    r"meet\s+our\s+scholars?|portrait)",
+    re.IGNORECASE,
+)
+
+#: The image audit runs on stored rows and has no page context, so a caption
+#: recorded at discovery time is the available signal. When it is present, the
+#: asset is a person photo.
+def _has_testimonial_caption(row) -> bool:
+    for candidate in (
+        getattr(row, "image_alt_text", ""),
+        getattr(row, "image_source_type", ""),
+    ):
+        if candidate and _TESTIMONIAL_CAPTION.search(str(candidate)):
+            return True
+    return False
+
+
 VALID_KINDS = {
     "program_image",
     "official_banner",
@@ -165,6 +190,7 @@ def classify(reasons: list[str], row) -> tuple[bool, list[str]]:
         if r.split(":")[0] in ("advertising_or_tracking_beacon", "beacon_path")
         or (r == "third_party_host" and any(j in host_of(row.image_url) for j in JUNK_HOSTS))
         or r == "generic_site_image"
+        or r == "testimonial_portrait"
     ]
     soft = [r for r in reasons if r not in hard]
     return bool(hard), hard + soft
@@ -211,6 +237,8 @@ def reasons_for(row) -> list[str]:
         # A site-wide default/OG/contact image is not scholarship artwork, no
         # matter which column it was stored in.
         reasons.append("generic_site_image")
+    if _has_testimonial_caption(row):
+        reasons.append("testimonial_portrait")
 
     official_host = host_of(row.official_source_url)
     if official_host and registrable(host) and registrable(host) != registrable(official_host):
