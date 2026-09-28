@@ -1,4 +1,4 @@
-import { Children, useEffect, useMemo, useRef, useState } from 'react'
+import { Children, useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import ScholarshipActions from '../components/ScholarshipActions'
 import { fetchScholarshipById, ScholarshipApiError } from '../services/scholarshipService'
@@ -220,14 +220,100 @@ export default function ScholarshipDetailsPage() {
     }
   }, [hasValidScholarshipId, retryVersion, scholarshipId, allScholarships])
 
-  const related = useMemo(
-    () => allScholarships
-      .filter((item) => item.id !== scholarshipId && (
-        item.country === scholarship?.country || item.degree === scholarship?.degree
-      ))
-      .slice(0, 3),
-    [allScholarships, scholarshipId, scholarship?.country, scholarship?.degree]
-  )
+  // SEO: inject meta tags and JSON-LD structured data
+  useEffect(() => {
+    if (!scholarship) return
+    const baseUrl = 'https://gopal735.github.io/ScholarZone'
+    const canonicalUrl = `${baseUrl}/ScholarZone/scholarships/${scholarship.id}`
+    const imageUrl = detailImage(scholarship)?.url
+    const providerName = readText(scholarship.official_source)
+    const description = readText(scholarship.description)
+    const eligibility = readList(scholarship.eligibility)
+    const officialLinks = buildOfficialLinks(scholarship)
+    const descriptionText = description || `${scholarship.title} – ${providerName || 'Scholarship'} opportunity.`
+    const fundingText = scholarship.funding ? `Funding: ${scholarship.funding}` : ''
+    
+    // Remove existing SEO tags we may have added
+    document.querySelectorAll('[data-sz-seo]').forEach(el => el.remove())
+    
+    const metaTags = [
+      { name: 'description', content: descriptionText.slice(0, 160) },
+      { property: 'og:title', content: scholarship.title },
+      { property: 'og:description', content: descriptionText.slice(0, 300) },
+      { property: 'og:url', content: canonicalUrl },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:image', content: imageUrl || '' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: scholarship.title },
+      { name: 'twitter:description', content: descriptionText.slice(0, 300) },
+      { name: 'twitter:image', content: imageUrl || '' },
+      { name: 'robots', content: 'index, follow' },
+    ]
+    
+    metaTags.forEach(meta => {
+      const el = document.createElement('meta')
+      Object.entries(meta).forEach(([k, v]) => { if (v) el.setAttribute(k, v) })
+      el.setAttribute('data-sz-seo', 'true')
+      document.head.appendChild(el)
+    })
+    
+    // Canonical link
+    const canonical = document.createElement('link')
+    canonical.rel = 'canonical'
+    canonical.href = canonicalUrl
+    canonical.setAttribute('data-sz-seo', 'true')
+    document.head.appendChild(canonical)
+    
+    // JSON-LD structured data
+    const structuredData = {
+      '@context': 'https://schema.org',
+      '@type': 'Scholarship',
+      name: scholarship.title,
+      description: descriptionText,
+      url: canonicalUrl,
+      image: imageUrl || undefined,
+      provider: {
+        '@type': 'Organization',
+        name: providerName || 'Unknown Provider'
+      },
+      eligibility: eligibility.length > 0 ? eligibility.join(', ') : undefined,
+      educationalLevel: scholarship.degree,
+      fundingType: fundingText || undefined,
+      applicationStartDate: scholarship.opening_date || undefined,
+      applicationDeadline: scholarship.deadline_date || scholarship.deadline_display || undefined,
+      validFrom: scholarship.opening_date || undefined,
+      validThrough: scholarship.deadline_date || undefined,
+      identifier: String(scholarship.id),
+      sameAs: officialLinks.map(l => l.url).filter(Boolean)
+    }
+    
+    // Clean undefined values
+    Object.keys(structuredData).forEach(key => {
+      if (structuredData[key] === undefined || (Array.isArray(structuredData[key]) && structuredData[key].length === 0)) {
+        delete structuredData[key]
+      }
+    })
+    
+    const script = document.createElement('script')
+    script.type = 'application/ld+json'
+    script.setAttribute('data-sz-seo', 'true')
+    script.textContent = JSON.stringify(structuredData, null, 2)
+    document.head.appendChild(script)
+    
+    // Cleanup
+    return () => {
+      document.querySelectorAll('[data-sz-seo]').forEach(el => el.remove())
+    }
+  }, [scholarship])
+
+  const showTrustNote = loadState === 'fallback'
+  const providerName = readText(scholarship?.official_source)
+
+  const related = allScholarships
+    .filter((item) => item.id !== scholarshipId && (
+      item.country === scholarship?.country || item.degree === scholarship?.degree
+    ))
+    .slice(0, 3)
 
   if (!hasValidScholarshipId) {
     return (
@@ -286,15 +372,12 @@ export default function ScholarshipDetailsPage() {
   const documents = readList(scholarship.documents) || readList(scholarship.required_documents)
   const applicationMethod = readList(scholarship.application_method)
   const englishRequirement = readText(scholarship.english_requirement)
-  const bestFit = readText(scholarship.best_fit)
+const bestFit = readText(scholarship.best_fit)
   const selectionNotes = readText(scholarship.selection_notes)
   const notes = readText(scholarship.notes)
   const officialLinks = buildOfficialLinks(scholarship)
   const verification = buildVerificationRecord(scholarship)
   const verificationState = verificationLabel(scholarship.verification_status)
-
-  const showTrustNote = loadState === 'fallback'
-  const providerName = readText(scholarship.official_source)
 
   return (
     <article className="sz-detail">

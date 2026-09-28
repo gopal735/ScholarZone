@@ -26,7 +26,6 @@ function SkeletonCard({ tier }) {
 export default function CountryPage() {
   const [counts, setCounts] = useState({})
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
 
   const countryNames = useMemo(() => {
     const all = Object.keys(countryImages)
@@ -59,19 +58,72 @@ export default function CountryPage() {
           setCounts(map)
           setLoading(false)
         }
-      } catch (e) {
+      } catch {
         if (!cancelled) {
-          setError(e)
           setLoading(false)
         }
       }
     }
-
     fetchCounts()
     return () => {
       cancelled = true
     }
   }, [countryNames])
+
+  // SEO meta tags
+  useEffect(() => {
+    const baseUrl = 'https://gopal735.github.io/ScholarZone'
+    
+    document.querySelectorAll('[data-sz-seo]').forEach(el => el.remove())
+    
+    const metaTags = [
+      { name: 'description', content: 'Explore scholarships by country. Discover verified scholarship opportunities across the world\'s top study abroad destinations with verified official sources.' },
+      { property: 'og:title', content: 'Explore Destinations | ScholarZone' },
+      { property: 'og:description', content: 'Discover verified scholarship opportunities across the world\'s top study abroad destinations with verified official sources.' },
+      { property: 'og:url', content: `${baseUrl}/ScholarZone/countries` },
+      { property: 'og:type', content: 'website' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: 'Explore Destinations | ScholarZone' },
+      { name: 'twitter:description', content: 'Discover verified scholarship opportunities across the world\'s top study destinations.' },
+      { name: 'robots', content: 'index, follow' },
+    ]
+    
+    document.querySelectorAll('[data-sz-seo]').forEach(el => el.remove())
+    
+    metaTags.forEach(meta => {
+      const el = document.createElement('meta')
+      Object.entries(meta).forEach(([k, v]) => { if (v) el.setAttribute(k, v) })
+      el.setAttribute('data-sz-seo', 'true')
+      document.head.appendChild(el)
+    })
+    
+    const canonical = document.createElement('link')
+    canonical.rel = 'canonical'
+    canonical.href = `${baseUrl}/ScholarZone/countries`
+    canonical.setAttribute('data-sz-seo', 'true')
+    document.head.appendChild(canonical)
+    
+    const script = document.createElement('script')
+    script.type = 'application/ld+json'
+    script.setAttribute('data-sz-seo', 'true')
+    script.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: 'Explore Destinations',
+      description: 'Discover verified scholarship opportunities across the world\'s top study abroad destinations.',
+      url: `${baseUrl}/ScholarZone/countries`,
+      mainEntity: {
+        '@type': 'ItemList',
+        itemListElement: []
+      }
+    }, null, 2)
+    script.setAttribute('data-sz-seo', 'true')
+    document.head.appendChild(script)
+    
+    return () => {
+      document.querySelectorAll('[data-sz-seo]').forEach(el => el.remove())
+    }
+  }, [])
 
   const getTier = (name) => {
     if (!FEATURED_COUNTRIES.includes(name)) return 'tier3'
@@ -96,7 +148,7 @@ export default function CountryPage() {
             ? countryNames.map((name) => (
                 <SkeletonCard key={name} tier={getTier(name)} />
               ))
-            :               countryNames.map((name, idx) => {
+            : countryNames.map((name, idx) => {
                 const total = counts[name] || 0
                 const theme = countryThemes[name] || defaultTheme
                 const tier = getTier(name)
@@ -137,23 +189,15 @@ export default function CountryPage() {
                       <h2 className="country-editorial-card__name">{name}</h2>
                       <div className="country-editorial-card__meta">
                         <span className="country-editorial-card__count">
-                          {total} {total === 1 ? 'scholarship' : 'scholarships'}
+                          {total} scholarship{total !== 1 ? 's' : ''}
                         </span>
-                        <span className="country-editorial-card__explore">
-                          Explore <span aria-hidden="true">&rarr;</span>
-                        </span>
+                        <span className="country-editorial-card__tier">{tier}</span>
                       </div>
                     </div>
                   </Link>
                 )
               })}
         </div>
-
-        {error && (
-          <p className="country-explorer__error">
-            Unable to load live counts. Showing available destinations only.
-          </p>
-        )}
       </div>
     </div>
   )

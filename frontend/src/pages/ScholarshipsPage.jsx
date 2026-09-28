@@ -1,4 +1,5 @@
 import { useSearchParams } from 'react-router-dom'
+import { useEffect } from 'react'
 import { useScholarshipDirectory } from '../hooks/useScholarshipDirectory'
 import ScholarshipList from '../components/ScholarshipList'
 import './ScholarshipsPage.css'
@@ -12,6 +13,50 @@ export default function ScholarshipsPage() {
   const headerDescription = countryParam
     ? `Explore verified scholarship opportunities in ${countryParam}.`
     : 'Compare key funding details, degree levels, countries and deadlines in one focused directory.'
+
+  // SEO meta tags
+  useEffect(() => {
+    const baseUrl = 'https://gopal735.github.io/ScholarZone'
+    const canonicalUrl = countryParam
+      ? `${baseUrl}/ScholarZone/scholarships?country=${encodeURIComponent(countryParam)}`
+      : `${baseUrl}/ScholarZone/scholarships`
+    const title = countryParam ? `${countryParam} Scholarships | ScholarZone` : 'All Scholarships | ScholarZone'
+    const description = countryParam
+      ? `Explore verified scholarship opportunities in ${countryParam}. Filter by degree, funding, and deadline. Every listing has a verified official source.`
+      : 'Compare key funding details, degree levels, countries and deadlines in one focused directory. 487+ verified scholarships worldwide.'
+
+    // Remove existing SEO tags
+    document.querySelectorAll('[data-sz-seo]').forEach(el => el.remove())
+    
+    const metaTags = [
+      { name: 'description', content: description },
+      { property: 'og:title', content: title },
+      { property: 'og:description', content: description },
+      { property: 'og:url', content: canonicalUrl },
+      { property: 'og:type', content: 'website' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: title },
+      { name: 'twitter:description', content: description },
+      { name: 'robots', content: 'index, follow' },
+    ]
+    
+    metaTags.forEach(meta => {
+      const el = document.createElement('meta')
+      Object.entries(meta).forEach(([k, v]) => { if (v) el.setAttribute(k, v) })
+      el.setAttribute('data-sz-seo', 'true')
+      document.head.appendChild(el)
+    })
+    
+    const canonical = document.createElement('link')
+    canonical.rel = 'canonical'
+    canonical.href = canonicalUrl
+    canonical.setAttribute('data-sz-seo', 'true')
+    document.head.appendChild(canonical)
+    
+    return () => {
+      document.querySelectorAll('[data-sz-seo]').forEach(el => el.remove())
+    }
+  }, [countryParam])
 
   return (
     <div className="scholarships-page">

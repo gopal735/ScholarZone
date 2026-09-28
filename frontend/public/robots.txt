@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /ScholarZone/
+Allow: /ScholarZone/scholarships/
+Allow: /ScholarZone/scholarships/
+Allow: /ScholarZone/countries/
+
+Disallow: /ScholarZone/admin
+Disallow: /ScholarZone/login
+Disallow: /ScholarZone/register
+Disallow: /ScholarZone/saved
+Disallow: /ScholarZone/compare
+
+Sitemap: https://gopal735.github.io/ScholarZone/sitemap.xml

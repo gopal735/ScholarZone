@@ -101,6 +101,65 @@ export default function HomePage() {
   const countriesCount = new Set(scholarships.map((s) => s.country)).size
   const verifiedCount = scholarships.filter((s) => s.verified || s.verification_status === 'active').length
 
+  // SEO meta tags
+  useEffect(() => {
+    const baseUrl = 'https://gopal735.github.io/ScholarZone'
+    
+    // Remove existing SEO tags
+    document.querySelectorAll('[data-sz-seo]').forEach(el => el.remove())
+    
+    const metaTags = [
+      { name: 'description', content: 'Discover 487+ verified scholarships worldwide. Search by country, degree, funding type, and deadline. Every listing has a verified official source and image provenance.' },
+      { property: 'og:title', content: 'ScholarZone – Verified Scholarship Directory' },
+      { property: 'og:description', content: 'Discover 487+ verified scholarships worldwide. Search by country, degree, funding type, and deadline. Every listing has a verified official source and image provenance.' },
+      { property: 'og:url', content: `${baseUrl}/` },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:image', content: `${baseUrl}/og-image.png` },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: 'ScholarZone – Verified Scholarship Directory' },
+      { name: 'twitter:description', content: 'Discover 487+ verified scholarships worldwide. Search by country, degree, funding type, and deadline.' },
+      { name: 'robots', content: 'index, follow' },
+    ]
+    
+    metaTags.forEach(meta => {
+      const el = document.createElement('meta')
+      Object.entries(meta).forEach(([k, v]) => { if (v) el.setAttribute(k, v) })
+      el.setAttribute('data-sz-seo', 'true')
+      document.head.appendChild(el)
+    })
+    
+    const canonical = document.createElement('link')
+    canonical.rel = 'canonical'
+    canonical.href = `${baseUrl}/`
+    canonical.setAttribute('data-sz-seo', 'true')
+    document.head.appendChild(canonical)
+    
+    // JSON-LD structured data for WebSite
+    const script = document.createElement('script')
+    script.type = 'application/ld+json'
+    script.setAttribute('data-sz-seo', 'true')
+    script.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: 'ScholarZone',
+      url: `${baseUrl}/`,
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: `${baseUrl}/scholarships?search={search_term_string}`
+        },
+        'query-input': 'required name=search_term_string'
+      }
+    }, null, 2)
+    script.setAttribute('data-sz-seo', 'true')
+    document.head.appendChild(script)
+    
+    return () => {
+      document.querySelectorAll('[data-sz-seo]').forEach(el => el.remove())
+    }
+  }, [])
+
   /* The story needs a stable set to step through. Taking the first few
      in directory order keeps it deterministic between renders, and the
      count is clamped again inside the component in case the directory
