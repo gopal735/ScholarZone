@@ -14,7 +14,7 @@ import time
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 from app.database import get_session_factory
-from app.services.image_coverage_runner import ImageCoverageRunner
+from app.services.image_coverage_runner import MAX_WORKERS, ImageCoverageRunner
 
 PERSIST = "--persist" in sys.argv
 MAX_PASSES = int(sys.argv[1]) if len(sys.argv) > 1 and sys.argv[1].isdigit() else 8
@@ -74,7 +74,7 @@ def main() -> None:
             factory,
             dry_run=not PERSIST,
             batch_size=25,
-            max_workers=10,
+            max_workers=MAX_WORKERS,
             exclude_quarantined=True,
             skip_terminally_evaluated=True,
         )

@@ -21,7 +21,12 @@ def _escape_like(value: str) -> str:
 
 
 def _filter_conditions(query: ScholarshipQuery):
-    conditions = []
+    # Quarantined rows are non-scholarships (site landing pages, aggregators)
+    # that were caught during catalogue review. They must never appear in the
+    # public directory: showing a "Welcome to GOV.UK" landing page as a
+    # scholarship is a correctness failure, and it inflates the public count
+    # above the number of real records.
+    conditions = [Scholarship.verification_status != "quarantined"]
     search = _normalise_optional_filter(query.search)
     country = _normalise_optional_filter(query.country)
     degree = _normalise_optional_filter(query.degree)

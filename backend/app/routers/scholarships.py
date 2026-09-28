@@ -56,36 +56,47 @@ def get_scholarship_stats(
     session: Session = Depends(get_db),
 ) -> ScholarshipStatsResponse:
     """Live aggregate statistics for the public homepage and trust bar."""
-    total = session.execute(select(func.count(Scholarship.id))).scalar() or 0
-    countries = session.execute(select(func.count(func.distinct(Scholarship.country)))).scalar() or 0
+    # Quarantined rows are non-scholarships excluded from the directory, so
+    # they must not be counted here either. Counting them would advertise a
+    # total the public list cannot actually show.
+    listed = Scholarship.verification_status != "quarantined"
+    total = session.execute(
+        select(func.count(Scholarship.id)).where(listed)
+    ).scalar() or 0
+    countries = session.execute(
+        select(func.count(func.distinct(Scholarship.country))).where(listed)
+    ).scalar() or 0
     open_count = session.execute(
-        select(func.count(Scholarship.id)).where(Scholarship.status == "open")
+        select(func.count(Scholarship.id)).where(listed, Scholarship.status == "open")
     ).scalar() or 0
     closing_soon = session.execute(
-        select(func.count(Scholarship.id)).where(Scholarship.status == "closing-soon")
+        select(func.count(Scholarship.id)).where(listed, Scholarship.status == "closing-soon")
     ).scalar() or 0
     upcoming = session.execute(
-        select(func.count(Scholarship.id)).where(Scholarship.status == "upcoming")
+        select(func.count(Scholarship.id)).where(listed, Scholarship.status == "upcoming")
     ).scalar() or 0
     verified_active = session.execute(
         select(func.count(Scholarship.id)).where(
-            Scholarship.verification_status == "active"
+            listed, Scholarship.verification_status == "active"
         )
     ).scalar() or 0
     fully_funded = session.execute(
         select(func.count(Scholarship.id)).where(
+            listed,
             Scholarship.funding.ilike("%fully funded%"),
-                       Scholarship.funding.not_ilike("%partial%"),
+            Scholarship.funding.not_ilike("%partial%"),
         )
     ).scalar() or 0
     with_image = session.execute(
         select(func.count(Scholarship.id)).where(
+            listed,
             Scholarship.image_url.isnot(None),
             Scholarship.image_url != "",
         )
     ).scalar() or 0
     with_official_source = session.execute(
         select(func.count(Scholarship.id)).where(
+            listed,
             Scholarship.official_source.isnot(None),
             Scholarship.official_source != "",
         )
