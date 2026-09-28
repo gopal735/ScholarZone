@@ -101,6 +101,21 @@ SECTION_KEYWORDS: dict[str, tuple[str, ...]] = {
 
 _HEADING_RE = re.compile(r"^(h[1-6])$")
 
+# Additional patterns that indicate a heading-like element
+_STRONG_HEADING_RE = re.compile(r"^(strong|b)$")
+# Only match known section heading keywords - NOT arbitrary sentences
+_HEADING_LIKE_P_RE = re.compile(
+    r"^(Eligibility|Application|Documents|Funding|Benefits|Requirements|"
+    r"Selection|Duration|Programme|Program|Scholarship|Introduction|Overview|"
+    r"About|Contact|Reminder|Deadline|Time Frames?|Eligibility|Documents?|"
+    r"Application|Selection|Language|Renewal|Programme?|Funding|Coverage|"
+    r"Criteria|Timeline|Procedure|Instructions|Checklist|Overview|Purpose|"
+    r"Description|Summary|Background|Eligibility|Criteria|Documents?|Apply|"
+    r"Procedure|Process|Steps|Guidelines|Instructions|Checklist|FAQ|Contact|"
+    r"Reminder|Time Frames?):?$",
+    re.IGNORECASE,
+)
+
 
 @dataclass
 class PageSection:
@@ -131,6 +146,12 @@ def split_sections(html: str) -> list[PageSection]:
 
     Text before the first heading is kept under a synthetic "page" heading so
     an intro paragraph is not lost.
+
+    Headings are detected from:
+    - Standard <h1>-<h6> tags
+    - <strong> and <b> tags that contain header-like text
+    - <p> tags that look like section headers (short, ending with colon,
+      or matching known section keywords)
     """
     try:
         from bs4 import BeautifulSoup
@@ -156,12 +177,29 @@ def split_sections(html: str) -> list[PageSection]:
             return
         current.lines.append(text)
 
-    for element in soup.find_all(["h1", "h2", "h3", "h4", "h5", "h6", "p", "li", "td", "th", "dt", "dd"]):
+    def is_heading_element(element) -> tuple[bool, str]:
+        """Return (is_heading, heading_text) for an element."""
+        name = element.name or ""
+        if _HEADING_RE.match(name):
+            return True, element.get_text(" ", strip=True)[:160]
+        if _STRONG_HEADING_RE.match(name):
+            text = element.get_text(" ", strip=True)
+            if text and 3 <= len(text) <= 160:
+                # Strong/b tags with reasonable length text are likely headings
+                return True, text[:160]
+        if name == "p":
+            text = element.get_text(" ", strip=True)
+            if text and 3 <= len(text) <= 160 and _HEADING_LIKE_P_RE.match(text):
+                return True, text[:160]
+        return False, ""
+
+    for element in soup.find_all(["h1", "h2", "h3", "h4", "h5", "h6", "strong", "b", "p", "li", "td", "th", "dt", "dd"]):
         try:
-            if _HEADING_RE.match(element.name or ""):
+            is_heading, heading_text = is_heading_element(element)
+            if is_heading:
                 if current.lines or current.heading != "page":
                     sections.append(current)
-                current = PageSection(heading=element.get_text(" ", strip=True)[:160])
+                current = PageSection(heading=heading_text[:160])
                 continue
             add_text(element.get_text(" ", strip=True))
         except Exception:  # noqa: BLE001 - malformed markup must not abort a page
