@@ -823,6 +823,11 @@ SECTION_TEXT_FIELD: dict[str, str] = {
     "best_fit": "best_fit",
     "duration": "duration",
     "application_period": "application_period",
+    # renewal_conditions was emitted by the section extractor and then
+    # discarded because no column mapped it. Renewal rules, exclusions and
+    # continuation conditions are exactly what 'notes' is for.
+    "renewal_conditions": "notes",
+    "program_type": "program_type",
 }
 
 # The section-aware path can additionally fill these canonical columns.

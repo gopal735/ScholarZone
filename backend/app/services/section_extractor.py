@@ -28,6 +28,39 @@ from typing import Any
 
 from .scholarship_extractor import _is_usable_detail_value, _normalize_whitespace
 
+# Widget furniture that survives HTML tag stripping. Pages built with an icon
+# font rather than <img> decode to bare words - a Humboldt selection section
+# was yielding "Icon Notification" into selection_notes, which is UI chrome,
+# not a statement the official page made.
+_CHROME_WORDS = frozenset(
+    {
+        "icon", "icons", "notification", "notifications", "chevron", "caret",
+        "arrow", "menu", "close", "search", "share", "print", "expand",
+        "collapse", "toggle", "tooltip", "breadcrumb", "divider", "spinner",
+        "placeholder", "loader", "click", "here", "more", "next", "previous",
+        "back", "open", "link", "read", "learn", "show", "see", "view",
+    }
+)
+_CHROME_PREFIX_RE = re.compile(
+    r"^\s*(?:icon|icons|notification|notifications|chevron|caret|arrow|menu|"
+    r"close|search|share|print|expand|collapse|toggle|tooltip|breadcrumb|"
+    r"pagination|spinner|loader|placeholder|divider)\s*(?:[\s:.\-–—]|$)",
+    re.IGNORECASE,
+)
+
+
+def _is_ui_chrome(value: str) -> bool:
+    """True when a value is widget furniture rather than page content."""
+    if not value:
+        return True
+    if _CHROME_PREFIX_RE.match(value):
+        return True
+    words = re.findall(r"[A-Za-z]+", value)
+    # A value made only of chrome words, in any order, is not a fact.
+    return bool(words) and len(words) <= 4 and all(
+        w.lower() in _CHROME_WORDS for w in words
+    )
+
 # --------------------------------------------------------------------------
 # Section classification
 # --------------------------------------------------------------------------
@@ -60,7 +93,10 @@ SECTION_KEYWORDS: dict[str, tuple[str, ...]] = {
         "programme", "program", "course", "study", "duration", "structure",
         "curriculum", "intake", "overview", "about", "introduction",
     ),
-    "renewal": ("renew", "continuation", "extension", "maintain"),
+    # "renewal" is spelled out so it outranks the equally long "award" in a
+    # heading like "Renewal of the award", which otherwise classified as
+    # funding and lost its renewal conditions entirely.
+    "renewal": ("renewal", "renew", "continuation", "extension", "maintain"),
 }
 
 _HEADING_RE = re.compile(r"^(h[1-6])$")
@@ -213,7 +249,7 @@ FIELD_RULES: tuple[tuple[str, tuple[str, ...], tuple[str, ...]], ...] = (
         "bachelor", "master", "gpa", "grade", "age", "experience", "citizenship",
         "must", "open to", "limited to",
     )),
-    ("requirements", ("documents", "eligibility"), (
+    ("requirements", ("eligibility",), (
         "submit", "provide", "require", "upload", "certificate", "transcript",
         "passport", "curriculum", "cv", "reference", "letter", "proposal",
         "portfolio", "essay", "diploma", "testimonial",
@@ -253,8 +289,42 @@ FIELD_RULES: tuple[tuple[str, tuple[str, ...], tuple[str, ...]], ...] = (
         "aimed at", "designed for", "intended for", "ideal for", "suitable for",
         "target", "seeking", "aspiring",
     )),
+    # A section that lists what to send is a documents list, not an
+    # eligibility or generic-requirements list. Routing it to 'requirements'
+    # left the documents column empty on 416 records whose official page
+    # listed every required document by name.
+    #
+    # Most providers do not give documents their own heading; they put them
+    # inside "How to apply". The application topic is therefore included, but
+    # only when the line actually names a document, so ordinary application
+    # prose is not misfiled as a document requirement.
+    ("documents", ("documents", "application"), (
+        "transcript", "certificate", "passport", "id card", "identity",
+        "curriculum vitae", "cv", "motivation", "recommendation", "reference",
+        "proposal", "portfolio", "essay", "statement", "diploma", "transcripts",
+        "academic records", "language test", "language certificate",
+    )),
+    # The overview of a programme page is its description. Official pages
+    # routinely open with "The X Scholarship is ..." under a heading like
+    # About / Programme / Overview, and that sentence is the authoritative
+    # description of what the award is.
+    ("description", ("programme", "eligibility", "funding", "selection"), (
+        "scholarship", "fellowship", "programme", "program", "award", "grant",
+        "aims to", "designed to", "intended to", "supports", "offers", "provides",
+        "open to", "is a ", "is an ", "purpose",
+    )),
     ("renewal_conditions", ("renewal",), (
         "renew", "extend", "maintain", "continuation", "further year",
+    )),
+    # Programme classification. Only stated explicitly on the page - the
+    # scholarship calling itself a fellowship, exchange or doctoral award is
+    # the official's own classification. Degree level is deliberately NOT a
+    # trigger: inferring "doctoral" from a Master's record would fabricate it.
+    ("program_type", ("programme",), (
+        "scholarship", "fellowship", "exchange", "traineeship", "studentship",
+        "bursary", "grant", "award", "studentship", "postdoctoral", "post-doctoral",
+        "doctoral", "phd", "doctorate", "master's", "masters", "mba", "bachelor",
+        "undergraduate", "graduate", "research studentship", "visiting",
     )),
 )
 
@@ -322,7 +392,10 @@ def extract_sections(html: str) -> list[ExtractedFact]:
     # section usually states the stipend, the tuition treatment and the travel
     # allowance as separate lines, and an earlier revision stopped at the first
     # match and silently discarded the rest.
-    MAX_PER_FIELD_PER_SECTION = 3
+    # Three facts per section per field was low enough to truncate real
+    # document lists (a four-item list silently lost its fourth item) and
+    # funding sections, which commonly enumerate more than three items.
+    MAX_PER_FIELD_PER_SECTION = 6
 
     for section in sections:
         topic = classify_section(section.heading, section.lines[:2])
@@ -339,6 +412,8 @@ def extract_sections(html: str) -> list[ExtractedFact]:
                 if not any(kw in lowered for kw in keywords):
                     continue
                 if not _is_usable_detail_value(line):
+                    continue
+                if _is_ui_chrome(line):
                     continue
                 # A labelled line was already captured with higher confidence.
                 if _TABLE_LABEL_RE.match(line):
