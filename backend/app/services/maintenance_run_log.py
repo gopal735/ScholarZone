@@ -25,12 +25,17 @@ from ..models import MaintenanceRun
 
 logger = logging.getLogger(__name__)
 
-WORKER_VERSION = "maintenance/1.0"
+WORKER_VERSION = "maintenance/1.1"
 
 STATUS_RUNNING = "running"
 STATUS_OK = "ok"
 STATUS_PARTIAL = "partial"
 STATUS_FAILED = "failed"
+
+# The workflow may dispatch a second attempt after a failure. Recording the
+# attempt number on every run keeps the retries honest in the history: without
+# it, a retried run looks like an unrelated single failure two cycles later.
+RETRY_ATTEMPT_ENV = "SZ_RETRY_ATTEMPT"
 
 # A detail blob is JSON, so it must be JSON-serialisable. Stage reports carry
 # per-record failure lists that can be long, so the payload is truncated to
@@ -75,7 +80,12 @@ class MaintenanceRunRecorder:
 
     session_factory: sessionmaker[Session]
     run_id: str = field(default_factory=lambda: uuid4().hex[:16])
-    worker: str = field(default_factory=lambda: f"{WORKER_VERSION}+{socket.gethostname()[:24]}")
+    worker: str = field(
+        default_factory=lambda: (
+            f"{WORKER_VERSION}+{socket.gethostname()[:24]}"
+            f"+attempt{os.getenv(RETRY_ATTEMPT_ENV, '1')}"
+        )
+    )
     dry_run: bool = False
     started_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
     stages: list[dict] = field(default_factory=list)

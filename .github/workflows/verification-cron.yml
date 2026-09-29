@@ -106,3 +106,75 @@ jobs:
             --limit "${{ github.event.inputs.limit || '60' }}" \
             --workers 4 \
             ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}
+
+  # Bounded retry for transient failures.
+  #
+  # The concurrency group above is authoritative: at most one maintenance run
+  # exists at a time, so this can never overlap the next scheduled run or a
+  # manual dispatch. A retry is a fresh process against a durable cursor, so it
+  # resumes rather than redoing, and every attempt writes its own MaintenanceRun
+  # row - a retried run leaves several honest records rather than one
+  # overwritten one.
+  #
+  # There is no internal retry loop: the worker never re-runs a stage, so this
+  # cannot become an unbounded cycle. Two attempts is enough to ride out a Neon
+  # connection reset or a transient network failure without spending runner
+  # minutes on a genuine fault.
+  #
+  # Note on classification: GitHub Actions cannot branch on log text, so this
+  # job retries on *any* non-zero exit, including fatal ones such as a missing
+  # secret. The worker prints a "failure classification" block
+  # (transient / fatal / unknown) so a human can tell instantly whether waiting
+  # would have helped. Wiring the retry to only transient classes would require
+  # a non-zero exit code reserved for them, which is deliberately not done
+  # here: the exit code contract from the previous phase is preserved as-is.
+  retry:
+    timeout-minutes: 45
+    needs: maintain
+    if: failure()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    concurrency:
+      group: scholarzone-maintenance
+      cancel-in-progress: false
+    steps:
+      - name: Explain retry
+        run: |
+          echo "The maintenance run failed. Retrying once."
+          echo ""
+          echo "If the previous run's log shows 'classification: fatal' - for"
+          echo "example a missing secret, a failed import, or a schema error -"
+          echo "this retry will fail identically. Check the repository secret"
+          echo "and the application version before running again manually."
+
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+
+      - name: Install dependencies
+        working-directory: backend
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Retry maintenance worker
+        working-directory: backend
+        env:
+          SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
+          SCHOLARZONE_ENVIRONMENT: production
+          PYTHONPATH: '.'
+          # Marks the attempt so the MaintenanceRun record says which one this is.
+          SZ_RETRY_ATTEMPT: '2'
+        run: |
+          python -m app.jobs.scholarzone_maintenance \
+            --stage "${{ github.event.inputs.stage || 'all' }}" \
+            --limit "${{ github.event.inputs.limit || '60' }}" \
+            --workers 4 \
+            ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}

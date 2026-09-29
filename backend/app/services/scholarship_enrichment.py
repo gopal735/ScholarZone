@@ -1423,12 +1423,20 @@ class ScholarshipEnrichmentService:
                     )
                     continue
                 if current_date is None:
+                    if not self._gate_mutation(
+                        session, scholarship, orm_field, None, value, updates, source_url
+                    ):
+                        continue
                     setattr(scholarship, orm_field, value)
                     updates.append(
                         FieldUpdate(orm_field, "fill", "deadline parsed from official page",
                                     added_items=[value.isoformat()], source_url=source_url)
                     )
                 elif current_date != value:
+                    if not self._gate_mutation(
+                        session, scholarship, orm_field, current_date, value, updates, source_url
+                    ):
+                        continue
                     setattr(scholarship, orm_field, value)
                     updates.append(
                         FieldUpdate(orm_field, "replace",
@@ -1476,6 +1484,10 @@ class ScholarshipEnrichmentService:
                             FieldUpdate(orm_field, "skipped", "fill requires high confidence", source_url=source_url)
                         )
                         continue
+                if not self._gate_mutation(
+                    session, scholarship, orm_field, current, resolved_value, updates, source_url
+                ):
+                    continue
                 setattr(scholarship, orm_field, resolved_value)
                 updates.append(
                     FieldUpdate(
@@ -1487,6 +1499,62 @@ class ScholarshipEnrichmentService:
                     )
                 )
         return updates
+
+    @staticmethod
+    def _gate_mutation(
+        session: Session,
+        scholarship: Scholarship,
+        orm_field: str,
+        current: Any,
+        proposed: Any,
+        updates: list[FieldUpdate],
+        source_url: str,
+    ) -> bool:
+        """Shared safety gate for enrichment writes.
+
+        Enrichment used to write straight through. A source page that moved a
+        deadline backwards, collapsed a funding value, or started oscillating
+        between two values was merged without question, because only the
+        verification path had a safety gate.
+
+        Returns True when the write may proceed. When it may not, the mutation
+        is recorded as skipped and routed to the existing review queue, so the
+        change is never silently lost.
+        """
+        from .mutation_safety_gate import evaluate_mutation, record_blocked_mutation
+
+        verdict = evaluate_mutation(scholarship, orm_field, current, proposed)
+        if verdict.allowed:
+            return True
+
+        updates.append(
+            FieldUpdate(
+                orm_field,
+                "skipped",
+                f"held by safety gate ({verdict.severity}): {verdict.reason_text}",
+                source_url=source_url,
+            )
+        )
+        try:
+            record_blocked_mutation(
+                session,
+                scholarship.id,
+                orm_field,
+                verdict,
+                old_value=current,
+                new_value=proposed,
+                source_url=source_url,
+            )
+        except Exception:  # noqa: BLE001
+            # The mutation is already refused. A failure to record the review
+            # must not turn a refusal into an approval.
+            logger.warning(
+                "could not record blocked mutation for id=%s field=%s",
+                scholarship.id,
+                orm_field,
+                exc_info=True,
+            )
+        return False
 
     def _apply_status(
         self,

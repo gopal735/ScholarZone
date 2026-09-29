@@ -406,7 +406,9 @@ class TestActivatedFeaturesAreGenuinelyAutonomous:
         assert worker.EXIT_OK == 0
         assert worker.EXIT_STAGE_FAILED != 0
         assert worker.EXIT_FATAL != 0
-        assert worker.STAGE_DEPENDENCIES["quarantine"] == ("enrich",)
+        # Quarantine was decoupled from enrichment: it sweeps the whole valid
+        # catalogue on its own cursor, so it must have no prerequisite at all.
+        assert worker.STAGE_DEPENDENCIES["quarantine"] == ()
 
     def test_dry_run_cannot_advance_a_cursor(self, factory):
         _real(factory, 1)

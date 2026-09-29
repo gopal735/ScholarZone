@@ -273,28 +273,62 @@ idempotent:
 | `enrich` | Fills empty fields from the record's official source, from a durable cursor | `verify` |
 | `images` | Covers records that have not reached a terminal image outcome | `verify` |
 | `discover` | Finds new opportunities in countries already represented | `verify` |
-| `quarantine` | Structurally checks records for "this is not a scholarship" | `enrich` |
+| `quarantine` | Structurally checks records for "this is not a scholarship" | — |
 
-`quarantine` runs after `enrich` on purpose: a record can only be judged
-structurally empty *after* the system has actually tried to fill it, otherwise
-the catalogue would quarantine its own unfinished work.
+`quarantine` deliberately has no prerequisite. It runs on its own durable
+cursor and costs a fraction of a second per batch, so it sweeps the whole valid
+catalogue every cycle regardless of where enrichment happens to be.
+
+### Cost control
+
+Every stage is limited per run, concurrency is capped, already-complete records
+are skipped rather than re-fetched, and records that reached a terminal image
+outcome are not crawled again.
+
+**Verification priority is calculated in a fixed number of queries.** Scoring
+used to issue five aggregates per candidate, so filling a queue of 100 issued
+500 round-trips to Neon. The signals are unchanged — same weights, same
+arithmetic, same ranking — but they are now collected for the whole batch in
+five grouped queries and scored in memory. Measured: 10 candidates 50 → 5
+queries, 100 candidates 500 → 5.
+
+**The image stage probes each domain once per run.** Reachability is a property
+of a domain, not of a page, so the preflight verdict is cached per domain for
+the life of a run and shared across the many records that point at the same
+provider. The cache is not persisted, because a domain that was unreachable an
+hour ago may be reachable now. A separate plan-only mode reports scope with no
+network request at all, so a maintenance dry run no longer spends nine minutes
+crawling to produce a number nobody can act on.
+
+**Metrics.** Each run prints a compact block and stores the same numbers in
+`MaintenanceRun`: records scanned, changed, skipped, source failures, retries,
+review items created, per-stage runtime, and total runtime. This is not a
+monitoring service and does not phone home; it is the existing log, made
+greppable.
 
 ### Safety layers
 
 Two capabilities run as decision layers rather than as their own expensive
 stages, because that is where they are useful and where they cost nothing:
 
-- **Anomaly detection** gates automatic updates in the verification engine. A
-  candidate change rated HIGH or CRITICAL — a deadline moving backwards, a
-  funding value collapsing, a value oscillating between runs — is not written
-  automatically. It surfaces in the human review queue instead, which the
-  verification result already populates. The gate is a pure function over the
-  change: no extra query, no extra fetch, and it can only ever *reduce*
-  automatic mutation. If the detector itself fails, it fails **closed** into
-  review rather than waving the change through.
-- **Catalogue quarantine** is the structural gate described above. It requires
-  three independent signals, deletes nothing, writes every decision to the
-  review queue with its evidence, and is idempotent.
+- **One shared anomaly gate** (`app/services/mutation_safety_gate.py`) decides
+  every automatic mutation, whether the proposal came from verification or
+  from enrichment. A change rated HIGH or CRITICAL — a deadline moving
+  backwards, a funding value collapsing, a value oscillating between runs — is
+  never written automatically; it is routed to the existing review queue
+  instead, keyed so a repeated run cannot create duplicate reviews. The gate
+  is a pure function over the change: no query, no fetch, no paid service. It
+  can only ever *reduce* automatic mutation, and it **fails closed** — if the
+  detector itself raises, the mutation is held for review rather than waved
+  through. Enrichment previously had no gate at all, so a source page that
+  moved a deadline backwards was merged silently.
+- **Catalogue quarantine** is the structural gate. It runs on its own cursor,
+  independent of enrichment, requires three independent signals, deletes
+  nothing, writes every decision to the review queue with its evidence, is
+  idempotent, and needs no network. It deliberately does *not* depend on
+  enrichment having reached a record: the earlier coupling meant a record
+  discovered today was never assessed until the enrichment cursor happened to
+  get to it, which is exactly where new records arrive.
 
 Beneath the detector sit `change_impact_staleness` and `evidence_arbitration`;
 they are reached through it rather than reimplemented.
@@ -319,7 +353,8 @@ cadence, and a failed batch is re-selected next run rather than skipped.
 Useful flags: `--stage` (repeatable), `--limit`, `--workers`, `--dry-run`
 (reads and reports the plan, writes nothing).
 
-**Cost control.** Every stage is limited per run, concurrency is capped, already-complete records are skipped rather than re-fetched, and records that reached a terminal image outcome are not crawled again. Each run records scanned / changed / skipped / failure counts and stage runtimes in `MaintenanceRun`, so the actual cost is measurable rather than assumed.
+**Cost control.** See the resource notes above; per-run cost is bounded and
+recorded in `MaintenanceRun` so usage can be measured rather than guessed.
 
 **Honest platform limits.** GitHub-hosted scheduled workflows can be delayed by platform load, and public repositories can have them disabled after long inactivity. Neither is something this repository can work around. The worker is designed so that a delayed, skipped, cancelled or repeated run leaves the catalogue consistent and simply continues from the cursor.
 
@@ -332,8 +367,8 @@ A control surface for the verification queue, metric cards, search and filter, a
 
 ### Test suite
 
-- **76** test files under `backend/tests/`
-- **2969** tests
+- **77** test files under `backend/tests/`
+- **3019** tests
 
 The suite exercises the verification engine, image validation and discovery, the discovery pipeline, lifecycle transitions, source health, schema compatibility, API endpoints, and the autonomous maintenance path.
 
@@ -453,7 +488,7 @@ ScholarZone/
 │   │   ├── jobs/                 # scholarzone_maintenance: the scheduled worker
 │   │   ├── scheduler_v2.py       # Verification engine
 │   │   ├── services/             # Discovery, images, reviews, source health, cursor
-│   ├── tests/                    # 76 test files, 2969 tests
+│   ├── tests/                    # 77 test files, 3019 tests
 │   ├── Dockerfile                # Single-stage python:3.11-slim
 │   ├── render.yaml               # Alternative deployment config, not production
 │   └── requirements.txt
@@ -494,6 +529,36 @@ The job checks out the repository, installs `backend/requirements.txt` on **Pyth
 It does **not** receive `SCHOLARZONE_VERIFICATION_SECRET` or `SCHOLARZONE_ADMIN_SECRET`. Those guard HTTP endpoints in `app/routers`; the worker imports no router and makes no HTTP call, so passing them would grant the job credentials it cannot use. The worker also refuses to start if production mode does not resolve to a PostgreSQL URL, and exits non-zero if any stage fails.
 
 The legacy `app/scheduler.py` APScheduler module has been deleted along with the dependency: nothing in the application imported it, and it existed only behind a test stub. The intelligent verification engine in `app/scheduler_v2.py` and `app/services/scheduler_engine.py` is preserved and is what the worker actually calls.
+
+### Failure handling and retry
+
+A stage failure makes the process exit non-zero, so a broken run is never
+recorded as a green workflow. On top of that the workflow retries **once**,
+and only when the run failed.
+
+- **Transient** — a temporary Neon connection failure, an SSL or timeout error,
+  a name-resolution or gateway problem. Retrying is reasonable because the next
+  attempt may genuinely differ.
+- **Fatal** — a missing secret, invalid production configuration, a broken
+  import, a schema or migration failure, a code error. These are never
+  improved by running again.
+
+The worker prints a **failure classification** block (`transient` / `fatal` /
+`unknown`) so a human can tell immediately whether waiting would have helped.
+GitHub Actions cannot branch on log text, so the retry job itself fires on any
+non-zero exit; a fatal failure will therefore cost one redundant attempt. That
+is a deliberate trade: the exit-code contract stays exactly as it was, and the
+cost is bounded at one run rather than a loop.
+
+There is no internal retry loop — the worker never re-runs a stage. A retry is
+a fresh process against a durable cursor, so it resumes rather than redoes, and
+each attempt writes its own `MaintenanceRun` row tagged with the attempt
+number. The concurrency group is shared by both jobs, so a retry can never
+overlap the next scheduled run or a manual dispatch.
+
+**Known limitation:** a stage failure costs up to 24 hours before the next
+scheduled cycle. GitHub cron has no retry semantics, so recovery is a manual
+dispatch.
 
 ### Cost and platform limits
 

@@ -55,23 +55,40 @@ EXIT_OK = 0
 EXIT_STAGE_FAILED = 1
 EXIT_FATAL = 2
 
+# Bounded by construction, and named so the bounds are part of the contract
+# rather than a literal buried in an argument parser.
+DEFAULT_STAGE_LIMIT = 60
+MAX_STAGE_WORKERS = 16
+
 # Stage order reflects dependencies: verification establishes which records
 # are current, and the remaining stages all operate on that outcome.
-#
-# `quarantine` runs last and depends on enrichment because enrichment is what
-# fills a record in. Quarantining a record for being structurally empty must
-# never happen before the system has actually tried to enrich it, or the
-# catalogue would quarantine its own unfinished work.
 STAGE_ORDER = ("verify", "enrich", "images", "discover", "quarantine")
 
 # A stage that fails stops the stages that depend on it, but not the ones that
 # do not. Verification has no prerequisite and nothing gates it.
+#
+# `quarantine` deliberately does NOT depend on `enrich`.
+#
+# It used to, so that a record could not be judged structurally empty until
+# enrichment had tried to fill it. That coupling had a worse failure mode than
+# the one it avoided: quarantine inherits the *enrichment* cursor, so a record
+# the enrichment sweep had not yet reached - including anything discovered
+# today - was never assessed, and the safety gate silently had a hole exactly
+# where new records arrive.
+#
+# The two concerns are now separated by time rather than by dependency.
+# Quarantine runs on its own cursor, makes no network call, and costs a
+# fraction of a second per batch, so it can safely sweep the whole valid
+# catalogue every cycle regardless of where enrichment happens to be. Enrichment
+# only ever fills fields on an existing record; a record that has never been
+# enriched is a record that has more fields empty, and quarantine's own three
+# independent signals - not field emptiness alone - decide.
 STAGE_DEPENDENCIES: dict[str, tuple[str, ...]] = {
     "verify": (),
     "enrich": ("verify",),
     "images": ("verify",),
     "discover": ("verify",),
-    "quarantine": ("enrich",),
+    "quarantine": (),
 }
 
 
@@ -128,6 +145,90 @@ def _skipped(name: str, reason: str) -> StageReport:
 
 class FatalError(RuntimeError):
     """Unrecoverable problem: the run cannot meaningfully continue."""
+
+
+# Failure classification, used by the workflow's bounded retry.
+#
+# A retry is only ever worth it for something that might be different next
+# time. Retrying a missing secret, a bad import or a schema mismatch just burns
+# runner minutes to arrive at the same error, so those are never retried.
+TRANSIENT_PATTERNS = (
+    "connection refused",
+    "connection reset",
+    "connection aborted",
+    "could not connect",
+    "server closed the connection",
+    "operationalerror",
+    "ssl",
+    "timed out",
+    "timeout",
+    "temporarily unavailable",
+    "bad gateway",
+    "service unavailable",
+    "eof occurred",
+    "name resolution",
+    "temporary failure in name resolution",
+    "network is unreachable",
+    "packet loss",
+    "502",
+    "503",
+    "504",
+)
+
+FATAL_PATTERNS = (
+    "scholarzone_database_url is required",
+    "requires a postgresql",
+    "cannot import",
+    "imports failed",
+    "invalid configuration",
+    "database initialisation failed",
+    "no such table",
+    "undefined column",
+    "relation does not exist",
+    "already exists",
+    "syntaxerror",
+    "indentationerror",
+    "modulenotfounderror",
+    "importerror",
+)
+
+
+def classify_failure(message: str | None) -> str:
+    """Classify a failure as ``transient``, ``fatal`` or ``unknown``.
+
+    Checked in order: fatal first, because a message that looks like a
+    connectivity problem but names a missing table is a schema failure, and
+    retrying that only delays the real error.
+    """
+    if not message:
+        return "unknown"
+    text = message.lower()
+    for pattern in FATAL_PATTERNS:
+        if pattern in text:
+            return "fatal"
+    for pattern in TRANSIENT_PATTERNS:
+        if pattern in text:
+            return "transient"
+    return "unknown"
+
+
+def emit_failure_classification(reports) -> dict[str, list[str]]:
+    """Print a classification block the workflow can read.
+
+    GitHub Actions cannot branch on log text, so the workflow simply retries on
+    any non-zero exit. The classification exists so a human reading a failed run
+    can tell immediately whether waiting would have helped.
+    """
+    buckets: dict[str, list[str]] = {"transient": [], "fatal": [], "unknown": []}
+    for report in reports:
+        if report.ok or report.skipped or not report.error:
+            continue
+        buckets[classify_failure(report.error)].append(report.name)
+    print("\n--- failure classification ---")
+    for kind, names in buckets.items():
+        if names:
+            print(f"  {kind:<10} {', '.join(names)}")
+    return buckets
 
 
 def _require_production_database(settings) -> None:
@@ -200,8 +301,12 @@ def main(argv: list[str] | None = None) -> int:
         default=None,
         help="Run only these stages (default: all).",
     )
-    parser.add_argument("--limit", type=int, default=60, help="Max records per stage.")
-    parser.add_argument("--workers", type=int, default=4, help="Bounded concurrency per stage.")
+    parser.add_argument(
+        "--limit", type=int, default=DEFAULT_STAGE_LIMIT, help="Max records per stage."
+    )
+    parser.add_argument(
+        "--workers", type=int, default=4, help="Bounded concurrency per stage."
+    )
     parser.add_argument(
         "--dry-run", action="store_true", help="Compute without writing."
     )
@@ -216,14 +321,16 @@ def main(argv: list[str] | None = None) -> int:
     try:
         factory, CursorStore, RunRecorder, MAX_WORKERS = _preflight()
     except FatalError as exc:
+        kind = classify_failure(str(exc))
         print("=" * 68)
         print("SCHOLARZONE MAINTENANCE - FATAL")
         print(f"  {exc}")
+        print(f"  classification: {kind}")
         print("=" * 68)
         return EXIT_FATAL
 
     limit = max(1, args.limit)
-    workers = max(1, min(args.workers, MAX_WORKERS))
+    workers = max(1, min(args.workers, MAX_STAGE_WORKERS, MAX_WORKERS))
     store = CursorStore(factory)
     recorder = RunRecorder(factory, dry_run=args.dry_run)
     recorder.open()
@@ -276,6 +383,7 @@ def main(argv: list[str] | None = None) -> int:
         runner = ImageCoverageRunner(
             factory,
             dry_run=args.dry_run,
+            plan_only=args.dry_run,
             batch_size=min(15, limit),
             max_workers=workers,
             exclude_quarantined=True,
@@ -438,6 +546,22 @@ def main(argv: list[str] | None = None) -> int:
         print("\n::error::The maintenance run record could not be written to the database.")
         print("::error::Stage results are only in this log; the run is not observable from the database.")
         status = "failed"
+
+    failed_reports = [r for r in reports if not r.ok and not r.skipped]
+    if failed_reports:
+        emit_failure_classification(failed_reports)
+
+    # Compact, flat metric block. Deliberately not a monitoring framework: it
+    # is the same numbers already in MaintenanceRun, printed so a single log
+    # read answers "what did this run cost".
+    print("\n--- metrics ---")
+    for key in sorted(recorder.counts):
+        print(f"  {key}: {recorder.counts[key]}")
+    total_runtime = sum(r.runtime_s for r in reports if not r.skipped)
+    print(f"  total_runtime_s: {total_runtime:.1f}")
+    for report in reports:
+        if not report.skipped:
+            print(f"  stage_runtime_s.{report.name}: {report.runtime_s:.1f}")
 
     print("\n" + "=" * 68)
     print(f"run_id: {recorder.run_id}   status: {status}")

@@ -124,10 +124,15 @@ class SchedulerEngine:
         try:
             today = self.now_fn()
             enqueued = 0
-            for s in scholarships:
+            # Score the batch with a fixed number of aggregate queries instead
+            # of five per record. The arithmetic is identical; only the way the
+            # signals are obtained changed.
+            from .scheduler_priority import batch_calculate_priorities
+
+            scores = batch_calculate_priorities(session, scholarships, today)
+            for s, priority in zip(scholarships, scores):
                 if self.queue.is_active(s.id, s.official_source_url):
                     continue
-                priority = calculate_priority(session, s, today)
                 job = QueuedJob(
                     scholarship_id=s.id,
                     source_url=s.official_source_url,
@@ -374,46 +379,16 @@ class SchedulerEngine:
     def _filter_anomalous_candidates(candidates, scholarship: Scholarship):
         """Split automatic updates into safe-to-apply and must-be-reviewed.
 
-        A candidate is held back when anomaly detection rates it HIGH or
-        CRITICAL. Anything the detector does not understand keeps the existing
-        behaviour, so this gate can only ever *reduce* automatic mutation -
-        it can never start applying something that was previously withheld.
+        Delegates to the shared safety gate so verification and enrichment
+        cannot drift apart. A candidate is held back when anomaly detection
+        rates it HIGH or CRITICAL, or when the gate itself cannot decide - it
+        fails closed. Anything the gate does not understand keeps the existing
+        behaviour, so this can only ever *reduce* automatic mutation.
         """
-        from .anomaly_detection import detect_anomalies
+        from .mutation_safety_gate import partition_candidates
 
-        safe: list = []
-        blocked: list[str] = []
-        for candidate in candidates or []:
-            field_name = candidate.get("field") or candidate.get("field_name")
-            if not field_name:
-                safe.append(candidate)
-                continue
-            try:
-                anomalies = detect_anomalies(
-                    field_name,
-                    candidate.get("old_value"),
-                    candidate.get("new_value"),
-                    source_url=scholarship.official_source_url,
-                    scholarship_status=scholarship.status,
-                    deadline_date=scholarship.deadline_date,
-                    is_verified=scholarship.is_verified,
-                )
-            except Exception:  # noqa: BLE001
-                # A detector failure must not silently block every legitimate
-                # update, and must not silently allow an unsafe one either.
-                # Fail open to review: hold the candidate back.
-                logger.warning(
-                    "anomaly detection failed for field=%s id=%s; holding for review",
-                    field_name,
-                    scholarship.id,
-                )
-                blocked.append(str(field_name))
-                continue
-            if any(a.requires_review() for a in anomalies):
-                blocked.append(str(field_name))
-            else:
-                safe.append(candidate)
-        return safe, blocked
+        safe, blocked = partition_candidates(candidates, scholarship)
+        return safe, [field_name for field_name, _ in blocked]
 
     def _create_reviews(self, session: Session, result) -> None:
         review_start = time.monotonic()

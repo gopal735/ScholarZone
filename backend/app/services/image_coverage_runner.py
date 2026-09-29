@@ -164,6 +164,11 @@ class ImageCoverageMetrics:
     domain_blocked_skipped: int = 0
     runtime_ms: float = 0.0
     circuit_breaker: dict[str, object] = field(default_factory=dict)
+    # Set when the run was planned rather than executed. A dry run makes no
+    # network request, so its counters describe scope, not work performed.
+    dry_run: bool = False
+    # True when scope was reported without any network request at all.
+    planned_only: bool = False
 
     # Per-record outcomes for auditing.
     outcomes: list[dict[str, object]] = field(default_factory=list)
@@ -184,6 +189,8 @@ class ImageCoverageMetrics:
             "source_unreachable": self.source_unreachable,
             "domain_blocked_skipped": self.domain_blocked_skipped,
             "circuit_breaker": self.circuit_breaker,
+            "dry_run": self.dry_run,
+            "planned_only": self.planned_only,
             "runtime_ms": round(self.runtime_ms, 1),
         }
 
@@ -202,9 +209,11 @@ class ImageCoverageRunner:
         preflight_fn=None,
         exclude_quarantined: bool = True,
         skip_terminally_evaluated: bool = False,
+        plan_only: bool = False,
     ) -> None:
         self._session_factory = session_factory
         self.dry_run = dry_run
+        self.plan_only = plan_only
         self.batch_size = max(1, min(batch_size, MAX_BATCH_SIZE))
         self.only_missing = only_missing
         self.max_workers = max(1, min(max_workers, MAX_WORKERS))
@@ -304,6 +313,18 @@ class ImageCoverageRunner:
         # must never be interleaved with another record's.
         breaker = DomainCircuitBreaker()
 
+        # Reachability is a property of a *domain*, not of a page. The
+        # catalogue has hundreds of records spread over far fewer providers, so
+        # probing each record separately repeated the same request many times
+        # over for no additional information. One probe per domain per run is
+        # equally correct and much cheaper.
+        #
+        # This is a same-run cache only. It is deliberately not persisted: a
+        # domain that was unreachable an hour ago may be reachable now, and
+        # caching that judgement across runs would turn a temporary outage into
+        # a permanent silent skip.
+        preflight_cache: dict[str, object] = {}
+
         def _work(row) -> tuple[OrchestratorRunResult | None, int, str | None]:
             scholarship_id, title, source_url, source_name, verified_at = row[:5]
             if verified_at is not None:
@@ -312,8 +333,14 @@ class ImageCoverageRunner:
                 return None, scholarship_id, "domain_blocked"
 
             # Cheap gate first: do not pay the full crawl budget to discover
-            # that the domain blocks us.
-            probe = self._preflight_fn(source_url)
+            # that the domain blocks us. The verdict is cached per domain for
+            # the life of this run.
+            domain = breaker.domain_of(source_url)
+            probe = preflight_cache.get(domain)
+            if probe is None:
+                probe = self._preflight_fn(source_url)
+                if domain:
+                    preflight_cache[domain] = probe
             if not probe.reachable:
                 if breaker.record_failure(source_url):
                     logger.info("domain %s opened as blocked (preflight)", breaker.domain_of(source_url))
@@ -333,6 +360,24 @@ class ImageCoverageRunner:
 
         processed = 0
         skipped_ids: set[int] = set()
+
+        if self.plan_only:
+            # Plan-only is strictly weaker than dry_run: it makes no network
+            # request at all and only reports scope.
+            #
+            # This exists because the worker's `--dry-run` promises "plans only,
+            # writes nothing", and previously the image stage still probed and
+            # crawled every in-scope record - about nine of the run's ten
+            # minutes - which made that promise misleading and wasted the free
+            # tier's request budget to produce a number nobody could act on.
+            #
+            # `dry_run` keeps its original meaning (fetch for measurement,
+            # persist nothing) because callers depend on those counters.
+            metrics.records_in_scope = len(rows)
+            metrics.dry_run = True
+            metrics.planned_only = True
+            return metrics
+
         for index in range(0, len(rows), self.batch_size):
             batch = rows[index : index + self.batch_size]
             # Record-level breaker check: domains opened while a previous batch
