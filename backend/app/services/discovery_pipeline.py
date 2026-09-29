@@ -483,7 +483,21 @@ class DiscoveryPipeline:
             if candidate is None:
                 return None
             if candidate.status not in ("pending", "review"):
-                raise DiscoveryError(f"Cannot approve candidate in status: {candidate.status}")
+                # Already resolved, and reaching here is normal rather than
+                # exceptional. `discover_batch` collects `DiscoveryResult`
+                # objects as it goes, so a page reached twice in one batch
+                # yields two results for the same candidate id; the first was
+                # approved or rejected before the second is acted on, and the
+                # second result still carries the status it was built with.
+                # Raising here turned ordinary re-visits into a stage error
+                # ("Cannot approve candidate in status: rejected") on a run
+                # that had in fact done the right thing.
+                logger.info(
+                    "candidate %s already resolved as %s; nothing to approve",
+                    candidate_id,
+                    candidate.status,
+                )
+                return None
 
             if candidate.matched_scholarship_id is not None:
                 candidate.status = "duplicate"
