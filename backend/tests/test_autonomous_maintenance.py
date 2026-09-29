@@ -432,6 +432,17 @@ class TestRunRecord:
         assert redact(None) is None
         assert redact("no-url") == "no-url"
 
+    def test_a_run_that_cannot_record_itself_reports_failure(self, capsys, monkeypatch):
+        """A gap in the run table is indistinguishable from a job that never ran."""
+        from app.services import maintenance_run_log
+
+        monkeypatch.setattr(
+            maintenance_run_log.MaintenanceRunRecorder, "finish", lambda self, status: False
+        )
+        code = worker.main(["--stage", "verify", "--limit", "1", "--dry-run"])
+        assert code != 0
+        assert "could not be written" in capsys.readouterr().out
+
     def test_the_worker_never_prints_the_database_url(self):
         source = Path(worker.__file__).read_text(encoding="utf-8")
         assert "print(database_url" not in source

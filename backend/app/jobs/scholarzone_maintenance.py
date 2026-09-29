@@ -352,6 +352,7 @@ def main(argv: list[str] | None = None) -> int:
         logger.warning("could not read cursor state", exc_info=True)
 
     status = "ok" if not failed_count else "failed"
+    record_saved = True
     try:
         recorder.record_counts(
             {
@@ -360,9 +361,15 @@ def main(argv: list[str] | None = None) -> int:
                 "stages_skipped": skipped_count,
             }
         )
-        recorder.finish(status)
+        record_saved = recorder.finish(status)
     except Exception:  # noqa: BLE001
         logger.warning("could not persist run record", exc_info=True)
+        record_saved = False
+
+    if not record_saved:
+        print("\n::error::The maintenance run record could not be written to the database.")
+        print("::error::Stage results are only in this log; the run is not observable from the database.")
+        status = "failed"
 
     print("\n" + "=" * 68)
     print(f"run_id: {recorder.run_id}   status: {status}")
@@ -373,7 +380,7 @@ def main(argv: list[str] | None = None) -> int:
 
     # A stage failure is a failed workflow. The old worker returned 0 here,
     # which meant a scheduled run that verified nothing still showed green.
-    if failed_count:
+    if failed_count or not record_saved:
         return EXIT_STAGE_FAILED
     return EXIT_OK
 

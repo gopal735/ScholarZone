@@ -98,7 +98,7 @@ class MaintenanceRunRecorder:
     def record_counts(self, values: dict) -> None:
         self.counts.update({k: v for k, v in values.items() if v is not None})
 
-    def open(self) -> None:
+    def open(self) -> bool:
         """Insert the run row up front so a hard crash still leaves a trace."""
         session = self.session_factory()
         try:
@@ -114,13 +114,23 @@ class MaintenanceRunRecorder:
                 )
             )
             session.commit()
+            return True
         except Exception:  # noqa: BLE001 - observability must never mask the run
             logger.warning("could not open maintenance run record", exc_info=True)
             session.rollback()
+            return False
         finally:
             session.close()
 
-    def finish(self, status: str) -> None:
+    def finish(self, status: str) -> bool:
+        """Write the outcome. Returns False if the record could not be saved.
+
+        A run that completed its stages but could not record that it did so is
+        a degraded autonomous system: the next question asked of this table
+        would be answered with a gap that looks exactly like a job that never
+        ran. The caller turns this into a non-zero exit rather than letting it
+        disappear into a log warning.
+        """
         finished = datetime.now(timezone.utc)
         duration_ms = (finished - self.started_at).total_seconds() * 1000.0
         session = self.session_factory()
@@ -142,9 +152,11 @@ class MaintenanceRunRecorder:
             run.dry_run = self.dry_run
             run.duration_ms = duration_ms
             session.commit()
+            return True
         except Exception:  # noqa: BLE001
             logger.warning("could not finalize maintenance run record", exc_info=True)
             session.rollback()
+            return False
         finally:
             session.close()
 
