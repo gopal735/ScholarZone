@@ -12,7 +12,7 @@ from __future__ import annotations
 
 import logging
 from datetime import date
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from .database import get_session_factory
 from .services.discovery_scheduler import DiscoveryScheduler
@@ -188,6 +188,9 @@ class DiscoveryRoundResult:
     image_discoveries_triggered: int
     runtime_ms: float
     dry_run: bool = False
+    # Ids created this round, so the caller can assess them right away instead
+    # of waiting for a cursor sweep to reach a new high id.
+    inserted_ids: list[int] = field(default_factory=list)
 
     def as_dict(self) -> dict:
         return {
@@ -199,6 +202,7 @@ class DiscoveryRoundResult:
             "image_discoveries_triggered": self.image_discoveries_triggered,
             "runtime_ms": round(self.runtime_ms, 1),
             "dry_run": self.dry_run,
+            "inserted_ids": list(self.inserted_ids),
         }
 
 
@@ -234,4 +238,5 @@ def run_discovery_round(
         errors=metrics.errors,
         image_discoveries_triggered=metrics.image_discoveries_triggered,
         runtime_ms=metrics.runtime_ms,
+        inserted_ids=list(metrics.inserted_ids),
     )

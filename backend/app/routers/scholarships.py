@@ -7,6 +7,7 @@ from fastapi import APIRouter, Depends, HTTPException, Path, Query, status
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
+from ..core.config import get_settings
 from ..database import get_db
 from ..models import Scholarship
 from ..schemas import (
@@ -59,44 +60,57 @@ def get_scholarship_stats(
     # Quarantined rows are non-scholarships excluded from the directory, so
     # they must not be counted here either. Counting them would advertise a
     # total the public list cannot actually show.
-    listed = Scholarship.verification_status != "quarantined"
+    #
+    # The same has to be true of the public quality gate: a record filtered
+    # out of the directory for having no verified image must not be counted in
+    # a total the directory cannot show. These conditions are kept in step with
+    # `_filter_conditions` in the repository - if they drift, the homepage
+    # advertises a number the list contradicts.
+    _settings = get_settings()
+    listed = [Scholarship.verification_status != "quarantined"]
+    if _settings.public_require_verified:
+        listed.append(Scholarship.is_verified.is_(True))
+    if _settings.public_require_verified_image:
+        listed.append(Scholarship.image_url.isnot(None))
+        listed.append(Scholarship.image_verified_at.isnot(None))
+
     total = session.execute(
-        select(func.count(Scholarship.id)).where(listed)
+        select(func.count(Scholarship.id)).where(*listed)
     ).scalar() or 0
     countries = session.execute(
-        select(func.count(func.distinct(Scholarship.country))).where(listed)
+        select(func.count(func.distinct(Scholarship.country))).where(*listed)
     ).scalar() or 0
     open_count = session.execute(
-        select(func.count(Scholarship.id)).where(listed, Scholarship.status == "open")
+        select(func.count(Scholarship.id)).where(*listed, Scholarship.status == "open")
     ).scalar() or 0
     closing_soon = session.execute(
-        select(func.count(Scholarship.id)).where(listed, Scholarship.status == "closing-soon")
+        select(func.count(Scholarship.id)).where(*listed, Scholarship.status == "closing-soon")
     ).scalar() or 0
     upcoming = session.execute(
-        select(func.count(Scholarship.id)).where(listed, Scholarship.status == "upcoming")
+        select(func.count(Scholarship.id)).where(*listed, Scholarship.status == "upcoming")
     ).scalar() or 0
     verified_active = session.execute(
         select(func.count(Scholarship.id)).where(
-            listed, Scholarship.verification_status == "active"
+            *listed, Scholarship.verification_status == "active"
         )
     ).scalar() or 0
     fully_funded = session.execute(
         select(func.count(Scholarship.id)).where(
-            listed,
+            *listed,
             Scholarship.funding.ilike("%fully funded%"),
             Scholarship.funding.not_ilike("%partial%"),
         )
     ).scalar() or 0
     with_image = session.execute(
         select(func.count(Scholarship.id)).where(
-            listed,
+            *listed,
             Scholarship.image_url.isnot(None),
             Scholarship.image_url != "",
         )
     ).scalar() or 0
     with_official_source = session.execute(
         select(func.count(Scholarship.id)).where(
-            listed,
+            *listed,
             Scholarship.official_source.isnot(None),
             Scholarship.official_source != "",
         )

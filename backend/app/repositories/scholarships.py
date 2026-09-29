@@ -3,6 +3,7 @@
 from sqlalchemy import case, func, or_, select
 from sqlalchemy.orm import Session
 
+from ..core.config import get_settings
 from ..models import Scholarship
 from ..schemas import ScholarshipQuery, ScholarshipSort
 
@@ -25,8 +26,27 @@ def _filter_conditions(query: ScholarshipQuery):
     # that were caught during catalogue review. They must never appear in the
     # public directory: showing a "Welcome to GOV.UK" landing page as a
     # scholarship is a correctness failure, and it inflates the public count
+    # Quarantined rows are structural non-scholarships (site landing pages,
+    # bare home pages). They are never shown publicly, and are never counted
     # above the number of real records.
     conditions = [Scholarship.verification_status != "quarantined"]
+
+    # Public quality gate.
+    #
+    # A record is listed only if it has been verified and carries an image that
+    # passed image validation - a non-null image_url alone would let through
+    # an image that was rejected at review time, which is the opposite of what
+    # this gate is for. Both conditions are settings, because the cost is real
+    # and measurable: every record whose official page has no findable logo
+    # stops being listed. `public_catalog_counts` reports exactly how many, so
+    # the hidden set is never invisible.
+    _settings = get_settings()
+    if _settings.public_require_verified:
+        conditions.append(Scholarship.is_verified.is_(True))
+    if _settings.public_require_verified_image:
+        conditions.append(Scholarship.image_url.isnot(None))
+        conditions.append(Scholarship.image_verified_at.isnot(None))
+
     search = _normalise_optional_filter(query.search)
     country = _normalise_optional_filter(query.country)
     degree = _normalise_optional_filter(query.degree)

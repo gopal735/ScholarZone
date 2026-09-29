@@ -17,6 +17,12 @@ def _split_origins(value: str) -> tuple[str, ...]:
     return tuple(origin.strip().rstrip("/") for origin in value.split(",") if origin.strip())
 
 
+def _as_bool(value: str | None, default: bool) -> bool:
+    if value is None:
+        return default
+    return value.strip().lower() in ("1", "true", "yes", "on")
+
+
 @dataclass(frozen=True)
 class Settings:
     environment: str
@@ -25,6 +31,17 @@ class Settings:
     resend_api_key: str | None = None
     verification_secret: str | None = None
     admin_secret: str | None = None
+    # Public directory quality gate.
+    #
+    # When enabled, a scholarship is listed publicly only if it has been
+    # verified and carries an image that passed image validation. This is a
+    # deliberate product trade-off with a large, measurable cost: a record
+    # whose official page simply has no findable logo becomes invisible rather
+    # than being shown without one. It is a setting rather than a hardcoded
+    # filter so the trade-off can be reversed without a code change, and so
+    # what the gate hides is reportable rather than silently missing.
+    public_require_verified: bool = True
+    public_require_verified_image: bool = True
 
 
 def get_settings() -> Settings:
@@ -63,4 +80,10 @@ def get_settings() -> Settings:
         resend_api_key=os.getenv("RESEND_API_KEY"),
         verification_secret=os.getenv("SCHOLARZONE_VERIFICATION_SECRET"),
         admin_secret=os.getenv("SCHOLARZONE_ADMIN_SECRET"),
+        public_require_verified=_as_bool(
+            os.getenv("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED"), True
+        ),
+        public_require_verified_image=_as_bool(
+            os.getenv("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE"), True
+        ),
     )

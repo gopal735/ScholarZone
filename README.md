@@ -330,6 +330,40 @@ stages, because that is where they are useful and where they cost nothing:
   discovered today was never assessed until the enrichment cursor happened to
   get to it, which is exactly where new records arrive.
 
+  **New records are also assessed in the same cycle.** A cursor sweep cannot
+  cover discovery output: a record inserted this run has the highest id in the
+  catalogue while the quarantine cursor is still in the middle, so junk would
+  sit in the public directory for roughly 49 runs. That is how `id 490
+  "Ministry of Education (MOE)"` and `id 491 "Home - Erasmus+"` — both bare
+  site roots with every content field empty — reached production. The discovery
+  stage now reports the ids it created and assesses them immediately, while the
+  routine sweep still covers the legacy catalogue.
+
+### Public directory quality gate
+
+A scholarship is listed publicly only if it is **verified** and carries an
+**image that passed image validation** (a non-null `image_url` alone is not
+enough — a rejected image must not satisfy the gate). Quarantined records stay
+excluded regardless.
+
+This is a real trade-off and the numbers are worth stating plainly. Of 487
+valid records, roughly 170 are hidden by the image requirement: about 107
+because the provider's site was unreachable from the crawler, 41 because the
+official page genuinely has no findable image, and 23 whose image candidates
+were all rejected. The first group is not a quality judgement about those
+scholarships — it is our own crawler being unable to reach the page.
+
+Both conditions are settings, so the trade-off is reversible without a code
+change:
+
+| Setting | Default | Effect when true |
+| :--- | :--- | :--- |
+| `SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED` | `true` | Only verified records are listed |
+| `SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE` | `true` | Only records with a validated image are listed |
+
+The homepage statistics apply the same conditions as the directory, so the
+advertised total can never contradict the list.
+
 Beneath the detector sit `change_impact_staleness` and `evidence_arbitration`;
 they are reached through it rather than reimplemented.
 
@@ -367,8 +401,8 @@ A control surface for the verification queue, metric cards, search and filter, a
 
 ### Test suite
 
-- **77** test files under `backend/tests/`
-- **3019** tests
+- **78** test files under `backend/tests/`
+- **3036** tests
 
 The suite exercises the verification engine, image validation and discovery, the discovery pipeline, lifecycle transitions, source health, schema compatibility, API endpoints, and the autonomous maintenance path.
 
@@ -488,7 +522,7 @@ ScholarZone/
 │   │   ├── jobs/                 # scholarzone_maintenance: the scheduled worker
 │   │   ├── scheduler_v2.py       # Verification engine
 │   │   ├── services/             # Discovery, images, reviews, source health, cursor
-│   ├── tests/                    # 77 test files, 3019 tests
+│   ├── tests/                    # 78 test files, 3036 tests
 │   ├── Dockerfile                # Single-stage python:3.11-slim
 │   ├── render.yaml               # Alternative deployment config, not production
 │   └── requirements.txt

@@ -143,6 +143,34 @@ def _skipped(name: str, reason: str) -> StageReport:
     return StageReport(name=name, ok=False, skipped=True, skip_reason=reason)
 
 
+def _quarantine_ids(factory, ids: list[int], *, dry_run: bool) -> int:
+    """Assess specific ids now and quarantine the ones that are not programmes.
+
+    Used twice: on the ids discovery just created, and by the routine sweep over
+    the cursor. One short transaction, nothing deleted, and every decision is
+    written to the review queue by the service itself.
+    """
+    if not ids:
+        return 0
+    from app.services.catalogue_quarantine import quarantine_record
+
+    quarantined = 0
+    session = factory()
+    try:
+        for scholarship_id in ids:
+            verdict = quarantine_record(session, scholarship_id, dry_run=dry_run)
+            if verdict.is_non_scholarship:
+                quarantined += 1
+        if not dry_run:
+            session.commit()
+    except Exception:
+        session.rollback()
+        raise
+    finally:
+        session.close()
+    return quarantined
+
+
 class FatalError(RuntimeError):
     """Unrecoverable problem: the run cannot meaningfully continue."""
 
@@ -401,21 +429,41 @@ def main(argv: list[str] | None = None) -> int:
 
     def do_discover() -> dict:
         result = run_discovery_round(dry_run=args.dry_run, max_workers=workers)
-        return result.as_dict() if hasattr(result, "as_dict") else {"result": str(result)}
+        detail = result.as_dict() if hasattr(result, "as_dict") else {"result": str(result)}
+        # Close the quarantine latency gap in the same cycle.
+        #
+        # The cursor sweep cannot do this job: a record inserted this run has
+        # the highest id in the catalogue, and the quarantine cursor is
+        # somewhere in the middle, so the record would sit in the public
+        # directory until the sweep wrapped around - roughly 49 runs at the
+        # default limit. That is how "Home - Erasmus+" and "Ministry of
+        # Education (MOE)" reached production with a bare site root and every
+        # content field empty.
+        #
+        # Discovery is the only stage that can introduce a structurally invalid
+        # record, so it is the only stage that needs this. The routine sweep
+        # still runs afterwards and still covers the legacy catalogue.
+        inserted = list(getattr(result, "inserted_ids", []) or [])
+        if inserted and not args.dry_run:
+            quarantined_now = _quarantine_ids(factory, inserted, dry_run=False)
+            detail["immediately_quarantined"] = quarantined_now
+            detail["immediately_assessed"] = len(inserted)
+            recorder.record_counts(
+                {
+                    "discover_newly_inserted": len(inserted),
+                    "discover_immediately_quarantined": quarantined_now,
+                }
+            )
+        elif inserted:
+            detail["immediately_assessed"] = len(inserted)
+            detail["immediately_quarantined"] = 0
+        return detail
 
     def do_quarantine() -> dict:
-        # Structural safety gate.
-        #
-        # Discovery and enrichment can admit a page that is not a programme at
-        # all - a site landing page, a "Welcome to" page with a bare root URL.
-        # Until now nothing checked for that automatically; id 490 ("Welcome to
-        # GOV.UK") had to be found and corrected by hand.
-        #
-        # The rule is deliberately conservative: assess_record requires three
-        # independent structural signals, nothing is deleted, and every
-        # quarantine is written to the review queue with its evidence. It also
-        # needs no network, so it costs effectively nothing to run.
-        from app.services.catalogue_quarantine import QUARANTINE_STATUS, quarantine_record
+        # Routine sweep. Discovery's own new records were already assessed in
+        # the same cycle by do_discover; this covers the legacy catalogue on
+        # the durable cursor, including anything an earlier run inserted.
+        from app.services.catalogue_quarantine import QUARANTINE_STATUS
 
         batch = store.select_batch(
             "quarantine", limit=limit, skip_complete=False
@@ -423,43 +471,20 @@ def main(argv: list[str] | None = None) -> int:
         if batch.is_empty:
             return {"selected": 0, **store.state_as_dict("quarantine")}
 
-        scanned = 0
-        quarantined = 0
-        verdict_counts: dict[str, int] = {}
-        session = factory()
-        try:
-            for scholarship_id in batch.ids:
-                verdict = quarantine_record(
-                    session, scholarship_id, dry_run=args.dry_run
-                )
-                scanned += 1
-                if verdict.is_non_scholarship:
-                    quarantined += 1
-                    for reason in verdict.reasons[:3]:
-                        key = reason.split(":")[0][:60]
-                        verdict_counts[key] = verdict_counts.get(key, 0) + 1
-            if not args.dry_run:
-                session.commit()
-        except Exception:
-            session.rollback()
-            raise
-        finally:
-            session.close()
-
+        quarantined = _quarantine_ids(factory, batch.ids, dry_run=args.dry_run)
         if not args.dry_run:
             store.advance("quarantine", batch)
         recorder.record_counts(
             {
-                "quarantine_scanned": scanned,
+                "quarantine_scanned": len(batch.ids),
                 "quarantine_applied": quarantined,
             }
         )
         return {
             "selected": len(batch.ids),
-            "records_scanned": scanned,
+            "records_scanned": len(batch.ids),
             "quarantined": quarantined,
             "status_value": QUARANTINE_STATUS,
-            "top_reasons": dict(sorted(verdict_counts.items(), key=lambda kv: -kv[1])[:5]),
             "cursor": batch.as_dict(),
             "dry_run": args.dry_run,
         }

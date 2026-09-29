@@ -55,6 +55,11 @@ class DiscoverySchedulerMetrics:
     network_failures: int = 0
     runtime_ms: float = 0.0
     country_results: dict[str, dict[str, Any]] = field(default_factory=dict)
+    # Ids created by this round. Discovery is the only writer that can introduce
+    # a structurally invalid record - a site landing page, a bare home page -
+    # so the ids are surfaced so the caller can assess them immediately rather
+    # than waiting for a cursor sweep to reach a freshly-minted high id.
+    inserted_ids: list[int] = field(default_factory=list)
     operation_id: str = ""
 
 
@@ -277,6 +282,7 @@ class DiscoveryScheduler:
                 if scholarship_id is not None:
                     metrics.inserted_scholarships += 1
                     metrics.verified_new_scholarships += 1
+                    metrics.inserted_ids.append(scholarship_id)
                     self._trigger_image_discovery(pipeline, scholarship_id, metrics)
             except Exception as exc:
                 logger.exception(

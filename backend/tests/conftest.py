@@ -16,6 +16,20 @@ import os
 if os.getenv("SCHOLARZONE_ENVIRONMENT") == "test" and not os.getenv("SCHOLARZONE_DATABASE_URL"):
     os.environ["SCHOLARZONE_DATABASE_URL"] = "sqlite:///:memory:"
 
+# The public directory quality gate (verified + a validated image) is ON by
+# default in every environment, including production.
+#
+# It is turned OFF here because the long-standing test fixtures are legacy
+# seed rows that carry no image: they predate the gate and were written to
+# exercise listing, pagination, sorting and filtering - not the gate itself.
+# Inventing image URLs for them would fabricate data just to satisfy a filter.
+#
+# The gate is therefore tested directly, and with the gate on, in
+# tests/test_public_quality_gate.py, which seeds the three states it cares
+# about explicitly.
+os.environ.setdefault("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED", "false")
+os.environ.setdefault("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE", "false")
+
 import pytest
 
 
