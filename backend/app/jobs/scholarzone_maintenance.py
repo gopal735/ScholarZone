@@ -543,13 +543,14 @@ def main(argv: list[str] | None = None) -> int:
         pipeline exists to prevent.
         """
         import json
-        from datetime import date
+        from datetime import date, datetime, timezone
         from pathlib import Path
         from urllib.parse import urlparse
 
         from sqlalchemy import select
 
         from app.models import Scholarship
+        from app.services.scholarship_enrichment import derive_status
 
         facts_path = Path(__file__).resolve().parents[2] / "config" / "official_programme_facts.json"
         try:
@@ -563,8 +564,13 @@ def main(argv: list[str] | None = None) -> int:
         if not facts:
             return {"facts_file": str(facts_path), "facts_loaded": 0, "matched": 0, "fields_filled": 0}
 
-        # Fields written from the file, in the order a reader cares about.
-        text_fields = ("provider", "amount", "eligibility", "funding", "degree")
+        # Facts keys map onto real columns. `provider` and `amount` are not
+        # columns on this model: the awarding body is `official_source` and the
+        # money is `benefits`. Writing to a name that does not exist raises
+        # AttributeError inside a scheduled run, which is how this stage first
+        # failed in production.
+        text_fields = ("official_source", "benefits", "eligibility", "funding", "degree")
+        today = date.today()
         applied: list[dict] = []
         session = factory()
         try:
@@ -581,15 +587,40 @@ def main(argv: list[str] | None = None) -> int:
                     if value and not getattr(row, field, None):
                         setattr(row, field, value)
                         filled.append(field)
-                deadline = (entry.get("deadline") or "").strip()
-                if deadline and not row.deadline:
+
+                # A deadline is four columns, not one. Writing only the date
+                # would leave the frontend's display string empty, so the card
+                # would show no deadline at all while the record claimed one.
+                if not row.deadline_date and (entry.get("deadline") or "").strip():
                     try:
-                        row.deadline = date.fromisoformat(deadline)
-                        filled.append("deadline")
+                        parsed = date.fromisoformat(entry["deadline"].strip())
                     except ValueError:
-                        logger.warning("unparseable deadline %r for %s", deadline, host)
+                        logger.warning("unparseable deadline %r for %s", entry["deadline"], host)
+                    else:
+                        row.deadline_date = parsed
+                        row.deadline_display = f"{parsed.day} {parsed.strftime('%B %Y')}"
+                        row.deadline_precision = "day"
+                        filled.extend(["deadline_date", "deadline_display", "deadline_precision"])
+
+                if "deadline_date" in filled:
+                    # Keep status consistent with the date we just wrote, using
+                    # the same helper the enrichment stage uses so both paths
+                    # agree on the open / closing-soon / closed vocabulary.
+                    derived, _reason = derive_status(
+                        today=today,
+                        deadline_date=row.deadline_date,
+                        deadline_display=row.deadline_display,
+                        deadline_precision=row.deadline_precision,
+                        source_text=None,
+                        current_status=row.status,
+                    )
+                    if derived and derived != "unknown":
+                        row.status = derived
+                        filled.append("status")
+
                 if not filled:
                     continue
+                row.updated_at = datetime.now(timezone.utc)
                 applied.append({"id": row.id, "host": host, "fields": filled})
             if applied and not args.dry_run:
                 session.commit()

@@ -40,9 +40,9 @@ class TestFactsFileIntegrity:
             page = entry.get("source_page") or ""
             assert page.startswith("https://"), f"{host} has no https source_page: {page}"
 
-    def test_every_entry_states_provider(self, facts):
+    def test_every_entry_states_the_awarding_body(self, facts):
         for host, entry in facts.items():
-            assert (entry.get("provider") or "").strip(), f"{host} has no provider"
+            assert (entry.get("official_source") or "").strip(), f"{host} has no official_source"
 
     def test_deadlines_are_iso_and_either_absent_or_explained(self, facts):
         """A deadline with no cycle label is indistinguishable from a stale one."""
@@ -76,6 +76,73 @@ class TestFactsFileIntegrity:
         assert "host" in rules.lower(), "rules must state that matching is by exact host"
 
 
+class TestFactsFieldsMapToRealColumns:
+    """Every facts key must name a column that actually exists.
+
+    The stage writes with setattr, so a key that is not a mapped column raises
+    AttributeError at run time. That is exactly how the first version failed in
+    production: the file said "provider" and "amount", which are not columns on
+    this model, so a scheduled run died instead of filling a field. Checking the
+    file against the model here turns that class of mistake into a test failure.
+    """
+
+    _ALLOWED = {
+        "source_page",     # citation for humans, never written to a column
+        "deadline_cycle",  # provenance for the date, never written to a column
+        # A single ISO date that the stage expands into deadline_date,
+        # deadline_display and deadline_precision. The frontend reads the
+        # display string, so one column is not enough, which is why the file
+        # carries one key rather than three.
+        "deadline",
+    }
+
+    def test_every_facts_key_is_a_real_column_or_documented(self, facts):
+        from sqlalchemy import inspect
+
+        from app.models import Scholarship
+
+        columns = {c.key for c in inspect(Scholarship).column_attrs}
+        for host, entry in facts.items():
+            for field in entry:
+                assert field in columns or field in self._ALLOWED, (
+                    f"{host} has fact field {field!r}, which is neither a "
+                    f"Scholarship column nor a documented non-column key"
+                )
+
+    def test_no_placeholder_names_survive(self, facts):
+        """provider and amount are the two that were wrong; keep them out."""
+        for host, entry in facts.items():
+            assert "provider" not in entry, f"{host} still uses non-column 'provider'"
+            assert "amount" not in entry, f"{host} still uses non-column 'amount'"
+
+    def test_display_only_deadline_key_is_not_used(self, facts):
+        """The stage must never write the read-only `deadline` property.
+
+        Scholarship.deadline is a property that returns deadline_display, so
+        assigning to it raises AttributeError. That was the first production
+        failure of this stage.
+        """
+        from app.models import Scholarship
+
+        assert isinstance(Scholarship.deadline, property)
+        assert Scholarship.deadline.fset is None
+        for host, entry in facts.items():
+            for key in entry:
+                assert key != "deadline_display", (
+                    f"{host} should supply one ISO 'deadline', not prebuilt display fields"
+                )
+
+    def test_awarding_body_and_money_use_the_real_column_names(self, facts):
+        for host, entry in facts.items():
+            assert "official_source" in entry, f"{host} must state official_source"
+            assert "benefits" in entry, f"{host} must state benefits"
+
+    def test_deadline_is_iso_or_absent(self, facts):
+        for host, entry in facts.items():
+            if entry.get("deadline"):
+                date.fromisoformat(entry["deadline"])
+
+
 class TestFactsApplicationSemantics:
     """The application rules, expressed against a stand-in for the record.
 
@@ -87,47 +154,63 @@ class TestFactsApplicationSemantics:
     def apply(entry, record, host):
         """Mirror of the stage's write rules."""
         filled = []
-        for field in ("provider", "amount", "eligibility", "funding", "degree"):
+        for field in ("official_source", "benefits", "eligibility", "funding", "degree"):
             value = (entry.get(field) or "").strip() or None
             if value and not record.get(field):
                 record[field] = value
                 filled.append(field)
         deadline = (entry.get("deadline") or "").strip()
-        if deadline and not record.get("deadline"):
+        if deadline and not record.get("deadline_date"):
             try:
-                record["deadline"] = date.fromisoformat(deadline)
+                parsed = date.fromisoformat(deadline)
             except ValueError:
                 # Mirrors the stage: an unparseable date is skipped, the other
                 # fields are still filled, and the run does not fail.
                 pass
             else:
-                filled.append("deadline")
+                record["deadline_date"] = parsed
+                record["deadline_display"] = f"{parsed.day} {parsed.strftime('%B %Y')}"
+                record["deadline_precision"] = "day"
+                filled.extend(["deadline_date", "deadline_display", "deadline_precision"])
         return filled
 
+    def test_a_deadline_is_written_as_a_complete_set(self, facts):
+        """date + display + precision, never the date alone.
+
+        The frontend reads deadline_display, so a date with no display string
+        shows an empty card while the record looks like it has a deadline.
+        """
+        record = {f: None for f in (
+            "official_source", "benefits", "eligibility", "funding", "degree",
+            "deadline_date", "deadline_display", "deadline_precision")}
+        self.apply(facts["cscuk.fcdo.gov.uk"], record, "cscuk.fcdo.gov.uk")
+        assert record["deadline_date"] == date(2026, 10, 20)
+        assert record["deadline_display"] == "20 October 2026"
+        assert record["deadline_precision"] == "day"
+
     def test_existing_value_is_never_overwritten(self, facts):
-        record = {"provider": "Scraped Provider", "eligibility": "Scraped rule",
-                  "deadline": date(2027, 1, 1)}
+        record = {"official_source": "Scraped Provider", "eligibility": "Scraped rule",
+                  "deadline_date": date(2027, 1, 1)}
         filled = self.apply(facts["chevening.org"], record, "chevening.org")
-        assert record["provider"] == "Scraped Provider"
+        assert record["official_source"] == "Scraped Provider"
         assert record["eligibility"] == "Scraped rule"
-        assert record["deadline"] == date(2027, 1, 1)
+        assert record["deadline_date"] == date(2027, 1, 1)
         # The dead field is still filled, which is the point: gaps close
         # without clobbering anything the fresher source already said.
-        assert "amount" in filled
+        assert "benefits" in filled
 
     def test_empty_fields_are_filled(self, facts):
-        record = {"provider": None, "amount": None, "eligibility": None,
-                  "funding": None, "degree": None, "deadline": None}
+        record = {"official_source": None, "benefits": None, "eligibility": None,
+                  "funding": None, "degree": None, "deadline_date": None}
         filled = self.apply(facts["cscuk.fcdo.gov.uk"], record, "cscuk.fcdo.gov.uk")
-        assert "provider" in filled
-        assert "amount" in filled
+        assert "official_source" in filled
+        assert "benefits" in filled
         assert "eligibility" in filled
-        assert "deadline" in filled
-        assert record["deadline"] == date(2026, 10, 20)
+        assert "deadline_date" in filled
 
     def test_nothing_is_written_when_nothing_is_missing(self, facts):
-        record = {"provider": "P", "amount": "A", "eligibility": "E",
-                  "funding": "F", "degree": "D", "deadline": date(2026, 1, 1)}
+        record = {"official_source": "P", "benefits": "A", "eligibility": "E",
+                  "funding": "F", "degree": "D", "deadline_date": date(2026, 1, 1)}
         assert self.apply(facts["chevening.org"], record, "chevening.org") == []
 
     def test_host_match_is_exact_not_suffix(self, facts):
@@ -140,14 +223,10 @@ class TestFactsApplicationSemantics:
         assert "chevening.org" in facts
 
     def test_unparseable_deadline_is_refused(self, facts):
-        bad = {"deadline": "not-a-date", "provider": "X"}
-        with pytest.raises(ValueError):
-            date.fromisoformat(bad["deadline"])
-        # And the stage treats that as "leave the deadline alone", not as a crash.
-        record = {"provider": None, "amount": None, "eligibility": None,
-                  "funding": None, "degree": None, "deadline": None}
+        record = {"official_source": None, "benefits": None, "eligibility": None,
+                  "funding": None, "degree": None, "deadline_date": None}
         entry = dict(facts["chevening.org"])
         entry["deadline"] = "sometime in autumn"
         filled = self.apply(entry, record, "chevening.org")
-        assert "deadline" not in filled
-        assert "provider" in filled
+        assert "deadline_date" not in filled
+        assert "official_source" in filled
