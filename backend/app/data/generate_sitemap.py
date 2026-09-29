@@ -67,8 +67,8 @@ def main() -> int:
 
     entries: list[tuple[str, str | None, str, float]] = [
         (f"{BASE_URL}/", None, "daily", 1.0),
-        (f"{BASE_URL}/ScholarZone/scholarships", None, "daily", 0.9),
-        (f"{BASE_URL}/ScholarZone/countries", None, "weekly", 0.7),
+        (f"{BASE_URL}/scholarships", None, "daily", 0.9),
+        (f"{BASE_URL}/countries", None, "weekly", 0.7),
     ]
     for row in rows:
         # Priority follows visibility: an open opportunity is worth more than an
@@ -81,7 +81,7 @@ def main() -> int:
             priority = 0.5
         entries.append(
             (
-                f"{BASE_URL}/ScholarZone/scholarships/{row.id}",
+                f"{BASE_URL}/scholarships/{row.id}",
                 _lastmod(row),
                 "weekly",
                 priority,
