@@ -45,6 +45,10 @@ on:
         description: 'Discovery crawl depth below each seed URL (0 = seed only, 2 = deep)'
         required: false
         default: '0'
+      quarantine_ids:
+        description: 'Comma-separated ids to assess and quarantine now, then exit'
+        required: false
+        default: ''
 
 # Least privilege: the worker only needs to read the repository. It never
 # writes to the repository, never uses the GitHub API, and never needs a
@@ -110,6 +114,7 @@ jobs:
             --limit "${{ github.event.inputs.limit || '60' }}" \
             --workers 4 \
             --crawl-depth "${{ github.event.inputs.crawl_depth || '0' }}" \
+            --quarantine-ids "${{ github.event.inputs.quarantine_ids || '' }}" \
             ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}
 
   # Bounded retry for transient failures.
@@ -183,4 +188,5 @@ jobs:
             --limit "${{ github.event.inputs.limit || '60' }}" \
             --workers 4 \
             --crawl-depth "${{ github.event.inputs.crawl_depth || '0' }}" \
+            --quarantine-ids "${{ github.event.inputs.quarantine_ids || '' }}" \
             ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}
