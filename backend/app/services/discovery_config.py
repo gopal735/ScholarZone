@@ -96,6 +96,21 @@ _EXTENDED_SOURCES: list[ApprovedSourceData] = [
     ApprovedSourceData("studyinkorea.go.kr", "Study in Korea", "official_government", "South Korea", 90, []),
     ApprovedSourceData("mohe.gov.my", "Ministry of Higher Education Malaysia", "official_government", "Malaysia", 90, []),
     ApprovedSourceData("beasiswaindonesia.kemdikbud.go.id", "Indonesian Scholarship", "official_government", "Indonesia", 85, []),
+    # Baltic & Nordic expansion (added after a live DNS/HTTP reachability probe;
+    # every domain below resolved and returned a page, so they are real hosts
+    # rather than guesses. Domains that did not resolve were deliberately not
+    # added - an unreachable seed surfaces as `source_unreachable` in the
+    # completeness report and is not a fabrication risk, but it is also not a
+    # source of new scholarships, and the probe exists to avoid adding noise).
+    ApprovedSourceData("studyinestonia.ee", "Study in Estonia", "official_government", "Estonia", 85, ["https://studyinestonia.ee/study/scholarships"]),
+    ApprovedSourceData("studyinlatvia.lv", "Study in Latvia", "official_government", "Latvia", 85, ["https://studyinlatvia.lv/scholarships"]),
+    ApprovedSourceData("studyinlithuania.lt", "Study in Lithuania", "official_government", "Lithuania", 85, []),
+    ApprovedSourceData("studyinluxembourg.lu", "Study in Luxembourg", "official_government", "Luxembourg", 85, []),
+    ApprovedSourceData("studyinslovenia.si", "Study in Slovenia", "official_government", "Slovenia", 85, ["https://studyinslovenia.si/study/tuition-and-funding/"]),
+    ApprovedSourceData("studyincroatia.hr", "Study in Croatia", "official_government", "Croatia", 85, ["https://studyincroatia.hr/scholarships/"]),
+    ApprovedSourceData("studyinromania.gov.ro", "Study in Romania", "official_government", "Romania", 85, ["https://studyinromania.gov.ro/scholarships"]),
+    ApprovedSourceData("studyinuae.ae", "Study in UAE", "official_government", "UAE", 85, []),
+    ApprovedSourceData("studyinaustralia.gov.au", "Australian Study Portal", "official_government", "Australia", 85, ["https://www.studyinaustralia.gov.au/english/australian-education/scholarships"]),
 ]
 
 _DEFAULT_SOURCES = _DEFAULT_SOURCES + _EXTENDED_SOURCES

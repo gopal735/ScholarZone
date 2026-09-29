@@ -42,9 +42,17 @@ on:
         required: false
         default: 'false'
       crawl_depth:
-        description: 'Discovery crawl depth below each seed URL (0 = seed only, 2 = deep)'
+        description: 'Discovery crawl depth below each seed URL (0 = seed only, 2 = deep, 4 = very deep)'
         required: false
         default: '0'
+      crawl_pages_per_seed:
+        description: 'Maximum pages visited per discovery seed, including the seed'
+        required: false
+        default: '12'
+      crawl_max_pages:
+        description: 'Batch-wide ceiling on crawled pages, so one portal cannot starve the rest'
+        required: false
+        default: '600'
       quarantine_ids:
         description: 'Comma-separated ids to assess and quarantine now, then exit'
         required: false
@@ -114,6 +122,8 @@ jobs:
             --limit "${{ github.event.inputs.limit || '60' }}" \
             --workers 4 \
             --crawl-depth "${{ github.event.inputs.crawl_depth || '0' }}" \
+            --crawl-pages-per-seed "${{ github.event.inputs.crawl_pages_per_seed || '12' }}" \
+            --crawl-max-pages "${{ github.event.inputs.crawl_max_pages || '600' }}" \
             --quarantine-ids "${{ github.event.inputs.quarantine_ids || '' }}" \
             ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}
 
@@ -188,5 +198,7 @@ jobs:
             --limit "${{ github.event.inputs.limit || '60' }}" \
             --workers 4 \
             --crawl-depth "${{ github.event.inputs.crawl_depth || '0' }}" \
+            --crawl-pages-per-seed "${{ github.event.inputs.crawl_pages_per_seed || '12' }}" \
+            --crawl-max-pages "${{ github.event.inputs.crawl_max_pages || '600' }}" \
             --quarantine-ids "${{ github.event.inputs.quarantine_ids || '' }}" \
             ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}

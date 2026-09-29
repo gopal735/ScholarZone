@@ -199,6 +199,14 @@ _REGISTRY_DECLARED_DOMAINS: frozenset[str] = frozenset({
     "educanada.ca", "education.gov.in", "scholarships.gov.in", "gob.mx",
     "jasso.go.jp", "studyinkorea.go.kr", "mohe.gov.my",
     "beasiswaindonesia.kemdikbud.go.id",
+    # Baltic & Nordic expansion added after a live reachability probe. Every
+    # domain here is a real, reachable official study portal, and declaring it
+    # in both registries keeps the evidence layer from calling an approved
+    # official seed "third party" - which would route it to review for a
+    # reason that has nothing to do with the candidate.
+    "studyinestonia.ee", "studyinlatvia.lv", "studyinlithuania.lt",
+    "studyinluxembourg.lu", "studyinslovenia.si", "studyincroatia.hr",
+    "studyinromania.ro", "studyinuae.ae", "studyinaustralia.gov.au",
 })
 
 # Curated registrable domains of official scholarship programmes, government
