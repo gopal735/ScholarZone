@@ -235,6 +235,12 @@ class TestDiscoveryQualityGate:
                 "deadline": "January 2027",
                 "eligibility": ["Bachelor's"],
                 "requirements": ["Transcript"],
+                # A provider is required. This test predated that rule and
+                # originally omitted it; the rule was added after a live
+                # discovery round published two records whose official_source
+                # was None, so the omission is now a contract violation rather
+                # than a test shortcut.
+                "provider": "KTH Royal Institute of Technology",
             },
         )
         assert verdict.verdict is DiscoveryVerdict.ACCEPT
@@ -262,9 +268,30 @@ class TestDiscoveryQualityGate:
 
         verdict = assess_candidate(
             "Home Economics Scholarship", "https://example.edu/scholarships/home-econ",
-            {"description": "d", "eligibility": ["e"]},
+            {"description": "d", "eligibility": ["e"], "provider": "Example University"},
         )
         assert verdict.verdict is DiscoveryVerdict.ACCEPT
+
+    def test_no_provider_is_never_published(self):
+        """Added after a live round published two provider-less records.
+
+        Both junk records that reached production had `official_source=None`.
+        Field counting passed them because the pages mentioned programmes, so
+        the awarding body has to be asked for explicitly.
+        """
+        from app.services.discovery_quality_gate import DiscoveryVerdict, assess_candidate
+
+        verdict = assess_candidate(
+            "KTH Scholarship Programme 2027",
+            "https://www.kth.se/studies/scholarships",
+            {
+                "description": "Full tuition waiver",
+                "deadline": "January 2027",
+                "eligibility": ["Bachelor's"],
+                "requirements": ["Transcript"],
+            },
+        )
+        assert verdict.verdict is not DiscoveryVerdict.ACCEPT
 
     def test_placeholders_do_not_count_as_evidence(self):
         from app.services.discovery_quality_gate import DiscoveryVerdict, assess_candidate

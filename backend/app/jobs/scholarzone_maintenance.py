@@ -360,6 +360,15 @@ def main(argv: list[str] | None = None) -> int:
         default=600,
         help="Batch-wide ceiling on crawled pages, so one portal cannot starve the rest.",
     )
+    parser.add_argument(
+        "--quarantine-ids",
+        default="",
+        help=(
+            "Comma-separated scholarship ids to assess and quarantine now, then "
+            "exit. For records created by a run that has already finished, where "
+            "the routine cursor would not reach them for dozens of cycles."
+        ),
+    )
     parser.add_argument("--verbose", action="store_true")
     args = parser.parse_args(argv)
 
@@ -381,6 +390,30 @@ def main(argv: list[str] | None = None) -> int:
 
     limit = max(1, args.limit)
     workers = max(1, min(args.workers, MAX_STAGE_WORKERS, MAX_WORKERS))
+
+    # Targeted quarantine of explicit ids, handled before any stage so it is a
+    # cheap single-purpose command rather than something that also runs a
+    # verification or image pass over the catalogue.
+    if args.quarantine_ids.strip():
+        ids = [int(p) for p in args.quarantine_ids.split(",") if p.strip().isdigit()]
+        if not ids:
+            print("::error::--quarantine-ids did not contain any valid ids.")
+            return EXIT_FATAL
+        print("=" * 68)
+        print("SCHOLARZONE TARGETED QUARANTINE")
+        print(f"  ids: {', '.join(str(i) for i in ids)}")
+        print("=" * 68)
+        try:
+            quarantined = _quarantine_ids(factory, ids, dry_run=args.dry_run)
+        except Exception as exc:  # noqa: BLE001
+            print(f"  error: {type(exc).__name__}: {exc}")
+            print(f"  classification: {classify_failure(str(exc))}")
+            return EXIT_STAGE_FAILED
+        print(f"  assessed: {len(ids)}")
+        print(f"  quarantined: {quarantined}")
+        print(f"  not_quarantined: {len(ids) - quarantined}")
+        return EXIT_OK
+
     store = CursorStore(factory)
     recorder = RunRecorder(factory, dry_run=args.dry_run)
     recorder.open()

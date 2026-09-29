@@ -110,3 +110,49 @@ def normalise_deadline_precision(parsed_date_is_exact: bool, text: str | None) -
     if kind is DeadlineKind.MONTH:
         return "month"
     return "unknown"
+
+
+# Every value `deadline_precision` is allowed to hold.
+#
+# The column is `String(16) NOT NULL`, so this is a hard constraint rather than
+# a convention. It matters because the extractor's `deadline_type` is free text:
+# a live discovery round tried to insert `application_deadline` (19 characters)
+# and every one of those inserts died with
+# `StringDataRightTruncation: value too long for type character varying(16)`.
+# The failure was caught and logged per-candidate, so the run stayed green
+# while silently losing records.
+DEADLINE_PRECISION_VALUES: frozenset[str] = frozenset(
+    {"exact", "month", "year", "rolling", "recurring", "varies", "approximate", "unknown"}
+)
+
+
+def coerce_deadline_precision(value: object) -> str:
+    """Map any extractor-supplied precision onto the stored vocabulary.
+
+    Unrecognised input becomes ``"unknown"`` rather than being passed through.
+    That is the honest mapping: if the extractor produced a token the schema has
+    never heard of, the safe claim is that the precision is unknown, not that it
+    is whatever the token happened to say. Passing it through would trade a
+    truthful placeholder for a crash, and truncating it would produce a value
+    that looks authoritative and means nothing.
+    """
+    if value is None:
+        return "unknown"
+    text = str(value).strip().lower()
+    if not text:
+        return "unknown"
+    if text in DEADLINE_PRECISION_VALUES:
+        return text
+    # The extractor sometimes emits a phrase rather than a single token, e.g.
+    # "application_deadline" for a deadline it read off an application page.
+    # Substring matching keeps the recognisable cases rather than collapsing
+    # everything to "unknown".
+    for known in ("exact", "rolling", "recurring", "approximate", "varies"):
+        if known in text:
+            return known
+    if "month" in text:
+        return "month"
+    if "year" in text:
+        return "year"
+    return "unknown"
+

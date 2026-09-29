@@ -25,6 +25,7 @@ from .discovery_identity import (
     normalize_url,
     resolve_identity,
 )
+from .deadline_semantics import coerce_deadline_precision
 from .official_source_fetcher import OfficialSourceFetchResult, fetch_official_source
 from .scholarship_evidence import (
     EvidenceCollection,
@@ -501,8 +502,18 @@ class DiscoveryPipeline:
             # gate, not the first line of defence.
             from .discovery_quality_gate import DiscoveryVerdict, assess_candidate
 
+            # The provider is passed explicitly rather than being left to
+            # `extracted`. The gate treats "no awarding body" as unpublishable,
+            # and both records a live deep round inserted had
+            # `official_source=None` - the check has to see the value the
+            # candidate was actually created with, not only what the scraper
+            # happened to put in its output dict.
+            gate_fields = dict(extracted)
+            gate_fields.setdefault("provider", candidate.official_source)
+            gate_fields.setdefault("official_source", candidate.official_source)
+
             verdict = assess_candidate(
-                candidate.title, candidate.normalized_url, extracted
+                candidate.title, candidate.normalized_url, gate_fields
             )
             if verdict.verdict is DiscoveryVerdict.REJECT:
                 candidate.status = "rejected"
@@ -542,7 +553,9 @@ class DiscoveryPipeline:
                 description=extracted.get("description"),
                 deadline_date=extracted.get("deadline_date"),
                 deadline_display=extracted.get("deadline"),
-                deadline_precision=extracted.get("deadline_type", "month"),
+                deadline_precision=coerce_deadline_precision(
+                    extracted.get("deadline_type")
+                ),
                 application_period=extracted.get("application_period"),
                 official_source=candidate.official_source,
                 official_source_url=candidate.normalized_url,
