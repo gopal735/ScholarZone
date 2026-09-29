@@ -43,6 +43,11 @@ def _add(factory, sid, *, url, title="Programme", junk=False, **kw):
             country=kw.get("country", "Testland"),
             degree="unknown" if junk else kw.get("degree", "Master"),
             funding="n/a" if junk else kw.get("funding", "Fully Funded"),
+            # A non-junk record names an awarding body. "No provider" is a
+            # quarantine signal now, added after a live discovery round
+            # published two records with official_source=None, and without it
+            # this fixture is indistinguishable from those two.
+            official_source=None if junk else kw.get("official_source", "Example University"),
             official_source_url=url,
             is_verified=kw.get("is_verified", False),
             image_url=kw.get("image_url"),

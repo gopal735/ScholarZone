@@ -48,6 +48,13 @@ def _real(factory, sid=1, **kw):
             country="Sweden",
             degree=kw.get("degree", "Master"),
             funding=kw.get("funding", "Full"),
+            # An awarding body is required. This fixture predates that rule and
+            # originally omitted it; the rule was added after a live discovery
+            # round published two records whose official_source was None, and
+            # the sweep scored zero signals on them without it. A record with no
+            # content, no lists and no provider is not a scholarship, so the
+            # fixture now says who offers the thing.
+            official_source=kw.get("official_source", "Example University"),
             # official_source_url carries a UNIQUE constraint, so every
             # fixture record needs its own programme page.
             official_source_url=kw.get("url", f"https://www.kth.se/programmes/xyz-{sid}"),

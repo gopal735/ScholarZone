@@ -1,4 +1,4 @@
-"""Tests for the pre-insert gate rules added after a live deep crawl.
+﻿"""Tests for the pre-insert gate rules added after a live deep crawl.
 
 Every case in this file is a value or title that a real production discovery
 round produced. The two records that run inserted are quoted verbatim, because
@@ -228,3 +228,142 @@ class TestCoerceDeadlinePrecision:
         """The invariant the crash violated: every result must fit String(16)."""
         for raw in ("application_deadline", "x" * 200, "exact", None, 12345):
             assert len(coerce_deadline_precision(raw)) <= 16
+
+
+# --- quarantine backstop -------------------------------------------------
+
+
+def _make_record(**kw):
+    """A record that is a genuine programme unless a test says otherwise."""
+    from app.models import Scholarship
+
+    defaults = dict(
+        degree="Master",
+        funding="Full",
+        official_source="Some University",
+        official_source_url="https://x.gov/scholarships/2026",
+        description="A real programme.",
+        eligibility=["Open to all"],
+        benefits=[],
+        coverage=[],
+        requirements=[],
+        documents=[],
+        application_method=[],
+    )
+    defaults.update(kw)
+    return Scholarship(**defaults)
+
+
+class TestQuarantineBackstop:
+    """The post-hoc sweep must catch what the pre-insert gate now blocks.
+
+    These two records reached production through the gate before it read values,
+    and the backstop scored zero signals on both. They are reconstructed here
+    field-for-field from what the API returned.
+    """
+
+    def test_application_timeline_menu_page_is_quarantined(self):
+        from app.services.catalogue_quarantine import assess_record
+
+        record = _make_record(
+            id=492,
+            title="Study in Hungary - Application Timeline",
+            degree="Programmes[/LINK]",
+            official_source=None,
+            description=None,
+            eligibility=[],
+            deadline_display="for the first round of admission procedures is usually in",
+            official_source_url=(
+                "https://studyinhungary.hu/study-in-hungary/menu/studying-in-hungary/"
+                "application-timeline.html"
+            ),
+        )
+        verdict = assess_record(record)
+        assert verdict.is_non_scholarship is True, verdict.reasons
+        assert any("markup" in r for r in verdict.reasons)
+        assert any("awarding body" in r for r in verdict.reasons)
+
+    def test_find_your_programme_is_quarantined(self):
+        from app.services.catalogue_quarantine import assess_record
+
+        record = _make_record(
+            id=493,
+            title="Find your programme",
+            degree=(
+                "programmes from more than 77 esteemed institutions. Do you want "
+                "to take courses taught in English? At"
+            ),
+            official_source=None,
+            eligibility=[],
+            description="programmes from more than 77 esteemed institutions",
+            official_source_url="https://studyinaustria.at/study-in-austria/find-your-programme",
+        )
+        verdict = assess_record(record)
+        assert verdict.is_non_scholarship is True, verdict.reasons
+        assert any("search or listing" in r for r in verdict.reasons)
+        assert any("awarding body" in r for r in verdict.reasons)
+
+
+class TestCuratedCatalogueIsNotDestroyed:
+    """Guards the mistake this refactor nearly shipped.
+
+    Two rules proposed for the backstop looked reasonable and would have
+    quarantined most of the catalogue when measured against the real records:
+
+    * "short-label fields contain prose" flags `best_fit="Mid-career
+      professionals with leadership potential"`, which is a correct value for a
+      field the curated dataset fills descriptively. Measured: 304 of 489
+      records, including DAAD, MEXT, Fulbright and Chevening.
+    * "any field contains HTML markup" flags `selection_notes="...</p></div>"`,
+      which is untidy stored data on Gates Cambridge, ANU, ETH Zurich and
+      Fulbright - real programmes. Measured: 95 of 489 records.
+    """
+
+    def test_prose_in_curated_fields_is_not_corruption(self):
+        from app.services.discovery_quality_gate import value_integrity_problems
+
+        fields = {
+            "best_fit": "Mid-career professionals with leadership potential",
+            "duration": "12 months of full-time research",
+            "program_type": "Postgraduate research programme",
+        }
+        assert value_integrity_problems(fields) == []
+
+    def test_markup_in_prose_field_is_not_corruption(self):
+        from app.services.discovery_quality_gate import value_integrity_problems
+
+        fields = {"selection_notes": "interview in Feb.</p></div></div>"}
+        assert value_integrity_problems(fields) == []
+
+    def test_markup_in_structural_field_is_corruption(self):
+        from app.services.discovery_quality_gate import value_integrity_problems
+
+        assert value_integrity_problems({"degree": "Programmes[/LINK]"})
+        assert value_integrity_problems({"title": "Home <b>Page</b>"})
+
+    def test_template_extension_url_is_not_navigation(self):
+        """JASSO's real scholarship page ends in `.html`.
+
+        A site that never migrated to clean URLs is not evidence that a page is
+        navigation, so the extension is not a shared signal.
+        """
+        from app.services.discovery_quality_gate import is_navigation_url
+
+        assert not is_navigation_url(
+            "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/about.html"
+        )
+        assert is_navigation_url("https://x.gov/menu/scholarships")
+        assert is_navigation_url("https://x.gov/about")
+
+    def test_a_real_record_with_prose_fields_survives(self):
+        from app.services.catalogue_quarantine import assess_record
+
+        record = _make_record(
+            id=14,
+            title="ETH Zurich Excellence Scholarship & Opportunity Programme",
+            best_fit="Mid-career professionals with leadership potential",
+            program_type="Postgraduate research",
+            selection_notes="interview in Feb.</p></div></div>",
+            official_source_url="https://ethz.ch/en/doctorate/",
+        )
+        assert assess_record(record).is_non_scholarship is False

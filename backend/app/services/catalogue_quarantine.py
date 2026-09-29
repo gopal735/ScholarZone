@@ -28,11 +28,25 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session, sessionmaker
 
 from ..models import Scholarship, ScholarshipReview
+from .discovery_quality_gate import (
+    is_navigation_url,
+    title_problem,
+    value_integrity_problems,
+)
 from .scholarship_evidence import classify_source
 
 logger = logging.getLogger(__name__)
 
 QUARANTINE_STATUS = "quarantined"
+
+# Fields inspected for corruption. The gate's `value_integrity_problems` decides
+# which of these actually count: structural fields only, because markup in a
+# prose field is untidy data rather than a sign the record is not a scholarship.
+_CORRUPTION_PROBE_FIELDS = (
+    "title", "degree", "funding", "program_type", "best_fit", "duration",
+    "status", "description", "eligibility_summary", "deadline_display",
+    "application_period", "selection_notes", "notes",
+)
 
 # A record is only quarantined on hard structural evidence, never on a hunch.
 _BARE_ROOT_RE = re.compile(r"^https?://(www\.)?[^/]+/?$")
@@ -88,12 +102,48 @@ def assess_record(scholarship: Scholarship) -> QuarantineVerdict:
         reasons.append("both degree and funding are placeholders")
 
     # Title that is plainly a site name rather than a programme name.
+    #
+    # The title judgement is delegated to the pre-insert gate rather than
+    # reimplemented. This module used to carry its own much weaker version
+    # (`^(welcome to|home|homepage)`), which scored zero signals on a record
+    # titled "Find your programme" - a search box over other people's
+    # programmes, published as verified because the two implementations of this
+    # judgement had drifted apart.
     title = (scholarship.title or "").strip()
-    if re.match(r"^(welcome to|home|homepage)\b", title, re.IGNORECASE):
-        reasons.append(f"title looks like a site landing page, not a programme: {title!r}")
+    title_fault = title_problem(title)
+    if title_fault:
+        reasons.append(title_fault)
 
-    # Needs at least three independent signals before acting.
-    is_non_scholarship = len(reasons) >= 3
+    provider = (scholarship.official_source or "").strip()
+    if not provider:
+        reasons.append(
+            "no awarding body: official_source is empty, so the record does not "
+            "say who offers the scholarship"
+        )
+
+    # Corrupt values are decisive on their own.
+    #
+    # Every other signal here is a count, and this sweep deliberately requires
+    # three of them so a sparse but real programme is never quarantined by
+    # accident. Markup inside a stored field is different in kind: it means the
+    # record was built from a mis-parsed page, and no amount of corroborating
+    # structure makes such a record trustworthy. A live round produced
+    # `degree="Programmes[/LINK]"` and a 120-character marketing sentence in the
+    # same field, and both records passed this sweep while being plainly wrong.
+    corruption = value_integrity_problems(
+        {name: getattr(scholarship, name, None) for name in _CORRUPTION_PROBE_FIELDS}
+    )
+    reasons.extend(corruption)
+
+    if is_navigation_url(scholarship.official_source_url):
+        reasons.append(
+            "official_source_url is site navigation, not a programme page: "
+            f"{scholarship.official_source_url}"
+        )
+
+    # Needs at least three independent signals before acting, unless the record
+    # is corrupt, in which case one is enough.
+    is_non_scholarship = len(reasons) >= 3 or bool(corruption)
 
     return QuarantineVerdict(
         scholarship_id=scholarship.id,

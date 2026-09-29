@@ -227,6 +227,12 @@ def _populated(fields: dict[str, Any]) -> int:
     return sum(1 for name in _EVIDENCE_FIELDS if not _is_placeholder(fields.get(name)))
 
 
+# Fields the record's meaning depends on. If one of these contains markup, the
+# record cannot be interpreted; if a prose field does, the record is merely
+# untidy. See `value_integrity_problems` for the measurement behind that split.
+_STRUCTURAL_FIELDS = ("title", "degree", "funding", "status", "program_type", "best_fit", "duration")
+
+
 def _has_html_artifact(fields: dict[str, Any]) -> list[str]:
     """Names of populated fields whose value still contains markup.
 
@@ -275,6 +281,94 @@ def evidence_score(fields: dict[str, Any]) -> int:
     looked empty instead of simply failing.
     """
     return _populated(fields)
+
+
+# --- shared helpers, also used by the quarantine backstop ----------------
+#
+# The pre-insert gate and the post-hoc quarantine sweep used to answer "is this
+# a scholarship?" with two independent implementations. They drifted: a live
+# round published two records that the gate would now reject and the sweep
+# scored zero signals on, because the sweep had no notion of a corrupt value or
+# a missing provider. Two implementations of one judgement is one too many, so
+# the judgements live here and both callers use them.
+
+
+def value_integrity_problems(fields: dict[str, Any]) -> list[str]:
+    """Markup left in a *structural* field. Empty if the values are sound.
+
+    Shared with :mod:`app.services.catalogue_quarantine`, which treats a
+    non-empty result as decisive: a record whose degree is `Programmes[/LINK]`
+    was built from a mis-parsed page, and no amount of corroborating structure
+    makes that trustworthy.
+
+    Only structural fields count, and measuring the catalogue is why. The prose
+    fields routinely carry leftover markup in the curated dataset -
+    `selection_notes="...</p></div></div>...` is present on Gates Cambridge, ANU,
+    ETH Zurich and Fulbright, all of them real programmes. Markup in a notes
+    field is untidy stored data. Markup in a field the record's *meaning*
+    depends on is a different kind of defect, and only the second kind says
+    anything about whether this is a scholarship.
+
+    The prose check is excluded for the same measured reason. The curated
+    records populate `best_fit`, `duration` and `program_type` with genuinely
+    descriptive text - "Mid-career professionals with leadership potential" is
+    a correct answer for that field, not a mis-parse. Applying the prose check
+    to the legacy catalogue flagged 304 of 489 records, including DAAD, MEXT,
+    Fulbright and every other marquee programme. It remains valid in the
+    pre-insert gate, where it only ever sees a freshly extracted candidate whose
+    field was supposed to receive a label.
+    """
+    dirty = [
+        name
+        for name in _STRUCTURAL_FIELDS
+        if name in fields and not _is_placeholder(fields.get(name))
+        and _HTML_ARTIFACT.search(str(fields.get(name)))
+    ]
+    if not dirty:
+        return []
+    return [
+        "structural field values still contain HTML markup: "
+        + ", ".join(sorted(dirty)[:5])
+    ]
+
+
+def title_problem(title: str | None) -> str | None:
+    """Why *title* fails as a programme name, or None if it is acceptable."""
+    clean = (title or "").strip()
+    if not clean:
+        return "no title"
+    if (
+        _LANDING_TITLE_EXACT.match(clean)
+        or _LANDING_TITLE_BRANDED.match(clean)
+        or _LANDING_TITLE_BARE.match(clean)
+    ):
+        return f"title reads as a site landing page, not a programme: {clean!r}"
+    if _TITLE_ROLE.match(clean):
+        return (
+            f"title describes a search or listing over programmes, not a "
+            f"programme: {clean!r}"
+        )
+    if _TITLE_PROCESS.search(clean) and not _SCHEME_WORD.search(clean):
+        return f"title describes the application process, not a scheme: {clean!r}"
+    if _ORGANISATION_TITLE.match(clean) and not _SCHEME_WORD.search(clean):
+        return f"title names an organisation, not a scheme: {clean!r}"
+    return None
+
+
+def is_navigation_url(url: str | None) -> bool:
+    """True when the URL is unambiguously the site's own furniture.
+
+    The template-extension test is excluded here for the same measured reason
+    as the prose test. `https://www.jasso.go.jp/en/ryugaku/scholarship_j/
+    shoreihi/about.html` is a real JASSO scholarship page; a site that never
+    migrated to clean URLs is not evidence that the page is navigation. The
+    extension remains a soft signal in the pre-insert gate, where it only ever
+    sees freshly discovered URLs.
+    """
+    if not url:
+        return False
+    path = urlparse(url).path or ""
+    return bool(_NON_PROGRAMME_PATH.match(path) or _FURNITURE_PATH_SEGMENT.search(path))
 
 
 def assess_candidate(
