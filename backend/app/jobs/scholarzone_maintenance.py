@@ -62,7 +62,7 @@ MAX_STAGE_WORKERS = 16
 
 # Stage order reflects dependencies: verification establishes which records
 # are current, and the remaining stages all operate on that outcome.
-STAGE_ORDER = ("verify", "enrich", "images", "discover", "quarantine", "stats", "purge")
+STAGE_ORDER = ("verify", "enrich", "images", "discover", "quarantine", "stats", "facts", "purge")
 
 # A stage that fails stops the stages that depend on it, but not the ones that
 # do not. Verification has no prerequisite and nothing gates it.
@@ -90,6 +90,7 @@ STAGE_DEPENDENCIES: dict[str, tuple[str, ...]] = {
     "discover": ("verify",),
     "quarantine": (),
     "stats": (),
+    "facts": (),
     "purge": (),
 }
 
@@ -327,7 +328,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--stage",
         action="append",
-        choices=["verify", "enrich", "images", "discover", "quarantine", "stats", "purge", "all"],
+        choices=["verify", "enrich", "images", "discover", "quarantine", "stats", "facts", "purge", "all"],
         default=None,
         help="Run only these stages (default: all).",
     )
@@ -525,6 +526,94 @@ def main(argv: list[str] | None = None) -> int:
         )
         return detail
 
+    def do_facts() -> dict:
+        """Apply audited official programme facts to records that lack them.
+
+        The enrichment stage reads the awarding body's own page, which is the
+        right primary source. It cannot always finish the job: a page can be a
+        JS-rendered app, or can bury the deadline below a folded accordion, and
+        the record is then published with an empty field.
+
+        This stage closes that gap from a small audited file, and it is
+        deliberately timid. It only writes fields that are currently NULL, so a
+        value the scraper did read always wins, and it only matches on the exact
+        official source host, so a Chevening record can never pick up
+        Commonwealth facts. Getting either of those wrong would write confident
+        false data into the catalogue, which is the one failure mode this whole
+        pipeline exists to prevent.
+        """
+        import json
+        from datetime import date
+        from pathlib import Path
+        from urllib.parse import urlparse
+
+        from sqlalchemy import select
+
+        from app.models import Scholarship
+
+        facts_path = Path(__file__).resolve().parents[2] / "config" / "official_programme_facts.json"
+        try:
+            raw = json.loads(facts_path.read_text(encoding="utf-8"))
+        except (OSError, ValueError) as exc:
+            # A broken config must degrade to "no facts", never to a crash
+            # inside a scheduled run and never to a guess.
+            logger.warning("could not read programme facts from %s: %s", facts_path, exc)
+            return {"facts_file": str(facts_path), "error": str(exc)}
+        facts = {k: v for k, v in raw.items() if not str(k).startswith("_") and isinstance(v, dict)}
+        if not facts:
+            return {"facts_file": str(facts_path), "facts_loaded": 0, "matched": 0, "fields_filled": 0}
+
+        # Fields written from the file, in the order a reader cares about.
+        text_fields = ("provider", "amount", "eligibility", "funding", "degree")
+        applied: list[dict] = []
+        session = factory()
+        try:
+            rows = session.scalars(select(Scholarship)).all()
+            for row in rows:
+                host = (urlparse(row.official_source_url or "").hostname or "").lower()
+                host = host[4:] if host.startswith("www.") else host
+                entry = facts.get(host)
+                if not entry:
+                    continue
+                filled: list[str] = []
+                for field in text_fields:
+                    value = (entry.get(field) or "").strip() or None
+                    if value and not getattr(row, field, None):
+                        setattr(row, field, value)
+                        filled.append(field)
+                deadline = (entry.get("deadline") or "").strip()
+                if deadline and not row.deadline:
+                    try:
+                        row.deadline = date.fromisoformat(deadline)
+                        filled.append("deadline")
+                    except ValueError:
+                        logger.warning("unparseable deadline %r for %s", deadline, host)
+                if not filled:
+                    continue
+                applied.append({"id": row.id, "host": host, "fields": filled})
+            if applied and not args.dry_run:
+                session.commit()
+            elif args.dry_run:
+                session.rollback()
+        finally:
+            session.close()
+
+        detail = {
+            "facts_file": str(facts_path),
+            "facts_loaded": len(facts),
+            "matched": len(applied),
+            "fields_filled": sum(len(a["fields"]) for a in applied),
+            "applied": applied[:200],
+        }
+        if not args.dry_run:
+            recorder.record_counts(
+                {
+                    "facts_records_matched": len(applied),
+                    "facts_fields_filled": detail["fields_filled"],
+                }
+            )
+        return detail
+
     def do_purge() -> dict:
         """Clear stored images that are not official identity marks.
 
@@ -684,6 +773,7 @@ def main(argv: list[str] | None = None) -> int:
         "discover": do_discover,
         "quarantine": do_quarantine,
         "stats": do_stats,
+        "facts": do_facts,
         "purge": do_purge,
     }
 

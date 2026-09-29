@@ -1,0 +1,109 @@
+{
+  "_comment": "Audited official programme facts, applied only to records whose official source host matches exactly.",
+  "_rules": [
+    "Only facts verified on the awarding body's own page during a live research pass are listed. Anything marked unverified in the research was left out rather than guessed.",
+    "A facts entry only fills a field that is currently NULL. It never overwrites a value the scraper already read from the official page, because the page is the fresher source.",
+    "Deadlines are cycle-specific. Each entry states the cycle it was verified against so a stale value is recognisable rather than silently presented as current.",
+    "Amounts are the awarding body's published figure for that cycle and are labelled per_cycle where the value can change year to year.",
+    "Matching is by exact official source host. A record from chevening.org cannot pick up Commonwealth facts, so a wrong entry cannot be applied to the wrong programme."
+  ],
+  "chevening.org": {
+    "provider": "Chevening, UK Foreign Commonwealth & Development Office",
+    "funding": "Fully Funded",
+    "degree": "Master",
+    "amount": "Full tuition, 12-month living allowance, flights, visa and departure grant",
+    "eligibility": "Bachelor's degree plus at least two years (2,800 hours) of work experience. Applications are made to one UK university and one Chevening country award.",
+    "deadline": "2026-10-06",
+    "deadline_cycle": "2027-28 applications, verified open 4 Aug 2026 to 6 Oct 2026 11:00 UTC",
+    "source_page": "https://www.gov.uk/government/news/applications-open-for-2027-to-2028-chevening-scholarships-to-study-in-the-uk"
+  },
+  "cscuk.fcdo.gov.uk": {
+    "provider": "Commonwealth Scholarship Commission in the UK",
+    "funding": "Fully Funded",
+    "amount": "Full tuition, monthly stipend (GBP 1,712, GBP 2,000 in London) and airfare",
+    "eligibility": "Citizen of a Commonwealth Scholarship Commission country holding a master's-equivalent degree. Applicants must also secure a nomination from an approved nominating body.",
+    "deadline": "2026-10-20",
+    "deadline_cycle": "2027 cycle, applications 8 Sep to 20 Oct 2026, 16:00 BST",
+    "source_page": "https://cscuk.fcdo.gov.uk/scholarships/commonwealth-masters-scholarships/"
+  },
+  "sbfi.admin.ch": {
+    "provider": "State Secretariat for Education, Research and Innovation (SBFI), Swiss Confederation",
+    "funding": "Fully Funded",
+    "amount": "CHF 2,450 per month from 1 January 2026",
+    "eligibility": "National of a country that has an agreement with Switzerland. Research Scholarships are open to master's and doctoral candidates; no postdoctoral awards from the 2027/28 call.",
+    "deadline": "2026-11-30",
+    "deadline_cycle": "2027-28 call, opened 20 Aug 2026; deadline set per country, example 30 Nov 2026",
+    "source_page": "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships"
+  },
+  "nawa.gov.pl": {
+    "provider": "Polish National Agency for Academic Exchange (NAWA)",
+    "funding": "Fully Funded",
+    "amount": "PLN 2,500 per month plus tuition exemption and PLN 2,500 travel allowance",
+    "eligibility": "Citizens of listed developing countries without Polish citizenship, holding a first-cycle diploma from 2024 onwards. The Stefan Banach Programme funds second-cycle (master's) and preparatory studies.",
+    "source_page": "https://nawa.gov.pl/en/students/foreign-students/the-banach-scholarship-programme/landing"
+  },
+  "campusfrance.org": {
+    "provider": "Campus France, French Ministry for Europe and Foreign Affairs",
+    "funding": "Fully Funded",
+    "amount": "EUR 2,500 per month for 12 months plus a EUR 500 installation allowance",
+    "eligibility": "MOPGA (Make Our Planet Great Again) grants. Doctorate defended between December 2021 and December 2026, non-French national, not resident in or active in France, and no previous MOPGA award.",
+    "deadline": "2026-12-15",
+    "deadline_cycle": "MOPGA 2027 call, 15 Sep to 15 Dec 2026, 23:59 CET",
+    "source_page": "https://www.campusfrance.org/en/mopga-2027"
+  },
+  "foreign.fulbrightonline.org": {
+    "provider": "United States Department of State, administered by IIE",
+    "funding": "Fully Funded",
+    "amount": "Tuition, maintenance, airfare and health insurance",
+    "eligibility": "Fulbright US Student Program. United States citizens or permanent residents returning to study in the United States, applying to a degree programme.",
+    "deadline": "2026-10-06",
+    "deadline_cycle": "2027-28 competition, national deadline 6 Oct 2026, 17:00 ET",
+    "source_page": "https://us.fulbrightonline.org/about/competition-selection"
+  },
+  "studyinkorea.go.kr": {
+    "provider": "National Institute for International Education (NIIED), Republic of Korea",
+    "funding": "Fully Funded",
+    "amount": "Tuition, monthly stipend, settlement and return allowance, airfare and insurance",
+    "eligibility": "Global Korea Scholarship, University track (GKS-U). Applicants from eligible countries holding a secondary-school qualification awarded within the last three years, who must depart for Korea in the same year.",
+    "deadline": "2026-09-30",
+    "deadline_cycle": "GKS-U 2027, 15 Sep 11:00 KST to 30 Sep 18:00 KST",
+    "source_page": "https://www.studyinkorea.go.kr/"
+  },
+  "csc.edu.cn": {
+    "provider": "China Scholarship Council",
+    "funding": "Fully Funded",
+    "amount": "Tuition, accommodation, stipend, insurance and airfare",
+    "eligibility": "Chinese Government Scholarship. Applicants are nominated by their embassy (Type A) or by the host university (Type B).",
+    "source_page": "https://www.csc.edu.cn/"
+  },
+  "turkiyeburslari.gov.tr": {
+    "provider": "Presidency for Turks Abroad and Related Communities (YTB)",
+    "funding": "Fully Funded",
+    "amount": "Tuition, accommodation, meals, health insurance, airfare and stipend",
+    "eligibility": "Turkiye Scholarships for international students. Turkish citizens receive first priority, followed by eligible foreign nationals aged 17 to 30.",
+    "deadline": "2027-02-20",
+    "deadline_cycle": "Standing annual window, 10 January to 20 February; 2026 cycle closed 20 Feb 2026",
+    "source_page": "https://www.turkiyeburslari.gov.tr/"
+  },
+  "stipendiumhungaricum.hu": {
+    "provider": "Tempus Public Foundation, Government of Hungary",
+    "funding": "Fully Funded",
+    "amount": "Full tuition waiver, monthly stipend in HUF and travel contribution",
+    "eligibility": "Stipendium Hungaricum covers bachelor's, master's, one-tier master's, doctoral, non-degree and postgraduate specialist studies. Academic track record, language proof and motivation required; applications are routed through a Sending Partner.",
+    "source_page": "https://stipendiumhungaricum.hu/"
+  },
+  "moe.gov.sa": {
+    "provider": "Ministry of Education, Kingdom of Saudi Arabia",
+    "funding": "Fully Funded",
+    "amount": "Tuition, accommodation, stipend, medical care and flights",
+    "eligibility": "Saudi Government Scholarship for public universities, open to applicants from any country except the health and medical specialisations. Deadlines are set by each university.",
+    "source_page": "https://www.moe.gov.sa/en/education/ResidentsAndvisitors/pages/publicuniversitiesscholarships.aspx"
+  },
+  "marie-sklodowska-curie-actions.ec.europa.eu": {
+    "provider": "European Commission, Marie Sklodowska-Curie Actions",
+    "funding": "Fully Funded",
+    "amount": "Salary and allowances per European Commission rules for postdoctoral fellows",
+    "eligibility": "Postdoctoral researchers who completed their PhD and satisfy the mobility rule, having carried out their main research activity outside the country of the host institution in the last three years.",
+    "source_page": "https://marie-sklodowska-curie-actions.ec.europa.eu/actions/postdoctoral-fellowships"
+  }
+}
