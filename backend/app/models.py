@@ -359,6 +359,82 @@ class ScholarshipRestoreRecord(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
 
 
+class MaintenanceCursor(Base):
+    """Durable per-stream progress marker for autonomous maintenance.
+
+    The scheduled enrichment stage used to select ``ORDER BY id LIMIT n`` with
+    no cursor at all, so every twelve-hour run re-processed the same first
+    records and the tail of the catalogue was never reached. A cursor is the
+    smallest thing that fixes that: it is one row, it lives in the same
+    database as the work, and it survives a failed run, a runner swap, a
+    cancelled workflow and a manual dispatch identically.
+
+    It is deliberately *not* stored in the Actions cache: a cache is scoped to
+    a branch and can be evicted without warning, so a cache-based cursor can
+    silently rewind and re-do work.
+
+    ``last_id`` advances monotonically and wraps to zero once the catalogue is
+    exhausted, which turns repeated runs into a round-robin sweep. Every record
+    is therefore revisited on a fixed, bounded cadence instead of never, and a
+    record is never visited twice inside a single cycle.
+    """
+
+    __tablename__ = "maintenance_cursors"
+    __table_args__ = (
+        Index("ix_maintenance_cursors_updated", "updated_at"),
+    )
+
+    name: Mapped[str] = mapped_column(String(64), primary_key=True)
+    last_id: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    cycles_completed: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    total_visited: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    cycle_started_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        nullable=False,
+        server_default=func.now(),
+        onupdate=func.now(),
+    )
+
+
+class MaintenanceRun(Base):
+    """One row per maintenance run, for free operational visibility.
+
+    The worker prints a summary to stdout, which GitHub keeps for weeks, but a
+    database that cannot answer "when did enrichment last advance?" or "is the
+    nightly run still succeeding?" is not observable on its own. This is the
+    smallest table that makes the autonomous system debuggable after the fact
+    without a paid monitoring service.
+
+    Only counts, stage names, statuses and error text are stored. No secret is
+    ever passed to this table.
+    """
+
+    __tablename__ = "maintenance_runs"
+    __table_args__ = (
+        Index("ix_maintenance_runs_started", "started_at"),
+        Index("ix_maintenance_runs_status_started", "status", "started_at"),
+    )
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    run_id: Mapped[str] = mapped_column(String(64), nullable=False, unique=True)
+    started_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
+    )
+    finished_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
+    worker: Mapped[str] = mapped_column(String(64), nullable=False, default="unknown")
+    status: Mapped[str] = mapped_column(String(16), nullable=False, default="running")
+    stages: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
+    counts: Mapped[dict] = mapped_column(JSON, nullable=False, default=dict)
+    error_summary: Mapped[str | None] = mapped_column(Text, nullable=True)
+    dry_run: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    duration_ms: Mapped[float | None] = mapped_column(Float, nullable=True)
+
+
 class ContentFingerprintRecord(Base):
     __tablename__ = "content_fingerprints"
     __table_args__ = (

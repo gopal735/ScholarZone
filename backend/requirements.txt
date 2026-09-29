@@ -15,9 +15,17 @@ uvicorn==0.52.1
 SQLAlchemy>=2.0,<2.1
 psycopg[binary]>=3.2,<4
 httpx>=0.27,<0.29
-apscheduler
 resend
 python-dotenv
 Pillow
 beautifulsoup4
+# Official scholarship circulars are published as PDFs. Both libraries are
+# imported lazily by app/services/official_pdf_extractor.py, which means a
+# missing pin did not crash the worker - it silently skipped every PDF and the
+# stage still reported success. Pinning them makes the capability real in CI
+# and in the scheduled run rather than only on the developer machine that
+# happened to have them installed.
+pypdf>=5.0,<7
+pdfplumber>=0.11,<1
 pytest
+

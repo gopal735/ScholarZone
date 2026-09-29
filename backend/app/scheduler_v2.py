@@ -32,6 +32,25 @@ class VerificationRoundResult:
     jobs_submitted: int
     jobs_completed: int
     jobs_failed: int
+    dry_run: bool = False
+    planned_candidates: int = 0
+    due_retries: int = 0
+
+    def as_dict(self) -> dict:
+        """Machine-readable result for the maintenance run record.
+
+        Without this the worker had to fall back to ``str(result)`` and the
+        persisted run carried a dataclass repr instead of numbers, so a
+        scheduled run left no queryable evidence that it had done anything.
+        """
+        return {
+            "jobs_submitted": self.jobs_submitted,
+            "jobs_completed": self.jobs_completed,
+            "jobs_failed": self.jobs_failed,
+            "dry_run": self.dry_run,
+            "planned_candidates": self.planned_candidates,
+            "due_retries": self.due_retries,
+        }
 
 
 # SAFETY FREEZE: Set to False to enable the intelligent scheduler.
@@ -69,7 +88,48 @@ def shutdown_scheduler() -> None:
         _engine = None
 
 
-def run_verification_round() -> VerificationRoundResult:
+def plan_verification_round(batch_size: int = 100) -> VerificationRoundResult:
+    """Report the work a verification round would do, without doing it.
+
+    The engine commits on every verified record and on retry processing, so a
+    "dry run" that still called it was not a dry run. This reads the candidate
+    set and the due-retry count only, which makes ``--dry-run`` genuinely
+    side-effect free and therefore safe to point at production.
+    """
+    from sqlalchemy import func, select
+
+    from .models import Scholarship, ScholarshipFetchAttempt
+
+    session = get_session_factory()()
+    try:
+        today = date.today()
+        candidates = session.scalar(
+            select(func.count(Scholarship.id)).where(
+                Scholarship.official_source_url.isnot(None),
+                (Scholarship.next_verification_due <= today)
+                | (Scholarship.next_verification_due.is_(None)),
+            )
+        ) or 0
+        retries = session.scalar(
+            select(func.count(ScholarshipFetchAttempt.id)).where(
+                ScholarshipFetchAttempt.status == "retrying",
+                ScholarshipFetchAttempt.next_retry_at <= func.now(),
+                ScholarshipFetchAttempt.attempt_count < ScholarshipFetchAttempt.max_attempts,
+            )
+        ) or 0
+        return VerificationRoundResult(
+            jobs_submitted=0,
+            jobs_completed=0,
+            jobs_failed=0,
+            dry_run=True,
+            planned_candidates=int(candidates),
+            due_retries=int(retries),
+        )
+    finally:
+        session.close()
+
+
+def run_verification_round(dry_run: bool = False) -> VerificationRoundResult:
     """Run a verification round.
 
     SAFETY: Returns a result with 0 jobs if the intelligent scheduler is frozen.
@@ -80,8 +140,13 @@ def run_verification_round() -> VerificationRoundResult:
     completion, and the engine is shut down before returning. This ensures
     that when the return value is produced, all background work is done
     and ``scheduler_running`` correctly reflects ``False``.
+
+    When ``dry_run`` is set this returns the plan only and writes nothing.
     """
     global _engine
+
+    if dry_run:
+        return plan_verification_round()
 
     if _INTELLIGENT_SCHEDULER_FROZEN:
         logger.warning(
@@ -122,6 +187,19 @@ class DiscoveryRoundResult:
     errors: int
     image_discoveries_triggered: int
     runtime_ms: float
+    dry_run: bool = False
+
+    def as_dict(self) -> dict:
+        return {
+            "countries_scanned": self.countries_scanned,
+            "inserted_scholarships": self.inserted_scholarships,
+            "duplicates": self.duplicates,
+            "rejected_candidates": self.rejected_candidates,
+            "errors": self.errors,
+            "image_discoveries_triggered": self.image_discoveries_triggered,
+            "runtime_ms": round(self.runtime_ms, 1),
+            "dry_run": self.dry_run,
+        }
 
 
 def run_discovery_round(

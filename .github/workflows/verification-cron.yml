@@ -13,6 +13,13 @@ name: ScholarZone scheduled maintenance
 # drift apart. SnapDeploy remains the API runtime for the frontend; it is simply
 # not on the maintenance path any more.
 #
+# Platform limits, stated honestly: GitHub-hosted scheduled workflows can be
+# delayed by platform load, and on a public repository they can be disabled
+# after a long period of repository inactivity. Neither is something this file
+# can work around. The worker is idempotent and cursor-driven precisely so that
+# a delayed, skipped, cancelled or repeated run leaves the catalogue in a
+# consistent state and simply continues from where it stopped.
+#
 # Concurrency prevents a long run from overlapping the next scheduled one.
 
 on:
@@ -30,6 +37,16 @@ on:
         description: 'Maximum records per stage'
         required: false
         default: '60'
+      dry_run:
+        description: 'Plan only, write nothing'
+        required: false
+        default: 'false'
+
+# Least privilege: the worker only needs to read the repository. It never
+# writes to the repository, never uses the GitHub API, and never needs a
+# deploy key or package write token.
+permissions:
+  contents: read
 
 concurrency:
   group: scholarzone-maintenance
@@ -38,6 +55,9 @@ concurrency:
 jobs:
   maintain:
     runs-on: ubuntu-latest
+    # Standard GitHub-hosted runner. A larger runner would reduce wall-clock
+    # time but costs money, and this job is deliberately sized to fit the free
+    # tier instead.
     timeout-minutes: 45
     steps:
       - name: Check out repository
@@ -46,7 +66,10 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          # Must match the backend runtime used by ci.yml and by the deployed
+          # API. Drift here means maintenance can succeed against behaviour the
+          # production API does not have.
+          python-version: '3.11'
           cache: pip
           cache-dependency-path: backend/requirements.txt
 
@@ -59,21 +82,27 @@ jobs:
       - name: Run maintenance worker
         working-directory: backend
         env:
+          # The worker reads no secrets. It is not calling an authenticated
+          # HTTP endpoint, so the verification and admin secrets that the old
+          # API-based design required are deliberately not passed here: they
+          # are consumed only by the header guards in app/routers, and this
+          # process imports no router.
+          #
           # Secret values are passed as environment variables and are never
           # echoed. `set -x` is deliberately not enabled, and no command
           # interpolates the URL into its output.
           SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
-          SCHOLARZONE_VERIFICATION_SECRET: ${{ secrets.SCHOLARZONE_VERIFICATION_SECRET }}
-          SCHOLARZONE_ADMIN_SECRET: ${{ secrets.SCHOLARZONE_ADMIN_SECRET }}
           # The setting name is SCHOLARZONE_ENVIRONMENT, not SCHOLARZONE_ENV.
           # With the wrong name the app stays in development mode, and a
           # development-mode database_url falls back to a local SQLite file -
           # which would make this job quietly maintain the wrong database
-          # instead of Neon.
+          # instead of Neon. The worker refuses to start if production mode
+          # does not resolve to a PostgreSQL URL.
           SCHOLARZONE_ENVIRONMENT: production
           PYTHONPATH: '.'
         run: |
           python -m app.jobs.scholarzone_maintenance \
             --stage "${{ github.event.inputs.stage || 'all' }}" \
             --limit "${{ github.event.inputs.limit || '60' }}" \
-            --workers 4
+            --workers 4 \
+            ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}

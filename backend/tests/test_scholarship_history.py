@@ -3,26 +3,16 @@
 from __future__ import annotations
 
 import os
-import sys
 import tempfile
-import types
 import unittest
 from pathlib import Path
 from uuid import uuid4
 
 from sqlalchemy import select
 
-
 TEST_DATABASE_PATH = Path(tempfile.gettempdir()) / f"scholarzone-history-test-{uuid4().hex}.db"
 os.environ["SCHOLARZONE_DATABASE_URL"] = f"sqlite:///{TEST_DATABASE_PATH.as_posix()}"
 os.environ["SCHOLARZONE_ENVIRONMENT"] = "test"
-
-
-fake_scheduler = types.ModuleType("app.scheduler")
-fake_scheduler.start_scheduler = lambda: None
-fake_scheduler.mark_due_for_review = lambda: None
-sys.modules["app.scheduler"] = fake_scheduler
-
 
 from app.database import close_database, get_session_factory, init_database, reset_database_connections  # noqa: E402
 from app.models import Scholarship, ScholarshipVerificationHistory  # noqa: E402
@@ -35,7 +25,6 @@ from app.services.scholarship_history import (  # noqa: E402
     write_changeset_history,
     write_verification_history,
 )
-
 
 def _make_scholarship(
     session,
@@ -58,13 +47,11 @@ def _make_scholarship(
     session.commit()
     return scholarship.id
 
-
 def _get_history_count(session, scholarship_id: int) -> int:
     stmt = select(ScholarshipVerificationHistory).where(
         ScholarshipVerificationHistory.scholarship_id == scholarship_id
     )
     return len(list(session.execute(stmt).scalars().all()))
-
 
 class TestSerializeValue(unittest.TestCase):
     def test_none_returns_none(self):
@@ -85,7 +72,6 @@ class TestSerializeValue(unittest.TestCase):
 
     def test_deterministic_output(self):
         self.assertEqual(_serialize_value(["b", "a"]), _serialize_value(["b", "a"]))
-
 
 class TestSingleChangeInsert(unittest.TestCase):
     @classmethod
@@ -133,7 +119,6 @@ class TestSingleChangeInsert(unittest.TestCase):
             self.assertEqual(history.evidence_text, "Updated to 3 years")
             self.assertEqual(history.confidence, "high")
 
-
 class TestMultipleFieldChangesInserted(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -165,7 +150,6 @@ class TestMultipleFieldChangesInserted(unittest.TestCase):
 
             count = _get_history_count(session, scholarship_id)
             self.assertEqual(count, 3)
-
 
 class TestOldNewValuesPreserved(unittest.TestCase):
     @classmethod
@@ -218,7 +202,6 @@ class TestOldNewValuesPreserved(unittest.TestCase):
             self.assertEqual(history.old_value, "Citizen, Resident")
             self.assertEqual(history.new_value, "Citizen, Resident, Refugee")
 
-
 class TestSourceEvidenceConfidencePreserved(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -256,7 +239,6 @@ class TestSourceEvidenceConfidencePreserved(unittest.TestCase):
             self.assertEqual(history.evidence_text, "Announcement page states: 'Applications closed'")
             self.assertEqual(history.confidence, "high")
             self.assertEqual(history.verification_status, "active")
-
 
 class TestPreviousHistoryImmutable(unittest.TestCase):
     @classmethod
@@ -296,7 +278,6 @@ class TestPreviousHistoryImmutable(unittest.TestCase):
             self.assertEqual(first_record.new_value, "3 years")
             self.assertEqual(first_record.created_at, first_created_at)
 
-
 class TestSecondChangeCreatesNewRow(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -334,7 +315,6 @@ class TestSecondChangeCreatesNewRow(unittest.TestCase):
             self.assertEqual(history[0].new_value, "4 years")
             self.assertEqual(history[1].old_value, "2 years")
 
-
 class TestRollbackRemovesIncompleteHistory(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -362,7 +342,6 @@ class TestRollbackRemovesIncompleteHistory(unittest.TestCase):
 
             count = _get_history_count(session, scholarship_id)
             self.assertEqual(count, 0)
-
 
 class TestHistoryServiceDoesNotIndependentlyCommit(unittest.TestCase):
     @classmethod
@@ -411,7 +390,6 @@ class TestHistoryServiceDoesNotIndependentlyCommit(unittest.TestCase):
             self.assertEqual(count, 1)
             new_session.close()
 
-
 class TestNoNPlusOneQueries(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -441,7 +419,6 @@ class TestNoNPlusOneQueries(unittest.TestCase):
 
             count = _get_history_count(session, scholarship_id)
             self.assertEqual(count, 10)
-
 
 class TestIndexedLookup(unittest.TestCase):
     @classmethod
@@ -490,7 +467,6 @@ class TestIndexedLookup(unittest.TestCase):
             status_history = get_verification_history(session, scholarship_id, field_name="status")
             self.assertEqual(len(status_history), 1)
 
-
 class TestInvalidScholarshipIdRejected(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -515,7 +491,6 @@ class TestInvalidScholarshipIdRejected(unittest.TestCase):
                 session.commit()
 
             session.rollback()
-
 
 class TestDeterministicHistoricalRepresentation(unittest.TestCase):
     @classmethod
@@ -568,7 +543,6 @@ class TestDeterministicHistoricalRepresentation(unittest.TestCase):
             history = session.get(ScholarshipVerificationHistory, result.history_ids[0])
             self.assertEqual(history.old_value, "2 years")
             self.assertEqual(history.new_value, "3 years")
-
 
 class TestWriteChangesetHistory(unittest.TestCase):
     @classmethod
@@ -640,7 +614,6 @@ class TestWriteChangesetHistory(unittest.TestCase):
 
             self.assertEqual(result.entries_written, 1)
 
-
 class TestEmptyEntries(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -662,7 +635,6 @@ class TestEmptyEntries(unittest.TestCase):
 
             self.assertEqual(result.entries_written, 0)
             self.assertEqual(len(result.history_ids), 0)
-
 
 class TestTransactionIntegration(unittest.TestCase):
     @classmethod
@@ -721,7 +693,6 @@ class TestTransactionIntegration(unittest.TestCase):
 
             count = _get_history_count(session, scholarship_id)
             self.assertEqual(count, 0)
-
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,15 +1,14 @@
 import os
-import sys
-import types
-from uuid import uuid4
 
-# Prevent the real app.scheduler from being imported before the test database
-# is configured. The real module calls get_session_factory() at import time,
-# which would otherwise cache the development database engine.
-fake_scheduler = types.ModuleType("app.scheduler")
-fake_scheduler.start_scheduler = lambda: None
-fake_scheduler.mark_due_for_review = lambda: None
-sys.modules["app.scheduler"] = fake_scheduler
+# NOTE: this file used to install a fake `app.scheduler` module. That module
+# was a legacy APScheduler entry point that nothing in the application ever
+# imported - it was dead, and APScheduler was not a production dependency - so
+# the stub, which existed only to stop the dead module from building a
+# development engine at import time, has been removed along with it.
+#
+# If a future test needs to prove something about a module that touches
+# get_session_factory() at import time, that is a signal the module should not
+# be doing that, not a signal to add a stub here.
 
 # Safety net: If SCHOLARZONE_ENVIRONMENT=test is set but SCHOLARZONE_DATABASE_URL
 # is not, default to an in-memory database. This prevents tests from accidentally

@@ -3,9 +3,7 @@
 from __future__ import annotations
 
 import os
-import sys
 import tempfile
-import types
 import unittest
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
@@ -13,17 +11,9 @@ from uuid import uuid4
 
 from sqlalchemy import select
 
-
 TEST_DATABASE_PATH = Path(tempfile.gettempdir()) / f"scholarzone-counterfactual-test-{uuid4().hex}.db"
 os.environ["SCHOLARZONE_DATABASE_URL"] = f"sqlite:///{TEST_DATABASE_PATH.as_posix()}"
 os.environ["SCHOLARZONE_ENVIRONMENT"] = "test"
-
-
-fake_scheduler = types.ModuleType("app.scheduler")
-fake_scheduler.start_scheduler = lambda: None
-fake_scheduler.mark_due_for_review = lambda: None
-sys.modules["app.scheduler"] = fake_scheduler
-
 
 from app.database import close_database, get_session_factory, init_database, reset_database_connections  # noqa: E402
 from app.models import Scholarship  # noqa: E402
@@ -35,7 +25,6 @@ from app.services.counterfactual_safety import (  # noqa: E402
     simulate_counterfactual,
     validate_proposed_state,
 )
-
 
 def _make_scholarship(
     session,
@@ -98,12 +87,10 @@ def _make_scholarship(
     session.commit()
     return scholarship
 
-
 def _get_scholarship(session, scholarship_id: int) -> Scholarship:
     return session.execute(
         select(Scholarship).where(Scholarship.id == scholarship_id)
     ).scalar_one()
-
 
 def _extract_state(scholarship: Scholarship) -> dict:
     return {
@@ -145,7 +132,6 @@ def _extract_state(scholarship: Scholarship) -> dict:
         "notes": scholarship.notes,
     }
 
-
 class TestCounterfactualSafetyBase(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -174,7 +160,6 @@ class TestCounterfactualSafetyBase(unittest.TestCase):
             for s in scholarships:
                 session.delete(s)
             session.commit()
-
 
 class TestSafeDeadlineChange(TestCounterfactualSafetyBase):
     def test_safe_deadline_extension(self):
@@ -219,7 +204,6 @@ class TestSafeDeadlineChange(TestCounterfactualSafetyBase):
             self.assertTrue(result.safe)
             self.assertEqual(result.severity, CounterfactualSeverity.SAFE)
 
-
 class TestDeadlineStatusInconsistency(TestCounterfactualSafetyBase):
     def test_deadline_passed_but_status_active(self):
         with get_session_factory()() as session:
@@ -261,7 +245,6 @@ class TestDeadlineStatusInconsistency(TestCounterfactualSafetyBase):
             self.assertFalse(result.safe)
             self.assertIn("deadline_future_but_status_closed", result.reason_codes)
 
-
 class TestDeadlineApplicationPeriodInconsistency(TestCounterfactualSafetyBase):
     def test_seasonal_mismatch(self):
         with get_session_factory()() as session:
@@ -285,7 +268,6 @@ class TestDeadlineApplicationPeriodInconsistency(TestCounterfactualSafetyBase):
 
             self.assertFalse(result.safe)
             self.assertIn("deadline_application_period_season_mismatch", result.reason_codes)
-
 
 class TestFundingCoverageInconsistency(TestCounterfactualSafetyBase):
     def test_full_funding_empty_coverage(self):
@@ -328,7 +310,6 @@ class TestFundingCoverageInconsistency(TestCounterfactualSafetyBase):
             self.assertFalse(result.safe)
             self.assertIn("no_funding_has_coverage", result.reason_codes)
 
-
 class TestEligibilityRequirementsInconsistency(TestCounterfactualSafetyBase):
     def test_phd_with_bachelor_only_requirements(self):
         with get_session_factory()() as session:
@@ -350,7 +331,6 @@ class TestEligibilityRequirementsInconsistency(TestCounterfactualSafetyBase):
             self.assertFalse(result.safe)
             self.assertIn("eligibility_degree_requirements_mismatch", result.reason_codes)
 
-
 class TestApplicationMethodLinkInconsistency(TestCounterfactualSafetyBase):
     def test_online_method_missing_link(self):
         with get_session_factory()() as session:
@@ -371,7 +351,6 @@ class TestApplicationMethodLinkInconsistency(TestCounterfactualSafetyBase):
 
             self.assertFalse(result.safe)
             self.assertIn("online_method_missing_link", result.reason_codes)
-
 
 class TestLifecycleContradiction(TestCounterfactualSafetyBase):
     def test_archived_with_future_deadline(self):
@@ -414,7 +393,6 @@ class TestLifecycleContradiction(TestCounterfactualSafetyBase):
             self.assertFalse(result.safe)
             self.assertIn("invalid_lifecycle_regression", result.reason_codes)
 
-
 class TestDependencyViolation(TestCounterfactualSafetyBase):
     def test_deadline_change_affects_application_period(self):
         with get_session_factory()() as session:
@@ -448,7 +426,6 @@ class TestDependencyViolation(TestCounterfactualSafetyBase):
             )
 
             self.assertIn("requirements", result.affected_dependencies)
-
 
 class TestNewlyIntroducedAnomaly(TestCounterfactualSafetyBase):
     def test_large_deadline_shift_detected(self):
@@ -488,7 +465,6 @@ class TestNewlyIntroducedAnomaly(TestCounterfactualSafetyBase):
             )
 
             self.assertTrue(len(result.anomaly_flags) > 0)
-
 
 class TestMultipleSimultaneousChanges(TestCounterfactualSafetyBase):
     def test_multiple_changes_safe(self):
@@ -532,7 +508,6 @@ class TestMultipleSimultaneousChanges(TestCounterfactualSafetyBase):
 
             self.assertFalse(result.safe)
 
-
 class TestPartialProposal(TestCounterfactualSafetyBase):
     def test_single_field_change(self):
         with get_session_factory()() as session:
@@ -566,7 +541,6 @@ class TestPartialProposal(TestCounterfactualSafetyBase):
 
             self.assertTrue(result.safe)
             self.assertEqual(result.severity, CounterfactualSeverity.SAFE)
-
 
 class TestImmutableCurrentState(TestCounterfactualSafetyBase):
     def test_current_state_not_mutated(self):
@@ -613,7 +587,6 @@ class TestImmutableCurrentState(TestCounterfactualSafetyBase):
             self.assertEqual(scholarship.deadline_date, original_deadline)
             self.assertEqual(scholarship.duration, original_duration)
 
-
 class TestDeterministicResult(TestCounterfactualSafetyBase):
     def test_same_input_same_output(self):
         with get_session_factory()() as session:
@@ -636,7 +609,6 @@ class TestDeterministicResult(TestCounterfactualSafetyBase):
             self.assertEqual(result1.severity, result2.severity)
             self.assertEqual(result1.violated_rules, result2.violated_rules)
             self.assertEqual(result1.reason_codes, result2.reason_codes)
-
 
 class TestNoNPlusOne(TestCounterfactualSafetyBase):
     def test_batch_does_not_query_per_scholarship(self):
@@ -661,7 +633,6 @@ class TestNoNPlusOne(TestCounterfactualSafetyBase):
             for result in results:
                 self.assertIsInstance(result, CounterfactualResult)
 
-
 class TestNoDatabaseMutationDuringSimulation(TestCounterfactualSafetyBase):
     def test_database_unchanged_after_simulation(self):
         with get_session_factory()() as session:
@@ -682,7 +653,6 @@ class TestNoDatabaseMutationDuringSimulation(TestCounterfactualSafetyBase):
             db_scholarship = _get_scholarship(session, scholarship_id)
             self.assertEqual(db_scholarship.deadline_date, date.today() + timedelta(days=60))
             self.assertEqual(db_scholarship.duration, "2 years")
-
 
 class TestSafeUpdateIntegration(TestCounterfactualSafetyBase):
     def test_safe_change_passes_all_checks(self):
@@ -728,7 +698,6 @@ class TestSafeUpdateIntegration(TestCounterfactualSafetyBase):
             self.assertFalse(result.safe)
             self.assertTrue(result.requires_review())
 
-
 class TestUnsafeUpdateBlocked(TestCounterfactualSafetyBase):
     def test_critical_inconsistency_blocks(self):
         with get_session_factory()() as session:
@@ -749,7 +718,6 @@ class TestUnsafeUpdateBlocked(TestCounterfactualSafetyBase):
 
             self.assertTrue(result.should_block())
             self.assertEqual(result.severity, CounterfactualSeverity.CRITICAL)
-
 
 class TestReviewEscalation(TestCounterfactualSafetyBase):
     def test_multiple_medium_issues_escalate_to_high(self):
@@ -778,7 +746,6 @@ class TestReviewEscalation(TestCounterfactualSafetyBase):
             self.assertTrue(result.requires_review())
             self.assertIn(result.severity, (CounterfactualSeverity.HIGH, CounterfactualSeverity.MEDIUM))
 
-
 class TestValidateProposedState(TestCounterfactualSafetyBase):
     def test_validate_returns_tuple(self):
         with get_session_factory()() as session:
@@ -793,7 +760,6 @@ class TestValidateProposedState(TestCounterfactualSafetyBase):
             self.assertIsInstance(is_valid, bool)
             self.assertIsInstance(result, CounterfactualResult)
             self.assertTrue(is_valid)
-
 
 class TestLifecycleImpact(TestCounterfactualSafetyBase):
     def test_lifecycle_impact_populated(self):
@@ -815,7 +781,6 @@ class TestLifecycleImpact(TestCounterfactualSafetyBase):
 
             self.assertIsNotNone(result.lifecycle_impact)
             self.assertIsInstance(result.lifecycle_impact, LifecycleImpact)
-
 
 class TestCounterfactualResultProperties(TestCounterfactualSafetyBase):
     def test_requires_review_thresholds(self):
@@ -850,7 +815,6 @@ class TestCounterfactualResultProperties(TestCounterfactualSafetyBase):
             severity=CounterfactualSeverity.CRITICAL,
         )
         self.assertTrue(result_critical.should_block())
-
 
 class TestEdgeCases(TestCounterfactualSafetyBase):
     def test_none_values_in_proposed(self):
@@ -910,7 +874,6 @@ class TestEdgeCases(TestCounterfactualSafetyBase):
                 if "deadline_far_future" in a.reason_codes
             ]
             self.assertTrue(len(far_future_anomalies) > 0)
-
 
 if __name__ == "__main__":
     unittest.main()

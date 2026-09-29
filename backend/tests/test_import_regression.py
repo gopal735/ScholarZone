@@ -103,6 +103,17 @@ CRITICAL_MODULES = {
         "app.seed",
         "app.schemas",
     ],
+    # The autonomous maintenance path. These are production modules reached by
+    # the scheduled workflow, not by the API, so they had no coverage in the
+    # git-tracked regression that would catch a file existing locally but
+    # never being committed - which is exactly how the first
+    # discovery_scheduler.py incident reached production.
+    "maintenance": [
+        "app.jobs.scholarzone_maintenance",
+        "app.services.maintenance_cursor",
+        "app.services.maintenance_run_log",
+        "app.scheduler_v2",
+    ],
 }
 
 ALL_CRITICAL_MODULES = [
@@ -184,6 +195,11 @@ class TestCriticalModulesImportable:
 
     @pytest.mark.parametrize("module_name", list(CRITICAL_MODULES["core_modules"]))
     def test_core_module_importable(self, module_name: str):
+        importlib.import_module(module_name)
+
+    @pytest.mark.parametrize("module_name", list(CRITICAL_MODULES["maintenance"]))
+    def test_maintenance_module_importable(self, module_name: str):
+        """The scheduled worker must import with no API server and no secrets."""
         importlib.import_module(module_name)
 
 

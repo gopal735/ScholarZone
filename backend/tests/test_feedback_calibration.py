@@ -21,15 +21,7 @@ Tests cover:
 
 from __future__ import annotations
 
-import types
 import unittest
-
-fake_scheduler = types.ModuleType("app.scheduler")
-fake_scheduler.start_scheduler = lambda: None
-fake_scheduler.mark_due_for_review = lambda: None
-import sys
-sys.modules["app.scheduler"] = fake_scheduler
-
 
 from app.services.feedback_calibration import (
     CalibrationBucket,
@@ -51,7 +43,6 @@ from app.services.feedback_calibration import (
     record_feedback,
 )
 
-
 class TestFeedbackRecordApproved(unittest.TestCase):
     def test_approved_feedback(self):
         record = record_feedback(
@@ -67,7 +58,6 @@ class TestFeedbackRecordApproved(unittest.TestCase):
         self.assertTrue(record.was_correct)
         self.assertEqual(record.human_decision, "approved")
 
-
 class TestFeedbackRecordRejected(unittest.TestCase):
     def test_rejected_feedback(self):
         record = record_feedback(
@@ -82,7 +72,6 @@ class TestFeedbackRecordRejected(unittest.TestCase):
         self.assertTrue(record.was_rejected)
         self.assertFalse(record.was_correct)
         self.assertEqual(record.human_decision, "rejected")
-
 
 class TestFeedbackRecordConfidenceNormalization(unittest.TestCase):
     def test_confidence_clamped_above_one(self):
@@ -113,7 +102,6 @@ class TestFeedbackRecordConfidenceNormalization(unittest.TestCase):
         )
         self.assertAlmostEqual(record.model_confidence, 0.15)
 
-
 class TestFeedbackRecordImmutability(unittest.TestCase):
     def test_feedback_is_frozen(self):
         record = record_feedback(
@@ -122,7 +110,6 @@ class TestFeedbackRecordImmutability(unittest.TestCase):
         )
         with self.assertRaises(AttributeError):
             record.model_confidence = 0.9
-
 
 class TestConfidenceBucketing(unittest.TestCase):
     def test_bucket_0_to_10(self):
@@ -150,7 +137,6 @@ class TestConfidenceBucketing(unittest.TestCase):
         )
         self.assertEqual(record.confidence_bucket, "70-80")
 
-
 class TestBucketMidpoint(unittest.TestCase):
     def test_midpoint_0_10(self):
         self.assertEqual(_bucket_midpoint("0-10"), 5.0)
@@ -160,7 +146,6 @@ class TestBucketMidpoint(unittest.TestCase):
 
     def test_midpoint_90_100(self):
         self.assertEqual(_bucket_midpoint("90-100"), 95.0)
-
 
 class TestCalibrationBucketProperties(unittest.TestCase):
     def test_empty_bucket_safe(self):
@@ -204,7 +189,6 @@ class TestCalibrationBucketProperties(unittest.TestCase):
         )
         self.assertEqual(bucket.recommended_action, ThresholdAction.INSUFFICIENT_DATA)
 
-
 class TestComputeCalibrationEmpty(unittest.TestCase):
     def test_empty_records(self):
         result = compute_calibration([])
@@ -215,7 +199,6 @@ class TestComputeCalibrationEmpty(unittest.TestCase):
     def test_all_buckets_initialized(self):
         result = compute_calibration([])
         self.assertEqual(len(result.confidence_buckets), 10)
-
 
 class TestComputeCalibrationApproved(unittest.TestCase):
     def test_all_approved(self):
@@ -232,7 +215,6 @@ class TestComputeCalibrationApproved(unittest.TestCase):
         self.assertEqual(result.overall_approval_count, 20)
         self.assertEqual(result.overall_approval_rate, 1.0)
 
-
 class TestComputeCalibrationRejected(unittest.TestCase):
     def test_all_rejected(self):
         records = [
@@ -246,7 +228,6 @@ class TestComputeCalibrationRejected(unittest.TestCase):
         result = compute_calibration(records)
         self.assertEqual(result.overall_rejection_count, 20)
         self.assertEqual(result.overall_rejection_rate, 1.0)
-
 
 class TestCalibrationError(unittest.TestCase):
     def test_perfect_calibration(self):
@@ -262,7 +243,6 @@ class TestCalibrationError(unittest.TestCase):
         self.assertAlmostEqual(result.overall_approval_rate, 0.5)
         self.assertAlmostEqual(result.overall_avg_confidence, 0.8)
         self.assertAlmostEqual(result.overall_calibration_error, 0.3)
-
 
 class TestSourceSpecificCalibration(unittest.TestCase):
     def test_source_calibration_present(self):
@@ -293,7 +273,6 @@ class TestSourceSpecificCalibration(unittest.TestCase):
         result = compute_calibration(records)
         self.assertEqual(len(result.source_calibrations), 0)
 
-
 class TestFieldSpecificCalibration(unittest.TestCase):
     def test_field_rejection_tracking(self):
         records = [
@@ -309,7 +288,6 @@ class TestFieldSpecificCalibration(unittest.TestCase):
         fc = result.field_calibrations["deadline_date"]
         self.assertEqual(fc.rejection_rate, 1.0)
         self.assertTrue(fc.is_problematic)
-
 
 class TestOverConfidenceDetection(unittest.TestCase):
     def test_over_confident_source(self):
@@ -338,7 +316,6 @@ class TestOverConfidenceDetection(unittest.TestCase):
         result = compute_calibration(records)
         self.assertNotIn("good-source.example.com", result.over_confident_sources)
 
-
 class TestUnderConfidenceDetection(unittest.TestCase):
     def test_under_confident_source(self):
         records = [
@@ -352,7 +329,6 @@ class TestUnderConfidenceDetection(unittest.TestCase):
         ]
         result = compute_calibration(records)
         self.assertIn("under-confident.example.com", result.under_confident_sources)
-
 
 class TestInsufficientSampleHandling(unittest.TestCase):
     def test_insufficient_source_samples(self):
@@ -382,7 +358,6 @@ class TestInsufficientSampleHandling(unittest.TestCase):
         result = compute_calibration(records)
         self.assertFalse(result.has_sufficient_data)
         self.assertIn("Insufficient data", result.recommendations[0])
-
 
 class TestRecommendationGeneration(unittest.TestCase):
     def test_recommendation_over_confident(self):
@@ -424,7 +399,6 @@ class TestRecommendationGeneration(unittest.TestCase):
         has_ok_rec = any("acceptable bounds" in r for r in result.recommendations)
         self.assertTrue(has_ok_rec)
 
-
 class TestNoAutomaticThresholdMutation(unittest.TestCase):
     def test_calibration_does_not_modify_global_state(self):
         import app.services.feedback_calibration as fc
@@ -442,7 +416,6 @@ class TestNoAutomaticThresholdMutation(unittest.TestCase):
 
         self.assertEqual(fc._OVER_CONFIDENT_THRESHOLD, original_threshold)
 
-
 class TestImmutableCalibrationHistory(unittest.TestCase):
     def test_snapshot_is_frozen(self):
         records = [
@@ -458,7 +431,6 @@ class TestImmutableCalibrationHistory(unittest.TestCase):
 
         with self.assertRaises(AttributeError):
             snapshot.feedback_count = 999
-
 
 class TestDeterministicResults(unittest.TestCase):
     def test_same_input_same_output(self):
@@ -478,7 +450,6 @@ class TestDeterministicResults(unittest.TestCase):
         self.assertEqual(result1.overall_sample_count, result2.overall_sample_count)
         self.assertAlmostEqual(result1.overall_calibration_error, result2.overall_calibration_error)
 
-
 class TestBatchAggregation(unittest.TestCase):
     def test_large_batch(self):
         records = [
@@ -497,7 +468,6 @@ class TestBatchAggregation(unittest.TestCase):
         self.assertEqual(len(result.source_calibrations), 5)
         self.assertEqual(len(result.field_calibrations), 4)
 
-
 class TestNoNPlusOne(unittest.TestCase):
     def test_single_pass_computation(self):
         records = [
@@ -513,7 +483,6 @@ class TestNoNPlusOne(unittest.TestCase):
         self.assertEqual(result.overall_sample_count, 100)
         total_bucket_samples = sum(b.sample_count for b in result.confidence_buckets.values())
         self.assertEqual(total_bucket_samples, 100)
-
 
 class TestPrivacySensitiveData(unittest.TestCase):
     def test_no_pii_in_snapshot(self):
@@ -531,7 +500,6 @@ class TestPrivacySensitiveData(unittest.TestCase):
         for key, value in snapshot.result_summary.items():
             if isinstance(value, str):
                 self.assertLessEqual(len(value), 250)
-
 
 class TestCalibrationSnapshot(unittest.TestCase):
     def test_snapshot_contains_expected_fields(self):
@@ -551,7 +519,6 @@ class TestCalibrationSnapshot(unittest.TestCase):
         self.assertEqual(snapshot.feedback_count, 15)
         self.assertIn("overall_approval_rate", snapshot.result_summary)
         self.assertIn("overall_calibration_error", snapshot.result_summary)
-
 
 class TestDetectSystematicBias(unittest.TestCase):
     def test_insufficient_data(self):
@@ -579,7 +546,6 @@ class TestDetectSystematicBias(unittest.TestCase):
         self.assertTrue(bias["has_sufficient_data"])
         self.assertTrue(bias["is_over_confident"])
 
-
 class TestConfidenceTrend(unittest.TestCase):
     def test_empty_snapshots(self):
         trend = compute_confidence_trend([])
@@ -597,7 +563,6 @@ class TestConfidenceTrend(unittest.TestCase):
         trend = compute_confidence_trend(snapshots)
         self.assertTrue(trend["has_data"])
         self.assertIn("trend", trend)
-
 
 class TestDecisionTypeCalibration(unittest.TestCase):
     def test_decision_type_aggregation(self):
@@ -625,7 +590,6 @@ class TestDecisionTypeCalibration(unittest.TestCase):
         auto_cal = result.decision_type_calibrations[DecisionType.AUTO_UPDATE]
         self.assertEqual(auto_cal.approval_rate, 1.0)
 
-
 class TestSourceCalibrationProperties(unittest.TestCase):
     def test_source_calibration_empty(self):
         sc = SourceCalibration(domain="test.com")
@@ -647,7 +611,6 @@ class TestSourceCalibrationProperties(unittest.TestCase):
         )
         self.assertTrue(sc.is_under_confident)
 
-
 class TestFieldCalibrationProperties(unittest.TestCase):
     def test_field_calibration_not_problematic(self):
         fc = FieldCalibration(field_name="title", sample_count=10, approval_count=8, rejection_count=2)
@@ -660,7 +623,6 @@ class TestFieldCalibrationProperties(unittest.TestCase):
     def test_field_calibration_insufficient_samples(self):
         fc = FieldCalibration(field_name="title", sample_count=2, approval_count=0, rejection_count=2)
         self.assertFalse(fc.is_problematic)
-
 
 class TestFeedbackRecordSourceDomain(unittest.TestCase):
     def test_extract_domain(self):
@@ -678,14 +640,12 @@ class TestFeedbackRecordSourceDomain(unittest.TestCase):
         )
         self.assertIsNone(record.source_domain)
 
-
 class TestCalibrationResultProperties(unittest.TestCase):
     def test_empty_result_safe(self):
         result = CalibrationResult()
         self.assertEqual(result.overall_approval_rate, 0.0)
         self.assertEqual(result.overall_calibration_error, 0.0)
         self.assertFalse(result.has_sufficient_data)
-
 
 class TestEdgeCases(unittest.TestCase):
     def test_single_record(self):
@@ -714,7 +674,6 @@ class TestEdgeCases(unittest.TestCase):
         )
         self.assertEqual(record.model_confidence, 1.0)
         self.assertEqual(record.confidence_bucket, "90-100")
-
 
 if __name__ == "__main__":
     unittest.main()

@@ -93,11 +93,30 @@ Three tiers, deployed independently:
 | Backend | FastAPI, Python 3.11, Docker (`python:3.11-slim`) | SnapDeploy containers |
 | Database | PostgreSQL (Neon), 13 SQLAlchemy models | Neon |
 
-Automation sits alongside them: GitHub Actions runs backend tests and frontend lint on every push, deploys the frontend, verifies the production backend, and triggers the 12-hour verification cycle.
+Automation sits alongside them. GitHub Actions runs backend tests and frontend lint on every push, deploys the frontend, verifies the production backend, and every twelve hours runs the maintenance worker **directly against Neon**, in-process, with no API server involved:
+
+```
+Requests                       Maintenance (every 12h)
+   │                                    │
+   ▼                                    ▼
+GitHub Pages ──► SnapDeploy API ──► Neon PostgreSQL
+                        ▲                ▲
+                        │                │
+                  (frontend only)   direct Python worker
+                                     runs in GitHub Actions
+```
+
+The separation matters. SnapDeploy Free containers sleep, and a wake is not
+guaranteed, so a scheduled run that depended on the container being awake
+depended on a platform behaviour nobody controls — and verification is exactly
+the job that matters most when nobody is looking. The maintenance worker
+imports the same service layer the API uses and opens its own database
+connection, so a scheduled run and an operator-triggered run cannot drift
+apart, and SnapDeploy is used only to serve the frontend.
 
 ### Data model
 
-Thirteen models back the platform. The load-bearing ones:
+Fifteen models back the platform. The load-bearing ones:
 
 | Model | Role |
 | :--- | :--- |
@@ -108,6 +127,8 @@ Thirteen models back the platform. The load-bearing ones:
 | `SourceHealth` | Per-source success and failure counts |
 | `DiscoveryCandidate` | Newly found opportunities awaiting review |
 | `ContentFingerprintRecord` | Idempotency and duplicate-detection ledger for images |
+| `MaintenanceCursor` | Durable per-stage progress marker, so scheduled runs advance |
+| `MaintenanceRun` | One row per maintenance run: status, stage results, counts |
 | `KnowledgeNode` / `KnowledgeEdge` | Knowledge-graph structures for relationship exploration |
 
 <details>
@@ -238,7 +259,44 @@ Every verified value is traceable to the source URL it came from. A review workf
 Up to four scholarships can be compared side by side on country, degree, funding, and deadline. Saved scholarships are stored device-locally, with no account required.
 
 ### Scheduled automation
-A 12-hour cron cycle wakes the backend, runs verification, and triggers discovery, with concurrency control to prevent overlapping rounds.
+
+A 12-hour GitHub Actions cron runs `python -m app.jobs.scholarzone_maintenance`,
+which connects straight to Neon. **It does not wake, call, or depend on the
+SnapDeploy container**, and it needs no running web server.
+
+Stages run in dependency order, and each one is bounded, resumable and
+idempotent:
+
+| Stage | What it does | Depends on |
+| :--- | :--- | :--- |
+| `verify` | Re-checks due records, selected by staleness priority, and processes due retries | — |
+| `enrich` | Fills empty fields from the record's official source, from a durable cursor | `verify` |
+| `images` | Covers records that have not reached a terminal image outcome | `verify` |
+| `discover` | Finds new opportunities in countries already represented | `verify` |
+
+If a stage fails, the stages that depend on it are skipped rather than run on
+stale state, and **the process exits non-zero** so the workflow is recorded as
+failed. A stage exception means something structural broke — the database, a
+missing table, a bad import — and it is never reported as a successful run.
+Per-record source failures are different: an unreachable provider is counted
+as a metric and does not fail the run, because that is a data outcome, not a
+broken job.
+
+**Progress is durable.** The `enrich` stage takes its batch from a
+`MaintenanceCursor` row in the same database, not from the Actions cache. The
+previous design selected `ORDER BY id LIMIT 60` with no cursor at all, so every
+run re-enriched the same first records forever while the tail of the catalogue
+was never reached — and it reported success while doing it. The cursor
+advances monotonically and wraps when the catalogue is exhausted, which turns
+repeated runs into a round-robin sweep: every record is revisited on a bounded
+cadence, and a failed batch is re-selected next run rather than skipped.
+
+Useful flags: `--stage` (repeatable), `--limit`, `--workers`, `--dry-run`
+(reads and reports the plan, writes nothing).
+
+**Cost control.** Every stage is limited per run, concurrency is capped, already-complete records are skipped rather than re-fetched, and records that reached a terminal image outcome are not crawled again. Each run records scanned / changed / skipped / failure counts and stage runtimes in `MaintenanceRun`, so the actual cost is measurable rather than assumed.
+
+**Honest platform limits.** GitHub-hosted scheduled workflows can be delayed by platform load, and public repositories can have them disabled after long inactivity. Neither is something this repository can work around. The worker is designed so that a delayed, skipped, cancelled or repeated run leaves the catalogue consistent and simply continues from the cursor.
 
 ### Admin dashboard
 A control surface for the verification queue, metric cards, search and filter, and verify and flag actions, backed by a dedicated image review interface.
@@ -249,10 +307,12 @@ A control surface for the verification queue, metric cards, search and filter, a
 
 ### Test suite
 
-- **59** test files under `backend/tests/`
-- **2302** test functions
+- **75** test files under `backend/tests/`
+- **2935** tests
 
-The suite exercises the verification engine, image validation and discovery, the discovery pipeline, lifecycle transitions, source health, schema compatibility, and API endpoints. The suite is **not** fully green: a known failure remains open and is tracked rather than suppressed. Treat the current state as *nearly passing*, not as a 100% pass claim.
+The suite exercises the verification engine, image validation and discovery, the discovery pipeline, lifecycle transitions, source health, schema compatibility, API endpoints, and the autonomous maintenance path.
+
+`tests/test_autonomous_maintenance.py` is worth calling out. It pins the properties this architecture depends on rather than the current implementation: that consecutive maintenance runs advance through the catalogue instead of re-selecting the same ids, that the cursor survives a process restart, that a failed stage exits non-zero, that production refuses a non-PostgreSQL database, that no workflow or module references the SnapDeploy wake endpoint, that the worker neither needs a server nor receives the API secrets, and that the scheduled runtime matches the backend runtime.
 
 ### CI
 
@@ -362,12 +422,13 @@ ScholarZone/
 ├── backend/
 │   ├── app/
 │   │   ├── main.py               # FastAPI entry point
-│   │   ├── models.py             # 13 SQLAlchemy models
+│   │   ├── models.py             # 15 SQLAlchemy models
 │   │   ├── schemas.py            # Pydantic schemas
 │   │   ├── routers/              # scholarships, verification, discovery, admin
+│   │   ├── jobs/                 # scholarzone_maintenance: the scheduled worker
 │   │   ├── scheduler_v2.py       # Verification engine
-│   │   └── services/             # Discovery, images, reviews, source health
-│   ├── tests/                    # 59 test files, 2302 test functions
+│   │   ├── services/             # Discovery, images, reviews, source health, cursor
+│   ├── tests/                    # 75 test files, 2935 tests
 │   ├── Dockerfile                # Single-stage python:3.11-slim
 │   ├── render.yaml               # Alternative deployment config, not production
 │   └── requirements.txt
@@ -394,11 +455,31 @@ Production runs on **SnapDeploy containers**, not Render. A `backend/render.yaml
 
 PostgreSQL on Neon in production; SQLite for development and testing. Production databases are populated by migration rather than by seeding.
 
-### Scheduled verification
+### Scheduled maintenance
 
-`.github/workflows/verification-cron.yml` runs on `7 */12 * * *` — every 12 hours at minute 7. Rounds are grouped under a concurrency group with `cancel-in-progress` so overlapping runs cannot occur. The job validates configuration, wakes the container and triggers verification, then triggers discovery only if verification succeeded.
+`.github/workflows/verification-cron.yml` runs on `7 */12 * * *` — every 12 hours at minute 7, deliberately off the hour. Rounds are grouped under a concurrency group so overlapping runs cannot occur.
 
-A legacy APScheduler instance exists in `scheduler_v2.py` but is intentionally **not started in production**, so verification is driven exclusively by the cloud cron job and duplicate scheduler execution cannot occur.
+The job checks out the repository, installs `backend/requirements.txt` on **Python 3.11** (the same runtime as CI and the deployed API), and runs the worker in-process against Neon. It receives exactly two settings:
+
+| Setting | Why |
+| :--- | :--- |
+| `SCHOLARZONE_DATABASE_URL` | The Neon connection string |
+| `SCHOLARZONE_ENVIRONMENT=production` | Without it the config layer falls back to a local SQLite file and the job would quietly maintain the wrong database |
+
+It does **not** receive `SCHOLARZONE_VERIFICATION_SECRET` or `SCHOLARZONE_ADMIN_SECRET`. Those guard HTTP endpoints in `app/routers`; the worker imports no router and makes no HTTP call, so passing them would grant the job credentials it cannot use. The worker also refuses to start if production mode does not resolve to a PostgreSQL URL, and exits non-zero if any stage fails.
+
+The legacy `app/scheduler.py` APScheduler module has been deleted along with the dependency: nothing in the application imported it, and it existed only behind a test stub. The intelligent verification engine in `app/scheduler_v2.py` and `app/services/scheduler_engine.py` is preserved and is what the worker actually calls.
+
+### Cost and platform limits
+
+Free by design, not free by guarantee. The architecture introduces no paid AI or API dependency, no paid Always-On hosting, and no paid monitoring service. What is genuinely free: GitHub Pages, GitHub-hosted standard runners, the SnapDeploy free container for API hosting, and the Neon free tier.
+
+What remains outside this repository's control:
+
+- **GitHub scheduled workflows can be delayed** by platform load, and on a public repository they **can be disabled after long inactivity**. The cursor design means a missed run is caught up rather than lost.
+- **SnapDeploy Free containers sleep.** The first request after idle can return `503` while the container starts. This no longer affects maintenance, but it still affects public page loads; the frontend retries.
+- **Neon free tiers have compute-hour and storage limits.** Per-run cost is bounded and recorded in `MaintenanceRun`, so usage can be measured rather than guessed.
+- **Official source availability is not guaranteed.** Providers return 403, or change their pages, or go offline. Blocked sources are recorded as data outcomes, not silently treated as verified.
 
 ---
 
@@ -410,13 +491,22 @@ Scholarship browsing, filtering, sorting, and detail views; country explorer wit
 
 ### In production
 
-Frontend on GitHub Pages, backend on SnapDeploy, PostgreSQL on Neon, and scheduled verification on a 12-hour cycle.
+Frontend on GitHub Pages, backend on SnapDeploy, PostgreSQL on Neon, and a 12-hour maintenance cycle running directly against Neon from GitHub Actions.
+
+### Autonomous vs. library-only
+
+Most services in `app/services/` are reached by the maintenance worker or the API and genuinely run on a schedule. A smaller set is **library-only**: implemented, tested, and imported by nothing at runtime. They are not autonomous, and are listed here so that nobody reads their test coverage as evidence that a scheduled job exists:
+
+`anomaly_detection`, `catalogue_quarantine`, `confidence_decay`, `content_fingerprinting`, `counterfactual_safety`, `dependency_graph`, `entity_resolution`, `evidence_arbitration`, `feedback_calibration`, `freshness_governance`, `information_gain_scheduler`, `knowledge_graph`, `scholarship_recovery`, `self_healing_verification`, `source_adapter`, `source_adapter_executor`, `source_repair`, `source_resolver`, `telemetry_decorators`, `verification_cost_optimizer`, `verification_intelligence`, `email_service`.
+
+A feature is autonomous only when trigger → execution → persistence → failure handling → recurrence all exist. A function, a workflow file, an HTTP endpoint, or a passing test is not evidence of that.
 
 ### Open items
 
-- One test failure remains open and tracked; it does not block the verification pipeline.
+- Verification priority scoring still issues a small number of per-record aggregate queries while enqueuing a batch. The batch size bounds the cost, but the fan-out is not yet collapsed into grouped queries.
 - Admin route gating is not yet applied to every admin page.
-- Runtime behaviour of the corrected cron wake logic awaits the next scheduled run.
+- Directory pagination is not yet implemented.
+- Search Console is not connected, so indexing status is unverified.
 
 ### Not implemented
 
@@ -426,7 +516,7 @@ Multi-language localisation, direct integration with scholarship application por
 
 ## Roadmap
 
-**Near term** — resolve the remaining test failure; apply route gating to all admin pages; confirm scheduled verification at runtime; expand documentation.
+**Near term** — collapse the verification priority query fan-out; apply route gating to all admin pages; implement directory pagination; add a recurring cleanup stage for telemetry and fingerprint rows.
 
 **Medium term** — widen country-level discovery coverage; improve image confidence precision with additional signals; add knowledge-graph exploration; strengthen source-health reporting.
 

@@ -3,26 +3,16 @@
 from __future__ import annotations
 
 import os
-import sys
 import tempfile
-import types
 import unittest
 from pathlib import Path
 from uuid import uuid4
 
 from sqlalchemy import select
 
-
 TEST_DATABASE_PATH = Path(tempfile.gettempdir()) / f"scholarzone-updater-test-{uuid4().hex}.db"
 os.environ["SCHOLARZONE_DATABASE_URL"] = f"sqlite:///{TEST_DATABASE_PATH.as_posix()}"
 os.environ["SCHOLARZONE_ENVIRONMENT"] = "test"
-
-
-fake_scheduler = types.ModuleType("app.scheduler")
-fake_scheduler.start_scheduler = lambda: None
-fake_scheduler.mark_due_for_review = lambda: None
-sys.modules["app.scheduler"] = fake_scheduler
-
 
 from app.database import close_database, get_session_factory, init_database, reset_database_connections  # noqa: E402
 from app.models import Scholarship  # noqa: E402
@@ -35,7 +25,6 @@ from app.services.scholarship_updater import (  # noqa: E402
     apply_changeset,
     apply_verified_updates,
 )
-
 
 def _make_scholarship(
     session,
@@ -68,12 +57,10 @@ def _make_scholarship(
     session.commit()
     return scholarship.id
 
-
 def _get_scholarship(session, scholarship_id: int) -> Scholarship:
     return session.execute(
         select(Scholarship).where(Scholarship.id == scholarship_id)
     ).scalar_one()
-
 
 class ScholarshipUpdaterTests(unittest.TestCase):
     @classmethod
@@ -565,7 +552,6 @@ class ScholarshipUpdaterTests(unittest.TestCase):
             "updated_at",
         }
         self.assertTrue(expected_frozen.issubset(_FROZEN_FIELDS))
-
 
 if __name__ == "__main__":
     unittest.main()

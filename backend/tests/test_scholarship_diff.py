@@ -3,25 +3,15 @@
 from __future__ import annotations
 
 import os
-import sys
-import types
 import unittest
 from uuid import uuid4
 
 from pathlib import Path
 import tempfile
 
-
 TEST_DATABASE_PATH = Path(tempfile.gettempdir()) / f"scholarzone-diff-test-{uuid4().hex}.db"
 os.environ["SCHOLARZONE_DATABASE_URL"] = f"sqlite:///{TEST_DATABASE_PATH.as_posix()}"
 os.environ["SCHOLARZONE_ENVIRONMENT"] = "test"
-
-
-fake_scheduler = types.ModuleType("app.scheduler")
-fake_scheduler.start_scheduler = lambda: None
-fake_scheduler.mark_due_for_review = lambda: None
-sys.modules["app.scheduler"] = fake_scheduler
-
 
 from app.models import Scholarship  # noqa: E402
 from app.services.scholarship_diff import (  # noqa: E402
@@ -35,7 +25,6 @@ from app.services.scholarship_extractor import (  # noqa: E402
     ScholarshipExtractionResult,
 )
 
-
 def _make_scholarship(**overrides) -> Scholarship:
     base = dict(
         title="Test Scholarship",
@@ -46,10 +35,8 @@ def _make_scholarship(**overrides) -> Scholarship:
     base.update(overrides)
     return Scholarship(**base)
 
-
 def _make_extraction(**overrides) -> ScholarshipExtractionResult:
     return ScholarshipExtractionResult(**overrides)
-
 
 class DiffEngineTests(unittest.TestCase):
     def test_identical_records_unchanged(self):
@@ -543,7 +530,6 @@ class DiffEngineTests(unittest.TestCase):
             deadline_change = next(c for c in result.changes if c.field == "deadline_display")
             self.assertEqual(deadline_change.change_type, FieldChangeType.MODIFIED)
             self.assertEqual(deadline_change.new_value, semantic)
-
 
 if __name__ == "__main__":
     unittest.main()

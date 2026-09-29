@@ -21,25 +21,15 @@ from __future__ import annotations
 
 import os
 import tempfile
-import types
 import unittest
 from pathlib import Path
 from uuid import uuid4
 
 from sqlalchemy import select
 
-
 TEST_DATABASE_PATH = Path(tempfile.gettempdir()) / f"scholarzone-review-test-{uuid4().hex}.db"
 os.environ["SCHOLARZONE_DATABASE_URL"] = f"sqlite:///{TEST_DATABASE_PATH.as_posix()}"
 os.environ["SCHOLARZONE_ENVIRONMENT"] = "test"
-
-
-fake_scheduler = types.ModuleType("app.scheduler")
-fake_scheduler.start_scheduler = lambda: None
-fake_scheduler.mark_due_for_review = lambda: None
-import sys
-sys.modules["app.scheduler"] = fake_scheduler
-
 
 from app.database import close_database, get_session_factory, init_database, reset_database_connections  # noqa: E402
 from app.models import Scholarship, ScholarshipReview, ScholarshipVerificationHistory  # noqa: E402
@@ -55,7 +45,6 @@ from app.services.scholarship_review import (  # noqa: E402
     reject_review,
 )
 from app.services.scholarship_history import HistoryEntry, write_verification_history  # noqa: E402
-
 
 def _make_scholarship(
     session,
@@ -77,7 +66,6 @@ def _make_scholarship(
     session.add(scholarship)
     session.commit()
     return scholarship.id
-
 
 class TestConflictCreatesReviewItem(unittest.TestCase):
     @classmethod
@@ -122,7 +110,6 @@ class TestConflictCreatesReviewItem(unittest.TestCase):
             self.assertEqual(review.conflict_reason, ConflictReason.CONFLICTING_SOURCES)
             self.assertEqual(review.decision, ReviewDecision.PENDING)
 
-
 class TestNoReviewForSafeAutoUpdate(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -145,7 +132,6 @@ class TestNoReviewForSafeAutoUpdate(unittest.TestCase):
 
             pending_reviews = get_pending_reviews(session, scholarship_id)
             self.assertEqual(len(pending_reviews), 0)
-
 
 class TestDuplicateReviewPrevention(unittest.TestCase):
     @classmethod
@@ -191,7 +177,6 @@ class TestDuplicateReviewPrevention(unittest.TestCase):
             pending = get_pending_reviews(session, scholarship_id)
             self.assertEqual(len(pending), 1)
 
-
 class TestReviewContainsEvidenceConfidenceSource(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -229,7 +214,6 @@ class TestReviewContainsEvidenceConfidenceSource(unittest.TestCase):
             self.assertEqual(review.evidence_text, "Blog post says applications closed")
             self.assertEqual(review.verification_state, "uncertain")
 
-
 class TestApproveAppliesUpdateThroughSafeUpdater(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -266,7 +250,6 @@ class TestApproveAppliesUpdateThroughSafeUpdater(unittest.TestCase):
 
             scholarship = session.get(Scholarship, scholarship_id)
             self.assertEqual(scholarship.duration, "3 years")
-
 
 class TestApproveWritesVerificationHistory(unittest.TestCase):
     @classmethod
@@ -314,7 +297,6 @@ class TestApproveWritesVerificationHistory(unittest.TestCase):
             self.assertEqual(record.evidence_text, "Official announcement")
             self.assertEqual(record.confidence, "high")
 
-
 class TestApproveIsAtomic(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -353,7 +335,6 @@ class TestApproveIsAtomic(unittest.TestCase):
             self.assertIsNotNone(review.reviewed_at)
             self.assertEqual(review.reviewed_by, "test_reviewer")
 
-
 class TestRollbackLeavesConsistentState(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -390,7 +371,6 @@ class TestRollbackLeavesConsistentState(unittest.TestCase):
 
             scholarship = session.get(Scholarship, scholarship_id)
             self.assertEqual(scholarship.duration, "2 years")
-
 
 class TestRejectChangesNothing(unittest.TestCase):
     @classmethod
@@ -431,7 +411,6 @@ class TestRejectChangesNothing(unittest.TestCase):
             self.assertEqual(review.decision, ReviewDecision.REJECTED)
             self.assertIsNotNone(review.reviewed_at)
             self.assertEqual(review.reviewed_by, "test_reviewer")
-
 
 class TestStaleReviewApprovalBlocked(unittest.TestCase):
     @classmethod
@@ -477,7 +456,6 @@ class TestStaleReviewApprovalBlocked(unittest.TestCase):
             scholarship = session.get(Scholarship, scholarship_id)
             self.assertEqual(scholarship.duration, "5 years")
 
-
 class TestAlreadyDecidedReviewCannotBeDecidedAgain(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -515,7 +493,6 @@ class TestAlreadyDecidedReviewCannotBeDecidedAgain(unittest.TestCase):
             decision3 = reject_review(session, result.review_id, reviewed_by="test_reviewer")
             self.assertFalse(decision3.success)
             self.assertIn("already decided", decision3.error)
-
 
 class TestReviewDecisionIsAuditable(unittest.TestCase):
     @classmethod
@@ -563,7 +540,6 @@ class TestReviewDecisionIsAuditable(unittest.TestCase):
             self.assertEqual(review.current_value, "2 years")
             self.assertEqual(review.proposed_value, "3 years")
             self.assertEqual(review.conflict_reason, ConflictReason.CONFLICTING_SOURCES)
-
 
 class TestThirdPartyLowConfidenceIdentityConflictCannotBypassReview(unittest.TestCase):
     @classmethod
@@ -636,7 +612,6 @@ class TestThirdPartyLowConfidenceIdentityConflictCannotBypassReview(unittest.Tes
             review = get_review(session, result.review_id)
             self.assertEqual(review.conflict_reason, ConflictReason.IDENTITY_CONFLICT)
 
-
 class TestTransactionFailureDoesNotCreatePartialState(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -679,7 +654,6 @@ class TestTransactionFailureDoesNotCreatePartialState(unittest.TestCase):
             )
             history_count = len(list(session.execute(stmt).scalars().all()))
             self.assertEqual(history_count, 0)
-
 
 class TestCoordinatorCreatesReviewsFromVerification(unittest.TestCase):
     @classmethod
@@ -781,7 +755,6 @@ class TestCoordinatorCreatesReviewsFromVerification(unittest.TestCase):
             self.assertEqual(review.conflict_reason, ConflictReason.THIRD_PARTY_SOURCE)
             self.assertEqual(review.source_urls, ["https://third-party-blog.com"])
             self.assertEqual(review.evidence_text, "Blog says 3 years")
-
 
 if __name__ == "__main__":
     unittest.main()
