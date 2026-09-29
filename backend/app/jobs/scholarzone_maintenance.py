@@ -57,7 +57,12 @@ EXIT_FATAL = 2
 
 # Stage order reflects dependencies: verification establishes which records
 # are current, and the remaining stages all operate on that outcome.
-STAGE_ORDER = ("verify", "enrich", "images", "discover")
+#
+# `quarantine` runs last and depends on enrichment because enrichment is what
+# fills a record in. Quarantining a record for being structurally empty must
+# never happen before the system has actually tried to enrich it, or the
+# catalogue would quarantine its own unfinished work.
+STAGE_ORDER = ("verify", "enrich", "images", "discover", "quarantine")
 
 # A stage that fails stops the stages that depend on it, but not the ones that
 # do not. Verification has no prerequisite and nothing gates it.
@@ -66,6 +71,7 @@ STAGE_DEPENDENCIES: dict[str, tuple[str, ...]] = {
     "enrich": ("verify",),
     "images": ("verify",),
     "discover": ("verify",),
+    "quarantine": ("enrich",),
 }
 
 
@@ -190,7 +196,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--stage",
         action="append",
-        choices=["verify", "enrich", "images", "discover", "all"],
+        choices=["verify", "enrich", "images", "discover", "quarantine", "all"],
         default=None,
         help="Run only these stages (default: all).",
     )
@@ -289,11 +295,73 @@ def main(argv: list[str] | None = None) -> int:
         result = run_discovery_round(dry_run=args.dry_run, max_workers=workers)
         return result.as_dict() if hasattr(result, "as_dict") else {"result": str(result)}
 
+    def do_quarantine() -> dict:
+        # Structural safety gate.
+        #
+        # Discovery and enrichment can admit a page that is not a programme at
+        # all - a site landing page, a "Welcome to" page with a bare root URL.
+        # Until now nothing checked for that automatically; id 490 ("Welcome to
+        # GOV.UK") had to be found and corrected by hand.
+        #
+        # The rule is deliberately conservative: assess_record requires three
+        # independent structural signals, nothing is deleted, and every
+        # quarantine is written to the review queue with its evidence. It also
+        # needs no network, so it costs effectively nothing to run.
+        from app.services.catalogue_quarantine import QUARANTINE_STATUS, quarantine_record
+
+        batch = store.select_batch(
+            "quarantine", limit=limit, skip_complete=False
+        )
+        if batch.is_empty:
+            return {"selected": 0, **store.state_as_dict("quarantine")}
+
+        scanned = 0
+        quarantined = 0
+        verdict_counts: dict[str, int] = {}
+        session = factory()
+        try:
+            for scholarship_id in batch.ids:
+                verdict = quarantine_record(
+                    session, scholarship_id, dry_run=args.dry_run
+                )
+                scanned += 1
+                if verdict.is_non_scholarship:
+                    quarantined += 1
+                    for reason in verdict.reasons[:3]:
+                        key = reason.split(":")[0][:60]
+                        verdict_counts[key] = verdict_counts.get(key, 0) + 1
+            if not args.dry_run:
+                session.commit()
+        except Exception:
+            session.rollback()
+            raise
+        finally:
+            session.close()
+
+        if not args.dry_run:
+            store.advance("quarantine", batch)
+        recorder.record_counts(
+            {
+                "quarantine_scanned": scanned,
+                "quarantine_applied": quarantined,
+            }
+        )
+        return {
+            "selected": len(batch.ids),
+            "records_scanned": scanned,
+            "quarantined": quarantined,
+            "status_value": QUARANTINE_STATUS,
+            "top_reasons": dict(sorted(verdict_counts.items(), key=lambda kv: -kv[1])[:5]),
+            "cursor": batch.as_dict(),
+            "dry_run": args.dry_run,
+        }
+
     stages = {
         "verify": do_verify,
         "enrich": do_enrich,
         "images": do_images,
         "discover": do_discover,
+        "quarantine": do_quarantine,
     }
 
     reports: list[StageReport] = []

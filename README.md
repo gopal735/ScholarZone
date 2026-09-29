@@ -273,6 +273,31 @@ idempotent:
 | `enrich` | Fills empty fields from the record's official source, from a durable cursor | `verify` |
 | `images` | Covers records that have not reached a terminal image outcome | `verify` |
 | `discover` | Finds new opportunities in countries already represented | `verify` |
+| `quarantine` | Structurally checks records for "this is not a scholarship" | `enrich` |
+
+`quarantine` runs after `enrich` on purpose: a record can only be judged
+structurally empty *after* the system has actually tried to fill it, otherwise
+the catalogue would quarantine its own unfinished work.
+
+### Safety layers
+
+Two capabilities run as decision layers rather than as their own expensive
+stages, because that is where they are useful and where they cost nothing:
+
+- **Anomaly detection** gates automatic updates in the verification engine. A
+  candidate change rated HIGH or CRITICAL — a deadline moving backwards, a
+  funding value collapsing, a value oscillating between runs — is not written
+  automatically. It surfaces in the human review queue instead, which the
+  verification result already populates. The gate is a pure function over the
+  change: no extra query, no extra fetch, and it can only ever *reduce*
+  automatic mutation. If the detector itself fails, it fails **closed** into
+  review rather than waving the change through.
+- **Catalogue quarantine** is the structural gate described above. It requires
+  three independent signals, deletes nothing, writes every decision to the
+  review queue with its evidence, and is idempotent.
+
+Beneath the detector sit `change_impact_staleness` and `evidence_arbitration`;
+they are reached through it rather than reimplemented.
 
 If a stage fails, the stages that depend on it are skipped rather than run on
 stale state, and **the process exits non-zero** so the workflow is recorded as
@@ -307,8 +332,8 @@ A control surface for the verification queue, metric cards, search and filter, a
 
 ### Test suite
 
-- **75** test files under `backend/tests/`
-- **2935** tests
+- **76** test files under `backend/tests/`
+- **2969** tests
 
 The suite exercises the verification engine, image validation and discovery, the discovery pipeline, lifecycle transitions, source health, schema compatibility, API endpoints, and the autonomous maintenance path.
 
@@ -428,7 +453,7 @@ ScholarZone/
 │   │   ├── jobs/                 # scholarzone_maintenance: the scheduled worker
 │   │   ├── scheduler_v2.py       # Verification engine
 │   │   ├── services/             # Discovery, images, reviews, source health, cursor
-│   ├── tests/                    # 75 test files, 2935 tests
+│   ├── tests/                    # 76 test files, 2969 tests
 │   ├── Dockerfile                # Single-stage python:3.11-slim
 │   ├── render.yaml               # Alternative deployment config, not production
 │   └── requirements.txt
@@ -497,9 +522,21 @@ Frontend on GitHub Pages, backend on SnapDeploy, PostgreSQL on Neon, and a 12-ho
 
 Most services in `app/services/` are reached by the maintenance worker or the API and genuinely run on a schedule. A smaller set is **library-only**: implemented, tested, and imported by nothing at runtime. They are not autonomous, and are listed here so that nobody reads their test coverage as evidence that a scheduled job exists:
 
-`anomaly_detection`, `catalogue_quarantine`, `confidence_decay`, `content_fingerprinting`, `counterfactual_safety`, `dependency_graph`, `entity_resolution`, `evidence_arbitration`, `feedback_calibration`, `freshness_governance`, `information_gain_scheduler`, `knowledge_graph`, `scholarship_recovery`, `self_healing_verification`, `source_adapter`, `source_adapter_executor`, `source_repair`, `source_resolver`, `telemetry_decorators`, `verification_cost_optimizer`, `verification_intelligence`, `email_service`.
+`confidence_decay`, `content_fingerprinting`, `counterfactual_safety`, `dependency_graph`, `entity_resolution`, `feedback_calibration`, `freshness_governance`, `information_gain_scheduler`, `knowledge_graph`, `scholarship_recovery`, `self_healing_verification`, `source_adapter`, `source_adapter_executor`, `source_repair`, `source_resolver`, `telemetry_decorators`, `verification_cost_optimizer`, `verification_intelligence`, `email_service`.
 
 A feature is autonomous only when trigger → execution → persistence → failure handling → recurrence all exist. A function, a workflow file, an HTTP endpoint, or a passing test is not evidence of that.
+
+**Why these particular ones stay library-only.** The audit found that 19 of the 22 write nothing to the database and touch no network — they are pure decision functions, which is good, but a pure function with no caller has no effect on the catalogue. Running them as standalone stages would add cost without adding behaviour. They were left alone because:
+
+- **`knowledge_graph`** materialises `KnowledgeNode` / `KnowledgeEdge`, but no API route or page reads them. Materialising nightly would write rows nothing reads.
+- **`content_fingerprinting`** is a consumer of fingerprints, and nothing in production generates them. The table is empty, so "has this source changed?" would always answer "no data".
+- **`feedback_calibration`** calibrates thresholds from human decisions. The production review history is far too small to calibrate against, and acting on a bad calibration would silently change verification behaviour.
+- **`self_healing_verification`**, **`source_repair`**, **`source_resolver`**, **`source_adapter*`** all reach the network, and repair mutates `official_source_url` — the trust anchor of a record. Auto-repairing a source without human review is exactly the "uncertain intelligence silently mutating trusted data" case the rules forbid.
+- **`scholarship_recovery`** restores records from history, which is a destructive-class operation.
+- **`counterfactual_safety`**, **`dependency_graph`**, **`confidence_decay`**, **`freshness_governance`**, **`information_gain_scheduler`**, **`verification_cost_optimizer`** are all *priority-shaping* layers. Wiring them into the verification queue would multiply the per-record aggregate queries that enqueueing already performs, and the batch cost is the current open item. They are the natural next candidates once that fan-out is collapsed into grouped queries.
+- **`entity_resolution`** duplicates the deduplication discovery already performs.
+- **`verification_intelligence`** produces human-readable explanations with no production consumer.
+- **`telemetry_decorators`** and **`email_service`** are utility code: no scheduled entry point, and the latter needs a third-party API key.
 
 ### Open items
 

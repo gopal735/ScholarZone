@@ -307,11 +307,33 @@ class SchedulerEngine:
 
     def _apply_auto_updates(self, session: Session, scholarship: Scholarship, result) -> None:
         update_start = time.monotonic()
-        update_result = apply_verified_updates(
-            session,
-            scholarship.id,
-            result.automatic_update_candidates,
+        # Anomaly gate.
+        #
+        # `automatic_update_candidates` used to be applied verbatim. Anomaly
+        # detection is a pure, deterministic, no-network function over the
+        # change itself, and a CRITICAL anomaly (a deadline moving backwards, a
+        # funding value collapsing, a value oscillating across runs) is exactly
+        # the kind of change that should never be written automatically.
+        #
+        # Dropping a candidate here does not lose it: reviews are created from
+        # the verification result itself, not from the list we applied, so a
+        # blocked change surfaces in the human review queue instead. That is
+        # the intended escalation path, and it costs no extra query or fetch.
+        candidates, blocked = self._filter_anomalous_candidates(
+            result.automatic_update_candidates, scholarship
         )
+        if blocked:
+            record_event(
+                stage=PipelineStages.UPDATE,
+                metric_type="blocked",
+                duration_ms=(time.monotonic() - update_start) * 1000.0,
+                scholarship_id=scholarship.id,
+                source=scholarship.official_source_url,
+                success=True,
+                metadata={"blocked_fields": blocked, "auto_applied": False},
+            )
+
+        update_result = apply_verified_updates(session, scholarship.id, candidates)
         update_duration_ms = (time.monotonic() - update_start) * 1000.0
         record_event(
             stage=PipelineStages.UPDATE,
@@ -327,11 +349,11 @@ class SchedulerEngine:
                 HistoryEntry(
                     field_name=f,
                     old_value=next(
-                        (c.get("old_value") for c in result.automatic_update_candidates if c.get("field") == f),
+                        (c.get("old_value") for c in candidates if c.get("field") == f),
                         None,
                     ),
                     new_value=next(
-                        (c.get("new_value") for c in result.automatic_update_candidates if c.get("field") == f),
+                        (c.get("new_value") for c in candidates if c.get("field") == f),
                         None,
                     ),
                     change_type="modified",
@@ -347,6 +369,51 @@ class SchedulerEngine:
                 source_url=scholarship.official_source_url,
                 verification_status=result.verification_status,
             )
+
+    @staticmethod
+    def _filter_anomalous_candidates(candidates, scholarship: Scholarship):
+        """Split automatic updates into safe-to-apply and must-be-reviewed.
+
+        A candidate is held back when anomaly detection rates it HIGH or
+        CRITICAL. Anything the detector does not understand keeps the existing
+        behaviour, so this gate can only ever *reduce* automatic mutation -
+        it can never start applying something that was previously withheld.
+        """
+        from .anomaly_detection import detect_anomalies
+
+        safe: list = []
+        blocked: list[str] = []
+        for candidate in candidates or []:
+            field_name = candidate.get("field") or candidate.get("field_name")
+            if not field_name:
+                safe.append(candidate)
+                continue
+            try:
+                anomalies = detect_anomalies(
+                    field_name,
+                    candidate.get("old_value"),
+                    candidate.get("new_value"),
+                    source_url=scholarship.official_source_url,
+                    scholarship_status=scholarship.status,
+                    deadline_date=scholarship.deadline_date,
+                    is_verified=scholarship.is_verified,
+                )
+            except Exception:  # noqa: BLE001
+                # A detector failure must not silently block every legitimate
+                # update, and must not silently allow an unsafe one either.
+                # Fail open to review: hold the candidate back.
+                logger.warning(
+                    "anomaly detection failed for field=%s id=%s; holding for review",
+                    field_name,
+                    scholarship.id,
+                )
+                blocked.append(str(field_name))
+                continue
+            if any(a.requires_review() for a in anomalies):
+                blocked.append(str(field_name))
+            else:
+                safe.append(candidate)
+        return safe, blocked
 
     def _create_reviews(self, session: Session, result) -> None:
         review_start = time.monotonic()

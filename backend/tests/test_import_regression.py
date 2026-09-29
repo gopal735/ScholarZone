@@ -113,6 +113,13 @@ CRITICAL_MODULES = {
         "app.services.maintenance_cursor",
         "app.services.maintenance_run_log",
         "app.scheduler_v2",
+        # Reached only through the maintenance worker, never by an HTTP route.
+        # catalogue_quarantine is the `quarantine` stage; anomaly_detection and
+        # the two layers beneath it gate automatic updates.
+        "app.services.catalogue_quarantine",
+        "app.services.anomaly_detection",
+        "app.services.change_impact_staleness",
+        "app.services.evidence_arbitration",
     ],
 }
 
