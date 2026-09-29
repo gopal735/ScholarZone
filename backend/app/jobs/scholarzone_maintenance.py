@@ -412,6 +412,31 @@ def main(argv: list[str] | None = None) -> int:
         print(f"  assessed: {len(ids)}")
         print(f"  quarantined: {quarantined}")
         print(f"  not_quarantined: {len(ids) - quarantined}")
+        # Per-id reasons. A targeted run exists to explain a specific decision:
+        # "not_quarantined: 1" on its own leaves the reader with nothing to act
+        # on, and re-deriving why a record survived means repeating the fetch.
+        try:
+            from app.models import Scholarship
+            from app.services.catalogue_quarantine import assess_record
+
+            session = factory()
+            try:
+                for scholarship_id in ids:
+                    record = session.get(Scholarship, scholarship_id)
+                    if record is None:
+                        print(f"  {scholarship_id}: not found")
+                        continue
+                    verdict = assess_record(record)
+                    state = "QUARANTINED" if verdict.is_non_scholarship else "kept"
+                    print(f"  {scholarship_id}: {state}  title={record.title!r}")
+                    for reason in verdict.reasons:
+                        print(f"      - {reason[:160]}")
+                    if not verdict.reasons:
+                        print("      - (no signals: fewer than three, and not corrupt)")
+            finally:
+                session.close()
+        except Exception:  # noqa: BLE001 - diagnostics must never fail the run
+            logger.warning("could not print quarantine reasons", exc_info=True)
         return EXIT_OK
 
     store = CursorStore(factory)
