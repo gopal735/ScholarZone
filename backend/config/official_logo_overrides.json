@@ -4,14 +4,261 @@
     "Keys are the official source host, not the record title, so an official rename does not silently orphan an entry.",
     "Add an entry only when the logo is known to be the institution's own and the URL is stable.",
     "official_host must be true only when the bytes are served by the institution itself. A third-party host (for example Wikimedia) must be false, because the record's provenance says so.",
-    "An entry is a candidate, not an approval: every override still goes through the ordinary image validator."
+    "An entry is a candidate, not an approval: every override still goes through the ordinary image validator.",
+    "Every URL below was probed live and returned HTTP 200 with an image content type before being added.",
+    "White-on-transparent wordmarks are deliberately excluded. A white logo is invisible on a light card, so shipping one would replace a missing image with a broken one; use a dark variant or leave the record without a logo.",
+    "A host whose logo URL returns HTML rather than image bytes is excluded. That is a WAF interstitial or an error page, not a logo, and it would be stored as a broken image."
   ],
-  "_examples": {
-    "example.edu": {
-      "url": "https://www.example.edu/sites/default/files/logo.png",
-      "page_url": "https://www.example.edu/",
-      "official_host": true,
-      "alt_text": "Example University"
-    }
+  "erasmus-plus.ec.europa.eu": {
+    "url": "https://erasmus-plus.ec.europa.eu/themes/contrib/oe_theme/dist/ec/images/logo/positive/logo-ec--en.svg",
+    "page_url": "https://erasmus-plus.ec.europa.eu/",
+    "official_host": true,
+    "alt_text": "Erasmus+ European Commission"
+  },
+  "iie.org": {
+    "url": "https://www.iie.org//wp-content//uploads//2022//12//iie-logo.png",
+    "page_url": "https://www.iie.org/",
+    "official_host": true,
+    "alt_text": "Institute of International Education"
+  },
+  "jasso.go.jp": {
+    "url": "https://www.jasso.go.jp/assets/images/common/en_logo.png",
+    "page_url": "https://www.jasso.go.jp/en/",
+    "official_host": true,
+    "alt_text": "JASSO"
+  },
+  "studyinjapan.go.jp": {
+    "url": "https://www.studyinjapan.go.jp/en/assets/images/common/logo_mext_en.svg",
+    "page_url": "https://www.studyinjapan.go.jp/en/",
+    "official_host": true,
+    "alt_text": "MEXT Study in Japan"
+  },
+  "studyinhungary.hu": {
+    "url": "https://studyinhungary.hu/static/images/logo/sih.png",
+    "page_url": "https://studyinhungary.hu/",
+    "official_host": true,
+    "alt_text": "Study in Hungary Tempus Public Foundation"
+  },
+  "stipendiumhungaricum.hu": {
+    "url": "https://studyinhungary.hu/static/images/logo/sih.png",
+    "page_url": "https://stipendiumhungaricum.hu/",
+    "official_host": true,
+    "alt_text": "Study in Hungary Tempus Public Foundation"
+  },
+  "nawa.gov.pl": {
+    "url": "https://nawa.gov.pl/images/rozszerzenia/szablony/siteb3/logo-komputer.png",
+    "page_url": "https://nawa.gov.pl/",
+    "official_host": true,
+    "alt_text": "NAWA Polish National Agency for Academic Exchange"
+  },
+  "dzs.cz": {
+    "url": "https://www.dzs.cz/themes/reason_dzs/img/logo/logo_msmt_cerne_rgb.svg",
+    "page_url": "https://www.dzs.cz/en/",
+    "official_host": true,
+    "alt_text": "DZS Czech Ministry of Education Youth and Sports"
+  },
+  "sbfi.admin.ch": {
+    "url": "https://www.sbfi.admin.ch/images/swiss-logo-name.svg",
+    "page_url": "https://www.sbfi.admin.ch/en",
+    "official_host": true,
+    "alt_text": "Swiss Federal Secretariat for Education"
+  },
+  "swissuniversities.ch": {
+    "url": "https://www.swissuniversities.ch/_assets/feb1d86054ab2e718cccf9db6ed46074/Partials/Logo/Images/Logo.svg",
+    "page_url": "https://www.swissuniversities.ch/en/",
+    "official_host": true,
+    "alt_text": "Swissuniversities"
+  },
+  "campusfrance.org": {
+    "url": "https://www.campusfrance.org/modules/custom/campus_common/img/logo-campus-france.png",
+    "page_url": "https://www.campusfrance.org/en",
+    "official_host": true,
+    "alt_text": "Campus France"
+  },
+  "universitaly.it": {
+    "url": "https://www.universitaly.it/_nuxt/MUR-logo.Bf5XKGSe.png",
+    "page_url": "https://www.universitaly.it/en/",
+    "official_host": true,
+    "alt_text": "Italian Ministry of University and Research"
+  },
+  "studyinitaly.esteri.it": {
+    "url": "https://www.universitaly.it/_nuxt/MUR-logo.Bf5XKGSe.png",
+    "page_url": "https://studyinitaly.esteri.it/",
+    "official_host": false,
+    "alt_text": "Italian Ministry of University and Research"
+  },
+  "studyinpoland.pl": {
+    "url": "https://i.studyinpoland.pl/logos/sip_290x102.png",
+    "page_url": "https://www.studyinpoland.pl/",
+    "official_host": true,
+    "alt_text": "Study in Poland"
+  },
+  "studyinnl.org": {
+    "url": "https://www.studyinnl.org/themes/custom/nuffic_sih_theme/src/svg/footer-logo.svg",
+    "page_url": "https://www.studyinnl.org/",
+    "official_host": true,
+    "alt_text": "Study in NL Nuffic"
+  },
+  "moe.gov.cn": {
+    "url": "http://www.moe.gov.cn/images/m_top_logo.png",
+    "page_url": "http://www.moe.gov.cn/",
+    "official_host": true,
+    "alt_text": "Ministry of Education of the People's Republic of China"
+  },
+  "hec.gov.pk": {
+    "url": "https://www.hec.gov.pk/SiteAssets/higher-education-commission-pakistan-logo.png",
+    "page_url": "https://www.hec.gov.pk/",
+    "official_host": true,
+    "alt_text": "Higher Education Commission of Pakistan"
+  },
+  "col.org": {
+    "url": "https://www.col.org/wp-content/uploads/2021/08/col-logo-stacked-color-1.png",
+    "page_url": "https://www.col.org/",
+    "official_host": true,
+    "alt_text": "Commonwealth of Learning"
+  },
+  "isdb.org": {
+    "url": "https://www.isdb.org/themes/tisdb/img/group-logos/isdbi-sq-logo.jpg",
+    "page_url": "https://www.isdb.org/",
+    "official_host": true,
+    "alt_text": "Islamic Development Bank"
+  },
+  "ccpit.org": {
+    "url": "https://www.ccpit.org/_web/images/logo-2020.png",
+    "page_url": "https://www.ccpit.org/",
+    "official_host": true,
+    "alt_text": "CCPIT"
+  },
+  "ku.edu.kw": {
+    "url": "https://www.ku.edu.kw/themes/custom/ku_tailwind/images/logo.svg",
+    "page_url": "https://www.ku.edu.kw/",
+    "official_host": true,
+    "alt_text": "Kuwait University"
+  },
+  "un.org": {
+    "url": "https://www.un.org/en/img/splash/un-logo.png",
+    "page_url": "https://www.un.org/",
+    "official_host": true,
+    "alt_text": "United Nations"
+  },
+  "ecowas.int": {
+    "url": "https://www.ecowas.int/wp-content/themes/ecowas/assets/images/loader/ecowas-logo.png",
+    "page_url": "https://www.ecowas.int/",
+    "official_host": true,
+    "alt_text": "ECOWAS"
+  },
+  "giz.de": {
+    "url": "https://www.giz.de/themes/custom/dreist/build/giz-logo-with-claim.svg",
+    "page_url": "https://www.giz.de/",
+    "official_host": true,
+    "alt_text": "GIZ"
+  },
+  "fes.de": {
+    "url": "https://www.fes.de/_assets/9cec337f7d9b8a112ff7bc4a21068e10/Icons/General/logo-fes.svg",
+    "page_url": "https://www.fes.de/",
+    "official_host": true,
+    "alt_text": "Friedrich Ebert Stiftung"
+  },
+  "boell.de": {
+    "url": "https://www.boell.de/modules/custom/boell_components/components/logo_boell_de/logos/logo-desktop-optimized.svg",
+    "page_url": "https://www.boell.de/",
+    "official_host": true,
+    "alt_text": "Heinrich Böll Stiftung"
+  },
+  "sydney.edu.au": {
+    "url": "https://www.sydney.edu.au/content/dam/icons/logos/logo-usyd-dark.svg",
+    "page_url": "https://www.sydney.edu.au/",
+    "official_host": true,
+    "alt_text": "University of Sydney"
+  },
+  "soka.ac.jp": {
+    "url": "https://wwwstorage.soka.ac.jp/1317/3097/7367/header-logo.svg",
+    "page_url": "https://www.soka.ac.jp/",
+    "official_host": true,
+    "alt_text": "Soka University"
+  },
+  "iuj.ac.jp": {
+    "url": "https://www.iuj.ac.jp/assets/img/common/logo_long.svg",
+    "page_url": "https://www.iuj.ac.jp/",
+    "official_host": true,
+    "alt_text": "International University of Japan"
+  },
+  "uct.ac.za": {
+    "url": "https://www.uct.ac.za/themes/custom/blip_uct/logo.svg",
+    "page_url": "https://www.uct.ac.za/",
+    "official_host": true,
+    "alt_text": "University of Cape Town"
+  },
+  "wits.ac.za": {
+    "url": "https://www.wits.ac.za/media/wits-university-style-assets/images/wits-logo.svg",
+    "page_url": "https://www.wits.ac.za/",
+    "official_host": true,
+    "alt_text": "University of the Witwatersrand"
+  },
+  "ru.ac.za": {
+    "url": "https://www.ru.ac.za/media/rhodesuniversity/styleassets/2019v6/images/RU_Logo_1.png",
+    "page_url": "https://www.ru.ac.za/",
+    "official_host": true,
+    "alt_text": "Rhodes University"
+  },
+  "ug.edu.gh": {
+    "url": "https://www.ug.edu.gh/themes/custom/ugtheme/logo.svg",
+    "page_url": "https://www.ug.edu.gh/",
+    "official_host": true,
+    "alt_text": "University of Ghana"
+  },
+  "knust.edu.gh": {
+    "url": "https://www.knust.edu.gh/themes/custom/adepts/images/knustlogo.png",
+    "page_url": "https://www.knust.edu.gh/",
+    "official_host": true,
+    "alt_text": "KNUST"
+  },
+  "ur.ac.rw": {
+    "url": "https://www.ur.ac.rw/images/urlogo1.png",
+    "page_url": "https://www.ur.ac.rw/",
+    "official_host": true,
+    "alt_text": "University of Rwanda"
+  },
+  "unizg.hr": {
+    "url": "http://www.unizg.hr/fileadmin/template/slike/unizg-logo.jpg",
+    "page_url": "https://www.unizg.hr/",
+    "official_host": true,
+    "alt_text": "University of Zagreb"
+  },
+  "ut.ee": {
+    "url": "https://ut.ee/themes/utheme/assets/img/UT_website_logo_blue_est.svg",
+    "page_url": "https://ut.ee/",
+    "official_host": true,
+    "alt_text": "University of Tartu"
+  },
+  "lu.lv": {
+    "url": "https://www.lu.lv/_assets/8025acc2f960517e92487790c6b2e479/img/logo_100_blue.svg",
+    "page_url": "https://www.lu.lv/",
+    "official_host": true,
+    "alt_text": "University of Latvia"
+  },
+  "um.edu.mt": {
+    "url": "https://www.um.edu.mt/media/um/images/logo-print.svg",
+    "page_url": "https://www.um.edu.mt/",
+    "official_host": true,
+    "alt_text": "University of Malta"
+  },
+  "hi.is": {
+    "url": "https://www.hi.is/themes/custom/volcano/src/assets/svg/footer_logo.svg",
+    "page_url": "https://www.hi.is/",
+    "official_host": true,
+    "alt_text": "University of Iceland"
+  },
+  "unicam.it": {
+    "url": "https://www.unicam.it/themes/custom/italiagov/unicam/img/logo_.png",
+    "page_url": "https://www.unicam.it/",
+    "official_host": true,
+    "alt_text": "University of San Marino"
+  },
+  "uni.li": {
+    "url": "https://www.uni.li/themes/custom/uni_li/assets/images/uni-li-logo-new.svg",
+    "page_url": "https://www.uni.li/",
+    "official_host": true,
+    "alt_text": "University of Liechtenstein"
   }
 }
