@@ -189,6 +189,18 @@ def _get_current_image_url(session: "Session", scholarship_id: int) -> str | Non
         return None
     return scholarship.image_url
 
+
+def _get_current_verified_at(session: "Session", scholarship_id: int):
+    """When the current image was verified. None means it was never verified.
+
+    Used so a fallback cannot churn an image that has already passed
+    validation: the fallback exists to fill an empty slot, not to replace a
+    good one with a merely-acceptable one.
+    """
+    from ..models import Scholarship
+    scholarship = session.get(Scholarship, scholarship_id)
+    return getattr(scholarship, "image_verified_at", None) if scholarship else None
+
 """Image discovery orchestrator main class (appended to image_discovery_orchestrator.py)."""
 
 from typing import TYPE_CHECKING
@@ -238,12 +250,20 @@ class ImageDiscoveryOrchestrator:
 
         Runs the three fallback tiers in order. This is deliberately a separate
         entry point rather than a branch inside ``run``: a record that already
-        has a trustworthy image must not pay for extra requests, and the
-        fallback makes several per record.
+        has a trustworthy image must not pay for the extra requests.
 
-        Candidates still go through the ordinary validator. A fallback tier
-        proposes; it never approves.
+        **Every candidate is validated by the ordinary ``ImageValidator``
+        before it can be persisted.** A tier proposes; the validator decides.
+        The previous version of this method took the first proposed candidate
+        and wrote it straight through, which meant a tier could set
+        ``image_verified_at`` on an image that had never been checked, and a
+        Wikimedia file could be stored as an official logo. Both are fixed here
+        and pinned by tests.
+
+        A candidate hosted outside the institution's own domain is never
+        recorded as official, whatever the validator says about its pixels.
         """
+        from .image_discovery import ImageCandidate
         from .logo_fallback_resolver import LogoFallbackResolver, LogoResolutionStatus
 
         session = self._session_factory()
@@ -256,55 +276,124 @@ class ImageDiscoveryOrchestrator:
             if resolution.status is not LogoResolutionStatus.RESOLVED or not resolution.candidates:
                 return None
 
-            best = resolution.candidates[0]
             result = OrchestratorRunResult(
                 scholarship_id=scholarship_id,
                 scholarship_title=scholarship.title,
                 official_source_url=official_source_url,
             )
             result.requests_made = resolver.requests_made
-            result.status = TrustworthyImageStatus.MEDIUM if best.official_host else TrustworthyImageStatus.LOW
+
+            # Translate the tier's proposals into ordinary candidates and put
+            # them through exactly the same validation the programme-page path
+            # uses. Nothing reaches persistence without this step.
+            proposals = [
+                ImageCandidate(
+                    image_url=c.url,
+                    page_url=c.page_url,
+                    discovery_method=f"logo_fallback:{resolution.tier.value}",
+                    alt_text=c.alt_text,
+                    provenance={"tier": resolution.tier.value, "official_host": c.official_host},
+                    evidence=[c.note] if c.note else [],
+                )
+                for c in resolution.candidates
+            ]
+
+            validator = ImageValidator()
+            validations = validator.validate_candidates(
+                proposals, scholarship.title, official_source_url
+            )
+
+            scored: list[tuple[float, ImageCandidate, object]] = []
+            for candidate, vres in zip(proposals, validations):
+                if vres is None or not getattr(vres, "is_valid_image", False):
+                    continue
+                if not getattr(vres, "status", None):
+                    continue
+                # A candidate on a third-party host is never an official
+                # source, whatever its pixels look like. Provenance, not
+                # appearance, decides this.
+                tier_official = next(
+                    (
+                        c.official_host
+                        for c in resolution.candidates
+                        if c.url == candidate.image_url
+                    ),
+                    False,
+                )
+                if not tier_official:
+                    continue
+                # A fallback logo is the institution's brand, not necessarily
+                # this programme's artwork, so it is capped below HIGH.
+                relevance = 0.5
+                if _is_generic_site_asset(candidate.image_url, candidate.alt_text):
+                    continue
+                scored.append((relevance, candidate, vres))
+
+            if not scored:
+                # Every proposal was rejected. That is a correct outcome, not a
+                # failure, and the record keeps whatever status it had.
+                result.status = TrustworthyImageStatus.NO_TRUSTWORTHY_IMAGE
+                return result
+
+            scored.sort(key=lambda x: x[0], reverse=True)
+            _relevance, candidate, vres = scored[0]
+            image_domain = getattr(vres, "image_domain", "") or ""
+            source_type = _classify_source_type(
+                image_domain, urlparse(candidate.page_url).netloc
+            )
+            confidence = TrustworthyImageStatus.MEDIUM
+            result.status = confidence
             result.image_results.append(
                 OrchestratorImageResult(
-                    image_url=best.url,
-                    page_url=best.page_url,
-                    source_type=(
-                        _classify_source_type(
-                            urlparse(best.url).netloc,
-                            urlparse(best.page_url).netloc,
-                        )
-                        if best.official_host
-                        else "wikimedia"
-                    ),
-                    confidence=result.status,
-                    image_kind="official_logo",
-                    alt_text=best.alt_text,
-                    relevance_score=0.5,
+                    image_url=candidate.image_url,
+                    page_url=candidate.page_url,
+                    source_type=source_type,
+                    confidence=confidence,
+                    # The kind comes from the validator, not from the tier. A
+                    # fallback cannot assert that something is a logo.
+                    image_kind=getattr(vres, "image_kind", None),
+                    alt_text=candidate.alt_text,
+                    relevance_score=_relevance,
                     provenance={
-                        "discovery_method": f"logo_fallback:{resolution.tier.value}",
+                        "discovery_method": candidate.discovery_method,
                         "tier": resolution.tier.value,
-                        "official_host": best.official_host,
-                        "note": best.note,
-                        "validation_status": None,
+                        "official_host": True,
+                        "validated": True,
+                        "validation_status": getattr(
+                            getattr(vres, "status", None), "value", None
+                        ),
                     },
-                    evidence=[best.note] if best.note else [],
-                    validation_status=None,
+                    evidence=candidate.evidence,
+                    validation_status=getattr(
+                        getattr(vres, "status", None), "value", None
+                    ),
                 )
             )
 
             if not self._dry_run:
-                result.previous_image_url = _get_current_image_url(session, scholarship_id)
+                previous = _get_current_image_url(session, scholarship_id)
+                result.previous_image_url = previous
+                # An existing verified image is never replaced by a fallback.
+                # The fallback exists to fill an empty slot, not to churn a
+                # good one.
+                if previous and getattr(
+                    _get_current_verified_at(session, scholarship_id), "isoformat", None
+                ):
+                    result.status = TrustworthyImageStatus.MEDIUM
+                    result.new_image_url = previous
+                    result.persisted = False
+                    return result
                 verifier = ImageVerifier(session)
                 ok = verifier.mark_image_verified(
                     scholarship_id=scholarship_id,
-                    image_url=best.url,
-                    image_source_url=best.page_url,
-                    source_type=result.image_results[0].source_type,
-                    alt_text=best.alt_text,
-                    image_kind="official_logo",
+                    image_url=candidate.image_url,
+                    image_source_url=candidate.page_url,
+                    source_type=source_type,
+                    alt_text=candidate.alt_text,
+                    image_kind=getattr(vres, "image_kind", None),
                     automatic=True,
                 )
-                result.new_image_url = best.url if ok else result.previous_image_url
+                result.new_image_url = candidate.image_url if ok else previous
                 result.persisted = bool(ok)
             return result
         except Exception as exc:  # noqa: BLE001

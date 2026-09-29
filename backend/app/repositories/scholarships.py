@@ -21,32 +21,52 @@ def _escape_like(value: str) -> str:
     return value.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
 
 
-def _filter_conditions(query: ScholarshipQuery):
-    # Quarantined rows are non-scholarships (site landing pages, aggregators)
-    # that were caught during catalogue review. They must never appear in the
-    # public directory: showing a "Welcome to GOV.UK" landing page as a
-    # scholarship is a correctness failure, and it inflates the public count
-    # Quarantined rows are structural non-scholarships (site landing pages,
-    # bare home pages). They are never shown publicly, and are never counted
-    # above the number of real records.
+def public_visibility_conditions() -> list:
+    """The single definition of "this record may be shown publicly".
+
+    The directory and the homepage statistics both call this. They previously
+    carried separate copies of the rule, which is how a homepage ends up
+    advertising a total the directory contradicts - a failure that stays
+    invisible until somebody compares the two numbers.
+
+    The states are kept deliberately distinct:
+
+    * ``is_verified`` is about the *scholarship* being trustworthy.
+    * ``image_verified_at`` is about an *official* image having passed
+      validation.
+    * A record whose source was merely blocked is not untrustworthy, it is
+      unevaluated. The image gate hides it; nothing here claims the
+      scholarship itself is bad.
+    * ``image_source_type == "wikimedia"`` is a third-party host. It never
+      satisfies the official-image gate unless the owner has explicitly opted
+      in, and it is excluded by name rather than by omission.
+    """
+    settings = get_settings()
     conditions = [Scholarship.verification_status != "quarantined"]
 
-    # Public quality gate.
-    #
-    # A record is listed only if it has been verified and carries an image that
-    # passed image validation - a non-null image_url alone would let through
-    # an image that was rejected at review time, which is the opposite of what
-    # this gate is for. Both conditions are settings, because the cost is real
-    # and measurable: every record whose official page has no findable logo
-    # stops being listed. `public_catalog_counts` reports exactly how many, so
-    # the hidden set is never invisible.
-    _settings = get_settings()
-    if _settings.public_require_verified:
+    if settings.public_require_verified:
         conditions.append(Scholarship.is_verified.is_(True))
-    if _settings.public_require_verified_image:
+
+    if settings.public_require_verified_image:
         conditions.append(Scholarship.image_url.isnot(None))
         conditions.append(Scholarship.image_verified_at.isnot(None))
+        if not settings.public_allow_third_party_image:
+            # Excluded by name, and the NULL case is included explicitly.
+            # `image_source_type != 'wikimedia'` evaluates to NULL - not true -
+            # for a row where the type was never recorded, which would silently
+            # exclude every official image that predates provenance tracking.
+            conditions.append(
+                or_(
+                    Scholarship.image_source_type != "wikimedia",
+                    Scholarship.image_source_type.is_(None),
+                )
+            )
 
+    return conditions
+
+
+def _filter_conditions(query: ScholarshipQuery):
+    conditions = public_visibility_conditions()
     search = _normalise_optional_filter(query.search)
     country = _normalise_optional_filter(query.country)
     degree = _normalise_optional_filter(query.degree)

@@ -137,18 +137,48 @@ class TestWikimediaTier:
         assert found[0].official_host is False
         assert found[0].tier is LogoTier.WIKIMEDIA
 
-    def test_it_never_labels_a_wikimedia_image_official(self):
-        """Belt and braces: no code path may map this tier to an official type."""
+    def test_the_orchestrator_drops_every_non_official_candidate(self):
+        """A third-party candidate is discarded before it can be persisted.
+
+        Stronger than labelling it non-official: it is not stored at all, so it
+        cannot reach ``image_verified_at`` in any form.
+        """
         source = open(
             __import__("app.services.image_discovery_orchestrator", fromlist=["x"]).__file__,
             encoding="utf-8",
         ).read()
-        block = source.split("def run_logo_fallback")[1][:3000]
-        assert '"wikimedia"' in block
-        # The wikimedia branch must not be able to reach the official
-        # classifier.
-        assert 'if best.official_host' in block
+        block = source.split("def run_logo_fallback")[1].split("def run(")[0]
+        # The official-host gate must be present and must `continue`.
         assert "official_host" in block
+        assert "if not tier_official:" in block
+        assert "continue" in block
+        # And the official classifier must not be reachable for such a
+        # candidate: source_type is derived only after the gate.
+        assert block.index("if not tier_official:") < block.index("_classify_source_type(")
+
+    def test_a_fallback_candidate_must_be_validated_before_persistence(self):
+        """The regression that motivated this whole class of test."""
+        source = open(
+            __import__("app.services.image_discovery_orchestrator", fromlist=["x"]).__file__,
+            encoding="utf-8",
+        ).read()
+        block = source.split("def run_logo_fallback")[1].split("def run(")[0]
+        assert "validate_candidates" in block
+        assert "is_valid_image" in block
+        assert "_is_generic_site_asset" in block
+        # Persistence must come after validation, never before.
+        assert block.index("validate_candidates") < block.index("mark_image_verified")
+        # And the kind must come from the validator, not from the tier.
+        assert 'getattr(vres, "image_kind"' in block
+        assert 'image_kind="official_logo"' not in block
+
+    def test_an_existing_verified_image_is_never_replaced(self):
+        source = open(
+            __import__("app.services.image_discovery_orchestrator", fromlist=["x"]).__file__,
+            encoding="utf-8",
+        ).read()
+        block = source.split("def run_logo_fallback")[1].split("def run(")[0]
+        assert "_get_current_verified_at" in block
 
     def test_the_wikimedia_source_type_is_not_an_official_one(self):
         from app.services.scholarship_image_verifier import ImageSourceType

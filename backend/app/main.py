@@ -1,5 +1,6 @@
 from contextlib import asynccontextmanager
 import logging
+import os
 from threading import Lock, Thread
 
 from fastapi import FastAPI, Request
@@ -20,6 +21,23 @@ from .seed import seed_database
 
 
 logger = logging.getLogger(__name__)
+
+
+def build_revision() -> str:
+    """Short git SHA of the running build, or ``dev``/``unknown``.
+
+    Resolved once at import from the environment. A container built without
+    the variable reports ``unknown`` rather than guessing, and the deployment
+    verification treats anything that is not the expected SHA as a failure -
+    which is the entire point: a healthy container serving the wrong commit
+    must not be reported as a successful deployment.
+    """
+    raw = (os.getenv("SCHOLARZONE_BUILD_REVISION") or "").strip()
+    if raw:
+        return raw[:12]
+    if get_settings().environment != "production":
+        return "dev"
+    return "unknown"
 
 _db_ready = False
 _db_init_error: str | None = None
@@ -100,17 +118,37 @@ def home() -> dict[str, str]:
 
 @app.get("/health")
 def health() -> JSONResponse:
+    """Liveness plus build identity.
+
+    A healthy container is not the same as a current one. This deployment had
+    a stale build serving traffic for hours while every health check passed,
+    because the check only asked "is the process up?". It now also reports
+    which revision is running, so a deployment verification can prove the
+    container is serving the commit that was just pushed.
+
+    The revision is a short git SHA supplied at build time. It is not a secret
+    and contains nothing about configuration or credentials.
+    """
     with _db_lock:
         if not _db_ready:
             detail = _db_init_error or "Database not ready"
-            return JSONResponse(status_code=503, content={"status": "error", "detail": detail})
+            return JSONResponse(
+                status_code=503,
+                content={"status": "error", "detail": detail, "revision": build_revision()},
+            )
         try:
             with get_engine().connect() as conn:
                 conn.execute(text("SELECT 1"))
-            return JSONResponse(status_code=200, content={"status": "ok"})
+            return JSONResponse(
+                status_code=200, content={"status": "ok", "revision": build_revision()}
+            )
         except Exception as exc:
             logger.warning("Health check failed: %s", exc)
-            return JSONResponse(status_code=503, content={"status": "error", "detail": "Database unreachable"})
+            return JSONResponse(
+                status_code=503,
+                content={"status": "error", "detail": "Database unreachable",
+                         "revision": build_revision()},
+            )
 
 
 # NOTE: Legacy APScheduler is intentionally NOT started in production.

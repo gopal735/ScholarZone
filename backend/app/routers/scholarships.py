@@ -61,18 +61,11 @@ def get_scholarship_stats(
     # they must not be counted here either. Counting them would advertise a
     # total the public list cannot actually show.
     #
-    # The same has to be true of the public quality gate: a record filtered
-    # out of the directory for having no verified image must not be counted in
-    # a total the directory cannot show. These conditions are kept in step with
-    # `_filter_conditions` in the repository - if they drift, the homepage
-    # advertises a number the list contradicts.
-    _settings = get_settings()
-    listed = [Scholarship.verification_status != "quarantined"]
-    if _settings.public_require_verified:
-        listed.append(Scholarship.is_verified.is_(True))
-    if _settings.public_require_verified_image:
-        listed.append(Scholarship.image_url.isnot(None))
-        listed.append(Scholarship.image_verified_at.isnot(None))
+    # The same predicate the directory uses. Previously this endpoint carried
+    # its own copy of the rule, so the homepage could advertise a total that
+    # the listing contradicted - a contradiction nobody notices until the two
+    # numbers are compared.
+    listed = public_visibility_conditions()
 
     total = session.execute(
         select(func.count(Scholarship.id)).where(*listed)

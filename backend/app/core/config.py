@@ -42,6 +42,13 @@ class Settings:
     # what the gate hides is reportable rather than silently missing.
     public_require_verified: bool = True
     public_require_verified_image: bool = True
+    # The image gate hides a record when it has no *verified official* image.
+    #
+    # A third-party-hosted image (currently Wikimedia) is not an official
+    # image and must never satisfy this gate. If the owner later wants those
+    # records listed, that is an explicit product decision made here, not
+    # something the resolver may decide for itself.
+    public_allow_third_party_image: bool = False
 
 
 def get_settings() -> Settings:
@@ -85,5 +92,8 @@ def get_settings() -> Settings:
         ),
         public_require_verified_image=_as_bool(
             os.getenv("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE"), True
+        ),
+        public_allow_third_party_image=_as_bool(
+            os.getenv("SCHOLARZONE_PUBLIC_ALLOW_THIRD_PARTY_IMAGE"), False
         ),
     )

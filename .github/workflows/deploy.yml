@@ -39,15 +39,21 @@ jobs:
 
           echo "SnapDeploy GitHub integration owns production deployment; this workflow verifies the deployed container."
 
-      - name: Wait for SnapDeploy deployment to become healthy
+      - name: Wait for SnapDeploy deployment to become healthy AND current
+        env:
+          # The commit this workflow is verifying. A container that is healthy
+          # but serving an older build is a failed deployment, not a success.
+          EXPECTED_REVISION: ${{ github.sha }}
         run: |
           set -euo pipefail
 
           MAX_ATTEMPTS=40
           DELAY=15
+          EXPECTED_SHORT="${EXPECTED_REVISION:0:12}"
+          CURRENT=""
 
           for i in $(seq 1 "$MAX_ATTEMPTS"); do
-            echo "Health check attempt $i of $MAX_ATTEMPTS..."
+            echo "Health check attempt $i of $MAX_ATTEMPTS (expecting revision ${EXPECTED_SHORT})..."
             HTTP_CODE=$(curl -s -o /tmp/health.json -w "%{http_code}" \
               --connect-timeout 10 \
               --max-time 20 \
@@ -57,13 +63,33 @@ jobs:
             echo "Health HTTP response code: $HTTP_CODE"
 
             if [ "$HTTP_CODE" = "200" ] && grep -Eq '"status"[[:space:]]*:[[:space:]]*"ok"' /tmp/health.json; then
-              echo "Health endpoint is ready."
-              cat /tmp/health.json
-              break
+              # Read the reported revision without a multi-line inline script:
+              # YAML block scalars and shell quoting around embedded Python are
+              # a reliable source of broken workflows.
+              CURRENT=$(sed -n 's/.*"revision"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' \
+                /tmp/health.json | head -1)
+              CURRENT=${CURRENT:-}
+
+              if [ "$CURRENT" = "$EXPECTED_SHORT" ]; then
+                echo "Healthy and current."
+                cat /tmp/health.json
+                exit 0
+              fi
+
+              if [ "$CURRENT" = "unknown" ] || [ -z "$CURRENT" ]; then
+                echo "::error::The running container does not report a build revision."
+                echo "::error::SnapDeploy did not rebuild from the latest push; the public API is"
+                echo "::error::serving an older build. A healthy container is not a current one."
+                echo "::error::Operator action required: trigger a rebuild in the SnapDeploy"
+                echo "::error::dashboard for ${EXPECTED_SHORT}. See README 'Deployment freshness'."
+                exit 1
+              fi
+
+              echo "Healthy but serving revision ${CURRENT}, expected ${EXPECTED_SHORT}."
             fi
 
             if [ "$i" -eq "$MAX_ATTEMPTS" ]; then
-              echo "::error::Health check timed out after $MAX_ATTEMPTS attempts."
+              echo "::error::Timed out. Last reported revision: ${CURRENT:-none}"
               cat /tmp/health.json 2>/dev/null || echo "  (no response body)"
               exit 1
             fi

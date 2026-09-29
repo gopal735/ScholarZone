@@ -437,11 +437,53 @@ class DiscoveryPipeline:
 
             extracted = candidate.extracted_fields or {}
 
+            # Pre-insert quality gate.
+            #
+            # This runs *before* a row exists, which is the whole point: a
+            # record that was never created cannot be published, linked to, or
+            # scraped by a search engine, and does not have to be cleaned up
+            # afterwards. Quarantine is the backstop for rows that predate this
+            # gate, not the first line of defence.
+            from .discovery_quality_gate import DiscoveryVerdict, assess_candidate
+
+            verdict = assess_candidate(
+                candidate.title, candidate.normalized_url, extracted
+            )
+            if verdict.verdict is DiscoveryVerdict.REJECT:
+                candidate.status = "rejected"
+                candidate.match_status = "rejected"
+                candidate.match_reason = "pre_insert_quality_gate: " + "; ".join(
+                    verdict.reasons
+                )[:500]
+                candidate.resolved_at = self.now_fn()
+                session.commit()
+                return None
+            if verdict.verdict is DiscoveryVerdict.REVIEW:
+                # Kept as a candidate for a human, never published.
+                candidate.status = "review"
+                candidate.match_status = "needs_review"
+                candidate.match_reason = "pre_insert_quality_gate: " + "; ".join(
+                    verdict.reasons
+                )[:500]
+                session.commit()
+                return None
+
+            # No manufactured defaults. A value the scraper did not read is
+            # stored as an empty string, never as the word "Unknown".
+            #
+            # These columns are NOT NULL, so something must be written, but an
+            # empty string is honestly empty while "Unknown" is a fabricated
+            # value that every later consumer - the public API, the
+            # completeness audit, the enrichment merge - cannot tell apart from
+            # one the provider actually stated. That is how a landing page came
+            # to be presented as a verified scholarship with a funding type.
+            # Enrichment fills these from the official source; an empty slot is
+            # visible to it as work to do.
             scholarship = Scholarship(
-                title=candidate.title or "Unknown Scholarship",
-                country=candidate.country or "Unknown",
-                degree=candidate.degree or "Unknown",
-                funding=candidate.funding or "Unknown",
+                title=candidate.title or "",
+                country=candidate.country or "",
+                degree=candidate.degree or "",
+                funding=candidate.funding or "",
                 description=extracted.get("description"),
                 deadline_date=extracted.get("deadline_date"),
                 deadline_display=extracted.get("deadline"),
