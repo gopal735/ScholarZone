@@ -62,7 +62,7 @@ MAX_STAGE_WORKERS = 16
 
 # Stage order reflects dependencies: verification establishes which records
 # are current, and the remaining stages all operate on that outcome.
-STAGE_ORDER = ("verify", "enrich", "images", "discover", "quarantine")
+STAGE_ORDER = ("verify", "enrich", "images", "discover", "quarantine", "stats")
 
 # A stage that fails stops the stages that depend on it, but not the ones that
 # do not. Verification has no prerequisite and nothing gates it.
@@ -89,6 +89,7 @@ STAGE_DEPENDENCIES: dict[str, tuple[str, ...]] = {
     "images": ("verify",),
     "discover": ("verify",),
     "quarantine": (),
+    "stats": (),
 }
 
 
@@ -325,7 +326,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--stage",
         action="append",
-        choices=["verify", "enrich", "images", "discover", "quarantine", "all"],
+        choices=["verify", "enrich", "images", "discover", "quarantine", "stats", "all"],
         default=None,
         help="Run only these stages (default: all).",
     )
@@ -451,6 +452,34 @@ def main(argv: list[str] | None = None) -> int:
     from app.services.enrichment_runner import EnrichmentBatchRunner
     from app.services.image_coverage_runner import ImageCoverageRunner
     from app.scheduler_v2 import run_discovery_round, run_verification_round
+
+    def do_stats() -> dict:
+        """Print exact production catalogue totals. Read-only, no writes."""
+        from sqlalchemy import func, select
+
+        from app.models import Scholarship
+        from app.services.catalogue_quarantine import QUARANTINE_STATUS
+
+        session = factory()
+        try:
+            total = session.scalar(select(func.count()).select_from(Scholarship))
+            valid = session.scalar(
+                select(func.count())
+                .select_from(Scholarship)
+                .where(Scholarship.verification_status != QUARANTINE_STATUS)
+            )
+            quarantined = session.scalar(
+                select(func.count())
+                .select_from(Scholarship)
+                .where(Scholarship.verification_status == QUARANTINE_STATUS)
+            )
+            return {
+                "total_records": total,
+                "total_valid": valid,
+                "quarantined": quarantined,
+            }
+        finally:
+            session.close()
 
     def do_verify() -> dict:
         # Same entry point the API's verification round uses, so a scheduled
@@ -591,6 +620,7 @@ def main(argv: list[str] | None = None) -> int:
         "images": do_images,
         "discover": do_discover,
         "quarantine": do_quarantine,
+        "stats": do_stats,
     }
 
     reports: list[StageReport] = []

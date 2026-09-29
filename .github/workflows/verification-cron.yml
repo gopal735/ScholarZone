@@ -30,7 +30,7 @@ on:
   workflow_dispatch:
     inputs:
       stage:
-        description: 'Stage to run (verify, enrich, images, discover, quarantine, or all)'
+        description: 'Stage to run (verify, enrich, images, discover, quarantine, stats, or all)'
         required: false
         default: 'all'
       limit:
