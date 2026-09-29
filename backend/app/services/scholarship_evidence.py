@@ -184,6 +184,21 @@ _REGISTRY_DECLARED_DOMAINS: frozenset[str] = frozenset({
     "studyinaustria.at", "studyinbelgium.be", "educationusa.state.gov",
     "studyinjapan.go.jp", "korea.kr", "moe.gov.sg", "gov.uk",
     "australia.gov.au", "gc.ca",
+    # Extended national study-abroad portals and scholarship agencies. These
+    # were added to widen country coverage, and every one of them has to be
+    # declared here as well or the classifier would call a page on an approved
+    # official domain "third party" - which sends the candidate to review for a
+    # reason that has nothing to do with the candidate. The two aggregators
+    # (scholars4dev.com, scholarshipdb.net) are deliberately absent: they are
+    # not awarding bodies, and declaring them official would defeat the
+    # aggregator guard in the discovery pipeline.
+    "studyindenmark.dk", "studyinfinland.fi", "studyinnorway.no",
+    "studyinpoland.pl", "studyinczechia.cz", "studyinhungary.hu",
+    "studyinturkiye.gov.tr", "education.ie", "gov.ie",
+    "education.govt.nz", "universitaly.it", "educacion.gob.es",
+    "educanada.ca", "education.gov.in", "scholarships.gov.in", "gob.mx",
+    "jasso.go.jp", "studyinkorea.go.kr", "mohe.gov.my",
+    "beasiswaindonesia.kemdikbud.go.id",
 })
 
 # Curated registrable domains of official scholarship programmes, government

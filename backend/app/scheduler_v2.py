@@ -209,6 +209,7 @@ class DiscoveryRoundResult:
 def run_discovery_round(
     dry_run: bool = False,
     max_workers: int = 4,
+    crawl_budget=None,
 ) -> DiscoveryRoundResult:
     """Run a country-level new-scholarship discovery round.
 
@@ -220,6 +221,10 @@ def run_discovery_round(
     Args:
         dry_run: If True, reports expected inserts without mutating data.
         max_workers: Maximum concurrent country discovery workers.
+        crawl_budget: Optional ``CrawlBudget`` enabling bounded deep
+            crawling. Without it each seed URL is fetched once and not
+            followed, which is why a deep round needs one to see anything
+            below a portal's front page.
 
     Returns:
         DiscoveryRoundResult with aggregate metrics.
@@ -227,6 +232,7 @@ def run_discovery_round(
     scheduler = DiscoveryScheduler(
         dry_run=dry_run,
         max_workers=max_workers,
+        crawl_budget=crawl_budget,
     )
     metrics = scheduler.run()
 

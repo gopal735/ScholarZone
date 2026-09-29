@@ -41,6 +41,10 @@ on:
         description: 'Plan only, write nothing'
         required: false
         default: 'false'
+      crawl_depth:
+        description: 'Discovery crawl depth below each seed URL (0 = seed only, 2 = deep)'
+        required: false
+        default: '0'
 
 # Least privilege: the worker only needs to read the repository. It never
 # writes to the repository, never uses the GitHub API, and never needs a
@@ -58,7 +62,7 @@ jobs:
     # Standard GitHub-hosted runner. A larger runner would reduce wall-clock
     # time but costs money, and this job is deliberately sized to fit the free
     # tier instead.
-    timeout-minutes: 45
+    timeout-minutes: 90
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -105,6 +109,7 @@ jobs:
             --stage "${{ github.event.inputs.stage || 'all' }}" \
             --limit "${{ github.event.inputs.limit || '60' }}" \
             --workers 4 \
+            --crawl-depth "${{ github.event.inputs.crawl_depth || '0' }}" \
             ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}
 
   # Bounded retry for transient failures.
@@ -129,7 +134,7 @@ jobs:
   # a non-zero exit code reserved for them, which is deliberately not done
   # here: the exit code contract from the previous phase is preserved as-is.
   retry:
-    timeout-minutes: 45
+    timeout-minutes: 90
     needs: maintain
     if: failure()
     runs-on: ubuntu-latest
@@ -177,4 +182,5 @@ jobs:
             --stage "${{ github.event.inputs.stage || 'all' }}" \
             --limit "${{ github.event.inputs.limit || '60' }}" \
             --workers 4 \
+            --crawl-depth "${{ github.event.inputs.crawl_depth || '0' }}" \
             ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}

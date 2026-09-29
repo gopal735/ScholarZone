@@ -338,6 +338,28 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--dry-run", action="store_true", help="Compute without writing."
     )
+    parser.add_argument(
+        "--crawl-depth",
+        type=int,
+        default=0,
+        help=(
+            "Discovery crawl depth below each seed URL. 0 keeps the historical "
+            "behaviour of fetching each seed once without following links. "
+            "2 is the recommended value for a deep research round."
+        ),
+    )
+    parser.add_argument(
+        "--crawl-pages-per-seed",
+        type=int,
+        default=12,
+        help="Maximum pages visited per discovery seed, including the seed.",
+    )
+    parser.add_argument(
+        "--crawl-max-pages",
+        type=int,
+        default=600,
+        help="Batch-wide ceiling on crawled pages, so one portal cannot starve the rest.",
+    )
     parser.add_argument("--verbose", action="store_true")
     args = parser.parse_args(argv)
 
@@ -428,7 +450,23 @@ def main(argv: list[str] | None = None) -> int:
         return metrics.as_dict()
 
     def do_discover() -> dict:
-        result = run_discovery_round(dry_run=args.dry_run, max_workers=workers)
+        # Bounded deep crawling is opt-in via --crawl-depth. It is not the
+        # default because it multiplies network cost, and a scheduled run
+        # should not silently start taking twenty times as long.
+        crawl_budget = None
+        if args.crawl_depth > 0:
+            from app.services.discovery_crawler import CrawlBudget
+
+            crawl_budget = CrawlBudget(
+                max_depth=args.crawl_depth,
+                max_pages_per_seed=max(1, args.crawl_pages_per_seed),
+                max_total_pages=max(1, args.crawl_max_pages),
+            )
+            logger.info("discovery deep crawl enabled: %s", crawl_budget.as_dict())
+
+        result = run_discovery_round(
+            dry_run=args.dry_run, max_workers=workers, crawl_budget=crawl_budget
+        )
         detail = result.as_dict() if hasattr(result, "as_dict") else {"result": str(result)}
         # Close the quarantine latency gap in the same cycle.
         #

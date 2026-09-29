@@ -64,6 +64,13 @@ class DiscoveryBatch:
     duplicates: int = 0
     rejected: int = 0
     errors: int = 0
+    # Crawl accounting. `pages_visited` is the number of URLs actually put
+    # through the extraction path; `crawl_pages_fetched` counts pages read only
+    # for their links. The two differ, and conflating them would overstate how
+    # much of the crawl turned into candidate evaluation.
+    pages_visited: int = 0
+    crawl_pages_fetched: int = 0
+    links_followed: int = 0
 
 
 class DiscoveryPipeline:
@@ -73,11 +80,15 @@ class DiscoveryPipeline:
         registry: SourceRegistry | None = None,
         now_fn=None,
         rate_limiter=None,
+        crawl_budget=None,
     ) -> None:
         self.session_factory = session_factory or get_session_factory()
         self.registry = registry or StaticSourceRegistry()
         self.now_fn = now_fn or (lambda: datetime.now(timezone.utc))
         self.rate_limiter = rate_limiter
+        # None keeps the historical behaviour of visiting only the seed URL.
+        # A CrawlBudget opts into bounded deep crawling.
+        self.crawl_budget = crawl_budget
 
     def _new_session(self) -> Session:
         return self.session_factory()
@@ -109,20 +120,47 @@ class DiscoveryPipeline:
         except Exception:
             session.rollback()
 
+        # Bounded deep crawl, or seed-only. A `None` budget preserves the
+        # historical single-page-per-seed behaviour so existing callers and
+        # tests are unaffected.
+        crawler = None
+        if self.crawl_budget is not None:
+            from .discovery_crawler import DeepCrawler
+
+            crawler = DeepCrawler(self.crawl_budget, url_filter=self.registry.is_approved_site)
+
         batch_start = time.monotonic()
         for url in source_urls:
-            try:
-                result = self.discover_from_url(url)
-                batch.discovered.append(result)
-                if result.match_type in ("exact_url", "exact_candidate", "near_duplicate", "alias"):
-                    batch.duplicates += 1
-                elif result.status == "rejected":
+            if crawler is None:
+                targets = [url]
+            else:
+                # `max_total_pages` is a batch-wide ceiling, so one country's
+                # sprawling portal cannot consume the whole round's budget and
+                # starve the countries queued behind it.
+                remaining = self.crawl_budget.max_total_pages - batch.pages_visited
+                if remaining <= 0:
+                    logger.info("crawl page budget exhausted; stopping batch")
+                    break
+                targets = crawler.plan(url)[:remaining]
+
+            for target in targets:
+                try:
+                    result = self.discover_from_url(target)
+                    batch.discovered.append(result)
+                    batch.pages_visited += 1
+                    if result.match_type in ("exact_url", "exact_candidate", "near_duplicate", "alias"):
+                        batch.duplicates += 1
+                    elif result.status == "rejected":
+                        batch.rejected += 1
+                except DiscoveryError:
                     batch.rejected += 1
-            except DiscoveryError:
-                batch.rejected += 1
-            except Exception:
-                logger.exception("Discovery failed for %s", url)
-                batch.errors += 1
+                except Exception:
+                    logger.exception("Discovery failed for %s", target)
+                    batch.errors += 1
+
+        if crawler is not None:
+            batch.crawl_pages_fetched = crawler.pages_fetched
+            batch.links_followed = crawler.links_followed
 
         batch_duration_ms = (time.monotonic() - batch_start) * 1000.0
         record_event(
@@ -136,6 +174,8 @@ class DiscoveryPipeline:
                 "duplicates": batch.duplicates,
                 "rejected": batch.rejected,
                 "errors": batch.errors,
+                "pages_visited": batch.pages_visited,
+                "links_followed": batch.links_followed,
             },
         )
 
@@ -146,7 +186,7 @@ class DiscoveryPipeline:
         if not normalized_url:
             return self._create_rejected_candidate(session, source_url, "invalid_url", "Invalid or empty source URL")
 
-        if not self.registry.is_approved(normalized_url):
+        if not self.registry.is_approved_site(normalized_url):
             return self._create_rejected_candidate(
                 session, source_url, "source_not_approved",
                 f"Source domain not in approved registry: {normalized_url}"
@@ -277,6 +317,15 @@ class DiscoveryPipeline:
 
         trust_score = self.registry.get_trust_score(normalized_url)
 
+        # Aggregators are legitimate *discovery leads* - a scholarship listing
+        # site is often the only index of a small national programme - but they
+        # are not the awarding body, so a record whose provenance is the
+        # aggregator itself must never be auto-approved into the public
+        # catalogue. It goes to review, where a human or a later official
+        # source can confirm the real provider.
+        registry_source_type = self.registry.get_source_type(normalized_url)
+        is_aggregator = (registry_source_type or "").lower() == "aggregator"
+
         is_official = source_type in (
             SourceType.OFFICIAL_GOVERNMENT,
             SourceType.OFFICIAL_UNIVERSITY,
@@ -294,6 +343,12 @@ class DiscoveryPipeline:
         if not title or len(title.strip()) < 5:
             status = "review"
             review_reason = "Insufficient title information"
+        elif is_aggregator:
+            status = "review"
+            review_reason = (
+                f"Aggregator source ({normalized_url}): useful as a lead, but the "
+                "official awarding body must be confirmed before publication"
+            )
         elif not is_official:
             status = "review"
             review_reason = f"Non-official source type: {source_type.value}"

@@ -53,6 +53,53 @@ _DEFAULT_SOURCES: list[ApprovedSourceData] = [
     ApprovedSourceData("moe.gov.sg", "Singapore MOE", "official_government", "Singapore", 90, []),
 ]
 
+# Additional official scholarship bodies, added to widen country coverage.
+#
+# Two rules govern this list, and both exist because a wrong entry is worse
+# than a missing one:
+#
+# 1. Only official bodies - government ministries, national scholarship
+#    commissions, state education agencies, or their official study-in-country
+#    portals. No commercial directory, no aggregator, no consultancy.
+# 2. A wrong domain here is not a fabrication risk. These are *discovery
+#    seeds*, not asserted facts: the crawler can only use them to find pages,
+#    and every record that results must independently pass the pre-insert
+#    quality gate and the evidence checks. An unreachable or wrong domain
+#    surfaces honestly as `source_unreachable` in the completeness report
+#    rather than inventing a scholarship.
+#
+# Aggregators are deliberately excluded here even though two `aggregator`-typed
+# sources are already listed above. Those stay useful as leads but are never
+# crawled for publication-grade provenance, and the pipeline routes anything
+# found on them to review rather than auto-approving it.
+_EXTENDED_SOURCES: list[ApprovedSourceData] = [
+    # Europe
+    ApprovedSourceData("studyindenmark.dk", "Study in Denmark", "official_government", "Denmark", 88, []),
+    ApprovedSourceData("studyinfinland.fi", "Study in Finland", "official_government", "Finland", 88, []),
+    ApprovedSourceData("studyinnorway.no", "Study in Norway", "official_government", "Norway", 88, []),
+    ApprovedSourceData("studyinpoland.pl", "Study in Poland", "official_government", "Poland", 85, []),
+    ApprovedSourceData("studyinczechia.cz", "Study in Czechia", "official_program", "Czech Republic", 85, []),
+    ApprovedSourceData("studyinhungary.hu", "Study in Hungary", "official_program", "Hungary", 85, []),
+    ApprovedSourceData("studyinturkiye.gov.tr", "Study in Turkiye", "official_government", "Turkey", 88, []),
+    ApprovedSourceData("education.ie", "Government of Ireland Education", "official_government", "Ireland", 90, []),
+    ApprovedSourceData("gov.ie", "Government of Ireland", "official_government", "Ireland", 92, []),
+    ApprovedSourceData("education.govt.nz", "Ministry of Education New Zealand", "official_government", "New Zealand", 90, []),
+    ApprovedSourceData("universitaly.it", "Universitaly", "official_program", "Italy", 82, []),
+    ApprovedSourceData("educacion.gob.es", "Ministerio de Educacion", "official_government", "Spain", 90, []),
+    # Americas
+    ApprovedSourceData("educanada.ca", "Education in Canada", "official_government", "Canada", 90, []),
+    ApprovedSourceData("education.gov.in", "Ministry of Education India", "official_government", "India", 88, []),
+    ApprovedSourceData("scholarships.gov.in", "National Scholarship Portal India", "official_government", "India", 92, []),
+    ApprovedSourceData("gob.mx", "Gobierno de Mexico", "official_government", "Mexico", 90, []),
+    # Asia-Pacific
+    ApprovedSourceData("jasso.go.jp", "JASSO", "official_government", "Japan", 90, []),
+    ApprovedSourceData("studyinkorea.go.kr", "Study in Korea", "official_government", "South Korea", 90, []),
+    ApprovedSourceData("mohe.gov.my", "Ministry of Higher Education Malaysia", "official_government", "Malaysia", 90, []),
+    ApprovedSourceData("beasiswaindonesia.kemdikbud.go.id", "Indonesian Scholarship", "official_government", "Indonesia", 85, []),
+]
+
+_DEFAULT_SOURCES = _DEFAULT_SOURCES + _EXTENDED_SOURCES
+
 
 class DatabaseSourceRegistry:
     def __init__(self, session: Session) -> None:
@@ -79,6 +126,24 @@ class DatabaseSourceRegistry:
             return False
         self._load()
         return domain in self._cache
+
+    def is_approved_site(self, url: str) -> bool:
+        """Approved host, or any subdomain of one.
+
+        Subdomains of an approved organisation are treated as approved because
+        the content is served by that same organisation: a university's
+        `apply.x.edu` or a ministry's `grants.gov.x` is the same authority as
+        the portal that was audited and seeded. This is strictly narrower than
+        "any https site" - it cannot admit a third party - and it is what makes
+        "target university directories" reachable at all.
+        """
+        host = _extract_domain(url)
+        if not host:
+            return False
+        self._load()
+        if host in self._cache:
+            return True
+        return any(_subdomain_of(host, known) for known in self._cache)
 
     def get_source_type(self, url: str) -> str | None:
         domain = _extract_domain(url)
@@ -109,6 +174,14 @@ class StaticSourceRegistry:
         domain = _extract_domain(url)
         return domain in self._sources if domain else False
 
+    def is_approved_site(self, url: str) -> bool:
+        host = _extract_domain(url)
+        if not host:
+            return False
+        if host in self._sources:
+            return True
+        return any(_subdomain_of(host, known) for known in self._sources)
+
     def get_source_type(self, url: str) -> str | None:
         domain = _extract_domain(url)
         entry = self._sources.get(domain) if domain else None
@@ -124,13 +197,34 @@ class StaticSourceRegistry:
 
 
 def _extract_domain(url: str) -> str | None:
+    """Return the comparable host for a URL, or None.
+
+    ``www.`` and the port are stripped, which is not cosmetic. The approved
+    registry stores bare domains (``daad.de``) while real seed and discovery
+    URLs are written as ``https://www.daad.de/en/``. An earlier version
+    compared the raw netloc, so every ``www.`` URL failed the approval check:
+    DAAD, Chevening and Campus France were rejected as ``source_not_approved``
+    before a single request was made, and the countries they cover never
+    produced a discovered record. Normalising here fixes the class of bug
+    rather than the three instances of it.
+    """
     if not url:
         return None
     try:
         parsed = urlparse(url.strip())
-        return parsed.netloc.lower() if parsed.netloc else None
+        host = (parsed.hostname or "").lower()
+        if not host:
+            return None
+        return host[4:] if host.startswith("www.") else host
     except Exception:
         return None
+
+
+def _subdomain_of(host: str, domain: str) -> bool:
+    """True when *host* is *domain* or a subdomain of it."""
+    if not host or not domain:
+        return False
+    return host == domain or host.endswith("." + domain)
 
 
 def seed_approved_sources(session: Session) -> int:

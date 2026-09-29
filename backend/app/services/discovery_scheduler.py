@@ -87,6 +87,7 @@ class DiscoveryScheduler:
         dry_run: bool = False,
         rate_limit_interval: float = 1.0,
         now_fn=None,
+        crawl_budget=None,
     ) -> None:
         self.session_factory = session_factory
         self.max_workers = max_workers
@@ -94,6 +95,10 @@ class DiscoveryScheduler:
         self.rate_limiter = DomainRateLimiter(min_interval_seconds=rate_limit_interval)
         self.now_fn = now_fn or (lambda: datetime.now(timezone.utc))
         self._operation_id = str(int(time.time() * 1e9))
+        # None keeps seed-only crawling. A CrawlBudget enables bounded deep
+        # crawling, which is what turns a 20-source seed list into a real crawl
+        # of each portal's scholarship sections.
+        self.crawl_budget = crawl_budget
 
     def _new_session(self) -> Session:
         if self.session_factory is None:
@@ -222,11 +227,14 @@ class DiscoveryScheduler:
         pipeline = DiscoveryPipeline(
             session_factory=self.session_factory,
             rate_limiter=self.rate_limiter,
+            crawl_budget=self.crawl_budget,
         )
         batch = pipeline.discover_batch(source_urls)
 
         country_metrics["sources_checked"] = len(source_urls)
         country_metrics["urls_checked"] = len(source_urls)
+        country_metrics["pages_visited"] = batch.pages_visited
+        country_metrics["links_followed"] = batch.links_followed
         country_metrics["discovered"] = len(batch.discovered)
         country_metrics["duplicates"] = batch.duplicates
         country_metrics["rejected"] = batch.rejected
