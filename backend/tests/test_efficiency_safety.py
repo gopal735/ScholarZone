@@ -786,7 +786,7 @@ class TestAutonomousContract:
     def test_execution_contract_order(self):
         """The documented contract is what the code actually does."""
         assert list(worker.STAGE_ORDER) == [
-            "verify", "enrich", "images", "discover", "quarantine", "stats"
+            "verify", "enrich", "images", "discover", "quarantine", "stats", "purge"
         ]
         # Verification is the root; everything else is either downstream of it
         # or independent.
@@ -796,3 +796,8 @@ class TestAutonomousContract:
         # stats is a read-only catalogue count. It has to stay a leaf: giving it
         # a dependency would mean a count could silently reflect a partial run.
         assert worker.STAGE_DEPENDENCIES["stats"] == ()
+        # purge must also stay a leaf, and must stay after the stages that could
+        # introduce a non-logo image. A dependency here would make the ordering
+        # an assumption in code rather than an explicit contract.
+        assert worker.STAGE_DEPENDENCIES["purge"] == ()
+        assert worker.STAGE_ORDER.index("purge") > worker.STAGE_ORDER.index("images")

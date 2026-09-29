@@ -27,6 +27,20 @@ if TYPE_CHECKING:  # pragma: no cover
     from sqlalchemy.orm import Session
 
 
+# Image kinds that identify the awarding body rather than depict the programme.
+#
+# `official_logo` is the plain wordmark. The other two are the same asset
+# recorded against the issuer that controls it, which is how the catalogue
+# distinguishes a government emblem from a university's mark from a foundation's
+# logo. Everything else - photographs, hero banners, OpenGraph cards, media
+# assets - is programme artwork, and artwork is not an identity.
+LOGO_IDENTITY_KINDS: frozenset[str] = frozenset({
+    "official_logo",
+    "official_government",
+    "official_university",
+})
+
+
 class TrustworthyImageStatus(str, Enum):
     """Outcome of an orchestrated discovery run for one scholarship."""
 
@@ -201,6 +215,41 @@ def _get_current_verified_at(session: "Session", scholarship_id: int):
     scholarship = session.get(Scholarship, scholarship_id)
     return getattr(scholarship, "image_verified_at", None) if scholarship else None
 
+
+def _is_non_logo_stored(session: "Session", scholarship_id: int) -> bool:
+    """True when the record currently shows programme artwork, not an identity mark."""
+    from ..models import Scholarship
+
+    scholarship = session.get(Scholarship, scholarship_id)
+    if scholarship is None or not scholarship.image_url:
+        return False
+    # An unset kind is treated as non-logo: we cannot assert an image is a logo
+    # when nothing ever recorded it as one, and this mode exists to make the
+    # identity claim defensible rather than assumed.
+    return (scholarship.image_kind or "") not in LOGO_IDENTITY_KINDS
+
+
+def _clear_stored_image(session: "Session", scholarship_id: int) -> None:
+    """Drop the stored image and every provenance field that described it.
+
+    All six fields are cleared together on purpose. Leaving ``image_kind`` or
+    ``image_verified_at`` behind would leave a record claiming it carries a
+    verified official banner while carrying no image at all, which reads as a
+    coverage success to every report that counts verified images.
+    """
+    from ..models import Scholarship
+
+    scholarship = session.get(Scholarship, scholarship_id)
+    if scholarship is None:
+        return
+    scholarship.image_url = None
+    scholarship.image_source_url = None
+    scholarship.image_source_type = None
+    scholarship.image_kind = None
+    scholarship.image_alt_text = None
+    scholarship.image_verified_at = None
+    session.flush()
+
 """Image discovery orchestrator main class (appended to image_discovery_orchestrator.py)."""
 
 from typing import TYPE_CHECKING
@@ -226,6 +275,7 @@ class ImageDiscoveryOrchestrator:
         dry_run: bool = True,
         total_budget_seconds: float = 90.0,
         enable_logo_fallback: bool = True,
+        logo_only: bool = False,
     ) -> None:
         self._session_factory = session_factory
         self._page_discovery_service = page_discovery_service
@@ -233,6 +283,16 @@ class ImageDiscoveryOrchestrator:
         # The three-tier logo fallback makes several extra requests per record
         # it touches, so it is opt-in per call site and off for plan-only runs.
         self.enable_logo_fallback = enable_logo_fallback
+        # Logo-only mode persists an identity mark or nothing at all. The
+        # default ranking deliberately prefers a programme photograph over a
+        # logo, which is the right call for a scholarship card but the wrong
+        # one for a catalogue whose images are meant to identify the awarding
+        # body. A stock campus photo carries no provenance: it does not say
+        # who awards the scholarship, so it is decorative rather than
+        # informative. Logo-only mode also raises the fallback priority,
+        # because under this policy a logo is not a last resort - it is the
+        # only acceptable answer.
+        self.logo_only = logo_only
         # Wall-clock budget for the ENTIRE run, covering page discovery AND the
         # per-candidate page fetches and image validations that follow it.
         # Without this, a record with many trusted candidates can spend
@@ -545,6 +605,16 @@ class ImageDiscoveryOrchestrator:
                     validation_status=validation_status,
                 ))
 
+            if self.logo_only:
+                # Rank by the identity filter, not by the validator's own
+                # preference order. `image_results` is already sorted with
+                # programme artwork first, so taking [0] here would silently
+                # defeat the mode.
+                result.image_results = [
+                    r for r in result.image_results
+                    if (r.image_kind or "") in LOGO_IDENTITY_KINDS
+                ]
+
             if not result.image_results:
                 result.status = TrustworthyImageStatus.NO_TRUSTWORTHY_IMAGE
                 # Second chance before the record is written off. Deliberately
@@ -564,6 +634,13 @@ class ImageDiscoveryOrchestrator:
 
             if not self._dry_run and result.status != TrustworthyImageStatus.NO_TRUSTWORTHY_IMAGE:
                 result.previous_image_url = _get_current_image_url(session, scholarship_id)
+                # A stored programme photo must not survive a logo-only sweep.
+                # Leaving it in place would mean the run reports "nothing to
+                # do" for a record whose image is exactly what this mode exists
+                # to remove.
+                if self.logo_only and self._is_non_logo_stored(session, scholarship_id):
+                    _clear_stored_image(session, scholarship_id)
+                    result.previous_image_url = None
                 verifier = ImageVerifier(session)
                 ok = verifier.mark_image_verified(
                     scholarship_id=scholarship_id,

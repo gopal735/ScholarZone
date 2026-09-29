@@ -210,9 +210,11 @@ class ImageCoverageRunner:
         exclude_quarantined: bool = True,
         skip_terminally_evaluated: bool = False,
         plan_only: bool = False,
+        logo_only: bool = False,
     ) -> None:
         self._session_factory = session_factory
         self.dry_run = dry_run
+        self._logo_only = logo_only
         self.plan_only = plan_only
         self.batch_size = max(1, min(batch_size, MAX_BATCH_SIZE))
         self.only_missing = only_missing
@@ -349,6 +351,7 @@ class ImageCoverageRunner:
             orchestrator = ImageDiscoveryOrchestrator(
                 session_factory=self._session_factory,
                 dry_run=self.dry_run,
+                logo_only=self._logo_only,
             )
             result = orchestrator.run(
                 scholarship_id=scholarship_id,

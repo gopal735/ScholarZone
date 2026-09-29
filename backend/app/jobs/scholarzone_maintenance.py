@@ -62,7 +62,7 @@ MAX_STAGE_WORKERS = 16
 
 # Stage order reflects dependencies: verification establishes which records
 # are current, and the remaining stages all operate on that outcome.
-STAGE_ORDER = ("verify", "enrich", "images", "discover", "quarantine", "stats")
+STAGE_ORDER = ("verify", "enrich", "images", "discover", "quarantine", "stats", "purge")
 
 # A stage that fails stops the stages that depend on it, but not the ones that
 # do not. Verification has no prerequisite and nothing gates it.
@@ -90,6 +90,7 @@ STAGE_DEPENDENCIES: dict[str, tuple[str, ...]] = {
     "discover": ("verify",),
     "quarantine": (),
     "stats": (),
+    "purge": (),
 }
 
 
@@ -326,9 +327,17 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--stage",
         action="append",
-        choices=["verify", "enrich", "images", "discover", "quarantine", "stats", "all"],
+        choices=["verify", "enrich", "images", "discover", "quarantine", "stats", "purge", "all"],
         default=None,
         help="Run only these stages (default: all).",
+    )
+    parser.add_argument(
+        "--logo-only",
+        action="store_true",
+        help=(
+            "images stage: persist only official identity marks (logo, emblem, "
+            "crest) and clear a stored programme photo rather than keeping it."
+        ),
     )
     parser.add_argument(
         "--limit", type=int, default=DEFAULT_STAGE_LIMIT, help="Max records per stage."
@@ -516,6 +525,59 @@ def main(argv: list[str] | None = None) -> int:
         )
         return detail
 
+    def do_purge() -> dict:
+        """Clear stored images that are not official identity marks.
+
+        A programme photograph is decoration, not provenance: it does not say
+        who awards the scholarship. This stage removes those images so the
+        images stage can go looking for a logo instead, and so the catalogue
+        stops presenting a stock campus photo as though it were a verified
+        emblem.
+
+        Only the kind is used as the test, and a record whose kind was never
+        recorded counts as non-logo. That is the conservative direction: an
+        image we cannot identify is one we should not keep.
+        """
+        from sqlalchemy import select
+
+        from app.models import Scholarship
+        from app.services.image_discovery_orchestrator import LOGO_IDENTITY_KINDS
+
+        session = factory()
+        try:
+            rows = session.scalars(
+                select(Scholarship).where(Scholarship.image_url.isnot(None))
+            ).all()
+            offenders = [
+                r for r in rows
+                if (r.image_kind or "") not in LOGO_IDENTITY_KINDS
+            ]
+            if args.dry_run:
+                return {
+                    "image_rows": len(rows),
+                    "would_clear": len(offenders),
+                    "kept_identity_kinds": sorted(LOGO_IDENTITY_KINDS),
+                }
+
+            for row in offenders:
+                row.image_url = None
+                row.image_source_url = None
+                row.image_source_type = None
+                row.image_kind = None
+                row.image_alt_text = None
+                row.image_verified_at = None
+            session.commit()
+
+            detail = {
+                "image_rows": len(rows),
+                "cleared": len(offenders),
+                "kept_identity_kinds": sorted(LOGO_IDENTITY_KINDS),
+            }
+            recorder.record_counts({"image_non_logo_cleared": len(offenders)})
+            return detail
+        finally:
+            session.close()
+
     def do_images() -> dict:
         runner = ImageCoverageRunner(
             factory,
@@ -525,6 +587,7 @@ def main(argv: list[str] | None = None) -> int:
             max_workers=workers,
             exclude_quarantined=True,
             skip_terminally_evaluated=True,
+            logo_only=args.logo_only,
         )
         metrics = runner.run(limit=limit)
         recorder.record_counts(
@@ -621,6 +684,7 @@ def main(argv: list[str] | None = None) -> int:
         "discover": do_discover,
         "quarantine": do_quarantine,
         "stats": do_stats,
+        "purge": do_purge,
     }
 
     reports: list[StageReport] = []

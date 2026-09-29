@@ -57,6 +57,10 @@ on:
         description: 'Comma-separated ids to assess and quarantine now, then exit'
         required: false
         default: ''
+      logo_only:
+        description: 'images stage: persist only official identity marks, never programme photos'
+        required: false
+        default: 'false'
 
 # Least privilege: the worker only needs to read the repository. It never
 # writes to the repository, never uses the GitHub API, and never needs a
@@ -125,6 +129,7 @@ jobs:
             --crawl-pages-per-seed "${{ github.event.inputs.crawl_pages_per_seed || '12' }}" \
             --crawl-max-pages "${{ github.event.inputs.crawl_max_pages || '600' }}" \
             --quarantine-ids "${{ github.event.inputs.quarantine_ids || '' }}" \
+            ${{ github.event.inputs.logo_only == 'true' && '--logo-only' || '' }} \
             ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}
 
   # Bounded retry for transient failures.
@@ -201,4 +206,5 @@ jobs:
             --crawl-pages-per-seed "${{ github.event.inputs.crawl_pages_per_seed || '12' }}" \
             --crawl-max-pages "${{ github.event.inputs.crawl_max_pages || '600' }}" \
             --quarantine-ids "${{ github.event.inputs.quarantine_ids || '' }}" \
+            ${{ github.event.inputs.logo_only == 'true' && '--logo-only' || '' }} \
             ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}
