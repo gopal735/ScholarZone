@@ -26,6 +26,13 @@ class ImageSourceType(str, Enum):
     OFFICIAL_UNIVERSITY = "official_university"
     OFFICIAL_GOVERNMENT = "official_government"
     OFFICIAL_PROVIDER = "official_provider"
+    # The institution's own logo artwork, hosted by a third party (currently
+    # Wikimedia Commons) because the official domain blocks automated access.
+    #
+    # This exists so that such an image is never recorded as an official
+    # source. It is a real logo of the right institution, but the bytes do not
+    # come from the institution, and the provenance has to say so.
+    WIKIMEDIA = "wikimedia"
 
 
 _VALID_SOURCE_TYPES = frozenset(member.value for member in ImageSourceType)

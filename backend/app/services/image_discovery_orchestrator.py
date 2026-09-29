@@ -17,8 +17,11 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from enum import Enum
+import logging
 import time
 from typing import TYPE_CHECKING
+
+logger = logging.getLogger(__name__)
 
 if TYPE_CHECKING:  # pragma: no cover
     from sqlalchemy.orm import Session
@@ -189,7 +192,9 @@ def _get_current_image_url(session: "Session", scholarship_id: int) -> str | Non
 """Image discovery orchestrator main class (appended to image_discovery_orchestrator.py)."""
 
 from typing import TYPE_CHECKING
+from urllib.parse import urlparse
 
+from ..models import Scholarship
 from .official_page_discovery import OfficialPageDiscoveryService
 
 if TYPE_CHECKING:  # pragma: no cover
@@ -208,16 +213,108 @@ class ImageDiscoveryOrchestrator:
         page_discovery_service: OfficialPageDiscoveryService | None = None,
         dry_run: bool = True,
         total_budget_seconds: float = 90.0,
+        enable_logo_fallback: bool = True,
     ) -> None:
         self._session_factory = session_factory
         self._page_discovery_service = page_discovery_service
         self._dry_run = dry_run
+        # The three-tier logo fallback makes several extra requests per record
+        # it touches, so it is opt-in per call site and off for plan-only runs.
+        self.enable_logo_fallback = enable_logo_fallback
         # Wall-clock budget for the ENTIRE run, covering page discovery AND the
         # per-candidate page fetches and image validations that follow it.
         # Without this, a record with many trusted candidates can spend
         # (candidates x image_timeout) seconds in the validation phase alone,
         # which is what made a catalogue-wide sweep impractical.
         self._total_budget_seconds = total_budget_seconds
+
+    def run_logo_fallback(
+        self,
+        scholarship_id: int,
+        scholarship_title: str | None,
+        official_source_url: str | None,
+    ):
+        """Second-chance logo resolution for a record the main path could not help.
+
+        Runs the three fallback tiers in order. This is deliberately a separate
+        entry point rather than a branch inside ``run``: a record that already
+        has a trustworthy image must not pay for extra requests, and the
+        fallback makes several per record.
+
+        Candidates still go through the ordinary validator. A fallback tier
+        proposes; it never approves.
+        """
+        from .logo_fallback_resolver import LogoFallbackResolver, LogoResolutionStatus
+
+        session = self._session_factory()
+        try:
+            scholarship = session.get(Scholarship, scholarship_id)
+            if scholarship is None:
+                return None
+            resolver = LogoFallbackResolver()
+            resolution = resolver.resolve(scholarship)
+            if resolution.status is not LogoResolutionStatus.RESOLVED or not resolution.candidates:
+                return None
+
+            best = resolution.candidates[0]
+            result = OrchestratorRunResult(
+                scholarship_id=scholarship_id,
+                scholarship_title=scholarship.title,
+                official_source_url=official_source_url,
+            )
+            result.requests_made = resolver.requests_made
+            result.status = TrustworthyImageStatus.MEDIUM if best.official_host else TrustworthyImageStatus.LOW
+            result.image_results.append(
+                OrchestratorImageResult(
+                    image_url=best.url,
+                    page_url=best.page_url,
+                    source_type=(
+                        _classify_source_type(
+                            urlparse(best.url).netloc,
+                            urlparse(best.page_url).netloc,
+                        )
+                        if best.official_host
+                        else "wikimedia"
+                    ),
+                    confidence=result.status,
+                    image_kind="official_logo",
+                    alt_text=best.alt_text,
+                    relevance_score=0.5,
+                    provenance={
+                        "discovery_method": f"logo_fallback:{resolution.tier.value}",
+                        "tier": resolution.tier.value,
+                        "official_host": best.official_host,
+                        "note": best.note,
+                        "validation_status": None,
+                    },
+                    evidence=[best.note] if best.note else [],
+                    validation_status=None,
+                )
+            )
+
+            if not self._dry_run:
+                result.previous_image_url = _get_current_image_url(session, scholarship_id)
+                verifier = ImageVerifier(session)
+                ok = verifier.mark_image_verified(
+                    scholarship_id=scholarship_id,
+                    image_url=best.url,
+                    image_source_url=best.page_url,
+                    source_type=result.image_results[0].source_type,
+                    alt_text=best.alt_text,
+                    image_kind="official_logo",
+                    automatic=True,
+                )
+                result.new_image_url = best.url if ok else result.previous_image_url
+                result.persisted = bool(ok)
+            return result
+        except Exception as exc:  # noqa: BLE001
+            logger.warning("logo fallback failed for id=%s: %s", scholarship_id, exc)
+            return None
+        finally:
+            try:
+                session.close()
+            except Exception:
+                pass
 
     def run(
         self,
@@ -361,6 +458,16 @@ class ImageDiscoveryOrchestrator:
 
             if not result.image_results:
                 result.status = TrustworthyImageStatus.NO_TRUSTWORTHY_IMAGE
+                # Second chance before the record is written off. Deliberately
+                # a separate call rather than a branch deeper in, so a record
+                # that already succeeded never pays for the fallback's extra
+                # requests.
+                if self.enable_logo_fallback and not self._dry_run:
+                    fallback = self.run_logo_fallback(
+                        scholarship_id, result.scholarship_title, official_source_url
+                    )
+                    if fallback is not None and fallback.image_results:
+                        return fallback
                 return result
 
             best = result.image_results[0]

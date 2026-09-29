@@ -1,0 +1,17 @@
+{
+  "_comment": "Audited official logo overrides, keyed by the institution's own domain.",
+  "_rules": [
+    "Keys are the official source host, not the record title, so an official rename does not silently orphan an entry.",
+    "Add an entry only when the logo is known to be the institution's own and the URL is stable.",
+    "official_host must be true only when the bytes are served by the institution itself. A third-party host (for example Wikimedia) must be false, because the record's provenance says so.",
+    "An entry is a candidate, not an approval: every override still goes through the ordinary image validator."
+  ],
+  "_examples": {
+    "example.edu": {
+      "url": "https://www.example.edu/sites/default/files/logo.png",
+      "page_url": "https://www.example.edu/",
+      "official_host": true,
+      "alt_text": "Example University"
+    }
+  }
+}
