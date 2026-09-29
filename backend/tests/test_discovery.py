@@ -216,6 +216,55 @@ class TestSeedApprovedSources:
         count2 = seed_approved_sources(session)
         assert count2 == 0
 
+    def test_existing_source_seed_urls_are_refreshed(self, session):
+        """A row that already exists must still pick up an improved seed.
+
+        Insert-only seeding froze every deployed database at whatever the source
+        looked like when it was first created, so adding a verified deep
+        scholarship URL in code had no effect anywhere that was already running.
+        That is why most sources had empty seed lists and the crawl could only
+        ever start from a homepage.
+        """
+        from app.services.discovery_config import _DEFAULT_SOURCES
+
+        seed_approved_sources(session)
+        session.commit()
+
+        # Simulate an old deployment: rows exist, but with no seed URLs at all.
+        for row in session.query(ApprovedSource).all():
+            row.discovery_url_patterns = []
+        session.commit()
+
+        refreshed = seed_approved_sources(session)
+        session.commit()
+
+        seeded = _DEFAULT_SOURCES[0].domain
+        assert refreshed > 0
+        stored = session.query(ApprovedSource).filter_by(domain=seeded).one()
+        assert list(stored.discovery_url_patterns) == _DEFAULT_SOURCES[0].discovery_url_patterns
+        assert seed_approved_sources(session) == 0
+
+    def test_deactivated_source_is_not_reactivated(self, session):
+        """An operator-disabled source must stay disabled.
+
+        Refreshing seeds should not be a back door around deactivation: a source
+        someone deliberately turned off has to stay off.
+        """
+        seed_approved_sources(session)
+        session.commit()
+
+        row = session.query(ApprovedSource).first()
+        row.is_active = False
+        row.discovery_url_patterns = []
+        session.commit()
+
+        seed_approved_sources(session)
+        session.commit()
+
+        stored = session.query(ApprovedSource).filter_by(domain=row.domain).one()
+        assert stored.is_active is False
+        assert list(stored.discovery_url_patterns) == []
+
 
 class TestDiscoveryPipeline:
     def test_rejects_unapproved_source(self, pipeline, session):

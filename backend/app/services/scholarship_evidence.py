@@ -197,7 +197,7 @@ _REGISTRY_DECLARED_DOMAINS: frozenset[str] = frozenset({
     "studyinturkiye.gov.tr", "education.ie", "gov.ie",
     "education.govt.nz", "universitaly.it", "educacion.gob.es",
     "educanada.ca", "education.gov.in", "scholarships.gov.in", "gob.mx",
-    "jasso.go.jp", "studyinkorea.go.kr", "mohe.gov.my",
+    "jasso.go.jp", "studyinkorea.go.kr", "moe.gov.my",
     "beasiswaindonesia.kemdikbud.go.id",
     # Baltic & Nordic expansion added after a live reachability probe. Every
     # domain here is a real, reachable official study portal, and declaring it
@@ -206,7 +206,31 @@ _REGISTRY_DECLARED_DOMAINS: frozenset[str] = frozenset({
     # reason that has nothing to do with the candidate.
     "studyinestonia.ee", "studyinlatvia.lv", "studyinlithuania.lt",
     "studyinluxembourg.lu", "studyinslovenia.si", "studyincroatia.hr",
-    "studyinromania.ro", "studyinuae.ae", "studyinaustralia.gov.au",
+    "studyinromania.gov.ro", "studyinuae.ae", "studyinaustralia.gov.au",
+    # Direct deep-link seeds added to sources that were already in the
+    # registry. Declaring them here is what stops the classifier from calling
+    # a page on an approved official portal "third party", which would route a
+    # perfectly good candidate to review for a reason that has nothing to do
+    # with the candidate.
+    "mofa.gov.ae", "vietnam.gov.vn", "moe.gov.kh", "moe.gov.pk", "mofa.gov.np",
+    "moe.gov.gh", "nuc.edu.ng", "au.int", "ecowas.int", "unesco.org", "un.org",
+    # National scholarship programmes that are official even though the host is
+    # not a ministry domain.
+    "hea.ie", "studyinitaly.esteri.it", "turkiyeburslari.gov.tr",
+    "scholarships.portalvs.sk", "studyabroad.state.gov",
+    "amideast.org", "ethz.ch", "stanford.edu", "ug.edu.gh", "ku.ac.ke",
+    "ufh.ac.za", "darmasiswa.kemendikdasmen.go.id",
+    # Scholarship directories. Declared for the same reason as the entries
+    # above: an approved official directory must not be downgraded to "third
+    # party" by the evidence layer, because that would route a legitimate
+    # candidate to review for a reason unrelated to the candidate.
+    "eacea.ec.europa.eu", "marie-sklodowska-curie-actions.ec.europa.eu",
+    "oead.at", "grants.at", "campusbourses.campusfrance.org", "nawa.gov.pl",
+    "dzs.cz", "scholarships.sk", "portalvs.sk", "scholarship.hu", "oph.fi",
+    "studyinnl.org", "dges.gov.pt", "cscuk.fcdo.gov.uk", "akf.org",
+    "nzscholarships.govt.nz", "govt.nz", "hec.gov.pk", "studyinrussia.ru",
+    "studyinsaudi.sa", "moe.gov.sa", "foreign.fulbrightonline.org",
+    "internationalscholarships.dhet.gov.za",
 })
 
 # Curated registrable domains of official scholarship programmes, government

@@ -786,10 +786,13 @@ class TestAutonomousContract:
     def test_execution_contract_order(self):
         """The documented contract is what the code actually does."""
         assert list(worker.STAGE_ORDER) == [
-            "verify", "enrich", "images", "discover", "quarantine"
+            "verify", "enrich", "images", "discover", "quarantine", "stats"
         ]
         # Verification is the root; everything else is either downstream of it
         # or independent.
         assert worker.STAGE_DEPENDENCIES["verify"] == ()
         for stage in ("enrich", "images", "discover"):
             assert worker.STAGE_DEPENDENCIES[stage] == ("verify",)
+        # stats is a read-only catalogue count. It has to stay a leaf: giving it
+        # a dependency would mean a count could silently reflect a partial run.
+        assert worker.STAGE_DEPENDENCIES["stats"] == ()
