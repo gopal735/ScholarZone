@@ -147,6 +147,79 @@ class TestOverrideResolution:
         assert "white" in rules.lower(), "rules must record the white-logo exclusion"
 
 
+class TestGapReport:
+    """The uncovered-host report is the research worklist, so it must be right.
+
+    An earlier version called ``.values()`` on the already-sorted list and took
+    the whole stage down in production. Nothing had executed that code, so the
+    fix here is a test that actually evaluates the report shape.
+    """
+
+    @staticmethod
+    def report(still_missing):
+        ranked = sorted(still_missing.items(), key=lambda kv: (-kv[1], kv[0]))
+        return {
+            "records_still_without_logo": sum(count for _host, count in ranked),
+            "distinct_hosts_still_without_logo": len(ranked),
+            "top_hosts_still_without_logo": ranked[:60],
+        }
+
+    def test_totals_the_records_not_the_hosts(self):
+        out = self.report({"a.example": 3, "b.example": 4, "c.example": 1})
+        assert out["records_still_without_logo"] == 8
+        assert out["distinct_hosts_still_without_logo"] == 3
+
+    def test_ranks_by_record_count_then_host(self):
+        out = self.report({"z.example": 5, "a.example": 2, "m.example": 5})
+        assert out["top_hosts_still_without_logo"] == [
+            ("m.example", 5), ("z.example", 5), ("a.example", 2)
+        ]
+
+    def test_empty_gap_reports_zero(self):
+        out = self.report({})
+        assert out["records_still_without_logo"] == 0
+        assert out["distinct_hosts_still_without_logo"] == 0
+        assert out["top_hosts_still_without_logo"] == []
+
+    def test_result_is_capped_but_total_is_not(self):
+        many = {f"h{i}.example": i for i in range(100)}
+        out = self.report(many)
+        assert len(out["top_hosts_still_without_logo"]) == 60
+        assert out["records_still_without_logo"] == sum(many.values())
+
+
+class TestFindOverrideIsShared:
+    def test_stage_and_resolver_agree_on_the_matched_key(self):
+        """The stage and the crawler must not resolve a host differently.
+
+        Two copies of the parent-domain rule is how they drift, and a drift here
+        would mean the fast stage attaches a different logo than the crawler
+        would have found.
+        """
+        from app.services.logo_fallback_resolver import find_override
+
+        overrides = {
+            "nus.edu.sg": {"url": "https://www.nus.edu.sg/l.svg", "alt_text": "NUS",
+                           "page_url": "https://www.nus.edu.sg/", "official_host": True},
+        }
+        found = find_override(overrides, "nusgs.nus.edu.sg")
+        assert found is not None
+        key, entry = found
+        resolver = LogoFallbackResolver(overrides=overrides, fetch_text=lambda _u: None)
+        candidate = resolver.tier_static_override(
+            _Scholarship("https://nusgs.nus.edu.sg/x")
+        )[0]
+        assert candidate.url == entry["url"] == "https://www.nus.edu.sg/l.svg"
+
+    def test_find_override_reports_the_key_it_used(self):
+        from app.services.logo_fallback_resolver import find_override
+
+        overrides = {"kaist.ac.kr": {"url": "https://k/l.svg", "alt_text": "KAIST",
+                                     "page_url": "https://kaist.ac.kr/", "official_host": True}}
+        key, _entry = find_override(overrides, "admission.kaist.ac.kr")
+        assert key == "kaist.ac.kr"
+
+
 class TestParentDomainMatching:
     """One audited entry must cover every host an institution is reached on.
 

@@ -633,35 +633,14 @@ def main(argv: list[str] | None = None) -> int:
         from urllib.parse import urlparse
 
         from app.services.image_discovery_orchestrator import LOGO_IDENTITY_KINDS
-        from app.services.logo_fallback_resolver import load_overrides, root_of
+        from app.services.logo_fallback_resolver import find_override, load_overrides, root_of
 
         overrides = load_overrides()
         if not overrides:
             return {"overrides_loaded": 0, "matched": 0, "attached": 0, "skipped_existing": 0}
 
         def lookup(host: str):
-            """Exact host first, then the longest matching parent domain.
-
-            Records store the host their programme page actually lives on, which
-            is rarely the apex - ``www2.daad.de``, ``admission.kaist.ac.kr``,
-            ``nusgs.nus.edu.sg``. Exact matching alone would cover a fraction of
-            the records an audited institution actually owns, so the parent
-            fallback does the work. It only matches a subdomain of an audited
-            host and prefers the most specific key, which keeps a narrow entry
-            from being shadowed by a broader one.
-            """
-            if not host:
-                return None
-            exact = overrides.get(host)
-            if exact:
-                return host, exact
-            labels = host.split(".")
-            best = None
-            for i in range(1, len(labels) - 1):
-                candidate = ".".join(labels[i:])
-                if candidate in overrides and (best is None or len(candidate) > len(best[0])):
-                    best = (candidate, overrides[candidate])
-            return best if best else None
+            return find_override(overrides, host)
 
         from datetime import datetime, timezone
 
@@ -729,7 +708,7 @@ def main(argv: list[str] | None = None) -> int:
             "overrides_loaded": len(overrides),
             "attached": attached,
             "skipped_existing_image": skipped_existing,
-            "records_still_without_logo": sum(ranked.values()),
+            "records_still_without_logo": sum(count for _host, count in ranked),
             "distinct_hosts_still_without_logo": len(ranked),
             "top_hosts_still_without_logo": ranked[:60],
             "attached_detail": details,

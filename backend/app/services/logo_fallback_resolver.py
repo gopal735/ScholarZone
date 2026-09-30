@@ -306,37 +306,9 @@ class LogoFallbackResolver:
         return candidates
 
     def _lookup_override(self, host: str) -> dict[str, str] | None:
-        """Find the override for a host, exact match first, then a parent domain.
-
-        Records store whatever host their programme page actually lives on, and
-        that is rarely the bare apex: Oxford is ``ox.ac.uk`` but also
-        ``admission.kaist.ac.kr`` and ``www2.daad.de``. An exact-match-only
-        lookup misses every one of those, so a single audited entry per
-        institution would only ever cover the records that happened to use the
-        apex. The catalogue had 316 hosts needing a logo and 42 audited
-        institutions, which is the size of that gap.
-
-        The parent fallback is deliberately narrow. It only matches when the
-        record's host is a subdomain of the audited host, and the *longest*
-        matching key wins, so an entry for ``nus.edu.sg`` is not shadowed by a
-        broader one and a record on ``admissions.kaist.ac.kr`` resolves to
-        KAIST rather than to some unrelated parent.
-        """
-        if not host:
-            return None
-        exact = self._overrides.get(host)
-        if exact:
-            return exact
-
-        best_key = None
-        labels = host.split(".")
-        # Walk from the most specific parent down to the registrable domain.
-        for i in range(1, len(labels) - 1):
-            candidate = ".".join(labels[i:])
-            if candidate in self._overrides:
-                if best_key is None or len(candidate) > len(best_key):
-                    best_key = candidate
-        return self._overrides.get(best_key) if best_key else None
+        """Resolve a host to an override entry, or None if the host is unknown."""
+        found = find_override(self._overrides, host)
+        return found[1] if found else None
 
     # -- tier 3: static override ---------------------------------------
 
@@ -435,6 +407,44 @@ def _default_fetch_text(url: str) -> str | None:
 # ---------------------------------------------------------------------------
 # Override file
 # ---------------------------------------------------------------------------
+
+
+def find_override(overrides: dict[str, dict[str, str]], host: str) -> tuple[str, dict[str, str]] | None:
+    """Find the override for a host: exact match first, then a parent domain.
+
+    Records store whatever host their programme page actually lives on, and that
+    is rarely the bare apex: Oxford is ``ox.ac.uk`` but DAAD's programme database
+    is ``www2.daad.de`` and KAIST's is ``admission.kaist.ac.kr``. An
+    exact-match-only lookup misses all of those, so one audited entry per
+    institution would only ever cover the records that happened to use the apex.
+    The catalogue had 316 hosts needing a logo against 42 audited institutions,
+    which is the size of that gap.
+
+    The parent fallback is deliberately narrow. It only matches a subdomain of an
+    audited host and the *longest* matching key wins, so an entry for
+    ``nus.edu.sg`` is not shadowed by a broader one and a record on
+    ``admissions.kaist.ac.kr`` resolves to KAIST rather than to an unrelated
+    parent. Splitting on dots gives the dot boundary for free, which is what
+    stops ``evildaad.de`` from picking up DAAD's mark.
+
+    Returns the matched key alongside the entry, so callers record which audited
+    institution was used rather than just that something matched.
+    """
+    if not host:
+        return None
+    exact = overrides.get(host)
+    if exact:
+        return host, exact
+
+    labels = host.split(".")
+    # Stop before the public suffix, so a record hosted directly on "ac.kr"
+    # cannot resolve to a sibling institution.
+    best: tuple[str, dict[str, str]] | None = None
+    for i in range(1, len(labels) - 1):
+        candidate = ".".join(labels[i:])
+        if candidate in overrides and (best is None or len(candidate) > len(best[0])):
+            best = (candidate, overrides[candidate])
+    return best
 
 
 def load_overrides(path: Path | None = None) -> dict[str, dict[str, str]]:
