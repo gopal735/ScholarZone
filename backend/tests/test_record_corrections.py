@@ -90,6 +90,23 @@ class TestCorrectStageWiring:
         assert '"correct": do_correct' in source, "correct missing from the dispatch table"
         assert '"correct",' in source, "correct missing from STAGE_ORDER or argparse choices"
 
+    def test_stage_validates_urls_with_a_name_it_imports(self):
+        """Each stage body carries its own imports; none is inherited.
+
+        do_correct validated an address with urlparse without importing it, so
+        the first real run of the stage died with a NameError after the file
+        had already been written. Unit tests could not see it because these
+        stages are closures inside main(), so the import is pinned here.
+        """
+        source = (
+            Path(__file__).resolve().parents[1] / "app" / "jobs" / "scholarzone_maintenance.py"
+        ).read_text(encoding="utf-8")
+        body = source.split("def do_correct", 1)[1].split("def do_facts", 1)[0]
+        assert "urlparse(" in body, "the correct stage no longer validates URLs"
+        assert "from urllib.parse import urlparse" in body, (
+            "the correct stage uses urlparse without importing it"
+        )
+
     def test_stage_never_archives_or_quarantines(self):
         source = (
             Path(__file__).resolve().parents[1] / "app" / "jobs" / "scholarzone_maintenance.py"

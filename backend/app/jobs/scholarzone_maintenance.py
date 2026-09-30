@@ -1024,6 +1024,7 @@ def main(argv: list[str] | None = None) -> int:
         import json
         from datetime import datetime, timezone
         from pathlib import Path
+        from urllib.parse import urlparse
 
         from sqlalchemy import select
 
