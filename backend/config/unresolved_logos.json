@@ -10,16 +10,9 @@
   "not_an_identity_logo": "the only image is decorative, a banner, or a promotional lockup",
   "logo_blank_or_placeholder": "the published asset renders blank or is a solid placeholder",
   "no_logo_published": "the awarding body publishes no file asset for its identity mark",
-  "programme_retired_no_logo_needed": "the programme was retired, so no logo is published for it",
-  "override_did_not_attach": "an audited override exists for this host but did not match the record"
+  "programme_retired_no_logo_needed": "the programme was retired, so no logo is published for it"
  },
  "hosts": [
-  {
-   "host": "admissions.smu.edu.sg",
-   "records": 3,
-   "reason_code": "override_did_not_attach",
-   "detail": ""
-  },
   {
    "host": "ox.ac.uk",
    "records": 3,
@@ -63,12 +56,6 @@
    "detail": "the host resets every non-browser HTTP client"
   },
   {
-   "host": "deutschlandstipendium.de",
-   "records": 1,
-   "reason_code": "override_did_not_attach",
-   "detail": ""
-  },
-  {
    "host": "gatescambridge.org",
    "records": 1,
    "reason_code": "white_variant_only",
@@ -103,12 +90,6 @@
    "records": 1,
    "reason_code": "domain_dead",
    "detail": "the host does not resolve; the programme moved to a successor site that publishes only an inline SVG"
-  },
-  {
-   "host": "modul.ac.at",
-   "records": 1,
-   "reason_code": "override_did_not_attach",
-   "detail": ""
   },
   {
    "host": "niied.go.kr",
