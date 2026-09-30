@@ -93,9 +93,17 @@ STAGE_DEPENDENCIES: dict[str, tuple[str, ...]] = {
     "images": ("verify",),
     "discover": ("verify",),
     "quarantine": (),
+    # Read-only: it reports the backlog, so it stays a leaf rather than
+    # reflecting whatever a partial run happened to have written.
+    "worklist": (),
     "stats": (),
     "facts": (),
     "logos": (),
+    # Retiring and correcting are both driven by audited files, and both have to
+    # land before archive: archive derives its decision from the deadline, and a
+    # record whose address was just repaired should not be judged on the old one.
+    "retire": (),
+    "correct": (),
     "archive": (),
     "discontinued": (),
     "purge": (),

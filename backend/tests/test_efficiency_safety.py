@@ -16,6 +16,8 @@ from __future__ import annotations
 
 from datetime import date, timedelta
 
+import re
+
 import pytest
 
 from app.jobs import scholarzone_maintenance as worker
@@ -642,7 +644,16 @@ class TestRetryPolicy:
         """Retries belong to the workflow, not to an unbounded loop."""
         source = open(worker.__file__, encoding="utf-8").read().lower()
         assert "while true" not in source
-        assert "for attempt in range" not in source
+        # A bounded retry of the database handshake is allowed, and is not what
+        # this test is about. Neon drops idle pooled connections, so a run that
+        # starts on a recycled socket fails preflight and does nothing. What must
+        # never appear is a loop that re-runs a stage: retries of whole stages
+        # belong to the workflow, which has its own bounded retry job.
+        for fragment in re.findall(r"for\s+\w+\s+in\s+range\(([^)]*)\)", source):
+            assert fragment.strip() in {"1, 2", "1, 3", "1, 4"}, (
+                f"found a loop bounded by {fragment!r}; the worker's only bounded "
+                f"retry is the three-attempt database handshake"
+            )
         # The cursor makes a repeated run resume rather than redo.
         assert "store.advance(" in source
 
@@ -786,8 +797,8 @@ class TestAutonomousContract:
     def test_execution_contract_order(self):
         """The documented contract is what the code actually does."""
         assert list(worker.STAGE_ORDER) == [
-            "verify", "enrich", "images", "logos", "discover", "quarantine",
-            "stats", "facts", "archive", "discontinued", "purge",
+            "verify", "worklist", "enrich", "images", "logos", "discover", "quarantine",
+            "retire", "correct", "stats", "facts", "archive", "discontinued", "purge",
         ]
         # Verification is the root; everything else is either downstream of it
         # or independent.

@@ -112,6 +112,12 @@ class TestFactsFieldsMapToRealColumns:
     _ALLOWED = {
         "source_page",     # citation for humans, never written to a column
         "deadline_cycle",  # provenance for the date, never written to a column
+        # A programme with no single deadline. deadline_mode is "varies" or
+        # "rolling"; deadline_note is the honest sentence shown to an applicant.
+        # Both are consumed by the stage, which writes deadline_display and
+        # deadline_precision from them and leaves deadline_date empty.
+        "deadline_mode",
+        "deadline_note",
         # A single ISO date that the stage expands into deadline_date,
         # deadline_display and deadline_precision. The frontend reads the
         # display string, so one column is not enough, which is why the file
@@ -158,7 +164,16 @@ class TestFactsFieldsMapToRealColumns:
     def test_awarding_body_and_money_use_the_real_column_names(self, facts):
         for host, entry in facts.items():
             assert "official_source" in entry, f"{host} must state official_source"
-            assert "benefits" in entry, f"{host} must state benefits"
+            # "What does this pay?" is answered by either column, and requiring
+            # both would mean writing the same sentence twice. Some programmes
+            # only make sense in one: an institutional block-grant scheme has a
+            # funding model but no per-award benefits package, and inventing a
+            # benefits line for it would be exactly the kind of confident filler
+            # this file exists to avoid.
+            assert "benefits" in entry or "funding" in entry, (
+                f"{host} states neither benefits nor funding, so the file never "
+                f"says what the scholarship actually pays"
+            )
 
     def test_deadline_is_iso_or_absent(self, facts):
         for host, entry in facts.items():
