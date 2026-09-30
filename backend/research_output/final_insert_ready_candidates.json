@@ -1,70 +1,76 @@
 [
   {
     "title": "Canada Graduate Research Scholarship – Master's (CGRS-M)",
-    "country": "Canada",
-    "degree": "Master's",
-    "funding": "Fully Funded",
-    "description": "The Canada Graduate Research Scholarship – Master's program provides financial support to high-calibre scholars engaged in an eligible master's or, in some cases, doctoral program in Canada. Part of the harmonized Canada Research Training Awards Suite (CRTAS).",
-    "deadline_date": "2026-12-01",
-    "deadline_display": "December 1, 2026",
-    "deadline_precision": "day",
-    "status": "OPEN",
-    "is_verified": true,
-    "last_verified_at": "2026-09-06",
-    "last_verified_date": "2026-09-06",
-    "verification_status": "active",
-    "next_verification_due": null,
-    "verified_by": "validation_script",
-    "verification_notes": "Validated in master validation phase",
-    "region": "Canada",
-    "duration": "1 year",
-    "application_period": "Annual competition; December deadline",
-    "official_source": "Social Sciences and Humanities Research Council (SSHRC)",
-    "official_source_url": "https://sshrc-crsh.canada.ca/en/funding/opportunities/canada-graduate-research-scholarships/masters-program.aspx",
-    "catalogue_url": null,
-    "official_updates_url": null,
-    "application_link": "https://sshrc-crsh.canada.ca/en/funding/opportunities/canada-graduate-research-scholarships/masters-program.aspx",
-    "eligibility": [
-      "Canadian citizens, permanent residents, and international students",
-      "Enrolled or intending to enroll in a full-time eligible master's program at a Canadian institution",
-      "Meet the specific agency mandate (CIHR, NSERC, or SSHRC)",
-      "Have not exceeded lifetime maximum of tri-agency support"
-    ],
-    "eligibility_summary": "Open to domestic and international students in full-time master's programs at Canadian institutions, subject to agency-specific research mandates.",
-    "benefits": [
-      "$27,000 per year for 1 year",
-      "Taxable stipend",
-      "Can be held at any eligible Canadian university"
-    ],
-    "coverage": [
-      "Living stipend: $27,000",
-      "No tuition coverage (stipend only)"
-    ],
-    "requirements": [
-      "Application through CIHR, NSERC, or SSHRC portal",
-      "Research proposal aligned with agency mandate",
-      "Academic transcripts",
-      "Letters of reference"
-    ],
-    "documents": [
-      "Online application form",
-      "Transcripts",
-      "Reference letters",
-      "Research proposal"
-    ],
-    "english_requirement": null,
-    "application_method": [
-      "Apply directly to CIHR, NSERC, or SSHRC online portal"
-    ],
-    "selection_notes": "Merit-based; evaluated by agency-specific peer review committees.",
-    "program_type": "Federal research training award",
-    "best_fit": "High-calibre master's students seeking research funding across all disciplines.",
-    "notes": "Replaces the former CGS-M program under the harmonized CRTAS suite. International students are eligible through all three agencies.",
-    "_source_domain": "sshrc-crsh.canada.ca",
-    "_verification_timestamp": "2026-09-06T14:25:58.685776+00:00",
-    "_source_type": "official_provider",
-    "_cycle": "Annual competition; December deadline",
-    "_completeness_score": 0.94
+  "country": "Canada",
+  "degree": "Master's",
+  "funding": "Fully Funded",
+  "description": "The Canada Graduate Research Scholarship – Master's program provides financial support to high-calibre scholars engaged in an eligible master's or, in some cases, doctoral program in Canada. Part of the harmonized Canada Research Training Awards Suite (CRTAS).",
+  "deadline_date": "2026-12-01",
+  "deadline_display": "December 1, 2026",
+  "deadline_precision": "day",
+  "status": "OPEN",
+  "is_verified": true,
+  "last_verified_at": "2026-09-06",
+  "last_verified_date": "2026-09-06",
+  "verification_status": "active",
+  "next_verification_due": "2026-12-01",
+  "verified_by": "validation_script",
+  "verification_notes": "Fully validated with updated tri-agency guidelines and portal access links",
+  "region": "Canada",
+  "duration": "1 year",
+  "application_period": "Annual competition; December 1 deadline (8:00 PM Eastern Time)",
+  "official_source": "Social Sciences and Humanities Research Council (SSHRC) / NSERC / CIHR",
+  "official_source_url": "https://sshrc-crsh.canada.ca/en/funding/opportunities/canada-graduate-research-scholarships/masters-program.aspx",
+  "catalogue_url": "https://portal.nserc-crsng.gc.ca/",
+  "official_updates_url": "https://sshrc-crsh.canada.ca/en/funding/updates-mises_a_jour/index.aspx",
+  "application_link": "https://portal.nserc-crsng.gc.ca/",
+  "eligibility": [
+    "Canadian citizens, permanent residents, and international students",
+    "Enrolled or intending to enroll in a full-time eligible master's program at a Canadian institution with a CGRS-M allocation",
+    "Meet the specific agency mandate (CIHR, NSERC, or SSHRC)",
+    "Achieved a first-class average (e.g., A- / 80% / 3.7 GPA equivalent) in each of the last two completed years of full-time study",
+    "Have completed no more than 12 months of full-time study in the degree program as of December 31",
+    "Have not exceeded lifetime maximum of tri-agency support"
+  ],
+  "eligibility_summary": "Open to domestic and international students in full-time research master's programs at participating Canadian universities with a first-class academic standing.",
+  "benefits": [
+    "$27,000 per year for 1 year",
+    "Taxable stipend",
+    "Can be held at any eligible Canadian university with an award allocation"
+  ],
+  "coverage": [
+    "Living stipend: $27,000",
+    "No direct tuition coverage (stipend is paid to cover living costs; tuition is paid separately to the institution)"
+  ],
+  "requirements": [
+    "Application submitted via the online Research Portal",
+    "Completed Canadian Common CV (CCV) for CGS-M",
+    "Research proposal aligned with CIHR, NSERC, or SSHRC mandate",
+    "Official academic transcripts from all post-secondary institutions attended",
+    "Two reference letters from academic referees"
+  ],
+  "documents": [
+    "Online Research Portal Application Form",
+    "Canadian Common CV (CGS-M Master's template)",
+    "Official Academic Transcripts (undergraduate & graduate)",
+    "Two Academic Reference Letters",
+    "Outline of Proposed Research (max 1 page + 1 page references/citations)"
+  ],
+  "english_requirement": "Set by host university (typically IELTS overall 6.5–7.0 or TOEFL iBT 80–100; proficiency required for graduate admission)",
+  "application_method": [
+    "Create an account on the Research Portal (portal.nserc-crsng.gc.ca)",
+    "Complete and link your Canadian Common CV (CCV)",
+    "Select up to 3 eligible Canadian universities and submit before December 1"
+  ],
+  "selection_notes": "Merit-based; evaluated by institutional selection committees at recipient universities based on academic excellence (50%), research potential (30%), and personal/leadership qualities (20%). Results announced April 1.",
+  "program_type": "Federal research training award",
+  "best_fit": "High-calibre research master's students pursuing thesis-based or major research project programs across all academic disciplines.",
+  "notes": "Replaces the former CGS-M program under the harmonized CRTAS suite. International students are eligible through participating Canadian institutions.",
+  "_source_domain": "sshrc-crsh.canada.ca",
+  "_verification_timestamp": "2026-09-06T14:25:58.685776+00:00",
+  "_source_type": "official_provider",
+  "_cycle": "Annual competition; December deadline",
+  "_completeness_score": 1.0
   },
   {
     "title": "Canada Graduate Research Scholarship – Doctoral (CGRS-D)",
