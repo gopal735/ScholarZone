@@ -221,7 +221,6 @@ def _next_review_due(today: date) -> date:
     """
     return today + timedelta(days=90)
 
-
 def _column_length(model, field: str) -> int | None:
     """Declared length of a column, or None when it has none or does not exist.
 
@@ -882,7 +881,7 @@ def main(argv: list[str] | None = None) -> int:
         Safe to re-run: an already-archived record is excluded, so the work does
         not repeat and the reported count settles at zero.
         """
-        from datetime import date, datetime, timezone
+        from datetime import date, datetime, timedelta, timezone
 
         from sqlalchemy import select
 
@@ -1306,7 +1305,7 @@ def main(argv: list[str] | None = None) -> int:
         or the amount is not applied.
         """
         import json
-        from datetime import date, datetime, timezone
+        from datetime import date, datetime, timedelta, timezone
         from pathlib import Path
 
         from sqlalchemy import select
@@ -1555,7 +1554,7 @@ def main(argv: list[str] | None = None) -> int:
         pipeline exists to prevent.
         """
         import json
-        from datetime import date, datetime, timezone
+        from datetime import date, datetime, timedelta, timezone
         from pathlib import Path
         from urllib.parse import urlparse
 
