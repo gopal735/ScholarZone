@@ -207,6 +207,22 @@ def _skipped(name: str, reason: str) -> StageReport:
     return StageReport(name=name, ok=False, skipped=True, skip_reason=reason)
 
 
+def _column_length(model, field: str) -> int | None:
+    """Declared length of a column, or None when it has no fixed width.
+
+    Not every column type has a `length` at all. A JSON column raises
+    AttributeError on the attribute rather than returning None, which is how a
+    research pass over eligibility values took the whole stage down.
+    """
+    return getattr(model.__table__.c[field].type, "length", None)
+
+
+def _is_json_column(model, field: str) -> bool:
+    from sqlalchemy import JSON
+
+    return isinstance(model.__table__.c[field].type, JSON)
+
+
 def _quarantine_ids(factory, ids: list[int], *, dry_run: bool) -> int:
     """Assess specific ids now and quarantine the ones that are not programmes.
 
@@ -959,7 +975,7 @@ def main(argv: list[str] | None = None) -> int:
             # failed the whole run - on the stage's first live execution, after
             # the audited file had already been written. The width is read from
             # the model so it cannot drift when the column changes.
-            reason_limit = Scholarship.__table__.c.archived_reason.type.length or 255
+            reason_limit = _column_length(Scholarship, "archived_reason") or 255
             for rid, entry in sorted(wanted.items()):
                 row = session.get(Scholarship, rid)
                 if row is None:
@@ -1215,13 +1231,26 @@ def main(argv: list[str] | None = None) -> int:
                     value = (entry.get(field) or "").strip() or None
                     if not value or getattr(row, field, None):
                         continue
-                    # Some of these columns are bounded varchars, and Postgres
-                    # raises on an overflow rather than truncating. Writing a
-                    # research paragraph into a 120-character label column
-                    # failed this stage outright and took the whole run with it.
-                    # A value that does not fit is skipped and reported, which is
-                    # honest: a half-written funding label is worse than none.
-                    limit = Scholarship.__table__.c[field].type.length
+                    # Eligibility is a JSON list column, not text. Writing the
+                    # sentence as a bare string put a string where the rest of
+                    # the code expects a list of criteria.
+                    if isinstance(getattr(row, field, None), list) or _is_json_column(
+                        Scholarship, field
+                    ):
+                        current = getattr(row, field, None)
+                        items = list(current) if isinstance(current, list) else []
+                        items.append(value)
+                        setattr(row, field, items)
+                        filled.append(field)
+                        continue
+                    # Some of the other columns are bounded varchars, and
+                    # Postgres raises on an overflow rather than truncating.
+                    # Writing a research paragraph into a 120-character label
+                    # column failed this stage outright and took the whole run
+                    # with it. A value that does not fit is skipped and
+                    # reported, which is honest: a half-written funding label is
+                    # worse than none.
+                    limit = _column_length(Scholarship, field)
                     if limit and len(value) > limit:
                         skipped_too_long.append(
                             {"id": row.id, "field": field, "length": len(value),
