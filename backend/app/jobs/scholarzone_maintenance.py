@@ -223,6 +223,8 @@ def _next_review_due(today: date) -> date:
     A rolling or undated programme has no natural reminder in its own calendar,
     so without this it would never be re-examined and would quietly rot.
     """
+    from datetime import timedelta
+
     return today + timedelta(days=90)
 
 def _column_length(model, field: str) -> int | None:
