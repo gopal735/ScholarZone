@@ -954,6 +954,12 @@ def main(argv: list[str] | None = None) -> int:
         session = factory()
         try:
             matched: list[dict] = []
+            # The reason column is a bounded varchar and Postgres raises on an
+            # overflow rather than truncating, so a long research sentence
+            # failed the whole run - on the stage's first live execution, after
+            # the audited file had already been written. The width is read from
+            # the model so it cannot drift when the column changes.
+            reason_limit = Scholarship.__table__.c.archived_reason.type.length or 255
             for rid, entry in sorted(wanted.items()):
                 row = session.get(Scholarship, rid)
                 if row is None:
@@ -976,7 +982,7 @@ def main(argv: list[str] | None = None) -> int:
                 if not row.is_archived:
                     row.is_archived = True
                     row.archived_at = datetime.now(timezone.utc)
-                    row.archived_reason = note[:255]
+                    row.archived_reason = note[:reason_limit]
                 row.updated_at = datetime.now(timezone.utc)
             if not args.dry_run:
                 session.commit()
