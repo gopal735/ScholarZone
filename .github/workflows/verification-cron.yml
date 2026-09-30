@@ -129,6 +129,11 @@ jobs:
           SCHOLARZONE_ENVIRONMENT: production
           PYTHONPATH: '.'
         run: |
+          # Output is tee'd to a file as well as the console. Several real
+          # failures produced no log lines at all, so the step's reason for
+          # failing was only visible by attaching the artifact - which is a
+          # poor way to run a production maintenance job.
+          set -o pipefail
           python -m app.jobs.scholarzone_maintenance \
             --stage "${{ github.event.inputs.stage || 'all' }}" \
             --limit "${{ github.event.inputs.limit || '60' }}" \
@@ -139,7 +144,22 @@ jobs:
             --quarantine-ids "${{ github.event.inputs.quarantine_ids || '' }}" \
             ${{ github.event.inputs.logo_only == 'true' && '--logo-only' || '' }} \
             --image-budget-seconds "${{ github.event.inputs.image_budget_seconds || '90' }}" \
-            ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}
+            ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }} \
+            2>&1 | tee "$RUNNER_TEMP/worker.log"
+          status=${PIPESTATUS[0]}
+          echo "$status" > "$RUNNER_TEMP/worker.status"
+          exit "$status"
+
+      - name: Upload worker log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: worker-log
+          path: |
+            ${{ runner.temp }}/worker.log
+            ${{ runner.temp }}/worker.status
+          if-no-files-found: ignore
+          retention-days: 7
 
       # The worklist stage writes its backlog here. It is far too large for the
       # run log, and a stage that tries to print it loses its own output.
