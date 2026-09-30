@@ -16,6 +16,7 @@ import {
   verificationLabel,
 } from '../utils/scholarshipDetail'
 import './ScholarshipDetailsPage.css'
+import { CANONICAL_ORIGIN } from '../services/canonicalOrigin'
 
 /* Reveal on scroll, once. Each section plays a different role so the page
    does not read as one animation repeated down the column: headings
@@ -239,7 +240,7 @@ export default function ScholarshipDetailsPage() {
       }
     }
     if (!scholarship) return
-    const baseUrl = 'https://gopal735.github.io/ScholarZone'
+    const baseUrl = CANONICAL_ORIGIN
     const canonicalUrl = `${baseUrl}/scholarships/${scholarship.id}`
     const imageUrl = detailImage(scholarship)?.url
     const providerName = readText(scholarship.official_source)

@@ -77,8 +77,16 @@ def get_settings() -> Settings:
         database_url = os.getenv("SCHOLARZONE_DATABASE_URL", DEFAULT_DATABASE_URL).strip() or DEFAULT_DATABASE_URL
 
     allowed_origins = _split_origins(os.getenv("SCHOLARZONE_ALLOWED_ORIGINS", DEFAULT_ALLOWED_ORIGINS))
+    # GitHub Pages stays in the allowed set while it remains the rollback path.
+    # A Vercel preview origin is added as well, because every preview deployment
+    # gets its own unique host and the frontend E2E checks have to be able to
+    # call the API from one. Credentials are enabled on this middleware, so the
+    # list is explicit origins and never "*".
     if "https://gopal735.github.io" not in allowed_origins:
         allowed_origins = allowed_origins + ("https://gopal735.github.io",)
+    vercel_origin = os.getenv("VERCEL_URL", "").strip().removeprefix("https://").strip()
+    if vercel_origin and vercel_origin not in allowed_origins:
+        allowed_origins = allowed_origins + (f"https://{vercel_origin}",)
 
     return Settings(
         environment=environment,

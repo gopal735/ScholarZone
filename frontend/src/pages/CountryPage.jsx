@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { countryImages, FALLBACK_IMAGE } from '../data/countryImages'
 import { countryThemes, defaultTheme } from '../data/countryThemes'
 import './CountryPage.css'
+import { CANONICAL_ORIGIN } from '../services/canonicalOrigin'
 
 const FEATURED_COUNTRIES = ['Japan', 'USA', 'Germany', 'UK', 'Australia', 'Canada']
 
@@ -72,7 +73,7 @@ export default function CountryPage() {
 
   // SEO meta tags
   useEffect(() => {
-    const baseUrl = 'https://gopal735.github.io/ScholarZone'
+    const baseUrl = CANONICAL_ORIGIN
     
     document.querySelectorAll('[data-sz-seo]').forEach(el => el.remove())
     

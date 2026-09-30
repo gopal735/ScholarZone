@@ -7,6 +7,7 @@ import SaveCompareSteps from '../components/SaveCompareSteps'
 import FeaturedStory from '../components/FeaturedStory'
 import { useScholarshipDirectory } from '../hooks/useScholarshipDirectory'
 import './HomePage.css'
+import { CANONICAL_ORIGIN } from '../services/canonicalOrigin'
 
 const discoveryCollections = [
   {
@@ -103,7 +104,7 @@ export default function HomePage() {
 
   // SEO meta tags
   useEffect(() => {
-    const baseUrl = 'https://gopal735.github.io/ScholarZone'
+    const baseUrl = CANONICAL_ORIGIN
     
     // Remove existing SEO tags
     document.querySelectorAll('[data-sz-seo]').forEach(el => el.remove())

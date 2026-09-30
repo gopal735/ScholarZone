@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { useScholarshipDirectory } from '../hooks/useScholarshipDirectory'
 import ScholarshipList from '../components/ScholarshipList'
 import './ScholarshipsPage.css'
+import { CANONICAL_ORIGIN } from '../services/canonicalOrigin'
 
 export default function ScholarshipsPage() {
   const [searchParams] = useSearchParams()
@@ -16,7 +17,7 @@ export default function ScholarshipsPage() {
 
   // SEO meta tags
   useEffect(() => {
-    const baseUrl = 'https://gopal735.github.io/ScholarZone'
+    const baseUrl = CANONICAL_ORIGIN
     const canonicalUrl = countryParam
       ? `${baseUrl}/scholarships?country=${encodeURIComponent(countryParam)}`
       : `${baseUrl}/scholarships`

@@ -30,7 +30,15 @@ jobs:
       - run: cd frontend && npm ci
       - run: cd frontend && npm run build
         env:
-          VITE_API_BASE_URL: https://scholarzone-api-2ee2d.containers.snapdeploy.app
+          # The API host is configuration, not a build detail of this file. It
+          # was hardcoded to one provider's container hostname, which meant the
+          # repository itself depended on that provider staying in service.
+          # Reading it from the repository variable keeps GitHub Pages working as
+          # the rollback path and lets the API move provider by changing one
+          # value, with no code change and no rebuild of the frontend logic.
+          VITE_API_BASE_URL: ${{ vars.SCHOLARZONE_API_URL }}
+          # GitHub Pages serves from a repository subpath.
+          VITE_DEPLOY_TARGET: github-pages
       - uses: actions/upload-pages-artifact@v3
         with:
           path: frontend/dist

@@ -10,8 +10,9 @@ name: ScholarZone scheduled maintenance
 #
 # The worker imports the same service layer the API uses and connects straight
 # to the database, so a scheduled run and an operator-triggered run cannot
-# drift apart. SnapDeploy remains the API runtime for the frontend; it is simply
-# not on the maintenance path any more.
+# drift apart. This workflow has no dependency on any web runtime: not the
+# public API, not an admin route, and not the frontend host. If the web tier is
+# down, being deployed, or has moved provider, maintenance is unaffected.
 #
 # Platform limits, stated honestly: GitHub-hosted scheduled workflows can be
 # delayed by platform load, and on a public repository they can be disabled

@@ -1,10 +1,16 @@
 """Direct maintenance worker: GitHub Actions -> Neon, with no API in between.
 
-The scheduled workflow used to wake the SnapDeploy container and call the
-production API over HTTP. On the free tier a container sleeps, the wake is not
-guaranteed, and a scheduled run therefore depended on a platform behaviour it
-does not control. Verification is the one job that most needs to run when
-nobody is looking, so making it depend on a cold start is backwards.
+Historical note: the scheduled workflow used to wake a SnapDeploy container and
+call the production API over HTTP. On the free tier a container sleeps, the wake
+is not guaranteed, and a scheduled run therefore depended on a platform
+behaviour it does not control. Verification is the one job that most needs to
+run when nobody is looking, so making it depend on a cold start is backwards.
+
+That history is the reason this module is independent of the web runtime, and
+the independence is deliberate: the worker connects straight to Neon and calls no
+HTTP endpoint of any kind - not the public API, not an admin route, and not the
+frontend. It therefore keeps working if the web tier is down, being deployed, or
+on a different provider altogether.
 
 This worker runs the same service layer in-process and talks straight to
 Neon. Nothing here duplicates verification, discovery, enrichment or image

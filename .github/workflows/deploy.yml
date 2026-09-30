@@ -37,11 +37,13 @@ jobs:
             exit 1
           fi
 
-          echo "SnapDeploy GitHub integration owns production deployment; this workflow verifies the deployed container."
+          echo "Verifying the deployed API at the configured SCHOLARZONE_API_URL."
+          echo "This check is host-agnostic: it proves the running build matches"
+          echo "this commit regardless of which platform serves it."
 
-      - name: Wait for SnapDeploy deployment to become healthy AND current
+      - name: Wait for deployment to become healthy AND current
         env:
-          # The commit this workflow is verifying. A container that is healthy
+          # The commit this workflow is verifying. A deployment that is healthy
           # but serving an older build is a failed deployment, not a success.
           EXPECTED_REVISION: ${{ github.sha }}
         run: |
@@ -62,35 +64,49 @@ jobs:
               "$SCHOLARZONE_API_URL/health" || true)
             echo "Health HTTP response code: $HTTP_CODE"
 
-            if [ "$HTTP_CODE" = "200" ] && grep -Eq '"status"[[:space:]]*:[[:space:]]*"ok"' /tmp/health.json; then
-              # Read the reported revision without a multi-line inline script:
-              # YAML block scalars and shell quoting around embedded Python are
-              # a reliable source of broken workflows.
-              CURRENT=$(sed -n 's/.*"revision"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' \
-                /tmp/health.json | head -1)
-              CURRENT=${CURRENT:-}
-
-              if [ "$CURRENT" = "$EXPECTED_SHORT" ]; then
-                echo "Healthy and current."
-                cat /tmp/health.json
-                exit 0
-              fi
-
-              if [ "$CURRENT" = "unknown" ] || [ -z "$CURRENT" ]; then
-                echo "::error::The running container does not report a build revision."
-                echo "::error::SnapDeploy did not rebuild from the latest push; the public API is"
-                echo "::error::serving an older build. A healthy container is not a current one."
-                echo "::error::Operator action required: trigger a rebuild in the SnapDeploy"
-                echo "::error::dashboard for ${EXPECTED_SHORT}. See README 'Deployment freshness'."
-                exit 1
-              fi
-
-              echo "Healthy but serving revision ${CURRENT}, expected ${EXPECTED_SHORT}."
+            if [ "$HTTP_CODE" != "200" ]; then
+              echo "::error::Health returned ${HTTP_CODE:-no response}, expected 200."
+              exit 1
             fi
 
+            if ! grep -Eq '"status"[[:space:]]*:[[:space:]]*"ok"' /tmp/health.json; then
+              echo "::error::HTTP 200 but status is not ok."
+              cat /tmp/health.json
+              exit 1
+            fi
+
+            # Read the reported revision without a multi-line inline script:
+            # YAML block scalars and shell quoting around embedded Python are
+            # a reliable source of broken workflows.
+            CURRENT=$(sed -n 's/.*"revision"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' \
+              /tmp/health.json | head -1)
+            CURRENT=${CURRENT:-}
+
+            if [ "$CURRENT" = "$EXPECTED_SHORT" ]; then
+              echo "Healthy and current."
+              cat /tmp/health.json
+              exit 0
+            fi
+
+            # Anything that is not a full git SHA cannot be trusted as a build
+            # identity. "unknown", "dev" and a hand-written label all fail here,
+            # which is what stops an old build being reported as current.
+            if ! printf '%s' "$CURRENT" | grep -Eq '^[0-9a-f]{7,40}$'; then
+              echo "::error::Reported revision '${CURRENT}' is missing or not a"
+              echo "::error::trustworthy build identity. Production must report the"
+              echo "::error::real commit the platform built; a supplied label is not"
+              echo "::error::evidence. Refusing to call this deployment current."
+              echo "::error::Operator action required: the deployed build does not"
+              echo "::error::identify its own commit, so it cannot be proven current."
+              cat /tmp/health.json
+              exit 1
+            fi
+
+            echo "Healthy but serving revision ${CURRENT}, expected ${EXPECTED_SHORT}."
+            cat /tmp/health.json
+
             if [ "$i" -eq "$MAX_ATTEMPTS" ]; then
-              echo "::error::Timed out. Last reported revision: ${CURRENT:-none}"
-              cat /tmp/health.json 2>/dev/null || echo "  (no response body)"
+              echo "::error::Timed out waiting for the expected build to go live."
               exit 1
             fi
 

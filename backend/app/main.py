@@ -1,9 +1,10 @@
 from contextlib import asynccontextmanager
 import logging
 import os
+import re
 from threading import Lock, Thread
 
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -26,14 +27,27 @@ logger = logging.getLogger(__name__)
 def build_revision() -> str:
     """Short git SHA of the running build, or ``dev``/``unknown``.
 
-    Resolved once at import from the environment. A container built without
-    the variable reports ``unknown`` rather than guessing, and the deployment
-    verification treats anything that is not the expected SHA as a failure -
-    which is the entire point: a healthy container serving the wrong commit
-    must not be reported as a successful deployment.
+    Resolved once at import, from the platform's own deployment identity.
+
+    Order matters. The platform identifier comes first because it cannot be
+    falsified by hand: Vercel injects ``VERCEL_GIT_COMMIT_SHA`` for the exact
+    commit it built, so the value describes the artefact actually running rather
+    than a label somebody remembered to set. An operator-supplied variable is
+    accepted only as a fallback, because a build that is told what revision to
+    claim will happily claim it while serving older code - which is precisely
+    the failure this endpoint exists to make detectable.
+
+    A production build with no identifiable commit reports ``unknown``, and the
+    deployment verification treats anything that is not the expected SHA as a
+    failure. A healthy process serving the wrong commit must never be reported
+    as a successful deployment.
     """
+    for variable in ("VERCEL_GIT_COMMIT_SHA", "VERCEL_GIT_COMMIT_REF"):
+        raw = (os.getenv(variable) or "").strip()
+        if raw and re.fullmatch(r"[0-9a-fA-F]{7,64}", raw):
+            return raw[:12]
     raw = (os.getenv("SCHOLARZONE_BUILD_REVISION") or "").strip()
-    if raw:
+    if raw and re.fullmatch(r"[0-9a-fA-F]{7,64}", raw):
         return raw[:12]
     if get_settings().environment != "production":
         return "dev"
@@ -166,6 +180,12 @@ app.include_router(enrichment_router)
 
 @app.get("/debug/fix-null-lists")
 def debug_fix_null_lists_main():
+    # This writes to the production database, on a GET, with no authentication.
+    # That was survivable only while the API was not internet-facing from a
+    # platform anyone could reach; on a public serverless runtime it is an
+    # unauthenticated write endpoint. It is reachable outside production only.
+    if get_settings().environment == "production":
+        raise HTTPException(status_code=404, detail="Not found.")
     from sqlalchemy import text
     from app.database import get_session_factory
     session_factory = get_session_factory()
