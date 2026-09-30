@@ -138,7 +138,7 @@ jobs:
             --crawl-max-pages "${{ github.event.inputs.crawl_max_pages || '600' }}" \
             --quarantine-ids "${{ github.event.inputs.quarantine_ids || '' }}" \
             ${{ github.event.inputs.logo_only == 'true' && '--logo-only' || '' }} \
-            --image-budget-seconds "${{ github.event.inputs.image_budget_seconds }}" \
+            --image-budget-seconds "${{ github.event.inputs.image_budget_seconds || '90' }}" \
             ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}
 
   # Bounded retry for transient failures.
@@ -216,5 +216,5 @@ jobs:
             --crawl-max-pages "${{ github.event.inputs.crawl_max_pages || '600' }}" \
             --quarantine-ids "${{ github.event.inputs.quarantine_ids || '' }}" \
             ${{ github.event.inputs.logo_only == 'true' && '--logo-only' || '' }} \
-            --image-budget-seconds "${{ github.event.inputs.image_budget_seconds }}" \
+            --image-budget-seconds "${{ github.event.inputs.image_budget_seconds || '90' }}" \
             ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}
