@@ -380,7 +380,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--stage",
         action="append",
-        choices=["verify", "enrich", "images", "logos", "discover", "quarantine",
+        choices=["verify", "worklist", "enrich", "images", "logos", "discover", "quarantine",
                      "stats", "facts", "archive", "discontinued", "purge", "all"],
         default=None,
         help="Run only these stages (default: all).",
