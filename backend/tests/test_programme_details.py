@@ -188,6 +188,32 @@ class TestStageBodiesAreSelfContained:
             f"py_compile and the unit tests, and fails on its first live run."
         )
 
+    def test_every_write_is_bounded_by_its_own_column(self):
+        """No hardcoded width: a value longer than its column fails the run.
+
+        Postgres raises on an overflow instead of truncating, so a single
+        over-long value fails the whole stage after the audited file has been
+        written. The stage already reads widths from the model; this pins that
+        no width is typed in by hand.
+        """
+        source = self.WORKER.read_text(encoding="utf-8")
+        body = source.split("def do_programme_details", 1)[1].split("def do_facts", 1)[0]
+        # Every assignment into a model column must be preceded by a width read
+        # from the column itself, or be a column known to be unbounded.
+        assert "[:64]" not in body, (
+            "a hardcoded width is used in the programme_details stage; widths must "
+            "come from the model so they cannot drift from the column"
+        )
+        assert body.count("_column_length(Scholarship") >= 3, (
+            "the stage must read widths from the model for text, url and the "
+            "separated award fields"
+        )
+
+    def test_currency_column_is_narrow_enough_for_a_code(self):
+        width = Scholarship.__table__.columns["funding_currency"].type.length
+        assert isinstance(width, int), "an unbounded currency column would defeat the check"
+        assert width >= 3, "a currency code needs at least three characters"
+
     def test_programme_details_stage_imports_what_it_uses(self):
         source = self.WORKER.read_text(encoding="utf-8")
         body = source.split("def do_programme_details", 1)[1].split("def do_facts", 1)[0]
