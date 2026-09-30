@@ -70,7 +70,7 @@ MAX_STAGE_WORKERS = 16
 # Stage order reflects dependencies: verification establishes which records
 # are current, and the remaining stages all operate on that outcome.
 STAGE_ORDER = (
-    "verify", "worklist", "inventory", "enrich", "images", "logos", "discover", "quarantine", "retire", "correct",
+    "verify", "worklist", "inventory", "enrich", "programme_details", "images", "logos", "discover", "quarantine", "retire", "correct",
     "stats", "facts", "archive", "discontinued", "purge",
 )
 
@@ -211,6 +211,15 @@ def _run_stage(name: str, fn) -> StageReport:
 
 def _skipped(name: str, reason: str) -> StageReport:
     return StageReport(name=name, ok=False, skipped=True, skip_reason=reason)
+
+
+def _next_review_due(today: date) -> date:
+    """When a record with no deadline of its own should next be checked.
+
+    A rolling or undated programme has no natural reminder in its own calendar,
+    so without this it would never be re-examined and would quietly rot.
+    """
+    return today + timedelta(days=90)
 
 
 def _column_length(model, field: str) -> int | None:
@@ -439,7 +448,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--stage",
         action="append",
-        choices=["verify", "worklist", "inventory", "enrich", "images", "logos", "discover", "quarantine", "retire", "correct",
+        choices=["verify", "worklist", "inventory", "enrich", "programme_details", "images", "logos", "discover", "quarantine", "retire", "correct",
                      "stats", "facts", "archive", "discontinued", "retire", "purge", "all"],
         default=None,
         help="Run only these stages (default: all).",
@@ -1263,6 +1272,255 @@ def main(argv: list[str] | None = None) -> int:
             recorder.record_counts({"corrected_records": len(changed)})
         return detail
 
+    def do_programme_details() -> dict:
+        """Apply researched programme detail to the empty fields of each record.
+
+        Written for the standard set by a Canada Graduate Research Scholarship
+        record: award economics separated from coverage, institutional deadline
+        separated from the programme's own, and the awarding body's published
+        rules kept apart from guidance derived from them.
+
+        Three rules make this safe to run repeatedly.
+
+        Empty fields only. Research may disagree with what is already stored, and
+        overwriting a verified value with a later reading would make the record
+        less trustworthy every time it is refreshed. A correction is an explicit,
+        separate decision.
+
+        Nothing is invented. A field the researcher could not confirm is null in
+        the source file and is skipped here, so an unanswered question stays
+        unanswered instead of becoming a plausible value.
+
+        Provenance travels with the data. A record that receives a funding amount
+        also receives the citations that support it and the date it was checked,
+        or the amount is not applied.
+        """
+        import json
+        from datetime import date, datetime, timezone
+        from pathlib import Path
+
+        from sqlalchemy import select
+
+        from app.models import Scholarship
+
+        details_path = (
+            Path(__file__).resolve().parents[2] / "config" / "programme_details.json"
+        )
+        try:
+            raw = json.loads(details_path.read_text(encoding="utf-8"))
+        except (OSError, ValueError) as exc:
+            logger.warning("could not read programme details from %s: %s", details_path, exc)
+            return {"details_file": str(details_path), "error": str(exc)}
+
+        entries = raw.get("records") if isinstance(raw, dict) else raw
+        entries = entries if isinstance(entries, list) else []
+        wanted: dict[int, dict] = {}
+        for entry in entries:
+            if not isinstance(entry, dict):
+                continue
+            try:
+                wanted[int(entry["id"])] = entry
+            except (KeyError, TypeError, ValueError):
+                logger.warning("ignoring detail entry with no usable id: %r", entry)
+        if not wanted:
+            return {"details_file": str(details_path), "records_listed": 0, "matched": 0}
+
+        # Scalar columns this stage may fill. The bounded widths are read from the
+        # model rather than hardcoded, because a value that overflows a varchar
+        # raises in PostgreSQL and takes the whole run with it.
+        text_map = {
+            "application_link": "url",
+            "catalogue_url": "url",
+            "official_updates_url": "url",
+            "deadline_central_display": "text",
+            "application_cycle": "text",
+            "status_note": "text",
+            "tuition_coverage_note": "text",
+            "funding_period": "text",
+            "program_type": "text",
+            "region": "text",
+            "coverage": "text",
+            "application_method": "text",
+            "application_route": "text",
+            "citizenship_residency": "text",
+            "international_eligibility": "text",
+            "study_mode": "text",
+            "research_requirement": "text",
+            "subject_or_agency_requirement": "text",
+            "duration": "text",
+            "description": "text",
+        }
+        list_map = {
+            "benefits": "benefits",
+            "eligibility": "eligibility",
+            "requirements": "requirements",
+            "documents": "documents",
+            "selection_criteria": "selection_notes",
+        }
+        applied: list[dict] = []
+        skipped_no_provenance: list[int] = []
+        today = date.today()
+        session = factory()
+        try:
+            for rid, entry in sorted(wanted.items()):
+                row = session.get(Scholarship, rid)
+                if row is None:
+                    applied.append({"id": rid, "outcome": "not_found"})
+                    continue
+                official = entry.get("official") or {}
+                verification = entry.get("verification") or {}
+                utility = entry.get("applicant_utility") or {}
+                citations = [
+                    u for u in (verification.get("source_citations") or [])
+                    if isinstance(u, str) and u.startswith("http")
+                ] or [
+                    u for u in (official.get("official_source_urls") or [])
+                    if isinstance(u, str) and u.startswith("http")
+                ]
+                if not citations:
+                    # An amount with nothing to check it against is worse than no
+                    # amount: it looks researched and is not.
+                    skipped_no_provenance.append(rid)
+                    applied.append({"id": rid, "outcome": "skipped_no_provenance"})
+                    continue
+
+                filled: list[str] = []
+                for field, kind in text_map.items():
+                    value = (official.get(field) or "").strip() if isinstance(
+                        official.get(field), str
+                    ) else official.get(field)
+                    if value in (None, "", "N/A", "-"):
+                        continue
+                    if getattr(row, field, None):
+                        continue
+                    if kind == "url":
+                        parsed = urlparse(str(value))
+                        if parsed.scheme not in ("http", "https") or not parsed.hostname:
+                            continue
+                    if kind == "text":
+                        limit = _column_length(Scholarship, field)
+                        if limit and len(str(value)) > limit:
+                            continue
+                    setattr(row, field, value)
+                    filled.append(field)
+
+                for source_field, column in list_map.items():
+                    values = official.get(source_field)
+                    if not isinstance(values, list) or not values:
+                        continue
+                    current = getattr(row, column, None)
+                    if current:
+                        continue
+                    cleaned = [str(v).strip() for v in values if str(v).strip()]
+                    if cleaned:
+                        setattr(row, column, cleaned)
+                        filled.append(column)
+
+                # Award economics. Each is stored apart so a stipend cannot be
+                # read as though it were a tuition waiver.
+                amount = official.get("funding_amount")
+                if amount not in (None, "") and row.funding_amount is None:
+                    try:
+                        row.funding_amount = float(amount)
+                        filled.append("funding_amount")
+                    except (TypeError, ValueError):
+                        logger.warning("non-numeric funding_amount for record %d", rid)
+                for field in ("funding_currency", "funding_period"):
+                    value = official.get(field)
+                    if isinstance(value, str) and value.strip() and not getattr(row, field, None):
+                        setattr(row, field, value.strip()[:64])
+                        filled.append(field)
+                for field in ("tuition_coverage", "living_cost_coverage", "travel_coverage"):
+                    value = official.get(field)
+                    if isinstance(value, bool) and getattr(row, field, None) is None:
+                        setattr(row, field, value)
+                        filled.append(field)
+                # only_funded is honoured only when tuition coverage is not a bare
+                # True, because "fully funded" without tuition coverage is a claim
+                # about expenses the source never addressed.
+                if official.get("fully_funded") is True and row.funding_amount is not None:
+                    if row.tuition_coverage is True:
+                        row.fully_funded = True
+                        filled.append("fully_funded")
+
+                deadline_central = (official.get("deadline_central") or "").strip()
+                if isinstance(official.get("deadline_central"), str) and deadline_central:
+                    try:
+                        parsed_deadline = datetime.fromisoformat(
+                            deadline_central.replace("Z", "+00:00")
+                        ).date()
+                    except ValueError:
+                        parsed_deadline = None
+                    if parsed_deadline and row.deadline_date is None:
+                        row.deadline_date = parsed_deadline
+                        row.deadline_display = (
+                            (official.get("deadline_central_display") or "").strip()
+                            or parsed_deadline.isoformat()
+                        )[:255]
+                        row.deadline_precision = "day_and_time" if "T" in deadline_central else "day"
+                        filled.extend(["deadline_date", "deadline_display", "deadline_precision"])
+                    elif row.deadline_date is None and (official.get("deadline_note") or "").strip():
+                        row.deadline_display = official["deadline_note"].strip()[:255]
+                        row.deadline_precision = "varies"
+                        filled.extend(["deadline_display", "deadline_precision"])
+
+                for column, payload in (
+                    ("official_details", official),
+                    ("applicant_utility", utility),
+                    ("programme_verification", verification),
+                ):
+                    if payload and not getattr(row, column, None):
+                        # The cycle and the date checked are stored with the data
+                        # so a reader can tell how current it is without trusting
+                        # the record's age.
+                        if column == "programme_verification":
+                            payload = {
+                                **payload,
+                                "last_verified_date": payload.get("last_verified_date")
+                                or today.isoformat(),
+                            }
+                        setattr(row, column, payload)
+                        filled.append(column)
+
+                status = (official.get("status") or "").strip().upper()
+                if status in {"OPEN", "UPCOMING"} and row.status == "closed":
+                    row.status = "active"
+                    filled.append("status")
+
+                if filled:
+                    row.last_verified_at = datetime.now(timezone.utc)
+                    row.last_verified_date = today
+                    row.next_verification_due = official.get("deadline_central") and None
+                    if row.next_verification_due is None:
+                        row.next_verification_due = _next_review_due(today)
+                    filled.extend(["last_verified_at", "last_verified_date"])
+                applied.append(
+                    {"id": rid, "outcome": "changed" if filled else "unchanged",
+                     "fields": len(filled), "citations": len(citations)}
+                )
+            if not args.dry_run:
+                session.commit()
+            else:
+                session.rollback()
+        finally:
+            session.close()
+
+        changed = [a for a in applied if a["outcome"] == "changed"]
+        detail = {
+            "details_file": str(details_path),
+            "records_listed": len(wanted),
+            "matched": len([a for a in applied if a["outcome"] != "not_found"]),
+            "changed": len(changed),
+            "skipped_no_provenance": len(skipped_no_provenance),
+            "fields_written": sum(a.get("fields", 0) for a in changed),
+        }
+        if not args.dry_run:
+            recorder.record_counts(
+                {"programme_detail_records": len(changed),
+                 "programme_detail_fields": detail["fields_written"]}
+            )
+        return detail
+
     def do_facts() -> dict:
         """Apply audited official programme facts to records that lack them.
 
@@ -1829,6 +2087,7 @@ def main(argv: list[str] | None = None) -> int:
         "verify": do_verify,
         "worklist": do_worklist,
         "inventory": do_inventory,
+        "programme_details": do_programme_details,
         "enrich": do_enrich,
         "images": do_images,
         "discover": do_discover,

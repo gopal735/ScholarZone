@@ -1,0 +1,11 @@
+{
+  "_comment": "Programme detail researched from official awarding-body sources and applied by the programme_details stage. Only empty record fields are filled; a value already present is never overwritten here.",
+  "_rules": [
+    "Every record must carry verification.source_citations, or the stage skips it entirely. An amount with nothing to check it against is worse than no amount, because it looks researched.",
+    "fully_funded is applied only when tuition_coverage is true, so a stipend can never be recorded as though it were a tuition waiver.",
+    "Official facts live in official_details; guidance derived from them lives in applicant_utility. They are stored apart and must never be merged.",
+    "A field the awarding body does not publish stays null. Absence of evidence is an answer, not a gap to be filled by inference.",
+    "deadline_central is the programme's own closing date. deadline_institutional is any earlier university date, stored separately."
+  ],
+  "records": []
+}

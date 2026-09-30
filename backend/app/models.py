@@ -2,7 +2,7 @@
 
 from datetime import date, datetime
 
-from sqlalchemy import JSON, Boolean, Date, DateTime, Float, ForeignKey, Index, Integer, String, Text, UniqueConstraint, func
+from sqlalchemy import JSON, Boolean, Date, DateTime, Float, ForeignKey, Index, Integer, Numeric, String, Text, UniqueConstraint, func
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 
@@ -79,6 +79,49 @@ class Scholarship(Base):
     selection_notes: Mapped[str | None] = mapped_column(Text, nullable=True)
     program_type: Mapped[str | None] = mapped_column(String(255), nullable=True)
     best_fit: Mapped[str | None] = mapped_column(Text, nullable=True)
+
+    # ------------------------------------------------------------------
+    # Award economics, separated.
+    #
+    # ``funding`` is a 120-character label and cannot distinguish "CAD 40,000 a
+    # year" from "covers tuition and living costs". Those are different facts
+    # and an applicant acting on the first when only the second was true makes a
+    # serious financial mistake, so the amount, its currency, its period and
+    # what it actually covers are stored apart from the label.
+    #
+    # ``fully_funded`` is deliberately conservative: it is true only when an
+    # official source states that tuition, living costs and required expenses are
+    # covered. A fixed stipend is not full funding, and the default is therefore
+    # false rather than unknown, because unknown reads as "probably yes".
+    # ------------------------------------------------------------------
+    funding_amount: Mapped[float | None] = mapped_column(Numeric(12, 2), nullable=True)
+    funding_currency: Mapped[str | None] = mapped_column(String(8), nullable=True)
+    funding_period: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    tuition_coverage: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
+    living_cost_coverage: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
+    travel_coverage: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
+    fully_funded: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+
+    # ------------------------------------------------------------------
+    # Structured programme detail, kept apart from the scalar columns above.
+    #
+    # A scholarship's official rules do not fit a fixed set of columns: which
+    # deadline belongs to the university rather than the programme, how a
+    # referee is tracked, what an applicant should check before submitting. That
+    # varies per programme, so it lives in JSON rather than in a migration for
+    # every new attribute.
+    #
+    # The three are separated on purpose and the split is load-bearing:
+    #   official_details    - what the awarding body published
+    #   applicant_utility   - guidance derived from those rules, written by us
+    #   programme_verification - what we checked, and what we could not confirm
+    # Presenting derived guidance as published policy is how a catalogue starts
+    # telling applicants things the awarding body never said.
+    # ------------------------------------------------------------------
+    official_details: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    applicant_utility: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    programme_verification: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+
     notes: Mapped[str | None] = mapped_column(Text, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
     updated_at: Mapped[datetime] = mapped_column(

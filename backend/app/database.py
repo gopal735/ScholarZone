@@ -102,6 +102,25 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
             "is_archived": "BOOLEAN NOT NULL DEFAULT FALSE",
             "archived_at": "TIMESTAMPTZ",
             "archived_reason": "VARCHAR(120)",
+            # Award economics, separated from the short ``funding`` label. See
+            # the model for why a stipend must not read as full funding.
+            "funding_amount": "NUMERIC(12, 2)",
+            "funding_currency": "VARCHAR(8)",
+            "funding_period": "VARCHAR(64)",
+            # Tri-state, not a boolean: many programmes simply do not say.
+            # A false here would be a claim the awarding body never made.
+            "tuition_coverage": "BOOLEAN",
+            "living_cost_coverage": "BOOLEAN",
+            "travel_coverage": "BOOLEAN",
+            # NOT NULL with a default, so an existing row reads as "not
+            # established as fully funded" rather than NULL, which would be
+            # ambiguous in a filter.
+            "fully_funded": "BOOLEAN NOT NULL DEFAULT FALSE",
+            # Structured detail, split by origin so published rules and derived
+            # guidance are never stored as the same kind of fact.
+            "official_details": "JSON",
+            "applicant_utility": "JSON",
+            "programme_verification": "JSON",
         }
         for name, definition in additions.items():
             if name not in columns:
