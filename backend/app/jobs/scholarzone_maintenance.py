@@ -933,6 +933,25 @@ def main(argv: list[str] | None = None) -> int:
         if not facts:
             return {"facts_file": str(facts_path), "facts_loaded": 0, "matched": 0, "fields_filled": 0}
 
+        # A host is not a programme. studyinjapan.go.jp carries eight separate
+        # records for the seven MEXT scholarship types plus a USA-only edition,
+        # each with its own funding figure, age limit and application route.
+        # Host-keyed facts could only express one of them, and applying that one
+        # to the other seven would write confidently wrong data. So an entry may
+        # also be keyed "id:<n>" for a single record, and that wins over the host.
+        by_host = {}
+        by_record_id = {}
+        for key, value in facts.items():
+            key = str(key)
+            if key.startswith("id:"):
+                try:
+                    by_record_id[int(key[3:])] = value
+                except ValueError:
+                    logger.warning("ignoring malformed record-keyed fact %r", key)
+            else:
+                by_host[key] = value
+        facts = {**by_host, **by_record_id}
+
         # Facts keys map onto real columns. `provider` and `amount` are not
         # columns on this model: the awarding body is `official_source` and the
         # money is `benefits`. Writing to a name that does not exist raises
@@ -951,7 +970,9 @@ def main(argv: list[str] | None = None) -> int:
             for row in rows:
                 host = (urlparse(row.official_source_url or "").hostname or "").lower()
                 host = host[4:] if host.startswith("www.") else host
-                entry = facts.get(host)
+                # A record-specific entry is more precise than the host's, so it
+                # is consulted first.
+                entry = by_record_id.get(row.id) or by_host.get(host)
                 if not entry:
                     continue
                 filled: list[str] = []

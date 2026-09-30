@@ -29,11 +29,29 @@ class TestFactsFileIntegrity:
     def test_file_exists_and_parses(self, facts):
         assert facts, "programme facts file parsed to nothing"
 
-    def test_every_entry_is_keyed_by_a_bare_domain(self, facts):
+    def test_every_entry_is_keyed_by_a_bare_domain_or_a_record_id(self, facts):
         for host in facts:
+            if host.startswith("id:"):
+                # A host is not always a programme. studyinjapan.go.jp carries
+                # the seven MEXT scholarship types plus a USA-only edition as
+                # separate records, each with its own funding and age limit, so
+                # those entries must be able to name a single record.
+                assert host[3:].isdigit(), f"{host} is not a record id"
+                continue
             assert "." in host, f"{host} is not a domain"
             assert not host.startswith("www."), f"{host} should be stored without www"
             assert "/" not in host, f"{host} should be a host, not a URL"
+
+    def test_record_keyed_entries_are_never_shadowed_by_their_host(self, facts):
+        """A host entry must not be able to overwrite a record-specific one."""
+        for host, entry in facts.items():
+            if not host.startswith("id:"):
+                continue
+            assert not (entry.get("deadline") and entry.get("deadline_mode")), (
+                f"{host} carries both a fixed deadline and a no-fixed-deadline "
+                f"mode; the stage writes the mode only when the date is absent, "
+                f"so a real date here would be silently dropped"
+            )
 
     def test_every_entry_cites_a_source_page(self, facts):
         for host, entry in facts.items():
