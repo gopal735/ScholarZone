@@ -48,7 +48,7 @@ class TestCorrectionsFile:
 
     def test_entries_only_touch_writable_fields(self, corrections):
         for entry in corrections:
-            unknown = set(entry) - ALLOWED_FIELDS - {"id", "reason", "flag", "source_page"}
+            unknown = set(entry) - ALLOWED_FIELDS - {"id", "reason", "flag", "source_page", "source"}
             assert not unknown, f"{entry['id']} writes unknown fields: {sorted(unknown)}"
             assert ALLOWED_FIELDS & set(entry), f"{entry['id']} corrects nothing"
 

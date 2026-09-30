@@ -8,438 +8,282 @@
  ],
  "records": [
   {
-   "id": 230,
-   "flag": "DEAD",
-   "reason": "the recorded URL  ?detail=50018884  now returns only \"This programme is not available right now.\" and the id is absent from DAAD's live deadline dataset. Successor record:   \"Helmut-Schmidt-Programme (Master's Scholarships for Public Policy and Good Governance - PPGG)\", DAAD, detail=50026397   — htt",
-   "successor": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026397"
-  },
-  {
-   "id": 401,
-   "flag": "DUPLICATE",
-   "reason": "this record is one of three schemes (Mana Tūāpapa Future Leader Fellowship / Mana Tūānuku Research Leader Fellowship / Mana Tūārangi Distinguished Researcher Fellowship) under the single umbrella programme   \"Aotearoa New Zealand Tāwhia te Mana Research Fellowships\"   (https://www.royalsociety.org.n",
-   "successor": "https://www.royalsociety.org.nz/what-we-do/funds-and-opportunities/tawhia-te-mana"
-  },
-  {
-   "id": 174,
-   "flag": "DEAD",
-   "reason": "the recorded URL  https://www.tudelft.nl/education/scholarships/justus-louise-van-effen-scholarship  returns   HTTP 404  . Successor/live page: https://www.tudelft.nl/en/education/study-programme-orientation/practical-matters/scholarships . Also   DUPLICATE of id=386   — same programme, two records",
-   "successor": "https://www.tudelft.nl/education/scholarships/justus-louise-van-effen-scholarship"
-  },
-  {
-   "id": 371,
-   "flag": "DEAD",
-   "reason": "the recorded URL  https://www.unibo.it/en/teaching/degree-programmes/article/study-grants-and-fees  redirects to  https://www.unibo.it/en/study  (old Plone path retired; no study-grants content). Successor: https://www.unibo.it/en/study/study-grants-and-subsidies",
-   "successor": "https://www.unibo.it/en/teaching/degree-programmes/article/study-grants-and-fees"
-  },
-  {
-   "id": 418,
-   "flag": "DEAD",
-   "reason": "(a) record  url  https://nawa.gov.pl/en/scientists/walczak returns the NAWA soft-404 page; (b) no call since December 2024; treat as discontinued until NAWA republishes. Live section page: https://nawa.gov.pl/en/scientists/the-walczak-programme",
-   "successor": "https://nawa.gov.pl/en/scientists/walczak"
-  },
-  {
-   "id": 175,
-   "flag": "DEAD",
-   "reason": "(URL) + UNVERIFIED PROGRAMME   —  url  404; the named programme \"Holland Scholarship & Talent Programmes\" could not be found on eur.nl. Successor/authoritative page: https://www.eur.nl/en/education/practical-matters/scholarships-grants",
-   "successor": "https://www.eur.nl/en/education/practical-matters/scholarships-grants"
-  },
-  {
-   "id": 284,
-   "flag": "DUPLICATE",
-   "reason": "(umbrella)   — EMJMD is one global programme with per-consortium editions; any country- or university-level EMJMD record is a regional variant of this umbrella. Also note the awarding body is the European Commission, not Wallonie-Bruxelles Campus"
-  },
-  {
-   "id": 497,
-   "flag": "DUPLICATE",
-   "reason": "(umbrella)   — this is the sub-Saharan Africa regional edition of the global L'Oréal-UNESCO For Women in Science programme; other regional editions exist and should be grouped under the global umbrella. Not a Belgian scholarship despite the host domain"
-  },
-  {
-   "id": 44,
-   "flag": "DUPLICATE",
-   "reason": "MAP is the Mekong-subregion sub-scheme of id=30 (Australia Awards Scholarships), not an independent programme. It shares the identical application portal, process, benefit package and per-country deadlines. Per the brief's duplicate rule (per-country/per-regional variants of one global scheme), id=4"
-  },
-  {
-   "id": 169,
-   "flag": "DEAD",
-   "reason": "the record's URL  https://www.ceu.edu/scholarships  returns   HTTP 404  . Live successor: https://www.ceu.edu/admissions/financial-aid/student-scholarships",
-   "successor": "https://www.ceu.edu/scholarships"
-  },
-  {
-   "id": 188,
-   "flag": "DEAD",
-   "reason": "the record's URL  https://liu.se/en/education/scholarships  returns   HTTP 404   (\"404-sida\"). Live successor: https://liu.se/en/article/scholarships",
-   "successor": "https://liu.se/en/education/scholarships"
-  },
-  {
-   "id": 135,
-   "flag": "DEAD",
-   "reason": "the record's URL  https://www.polimi.it/en/future-students/fees/scholarships  returns   HTTP 404   (\"Page not available\"). Live successor: https://www.polimi.it/en/prospective-students/how-much-does-it-cost/scholarships",
-   "successor": "https://www.polimi.it/en/future-students/fees/scholarships"
-  },
-  {
    "id": 11,
    "flag": "NEVER-EXISTED",
-   "reason": "there is no \"Study in India (SII) Scholarship\" programme. The portal's own  /scholarships&fellowships  page lists a set of   separate, independently administered Government of India schemes   with their own eligibility, benefits and deadlines, none of which is called a \"Study in India Scholarship\""
-  },
-  {
-   "id": 181,
-   "flag": "DEAD",
-   "reason": "the record's URL  https://www.utwente.nl/en/education/scholarships-financial-aid/university-of-twente-scholarship  returns   HTTP 404   (\"Page does not exist\"). Live successor: https://www.utwente.nl/en/education/scholarship-finder/university-of-twente-scholarship/ (reached via the university's Scho",
-   "successor": "https://www.utwente.nl/en/education/scholarships-financial-aid/university-of-twente-scholarship"
-  },
-  {
-   "id": 5,
-   "flag": "DUPLICATE",
-   "reason": "id=5, id=373 and id=374/id=375 are all the same single global MEXT Scholarship scheme (seven types). id=5 is the generic entry point; id=373 is the undergraduate variant; id=374 and id=375 are per-country application guidelines for the same scheme"
-  },
-  {
-   "id": 373,
-   "flag": "DUPLICATE",
-   "reason": "a component of the single global MEXT Scholarship programme, alongside id=5 and id=239"
-  },
-  {
-   "id": 374,
-   "flag": "DUPLICATE",
-   "reason": "a single per-country edition of the global MEXT Research Students programme (same scheme as id=5 / id=373); the other 2027 country editions are separate national PDFs of one programme"
-  },
-  {
-   "id": 375,
-   "flag": "DUPLICATE",
-   "reason": "a single programme type of the global MEXT Scholarship (same scheme as id=5 / id=373 / id=374). Also note the 2026 cycle is closed; the successor edition has not been posted"
-  },
-  {
-   "id": 286,
-   "flag": "DUPLICATE",
-   "reason": "id=286 and id=358 are the same single programme (the Hungarian Diaspora Scholarship Programme); id=286 is the correct English entry point, id=358 points at the bare apex domain (which redirects to the Hungarian-language default)"
-  },
-  {
-   "id": 358,
-   "flag": "DUPLICATE",
-   "reason": "identical programme to id=286; the apex URL  https://diasporascholarship.hu  serves the Hungarian-language default site rather than a distinct programme page. Recommend de-duplicating against id=286 and re-pointing to  https://diasporascholarship.hu/en/",
-   "successor": "https://diasporascholarship.hu"
+   "reason": "there is no \"Study in India (SII) Scholarship\" programme. The portal's own  /scholarships&fellowships  page lists a set of   separate, independently administered Government of India schemes   with their own eligibility, benefits and deadlines, none of which is called a \"Study in India Scholarship\"",
+   "source": "research pass"
   },
   {
    "id": 221,
    "flag": "DEAD",
    "reason": "the 2026 AITHYRA-CeMM joint call closed on 2026-01-30 and has not been repeated as a joint call.   Successor programme:   \"AITHYRA International PhD Call in AI for Biomedicine (all genders)\" — announced 31.08.2026 on https://aithyra.at/news (and aithyra.at/open-positions), with   application deadlin",
-   "successor": "https://aithyra.at/news"
+   "source": "research pass",
+   "no_successor_reason": "research named no live successor for this programme"
+  },
+  {
+   "id": 35,
+   "flag": "DEAD",
+   "reason": "(404) + programme status unverifiable on any official page. Third-party sites quote 1 Dec 2026 but no official source confirms it — not used",
+   "source": "research pass",
+   "no_successor_reason": "research named no live successor for this programme"
+  },
+  {
+   "id": 436,
+   "flag": "DEAD",
+   "reason": "(404 PageNotFound) +   DUPLICATE   of id=35 (one global SINGA programme, two dead URLs in the database)",
+   "source": "research pass",
+   "no_successor_reason": "research named no live successor for this programme"
   },
   {
    "id": 238,
    "flag": "DEAD",
    "reason": "https://www.mext.go.jp/content/20251222-mxt_kotokoku01-000046488_02.pdf  returns   404  . No replacement 2027/2028 \"Japanese Studies Students\" guidelines URL was located on mext.go.jp during this research, so no deadline, funding, eligibility or deadline_status is reported. A successor URL must be r",
-   "successor": "https://www.mext.go.jp/content/20251222-mxt_kotokoku01-000046488_02.pdf"
+   "source": "research pass",
+   "no_successor_reason": "research named no live successor for this programme"
   },
   {
    "id": 331,
    "flag": "DEAD",
    "reason": "the recorded url  https://www.dtu.dk/education/student-life/finances-and-scholarships/scholarships-for-international-students  returns   404  . The programme is live at the successor URL given above",
-   "successor": "https://www.dtu.dk/education/student-life/finances-and-scholarships/scholarships-for-international-students"
+   "source": "research pass",
+   "no_successor_reason": "research named no live successor for this programme"
   },
   {
-   "id": 177,
+   "id": 187,
    "flag": "DEAD",
-   "reason": "(renamed) +   DEAD-URL   +   WRONG-DATA  . The recorded url  https://www.rug.nl/education/scholarships-and-financial-aid  returns   404  . Successor programme:   \"NL Scholarship\"   (the same site labels the older page \"NL Scholarship (former Holland Scholarship)\") at https://www.rug.nl/education/sch",
-   "successor": "https://www.rug.nl/education/scholarships-and-financial-aid"
-  },
-  {
-   "id": 186,
-   "flag": "DEAD",
-   "reason": "the recorded url  https://www.chalmers.se/en/education/fees-finance/scholarships  no longer exists and 301-redirects to  https://www.chalmers.se/en/education/application-and-admission/tuition-fees/  (the tuition-fees page, not the scholarships page). The live page listing \"The IPOET Scholarships\" is",
-   "successor": "https://www.chalmers.se/en/education/fees-finance/scholarships"
-  },
-  {
-   "id": 182,
-   "flag": "DEAD",
-   "reason": "the recorded url  https://vu.nl/en/deducation/scholarships/vu-fellowship-programme  returns   404   (the path also contains a typo, \"deducation\"). Successor: https://vu.nl/en/education/more-about/incoming-master-scholarships",
-   "successor": "https://vu.nl/en/deducation/scholarships/vu-fellowship-programme"
-  },
-  {
-   "id": 360,
-   "flag": "DUPLICATE",
-   "reason": "this is the   India-specific edition   of the single global Japanese Government"
+   "reason": "the recorded url  https://www.su.se/english/education/scholarships-and-fees  returns   404  . The programme is live at the URL given above",
+   "source": "research pass",
+   "no_successor_reason": "research named no live successor for this programme"
   },
   {
    "id": 190,
    "flag": "DUPLICATE",
-   "reason": "this record and   id=453   are the  same  single programme"
+   "reason": "this record and   id=453   are the  same  single programme",
+   "source": "research pass",
+   "duplicate_of": 453
   },
   {
    "id": 453,
    "flag": "DUPLICATE",
-   "reason": "duplicate of   id=190   (same programme). Recommend retaining this record (id=453)"
+   "reason": "duplicate of   id=190   (same programme). Recommend retaining this record (id=453)",
+   "source": "research pass",
+   "duplicate_of": 190
   },
   {
    "id": 460,
    "flag": "DEAD",
    "reason": "(announced discontinuation, not yet in effect) — the official page states:  \"The SNSF is",
-   "no_successor_reason": "research found no live successor"
+   "source": "research pass",
+   "no_successor_reason": "research named no live successor for this programme"
   },
   {
    "id": 46,
    "flag": "DEAD",
    "reason": "programme closed to new applicants from 1 July 2024; no new funding rounds. Successor:   none is named on the official page   — do not ingest a successor. The department simply directs students to their provider. (Note: the sibling record id=45, the Research Training Program, is the live funding rou",
-   "no_successor_reason": "research found no live successor"
-  },
-  {
-   "id": 141,
-   "flag": "DUPLICATE",
-   "reason": "UNICORE 8.0 is a single national programme run by a consortium of Italian universities (UniTo, Politecnico di Milano, others), all sharing the same 17 Apr 2026 deadline and the same UNHCR portal. UniTo's award is one institutional allocation, not a distinct programme. Umbrella:   University Corridor"
-  },
-  {
-   "id": 142,
-   "flag": "DEAD",
-   "reason": "(link)   — the record  url   https://www.unibs.it/en/study/fees-and-scholarships/scholarships-and-grants  returns   HTTP 404 \"Page not found | UNIBS\"   (verified in a real browser).   Successor pages:   https://www.unibs.it/en/opportunities-and-services/right-study/scholarship-and-awards/scholarship",
-   "successor": "https://www.unibs.it/en/study/fees-and-scholarships/scholarships-and-grants"
+   "source": "research pass",
+   "no_successor_reason": "research named no live successor for this programme"
   },
   {
    "id": 50,
    "flag": "DEAD",
    "reason": "(page-declared) / contradictory status   — the live page carries the banner   \"The scholarship is currently unavailable.\"   directly above the heading, while simultaneously listing a full set of award categories, a value, \"Up to 200 on offer\" and 2026 Conditions of Award. Treat the award as   not cu",
-   "no_successor_reason": "research found no live successor"
-  },
-  {
-   "id": 484,
-   "flag": "DEAD",
-   "reason": "(link)   — the record  url   https://www.uchicago.edu/admissions/undergraduate/financial-aid/international-students  returns   HTTP 404   (verified: site serves 114 KB of 404 markup).   Successor pages:   https://collegeadmissions.uchicago.edu/cost-aid/international-financial-aid (a.k.a. https://col",
-   "successor": "https://www.uchicago.edu/admissions/undergraduate/financial-aid/international-students"
-  },
-  {
-   "id": 1,
-   "flag": "DUPLICATE",
-   "reason": "(regional variants exist — see ids 293/298/300 below). Also note the record's  url  (site root) is generic; the live programme page is https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters. The only EU-level EMJM funding call that the Commission publishes ",
-   "successor": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters"
-  },
-  {
-   "id": 293,
-   "flag": "DEAD",
-   "reason": "the recorded url  https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters/poland  returns   HTTP 404   (no such country-filtered page exists on the Erasmus+ site). The live successor page is the single programme page https://erasmus-plus.ec.europa.eu/opportu",
-   "successor": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters/poland"
-  },
-  {
-   "id": 298,
-   "flag": "DEAD",
-   "reason": "/erasmus-mundus-joint-masters/czech-republic  returns HTTP 404. Successor: https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters (catalogue: https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en). Also DUPLICATE — country variant of id=1",
-   "successor": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters"
-  },
-  {
-   "id": 300,
-   "flag": "DEAD",
-   "reason": "/erasmus-mundus-joint-masters/portugal  returns HTTP 404. Successor: https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters (catalogue: https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en). Also DUPLICATE — country variant of id=1",
-   "successor": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters"
+   "source": "research pass",
+   "no_successor_reason": "research named no live successor for this programme"
   },
   {
    "id": 37,
    "flag": "DEAD",
    "reason": "grants.oead.at    does not resolve in DNS   (NXDOMAIN;  scholarships.oead.at  likewise). The recorded url/apply are unreachable. Successor database:   grants.at   — https://grants.at/en/ (linked from oead.at/en as \"Database: Grants & Scholarships\"). The record title \"OeAD Austria Scholarship\" is als",
-   "successor": "https://grants.at/en/"
+   "source": "research pass",
+   "no_successor_reason": "research named no live successor for this programme"
   },
   {
    "id": 167,
    "flag": "DEAD",
    "reason": "grants.oead.at/en    does not resolve in DNS   (NXDOMAIN). Successor: https://grants.at/en/ . Also WRONG-DATA/ambiguous — \"Additional Programs\" is a container label, not a programme; no deadline can exist at that granularity",
-   "successor": "https://grants.at/en/"
+   "source": "research pass",
+   "no_successor_reason": "research named no live successor for this programme"
   },
   {
    "id": 262,
    "flag": "NEVER-EXISTED",
-   "reason": "there is no \"Finland Scholarship (National)\". The Finnish National Agency for Education explicitly debunks \"fully funded Finnish government scholarships\" and warns that such ads \"may also use Finnish authorities' logos without permission\". Any real Finnish scholarship for international students is a"
+   "reason": "there is no \"Finland Scholarship (National)\". The Finnish National Agency for Education explicitly debunks \"fully funded Finnish government scholarships\" and warns that such ads \"may also use Finnish authorities' logos without permission\". Any real Finnish scholarship for international students is a",
+   "source": "research pass"
   },
   {
    "id": 27,
    "flag": "DUPLICATE",
-   "reason": "id=27 and id=469 are the same single global programme; there is no separate \"2027-2028 edition\" as a distinct programme. Additionally the  apply=  field points at an info page, not an application form"
+   "reason": "id=27 and id=469 are the same single global programme; there is no separate \"2027-2028 edition\" as a distinct programme. Additionally the  apply=  field points at an info page, not an application form",
+   "source": "research pass",
+   "duplicate_of": 469
   },
   {
    "id": 469,
    "flag": "DUPLICATE",
-   "reason": "identical programme to id=27. The only difference is the \"2027-2028\" cycle label in the title; the site publishes no separate 2027-2028 edition. Retain one record only"
-  },
-  {
-   "id": 376,
-   "flag": "DUPLICATE",
-   "reason": "this record duplicates id=12 (Monbukagakusho Honors Scholarship for Privately-Financed International Students); the same hub page also overlaps id=25 and the separate MEXT scheme. Canonical programme pages: id=12 → .../shoreihi/about.html, id=25 → .../ukeire.html. Additionally the  apply=  field poi"
+   "reason": "identical programme to id=27. The only difference is the \"2027-2028\" cycle label in the title; the site publishes no separate 2027-2028 edition. Retain one record only",
+   "source": "research pass",
+   "duplicate_of": 27
   },
   {
    "id": 495,
    "flag": "DUPLICATE",
-   "reason": "byte-identical programme to id=494; the only difference is the  www.  prefix on the recorded url. Both point at the same \"Scholarships | Study In Latvia\" page and the same VIAA application system. Retain one record only"
-  },
-  {
-   "id": 342,
-   "flag": "DEAD",
-   "reason": "\"Hanken School of Economics Premium Scholarship\" appears nowhere on the live official page; the admission-phase merit scholarship it names has been discontinued. Successors now listed: (a)   Hanken GBSN Honor Scholarship   — https://www.hanken.fi/en/node/1868145 (Master's only, GBSN member schools o",
-   "successor": "https://www.hanken.fi/en/node/1868145"
-  },
-  {
-   "id": 134,
-   "flag": "DEAD",
-   "reason": "the recorded URL  https://bandi.unibo.it/s/diri/bando-international-talents-unibo  returns   HTTP 404  . The University of Bologna call-for-applications portal ( bandi.unibo.it ) is live and is the correct awarding-body domain, and a  keyword  search on that portal returns no live call under that na",
-   "successor": "https://bandi.unibo.it/s/diri/bando-international-talents-unibo"
-  },
-  {
-   "id": 278,
-   "flag": "DEAD",
-   "reason": "(URL) — the recorded URL  https://www.ntnu.edu/jobs  returns   HTTP 404  . Successor:   NTNU Vacancies  , https://www.ntnu.edu/vacancies (HTTP 200, live as of 2026-09-30). Flag also DEAD-in-form: \"NTNU PhD Positions\" is not a single scholarship programme but a rolling stream of individual salaried j",
-   "successor": "https://www.ntnu.edu/jobs"
-  },
-  {
-   "id": 124,
-   "flag": "DEAD",
-   "reason": "the recorded URL  https://www.simmons.edu/undergraduate-admission/kotzen-scholarship  returns   HTTP 404  , and the string \"Kotzen\" appears   nowhere   on Simmons' live scholarships index (https://www.simmons.edu/admission-aid/financial-aid/scholarships) or anywhere else on simmons.edu. Successor:  ",
-   "successor": "https://www.simmons.edu/undergraduate-admission/kotzen-scholarship"
+   "reason": "byte-identical programme to id=494; the only difference is the  www.  prefix on the recorded url. Both point at the same \"Scholarships | Study In Latvia\" page and the same VIAA application system. Retain one record only",
+   "source": "research pass",
+   "duplicate_of": 494
   },
   {
    "id": 283,
    "flag": "DEAD",
    "reason": "the recorded URL  https://www.ugent.be/en/financial/topupgrant  returns   HTTP 404   (the entire  /en/financial  section is also 404). Two successor candidates were tested and neither survives",
-   "successor": "https://www.ugent.be/en/financial/topupgrant"
-  },
-  {
-   "id": 143,
-   "flag": "DEAD",
-   "reason": "the recorded url  https://www.uniroma1.it/en/study/phd/phd-programmes  returns   HTTP 404  . Successor: the permanent hub https://www.uniroma1.it/en/pagina/phd-programmes and the current-cycle call https://www.uniroma1.it/en/pagina/admissions-2026-2027-phd-programmes. The programme itself is alive",
-   "successor": "https://www.uniroma1.it/en/study/phd/phd-programmes"
-  },
-  {
-   "id": 369,
-   "flag": "DEAD",
-   "reason": "the recorded url  https://www.uniroma1.it/en/pagina/straniieri-borse-di-studio  returns   HTTP 404  . Successor: https://www.uniroma1.it/en/pagina/scholarships. Note also that the recorded title \"International Scholarships 2026/2027\" does not correspond to any single Sapienza call; there is no conso",
-   "successor": "https://www.uniroma1.it/en/pagina/straniieri-borse-di-studio"
+   "source": "research pass",
+   "no_successor_reason": "research named no live successor for this programme"
   },
   {
    "id": 349,
    "flag": "DEAD",
    "reason": "the recorded url  https://www.clinical-linguistics.eu  does   not resolve in DNS   (NXDOMAIN for both apex and www). Successor programme and site: EMCL-25 at https://emcl.eu/ (admission page https://emcl.eu/admission/, funding https://emcl.eu/fees)",
-   "successor": "https://www.clinical-linguistics.eu"
+   "source": "research pass",
+   "no_successor_reason": "research named no live successor for this programme"
   },
   {
    "id": 348,
    "flag": "DEAD",
    "reason": "the recorded url  https://www.master-europeanforestry.eu  does   not resolve in DNS   (NXDOMAIN for both apex and www). Successor: https://sites.uef.fi/europeanforestry/ (University of Eastern Finland). Additional finding: the programme's other domain  www.europeanforestry.eu  resolves in DNS (193.1",
-   "successor": "https://www.master-europeanforestry.eu"
-  },
-  {
-   "id": 212,
-   "flag": "DEAD",
-   "reason": "the recorded url  https://admission.kaist.ac.kr/intl-graduate/FinancialSupport/Scholarship/KPrestige  returns   HTTP 404   and no longer appears in the site's scholarship navigation. The programme is still offered and is documented at the successor page https://admission.kaist.ac.kr/intl-graduate/Fi",
-   "successor": "https://admission.kaist.ac.kr/intl-graduate/FinancialSupport/Scholarship/KPrestige"
+   "source": "research pass",
+   "no_successor_reason": "research named no live successor for this programme"
   },
   {
    "id": 60,
    "flag": "DEAD",
    "reason": "the recorded official page is not retrievable.  https://admissions.uiowa.edu/scholarship/international-distinction-education-award-idea  returns   HTTP 403   with the body \"Unavailable — This page is unavailable and may be under review.\" Verified twice, independently: once with curl using full brows",
-   "successor": "https://admissions.uiowa.edu/scholarship/international-distinction-education-award-idea"
+   "source": "research pass",
+   "no_successor_reason": "research named no live successor for this programme"
   },
   {
    "id": 411,
    "flag": "DEAD",
    "reason": "research reported both a dead link and a dead programme for this id; the two cannot be reconciled from the report",
-   "no_successor_reason": "research found no live successor"
+   "source": "manual_flags.json",
+   "no_successor_reason": "research named no live successor for this programme"
   },
   {
    "id": 412,
    "flag": "DEAD",
    "reason": "programme no longer runs a call",
-   "no_successor_reason": "research found no live successor"
+   "source": "manual_flags.json",
+   "no_successor_reason": "research named no live successor for this programme"
   },
   {
    "id": 414,
    "flag": "DEAD",
    "reason": "official source URL does not resolve; programme status unclear",
-   "no_successor_reason": "research found no live successor"
+   "source": "manual_flags.json",
+   "no_successor_reason": "research named no live successor for this programme"
   },
   {
    "id": 426,
    "flag": "DEAD",
    "reason": "official source URL does not resolve; programme status unclear",
-   "no_successor_reason": "research found no live successor"
+   "source": "manual_flags.json",
+   "no_successor_reason": "research named no live successor for this programme"
   },
   {
    "id": 265,
    "flag": "DEAD",
    "reason": "official source URL does not resolve; programme status unclear",
-   "no_successor_reason": "research found no live successor"
+   "source": "manual_flags.json",
+   "no_successor_reason": "research named no live successor for this programme"
   },
   {
    "id": 427,
    "flag": "DEAD",
    "reason": "programme no longer runs a call",
-   "no_successor_reason": "research found no live successor"
+   "source": "manual_flags.json",
+   "no_successor_reason": "research named no live successor for this programme"
   },
   {
    "id": 389,
    "flag": "DEAD",
    "reason": "programme no longer runs a call",
-   "no_successor_reason": "research found no live successor"
+   "source": "manual_flags.json",
+   "no_successor_reason": "research named no live successor for this programme"
   },
   {
    "id": 191,
    "flag": "DEAD",
    "reason": "programme no longer runs a call",
-   "no_successor_reason": "research found no live successor"
+   "source": "manual_flags.json",
+   "no_successor_reason": "research named no live successor for this programme"
   },
   {
    "id": 451,
    "flag": "DEAD",
    "reason": "programme no longer runs a call",
-   "no_successor_reason": "research found no live successor"
+   "source": "manual_flags.json",
+   "no_successor_reason": "research named no live successor for this programme"
   },
   {
    "id": 435,
    "flag": "DEAD",
    "reason": "programme no longer runs a call",
-   "no_successor_reason": "research found no live successor"
+   "source": "manual_flags.json",
+   "no_successor_reason": "research named no live successor for this programme"
   },
   {
    "id": 242,
    "flag": "DEAD",
    "reason": "programme no longer runs a call; record is also a country variant of one global award",
-   "no_successor_reason": "research found no live successor"
-  },
-  {
-   "id": 32,
-   "flag": "DUPLICATE",
-   "reason": "duplicates ids 191 and 451, which cover the same award"
-  },
-  {
-   "id": 413,
-   "flag": "DEAD",
-   "reason": "duplicate entry, see the MISATTRIBUTED note above; held for review because the report is internally inconsistent",
-   "no_successor_reason": "research found no live successor"
+   "source": "manual_flags.json",
+   "no_successor_reason": "research named no live successor for this programme"
   },
   {
    "id": 404,
    "flag": "DUPLICATE",
-   "reason": "duplicates id 365; one programme recorded twice"
+   "reason": "duplicates id 365; one programme recorded twice",
+   "source": "manual_flags.json",
+   "duplicate_of": 365
   },
   {
    "id": 474,
    "flag": "DUPLICATE",
-   "reason": "duplicates id 131; one programme recorded twice"
+   "reason": "duplicates id 131; one programme recorded twice",
+   "source": "manual_flags.json",
+   "duplicate_of": 131
   },
   {
    "id": 364,
    "flag": "DUPLICATE",
-   "reason": "duplicates id 169; one programme recorded twice"
+   "reason": "duplicates id 169; one programme recorded twice",
+   "source": "manual_flags.json",
+   "duplicate_of": 169
+  },
+  {
+   "id": 119,
+   "flag": "DEAD",
+   "reason": "recorded URL is a hard 404 and every programme page returns 403, so nothing could be verified",
+   "source": "manual_flags.json",
+   "no_successor_reason": "research named no live successor for this programme"
   },
   {
    "id": 126,
    "flag": "DEAD",
    "reason": "research listed this as dead but recorded no reason; held for review rather than hidden on an unexplained verdict",
-   "no_successor_reason": "research found no live successor"
+   "source": "manual_flags.json",
+   "no_successor_reason": "research named no live successor for this programme"
   },
   {
    "id": 198,
    "flag": "DEAD",
    "reason": "research listed this as dead but recorded no reason; held for review rather than hidden on an unexplained verdict",
-   "no_successor_reason": "research found no live successor"
+   "source": "manual_flags.json",
+   "no_successor_reason": "research named no live successor for this programme"
   },
   {
    "id": 287,
    "flag": "DEAD",
    "reason": "research listed this as dead but recorded no reason; held for review rather than hidden on an unexplained verdict",
-   "no_successor_reason": "research found no live successor"
+   "source": "manual_flags.json",
+   "no_successor_reason": "research named no live successor for this programme"
   }
  ]
 }

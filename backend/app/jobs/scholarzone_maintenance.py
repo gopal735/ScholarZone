@@ -217,6 +217,17 @@ def _column_length(model, field: str) -> int | None:
     return getattr(model.__table__.c[field].type, "length", None)
 
 
+# Flag labels the retire stage writes at the start of a record's archived
+# reason. The archive stage writes "deadline passed on ..." and the discontinued
+# stage writes "programme discontinued", so a reason beginning with one of these
+# proves this stage is what hid the record, and that it may therefore be
+# un-hidden when the audit stops listing it.
+RETIRE_FLAG_PREFIXES = frozenset({
+    "DEAD", "RENAMED", "DUPLICATE", "MISATTRIBUTED", "NEVER-EXISTED",
+    "WRONG-DATA", "RETIRED-SUCCESSOR",
+})
+
+
 def _is_json_column(model, field: str) -> bool:
     from sqlalchemy import JSON
 
@@ -738,6 +749,7 @@ def main(argv: list[str] | None = None) -> int:
         from urllib.parse import urlparse
 
         from app.services.image_discovery_orchestrator import LOGO_IDENTITY_KINDS
+        from app.services.image_evaluation_status import ImageEvaluationStatus
         from app.services.logo_fallback_resolver import find_override, load_overrides, root_of
 
         overrides = load_overrides()
@@ -797,7 +809,12 @@ def main(argv: list[str] | None = None) -> int:
                 row.image_alt_text = entry.get("alt_text") or key
                 row.image_verified_at = now
                 row.image_evaluated_at = now
-                row.image_evaluation_status = "no_official_image"
+                # This stage records VERIFIED, not "no_official_image". The old
+                # value was written on the line that attaches a logo, so every
+                # record it filled claimed at the same time that it had no
+                # official image - a contradiction that reads as a coverage
+                # failure in any report counting evaluation status.
+                row.image_evaluation_status = ImageEvaluationStatus.VERIFIED
                 attached += 1
                 if len(details) < 300:
                     details.append({"id": row.id, "host": host, "matched_key": key})
@@ -1026,6 +1043,47 @@ def main(argv: list[str] | None = None) -> int:
         finally:
             session.close()
 
+        # Reconciliation. The file is the only thing allowed to hide a record, so
+        # a record this stage hid on an earlier pass and no longer lists has to
+        # come back.
+        #
+        # This is not hypothetical. An earlier version of the audit decided what
+        # to retire by matching keywords in a researcher's prose, and hid 76
+        # records; under the current policy 40 qualify. The other 36 were
+        # withdrawn on the evidence of a regex and had no other reason to be
+        # hidden from an applicant. Only records this stage hid are eligible:
+        # their archived reason begins with a flag label, which the archive and
+        # discontinued stages never write.
+        restored: list[int] = []
+        session = factory()
+        try:
+            rows = session.scalars(
+                select(Scholarship).where(Scholarship.is_archived.is_(True))
+            ).all()
+            for row in rows:
+                reason = (row.archived_reason or "").strip()
+                head = reason.split(":", 1)[0].strip().upper()
+                if head not in RETIRE_FLAG_PREFIXES:
+                    continue
+                if row.id in wanted:
+                    continue
+                if args.dry_run:
+                    restored.append(row.id)
+                    continue
+                row.is_archived = False
+                row.archived_at = None
+                row.archived_reason = None
+                if row.verification_status == QUARANTINE_STATUS:
+                    row.verification_status = "active"
+                row.updated_at = datetime.now(timezone.utc)
+                restored.append(row.id)
+            if restored and not args.dry_run:
+                session.commit()
+            elif args.dry_run:
+                session.rollback()
+        finally:
+            session.close()
+
         retired = [m for m in matched if m["outcome"] == "retired"]
         missing = [m["id"] for m in matched if m["outcome"] == "not_found"]
         by_flag: dict[str, int] = {}
@@ -1037,10 +1095,16 @@ def main(argv: list[str] | None = None) -> int:
             "records_listed": len(wanted),
             "matched": len(retired),
             "not_found": missing,
+            "restored_no_longer_listed": len(restored),
             "by_flag": dict(sorted(by_flag.items())),
         }
         if not args.dry_run:
-            recorder.record_counts({"retired_records_hidden": len(retired)})
+            recorder.record_counts(
+                {
+                    "retired_records_hidden": len(retired),
+                    "retired_records_restored": len(restored),
+                }
+            )
         return detail
 
     def do_correct() -> dict:

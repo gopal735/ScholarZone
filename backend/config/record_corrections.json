@@ -8,244 +8,221 @@
  ],
  "records": [
   {
-   "id": 148,
-   "official_source_url": "https://oia.ntu.edu.tw/en/current-students/international-degree-and-dual-degree-students-wpwq/scholarships-6v27",
-   "flag": "WRONG-DATA",
-   "reason": "the recorded URL  https://oia.ntu.edu.tw/en/current-students/international-degree-and-dual-degree-students-wpwq/scholarships-6v27  is a   stale page   whose content is 2020/2021 scholarship listings (e.g. \"TWD 6,000/month … duration 2021.09.01-2022.08.31\", \"application deadline before November 5 (Fr"
+   "id": 230,
+   "official_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026397",
+   "flag": "DEAD",
+   "reason": "programme still runs at a different official address",
+   "source": "research pass"
   },
   {
-   "id": 415,
-   "official_source_url": "https://nawa.gov.pl/en/scientists/ulam",
-   "flag": "WRONG-DATA",
-   "reason": "record  url  https://nawa.gov.pl/en/scientists/ulam returns the NAWA soft-404 page. Live page: https://nawa.gov.pl/en/scientists/the-ulam-programme/about-the-programme"
+   "id": 174,
+   "official_source_url": "https://www.tudelft.nl/en/education/study-programme-orientation/practical-matters/scholarships",
+   "flag": "DEAD",
+   "reason": "programme still runs at a different official address",
+   "source": "research pass"
   },
   {
-   "id": 416,
-   "official_source_url": "https://nawa.gov.pl/en/students/top200",
-   "flag": "WRONG-DATA",
-   "reason": "(a) record  url  https://nawa.gov.pl/en/students/top200 returns the NAWA soft-404 page; (b) the record files this under a  students  path, but TOP200 NAWA is a   scientists/researchers employment   programme, not a student scholarship. Live page: https://nawa.gov.pl/en/scientists/top200-nawa/about-t"
+   "id": 371,
+   "official_source_url": "https://www.unibo.it/en/study",
+   "flag": "DEAD",
+   "reason": "programme still runs at a different official address",
+   "source": "research pass"
   },
   {
-   "id": 417,
-   "official_source_url": "https://nawa.gov.pl/en/scientists/bekker",
-   "flag": "WRONG-DATA",
-   "reason": "record  url  https://nawa.gov.pl/en/scientists/bekker returns the NAWA soft-404 page. Live page: https://nawa.gov.pl/en/scientists/the-bekker-programme/about-the-programme .   Also note:   this is a Polish  outbound  mobility programme (funds Polish nationals to work abroad); it is not a scholarship"
+   "id": 418,
+   "official_source_url": "https://nawa.gov.pl/en/scientists/the-walczak-programme",
+   "flag": "DEAD",
+   "reason": "programme still runs at a different official address",
+   "source": "research pass"
+  },
+  {
+   "id": 175,
+   "official_source_url": "https://www.eur.nl/en/education/practical-matters/scholarships-grants",
+   "flag": "DEAD",
+   "reason": "programme still runs at a different official address",
+   "source": "research pass"
   },
   {
    "id": 397,
-   "official_source_url": "https://www.eur.nl/en/education/masters-programmes/scholarships",
-   "flag": "WRONG-DATA",
-   "reason": "(URL)   — record  url  https://www.eur.nl/en/education/masters-programmes/scholarships returns HTTP 404. Live page: https://www.eur.nl/en/education/practical-matters/scholarships-grants"
-  },
-  {
-   "id": 356,
-   "official_source_url": "https://en.tka.hu",
-   "flag": "WRONG-DATA",
-   "reason": "the record's  url  is the Tempus Public Foundation   homepage   (https://en.tka.hu), not a programme page. The domain is correct and the programme IS administered by Tempus, so this is   not   MISATTRIBUTED. Correct programme page: https://en.tka.hu/bilateral-state-scholarships-information-for-appli"
+   "official_source_url": "https://www.eur.nl/en/education/practical-matters/scholarships-grants",
+   "flag": "DEAD",
+   "reason": "programme still runs at a different official address",
+   "source": "research pass"
   },
   {
    "id": 329,
-   "official_source_url": "https://studies.ku.dk/education/student-life/finances-and-scholarships/scholarships-for-international-students",
-   "flag": "WRONG-DATA",
-   "reason": "(URL)   — record  url  https://studies.ku.dk/education/student-life/finances-and-scholarships/scholarships-for-international-students returns HTTP 404. Live page: https://www.ku.dk/studies/masters/application-and-admission/scholarships"
+   "official_source_url": "https://www.ku.dk/studies/masters/application-and-admission/scholarships",
+   "flag": "DEAD",
+   "reason": "programme still runs at a different official address",
+   "source": "research pass"
   },
   {
    "id": 176,
-   "official_source_url": "https://www.universiteitleiden.nl/en/scholarships/leiden-university-excellence-scholarship",
-   "flag": "WRONG-DATA",
-   "reason": "(URL)   — record  url  https://www.universiteitleiden.nl/en/scholarships/leiden-university-excellence-scholarship returns HTTP 404. Live page: https://www.universiteitleiden.nl/en/scholarships/sea/leiden-university-excellence-scholarship-lexs"
-  },
-  {
-   "id": 108,
-   "official_source_url": "https://admissions.smu.edu.sg/scholarships/prospective-students/international-students",
-   "flag": "WRONG-DATA",
-   "reason": "(source URL). The recorded  url / apply  is the SMU  International Students  scholarship   listing   page (https://admissions.smu.edu.sg/scholarships/prospective-students/international-students), which lists several unrelated awards (ASEAN Undergraduate Scholarship, Science & Technology Undergraduat"
-  },
-  {
-   "id": 3,
-   "official_source_url": "https://www.daad.de",
-   "flag": "WRONG-DATA",
-   "reason": "(not a discrete programme). The recorded  url  and  apply  are the DAAD   homepage   (https://www.daad.de), not any scholarship page, and \"DAAD Scholarship\" is an umbrella label covering 151+ separately-administered, separately-deadlined programmes. Recommend replacing with a concrete database progr"
-  },
-  {
-   "id": 503,
-   "official_source_url": "https://www.dzs.cz/vyzva_erasmus",
-   "flag": "WRONG-DATA",
-   "reason": "(category). Filed as a scholarship, but the official page describes   project-grant calls for organisations and mobility projects   for Czech applicants, not an individual scholarship. Also note the page's own deadline tables are stale (labelled 2021) — the current policy for deadlines is the linked"
+   "official_source_url": "https://www.universiteitleiden.nl/en/scholarships/sea/leiden-university-excellence-scholarship-lexs",
+   "flag": "DEAD",
+   "reason": "programme still runs at a different official address",
+   "source": "research pass"
   },
   {
    "id": 165,
    "official_source_url": "https://www.uibk.ac.at/en/college-service-center/scholarships",
-   "flag": "WRONG-DATA",
-   "reason": "(source URL 404) + NEVER-EXISTED-AS-TITLED. There is no UIBK programme under this name. The live official pages are https://www.uibk.ac.at/en/college-service-center/scholarships (performance-based and scientific-theses scholarships, restricted to Austrian/EEA citizens) and https://www.uibk.ac.at/en/"
+   "flag": "DEAD",
+   "reason": "programme still runs at a different official address",
+   "source": "research pass"
   },
   {
-   "id": 34,
-   "official_source_url": "https://taiwanscholarship.moe.gov.tw/web/pages.aspx?p=15",
-   "flag": "WRONG-DATA",
-   "reason": "WRONG-DATA"
+   "id": 169,
+   "official_source_url": "https://www.ceu.edu/admissions/financial-aid/student-scholarships",
+   "flag": "DEAD",
+   "reason": "programme still runs at a different official address",
+   "source": "research pass"
   },
   {
-   "id": 339,
-   "official_source_url": "https://www.utu.fi/en/study-at-utu/scholarships-before-2025",
-   "flag": "WRONG-DATA",
-   "reason": "the record title \"Tuition Fee Waivers\" is no longer accurate. The University of Turku   abolished the full / 50% tuition-waiver scholarship system for the 2026 intake  ; students admitted from 2026 onward are covered only by the €2,000 Early Bird discount and the 50%-of-tuition Merit Scholarship fro"
+   "id": 188,
+   "official_source_url": "https://liu.se/en/article/scholarships",
+   "flag": "DEAD",
+   "reason": "programme still runs at a different official address",
+   "source": "research pass"
   },
   {
-   "id": 112,
-   "official_source_url": "https://insaindia.res.in/isrf/",
-   "flag": "WRONG-DATA",
-   "reason": "(partial) — the record's  url  is the INSA   homepage  , which is a generic Academy site, not the ISRF programme page. The correct canonical pages are  https://insaindia.res.in/isrf/  (ISRF Call 2025-26) and the DST/INSA PDFs above. Note also that no 2026-27 call is published yet, so the record's de"
+   "id": 135,
+   "official_source_url": "https://www.polimi.it/en/prospective-students/how-much-does-it-cost/scholarships",
+   "flag": "DEAD",
+   "reason": "programme still runs at a different official address",
+   "source": "research pass"
   },
   {
-   "id": 202,
-   "official_source_url": "https://www.rmit.edu.au/scholarships/international-scholarships/future-leaders-scholarship",
-   "flag": "WRONG-DATA",
-   "reason": "(partial) — the record is presented as a generic \"RMIT Future Leaders Scholarship\" for international students. The official page restricts it to six named countries (India, Sri Lanka, Bangladesh, Bhutan, Nepal, Pakistan) and excludes students in receipt of other RMIT-funded or Australia Awards tuiti"
+   "id": 181,
+   "official_source_url": "https://www.utwente.nl/en/education/scholarship-finder/university-of-twente-scholarship/",
+   "flag": "DEAD",
+   "reason": "programme still runs at a different official address",
+   "source": "research pass"
   },
   {
-   "id": 292,
-   "official_source_url": "https://stypendia.uj.edu.pl/en_GB/pomoc-materialna/stypendium-rektora",
-   "flag": "WRONG-DATA",
-   "reason": "(partial) — the record's  url  is the \"Scholarships for international students\"   overview   page, not the Rector's scholarship page. The correct page is  https://stypendia.uj.edu.pl/en_GB/pomoc-materialna/stypendium-rektora . Also, the record frames this as a scholarship \"for international students"
+   "id": 177,
+   "official_source_url": "https://www.rug.nl/education/scholarships/nl-scholarship?lang=en",
+   "flag": "DEAD",
+   "reason": "programme still runs at a different official address",
+   "source": "research pass"
   },
   {
-   "id": 236,
-   "official_source_url": "https://www.mext.go.jp/en/policy/education/highered/title02/detail02/sdetail02/1373897.htm",
-   "flag": "WRONG-DATA",
-   "reason": "the recorded url  https://www.mext.go.jp/en/policy/education/highered/title02/detail02/sdetail02/1373897.htm  is live (200) but is MEXT's generic   \"STUDY in JAPAN\"   landing page, not the undergraduate scholarship page. The correct current sources are the 2027 Embassy Recommendation undergraduate g"
+   "id": 186,
+   "official_source_url": "https://www.chalmers.se/en/education/application-and-admission/tuition-fees/",
+   "flag": "DEAD",
+   "reason": "programme still runs at a different official address",
+   "source": "research pass"
   },
   {
-   "id": 187,
-   "official_source_url": "https://www.su.se/english/education/scholarships-and-fees",
-   "flag": "WRONG-DATA",
-   "reason": "the recorded url  https://www.su.se/english/education/scholarships-and-fees  returns   404  . The programme is live at the URL given above"
+   "id": 182,
+   "official_source_url": "https://vu.nl/en/education/more-about/incoming-master-scholarships",
+   "flag": "DEAD",
+   "reason": "programme still runs at a different official address",
+   "source": "research pass"
   },
   {
-   "id": 229,
-   "official_source_url": "https://www.daad-bangladesh.org/en/studying-in-germany/daad-scholarships",
-   "flag": "WRONG-DATA",
-   "reason": "the record's  url / apply  point at https://www.daad-bangladesh.org/en/studying-in-germany/daad-scholarships, a generic DAAD scholarships  index  listing ~14 unrelated programmes (IITD in-region, EPOS, Helmut-Schmidt/PPGG, Architecture/Music/Performing Arts, KOSPIE, PhD Scholarships, sandwich PhD, s"
-  },
-  {
-   "id": 189,
-   "official_source_url": "https://www.umu.se/en/education/scholarships",
-   "flag": "WRONG-DATA",
-   "reason": "the record URL  https://www.umu.se/en/education/scholarships  returns   HTTP 404"
-  },
-  {
-   "id": 485,
-   "official_source_url": "https://www.cmu.edu/africa",
-   "flag": "WRONG-DATA",
-   "reason": "the record URL  https://www.cmu.edu/africa  is not the programme page; it"
-  },
-  {
-   "id": 94,
-   "official_source_url": "https://www.insead.edu/master-programmes/master-business-administration/insead-scholarships",
-   "flag": "WRONG-DATA",
-   "reason": "the recorded  url  ( /master-programmes/master-business-administration/international-funding ) is INSEAD's   \"Global INSEAD Loans\"   page (per INSEAD's own sub-navigation), not the scholarship page. The scholarship page is https://www.insead.edu/master-programmes/master-business-administration/insea"
-  },
-  {
-   "id": 209,
-   "official_source_url": "https://en.snu.ac.kr/admission/graduate/scholarships/gsfs",
-   "flag": "WRONG-DATA",
-   "reason": "(dead URL)   — the recorded  url   https://en.snu.ac.kr/admission/graduate/scholarships/gsfs  returns   HTTP 404  . The programme is live but its content lives on  .../scholarships/before_application , which is the correct source URL"
-  },
-  {
-   "id": 463,
-   "official_source_url": "https://www.studienfinanzierung.uzh.ch/en.html",
-   "flag": "WRONG-DATA",
-   "reason": "the recorded  url  ( https://www.studienfinanzierung.uzh.ch/en.html ) is the   office's homepage, not a scholarship programme  . The record models an administrative office, not an award. If a single scholarship record is required it should point at  /en/financial_support/prospective_students.html  o"
-  },
-  {
-   "id": 118,
-   "official_source_url": "https://international.kiit.ac.in",
-   "flag": "WRONG-DATA",
-   "reason": "the recorded  url  ( https://international.kiit.ac.in ) is live but is a   generic admissions lead-capture form   that never mentions KUISP; it does not document the programme. The programme itself is confirmed to exist on KIIT's own domain at https://kiit.ac.in/wp-content/uploads/2024/01/IRO-2024.p"
-  },
-  {
-   "id": 170,
-   "official_source_url": "https://www.webster.ac.at/scholarships",
-   "flag": "WRONG-DATA",
-   "reason": "(dead URL)   — the recorded  url   https://www.webster.ac.at/scholarships  returns   HTTP 404  . The live page is  https://www.webster.ac.at/financialinformation/financialaid.php"
-  },
-  {
-   "id": 140,
-   "official_source_url": "https://en.unito.it/studying-unito/scholarships-international-students",
-   "flag": "WRONG-DATA",
-   "reason": "the record title says \"Talent 4 UniTo\"; the official name is   \"Talents 4 UniTo\"   (plural). Also, the record's  url  ( https://en.unito.it/studying-unito/scholarships-international-students ) is a   live umbrella page   listing several awards, not a page dedicated to this scholarship; the dedicated"
+   "id": 142,
+   "official_source_url": "https://www.unibs.it/en/opportunities-and-services/right-study/scholarship-and-awards/scholarships-international-students",
+   "flag": "DEAD",
+   "reason": "programme still runs at a different official address",
+   "source": "research pass"
   },
   {
    "id": 145,
-   "official_source_url": "https://english.moe.gov.tw/cp-24-16833-23C09-1.html",
+   "official_source_url": "https://english.moe.gov.tw/cp-24-24284-3ea37-1.html",
    "flag": "MISATTRIBUTED",
-   "reason": "the record's  url  ( https://english.moe.gov.tw/cp-24-16833-23C09-1.html ) is the   Taiwan Scholarship Program   page, not the HES page; HES is mentioned there only once, in the list of schemes whose prior receipt makes you ineligible.   Correct official HES page:   https://english.moe.gov.tw/cp-24-"
+   "reason": "the awarding body is real; the stored address is wrong",
+   "source": "research pass"
   },
   {
-   "id": 20,
-   "official_source_url": "https://aefe.gouv.fr/fr/scolarite/aide-la-scolarite-par-des-bourses-scolaires",
-   "flag": "WRONG-DATA",
-   "reason": "(scope)   — this is   not   a general open international scholarship. It is restricted to non-French students graduating from a  French lycée à l foreigners'  final year, and the selection is per-school + per-embassy. Records framed as open to all international applicants would be wrong. Also note i"
+   "id": 484,
+   "official_source_url": "https://collegeadmissions.uchicago.edu/cost-aid/international-financial-aid",
+   "flag": "DEAD",
+   "reason": "programme still runs at a different official address",
+   "source": "research pass"
+  },
+  {
+   "id": 293,
+   "official_source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+   "flag": "DEAD",
+   "reason": "programme still runs at a different official address",
+   "source": "research pass"
+  },
+  {
+   "id": 298,
+   "official_source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+   "flag": "DEAD",
+   "reason": "programme still runs at a different official address",
+   "source": "research pass"
+  },
+  {
+   "id": 300,
+   "official_source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+   "flag": "DEAD",
+   "reason": "programme still runs at a different official address",
+   "source": "research pass"
   },
   {
    "id": 117,
-   "official_source_url": "https://ir.iith.ac.in/first",
-   "flag": "WRONG-DATA",
-   "reason": "https://ir.iith.ac.in/first  returns   HTTP 404   (Apache/2.4.41 Ubuntu; verified with both curl and Chromium). The page exists only as a client-side route inside the React SPA at ir.iith.ac.in (route  path:\"/first\"  in the bundle); the server does not serve it. Use  https://ir.iith.ac.in/  as the o"
+   "official_source_url": "https://ir.iith.ac.in/",
+   "flag": "DEAD",
+   "reason": "programme still runs at a different official address",
+   "source": "research pass"
   },
   {
    "id": 294,
-   "official_source_url": "https://msmt.gov.cz/eu-and-international-affairs/government-scholarships-developing-countries",
-   "flag": "WRONG-DATA",
-   "reason": "the recorded url  https://msmt.gov.cz/eu-and-international-affairs/government-scholarships-developing-countries  returns the Czech \"Stránka nenalezena\" (page not found) page. MŠMT relaunched its website on   20 August 2026   (banner: \"Od 20. srpna 2026 přešlo Ministerstvo školství, mládeže a tělovýc"
+   "official_source_url": "https://msmt.gov.cz/agentury/zan-podminkach/53862-ramec-vladni-stipendium-pro-rozvojove-zeme",
+   "flag": "DEAD",
+   "reason": "programme still runs at a different official address",
+   "source": "research pass"
   },
   {
-   "id": 475,
-   "official_source_url": "https://www.worldbank.org/en/programs/scholarships",
-   "flag": "WRONG-DATA",
-   "reason": "(stale cycle)   — the record title says \"JJ/WBGSP   2026  \" but the live official page now presents the   2027 application cycle   (windows 18 Jan–26 Feb 2027 and 29 Mar–21 May 2027), and the 2026 Japanese-nationals window closed 17 April 2026. Also   DUPLICATE   in part: the umbrella \"World Bank Sc"
+   "id": 342,
+   "official_source_url": "https://www.hanken.fi/en/node/1868145",
+   "flag": "DEAD",
+   "reason": "programme still runs at a different official address",
+   "source": "research pass"
   },
   {
-   "id": 128,
-   "official_source_url": "https://admission.brown.edu/tuition-aid/financial-aid/international-students",
-   "flag": "WRONG-DATA",
-   "reason": "the recorded url  https://admission.brown.edu/tuition-aid/financial-aid/international-students  returns   HTTP 404  . The live official page is https://admission.brown.edu/international/financial-aid . Also note the record is framed as a \"Financial Aid\" package, not a discrete scholarship (Brown off"
+   "id": 134,
+   "official_source_url": "https://bandi.unibo.it/agevolazioni/opportunita",
+   "flag": "DEAD",
+   "reason": "programme still runs at a different official address",
+   "source": "research pass"
   },
   {
-   "id": 40,
-   "official_source_url": "https://www.ares-ac.be/en/cooperation-au-developpement/bourses",
-   "flag": "WRONG-DATA",
-   "reason": "the recorded url  https://www.ares-ac.be/en/cooperation-au-developpement/bourses  returns   HTTP 404   (\"Page introuvable | ARES — Le contenu a peut-être déménagé…\"); ARES states its site was \"entièrement redéveloppé\". The successor live page is https://www.ares-ac.be/en/scholarships . Also note:  o"
+   "id": 278,
+   "official_source_url": "https://www.ntnu.edu/vacancies",
+   "flag": "DEAD",
+   "reason": "programme still runs at a different official address",
+   "source": "research pass"
   },
   {
-   "id": 100,
-   "official_source_url": "https://seu.ub.edu/documentPublic/download/894412",
-   "flag": "WRONG-DATA",
-   "reason": "(partial) — no application deadline is stated on the official landing page; the deadline lives in the per-edition call rules PDF (April 2026 rules: https://seu.ub.edu/documentPublic/download/894412; April 2026 resolution: https://seu.ub.edu/documentPublic/download/894413). Per the brief's \"no single"
+   "id": 124,
+   "official_source_url": "https://www.simmons.edu/admission-aid/financial-aid/scholarships",
+   "flag": "DEAD",
+   "reason": "programme still runs at a different official address",
+   "source": "research pass"
   },
   {
-   "id": 498,
-   "official_source_url": "https://www.swissuniversities.ch/en/service/applying-to-medical-school",
-   "flag": "WRONG-DATA",
-   "reason": "a link directory / signposting page, not an award. It cannot have a deadline, an amount, a currency or a single eligibility rule. Additionally the recorded  apply  link (https://www.swissuniversities.ch/en/service/applying-to-medical-school) is entirely unrelated to this content. Recommend removing "
+   "id": 143,
+   "official_source_url": "https://www.uniroma1.it/en/pagina/phd-programmes",
+   "flag": "DEAD",
+   "reason": "programme still runs at a different official address",
+   "source": "research pass"
   },
   {
-   "id": 81,
-   "official_source_url": "https://www.educanada.ca/scholarships-bourses/non_can/index.aspx?lang=eng",
-   "flag": "WRONG-DATA",
-   "reason": "(a) the recorded URL  https://www.educanada.ca/scholarships-bourses/non_can/index.aspx?lang=eng  is the   hub page   \"Scholarships for international applicants\", not the SICS programme page; (b)   MATERIAL PROGRAMME CHANGE  : the page carries a notice \"Program Delivery Model Update – Effective 2026-"
+   "id": 369,
+   "official_source_url": "https://www.uniroma1.it/en/pagina/scholarships",
+   "flag": "DEAD",
+   "reason": "programme still runs at a different official address",
+   "source": "research pass"
   },
   {
-   "id": 318,
-   "official_source_url": "https://yz.tsinghua.edu.cn/en/info/1027/1391.htm",
-   "flag": "WRONG-DATA",
-   "reason": "the record is titled \"Atomic Energy Scholarship Program of China   2026  \", but the live official page at the recorded url is the   2024   edition: its H1 reads \"2024 The Atomic Energy Scholarship Program of China\" and its content metadata shows \"Content 23 / 2024.02\" (source: https://yz.tsinghua.ed"
-  },
-  {
-   "id": 488,
-   "official_source_url": "https://www.jwu.edu/admissions/paying-for-college/scholarships-and-grants.html",
-   "flag": "MISATTRIBUTED",
-   "reason": "the recorded url domain  educationusa.state.gov  belongs to EducationUSA, a U.S. State Department advising/information service, not to the awarding body. The awarding body is Johnson & Wales University.  jwu.edu  returns an Incapsula bot-protection block page (HTTP body of 212 bytes) to every reques"
+   "id": 212,
+   "official_source_url": "https://admission.kaist.ac.kr/intl-graduate/FinancialSupport/Scholarship/KAISTScholarship",
+   "flag": "DEAD",
+   "reason": "programme still runs at a different official address",
+   "source": "research pass"
   }
  ]
 }
