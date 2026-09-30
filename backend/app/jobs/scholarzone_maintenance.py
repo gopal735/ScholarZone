@@ -1149,8 +1149,103 @@ def main(argv: list[str] | None = None) -> int:
             "dry_run": args.dry_run,
         }
 
+    def do_worklist() -> dict:
+        """Emit the exact per-record research backlog. Read-only.
+
+        Coverage counts say how bad the gap is; they cannot say which record to
+        send a researcher. Closing the remaining gap means filling specific
+        fields on specific rows, and doing that by hand from an aggregate number
+        invites drift. This stage prints one compact line per record that still
+        lacks a logo, a deadline, a description or an official source, so the
+        backlog can be sharded across agents and reconciled afterwards without
+        guessing which rows were covered.
+        """
+        import json
+        from urllib.parse import urlparse
+
+        from sqlalchemy import or_, select
+
+        from app.models import Scholarship
+        from app.services.catalogue_quarantine import QUARANTINE_STATUS
+
+        session = factory()
+        try:
+            rows = session.execute(
+                select(
+                    Scholarship.id,
+                    Scholarship.title,
+                    Scholarship.official_source_url,
+                    Scholarship.application_link,
+                    Scholarship.deadline_display,
+                    Scholarship.image_url,
+                    Scholarship.description,
+                    Scholarship.deadline_date,
+                    Scholarship.official_source,
+                    Scholarship.deadline_precision,
+                )
+                .where(Scholarship.verification_status != QUARANTINE_STATUS)
+                .order_by(Scholarship.id)
+            ).all()
+        finally:
+            session.close()
+
+        pending = []
+        for (
+            rid,
+            title,
+            source_url,
+            app_link,
+            deadline_display,
+            image_url,
+            description,
+            deadline_date,
+            official_source,
+            deadline_precision,
+        ) in rows:
+            missing = []
+            if not image_url:
+                missing.append("logo")
+            if not deadline_date:
+                missing.append("deadline")
+            if not description:
+                missing.append("description")
+            if not official_source:
+                missing.append("official_source")
+            if not missing:
+                continue
+            host = (urlparse(source_url or "").hostname or "").lower()
+            pending.append(
+                {
+                    "id": rid,
+                    "host": host[4:] if host.startswith("www.") else host,
+                    "title": title,
+                    "missing": ",".join(missing),
+                    "url": source_url,
+                    "application_link": app_link,
+                    "deadline_display": deadline_display,
+                    "deadline_precision": deadline_precision,
+                }
+            )
+
+        # Hosts, not records, are the unit of research. One researcher resolves
+        # a programme page and its logo once, then reports the facts that apply
+        # to every record the host carries.
+        host_order: dict[str, int] = {}
+        for item in pending:
+            host_order[item["host"]] = host_order.get(item["host"], 0) + 1
+
+        print(f"WORKLIST_JSON_START {len(pending)} records / {len(host_order)} hosts")
+        print(json.dumps(pending, ensure_ascii=True))
+        print("WORKLIST_JSON_END")
+        return {
+            "records_pending": len(pending),
+            "hosts_pending": len(host_order),
+            "hosts_by_gap": sorted(host_order.items(), key=lambda kv: (-kv[1], kv[0])),
+        }
+
     stages = {
         "verify": do_verify,
+        "worklist": do_worklist,
         "enrich": do_enrich,
         "images": do_images,
         "discover": do_discover,
