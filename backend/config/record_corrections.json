@@ -1,0 +1,10 @@
+{
+  "_comment": "Records whose official address or title research disproved, but whose programme is real. Correcting these is not the same as retiring them: a rotted link must not hide a live scholarship.",
+  "_rules": [
+    "Every entry must say what was wrong with the stored value and where the correct value came from.",
+    "URLs are absolute http/https only. A correction that does not resolve is worse than the 404 it replaces.",
+    "Retiring a record is a separate, stronger decision and lives in retired_records.json. It is only for programmes that no longer exist, never for a broken link.",
+    "Allowed fields: title, official_source_url, application_link, official_source, description."
+  ],
+  "records": []
+}

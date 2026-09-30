@@ -64,7 +64,7 @@ MAX_STAGE_WORKERS = 16
 # Stage order reflects dependencies: verification establishes which records
 # are current, and the remaining stages all operate on that outcome.
 STAGE_ORDER = (
-    "verify", "worklist", "enrich", "images", "logos", "discover", "quarantine", "retire",
+    "verify", "worklist", "enrich", "images", "logos", "discover", "quarantine", "retire", "correct",
     "stats", "facts", "archive", "discontinued", "purge",
 )
 
@@ -398,7 +398,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--stage",
         action="append",
-        choices=["verify", "worklist", "enrich", "images", "logos", "discover", "quarantine", "retire",
+        choices=["verify", "worklist", "enrich", "images", "logos", "discover", "quarantine", "retire", "correct",
                      "stats", "facts", "archive", "discontinued", "retire", "purge", "all"],
         default=None,
         help="Run only these stages (default: all).",
@@ -994,6 +994,126 @@ def main(argv: list[str] | None = None) -> int:
             recorder.record_counts({"retired_records_hidden": len(retired)})
         return detail
 
+    def do_correct() -> dict:
+        """Fix records whose official source URL or title research disproved.
+
+        Live research finds far more wrong links than dead programmes. A record
+        for a perfectly real scholarship can point at a page that 404s, at an
+        index instead of the programme, or at a PDF for the wrong cycle. Those
+        records must not be retired: retiring them would hide a real
+        scholarship from every applicant because a link rotted. The programme
+        is fine, the address is not.
+
+        So corrections and retirement are separate decisions with separate
+        files. This stage repairs the address and the title; the retire stage
+        hides records whose programme genuinely no longer exists. The split
+        matters because only one of the two is reversible without loss.
+
+        URLs are overwritten rather than filled only when empty, because a
+        broken URL is worse than no URL: it is a confident pointer to nowhere.
+        Every change is recorded per record so the reason survives with it.
+        """
+        import json
+        from datetime import datetime, timezone
+        from pathlib import Path
+
+        from sqlalchemy import select
+
+        from app.models import Scholarship
+
+        corrections_path = (
+            Path(__file__).resolve().parents[2] / "config" / "record_corrections.json"
+        )
+        try:
+            raw = json.loads(corrections_path.read_text(encoding="utf-8"))
+        except (OSError, ValueError) as exc:
+            logger.warning("could not read corrections from %s: %s", corrections_path, exc)
+            return {"corrections_file": str(corrections_path), "error": str(exc)}
+
+        entries = raw.get("records") if isinstance(raw, dict) else raw
+        entries = entries if isinstance(entries, list) else []
+        wanted: dict[int, dict] = {}
+        for entry in entries:
+            if not isinstance(entry, dict):
+                continue
+            try:
+                rid = int(entry.get("id"))
+            except (TypeError, ValueError):
+                logger.warning("ignoring correction with no usable id: %r", entry)
+                continue
+            wanted[rid] = entry
+        if not wanted:
+            return {"corrections_file": str(corrections_path), "records_listed": 0, "matched": 0}
+
+        # Only these are written, and each is a text or URL column that exists.
+        writable = {
+            "official_source_url": "url",
+            "application_link": "url",
+            "title": "text",
+            "official_source": "text",
+            "description": "text",
+        }
+
+        session = factory()
+        try:
+            applied: list[dict] = []
+            for rid, entry in sorted(wanted.items()):
+                row = session.get(Scholarship, rid)
+                if row is None:
+                    applied.append({"id": rid, "outcome": "not_found"})
+                    continue
+                changed: list[str] = []
+                if args.dry_run:
+                    applied.append({"id": rid, "outcome": "would_change", "title": row.title})
+                    continue
+                for field, kind in writable.items():
+                    value = str(entry.get(field) or "").strip()
+                    if not value:
+                        continue
+                    if kind == "url":
+                        parsed = urlparse(value)
+                        if parsed.scheme not in ("http", "https") or not parsed.hostname:
+                            logger.warning(
+                                "skipping non-absolute %s for record %d: %r", field, rid, value
+                            )
+                            continue
+                    if (getattr(row, field, None) or "").strip() == value:
+                        continue
+                    setattr(row, field, value)
+                    changed.append(field)
+                if changed:
+                    row.updated_at = datetime.now(timezone.utc)
+                    reason = str(entry.get("reason") or "").strip()
+                    if reason:
+                        # Kept on the record so a later reader can tell a
+                        # deliberate correction from a scraper's guess.
+                        note = row.verification_notes or ""
+                        if reason not in note:
+                            row.verification_notes = (note + f" | corrected: {reason}")[:1000]
+                applied.append(
+                    {"id": rid, "outcome": "changed" if changed else "unchanged",
+                     "fields": changed, "title": row.title}
+                )
+            if not args.dry_run:
+                session.commit()
+            else:
+                session.rollback()
+        finally:
+            session.close()
+
+        changed = [a for a in applied if a["outcome"] == "changed"]
+        detail = {
+            "corrections_file": str(corrections_path),
+            "records_listed": len(wanted),
+            "matched": len([a for a in applied if a["outcome"] != "not_found"]),
+            "changed": len(changed),
+            "not_found": [a["id"] for a in applied if a["outcome"] == "not_found"],
+            "applied": changed[:200],
+        }
+        if not args.dry_run:
+            recorder.record_counts({"corrected_records": len(changed)})
+        return detail
+
     def do_facts() -> dict:
         """Apply audited official programme facts to records that lack them.
 
@@ -1452,6 +1572,7 @@ def main(argv: list[str] | None = None) -> int:
         "archive": do_archive,
         "discontinued": do_discontinued,
         "retire": do_retire,
+        "correct": do_correct,
         "purge": do_purge,
     }
 
