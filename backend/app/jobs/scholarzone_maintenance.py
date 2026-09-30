@@ -493,6 +493,7 @@ def main(argv: list[str] | None = None) -> int:
 
         from app.models import Scholarship
         from app.services.catalogue_quarantine import QUARANTINE_STATUS
+        from app.services.image_discovery_orchestrator import LOGO_IDENTITY_KINDS
 
         session = factory()
         try:
@@ -507,10 +508,40 @@ def main(argv: list[str] | None = None) -> int:
                 .select_from(Scholarship)
                 .where(Scholarship.verification_status == QUARANTINE_STATUS)
             )
+
+            # Coverage, not just totals. A total says how big the catalogue is;
+            # only these say whether it is usable, which is the question the
+            # image and enrichment work is actually trying to answer.
+            def _count_where(*conditions) -> int:
+                return session.scalar(
+                    select(func.count()).select_from(Scholarship).where(*conditions)
+                )
+
+            with_image = _count_where(Scholarship.image_url.isnot(None))
+            identity_marks = _count_where(
+                Scholarship.image_kind.in_(sorted(LOGO_IDENTITY_KINDS))
+            )
+            non_logo = _count_where(
+                Scholarship.image_url.isnot(None),
+                Scholarship.image_kind.not_in(sorted(LOGO_IDENTITY_KINDS)),
+            )
+            coverage = {
+                f"missing_{field}": _count_where(getattr(Scholarship, field).is_(None))
+                for field in (
+                    "description", "eligibility", "funding", "degree",
+                    "deadline_date", "benefits", "official_source",
+                    "application_link",
+                )
+            }
             return {
                 "total_records": total,
                 "total_valid": valid,
                 "quarantined": quarantined,
+                "with_image": with_image,
+                "without_image": total - with_image,
+                "identity_marks": identity_marks,
+                "non_logo_images_remaining": non_logo,
+                **coverage,
             }
         finally:
             session.close()
