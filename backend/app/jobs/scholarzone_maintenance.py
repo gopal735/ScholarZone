@@ -223,13 +223,23 @@ def _next_review_due(today: date) -> date:
 
 
 def _column_length(model, field: str) -> int | None:
-    """Declared length of a column, or None when it has no fixed width.
+    """Declared length of a column, or None when it has none or does not exist.
 
-    Not every column type has a `length` at all. A JSON column raises
+    Not every column type has a `length` at all - a JSON column raises
     AttributeError on the attribute rather than returning None, which is how a
-    research pass over eligibility values took the whole stage down.
+    research pass over eligibility values took the whole stage down. A name that
+    is not a column at all raises KeyError here; detail fields that live in the
+    structured blocks are not columns, and must be reported as having no width
+    rather than stopping the run.
     """
-    return getattr(model.__table__.c[field].type, "length", None)
+    columns = model.__table__.columns
+    if field not in columns:
+        return None
+    return getattr(columns[field].type, "length", None)
+
+
+def _is_column(model, field: str) -> bool:
+    return field in model.__table__.columns
 
 
 # Flag labels the retire stage writes at the start of a record's archived
@@ -1386,6 +1396,13 @@ def main(argv: list[str] | None = None) -> int:
 
                 filled: list[str] = []
                 for field, kind in text_map.items():
+                    # Several researched fields - the cycle, an institutional
+                    # deadline, citizenship and residency wording - have no column
+                    # of their own and are preserved in official_details, which
+                    # receives the whole official block. Writing them as
+                    # attributes would invent columns silently.
+                    if not _is_column(Scholarship, field):
+                        continue
                     value = (official.get(field) or "").strip() if isinstance(
                         official.get(field), str
                     ) else official.get(field)
