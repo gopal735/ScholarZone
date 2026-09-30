@@ -1,0 +1,10 @@
+{
+  "_comment": "Individual records that live research disproved, so they must stop being published. Nothing here is deleted: the row is quarantined and archived, keeping its history and inbound links.",
+  "_rules": [
+    "A record is retired only when the awarding body's own page contradicts the record, or when it duplicates another row for the same programme. Uncertainty is never grounds for retirement.",
+    "Host-level retirement cannot cover these cases. One host legitimately carries several programmes - studyinjapan.go.jp serves the seven MEXT scholarship types plus a USA-only edition - so a single row among them can be wrong while its neighbours are correct.",
+    "The reason and the successor are stored on the record, so an applicant who followed an old link finds an explanation rather than a dead page.",
+    "flag values: DEAD, RENAMED, DUPLICATE, MISATTRIBUTED, NEVER-EXISTED, WRONG-DATA, RETIRED-SUCCESSOR."
+  ],
+  "records": []
+}

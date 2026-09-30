@@ -64,7 +64,7 @@ MAX_STAGE_WORKERS = 16
 # Stage order reflects dependencies: verification establishes which records
 # are current, and the remaining stages all operate on that outcome.
 STAGE_ORDER = (
-    "verify", "worklist", "enrich", "images", "logos", "discover", "quarantine",
+    "verify", "worklist", "enrich", "images", "logos", "discover", "quarantine", "retire",
     "stats", "facts", "archive", "discontinued", "purge",
 )
 
@@ -398,8 +398,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--stage",
         action="append",
-        choices=["verify", "worklist", "enrich", "images", "logos", "discover", "quarantine",
-                     "stats", "facts", "archive", "discontinued", "purge", "all"],
+        choices=["verify", "worklist", "enrich", "images", "logos", "discover", "quarantine", "retire",
+                     "stats", "facts", "archive", "discontinued", "retire", "purge", "all"],
         default=None,
         help="Run only these stages (default: all).",
     )
@@ -895,6 +895,105 @@ def main(argv: list[str] | None = None) -> int:
             recorder.record_counts({"discontinued_quarantined": len(affected)})
         return detail
 
+    def do_retire() -> dict:
+        """Quarantine and hide individual records research has disproved.
+
+        Host-level retirement cannot express a catalogue's most common real
+        problem. One host legitimately carries several programmes, so a single
+        record among them can be dead, renamed, duplicated against a sibling, or
+        attributed to the wrong organisation while its neighbours are perfectly
+        sound. Six MEXT records on one domain are real; the seventh is a
+        USA-only edition that duplicates another row.
+
+        The decision is data, not code, so it lives in an audited file that
+        records what was wrong and what replaced it. Nothing is deleted: the row
+        keeps its history and its inbound links, but stops being published, and
+        the reason is stored rather than implied.
+        """
+        import json
+        from datetime import datetime, timezone
+        from pathlib import Path
+
+        from sqlalchemy import select
+
+        from app.models import Scholarship
+        from app.services.catalogue_quarantine import QUARANTINE_STATUS
+
+        retire_path = (
+            Path(__file__).resolve().parents[2] / "config" / "retired_records.json"
+        )
+        try:
+            raw = json.loads(retire_path.read_text(encoding="utf-8"))
+        except (OSError, ValueError) as exc:
+            logger.warning("could not read retired records from %s: %s", retire_path, exc)
+            return {"retired_file": str(retire_path), "error": str(exc)}
+
+        entries = raw.get("records") if isinstance(raw, dict) else raw
+        entries = entries if isinstance(entries, list) else []
+        wanted = {}
+        for entry in entries:
+            if not isinstance(entry, dict):
+                continue
+            try:
+                rid = int(entry.get("id"))
+            except (TypeError, ValueError):
+                logger.warning("ignoring retired entry with no usable id: %r", entry)
+                continue
+            wanted[rid] = entry
+        if not wanted:
+            return {"retired_file": str(retire_path), "records_listed": 0, "matched": 0}
+
+        session = factory()
+        try:
+            matched: list[dict] = []
+            for rid, entry in sorted(wanted.items()):
+                row = session.get(Scholarship, rid)
+                if row is None:
+                    matched.append({"id": rid, "outcome": "not_found"})
+                    continue
+                flag = str(entry.get("flag") or "DISPROVED").upper()
+                reason = str(entry.get("reason") or "disproved by research").strip()
+                successor = str(entry.get("successor") or "").strip()
+                note = f"{flag}: {reason}"
+                if successor:
+                    note += f" | successor: {successor}"
+                matched.append(
+                    {"id": rid, "outcome": "retired", "flag": flag, "title": row.title}
+                )
+                if args.dry_run:
+                    continue
+                if row.verification_status != QUARANTINE_STATUS:
+                    row.verification_status = QUARANTINE_STATUS
+                row.verification_notes = note
+                if not row.is_archived:
+                    row.is_archived = True
+                    row.archived_at = datetime.now(timezone.utc)
+                    row.archived_reason = note[:255]
+                row.updated_at = datetime.now(timezone.utc)
+            if not args.dry_run:
+                session.commit()
+            else:
+                session.rollback()
+        finally:
+            session.close()
+
+        retired = [m for m in matched if m["outcome"] == "retired"]
+        missing = [m["id"] for m in matched if m["outcome"] == "not_found"]
+        by_flag: dict[str, int] = {}
+        for item in retired:
+            flag = item["flag"]
+            by_flag[flag] = by_flag.get(flag, 0) + 1
+        detail = {
+            "retired_file": str(retire_path),
+            "records_listed": len(wanted),
+            "matched": len(retired),
+            "not_found": missing,
+            "by_flag": dict(sorted(by_flag.items())),
+        }
+        if not args.dry_run:
+            recorder.record_counts({"retired_records_hidden": len(retired)})
+        return detail
+
     def do_facts() -> dict:
         """Apply audited official programme facts to records that lack them.
 
@@ -1352,6 +1451,7 @@ def main(argv: list[str] | None = None) -> int:
         "logos": do_logos,
         "archive": do_archive,
         "discontinued": do_discontinued,
+        "retire": do_retire,
         "purge": do_purge,
     }
 
