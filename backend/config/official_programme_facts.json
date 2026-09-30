@@ -69,6 +69,13 @@
   "deadline_cycle": "GKS-U 2027, 15 Sep 11:00 KST to 30 Sep 18:00 KST",
   "source_page": "https://www.studyinkorea.go.kr/"
  },
+ "csc.edu.cn": {
+  "official_source": "China Scholarship Council",
+  "benefits": "Tuition, accommodation, stipend, insurance and airfare",
+  "funding": "Fully Funded",
+  "eligibility": "Chinese Government Scholarship. Applicants are nominated by their embassy (Type A) or by the host university (Type B).",
+  "source_page": "https://www.csc.edu.cn/"
+ },
  "turkiyeburslari.gov.tr": {
   "official_source": "Presidency for Turks Abroad and Related Communities (YTB)",
   "benefits": "Tuition, accommodation, meals, health insurance, airfare and stipend",
@@ -364,6 +371,22 @@
   "description": "Camões, I.P. runs a family of scholarship programmes within Portuguese Language and Culture cooperation, covering summer and annual Portuguese courses at Portuguese universities and recognised institutions, plus teacher/researcher, chair-holder, translation and investigation awards; it also runs co-operation scholarships for study in Portugal and in partner countries.",
   "application_link": "https://portalservicos.instituto-camoes.pt/"
  },
+ "id:2": {
+  "official_source": "Lata Mangeshkar Dance & Music Scholarship Scheme [scheme code A1209] (formerly ICCR Scholarship Scheme for Training in Indian Music and Dance)",
+  "eligibility": "OMITTED — scheme eligibility is only available to logged-in applicants.",
+  "funding": "OMITTED — the awarding body publishes the scheme scope but no per-slot amount.",
+  "description": "ICCR scholarship slots offered globally for studies in Indian culture — dance, music, theatre, performing arts, sculpture, Indian languages and Indian cuisine. The portal displays \"Registration Closed — Scholarship registration for the academic year 2026-27 is closed.\" and instructs applicants to contact the Indian Mission for scholarship updates.",
+  "source_page": "https://a2ascholarships.iccr.gov.in/home/scheme"
+ },
+ "deutschlandstipendium.de": {
+  "official_source": "Bundesministerium für Forschung, Technologie und Raumfahrt (BMFTR) / Deutschlandstipendium",
+  "eligibility": "Students of **all nationalities** in the first semester or higher at a public or state-recognised university in Germany. Each university selects its own scholars, weighting academic performance plus social commitment and/or personal achievement. Students receive a letter of confirmation confirming the award for the semester.",
+  "benefits": "Financial support; participation in the Deutschlandstipendium network; a mentoring programme; university-specific extras. **EUR 300 per month** (EUR 150 from a private sponsor plus EUR 150 matched by the Federal Government), normally for at least two semesters and up to the standard period of study. Not counted towards BAföG.",
+  "degree": "Undergraduate and postgraduate (any subject)",
+  "description": "A German federal public-private scholarship in operation since 2011, funded by private donors and matched by the Federal Government and awarded by host universities. In 2025, around 33,500 students received it.",
+  "application_link": "https://www.deutschlandstipendium.de/deutschlandstipendium/de/studierende/stipendiatin-oder-stipendiat-werden/stipendiatin-oder-stipendiat-werden_node.html",
+  "source_page": "https://www.deutschlandstipendium.de/"
+ },
  "id:12": {
   "official_source": "Japan Student Services Organization (JASSO) — Support Programs for International Students",
   "eligibility": "\"privately-financed\" international students — i.e. enrolled in a Japanese educational institution and **not** a grantee of the Japanese Government (Monbukagakusho) Scholarship or any foreign government scholarship, holding \"Student\" residence status; full-time enrolment in a graduate school, undergraduate school, junior college, college of technology (3rd year+), specialised training college, advanced course, university preparatory course or Japanese language institute; grading criteria per the application guidelines; Japanese N2 JLPT or EJU Japanese ≥200 (or a separately recognised level), or English CEFR B2+ (not required for preparatory/Japanese-language-institute students); other allowance must not exceed an average of JPY 90,000 per month; a supporter in Japan must have annual income below JPY 5,000,000; must not hold a non-combinable scholarship nor JASSO Student Exchange Support Program funding; must sign the JASSO sheet monthly.",
@@ -417,6 +440,15 @@
   "application_link": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777 — **applications go directly to the chosen course**, not to DAAD",
   "source_page": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
  },
+ "humboldt-foundation.de": {
+  "official_source": "Humboldt Research Fellowship",
+  "eligibility": "Researchers of all nationalities and all research areas from **all countries except Germany**, for a 6–24-month research stay in Germany. The number of applications has risen sharply since 2024, so the Foundation now runs three calls per year, each opening eight months before its selection meeting, and closes each round once 800 applications are received.",
+  "description": "The current call has reached the maximum number of applications, so no new applications can be created; the next call opens on 15 November 2026. 2026 calls: opened 15 March 2026 (selection meeting November 2026, earliest fellowship start February 2027); opened 15 July 2026 (selection March 2027, start May 2027); opens 15 November 2026 (selection July 2027, start September 2027). The Foundation expects 20–25% of applications received to be approved. Applications missing important documents, or that diverge substantially from the specifications, are formally rejected without review. The programme is part of the Global Minds Initiative Germany of the Federal Ministry of Research, Technology and Space.",
+  "source_page": "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/humboldt-research-fellowship",
+  "benefits": "Monthly stipend of €3,000 for postdocs and €3,600 for experienced researchers, plus additional payments where applicable.",
+  "deadline": "2026-11-15",
+  "deadline_cycle": "published at https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/humboldt-research-fellowship; verified 30 Sep 2026, cycle not stated by the source"
+ },
  "id:25": {
   "official_source": "Japan Student Services Organization (JASSO)",
   "eligibility": "students from all countries that have diplomatic relations with Japan (Taiwan and Palestine accepted); accepted by a Japanese school under a student exchange agreement or other exchange arrangement with their home school; without the financial means to study in Japan; eligible for a \"Student Visa\" (the Japanese school arranges status of residence for stays of 90 days or less); will return to and complete studies at the home school; excellent academic and personal records at the home school; ineligible if receiving more than JPY 80,000 per month in total from other scholarships for study in Japan.",
@@ -425,6 +457,15 @@
   "degree": "Non-degree short-term exchange (8 days – 1 year)",
   "description": "JASSO's \"Scholarship for Study in Japan under Agreement\" supports short-term exchange students admitted to a Japanese school under a bilateral or institutional exchange arrangement. Nominations come only from the Japanese host school; selection method differs by school and programme.",
   "source_page": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/ukeire.html"
+ },
+ "id:30": {
+  "official_source": "Australian Government Department of Foreign Affairs and Trade (Australia Awards)",
+  "eligibility": "Applicants must be citizens or permanent residents of a listed Australia Awards participating country (Indo-Pacific, South Asia, Africa, Americas, Middle East, Europe) and meet that country's published profile. Selection is per-country and includes interview stages for most profiles.",
+  "benefits": "as listed above, plus a return-home obligation (see contract). Full tuition fees; return airfare to country of residence; establishment allowance; fortnightly Contribution to Living Expenses at a rate set by DFAT; Introductory Academic Program; Overseas Student Health Cover; pre-course English language fees where necessary; supplementary academic support; fieldwork return airfare and research support where eligible.",
+  "degree": "Undergraduate (Bachelor) and postgraduate (Master's coursework and PhD)",
+  "description": "Long-term awards administered on behalf of the Australian Government by DFAT for citizens of participating countries, covering full tuition, travel and living costs. Awardees sign a contract and must leave Australia for two years after completing the course or repay the costs.",
+  "application_link": "https://www.dfat.gov.au/people-to-people/australia-awards/how-to-apply-for-an-australia-awards-scholarship (online applications run through OASIS; the register page links the current call per country profile)",
+  "source_page": "https://www.dfat.gov.au/people-to-people/australia-awards/australia-awards-scholarships"
  },
  "future.utoronto.ca": {
   "official_source": "University of Toronto — Pearson Program Office, Centre for International Experience",
@@ -452,6 +493,16 @@
   "application_link": "https://study.unimelb.edu.au/how-to-apply",
   "source_page": "https://scholarships.unimelb.edu.au/awards/melbourne-international-undergraduate-scholarship",
   "benefits": "**20% fee sponsorship** for the duration of the course from 2027 (awards made before 2027 were 25%). Quantity: at least 110, increasing to **225** from 2027. Stated benefit amount: \"20% fee remission\"."
+ },
+ "monash.edu": {
+  "official_source": "Monash University",
+  "eligibility": "International students of any country holding a **full unconditional Monash course offer** and intending to enrol full-time in an undergraduate degree at an Australian Monash campus. Not eligible: current Monash students; Australian Year 12 students; Bachelor of Medical Science/MD; Monash Pathway programs; students transferring into an ongoing degree.",
+  "funding": "**100% of course fees** (excludes OSHC, accommodation and living costs). Four scholarships awarded per year.",
+  "benefits": "100% of course fees until the minimum points for the degree are completed; participation in the Monash Campus Ambassador Program from the second semester; invitation to Monash Minds; enrolment in the Global Leadership in the 21st Century program.",
+  "degree": "Undergraduate (Bachelor)",
+  "description": "For students with outstanding academic ability and leadership experience. International students who receive an undergraduate course offer are automatically considered; four awards are made each year based on academic achievement. Awards can be deferred within the same calendar year only.",
+  "application_link": "https://www.monash.edu/study/fees-scholarships/scholarships/find-a-scholarship/monash-international-leadership-scholarship-5571Z",
+  "source_page": "https://www.monash.edu/study/fees-scholarships/scholarships/find-a-scholarship/monash-international-leadership-scholarship-5571Z"
  },
  "american.edu": {
   "official_source": "American University (Office of Enrollment Services, Washington, DC)",
@@ -489,6 +540,14 @@
   "application_link": "https://isss.uoregon.edu/icsp/application",
   "source_page": "https://isss.uoregon.edu/icsp"
  },
+ "imperial.ac.uk": {
+  "official_source": "Imperial College London",
+  "eligibility": "Applications accepted from Imperial students, UK and international candidates. **There are no restrictions on nationality.** Applies to both full- and part-time study. Academic criteria: in receipt of, or due to receive, a first-class or equivalent in an undergraduate or integrated Master's degree (with a stated fallback for candidates who have not yet achieved it). Candidates must have made contact with an Imperial supervisor who has agreed to supervise them; **supervisors are limited to supervising one scholar at any time**.",
+  "benefits": "A programme of bespoke opportunities and events from the Early Career Researcher Institute (ECRI); full postgraduate support including tailored support for disabled and international students; ECRI learning and development courses. **50 scholarships.** Each provides, across the 3.5 years of study: **full funding for tuition fees**; a **stipend of £27,036 per annum (2027-28 rate)**; a **consumables fund of £2,000 per annum for the first 3 years of study**.",
+  "degree": "PhD (doctoral)",
+  "description": "Full funding for a 3.5-year PhD place at Imperial, for high-performing undergraduate or Master's students with a strong research profile. The scheme has higher-than-usual eligibility requirements and attracts high numbers of applications.",
+  "source_page": "https://www.imperial.ac.uk/study/fees-and-funding/postgraduate-doctoral/grants-scholarships/presidents-phd/"
+ },
  "id:71": {
   "official_source": "University College London (UCL Scholarships and funding)",
   "eligibility": "candidates from any country outside the UK; eligible to pay the Overseas fee rate; from a lower-income background; a complete UCL admission application (including references) submitted for a full-time Master's degree in 2026/27. Distance-learning options are not eligible.",
@@ -523,6 +582,14 @@
   "description": "Waterloo's automatic International Student Entrance Scholarship, a $10,000 tuition credit for international fee-paying students entering their first year of most undergraduate programmes, awarded without any separate application. Waterloo lists it alongside the Mathematics International Awards for India students (up to 15, valued $20,000–$40,000) and Faculty of Science International Student scholarships (15 awards of $25,000–$80,000) as further options for international students.",
   "application_link": "https://uwaterloo.ca/future-students/financing/international-scholarships",
   "source_page": "https://uwaterloo.ca/future-students/financing/international-scholarships"
+ },
+ "esade.edu": {
+  "official_source": "Esade Ramon Llull University",
+  "degree": "Undergraduate, double degree, Master's, MBA",
+  "description": "A donor-funded Scholarship Program giving students with excellent academic track records and limited financial means the chance to study at Esade. Four Talent Scholarship types: Dedicated (named after the creating company, sometimes restricted to a programme such as BBA, Bachelor in Law, BITLASI or a double degree), Future (created by individuals or families), Class (funded collectively by a graduating class) and MSc (for MBA and MSc programmes). Applications are reviewed by the Talent Attraction Committee.",
+  "application_link": "https://www.esade.edu/en/about-us/scholarship-program-and-financial-aid/scholarship-program",
+  "source_page": "https://www.esade.edu/en/programs/scholarship-program-and-financial-aid",
+  "benefits": "**Talent Scholarships cover between 60% and 100% of tuition fees** for the entire undergraduate or double-degree programme. **MSc/MBA Talent Scholarships cover between 50% and 85% of tuition fees.** Published key facts: **EUR 5 million** dedicated to the Scholarship Program; **295 scholarship recipients**; **84% of recipients' tuition fees covered**; **8.4% of undergraduate students** are scholarship recipients. Complements: Esade Lodging Grants (students living outside Barcelona province), Esade Living Grants (transportation and general expenses), Esade Exchange Scholarships, Esade SUD Scholarships (solidarity internships in developing countries)."
  },
  "id:101": {
   "official_source": "Agency for Science, Technology and Research (A*STAR) — A*STAR Graduate Academy",
@@ -577,6 +644,15 @@
   "description": "Programme landing page: https://www.icar.gov.in/netaji-subhas-icar-international-fellowship (page last updated 30-09-2026); it hosts only the announcement PDF. The record's URL https://www.icar.gov.in is the ICAR homepage, i.e. a parent page rather than a programme-specific one.",
   "source_page": "https://www.icar.gov.in/sites/default/files/2026-08/NETAJI%20SUBHAS%20-%20ICAR%20INTERNATIONAL%20FELLOWSHIP.pdf"
  },
+ "admissions.rochester.edu": {
+  "official_source": "Alan and Jane Handler Endowed Scholarship",
+  "eligibility": "First-year, fall-term domestic **and international** applicants (transfer and spring applicants are not eligible) with demonstrated academic excellence, potential to be future leaders, resilience in the face of complex challenges, and high financial need. Nominations are invited from high school and independent counsellors, teachers and community-based organisation officials only — students and parents cannot nominate.",
+  "description": "The University of Rochester's premier undergraduate award, made from a permanently endowed fund established by Rich and Martha Handler in 2007 with an ultimate commitment of $25 million. Counselor nominations open 15 September and close 30 November; all first-year applicants are reviewed simply by submitting an application and completing financial-aid documents, with no additional materials. The application need not be Early Decision but should be submitted by 1 December. Finalists are invited to a mandatory two-part virtual interview in mid-February. Renewal requires maintaining Satisfactory Academic Progress and re-applying for financial aid annually by 15 March. Contact: Karin Wilson, Handler Scholarship Program Director.",
+  "source_page": "https://admissions.rochester.edu/handler-scholarship",
+  "benefits": "A four-year scholarship equal to the full cost of attendance for up to eight semesters — tuition, mandatory fees, housing, food, books, personal expenses and transportation — plus health insurance where applicable, a $100-per-year Academic Supply grant, and an enrichment fund of up to $5,000 for summer courses, study abroad, academic/professional endeavours or undergraduate research.",
+  "deadline": "2026-11-30",
+  "deadline_cycle": "published at https://admissions.rochester.edu/handler-scholarship; verified 30 Sep 2026, cycle not stated by the source"
+ },
  "ousf.duke.edu": {
   "official_source": "Duke University — Office of University Scholars and Fellows (OUSF)",
   "eligibility": "any country outside the U.S.; no dual U.S./other citizenship; no pre-existing B.A. or B.S. degree; strong academic preparation and documented need for financial aid; complete financial-aid forms (CSS Profile / FAFSA via Duke Financial Aid). Nominated scholars are accepted; candidates cannot be nominated.",
@@ -584,6 +660,13 @@
   "description": "The Karsh International Scholarship was founded in 2010 through a donation from Martha L. and Bruce A. Karsh. Karsh International Scholars form an intellectually and civically engaged cohort of international students promoting interdisciplinary inquiry, academic research and scholarship in the service of society. The current cohort includes students from Botswana, Bulgaria, Chile, Egypt, England, Ethiopia, Ghana, Kenya, Madagascar, Mongolia, New Zealand, North Macedonia, Norway, Pakistan, Russia, Rwanda, South Africa, Syria, Tajikistan, Thailand, Tunisia, Vietnam and Zimbabwe.",
   "source_page": "https://ousf.duke.edu/merit-scholarships/karsh-international-scholars-program",
   "benefits": "tuition, room and board, mandatory fees, demonstrated need exceeding those costs, and three summers of funding for research, unpaid internships and other academic-career opportunities"
+ },
+ "bc.edu": {
+  "official_source": "Gabelli Presidential Scholars Program",
+  "eligibility": "Early Decision and Regular Decision applicants to Boston College; only candidates for **fall** admission are considered. No separate application for the scholarship is required.",
+  "description": "An undergraduate academic, merit programme that annually awards full-tuition scholarships and fully funded, GPSP-sponsored summer programmes to 18 incoming freshman students. Early Decision and Regular Decision applicants who submit their BC applications by the 1 November priority scholarship deadline are considered. Contact: Haley House, 314 Hammond Street, Chestnut Hill, MA 02467.",
+  "source_page": "https://www.bc.edu/bc-web/academics/sites/gabelli-presidential-scholars-program.html",
+  "benefits": "Full-tuition scholarships plus fully funded GPSP-sponsored summer programmes; the programme annually awards 18 incoming freshman students. No separate monetary figure is published."
  },
  "admissions.yale.edu": {
   "official_source": "Yale University — Yale College, Office of Undergraduate Financial Aid (page hosted on admissions.yale.edu)",
@@ -619,6 +702,15 @@
   "application_link": "https://investyourtalentapplication.esteri.it/SITOIYT/EN/registration-my-app",
   "source_page": "https://investyourtalentapplication.esteri.it/SITOIYT/EN/current-call",
   "benefits": "**EUR 10,800 per year**, paid in instalments into an Italian bank account (first instalment EUR 4,800, then EUR 3,000 per quarter). Winners are **exempt from enrolment fees and university contributions** except regional right-to-education tax, stamp duty, accident/civil-liability insurance and health insurance. The scholarship does **not** cover travel or accommodation. Health insurance must be arranged by the holder. Incompatible with any other Italian government or public-institution scholarship (incl. Erasmus+ and regional programmes)."
+ },
+ "id:136": {
+  "official_source": "University of Padova",
+  "eligibility": "Non-Italian citizens (Italian citizens or dual citizens with another nationality cannot apply under this call). Applicants must hold a secondary school diploma or foreign university degree obtained outside Italy, must **not be resident in Italy** at the time of application, and must apply to an English-taught degree programme at Unipd within its deadline. They must not hold other scholarships and must not be enrolled at another university. The teaching committee of each degree course selects by academic merit. Successful candidates must accept the offer within the stated period and must not withdraw or transfer.",
+  "degree": "English-taught Bachelor's/single-cycle and Master's",
+  "description": "A merit-based scholarship for outstanding international students enrolling in English-taught degree programmes at the University of Padua, covering a cash allowance and tuition-fee exemption.",
+  "application_link": "https://www.unipd.it/en/padua-international-excellence-scholarship-programme (apply through the relevant English-taught degree course)",
+  "source_page": "https://www.unipd.it/en/padua-international-excellence-scholarship-programme",
+  "benefits": "**EUR 8,000 gross per academic year** plus **exemption from tuition fees** (students still pay the regional student fee and the revenue stamp). Paid in **two instalments of EUR 4,000 gross** (half on enrolment, half on confirmation of attendance at the mid-year exam session). **Up to 76 scholarships** are awarded."
  },
  "oia-scholarship.nycu.edu.tw": {
   "official_source": "National Yang Ming Chiao Tung University (NYCU) — Office of International Affairs",
@@ -662,6 +754,15 @@
   "description": "A postdoctoral fellowship within CERN's broader Graduate Programme for recent PhD graduates in physics and engineering, covering experimental, theoretical and applied science as well as engineering roles. CERN states that vacancies under Experimental Physics, Applied Science and Engineering, and Theoretical Physics each correspond to distinct and separate recruitment processes.",
   "application_link": "https://careers.cern/programmes/research-fellowship",
   "source_page": "https://careers.cern/jobs/research-fellowship-applied-physics-engineering/"
+ },
+ "imd.org": {
+  "official_source": "IMD Business School (Institut de Management à Genève), Lausanne",
+  "eligibility": "Common criteria for the merit scholarships — excellence in previous academic and/or professional endeavours including GPA (or equivalent) and GMAT/GRE scores; ability to convince IMD of ambition and potential to use the education to pursue a leadership role; career progression and international exposure; ability to contribute to the overall learning experience of the class; performance during the Assessment Day. Additional, award-specific criteria: MBA5 also requires a 750-word essay; Hilti STEM requires an academic background in STEM and/or passion for STEM; Nestlé gives preference to women from developing countries (employees of Nestlé or its subsidiaries are ineligible); Forté requires a female candidate; BackPack requires a highly talented woman with leadership potential who has faced obstacles that made an MBA feel out of reach (financial constraints, family responsibilities, or past disruptions to her professional path), a commitment to a leadership career, alignment with the BackPack Foundation values of share/dare/care, and no company sponsorship. Bursaries require proven financial need, good academic results, a strong reference letter and steady career progression.",
+  "benefits": "Participation in a high-achieving community of students and mentors; on-the-job and formal training; access to IMD's learning resources. Bursaries are means-tested support; IMD also directs students needing larger amounts to its listed loan providers. **MBA5 CHF 50,000; Hilti STEM CHF 50,000; Nestlé for Women CHF 40,000; Forté for Women CHF 30,000; IMD MBA Merit up to CHF 40,000; BackPack for Women full funding.** All amounts are CHF and are tuition scholarships for the IMD MBA programme; the page states no separate living stipend. **48% of students received a scholarship from IMD** and **more than 50% of IMD's scholarships are awarded to women**.",
+  "degree": "Master's (Master of Business Administration)",
+  "description": "IMD's funding page for the MBA programme, covering merit scholarships (some partner-funded), a women-focused scholarship set, a fully funded BackPack award, need-based bursaries and pointers to external funders. Applicants must have applied for and accepted an offer to join the IMD MBA programme.",
+  "application_link": "https://www.imd.org/degree/mba/financing/imd-mba-scholarships (complete the scholarship application in the **Program section of the MBA application form**; the bursary application form is directly in the admissions application)",
+  "source_page": "https://www.imd.org/degree/mba/financing/imd-mba-scholarships):"
  },
  "wipo.int": {
   "official_source": "World Intellectual Property Organization (WIPO), Geneva — \"Working at WIPO\" / Fellowship Program",
@@ -862,6 +963,14 @@
   "source_page": "https://yz.tsinghua.edu.cn/en/info/1027/1117.htm",
   "benefits": "Full CGS covers tuition fees, free university dormitory or accommodation subsidy, stipend, and comprehensive medical insurance. A Partial CGS includes one or some items from the Full CGS coverage. No monetary amounts are published on this page. (source: same)"
  },
+ "id:245": {
+  "official_source": "University of Chinese Academy of Sciences, entrusted by the Ministry of Education of the People's Republic of China",
+  "eligibility": "Foreign passport holders (not Chinese citizens). Master's applicants must be **35 or younger** and hold a bachelor's degree or equivalent, with an academic background related to the proposed field. Doctoral applicants must be **40 or younger** and hold a master's degree or equivalent. Applicants must be proficient in English or Chinese, must not already be studying a master's or doctoral programme in China, and must not already hold other Chinese Government Scholarship or other Chinese-government sponsorship. Selection is via a screening expert panel, then interviews for some.",
+  "description": "The Chinese Government Scholarship covers tuition, accommodation, a stipend and medical insurance for international students at Chinese institutions, administered in this case by UCAS.",
+  "application_link": "https://studyinchina.csc.edu.cn/#/login (agency number 80001) plus the UCAS online admission system at https://is.ucas.ac.cn/#/login",
+  "source_page": "https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid/6656-call-for-2026-chinese-government-scholarship-for-international-students-to-study-at-ucas",
+  "benefits": "Tuition waiver of **RMB 40,000/year (doctoral)** or **RMB 30,000/year (Master's)**; application fee of RMB 600 waived; monthly stipend of **RMB 5,000 (doctoral, including RMB 1,500 from the supervisor/institute)** or **RMB 3,500 (Master's, including RMB 500 from the supervisor/institute)**; free accommodation on the UCAS Beijing campus, or a subsidy of up to **RMB 700/month (Master's and regular visiting students)** or **RMB 1,000/month (doctoral and senior visiting students)**; medical insurance of **RMB 800 per person**."
+ },
  "id:251": {
   "official_source": "Trinity College Dublin, The University of Dublin",
   "eligibility": "applicants must have a non-EU fee status with tuition billed at a non-EU rate and must already hold a course offer for a full-time undergraduate degree at Trinity. Students from China are not eligible and are directed to the Claddagh Undergraduate Scholarship instead. (source: same)",
@@ -960,6 +1069,14 @@
   "application_link": "https://www.kuleuven.be/english/apply (Step 1, with the KU Leuven Scholarships & Master Mind Candidacy Form as annexe) then https://www.kuleuven.be/scholarships/year/2026-2027/registration (Step 2)",
   "source_page": "https://www.kuleuven.be/scholarships/year/2026-2027/inspiring-the-outstanding-scholarship"
  },
+ "id:287": {
+  "official_source": "Central European University",
+  "benefits": "The doctoral stipend is taxable in Austria as self-employed income, and the student is responsible for SVS health insurance and social security contributions. The university does not retroactively pay stipends for past months. **Master's —** Master's Tuition Award of **50%–80% of tuition fees** (full tuition award only in exceptional circumstances); Master's Stipend Award of **€300–€750 per month**. **Doctoral —** CEU Doctoral Scholarship covering **100% of tuition plus a monthly stipend of €2,002 gross/month for 48 months**, awarded automatically to applicants who apply by the financial aid deadline. **Bachelor's —** Partial Tuition Award of up to **50% of tuition fees, up to €4,000 per academic year**.",
+  "degree": "Bachelor's, Master's, doctoral",
+  "description": "CEU offers need- and merit-based financial aid, available for most full-time degree programmes. Candidates from any country may apply and must indicate funding interest in the CEU Application Form. Awarded on the basis of academic merit and financial need.",
+  "application_link": "https://www.ceu.edu/admissions/financial-aid",
+  "source_page": "https://www.ceu.edu/admissions/financial-aid"
+ },
  "id:289": {
   "official_source": "Polish National Agency for Academic Exchange (NAWA) — joint initiative with the Ministry of Foreign Affairs (Polish development aid)",
   "eligibility": "citizens of the 36 countries covered by Polish Aid from Eastern Europe, Asia, Africa and Latin America (full list in the call announcement); must be admitted to a Polish HEI supervised by the Minister of Science and Higher Education that has a framework agreement with NAWA; B2 language certificate; max 1 application",
@@ -987,6 +1104,24 @@
   "application_link": "https://www.novasbe.unl.pt/en/programs/apply/masters/eligibility  (the scholarship section of the Master's application form — there is no separate scholarship application portal)",
   "source_page": "https://www.novasbe.unl.pt/en/programs/scholarships-funding/masters",
   "benefits": "**Nova SBE Merit Scholarship — 20 % or 50 % of the tuition-fee value** of the Master's programme. When combined with other Nova SBE scholarships, funding cannot exceed 70 % of total Master's tuition, except where the funding is entirely a 100 % social-mobility scholarship. The prize does not cover the application fee, the first tuition instalment paid as an enrolment fee, the CEMS programme, the Double Degree programme, additional semesters, exchange programmes or Executive Master's programmes."
+ },
+ "id:313": {
+  "official_source": "University of Chinese Academy of Sciences",
+  "eligibility": "Foreign passport holders. Age limits: doctoral students **born after 1 January 1991**; Master's students **born after 1 January 1996**; senior visiting students **born after 1 January 1981**; regular visiting students **born after 1 January 1986**; **no age limit for joint programmes**. Applicants must be proficient in English or Chinese and must not already be studying at UCAS. Selection is via a screening expert panel, then a video interview.",
+  "degree": "Master's, PhD; also Senior Visiting and Regular Visiting student programmes, and joint programmes",
+  "description": "A full scholarship for international students at UCAS covering tuition, a monthly stipend, accommodation on the Beijing campus, medical insurance and the application fee.",
+  "application_link": "https://is.ucas.ac.cn/#/login (choose \"UCAS Scholarship for International Students\")",
+  "source_page": "https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid/6658-ucas-scholarship-for-international-students-2026-call-for-applications",
+  "benefits": "**Full scholarship** — tuition waiver of **RMB 40,000/year (PhD)** or **RMB 30,000/year (Master's)**; a UCAS stipend of **RMB 2,500/month (PhD)** or **RMB 2,000/month (Master's)**, plus a supervisor's assistantship, bringing the **total to not less than RMB 3,500/month (PhD)** or **RMB 3,000/month (Master's)**; basic accommodation on the Beijing campus; medical insurance of **RMB 800/year**; application fee of RMB 600 waived. A **partial scholarship** covers tuition, medical insurance and application fee only (no stipend, no accommodation)."
+ },
+ "id:314": {
+  "official_source": "Chinese Academy of Sciences / University of Chinese Academy of Sciences, as the Chinese host of the Alliance of National and International Science Organizations (ANSO)",
+  "eligibility": "Foreign passport holders. Master's applicants must be **born after 1 January 1996**; doctoral applicants **born after 1 January 1991**. Applicants must be proficient in English or Chinese, must not be currently pursuing a master's or doctoral programme in China, and cannot apply simultaneously to USTC and UCAS. Selection is via screening expert panel, then a video interview.",
+  "degree": "Master's and PhD",
+  "description": "Previously known as the ANSO Scholarship for Young Talents, launched in 2019 as part of the Belt and Road Initiative. The degree programme supports 100–200 Master's students and 300 PhD students per year across UCAS, USTC and CAS institutes.",
+  "application_link": "https://is.ucas.ac.cn/#/login",
+  "source_page": "https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid/6657-cas-anso-scholarship-degree-program-2026-call-for-applications-to-study-at-ucas",
+  "benefits": "Sponsored by the Chinese Academy of Sciences. Items 1–6 of the coverage list (tuition, accommodation, stipend, insurance, application fee and settlement allowance) are **fully covered for most awardees**. Within it, the **ANSO-CAS-TWAS/UNESCO PhD** sub-category is jointly funded by TWAS/UNESCO and awards **up to 40 PhD scholarships per year, with 10 priority scholarships for climate research**, prioritising Least Developed Countries and women. **Itemised amounts are not stated in the extractable text of Part II Coverage on the official page**, so no figures are reported here."
  },
  "id:317": {
   "official_source": "Tsinghua University — Graduate Admissions for International Students (the scholarship is offered by Bai Xian Asia Institute)",
@@ -1177,6 +1312,15 @@
   "application_link": "https://www.ru.nl/en/education/scholarships/radboud-scholarship-programme",
   "source_page": "https://www.ru.nl/en/education/scholarships/radboud-scholarship-programme"
  },
+ "education.govt.nz": {
+  "official_source": "Ngarimu VC and 28th (Māori) Battalion Memorial Scholarships",
+  "eligibility": "Ākonga Māori | Māori students pursuing study at a university, wānanga, or in vocational education and training, who are Māori or whakapapa to a recognised Māori iwi.",
+  "description": "Scholarships honouring the legacy of Victoria Cross recipient Second Lieutenant Te Moana-nui-a-Kiwa Ngarimu and the 28th (Māori) Battalion, recognising determination, integrity and commitment to their people. Applications to support study in 2027 closed on Sunday 19 July 2026; outcomes are expected to be notified to all applicants by late November 2026. Applications to support study in 2028 will open mid-2027. Applications may be submitted in English or te reo Māori. Contact ngārimu.scholarship@education.govt.nz or 0800 165 225. (The separate Ngarimu video and waiata composition competitions for Years 7–13 closed on 2 August 2026.)",
+  "source_page": "https://www.education.govt.nz/parents-and-caregivers/tertiary/available-assistance/ngarimu-vc-and-28th-maori-battalion-memorial-scholarships",
+  "benefits": "For the 2027 study year — 4 undergraduate scholarships valued up to $30,000 each ($10,000 per year for up to 3 years); 3 master's scholarships valued up to $20,000 each ($10,000 per year for up to 2 years); 1 Master of Education research scholarship valued up to $20,000 ($10,000 per year for up to 2 years); 1 doctoral scholarship valued up to $40,000 ($20,000 per year for up to 2 years); and 5 vocational education and training scholarships valued at $10,000 each for study at NZQA Levels 4 to 7.",
+  "deadline": "2026-07-19",
+  "deadline_cycle": "published at https://www.education.govt.nz/parents-and-caregivers/tertiary/available-assistance/ngarimu-vc-and-28th-maori-battalion-memorial-scholarships; verified 30 Sep 2026, cycle not stated by the source"
+ },
  "id:429": {
   "official_source": "Ministry of Home Affairs, Singapore (MHA)",
   "eligibility": "Singapore Citizen or Singapore Permanent Resident intending to take up Singapore Citizenship; strong leadership qualities and potential; strong interest in safeguarding the safety and security of Singapore; good academic and Co-Curricular Activities records; GCE A-Levels, International Baccalaureate, Polytechnic, NUS High School or other high school diploma/certificate. Current undergraduates (not in final year) may also apply for a mid-term scholarship.",
@@ -1195,6 +1339,15 @@
   "application_link": "https://www.psc.gov.sg/scholarships/apply-for-scholarship/psc-scholarships/",
   "source_page": "https://www.mha.gov.sg/careers/mha-scholarships/the-singapore-police-force-scholarship/"
  },
+ "id:438": {
+  "official_source": "Agency for Science, Technology and Research (A*STAR) — A*STAR Graduate Academy",
+  "eligibility": "Singaporean, or other nationals intending to take up Singapore citizenship; non-Singaporeans must hold at least Singapore Permanent Resident status before commencing and convert to citizenship during the PhD. A good class of Honours degree or equivalent; must be in the last semester of the final year of undergraduate studies (award conditional on meeting A*STAR's bachelor requirements); applied to or applying for a PhD at a top overseas institution. Mid-Term applicants must be Singaporean, enrolled at a top overseas institution, with at least one semester completed.",
+  "benefits": "One-year research attachment at an A*STAR research institute before the PhD (not applicable to mid-term candidates); bond of 4 years (3 years if the PhD is completed in a non-English-speaking country). Up to 5 years. Full tuition fees; monthly allowance **SGD 4,500** (Singapore Citizen) / **SGD 4,100** (Singapore Permanent Resident); monthly overseas living allowance; annual return airfare; conference, thesis, computer and settling-in allowances; language-programme fees for non-anglophone countries.",
+  "degree": "PhD at a top overseas institution",
+  "description": "NSS (PhD) funds up to five years of doctoral study at a top overseas institution for Singapore citizens and permanent residents (and nationals intending to take up citizenship), with a one-year A*STAR research attachment first.",
+  "application_link": "https://www.a-star.edu.sg/scholarships/home/scholarships/national-science-scholarship-(phd)",
+  "source_page": "https://www.a-star.edu.sg/scholarships/home/scholarships/national-science-scholarship-(phd"
+ },
  "id:443": {
   "official_source": "Singapore Management University — Office of Admissions and Financial Assistance",
   "eligibility": "Singapore Citizens; outstanding academic results; strong leadership capabilities and potential; excellent records in co-curricular and/or community activities; applying for admission to a full-time undergraduate degree programme at SMU.",
@@ -1203,6 +1356,13 @@
   "description": "An undergraduate award combining a full four-year tuition fee waiver with a growth opportunities allowance, for Singapore Citizens with outstanding academic results and strong leadership. Shortlisted applicants are invited to a panel interview.",
   "application_link": "https://admissions.smu.edu.sg/scholarships/prospective-students/singapore-citizens",
   "source_page": "https://admissions.smu.edu.sg/admissions-requirements/important-dates"
+ },
+ "id:446": {
+  "official_source": "SUTD Undergraduate Merit Scholarship",
+  "eligibility": "Open to Singapore Citizens applying to an SUTD undergraduate degree programme with outstanding Singapore-Cambridge GCE 'A' Level, Local Polytechnic Diploma, NUS High School Diploma, IB Diploma or Year 12 equivalent qualifications, and a passion for technology and design. As a special concession it may also be awarded to Singapore Permanent Residents or International Students who have demonstrated exceptional and outstanding achievements.",
+  "description": "Recognises academic excellence and a penchant for creating radical technology and innovative designs. No bond attached, but the recipient must take up the Tuition Grant Scheme (TGS). Academic performance is reviewed every term; recipients must complete at least 20 hours of service to the University and may not hold any other scholarship or grant concurrently.",
+  "source_page": "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship",
+  "benefits": "Subsidised tuition fees after the Tuition Grant for the normal duration (up to four years) of the bachelor's programme. For awards to Singapore Permanent Residents or International Students, tuition-fee coverage is capped at the level payable by a Singapore Citizen. No cash allowance is stated for this award."
  },
  "id:454": {
   "official_source": "Uppsala University",
@@ -1291,5 +1451,14 @@
   "description": "Latvia's state scholarship for international students from partner countries to study at Latvian higher education institutions, administered by VIAA through a single annual open call. Applications require a HEI confirmation letter, Europass CV, motivation letter, proof of education, two letters of recommendation (signed within the last 6 months), a study plan and a language certificate.",
   "application_link": "https://scholarships.viaa.gov.lv/en/login  (online electronic application system; registration required)",
   "source_page": "https://studyinlatvia.lv/scholarships"
+ },
+ "id:499": {
+  "official_source": "Dům zahraniční spolupráce (DZS) — Czech National Agency for International Education and Research, on behalf of the CZ-EDUCATION programme under the EEA and Norway Grants 2014–2021 / Education Programme 2021–2028",
+  "eligibility": "Czech kindergartens, primary and secondary schools listed in the register of the Ministry of Education, Youth and Sports (MEYS); or Czech higher education institutions holding an ECHE (Erasmus Charter for Higher Education). Project partners may be Czech or donor-state (Norway, Iceland, Liechtenstein) institutions; third-country beneficiaries of EEA Grants may participate without financial support. Applications are submitted by the Czech applicant through the DZS online system at https://eea-app.dzs.cz/eea/ and must be signed with a qualified electronic-signature certificate.",
+  "degree": "Not applicable — institutional cooperation grant for schools and higher education institutions, not an individual scholarship.",
+  "description": "The 4th call for institutional cooperation projects is closed. The page states \"No call for proposals will be opened in 2022 and 2023\" and, for mobility, VET and inclusive-education projects, \"No call for proposals will be opened in 2023 and 2024\". Approved-project lists exist for the 1st–4th calls. Priority themes are democracy, active citizenship and inclusive education.",
+  "application_link": "https://eea-app.dzs.cz/eea/ (the recorded `apply` URL is only a blank Czech-language PDF *template* of the application form: https://www.dzs.cz/sites/default/files/2020-08/Projekty%20institucion%C3%A1ln%C3%AD%20spolupr%C3%A1ce%20-%20vzor%20formul%C3%A1%C5%99e%20%C5%BE%C3%A1dosti.pdf — not a live application endpoint)",
+  "source_page": "https://www.dzs.cz/en/program/eea-grants/projects-and-grants",
+  "benefits": "Institutional cooperation project grants under the CZ-EDUCATION Education Programme. No per-grant amount is published on this page."
  }
 }

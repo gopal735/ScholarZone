@@ -32,34 +32,6 @@
    "successor": "https://www.unibo.it/en/teaching/degree-programmes/article/study-grants-and-fees"
   },
   {
-   "id": 408,
-   "flag": "DEAD",
-   "reason": "DEAD",
-   "no_successor_reason": "research found no live successor"
-  },
-  {
-   "id": 335,
-   "flag": "DUPLICATE",
-   "reason": "DUPLICATE"
-  },
-  {
-   "id": 163,
-   "flag": "DEAD",
-   "reason": "DEAD",
-   "no_successor_reason": "research found no live successor"
-  },
-  {
-   "id": 222,
-   "flag": "DEAD",
-   "reason": "DEAD",
-   "no_successor_reason": "research found no live successor"
-  },
-  {
-   "id": 323,
-   "flag": "DUPLICATE",
-   "reason": "DUPLICATE"
-  },
-  {
    "id": 418,
    "flag": "DEAD",
    "reason": "(a) record  url  https://nawa.gov.pl/en/scientists/walczak returns the NAWA soft-404 page; (b) no call since December 2024; treat as discontinued until NAWA republishes. Live section page: https://nawa.gov.pl/en/scientists/the-walczak-programme",
@@ -82,21 +54,38 @@
    "reason": "(umbrella)   — this is the sub-Saharan Africa regional edition of the global L'Oréal-UNESCO For Women in Science programme; other regional editions exist and should be grouped under the global umbrella. Not a Belgian scholarship despite the host domain"
   },
   {
-   "id": 225,
-   "flag": "DEAD",
-   "reason": "DEAD",
-   "successor": "https://www.fwf.ac.at/en/funding/portfolio/careers/docfunds"
-  },
-  {
-   "id": 125,
+   "id": 44,
    "flag": "DUPLICATE",
-   "reason": "DUPLICATE"
+   "reason": "MAP is the Mekong-subregion sub-scheme of id=30 (Australia Awards Scholarships), not an independent programme. It shares the identical application portal, process, benefit package and per-country deadlines. Per the brief's duplicate rule (per-country/per-regional variants of one global scheme), id=4"
   },
   {
-   "id": 178,
+   "id": 169,
    "flag": "DEAD",
-   "reason": "DEAD",
-   "successor": "https://www.uu.nl/en/masters/general-information/application-and-admission/scholarships-and-grants"
+   "reason": "the record's URL  https://www.ceu.edu/scholarships  returns   HTTP 404  . Live successor: https://www.ceu.edu/admissions/financial-aid/student-scholarships",
+   "successor": "https://www.ceu.edu/scholarships"
+  },
+  {
+   "id": 188,
+   "flag": "DEAD",
+   "reason": "the record's URL  https://liu.se/en/education/scholarships  returns   HTTP 404   (\"404-sida\"). Live successor: https://liu.se/en/article/scholarships",
+   "successor": "https://liu.se/en/education/scholarships"
+  },
+  {
+   "id": 135,
+   "flag": "DEAD",
+   "reason": "the record's URL  https://www.polimi.it/en/future-students/fees/scholarships  returns   HTTP 404   (\"Page not available\"). Live successor: https://www.polimi.it/en/prospective-students/how-much-does-it-cost/scholarships",
+   "successor": "https://www.polimi.it/en/future-students/fees/scholarships"
+  },
+  {
+   "id": 11,
+   "flag": "NEVER-EXISTED",
+   "reason": "there is no \"Study in India (SII) Scholarship\" programme. The portal's own  /scholarships&fellowships  page lists a set of   separate, independently administered Government of India schemes   with their own eligibility, benefits and deadlines, none of which is called a \"Study in India Scholarship\""
+  },
+  {
+   "id": 181,
+   "flag": "DEAD",
+   "reason": "the record's URL  https://www.utwente.nl/en/education/scholarships-financial-aid/university-of-twente-scholarship  returns   HTTP 404   (\"Page does not exist\"). Live successor: https://www.utwente.nl/en/education/scholarship-finder/university-of-twente-scholarship/ (reached via the university's Scho",
+   "successor": "https://www.utwente.nl/en/education/scholarships-financial-aid/university-of-twente-scholarship"
   },
   {
    "id": 5,
@@ -166,12 +155,6 @@
    "successor": "https://vu.nl/en/deducation/scholarships/vu-fellowship-programme"
   },
   {
-   "id": 199,
-   "flag": "DEAD",
-   "reason": "DEAD",
-   "no_successor_reason": "research found no live successor"
-  },
-  {
    "id": 360,
    "flag": "DUPLICATE",
    "reason": "this is the   India-specific edition   of the single global Japanese Government"
@@ -210,21 +193,10 @@
    "successor": "https://www.unibs.it/en/study/fees-and-scholarships/scholarships-and-grants"
   },
   {
-   "id": 145,
-   "flag": "MISATTRIBUTED",
-   "reason": "the record's  url  ( https://english.moe.gov.tw/cp-24-16833-23C09-1.html ) is the   Taiwan Scholarship Program   page, not the HES page; HES is mentioned there only once, in the list of schemes whose prior receipt makes you ineligible.   Correct official HES page:   https://english.moe.gov.tw/cp-24-",
-   "successor": "https://english.moe.gov.tw/cp-24-16833-23C09-1.html"
-  },
-  {
    "id": 50,
    "flag": "DEAD",
    "reason": "(page-declared) / contradictory status   — the live page carries the banner   \"The scholarship is currently unavailable.\"   directly above the heading, while simultaneously listing a full set of award categories, a value, \"Up to 200 on offer\" and 2026 Conditions of Award. Treat the award as   not cu",
    "no_successor_reason": "research found no live successor"
-  },
-  {
-   "id": 147,
-   "flag": "MISATTRIBUTED",
-   "reason": "(host) + DEAD (apply link) + DUPLICATE (scope)"
   },
   {
    "id": 484,
@@ -360,10 +332,81 @@
    "successor": "https://admissions.uiowa.edu/scholarship/international-distinction-education-award-idea"
   },
   {
-   "id": 488,
-   "flag": "MISATTRIBUTED",
-   "reason": "the recorded url domain  educationusa.state.gov  belongs to EducationUSA, a U.S. State Department advising/information service, not to the awarding body. The awarding body is Johnson & Wales University.  jwu.edu  returns an Incapsula bot-protection block page (HTTP body of 212 bytes) to every reques",
-   "successor": "https://www.jwu.edu/admissions/paying-for-college/scholarships-and-grants.html"
+   "id": 411,
+   "flag": "DEAD",
+   "reason": "research reported both a dead link and a dead programme for this id; the two cannot be reconciled from the report",
+   "no_successor_reason": "research found no live successor"
+  },
+  {
+   "id": 412,
+   "flag": "DEAD",
+   "reason": "programme no longer runs a call",
+   "no_successor_reason": "research found no live successor"
+  },
+  {
+   "id": 414,
+   "flag": "DEAD",
+   "reason": "official source URL does not resolve; programme status unclear",
+   "no_successor_reason": "research found no live successor"
+  },
+  {
+   "id": 426,
+   "flag": "DEAD",
+   "reason": "official source URL does not resolve; programme status unclear",
+   "no_successor_reason": "research found no live successor"
+  },
+  {
+   "id": 265,
+   "flag": "DEAD",
+   "reason": "official source URL does not resolve; programme status unclear",
+   "no_successor_reason": "research found no live successor"
+  },
+  {
+   "id": 427,
+   "flag": "DEAD",
+   "reason": "programme no longer runs a call",
+   "no_successor_reason": "research found no live successor"
+  },
+  {
+   "id": 389,
+   "flag": "DEAD",
+   "reason": "programme no longer runs a call",
+   "no_successor_reason": "research found no live successor"
+  },
+  {
+   "id": 191,
+   "flag": "DEAD",
+   "reason": "programme no longer runs a call",
+   "no_successor_reason": "research found no live successor"
+  },
+  {
+   "id": 451,
+   "flag": "DEAD",
+   "reason": "programme no longer runs a call",
+   "no_successor_reason": "research found no live successor"
+  },
+  {
+   "id": 435,
+   "flag": "DEAD",
+   "reason": "programme no longer runs a call",
+   "no_successor_reason": "research found no live successor"
+  },
+  {
+   "id": 242,
+   "flag": "DEAD",
+   "reason": "programme no longer runs a call; record is also a country variant of one global award",
+   "no_successor_reason": "research found no live successor"
+  },
+  {
+   "id": 32,
+   "flag": "DUPLICATE",
+   "reason": "duplicates ids 191 and 451, which cover the same award"
+  },
+  {
+   "id": 413,
+   "flag": "DEAD",
+   "reason": "duplicate entry, see the MISATTRIBUTED note above; held for review because the report is internally inconsistent",
+   "no_successor_reason": "research found no live successor"
   }
  ]
 }
