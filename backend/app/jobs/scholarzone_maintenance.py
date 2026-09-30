@@ -41,6 +41,7 @@ from __future__ import annotations
 
 import argparse
 import logging
+import os
 import sys
 import time
 from dataclasses import dataclass, field
@@ -1234,12 +1235,24 @@ def main(argv: list[str] | None = None) -> int:
         for item in pending:
             host_order[item["host"]] = host_order.get(item["host"], 0) + 1
 
-        print(f"WORKLIST_JSON_START {len(pending)} records / {len(host_order)} hosts")
-        print(json.dumps(pending, ensure_ascii=True))
-        print("WORKLIST_JSON_END")
+        # Written to a file rather than printed. The backlog is a few hundred
+        # kilobytes on one line, and a log line that long truncates the run log
+        # and takes the stage's own output with it - the step then dies before
+        # reporting success. A file survives and can be sharded.
+        out_dir = os.environ.get("SCHOLARZONE_WORKLIST_DIR") or os.path.join(
+            os.getcwd(), ".worklist"
+        )
+        os.makedirs(out_dir, exist_ok=True)
+        out_path = os.path.join(out_dir, "pending_research.json")
+        with open(out_path, "w", encoding="utf-8") as handle:
+            json.dump(
+                {"records": pending, "host_order": host_order}, handle, ensure_ascii=True, indent=1
+            )
+        print(f"worklist_file: {out_path}")
         return {
             "records_pending": len(pending),
             "hosts_pending": len(host_order),
+            "worklist_file": out_path,
             "hosts_by_gap": sorted(host_order.items(), key=lambda kv: (-kv[1], kv[0])),
         }
 

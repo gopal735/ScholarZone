@@ -141,6 +141,17 @@ jobs:
             --image-budget-seconds "${{ github.event.inputs.image_budget_seconds || '90' }}" \
             ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}
 
+      # The worklist stage writes its backlog here. It is far too large for the
+      # run log, and a stage that tries to print it loses its own output.
+      - name: Upload research worklist
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pending-research-worklist
+          path: backend/.worklist/pending_research.json
+          if-no-files-found: ignore
+          retention-days: 3
+
   # Bounded retry for transient failures.
   #
   # The concurrency group above is authoritative: at most one maintenance run
