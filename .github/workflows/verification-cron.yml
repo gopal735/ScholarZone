@@ -169,7 +169,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: pending-research-worklist
-          path: backend/.worklist/pending_research.json
+          path: |
+            backend/.worklist/pending_research.json
+            backend/.worklist/field_inventory.json
           if-no-files-found: ignore
           retention-days: 3
 

@@ -70,7 +70,7 @@ MAX_STAGE_WORKERS = 16
 # Stage order reflects dependencies: verification establishes which records
 # are current, and the remaining stages all operate on that outcome.
 STAGE_ORDER = (
-    "verify", "worklist", "enrich", "images", "logos", "discover", "quarantine", "retire", "correct",
+    "verify", "worklist", "inventory", "enrich", "images", "logos", "discover", "quarantine", "retire", "correct",
     "stats", "facts", "archive", "discontinued", "purge",
 )
 
@@ -439,7 +439,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--stage",
         action="append",
-        choices=["verify", "worklist", "enrich", "images", "logos", "discover", "quarantine", "retire", "correct",
+        choices=["verify", "worklist", "inventory", "enrich", "images", "logos", "discover", "quarantine", "retire", "correct",
                      "stats", "facts", "archive", "discontinued", "retire", "purge", "all"],
         default=None,
         help="Run only these stages (default: all).",
@@ -1738,9 +1738,97 @@ def main(argv: list[str] | None = None) -> int:
             "hosts_by_gap": sorted(host_order.items(), key=lambda kv: (-kv[1], kv[0])),
         }
 
+    def do_inventory() -> dict:
+        """List every record with a field a research pass could fill.
+
+        Coverage totals say how many records are thin; they cannot say which
+        fields are thin on which record. Enriching a catalogue needs the second
+        question answered exactly, because a research agent is only useful if it
+        is told precisely which fields are empty and therefore worth the fetch.
+
+        Read-only, and the output is a file rather than log lines for the same
+        reason the worklist is: a few hundred records of field lists overflows
+        the run log and takes the stage's own result with it.
+        """
+        import json
+        from pathlib import Path
+        from urllib.parse import urlparse
+
+        from sqlalchemy import select
+
+        from app.models import Scholarship
+        from app.services.catalogue_quarantine import QUARANTINE_STATUS
+
+        # Fields a research pass can fill from an official source. Internal
+        # bookkeeping columns are excluded on purpose: is_verified and
+        # image_verified_at record what this system concluded, not what the
+        # awarding body published.
+        researchable = (
+            "description", "funding", "benefits", "eligibility", "degree",
+            "deadline_date", "deadline_display", "deadline_precision",
+            "application_link", "application_method", "application_period",
+            "requirements", "documents", "english_requirement",
+            "selection_notes", "program_type", "best_fit", "notes",
+            "coverage", "duration", "region", "catalogue_url",
+            "official_updates_url", "qualifications",
+        )
+        available = {c.name for c in Scholarship.__table__.columns}
+        targets = [f for f in researchable if f in available]
+
+        session = factory()
+        try:
+            rows = session.execute(
+                select(Scholarship.id, Scholarship.title, Scholarship.country,
+                       Scholarship.official_source_url, Scholarship.degree)
+                .where(Scholarship.verification_status != QUARANTINE_STATUS)
+                .order_by(Scholarship.id)
+            ).all()
+            records = []
+            for rid, title, country, source_url, degree in rows:
+                row = session.get(Scholarship, rid)
+                empty = [
+                    f for f in targets
+                    if getattr(row, f, None) in (None, "", [], {})
+                ]
+                if not empty:
+                    continue
+                host = (urlparse(source_url or "").hostname or "").lower()
+                records.append({
+                    "id": rid,
+                    "title": title,
+                    "country": country,
+                    "host": host[4:] if host.startswith("www.") else host,
+                    "url": source_url,
+                    "degree": degree,
+                    "empty_fields": empty,
+                })
+        finally:
+            session.close()
+
+        tally: dict[str, int] = {}
+        for rec in records:
+            for field in rec["empty_fields"]:
+                tally[field] = tally.get(field, 0) + 1
+
+        out_dir = os.environ.get("SCHOLARZONE_WORKLIST_DIR") or os.path.join(
+            os.getcwd(), ".worklist"
+        )
+        os.makedirs(out_dir, exist_ok=True)
+        out_path = os.path.join(out_dir, "field_inventory.json")
+        with open(out_path, "w", encoding="utf-8") as handle:
+            json.dump({"targets": targets, "records": records}, handle, indent=1)
+
+        print(f"inventory_file: {out_path}")
+        return {
+            "records_needing_research": len(records),
+            "fields_considered": len(targets),
+            "empty_field_frequency": dict(sorted(tally.items(), key=lambda kv: -kv[1])),
+        }
+
     stages = {
         "verify": do_verify,
         "worklist": do_worklist,
+        "inventory": do_inventory,
         "enrich": do_enrich,
         "images": do_images,
         "discover": do_discover,
