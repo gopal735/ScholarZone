@@ -1,9 +1,14 @@
 #!/usr/bin/env node
 
-/* eslint-disable no-undef */
 /**
  * Generate sitemap.xml for ScholarZone
  * Run this after database updates to regenerate the sitemap
+ *
+ * This is a Node script. It previously carried a whole-file lint disable for
+ * undefined names, needed only because `process` was flagged. That is now
+ * covered by the Node globals override in eslint.config.js, so the blanket
+ * disable is both unnecessary and harmful: it would hide genuine undefined-name
+ * errors in this file.
  */
 
 const fs = require('fs');
