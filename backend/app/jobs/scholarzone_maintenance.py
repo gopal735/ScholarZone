@@ -62,7 +62,7 @@ MAX_STAGE_WORKERS = 16
 
 # Stage order reflects dependencies: verification establishes which records
 # are current, and the remaining stages all operate on that outcome.
-STAGE_ORDER = ("verify", "enrich", "images", "discover", "quarantine", "stats", "facts", "purge")
+STAGE_ORDER = ("verify", "enrich", "images", "logos", "discover", "quarantine", "stats", "facts", "purge")
 
 # A stage that fails stops the stages that depend on it, but not the ones that
 # do not. Verification has no prerequisite and nothing gates it.
@@ -91,6 +91,7 @@ STAGE_DEPENDENCIES: dict[str, tuple[str, ...]] = {
     "quarantine": (),
     "stats": (),
     "facts": (),
+    "logos": (),
     "purge": (),
 }
 
@@ -115,6 +116,29 @@ class StageReport:
             "error": self.error,
             "detail": self.detail,
         }
+
+
+def _issuer_kind(host: str, alt_text: str | None = None) -> str:
+    """Classify which kind of body serves a logo.
+
+    Recorded on the image so a card can state whether the mark belongs to a
+    government, a university or a foundation. The host is consulted first
+    because it is provenance we can actually verify; the alt text is a fallback
+    for universities on national academic domains, where the TLD carries no
+    signal at all - ``ut.ee``, ``lu.lv`` and ``hi.is`` are universities, and no
+    host pattern can tell that.
+
+    An issuer that cannot be classified falls back to official_logo, which is
+    the honest answer: it is a logo, just not attributed more precisely.
+    """
+    if any(token in host for token in (".gov", "-gov.", "europa.eu", "un.org", "au.int")):
+        return "official_government"
+    if any(token in host for token in (".edu", ".ac.", "university", "unibe", "hochschule")):
+        return "official_university"
+    label = (alt_text or "").lower()
+    if any(token in label for token in ("university", "universität", "universitat", "univ.")):
+        return "official_university"
+    return "official_logo"
 
 
 def _run_stage(name: str, fn) -> StageReport:
@@ -328,7 +352,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--stage",
         action="append",
-        choices=["verify", "enrich", "images", "discover", "quarantine", "stats", "facts", "purge", "all"],
+        choices=["verify", "enrich", "images", "logos", "discover", "quarantine", "stats", "facts", "purge", "all"],
         default=None,
         help="Run only these stages (default: all).",
     )
@@ -524,6 +548,99 @@ def main(argv: list[str] | None = None) -> int:
                 "enrich_source_failures": report.metrics.source_failures,
             }
         )
+        return detail
+
+    def do_logos() -> dict:
+        """Attach audited official logos by exact official-source host.
+
+        The images stage discovers logos by crawling, which is correct but slow:
+        a record whose site blocks us burns its whole per-record budget before
+        giving up, so a catalogue-wide sweep takes hours.
+
+        The override file is the fast path for the institutions we already know.
+        Every entry was probed live and confirmed to be image bytes served by the
+        institution's own host, and it is keyed on the record's exact official
+        source host, so a record cannot pick up another body's artwork.
+
+        It still does not skip the honesty rules. The recorded provenance says
+        exactly which page the bytes came from and whether the host is official,
+        so a `official_host: false` entry is stored as third-party rather than
+        quietly promoted. Only records with no image are touched: an existing
+        verified identity mark is never replaced by a different one.
+        """
+        from urllib.parse import urlparse
+
+        from app.services.logo_fallback_resolver import load_overrides, root_of
+
+        overrides = load_overrides()
+        if not overrides:
+            return {"overrides_loaded": 0, "matched": 0, "attached": 0, "skipped_existing": 0}
+
+        from datetime import datetime, timezone
+
+        from sqlalchemy import select
+
+        from app.models import Scholarship
+
+        now = datetime.now(timezone.utc)
+        attached = 0
+        skipped_existing = 0
+        details: list[dict] = []
+        session = factory()
+        try:
+            rows = session.scalars(
+                select(Scholarship).where(Scholarship.image_url.isnot(None))
+            ).all()
+            for row in rows:
+                host = (urlparse(row.official_source_url or "").hostname or "").lower()
+                host = host[4:] if host.startswith("www.") else host
+                entry = overrides.get(host)
+                if not entry:
+                    continue
+                skipped_existing += 1
+                continue
+
+            empty = session.scalars(
+                select(Scholarship).where(Scholarship.image_url.is_(None))
+            ).all()
+            for row in empty:
+                host = (urlparse(row.official_source_url or "").hostname or "").lower()
+                host = host[4:] if host.startswith("www.") else host
+                entry = overrides.get(host)
+                if not entry:
+                    continue
+                if args.dry_run:
+                    attached += 1
+                    continue
+                row.image_url = entry["url"]
+                row.image_source_url = entry.get("page_url") or root_of(
+                    row.official_source_url
+                )
+                row.image_source_type = _issuer_kind(host, entry.get("alt_text"))
+                row.image_kind = "official_logo"
+                row.image_alt_text = entry.get("alt_text") or host
+                row.image_verified_at = now
+                row.image_evaluated_at = now
+                row.image_evaluation_status = "no_official_image"
+                attached += 1
+                if len(details) < 200:
+                    details.append({"id": row.id, "host": host})
+            if attached and not args.dry_run:
+                session.commit()
+            elif args.dry_run:
+                session.rollback()
+        finally:
+            session.close()
+
+        detail = {
+            "overrides_loaded": len(overrides),
+            "matched": attached + skipped_existing,
+            "attached": attached,
+            "skipped_existing_image": skipped_existing,
+            "attached_detail": details,
+        }
+        if not args.dry_run:
+            recorder.record_counts({"logo_overrides_attached": attached})
         return detail
 
     def do_facts() -> dict:
@@ -805,6 +922,7 @@ def main(argv: list[str] | None = None) -> int:
         "quarantine": do_quarantine,
         "stats": do_stats,
         "facts": do_facts,
+        "logos": do_logos,
         "purge": do_purge,
     }
 

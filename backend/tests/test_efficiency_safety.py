@@ -786,7 +786,7 @@ class TestAutonomousContract:
     def test_execution_contract_order(self):
         """The documented contract is what the code actually does."""
         assert list(worker.STAGE_ORDER) == [
-            "verify", "enrich", "images", "discover", "quarantine",
+            "verify", "enrich", "images", "logos", "discover", "quarantine",
             "stats", "facts", "purge",
         ]
         # Verification is the root; everything else is either downstream of it
@@ -805,3 +805,7 @@ class TestAutonomousContract:
         # facts writes verified programme data, so it has to stay a leaf: it
         # reads the live page state of the records it is about to change.
         assert worker.STAGE_DEPENDENCIES["facts"] == ()
+        # logos only fills empty image slots, so it has to run before the stage
+        # that would otherwise re-crawl records it could have filled instantly.
+        assert worker.STAGE_DEPENDENCIES["logos"] == ()
+        assert worker.STAGE_ORDER.index("logos") < worker.STAGE_ORDER.index("purge")

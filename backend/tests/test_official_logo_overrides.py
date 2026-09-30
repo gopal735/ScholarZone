@@ -147,6 +147,73 @@ class TestOverrideResolution:
         assert "white" in rules.lower(), "rules must record the white-logo exclusion"
 
 
+class TestIssuerKind:
+    def test_government_hosts_are_attributed_to_government(self):
+        from app.jobs.scholarzone_maintenance import _issuer_kind
+
+        for host, expected in [
+            ("nawa.gov.pl", "official_government"),
+            ("moe.gov.sa", "official_government"),
+            ("erasmus-plus.ec.europa.eu", "official_government"),
+            ("un.org", "official_government"),
+        ]:
+            assert _issuer_kind(host) == expected
+
+    def test_university_hosts_are_attributed_to_university(self):
+        from app.jobs.scholarzone_maintenance import _issuer_kind
+
+        for host in ("uct.ac.za", "wits.ac.za", "iuj.ac.jp", "um.edu.mt", "knust.edu.gh"):
+            assert _issuer_kind(host) == "official_university"
+
+    def test_a_national_university_domain_is_not_guessed_from_its_tld(self):
+        """`.hr` is not a university signal, and the code must not pretend it is.
+
+        Zagreb is a university, but a host pattern matching `.hr` would also
+        match a government ministry, a broadcaster and a bank. Guessing there
+        would produce a confident wrong attribution, so the host pattern is
+        absent and the alt text is used instead.
+        """
+        from app.jobs.scholarzone_maintenance import _issuer_kind
+
+        assert _issuer_kind("unizg.hr") == "official_logo"
+        assert _issuer_kind("unizg.hr", "University of Zagreb") == "official_university"
+
+    def test_national_academic_domains_need_the_alt_text(self):
+        """`.ee`, `.lv` and `.is` carry no university signal in the TLD.
+
+        Tartu, Latvia and Iceland are all universities on national academic
+        domains, so the alt text is the only honest way to attribute them.
+        """
+        from app.jobs.scholarzone_maintenance import _issuer_kind
+
+        for host in ("ut.ee", "lu.lv", "hi.is"):
+            assert _issuer_kind(host) == "official_logo", (
+                f"{host} has no host-level university signal"
+            )
+            assert _issuer_kind(host, "University of Tartu") == "official_university"
+
+    def test_every_override_with_university_alt_text_resolves_to_university(self, overrides):
+        """The attribution must be derivable for every entry we ship."""
+        from app.jobs.scholarzone_maintenance import _issuer_kind
+
+        for host, entry in overrides.items():
+            kind = _issuer_kind(host, entry.get("alt_text"))
+            assert kind in {
+                "official_logo", "official_government", "official_university"
+            }, f"{host} produced an unknown issuer kind: {kind}"
+
+    def test_unknown_issuer_falls_back_to_logo(self):
+        """A foundation is a logo with no more specific attribution.
+
+        Claiming a government or university identity we cannot support would be
+        worse than the honest, weaker statement.
+        """
+        from app.jobs.scholarzone_maintenance import _issuer_kind
+
+        assert _issuer_kind("iie.org") == "official_logo"
+        assert _issuer_kind("akdn.org") == "official_logo"
+
+
 class TestRootOfHelper:
     def test_root_of_extracts_scheme_and_host(self):
         assert root_of("https://daad.de/en/x") == "https://daad.de/"
