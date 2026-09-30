@@ -1172,6 +1172,11 @@ def main(argv: list[str] | None = None) -> int:
         try:
             applied: list[dict] = []
             collisions: list[dict] = []
+            # Addresses assigned earlier in this same batch. Two corrections can
+            # propose the same new URL, and neither sees the other's write
+            # because neither has been committed yet, so the database check
+            # below cannot see the clash on its own.
+            assigned: dict[str, int] = {}
             for rid, entry in sorted(wanted.items()):
                 row = session.get(Scholarship, rid)
                 if row is None:
@@ -1193,23 +1198,26 @@ def main(argv: list[str] | None = None) -> int:
                             )
                             continue
                         if field == "official_source_url":
-                            # official_source_url is unique, and a correction is
-                            # allowed to point a record at the address another
-                            # record already uses. Writing it raises a
+                            # official_source_url is unique, and a correction
+                            # is allowed to point a record at an address another
+                            # record already holds. Writing it raises a
                             # UniqueViolation that fails the whole run, and the
                             # duplicate it would create is itself a defect, so
                             # the correction is skipped and reported instead.
-                            clash = session.scalar(
-                                select(Scholarship.id).where(
-                                    Scholarship.official_source_url == value,
-                                    Scholarship.id != rid,
-                                ).limit(1)
-                            )
+                            clash = assigned.get(value)
+                            if clash is None:
+                                clash = session.scalar(
+                                    select(Scholarship.id).where(
+                                        Scholarship.official_source_url == value,
+                                        Scholarship.id != rid,
+                                    ).limit(1)
+                                )
                             if clash:
                                 collisions.append(
                                     {"id": rid, "url": value, "already_used_by": clash}
                                 )
                                 continue
+                            assigned[value] = rid
                     if (getattr(row, field, None) or "").strip() == value:
                         continue
                     setattr(row, field, value)
