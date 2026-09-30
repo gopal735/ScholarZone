@@ -305,11 +305,44 @@ class LogoFallbackResolver:
                 )
         return candidates
 
+    def _lookup_override(self, host: str) -> dict[str, str] | None:
+        """Find the override for a host, exact match first, then a parent domain.
+
+        Records store whatever host their programme page actually lives on, and
+        that is rarely the bare apex: Oxford is ``ox.ac.uk`` but also
+        ``admission.kaist.ac.kr`` and ``www2.daad.de``. An exact-match-only
+        lookup misses every one of those, so a single audited entry per
+        institution would only ever cover the records that happened to use the
+        apex. The catalogue had 316 hosts needing a logo and 42 audited
+        institutions, which is the size of that gap.
+
+        The parent fallback is deliberately narrow. It only matches when the
+        record's host is a subdomain of the audited host, and the *longest*
+        matching key wins, so an entry for ``nus.edu.sg`` is not shadowed by a
+        broader one and a record on ``admissions.kaist.ac.kr`` resolves to
+        KAIST rather than to some unrelated parent.
+        """
+        if not host:
+            return None
+        exact = self._overrides.get(host)
+        if exact:
+            return exact
+
+        best_key = None
+        labels = host.split(".")
+        # Walk from the most specific parent down to the registrable domain.
+        for i in range(1, len(labels) - 1):
+            candidate = ".".join(labels[i:])
+            if candidate in self._overrides:
+                if best_key is None or len(candidate) > len(best_key):
+                    best_key = candidate
+        return self._overrides.get(best_key) if best_key else None
+
     # -- tier 3: static override ---------------------------------------
 
     def tier_static_override(self, scholarship) -> list[LogoCandidate]:
         """An audited, deterministic mapping for institutions we know well."""
-        entry = self._overrides.get(institution_key(scholarship))
+        entry = self._lookup_override(institution_key(scholarship))
         if not entry:
             return []
         url = (entry.get("url") or "").strip()

@@ -632,11 +632,36 @@ def main(argv: list[str] | None = None) -> int:
         """
         from urllib.parse import urlparse
 
+        from app.services.image_discovery_orchestrator import LOGO_IDENTITY_KINDS
         from app.services.logo_fallback_resolver import load_overrides, root_of
 
         overrides = load_overrides()
         if not overrides:
             return {"overrides_loaded": 0, "matched": 0, "attached": 0, "skipped_existing": 0}
+
+        def lookup(host: str):
+            """Exact host first, then the longest matching parent domain.
+
+            Records store the host their programme page actually lives on, which
+            is rarely the apex - ``www2.daad.de``, ``admission.kaist.ac.kr``,
+            ``nusgs.nus.edu.sg``. Exact matching alone would cover a fraction of
+            the records an audited institution actually owns, so the parent
+            fallback does the work. It only matches a subdomain of an audited
+            host and prefers the most specific key, which keeps a narrow entry
+            from being shadowed by a broader one.
+            """
+            if not host:
+                return None
+            exact = overrides.get(host)
+            if exact:
+                return host, exact
+            labels = host.split(".")
+            best = None
+            for i in range(1, len(labels) - 1):
+                candidate = ".".join(labels[i:])
+                if candidate in overrides and (best is None or len(candidate) > len(best[0])):
+                    best = (candidate, overrides[candidate])
+            return best if best else None
 
         from datetime import datetime, timezone
 
@@ -648,28 +673,33 @@ def main(argv: list[str] | None = None) -> int:
         attached = 0
         skipped_existing = 0
         details: list[dict] = []
+        still_missing: dict[str, int] = {}
         session = factory()
         try:
-            rows = session.scalars(
-                select(Scholarship).where(Scholarship.image_url.isnot(None))
-            ).all()
+            rows = session.scalars(select(Scholarship)).all()
             for row in rows:
                 host = (urlparse(row.official_source_url or "").hostname or "").lower()
                 host = host[4:] if host.startswith("www.") else host
-                entry = overrides.get(host)
-                if not entry:
+                found = lookup(host)
+                if not found:
+                    if not row.image_url and host:
+                        still_missing[host] = still_missing.get(host, 0) + 1
                     continue
-                skipped_existing += 1
-                continue
-
-            empty = session.scalars(
-                select(Scholarship).where(Scholarship.image_url.is_(None))
-            ).all()
-            for row in empty:
-                host = (urlparse(row.official_source_url or "").hostname or "").lower()
-                host = host[4:] if host.startswith("www.") else host
-                entry = overrides.get(host)
-                if not entry:
+                key, entry = found
+                if row.image_url:
+                    # An existing verified identity mark is never replaced by a
+                    # different one; a stored photo, though, is exactly what
+                    # logo-only mode exists to remove.
+                    if (row.image_kind or "") in LOGO_IDENTITY_KINDS:
+                        skipped_existing += 1
+                    else:
+                        row.image_url = None
+                        row.image_source_url = None
+                        row.image_source_type = None
+                        row.image_kind = None
+                        row.image_alt_text = None
+                        row.image_verified_at = None
+                        still_missing[host] = still_missing.get(host, 0) + 1
                     continue
                 if args.dry_run:
                     attached += 1
@@ -678,15 +708,15 @@ def main(argv: list[str] | None = None) -> int:
                 row.image_source_url = entry.get("page_url") or root_of(
                     row.official_source_url
                 )
-                row.image_source_type = _issuer_kind(host, entry.get("alt_text"))
+                row.image_source_type = _issuer_kind(key, entry.get("alt_text"))
                 row.image_kind = "official_logo"
-                row.image_alt_text = entry.get("alt_text") or host
+                row.image_alt_text = entry.get("alt_text") or key
                 row.image_verified_at = now
                 row.image_evaluated_at = now
                 row.image_evaluation_status = "no_official_image"
                 attached += 1
-                if len(details) < 200:
-                    details.append({"id": row.id, "host": host})
+                if len(details) < 300:
+                    details.append({"id": row.id, "host": host, "matched_key": key})
             if attached and not args.dry_run:
                 session.commit()
             elif args.dry_run:
@@ -694,11 +724,14 @@ def main(argv: list[str] | None = None) -> int:
         finally:
             session.close()
 
+        ranked = sorted(still_missing.items(), key=lambda kv: (-kv[1], kv[0]))
         detail = {
             "overrides_loaded": len(overrides),
-            "matched": attached + skipped_existing,
             "attached": attached,
             "skipped_existing_image": skipped_existing,
+            "records_still_without_logo": sum(ranked.values()),
+            "distinct_hosts_still_without_logo": len(ranked),
+            "top_hosts_still_without_logo": ranked[:60],
             "attached_detail": details,
         }
         if not args.dry_run:

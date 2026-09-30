@@ -147,6 +147,81 @@ class TestOverrideResolution:
         assert "white" in rules.lower(), "rules must record the white-logo exclusion"
 
 
+class TestParentDomainMatching:
+    """One audited entry must cover every host an institution is reached on.
+
+    Records store whatever host their programme page lives on, and that is
+    rarely the apex. The catalogue had 316 hosts needing a logo against 42
+    audited institutions, which is the size of the gap exact matching leaves.
+    """
+
+    @pytest.fixture
+    def resolver(self):
+        return LogoFallbackResolver(
+            overrides={
+                "daad.de": {"url": "https://www.daad.de/logo.svg",
+                            "page_url": "https://www.daad.de/", "alt_text": "DAAD",
+                            "official_host": True},
+                "kaist.ac.kr": {"url": "https://www.kaist.ac.kr/logo.svg",
+                                "page_url": "https://www.kaist.ac.kr/", "alt_text": "KAIST",
+                                "official_host": True},
+                "nus.edu.sg": {"url": "https://www.nus.edu.sg/logo.svg",
+                               "page_url": "https://www.nus.edu.sg/", "alt_text": "NUS",
+                               "official_host": True},
+            },
+            fetch_text=lambda _u: None,
+        )
+
+    def test_deep_subdomain_resolves_to_its_institution(self, resolver):
+        got = resolver.tier_static_override(
+            _Scholarship("https://admission.kaist.ac.kr/scholarship")
+        )
+        assert len(got) == 1
+        assert "kaist.ac.kr" in got[0].url
+
+    def test_numbered_subdomain_resolves_to_its_institution(self, resolver):
+        """DAAD's programme database is served from www2, not www."""
+        got = resolver.tier_static_override(
+            _Scholarship("https://www2.daad.de/datenbank/en/21148")
+        )
+        assert len(got) == 1
+        assert "daad.de" in got[0].url
+
+    def test_exact_match_still_wins_over_a_parent(self, resolver):
+        """A specific entry must not be shadowed by a broader one."""
+        resolver._overrides["eng.nus.edu.sg"] = {
+            "url": "https://eng.nus.edu.sg/engineering-logo.svg",
+            "page_url": "https://eng.nus.edu.sg/", "alt_text": "NUS Engineering",
+            "official_host": True,
+        }
+        got = resolver.tier_static_override(
+            _Scholarship("https://eng.nus.edu.sg/scholarship")
+        )
+        assert "engineering-logo" in got[0].url
+
+    def test_unrelated_host_does_not_match(self, resolver):
+        assert resolver.tier_static_override(
+            _Scholarship("https://notkaist.ac.kr.example.com/x")
+        ) == []
+
+    def test_a_host_that_merely_ends_with_the_key_is_not_a_match(self, resolver):
+        """`evildaad.de` is not DAAD.
+
+        Suffix matching without a dot boundary would hand one institution's
+        logo to an unrelated lookalike domain, which is the worst outcome this
+        table can produce.
+        """
+        assert resolver.tier_static_override(
+            _Scholarship("https://evildaad.de/x")
+        ) == []
+
+    def test_public_suffix_is_not_itself_a_match_target(self, resolver):
+        """A record hosted directly on a TLD must not resolve to a sibling."""
+        assert resolver.tier_static_override(
+            _Scholarship("https://ac.kr/scholarship")
+        ) == []
+
+
 class TestIssuerKind:
     def test_government_hosts_are_attributed_to_government(self):
         from app.jobs.scholarzone_maintenance import _issuer_kind
