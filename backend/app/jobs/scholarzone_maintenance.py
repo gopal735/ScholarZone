@@ -572,7 +572,7 @@ def main(argv: list[str] | None = None) -> int:
                 "non_logo_images_remaining": non_logo,
                 **coverage,
                 "distinct_hosts_needing_logo": len(top_hosts),
-                "top_hosts_needing_logo": top_hosts[:80],
+                "top_hosts_needing_logo": top_hosts,
             }
         finally:
             session.close()
@@ -710,7 +710,7 @@ def main(argv: list[str] | None = None) -> int:
             "skipped_existing_image": skipped_existing,
             "records_still_without_logo": sum(count for _host, count in ranked),
             "distinct_hosts_still_without_logo": len(ranked),
-            "top_hosts_still_without_logo": ranked[:60],
+            "top_hosts_still_without_logo": ranked,
             "attached_detail": details,
         }
         if not args.dry_run:
