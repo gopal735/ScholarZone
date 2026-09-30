@@ -938,7 +938,11 @@ def main(argv: list[str] | None = None) -> int:
         # money is `benefits`. Writing to a name that does not exist raises
         # AttributeError inside a scheduled run, which is how this stage first
         # failed in production.
-        text_fields = ("official_source", "benefits", "eligibility", "funding", "degree")
+        text_fields = ("official_source", "benefits", "eligibility", "funding", "degree", "description")
+        # Not a text field: an application link is a URL, and a malformed one
+        # would send an applicant somewhere that is not the awarding body. It is
+        # validated rather than trusted.
+        url_fields = ("application_link",)
         today = date.today()
         applied: list[dict] = []
         session = factory()
@@ -956,6 +960,48 @@ def main(argv: list[str] | None = None) -> int:
                     if value and not getattr(row, field, None):
                         setattr(row, field, value)
                         filled.append(field)
+
+                for field in url_fields:
+                    value = (entry.get(field) or "").strip()
+                    if not value or getattr(row, field, None):
+                        continue
+                    parsed_url = urlparse(value)
+                    if parsed_url.scheme in ("http", "https") and parsed_url.hostname:
+                        setattr(row, field, value)
+                        filled.append(field)
+
+                # A programme with no single deadline is not a programme with a
+                # blank deadline. Per-ministry and per-university schemes set
+                # their own dates, so the honest thing to publish is that fact,
+                # with the precision the rest of the pipeline already
+                # understands. Leaving the field empty tells an applicant
+                # nothing; "varies by university" tells them what to expect.
+                deadline_mode = (entry.get("deadline_mode") or "").strip().lower()
+                note = (entry.get("deadline_note") or "").strip()
+                if (
+                    not row.deadline_date
+                    and not row.deadline_display
+                    and deadline_mode in ("varies", "rolling")
+                ):
+                    display = note or (
+                        "Rolling deadline"
+                        if deadline_mode == "rolling"
+                        else "Deadline varies by institution"
+                    )
+                    row.deadline_display = display[:255]
+                    row.deadline_precision = deadline_mode
+                    filled.extend(["deadline_display", "deadline_precision"])
+                    derived, _reason = derive_status(
+                        today=today,
+                        deadline_date=None,
+                        deadline_display=row.deadline_display,
+                        deadline_precision=row.deadline_precision,
+                        source_text=None,
+                        current_status=row.status,
+                    )
+                    if derived and derived != "unknown":
+                        row.status = derived
+                        filled.append("status")
 
                 # A deadline is four columns, not one. Writing only the date
                 # would leave the frontend's display string empty, so the card
