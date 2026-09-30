@@ -2092,5 +2092,45 @@
     "page_url": "https://clinical-linguistics.eu/",
     "official_host": true,
     "alt_text": "EMCL — Erasmus Mundus European Master in Clinical Linguistics (successor site; recorded host is NXDOMAIN)"
+  },
+  "unimib.it": {
+    "url": "https://en.unimib.it/sites/default/files/logo.png",
+    "page_url": "https://unimib.it/",
+    "official_host": true,
+    "alt_text": "unimib.it",
+    "probe_note": "browser-verified; probe http 403"
+  },
+  "grants.oead.at": {
+    "url": "https://www.oead.at/fileadmin/Dokumente/oead.at/00_site_config/OeAD_logo.png",
+    "page_url": "https://grants.oead.at/",
+    "official_host": true,
+    "alt_text": "OeAD – Agentur für Bildung und Internationalisierung (OeAD, Austria)"
+  },
+  "suss.edu.sg": {
+    "url": "https://www.suss.edu.sg/assets/images/logo.png",
+    "page_url": "https://suss.edu.sg/",
+    "official_host": true,
+    "alt_text": "Singapore University of Social Sciences",
+    "probe_note": "browser-verified; probe http 403"
+  },
+  "chevening.org": {
+    "url": "https://www.chevening.org/wp-content/themes/chevening/assets/images/logo.png",
+    "page_url": "https://chevening.org/",
+    "official_host": true,
+    "alt_text": "Chevening (UK Foreign, Commonwealth & Development Office scheme)",
+    "probe_note": "browser-verified; probe ConnectionError"
+  },
+  "latrobe.edu.au": {
+    "url": "https://www.latrobe.edu.au/_media/la-trobe-api/v5/img/logo.svg",
+    "page_url": "https://latrobe.edu.au/",
+    "official_host": true,
+    "alt_text": "La Trobe University",
+    "probe_note": "browser-verified; probe http 403"
+  },
+  "bandi.unibo.it": {
+    "url": "https://bandi.unibo.it/++theme++unibotheme.bandi/images/sigillo.png",
+    "page_url": "https://bandi.unibo.it/",
+    "official_host": true,
+    "alt_text": "Alma Mater Studiorum – Università di Bologna"
   }
 }
