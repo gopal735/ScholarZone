@@ -765,12 +765,6 @@
     "official_host": true,
     "alt_text": "A STAR Singapore"
   },
-  "portalvs.sk": {
-    "url": "https://portalvs.sk/images/logo-big.png",
-    "page_url": "https://portalvs.sk/",
-    "official_host": true,
-    "alt_text": "PortalVS Slovakia"
-  },
   "cscuk.fcdo.gov.uk": {
     "url": "https://cscuk.fcdo.gov.uk/wp-content/uploads/2026/09/Cscuk-Logo.png",
     "page_url": "https://cscuk.fcdo.gov.uk/",
@@ -932,5 +926,167 @@
     "page_url": "https://mha.gov.sg/",
     "official_host": true,
     "alt_text": "Ministry of Home Affairs Singapore"
+  },
+  "portalvs.sk": {
+    "url": "https://portalvs.sk/_thumbs/134/134/uk-logo-s-textom-bp-horizontal_70642.png",
+    "page_url": "https://portalvs.sk/",
+    "official_host": true,
+    "alt_text": "PortalVS Slovakia"
+  },
+  "en.snu.ac.kr": {
+    "url": "https://en.snu.ac.kr/webdata/uploads/eng/media/2026/02/80emblem_main.svg",
+    "page_url": "https://en.snu.ac.kr/",
+    "official_host": true,
+    "alt_text": "Seoul National University"
+  },
+  "nus.edu.sg": {
+    "url": "https://nus.edu.sg/images/default-source/base/logo.png",
+    "page_url": "https://nus.edu.sg/",
+    "official_host": true,
+    "alt_text": "National University of Singapore"
+  },
+  "tuwien.at": {
+    "url": "https://www.tuwien.at/safari-pinned-tab.svg",
+    "page_url": "https://tuwien.at/",
+    "official_host": true,
+    "alt_text": "TU Wien"
+  },
+  "utu.fi": {
+    "url": "https://www.utu.fi/sites/default/files/media/drupal/UTU_logo_FI_RGB.png",
+    "page_url": "https://utu.fi/",
+    "official_host": true,
+    "alt_text": "University of Turku"
+  },
+  "aai-salzburg.at": {
+    "url": "https://aai-salzburg.at/fileadmin/_processed_/b/c/csm_AAI_Farbe_4C_36b4d4060a.webp",
+    "page_url": "https://aai-salzburg.at/",
+    "official_host": true,
+    "alt_text": "Austrian Academy of Sciences"
+  },
+  "bme.hu": {
+    "url": "https://www.bme.hu/assets/bme_logo.png",
+    "page_url": "https://bme.hu/",
+    "official_host": true,
+    "alt_text": "Budapest University of Technology and Economics"
+  },
+  "ens-lyon.fr": {
+    "url": "https://www.ens-lyon.fr/themes/custom/ens_theme/logo.svg",
+    "page_url": "https://ens-lyon.fr/",
+    "official_host": true,
+    "alt_text": "ENS de Lyon"
+  },
+  "flinders.edu.au": {
+    "url": "https://www.flinders.edu.au/content/dam/images/60th/flinders-60th-navy-header.svg",
+    "page_url": "https://flinders.edu.au/",
+    "official_host": true,
+    "alt_text": "Flinders University"
+  },
+  "graduate.yonsei.ac.kr": {
+    "url": "https://graduate.yonsei.ac.kr/_res/graduate/img/main/footer-logo.png",
+    "page_url": "https://graduate.yonsei.ac.kr/",
+    "official_host": true,
+    "alt_text": "Yonsei University"
+  },
+  "huygens.knaw.nl": {
+    "url": "https://www.huygens.knaw.nl/wp-content/themes/huygens-2026B/img/logo_huygens.png",
+    "page_url": "https://huygens.knaw.nl/",
+    "official_host": true,
+    "alt_text": "Huygens Institute"
+  },
+  "imperial.ac.uk": {
+    "url": "https://www.imperial.ac.uk/assets/website/images/logo/imperial-600.png",
+    "page_url": "https://imperial.ac.uk/",
+    "official_host": true,
+    "alt_text": "Imperial College London"
+  },
+  "jku.at": {
+    "url": "https://www.jku.at/_assets/7b7ae113224322fc24a1ce79b517249a/Images/Footer/jku-logo-desktop.svg",
+    "page_url": "https://jku.at/",
+    "official_host": true,
+    "alt_text": "Johannes Kepler University Linz"
+  },
+  "kyushu-u.ac.jp": {
+    "url": "https://www.kyushu-u.ac.jp/img/header_common/logo_header_en.png",
+    "page_url": "https://kyushu-u.ac.jp/",
+    "official_host": true,
+    "alt_text": "Kyushu University"
+  },
+  "marihe.eu": {
+    "url": "https://www.marihe.eu/wp-content/uploads/2025/06/cropped-LogoMaRIHE-1-scaled-1.png",
+    "page_url": "https://marihe.eu/",
+    "official_host": true,
+    "alt_text": "MarIHE European University"
+  },
+  "ousf.duke.edu": {
+    "url": "https://ousf.duke.edu/duke-logo-blue.svg",
+    "page_url": "https://ousf.duke.edu/",
+    "official_host": true,
+    "alt_text": "Duke University"
+  },
+  "royalsociety.org": {
+    "url": "https://www.royalsociety.org/assets/images/logo@2x.png",
+    "page_url": "https://royalsociety.org/",
+    "official_host": true,
+    "alt_text": "Royal Society London"
+  },
+  "semmelweis.hu": {
+    "url": "https://semmelweis.hu/wp-content/themes/se18/dist/images/logo/semmelweis-logo-256px.png",
+    "page_url": "https://semmelweis.hu/",
+    "official_host": true,
+    "alt_text": "Semmelweis University"
+  },
+  "stipendien.oeaw.ac.at": {
+    "url": "https://stipendien.oeaw.ac.at/typo3conf/ext/oeaw_theme24/Resources/Public/Icons/OEAW-Logo-RGB-blue-de.svg",
+    "page_url": "https://stipendien.oeaw.ac.at/",
+    "official_host": true,
+    "alt_text": "Austrian Academy of Sciences"
+  },
+  "study.fsv.cuni.cz": {
+    "url": "https://study.fsv.cuni.cz/wp-content/uploads/sites/16/2025/04/logo-en.svg",
+    "page_url": "https://study.fsv.cuni.cz/",
+    "official_host": true,
+    "alt_text": "Charles University Faculty of Social Sciences"
+  },
+  "su.se": {
+    "url": "https://www.su.se/images/18.16e68fb219937120b11cba5/1759220649190/su_logo_horizontal_no_text.svg",
+    "page_url": "https://su.se/",
+    "official_host": true,
+    "alt_text": "Stockholm University"
+  },
+  "ucd.ie": {
+    "url": "https://www.ucd.ie/fileupload/ucd-logo.png",
+    "page_url": "https://ucd.ie/",
+    "official_host": true,
+    "alt_text": "University College Dublin"
+  },
+  "unibo.it": {
+    "url": "https://www.unibo.it/it/logo-unibo.png/@@images/0a707462-6a1f-47d7-9e97-417448b9945f.png",
+    "page_url": "https://unibo.it/",
+    "official_host": true,
+    "alt_text": "University of Bologna"
+  },
+  "universite-paris-saclay.fr": {
+    "url": "https://www.universite-paris-saclay.fr/sites/default/files/media/2019-12/logo-ups.svg",
+    "page_url": "https://universite-paris-saclay.fr/",
+    "official_host": true,
+    "alt_text": "Universite Paris-Saclay"
+  },
+  "utwente.nl": {
+    "url": "https://www.utwente.nl/logo-stacked.png",
+    "page_url": "https://utwente.nl/",
+    "official_host": true,
+    "alt_text": "University of Twente"
+  },
+  "wa.gov.au": {
+    "url": "https://www.wa.gov.au/themes/custom/wagov/images/gov-wa-logo.png",
+    "page_url": "https://wa.gov.au/",
+    "official_host": true,
+    "alt_text": "Government of Western Australia"
+  },
+  "worldbank.org": {
+    "url": "https://www.worldbank.org/content/dam/wbr-redesign/logos/wbg-favicon.png",
+    "page_url": "https://worldbank.org/",
+    "official_host": true,
+    "alt_text": "World Bank"
   }
 }
