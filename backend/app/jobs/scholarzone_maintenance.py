@@ -1171,6 +1171,7 @@ def main(argv: list[str] | None = None) -> int:
         session = factory()
         try:
             applied: list[dict] = []
+            collisions: list[dict] = []
             for rid, entry in sorted(wanted.items()):
                 row = session.get(Scholarship, rid)
                 if row is None:
@@ -1191,6 +1192,24 @@ def main(argv: list[str] | None = None) -> int:
                                 "skipping non-absolute %s for record %d: %r", field, rid, value
                             )
                             continue
+                        if field == "official_source_url":
+                            # official_source_url is unique, and a correction is
+                            # allowed to point a record at the address another
+                            # record already uses. Writing it raises a
+                            # UniqueViolation that fails the whole run, and the
+                            # duplicate it would create is itself a defect, so
+                            # the correction is skipped and reported instead.
+                            clash = session.scalar(
+                                select(Scholarship.id).where(
+                                    Scholarship.official_source_url == value,
+                                    Scholarship.id != rid,
+                                ).limit(1)
+                            )
+                            if clash:
+                                collisions.append(
+                                    {"id": rid, "url": value, "already_used_by": clash}
+                                )
+                                continue
                     if (getattr(row, field, None) or "").strip() == value:
                         continue
                     setattr(row, field, value)
@@ -1218,6 +1237,8 @@ def main(argv: list[str] | None = None) -> int:
         changed = [a for a in applied if a["outcome"] == "changed"]
         detail = {
             "corrections_file": str(corrections_path),
+            "url_collisions_skipped": len(collisions),
+            "url_collisions": collisions[:20],
             "records_listed": len(wanted),
             "matched": len([a for a in applied if a["outcome"] != "not_found"]),
             "changed": len(changed),
