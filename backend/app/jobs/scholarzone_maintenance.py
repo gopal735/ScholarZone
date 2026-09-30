@@ -357,6 +357,16 @@ def main(argv: list[str] | None = None) -> int:
         help="Run only these stages (default: all).",
     )
     parser.add_argument(
+        "--image-budget-seconds",
+        type=float,
+        default=None,
+        help=(
+            "Per-record wall clock for image discovery. Lower it for a fast "
+            "catalogue sweep: blocked hosts then fail quickly instead of "
+            "consuming the full default budget on every record."
+        ),
+    )
+    parser.add_argument(
         "--logo-only",
         action="store_true",
         help=(
@@ -489,6 +499,8 @@ def main(argv: list[str] | None = None) -> int:
 
     def do_stats() -> dict:
         """Print exact production catalogue totals. Read-only, no writes."""
+        from urllib.parse import urlparse
+
         from sqlalchemy import func, select
 
         from app.models import Scholarship
@@ -533,6 +545,23 @@ def main(argv: list[str] | None = None) -> int:
                     "application_link",
                 )
             }
+
+            # Which hosts are actually blocking logo coverage. Coverage is a
+            # per-host problem, not a per-record one: a missing logo almost
+            # always means the awarding body's site is unreachable or has no
+            # published logo file, and that is the list worth researching and
+            # curating against.
+            gap_rows = session.execute(
+                select(Scholarship.official_source_url)
+                .where(Scholarship.image_url.is_(None))
+            ).all()
+            host_counts: dict[str, int] = {}
+            for (url,) in gap_rows:
+                host = (urlparse(url or "").hostname or "").lower()
+                host = host[4:] if host.startswith("www.") else host
+                if host:
+                    host_counts[host] = host_counts.get(host, 0) + 1
+            top_hosts = sorted(host_counts.items(), key=lambda kv: (-kv[1], kv[0]))
             return {
                 "total_records": total,
                 "total_valid": valid,
@@ -542,6 +571,8 @@ def main(argv: list[str] | None = None) -> int:
                 "identity_marks": identity_marks,
                 "non_logo_images_remaining": non_logo,
                 **coverage,
+                "distinct_hosts_needing_logo": len(top_hosts),
+                "top_hosts_needing_logo": top_hosts[:80],
             }
         finally:
             session.close()
@@ -856,6 +887,7 @@ def main(argv: list[str] | None = None) -> int:
             exclude_quarantined=True,
             skip_terminally_evaluated=True,
             logo_only=args.logo_only,
+            per_record_budget_seconds=args.image_budget_seconds,
         )
         metrics = runner.run(limit=limit)
         recorder.record_counts(

@@ -46,6 +46,10 @@ MAX_BATCH_SIZE = 40
 # requests to official sites, so this is a politeness limit as much as a
 # resource limit. The DomainRateLimiter remains the hard per-domain guard.
 DEFAULT_MAX_WORKERS = 10
+
+# Wall clock allowed per record for discovery. Matches the orchestrator default
+# so an unset value behaves exactly as before.
+DEFAULT_PER_RECORD_BUDGET_SECONDS = 90.0
 MAX_WORKERS = 16
 # A domain that has refused us this many times in a row is almost certainly
 # blocking automated access rather than being temporarily unavailable. Without
@@ -211,10 +215,20 @@ class ImageCoverageRunner:
         skip_terminally_evaluated: bool = False,
         plan_only: bool = False,
         logo_only: bool = False,
+        per_record_budget_seconds: float | None = None,
     ) -> None:
         self._session_factory = session_factory
         self.dry_run = dry_run
         self._logo_only = logo_only
+        # Per-record wall clock for discovery. This is the single biggest
+        # throughput lever in a catalogue-wide sweep: a record whose site blocks
+        # us otherwise burns the full default budget before giving up, so a
+        # sweep over blocked hosts costs the budget times the record count no
+        # matter how much concurrency is available. A blocked site fails fast
+        # and the slot is reused; a site that answers still gets its full
+        # budget, so nothing is lost except waiting on hosts that were never
+        # going to return an image.
+        self._per_record_budget_seconds = per_record_budget_seconds
         self.plan_only = plan_only
         self.batch_size = max(1, min(batch_size, MAX_BATCH_SIZE))
         self.only_missing = only_missing
@@ -352,6 +366,11 @@ class ImageCoverageRunner:
                 session_factory=self._session_factory,
                 dry_run=self.dry_run,
                 logo_only=self._logo_only,
+                total_budget_seconds=(
+                    self._per_record_budget_seconds
+                    if self._per_record_budget_seconds is not None
+                    else DEFAULT_PER_RECORD_BUDGET_SECONDS
+                ),
             )
             result = orchestrator.run(
                 scholarship_id=scholarship_id,

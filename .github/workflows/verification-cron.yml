@@ -61,6 +61,10 @@ on:
         description: 'images stage: persist only official identity marks, never programme photos'
         required: false
         default: 'false'
+      image_budget_seconds:
+        description: 'Per-record wall clock for image discovery. Lower it for a fast catalogue sweep so blocked hosts fail quickly instead of consuming the full budget on every record.'
+        required: false
+        default: ''
       workers:
         description: 'Bounded concurrency per stage. The images stage is network-bound and rate-limits per domain, so cross-domain parallelism is safe and much faster.'
         required: false
@@ -134,6 +138,7 @@ jobs:
             --crawl-max-pages "${{ github.event.inputs.crawl_max_pages || '600' }}" \
             --quarantine-ids "${{ github.event.inputs.quarantine_ids || '' }}" \
             ${{ github.event.inputs.logo_only == 'true' && '--logo-only' || '' }} \
+            --image-budget-seconds "${{ github.event.inputs.image_budget_seconds }}" \
             ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}
 
   # Bounded retry for transient failures.
@@ -211,4 +216,5 @@ jobs:
             --crawl-max-pages "${{ github.event.inputs.crawl_max_pages || '600' }}" \
             --quarantine-ids "${{ github.event.inputs.quarantine_ids || '' }}" \
             ${{ github.event.inputs.logo_only == 'true' && '--logo-only' || '' }} \
+            --image-budget-seconds "${{ github.event.inputs.image_budget_seconds }}" \
             ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}
