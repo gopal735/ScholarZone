@@ -797,7 +797,7 @@ class TestAutonomousContract:
     def test_execution_contract_order(self):
         """The documented contract is what the code actually does."""
         assert list(worker.STAGE_ORDER) == [
-            "verify", "worklist", "enrich", "images", "logos", "discover", "quarantine",
+            "verify", "worklist", "inventory", "enrich", "programme_details", "images", "logos", "discover", "quarantine",
             "retire", "correct", "stats", "facts", "archive", "discontinued", "purge",
         ]
         # Verification is the root; everything else is either downstream of it

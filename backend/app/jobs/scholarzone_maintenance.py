@@ -102,9 +102,13 @@ STAGE_DEPENDENCIES: dict[str, tuple[str, ...]] = {
     # Read-only: it reports the backlog, so it stays a leaf rather than
     # reflecting whatever a partial run happened to have written.
     "worklist": (),
+    "inventory": (),
     "stats": (),
     "facts": (),
     "logos": (),
+    # Applies researched detail to empty fields only, so it depends on nothing
+    # having been written in this run and can be dispatched on its own.
+    "programme_details": (),
     # Retiring and correcting are both driven by audited files, and both have to
     # land before archive: archive derives its decision from the deadline, and a
     # record whose address was just repaired should not be judged on the old one.
