@@ -1198,6 +1198,7 @@ def main(argv: list[str] | None = None) -> int:
         url_fields = ("application_link",)
         today = date.today()
         applied: list[dict] = []
+        skipped_too_long: list[dict] = []
         session = factory()
         try:
             rows = session.scalars(select(Scholarship)).all()
@@ -1212,9 +1213,23 @@ def main(argv: list[str] | None = None) -> int:
                 filled: list[str] = []
                 for field in text_fields:
                     value = (entry.get(field) or "").strip() or None
-                    if value and not getattr(row, field, None):
-                        setattr(row, field, value)
-                        filled.append(field)
+                    if not value or getattr(row, field, None):
+                        continue
+                    # Some of these columns are bounded varchars, and Postgres
+                    # raises on an overflow rather than truncating. Writing a
+                    # research paragraph into a 120-character label column
+                    # failed this stage outright and took the whole run with it.
+                    # A value that does not fit is skipped and reported, which is
+                    # honest: a half-written funding label is worse than none.
+                    limit = Scholarship.__table__.c[field].type.length
+                    if limit and len(value) > limit:
+                        skipped_too_long.append(
+                            {"id": row.id, "field": field, "length": len(value),
+                             "limit": limit}
+                        )
+                        continue
+                    setattr(row, field, value)
+                    filled.append(field)
 
                 for field in url_fields:
                     value = (entry.get(field) or "").strip()
@@ -1304,6 +1319,8 @@ def main(argv: list[str] | None = None) -> int:
             "facts_loaded": len(facts),
             "matched": len(applied),
             "fields_filled": sum(len(a["fields"]) for a in applied),
+            "values_too_long_for_column": len(skipped_too_long),
+            "too_long_sample": skipped_too_long[:20],
             "applied": applied[:200],
         }
         if not args.dry_run:
