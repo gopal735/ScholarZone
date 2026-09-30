@@ -787,7 +787,7 @@ class TestAutonomousContract:
         """The documented contract is what the code actually does."""
         assert list(worker.STAGE_ORDER) == [
             "verify", "enrich", "images", "logos", "discover", "quarantine",
-            "stats", "facts", "purge",
+            "stats", "facts", "archive", "discontinued", "purge",
         ]
         # Verification is the root; everything else is either downstream of it
         # or independent.
@@ -809,3 +809,11 @@ class TestAutonomousContract:
         # that would otherwise re-crawl records it could have filled instantly.
         assert worker.STAGE_DEPENDENCIES["logos"] == ()
         assert worker.STAGE_ORDER.index("logos") < worker.STAGE_ORDER.index("purge")
+        # Archive derives status from the published deadline, so it reads state
+        # that facts and enrichment write. Declaring that explicitly stops a
+        # closed-date record from being marked open by a run that ordered
+        # itself before those fields were filled.
+        assert worker.STAGE_DEPENDENCIES["archive"] == ()
+        assert worker.STAGE_ORDER.index("archive") > worker.STAGE_ORDER.index("facts")
+        # A discontinued programme is a correctness problem, not a data gap, so
+        # it is quarantined rather than closed: the record and its history stay.

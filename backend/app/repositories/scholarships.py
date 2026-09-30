@@ -40,9 +40,17 @@ def public_visibility_conditions() -> list:
     * ``image_source_type == "wikimedia"`` is a third-party host. It never
       satisfies the official-image gate unless the owner has explicitly opted
       in, and it is excluded by name rather than by omission.
+    * ``is_archived`` is not a trust question at all. A record is archived when
+      its round has closed, and it is excluded unconditionally rather than
+      being left to the settings: archiving is a promise that expired
+      opportunities are not offered as if they were live, and a configuration
+      flag that could switch that off would quietly break the promise.
     """
     settings = get_settings()
-    conditions = [Scholarship.verification_status != "quarantined"]
+    conditions = [
+        Scholarship.verification_status != "quarantined",
+        Scholarship.is_archived.is_(False),
+    ]
 
     if settings.public_require_verified:
         conditions.append(Scholarship.is_verified.is_(True))

@@ -62,7 +62,10 @@ MAX_STAGE_WORKERS = 16
 
 # Stage order reflects dependencies: verification establishes which records
 # are current, and the remaining stages all operate on that outcome.
-STAGE_ORDER = ("verify", "enrich", "images", "logos", "discover", "quarantine", "stats", "facts", "purge")
+STAGE_ORDER = (
+    "verify", "enrich", "images", "logos", "discover", "quarantine",
+    "stats", "facts", "archive", "discontinued", "purge",
+)
 
 # A stage that fails stops the stages that depend on it, but not the ones that
 # do not. Verification has no prerequisite and nothing gates it.
@@ -92,6 +95,8 @@ STAGE_DEPENDENCIES: dict[str, tuple[str, ...]] = {
     "stats": (),
     "facts": (),
     "logos": (),
+    "archive": (),
+    "discontinued": (),
     "purge": (),
 }
 
@@ -139,6 +144,29 @@ def _issuer_kind(host: str, alt_text: str | None = None) -> str:
     if any(token in label for token in ("university", "universität", "universitat", "univ.")):
         return "official_university"
     return "official_logo"
+
+
+# Programmes that were retired outright rather than closing for a season, keyed
+# by the host their official pages live on.
+#
+# Vanier CGS-D was folded into the Canada Graduate Research Scholarship - Doctoral
+# and the Banting Postdoctoral Fellowship was replaced by the Canada
+# Postdoctoral Research Award. Both official pages state that applications are
+# no longer accepted, so a record advertising a closing date for either is worse
+# than a blank one: it is a confident pointer to a programme that no longer
+# exists. Each entry records the reason so the quarantine note explains itself
+# to whoever reads the record later.
+DO_DISCONTINUED_SOURCE: dict[str, str] = {
+    "vanier.gc.ca": (
+        "Vanier CGS-D was folded into the Canada Graduate Research Scholarship - "
+        "Doctoral. The official page states applications are no longer accepted."
+    ),
+    "banting.fellowships-bourses.gc.ca": (
+        "The Banting Postdoctoral Fellowship was replaced by the Canada "
+        "Postdoctoral Research Award. The official page states applications are "
+        "no longer accepted."
+    ),
+}
 
 
 def _run_stage(name: str, fn) -> StageReport:
@@ -352,7 +380,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--stage",
         action="append",
-        choices=["verify", "enrich", "images", "logos", "discover", "quarantine", "stats", "facts", "purge", "all"],
+        choices=["verify", "enrich", "images", "logos", "discover", "quarantine",
+                     "stats", "facts", "archive", "discontinued", "purge", "all"],
         default=None,
         help="Run only these stages (default: all).",
     )
@@ -717,6 +746,122 @@ def main(argv: list[str] | None = None) -> int:
             recorder.record_counts({"logo_overrides_attached": attached})
         return detail
 
+    def do_archive() -> dict:
+        """Archive records whose published deadline has passed.
+
+        A scholarship with a closing date in the past is not an opportunity, and
+        leaving it in the public directory sends applicants to a form that no
+        longer accepts anything. Archiving is therefore a one-way flag, set from
+        the date rather than by hand, and it is separate from ``status``:
+        status flips back to open when a new cycle is published, and an archived
+        record should not silently reappear because somebody re-derived its
+        status.
+
+        The record itself is never deleted. Its history, its verification trail
+        and any inbound link survive, so an archived scholarship can be
+        reinstated deliberately instead of being re-discovered from scratch.
+
+        Safe to re-run: an already-archived record is excluded, so the work does
+        not repeat and the reported count settles at zero.
+        """
+        from datetime import date, datetime, timezone
+
+        from sqlalchemy import select
+
+        from app.models import Scholarship
+
+        today = date.today()
+        now = datetime.now(timezone.utc)
+        session = factory()
+        try:
+            rows = session.scalars(
+                select(Scholarship).where(
+                    Scholarship.is_archived.is_(False),
+                    Scholarship.deadline_date.isnot(None),
+                    Scholarship.deadline_date < today,
+                )
+            ).all()
+            if args.dry_run:
+                session.rollback()
+            else:
+                for row in rows:
+                    row.is_archived = True
+                    row.archived_at = now
+                    row.archived_reason = f"deadline passed on {row.deadline_date.isoformat()}"
+                    # Status is derived from the same date, so leaving it open
+                    # would make a filter on status contradict the archive.
+                    row.status = "closed"
+                session.commit()
+        finally:
+            session.close()
+
+        detail = {
+            "as_of": today.isoformat(),
+            "archived": 0 if args.dry_run else len(rows),
+            "would_archive": len(rows),
+        }
+        if not args.dry_run:
+            recorder.record_counts({"archive_archived": len(rows)})
+        return detail
+
+    def do_discontinued() -> dict:
+        """Quarantine records for programmes that no longer exist.
+
+        Some programmes are retired outright rather than closing for a season:
+        Vanier CGS-D was folded into the Canada Graduate Research Scholarship and
+        the Banting Postdoctoral Fellowship was replaced by the Canada
+        Postdoctoral Research Award. Their official pages state they are no
+        longer accepting applications, so a record advertising a closing date
+        for them is worse than a blank one - it is a confident pointer to a dead
+        programme.
+
+        They are quarantined rather than deleted so the record, its history and
+        any inbound link survive.
+        """
+        from datetime import datetime, timezone
+
+        from sqlalchemy import select
+
+        from app.models import Scholarship
+        from app.services.catalogue_quarantine import QUARANTINE_STATUS
+
+        session = factory()
+        try:
+            affected: list[int] = []
+            for host, reason in DO_DISCONTINUED_SOURCE.items():
+                rows = session.scalars(
+                    select(Scholarship).where(
+                        Scholarship.official_source_url.like(f"%{host}%")
+                    )
+                ).all()
+                for row in rows:
+                    affected.append(row.id)
+                    if args.dry_run:
+                        continue
+                    if row.verification_status == QUARANTINE_STATUS:
+                        continue
+                    row.verification_status = QUARANTINE_STATUS
+                    row.verification_notes = reason
+                    if not row.is_archived:
+                        row.is_archived = True
+                        row.archived_at = datetime.now(timezone.utc)
+                        row.archived_reason = "programme discontinued"
+            if affected and not args.dry_run:
+                session.commit()
+            elif args.dry_run:
+                session.rollback()
+        finally:
+            session.close()
+
+        detail = {
+            "retired_hosts": sorted(DO_DISCONTINUED_SOURCE),
+            "records_matched": len(affected),
+            "quarantined": 0 if args.dry_run else len(affected),
+        }
+        if not args.dry_run:
+            recorder.record_counts({"discontinued_quarantined": len(affected)})
+        return detail
+
     def do_facts() -> dict:
         """Apply audited official programme facts to records that lack them.
 
@@ -998,6 +1143,8 @@ def main(argv: list[str] | None = None) -> int:
         "stats": do_stats,
         "facts": do_facts,
         "logos": do_logos,
+        "archive": do_archive,
+        "discontinued": do_discontinued,
         "purge": do_purge,
     }
 

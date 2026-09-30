@@ -28,6 +28,18 @@ class Scholarship(Base):
     deadline_display: Mapped[str | None] = mapped_column(String(255), nullable=True)
     deadline_precision: Mapped[str] = mapped_column(String(16), nullable=False, default="month")
     status: Mapped[str] = mapped_column(String(20), nullable=False, default="open", index=True)
+    # Archiving is separate from status on purpose.
+    #
+    # ``status`` answers "is this round open right now", so it flips back to open
+    # when a new cycle is published. ``is_archived`` answers "should this record
+    # be offered to a visitor at all", and it is one-way. A scholarship whose
+    # deadline passed is still a true record - it just is not an opportunity, and
+    # showing it among live listings sends applicants to a form that no longer
+    # accepts anything. Archiving keeps the row, its history and its inbound
+    # links while removing it from every public read path.
+    is_archived: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False, index=True)
+    archived_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    archived_reason: Mapped[str | None] = mapped_column(String(120), nullable=True)
     is_verified: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
     last_verified_at: Mapped[date | None] = mapped_column(Date, nullable=True)
     last_verified_date: Mapped[date | None] = mapped_column(Date, nullable=True)
