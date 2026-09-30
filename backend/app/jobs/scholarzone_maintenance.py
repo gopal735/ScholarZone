@@ -63,7 +63,7 @@ MAX_STAGE_WORKERS = 16
 # Stage order reflects dependencies: verification establishes which records
 # are current, and the remaining stages all operate on that outcome.
 STAGE_ORDER = (
-    "verify", "enrich", "images", "logos", "discover", "quarantine",
+    "verify", "worklist", "enrich", "images", "logos", "discover", "quarantine",
     "stats", "facts", "archive", "discontinued", "purge",
 )
 
