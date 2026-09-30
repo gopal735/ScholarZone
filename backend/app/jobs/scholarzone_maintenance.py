@@ -51,6 +51,7 @@ import os
 import sys
 import time
 from dataclasses import dataclass, field
+from datetime import date
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
@@ -1313,6 +1314,7 @@ def main(argv: list[str] | None = None) -> int:
         import json
         from datetime import date, datetime, timedelta, timezone
         from pathlib import Path
+        from urllib.parse import urlparse
 
         from sqlalchemy import select
 

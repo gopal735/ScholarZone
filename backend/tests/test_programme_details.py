@@ -13,6 +13,7 @@ being published as an awarding body's own wording.
 from __future__ import annotations
 
 import json
+from datetime import date
 from pathlib import Path
 
 import pytest
@@ -134,6 +135,67 @@ class TestProgrammeDetailsFile:
 
 
 class TestProgrammeDetailsStageWiring:
+    PASS = True
+
+
+class TestStageBodiesAreSelfContained:
+    """Every name a stage body uses must exist in the scope that uses it.
+
+    Each stage in this worker is a function that does its own imports, and
+    nothing is inherited from the enclosing scope. That is deliberate, and it is
+    also invisible to py_compile and to the unit tests, because the stages are
+    closures that nothing calls. A missing import therefore survives a green
+    suite and only appears when the stage runs against the production database -
+    which cost four consecutive failed runs of one stage before it was caught.
+
+    A static check of the module's names is the only thing that can see it.
+    """
+    WORKER = Path(__file__).resolve().parents[1] / "app" / "jobs" / "scholarzone_maintenance.py"
+
+    def test_module_has_no_undefined_names(self):
+        import ast
+        import builtins
+
+        tree = ast.parse(self.WORKER.read_text(encoding="utf-8"))
+        # dir() on the builtins module gives every name Python resolves without
+        # an import, including the exception classes. Using __builtins__ here
+        # yields only the handful of names it happens to bind at module level,
+        # and then every builtin looks undefined.
+        defined = set(dir(builtins)) | {"__name__", "__file__", "__doc__"}
+        for node in ast.walk(tree):
+            if isinstance(node, (ast.Import, ast.ImportFrom)):
+                for alias in node.names:
+                    defined.add((alias.asname or alias.name).split(".")[0])
+            elif isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+                defined.add(node.name)
+                defined.update(a.arg for a in node.args.args) if hasattr(node, "args") else None
+            elif isinstance(node, ast.Name) and isinstance(node.ctx, (ast.Store, ast.Del)):
+                defined.add(node.id)
+            elif isinstance(node, ast.arg):
+                defined.add(node.arg)
+            elif isinstance(node, ast.ExceptHandler) and node.name:
+                defined.add(node.name)
+
+        missing = sorted({
+            node.id
+            for node in ast.walk(tree)
+            if isinstance(node, ast.Name) and isinstance(node.ctx, ast.Load)
+            and node.id not in defined
+        })
+        assert not missing, (
+            f"{self.WORKER.name} references names that are never defined or "
+            f"imported: {missing}. A stage body that omits an import survives "
+            f"py_compile and the unit tests, and fails on its first live run."
+        )
+
+    def test_programme_details_stage_imports_what_it_uses(self):
+        source = self.WORKER.read_text(encoding="utf-8")
+        body = source.split("def do_programme_details", 1)[1].split("def do_facts", 1)[0]
+        for name in ("urlparse", "select", "Scholarship", "date", "datetime"):
+            assert name in body, (
+                f"the programme_details stage uses {name} but does not import it; "
+                f"stage bodies inherit nothing from the enclosing scope"
+            )
     def test_stage_is_registered_in_all_three_places(self):
         source = (
             Path(__file__).resolve().parents[1] / "app" / "jobs" / "scholarzone_maintenance.py"
