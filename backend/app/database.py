@@ -93,13 +93,27 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
             "image_source_type": "VARCHAR(32)",
             "image_kind": "VARCHAR(32)",
             "image_verified_at": "TIMESTAMPTZ",
-        "image_alt_text": "VARCHAR(512)",
-        "image_evaluation_status": "VARCHAR(32)",
-        "image_evaluated_at": "TIMESTAMPTZ",
+            "image_alt_text": "VARCHAR(512)",
+            "image_evaluation_status": "VARCHAR(32)",
+            "image_evaluated_at": "TIMESTAMPTZ",
+            # Archiving. NOT NULL with a default, so existing rows are
+            # immediately, correctly un-archived rather than NULL, which would
+            # make ``is_archived.is_(False)`` exclude the whole table.
+            "is_archived": "BOOLEAN NOT NULL DEFAULT FALSE",
+            "archived_at": "TIMESTAMPTZ",
+            "archived_reason": "VARCHAR(120)",
         }
         for name, definition in additions.items():
             if name not in columns:
                 connection.execute(text(f"ALTER TABLE scholarships ADD COLUMN IF NOT EXISTS {name} {definition}"))
+
+        # create_all only creates indexes for a table it creates. On a database
+        # that already has the table, a newly declared index is never applied,
+        # so the archive filter would run unindexed against every public listing.
+        connection.execute(text(
+            "CREATE INDEX IF NOT EXISTS ix_scholarships_is_archived "
+            "ON scholarships (is_archived)"
+        ))
 
         if not inspect(engine).has_table("image_reviews"):
             connection.execute(text("""

@@ -517,6 +517,21 @@ def main(argv: list[str] | None = None) -> int:
     recorder = RunRecorder(factory, dry_run=args.dry_run)
     recorder.open()
 
+    # Bring the schema up to date before any stage touches a table.
+    #
+    # This worker runs stages that are dispatched independently, and a stage that
+    # selects a column a previous deploy has not added yet fails with an opaque
+    # UndefinedColumn error - which reads as a database problem rather than a
+    # deploy-ordering one. The upgrade is idempotent and additive, so running it
+    # on every invocation costs one introspection query.
+    try:
+        from app.database import init_database
+
+        init_database()
+    except Exception as exc:  # noqa: BLE001
+        print(f"schema upgrade failed: {type(exc).__name__}: {exc}")
+        return EXIT_FATAL
+
     wanted = set(args.stage or ["all"])
     run_all = "all" in wanted
     selected = [s for s in STAGE_ORDER if run_all or s in wanted]
