@@ -360,7 +360,24 @@ def _preflight() -> tuple:
     try:
         from app.database import get_session_factory, init_database
 
-        init_database()
+        # Neon closes idle pooled connections, and a maintenance run that starts
+        # on a recycled socket loses the handshake. That is a transient network
+        # condition, not a broken configuration, so retrying is correct; a
+        # genuine misconfiguration still fails on the final attempt.
+        last_error: Exception | None = None
+        for attempt in range(1, 4):
+            try:
+                init_database()
+                last_error = None
+                break
+            except Exception as exc:  # noqa: BLE001
+                last_error = exc
+                logger.warning(
+                    "database init attempt %d/3 failed: %s", attempt, exc
+                )
+                time.sleep(3 * attempt)
+        if last_error is not None:
+            raise last_error
         factory = get_session_factory()
     except Exception as exc:  # noqa: BLE001
         raise FatalError(f"database initialisation failed: {exc}") from exc
