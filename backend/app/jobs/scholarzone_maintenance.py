@@ -631,6 +631,25 @@ def main(argv: list[str] | None = None) -> int:
                     "application_link",
                 )
             }
+            # deadline_date alone is the wrong number to report. Most of the
+            # catalogue's deadlines are legitimately undated - a per-ministry or
+            # per-university scheme has no single date - and those records now
+            # carry honest "varies by institution" text that an applicant
+            # actually sees. Counting only the date column made real coverage
+            # look like a permanent gap.
+            coverage["missing_deadline_display"] = _count_where(
+                Scholarship.deadline_display.is_(None)
+            )
+            coverage["deadline_varied_or_rolling"] = _count_where(
+                Scholarship.deadline_precision.in_(("varies", "rolling", "recurring"))
+            )
+            # What the public can actually see, which is the number that matters
+            # and the one total_records cannot tell you.
+            coverage["archived_hidden"] = _count_where(Scholarship.is_archived.is_(True))
+            coverage["public_visible"] = _count_where(
+                Scholarship.is_archived.is_(False),
+                Scholarship.verification_status != QUARANTINE_STATUS,
+            )
 
             # Which hosts are actually blocking logo coverage. Coverage is a
             # per-host problem, not a per-record one: a missing logo almost
