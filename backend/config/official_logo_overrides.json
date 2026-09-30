@@ -273,12 +273,6 @@
     "official_host": true,
     "alt_text": "KAIST"
   },
-  "iso.fudan.edu.cn": {
-    "url": "https://iso.fudan.edu.cn/_upload/tpl/15/d5/5589/template5589/images/logo.png",
-    "page_url": "https://iso.fudan.edu.cn/",
-    "official_host": true,
-    "alt_text": "Fudan University"
-  },
   "nusgs.nus.edu.sg": {
     "url": "https://nusgs.nus.edu.sg/wp-content/uploads/2022/03/cropped-Sq-logo-NUS-full_transparent-1-192x192.png",
     "page_url": "https://nusgs.nus.edu.sg/",
@@ -314,12 +308,6 @@
     "page_url": "https://english.ucas.ac.cn/",
     "official_host": true,
     "alt_text": "University of Chinese Academy of Sciences"
-  },
-  "yz.tsinghua.edu.cn": {
-    "url": "https://yz.tsinghua.edu.cn/image/logo.png",
-    "page_url": "https://yz.tsinghua.edu.cn/",
-    "official_host": true,
-    "alt_text": "Tsinghua University"
   },
   "universityofgalway.ie": {
     "url": "https://www.universityofgalway.ie/cdn/images/2022/logo.png",
@@ -398,12 +386,6 @@
     "page_url": "https://eur.nl/",
     "official_host": true,
     "alt_text": "Erasmus University Rotterdam"
-  },
-  "nwo.nl": {
-    "url": "https://www.nwo.nl/themes/custom/nwo/assets/images/logo.svg",
-    "page_url": "https://nwo.nl/",
-    "official_host": true,
-    "alt_text": "Dutch Research Council NWO"
   },
   "kth.se": {
     "url": "https://www.kth.se/polopoly_fs/1.1273722.1692876353!/image/apple-touch-icon-KTH-logo-180x180.png",
@@ -579,12 +561,6 @@
     "official_host": true,
     "alt_text": "AECID Spain"
   },
-  "ares-ac.be": {
-    "url": "https://ares-ac.be/themes/custom/frontend/favicon.ico",
-    "page_url": "https://ares-ac.be/",
-    "official_host": true,
-    "alt_text": "ARES Academy"
-  },
   "borenawards.org": {
     "url": "https://www.borenawards.org/themes/custom/borenawards/logo.svg",
     "page_url": "https://borenawards.org/",
@@ -632,12 +608,6 @@
     "page_url": "https://icar.gov.in/",
     "official_host": true,
     "alt_text": "ICAR India"
-  },
-  "international.cvut.cz": {
-    "url": "https://international.cvut.cz/wp-content/themes/theme-international/images/logo-cs.svg",
-    "page_url": "https://international.cvut.cz/",
-    "official_host": true,
-    "alt_text": "Czech Technical University Prague"
   },
   "kitlv.nl": {
     "url": "https://www.kitlv.nl/assets/files/kitlv-logo-fc.svg",
@@ -705,12 +675,6 @@
     "official_host": true,
     "alt_text": "Yonsei University"
   },
-  "unibocconi.it": {
-    "url": "https://www.unibocconi.it/themes/contrib/bocconi_ds/favicon/favicon.svg",
-    "page_url": "https://unibocconi.it/",
-    "official_host": true,
-    "alt_text": "Bocconi University"
-  },
   "universiteitleiden.nl": {
     "url": "https://www.universiteitleiden.nl/design-1.0/assets/images/zegel.png",
     "page_url": "https://universiteitleiden.nl/",
@@ -734,12 +698,6 @@
     "page_url": "https://wur.nl/",
     "official_host": true,
     "alt_text": "Wageningen University"
-  },
-  "study.gov.pl": {
-    "url": "https://study.gov.pl/sites/default/files/logo_120_0_0.png",
-    "page_url": "https://study.gov.pl/",
-    "official_host": true,
-    "alt_text": "Polish Government Study in Poland"
   },
   "sshrc-crsh.canada.ca": {
     "url": "https://sshrc-crsh.canada.ca/_Themes/GCWeb/GCWeb/assets/sig-blk-en.svg",
@@ -1017,12 +975,6 @@
     "official_host": true,
     "alt_text": "MarIHE European University"
   },
-  "ousf.duke.edu": {
-    "url": "https://ousf.duke.edu/duke-logo-blue.svg",
-    "page_url": "https://ousf.duke.edu/",
-    "official_host": true,
-    "alt_text": "Duke University"
-  },
   "royalsociety.org": {
     "url": "https://www.royalsociety.org/assets/images/logo@2x.png",
     "page_url": "https://royalsociety.org/",
@@ -1155,12 +1107,6 @@
     "official_host": true,
     "alt_text": "Higher Education Authority Ireland"
   },
-  "id.china-embassy.gov.cn": {
-    "url": "https://id.china-embassy.gov.cn/images/banner.png",
-    "page_url": "https://id.china-embassy.gov.cn/",
-    "official_host": true,
-    "alt_text": "Chinese Embassy Indonesia"
-  },
   "inlife.sorbonne-universite.fr": {
     "url": "https://inlife.sorbonne-universite.fr/sites/default/files/media/2025-01/logo_initiative_sciences_interfaces_vivant.svg",
     "page_url": "https://inlife.sorbonne-universite.fr/",
@@ -1202,12 +1148,6 @@
     "page_url": "https://mindef.gov.sg/",
     "official_host": true,
     "alt_text": "Ministry of Defence Singapore"
-  },
-  "oia.ncku.edu.tw": {
-    "url": "https://oia.ncku.edu.tw/var/file/32/1032/img/4364/mlogo2.png",
-    "page_url": "https://oia.ncku.edu.tw/",
-    "official_host": true,
-    "alt_text": "National Cheng Kung University"
   },
   "phd.ista.ac.at": {
     "url": "https://phd.pages.ist.ac.at/wp-content/themes/phd%20v2%20updated/images/ISTA_green3.png",
@@ -1299,12 +1239,6 @@
     "official_host": true,
     "alt_text": "East-West Center"
   },
-  "ee.china-embassy.gov.cn": {
-    "url": "http://ee.china-embassy.gov.cn/eng/images/header2016.jpg",
-    "page_url": "https://ee.china-embassy.gov.cn/",
-    "official_host": true,
-    "alt_text": "Chinese Embassy Estonia"
-  },
   "en.tka.hu": {
     "url": "https://en.tka.hu/tka30-200x80-en.svg",
     "page_url": "https://en.tka.hu/",
@@ -1322,12 +1256,6 @@
     "page_url": "https://global.utexas.edu/",
     "official_host": true,
     "alt_text": "University of Texas at Austin"
-  },
-  "humphreyfellowship.org": {
-    "url": "https://www.humphreyfellowship.org/wp-content/uploads/2022/06/logo_humphrey.png.png",
-    "page_url": "https://humphreyfellowship.org/",
-    "official_host": true,
-    "alt_text": "Hubert H Humphrey Fellowship"
   },
   "iitk.ac.in": {
     "url": "https://www.iitk.ac.in/data/IITK.png",
@@ -1358,12 +1286,6 @@
     "page_url": "https://ku.dk/",
     "official_host": true,
     "alt_text": "University of Copenhagen"
-  },
-  "lut.fi": {
-    "url": "https://lut.fi/themes/custom/lut/images/icons/favicons/android-chrome-384x384.png",
-    "page_url": "https://lut.fi/",
-    "official_host": true,
-    "alt_text": "LUT University"
   },
   "masters.au.dk": {
     "url": "https://www.au.dk/fileadmin/res/facebookapps/au_standard_logo.jpg",
@@ -1407,12 +1329,6 @@
     "official_host": true,
     "alt_text": "US Bureau of Educational and Cultural Affairs"
   },
-  "nzscholarships.govt.nz": {
-    "url": "https://www.nzscholarships.govt.nz/favicon.ico",
-    "page_url": "https://nzscholarships.govt.nz/",
-    "official_host": true,
-    "alt_text": "New Zealand Manaaki Scholarships"
-  },
   "unisg.ch": {
     "url": "https://www.unisg.ch/fileadmin/user_upload/HSG_ROOT/_Kernauftritt_HSG/Universitaet/Bibliothek/Suchen_und_Nutzen/Datenbanken/Datenbankseiten/A-Z/HSG_Logo_EN_RGB_180px_x_37px.png",
     "page_url": "https://unisg.ch/",
@@ -1437,12 +1353,6 @@
     "official_host": true,
     "alt_text": "University of Rochester"
   },
-  "admissions.yale.edu": {
-    "url": "https://www.yale.edu/sites/all/themes/yale_blue/images/logo-print.png",
-    "page_url": "https://admissions.yale.edu/",
-    "official_host": true,
-    "alt_text": "Yale University"
-  },
   "rotary-yoneyama.or.jp": {
     "url": "https://www.rotary-yoneyama.or.jp/wp-content/uploads/2014/04/logo1.gif",
     "page_url": "https://rotary-yoneyama.or.jp/",
@@ -1454,12 +1364,6 @@
     "page_url": "https://scholarships.uq.edu.au/",
     "official_host": true,
     "alt_text": "University of Queensland"
-  },
-  "simmons.edu": {
-    "url": "https://www.simmons.edu/themes/simmons_2023/assets/favicons/apple-touch-icon.png",
-    "page_url": "https://simmons.edu/",
-    "official_host": true,
-    "alt_text": "Simmons University"
   },
   "studyinnorway.no": {
     "url": "https://studyinnorway.no/themes/custom/studyinnorway/public/images/logo.svg",
@@ -1491,12 +1395,6 @@
     "official_host": true,
     "alt_text": "Webster Vienna Private University"
   },
-  "helsinki.fi": {
-    "url": "https://www.helsinki.fi/themes/custom/helsingin_yliopisto/favicon.ico",
-    "page_url": "https://helsinki.fi/",
-    "official_host": true,
-    "alt_text": "University of Helsinki"
-  },
   "education.govt.nz": {
     "url": "https://www.education.govt.nz/_next/static/media/te-tahuhu-logo-black.8322ade7.svg",
     "page_url": "https://education.govt.nz/",
@@ -1526,12 +1424,6 @@
     "page_url": "https://bd.china-embassy.gov.cn/",
     "official_host": true,
     "alt_text": "Chinese Embassy Bangladesh"
-  },
-  "bs.china-embassy.gov.cn": {
-    "url": "https://bs.china-embassy.gov.cn/images/dibai_02.jpg",
-    "page_url": "https://bs.china-embassy.gov.cn/",
-    "official_host": true,
-    "alt_text": "Chinese Embassy Bahamas"
   },
   "cmu.edu": {
     "url": "https://www.cmu.edu/themes/custom/cmu_base/images/wordmarksquare-red-600x600.png",
@@ -1605,12 +1497,6 @@
     "official_host": true,
     "alt_text": "IIT Hyderabad"
   },
-  "isss.uoregon.edu": {
-    "url": "https://isss.uoregon.edu/modules/contrib/uo_core/uo-web-design-framework/images/favicons/favicon-32x32.png",
-    "page_url": "https://isss.uoregon.edu/",
-    "official_host": true,
-    "alt_text": "University of Oregon"
-  },
   "knight-hennessy.stanford.edu": {
     "url": "https://knight-hennessy.stanford.edu/sites/g/files/sbiybj23586/files/2024-12/khs_logo_primary_rgb.png",
     "page_url": "https://knight-hennessy.stanford.edu/",
@@ -1646,12 +1532,6 @@
     "page_url": "https://rhodeshouse.ox.ac.uk/",
     "official_host": true,
     "alt_text": "Rhodes Trust"
-  },
-  "sl.china-embassy.gov.cn": {
-    "url": "https://sl.china-embassy.gov.cn/images/Top.jpg",
-    "page_url": "https://sl.china-embassy.gov.cn/",
-    "official_host": true,
-    "alt_text": "Chinese Embassy Sierra Leone"
   },
   "studieren.univie.ac.at": {
     "url": "https://studieren.univie.ac.at/fileadmin/templates/GLOBAL/IMG/uni_logo.png",
@@ -1778,12 +1658,6 @@
     "page_url": "https://en.mofa.gov.tw/",
     "official_host": true,
     "alt_text": "Taiwan Ministry of Foreign Affairs"
-  },
-  "finaid.yale.edu": {
-    "url": "https://www.yale.edu/sites/all/themes/yale_blue/images/logo-print.png",
-    "page_url": "https://finaid.yale.edu/",
-    "official_host": true,
-    "alt_text": "Yale University"
   },
   "future.mcmaster.ca": {
     "url": "https://future.mcmaster.ca/app/themes/macsites-theme/img/logo.svg",

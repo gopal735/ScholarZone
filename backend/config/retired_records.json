@@ -407,6 +407,39 @@
    "flag": "DEAD",
    "reason": "duplicate entry, see the MISATTRIBUTED note above; held for review because the report is internally inconsistent",
    "no_successor_reason": "research found no live successor"
+  },
+  {
+   "id": 404,
+   "flag": "DUPLICATE",
+   "reason": "duplicates id 365; one programme recorded twice"
+  },
+  {
+   "id": 474,
+   "flag": "DUPLICATE",
+   "reason": "duplicates id 131; one programme recorded twice"
+  },
+  {
+   "id": 364,
+   "flag": "DUPLICATE",
+   "reason": "duplicates id 169; one programme recorded twice"
+  },
+  {
+   "id": 126,
+   "flag": "DEAD",
+   "reason": "research listed this as dead but recorded no reason; held for review rather than hidden on an unexplained verdict",
+   "no_successor_reason": "research found no live successor"
+  },
+  {
+   "id": 198,
+   "flag": "DEAD",
+   "reason": "research listed this as dead but recorded no reason; held for review rather than hidden on an unexplained verdict",
+   "no_successor_reason": "research found no live successor"
+  },
+  {
+   "id": 287,
+   "flag": "DEAD",
+   "reason": "research listed this as dead but recorded no reason; held for review rather than hidden on an unexplained verdict",
+   "no_successor_reason": "research found no live successor"
   }
  ]
 }
