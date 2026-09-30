@@ -1,152 +1,787 @@
 [
   {
-    "title": "Canada Graduate Research Scholarship – Master's (CGRS-M)",
-  "country": "Canada",
-  "degree": "Master's",
-  "funding": "Fully Funded",
-  "description": "The Canada Graduate Research Scholarship – Master's program provides financial support to high-calibre scholars engaged in an eligible master's or, in some cases, doctoral program in Canada. Part of the harmonized Canada Research Training Awards Suite (CRTAS).",
-  "deadline_date": "2026-12-01",
-  "deadline_display": "December 1, 2026",
-  "deadline_precision": "day",
-  "status": "OPEN",
-  "is_verified": true,
-  "last_verified_at": "2026-09-06",
-  "last_verified_date": "2026-09-06",
-  "verification_status": "active",
-  "next_verification_due": "2026-12-01",
-  "verified_by": "validation_script",
-  "verification_notes": "Fully validated with updated tri-agency guidelines and portal access links",
-  "region": "Canada",
-  "duration": "1 year",
-  "application_period": "Annual competition; December 1 deadline (8:00 PM Eastern Time)",
-  "official_source": "Social Sciences and Humanities Research Council (SSHRC) / NSERC / CIHR",
-  "official_source_url": "https://sshrc-crsh.canada.ca/en/funding/opportunities/canada-graduate-research-scholarships/masters-program.aspx",
-  "catalogue_url": "https://portal.nserc-crsng.gc.ca/",
-  "official_updates_url": "https://sshrc-crsh.canada.ca/en/funding/updates-mises_a_jour/index.aspx",
-  "application_link": "https://portal.nserc-crsng.gc.ca/",
-  "eligibility": [
-    "Canadian citizens, permanent residents, and international students",
-    "Enrolled or intending to enroll in a full-time eligible master's program at a Canadian institution with a CGRS-M allocation",
-    "Meet the specific agency mandate (CIHR, NSERC, or SSHRC)",
-    "Achieved a first-class average (e.g., A- / 80% / 3.7 GPA equivalent) in each of the last two completed years of full-time study",
-    "Have completed no more than 12 months of full-time study in the degree program as of December 31",
-    "Have not exceeded lifetime maximum of tri-agency support"
-  ],
-  "eligibility_summary": "Open to domestic and international students in full-time research master's programs at participating Canadian universities with a first-class academic standing.",
-  "benefits": [
-    "$27,000 per year for 1 year",
-    "Taxable stipend",
-    "Can be held at any eligible Canadian university with an award allocation"
-  ],
-  "coverage": [
-    "Living stipend: $27,000",
-    "No direct tuition coverage (stipend is paid to cover living costs; tuition is paid separately to the institution)"
-  ],
-  "requirements": [
-    "Application submitted via the online Research Portal",
-    "Completed Canadian Common CV (CCV) for CGS-M",
-    "Research proposal aligned with CIHR, NSERC, or SSHRC mandate",
-    "Official academic transcripts from all post-secondary institutions attended",
-    "Two reference letters from academic referees"
-  ],
-  "documents": [
-    "Online Research Portal Application Form",
-    "Canadian Common CV (CGS-M Master's template)",
-    "Official Academic Transcripts (undergraduate & graduate)",
-    "Two Academic Reference Letters",
-    "Outline of Proposed Research (max 1 page + 1 page references/citations)"
-  ],
-  "english_requirement": "Set by host university (typically IELTS overall 6.5–7.0 or TOEFL iBT 80–100; proficiency required for graduate admission)",
-  "application_method": [
-    "Create an account on the Research Portal (portal.nserc-crsng.gc.ca)",
-    "Complete and link your Canadian Common CV (CCV)",
-    "Select up to 3 eligible Canadian universities and submit before December 1"
-  ],
-  "selection_notes": "Merit-based; evaluated by institutional selection committees at recipient universities based on academic excellence (50%), research potential (30%), and personal/leadership qualities (20%). Results announced April 1.",
-  "program_type": "Federal research training award",
-  "best_fit": "High-calibre research master's students pursuing thesis-based or major research project programs across all academic disciplines.",
-  "notes": "Replaces the former CGS-M program under the harmonized CRTAS suite. International students are eligible through participating Canadian institutions.",
-  "_source_domain": "sshrc-crsh.canada.ca",
-  "_verification_timestamp": "2026-09-06T14:25:58.685776+00:00",
-  "_source_type": "official_provider",
-  "_cycle": "Annual competition; December deadline",
-  "_completeness_score": 1.0
+    "id": "canada-cgrs-m-2026",
+    "title": "Canada Graduate Research Scholarship – Master's",
+    "short_title": "CGRS-M",
+    "country": "Canada",
+    "host_country": "Canada",
+    "region": "Canada",
+    "degree": "Master's",
+    "study_level": "Graduate",
+    "program_type": "Federal research training scholarship",
+    "program_family": "Canada Research Training Awards Suite (CRTAS)",
+    "administering_agencies": [
+      "Canadian Institutes of Health Research (CIHR)",
+      "Natural Sciences and Engineering Research Council of Canada (NSERC)",
+      "Social Sciences and Humanities Research Council (SSHRC)"
+    ],
+    "description": "The Canada Graduate Research Scholarship – Master's program supports high-calibre students undertaking eligible research-intensive master's studies and certain eligible doctoral-entry pathways in Canada.",
+    "funding": "CAD 27,000 for 1 year",
+    "funding_amount": 27000,
+    "funding_currency": "CAD",
+    "funding_period": "12 months",
+    "duration": "1 year",
+    "duration_months": 12,
+    "total_nominal_value": "CAD 27,000",
+    "payment_type": "Research scholarship/stipend",
+    "fully_funded": false,
+    "funding_label": "CAD 27,000 scholarship; not a guaranteed full tuition-and-living-cost package",
+    "tuition_coverage": false,
+    "tuition_note": "The award is a stipend. Tuition and institutional fees are governed by the host institution and are not automatically waived.",
+    "living_cost_coverage": "The scholarship may support living and study costs, but the fixed award may not cover all expenses in every location.",
+    "tax_status": "Confirm current tax treatment through the Tri-agency Research Training Award Holder's Guide and the host institution.",
+    "renewable": false,
+    "deferrable": false,
+    "annual_award_count": 3298,
+    "award_allocation_note": "Awards are distributed through eligible Canadian institutions with agency allocations.",
+
+    "status": "OPEN",
+    "status_label": "Open for the December 2026 competition",
+    "application_cycle": "December 2026 competition",
+    "application_period": "Annual competition",
+    "deadline_date": "2026-12-01",
+    "deadline_display": "December 1, 2026, before 8:00 p.m. Eastern Time",
+    "deadline_time": "8:00 p.m. ET",
+    "deadline_timezone": "Eastern Time",
+    "deadline_precision": "day_and_time",
+    "late_application_policy": "Late applications are not accepted.",
+    "results_date": "2027-04-01",
+    "results_display": "Results become available in the Research Portal on April 1, 2027.",
+    "alternate_offer_period": "Alternate offers may be made until January 31 of the following calendar year.",
+    "next_verification_due": "2026-12-01",
+
+    "official_source": "Government of Canada; CIHR, NSERC and SSHRC",
+    "official_source_urls": [
+      "https://nserc-crsng.canada.ca/en/funding-opportunity/canada-graduate-research-scholarship-masters-program",
+      "https://sshrc-crsh.canada.ca/en/funding/opportunities/canada-graduate-research-scholarships/masters-program.aspx",
+      "https://nserc-crsng.canada.ca/en/canada-graduate-research-scholarship-masters-program-instructions-completing-application",
+      "https://nserc-crsng.canada.ca/en/canada-graduate-research-scholarship-masters-award-allocations"
+    ],
+    "catalogue_url": "https://portal-portail.nserc-crsng.gc.ca/",
+    "application_link": "https://portal-portail.nserc-crsng.gc.ca/",
+    "official_updates_url": "https://sshrc-crsh.canada.ca/en/funding/updates-mises_a_jour/index.aspx",
+    "official_contacts": {
+      "general": "fellowships@sshrc-crsh.gc.ca",
+      "CIHR": "cgrsm-besrcm@cihr-irsc.gc.ca",
+      "NSERC": "nsercscholarships-boursescrsng@nserc-crsng.gc.ca",
+      "SSHRC": "fellowships@sshrc-crsh.gc.ca"
+    },
+
+    "eligibility": [
+      "Canadian citizens",
+      "Permanent residents of Canada",
+      "Protected persons of Canada",
+      "Currently enrolled in or intending to enroll in an eligible full-time research-intensive master's program",
+      "May include eligible direct-entry doctoral, combined master's-doctoral or fast-track pathways",
+      "Must meet the mandate of CIHR, NSERC or SSHRC",
+      "Must meet the applicable academic-standing requirement",
+      "Must satisfy the applicable doctoral or master's study-month limit",
+      "Must remain within the permitted lifetime maximum of tri-agency graduate scholarship support"
+    ],
+    "ordinary_international_student_eligible": false,
+    "international_student_note": "A person who is only an international student and does not hold Canadian citizenship, permanent residence or protected-person status is not eligible for CGRS-M.",
+    "full_time_required": true,
+    "can_apply_before_admission": true,
+    "admission_status": [
+      "Currently registered in an eligible program",
+      "Applied for admission",
+      "Intending to apply for admission"
+    ],
+    "program_research_requirement": true,
+    "eligible_programs": [
+      "Thesis-based master's program",
+      "Major research project master's program",
+      "Master's program involving a dissertation",
+      "Master's program involving a scholarly publication",
+      "Master's program involving a performance, recital or exhibit",
+      "Eligible direct-entry doctoral pathway",
+      "Eligible combined master's-doctoral program",
+      "Eligible fast-track program"
+    ],
+    "coursework_only_programs": "Normally not eligible when there is no significant autonomous research component.",
+    "agency_mandate_required": true,
+    "agency_mandates": {
+      "CIHR": "Health research within CIHR mandate.",
+      "NSERC": "Natural sciences and engineering research within NSERC mandate.",
+      "SSHRC": "Social sciences and humanities research within SSHRC mandate."
+    },
+    "first_class_average_required": true,
+    "first_class_average_note": "A first-class average is normally required for each of the last two completed years of full-time-equivalent study, as assessed under the applicable institutional rules.",
+    "first_class_average_exception": "An institution may, at its discretion, accept an applicant without a first-class average. Applicants must confirm this directly with the proposed host institution.",
+    "study_progress_limit": "Normally no more than 12 months of full-time-equivalent study in the degree program as of December 31 of the application year.",
+    "study_progress_exceptions": [
+      "Direct-entry doctoral program from a bachelor's degree",
+      "Combined master's-doctoral program",
+      "Fast-track doctoral pathway",
+      "Master's program transitioning to an eligible doctoral program",
+      "Master's program completed before award activation and followed by eligible doctoral study"
+    ],
+    "part_time_calculation": "Part-time study is calculated proportionally according to the full-time course-load percentage.",
+    "previous_award_restrictions": [
+      "Must not have held or currently hold a master's-level CIHR, NSERC or SSHRC scholarship where prohibited by the current rules.",
+      "Must remain within applicable lifetime limits for tri-agency support.",
+      "Must apply to only one CRTAS program per academic year unless an official exception applies."
+    ],
+
+    "application_method": "Online application through the Research Portal",
+    "student_direct_application": true,
+    "application_portal": "Research Portal",
+    "institution_role": [
+      "Receive the applicant's institutional choices",
+      "Conduct institutional merit review",
+      "Select candidates within the institution's agency allocation",
+      "Administer the award after selection"
+    ],
+    "maximum_institution_choices": 3,
+    "application_steps": [
+      "Identify the correct agency according to the proposed research.",
+      "Confirm that the intended institution has an applicable CGRS-M allocation.",
+      "Create or access a Research Portal account.",
+      "Complete the Canadian Common CV using the CGRS-M template.",
+      "Complete the CGRS-M application form.",
+      "Select up to three eligible institutions.",
+      "Upload the research proposal and citations.",
+      "Upload all required transcripts.",
+      "Arrange completion of two academic reference assessments.",
+      "Verify every application page.",
+      "Submit before December 1, 2026, at 8:00 p.m. ET."
+    ],
+    "internal_deadline_required": true,
+    "internal_deadline_note": "Institutions may impose earlier internal deadlines for admission, document review or institutional selection.",
+
+    "requirements": [
+      "Research Portal application",
+      "Canadian Common CV using the CGRS-M template",
+      "Research proposal aligned with CIHR, NSERC or SSHRC mandate",
+      "Official academic transcripts",
+      "Two academic reference assessments",
+      "Bibliography and citations",
+      "Certified translations for documents not written in English or French"
+    ],
+    "documents": [
+      "Online Research Portal application form",
+      "Canadian Common CV – CGRS-M template",
+      "Official undergraduate and graduate academic transcripts, as applicable",
+      "Two academic reference assessments or letters",
+      "Research proposal",
+      "Bibliography and citations",
+      "Admission or registration documentation where required by the host institution",
+      "Certified English or French translations where applicable"
+    ],
+    "research_proposal": {
+      "standard_limit": "Follow the current CGRS-M application template.",
+      "commonly_used_format": "Maximum 1 page for the proposal plus 1 page for references or citations.",
+      "required_elements": [
+        "Research question",
+        "Research objectives",
+        "Research context",
+        "Methodology",
+        "Expected contribution",
+        "Importance and feasibility",
+        "Fit with the selected agency mandate"
+      ]
+    },
+    "transcript_rules": [
+      "Provide transcripts according to current agency instructions.",
+      "Include relevant undergraduate and graduate studies.",
+      "Use official transcripts where required.",
+      "Provide certified translations for transcripts not written in English or French."
+    ],
+    "reference_requirement": {
+      "number": 2,
+      "type": "Academic reference assessments or letters",
+      "completion_required_before_submission": true
+    },
+
+    "english_requirement": null,
+    "english_requirement_note": "CGRS-M does not publish one universal IELTS or TOEFL score. Language requirements may arise from admission and must be checked with the host institution.",
+    "supervisor_letter_required": false,
+    "supervisor_letter_note": "A universal supervisor invitation letter is not listed as a CGRS-M requirement, although an institution or department may request one.",
+    "application_fee": "None listed on the official program page.",
+    "age_limit": null,
+    "gender_restriction": false,
+
+    "selection_process": "Institutional merit review under tri-agency rules",
+    "selection_body": "Faculty of graduate studies or equivalent at an eligible institution",
+    "selection_notes": "Selection is based on academic excellence, research potential and personal/interpersonal characteristics.",
+    "selection_criteria": {
+      "academic_excellence": {
+        "weight": 50,
+        "indicators": [
+          "Academic record",
+          "Scholarships and awards",
+          "Duration of previous studies",
+          "Program and course characteristics",
+          "Relative standing where available"
+        ]
+      },
+      "research_potential": {
+        "weight": 30,
+        "indicators": [
+          "Research history",
+          "Quality and originality of contributions",
+          "Relevant academic and work experience",
+          "Significance and feasibility of proposed research",
+          "Critical thinking",
+          "Initiative",
+          "Autonomy",
+          "Research achievements"
+        ]
+      },
+      "personal_and_interpersonal_characteristics": {
+        "weight": 20,
+        "indicators": [
+          "Leadership",
+          "Project management",
+          "Communication",
+          "Academic involvement",
+          "Volunteerism",
+          "Community outreach",
+          "Collaboration"
+        ]
+      }
+    },
+    "results_delivery": "Results are made available through the Research Portal.",
+    "award_tenure_rule": "The award is normally held at the institution from which the award offer originates.",
+    "change_of_institution_rule": "A change of tenure location requires compliance with applicable institutional and agency rules.",
+
+    "supplements_and_initiatives": [
+      "Indigenous Scholars Awards and Supplements Pilot Initiative",
+      "CRTAS Research Travel Supplements",
+      "Canadian Forest Sector Workforce Diversity supplement",
+      "CIHR Strategic Master's Award",
+      "Environment and Climate Change Canada supplements",
+      "Systematics Research graduate supplement",
+      "Research in the Field of Impact Assessment supplement",
+      "Other agency-specific initiatives"
+    ],
+    "indigenous_supplement": {
+      "value": "CAD 5,000",
+      "duration": "1 year",
+      "renewable": false,
+      "eligibility": "Eligible Indigenous applicant who qualifies for the applicable CGRS-M competition and provides required consent.",
+      "availability": "Subject to current initiative rules and available funding."
+    },
+    "black_student_researcher_measure": {
+      "description": "Additional designated awards may be available for eligible meritorious applicants who self-identify as Black and provide consent.",
+      "availability": "Subject to the current agency rules and funding."
+    },
+
+    "award_holder_conditions": [
+      "Remain registered in the approved eligible program.",
+      "Maintain required full-time status.",
+      "Follow the Tri-agency Research Training Award Holder's Guide.",
+      "Follow host institution rules.",
+      "Conduct eligible research within the selected agency mandate.",
+      "Comply with applicable research ethics and reporting requirements."
+    ],
+    "privacy_note": "Personal information is handled under applicable Government of Canada privacy and access-to-information rules.",
+    "edi_note": "The agencies recognize equity, diversity and inclusion as important to research quality and impact.",
+    "official_languages": [
+      "English",
+      "French"
+    ],
+
+    "best_fit": "High-achieving Canadian citizens, permanent residents or protected persons pursuing a research-intensive master's or eligible direct-entry doctoral pathway.",
+    "not_best_fit": [
+      "Ordinary international students without eligible Canadian status",
+      "Coursework-only master's programs",
+      "Programs without a significant research component",
+      "Research outside the mandate of CIHR, NSERC or SSHRC",
+      "Applicants who miss an institutional internal deadline"
+    ],
+
+    "verification": {
+      "is_verified": true,
+      "verification_status": "active",
+      "last_verified_at": "2026-10-01T00:34:00+06:00",
+      "last_verified_date": "2026-10-01",
+      "verification_date_meaning": "The date this database entry was reviewed against official Government of Canada sources; it is not necessarily the source publication date.",
+      "next_verification_due": "2026-12-01",
+      "verified_by": "official_government_source_review",
+      "source_type": "official_government_provider",
+      "source_domain": [
+        "nserc-crsng.canada.ca",
+        "sshrc-crsh.canada.ca"
+      ],
+      "cycle_verified": "December 2026 competition",
+      "verification_confidence": 0.99,
+      "official_fields_confirmed": [
+        "Program title",
+        "Award amount",
+        "Award duration",
+        "Application deadline",
+        "Deadline time",
+        "Results date",
+        "Annual award count",
+        "Eligibility categories",
+        "Research-program requirement",
+        "Study-progress rule",
+        "Research Portal application",
+        "Up to three institution choices",
+        "Selection criteria and weighting",
+        "Institutional allocation system"
+      ],
+      "institution_check_required": [
+        "Internal deadline",
+        "Institution-specific admission requirements",
+        "Institution-specific transcript rules",
+        "Institutional allocation for the relevant agency",
+        "First-class-average exception policy",
+        "Supervisor requirement",
+        "Tuition and fee policy"
+      ],
+      "unverified_or_removed_claims": [
+        "Ordinary international students are eligible",
+        "Guaranteed full tuition coverage",
+        "Universal IELTS or TOEFL score",
+        "Universal supervisor invitation letter",
+        "Guaranteed living-cost coverage"
+      ],
+      "source_citations": [
+        "[2]",
+        "[4]"
+      ]
+    },
+
+    "best_fit": "High-calibre research master's students in eligible Canadian institutions.",
+    "notes": [
+      "This program is part of CRTAS.",
+      "It is not the former CGS-M program; use the current CGRS-M name.",
+      "Do not label it fully funded unless the database defines fully funded only as a fixed stipend.",
+      "International student eligibility is not general eligibility."
+    ],
+
+    "_source_domain": "nserc-crsng.canada.ca",
+    "_source_type": "official_provider",
+    "_cycle": "December 2026 competition",
+    "_verification_timestamp": "2026-10-01T00:34:00+06:00",
+    "_completeness_score": 0.99
   },
+
   {
-    "title": "Canada Graduate Research Scholarship – Doctoral (CGRS-D)",
-  "country": "Canada",
-  "degree": "PhD",
-  "funding": "Fully Funded",
-  "description": "The Canada Graduate Research Scholarship – Doctoral program recognizes and supports the next generation of outstanding innovators and researchers. Part of the harmonized Canada Research Training Awards Suite (CRTAS).",
-  "deadline_date": "2026-10-19",
-  "deadline_display": "October 19, 2026",
-  "deadline_precision": "day",
-  "status": "OPEN",
-  "is_verified": true,
-  "last_verified_at": "2026-09-06",
-  "last_verified_date": "2026-09-06",
-  "verification_status": "active",
-  "next_verification_due": "2026-10-19",
-  "verified_by": "validation_script",
-  "verification_notes": "Fully validated with updated tri-agency doctoral guidelines and portal submission links",
-  "region": "Canada",
-  "duration": "3 years",
-  "application_period": "Annual competition; Internal university deadlines (Sept–Oct), Agency deadline October 19",
-  "official_source": "Social Sciences and Humanities Research Council (SSHRC) / NSERC / CIHR",
-  "official_source_url": "https://sshrc-crsh.canada.ca/en/funding/opportunities/canada-graduate-research-scholarships/doctoral-program.aspx",
-  "catalogue_url": "https://portal.nserc-crsng.gc.ca/",
-  "official_updates_url": "https://sshrc-crsh.canada.ca/en/funding/updates-mises_a_jour/index.aspx",
-  "application_link": "https://portal.nserc-crsng.gc.ca/",
-  "eligibility": [
-    "Canadian citizens, permanent residents, and international students pursuing full-time doctoral studies",
-    "Enrolled or intending to enroll in an eligible doctoral program at a Canadian institution with a CGRS-D allocation",
-    "Completed no more than 24 months of full-time study in the doctoral program by December 31 (or max 36 months if direct-entry from bachelor's)",
-    "Meet the specific agency research mandate (CIHR, NSERC, or SSHRC)",
-    "Have achieved a first-class academic average (A- / 80% / 3.7 GPA equivalent) in each of the last two completed years of full-time study",
-    "Have not previously received a doctoral-level scholarship from CIHR, NSERC, or SSHRC",
-    "Can apply a maximum of three times to the doctoral competition"
-  ],
-  "eligibility_summary": "Open to high-achieving domestic and international doctoral students at eligible Canadian institutions who meet agency-specific research mandates.",
-  "benefits": [
-    "$40,000 per year for up to 3 years ($120,000 total)",
-    "Taxable stipend paid directly to the recipient",
-    "Eligible for affiliated federal supplements and institutional top-up awards"
-  ],
-  "coverage": [
-    "Living stipend: $40,000 per year",
-    "No direct tuition coverage (stipend is provided for living support; tuition is billed separately by the institution)"
-  ],
-  "requirements": [
-    "Application submitted through the appropriate portal (CIHR, NSERC, or SSHRC)",
-    "Completed Canadian Common CV (CCV) Doctoral template",
-    "Detailed research proposal (max 2 pages) aligned with agency mandate",
-    "Official academic transcripts for all post-secondary studies",
-    "Two letters of appraisal from academic referees familiar with applicant's research potential"
-  ],
-  "documents": [
-    "Online Application Form (Research Portal or SSHRC Web-based Form)",
-    "Canadian Common CV (CCV - Doctoral CGRS-D Template)",
-    "Official Post-secondary Academic Transcripts",
-    "Two Academic Letters of Appraisal / Reference Letters",
-    "Detailed Research Proposal (up to 2 pages + 1 page references)",
-    "Departmental Nomination / Allocation Approval Form (if applying through a university)"
-  ],
-  "english_requirement": "Set by host institution (typically IELTS 7.0 overall or TOEFL iBT 92–100 for doctoral entry; English medium of instruction waiver available at most universities)",
-  "application_method": [
-    "Check internal institutional application deadline at host university (usually earlier in September)",
-    "Create account on agency-specific application portal (NSERC/CIHR Research Portal or SSHRC online application system)",
-    "Complete Canadian Common CV (CCV) and link to application portal",
-    "Submit completed application through the host university for nomination approval, or directly to agency if not affiliated"
-  ],
-  "selection_notes": "Evaluated by national peer-review committees on Academic Excellence (50%), Research Potential (30%), and Personal/Leadership Qualities (20%). Selection results announced annually in late April.",
-  "program_type": "Federal research training award",
-  "best_fit": "Outstanding PhD candidates conducting high-impact research across social sciences, humanities, natural sciences, engineering, or health disciplines.",
-  "notes": "Replaces the former CGS-D program under the harmonized CRTAS suite. International students are eligible through university allocation quotas.",
-  "_source_domain": "sshrc-crsh.canada.ca",
-  "_verification_timestamp": "2026-09-06T14:25:58.685776+00:00",
-  "_source_type": "official_provider",
-  "_cycle": "Annual competition; October deadline",
-  "_completeness_score": 1.0
+    "id": "canada-cgrs-d-2026",
+    "title": "Canada Graduate Research Scholarship – Doctoral",
+    "short_title": "CGRS-D",
+    "country": "Canada",
+    "host_country": "Canada",
+    "region": "Canada",
+    "degree": "PhD / Doctoral",
+    "study_level": "Doctoral",
+    "program_type": "Federal doctoral research training scholarship",
+    "program_family": "Canada Research Training Awards Suite (CRTAS)",
+    "administering_agencies": [
+      "Canadian Institutes of Health Research (CIHR)",
+      "Natural Sciences and Engineering Research Council of Canada (NSERC)",
+      "Social Sciences and Humanities Research Council (SSHRC)"
+    ],
+    "description": "The Canada Graduate Research Scholarship – Doctoral program supports outstanding doctoral researchers undertaking eligible research within the mandate of CIHR, NSERC or SSHRC.",
+    "funding": "CAD 40,000 per year for up to 3 years",
+    "funding_amount_per_year": 40000,
+    "funding_currency": "CAD",
+    "funding_period": "Up to 36 months",
+    "duration": "Up to 3 years",
+    "duration_months": 36,
+    "total_nominal_value": "Up to CAD 120,000",
+    "total_nominal_amount": 120000,
+    "payment_type": "Doctoral research scholarship/stipend",
+    "fully_funded": false,
+    "funding_label": "CAD 40,000 annual doctoral scholarship; not a guaranteed full tuition-and-living-cost package",
+    "tuition_coverage": false,
+    "tuition_note": "The award is a stipend and does not automatically waive tuition or institutional fees.",
+    "living_cost_coverage": "The award may support living and research-related expenses, but the fixed amount may not cover all costs in every Canadian location.",
+    "tax_status": "Confirm current tax treatment through the Tri-agency Research Training Award Holder's Guide and the host institution.",
+    "renewable": false,
+    "deferrable": "Subject to current agency and award-holder rules; not freely deferrable.",
+
+    "status": "OPEN",
+    "status_label": "Open for the October 2026 competition",
+    "application_cycle": "October 2026 competition",
+    "application_period": "Annual doctoral competition",
+    "deadline_date": "2026-10-19",
+    "deadline_display": "October 19, 2026, before 8:00 p.m. Eastern Time for direct SSHRC applications",
+    "deadline_time": "8:00 p.m. ET",
+    "deadline_timezone": "Eastern Time",
+    "deadline_precision": "day_and_time",
+    "deadline_reason": "The usual October 17 deadline falls on a weekend in 2026.",
+    "institutional_deadline": "Set by each Canadian institution and normally earlier than the agency deadline.",
+    "institutional_forwarding_deadline": "December 7, 2026, before 8:00 p.m. ET for SSHRC institutions forwarding applications.",
+    "results_date": "2027-04-30",
+    "results_display": "Expected results date for the October 2026 competition.",
+    "next_verification_due": "2026-10-19",
+
+    "official_source": "Government of Canada; CIHR, NSERC and SSHRC",
+    "official_source_urls": [
+      "https://sshrc-crsh.canada.ca/en/funding/opportunities/canada-graduate-research-scholarships/doctoral-program.aspx",
+      "https://sshrc-crsh.canada.ca/en/funding/opportunities/canada-graduate-research-scholarships/doctoral-program/2026/competition/instructions/applicant.aspx",
+      "https://nserc-crsng.canada.ca/en/funding/students-and-postdoctoral-researchers/scholarship-and-postdoctoral-award-programs",
+      "https://nserc-crsng.canada.ca/en/canada-graduate-research-scholarship-doctoral-or-canada-postdoctoral-research-award-programs"
+    ],
+    "catalogue_url": "https://portal-portail.nserc-crsng.gc.ca/",
+    "application_link": "https://sshrc-crsh.canada.ca/en/funding/opportunities/canada-graduate-research-scholarships/doctoral-program/2026/competition/instructions/applicant.aspx",
+    "official_updates_url": "https://sshrc-crsh.canada.ca/en/funding/updates-mises_a_jour/index.aspx",
+    "official_contacts": {
+      "SSHRC": "fellowships@sshrc-crsh.gc.ca",
+      "accessibility": "accessibility-accessibilite@sshrc-crsh.gc.ca"
+    },
+
+    "eligibility": [
+      "Canadian citizens",
+      "Permanent residents of Canada",
+      "Protected persons of Canada",
+      "International applicants only where permitted by the applicable agency and 2026 registration rules",
+      "Full-time doctoral students or applicants to eligible doctoral programs",
+      "Applicants whose research fits CIHR, NSERC or SSHRC mandate",
+      "Applicants meeting academic-standing requirements",
+      "Applicants meeting doctoral-study-month limits",
+      "Applicants satisfying prior-award and application-attempt restrictions where applicable"
+    ],
+    "international_student_eligibility": "Conditional",
+    "international_student_note": "Eligibility and application route depend on citizenship, registration status, institution quota and selected agency. Do not describe all international students as automatically eligible.",
+    "full_time_required": true,
+    "eligible_study": [
+      "PhD",
+      "DPhil",
+      "SJD",
+      "Other eligible doctoral degrees recognized by the applicable agency"
+    ],
+    "research_component_required": true,
+    "research_intensive_program_required": true,
+    "coursework_only_programs": "Normally not eligible unless the doctoral program contains a substantial eligible research component.",
+    "agency_mandate_required": true,
+    "agency_mandates": {
+      "CIHR": "Health research within CIHR mandate.",
+      "NSERC": "Natural sciences and engineering research within NSERC mandate.",
+      "SSHRC": "Social sciences and humanities research within SSHRC mandate."
+    },
+    "wrong_agency_rule": "Submitting to the wrong agency may make the application ineligible.",
+
+    "doctoral_study_month_rule": "Eligibility is calculated using full-time-equivalent doctoral study completed by December 31 of the application year.",
+    "doctoral_study_calculation": [
+      "Count doctoral-level study credited toward the requested degree.",
+      "Include doctoral study completed at another institution.",
+      "Include credited doctoral study before formal registration where applicable.",
+      "Count summer months where applicable.",
+      "Two terms of part-time study generally count as one term of full-time study.",
+      "Approved part-time study and leave must be documented by an official registrar letter."
+    ],
+    "fast_track_rule": "For master's-to-doctoral fast-track programs, count from the official transfer date to the doctoral program.",
+    "joint_program_rule": "For MA/PhD, MSc/PhD or MBA/PhD programs, count from official enrollment in the applicable joint program according to agency instructions.",
+    "joint_professional_program_rule": "For MD/PhD, JD/PhD or DVM/PhD programs, count the PhD portion according to the official rules.",
+    "first_class_average_required": true,
+    "first_class_average_note": "The applicable agency and institution determine how first-class standing is assessed.",
+    "previous_award_restrictions": [
+      "Previous doctoral-level CIHR, NSERC or SSHRC funding may affect eligibility.",
+      "Applicants must check agency-specific prior-award rules.",
+      "Applicants must check any agency-specific limit on previous applications."
+    ],
+    "maximum_application_attempts": "Agency-specific; do not store a universal fixed number without confirming the current competition instructions.",
+
+    "application_method": "Agency-specific online application with institutional or direct route",
+    "student_direct_application": "Conditional",
+    "application_routes": [
+      "Through a Canadian institution with a doctoral award quota",
+      "Directly to the relevant agency",
+      "Through the SSHRC online application system where SSHRC rules apply"
+    ],
+    "application_channel_rules": {
+      "canadian_applicant_at_quota_institution": "Apply through the relevant Canadian institution.",
+      "canadian_applicant_without_quota_institution": "Apply directly to the appropriate agency where permitted.",
+      "international_applicant_at_quota_institution": "Follow the institution-based route specified by the agency.",
+      "international_applicant_without_quota_institution": "Follow the direct-agency route specified by the agency.",
+      "foreign_institution_registration": "Follow the direct-agency rules in the applicable 2026 instructions."
+    },
+    "incorrect_channel_rule": "An application submitted through the wrong channel may not be considered.",
+    "application_steps": [
+      "Identify the correct agency.",
+      "Check citizenship and registration status.",
+      "Determine the correct institutional or direct route.",
+      "Confirm the host institution's internal deadline.",
+      "Create or update the agency-specific CV.",
+      "Complete the doctoral application.",
+      "Prepare the research proposal in the required format.",
+      "Upload official transcripts.",
+      "Arrange two academic appraisal forms.",
+      "Upload any applicable registrar, allowable-inclusion or supplement documents.",
+      "Verify and submit before the correct deadline.",
+      "Save the confirmation and application number."
+    ],
+
+    "requirements": [
+      "Agency-specific online application form",
+      "Canadian Common CV or SSHRC web CV, as applicable",
+      "Doctoral research proposal",
+      "Bibliography and citations",
+      "Official undergraduate and graduate transcripts",
+      "Two academic Letters of Appraisal",
+      "Institutional nomination or forwarding documentation where applicable",
+      "Registrar letter for part-time study or leave where applicable",
+      "Allowable inclusions document where applicable",
+      "Supplement justification where applicable",
+      "Certified translations where applicable"
+    ],
+    "documents": [
+      "Online CGRS-D application form",
+      "Agency-specific CV",
+      "Doctoral research proposal",
+      "Bibliography and citations",
+      "Official post-secondary academic transcripts",
+      "Two academic appraisal or referee forms",
+      "Institutional nomination or forwarding documents, if applicable",
+      "Official registrar letter, if applicable",
+      "Allowable-inclusions document, if applicable",
+      "Supplement or joint-initiative justification, if applicable",
+      "Certified English or French translation, if applicable"
+    ],
+    "research_proposal": {
+      "maximum_pages": 2,
+      "file_format": "Unprotected PDF",
+      "maximum_file_size": "500 KB where required by the SSHRC 2026 system",
+      "page_size": "8.5 x 11 inches",
+      "font": "Minimum 12-point Times New Roman",
+      "spacing": "Single-spaced",
+      "minimum_margins": "3/4 inch",
+      "required_elements": [
+        "Research question",
+        "Research context",
+        "Objectives",
+        "Methodology",
+        "Significance",
+        "Expected contribution",
+        "Current doctoral stage",
+        "Work to be completed during the award",
+        "Fit with the selected agency mandate"
+      ]
+    },
+    "bibliography_and_citations": {
+      "maximum_pages": 5,
+      "required_content": [
+        "Bibliography for the proposed research",
+        "Complete citations for sources used in the proposal"
+      ]
+    },
+    "research_contributions_and_experience": {
+      "maximum_pages": 2,
+      "possible_items": [
+        "Refereed publications",
+        "Books",
+        "Book chapters",
+        "Journal articles",
+        "Conference proceedings",
+        "Conference presentations",
+        "Research reports",
+        "Policy papers",
+        "Public lectures",
+        "Posters",
+        "Creative outputs",
+        "Community products"
+      ]
+    },
+    "diversity_research_design_module": {
+      "maximum_characters": 1700,
+      "required": true,
+      "merit_reviewed": false,
+      "purpose": "Explain whether and how diversity considerations apply to the research design."
+    },
+    "transcript_rules": [
+      "Provide current official transcripts for required undergraduate and graduate studies.",
+      "Currently registered applicants should follow the current fall-session transcript rule.",
+      "Applicants no longer registered should provide transcripts issued after the last completed term.",
+      "Provide certified translations for transcripts not written in English or French.",
+      "If an institution does not issue transcripts, provide an official institutional confirmation letter."
+    ],
+    "reference_requirement": {
+      "number": 2,
+      "type": "Academic Letters of Appraisal",
+      "completion_required_before_submission": true
+    },
+
+    "english_requirement": null,
+    "english_requirement_note": "CGRS-D does not set one universal IELTS or TOEFL score. Language requirements may be imposed by the host institution or doctoral program.",
+    "supervisor_letter_required": false,
+    "supervisor_letter_note": "A universal supervisor invitation letter is not listed as a mandatory CGRS-D document, but institutions may impose additional requirements.",
+    "application_fee": "None listed on the official program instructions.",
+    "age_limit": null,
+    "gender_restriction": false,
+
+    "selection_process": "Agency or institutional peer review depending on submission route",
+    "selection_notes": "Merit-based assessment considers academic excellence, research ability and potential, proposal quality, research preparation, contributions, referee assessments and agency fit.",
+    "selection_criteria": [
+      "Academic excellence",
+      "Research ability and potential",
+      "Quality and originality of the research proposal",
+      "Feasibility and significance",
+      "Research experience",
+      "Academic and research contributions",
+      "Referee assessments",
+      "Agency mandate fit"
+    ],
+    "selection_weighting": null,
+    "selection_weighting_note": "Do not use a universal 50/30/20 formula for CGRS-D unless the applicable agency's current instructions explicitly publish it.",
+    "results_delivery": "Through the relevant agency or institutional process.",
+    "award_start_dates": [
+      "January 1",
+      "May 1",
+      "September 1"
+    ],
+    "award_start_rule": "The award start date must align with the approved doctoral program.",
+
+    "priority_research_areas": [
+      "Advanced digital technologies, including artificial intelligence, quantum technologies and cybersecurity",
+      "Health, including biotechnology",
+      "Clean technology and resource value chains",
+      "Environment, climate resilience and the Arctic",
+      "Food and water security",
+      "Democratic and community resilience",
+      "Manufacturing and advanced materials",
+      "Defence and dual-use technologies"
+    ],
+    "priority_area_note": "Priority research area alignment may support designated funding but is not necessarily a separate merit criterion.",
+    "research_ethics": {
+      "human_participants": "Applicants must indicate whether the research involves human participants.",
+      "ethics_requirement": "Human-participant research must follow the Tri-Council Policy Statement and institutional ethics rules.",
+      "international_research": "Research conducted outside Canada may also require host-country ethics approval."
+    },
+
+    "supplements_and_initiatives": [
+      {
+        "name": "Indigenous Scholars Awards and Supplements Pilot Initiative",
+        "value": "CAD 5,000",
+        "duration": "1 year",
+        "renewable": false,
+        "availability": "Subject to eligibility, merit and available funding."
+      },
+      {
+        "name": "Aileen D. Ross Fellowship",
+        "value": "CAD 10,000 per year",
+        "eligibility": "Eligible SSHRC CGRS-D recipients conducting poverty-related sociology research."
+      },
+      {
+        "name": "Queen's Fellowship",
+        "value": "CAD 10,000 per year",
+        "eligibility": "Eligible SSHRC CGRS-D recipients conducting research related to Canadian studies."
+      },
+      {
+        "name": "Department of National Defence MINDS Scholarship Initiative",
+        "value": "CAD 40,000 per year for up to 36 months",
+        "eligibility": "Eligible doctoral research connected to MINDS policy challenges or Canada's defence policy.",
+        "justification_limit": "Maximum 1 page where required."
+      },
+      {
+        "name": "Mitacs Training",
+        "value": "Training opportunity",
+        "eligibility": "Eligible SSHRC doctoral award holders."
+      },
+      {
+        "name": "Sport Participation Research Initiative",
+        "value": "Joint research initiative",
+        "eligibility": "Applicants whose research meets the initiative's objectives."
+      }
+    ],
+
+    "award_holder_conditions": [
+      "Remain eligible and enrolled in the approved doctoral program.",
+      "Maintain required full-time status.",
+      "Follow the Tri-agency Research Training Award Holder's Guide.",
+      "Follow host institution rules.",
+      "Conduct eligible research within the selected agency mandate.",
+      "Comply with ethics, reporting and award-administration requirements.",
+      "Obtain approval for major changes to program, institution, registration or research."
+    ],
+    "privacy_note": "Personal information is handled under applicable Government of Canada privacy and access-to-information rules.",
+    "edi_note": "Equity, diversity and inclusion are recognized as important to research quality and impact.",
+    "official_languages": [
+      "English",
+      "French"
+    ],
+
+    "best_fit": "Outstanding doctoral researchers with strong academic preparation, a feasible research proposal and clear alignment with CIHR, NSERC or SSHRC.",
+    "not_best_fit": [
+      "Applicants whose research does not fit the selected agency",
+      "Applicants submitting through the wrong channel",
+      "Applicants missing an institutional internal deadline",
+      "Applicants without required official transcripts",
+      "Applicants unable to obtain two completed appraisal forms",
+      "Applicants seeking a guaranteed full tuition waiver",
+      "Applicants assuming a universal English-test score is provided by the scholarship"
+    ],
+
+    "verification": {
+      "is_verified": true,
+      "verification_status": "active",
+      "last_verified_at": "2026-10-01T00:34:00+06:00",
+      "last_verified_date": "2026-10-01",
+      "verification_date_meaning": "The date this database entry was reviewed against official Government of Canada sources; it is not necessarily the source publication date.",
+      "next_verification_due": "2026-10-19",
+      "verified_by": "official_government_source_review",
+      "source_type": "official_government_provider",
+      "source_domain": [
+        "sshrc-crsh.canada.ca",
+        "nserc-crsng.canada.ca"
+      ],
+      "cycle_verified": "October 2026 competition",
+      "verification_confidence": 0.98,
+      "official_fields_confirmed": [
+        "Program title",
+        "Award value",
+        "Award duration",
+        "October 19, 2026 direct SSHRC deadline",
+        "Institutional deadline rule",
+        "December 7, 2026 institutional forwarding deadline",
+        "April 30 results date",
+        "Application routes",
+        "International applicant routing",
+        "Proposal requirements",
+        "Bibliography limit",
+        "Transcript requirements",
+        "Two referee forms",
+        "Award start dates",
+        "Priority research areas",
+        "Supplements and initiatives"
+      ],
+      "institution_check_required": [
+        "Internal university deadline",
+        "Institutional doctoral quota",
+        "Correct agency",
+        "Exact international eligibility",
+        "Exact doctoral-study-month calculation",
+        "Previous-award restrictions",
+        "Institutional nomination process",
+        "Admission requirements",
+        "Supervisor requirements",
+        "Tuition and fee policy",
+        "Language requirements"
+      ],
+      "unverified_or_removed_claims": [
+        "All international students are automatically eligible",
+        "Guaranteed full tuition coverage",
+        "Universal IELTS or TOEFL requirement",
+        "Universal 50/30/20 selection formula",
+        "Universal three-application limit",
+        "Universal direct application route",
+        "Guaranteed institutional top-up funding"
+      ],
+      "source_citations": [
+        "[3]",
+        "[5]",
+        "[11]"
+      ]
+    },
+
+    "best_fit": "Outstanding doctoral candidates aligned with a federal research agency mandate.",
+    "notes": [
+      "This program is part of CRTAS.",
+      "Use conditional international eligibility rather than blanket eligibility.",
+      "Store institutional and agency deadlines separately.",
+      "Do not label the award fully funded unless the database uses that label only for a stipend-based award.",
+      "Verify the correct agency and submission route before applying."
+    ],
+
+    "_source_domain": "sshrc-crsh.canada.ca",
+    "_source_type": "official_provider",
+    "_cycle": "October 2026 competition",
+    "_verification_timestamp": "2026-10-01T00:34:00+06:00",
+    "_completeness_score": 0.98
   },
   {
     "title": "Ontario Graduate Scholarship (OGS)",
@@ -459,92 +1094,368 @@
   "_completeness_score": 1.0
   },
   {
-    "title": "Canada-ASEAN Scholarships and Educational Exchanges for Development (SEED-2)",
-    "country": "Canada",
-    "degree": "Undergraduate, Master's, PhD",
-    "funding": "Fully Funded",
-    "description": "The Canada-ASEAN Scholarships and Educational Exchanges for Development (SEED-2) program offers short-term study or research opportunities in Canada for students from ASEAN member states and, under SEED-2, Pacific Island Countries and Mongolia. Funded by Global Affairs Canada under Canada's Indo-Pacific Strategy.",
-    "deadline_date": "2026-03-24",
-    "deadline_display": "March 24, 2026 (institutional deadline)",
-    "deadline_precision": "day",
-    "status": "OPEN",
-    "is_verified": true,
-    "last_verified_at": "2026-09-06",
-    "last_verified_date": "2026-09-06",
-    "verification_status": "active",
-    "next_verification_due": null,
-    "verified_by": "validation_script",
-    "verification_notes": "Validated in master validation phase",
-    "region": "Canada (host); ASEAN / Pacific / Mongolia (applicant)",
-    "duration": "4–8 months (one academic term)",
-    "application_period": "Applications open January 2026; institutional deadline March 24, 2026",
-    "official_source": "Global Affairs Canada",
-    "official_source_url": "https://www.educanada.ca/scholarships-bourses/can/institutions/asean-anase.aspx?lang=eng",
-    "catalogue_url": null,
-    "official_updates_url": null,
-    "application_link": "https://www.educanada.ca/scholarships-bourses/can/institutions/asean-anase.aspx?lang=eng",
-    "eligibility": [
-      "Citizens of ASEAN member states (Brunei, Cambodia, Indonesia, Laos, Malaysia, Myanmar, Philippines, Singapore, Thailand, Vietnam) or SEED-2 eligible Pacific Island Countries and Mongolia",
-      "Enrolled full-time at a post-secondary institution in home country",
-      "Continue paying tuition to home institution during exchange",
-      "Undergraduate/college: valid student exchange agreement between home and Canadian institutions",
-      "Graduate: supervisor invitation letter from Canadian host institution",
-      "No Canadian citizenship or permanent residency",
-      "Not already studying in Canada",
-      "Must not have previously received a SEED scholarship"
+     "title": "Canada-ASEAN Scholarships and Educational Exchanges for Development (SEED)",
+  "short_title": "Canada-ASEAN SEED",
+  "program_type": "Government-funded short-term international exchange scholarship",
+  "country": "Canada",
+  "host_country": "Canada",
+  "administering_authority": "Global Affairs Canada",
+  "department": "Department of Foreign Affairs, Trade and Development (DFATD)",
+  "official_source_name": "EduCanada / Government of Canada",
+  "official_source_url": "https://www.educanada.ca/scholarships-bourses/can/institutions/asean-anase.aspx?lang=eng",
+  "official_contact_email": "seed-bpeed@international.gc.ca",
+
+  "status": "CLOSED_FOR_THE_PUBLISHED_2025_CYCLE",
+  "status_note": "The official EduCanada page states that the 2025 application period is closed. No official 2026 deadline or open call was confirmed on the cited page.",
+  "is_verified": true,
+  "verification_status": "active",
+  "last_verified_at": "2026-10-01",
+  "last_verified_date": "2026-10-01",
+  "verified_by": "official_source_review",
+  "verification_notes": "Official EduCanada page reviewed on October 1, 2026. The source currently publishes 2025 cycle information and says the application period is closed.",
+  "next_verification_due": null,
+
+  "degree_levels": [
+    "College",
+    "Undergraduate",
+    "Master's",
+    "PhD"
+  ],
+  "study_type": [
+    "Short-term study",
+    "Short-term research",
+    "Academic exchange"
+  ],
+  "degree_award": "This is not a full-degree scholarship. It supports a temporary study or research period in Canada while the student remains enrolled at the home institution.",
+  "duration": {
+    "college_undergraduate": "4 months or one academic term",
+    "graduate": "4 months or one academic term"
+  },
+
+  "eligible_applicant_region": "ASEAN member states",
+  "eligible_countries": [
+    "Brunei Darussalam",
+    "Cambodia",
+    "Indonesia",
+    "Laos (Lao People's Democratic Republic / Lao PDR)",
+    "Malaysia",
+    "Myanmar",
+    "The Philippines",
+    "Singapore",
+    "Thailand",
+    "Vietnam"
+  ],
+  "not_officially_confirmed_in_current_source": [
+    "Pacific Island Countries",
+    "Mongolia"
+  ],
+  "regional_scope_note": "The cited official SEED page describes eligibility for ASEAN member states. The previously supplied Pacific Island Countries and Mongolia expansion was not confirmed by this official page.",
+
+  "purpose": [
+    "Support short-term study or research in Canadian post-secondary institutions",
+    "Contribute to the United Nations 2030 Agenda for Sustainable Development",
+    "Help combat poverty in ASEAN countries",
+    "Narrow the development gap in the ASEAN region",
+    "Strengthen people-to-people ties between Canada and the Indo-Pacific region"
+  ],
+  "sdg_requirement": true,
+  "sdg_requirement_details": [
+    "The proposed study or research must identify at least one Sustainable Development Goal.",
+    "The letter of intent must explain how the Canadian study or research will contribute to the 2030 Agenda.",
+    "The applicant must explain how the acquired knowledge will be applied after returning home."
+  ],
+
+  "funding_type": "Government contribution administered through Canadian host institutions",
+  "fully_funded_label": "Major eligible expenses funded; not a full-degree scholarship",
+  "award_values": {
+    "college_undergraduate": {
+      "amount": "CAD 10,200",
+      "duration": "4 months or one academic term"
+    },
+    "graduate": {
+      "amount": "CAD 10,200",
+      "duration": "4 months or one academic term"
+    }
+  },
+  "funding_note": "The official page lists CAD 10,200 for both college/undergraduate and graduate recipients for a four-month exchange. The previously supplied CAD 12,700 graduate amount and 5–6 month duration are not supported by the cited official page.",
+  "host_institution_fee": "CAD 500 per scholarship recipient for administrative costs after the student arrives in Canada",
+
+  "covered_expenses": [
+    "Visa fees",
+    "Study permit fees, where applicable",
+    "Work permit fees, where applicable",
+    "Round-trip airfare via the most direct and economical route",
+    "Health insurance",
+    "Accommodation",
+    "Utilities",
+    "Food and other living expenses",
+    "Ground transportation",
+    "Public transportation pass",
+    "Books required for study or research",
+    "Supplies required for study or research"
+  ],
+  "not_covered_or_excluded": [
+    "Computers",
+    "Other equipment",
+    "Expenses outside the approved scholarship period",
+    "Tuition fees charged by the Canadian host institution"
+  ],
+  "tuition_rule": "Canadian host institutions must waive tuition fees where the program requirements call for tuition exemption. Home-institution tuition continues to be paid by the student.",
+  "home_tuition_rule": "Applicants must be paying tuition fees to their home institution at the time of application and throughout the full exchange period.",
+  "tax_status": "The official page states that scholarships are not taxable for the Canadian institution or the scholarship recipient.",
+
+  "application_method": "Institutional application only",
+  "student_direct_application": false,
+  "applicant_submission_route": [
+    "The Canadian post-secondary institution applies on behalf of eligible candidates.",
+    "The Canadian institution's international office centralizes applications.",
+    "Applications are submitted through the My EduCanada portal.",
+    "Students should contact their home institution or prospective Canadian institution for internal deadlines and nomination procedures."
+  ],
+  "application_portal": "My EduCanada",
+  "portal_account_type": "Institution",
+  "institution_application_steps": [
+    "Assign a program coordinator.",
+    "Create or access the Canadian institution's My EduCanada account.",
+    "Select Institution as the account type.",
+    "Select the Canada-ASEAN SEED program.",
+    "Complete all required fields.",
+    "Validate and save the application while completing it.",
+    "Upload all supporting documents.",
+    "Review the application for accuracy and completeness.",
+    "Accept the Declaration and permission statement.",
+    "Submit the application.",
+    "Save or download the confirmation and reference number."
+  ],
+
+  "general_eligibility": [
+    "Must be a citizen of an eligible ASEAN member state.",
+    "Must be enrolled full-time at a post-secondary institution in an ASEAN member state.",
+    "Must pay tuition fees to the home institution during the application and exchange period.",
+    "Must plan a short-term study or research exchange in Canada.",
+    "Must return to the home institution after the scholarship period to complete the program."
+  ],
+  "ineligibility_conditions": [
+    "Canadian citizenship or a pending application for Canadian citizenship.",
+    "Canadian permanent residency or a pending application for permanent residency.",
+    "Already participating in another scholarship program funded by the Government of Canada.",
+    "Already enrolled in a degree, diploma or certificate program at a Canadian post-secondary institution.",
+    "Previously receiving a Canada-ASEAN SEED scholarship."
+  ],
+
+  "canadian_host_requirements": [
+    "The host must be a Canadian Designated Learning Institution (DLI).",
+    "The institution must centralize applications through its international office.",
+    "For college and undergraduate applicants, a valid student exchange agreement with the home institution is required.",
+    "The exchange agreement must waive tuition fees for scholarship recipients.",
+    "For graduate applicants, an exchange agreement is recommended but not required.",
+    "The Canadian institution must provide the required institutional ranking of applications."
+  ],
+
+  "academic_level_rules": {
+    "college_undergraduate": [
+      "Study or research at college or undergraduate level.",
+      "A valid student exchange agreement is required.",
+      "The agreement must clearly show that tuition will not be charged."
     ],
-    "eligibility_summary": "Full-time students from eligible ASEAN/Pacific/Mongolia institutions for short-term study or research exchanges at Canadian designated learning institutions.",
-    "benefits": [
-      "CAD 10,200 for undergraduate/college (4 months)",
-      "CAD 12,700 for graduate (5–6 months)",
-      "Airfare",
-      "Visa fees",
-      "Health insurance",
-      "Accommodation and living expenses",
-      "Local transportation",
-      "Course materials",
-      "Host institution receives CAD 500 per scholar"
-    ],
-    "coverage": [
-      "Travel: round-trip airfare",
-      "Visa and permit fees",
-      "Health insurance",
-      "Living expenses",
-      "Ground transportation",
-      "Study materials",
-      "Tuition waived by Canadian host institution"
-    ],
-    "requirements": [
-      "Letter of intent (maximum 1 page) aligned with UN Sustainable Development Goals",
-      "Proof of citizenship",
-      "Full-time enrollment verification",
-      "Letter of support from home institution",
-      "Supervisor invitation letter (graduate students only)",
-      "Privacy notice statement",
-      "Exchange agreement or MOU (undergraduate)"
-    ],
-    "documents": [
-      "Passport copy",
-      "Academic transcript",
-      "Letter of intent (1 page)",
-      "Letter of support from home university",
-      "Supervisor invitation letter (graduate)",
-      "Privacy notice statement",
-      "Exchange agreement proof"
-    ],
-    "english_requirement": null,
-    "application_method": [
-      "Students cannot apply directly. Canadian host institution's international office submits application via MyEduCanada portal."
-    ],
-    "selection_notes": "Global Affairs Canada reviews applications based on alignment with Sustainable Development Goals, research merit, and institutional partnerships.",
-    "program_type": "Government exchange scholarship",
-    "best_fit": "Students from eligible Indo-Pacific countries seeking short-term academic or research exchanges at Canadian universities.",
-    "notes": "Non-deferrable and non-renewable. Students must return to home institution after exchange. Tuition is waived by the Canadian host institution.",
-    "_source_domain": "educanada.ca",
-    "_verification_timestamp": "2026-09-06T14:25:58.685776+00:00",
-    "_source_type": "official_provider",
-    "_cycle": "Applications open January 2026; institutional deadline March 24, 2026",
-    "_completeness_score": 0.94
+    "graduate": [
+      "Study or research at master's or PhD level.",
+      "A formal exchange agreement is recommended but not mandatory.",
+      "A Canadian supervisor invitation letter is required.",
+      "The supervisor must confirm the research collaboration and mentoring support."
+    ]
+  },
+
+  "required_documents": [
+    {
+      "name": "Proof of citizenship",
+      "details": [
+        "Passport or national identity card with photograph and valid dates.",
+        "The citizenship document must match the country selected in the application."
+      ]
+    },
+    {
+      "name": "Signed Privacy Notice Statement",
+      "details": [
+        "Must be signed by the candidate.",
+        "Must be dated within the last six months."
+      ]
+    },
+    {
+      "name": "Letter of intent",
+      "maximum_length": "1 page",
+      "details": [
+        "Describe the proposed study or research in Canada.",
+        "Explain why Canada, the selected institution, program and supervisor were chosen.",
+        "Explain the connection to the applicant's future career.",
+        "Explain how the exchange supports the 2030 Agenda for Sustainable Development.",
+        "Explain how the knowledge will help combat poverty and narrow the development gap.",
+        "Clearly identify the relevant Sustainable Development Goal.",
+        "Applicants from Cambodia, Indonesia, Laos, Malaysia, Myanmar, the Philippines, Thailand and Vietnam must explain how the exchange will help combat poverty in their home country.",
+        "Applicants from Brunei Darussalam and Singapore must explain how the exchange will help combat poverty in one of the other eight ASEAN countries."
+      ]
+    },
+    {
+      "name": "Proof of full-time enrolment",
+      "details": [
+        "Must be issued on official home-institution letterhead.",
+        "Must be dated within the last six months.",
+        "Must explicitly confirm current full-time enrolment.",
+        "A transcript, student card or admission letter is not accepted as a substitute."
+      ]
+    },
+    {
+      "name": "Letter of support from the home institution",
+      "maximum_length": "1 page",
+      "details": [
+        "Must be on official letterhead.",
+        "Must be dated within the last six months.",
+        "May come from an instructor, professor or international director.",
+        "Must describe the proposed Canadian study or research.",
+        "Must explain benefits to the applicant and home institution.",
+        "Must assess the applicant's commitment and capacity to use the experience to combat poverty and narrow the development gap."
+      ]
+    },
+    {
+      "name": "Canadian supervisor invitation letter",
+      "required_for": "Graduate applicants",
+      "maximum_length": "1 page",
+      "details": [
+        "Must be on institutional letterhead.",
+        "Must be signed by the Canadian supervisor.",
+        "Must describe the nature and scope of the research collaboration.",
+        "Must confirm willingness to supervise and mentor the applicant.",
+        "Must explain benefits to the Canadian institution, supervisor and peers.",
+        "Must confirm tuition waiver when no MOU is in force."
+      ]
+    },
+    {
+      "name": "MOU or exchange agreement",
+      "required_for": "College and undergraduate applications",
+      "details": [
+        "Must be signed by the relevant institutions.",
+        "Must confirm that tuition fees will not be charged.",
+        "The tuition-waiver clause should be clearly highlighted.",
+        "Expired agreements are not accepted.",
+        "If renewal is in progress, an accompanying institutional letter is required."
+      ]
+    },
+    {
+      "name": "Alternative institutional collaboration letter",
+      "required_for": "College and undergraduate research applications without an existing agreement",
+      "maximum_length": "1 page",
+      "details": [
+        "Must come from the international office or equivalent.",
+        "Must be on official letterhead.",
+        "Must connect the application to a specific international research collaboration.",
+        "Must name the Canadian supervisor.",
+        "Must confirm that tuition will not be charged.",
+        "Must be dated within the last six months."
+      ]
+    },
+    {
+      "name": "Institutional ranking of applications",
+      "details": [
+        "The Canadian institution must rank applications according to institutional strategic priorities.",
+        "The ranking must include each candidate's My EduCanada application number.",
+        "The ranking must be sent to the program administrator as instructed by the official call."
+      ]
+    }
+  ],
+
+  "document_format_rules": [
+    "Each uploaded document must be smaller than 5 MB.",
+    "Accepted formats include JPG, GIF, PNG, PDF, DOC, DOCX, TXT and XLSX.",
+    "Documents in languages other than English or French must include a translation.",
+    "Documents must be complete and accurate.",
+    "Revised documents are not accepted after the deadline."
+  ],
+
+  "selection_criteria": [
+    "Connection between the proposed study or research and the 2030 Agenda for Sustainable Development.",
+    "Applicant's commitment to use the Canadian experience to combat poverty and narrow the development gap.",
+    "Academic or research merit.",
+    "Benefit to the applicant's home institution and peers.",
+    "Benefit to the Canadian institution, supervisor and peers.",
+    "Strength of the institutional and academic linkages created by the exchange.",
+    "Ranking submitted by the Canadian institution."
+  ],
+
+  "arrival_rules_for_published_cycle": [
+    "The published 2025 cycle accepted only Fall 2025 applications.",
+    "Selected students could arrive as early as August 1, 2025.",
+    "Selected students had to arrive no later than October 1, 2025.",
+    "Failure to arrive within the permitted period could lead to cancellation."
+  ],
+  "future_cycle_dates": "Not confirmed on the cited official page.",
+  "previously_listed_deadline": {
+    "date": "2026-03-24",
+    "status": "UNVERIFIED",
+    "note": "Do not mark this as an official active deadline unless a current Global Affairs Canada or EduCanada announcement confirms it."
+  },
+
+  "scholarship_conditions": [
+    "Recipients must study or conduct research full-time as defined by the Canadian institution.",
+    "Recipients must focus primarily on full-time study or research during their stay.",
+    "Clinical training is not permitted.",
+    "Clinically oriented research involving direct patient care is not permitted.",
+    "Recipients must return to their home institution after the scholarship period.",
+    "The scholarship cannot be deferred.",
+    "The scholarship is not renewable.",
+    "The scholarship depends on the availability of Government of Canada funding.",
+    "Failure to meet the conditions may result in cancellation."
+  ],
+
+  "clinical_restriction": true,
+  "deferrable": false,
+  "renewable": false,
+  "return_home_required": true,
+  "funding_subject_to_availability": true,
+
+  "important_advice_for_students": [
+    "Do not apply directly as an individual; first contact your university's international office.",
+    "Ask whether your university has a Canadian partner institution.",
+    "For undergraduate applicants, confirm that the exchange agreement is valid and contains an explicit tuition-waiver clause.",
+    "For graduate applicants, contact a potential Canadian supervisor before the institutional deadline.",
+    "Start preparing the one-page letter of intent early because the SDG and poverty-reduction explanation is mandatory.",
+    "Make sure enrolment and support letters are dated within six months.",
+    "Do not use a student card or transcript as proof of full-time enrolment.",
+    "Check visa or study-permit requirements immediately after selection.",
+    "Confirm the current cycle, deadline and funding amount directly with the Canadian host institution."
+  ],
+
+  "common_rejection_risks": [
+    "Applying directly instead of through a Canadian institution.",
+    "Missing the required SDG identification.",
+    "Failing to explain poverty reduction and development impact.",
+    "Submitting proof of enrolment that does not explicitly confirm full-time status.",
+    "Using an expired exchange agreement.",
+    "Omitting the tuition-waiver clause.",
+    "Submitting documents older than six months where a recent date is required.",
+    "Uploading documents above the 5 MB limit.",
+    "Submitting documents without English or French translation.",
+    "Proposing clinical training or direct patient-care research.",
+    "Planning to remain in Canada instead of returning to the home institution."
+  ],
+
+  "official_application_route": [
+    "Home institution international office",
+    "Canadian host institution international office",
+    "My EduCanada institutional portal"
+  ],
+  "official_email": "seed-bpeed@international.gc.ca",
+  "last_verified_source_date_modified": "2025-12-31",
+  "data_quality": {
+    "source_level": "Official government source",
+    "coverage": "High for the published 2025 cycle",
+    "2026_cycle_confirmed": false,
+    "unverified_fields_removed_or_flagged": [
+      "Pacific Island Countries eligibility",
+      "Mongolia eligibility",
+      "CAD 12,700 graduate award",
+      "5–6 month graduate duration",
+      "March 24, 2026 official deadline",
+      "2026 open status"
   },
   {
     "title": "Schulich Leader Scholarships",
