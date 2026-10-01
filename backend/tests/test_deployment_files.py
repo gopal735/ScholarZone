@@ -69,3 +69,69 @@ def test_requirements_first_entry_is_the_annotated_doc_pin():
         encoding="utf-8"
     ).splitlines()[0]
     assert first.startswith("annotated-doc"), repr(first)
+
+
+class TestViteBaseIsDerivedFromThePlatform:
+    """The base decides every asset URL, so it must not depend on a human.
+
+    This shipped a blank white page: with base left at "/ScholarZone/", Vite
+    rewrote the entry script to /ScholarZone/assets/index.js, that path 404s on
+    a root domain, and the app rendered nothing at all.
+    """
+
+    @pytest.fixture(scope="class")
+    def vite_config(self) -> str:
+        return (REPO / "frontend" / "vite.config.js").read_text(encoding="utf-8")
+
+    def test_detects_vercel_from_the_platform_variable(self, vite_config):
+        assert "process.env.VERCEL" in vite_config, (
+            "base must be derived from VERCEL, which the platform sets, not "
+            "only from an env var a human has to remember to add"
+        )
+
+    def test_explicit_override_is_still_honoured(self, vite_config):
+        assert "VITE_DEPLOY_TARGET" in vite_config
+
+    def test_env_is_loaded_from_the_config_directory(self, vite_config):
+        # process.cwd() is the service root under a multi-service build, not
+        # the frontend directory.
+        assert "import.meta.url" in vite_config
+
+    def test_both_bases_are_the_expected_two_values(self, vite_config):
+        assert "'/'" in vite_config
+        assert "'/ScholarZone/'" in vite_config
+
+
+class TestIndexHtmlEntryPoint:
+    @pytest.fixture(scope="class")
+    def index_html(self) -> str:
+        return (REPO / "frontend" / "index.html").read_text(encoding="utf-8")
+
+    def test_entry_script_is_an_absolute_source_path(self, index_html):
+        # Vite rewrites this using base, so it must start at the site root.
+        assert 'src="/src/main.jsx"' in index_html
+
+    def test_mount_point_exists(self, index_html):
+        assert 'id="root"' in index_html
+
+    def test_no_bom_and_no_mojibake(self, index_html):
+        assert "Â" not in index_html
+        assert "Ã©" not in index_html
+
+
+class TestApiBaseDefaultsSafely:
+    def test_service_defaults_to_a_relative_api_path(self):
+        service = (REPO / "frontend" / "src" / "services" / "scholarshipService.js").read_text(
+            encoding="utf-8"
+        )
+        # A hardcoded localhost, or a bare import.meta.env access, renders a
+        # blank page in the browser and says nothing useful.
+        assert "localhost" not in service
+        assert "|| '/api'" in service
+
+    def test_admin_service_has_the_same_default(self):
+        service = (REPO / "frontend" / "src" / "services" / "adminImageReviewService.js").read_text(
+            encoding="utf-8"
+        )
+        assert "localhost" not in service
+        assert "|| '/api'" in service
