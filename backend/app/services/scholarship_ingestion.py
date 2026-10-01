@@ -123,6 +123,17 @@ class ScholarshipIngestionRecord(BaseModel):
 
         if "coverage" in self.model_fields_set:
             fields["benefits"] = self.coverage
+
+        # deadline_precision is NOT NULL and its column default is "month",
+        # which asserts a precision no page published. A record that supplies a
+        # deadline but no precision gets "varies": the same value the enrichment
+        # stage writes, and in the vocabulary the rolling/recurring filters
+        # match on. Resolved here rather than in the caller because the insert
+        # happens inside upsert_verified_scholarships, before any caller can
+        # correct it.
+        if fields.get("deadline_precision") is None:
+            fields["deadline_precision"] = "varies"
+
         return fields
 
 
