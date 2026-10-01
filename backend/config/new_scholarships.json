@@ -1045,7 +1045,7 @@
           "cycle_verified": "Continuous programme published as Status: active, Period: August 2012 to Ongoing, with no central cycle. On 2026-10-01 no central closure or published next cycle was found, so the record is recorded as open rather than upcoming.",
           "verification_confidence": 0.75,
           "official_fields_confirmed": [
-            "Status: active and Period: August 2012–Ongoing as published on the programme page",
+            "Status: active and Period: August 2012â€“Ongoing as published on the programme page",
             "The scholarship covers tuition fees, accommodation, books and other academic materials, mentoring, counselling, leadership development, and a return air ticket to the Scholar's country of origin if necessary",
             "Financial support includes, but is not limited to, those items, so the list is non-exhaustive rather than a cap",
             "Scholarships at secondary, undergraduate and master's levels; not currently available to PhD candidates",
@@ -1698,10 +1698,14 @@
           ],
           "documents": [],
           "selection_criteria": [
-            "Eine Ã¼berzeugende PersÃ¶nlichkeit und Identifikation mit den Werten der Sozialen Demokratie",
-            "gesellschaftspolitisches Engagement",
-            "Ã¼ber dem Durchschnitt liegende Leistungen",
-            "Bei der Auswahl werden Bewerbungen von Erst-Akademiker:innen und/oder Menschen mit Migrationshintergrund, von Frauen sowie von Studierenden an (Fach-)Hochschulen und in den MINT-FÃ¤chern besonders berÃ¼cksichtigt"
+            "Identification with the fundamental values of social democracy",
+            "Socio-political or civic commitment, treated as self-evident",
+            "Good grades, in school, in the studies or in the degree, expressed as above-average grades in the studies",
+            "Very good German language skills",
+            "Formal and substantive criteria applied by FES staff to the online application at the first screening stage",
+            "The Foundation gives particular weight to education equity: applicants who are the first in their family to study and/or have a migration background, women, students at universities of applied sciences and STEM students",
+            "Sufficient German language proof, and first graded performance records for Bachelor's students, as mandatory baseline criteria rather than scored criteria",
+            "The interview stage assessments, where two Gutachten are produced: one by the Vertrauensdozent:in after the first interview and one by a member of the selection committee after the second, both attached to the application file"
           ],
           "application_method": [
             "Online-Bewerbungsformular ausfÃ¼llen",
@@ -1711,15 +1715,180 @@
             "Entscheidung durch den Auswahlausschuss"
           ],
           "award_holder_conditions": [
-            "Das Stipendium muss nicht zurÃ¼ckgezahlt werden",
-            "Schwerpunkt der FÃ¶rderung sind Bachelor-, Master-, Diplom- und StaatsexamenstudiengÃ¤nge"
+            "The scholarship is not repayable: 'Das Stipendium muss nicht zurückgezahlt werden.'",
+            "The scholarship holder must continue to be enrolled in a full-time degree programme at a German public or state-recognised university, higher education institution or university of applied sciences.",
+            "The scholarship holder must continue to identify with the fundamental values of social democracy, which the Foundation treats as the basis of the award.",
+            "The scholarship holder is expected to remain engaged in civic or socio-political activity, which is one of the three baseline questions an applicant must answer affirmatively.",
+            "The scholarship supports the holder ideologically as well as materially: the holder is expected to take up the offer of political education seminars, workshops and skills training, to join local scholarship-holder groups and the 18 thematic working groups, and to be integrated into the network of current and former scholarship holders.",
+            "Scholarship holders with children receive an additional monthly amount, which is conditional on the family situation being declared in the application.",
+            "The Foundation's published basis for offsetting other income: the Foundation's English page states that any income exceeding 400 Euro per month will be credited against the scholarship.",
+            "Travel costs incurred travelling to a selection interview can be reimbursed on submission of the Foundation's form; this is an interview-stage cost, not a study-period cost",
+            "Personal Betreuung und Beratung: the Foundation states its funding is characterised by personal supervision and advice for scholarship holders, and that many former scholarship holders act as Mentor:innen on questions around study and career planning",
+            "The scholarship may not be used for the excluded purposes listed under not_covered_or_excluded, including a second degree or a language course, unless the holder already holds an FES scholarship"
           ],
           "supplements_or_initiatives": [],
           "official_contacts": {
-            "general": "stipendien(at)fes.de; AuslandsfÃ¶rderung: Elisabeth Schulze Horn, 0228 883-7932; Rebecca Schmitz, +49 228 883-7967"
+            "general": "Friedrich-Ebert-Stiftung, Studienförderung. Contact for Auslandsförderung (international funding): surnames A to N, Elisabeth Schulze Horn, phone 0228 883-7932; surnames O to Z, Rebecca Schmitz, phone +49 228 883-7967. Programme page: https://www.fes.de/studienfoerderung/stipendium/grundfoerderung-fuer-auslaender-innen. Application system: https://www.fes.de/studienfoerderung/bewerbung. Scholarship ambassadors: https://www.fes.de/studienfoerderung/botschafter-innen. FAQs: https://www.fes.de/studienfoerderung/faq",
+            "email": "stipendien(at)fes.de (general Studienförderung address). Auslandsförderung contacts: elisabeth.schulzehorn(at)fes.de (surnames A to N); rebecca.schmitz(at)fes.de (surnames O to Z). FES publishes these addresses with (at) in place of the @ character."
           },
           "citizenship_residency": "International students who are enrolled at a German public or state-recognised university, or who apply from abroad for such a place",
-          "last_verified_date": "2026-10-01"
+          "last_verified_date": "2026-10-01",
+          "purpose": [
+            "Support international students at a German higher education institution during their studies, materially and ideologically: 'Mit dem FES-Stipendium möchten wir Studierende während ihres Studiums unterstützen - materiell und ideell.'",
+            "Enable scholarship holders to concentrate on their studies without financial worries and to have more time for their civic engagement: 'Wir tragen dazu bei, dass unsere Stipendiat:innen sich ohne finanzielle Sorgen auf das Studium konzentrieren können und mehr Zeit für ihr Engagement haben.'",
+            "Give international students the chance to complete their studies at a German university. The Foundation states it is particularly pleased when it can give students from abroad that opportunity.",
+            "Promote education equity: 'Bildungsgerechtigkeit bedeutet gleiche Chancen für alle.' Selection gives particular weight to applications from people who are the first in their family to study (Erst-Akademiker:innen) and/or have a migration background, from women, and from students at universities of applied sciences and in STEM subjects.",
+            "Cultivate a values-oriented environment in which holders exchange ideas and become able to gather sufficient information, act thoughtfully, make decisions and thereby strengthen their social participation.",
+            "The Foundation is convinced that commitment to society works best when achieved together."
+          ],
+          "sdg_requirement": false,
+          "sdg_requirement_details": [
+            "No SDG, development-goal or impact-alignment requirement is published. The Foundation states its own commitment to the fundamental values of social democracy and asks applicants to identify with those values, which is a political-values test rather than a development-goal test.",
+            "The published selection emphasis is on education equity (Bildungsgerechtigkeit), particularly first-generation students, students with a migration background, women, students at universities of applied sciences and STEM students, rather than on any named international goal."
+          ],
+          "study_type": [
+            "Full-time degree study at a German public or state-recognised university, higher education institution or university of applied sciences",
+            "Bachelor's, Master's, Diplom/Magister and Staatsexamen (state examination) degree programmes",
+            "The applicant must already be enrolled at a German institution when they apply; applications are also possible from outside Germany"
+          ],
+          "degree_award": "A full degree at a German higher education institution, not a short-term award. The Grundförderung covers Bachelor's, Master's and Diplom degree programmes and programmes leading to the Staatsexamen. No degree is awarded by the Foundation itself.",
+          "tuition_rule": "The Foundation states that its financial support amounts to 992 Euro per month and that the cost of health insurance is covered, but it publishes no tuition-waiver rule. The applicant's tuition and semester contribution fees at the German institution are not listed as covered by the Foundation, and no official page states that the Foundation pays them. Where the Foundation's stipend is described, it is described as support for living during the study, not as a fee waiver.",
+          "home_tuition_rule": "Not applicable as a published rule. The programme requires the applicant to be already studying at a German institution, and the Foundation explicitly does not fund study abroad programmes outside the EU or short-term stays abroad.",
+          "host_institution_fee": null,
+          "tax_status": null,
+          "covered_expenses": [
+            "A monthly stipend of 992 Euro",
+            "The costs of health insurance: 'Die Kosten für die Krankenversicherung werden übernommen.' The Foundation's English page states this as refund of health care costs.",
+            "An additional 255 Euro per month for scholarship holders with children (stated on the German Grundförderung page)"
+          ],
+          "not_covered_or_excluded": [
+            "Tuition and semester contribution fees at the German institution: no official page states that these are paid",
+            "Short-term courses of study of less than three semesters, for example a two-semester Master's programme",
+            "Short-term stays abroad and study abroad programmes outside the EU",
+            "Research visits, postdoctoral projects, trainee programmes and project proposals",
+            "University preparatory courses",
+            "Medical studies up to and including the preliminary medical examination (Physikum)",
+            "Doctoral degrees and further education or training in the medical field; final stages of a degree course or of a doctoral degree",
+            "Training to become a physiotherapist, and further training to become a psychological psychotherapist",
+            "Extra-occupational or part-time courses of study",
+            "Language courses, unless the applicant already holds an FES scholarship",
+            "Second degrees, unless the applicant already holds an FES scholarship",
+            "Travel costs generally: the only published travel reimbursement is for applicants who are invited to a selection interview and have incurred travel costs, for which the Foundation publishes a travel-cost reimbursement form for the Grundförderung"
+          ],
+          "general_eligibility": [
+            "The applicant must be a foreign national (Ausländer:in)",
+            "The applicant must already be enrolled at a German public or state-recognised university, higher education institution or university of applied sciences at the time of application",
+            "The applicant must have very good German language skills, and must prove sufficient German with the application",
+            "The applicant must have above-average grades in their studies (überdurchschnittliche Noten im Studium)",
+            "The applicant must already have first graded performance records (erste benotete Leistungsnachweise) as a prerequisite for applying",
+            "The applicant must be socially or politically engaged (gesellschaftspolitisch engagiert)",
+            "The applicant must identify with the values of social democracy",
+            "The application must be submitted in German",
+            "The applicant must answer three questions with a clear yes: do you identify with the fundamental values of social democracy; is it self-evident to you to volunteer for society; do you have good grades in school, in your studies or in your degree"
+          ],
+          "ineligibility_conditions": [
+            "Not already studying in Germany at the time of application. The Foundation states 'You are already studying in Germany at the time of your application' as a requirement for foreign students, and that living in Germany and studying at a German university is essential.",
+            "Without proof of sufficient German language skills. The Foundation states 'German language skills are absolutely necessary and must be proven', and that even if you study in English you must prove sufficient German with your application.",
+            "Applications not submitted in German: 'Applications have to be submitted in German.'",
+            "Applications without first graded performance records: 'Bachelor's students must submit their first graded performance records.'",
+            "Students enrolled at an institution that is not a state or state-recognised university, higher education institution or university of applied sciences",
+            "Applicants in fields or at stages the Foundation does not fund: short-term courses of under three semesters, medical studies up to and including the Physikum, doctoral and postdoctoral study, final stages of a degree or doctorate, physiotherapy and psychological psychotherapy training, research visits, trainee programmes, university preparatory courses, extra-occupational or part-time study, study abroad outside the EU, and short-term stays abroad",
+            "Applicants already holding an FES scholarship who wish to add funding for a language course or a second degree",
+            "Applicants missing the stage-specific application window: Master's before or at the start of the first semester of the Master's programme; Bachelor, Diplom, Magister and Staatsexamen after the first semester and up to three semesters before the end of the standard period of study; medicine after the fourth semester or after the Physikum and to the end of the sixth semester"
+          ],
+          "academic_level_rules": {
+            "undergraduate": [
+              "Bachelor's, Diplom, Magister and Staatsexamen programmes are included in the Grundförderung.",
+              "Application window: after the first semester and up to three semesters before the end of the standard period of study. The Foundation's English page states this as until three semesters before finishing the standard period of study, giving the examples 'if 6 semesters by the end of 3rd semester; if 7 semesters by the end of 4th semester'.",
+              "Bachelor's students must submit their first graded performance records before applying.",
+              "Medicine has its own window: after the fourth semester or after the Physikum, to the end of the sixth semester. The Foundation does not fund medical studies up to and including the Physikum.",
+              "Second degrees are not funded unless the applicant already holds an FES scholarship."
+            ],
+            "masters": [
+              "Master's and postgraduate programmes are included in the Grundförderung.",
+              "Application window: before or at the start of the first higher education semester of the Master's programme, stated as by 30 November for a winter semester start and by 31 May for a summer semester start. The Foundation's English page states the same window as by the end of the first semester.",
+              "A short-term course of study of less than three semesters, for example a two-semester Master's programme, is not funded. An applicant who does not qualify for a Master's programme is pointed to the Bachelor/Diplom/Magister/Staatsexamen route.",
+              "The German page states that graduates and postgraduates are directed to the separate Promotionsförderung für Ausländer:innen doctoral programme instead."
+            ],
+            "phd": [
+              "Not funded under the Grundförderung. Doctoral study is handled by a separate programme, Promotionsförderung für Ausländer:innen, which funds foreign doctoral candidates admitted to a state or state-recognised German university and funds all dissertation projects except medicine.",
+              "The Foundation explicitly does not fund doctoral degrees, postdoctoral projects, or the final stages of a doctoral degree."
+            ]
+          },
+          "host_requirements": [
+            "The applicant must already be enrolled at a German public or state-recognised university, higher education institution or university of applied sciences (an einer deutschen, staatlichen oder staatlich anerkannten Hochschule oder Fachhochschule).",
+            "Enrolment must be confirmed by an Immatrikulationsbescheinigung, and university entrance qualification and certificates are among the documents requested at the second stage.",
+            "The applicant's study must be a full-time degree programme; extra-occupational and part-time courses of study are not funded.",
+            "Scholarship holders with children receive an additional monthly amount, which requires a declared family situation.",
+            "The Foundation's English page notes particular importance for students at universities of applied sciences, so those institutions are an accepted host type rather than a second-tier route."
+          ],
+          "document_format_rules": [
+            "The application is made in the online application form, using the form published for the Grundförderung für Ausländer:innen at https://www.fes.de/oas/portal/pls/portal/bewsti2014.bewmaske?pFprog=2&pkn=A. The online form is required as the first step and is checked by FES staff against the formal and substantive criteria.",
+            "The first-step online form requires general personal information, information on professional and family background, the applicant's motivation to become an FES scholarship holder, and information on socio-political engagement.",
+            "Applications must be submitted in German.",
+            "Second-stage documents requested by email: a detailed CV covering previous education and socio-political engagement; certificates, university entrance qualification, enrolment certificate (Immatrikulationsbescheinigung) and other evidence; a detailed letter of motivation; and two references (Gutachten) from university lecturers, or from teachers for first-year students.",
+            "For the Grundförderung, the Foundation publishes a dedicated document and reference checklist as a downloadable file at https://www.fes.de/index.php?eID=dumpFile&t=f&f=160624, which is the governing list of required documents and guidance for this programme specifically.",
+            "Applicants have three weeks to assemble the documents and up to six weeks for the references, and the Foundation sends a receipt confirmation on receipt.",
+            "If an applicant is invited to a selection interview and has incurred travel costs, those costs can be reimbursed by submitting the Foundation's travel-cost reimbursement form for the Grundförderung (Fahrtkostenerstattung_BMFTR_Grundförderung), published at https://www.fes.de/index.php?eID=dumpFile&t=f&f=165947.",
+            "Applicants can log back in at any time before submitting to continue an unfinished online application, and can upload further documents through the same login once they advance a stage.",
+            "The Foundation informs every applicant by email about the result of each stage, and the final decision is communicated at the latest one week after the selection committee's meeting.",
+            "No file size limit, accepted file-type list, translation rule, certification rule or document-expiry rule is published on the pages read. The documents checklist PDF and the reference-writing guidance are published as separate files and were not downloaded."
+          ],
+          "selection_notes": "The procedure has five published steps. Step 1: complete the online application form; FES staff check it against formal and substantive criteria, and within two to four weeks of receipt the applicant receives either a rejection or a request to submit documents and references. Step 2: submit documents and references; the file is reviewed and the applicant receives either a rejection or notification that the application has been passed to a Vertrauensdozentin or Vertrauensdozent. Step 3: the first selection interview, a subject-related discussion with a Vertrauensdozentin or Vertrauensdozent, from which a Gutachten is produced and attached to the file; the applicant then receives either a rejection or notification that the file has gone to a member of the selection committee. Step 4: the second selection interview with a person from the selection committee, producing a further Gutachten attached to the file and tabled at the committee's meeting. Step 5: decision by the selection committee, which meets eight to ten times a year; once both Gutachten are available the application is presented in detail to the committee at the relevant meeting and the members decide on admission to the funding programme. The Foundation informs the applicant of the final decision at the latest one week after the meeting, whether that is an offer or a rejection, and states that the whole process from application to decision can take three to seven months.",
+          "application_steps": [
+            "Apply early. The Foundation states the best time to apply is as early as possible, because it wants scholarship holders to benefit from the scholarship for as long as possible, and the deadlines are listed per programme.",
+            "Check your degree-stage window. Master's: before or at the start of the first semester of the Master's programme (winter semester by 30 November, summer semester by 31 May). Bachelor, Diplom, Magister, Staatsexamen: after the first semester and up to three semesters before the end of the standard period of study. Medicine: after the fourth semester or after the Physikum, to the end of the sixth semester.",
+            "Complete the online application form for the Grundförderung für Ausländer:innen at https://www.fes.de/oas/portal/pls/portal/bewsti2014.bewmaske?pFprog=2&pkn=A, in German, covering general personal information, professional and family background, your motivation to become an FES scholarship holder, and your socio-political engagement.",
+            "Submit the form. FES staff check it against the formal and substantive criteria.",
+            "Wait two to four weeks. You will receive either a rejection or an email requesting your documents and references.",
+            "If invited, submit within the stated windows: three weeks for the documents and up to six weeks for the references. Documents: a detailed CV covering your previous education and socio-political engagement; certificates, university entrance qualification, enrolment certificate and other evidence; and a detailed letter of motivation. References: two Gutachten from university lecturers.",
+            "Consult the Foundation's published Grundförderung document and reference checklist at https://www.fes.de/index.php?eID=dumpFile&t=f&f=160624 for the full required list for this programme.",
+            "Use your FES login at https://www.fes.de/oas/portal/pls/portal/bewsti2014.login to upload further documents when you advance to the next stage. FES confirms receipt of the documents.",
+            "If the file passes, attend the first selection interview, a subject-related discussion with a Vertrauensdozentin or Vertrauensdozent. A Gutachten is produced and attached to your file.",
+            "If you advance, attend the second selection interview with a member of the selection committee. A second Gutachten is produced.",
+            "If you have travelled for an interview, submit the Foundation's travel-cost reimbursement form for the Grundförderung to claim reimbursement of your travel costs.",
+            "Await the decision. The selection committee meets eight to ten times a year and you will be informed by email at the latest one week after the meeting, whether the outcome is an offer or a rejection. The full process from application to decision can take three to seven months."
+          ],
+          "applicant_submission_route": [
+            "The applicant submits directly. The online application form, the documents and the references are all submitted by the applicant to the Foundation, with no institutional nomination and no employer or university acting as an intermediary.",
+            "Applications may be submitted formally from Germany or from abroad: 'Bewerbungen sind formell sowohl aus Deutschland als auch aus dem Ausland möglich.'",
+            "The two Gutachten must be written by university lecturers, or by teachers for first-year students, and submitted by the applicant with the document package within the stated six-week window. The Foundation publishes guidance on preparing the references separately.",
+            "After the first stage, further documents are uploaded by the applicant through the Foundation's own application login.",
+            "The Foundation's contact addresses for Auslandsförderung are published for questions, not as a submission channel; submission is through the online system."
+          ],
+          "application_portal": "The Foundation's online application system at https://www.fes.de/oas/portal/pls/portal/bewsti2014.bewmaske?pFprog=2&pkn=A (the Grundförderung für Ausländer:innen form), with applicant login at https://www.fes.de/oas/portal/pls/portal/bewsti2014.login.",
+          "student_direct_application": true,
+          "deferrable": null,
+          "renewable": null,
+          "return_home_required": null,
+          "clinical_restriction": true,
+          "arrival_rules": [
+            "The applicant must already be living in Germany and studying at a German university at the time of application, and applications may formally be submitted from Germany or from abroad. Consequently there is no arrival provision: the applicant is already in Germany when applying.",
+            "No arrival date, latest-arrival rule, visa support arrangement or relocation funding is published. Study abroad programmes outside the EU and short-term stays abroad are not funded.",
+            "Enrolment must be confirmed by an Immatrikulationsbescheinigung, and the Foundation's stage-two document request includes the enrolment certificate."
+          ],
+          "timeline_rules": [
+            "The best time to apply is as early as possible, because the Foundation wants scholarship holders to benefit for as long as possible.",
+            "Application windows by degree stage: Master's, before or at the start of the first semester of the Master's programme (winter semester by 30 November, summer semester by 31 May); Bachelor, Diplom, Magister and Staatsexamen, after the first semester and up to three semesters before the end of the standard period of study (English page: until three semesters before finishing the standard period of study, so by the end of the 3rd semester on a six-semester programme or the end of the 4th semester on a seven-semester programme); medicine, after the fourth semester or after the Physikum to the end of the sixth semester. The Foundation's English page also states diploma, magister and state examination by the end of the 6th semester.",
+            "There is no single annual closing date: applications are accepted on a rolling basis within the stage-specific windows, which is why the record's deadline_date is only meaningful as the 30 November master's-stage date.",
+            "Step 1 to first outcome: within two to four weeks of receiving the online application, the applicant receives either a rejection or a request to submit documents and references.",
+            "Step 2: three weeks to assemble the documents and up to six weeks for the references, with a receipt confirmation on arrival.",
+            "The selection committee meets eight to ten times a year, and the applicant is informed of the final decision at the latest one week after the meeting.",
+            "Total elapsed time from application to decision: three to seven months.",
+            "The Foundation informs all applicants by email about the result of each individual stage.",
+            "Applicants who have not yet submitted their online application can log in at any time and continue editing it."
+          ],
+          "official_application_route": [
+            "Complete the online application form published for the Grundförderung für Ausländer:innen at https://www.fes.de/oas/portal/pls/portal/bewsti2014.bewmaske?pFprog=2&pkn=A, in German.",
+            "The form is checked by FES staff against the formal and substantive criteria, and a decision or a document request follows within two to four weeks.",
+            "On invitation, submit the document package and two academic references through the Foundation's application login within three weeks for documents and up to six weeks for references, using the Grundförderung checklist at https://www.fes.de/index.php?eID=dumpFile&t=f&f=160624 as the governing list.",
+            "Attend the first selection interview with a Vertrauensdozentin or Vertrauensdozent if invited.",
+            "Attend the second selection interview with a member of the selection committee if shortlisted.",
+            "Submit the Foundation's travel-cost reimbursement form for the Grundförderung if you have incurred interview travel costs.",
+            "The decision is communicated by email at the latest one week after the selection committee's meeting. The Foundation does not publish a postal submission route for the Grundförderung; the online system is the route."
+          ],
+          "program_type": "Political foundation scholarship for international students in Germany",
+          "region": "Germany — study must take place at a German public or state-recognised university, higher education institution or university of applied sciences; applicants may apply from Germany or from abroad"
         },
         "applicant_utility": {
           "application_readiness_checklist": [
@@ -1785,41 +1954,116 @@
           "post_award_requirements": [
             "Take part in the socio-political seminars, workshops and skills training that form part of the ideelle FÃ¶rderung",
             "The funding is reviewed along with the funding period of the degree programme"
+          ],
+          "important_advice_for_students": [
+            "You must already be enrolled at a German university when you apply. This is the first gate, and it is not waivable — an offer of admission is not enough, enrolment is. Plan around being in Germany before the window closes.",
+            "German is mandatory, not optional. B2 is the level the Foundation states it accepts, and it accepts it without a certificate, but the application must still be written and submitted in German. Even if you study in English, you must prove German.",
+            "Check your degree-stage window before anything else. The windows are different for Master's, Bachelor, and medicine, and they are expressed relative to your semester count rather than as a calendar date. Applying in the wrong window is the most likely reason for an automatic rejection.",
+            "Check the funding-exclusion list against your course. A two-semester Master's, medical study up to the Physikum, any doctoral or postdoc stage, a research visit, physiotherapy or psychotherapy training, part-time study, and study outside the EU are all excluded. If your programme is short or part-time, this is the wrong scheme.",
+            "A second degree or a language course is not funded unless you already hold an FES scholarship. If you are planning to change course, check whether the new course would be a second degree.",
+            "Have your first graded performance records in hand before you apply. They are a stated prerequisite, and Bachelor's students must submit them.",
+            "Do the two academic references early. You have three weeks for documents but up to six weeks for the references, so the references are the long pole. University lecturers, not teachers, write them unless you are a first-year student.",
+            "Write the civic engagement part seriously. Soci-political commitment and identifying with the values of social democracy are two of the three baseline yes/no questions, and the Foundation looks for students who identify with social democracy and treat volunteering as self-evident.",
+            "Play to the Foundation's published priority groups if any apply to you: first in your family to study, migration background, women, universities of applied sciences, STEM. The Foundation states it gives particular weight to these applications.",
+            "Budget for what is not covered. The published package is 992 Euro per month plus health insurance costs, with an additional amount for children. Tuition and semester fees at your institution are not listed as covered. Ask your university what the semester contribution is and keep it in your own budget.",
+            "Watch the offset rule. The Foundation's English page states that any income exceeding 400 Euro per month is credited against the scholarship, so part-time earnings above that threshold reduce your stipend.",
+            "Claim interview travel costs if you have them. The Foundation reimburses travel costs for applicants invited to a selection interview, using its own form. Submit it.",
+            "Allow three to seven months. The process runs from the online form through a document request, two interviews with two separate Gutachten, and a committee meeting, and the committee only sits eight to ten times a year.",
+            "Talk to a scholarship ambassador before you apply. The Foundation points applicants to its stipendien-botschafter:innen for questions and for encouragement before applying, and these are former holders who answer questions they would rather answer themselves."
+          ],
+          "questions_to_ask_host": [
+            "What is the current semester contribution fee at my institution, and does the university offer any waiver for scholarship holders? The Foundation does not publish that it pays it.",
+            "What health insurance plan will I be enrolled in, and does its cost vary with my age, marital status or dependants? The Foundation says it covers health insurance costs but publishes no figure.",
+            "What counts as the 'first graded performance records' required at application, and does my university issue them in a form I can upload directly?",
+            "Does my university offer a thesis supervisor or academic mentor willing to write a Gutachten, and how long do they take?",
+            "What is the standard period of study for my programme, so that I can calculate the three-semester application window correctly?",
+            "Is there a German course requirement attached to my programme that I should start now, given that applications must be submitted in German?",
+            "Does my institution have a scholarship-holder network or working group that FES scholarship holders join, and what does it expect of me in terms of time?",
+            "How much do the 18 thematic working groups and the political education seminars take in study time, on top of my coursework?",
+            "Is my course one of the excluded categories by another name — for example is it run part-time, is it a two-semester Master's, or is it a research stay rather than a degree programme?",
+            "What is the Foundation's offset calculation in practice if I have part-time income, and over what period is it assessed?",
+            "How do I apply for the additional amount for scholarship holders with children, and what is the current monthly figure?",
+            "Can I change my host institution or my subject after being awarded, and does that affect the stipend?"
           ]
         },
         "verification": {
-          "cycle_verified": "Continuous degree-stage based intake; winter-semester Master's deadline 30.11.2026",
-          "verification_confidence": 0.9,
+          "cycle_verified": "Rolling annual cycle for the Grundförderung für Ausländer:innen, with degree-stage windows rather than a single annual deadline: Master's by 30 November (winter semester) or 31 May (summer semester); Bachelor, Diplom, Magister and Staatsexamen after the first semester and up to three semesters before the end of the standard period of study; medicine after the fourth semester or Physikum to the end of the sixth semester. Selection committee meets eight to ten times a year; total process three to seven months. The record's status open reflects that the programme is published as continuously accepting applications within these windows.",
+          "verification_confidence": 0.93,
           "official_fields_confirmed": [
-            "Financial support of 992 Euro and health insurance costs covered",
-            "Additional 255 Euro per month for scholarship holders with children",
-            "Scholarship does not have to be repaid",
-            "Degree stages covered (Bachelor, Master, Diplom, Staatsexamen)",
-            "Application deadlines by degree stage (30.11. winter / 31.05. summer for Master's)",
-            "German B2 accepted without certificate; applications submitted in German",
-            "Five-step selection procedure and three-to-seven-month timeline"
+            "Programme scope: Grundförderung für Ausländer:innen includes Bachelor's, Master's and Diplom degree programmes and programmes leading to the Staatsexamen (Grundförderung page)",
+            "Applications formally possible both from Germany and from abroad, and the Foundation is particularly pleased to enable students from abroad to study at a German university",
+            "Prerequisites: first graded performance records and good German language skills; B2 accepted, also without a certificate; German must be proved even if the applicant studies in English",
+            "The six published suitability criteria: foreign national; already studying at a German public or state-recognised university or university of applied sciences; very good German; above-average grades; socio-political engagement; identification with the values of social democracy",
+            "Stated purpose, both material and ideological, and the stated aim that holders can concentrate on their studies and have more time for their engagement",
+            "Ideological support: political education seminars, workshops and skills training, local scholarship-holder groups in numerous cities, 18 thematic working groups, integration into the network of current and former holders, and personal Betreuung und Beratung with former holders acting as Mentor:innen",
+            "Material package on the programme page: 992 Euro financial support, health insurance costs covered, and an additional 255 Euro per month for scholarship holders with children, plus the explicit statement that the scholarship does not have to be repaid",
+            "Stage-specific application windows for Master's, Bachelor, Diplom, Magister, Staatsexamen and medicine, with the calendar dates 30 November and 31 May for the Master's winter and summer semesters",
+            "Education-equity weighting: particular consideration for first-generation students and/or students with a migration background, women, students at universities of applied sciences, and STEM students",
+            "The three baseline questions an applicant must answer with a clear yes, and the instruction to apply as early as possible",
+            "The full five-step selection procedure with the two-to-four-week first outcome, three weeks for documents and up to six weeks for references, two selection interviews producing two Gutachten, and the selection committee deciding at a meeting held eight to ten times a year, with notification at the latest one week after the meeting",
+            "The full second-stage document list: detailed CV with education and socio-political engagement, certificates, university entrance qualification, enrolment certificate and other evidence, detailed letter of motivation, and two Gutachten from university lecturers or teachers for first-year students",
+            "Applications must be submitted in German, and living in Germany and studying at a German university is essential",
+            "The extensive published exclusion list: psychotherapist training, short-term stays abroad, project proposals, courses of under three semesters including two-semester Master's programmes, research visits, trainee programmes, university preparatory courses, medical studies up to and including the Physikum, doctoral degrees and further medical education and training, physiotherapy training, final stages of a degree or doctorate, postdoctoral projects, study abroad outside the EU, and extra-occupational or part-time study; plus language courses and second degrees unless the applicant already holds an FES scholarship",
+            "The offset rule on the Foundation's English page: any income exceeding 400 Euro per month will be credited against the scholarship",
+            "The Foundation's English page states 992 € per month for students and 1.500 € per month for postgraduates, and 276 € of family allowance if applicable; these are recorded as a source conflict with the programme page's 255 € figure for children",
+            "Travel-cost reimbursement for applicants invited to a selection interview, with a dedicated Grundförderung form published",
+            "The exact application form URL for the Grundförderung für Ausländer:innen and the applicant login URL",
+            "The published contact block for Auslandsförderung: Elisabeth Schulze Horn (phone 0228 883-7932) for surnames A to N and Rebecca Schmitz (phone +49 228 883-7967) for surnames O to Z, plus the dedicated Grundförderung document checklist file and the three-step reference guidance",
+            "The published Basisförderung route for doctoral candidates is a separate programme, Promotionsförderung für Ausländer:innen, which funds all dissertation projects except medicine"
           ],
           "institution_check_required": [
-            "No published tuition-fee coverage statement on the programme page; tuition_coverage left false",
-            "No published English test requirement; the published language requirement is German, so english_requirement left null",
-            "The programme page lists an online application form and an expert opinion (Gutachten) but does not enumerate a full document list, so `documents` was left empty rather than invented",
-            "No published duration of funding beyond the degree-stage deadline rules, so `duration` is null"
+            "host_institution_fee left null: no official page states whether the German institution's tuition or semester contribution fees are payable or waived; the Foundation's package description covers the stipend and health insurance only",
+            "tax_status left null: no official page states the tax treatment of the 992 Euro stipend in Germany or whether it is treated as taxable income",
+            "deferrable left null: no official page states whether an award can be deferred, postponed or started in a later semester",
+            "renewable left null: no official page states whether the scholarship can be renewed, extended or re-applied for in a later year, although the stage-based windows and the second-degree exclusion imply a per-degree structure",
+            "return_home_required left null: no official page states any obligation to return to the applicant's country of origin or to practise there after graduation; no bond is published",
+            "SOURCE CONFLICT on the children's allowance: the Grundförderung page states 'Stipendiat:innen mit Kind erhalten zusätzlich 255 Euro im Monat', while the Foundation's English 'Information in English' page states '276 € of family allowance, if applicable'. Both figures are recorded and the programme-specific German page figure of 255 Euro is treated as governing for this programme. Confirm with the Foundation before budgeting.",
+            "SOURCE CONFLICT on the postgraduate rate: the English page states 1.500 € per month for postgraduates, which is a different programme (Promotionsförderung) rather than the Grundförderung; the Grundförderung page gives a single figure of 992 Euro with no postgraduate differential",
+            "SOURCE CONFLICT on the Bachelor/Diplom deadline: the English page states 'diploma / magister / state examination: by the end of 6th semester' and separately 'Bachelor/undergraduate programmes: until 3 semesters before finishing the standard period of study', while the German programme page states one combined window for Bachelor, Diplom, Magister and Staatsexamen of after the first semester up to three semesters before the end of the standard period of study. Both are recorded; the German programme page governs",
+            "clinical_restriction recorded as true on a narrow basis: the Foundation explicitly does not fund medical studies up to and including the Physikum, doctoral degrees and further education or training in the medical field, and states that the separate doctoral programme funds all dissertation projects except medicine. This is a funding exclusion rather than a clinical-practice restriction on an award holder, and no health, fitness or medical-clearance condition on continuing students is published",
+            "arrival_rules could not be completed with a date: because the applicant must already be enrolled in Germany when applying, no arrival provision is published, and no visa, relocation or travel-to-Germany funding is stated",
+            "The Grundförderung document and reference checklist file at https://www.fes.de/index.php?eID=dumpFile&t=f&f=160624 was identified as the programme's governing document list but was not downloaded, so file formats, size limits, translation rules, certification rules and any page limits within it are unconfirmed",
+            "The reference-writing guidance, the Merkblatt und Studienverlaufsplan file (f=165879), and the travel-cost reimbursement form (f=165947) were identified but not read",
+            "The online application form itself was not opened, so any upload format, file size or character limit enforced by the form is unconfirmed",
+            "No official page states how the 992 Euro is affected by a part-time workload in practice, only the English page's statement that income above 400 € per month is credited against the scholarship",
+            "No official page states whether the applicant may change institution, subject or degree stage after being awarded",
+            "No official page states an appeals process against a rejection at any of the five stages"
           ],
           "unverified_or_removed_claims": [
-            "Did not set fully_funded: official sources establish a monthly amount and health insurance only, not tuition, full living costs and all required expenses",
-            "Did not assert any return-home obligation; none is published on the pages read",
-            "Did not fill a document list, because the pages read do not enumerate one"
+            "Rejected the claim that the scholarship covers tuition or semester fees: no official page lists them, so tuition_coverage is not asserted and host_institution_fee is null",
+            "Rejected any English-language application route: the Foundation states applications have to be submitted in German and that German language skills are absolutely necessary",
+            "Rejected any claim that a German certificate must be produced: the Foundation states it accepts a level of B2, also without a certificate, so english_requirement remains null and the German requirement is recorded instead",
+            "Rejected any claim of return-home obligation or service bond: none is published",
+            "Rejected a specific interview date: the Foundation publishes only that the selection committee meets eight to ten times a year, so no date was invented",
+            "Demoted the English page's 1.500 € postgraduate figure as a different programme (doctoral funding), and recorded the conflict rather than merging the two rates",
+            "Demoted the English page's 276 € family allowance in favour of the programme-specific 255 € figure, recording the conflict explicitly",
+            "Rejected any SDG or development-goal requirement: the Foundation's test is identification with the values of social democracy, so sdg_requirement is false"
           ],
-          "source_conflict_rule": "If the German programme page and the English information page disagree, treat the German programme page as authoritative, since applications are submitted in German.",
-          "source_freshness_rule": "Funding rates and deadlines are reviewed by the foundation; re-verify the 992 Euro rate and the 30.11./31.05. windows before publishing a record.",
+          "source_conflict_rule": "The programme page for Grundförderung für Ausländer:innen governs this specific scheme's scope, package and degree-stage windows, and the online application page governs the procedure, document list and deadlines. The Foundation's English 'Information in English' page is a cross-programme summary covering all FES schemes; where it differs from the programme page, the programme-specific German page governs, and every difference is recorded in institution_check_required rather than silently resolved. Where the English page is the only source for a rule, such as the 400 € income offset, it is cited explicitly as the English page.",
+          "source_freshness_rule": "The cycle is continuous and the windows are semester-relative rather than calendar-anchored, so there is no single annual date to go stale; what does change is the stipend rate, the family or children's allowance, the fee schedule at German institutions and the exclusion list. All of these must be re-read each academic cycle before an applicant budgets, and the selection committee's eight-to-ten-meetings-per-year cadence means a rejection is not final until a specific meeting date has passed.",
           "source_citations": [
             "https://www.fes.de/studienfoerderung/stipendium/grundfoerderung-fuer-auslaender-innen",
             "https://www.fes.de/studienfoerderung/bewerbung",
-            "https://www.fes.de/studienfoerderung/stipendium",
-            "https://www.fes.de/studienfoerderung/information-in-english"
+            "https://www.fes.de/studienfoerderung/information-in-english",
+            "https://www.fes.de/oas/portal/pls/portal/bewsti2014.bewmaske?pFprog=2&pkn=A"
           ],
-          "researched_by": "add_de",
-          "last_verified_date": "2026-10-01"
+          "researched_by": "deep_01",
+          "last_verified_date": "2026-10-01",
+          "data_quality": {
+            "source_level": "Official provider pages (Friedrich-Ebert-Stiftung programme page for the Grundförderung, the Foundation's online application page, and the Foundation's own English-language information page), all on fes.de",
+            "coverage": "High for scope, eligibility, exclusions, package and procedure: the programme page carries the six suitability criteria, the German B2 rule, the full material package with the non-repayment statement and the children's amount, the ideological support offering and the degree-stage windows with calendar dates; the application page carries the five-step procedure, both interview stages, the two-to-four-week and three-week and six-week response windows, the full document list, the committee cadence and the two named contacts. Gaps are confined to format rules inside a separate checklist PDF, the tax treatment, fee questions, and three genuine conflicts between the German programme page and the English summary page.",
+            "pages_read": [
+              "https://www.fes.de/studienfoerderung/stipendium/grundfoerderung-fuer-auslaender-innen",
+              "https://www.fes.de/studienfoerderung/bewerbung",
+              "https://www.fes.de/studienfoerderung/information-in-english"
+            ],
+            "pages_unreadable": [
+              "https://www.fes.de/index.php?eID=dumpFile&t=f&f=160624 - the Foundation's Grundförderung document and reference checklist, which the Foundation states is the governing list of required documents and further instructions for this application step; identified but not downloaded, so document format, size, translation and certification rules remain unconfirmed",
+              "https://www.fes.de/index.php?eID=dumpFile&t=f&f=165879 - Merkblatt und Studienverlaufsplan (guidance sheet and study progression plan); identified but not read",
+              "https://www.fes.de/index.php?eID=dumpFile&t=f&f=165947 - the travel-cost reimbursement form for the Grundförderung; identified but not read",
+              "https://www.fes.de/oas/portal/pls/portal/bewsti2014.bewmaske?pFprog=2&pkn=A - the online application form itself; identified from the application page but not opened, so any technical upload or format limits enforced by the form are unconfirmed"
+            ]
+          }
         }
       },
       "required_documents": [],
@@ -4362,7 +4606,7 @@
             "Applicants must hold (or be expected to hold) a Bachelor's degree and possess a non-Korean nationality",
             "Applicants with Korean citizenship, including dual citizenship holders, are not eligible",
             "Applicants must be admitted to a Master's or Doctoral program at a Korean graduate school and recommended by their admitting institution",
-            "Eligible countries (tentative): China, India, Indonesia, Japan, Kazakhstan, Malaysia, Myanmar, Philippines, Saudi Arabia, Singapore, Thailand, United Arab Emirates, Vietnam, Argentina, Brazil, Mexico, United States, Germany, Italy, Poland, Slovakia, Türkiye, United Kingdom, Egypt, Morocco, South Africa",
+            "Eligible countries (tentative): China, India, Indonesia, Japan, Kazakhstan, Malaysia, Myanmar, Philippines, Saudi Arabia, Singapore, Thailand, United Arab Emirates, Vietnam, Argentina, Brazil, Mexico, United States, Germany, Italy, Poland, Slovakia, TÃ¼rkiye, United Kingdom, Egypt, Morocco, South Africa",
             "Eligible universities (tentative): KDI School of Public Policy and Management, Korea University, POSTECH, Seoul National University, The Academy of Korean Studies, Yonsei University",
             "Majors in the humanities, social sciences, or natural sciences/engineering"
           ],
@@ -4585,19 +4829,19 @@
           "travel_coverage": false,
           "fully_funded": false,
           "eligibility": [
-            "Declarar en su perfil único tener la nacionalidad de alguno de los Estados Miembros de la OEA, con excepción de México.",
+            "Declarar en su perfil Ãºnico tener la nacionalidad de alguno de los Estados Miembros de la OEA, con excepciÃ³n de MÃ©xico.",
             "Haber obtenido una Beca Secihti Nacional in one of the six named 2025/2026 Secihti postgraduate calls listed in this record.",
             "Ser persona becaria nacional vigente en un programa de posgrado escolarizado.",
-            "Estar admitido e inscrito en las áreas de Física, Matemáticas y Ciencias de la Tierra, Biología y Química, Ingenierías, Medicina y Ciencias de la Salud (except medical specialties and subspecialties), Biotecnología y Ciencias Agropecuarias."
+            "Estar admitido e inscrito en las Ã¡reas de FÃ­sica, MatemÃ¡ticas y Ciencias de la Tierra, BiologÃ­a y QuÃ­mica, IngenierÃ­as, Medicina y Ciencias de la Salud (except medical specialties and subspecialties), BiotecnologÃ­a y Ciencias Agropecuarias."
           ],
           "coverage": [
-            "Single OAS contribution of USD 1,200 for gastos de instalación in Mexico, paid in Mexican pesos at the official exchange rate on the deposit date.",
+            "Single OAS contribution of USD 1,200 for gastos de instalaciÃ³n in Mexico, paid in Mexican pesos at the official exchange rate on the deposit date.",
             "Secihti monthly economic support under the 'Tabulador de Becas Nacionales 2026'.",
             "Secihti medical service via ISSSTE."
           ],
           "requirements": [
             "Send the information and documentation the OAS requests for formalisation and disbursement, on time and in full.",
-            "A single emailed prevención is issued for omissions, with a correction term of no fewer than five business days."
+            "A single emailed prevenciÃ³n is issued for omissions, with a correction term of no fewer than five business days."
           ],
           "documents": [],
           "selection_criteria": [
@@ -4631,7 +4875,7 @@
           ],
           "supplements_or_initiatives": [],
           "official_contacts": {
-            "general": "For the content of the call: asignacionbn@secihti.mx. For formalisation and disbursement by the OAS: scholarships@oas.org. Horario de atención: 9:00 a 15:00 horas de lunes a viernes. Secihti address: Av. Insurgentes Sur 1582, 1er. piso (ala sur), Col. Crédito Constructor, Demarcación Territorial Benito Juárez, C.P. 03940, Ciudad de México."
+            "general": "For the content of the call: asignacionbn@secihti.mx. For formalisation and disbursement by the OAS: scholarships@oas.org. Horario de atenciÃ³n: 9:00 a 15:00 horas de lunes a viernes. Secihti address: Av. Insurgentes Sur 1582, 1er. piso (ala sur), Col. CrÃ©dito Constructor, DemarcaciÃ³n Territorial Benito JuÃ¡rez, C.P. 03940, Ciudad de MÃ©xico."
           },
           "citizenship_residency": "Nationals of any OAS Member State except Mexico who already hold a current Secihti National Scholarship for a full-time postgraduate programme in Mexico.",
           "last_verified_date": "2026-10-01"
@@ -4650,7 +4894,7 @@
             "Enrolled in a medical specialty or subspecialty, which is excluded.",
             "Having received an OAS complementary support previously.",
             "Having an outstanding compliance report or debt under programme S190.",
-            "Failing to send the documentation requested by the OAS within the emailed prevención window, which can lead to cancellation and reassignment."
+            "Failing to send the documentation requested by the OAS within the emailed prevenciÃ³n window, which can lead to cancellation and reassignment."
           ],
           "estimated_uncovered_costs": [
             "All tuition and mandatory fees: nothing published here covers them.",
@@ -4670,7 +4914,7 @@
               "message": "Do not spend time on this application. The call only admits people already selected in a Secihti national scholarship call; the list is compiled by Secihti, not by you."
             },
             {
-              "trigger": "You receive the OAS emailed prevención",
+              "trigger": "You receive the OAS emailed prevenciÃ³n",
               "message": "Treat it as final: you get one correction notice with a term of no fewer than five business days, and missing it cancels the support."
             },
             {
@@ -4852,7 +5096,7 @@
           "documents": [
             "Government-issued identification: copy of the passport ID page or the national ID card.",
             "Business Concept Statement: one-paragraph description of an innovative and resilient business concept addressing an identified problem or market need.",
-            "Updated CV or résumé with educational background, professional experience, and relevant training, certificates and awards in innovation and entrepreneurship if available.",
+            "Updated CV or rÃ©sumÃ© with educational background, professional experience, and relevant training, certificates and awards in innovation and entrepreneurship if available.",
             "Proof of English Proficiency if the native language is not English: official transcript of studies completed at an English-speaking university or college within the past five years; or TOEFL 570+ paper / 230+ computer / 79+ internet-based; or IELTS 6.5 or equivalent.",
             "Proof of Additional Funds (USD 400): rental agreement, bank statement or official bank letter, employer letter confirming salary during study leave with pay, or a letter confirming a student loan, grant, financial aid or additional scholarship, or a combination of these."
           ],
@@ -4913,7 +5157,7 @@
           "document_audit": [
             "Passport ID page or national ID card copy, as a single identity document option, not both required.",
             "Business Concept Statement limited to one paragraph.",
-            "CV or résumé, updated, with professional training, certificates and awards in innovation and entrepreneurship included if available.",
+            "CV or rÃ©sumÃ©, updated, with professional training, certificates and awards in innovation and entrepreneurship included if available.",
             "English proficiency: TOEFL 570 paper / 230 computer / 79 IBT, or IELTS 6.5 or equivalent; the English-speaking university or college transcript route must be within the past five years.",
             "Additional funds evidence for USD 400, from the published list or a combination of them.",
             "All documents combined into one PDF, maximum 5 MB, in English or with official English translations."
@@ -5063,15 +5307,15 @@
       "image_alt_text": "Organization of American States",
       "detail": {
         "official_details": {
-          "description": "The SG/OAS awards tuition discounts for online postgraduate study with UNIR (Spain), the Escuela de Posgrado Peruana de NEWMAN (Peru) and UNIR Mexico. Up to 885 places are offered, with a 60% discount on total tuition for official master's programmes and official degrees, and a 50% discount for UNIR Formación Permanente programmes, applicable only to the value of the study programme. Admission fees, translation and notarisation, study materials, titulation and degree-awarding procedures, and any other cost not listed are explicitly excluded, and recipients must personally demonstrate the financial capacity to cover the uncovered programme costs, so this is not full funding.",
+          "description": "The SG/OAS awards tuition discounts for online postgraduate study with UNIR (Spain), the Escuela de Posgrado Peruana de NEWMAN (Peru) and UNIR Mexico. Up to 885 places are offered, with a 60% discount on total tuition for official master's programmes and official degrees, and a 50% discount for UNIR FormaciÃ³n Permanente programmes, applicable only to the value of the study programme. Admission fees, translation and notarisation, study materials, titulation and degree-awarding procedures, and any other cost not listed are explicitly excluded, and recipients must personally demonstrate the financial capacity to cover the uncovered programme costs, so this is not full funding.",
           "degree_levels": [
             "Master's",
             "Undergraduate"
           ],
-          "duration": "UNIR Maestrías Oficiales 12 months; UNIR Grados Oficiales 4 years, with the degree scholarship applying only to the first teaching year; UNIR Formación Permanente 21 to 34 weeks; EP NEWMAN maestrías 12 months; UNIR México maestrías 18 or 24 months",
-          "application_cycle": "Curso Académico 2026, two calls: 1a convocatoria Primavera 2026 (closed) and 2a convocatoria Otoño 2026 (open, deadlines 19-30 October 2026, results November 2026, programmes start October/November 2026)",
+          "duration": "UNIR MaestrÃ­as Oficiales 12 months; UNIR Grados Oficiales 4 years, with the degree scholarship applying only to the first teaching year; UNIR FormaciÃ³n Permanente 21 to 34 weeks; EP NEWMAN maestrÃ­as 12 months; UNIR MÃ©xico maestrÃ­as 18 or 24 months",
+          "application_cycle": "Curso AcadÃ©mico 2026, two calls: 1a convocatoria Primavera 2026 (closed) and 2a convocatoria OtoÃ±o 2026 (open, deadlines 19-30 October 2026, results November 2026, programmes start October/November 2026)",
           "deadline_central": "2026-10-19",
-          "deadline_central_display": "2a convocatoria: 19 de octubre de 2026 (UNIR Maestrías Oficiales y Grados Oficiales, and EP NEWMAN); 26 de octubre de 2026 (UNIR Mexico); 30 de octubre de 2026 (UNIR Formacion Permanente)",
+          "deadline_central_display": "2a convocatoria: 19 de octubre de 2026 (UNIR MaestrÃ­as Oficiales y Grados Oficiales, and EP NEWMAN); 26 de octubre de 2026 (UNIR Mexico); 30 de octubre de 2026 (UNIR Formacion Permanente)",
           "deadline_institutional": "Three different institutional deadlines fall inside the same convocatoria: 19 October 2026, 26 October 2026 and 30 October 2026, depending on the institution and programme.",
           "status": "OPEN",
           "funding_label": "OAS tuition discount scholarship (50% or 60% of tuition)",
@@ -5091,11 +5335,11 @@
           ],
           "coverage": [
             "60% discount on total tuition for UNIR official master's programmes and official degrees, and for EP NEWMAN and UNIR Mexico official master's programmes.",
-            "50% discount on total tuition for UNIR Formación Permanente programmes.",
+            "50% discount on total tuition for UNIR FormaciÃ³n Permanente programmes.",
             "Applies only to the value of the study programme."
           ],
           "requirements": [
-            "Be admitted to a participating programme and obtain the institution's carta de aplicación.",
+            "Be admitted to a participating programme and obtain the institution's carta de aplicaciÃ³n.",
             "Pay the admission fee required by the institution in order to be admitted.",
             "Demonstrate financial capacity for the uncovered programme costs within the established period before starting.",
             "Maintain an average of 5/10 or higher.",
@@ -5110,7 +5354,7 @@
           ],
           "application_method": [
             "Apply directly to the chosen programme through the institution's admission process and pay the admission fee.",
-            "On admission, receipt of the carta de aplicación automatically makes the applicant a candidate for the scholarship; there is no separate scholarship form.",
+            "On admission, receipt of the carta de aplicaciÃ³n automatically makes the applicant a candidate for the scholarship; there is no separate scholarship form.",
             "UNIR, EP NEWMAN, UNIR Mexico and the OAS run a specialised selection committee.",
             "Await results published at www.oea.org/becas from November 2026 for the 2a convocatoria.",
             "Selected candidates only are contacted by email with the offer and acceptance instructions, then begin payment procedures with the institution."
@@ -5134,7 +5378,7 @@
             "Confirm the programme you are applying to is not in your own country of origin.",
             "Check which of the three 2a convocatoria deadlines applies to your institution and programme: 19 October, 26 October or 30 October 2026.",
             "Complete the institution's admission process and pay the admission fee, which the scholarship does not cover.",
-            "Obtain the institution's carta de aplicación, which is what makes you a scholarship candidate automatically.",
+            "Obtain the institution's carta de aplicaciÃ³n, which is what makes you a scholarship candidate automatically.",
             "Prepare evidence of your own financial capacity for the tuition the discount does not cover, plus admission, translation/notarisation, materials and titulation costs.",
             "Review the exact programme cost with the institution, because the call states the costs shown in the document are orientative and may be lower in some countries.",
             "Confirm with your own Ministry of Education how the resulting title will be recognised, since neither the OAS nor the institutions take responsibility for that."
@@ -5148,7 +5392,7 @@
             "Dropping below an average of 5/10, or being reported with baja academica for absences or failed subjects, which puts the scholarship at risk."
           ],
           "estimated_uncovered_costs": [
-            "The remaining 40% of tuition for official master's and official degree programmes, and 50% for UNIR Formación Permanente.",
+            "The remaining 40% of tuition for official master's and official degree programmes, and 50% for UNIR FormaciÃ³n Permanente.",
             "The admission fee (cuota de admision), which must be paid to be admitted and is not covered.",
             "Translation and notarisation or authentication of documents.",
             "Study materials.",
@@ -5157,7 +5401,7 @@
             "All living costs, travel and health insurance, which the call does not address at all."
           ],
           "document_audit": [
-            "The institution's carta de aplicación, issued once admitted, is the essential item: without it there is no scholarship candidacy.",
+            "The institution's carta de aplicaciÃ³n, issued once admitted, is the essential item: without it there is no scholarship candidacy.",
             "The admission fee receipt, since admission requires payment of that fee.",
             "All documentation the institution itself requires for admission.",
             "Evidence of financial capacity for the uncovered costs, to be presented within the established period before starting the programme.",
@@ -5170,7 +5414,7 @@
             },
             {
               "trigger": "You are choosing between UNIR, EP NEWMAN and UNIR Mexico",
-              "message": "The deadline differs: 19 October for UNIR official master's/degrees and EP NEWMAN, 26 October for UNIR Mexico, 30 October for UNIR Formación Permanente. Target the earliest one you need."
+              "message": "The deadline differs: 19 October for UNIR official master's/degrees and EP NEWMAN, 26 October for UNIR Mexico, 30 October for UNIR FormaciÃ³n Permanente. Target the earliest one you need."
             },
             {
               "trigger": "You are considering the 'beca de grado'",
@@ -5185,7 +5429,7 @@
             "Verify eligibility: OAS Member State nationality or permanent residence other than Nicaragua, and not your own country of origin.",
             "Choose the institution and programme, and note its 2a convocatoria deadline of 19, 26 or 30 October 2026.",
             "Apply for admission to the programme directly with the institution and pay the admission fee.",
-            "Obtain the carta de aplicación on admission, which automatically enters you as a scholarship candidate.",
+            "Obtain the carta de aplicaciÃ³n on admission, which automatically enters you as a scholarship candidate.",
             "Gather your own proof of funds for the costs the scholarship does not cover.",
             "Await results at www.oea.org/becas from November 2026.",
             "If selected, accept the offer by email and complete the payment procedures with the institution."
@@ -5205,13 +5449,13 @@
           "official_fields_confirmed": [
             "Programme name, the three partner institutions and the SG/OAS as sponsor",
             "The up-to-885 places figure",
-            "The 60% discount for official master's and official degrees and the 50% discount for UNIR Formación Permanente",
+            "The 60% discount for official master's and official degrees and the 50% discount for UNIR FormaciÃ³n Permanente",
             "That the discount applies only to the value of the study programme",
             "The excluded costs: admission fee, translation and notarisation, study materials, titulation and degree procedures, and any other unspecified cost",
             "The academic performance condition of a 5/10 average and no baja academica",
             "The full eligibility list, including the Nicaragua exclusion and the own-country exclusion",
             "The three selection criteria published in the eligibility section and the four used in the selection committee section",
-            "The 2a convocatoria deadlines of 19 October 2026 (UNIR and EP NEWMAN), 26 October 2026 (UNIR Mexico) and 30 October 2026 (UNIR Formación Permanente)",
+            "The 2a convocatoria deadlines of 19 October 2026 (UNIR and EP NEWMAN), 26 October 2026 (UNIR Mexico) and 30 October 2026 (UNIR FormaciÃ³n Permanente)",
             "The five-step application and selection process",
             "Programme durations for each institution and modality",
             "The instruction that all programmes are distance/online and in Spanish"
@@ -6225,7 +6469,7 @@
             "Must study at an MOFA-approved university; the approved list cannot be bypassed",
             "Must agree to study a third language if required",
             "Parental consent is required for students under 22 years of age",
-            "Students changing major or country of study must inform the relevant programme officer at the Ministry and notify the cultural attaché in the country of study",
+            "Students changing major or country of study must inform the relevant programme officer at the Ministry and notify the cultural attachÃ© in the country of study",
             "Good Conduct and Behavior certificate required from the relevant official UAE authorities"
           ],
           "supplements_or_initiatives": [],
@@ -6293,7 +6537,7 @@
             },
             {
               "trigger": "If you want to change major or country of study",
-              "message": "Inform the relevant programme officer at the Ministry and notify the cultural attaché in your country of study; requests are reviewed under the programme's regulations."
+              "message": "Inform the relevant programme officer at the Ministry and notify the cultural attachÃ© in your country of study; requests are reviewed under the programme's regulations."
             }
           ],
           "submission_workflow": [
@@ -6318,7 +6562,7 @@
           "post_award_requirements": [
             "Serve in the UAE diplomatic corps at the Ministry of Foreign Affairs for a period equivalent to the number of academic years covered by the scholarship",
             "Enrol in the Anwar Gargash Diplomatic Academy Post-Graduate Diploma in UAE Diplomacy and International Relations after the Bachelor's degree",
-            "Notify the cultural attaché in the country of study and the programme officer of any change of major or country",
+            "Notify the cultural attachÃ© in the country of study and the programme officer of any change of major or country",
             "Study at a third language if required by the programme"
           ]
         },
@@ -6448,7 +6692,7 @@
       "image_alt_text": "NL Scholarship",
       "detail": {
         "official_details": {
-          "description": "The NL Scholarship is the Dutch national scholarship programme for bachelor and master students from outside the European Economic Area. It is financed by the Dutch Ministry of Education, Culture and Science together with Dutch research universities and universities of applied sciences. Study in NL states the scholarship amounts to € 5,000 and is paid in the first year of studies, and explicitly notes that it is not a full-tuition scholarship. Institutions set their own application deadlines and their own amount tiers, so the value and the deadline both depend on the institution you apply to.",
+          "description": "The NL Scholarship is the Dutch national scholarship programme for bachelor and master students from outside the European Economic Area. It is financed by the Dutch Ministry of Education, Culture and Science together with Dutch research universities and universities of applied sciences. Study in NL states the scholarship amounts to â‚¬ 5,000 and is paid in the first year of studies, and explicitly notes that it is not a full-tuition scholarship. Institutions set their own application deadlines and their own amount tiers, so the value and the deadline both depend on the institution you apply to.",
           "degree_levels": [
             "Undergraduate",
             "Master's"
@@ -6474,7 +6718,7 @@
             "You do not have a degree from an education institution in the Netherlands."
           ],
           "coverage": [
-            "A one-off grant of € 5,000 paid in the first year of studies.",
+            "A one-off grant of â‚¬ 5,000 paid in the first year of studies.",
             "Not full tuition: Study in NL states it is not a full-tuition scholarship.",
             "Not living costs: Radboud University states the costs of living and studying in the Netherlands are not covered by the scholarship.",
             "No travel, visa or insurance costs are mentioned on any official page read."
@@ -6497,8 +6741,8 @@
             "Utrecht University: academic background as demonstrated in the master's programme application.",
             "Utrecht University: motivation explaining the relevance of time in the Netherlands and at Utrecht University to future goals.",
             "Utrecht University: quality and feasibility of the financial plan.",
-            "Radboud University: academic excellence — outstanding study results, relevance of previous degree, ranking of the awarding university.",
-            "Radboud University: ambition — quality and relevance of the motivation letter, promise shown by achievements, life experience and extracurricular activities.",
+            "Radboud University: academic excellence â€” outstanding study results, relevance of previous degree, ranking of the awarding university.",
+            "Radboud University: ambition â€” quality and relevance of the motivation letter, promise shown by achievements, life experience and extracurricular activities.",
             "Radboud University: individual consideration by the selection committee of the faculty applied to."
           ],
           "application_method": [
@@ -6531,26 +6775,26 @@
           "application_readiness_checklist": [
             "Confirm your nationality is non-EEA and that you are not eligible for the lower EU/EEA or statutory tuition fee.",
             "Confirm you hold no degree from a Dutch education institution and have never been enrolled at one outside an exchange programme.",
-            "Pick a participating institution from the Study in NL list for the relevant academic year, then confirm that the specific programme you want actually participates — not every programme does.",
+            "Pick a participating institution from the Study in NL list for the relevant academic year, then confirm that the specific programme you want actually participates â€” not every programme does.",
             "Go to that institution's own scholarship page immediately, because it holds the only real deadline and often a different award amount.",
             "Note the two-stage deadline pattern used by Radboud University: the application must be submitted, then made complete, and documents cannot be added after the completeness deadline.",
             "Assemble proof of English proficiency early enough to be filed before the institutional completeness deadline, even if your admission is already secured.",
             "Build a realistic financing plan for the full nominal duration of the programme and be ready to evidence it in the institution's own format.",
-            "If you are at Radboud University, apply for the Radboud Scholarship Programme in the same cycle — the NLS cannot be awarded on its own."
+            "If you are at Radboud University, apply for the Radboud Scholarship Programme in the same cycle â€” the NLS cannot be awarded on its own."
           ],
           "common_rejection_risks": [
             "Applying to a programme that does not participate in the NL Scholarship at that institution.",
             "Missing the institutional deadline: the central 1 November opening date is not the deadline, and each institution sets its own.",
-            "Submitting after the completeness deadline — Radboud University states incomplete applications will not be considered for scholarship selection.",
+            "Submitting after the completeness deadline â€” Radboud University states incomplete applications will not be considered for scholarship selection.",
             "Being ineligible for statutory or lower EU/EEA tuition fees despite holding a non-EEA passport.",
             "Having a Dutch degree or prior Dutch enrolment, which disqualifies under the central criteria.",
             "At Utrecht University, a financial plan that does not cover the full nominal duration of the programme, or that the institution judges not realistic.",
             "Submitting late in the window: Utrecht University warns that between 27 January and 1 February, incomplete or incorrect information cannot be updated or supplemented.",
-            "Assuming admission to the programme means scholarship selection — the two are separate processes."
+            "Assuming admission to the programme means scholarship selection â€” the two are separate processes."
           ],
           "estimated_uncovered_costs": [
             "The statutory tuition fee for a non-EEA student, minus whatever the institution's award tier covers.",
-            "Living costs for the full programme duration — explicitly not covered by the scholarship.",
+            "Living costs for the full programme duration â€” explicitly not covered by the scholarship.",
             "Visa and residence permit costs.",
             "Health insurance and any required supplementary insurance.",
             "Travel to and from the Netherlands.",
@@ -6566,7 +6810,7 @@
           "alerts": [
             {
               "trigger": "Around September to October each year",
-              "message": "Check the Study in NL participating-institution list and each institution's own NL Scholarship page for the new academic year — the central page only published the 1 November opening date for 2026-2027 and had not published the 2027-2028 cycle when last verified."
+              "message": "Check the Study in NL participating-institution list and each institution's own NL Scholarship page for the new academic year â€” the central page only published the 1 November opening date for 2026-2027 and had not published the 2027-2028 cycle when last verified."
             },
             {
               "trigger": "As soon as you start your master's application",
@@ -6574,7 +6818,7 @@
             },
             {
               "trigger": "If you are shortlisted for an interview",
-              "message": "Re-read the institution's selection criteria — motivation quality and financial-plan realism are formally weighted, not just academic grades."
+              "message": "Re-read the institution's selection criteria â€” motivation quality and financial-plan realism are formally weighted, not just academic grades."
             },
             {
               "trigger": "If you already hold a Dutch degree or have studied in the Netherlands",
@@ -6600,7 +6844,7 @@
           "post_award_requirements": [
             "Enroll as a full-time student for the academic year and programme the scholarship was awarded for.",
             "Comply with Dutch visa and residence permit conditions.",
-            "Accept that the award is a one-off first-year payment and is not renewable — Radboud University states it can only be received once.",
+            "Accept that the award is a one-off first-year payment and is not renewable â€” Radboud University states it can only be received once.",
             "Expect institution-level progress conditions for the remainder of the programme, which were not published on the pages read."
           ]
         },
@@ -6608,19 +6852,19 @@
           "cycle_verified": "2027-2028 cycle confirmed as upcoming through Radboud University's published 2027-2028 application and completeness deadlines (31 January 2027 and 14 February 2027); the central Study in NL page had only published the 2026-2027 cycle at the time of checking.",
           "verification_confidence": 0.88,
           "official_fields_confirmed": [
-            "Award of € 5,000 paid in the first year of studies (Study in NL).",
+            "Award of â‚¬ 5,000 paid in the first year of studies (Study in NL).",
             "Explicit statement that this is not a full-tuition scholarship (Study in NL).",
             "Explicit statement that costs of living and studying are not covered (Radboud University).",
             "The four central application criteria (Study in NL).",
             "Central 2026-2027 application opening date of 1 November 2025 (Study in NL).",
             "Renaming from Holland Scholarship to NL Scholarship in June 2023, and the 47-institution / 2,112-scholarships-per-year programme figures (Nuffic).",
             "Radboud University 2027-2028 deadlines, award cap of 26 scholarships, one-year/once-only rule, and pairing with the Radboud Scholarship Programme.",
-            "Utrecht University's €5,000/€10,000/€15,000 award tiers, 1 February deadline, and Statement of Financial Resources requirement.",
+            "Utrecht University's â‚¬5,000/â‚¬10,000/â‚¬15,000 award tiers, 1 February deadline, and Statement of Financial Resources requirement.",
             "Participation of named research universities and universities of applied sciences for 2026-2027 (Study in NL)."
           ],
           "institution_check_required": [
             "No central deadline date is published for the 2027-2028 cycle; every real deadline is institutional and must be read on the chosen institution's own page.",
-            "The award amount is not uniform across institutions: Utrecht University publishes €5,000/€10,000/€15,000 tiers, so the €5,000 figure should not be assumed to apply everywhere.",
+            "The award amount is not uniform across institutions: Utrecht University publishes â‚¬5,000/â‚¬10,000/â‚¬15,000 tiers, so the â‚¬5,000 figure should not be assumed to apply everywhere.",
             "Which specific programmes at each institution participate changes annually and was not verifiable centrally.",
             "No English language test score is published on any official page read; Radboud University only requires that the programme's own English requirement be met.",
             "The 2027-2028 participating-institution list had not been published centrally when checked; only the 2026-2027 list was available.",
@@ -6733,7 +6977,7 @@
           "deadline_central_display": "18 November 2026",
           "deadline_institutional": null,
           "status": "OPEN",
-          "funding_label": "Up to £703,800 over four years",
+          "funding_label": "Up to Â£703,800 over four years",
           "funding_amount": 703800,
           "funding_currency": "GBP",
           "funding_period": "over four years",
@@ -6753,7 +6997,7 @@
             "Contribution to the Research Fellow's salary and associated on-costs (at 80%)",
             "Directly allocated costs (at 80%)",
             "Research expenses (at 100%)",
-            "Relocation and visa costs for the applicant and their dependants (partner and children), requestable in addition to the £703,800 total grant cap",
+            "Relocation and visa costs for the applicant and their dependants (partner and children), requestable in addition to the Â£703,800 total grant cap",
             "Financial support for childcare costs arising from attending conferences, collaborative research visits or invited talks"
           ],
           "requirements": [
@@ -6807,7 +7051,7 @@
           "estimated_uncovered_costs": [
             "The 20% balance of salary and on-costs not covered by the award, which the host institution must fund",
             "The 20% balance of directly allocated costs",
-            "Any research costs above the £703,800 cap, except justified relocation and visa costs which can be requested on top"
+            "Any research costs above the Â£703,800 cap, except justified relocation and visa costs which can be requested on top"
           ],
           "document_audit": [
             "Evidence of the UK connection (transcripts, degree certificates, or a postdoctoral contract) should be ready, as it is a hard eligibility gate",
@@ -6833,7 +7077,7 @@
             "Register on Flexi-Grant",
             "Select the Career Development Fellowship scheme (2027 round)",
             "Complete personal data, career history and host institution sections",
-            "Write the research proposal and budget within the £703,800 cap",
+            "Write the research proposal and budget within the Â£703,800 cap",
             "Add the relocation and visa justification if applying from outside the UK",
             "Submit before 18 November 2026",
             "Prepare for and attend the in-person Royal Society interview if shortlisted"
@@ -6857,7 +7101,7 @@
           "official_fields_confirmed": [
             "Status Open and close date 18 November 2026 for the 2027 round",
             "Duration: four years",
-            "Funding cap: up to £703,800 over four years, with the 80%/80%/100% split across salary and on-costs, directly allocated costs and research expenses",
+            "Funding cap: up to Â£703,800 over four years, with the 80%/80%/100% split across salary and on-costs, directly allocated costs and research expenses",
             "Relocation and visa costs requestable in addition to the cap",
             "Eligibility criteria including the Black heritage self-identification and UK connection requirements, and the 24-month postdoctoral experience limit",
             "Application method (Flexi-Grant) and the in-person Royal Society interview",
@@ -6865,7 +7109,7 @@
           ],
           "institution_check_required": [
             "The exact referee number, format and deadlines are in the Career Development Fellowship scheme notes PDF, which was not read, so documents is empty and referee requirements are flagged as unconfirmed",
-            "Breakdown of the £703,800 cap into salary, directly allocated costs and research expenses is in the Royal Society Funding Guidance, which was not read",
+            "Breakdown of the Â£703,800 cap into salary, directly allocated costs and research expenses is in the Royal Society Funding Guidance, which was not read",
             "Alzheimer's Society dementia variant eligibility conditions are described only in one sentence on the page read; the dementia-specific scope should be confirmed before choosing that variant"
           ],
           "unverified_or_removed_claims": [
@@ -6963,7 +7207,7 @@
       "image_alt_text": "Alexander von Humboldt Foundation logo",
       "detail": {
         "official_details": {
-          "description": "The Humboldt Research Fellowship enables researchers to conduct their own research at various stages of their career in collaboration with a host at a German research institution of their choice. The monthly fellowship amount is €3,000 for postdocs and €3,600 for experienced researchers, plus additional benefits. Further financial support, including family benefits for children and partners, subsidies for private full health insurance and allowances for travel expenses, is also available.",
+          "description": "The Humboldt Research Fellowship enables researchers to conduct their own research at various stages of their career in collaboration with a host at a German research institution of their choice. The monthly fellowship amount is â‚¬3,000 for postdocs and â‚¬3,600 for experienced researchers, plus additional benefits. Further financial support, including family benefits for children and partners, subsidies for private full health insurance and allowances for travel expenses, is also available.",
           "degree_levels": [
             "Postdoctoral",
             "Experienced Researchers"
@@ -6974,7 +7218,7 @@
           "deadline_central_display": "Next call opens on 15 November 2026; the current call has reached the maximum number of 800 applications and is closed to new applications",
           "deadline_institutional": null,
           "status": "UPCOMING",
-          "funding_label": "€3,000 per month (postdocs) / €3,600 per month (experienced researchers), plus family, health insurance and travel benefits",
+          "funding_label": "â‚¬3,000 per month (postdocs) / â‚¬3,600 per month (experienced researchers), plus family, health insurance and travel benefits",
           "funding_amount": 3000,
           "funding_currency": "EUR",
           "funding_period": "per month",
@@ -6994,12 +7238,12 @@
             "You may not apply if you have already received sponsorship directly from the Humboldt Foundation (research fellowship or award)."
           ],
           "coverage": [
-            "Monthly fellowship amount of €3,000 for postdocs and €3,600 for experienced researchers",
+            "Monthly fellowship amount of â‚¬3,000 for postdocs and â‚¬3,600 for experienced researchers",
             "Family benefits for children and partners",
             "Subsidies for private full health insurance",
             "Allowances for travel expenses; the Foundation pays a single lump sum for return travel if the fellow's own institution does not cover it",
             "Two to four month intensive German language course immediately prior to the research fellowship, not counted as part of the research fellowship period",
-            "Host institute allowance for research costs of €800 per month for natural sciences and engineering, or €500 for humanities and social sciences"
+            "Host institute allowance for research costs of â‚¬800 per month for natural sciences and engineering, or â‚¬500 for humanities and social sciences"
           ],
           "requirements": [
             "Submit documents online only through the Foundation's application portal",
@@ -7081,7 +7325,7 @@
             "Applying for a stay shorter than six months"
           ],
           "estimated_uncovered_costs": [
-            "Bench fees and consumables are not paid to the fellow; the host institute receives only a research cost allowance of €800 per month (natural sciences and engineering) or €500 (humanities and social sciences), which the host controls",
+            "Bench fees and consumables are not paid to the fellow; the host institute receives only a research cost allowance of â‚¬800 per month (natural sciences and engineering) or â‚¬500 (humanities and social sciences), which the host controls",
             "Return travel costs are only covered as a single lump sum, and only if the fellow's own institution does not cover them",
             "Family travel is covered only in exceptional circumstances",
             "Cost of the intensive language course period extends the total stay beyond the funded research fellowship months",
@@ -7158,14 +7402,14 @@
           "official_fields_confirmed": [
             "Status: current call closed at the maximum of 800 applications, next call opens 15 November 2026",
             "The three calls per year schedule with selection meeting and earliest start dates",
-            "Postdoctoral monthly amount of €3,000 and experienced researcher amount of €3,600",
+            "Postdoctoral monthly amount of â‚¬3,000 and experienced researcher amount of â‚¬3,600",
             "Duration ranges of 6-24 months (postdocs) and 6-18 months (experienced researchers), divisible into up to three stays within three years",
             "Career-stage windows: four years post doctorate for postdocs, twelve years for experienced researchers, sixteen years for the non-doctorate route",
             "Mobility rule: no more than 90 days in Germany in the 18 months before application",
             "Full required document list including the two-page CV cap, five-page research outline cap and two expert reviews",
             "Language requirements by discipline, and that no English language certificate is required for native English speakers",
             "Selection criteria and the expectation that 20-25% of applications are approved",
-            "Host research cost allowance of €800 per month for natural sciences and engineering and €500 for humanities and social sciences"
+            "Host research cost allowance of â‚¬800 per month for natural sciences and engineering and â‚¬500 for humanities and social sciences"
           ],
           "institution_check_required": [
             "The detailed allowances for family benefits, health insurance subsidy and travel expenses are described qualitatively on the page read; exact figures are in the programme information PDF and the sponsorship-during-your-stay pages, which were not read, so no amounts are recorded for them",

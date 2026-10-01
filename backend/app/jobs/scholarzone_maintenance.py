@@ -1204,6 +1204,11 @@ def main(argv: list[str] | None = None) -> int:
                     row.image_source_type = record.image_source_type
                     row.image_alt_text = record.image_alt_text
                     row.image_verified_at = today
+                # Counted from the row, not from the assignment above: the
+                # upsert has usually already written the logo, so counting only
+                # the branch that fills an empty slot reported zero logos on a
+                # run that attached every one of them.
+                if row.image_url:
                     logoed += 1
                 row.last_verified_date = today
                 row.last_verified_at = today
