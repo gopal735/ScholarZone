@@ -162,6 +162,20 @@ jobs:
           if-no-files-found: ignore
           retention-days: 7
 
+      # purge_closed is the only stage that deletes rows. Its snapshot is the only
+      # thing standing between a bad selection and an unrecoverable catalogue,
+      # so it is uploaded whether or not the run passed - a deleted row nobody
+      # saved is exactly the case where the evidence matters most.
+      - name: Upload deleted-record snapshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: purged-records-snapshot
+          path: |
+            backend/config/purged_records_archive.json
+          if-no-files-found: ignore
+          retention-days: 90
+
       # The worklist stage writes its backlog here. It is far too large for the
       # run log, and a stage that tries to print it loses its own output.
       - name: Upload research worklist
