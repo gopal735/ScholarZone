@@ -187,38 +187,33 @@ def health() -> JSONResponse:
     and contains nothing about configuration or credentials.
     """
     with _db_lock:
-        if not _db_ready:
-            # Distinguish "still starting" from "failed". A single opaque
-            # "Database not ready" is what made this undebuggable: it looks
-            # identical whether the init thread is ten seconds in or wedged
-            # forever on a connection it cannot make.
-            detail = _db_init_error
-            state = "failed"
-            if detail is None:
-                state = "initializing"
-                detail = "Database initialisation has not completed yet"
-            return JSONResponse(
-                status_code=503,
-                content={
-                    "status": "error",
-                    "state": state,
-                    "detail": detail,
-                    "revision": build_revision(),
-                },
-            )
+        # Verify the dependency when asked, rather than reporting a flag that a
+        # background thread was supposed to set.
+        #
+        # The lifespan starts initialisation on a daemon thread, and on this
+        # serverless runtime that thread does not reliably run: the deployment
+        # answered 503 "Database not ready" forever while /api/scholarships
+        # served live records from the same database. A health check that
+        # reports a cached startup flag rather than the actual state of the thing
+        # it exists to check is worse than no health check, because it reports a
+        # failure that is not happening and a success that might not be.
         try:
             with get_engine().connect() as conn:
                 conn.execute(text("SELECT 1"))
             return JSONResponse(
-                status_code=200, content={"status": "ok", "revision": build_revision()}
+                status_code=200,
+                content={"status": "ok", "revision": build_revision()},
             )
         except Exception as exc:
             logger.warning("Health check failed: %s", exc)
-            return JSONResponse(
-                status_code=503,
-                content={"status": "error", "detail": "Database unreachable",
-                         "revision": build_revision()},
-            )
+            content = {
+                "status": "error",
+                "detail": "Database unreachable",
+                "revision": build_revision(),
+            }
+            if _db_init_error:
+                content["init_error"] = _db_init_error
+            return JSONResponse(status_code=503, content=content)
 
 
 # NOTE: Legacy APScheduler is intentionally NOT started in production.
