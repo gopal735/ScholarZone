@@ -1172,12 +1172,18 @@ def main(argv: list[str] | None = None) -> int:
                 row.matched_scholarship_id = None
                 row.match_status = "unmatched"
                 child_deleted += 1
+            session.flush()
             for name, model in cascade_models.items():
                 for child in session.scalars(
                     select(model).where(model.scholarship_id.in_(selected_ids))
                 ).all():
                     session.delete(child)
                     child_deleted += 1
+            # Flush the child deletes before touching the parents. These models
+            # declare the foreign key but no ORM relationship between them, so
+            # the unit of work has no dependency graph to order the two delete
+            # sets by and emits the parent first.
+            session.flush()
             for item in selected:
                 row = session.get(Scholarship, item["id"])
                 if row is None:
