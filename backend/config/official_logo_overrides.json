@@ -4067,5 +4067,101 @@
     "image_format": "png",
     "verified_at": "2026-10-01T12:16:31.702227+00:00",
     "host_evidence": "same_registrable_domain"
+  },
+  "future.utoronto.ca": {
+    "url": "https://future.utoronto.ca/themes/utfs/images/icons/logo-svg.svg",
+    "page_url": "https://future.utoronto.ca/",
+    "official_host": true,
+    "alt_text": "University of Toronto",
+    "validation_result": "verified",
+    "validation_detail": "Site logo file /themes/utfs/images/icons/logo-svg.svg on future.utoronto.ca. Fetch returned 143,192 bytes, image/svg+xml, viewBox 162x58, no white fills declared so artwork renders in default black on a light card. The header campaign mark defy-gravity-logo.svg was REJECTED: all 16 of its fills are 'white' (white-on-transparent).",
+    "image_kind": "official_logo",
+    "image_format": "svg",
+    "verified_at": "2026-10-01T16:50:34.312169+00:00",
+    "host_evidence": "same_registrable_domain"
+  },
+  "humphreyfellowship.org": {
+    "url": "https://www.humphreyfellowship.org/wp-content/uploads/2022/06/logo_humphrey.png.png",
+    "page_url": "https://www.humphreyfellowship.org/",
+    "official_host": true,
+    "alt_text": "Hubert H. Humphrey Fellowship Program logo",
+    "validation_result": "verified",
+    "validation_detail": "Programme masthead <img alt=\"logo\" class=\"bar_logo\" src=\"/wp-content/uploads/2022/06/logo_humphrey.png.png\">. Fetch returned 20,961 bytes, image/png, 445x76 px (>=200px wide), sampled pixels dark. Rejected alternatives on the same page: Humphrey_white_hori.svg (white-on-transparent), the BECA/IIE/facebook/instagram/twitter/youtube/linkedin marks, and a set of WordPress Jetpack 'logo-bg' staff portraits.",
+    "image_kind": "official_logo",
+    "image_format": "png",
+    "verified_at": "2026-10-01T16:50:34.312169+00:00",
+    "host_evidence": "same_registrable_domain"
+  },
+  "isss.uoregon.edu": {
+    "url": "https://www.uoregon.edu/cascadia/images/uo-logo/uo-logo-horizontal.svg",
+    "page_url": "https://isss.uoregon.edu/",
+    "official_host": true,
+    "alt_text": "University of Oregon",
+    "validation_result": "verified",
+    "validation_detail": "isss.uoregon.edu is a subdomain of uoregon.edu; its own /modules/contrib/uo_core/.../uo-logo.svg was REJECTED because its only declared fill is #fff (white-on-transparent). Substituted the University's own colour horizontal mark served from the same organisation's domain: www.uoregon.edu/cascadia/images/uo-logo/uo-logo-horizontal.svg. Fetch returned 13,601 bytes, image/svg+xml, viewBox 264x58, fills #007030 (UO green) with default black.",
+    "image_kind": "official_logo",
+    "image_format": "svg",
+    "verified_at": "2026-10-01T16:50:34.312169+00:00",
+    "host_evidence": "same_registrable_domain"
+  },
+  "gatescambridge.org": {
+    "url": "https://www.gatescambridge.org/wp-content/uploads/2023/08/GC-logo-positive_font_update_WHITE_OUT.png",
+    "page_url": "https://www.gatescambridge.org/",
+    "official_host": true,
+    "alt_text": "Gates Cambridge",
+    "validation_result": "verified",
+    "validation_detail": "Homepage brand image <img alt=\"Gates Cambridge\" src=\"/wp-content/uploads/2023/08/GC-logo-positive_font_update_WHITE_OUT.png\">. Fetch returned 39,143 bytes, image/png, 1020x537 px. Despite 'WHITE_OUT' in the file name, a pixel sample of the opaque area shows substantial dark/colour coverage (well under the 93% near-white threshold), so the mark is not invisible on a light card. The only other hit was an X/Twitter social icon, rejected.",
+    "image_kind": "official_logo",
+    "image_format": "png",
+    "verified_at": "2026-10-01T16:50:34.312169+00:00",
+    "host_evidence": "same_registrable_domain"
+  },
+  "seu.ub.edu": {
+    "url": "https://seu.ub.edu/ub/images/logo.jpg",
+    "page_url": "https://seu.ub.edu/",
+    "official_host": true,
+    "alt_text": "Universitat de Barcelona",
+    "validation_result": "verified",
+    "validation_detail": "Homepage references /seupro/ub/images/logo.jpg; the request 301-redirects to the canonical /ub/images/logo.jpg on the same host. Fetch followed the redirect and returned 26,570 bytes, image/jpeg, 330x110 px (>=200px wide), sampled pixels dark.",
+    "image_kind": "official_logo",
+    "image_format": "png",
+    "verified_at": "2026-10-01T16:50:34.312169+00:00",
+    "host_evidence": "same_registrable_domain"
+  },
+  "simmons.edu": {
+    "url": "https://www.simmons.edu/themes/simmons_2023/assets/img/logo.svg",
+    "page_url": "https://www.simmons.edu/",
+    "official_host": true,
+    "alt_text": "Simmons University Logo",
+    "validation_result": "verified",
+    "validation_detail": "Homepage <img alt=\"Simmons University Logo\" src=\"/themes/simmons_2023/assets/img/logo.svg\"> from the site's own theme img/ folder. Verified on the second attempt after a socket timeout: 14,064 bytes, image/svg+xml, viewBox 190x64, no white-only fill declarations.",
+    "image_kind": "official_logo",
+    "image_format": "svg",
+    "verified_at": "2026-10-01T16:50:34.312169+00:00",
+    "host_evidence": "same_registrable_domain"
+  },
+  "oia.ncku.edu.tw": {
+    "url": "https://oia.ncku.edu.tw/var/file/32/1032/img/4364/mlogo2.png",
+    "page_url": "https://oia.ncku.edu.tw/",
+    "official_host": true,
+    "alt_text": "National Cheng Kung University Office of International Affairs",
+    "validation_result": "verified",
+    "validation_detail": "Header <img src='.../mlogo2.png' alt='国立成功大学國際事務處'> on oia.ncku.edu.tw. Fetched: HTTP 200, PNG signature 89504E47, 4887 bytes, 433x93 px, mean RGB (37,17,17) - dark red, visible on light.",
+    "image_kind": "official_logo",
+    "image_format": "png",
+    "verified_at": "2026-10-01T16:50:34.312169+00:00",
+    "host_evidence": "same_registrable_domain"
+  },
+  "gist.ac.kr": {
+    "url": "https://www.gist.ac.kr/_prog/download/index.php?d_type=2&func_gbn_cd=sns&filename=gist_emblem.png",
+    "page_url": "https://www.gist.ac.kr/",
+    "official_host": true,
+    "alt_text": "GIST emblem",
+    "validation_result": "verified",
+    "validation_detail": "Published by GIST's own site as its og:image logo asset ('filename=gist_emblem.png'). Fetched: HTTP 200, PNG signature 89504E47, 14688 bytes, 200x200 px (meets the 200px minimum), mean RGB (40,35,34) - dark emblem, visible on light.",
+    "image_kind": "official_logo",
+    "image_format": "png",
+    "verified_at": "2026-10-01T16:50:34.312169+00:00",
+    "host_evidence": "same_registrable_domain"
   }
 }
