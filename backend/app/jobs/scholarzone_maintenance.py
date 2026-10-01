@@ -76,6 +76,11 @@ STAGE_ORDER = (
     "stats", "facts", "archive", "discontinued", "purge", "purge_closed",
 )
 
+# purge_closed is the only stage that deletes rows. It is excluded from "all"
+# so a scheduled run cannot destroy the catalogue unattended, and named here so
+# the contract is asserted rather than assumed.
+PURGE_CLOSED_EXCLUDED_FROM_ALL = True
+
 # A stage that fails stops the stages that depend on it, but not the ones that
 # do not. Verification has no prerequisite and nothing gates it.
 #
@@ -628,6 +633,7 @@ def main(argv: list[str] | None = None) -> int:
         for s in STAGE_ORDER
         if (run_all and s != "purge_closed") or s in wanted
     ]
+    assert not (run_all and PURGE_CLOSED_EXCLUDED_FROM_ALL) or "purge_closed" not in selected
 
     # Import the runners once, after preflight has proven they load.
     from app.services.enrichment_runner import EnrichmentBatchRunner

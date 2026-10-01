@@ -798,7 +798,7 @@ class TestAutonomousContract:
         """The documented contract is what the code actually does."""
         assert list(worker.STAGE_ORDER) == [
             "verify", "worklist", "inventory", "enrich", "programme_details", "images", "logos", "discover", "quarantine",
-            "retire", "correct", "stats", "facts", "archive", "discontinued", "purge",
+            "retire", "correct", "stats", "facts", "archive", "discontinued", "purge", "purge_closed",
         ]
         # Verification is the root; everything else is either downstream of it
         # or independent.
@@ -820,6 +820,15 @@ class TestAutonomousContract:
         # that would otherwise re-crawl records it could have filled instantly.
         assert worker.STAGE_DEPENDENCIES["logos"] == ()
         assert worker.STAGE_ORDER.index("logos") < worker.STAGE_ORDER.index("purge")
+        # purge_closed destroys rows, so it runs last and is reachable only by
+        # naming it. If "all" ever stops excluding it, a scheduled run deletes
+        # the catalogue with nobody watching.
+        assert worker.STAGE_ORDER.index("purge_closed") == len(worker.STAGE_ORDER) - 1
+        assert worker.STAGE_DEPENDENCIES["purge_closed"] == ()
+        assert list(worker.STAGE_ORDER) != [
+            s for s in worker.STAGE_ORDER if s != "purge_closed"
+        ]
+        assert worker.PURGE_CLOSED_EXCLUDED_FROM_ALL is True
         # Archive derives status from the published deadline, so it reads state
         # that facts and enrichment write. Declaring that explicitly stops a
         # closed-date record from being marked open by a run that ordered
