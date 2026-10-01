@@ -46,6 +46,7 @@ no connection is held for the life of the process.
 from __future__ import annotations
 
 import argparse
+import json
 import logging
 import os
 import sys
@@ -72,7 +73,7 @@ MAX_STAGE_WORKERS = 16
 # are current, and the remaining stages all operate on that outcome.
 STAGE_ORDER = (
     "verify", "worklist", "inventory", "enrich", "programme_details", "images", "logos", "discover", "quarantine", "retire", "correct",
-    "stats", "facts", "archive", "discontinued", "purge",
+    "stats", "facts", "archive", "discontinued", "purge", "purge_closed",
 )
 
 # A stage that fails stops the stages that depend on it, but not the ones that
@@ -118,6 +119,8 @@ STAGE_DEPENDENCIES: dict[str, tuple[str, ...]] = {
     "archive": (),
     "discontinued": (),
     "purge": (),
+    # Destroys rows; never rides along in "all".
+    "purge_closed": (),
 }
 
 
@@ -465,7 +468,7 @@ def main(argv: list[str] | None = None) -> int:
         "--stage",
         action="append",
         choices=["verify", "worklist", "inventory", "enrich", "programme_details", "images", "logos", "discover", "quarantine", "retire", "correct",
-                     "stats", "facts", "archive", "discontinued", "retire", "purge", "all"],
+                     "stats", "facts", "archive", "discontinued", "retire", "purge", "purge_closed", "all"],
         default=None,
         help="Run only these stages (default: all).",
     )
@@ -618,7 +621,13 @@ def main(argv: list[str] | None = None) -> int:
 
     wanted = set(args.stage or ["all"])
     run_all = "all" in wanted
-    selected = [s for s in STAGE_ORDER if run_all or s in wanted]
+    # "all" must never destroy rows. A scheduled run has no operator watching it,
+    # so a stage that deletes records is only ever reachable by naming it.
+    selected = [
+        s
+        for s in STAGE_ORDER
+        if (run_all and s != "purge_closed") or s in wanted
+    ]
 
     # Import the runners once, after preflight has proven they load.
     from app.services.enrichment_runner import EnrichmentBatchRunner
@@ -927,6 +936,135 @@ def main(argv: list[str] | None = None) -> int:
         if not args.dry_run:
             recorder.record_counts({"archive_archived": len(rows)})
         return detail
+
+    def _snapshot_row_payload(row) -> dict:
+        """Every stored column of one record, JSON-safe.
+
+        Used only by ``do_purge_closed``. A deleted row that cannot be
+        described exactly is a row that cannot be brought back, so this
+        serialises the mapped columns rather than the handful of fields the
+        report happens to print.
+        """
+        from datetime import date as _date, datetime as _datetime
+
+        def encode(value):
+            if isinstance(value, (_date, _datetime)):
+                return value.isoformat()
+            return value
+
+        return {
+            column.name: encode(getattr(row, column.name))
+            for column in row.__table__.columns
+        }
+
+    def do_purge_closed() -> dict:
+        """Permanently delete records whose application round is closed.
+
+        ``do_discontinued`` hides a dead programme and ``do_archive`` folds a
+        finished one away; both keep the row. This stage is the opposite and is
+        deliberately the only one that destroys data, so it is written to be
+        reversible by construction:
+
+        * it selects on the round being closed, never on a text match;
+        * it writes every selected row out in full before deleting any of them;
+        * the snapshot is returned and also written beside the configs, so the
+          deleted rows can be restored without re-crawling anything.
+
+        "Closed" means the round cannot be applied to right now: an explicit
+        non-open status, an archived record, or a deadline that has already
+        passed. A record with no deadline is never selected - a missing date is
+        an unknown date, not an expired one, and deleting on a guess is the one
+        outcome an applicant cannot recover from.
+        """
+        from sqlalchemy import select
+
+        from app.models import Scholarship
+
+        today = date.today()
+        session = factory()
+        try:
+            rows = session.scalars(select(Scholarship)).all()
+            selected: list[dict] = []
+            breakdown = {
+                "status_not_open": 0,
+                "archived": 0,
+                "deadline_passed": 0,
+            }
+            for row in rows:
+                reasons = []
+                status = (row.status or "").strip().lower()
+                if status not in ("open", "upcoming"):
+                    reasons.append("status_not_open")
+                    breakdown["status_not_open"] += 1
+                if row.is_archived:
+                    reasons.append("archived")
+                    breakdown["archived"] += 1
+                if row.deadline_date is not None and row.deadline_date < today:
+                    reasons.append("deadline_passed")
+                    breakdown["deadline_passed"] += 1
+                if not reasons:
+                    continue
+                selected.append(
+                    {
+                        "id": row.id,
+                        "title": row.title,
+                        "country": row.country,
+                        "status": row.status,
+                        "is_archived": row.is_archived,
+                        "deadline_date": (
+                            row.deadline_date.isoformat() if row.deadline_date else None
+                        ),
+                        "reasons": reasons,
+                        "official_source_url": row.official_source_url,
+                        "payload": _snapshot_row_payload(row),
+                    }
+                )
+
+            snapshot_path = Path(__file__).resolve().parents[2] / "config" / "purged_records_archive.json"
+            if args.dry_run:
+                return {
+                    "error": None,
+                    "would_delete": len(selected),
+                    "breakdown": breakdown,
+                    "ids": [item["id"] for item in selected],
+                    "snapshot_preview": selected[:3],
+                }
+
+            snapshot_path.write_text(
+                json.dumps(
+                    {
+                        "purged_at": today.isoformat(),
+                        "count": len(selected),
+                        "breakdown": breakdown,
+                        "records": selected,
+                    },
+                    ensure_ascii=False,
+                    indent=2,
+                ),
+                encoding="utf-8",
+            )
+
+            deleted: list[int] = []
+            for item in selected:
+                row = session.get(Scholarship, item["id"])
+                if row is None:
+                    continue
+                session.delete(row)
+                deleted.append(item["id"])
+            session.commit()
+
+            return {
+                "error": None,
+                "deleted": len(deleted),
+                "breakdown": breakdown,
+                "ids": deleted,
+                "snapshot_file": str(snapshot_path),
+            }
+        except Exception as exc:
+            session.rollback()
+            return {"error": str(exc)}
+        finally:
+            session.close()
 
     def do_discontinued() -> dict:
         """Quarantine records for programmes that no longer exist.
