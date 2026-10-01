@@ -73,7 +73,8 @@ MAX_STAGE_WORKERS = 16
 # are current, and the remaining stages all operate on that outcome.
 STAGE_ORDER = (
     "verify", "worklist", "inventory", "enrich", "programme_details", "images", "logos", "discover", "quarantine", "retire", "correct",
-    "stats", "facts", "archive", "discontinued", "purge", "add", "purge_closed",
+    "stats", "facts", "archive", "discontinued", "purge", "add",
+    "repair_encoding", "purge_closed",
 )
 
 # purge_closed is the only stage that deletes rows. It is excluded from "all"
@@ -184,6 +185,7 @@ STAGE_DEPENDENCIES: dict[str, tuple[str, ...]] = {
     # Destroys rows; never rides along in "all".
     "purge_closed": (),
     "add": (),
+    "repair_encoding": (),
 }
 
 
@@ -531,7 +533,7 @@ def main(argv: list[str] | None = None) -> int:
         "--stage",
         action="append",
         choices=["verify", "worklist", "inventory", "enrich", "programme_details", "images", "logos", "discover", "quarantine", "retire", "correct",
-                     "stats", "facts", "archive", "discontinued", "purge", "add", "purge_closed", "all"],
+                     "stats", "facts", "archive", "discontinued", "purge", "add", "repair_encoding", "purge_closed", "all"],
         default=None,
         help="Run only these stages (default: all).",
     )
@@ -1238,6 +1240,99 @@ def main(argv: list[str] | None = None) -> int:
                 "skipped_too_long_count": len(skipped_too_long),
                 "rejected_count": len(rejected),
                 "rejected": rejected[:40],
+            }
+        except Exception as exc:
+            session.rollback()
+            return {"error": str(exc)}
+        finally:
+            session.close()
+
+    def repair_double_encoded_text(value):
+        """Undo UTF-8 that was decoded as Latin-1 and re-encoded.
+
+        Returns ``(text, changed)``. The repair is only accepted when the
+        round-trip removes the corruption markers and leaves readable text, so
+        correctly-encoded data is never touched.
+        """
+        if not isinstance(value, str) or not value:
+            return value, False
+        markers = ("Ã¢", "Ã©", "Ã¨", "Ã¼", "Ã¶", "Ã¤", "Ã±", "Ã§", "Â", "â€")
+        if not any(marker in value for marker in markers):
+            return value, False
+        try:
+            candidate = value.encode("latin-1").decode("utf-8")
+        except (UnicodeEncodeError, UnicodeDecodeError):
+            return value, False
+        if candidate == value or not candidate.strip():
+            return value, False
+        if any(marker in candidate for marker in markers):
+            return value, False
+        return candidate, True
+
+
+    def do_repair_encoding() -> dict:
+        """Repair double-encoded text across the catalogue.
+
+    The corruption is not cosmetic. A broken string becomes the record title,
+    the source-host key and the text an applicant searches on, so
+        "Grundförderung" and "GrundfÃ¶rderung" become two records and neither is
+        findable by its real name.
+
+        Only fields that provably round-trip are rewritten, and the count of
+        changed fields is reported per column so a surprise is visible.
+        """
+        from sqlalchemy import select
+
+        from app.models import Scholarship
+
+        session = factory()
+        try:
+            rows = session.scalars(select(Scholarship)).all()
+            changed_columns: dict[str, int] = {}
+            changed_rows: list[int] = []
+            repaired_fields: list[dict] = []
+
+            for row in rows:
+                row_changed = False
+                for column in row.__table__.columns:
+                    original = getattr(row, column.name, None)
+                    if not isinstance(original, str):
+                        continue
+                    fixed, changed = repair_double_encoded_text(original)
+                    if not changed:
+                        continue
+                    setattr(row, column.name, fixed)
+                    changed_columns[column.name] = (
+                        changed_columns.get(column.name, 0) + 1
+                    )
+                    row_changed = True
+                    if len(repaired_fields) < 40:
+                        repaired_fields.append(
+                            {
+                                "id": row.id,
+                                "column": column.name,
+                                "before": original[:90],
+                                "after": fixed[:90],
+                            }
+                        )
+                if row_changed:
+                    changed_rows.append(row.id)
+
+            if args.dry_run:
+                return {
+                    "error": None,
+                    "would_change_rows": len(changed_rows),
+                    "changed_columns": changed_columns,
+                    "examples": repaired_fields[:20],
+                }
+
+            session.commit()
+            return {
+                "error": None,
+                "repaired_rows": len(changed_rows),
+                "repaired_fields": sum(changed_columns.values()),
+                "changed_columns": changed_columns,
+                "examples": repaired_fields[:20],
             }
         except Exception as exc:
             session.rollback()
@@ -2667,6 +2762,7 @@ def main(argv: list[str] | None = None) -> int:
         "purge": do_purge,
         "purge_closed": do_purge_closed,
         "add": do_add,
+        "repair_encoding": do_repair_encoding,
     }
     # A stage in STAGE_ORDER with no dispatcher here fails at dispatch time,
     # after the database work has already started, which is a confusing way to
