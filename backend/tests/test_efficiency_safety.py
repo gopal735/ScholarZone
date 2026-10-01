@@ -829,6 +829,15 @@ class TestAutonomousContract:
             s for s in worker.STAGE_ORDER if s != "purge_closed"
         ]
         assert worker.PURGE_CLOSED_EXCLUDED_FROM_ALL is True
+        # Every declared stage must have a runner and a dependency entry. A
+        # stage wired into only one of the three lists passes the tests above
+        # and then fails at dispatch, mid-run.
+        declared = set(worker.STAGE_ORDER)
+        assert declared == set(worker.STAGE_DEPENDENCIES)
+        for stage in declared:
+            assert callable(getattr(worker, f"do_{stage}", None)), (
+                f"{stage} is declared but has no do_{stage} runner"
+            )
         # Archive derives status from the published deadline, so it reads state
         # that facts and enrichment write. Declaring that explicitly stops a
         # closed-date record from being marked open by a run that ordered

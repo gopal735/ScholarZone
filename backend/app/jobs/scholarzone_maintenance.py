@@ -2288,7 +2288,14 @@ def main(argv: list[str] | None = None) -> int:
         "retire": do_retire,
         "correct": do_correct,
         "purge": do_purge,
+        "purge_closed": do_purge_closed,
     }
+    # A stage in STAGE_ORDER with no dispatcher here fails at dispatch time,
+    # after the database work has already started, which is a confusing way to
+    # learn that a stage was only half-wired.
+    missing = [name for name in STAGE_ORDER if name not in stages]
+    if missing:
+        raise RuntimeError(f"stages declared without a runner: {', '.join(missing)}")
 
     reports: list[StageReport] = []
     failed: set[str] = set()
