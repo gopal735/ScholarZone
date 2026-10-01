@@ -75,10 +75,24 @@ class TestSelectionContract:
         assert reasons == []
 
     def test_closed_vocabulary_is_an_explicit_allowlist(self):
-        # Guard against the rule being rewritten as "not open" again.
+        # Guard against the purge rule being rewritten as "not open" again.
+        # Scoped to do_purge_closed: do_add legitimately contains the same
+        # phrase for its own gate, and a whole-module text check would flag
+        # that instead of the bug it was written to catch.
+        import ast
+
         source = inspect.getsource(worker)
-        assert "status not in (\"open\"" not in source
-        assert "status not in ('open'" not in source
+        tree = ast.parse(source)
+        segments = [
+            ast.get_source_segment(source, node) or ""
+            for node in ast.walk(tree)
+            if isinstance(node, ast.FunctionDef) and node.name == "do_purge_closed"
+        ]
+        assert segments, "do_purge_closed not found in the worker source"
+        purge = "\n".join(segments)
+        assert 'status not in ("open"' not in purge
+        assert "status not in ('open'" not in purge
+        assert "CLOSED_STATUSES" in purge
 
     def test_stage_records_every_reason_it_deleted_a_row(self):
         source = inspect.getsource(worker)
@@ -163,6 +177,9 @@ class TestReversibility:
 class TestNotUnattended:
     def test_excluded_from_all(self):
         assert worker.PURGE_CLOSED_EXCLUDED_FROM_ALL is True
+        # Runs last, so a record inserted earlier in the same run is also
+        # judged for closure rather than surviving on the strength of being
+        # added after the purge had already passed.
         assert worker.STAGE_ORDER[-1] == "purge_closed"
 
     def test_stage_has_a_runner_in_the_dispatch_table(self):

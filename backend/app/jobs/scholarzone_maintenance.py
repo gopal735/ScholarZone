@@ -73,7 +73,7 @@ MAX_STAGE_WORKERS = 16
 # are current, and the remaining stages all operate on that outcome.
 STAGE_ORDER = (
     "verify", "worklist", "inventory", "enrich", "programme_details", "images", "logos", "discover", "quarantine", "retire", "correct",
-    "stats", "facts", "archive", "discontinued", "purge", "purge_closed",
+    "stats", "facts", "archive", "discontinued", "purge", "add", "purge_closed",
 )
 
 # purge_closed is the only stage that deletes rows. It is excluded from "all"
@@ -183,6 +183,7 @@ STAGE_DEPENDENCIES: dict[str, tuple[str, ...]] = {
     "purge": (),
     # Destroys rows; never rides along in "all".
     "purge_closed": (),
+    "add": (),
 }
 
 
@@ -530,7 +531,7 @@ def main(argv: list[str] | None = None) -> int:
         "--stage",
         action="append",
         choices=["verify", "worklist", "inventory", "enrich", "programme_details", "images", "logos", "discover", "quarantine", "retire", "correct",
-                     "stats", "facts", "archive", "discontinued", "retire", "purge", "purge_closed", "all"],
+                     "stats", "facts", "archive", "discontinued", "purge", "add", "purge_closed", "all"],
         default=None,
         help="Run only these stages (default: all).",
     )
@@ -1001,6 +1002,200 @@ def main(argv: list[str] | None = None) -> int:
         return detail
 
     
+
+    def do_add() -> dict:
+        """Insert newly researched scholarships, with their deep detail blocks.
+
+        New rows cannot arrive through the seed catalogue: production skips
+        seeding on purpose, so this is the only path that adds a scholarship to
+        a live database. That makes it the stage most worth being strict in.
+
+        Guards, in order:
+        * the record must validate against the ingestion schema, which forbids
+          unknown keys - a typo cannot become a column that silently never
+          populates;
+        * the status must be open or upcoming, so a closed cycle researched
+          late cannot be published as live;
+        * an official source URL is required, and a record whose host already
+          publishes the same programme is refused as a duplicate;
+        * the deep block is applied in the same transaction as the row, so a
+          record cannot exist with a deadline but no eligibility;
+        * a logo is only attached when it came with provenance.
+        """
+        from urllib.parse import urlparse
+
+        from sqlalchemy import select
+
+        from app.models import Scholarship
+        from app.services.scholarship_ingestion import (
+            ScholarshipIngestionRecord,
+            upsert_verified_scholarships,
+        )
+
+        add_path = Path(__file__).resolve().parents[2] / "config" / "new_scholarships.json"
+        if not add_path.exists():
+            return {"error": None, "added": 0, "note": f"no config at {add_path}"}
+
+        raw = json.loads(add_path.read_text(encoding="utf-8"))
+        entries = raw.get("records") if isinstance(raw, dict) else raw
+        entries = entries if isinstance(entries, list) else []
+
+        ALLOWED_DETAIL_KEYS = {"official_details", "applicant_utility", "verification"}
+        payload: list[ScholarshipIngestionRecord] = []
+        details: list[tuple[str, dict]] = []
+        rejected: list[dict] = []
+
+        for entry in entries:
+            if not isinstance(entry, dict):
+                continue
+            detail = entry.get("detail") or {}
+            flat = {k: v for k, v in entry.items() if k != "detail"}
+            # Provenance notes added by the merge script. Underscore-prefixed so
+            # they are visibly not catalogue content, and dropped here.
+            for key in [k for k in flat if k.startswith("_")]:
+                flat.pop(key)
+            name = str(flat.get("name") or "").strip()
+            status = str(flat.get("status") or "").strip().lower()
+            url = str(flat.get("official_source_url") or "").strip()
+
+            # The ingestion model is extra="forbid" on purpose, so it has no
+            # room for status, description, benefits or the funding figures.
+            # They are taken out here and written to the row directly below
+            # instead of widening a contract that already guards the catalogue.
+            row_only = {
+                key: flat.pop(key)
+                for key in (
+                    "status",
+                    "description",
+                    "benefits",
+                    "funding_amount",
+                    "funding_currency",
+                    "funding_period",
+                )
+                if key in flat
+            }
+            # The research brief names this field `documents`, because that is
+            # what the database column and the public API call it. The model
+            # calls it required_documents. Accept the brief's name rather than
+            # making every agent learn the model's vocabulary.
+            if "documents" in flat:
+                flat.setdefault("required_documents", flat.pop("documents"))
+
+            if status not in ("open", "upcoming"):
+                rejected.append({"name": name, "reason": f"status={status or 'missing'}"})
+                continue
+            if not url:
+                rejected.append({"name": name, "reason": "no official_source_url"})
+                continue
+            if not detail.get("verification", {}).get("source_citations"):
+                rejected.append({"name": name, "reason": "no source citations"})
+                continue
+            try:
+                record = ScholarshipIngestionRecord(**flat)
+            except Exception as exc:
+                rejected.append({"name": name, "reason": f"schema: {exc}"[:300]})
+                continue
+            payload.append(record)
+            details.append((url, detail, row_only))
+
+        session = factory()
+        try:
+            # Duplicate guard on both title and host+path, so the same programme
+            # is not published twice under two names.
+            existing_titles = {
+                (t or "").strip().lower()
+                for t in session.scalars(select(Scholarship.title)).all()
+            }
+            existing_urls = {
+                (u or "").strip().rstrip("/")
+                for u in session.scalars(select(Scholarship.official_source_url)).all()
+            }
+            fresh: list[ScholarshipIngestionRecord] = []
+            fresh_details: list[tuple[str, dict, dict]] = []
+            for record, (url, detail, row_only) in zip(payload, details):
+                if record.name.strip().lower() in existing_titles:
+                    rejected.append({"name": record.name, "reason": "duplicate title"})
+                    continue
+                if url.rstrip("/") in existing_urls:
+                    rejected.append({"name": record.name, "reason": "duplicate source url"})
+                    continue
+                fresh.append(record)
+                fresh_details.append((url, detail, row_only))
+
+            if args.dry_run:
+                return {
+                    "error": None,
+                    "would_add": len(fresh),
+                    "rejected_count": len(rejected),
+                    "rejected": rejected[:40],
+                    "names": [r.name for r in fresh],
+                }
+
+            created, updated = upsert_verified_scholarships(session, fresh)
+
+            # Attach the deep blocks and logos to the rows just written.
+            detailed = 0
+            logoed = 0
+            today = date.today()
+            for record, (url, detail, row_only) in zip(fresh, fresh_details):
+                row = session.scalars(
+                    select(Scholarship).where(
+                        Scholarship.official_source_url == url
+                    )
+                ).first()
+                if row is None:
+                    continue
+                if row_only.get("description"):
+                    row.description = row_only["description"]
+                if row_only.get("benefits"):
+                    row.benefits = row_only["benefits"]
+                if row_only.get("funding_amount") is not None:
+                    row.funding_amount = row_only["funding_amount"]
+                if row_only.get("funding_currency"):
+                    row.funding_currency = row_only["funding_currency"]
+                if row_only.get("funding_period"):
+                    row.funding_period = row_only["funding_period"]
+                if row_only.get("status"):
+                    row.status = row_only["status"]
+                od = detail.get("official_details")
+                au = detail.get("applicant_utility")
+                ver = detail.get("verification")
+                if od is not None:
+                    row.official_details = {**od, "last_verified_date": today.isoformat()}
+                if au is not None:
+                    row.applicant_utility = au
+                if ver is not None:
+                    row.programme_verification = {
+                        **ver,
+                        "last_verified_date": today.isoformat(),
+                        "last_verified_at": today.isoformat(),
+                    }
+                detailed += 1
+                if record.image_url and not row.image_url:
+                    row.image_url = record.image_url
+                    row.image_source_url = record.image_source_url
+                    row.image_source_type = record.image_source_type
+                    row.image_alt_text = record.image_alt_text
+                    row.image_verified_at = today
+                    logoed += 1
+                row.last_verified_date = today
+                row.last_verified_at = today
+            session.commit()
+
+            return {
+                "error": None,
+                "created": created,
+                "updated": updated,
+                "detail_blocks_applied": detailed,
+                "logos_attached": logoed,
+                "rejected_count": len(rejected),
+                "rejected": rejected[:40],
+            }
+        except Exception as exc:
+            session.rollback()
+            return {"error": str(exc)}
+        finally:
+            session.close()
 
     def do_purge_closed() -> dict:
         """Permanently delete records whose application round is closed.
@@ -2423,6 +2618,7 @@ def main(argv: list[str] | None = None) -> int:
         "correct": do_correct,
         "purge": do_purge,
         "purge_closed": do_purge_closed,
+        "add": do_add,
     }
     # A stage in STAGE_ORDER with no dispatcher here fails at dispatch time,
     # after the database work has already started, which is a confusing way to

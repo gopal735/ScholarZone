@@ -798,7 +798,7 @@ class TestAutonomousContract:
         """The documented contract is what the code actually does."""
         assert list(worker.STAGE_ORDER) == [
             "verify", "worklist", "inventory", "enrich", "programme_details", "images", "logos", "discover", "quarantine",
-            "retire", "correct", "stats", "facts", "archive", "discontinued", "purge", "purge_closed",
+            "retire", "correct", "stats", "facts", "archive", "discontinued", "purge", "add", "purge_closed",
         ]
         # Verification is the root; everything else is either downstream of it
         # or independent.
@@ -824,6 +824,9 @@ class TestAutonomousContract:
         # naming it. If "all" ever stops excluding it, a scheduled run deletes
         # the catalogue with nobody watching.
         assert worker.STAGE_ORDER.index("purge_closed") == len(worker.STAGE_ORDER) - 1
+        # A record inserted by "add" earlier in the same run must still be
+        # judged by the purge, or freshly added rows would slip past it.
+        assert worker.STAGE_ORDER.index("add") < worker.STAGE_ORDER.index("purge_closed")
         assert worker.STAGE_DEPENDENCIES["purge_closed"] == ()
         assert list(worker.STAGE_ORDER) != [
             s for s in worker.STAGE_ORDER if s != "purge_closed"
