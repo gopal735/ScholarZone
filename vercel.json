@@ -20,7 +20,13 @@
     },
     "frontend": {
       "root": "frontend",
-      "framework": "vite"
+      "framework": "vite",
+      "rewrites": [
+        {
+          "source": "/((?!api/|assets/).*)",
+          "destination": "/index.html"
+        }
+      ]
     }
   },
   "rewrites": [
