@@ -11170,280 +11170,1007 @@
     {
       "id": 115,
       "official": {
-        "official_source_urls": [
-          "https://www.icar.gov.in (unreachable: webfetch transport error; browser ERR_CERT_DATE_INVALID)"
+        "description": "The Netaji Subhas - ICAR International Fellowship (NS-ICAR IF) funds a three-year Ph.D. in agriculture and allied sciences in identified priority areas, for both Indian candidates studying abroad and overseas candidates studying at Indian Agricultural Universities in the ICAR-AU system. Thirty fellowships are available each year. The award pays a monthly stipend plus a contingent and preparatory lump sum and provides a to-and-fro economy class air ticket, but host institution fees, medical insurance and medical fitness are all paid by the fellow.",
+        "purpose": [
+          "In its continued efforts towards enhancing and sustaining the standards, quality and relevance of higher agricultural education in the country, the Indian Council of Agricultural Research (ICAR) has instituted International Fellowships with dual purpose of (i) human resource development in cutting edge technologies, and (ii) demonstrating the strength of Indian agricultural system abroad.",
+          "The objective is to develop competent human resource that are trained in the identified best laboratories in the world (for Indian candidates) and similarly expose overseas candidates to the best Indian Agricultural Universities (AUs) in the ICAR-AU system (comprising of State Agricultural Universities, Central Agricultural University Imphal, ICAR-Deemed Universities, Allahabad Agricultural Institute-DU, Central Universities having agricultural faculty) for creating a pool of scientist-envoys for enhanced future co-operation.",
+          "The NS-ICAR IFs are available to support Indian/overseas nationals for pursuing doctoral degree in agriculture and allied sciences, in the identified priority areas, to the Indian candidates for study abroad in the identified overseas Universities/Institutions having strong research and teaching capabilities, and to overseas candidates for study in the best Indian AUs in the ICAR-AUs system.",
+          "The Netaji Subhas-ICAR International Fellowships are available in frontier areas of Agriculture and allied sciences at the recognized agricultural universities/institutions in India and abroad."
         ],
-        "application_link": null,
-        "official_updates_url": null,
-        "catalogue_url": null,
-        "application_cycle": null,
-        "deadline_central": null,
-        "deadline_central_display": null,
-        "deadline_central_timezone": null,
-        "deadline_institutional": null,
-        "deadline_note": "Could not be read. icar.gov.in is not retrievable this session: webfetch returns a transport error for both icar.gov.in and www.icar.gov.in, and the browser reports ERR_CERT_DATE_INVALID, so no deadline could be verified.",
-        "status": "UNVERIFIED",
-        "status_note": "The awarding body's own website could not be reached. This is a site availability problem, not evidence that the fellowship has been discontinued - the certificate date error in particular suggests a server-side TLS issue rather than a removed programme.",
-        "funding_amount": null,
-        "funding_currency": "INR",
-        "funding_period": null,
-        "funding_duration": null,
-        "tuition_coverage": null,
-        "tuition_coverage_note": "Not verified. No official page content was retrievable.",
-        "living_cost_coverage": null,
-        "travel_coverage": null,
-        "fully_funded": false,
-        "funding_label": null,
-        "benefits": null,
-        "eligibility": null,
-        "citizenship_residency": null,
-        "international_eligibility": "not stated",
+        "sdg_requirement": false,
+        "sdg_requirement_details": [],
         "degree_levels": [
           "PhD"
         ],
-        "study_mode": null,
-        "research_requirement": "required",
-        "subject_or_agency_requirement": null,
-        "application_method": null,
-        "application_route": "agency-specific",
-        "requirements": null,
-        "documents": null,
-        "english_requirement": null,
-        "english_requirement_note": "Not verified - the official page could not be read.",
-        "selection_criteria": null,
-        "selection_weighting": null,
-        "duration": null,
-        "award_holder_conditions": null,
-        "supplements_or_initiatives": null,
-        "official_contacts": {},
-        "description": "Unverified. The recorded awarding body is the Indian Council of Agricultural Research (ICAR), and the recorded degree level is a PhD in agriculture and allied sciences, but no official ICAR page was readable this session. No facts about the fellowship's amount, deadline, criteria or process are asserted here.",
-        "program_type": null,
-        "region": "India",
-        "coverage": "Not verified. No official content was retrievable.",
-        "last_verified_date": "2026-10-01"
+        "study_type": [
+          "Doctoral (Ph.D.) research in agriculture and allied sciences",
+          "Must be within the Council's identified priority areas of research, which are notified one year in advance",
+          "Priority areas span Crop Sciences, Horticulture, Biotechnology and nanotechnology, Animal Sciences, Natural Resource Management, Agricultural Engineering and Fisheries"
+        ],
+        "degree_award": "Full doctoral degree â€” the fellowship supports a Ph.D. degree programme in agriculture and allied sciences. The fellow is designated an \"NS-ICAR International Fellow\". It is explicitly not a training or short-duration research award.",
+        "duration": "Three years. \"The NS-ICAR IFs are available to Indian candidates as well as overseas candidates for a period of three years.\" The tenure of fellowship will not be extended in any case, in so far as the Council support is concerned. If the fellow is not able to complete the degree during this period, he/she will use his/her own resources for completing the degree.",
+        "application_cycle": "Annual. \"Applications for NS-ICAR IFs will be invited on annual basis through announcements published in Indian national newspapers and the notification on ICAR website 'http://www.icar.org.in'. Indian diplomatic missions in foreign countries will also be informed through e-mails.\" The Council will identify and announce the priority areas of research and the list of institutions for admission one year in advance. For the year 2026, thirty (30) fellowships for a duration of three years are available, split between Indian and overseas candidates according to the availability of good candidates in the identified priority areas.",
+        "deadline_central": "2026-09-25",
+        "deadline_central_display": "The application should be submitted by September 25, 2026, to ADG (HRD) at adg.hrd.applications@gmail.com, mentioning the \"Application for NSIF: Name of Applicant and contact number\" in the subject line of the mail. Last date for submission of the application is September 25, 2026.",
+        "deadline_institutional": null,
+        "funding_type": "Partial Funding",
+        "funding_label": "Ph.D. Amount payable to the International fellowship candidates: Indian fellows going abroad â€” US$ 2,000/- per month, plus lump-sum payments towards contingent and preparatory expenses of US$ 1,000/- per year. Overseas fellows in India â€” INR 40,000/- per month, plus lump-sum payments towards contingent and preparatory expenses of INR 25,000/- per year. Plus a to-and-fro economy class air ticket provided by the Council.",
+        "funding_amount": null,
+        "funding_period": "Three years of fellowship support, with the first six months released as the first installment and subsequent releases conditional on certified academic progress reports. Two currency tracks are published (US$ for Indian fellows going abroad; INR for overseas fellows in India), so no single amount is recorded.",
+        "tuition_coverage": false,
+        "living_cost_coverage": "Monthly fellowship of US$ 2,000/- per month for Indian fellows going abroad, or INR 40,000/- per month for overseas fellows in India, plus a lump-sum payment towards contingent and preparatory expenses of US$ 1,000/- per year or INR 25,000/- per year respectively.",
+        "travel_coverage": "To-and-fro, economy class air ticket for international travel, by the shortest route, from the airport nearest the residence/work place of the candidate to the airport nearest the destination University, in respect of both Indian and Overseas candidates (air tickets to be provided by the Council). Overseas fellows are additionally entitled to economy-class travel cost reimbursement from the port of arrival in India to the destination University in India and back.",
+        "fully_funded": false,
+        "tuition_rule": "\"All fees chargeable by the host institution where the fellow is enrolled will be paid by the fellow himself out of the fellowship grant or from his/her own resources.\" The fellowship does not pay host institution fees.",
+        "home_tuition_rule": null,
+        "host_institution_fee": "All fees chargeable by the host institution where the fellow is enrolled must be paid by the fellow out of the fellowship grant or from his/her own resources.",
+        "tax_status": null,
+        "covered_expenses": [
+          "Monthly fellowship: US$ 2,000/- per month for Indian fellows going abroad; INR 40,000/- per month for overseas fellows in India",
+          "Lump-sum payments towards contingent and preparatory expenses: US$ 1,000/- per year (Indian fellows abroad); INR 25,000/- per year (overseas fellows in India)",
+          "To-and-fro economy class air ticket for international travel by the shortest route, provided by the Council, for both Indian and Overseas candidates",
+          "Economy-class travel cost reimbursement from the port of arrival in India to the destination University in India and back (overseas fellows only)",
+          "During a qualifying stay in India, overseas fellows are eligible for fellowships @ Rs. 40,000/- per month plus contingent and preparatory expenses @ Rs. 25,000/- per annum, the same amount offered to foreign national fellows doing a Ph.D. in India under the scheme"
+        ],
+        "not_covered_or_excluded": [
+          "All fees chargeable by the host institution where the fellow is enrolled â€” paid by the fellow out of the fellowship grant or his/her own resources.",
+          "Medical insurance â€” \"The fellow will meet all other costs including medical insurance etc. from the above fellowship or from his/her own resources.\"",
+          "Medical fitness test â€” the selected fellow would be required to get his/her medical fitness test and medical insurance done at his/her own cost.",
+          "For Indian candidates, travel from the place of residence/work to the port of departure in India, and from the port of arrival to the destination University overseas â€” met by the fellows themselves or by their sponsoring organization.",
+          "Interim visits to India by overseas fellows requiring experiments or data collection: \"With the consent of their Advisor and prior approval of ICAR, they may undertake interim visits to India on their own resources. ICAR will not provide any financial support on travelling for the purpose.\"",
+          "Any extension beyond the three-year tenure â€” the tenure will not be extended in any case, in so far as the Council support is concerned.",
+          "Funding to complete the degree if it is not finished within the three-year tenure, or after two years beyond the prescribed duration of the programme, where the Council may take steps for recovery of the fellowship paid.",
+          "Training or short-duration research â€” \"This fellowship is not meant for the conduct of training or to carry out research of short duration.\""
+        ],
+        "benefits": [
+          "Full funding of the international air ticket by the Council (air tickets to be provided by the Council).",
+          "Contingent and preparatory expenses lump sum, paid per year on top of the monthly fellowship.",
+          "During the tenure of fellowship, an in-service fellow may continue to receive his/her salary, types of leave and benefits etc. from the parent organization as per rules.",
+          "The first installment (the first six months) is released only after the fellow's acceptance of the fellowship and the admission letter from the host University are received â€” a defined, early disbursement.",
+          "Priority-area and institution lists are published one year in advance, letting candidates plan."
+        ],
+        "eligibility": [
+          "Master's degree in agriculture/allied sciences with an Overall Grade Point Average (OGPA) 6.60 out of 10.0 or 65% marks or equivalent.",
+          "Fresh candidates should not be more than 35 years of age on the last date prescribed for receipt of applications.",
+          "The upper age limit for in-service candidates is 40 years on the last date for receipt of applications.",
+          "Available for both fresh and in-service candidates.",
+          "Fresh candidates should have completed their qualifying degree not more than two years before the specified date in the year of admission.",
+          "In-service candidates from India should be employed in the ICAR-AU system.",
+          "Indian as well as overseas nationals are invited to apply.",
+          "The area of study and the line of the proposed research work must be in the identified priority area relevant to Indian/Global agriculture as identified by the Council, notified one year in advance.",
+          "Applicants must obtain at their own level an acceptance of their admission in the Ph.D. degree programme with the identified area of study at the identified Indian AUs (in the case of overseas applicants) or the identified overseas institutions (in the case of Indian applicants).",
+          "Candidates must satisfy themselves regarding admission and course requirements of the university before identifying these as a place of study.",
+          "The candidate should have a clear record of good conduct all-through, duly certified by the Competent Authority of the University last attended or the present employer in case of in-service candidate.",
+          "Two references must be provided along with their contact email addresses; one of the two referees should preferably be his/her supervisor in the current occupation (if employed) and one who is an expert in the area and well acquainted with the candidate's work."
+        ],
+        "general_eligibility": [
+          "Hold a Master's degree in agriculture/allied sciences with OGPA 6.60/10.0 or 65% marks or equivalent.",
+          "Be within the age limit: not more than 35 years for fresh candidates, and not more than 40 years for in-service candidates, on the last date prescribed for receipt of applications.",
+          "Be proposing research in one of the Council's identified priority areas.",
+          "Hold or have obtained an acceptance of admission to a Ph.D. programme at an eligible host institution (identified overseas institution for Indian candidates; identified Indian Agricultural University in the ICAR-AU system for overseas candidates).",
+          "Supply two referees with contact email addresses who may be contacted directly by the Council.",
+          "Be able to submit the research plan and the supporting documents listed in the application form."
+        ],
+        "ineligibility_conditions": [
+          "Fresh candidates who are more than 35 years of age on the last date prescribed for receipt of applications.",
+          "In-service candidates who are more than 40 years of age on the last date for receipt of applications.",
+          "Candidates whose Master's degree is below OGPA 6.60 out of 10.0 or 65% marks or equivalent.",
+          "Fresh candidates who completed their qualifying degree more than two years before the specified date in the year of admission.",
+          "In-service candidates from India who are not employed in the ICAR-AU system.",
+          "Applicants whose proposed area of study or line of research falls outside the identified priority areas notified by the Council.",
+          "Applicants who have not obtained, or cannot produce at interview, a letter of acceptance for admission to the respective degree programme at the University.",
+          "Candidates without a clear record of good conduct, duly certified by the Competent Authority of the University last attended or the present employer.",
+          "In-service Indian candidates who cannot furnish deputation approval by their respective Director of ICAR Institutes / Vice-Chancellor of Agricultural Universities.",
+          "Research proposals of a training nature or of short duration â€” the fellowship is not meant for these.",
+          "Applicants who, once selected, do not register for the programme within one year from the date of issue of the letter of fellowship award; the offer is terminated automatically with no separate cancellation communication.",
+          "Fellows who change the place of work or deviate from the broad research area for which the fellowship is sanctioned."
+        ],
+        "citizenship_residency": "\"The Indian Council of Agricultural Research (ICAR) invites applications from Indian as well as overseas nationals having Master's degree in Agriculture and Allied Sciences for the Netaji Subhas-ICAR International Fellowships (NS-ICARIFs) for the year 2026.\" The allocation of the thirty fellowships between Indian and overseas candidates depends on the availability of good candidates in the identified priority areas.",
+        "academic_level_rules": {
+          "undergraduate": [],
+          "masters": [
+            "A Master's degree in agriculture/allied sciences is the qualifying degree, with OGPA 6.60 out of 10.0 or 65% marks or equivalent.",
+            "Fresh candidates must have completed the qualifying degree not more than two years before the specified date in the year of admission.",
+            "In-service candidates must be employed in the ICAR-AU system (in-service candidates from India)."
+          ],
+          "phd": [
+            "The fellowship is for pursuing a doctoral degree in agriculture and allied sciences in the identified priority areas.",
+            "Duration is three years for both Indian and overseas candidates; the tenure will not be extended in any case.",
+            "Registration for the programme must be completed within one year from the date of issue of the letter of fellowship award.",
+            "Overseas fellows whose research requires experiments and data collection at Indian SAUs/Institutes may be allowed a maximum period of one-and-a-half-year there as per their research plan."
+          ]
+        },
+        "host_requirements": [
+          "The host must be an identified institution having strong research and teaching capabilities and adequate strength in terms of faculty and infrastructure facilities â€” identified overseas institutions for Indian candidates, identified Indian Agricultural Universities (AUs) from the ICAR-AU system in India for overseas candidates.",
+          "The applicant must obtain an acceptance of admission to the Ph.D. degree programme with the identified area of study at the host, at their own level, and enclose the acceptance letter with the fellowship application.",
+          "The applicant must furnish a letter of acceptance for admission in the respective degree programme at the University at the time of interview.",
+          "The host institution must certify the academic progress reports that the fellow submits to the Council, duly certified by the concerned advisor/supervisor/head of institution.",
+          "The fellow must register for the programme within one year from the date of issue of the letter of fellowship award.",
+          "The candidate must satisfy themselves regarding the admission and course requirements of the university before identifying it as a place of study.",
+          "In-service Indian candidates require deputation approval from the Director of the ICAR Institute or Vice-Chancellor of the Agricultural University."
+        ],
+        "requirements": [
+          "Master's degree in agriculture/allied sciences with OGPA 6.60 out of 10.0 or 65% marks or equivalent.",
+          "Propose research in one of the identified priority areas relevant to Indian/Global agriculture.",
+          "Obtain an acceptance letter for admission from the host University.",
+          "Submit a copy of the research plan.",
+          "Provide the names, addresses, contact phone numbers and e-mail addresses of two referees, one preferably the supervisor in the current occupation and one an expert in the area well acquainted with the candidate's work.",
+          "Submit a Certificate from the Candidate declaring that the particulars given are true and that the applicant has understood and agrees to abide by the guidelines/terms and conditions of the scheme, and undertaking to complete the Ph.D. degree programme and to return to their country after completion.",
+          "Overseas applicants only: furnish a Certificate from the Indian Diplomatic Representative certifying permanent domicile in the named country and that the candidate will return to the country of domicile on completion of studies in the host country, with signature, name, designation, office seal, address, date and place.",
+          "Furnish a Certificate of Physical Fitness by an authorized Medical Doctor, with the doctor's seal, covering medical history, physical examination, lungs, summary, vaccination record and general remarks.",
+          "Overseas applicants only: furnish a Certificate of Proficiency in English from the Indian Diplomatic Mission, sealed, stating whether the applicant is proficient or not proficient in written/spoken English and/or has or has not passed the English Proficiency Test conducted by the named authority.",
+          "Furnish an Undertaking that during the tenure of the fellowship the fellow will neither change the place of work nor deviate from the broad research area, and will adhere to the other conditions of the guidelines.",
+          "Supply passport details; for Indian candidates an Aadhar No. is mandatory to receive the fellowships.",
+          "Provide a recent photograph.",
+          "List academic qualifications obtained from the graduate degree onwards, attaching copies of documents.",
+          "Detail professional work experience and achievements, attaching supporting documents, including awards/honours/scholarships such as Gold Medal, Best Thesis, NTS, JRF, NET, ARS, research/teaching experience, and details of publications above a NAAS rating of 4.0 with copies of the research papers attached.",
+          "Tick whether the candidate is fresh or in-service; for a fresh candidate give the year the Master's degree was completed, and for an in-service candidate give the employer organisation's name, address and head of organization, the position held, and enclose deputation permission from the parent organisation.",
+          "Provide details of the Ph.D. degree programme applied for, including discipline/subject, name of degree programme, academic session and year of admission, prescribed duration in years, proposed area of study, title of the proposed research plan, and the host University's name, address and contact person.",
+          "Declare proficiency in English (written and spoken: GOOD/FAIR/POOR) and knowledge of languages other than English.",
+          "Provide the name and address of close relatives or friends, if any, in the country where the degree programme will be pursued."
+        ],
+        "documents": [
+          "Completed APPLICATION FORM FOR NETAJI SUBHAS - ICAR INTERNATIONAL FELLOWSHIP.",
+          "Copies of documents for academic qualifications obtained (Graduate degree) onwards â€” university/institution, degree, year, subjects, marks/grades/OGPA.",
+          "Recent photograph of the applicant.",
+          "Supporting documents for professional work experience and achievements, including awards/honours/scholarships (Gold Medal, Best Thesis, NTS, JRF), NET, ARS, and research/teaching experience.",
+          "Details of publications above a NAAS rating of 4.0, in the format of authors and title of publication, name of journal, journal ID and NAAS score as per the list of NAAS score of Science journals 2025 â€” with copies of research papers attached.",
+          "Deputation permission from the parent organisation (in-service candidates only).",
+          "Acceptance letter for admission from the Host University (copy to be attached if yes).",
+          "Copy of the research plan (YES/NO indicated on the form).",
+          "Certificate from the Candidate â€” declaration of truth and agreement to the guidelines/terms and conditions, and undertaking to complete the Ph.D. and return to their country. Signed.",
+          "Certificate to be furnished by the Indian Diplomatic Representative (overseas applicants only) â€” permanent domicile and return undertaking, plus certification that entries were checked against original documents and the application is complete in all respects, and that scanned copies of relevant certificates, diplomas or degrees have been enclosed. Requires signature, name, designation, OFFICE SEAL, address, date and place.",
+          "Certificate of Physical Fitness by an authorized Medical Doctor, including medical history, physical examination, lungs, summary, vaccination/inoculation record and general remarks. Requires signature, address, date and DOCTOR's SEAL.",
+          "Certificate of Proficiency in English (overseas applicants only) â€” issued under the SEAL of the Indian Diplomatic Mission, stating proficiency in written/spoken English and/or whether the English Proficiency Test was passed, with the name of the conducting authority.",
+          "FORMAT FOR REFEREE COMMENTS ON THE SUITABILITY OF CANDIDATE FOR NETAJI SUBHAS-ICAR INTERNATIONAL FELLOWSHIP, completed by each of the two referees, giving the referee's name, designation, affiliation, contact phone and email, the three declarations on acquaintance, satisfaction as to sincerity/zeal/capacity, and recommendation; with signature and date.",
+          "Aadhar No. (mandatory for Indian candidates to receive the fellowships) and passport details (number, date of issue, place of issue, date of expiry)."
+        ],
+        "document_format_rules": [
+          "Academic qualifications: copies of documents must be attached for each degree listed from the graduate degree onwards.",
+          "Publications: copies of the research papers must be attached, and only publications above a NAAS rating of 4.0 are listed, scored against the NAAS list of Science journals 2025.",
+          "Professional experience and achievements: supporting documents must be attached.",
+          "The application is submitted on-line in the prescribed format, by email to adg.hrd.applications@gmail.com, with the subject line \"Application for NSIF: Name of Applicant and contact number\".",
+          "Overseas applicants' certificates must bear the OFFICE SEAL / SEAL of the Indian Diplomatic Mission.",
+          "The Certificate of Physical Fitness must bear the DOCTOR's SEAL and be from an authorized Medical Doctor.",
+          "The form must be signed by the applicant (signature, date and place), and in the case of general remarks continuing on a separate sheet, the separate sheet must be signed as well.",
+          "Acceptance letter and research plan are indicated YES/NO on the form and, where YES, the copy is to be attached.",
+          "Scanned copies of relevant certificates, diploma or degrees of examinations passed are to be enclosed by the applicant, as certified by the Indian Diplomatic Representative for overseas applicants.",
+          "No file size limit, accepted file extension or translation rule is published in the ICAR document."
+        ],
+        "selection_criteria": [
+          "Evaluation on parameters/a weighted scale, taking into account the relevance of the area of study, the proposed research plan, academic records, achievements and past work experience of the candidate.",
+          "Selection on the basis of the evaluation score and a subsequent interview by a Selection Committee.",
+          "Clear record of good conduct all-through, duly certified by the Competent Authority of the University last attended or the present employer in case of an in-service candidate.",
+          "Importance of the area of study and the proposed research plan, which the Selection Committee is empowered to judge.",
+          "Compliance with the requirement that the research fall within an identified priority area relevant to Indian/Global agriculture."
+        ],
+        "selection_notes": "Candidates are evaluated on a parameters/weighted scale covering the relevance of the area of study, the proposed research plan, academic records, achievements and past work experience. Selection is then made on the basis of the evaluation score and a subsequent interview by a Selection Committee constituted by the Council and duly empowered to judge the suitability of the candidate with regard to the importance of the area of study and the proposed research plan. The Committee may also decide to conduct a telephonic/teleconferencing interview, and the overseas candidates may even be interviewed by experts as identified by the Council who may be based in their home country. The two referees may be directly contacted by the Council for comments in the prescribed format on the candidature. At the time of interview the applicants must furnish a letter of acceptance for their admission in the respective degree programme at the University. The allocation of the thirty fellowships between Indian and overseas candidates depends on the availability of good candidates in the identified priority areas. The Secretary, ICAR and the Additional Secretary DARE are the final authority in resolving and taking decision on any situation/case of conflict, and that decision is binding on all parties concerned. For any dispute, the applicable law is Indian law under the jurisdiction of Courts in Delhi only.",
+        "application_method": [
+          "Submit an application for the fellowship on-line in the prescribed format, by email, to ADG (HRD) at adg.hrd.applications@gmail.com, with the specified subject line.",
+          "Obtain an acceptance of admission to the Ph.D. programme from the host institution at the applicant's own level and enclose it.",
+          "Supply two referees' contact details for direct contact by the Council.",
+          "Attend the interview, which may be in person, telephonic/teleconferencing, or, for overseas candidates, conducted by experts in their home country.",
+          "On selection, register for the programme within one year of the issue of the letter of fellowship award."
+        ],
+        "application_steps": [
+          "Check that you hold a Master's degree in agriculture/allied sciences with OGPA 6.60 out of 10.0 or 65% marks or equivalent, and that you are within the age limit (35 for fresh, 40 for in-service) on the last date prescribed for receipt of applications.",
+          "Check that your proposed area of study is in one of the Council's identified priority areas, notified one year in advance.",
+          "Identify an eligible host: an identified overseas institution with strong research and teaching capabilities if you are an Indian candidate, or an identified Indian Agricultural University in the ICAR-AU system if you are an overseas candidate.",
+          "Apply to the host for admission to the Ph.D. programme at your own level, and satisfy yourself about the university's admission and course requirements before committing to it as a place of study.",
+          "Obtain the acceptance letter for admission from the Host University.",
+          "Prepare your research plan, giving the discipline/subject, name of degree programme, academic session and year of admission, prescribed duration, proposed area of study, title of the proposed research plan, and the host University's name, address and contact person.",
+          "Assemble the referee details: two referees with names, addresses, contact phone numbers and e-mail addresses, one preferably your supervisor in your current occupation and one an expert in the area well acquainted with your work.",
+          "Assemble the certified components: Certificate from the Candidate (signed, with the return-home undertaking), Certificate from the Indian Diplomatic Representative (overseas applicants), Certificate of Physical Fitness (doctor's seal), Certificate of Proficiency in English (overseas applicants), and the referee comment format for each referee.",
+          "Assemble the supporting evidence: copies of academic documents, a recent photograph, supporting documents for experience and achievements, and copies of research papers for publications above NAAS 4.0; plus deputation permission if in-service, and Aadhar No. if an Indian candidate.",
+          "Email the complete application to adg.hrd.applications@gmail.com, with the subject line \"Application for NSIF: Name of Applicant and contact number\", by September 25, 2026.",
+          "Attend the interview and bring/furnish your letter of acceptance for admission.",
+          "If selected, register for the programme within one year from the date of issue of the letter of fellowship award â€” the offer terminates automatically if you do not.",
+          "Furnish the Bank Guarantee (Indian fellows) or accept the recovery arrangement (foreign national fellows), and sign the Undertaking on place of work and research area."
+        ],
+        "applicant_submission_route": [
+          "The applicant submits the application themselves, by email, directly to ADG (HRD), Education Division, ICAR at adg.hrd.applications@gmail.com, with the subject line \"Application for NSIF: Name of Applicant and contact number\".",
+          "The applicant obtains the acceptance of admission from the host institution themselves, at their own level, and encloses it with the application.",
+          "The applicant's referees supply comments in the prescribed format; the Council may contact them directly at the email addresses supplied."
+        ],
+        "application_portal": "Email submission to the Assistant Director General (HRD), Education Division, ICAR: adg.hrd.applications@gmail.com. ICAR notifications for the scheme are published on http://www.icar.org.in (as stated in the ICAR document) and via announcements in Indian national newspapers; Indian diplomatic missions in foreign countries are informed by email.",
+        "student_direct_application": true,
+        "award_holder_conditions": [
+          "Devote full time to the chosen area of studies/research work during the tenure of the fellowship.",
+          "Submit a progress report to the Council, through the adviser/supervisor/head of the institution, every six months.",
+          "Maintain satisfactory progress in studies, as reflected by the grades secured and certification by the advisor/supervisor â€” unsatisfactory performance in studies, or conduct probation, terminates the fellowship with immediate effect, and the fellow must meet the expenditure on the remaining part of the programme from his/her own resources.",
+          "Neither change the place of work nor deviate from the broad research area for which the fellowship is sanctioned; the selected candidates must submit an Undertaking to this effect and to adherence to the other conditions of the guidelines.",
+          "Indian selected fellows must provide an irrevocable Bank Guarantee for US$ 10,000/- (equivalent in rupee currency) in favour of the Secretary, ICAR, valid for the entire duration until successful completion of the programme.",
+          "Foreign national selected fellows: an amount of Rs. 2,00,000 will be recovered from their fellowship grant as an alternative to a bank guarantee, in terms of Rs. 1,00,000 each from the first and second installment until successful completion of the Ph.D. programme; this amount will be paid to the fellow at the time of final release of the fellowship.",
+          "Indian in-service candidates selected for the international fellowship must execute a bond with the deputing University/Institute to undertake to serve that institution for at least three years after completion of the degree.",
+          "Register for the programme within one year from the date of issue of the letter of fellowship award.",
+          "Undertake to complete the Ph.D. degree programme and to return to their country after completion of the degree programme.",
+          "Take proper measures to protect the Intellectual Property Rights generated during the stay in the host institution; the Council will have the appropriate share on patents/knowledge generated as specified under the IP Management bulletin; any other IP agreement must be appropriately shared with the Council; the support from the Council must be duly acknowledged in all publications arising out of the work.",
+          "Submit, within 15 days of completion of the programme, a copy of the dissertation/thesis and a brief report on the activities undertaken including any significant research contribution to the Council.",
+          "Obtain a medical fitness test and medical insurance at his/her own cost.",
+          "Meet all other costs, including medical insurance, from the fellowship or from his/her own resources.",
+          "Pay all fees chargeable by the host institution out of the fellowship grant or his/her own resources."
+        ],
+        "deferrable": false,
+        "renewable": false,
+        "return_home_required": true,
+        "clinical_restriction": null,
+        "arrival_rules": [
+          "For overseas fellows whose research experiments and data collection must be at Indian SAUs/Institutes located in India: they may be allowed for a maximum period of one-and-a-half-year as per their research plan, and during the stay in India they are eligible for fellowships @ Rs. 40,000/- per month plus contingent and preparatory expenses @ Rs. 25,000/- per annum.",
+          "Interim visits to India by overseas fellows are permitted only with the consent of their Advisor and prior approval of ICAR, on their own resources â€” ICAR will not provide any financial support on travelling for the purpose.",
+          "The period of absence from the host university and the stay in an Indian university/institute must be authenticated/verified by the identified Advisor and Co-Advisor respectively."
+        ],
+        "timeline_rules": [
+          "Applications are invited annually, published in Indian national newspapers and notified on the ICAR website; Indian diplomatic missions in foreign countries are informed by email.",
+          "Priority areas of research and the list of institutions for admission are identified and announced one year in advance.",
+          "Last date for submission of the 2026 application: September 25, 2026.",
+          "The first installment equals the first six months of the fellowship and is released on the Council receiving the fellow's acceptance for the fellowship and the admission letter from the host University.",
+          "Thereafter the fellowship amount is released after the Council receives the academic progress report from the fellow, duly certified by the concerned advisor/supervisor/head of institution.",
+          "Progress reports are submitted to the Council every six months.",
+          "Tenure: three years, not extendable in any case so far as Council support is concerned.",
+          "In case the fellow is not able to complete even after 2 years of the prescribed duration of the programme for which the fellowship was sanctioned, the Council may take necessary steps for the recovery of the fellowship paid.",
+          "Completion report (copy of dissertation/thesis plus a brief report) is due within 15 days of completion of the programme.",
+          "Once selected, candidates must register for the programme within one year from the date of issue of the letter of fellowship award; in case of delay the offer terminates automatically and no separate cancellation communication is issued by the Council.",
+          "The first installment to the Indian fellow is paid in Indian Rupees only."
+        ],
+        "official_contacts": {
+          "general": "For any clarification regarding the NS-ICAR IFs, the Assistant Director General (HRD), Education Division, ICAR may be contacted. Indian Council of Agricultural Research, Agricultural Education Division, Krishi Anusandhan Bhavan-II, Pusa, New Delhi 110 012, India. Secretary, ICAR and Additional Secretary, DARE are the final authority on any conflict.",
+          "email": "adg.hrd.applications@gmail.com"
+        },
+        "official_application_route": [
+          "Email the application to the Assistant Director General (HRD), Education Division, ICAR, at adg.hrd.applications@gmail.com, with the subject line \"Application for NSIF: Name of Applicant and contact number\".",
+          "Scheme notification page on ICAR: http://www.icar.gov.in/hi/netaji-subhas-icar-international-fellowship (the ICAR document itself directs applicants to ICAR website www.icar.org.in for detailed guidelines, priority areas of study and the application proforma).",
+          "Official ICAR document (application form and guidelines): http://www.icar.gov.in/sites/default/files/2026-08/NETAJI%20SUBHAS%20-%20ICAR%20INTERNATIONAL%20FELLOWSHIP.pdf",
+          "Announcements also appear in Indian national newspapers; Indian diplomatic missions in foreign countries are informed through e-mails."
+        ],
+        "program_type": "Government fellowship",
+        "region": "India and abroad (Indian Agricultural Universities in the ICAR-AU system in India for overseas candidates; identified overseas institutions for Indian candidates)",
+        "coverage": [
+          "Monthly fellowship: US$ 2,000/- per month (Indian fellows going abroad) or INR 40,000/- per month (overseas fellows in India)",
+          "Contingent and preparatory expenses lump sum: US$ 1,000/- per year or INR 25,000/- per year",
+          "To-and-fro economy class air ticket provided by the Council",
+          "Economy-class travel reimbursement from port of arrival in India to destination University and back (overseas fellows)",
+          "During a qualifying stay in India, overseas fellows receive Rs. 40,000/- per month plus Rs. 25,000/- per annum"
+        ],
+        "last_verified_date": "2026-10-01",
+        "official_source_urls": [
+          "https://www.icar.gov.in (unreachable: webfetch transport error; browser ERR_CERT_DATE_INVALID)"
+        ]
       },
       "applicant_utility": {
         "application_readiness_checklist": [
-          "Retry icar.gov.in directly in a standard browser - the failure this session looks like a server TLS certificate date error",
-          "Look for the current ICAR international fellowship call notice on the ICAR site or the relevant university/institute international office",
-          "Confirm whether the fellowship is advertised through ICAR directly or through a host Indian university"
+          "Confirm your Master's is in agriculture/allied sciences with OGPA 6.60/10.0 or 65% marks or equivalent â€” this is a hard numeric gate.",
+          "Check the age gate against the last date for receipt of applications: 35 for fresh candidates, 40 for in-service candidates.",
+          "Check the freshness gate: as a fresh candidate your Master's must have been completed not more than two years before the specified date in the year of admission.",
+          "As an in-service candidate from India, confirm you are employed in the ICAR-AU system and that you can get deputation approval from your Director/Vice-Chancellor.",
+          "Choose a research topic inside the Council's identified priority areas â€” they are published one year in advance and a proposal outside them is not eligible.",
+          "Pick a host from the published lists: identified overseas institutions for Indian candidates, identified Indian Agricultural Universities in the ICAR-AU system for overseas candidates.",
+          "Apply to the host yourself and get the acceptance letter â€” ICAR makes you obtain it 'at their own level' and you must have it in hand at interview.",
+          "Write the research plan and give it a title; the form asks for discipline, degree programme, session and year of admission, prescribed duration, proposed area of study and the host's contact person.",
+          "Nominate two referees with email addresses â€” one your current supervisor (if employed) and one an expert in your area. ICAR will contact them directly.",
+          "Assemble the certified pieces early, because they take longest: the doctor's physical fitness certificate with seal, and â€” for overseas applicants â€” the Indian Diplomatic Mission certificates with office seal.",
+          "Attach copies of your academic documents, a recent photograph, supporting documents for achievements, and copies of research papers for publications above NAAS 4.0.",
+          "If you are an Indian candidate, have your Aadhar number ready â€” it is mandatory to receive the fellowships.",
+          "Email the whole pack to adg.hrd.applications@gmail.com with the subject exactly as \"Application for NSIF: [your name] and [contact number]\" by the deadline.",
+          "Plan your financial buffer: host fees, medical insurance and medical fitness come out of your own pocket or out of the fellowship."
+        ],
+        "important_advice_for_students": [
+          "This is not full funding. ICAR states plainly that 'All fees chargeable by the host institution where the fellow is enrolled will be paid by the fellow himself out of the fellowship grant or from his/her own resources', and that all other costs including medical insurance come from the fellowship or your own resources. Model the host tuition fee before you commit.",
+          "You get the air ticket, and it is genuinely generous: a to-and-fro economy class ticket provided by the Council for both Indian and overseas candidates. But for Indian candidates, getting to the departure airport in India and from the arrival airport to the overseas university is on you or your sponsor.",
+          "For overseas fellows in India, the Council also reimburses economy-class travel from the port of arrival to your university and back â€” worth claiming.",
+          "Budget for three years and no more. The tenure 'will not be extended in any case'. If you are slow, you finish on your own money, and if you are two years past the prescribed programme duration the Council may recover the fellowship paid.",
+          "The stakes on conduct are high. Unsatisfactory performance or conduct probation terminates the fellowship immediately and makes you pay for the rest of the programme. Indian Fellows who do not return to India face recovery of the entire amount paid plus 10% overhead, and the Indian Embassy in the host country may be informed.",
+          "Do not move or change your research direction. You must sign an undertaking that you will neither change the place of work nor deviate from the broad research area, and progress is certified every six months by your advisor.",
+          "If you are an overseas fellow and your work needs Indian field trials, you may spend up to one-and-a-half-year in India and you keep the same fellowship rate during that time â€” but interim trips beyond that need your Advisor's consent and prior ICAR approval, and ICAR funds no travel for them.",
+          "Prepare for the money mechanics. The first six months are released only after ICAR receives your acceptance and your host's admission letter, and the first installment to an Indian fellow is paid in Indian Rupees only.",
+          "Indian fellows must put up an irrevocable US$ 10,000 bank guarantee in favour of the Secretary, ICAR for the whole programme. Foreign national fellows instead have Rs. 2,00,000 recovered from their grant (Rs. 1,00,000 each from the first two installments), refunded at final release. These are different mechanisms â€” know which applies to you.",
+          "The interview may not be a video call you choose. The Committee can use teleconferencing, and overseas candidates may be interviewed by Council-identified experts based in their home country.",
+          "ICAR shares in your IP. The Council takes an appropriate share on patents and knowledge generated under its IP Management bulletin, and any other IP agreement you sign must be shared with ICAR. Acknowledge ICAR support in all publications.",
+          "Note the 30-fellowship cap: allocation between Indian and overseas candidates depends on the availability of good candidates in the priority areas, so a strong topic matters as much as a strong record."
         ],
         "common_rejection_risks": [
-          "Relying on this unverified record for any award detail",
-          "Missing an annual call deadline, which for ICAR international fellowships is typically announced once a year"
+          "Master's degree below OGPA 6.60/10.0 or 65% marks or equivalent.",
+          "Over the age limit on the last date prescribed for receipt of applications (35 fresh, 40 in-service).",
+          "As a fresh candidate, having completed the qualifying degree more than two years before the specified date in the year of admission.",
+          "As an in-service candidate from India, not being employed in the ICAR-AU system.",
+          "Proposed research outside the Council's identified priority areas.",
+          "No acceptance letter from the host â€” you must have one, and you must produce it at the interview.",
+          "Naming a host that is not on the identified list, or a host without the required research and teaching capability and faculty/infrastructure strength.",
+          "Only one referee, or two referees who do not meet the published composition (current supervisor plus an expert in the area).",
+          "Missing, unsealed or unsigned certificates â€” the physical fitness certificate needs a doctor's seal, and overseas applicants' certificates need the Indian Diplomatic Mission's office seal.",
+          "Missing the Certificate from the Candidate including the return-home undertaking.",
+          "Missing supporting documents: academic document copies, recent photograph, achievement documents, or copies of research papers for NAAS-above-4.0 publications.",
+          "An in-service candidate who cannot produce deputation approval, or an Indian in-service candidate who will not execute the three-year service bond.",
+          "No Aadhar number for an Indian candidate, which ICAR states is mandatory to receive the fellowships.",
+          "A wrong or missing email subject line â€” ICAR specifies \"Application for NSIF: Name of Applicant and contact number\".",
+          "Missing the deadline. For the 2026 cycle the last date was September 25, 2026."
         ],
         "estimated_uncovered_costs": [
-          "Unknown until the official call notice is read"
+          "All host institution fees where the fellow is enrolled â€” explicitly the fellow's own responsibility, out of the grant or own resources.",
+          "Medical insurance â€” explicitly excluded; the fellow meets it from the fellowship or own resources.",
+          "The medical fitness test â€” at the fellow's own cost.",
+          "For Indian candidates going abroad: travel from residence/work to the port of departure in India, and from the port of arrival to the destination University overseas.",
+          "Interim visits to India by overseas fellows â€” ICAR provides no financial support on travelling for the purpose.",
+          "Completion costs if the Ph.D. is not finished within the three-year tenure, or recovery of the fellowship paid if it is not finished two years beyond the prescribed programme duration.",
+          "For Indian fellows: the working capital tied up in the US$ 10,000 irrevocable bank guarantee held for the whole programme.",
+          "For foreign national fellows: Rs. 2,00,000 withheld from the grant until final release.",
+          "Books, equipment, fieldwork and consumables beyond the annual contingent and preparatory lump sum of US$ 1,000 (Indian fellows abroad) or INR 25,000 (overseas fellows in India)."
         ],
         "document_audit": [
-          "PhD admission or enrollment proof at an Indian agricultural university, as such fellowships typically require",
-          "Research proposal and academic records as the call specifies"
+          "Completed application form in the prescribed ICAR proforma, signed with date and place.",
+          "Recent photograph of the applicant â€” a stated form item.",
+          "Copies of documents for every academic qualification from the graduate degree onwards, showing university/institution, degree, year, subjects and marks/grades/OGPA.",
+          "Supporting documents for professional work experience and achievements: awards/honours/scholarships (Gold Medal, Best Thesis, NTS, JRF), NET, ARS, research/teaching experience.",
+          "Publications above NAAS 4.0 only, in the prescribed four-column format (authors and title, name of journal, journal ID, NAAS score against the NAAS list of Science journals 2025), with copies of the research papers attached.",
+          "Acceptance letter for admission from the Host University â€” copy to be attached.",
+          "Copy of the research plan â€” YES/NO indicated and the copy attached.",
+          "Deputation permission from the parent organisation for in-service candidates.",
+          "Certificate from the Candidate: truth declaration, agreement to the guidelines/terms and conditions, and the undertaking to complete the Ph.D. and return to their country. Signed.",
+          "Certificate from the Indian Diplomatic Representative (overseas applicants only): permanent domicile certification, the return-to-country-of-domicile undertaking, and certification that the entries were checked against original documents and the application is complete, with scanned copies of relevant certificates enclosed. Must carry signature, name, designation, OFFICE SEAL, address, date and place.",
+          "Certificate of Physical Fitness by an authorized Medical Doctor: medical history, physical examination, lungs, summary, the doctor's view on ability to carry a full course of study involving long hours of work, health rating (EXCELLENT/GOOD/FAIR/POOR), vaccination record and general remarks. Must carry signature, address, date and DOCTOR's SEAL.",
+          "Certificate of Proficiency in English (overseas applicants only): whether the applicant is proficient/not proficient in written/spoken English and/or has/has not passed the English Proficiency Test, naming the conducting authority, under the SEAL of the Indian Diplomatic Mission.",
+          "Referee comment forms, one per referee, in the prescribed FORMAT: referee's name, designation, affiliation, contact phone, email; the three declarations; signature and date.",
+          "Passport details (number, date of issue, place of issue, date of expiry) and, for Indian candidates, the Aadhar number.",
+          "Fresh/in-service tick, with the Master's completion year for fresh candidates or the employer's name, address, head of organization and position held for in-service candidates.",
+          "Health advisory to action on: those planning to study in India are strongly advised to get vaccinated against typhoid/cholera before coming to India; those proceeding for overseas studies may get appropriate vaccination as per the host country's requirements.",
+          "Publication check: ICAR's document publishes no file size limit, accepted file extension or translation rule, so those remain to be confirmed with the ADG (HRD) at ICAR before you send."
+        ],
+        "referee_tracking": [
+          {
+            "role": "Referee 1 â€” current supervisor (preferred)",
+            "required": true,
+            "instructions": "One of the two referees should preferably be the applicant's supervisor in the current occupation (if employed). The applicant supplies the referee's name, address, contact phone number and e-mail address; the Council may contact the referees directly to obtain comments in the prescribed format. The referee completes the 'FORMAT FOR REFEREE COMMENTS ON THE SUITABILITY OF CANDIDATE FOR NETAJI SUBHAS-ICAR INTERNATIONAL FELLOWSHIP', which asks them to state whether they are well acquainted with the applicant's work and achievements, whether they are satisfied the applicant has the sincerity, zeal and capacity to complete the Ph.D. programme applied for with funding support under the fellowship, and whether they would recommend the applicant without hesitation â€” then signs and dates it."
+          },
+          {
+            "role": "Referee 2 â€” expert in the area",
+            "required": true,
+            "instructions": "The second referee should be an expert in the area and well acquainted with the candidate's work. The applicant supplies the name, address, contact phone number and e-mail address, and ICAR may contact this referee directly using the prescribed referee comment format, with signature and date."
+          },
+          {
+            "role": "Host University / supervisor at destination",
+            "required": true,
+            "instructions": "Not a referee in the assessment sense, but the host's advisor/supervisor/head of institution certifies every academic progress report that the fellow submits to the Council, and those certified reports are the condition for each subsequent release of the fellowship."
+          },
+          {
+            "role": "Indian Diplomatic Representative (overseas applicants only)",
+            "required": true,
+            "instructions": "A certifying authority rather than an academic referee. The mission certifies that the applicant is permanently domiciled in the named country and will return to the country of domicile on completion of studies in the host country; certifies that the entries in the application form, particulars about examinations passed, marks obtained, subjects studied and syllabi covered have been checked with original documents and that the application is complete in all respects; and confirms the applicant has enclosed scanned copies of relevant certificates, diplomas or degrees. Requires signature, name, designation, office seal, address, date and place."
+          },
+          {
+            "role": "Authorized Medical Doctor",
+            "required": true,
+            "instructions": "Completes the Certificate of Physical Fitness, including medical history, physical examination, lungs, summary, an explicit statement on whether the applicant is or is not physically able to carry on a full course of study involving long hours of work in a college/university/institution in India or abroad, a health rating, the small pox vaccination record, and whether there is evidence of communicable disease, fatigue or physical defects. Requires signature, address, date and doctor's seal."
+          }
         ],
         "alerts": [
           {
-            "trigger": "Using this record for an application decision",
-            "message": "Every award-specific field is null because icar.gov.in could not be reached. Verify with ICAR directly before relying on it."
+            "trigger": "One year before you plan to apply",
+            "message": "ICAR announces the priority areas of research and the list of eligible institutions one year in advance. Read the list before choosing a topic or a host."
+          },
+          {
+            "trigger": "The closing date approaches",
+            "message": "For the 2026 cycle the last date was September 25, 2026, submitted by email to adg.hrd.applications@gmail.com with the subject \"Application for NSIF: [name] and [contact number]\". Check the current ICAR notification for the next cycle."
+          },
+          {
+            "trigger": "You are an in-service candidate from India",
+            "message": "Secure deputation approval from your Director of the ICAR Institute or the Vice-Chancellor before applying, and expect to sign a three-year service bond with your deputing institution."
+          },
+          {
+            "trigger": "You are selected",
+            "message": "Register for the programme within one year of the letter of fellowship award. Delay terminates the offer automatically, with no separate cancellation notice."
+          },
+          {
+            "trigger": "You are an Indian fellow",
+            "message": "Arrange the irrevocable US$ 10,000 bank guarantee in favour of the Secretary, ICAR, valid until successful completion, and remember the first installment is paid in Indian Rupees only."
+          },
+          {
+            "trigger": "You are a foreign national fellow",
+            "message": "Rs. 2,00,000 will be recovered from your grant in two instalments of Rs. 1,00,000 and returned at final release. Plan your cash flow accordingly."
+          },
+          {
+            "trigger": "Every six months",
+            "message": "Submit a progress report through your advisor/supervisor/head of institution. It is the trigger for the next release of fellowship money."
+          },
+          {
+            "trigger": "You finish the Ph.D.",
+            "message": "Submit a copy of the dissertation/thesis and a brief activity report to ICAR within 15 days, and if you are an Indian fellow, return to India."
+          },
+          {
+            "trigger": "You plan to experiment in India during an overseas fellowship",
+            "message": "Up to one-and-a-half-year is allowed as per your research plan; interim trips beyond that need your Advisor's consent and prior ICAR approval, with no travel funding."
           }
         ],
         "submission_workflow": [
-          "Reach the ICAR site or an official ICAR call notice",
-          "Confirm the current cycle, deadline and award value",
-          "Prepare the documents the call specifies",
-          "Submit through the route the call specifies"
+          "Verify the three hard gates: Master's in agriculture/allied sciences at OGPA 6.60/10.0 or 65%; age within 35 (fresh) or 40 (in-service) on the last date for applications; and, if fresh, Master's completed no more than two years before the specified date in the year of admission.",
+          "Confirm your proposed research sits inside a Council-identified priority area and pick an eligible host from the identified list.",
+          "Apply to the host yourself and obtain the acceptance letter for admission.",
+          "Write and finalise the research plan with all the particulars the form requires, including the title and the host's contact person.",
+          "Nominate two referees and give them the ICAR referee comment format so they can respond quickly once ICAR contacts them.",
+          "Obtain the Certificate of Physical Fitness from an authorized Medical Doctor, with seal.",
+          "If you are an overseas applicant, obtain from the Indian Diplomatic Mission both the Certificate (domicile and completeness) and the Certificate of Proficiency in English, both with office seal.",
+          "Assemble academic document copies, the recent photograph, achievement documents, and copies of research papers for NAAS-above-4.0 publications; add deputation permission if in-service and the Aadhar number if an Indian candidate.",
+          "Sign the Certificate from the Candidate and the Undertaking on place of work and research area.",
+          "Email the complete application to adg.hrd.applications@gmail.com with the exact subject line \"Application for NSIF: [your name] and [contact number]\" before the deadline.",
+          "Attend the interview (in person, teleconference, or with Council experts in your home country) and furnish your acceptance letter.",
+          "On award, register for the programme within one year, arrange the bank guarantee or accept the recovery arrangement, and start the six-monthly progress report cycle."
+        ],
+        "post_award_requirements": [
+          "Register for the programme within one year from the date of issue of the letter of fellowship award, or the offer is terminated automatically.",
+          "Devote full time to the chosen area of studies/research for the whole tenure.",
+          "Submit a progress report to ICAR every six months, through the adviser/supervisor/head of the institution; these certified reports gate each further release of funding.",
+          "Do not change the place of work and do not deviate from the broad research area for which the fellowship was sanctioned.",
+          "Maintain the bank guarantee (Indian fellows, US$ 10,000 in favour of the Secretary, ICAR) for the entire duration until successful completion of the programme.",
+          "Return to your country after completion of the Ph.D. degree programme. Indian Fellows must return to India; if a fresh Indian Fellow is offered a suitable position in the ICAR-AU system they must serve it, and on non-compliance the entire amount paid plus 10% overhead is recoverable from the Fellow or their surety, failing which the Indian Embassy in the host country is informed.",
+          "Indian in-service fellows must serve the deputing University/Institute for at least three years after completing the degree, per the executed bond.",
+          "Protect IP generated at the host, share appropriately with the Council under the IP Management bulletin, disclose any other IP agreement to the Council, and acknowledge ICAR support in all publications.",
+          "Submit within 15 days of completing the programme a copy of the dissertation/thesis and a brief report on the activities undertaken, including any significant research contribution to the Council.",
+          "Obtain and maintain medical fitness and medical insurance at your own cost.",
+          "Pay all host institution fees and all other costs, including medical insurance, from the fellowship grant or your own resources."
+        ],
+        "questions_to_ask_host": [
+          "Is my proposed Ph.D. programme and research area covered by the Council's identified priority areas for this cycle?",
+          "Is this institution on the current identified list, and does it have the faculty strength and infrastructure ICAR requires?",
+          "What are the host institution's fee charges for the Ph.D. programme, given ICAR makes me pay them from the fellowship or my own resources?",
+          "What are the host's admission and course requirements, and what is its own admission deadline relative to ICAR's September 25 deadline?",
+          "What English proficiency evidence does the host require, and does it align with the Indian Diplomatic Mission certificate ICAR asks for?",
+          "How will my advisor certify the six-monthly progress reports, and what evidence of progress does the host require?",
+          "What is the host's policy on the maximum period I may spend on research experiments and data collection at the host or in India?",
+          "Who is the contact person at the host that ICAR will approach, and how quickly can the host issue my acceptance letter?",
+          "What is the prescribed duration of the Ph.D. programme, since ICAR uses it to judge whether I am two years overdue?",
+          "If I am an overseas fellow needing Indian field trials, how would a one-and-a-half-year stay at an Indian SAU or institute be arranged, and who verifies my absence?"
         ]
       },
       "verification": {
-        "cycle_verified": "none - the awarding body website could not be reached",
-        "verification_confidence": 0.05,
+        "cycle_verified": "NS-ICAR International Fellowships for the year 2026 â€” 30 fellowships for a duration of three years, last date for submission of the application September 25, 2026. The ICAR host page records its own last-updated date as 01-10-2026.",
+        "verification_confidence": 0.88,
         "official_fields_confirmed": [
-          "hosting organisation domain from the record only"
+          "2026 cycle: ICAR invites applications from Indian as well as overseas nationals holding a Master's degree in Agriculture and Allied Sciences; 30 fellowships for a duration of three years",
+          "Deadline: September 25, 2026, to ADG (HRD) at adg.hrd.applications@gmail.com, with the subject line \"Application for NSIF: Name of Applicant and contact number\"",
+          "Official title and awardee designation: \"Netaji Subhas - ICAR International Fellowship (NS-ICAR IF)\"; awardee called \"NS-ICAR International Fellow\"",
+          "Objectives: human resource development in cutting edge technologies and demonstrating the strength of the Indian agricultural system abroad; creating a pool of scientist-envoys for enhanced future co-operation",
+          "Purpose and dual track: Indian candidates study abroad at identified overseas institutions; overseas candidates study in the best Indian AUs in the ICAR-AU system",
+          "Duration: three years for both tracks; tenure will not be extended in any case; recovery of the fellowship paid possible if the fellow cannot complete even after 2 years beyond the prescribed programme duration",
+          "Number: thirty (30) fellowships per year, allocated between Indian and overseas candidates according to availability of good candidates in the priority areas",
+          "Eligibility: Master's degree in agriculture/allied sciences with OGPA 6.60/10.0 or 65% marks or equivalent; fresh candidates not more than 35 years and in-service candidates not more than 40 years on the last date for receipt of applications; fresh candidates must have completed the qualifying degree no more than two years before the specified date in the year of admission; in-service candidates from India must be employed in the ICAR-AU system; open to both fresh and in-service candidates",
+          "Amounts: Indian fellows abroad US$2,000 per month plus US$1,000 per year contingent and preparatory; overseas fellows in India INR 40,000 per month plus INR 25,000 per year",
+          "Travel: to-and-fro economy class air ticket by shortest route provided by the Council for both tracks; overseas fellows additionally reimbursed economy class from port of arrival to destination University and back; Indian candidates' travel to the departure port and from the arrival port to the overseas university is on the fellow or sponsor",
+          "Fees: all fees chargeable by the host institution are paid by the fellow out of the grant or own resources",
+          "Other costs: medical insurance and medical fitness are at the fellow's own cost",
+          "Disbursement: first installment = first six months, on receipt of the fellow's acceptance and the host's admission letter; thereafter on certified academic progress reports; first installment to an Indian fellow paid in Indian Rupees only",
+          "Bank guarantee: Indian fellows provide an irrevocable US$10,000 guarantee in favour of the Secretary, ICAR, valid for the whole programme; foreign national fellows have Rs.2,00,000 recovered from the grant (Rs.1,00,000 each from the first and second installment), refunded at final release",
+          "Bond: Indian in-service candidates execute a bond with the deputing University/Institute to serve it for at least three years after the degree",
+          "Selection: weighted-scale evaluation covering relevance of area of study, proposed research plan, academic records, achievements and past work experience, followed by interview with a Selection Committee constituted by the Council; teleconference possible; overseas candidates may be interviewed by Council-identified experts in their home country; referees may be contacted directly by the Council",
+          "Conduct record must be certified by the Competent Authority of the University last attended or the present employer",
+          "Two referees required, one preferably the current supervisor and one an expert in the area; full contact details including email",
+          "Acceptance of admission must be obtained by the applicant at their own level, preferably enclosed, and must be furnished at interview",
+          "Registration for the programme required within one year of the letter of fellowship award, otherwise the offer terminates automatically with no separate communication",
+          "Progress reports every six months through the adviser/supervisor/head of institution; full-time devotion; no change of place of work and no deviation from the broad research area, with an Undertaking",
+          "Termination with immediate effect for unsatisfactory performance in studies or conduct probation, with the fellow meeting remaining programme costs",
+          "Not for training or short-duration research",
+          "Indian field research: maximum one-and-a-half-year as per the research plan, with the same fellowship rate during the stay; interim visits need Advisor consent and prior ICAR approval with no travel funding; absence authenticated/verified by Advisor and Co-Advisor",
+          "IPR: Council has the appropriate share on patents/knowledge generated under its IP Management bulletin; other IP agreements shared with the Council; ICAR support acknowledged in all publications",
+          "Completion report due within 15 days of programme completion: copy of dissertation/thesis plus brief activity report",
+          "Return home: Indian Fellows must return to India; fresh Indian Fellows offered a suitable ICAR-AU position must serve it; on non-compliance the entire amount plus 10% overhead is recovered from the Fellow or surety and the Indian Embassy in the host country may be informed. The candidate's certificate also undertakes to return to their country on completion",
+          "Budget head: Plan budget-head \"ICAR International/overseas fellowships\"",
+          "Scheme, amount and guidelines subject to periodic review by the Council",
+          "Escalation: Assistant Director General (HRD), Education Division, ICAR, New Delhi; Secretary ICAR and Additional Secretary DARE are the final authority; disputes under Indian law, jurisdiction of Courts in Delhi only",
+          "Announcement channels: Indian national newspapers, ICAR website, and email to Indian diplomatic missions in foreign countries",
+          "Priority areas and the list of admission institutions are announced one year in advance",
+          "Priority areas span Crop Sciences, Horticulture, Biotechnology and nanotechnology, Animal Sciences, Natural Resource Management, Agricultural Engineering and Fisheries, with a note that other frontier areas in agriculture and allied sciences may also be appropriately considered",
+          "79 suggested overseas universities and 79 Indian agricultural universities (State, Central, Deemed and Central Universities with agricultural faculty) are listed",
+          "Official contact address: Indian Council of Agricultural Research, Agricultural Education Division, Krishi Anusandhan Bhavan-II, Pusa, New Delhi 110 012, India",
+          "Complete application form contents including every numbered item, all certificates (Candidate, Indian Diplomatic Representative, Physical Fitness, Proficiency in English), and the referee comment format"
         ],
         "institution_check_required": [
-          "Everything: amount, deadline, eligibility, criteria, documents, duration and application method for the Netaji Subhas - ICAR International Fellowship"
+          "www.icar.gov.in could not be loaded over HTTPS: webfetch returned a transport error and the browser returned net::ERR_CERT_DATE_INVALID, matching the note already on the record. The site was reached over plain HTTP instead (HTTP 200), and the scheme's only substantive content is the linked ICAR PDF, which was downloaded and read in full. No content was taken from any non-official source.",
+          "The ICAR document directs applicants to www.icar.org.in for the detailed guidelines, priority areas and application proforma. That domain was not opened, so it could not be confirmed whether it carries a further or updated version of the guidelines than the 2026 PDF.",
+          "The scheme host page sits on an /hi/ path (Hindi-labelled) while serving English content; the English-language path for this scheme was not located. The PDF itself is the same document in both language versions.",
+          "No telephone number for ICAR's Education Division or the ADG (HRD) appears in the document; official_contacts records the published address and email only.",
+          "No tax treatment of the fellowship is published (tax_status null).",
+          "No file size limit, accepted file extension or translation rule is published anywhere in the ICAR document (document_format_rules carries only the published copy/attachment/seal/signature/subject-line rules).",
+          "No specific start date, joining date or arrival deadline for the fellowship is published; arrival_rules contains only the published rule on stays in India and interim visits.",
+          "clinical_restriction is null: ICAR requires a Certificate of Physical Fitness and medical fitness testing at the fellow's own cost, but publishes no clinical, field or laboratory restriction.",
+          "The 2026 deadline of September 25, 2026 has passed as at the 2026-10-01 verification date, and ICAR publishes no next-cycle date. Whether the 2027 call has been issued was not established.",
+          "The Rs. 40,000/- per month and Rs. 25,000/- per annum figures used for overseas fellows' stay in India are stated in the document, but no separate currency code for them is published beyond \"Rs.\"; no ISO code was inferred.",
+          "Not opened: the detailed programme-level admission rules of any individual host university, and the ICAR IP Management bulletin referenced in clause 15."
         ],
         "unverified_or_removed_claims": [
-          "All 13 empty fields for this record remain unverified",
-          "That the fellowship is currently running - the site failure is not evidence either way"
+          "funding_amount is null and no single currency recorded. ICAR publishes two currency tracks (US$ for Indian fellows abroad, INR for overseas fellows in India), so recording either one would misrepresent the scheme; both are reproduced verbatim in funding_label and coverage.",
+          "fully_funded is false on ICAR's own explicit words: host institution fees, medical insurance and medical fitness are all the fellow's responsibility. This corrects any reading in which a monthly stipend plus air ticket implies full funding.",
+          "No home-country tuition treatment was inferred (home_tuition_rule null); ICAR addresses only the fees of the host institution where the fellow is enrolled.",
+          "deferrable is false and renewable is false strictly on the published wording that the tenure 'will not be extended in any case, in so far as the Council support is concerned' â€” no extension, renewal or second award is published.",
+          "return_home_required is true on two published bases: clause 17 for Indian Fellows and the candidate's own certificate undertaking to 'return to my country after completion of the degree programme'.",
+          "sdg_requirement set false with an empty detail list. ICAR publishes priority research areas but no SDG or development-alignment requirement for applicants, and none was inferred from the agricultural-research framing.",
+          "The IP-sharing requirement was recorded as an award-holder condition, never as a benefit: the Council takes an appropriate share of patents and knowledge generated, and any other IP agreement must be shared with it.",
+          "No insurance, medical or equipment coverage was added. ICAR explicitly excludes medical insurance and medical fitness from the fellowship's scope."
         ],
+        "source_conflict_rule": "The ICAR-published document is the single authoritative source for this scheme, containing both the announcement (deadline, submission address and subject line) and the governing guidelines. Where the announcement and the guidelines differ in emphasis â€” the announcement is cycle-specific while the guidelines are standing rules â€” the guidelines govern eligibility, funding, conditions and consequences, and the announcement governs only that cycle's deadline and submission route. Where the document names www.icar.org.in as the guidelines host but ICAR serves the document from www.icar.gov.in, the served document is treated as authoritative because it is ICAR's own published copy; a differing version on the other domain would need to be checked before use.",
+        "source_freshness_rule": "ICAR states the scheme, the fellowship amount and its guidelines are subject to periodic review as deemed fit by the Council, so every figure and rule must be re-checked each cycle. The 2026 figures are valid only for the 2026 cycle. Priority areas and the list of institutions are announced one year in advance, so they must be re-read for each intake rather than carried forward. The host page's own last-updated stamp was 01-10-2026.",
         "source_citations": [
-          "https://www.icar.gov.in (unreachable: webfetch transport error; browser ERR_CERT_DATE_INVALID)"
+          "http://www.icar.gov.in/hi/netaji-subhas-icar-international-fellowship",
+          "http://www.icar.gov.in/sites/default/files/2026-08/NETAJI%20SUBHAS%20-%20ICAR%20INTERNATIONAL%20FELLOWSHIP.pdf",
+          "http://www.icar.gov.in/"
         ],
-        "researched_by": "deep_19"
+        "researched_by": "d2",
+        "last_verified_date": "2026-10-01",
+        "data_quality": {
+          "source_level": "Official provider document â€” Indian Council of Agricultural Research (the fellowship administrator): the ICAR announcement, the ICAR application proforma and the 20-clause Guidelines for Netaji Subhas - ICAR International Fellowships, all read in full from ICAR's own server.",
+          "coverage": "High. The single 27-page ICAR document yielded the scheme purpose, the complete priority-area and host-university lists, eligibility with all disqualifiers, the full funding matrix in both currencies, the explicit not-covered list, tenure and its consequences, selection method, the entire ordered application and submission process, the complete document list with certificate and seal requirements, referee roles and instructions, award-holder conditions, the return-home and bond obligations, escalation routes and official contacts. Remaining gaps are items ICAR does not publish (tax, file formats, phone, next-cycle dates).",
+          "pages_read": [
+            "http://www.icar.gov.in/ (homepage, read over HTTP; used only to locate the fellowship link)",
+            "http://www.icar.gov.in/hi/netaji-subhas-icar-international-fellowship (scheme landing page)",
+            "http://www.icar.gov.in/sites/default/files/2026-08/NETAJI%20SUBHAS%20-%20ICAR%20INTERNATIONAL%20FELLOWSHIP.pdf (27 pages, fully text-extracted: announcement, application form, and guidelines clauses 1-20)"
+          ],
+          "pages_unreadable": [
+            "https://www.icar.gov.in/ (and https://icar.gov.in/) â€” not readable over HTTPS: webfetch returned a transport error and the browser returned net::ERR_CERT_DATE_INVALID, matching the pre-existing note on this record. The site was reachable over plain HTTP (status 200) and all content was read from there.",
+            "https://www.icar.gov.in/icar-international-fellowships â€” webfetch transport error (path not served).",
+            "www.icar.org.in â€” named by the ICAR document as the location for detailed guidelines, priority areas and the application proforma; not opened, so a differing or updated version there is unconfirmed."
+          ]
+        }
       }
     },
     {
       "id": 116,
       "official": {
-        "official_source_urls": [
-          "https://iitk.ac.in/oir/how-to-apply"
+        "description": "The IIT Kanpur Office of International Relations page for how to apply sets out admission to MTech, MS (By Research), MDes, M.Sc. and PhD programmes for candidates who are not citizens of India and are not OCI/PIO card holders. Those candidates are treated as Foreign Nationals, apply through the Pingala portal or by emailing the admissions office, may be funded through six routes (ICCR, Study in India, AARDO, ASEAN-DIA, India Bhutan Friendship Scholarship, or the Institute Fellowship), and are charged a fee structure that separates a USD tuition component from an INR 17,495 hostel fee component.",
+        "purpose": [
+          "To set out how candidates who are NOT citizens of India (by birth or naturalized) and/or are OCI/PIO card holders â€” treated as foreign nationals â€” apply for admission to IIT Kanpur's MTech, MS (By Research), MDes, M.Sc. and PhD programmes.",
+          "IIT Kanpur offers all foreign degree students a monthly fellowship at par with Indian students. Only those students who do not receive any other funding will be eligible for the Institute Fellowship.",
+          "The page routes foreign applicants to the scholarship and fee-concession schemes through which the Government of India and partner bodies fund them, and publishes the tuition and hostel fee structure and the annual application windows."
         ],
-        "application_link": "https://iitk.ac.in/doaa/pgadmission/foreign-students.php",
-        "official_updates_url": "https://iitk.ac.in/oir/how-to-apply",
-        "catalogue_url": "https://iitk.ac.in/oir/academics",
-        "application_cycle": "Autumn (July) semester admissions: application window 20 March to 15 April each year; Spring PhD intake: 1 September to 31 October",
-        "deadline_central": "2026-10-31",
-        "deadline_central_display": "Autumn: M.Tech., M.B.A., M.Des., and Ph.D. â€” 20 March â€“ 15 April (every year). Spring: Ph.D. â€” 1 September - 31 October (every year).",
-        "deadline_central_timezone": null,
-        "deadline_institutional": "2026-04-15",
-        "deadline_note": "Two published windows. The Autumn (July) semester window, covering M.Tech., M.B.A., M.Des. and Ph.D., is 20 March to 15 April each year and has already passed for 2026. The Spring Ph.D. window, 1 September to 31 October, is the one currently open at the verification date. Both are administered by IIT Kanpur's Department of Academic Affairs rather than by a separate scholarship office.",
-        "status": "OPEN",
-        "status_note": "The Spring Ph.D. application window of 1 September to 31 October is open on 1 October 2026. The Office of International Relations page still describes the July 2025 semester programmes, so programme availability for other intakes must be confirmed with the admitting department.",
-        "funding_amount": null,
-        "funding_currency": "INR",
-        "funding_period": "per month, at par with Indian students",
-        "funding_duration": null,
-        "tuition_coverage": null,
-        "tuition_coverage_note": "The Institute Fellowship is described only as a monthly fellowship at par with Indian students. Tuition and hostel fees are listed separately in the published fee structure (for example M.Tech. USD 500 plus INR 17,495 for SAARC countries and USD 750 plus INR 17,495 for non-SAARC countries, and Ph.D. USD 250 or USD 500 plus INR 17,495), and the page does not state that the fellowship covers them.",
-        "living_cost_coverage": null,
-        "travel_coverage": null,
-        "fully_funded": false,
-        "funding_label": "Institute Fellowship: monthly fellowship at par with Indian students, for foreign degree students with no other funding",
-        "benefits": [
-          "Monthly fellowship at par with Indian degree students"
-        ],
-        "eligibility": [
-          "IIT Kanpur offers all foreign degree students a monthly fellowship at par with Indian students",
-          "Only those students who do not receive any other funding will be eligible for the Institute Fellowship",
-          "Candidates who are not citizens of India (by birth or naturalized) and/or are OCI/PIO card holders will be treated as foreign nationals",
-          "Must hold a qualifying degree certificate (original or provisional) for the programme applied to"
-        ],
-        "citizenship_residency": "Candidates who are NOT citizens of India (by birth or naturalized) and/or are OCI/PIO card holders will be treated as foreign nationals.",
-        "international_eligibility": "explicit â€” the Institute Fellowship is offered to foreign degree students, that is non-Indian citizens by birth or naturalization and/or OCI/PIO card holders, who hold no other funding",
+        "sdg_requirement": false,
+        "sdg_requirement_details": [],
         "degree_levels": [
-          "M.Tech",
-          "MBA",
-          "M.Des",
-          "M.Sc. (2 years)",
-          "MS (by research)",
+          "Master's",
           "PhD"
         ],
-        "study_mode": null,
-        "research_requirement": "not stated",
-        "subject_or_agency_requirement": "Available only for admission to a listed IIT Kanpur postgraduate or research programme. Admission categories are ICCR Scholarship, Study in India, IIT Kanpur Fellowship to AARDO Member Countries, Doctoral Fellowship in India for ASEAN (currently on hold), India Bhutan Friendship Scholarship and the Institute Fellowship.",
-        "application_method": "Apply through the IIT Kanpur foreign students admission route, selecting the Institute Fellowship category among the admission schemes. The Office of International Relations directs applicants to the Department of Academic Affairs foreign students admission page to apply. The competent committees of the departments are the ultimate decision makers in student admissions.",
-        "application_route": "direct",
+        "study_type": [
+          "M Tech â€” Aerospace Engineering; Unmanned Aerial Systems Engineering; Biological Sciences & Bio engineering; Biomedical Engineering; Chemical Engineering; Civil Engineering; Cognitive Systems; Computer Science & Engineering; Earth Sciences; Electrical Engineering; Interdisciplinary Programme on Materials Science; Management Sciences; Materials Science & Engineering; Mechanical Engineering; Photonics Science and Engineering; Space, Planetary & Astronomical Sciences & Engineering; Sustainable Energy Engineering",
+          "MS (By Research) â€” Aerospace Engineering (only in Aerodynamics, Flight Mechanics, Propulsion and Structures); Chemical Engineering; Civil Engineering (only in Environmental Engineering, Transportation Engineering); Cognitive Science; Computer Science & Engineering; Electrical Engineering; Mechanical Engineering; Photonics Science & Engineering; Sustainable Energy Engineering",
+          "M Tech/MS (By Research) in Cybersecurity â€” only for sponsored/part time/external candidates, without financial assistantship",
+          "M Des â€” Design",
+          "M.Sc. (2 Years) â€” Economics",
+          "PhD â€” Aerospace Engineering; Biological Sciences & Bio engineering; Chemical Engineering; Chemistry; Civil Engineering; Cognitive Science; Computer Science & Engineering; Design; Earth Sciences; Economic Sciences; Electrical Engineering; Humanities and Social Sciences [English (Literature, Linguistics & ELT), Fine Arts, Philosophy, & Sociology]; Interdisciplinary Programme on Materials Science; Management Sciences; Materials Science & Engineering; Mathematics; Mechanical Engineering; Photonics Science and Engineering; Physics; Space, Planetary & Astronomical Sciences & Engineering; Statistics; Sustainable Energy Engineering"
+        ],
+        "degree_award": "Full degree â€” MTech, M.Des, M.Sc. (2 Years), MS (By Research) or PhD at the Indian Institute of Technology Kanpur. The Institute Fellowship and assistantship are financial aid attached to enrolment, not standalone awards.",
+        "duration": "Not published as a single figure for all programmes. Published programme structures: MS (By Research) is offered as a 2-year programme for Aerospace Engineering, Sustainable Energy Engineering, Electrical Engineering, Mechanical Engineering and Cognitive Science, and as a 3-year programme for Computer Science & Engineering and Photonics Science & Engineering; M.Sc. is a 2 Years programme (Economics); the PhD Institute Assistantship is structured as Rs. 37,000/- for the first two years and Rs. 42,000/- for another three years, i.e. five years of assistantship support.",
+        "application_cycle": "Annual, with two intakes. Autumn (July 2025 semester as stated on the page): M.Tech., M.B.A., M.Des. and Ph.D. applications open 20 March â€“ 15 April every year. Spring: Ph.D. applications open 1 September â€“ 31 October. For the current 2026-27 cycle the Pingala portal was extended to April 15, 2026 at 02:00 PM, with a separate Foreign National email route open to April 30, 2026.",
+        "funding_type": "Partial Funding",
+        "funding_label": "Institute Fellowship for all foreign degree students, at par with Indian students, for those who receive no other funding. Financial support in the form of Institute Assistantship for regular (non-sponsored/non-part-time/non-external) students: MTech, MDes and MS (By Research) students are entitled to a monthly assistantship of Rs. 12400/- for 8 hours of work per week; for PhD students the corresponding financial support amounts to Rs. 37000/- for the first two years, and thereafter is raised to Rs. 42000/- for another three years.",
+        "funding_amount": null,
+        "tuition_coverage": "International students are charged a published fee structure separating tuition and hostel fees: Ph.D. (SAARC) USD 250 + INR 17,495; Ph.D. (Non-SAARC) USD 500 + INR 17,495; M.Tech. (SAARC) USD 500 + INR 17,495; M.Tech. (Non-SAARC) USD 750 + INR 17,495; MBA (SAARC) USD 2,000 + INR 17,495; MBA (Non-SAARC) USD 4,000 + INR 17,495. Tuition fee is therefore not generally covered by the Institute Fellowship. The one published tuition waiver is the IIT Kanpur Fellowship to AARDO Member Countries, which offers a tuition fee waiver for the MTech programme.",
+        "living_cost_coverage": "The INR 17,495 component of the published \"Tuition Fee + Hostel Fee charges\" is a charge, not a benefit. Living-cost support comes from the Institute Fellowship or assistantship, which is paid at par with Indian students: Rs. 12400/- per month for MTech, MDes and MS (By Research) regular students, and Rs. 37000/- then Rs. 42000/- per month for PhD students. The AARDO Fellowship uniquely includes free accommodation. The India Bhutan Friendship Scholarship is described by IIT Kanpur as fully funded, specifically for Bhutanese students pursuing MTech.",
+        "travel_coverage": "Only the IIT Kanpur Fellowship to AARDO Member Countries publishes travel coverage: airfare for travel to and from the AARDO Member Country to New Delhi. No travel coverage is published for the Institute Fellowship, assistantships, ICCR, Study in India, India Bhutan Friendship Scholarship or the ASEAN-DIA fellowship.",
+        "fully_funded": false,
+        "tuition_rule": "Foreign national students pay the published \"Tuition Fee + Hostel Fee charges\" table: Ph.D. USD 250 (SAARC) or USD 500 (Non-SAARC), M.Tech. USD 500 (SAARC) or USD 750 (Non-SAARC), MBA USD 2,000 (SAARC) or USD 4,000 (Non-SAARC), each plus INR 17,495 â€” all plus INR 17,495 for hostel fees. Tuition fee waiver is published only for the AARDO Fellowship (MTech programme).",
+        "home_tuition_rule": null,
+        "host_institution_fee": "Hostel fee of INR 17,495 is charged in addition to the USD tuition component in every row of the published fee structure table (Ph.D., M.Tech. and MBA, SAARC and Non-SAARC). Free accommodation is published only under the AARDO Fellowship.",
+        "tax_status": null,
+        "covered_expenses": [
+          "Institute Fellowship: a monthly fellowship at par with Indian students, for all foreign degree students who do not receive any other funding",
+          "Institute Assistantship for regular (non-sponsored/non-part-time/non-external) MTech, MDes, MS (By Research) and PhD students: Rs. 12400/- per month for 8 hours of work per week (MTech, MDes, MS By Research); Rs. 37000/- per month for the first two years and Rs. 42000/- per month for a further three years (PhD)",
+          "AARDO Fellowship (MTech): tuition fee waiver, free accommodation, monthly stipend equivalent to Indian students, and airfare for travel to and from the AARDO Member Country to New Delhi",
+          "India Bhutan Friendship Scholarship: described by IIT Kanpur as a fully-funded scholarship offered by the Government of India, specifically for Bhutanese students to pursue MTech",
+          "Study in India (SII): students who apply through Study in India are eligible to sit the PRAGATII exam, and based on the results meritorious students are selected for a scholarship of up to USD 3,200 to cover tuition fees, accommodation and mess charges",
+          "Doctoral Fellowship in India for ASEAN (DIA): a monthly stipend equivalent to Indian doctoral students and a research grant of up to INR 1,70,000 (admissions currently on hold)",
+          "Waiver of the application fee for candidates in the Foreign National (FN) category"
+        ],
+        "not_covered_or_excluded": [
+          "Tuition fees for all routes other than the AARDO Fellowship â€” the USD tuition component (USD 250 to USD 4,000 depending on programme and SAARC status) is payable by the student.",
+          "The hostel fee of INR 17,495, payable in every row of the fee structure table, except under the AARDO Fellowship which includes free accommodation.",
+          "Financial assistantship for M Tech/MS (By Research) in Cybersecurity â€” that programme is restricted to sponsored/part-time/external candidates and is explicitly offered without financial assistantship.",
+          "The Institute Fellowship for any foreign degree student who does receive other funding: \"Only those students who do not receive any other funding will be eligible for the Institute Fellowship.\"",
+          "Admission under the Doctoral Fellowship in India for ASEAN (DIA) scheme â€” IIT Kanpur publishes the note \"Admissions under this scheme are currently on hold\".",
+          "Any travel cost other than the AARDO airfare to and from New Delhi.",
+          "The assistantship is conditional on carrying out the assigned duties: \"The student is expected to carry out the assigned duties during the programme.\""
+        ],
+        "benefits": [
+          "Institute Fellowship at par with Indian students for all foreign degree students without other funding.",
+          "Study in India route offers up to USD 3,200 covering tuition fees, accommodation and mess charges.",
+          "AARDO Fellowship combines tuition waiver, free accommodation, an Indian-par monthly stipend and airfare to and from New Delhi.",
+          "Application fee waived for the Foreign National category.",
+          "GATE qualification requirement waived for the Foreign National category."
+        ],
+        "eligibility": [
+          "Candidates who are NOT citizens of India (by birth or naturalized) and/or are OCI/PIO card holders are treated as foreign nationals.",
+          "International students can seek admission to various postgraduate and research programmes (MTech, MBA and PhD) under the following categories: ICCR Scholarship (Government of India), Study in India (SII) (Government of India), IIT Kanpur Fellowship to AARDO Member Countries, Doctoral-fellowship in India for ASEAN (DIA) (Government of India), India Bhutan Friendship Scholarship, Institute Fellowship.",
+          "It is mandatory for all foreign students intending to pursue higher education in India to complete their registration on the Study in India (SII) portal. This registration is also linked to issuance of their study visa.",
+          "Programme-level academic eligibility is published by IIT Kanpur's Dean of Academic Affairs: the eligibility conditions are the absolute minimum and departments may prescribe any requirements over and above; the specified minimum marks/CPI implies a minimum of 55 percent marks / 5.5 on a 10 point scale as long as it is not less than the minimum pass marks/CPI.",
+          "For the India Bhutan Friendship Scholarship: Bhutanese students pursuing MTech at IIT Kanpur."
+        ],
+        "general_eligibility": [
+          "Not a citizen of India by birth or naturalization, and not an OCI/PIO card holder â€” such candidates are the Foreign National category.",
+          "Hold, or be able to show, the qualifying degree for the programme applied to, meeting the published minimum marks/CPI for that programme and department.",
+          "Complete registration on the Study in India (SII) portal â€” mandatory for all foreign students intending to pursue higher education in India, and linked to study visa issuance.",
+          "Not be in receipt of other funding, if relying on the Institute Fellowship.",
+          "Be applying within the published window: Autumn 20 March â€“ 15 April, or Spring (Ph.D. only) 1 September â€“ 31 October."
+        ],
+        "ineligibility_conditions": [
+          "Citizens of India by birth or naturalization, and OCI/PIO card holders â€” these are not treated as foreign nationals under this route.",
+          "Candidates who do not complete the mandatory Study in India (SII) portal registration, which is also linked to issuance of their study visa.",
+          "Candidates who receive any other funding are not eligible for the Institute Fellowship.",
+          "Regular applicants for M Tech/MS (By Research) in Cybersecurity â€” that programme is only for sponsored/part-time/external candidates and carries no financial assistantship.",
+          "Candidates relying on the ASEAN-DIA doctoral fellowship, since IIT Kanpur publishes \"Admissions under this scheme are currently on hold\".",
+          "Candidates relying on the India Bhutan Friendship Scholarship who are not Bhutanese students pursuing MTech.",
+          "Candidates relying on the AARDO Fellowship who are not from an AARDO member country, since the Fellowship is offered under a Memorandum of Understanding with AARDO's Asia and Africa member countries.",
+          "Candidates who apply outside the published windows â€” Autumn 20 March â€“ 15 April for M.Tech., M.B.A., M.Des. and Ph.D., and 1 September â€“ 31 October for Ph.D. in the Spring intake."
+        ],
+        "citizenship_residency": "Open to foreign nationals only. \"Candidates who are NOT citizens of India (by birth or naturalized) and/or are OCI/PIO card holders will be treated as foreign nationals.\" Indian citizens and OCI/PIO card holders are excluded from this route. Individual schemes narrow this further: the India Bhutan Friendship Scholarship is specifically for Bhutanese students, and the AARDO Fellowship is for AARDO member countries in Asia and Africa.",
+        "international_eligibility": "This is the international admission route. Within it, funding is channelled through six published categories: ICCR Scholarship, Study in India (SII), IIT Kanpur Fellowship to AARDO Member Countries, Doctoral-fellowship in India for ASEAN (DIA) (currently on hold), India Bhutan Friendship Scholarship, and the Institute Fellowship. All foreign students must register on the Study in India portal, and that registration is linked to study visa issuance.",
+        "academic_level_rules": {
+          "undergraduate": [],
+          "masters": [
+            "M Tech: a Bachelor's degree in Engineering or Science (4-year programme) or a Master's degree in Science with marks/CPI not below the specified minimum. A valid GATE score is required for regular (non-sponsored) candidates, but the requirement of GATE score is waived off for candidates with a B Tech/BS (Four Year) degree from IITs with a minimum overall CPI of 6.5 and a minimum CPI of 8.0 in the last two years â€” and, for the Foreign National category, the requirement of GATE qualification is waived entirely.",
+            "M Tech in Unmanned Aerial Systems Engineering: open to Aerospace, Electronics, Mechanical, Electrical, Instrumentation and Control, Computer Science, Avionics, Textile Engineering, Civil and Communication Engineering disciplines, with a Bachelor's degree in Engineering or Science (4-year programme) or a Master's degree in Science at or above the specified minimum.",
+            "M Tech in Cognitive Systems: B.Tech./BE (any branch) or BS 4-year programme (Physics/Chem/Math/Stat/Biosciences/related sciences) with a minimum of 60% or 6.0/10 in the qualifying degree; all regular applicants must have a valid score/qualification in GATE.",
+            "M Des: a bachelor's degree in engineering, or a 4-year bachelor's degree in science/Design (B.Des.)/Architecture (B.Arch)/Planning (B.Plan)/Pharmacy (B.Pharm)/Fine Arts (BFA)/Visual Arts (BVA) at or above the specified minimum, or a Master's degree in science or arts at or above the specified minimum. A valid GATE/CEED score is required for regular (non-sponsored) candidates.",
+            "MS (By Research), 2-year programme: for Aerospace Engineering and Sustainable Energy Engineering, a Bachelor's degree in Engineering or Science (4-year programme) or a Master's degree in Science at or above the specified minimum; for Electrical Engineering and Mechanical Engineering, a Bachelor's degree in Engineering or Science (4-year programme) at or above the specified minimum.",
+            "MS (By Research), 3-year programme: for Computer Science & Engineering and Photonics Science & Engineering, applicants with B.Sc. (3-year) or equivalent with a minimum of 75%/7.5 marks/CPI may also be considered.",
+            "MS (By Research) in Cybersecurity: only for sponsored/part-time/external candidates; fulfilment of the GATE requirement may be waived for such candidates.",
+            "M.Sc. (2 Years), Economics, is offered to foreign nationals.",
+            "The eligibility conditions given are the absolute minimum; departments may prescribe any requirements over and above."
+          ],
+          "phd": [
+            "PhD in Engineering: a Master's degree in Engineering at or above the specified minimum, or a Bachelor's degree in Engineering or Science (4-year programme) with a minimum of 75 percent marks/7.5 CPI and a valid GATE score (GATE waived for such degrees from centrally funded technical institutes), or a Master's degree in Science or an allied area with a minimum of 65 percent marks/6.5 CPI, first division in the bachelor's degree, and JRF/GATE AIR within the top 5% of candidates that appeared for the relevant paper (if the master's degree is not from IITs/IISERs/NITs with a minimum CPI of 8.0).",
+            "PhD in Sciences: a Master's degree in the relevant subject, or a Bachelor's degree in Engineering or Science (4-year programme) at or above the specified minimum; plus either a valid GATE score or qualified JRF (JEST for Physics, GPAT for Chemistry, NBHM fellowship for Mathematics/Statistics are also accepted); the requirement of GATE/JRF/JEST/GPAT is waived for a Master's degree in Science from IITs/IISERs/NITs with a minimum CPI of 8.0.",
+            "PhD in Cognitive Science: an MA/M.Sc/M.Phil/MS/equivalent degree (Cognitive Science/Psychology/Linguistics/Philosophy/Anthropology/Physics/Chemistry/Mathematics/Statistics/Bio Sciences/related disciplines) with a minimum of 60%/6.0, with a valid score in GATE/CSIR/JRF/NET/COGJET or equivalent; or M.Tech/ME/MD at a minimum of 60%/6.0; or B.Tech/BE (any branch), BS 4-year programme or MBBS with a minimum of 75%/7.5 and a valid GATE/CSIR/JRF/NET/COGJET score.",
+            "PhD in Humanities and Social Sciences: a Master's degree in the relevant subject, or a Master's degree in Engineering/technology at or above the specified minimum; or a Bachelor's degree in Engineering or Science (4-year programme) with a minimum of 75 percent/7.5 CPI and a valid GATE score or qualified JRF (NET in the case of Ph.D. programmes in Humanities); or a Master's degree in Sciences/fine-arts/arts/commerce or chartered accountant in an allied field with a minimum of 55 percent/5.5 CPI, first division in the bachelor's degree, and JRF/NET in the relevant discipline or GATE AIR within the top 5%.",
+            "PhD in Management: a Master's degree in management or relevant disciplines in Engineering/technology at or above the specified minimum; or a Bachelor's degree in Engineering or Science (4-year programme) with a minimum of 75 percent/7.5 CPI and a valid GATE/CAT/GMAT score; or a Master's degree in Science/arts/commerce/chartered accountancy with a minimum of 65 percent/6.5 CPI, first division in the bachelor's degree, and JRF/NET/95th percentile CAT or GMAT/GATE AIR within the top 5%.",
+            "PhD in Design: a Master's degree in Engineering/Design at or above the specified minimum; or a Bachelor's degree in Engineering/Design (4-year)/architecture or Science (4-year programme) with a minimum of 75 percent/7.5 CPI and a valid GATE/CEED score; or a Master's degree in Science/Visual Arts/Architecture/Arts & Commerce/Humanities & Social Sciences/Cognitive Sciences with a minimum of 65 percent/6.5 CPI, first division in the bachelor's degree, and NET/JRF/CEED or GATE AIR within the top 5%.",
+            "The requirement of GATE qualification is waived for candidates in the Foreign National (FN) category."
+          ]
+        },
+        "host_requirements": [
+          "Must be admitted through IIT Kanpur's own admissions process: \"The competent committees of the departments are the ultimate decision makers in student admissions.\"",
+          "Must complete the mandatory registration on the Study in India (SII) portal before pursuing higher education in India; that registration is also linked to issuance of the study visa.",
+          "Must submit the complete application with the required testimonials; for the Foreign National category this is sent by email to admissions_ir@iitk.ac.in with a copy to admissiondesk@iitk.ac.in.",
+          "Must attend the final selection interview, which for shortlisted Foreign National candidates is conducted through video conferencing.",
+          "Departments may prescribe requirements over and above the published absolute-minimum eligibility conditions.",
+          "For the assistantship route, the student must be a regular (non-sponsored/non-part-time/non-external) student of MTech, MS (By Research), MDes or PhD, and is expected to carry out the assigned duties during the programme.",
+          "Candidates must satisfy themselves regarding admission and course requirements before applying, and must have their admission confirmed before the fellowship and assistantship are released."
+        ],
         "requirements": [
-          "Not be in receipt of any other funding, which is the defining condition of the Institute Fellowship",
-          "Meet the admission requirements of the chosen programme, including the qualifying degree certificate",
-          "Apply within the published window for the intended intake",
-          "Note that the competent committees of the departments are the ultimate decision makers in student admissions"
+          "Register on the Study in India (SII) portal â€” mandatory for all foreign students intending to pursue higher education in India, and linked to study visa issuance.",
+          "Apply online through the Pingala portal, or, for the Foreign National category, submit the complete application with the required testimonials by email by the published date.",
+          "Upload the required documents: passport/citizenship card, applicant photo, applicant signature, proof of date of birth, qualifying degree certificate (original/provisional), GATE score card if available, mark/grade sheet of the qualifying degree as a single PDF file, and NOC only for sponsored/part-time/external candidates.",
+          "Meet the programme and department eligibility minimums; the GATE qualification requirement is waived for the Foreign National category and the application fee is waived.",
+          "Choose exactly one funding route and satisfy that scheme's own conditions (for example AARDO member-country status, Bhutanese nationality for the India Bhutan Friendship Scholarship, or receiving no other funding for the Institute Fellowship).",
+          "Be ready to be shortlisted and interviewed by video conferencing."
         ],
         "documents": [
-          "Passport or Citizenship Card",
-          "Applicant photo",
-          "Applicant signature",
-          "Proof of date of birth",
-          "Qualifying degree certificate (original or provisional)",
-          "GATE score card, if available",
-          "Mark or grade sheet of the qualifying degree, as a single PDF file",
-          "No Objection Certificate (NOC), only for sponsored, part-time or external candidates"
+          "Passport/Citizenship Card",
+          "Applicant Photo",
+          "Applicant Signature",
+          "Proof of Date of Birth",
+          "Qualifying Degree Certificate (Original/Provisional)",
+          "GATE Score Card, if available",
+          "Mark/Grade sheet of Qualifying Degree (as a single PDF file)",
+          "NOC â€” only for Sponsored/Part Time/External Candidates",
+          "For the Foreign National email route: the complete application along with the required testimonials (a sample offline application form is published by IIT Kanpur as Application-Form-offline.doc)"
         ],
-        "english_requirement": null,
-        "english_requirement_note": "The Office of International Relations 'How to apply' page publishes no English language requirement. English proficiency requirements are set by the admitting department and were not published on the page read.",
-        "selection_criteria": null,
-        "selection_weighting": null,
-        "duration": null,
+        "document_format_rules": [
+          "Mark/Grade sheet of the Qualifying Degree must be submitted as a single PDF file.",
+          "The Foreign National category route may use IIT Kanpur's published offline sample application form (Application-Form-offline.doc), emailed with the required testimonials, in place of the online portal flow after the portal closes.",
+          "No file size limit, accepted file extension, signature specification or translation rule is published on these pages; confirm the remaining upload rules inside the Pingala portal."
+        ],
+        "selection_criteria": [
+          "Programme-level academic eligibility: the published eligibility conditions for the programme and department, which are the absolute minimum, with departments free to prescribe more.",
+          "Final selection of the shortlisted Foreign National candidates is based on interviews through video conferencing.",
+          "Suitability for the funding scheme applied for, since each scheme has its own eligibility (AARDO member country, Bhutanese nationality, no other funding for the Institute Fellowship, and so on).",
+          "For applicants seeking an assistantship, the candidate must be a regular (non-sponsored/non-part-time/non-external) student, since financial support in the form of Institute Assistantship is available only to those students."
+        ],
+        "selection_notes": "\"The competent committees of the departments are the ultimate decision makers in student admissions.\" Applications from the Foreign National category have two materially favourable published concessions: the requirement of GATE qualification is waived, and the application fee is waived â€” FN candidates are asked to ignore the payment of application fees on the Pingala Portal after submission. Shortlisted FN candidates are finally selected through video-conferencing interviews. Candidates from ASEAN countries may apply for fellowship through a separate portal (http://asean.iitd.ac.in/). For scholarship or fees concession, applicants are directed to the order published at https://surl.li/fjpdiq.",
+        "application_method": [
+          "Apply online through the Pingala portal (https://pingala.iitk.ac.in/PGADM-0/login) for M.Des / MS (By Research) / PhD.",
+          "Alternatively, for the Foreign National category, submit the complete application with the required testimonials by email to admissions_ir@iitk.ac.in, copying admissiondesk@iitk.ac.in.",
+          "Complete the mandatory Study in India (SII) portal registration.",
+          "Apply for any external scheme (ICCR, Study in India scholarship, AARDO, ASEAN-DIA) through that scheme's own portal as well.",
+          "Attend the video-conferencing interview if shortlisted."
+        ],
+        "application_steps": [
+          "Confirm your status: you must not be a citizen of India by birth or naturalization, and must not hold an OCI/PIO card, to be treated as a foreign national.",
+          "Complete the mandatory registration on the Study in India (SII) portal at https://www.studyinindia.gov.in/admission/registrations. IIT Kanpur states this registration is also linked to issuance of your study visa, so do it early.",
+          "Choose your programme and department from the published list (M Tech across 17 departments, MS (By Research) across 8, M Des in Design, M.Sc. (2 Years) in Economics, PhD across 22 departments, plus M Tech/MS (By Research) in Cybersecurity for sponsored/part-time/external candidates only).",
+          "Choose your funding route: ICCR Scholarship, Study in India (SII), IIT Kanpur Fellowship to AARDO Member Countries, Doctoral-fellowship in India for ASEAN (DIA) (currently on hold), India Bhutan Friendship Scholarship, or the Institute Fellowship â€” and satisfy that route's own conditions.",
+          "Assemble your documents: passport/citizenship card, applicant photo, applicant signature, proof of date of birth, qualifying degree certificate (original/provisional), GATE score card if available, and the mark/grade sheet of the qualifying degree as a single PDF file. Add the NOC only if you are a sponsored, part-time or external candidate.",
+          "Apply within the correct window: Autumn (20 March â€“ 15 April) for M.Tech., M.B.A., M.Des. and Ph.D.; Spring (1 September â€“ 31 October) for Ph.D. only.",
+          "Submit. For M.Des / MS (By Research) / PhD, apply online through the Pingala portal. For the Foreign National category, you may instead send the complete application with the required testimonials to admissions_ir@iitk.ac.in, copying admissiondesk@iitk.ac.in, by the published email deadline â€” for the 2026-27 cycle, April 30, 2026, after the Pingala portal closed on April 15, 2026 at 02:00 PM.",
+          "Do not pay the application fee: the application fee is waived for the Foreign National category, and FN candidates are asked to ignore the payment prompt on the Pingala Portal after submission.",
+          "Do not worry about GATE: the requirement of GATE qualification is waived for the Foreign National category.",
+          "Attend the video-conferencing interview if you are shortlisted. Final selection rests with the competent committees of the departments.",
+          "On admission, apply for any external scheme you need through its own portal â€” for example ICCR at https://a2ascholarships.iccr.gov.in/, Study in India at https://studyinindia.gov.in/, ASEAN at http://asean.iitd.ac.in/, or the ICCR applications window of April-June."
+        ],
+        "applicant_submission_route": [
+          "The applicant submits the application themselves. For M.Des / MS (By Research) / PhD this is the Pingala portal (https://pingala.iitk.ac.in/PGADM-0/login).",
+          "For candidates in the Foreign National category, the applicant sends the complete application along with the required testimonials themselves by email to admissions_ir@iitk.ac.in, with a copy to admissiondesk@iitk.ac.in, and may use IIT Kanpur's published offline sample application form (Application-Form-offline.doc).",
+          "The applicant completes the mandatory Study in India portal registration themselves, and that registration is linked to issuance of their study visa.",
+          "Applicants for external schemes apply directly to those schemes: ICCR (https://a2ascholarships.iccr.gov.in/), Study in India (https://studyinindia.gov.in/), and ASEAN candidates via http://asean.iitd.ac.in/."
+        ],
+        "application_portal": "Pingala portal (https://pingala.iitk.ac.in/PGADM-0/login) for M.Des / MS (By Research) / PhD; a separate email route for the Foreign National category (admissions_ir@iitk.ac.in, cc admissiondesk@iitk.ac.in); mandatory Study in India registration at https://www.studyinindia.gov.in/admission/registrations; external scheme portals for ICCR (https://a2ascholarships.iccr.gov.in/), Study in India (https://studyinindia.gov.in/) and ASEAN (http://asean.iitd.ac.in/).",
+        "student_direct_application": true,
         "award_holder_conditions": [
-          "Only students who do not receive any other funding are eligible for the Institute Fellowship",
-          "Admission is decided by the competent committees of the departments, which are the ultimate decision makers"
+          "The Institute Fellowship is available only to those students who do not receive any other funding.",
+          "Institute Assistantship is available only to regular (non-sponsored/non-part-time/non-external) MTech, MS (By Research), MDes and PhD students, and the student \"is expected to carry out the assigned duties during the programme\" â€” MTech, MDes and MS (By Research) assistants are assigned 8 hours of work per week.",
+          "Must complete and keep current the Study in India (SII) registration, which is linked to study visa issuance.",
+          "Must be admitted by IIT Kanpur â€” the competent committees of the departments are the ultimate decision makers in student admissions.",
+          "Individual schemes carry their own conditions: AARDO applicants are selected as per the rules instituted by IITK; the India Bhutan Friendship Scholarship is specifically for Bhutanese students pursuing MTech; ASEAN-DIA admissions are currently on hold."
         ],
-        "supplements_or_initiatives": [
-          "IIT Kanpur offers a range of fee waivers and scholarships to international students, published as a separate fee structure table",
-          "The other listed admission schemes, including the ICCR Scholarship, Study in India, the AARDO member countries fellowship (tuition fee waiver, free accommodation, monthly stipend at par with Indian students and airfare), the India Bhutan Friendship Scholarship and the Doctoral Fellowship in India for ASEAN, which the page notes is currently on hold"
+        "deferrable": null,
+        "renewable": null,
+        "return_home_required": null,
+        "clinical_restriction": null,
+        "arrival_rules": null,
+        "timeline_rules": [
+          "Autumn application window every year: 20 March â€“ 15 April, for M.Tech., M.B.A., M.Des. and Ph.D.",
+          "Spring application window: 1 September â€“ 31 October, for Ph.D. only.",
+          "For the 2026-27 cycle the Pingala online portal was extended to April 15, 2026 (Wednesday) 02:00 PM, and the portal is not accessible after that time.",
+          "For the 2026-27 cycle, Foreign National candidates were to submit or send the complete application with the required testimonials to admissions_ir@iitk.ac.in (cc admissiondesk@iitk.ac.in) by and before April 30, 2026.",
+          "The MTech application portal (Digialm) is published as closed, with a separate post-registration login link and a 'Steps to be followed' document for M.Tech. after registration.",
+          "Applications to ICCR Scholarship Schemes are usually in April-June.",
+          "Institute Assistantship staging: MTech, MDes and MS (By Research) at Rs. 12400/- per month for the programme; PhD at Rs. 37000/- for the first two years, thereafter raised to Rs. 42000/- for another three years.",
+          "The page states that applications are invited for admission to the July 2025 semester, so the programme-offered list is labelled to a past intake even though the fee table, deadlines and portal dates are current."
         ],
         "official_contacts": {
-          "general": "oir@iitk.ac.in; +91-512-259-6067; Office of International Relations, Faculty Building Annexe, Level 3, IIT Kanpur, UP 208016"
+          "general": "Office of International Relations, Faculty Building Annexe, Level 3, IIT Kanpur, UP 208016, India. Phone: +91-512-259-6067. Admissions queries for foreign nationals: admissions_ir@iitk.ac.in (cc admissiondesk@iitk.ac.in).",
+          "email": "oir@iitk.ac.in"
         },
-        "description": "IIT Kanpur's Institute Fellowship gives all foreign degree students a monthly fellowship at par with Indian students, provided they hold no other funding. The Office of International Relations lists the admission categories available to international applicants, of which the Institute Fellowship is one, alongside ICCR, Study in India, the AARDO fellowship, the India Bhutan Friendship Scholarship and the ASEAN doctoral fellowship, the last of which is currently on hold. Applications run 20 March to 15 April for the Autumn semester and 1 September to 31 October for the Spring PhD intake.",
-        "program_type": "Institute-funded monthly fellowship for foreign (international) degree students",
-        "region": "India (Uttar Pradesh)",
-        "coverage": "Provides a monthly fellowship at par with Indian students only; tuition and hostel fees are listed separately in the published fee structure and are not stated as covered, so the award is not full funding.",
-        "last_verified_date": "2026-10-01"
+        "official_application_route": [
+          "Pingala portal for M.Des / MS (By Research) / PhD: https://pingala.iitk.ac.in/PGADM-0/login",
+          "Foreign National email submission: admissions_ir@iitk.ac.in, copy admissiondesk@iitk.ac.in",
+          "Offline sample application for Foreign Nationals: https://iitk.ac.in/doaa/pgadmission/assets/data/Application-Form-offline.doc",
+          "Mandatory Study in India registration: https://www.studyinindia.gov.in/admission/registrations",
+          "ICCR Scholarship applications: https://a2ascholarships.iccr.gov.in/",
+          "Study in India programme: https://studyinindia.gov.in/",
+          "ASEAN-DIA fellowship (currently on hold): https://asean-iit.in/ ; ASEAN candidate fellowship portal: http://asean.iitd.ac.in/",
+          "Scholarship or fees concession order: https://surl.li/fjpdiq",
+          "Scholarship and fees concession instructions (IIT Kanpur DOAA): https://iitk.ac.in/doaa/pgadmission/foreign-students.php"
+        ],
+        "program_type": "University scholarship",
+        "region": "India (Indian Institute of Technology Kanpur, Kanpur, Uttar Pradesh)",
+        "coverage": [
+          "Institute Fellowship: monthly fellowship at par with Indian students for all foreign degree students without other funding",
+          "Institute Assistantship: Rs. 12,400/- per month (MTech, MDes, MS By Research) and Rs. 37,000/- then Rs. 42,000/- per month (PhD)",
+          "AARDO Fellowship: tuition fee waiver, free accommodation, Indian-par monthly stipend, airfare to and from the AARDO member country to New Delhi",
+          "India Bhutan Friendship Scholarship: fully funded (Bhutanese students, MTech)",
+          "Study in India: up to USD 3,200 covering tuition fees, accommodation and mess charges",
+          "ASEAN-DIA: Indian-par monthly doctoral stipend plus a research grant of up to INR 1,70,000 (admissions currently on hold)",
+          "Application fee waived for the Foreign National category"
+        ],
+        "last_verified_date": "2026-10-01",
+        "official_source_urls": [
+          "https://iitk.ac.in/oir/how-to-apply"
+        ]
       },
       "applicant_utility": {
         "application_readiness_checklist": [
-          "Confirm you are a foreign national, that is not a citizen of India by birth or naturalization, and/or hold an OCI/PIO card",
-          "Check that you hold no other funding, since that is the defining condition of the Institute Fellowship",
-          "Choose your intake carefully: the Autumn window is 20 March to 15 April and the Spring PhD window is 1 September to 31 October",
-          "Combine your mark or grade sheet of the qualifying degree into a single PDF file, as the page requires",
-          "Arrange the attestations and equivalents the department asks for, including IBCC equivalency where applicable"
+          "Confirm you are not an Indian citizen by birth or naturalization and do not hold an OCI/PIO card â€” otherwise this route does not apply to you.",
+          "Register on the Study in India (SII) portal. IIT Kanpur calls this mandatory and says it is also linked to issuance of your study visa, so do it before anything else.",
+          "Pick one funding route and meet its own condition: ICCR, Study in India, AARDO (AARDO member country, MTech only), India Bhutan Friendship (Bhutanese, MTech), ASEAN-DIA (currently on hold), or the Institute Fellowship (no other funding).",
+          "Match your degree to a published programme and department, and check that department's eligibility minimum â€” the published figures are absolute minimums and departments may add more.",
+          "Assemble: passport/citizenship card, applicant photo, applicant signature, proof of date of birth, qualifying degree certificate (original/provisional), GATE score card if you have one, and the mark/grade sheet of the qualifying degree as a single PDF file.",
+          "Add the NOC only if you are a sponsored, part-time or external candidate.",
+          "Apply in the right window: Autumn 20 March â€“ 15 April, or Spring 1 September â€“ 31 October for PhD only.",
+          "Submit through Pingala, or use the Foreign National email route with IIT Kanpur's offline sample form if the portal has closed.",
+          "Do not pay the application fee â€” it is waived for the Foreign National category, and you are asked to ignore the Pingala payment prompt after submitting.",
+          "Do not let a missing GATE score stop you â€” the GATE requirement is waived for the Foreign National category.",
+          "Be ready for a video-conferencing interview if shortlisted, and accept that departmental committees make the final admission decision."
+        ],
+        "important_advice_for_students": [
+          "Do not read 'Institute Fellowship at par with Indian students' as full funding. Foreign students pay a published fee structure on top: USD 250 to USD 4,000 in tuition depending on programme and SAARC status, plus INR 17,495 hostel fee. Budget for that.",
+          "The single exception on tuition is the AARDO Fellowship, which waives tuition and gives free accommodation plus airfare to and from New Delhi â€” but it is for MTech only and for AARDO member countries in Asia and Africa.",
+          "The cheapest route to a scholarship may be Study in India: apply there, sit the PRAGATII exam, and meritorious students are selected for up to USD 3,200 covering tuition, accommodation and mess.",
+          "If you already hold another scholarship, you lose the Institute Fellowship â€” it is explicitly limited to students who receive no other funding. Do not count on both.",
+          "The Study in India registration is not paperwork you can defer. IIT Kanpur links it to your study visa, so a missing registration can block your visa and therefore your admission.",
+          "Two real advantages: the application fee is waived and the GATE requirement is waived for the Foreign National category. Do not let a missing GATE score stop you, and do not attempt to pay a fee you do not owe.",
+          "Watch the two-stage assistantship structure if you are a PhD candidate: Rs. 37,000/- per month for the first two years, then Rs. 42,000/- for another three years. The rate steps up, so your later years are better funded.",
+          "If you want the assistantship, you must be a regular candidate. M Tech/MS (By Research) in Cybersecurity is explicitly for sponsored/part-time/external candidates and carries no financial assistantship.",
+          "Be practical about the assistantship duty: MTech, MDes and MS (By Research) assistants are assigned 8 hours of work per week, and the institute states you are expected to carry out the assigned duties during the programme.",
+          "The email route for foreign nationals has its own, later deadline than the portal. For 2026-27 the portal closed April 15 at 02:00 PM but foreign nationals could still email until April 30, 2026 â€” do not assume the portal and email deadlines coincide.",
+          "Applications to ICCR are usually April-June, which is a different calendar from IIT Kanpur's own windows. If you are routing through ICCR, you are managing two deadlines.",
+          "ASEAN-DIA is on hold. If that was your plan, it is not available right now, and the ASEAN portal is a different route hosted at IIT Delhi.",
+          "Departments can set requirements above the published minimums, so treat the eligibility table as a floor and confirm with your target department before you invest effort."
         ],
         "common_rejection_risks": [
-          "Holding another scholarship or funding, which makes the Institute Fellowship unavailable",
-          "Missing the intake window for your programme",
-          "Applying with a mark or grade sheet split across multiple PDFs, which the page says must be a single file",
-          "Assuming the fellowship covers tuition, which the fee structure page shows separately"
+          "Applying as an Indian citizen or OCI/PIO card holder through the foreign-national route, where those candidates are not treated as foreign nationals.",
+          "Missing the mandatory Study in India registration, which is also linked to study visa issuance.",
+          "Applying outside the published windows (Autumn 20 March â€“ 15 April; Spring 1 September â€“ 31 October for PhD).",
+          "Missing the Foreign National email deadline because you assumed it matched the Pingala portal closure date.",
+          "Splitting the qualifying mark/grade sheet into multiple files when it must be a single PDF file.",
+          "Applying for the assistantship while sponsored, part-time or external â€” assistantship is limited to regular students.",
+          "Applying for M Tech/MS (By Research) in Cybersecurity as a regular candidate â€” it is sponsored/part-time/external only and carries no assistantship.",
+          "Counting on the Institute Fellowship while also holding another scholarship â€” it is limited to students with no other funding.",
+          "Relying on the ASEAN-DIA fellowship, which is published as currently on hold.",
+          "Applying for the India Bhutan Friendship Scholarship as a non-Bhutanese student, or for AARDO from a non-member country.",
+          "Being below the department's actual requirement, where the department has set a bar above the published absolute minimum.",
+          "Failing to prepare for, or attend, the video-conferencing interview that decides the final selection of shortlisted FN candidates.",
+          "Attempting to pay the waived application fee on the Pingala Portal after submission.",
+          "Not sending the required testimonials with the emailed Foreign National application."
         ],
         "estimated_uncovered_costs": [
-          "Tuition fees, which are listed separately by programme and country group",
-          "Hostel fees of INR 17,495, also listed separately",
-          "Living costs above the monthly fellowship",
-          "Travel to and from India, except under the separate AARDO scheme which includes airfare"
+          "Tuition fees for every route other than the AARDO Fellowship: USD 250 (PhD SAARC), USD 500 (PhD Non-SAARC), USD 500 (MTech SAARC), USD 750 (MTech Non-SAARC), USD 2,000 (MBA SAARC) or USD 4,000 (MBA Non-SAARC).",
+          "The hostel fee of INR 17,495 in every row of the fee structure table, except under the AARDO Fellowship which includes free accommodation.",
+          "Books, equipment, travel and everyday living costs beyond the monthly fellowship or assistantship and the annual scheme-specific items.",
+          "The gap between the India Bhutan Friendship Scholarship's 'fully funded' description and any cost not named in it â€” IIT Kanpur publishes no itemised coverage for that scholarship.",
+          "Any cost attached to the Study in India route above the capped USD 3,200 scholarship.",
+          "Travel to and from India for everyone except AARDO beneficiaries, for whom airfare to and from New Delhi is published.",
+          "Medical insurance and other personal costs â€” not published as covered by any of these schemes."
         ],
         "document_audit": [
-          "Passport or Citizenship Card copy",
-          "Qualifying degree certificate, original or provisional",
-          "GATE score card, if available",
-          "Mark or grade sheet merged into one PDF file",
-          "NOC included only if you are a sponsored, part-time or external candidate"
+          "Passport/Citizenship Card â€” required; this is also how the foreign-national status is evidenced.",
+          "Applicant Photo â€” required.",
+          "Applicant Signature â€” required, i.e. a signature specimen is a submitted item, not merely a field.",
+          "Proof of Date of Birth â€” required.",
+          "Qualifying Degree Certificate (Original/Provisional) â€” required.",
+          "GATE Score Card, if available â€” optional as a document, but note the GATE qualification requirement itself is waived for the Foreign National category.",
+          "Mark/Grade sheet of Qualifying Degree â€” must be a single PDF file.",
+          "NOC â€” only for Sponsored/Part Time/External Candidates; do not submit it otherwise.",
+          "Foreign National email route: the complete application together with the required testimonials, optionally using IIT Kanpur's published offline sample application form (Application-Form-offline.doc).",
+          "Study in India registration confirmation â€” mandatory for all foreign students and linked to study visa issuance.",
+          "Publication check: IIT Kanpur publishes no file size limits, accepted file extensions, signature format or translation rules on these pages. Only the 'single PDF file' rule for the mark/grade sheet and the official offline .doc sample form are stated. Confirm remaining upload rules inside the Pingala portal."
         ],
+        "referee_tracking": [],
         "alerts": [
           {
-            "trigger": "You hold an ICCR, Study in India, AARDO or India Bhutan Friendship award",
-            "message": "You would not be eligible for the Institute Fellowship, because only students with no other funding qualify. Each of those schemes carries its own benefits, and AARDO additionally includes a tuition fee waiver, free accommodation and airfare."
+            "trigger": "Before you start anything else, if you are a foreign national",
+            "message": "Register on the Study in India portal. IIT Kanpur states it is mandatory for all foreign students and that it is linked to your study visa."
           },
           {
-            "trigger": "The page's programme list looks out of date",
-            "message": "The Office of International Relations page still refers to the July 2025 semester. Confirm the current programme list with the Department of Academic Affairs before applying."
+            "trigger": "1 March",
+            "message": "The Autumn window opens on 20 March for M.Tech., M.B.A., M.Des. and Ph.D. Prepare the single-PDF mark sheet before the window."
+          },
+          {
+            "trigger": "15 April",
+            "message": "The Autumn window closes and the Pingala portal becomes inaccessible after 02:00 PM. Foreign nationals then rely on the separate email route with the offline sample form."
+          },
+          {
+            "trigger": "30 April",
+            "message": "For the 2026-27 cycle this was the Foreign National email deadline (admissions_ir@iitk.ac.in, cc admissiondesk@iitk.ac.in)."
+          },
+          {
+            "trigger": "1 September",
+            "message": "The Spring Ph.D. window opens and runs to 31 October. Ph.D. only â€” no MTech in the Spring intake."
+          },
+          {
+            "trigger": "You are shortlisted",
+            "message": "Expect a video-conferencing interview, and remember the competent committees of the departments make the final admission decision."
+          },
+          {
+            "trigger": "After you submit on Pingala",
+            "message": "Ignore the application-fee payment prompt â€” the fee is waived for the Foreign National category."
+          },
+          {
+            "trigger": "You already hold another scholarship or funding",
+            "message": "You are not eligible for the Institute Fellowship. Do not budget on having both."
+          },
+          {
+            "trigger": "You are an ASEAN national planning on the DIA fellowship",
+            "message": "IIT Kanpur publishes 'Admissions under this scheme are currently on hold'. Use the separate ASEAN portal at IIT Delhi instead if eligible."
+          },
+          {
+            "trigger": "You are an AARDO member country national",
+            "message": "The AARDO Fellowship is the strongest published package â€” tuition waiver, free accommodation, an Indian-par stipend and airfare to New Delhi â€” but it is MTech only."
           }
         ],
         "submission_workflow": [
-          "Confirm your foreign-national status and that you hold no other funding",
-          "Choose a programme and an intake window that matches your degree",
-          "Assemble the required documents, merging the grade sheet into a single PDF",
-          "Apply through the IIT Kanpur foreign students admission page and select the Institute Fellowship category",
-          "Track the department committee's decision, which is the final authority"
+          "Confirm foreign-national status (not an Indian citizen by birth or naturalization; no OCI/PIO card).",
+          "Register on the Study in India portal and keep the confirmation, since it is linked to your study visa.",
+          "Select the funding route that fits your circumstances and complete that scheme's own conditions.",
+          "Check your target programme and department's eligibility minimums, including any departmental requirement above the published floor.",
+          "Prepare the document set: passport/citizenship card, photo, signature, proof of date of birth, qualifying degree certificate, GATE score card if available, and the mark/grade sheet as a single PDF; add the NOC only if sponsored, part-time or external.",
+          "Apply within the correct window â€” Autumn 20 March â€“ 15 April, or Spring 1 September â€“ 31 October for PhD.",
+          "Submit through Pingala for M.Des / MS (By Research) / PhD, or email the complete application with the required testimonials to admissions_ir@iitk.ac.in (cc admissiondesk@iitk.ac.in) as a Foreign National candidate.",
+          "Do not pay the application fee; skip the GATE requirement.",
+          "Prepare for the video-conferencing interview if shortlisted.",
+          "On admission, separately apply to the external scheme you are using, on that scheme's own portal and calendar (ICCR is usually April-June).",
+          "Register for and complete the assistantship or Institute Fellowship award formalities once admitted."
+        ],
+        "post_award_requirements": [
+          "Keep the Study in India registration current, since it is linked to study visa issuance.",
+          "For Institute Assistantship holders: carry out the assigned duties during the programme â€” 8 hours of work per week for MTech, MDes and MS (By Research) assistants â€” and remain a regular (non-sponsored/non-part-time/non-external) student.",
+          "Pay the published tuition and hostel fee charges unless covered by a scheme that expressly waives them (only the AARDO Fellowship is published as waiving tuition).",
+          "Do not combine the Institute Fellowship with other funding; if other funding arrives, the Institute Fellowship does not apply.",
+          "No return-home, deferral, renewal or clinical obligation is published by IIT Kanpur for these schemes."
+        ],
+        "questions_to_ask_host": [
+          "What are the specific eligibility requirements my department applies on top of the published absolute minimum?",
+          "Does my department require a GATE score despite the Foreign National waiver, and will the waiver be honoured for my programme?",
+          "Is the assistantship or Institute Fellowship available to me given my candidate category, and at what monthly rate for my programme and year?",
+          "What is the exact total fee I will owe, in USD and INR, for my programme and my SAARC or non-SAARC status, and when is it payable?",
+          "Is campus hostel accommodation guaranteed at INR 17,495, or is it first-come first-served?",
+          "What is my department's real interview process, and how long should I allow for the video-conferencing shortlist?",
+          "Which funding scheme do you recommend for my nationality, and does IIT Kanpur have any fee concession for me beyond the published table?",
+          "How do I combine the Institute Fellowship with an ICCR or Study in India scholarship, given the 'no other funding' condition?",
+          "What is the latest date by which I must have completed my Study in India registration to avoid any delay to my study visa?",
+          "Who at the admissions office confirms my admission, and what is the process for converting my offer into enrolment?"
         ]
       },
       "verification": {
-        "cycle_verified": "Annual windows published by IIT Kanpur: Autumn 20 March to 15 April; Spring PhD 1 September to 31 October (Spring PhD window open on 1 October 2026)",
-        "verification_confidence": 0.83,
+        "cycle_verified": "2026-27 postgraduate admission cycle. The OIR How to Apply page refers to admission to the July 2025 semester for its programme list, while the DOAA pages carry the live 2026-27 portal dates: Pingala extended to April 15, 2026 at 02:00 PM, and the Foreign National email route open to April 30, 2026.",
+        "verification_confidence": 0.9,
         "official_fields_confirmed": [
-          "application_cycle",
-          "deadline_central",
-          "deadline_central_display",
-          "deadline_institutional",
-          "status",
-          "fully_funded",
-          "eligibility",
-          "citizenship_residency",
-          "international_eligibility",
-          "degree_levels",
-          "requirements",
-          "documents",
-          "application_method",
-          "application_route",
-          "award_holder_conditions",
-          "official_contacts"
+          "Foreign-national definition: candidates who are NOT citizens of India (by birth or naturalized) and/or are OCI/PIO card holders are treated as foreign nationals",
+          "Six published admission/funding categories: ICCR Scholarship, Study in India (SII), IIT Kanpur Fellowship to AARDO Member Countries, Doctoral-fellowship in India for ASEAN (DIA), India Bhutan Friendship Scholarship, Institute Fellowship",
+          "Mandatory Study in India (SII) portal registration for all foreign students, linked to study visa issuance",
+          "Application fee waived for the Foreign National (FN) category, with FN candidates asked to ignore the payment prompt on Pingala",
+          "Requirement of GATE qualification waived for the Foreign National category",
+          "Final selection of shortlisted FN candidates based on interviews through video conferencing",
+          "ASEAN candidates may apply for fellowship through http://asean.iitd.ac.in/",
+          "Scholarship/fee concession order published at https://surl.li/fjpdiq",
+          "Full programme list by department: M Tech (17 departments), MS (By Research) (8 departments, with discipline restrictions for Aerospace and Civil), M Tech/MS (By Research) in Cybersecurity (sponsored/part-time/external only, without financial assistantship), M Des (Design), M.Sc. (2 Years) (Economics), PhD (22 departments including Humanities and Social Sciences)",
+          "Fee structure table (Tuition Fee + Hostel Fee): Ph.D. SAARC USD250+INR 17495; Ph.D. Non-SAARC USD500+INR 17495; M.Tech SAARC USD500+INR 17495; M.Tech Non-SAARC USD750+INR 17495; MBA SAARC USD2000+INR 17495; MBA Non-SAARC USD4000+INR 17495",
+          "Institute Fellowship: all foreign degree students receive a monthly fellowship at par with Indian students; only students who receive no other funding are eligible",
+          "Institute Assistantship for regular (non-sponsored/non-part-time/non-external) MTech, MS (By Research), MDes and PhD students: Rs. 12400/- per month for 8 hours of work per week (MTech, MDes, MS By Research); Rs. 37000/- for the first two years then Rs. 42000/- for another three years (PhD)",
+          "AARDO Fellowship (MTech): tuition fee waiver, free accommodation, monthly stipend equivalent to Indian students, airfare for travel to and from the AARDO member country to New Delhi; applicants selected per IITK rules; AARDO is inter-governmental with Asia and Africa members and India a founding member",
+          "India Bhutan Friendship Scholarship: fully-funded Government of India scholarship specifically for Bhutanese students pursuing MTech at IIT Kanpur",
+          "Study in India (SII): PRAGATII exam, meritorious students selected for a scholarship of up to USD 3,200 to cover tuition fees, accommodation and mess charges",
+          "ASEAN-DIA: 1,000 fellowships for PhD at an Indian Institute of Technology, monthly stipend equivalent to Indian doctoral students plus a research grant of up to INR 1,70,000; note 'Admissions under this scheme are currently on hold'",
+          "ICCR: founded 1950; applications to ICCR scholarship schemes usually in April-June; apply at https://a2ascholarships.iccr.gov.in/",
+          "Required documents: Passport/Citizenship Card, Applicant Photo, Applicant Signature, Proof of Date of Birth, Qualifying Degree Certificate (Original/Provisional), GATE Score Card if available, Mark/Grade sheet of Qualifying Degree as a single PDF file, NOC only for Sponsored/Part Time/External Candidates",
+          "Application windows every year: Autumn 20 March â€“ 15 April for M.Tech., M.B.A., M.Des. and Ph.D.; Spring 1 September â€“ 31 October for Ph.D. only",
+          "Where to apply: https://iitk.ac.in/doaa/pgadmission/foreign-students.php",
+          "Pingala portal https://pingala.iitk.ac.in/PGADM-0/login extended to April 15, 2026 02:00 PM, after which it is not accessible; Foreign National email submission to admissions_ir@iitk.ac.in (cc admissiondesk@iitk.ac.in) by April 30, 2026; offline sample application form published as Application-Form-offline.doc",
+          "MTech route uses a separate Digialm portal, published as closed, with a post-registration login link and a 'Steps to be followed' PDF",
+          "Programme-level eligibility minimums for PhD Engineering, PhD Sciences, PhD Cognitive Science, PhD Humanities and Social Sciences, PhD Management, PhD Design, MTech, MTech Unmanned Aerial Systems Engineering, MTech Cognitive Systems, MDes, MS (By Research) 2-year and 3-year, and MS (By Research) in Cybersecurity",
+          "Stated interpretation rule: the specified minimum marks/CPI implies a minimum of 55 percent marks / 5.5 on a 10 point scale as long as it is not less than the minimum pass marks/CPI; eligibility conditions are absolute minimums and departments may prescribe more",
+          "Departments may require assistantship applicants to also hold external agency funding such as UGC/CSIR/NBHM/DBT/ICAR/ICMR/PMRF, and several fellowships from Industry/DAE are also available",
+          "\"The competent committees of the departments are the ultimate decision makers in student admissions.\"",
+          "Official contacts: Office of International Relations, Faculty Building Annexe, Level 3, IIT Kanpur, UP 208016, Phone +91-512-259-6067, Email oir@iitk.ac.in; admissions_ir@iitk.ac.in; admissiondesk@iitk.ac.in"
         ],
         "institution_check_required": [
-          "The current monthly fellowship figure, which the page does not publish and describes only as at par with Indian students",
-          "The tuition and hostel fees for your programme and country group from the published fee structure",
-          "The current programme list, since the page still refers to the July 2025 semester",
-          "The English language requirement set by the admitting department"
+          "Programme-specific minimum marks/CPI are described as a 'specified minimum' whose numeric value is set per department. Those department-level numbers were not retrieved for every department, so eligibility has been recorded at the level the official pages publish (percentage/CPI floors and the 55%/5.5 interpretation rule). Confirm the department's specific minimum before applying.",
+          "The 'Steps to be followed' PDF for the M.Tech. Digialm portal, the Information Brochure, the PG Manual and the fee-concession order behind the short link https://surl.li/fjpdiq were not opened. The fee-concession order is the authoritative source for any scholarship or fee concession and should be read directly.",
+          "The MTech application portal on Digialm is published as closed, so the MTech route's own step sequence and any MTech-specific document rules were not confirmed. Only the M.Des / MS (By Research) / PhD Pingala route and the Foreign National email route are documented here.",
+          "The host institution fee table lists no M.Des, M.Sc., MS (By Research) or Cybersecurity row â€” only Ph.D., M.Tech. and MBA. Fees for the other published programmes are not published in this table and are therefore not recorded.",
+          "No tuition or living-cost figures are published for the ICCR, India Bhutan Friendship or ASEAN-DIA routes beyond IIT Kanpur describing the India Bhutan Friendship Scholarship as 'fully-funded'.",
+          "No tax treatment of the fellowship or assistantship is published (tax_status null).",
+          "renewable is null: the published assistantship terms describe staged periods (two years then three years for PhD) but no renewal, extension or continuation rule is stated.",
+          "deferrable, return_home_required, clinical_restriction and arrival_rules are all null: IIT Kanpur publishes no deferral, return-home, clinical or arrival rule for any of these schemes. arrival_rules was left null rather than an empty list because the schema treats it as a value field.",
+          "No file size limits, accepted file extensions, signature specifications or translation rules are published; document_format_rules contains only the single-PDF-file rule for the qualifying degree mark/grade sheet and the published offline .doc sample form.",
+          "No referees are named or required in any published step of this route, so referee_tracking is an empty list rather than an assumed academic referee requirement.",
+          "The programme-offered list on the OIR page is labelled 'July 2025 semester' while the deadlines, portal dates and fee table are current for 2026-27. The programme list should be re-confirmed against the current DOAA brochure before applying.",
+          "Currency codes were not inferred: IIT Kanpur publishes 'USD' and 'INR' amounts explicitly, and no code for the Indian rupee figure was assumed beyond the published 'INR'."
         ],
         "unverified_or_removed_claims": [
-          "No fellowship amount is published, so funding_amount is null; the page says only that it is at par with Indian students",
-          "The fellowship duration is not stated",
-          "No tuition or living cost coverage is stated, so both are null",
-          "No selection criteria or weighting are published; the page states only that department committees decide admissions",
-          "No English requirement is published on the page read",
-          "The best-fit and programme-availability position for the current cycle could not be confirmed because the page still describes the July 2025 semester"
+          "funding_amount is null because the aid is a matrix: two assistantship rates for master's programmes and two staged rates for PhD, plus five distinct scheme packages (Institute Fellowship, assistantship, AARDO, India Bhutan Friendship, Study in India, ASEAN-DIA). Every published figure is reproduced verbatim in funding_label and coverage rather than collapsed into one number.",
+          "fully_funded is false on IIT Kanpur's own published fee table: foreign students pay a USD tuition component plus INR 17,495 hostel fee on every row except the AARDO Fellowship. No claim of tuition coverage was inferred for any other route.",
+          "No travel coverage was recorded for the Institute Fellowship, assistantships, ICCR, Study in India, India Bhutan Friendship or ASEAN-DIA. The AARDO airfare is the only published travel benefit.",
+          "No home tuition rule was inferred (home_tuition_rule null): IIT Kanpur publishes a single foreign-national fee table and no separate home-country or SAARC-specific tuition rule beyond the SAARC/Non-SAARC fee rows.",
+          "No return-home obligation was recorded. The underlying India Bhutan Fellowship has obligations in its own country, but no such condition appears anywhere on IIT Kanpur's pages, so return_home_required is null rather than borrowed.",
+          "sdg_requirement set false with an empty detail list. IIT Kanpur publishes research priority through department eligibility, not SDG alignment, and none was inferred.",
+          "No renewal, deferral or clinical condition was carried over from comparable fellowship records; all are null.",
+          "The Cyber Security programme's 'without financial assistantship' condition was recorded as a not-covered item and an ineligibility condition for regular candidates, not as a funding benefit."
         ],
+        "source_conflict_rule": "Two IIT Kanpur offices publish on this route and they are not identical in scope: the Office of International Relations (OIR) 'How to apply' page owns foreign-national status, the funding-route menu, the fee structure, the document list and the annual windows, while the Dean of Academic Affairs (DOAA) PG Admissions pages own the application mechanics (Pingala and email routes, portal dates), the Foreign National concessions (fee waiver, GATE waiver, video-conferencing interview) and the programme-level eligibility minimums. Where they overlap, the DOAA pages govern the mechanics of applying and the OIR page governs who qualifies as a foreign national and what is charged. Where the OIR page's programme list is labelled to a past intake (July 2025 semester) while the DOAA pages carry 2026-27 dates, the DOAA dates are used and the mismatch is flagged rather than silently reconciled.",
+        "source_freshness_rule": "This page is a live admissions page with no publication date, so its fee table, windows, funding-route menu and programme list are valid only for the cycle it currently reflects. The Pingala closure date and the Foreign National email deadline change every year, and the ASEAN-DIA 'currently on hold' note can change without notice. Re-read both the OIR 'How to apply' page and the DOAA foreign-students, apply-online and eligibility-requirement pages before each cycle, and read the fee-concession order at https://surl.li/fjpdiq for anything beyond the published fee table.",
         "source_citations": [
-          "https://iitk.ac.in/oir/how-to-apply"
+          "https://iitk.ac.in/oir/how-to-apply",
+          "https://iitk.ac.in/doaa/pgadmission/foreign-students.php",
+          "https://iitk.ac.in/doaa/pgadmission/apply-online2026-27-I.php",
+          "https://iitk.ac.in/doaa/pgadmission/eligibility-requirement.php",
+          "https://pingala.iitk.ac.in/PGADM-0/login",
+          "https://www.studyinindia.gov.in/admission/registrations",
+          "https://a2ascholarships.iccr.gov.in/",
+          "https://asean-iit.in/",
+          "http://asean.iitd.ac.in/",
+          "https://surl.li/fjpdiq"
         ],
-        "researched_by": "deep_20"
+        "researched_by": "d2",
+        "last_verified_date": "2026-10-01",
+        "data_quality": {
+          "source_level": "Official provider pages â€” Indian Institute of Technology Kanpur, from both the Office of International Relations and the Dean of Academic Affairs PG Admissions pages (the admitting institution and its own admissions office).",
+          "coverage": "High. Four official IIT Kanpur pages were read in full, covering foreign-national status, all six funding routes with their published terms, the full programme and department list, the complete fee table, the document list, the application windows, the two application submission routes with live 2026-27 dates, the Foreign National concessions, the selection method, assistantship rates, and programme-level eligibility minimums. Remaining gaps are items IIT Kanpur does not publish (fee rows for M.Des/M.Sc./MSR, file size rules, renewal and return-home terms).",
+          "pages_read": [
+            "https://iitk.ac.in/oir/how-to-apply",
+            "https://iitk.ac.in/doaa/pgadmission/foreign-students.php",
+            "https://iitk.ac.in/doaa/pgadmission/apply-online2026-27-I.php",
+            "https://iitk.ac.in/doaa/pgadmission/eligibility-requirement.php"
+          ],
+          "pages_unreadable": [
+            "https://iitk.ac.in/oia/admission-international/fees-structure â€” HTTP 404. The Office of International Relations lives at /oir, not /oia, and the fee structure is published on the /oir/how-to-apply page.",
+            "None of the four official pages read failed to load; all returned readable content.",
+            "Not opened (recorded as institution checks, not as read): the 'Steps to be followed' PDF for the M.Tech. Digialm portal, the PG Information Brochure, the PG Manual, the fee-concession order behind the short link https://surl.li/fjpdiq, and the individual GATE paper-code PDFs.",
+            "External scheme portals (ICCR, Study in India, ASEAN) were linked by IIT Kanpur but not opened; their own terms are recorded only where IIT Kanpur states them."
+          ]
+        }
       }
     },
     {
