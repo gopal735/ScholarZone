@@ -1376,6 +1376,9 @@ def main(argv: list[str] | None = None) -> int:
         }
         applied: list[dict] = []
         skipped_no_provenance: list[int] = []
+        # Values that do not fit the column they were filed under. Reported, not
+        # truncated: a fragment of a value reads as if it were the value.
+        skipped_too_long: list[dict] = []
         today = date.today()
         session = factory()
         try:
