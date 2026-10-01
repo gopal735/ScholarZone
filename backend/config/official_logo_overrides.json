@@ -4019,5 +4019,89 @@
     "image_format": "jpeg",
     "verified_at": "2026-09-30T16:52:15+00:00",
     "host_evidence": "same_registrable_domain"
+  },
+  "mo.ibrahim.foundation": {
+    "url": "https://mo.ibrahim.foundation/themes/custom/mif2/assets/img/MIF-logo.svg",
+    "page_url": "https://mo.ibrahim.foundation/",
+    "official_host": true,
+    "alt_text": "Mo Ibrahim Foundation",
+    "validation_result": "verified",
+    "validation_detail": "Homepage header: <a href=\"/\" title=\"Mo Ibrahim Foundation\"><img src=\"/themes/custom/mif2/assets/img/MIF-logo.svg\" class=\"img-fluid\">. Direct GET returns 200 image/svg+xml, 11521 bytes, XML signature; loaded as cross-origin <img> in Chromium with natural size 98x28 (SVG, scales). Filename contains 'logo', not a favicon: this site's favicons live in a separate /themes/custom/mif2/images/favicons/ directory.",
+    "image_kind": "official_logo",
+    "image_format": "svg",
+    "verified_at": "2026-10-01T09:46:13.150105+00:00",
+    "host_evidence": "agent_verified_official_asset"
+  },
+  "mandelarhodes.org": {
+    "url": "https://www.mandelarhodes.org/uploads/190eb61b-acd4-4d81-946b-6af253c887b6.png",
+    "page_url": "https://www.mandelarhodes.org/about/logo/",
+    "official_host": true,
+    "alt_text": "The Mandela Rhodes Foundation",
+    "validation_result": "verified",
+    "validation_detail": "Official brand page /about/logo/ (title 'Our logo') renders this asset as the site wordmark (alt='MRF logo' / alt='The Mandela Rhodes Foundation'); the header on the homepage serves the same asset. Direct GET 200 image/png, 194741 bytes, PNG magic header, intrinsic 600x254 px (>200px wide). Pixel scan: 11% light / 13% dark opaque pixels, so it is a full-colour lockup visible on a white card, not a white-on-transparent or favicon asset.",
+    "image_kind": "official_logo",
+    "image_format": "png",
+    "verified_at": "2026-10-01T09:46:13.150105+00:00",
+    "host_evidence": "agent_verified_official_asset"
+  },
+  "tonyelumelufoundation.org": {
+    "url": "https://www.tonyelumelufoundation.org/wp-content/uploads/2021/10/TEF_Logo_White_Bg.png",
+    "page_url": "https://www.tonyelumelufoundation.org/",
+    "official_host": true,
+    "alt_text": "The Tony Elumelu Foundation",
+    "validation_result": "verified",
+    "validation_detail": "Site header markup: <img src=\".../TEF_Logo_White_Bg.png\" class=\"dsh-logo\" alt=\"The Tony Elumelu Foundation\">. Direct GET 200 image/png, 99591 bytes, intrinsic 1580x322 px. Pixel scan 25% dark / 74% light confirms a full-colour logo on an opaque white plate (readable on white). Not a favicon: favicons on this site are 'cropped-Globe-HD-32x32.png' and other apple-touch-icon sizes under /wp-content/uploads/2021/10/.",
+    "image_kind": "official_logo",
+    "image_format": "png",
+    "verified_at": "2026-10-01T09:46:13.150105+00:00",
+    "host_evidence": "agent_verified_official_asset"
+  },
+  "inlaksfoundation.org": {
+    "url": "https://inlaksfoundation.org/img/logo_text.svg",
+    "page_url": "https://www.inlaksfoundation.org/",
+    "official_host": true,
+    "alt_text": "Foundation Logo",
+    "validation_result": "verified",
+    "validation_detail": "Header component Logo: <div class=\"Logo_logo\"><a href=\"/\"><img src=\"/img/logo_text.svg\" alt=\"Foundation Logo\"/></a></div>. Direct GET 200 image/svg+xml, 11344 bytes; sole fill colour #1335AF (dark blue), so it renders on a white background. Cross-origin <img> load succeeded at 252x14 intrinsic. Favicons on this site are under /favicon/ (favicon-32x32.png etc.), excluded.",
+    "image_kind": "official_logo",
+    "image_format": "svg",
+    "verified_at": "2026-10-01T09:46:13.150105+00:00",
+    "host_evidence": "agent_verified_official_asset"
+  },
+  "kas.de": {
+    "url": "https://www.kas.de/o/kas-de-theme/images/header/logo_2026.svg",
+    "page_url": "https://www.kas.de/de/",
+    "official_host": true,
+    "alt_text": "Logo der Konrad Adenauer Stiftung",
+    "validation_result": "verified",
+    "validation_detail": "Header <img src=\"/o/kas-de-theme/images/header/logo_2026.svg\" alt=\"Logo der Konrad Adenauer Stiftung\">, natural size 234x72 on their own page. Note: the site WAF returns 403 text/html to non-browser clients (curl/PowerShell/API requests), but a browser <img> request from an unrelated origin (example.com) loaded the real SVG successfully at 234x72, so it embeds correctly. The white variant logo_weiss_2026.svg was rejected for light backgrounds.",
+    "image_kind": "official_logo",
+    "image_format": "svg",
+    "verified_at": "2026-10-01T09:46:13.150105+00:00",
+    "host_evidence": "agent_verified_official_asset"
+  },
+  "anr.fr": {
+    "url": "https://anr.fr/typo3conf/ext/anr_skin/Resources/Public/assets/img/anr-logo-2021-complet.png",
+    "page_url": "https://anr.fr/",
+    "official_host": true,
+    "alt_text": "ANR - Agence Nationale de la Recherche (logo)",
+    "validation_result": "verified",
+    "validation_detail": "Header/footer logo <img src=\"/typo3conf/ext/anr_skin/Resources/Public/assets/img/anr-logo-2021-complet.png\" alt=\"Retour a l'accueil\">; the site also links a dedicated brand page /fr/contact/charte-graphique-et-logo/. Direct GET 200 image/png, 18350 bytes, intrinsic 260x67 px (>200px) - the 'complet' (full lockup) variant rather than the 99x39 mobile small. Separate from RF-logo.svg (Marianne state logo) and afnor.png partner mark.",
+    "image_kind": "official_logo",
+    "image_format": "png",
+    "verified_at": "2026-10-01T09:46:13.150105+00:00",
+    "host_evidence": "agent_verified_official_asset"
+  },
+  "oas.org": {
+    "url": "https://www.oas.org/imgs/en/OEA-ENG-Main-Updated-AUG2025.svg",
+    "page_url": "https://www.oas.org/en/",
+    "official_host": true,
+    "alt_text": "OAS Logo - Organization of American States",
+    "validation_result": "verified",
+    "validation_detail": "Header <img src=\"/imgs/en/OEA-ENG-Main-Updated-AUG2025.svg\" alt=\"OAS Logo\" title=\"Organization of American States\">; the site also links an official logo page /en/about/logo.asp. Direct GET 200 image/svg+xml, 4043288 bytes; cross-origin <img> render succeeded at 748x296 intrinsic (SVG, vector). Path is /imgs/ (not favicons) and the filename is the organisation's own wordmark asset.",
+    "image_kind": "official_logo",
+    "image_format": "svg",
+    "verified_at": "2026-10-01T09:46:13.150105+00:00",
+    "host_evidence": "agent_verified_official_asset"
   }
 }
