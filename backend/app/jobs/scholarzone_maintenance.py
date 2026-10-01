@@ -952,6 +952,7 @@ def main(argv: list[str] | None = None) -> int:
         report happens to print.
         """
         from datetime import date as _date, datetime as _datetime
+        from pathlib import Path
 
         def encode(value):
             if isinstance(value, (_date, _datetime)):
