@@ -4283,5 +4283,41 @@
     "image_format": "svg",
     "verified_at": "2026-10-01T16:59:42.144507+00:00",
     "host_evidence": "same_registrable_domain"
+  },
+  "czs.muni.cz": {
+    "url": "https://czs.muni.cz/images/other/muni_czs_cz.png",
+    "page_url": "https://czs.muni.cz/cs/",
+    "official_host": true,
+    "alt_text": "MUNI CZS logo",
+    "validation_result": "verified",
+    "validation_detail": "Homepage <img class=\"logo\" src=\"/images/other/muni_czs_cz.png\">. Fetched asset: HTTP 200, content-type image/png, PNG magic bytes confirmed, 1570x689 px, 40,538 bytes.",
+    "image_kind": "official_logo",
+    "image_format": "png",
+    "verified_at": "2026-10-01T18:19:54.590570+00:00",
+    "host_evidence": "same_registrable_domain"
+  },
+  "iso.fudan.edu.cn": {
+    "url": "https://iso.fudan.edu.cn/_upload/tpl/15/d5/5589/template5589/images/logo.png",
+    "page_url": "https://iso.fudan.edu.cn/",
+    "official_host": true,
+    "alt_text": "Fudan University logo",
+    "validation_result": "verified",
+    "validation_detail": "Header logo image in the international office template. Fetched asset: HTTP 200, content-type image/png, PNG magic bytes confirmed, 321x155 px, 34,261 bytes; visually inspected - Study at Fudan mark on solid red, opaque background so visible on light cards.",
+    "image_kind": "official_logo",
+    "image_format": "png",
+    "verified_at": "2026-10-01T18:19:54.590570+00:00",
+    "host_evidence": "same_registrable_domain"
+  },
+  "semmelwis.hu": {
+    "url": "https://semmelweis.hu/wp-content/themes/se18/dist/images/logo/semmelweis-logo-256px.png",
+    "page_url": "https://semmelweis.hu/",
+    "official_host": true,
+    "alt_text": "Semmelweis University seal",
+    "validation_result": "verified",
+    "validation_detail": "University logo in the WordPress theme header; faculty marks (aok-*, gytk-*, fok-*) on the same path were rejected. Fetched asset: HTTP 200, content-type image/png, PNG magic bytes confirmed, 256x256 px, 37,133 bytes; visually inspected - full university seal, legible.",
+    "image_kind": "official_logo",
+    "image_format": "png",
+    "verified_at": "2026-10-01T18:19:54.590570+00:00",
+    "host_evidence": "same_registrable_domain"
   }
 }
