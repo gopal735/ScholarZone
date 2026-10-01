@@ -1022,6 +1022,7 @@ def main(argv: list[str] | None = None) -> int:
           record cannot exist with a deadline but no eligibility;
         * a logo is only attached when it came with provenance.
         """
+        from pathlib import Path
         from urllib.parse import urlparse
 
         from sqlalchemy import select
