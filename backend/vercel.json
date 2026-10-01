@@ -1,10 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "_comment": "FastAPI API only. The frontend is a separate Vercel project (see ../../frontend/vercel.json) because one project cannot cleanly serve both a static SPA and a Python function on the same host without routing conflicts. FastAPI stays FastAPI; this file only tells Vercel where the app is and which Python runtime to use.",
-  "framework": null,
-  "buildCommand": null,
+  "_comment": "Backend service only. The repository root vercel.json declares exactly two services (backend and frontend) and routes public traffic between them, so the API and the SPA share one origin and one deployment. This file holds only settings that belong to the backend service itself; the service's framework and routing are declared in the root vercel.json.",
   "installCommand": "pip install -r requirements.txt",
-  "includeFiles": [],
   "functions": {
     "api/index.py": {
       "maxDuration": 30

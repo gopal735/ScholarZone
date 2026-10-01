@@ -1,10 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "_comment": "Frontend only; the FastAPI API is a separate Vercel project (../../backend/vercel.json). Every unmatched path returns the SPA shell so a direct visit to /scholarships/{id} works without a browser-only navigation. API paths are proxied to the API project so the browser sees one origin and no cross-origin request is needed.",
+  "_comment": "Frontend service only. The repository root vercel.json declares exactly two services and sends every non-API path here, so this file no longer proxies /api anywhere. What remains is the SPA fallback, so a direct visit to a deep link such as /scholarships/12 returns the shell instead of a 404, plus immutable caching for hashed assets.",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "installCommand": "npm install",
-  "framework": "vite",
   "rewrites": [
     {
       "source": "/((?!api/).*)",
