@@ -753,18 +753,6 @@
     "verified_at": "2026-09-30T16:52:15+00:00",
     "host_evidence": "cdn_on_behalf_of_host"
   },
-  "eur.nl": {
-    "url": "https://www.eur.nl/favicon-32x32.png",
-    "page_url": "https://eur.nl/",
-    "official_host": true,
-    "alt_text": "Erasmus University Rotterdam",
-    "validation_result": "verified",
-    "validation_detail": "png 793+B",
-    "image_kind": "official_logo",
-    "image_format": "png",
-    "verified_at": "2026-09-30T16:52:15+00:00",
-    "host_evidence": "same_registrable_domain"
-  },
   "kth.se": {
     "url": "https://www.kth.se/polopoly_fs/1.1273722.1692876353!/image/apple-touch-icon-KTH-logo-180x180.png",
     "page_url": "https://kth.se/",
@@ -991,18 +979,6 @@
     "validation_detail": "svg 7476+B",
     "image_kind": "official_logo",
     "image_format": "svg",
-    "verified_at": "2026-09-30T16:52:15+00:00",
-    "host_evidence": "same_registrable_domain"
-  },
-  "muni.cz": {
-    "url": "https://cdn.muni.cz/media/3722237/m_bile.ico",
-    "page_url": "https://muni.cz/",
-    "official_host": true,
-    "alt_text": "Masaryk University",
-    "validation_result": "verified",
-    "validation_detail": "ico 346+B",
-    "image_kind": "official_logo",
-    "image_format": "ico",
     "verified_at": "2026-09-30T16:52:15+00:00",
     "host_evidence": "same_registrable_domain"
   },
@@ -1510,18 +1486,6 @@
     "image_format": "svg",
     "verified_at": "2026-09-30T16:52:15+00:00",
     "host_evidence": "cdn_on_behalf_of_host"
-  },
-  "ubc.ca": {
-    "url": "https://cdn.ubc.ca/clf/7.0.5/img/touch-icon-iphone-retina.png",
-    "page_url": "https://ubc.ca/",
-    "official_host": true,
-    "alt_text": "University of British Columbia",
-    "validation_result": "verified",
-    "validation_detail": "png 958+B",
-    "image_kind": "official_logo",
-    "image_format": "png",
-    "verified_at": "2026-09-30T16:52:15+00:00",
-    "host_evidence": "same_registrable_domain"
   },
   "sfu.ca": {
     "url": "https://www.sfu.ca/etc/designs/clf/clientlibs/clf4/default/img/SFU@2x.png",
@@ -2167,18 +2131,6 @@
     "alt_text": "Aalborg University",
     "validation_result": "verified",
     "validation_detail": "png 4528+B",
-    "image_kind": "official_logo",
-    "image_format": "png",
-    "verified_at": "2026-09-30T16:52:15+00:00",
-    "host_evidence": "same_registrable_domain"
-  },
-  "esade.edu": {
-    "url": "https://www.esade.edu/themes/custom/esade_base/build/img/favicon-128.png",
-    "page_url": "https://esade.edu/",
-    "official_host": true,
-    "alt_text": "ESADE",
-    "validation_result": "verified",
-    "validation_detail": "png 649+B",
     "image_kind": "official_logo",
     "image_format": "png",
     "verified_at": "2026-09-30T16:52:15+00:00",
@@ -4102,6 +4054,18 @@
     "image_kind": "official_logo",
     "image_format": "svg",
     "verified_at": "2026-10-01T09:50:04.250783+00:00",
+    "host_evidence": "same_registrable_domain"
+  },
+  "sharjah.ac.ae": {
+    "url": "https://www.sharjah.ac.ae/-/media/project/uos/sites/uos/others/navigation-logos/brand-logo-black.svg?iar=0&hash=49530BE9F0845185F27490AA0213BE3E",
+    "page_url": "https://www.sharjah.ac.ae/",
+    "official_host": true,
+    "alt_text": "University of Sharjah official logo",
+    "validation_result": "verified",
+    "validation_detail": "Referenced in the Sitecore-serialized global navigation config on the university homepage as \"brandlogoblack\": {\"value\":{\"src\":\"https://www.sharjah.ac.ae/-/media/project/uos/sites/uos/others/navigation-logos/brand-logo-black.svg?iar=0&hash=49530BE9F...\",\"alt\":\"\"}}, sitting next to the white-on-dark \"brandlogowhite\" variant. Confirmed it is the navigation logo and not an icon: live fetch returned HTTP 200 with content-type image/svg+xml, 25416 bytes, root <svg width=\"140\" height=\"100\" viewBox=\"0 0 140 100\"> containing 106 <path> elements and 54 <g> groups of vector geometry - no favicon/apple-touch/mstile semantics anywhere in the reference chain. Light-card safe: the file paints an opaque white rect (\"M140 0H0V100H140V0Z\" fill=\"white\") with the university artwork in fill=\"black\" on top, so the mark reads correctly against a light card rather than being a white-on-transparent wordmark. Chosen the black variant, not brand-logo-white.svg.",
+    "image_kind": "official_logo",
+    "image_format": "png",
+    "verified_at": "2026-10-01T12:16:31.702227+00:00",
     "host_evidence": "same_registrable_domain"
   }
 }
