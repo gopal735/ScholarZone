@@ -832,12 +832,31 @@ class TestAutonomousContract:
         # Every declared stage must have a runner and a dependency entry. A
         # stage wired into only one of the three lists passes the tests above
         # and then fails at dispatch, mid-run.
-        declared = set(worker.STAGE_ORDER)
-        assert declared == set(worker.STAGE_DEPENDENCIES)
-        for stage in declared:
-            assert callable(getattr(worker, f"do_{stage}", None)), (
-                f"{stage} is declared but has no do_{stage} runner"
-            )
+        #
+        # The runners are nested inside main(), so the dispatch table is read
+        # from the source rather than imported.
+        import ast
+        import inspect
+
+        tree = ast.parse(inspect.getsource(worker))
+        dispatched = set()
+        for node in ast.walk(tree):
+            if not isinstance(node, ast.Assign):
+                continue
+            if not any(
+                isinstance(t, ast.Name) and t.id == "stages" for t in node.targets
+            ):
+                continue
+            if isinstance(node.value, ast.Dict):
+                dispatched = {
+                    k.value for k in node.value.keys if isinstance(k, ast.Constant)
+                }
+        assert set(worker.STAGE_ORDER) == set(worker.STAGE_DEPENDENCIES)
+        assert set(worker.STAGE_ORDER) == dispatched, (
+            "STAGE_ORDER and the dispatch table disagree: "
+            f"declared-only={set(worker.STAGE_ORDER) - dispatched}, "
+            f"dispatch-only={dispatched - set(worker.STAGE_ORDER)}"
+        )
         # Archive derives status from the published deadline, so it reads state
         # that facts and enrichment write. Declaring that explicitly stops a
         # closed-date record from being marked open by a run that ordered
