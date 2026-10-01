@@ -1194,6 +1194,13 @@ def main(argv: list[str] | None = None) -> int:
                     setter(value)
                 if row_only.get("funding_amount") is not None:
                     row.funding_amount = row_only["funding_amount"]
+                # deadline_precision is NOT NULL and its column default is
+                # "month", which would assert a precision no page published.
+                # "varies" is what the enrichment stage already writes for a
+                # deadline with no fixed date, and it is in the vocabulary the
+                # rolling/recurring filters match on.
+                if record.deadline_precision is None:
+                    row.deadline_precision = "varies"
                 od = detail.get("official_details")
                 au = detail.get("applicant_utility")
                 ver = detail.get("verification")
