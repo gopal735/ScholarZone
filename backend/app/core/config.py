@@ -84,8 +84,20 @@ def get_settings() -> Settings:
     # list is explicit origins and never "*".
     if "https://gopal735.github.io" not in allowed_origins:
         allowed_origins = allowed_origins + ("https://gopal735.github.io",)
+
+    # Named deployments, listed explicitly. VERCEL_URL only covers whichever
+    # host the current build is on, so the production frontend and the current
+    # preview are both named here and are not dependent on that variable being
+    # set at build time.
+    for fixed in (
+        "https://scholarzone-fwzj.vercel.app",
+        "https://scholarzone.vercel.app",
+    ):
+        if fixed not in allowed_origins:
+            allowed_origins = allowed_origins + (fixed,)
+
     vercel_origin = os.getenv("VERCEL_URL", "").strip().removeprefix("https://").strip()
-    if vercel_origin and vercel_origin not in allowed_origins:
+    if vercel_origin and f"https://{vercel_origin}" not in allowed_origins:
         allowed_origins = allowed_origins + (f"https://{vercel_origin}",)
 
     return Settings(

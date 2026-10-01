@@ -12,6 +12,7 @@ from sqlalchemy import text
 
 from .core.config import get_settings
 from .database import close_database, get_engine, init_database
+from .middleware.api_prefix import StripApiPrefix
 from .routers.scholarships import router as scholarships_router
 from .routers.verification import router as verification_router
 from .routers.admin_image_review import router as admin_image_review_router
@@ -112,6 +113,10 @@ if allowed_origins:
         allow_methods=["GET"],
         allow_headers=["Accept", "Content-Type"],
     )
+
+# Added last so it runs outermost: it has to see the path as the platform sent
+# it, before anything else inspects it.
+app.add_middleware(StripApiPrefix)
 
 
 @app.exception_handler(RequestValidationError)
