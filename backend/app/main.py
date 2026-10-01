@@ -2,6 +2,7 @@ from contextlib import asynccontextmanager
 import logging
 import os
 import re
+import sys
 from threading import Lock, Thread
 
 from fastapi import FastAPI, HTTPException, Request
@@ -23,6 +24,20 @@ from .seed import seed_database
 
 
 logger = logging.getLogger(__name__)
+
+# Log to stdout, which is the only stream a serverless platform collects.
+#
+# Without this, a database initialisation failure was raised, caught, stored and
+# reported to /health as the bare string "Database not ready" while the exception
+# that caused it went to the root logger's default handler - lastResort - and
+# was never captured. The deployment was undebuggable: a 503 with no cause
+# anywhere. basicConfig is a no-op when a handler already exists, so this does
+# not override an application's existing configuration.
+logging.basicConfig(
+    level=os.getenv("SCHOLARZONE_LOG_LEVEL", "INFO").upper(),
+    format="%(levelname)s %(name)s %(message)s",
+    stream=sys.stdout,
+)
 
 
 def build_revision() -> str:
@@ -118,6 +133,10 @@ if allowed_origins:
 # it, before anything else inspects it.
 app.add_middleware(StripApiPrefix)
 
+# Logged here rather than at import so the revision is resolved and so the line
+# lands after the application object exists.
+logger.info("ScholarZone API configured, revision %s", build_revision())
+
 
 @app.exception_handler(RequestValidationError)
 async def request_validation_error_handler(_: Request, __: RequestValidationError) -> JSONResponse:
@@ -150,10 +169,23 @@ def health() -> JSONResponse:
     """
     with _db_lock:
         if not _db_ready:
-            detail = _db_init_error or "Database not ready"
+            # Distinguish "still starting" from "failed". A single opaque
+            # "Database not ready" is what made this undebuggable: it looks
+            # identical whether the init thread is ten seconds in or wedged
+            # forever on a connection it cannot make.
+            detail = _db_init_error
+            state = "failed"
+            if detail is None:
+                state = "initializing"
+                detail = "Database initialisation has not completed yet"
             return JSONResponse(
                 status_code=503,
-                content={"status": "error", "detail": detail, "revision": build_revision()},
+                content={
+                    "status": "error",
+                    "state": state,
+                    "detail": detail,
+                    "revision": build_revision(),
+                },
             )
         try:
             with get_engine().connect() as conn:

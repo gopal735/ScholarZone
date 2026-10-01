@@ -33,7 +33,7 @@ def test_postgresql_url_rewritten_to_psycopg():
             get_engine()
             # Verify create_engine was called with rewritten URL
             args, kwargs = mock_create.call_args
-            assert args[0] == "postgresql+psycopg://user:pass@localhost:5432/testdb", \
+            assert args[0] == "postgresql+psycopg://user:pass@localhost:5432/testdb?sslmode=require", \
                 f"Expected postgresql+psycopg:// but got {args[0]}"
 
     _reset_engine_cache()
@@ -53,7 +53,9 @@ def test_postgresql_already_has_psycopg_driver():
         with patch("app.database.create_engine", return_value=mock_engine) as mock_create:
             get_engine()
             args, kwargs = mock_create.call_args
-            assert args[0] == original, f"URL should not be modified: {args[0]}"
+            assert args[0] == original + "?sslmode=require", (
+        f"Driver must not be rewritten, but sslmode should be added: {args[0]}"
+    )
 
     _reset_engine_cache()
 
@@ -79,7 +81,7 @@ def test_sqlite_url_not_modified():
 
 
 def test_postgresql_sslmode_preserved():
-    """Query parameters (sslmode=require) should be preserved during rewrite."""
+    """An explicit sslmode must survive the rewrite, and never be doubled."""
     _reset_engine_cache()
     original = "postgresql://user:pass@host.neon.tech/dbname?sslmode=require"
     mock_engine = MagicMock()
@@ -93,7 +95,10 @@ def test_postgresql_sslmode_preserved():
             get_engine()
             args, kwargs = mock_create.call_args
             expected = "postgresql+psycopg://user:pass@host.neon.tech/dbname?sslmode=require"
-            assert args[0] == expected, f"Query params lost: {args[0]}"
+            assert args[0] == expected, (
+                f"Explicit sslmode must be preserved exactly once: {args[0]}"
+            )
+            assert args[0].count("sslmode=") == 1, args[0]
 
     _reset_engine_cache()
 

@@ -1,155 +1,137 @@
 {
- "_comment": "Every host with at least one catalogue record and no official logo. reason_code is drawn from the fixed vocabulary below so the state can be read by a machine; detail is supporting evidence only and is never used to derive a decision.",
- "_reason_codes": {
-  "inline_svg_only": "the identity logo is inlined in the page and no file asset exists",
-  "css_sprite_only": "the logo is a CSS sprite fragment and no standalone file exists",
-  "white_variant_only": "every published variant is white or reversed, invisible on a light card",
-  "source_blocked": "the awarding body refused automated access and could not be inspected",
-  "domain_dead": "the host no longer resolves in DNS",
-  "page_dead": "the official page returns 404 or a soft-404",
-  "not_an_identity_logo": "the only image is decorative, a banner, or a promotional lockup",
-  "logo_blank_or_placeholder": "the published asset renders blank or is a solid placeholder",
-  "no_logo_published": "the awarding body publishes no file asset for its identity mark",
-  "programme_retired_no_logo_needed": "the programme was retired, so no logo is published for it"
- },
- "hosts": [
-  {
-   "host": "ox.ac.uk",
-   "records": 3,
-   "reason_code": "white_variant_only",
-   "detail": "the only single-file logo is white artwork on an opaque navy field; non-reversed versions exist only as composite brand graphics or on request"
+  "_comment": "Every host with at least one catalogue record and no official logo. reason_code is drawn from the fixed vocabulary below so the state can be read by a machine; detail is supporting evidence only and is never used to derive a decision.",
+  "_reason_codes": {
+    "inline_svg_only": "the identity logo is inlined in the page and no file asset exists",
+    "css_sprite_only": "the logo is a CSS sprite fragment and no standalone file exists",
+    "white_variant_only": "every published variant is white or reversed, invisible on a light card",
+    "source_blocked": "the awarding body refused automated access and could not be inspected",
+    "domain_dead": "the host no longer resolves in DNS",
+    "page_dead": "the official page returns 404 or a soft-404",
+    "not_an_identity_logo": "the only image is decorative, a banner, or a promotional lockup",
+    "logo_blank_or_placeholder": "the published asset renders blank or is a solid placeholder",
+    "no_logo_published": "the awarding body publishes no file asset for its identity mark",
+    "programme_retired_no_logo_needed": "the programme was retired, so no logo is published for it"
   },
-  {
-   "host": "education.gov.au",
-   "records": 2,
-   "reason_code": "source_blocked",
-   "detail": "the whole host times out to curl, python-requests and webfetch; Chromium could not confirm a 200 for any asset"
-  },
-  {
-   "host": "foreign.fulbrightonline.org",
-   "records": 2,
-   "reason_code": "white_variant_only",
-   "detail": "all three raster logo assets are 100% white"
-  },
-  {
-   "host": "temasek.com.sg",
-   "records": 2,
-   "reason_code": "source_blocked",
-   "detail": "Akamai WAF; the asset loads only with a same-origin Referer"
-  },
-  {
-   "host": "admissions.tc.umn.edu",
-   "records": 1,
-   "reason_code": "source_blocked",
-   "detail": "Cloudflare returns 403 on every static asset; the candidate wordmark could not be confirmed"
-  },
-  {
-   "host": "anrfonline.in",
-   "records": 1,
-   "reason_code": "no_logo_published",
-   "detail": "the masthead is a text wordmark with no image; every apple-touch-icon path 404s"
-  },
-  {
-   "host": "campuschina.org",
-   "records": 1,
-   "reason_code": "source_blocked",
-   "detail": "the host resets every non-browser HTTP client"
-  },
-  {
-   "host": "gatescambridge.org",
-   "records": 1,
-   "reason_code": "white_variant_only",
-   "detail": "the only raster asset is the reversed white wordmark; the other item is a PDF"
-  },
-  {
-   "host": "gist.ac.kr",
-   "records": 1,
-   "reason_code": "no_logo_published",
-   "detail": "the emblem is served from a download endpoint that requires session parameters the crawler cannot reproduce"
-  },
-  {
-   "host": "in.emb-japan.go.jp",
-   "records": 1,
-   "reason_code": "domain_dead",
-   "detail": "the host has no A or CNAME record; the only image is a Japanese flag GIF"
-  },
-  {
-   "host": "ip-paris.fr",
-   "records": 1,
-   "reason_code": "source_blocked",
-   "detail": "DNS resolves but TCP connect times out on https, http and the bare address"
-  },
-  {
-   "host": "master-bioceb.eu",
-   "records": 1,
-   "reason_code": "domain_dead",
-   "detail": "the host does not resolve; the scheme moved"
-  },
-  {
-   "host": "master-europeanforestry.eu",
-   "records": 1,
-   "reason_code": "domain_dead",
-   "detail": "the host does not resolve; the programme moved to a successor site that publishes only an inline SVG"
-  },
-  {
-   "host": "niied.go.kr",
-   "records": 1,
-   "reason_code": "white_variant_only",
-   "detail": "the only published variant is white on transparent"
-  },
-  {
-   "host": "qut.edu.au",
-   "records": 1,
-   "reason_code": "not_an_identity_logo",
-   "detail": "every direct asset probe is refused by Cloudflare and the only reachable image is an OpenGraph promotional card"
-  },
-  {
-   "host": "schulichleaders.com",
-   "records": 1,
-   "reason_code": "no_logo_published",
-   "detail": "the organisation's own mark is an inline SVG; only the funder's wordmark is available as a file"
-  },
-  {
-   "host": "seu.ub.edu",
-   "records": 1,
-   "reason_code": "source_blocked",
-   "detail": "the site returns 403 to scripted clients; the header logo is a base64 data URI"
-  },
-  {
-   "host": "tugraz.at",
-   "records": 1,
-   "reason_code": "inline_svg_only",
-   "detail": "the masthead is an inline SVG and no logo file exists in the markup or any stylesheet"
-  },
-  {
-   "host": "ulisboa.pt",
-   "records": 1,
-   "reason_code": "source_blocked",
-   "detail": "FortiADC returns 403 on every path, including robots.txt and the apex"
-  },
-  {
-   "host": "unige.ch",
-   "records": 1,
-   "reason_code": "white_variant_only",
-   "detail": "the only SVG sets every fill to #FFFFFF and the PNG renders blank; nine other candidate paths 404"
-  },
-  {
-   "host": "unitn.it",
-   "records": 1,
-   "reason_code": "source_blocked",
-   "detail": "Cloudflare's interactive challenge never resolves in a headless browser and curl receives 403"
-  },
-  {
-   "host": "vanier.gc.ca",
-   "records": 1,
-   "reason_code": "programme_retired_no_logo_needed",
-   "detail": "the programme was folded into a successor; the record is retired and hidden, so no logo is published for it"
-  },
-  {
-   "host": "visegradfund.mvcr.cz",
-   "records": 1,
-   "reason_code": "domain_dead",
-   "detail": "the host does not resolve; the successor publishes only an inline SVG"
-  }
- ]
+  "hosts": [
+    {
+      "host": "ox.ac.uk",
+      "records": 3,
+      "reason_code": "white_variant_only",
+      "detail": "the only single-file logo is white artwork on an opaque navy field; non-reversed versions exist only as composite brand graphics or on request"
+    },
+    {
+      "host": "education.gov.au",
+      "records": 2,
+      "reason_code": "source_blocked",
+      "detail": "the whole host times out to curl, python-requests and webfetch; Chromium could not confirm a 200 for any asset"
+    },
+    {
+      "host": "foreign.fulbrightonline.org",
+      "records": 2,
+      "reason_code": "white_variant_only",
+      "detail": "all three raster logo assets are 100% white"
+    },
+    {
+      "host": "temasek.com.sg",
+      "records": 2,
+      "reason_code": "source_blocked",
+      "detail": "Akamai WAF; the asset loads only with a same-origin Referer"
+    },
+    {
+      "host": "admissions.tc.umn.edu",
+      "records": 1,
+      "reason_code": "source_blocked",
+      "detail": "Cloudflare returns 403 on every static asset; the candidate wordmark could not be confirmed"
+    },
+    {
+      "host": "anrfonline.in",
+      "records": 1,
+      "reason_code": "no_logo_published",
+      "detail": "the masthead is a text wordmark with no image; every apple-touch-icon path 404s"
+    },
+    {
+      "host": "campuschina.org",
+      "records": 1,
+      "reason_code": "source_blocked",
+      "detail": "the host resets every non-browser HTTP client"
+    },
+    {
+      "host": "in.emb-japan.go.jp",
+      "records": 1,
+      "reason_code": "domain_dead",
+      "detail": "the host has no A or CNAME record; the only image is a Japanese flag GIF"
+    },
+    {
+      "host": "ip-paris.fr",
+      "records": 1,
+      "reason_code": "source_blocked",
+      "detail": "DNS resolves but TCP connect times out on https, http and the bare address"
+    },
+    {
+      "host": "master-bioceb.eu",
+      "records": 1,
+      "reason_code": "domain_dead",
+      "detail": "the host does not resolve; the scheme moved"
+    },
+    {
+      "host": "master-europeanforestry.eu",
+      "records": 1,
+      "reason_code": "domain_dead",
+      "detail": "the host does not resolve; the programme moved to a successor site that publishes only an inline SVG"
+    },
+    {
+      "host": "niied.go.kr",
+      "records": 1,
+      "reason_code": "white_variant_only",
+      "detail": "the only published variant is white on transparent"
+    },
+    {
+      "host": "qut.edu.au",
+      "records": 1,
+      "reason_code": "not_an_identity_logo",
+      "detail": "every direct asset probe is refused by Cloudflare and the only reachable image is an OpenGraph promotional card"
+    },
+    {
+      "host": "schulichleaders.com",
+      "records": 1,
+      "reason_code": "no_logo_published",
+      "detail": "the organisation's own mark is an inline SVG; only the funder's wordmark is available as a file"
+    },
+    {
+      "host": "tugraz.at",
+      "records": 1,
+      "reason_code": "inline_svg_only",
+      "detail": "the masthead is an inline SVG and no logo file exists in the markup or any stylesheet"
+    },
+    {
+      "host": "ulisboa.pt",
+      "records": 1,
+      "reason_code": "source_blocked",
+      "detail": "FortiADC returns 403 on every path, including robots.txt and the apex"
+    },
+    {
+      "host": "unige.ch",
+      "records": 1,
+      "reason_code": "white_variant_only",
+      "detail": "the only SVG sets every fill to #FFFFFF and the PNG renders blank; nine other candidate paths 404"
+    },
+    {
+      "host": "unitn.it",
+      "records": 1,
+      "reason_code": "source_blocked",
+      "detail": "Cloudflare's interactive challenge never resolves in a headless browser and curl receives 403"
+    },
+    {
+      "host": "vanier.gc.ca",
+      "records": 1,
+      "reason_code": "programme_retired_no_logo_needed",
+      "detail": "the programme was folded into a successor; the record is retired and hidden, so no logo is published for it"
+    },
+    {
+      "host": "visegradfund.mvcr.cz",
+      "records": 1,
+      "reason_code": "domain_dead",
+      "detail": "the host does not resolve; the successor publishes only an inline SVG"
+    }
+  ]
 }
