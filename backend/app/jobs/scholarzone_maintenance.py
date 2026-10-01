@@ -1113,13 +1113,21 @@ def main(argv: list[str] | None = None) -> int:
             }
             fresh: list[ScholarshipIngestionRecord] = []
             fresh_details: list[tuple[str, dict, dict]] = []
+            seen_in_batch_titles: set[str] = set()
+            seen_in_batch_urls: set[str] = set()
             for record, (url, detail, row_only) in zip(payload, details):
-                if record.name.strip().lower() in existing_titles:
-                    rejected.append({"name": record.name, "reason": "duplicate title"})
+                key_title = record.name.strip().lower()
+                key_url = url.rstrip("/")
+                # Two records in the same file for the same programme is a
+                # research error and one of them is dropped. A record that
+                # already exists in the database is not that: it is this stage
+                # being re-run with deeper data, which has to reach the row or
+                # the second pass of any research could never land.
+                if key_title in seen_in_batch_titles or key_url in seen_in_batch_urls:
+                    rejected.append({"name": record.name, "reason": "duplicate within batch"})
                     continue
-                if url.rstrip("/") in existing_urls:
-                    rejected.append({"name": record.name, "reason": "duplicate source url"})
-                    continue
+                seen_in_batch_titles.add(key_title)
+                seen_in_batch_urls.add(key_url)
                 fresh.append(record)
                 fresh_details.append((url, detail, row_only))
 
@@ -1218,6 +1226,12 @@ def main(argv: list[str] | None = None) -> int:
                 "error": None,
                 "created": created,
                 "updated": updated,
+                "already_in_catalogue": sum(
+                    1
+                    for rec, (u, _d, _r) in zip(fresh, fresh_details)
+                    if rec.name.strip().lower() in existing_titles
+                    or u.rstrip("/") in existing_urls
+                ),
                 "detail_blocks_applied": detailed,
                 "logos_attached": logoed,
                 "skipped_too_long": skipped_too_long,
