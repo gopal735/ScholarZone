@@ -52,6 +52,21 @@ class TestExactlyTwoServices:
         assert services["backend"]["framework"] == "fastapi"
         assert services["frontend"]["framework"] == "vite"
 
+    def test_backend_entrypoint_is_declared_explicitly(self, root_config):
+        # Left to auto-detection, the backend either resolves to the wrong
+        # module or builds and then 404s on every route, with the build log
+        # looking clean. The entrypoint is the one thing that must be right.
+        entry = root_config["services"]["backend"].get("entrypoint")
+        assert entry == "api.index:app", (
+            f"backend entrypoint is {entry!r}; api/index.py exposes app"
+        )
+
+    def test_entrypoint_target_exists_and_exposes_app(self):
+        entry = REPO / "backend" / "api" / "index.py"
+        assert entry.exists()
+        source = entry.read_text(encoding="utf-8")
+        assert "from app.main import app" in source
+
     def test_backend_app_is_not_a_service_of_its_own(self, root_config):
         # The regression that started this: backend/app treated as a service.
         for name, service in root_config["services"].items():

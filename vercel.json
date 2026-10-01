@@ -4,6 +4,7 @@
     "backend": {
       "root": "backend",
       "framework": "fastapi",
+      "entrypoint": "api.index:app",
       "routes": [
         {
           "src": "/api/(.*)",
