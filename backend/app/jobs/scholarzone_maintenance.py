@@ -952,7 +952,6 @@ def main(argv: list[str] | None = None) -> int:
         report happens to print.
         """
         from datetime import date as _date, datetime as _datetime
-        from pathlib import Path
 
         def encode(value):
             if isinstance(value, (_date, _datetime)):
@@ -983,6 +982,7 @@ def main(argv: list[str] | None = None) -> int:
         an unknown date, not an expired one, and deleting on a guess is the one
         outcome an applicant cannot recover from.
         """
+        from pathlib import Path
         from sqlalchemy import select
 
         from app.models import Scholarship
