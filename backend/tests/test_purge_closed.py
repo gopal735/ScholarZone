@@ -142,6 +142,23 @@ class TestReversibility:
         captured.update(payload)
         assert payload["deadline_date"] == "2026-03-24"
 
+    def test_snapshot_helper_encodes_decimal_amounts(self):
+        # funding_amount is Numeric. json.dumps refuses Decimal, which aborted
+        # the snapshot and therefore the whole deletion.
+        import json
+        from decimal import Decimal
+
+        class FakeTable:
+            columns = [SimpleNamespace(name="funding_amount")]
+
+        class FakeRow:
+            __table__ = FakeTable()
+            funding_amount = Decimal("10200.00")
+
+        payload = worker._snapshot_row_payload(FakeRow())
+        assert payload["funding_amount"] == "10200.00"
+        assert json.loads(json.dumps(payload))["funding_amount"] == "10200.00"
+
 
 class TestNotUnattended:
     def test_excluded_from_all(self):

@@ -102,10 +102,16 @@ def _snapshot_row_payload(row) -> dict:
     columns rather than the handful of fields the report happens to print.
     """
     from datetime import date as _date, datetime as _datetime
+    from decimal import Decimal
 
     def encode(value):
         if isinstance(value, (_date, _datetime)):
             return value.isoformat()
+        if isinstance(value, Decimal):
+            # funding_amount is Numeric, and json refuses Decimal outright. It
+            # is stored as a string so the snapshot round-trips as data rather
+            # than losing the column.
+            return format(value, "f")
         return value
 
     return {
