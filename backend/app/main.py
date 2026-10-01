@@ -76,7 +76,30 @@ _db_lock = Lock()
 
 def _run_init() -> None:
     global _db_ready, _db_init_error
+    settings = get_settings()
     try:
+        if settings.environment == "production":
+            # Production verifies connectivity and nothing else. It does not run
+            # the schema migration.
+            #
+            # create_all plus the ALTER TABLE and CREATE INDEX statements take
+            # ACCESS EXCLUSIVE locks on scholarships and carry no statement
+            # timeout, so on a serverless cold start they wait on any concurrent
+            # maintenance job and never return. The deployment answered 503 with
+            # "Database not ready" indefinitely, with no exception anywhere,
+            # because the thread was blocked rather than failing.
+            #
+            # The schema is owned by the GitHub Actions maintenance pipeline,
+            # which runs the same migration deliberately and can afford to wait.
+            # A read path re-running it on every cold start is both wrong and
+            # the reason the API could not start.
+            logger.info("Production: verifying database connectivity, not migrating schema")
+            with get_engine().connect() as conn:
+                conn.execute(text("SELECT 1"))
+            _db_ready = True
+            logger.info("Production: database reachable")
+            return
+
         init_database()
         with get_engine().connect() as conn:
             conn.execute(text("SELECT 1"))
@@ -86,14 +109,10 @@ def _run_init() -> None:
         _db_init_error = str(exc)
         _db_ready = False
         return
-    settings = get_settings()
-    if settings.environment != "production":
-        try:
-            seed_database()
-        except Exception:
-            logger.exception("Database seeding failed", exc_info=True)
-    else:
-        logger.info("Skipping scholarship seeding in production; database is populated via migration.")
+    try:
+        seed_database()
+    except Exception:
+        logger.exception("Database seeding failed", exc_info=True)
 
 
 @asynccontextmanager

@@ -154,7 +154,19 @@ def test_lifespan_always_calls_init_database(monkeypatch):
                     pass
             asyncio.run(run_lifespan())
 
-        assert init_called is True, f"init_database() should be called in {env}"
+        if env == "production":
+            # Production verifies connectivity and does not migrate the schema.
+            # The migration is DDL that takes ACCESS EXCLUSIVE locks on
+            # scholarships with no statement timeout; on a serverless cold start
+            # it waits on the maintenance pipeline and never returns, so the API
+            # answered 503 "Database not ready" forever with no exception
+            # anywhere. Schema ownership belongs to the maintenance job.
+            assert init_called is False, (
+                "init_database() must NOT run in production; it migrates the "
+                "schema and blocks the read path on locks"
+            )
+        else:
+            assert init_called is True, f"init_database() should be called in {env}"
 
 
 def test_lifespan_always_calls_close_database(monkeypatch):
@@ -313,7 +325,10 @@ def test_production_empty_database_startup_simulation(monkeypatch):
                 pass
         asyncio.run(run_lifespan())
 
-    assert init_called is True, "init_database should be called"
+    assert init_called is False, (
+        "init_database should NOT be called in production: the read path must "
+        "not run schema migrations that take locks with no statement timeout"
+    )
     assert seed_called is False, "seed_database should NOT be called in production"
 
 
