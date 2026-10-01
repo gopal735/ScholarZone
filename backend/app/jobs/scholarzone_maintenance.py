@@ -1425,6 +1425,10 @@ def main(argv: list[str] | None = None) -> int:
                         limit = _column_length(Scholarship, field)
                         if limit and len(str(value)) > limit:
                             continue
+                    if kind == "url":
+                        limit = _column_length(Scholarship, field)
+                        if limit and len(str(value)) > limit:
+                            continue
                     setattr(row, field, value)
                     filled.append(field)
 
@@ -1452,7 +1456,18 @@ def main(argv: list[str] | None = None) -> int:
                 for field in ("funding_currency", "funding_period"):
                     value = official.get(field)
                     if isinstance(value, str) and value.strip() and not getattr(row, field, None):
-                        setattr(row, field, value.strip()[:64])
+                        limit = _column_length(Scholarship, field) or 64
+                        if len(value.strip()) > limit:
+                            # Truncating would publish a fragment - "CAD per "
+                            # for an eight-character currency code. A value that
+                            # does not fit is not the field it was filed under,
+                            # so it is left out and counted rather than mangled.
+                            skipped_too_long.append(
+                                {"id": rid, "field": field,
+                                 "length": len(value.strip()), "limit": limit}
+                            )
+                            continue
+                        setattr(row, field, value.strip())
                         filled.append(field)
                 for field in ("tuition_coverage", "living_cost_coverage", "travel_coverage"):
                     value = official.get(field)
@@ -1536,6 +1551,8 @@ def main(argv: list[str] | None = None) -> int:
             "matched": len([a for a in applied if a["outcome"] != "not_found"]),
             "changed": len(changed),
             "skipped_no_provenance": len(skipped_no_provenance),
+            "skipped_too_long": len(skipped_too_long),
+            "too_long_sample": skipped_too_long[:20],
             "fields_written": sum(a.get("fields", 0) for a in changed),
         }
         if not args.dry_run:
