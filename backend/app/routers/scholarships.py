@@ -10,6 +10,7 @@ from sqlalchemy.orm import Session
 from ..core.config import get_settings
 from ..database import get_db
 from ..models import Scholarship
+from ..repositories.scholarships import public_visibility_conditions
 from ..schemas import (
     ScholarshipDetailResponse,
     ScholarshipListResponse,

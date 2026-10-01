@@ -19,6 +19,7 @@ from sqlalchemy.orm import Session
 from ..core.config import get_settings
 from ..database import get_db
 from ..models import ApprovedSource, DiscoveryCandidate, Scholarship
+from ..services.discovery_config import seed_approved_sources
 from ..services.discovery_pipeline import DiscoveryPipeline
 from ..services.discovery_scheduler import DomainRateLimiter
 from ..services.lifecycle_manager import apply_lifecycle_transition, evaluate_lifecycle
