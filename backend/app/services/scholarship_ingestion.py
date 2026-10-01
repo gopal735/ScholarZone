@@ -43,14 +43,14 @@ class ScholarshipIngestionRecord(BaseModel):
     requirements: list[str] | None = None
     application_method: list[str] | None = None
     selection_notes: str | None = None
-    program_type: str | None = None
+    program_type: str | None = Field(default=None, max_length=255)
     best_fit: str | None = None
     notes: str | None = None
     image_url: str | None = None
     image_source_url: str | None = None
     image_source_type: str | None = None
     image_verified_at: date | None = None
-    image_alt_text: str | None = None
+    image_alt_text: str | None = Field(default=None, max_length=512)
 
     # Migration-only metadata: never stored as scholarship content.
     legacy_titles: tuple[str, ...] = ()

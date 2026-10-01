@@ -126,6 +126,33 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
             if name not in columns:
                 connection.execute(text(f"ALTER TABLE scholarships ADD COLUMN IF NOT EXISTS {name} {definition}"))
 
+        # deadline_display was varchar(255), which is shorter than the deadline
+        # wording some official pages publish. Seven researched programmes were
+        # rejected outright because their deadline sentence did not fit, and the
+        # only way to keep them was to drop the sentence. Widen the column
+        # instead of the data. region is widened for the same reason: it holds a
+        # list of eligible countries, not a single word.
+        deadline_type = connection.execute(
+            text(
+                "SELECT data_type FROM information_schema.columns "
+                "WHERE table_name = 'scholarships' AND column_name = 'deadline_display'"
+            )
+        ).scalar()
+        if deadline_type and deadline_type.lower() in ("character varying", "varchar"):
+            connection.execute(
+                text("ALTER TABLE scholarships ALTER COLUMN deadline_display TYPE TEXT")
+            )
+        region_type = connection.execute(
+            text(
+                "SELECT data_type FROM information_schema.columns "
+                "WHERE table_name = 'scholarships' AND column_name = 'region'"
+            )
+        ).scalar()
+        if region_type and region_type.lower() in ("character varying", "varchar"):
+            connection.execute(
+                text("ALTER TABLE scholarships ALTER COLUMN region TYPE TEXT")
+            )
+
         # create_all only creates indexes for a table it creates. On a database
         # that already has the table, a newly declared index is never applied,
         # so the archive filter would run unindexed against every public listing.

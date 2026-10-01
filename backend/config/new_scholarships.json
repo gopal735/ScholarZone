@@ -1,6 +1,6 @@
 {
   "generated_for": "2026-10-01",
-  "count": 32,
+  "count": 33,
   "records": [
     {
       "name": "Ibrahim Leadership Fellowships 2027",
@@ -2097,6 +2097,230 @@
         "Two letters of assessment of your academic skills by your supervisor and another university professor, both entitled to supervise a doctoral thesis and not older than six months before the application deadline, submitted by the applicant (PhD candidates)",
         "Proposal of your PhD project of five to ten pages with literature appendix, covering topical actuality and social or political relevance, the main problems and solution approaches, research design and methods, and a tentative timeframe (PhD candidates)"
       ],
+      "_source_file": "add_de.json"
+    },
+    {
+      "name": "PromotionsfÃ¶rderung fÃ¼r AuslÃ¤nder:innen",
+      "country": "Germany",
+      "degree_levels": "PhD",
+      "funding_type": "Stipend",
+      "official_source": "Friedrich-Ebert-Stiftung",
+      "official_source_url": "https://www.fes.de/studienfoerderung/stipendium/promotionsfoerderung-fuer-auslaender-innen",
+      "catalogue_url": "https://www.fes.de/studienfoerderung/stipendium",
+      "official_updates_url": null,
+      "region": "International (doctoral candidates admitted to a German university)",
+      "duration": "Normally three and a half years; longer possible in justified exceptional cases, at most until the final examination",
+      "deadline": "No fixed closing date; the foundation states the right time to apply is up to about two years before submission of the dissertation.",
+      "deadline_date": null,
+      "deadline_precision": "none",
+      "application_period": "Rolling intake; eligibility window is up to about two years before the dissertation is submitted.",
+      "status": "open",
+      "is_verified": true,
+      "last_verified_date": "2026-10-01",
+      "description": "The Friedrich-Ebert-Stiftung funds doctoral candidates from abroad who are admitted to doctoral study at a German university. Scholarship holders receive 1,500 Euro per month plus a subsidy for statutory health insurance; funding normally runs for three and a half years and does not have to be repaid. All subjects are funded except medicine. Good German is required, with level B2 accepted even without a certificate.",
+      "program_type": "Foundation scholarship",
+      "best_fit": "International doctoral candidates at a German university who completed their degree with above-average results, whose project makes a significant contribution to research, and who are socially and politically engaged.",
+      "funding_amount": 1500,
+      "funding_currency": "EUR",
+      "funding_period": "per month",
+      "eligibility_summary": "Doctoral candidates from abroad admitted to a German university, with very good German and above-average degree results, whose research project makes a significant contribution to research.",
+      "eligibility": [
+        "You come from abroad",
+        "You are admitted to doctoral study at a German university",
+        "You have very good German language skills",
+        "You are socially and politically engaged",
+        "You identify with the values of Social Democracy",
+        "You completed your degree quickly with an above-average result",
+        "Your research project makes a significant contribution to research",
+        "All subjects are funded except doctoral studies in medicine"
+      ],
+      "coverage": [
+        "Monthly support of 1,500 Euro",
+        "Subsidy for statutory health insurance (Zuschuss zur gesetzlichen Krankenversicherung)"
+      ],
+      "benefits": [
+        "Interdisciplinary doctoral colloquia for networking among doctoral scholarship holders",
+        "Specialist conferences with experts from politics and science where individual dissertation projects can be presented",
+        "Scholarship-holder groups in many cities and 18 thematic working groups",
+        "Integration into the network of current and former scholarship holders",
+        "Personal support and advice; former scholarship holders act as mentors",
+        "The scholarship does not have to be repaid"
+      ],
+      "requirements": [
+        "Applications are submitted in German through the FES online application portal",
+        "Proof of German language skills is required even if the dissertation is written in English"
+      ],
+      "english_requirement": null,
+      "application_method": [
+        "Create a FES portal account and complete the online application form for the doctoral scholarship",
+        "Upload the supporting documents and the expert opinion (Gutachten)",
+        "Submit before the point at which you are about two years from dissertation submission",
+        "Attend the selection interviews and await the decision of the selection committee"
+      ],
+      "selection_notes": "The general selection procedure for FES is: online application form, documents and expert opinion, first selection interview, second selection interview, decision by the selection committee. From application to decision it can take three to seven months. Applicants who are first in their family to study and/or have a migration background, as well as women and students at universities of applied sciences and in STEM subjects, are considered in particular.",
+      "notes": "Proof of German is required even when the dissertation is written in English; the foundation accepts level B2 without a certificate. Applicants who have only recently arrived in Germany are explicitly encouraged to describe engagement from their country of origin in the application.",
+      "image_url": "https://www.fes.de/_assets/9cec337f7d9b8a112ff7bc4a21068e10/Icons/General/logo-fes.svg",
+      "image_source_url": "https://www.fes.de/studienfoerderung/bewerbung",
+      "image_source_type": "official_government",
+      "image_verified_at": "2026-10-01",
+      "image_alt_text": "Friedrich Ebert Stiftung",
+      "detail": {
+        "official_details": {
+          "description": "Die PromotionsfÃ¶rderung fÃ¼r AuslÃ¤nder:innen richtet sich an Promovierende an einer deutschen Hochschule. Voraussetzung fÃ¼r eine Bewerbung sind gute deutsche Sprachkenntnisse. Ein Nachweis Ã¼ber deutsche Sprachkenntnisse ist auch notwendig, wenn die Dissertation in englischer Sprache verfasst wird. Wir akzeptieren ein Sprachniveau von B2, auch ohne Zertifikat. Stipendiat:innen der PromotionsfÃ¶rderung fÃ¼r AuslÃ¤nder:innen erhalten monatlich 1.500 Euro und einen Zuschuss zur gesetzlichen Krankenversicherung. Die Dauer der FÃ¶rderung betrÃ¤gt in der Regel dreieinhalb Jahre; in begrÃ¼ndeten AusnahmefÃ¤llen lÃ¤nger, maximal jedoch bis zum Zeitpunkt der AbschlussprÃ¼fung. Das Stipendium muss nicht zurÃ¼ckgezahlt werden. Der richtige Zeitpunkt fÃ¼r die Bewerbung: bis circa zwei Jahre vor Abgabe der Dissertation.",
+          "degree_levels": [
+            "PhD"
+          ],
+          "duration": "In der Regel dreieinhalb Jahre; in begrÃ¼ndeten AusnahmefÃ¤llen lÃ¤nger, maximal bis zum Zeitpunkt der AbschlussprÃ¼fung",
+          "application_cycle": "Continuous intake; the published application window runs up to about two years before dissertation submission",
+          "deadline_central": null,
+          "deadline_central_display": "Keine feste Frist; der richtige Zeitpunkt fÃ¼r die Bewerbung ist bis circa zwei Jahre vor Abgabe der Dissertation",
+          "deadline_institutional": null,
+          "status": "OPEN",
+          "funding_label": "Monthly support",
+          "funding_amount": 1500,
+          "funding_currency": "EUR",
+          "funding_period": "per month",
+          "tuition_coverage": false,
+          "living_cost_coverage": true,
+          "travel_coverage": false,
+          "fully_funded": false,
+          "eligibility": [
+            "aus dem Ausland kommen",
+            "an einer deutschen Hochschule zur Promotion zugelassen sind",
+            "sehr gute deutsche Sprachkenntnisse haben",
+            "gesellschaftspolitisch engagiert sind",
+            "sich mit den Werten der Sozialen Demokratie identifizieren",
+            "das Studium mit Ã¼berdurchschnittlichem Ergebnis zÃ¼gig abgeschlossen haben",
+            "deren wissenschaftliches Vorhaben einen bedeutsamen Beitrag zur Forschung leistet",
+            "Mit Ausnahme von Promotionen im Bereich Medizin fÃ¶rdern wir Promotionen in allen StudiengÃ¤ngen"
+          ],
+          "coverage": [
+            "monatlich 1.500 Euro",
+            "Zuschuss zur gesetzlichen Krankenversicherung"
+          ],
+          "requirements": [
+            "Bewerbungen sind in deutscher Sprache einzureichen",
+            "Nachweis Ã¼ber deutsche Sprachkenntnisse, auch bei englischsprachiger Dissertation; B2 wird ohne Zertifikat akzeptiert"
+          ],
+          "documents": [],
+          "selection_criteria": [
+            "Identifikation mit den Grundwerten der Sozialen Demokratie",
+            "gesellschaftspolitisches Engagement",
+            "Ã¼berdurchschnittliche Leistungen",
+            "Bedeutsamer Beitrag des wissenschaftlichen Vorhabens zur Forschung",
+            "Bei der Auswahl werden Erst-Akademiker:innen und/oder Menschen mit Migrationshintergrund, Frauen sowie Studierende an (Fach-)Hochschulen und in MINT-FÃ¤chern besonders berÃ¼cksichtigt"
+          ],
+          "application_method": [
+            "Online-Bewerbungsformular ausfÃ¼llen",
+            "Unterlagen und Gutachten einreichen",
+            "Erstes und zweites AuswahlgesprÃ¤ch",
+            "Entscheidung durch den Auswahlausschuss"
+          ],
+          "award_holder_conditions": [
+            "Das Stipendium muss nicht zurÃ¼ckgezahlt werden",
+            "Die FÃ¶rderung endet spÃ¤testens zum Zeitpunkt der AbschlussprÃ¼fung"
+          ],
+          "supplements_or_initiatives": [],
+          "official_contacts": {
+            "general": "stipendien(at)fes.de; AuslandsfÃ¶rderung: Elisabeth Schulze Horn, 0228 883-7932; Rebecca Schmitz, +49 228 883-7967"
+          },
+          "citizenship_residency": "International doctoral candidates admitted to a German university",
+          "last_verified_date": "2026-10-01"
+        },
+        "applicant_utility": {
+          "application_readiness_checklist": [
+            "Confirm your doctoral admission at a German university",
+            "Collect proof of German; a certificate is not required if you can evidence B2",
+            "Prepare a research-project description that shows a significant contribution to research",
+            "Collect evidence of social and political engagement, including engagement from your country of origin",
+            "Request the expert opinion (Gutachten) from a professor early",
+            "Apply no later than about two years before you plan to submit the dissertation"
+          ],
+          "common_rejection_risks": [
+            "Doctoral project does not make a significant contribution to research",
+            "Degree not completed with an above-average result",
+            "Missing German language evidence - required even for an English-language dissertation",
+            "Medical doctoral studies are not funded",
+            "Missing expert opinion or incomplete portal upload"
+          ],
+          "estimated_uncovered_costs": [
+            "Semester contribution and any tuition fees",
+            "Housing and living costs beyond the 1,500 Euro monthly support",
+            "Books, equipment, conferences and travel"
+          ],
+          "document_audit": [
+            "Online application form for the doctoral scholarship",
+            "Doctoral admission confirmation from the German university",
+            "Expert opinion (Gutachten) uploaded via the portal"
+          ],
+          "alerts": [
+            {
+              "trigger": "About two years before dissertation submission",
+              "message": "Latest sensible point to apply; the foundation wants holders to benefit for as long as possible."
+            },
+            {
+              "trigger": "Immediately after submitting",
+              "message": "From application to decision takes three to seven months."
+            },
+            {
+              "trigger": "If your dissertation is in English",
+              "message": "German language evidence is still mandatory for this programme."
+            }
+          ],
+          "submission_workflow": [
+            "Create a FES portal account and complete the online application for the doctoral scholarship",
+            "Upload supporting documents and the expert opinion",
+            "Submit the application within the eligibility window",
+            "Attend the first and second selection interviews",
+            "Await the decision of the selection committee"
+          ],
+          "referee_tracking": [
+            {
+              "role": "Academic referee for the expert opinion (Gutachten)",
+              "required": true,
+              "instructions": "Request the assessment early enough to upload it with the application."
+            }
+          ],
+          "post_award_requirements": [
+            "Take part in the seminars, workshops and interdisciplinary doctoral colloquia",
+            "Funding ends no later than at the final examination"
+          ]
+        },
+        "verification": {
+          "cycle_verified": "Continuous intake, no fixed annual round published",
+          "verification_confidence": 0.9,
+          "official_fields_confirmed": [
+            "Monthly support of 1,500 Euro plus a subsidy for statutory health insurance",
+            "Funding duration normally three and a half years, at most until the final examination",
+            "Scholarship does not have to be repaid",
+            "All subjects except medicine are funded",
+            "German language proof required even for English-language dissertations; B2 accepted without certificate",
+            "Application window up to about two years before dissertation submission",
+            "Eligibility list and selection criteria"
+          ],
+          "institution_check_required": [
+            "No fixed closing date is published, so deadline_date is null and deadline_precision is none",
+            "No published tuition-fee coverage statement, so tuition_coverage is false",
+            "No published English test requirement; the published language requirement is German, so english_requirement left null",
+            "The programme page references an online application form and an expert opinion (Gutachten) but does not enumerate a full document list, so documents was left empty rather than invented"
+          ],
+          "unverified_or_removed_claims": [
+            "Did not set fully_funded: official sources establish a monthly amount and a health-insurance subsidy only, not tuition, full living costs and all required expenses",
+            "Did not assert a return-home obligation; none is published",
+            "Did not fabricate a fixed deadline from the eligibility window"
+          ],
+          "source_conflict_rule": "If the German programme page and the English information page disagree, treat the German programme page as authoritative, since applications are submitted in German.",
+          "source_freshness_rule": "Funding rate and duration are set by the foundation; re-verify the 1,500 Euro rate before publishing a record.",
+          "source_citations": [
+            "https://www.fes.de/studienfoerderung/stipendium/promotionsfoerderung-fuer-auslaender-innen",
+            "https://www.fes.de/studienfoerderung/bewerbung",
+            "https://www.fes.de/studienfoerderung/stipendium"
+          ],
+          "researched_by": "add_de",
+          "last_verified_date": "2026-10-01"
+        }
+      },
+      "required_documents": [],
       "_source_file": "add_de.json"
     },
     {

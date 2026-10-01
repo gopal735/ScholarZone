@@ -25,7 +25,7 @@ class Scholarship(Base):
     funding: Mapped[str] = mapped_column(String(120), nullable=False)
     description: Mapped[str | None] = mapped_column(Text, nullable=True)
     deadline_date: Mapped[date | None] = mapped_column(Date, nullable=True, index=True)
-    deadline_display: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    deadline_display: Mapped[str | None] = mapped_column(Text, nullable=True)
     deadline_precision: Mapped[str] = mapped_column(String(16), nullable=False, default="month")
     status: Mapped[str] = mapped_column(String(20), nullable=False, default="open", index=True)
     # Archiving is separate from status on purpose.
@@ -47,7 +47,7 @@ class Scholarship(Base):
     next_verification_due: Mapped[date | None] = mapped_column(Date, nullable=True)
     verified_by: Mapped[str | None] = mapped_column(String(120), nullable=True)
     verification_notes: Mapped[str | None] = mapped_column(Text, nullable=True)
-    region: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    region: Mapped[str | None] = mapped_column(Text, nullable=True)
     duration: Mapped[str | None] = mapped_column(Text, nullable=True)
     application_period: Mapped[str | None] = mapped_column(Text, nullable=True)
     official_source: Mapped[str | None] = mapped_column(String(255), nullable=True)
