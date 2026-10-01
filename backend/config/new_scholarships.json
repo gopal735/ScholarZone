@@ -35181,25 +35181,66 @@
       "notes": "M.Sc. students are fee-paying by default and funding is NOT guaranteed for all admitted students; students without a funding source are classified as fee-paying. Ph.D. funding is subject to a confirmed advisor match and satisfactory progress, and transitions to the faculty advisor's funding no later than the start of Year 2. Funded students are expected to maintain an in-person presence on campus throughout their funded period and to obtain approval before being away. Students receiving external scholarships or fellowships must disclose this funding to the University; external funding normally replaces the University stipend rather than being paid in addition to it. The Master in Applied Artificial Intelligence (MAAI) is fee-based at AED 5,000 per credit, 34 credit hours, total tuition AED 170,000 (approx. USD 46,291), and is not eligible for University or faculty-sponsored funding. Cost of Attendance figures for Fall 2027 for unfunded M.Sc. students are currently being finalized and were not published on the page at the time of verification. An English language waiver exists and is described on the MBZUAI admissions FAQ, but the minimum score thresholds are published only on programme-specific pages, so no score is recorded here.",
       "detail": {
         "official_details": {
-          "description": "MBZUAI's graduate funding model is built on a partnership between the University and faculty advisors. Funding, benefits, and continued eligibility depend on the student's program, academic standing, and for M.Sc. students, whether they have secured a faculty-sponsored research or teaching assistantship, or an approved government scholarship. What funded students receive: free tuition fees; a monthly stipend; one return airfare each year to their home country; health insurance for the approved funding period; and University-sponsored UAE residence visa and Emirates ID (where eligible).",
+          "description": "MBZUAI's graduate funding model is built on a partnership between the University and faculty advisors. Funding, benefits, and continued eligibility depend on the student's program, academic standing, and for M.Sc. students, whether they have secured a faculty-sponsored research or teaching assistantship, or an approved government scholarship. What funded students receive: free tuition fees; a monthly stipend; one return airfare each year to their home country; health insurance for the approved funding period; and University-sponsored UAE residence visa and Emirates ID (where eligible). The published AED table gives, for M.Sc. and Ph.D. separately and for UAE nationals and international students separately, amounts of 37,500 / 43,500 and 15,500 / 17,500 respectively, but the table carries no caption or period label stating whether these figures are the monthly stipend, an annual amount, or a total award value.",
+          "purpose": [
+            "MBZUAI states it attracts exceptional students from around the world who are committed to advancing artificial intelligence through research, innovation, and real-world impact.",
+            "The funding model is explicitly a partnership between the University and faculty advisors: funding, benefits and continued eligibility depend on the student's program, academic standing, and for M.Sc. students whether a faculty-sponsored assistantship or an approved government scholarship has been secured.",
+            "Forty-three percent of incoming graduate students for the 2026-2027 academic year came from the world's top computer science universities, which the University presents as evidence of the calibre of talent attracted."
+          ],
+          "sdg_requirement": false,
+          "sdg_requirement_details": [],
           "degree_levels": [
             "Master's",
             "PhD"
           ],
-          "duration": null,
-          "application_cycle": "2026-2027 admission cycle for Fall 2027 entry. Application portal opens 7 September 2026, 8a.m. GST for all graduate programs except M.Sc. and Ph.D. Computational Biology, which opens 30 September 2026, 8a.m. GST. Final application deadline 15 December 2026, 5p.m. GST for all graduate programs except the Master in Applied Artificial Intelligence, which has a deadline of 28 February 2027, 5p.m. GST. Decision notification date 31 March 2027; offer response deadline 15 April 2027.",
+          "study_type": [
+            "Full-time, in-person graduate study at the MBZUAI campus in Abu Dhabi",
+            "Research-led graduate study; the M.Sc. in Computer Science is described as primarily a research-based degree culminating in a thesis",
+            "Coursework structured in 7-week and 14-week blocks across semesters"
+          ],
+          "degree_award": "Full degrees. The funded tracks are the M.Sc. and the Ph.D. The Master in Applied Artificial Intelligence is a separate fee-based programme that awards a degree but is not eligible for University or faculty-sponsored funding.",
+          "duration": "Not published as a single programme duration on the funding or admissions pages. The academic calendar for 2026/27 sets the Fall semester from 24 August 2026 to 28 December 2026 and the Spring semester from 11 January 2027 to 28 April 2027; individual programmes publish their own credit structure (the M.Sc. in Computer Science requires 36 credits, including at least one internship of up to six weeks).",
+          "application_cycle": "2026-2027 admission cycle for Fall 2027 entry. Application portal opens 7 September 2026, 8a.m. GST for all graduate programs except M.Sc. and Ph.D. Computational Biology, which opens 30 September 2026, 8a.m. GST. Final application deadline 15 December 2026, 5p.m. GST for all graduate programs except the Master in Applied Artificial Intelligence, which has a deadline of 28 February 2027, 5p.m. GST. Decision notification date 31 March 2027; offer response deadline 15 April 2027 (30 April 2027 for MAAI).",
           "deadline_central": "2026-12-15",
           "deadline_central_display": "Final application deadline 15 December 2026 (5p.m. GST) for all graduate programs except Master in Applied Artificial Intelligence; 28 February 2027 (5p.m. GST) for MAAI",
           "deadline_institutional": "M.Sc. and Ph.D. Computational Biology portal opens later, on 30 September 2026, but shares the 15 December 2026 final deadline",
+          "deadline_note": "Three separate date sets fall inside the 2026-2027 cycle. The portal opens 7 September 2026 for most graduate programmes but 30 September 2026 for M.Sc. and Ph.D. Computational Biology. The final deadline is 15 December 2026 at 5p.m. GST for all graduate programmes except the Master in Applied Artificial Intelligence, whose deadline is 28 February 2027 at 5p.m. GST. Decision notification is 31 March 2027 at 5p.m. GST for all except MAAI (15 April 2027), and the offer response deadline is 15 April 2027 for all except MAAI (30 April 2027). Only one application per admission cycle must be submitted; multiple submissions will not be processed, and applicants can only apply to one programme per intake. The English language proficiency component must be in the submission by the application deadline or the application is considered incomplete.",
           "status": "OPEN",
-          "funding_label": "MBZUAI graduate funding (faculty-sponsored assistantship or central funding)",
+          "funding_type": "Fully Funded (for students who secure funding; M.Sc. students are fee-paying by default)",
+          "funding_label": "MBZUAI graduate funding: free tuition fees, a monthly stipend, one return airfare each year to the home country, health insurance for the approved funding period, and University-sponsored UAE residence visa and Emirates ID (where eligible). Published AED table: UAE nationals M.Sc. 37,500 / Ph.D. 43,500; international students M.Sc. 15,500 / Ph.D. 17,500 - period not stated on the page.",
           "funding_amount": null,
           "funding_currency": "AED",
           "funding_period": null,
           "tuition_coverage": true,
+          "tuition_coverage_note": "Free tuition fees for funded students. Tuition is only free if funding is actually secured: M.Sc. students are fee-paying by default unless they obtain a faculty advisor-sponsored research or teaching assistantship or, for UAE nationals, an approved government scholarship. Cost of Attendance figures for Fall 2027 are stated to be still being finalized.",
           "living_cost_coverage": true,
           "travel_coverage": true,
           "fully_funded": true,
+          "tuition_rule": "MBZUAI, as the awarding university, covers tuition in full for students it classifies as funded. Nobody waives tuition for the Master in Applied Artificial Intelligence, which is a fee-based programme explicitly not eligible for University or faculty-sponsored funding. Tuition for M.Sc. students who do not obtain a funding source applies as normal, and the Fall 2027 cost of attendance for those students is not yet published.",
+          "home_tuition_rule": null,
+          "host_institution_fee": "The published application fee is AED 200 for all applicants, payable after completing the screening exam. It is not refunded for a funded student except in the fee-waiver cases the University publishes (screening exam score of 75% or above, or reimbursement upon enrolment). The MAAI programme is charged AED 5,000 per credit, 34 credit hours, total AED 170,000, paid each semester.",
+          "tax_status": null,
+          "covered_expenses": [
+            "Free tuition fees for funded students",
+            "A monthly stipend (published amounts are given in an unlabelled table split by student category and degree level)",
+            "One return airfare each year to the student's home country",
+            "Health insurance for the approved funding period",
+            "University-sponsored UAE residence visa and Emirates ID (where eligible)"
+          ],
+          "not_covered_or_excluded": [
+            "Students who receive external scholarships or fellowships must disclose this to the University, and external funding normally replaces the University stipend rather than being paid in addition to it",
+            "The Master in Applied Artificial Intelligence is excluded entirely: it is fee-based and not eligible for University or faculty-sponsored funding",
+            "M.Sc. students without a funding source are excluded from funding and are classified as fee-paying",
+            "Funding is not guaranteed for all admitted M.Sc. students",
+            "For Ph.D. students, funding is subject to a confirmed faculty advisor match and satisfactory progress, so it is not unconditional",
+            "Time away from campus: funded students must obtain approval before being away from the in-person campus presence requirement"
+          ],
+          "benefits": [
+            "University-sponsored UAE residence visa and Emirates ID, where eligible, which removes the usual visa sponsorship cost",
+            "One return airfare each year to the home country, which covers an annual home visit",
+            "Health insurance for the approved funding period",
+            "For Ph.D. students only, Year 1 funding is centrally funded by the University while the student is matched with a faculty advisor"
+          ],
           "eligibility": [
             "Degree in a STEM field such as computer science, electrical engineering, computer engineering, mathematics, physics, or other relevant science or engineering majors",
             "From an accredited university or college recognized by the UAE Ministry of Education (MoE)",
@@ -35208,30 +35249,93 @@
             "Degree attestation (UAE degrees) or Certificate of Recognition (degrees acquired outside the UAE) within the first semester",
             "Only one application per admission cycle must be submitted; multiple submissions will not be processed"
           ],
-          "coverage": [
-            "Free tuition fees for funded students",
-            "A monthly stipend",
-            "One return airfare each year to the student's home country",
-            "Health insurance for the approved funding period",
-            "University-sponsored UAE residence visa and Emirates ID (where eligible)"
+          "general_eligibility": [
+            "Degree in a STEM field such as computer science, electrical engineering, computer engineering, mathematics, physics, or other relevant science or engineering majors, from an accredited university or college recognized by the UAE Ministry of Education (MoE)",
+            "Minimum CGPA of 3.0 or 3.5 on a scale of 4.0, depending on the programme",
+            "Valid proof of English language proficiency meeting the admission criteria, submitted at the time of application",
+            "Complete the screening exam and pay the AED 200 application fee",
+            "Attending an admission interview where the programme requires one",
+            "No age limit to apply"
+          ],
+          "ineligibility_conditions": [
+            "Only one application per admission cycle may be submitted; multiple submissions will not be processed, and an applicant can only apply to one programme per intake",
+            "Applications with unpaid fees are considered incomplete and do not proceed to the review stage",
+            "An application is considered incomplete if the English language proficiency component is not included by the application deadline",
+            "The Master in Applied Artificial Intelligence is not eligible for University or faculty-sponsored funding",
+            "M.Sc. students without a faculty-sponsored assistantship or an approved government scholarship are classified as fee-paying",
+            "A Ph.D. student's funding guarantee is void without a confirmed faculty advisor match by the end of Year 1 and does not survive unsatisfactory progress",
+            "Funding applicants who hold external scholarships or fellowships without disclosing them are not eligible to keep the University stipend in addition",
+            "CGPA below the programme minimum of 3.0 or 3.5 on a 4.0 scale"
+          ],
+          "citizenship_residency": "Both UAE nationals and international students are funded under published amounts. Approved government scholarships are referenced for UAE nationals, and the published table of funded amounts is split between UAE nationals and international students. MBZUAI states it welcomes students from diverse backgrounds and nationalities.",
+          "international_eligibility": "Explicitly open to international students, who are named as a separate category in the published funding table. Document requirements differ by residency status: all applicants need a valid passport copy and a photo with white background; UAE nationals additionally need a valid Emirates ID, a passport copy with unified ID number, and for males a national service completion/exemption letter; UAE residents additionally need a valid UAE visa and a valid Emirates ID.",
+          "academic_level_rules": {
+            "undergraduate": [],
+            "masters": [
+              "Fee-paying by default; merit-based funding may be available",
+              "Funding is secured by a faculty advisor-sponsored research or teaching assistantship, or an approved government scholarship for UAE nationals; merit-based funding is considered during the admissions review process",
+              "Funding transfers to the faculty advisor as soon as a match is confirmed, with no fixed date",
+              "Funding is not guaranteed for all admitted students; students without a funding source are classified as fee-paying",
+              "A research statement is not required for M.Sc. applicants; it is required only for Ph.D. applicants",
+              "Referee recommendations: a minimum of two for M.Sc. applicants",
+              "The screening exam covers advanced mathematics, programming and core computer science topics",
+              "Example published structure: the M.Sc. in Computer Science requires 36 credits, including at least two electives totalling eight or more credit hours and at least one internship of up to six weeks"
+            ],
+            "phd": [
+              "Year 1 funding is centrally funded by the University while matching with a faculty advisor",
+              "Funding is secured by a confirmed faculty advisor match by the end of Year 1",
+              "Funding moves to the faculty advisor's funding no later than the start of Year 2",
+              "The guarantee of funding is subject to a confirmed advisor match and satisfactory progress",
+              "A research statement is required, uploaded as a PDF",
+              "Referee recommendations: a minimum of three for Ph.D. applicants",
+              "An official master's degree transcript and degree certificate, or an expected graduation letter, is required for Ph.D. applicants who already hold a master's degree",
+              "The screening exam covers advanced mathematics, programming, machine learning and core computer science topics",
+              "Ph.D. students admitted under the lower AELC-equivalent English band are not mentioned in MBZUAI's published conditions, which instead set minimum overall English test scores for admission"
+            ]
+          },
+          "host_requirements": [
+            "Funded students are expected to maintain an in-person presence on campus throughout their funded period and to obtain approval before being away",
+            "For Ph.D. students, a faculty advisor match must be confirmed by the end of Year 1 for the funding guarantee to hold",
+            "Students receiving external scholarships or fellowships must disclose this funding to the University",
+            "Upon admission, students must submit the official complete degree certificate and transcript, and furnish a degree attestation (UAE degrees) or Certificate of Recognition (degrees acquired outside the UAE) within their first semester"
           ],
           "requirements": [
             "Submit a curriculum vitae",
             "Submit a statement of purpose",
-            "Submit a research statement",
-            "Provide referee recommendations",
+            "Submit a research statement (Ph.D. applicants only)",
+            "Provide referee recommendations (minimum of three for Ph.D. applicants and two for M.Sc. applicants)",
             "Complete the screening exam",
             "Take the technical interview if invited",
-            "Submit only one application per admission cycle"
+            "Submit only one application per admission cycle",
+            "Pay the AED 200 application fee after completing the screening exam; applications with unpaid fees are considered incomplete",
+            "Include a valid proof of English language proficiency at the time of application"
           ],
           "documents": [
-            "Curriculum vitae",
-            "Statement of purpose",
-            "Research statement",
-            "Referee recommendations",
-            "Transcript (copy acceptable at application for senior-level students; official complete record required upon admission)",
-            "Official complete degree certificate and transcript",
-            "Degree attestation for UAE degrees or Certificate of Recognition for degrees obtained outside the UAE"
+            "Complete online application form",
+            "CV (with academic background, work experience, research publications, and programming/coding skills)",
+            "Official bachelor's degree transcript and degree certificate, or an expected graduation letter",
+            "Official master's degree transcript and degree certificate, or an expected graduation letter (only for Ph.D. applicants with a master's degree)",
+            "Referee recommendations (minimum of three for Ph.D. applicants and two for M.Sc. applicants)",
+            "Research statement (only for Ph.D. applicants) - make sure to upload as a PDF",
+            "Statement of purpose - make sure to upload as a PDF",
+            "Valid proof of English language proficiency (must meet the admission criteria and be submitted at the time of application)",
+            "Valid passport copy",
+            "Photo with white background",
+            "UAE nationals: valid Emirates ID; valid passport copy with unified ID number; UAE national service completion/exemption letter (only for UAE national males); family book (or UAE national mother's family book, for children of Emirati mothers); UAE birth certificate, valid Emirates ID and valid passport copy (only for children of Emirati mothers); valid UAE visa (only for non-GCC children of Emirati mothers)",
+            "UAE residents living in the UAE: valid UAE visa; valid Emirates ID",
+            "Degree attestation (for degrees from the UAE) or Certificate of Recognition (for degrees acquired outside the UAE), to be furnished within the first semester at MBZUAI"
+          ],
+          "document_format_rules": [
+            "The research statement must be uploaded as a PDF.",
+            "The statement of purpose must be uploaded as a PDF.",
+            "A photo with a white background must be supplied.",
+            "The passport copy must be valid; UAE nationals must supply a passport copy showing the unified ID number.",
+            "Transcripts must be translated into English before submission: both the original transcript and an official English translation are requested.",
+            "Senior-level students may apply initially with a copy of their transcript, but on admission must submit the official complete degree certificate and transcript.",
+            "A degree attestation (UAE degrees) or Certificate of Recognition (degrees acquired outside the UAE) must be furnished within the first semester.",
+            "Only specific documents may be added after submission: new standardized test scores (SAT, ACT, AP), new English proficiency test scores (IELTS, TOEFL, etc.), and updated academic transcripts, uploaded through the application portal.",
+            "English language proficiency test results are valid for 2 years from the test date.",
+            "English exams must be administered at an approved physical test centre; Home Edition exams are not accepted, and Duolingo English Test results are only accepted when IELTS/TOEFL/PTE/Cambridge access is limited, with evidence of limited access possibly requested."
           ],
           "selection_criteria": [
             "Academic excellence",
@@ -35241,6 +35345,7 @@
             "Limited places in each incoming cohort; admissions are highly competitive",
             "For M.Sc. funding, merit-based funding is considered during the admissions review process and requires a faculty advisor-sponsored assistantship or, for UAE nationals, an approved government scholarship"
           ],
+          "selection_notes": "Applicants are evaluated on academic excellence, technical preparation, research potential, and alignment with their chosen programme. The screening exam is a substantive gate: it assesses foundational knowledge in areas relevant to the programme, including advanced mathematics, programming and core computer science topics, plus machine learning for Ph.D. applicants. A subset of applicants is then invited to a technical interview with admissions committee members, with instructions provided before the interview. Applications with unpaid fees are considered incomplete and do not proceed to review. MBZUAI states that admission is highly competitive and that space in the incoming cohort is limited, and it publishes no weighting between the four evaluation criteria.",
           "application_method": [
             "Select the admission pathway on the MBZUAI admissions page",
             "Submit one application in the MBZUAI application portal before the published final deadline",
@@ -35249,19 +35354,79 @@
             "Attend the technical interview if invited",
             "Await the published decision notification date"
           ],
+          "application_steps": [
+            "1. Review the programme-specific admissions criteria, key dates and required materials for your target programme on MBZUAI's admissions pages",
+            "2. Register on the application portal at https://apply.mbzuai.ac.ae/ApplicantPortal",
+            "3. Wait for the portal to open for your programme: 7 September 2026 at 8a.m. GST for most graduate programmes, 30 September 2026 at 8a.m. GST for M.Sc. and Ph.D. Computational Biology",
+            "4. Complete the online application form, including the academic history section with your STEM degree and CGPA",
+            "5. Upload the CV, statement of purpose (PDF), research statement for Ph.D. applicants (PDF), official transcripts and degree certificates or expected graduation letters, English language proficiency proof, passport copy and photo with white background, plus the residency-specific documents if applicable",
+            "6. Provide referee recommendations: a minimum of three for Ph.D. applicants, two for M.Sc. applicants",
+            "7. Complete and pass the screening exam",
+            "8. Pay the AED 200 application fee after completing the screening exam; unpaid applications are treated as incomplete and do not proceed",
+            "9. Attend the technical interview if invited as a subset of applicants",
+            "10. Submit before the final deadline of 15 December 2026 at 5p.m. GST (28 February 2027 for MAAI); only one application per cycle is processed",
+            "11. Await the decision notification, expected no later than 31 March 2027 at 5p.m. GST, and respond to the offer by 15 April 2027 (30 April 2027 for MAAI)"
+          ],
+          "applicant_submission_route": [
+            "The applicant submits directly through the MBZUAI applicant portal at https://apply.mbzuai.ac.ae/ApplicantPortal",
+            "The applicant pays the AED 200 fee themselves through the portal after the screening exam",
+            "Decisions are notified directly to the applicant by MBZUAI"
+          ],
+          "application_portal": "https://apply.mbzuai.ac.ae/ApplicantPortal",
+          "student_direct_application": true,
+          "official_application_route": [
+            "Direct online application through MBZUAI's own applicant portal",
+            "One application per admission cycle per applicant; multiple submissions are not processed",
+            "No institutional intermediary, agent or ministry nomination is named in the published process"
+          ],
           "award_holder_conditions": [
             "M.Sc. students are fee-paying by default; funding is not guaranteed for all admitted students and students without a funding source are classified as fee-paying",
             "Ph.D. funding guarantee is subject to a confirmed faculty advisor match by the end of Year 1 and satisfactory progress",
             "Ph.D. funding moves to the faculty advisor's funding no later than the start of Year 2",
             "Funded students must maintain an in-person presence on campus throughout the funded period and obtain approval before being away",
             "External scholarships or fellowships must be disclosed to the University; external funding normally replaces the University stipend rather than being paid in addition to it",
-            "The Master in Applied Artificial Intelligence (MAAI) is not eligible for University or faculty-sponsored funding"
+            "The Master in Applied Artificial Intelligence (MAAI) is not eligible for University or faculty-sponsored funding",
+            "Students receiving external scholarships or fellowships must disclose this funding to the University"
           ],
-          "supplements_or_initiatives": [],
+          "deferrable": true,
+          "renewable": null,
+          "return_home_required": null,
+          "clinical_restriction": null,
+          "arrival_rules": [
+            "The 2026/27 academic calendar sets Students' Onboarding and Orientation Program for 17-21 August 2026 and the first day of Fall classes on 24 August 2026; MBZUAI states that some calendar dates are subject to change and to contact the Registrar's office for the most up-to-date version.",
+            "Funded students are expected to maintain an in-person presence on campus throughout the funded period and must obtain approval before being away."
+          ],
+          "timeline_rules": [
+            "Portal opens 7 September 2026 at 8a.m. GST for all graduate programmes except M.Sc. and Ph.D. Computational Biology, which open 30 September 2026 at 8a.m. GST",
+            "Final application deadline 15 December 2026 at 5p.m. GST for all graduate programmes except the Master in Applied Artificial Intelligence, which closes 28 February 2027 at 5p.m. GST",
+            "Decision notification expected no later than 31 March 2027 at 5p.m. GST for all graduate programmes except MAAI, which is 15 April 2027 at 5p.m. GST",
+            "Offer response deadline 15 April 2027 at 5p.m. GST for all graduate programmes except MAAI, which is 30 April 2027 at 5p.m. GST",
+            "The AED 200 application fee must be paid after completing the screening exam; unpaid applications are considered incomplete and do not proceed to review",
+            "The English language proficiency component must be included by the application deadline or the application is considered incomplete",
+            "Fall 2027 classes are scheduled to begin 24 August 2026 in the 2026/27 calendar, and MBZUAI notes that some dates are subject to change"
+          ],
           "official_contacts": {
-            "general": "Student Recruitment: student.recruitment@mbzuai.ac.ae; Admissions (submitted applications): admission@mbzuai.ac.ae"
+            "general": "Student Recruitment: student.recruitment@mbzuai.ac.ae for how to apply and programme information; Admissions: admission@mbzuai.ac.ae for questions on a submitted application. The Registrar's office holds the most up-to-date academic calendar.",
+            "email": "student.recruitment@mbzuai.ac.ae; admission@mbzuai.ac.ae"
           },
-          "citizenship_residency": "Both UAE nationals and international students are funded under published amounts. Approved government scholarships are referenced for UAE nationals, and the table of funded amounts is split between UAE nationals and international students.",
+          "program_type": "University-funded graduate scholarship and assistantship (Mohammed bin Zayed University of Artificial Intelligence)",
+          "region": "Middle East (United Arab Emirates, Abu Dhabi); open to UAE nationals and international students",
+          "coverage": "Covers free tuition fees, a monthly stipend, one return airfare each year to the home country, health insurance for the approved funding period, and a University-sponsored UAE residence visa and Emirates ID (where eligible). Excludes: external scholarship income (which replaces the University stipend rather than adding to it), the fee-based Master in Applied Artificial Intelligence, and any M.Sc. student without a secured funding source, who is classified as fee-paying. The published AED table is unlabelled as to period.",
+          "english_requirement": "All applicants whose first language is not English must demonstrate proficiency through one of the accepted exams at the published minimum overall score: IELTS Academic 6.5; TOEFL iBT 90/4.5; Duolingo English Test 120. Exams must be administered at an approved physical test centre and Home Edition exams are not accepted; Duolingo results are only accepted when IELTS/TOEFL/PTE/Cambridge access is limited and evidence of limited access may be requested. Results are valid for 2 years from the test date.",
+          "english_requirement_note": "Full exemption: a degree entirely taught and assessed in English at a university in a country where English is both an official language and the dominant language of instruction in higher education, including American Samoa, Australia, Botswana, Canada (excluding Quebec), Fiji, Ghana, Guyana, Ireland, Jamaica, Kenya, Lesotho, Liberia, New Zealand, Nigeria, Papua New Guinea, Samoa, Singapore, Solomon Islands, South Africa, Tonga, Trinidad and Tobago, United Kingdom, United States, Zambia, Zimbabwe. Conditional exemption: a degree completed elsewhere may still qualify with official documentation on university letterhead signed by an academic official confirming the entire programme was taught and assessed in English. A Medium of Instruction letter is provisionally accepted at submission, subject to review and verification; if not approved, an approved ELP test score must be submitted within the deadline set by Admissions. The application is considered incomplete if the English proficiency component is not included by the deadline.",
+          "study_mode": "On campus, in person, Abu Dhabi",
+          "research_requirement": "required",
+          "supplements_or_initiatives": [],
+          "official_source_urls": [
+            "https://mbzuai.ac.ae/admissions/graduate-masters-admissions",
+            "https://mbzuai.ac.ae/admissions/graduate-phd-admissions",
+            "https://mbzuai.ac.ae/admissions-aid",
+            "https://mbzuai.ac.ae/academics/msc-programs/masters-in-computer-science",
+            "https://mbzuai.ac.ae/academics/academic-calendar-2026-27"
+          ],
+          "official_updates_url": "https://mbzuai.ac.ae/admissions/graduate-masters-admissions",
+          "application_link": "https://apply.mbzuai.ac.ae/ApplicantPortal",
+          "catalogue_url": "https://mbzuai.ac.ae/academics/msc-programs",
           "last_verified_date": "2026-10-01"
         },
         "applicant_utility": {
@@ -35271,7 +35436,19 @@
             "Prepare your CV, statement of purpose and research statement before the portal deadline",
             "Line up referees early, since referee recommendations are a required element",
             "Study for and book the screening exam",
-            "Check whether you qualify for the published English language waiver before paying for a test score"
+            "Check whether you qualify for the published English language waiver before paying for a test score",
+            "Prepare your proof of English proficiency, which must be in the submission by the deadline or the application is treated as incomplete",
+            "Get your referees lined up to the correct count: three for a Ph.D. application, two for an M.Sc. application",
+            "Plan for the AED 200 fee, which is payable after the screening exam and is not refunded if you decline"
+          ],
+          "important_advice_for_students": [
+            "Do not assume an M.Sc. admission includes funding. M.Sc. students are fee-paying by default and need a faculty-sponsored assistantship or, if a UAE national, an approved government scholarship; funding is not guaranteed for all admitted students.",
+            "Budget the uncovered tuition deliberately if you are an unfunded M.Sc. student. MBZUAI states the Fall 2027 cost of attendance is still being finalized, so you must ask the University for the figure rather than assume it.",
+            "If you already hold external funding, disclose it. External money normally replaces the University stipend rather than being paid alongside it, so you may end up with less than you expected.",
+            "The AED 200 fee comes after the screening exam, not before. Unpaid applications are considered incomplete and are never reviewed, so treat it as mandatory rather than optional.",
+            "Watch the residency-specific document list. UAE nationals, children of Emirati mothers, and UAE residents each have a different set of identity documents beyond the passport and white-background photo.",
+            "Get your English sorted early. Home Edition exams are not accepted, results expire after two years, and Duolingo is only accepted where access to IELTS/TOEFL/PTE/Cambridge is genuinely limited.",
+            "If you are considering deferral, note it is only granted on an exceptional basis, typically for military service, medical reasons or other significant personal circumstances, and approved deferrals are generally limited to one admission cycle."
           ],
           "common_rejection_risks": [
             "Submitting more than one application in a cycle, since multiple submissions will not be processed",
@@ -35280,20 +35457,40 @@
             "Assuming M.Sc. admission means funding, since M.Sc. students are fee-paying by default",
             "Failing to supply the official complete degree certificate and transcript after admission",
             "Missing the first-semester deadline for degree attestation or Certificate of Recognition",
-            "CGPA below the programme minimum of 3.0 or 3.5 on a 4.0 scale"
+            "CGPA below the programme minimum of 3.0 or 3.5 on a 4.0 scale",
+            "Not paying the AED 200 fee, which makes the application incomplete and blocks it from review",
+            "Omitting the English proficiency component by the deadline, which also makes the application incomplete",
+            "Submitting a Home Edition English test, or Duolingo without evidence of limited test access",
+            "Providing fewer referees than required (two for M.Sc., three for Ph.D.)",
+            "Uploading a research statement or statement of purpose in a format other than PDF"
           ],
           "estimated_uncovered_costs": [
             "All tuition and fees for M.Sc. students who are not funded through a faculty-sponsored assistantship or an approved government scholarship, with Fall 2027 cost of attendance figures still being finalized",
             "AED 170,000 total tuition for the Master in Applied Artificial Intelligence",
+            "The AED 200 application fee, unless waived or reimbursed on enrolment",
             "Living costs beyond the monthly stipend, if personal expenses exceed it",
-            "Costs not covered for dependants"
+            "Costs not covered for dependants",
+            "Any travel beyond the single annual return airfare to the home country"
           ],
           "document_audit": [
             "Transcript: a copy is acceptable at application for senior-level students, but the official complete record is required upon admission",
             "Degree certificate: official complete degree certificate required upon admission",
             "Recognition documents: degree attestation for UAE degrees or Certificate of Recognition for degrees obtained outside the UAE, to be furnished within the first semester at MBZUAI",
-            "Research statement: a separate document from the statement of purpose and required for graduate applications",
-            "Referee recommendations: required, so confirm referees before submitting"
+            "Research statement: a separate document from the statement of purpose, required for Ph.D. applicants only, and it must be a PDF",
+            "Statement of purpose: must be uploaded as a PDF",
+            "Referee recommendations: required, minimum three for Ph.D. and two for M.Sc., so confirm referees before submitting",
+            "English proficiency proof: must be an accepted test with the published minimum overall score, taken at an approved physical test centre, and no more than two years old at submission; if you are relying on a Medium of Instruction letter, expect verification and be ready to produce an approved test score if it is rejected",
+            "Passport copy: valid, and for UAE nationals it must show the unified ID number",
+            "Photo: with a white background",
+            "Translations: transcripts not in English must be translated before submission, and both the original and the official English translation are requested",
+            "Residency documents: UAE nationals need Emirates ID, unified-number passport copy, national service letter for males, and family book; children of Emirati mothers need the mother's Emirates ID and passport, a UAE birth certificate, and for non-GCC children a valid UAE visa; UAE residents need a valid UAE visa and Emirates ID"
+          ],
+          "referee_tracking": [
+            {
+              "role": "Referee providing a recommendation for the graduate application",
+              "required": true,
+              "instructions": "Referee recommendations are required, with a published minimum of three for Ph.D. applicants and two for M.Sc. applicants. The page does not publish whether referees submit directly through the portal or supply letters, and publishes no format or deadline rule, so confirm the mechanics with Admissions at admission@mbzuai.ac.ae before nominating. Nominate the right number of referees for your degree level from the start, since the minimum differs."
+            }
           ],
           "alerts": [
             {
@@ -35313,6 +35510,14 @@
               "message": "Your funding is centrally funded in Year 1 while you are matched with a faculty advisor, then moves to the advisor's funding no later than the start of Year 2."
             },
             {
+              "trigger": "After the screening exam",
+              "message": "Pay the AED 200 fee. Applications with unpaid fees are considered incomplete and will not proceed to the review stage."
+            },
+            {
+              "trigger": "Before you submit",
+              "message": "Check your English proof is in. Without the English language proficiency component, the application is considered incomplete."
+            },
+            {
               "trigger": "After admission",
               "message": "Expect to hand in the official complete degree certificate and transcript, and the attestation or Certificate of Recognition, within your first semester."
             }
@@ -35327,24 +35532,27 @@
             "Submit before the final deadline; only one application per cycle is processed",
             "Attend the technical interview if invited and wait for the 31 March 2027 decision notification"
           ],
-          "referee_tracking": [
-            {
-              "role": "Referee providing a recommendation for the graduate application",
-              "required": true,
-              "instructions": "Referee recommendations are listed as a required element of graduate applications to MBZUAI. The page does not publish a referee number or whether referees submit directly, so confirm the number and format with Admissions at admission@mbzuai.ac.ae before nominating."
-            }
-          ],
           "post_award_requirements": [
             "Maintain in-person presence on campus throughout the funded period and obtain approval before being away",
             "Disclose any external scholarship or fellowship funding to the University",
             "Submit the official complete degree certificate and transcript upon admission",
             "Furnish the degree attestation (UAE) or Certificate of Recognition (non-UAE) within the first semester",
-            "For Ph.D. students, secure a confirmed faculty advisor match by the end of Year 1 to keep the funding guarantee"
+            "For Ph.D. students, secure a confirmed faculty advisor match by the end of Year 1 to keep the funding guarantee",
+            "Accept that external funding replaces rather than supplements the University stipend"
+          ],
+          "questions_to_ask_host": [
+            "Is the AED 37,500 / 43,500 (UAE nationals) and AED 15,500 / 17,500 (international) figure the monthly stipend, the annual total, or something else? The published table does not say.",
+            "For an M.Sc. applicant, how likely is a faculty-sponsored assistantship in my programme, and how many assistantships exist per intake?",
+            "What is the Fall 2027 cost of attendance for an unfunded M.Sc. student, and when will it be published?",
+            "Do I need to be physically on campus for the whole funded period, and what is the approval process for being away?",
+            "How does the M.Sc. funding transfer to a faculty advisor work in practice, and what happens if no advisor match is found?",
+            "Which additional documents apply to my exact residency status, particularly if I am a non-GCC child of an Emirati mother?",
+            "Do referees submit through the portal or send letters, and is there a deadline for them?"
           ]
         },
         "verification": {
           "cycle_verified": "MBZUAI 2026-2027 graduate admission cycle (Fall 2027 entry): portal open 7 September 2026 (Computational Biology 30 September 2026), final deadline 15 December 2026, decision notification 31 March 2027, offer response 15 April 2027",
-          "verification_confidence": 0.85,
+          "verification_confidence": 0.9,
           "official_fields_confirmed": [
             "Application portal opening dates (7 September 2026 for most graduate programs; 30 September 2026 for M.Sc. and Ph.D. Computational Biology)",
             "Final application deadlines (15 December 2026 at 5p.m. GST for all graduate programs except MAAI; 28 February 2027 for MAAI)",
@@ -35354,27 +35562,56 @@
             "M.Sc. funding model (fee-paying by default, assistantship or approved government scholarship, not guaranteed)",
             "MAAI fee-based status with per-credit and total tuition in AED and the USD approximation",
             "General graduate entry requirements including the UAE Ministry of Education recognition and 3.0 or 3.5 CGPA",
-            "Required application elements: CV, statement of purpose, research statement, referee recommendations, screening exam, technical interview",
-            "Official contact emails for Student Recruitment and Admissions"
+            "The full expanded 'General required documents' accordion, including the residency-specific document lists for UAE nationals, children of Emirati mothers, and UAE residents",
+            "The application fee rule: AED 200 after the screening exam, with the three published fee-waiver cases",
+            "The screening exam scope and the technical interview invitation structure",
+            "English language minimum overall scores, the physical-test-centre rule, the Duolingo restriction and the two-year validity",
+            "The English language waiver, the conditional exemption route and the provisional MOI letter treatment",
+            "The transcript translation rule and the post-submission document-addition rule",
+            "Official contact emails for Student Recruitment and Admissions",
+            "2026/27 academic calendar dates for orientation, first day of classes and semester structure"
           ],
           "institution_check_required": [
-            "The AED amounts table (UAE nationals M.Sc. 37,500 / Ph.D. 43,500; international students M.Sc. 15,500 / Ph.D. 17,500) appears immediately after the 'What funded students receive' list on the graduate master's admissions page, but the page publishes no table caption or column heading stating whether these figures are the monthly stipend amount, an annual amount, or a total award value, so funding_amount and funding_period are left null and the figures should be confirmed with MBZUAI before an applicant budgets on them",
-            "The published English language waiver criteria were read on the MBZUAI admissions and aid FAQ page, but the minimum English test scores themselves are stated only on programme-specific pages that were not read, so english_requirement is null",
-            "Fall 2027 cost of attendance for unfunded M.Sc. students is stated as still being finalized and is not yet published"
+            "The AED amounts table (UAE nationals M.Sc. 37,500 / Ph.D. 43,500; international students M.Sc. 15,500 / Ph.D. 17,500) appears immediately after the 'What funded students receive' list on the graduate master's and Ph.D. admissions pages, but the table carries no caption, no heading and no period label stating whether these figures are the monthly stipend amount, an annual amount, or a total award value, so funding_amount and funding_period are left null and the figures should be confirmed with MBZUAI before an applicant budgets on them",
+            "Whether referees submit through the portal or provide letters, and any deadline for them: the page states only 'referee recommendations' and the FAQ defers the count question to programme-specific pages",
+            "Fall 2027 cost of attendance for unfunded M.Sc. students is stated as still being finalized and is not yet published",
+            "The English minimum scores and waiver are confirmed from the Master of Science in Computer Science programme page; other M.Sc. and Ph.D. programmes may publish different thresholds and were not individually read",
+            "Programme-specific durations in years or months: the funding and admissions pages publish credit structures and a calendar but no programme length in time, and the MAAI table publishes 34 credit hours without a time period"
           ],
           "unverified_or_removed_claims": [
-            "Did not treat the AED table as a confirmed monthly stipend figure; the page does not label it",
+            "Did not treat the AED table as a confirmed monthly stipend figure; the page does not label it, and it sits directly after a list whose only monetary item is 'a monthly stipend'",
             "Did not set fully_funded for the Master in Applied Artificial Intelligence, which the page states is fee-based and ineligible for University or faculty-sponsored funding",
-            "Did not assert a specific English test score threshold because the page defers to programme-specific pages"
+            "Set deferrable true on the strength of the published FAQ that deferral requests are considered on an exceptional basis for circumstances such as military service, medical reasons or other significant personal circumstances, and approved deferrals are generally limited to one admission cycle",
+            "Left renewable null and return_home_required null because the pages publish neither a renewal rule nor any return-home obligation",
+            "Left tax_status null and home_tuition_rule null because the pages address neither",
+            "Left duration as a descriptive rather than a single published figure, because no official page states programme length in time"
           ],
-          "source_conflict_rule": "Where the admissions and aid landing page and the programme-specific admissions pages disagree, the programme-specific admissions page is treated as authoritative because it carries the operative dates and funding model; funding statements are only carried forward if the programme page itself publishes them.",
-          "source_freshness_rule": "The page states Cost of Attendance figures for Fall 2027 are currently being finalized and will be published once confirmed, so this record must be re-read before each cycle; any record older than one admission cycle is treated as stale.",
+          "source_conflict_rule": "Where the admissions and aid landing page and the programme-specific admissions pages disagree, the programme-specific admissions page is treated as authoritative because it carries the operative dates and funding model; funding statements are only carried forward if the programme page itself publishes them. The English thresholds are taken from the M.Sc. in Computer Science programme page because that is the page the admissions FAQ itself directs applicants to for English requirements.",
+          "source_freshness_rule": "The page states Cost of Attendance figures for Fall 2027 are currently being finalized and will be published once confirmed, and the academic calendar states some dates are subject to change, so this record must be re-read before each cycle; any record older than one admission cycle is treated as stale.",
           "source_citations": [
             "https://mbzuai.ac.ae/admissions/graduate-masters-admissions",
-            "https://mbzuai.ac.ae/admissions-aid"
+            "https://mbzuai.ac.ae/admissions/graduate-phd-admissions",
+            "https://mbzuai.ac.ae/admissions-aid",
+            "https://mbzuai.ac.ae/academics/msc-programs/masters-in-computer-science",
+            "https://mbzuai.ac.ae/academics/academic-calendar-2026-27"
           ],
-          "researched_by": "add_me",
-          "last_verified_date": "2026-10-01"
+          "researched_by": "d9",
+          "last_verified_date": "2026-10-01",
+          "data_quality": {
+            "source_level": "Official provider pages (MBZUAI admissions, academics and admissions-aid sections)",
+            "coverage": "High. The graduate master's and Ph.D. admissions pages were read with all accordions expanded, the admissions-aid FAQ was read with all answers expanded, and the English thresholds were confirmed on a programme page.",
+            "pages_read": [
+              "https://mbzuai.ac.ae/admissions/graduate-masters-admissions",
+              "https://mbzuai.ac.ae/admissions/graduate-phd-admissions",
+              "https://mbzuai.ac.ae/admissions-aid",
+              "https://mbzuai.ac.ae/academics/msc-programs/masters-in-computer-science",
+              "https://mbzuai.ac.ae/academics/academic-calendar-2026-27"
+            ],
+            "pages_unreadable": [
+              "https://mbzuai.ac.ae/admissions/graduate-masters-admissions and /admissions/graduate-phd-admissions returned HTTP 403 to webfetch and to a plain urllib request; both were read successfully through the browser instead, with all accordion panels expanded",
+              "One browser navigation to /admissions/graduate-phd-admissions was hijacked to an unrelated host (www.ip-paris.fr) and the first reload hung at document.readyState 'loading' with no body; a second navigation succeeded and the page was read in full"
+            ]
+          }
         }
       },
       "required_documents": [
@@ -35453,25 +35690,69 @@
       "image_alt_text": "Hamad Bin Khalifa University",
       "detail": {
         "official_details": {
-          "description": "Hamad Bin Khalifa University is dedicated to assisting students in navigating financial support for their degrees. Graduate student scholarships may include a tuition waiver applied to reduce the tuition costs for the students and a stipend paid directly to the student. Generally, graduate students receiving a stipend would also be provided with a tuition waiver. Tuition waivers are standardized across HBKU. Stipends are awarded to selected graduate students and depend on the availability of funds.",
+          "description": "Hamad Bin Khalifa University states it is dedicated to assisting students in navigating financial support for their degrees. Graduate student scholarships may include a tuition waiver applied to reduce the tuition costs for the students and a stipend paid directly to the student, and generally graduate students receiving a stipend would also be provided with a tuition waiver. Tuition waivers are standardised across HBKU, with published waiver percentages that vary by programme type from 100% down to 0%. Stipends are awarded to selected graduate students, at published monthly rates split by student category (Qatari, international, local) and degree level (PhD and Master's), for 45 months at PhD level and 21 months at Master's level. Crucially, students are responsible for covering the cost of their housing, whether in Qatar Foundation dormitories or external accommodation, paid from the monthly stipend or personal funds, and HBKU does not provide direct payment for student housing.",
+          "purpose": [
+            "HBKU states the university is dedicated to assisting students in navigating financial support for their degrees, and this page outlines the financial support provided to graduate students at HBKU.",
+            "The graduate funding scheme is built on an explicit partnership between funding and work: stipends are awarded to full-time graduate students who serve the university as research assistants and/or teaching assistants, so the award funds graduate study in exchange for supervised research and teaching labour."
+          ],
+          "sdg_requirement": false,
+          "sdg_requirement_details": [],
           "degree_levels": [
             "Master's",
             "PhD"
           ],
-          "duration": "Stipend duration of 45 months for PhD programmes and 21 months for Master's programmes",
-          "application_cycle": "2026-2027 admission cycle. Online graduate admission application opens to the public on 1 October 2026. Admission application deadline for international graduate applicants is 1 February 2027. Admission application deadline for Qatari and resident applicants who wish to apply for funding is 15 March 2027.",
+          "study_type": [
+            "Full-time graduate study at HBKU",
+            "Research-assistant work with a primary supervisor as a condition of the stipend",
+            "Optionally combined with teaching-assistant work and Student Employment Program hours",
+            "Some programmes are degree programmes (MA, MS, PhD, S.J.D., J.D., LL.M.) and others are certificate programmes"
+          ],
+          "degree_award": "Full degrees for the PhD, S.J.D., MS, MA, J.D. and LL.M. programmes. The published table also lists Certificate Programs, which are not degree-awarding but are listed among the programme types for which a tuition waiver rate is published.",
+          "duration": "Stipend duration of 45 months for PhD programmes and 21 months for Master's programmes. The page publishes stipend duration only; it does not publish a programme length in academic years for the degree programmes themselves.",
+          "application_cycle": "2026-2027 admission cycle. Online graduate admission application opens to the public on 1 October 2026. Admission application deadline for international graduate applicants is 1 February 2027. Admission application deadline for Qatari and resident applicants who wish to apply for funding is 15 March 2027. Scholarship consideration takes place inside the admissions process, with no separate scholarship application.",
           "deadline_central": "2027-02-01",
           "deadline_central_display": "Admission application deadline for international graduate applicants 1 February 2027",
           "deadline_institutional": "Admission application deadline for Qatari and resident applicants who wish to apply for funding 15 March 2027",
+          "deadline_note": "There are two different deadlines and the earlier one applies to international applicants. The online graduate admission application opens to the public on 1 October 2026. International graduate applicants must apply by 1 February 2027. Qatari and resident applicants who wish to apply for funding have until 15 March 2027. An international applicant who assumes the later funding deadline applies would miss the deadline by six weeks, because the funding deadline is published specifically for Qatari and resident applicants. Scholarship consideration happens during the admissions process and there is no separate scholarship deadline, because no separate scholarship application exists.",
           "status": "OPEN",
-          "funding_label": "HBKU graduate tuition waiver and stipend",
+          "funding_type": "Partial Funding (tuition waiver plus stipend; housing is the student's own cost)",
+          "funding_label": "HBKU graduate tuition waiver (100%, 75%, 60% or 0% by programme type) plus a monthly stipend paid directly to the student, plus a single round-trip airfare for international students",
           "funding_amount": null,
           "funding_currency": "QAR",
-          "funding_period": null,
+          "funding_period": "Monthly, over 45 months for PhD programmes and 21 months for Master's programmes",
           "tuition_coverage": true,
-          "living_cost_coverage": true,
+          "tuition_coverage_note": "Partial and programme-dependent. Published waiver rates: PhD STEM (CSE and CHLS) 100% of a 4,000 QAR per credit fee; PhD SHAPE and S.J.D. (CIS, CHSS, CL) 100% of 2,500 QAR; STEM MS Programs (CSE and CHLS) 75% of 4,000 QAR; SHAPE MS and MA Programs (CIS, CHSS, CPP) 60% of 2,500 QAR; J.D. (CL) 60% of 2,500 QAR; LL.M. Programs (CL) 0% of 2,000 QAR; MS Economics (SEM) 0% of 2,500 QAR; Certificate Programs 0% of 2,000 QAR. Nobody waives tuition for the LL.M., MS Economics or certificate programmes, which are published at 0%.",
+          "living_cost_coverage": "Partial. A monthly stipend is paid directly to the student and the page states it is a fixed amount meant to cover general living expenses, including meals. Housing is explicitly excluded: students are responsible for covering the cost of their housing whether in Qatar Foundation dormitory facilities or external accommodations, paid from the monthly stipend or personal funds, and HBKU does not provide direct payment for student housing.",
           "travel_coverage": true,
           "fully_funded": false,
+          "tuition_rule": "HBKU itself applies the tuition waiver, and the waivers are standardised across HBKU at the published programme-specific rate. The waiver is not a full waiver for every programme: PhD STEM and PhD SHAPE/S.J.D. receive 100%, STEM MS receives 75%, SHAPE MS and MA and the J.D. receive 60%, and LL.M., MS Economics and certificate programmes receive 0%. Self-sponsored graduate students are only eligible for a discounted tuition rate of 2,000 QAR per credit hour based on financial need, and the published guidelines do not apply to students funded by external sources, who follow their sponsors' policies.",
+          "home_tuition_rule": null,
+          "host_institution_fee": "No separate host-institution fee is published for a funded student. For self-sponsored graduate students, HBKU publishes a discounted tuition rate of 2,000 QAR per credit hour based on financial need, which applies only where no funding is awarded.",
+          "tax_status": null,
+          "covered_expenses": [
+            "Tuition waiver at a programme-specific published rate: 100% for PhD STEM (CSE and CHLS) and for PhD SHAPE and S.J.D. (CIS, CHSS, CL); 75% for STEM MS Programs (CSE and CHLS); 60% for SHAPE MS and MA Programs (CIS, CHSS, CPP) and for the J.D. (CL); 0% for LL.M. Programs (CL), MS Economics (SEM) and Certificate Programs",
+            "Monthly stipend paid directly to the student: Qatari PhD 11,000 QAR (132,000 QAR per year); International PhD 9,000 QAR (108,000 QAR per year); Local PhD 5,000 QAR (60,000 QAR per year); Qatari Master's 9,000 QAR (108,000 QAR per year); International Master's 7,000 QAR (84,000 QAR per year); Local Master's 4,000 QAR (48,000 QAR per year)",
+            "Single round-trip airfare during candidature for international students: one inbound ticket upon starting the academic program and one outbound ticket upon graduation",
+            "Eligibility for paid teaching-assistant work at an hourly rate of 50 QAR for 10 hours per week for the duration of the semester in which the student is assigned to teach",
+            "Eligibility for paid employment through the Student Employment Program for up to 10 additional hours per week"
+          ],
+          "not_covered_or_excluded": [
+            "Housing, explicitly: students are responsible for covering the cost of their housing whether in Qatar Foundation dormitory facilities or external accommodations, paid from the monthly stipend or personal funds, and HBKU does not provide direct payment for student housing",
+            "Meal plans are not separately included; the stipend is a fixed amount meant to cover general living expenses, including meals",
+            "Tuition for LL.M. Programs (CL), MS Economics (SEM) and Certificate Programs, which carry a published 0% tuition waiver",
+            "The remaining tuition for programmes with a 75% or 60% waiver",
+            "Stipends funded from external sources, including research grants, are excluded from the published rates",
+            "Students funded by external sources are not covered by these guidelines and must follow their sponsors' policies",
+            "Dependants: stipend awards do not depend on the student's marital status or the number of family dependents, so no additional amount is provided for them",
+            "Any flight other than the single round-trip airfare provided to international students"
+          ],
+          "benefits": [
+            "A stipend paid directly to the student rather than credited against fees",
+            "A single round-trip airfare for international students, covering both the inbound ticket at the start of the academic program and the outbound ticket on graduation",
+            "Paid teaching-assistant work at 50 QAR per hour for 10 hours per week for the duration of the assigned semester",
+            "Paid work through the Student Employment Program for up to 10 additional hours per week beyond the research-assistant commitment",
+            "HBKU states stipend awards do not depend on marital status or the number of family dependents"
+          ],
           "eligibility": [
             "Considered for scholarships during the admissions process; no separate application is needed",
             "Awards depend on the availability of funds and are not guaranteed; they are awarded only on a merit or need basis",
@@ -35481,27 +35762,68 @@
             "Students receiving a stipend shall work as research assistants with their primary supervisors for 10 hours per week",
             "Students must maintain good academic standing as specified by the scholarship agreement"
           ],
-          "coverage": [
-            "Tuition waiver at a programme-specific rate: PhD STEM (CSE and CHLS) 100% of a 4,000 QAR per credit fee; PhD SHAPE and S.J.D. (CIS, CHSS and CL) 100% of 2,500 QAR; STEM MS Programs (CSE and CHLS) 75% of 4,000 QAR; SHAPE MS and MA Programs (CIS, CHSS and CPP) 60% of 2,500 QAR; J.D. (CL) 60% of 2,500 QAR; LL.M. Programs (CL) 0% of 2,000 QAR; MS Economics (SEM) 0% of 2,500 QAR; Certificate Programs 0% of 2,000 QAR",
-            "Monthly stipend paid directly to the student, at published rates by student category and programme level",
-            "Single round-trip airfare for international students during their candidature: one inbound ticket upon starting the academic program and one outbound ticket upon graduation"
+          "general_eligibility": [
+            "Apply through the HBKU graduate admissions process; there is no separate scholarship application",
+            "Be a full-time graduate student: full-time working professionals and part-time workers who exceed 40% of full-time hours are not eligible for stipends",
+            "Serve the university as a research assistant and/or teaching assistant, depending on availability of funds",
+            "Commit to 10 hours per week of research-assistant work with the primary supervisor while receiving a stipend",
+            "Remain within a maximum of 20 hours per week of total work",
+            "Maintain good academic standing as specified by the scholarship agreement, since scholarships are reviewed annually against academic progress and available funds"
+          ],
+          "ineligibility_conditions": [
+            "Full-time working professionals and part-time workers who exceed 40% of full-time hours are not eligible for stipends",
+            "Students exceeding a maximum of 20 hours per week in total work, which is 10 hours beyond the research-assistant commitment",
+            "Students failing to maintain good academic standing as specified by the scholarship agreement, since scholarships are reviewed annually",
+            "Students funded by external sources, whose stipends are excluded from the published rates and who follow their sponsors' policies rather than these guidelines",
+            "LL.M. Programs (CL), MS Economics (SEM) and Certificate Programs receive a 0% tuition waiver, so no tuition support is available to them",
+            "Applicants submitting more than two applications per academic year, which is the published limit",
+            "Admission is not by itself an award: HBKU states scholarships are not automatically awarded to admitted students"
+          ],
+          "citizenship_residency": "Three student categories are published with separate stipend rates: Qatari (PhD 11,000 QAR/month, Master's 9,000 QAR/month), international (PhD 9,000 QAR/month, Master's 7,000 QAR/month), and local/resident (PhD 5,000 QAR/month, Master's 4,000 QAR/month). Only international students receive the single round-trip airfare. HBKU publishes two different deadlines by residency status.",
+          "international_eligibility": "Explicitly open to international students, who are a named stipend category with published rates lower than the Qatari rates but higher than local rates. International applicants face the earlier deadline of 1 February 2027 and are the only category eligible for the single round-trip airfare. The page publishes no nationality restriction.",
+          "academic_level_rules": {
+            "undergraduate": [],
+            "masters": [
+              "Master's programmes carry a stipend for 21 months, at published monthly rates of 9,000 QAR (Qatari), 7,000 QAR (international) or 4,000 QAR (local), with annual rates of 108,000, 84,000 and 48,000 QAR",
+              "Tuition waiver depends on the programme: STEM MS Programs (CSE and CHLS) 75% of a 4,000 QAR per credit fee; SHAPE MS and MA Programs (CIS, CHSS, CPP) 60% of 2,500 QAR; LL.M. Programs (CL) 0% of 2,000 QAR; MS Economics (SEM) 0% of 2,500 QAR; Certificate Programs 0% of 2,000 QAR",
+              "Stipends for local students are limited"
+            ],
+            "phd": [
+              "PhD programmes carry a stipend for 45 months, at published monthly rates of 11,000 QAR (Qatari), 9,000 QAR (international) or 5,000 QAR (local), with annual rates of 132,000, 108,000 and 60,000 QAR",
+              "PhD STEM programmes (CSE and CHLS) receive a 100% tuition waiver against a 4,000 QAR per credit fee",
+              "PhD SHAPE and S.J.D. programmes (CIS, CHSS and CL) receive a 100% tuition waiver against a 2,500 QAR per credit fee",
+              "Research-assistant work with the primary supervisor for 10 hours per week is a condition of the stipend"
+            ]
+          },
+          "host_requirements": [
+            "Students receiving a stipend shall work as research assistants with their primary supervisors for 10 hours per week",
+            "Students are allowed to work a maximum of 20 hours per week in total, that is 10 hours beyond their research-assistant commitment",
+            "Students receiving a stipend are eligible to serve as teaching assistants for 10 hours per week at an hourly rate of 50 QAR for the duration of the semester in which they are assigned to teach",
+            "Students receiving a stipend are eligible for paid employment through the Student Employment Program for up to 10 additional hours per week",
+            "Students must comply with the good academic standing specified by the scholarship agreement, which is reviewed annually"
           ],
           "requirements": [
             "Apply through the HBKU graduate admissions process; no separate scholarship application is needed",
             "Work as a research assistant with the primary supervisor for 10 hours per week while receiving a stipend",
             "Work no more than 20 hours per week in total, i.e. 10 hours beyond the RA commitment",
             "Maintain good academic standing as specified in the scholarship agreement; scholarships are reviewed annually and depend on academic progress and available funds",
-            "Self-sponsored graduate students are only eligible for a discounted tuition rate of 2,000 QAR per credit hour based on financial need"
+            "Self-sponsored graduate students are only eligible for a discounted tuition rate of 2,000 QAR per credit hour based on financial need",
+            "For international students only, a single round-trip airfare is provided during candidature, one inbound ticket on starting and one outbound ticket on graduation"
           ],
           "documents": [
-            "HBKU graduate admission application and supporting documents as required by the admissions process"
+            "HBKU graduate admission application and supporting documents as required by the admissions process",
+            "Supplementary documents submitted after submission, per the confirmation email instructions",
+            "Contact details for references, provided after submission per the confirmation email instructions",
+            "The scholarship agreement, once awarded, which sets the academic standing the holder must maintain"
           ],
+          "document_format_rules": [],
           "selection_criteria": [
             "Preliminary application review by the HBKU admissions team for completeness and eligibility",
             "Assessment by the relevant college",
             "Scholarships awarded on a merit or financial need basis and subject to the availability of funds",
             "Continued eligibility reviewed annually against academic progress and available funds"
           ],
+          "selection_notes": "Scholarship consideration is not a separate competitive process with published criteria: HBKU states candidates are considered for scholarships during the admissions process, that no separate application is needed, and that scholarships are not automatically awarded to admitted students but are offered based on merit or financial need and available funds. The published selection path is therefore the ordinary admissions path - HBKU admissions team preliminary review for completion and eligibility, then assessment by the relevant college - with the funding decision embedded in it. HBKU publishes no ranking criteria, weighting or interview requirement for funding, and no individual feedback route. Continued eligibility is reviewed annually against academic progress and available funds, and stipend exceptions can be considered case by case depending on availability of funds and with the approval of the dean and the provost.",
           "application_method": [
             "Create a user account through the HBKU Apply Now portal",
             "Submit the application by choosing the desired college and program; up to two applications per academic year are permitted",
@@ -35510,26 +35832,72 @@
             "Await the college's decision and offer letter",
             "Scholarship consideration happens as part of the admissions process; no separate scholarship application is required"
           ],
+          "application_steps": [
+            "1. Click Apply Now to create a user account on the HBKU portal and log in with your credentials",
+            "2. Choose the desired college and programme and complete the application; submit no more than two applications per academic year",
+            "3. Submit the application before your applicable deadline: 1 February 2027 as an international applicant, or 15 March 2027 as a Qatari or resident applicant seeking funding",
+            "4. Receive the confirmation email with instructions to log back into your account",
+            "5. Log back in and submit supplementary documents and provide contact details for your references",
+            "6. Wait for the HBKU admissions team's preliminary review for completion and eligibility",
+            "7. The application is forwarded to the relevant college for assessment",
+            "8. Receive the college's decision and, if successful, an offer letter by email with details of the award",
+            "9. Read the scholarship agreement, which sets the academic standing you must maintain, and accept the research-assistant commitment"
+          ],
+          "applicant_submission_route": [
+            "The applicant submits directly through the HBKU online admissions portal; there is no separate scholarship application and no government or intermediary nomination route",
+            "Supplementary documents and reference contact details are submitted by the applicant through the portal after submission, following the confirmation email instructions",
+            "Awards are notified by email with details about the award"
+          ],
+          "application_portal": "The HBKU Apply Now portal, reached from the Apply Now call to action on the HBKU graduate admissions page",
+          "student_direct_application": true,
+          "official_application_route": [
+            "Direct online application to HBKU; up to two applications per academic year",
+            "Funding decision is embedded in the admissions decision rather than made through a separate scholarship round",
+            "Notification of an award is by email with details about the award"
+          ],
           "award_holder_conditions": [
-            "Students are responsible for covering the cost of their housing, whether in Qatar Foundation dormitory facilities or external accommodations; HBKU does not provide direct payment for student housing and the cost is paid from the monthly stipend or personal funds",
+            "Students are responsible for covering the cost of their housing, whether in Qatar Foundation dormitory facilities or external accommodations; this expense will be paid from their monthly stipend or personal funds, and HBKU does not provide direct payment for student housing",
             "Meal plans are not separately included; the stipend is a fixed amount meant to cover general living expenses, including meals",
             "Stipend awards do not depend on the student's marital status or the number of family dependents",
             "Students receiving a stipend shall work as research assistants with their primary supervisors for 10 hours per week",
-            "Students are allowed to work a maximum of 20 hours per week in total",
+            "Students are allowed to work a maximum of 20 hours per week in total, i.e. 10 hours beyond their RA commitment",
             "Scholarships are reviewed annually and depend on academic progress and available funds",
             "External funding may affect eligibility; students funded by external sources should follow their sponsors' policies and are not covered by these guidelines",
-            "Stipends funded from external sources, including research grants, are excluded from the published rates",
-            "Deferral of admission may affect scholarship eligibility",
-            "Stipend exceptions can be considered case-by-case depending on availability of funds and with the approval of the dean and provost"
+            "Stipends funded from external sources, including research grants, are excluded from the rates shown in the table",
+            "Deferral of admission may affect eligibility; HBKU directs students to contact their college for guidance",
+            "Stipend exceptions can be considered for academic degree programs on a case-by-case basis, depending on the availability of funds, and with the approval of the dean and the provost",
+            "Students must maintain good academic standing as specified by the scholarship agreement"
           ],
-          "supplements_or_initiatives": [
-            "Student Employment Program (SEP) allows stipend holders up to 10 additional paid hours per week",
-            "Teaching Assistant work at an hourly rate of 50 QAR for 10 hours per week for the duration of the semester in which the student is assigned to teach"
+          "deferrable": null,
+          "renewable": true,
+          "return_home_required": false,
+          "clinical_restriction": null,
+          "arrival_rules": [
+            "International students are provided with a single round-trip airfare during their candidature, consisting of one inbound ticket upon starting their academic program and one outbound ticket upon graduation.",
+            "HBKU states students are responsible for their own housing arrangements whether in Qatar Foundation dormitory facilities or external accommodations."
+          ],
+          "timeline_rules": [
+            "Online graduate admission application opens to the public 1 October 2026",
+            "Admission application deadline for international graduate applicants 1 February 2027",
+            "Admission application deadline for Qatari and resident applicants who wish to apply for funding 15 March 2027",
+            "Scholarship consideration happens inside the admissions process, so there is no separate scholarship deadline",
+            "Scholarships are reviewed annually against academic progress and available funds",
+            "Stipend duration is 45 months for PhD programmes and 21 months for Master's programmes",
+            "Teaching-assistant eligibility applies for the duration of the semester in which the student is assigned to teach"
           ],
           "official_contacts": {
-            "general": "For financial support information on Bachelor's degrees, contact fao@qf.org.qa. For graduate scholarship questions, HBKU directs students to contact their college."
+            "general": "For financial support information on Bachelor's degrees, contact fao@qf.org.qa. For graduate scholarship questions, HBKU directs students to contact their college; the FAQ states that deferral guidance also comes from the college.",
+            "email": "fao@qf.org.qa (Bachelor's financial support only; not published for graduate scholarships)"
           },
-          "citizenship_residency": "Three student categories are published: Qatari, international, and local (resident) students, with separate stipend rates for each and separate admission deadlines for international applicants and for Qatari and resident applicants who wish to apply for funding.",
+          "program_type": "University-funded graduate scholarship (Hamad Bin Khalifa University, tuition waiver plus stipend, funded from Qatar Foundation)",
+          "region": "Middle East (Qatar); open to Qatari, local/resident and international students",
+          "coverage": "Covers a programme-specific tuition waiver (100%, 75%, 60% or 0%), a monthly stipend paid directly to the student for 45 months at PhD level or 21 months at Master's level, and a single round-trip airfare during candidature for international students. It explicitly does not cover housing, which the student pays from the stipend or personal funds, and meal plans are not separately included. Tuition is not waived at all for LL.M., MS Economics and certificate programmes.",
+          "official_source_urls": [
+            "https://www.hbku.edu.qa/en/scholarship",
+            "https://www.hbku.edu.qa/en/graduate-admissions"
+          ],
+          "official_updates_url": "https://www.hbku.edu.qa/en/scholarship",
+          "catalogue_url": null,
           "last_verified_date": "2026-10-01"
         },
         "applicant_utility": {
@@ -35542,6 +35910,16 @@
             "Budget for housing yourself, since HBKU pays no direct housing cost",
             "Read the scholarship agreement once offered, since it sets the academic standing you must maintain"
           ],
+          "important_advice_for_students": [
+            "Being admitted does not mean being funded. HBKU states plainly that scholarships are not automatically awarded to admitted students, are offered on merit or financial need, and depend on the availability of funds. Treat the award as genuinely uncertain.",
+            "Sort out the deadline by your residency status, not by your programme. The 15 March 2027 funding deadline is published for Qatari and resident applicants only. As an international applicant you are bound by 1 February 2027, six weeks earlier.",
+            "Budget for housing in Qatar before you accept. The stipend is expected to absorb it, and HBKU makes no direct housing payment. This is the single largest gap between the headline stipend and a realistic budget.",
+            "Check your programme against the waiver table before you apply. If you are considering the LL.M., MS Economics or a certificate programme, your tuition waiver is 0% and the stipend is the only support you get.",
+            "Plan your workload before accepting. The stipend requires 10 hours a week of supervised research-assistant work, and 20 hours a week is the hard ceiling. If you plan to work as a professional or exceed 40% of full-time hours in outside work, you lose stipend eligibility.",
+            "You can earn on top of the stipend, within limits: teaching-assistant work at 50 QAR an hour for 10 hours a week, plus up to 10 more hours through the Student Employment Program.",
+            "Do not defer lightly. HBKU states deferral of admission may affect scholarship eligibility and directs you to your college, so ask before you defer rather than after.",
+            "The award is reviewed every year against your academic progress and the funds available, so it is renewable but never secure."
+          ],
           "common_rejection_risks": [
             "Funds being exhausted, since tuition waivers and stipends depend on availability of funds",
             "Not being awarded on merit or need, since awards are not automatic for admitted students",
@@ -35550,7 +35928,9 @@
             "Applying to LL.M., MS Economics or certificate programmes, which carry a 0% tuition waiver",
             "Missing the earlier 1 February 2027 deadline as an international applicant by assuming the later funding deadline applies",
             "Expecting housing to be paid, which HBKU explicitly does not do",
-            "Submitting more than two applications in an academic year"
+            "Submitting more than two applications in an academic year",
+            "Holding external funding, which excludes the holder from the published stipend rates and from these guidelines",
+            "Exceeding 20 hours per week of total work while holding a stipend"
           ],
           "estimated_uncovered_costs": [
             "All housing costs, whether in Qatar Foundation dormitories or external accommodation, paid from the stipend or personal funds",
@@ -35558,12 +35938,14 @@
             "Full tuition for LL.M., MS Economics and certificate programmes, which carry a 0% waiver",
             "Living costs beyond the monthly stipend, including any costs for dependants, since awards do not vary with marital status or number of family dependents",
             "Flights other than the single round-trip airfare provided to international students",
-            "Costs for anyone relying on self-sponsored discounted tuition of 2,000 QAR per credit hour"
+            "Costs for anyone relying on self-sponsored discounted tuition of 2,000 QAR per credit hour",
+            "Meal plans beyond what the stipend can absorb, since meal plans are not separately included"
           ],
           "document_audit": [
             "Graduate admission application submitted through the HBKU portal, with the college and program selected accurately because the tuition waiver rate depends on the programme",
             "Supplementary documents and reference contact details submitted after submission via the confirmation email instructions",
-            "Scholarship agreement: review the academic standing requirement once it is issued, because annual review depends on it"
+            "Scholarship agreement: review the academic standing requirement once it is issued, because annual review depends on it",
+            "Neither the scholarship page nor the graduate admissions page publishes a file type, size limit, translation or document date rule, so confirm format requirements with your college before uploading"
           ],
           "alerts": [
             {
@@ -35572,7 +35954,7 @@
             },
             {
               "trigger": "1 February 2027",
-              "message": "International graduate applicants must have their admission application in by this date."
+              "message": "International graduate applicants must have their admission application in by this date. The 15 March funding deadline does not apply to you."
             },
             {
               "trigger": "15 March 2027",
@@ -35585,6 +35967,10 @@
             {
               "trigger": "Annually after award",
               "message": "Scholarships are reviewed each year against academic progress and available funds, so treat the award as renewable but not secure."
+            },
+            {
+              "trigger": "If you are considering deferring your admission",
+              "message": "HBKU states deferral may affect scholarship eligibility and directs you to contact your college. Ask before deferring."
             }
           ],
           "submission_workflow": [
@@ -35600,7 +35986,12 @@
             {
               "role": "Reference contact (HBKU graduate application)",
               "required": true,
-              "instructions": "After submitting the application you receive a confirmation email with instructions to log back in, submit supplementary documents, and provide contact details for your references. The number of references and their format are not stated on the pages read, so confirm with your college during the application process."
+              "instructions": "After submitting the application you receive a confirmation email with instructions to log back in, submit supplementary documents, and provide contact details for your references. The number of references and their format are not stated on the pages read, so confirm with your college during the application process. Note that a reference is required for admission, not specifically for funding, since funding is decided inside the admissions process."
+            },
+            {
+              "role": "Primary supervisor (research-assistant commitment)",
+              "required": true,
+              "instructions": "Not a referee but a mandatory work relationship: a student receiving a stipend must work as a research assistant with their primary supervisor for 10 hours per week. Identify a supervisor whose research you actually want to do, since you will be committed to them."
             }
           ],
           "post_award_requirements": [
@@ -35608,31 +35999,65 @@
             "Stay within the 20-hour-per-week total work limit",
             "Maintain good academic standing as specified in the scholarship agreement, reviewed annually",
             "Cover housing costs personally from the stipend or personal funds",
-            "Declare any external funding, which may affect eligibility and is excluded from the published stipend rates"
+            "Declare any external funding, which may affect eligibility and is excluded from the published stipend rates",
+            "Accept that a stipend funded from an external source such as a research grant falls outside the published rates and outside these guidelines"
+          ],
+          "questions_to_ask_host": [
+            "What is the actual tuition waiver percentage for my specific programme and college, and what is the per-credit fee I will be charged on the remainder?",
+            "Which stipend category will I fall into, and is the amount guaranteed for the full 45 or 21 months, or is it reviewed annually?",
+            "What is realistic housing cost in Doha against the monthly stipend, and do I need to apply separately for a Qatar Foundation dormitory place?",
+            "Is my potential supervisor taking funded graduate students, and what is the expected research-assistant workload in practice?",
+            "Does the scholarship carry any obligation to work after graduation, or to repay anything?",
+            "What happens to my funding if I defer admission, and how long is a deferral likely to take?",
+            "If I hold external funding, does it disqualify me from the published stipend rates entirely, or is it netted off?",
+            "What are the tuition waiver and stipend arrangements for a student who switches programme mid-degree?"
           ]
         },
         "verification": {
           "cycle_verified": "HBKU 2026-2027 graduate admission cycle: online applications open to the public 1 October 2026; international graduate deadline 1 February 2027; Qatari and resident funding deadline 15 March 2027",
-          "verification_confidence": 0.9,
+          "verification_confidence": 0.92,
           "official_fields_confirmed": [
-            "Admission timeline dates: application opens to the public 1 October 2026, international graduate deadline 1 February 2027, Qatari and resident applicants wishing to apply for funding 15 March 2027",
-            "Programme-level tuition waiver percentages and the per-credit tuition fee for each HBKU-sponsored graduate programme type",
-            "Self-sponsored discounted tuition rate of 2,000 QAR per credit hour based on financial need",
-            "Stipend monthly and annual rates by student category (Qatari, international, local) for PhD and Master's, and stipend durations of 45 months for PhD and 21 months for Master's",
-            "Funded-student benefits: tuition waiver, stipend, TA work at 50 QAR per hour, Student Employment Program hours, and single round-trip airfare for international students",
-            "Conditions on housing responsibility, meal plans, work-hour limits and RA commitment",
-            "Statement that scholarships are not guaranteed, depend on available funds, and are awarded on a merit or need basis only, and that no separate scholarship application is needed",
-            "Graduate admissions process steps and the two-applications-per-academic-year limit"
+            "purpose",
+            "sdg_requirement",
+            "study_type",
+            "degree_award",
+            "deadline_note",
+            "funding_type",
+            "funding_period",
+            "tuition_rule",
+            "covered_expenses",
+            "not_covered_or_excluded",
+            "benefits",
+            "general_eligibility",
+            "ineligibility_conditions",
+            "international_eligibility",
+            "academic_level_rules",
+            "host_requirements",
+            "selection_notes",
+            "application_steps",
+            "applicant_submission_route",
+            "application_portal",
+            "student_direct_application",
+            "official_application_route",
+            "arrival_rules",
+            "timeline_rules",
+            "official_source_urls",
+            "source_citations"
           ],
           "institution_check_required": [
             "A single funding_amount was not set because the page publishes a matrix of stipend rates (Qatari, international and local, PhD and Master's) rather than one award figure; the published monthly rates are carried in the text fields instead and should be matched to the applicant's own category before budgeting",
             "The HBKU graduate admissions pages read do not publish English language test requirements, so english_requirement is null; check the individual college admissions pages",
-            "The number and format of academic references required for the HBKU graduate application are not stated on the pages read"
+            "The number and format of academic references required for the HBKU graduate application are not stated on the pages read",
+            "Neither page publishes a file format, size limit, translation rule or document date rule, so document_format_rules is empty",
+            "home_tuition_rule and tax_status are not addressed by either page",
+            "Whether deferring admission affects eligibility is stated as a possibility with the guidance routed to the college, so the actual consequence is not published"
           ],
           "unverified_or_removed_claims": [
             "fully_funded is set to false even though tuition and stipend are both awarded, because HBKU explicitly states that students are responsible for their own housing cost and that HBKU does not provide direct payment for student housing; living costs are therefore not established as covered",
             "Did not treat the 100% tuition waiver as universal: LL.M., MS Economics and certificate programmes are published at 0%",
-            "Did not claim the award is renewable; HBKU states scholarships are reviewed annually and depend on academic progress and available funds"
+            "Set renewable true only in the sense that HBKU states scholarships are reviewed annually and continue while academic progress and funds allow; the review is a re-assessment, not an automatic guarantee, and this is recorded in the post_award block",
+            "return_home_required is set false because no return-home obligation is published, and the only outbound travel HBKU funds is the international student's return ticket on graduation",
+            "deferrable left null because HBKU states deferral may affect eligibility without stating whether the scholarship itself can be held over"
           ],
           "source_conflict_rule": "Where the scholarship guidelines page and the admissions page disagree on dates or eligibility, the admissions page is authoritative for deadlines and the scholarship guidelines page is authoritative for award amounts and conditions; neither overrides the other on its own subject.",
           "source_freshness_rule": "HBKU states tuition waivers and stipend awards depend on the availability of funds, so the published rates can change within a cycle; re-read the scholarship guidelines page before each admission cycle and treat any record older than one cycle as stale.",
@@ -35640,8 +36065,17 @@
             "https://www.hbku.edu.qa/en/scholarship",
             "https://www.hbku.edu.qa/en/graduate-admissions"
           ],
-          "researched_by": "add_me",
-          "last_verified_date": "2026-10-01"
+          "researched_by": "d9",
+          "last_verified_date": "2026-10-01",
+          "data_quality": {
+            "source_level": "Official provider pages (HBKU scholarship guidelines and graduate admissions)",
+            "coverage": "High. Both the scholarship guidelines page, including both fee tables, all stipend conditions and all eleven FAQ answers, and the graduate admissions page, including the five-step process and all three important dates, were read directly on 1 October 2026.",
+            "pages_read": [
+              "https://www.hbku.edu.qa/en/scholarship",
+              "https://www.hbku.edu.qa/en/graduate-admissions"
+            ],
+            "pages_unreadable": []
+          }
         }
       },
       "required_documents": [
@@ -35724,28 +36158,67 @@
       "image_alt_text": "United Arab Emirates Ministry of Foreign Affairs",
       "detail": {
         "official_details": {
-          "description": "The Ministry of Foreign Affairs (MoFA) provides a scholarship program for outstanding Emirati students who wish to pursue their academic journey abroad at one of the world's top prestigious international universities, with the aim of specializing in fields that meet the needs of the UAE diplomatic corps, and enriching it with qualified Emirati personnel and a generation trained to the highest standards. The FAQ states that the Ministry of Foreign Affairs covers all tuition costs in accordance with the program's policies.",
+          "description": "The Ministry of Foreign Affairs (MoFA) provides a scholarship program for outstanding Emirati students who wish to pursue their academic journey abroad at one of the world's top prestigious international universities, with the aim of specializing in fields that meet the needs of the UAE diplomatic corps, and enriching it with qualified Emirati personnel and a generation trained to the highest standards. It is not a conventional academic scholarship: it funds a Bachelor's degree abroad at an MOFA-approved university, then a post-graduate diploma at the Anwar Gargash Diplomatic Academy, then appointment to the diplomatic corps. The FAQ states that the Ministry of Foreign Affairs covers all tuition costs in accordance with the program's policies, and no living-cost, accommodation, airfare or stipend provision is published anywhere on the programme page.",
+          "purpose": [
+            "To support outstanding Emirati students pursuing academic study abroad at top prestigious international universities, specialising in fields that meet the needs of the UAE diplomatic corps.",
+            "To enrich the UAE with qualified Emirati personnel and a generation trained to the highest standards.",
+            "Published programme objectives: preparing national competencies for the future of UAE diplomacy; developing diplomatic leaders capable of positively influencing the international arena; providing essential skills to become pioneers and change-makers in UAE foreign policy; instilling an innovation culture that promotes positive change and development in diplomacy; and enabling achievements by providing tools for excellence in the diplomatic corps.",
+            "To be part of the UAE Government vision to prepare a generation of leaders in the field of diplomacy."
+          ],
+          "sdg_requirement": false,
+          "sdg_requirement_details": [],
           "degree_levels": [
             "Undergraduate"
           ],
-          "duration": null,
+          "study_type": [
+            "Full-time Bachelor's degree study abroad at an approved international university",
+            "Post-graduate diploma in UAE Diplomacy and International Relations at the Anwar Gargash Diplomatic Academy (AGDA), taken after the Bachelor's degree",
+            "A prescribed three-stage career pathway rather than a single academic award: scholarship for the Bachelor's, then AGDA, then appointment to the diplomatic corps"
+          ],
+          "degree_award": "A full Bachelor's degree from an approved international university, followed by a Post-Graduate Diploma in UAE Diplomacy and International Relations from AGDA. Appointment to the UAE diplomatic corps follows after graduation requirements are fulfilled.",
+          "duration": "Not published as a number of years. The page states only that the applicant must serve in the UAE diplomatic corps for a period equivalent to the number of academic years covered by the scholarship, so the funded length is linked to the degree length without either being stated.",
           "application_cycle": "No opening or closing dates are published. Registration is through the online MOFA scholarship service form; the review and final approval process typically takes between 3 to 5 months, and results and updates are communicated by email or SMS.",
           "deadline_central": null,
           "deadline_central_display": "No application deadline is published; the review and final approval process typically takes between 3 to 5 months",
           "deadline_institutional": null,
+          "deadline_note": "The programme publishes no application opening date, no closing date and no deadline of any kind, so deadline_date is null. The only timing published is the review and final approval period, which the FAQ states typically takes between 3 to 5 months, with updates including final admission results communicated by email or SMS. Applicants can track status through programme notifications. Because there is no published deadline, the operative constraints are the applicant's own age band, the need to hold an unconditional acceptance from an MOFA-approved university, and the 3 to 5 month approval lead time.",
           "status": "OPEN",
-          "funding_label": "MOFA Scholarship Program (tuition coverage)",
+          "funding_type": "Tuition Waiver (full tuition coverage; no published stipend or living-cost provision)",
+          "funding_label": "MOFA Scholarship Program - the Ministry of Foreign Affairs covers all tuition costs in accordance with the program's policies",
           "funding_amount": null,
           "funding_currency": null,
           "funding_period": null,
           "tuition_coverage": true,
+          "tuition_coverage_note": "The FAQ states the Ministry of Foreign Affairs covers all tuition costs in accordance with the program's policies. The internal tuition policy itself is referenced but not published on the page, so what counts as a covered tuition cost is defined by a document that was not read.",
           "living_cost_coverage": false,
           "travel_coverage": false,
           "fully_funded": false,
+          "tuition_rule": "The Ministry of Foreign Affairs, as the awarding body, covers all tuition costs of the Bachelor's degree at an MOFA-approved university in accordance with the programme's policies. No tuition waiver at the host institution is described, no tuition deposit rule is published, and no host-institution fee is stated.",
+          "home_tuition_rule": null,
+          "host_institution_fee": "None published. The page states the Ministry covers all tuition costs and names no additional fee payable to the approved university. Charges the programme's policies do not classify as tuition are not addressed.",
+          "tax_status": null,
+          "covered_expenses": [
+            "All tuition costs at an MOFA-approved university for the Bachelor's degree, in accordance with the program's policies"
+          ],
+          "not_covered_or_excluded": [
+            "Living costs and accommodation: the programme page publishes no provision for them, in contrast to its explicit tuition statement",
+            "Airfare and travel expenses: not published as covered",
+            "Health insurance: not published as covered",
+            "Books, materials and personal expenses: not published as covered",
+            "Any stipend or salary: none is published anywhere on the programme page",
+            "Study at any university not on the MOFA-approved list: applicants must secure admission from MoFA-approved universities only",
+            "Study at any specialty or country not on the approved list"
+          ],
+          "benefits": [
+            "Full tuition coverage at a top-ranked international university of the applicant's choosing from the approved list",
+            "A structured pathway into the UAE diplomatic corps: Bachelor's degree, then the AGDA Post-Graduate Diploma in UAE Diplomacy and International Relations, then appointment",
+            "Specialisation in fields that meet the needs of the UAE diplomatic corps, in an approved specialty and country"
+          ],
           "eligibility": [
             "Must be UAE nationals (holders of UAE passports and family book)",
-            "Must be between 17 and 21 years old and have legal guardian approval; previous-year high school graduates may apply provided the applicant is between 17 and 22 years old at the time of application",
             "Must provide a certificate of Good Conduct and Behavior from the relevant official authorities in the UAE",
+            "Must be between 17 and 21 years old and have legal guardian approval; previous-year high school graduates may apply provided the applicant is between 17 and 22 years old at the time of application",
+            "Must have a high school diploma, according to the following conditions",
             "General Stream, General Technical Stream, American System and other systems require 90% and above",
             "Advanced Stream, Advanced Technical Stream and SABIS System require 85% and above",
             "Elite Stream and Advanced Science Program require 80% and above",
@@ -35753,39 +36226,91 @@
             "International Baccalaureate: completion of the IB Diploma with a minimum average of 30 points or higher",
             "School transcript listing all related instructional subjects",
             "IELTS (Academic Module) 6.5 or above, or equivalent",
-            "Must hold an acceptance letter from a university approved by MOFA; applicants cannot choose a university outside the approved list",
+            "Must hold an acceptance letter from an approved university (universities listed and approved by MoFA)",
             "Must agree to study a third language, if required",
             "Male applicants must provide a certificate of exemption or completion of national service",
-            "Must agree to join the UAE diplomatic corps at MOFA for a period equivalent to the number of academic years covered by the scholarship",
+            "Must agree to join the UAE diplomatic corps at the Ministry of Foreign Affairs for a period equivalent to the number of academic years covered by the scholarship",
             "Must agree to join Anwar Gargash Diplomatic Academy (AGDA) upon graduation",
             "Must provide parental consent to join the scholarship program"
           ],
-          "coverage": [
-            "All tuition costs, in accordance with the program's policies"
+          "general_eligibility": [
+            "UAE nationality, evidenced by a UAE passport and family book",
+            "Age between 17 and 21 years old with legal guardian approval, or between 17 and 22 at the time of application for graduates from previous years",
+            "High school diploma meeting the percentage threshold for the applicant's stream, or the equivalent IGCSE/AS/A Level or IB Diploma evidence",
+            "Certificate of Good Conduct and Behavior from the relevant official UAE authorities",
+            "IELTS Academic 6.5 or above, or an equivalent accepted English score",
+            "An unconditional direct academic acceptance from an MOFA-approved university in a specific specialty, institution and country",
+            "For male applicants, a certificate of exemption or completion of national service",
+            "Agreement to join the UAE diplomatic corps for a period equal to the number of academic years covered, and to join AGDA on graduation",
+            "Parental consent to join the scholarship programme"
+          ],
+          "ineligibility_conditions": [
+            "Non-UAE nationals: the programme is restricted to UAE nationals holding a UAE passport and family book",
+            "Applicants outside the published age bands: 17 to 21 with legal guardian approval, or 17 to 22 for previous-year high school graduates",
+            "Applicants whose high school percentage falls below the published threshold for their stream (90%, 85% or 80%), or who cannot evidence the IGCSE/AS/A Level or IB Diploma equivalents",
+            "Applicants who cannot produce a Certificate of Good Conduct and Behavior from the relevant UAE authorities",
+            "Male applicants without a national service exemption or completion certificate",
+            "Applicants whose IELTS Academic score is below 6.5 and who have no equivalent accepted score",
+            "Applicants holding an acceptance from a university not on the MOFA-approved list: MOFA states applicants must secure admission from universities approved by the Ministry only and cannot choose a university outside the approved list",
+            "Applicants whose acceptance is conditional rather than unconditional, or which omits the specialty, institution, country, programme dates or total cost",
+            "Applicants unwilling to accept the diplomatic corps service obligation, which is a stated condition of the award",
+            "Applicants who fail the mandatory interview, which must be passed successfully to complete the scholarship requirements"
+          ],
+          "citizenship_residency": "UAE nationals only (holders of UAE passports and family book). Study takes place abroad at approved international universities.",
+          "international_eligibility": "This is not open to international applicants. It is restricted to UAE nationals, and the fund is aimed at enriching the UAE with qualified Emirati personnel for the diplomatic corps. Non-Emiratis cannot apply.",
+          "academic_level_rules": {
+            "undergraduate": [
+              "The programme funds a Bachelor's degree abroad as its first stage",
+              "Admission to the university must be an unconditional direct academic acceptance in a specific specialty, institution and country, indicating the programme start and end dates and the total cost",
+              "The degree must be in a specialty approved by MOFA at an approved university in an approved country",
+              "Applicants must agree to study a third language, if required",
+              "The degree is followed by the AGDA Post-Graduate Diploma in UAE Diplomacy and International Relations"
+            ],
+            "masters": [],
+            "phd": []
+          },
+          "host_requirements": [
+            "The university must appear on the MOFA-approved list; MOFA states applicants must secure admission from universities approved by the Ministry only",
+            "The specialty must be one listed in the approved specialisations for that university and country",
+            "The acceptance letter must be unconditional as to other requirements, and must state the programme start and end dates and the total cost",
+            "Students changing major or country of study must inform the relevant programme officer at the Ministry and notify the cultural attaché in the country of study; requests are reviewed in line with the programme's regulations and policies"
           ],
           "requirements": [
             "Register through the MOFA scholarship service form",
             "Attach all required documents in PDF format upon registration",
             "Hold an unconditional direct academic acceptance in a specific specialty, institution and country, indicating the program start and end dates and the total cost",
             "Complete the tests and interviews that form part of the admission procedure",
-            "Pass the mandatory interview"
+            "Pass the mandatory interview",
+            "Agree to the diplomatic corps service obligation and to joining AGDA on graduation",
+            "Provide parental consent for students under 22 years of age under the Personal Affairs Law"
           ],
           "documents": [
-            "Valid passport copy including the last page showing the unified number",
+            "Valid passport copy (including the last page showing the unified number)",
             "Family Book copy",
-            "Emirates ID copy, both sides",
+            "Emirates ID copy (both sides)",
             "Birth certificate copy",
             "Colored personal photograph",
-            "Transcripts for grades Ten, Eleven and the first term of grade Twelve, attested by relevant entities as applicable",
-            "Direct unconditional academic acceptance in a specific specialty, institution and country, indicating program start and end dates and total cost",
-            "Medical examination certificate on the form provided in the application, certified by a UAE government hospital or medical center",
+            "Transcripts copy for grades Ten, Eleven, and the first term of grade Twelve (first or last term if available), attested by relevant entities as applicable",
+            "Direct academic acceptance, unconditional to other requirements, in a specific specialty, institution, and country for the MoFA scholarship, indicating the program start and end dates and the total cost",
+            "Medical examination certificate (the medical examination form is available in the application and can be certified by any government hospital or medical center within the UAE)",
             "National service status certificate for male students",
-            "Local bank certificate in the student's name showing the IBAN, after obtaining final approval",
-            "Parental approval for students under 22 years of age",
+            "A certificate from a local bank under the student's name indicating the International Bank Account Number (IBAN), after obtaining final approval (if the applicant is accepted)",
+            "Parental approval for students under 22 years of age (according to the Personal Affairs Law)",
             "Curriculum Vitae (CV)",
-            "English language certificates with scores",
+            "English language certificates with scores for one of the accepted tests",
             "University admission letter",
             "Certificate of Good Conduct and Behavior"
+          ],
+          "document_format_rules": [
+            "Please attach the required documents in PDF format upon registration.",
+            "The passport copy must include the last page showing the unified number.",
+            "The Emirates ID copy must include both sides.",
+            "The academic acceptance letter must be unconditional as to other requirements and must indicate the programme start and end dates and the total cost.",
+            "Transcripts must cover grades Ten, Eleven and the first term of grade Twelve (first or last term if available) and must be attested by relevant entities as applicable.",
+            "The medical examination certificate must use the form available in the application and must be certified by any government hospital or medical centre within the UAE.",
+            "The bank certificate must be from a local bank and under the student's own name, showing the IBAN, and is required only after final approval.",
+            "Parental approval is required for students under 22 years of age under the Personal Affairs Law.",
+            "English language certificates must include scores for one of the accepted tests."
           ],
           "selection_criteria": [
             "The admission procedure includes a number of tests, interviews and additional conditions",
@@ -35793,6 +36318,7 @@
             "Review and final approval typically take between 3 to 5 months",
             "Applicants must hold an acceptance from an MOFA-approved university in an approved specialty"
           ],
+          "selection_notes": "The programme does not publish ranking criteria or a weighting. It publishes a process instead: the admission procedure includes a number of tests, interviews and additional conditions, and the interview is mandatory and must be passed successfully for the applicant to complete the scholarship requirements. Candidates are screened on published objective conditions first (nationality, age, conduct, high school stream threshold, English score, national service) and must already hold an unconditional acceptance from an approved university, in an approved specialty and country. Review and final approval then take between 3 to 5 months. MOFA publishes no individual feedback route and no appeal process.",
           "application_method": [
             "Obtain an unconditional direct academic acceptance from an MOFA-approved university",
             "Prepare all required documents in PDF format",
@@ -35801,6 +36327,32 @@
             "Complete the tests and the mandatory interview",
             "Track status through program notifications; results are sent by email or SMS",
             "Request amendments after submission by calling +971 80044444"
+          ],
+          "application_steps": [
+            "1. Confirm you are a UAE national within the published age band (17-21 with legal guardian approval, or 17-22 for previous-year graduates)",
+            "2. Check your intended university, specialty and country against the MOFA-approved list before applying to any institution",
+            "3. Apply to an approved university and obtain an unconditional direct academic acceptance stating the programme start and end dates and the total cost",
+            "4. Sit IELTS Academic (6.5 minimum) or an accepted equivalent test",
+            "5. Obtain a Certificate of Good Conduct and Behavior from the relevant UAE authorities",
+            "6. If male, obtain the national service exemption or completion certificate",
+            "7. Complete the medical examination on the form supplied in the application, certified by a UAE government hospital or medical centre",
+            "8. Convert every required document to PDF, including the passport copy showing the unified-number last page and the two-sided Emirates ID",
+            "9. Register through the MOFA scholarship service form and upload the documents",
+            "10. Sit the tests and the mandatory interview",
+            "11. Track status by email or SMS through programme notifications, allowing 3 to 5 months for review and final approval",
+            "12. If accepted, obtain a local bank certificate in your own name showing your IBAN and submit it"
+          ],
+          "applicant_submission_route": [
+            "The applicant registers directly through the MOFA scholarship service form and uploads documents at registration",
+            "There is no university portal submission and no third-party or ministry-of-education nomination route in the published process",
+            "Amendments after submission are made by calling +971 80044444, whereby the existing application is removed from the system to allow a new, updated application to be submitted"
+          ],
+          "application_portal": "The MOFA scholarship service form, reached from the Apply Now call to action on the MOFA Scholarship Program page",
+          "student_direct_application": true,
+          "official_application_route": [
+            "Direct online registration with the Ministry of Foreign Affairs through its scholarship service form",
+            "Amendments are handled by the MOFA call centre at +971 80044444, which refers the request to the MoFA Scholarship Program team and removes the existing application so an updated one can be submitted",
+            "Updates and final admission results are communicated by email or SMS"
           ],
           "award_holder_conditions": [
             "Must agree to join the UAE diplomatic corps at the Ministry of Foreign Affairs for a period equivalent to the number of academic years covered by the scholarship",
@@ -35811,13 +36363,36 @@
             "Must agree to study a third language if required",
             "Parental consent is required for students under 22 years of age",
             "Students changing major or country of study must inform the relevant programme officer at the Ministry and notify the cultural attaché in the country of study",
-            "Good Conduct and Behavior certificate required from the relevant official UAE authorities"
+            "Good Conduct and Behavior certificate required from the relevant official UAE authorities",
+            "The academic acceptance must be unconditional to other requirements and must state the programme start and end dates and total cost"
           ],
-          "supplements_or_initiatives": [],
+          "deferrable": null,
+          "renewable": null,
+          "return_home_required": true,
+          "clinical_restriction": null,
+          "arrival_rules": [],
+          "timeline_rules": [
+            "No application opening date, closing date or deadline is published",
+            "The review and final approval process typically takes between 3 to 5 months",
+            "Applicants are notified of any updates, including final admission results, via email or SMS",
+            "Applicants can track their application through programme notifications",
+            "The service obligation runs for a period equivalent to the number of academic years covered by the scholarship",
+            "The programme journey is three stages: the Bachelor's scholarship abroad, then enrolment in the AGDA Post-Graduate Diploma, then joining the Ministry of Foreign Affairs and being appointed to the diplomatic corps after fulfilling graduation requirements"
+          ],
           "official_contacts": {
-            "general": "UAE Ministry of Foreign Affairs, call centre +971 80044444 for application amendments"
+            "general": "UAE Ministry of Foreign Affairs, call centre +971 80044444 for application amendments. Applicants can also track their application through programme notifications and are notified of updates by email or SMS.",
+            "email": null
           },
-          "citizenship_residency": "UAE nationals only (holders of UAE passports and family book). Study takes place abroad at approved international universities.",
+          "program_type": "Government scholarship (UAE Ministry of Foreign Affairs) with a mandatory public-service obligation",
+          "region": "Middle East (United Arab Emirates) funding study abroad at approved international universities worldwide",
+          "coverage": "Covers all tuition costs of the Bachelor's degree at an MOFA-approved university, in accordance with the program's policies, followed by the AGDA Post-Graduate Diploma. The programme page publishes no provision for living costs, accommodation, airfare, insurance, books or a stipend, so those costs cannot be treated as covered.",
+          "official_source_urls": [
+            "https://www.mofa.gov.ae/en/Scholarship"
+          ],
+          "official_updates_url": "https://www.mofa.gov.ae/en/Scholarship",
+          "catalogue_url": null,
+          "english_requirement": "IELTS (Academic Module) 6.5 or above, or equivalent. The FAQ specifies a minimum score of 6.5 in Academic IELTS or an equivalent score in TOEFL. English language certificates with scores are a required document.",
+          "english_requirement_note": "The page names IELTS Academic 6.5 as the benchmark and says 'or equivalent' without naming which other tests are accepted or their equivalent scores.",
           "last_verified_date": "2026-10-01"
         },
         "applicant_utility": {
@@ -35833,6 +36408,16 @@
             "Agree in writing to the diplomatic corps service obligation and to joining AGDA after graduation before you sign up",
             "Compile every document in PDF format before registering"
           ],
+          "important_advice_for_students": [
+            "Check the MOFA-approved universities list before you apply anywhere. MOFA states applicants cannot choose a university outside the approved list, so an offer from an excellent unlisted institution is worthless for this scholarship.",
+            "Read the service obligation as the price of the award. You commit to joining the UAE diplomatic corps for a period equal to the academic years funded, and to joining AGDA on graduation. There is no published way to decline it after selection.",
+            "Do not assume living costs are covered. The only published financial statement is that MoFA covers all tuition. Nothing on the page addresses accommodation, living costs, airfare, insurance or a stipend, so budget those yourself or confirm with the Ministry before you commit.",
+            "Apply for the university first. You cannot complete the scholarship application without an unconditional acceptance in a specific specialty, institution and country, stating programme dates and total cost.",
+            "Plan for a slow process. Review and final approval typically take 3 to 5 months, on top of the time to get your admission, your IELTS score, your conduct certificate and your medical examination.",
+            "Collect your grade-Ten, Eleven and Twelve transcripts early and have them attested where applicable. The transcripts must already be in hand at registration, and they are not the same document as your high school diploma.",
+            "If you need to change something after submitting, call +971 80044444. MOFA will remove your existing application so you can file an updated one, which means starting the clock again.",
+            "Male applicants should settle national service before applying. MOFA states completion of or exemption from National Service is a requirement for applying to the programme, not a condition of the award."
+          ],
           "common_rejection_risks": [
             "Holding an offer from a university that is not on the MOFA-approved list, which cannot be used for this scholarship",
             "Failing the mandatory interview",
@@ -35841,23 +36426,40 @@
             "Male applicants without a national service completion or exemption certificate",
             "An IELTS Academic score below 6.5 with no equivalent accepted test",
             "A conditional rather than unconditional academic acceptance, or one missing the start/end dates and total cost",
-            "Being unwilling to accept the diplomatic corps service obligation, which cannot be declined after award"
+            "Being unwilling to accept the diplomatic corps service obligation, which cannot be declined after award",
+            "Being outside the 17-21 or 17-22 age band",
+            "Documents uploaded in the wrong format or incompletely: everything must be PDF at registration, the passport copy must show the unified-number last page, and the Emirates ID must be both sides",
+            "Missing the grade Ten, Eleven and Twelve transcripts required at registration"
           ],
           "estimated_uncovered_costs": [
             "Living costs and accommodation, which the published page does not state the programme covers",
-            "Airfare and travel expenses",
+            "Airfare and travel expenses to and from the host country",
+            "Health insurance",
+            "Books, course materials and personal expenses",
             "Any university charges not classified as tuition by the programme's policies",
-            "Unpublished items such as insurance, books and personal expenses"
+            "Any period or cost associated with the AGDA Post-Graduate Diploma stage, which is a separate stage after the funded Bachelor's degree and is not costed on the page"
           ],
           "document_audit": [
             "All documents must be attached in PDF format upon registration",
             "Passport copy must include the last page showing the unified number",
             "Emirates ID copy must include both sides",
+            "Family Book copy and birth certificate copy, both required alongside the passport as proof of UAE nationality",
+            "Colored personal photograph",
             "Transcripts must cover grades Ten, Eleven and the first term of grade Twelve and be attested by the relevant entities",
+            "Academic acceptance letter must be unconditional and state the specialty, institution, country, programme start and end dates, and total cost",
             "Medical examination certificate must use the form supplied in the application and be certified by a UAE government hospital or medical center",
-            "Bank IBAN certificate is only required after final approval, if the applicant is accepted",
+            "Bank IBAN certificate is only required after final approval, if the applicant is accepted, and must be under the applicant's own name",
             "Parental approval is required for students under 22 years of age under the Personal Affairs Law",
-            "English language certificates must show scores for one of the accepted tests"
+            "Curriculum Vitae, and English language certificates showing scores for an accepted test",
+            "Certificate of Good Conduct and Behavior",
+            "National service status certificate for male students only"
+          ],
+          "referee_tracking": [
+            {
+              "role": "Reference",
+              "required": false,
+              "instructions": "The published page does not list referee or recommendation-letter requirements for the MOFA Scholarship Program. The required documents are enumerated on the page and do not include reference letters, so confirm with the Ministry through the call centre if you are asked for references during testing or interviews."
+            }
           ],
           "alerts": [
             {
@@ -35879,6 +36481,10 @@
             {
               "trigger": "If you want to change major or country of study",
               "message": "Inform the relevant programme officer at the Ministry and notify the cultural attaché in your country of study; requests are reviewed under the programme's regulations."
+            },
+            {
+              "trigger": "There is no published deadline",
+              "message": "Do not wait for one to appear. Since no closing date is published, the practical constraints are your age band, your need to hold an unconditional acceptance from an approved university, and the 3 to 5 month approval period before your programme start."
             }
           ],
           "submission_workflow": [
@@ -35893,50 +36499,89 @@
             "Sit the tests and the mandatory interview, then track status by email or SMS",
             "If accepted, obtain the bank IBAN certificate in your own name and submit it"
           ],
-          "referee_tracking": [
-            {
-              "role": "Reference",
-              "required": false,
-              "instructions": "The published page does not list referee or recommendation-letter requirements for the MOFA Scholarship Program. The required documents are enumerated on the page and do not include reference letters, so confirm with the Ministry through the call centre if you are asked for references during testing or interviews."
-            }
-          ],
           "post_award_requirements": [
             "Serve in the UAE diplomatic corps at the Ministry of Foreign Affairs for a period equivalent to the number of academic years covered by the scholarship",
             "Enrol in the Anwar Gargash Diplomatic Academy Post-Graduate Diploma in UAE Diplomacy and International Relations after the Bachelor's degree",
             "Notify the cultural attaché in the country of study and the programme officer of any change of major or country",
             "Study at a third language if required by the programme"
+          ],
+          "questions_to_ask_host": [
+            "Does the scholarship cover living costs, accommodation and airfare, or tuition only? The published page states only that all tuition costs are covered.",
+            "What does the programme's tuition policy actually treat as a covered tuition cost, given that living fees at some universities are bundled into the tuition fee?",
+            "Is there a stipend or allowance of any kind during the degree, and is it paid before or after the degree starts?",
+            "Does the AGDA post-graduate diploma stage carry any funding, and is it counted within the service period?",
+            "What happens if I withdraw or fail my degree: does the diplomatic corps service obligation still apply?",
+            "How is the 3 to 5 month review period measured, and is there a published intake or a limit on the number of awards each year?",
+            "Which English tests count as 'equivalent' to IELTS Academic 6.5, and what are the required scores?",
+            "What does 'agree to study a third language, if required' mean in practice, and which programmes require it?"
           ]
         },
         "verification": {
           "cycle_verified": "MOFA Scholarship Program as published on 1 October 2026; the page publishes no admission cycle dates, so the record reflects a continuously registered programme rather than a dated round",
-          "verification_confidence": 0.7,
+          "verification_confidence": 0.75,
           "official_fields_confirmed": [
-            "Programme purpose, applicant pool (Emirati students) and the approved-university requirement",
-            "Full eligibility conditions including nationality, age, good conduct certificate, stream-by-stream high school percentage thresholds, IGCSE/IB equivalents, IELTS 6.5 Academic or equivalent, MOFA-approved university acceptance, third language agreement, national service for males, diplomatic corps service obligation, AGDA obligation and parental consent",
-            "Complete required document list",
-            "The three-stage student journey: Bachelor's degree abroad, AGDA post-graduate diploma, then appointment to the diplomatic corps",
-            "FAQ statements that MOFA covers all tuition costs in accordance with the program's policies, that only approved universities may be used, that national service completion or exemption is required, that the interview is mandatory, and that review and final approval take 3 to 5 months",
-            "Method of contacting the Ministry to amend a submitted application"
+            "purpose",
+            "sdg_requirement",
+            "study_type",
+            "degree_award",
+            "duration",
+            "deadline_note",
+            "funding_type",
+            "tuition_rule",
+            "covered_expenses",
+            "not_covered_or_excluded",
+            "benefits",
+            "general_eligibility",
+            "ineligibility_conditions",
+            "international_eligibility",
+            "academic_level_rules",
+            "host_requirements",
+            "document_format_rules",
+            "selection_notes",
+            "application_steps",
+            "applicant_submission_route",
+            "application_portal",
+            "student_direct_application",
+            "official_application_route",
+            "timeline_rules",
+            "official_source_urls",
+            "source_citations"
           ],
           "institution_check_required": [
-            "The page publishes no application opening date, closing date or deadline of any kind, so deadline_date is null and the 3 to 5 month processing time is recorded in the deadline text; the year precision value is the lowest available setting because no date is published at all and should be re-checked each cycle",
+            "The page publishes no application opening date, closing date or deadline of any kind, so deadline_date is null and the 3 to 5 month processing time is recorded in the deadline text; this must be re-checked each cycle",
             "No statement on living costs, accommodation, airfare, insurance or any stipend is published, so living_cost_coverage and travel_coverage are false and fully_funded is false",
             "No monetary amount or currency is published anywhere on the programme page, so funding_amount and funding_currency are null",
-            "The published duration of the funded Bachelor's degree is not stated, so duration is null",
-            "The programme's internal tuition policy is referenced ('in accordance with the program's policies') but that policy document was not published on this page and was not read"
+            "The published duration of the funded Bachelor's degree is not stated, so duration records only that the service obligation equals the academic years funded",
+            "The programme's internal tuition policy is referenced ('in accordance with the program's policies') but that policy document is not published on this page and was not read, so what counts as a covered tuition cost is undefined",
+            "The MOFA-approved universities, countries and specializations list is published as a separate linked document ('Universities List') that was not opened, so the specific approved institutions and specialties were not enumerated here",
+            "The page publishes no test format, interview format or weighting, so the selection_criteria entries remain process statements rather than assessed criteria",
+            "Which English tests count as 'equivalent' to IELTS Academic 6.5, and their required scores, are not published"
           ],
           "unverified_or_removed_claims": [
-            "Did not set fully_funded despite the tuition-coverage statement, because only tuition is established as covered",
+            "Did not set fully_funded despite the tuition-coverage statement, because only tuition is established as covered and no living-cost provision is published",
             "Did not attach any figure to the award, because none is published",
-            "Did not infer a deadline from the 3 to 5 month processing time"
+            "Did not infer a deadline from the 3 to 5 month processing time",
+            "Set return_home_required true on the strength of the published three-stage journey: Bachelor's degree abroad, then AGDA Post-Graduate Diploma, then joining the Ministry of Foreign Affairs and being appointed to the diplomatic corps after fulfilling graduation requirements",
+            "Left renewable and deferrable null because the page publishes neither rule",
+            "Left arrival_rules empty because the page publishes no arrival or orientation requirement"
           ],
           "source_conflict_rule": "The programme page's eligibility section and its FAQ are treated as one source; where the eligibility list and the FAQ differ on age (17-21 in the eligibility list, 17-22 at the time of application for previous-year graduates in the FAQ), both are recorded rather than one being discarded.",
           "source_freshness_rule": "Because no cycle dates are published, this record should be re-read before each application and any change in the approved universities list checked, since admission from an unapproved institution is disqualifying.",
           "source_citations": [
             "https://www.mofa.gov.ae/en/Scholarship"
           ],
-          "researched_by": "add_me",
-          "last_verified_date": "2026-10-01"
+          "researched_by": "d9",
+          "last_verified_date": "2026-10-01",
+          "data_quality": {
+            "source_level": "Official provider page (UAE Ministry of Foreign Affairs)",
+            "coverage": "Medium. The page is complete on purpose, objectives, eligibility, the stream-by-stream admission requirements table, the full document list, the three-stage journey and eleven FAQ answers, but it publishes no deadline, no monetary figure, no duration in years, no living-cost provision and no selection weighting.",
+            "pages_read": [
+              "https://www.mofa.gov.ae/en/Scholarship"
+            ],
+            "pages_unreadable": [
+              "The linked 'Universities List' document of approved universities, countries and specializations was not opened, so the approved institutions and specialties were not enumerated in this record"
+            ]
+          }
         }
       },
       "required_documents": [
@@ -36033,18 +36678,32 @@
       "image_alt_text": "NL Scholarship",
       "detail": {
         "official_details": {
-          "description": "The NL Scholarship is the Dutch national scholarship programme for bachelor and master students from outside the European Economic Area. It is financed by the Dutch Ministry of Education, Culture and Science together with Dutch research universities and universities of applied sciences. Study in NL states the scholarship amounts to € 5,000 and is paid in the first year of studies, and explicitly notes that it is not a full-tuition scholarship. Institutions set their own application deadlines and their own amount tiers, so the value and the deadline both depend on the institution you apply to.",
+          "description": "The NL Scholarship is meant for international students from outside the European Economic Area (EEA) who want to do their bachelor's or master's in the Netherlands. It is financed by the Dutch Ministry of Education, Culture and Science as well as several Dutch research universities and universities of applied sciences. Study in NL states the scholarship amounts to € 5,000 and that you will receive this in the first year of your studies, and it explicitly notes that this is not a full-tuition scholarship. Applications are not assessed centrally: each participating institution sets its own closing dates, its own field of study list and its own award tiers, so both the deadline and the value depend on the institution you apply to.",
+          "purpose": [
+            "To support international students from outside the European Economic Area who want to undertake a bachelor's or master's degree in the Netherlands.",
+            "The scholarship is financed by the Dutch Ministry of Education, Culture and Science together with several Dutch research universities and universities of applied sciences, making it a state-backed national scholarship scheme delivered through the institutions rather than a central fund.",
+            "Study in NL frames it as a chance-of-a-lifetime opportunity for the applicant rather than a development or research objective."
+          ],
+          "sdg_requirement": false,
+          "sdg_requirement_details": [],
           "degree_levels": [
             "Undergraduate",
             "Master's"
           ],
-          "duration": null,
+          "study_type": [
+            "Full-time bachelor's or master's study in the Netherlands at a participating research university or university of applied sciences",
+            "One-off award paid in the first year of studies, so a multi-year programme is funded for year one only"
+          ],
+          "degree_award": "Full degrees for both levels: a bachelor's or a master's degree. The scholarship is not a short-term award, though the payment itself covers only the first year of studies.",
+          "duration": "Not published centrally. The scholarship is paid once, in the first year of studies; Study in NL publishes no programme length and Radboud University publishes a one-year award rule.",
           "application_cycle": "Annual. The central page published that the application for academic year 2026-2027 opened on 1 November 2025, with institution-specific closing dates. No 2027-2028 central opening date was published on the central page when checked on 2026-10-01; the 2027-2028 cycle is visible only through participating institutions' own pages.",
           "deadline_central": null,
           "deadline_central_display": "The application for the academic year 2026-2027 opened on 1 November 2025. Please check the website of the institution you want to apply to for the specific deadline(s).",
           "deadline_institutional": "Radboud University (2027-2028 cycle): OSIRIS application submitted by 31 January 2027 23:59 CET; application complete by 14 February 2027 23:59 CET; decision around mid-April 2027. Utrecht University: apply before 1 February, 23:59 CET; results aimed for mid-April.",
+          "deadline_note": "There is no central closing deadline. Study in NL publishes only the opening date for the academic year (1 November 2025 for 2026-2027) and instructs applicants to check the institution's website for the specific deadline(s). Each institution publishes its own pattern, and the pattern itself differs: Radboud University runs a two-stage deadline in which the application must be submitted by 31 January 2027 and made complete by 14 February 2027, with incomplete applications not considered, while Utrecht University uses a single hard close at 1 February 23:59 CET and warns that between 27 January and 1 February incomplete or incorrect information cannot be updated or supplemented. Missing the institutional deadline, not the central one, is what disqualifies.",
           "status": "UPCOMING",
-          "funding_label": "NL Scholarship",
+          "funding_type": "Partial Funding (one-off cash grant; explicitly not a tuition waiver)",
+          "funding_label": "NL Scholarship - € 5,000 paid in the first year of studies, with institution-level award tiers (Utrecht University publishes €5,000/€10,000/€15,000 tiers)",
           "funding_amount": 5000,
           "funding_currency": "EUR",
           "funding_period": "one-time (first year of studies)",
@@ -36052,17 +36711,76 @@
           "living_cost_coverage": false,
           "travel_coverage": false,
           "fully_funded": false,
+          "tuition_rule": "Nobody waives tuition under this scholarship. Study in NL states explicitly that this is not a full-tuition scholarship, and Radboud University states that the costs of living and studying in the Netherlands are not covered by the scholarship. The € 5,000 is a cash grant paid to the student, not a fee remission, and the applicant remains liable for the statutory tuition fee.",
+          "home_tuition_rule": null,
+          "host_institution_fee": "None published as covered. The Dutch statutory tuition fee remains payable by the applicant, and Study in NL states the award is not a full-tuition scholarship, so no institutional fee waiver is created by the award.",
+          "tax_status": null,
+          "covered_expenses": [
+            "A one-off grant of € 5,000 paid in the first year of studies.",
+            "Not full tuition: Study in NL states it is not a full-tuition scholarship.",
+            "Not living costs: Radboud University states the costs of living and studying in the Netherlands are not covered by the scholarship.",
+            "No travel, visa or insurance costs are mentioned on any official page read."
+          ],
+          "not_covered_or_excluded": [
+            "Tuition: the scholarship is explicitly not a full-tuition scholarship, so the applicant pays the statutory fee or whatever remains of it",
+            "Living costs and the costs of studying: explicitly not covered by the scholarship",
+            "Visa and residence permit costs, which the applicant must comply with but which are not listed as covered",
+            "Travel to and from the Netherlands",
+            "Health insurance and any required supplementary insurance",
+            "Years two and beyond of a multi-year programme: the award is paid in the first year of studies only",
+            "Second awards: Radboud University states the NL Scholarship can only be received once"
+          ],
+          "benefits": [
+            "A € 5,000 cash grant paid in the first year of studies, which the applicant is free to apply to tuition, living costs or anything else rather than being restricted to a named expense",
+            "Access to a list of participating Dutch research universities and universities of applied sciences, which the programme page publishes by academic year",
+            "Institution-level award tiers may exceed the headline € 5,000: Utrecht University publishes €5,000/€10,000/€15,000 tiers"
+          ],
           "eligibility": [
             "Your nationality is non-EEA.",
             "You are applying for a full-time bachelor's or master's programme at one of the participating Dutch higher education institutions.",
             "You meet the specific requirements of the institution of your choice.",
             "You do not have a degree from an education institution in the Netherlands."
           ],
-          "coverage": [
-            "A one-off grant of € 5,000 paid in the first year of studies.",
-            "Not full tuition: Study in NL states it is not a full-tuition scholarship.",
-            "Not living costs: Radboud University states the costs of living and studying in the Netherlands are not covered by the scholarship.",
-            "No travel, visa or insurance costs are mentioned on any official page read."
+          "general_eligibility": [
+            "Nationality is non-EEA",
+            "Applying for a full-time bachelor's or master's programme at one of the participating Dutch higher education institutions",
+            "Meeting the specific requirements of the institution of your choice, which are published on that institution's website",
+            "No degree from an education institution in the Netherlands"
+          ],
+          "ineligibility_conditions": [
+            "EEA nationality, since the criterion is that your nationality is non-EEA",
+            "Holding a degree from an education institution in the Netherlands",
+            "Prior enrolment at a Dutch educational institution (Utrecht University states this as a condition, outside an exchange programme)",
+            "Eligibility for the lower EU/EEA tuition fee (Radboud University) or for statutory tuition fees (Utrecht University), which disqualifies from this scheme",
+            "Applying to a programme at an institution that is not on the participating list, or to a programme at a participating institution that does not participate in that year",
+            "Applying to a programme that is not full-time",
+            "Failure to meet the chosen institution's own specific requirements",
+            "Involvement in conduct covered by Nuffic's Integrity Code of Conduct, including bankruptcy, insolvency or winding-up procedures; breach of obligations relating to the payment of taxes or social security contributions; conduct related to a criminal organisation; money laundering or terrorist financing; terrorist offenses or offenses linked to terrorist activities; irregularity; creating a shell company; being a shell company",
+            "Failing the institution's submission or completeness deadline"
+          ],
+          "citizenship_residency": "Applicants of non-EEA nationality who are not eligible for the lower EU/EEA tuition fee and who hold no degree from a Dutch education institution.",
+          "international_eligibility": "Explicitly restricted to students from outside the European Economic Area. The test is nationality being non-EEA, plus the derived condition that the applicant must not be eligible for the lower EU/EEA or statutory tuition fee, so an EEA national cannot use this scheme to escape EEA tuition rates. Applicants must also have no Dutch degree.",
+          "academic_level_rules": {
+            "undergraduate": [
+              "Open to applicants for a full-time bachelor's programme at a participating institution",
+              "Awarded in the first year of studies",
+              "Must meet the participating institution's own programme-specific requirements, published on that institution's website"
+            ],
+            "masters": [
+              "Open to applicants for a full-time master's programme at a participating institution",
+              "Awarded in the first year of studies only, even for a two-year programme (Utrecht University)",
+              "Must meet the participating institution's own programme-specific requirements, published on that institution's website"
+            ],
+            "phd": []
+          },
+          "host_requirements": [
+            "The institution must be on the Study in NL participating list for the relevant academic year, as either a Dutch research university or a university of applied sciences",
+            "The specific programme must participate; Study in NL states that the specific closing dates and fields of study are found on the website of the institution",
+            "The applicant must meet the institution's own specific requirements, which Study in NL directs applicants to find on the institution's website",
+            "Applications are submitted to and assessed by the participating institution, not centrally by Nuffic",
+            "At Radboud University the NL Scholarship must be combined with an application for the Radboud Scholarship Programme",
+            "The applicant must enrol as a full-time student for the academic year and programme for which the scholarship is awarded (Radboud University)",
+            "The applicant must comply with Dutch visa and residence permit conditions (Radboud University)"
           ],
           "requirements": [
             "Applications are submitted to and assessed by the participating institution, not centrally by Nuffic.",
@@ -36078,14 +36796,22 @@
             "A complete OSIRIS programme application with no incorrect, illegible or missing documents (Radboud University).",
             "NL Scholarship application form via the OSIRIS Online Application account (Utrecht University)."
           ],
+          "document_format_rules": [
+            "Study in NL publishes no file type, size limit, translation or document date rule for the NL Scholarship itself; document rules are set by each participating institution and are not published centrally.",
+            "The Utrecht University Statement of Financial Resources is requested in PDF format and must cover the full nominal duration of the programme rather than year one alone.",
+            "Radboud University returns applications containing incorrect, illegible or missing documents, and defects cannot be cured after the completeness deadline of 14 February 2027.",
+            "Utrecht University warns that between 27 January and 1 February, incomplete or incorrect information cannot be updated or supplemented.",
+            "A downloadable NL Scholarship flyer is published by Study in NL as a PDF, but it is an information document rather than a required submission."
+          ],
           "selection_criteria": [
             "Utrecht University: academic background as demonstrated in the master's programme application.",
             "Utrecht University: motivation explaining the relevance of time in the Netherlands and at Utrecht University to future goals.",
             "Utrecht University: quality and feasibility of the financial plan.",
-            "Radboud University: academic excellence — outstanding study results, relevance of previous degree, ranking of the awarding university.",
-            "Radboud University: ambition — quality and relevance of the motivation letter, promise shown by achievements, life experience and extracurricular activities.",
+            "Radboud University: academic excellence - outstanding study results, relevance of previous degree, ranking of the awarding university.",
+            "Radboud University: ambition - quality and relevance of the motivation letter, promise shown by achievements, life experience and extracurricular activities.",
             "Radboud University: individual consideration by the selection committee of the faculty applied to."
           ],
+          "selection_notes": "There is no central selection process. Each participating institution selects its own scholars using its own published criteria, and Study in NL publishes none. What is published centrally is the Code of Conduct: Nuffic and programmes it manages may not be involved in activities involving unacceptable behaviour, and the enumerated situations include interpersonal or financial misconduct or abuses of power, bankruptcy, insolvency or winding-up procedures, breach of obligations relating to the payment of taxes or social security contributions, conduct related to a criminal organisation, money laundering or terrorist financing, terrorist offenses or offenses linked to terrorist activities, irregularity, creating a shell company, and being a shell company. Nuffic's Code of Conduct also describes the professional and ethical behaviour expected of everyone involved in individual NL Scholarships.",
           "application_method": [
             "Select a participating institution and an eligible programme.",
             "Apply for admission to the programme through the institution's own system.",
@@ -36093,6 +36819,29 @@
             "Complete and submit the institutional scholarship form and all supporting documents.",
             "Meet the institutional submission and completeness deadlines.",
             "Results are issued by the institution after its deadline."
+          ],
+          "application_steps": [
+            "1. Confirm your nationality is non-EEA, that you are not eligible for the lower EU/EEA or statutory tuition fee, and that you hold no degree from a Dutch education institution",
+            "2. Consult the Study in NL participating-institution list for the relevant academic year, which separates participating research universities from participating universities of applied sciences",
+            "3. Go to the chosen institution's own website to confirm that your specific programme and field of study participates, and to read its closing date and field-of-study list for that year",
+            "4. Apply for admission to the programme through the institution's own application system",
+            "5. In the same application, indicate the NL Scholarship (Radboud: through OSIRIS; Utrecht: via the 'NL Scholarship' item on the OSIRIS dashboard)",
+            "6. Prepare and upload the institution's required supporting documents, including the financial-resources statement and English proficiency evidence where required",
+            "7. Meet the institutional submission deadline (Radboud 31 January 2027 23:59 CET; Utrecht 1 February 23:59 CET)",
+            "8. Meet the institutional completeness deadline, after which missing documents are not curable (Radboud 14 February 2027 23:59 CET)",
+            "9. Await the institution's decision, published around mid-April at the institutions read"
+          ],
+          "applicant_submission_route": [
+            "The applicant applies directly to the participating institution through that institution's own admissions system; there is no central application to Study in NL or Nuffic",
+            "The scholarship indication is made inside the institutional application rather than through a separate scholarship portal",
+            "At Radboud University the application must be combined with a Radboud Scholarship Programme application in the same cycle"
+          ],
+          "application_portal": "Each participating institution's own admissions system (OSIRIS at Radboud University and Utrecht University); Study in NL publishes no central application portal",
+          "student_direct_application": true,
+          "official_application_route": [
+            "Direct to the participating institution; the institution submits and assesses, not Nuffic",
+            "Scholarship selection is a separate step from admission to the programme, run by the institution",
+            "Results are issued by the institution after its own deadline"
           ],
           "award_holder_conditions": [
             "Awarded for the first year of studies only, even for a two-year programme (Utrecht University).",
@@ -36103,13 +36852,35 @@
             "Must not have been enrolled at a Dutch educational institution (Utrecht University).",
             "Subject to Nuffic's Code of Conduct for integrity."
           ],
-          "supplements_or_initiatives": [
-            "Radboud University: the NL Scholarship is always paired with the Radboud Scholarship Programme; applicants are awarded both or just the RSP, never the NLS on its own."
+          "deferrable": null,
+          "renewable": false,
+          "return_home_required": false,
+          "clinical_restriction": null,
+          "arrival_rules": [],
+          "timeline_rules": [
+            "The application for academic year 2026-2027 opened on 1 November 2025 (Study in NL).",
+            "No central closing date exists; each participating institution publishes its own deadline(s).",
+            "Radboud University 2027-2028: application submitted by 31 January 2027 23:59 CET, application complete by 14 February 2027 23:59 CET, decision around mid-April 2027.",
+            "Utrecht University: apply before 1 February 23:59 CET, results aimed for mid-April; between 27 January and 1 February incomplete or incorrect information cannot be updated or supplemented.",
+            "The award is paid in the first year of studies, so there is no later disbursement date to track.",
+            "The participating-institution list is republished annually and the central page lagged a full cycle behind, still showing 2026-2027 when read on 1 October 2026."
           ],
           "official_contacts": {
-            "general": "Radboud University Student Life and International Mobility: scholarships [at] ru.nl. Study in NL contact page: https://www.studyinnl.org/contact-details"
+            "general": "Radboud University Student Life and International Mobility: scholarships [at] ru.nl. Study in NL contact page: https://www.studyinnl.org/contact-details",
+            "email": null
           },
-          "citizenship_residency": "Applicants of non-EEA nationality who are not eligible for the lower EU/EEA tuition fee and who hold no degree from a Dutch education institution.",
+          "program_type": "Government scholarship (Dutch Ministry of Education, Culture and Science) administered by participating institutions",
+          "region": "Europe (Netherlands); open to applicants from outside the European Economic Area",
+          "coverage": "A one-off grant of € 5,000 paid in the first year of studies, with institution-level tiers that may be higher (Utrecht University: €5,000/€10,000/€15,000). It is explicitly not a full-tuition scholarship and explicitly does not cover the costs of living and studying. Travel, visa and insurance are not covered on any official page read.",
+          "official_source_urls": [
+            "https://www.studyinnl.org/finances/nl-scholarship",
+            "https://www.nuffic.nl/en/nl-scholarship",
+            "https://www.nuffic.nl/en/international/international-programmes",
+            "https://www.ru.nl/en/education/scholarships/nl-scholarship",
+            "https://www.uu.nl/en/masters/general-information/application-and-admission/scholarships-and-grants/nl-scholarship"
+          ],
+          "official_updates_url": "https://www.studyinnl.org/finances/nl-scholarship",
+          "catalogue_url": "https://www.studyinnl.org/finances/nl-scholarship",
           "last_verified_date": "2026-10-01"
         },
         "applicant_utility": {
@@ -36123,6 +36894,15 @@
             "Build a realistic financing plan for the full nominal duration of the programme and be ready to evidence it in the institution's own format.",
             "If you are at Radboud University, apply for the Radboud Scholarship Programme in the same cycle — the NLS cannot be awarded on its own."
           ],
+          "important_advice_for_students": [
+            "Do not treat € 5,000 as full funding. Study in NL says outright that this is not a full-tuition scholarship, and Radboud says the costs of living and studying are not covered. You still pay statutory tuition and your living costs.",
+            "The deadline that matters is the institution's, not Study in NL's. The only central date is the opening date, 1 November for 2026-2027, and Study in NL repeatedly redirects you to the institution's website for the actual deadline.",
+            "Check the deadline pattern, not just the date. Radboud runs submission and completeness as separate deadlines and will not consider an incomplete application; Utrecht runs one hard close and then locks your information for the last stretch of the window.",
+            "The award is year-one money only. It is paid once, in your first year, so a two-year master's is half-funded at best unless the institution's tier is larger.",
+            "Your financial plan can be part of the selection criteria, not just paperwork. At Utrecht the quality and feasibility of the financial plan is a published selection criterion, so an unrealistic budget works against you.",
+            "Expect integrity screening. Nuffic's Code of Conduct enumerates bankruptcy, tax and social security default, criminal-organisation conduct, money laundering, terrorist offences, irregularity and shell-company activity as unacceptable. Any of these can disqualify you.",
+            "At Radboud the two awards are linked. The NLS is always paired with the Radboud Scholarship Programme; you get both or just the RSP, never the NLS alone."
+          ],
           "common_rejection_risks": [
             "Applying to a programme that does not participate in the NL Scholarship at that institution.",
             "Missing the institutional deadline: the central 1 November opening date is not the deadline, and each institution sets its own.",
@@ -36131,7 +36911,9 @@
             "Having a Dutch degree or prior Dutch enrolment, which disqualifies under the central criteria.",
             "At Utrecht University, a financial plan that does not cover the full nominal duration of the programme, or that the institution judges not realistic.",
             "Submitting late in the window: Utrecht University warns that between 27 January and 1 February, incomplete or incorrect information cannot be updated or supplemented.",
-            "Assuming admission to the programme means scholarship selection — the two are separate processes."
+            "Assuming admission to the programme means scholarship selection — the two are separate processes.",
+            "Assume the € 5,000 applies everywhere: Utrecht publishes €5,000/€10,000/€15,000 tiers, so the headline figure is a floor, not a fixed value.",
+            "Engaging in conduct listed in Nuffic's Integrity Code of Conduct, including tax or social security default, money laundering, terrorist-related conduct or shell-company activity."
           ],
           "estimated_uncovered_costs": [
             "The statutory tuition fee for a non-EEA student, minus whatever the institution's award tier covers.",
@@ -36139,7 +36921,8 @@
             "Visa and residence permit costs.",
             "Health insurance and any required supplementary insurance.",
             "Travel to and from the Netherlands.",
-            "Books, materials, course-related travel and other study-related expenses."
+            "Books, materials, course-related travel and other study-related expenses.",
+            "Years two onward of a multi-year programme, since the award is paid in the first year only."
           ],
           "document_audit": [
             "Statement of Financial Resources: download the institution's own PDF form and complete every field; Utrecht University expects coverage of the full nominal duration of the programme, not just year one.",
@@ -36147,6 +36930,13 @@
             "OSIRIS application: check every uploaded document is correct, legible and complete, because the institution returns applications with incorrect, illegible or missing documents and those defects are not curable after the completeness deadline.",
             "Keep file names and formats consistent with your institution's upload rules, which are set on the institution's page and were not published centrally.",
             "Retain proof of submission: the submitted date, not the completed date, is what triggers the first deadline in the Radboud pattern."
+          ],
+          "referee_tracking": [
+            {
+              "role": "None published",
+              "required": false,
+              "instructions": "No referee, reference or nomination requirement is published on the Study in NL or Nuffic programme pages, and none is published on the Utrecht University or Radboud University NL Scholarship pages read. Do not add referees on assumption."
+            }
           ],
           "alerts": [
             {
@@ -36175,48 +36965,70 @@
             "Meet the submission deadline, then the completeness deadline.",
             "Track the published results date and keep the funding plan current in case the award is refused or reduced."
           ],
-          "referee_tracking": [
-            {
-              "role": "None published",
-              "required": false,
-              "instructions": "No referee, reference or nomination requirement is published on the Study in NL or Nuffic programme pages, and none is published on the Utrecht University or Radboud University NL Scholarship pages read. Do not add referees on assumption."
-            }
-          ],
           "post_award_requirements": [
             "Enroll as a full-time student for the academic year and programme the scholarship was awarded for.",
             "Comply with Dutch visa and residence permit conditions.",
             "Accept that the award is a one-off first-year payment and is not renewable — Radboud University states it can only be received once.",
             "Expect institution-level progress conditions for the remainder of the programme, which were not published on the pages read."
+          ],
+          "questions_to_ask_host": [
+            "Does my specific programme and field of study participate in the NL Scholarship this year, and has it in previous years?",
+            "What award tier will I be in, given that Utrecht publishes €5,000/€10,000/€15,000 tiers rather than a single figure?",
+            "Is the deadline a single close or a submission-plus-completeness pair, and what exactly closes at the completeness stage?",
+            "Does your financial-resources statement have a required form, and does it have to cover the full nominal programme duration?",
+            "Does an award affect my tuition-fee status or my eligibility for institution-specific grants?",
+            "Are there any progress or attendance conditions after the first-year payment, given that the award is one-off?",
+            "Which English test do you accept, at what score, and by what date must it be on file?"
           ]
         },
         "verification": {
           "cycle_verified": "2027-2028 cycle confirmed as upcoming through Radboud University's published 2027-2028 application and completeness deadlines (31 January 2027 and 14 February 2027); the central Study in NL page had only published the 2026-2027 cycle at the time of checking.",
-          "verification_confidence": 0.88,
+          "verification_confidence": 0.9,
           "official_fields_confirmed": [
-            "Award of € 5,000 paid in the first year of studies (Study in NL).",
-            "Explicit statement that this is not a full-tuition scholarship (Study in NL).",
-            "Explicit statement that costs of living and studying are not covered (Radboud University).",
-            "The four central application criteria (Study in NL).",
-            "Central 2026-2027 application opening date of 1 November 2025 (Study in NL).",
-            "Renaming from Holland Scholarship to NL Scholarship in June 2023, and the 47-institution / 2,112-scholarships-per-year programme figures (Nuffic).",
-            "Radboud University 2027-2028 deadlines, award cap of 26 scholarships, one-year/once-only rule, and pairing with the Radboud Scholarship Programme.",
-            "Utrecht University's €5,000/€10,000/€15,000 award tiers, 1 February deadline, and Statement of Financial Resources requirement.",
-            "Participation of named research universities and universities of applied sciences for 2026-2027 (Study in NL)."
+            "purpose",
+            "sdg_requirement",
+            "study_type",
+            "degree_award",
+            "duration",
+            "deadline_note",
+            "funding_type",
+            "tuition_rule",
+            "covered_expenses",
+            "not_covered_or_excluded",
+            "benefits",
+            "general_eligibility",
+            "ineligibility_conditions",
+            "international_eligibility",
+            "academic_level_rules",
+            "host_requirements",
+            "document_format_rules",
+            "selection_notes",
+            "application_steps",
+            "applicant_submission_route",
+            "application_portal",
+            "student_direct_application",
+            "official_application_route",
+            "timeline_rules",
+            "official_source_urls",
+            "source_citations"
           ],
           "institution_check_required": [
             "No central deadline date is published for the 2027-2028 cycle; every real deadline is institutional and must be read on the chosen institution's own page.",
-            "The award amount is not uniform across institutions: Utrecht University publishes €5,000/€10,000/€15,000 tiers, so the €5,000 figure should not be assumed to apply everywhere.",
+            "The award amount is not uniform across institutions: Utrecht University publishes €5,000/€10,000/€15,000 tiers, so the € 5,000 figure should not be assumed to apply everywhere.",
             "Which specific programmes at each institution participate changes annually and was not verifiable centrally.",
             "No English language test score is published on any official page read; Radboud University only requires that the programme's own English requirement be met.",
             "The 2027-2028 participating-institution list had not been published centrally when checked; only the 2026-2027 list was available.",
-            "Funding totals, tuition fees and the statutory fee amount were not published on the pages read and have not been estimated."
+            "Funding totals, tuition fees and the statutory fee amount were not published on the pages read and have not been estimated.",
+            "home_tuition_rule and tax_status are not addressed by any official page read"
           ],
           "unverified_or_removed_claims": [
             "Rejected the widespread claim that the Holland Scholarship is full tuition funding; the official page states the opposite.",
             "Rejected any single national deadline in favour of the published instruction that the institution sets the deadline.",
             "Rejected assumed IELTS/TOEFL scores; no official page read publishes a score.",
             "Rejected a single national award amount as universal after Utrecht University's page showed three different tiers.",
-            "Did not carry forward material still describing the programme under the old Holland Scholarship name without noting the June 2023 rename."
+            "Did not carry forward material still describing the programme under the old Holland Scholarship name without noting the June 2023 rename.",
+            "Set renewable false on the strength of the published first-year-only payment and Radboud's once-only rule, rather than leaving it null.",
+            "Left return_home_required false and clinical_restriction null because the programme publishes no return-home obligation and no clinical restriction."
           ],
           "source_conflict_rule": "Where the central Study in NL page and an institution's page differ on amount, deadline or eligibility, treat the institution's page as controlling because the programme is delivered and awarded by the institution. Record both in the record and use the institutional figure for the specific application.",
           "source_freshness_rule": "The participating-institution list and the award tiers are republished annually and the central page lagged a full cycle behind (still showing 2026-2027 in October 2026). Any amount, deadline or participating list older than the current academic year must be re-read on the institution's live page before an applicant relies on it.",
@@ -36227,8 +37039,20 @@
             "https://www.ru.nl/en/education/scholarships/nl-scholarship",
             "https://www.uu.nl/en/masters/general-information/application-and-admission/scholarships-and-grants/nl-scholarship"
           ],
-          "researched_by": "add_nl_au",
-          "last_verified_date": "2026-10-01"
+          "researched_by": "d9",
+          "last_verified_date": "2026-10-01",
+          "data_quality": {
+            "source_level": "Official provider pages (Study in NL, Nuffic, and the participating institutions Radboud University and Utrecht University)",
+            "coverage": "High for the central criteria and exclusions; the participating-institution lists and the Code of Conduct were read in full on the Study in NL page. Institutional detail depends on which participating institutions are read, and here only Radboud and Utrecht were.",
+            "pages_read": [
+              "https://www.studyinnl.org/finances/nl-scholarship",
+              "https://www.nuffic.nl/en/nl-scholarship",
+              "https://www.nuffic.nl/en/international/international-programmes",
+              "https://www.ru.nl/en/education/scholarships/nl-scholarship",
+              "https://www.uu.nl/en/masters/general-information/application-and-admission/scholarships-and-grants/nl-scholarship"
+            ],
+            "pages_unreadable": []
+          }
         }
       },
       "required_documents": [
