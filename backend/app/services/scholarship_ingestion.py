@@ -228,16 +228,20 @@ def upsert_verified_scholarships(
         scholarship = _find_existing_scholarship(session, record)
         persistence_fields = record.to_persistence_fields(verified_on)
 
+        # Fitted before the branch, not inside the create path. A guard that
+        # only guarded half the writes let a 258-character official_source
+        # through on the update path and aborted the run on the varchar(255).
+        persistence_fields, dropped = _fit_columns(persistence_fields)
+        if dropped:
+            # Surfaced rather than swallowed: a record silently missing its
+            # funder name is harder to notice than a reported one.
+            logger.warning(
+                "dropped over-long value(s) for record %s: %s",
+                record.name,
+                ", ".join(dropped),
+            )
+
         if scholarship is None:
-            persistence_fields, dropped = _fit_columns(persistence_fields)
-            if dropped:
-                # Surfaced rather than swallowed: a record silently missing its
-                # funding label is harder to notice than a reported one.
-                logger.warning(
-                    "dropped over-long value(s) for record %s: %s",
-                    record.name,
-                    ", ".join(dropped),
-                )
             if record.funding_type is None:
                 raise ValueError("funding_type is required when inserting a new scholarship record")
             if record.preferred_id is not None and session.get(Scholarship, record.preferred_id) is None:
