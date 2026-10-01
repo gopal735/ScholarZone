@@ -31,10 +31,9 @@
       }
     },
     {
-      "source": "/((?!api/|assets/|favicon|robots\\.txt|sitemap\\.xml|manifest).*)",
+      "source": "/(.*)",
       "destination": {
-        "service": "frontend",
-        "path": "/index.html"
+        "service": "frontend"
       }
     }
   ]

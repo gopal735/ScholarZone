@@ -81,23 +81,27 @@ class TestRouting:
 
     def test_everything_else_reaches_the_frontend(self, root_config):
         catch_all = root_config["rewrites"][-1]
+        assert catch_all["source"] == "/(.*)"
         assert catch_all["destination"]["service"] == "frontend"
-        # The catch-all serves the SPA shell so a shared deep link such as
-        # /scholarships/12 does not 404 on a hard load.
-        assert catch_all["destination"].get("path") == "/index.html"
 
-    def test_catch_all_does_not_swallow_real_files(self, root_config):
-        # Without the negative lookahead the shell would also be served for the
-        # hashed asset URLs, so every stylesheet and script would come back as
-        # index.html and the app would render nothing.
-        catch_all = root_config["rewrites"][-1]["source"]
-        assert catch_all.startswith("/((?!")
-        for excluded in ("api/", "assets/"):
-            assert excluded in catch_all, f"{excluded} must not fall through to the shell"
-
-    def test_api_is_excluded_from_the_spa_shell(self, root_config):
-        catch_all = root_config["rewrites"][-1]["source"]
-        assert "api/" in catch_all
+    def test_catch_all_serves_the_frontend_as_built(self, root_config):
+        # Deliberately no `path` override on the catch-all.
+        #
+        # Adding one to give deep links an SPA shell was tried and reverted: the
+        # pattern needed a negative lookahead to spare /assets/, and that
+        # pattern is not honoured the way it reads. Every hashed script and
+        # stylesheet came back 404, so the homepage rendered unstyled and the
+        # asset URLs were intercepted. A plain catch-all hands the request to
+        # the frontend service untouched, which is what serves the build.
+        #
+        # Deep links therefore still 404 on a hard load. That is a real,
+        # separate defect and is tracked as one; it is not worth trading the
+        # entire homepage for.
+        catch_all = root_config["rewrites"][-1]["destination"]
+        assert "path" not in catch_all, (
+            "the catch-all must hand the request to the frontend service "
+            "unchanged; a path override intercepts the hashed asset URLs"
+        )
 
     def test_backend_strips_the_api_prefix(self, root_config):
         # Vercel hands a service the ORIGINAL request path, so /api/health would
