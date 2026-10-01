@@ -93,6 +93,25 @@ CLOSED_STATUSES = frozenset(
     {"closed", "expired", "discontinued", "retired", "withdrawn"}
 )
 
+# Tables that reference scholarships and must go with the parent row.
+#
+# Postgres enforces the foreign key, so a delete that ignored these raised
+# ForeignKeyViolation and rolled back - which is why the first live attempt
+# removed nothing. These rows have no meaning once the scholarship does.
+PURGE_CASCADE_TABLES = (
+    "ScholarshipVerificationHistory",
+    "ScholarshipReview",
+    "ScholarshipSnapshot",
+    "ScholarshipFetchAttempt",
+    "ImageReview",
+    "ScholarshipRestoreRecord",
+)
+
+# discovery_candidates points at a scholarship through a nullable match column.
+# The candidate itself carries extracted field data worth keeping, so the
+# pointer is cleared instead of the row being destroyed.
+PURGE_DETACH_TABLE = "DiscoveryCandidate"
+
 
 def _snapshot_row_payload(row) -> dict:
     """Every stored column of one record, JSON-safe.
@@ -1052,6 +1071,46 @@ def main(argv: list[str] | None = None) -> int:
                 key = (row.status or "").strip().lower() or "(empty)"
                 live_statuses[key] = live_statuses.get(key, 0) + 1
 
+            selected_ids = [item["id"] for item in selected]
+
+            # Children are read before the snapshot is written so the archive
+            # contains everything that is about to disappear, not just the
+            # parent row.
+            children: dict[str, list[dict]] = {}
+            from app.models import (
+                DiscoveryCandidate,
+                ImageReview,
+                ScholarshipFetchAttempt,
+                ScholarshipRestoreRecord,
+                ScholarshipReview,
+                ScholarshipSnapshot,
+                ScholarshipVerificationHistory,
+            )
+
+            cascade_models = {
+                "ScholarshipVerificationHistory": ScholarshipVerificationHistory,
+                "ScholarshipReview": ScholarshipReview,
+                "ScholarshipSnapshot": ScholarshipSnapshot,
+                "ScholarshipFetchAttempt": ScholarshipFetchAttempt,
+                "ImageReview": ImageReview,
+                "ScholarshipRestoreRecord": ScholarshipRestoreRecord,
+            }
+            assert set(cascade_models) == set(PURGE_CASCADE_TABLES)
+            for name, model in cascade_models.items():
+                rows_for = session.scalars(
+                    select(model).where(model.scholarship_id.in_(selected_ids))
+                ).all()
+                children[name] = [_snapshot_row_payload(r) for r in rows_for]
+
+            detached = session.scalars(
+                select(DiscoveryCandidate).where(
+                    DiscoveryCandidate.matched_scholarship_id.in_(selected_ids)
+                )
+            ).all()
+            children["DiscoveryCandidate"] = [
+                _snapshot_row_payload(r) for r in detached
+            ]
+
             snapshot_path = Path(__file__).resolve().parents[2] / "config" / "purged_records_archive.json"
             if args.dry_run:
                 return {
@@ -1097,6 +1156,8 @@ def main(argv: list[str] | None = None) -> int:
                         "purged_at": today.isoformat(),
                         "count": len(selected),
                         "breakdown": breakdown,
+                        "child_rows": {k: len(v) for k, v in children.items()},
+                        "children": children,
                         "records": selected,
                     },
                     ensure_ascii=False,
@@ -1106,6 +1167,17 @@ def main(argv: list[str] | None = None) -> int:
             )
 
             deleted: list[int] = []
+            child_deleted = 0
+            for row in detached:
+                row.matched_scholarship_id = None
+                row.match_status = "unmatched"
+                child_deleted += 1
+            for name, model in cascade_models.items():
+                for child in session.scalars(
+                    select(model).where(model.scholarship_id.in_(selected_ids))
+                ).all():
+                    session.delete(child)
+                    child_deleted += 1
             for item in selected:
                 row = session.get(Scholarship, item["id"])
                 if row is None:
@@ -1117,6 +1189,7 @@ def main(argv: list[str] | None = None) -> int:
             return {
                 "error": None,
                 "deleted": len(deleted),
+                "child_rows_removed_or_detached": child_deleted,
                 "breakdown": breakdown,
                 "ids": deleted,
                 "snapshot_file": str(snapshot_path),
