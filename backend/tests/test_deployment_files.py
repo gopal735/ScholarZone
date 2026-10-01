@@ -135,3 +135,56 @@ class TestApiBaseDefaultsSafely:
         )
         assert "localhost" not in service
         assert "|| '/api'" in service
+
+
+class TestNoProcessEnvInBrowserCode:
+    """Vite does not define process.env, so a reference throws at runtime."""
+
+    @pytest.mark.parametrize(
+        "relative",
+        [
+            "frontend/src/main.jsx",
+            "frontend/src/App.jsx",
+            "frontend/src/services/scholarshipService.js",
+            "frontend/src/services/adminImageReviewService.js",
+            "frontend/src/services/canonicalOrigin.js",
+            "frontend/src/components/RedirectHandler.jsx",
+        ],
+    )
+    def test_no_process_env(self, relative):
+        path = REPO / relative
+        if not path.exists():
+            pytest.skip(f"{relative} not present")
+        source = path.read_text(encoding="utf-8")
+        assert "process.env" not in source, (
+            f"{relative} references process.env; Vite only defines import.meta.env, "
+            "so this throws in the browser and blanks the page"
+        )
+
+
+class TestRouterBasenameFollowsTheDeployTarget:
+    """The router has to agree with where the app is served."""
+
+    @pytest.fixture(scope="class")
+    def main_jsx(self) -> str:
+        return (REPO / "frontend" / "src" / "main.jsx").read_text(encoding="utf-8")
+
+    def test_basename_comes_from_base_url(self, main_jsx):
+        assert "import.meta.env.BASE_URL" in main_jsx
+
+    def test_basename_is_not_a_hardcoded_path(self, main_jsx):
+        # A literal '/ScholarZone' told the router it lived one directory deep
+        # on a root domain, so no route matched and the page rendered nothing.
+        assert 'basename="/ScholarZone"' not in main_jsx
+
+    def test_render_is_wrapped_in_an_error_boundary(self, main_jsx):
+        assert "AppErrorBoundary" in main_jsx
+
+    def test_error_boundary_component_exists(self):
+        boundary = REPO / "frontend" / "src" / "components" / "AppErrorBoundary.jsx"
+        assert boundary.exists()
+        source = boundary.read_text(encoding="utf-8")
+        # Without componentDidCatch and getDerivedStateFromError this renders
+        # nothing and is not an error boundary at all.
+        assert "componentDidCatch" in source
+        assert "getDerivedStateFromError" in source

@@ -6,23 +6,37 @@ import { CompareProvider } from './context/CompareContext.jsx'
 import { SavedScholarshipsProvider } from './context/SavedScholarshipsContext.jsx'
 import { ThemeProvider } from './context/ThemeContext.jsx'
 import { RedirectHandler } from './components/RedirectHandler.jsx'
+import { AppErrorBoundary } from './components/AppErrorBoundary.jsx'
 import './index.css'
 import App from './App.jsx'
 import './theme.css'
 
+// The router has to agree with where the app is actually served. Vite sets
+// BASE_URL from the same `base` that rewrites every asset URL, so reading it
+// here keeps the two from drifting: '/ScholarZone/' on GitHub Pages and '/' on a
+// root domain.
+//
+// It used to be the literal string '/ScholarZone'. On the Vercel root domain
+// that told the router it lived one directory deep, so no route matched and the
+// page rendered nothing at all. Hardcoding the GitHub Pages path is what made
+// this a second, separate blank-screen bug after the asset base was fixed.
+const basename = (import.meta.env.BASE_URL || '/').replace(/\/$/, '') || '/'
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ThemeProvider>
-      <AuthProvider>
-        <SavedScholarshipsProvider>
-          <CompareProvider>
-            <BrowserRouter basename="/ScholarZone">
-              <RedirectHandler />
-              <App />
-            </BrowserRouter>
-          </CompareProvider>
-        </SavedScholarshipsProvider>
-      </AuthProvider>
-    </ThemeProvider>
+    <AppErrorBoundary>
+      <ThemeProvider>
+        <AuthProvider>
+          <SavedScholarshipsProvider>
+            <CompareProvider>
+              <BrowserRouter basename={basename}>
+                <RedirectHandler />
+                <App />
+              </BrowserRouter>
+            </CompareProvider>
+          </SavedScholarshipsProvider>
+        </AuthProvider>
+      </ThemeProvider>
+    </AppErrorBoundary>
   </StrictMode>,
 )
