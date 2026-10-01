@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from datetime import date
+import logging
 from typing import Iterable
 from urllib.parse import urlsplit
 
@@ -11,6 +12,8 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from ..models import Scholarship
+
+logger = logging.getLogger(__name__)
 
 
 class ScholarshipIngestionRecord(BaseModel):
@@ -184,6 +187,33 @@ def _find_existing_scholarship(session: Session, record: ScholarshipIngestionRec
     return legacy_candidates[0] if legacy_candidates else None
 
 
+def _fit_columns(payload: dict[str, object]) -> tuple[dict[str, object], list[str]]:
+    """Drop values that do not fit their column, and say which.
+
+    Postgres raises StringDataRightTruncation and the whole transaction rolls
+    back, so one over-long value costs every other record in the batch. The
+    model caps most bounded fields, but not all of them: ``image_source_type``
+    and similar carry no max_length, so an agent writing a sentence instead of
+    a code reached the database.
+
+    The value is left out rather than truncated. Half a source type reads as a
+    source type, which is worse than none.
+    """
+    widths = {
+        column.name: getattr(column.type, "length", None)
+        for column in Scholarship.__table__.columns
+    }
+    fitted: dict[str, object] = {}
+    dropped: list[str] = []
+    for field, value in payload.items():
+        limit = widths.get(field)
+        if limit is not None and isinstance(value, str) and len(value) > limit:
+            dropped.append(f"{field}({len(value)}>{limit})")
+            continue
+        fitted[field] = value
+    return fitted, dropped
+
+
 def upsert_verified_scholarships(
     session: Session,
     records: Iterable[ScholarshipIngestionRecord],
@@ -199,6 +229,15 @@ def upsert_verified_scholarships(
         persistence_fields = record.to_persistence_fields(verified_on)
 
         if scholarship is None:
+            persistence_fields, dropped = _fit_columns(persistence_fields)
+            if dropped:
+                # Surfaced rather than swallowed: a record silently missing its
+                # funding label is harder to notice than a reported one.
+                logger.warning(
+                    "dropped over-long value(s) for record %s: %s",
+                    record.name,
+                    ", ".join(dropped),
+                )
             if record.funding_type is None:
                 raise ValueError("funding_type is required when inserting a new scholarship record")
             if record.preferred_id is not None and session.get(Scholarship, record.preferred_id) is None:
