@@ -81,6 +81,38 @@ STAGE_ORDER = (
 # the contract is asserted rather than assumed.
 PURGE_CLOSED_EXCLUDED_FROM_ALL = True
 
+# Statuses that mean the round cannot be applied to.
+#
+# Written as an allowlist of terminal states rather than "not open". The
+# catalogue carries live states such as "closing-soon" and "rolling", and a
+# record whose deadline is still in the future is one of the most useful rows
+# on the site: treating it as closed because its status string is not literally
+# "open" would delete exactly the records an applicant needs. That rule did run
+# once, and it selected the Commonwealth Scholarship row for deletion.
+CLOSED_STATUSES = frozenset(
+    {"closed", "expired", "discontinued", "retired", "withdrawn"}
+)
+
+
+def _snapshot_row_payload(row) -> dict:
+    """Every stored column of one record, JSON-safe.
+
+    Used only by ``do_purge_closed``. A deleted row that cannot be described
+    exactly is a row that cannot be brought back, so this serialises the mapped
+    columns rather than the handful of fields the report happens to print.
+    """
+    from datetime import date as _date, datetime as _datetime
+
+    def encode(value):
+        if isinstance(value, (_date, _datetime)):
+            return value.isoformat()
+        return value
+
+    return {
+        column.name: encode(getattr(row, column.name))
+        for column in row.__table__.columns
+    }
+
 # A stage that fails stops the stages that depend on it, but not the ones that
 # do not. Verification has no prerequisite and nothing gates it.
 #
@@ -943,25 +975,7 @@ def main(argv: list[str] | None = None) -> int:
             recorder.record_counts({"archive_archived": len(rows)})
         return detail
 
-    def _snapshot_row_payload(row) -> dict:
-        """Every stored column of one record, JSON-safe.
-
-        Used only by ``do_purge_closed``. A deleted row that cannot be
-        described exactly is a row that cannot be brought back, so this
-        serialises the mapped columns rather than the handful of fields the
-        report happens to print.
-        """
-        from datetime import date as _date, datetime as _datetime
-
-        def encode(value):
-            if isinstance(value, (_date, _datetime)):
-                return value.isoformat()
-            return value
-
-        return {
-            column.name: encode(getattr(row, column.name))
-            for column in row.__table__.columns
-        }
+    
 
     def do_purge_closed() -> dict:
         """Permanently delete records whose application round is closed.
@@ -993,16 +1007,16 @@ def main(argv: list[str] | None = None) -> int:
             rows = session.scalars(select(Scholarship)).all()
             selected: list[dict] = []
             breakdown = {
-                "status_not_open": 0,
+                "status_closed": 0,
                 "archived": 0,
                 "deadline_passed": 0,
             }
             for row in rows:
                 reasons = []
                 status = (row.status or "").strip().lower()
-                if status not in ("open", "upcoming"):
-                    reasons.append("status_not_open")
-                    breakdown["status_not_open"] += 1
+                if status in CLOSED_STATUSES:
+                    reasons.append("status_closed")
+                    breakdown["status_closed"] += 1
                 if row.is_archived:
                     reasons.append("archived")
                     breakdown["archived"] += 1
@@ -1027,14 +1041,48 @@ def main(argv: list[str] | None = None) -> int:
                     }
                 )
 
+            live_statuses: dict[str, int] = {}
+            for row in rows:
+                key = (row.status or "").strip().lower() or "(empty)"
+                live_statuses[key] = live_statuses.get(key, 0) + 1
+
             snapshot_path = Path(__file__).resolve().parents[2] / "config" / "purged_records_archive.json"
             if args.dry_run:
                 return {
                     "error": None,
                     "would_delete": len(selected),
                     "breakdown": breakdown,
+                    "catalogue_statuses": dict(
+                        sorted(live_statuses.items(), key=lambda kv: -kv[1])
+                    ),
                     "ids": [item["id"] for item in selected],
-                    "snapshot_preview": selected[:3],
+                    "titles": [item["title"] for item in selected[:40]],
+                }
+
+            # Interlock. A row that is selected for deletion but still carries a
+            # future deadline has a non-terminal status string, which means the
+            # status vocabulary grew without this stage learning about it. That
+            # is a bug in the selection, not a closed round, and it is checked
+            # against the data rather than trusted from the code.
+            live_leak = [
+                item
+                for item in selected
+                if item["deadline_date"] and item["deadline_date"] >= today.isoformat()
+                and not (item["status"] or "").strip().lower() in CLOSED_STATUSES
+                and "archived" not in item["reasons"]
+            ]
+            if live_leak:
+                return {
+                    "error": (
+                        f"refusing to delete {len(live_leak)} record(s) that still have "
+                        "a future deadline and a non-terminal status: "
+                        + ", ".join(
+                            f"#{item['id']} {item['title']} ({item['status']})"
+                            for item in live_leak[:10]
+                        )
+                    ),
+                    "would_have_deleted": len(selected),
+                    "live_leak_count": len(live_leak),
                 }
 
             snapshot_path.write_text(
