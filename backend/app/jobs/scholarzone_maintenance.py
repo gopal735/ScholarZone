@@ -1134,7 +1134,22 @@ def main(argv: list[str] | None = None) -> int:
 
             created, updated = upsert_verified_scholarships(session, fresh)
 
-            # Attach the deep blocks and logos to the rows just written.
+            # Narrow columns are the ones the ingestion model does not police,
+            # because it has no fields for them. A value that does not fit is
+            # left out and counted rather than truncated: half a currency code
+            # reads as a currency code.
+            column_widths = {
+                column.name: getattr(column.type, "length", None)
+                for column in Scholarship.__table__.columns
+            }
+            skipped_too_long: list[dict] = []
+
+            def fits(field: str, value):
+                limit = column_widths.get(field)
+                if limit is None or value is None:
+                    return True
+                return len(str(value)) <= limit
+
             detailed = 0
             logoed = 0
             today = date.today()
@@ -1146,18 +1161,29 @@ def main(argv: list[str] | None = None) -> int:
                 ).first()
                 if row is None:
                     continue
-                if row_only.get("description"):
-                    row.description = row_only["description"]
-                if row_only.get("benefits"):
-                    row.benefits = row_only["benefits"]
+                for field, setter in (
+                    ("description", lambda v: setattr(row, "description", v)),
+                    ("benefits", lambda v: setattr(row, "benefits", v)),
+                    ("funding_currency", lambda v: setattr(row, "funding_currency", v)),
+                    ("funding_period", lambda v: setattr(row, "funding_period", v)),
+                    ("status", lambda v: setattr(row, "status", v)),
+                ):
+                    value = row_only.get(field)
+                    if value is None:
+                        continue
+                    if not fits(field, value):
+                        skipped_too_long.append(
+                            {
+                                "name": record.name,
+                                "field": field,
+                                "length": len(str(value)),
+                                "limit": column_widths.get(field),
+                            }
+                        )
+                        continue
+                    setter(value)
                 if row_only.get("funding_amount") is not None:
                     row.funding_amount = row_only["funding_amount"]
-                if row_only.get("funding_currency"):
-                    row.funding_currency = row_only["funding_currency"]
-                if row_only.get("funding_period"):
-                    row.funding_period = row_only["funding_period"]
-                if row_only.get("status"):
-                    row.status = row_only["status"]
                 od = detail.get("official_details")
                 au = detail.get("applicant_utility")
                 ver = detail.get("verification")
@@ -1189,6 +1215,8 @@ def main(argv: list[str] | None = None) -> int:
                 "updated": updated,
                 "detail_blocks_applied": detailed,
                 "logos_attached": logoed,
+                "skipped_too_long": skipped_too_long,
+                "skipped_too_long_count": len(skipped_too_long),
                 "rejected_count": len(rejected),
                 "rejected": rejected[:40],
             }
