@@ -271,7 +271,13 @@ export default function HomePage() {
           </div>
           <div className="sz-trust-bar__divider" aria-hidden="true" />
           <div className="sz-trust-bar__item">
-            <strong>{isLoading ? '—' : countriesCount}</strong>
+            <strong>
+              {statsStatus === 'success' && stats.countries > 0
+                ? stats.countries
+                : isLoading
+                  ? '—'
+                  : countriesCount}
+            </strong>
             <span>Countries</span>
           </div>
           <div className="sz-trust-bar__divider" aria-hidden="true" />
@@ -499,7 +505,13 @@ export default function HomePage() {
             <span>Total opportunities</span>
           </div>
           <div className="sz-stats__item">
-            <strong>{isLoading ? '—' : countriesCount}</strong>
+            <strong>
+              {statsStatus === 'success' && stats.countries > 0
+                ? stats.countries
+                : isLoading
+                  ? '—'
+                  : countriesCount}
+            </strong>
             <span>Countries covered</span>
           </div>
           <div className="sz-stats__item">
