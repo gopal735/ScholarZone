@@ -174,8 +174,13 @@ export default function HomePage() {
   const catalogueSize =
     statsStatus === 'success' && stats.total > 0 ? stats.total : null
 
+  // Same rule for countries: the snippet was reporting 42 from one page while
+  // the bands on the same page showed 47.
+  const countriesStat =
+    statsStatus === 'success' && stats.countries > 0 ? stats.countries : countriesCount
+
   const description = catalogueSize
-    ? `Discover ${catalogueSize} verified scholarships across ${countriesCount} countries. Search by country, degree, funding type and deadline. Every listing has been checked against the awarding body's own official page.`
+    ? `Discover ${catalogueSize} verified scholarships across ${countriesStat} countries. Search by country, degree, funding type and deadline. Every listing has been checked against the awarding body's own official page.`
     : 'Search verified scholarships by country, degree, funding type and deadline. Every listing has been checked against the awarding body’s own official page.'
 
   // SEO meta tags
@@ -238,7 +243,7 @@ export default function HomePage() {
     // The description now carries the live catalogue size, so it has to be
     // rebuilt when the count arrives rather than only on mount — otherwise the
     // search snippet keeps whatever number was there on first paint.
-  }, [catalogueSize, countriesCount])
+  }, [catalogueSize, countriesStat])
 
   /* The story needs a stable set to step through. Taking the first few
      in directory order keeps it deterministic between renders, and the
