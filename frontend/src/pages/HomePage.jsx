@@ -255,7 +255,18 @@ export default function HomePage() {
       <ScrollReveal className="sz-trust-bar">
         <div className="sz-trust-bar__inner">
           <div className="sz-trust-bar__item">
-            <strong>{isLoading ? '—' : formatNumber(totalScholarships)}+</strong>
+            {/* The live catalogue total from the stats endpoint, not
+                totalScholarships — the directory is paginated, so that array is
+                one page and rendered as "100+". The "+" is gone too: a live
+                count is not a growth claim, and 100+ understated the catalogue
+                fourfold while claiming to exceed it. */}
+            <strong>
+              {statsStatus === 'success' && stats.total > 0
+                ? formatNumber(stats.total)
+                : isLoading
+                  ? '—'
+                  : formatNumber(totalScholarships)}
+            </strong>
             <span>Scholarships</span>
           </div>
           <div className="sz-trust-bar__divider" aria-hidden="true" />
