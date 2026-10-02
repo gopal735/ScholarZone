@@ -194,7 +194,7 @@ export default function HomePage() {
       { property: 'og:image', content: `${baseUrl}/og-image.png` },
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:title', content: 'ScholarZone – Verified Scholarship Directory' },
-      { name: 'twitter:description', content: 'Discover 487+ verified scholarships worldwide. Search by country, degree, funding type, and deadline.' },
+      { name: 'twitter:description', content: description },
       { name: 'robots', content: 'index, follow' },
     ]
     

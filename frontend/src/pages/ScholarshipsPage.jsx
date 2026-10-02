@@ -22,9 +22,12 @@ export default function ScholarshipsPage() {
       ? `${baseUrl}/scholarships?country=${encodeURIComponent(countryParam)}`
       : `${baseUrl}/scholarships`
     const title = countryParam ? `${countryParam} Scholarships | ScholarZone` : 'All Scholarships | ScholarZone'
+    // No catalogue size here. This page does not fetch the stats endpoint, so
+    // any number written into the string would be a claim the page cannot back
+    // and would drift the moment a record is added.
     const description = countryParam
       ? `Explore verified scholarship opportunities in ${countryParam}. Filter by degree, funding, and deadline. Every listing has a verified official source.`
-      : 'Compare key funding details, degree levels, countries and deadlines in one focused directory. 487+ verified scholarships worldwide.'
+      : 'Compare key funding details, degree levels, countries and deadlines in one focused directory. Every listing has been checked against the awarding body’s own official page.'
 
     // Remove existing SEO tags
     document.querySelectorAll('[data-sz-seo]').forEach(el => el.remove())
