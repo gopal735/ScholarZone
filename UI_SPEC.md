@@ -81,6 +81,60 @@ suffix — 401 is a live count. Nothing invented to pad a grid.
 - `verification_status` is `active` for all 401 records, so it carries no
   information and must not drive the verified state.
 
+## Typography — the measurements, not the adjectives
+
+Instrument Serif for display, Inter for everything else. Long copy never goes in
+the serif; the serif is display-only. This pairing is what JSTOR runs.
+
+Body scale is JSTOR's 1.125 ladder with **absolute** line-heights, so every
+block lands on the same rhythm: `11/16 · 12/18 · 13/20 · 14/20 · 16/24 (body
+floor) · 18/26 · 21/26 · 24/28 · 30/34 · 40/40`. Hero is
+`clamp(44px, 5.6vw, 68px) / 1.0`.
+
+| Role | Spec |
+|---|---|
+| Hero headline | Instrument Serif 400, `clamp(44px,5.6vw,68px)/1.0`, tracking −0.035em |
+| Section heading | 30/34, tracking −0.02em |
+| Stat numeral | Instrument Serif 400, `clamp(2.75rem,4.4vw,4rem)/0.95`, `tabular-nums` |
+| Stat label | 12px/600, `+0.085em`, uppercase, on `--surface` not the band |
+| Card title | 15px/20px, 2-line clamp, −0.012em |
+| Meta label | 11.5px/14px, sentence case, tracking 0 |
+| Meta value | 12px/14px, weight 650, `tabular-nums`, right-aligned |
+| Deadline well | 9px label + 12.5px/650 value, 2px navy left border |
+| Badge | 17px tall, 10px/600, 3px radius |
+| Citation line | 11px mono, `+0.04em` |
+
+Line-height grid is 4px. Body tracking −0.02em; labels open at +0.14em.
+Type floor is **13px values / 11.5px labels** — density comes from column
+count, never from shrinking type.
+
+Meta colour is `#5A6472`: measured 6.00:1 on white, 5.75 on warm paper, 5.65 on
+the deadline well. The old `--text-muted #6B7684` was 4.34 on the well and
+failed AA.
+
+## Data presentation
+
+The card is the product. Anatomy, top to bottom: official logo → verified badge
+→ title → provider → provenance rule + citation line → state badges →
+deadline well → paired meta rows → footer action.
+
+Meta layout is a **hybrid** — measured at 329px, inline rows 317px, 2-column
+grid 268px, bare badges 270px, hybrid 261px. Hybrid wins: each row carries a
+labelled *pair*, so five facts fit in 65px instead of 156px.
+
+Badges are for **state**, never for facts. `FULLY FUNDED` and `VERIFIED` are
+state. `Postgraduate` is a fact and belongs in a meta row — which is why Google
+Flights, Kayak and Indeed never badge facts.
+
+Card budget: 229px (down from 600). The cliff is at 245px — crossing it drops
+from 12 visible cards to 8, a 33% cliff for 5% height. Delete the 600px
+`min-height`, drop the description paragraph, halve the horizontal padding.
+
+Section gap: 160px → **128px**. At 1440px, 160px on both sides of a boundary
+is 320px of whitespace, which is the single biggest reason the page reads as
+empty. Prefer a 1px rule over padding — space without structure reads as
+padding, a rule reads as composition.
+
 ## Current state
 
 Production `16464df`, healthy. Token layer, `--brand` alias fix and the App.css
