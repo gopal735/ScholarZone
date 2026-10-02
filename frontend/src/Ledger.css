@@ -57,8 +57,71 @@
 }
 
 .scholarship-grid .scholarship-card .scholarship-image {
-  aspect-ratio: 16 / 9;
-  max-height: 148px;
+  max-height: 120px;
+}
+
+/* The shield row says "Verified official source" plus a date. The citation
+   line introduced by the Provenance Rule now says the same thing, so in the
+   grid it is redundant duplication — and it was the largest block in the
+   header at 179px. Kept on the hero and detail pages, where there is room. */
+.scholarship-grid .scholarship-card__signals {
+  display: none;
+}
+
+.scholarship-grid .scholarship-card__header {
+  padding: 10px 12px 6px;
+}
+
+.scholarship-grid .scholarship-card__footer {
+  padding: 4px 10px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+/* The footer stacks a 44px action row and a 45px button, so it costs 116px
+   for two controls. Side by side they cost the height of the taller one.
+
+   Both children default to a width that fills the footer, which makes them
+   wrap and pushes the footer to 123px instead. Pinning the action group's
+   width and letting the button take the remainder is what actually puts them
+   on one line. */
+.scholarship-grid .scholarship-card__footer > * {
+  min-width: 0;
+}
+
+.scholarship-grid .scholarship-card__footer > .scholarship-actions {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+.scholarship-grid .scholarship-card__footer > .scholarship-card__button {
+  flex: 1 1 auto;
+  width: auto;
+  justify-content: center;
+}
+
+/* Actions sit inline rather than stacking, which is most of the footer's
+   116px. The tap target is restored with a pseudo-element rather than by
+   making the button large, so the row can stay short. */
+.scholarship-grid .scholarship-card__actions,
+.scholarship-grid .scholarship-card__footer > div {
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+}
+
+.scholarship-grid .scholarship-card__button,
+.scholarship-grid .scholarship-card__save {
+  position: relative;
+}
+
+.scholarship-grid .scholarship-card__button::after,
+.scholarship-grid .scholarship-card__save::after {
+  content: '';
+  position: absolute;
+  inset: -12px;
 }
 
 .scholarship-grid .scholarship-card__header {
