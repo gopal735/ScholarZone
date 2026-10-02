@@ -12,10 +12,6 @@ function getStoredTheme() {
   }
 }
 
-function getSystemTheme() {
-  return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-}
-
 function applyTheme(theme) {
   document.documentElement.dataset.theme = theme
   document.documentElement.style.colorScheme = theme
@@ -24,32 +20,24 @@ function applyTheme(theme) {
 export function ThemeProvider({ children }) {
   const initialStoredTheme = getStoredTheme()
   const [theme, setTheme] = useState(() => {
-    const initialTheme = initialStoredTheme ?? getSystemTheme()
+    // Light unless the visitor has explicitly chosen otherwise.
+    //
+    // This used to follow the operating system, which meant a visitor with a
+    // dark desktop silently got a different identity from one with a light
+    // desktop. The light direction is the product's face, so it is the default
+    // rather than a coin flip on the visitor's OS.
+    const initialTheme = initialStoredTheme ?? 'light'
     applyTheme(initialTheme)
     return initialTheme
   })
-  const [hasExplicitPreference, setHasExplicitPreference] = useState(Boolean(initialStoredTheme))
 
   useEffect(() => {
     applyTheme(theme)
   }, [theme])
 
-  useEffect(() => {
-    if (hasExplicitPreference || !window.matchMedia) {
-      return undefined
-    }
-
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-    const syncSystemTheme = (event) => setTheme(event.matches ? 'dark' : 'light')
-
-    mediaQuery.addEventListener('change', syncSystemTheme)
-    return () => mediaQuery.removeEventListener('change', syncSystemTheme)
-  }, [hasExplicitPreference])
-
   function toggleTheme() {
     const nextTheme = theme === 'dark' ? 'light' : 'dark'
     setTheme(nextTheme)
-    setHasExplicitPreference(true)
 
     try {
       window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme)

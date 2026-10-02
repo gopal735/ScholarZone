@@ -18,7 +18,10 @@
   user-select: none;
   background:
     radial-gradient(120% 62% at 50% -18%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 58%),
-    linear-gradient(180deg, #FBFCFD 0%, #F6F7F9 44%, #F0F2F5 100%);
+    /* Warm paper, not the cool grey ramp. #F6F7F9/#F0F2F5 are Tailwind
+       gray-50/100 - the exact cast that made this read as a generic agency
+       page no matter what the theme tokens said. */
+    linear-gradient(180deg, #FDFCF9 0%, #FBFAF6 44%, #F6F3EA 100%);
 }
 
 [data-theme='dark'] .app-atmosphere {

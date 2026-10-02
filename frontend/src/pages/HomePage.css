@@ -4,7 +4,7 @@
 
 /* ── Base ─────────────────────────────────────────────────── */
 .sz-home {
-  --sz-section-gap: clamp(80px, 14vw, 160px);
+  --sz-section-gap: clamp(64px, 9vw, 128px);
   font-family: var(--sz-body);
   color: var(--sz-ink);
 

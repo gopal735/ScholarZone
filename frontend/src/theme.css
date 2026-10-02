@@ -12,49 +12,49 @@
      Cool porcelain. Deliberately neutral: a warm cast here reads as
      cream no matter how low the chroma, and the whole system is meant
      to read as graphite and steel rather than as a warm luxury theme. */
-  --page-bg: #F6F7F9;
-  --page-glow: rgba(94, 147, 214, 0.06);
+  --page-bg: #FBFAF6;
+  --page-glow: rgba(27, 58, 92, 0.04);
   --surface: #FFFFFF;
   --surface-raised: #FFFFFF;
-  --surface-subtle: #EEF1F4;
-  --surface-accent: rgba(94, 147, 214, 0.07);
+  --surface-subtle: #F3F0E8;
+  --surface-accent: rgba(27, 58, 92, 0.05);
 
   /* ── Color: Text (cool near-black, never warm) ──────────────── */
-  --text-primary: #0E141C;
-  --text-secondary: #47525F;
-  --text-muted: #6B7684;
-  --text-faint: #98A2AF;
+  --text-primary: #14130F;
+  --text-secondary: #24221C;
+  --text-muted: #6E6A61;
+  --text-faint: #8A857A;
 
   /* ── Color: Border ────────────────────────────────────────────
      Cool hairline. Structure comes from spacing first; these only
      need to catch light at an edge. */
-  --border: rgba(15, 25, 40, 0.1);
-  --border-strong: rgba(15, 25, 40, 0.17);
+  --border: rgba(20, 19, 15, 0.12);
+  --border-strong: rgba(20, 19, 15, 0.24);
 
   /* ── Color: Accent (steel blue) ───────────────────────────────
      One accent, used sparingly. Graphite's system keeps conversion
      controls monochrome and reserves saturation for emphasis; a
      saturated blue across every control would read as a SaaS theme
      rather than as an instrument panel. */
-  --accent: #2563A8;
-  --accent-hover: #1D5290;
-  --accent-soft: rgba(37, 99, 168, 0.09);
-  --accent-border: rgba(37, 99, 168, 0.28);
+  --accent: #1B3A5C;
+  --accent-hover: #12283F;
+  --accent-soft: rgba(27, 58, 92, 0.07);
+  --accent-border: rgba(27, 58, 92, 0.26);
 
   /* ── Color: Semantic ────────────────────────────────────────── */
-  --success: #2F6E4A;
-  --success-soft: rgba(47, 110, 74, 0.1);
-  --success-border: rgba(47, 110, 74, 0.26);
-  --warning: #8A6216;
-  --warning-strong: #6F4E10;
-  --warning-soft: rgba(138, 98, 22, 0.1);
-  --warning-border: rgba(138, 98, 22, 0.26);
+  --success: #3D6B4F;
+  --success-soft: rgba(61, 107, 79, 0.09);
+  --success-border: rgba(61, 107, 79, 0.28);
+  --warning: #8A4B2A;
+  --warning-strong: #6E3A20;
+  --warning-soft: rgba(138, 75, 42, 0.09);
+  --warning-border: rgba(138, 75, 42, 0.28);
   --danger: #9A3F3F;
   --danger-soft: rgba(154, 63, 63, 0.09);
-  --danger-border: rgba(154, 63, 63, 0.26);
+  --danger-border: rgba(154, 63, 63, 0.28);
 
   /* ── Color: Focus ───────────────────────────────────────────── */
-  --focus-ring: rgba(37, 99, 168, 0.45);
+  --focus-ring: rgba(27, 58, 92, 0.5);
   --focus-ring-width: 2px;
   --focus-ring-offset: 2px;
 
@@ -65,9 +65,9 @@
      Cool, two layers: a tight contact shadow plus a broad ambient
      one. Depth in this system is primarily tonal, so these stay
      deliberately shallow. */
-  --shadow-card: 0 1px 2px rgba(15, 25, 40, 0.04), 0 6px 18px rgba(15, 25, 40, 0.05);
-  --shadow-elevated: 0 2px 4px rgba(15, 25, 40, 0.05), 0 14px 34px rgba(15, 25, 40, 0.07);
-  --shadow-hover: 0 4px 10px rgba(15, 25, 40, 0.06), 0 22px 48px rgba(15, 25, 40, 0.09);
+  --shadow-card: none;
+  --shadow-elevated: 0 1px 2px rgba(20, 19, 15, 0.05);
+  --shadow-hover: 0 2px 6px rgba(20, 19, 15, 0.07);
 
   /* ── Typography: Families ───────────────────────────────────── */
   --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
@@ -138,12 +138,12 @@
   --space-24: 384px;
 
   /* ── Radius ─────────────────────────────────────────────────── */
-  --radius-xs: 4px;
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
-  --radius-xl: 20px;
-  --radius-pill: 9999px;
+  --radius-xs: 2px;
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 3px;
+  --radius-xl: 4px;
+  --radius-pill: 2px;
   --radius-card: var(--radius-lg);
   --radius-panel: var(--radius-xl);
 
@@ -161,7 +161,7 @@
   --duration-page: 420ms;
 
   /* ── Layout ─────────────────────────────────────────────────── */
-  --grid-max: 1280px;
+  --grid-max: 1680px;
   --grid-gutter: var(--space-6);
 
   /* ── Legacy aliases (keep existing components working) ──────── */
@@ -182,15 +182,15 @@
   --sz-grid-max: var(--grid-max);
 
   /* ── ScholarZone Editorial Tokens ───────────────────────────── */
-  --sz-ink: #0E141C;
-  --sz-ink-soft: #47525F;
+  --sz-ink: var(--text-primary);
+  --sz-ink-soft: var(--text-secondary);
   --sz-paper: #F6F7F9;
   --sz-paper-soft: #EEF1F4;
-  --sz-accent: #2563A8;
-  --sz-accent-deep: #1D5290;
-  --sz-accent-soft: rgba(37, 99, 168, 0.09);
-  --sz-stone: #6B7684;
-  --sz-stone-light: #98A2AF;
+  --sz-accent: var(--accent);
+  --sz-accent-deep: var(--accent-hover);
+  --sz-accent-soft: var(--accent-soft);
+  --sz-stone: #5A6472;
+  --sz-stone-light: #8A857A;
   --sz-mist: rgba(15, 25, 40, 0.1);
   --sz-mist-soft: rgba(15, 25, 40, 0.06);
 
@@ -252,10 +252,10 @@
     rgba(94, 147, 214, 0) 66%
   );
 
-  --sz-glass-shadow-1: 0 1px 2px rgba(15, 25, 40, 0.04), 0 6px 18px rgba(15, 25, 40, 0.05);
-  --sz-glass-shadow-2: 0 2px 4px rgba(15, 25, 40, 0.05), 0 14px 34px rgba(15, 25, 40, 0.07);
-  --sz-glass-shadow-3: 0 4px 8px rgba(15, 25, 40, 0.06), 0 24px 52px rgba(15, 25, 40, 0.09);
-  --sz-glass-shadow-4: 0 8px 16px rgba(15, 25, 40, 0.08), 0 32px 70px rgba(15, 25, 40, 0.12);
+  --sz-glass-shadow-1: none;
+  --sz-glass-shadow-2: none;
+  --sz-glass-shadow-3: none;
+  --sz-glass-shadow-4: none;
 
   /* ── Premium Depth System ────────────────────────────────────
      Depth 1 is a hairline, not a shadow. Most content should sit at
@@ -287,7 +287,7 @@
 
   /* On-tint text — AA (4.5:1) on the matching *-soft fills above */
   --sz-success-text: #245237;
-  --sz-accent-text: #1D5290;
+  --sz-accent-text: var(--accent);
   --sz-warning-text: #5C400C;
 
   /* ── Solid control ─────────────────────────────────────────────
@@ -308,6 +308,49 @@
   --sz-solid-shadow-hover:
     0 1px 0 rgba(255, 255, 255, 0.1) inset,
     0 10px 26px rgba(15, 25, 40, 0.2);
+
+  /* ── The Ledger: identity tokens ──────────────────────────────────────
+     Provenance is the product: every listing is read from the awarding
+     body's own page and dated. These tokens are how that reads.
+
+     A card's provenance rule terminates in a 6x2px square - filled when the
+     record carries a validated official logo, hollow when it does not. The
+     negative state is part of the identity rather than a gap to hide, so
+     nothing is ever fabricated to fill it. */
+  --sz-provenance-fill: #3D6B4F;
+  --sz-provenance-hollow: #6E6A61;
+  --sz-provenance-rule: #E3DED2;
+  --sz-provenance-rule-strong: #CFC8B8;
+  --sz-citation: #6E6A61;
+  --sz-citation-strong: #24221C;
+  --sz-paper: #FBFAF6;
+  --sz-sunk: #F3F0E8;
+  --sz-tint: #F6F3EA;
+  --sz-rule: #E3DED2;
+  --sz-divider: 7px;
+  --sz-section-divider: rgba(20, 19, 15, 0.07);
+
+  /* One easing, four durations, from JSTOR's production CSS. A single curve
+     is what makes motion read as one system rather than a collection of
+     effects. */
+  --sz-ease: cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  --sz-dur-fast: 100ms;
+  --sz-dur-base: 250ms;
+  --sz-dur-slow: 500ms;
+  --sz-dur-slower: 1000ms;
+
+  /* Density. Figures are tabular so a column of numbers aligns without
+     appearing to shift as values arrive. */
+  --sz-container: 1680px;
+  --sz-container-narrow: 1120px;
+  --sz-card-title: 1.3125rem;
+  --sz-card-title-lh: 1.238;
+  --sz-meta: 0.8125rem;
+  --sz-meta-lh: 1.538;
+  --sz-label: 0.6875rem;
+  --sz-label-ls: 0.14em;
+  --sz-body-floor: 1rem;
+  --sz-body-floor-lh: 1.5;
 }
 
 /* ═══════════════════════════════════════════════════════════════════
