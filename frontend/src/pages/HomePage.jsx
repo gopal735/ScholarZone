@@ -6,6 +6,7 @@ import TrustFlow from '../components/TrustFlow'
 import SaveCompareSteps from '../components/SaveCompareSteps'
 import FeaturedStory from '../components/FeaturedStory'
 import { useScholarshipDirectory } from '../hooks/useScholarshipDirectory'
+import { useScholarshipStats } from '../hooks/useScholarshipStats'
 import './HomePage.css'
 import { CANONICAL_ORIGIN } from '../services/canonicalOrigin'
 
@@ -27,15 +28,10 @@ const discoveryCollections = [
   },
 ]
 
-const countryCategories = [
-  { name: 'United Kingdom', flag: '🇬🇧', query: { country: 'United Kingdom' } },
-  { name: 'United States', flag: '🇺🇸', query: { country: 'United States' } },
-  { name: 'Germany', flag: '🇩🇪', query: { country: 'Germany' } },
-  { name: 'Canada', flag: '🇨🇦', query: { country: 'Canada' } },
-  { name: 'Australia', flag: '🇦🇺', query: { country: 'Australia' } },
-  { name: 'Europe', flag: '🇪🇺', query: { country: 'Europe' } },
-]
-
+// Countries are derived from the catalogue at render time, so this constant is
+// gone rather than extended. It listed six countries while the catalogue holds
+// forty-seven, which is how forty-one of them became unfindable from the
+// homepage.
 const degreeCategories = [
   { name: 'Masters', query: { degree: 'Master' } },
   { name: 'PhD', query: { degree: 'PhD' } },
@@ -94,25 +90,105 @@ function formatNumber(value) {
   return String(value)
 }
 
+/**
+ * A flag for a country name, derived rather than fetched.
+ *
+ * Regional indicator symbols are the two-letter code point per letter
+ * (U+1F1E6 + charcode), so no dependency and no image request is needed.
+ *
+ * Only countries whose catalogue name is exactly the ISO code resolve on their
+ * own. The catalogue stores full names — "Singapore", "Slovakia" — so the common
+ * cases come from a small lookup. Anything outside it returns null: the
+ * catalogue also holds values like "Europe" or "Canada (host)", and showing
+ * the wrong country's flag there would be worse than showing none, because an
+ * applicant reads a flag as a claim.
+ */
+const ISO_CODES = {
+  Australia: 'AU', Austria: 'AT', Belgium: 'BE', Brazil: 'BR', Canada: 'CA',
+  China: 'CN', 'Czech Republic': 'CZ', Denmark: 'DK', Egypt: 'EG', Estonia: 'EE',
+  Finland: 'FI', France: 'FR', Germany: 'DE', Ghana: 'GH', Greece: 'GR',
+  Hungary: 'HU', Iceland: 'IS', India: 'IN', Indonesia: 'ID', Ireland: 'IE',
+  Israel: 'IL', Italy: 'IT', Japan: 'JP', Jordan: 'JO', Kenya: 'KE',
+  Latvia: 'LV', Lithuania: 'LT', Luxembourg: 'LU', Malaysia: 'MY',
+  Malta: 'MT', Mexico: 'MX', Morocco: 'MA', Netherlands: 'NL',
+  'New Zealand': 'NZ', Nigeria: 'NG', Norway: 'NO', Pakistan: 'PK',
+  Philippines: 'PH', Poland: 'PL', Portugal: 'PT', Romania: 'RO',
+  Russia: 'RU', Rwanda: 'RW', 'Saudi Arabia': 'SA', Senegal: 'SN',
+  Serbia: 'RS', Singapore: 'SG', Slovakia: 'SK', Slovenia: 'SI',
+  'South Africa': 'ZA', 'South Korea': 'KR', Spain: 'ES', Sweden: 'SE',
+  Switzerland: 'CH', Taiwan: 'TW', Tanzania: 'TZ', Thailand: 'TH',
+  Tunisia: 'TN', Turkey: 'TR', Uganda: 'UG', Ukraine: 'UA',
+  'United Arab Emirates': 'AE', 'United Kingdom': 'GB',
+  'United States': 'US', Vietnam: 'VN',
+}
+
+function flagFor(name) {
+  const cleaned = (name || '').trim()
+  const code = ISO_CODES[cleaned] || (/^[A-Za-z]{2}$/.test(cleaned) ? cleaned.toUpperCase() : null)
+  if (!code) {
+    return null
+  }
+  return String.fromCodePoint(
+    ...[...code].map((ch) => 0x1f1e6 + ch.charCodeAt(0) - 65),
+  )
+}
+
 export default function HomePage() {
   const { scholarships, isLoading, isUsingFallback } = useScholarshipDirectory()
+  // The catalogue total for the search snippet. The directory is paginated,
+  // so its array length is one page, not the catalogue.
+  const { stats, status: statsStatus } = useScholarshipStats()
 
   const totalScholarships = scholarships.length
   const fullyFundedCount = scholarships.filter((s) => s.funding === 'Fully Funded').length
   const countriesCount = new Set(scholarships.map((s) => s.country)).size
   const verifiedCount = scholarships.filter((s) => s.verified || s.verification_status === 'active').length
 
+  // Countries come from the catalogue, not from a list written by hand.
+  //
+  // The six-entry constant this replaced (UK, US, Germany, Canada, Australia,
+  // "Europe") was presented to applicants as country discovery while the
+  // catalogue holds 47. A hardcoded shortlist is not a shortcut, it is a
+  // category the other 41 countries cannot be found under.
+  const cataloguedCountries = useMemo(() => {
+    const counts = new Map()
+    for (const s of scholarships) {
+      const name = (s.country || '').trim()
+      if (!name) {
+        continue
+      }
+      counts.set(name, (counts.get(name) || 0) + 1)
+    }
+    return [...counts.entries()]
+      .map(([name, count]) => ({ name, count }))
+      .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name))
+  }, [scholarships])
+
+  // The catalogue total for the search snippet, computed outside the effect
+  // below: a dependency array is evaluated in the outer scope, so a value
+  // declared within the effect cannot be listed as a dependency of it.
+  //
+  // It comes from the stats endpoint, not from scholarships.length — the
+  // directory is paginated, so that array is one page and stating its length
+  // as the catalogue size understates it fourfold.
+  const catalogueSize =
+    statsStatus === 'success' && stats.total > 0 ? stats.total : null
+
+  const description = catalogueSize
+    ? `Discover ${catalogueSize} verified scholarships across ${countriesCount} countries. Search by country, degree, funding type and deadline. Every listing has been checked against the awarding body's own official page.`
+    : 'Search verified scholarships by country, degree, funding type and deadline. Every listing has been checked against the awarding body’s own official page.'
+
   // SEO meta tags
   useEffect(() => {
     const baseUrl = CANONICAL_ORIGIN
-    
+
     // Remove existing SEO tags
     document.querySelectorAll('[data-sz-seo]').forEach(el => el.remove())
-    
+
     const metaTags = [
-      { name: 'description', content: 'Discover 487+ verified scholarships worldwide. Search by country, degree, funding type, and deadline. Every listing has a verified official source and image provenance.' },
+      { name: 'description', content: description },
       { property: 'og:title', content: 'ScholarZone – Verified Scholarship Directory' },
-      { property: 'og:description', content: 'Discover 487+ verified scholarships worldwide. Search by country, degree, funding type, and deadline. Every listing has a verified official source and image provenance.' },
+      { property: 'og:description', content: description },
       { property: 'og:url', content: `${baseUrl}/` },
       { property: 'og:type', content: 'website' },
       { property: 'og:image', content: `${baseUrl}/og-image.png` },
@@ -159,7 +235,10 @@ export default function HomePage() {
     return () => {
       document.querySelectorAll('[data-sz-seo]').forEach(el => el.remove())
     }
-  }, [])
+    // The description now carries the live catalogue size, so it has to be
+    // rebuilt when the count arrives rather than only on mount — otherwise the
+    // search snippet keeps whatever number was there on first paint.
+  }, [catalogueSize, countriesCount])
 
   /* The story needs a stable set to step through. Taking the first few
      in directory order keeps it deterministic between renders, and the
@@ -317,17 +396,23 @@ export default function HomePage() {
         <div className="sz-browse">
           <ScrollReveal className="sz-browse__group" delay={0}>
             <h3 className="sz-browse__label">Country</h3>
-            <div className="sz-browse__tags">
-              {countryCategories.map((cat) => (
+            <div className="sz-browse__tags sz-browse__tags--countries">
+              {cataloguedCountries.slice(0, 18).map((cat) => (
                 <Link
                   key={cat.name}
                   to={`/scholarships?country=${encodeURIComponent(cat.name)}`}
                   className="sz-tag"
                 >
-                  <span className="sz-tag__flag" aria-hidden="true">{cat.flag}</span>
+                  <span className="sz-tag__flag" aria-hidden="true">{flagFor(cat.name)}</span>
                   {cat.name}
+                  <span className="sz-tag__count">{cat.count}</span>
                 </Link>
               ))}
+              {cataloguedCountries.length > 18 && (
+                <Link to="/countries" className="sz-tag sz-tag--all">
+                  View all {cataloguedCountries.length} countries
+                </Link>
+              )}
             </div>
           </ScrollReveal>
 

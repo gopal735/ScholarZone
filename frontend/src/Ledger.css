@@ -330,6 +330,102 @@ html.js-reveal .sz-reveal.is-in {
   overflow-wrap: anywhere;
 }
 
+/* ── Country discovery ──────────────────────────────────────────────────
+   Country chips are built from the live catalogue, so this section is dense:
+   47 countries have to sit in a strip without becoming a wall. Counts are
+   shown because "which of these has enough to be worth clicking" is the actual
+   question, and they are not decoration. */
+.sz-browse__tags--countries {
+  gap: 6px;
+}
+
+.sz-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 9px;
+  border: 1px solid var(--sz-provenance-rule);
+  border-radius: 2px;
+  background: var(--surface);
+  font-size: 0.8125rem;
+  line-height: 1.385;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: border-color 150ms var(--sz-ease),
+              background-color 150ms var(--sz-ease),
+              transform 150ms var(--sz-ease);
+}
+
+.sz-tag:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--text-primary);
+  transform: translate3d(0, -1px, 0);
+}
+
+.sz-tag__flag {
+  font-size: 0.9375rem;
+  line-height: 1;
+}
+
+.sz-tag__count {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.6875rem;
+  color: var(--sz-citation);
+}
+
+.sz-tag--all {
+  border-style: dashed;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ── Motion: parallax, sphere, spin ─────────────────────────────────────
+   These live in the hero's decorative layer, never behind the listing. A
+   catalogue is a comparison tool, and content that drifts under the viewport
+   cannot be compared across rows. */
+.sz-hero__media,
+.sz-hero__orb {
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sz-hero__orb {
+    animation: sz-drift 22s ease-in-out infinite alternate;
+  }
+
+  .sz-hero__ring {
+    animation: sz-spin 48s linear infinite;
+  }
+}
+
+@keyframes sz-drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  to {
+    transform: translate3d(0, -22px, 0) scale(1.06);
+  }
+}
+
+@keyframes sz-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sz-hero__orb,
+  .sz-hero__ring {
+    animation: none !important;
+  }
+}
+
 /* Visible focus for keyboard users, in the accent rather than the browser
    default so it reads as part of the system. */
 :where(a, button, [role='button'], select, input, summary):focus-visible {
