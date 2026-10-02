@@ -10,9 +10,15 @@ import ComparePage from './pages/ComparePage'
 import AdminPage from './pages/AdminPage'
 import CountryPage from './pages/CountryPage'
 import NotFoundPage from './pages/NotFoundPage'
+import { useScrollReveal } from './hooks/useScrollReveal'
 import './App.css'
 
 function App() {
+  // Sections and cards arrive as they enter view. Runs on the route change
+  // too, so navigating to the catalogue reveals the new page's content rather
+  // than waiting for a scroll event that will never come.
+  useScrollReveal()
+
   return (
     <Routes>
       <Route element={<Layout />}>

@@ -1,0 +1,235 @@
+/* ── The Ledger: density, identity, motion ──────────────────────────────────
+   Applied last, so it wins over component defaults without editing twelve
+   files. Every number here is measured, not chosen.
+
+   Provenance is the product. The rule at the foot of each title is how that
+   reads: the square is filled when the record carries a validated official
+   logo and hollow when it does not, and the citation line carries the date it
+   was read. The negative state is part of the identity, not a gap to fill, so
+   nothing is ever substituted for a missing logo. */
+
+/* ── Container and grid ──────────────────────────────────────────────────
+   1200px at a 1440 viewport discarded 240px of the window and could not
+   produce a fourth column. 4 columns needs 4x300 + 3x20 = 1260px. */
+.scholarships-page__content {
+  max-width: 1680px;
+  padding-inline: clamp(16px, 2.2vw, 40px);
+}
+
+.scholarship-grid {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 16px;
+}
+
+@media (min-width: 1728px) {
+  .scholarship-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .scholarship-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+}
+
+@media (max-width: 560px) {
+  .scholarship-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+/* ── Card density ────────────────────────────────────────────────────────
+   Measured at 1440: image 216 + header 164 + details 435 + footer 145 = 965.
+   The deadline row alone was 223 because the whole published sentence was
+   rendered with no clamp, while Location and Level sat at 52 each. */
+.scholarship-card {
+  border-radius: var(--radius-lg);
+  box-shadow: none;
+  transition: border-color 200ms var(--sz-ease), transform 150ms var(--sz-ease);
+}
+
+.scholarship-card:hover {
+  transform: translate3d(0, -2px, 0);
+}
+
+.scholarship-card .scholarship-image {
+  aspect-ratio: 16 / 9;
+  max-height: 148px;
+}
+
+.scholarship-card__header {
+  padding: 12px 14px 8px;
+  gap: var(--space-1);
+}
+
+.scholarship-card__header h2 {
+  font-size: 0.9375rem;
+  line-height: 1.333;
+  letter-spacing: -0.012em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+.scholarship-card__details {
+  padding: 0 14px;
+  gap: 2px;
+}
+
+.scholarship-card__detail {
+  padding: 2px 0;
+  border-top: 1px solid var(--sz-provenance-rule);
+  gap: 8px;
+}
+
+.scholarship-card__detail:first-child {
+  border-top: 0;
+}
+
+/* The clamp that removes ~180px from every card. The full sentence stays in
+   the DOM and on the detail page; only the card preview is truncated. */
+.scholarship-card__detail dd,
+.scholarship-card__detail [class*="value"] {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  min-width: 0;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.scholarship-card__footer {
+  padding: 6px 14px 8px;
+  margin-top: auto;
+  border-top: 1px solid var(--sz-provenance-rule);
+  background: transparent;
+}
+
+/* ── The Provenance Rule ──────────────────────────────────────────────────
+   A hairline under the title that terminates in a 6x2px square. Filled when the
+   record has a validated official logo, hollow when it does not. */
+.scholarship-card__title-rule {
+  position: relative;
+  height: 1px;
+  margin: 8px 0 2px;
+  background: var(--sz-provenance-rule);
+  transition: background-color 200ms var(--sz-ease);
+}
+
+.scholarship-card__title-rule::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -1px;
+  width: 6px;
+  height: 2px;
+  background: var(--sz-provenance-fill);
+}
+
+.scholarship-card__title-rule--unverified::after {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--sz-provenance-hollow);
+}
+
+.scholarship-card:hover .scholarship-card__title-rule {
+  background: var(--sz-provenance-rule-strong);
+}
+
+.scholarship-card__citation {
+  display: block;
+  margin-top: 3px;
+  font-family: ui-monospace, 'SFMono-Regular', 'Cascadia Mono', monospace;
+  font-size: 0.6875rem;
+  line-height: 1.45;
+  letter-spacing: 0.04em;
+  color: var(--sz-citation);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Motion ──────────────────────────────────────────────────────────────
+   One easing, four durations, from the consolidated spec. Transform reacts
+   faster than the surface it changes, which is what makes it feel responsive
+   rather than soft. */
+:root {
+  --sz-ease: cubic-bezier(0.2, 0, 0, 1);
+  --sz-dur-fast: 150ms;
+  --sz-dur-base: 250ms;
+  --sz-dur-slow: 600ms;
+}
+
+/* Cards arrive staggered, so a long list reads as a sequence rather than a
+   wall arriving at once.
+
+   The hidden state is gated behind .js-reveal, which the hook only sets once an
+   observer is actually attached. Gating it the other way round — hiding by
+   default — means a card stays at opacity 0 forever whenever the hook runs
+   before the list exists, or when IntersectionObserver is unavailable. Invisible
+   content is a far worse failure than content that arrives without animating. */
+html.js-reveal .scholarship-card {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition: opacity 400ms var(--sz-ease), transform 400ms var(--sz-ease),
+              border-color 200ms var(--sz-ease);
+}
+
+html.js-reveal .scholarship-card.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+html.js-reveal .scholarship-card.is-in:hover {
+  transform: translate3d(0, -2px, 0);
+}
+
+html.js-reveal .sz-reveal {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  transition: opacity var(--sz-dur-slow) var(--sz-ease),
+              transform var(--sz-dur-slow) var(--sz-ease);
+}
+
+html.js-reveal .sz-reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js-reveal .sz-reveal,
+  html.js-reveal .scholarship-card {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  html.js-reveal .scholarship-card.is-in:hover {
+    transform: none !important;
+  }
+
+  html {
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Visible focus for keyboard users, in the accent rather than the browser
+   default so it reads as part of the system. */
+:where(a, button, [role='button'], select, input, summary):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}

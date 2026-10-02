@@ -10,6 +10,9 @@ import { AppErrorBoundary } from './components/AppErrorBoundary.jsx'
 import './index.css'
 import App from './App.jsx'
 import './theme.css'
+// Imported last so the density, provenance and motion layer wins over the
+// component defaults without every component having to know about it.
+import './Ledger.css'
 
 // The router has to agree with where the app is actually served. Vite sets
 // BASE_URL from the same `base` that rewrites every asset URL, so reading it

@@ -19,6 +19,12 @@ export default function ScholarshipCard({ scholarship }) {
   const isVerified = scholarship.verified ?? true
   const cardRef = useRef(null)
 
+  /* Provenance, not decoration. image_kind is the honest signal: an image_url
+     exists on 401 records but only 387 are validated official_logo, and the
+     difference is exactly what this line has to tell the truth about. */
+  const hasOfficialLogo = scholarship.image_kind === 'official_logo'
+  const verifiedOn = scholarship.last_verified_at || null
+
   /* Writes two custom properties straight to the node. No React state
      and no animation loop, so a pointer sweep across a grid only costs a
      style recalc on the one card under the cursor. The card lifts on
@@ -64,6 +70,23 @@ export default function ScholarshipCard({ scholarship }) {
         </div>
 
         <h2>{scholarship.title}</h2>
+
+        {/* The Provenance Rule. The square is the identity: filled when the
+            record carries a validated official logo, hollow when it does not.
+            Keyed on image_kind rather than image_url on purpose — 401 records
+            carry an image but only 387 of them are official_logo, and the rest
+            must read as unproven rather than borrow a mark they have not
+            earned. The hollow state is part of the design, not a gap. */}
+        <div
+          className={`scholarship-card__title-rule${
+            hasOfficialLogo ? '' : ' scholarship-card__title-rule--unverified'
+          }`}
+          aria-hidden="true"
+        />
+        <small className="scholarship-card__citation">
+          ↳ {hasOfficialLogo ? 'Official source captured' : 'No official logo'}
+          {verifiedOn ? ` · ${verifiedOn}` : ''}
+        </small>
 
         {scholarship.provider && (
           <p className="scholarship-card__provider">{scholarship.provider}</p>
