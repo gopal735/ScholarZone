@@ -16,11 +16,25 @@ const CAN_TILT =
 
 export default function ScholarshipCard({ scholarship }) {
   const deadlineStatus = getScholarshipStatus(scholarship)
-  const isVerified = scholarship.verified ?? true
   const cardRef = useRef(null)
 
+  /* Verification state comes from verification_status, not from `verified`.
+
+     Every record in the catalogue has verified === true, because `verified`
+     records that a source was read at some point. It says nothing about
+     whether this record's details have since been checked: 228 of the 400
+     public listings are verification_status 'needs_review'. Reading the flag
+     made every card claim "Verified official source", which is the one claim
+     this product cannot afford to make loosely.
+
+     So: active means the record was checked and holds. Anything else says so
+     plainly instead of borrowing a pass mark. */
+  const verificationState = scholarship.verification_status || 'needs_review'
+  const isVerified = verificationState === 'active'
+  const needsReview = !isVerified
+
   /* Provenance, not decoration. image_kind is the honest signal: an image_url
-     exists on 401 records but only 387 are validated official_logo, and the
+     exists on 400 records but only 384 are validated official_logo, and the
      difference is exactly what this line has to tell the truth about. */
   const hasOfficialLogo = scholarship.image_kind === 'official_logo'
   const verifiedOn = scholarship.last_verified_at || null
@@ -84,8 +98,12 @@ export default function ScholarshipCard({ scholarship }) {
           aria-hidden="true"
         />
         <small className="scholarship-card__citation">
-          ↳ {hasOfficialLogo ? 'Official source captured' : 'No official logo'}
-          {verifiedOn ? ` · ${verifiedOn}` : ''}
+          ↳ {needsReview
+            ? 'Not yet re-checked against the official page'
+            : hasOfficialLogo
+              ? 'Official source captured'
+              : 'No official logo'}
+          {verifiedOn ? ` · last checked ${verifiedOn}` : ''}
         </small>
 
         {scholarship.provider && (
