@@ -1,228 +1,253 @@
 {
- "_comment": "Records whose official address or title research disproved, but whose programme is real. Correcting these is not the same as retiring them: a rotted link must not hide a live scholarship.",
- "_rules": [
-  "Every entry must say what was wrong with the stored value and where the correct value came from.",
-  "URLs are absolute http/https only. A correction that does not resolve is worse than the 404 it replaces.",
-  "Retiring a record is a separate, stronger decision and lives in retired_records.json. It is only for programmes that no longer exist, never for a broken link.",
-  "Allowed fields: title, official_source_url, application_link, official_source, description."
- ],
- "records": [
-  {
-   "id": 230,
-   "official_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026397",
-   "flag": "DEAD",
-   "reason": "programme still runs at a different official address",
-   "source": "research pass"
-  },
-  {
-   "id": 174,
-   "official_source_url": "https://www.tudelft.nl/en/education/study-programme-orientation/practical-matters/scholarships",
-   "flag": "DEAD",
-   "reason": "programme still runs at a different official address",
-   "source": "research pass"
-  },
-  {
-   "id": 371,
-   "official_source_url": "https://www.unibo.it/en/study",
-   "flag": "DEAD",
-   "reason": "programme still runs at a different official address",
-   "source": "research pass"
-  },
-  {
-   "id": 418,
-   "official_source_url": "https://nawa.gov.pl/en/scientists/the-walczak-programme",
-   "flag": "DEAD",
-   "reason": "programme still runs at a different official address",
-   "source": "research pass"
-  },
-  {
-   "id": 175,
-   "official_source_url": "https://www.eur.nl/en/education/practical-matters/scholarships-grants",
-   "flag": "DEAD",
-   "reason": "programme still runs at a different official address",
-   "source": "research pass"
-  },
-  {
-   "id": 397,
-   "official_source_url": "https://www.eur.nl/en/education/practical-matters/scholarships-grants",
-   "flag": "DEAD",
-   "reason": "programme still runs at a different official address",
-   "source": "research pass"
-  },
-  {
-   "id": 329,
-   "official_source_url": "https://www.ku.dk/studies/masters/application-and-admission/scholarships",
-   "flag": "DEAD",
-   "reason": "programme still runs at a different official address",
-   "source": "research pass"
-  },
-  {
-   "id": 176,
-   "official_source_url": "https://www.universiteitleiden.nl/en/scholarships/sea/leiden-university-excellence-scholarship-lexs",
-   "flag": "DEAD",
-   "reason": "programme still runs at a different official address",
-   "source": "research pass"
-  },
-  {
-   "id": 165,
-   "official_source_url": "https://www.uibk.ac.at/en/college-service-center/scholarships",
-   "flag": "DEAD",
-   "reason": "programme still runs at a different official address",
-   "source": "research pass"
-  },
-  {
-   "id": 169,
-   "official_source_url": "https://www.ceu.edu/admissions/financial-aid/student-scholarships",
-   "flag": "DEAD",
-   "reason": "programme still runs at a different official address",
-   "source": "research pass"
-  },
-  {
-   "id": 188,
-   "official_source_url": "https://liu.se/en/article/scholarships",
-   "flag": "DEAD",
-   "reason": "programme still runs at a different official address",
-   "source": "research pass"
-  },
-  {
-   "id": 135,
-   "official_source_url": "https://www.polimi.it/en/prospective-students/how-much-does-it-cost/scholarships",
-   "flag": "DEAD",
-   "reason": "programme still runs at a different official address",
-   "source": "research pass"
-  },
-  {
-   "id": 181,
-   "official_source_url": "https://www.utwente.nl/en/education/scholarship-finder/university-of-twente-scholarship/",
-   "flag": "DEAD",
-   "reason": "programme still runs at a different official address",
-   "source": "research pass"
-  },
-  {
-   "id": 177,
-   "official_source_url": "https://www.rug.nl/education/scholarships/nl-scholarship?lang=en",
-   "flag": "DEAD",
-   "reason": "programme still runs at a different official address",
-   "source": "research pass"
-  },
-  {
-   "id": 186,
-   "official_source_url": "https://www.chalmers.se/en/education/application-and-admission/tuition-fees/",
-   "flag": "DEAD",
-   "reason": "programme still runs at a different official address",
-   "source": "research pass"
-  },
-  {
-   "id": 182,
-   "official_source_url": "https://vu.nl/en/education/more-about/incoming-master-scholarships",
-   "flag": "DEAD",
-   "reason": "programme still runs at a different official address",
-   "source": "research pass"
-  },
-  {
-   "id": 142,
-   "official_source_url": "https://www.unibs.it/en/opportunities-and-services/right-study/scholarship-and-awards/scholarships-international-students",
-   "flag": "DEAD",
-   "reason": "programme still runs at a different official address",
-   "source": "research pass"
-  },
-  {
-   "id": 145,
-   "official_source_url": "https://english.moe.gov.tw/cp-24-24284-3ea37-1.html",
-   "flag": "MISATTRIBUTED",
-   "reason": "the awarding body is real; the stored address is wrong",
-   "source": "research pass"
-  },
-  {
-   "id": 484,
-   "official_source_url": "https://collegeadmissions.uchicago.edu/cost-aid/international-financial-aid",
-   "flag": "DEAD",
-   "reason": "programme still runs at a different official address",
-   "source": "research pass"
-  },
-  {
-   "id": 293,
-   "official_source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
-   "flag": "DEAD",
-   "reason": "programme still runs at a different official address",
-   "source": "research pass"
-  },
-  {
-   "id": 298,
-   "official_source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
-   "flag": "DEAD",
-   "reason": "programme still runs at a different official address",
-   "source": "research pass"
-  },
-  {
-   "id": 300,
-   "official_source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
-   "flag": "DEAD",
-   "reason": "programme still runs at a different official address",
-   "source": "research pass"
-  },
-  {
-   "id": 117,
-   "official_source_url": "https://ir.iith.ac.in/",
-   "flag": "DEAD",
-   "reason": "programme still runs at a different official address",
-   "source": "research pass"
-  },
-  {
-   "id": 294,
-   "official_source_url": "https://msmt.gov.cz/agentury/zan-podminkach/53862-ramec-vladni-stipendium-pro-rozvojove-zeme",
-   "flag": "DEAD",
-   "reason": "programme still runs at a different official address",
-   "source": "research pass"
-  },
-  {
-   "id": 342,
-   "official_source_url": "https://www.hanken.fi/en/node/1868145",
-   "flag": "DEAD",
-   "reason": "programme still runs at a different official address",
-   "source": "research pass"
-  },
-  {
-   "id": 134,
-   "official_source_url": "https://bandi.unibo.it/agevolazioni/opportunita",
-   "flag": "DEAD",
-   "reason": "programme still runs at a different official address",
-   "source": "research pass"
-  },
-  {
-   "id": 278,
-   "official_source_url": "https://www.ntnu.edu/vacancies",
-   "flag": "DEAD",
-   "reason": "programme still runs at a different official address",
-   "source": "research pass"
-  },
-  {
-   "id": 124,
-   "official_source_url": "https://www.simmons.edu/admission-aid/financial-aid/scholarships",
-   "flag": "DEAD",
-   "reason": "programme still runs at a different official address",
-   "source": "research pass"
-  },
-  {
-   "id": 143,
-   "official_source_url": "https://www.uniroma1.it/en/pagina/phd-programmes",
-   "flag": "DEAD",
-   "reason": "programme still runs at a different official address",
-   "source": "research pass"
-  },
-  {
-   "id": 369,
-   "official_source_url": "https://www.uniroma1.it/en/pagina/scholarships",
-   "flag": "DEAD",
-   "reason": "programme still runs at a different official address",
-   "source": "research pass"
-  },
-  {
-   "id": 212,
-   "official_source_url": "https://admission.kaist.ac.kr/intl-graduate/FinancialSupport/Scholarship/KAISTScholarship",
-   "flag": "DEAD",
-   "reason": "programme still runs at a different official address",
-   "source": "research pass"
-  }
- ]
+  "_comment": "Records whose official address or title research disproved, but whose programme is real. Correcting these is not the same as retiring them: a rotted link must not hide a live scholarship.",
+  "_rules": [
+    "Every entry must say what was wrong with the stored value and where the correct value came from.",
+    "URLs are absolute http/https only. A correction that does not resolve is worse than the 404 it replaces.",
+    "Retiring a record is a separate, stronger decision and lives in retired_records.json. It is only for programmes that no longer exist, never for a broken link.",
+    "Allowed fields: title, official_source_url, application_link, official_source, description."
+  ],
+  "records": [
+    {
+      "id": 230,
+      "official_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026397",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 174,
+      "official_source_url": "https://www.tudelft.nl/en/education/study-programme-orientation/practical-matters/scholarships",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 371,
+      "official_source_url": "https://www.unibo.it/en/study",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 418,
+      "official_source_url": "https://nawa.gov.pl/en/scientists/the-walczak-programme",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 175,
+      "official_source_url": "https://www.eur.nl/en/education/practical-matters/scholarships-grants",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 397,
+      "official_source_url": "https://www.eur.nl/en/education/practical-matters/scholarships-grants",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 329,
+      "official_source_url": "https://www.ku.dk/studies/masters/application-and-admission/scholarships",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 176,
+      "official_source_url": "https://www.universiteitleiden.nl/en/scholarships/sea/leiden-university-excellence-scholarship-lexs",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 165,
+      "official_source_url": "https://www.uibk.ac.at/en/college-service-center/scholarships",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 169,
+      "official_source_url": "https://www.ceu.edu/admissions/financial-aid/student-scholarships",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 188,
+      "official_source_url": "https://liu.se/en/article/scholarships",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 135,
+      "official_source_url": "https://www.polimi.it/en/prospective-students/how-much-does-it-cost/scholarships",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 181,
+      "official_source_url": "https://www.utwente.nl/en/education/scholarship-finder/university-of-twente-scholarship/",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 177,
+      "official_source_url": "https://www.rug.nl/education/scholarships/nl-scholarship?lang=en",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 186,
+      "official_source_url": "https://www.chalmers.se/en/education/application-and-admission/tuition-fees/",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 182,
+      "official_source_url": "https://vu.nl/en/education/more-about/incoming-master-scholarships",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 142,
+      "official_source_url": "https://www.unibs.it/en/opportunities-and-services/right-study/scholarship-and-awards/scholarships-international-students",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 145,
+      "official_source_url": "https://english.moe.gov.tw/cp-24-24284-3ea37-1.html",
+      "flag": "MISATTRIBUTED",
+      "reason": "the awarding body is real; the stored address is wrong",
+      "source": "research pass"
+    },
+    {
+      "id": 484,
+      "official_source_url": "https://collegeadmissions.uchicago.edu/cost-aid/international-financial-aid",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 293,
+      "official_source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 298,
+      "official_source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 300,
+      "official_source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 117,
+      "official_source_url": "https://ir.iith.ac.in/",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 294,
+      "official_source_url": "https://msmt.gov.cz/agentury/zan-podminkach/53862-ramec-vladni-stipendium-pro-rozvojove-zeme",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 342,
+      "official_source_url": "https://www.hanken.fi/en/node/1868145",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 134,
+      "official_source_url": "https://bandi.unibo.it/agevolazioni/opportunita",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 278,
+      "official_source_url": "https://www.ntnu.edu/vacancies",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 124,
+      "official_source_url": "https://www.simmons.edu/admission-aid/financial-aid/scholarships",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 143,
+      "official_source_url": "https://www.uniroma1.it/en/pagina/phd-programmes",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 369,
+      "official_source_url": "https://www.uniroma1.it/en/pagina/scholarships",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 212,
+      "official_source_url": "https://admission.kaist.ac.kr/intl-graduate/FinancialSupport/Scholarship/KAISTScholarship",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 533,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.fes.de/studienfoerderung/stipendium/grundfoerderung-fuer-auslaender-innen"
+    },
+    {
+      "id": 210,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://admission.kaist.ac.kr/intl-undergraduate/support/scholarships/kaist"
+    },
+    {
+      "id": 605,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://study.anu.edu.au/scholarships/find-scholarship/anu-vice-chancellors-international-achievement-award"
+    },
+    {
+      "id": 621,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://apply.ruffordsmallgrants.org/help/criteria"
+    }
+  ],
+  "count": 35
 }

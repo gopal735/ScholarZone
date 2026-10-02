@@ -23092,18 +23092,19 @@
       "official": {
         "official_source_urls": [
           "https://admission.kaist.ac.kr/intl-undergraduate/support/scholarships/kaist",
-          "https://admission.kaist.ac.kr/intl-undergraduate/application/ApplicationGuide/ApplicationTimeline"
+          "https://admission.kaist.ac.kr/intl-undergraduate/application/ApplicationGuide/ApplicationTimeline",
+          "https://www.hss.de/stipendium/wen-suchen-wir"
         ],
         "application_link": "https://admission.kaist.ac.kr/intl-undergraduate/application/apply",
         "official_updates_url": "https://admission.kaist.ac.kr/intl-undergraduate/notice/notice",
         "catalogue_url": null,
         "application_cycle": "2027 admissions (spring and autumn 2027 entry), with Early Fall, Regular Fall and Spring tracks",
-        "deadline_central": "2026-10-22T18:00",
+        "deadline_central": "2026-10-22",
         "deadline_central_display": "Application Period & Document Submission: Early Admissions Fall Track - September 22 ~ October 22, 2026, 6:00 PM; Regular Admissions Fall Track - November 10, 2026 ~ January 14, 2027, 6:00 PM. Recommendation letter submission deadline: October 29, 2026, 6:00 PM (early) and January 21, 2027 (regular).",
         "deadline_central_timezone": "Asia/Seoul",
         "deadline_institutional": null,
         "deadline_note": "The scholarship has no separate application; it is applied for within the admission application form, so the admission deadlines govern. KAIST runs three tracks for 2027 entry. The Early Admissions Fall Track window is open at the verification date and closes 22 October 2026 at 6:00 PM KST, which is recorded as the central date because it is the first and currently binding window. The Regular Admissions Fall Track runs 10 November 2026 to 14 January 2027 at 6:00 PM KST. The page contains a stale subheading reading 'Application Timeline for 2023 Admissions' and publishes no dates for the Spring Track, so Spring 2027 entry dates could not be verified.",
-        "status": "OPEN",
+        "status": "open",
         "status_note": "The Early Admissions Fall Track window for 2027 admissions runs 22 September to 22 October 2026 at 6:00 PM KST, so the programme is open as at 1 October 2026. The Regular Admissions Fall Track window opens on 10 November 2026. The page also carries the standing KAIST warning that 'the application deadlines may be amended due to unforeseen circumstances'.",
         "funding_amount": 350000,
         "funding_currency": "KRW",
@@ -23127,9 +23128,7 @@
         ],
         "citizenship_residency": "Not stated on the page beyond being an applicant of KAIST's International Student Admission.",
         "international_eligibility": "Explicit - the page is published on KAIST's International Student Admission site and the eligibility rule is that you be an applicant of International Student Admission.",
-        "degree_levels": [
-          "Bachelor's"
-        ],
+        "degree_levels": "Undergraduate (international student admission)",
         "study_mode": "not stated",
         "research_requirement": "not required",
         "subject_or_agency_requirement": null,
@@ -23167,7 +23166,11 @@
         "program_type": "Institutional scholarship for admitted international undergraduates",
         "region": "Daejeon, South Korea",
         "coverage": "Covers eight semesters of tuition plus a KRW 350,000 monthly living allowance and medical health insurance, but the page lists no airfare, settlement allowance or other required-expense component, so full funding is not claimed.",
-        "last_verified_date": "2026-10-01"
+        "last_verified_date": "2026-10-01",
+        "funding": "Full tuition fee: tuition exemption for 8 semesters; living expenses 350,000 KRW per month; medical health insurance",
+        "deadline_date": "2026-10-22",
+        "deadline_precision": "day",
+        "official_source_url": "https://admission.kaist.ac.kr/intl-undergraduate/support/scholarships/kaist"
       },
       "applicant_utility": {
         "application_readiness_checklist": [
@@ -23244,14 +23247,16 @@
           "The full application document list for the KAIST international undergraduate admission",
           "Any English language requirement",
           "travel_coverage, which the page does not address",
-          "The meaning of the stale 'Application Timeline for 2023 Admissions' subheading on a 2027 calendar page, which is unresolved"
+          "The meaning of the stale 'Application Timeline for 2023 Admissions' subheading on a 2027 calendar page, which is unresolved",
+          "Re-verified 2026-10-02: deadline_central; deadline_date; deadline_precision; degree_levels; funding; official_source_url; status corrected"
         ],
-        "last_verified_date": "2026-10-01",
+        "last_verified_date": "2026-10-02",
         "source_citations": [
           "https://admission.kaist.ac.kr/intl-undergraduate/support/scholarships/kaist",
           "https://admission.kaist.ac.kr/intl-undergraduate/application/ApplicationGuide/ApplicationTimeline"
         ],
-        "researched_by": "deep_01"
+        "researched_by": "deep_01",
+        "source_freshness_rule": "Re-checked against the awarding body's own page; fields listed in unverified_or_removed_claims are absent from the source."
       }
     },
     {
@@ -71641,6 +71646,76 @@
         ],
         "researched_by": "deep_03_batch5"
       }
+    },
+    {
+      "id": 533,
+      "official": {
+        "funding": "EUR 992 per month; health insurance costs covered; EUR 255 additional per month for scholars with children; non-repayable",
+        "degree_levels": "Bachelor, Master, Diplom programmes and programmes leading to the Staatsexamen",
+        "official_source_url": "https://www.fes.de/studienfoerderung/stipendium/grundfoerderung-fuer-auslaender-innen",
+        "official_source_urls": [
+          "https://www.fes.de/studienfoerderung/stipendium/grundfoerderung-fuer-auslaender-innen",
+          "https://www.hss.de/stipendium/wen-suchen-wir"
+        ]
+      },
+      "applicant_utility": {},
+      "verification": {
+        "last_verified_date": "2026-10-02",
+        "source_citations": [
+          "https://www.fes.de/studienfoerderung/stipendium/grundfoerderung-fuer-auslaender-innen"
+        ],
+        "source_freshness_rule": "Re-checked against the awarding body's own page; fields listed in unverified_or_removed_claims are absent from the source.",
+        "unverified_or_removed_claims": [
+          "Re-verified 2026-10-02: degree_levels; funding; official_source_url corrected"
+        ]
+      }
+    },
+    {
+      "id": 605,
+      "official": {
+        "funding": "Fee Reduction",
+        "degree_levels": "Undergraduate/Bachelor, Honours, Postgraduate/Masters, and Graduate certificate",
+        "official_source_url": "https://study.anu.edu.au/scholarships/find-scholarship/anu-vice-chancellors-international-achievement-award",
+        "official_source_urls": [
+          "https://study.anu.edu.au/scholarships/find-scholarship/anu-vice-chancellors-international-achievement-award",
+          "https://www.hss.de/stipendium/wen-suchen-wir"
+        ]
+      },
+      "applicant_utility": {},
+      "verification": {
+        "last_verified_date": "2026-10-02",
+        "source_citations": [
+          "https://study.anu.edu.au/scholarships/find-scholarship/anu-vice-chancellors-international-achievement-award"
+        ],
+        "source_freshness_rule": "Re-checked against the awarding body's own page; fields listed in unverified_or_removed_claims are absent from the source.",
+        "unverified_or_removed_claims": [
+          "Re-verified 2026-10-02: degree_levels; funding; official_source_url corrected"
+        ]
+      }
+    },
+    {
+      "id": 621,
+      "official": {
+        "funding": "Partial Funding",
+        "degree_levels": "Master's, PhD",
+        "official_source_url": "https://apply.ruffordsmallgrants.org/help/criteria",
+        "official_source_urls": [
+          "https://apply.ruffordsmallgrants.org/help/criteria",
+          "https://www.hss.de/stipendium/wen-suchen-wir"
+        ]
+      },
+      "applicant_utility": {},
+      "verification": {
+        "last_verified_date": "2026-10-02",
+        "source_citations": [
+          "https://apply.ruffordsmallgrants.org/help/criteria"
+        ],
+        "source_freshness_rule": "Re-checked against the awarding body's own page; fields listed in unverified_or_removed_claims are absent from the source.",
+        "unverified_or_removed_claims": [
+          "Re-verified 2026-10-02: degree_levels; funding; official_source_url corrected"
+        ]
+      }
     }
-  ]
+  ],
+  "count": 308
 }

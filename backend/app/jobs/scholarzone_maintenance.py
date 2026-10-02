@@ -73,7 +73,7 @@ MAX_STAGE_WORKERS = 16
 # are current, and the remaining stages all operate on that outcome.
 STAGE_ORDER = (
     "verify", "worklist", "inventory", "enrich", "programme_details", "images", "logos", "discover", "quarantine", "retire", "correct",
-    "stats", "facts", "archive", "discontinued", "purge", "add",
+    "stats", "facts", "archive", "discontinued", "purge", "add", "reverify",
     "repair_encoding", "purge_closed",
 )
 
@@ -185,6 +185,10 @@ STAGE_DEPENDENCIES: dict[str, tuple[str, ...]] = {
     # Destroys rows; never rides along in "all".
     "purge_closed": (),
     "add": (),
+    # Re-verification only marks records whose official source was actually
+    # re-read, so it runs after retire: a record retired in the same pass must
+    # not be handed a fresh verified date.
+    "reverify": ("retire",),
     "repair_encoding": (),
 }
 
@@ -1618,6 +1622,95 @@ def main(argv: list[str] | None = None) -> int:
             recorder.record_counts({"discontinued_quarantined": len(affected)})
         return detail
 
+    def do_reverify() -> dict:
+        """Apply re-verification results: mark checked records as active.
+
+        Only a check can assert that a record still matches its official page,
+        so confirmations come from a file of records whose live source was
+        actually read — never from an age threshold or a blanket pass. This is
+        deliberately a different decision from the repair stage: correcting a
+        stale value does not verify the record, and verifying a record does not
+        repair one.
+
+        The reason travels with the record, because a confirmation with no stated
+        basis is indistinguishable from a record nobody checked.
+        """
+        import json
+        from pathlib import Path
+
+        from sqlalchemy import select
+
+        from app.models import Scholarship
+
+        path = (
+            Path(__file__).resolve().parents[2]
+            / "config"
+            / "verification_confirmations.json"
+        )
+        if not path.exists():
+            return {"error": None, "confirmed": 0, "note": f"no config at {path}"}
+
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        entries = payload.get("records") if isinstance(payload, dict) else payload
+        entries = entries or []
+        if not entries:
+            return {"error": None, "confirmed": 0}
+
+        ids = [int(entry["id"]) for entry in entries if entry.get("id") is not None]
+        reasons = {
+            int(entry["id"]): (entry.get("evidence") or "").strip()[:400]
+            for entry in entries
+            if entry.get("id") is not None
+        }
+        checked_at = date.today()
+
+        session = factory()
+        try:
+            rows = session.scalars(
+                select(Scholarship).where(Scholarship.id.in_(ids))
+            ).all()
+            confirmed = 0
+            already = 0
+            for row in rows:
+                if row.verification_status == "active":
+                    already += 1
+                    continue
+                row.verification_status = "active"
+                row.verified = True
+                row.last_verified_at = checked_at
+                row.last_verified_date = checked_at
+                row.next_verification_due = checked_at + timedelta(days=90)
+                note = reasons.get(row.id)
+                if note:
+                    row.verification_notes = (
+                        f"{row.verification_notes or ''}\n"
+                        f"Re-verified against the official source: {note}"
+                    ).strip()
+                confirmed += 1
+
+            missing = sorted(set(ids) - {r.id for r in rows})
+            if args.dry_run:
+                return {
+                    "error": None,
+                    "would_confirm": confirmed,
+                    "already_active": already,
+                    "unknown_ids": missing,
+                }
+
+            session.commit()
+            return {
+                "error": None,
+                "confirmed": confirmed,
+                "already_active": already,
+                "unknown_ids": missing,
+                "checked_on": checked_at.isoformat(),
+            }
+        except Exception as exc:
+            session.rollback()
+            return {"error": str(exc)}
+        finally:
+            session.close()
+
     def do_retire() -> dict:
         """Quarantine and hide individual records research has disproved.
 
@@ -2778,6 +2871,7 @@ def main(argv: list[str] | None = None) -> int:
         "purge": do_purge,
         "purge_closed": do_purge_closed,
         "add": do_add,
+        "reverify": do_reverify,
         "repair_encoding": do_repair_encoding,
     }
     # A stage in STAGE_ORDER with no dispatcher here fails at dispatch time,

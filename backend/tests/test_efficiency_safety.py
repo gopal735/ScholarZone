@@ -798,7 +798,7 @@ class TestAutonomousContract:
         """The documented contract is what the code actually does."""
         assert list(worker.STAGE_ORDER) == [
             "verify", "worklist", "inventory", "enrich", "programme_details", "images", "logos", "discover", "quarantine",
-            "retire", "correct", "stats", "facts", "archive", "discontinued", "purge", "add", "repair_encoding", "purge_closed",
+            "retire", "correct", "stats", "facts", "archive", "discontinued", "purge", "add", "reverify", "repair_encoding", "purge_closed",
         ]
         # Verification is the root; everything else is either downstream of it
         # or independent.
