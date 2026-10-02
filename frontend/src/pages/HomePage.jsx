@@ -275,13 +275,29 @@ export default function HomePage() {
             <span>Countries</span>
           </div>
           <div className="sz-trust-bar__divider" aria-hidden="true" />
+          {/* verified and fully-funded counts also come from the stats endpoint.
+              Filtering the directory array counted one page, which is why this
+              read 100 verified and 21 fully funded against a catalogue of
+              around four hundred. */}
           <div className="sz-trust-bar__item">
-            <strong>{isLoading ? '—' : formatNumber(verifiedCount)}</strong>
+            <strong>
+              {statsStatus === 'success' && stats.verified_active > 0
+                ? formatNumber(stats.verified_active)
+                : isLoading
+                  ? '—'
+                  : formatNumber(verifiedCount)}
+            </strong>
             <span>Verified</span>
           </div>
           <div className="sz-trust-bar__divider" aria-hidden="true" />
           <div className="sz-trust-bar__item">
-            <strong>{isLoading ? '—' : formatNumber(fullyFundedCount)}</strong>
+            <strong>
+              {statsStatus === 'success' && stats.fully_funded > 0
+                ? formatNumber(stats.fully_funded)
+                : isLoading
+                  ? '—'
+                  : formatNumber(fullyFundedCount)}
+            </strong>
             <span>Fully Funded</span>
           </div>
         </div>
@@ -487,7 +503,13 @@ export default function HomePage() {
             <span>Countries covered</span>
           </div>
           <div className="sz-stats__item">
-            <strong>{isLoading ? '—' : formatNumber(fullyFundedCount)}</strong>
+            <strong>
+              {statsStatus === 'success' && stats.fully_funded > 0
+                ? formatNumber(stats.fully_funded)
+                : isLoading
+                  ? '—'
+                  : formatNumber(fullyFundedCount)}
+            </strong>
             <span>Fully funded</span>
           </div>
           <div className="sz-stats__item">
