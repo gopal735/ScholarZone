@@ -707,6 +707,7 @@ def main(argv: list[str] | None = None) -> int:
         from sqlalchemy import func, select
 
         from app.models import Scholarship
+        from app.repositories.scholarships import public_visibility_conditions
         from app.services.catalogue_quarantine import QUARANTINE_STATUS
         from app.services.image_discovery_orchestrator import LOGO_IDENTITY_KINDS
 
@@ -762,11 +763,19 @@ def main(argv: list[str] | None = None) -> int:
             )
             # What the public can actually see, which is the number that matters
             # and the one total_records cannot tell you.
+            #
+            # Reuses the canonical rule rather than restating it. This previously
+            # counted only "not archived and not quarantined", which omitted the
+            # verified and verified-image gates, so the maintenance report and
+            # the public catalogue disagreed - the report said 438 while the API
+            # served 398 for the same database. A second copy of a visibility
+            # rule is what the canonical function was introduced to end.
             coverage["archived_hidden"] = _count_where(Scholarship.is_archived.is_(True))
-            coverage["public_visible"] = _count_where(
-                Scholarship.is_archived.is_(False),
-                Scholarship.verification_status != QUARANTINE_STATUS,
-            )
+            coverage["public_visible"] = session.scalar(
+                select(func.count())
+                .select_from(Scholarship)
+                .where(*public_visibility_conditions())
+            ) or 0
 
             # Which hosts are actually blocking logo coverage. Coverage is a
             # per-host problem, not a per-record one: a missing logo almost
