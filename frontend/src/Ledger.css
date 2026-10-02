@@ -46,27 +46,27 @@
    Measured at 1440: image 216 + header 164 + details 435 + footer 145 = 965.
    The deadline row alone was 223 because the whole published sentence was
    rendered with no clamp, while Location and Level sat at 52 each. */
-.scholarship-card {
+.scholarship-grid .scholarship-card {
   border-radius: var(--radius-lg);
   box-shadow: none;
   transition: border-color 200ms var(--sz-ease), transform 150ms var(--sz-ease);
 }
 
-.scholarship-card:hover {
+.scholarship-grid .scholarship-card:hover {
   transform: translate3d(0, -2px, 0);
 }
 
-.scholarship-card .scholarship-image {
+.scholarship-grid .scholarship-card .scholarship-image {
   aspect-ratio: 16 / 9;
   max-height: 148px;
 }
 
-.scholarship-card__header {
+.scholarship-grid .scholarship-card__header {
   padding: 12px 14px 8px;
   gap: var(--space-1);
 }
 
-.scholarship-card__header h2 {
+.scholarship-grid .scholarship-card__header h2 {
   font-size: 0.9375rem;
   line-height: 1.333;
   letter-spacing: -0.012em;
@@ -77,25 +77,25 @@
   overflow: hidden;
 }
 
-.scholarship-card__details {
+.scholarship-grid .scholarship-card__details {
   padding: 0 14px;
   gap: 2px;
 }
 
-.scholarship-card__detail {
+.scholarship-grid .scholarship-card__detail {
   padding: 2px 0;
   border-top: 1px solid var(--sz-provenance-rule);
   gap: 8px;
 }
 
-.scholarship-card__detail:first-child {
+.scholarship-grid .scholarship-card__detail:first-child {
   border-top: 0;
 }
 
 /* The clamp that removes ~180px from every card. The full sentence stays in
    the DOM and on the detail page; only the card preview is truncated. */
-.scholarship-card__detail dd,
-.scholarship-card__detail [class*="value"] {
+.scholarship-grid .scholarship-card__detail dd,
+.scholarship-grid .scholarship-card__detail [class*="value"] {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -106,7 +106,7 @@
   font-variant-numeric: tabular-nums;
 }
 
-.scholarship-card__footer {
+.scholarship-grid .scholarship-card__footer {
   padding: 6px 14px 8px;
   margin-top: auto;
   border-top: 1px solid var(--sz-provenance-rule);
@@ -224,6 +224,47 @@ html.js-reveal .sz-reveal.is-in {
   html {
     scroll-behavior: smooth;
   }
+}
+
+/* ── Hero satellites ──────────────────────────────────────────────────────
+   The deadline chip is absolutely positioned and has no max-width, so the
+   published deadline sentence expanded it to 609px inside a 569px card and
+   left: -7% pushed it 40px clear of the card's own edge. It spilled left over
+   the headline and was clipped on the far side.
+
+   The overlap is part of the composition, so it is kept — but it now stays
+   inside the card's width and off the card's own text. */
+/* The showcase card keeps its own 3/2 ratio, which at 569px is 379px tall —
+   the logo is cropped to a fragment. Capped so the card reads as a card. */
+.sz-hero__showcase-card .scholarship-image {
+  max-height: 176px;
+}
+
+.sz-hero__chip {
+  max-width: 58%;
+  box-sizing: border-box;
+}
+
+/* The right satellite crosses the opposite corner. It was running past the
+   card's right edge and being clipped mid-word. */
+.sz-hero__chip:not(.sz-hero__chip--deadline) {
+  left: auto;
+  right: -3%;
+  max-width: 46%;
+}
+
+.sz-hero__chip--deadline {
+  left: -3%;
+}
+
+.sz-hero__chip-note,
+.sz-hero__chip-value {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  overflow-wrap: anywhere;
 }
 
 /* Visible focus for keyboard users, in the accent rather than the browser
