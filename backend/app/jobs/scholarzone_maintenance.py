@@ -537,7 +537,7 @@ def main(argv: list[str] | None = None) -> int:
         "--stage",
         action="append",
         choices=["verify", "worklist", "inventory", "enrich", "programme_details", "images", "logos", "discover", "quarantine", "retire", "correct",
-                     "stats", "facts", "archive", "discontinued", "purge", "add", "repair_encoding", "purge_closed", "all"],
+                     "stats", "facts", "archive", "discontinued", "purge", "add", "reverify", "repair_encoding", "purge_closed", "all"],
         default=None,
         help="Run only these stages (default: all).",
     )
