@@ -55,6 +55,30 @@ class ScholarshipResponse(BaseModel):
 
     model_config = ConfigDict(from_attributes=True)
 
+    @field_validator("status", mode="before")
+    @classmethod
+    def _unknown_status_becomes_null(cls, value):
+        """A status the catalogue does not define is surfaced, not raised.
+
+        Some records carry "active" in the status column, which is a
+        verification_status value rather than a round status. A strict enum made
+        Pydantic raise, and because the whole page serialises together, one such
+        record turned any page containing it into HTTP 500 - which is why
+        /api/scholarships?limit=100&page=4 failed while page=3 succeeded.
+
+        The value is reported as null so the interface can say "status not
+        published" instead of inventing one. The underlying rows still need
+        correcting; this only stops bad data from taking the catalogue offline.
+        """
+        if value is None:
+            return None
+        allowed = {member.value for member in ScholarshipStatus}
+        if isinstance(value, str):
+            return value if value in allowed else None
+        return value
+
+    model_config = ConfigDict(from_attributes=True)
+
     id: int
     title: str
     name: str = Field(validation_alias=AliasChoices("name", "title"))
@@ -66,7 +90,7 @@ class ScholarshipResponse(BaseModel):
     deadline: str | None = None
     deadline_date: date | None = None
     deadline_precision: str
-    status: ScholarshipStatus
+    status: ScholarshipStatus | None = None
     verified: bool = Field(validation_alias=AliasChoices("verified", "is_verified"))
     last_verified_at: date | None = None
     verification_status: str = "active"
