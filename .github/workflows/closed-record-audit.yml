@@ -1,0 +1,71 @@
+name: Closed record audit
+
+# READ-ONLY audit of scholarship records whose round has closed.
+#
+# This workflow cannot mutate anything, by two independent mechanisms: the
+# audit script only issues SELECTs and rolls back, and the database session
+# itself is opened with default_transaction_read_only=on. There is deliberately
+# no apply step and no input that could turn this into a deletion.
+#
+# Deletion, if it is ever warranted, is a separate, explicitly reviewed
+# operation against an audited ID list - never a step at the end of an audit.
+
+on:
+  workflow_dispatch:
+    inputs:
+      fail_on_safe_delete:
+        description: "Fail the run if any record is classified SAFE_DELETE, so a non-empty result cannot pass unnoticed"
+        required: false
+        default: "true"
+        type: choice
+        options:
+          - "true"
+          - "false"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: closed-record-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    name: Audit closed records (read only)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out master
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        working-directory: backend
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Audit closed records
+        working-directory: backend
+        env:
+          SCHOLARZONE_ENVIRONMENT: production
+          SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
+        run: python -m scripts.run_closed_audit_readonly
+
+      - name: Upload audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: closed-record-audit
+          path: backend/closed_record_audit.json
+          if-no-files-found: warn
+
+      - name: Enforce the expected outcome
+        if: inputs.fail_on_safe_delete == 'true'
+        working-directory: backend
+        run: python -m scripts.check_audit_safe_delete
