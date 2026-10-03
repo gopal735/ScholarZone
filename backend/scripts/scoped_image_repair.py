@@ -150,8 +150,10 @@ def main() -> int:
         session.close()
 
     # ---------- run the existing pipeline, scoped to the audited ids ----------
+    # get_session_factory() must be CALLED here: the runner invokes the value it
+    # is given to obtain a Session, exactly as do_images() does with `factory`.
     runner = ImageCoverageRunner(
-        get_session_factory,
+        get_session_factory(),
         dry_run=not args.apply,
         plan_only=not args.apply,
         batch_size=len(TARGET_IDS),
