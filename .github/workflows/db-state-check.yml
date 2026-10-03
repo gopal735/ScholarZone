@@ -7,6 +7,10 @@ on:
         description: 'Phase (before/after)'
         required: true
         default: 'before'
+      script:
+        description: 'Script under backend/scripts to run (read-only)'
+        required: false
+        default: 'db_state.py'
 
 jobs:
   db-state:
@@ -32,6 +36,6 @@ jobs:
       - name: Run DB State Query
         run: |
           cd backend
-          python scripts/db_state.py
+          python "scripts/${{ inputs.script }}"
         env:
           SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
