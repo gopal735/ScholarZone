@@ -41,6 +41,7 @@ from sqlalchemy.orm import Session, sessionmaker
 
 from ..models import Scholarship
 from .discovery_scheduler import DomainRateLimiter
+from .list_columns import normalize_list_column
 from .official_source_fetcher import OfficialSourceFetchResult, fetch_official_source
 from .scholarship_evidence import SourceType, classify_source, is_authoritative_source
 from .scholarship_extractor import (
@@ -739,12 +740,18 @@ def merge_list(existing: list[str] | None, incoming: list[str] | None) -> tuple[
     Union is the only safe merge for these columns: it adds newly-stated
     official facts, preserves everything already known, and is naturally
     idempotent (re-running yields zero additions).
+
+    Both sides go through the canonical list shape first. A column that still
+    holds a bare string would otherwise be iterated as an iterable of
+    characters, so one researched sentence would be rewritten as thirty
+    single letters - a real sentence destroyed by a merge that was meant to
+    preserve it.
     """
+    left, _ = normalize_list_column(existing)
+    right, _ = normalize_list_column(incoming)
     out: list[str] = []
     seen: set[str] = set()
-    for item in list(existing or []) + list(incoming or []):
-        if not isinstance(item, str):
-            continue
+    for item in left + right:
         text = item.strip()
         if not text:
             continue
@@ -754,7 +761,7 @@ def merge_list(existing: list[str] | None, incoming: list[str] | None) -> tuple[
         seen.add(key)
         out.append(text)
     existing_keys = {
-        re.sub(r"\s+", " ", i).strip().lower() for i in (existing or []) if isinstance(i, str)
+        re.sub(r"\s+", " ", i).strip().lower() for i in left if isinstance(i, str)
     }
     added = [i for i in out if re.sub(r"\s+", " ", i).strip().lower() not in existing_keys]
     return out, added

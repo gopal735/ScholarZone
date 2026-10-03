@@ -74,7 +74,7 @@ MAX_STAGE_WORKERS = 16
 STAGE_ORDER = (
     "verify", "worklist", "inventory", "enrich", "programme_details", "images", "logos", "discover", "quarantine", "retire", "correct",
     "stats", "facts", "archive", "discontinued", "purge", "add", "reverify",
-    "repair_encoding", "purge_closed",
+    "repair_encoding", "repair_list_columns", "purge_closed",
 )
 
 # purge_closed is the only stage that deletes rows. It is excluded from "all"
@@ -190,6 +190,7 @@ STAGE_DEPENDENCIES: dict[str, tuple[str, ...]] = {
     # not be handed a fresh verified date.
     "reverify": ("retire",),
     "repair_encoding": (),
+    "repair_list_columns": (),
 }
 
 
@@ -536,8 +537,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--stage",
         action="append",
-        choices=["verify", "worklist", "inventory", "enrich", "programme_details", "images", "logos", "discover", "quarantine", "retire", "correct",
-                     "stats", "facts", "archive", "discontinued", "purge", "add", "reverify", "repair_encoding", "purge_closed", "all"],
+choices=["verify", "worklist", "inventory", "enrich", "programme_details", "images", "logos", "discover", "quarantine", "retire", "correct",
+            "stats", "facts", "archive", "discontinued", "purge", "add", "reverify", "repair_encoding", "repair_list_columns", "purge_closed", "all"],
         default=None,
         help="Run only these stages (default: all).",
     )
@@ -1360,6 +1361,99 @@ def main(argv: list[str] | None = None) -> int:
         finally:
             session.close()
 
+    def do_repair_list_columns() -> dict:
+        """Put JSON list columns back into the shape the contract declares.
+
+        Six columns are declared ``list[str]`` by both the model and the public
+        detail response, and all six are JSON columns - so the database accepts
+        a bare JSON string without complaint. 117 public records were storing
+        researched prose that way, and each one's own detail page answered 500
+        because a string is not a list. The list endpoint declares none of these
+        fields, so the records kept rendering as cards and the failure only
+        surfaced on the page an applicant actually opens.
+
+        The repair is a container change, never a content change: a stored
+        string becomes a one-element list holding that exact string. Nothing is
+        stripped, split, reordered, reworded or invented, and the text is
+        reported before and after so the claim can be checked rather than
+        trusted.
+
+        Rows whose shape has no honest list form are reported and left alone.
+        Guessing there would publish a sentence the source never contained.
+
+        Running this twice reports zero rows on the second pass, which is the
+        property that makes it safe to schedule.
+        """
+        from sqlalchemy import select
+
+        from app.models import Scholarship
+        from app.services.list_columns import (
+            LIST_COLUMNS,
+            ListColumnShapeError,
+            normalize_list_column,
+        )
+
+        session = factory()
+        try:
+            rows = session.scalars(select(Scholarship)).all()
+            changed_columns: dict[str, int] = {}
+            changed_rows: list[int] = []
+            transformed: list[dict] = []
+            refused: list[dict] = []
+
+            for row in rows:
+                row_changed = False
+                for column in LIST_COLUMNS:
+                    stored = getattr(row, column, None)
+                    try:
+                        fixed, changed = normalize_list_column(stored, field=column)
+                    except ListColumnShapeError as exc:
+                        refused.append({"id": row.id, "column": column, "reason": str(exc)})
+                        continue
+                    if not changed:
+                        continue
+                    setattr(row, column, fixed)
+                    changed_columns[column] = changed_columns.get(column, 0) + 1
+                    row_changed = True
+                    if len(transformed) < 200:
+                        transformed.append(
+                            {
+                                "id": row.id,
+                                "column": column,
+                                "before_type": type(stored).__name__,
+                                "after": fixed,
+                                "text_preserved": isinstance(stored, str)
+                                and stored in fixed,
+                            }
+                        )
+                if row_changed:
+                    changed_rows.append(row.id)
+
+            report = {
+                "rows_scanned": len(rows),
+                "rows_needing_change": len(changed_rows),
+                "columns_changed": changed_columns,
+                "fields_changed": sum(changed_columns.values()),
+                "refused": len(refused),
+                "refused_sample": refused[:20],
+                "text_preserved_for_every_reshape": all(
+                    item["text_preserved"] for item in transformed
+                ),
+                "transformed": transformed[:40],
+            }
+            if args.dry_run:
+                report["would_change_rows"] = len(changed_rows)
+                return {"error": None, **report}
+
+            session.commit()
+            report["repaired_rows"] = len(changed_rows)
+            return {"error": None, **report}
+        except Exception as exc:
+            session.rollback()
+            return {"error": str(exc)}
+        finally:
+            session.close()
+
     def do_purge_closed() -> dict:
         """Permanently delete records whose application round is closed.
 
@@ -2045,6 +2139,7 @@ def main(argv: list[str] | None = None) -> int:
         from sqlalchemy import select
 
         from app.models import Scholarship
+        from app.services.list_columns import ListColumnShapeError, normalize_list_column
 
         details_path = (
             Path(__file__).resolve().parents[2] / "config" / "programme_details.json"
@@ -2082,8 +2177,6 @@ def main(argv: list[str] | None = None) -> int:
             "funding_period": "text",
             "program_type": "text",
             "region": "text",
-            "coverage": "text",
-            "application_method": "text",
             "application_route": "text",
             "citizenship_residency": "text",
             "international_eligibility": "text",
@@ -2099,12 +2192,22 @@ def main(argv: list[str] | None = None) -> int:
             "requirements": "requirements",
             "documents": "documents",
             "selection_criteria": "selection_notes",
+            # `coverage` and `application_method` are JSON list columns, not text.
+            # Filing the researched prose under a text mapping wrote a bare string
+            # into a list column, and the record's own detail page then answered
+            # 500 for the applicant. They belong here, where the shape is decided
+            # by the column rather than by the writer.
+            "coverage": "coverage",
+            "application_method": "application_method",
         }
         applied: list[dict] = []
         skipped_no_provenance: list[int] = []
         # Values that do not fit the column they were filed under. Reported, not
         # truncated: a fragment of a value reads as if it were the value.
         skipped_too_long: list[dict] = []
+        # A researched value whose shape cannot be turned into the column's type
+        # without guessing. Reported, never coerced.
+        skipped_bad_shape: list[dict] = []
         today = date.today()
         session = factory()
         try:
@@ -2163,14 +2266,35 @@ def main(argv: list[str] | None = None) -> int:
 
                 for source_field, column in list_map.items():
                     values = official.get(source_field)
-                    if not isinstance(values, list) or not values:
+                    if values in (None, "", "N/A", "-"):
                         continue
-                    current = getattr(row, column, None)
-                    if current:
+                    if getattr(row, column, None):
                         continue
-                    cleaned = [str(v).strip() for v in values if str(v).strip()]
-                    if cleaned:
-                        setattr(row, column, cleaned)
+                    if _is_json_column(Scholarship, column):
+                        # The column decides the shape. Researched prose arrives
+                        # as one string, and a one-element list holds that exact
+                        # sentence; refusing it here would throw away real
+                        # official wording to avoid a reshape.
+                        try:
+                            stored, _changed = normalize_list_column(
+                                values, field=column
+                            )
+                        except ListColumnShapeError as exc:
+                            skipped_bad_shape.append(
+                                {"id": rid, "source_field": source_field,
+                                 "column": column, "reason": str(exc)}
+                            )
+                            continue
+                    else:
+                        # A text column cannot hold a list. Joined with newlines
+                        # rather than assigned a Python list, which the driver
+                        # rejects and takes the whole run with it.
+                        members = values if isinstance(values, list) else [values]
+                        stored = "\n".join(
+                            str(v).strip() for v in members if str(v).strip()
+                        )
+                    if stored:
+                        setattr(row, column, stored)
                         filled.append(column)
 
                 # Award economics. Each is stored apart so a stipend cannot be
@@ -2282,6 +2406,8 @@ def main(argv: list[str] | None = None) -> int:
             "skipped_no_provenance": len(skipped_no_provenance),
             "skipped_too_long": len(skipped_too_long),
             "too_long_sample": skipped_too_long[:20],
+            "skipped_bad_shape": len(skipped_bad_shape),
+            "bad_shape_sample": skipped_bad_shape[:20],
             "fields_written": sum(a.get("fields", 0) for a in changed),
         }
         if not args.dry_run:
@@ -2874,6 +3000,7 @@ def main(argv: list[str] | None = None) -> int:
         "add": do_add,
         "reverify": do_reverify,
         "repair_encoding": do_repair_encoding,
+        "repair_list_columns": do_repair_list_columns,
     }
     # A stage in STAGE_ORDER with no dispatcher here fails at dispatch time,
     # after the database work has already started, which is a confusing way to

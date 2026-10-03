@@ -26,6 +26,7 @@ from .discovery_identity import (
     resolve_identity,
 )
 from .deadline_semantics import coerce_deadline_precision
+from .list_columns import ListColumnShapeError, normalize_list_column
 from .official_source_fetcher import OfficialSourceFetchResult, fetch_official_source
 from .scholarship_evidence import (
     EvidenceCollection,
@@ -559,6 +560,13 @@ class DiscoveryPipeline:
             # to be presented as a verified scholarship with a funding type.
             # Enrichment fills these from the official source; an empty slot is
             # visible to it as work to do.
+            #
+            # The extractor types `eligibility` and `application_method` as
+            # strings, because on the page they are a labelled sentence. Passing
+            # that sentence straight into a JSON list column stored a bare string
+            # where the detail contract promises a list, and the record's own page
+            # answered 500. `_list_column` keeps the sentence - as the one element
+            # it is - so the shape matches the contract without editing the text.
             scholarship = Scholarship(
                 title=candidate.title or "",
                 country=candidate.country or "",
@@ -583,11 +591,11 @@ class DiscoveryPipeline:
                 region=extracted.get("region"),
                 duration=extracted.get("duration"),
                 eligibility_summary=extracted.get("eligibility_summary"),
-                eligibility=extracted.get("eligibility") or [],
-                coverage=extracted.get("coverage") or [],
+                eligibility=_list_column(extracted.get("eligibility")),
+                coverage=_list_column(extracted.get("coverage")),
                 english_requirement=extracted.get("language_requirement"),
-                requirements=extracted.get("requirements") or [],
-                application_method=extracted.get("application_method") or [],
+                requirements=_list_column(extracted.get("requirements")),
+                application_method=_list_column(extracted.get("application_method")),
                 selection_notes=extracted.get("selection_notes"),
                 program_type=extracted.get("program_type"),
                 best_fit=extracted.get("best_fit"),
@@ -598,8 +606,8 @@ class DiscoveryPipeline:
                 image_kind=extracted.get("image_kind"),
                 image_verified_at=extracted.get("image_verified_at"),
                 image_alt_text=extracted.get("image_alt_text"),
-                benefits=extracted.get("benefits") or [],
-                documents=extracted.get("documents") or [],
+                benefits=_list_column(extracted.get("benefits")),
+                documents=_list_column(extracted.get("documents")),
             )
             session.add(scholarship)
             session.flush()
@@ -653,6 +661,29 @@ class DiscoveryPipeline:
             return session.get(DiscoveryCandidate, candidate_id)
         finally:
             session.close()
+
+
+def _list_column(value: object) -> list[str]:
+    """Shape one extracted value to the ``list[str]`` its column promises.
+
+    The extractor reads a labelled sentence, so a single string is the normal
+    case and not an anomaly. It becomes a one-element list holding that sentence
+    unchanged.
+
+    A value that is neither a list nor a string has no honest list form, so it is
+    dropped rather than coerced: an absent criterion is visible as missing
+    coverage, while a stringified number or object would be published as though
+    the page had said it.
+    """
+    try:
+        stored, _changed = normalize_list_column(value)
+    except ListColumnShapeError:
+        logger.warning(
+            "discarding extracted value of type %s: no lossless list form",
+            type(value).__name__,
+        )
+        return []
+    return stored
 
 
 def _compute_overall_confidence(assessment: VerificationAssessment) -> str:
