@@ -106,7 +106,18 @@ def main() -> int:
                 "image_source_url": row.image_source_url,
                 "image_verified_at": str(row.image_verified_at),
                 "official_source_url": row.official_source_url,
+                "image_evaluation_status": getattr(row, "image_evaluation_status", None),
+                "image_evaluation_detail": str(
+                    getattr(row, "image_evaluation_detail", ""))[:120],
+                "image_reviewed_at": str(getattr(row, "image_reviewed_at", "")),
             }
+            try:
+                from sqlalchemy import text as _t
+                before[sid]["image_review_rows"] = int(session.execute(_t(
+                    "SELECT COUNT(*) FROM image_reviews WHERE scholarship_id=:i"),
+                    {"i": sid}).scalar() or 0)
+            except Exception:
+                before[sid]["image_review_rows"] = None
 
         A = set(session.execute(select(Scholarship.id)
                                 .where(*public_visibility_conditions())).scalars().all())
@@ -143,6 +154,9 @@ def main() -> int:
                   f"{'  OTHER-BLOCKER!' if other else ''}")
             print(f"            title  : {str(d['title'])[:70]}")
             print(f"            src    : {str(d['official_source_url'])[:78]}")
+            print(f"            eval   : status={d.get('image_evaluation_status')!r} "
+                  f"reviews={d.get('image_review_rows')} "
+                  f"detail={str(d.get('image_evaluation_detail'))[:46]!r}")
         print()
 
         session.rollback()
