@@ -118,9 +118,10 @@ def _knowledge_node_ids(session, row: Scholarship) -> list[int]:
     look like no dependency at all.
     """
     conditions = []
-    if row.title:
-        conditions.append(KnowledgeNode.normalized_value == row.title.strip().lower())
-        conditions.append(KnowledgeNode.display_name == row.title)
+    title = _as_text(row.title).strip()
+    if title:
+        conditions.append(KnowledgeNode.normalized_value == title.lower())
+        conditions.append(KnowledgeNode.display_name == title)
     conditions.append(KnowledgeNode.normalized_value == f"scholarship:{row.id}")
     conditions.append(KnowledgeNode.normalized_value == str(row.id))
 
@@ -164,7 +165,14 @@ def _edge_refs(session, node_ids: list[int]) -> int:
 
 def _fingerprint_refs(session, row: Scholarship) -> int:
     """Content fingerprints are keyed on source URL, not on scholarship id."""
-    urls = [u for u in (row.official_source_url, row.catalogue_url) if u]
+    urls = [
+        u
+        for u in (
+            _as_text(row.official_source_url).strip(),
+            _as_text(row.catalogue_url).strip(),
+        )
+        if u
+    ]
     if not urls:
         return 0
     return int(
@@ -175,6 +183,24 @@ def _fingerprint_refs(session, row: Scholarship) -> int:
         )
         or 0
     )
+
+
+def _as_text(value) -> str:
+    """Render a column as text whatever it is stored as.
+
+    Not every "citation" column is text. ``official_details`` is JSON and can
+    legitimately hold a dict, so ``(value or "").strip()`` raises on real
+    production data. Anything unrecognised is rendered as JSON rather than
+    dropped, because a column that exists but cannot be read is a dependency
+    signal this audit must not silently discard.
+    """
+    if value is None:
+        return ""
+    if isinstance(value, str):
+        return value
+    if isinstance(value, (dict, list, tuple)):
+        return json.dumps(value, ensure_ascii=False, default=str)
+    return str(value)
 
 
 def gather(session, row: Scholarship, public_ids: set[int]) -> dict:
@@ -235,7 +261,7 @@ def gather(session, row: Scholarship, public_ids: set[int]) -> dict:
     }
     return {
         "id": sid,
-        "name": (row.title or "")[:90],
+        "name": _as_text(row.title)[:90],
         "verification_status": row.verification_status,
         "legacy_is_verified": bool(row.is_verified),
         "publicly_verified": public_verified_from_status(row.verification_status),
@@ -246,8 +272,8 @@ def gather(session, row: Scholarship, public_ids: set[int]) -> dict:
         "deadline_display": row.deadline_display,
         "official_source_url": row.official_source_url,
         "catalogue_url": row.catalogue_url,
-        "has_evidence_text": bool((row.verification_notes or "").strip()),
-        "citations": bool((row.official_details or "").strip()),
+        "has_evidence_text": bool(_as_text(row.verification_notes).strip()),
+        "citations": bool(_as_text(row.official_details).strip()),
         "is_public": sid in public_ids,
         "created_at": row.created_at.isoformat() if row.created_at else None,
         "last_verified_at": row.last_verified_at.isoformat() if row.last_verified_at else None,
