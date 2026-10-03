@@ -6,6 +6,8 @@ from typing import Literal
 
 from pydantic import AliasChoices, BaseModel, ConfigDict, Field, field_validator
 
+from .services.list_columns import LIST_COLUMNS
+
 
 class ScholarshipSort(str, Enum):
     DEFAULT = "default"
@@ -137,20 +139,26 @@ class ScholarshipDetailResponse(ScholarshipResponse):
     last_verified_date: date | None = None
     notes: str | None = None
 
-    @field_validator(
-        "eligibility",
-        "benefits",
-        "coverage",
-        "requirements",
-        "documents",
-        "required_documents",
-        "application_method",
-        mode="before",
-    )
+    @field_validator(*LIST_COLUMNS, "required_documents", mode="before")
     @classmethod
-    def _coerce_none_to_empty_list(cls, value):
+    def _normalise_legacy_list_shape(cls, value):
+        """Accept the shape the JSON column has historically been allowed to hold.
+
+        A bare string in one of these columns is a real, complete sentence that
+        was filed in the wrong container. Returning it as a one-element list is
+        the honest reading: the text is published exactly as stored, and the
+        contract stops being the thing that fails an applicant with a 500.
+
+        Anything that is not a list or a string is returned untouched so Pydantic
+        reports the real type error. Coercing a number or an object into a list
+        of strings would invent the sentence it never had.
+        """
         if value is None:
             return []
+        if isinstance(value, list):
+            return value
+        if isinstance(value, str):
+            return [value] if value.strip() else []
         return value
 
 

@@ -20,10 +20,14 @@ jobs:
         with:
           python-version: '3.12'
 
+      # The audit imports the application's own visibility predicate rather than
+      # reimplementing it, which means it needs the app's dependencies and not
+      # just a driver. Installing the pinned requirements is the same step the
+      # promotion workflow already uses.
       - name: Install dependencies
         run: |
           cd backend
-          pip install sqlalchemy psycopg
+          pip install -r requirements.txt
 
       - name: Run DB State Query
         run: |
