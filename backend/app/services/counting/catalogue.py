@@ -25,6 +25,18 @@ Two different bases are counted on purpose:
   since that predicate is exactly what hides archived rows.
 
 Both are named in the response so the two are never confused.
+
+Every field's universe, stated once:
+
+* PUBLIC (``public_visibility_conditions()``) - ``public_total``, ``countries``,
+  ``open``, ``closing_soon``, ``upcoming``, ``closed``, ``other_status``,
+  ``verified``, ``unverified``, ``verification_status_active``, ``fully_funded``,
+  ``with_image``, ``without_image``, ``with_official_source``,
+  ``without_official_source``. A public aggregate can never exceed
+  ``public_total``, because it is a subset of the same set.
+* STORAGE (all rows) - ``row_total``, ``archived``, ``quarantined`` only. These
+  exist precisely because the public predicate is what hides those rows, so they
+  cannot be derived from it.
 """
 
 from __future__ import annotations
@@ -109,9 +121,14 @@ def catalogue_counts(session: Session) -> dict[str, int]:
                 Scholarship.funding.not_ilike("%partial%"),
             )
         ).label("fully_funded"),
-        count(_has_text(Scholarship.image_url)).label("with_image"),
+        # Evidence measures over the public set. These were previously counted over
+        # every stored row while their "without" partners counted the public set, so
+        # a public aggregate could exceed the public total it was describing.
+        count(and_(listed, _has_text(Scholarship.image_url))).label("with_image"),
         count(and_(listed, Scholarship.image_url.is_(None))).label("without_image"),
-        count(_has_text(Scholarship.official_source)).label("with_official_source"),
+        count(and_(listed, _has_text(Scholarship.official_source))).label(
+            "with_official_source"
+        ),
         count(and_(listed, Scholarship.official_source.is_(None))).label(
             "without_official_source"
         ),
