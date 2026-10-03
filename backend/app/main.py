@@ -15,6 +15,8 @@ from .core.config import get_settings
 from .database import close_database, get_engine, init_database
 from .middleware.api_prefix import StripApiPrefix
 from .routers.scholarships import router as scholarships_router
+from .routers.match import router as match_router
+from .routers.counts import router as counts_router
 from .routers.verification import router as verification_router
 from .routers.admin_image_review import router as admin_image_review_router
 from .routers.discovery import router as discovery_router
@@ -144,7 +146,11 @@ if allowed_origins:
         CORSMiddleware,
         allow_origins=list(allowed_origins),
         allow_credentials=True,
-        allow_methods=["GET"],
+        # POST was added for POST /scholarships/match, which takes a JSON body
+        # and therefore triggers a preflight from the browser. Only POST is
+        # added: the origin list is unchanged, no method wildcard is introduced,
+        # and the read-only public catalogue keeps exactly the surface it had.
+        allow_methods=["GET", "POST"],
         allow_headers=["Accept", "Content-Type"],
     )
 
@@ -221,6 +227,17 @@ def health() -> JSONResponse:
 # This prevents duplicate scheduler execution.
 
 
+# The match router is registered before the scholarships router. Starlette
+# resolves a path match with the wrong method as a *partial* match and keeps
+# scanning, so the dynamic GET /scholarships/{scholarship_id} route would not
+# actually shadow POST /scholarships/match. Registering match first makes that
+# independence structural rather than dependent on the router's scan order.
+app.include_router(match_router)
+# The count intelligence router is registered before the scholarships router so its
+# literal /v2/counts paths are resolved by their own router rather than being
+# scanned past, and because the counting layer depends on the Match engine rather
+# than the other way round.
+app.include_router(counts_router)
 app.include_router(scholarships_router)
 app.include_router(verification_router)
 app.include_router(admin_image_review_router)

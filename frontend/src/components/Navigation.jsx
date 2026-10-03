@@ -62,6 +62,7 @@ export default function Navigation() {
           <div className="nav-links">
             <NavLink to="/" end className={({ isActive }) => (isActive ? 'active' : '')}>Home</NavLink>
             <NavLink to="/scholarships" className={({ isActive }) => (isActive ? 'active' : '')}>Scholarships</NavLink>
+            <NavLink to="/match" className={({ isActive }) => (isActive ? 'active' : '')}>Match</NavLink>
             <NavLink to="/countries" className={({ isActive }) => (isActive ? 'active' : '')}>Countries</NavLink>
           </div>
 

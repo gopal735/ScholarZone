@@ -85,16 +85,36 @@ def test_name_resolution_check_detects_a_missing_import():
 
 
 def test_stats_endpoint_can_resolve_its_visibility_helper():
-    """The exact regression: the stats endpoint's helper was not imported."""
-    router = importlib.import_module("app.routers.scholarships")
+    """The exact regression: the stats endpoint's helper was not imported.
+
+    The guard used to assert that ``app.routers.scholarships`` exposed the
+    repository's helper directly, because that module used to run the counts
+    itself. The counts now live in ``app.services.counting.catalogue`` and the router
+    delegates to it, so the helper is reached one module deeper.
+
+    The property being guarded is unchanged and is now checked where the call
+    actually is: exactly one definition of public visibility exists, and the
+    counting layer - which produces the homepage's numbers - uses it rather than a
+    copy. A second copy is still what makes the homepage and the directory
+    disagree, and this still fails if one is introduced.
+    """
+    catalogue = importlib.import_module("app.services.counting.catalogue")
     repository = importlib.import_module("app.repositories.scholarships")
-    assert hasattr(router, "public_visibility_conditions")
+    router = importlib.import_module("app.routers.scholarships")
+
     assert (
-        router.public_visibility_conditions
+        catalogue.public_visibility_conditions
         is repository.public_visibility_conditions
     ), (
-        "the router must use the repository's single definition, not a copy; "
+        "the counting layer must use the repository's single definition, not a copy; "
         "a second copy is how the homepage and the directory disagree"
+    )
+    # The router delegates rather than computing, so it must not re-declare the rule.
+    source = inspect.getsource(router)
+    assert 'verification_status != "quarantined"' not in source
+    assert source.count("public_visibility_conditions()") == 0, (
+        "the stats router delegates to the counting layer; if it starts calling the "
+        "predicate again it has reintroduced a second counting implementation"
     )
 
 

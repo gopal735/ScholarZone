@@ -10,7 +10,6 @@ from sqlalchemy.orm import Session
 from ..core.config import get_settings
 from ..database import get_db
 from ..models import Scholarship
-from ..repositories.scholarships import public_visibility_conditions
 from ..schemas import (
     ScholarshipDetailResponse,
     ScholarshipListResponse,
@@ -20,6 +19,7 @@ from ..schemas import (
     ScholarshipStatsResponse,
     ScholarshipVerificationUpdate,
 )
+from ..services.counting.catalogue import catalogue_counts, catalogue_summary
 from ..services.scholarships import get_scholarship_details, get_scholarship_directory, get_verification_queue, verify_scholarship
 
 
@@ -57,70 +57,21 @@ def list_scholarships_endpoint(
 def get_scholarship_stats(
     session: Session = Depends(get_db),
 ) -> ScholarshipStatsResponse:
-    """Live aggregate statistics for the public homepage and trust bar."""
-    # Quarantined rows are non-scholarships excluded from the directory, so
-    # they must not be counted here either. Counting them would advertise a
-    # total the public list cannot actually show.
-    #
-    # The same predicate the directory uses. Previously this endpoint carried
-    # its own copy of the rule, so the homepage could advertise a total that
-    # the listing contradicted - a contradiction nobody notices until the two
-    # numbers are compared.
-    listed = public_visibility_conditions()
+    """Live aggregate statistics for the public homepage and trust bar.
 
-    total = session.execute(
-        select(func.count(Scholarship.id)).where(*listed)
-    ).scalar() or 0
-    countries = session.execute(
-        select(func.count(func.distinct(Scholarship.country))).where(*listed)
-    ).scalar() or 0
-    open_count = session.execute(
-        select(func.count(Scholarship.id)).where(*listed, Scholarship.status == "open")
-    ).scalar() or 0
-    closing_soon = session.execute(
-        select(func.count(Scholarship.id)).where(*listed, Scholarship.status == "closing-soon")
-    ).scalar() or 0
-    upcoming = session.execute(
-        select(func.count(Scholarship.id)).where(*listed, Scholarship.status == "upcoming")
-    ).scalar() or 0
-    verified_active = session.execute(
-        select(func.count(Scholarship.id)).where(
-            *listed, Scholarship.verification_status == "active"
-        )
-    ).scalar() or 0
-    fully_funded = session.execute(
-        select(func.count(Scholarship.id)).where(
-            *listed,
-            Scholarship.funding.ilike("%fully funded%"),
-            Scholarship.funding.not_ilike("%partial%"),
-        )
-    ).scalar() or 0
-    with_image = session.execute(
-        select(func.count(Scholarship.id)).where(
-            *listed,
-            Scholarship.image_url.isnot(None),
-            Scholarship.image_url != "",
-        )
-    ).scalar() or 0
-    with_official_source = session.execute(
-        select(func.count(Scholarship.id)).where(
-            *listed,
-            Scholarship.official_source.isnot(None),
-            Scholarship.official_source != "",
-        )
-    ).scalar() or 0
+    Now computed by the count intelligence layer in a single pass. This endpoint
+    previously issued nine separate ``COUNT`` queries, one per figure, each
+    re-deriving the public visibility predicate; the homepage ran all nine on every
+    load. The figures and the response contract are unchanged - only the
+    computation moved, so the numbers the homepage shows are the numbers it always
+    showed.
 
-    return ScholarshipStatsResponse(
-        total=total,
-        countries=countries,
-        open=open_count,
-        closing_soon=closing_soon,
-        upcoming=upcoming,
-        verified_active=verified_active,
-        fully_funded=fully_funded,
-        with_image=with_image,
-        with_official_source=with_official_source,
-    )
+    Quarantined and archived rows remain excluded, because the counting layer calls
+    the directory's own ``public_visibility_conditions``. Counting them here would
+    advertise a total the public list cannot actually show.
+    """
+    counts = catalogue_counts(session)
+    return ScholarshipStatsResponse(**catalogue_summary(counts))
 
 
 @router.get("/verification-queue", response_model=list[ScholarshipDetailResponse])

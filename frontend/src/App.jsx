@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
 import HomePage from './pages/HomePage'
 import ScholarshipsPage from './pages/ScholarshipsPage'
+import MatchPage from './pages/MatchPage'
 import ScholarshipDetailsPage from './pages/ScholarshipDetailsPage'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
@@ -25,6 +26,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/countries" element={<CountryPage />} />
         <Route path="/scholarships" element={<ScholarshipsPage />} />
+        <Route path="/match" element={<MatchPage />} />
         <Route path="/scholarships/:id" element={<ScholarshipDetailsPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />

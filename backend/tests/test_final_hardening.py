@@ -438,12 +438,25 @@ class TestPublicPredicateCases:
         """Two copies of this rule previously drifted apart."""
         from app.repositories.scholarships import public_visibility_conditions
         import app.routers.scholarships as router_module
+        import app.services.counting.catalogue as counting_catalogue
 
         assert "public_visibility_conditions" in router_module.__doc__ or True
         source = open(router_module.__file__, encoding="utf-8").read()
-        assert "public_visibility_conditions()" in source
-        # The router must not re-declare the rule inline.
+        # The stats router no longer computes: it delegates to the counting layer,
+        # which is where the predicate is actually called. What is guarded here is
+        # unchanged - the rule must be called, not copied - and it is now checked in
+        # the module that calls it.
+        counting_source = open(counting_catalogue.__file__, encoding="utf-8").read()
+        assert "public_visibility_conditions()" in counting_source, (
+            "the counting layer must call the repository's predicate"
+        )
+        assert (
+            counting_catalogue.public_visibility_conditions
+            is public_visibility_conditions
+        )
+        # Neither module may re-declare the rule inline.
         assert source.count("verification_status != \"quarantined\"") == 0
+        assert counting_source.count("verification_status != \"quarantined\"") == 0
         assert callable(public_visibility_conditions)
 
     def test_the_image_gate_can_be_relaxed_explicitly(self, factory, monkeypatch):
