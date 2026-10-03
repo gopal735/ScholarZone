@@ -12,7 +12,7 @@ export default function ScholarshipsPage() {
 
   const headerTitle = countryParam || 'All Scholarships'
   const headerDescription = countryParam
-    ? `Explore verified scholarship opportunities in ${countryParam}.`
+    ? `Compare scholarship opportunities in ${countryParam} by funding, degree level and deadline.`
     : 'Compare key funding details, degree levels, countries and deadlines in one focused directory.'
 
   // SEO meta tags
@@ -25,9 +25,16 @@ export default function ScholarshipsPage() {
     // No catalogue size here. This page does not fetch the stats endpoint, so
     // any number written into the string would be a claim the page cannot back
     // and would drift the moment a record is added.
+    //
+    // No blanket verification claim either. The directory does not verify
+    // everything it lists: a record whose official page could not be reached is
+    // published as "Confirm with provider" precisely so it is never mistaken for
+    // one that was. Writing "Every listing has a verified official source" into a
+    // meta tag asserts on the catalogue's behalf what each card deliberately
+    // withholds, and search engines index that sentence as a claim about us.
     const description = countryParam
-      ? `Explore verified scholarship opportunities in ${countryParam}. Filter by degree, funding, and deadline. Every listing has a verified official source.`
-      : 'Compare key funding details, degree levels, countries and deadlines in one focused directory. Every listing has been checked against the awarding body’s own official page.'
+      ? `Compare scholarship opportunities in ${countryParam} by funding, degree level and deadline. Each listing states whether its details were re-checked against the awarding body’s own page.`
+      : 'Compare key funding details, degree levels, countries and deadlines in one focused directory. Each listing states whether its details were re-checked against the awarding body’s own official page.'
 
     // Remove existing SEO tags
     document.querySelectorAll('[data-sz-seo]').forEach(el => el.remove())

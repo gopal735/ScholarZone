@@ -380,7 +380,13 @@ export default function ScholarshipDetailsPage() {
     )
   }
 
-  const isVerified = scholarship.verified ?? true
+  // The pill says whether this record is currently verified against its awarding
+  // body's own page. It used to read `scholarship.verified`, the legacy boolean
+  // that records a source was inspected at some point and is true on every public
+  // record - and it defaulted to true when absent, so a record that had never been
+  // checked still claimed "Verified listing". The authoritative state is
+  // verification_status; anything else is unresolved and says so.
+  const isVerified = scholarship.verification_status === 'active'
   const deadlineStatus = getScholarshipStatus(scholarship)
   const image = detailImage(scholarship)
   const applyUrl = primaryApplyLink(scholarship)

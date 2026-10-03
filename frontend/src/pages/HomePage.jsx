@@ -142,7 +142,13 @@ export default function HomePage() {
   const totalScholarships = scholarships.length
   const fullyFundedCount = scholarships.filter((s) => s.funding === 'Fully Funded').length
   const countriesCount = new Set(scholarships.map((s) => s.country)).size
-  const verifiedCount = scholarships.filter((s) => s.verified || s.verification_status === 'active').length
+  // The authoritative verification state, and nothing else.
+  //
+  // `s.verified ||` used to stand here. That boolean means a source was inspected
+  // at some point, and it is true on every public record, so it counted every
+  // record as verified and made this figure the catalogue size by another route.
+  // verification_status is the current state; the boolean is history.
+  const verifiedCount = scholarships.filter((s) => s.verification_status === 'active').length
 
   // Countries come from the catalogue, not from a list written by hand.
   //
@@ -503,10 +509,22 @@ export default function HomePage() {
       </section>
 
       {/* 08 — STATISTICS: the figures the directory actually holds */}
+      {/* Every tile here reads the same authoritative stats endpoint as the trust
+          bar above, and falls back to the same values. Two of them used to read
+          the paginated directory array instead, which made this section publish
+          "100 Total opportunities" and "100 Verified active" directly beneath a
+          trust bar reading 394 and 372 — two different numbers for the same claim
+          on one page, both of them an artefact of a page size. */}
       <section className="sz-section sz-section--stats" aria-label="ScholarZone statistics">
         <ScrollReveal className="sz-stats">
           <div className="sz-stats__item">
-            <strong>{isLoading ? '—' : formatNumber(totalScholarships)}</strong>
+            <strong>
+              {statsStatus === 'success' && stats.total > 0
+                ? formatNumber(stats.total)
+                : isLoading
+                  ? '—'
+                  : formatNumber(totalScholarships)}
+            </strong>
             <span>Total opportunities</span>
           </div>
           <div className="sz-stats__item">
@@ -530,7 +548,13 @@ export default function HomePage() {
             <span>Fully funded</span>
           </div>
           <div className="sz-stats__item">
-            <strong>{isLoading ? '—' : formatNumber(verifiedCount)}</strong>
+            <strong>
+              {statsStatus === 'success' && stats.verified_active > 0
+                ? formatNumber(stats.verified_active)
+                : isLoading
+                  ? '—'
+                  : formatNumber(verifiedCount)}
+            </strong>
             <span>Verified active</span>
           </div>
         </ScrollReveal>
@@ -544,7 +568,7 @@ export default function HomePage() {
           {/* The two paths a visitor actually has. Browsing lists everything;
               Match narrows the same catalogue against one person's profile, so
               the sentence says which is which rather than promoting either. It
-              claims no outcome - Match reports eligibility and fit from published
+              claims no outcome — Match reports eligibility and fit from published
               rules, it does not promise a scholarship. */}
           <p>
             Already know what you are looking for? Match checks your profile against every

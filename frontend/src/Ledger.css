@@ -78,9 +78,6 @@
    line introduced by the Provenance Rule now says the same thing, so in the
    grid it is redundant duplication — and it was the largest block in the
    header at 179px. Kept on the hero and detail pages, where there is room. */
-.scholarship-grid .scholarship-card__signals {
-  display: none;
-}
 
 .scholarship-grid .scholarship-card__header {
   gap: var(--space-2);

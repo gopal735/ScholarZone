@@ -43,7 +43,11 @@ function sortLocalScholarships(items, sortBy) {
     const comparison = (() => {
       switch (sortBy) {
         case 'recommended':
-          return Number(second.scholarship.verified ?? true) - Number(first.scholarship.verified ?? true)
+          // Rank by the authoritative verification state. The legacy `verified`
+          // boolean was used here and is true on every public record, so this
+          // comparison was always zero and "recommended" silently meant
+          // "any order at all".
+          return Number(second.scholarship.verification_status === 'active') - Number(first.scholarship.verification_status === 'active')
             || STATUS_ORDER[getScholarshipStatus(first.scholarship).className] - STATUS_ORDER[getScholarshipStatus(second.scholarship).className]
         case 'recently-added':
         case 'recently-updated':
