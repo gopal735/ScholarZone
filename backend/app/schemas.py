@@ -4,9 +4,21 @@ from datetime import date, datetime
 from enum import Enum
 from typing import Literal
 
-from pydantic import AliasChoices, BaseModel, ConfigDict, Field, field_validator
+from pydantic import (
+    AliasChoices,
+    BaseModel,
+    ConfigDict,
+    Field,
+    field_validator,
+    model_validator,
+)
 
 from .services.list_columns import LIST_COLUMNS
+from .verification_contract import (
+    UNCERTAIN_VERIFICATION_STATUS,
+    normalize_public_verification_status,
+    public_verified_from_status,
+)
 
 
 class ScholarshipSort(str, Enum):
@@ -93,9 +105,11 @@ class ScholarshipResponse(BaseModel):
     deadline_date: date | None = None
     deadline_precision: str
     status: ScholarshipStatus | None = None
-    verified: bool = Field(validation_alias=AliasChoices("verified", "is_verified"))
+    verified: bool = Field(
+        default=False, validation_alias=AliasChoices("verified", "is_verified")
+    )
     last_verified_at: date | None = None
-    verification_status: str = "active"
+    verification_status: str = UNCERTAIN_VERIFICATION_STATUS
     next_verification_due: date | None = None
     verified_by: str | None = None
     verification_notes: str | None = None
@@ -103,6 +117,28 @@ class ScholarshipResponse(BaseModel):
     image_url: str | None = None
     image_source_type: str | None = None
     image_kind: str | None = None
+
+    @field_validator("verification_status", mode="before")
+    @classmethod
+    def _absent_status_is_uncertain(cls, value):
+        """A record with no usable status is reported as unresolved, not active.
+
+        The stored column is non-null, so this only guards a malformed row. It
+        exists because a single bad record must never fail serialisation for the
+        whole page, and because an absent status must never read as verified.
+        """
+        return normalize_public_verification_status(value)
+
+    @model_validator(mode="after")
+    def _verified_follows_verification_status(self):
+        """Derive the public ``verified`` boolean from the authoritative status.
+
+        ``verification_status`` is the source of truth. Any value supplied for the
+        legacy ``verified``/``is_verified`` boolean is ignored, so the
+        backward-compatible field can never contradict the status beside it.
+        """
+        self.verified = public_verified_from_status(self.verification_status)
+        return self
 
 
 class ScholarshipDetailResponse(ScholarshipResponse):
