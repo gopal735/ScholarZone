@@ -74,6 +74,11 @@ def main() -> int:
                     help="persist results; omit for a read-only plan")
     ap.add_argument("--manifest")
     ap.add_argument("--budget-seconds", type=float, default=90.0)
+    ap.add_argument("--retry-source-blocked", action="store_true",
+                    help="include records whose prior evaluation was 'source_blocked'. "
+                         "That status means the official host refused our request, so "
+                         "no image was ever evaluated; retrying is a first real "
+                         "attempt, not an endless retry.")
     args = ap.parse_args()
 
     from sqlalchemy import select
@@ -173,7 +178,7 @@ def main() -> int:
         batch_size=len(TARGET_IDS),
         max_workers=2,
         exclude_quarantined=True,
-        skip_terminally_evaluated=True,
+        skip_terminally_evaluated=not args.retry_source_blocked,
         logo_only=False,
         per_record_budget_seconds=args.budget_seconds,
     )
