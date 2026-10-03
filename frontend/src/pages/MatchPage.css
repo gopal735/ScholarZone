@@ -568,6 +568,12 @@
 .match-filter {
   display: grid;
   gap: var(--space-1);
+  /* A grid item defaults to `min-width: auto`, so a column is never allowed to
+     be narrower than its content's intrinsic width. A <select> sizes itself to
+     its longest option, and these option labels are sentences - "Mostly Master's/PhD
+     (a few UG-eligible programmes exist but are rare)". On a phone that pushed the
+     column out to ~955px and made the whole results page scroll sideways. */
+  min-width: 0;
 }
 
 .match-filter label {
@@ -585,6 +591,12 @@
   color: var(--text-primary);
   font-family: var(--font-body);
   font-size: var(--text-sm);
+  /* Fill the column rather than the label's intrinsic width, and never exceed
+     it. The full option text stays in the dropdown; the control just stops
+     forcing the page wider than the screen. */
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .match-filters__reset {
@@ -603,6 +615,20 @@
   margin-bottom: var(--space-4);
   font-size: var(--text-sm);
   color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------- count panel */
+
+/* The count panel is server-driven and can be as wide as its provenance table.
+   It is containment only: the panel's appearance is not restyled here, it is
+   only prevented from widening the page it sits in. */
+.match-counts {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.match-counts__table {
+  max-width: 100%;
 }
 
 /* -------------------------------------------------------------------- card */
