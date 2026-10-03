@@ -25,6 +25,7 @@ from sqlalchemy.orm import Session
 
 from ...models import Scholarship
 from ...repositories.scholarships import public_visibility_conditions
+from ..list_columns import ListColumnShapeError, normalize_list_column
 from .constants import MATCH_CANDIDATE_HARD_LIMIT
 from .types import ScholarshipFacts
 
@@ -126,6 +127,40 @@ def load_candidates(
     return [CandidateRow(*row) for row in session.execute(statement).all()]
 
 
+def _list_field(value: object, field: str) -> list[str]:
+    """Read one ``list[str]`` column without destroying it when it is malformed.
+
+    This used to be ``list(value or [])``. That is correct for a real list and
+    for NULL, and quietly wrong for a stored bare string, which it turns into a
+    list of single characters::
+
+        list("Full tuition fees" or [])  ->  ['F', 'u', 'l', 'l', ' ', ...]
+
+    The engine then reads funding coverage one character at a time, so a record
+    publishing "Full tuition fees" is reported as *unknown* coverage instead of
+    the tuition-plus-living it actually states - and unknown is not neutral here,
+    it removes an evaluated component from the fit denominator and moves the
+    score. Against the production catalogue that was 34 public rows whose
+    funding coverage read as unknown, and the funding distribution counted them
+    as unstated rather than counting them at all.
+
+    A bare string is therefore reshaped to a single-element list with its text
+    preserved byte for byte, which is the shape the column is declared to have.
+    A value that is neither a list, a string nor null cannot be reshaped without
+    guessing, so it is read as empty: the engine's own rule is that an unreadable
+    published value is unknown rather than invented, and coercing it into text
+    would invent something.
+
+    This changes no scoring rule. It stops malformed storage from silently
+    rewriting the input the rules were written against.
+    """
+    try:
+        normalized, _changed = normalize_list_column(value, field=field)
+    except ListColumnShapeError:
+        return []
+    return normalized
+
+
 def to_facts(row: CandidateRow) -> ScholarshipFacts:
     """Convert a database row into the engine's input type."""
     return ScholarshipFacts(
@@ -139,11 +174,11 @@ def to_facts(row: CandidateRow) -> ScholarshipFacts:
         deadline_date=row.deadline_date.isoformat() if row.deadline_date else None,
         deadline_display=row.deadline_display,
         deadline_precision=row.deadline_precision,
-        eligibility=list(row.eligibility or []),
+        eligibility=_list_field(row.eligibility, "eligibility"),
         eligibility_summary=row.eligibility_summary,
-        requirements=list(row.requirements or []),
-        documents=list(row.documents or []),
-        coverage=list(row.coverage or []),
+        requirements=_list_field(row.requirements, "requirements"),
+        documents=_list_field(row.documents, "documents"),
+        coverage=_list_field(row.coverage, "coverage"),
         english_requirement=row.english_requirement,
         funding_amount=float(row.funding_amount) if row.funding_amount is not None else None,
         funding_currency=row.funding_currency,

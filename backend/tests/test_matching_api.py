@@ -619,3 +619,91 @@ class TestCorsPreflight:
         )
         assert response.status_code == 200
         assert "GET" in response.headers["access-control-allow-methods"]
+
+class TestLegacyListShapeIsReadAsPublished:
+    """A bare string in a list column must be read as one published statement.
+
+    The production catalogue stores some ``list[str]`` columns as a bare string.
+    The reader used to be ``list(value or [])``, which turned ``"Full tuition
+    fees"`` into nine single characters. Funding coverage is then read one
+    character at a time, no phrase matches, and a record that publishes its
+    coverage plainly is reported as *unknown*.
+
+    Unknown is not a neutral outcome. It removes an evaluated component from the
+    fit denominator, so the score moves, and the funding distribution counts the
+    record as unstated instead of counting it. The production audit found 34
+    public rows in this shape.
+
+    These tests pin the reading, not the maths: the same published text must
+    produce the same funding verdict whether it is stored as ``[S]`` or as ``S``.
+    """
+
+    PUBLISHED = "Full tuition and monthly stipend for living expenses"
+
+    def _funding_state(self, client, stored) -> str | None:
+        scholarship_id = seed_record(
+            title="Legacy Shape Scholarship",
+            official_source="Legacy Shape University",
+            official_source_url="https://example.edu/legacy-shape",
+            coverage=stored,
+        )
+        try:
+            response = client.post("/scholarships/match", json=HIGH_PROFILE)
+            assert response.status_code == 200, response.text
+            payload = response.json()
+            match = next(
+                (
+                    r
+                    for r in payload["results"]
+                    if r["scholarship_id"] == scholarship_id
+                ),
+                None,
+            )
+            assert match is not None, "seeded record did not reach the results"
+            return match["funding_state"]
+        finally:
+            with get_session_factory()() as session:
+                session.query(Scholarship).filter(
+                    Scholarship.id == scholarship_id
+                ).delete()
+                session.commit()
+
+    def test_a_bare_string_is_not_read_as_characters(self, client):
+        """The defect itself: the string arrives as one statement, not nine."""
+        assert self._funding_state(client, self.PUBLISHED) == "FULL"
+
+    def test_both_storage_shapes_give_the_same_verdict(self, client):
+        """Stored as a list and stored as a bare string must agree exactly."""
+        as_list = self._funding_state(client, [self.PUBLISHED])
+        as_string = self._funding_state(client, self.PUBLISHED)
+        assert as_list == as_string
+
+    def test_the_text_is_preserved_exactly(self, client):
+        """Reshaping must not trim, re-case or otherwise rewrite the text."""
+        from app.services.matching.repository import _list_field
+
+        assert _list_field(self.PUBLISHED, "coverage") == [self.PUBLISHED]
+
+    def test_reading_is_idempotent(self, client):
+        from app.services.matching.repository import _list_field
+
+        once = _list_field(self.PUBLISHED, "coverage")
+        assert _list_field(once, "coverage") == once
+
+    def test_a_well_formed_list_is_untouched(self, client):
+        from app.services.matching.repository import _list_field
+
+        assert _list_field(["a", "b"], "coverage") == ["a", "b"]
+
+    def test_null_and_blank_read_as_nothing_published(self, client):
+        from app.services.matching.repository import _list_field
+
+        assert _list_field(None, "coverage") == []
+        assert _list_field("   ", "coverage") == []
+
+    def test_a_value_that_is_not_text_is_refused_not_invented(self, client):
+        """A number cannot become a sentence, so it reads as unknown."""
+        from app.services.matching.repository import _list_field
+
+        assert _list_field(42, "coverage") == []
+        assert _list_field({"a": 1}, "coverage") == []
