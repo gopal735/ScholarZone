@@ -36,6 +36,14 @@ export function CountAnalytics({ intelligence, error, status }) {
       <p className="match-counts__basis">
         <strong>{eligibility + needsVerification}</strong> of {total} analysed
         scholarships meet the published conditions for this profile.
+        {/* That headline adds two different states together, and on its own it
+            read as a contradiction of the drill-down below it: "368 of 386"
+            immediately above "0 eligible scholarships". Both were correct and
+            answered different questions. Naming the two states in the same
+            sentence removes the puzzle without touching either number or the
+            contract wording they come from. */}
+        {' '}
+        That is {eligibility} eligible and {needsVerification} needing verification.
         {integrity ? (
           <span className={`match-counts__integrity match-counts__integrity--${integrity.status.toLowerCase()}`}>
             Counts {integrity.status.toLowerCase()}

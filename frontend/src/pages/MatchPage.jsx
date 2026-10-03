@@ -51,6 +51,18 @@ export function MatchPage() {
   const [countryFilter, setCountryFilter] = useState('')
   const reducedMotion = useReducedMotion()
 
+  // The browser tab read "ScholarZone · Where Ambition Meets Opportunity" on
+  // every route, so a tab left open on /match was indistinguishable from the
+  // home page. This sets the tab title for this route only and puts it back on
+  // the way out; the rest of the app's titles are left exactly as they are.
+  useEffect(() => {
+    const previous = document.title
+    document.title = 'Match · ScholarZone'
+    return () => {
+      document.title = previous
+    }
+  }, [])
+
   useEffect(() => {
     let cancelled = false
     fetchMatchProfileOptions()

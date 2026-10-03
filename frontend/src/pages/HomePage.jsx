@@ -541,9 +541,24 @@ export default function HomePage() {
         <ScrollReveal className="sz-cta-banner">
           <h2>Start with the directory</h2>
           <p>Browse every opportunity on ScholarZone, save the ones worth applying to, and compare them properly.</p>
+          {/* The two paths a visitor actually has. Browsing lists everything;
+              Match narrows the same catalogue against one person's profile, so
+              the sentence says which is which rather than promoting either. It
+              claims no outcome — Match reports eligibility and fit from published
+              rules, it does not promise a scholarship. */}
+          <p>
+            Already know what you are looking for? Match checks your profile against every
+            published eligibility rule and ranks what you can actually apply for.
+          </p>
           <div className="sz-cta-banner__actions">
             <Link to="/scholarships" className="sz-cta sz-cta--primary">
               Browse All Scholarships
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 12h14M13 5l7 7-7 7" />
+              </svg>
+            </Link>
+            <Link to="/match" className="sz-cta sz-cta--secondary">
+              Find My Matches
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M5 12h14M13 5l7 7-7 7" />
               </svg>

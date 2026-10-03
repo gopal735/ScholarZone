@@ -1,4 +1,4 @@
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useScholarshipDirectory } from '../hooks/useScholarshipDirectory'
 import ScholarshipList from '../components/ScholarshipList'
@@ -70,6 +70,18 @@ export default function ScholarshipsPage() {
             <p className="page-eyebrow">Scholarship discovery</p>
             <h1>{headerTitle}</h1>
             <p className="page-description">{headerDescription}</p>
+            {/* The directory answers "what is there". Match answers "what fits me",
+                from the same catalogue, so it sits beside the description as the
+                other way in rather than as a promotion above the results. */}
+            <p className="page-match-link">
+              <Link to="/match" className="page-match-link__cta">
+                Find My Matches
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 12h14M13 5l7 7-7 7" />
+                </svg>
+              </Link>
+              <span>Tell ScholarZone your profile and it will check every published eligibility rule.</span>
+            </p>
           </div>
 
           <div className="page-heading__trust">
