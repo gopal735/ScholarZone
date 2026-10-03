@@ -1,6 +1,6 @@
 {
   "note": "Records re-checked against the awarding body's own page on 2026-10-02. Each entry is an assertion that the live source still supports the stored record.",
-  "count": 82,
+  "count": 101,
   "records": [
     {
       "id": 477,
@@ -507,6 +507,132 @@
       "evidence": "Banner verbatim: \"No more grants for 2026 - You can no longer apply for a grant for internships continuing into 2026. There is no more budget available for 2026. A budget will be available again in 2027. You can reapply for internships taking place in 2027 as from January 2027.\" Stored text matches the page word for word, but it contains no date, so deadline is null. CLOSED for 2026, reopens Janua"
     },
     {
+      "id": 533,
+      "name": "Grundförderung für Ausländer:innen",
+      "source_url": "https://www.fes.de/studienfoerderung/stipendium/grundfoerderung-fuer-auslaender-innen",
+      "checked_at": "2026-10-02",
+      "evidence": "Page reachable. Section 'Der richtige Zeitpunkt für die Bewerbung' still reads: 'Master: vor oder zu Beginn des ersten Hochschulsemesters des Masterstudiums (Wintersemester: bis zum 30.11., Sommersemester: bis zum 31.05.) Bachelor / Diplom / Magister / Staatsexamen: nach dem ersten Semester und bis drei Semester vor Ende der Regelstudienzeit'. Page also carries one line the stored text omits: 'Med"
+    },
+    {
+      "id": 477,
+      "name": "Boren Awards (Boren Scholarships and Boren Fellowships)",
+      "source_url": "https://www.borenawards.org/apply-now",
+      "checked_at": "2026-10-02",
+      "evidence": "Page reachable and states both 2027-2028 cycles are open. Quote: 'The application deadline for the Boren Scholarship is January 27, 2027 at 5pm Eastern time' and for the Fellowship 'January 20, 2027 at 5pm Eastern time'. Site footer repeats: 'DEADLINES: BOREN FELLOWSHIPS: JANUARY 20, 2027 | BOREN SCHOLARSHIPS: JANUARY 27, 2027'. Earliest closing date recorded as the record deadline (2027-01-20)."
+    },
+    {
+      "id": 535,
+      "name": "Friedrich-Ebert-Stiftung Promotionsförderung für Ausländer:innen (FES doctoral scholarship for international doctoral candidates)",
+      "source_url": "https://www.fes.de/studienfoerderung/stipendium/promotionsfoerderung-fuer-auslaender-innen",
+      "checked_at": "2026-10-02",
+      "evidence": "Page reachable. Section 'Der richtige Zeitpunkt für die Bewerbung' contains only 'bis circa zwei Jahre vor Abgabe der Dissertation'. That is guidance about timing relative to dissertation submission, not a deadline, so deadline is null. Funding figures on page: 'monatlich 1.500 Euro und einen Zuschuss zur gesetzlichen Krankenversicherung. Die Dauer der Förderung beträgt in der Regel dreieinhalb Ja"
+    },
+    {
+      "id": 536,
+      "name": "Development-Related Postgraduate Courses (EPOS)",
+      "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?status=&origin=&subjectGrps=&daad=&intention=&q=development&page=1&detail=50076777",
+      "checked_at": "2026-10-02",
+      "evidence": "DAAD scholarship database entry reachable. Application deadline field reads verbatim: 'Depending on chosen study programme; please check scholarship brochure or the website of your chosen study programme.' Application documents: 'Applications have only to be sent to the respective course directly!... Applications sent to the DAAD will not be forwarded to the respective course/university.' Value fi"
+    },
+    {
+      "id": 537,
+      "name": "MOPGA 2027: Visiting Fellowship Program for Early Career Researchers",
+      "source_url": "https://www.campusfrance.org/en/mopga-2027",
+      "checked_at": "2026-10-02",
+      "evidence": "Page reachable and updated 15 September 2026. TIMELINE block: '15 September 2026: Applications open / 15 December 2026: Application deadline / May-June 2027: Notification of results / Between September and December 2027: Successful applicants arrive in France'. Funding: 'A monthly allowance of EUR 2,500; A EUR 500 settling-in allowance' plus health, civil liability and repatriation cover; fellowsh"
+    },
+    {
+      "id": 539,
+      "name": "PhD Position F/M Spatio-temporal analysis of remote sensing data at large scales (Inria offer 2026-10352)",
+      "source_url": "https://jobs.inria.fr/public/classic/en/offres/2026-10352",
+      "checked_at": "2026-10-02",
+      "evidence": "Offer page reachable and live ('Apply for this position'). General Information block: 'Deadline to apply : 2026-11-30', 'Starting date : 2026-12-01', 'Duration of contract : 3 years'. Remuneration: 'Gross Salary per month: 2300 EUR'. Contract type: Fixed-term contract. Host: Centre Inria d'Universite Cote d'Azur, TITANE team; PhD supervisor Florent Lafarge."
+    },
+    {
+      "id": 540,
+      "name": "Institut Pascal (IPa) Call for Proposals 2026",
+      "source_url": "https://www.institut-pascal.universite-paris-saclay.fr/en/proposal-submissions",
+      "checked_at": "2026-10-02",
+      "evidence": "Page reachable, headline still reads 'Next deadline: 20th November 2026' with the 2026 Call for Proposals open and a submission link live. Page also recommends a first draft emailed to institut-pascal@universite-paris-saclay.fr by '28th October, 2026' and states 'Interview and selection by the Scientific Council will take place at the end of February/ beginning of March 2027'. IPa finances accommo"
+    },
+    {
+      "id": 548,
+      "name": "KAUST Fellowship (Master's, Ph.D. and M.S./Ph.D. Pathway)",
+      "source_url": "https://admissions.kaust.edu.sa/fees-funding",
+      "checked_at": "2026-10-02",
+      "evidence": "Fees and Funding page reachable: Fellowship includes 'Full tuition and bench fee coverage (worth up to USD $35,000 per year)', 'A monthly stipend (worth USD $20,000 per year for M.S. students, and USD $25,000 to $30,000 for Ph.D. students depending on qualifications and academic progress)', base accommodation, health insurance and relocation support, 'worth between $70k and $80k per year'. The Fel"
+    },
+    {
+      "id": 551,
+      "name": "MOFA Scholarship Program",
+      "source_url": "https://www.mofa.gov.ae/en/Scholarship",
+      "checked_at": "2026-10-02",
+      "evidence": "Page reachable. Programme overview: 'The Ministry of Foreign Affairs (MoFA) provides a scholarship program for outstanding Emirati students who wish to pursue their academic journey abroad at one of the world's top prestigious international universities'. FAQ: 'Does the program cover all tuition costs? Yes, the Ministry of Foreign Affairs covers all tuition costs in accordance with the program's p"
+    },
+    {
+      "id": 555,
+      "name": "UNESCO/Japan Young Researchers' Fellowships Programme (UNESCO/Keizo Obuchi Research Fellowships Programme) - Cycle 2026",
+      "source_url": "https://www.unesco.org/en/fellowships/keizo-obuchi",
+      "checked_at": "2026-10-02",
+      "evidence": "Page reachable, last update 28 September 2026. Notice: 'Deadline for Candidate Submission is now extended to 15 October 2026'. Cycle 2026 at a glance: 'Application deadline 15 October 2026, midnight Paris time'; 'Fellowship grant Up to US$10,000'; 10 fellowships; 'Duration No less than 3 months and no more than 9 months'; 'Fellowship period in Japan From February 2027 onwards, to be completed no l"
+    },
+    {
+      "id": 557,
+      "name": "Albert Einstein Distinguished Educator Fellowship (AEF) Program",
+      "source_url": "https://science.osti.gov/wdts/einstein",
+      "checked_at": "2026-10-02",
+      "evidence": "Page reachable. Announcement banner: 'The Albert Einstein Distinguished Educator Fellowship Program is now open for applications. Applications are due November 5, 2026 at 8:00pm ET. Click here to apply.' Programme is for K-12 STEM educators serving eleven months in Federal agencies or US Congressional offices; sponsoring agencies listed as DOW, DOE, Library of Congress and USGS, with DOE sponsorin"
+    },
+    {
+      "id": 558,
+      "name": "Office of Science Graduate Student Research (SCGSR) Program",
+      "source_url": "https://science.osti.gov/wdts/scgsr",
+      "checked_at": "2026-10-02",
+      "evidence": "Page reachable. Announcement banner: 'The Office of Science Graduate Student Research (SCGSR) program is now open for applications. Applications are due November 4, 2026, at 5:00PM ET. Click here to apply.' Page confirms the programme 'provides supplemental funds for U.S. graduate awardees (U.S. citizens or lawful permanent residents) to conduct part of their PhD thesis research at a host DOE labo"
+    },
+    {
+      "id": 565,
+      "name": "Deutschlandstipendium",
+      "source_url": "https://www.deutschlandstipendium.de/deutschlandstipendium/de/stipendium/wie-es-funktioniert/wie-es-funktioniert.html",
+      "checked_at": "2026-10-02",
+      "evidence": "Official BMFTR programme page reachable. 'Wie es funktioniert' page: 'Sie erhalten 300 Euro monatlich - die Hälfte vom Bund und die andere Hälfte von privaten Stiftern' and 'Die Hochschulen spielen bei der Umsetzung und Ausgestaltung des Stipendienprogramms eine zentrale Rolle ... wählen potenzielle Geldgeber an, wählen die Stipendiatinnen und Stipendiaten aus und organisieren die Förderung.' The "
+    },
+    {
+      "id": 570,
+      "name": "Estonian Scholarship Programme for international students, researchers and academic staff - Scholarship for degree and exchange study in Estonia",
+      "source_url": "https://www.harno.ee/en/scholarships-and-grants/scholarships-studying-and-working-estonia/scholarships-international",
+      "checked_at": "2026-10-02",
+      "evidence": "Page reachable (first fetch attempt timed out, second attempt loaded; page footer states 'Last updated: 01.10.2026'). Degree/exchange study section: '2026 application period will be open from 1st of October 2026 until October 31st 2026 (23:59, Estonian time)' and 'The application with all the required annexes shall be submitted electronically within the period of 1st of October until October 31, 2"
+    },
+    {
+      "id": 571,
+      "name": "Nordic Scholarship Programme (Nordic Africa Institute)",
+      "source_url": "https://nai.uu.se/opportunities/nordic-scholarship-programme.html",
+      "checked_at": "2026-10-02",
+      "evidence": "Page reachable and states: 'Now open for applications for scholarships in 2027! Closing date 11 October 2026'. Funding: 'The scholarship covers travelling expenses for the least expensive fare ... free accommodation centrally located in Uppsala. The scholarship also includes a subsistence allowance of SEK 450 per day', plus desk, computer and shared office access for a one-month stay; note it expl"
+    },
+    {
+      "id": 573,
+      "name": "Japanese Government (MEXT) Scholarship for 2027 - Research Students (Embassy Recommendation)",
+      "source_url": "https://www.mext.go.jp/a_menu/koutou/ryugaku/boshu/1415352_00008.htm",
+      "checked_at": "2026-10-02",
+      "evidence": "MEXT page reachable. Title is the 2027 recruitment notice for Japanese Government (MEXT) Scholarship Research Students by embassy recommendation. The page carries only document links: the 2027 guidelines (Japanese and English PDFs), the scholarship application form, the desired-university form, field of study and research plan, health certificate, university acceptance form, and a sample embassy r"
+    },
+    {
+      "id": 577,
+      "name": "ICSSR Participation in International Seminar Abroad (Travel Grant Scheme)",
+      "source_url": "https://icssr.org/participation-international-seminar-abroad",
+      "checked_at": "2026-10-02",
+      "evidence": "Page reachable. Section 3: '3.1 Applications can be submitted online throughout the year. 3.2 The applications should be uploaded at least three months before the due date of the Conference followed by the hard copy of the application.' The three-month rule is tied to the conference due date, not to a fixed programme deadline, so deadline is null. Funding confirmed: 'Faculties are eligible for fin"
+    },
+    {
+      "id": 579,
+      "name": "Programa Portugal-Berkeley (Visiting Student Researchers at UC Berkeley)",
+      "source_url": "https://www.fct.pt/concursos/programa-portugal-berkeley-1",
+      "checked_at": "2026-10-02",
+      "evidence": "FCT call page reachable (footer states 'Atualizado em 5 Agosto 2026'). Dates block: '01 janeiro 2026 (09h) Abertura de candidaturas' and '30 dezembro 2027 (17h) Encerramento das candidaturas'. Body: 'A apresentação de candidaturas decorrerá em permanência até às 17 horas do dia 30 de dezembro de 2027 (horário de Portugal Continental) ou até serem selecionados o número máximo previsto de Visiting S"
+    },
+    {
       "id": 614,
       "name": "Programa RESTART — 4ª Edição (FCT research funding after parental leave)",
       "source_url": "https://www.fct.pt/concursos/programa-restart-4-edicao",
@@ -575,6 +701,13 @@
       "source_url": "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
       "checked_at": "2026-10-02",
       "evidence": "ANR call page date block confirms both steps verbatim: 'Limite de dépôt des pré-dossiers : 12/05/2026 à 12:00 CEST' and 'Limite de dépôt des projets : 18/11/2026 à 12:00 CET'. This matches the stored two-step schedule, with step 1 (pre-proposals) closed and step 2 (detailed proposals) still open. The ANR page is the French-edition instrument for the M-ERA.NET consortium joint call; the stored cata"
+    },
+    {
+      "id": 602,
+      "name": "AFdoc – Aides à la formation doctorale (FNR PhD funding scheme)",
+      "source_url": "https://www.fnr.lu/funding-instruments/afdoc",
+      "checked_at": "2026-10-02",
+      "evidence": "webfetch timed out twice on fnr.lu, so the page was read in the browser. Page header: 'DEADLINE: 25-11-2026 14:00 CET / 28-04-2027 14:00 CET' and 'CALL LAUNCH: SEPTEMBER 2026 (NOVEMBER DEADLINE); FEBRUARY 2027 (APRIL DEADLINE)'. Body: 'The very first call of the AFdoc funding scheme will be launched mid-September 2026, with a deadline on Wednesday, 25 November 2026 at 14:00 CET.' From 2027 there w"
     }
   ]
 }
