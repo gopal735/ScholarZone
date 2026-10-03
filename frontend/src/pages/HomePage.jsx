@@ -544,7 +544,7 @@ export default function HomePage() {
           {/* The two paths a visitor actually has. Browsing lists everything;
               Match narrows the same catalogue against one person's profile, so
               the sentence says which is which rather than promoting either. It
-              claims no outcome — Match reports eligibility and fit from published
+              claims no outcome â€” Match reports eligibility and fit from published
               rules, it does not promise a scholarship. */}
           <p>
             Already know what you are looking for? Match checks your profile against every
