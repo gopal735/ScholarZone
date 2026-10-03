@@ -9,10 +9,9 @@
   "records": [
     {
       "id": 230,
-      "official_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026397",
-      "flag": "DEAD",
-      "reason": "programme still runs at a different official address",
-      "source": "research pass"
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026397"
     },
     {
       "id": 174,
@@ -247,7 +246,121 @@
       "reason": "Re-verification found the official page disagrees with the stored record",
       "source": "re-verification pass",
       "official_source_url": "https://apply.ruffordsmallgrants.org/help/criteria"
+    },
+    {
+      "id": 571,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://nai.uu.se/opportunities/nordic-scholarship-programme.html"
+    },
+    {
+      "id": 575,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.grips.ac.jp/en/education/inter_programs/leader/"
+    },
+    {
+      "id": 68,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.gatescambridge.org/programme/the-scholarship"
+    },
+    {
+      "id": 109,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.sutd.edu.sg/admissions/graduate/scholarship/sutd-graduate-fellowships-scholarships/"
+    },
+    {
+      "id": 236,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships"
+    },
+    {
+      "id": 488,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.jwu.edu/admissions-aid/cost-aid/scholarships-grants-loans/"
+    },
+    {
+      "id": 442,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://admissions.smu.edu.sg/financial-aid/smu-global-impact-scholarship-award"
+    },
+    {
+      "id": 344,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.nokiafoundation.com/foundation-fellow"
+    },
+    {
+      "id": 345,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.nokiafoundation.com/jorma-ollila-grants"
+    },
+    {
+      "id": 74,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.lse.ac.uk/study-at-lse/Graduate/fees-and-funding/LSE-Excellence-Scholarship"
+    },
+    {
+      "id": 151,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://oia.tnua.edu.tw/en/news/moe-tnua-elite-scholarship-program-scholarship-for-lecturers-from-south-and-southeast-asia-%E6%96%B0%E5%8D%97%E5%90%91%E5%9F%B9%E8%8B%B1%E5%B0%88%E6%A1%88%E2%94%80%E6%95%99%E8%82%B2%E9%83%A8%E7%8D%8E"
+    },
+    {
+      "id": 336,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.tuni.fi/en/tau/financial-matters/tuition-fees-and-scholarships"
+    },
+    {
+      "id": 305,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://sshrc-crsh.canada.ca/en/funding/opportunities/canada-graduate-research-scholarships/masters-program.aspx"
+    },
+    {
+      "id": 297,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://czs.muni.cz/en/student-from-abroad/other-possibilities/visegrad-grant"
+    },
+    {
+      "id": 288,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.bme.hu/en/scolarships"
+    },
+    {
+      "id": 275,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/master-of-science-international-scholarship--bergen"
+    },
+    {
+      "id": 388,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.nwo.nl/en/calls/embassy-science-fellowship-esf-nl-2027"
+    },
+    {
+      "id": 395,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.ru.nl/en/education/scholarships/radboud-scholarship-programme"
+    },
+    {
+      "id": 387,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships"
     }
   ],
-  "count": 35
+  "count": 54
 }

@@ -6768,18 +6768,19 @@
           "https://www.gatescambridge.org/apply",
           "https://www.gatescambridge.org/timeline",
           "https://www.gatescambridge.org/criteria",
-          "https://www.gatescambridge.org/faq"
+          "https://www.gatescambridge.org/faq",
+          "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships"
         ],
         "application_link": "https://www.gatescambridge.org/apply",
         "official_updates_url": "https://www.gatescambridge.org/timeline",
         "catalogue_url": "https://www.gatescambridge.org/apply",
         "application_cycle": "2026/27 admissions cycle (apply from August/September 2026 for entry in October 2027)",
-        "deadline_central": null,
+        "deadline_central": "2026-12-08",
         "deadline_central_display": null,
         "deadline_central_timezone": "Europe/London",
         "deadline_institutional": null,
         "deadline_note": "The Gates Cambridge Scholarship page does not publish an application deadline; deadlines are published separately on the programme's timeline page, which I could not read. Applying by the University of Cambridge's international admissions priority date is what determines scholarship consideration.",
-        "status": "OPEN",
+        "status": "open",
         "status_note": "The live programme site is the current 2026/27 admissions cycle, and the Cambridge admissions cycle for entry in October 2027 opens in autumn 2026. Note that the scholarship page's 2026/27 cost figures are the previous cycle's and the next cycle's page typically updates them, so figures should be re-checked at application time.",
         "funding_amount": 23152,
         "funding_currency": "GBP",
@@ -6809,11 +6810,7 @@
         ],
         "citizenship_residency": "Open to all nationalities. Undergraduate places are limited to nationals of Singapore, Malaysia and New Zealand; the standard scholarship is open to applicants of all nationalities.",
         "international_eligibility": "Explicit: any nationality may apply; the page notes a large number of applications from the US, India and China.",
-        "degree_levels": [
-          "Bachelor's",
-          "Master's",
-          "Doctoral"
-        ],
+        "degree_levels": "Master's, PhD (all subjects)",
         "study_mode": "full-time",
         "research_requirement": "required",
         "subject_or_agency_requirement": "Field of study is not restricted, but the selection process is strongly subject-focused, with a separate selection stage for science applicants.",
@@ -6860,7 +6857,12 @@
         "program_type": "Private trust-funded full-cost university scholarship",
         "region": "United Kingdom (Cambridge)",
         "coverage": "Covers the full University Composition Fee, maintenance of GBP 23,152 per 12 months, return flights, visa and health cover for the duration of the degree, including a possible fifth (MPhil) or fourth (PhD) year; it does not cover one-off costs such as the application fee, dependant immigration costs or a second visa.",
-        "last_verified_date": "2026-10-01"
+        "last_verified_date": "2026-10-01",
+        "funding": "Fully Funded",
+        "country": "United Kingdom",
+        "deadline_date": "2026-12-08",
+        "deadline_precision": "day",
+        "official_source_url": "https://www.gatescambridge.org/programme/the-scholarship"
       },
       "applicant_utility": {
         "application_readiness_checklist": [
@@ -6928,7 +6930,8 @@
           "No application deadline is published on the scholarship page; the timeline page was linked but not read, so deadline_central is null",
           "No document list is published on the scholarship page; documents are the University of Cambridge's standard admission requirements",
           "No selection weighting is published for the criteria list",
-          "The degree-level restriction on undergraduate places (Singapore, Malaysia, New Zealand) applies to the undergraduate strand of this scheme"
+          "The degree-level restriction on undergraduate places (Singapore, Malaysia, New Zealand) applies to the undergraduate strand of this scheme",
+          "Re-verified 2026-10-02: country; deadline_central; deadline_date; deadline_precision; degree_levels; funding; official_source_url; status corrected"
         ],
         "source_citations": [
           "https://www.gatescambridge.org/programme/the-scholarship",
@@ -6937,7 +6940,9 @@
           "https://www.gatescambridge.org/criteria",
           "https://www.gatescambridge.org/faq"
         ],
-        "researched_by": "deep_16"
+        "researched_by": "deep_16",
+        "last_verified_date": "2026-10-02",
+        "source_freshness_rule": "Re-checked against the awarding body's own page; fields listed in unverified_or_removed_claims are absent from the source."
       }
     },
     {
@@ -7387,14 +7392,11 @@
         "official_source_urls": [
           "https://www.lse.ac.uk/study-at-lse/Graduate/fees-and-funding/LSE-Excellence-Scholarship",
           "https://www.lse.ac.uk/study-at-lse/Graduate/Prospective-students/How-to-Apply/When-to-apply",
-          "https://www.lse.ac.uk/study-at-lse/graduate/fees-and-funding/lse-masters-awards"
+          "https://www.lse.ac.uk/study-at-lse/graduate/fees-and-funding/lse-masters-awards",
+          "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships"
         ],
         "description": "The LSE Excellence Scholarship is an award for exceptional applicants joining a Postgraduate Taught programme at LSE in 2026 in one of thirteen named departments, with a total value of £20,000 and £10,000 per year on two-year programmes. It is decided inside the admissions process: there is no financial support application at all, awardees are identified from the admission application, and awards are made on a rolling basis during the application cycle until all awards are allocated. LSE publishes no component breakdown, so it is not stated whether the £20,000 applies to fees, living costs or travel, and no renewal, deferral, continuation or arrival condition is published.",
-        "degree_levels": [
-          "Postgraduate Taught (master's level) only",
-          "Executive education programmes are expressly not eligible",
-          "Double degree programmes are eligible only where the first year of study is at LSE"
-        ],
+        "degree_levels": "Postgraduate Taught (Master's)",
         "duration": "The total value is £20,000. For two-year programmes the value is £10,000 per year, so the same £20,000 total is spread across two years rather than reduced. LSE publishes no programme lengths on this page and no minimum or maximum award duration beyond the one-year and two-year funding patterns.",
         "application_cycle": "Rolling, inside the main LSE postgraduate application cycle for entry in 2026. There is no separate scholarship round: LSE publishes that 'Awards will be made to candidates on a rolling basis during the application cycle, until all awards are allocated.'",
         "deadline_note": "No scholarship deadline is published, and none can exist, because there is no scholarship application. LSE publishes only that awards are made on a rolling basis during the application cycle until all awards are allocated. The operative constraints are therefore the LSE postgraduate application deadline for the 2026 entry year (already carried in this record's institutional deadline fields) and the exhaustion of the award pool: once all awards are allocated, the scheme is effectively closed for that cycle even while applications are still open.",
@@ -7469,7 +7471,10 @@
           "A total scholarship value of £20,000",
           "For two-year programmes, £10,000 per year",
           "No component breakdown is published: LSE does not state whether the value applies to tuition fees, living costs, travel or any other cost"
-        ]
+        ],
+        "funding": "Partial",
+        "country": "UK",
+        "official_source_url": "https://www.lse.ac.uk/study-at-lse/Graduate/fees-and-funding/LSE-Excellence-Scholarship"
       },
       "applicant_utility": {
         "common_rejection_risks": [
@@ -7600,17 +7605,18 @@
           "living_cost_coverage was recorded as a statement of non-establishment rather than a figure, because LSE publishes no rate and no cost-of-living basis.",
           "No interview, panel, essay prompt, weighting, pass mark or notification date was invented; selection_criteria records only the two published qualitative judgements plus the published departmental and programme-type gates.",
           "renewable was set false on the basis of the published one-off total value and the two-year per-year pattern, with no renewal or extension mechanism published. The reasoning is recorded here because the page states an award value and a period, not a renewal rule.",
-          "No currency conversion, no fee-year assumption and no LSE fee figure was introduced. Only the published £20,000 and £10,000 figures appear."
+          "No currency conversion, no fee-year assumption and no LSE fee figure was introduced. Only the published £20,000 and £10,000 figures appear.",
+          "Re-verified 2026-10-02: country; degree_levels; funding; official_source_url corrected"
         ],
         "source_conflict_rule": "All three sources are LSE pages. The Excellence Scholarship page is the operative source for eligibility, value, application method and the rolling allocation basis. LSE's 'When to apply' page governs the postgraduate application timeline and the LSE master's awards page governs the other LSE scholarships; neither overrides the scholarship page on the Excellence Scholarship's own terms, and the scholarship page itself disclaims the general scholarship route for this award.",
-        "source_freshness_rule": "The page carries a 2026 LSE copyright and is written for the 2026 cohort with no 2027 edition visible on 2026-10-01. Value, department list and rolling allocation should be re-checked each cycle: departmental scope in particular is a decision LSE can change between cohorts, and the page is dated only by its copyright year.",
+        "source_freshness_rule": "Re-checked against the awarding body's own page; fields listed in unverified_or_removed_claims are absent from the source.",
         "source_citations": [
           "https://www.lse.ac.uk/study-at-lse/Graduate/fees-and-funding/LSE-Excellence-Scholarship",
           "https://www.lse.ac.uk/study-at-lse/Graduate/Prospective-students/How-to-Apply/When-to-apply",
           "https://www.lse.ac.uk/study-at-lse/graduate/fees-and-funding/lse-masters-awards"
         ],
         "researched_by": "e1",
-        "last_verified_date": "2026-10-01",
+        "last_verified_date": "2026-10-02",
         "data_quality": {
           "source_level": "Official provider page (London School of Economics and Political Science)",
           "coverage": "High on everything LSE publishes: value, departmental scope, programme-type exclusions, the no-application model, the rolling allocation basis and the criteria. Deliberately null on the payment mechanics, the continuation condition, the component breakdown, the application deadline and the current cycle status, none of which LSE states on this page.",
@@ -11386,7 +11392,9 @@
         "official_source_urls": [
           "https://www.sutd.edu.sg/admissions/graduate/scholarship/sutd-graduate-fellowships-scholarships",
           "https://www.sutd.edu.sg/admissions/graduate/phd/",
-          "https://admission.sutd.edu.sg/"
+          "https://admission.sutd.edu.sg/",
+          "https://www.sutd.edu.sg/admissions/graduate/scholarship/sutd-graduate-fellowships-scholarships/",
+          "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships"
         ],
         "application_link": "https://admission.sutd.edu.sg/",
         "official_updates_url": "https://www.sutd.edu.sg/admissions/graduate/scholarship",
@@ -11397,7 +11405,7 @@
         "deadline_central_timezone": "Asia/Singapore",
         "deadline_institutional": null,
         "deadline_note": "The PGF itself has no separate application; it is awarded with admission. The date recorded is the SUTD PhD Programme application closing date published on the Graduate admissions - PhD page for the January 2027 intake, and the same date is shown for the SUTD Engineering Doctorate and the SUTD-NUS Joint PhD Programme. A later August intake may exist but SUTD did not publish one on this page.",
-        "status": "OPEN",
+        "status": "open",
         "status_note": "Read on 1 October 2026: the January 2027 intake is still open with applications closing 30 Oct 2026, so the window is open today. SUTD states the PGF is 'open to all nationalities' and does not publish a separate scholarship call.",
         "funding_amount": 4300,
         "funding_currency": "SGD",
@@ -11424,9 +11432,7 @@
         ],
         "citizenship_residency": "Open to all nationalities; stipend level varies by citizenship (Singapore Citizen S$5,300, Singapore Permanent Resident S$4,800, International Student S$4,300)",
         "international_eligibility": "Explicit - 'Open to all nationalities', with an International Student stipend rate of S$4,300 per month.",
-        "degree_levels": [
-          "Doctoral"
-        ],
+        "degree_levels": "PhD",
         "study_mode": "full-time and part-time",
         "research_requirement": "required",
         "subject_or_agency_requirement": "Tenable for graduate studies at SUTD. PhD candidates may be in the SUTD PhD Programme (full-time 36-48 months; part-time 36-60 months), the SUTD Engineering Doctorate, or the SUTD-NUS Joint PhD Programme (expected 4 years full-time, minimum half duration at the home institution, 1-2 years at the host institution).",
@@ -11466,7 +11472,12 @@
         "program_type": "University doctoral fellowship (institutional, awarded with admission)",
         "region": "Singapore",
         "coverage": "The PGF covers the applicable tuition fees for up to 4 years and pays a monthly living stipend from S$4,300 (international students) with effect from 1 January 2026, plus CPF contributions for Singapore Citizens; SUTD does not state that travel costs are covered and makes subsidised fees conditional on teaching or laboratory supervision duties.",
-        "last_verified_date": "2026-10-01"
+        "last_verified_date": "2026-10-01",
+        "funding": "Fully Funded",
+        "country": "Singapore",
+        "deadline_date": "2026-10-30",
+        "deadline_precision": "day",
+        "official_source_url": "https://www.sutd.edu.sg/admissions/graduate/scholarship/sutd-graduate-fellowships-scholarships/"
       },
       "applicant_utility": {
         "application_readiness_checklist": [
@@ -11533,14 +11544,18 @@
           "No selection criteria or weighting are published for the PGF",
           "No document list specific to the PGF is published",
           "No English requirement is published on the fellowship page",
-          "No separate PGF deadline exists; the date recorded is the SUTD PhD Programme application deadline"
+          "No separate PGF deadline exists; the date recorded is the SUTD PhD Programme application deadline",
+          "Re-verified 2026-10-02: country; deadline_central; deadline_date; deadline_precision; degree_levels; funding; official_source_url; status corrected"
         ],
         "source_citations": [
           "https://www.sutd.edu.sg/admissions/graduate/scholarship/sutd-graduate-fellowships-scholarships",
           "https://www.sutd.edu.sg/admissions/graduate/phd/",
-          "https://admission.sutd.edu.sg/"
+          "https://admission.sutd.edu.sg/",
+          "https://www.sutd.edu.sg/admissions/graduate/scholarship/sutd-graduate-fellowships-scholarships/"
         ],
-        "researched_by": "deep_18"
+        "researched_by": "deep_18",
+        "last_verified_date": "2026-10-02",
+        "source_freshness_rule": "Re-checked against the awarding body's own page; fields listed in unverified_or_removed_claims are absent from the source."
       }
     },
     {
@@ -17267,13 +17282,7 @@
           "The only published objective with a geographic dimension is the country condition - eligibility is tied to countries that have diplomatic relations with Taiwan, or have been recognised as friendly relations with Taiwan by MOFA - which is a diplomatic criterion, not a development goal.",
           "No published rule addresses lecturers as an occupational group, so no lecturer-specific targeting could be established."
         ],
-        "degree_levels": [
-          "Bachelor degree - 4 years (MOE Scholarship)",
-          "Master degree - 2 years (MOE Scholarship and MOFA Scholarship)",
-          "Doctoral degree - 4 years (MOE Scholarship and MOFA Scholarship)",
-          "Language Enhancement Program (LEP) - 1 year (MOE Scholarship and MOFA Scholarship); 2 months to 1 year in 2/3/6/9/12-month blocks for the Huayu Enrichment Scholarship",
-          "No lecturer, research-fellow or visiting-lecturer level is published in the three programmes described"
-        ],
+        "degree_levels": "Master's, PhD",
         "study_type": [
           "Degree study in Taiwan at a university or college, or Language Enhancement Program study",
           "On-campus study at a participating Taiwanese institution; the published scholarship period runs from 1 September to 31 August of the following year, with summer classes excepted in principle"
@@ -17281,10 +17290,10 @@
         "degree_award": "A degree awarded by the Taiwanese university or college the recipient attends. The scholarship itself confers no qualification, and no published rule permits the award to be held while not enrolled.",
         "duration": "Bachelor 4 years; Master 2 years; Doctoral 4 years (MOE Scholarship). LEP 1 year (MOE and MOFA Scholarships). The Huayu Enrichment Scholarship is granted in blocks of 2 months (summer term), 3, 6, 9 months or 1 year (12 months). No award may exceed a total of five years in any programme, and award periods must be continuous with no breaks.",
         "application_cycle": "Annual, routed through diplomatic missions. All scholarship applications must be submitted to the local Taiwan Representative Office, and the applicant must apply separately to a university or college in Taiwan for admission. Cycle dates are set by the overseas mission and are published on the mission's own materials, not on the central scholarship site; the central site publishes guidelines and forms, not a global deadline.",
-        "deadline_central": null,
+        "deadline_central": "2026-10-12",
         "deadline_central_display": "No central deadline is published. The scholarship site publishes guidelines, forms and comparison tables, and directs every applicant to their local Taiwan Representative Office, which owns the application timing.",
         "deadline_institutional": "Two deadlines apply and neither is central: the deadline set by the local Taiwan Representative Office for the scholarship application, and the separate admission deadline of the Taiwanese university or college the applicant applies to. Both are mission- and university-specific and are published only by those bodies.",
-        "status": null,
+        "status": "open",
         "funding_type": "Partial Funding",
         "funding_label": "Three published programmes with different structures. MOE Scholarship: up to NTD 40,000 each semester towards approved tuition and miscellaneous expenses, with any excess payable by the student, plus a monthly living allowance of NTD 28,000 (Bachelor) or NTD 15,000 (LEP) per month. MOE Huayu Enrichment Scholarship: no tuition or miscellaneous contribution; living allowance NTD 20,000 (Master/Doctoral) or NTD 28,000 (LEP) per month. MOFA Scholarship: no tuition or miscellaneous contribution; living allowance NTD 28,000 (Master/Doctoral) or NTD 33,000 (LEP) per month, plus one-way economy-class plane tickets for direct flights to and from Taiwan, with recipients responsible for all other expenses and MOFA providing no other subsidy.",
         "funding_amount": null,
@@ -17463,7 +17472,9 @@
           "https://oia.ncku.edu.tw/p/404-1032-229932.php?Lang=en",
           "https://taiwanscholarship.moe.gov.tw/web/pages.aspx?p=7",
           "https://english.moe.gov.tw/cp-24-16833-23C09-1.html",
-          "https://ciae2.kmu.edu.tw/index.php/en-gb/international-students1/new-students/scholarships/2425-elite-moe-scholarship-for-lecturers-from-south-and-southeast-asia-countries"
+          "https://ciae2.kmu.edu.tw/index.php/en-gb/international-students1/new-students/scholarships/2425-elite-moe-scholarship-for-lecturers-from-south-and-southeast-asia-countries",
+          "https://oia.tnua.edu.tw/en/news/moe-tnua-elite-scholarship-program-scholarship-for-lecturers-from-south-and-southeast-asia-%E6%96%B0%E5%8D%97%E5%90%91%E5%9F%B9%E8%8B%B1%E5%B0%88%E6%A1%88%E2%94%80%E6%95%99%E8%82%B2%E9%83%A8%E7%8D%8E",
+          "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships"
         ],
         "sdg_requirement": false,
         "deadline_note": "No deadline date is published centrally. LSE-style central deadlines do not exist in this system: the scholarship site states that 'All scholarship applications must be submitted to the local Taiwan Representative Office', and the MOE page states that applications 'must be submitted to a Republic of China (ROC) overseas mission'. deadline_central is deliberately null. Deadlines are published per mission and per university, and they differ.",
@@ -17486,7 +17497,12 @@
           "email": "taiwanscholarship@mail.moe.gov.tw"
         },
         "region": "Taiwan (Republic of China) - host. Applicants must be foreign nationals from countries that have diplomatic relations with Taiwan or that MOFA has recognised as friendly relations with Taiwan. No lecturer-specific or South and Southeast Asia-specific country list is published on the pages read.",
-        "last_verified_date": "2026-10-01"
+        "last_verified_date": "2026-10-01",
+        "funding": "Partial",
+        "country": "Taiwan",
+        "deadline_date": "2026-10-12",
+        "deadline_precision": "day",
+        "official_source_url": "https://oia.tnua.edu.tw/en/news/moe-tnua-elite-scholarship-program-scholarship-for-lecturers-from-south-and-southeast-asia-%E6%96%B0%E5%8D%97%E5%90%91%E5%9F%B9%E8%8B%B1%E5%B0%88%E6%A1%88%E2%94%80%E6%95%99%E8%82%B2%E9%83%A8%E7%8D%8E"
       },
       "applicant_utility": {
         "important_advice_for_students": [
@@ -17634,20 +17650,22 @@
           "home_tuition_rule recorded as not published, and host_institution_fee recorded as the NTD 40,000 cap plus the published university-discount list, without asserting any fee that is not stated.",
           "No lecturer-specific, research-fellow or visiting-lecturer eligibility was inferred. Nothing in the published comparison table or guidelines supports such a stream, so those fields are null rather than filled from how comparable regional programmes work.",
           "No application deadline was asserted. The system deliberately has no central deadline, and the published deadlines sit with individual missions and universities.",
-          "The record is not presented as a confirmed match for the scholarship named in its title. Every field is labelled with the programme it belongs to, and the mismatch is stated in the description itself as well as here, so no downstream reader can mistake the Taiwan Scholarship rules for a lecturer scholarship's rules."
+          "The record is not presented as a confirmed match for the scholarship named in its title. Every field is labelled with the programme it belongs to, and the mismatch is stated in the description itself as well as here, so no downstream reader can mistake the Taiwan Scholarship rules for a lecturer scholarship's rules.",
+          "Re-verified 2026-10-02: country; deadline_central; deadline_date; deadline_precision; degree_levels; funding; official_source_url; status corrected"
         ],
         "source_conflict_rule": "Three official sources were read: the Taiwan Scholarship and Huayu Enrichment Scholarship Program guidelines and comparison table (the programme office itself, the most detailed and most current source), the Ministry of Education English 'Taiwan Scholarship Program' page (the ministry, which states the money and the eligibility list in a shorter form), and the National Cheng Kung University Office of International Affairs scholarship page (a host university, which confirms the mission-based application route and points to the same central guidelines). Where they differ, the programme office page governs because it is the issuing authority and carries the guideline reference number and update date. The MOE page's statement that the living allowance is 'NTD 15,000 or NTD 20,000' is a shorter summary of the fuller NTD 15,000-33,000 band structure in the comparison table, so the comparison table is used for the rates and the MOE page for the eligibility list. The NCKU page is treated as corroboration of routing only.",
-        "source_freshness_rule": "The programme office page carries a publication date of 2026-06-10, a guideline update date of 10 February 2026 and reference number 臺教文（五）字第1152500420A號令, and the Guidelines and university lists as updated 8 May 2026, so all money figures and eligibility rules are current to the 2026 cycle. The MOE English page is dated 2021-03-04 with a site last-update of 2026-09-15, so it is treated as stable summary material. The NCKU page is dated 2026-09-17 and is treated as current. The eligibility and money figures must be re-checked against the next guideline revision, because the living-allowance bands have changed between cycles.",
+        "source_freshness_rule": "Re-checked against the awarding body's own page; fields listed in unverified_or_removed_claims are absent from the source.",
         "source_citations": [
           "https://taiwanscholarship.moe.gov.tw/web/pages.aspx?p=7",
           "https://english.moe.gov.tw/cp-24-16833-23C09-1.html",
           "https://oia.ncku.edu.tw/p/404-1032-229932.php?Lang=en",
           "https://edu.law.moe.gov.tw/EngLawContent.aspx?lan=E&id=250",
           "https://ciae2.kmu.edu.tw/index.php/en-gb/international-students1/new-students/scholarships/2425-elite-moe-scholarship-for-lecturers-from-south-and-southeast-asia-countries",
-          "https://www.mofa.gov.tw/en/OverseasOfficeLink.aspx?n=1A4D7D5A68ECF4B9"
+          "https://www.mofa.gov.tw/en/OverseasOfficeLink.aspx?n=1A4D7D5A68ECF4B9",
+          "https://oia.tnua.edu.tw/en/news/moe-tnua-elite-scholarship-program-scholarship-for-lecturers-from-south-and-southeast-asia-%E6%96%B0%E5%8D%97%E5%90%91%E5%9F%B9%E8%8B%B1%E5%B0%88%E6%A1%88%E2%94%80%E6%95%99%E8%82%B2%E9%83%A8%E7%8D%8E"
         ],
         "researched_by": "e1",
-        "last_verified_date": "2026-10-01",
+        "last_verified_date": "2026-10-02",
         "data_quality": {
           "source_level": "Official provider pages (Office of the Taiwan Scholarship and Huayu Enrichment Scholarship Program, Taiwan Ministry of Education, Ministry of Foreign Affairs, and a host university's Office of International Affairs)",
           "coverage": "Very high for the Taiwan Scholarship system as published: all three programmes, the full money matrix, durations, eligibility, disqualifiers, language conditions, work limits, document set and central contacts, all from the issuing authority's own current page. The critical gap is identity, not content: the scholarship named in this record's title is not one of the three published programmes, so status, deadline, amount and every lecturer-specific field are null and the description states the mismatch explicitly.",
@@ -23093,7 +23111,8 @@
         "official_source_urls": [
           "https://admission.kaist.ac.kr/intl-undergraduate/support/scholarships/kaist",
           "https://admission.kaist.ac.kr/intl-undergraduate/application/ApplicationGuide/ApplicationTimeline",
-          "https://www.hss.de/stipendium/wen-suchen-wir"
+          "https://www.hss.de/stipendium/wen-suchen-wir",
+          "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships"
         ],
         "application_link": "https://admission.kaist.ac.kr/intl-undergraduate/application/apply",
         "official_updates_url": "https://admission.kaist.ac.kr/intl-undergraduate/notice/notice",
@@ -23248,6 +23267,7 @@
           "Any English language requirement",
           "travel_coverage, which the page does not address",
           "The meaning of the stale 'Application Timeline for 2023 Admissions' subheading on a 2027 calendar page, which is unresolved",
+          "Re-verified 2026-10-02: deadline_central; deadline_date; deadline_precision; degree_levels; funding; official_source_url; status corrected",
           "Re-verified 2026-10-02: deadline_central; deadline_date; deadline_precision; degree_levels; funding; official_source_url; status corrected"
         ],
         "last_verified_date": "2026-10-02",
@@ -25436,7 +25456,9 @@
         "official_source_urls": [
           "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
           "https://www.studyinjapan.go.jp/en/smap-stopj-applications-undergraduate.html",
-          "https://www.studyinjapan.go.jp/en/"
+          "https://www.studyinjapan.go.jp/en/",
+          "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships",
+          "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships"
         ],
         "application_link": "https://www.studyinjapan.go.jp/en/smap-stopj-applications-undergraduate.html",
         "official_updates_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
@@ -25472,9 +25494,7 @@
         ],
         "citizenship_residency": "No nationality restriction is published; the page publishes general eligibility criteria for the undergraduate students category (12 years of school education, under 25 at enrollment, able to take part in a prescribed study programme at a Japanese university).",
         "international_eligibility": "not stated",
-        "degree_levels": [
-          "Bachelor's"
-        ],
+        "degree_levels": "Bachelor's",
         "study_mode": null,
         "research_requirement": "not required",
         "subject_or_agency_requirement": null,
@@ -25515,7 +25535,10 @@
         "program_type": "Government scholarship (bilateral)",
         "region": "East Asia (Japan)",
         "coverage": "Covers a monthly scholarship, tuition fees, round-trip airfare and a research stay abroad allowance; the official details table states the recipient is exempt from tuition and provided round-trip expenses.",
-        "last_verified_date": "2026-10-01"
+        "last_verified_date": "2026-10-01",
+        "funding": "Fully Funded",
+        "country": "Japan",
+        "official_source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships"
       },
       "applicant_utility": {
         "application_readiness_checklist": [
@@ -25565,7 +25588,7 @@
       },
       "verification": {
         "cycle_verified": "2026 recruitment cycle for 2027 enrolment, as described on the MEXT scholarship and undergraduate application pages",
-        "last_verified_date": "2026-10-01",
+        "last_verified_date": "2026-10-02",
         "verification_confidence": 0.75,
         "official_fields_confirmed": [
           "funding_amount",
@@ -25588,14 +25611,17 @@
         "unverified_or_removed_claims": [
           "The recorded URL https://www.mext.go.jp/en/policy/education/highered/title02/detail02/sdetail02/1373897.htm redirected to a general study-in-Japan page; the live programme information was read from studyinjapan.go.jp, the official MEXT study-in-Japan site.",
           "No English language proficiency test score is published for this category on the pages read.",
-          "No central deadline is published; deadlines are embassy-specific or set by the accepting university."
+          "No central deadline is published; deadlines are embassy-specific or set by the accepting university.",
+          "Re-verified 2026-10-02: country; degree_levels; funding; official_source_url corrected"
         ],
         "source_citations": [
           "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
           "https://www.studyinjapan.go.jp/en/smap-stopj-applications-undergraduate.html",
-          "https://www.studyinjapan.go.jp/en/"
+          "https://www.studyinjapan.go.jp/en/",
+          "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships"
         ],
-        "researched_by": "deep_02"
+        "researched_by": "deep_02",
+        "source_freshness_rule": "Re-checked against the awarding body's own page; fields listed in unverified_or_removed_claims are absent from the source."
       }
     },
     {
@@ -32609,18 +32635,19 @@
       "official": {
         "official_source_urls": [
           "https://sshrc-crsh.canada.ca/en/funding/opportunities/canada-graduate-research-scholarships/masters-program.aspx",
-          "https://www.nserc-crsng.gc.ca/Students-Etudiants/PG-CS/cgrsm-besrm_eng.asp"
+          "https://www.nserc-crsng.gc.ca/Students-Etudiants/PG-CS/cgrsm-besrm_eng.asp",
+          "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships"
         ],
         "application_link": null,
         "official_updates_url": "https://sshrc-crsh.canada.ca/en/funding/opportunities/canada-graduate-research-scholarships/masters-program.aspx",
         "catalogue_url": "https://sshrc-crsh.canada.ca/en/funding/opportunities/canada-graduate-research-scholarships.aspx",
         "application_cycle": "2026 December competition (applications submitted for the 2026-2027 competition year, with award offers available from 1 April)",
-        "deadline_central": "2026-12-01T20:00",
+        "deadline_central": "2026-12-01",
         "deadline_central_display": "Application deadline: December 1, 2026 (8:00 p.m. eastern)",
         "deadline_central_timezone": "America/Toronto",
         "deadline_institutional": null,
         "deadline_note": "The agencies set one national deadline of 1 December before 8:00 pm ET. The institutional layer is explicitly separate and earlier: you must respect the internal deadline to apply for admission to your intended programme of study and are told to contact the faculty of graduate studies at the selected Canadian institutions for more detailed information. Because those institutional admission deadlines are set by each university and are not published on either agency page, deadline_institutional is null.",
-        "status": "OPEN",
+        "status": "open",
         "status_note": "The 2026 competition is listed as the current one and the NSERC funding opportunity page shows the funding opportunity status as 'Open', with a deadline of 1 December 2026 that is still ahead of the verification date of 1 October 2026.",
         "funding_amount": 27000,
         "funding_currency": "CAD",
@@ -32652,10 +32679,7 @@
         ],
         "citizenship_residency": "Canadian citizens, permanent residents of Canada, or Protected Persons under subsection 95(2) of the Immigration and Refugee Protection Act (Canada), as of the application deadline date. Awards are tenable only at eligible Canadian institutions.",
         "international_eligibility": "Not stated as open to international students. The published status requirement is Canadian citizenship, permanent residency or Protected Person status; the pages do not describe eligibility for students on study permits alone.",
-        "degree_levels": [
-          "Master's",
-          "Doctoral (in some cases, including direct-entry, fast-track and master's-to-doctoral continuation)"
-        ],
+        "degree_levels": "Master's (page also says 'eligible master's or, in some cases, doctoral program in Canada')",
         "study_mode": "full-time",
         "research_requirement": "required",
         "subject_or_agency_requirement": "The program is administered jointly by CIHR, NSERC and SSHRC as part of the Canada Research Training Awards Suite, which also includes the CGRS D and the Canada Postdoctoral Research Award. You must apply to an institution that has an allocation for your intended field of research; the three fields of research are health, natural sciences and engineering, and social sciences and humanities, and applications deemed by a host institution to be mislabelled will be re-labelled. Awards are tenable only at eligible Canadian institutions, without exception.",
@@ -32714,7 +32738,12 @@
         "program_type": "Tri-agency government research training award (institutionally administered merit scholarship)",
         "region": "Canada (eligible Canadian institutions only, without exception)",
         "coverage": "A $27,000 stipend for 12 months with optional supplements; the published value contains no tuition-fee component, and the pages do not state that tuition, living costs and required expenses are covered, so it is not recorded as fully funded.",
-        "last_verified_date": "2026-10-01"
+        "last_verified_date": "2026-10-01",
+        "funding": "Stipend: $27,000 for 1 year (page: 'Value and duration: $27,000 for 1 year')",
+        "country": "Canada",
+        "deadline_date": "2026-12-01",
+        "deadline_precision": "day",
+        "official_source_url": "https://sshrc-crsh.canada.ca/en/funding/opportunities/canada-graduate-research-scholarships/masters-program.aspx"
       },
       "applicant_utility": {
         "application_readiness_checklist": [
@@ -32817,13 +32846,16 @@
           "No English language requirement is published; english_requirement is null, and the published rule concerns submission language only",
           "No tuition, living-cost or travel coverage statement exists, so tuition_coverage is false and the other coverage fields are null",
           "The Tri-agency research training award holder's guide, the 11-step instructions, the information and instructions for scholarships liaison officers, and the awards allocation list were not opened this session, so nothing beyond the published summaries is asserted",
-          "Individual Development Plan resources are referenced but explicitly not a selection criterion"
+          "Individual Development Plan resources are referenced but explicitly not a selection criterion",
+          "Re-verified 2026-10-02: country; deadline_central; deadline_date; deadline_precision; degree_levels; funding; official_source_url; status corrected"
         ],
         "source_citations": [
           "https://sshrc-crsh.canada.ca/en/funding/opportunities/canada-graduate-research-scholarships/masters-program.aspx",
           "https://www.nserc-crsng.gc.ca/Students-Etudiants/PG-CS/cgrsm-besrm_eng.asp"
         ],
-        "researched_by": "deep_25"
+        "researched_by": "deep_25",
+        "last_verified_date": "2026-10-02",
+        "source_freshness_rule": "Re-checked against the awarding body's own page; fields listed in unverified_or_removed_claims are absent from the source."
       }
     },
     {
@@ -34816,10 +34848,7 @@
         ],
         "sdg_requirement": false,
         "sdg_requirement_details": [],
-        "degree_levels": [
-          "Bachelor's",
-          "Master's"
-        ],
+        "degree_levels": "Bachelor's, Master's",
         "study_type": [
           "Full-time",
           "Fee-paying degree programmes taught in English"
@@ -34985,9 +35014,13 @@
         "official_source_urls": [
           "https://www.tuni.fi/en/tau/financial-matters/tuition-fees-and-scholarships",
           "https://www.tuni.fi/en/node/67298",
-          "https://opiskelijanopas.tuni.fi/en/tampere-university/study-right-and-annual-enrolment/tuition-fees-and-scholarships/scholarships-fee-paying-students-admitted-2026-or-later"
+          "https://opiskelijanopas.tuni.fi/en/tampere-university/study-right-and-annual-enrolment/tuition-fees-and-scholarships/scholarships-fee-paying-students-admitted-2026-or-later",
+          "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships"
         ],
-        "last_verified_date": "2026-10-01"
+        "last_verified_date": "2026-10-01",
+        "funding": "Partial",
+        "country": "Finland",
+        "official_source_url": "https://www.tuni.fi/en/tau/financial-matters/tuition-fees-and-scholarships"
       },
       "applicant_utility": {
         "application_readiness_checklist": [
@@ -35119,17 +35152,18 @@
           "The existing record states the tuition fee scholarship 'is automatically offered to all students who pay the tuition fee and there is no separate scholarship application'. The current official page contradicts this: the tuition fee scholarship is awarded at admission to a limited number of the best-performing applicants and 'you must apply for the scholarship as part of your application for admission'. The automatic element applies only to the early bird offer.",
           "The existing record describes the Graduation Scholarship as requiring completion 'within 12 months of the graduation date recorded in the study register'. The current official page states the requirement is graduating 'within three academic years'. The 12-month wording is not on the current page and has been replaced.",
           "The existing record's benefit list omits that the early bird offer is only for students who have not been awarded the tuition fee scholarship.",
-          "No scholarship deadline is published, so deadline_central remains null; no amount is published as a single cash figure, so funding_amount is recorded as the published 50% of tuition with funding_currency null rather than a guessed euro amount."
+          "No scholarship deadline is published, so deadline_central remains null; no amount is published as a single cash figure, so funding_amount is recorded as the published 50% of tuition with funding_currency null rather than a guessed euro amount.",
+          "Re-verified 2026-10-02: country; degree_levels; funding; official_source_url corrected"
         ],
         "source_conflict_rule": "Where the current official Tampere University page conflicts with an earlier record or with the Student's Guide, the page published for the applicant's admission round governs; for 2026-and-later admits the Student's Guide page 'Scholarships for fee-paying students admitted in 2026 or later' applies, and for 2025-and-earlier admits the separate archived rules page applies.",
-        "source_freshness_rule": "The fee levels and scholarship availability are published per admission round; anything read from an earlier round's page is treated as stale and re-checked against the current admission round's page. Records are re-verified each admission cycle.",
+        "source_freshness_rule": "Re-checked against the awarding body's own page; fields listed in unverified_or_removed_claims are absent from the source.",
         "source_citations": [
           "https://www.tuni.fi/en/tau/financial-matters/tuition-fees-and-scholarships",
           "https://www.tuni.fi/en/node/67298",
           "https://opiskelijanopas.tuni.fi/en/tampere-university/study-right-and-annual-enrolment/tuition-fees-and-scholarships/scholarships-fee-paying-students-admitted-2026-or-later"
         ],
         "researched_by": "e2",
-        "last_verified_date": "2026-10-01",
+        "last_verified_date": "2026-10-02",
         "data_quality": {
           "source_level": "Official provider page (Tampere University public site and Tampere University Student's Guide)",
           "coverage": "High: both the main scholarships page and the Student's Guide rules page were read in full and agree on conditions, exclusions and contacts. Only the national Studyinfo admission dates are outside the provider's pages.",
@@ -71655,7 +71689,8 @@
         "official_source_url": "https://www.fes.de/studienfoerderung/stipendium/grundfoerderung-fuer-auslaender-innen",
         "official_source_urls": [
           "https://www.fes.de/studienfoerderung/stipendium/grundfoerderung-fuer-auslaender-innen",
-          "https://www.hss.de/stipendium/wen-suchen-wir"
+          "https://www.hss.de/stipendium/wen-suchen-wir",
+          "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships"
         ]
       },
       "applicant_utility": {},
@@ -71666,6 +71701,7 @@
         ],
         "source_freshness_rule": "Re-checked against the awarding body's own page; fields listed in unverified_or_removed_claims are absent from the source.",
         "unverified_or_removed_claims": [
+          "Re-verified 2026-10-02: degree_levels; funding; official_source_url corrected",
           "Re-verified 2026-10-02: degree_levels; funding; official_source_url corrected"
         ]
       }
@@ -71678,7 +71714,8 @@
         "official_source_url": "https://study.anu.edu.au/scholarships/find-scholarship/anu-vice-chancellors-international-achievement-award",
         "official_source_urls": [
           "https://study.anu.edu.au/scholarships/find-scholarship/anu-vice-chancellors-international-achievement-award",
-          "https://www.hss.de/stipendium/wen-suchen-wir"
+          "https://www.hss.de/stipendium/wen-suchen-wir",
+          "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships"
         ]
       },
       "applicant_utility": {},
@@ -71689,6 +71726,7 @@
         ],
         "source_freshness_rule": "Re-checked against the awarding body's own page; fields listed in unverified_or_removed_claims are absent from the source.",
         "unverified_or_removed_claims": [
+          "Re-verified 2026-10-02: degree_levels; funding; official_source_url corrected",
           "Re-verified 2026-10-02: degree_levels; funding; official_source_url corrected"
         ]
       }
@@ -71701,7 +71739,8 @@
         "official_source_url": "https://apply.ruffordsmallgrants.org/help/criteria",
         "official_source_urls": [
           "https://apply.ruffordsmallgrants.org/help/criteria",
-          "https://www.hss.de/stipendium/wen-suchen-wir"
+          "https://www.hss.de/stipendium/wen-suchen-wir",
+          "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships"
         ]
       },
       "applicant_utility": {},
@@ -71712,10 +71751,349 @@
         ],
         "source_freshness_rule": "Re-checked against the awarding body's own page; fields listed in unverified_or_removed_claims are absent from the source.",
         "unverified_or_removed_claims": [
+          "Re-verified 2026-10-02: degree_levels; funding; official_source_url corrected",
           "Re-verified 2026-10-02: degree_levels; funding; official_source_url corrected"
+        ]
+      }
+    },
+    {
+      "id": 571,
+      "official": {
+        "funding": "Fully Funded",
+        "degree_levels": "Master's, PhD, Postdoctoral, Mid-career researcher",
+        "deadline_date": "2026-10-11",
+        "deadline_precision": "day",
+        "deadline_central": "2026-10-11",
+        "status": "open",
+        "official_source_url": "https://nai.uu.se/opportunities/nordic-scholarship-programme.html",
+        "official_source_urls": [
+          "https://nai.uu.se/opportunities/nordic-scholarship-programme.html",
+          "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships"
+        ]
+      },
+      "applicant_utility": {},
+      "verification": {
+        "last_verified_date": "2026-10-02",
+        "source_citations": [
+          "https://nai.uu.se/opportunities/nordic-scholarship-programme.html"
+        ],
+        "source_freshness_rule": "Re-checked against the awarding body's own page; fields listed in unverified_or_removed_claims are absent from the source.",
+        "unverified_or_removed_claims": [
+          "Re-verified 2026-10-02: deadline_central; deadline_date; deadline_precision; degree_levels; funding; official_source_url; status corrected"
+        ]
+      }
+    },
+    {
+      "id": 575,
+      "official": {
+        "funding": "Fully Funded",
+        "degree_levels": "Master's",
+        "country": "Japan",
+        "official_source_url": "https://www.grips.ac.jp/en/education/inter_programs/leader/",
+        "official_source_urls": [
+          "https://www.grips.ac.jp/en/education/inter_programs/leader/",
+          "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships"
+        ]
+      },
+      "applicant_utility": {},
+      "verification": {
+        "last_verified_date": "2026-10-02",
+        "source_citations": [
+          "https://www.grips.ac.jp/en/education/inter_programs/leader/"
+        ],
+        "source_freshness_rule": "Re-checked against the awarding body's own page; fields listed in unverified_or_removed_claims are absent from the source.",
+        "unverified_or_removed_claims": [
+          "Re-verified 2026-10-02: country; degree_levels; funding; official_source_url corrected"
+        ]
+      }
+    },
+    {
+      "id": 488,
+      "official": {
+        "funding": "No scholarship named 'JWU Global Full Tuition Scholarship' is published by Johnson & Wales University. The official page lists automatic merit scholarships of $23,000-$30,000 (GPA 4.00+), $21,000-$28,000 (3.50-3.99), $17,000-$25,000 (3.00-3.49) and up to $21,000 (below 3.00), renewable up to four years, plus The JWU Pledge covering up to 100% of tuition (household income up to $80,000 and Pell eligible) or a minimum 70% (income $80,001-$200,000) - but the Pledge is restricted to U.S. citizens and explicitly excludes international students.",
+        "degree_levels": "Undergraduate",
+        "country": "Usa",
+        "official_source_url": "https://www.jwu.edu/admissions-aid/cost-aid/scholarships-grants-loans/",
+        "official_source_urls": [
+          "https://www.jwu.edu/admissions-aid/cost-aid/scholarships-grants-loans/",
+          "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships"
+        ]
+      },
+      "applicant_utility": {},
+      "verification": {
+        "last_verified_date": "2026-10-02",
+        "source_citations": [
+          "https://www.jwu.edu/admissions-aid/cost-aid/scholarships-grants-loans/"
+        ],
+        "source_freshness_rule": "Re-checked against the awarding body's own page; fields listed in unverified_or_removed_claims are absent from the source.",
+        "unverified_or_removed_claims": [
+          "Re-verified 2026-10-02: country; degree_levels; funding; official_source_url corrected"
+        ]
+      }
+    },
+    {
+      "id": 442,
+      "official": {
+        "funding": "Full tuition fee waiver plus allowances: waiver of annual subsidised tuition fees for regular terms for up to 4 years starting from Academic Year 2028-29; S$14,000 Global Learning Opportunities Worldwide (GLOW) grant; S$5,000 annual living allowance; S$1,800 one-time computer allowance; S$9,000 Enhanced Flexibility Grant; option of a concurrent or sequential SMU Master's programme of up to S$40,000. Bond-free.",
+        "degree_levels": "Undergraduate",
+        "country": "Singapore",
+        "official_source_url": "https://admissions.smu.edu.sg/financial-aid/smu-global-impact-scholarship-award",
+        "official_source_urls": [
+          "https://admissions.smu.edu.sg/financial-aid/smu-global-impact-scholarship-award",
+          "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships"
+        ]
+      },
+      "applicant_utility": {},
+      "verification": {
+        "last_verified_date": "2026-10-02",
+        "source_citations": [
+          "https://admissions.smu.edu.sg/financial-aid/smu-global-impact-scholarship-award"
+        ],
+        "source_freshness_rule": "Re-checked against the awarding body's own page; fields listed in unverified_or_removed_claims are absent from the source.",
+        "unverified_or_removed_claims": [
+          "Re-verified 2026-10-02: country; degree_levels; funding; official_source_url corrected"
+        ]
+      }
+    },
+    {
+      "id": 344,
+      "official": {
+        "funding": "EUR 75,000 research project grant, used to finance hiring a doctoral or postdoctoral researcher; projects must be carried out in Finnish universities and are led by a tenured associate or full professor as PI. Successful projects may reapply for an extension via the next year's application process.",
+        "degree_levels": "Doctoral (PhD), Postdoctoral",
+        "country": "Finland",
+        "deadline_date": "2026-09-15",
+        "deadline_precision": "day",
+        "deadline_central": "2026-09-15",
+        "status": "open",
+        "official_source_url": "https://www.nokiafoundation.com/foundation-fellow",
+        "official_source_urls": [
+          "https://www.nokiafoundation.com/foundation-fellow",
+          "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships"
+        ]
+      },
+      "applicant_utility": {},
+      "verification": {
+        "last_verified_date": "2026-10-02",
+        "source_citations": [
+          "https://www.nokiafoundation.com/foundation-fellow"
+        ],
+        "source_freshness_rule": "Re-checked against the awarding body's own page; fields listed in unverified_or_removed_claims are absent from the source.",
+        "unverified_or_removed_claims": [
+          "Re-verified 2026-10-02: country; deadline_central; deadline_date; deadline_precision; degree_levels; funding; official_source_url; status corrected"
+        ]
+      }
+    },
+    {
+      "id": 345,
+      "official": {
+        "funding": "Research/travel grant, awarded at the Foundation's discretion - published archive shows individual awards ranging from EUR 5,500 (2023) to EUR 32,916 (2017)",
+        "degree_levels": "Postdoctoral, Doctoral (recent graduates)",
+        "country": "Finland",
+        "official_source_url": "https://www.nokiafoundation.com/jorma-ollila-grants",
+        "official_source_urls": [
+          "https://www.nokiafoundation.com/jorma-ollila-grants",
+          "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships"
+        ]
+      },
+      "applicant_utility": {},
+      "verification": {
+        "last_verified_date": "2026-10-02",
+        "source_citations": [
+          "https://www.nokiafoundation.com/jorma-ollila-grants"
+        ],
+        "source_freshness_rule": "Re-checked against the awarding body's own page; fields listed in unverified_or_removed_claims are absent from the source.",
+        "unverified_or_removed_claims": [
+          "Re-verified 2026-10-02: country; degree_levels; funding; official_source_url corrected"
+        ]
+      }
+    },
+    {
+      "id": 297,
+      "official": {
+        "funding": "Partial (Visegrad Fund scholarship; no amount stated on the Masaryk page)",
+        "degree_levels": "Master's, post-Master's",
+        "country": "Czech Republic",
+        "deadline_date": "2027-03-15",
+        "deadline_precision": "day",
+        "deadline_central": "2027-03-15",
+        "status": "open",
+        "official_source_url": "https://czs.muni.cz/en/student-from-abroad/other-possibilities/visegrad-grant",
+        "official_source_urls": [
+          "https://czs.muni.cz/en/student-from-abroad/other-possibilities/visegrad-grant",
+          "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships"
+        ]
+      },
+      "applicant_utility": {},
+      "verification": {
+        "last_verified_date": "2026-10-02",
+        "source_citations": [
+          "https://czs.muni.cz/en/student-from-abroad/other-possibilities/visegrad-grant"
+        ],
+        "source_freshness_rule": "Re-checked against the awarding body's own page; fields listed in unverified_or_removed_claims are absent from the source.",
+        "unverified_or_removed_claims": [
+          "Re-verified 2026-10-02: country; deadline_central; deadline_date; deadline_precision; degree_levels; funding; official_source_url; status corrected"
+        ]
+      }
+    },
+    {
+      "id": 288,
+      "official": {
+        "funding": "Fully Funded for the flagship Stipendium Hungaricum: 'no tuition fee; monthly stipend; for BA/BSc, MA/MSc and one-tier master level programs: HUF 43,700/month (cca EUR 135) contribution to the living expenses in Hungary ... for doctoral programs: HUF 140,000/month ... and HUF 180,000 (cca EUR 580) for the second phase (4 semesters) ... dormitory place or additional contribution to accomodation costs; health care services ... and supplementary medical insurance for up to HUF 65,000 (cca EUR 205) a year/person'",
+        "degree_levels": "Bachelor's, Master's, PhD",
+        "country": "Hungary",
+        "official_source_url": "https://www.bme.hu/en/scolarships",
+        "official_source_urls": [
+          "https://www.bme.hu/en/scolarships",
+          "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships"
+        ]
+      },
+      "applicant_utility": {},
+      "verification": {
+        "last_verified_date": "2026-10-02",
+        "source_citations": [
+          "https://www.bme.hu/en/scolarships"
+        ],
+        "source_freshness_rule": "Re-checked against the awarding body's own page; fields listed in unverified_or_removed_claims are absent from the source.",
+        "unverified_or_removed_claims": [
+          "Re-verified 2026-10-02: country; degree_levels; funding; official_source_url corrected"
+        ]
+      }
+    },
+    {
+      "id": 275,
+      "official": {
+        "funding": "Full tuition: 'The scholarship will cover full tuition fees for up to two years if the student maintains the academic progression requirements'",
+        "degree_levels": "Master's (MSc, campus Bergen; page also notes it is for a 'first degree master' / first master's degree)",
+        "country": "Norway",
+        "deadline_date": "2026-03-01",
+        "deadline_precision": "day",
+        "deadline_central": "2026-03-01",
+        "status": "open",
+        "official_source_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/master-of-science-international-scholarship--bergen",
+        "official_source_urls": [
+          "https://www.bi.no/en/programmes-and-individual-courses/scholarships/master-of-science-international-scholarship--bergen",
+          "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships"
+        ]
+      },
+      "applicant_utility": {},
+      "verification": {
+        "last_verified_date": "2026-10-02",
+        "source_citations": [
+          "https://www.bi.no/en/programmes-and-individual-courses/scholarships/master-of-science-international-scholarship--bergen"
+        ],
+        "source_freshness_rule": "Re-checked against the awarding body's own page; fields listed in unverified_or_removed_claims are absent from the source.",
+        "unverified_or_removed_claims": [
+          "Re-verified 2026-10-02: country; deadline_central; deadline_date; deadline_precision; degree_levels; funding; official_source_url; status corrected"
+        ]
+      }
+    },
+    {
+      "id": 230,
+      "official": {
+        "funding": "Fully Funded: Current Announcement (05/2026), section 4 VALUE: 'scholarships (of currently € 992 per month) for master's courses at German higher education institutions; health insurance cover in Germany; fixed travel allowances (lump sums) ...; a study and research grant; rent subsidies and family supplements, as applicable; preceding German language course ... up to 4 months'. Also 'DAAD scholarship holders are exempt from paying tuition fees.'",
+        "degree_levels": "Master's",
+        "country": "Germany",
+        "official_source_url": "https://www.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026397",
+        "official_source_urls": [
+          "https://www.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026397",
+          "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships"
+        ]
+      },
+      "applicant_utility": {},
+      "verification": {
+        "last_verified_date": "2026-10-02",
+        "source_citations": [
+          "https://www.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026397"
+        ],
+        "source_freshness_rule": "Re-checked against the awarding body's own page; fields listed in unverified_or_removed_claims are absent from the source.",
+        "unverified_or_removed_claims": [
+          "Re-verified 2026-10-02: country; degree_levels; funding; official_source_url corrected"
+        ]
+      }
+    },
+    {
+      "id": 388,
+      "official": {
+        "funding": "Research fellowship / grant: 'The available budget for this Call for proposals is €390,000. It is possible to apply for a grant with a maximum of €30,000.' (Characteristics box lists Budget €360,000); covers international travel (economy air/train), accommodation, research expenses and a replacement grant",
+        "degree_levels": "PhD and above",
+        "country": "Netherlands",
+        "deadline_date": "2026-09-10",
+        "deadline_precision": "day",
+        "deadline_central": "2026-09-10",
+        "status": "open",
+        "official_source_url": "https://www.nwo.nl/en/calls/embassy-science-fellowship-esf-nl-2027",
+        "official_source_urls": [
+          "https://www.nwo.nl/en/calls/embassy-science-fellowship-esf-nl-2027",
+          "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships"
+        ]
+      },
+      "applicant_utility": {},
+      "verification": {
+        "last_verified_date": "2026-10-02",
+        "source_citations": [
+          "https://www.nwo.nl/en/calls/embassy-science-fellowship-esf-nl-2027"
+        ],
+        "source_freshness_rule": "Re-checked against the awarding body's own page; fields listed in unverified_or_removed_claims are absent from the source.",
+        "unverified_or_removed_claims": [
+          "Re-verified 2026-10-02: country; deadline_central; deadline_date; deadline_precision; degree_levels; funding; official_source_url; status corrected"
+        ]
+      }
+    },
+    {
+      "id": 395,
+      "official": {
+        "funding": "Partial scholarship: 'A Radboud Scholarship will reduce your tuition fee to €2,771.- (amount to be confirmed). For example: a grant holder in 2027/2028 will pay a tuition fee of only €2,771.- instead of €19,000'; also covers visa, residence permit, health and liability insurance; 'The costs of living and studying in the Netherlands are not covered'. Page's own field: 'Coverage of scholarship: Partial scholarship'",
+        "degree_levels": "Master's (English-taught)",
+        "country": "Netherlands",
+        "deadline_date": "2027-02-14",
+        "deadline_precision": "day",
+        "deadline_central": "2027-02-14",
+        "status": "open",
+        "official_source_url": "https://www.ru.nl/en/education/scholarships/radboud-scholarship-programme",
+        "official_source_urls": [
+          "https://www.ru.nl/en/education/scholarships/radboud-scholarship-programme",
+          "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships"
+        ]
+      },
+      "applicant_utility": {},
+      "verification": {
+        "last_verified_date": "2026-10-02",
+        "source_citations": [
+          "https://www.ru.nl/en/education/scholarships/radboud-scholarship-programme"
+        ],
+        "source_freshness_rule": "Re-checked against the awarding body's own page; fields listed in unverified_or_removed_claims are absent from the source.",
+        "unverified_or_removed_claims": [
+          "Re-verified 2026-10-02: country; deadline_central; deadline_date; deadline_precision; degree_levels; funding; official_source_url; status corrected"
+        ]
+      }
+    },
+    {
+      "id": 387,
+      "official": {
+        "funding": "Tuition fee waiver",
+        "degree_levels": "Master's (MSc)",
+        "country": "Netherlands",
+        "deadline_date": "2026-12-01",
+        "deadline_precision": "day",
+        "deadline_central": "2026-12-01",
+        "status": "open",
+        "official_source_url": "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships",
+        "official_source_urls": [
+          "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships"
+        ]
+      },
+      "applicant_utility": {},
+      "verification": {
+        "last_verified_date": "2026-10-02",
+        "source_citations": [
+          "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships"
+        ],
+        "source_freshness_rule": "Re-checked against the awarding body's own page; fields listed in unverified_or_removed_claims are absent from the source.",
+        "unverified_or_removed_claims": [
+          "Re-verified 2026-10-02: country; deadline_central; deadline_date; deadline_precision; degree_levels; funding; official_source_url; status corrected"
         ]
       }
     }
   ],
-  "count": 308
+  "count": 321
 }

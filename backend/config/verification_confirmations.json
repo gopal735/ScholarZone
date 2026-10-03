@@ -1,6 +1,6 @@
 {
   "note": "Records re-checked against the awarding body's own page on 2026-10-02. Each entry is an assertion that the live source still supports the stored record.",
-  "count": 20,
+  "count": 39,
   "records": [
     {
       "id": 477,
@@ -73,6 +73,41 @@
       "evidence": "Page 'Last update: 28 September 2026'. Notice: 'The application for the Cycle 2026 is open.' and 'Deadline for Candidate Submission is now extended to 15 October 2026'. Cycle 2026 at a glance: 'Fellowships available 10 - Fellowship grant Up to US$10,000 - Duration No less than 3 months and no more than 9 months - Host country Japan - Fellowship period in Japan From February 2027 onwards, to be com"
     },
     {
+      "id": 557,
+      "name": "Albert Einstein Distinguished Educator Fellowship (AEF) Program",
+      "source_url": "https://science.osti.gov/wdts/einstein",
+      "checked_at": "2026-10-02",
+      "evidence": "Programme page banner: 'The Albert Einstein Distinguished Educator Fellowship Program is now open for applications. Applications are due November 5, 2026 at 8:00pm ET.' Key Dates page (https://science.osti.gov/wdts/einstein/key-dates): 'On-line Application Opens - August 3, 2026'; 'Application Deadline - 8:00pm Eastern, November 5, 2026'; semi-finalist notifications Feb 24 2027; interviews Feb 27-"
+    },
+    {
+      "id": 558,
+      "name": "Office of Science Graduate Student Research (SCGSR) Program",
+      "source_url": "https://science.osti.gov/wdts/scgsr",
+      "checked_at": "2026-10-02",
+      "evidence": "Programme page banner: 'The Office of Science Graduate Student Research (SCGSR) program is now open for applications. Applications are due November 4, 2026, at 5:00PM ET.' Key Dates page (https://science.osti.gov/wdts/scgsr/key-dates): '2026 Solicitation 2 - On-line Application Opens August 12, 2026; Applications Due November 4, 2026; Offer Notification April 1 - 16, 2027; Earliest Start Date June"
+    },
+    {
+      "id": 565,
+      "name": "Deutschlandstipendium",
+      "source_url": "https://www.deutschlandstipendium.de/deutschlandstipendium/de/stipendium/wie-es-funktioniert/wie-es-funktioniert.html",
+      "checked_at": "2026-10-02",
+      "evidence": "Page publishes no central deadline and no application link; selection and administration are delegated: 'Die Hochschulen spielen bei der Umsetzung und Ausgestaltung des Stipendienprogramms eine zentrale Rolle. Mit finanzieller Unterstützung durch den Bund sprechen sie potenzielle Geldgeber an, wählen die Stipendiatinnen und Stipendiaten aus und organisieren die Förderung.' Funding figure confirmed"
+    },
+    {
+      "id": 570,
+      "name": "Estonian Scholarship Programme for international students, researchers and academic staff — Scholarship for degree and exchange study in Estonia",
+      "source_url": "https://www.harno.ee/en/scholarships-and-grants/scholarships-studying-and-working-estonia/scholarships-international",
+      "checked_at": "2026-10-02",
+      "evidence": "Deadline confirmed verbatim twice: '2026 application period will be open from 1st of October 2026 until October 31st 2026 (23:59, Estonian time)' and 'The application with all the required annexes shall be submitted electronically within the period of 1st of October until October 31, 2026 (by 23:59 Estonian time)'. Page 'Last updated: 01.10.2026', so the round is currently open (verification date "
+    },
+    {
+      "id": 573,
+      "name": "Japanese Government (MEXT) Scholarship for 2027 - Research Students (Embassy Recommendation)",
+      "source_url": "https://www.mext.go.jp/a_menu/koutou/ryugaku/boshu/1415352_00008.htm",
+      "checked_at": "2026-10-02",
+      "evidence": "MEXT page is the live 2027 recruitment page titled '2027年度大使館推薦による国費外国人留学生（研究留学生）の募集について' (2027 Japanese Government scholarship, Research Students, embassy recommendation) and publishes the 募集要項 (guidelines PDF), the English 'JAPANESE GOVERNMENT (MEXT) SCHOLARSHIP FOR 2027 (RESEARCH STUDENTS)' PDF, and all application forms (application form, preferred-university form, field of study and research "
+    },
+    {
       "id": 577,
       "name": "ICSSR Participation in International Seminar Abroad (Travel Grant Scheme)",
       "source_url": "https://icssr.org/participation-international-seminar-abroad",
@@ -141,6 +176,104 @@
       "source_url": "https://www.hss.de/stipendium/wen-suchen-wir",
       "checked_at": "2026-10-02",
       "evidence": "The stored URL (/stipendium/wen-suchen-wir/) is only the eligibility-checklist page and carries NO dates. The deadline is published on https://www.hss.de/stipendium/bewerbung/ : 'Unser Bewerbungsportal ist geöffnet: 15. Dezember 2026 bis einschließlich 15. Januar 2027 (jeweils 12 Uhr MEZ): Journalistisches Förderprogramm, Studierende und Promovierende, Internationale Studierende und Promovierende "
+    },
+    {
+      "id": 566,
+      "name": "France 2030 - PEPR GFM \"Grands Fonds Marins\" - Appel à projets - 2026",
+      "source_url": "https://anr.fr/fr/france-2030/france2030/call/france-2030-pepr-gfm-grands-fonds-marins-appel-a-projets-2026",
+      "checked_at": "2026-10-02",
+      "evidence": "ANR page status \"Ouvert – 2026\" with badge \"Ouvert\": \"Ouverture : 21/07/2026 à 09:00 CEST\" and \"Limite de dépôt des projets : 17/11/2026 à 11:00 CET\". Amounts: \"L'aide demandée par projet est comprise entre 800 k€ et 3 M€. Aucun niveau de financement n'est privilégié à l'intérieur de cette fourchette\"; \"La dotation globale de ce premier appel à projets du PEPR GFM est d'environ 17,5 M€\"; project d"
+    },
+    {
+      "id": 567,
+      "name": "France 2030 - PEPR PROPSY – \"Psychiatrie de précision\" - Appel à projets - 2026",
+      "source_url": "https://anr.fr/fr/france-2030/france2030/call/france-2030-pepr-propsy-psychiatrie-de-precision-appel-a-projets-2026",
+      "checked_at": "2026-10-02",
+      "evidence": "ANR page status \"Ouvert – 2026\", badge \"Ouvert\": \"Ouverture : 24/06/2026 à 09:00 CEST\" and \"Fermeture : 10/11/2026 à 11:00 CET\". Extension notice verbatim: \"Attention : La date limite de dépôt des projets, initialement prévue le 15 octobre 2026 à 11h00, est désormais fixée au 10 novembre 2026 à 11h00 (CET).\" Envelope: \"un appel à projets est lancé avec une enveloppe budgétaire totale de 9 600 000 "
+    },
+    {
+      "id": 568,
+      "name": "Appel à projets M-ERA.NET 2026/27 - Science et ingénierie des matériaux pour l'innovation en Europe (édition 2027 pour l'ANR)",
+      "source_url": "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
+      "checked_at": "2026-10-02",
+      "evidence": "ANR page status \"Ouvert – 2027\", badge \"Ouvert\": \"Ouverture : 31/03/2026 à 09:00 CEST\", \"Limite de dépôt des pré-dossiers : 12/05/2026 à 12:00 CEST\", \"Limite de dépôt des projets : 18/11/2026 à 12:00 CET\". Two-step centralised deposit confirmed: \"Seuls les coordinateurs des pré-propositions sélectionnées à l'issue de la première étape d'évaluation pourront déposer une proposition détaillée.\" and \""
+    },
+    {
+      "id": 602,
+      "name": "AFdoc – Aides à la formation doctorale (FNR PhD funding scheme)",
+      "source_url": "https://www.fnr.lu/funding-instruments/afdoc",
+      "checked_at": "2026-10-02",
+      "evidence": "FNR AFdoc page overview block: \"Career Stage(s): PhD Candidate (with Masters)\"; \"Funding Type(s): PhD Grant\"; \"Deadline: 25-11-2026 14:00 CET / 28-04-2027 14:00 CET\"; \"Call launch: September 2026 (November deadline); February 2027 (April deadline)\". Body: \"The very first call of the AFdoc funding scheme will be launched mid-September 2026, with a deadline on Wednesday, 25 November 2026 at 14:00 CE"
+    },
+    {
+      "id": 609,
+      "name": "AIMS South Africa - Structured Master's in Mathematical Science (with full scholarship)",
+      "source_url": "https://aims.ac.za/academics/prospective_students",
+      "checked_at": "2026-10-02",
+      "evidence": "Page, \"Application process\" section: \"Our academic year kicks off in September and runs through until the end of June. Applications are open from January to March.\" and \"For the AI for Science stream we only have the September intake with applications open from January to March. For our Mathematical Sciences stream, we have a September intake, open January to March and a January intake (South Afri"
+    },
+    {
+      "id": 612,
+      "name": "University of Glasgow - Sanctuary Scholarship (refugee and asylum seeker students)",
+      "source_url": "https://www.gla.ac.uk/scholarships/sanctuaryscholarships",
+      "checked_at": "2026-10-02",
+      "evidence": "Page: \"Applications for this scholarship for the 2027-28 academic session will open soon. In the meantime please provide your details and we will be in touch when the scholarship is open for applications.\" Value: \"Full tuition fee waiver for the duration of study, where you are not eligible to apply for mainstream student finance to cover full tuition fees\" plus \"GBP 5,000 per year towards for stu"
+    },
+    {
+      "id": 56,
+      "name": "Jefferson Scholars Program and Walentas Scholars Program - University of Virginia",
+      "source_url": "https://www.jeffersonscholars.org/scholarships",
+      "checked_at": "2026-10-02",
+      "evidence": "Official_source_url (/scholarships) carries no deadline; the linked official page /scholarships/selection does. Key Dates table, verbatim: \"August - Nomination portal opens for eligible schools.\"; \"December 1 - Counselor and nominee materials are due for all regions.\"; \"Mid-December thru January - Regional review and interviews are conducted.\"; \"Late February - Final virtual interviews are conduct"
+    },
+    {
+      "id": 123,
+      "name": "Boston College - Gabelli Presidential Scholars Program",
+      "source_url": "https://www.bc.edu/bc-web/academics/sites/gabelli-presidential-scholars-program.html",
+      "checked_at": "2026-10-02",
+      "evidence": "Programme page: \"The Gabelli Presidential Scholars Program is an undergraduate academic, merit program that annually awards full-tuition scholarships and fully-funded, GPSP-sponsored summer programs to 18 incoming freshman students. Early Decision and Regular Decision applicants who submit their BC applications by the November 1 priority scholarship deadline will be considered. There is no separat"
+    },
+    {
+      "id": 446,
+      "name": "SUTD Undergraduate Merit Scholarship",
+      "source_url": "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship",
+      "checked_at": "2026-10-02",
+      "evidence": "\"The Scholarship covers the subsidised tuition fees (after Tuition Grant) for the normal duration (up to four years) of the respective bachelor degree programmes at SUTD\". No day-level application deadline is published: \"Application for the scholarships is made at the same time as application for admission to SUTD.\" Eligibility caveat noted on page: open to Singapore Citizens, with \"As a special c"
+    },
+    {
+      "id": 12,
+      "name": "JASSO Monbukagakusho Honors Scholarship",
+      "source_url": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/about.html",
+      "checked_at": "2026-10-02",
+      "evidence": "Monthly stipend: \"Graduate/undergraduate level : 48,000 yen per month; Japanese language institutes : 30,000 yen per month\". Scholarship period: \"12 months (From April to next March) or 6 months (From October to next March)\". Method of application confirms the stored 'Varies by institution': \"Please ask the staff at the educational institution in which you are enrolled... The number of students an"
+    },
+    {
+      "id": 61,
+      "name": "Clark University Presidential Scholarship",
+      "source_url": "https://www.clarku.edu/financial-aid/types/scholarships",
+      "checked_at": "2026-10-02",
+      "evidence": "\"The Presidential Scholarship is a highly esteemed scholarship awarded to approximately five exceptional students annually... This scholarship covers full tuition, as well as on-campus housing and meals for all four years, regardless of a family's financial situation. There is no separate application process for the Presidential Scholarship. All admitted students will be considered by the scholars"
+    },
+    {
+      "id": 302,
+      "name": "University of Porto Merit Scholarships and Funding",
+      "source_url": "https://www.up.pt/portal/en/live/student-life/scholarships-and-funding",
+      "checked_at": "2026-10-02",
+      "evidence": "Page: 'Merit scholarships are awarded every year to the U.Porto students with the best academic results ... a cash prize for students enrolled in Bachelor's, Master's and Integrated Master's programmes'. SASUP scholarships are 'granted and renewed annually, with deadlines and application results published on the SASUP website' (https://www.sas.up.pt/), so no calendar date is published here - consi"
+    },
+    {
+      "id": 296,
+      "name": "International Visegrad Fund Scholarships — Czech Republic Host",
+      "source_url": "https://www.visegradfund.org/scholarships",
+      "checked_at": "2026-10-02",
+      "evidence": "The stored source page confirms 'Visegrad Scholarship Program - Opens Jan 1, 2027 ... supports Master's and post-Master's students and researchers for up to two semesters at institutions in Central and Eastern Europe', and links the apply page (https://www.visegradfund.org/visegrad-scholarship-program-apply) which states 'Opens on Jan 1, 2027 at 12:00 PM', 'Apr 15, 2027 at 12:00 PM: Final applicat"
+    },
+    {
+      "id": 291,
+      "name": "Visegrad Scholarship Programme — Poland Host Institution",
+      "source_url": "https://study.gov.pl/visegrad-scholarship-programme",
+      "checked_at": "2026-10-02",
+      "evidence": "The Polish official page (NAWA / study.gov.pl) itself publishes no date: 'The International Visegrad Fund offers Master and Post-Master scholarships awarded to selected students for 1 or 2 semesters (for MA scholarships within the In-Coming scheme 1- to 4-semester scholarships can be awarded) ... Further information is accessible on the Visegrad Fund website: http://visegradfund.org/scholarships/'"
     }
   ]
 }
