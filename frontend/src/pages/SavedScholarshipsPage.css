@@ -17,7 +17,7 @@
 .saved-scholarships-page__eyebrow {
   margin-bottom: var(--space-2);
   color: var(--sz-accent-text);
-  font-size: 0.6875rem;
+  font-size: var(--text-2xs);
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;

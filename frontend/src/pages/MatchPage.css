@@ -993,7 +993,7 @@
 /* ------------------------------------------------------------------ mobile */
 
 @media (max-width: 860px) {
-  .match-page { padding: var(--space-6) var(--space-4) var(--space-8); }
+  .match-page { padding: var(--space-6) var(--space-5) var(--space-8); }
 
   .match-card__header {
     grid-template-columns: 1fr;
@@ -1008,6 +1008,101 @@
     border-top: 1px solid var(--border);
   }
 }
+
+/* --------------------------------------------------------- phone (≤ 600px)
+
+   Match had exactly one breakpoint for a 39KB stylesheet, so everything
+   below 600px inherited a layout designed for a laptop. None of this touches
+   scoring, eligibility, confidence or readiness — it is the layout under the
+   scores.
+
+   The measurements this answers: at 390px the profile form's inputs were
+   12px (iOS zooms the page on focus), the filter and facet grids were
+   auto-fit over minmax(180px/140px/130px), which fits two or three across and
+   puts the reader in a two-column layout on a phone, and the component row was
+   `84px 1fr 34px` inside roughly 320px of card, leaving the component name
+   about 170px to break in. */
+
+@media (max-width: 600px) {
+  .match-page {
+    padding: var(--space-5) var(--space-4) var(--space-8);
+  }
+
+  /* The logo sits above the identity and the score spans the full width, so
+     the reader meets "which scholarship is this", then "how well does it
+     fit", in that order, at every phone width. */
+  .match-card__header {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .match-card__logo {
+    max-width: 96px;
+  }
+
+  .match-card__score {
+    padding-top: var(--space-4);
+  }
+
+  /* `84px 1fr 34px` is a track for a name, a bar and its number. On a phone
+     the name needs the room more than the bar does, so the name takes the
+     full width above and the bar keeps the number beside it. */
+  .match-component {
+    grid-template-columns: 1fr auto;
+    gap: var(--space-2) var(--space-3);
+  }
+
+  .match-component__name {
+    grid-column: 1 / -1;
+  }
+
+  /* Facet and filter grids. auto-fit over minmax(180px, 1fr) fits two
+     selects across 358px of content with 20px between them, which is the
+     dense two-column phone layout the brief asks to avoid and the reason the
+     filter panel read as a wall. One column, full width, 44px tall. */
+  .match-field-grid,
+  .match-filters__controls,
+  .match-components,
+  .match-summary__stats,
+  .match-result-summary__stats,
+  .match-result-summary__grid,
+  .match-card__explanation,
+  .how-calc__weights,
+  .how-calc__versions dl {
+    grid-template-columns: 1fr;
+  }
+
+  /* 44px, so the primary control on a result card is not a 30px target. */
+  .match-card__cta,
+  .match-card__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: var(--space-3) var(--space-4);
+  }
+
+  /* Both of these already wrap at 861px and above; the gap here is that the
+     label and the value could still land on one line and collide once the
+     card narrows further, so the row is given room to separate. */
+  .match-readiness__head,
+  .match-compare__head {
+    gap: var(--space-1) var(--space-3);
+  }
+
+  /* The gap list is `14px 1fr` — a marker and its sentence. That is already
+     the right shape; it only needed the marker kept on its own line so the
+     sentence starts at a consistent edge. */
+  .match-gaps li {
+    align-items: start;
+  }
+
+  .match-strength,
+  .match-strength__band {
+    padding: var(--space-4);
+  }
+}
+
 
 /* --------------------------------------------------------- reduced motion */
 

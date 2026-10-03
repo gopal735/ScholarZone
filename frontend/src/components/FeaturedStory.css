@@ -276,15 +276,15 @@
     display: none;
   }
 
+  /* These were a hidden horizontal scroller: overflow-x: auto with
+     scrollbar-width: none, so at 320px the tab strip was 702px wide inside a
+     265px column and the reader had no way to know two more tabs existed. A
+     tab strip is short labels, so it wraps instead. Every tab is now visible
+     and reachable without a sideways gesture inside the page. */
   .sz-story__tabs {
-    gap: var(--space-4);
-    overflow-x: auto;
+    flex-wrap: wrap;
+    gap: var(--space-2);
     justify-content: flex-start;
-    scrollbar-width: none;
-  }
-
-  .sz-story__tabs::-webkit-scrollbar {
-    display: none;
   }
 
   .sz-story__hint {

@@ -49,7 +49,7 @@
   display: block;
   margin-top: 12px;
   color: var(--sz-stone-light);
-  font-size: 0.6875rem;
+  font-size: var(--text-2xs);
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;

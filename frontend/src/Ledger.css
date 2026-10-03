@@ -13,39 +13,53 @@
    produce a fourth column. 4 columns needs 4x300 + 3x20 = 1260px. */
 .scholarships-page__content {
   max-width: 1680px;
-  padding-inline: clamp(16px, 2.2vw, 40px);
 }
 
+/* Gap is 20px, not 16. Sixteen is a table gutter; between cards it reads as
+   a seam rather than as separation, which is most of why a directory of
+   these looked crowded at every width. */
 .scholarship-grid {
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
-  gap: 16px;
+  gap: 20px;
 }
 
 @media (min-width: 1728px) {
   .scholarship-grid {
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 20px;
+    gap: 24px;
   }
 }
 
+/* Two columns only where two columns are still wide enough to hold a
+   scholarship name and its deadline without either wrapping into three
+   lines. Below that the card stacks rather than competing for width. */
 @media (max-width: 900px) {
   .scholarship-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
+    gap: 16px;
   }
 }
 
 @media (max-width: 560px) {
   .scholarship-grid {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 16px;
   }
 }
 
-/* ── Card density ────────────────────────────────────────────────────────
-   Measured at 1440: image 216 + header 164 + details 435 + footer 145 = 965.
-   The deadline row alone was 223 because the whole published sentence was
-   rendered with no clamp, while Location and Level sat at 52 each. */
+/* The card's own vertical rhythm.
+
+   This used to be three overlapping blocks — a header rule at 10/12/6, then
+   the same selector again at 12/14/8, then a footer at 4/10/6 overwritten by
+   another at 6/14/8 — with the winners arriving last. The result was a card
+   whose internal padding had been squeezed to 8px top and bottom and 14px
+   sides so that a 965px card would fit a row, and that squeeze is what read
+   as "packed".
+
+   The card is now padded from the space scale at one value per edge, with
+   room to breathe, and the height it gives back is spent on showing the
+   deadline and degree in full rather than on air. */
+
 .scholarship-grid .scholarship-card {
   border-radius: var(--radius-lg);
   box-shadow: none;
@@ -57,7 +71,7 @@
 }
 
 .scholarship-grid .scholarship-card .scholarship-image {
-  max-height: 120px;
+  max-height: 132px;
 }
 
 /* The shield row says "Verified official source" plus a date. The citation
@@ -69,24 +83,103 @@
 }
 
 .scholarship-grid .scholarship-card__header {
-  padding: 10px 12px 6px;
+  gap: var(--space-2);
+  padding: var(--space-5) var(--space-5) var(--space-4);
+}
+
+.scholarship-grid .scholarship-card__topline {
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+/* 17px, down from 15px. At 15px a card title in the display serif was
+   rendering at the same optical size as the metadata directly beneath it,
+   so the card had no hierarchy at all — the thing the mission calls a
+   weak hierarchy on every card. */
+.scholarship-grid .scholarship-card__header h2 {
+  font-size: 1.0625rem;
+  line-height: 1.32;
+  letter-spacing: -0.012em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+}
+
+.scholarship-grid .scholarship-card__details {
+  padding: 0 var(--space-5);
+  gap: 0;
+}
+
+.scholarship-grid .scholarship-card__detail {
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--sz-provenance-rule);
+  gap: var(--space-3);
+}
+
+.scholarship-grid .scholarship-card__detail:first-child {
+  border-top: 0;
+}
+
+/* The published deadline is a sentence, not a date. "27 February - 22 April
+   2026 (AY 2026-27 applications open)" is what the awarding body says, and
+   it used to be clamped to two lines with no ellipsis and no reveal — at
+   390px that silently discarded 19px of text on one record and 170px on
+   another, on the single row the mission ranks fourth in the card's
+   hierarchy (deadline / key condition).
+
+   The clamp is gone. The value wraps and is shown whole, and the height it
+   costs is bought back by letting the row use the card's full width once the
+   card is too narrow to carry a label and a value side by side. */
+.scholarship-grid .scholarship-card__detail dd,
+.scholarship-grid .scholarship-card__detail [class*='value'] {
+  min-width: 0;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
+/* Below this the card is narrower than a label plus a two-line value, and
+   the pair starts competing: "DEADLINE" held 62px and the value 178px at
+   390px. The label moves above its value, which returns the whole card
+   width to the sentence, and the row stops being a right-aligned baseline
+   pair that has to be read by scanning back and forth. */
+@media (max-width: 1180px) {
+  .scholarship-grid .scholarship-card__detail {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .scholarship-grid .scholarship-card__detail dd,
+  .scholarship-grid .scholarship-card__detail [class*='value'] {
+    text-align: left;
+  }
 }
 
 .scholarship-grid .scholarship-card__footer {
-  padding: 4px 10px 6px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5) var(--space-5);
+  margin-top: auto;
+  border-top: 1px solid var(--sz-provenance-rule);
+  background: transparent;
 }
 
-/* The footer stacks a 44px action row and a 45px button, so it costs 116px
-   for two controls. Side by side they cost the height of the taller one.
+/* The footer used to hold a 44px action row and a 45px button, which
+   stacked to 116px, and both children defaulted to a width that filled the
+   footer, which pushed it to 123px. Pinning the action group's width and
+   letting the button take the remainder puts them on one line.
 
-   Both children default to a width that fills the footer, which makes them
-   wrap and pushes the footer to 123px instead. Pinning the action group's
-   width and letting the button take the remainder is what actually puts them
-   on one line. */
+   The tap target used to be recovered with a `::after { inset: -12px }`
+   pseudo-element — twelve pixels of invisible overflow hanging off every
+   card in the directory, overlapping whatever sat next to it. The targets
+   are now genuinely 44px tall, which is the same guarantee without the
+   overlap. */
 .scholarship-grid .scholarship-card__footer > * {
   min-width: 0;
 }
@@ -102,78 +195,29 @@
   justify-content: center;
 }
 
-/* Actions sit inline rather than stacking, which is most of the footer's
-   116px. The tap target is restored with a pseudo-element rather than by
-   making the button large, so the row can stay short. */
 .scholarship-grid .scholarship-card__actions,
 .scholarship-grid .scholarship-card__footer > div {
   flex-direction: row;
-  gap: 4px;
+  gap: var(--space-2);
   align-items: center;
 }
 
-.scholarship-grid .scholarship-card__button,
-.scholarship-grid .scholarship-card__save {
-  position: relative;
-}
+/* Below this the card cannot hold the action group and the button side by
+   side. Measured at 320px: the footer was 231px, the Save/Compare group took
+   178px of it, and "View details" was left 34px wide and 60px tall — a
+   control with the aspect ratio of a bookmark. The button takes its own row
+   rather than sharing one it does not fit in.
 
-.scholarship-grid .scholarship-card__button::after,
-.scholarship-grid .scholarship-card__save::after {
-  content: '';
-  position: absolute;
-  inset: -12px;
-}
+   420px is the viewport at which the card is ~300px wide, which is the point
+   where the two children stop fitting. */
+@media (max-width: 420px) {
+  .scholarship-grid .scholarship-card__footer {
+    flex-wrap: wrap;
+  }
 
-.scholarship-grid .scholarship-card__header {
-  padding: 12px 14px 8px;
-  gap: var(--space-1);
-}
-
-.scholarship-grid .scholarship-card__header h2 {
-  font-size: 0.9375rem;
-  line-height: 1.333;
-  letter-spacing: -0.012em;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-  overflow: hidden;
-}
-
-.scholarship-grid .scholarship-card__details {
-  padding: 0 14px;
-  gap: 2px;
-}
-
-.scholarship-grid .scholarship-card__detail {
-  padding: 2px 0;
-  border-top: 1px solid var(--sz-provenance-rule);
-  gap: 8px;
-}
-
-.scholarship-grid .scholarship-card__detail:first-child {
-  border-top: 0;
-}
-
-/* The clamp that removes ~180px from every card. The full sentence stays in
-   the DOM and on the detail page; only the card preview is truncated. */
-.scholarship-grid .scholarship-card__detail dd,
-.scholarship-grid .scholarship-card__detail [class*="value"] {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-  overflow: hidden;
-  min-width: 0;
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-.scholarship-grid .scholarship-card__footer {
-  padding: 6px 14px 8px;
-  margin-top: auto;
-  border-top: 1px solid var(--sz-provenance-rule);
-  background: transparent;
+  .scholarship-grid .scholarship-card__footer > .scholarship-card__button {
+    flex: 1 1 100%;
+  }
 }
 
 /* ── The Provenance Rule ──────────────────────────────────────────────────
@@ -320,14 +364,40 @@ html.js-reveal .sz-reveal.is-in {
   left: -3%;
 }
 
+/* Three lines rather than two, and no mid-word cut.
+
+   The funding chip reads "Varies by consortium/programme" and the deadline
+   chip reads the published sentence. At two lines with overflow hidden and no
+   ellipsis, "Varies by consortium/programme" lost 124px of itself at 320px —
+   the text simply stopped, with nothing to indicate that it had. Three lines
+   fits the longest published deadline in the catalogue inside the chip's
+   58% cap, and the chips sit on the showcase card rather than in the flow, so
+   the extra line does not push page content around. */
 .sz-hero__chip-note,
 .sz-hero__chip-value {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
   overflow: hidden;
   overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
+/* The satellites are an overlay on a fixed-ratio showcase card. Once the
+   card is narrower than roughly two chip-widths the overlap stops reading as
+   a composition and starts reading as two labels fighting over the logo, so
+   below that width they stop being satellites and become a stacked pair. */
+@media (max-width: 560px) {
+  .sz-hero__chip,
+  .sz-hero__chip:not(.sz-hero__chip--deadline) {
+    position: static;
+    top: auto;
+    left: auto;
+    right: auto;
+    max-width: 100%;
+    margin-top: var(--space-2);
+  }
 }
 
 /* ── Country discovery ──────────────────────────────────────────────────
@@ -339,11 +409,16 @@ html.js-reveal .sz-reveal.is-in {
   gap: 6px;
 }
 
+/* 5px 9px produced a 30px chip — below the 44px touch guideline, on the one
+   control the directory offers a phone user for narrowing by country, degree
+   or funding. The chip grows here rather than being padded out afterwards with
+   a pseudo-element, so the tap target and the visible box are the same thing. */
 .sz-tag {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 5px 9px;
+  min-height: 44px;
+  padding: 10px 12px;
   border: 1px solid var(--sz-provenance-rule);
   border-radius: 2px;
   background: var(--surface);

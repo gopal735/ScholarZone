@@ -22,7 +22,7 @@
 .auth-page__eyebrow {
   margin-bottom: var(--space-3);
   color: var(--sz-accent-text);
-  font-size: 0.6875rem;
+  font-size: var(--text-2xs);
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -157,7 +157,7 @@
 
 .auth-form__label-row span {
   color: var(--text-faint);
-  font-size: 0.6875rem;
+  font-size: var(--text-2xs);
   font-weight: 700;
 }
 

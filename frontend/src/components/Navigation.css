@@ -197,12 +197,14 @@
 
 .nav-utility-link span {
   display: inline-grid;
-  min-width: 17px;
-  height: 17px;
+  min-width: 18px;
+  height: 18px;
   padding: 0 4px;
   place-items: center;
   color: var(--sz-accent-text);
-  font-size: 0.625rem;
+  /* The count pop sat at 10px. It is a number the reader is meant to notice
+     changing, and 10px tabular digits on a phone are not something you notice. */
+  font-size: var(--text-2xs);
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   background: var(--accent-soft);
@@ -471,11 +473,16 @@
     gap: var(--space-1);
   }
 
+  /* 0.6875rem here is 11px, which is where the nav labels came from: the
+     header was the largest single block of sub-12px text on the page. The
+     narrower 480px case gets tighter padding and a 12px label rather than a
+     smaller one — the row still fits, and the label is legible on a phone
+     for the first time. */
   .nav-links a,
   .nav-utility-link,
   .nav-sign-in {
     padding: var(--space-2) var(--space-1);
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
   }
 }
 

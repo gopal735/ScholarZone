@@ -13,6 +13,10 @@ import './theme.css'
 // Imported last so the density, provenance and motion layer wins over the
 // component defaults without every component having to know about it.
 import './Ledger.css'
+// Imported after Ledger.css because it corrects the density layer rather than
+// competing with it: one container, one type floor, one touch-target floor and
+// one wrapping policy for every page, applied once.
+import './styles/responsive.css'
 
 // The router has to agree with where the app is actually served. Vite sets
 // BASE_URL from the same `base` that rewrites every asset URL, so reading it

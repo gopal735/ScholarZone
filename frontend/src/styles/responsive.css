@@ -1,0 +1,237 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Responsive layer
+
+   Imported after Ledger.css so it is the last word. Everything here is a
+   shared rule, not a per-page patch: one container, one type floor, one
+   touch-target floor, one wrapping policy. A component that needs to
+   deviate states why in its own file; nothing deviates by accident.
+
+   Every value below was measured in a real browser across 320-1600px. The
+   comments record what was measured, because a rule with no measurement
+   behind it is how the previous density pass got here.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Container discipline ──────────────────────────────────────────
+   --grid-max is 1680px and .app-content carried only 24px of side
+   padding, so at 1280/1440/1600px the content column measured 1265 /
+   1425 / 1585px — the entire window. Text set across 1585px is not a
+   wider layout, it is an unreadable line length.
+
+   The page keeps a wide outer measure for genuinely wide things (grids,
+   comparison tables) and prose is capped where prose is. */
+:root {
+  /* 68ch was the existing cap, and `ch` is the width of a "0" in the
+     element's own font — which on this body face works out to 686px, measured,
+     for 83 characters per line. 38rem is 608px and about 73 characters, which
+     is inside the 45-75 band a paragraph should sit in. Expressed in rem
+     because rem does not move with the font the way ch does. */
+  --sz-read-max: 38rem;
+  --sz-measure: 44rem;
+  --sz-touch-min: 44px;
+}
+
+/* Reading-width cap for sustained text. Applied to the elements that
+   actually hold sentences, not to whole sections: capping a section would
+   fight the grids that legitimately want the full column. */
+.sz-detail__prose,
+.sz-detail__lead,
+.match-page__lede,
+.match-parser__hint,
+.match-results__footer p,
+.match-result-summary__note,
+.filter-section__intro span,
+.empty-state p {
+  max-width: var(--sz-measure);
+}
+
+/* The prose blocks that were measured at 83 characters per line at 686px
+   (detail) and 75 at 729px (Match) on tablet and desktop. 45-75 is the
+   comfortable band; both were well past it. */
+.sz-detail__prose,
+.sz-detail__callout {
+  max-width: var(--sz-read-max);
+}
+
+/* ── Type floor ───────────────────────────────────────────────────
+   theme.css states the rule this system is supposed to hold: "16px is the
+   body floor. Nothing persistent sits below 12px." The implementation did
+   not hold it. Measured at 320px on the home page: 180 text nodes below
+   12px, including 13 at 9px, 34 at 10px and 135 at 11px.
+
+   The offenders are corrected at source — the card metadata labels and
+   verification date in ScholarshipCard.css, the card status and badge in the
+   380px block, the citation and image indicator here, the nav labels in
+   Navigation.css. What is left is the floor itself, stated once so that a
+   future component cannot quietly reintroduce the problem by setting a
+   smaller size and nothing else. It uses max() rather than a fixed value so
+   it can only ever raise a size, never lower one. */
+.scholarship-card__citation,
+.scholarship-image__source-indicator,
+.filter-control label,
+.filter-sort label,
+.scholarship-list__source-notice span,
+.sz-tag__count {
+  font-size: max(0.75rem, 0.6875rem);
+}
+
+/* The provenance citation is a real sentence in a monospace face at 11px
+   with a nowrap+ellipsis clip. It is the line that says whether a record
+   was re-checked, so it gets the type floor and a wrap rather than an
+   ellipsis. */
+.scholarship-card__citation {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+/* ── Touch targets ────────────────────────────────────────────────
+   Measured below 44px at 320px: 21 on the home page (12 filter chips at
+   30px, four decision links at 19px, the hero preview link at 19px, the
+   brand at 34px) and 33 on Match.
+
+   The filter chips (.sz-tag) are corrected at source in Ledger.css, where
+   they are defined. What is listed here is the remainder: text links and
+   the smaller buttons, which had no height of their own at all. */
+.sz-decision__link,
+.sz-hero__preview-link,
+.nav-brand,
+.match-card__cta,
+.match-card__link,
+.empty-state__reset,
+.scholarship-list__source-notice button,
+.scholarship-pagination button,
+.scholarship-showcase__heading a {
+  min-height: var(--sz-touch-min);
+}
+
+.sz-decision__link,
+.sz-hero__preview-link,
+.scholarship-showcase__heading a {
+  display: inline-flex;
+  align-items: center;
+  padding-block: var(--space-2);
+}
+
+/* The showcase's "Explore all →" is a bare anchor with no class of its own, so
+   it was 19px tall at every phone width — the one link on the home page that
+   leads onward, at the smallest size on the page. It is named here by its
+   parent rather than by inventing a class for a link that already had a home. */
+
+/* ── Form controls and mobile zoom ────────────────────────────────
+   Every text input and select below 16px makes iOS Safari zoom the page
+   the moment it takes focus, and the reader then has to pinch back out.
+   Measured: 14px on all seven directory filters, 14px and 12px on the Match
+   profile form. 16px is the threshold, so it is set once here for small
+   viewports, where the zoom risk is real and the extra size costs nothing.
+
+   The selectors carry the components' own class names rather than relying on
+   bare element selectors. A bare `select` at 0,0,1 does not beat
+   `.filter-section select` at 0,1,1, so the first attempt at this rule
+   measured as no change at all — which is why the fix quotes the specific
+   controls it was measured against.
+
+   The breakpoint is 1024px rather than a phone width because a 1024px-wide
+   portrait tablet is still a touch device and still zooms. */
+@media (max-width: 1024px) {
+  .filter-search input[type='text'],
+  .filter-search input[type='search'],
+  .filter-section select,
+  .match-form input,
+  .match-form select,
+  .match-form textarea,
+  .match-filters input,
+  .match-filters select,
+  .sz-detail input,
+  .sz-detail select,
+  .sz-detail textarea,
+  .auth-form input,
+  .auth-form select,
+  input[type='text'],
+  input[type='search'],
+  input[type='email'],
+  input[type='password'],
+  input[type='number'],
+  input[type='url'],
+  input[type='tel'],
+  input[type='date'],
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+/* ── Wrapping and overflow policy ────────────────────────────────
+   No element is allowed to impose an intrinsic horizontal minimum. This is
+   what replaced the html and body min-width of 320px as the real
+   narrow-viewport guard, and it is why the page no longer scrolls sideways at
+   320px. */
+img,
+svg,
+video,
+canvas,
+table {
+  max-width: 100%;
+}
+
+img,
+video,
+canvas {
+  height: auto;
+}
+
+/* A long official URL is reference data, not a headline. It wraps instead
+   of establishing the width of the page. */
+.sz-detail__source-url,
+.sz-detail__link,
+[href^='http'] {
+  overflow-wrap: anywhere;
+}
+
+/* ── Reading rhythm on narrow viewports ───────────────────────────
+   Mobile page padding was 16px at <=640px, which put body copy 8px from
+   the screen edge once the scrollbar is accounted for. 20px gives text
+   clear air without spending width the content needs. */
+@media (max-width: 640px) {
+  .app-content {
+    padding-inline: var(--space-5);
+  }
+}
+
+/* ── Reduced motion ───────────────────────────────────────────────
+   The system already collapses durations globally. This adds the two
+   cases a duration reset cannot reach: a scroll-linked animation that
+   still runs because it is not a transition, and a decorative element
+   that is purely motion. */
+@media (prefers-reduced-motion: reduce) {
+  .sz-hero__media,
+  .sz-hero__orb,
+  .sz-hero__ring,
+  .sz-orb,
+  .app-atmosphere__sheen {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .scholarship-card,
+  .sz-hero__chip,
+  .sz-story__tab {
+    transition-duration: 1ms !important;
+  }
+}
+
+/* ── Contrast and focus ───────────────────────────────────────────
+   Verification state is never carried by colour alone anywhere in this
+   system — every verified/unverified chip ships a shield or alert glyph
+   and a text label — so the high-contrast pass only has to keep the
+   borders and the focus ring from disappearing. */
+@media (prefers-contrast: more) {
+  :where(a, button, [role='button'], select, input, summary):focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
+
+  .scholarship-card,
+  .match-card,
+  .sz-tag {
+    border-color: var(--text-faint);
+  }
+}

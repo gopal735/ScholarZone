@@ -42,18 +42,27 @@
 
 /* The page itself is a quiet, flat base. All atmosphere comes from the
    layered .app-atmosphere layer in Layout, never from a top-centre
-   "spotlight" gradient baked into body. */
+   "spotlight" gradient baked into body.
+
+   There is deliberately no min-width here. It used to be 320px on both html
+   and body, which reads as a guard against sub-320 layouts and is not one: a
+   classic (layout-consuming) scrollbar takes ~15px of the viewport, so at a
+   320px window the root box was forced to 320px inside a 305px content area
+   and the *whole page* scrolled sideways by 15px — measured on every route.
+   The real floor is that no element may impose an intrinsic minimum, which
+   is what the responsive layer enforces. */
 html {
-  min-width: 320px;
   min-height: 100%;
   background: var(--page-bg, var(--canvas));
 }
 
 body {
-  min-width: 320px;
   min-height: 100vh;
   margin: 0;
   background: var(--page-bg, var(--canvas));
+  /* Belt and braces against a single unbreakable token (a long URL, an
+     unbroken provider name) pushing the page wide. */
+  overflow-wrap: break-word;
 }
 
 body,

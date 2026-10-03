@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { countryImages, FALLBACK_IMAGE } from '../data/countryImages'
 import { countryThemes, defaultTheme } from '../data/countryThemes'
+import { fetchScholarships } from '../services/scholarshipService'
 import './CountryPage.css'
 import { CANONICAL_ORIGIN } from '../services/canonicalOrigin'
 
@@ -38,33 +39,52 @@ export default function CountryPage() {
   useEffect(() => {
     let cancelled = false
 
-    async function fetchCounts() {
-      try {
-        const results = await Promise.allSettled(
-          countryNames.map((name) =>
-            fetch(`/api/scholarships?country=${encodeURIComponent(name)}&limit=1`)
-              .then((r) => r.json())
-              .then((data) => ({ name, total: data?.pagination?.total ?? 0 }))
-              .catch(() => ({ name, total: 0 }))
-          )
-        )
+    // Bounded concurrency. This page needs one count per country, and it
+    // fired all of them at once — 38 parallel requests on the last count,
+    // which is what makes the country grid arrive slowly and then land in one
+    // burst. Six at a time matches the per-origin connection limit, so the
+    // browser is never asked to hold more open sockets than it can use, and
+    // the counts that arrive first can paint immediately instead of waiting
+    // on the slowest.
+    //
+    // The requests still go through fetchScholarships rather than a bare
+    // fetch('/api/...'): the literal path ignored VITE_API_BASE_URL, so this
+    // page was the one place that could not be pointed at another host.
+    const CONCURRENCY = 6
 
-        if (!cancelled) {
-          const map = {}
-          results.forEach((res) => {
-            if (res.status === 'fulfilled') {
-              map[res.value.name] = res.value.total
-            }
-          })
-          setCounts(map)
-          setLoading(false)
-        }
-      } catch {
-        if (!cancelled) {
-          setLoading(false)
+    async function fetchCounts() {
+      const counts = new Map()
+      let cursor = 0
+
+      async function worker() {
+        while (cursor < countryNames.length) {
+          const name = countryNames[cursor]
+          cursor += 1
+          try {
+            const data = await fetchScholarships({ country: name, limit: 1 })
+            counts.set(name, data?.pagination?.total ?? 0)
+          } catch {
+            counts.set(name, 0)
+          }
+          if (!cancelled) {
+            setCounts(Object.fromEntries(counts))
+          }
         }
       }
+
+      try {
+        await Promise.all(
+          Array.from({ length: Math.min(CONCURRENCY, countryNames.length) }, worker),
+        )
+      } catch {
+        // Individual failures are already recorded as zero above.
+      }
+
+      if (!cancelled) {
+        setLoading(false)
+      }
     }
+
     fetchCounts()
     return () => {
       cancelled = true

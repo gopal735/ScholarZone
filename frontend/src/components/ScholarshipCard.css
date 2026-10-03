@@ -240,7 +240,7 @@
 
 .scholarship-card__verification-date {
   color: var(--text-muted);
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
 }
@@ -264,12 +264,18 @@
   border-bottom: 1px solid var(--sz-glass-edge-soft);
 }
 
+/* 12px, not 11px. This is the label for every fact row on the card —
+   DEADLINE, LOCATION, LEVEL — in uppercase with added tracking, which is the
+   combination that needs the most size to stay readable, not the least. At
+   11px with 0.06em of tracking it was the loudest and least legible text on
+   the card. */
 .scholarship-card__details dt {
   flex: 0 0 auto;
   color: var(--text-muted);
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
   text-transform: uppercase;
 }
 
@@ -438,12 +444,16 @@
   }
 
   .scholarship-card__topline {
-    gap: var(--space-1);
+    gap: var(--space-2);
   }
 
-  .scholarship-card__badge,
-  .scholarship-card__status {
-    font-size: 0.625rem;
+  /* The badge and the status used to drop to 0.625rem — 10px — here, which is
+     the width at which a card stopped being scannable at all: the two chips
+     that carry funding and open/closed state became two grey smudges. The
+     topline wraps instead, so the chips keep their size instead of losing
+     their legibility. */
+  .scholarship-card__topline {
+    flex-wrap: wrap;
   }
 }
 

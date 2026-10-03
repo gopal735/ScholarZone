@@ -342,7 +342,7 @@
 
 .sz-trust-bar__item span {
   color: var(--sz-stone);
-  font-size: 0.6875rem;
+  font-size: var(--text-2xs);
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -402,7 +402,7 @@
   margin-bottom: 18px;
   color: var(--sz-stone);
   font-family: var(--sz-body);
-  font-size: 0.6875rem;
+  font-size: var(--text-2xs);
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -617,7 +617,7 @@
   display: block;
   margin-top: 12px;
   color: rgba(214, 196, 160, 0.82);
-  font-size: 0.6875rem;
+  font-size: var(--text-2xs);
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -666,8 +666,13 @@
   line-height: 1.1;
 }
 
+/* Centred prose needs an explicit measure. Centred text across the whole
+   content column measured 148 characters per line at a 1265px column and
+   1440px viewport, which is not a wide layout — it is a line the eye cannot
+   find the start of. The block stays centred; the measure is what changes. */
 .sz-cta-banner p {
-  margin-top: 16px;
+  max-width: 52ch;
+  margin: 16px auto 0;
   color: var(--sz-stone);
   font-size: 1rem;
   line-height: 1.6;
