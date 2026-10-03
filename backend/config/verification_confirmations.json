@@ -1,6 +1,6 @@
 {
   "note": "Records re-checked against the awarding body's own page on 2026-10-02. Each entry is an assertion that the live source still supports the stored record.",
-  "count": 101,
+  "count": 220,
   "records": [
     {
       "id": 477,
@@ -708,6 +708,839 @@
       "source_url": "https://www.fnr.lu/funding-instruments/afdoc",
       "checked_at": "2026-10-02",
       "evidence": "webfetch timed out twice on fnr.lu, so the page was read in the browser. Page header: 'DEADLINE: 25-11-2026 14:00 CET / 28-04-2027 14:00 CET' and 'CALL LAUNCH: SEPTEMBER 2026 (NOVEMBER DEADLINE); FEBRUARY 2027 (APRIL DEADLINE)'. Body: 'The very first call of the AFdoc funding scheme will be launched mid-September 2026, with a deadline on Wednesday, 25 November 2026 at 14:00 CET.' From 2027 there w"
+    },
+    {
+      "id": 210,
+      "name": "KAIST Scholarship (KAIST International Undergraduate Admission)",
+      "source_url": "https://admission.kaist.ac.kr/intl-undergraduate/support/scholarships/kaist",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Scholarship page reachable, no WAF. Degree confirmed - Eligibility: 'Applicants of International Student Admission'; requirement: 'We offer KAIST Scholarships to admitted students - Students must maintain GPA over 2.7 out of 4.3 at KAIST after their freshman year'. Funding published under 'Subsidies"
+    },
+    {
+      "id": 605,
+      "name": "ANU Vice-Chancellor's International Achievement Award",
+      "source_url": "https://study.anu.edu.au/scholarships/find-scholarship/anu-vice-chancellors-international-achievement-award",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Key scholarship details: 'Application period: Open for applications'; 'Value: 20% off your first-year tuition fees.'; 'Number of scholarships awarded: -'; 'Application requirement: No application is required for this scholarship as all eligible candidates will be considered.' Eligibility > Study lev"
+    },
+    {
+      "id": 621,
+      "name": "Rufford Small Grants Programme",
+      "source_url": "https://apply.ruffordsmallgrants.org/help/criteria",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Grants Available: 'There are no deadlines - you can apply at any time of year. You can only make one funding application in any 12-month period. If your application is rejected, you must wait 12 months before you can reapply. If you are funded, you cannot apply for further support for at least 12 mo"
+    },
+    {
+      "id": 575,
+      "name": "Young Leaders Program (YLP) - MEXT scholarship at National Graduate Institute for Policy Studies (GRIPS)",
+      "source_url": "https://www.grips.ac.jp/en/education/inter_programs/leader/",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: GRIPS YLP page: \"Degrees Offered: Master of Public Policy\"; \"Scholarship (for International Students Only) : Japanese Government (Ministry of Education, Culture, Sports, Science and Technology [MEXT])\"; \"Time Schedule: Program Duration...1 year, Enrollment...October, Graduation...September\". The YLP"
+    },
+    {
+      "id": 68,
+      "name": "Gates Cambridge Scholarship Programme",
+      "source_url": "https://www.gatescambridge.org/programme/the-scholarship",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: official_source_url confirms funding: \"A Gates Cambridge Scholarship covers the full cost of studying at Cambridge. It also provides additional discretionary funding.\" Core components: \"the University Composition Fee at the appropriate rate*\"; \"a maintenance allowance for a single student (GBP 23,15"
+    },
+    {
+      "id": 109,
+      "name": "SUTD PhD President's Graduate Fellowship (PGF)",
+      "source_url": "https://www.sutd.edu.sg/admissions/graduate/scholarship/sutd-graduate-fellowships-scholarships/",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: The stored record had official_source_url = null; the real provider page was located by navigating the live SUTD site (/admissions/graduate/ -> /admissions/graduate/scholarship -> this page). PGF block, verbatim: \"SUTD PhD President's Graduate Fellowship (PGF)\" / \"Open to all nationalities\" / \"Award"
+    },
+    {
+      "id": 236,
+      "name": "MEXT Scholarship for Undergraduate Students (Monbukagakusho)",
+      "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: The stored record had official_source_url = null and catalogue_url = null. The official provider page used is the Japanese government-approved Study in Japan site (JASSO/MEXT), which was reachable and is the official scheme description: \"as seen in the chart below, there are seven types of the Japan"
+    },
+    {
+      "id": 488,
+      "name": "JWU Global Full Tuition Scholarship",
+      "source_url": "https://www.jwu.edu/admissions-aid/cost-aid/scholarships-grants-loans/",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Scholarships, Grants & Loans page: \"Every student is automatically considered for JWU merit scholarships with no separate application required... Up to 100% of tuition is covered for eligible families from all U.S. states and territories with household incomes under $200k.\" The JWU Pledge page state"
+    },
+    {
+      "id": 442,
+      "name": "SMU Global Impact Scholarship Award",
+      "source_url": "https://admissions.smu.edu.sg/financial-aid/smu-global-impact-scholarship-award",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: BENEFITS section: \"Waiver of annual subsidized tuition fees for regular terms, (i.e. semesters 1 and 2), for up to 4 years, starting from Academic Year 2028-29. S$14,000 Global Learning Opportunities Worldwide (GLOW) grant... S$5,000 annual living allowance. S$1,800 one-time computer allowance upon "
+    },
+    {
+      "id": 344,
+      "name": "Nokia Foundation Fellow (ICT Research Project Funding)",
+      "source_url": "https://www.nokiafoundation.com/foundation-fellow",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: \"Amount of the grant is 75,000 euros, and the purpose is to finance hiring a doctoral or postdoctoral researcher to work on the project.\" \"Grants are available for projects carried out in Finnish universities.\" \"Each professor may submit one application per call.\" Deadline section: \"Call for applica"
+    },
+    {
+      "id": 345,
+      "name": "Jorma Ollila Grants (Recent Doctorates - International Experience)",
+      "source_url": "https://www.nokiafoundation.com/jorma-ollila-grants",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: The stored URL now resolves to an AWARDED-GRANTS ARCHIVE only - it lists past recipients by year from 2025 back to 2014 with awardee, home university, host institution, topic and grant amount (e.g. 2025: Djelouat Hamza, EUR 20,000; Petrus Mikkola, EUR 25,000; Yamac Mehmet, EUR 9,500). It publishes n"
+    },
+    {
+      "id": 74,
+      "name": "LSE Excellence Scholarship",
+      "source_url": "https://www.lse.ac.uk/study-at-lse/Graduate/fees-and-funding/LSE-Excellence-Scholarship",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: The record had no stored source URL; this is LSE's own official page, found via the LSE site and cross-listed on its 'Department or programme-specific funding' page. \"LSE Excellence Scholarships are prestigious awards for exceptional Postgraduate Taught students joining LSE in 2026.\" \"The the total "
+    },
+    {
+      "id": 151,
+      "name": "MOE Elite Scholarship for University Lecturers from South & Southeast Asia",
+      "source_url": "https://oia.tnua.edu.tw/en/news/moe-tnua-elite-scholarship-program-scholarship-for-lecturers-from-south-and-southeast-asia-%E6%96%B0%E5%8D%97%E5%90%91%E5%9F%B9%E8%8B%B1%E5%B0%88%E6%A1%88%E2%94%80%E6%95%99%E8%82%B2%E9%83%A8%E7%8D%8E",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: The record had no stored source URL. This programme is Taiwan's Ministry of Education Elite Scholarship Program (新南向培英專案), run through participating Taiwanese universities; the current-cycle official announcement used here is Taipei National University of the Arts (published 8 September 2026, for Fa"
+    },
+    {
+      "id": 336,
+      "name": "Tampere University Scholarships (Tuition Fee Waiver + International Advancement Scholarship)",
+      "source_url": "https://www.tuni.fi/en/tau/financial-matters/tuition-fees-and-scholarships",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: The record had no stored source URL. tampere.fi is the City of Tampere; the University of Tampere's own site is tuni.fi, and this is its official Tuition Fees and Scholarships page. \"Tuition fees at Tampere University range between EUR 10,000 and EUR 12,000 per academic year.\" \"Tampere University tu"
+    },
+    {
+      "id": 305,
+      "name": "Canada Graduate Research Scholarship – Master's (CGRS-M)",
+      "source_url": "https://sshrc-crsh.canada.ca/en/funding/opportunities/canada-graduate-research-scholarships/masters-program.aspx",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Page: '2026 / December 2026 Competition - Application deadline: December 1, 2026 (8:00 p.m. eastern) - Value and duration: $27,000 for 1 year'. Date modified 2026-09-18. Deadline, degree and country match the stored record. Stored funding 'Fully Funded' is NOT supported: the page states a flat $27,0"
+    },
+    {
+      "id": 297,
+      "name": "Masaryk University International Scholarships",
+      "source_url": "https://czs.muni.cz/en/student-from-abroad/other-possibilities/visegrad-grant",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Page states 'Annual deadline for applications: 15 March' and 'Scholarships are designed for students at the Master's or post-Master's level and are intended for study or research projects abroad.' Stored deadline 'Varies by faculty' and stored degree 'Bachelor's, Master's, PhD' are both contradicted"
+    },
+    {
+      "id": 288,
+      "name": "BME Scholarships",
+      "source_url": "https://www.bme.hu/en/scolarships",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: The stored official_source_url https://www.bme.hu/en/scholarships is the WRONG page - it is the International-menu 'Scholarships' page about studying ABROAD ('Are you looking for opportunities to study abroad? ... BME offers scholarships at over 350 universities across Europe'). The page that actual"
+    },
+    {
+      "id": 275,
+      "name": "BI Master International Scholarship – Bergen",
+      "source_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/master-of-science-international-scholarship--bergen",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Page: 'Application Deadline: Application deadline is March 1.' and 'Only candidates admitted to a Master of Science programme at campus Bergen commencing Autumn 2026 will be considered for this scholarship.' Stored funding 'Partial' is wrong - the page states FULL TUITION FEES for up to two years. T"
+    },
+    {
+      "id": 230,
+      "name": "DAAD Helmut-Schmidt-Programme (Master's Scholarships for Public Policy and Good Governance - PPGG)",
+      "source_url": "https://www.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026397",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Live 2027 cycle confirmed: PDF title 'Helmut-Schmidt-Programme Master's Scholarships for Public Policy and Good Governance 2027', footer 'ST42 Helmut-Schmidt-Programm - Stipendienausschreibung - 05/2026', 'FUNDED BY: Federal Foreign Office'. Deadline NOT PUBLISHED anywhere official: the DAAD databas"
+    },
+    {
+      "id": 388,
+      "name": "NWO Embassy Science Fellowship (ESF-NL) 2027",
+      "source_url": "https://www.nwo.nl/en/calls/embassy-science-fellowship-esf-nl-2027",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Timeline on the page: '2 July 2026 Informative webinar', '10 September 2026 before 14:00:00 CEST Deadline for proposals', 'October 2026 Assessment committee meeting', 'November 2026 Decision by the NWO Executive Board', '1 March 2027 Start period Fellowships', '29 February 2028 End period Fellowship"
+    },
+    {
+      "id": 395,
+      "name": "Radboud Scholarship Programme",
+      "source_url": "https://www.ru.nl/en/education/scholarships/radboud-scholarship-programme",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Page: 'You must have submitted your application in the online OSIRIS Application system on 31 January 2027 23:59 CET at the latest. Then, your application needs to be complete by 14 February 2027 23:59 CET at the latest. Please note that incomplete applications will not be considered for the scholar"
+    },
+    {
+      "id": 387,
+      "name": "Wageningen University Excellence Programme",
+      "source_url": "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Stored funding and deadline are confirmed verbatim: 'Components of the scholarship: A tuition fee waiver for the duration of the programme (24 months).' and 'MSc application deadline: Before 1 December 2026. Only MSc applications that have been submitted before this deadline will be assessed by the "
+    },
+    {
+      "id": 357,
+      "name": "Momentum MSCA Postdoctoral Fellowship",
+      "source_url": "https://momentummsca.mta.hu/application",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Application page: 'There is CURRENTLY NO OPEN CALL FOR APPLICATIONS for the Momentum MSCA Postdoctoral Fellowship Programme. Call 2 was open for application 1 December 2025 - 31 January 2026'. Call 1 closed 31 May 2025. Programme duration 1 January 2025 - 31 December 2029, so the programme is runnin"
+    },
+    {
+      "id": 175,
+      "name": "Erasmus University Rotterdam (EUR) - Holland Scholarship & Talent Programmes",
+      "source_url": "https://www.eur.nl/en/education/practical-matters/scholarships-grants",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Hub page now reads: 'The deadline for applications has passed. Information for 2027-2028 will be available in the autumn'. I also loaded all three pages of the EUR 'For students from abroad' scholarship list (/en/education/practical-matters/scholarships-grants/students-coming-rotterdam, ?page=1, ?pa"
+    },
+    {
+      "id": 165,
+      "name": "University of Innsbruck Scholarships for International Students",
+      "source_url": "https://www.uibk.ac.at/en/college-service-center/scholarships",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: SOURCE MISMATCH: the stored official_source_url is titled 'Performance-based and scientific theses scholarship - Universitaet Innsbruck' and is not an international-student scholarship page. It states: 'Applications for performance-based scholarships for the academic year 2024/25 can be submitted fr"
+    },
+    {
+      "id": 8,
+      "name": "France Excellence Charpak Scholarship Program",
+      "source_url": "https://www.inde.campusfrance.org/charpak-master-s-scholarship",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Parent page confirms four sub-programmes (Bachelor, Master, Summer Training, Exchange) for Indian students studying in France. Charpak Master sub-page BENEFITS: 'Monthly living allowance of 860 euros', 'Exemption of visa (if applying from India) and Campus France procedure fees'. TIMELINE: 'The resu"
+    },
+    {
+      "id": 15,
+      "name": "EPFL Master Excellence Fellowships",
+      "source_url": "https://www.epfl.ch/education/master/master-excellence-fellowships",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Page: 'These fellowships, worth CHF 10,000 per semester, are available to students who have obtained their Bachelor's degree at EPFL, as well as to those who have begun their university studies at another institution' - a stipend, so the stored 'Fully Funded' is wrong. Deadline: 'Important: New dead"
+    },
+    {
+      "id": 25,
+      "name": "JASSO Student Exchange Support Program",
+      "source_url": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/ukeire.html",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Page states 'Amount of Scholarship: Monthly stipend: 80,000 JPY' and 'Applications for the scholarship will be accepted only from Japanese school.' Students apply through the host Japanese institution, so no central deadline exists - JASSO says only 'Students must start the study-in-Japan program at"
+    },
+    {
+      "id": 57,
+      "name": "King-Morgridge Scholars Program",
+      "source_url": "https://kmsp.wisc.edu",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Programme page: 'UW-Madison International Admissions Information: APPLY HERE! Due: November 1, 2026' and 'Wisconsin Scholarship Hub (WiSH) KMSP Application Portal: APPLY HERE! Due: November 15, 2026. This application deadline is for the KMSP: Cohort 11 students who will begin studies at UW-Madison i"
+    },
+    {
+      "id": 90,
+      "name": "University of Waterloo International Student Entrance Scholarship",
+      "source_url": "https://uwaterloo.ca/future-students/financing/international-scholarships",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Page: 'New! $10,000 International Student Entrance Scholarship - International fee-paying students admitted to full-time, first-year degree studies will receive $10,000 for their first-year studies. No application is required.' and 'Do I need to apply for this scholarship? No, you don't need to appl"
+    },
+    {
+      "id": 127,
+      "name": "Princeton University Financial Aid (International)",
+      "source_url": "https://admission.princeton.edu/apply/international-students",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: International Students page: 'The full need of all admitted international students is met the same as it is for students from the United States... Students who qualify for financial aid will receive a grant, rather than a loan... Princeton does not offer academic or athletic merit scholarships.' Dea"
+    },
+    {
+      "id": 144,
+      "name": "MOFA Taiwan Scholarship",
+      "source_url": "https://www.mofa.gov.tw/cp.aspx?n=72",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: MOFA programme page (page 更新日期 2026-09-21): '申請日期：原則上於每年2月1日至3月31日之間' = application date, in principle between 1 February and 31 March every year; '申請人應於申請截止日前，檢附相關文件向我國派駐(或兼轄)其所屬國之駐外館處提出申請' = documents must be lodged with the Taiwan overseas mission before the closing date. Benefits: '受獎學生於先修華語期間，每"
+    },
+    {
+      "id": 156,
+      "name": "Alfred Werner Scholarship Programme - Swiss Chemical Society",
+      "source_url": "https://foundation.scg.ch/scholarships/werner-scholarship",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: SCS Foundation page: 'The scholarship amounts to CHF 36'000 (previously CHF 30'000).' and 'Next Call for Nominations - Master's Student Scholarships 2027-2029 - Submission deadline: Thursday, 25 March 2027.' The stored record said 'Not announced' and CHF 30'000; the SCS society page (scg.ch/componen"
+    },
+    {
+      "id": 157,
+      "name": "CERN Doctoral Student Programme",
+      "source_url": "https://careers.cern/jobs/tsc-doct/",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Record stored no source URL. The old computing-DSP page (home.cern/science/computing/doctoral-student-programme) now 404s; the live official pages are careers.cern. Open round: 'Doctoral Student Programme 2027-1', ref TSC-2027-1/DOCT, 'Before 16/10/2026 at 23:59 (Geneva Time)', ideal start date 01/0"
+    },
+    {
+      "id": 202,
+      "name": "RMIT Future Leaders Scholarship",
+      "source_url": "https://www.rmit.edu.au/scholarships/international-scholarships/future-leaders-scholarship",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Page: 'Provides students from India and the subcontinent with a 20% tuition fee reduction for eligible Bachelor and Masters programs that have received an offer from 2026.' Eligibility: 'be a citizen of India, Sri Lanka, Bangladesh, Bhutan, Nepal or Pakistan' and hold 'an offer letter to commence fr"
+    },
+    {
+      "id": 271,
+      "name": "University of Copenhagen Danish Government Scholarship",
+      "source_url": "https://www.ku.dk/studies/masters/application-and-admission/scholarships",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Page reached (official_source_url redirects to 'Scholarships for full degree students'). Quote: 'The University of Copenhagen offers a limited number of tuition waivers and grants through the Danish Government Scholarship programme... All non-EU/EEA applicants offered admission will automatically be"
+    },
+    {
+      "id": 325,
+      "name": "Czech Government Scholarship - Developing Countries for AY 2027/28",
+      "source_url": "https://study.fsv.cuni.cz/czech-government-scholarship-developing-countries-for-the-ay-2027-28",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Post dated 21. 8. 2026. Exact quote: 'For studies beginning in the academic year 2027/2028, the application deadline is September 30, 2026.' Funding quote: 'Applicants from developing countries may apply for a Czech Government Scholarship - Developing Countries that fully covers tuition fees of sele"
+    },
+    {
+      "id": 327,
+      "name": "Visegrad Scholarship Program 2027",
+      "source_url": "https://www.visegradfund.org/visegrad-scholarship-program-apply",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Timeline block, exact: 'Jan 1, 2027 at 12:00 PM: Call opens / Apr 15, 2027 at 12:00 PM: Final application deadline / May 31, 2027 at 12:00 PM: Results announced'. Funding quote: 'The amount of the support is EUR 3,500/semester for scholar + EUR 2,000/semester for the host institution.' 'Study/resear"
+    },
+    {
+      "id": 382,
+      "name": "VU Fellowship Programme (VUFP)",
+      "source_url": "https://vu.nl/en/education/more-about/incoming-master-scholarships",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: 'Call to apply: 1st November 2026' and 'Applications are welcome from November 1st 2026'. Procedure: 'Step 1: Register for a Master's programme (from 1 October 2026)... Advised deadline Master's programme application: 1 December 2026'. 'Step 2: Submit VUFP application (from 1 November 2026)... Deadl"
+    },
+    {
+      "id": 10,
+      "name": "Deutschlandstipendium (Germany Scholarship)",
+      "source_url": "https://www.deutschlandstipendium.de/deutschlandstipendium/de/stipendium/wie-es-funktioniert/wie-es-funktioniert.html",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Stored official_source_url (https://www.deutschlandstipendium.de) loaded but is only the programme homepage and carries no amount or deadline, so I also fetched the official 'Wie es funktioniert' page. Exact quote: 'Sie erhalten 300 Euro monatlich - die Haelfte vom Bund und die andere Haelfte von pr"
+    },
+    {
+      "id": 13,
+      "name": "POSCO TJ Park Foundation Global Scholarship",
+      "source_url": "https://www.postf.org/en/asia/abroad/business",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: The stored official_source_url (https://www.postf.org/en/asia/purpose) loads fine but is only a mission statement - it names three initiatives and gives no award amount and no deadline, so it cannot verify this record. I used the official programme page instead: https://www.postf.org/en/asia/abroad/"
+    },
+    {
+      "id": 18,
+      "name": "Marie Sklodowska-Curie Actions (MSCA) Doctoral Networks",
+      "source_url": "https://marie-sklodowska-curie-actions.ec.europa.eu/actions/doctoral-networks",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Page reached, 'Last updated: 29 September 2026'. Funding quote: 'The EU provides support for each recruited researcher in the form of a living allowance, a mobility allowance, if applicable, family, long-term leave and special needs allowances. In addition, funding is provided for research, training"
+    },
+    {
+      "id": 23,
+      "name": "DAAD Development-Related Postgraduate Courses (EPOS)",
+      "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Value quote: 'Depending on academic level, monthly payments of 992 euros for graduates or 1,300 euros (1,400 euros beginning with February 2026) for doctoral candidates', plus 'Payments towards health, accident and personal liability insurance cover' and 'Travel allowance, unless these expenses are "
+    },
+    {
+      "id": 21,
+      "name": "DAAD Study Scholarships - Master Studies for All Academic Disciplines",
+      "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Page title 'Study Scholarships - Master Studies for All Academic Disciplines - DAAD', funded by the Federal Foreign Office. Value: 'Scholarship payments of 992 euros a month', 'Annually study allowance of EUR 460', plus insurance payments and a travel allowance; 'the scholarship is intended for visi"
+    },
+    {
+      "id": 53,
+      "name": "Hubert H. Humphrey Fellowship Program",
+      "source_url": "https://www.humphreyfellowship.org",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Stored official_source_url (homepage) loaded, plus the official sub-pages /how-to-apply/, /how-to-apply/u-s-embassies-commissions/ and /how-to-apply/fellowship-components/. Degree quote: 'The Humphrey Fellowship is a non-degree program.' and Academic Enrichment: fellows 'learn from renowned faculty "
+    },
+    {
+      "id": 55,
+      "name": "American University Emerging Global Leader Scholarship",
+      "source_url": "https://www.american.edu/admissions/international/au-egls-apply.cfm",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Deadline quote, two-step: 'Step 1: Applicants who wish to be considered for our AU EGLS awards must first submit their Common application and all supporting documents before January 15, 2027.' 'Step 2: Submit the AU EGLS application and essays via your applicant portal by the required January 15, 20"
+    },
+    {
+      "id": 240,
+      "name": "JASSO Reservation Program for Monbukagakusho Honors Scholarship by Pre-arrival Admission",
+      "source_url": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/yoyaku_tonichimae.html",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: This record stored NO official_source_url and NO official_source, so I located the programme's real official page via the JASSO site navigation and used https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/yoyaku_tonichimae.html (titled 'Reservation Program for Monbukagakusho Honors Scholarship"
+    },
+    {
+      "id": 268,
+      "name": "Danish Government Scholarship for Highly Qualified Non-EU/EEA Students",
+      "source_url": "https://studyindenmark.dk/study-options/scholarships",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: This record stored NO official_source_url and NO official_source, so I searched for the national official page and used https://studyindenmark.dk/study-options/scholarships - the official national portal, which states 'Studyindenmark.dk is managed by the Danish Ministry of Science, Higher Education "
+    },
+    {
+      "id": 16,
+      "name": "Marie Sklodowska-Curie Actions (MSCA) Postdoctoral Fellowships",
+      "source_url": "https://marie-sklodowska-curie-actions.ec.europa.eu/actions/postdoctoral-fellowships",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: This record stored NO official_source_url and NO official_source, so I located the programme's real official page myself: https://marie-sklodowska-curie-actions.ec.europa.eu/actions/postdoctoral-fellowships (reached from the MSCA footer on the Doctoral Networks page I had already verified), page 'La"
+    },
+    {
+      "id": 34,
+      "name": "Taiwan Scholarship Program",
+      "source_url": "https://taiwanscholarship.moe.gov.tw/web/pages.aspx?p=7",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: This record stored NO official_source_url and NO official_source, so I located the programme's real official page myself: the Taiwan Scholarship and Huayu Enrichment Scholarship Program site, https://taiwanscholarship.moe.gov.tw/web/index.aspx (note: the path https://taiwanscholarship.moe.gov.tw/en/"
+    },
+    {
+      "id": 87,
+      "name": "McMaster University Award of Excellence (International)",
+      "source_url": "https://future.mcmaster.ca/internationalawards",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Page: \"Application opens: November 1st, 2026\" and \"Application deadline: February 19, 2027 at 11:59 p.m. ET.\" Award value: \"Up to $200,000* over four years.\" STORED DEADLINE WAS STALE: 'February 19, 2026' is in the past and wrong by one year. The page still carries a stale faculty-level line under F"
+    },
+    {
+      "id": 97,
+      "name": "Barcelona School of Economics (BSE) Master's Scholarships",
+      "source_url": "https://bse.eu/masters-degrees/admissions",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Page: \"Candidates who submit a completed application before January 15 will be considered for all funding opportunities. Those who apply after that date will be considered for any remaining available funding.\" FAQ: \"Candidates who wish to be considered for financial aid are advised to apply during t"
+    },
+    {
+      "id": 98,
+      "name": "IE University – Master's Awards & Scholarships",
+      "source_url": "https://www.ie.edu/financial-aid/masters/",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: NO SOURCE URL AND NO CATALOGUE URL WERE STORED; official page located and used: https://www.ie.edu/financial-aid/masters/ (the page it links to for awards, https://www.ie.edu/financial-aid/masters-awardsandscholarships/, returns 404 on repeated attempts). Page: \"Direct Awards — Each student is autom"
+    },
+    {
+      "id": 106,
+      "name": "NTU Nanyang Global Scholarship",
+      "source_url": "https://www.ntu.edu.sg/admissions/undergraduate/scholarships/scholarship-opportunities/detail/nanyang-scholarship",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Page publishes NO calendar date: \"The scholarship application period is the same as the admission application period. Applications submitted after the closing date will not be considered.\" and (Year 12 equivalent applicants) \"Click here to apply for the scholarship with your assigned application num"
+    },
+    {
+      "id": 107,
+      "name": "NTU Nanyang President's Graduate Scholarship (NPGS)",
+      "source_url": "https://www.ntu.edu.sg/admissions/graduate/financialmatters/scholarships/npgs",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: NO SOURCE URL AND NO CATALOGUE URL WERE STORED; official page located and used: https://www.ntu.edu.sg/admissions/graduate/financialmatters/scholarships/npgs. DEGREE IS WRONG IN THE STORE — page says the scheme is \"designed to encourage outstanding graduates or final-year students to take their firs"
+    },
+    {
+      "id": 120,
+      "name": "Alan and Jane Handler Endowed Scholarship — University of Rochester",
+      "source_url": "https://admissions.rochester.edu/handler-scholarship",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Page: \"All University of Rochester first-year applicants are reviewed for the Handler Scholarship simply by submitting an application and completing necessary financial aid documents; no additional materials are required. The application does not have to be submitted as Early Decision, but should be"
+    },
+    {
+      "id": 135,
+      "name": "Politecnico di Milano — Merit Based International Scholarships",
+      "source_url": "https://www.polimi.it/en/prospective-students/how-much-does-it-cost/scholarships",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: NO SOURCE URL AND NO CATALOGUE URL WERE STORED; official page located and used: https://www.polimi.it/en/prospective-students/how-much-does-it-cost/scholarships (reached via redirect from /en/prospective-students/scholarships; the call PDF is at https://www.polimi.it/fileadmin/user_upload/futuri_stu"
+    },
+    {
+      "id": 136,
+      "name": "University of Padua — Padua International Excellence Scholarship",
+      "source_url": "https://www.unipd.it/padua-international-excellence-scholarship-programme",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: NO SOURCE URL AND NO CATALOGUE URL WERE STORED; located via the university's own hub page https://www.unipd.it/borse-studio-agevolazioni-studenti-internazionali -> dedicated page used above. (Note: the guessed English URLs /en/study-at-unipd/fees-scholarships/... and /en/admissions/merit-based-schol"
+    },
+    {
+      "id": 139,
+      "name": "Bocconi University — ISU Bocconi Scholarship / Bocconi4Access to Education",
+      "source_url": "https://www.unibocconi.it/en/applying-bocconi/bachelor-and-law-programs/funding/isu-bocconi-scholarship-first-year-students-ay-2027-28",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: NO SOURCE URL AND NO CATALOGUE URL WERE STORED; official page located and used (note the Bocconi domain moved: unibocconi.eu redirects to www.unibocconi.it). Page: \"To apply for the 'ISU Bocconi Scholarship a.y. 2027-2028', the enrollment, economic and merit requirements listed below must be met.\" \""
+    },
+    {
+      "id": 153,
+      "name": "UNIL Master's Scholarship — University of Lausanne",
+      "source_url": "https://www.unil.ch/unil/en/home/menuinst/etudier/mobilite-et-echange/etudiantes-et-etudiants-internationaux/etudiantes-internationaux-reguliers/bourse-de-master.html",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Page: \"The online application for the academic year 2027/2028 is open. The deadline is 1 November 2026.\" Selection Deadline section: \"1 November: Application deadline.\" Also \"Deadline for online registration: November 1\"; recommendation letters \"Deadline: November 1\"; certified true copies \"Deadline"
+    },
+    {
+      "id": 154,
+      "name": "University of St.Gallen (HSG) Excellence Scholarships for Bachelor Students",
+      "source_url": "https://funding.unisg.ch/en/programmes/1441",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: NO SOURCE URL AND NO CATALOGUE URL WERE STORED; official page located and used: https://funding.unisg.ch/en/programmes/1441 (HSG funding database entry 'Excellence Scholarships for Bachelor-Students'; the parent page https://www.unisg.ch/en/studying/orientation/advice-and-support/financing-your-stud"
+    },
+    {
+      "id": 158,
+      "name": "CERN Research Fellowship",
+      "source_url": "https://careers.cern/programmes/research-fellowship/",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: NO SOURCE URL AND NO CATALOGUE URL WERE STORED; official page located and used. The historic portal fellowships.cern.ch no longer resolves (DNS ERR_NAME_NOT_RESOLVED) and jobs.cern.ch does not resolve either; the live official portal is careers.cern, reached via https://careers.cern/programmes/ -> h"
+    },
+    {
+      "id": 161,
+      "name": "WIPO Fellowship Program",
+      "source_url": "https://www.wipo.int/en/web/working-at-wipo/fellowship-program",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: NO SOURCE URL AND NO CATALOGUE URL WERE STORED; official page located and used: https://www.wipo.int/en/web/working-at-wipo/fellowship-program (the obvious paths wipo.int/fellowships/en/ and wipo.int/wipo_mba/en/fellowships/ both return 404). Page: \"Location: Geneva, Switzerland; Duration: 12 - 36 m"
+    },
+    {
+      "id": 180,
+      "name": "Maastricht University Holland High Potential Scholarship",
+      "source_url": "https://www.maastrichtuniversity.nl/scholarships",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: UM overview table row: \"UM NL-High Potential Scholarship | Master | Participating master's programmes | Non-EU/EEA | Applications open: 1 October 2026 until 1 February 2027 23:59 CET | Complete admission application deadline for the study programme: 10 December\". Stored deadline \"Applications are op"
+    },
+    {
+      "id": 193,
+      "name": "Adelaide Academic Excellence Scholarship (50%)",
+      "source_url": "https://adelaide.edu.au/study/scholarships/int/adelaide-academic-excellence-scholarship-50",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Page: \"The Adelaide Academic Excellence Scholarship offers a 50% tuition fee reduction and is a prestigious, highly competitive award with limited places for students with a high distinction average.\" Level of study listed as \"Undergraduate, Postgraduate\". Under How to apply: \"Applications open from"
+    },
+    {
+      "id": 220,
+      "name": "ISTA PhD Program",
+      "source_url": "https://phd.ista.ac.at/at-a-glance",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Page banner now reads: \"2027 APPLICATIONS / PhD Call 2027 open: late October - January / Application deadline:  January 8, 2027\". The stored deadline '08 January 2026 (for September 2026 start)' was the previous cycle and is superseded by the 2027 call. Funding text confirms the stored value: \"PhD s"
+    },
+    {
+      "id": 231,
+      "name": "DAAD Postgraduate Studies in the Field of Architecture",
+      "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135744",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Page is reachable but publishes NO day-level deadline. Section 'Application deadline' reads verbatim and in full: \"Application deadlines are updated at least once a year. In most cases, they are in the same period as the previous year. You can find the current dates here:\" - the sentence ends with a"
+    },
+    {
+      "id": 233,
+      "name": "DAAD Postgraduate Studies in the Field of Music",
+      "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135743",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Page reachable but publishes NO day-level deadline. Section 'Application deadline' reads: \"Application deadlines are updated at least once a year. In most cases, they are in the same period as the previous year. You can find the current dates here:\" with no date following. Portal status: \"Currently "
+    },
+    {
+      "id": 234,
+      "name": "DAAD Postgraduate Studies in the Field of Performing Arts",
+      "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50109971",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Page reachable but publishes NO day-level deadline. Section 'Application deadline' reads: \"Application deadlines are updated at least once a year. In most cases, they are in the same period as the previous year. You can find the current dates here:\" with no date following. Portal status: \"Currently "
+    },
+    {
+      "id": 252,
+      "name": "Trinity College Dublin Global Excellence Postgraduate Scholarship",
+      "source_url": "https://www.tcd.ie/study/international/scholarships/postgraduate/gexpg.php",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Page reachable, footer shows \"Updated 3 June 2026\". Funding confirmed verbatim: \"Scholarships range in value between €2,000 and €5,000 depending on the region. Scholarships are applied as a one-time reduction to the tuition fees of a full-time postgraduate taught programme.\" Degree confirmed: awards"
+    },
+    {
+      "id": 254,
+      "name": "Manaaki New Zealand Scholarships",
+      "source_url": "https://www.nzscholarships.govt.nz",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Site reachable; checked the homepage plus /international-tertiary-students/ and /how-to-apply-for-a-scholarship/. The tertiary programme page now states plainly: \"Tertiary applications for the Manaaki New Zealand Scholarship Programme have now closed.\" No new application deadline for the main Manaak"
+    },
+    {
+      "id": 255,
+      "name": "University of Auckland International Student Excellence Scholarship",
+      "source_url": "https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/university-of-auckland-international-student-excellence-scholarship-844-all.html",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Page reachable. Key facts verbatim: \"Eligible new international Master's students who receive a conditional or unconditional programme offer for Semester One or Quarter Two 2027 by 20 October 2026 will be invited to apply for this scholarship.\" \"Application status: No application required\", \"Applica"
+    },
+    {
+      "id": 260,
+      "name": "VUW Postgraduate International Scholarship (Victoria University of Wellington)",
+      "source_url": "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: DEADLINE FIELD IS NOT A DEADLINE. Page reachable; the 'Closing date(s)' field reads verbatim: \"Same as the programme application closing date\" - i.e. no fixed scholarship date exists. This matches the stored text 'Automatic with admission - assessed at point of offer' and is consistent with the sele"
+    },
+    {
+      "id": 200,
+      "name": "UTS Vice-Chancellor's International Undergraduate Scholarship",
+      "source_url": "https://www.uts.edu.au/for-students/admissions-entry/scholarships/scholarships-search/uts-vice-chancellors-international-undergraduate-scholarship",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: NO SOURCE URL WAS STORED ON THIS RECORD; official page located and used (reached via /for-students/admissions-entry/scholarships/international, which lists it as 'UTS Vice-Chancellor's International Undergraduate Scholarship - Full tuition scholarship for the standard course duration'). DEADLINE COR"
+    },
+    {
+      "id": 218,
+      "name": "One World Scholarship Programme",
+      "source_url": "https://aai-salzburg.at/en/studies/apply",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Programme page (https://aai-salzburg.at/en/studies/one-world-scholarship) and the official Apply page both reachable. THE CURRENT ROUND HAS CLOSED - Apply page states verbatim: 'The call for applications for the October 2026 intake is closed. The next call is supposed to open in June 2027.' The stor"
+    },
+    {
+      "id": 244,
+      "name": "Chinese Government Scholarship - Tsinghua University Program (Type B)",
+      "source_url": "https://yz.tsinghua.edu.cn/en/info/1027/1117.htm",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Page reachable. IT IS STILL THE 2026 CYCLE PAGE AND THAT CYCLE HAS ELAPSED: the page title is '2026 Chinese Government Scholarship-THU Graduate Admissions for International Students' and it carries the publication stamp '21 2025.11'. No 2027 announcement is published. The only timing guidance is a r"
+    },
+    {
+      "id": 263,
+      "name": "Aalto University Excellence Scholarship",
+      "source_url": "https://www.aalto.fi/en/admission-services/scholarships-and-tuition-fees",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: NO SOURCE URL WAS STORED ON THIS RECORD; official page located and used (https://www.aalto.fi/en/admission-services/scholarships-and-tuition-fees, page updated 30.9.2026). DEADLINE FIELD IS POLLUTED: the stored value 'Application period ends; application form closes. Application form must be submitt"
+    },
+    {
+      "id": 117,
+      "name": "IIT Hyderabad FIRST Fellowship (Fully-funded International Research Scholars in Technology)",
+      "source_url": "https://ir.iith.ac.in/#/intadm",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: The stored URL https://ir.iith.ac.in/ is a JavaScript-only app that renders an empty shell to a plain fetch, so the official International Admissions route was used instead: https://ir.iith.ac.in/#/intadm. That page carries the live call, verbatim: 'FELLOWSHIP FOR INTERNATIONAL RESEARCH SCHOLARS IN "
+    },
+    {
+      "id": 169,
+      "name": "CEU Scholarships (Central European University) - Vienna",
+      "source_url": "https://www.ceu.edu/admissions/financial-aid/student-scholarships",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Page reachable, titled 'Scholarships Funded by CEU Supporters'. DEADLINE CORRECTED: the stored 'Typically January-February for Fall intake' does not appear on the page and is not what CEU publishes. The operative date is verbatim: 'applications for this scholarship will be open only to those candida"
+    },
+    {
+      "id": 294,
+      "name": "Czech Government Scholarships â€” Developing Countries (AY 2026/27)",
+      "source_url": "https://msmt.gov.cz/eu-a-zahranici/studium-cizincu-v-cr/stipendia-vlady-cr-rozvojove-zeme-2",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: STORED URL IS DEAD: https://msmt.gov.cz/agentury/zan-podminkach/53862-ramec-vladni-stipendium-pro-rozvojove-zeme now renders 'Stránka nenalezena' (page not found); MŠMT has been rebuilt on a new URL structure. Real current official page found via https://msmt.gov.cz/eu-a-zahranici/studium-cizincu-v-"
+    },
+    {
+      "id": 274,
+      "name": "BI Presidential Scholarship",
+      "source_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-presidential-scholarships",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Page states: 'The application deadline is March 1.' (no year given on the page) and 'Only candidates admitted to a master's programme commencing in Autumn 2026 will be considered for this scholarship.' so the published cycle closed 1 March 2026. Funding quote: 'Scholarships will cover full tuition f"
+    },
+    {
+      "id": 64,
+      "name": "University of Oregon International Cultural Service Program",
+      "source_url": "https://isss.uoregon.edu/icsp",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Stored deadline 'Not announced for next cycle' is now WRONG - the page publishes: 'Application Deadline: February 1, 2027 at 4:00 p.m. (PST)'. Funding quotes: 'ICSP recipients receive a scholarship covering approximately half their tuition' and 'Selected ICSP students are granted a partial tuition-w"
+    },
+    {
+      "id": 39,
+      "name": "Pearson International Scholarship (University of Toronto)",
+      "source_url": "https://future.utoronto.ca/pearson",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Specific 2026 deadlines now published. 'Important dates and deadlines': School nomination deadline: October 9, 2026; Student OUAC admission application deadline: October 16, 2026; Student scholarship application deadline and documentation submission deadline: November 6, 2026. Nomination forms issue"
+    },
+    {
+      "id": 168,
+      "name": "Erasmus Mundus Joint Master Degrees - Austria-based",
+      "source_url": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Stored URL /scholarships/emjmd-catalogue_en now redirects to the canonical https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en (page loads, HTTP 200). Catalogue lists 218 projects with filterable Country list including Austria, and Duration/credits options 12/18/24 months (60/90/"
+    },
+    {
+      "id": 3,
+      "name": "DAAD Scholarship",
+      "source_url": "https://www.daad.de",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: https://www.daad.de loads (HTTP 200) but is the organisational home page - it contains NO programme-level funding, deadline or degree data, only links such as 'Offene Stipendien' (/de/in-deutschland-studieren/stipendien/). There is no single programme called 'DAAD Scholarship'; the real catalogue is"
+    },
+    {
+      "id": 261,
+      "name": "VUW Undergraduate International Scholarship (Victoria University of Wellington)",
+      "source_url": "https://www.wgtn.ac.nz/international/scholarships-fees/scholarships",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Landing page https://www.wgtn.ac.nz/international/scholarships-fees/scholarships loads and confirms the programme exists and is current: 'This scholarship is for all new international students who are entering their first year of a Bachelor's degree programme and studying full-time on campus.' Exact"
+    },
+    {
+      "id": 20,
+      "name": "France Excellence Major Scholarship",
+      "source_url": "https://www.campusfrance.org/en/bursaries-foreign-students",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: WRONG SOURCE STORED. The stored official_source_url https://aefe.gouv.fr/fr/scolarite/aide-la-scolarite-par-des-bourses-scolaires loads (HTTP 200) but is the WRONG programme: it is AEFE tuition-fee aid for French-national children educated abroad. Quote: 'Apporter une aide a la scolarite au benefice"
+    },
+    {
+      "id": 121,
+      "name": "Berea College Tuition Promise Scholarship",
+      "source_url": "https://www.berea.edu/admissions",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: DEADLINES ARE WRONG IN THE STORED RECORD. The official admissions page states: 'Berea College has multiple application deadlines for first-year domestic students: Early Action I: November 1, Early Action II: January 31, Regular Decision: March 31' - not the stored 'October 15 (Early Action), January"
+    },
+    {
+      "id": 69,
+      "name": "Cambridge Trust International Scholarship",
+      "source_url": "https://www.cambridgetrust.org/postgraduate-applicants/",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: FUNDING, DEGREE AND COUNTRY ALL CONFIRMED - the stored 'Partial to Full' and 'Master's, PhD' are correct and the stored deadline text is CORRECT but is not a date, so deadline is null. Exact quotes from https://www.cambridgetrust.org/postgraduate-applicants/ : 'Meeting the deadline - Your admissions"
+    },
+    {
+      "id": 40,
+      "name": "ARES Scholarships (Belgium)",
+      "source_url": "https://www.ares-ac.be/en/scholarships",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: STORED URL IS DEAD: https://www.ares-ac.be/en/cooperation-au-developpement/bourses returns HTTP 404 'Page introuvable | ARES' - the site was rebuilt. Real page found at https://www.ares-ac.be/en/scholarships (title 'International Training Scholarships'). Page states: 'The 2027-2028 scholarship call "
+    },
+    {
+      "id": 41,
+      "name": "AECID Spanish Government Scholarship",
+      "source_url": "https://www.aecid.es/es/becas-para-ciudadanos-de-paises-de-america-latina-africa-y-asia",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Stored URL https://www.aecid.es/es/becas-y-lectorados is only the announcements listing. The live call page is /es/becas-lectorados -> 'Becas para ciudadanos de paises de America Latina, Africa y Asia', 'Convocatoria 2026/2027' (page modified 06/07/2026). No single deadline is published for the gene"
+    },
+    {
+      "id": 84,
+      "name": "UBC International Major Entrance Scholarship (IMES)",
+      "source_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: 'For the 2026/2027 academic year, IMES awards will be valued at $10,000 - $25,000/year.' Eligibility bullet: 'Apply to UBC by the admissions deadline.' The dates-and-deadlines page (https://you.ubc.ca/applying-ubc/dates-deadlines/) gives 'January 15, 2027 (11:59 p.m. PST) - Applications due' and 'Ea"
+    },
+    {
+      "id": 251,
+      "name": "Trinity College Dublin Global Excellence Undergraduate Scholarship",
+      "source_url": "https://www.tcd.ie/study/international/scholarships/undergraduate/geug.php",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: 'Scholarships range in value between EUR 2,000 and EUR 5,000 depending on the region. Scholarships are applied as a reduction to the year one tuition fees' for academic year 2026/2027. Timelines, now with explicit years: 'Africa: 1 May 2026 / Central, North and South America: 1 April 2026 / South Ea"
+    },
+    {
+      "id": 110,
+      "name": "QUAD STEM Scholarship Scheme (ICCR)",
+      "source_url": "https://a2ascholarships.iccr.gov.in/scheme/quad-stem-scholarship",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: The page requires JavaScript; plain webfetch returned a server error image. Loaded in a browser it renders only: 'Registration Closed - Scholarship registration for the academic year 2026-27 is closed.' with page timestamp 03 Oct 2026. No deadline date is published."
+    },
+    {
+      "id": 111,
+      "name": "Dr. S. Radhakrishnan Cultural Exchange Scholarship Scheme (ICCR)",
+      "source_url": "https://a2ascholarships.iccr.gov.in/scheme/radhakrishnan-cultural-exchange",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: JavaScript-dependent page; loaded in a browser it renders only: 'Registration Closed - Scholarship registration for the academic year 2026-27 is closed.' with page timestamp 03 Oct 2026. No deadline date is published."
+    },
+    {
+      "id": 269,
+      "name": "DTU Excellence Scholarship (Technical University of Denmark)",
+      "source_url": "https://www.dtu.dk/english/education/graduate/fees-and-funding/tuition_fee_waivers",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: The stored URL (external-scholarships page) does NOT contain any 'DTU Excellence Scholarship' - it is a list of country-specific third-party schemes (Brazil/Colombia/Costa Rica/India/Indonesia/Kazakhstan/Mexico/Turkey/USA). The matching DTU instrument is 'Tuition fee waivers for International non-EU"
+    },
+    {
+      "id": 17,
+      "name": "Erasmus+ Student Exchange (Studying Abroad)",
+      "source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/studying-abroad",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: 'There's no central application form to study abroad with Erasmus+. You can reach out to the international or Erasmus+ office of your university or higher education institution to start the process.' No deadline is published centrally, and the stored claim 'typically 1-3 months before departure' doe"
+    },
+    {
+      "id": 470,
+      "name": "Fulbright U.S. Student Program 2027-2028",
+      "source_url": "https://us.fulbrightonline.org/",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: RECORD HAD NO SOURCE URL - official page located at https://us.fulbrightonline.org/ ('This is a program of the U.S. Department of State with funding provided by the U.S. Government, administered by IIE'). Page banner: 'The 2027-2028 Competition is now open. The National Deadline is October 6, 2026 a"
+    },
+    {
+      "id": 418,
+      "name": "NAWA Walczak Programme (Internships)",
+      "source_url": "https://nawa.gov.pl/en/scientists/the-walczak-programme/call-for-proposals",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: RECORD HAD NO SOURCE URL - official NAWA page located at nawa.gov.pl (National Agency for Academic Exchange). BAD DEADLINE FIELD: the stored text 'Applicants register (submit applications) in the Agency's IT System' is a SUBMISSION INSTRUCTION, not a deadline - it says how to file, not when. Current"
+    },
+    {
+      "id": 82,
+      "name": "Pierre Elliott Trudeau Foundation Doctoral Scholarship",
+      "source_url": "https://www.trudeaufoundation.ca/become-a-scholar",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Page 'Selection Process / Key dates / 2027 competition': 'The application period for the Pierre Elliott Trudeau Foundation's 2027 Scholarship is from September 1 to November 6, 2026, at 5:00 p.m. (ET).' Stored deadline '~November 17, 2026' is wrong. Field of study: 'must be broadly related to the hu"
+    },
+    {
+      "id": 290,
+      "name": "Poland My First Choice NAWA Scholarship Programme",
+      "source_url": "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme/call-for-proposals-26",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: The 2026 call is CLOSED. Call page: 'ANNOUNCEMENT OF THE CALL FOR APPLICATIONS FOR PARTICIPATION IN THE Poland My First Choice NAWA programme No 19/2026 of 30th April 2026'. Call results page (https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme/call-results): 'The Polis"
+    },
+    {
+      "id": 289,
+      "name": "Stefan Banach NAWA Scholarship Programme (Poland)",
+      "source_url": "https://nawa.gov.pl/en/students/foreign-students/the-banach-scholarship-programme/call-for-proposals",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: NO source URL was stored; I located the real official pages myself. The programme has been RENAMED by NAWA from 'Stefan Banach NAWA Scholarship Programme' to 'Banach NAWA Programme'; current official pages are https://nawa.gov.pl/en/students/foreign-students/the-banach-scholarship-programme/... (the"
+    },
+    {
+      "id": 62,
+      "name": "Knight-Hennessy Scholars",
+      "source_url": "https://knight-hennessy.stanford.edu/admission/preparing-your-applications/application-deadlines",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Application Deadlines page: 'The Knight-Hennessy Scholars application deadline is October 6, 2026, 1:00pm Pacific Time. The KHS application deadline is the same for all applicants, regardless of the Stanford graduate degree program to which you will apply.' Stored deadline 'October 6' carried no yea"
+    },
+    {
+      "id": 93,
+      "name": "HEC Paris International Scholarships (Need-based & Merit-based)",
+      "source_url": "https://www.hec.edu/en/hec-paris-scholarships",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: The official HEC Paris Scholarships page publishes NO calendar dates at all. It works entirely through admission rounds: 'All applicants admitted into the HEC Paris Masters programs will be automatically considered for our merit-based scholarships'; per-scholarship rules refer only to 'Round 1' / 'R"
+    },
+    {
+      "id": 149,
+      "name": "NTHU International Student Scholarship",
+      "source_url": "https://oga.site.nthu.edu.tw/p/412-1524-18035.php?Lang=en",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: NO source URL was stored; I found the real official page myself: National Tsing Hua University Office of Global Affairs, 'Scholarships' (Home > Future Students > Scholarships), reached from the NTHU admission site's 'International Student' link (https://oga.site.nthu.edu.tw/?Lang=en). The page must "
+    },
+    {
+      "id": 576,
+      "name": "KAIST Scholarship (KAIST International Graduate Admission)",
+      "source_url": "https://admission.kaist.ac.kr/intl-graduate/FinancialSupport/Scholarship/KAISTScholarship",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: \"The KAIST Scholarship covers full tuition fees and provides stipends, benefiting 94% of our international student body.\" Benefits listed: \"Full tuition coverage, national health insurance, and a monthly stipend (dependent on research involvement).\" KAIST Global Presidential Scholarship (KGPS): \"Ful"
+    },
+    {
+      "id": 616,
+      "name": "Nanyang President's Graduate Scholarship (NPGS)",
+      "source_url": "https://www.ntu.edu.sg/admissions/graduate/financialmatters/scholarships/npgs",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: \"Academic Year 2027-2028 - The application period for Academic Year 2027-2028 will be announced in due course. The application period for National Institute of Education (NIE) will also be announced in due course.\" Also \"This award also covers the annual tuition fee.\" No application date is publishe"
+    },
+    {
+      "id": 463,
+      "name": "UZH Student Financial Aid Office - Scholarships",
+      "source_url": "https://www.studienfinanzierung.uzh.ch/en/application_deadlines.html",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Stored URL is only the landing page and carries no deadlines; the deadlines are at /en/application_deadlines.html (used here). Table \"Overview of deadlines\": Scholarships - fall semester \"15 August\", spring semester \"1 February\"; Loans - \"15 August\"/\"1 November\" and \"1 February\"/\"1 April\"; Hardship "
+    },
+    {
+      "id": 458,
+      "name": "KTH India Scholarship",
+      "source_url": "https://www.kth.se/en/studies/master/admissions/scholarships/kth-india-scholarship-1.422144",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: \"Application deadlines for the KTH India Scholarship - 1 December 2026: Application opens; 15 January 2027: Application closes; 1 April 2027: Scholarship results announced.\" \"These documents must be submitted by the document submission deadline, 2 February.\" Funding: \"The KTH India Scholarship cover"
+    },
+    {
+      "id": 455,
+      "name": "Malmo University Master's Scholarship",
+      "source_url": "https://www.mau.se/en/education/scholarships",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: THE DEADLINE FIELD WAS NOT A DEADLINE. The stored text \"to pay tuition fees is 10 May\" is the TUITION PAYMENT deadline, quoted from: \"You should, therefore, start planning for ways to finance your tuition and stay in Sweden well in advance, in case you are not awarded a scholarship. The deadline to "
+    },
+    {
+      "id": 373,
+      "name": "Japanese Government (MEXT) Scholarship 2027 - Undergraduate Students",
+      "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: NO CENTRAL DEADLINE IS PUBLISHED - this is the embassy-nomination case. Verbatim: \"The type and field of application may vary from country to country. Please check with the Japanese embassy or other Japanese diplomatic mission in your country to see if there are any openings in the type and field yo"
+    },
+    {
+      "id": 358,
+      "name": "Hungarian Diaspora Scholarship",
+      "source_url": "https://diasporascholarship.hu/en/apply/",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: THE DEADLINE FIELD WAS NOT A DEADLINE. Stored text was an FAQ answer about editing course priorities in the online application (DreamApply), not a date. Homepage banner now reads: \"Application is closed for the 2026/27 academic year. For more information, check the Application Timeline on the Apply "
+    },
+    {
+      "id": 354,
+      "name": "InLife Sorbonne Universite International Mobility Grants 2026-2027",
+      "source_url": "https://inlife.sorbonne-universite.fr/en/education-1/international-mobility-grants-2026-2027",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Stored URL was the news post; the deadline is on the detail page linked from it (used here). \"InLife is offering 3 incoming mobility grants of 7500 EUR for Master students from foreign universities for 2026-2027.\" \"Deadline for application: November 2, 2026 at 6 pm\". \"The grant covers travel and acc"
+    },
+    {
+      "id": 619,
+      "name": "Poland My First Choice (PMFC)",
+      "source_url": "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme/about-the-programme",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Record had NO source URL. Official NAWA programme pages located from NAWA's own English menu: /en/students/foreign-students/poland-my-first-choice-programme (About the programme, Call for proposals, Call results, Closed calls). DEGREE WAS WRONG IN THE RECORD: the About page states the programme \"off"
+    },
+    {
+      "id": 318,
+      "name": "Atomic Energy Scholarship Program of China 2026",
+      "source_url": "https://yz.tsinghua.edu.cn/en/info/1027/1391.htm",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: THE STORED URL IS THE PRIOR CYCLE, NOT 2026. The page title is \"2024 The Atomic Energy Scholarship Program of China-THU Graduate Admissions for International Students\" and it is dated 2024.02, so the \"2026\" in the record name is not supported by this source. Funding verbatim: \"Scholarship Coverage -"
+    },
+    {
+      "id": 317,
+      "name": "Asian Future Leaders Scholarship Program (AFLSP) 2026",
+      "source_url": "https://yz.tsinghua.edu.cn/en/info/1027/1477.htm",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: \"Deadline to submit scholarship materials (Beijing Time): March 1, 2026\". Step 1: \"Apply for 2026 full-time international master's programs of Tsinghua University and submit the online application ... (September, 2025 to February, 2026).\" Funding: \"The AFLSP offers successful candidates scholarships"
+    },
+    {
+      "id": 620,
+      "name": "NAWA TOP200 Programme",
+      "source_url": "https://nawa.gov.pl/en/scientists/top200-nawa/about-the-programme",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Record had NO source URL. Official page located from NAWA's own English menu: /en/scientists/top200-nawa (About the programme, Call for applications, Information for applicants, Call results, Closed calls). Verbatim: \"To provide stable employment to foreign researchers (2-4 years at Polish universit"
+    },
+    {
+      "id": 400,
+      "name": "New Zealand Space Scholarship 2026",
+      "source_url": "https://www.mbie.govt.nz/science-and-technology/space/careers-scholarships-and-awards/new-zealand-space-scholarship",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Page fetched via the browser (webfetch returned empty). THE RECORD YEAR IS STALE: the page now reads \"Applications for the 2027 New Zealand Space Scholarship open on 1 October 2026\", page Last Updated 1 October 2026 - so this is the 2027 scholarship, not 2026. NO CLOSING DATE IS PUBLISHED anywhere o"
+    },
+    {
+      "id": 355,
+      "name": "Sciences Po Mastercard Foundation Scholars Program 2027",
+      "source_url": "https://www.sciencespo.fr/students/en/fees-funding/bursaries-financial-aid/mastercard-foundation-scholarships/graduate-study",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: THE DEADLINE FIELD WAS NOT A DEADLINE. Stored text \"for submitting your online application). Obtaining certain documents can take a significant amount of time.\" is preparation advice, not a date. The page gives only a window: \"Applications for the fee waiver will be open from October to mid-December"
     }
   ]
 }
