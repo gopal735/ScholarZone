@@ -236,6 +236,14 @@ def _clear_stored_image(session: "Session", scholarship_id: int) -> None:
     ``image_verified_at`` behind would leave a record claiming it carries a
     verified official banner while carrying no image at all, which reads as a
     coverage success to every report that counts verified images.
+
+    The terminal evaluation status is cleared for the same reason. Holding
+    ``image_evaluation_status`` at ``verified`` while the image is gone produced
+    a record that could never publish and could never be repaired: the coverage
+    sweep skips terminally evaluated rows, so the contradiction locked the
+    record out of its own recovery path. Clearing it returns the record to the
+    unevaluated state, which is the honest description of a record with no
+    image, and lets the pipeline try it again.
     """
     from ..models import Scholarship
 
@@ -248,6 +256,8 @@ def _clear_stored_image(session: "Session", scholarship_id: int) -> None:
     scholarship.image_kind = None
     scholarship.image_alt_text = None
     scholarship.image_verified_at = None
+    scholarship.image_evaluation_status = None
+    scholarship.image_evaluated_at = None
     session.flush()
 
 """Image discovery orchestrator main class (appended to image_discovery_orchestrator.py)."""

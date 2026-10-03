@@ -915,6 +915,11 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
                         row.image_kind = None
                         row.image_alt_text = None
                         row.image_verified_at = None
+                        # Clearing the image also retires the verdict that
+                        # described it. Leaving a terminal status behind makes
+                        # the record permanently ineligible for re-evaluation.
+                        row.image_evaluation_status = None
+                        row.image_evaluated_at = None
                         still_missing[host] = still_missing.get(host, 0) + 1
                     continue
                 if args.dry_run:
@@ -2674,6 +2679,12 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
                 row.image_kind = None
                 row.image_alt_text = None
                 row.image_verified_at = None
+                # The terminal status is cleared with the image it described.
+                # Holding it at 'verified' leaves a record that cannot publish
+                # and cannot be re-evaluated, because the coverage sweep skips
+                # terminally evaluated rows.
+                row.image_evaluation_status = None
+                row.image_evaluated_at = None
             session.commit()
 
             detail = {
