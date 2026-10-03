@@ -1,6 +1,6 @@
 {
   "note": "Records re-checked against the awarding body's own page on 2026-10-02. Each entry is an assertion that the live source still supports the stored record.",
-  "count": 220,
+  "count": 230,
   "records": [
     {
       "id": 477,
@@ -710,6 +710,41 @@
       "evidence": "webfetch timed out twice on fnr.lu, so the page was read in the browser. Page header: 'DEADLINE: 25-11-2026 14:00 CET / 28-04-2027 14:00 CET' and 'CALL LAUNCH: SEPTEMBER 2026 (NOVEMBER DEADLINE); FEBRUARY 2027 (APRIL DEADLINE)'. Body: 'The very first call of the AFdoc funding scheme will be launched mid-September 2026, with a deadline on Wednesday, 25 November 2026 at 14:00 CET.' From 2027 there w"
     },
     {
+      "id": 355,
+      "name": "Sciences Po Mastercard Foundation Scholars Program 2027",
+      "source_url": "https://www.sciencespo.fr/students/en/fees-funding/bursaries-financial-aid/mastercard-foundation-scholarships/graduate-study",
+      "checked_at": "2026-10-02",
+      "evidence": "Page read in full. 'Applications for the fee waiver will be open from October to mid-December 2026.' 'Detailed information and the application timeline ... will be published on this page shortly.' Applicants must 'Hold the citizenship of an African country' and 'Be under 35 years of age on 1 September'. Virtual Open House 17 October 2026. No exact closing date published, hence deadline null. DB de"
+    },
+    {
+      "id": 317,
+      "name": "Asian Future Leaders Scholarship Program (AFLSP) 2026",
+      "source_url": "https://yz.tsinghua.edu.cn/en/info/1027/1477.htm",
+      "checked_at": "2026-10-02",
+      "evidence": "Page read in full. 'Deadline to submit scholarship materials (Beijing Time): March 1, 2026'. 'The AFLSP offers successful candidates scholarships for one or two years including: Tuition fees; Living allowance (including accommodation, books or other materials, etc).' Selection completed by end of May 2026 and nominees informed June 2026, so the 2026 cohort cycle is finished. DB deadline field held"
+    },
+    {
+      "id": 354,
+      "name": "InLife Sorbonne Universite International Mobility Grants 2026-2027",
+      "source_url": "https://inlife.sorbonne-universite.fr/en/education-1/international-mobility-grants-2026-2027",
+      "checked_at": "2026-10-02",
+      "evidence": "Page read in full. 'InLife is offering 3 incoming mobility grants of 7500 EUR for Master students from foreign universities for 2026-2027.' 'Deadline for application: November 2, 2026 at 6 pm.' 'There are no geographical restrictions regarding the university of origin.' Page 'Mis a jour le 29/09/2026'. DB had deadline null and funding recorded only as 'Mobility grant'."
+    },
+    {
+      "id": 373,
+      "name": "Japanese Government (MEXT) Scholarship 2027 - Undergraduate Students",
+      "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships",
+      "checked_at": "2026-10-02",
+      "evidence": "Page read in full. Undergraduate students row: Scholarship '242,000 per month' (JPY), Tuition 'Exempted', Travel allowance 'Round-trip travel expenses (airfare) provided'; Duration '[Embassy Recommendation] 5 years including Japanese language training (7 years for medicine, dentistry, pharmacy and veterinary science)'. Eligibility: 'You must be under 25 years of age and have completed 12 years of "
+    },
+    {
+      "id": 236,
+      "name": "MEXT Scholarship for Undergraduate Students",
+      "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships",
+      "checked_at": "2026-10-02",
+      "evidence": "DB had NO source URL. This is the same programme as record 373 (duplicate). Verified on the JASSO 'Study in Japan' official site: Undergraduate students scholarship '242,000 per month', tuition 'Exempted', travel 'Round-trip travel expenses (airfare) provided', eligibility 'under 25 years of age'. Deadlines are set per Japanese embassy, so deadline is null."
+    },
+    {
       "id": 210,
       "name": "KAIST Scholarship (KAIST International Undergraduate Admission)",
       "source_url": "https://admission.kaist.ac.kr/intl-undergraduate/support/scholarships/kaist",
@@ -750,13 +785,6 @@
       "source_url": "https://www.sutd.edu.sg/admissions/graduate/scholarship/sutd-graduate-fellowships-scholarships/",
       "checked_at": "2026-10-02",
       "evidence": "Confirmed on re-read after applying the corrected fields from the official source: The stored record had official_source_url = null; the real provider page was located by navigating the live SUTD site (/admissions/graduate/ -> /admissions/graduate/scholarship -> this page). PGF block, verbatim: \"SUTD PhD President's Graduate Fellowship (PGF)\" / \"Open to all nationalities\" / \"Award"
-    },
-    {
-      "id": 236,
-      "name": "MEXT Scholarship for Undergraduate Students (Monbukagakusho)",
-      "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships",
-      "checked_at": "2026-10-02",
-      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: The stored record had official_source_url = null and catalogue_url = null. The official provider page used is the Japanese government-approved Study in Japan site (JASSO/MEXT), which was reachable and is the official scheme description: \"as seen in the chart below, there are seven types of the Japan"
     },
     {
       "id": 488,
@@ -1480,25 +1508,11 @@
       "evidence": "Confirmed on re-read after applying the corrected fields from the official source: THE DEADLINE FIELD WAS NOT A DEADLINE. The stored text \"to pay tuition fees is 10 May\" is the TUITION PAYMENT deadline, quoted from: \"You should, therefore, start planning for ways to finance your tuition and stay in Sweden well in advance, in case you are not awarded a scholarship. The deadline to "
     },
     {
-      "id": 373,
-      "name": "Japanese Government (MEXT) Scholarship 2027 - Undergraduate Students",
-      "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships",
-      "checked_at": "2026-10-02",
-      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: NO CENTRAL DEADLINE IS PUBLISHED - this is the embassy-nomination case. Verbatim: \"The type and field of application may vary from country to country. Please check with the Japanese embassy or other Japanese diplomatic mission in your country to see if there are any openings in the type and field yo"
-    },
-    {
       "id": 358,
       "name": "Hungarian Diaspora Scholarship",
       "source_url": "https://diasporascholarship.hu/en/apply/",
       "checked_at": "2026-10-02",
       "evidence": "Confirmed on re-read after applying the corrected fields from the official source: THE DEADLINE FIELD WAS NOT A DEADLINE. Stored text was an FAQ answer about editing course priorities in the online application (DreamApply), not a date. Homepage banner now reads: \"Application is closed for the 2026/27 academic year. For more information, check the Application Timeline on the Apply "
-    },
-    {
-      "id": 354,
-      "name": "InLife Sorbonne Universite International Mobility Grants 2026-2027",
-      "source_url": "https://inlife.sorbonne-universite.fr/en/education-1/international-mobility-grants-2026-2027",
-      "checked_at": "2026-10-02",
-      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Stored URL was the news post; the deadline is on the detail page linked from it (used here). \"InLife is offering 3 incoming mobility grants of 7500 EUR for Master students from foreign universities for 2026-2027.\" \"Deadline for application: November 2, 2026 at 6 pm\". \"The grant covers travel and acc"
     },
     {
       "id": 619,
@@ -1515,13 +1529,6 @@
       "evidence": "Confirmed on re-read after applying the corrected fields from the official source: THE STORED URL IS THE PRIOR CYCLE, NOT 2026. The page title is \"2024 The Atomic Energy Scholarship Program of China-THU Graduate Admissions for International Students\" and it is dated 2024.02, so the \"2026\" in the record name is not supported by this source. Funding verbatim: \"Scholarship Coverage -"
     },
     {
-      "id": 317,
-      "name": "Asian Future Leaders Scholarship Program (AFLSP) 2026",
-      "source_url": "https://yz.tsinghua.edu.cn/en/info/1027/1477.htm",
-      "checked_at": "2026-10-02",
-      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: \"Deadline to submit scholarship materials (Beijing Time): March 1, 2026\". Step 1: \"Apply for 2026 full-time international master's programs of Tsinghua University and submit the online application ... (September, 2025 to February, 2026).\" Funding: \"The AFLSP offers successful candidates scholarships"
-    },
-    {
       "id": 620,
       "name": "NAWA TOP200 Programme",
       "source_url": "https://nawa.gov.pl/en/scientists/top200-nawa/about-the-programme",
@@ -1536,11 +1543,74 @@
       "evidence": "Confirmed on re-read after applying the corrected fields from the official source: Page fetched via the browser (webfetch returned empty). THE RECORD YEAR IS STALE: the page now reads \"Applications for the 2027 New Zealand Space Scholarship open on 1 October 2026\", page Last Updated 1 October 2026 - so this is the 2027 scholarship, not 2026. NO CLOSING DATE IS PUBLISHED anywhere o"
     },
     {
-      "id": 355,
-      "name": "Sciences Po Mastercard Foundation Scholars Program 2027",
-      "source_url": "https://www.sciencespo.fr/students/en/fees-funding/bursaries-financial-aid/mastercard-foundation-scholarships/graduate-study",
+      "id": 416,
+      "name": "NAWA TOP200 Programme (Excellence Initiative)",
+      "source_url": "https://nawa.gov.pl/en/scientists/top200-nawa/about-the-programme",
       "checked_at": "2026-10-02",
-      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: THE DEADLINE FIELD WAS NOT A DEADLINE. Stored text \"for submitting your online application). Obtaining certain documents can take a significant amount of time.\" is preparation advice, not a date. The page gives only a window: \"Applications for the fee waiver will be open from October to mid-December"
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: DB had NO source URL; nawa.gov.pl/programs/top200/ returns 404. Real page found and read. 'Call budget: PLN 17 mln from NAWA.' 'Submission deadline: February 27, 2026.' 'Evaluation result by: July 31, 2026.' 'Project implementation timeframe: 2026-2032.' 'To provide stable employment to foreign rese"
+    },
+    {
+      "id": 326,
+      "name": "Vaclav Havel Bursary",
+      "source_url": "https://cuni.cz/UKEN-2329.html",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: DB had NO source URL. The library domain vaclavhavel.cz now resolves to the renamed '1st presidential library' and its /en/grants-and-programs/vaclav-havel-bursary page reads only 'We are working on this page.' The bursary is actually administered by Charles University. Page read: 'The financial sup"
+    },
+    {
+      "id": 295,
+      "name": "Charles University Scholarships - International Students",
+      "source_url": "https://cuni.cz/UKEN-1617.html",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: DB had NO source URL. Page read: 'Here is an overview of the available institutional and governmental scholarship schemes available to our applicants and students' - listing MEYS scholarships (for applicants from developing countries, general scholarships for international students, International Vi"
+    },
+    {
+      "id": 421,
+      "name": "Poland My First Choice (PMFC)",
+      "source_url": "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: DB had NO source URL. Page read: 'The Programme offers a scholarship during the statutory period of full-time second-cycle studies at academic HEIs (both public and non-public) supervised by the Minister of Science and Higher Education. In addition, the Programme provides an exemption from tuition f"
+    },
+    {
+      "id": 417,
+      "name": "NAWA Bekker Programme (Academic Exchange)",
+      "source_url": "https://nawa.gov.pl/en/scientists/the-bekker-programme",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: DB had NO source URL. Page read: 'The aim of the Programme is to support the international mobility of PhD students, scientists and academic teachers from Polish scientific units...'. 'The Programme provides funding to cover scholarship holder's living expenses related to the stay in the foreign Hos"
+    },
+    {
+      "id": 194,
+      "name": "UQ International Excellence Scholarship",
+      "source_url": "https://scholarships.uq.edu.au/scholarship/uq-international-excellence-scholarship",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: DB had NO source URL; uq.edu.au/administration/scholarships/... 404s. Page read: 'Scholarship value 25% reduction in tuition fees per semester'; 'Scholarship duration For the duration of the program'; 'Number awarded May vary'; 'You don't need to apply for this scholarship. When you apply to study a"
+    },
+    {
+      "id": 122,
+      "name": "Karsh International Scholars Program - Duke University",
+      "source_url": "https://ousf.duke.edu/merit-scholarships/karsh-international-scholars-program/",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: DB had NO source URL; karshfund.org gives a transport error on all paths tried. Duke OUSF page read: 'The Karsh International Scholarship was founded in 2010 thanks to a generous donation from Martha L. and Bruce A. Karsh.' 'International applicants must have demonstrated financial need to be eligib"
+    },
+    {
+      "id": 328,
+      "name": "CTU Scholarship for Foreign Students of English Master's Degree Study Programmes",
+      "source_url": "https://international.cvut.cz/students/incoming-students/ctu-scholarships/",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: DB had NO source URL; ctu.cz/en/education/scholarships 404s. Page read (last changed 19.09.2025): 'The scholarship is a contribution towards covering the costs for a stay in the Czech Republic up to an amount of CzK 10 000 per month.' 'A scholarship is normally awarded to an individual student for a"
+    },
+    {
+      "id": 118,
+      "name": "KIIT University India Scholarship Program (KUISP)",
+      "source_url": "https://kiit.ac.in/scholarships-fellowships/",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: international.kiit.ac.in/kiit-university-india-scholarship-program/ errors with 'Controller class KiitUniversityIndiaScholarshipProgram could not be found', and the word 'KUISP' appears nowhere on the KIIT site. Official KIIT scholarships page read: '04 KIIT International Scholarship - Two students "
+    },
+    {
+      "id": 215,
+      "name": "KOICA Scholarship Program (Korea International Cooperation Agency)",
+      "source_url": "https://ge.mofa.go.kr/ge-en/brd/m_28696/view.do?seq=118",
+      "checked_at": "2026-10-02",
+      "evidence": "Confirmed on re-read after applying the corrected fields from the official source: The DB URL https://www.koica.go.kr/eng is DEAD - it returns an 'Alert' page reading only 'Inform. I can not find the page you want.' KOICA's own English CIAT site (www.koica.go.kr/ciat/eng/index.do and /sites/ciat/eng/index.do) also fails to serve, and plain HEAD requests to koica.go.kr raise a WebE"
     }
   ]
 }
