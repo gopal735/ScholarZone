@@ -1,6 +1,6 @@
 {
   "note": "Records re-checked against the awarding body's own page on 2026-10-02. Each entry is an assertion that the live source still supports the stored record.",
-  "count": 39,
+  "count": 47,
   "records": [
     {
       "id": 477,
@@ -274,6 +274,62 @@
       "source_url": "https://study.gov.pl/visegrad-scholarship-programme",
       "checked_at": "2026-10-02",
       "evidence": "The Polish official page (NAWA / study.gov.pl) itself publishes no date: 'The International Visegrad Fund offers Master and Post-Master scholarships awarded to selected students for 1 or 2 semesters (for MA scholarships within the In-Coming scheme 1- to 4-semester scholarships can be awarded) ... Further information is accessible on the Visegrad Fund website: http://visegradfund.org/scholarships/'"
+    },
+    {
+      "id": 177,
+      "name": "University of Groningen Holland Scholarship & Talent Grant",
+      "source_url": "https://www.rug.nl/education/scholarships/nl-scholarship?lang=en",
+      "checked_at": "2026-10-02",
+      "evidence": "Page states: 'The scholarship amounts to EUR 5,000. You will receive this in the first year of your studies. Please note that this is not a full-tuition scholarship.' Purposes: 'Master (MSc/MA/LL.M.), Bachelor (BSc/BA/LL.B)'; Programmes: All; deadline stated as 'February 1'. Page last modified 28 September 2026. Only discrepancy: the stored qualifier '(for September intake)' is not stated on the p"
+    },
+    {
+      "id": 428,
+      "name": "SAF Merit Scholarship",
+      "source_url": "https://www.mindef.gov.sg/join-us/scholarships-and-sponsorships/scholarships/scholarships-sms",
+      "checked_at": "2026-10-02",
+      "evidence": "Page 'Last updated on 2 October 2026'. 'For male applicants - Status: OPEN - Application Window: 1 Sep 2026 - 30 Apr 2027'. 'For female applicants - Status: Closed - Application Window: 1 Apr 2027 - 31 Aug 2027'. 'All MINDEF/SAF scholarships are open for application to both genders' and eligibility is 'Singapore citizens or permanent residents intending to take up citizenship'. Value of award as q"
+    },
+    {
+      "id": 54,
+      "name": "University of Miami Stamps Scholarship",
+      "source_url": "https://admissions.miami.edu/undergraduate/financial-aid/scholarships/stamps/index.html",
+      "checked_at": "2026-10-02",
+      "evidence": "Stored deadline text confirmed exactly. Scholarship page: 'To be considered for the Stamps Scholarship, you must apply and be admitted through either the Early Decision I or Early Action admission plans. There is no separate application outside of the Common Application to be considered.' Stamps Timeline: '1 Apply and be admitted under either the Early Decision I or Early Action admission plans. 2"
+    },
+    {
+      "id": 63,
+      "name": "Michigan State University International Merit Scholarships",
+      "source_url": "https://admissions.msu.edu/cost-aid/scholarships/international",
+      "checked_at": "2026-10-02",
+      "evidence": "Stored deadline text confirmed verbatim: 'Applying by the Nov. 1 early action deadline guarantees a decision by January 15.' Scope: 'The following scholarships are awarded to incoming first-year students with non-U.S. residency status. Unless otherwise noted, the application for admission is all that you need to submit in order to be considered for each award.' MSU Non-resident Scholarship: 'All i"
+    },
+    {
+      "id": 70,
+      "name": "President's PhD Scholarships — Imperial College London",
+      "source_url": "https://www.imperial.ac.uk/study/fees-and-funding/postgraduate-doctoral/grants-scholarships/presidents-phd",
+      "checked_at": "2026-10-02",
+      "evidence": "Page 'When you'll hear': \"Applicants who apply by 23:59 (UK time) 2 November 2026 and are awarded a scholarship will be notified by 31 January 2027. Applicants who apply by 23:59 (UK time) 11 January 2027 and are awarded a scholarship will be notified by 15 April 2027. Applicants who apply by 23:59 (UK time) 1 March 2027 and are awarded a scholarship will be notified by 31 May 2027.\" Page: \"Each o"
+    },
+    {
+      "id": 150,
+      "name": "NYCU Elite Ph.D. Scholarship for New Students Award",
+      "source_url": "https://oia-scholarship.nycu.edu.tw",
+      "checked_at": "2026-10-02",
+      "evidence": "NYCU Office of International Affairs scholarship system announces: \"scholarship application open — Spring 2027 NYCU New Students Scholarship — Application time 2026/08/10 00:00 - 2026/11/13 11:59 — Announcement time 2026/11/14 00:00 — Object: Foreign student\". Stored deadline 'Application time 2026/08/10 00:00 - 2026/11/13 11:59' matches the page exactly. CAVEAT: the landing page carries exactly o"
+    },
+    {
+      "id": 219,
+      "name": "University of Innsbruck Doctoral Scholarship",
+      "source_url": "https://www.uibk.ac.at/en/research/research-funding/phd/doctoral-scholarship",
+      "checked_at": "2026-10-02",
+      "evidence": "Page states verbatim: \"Applications must be submitted during the submission period from August 24, 2026 to October 9, 2026 inclusive\". Award terms: \"The scholarship is awarded for a maximum of 24 months (two interruptions possible) with a monthly allowance of 1.120 euros\" and \"The monthly grant amounts to 1.120 euros.\" Page header reads \"3rd tranche 2026\". Funding expected to be awarded December 2"
+    },
+    {
+      "id": 235,
+      "name": "Heinrich Böll Foundation Scholarship",
+      "source_url": "https://www.boell.de/en/scholarships",
+      "checked_at": "2026-10-02",
+      "evidence": "Page section \"Our next application deadlines:\" reads verbatim: \"**Spring 2027:** 15 January 2027 until 1 March 2027  / **Fall 2027:** 15 July 2027 until 1 September 2027\" and \"The online application portal opens on January 15, 2027, and closes on March 1, 2027.\" This matches the stored record (which labelled the second window 'Autumn 2027'; the page now says 'Fall 2027' - same window, 15 Jul - 1 S"
     }
   ]
 }
