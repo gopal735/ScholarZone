@@ -300,6 +300,30 @@
       "evidence": "The programme's own website, youarewelcomehere.org, no longer exists as a programme site. Loading it in the browser redirects to a GoDaddy domain-sale page: title 'youarewelcomehere.org is for sale - Buy for $8,000, Lease, or Offer | GoDaddy' at https://forsale.godaddy.com/forsale/youarewelcomehere.org. The IIE programme page (iie.org/programs/you-are-welcome-here-scholarship/) returns HTTP 404. T",
       "source": "re-verification pass",
       "no_successor_reason": "The official source states the programme has ended with no further application rounds."
+    },
+    {
+      "id": 124,
+      "flag": "DEAD",
+      "reason": "Official source states the programme has ended",
+      "evidence": "The stored official_source_url loads fine (HTTP 200, full undergraduate + graduate scholarship listings rendered), but the page contains NO 'Kotzen' or 'Kotchen' award anywhere. Undergraduate awards listed are only: First-year Merit Scholarships ($16,000-$33,000/yr), Simmons Distinguished Scholar Award, Boston Scholarship, Transfer Merit Scholarships ($10,000-$20,000/yr), SUCCESS, Phi Theta Kappa ",
+      "source": "re-verification pass",
+      "no_successor_reason": "The official source states the programme has ended with no further application rounds."
+    },
+    {
+      "id": 88,
+      "flag": "DEAD",
+      "reason": "Official source states the programme has ended",
+      "evidence": "No 'Global Leader of Tomorrow Award' exists on either official York page. https://futurestudents.yorku.ca/financing-your-degree/international-scholarships lists only: International Automatic Entrance Scholarships, 'President's International Scholarship of Excellence (PISE)' and the four automatic entrance awards. https://futurestudents.yorku.ca/scholarships-incoming-students gives the full interna",
+      "source": "re-verification pass",
+      "no_successor_reason": "The official source states the programme has ended with no further application rounds."
+    },
+    {
+      "id": 80,
+      "flag": "DEAD",
+      "reason": "Official source states the programme has ended",
+      "evidence": "THE GLOBAL RHODES SCHOLARSHIP HAS BEEN SUSPENDED. Page 'The Rhodes Scholarships for Global (any other country/region)' now carries: 'Important Notice Regarding the Global Rhodes Scholarships: Please note that the Board of Trustees have decided to suspend the awarding of Global Rhodes Scholarships with immediate effect due to shifting strategic priorities. We understand that this will be disappoint",
+      "source": "re-verification pass",
+      "no_successor_reason": "The official source states the programme has ended with no further application rounds."
     }
   ]
 }

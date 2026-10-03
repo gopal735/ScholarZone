@@ -1,6 +1,6 @@
 {
   "note": "Records re-checked against the awarding body's own page on 2026-10-02. Each entry is an assertion that the live source still supports the stored record.",
-  "count": 47,
+  "count": 72,
   "records": [
     {
       "id": 477,
@@ -315,7 +315,7 @@
       "name": "NYCU Elite Ph.D. Scholarship for New Students Award",
       "source_url": "https://oia-scholarship.nycu.edu.tw",
       "checked_at": "2026-10-02",
-      "evidence": "NYCU Office of International Affairs scholarship system announces: \"scholarship application open — Spring 2027 NYCU New Students Scholarship — Application time 2026/08/10 00:00 - 2026/11/13 11:59 — Announcement time 2026/11/14 00:00 — Object: Foreign student\". Stored deadline 'Application time 2026/08/10 00:00 - 2026/11/13 11:59' matches the page exactly. CAVEAT: the landing page carries exactly o"
+      "evidence": "NYCU Office of International Affairs international student scholarship system announces: \"scholarship application open — Spring 2027 NYCU New Students Scholarship — Application time 2026/08/10 00:00 - 2026/11/13 11:59 — Announcement time 2026/11/14 00:00 — Object: Foreign student\". Stored deadline 'Application time 2026/08/10 00:00 - 2026/11/13 11:59' matches the page exactly. CAVEAT: the landing "
     },
     {
       "id": 219,
@@ -330,6 +330,181 @@
       "source_url": "https://www.boell.de/en/scholarships",
       "checked_at": "2026-10-02",
       "evidence": "Page section \"Our next application deadlines:\" reads verbatim: \"**Spring 2027:** 15 January 2027 until 1 March 2027  / **Fall 2027:** 15 July 2027 until 1 September 2027\" and \"The online application portal opens on January 15, 2027, and closes on March 1, 2027.\" This matches the stored record (which labelled the second window 'Autumn 2027'; the page now says 'Fall 2027' - same window, 15 Jul - 1 S"
+    },
+    {
+      "id": 197,
+      "name": "University of Sydney International Scholarship (USydIS)",
+      "source_url": "https://www.sydney.edu.au/scholarships/australian-government-research-training-program/rtp-international.html",
+      "checked_at": "2026-10-02",
+      "evidence": "NO SOURCE URL WAS STORED ON THIS RECORD; official page located and used. The previously used USydIS page (/scholarships/e/university-sydney-international-scholarship.html) now redirects to the RTP international page above, where the scheme is listed as 'University of Sydney International Stipend Scholarship (USYDIS)'. Deadline CONFIRMED verbatim from the 'Application and award timeline' table: 'Re"
+    },
+    {
+      "id": 213,
+      "name": "Yonsei University Underwood International College (UIC) Admissions Scholarship",
+      "source_url": "https://uic.yonsei.ac.kr/main/admission.php?mid=m04_03_02",
+      "checked_at": "2026-10-02",
+      "evidence": "Page 'Tuition fee & Scholarship' confirms: Admissions Scholarship - Qualification 'Newly-admitted international students to UIC', Types 'full tuition for 4 years', How to apply: 'International students applying for UIC will be automatically considered as scholarship candidates. Scholarship recipients are to be selected from admitted applicants according to their academic credentials. A scholarship"
+    },
+    {
+      "id": 229,
+      "name": "DAAD University Summer Courses Scholarship",
+      "source_url": "https://www.daad-bangladesh.org/en/studying-in-germany/daad-scholarships",
+      "checked_at": "2026-10-02",
+      "evidence": "Stored URL loads (HTTP 200) and lists 'University Summer Courses offered in Germany for Foreign Students and Graduates' linking to the DAAD database entry (detail=50035295). That official entry confirms the stored deadline verbatim: 'Application deadline 30 October of each year, 23:59 (Central European Time). Applications are possible from 01 September each year.' Funding per the entry: 'coverage "
+    },
+    {
+      "id": 76,
+      "name": "GREAT Scholarship 2026 - University of Manchester (Bangladesh)",
+      "source_url": "https://www.manchester.ac.uk/study/international/finance-and-scholarships/funding/great-scholarships",
+      "checked_at": "2026-10-02",
+      "evidence": "Stored deadline '23 April 2026' is CONFIRMED verbatim: 'Applications will close on 23 April 2026.' Full key dates from the page: 'Applications for The University of Manchester's GREAT scholarships will open to relevant offer-holders from December 2025. A scholarship application form will be emailed to all relevant offer-holders by the International Office.' Eligibility: must hold a conditional or "
+    },
+    {
+      "id": 9,
+      "name": "MOPGA Visiting Fellowship Program",
+      "source_url": "https://www.campusfrance.org/en/mopga-2027",
+      "checked_at": "2026-10-02",
+      "evidence": "Page 'MOPGA 2027: Visiting Fellowship Program for Early Career Researchers', updated 15 September 2026. TIMELINE: '15 September 2026: Applications open / 15 December 2026: Application deadline / May-June 2027: Notification of results'. Fellowship terms: 'monthly allowance of EUR 2,500', 'EUR 500 settling-in allowance'. Eligibility: 'Hold a doctoral degree awarded less than five years before the ap"
+    },
+    {
+      "id": 85,
+      "name": "UBC International Scholars Program",
+      "source_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars",
+      "checked_at": "2026-10-02",
+      "evidence": "'Applications for the September 2027 intake will open on October 5, 2026.' Step 6: 'By November 15: Submit your completed application - The International Scholars Program application is due November 15.' Step 7: 'By January 31: Submit required documents ... your document deadline is January 31'. Award categories: Karen McKellin International Leader of Tomorrow Award; Donald A. Wehrung Internationa"
+    },
+    {
+      "id": 538,
+      "name": "AAPG - Appel a projets generique 2027 (ANR Generic Call for Proposals 2027)",
+      "source_url": "https://anr.fr/fr/detail/call/aapg-appel-a-projets-generique-2027",
+      "checked_at": "2026-10-02",
+      "evidence": "Page shows 'Ouvert - 2027', 'Ouverture : 16/07/2026 a 09:00 CEST' and 'Cloture du depot et enregistrement Etape I : 13/10/2026 a 17:00 CEST'. Schedule confirms '13 octobre 2026, 17 h (heure de Paris) : cloture du depot et enregistrement Etape I' and 'Fin mars 2027 : cloture du depot Etape 2'. Catalogue URL https://anr.fr/fr/appels reachable. Stored deadline string matches the live page exactly (no"
+    },
+    {
+      "id": 559,
+      "name": "Chevening ASEAN Scholarship",
+      "source_url": "https://www.chevening.org/scholarships/application-timeline/",
+      "checked_at": "2026-10-02",
+      "evidence": "https://www.chevening.org/asean-chevening-scholarship/ (loaded in browser; webfetch times out on chevening.org) carries NO deadline of its own - it says applicants must 'apply for a Chevening Scholarship through the standard application process'. The deadline is published centrally at https://www.chevening.org/scholarships/application-timeline/: '4 AUGUST 2026 APPLICATIONS OPEN AT 11:00 UTC' and '"
+    },
+    {
+      "id": 560,
+      "name": "Chevening SIDS Scholarship",
+      "source_url": "https://www.chevening.org/scholarships/application-timeline/",
+      "checked_at": "2026-10-02",
+      "evidence": "https://www.chevening.org/sids-chevening-scholarship/ (HTTP 200) carries no deadline; central timeline https://www.chevening.org/scholarships/application-timeline/ states '6 OCTOBER 2026 APPLICATIONS CLOSE AT 11:00 UTC'. Scheme page confirms 'a one-year master's degree in the UK' and that applicants 'are required to study on courses that help to address a national development priority or capacity "
+    },
+    {
+      "id": 561,
+      "name": "Chevening Europe Defence and Security Fellowship",
+      "source_url": "https://www.chevening.org/fellowship/chevening-europe-defence-and-security-fellowship/",
+      "checked_at": "2026-10-02",
+      "evidence": "Page header: 'Hosted by Cranfield University - Open for applications until 12 October 2026, at 11:00 (UTC) - APPLY TODAY'. 'The Chevening Europe Defence and Security Fellowship is funded by the UK Foreign, Commonwealth and Development Office (FCDO) and delivered by Cranfield University at the Defence Academy of the United Kingdom, Shrivenham. This Fellowship is open to all non-ODA eligible Europea"
+    },
+    {
+      "id": 617,
+      "name": "Gates Cambridge Scholarship (entry in the academic year 2027/8)",
+      "source_url": "https://www.gatescambridge.org/apply/timeline",
+      "checked_at": "2026-10-02",
+      "evidence": "'Applications for entry in the academic year 2027/8 are now open.' Applications open 11th September 2026. Round 1 - US citizens resident in the USA: 'Application deadline Wednesday 14th October 2026 (Full application must be submitted by 11:59pm UK time on the date given)'. Round 2 - 'All other eligible applicants': 'Application deadline* Dependent on your course - either Tuesday 8th December 2026"
+    },
+    {
+      "id": 292,
+      "name": "Jagiellonian University Rector's Scholarship for International Students",
+      "source_url": "https://stypendia.uj.edu.pl/en_GB/pomoc-materialna/stypendium-rektora",
+      "checked_at": "2026-10-02",
+      "evidence": "Page 'Applications': 'The deadline for submitting the application for the Rector's scholarship is October 20 of the academic year for which the scholarship is to be awarded.' Recurring annual date with no year published, so stored text is accurate and no ISO date can be derived. 'Foreign students may also apply for the Rector's scholarship.' 'The scholarship is available for first-cycle, second-cy"
+    },
+    {
+      "id": 306,
+      "name": "Canada Graduate Research Scholarship - Doctoral (CGRS-D)",
+      "source_url": "https://sshrc-crsh.canada.ca/en/funding/opportunities/canada-graduate-research-scholarships/doctoral-program.aspx",
+      "checked_at": "2026-10-02",
+      "evidence": "Page 'Competitions / 2026 / October 2026 Competition': 'Application deadlines: Directly to SSHRC: October 19, 2026 (8:00 p.m. eastern); Through a Canadian institution: Contact your institution (often significantly earlier than the agency's deadline)'. 'Value and duration: $40,000 per year for 3 years'. Stored deadline 'October 19, 2026' matches exactly. Note the stored record omits the 8:00 p.m. e"
+    },
+    {
+      "id": 534,
+      "name": "Scholarships for Refugees (Studien- und Promotionsfoerderung)",
+      "source_url": "https://www.kas.de/de/web/begabtenfoerderung-und-kultur/stipendien-fuer-gefluechtete",
+      "checked_at": "2026-10-02",
+      "evidence": "Page states verbatim: 'Please apply online on campus.kas.de until 15 January or 15 July annually.' Recurring annual dates with no year published, so no ISO deadline is derived and deadline is null (stored text was accurate). Funding figures: for degree studies 'financial support (depending on your income or the income of your parents) up to 752 Euros per month plus 300 Euro for study-related expen"
+    },
+    {
+      "id": 24,
+      "name": "Humboldt Research Fellowship",
+      "source_url": "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/humboldt-research-fellowship",
+      "checked_at": "2026-10-02",
+      "evidence": "Every element of the stored deadline is confirmed verbatim. Hint box: 'We have received the maximum number of applications for the current call. Therefore, unfortunately, no new applications can be created at present. The next call will open on November 15, 2026.' Calls schedule for 2026: '... on 15 March 2026 / in November 2026 / in February 2027'; '... on 15 July 2026 / in March 2027 / in May 20"
+    },
+    {
+      "id": 101,
+      "name": "A*STAR Graduate Scholarship (AGS)",
+      "source_url": "https://www.a-star.edu.sg/scholarships/home/scholarships/ags--scholarship",
+      "checked_at": "2026-10-02",
+      "evidence": "Scholarship Facts: 'Application period: 1 November to 1 February & 1 June to 10 August'. Application Timeline table: 'First application cycle: Opens on 1 November / Closes on 1 February of the following year' (interviews Mid-February to March, outcomes from mid-April); 'Second application cycle: Opens on 1 June / Closes on 10 August of the following year' (interviews Mid-August to October, outcome"
+    },
+    {
+      "id": 475,
+      "name": "Joint Japan/World Bank Graduate Scholarship Program (JJ/WBGSP) 2027 - Application Window #1 (Developing Country Nationals)",
+      "source_url": "https://www.worldbank.org/en/programs/scholarships/jj-wbgsp",
+      "checked_at": "2026-10-02",
+      "evidence": "Page confirms both windows exactly: 'Application Window #1 from January 18 to February 26, 2027' and 'Application Window #2 from March 29 to May 21, 2027'. Funding confirmed: tuition for the graduate programme, basic medical insurance, 'monthly subsistence allowance', economy class air travel plus 'a US $600 travel allowance for each trip'. Eligibility gate confirmed: 'On or before the scholarship"
+    },
+    {
+      "id": 529,
+      "name": "TEF Entrepreneurship Programme",
+      "source_url": "https://www.tonyelumelufoundation.org/tef-entrepreneurship-programme",
+      "checked_at": "2026-10-02",
+      "evidence": "Page states verbatim: 'Every year, the application portal for our flagship TEF Entrepreneurship Programme opens on the 1st of January till midnight on the 1st of March at Midnight, on our digital platform, www.TEFConnect.com.' Recurring annual window with no year published, so deadline is null (stored text accurate). No degree is awarded - it is training plus seed capital disbursement, matching th"
+    },
+    {
+      "id": 541,
+      "name": "JSPS Postdoctoral Fellowship for Research in Japan (Standard Program)",
+      "source_url": "https://www.jsps.go.jp/english/e-fellow/e-ippan/appliguidelines.html",
+      "checked_at": "2026-10-02",
+      "evidence": "Deadlines are NOT on the stored 'About the Program' page; they are on the linked 'Application Schedule (Open Call)' page (the URL I recorded). FY2027 table: 'Application deadline (from host institution to JSPS) - August 28, 2026 (by 5 p.m. (JST)) [fellowship period April 1, 2027-September 30, 2027]' and 'April 23, 2027 (by 5 p.m. (JST)) [fellowship period September 1, 2027-November 30, 2027]'. Thi"
+    },
+    {
+      "id": 542,
+      "name": "JSPS Postdoctoral Fellowship for Research in Japan (Short-term Program for North American and European Researchers, PE)",
+      "source_url": "https://www.jsps.go.jp/english/e-fellow/e-oubei-s/appliguidelines.html",
+      "checked_at": "2026-10-02",
+      "evidence": "Deadlines are on the 'Application Schedule (Open Call)' page for the Short-term (PE) programme (the URL I recorded). FY2027 table: 'September 25, 2026 (by 5 p.m. (JST))' [fellowship start Early January 2027], 'January 8, 2027 (by 5 p.m. (JST))' [April 1, 2027 - March 31, 2028], 'June 4, 2027 (by 5 p.m. (JST))' [Late September 2027]. This matches the stored FY2027 2nd and 3rd recruitment dates exac"
+    },
+    {
+      "id": 544,
+      "name": "POSCO Global Scholarship in Korea (Global Future Leaders Scholarship Program)",
+      "source_url": "https://www.postf.org/en/asia/abroad/business",
+      "checked_at": "2026-10-02",
+      "evidence": "Selection Procedure published exactly as stored, at month level only with no day-level date: '01 Graduate School Admission (~Nov) / 02 Recommendation submission by Graduate School (~Dec) / 03 Interview By Foundation (~Jan) / 04 Final Selection Announcement (~Feb) / 05 Certificate Award Ceremony (Mar)'. No day-level deadline is published anywhere on the page, so deadline is null - no date invented."
+    },
+    {
+      "id": 556,
+      "name": "Joint Japan/World Bank Graduate Scholarship Program (JJ/WBGSP) 2027 - Application Window for Japanese Nationals",
+      "source_url": "https://www.worldbank.org/en/programs/scholarships/japanese-nationals",
+      "checked_at": "2026-10-02",
+      "evidence": "Page states verbatim: 'The 2027 application window for Japanese nationals will open from February 15 to April 16, 2027.' and, on the related cycle note, 'The 2026 application window for Japanese nationals closed on Friday 17 April 2026.' Stored deadline 2027-04-16 confirmed as the window close. Degree confirmed, including the PhD element: 'The JJ/WBGSP provides scholarships for up to two-years to "
+    },
+    {
+      "id": 574,
+      "name": "JSPS Invitational Fellowships for Research in Japan - Short-term (FY2027, 2nd Recruitment)",
+      "source_url": "https://www.jsps.go.jp/english/e-inv/application/index.html",
+      "checked_at": "2026-10-02",
+      "evidence": "FY2027 table on the Invitational Fellowships application page: 'Application deadline (from host institution to JSPS) - August 28, 2026 (by 5 p.m. (JST)) [fellowship period April 1, 2027 - March 31, 2028]' and 'April 23, 2027 (by 5 p.m. (JST))'. This confirms the stored FY2027 2nd Recruitment deadline of April 23, 2027 by 5 p.m. JST and the stored note that the first FY2027 recruitment deadline was"
+    },
+    {
+      "id": 578,
+      "name": "University of Sharjah Research Assistant (RA) and Teaching Assistant (TA) Scholarship for Master's Students",
+      "source_url": "https://www.sharjah.ac.ae/en/Admissions/Masters-Degree",
+      "checked_at": "2026-10-02",
+      "evidence": "\"Applications for Master's programs will be open from 5 October 2026 to 12 November 2026.\" Eligibility: \"Hold a Bachelor's degree with a minimum CGPA of 3.20 out of 4.00 (or equivalent) for UAE national students, and 3.60 out of 4.00 (or equivalent) for non-national students\" and \"Be committed to working 20 hours per week at the University as part of the scholarship requirements.\" As of 2026-10-03"
+    },
+    {
+      "id": 603,
+      "name": "Flanders Trainee Programme (Flanders Traineeship Programme)",
+      "source_url": "https://www.vlaanderen.be/en/studying/flanders-trainee-programme",
+      "checked_at": "2026-10-02",
+      "evidence": "Banner verbatim: \"No more grants for 2026 - You can no longer apply for a grant for internships continuing into 2026. There is no more budget available for 2026. A budget will be available again in 2027. You can reapply for internships taking place in 2027 as from January 2027.\" Stored text matches the page word for word, but it contains no date, so deadline is null. CLOSED for 2026, reopens Janua"
     }
   ]
 }
