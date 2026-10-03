@@ -1636,6 +1636,7 @@ def main(argv: list[str] | None = None) -> int:
         basis is indistinguishable from a record nobody checked.
         """
         import json
+        from datetime import timedelta
         from pathlib import Path
 
         from sqlalchemy import select
