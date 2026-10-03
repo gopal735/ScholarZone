@@ -1,6 +1,6 @@
 {
   "note": "Records re-checked against the awarding body's own page on 2026-10-02. Each entry is an assertion that the live source still supports the stored record.",
-  "count": 72,
+  "count": 82,
   "records": [
     {
       "id": 477,
@@ -505,6 +505,76 @@
       "source_url": "https://www.vlaanderen.be/en/studying/flanders-trainee-programme",
       "checked_at": "2026-10-02",
       "evidence": "Banner verbatim: \"No more grants for 2026 - You can no longer apply for a grant for internships continuing into 2026. There is no more budget available for 2026. A budget will be available again in 2027. You can reapply for internships taking place in 2027 as from January 2027.\" Stored text matches the page word for word, but it contains no date, so deadline is null. CLOSED for 2026, reopens Janua"
+    },
+    {
+      "id": 614,
+      "name": "Programa RESTART — 4ª Edição (FCT research funding after parental leave)",
+      "source_url": "https://www.fct.pt/concursos/programa-restart-4-edicao",
+      "checked_at": "2026-10-02",
+      "evidence": "Page timeline: '01 outubro 2026 (14h) Abertura de candidaturas' and '13 novembro 2026 (17h) Encerramento das candidaturas'. Financiamento: 'Serão apoiadas propostas com uma duração máxima de 18 meses de desenvolvimento e com o limite máximo de financiamento, por projeto, de 50 mil euros. Para este apoio está prevista uma dotação orçamental de 1,6 milhões de euros.' Destinatários: candidates must '"
+    },
+    {
+      "id": 623,
+      "name": "Ernst Mach Grant – worldwide",
+      "source_url": "https://grants.at/en/?=MTcxMTVfMTgxMjlfOQ==",
+      "checked_at": "2026-10-02",
+      "evidence": "grants.at detail page (JS-rendered; webfetch returned only the shell, verified in browser): 'Closing date for applications: 01.12.2026'. Grant benefit paid: 'Supplementary grant, own funds are required' with '1. Monthly grant rate: 1,300 Euro'; travel costs subsidy up to 1,200 Euro for DAC-listed developing countries. Duration '1 to 9 months'. Target group: 'Postgraduates, PhD students, PhD holder"
+    },
+    {
+      "id": 528,
+      "name": "Mandela Rhodes Scholarship (Class of 2028)",
+      "source_url": "https://www.mandelarhodes.org/scholarship/apply",
+      "checked_at": "2026-10-02",
+      "evidence": "Step 1 timeline: 'March: Applications open on Tuesday, 9 March 2027' and 'April: Applications close by the end of Wednesday, 14 April 2027 23:59 GMT+2. No late or incomplete applications will be accepted under any circumstances.' Note the page also states 'Applications for 2027 are now closed' - so the 2028 round is published but NOT yet open (verification date 2026-10-03). Funding: 'covers tuitio"
+    },
+    {
+      "id": 531,
+      "name": "The Inlaks Fellowship for Social Engagement",
+      "source_url": "https://www.inlaksfoundation.org/opportunities/fellowships/inlaks-shivdasani-fellowship-for-social-engagement",
+      "checked_at": "2026-10-02",
+      "evidence": "Application Status: 'Applications Open for 2027' / 'Deadline: 15th November 2026, 11:59pm (IST)'. Duration and Value: two years, six-month probation; stipend 'INR 45,000 per month' in an X category area, 'INR 35,000 per month' in Y, 'INR 25,000 per month' in Z, 'final stipend amount is at the Foundation's discretion'. Eligibility: 'The applicant must be an Indian citizen currently residing in Indi"
+    },
+    {
+      "id": 532,
+      "name": "RISE Germany - Research Internships in Science and Engineering",
+      "source_url": "https://www.daad.de/rise/en/rise-germany",
+      "checked_at": "2026-10-02",
+      "evidence": "New RISE Germany deadlines: 'Applications: October 15 - November 30, 2026 (11:59 pm CET - Central European Time)' / 'Letters of reference: October 15 - December 15, 2026' / 'Ranking by providers: January 14 - January 25, 2027' / 'Announcement of RISE internship positions: Around February/March 2027'. Funding: 'DAAD provides students a monthly stipend for three months to help cover living expenses'"
+    },
+    {
+      "id": 562,
+      "name": "Pierre Elliott Trudeau Foundation PhD Scholarship (2027 competition)",
+      "source_url": "https://www.trudeaufoundation.ca/2027-applications",
+      "checked_at": "2026-10-02",
+      "evidence": "Important Dates block on the 2027 Applications page: 'October 2, 2026 - Deadline to request eligibility confirmation'; 'Weeks of October 5 and October 12 - Mandatory information sessions'; 'October 30, 2026, at 9:00 a.m. ET - Deadline for receipt of all three references'; 'November 6, 2026, at 5:00 p.m. ET - Deadline to submit the complete application'. Eligibility: 'open to doctoral students who "
+    },
+    {
+      "id": 564,
+      "name": "Hanns-Seidel-Stiftung Scholarship – Förderung internationaler Studierender und Promovierender",
+      "source_url": "https://www.hss.de/stipendium",
+      "checked_at": "2026-10-02",
+      "evidence": "The stored official_source_url (https://www.hss.de/stipendium/wen-suchen-wir) is reachable but is only an eligibility-criteria page and carries NO dates, so the deadline was verified on the HSS scholarship landing page used as source_url here. That page states: 'Unser Bewerbungsportal ist geöffnet: 15. Dezember 2026 bis einschließlich 15. Januar 2027 (jeweils 12 Uhr MEZ): Journalistisches Förderpr"
+    },
+    {
+      "id": 566,
+      "name": "France 2030 - PEPR GFM \"Grands Fonds Marins\" - Appel à projets - 2026",
+      "source_url": "https://anr.fr/fr/france-2030/france2030/call/france-2030-pepr-gfm-grands-fonds-marins-appel-a-projets-2026",
+      "checked_at": "2026-10-02",
+      "evidence": "ANR call page date block: 'Limite de dépôt des projets : 17/11/2026 à 11:00 CET' - matches the stored value exactly. Body: 'La durée des projets sera comprise entre 36 et 54 mois. L'aide demandée par projet est comprise entre 800 k€ et 3 M€. Aucun niveau de financement n'est privilégié à l'intérieur de cette fourchette... La dotation globale de ce premier appel à projets du PEPR GFM est d'environ "
+    },
+    {
+      "id": 567,
+      "name": "France 2030 - PEPR PROPSY – \"Psychiatrie de précision\" - Appel à projets - 2026",
+      "source_url": "https://anr.fr/fr/france-2030/france2030/call/france-2030-pepr-propsy-psychiatrie-de-precision-appel-a-projets-2026",
+      "checked_at": "2026-10-02",
+      "evidence": "Date block on the ANR call page: 'Fermeture : 10/11/2026 à 11:00 CET'. The extension notice is still live verbatim: 'Attention : La date limite de dépôt des projets, initialement prévue le 15 octobre 2026 à 11h00, est désormais fixée au 10 novembre 2026 à 11h00 (CET).' Funding: 'une enveloppe budgétaire totale de 9 600 000 €', PEPR PROPSY itself 'Financé par France 2030 à hauteur de 80 millions d'"
+    },
+    {
+      "id": 568,
+      "name": "Appel à projets M-ERA.NET 2026/27 - Science et ingénierie des matériaux pour l'innovation en Europe",
+      "source_url": "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
+      "checked_at": "2026-10-02",
+      "evidence": "ANR call page date block confirms both steps verbatim: 'Limite de dépôt des pré-dossiers : 12/05/2026 à 12:00 CEST' and 'Limite de dépôt des projets : 18/11/2026 à 12:00 CET'. This matches the stored two-step schedule, with step 1 (pre-proposals) closed and step 2 (detailed proposals) still open. The ANR page is the French-edition instrument for the M-ERA.NET consortium joint call; the stored cata"
     }
   ]
 }
