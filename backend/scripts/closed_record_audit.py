@@ -109,21 +109,43 @@ def _material_history(session, scholarship_id: int) -> int:
     )
 
 
-def _knowledge_refs(session, name: str | None) -> int:
-    if not name:
-        return 0
-    return int(
-        session.scalar(
-            select(func.count())
-            .select_from(KnowledgeNode)
-            .where(or_(KnowledgeNode.name == name, KnowledgeNode.label == name))
-        )
-        or 0
+def _knowledge_node_ids(session, row: Scholarship) -> list[int]:
+    """Knowledge-graph nodes that stand for this scholarship.
+
+    The graph keys on a normalised value and a display name rather than on a
+    foreign key, so a match has to consider both plus the bare id. Matching only
+    the title would miss a node recorded under an id, and that node would then
+    look like no dependency at all.
+    """
+    conditions = []
+    if row.title:
+        conditions.append(KnowledgeNode.normalized_value == row.title.strip().lower())
+        conditions.append(KnowledgeNode.display_name == row.title)
+    conditions.append(KnowledgeNode.normalized_value == f"scholarship:{row.id}")
+    conditions.append(KnowledgeNode.normalized_value == str(row.id))
+
+    return list(
+        session.scalars(
+            select(KnowledgeNode.id).where(
+                KnowledgeNode.entity_type == "scholarship",
+                or_(*conditions),
+            )
+        ).all()
     )
 
 
-def _edge_refs(session, name: str | None) -> int:
-    if not name:
+def _knowledge_refs(session, node_ids: list[int]) -> int:
+    """Nodes are themselves a reference; count them."""
+    return len(node_ids)
+
+
+def _edge_refs(session, node_ids: list[int]) -> int:
+    """Edges incident to this scholarship's node.
+
+    An edge whose other end is a different scholarship still means deleting
+    this row would leave a graph edge pointing at nothing.
+    """
+    if not node_ids:
         return 0
     return int(
         session.scalar(
@@ -131,8 +153,8 @@ def _edge_refs(session, name: str | None) -> int:
             .select_from(KnowledgeEdge)
             .where(
                 or_(
-                    KnowledgeEdge.source == name,
-                    KnowledgeEdge.target == name,
+                    KnowledgeEdge.source_node_id.in_(node_ids),
+                    KnowledgeEdge.target_node_id.in_(node_ids),
                 )
             )
         )
@@ -140,18 +162,16 @@ def _edge_refs(session, name: str | None) -> int:
     )
 
 
-def _fingerprint_refs(session, scholarship_id: int) -> int:
-    """Content fingerprints key on entity identity, so match by id string."""
+def _fingerprint_refs(session, row: Scholarship) -> int:
+    """Content fingerprints are keyed on source URL, not on scholarship id."""
+    urls = [u for u in (row.official_source_url, row.catalogue_url) if u]
+    if not urls:
+        return 0
     return int(
         session.scalar(
             select(func.count())
             .select_from(ContentFingerprintRecord)
-            .where(
-                or_(
-                    ContentFingerprintRecord.entity_id == str(scholarship_id),
-                    ContentFingerprintRecord.entity_key.ilike(f"%{scholarship_id}%"),
-                )
-            )
+            .where(ContentFingerprintRecord.source_url.in_(urls))
         )
         or 0
     )
@@ -160,6 +180,7 @@ def _fingerprint_refs(session, scholarship_id: int) -> int:
 def gather(session, row: Scholarship, public_ids: set[int]) -> dict:
     """Every signal that could give a closed record a reason to exist."""
     sid = row.id
+    node_ids = _knowledge_node_ids(session, row)
     deps = {
         "verification_history_total": _count(
             session, ScholarshipVerificationHistory, ScholarshipVerificationHistory.scholarship_id, sid
@@ -208,9 +229,9 @@ def gather(session, row: Scholarship, public_ids: set[int]) -> dict:
         "discovery_candidates": _count(
             session, DiscoveryCandidate, DiscoveryCandidate.matched_scholarship_id, sid
         ),
-        "knowledge_nodes": _knowledge_refs(session, row.title),
-        "knowledge_edges": _edge_refs(session, row.title),
-        "content_fingerprints": _fingerprint_refs(session, sid),
+        "knowledge_nodes": _knowledge_refs(session, node_ids),
+        "knowledge_edges": _edge_refs(session, node_ids),
+        "content_fingerprints": _fingerprint_refs(session, row),
     }
     return {
         "id": sid,
