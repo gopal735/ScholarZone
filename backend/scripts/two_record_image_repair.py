@@ -163,20 +163,83 @@ def do_evaluate(session) -> int:
     return 0
 
 
+def do_reset_563(session) -> int:
+    """Clear only the stale verification timestamp on 563.
+
+    563 carries ``image_verified_at`` with no ``image_url``: residue from an
+    evaluation whose image did not survive. Every other consumer that reads the
+    timestamp - the completeness report, the completion run - counts it as
+    evidence of an image, so leaving it set misreports the catalogue even
+    though the coverage runner no longer selects on it.
+
+    The preconditions are asserted, and exactly one field is written.
+    """
+    from app.models import Scholarship
+
+    sid = 563
+    print("=" * 78)
+    print(f"PHASE 4 - TARGETED RESET OF ID {sid}")
+    print("=" * 78)
+    d = snapshot(session, sid)
+    report("before", d)
+
+    if d.get("image_url") is not None:
+        sys.exit(f"ABORT: id {sid} has a stored image; this is not the residue case")
+    if d.get("image_verified_at") is None:
+        sys.exit(f"ABORT: id {sid} has no image_verified_at residue to clear")
+
+    before_preserve = {f: d.get(f) for f in PRESERVE_FIELDS}
+    before_eval = (d.get("image_evaluation_status"), d.get("image_evaluated_at"),
+                   d.get("image_kind"))
+
+    row = d["_row"]
+    row.image_verified_at = None          # the only field written
+    session.commit()
+    session.expire_all()
+
+    after = snapshot(session, sid)
+    report("after", after)
+    drift = [f for f in PRESERVE_FIELDS
+             if str(after.get(f)) != str(before_preserve[f])]
+    after_eval = (after.get("image_evaluation_status"), after.get("image_evaluated_at"),
+                  after.get("image_kind"))
+    print()
+    print(f"  image_verified_at          : {d.get('image_verified_at')} -> "
+          f"{after.get('image_verified_at')}")
+    print(f"  preserved fields unchanged : {not drift}" + (f"  DRIFT={drift}" if drift else ""))
+    print(f"  eval fields unchanged      : {after_eval == before_eval}")
+    print(f"  verification_status        : {after.get('verification_status')}")
+    ok = after.get("image_verified_at") is None and not drift and after_eval == before_eval
+    print(f"\n  RESET {'OK' if ok else 'FAILED'}")
+    return 0 if ok else 1
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--reset-613", action="store_true")
+    ap.add_argument("--reset-563", action="store_true")
     ap.add_argument("--evaluate", action="store_true")
+    ap.add_argument("--ids", default="613,563",
+                    help="evaluation targets; default is the audited two")
     args = ap.parse_args()
-    if args.reset_613 == args.evaluate:
-        sys.exit("ERROR: choose exactly one of --reset-613 / --evaluate")
+    modes = [args.reset_613, args.reset_563, args.evaluate]
+    if sum(bool(m) for m in modes) != 1:
+        sys.exit("ERROR: choose exactly one of --reset-613 / --reset-563 / --evaluate")
+
+    global EVAL_IDS
+    if args.ids:
+        EVAL_IDS = [int(x) for x in args.ids.split(",") if x.strip()]
 
     from app.database import get_engine, get_session_factory
 
     engine = get_engine()
     session = get_session_factory()()
     try:
-        return do_reset(session) if args.reset_613 else do_evaluate(session)
+        if args.reset_613:
+            return do_reset(session)
+        if args.reset_563:
+            return do_reset_563(session)
+        return do_evaluate(session)
     finally:
         session.close()
         engine.dispose()
