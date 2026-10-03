@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """Scoped, audited invocation of the EXISTING image coverage pipeline.
 
@@ -74,11 +74,13 @@ def main() -> int:
                     help="persist results; omit for a read-only plan")
     ap.add_argument("--manifest")
     ap.add_argument("--budget-seconds", type=float, default=90.0)
-    ap.add_argument("--retry-source-blocked", action="store_true",
-                    help="include records whose prior evaluation was 'source_blocked'. "
-                         "That status means the official host refused our request, so "
-                         "no image was ever evaluated; retrying is a first real "
-                         "attempt, not an endless retry.")
+    ap.add_argument("--no-retry-source-blocked", action="store_true",
+                    help="skip records whose prior evaluation was 'source_blocked'. "
+                         "Default is to retry them: that status means the official "
+                         "host refused our request, so no image was ever evaluated "
+                         "and a retry is a first real attempt, not an endless one. "
+                         "This only affects this scoped invoker; the catalogue-wide "
+                         "do_images() sweep keeps its own default.")
     args = ap.parse_args()
 
     from sqlalchemy import select
@@ -178,7 +180,7 @@ def main() -> int:
         batch_size=len(TARGET_IDS),
         max_workers=2,
         exclude_quarantined=True,
-        skip_terminally_evaluated=not args.retry_source_blocked,
+        skip_terminally_evaluated=args.no_retry_source_blocked,
         logo_only=False,
         per_record_budget_seconds=args.budget_seconds,
     )
