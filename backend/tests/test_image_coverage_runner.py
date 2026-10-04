@@ -46,9 +46,17 @@ def _seed(session_factory, n: int, *, verified: bool = False, prefix: str = "p",
                 degree="Master",
                 funding="Full",
                 official_source="Org",
-                official_source_url=f"https://www.{host}/{prefix}-{i}",
-                image_verified_at=datetime(2026, 1, 1) if verified else None,
-            )
+official_source_url=f"https://www.{host}/{prefix}-{i}",
+                    # A verified record is verified *about an image*. Seeding
+                    # the timestamp alone produced a record with no image at
+                    # all, which is the corruption this suite exists to keep
+                    # out of the catalogue - and it made "a record with a
+                    # verified image is never re-discovered" assert the
+                    # opposite of what it says.
+                    image_url=(f"https://www.{host}/{prefix}-{i}/logo.png"
+                               if verified else None),
+                    image_verified_at=datetime(2026, 1, 1) if verified else None,
+                )
             s.add(row)
             s.commit()
             s.refresh(row)

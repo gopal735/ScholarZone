@@ -208,6 +208,10 @@ class ImageCoverageRunner:
         *,
         dry_run: bool = True,
         batch_size: int = DEFAULT_BATCH_SIZE,
+        # Select only records that carry no image at all. Keyed on
+        # ``image_url`` rather than ``image_verified_at``: the timestamp can
+        # outlive the image it described, and treating that residue as
+        # 'complete' strands the record with no path back.
         only_missing: bool = True,
         max_workers: int = DEFAULT_MAX_WORKERS,
         preflight_fn=None,
@@ -253,7 +257,11 @@ class ImageCoverageRunner:
         session = self._session_factory()
         try:
             row = session.get(Scholarship, scholarship_id)
-            if row is None or row.image_verified_at is not None:
+            # Same reasoning as the selection above: a record that already
+            # carries an image keeps whatever verdict it has. A record with no
+            # image must still be able to record a verdict, even when a stale
+            # timestamp survives alongside the empty image_url.
+            if row is None or row.image_url is not None:
                 return
             row.image_evaluation_status = str(status)
             row.image_evaluated_at = datetime.now(timezone.utc)
@@ -296,13 +304,28 @@ class ImageCoverageRunner:
             if start_after is not None:
                 stmt = stmt.where(Scholarship.id > start_after)
             if self.only_missing:
-                stmt = stmt.where(Scholarship.image_verified_at.is_(None))
+                # "Missing an image" is the absence of the image itself. Using
+                # the verification timestamp as the proxy let a record carrying
+                # a stale timestamp and no image look complete, so it was never
+                # offered an image and never recovered.
+                stmt = stmt.where(Scholarship.image_url.is_(None))
             if self.skip_terminally_evaluated:
                 from .image_evaluation_status import TERMINAL_STATUSES
 
+                # A terminal verdict is skipped because re-running it would
+                # repeat a settled question. A 'verified' verdict on a record
+                # with no image is not settled: it describes an image that is
+                # not there, so it has no subject and must not exempt the
+                # record. Every other terminal verdict - including a proven
+                # no_official_image and a source_blocked host - still applies,
+                # so this does not reopen work the pipeline deliberately closed.
                 stmt = stmt.where(
                     Scholarship.image_evaluation_status.is_(None)
                     | Scholarship.image_evaluation_status.not_in(tuple(TERMINAL_STATUSES))
+                    | (
+                        (Scholarship.image_evaluation_status == "verified")
+                        & (Scholarship.image_url.is_(None))
+                    )
                 )
             stmt = stmt.order_by(Scholarship.id)
             rows = list(session.execute(stmt).all())
