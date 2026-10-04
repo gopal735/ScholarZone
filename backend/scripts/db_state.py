@@ -238,25 +238,25 @@ def main() -> int:
                 )
             )
             armed = [
-                r
-                for r in conn.execute(
+                int(r[0])
+                for r in session.execute(
                     text(
                         "SELECT id FROM scholarships "
                         "WHERE auto_delete_candidate_since IS NOT NULL ORDER BY id"
                     )
                 ).all()
             ]
-            print(f"  armed_ids                    {[int(r[0]) for r in armed]}")
+            print(f"  armed_ids                    {armed}")
             protected = [
-                r
-                for r in conn.execute(
+                int(r[0])
+                for r in session.execute(
                     text(
                         "SELECT id FROM scholarships "
                         "WHERE deletion_protected IS TRUE ORDER BY id"
                     )
                 ).all()
             ]
-            print(f"  deletion_protected_ids       {[int(r[0]) for r in protected]}")
+            print(f"  deletion_protected_ids       {protected}")
         except Exception as exc:  # noqa: BLE001
             # A column that does not exist yet is a deploy-ordering fact, not a
             # reason to abandon the rest of the census.
