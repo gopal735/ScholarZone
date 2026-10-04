@@ -1,0 +1,35 @@
+name: Image Audit Check
+
+# Read-only confirmation that the image mutation audit is live on production.
+#
+# Every statement in scripts/verify_image_audit.py is a SELECT. It
+# deliberately creates no synthetic mutation: proving the trigger fires would
+# itself alter a scholarship, which would corrupt the very evidence this audit
+# exists to preserve.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  verify-image-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          cd backend
+          pip install -r requirements.txt
+
+      - name: Verify image mutation audit (read-only)
+        run: |
+          cd backend
+          python scripts/verify_image_audit.py
+        env:
+          SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
