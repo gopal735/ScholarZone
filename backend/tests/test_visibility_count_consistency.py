@@ -89,7 +89,12 @@ def session():
         # Not verified.
         Scholarship(
             id=4, title="Unverified", country="UK", degree="PhD", funding="Full",
-            is_verified=False, is_archived=False, verification_status="active",
+            # "Not verified" is now expressed by the authoritative status, not by the
+        # legacy boolean. Seeding is_verified=False with an "active" status
+        # described a record whose verification IS resolved while its
+        # bookkeeping disagreed - which the contract says must publish.
+        is_verified=False, is_archived=False,
+        verification_status="needs_review",
             image_url="https://example.org/u.svg",
             image_verified_at=__import__("datetime").date(2026, 10, 1),
             image_source_type="official_government",

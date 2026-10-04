@@ -255,6 +255,7 @@ class TestPublicQualityGate:
 
         _add(
             factory, 1, url="https://a.example.org/p/1", is_verified=False,
+            verification_status="needs_review",
             image_url="https://a.example.org/logo.png",
             image_verified_at=datetime.now(timezone.utc),
         )
