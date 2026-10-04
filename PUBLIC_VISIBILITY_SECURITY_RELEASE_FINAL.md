@@ -3,16 +3,24 @@
 | | |
 | --- | --- |
 | Base SHA (`origin/master`) | `573a983b004ab08578497272659123323ab489b7` |
-| Final candidate SHA | `38700d8973948754fd38cf23123773a20d20f5e2` |
-| Candidate tree | `d9f86c4359f7b458caaf1817eeba51c1c8e8e0f9` |
-| Master tree (unchanged) | `4f97927dfbe99e83000799eee44da328356e2bd4` |
+| **Verified candidate SHA** | **`38700d8973948754fd38cf23123773a20d20f5e2`** — fix + all 21 tests, no documentation |
+| Verified candidate tree | `d9f86c4359f7b458caaf1817eeba51c1c8e8e0f9` |
+| Branch tip (adds only this report) | `security/public-visibility-release` |
 | Release branch | `security/public-visibility-release` |
 | Worktree | `C:\Users\GopaL\AppData\Local\Temp\kilo\visibility-release-wt` |
 | PR | **https://github.com/gopal735/ScholarZone/pull/2** — OPEN, not merged, not deployed |
 | `origin/master` | **unchanged at `573a983`** |
 | Canonical production | `scholarzone-fwzj` · `https://scholarzone-fwzj.vercel.app` · `4edd154a3037` |
-| Diff scope | **3 files, +965 / −2** |
+| Diff scope (verified candidate) | **3 files, +965 / −2** |
+| Diff scope (PR, incl. both reports) | 4 files, +1453 / −2 |
 | Database migration | none · new dependency: none · config change: none |
+
+> **Which SHA to trust.** Every test, E2E and diff figure in this report was
+> measured on **`38700d8`**, which contains the fix and all 21 tests and nothing
+> else. The branch tip carries one further commit that adds *this document only* —
+> no product code, no test. `git diff 38700d8..HEAD -- backend/ frontend/`
+> returns empty. If the tip moves again for documentation reasons, re-anchor on
+> `38700d8` rather than on the branch tip.
 
 Classification labels: **OBSERVED FACT**, **PROVEN**, **DISPROVEN**, **PLAUSIBLE BUT UNPROVEN**, **UNKNOWN**.
 
@@ -311,11 +319,10 @@ status, and it is recorded here so nobody later mistakes it for one.
   actually running, not a remembered label.
 - After merge and deploy, `https://scholarzone-fwzj.vercel.app/api/health` should
   report the **12-character prefix of whichever commit was deployed**.
-- If master is fast-forwarded, that is `38700d8` → `38700d897394`. If GitHub
-  creates a merge commit, it is that new SHA.
-- **Independently of the SHA, the deployed tree must be `d9f86c4359f7b458caaf1817eeba51c1c8e8e0f9`.**
-  That tree hash is the durable check, because a SHA can differ while the artefact
-  is identical.
+- **Independently of the SHA, the deployed product code must equal that of
+  `38700d8`.** The tree hash `d9f86c43…` is the durable check for the verified
+  candidate, because a SHA can differ while the artefact is identical — and this
+  report is itself a commit that changes the tip without changing behaviour.
 
 **Deployment risk that needs an operator decision.** Releasing to the `scholarzone`
 project instead would leave the user-facing domain on the vulnerable build while
@@ -329,11 +336,15 @@ No Vercel configuration was changed in this task.
 ## 10. Exact Diff Scope
 
 ```
-base SHA           : 573a983b004ab08578497272659123323ab489b7
-final candidate SHA: 38700d8973948754fd38cf23123773a20d20f5e2
+base SHA           : 573a983b004ab08578497272659123323ab489b7   (origin/master)
+candidate SHA      : 38700d8973948754fd38cf23123773a20d20f5e2   (verified)
+candidate tree     : d9f86c4359f7b458caaf1817eeba51c1c8e8e0f9
 files changed      : 3
 diffstat           : 3 files changed, 965 insertions(+), 2 deletions(-)
 ```
+
+(The PR carries one further file, this report, for a PR total of 4 files and
++1453 / −2. It changes no product code and no test.)
 
 | File | +/- | Role |
 | --- | --- | --- |
@@ -423,7 +434,9 @@ Justification, tied to evidence rather than confidence:
    project (§9).
 3. After deploy, verify `/api/health` reports the new revision **and** spot-check a
    known non-public id returns 404 with an empty body.
-4. Confirm the deployed tree is `d9f86c4359f7b458caaf1817eeba51c1c8e8e0f9`.
+4. Confirm the deployed product code matches `38700d8` — `/api/health` reports the
+   SHA that was built, and `git diff 38700d8 <deployed-sha> -- backend/app/
+   frontend/` must be empty.
 
 ### Why this should not wait for a batch
 
