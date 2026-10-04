@@ -9,10 +9,17 @@ question before the interface has asked one:
   list that drifts away from the server's.
 * ``POST /mentor/message``   - the grounded answer.
 
-**Both require a session.** There is no public mentor route, and no handler here
-accepts a user id: ownership is resolved from the cookie by ``require_user``
-before the handler body runs, so there is no code path in which a caller can name
-whose application they want to discuss.
+**Only the answer requires a session.** ``GET /overview`` is intentionally public:
+it returns static vocabulary and does no database work, so there is nothing in it
+that could describe an account. It has to be reachable before sign-in, because the
+interface asks it which questions exist in order to render the composer.
+``POST /message`` is the private surface, and it resolves ownership from the cookie
+via ``require_user`` before the handler body runs, so there is no code path in which
+a caller can name whose application they want to discuss. No handler here accepts a
+user id.
+
+The public/private split is asserted by ``TestTheOverviewIsPublicAndTheMessageIsNot``
+so the two halves cannot drift apart again.
 
 **Rate limiting is scoped to this router deliberately.** The platform has no
 inbound limiter anywhere, so this adds one without changing the behaviour of any

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * The mentor's wording.
  *
  * These are the assertions that keep the interface from telling a small lie: an
@@ -10,6 +10,7 @@
 import { describe, expect, it } from 'vitest'
 
 import {
+  evidenceStatusWord,
   deadlineText,
   evidenceTone,
   isClosedDeadline,
@@ -103,12 +104,44 @@ describe('priority wording', () => {
 })
 
 describe('provider wording', () => {
-  it('is honest that the default answer is composed from records', () => {
-    expect(providerText('disabled', false)).toBe('Composed from ScholarZone records')
+    it('is honest that the default answer is composed from records', () => {
+      expect(providerText('disabled', false)).toBe('Composed from ScholarZone records')
+    })
+
+    it('only claims assistance when assistance was actually used', () => {
+      expect(providerText('configured', true)).toBe('Composed with assistance')
+      expect(providerText('configured', false)).toBe('Composed from ScholarZone records')
+    })
   })
 
-  it('only claims assistance when assistance was actually used', () => {
-    expect(providerText('configured', true)).toBe('Composed with assistance')
-    expect(providerText('configured', false)).toBe('Composed from ScholarZone records')
+  describe('evidence status word', () => {
+    // Defect: a chip printed its basis twice - once as a badge here and once on
+    // the provenance line - so one sourced fact read as two claims.
+    it('shows the verification state as the badge', () => {
+      expect(
+        evidenceStatusWord({
+          basis: 'ScholarZone catalogue',
+          verification: 'Verified',
+        })
+      ).toBe('Verified')
+    })
+
+    it('does not fall back to the basis', () => {
+      expect(
+        evidenceStatusWord({ basis: 'Application Workspace', verification: null })
+      ).toBe('')
+      expect(evidenceStatusWord({ basis: 'Application Workspace' })).toBe('')
+    })
+
+    it('never renders the basis as a second badge beside the provenance line', () => {
+      const entry = { basis: 'Application Workspace', verification: 'Verified' }
+      const badge = evidenceStatusWord(entry)
+      expect(badge).not.toBe(entry.basis)
+      expect(badge).toBe(entry.verification)
+    })
+
+    it('is empty rather than throwing for a missing entry', () => {
+      expect(evidenceStatusWord(null)).toBe('')
+      expect(evidenceStatusWord(undefined)).toBe('')
+    })
   })
-})

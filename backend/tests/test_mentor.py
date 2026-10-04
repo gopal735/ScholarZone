@@ -1,4 +1,4 @@
-"""GROUNDed AI Mentor 1.0.
+﻿"""GROUNDed AI Mentor 1.0.
 
 The failure this suite exists to prevent is not a crash. It is a mentor that is
 fluent, confident and wrong: reporting a deadline nobody published, calling an
@@ -20,6 +20,7 @@ canonical service was genuinely consulted rather than reimplemented.
 from __future__ import annotations
 
 import itertools
+import json
 import logging
 from datetime import date, datetime, timedelta, timezone
 
@@ -1273,3 +1274,124 @@ class TestIntentClassification:
         first = intents.classify(message)
         second = intents.classify(message)
         assert first.kind == second.kind
+
+
+# --------------------------------------------------------------------------- vacuity guard
+
+
+class TestTheOverviewIsPublicAndTheMessageIsNot:
+    """Pin the intended public/private split.
+
+    The module docstring once claimed "Both require a session. There is no public
+    mentor route", which contradicted this route's own documentation and the
+    implementation. The docstring has been corrected; this class stops the two
+    halves drifting apart again, in either direction.
+    """
+
+    STATIC_KEYS = {
+        "supported_intents",
+        "intents",
+        "redirects",
+        "max_message_length",
+        "assistance_available",
+    }
+
+    def test_the_overview_is_reachable_without_a_session(self, client):
+        response = client.get("/mentor/overview")
+        assert response.status_code == 200, response.text
+
+    def test_the_overview_carries_static_vocabulary_only(self, client):
+        body = client.get("/mentor/overview").json()
+        assert set(body) == self.STATIC_KEYS, (
+            f"the public overview changed shape: {sorted(body)}")
+        flat = json.dumps(body).lower()
+        for leak in ("email", "password", "token", "user_id", "scholarship_id",
+                     "application_id", "deadline_date"):
+            assert leak not in flat, (
+                f"the public overview exposes {leak!r}; it is reachable before "
+                "sign-in, so it must stay vocabulary-only")
+
+    def test_the_message_still_requires_a_session(self, client):
+        assert client.post(
+            "/mentor/message", json={"message": "What should I do now?"}
+        ).status_code == 401
+
+    def test_a_signed_in_caller_gets_the_same_static_overview(self, client, db):
+        """Authenticating must not change the overview's contents: it is static."""
+        anonymous = client.get("/mentor/overview").json()
+        user = make_user(db, "mentor-overview-static@example.com")
+        login(client, user.email)
+        assert client.get("/mentor/overview").json() == anonymous
+
+
+class TestFixturesCannotSilentlyBecomeVacuous:
+    """A closed fixture makes every grounding assertion assert nothing.
+
+    This suite once pinned a fixed deadline the wall clock had already passed: the
+    record became a closed round, was dropped from the match list, and every
+    match-dependent assertion passed against an empty context. These tests fail if
+    that can happen again quietly, and they include the negative control that
+    proves the check can actually tell a closed record from an open one.
+    """
+
+    def test_the_shared_fixture_is_open_and_in_the_future(self, db):
+        record = make_scholarship(db)
+        db.refresh(record)
+        assert record.status == "open", record.status
+        assert record.deadline_date is not None
+        assert record.deadline_date > TODAY, (
+            f"fixture deadline {record.deadline_date} is not after {TODAY}; a "
+            "non-future deadline turns the record into a closed round")
+        assert record.deadline_precision == "exact"
+
+    def test_the_shared_fixture_satisfies_public_visibility(self, db):
+        from app.repositories.scholarships import public_visibility_conditions
+        from app.models import Scholarship
+
+        record = make_scholarship(db)
+        visible = db.query(Scholarship).filter(*public_visibility_conditions()).all()
+        assert record.id in {r.id for r in visible}, (
+            "the shared fixture is not publicly visible, so every grounding "
+            "assertion would be made against an empty catalogue")
+
+    def test_the_target_record_actually_reaches_the_evidence(self, client, db):
+        """Assert presence BEFORE asserting presentation."""
+        user = make_user(db, "mentor-vacuity-present@example.com")
+        login(client, user.email)
+        give_profile(db, user)
+        record = make_scholarship(db)
+        created = client.post("/api/applications", json={"scholarship_id": record.id})
+        assert created.status_code == 201, created.text
+
+        body = ask(client, "What deadlines should I care about?").json()
+        ids = {e["scholarship_id"] for e in body["known"] if e.get("scholarship_id")}
+        assert record.id in ids, (
+            f"fixture record {record.id} never reached the evidence (saw {ids}); "
+            "an assertion about its presentation would be vacuous")
+
+    def test_a_closed_record_is_detected_as_absent(self, db):
+        """Negative control: the guard can tell a closed record from an open one.
+
+        ``build_context`` sources ``context.scholarships`` from ``dashboard.matches``,
+        which is where a past deadline removes a record. Without this control the
+        positive test could pass for the wrong reason - because nothing is ever
+        visible - and the whole class would be theatre. Note this asserts on the
+        context, not on mentor evidence: an application on a closed scholarship
+        still yields application evidence, so evidence alone cannot detect this.
+        """
+        from app.services.mentor.context import build_context
+
+        user = make_user(db, "mentor-vacuity-closed@example.com")
+        give_profile(db, user)
+        open_record = make_scholarship(db)
+        closed = make_scholarship(
+            db, status="closed", deadline_date=TODAY - timedelta(days=30))
+
+        context = build_context(db, user)
+        ids = [s.scholarship_id for s in context.scholarships]
+        assert open_record.id in ids, (
+            "the open fixture record is missing from the match list, so every "
+            "match-dependent assertion in this suite is currently vacuous")
+        assert closed.id not in ids, (
+            "a closed record was still treated as matchable, so this guard cannot "
+            "detect the vacuous case it exists to catch")
