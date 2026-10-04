@@ -1,0 +1,491 @@
+/*
+ * GROUNDed AI Mentor.
+ *
+ * Tokens only, for the same reason the dashboard and the workspace use them:
+ * dark mode is correct without a single extra rule here, because
+ * `[data-theme='dark']` redefines the tokens this file never names.
+ *
+ * The visual argument of this page is that four different kinds of statement must
+ * not read as one voice. Mentor guidance, verified facts, evidence and unknowns
+ * are separated by weight and rule rather than by colour alone - every tone in
+ * here is also carried as a word in the markup, so nothing depends on seeing the
+ * page. Colour is reinforcement, never the message.
+ */
+
+.mentor-page {
+  width: 100%;
+}
+
+.mentor-page__inner {
+  width: min(100%, var(--grid-max));
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+}
+
+/* ------------------------------------------------------------------ masthead */
+
+.mentor-page__masthead {
+  padding-bottom: var(--space-5);
+  border-bottom: 1px solid var(--sz-section-divider);
+}
+
+.mentor-page__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-2xl);
+  line-height: var(--text-2xl-lh);
+  letter-spacing: var(--track-section);
+  color: var(--text-primary);
+}
+
+.mentor-page__lede {
+  max-width: var(--sz-measure);
+  margin: var(--space-3) 0 0;
+  color: var(--text-secondary);
+  font-size: var(--text-md);
+  line-height: var(--text-md-lh);
+}
+
+/* -------------------------------------------------------------- status strip */
+
+.mentor-page__notice {
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-md);
+  background: var(--surface-raised);
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+}
+
+.mentor-page__notice--error {
+  border-left-color: var(--danger);
+}
+
+.mentor-page__thinking {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+.mentor-page__error {
+  padding: var(--space-6);
+  border: 1px solid var(--danger-border);
+  border-radius: var(--radius-lg);
+  background: var(--danger-soft);
+}
+
+.mentor-page__error-title {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-lg);
+  color: var(--text-primary);
+}
+
+.mentor-page__error p {
+  margin: 0 0 var(--space-4);
+  color: var(--text-secondary);
+}
+
+.mentor-page__empty {
+  margin: 0;
+  padding: var(--space-4);
+  border: 1px dashed var(--accent-border);
+  border-radius: var(--radius-lg);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+/* The answer is programmatically focusable so a keyboard reader lands on the
+   new content. It must not then draw a ring around the whole panel, which would
+   be visual noise rather than an affordance. */
+.mentor-page__answer:focus {
+  outline: none;
+}
+
+.mentor-page__answer:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+  border-radius: var(--radius-lg);
+}
+
+/* ------------------------------------------------------------- answer blocks */
+
+.mentor-answer {
+  padding: var(--space-7);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface-raised);
+}
+
+.mentor-answer__source {
+  margin: 0 0 var(--space-2);
+  color: var(--accent);
+  font-size: var(--text-2xs);
+  font-weight: 800;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+}
+
+.mentor-answer__headline {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-xl);
+  line-height: var(--text-xl-lh);
+  color: var(--text-primary);
+}
+
+.mentor-answer__why {
+  margin: var(--space-3) 0 0;
+  max-width: var(--sz-measure);
+  color: var(--text-secondary);
+  font-size: var(--text-base);
+}
+
+.mentor-answer__origin {
+  margin: var(--space-3) 0 0;
+  color: var(--text-faint);
+  font-size: var(--text-xs);
+}
+
+.mentor-answer__section {
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--sz-rule);
+}
+
+.mentor-answer__heading {
+  margin: 0;
+  font-size: var(--text-md);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.mentor-answer__section-note {
+  margin: var(--space-2) 0 var(--space-4);
+  max-width: var(--sz-read-max);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+.mentor-answer__unknown,
+.mentor-answer__notes,
+.mentor-answer__redirects,
+.mentor-evidence,
+.mentor-answer__actions,
+.mentor-page__suggestion-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mentor-answer__unknown-item,
+.mentor-answer__notes li,
+.mentor-answer__redirects li {
+  position: relative;
+  padding: var(--space-2) 0 var(--space-2) var(--space-5);
+  max-width: var(--sz-read-max);
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+}
+
+/* A marker rather than a bullet, so the list reads as annotation on the answer
+   instead of as another list of facts. */
+.mentor-answer__unknown-item::before,
+.mentor-answer__notes li::before,
+.mentor-answer__redirects li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: calc(var(--space-2) + 0.45em);
+  width: 10px;
+  height: 1px;
+  background: var(--text-faint);
+}
+
+/* ------------------------------------------------------------------- evidence */
+
+.mentor-evidence {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: var(--space-4);
+}
+
+.mentor-evidence__item {
+  padding: var(--space-4);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+}
+
+.mentor-evidence__item--success {
+  border-left-color: var(--success);
+}
+
+.mentor-evidence__item--warning {
+  border-left-color: var(--warning);
+}
+
+.mentor-evidence__item--muted {
+  border-left-color: var(--text-faint);
+  background: var(--surface-subtle);
+}
+
+.mentor-evidence__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.mentor-evidence__label {
+  font-size: var(--text-2xs);
+  font-weight: 800;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.mentor-evidence__value {
+  margin: var(--space-2) 0 0;
+  color: var(--text-primary);
+  font-size: var(--text-sm);
+  line-height: var(--text-sm-lh);
+}
+
+.mentor-evidence__basis {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: var(--space-3) 0 0;
+}
+
+.mentor-evidence__basis-name {
+  color: var(--text-secondary);
+  font-size: var(--text-xs);
+  font-weight: 600;
+}
+
+.mentor-evidence__basis-field {
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+}
+
+.mentor-evidence__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--sz-touch-min);
+  margin-top: var(--space-2);
+  color: var(--accent);
+  font-size: var(--text-xs);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------- next actions */
+
+.mentor-answer__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.mentor-action {
+  padding: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+}
+
+.mentor-action__head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.mentor-action__title {
+  margin: 0;
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.mentor-action__detail {
+  margin: var(--space-2) 0 0;
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+}
+
+.mentor-action__cta {
+  margin-top: var(--space-3);
+}
+
+/* ---------------------------------------------------------------- suggestions */
+
+.mentor-page__suggestions-heading {
+  margin: 0 0 var(--space-4);
+  font-size: var(--text-md);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.mentor-page__suggestion-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.mentor-page__suggestion {
+  min-height: var(--sz-touch-min);
+}
+
+/* ------------------------------------------------------------------ composer */
+
+.mentor-composer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-6);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface-raised);
+}
+
+.mentor-composer__label {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.mentor-composer__input {
+  width: 100%;
+  min-height: calc(var(--sz-touch-min) * 2);
+  resize: vertical;
+}
+
+.mentor-composer__hint {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+}
+
+.mentor-composer__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.mentor-composer__count {
+  margin: 0;
+  color: var(--text-faint);
+  font-size: var(--text-xs);
+  font-variant-numeric: tabular-nums;
+}
+
+/* -------------------------------------------------------------------- footer */
+
+.mentor-page__footer {
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--sz-section-divider);
+}
+
+.mentor-page__source,
+.mentor-page__privacy {
+  margin: 0 0 var(--space-2);
+  max-width: var(--sz-read-max);
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+}
+
+.mentor-page__privacy {
+  color: var(--text-faint);
+}
+
+/* ----------------------------------------------------------------- skeleton */
+
+.mentor-page__skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.mentor-page__skeleton span {
+  display: block;
+  height: var(--space-6);
+  border-radius: var(--radius-sm);
+  background: var(--sz-skeleton-base);
+}
+
+/* ------------------------------------------------------------------ reduced */
+
+/* The system already collapses durations globally. This only names the mentor's
+   own transition so the class it toggles has something to switch off. */
+@media (prefers-reduced-motion: reduce) {
+  .mentor-page__suggestion,
+  .mentor-answer {
+    transition: none !important;
+  }
+}
+
+/* --------------------------------------------------------------- responsive */
+
+@media (max-width: 1024px) {
+  .mentor-evidence {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .mentor-page__inner {
+    gap: var(--space-8);
+  }
+
+  .mentor-answer,
+  .mentor-composer {
+    padding: var(--space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .mentor-page__title {
+    font-size: var(--text-xl);
+  }
+
+  .mentor-composer__footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .mentor-composer__footer .sz-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .mentor-page__suggestion-list {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .mentor-page__suggestion {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+/* A long provider URL in an evidence value must not push the panel wider than a
+   320px viewport. */
+@media (max-width: 380px) {
+  .mentor-evidence__value,
+  [href^='http'] {
+    overflow-wrap: anywhere;
+  }
+}

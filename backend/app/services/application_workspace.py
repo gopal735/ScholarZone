@@ -383,6 +383,24 @@ def derive_checklist(
     return items[:MAX_CHECKLIST_ITEMS]
 
 
+def open_task_label(items: list[ApplicationChecklistItem]) -> str | None:
+    """The first incomplete task, in checklist order, or ``None``.
+
+    Extracted so that "what should I finish next" has exactly one definition. The
+    mentor needs this answer as much as the workspace does, and two
+    implementations of "first incomplete by position" would eventually disagree
+    about which task a student is actually on.
+    """
+    return next(
+        (
+            item.label
+            for item in sorted(items, key=lambda entry: (entry.position, entry.id))
+            if not item.completed
+        ),
+        None,
+    )
+
+
 def compute_progress(items: list[ApplicationChecklistItem]) -> float | None:
     """Completed weight as a percentage of counted weight.
 
@@ -495,14 +513,7 @@ def _summary(
     )
     verified = public_verified_from_status(status_value) if status_value else False
 
-    next_open = next(
-        (
-            item.label
-            for item in sorted(items, key=lambda entry: (entry.position, entry.id))
-            if not item.completed
-        ),
-        None,
-    )
+    next_open = open_task_label(items)
 
     return ApplicationSummary(
         id=record.id,
@@ -1053,6 +1064,7 @@ __all__ = [
     "WorkspaceError",
     "build_detail",
     "compute_progress",
+    "open_task_label",
     "create_application",
     "derive_checklist",
     "get_owned",

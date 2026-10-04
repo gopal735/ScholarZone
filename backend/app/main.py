@@ -26,6 +26,7 @@ from .routers.enrichment import router as enrichment_router
 from .routers.auth import router as auth_router
 from .routers.dashboard import router as dashboard_router
 from .routers.applications import router as applications_router
+from .routers.mentor import router as mentor_router
 from .services.application_workspace import WorkspaceError
 from .seed import seed_database
 
@@ -281,6 +282,12 @@ app.include_router(dashboard_router)
 # dependency as the dashboard. It owns no route that could shadow a public one:
 # its literal prefix is /applications and its only dynamic segment follows it.
 app.include_router(applications_router)
+# The mentor is registered last of all, behind the same session dependency. Its
+# prefix is /mentor and its routes are two literals, so it cannot shadow a
+# public route - but registering it last keeps that structural rather than
+# dependent on scan order, which is the same discipline the match router uses
+# for /scholarships/match.
+app.include_router(mentor_router)
 
 
 @app.get("/debug/fix-null-lists")

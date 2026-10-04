@@ -10,6 +10,7 @@ import SavedScholarshipsPage from './pages/SavedScholarshipsPage'
 import ComparePage from './pages/ComparePage'
 import DashboardPage from './pages/DashboardPage'
 import ApplicationsPage from './pages/ApplicationsPage'
+import MentorPage from './pages/MentorPage'
 import AdminPage from './pages/AdminPage'
 import AdminVerificationPage from './pages/AdminVerificationPage'
 import CountryPage from './pages/CountryPage'
@@ -45,6 +46,10 @@ function App() {
         <Route path="/applications" element={<ApplicationsPage />} />
         {/* The workspace itself, so a refresh or a shared link lands on it. */}
         <Route path="/applications/:applicationId" element={<ApplicationsPage />} />
+        {/* The mentor. Like the dashboard and the workspace, it resolves its own
+            access state from the server session rather than wrapping the route in
+            a client-side guard that could only trust a browser-supplied value. */}
+        <Route path="/mentor" element={<MentorPage />} />
         <Route path="/compare" element={<ComparePage />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/admin/verification" element={<AdminVerificationPage />} />

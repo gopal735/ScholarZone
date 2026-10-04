@@ -70,6 +70,14 @@ export default function Navigation() {
             <CountedUtilityLink to="/applications" label="Applications" className="nav-utility-link" animate={!prefersReducedMotion} />
             <CountedUtilityLink to="/saved" label="Saved" count={savedIds.length} className="nav-utility-link" animate={!prefersReducedMotion} />
             <CountedUtilityLink to="/compare" label="Compare" count={compareIds.length} className="nav-utility-link" animate={!prefersReducedMotion} />
+            {/* The mentor is a reading surface over the records the three links
+                above already point at, so it sits with them rather than in the
+                primary row. It resolves its own access state from the server, so
+                like the dashboard this link is a convenience and never the thing
+                that decides whether someone may see it. */}
+            <NavLink to="/mentor" className={({ isActive }) => `nav-utility-link ${isActive ? 'active' : ''}`}>
+              Mentor
+            </NavLink>
             {status === 'checking' ? (
               <span className="nav-session-status">Checking&hellip;</span>
             ) : status === 'authenticated' ? (
