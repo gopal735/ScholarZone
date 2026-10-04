@@ -1353,3 +1353,38 @@ class TestDashboardIntegration:
         hidden = make_scholarship(db, is_archived=True)
         login(client, "dash4@example.com")
         assert client.get("/dashboard").json()["saved"] == []
+
+
+class TestListCarriesTrustState:
+    """Regression: the list row rendered an empty "Verification" label.
+
+    The trust fields were declared on the detail schema only, so pydantic dropped
+    them from the list response and the card rendered a heading with nothing
+    under it. An API assertion on the detail endpoint would never have seen it,
+    because only the summary row was missing them.
+    """
+
+    def test_the_list_row_carries_a_verification_label(self, client, db):
+        make_user(db, "trust-row@example.com")
+        scholarship = make_scholarship(db)
+        login(client, "trust-row@example.com")
+        start(client, scholarship.id)
+
+        row = client.get("/api/applications").json()["applications"][0]
+        assert row["verification_status"] == "active"
+        assert row["verified"] is True
+        assert row["verification_display"] == "Verified"
+
+    def test_an_unlisted_row_never_carries_a_verified_claim(self, client, db):
+        make_user(db, "trust-unlisted@example.com")
+        scholarship = make_scholarship(db)
+        login(client, "trust-unlisted@example.com")
+        start(client, scholarship.id)
+
+        scholarship.is_archived = True
+        db.commit()
+
+        row = client.get("/api/applications").json()["applications"][0]
+        assert row["availability"]["is_available"] is False
+        assert row["verified"] is False
+        assert row["verification_display"] == "No longer listed"

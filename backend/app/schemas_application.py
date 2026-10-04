@@ -237,6 +237,15 @@ class ApplicationSummary(BaseModel):
     checklist_completed: int = 0
     next_open_task: str | None = None
 
+    #: Trust state, on the list row as well as the detail. Derived from the
+    #: authoritative ``verification_status`` by the shared public contract, never
+    #: from the legacy ``is_verified`` column. For a scholarship that has left the
+    #: public universe this is deliberately unverified and says so, because a
+    #: record nobody can see must not carry a public trust claim.
+    verification_status: str
+    verified: bool
+    verification_display: str
+
     updated_at: datetime
     version: int
 
@@ -260,9 +269,6 @@ class ApplicationDetail(ApplicationSummary):
     fit_label_display: str | None = None
     confidence_score: float | None = None
     readiness_label: str | None = None
-    verification_status: str
-    verified: bool
-    verification_display: str
 
     #: What the engine says is outstanding for this student and this
     #: scholarship, as structured evidence with a reason for each.

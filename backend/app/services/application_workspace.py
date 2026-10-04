@@ -529,6 +529,12 @@ def _summary(
         checklist_total=len([item for item in items if item.weight > 0]),
         checklist_completed=len([item for item in items if item.weight > 0 and item.completed]),
         next_open_task=next_open,
+        # Trust travels on the list row as well as the detail, derived from the
+        # authoritative status. A scholarship that is no longer listed reports no
+        # status at all and is never presented as verified.
+        verification_status=status_value or "not_listed",
+        verified=verified,
+        verification_display=verification_display(status_value) if status_value else "No longer listed",
         updated_at=record.updated_at,
         version=record.version,
     )
@@ -712,6 +718,9 @@ def build_detail(
                 }
             )
 
+    # The trust fields are not restated here: they come from the summary, which
+    # is the single place they are derived. Passing them again would be a second
+    # derivation of the same value.
     return ApplicationDetail(
         **summary.model_dump(),
         notes=record.notes,
@@ -720,9 +729,6 @@ def build_detail(
         fit_label_display=match_item.fit_label_display if match_item else None,
         confidence_score=match_item.confidence_score if match_item else None,
         readiness_label=match_item.readiness.label if (match_item and match_item.readiness) else None,
-        verification_status=status_value or "not_listed",
-        verified=public_verified_from_status(status_value) if status_value else False,
-        verification_display=verification_display(status_value) if status_value else "No longer listed",
         open_gaps=gaps,
         created_at=record.created_at,
     )
