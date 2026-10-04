@@ -1,0 +1,764 @@
+/*
+ * Application Workspace styles.
+ *
+ * Tokens only, for the same reason the dashboard uses them: dark mode is correct
+ * without a single extra rule here, because [data-theme='dark'] redefines the
+ * tokens this file never names.
+ *
+ * Urgency is encoded twice - a colour and a word - so it survives a monochrome
+ * display and a colour-vision difference. The left rules on the urgency tag are
+ * shape as well as colour for the same reason.
+ *
+ * Density over decoration. This is a working surface: a student scans deadlines
+ * and outstanding tasks, so type stays at the metadata floor, cards are flat
+ * until hovered, and the layout collapses to one column early rather than
+ * squeezing two into a phone.
+ */
+
+.applications-page {
+  width: 100%;
+}
+
+.applications-page__inner {
+  width: min(100%, var(--grid-max));
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+}
+
+.applications-page__header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-bottom: var(--space-5);
+  border-bottom: 1px solid var(--sz-section-divider);
+}
+
+.applications-page__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-2xl);
+  line-height: var(--text-2xl-lh);
+  letter-spacing: var(--track-section);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.applications-page__lede,
+.applications-page__count {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin: var(--space-3) 0 0;
+  max-width: var(--sz-measure);
+}
+
+.applications-page__count {
+  margin: 0;
+  font-size: var(--text-2xs);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.applications-page__error {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-8);
+  border: 1px solid var(--danger-border);
+  border-radius: var(--radius-panel);
+  background: var(--surface-raised);
+}
+
+.applications-page__error h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-xl);
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.applications-page__error p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+/*
+ * Touch target floor. The shared .sz-btn primitive lands at 43.5px because its
+ * border sits inside its box, so the token is re-asserted here rather than by
+ * editing a primitive every other surface shares.
+ */
+.applications-page .sz-btn,
+.application-workspace .sz-btn,
+.application-workspace select.sz-input,
+.applications-page select.sz-input {
+  min-height: var(--sz-touch-min);
+}
+
+/* ------------------------------------------------------------- application list */
+
+.applications-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.application-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--surface-raised);
+  transition: border-color var(--duration-micro) var(--timing-micro),
+    box-shadow var(--duration-lift) var(--timing-smooth);
+}
+
+.application-item:hover {
+  border-color: var(--accent-border);
+  box-shadow: var(--shadow-hover);
+}
+
+.application-item > article {
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/*
+ * An unlisted scholarship is dimmed by a rule rather than by opacity on the whole
+ * card, so its text keeps full contrast and stays readable.
+ */
+.application-item--unlisted {
+  border-left: 3px solid var(--sz-provenance-hollow);
+}
+
+.application-item__header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.application-item__identity {
+  min-width: 0;
+  flex: 1 1 260px;
+}
+
+.application-item__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-lg);
+  line-height: var(--text-lg-lh);
+  margin: 0;
+}
+
+.application-item__title a {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.application-item__title a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.application-item__meta {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin: var(--space-2) 0 0;
+}
+
+.application-item__state {
+  font-size: var(--text-2xs);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  border: 1px solid var(--accent-border);
+  border-radius: var(--radius-pill);
+  padding: var(--space-1) var(--space-3);
+  white-space: nowrap;
+}
+
+.application-item__deadline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--sz-section-divider);
+  border-bottom: 1px solid var(--sz-section-divider);
+}
+
+.application-item__deadline-text {
+  font-size: var(--text-md);
+  color: var(--text-primary);
+  margin: 0;
+  font-weight: 500;
+}
+
+.application-item__deadline-note {
+  font-size: var(--text-2xs);
+  color: var(--text-faint);
+}
+
+.application-item__urgency {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+.application-item__urgency-icon {
+  width: 1em;
+  height: 1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+}
+
+/* Each urgency carries both a hue and a left rule, so it never relies on colour. */
+.application-item__urgency--overdue {
+  color: var(--danger);
+  border-color: var(--danger-border);
+  background: var(--danger-soft);
+  border-left-width: 3px;
+}
+
+.application-item__urgency--urgent {
+  color: var(--warning);
+  border-color: var(--warning-border);
+  background: var(--warning-soft);
+  border-left-width: 3px;
+}
+
+.application-item__urgency--soon {
+  color: var(--text-secondary);
+  border-color: var(--border-strong);
+  border-left-width: 3px;
+}
+
+.application-item__urgency--comfortable {
+  color: var(--success);
+  border-color: var(--success-border);
+  background: var(--success-soft);
+}
+
+.application-item__facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
+  gap: var(--space-3);
+  margin: 0;
+}
+
+.application-item__fact dt,
+.application-workspace__fact dt {
+  font-size: var(--text-2xs);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.application-item__fact dd,
+.application-workspace__fact dd {
+  margin: var(--space-1) 0 0;
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+}
+
+.is-verified {
+  color: var(--success);
+}
+
+.is-unconfirmed {
+  color: var(--warning);
+}
+
+.application-item__progress-head {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.application-item__progress-label {
+  font-size: var(--text-2xs);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.application-item__progress-value {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+}
+
+.application-item__progress-track {
+  height: 4px;
+  margin-top: var(--space-2);
+  border-radius: var(--radius-pill);
+  background: var(--surface-subtle);
+  overflow: hidden;
+}
+
+.application-item__progress-fill {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  transition: width var(--duration-smooth) var(--timing-smooth);
+}
+
+.application-item__progress--unmeasured {
+  font-size: var(--text-xs);
+  color: var(--text-faint);
+  margin: 0;
+}
+
+.application-item__next {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.application-item__unlisted-note {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin: 0;
+  padding-left: var(--space-3);
+  border-left: 2px solid var(--sz-provenance-hollow);
+}
+
+.application-item__footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--sz-section-divider);
+}
+
+.application-item__updated {
+  font-size: var(--text-2xs);
+  color: var(--text-faint);
+  margin-left: auto;
+}
+
+/* ---------------------------------------------------------------- workspace */
+
+.application-workspace {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.application-workspace__header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.application-workspace__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-xl);
+  line-height: var(--text-xl-lh);
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.application-workspace__meta {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  margin: var(--space-2) 0 0;
+}
+
+.application-workspace__notice {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.application-workspace__notice:not(:empty) {
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--surface-subtle);
+}
+
+.application-workspace__notice--success:not(:empty) {
+  border-color: var(--success-border);
+  background: var(--success-soft);
+  color: var(--text-primary);
+}
+
+.application-workspace__notice--error:not(:empty) {
+  border-color: var(--danger-border);
+  background: var(--danger-soft);
+  color: var(--text-primary);
+}
+
+.application-workspace__conflict {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4);
+  border: 1px solid var(--warning-border);
+  border-left: 3px solid var(--warning);
+  border-radius: var(--radius-card);
+  background: var(--warning-soft);
+}
+
+.application-workspace__conflict p {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  flex: 1 1 320px;
+}
+
+.application-workspace__grid {
+  display: grid;
+  grid-template-columns: minmax(min(100%, 0), 2fr) minmax(min(100%, 280px), 1fr);
+  gap: var(--space-5);
+  align-items: start;
+}
+
+.application-workspace__main,
+.application-workspace__aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.application-workspace__panel {
+  padding: var(--space-5);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--surface-raised);
+}
+
+.application-workspace__panel h3 {
+  font-family: var(--font-body);
+  font-size: var(--text-2xs);
+  font-weight: 600;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 var(--space-3);
+}
+
+.application-workspace__panel-note {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin: var(--space-2) 0 0;
+}
+
+.application-workspace__deadline {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.application-workspace__deadline--overdue {
+  color: var(--danger);
+}
+
+.application-workspace__deadline--urgent {
+  color: var(--warning);
+}
+
+.application-workspace__progress {
+  margin-bottom: var(--space-4);
+}
+
+.application-workspace__progress-track {
+  height: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-subtle);
+  overflow: hidden;
+}
+
+.application-workspace__progress-fill {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  transition: width var(--duration-smooth) var(--timing-smooth);
+}
+
+.application-workspace__progress-text {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin: var(--space-2) 0 0;
+}
+
+.application-workspace__state {
+  font-size: var(--text-lg);
+  color: var(--text-primary);
+  margin: 0 0 var(--space-3);
+}
+
+.application-workspace__field {
+  margin-top: var(--space-3);
+}
+
+.application-workspace__label {
+  display: block;
+  font-size: var(--text-2xs);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-1);
+}
+
+.application-workspace__select {
+  width: 100%;
+  /* 16px is the mobile input floor; below it iOS zooms the viewport on focus. */
+  font-size: max(1rem, var(--sz-input-font, 1rem));
+}
+
+.application-workspace__facts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin: 0;
+}
+
+.application-workspace__next {
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  margin: 0 0 var(--space-3);
+}
+
+.application-workspace__source {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--sz-touch-min);
+  font-size: var(--text-xs);
+  color: var(--accent);
+  margin-right: var(--space-4);
+  overflow-wrap: anywhere;
+}
+
+.application-workspace__notes-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.application-workspace__notes {
+  width: 100%;
+  min-height: 120px;
+  resize: vertical;
+  font-size: max(1rem, var(--sz-input-font, 1rem));
+  font-family: var(--font-body);
+  line-height: var(--text-base-lh);
+}
+
+.application-workspace__notes-footer {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.application-workspace__notes-count {
+  font-size: var(--text-2xs);
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+}
+
+/* ----------------------------------------------------------------- checklist */
+
+.checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.checklist__label {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  padding: var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  cursor: pointer;
+  min-height: var(--sz-touch-min);
+  transition: border-color var(--duration-micro) var(--timing-micro);
+}
+
+.checklist__label:hover {
+  border-color: var(--accent-border);
+}
+
+.checklist__label.is-complete {
+  background: var(--surface-subtle);
+}
+
+.checklist__checkbox {
+  width: 20px;
+  height: 20px;
+  margin: var(--space-1) 0 0;
+  flex-shrink: 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.checklist__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+  flex: 1;
+}
+
+.checklist__title {
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+}
+
+.checklist__label.is-complete .checklist__title {
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+.checklist__description {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+
+.checklist__source {
+  font-size: var(--text-2xs);
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+}
+
+.checklist__completed-at {
+  font-size: var(--text-2xs);
+  color: var(--text-faint);
+  white-space: nowrap;
+  align-self: center;
+}
+
+.application-workspace__checklist-empty {
+  padding: var(--space-4);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-card);
+}
+
+.application-workspace__checklist-empty h3 {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-2);
+}
+
+.application-workspace__checklist-empty p {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ----------------------------------------------------------------- skeleton */
+
+.applications-page__skeleton,
+.application-workspace__skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-6) 0;
+}
+
+.applications-page__skeleton span,
+.application-workspace__skeleton span {
+  display: block;
+  height: 96px;
+  border-radius: var(--radius-card);
+  background: var(--surface-subtle);
+}
+
+.application-workspace__skeleton span {
+  height: 220px;
+}
+
+/* --------------------------------------------------------------- responsive */
+
+@media (max-width: 1024px) {
+  .application-workspace__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .applications-page__inner {
+    gap: var(--space-8);
+  }
+
+  .application-item > article,
+  .application-workspace__panel {
+    padding: var(--space-4);
+  }
+
+  .application-item__updated {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .applications-page__title {
+    font-size: var(--text-xl);
+  }
+
+  .application-item__footer,
+  .application-workspace__notes-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .application-item__footer .sz-btn,
+  .application-workspace__notes-footer .sz-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .checklist__label {
+    flex-wrap: wrap;
+  }
+
+  .checklist__completed-at {
+    margin-left: 32px;
+  }
+}
+
+/* A long provider URL must not push a card wider than a 320px viewport. */
+@media (max-width: 380px) {
+  .application-workspace__source,
+  [href^='http'] {
+    overflow-wrap: anywhere;
+  }
+}

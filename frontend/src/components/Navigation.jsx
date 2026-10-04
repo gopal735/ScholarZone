@@ -67,6 +67,7 @@ export default function Navigation() {
           </div>
 
           <div className="nav-utilities">
+            <CountedUtilityLink to="/applications" label="Applications" className="nav-utility-link" animate={!prefersReducedMotion} />
             <CountedUtilityLink to="/saved" label="Saved" count={savedIds.length} className="nav-utility-link" animate={!prefersReducedMotion} />
             <CountedUtilityLink to="/compare" label="Compare" count={compareIds.length} className="nav-utility-link" animate={!prefersReducedMotion} />
             {status === 'checking' ? (

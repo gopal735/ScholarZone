@@ -25,6 +25,8 @@ from .routers.admin_verification import router as admin_verification_router
 from .routers.enrichment import router as enrichment_router
 from .routers.auth import router as auth_router
 from .routers.dashboard import router as dashboard_router
+from .routers.applications import router as applications_router
+from .services.application_workspace import WorkspaceError
 from .seed import seed_database
 
 
@@ -173,6 +175,26 @@ async def request_validation_error_handler(_: Request, __: RequestValidationErro
     return JSONResponse(status_code=422, content={"detail": "Invalid request parameters."})
 
 
+@app.exception_handler(WorkspaceError)
+async def workspace_error_handler(_: Request, exc: WorkspaceError) -> JSONResponse:
+    """Map a domain failure onto its HTTP status.
+
+    The application service raises one exception type carrying the status it
+    means, so the service can express "this is a conflict" without importing
+    FastAPI. The routing layer decides what that becomes on the wire.
+
+    A conflict is logged at warning level with the status and nothing else. The
+    message names states and versions, never note contents or credentials, so a
+    log line can be pasted into a bug report without leaking a student's private
+    work.
+    """
+    if exc.status_code >= 500:
+        logger.error("Workspace failure (%s)", exc.status_code)
+    elif exc.status_code == 409:
+        logger.info("Workspace conflict: %s", exc.message)
+    return JSONResponse(status_code=exc.status_code, content={"detail": exc.message})
+
+
 @app.exception_handler(Exception)
 async def unexpected_error_handler(_: Request, exc: Exception) -> JSONResponse:
     logger.exception("Unhandled application error", exc_info=exc)
@@ -255,6 +277,10 @@ app.include_router(enrichment_router)
 # cookie rather than from anything the browser sends.
 app.include_router(auth_router)
 app.include_router(dashboard_router)
+# The application workspace is registered last, behind the same session
+# dependency as the dashboard. It owns no route that could shadow a public one:
+# its literal prefix is /applications and its only dynamic segment follows it.
+app.include_router(applications_router)
 
 
 @app.get("/debug/fix-null-lists")

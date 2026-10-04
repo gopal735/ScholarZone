@@ -769,26 +769,50 @@ def build_dashboard(db: Session, user: User, as_of: date | None = None) -> Dashb
     saved_by_id = {row.scholarship_id: row for row in saved_rows}
     application_by_id = {row.scholarship_id: row for row in application_rows}
 
+    # Applications whose scholarship has since left the public universe. The
+    # student created these rows, so they are shown from the snapshot taken at
+    # that moment rather than dropped: a round closing must not make an
+    # application count quietly shrink.
+    snapshot_by_id = {row.scholarship_id: row for row in application_rows}
+
     def _reference(scholarship_id: int) -> ScholarshipReference | None:
         row = rows_by_id.get(scholarship_id)
-        if row is None:
-            # The student acted on a record the public directory no longer shows
-            # - archived, or failing the visibility gate. It is omitted rather
-            # than surfaced, because the catalogue's own visibility rules decide
-            # what this student is allowed to see.
+        if row is not None:
+            status = normalize_public_verification_status(row.verification_status)
+            return ScholarshipReference(
+                scholarship_id=row.id,
+                name=row.title,
+                country=row.country,
+                degree=row.degree,
+                funding=row.funding,
+                detail_url=f"/scholarships/{row.id}",
+                official_source_url=row.official_source_url,
+                verification_status=status,
+                verified=public_verified_from_status(status),
+                verification_display=verification_display(status),
+                is_listed=True,
+            )
+
+        snapshot = snapshot_by_id.get(scholarship_id)
+        if snapshot is None:
+            # A saved-only scholarship with no application history has nothing
+            # honest left to display, and the catalogue's own visibility rules
+            # decide what this student may see. It is omitted rather than
+            # reconstructed.
             return None
-        status = normalize_public_verification_status(row.verification_status)
+
         return ScholarshipReference(
-            scholarship_id=row.id,
-            name=row.title,
-            country=row.country,
-            degree=row.degree,
-            funding=row.funding,
-            detail_url=f"/scholarships/{row.id}",
-            official_source_url=row.official_source_url,
-            verification_status=status,
-            verified=public_verified_from_status(status),
-            verification_display=verification_display(status),
+            scholarship_id=snapshot.scholarship_id,
+            name=snapshot.scholarship_name_snapshot or f"Scholarship {snapshot.scholarship_id}",
+            country=snapshot.scholarship_country_snapshot or "",
+            degree=snapshot.scholarship_degree_snapshot or "",
+            funding=snapshot.scholarship_funding_snapshot,
+            detail_url=f"/scholarships/{snapshot.scholarship_id}",
+            official_source_url=snapshot.scholarship_source_url_snapshot,
+            verification_status="not_listed",
+            verified=False,
+            verification_display="No longer listed",
+            is_listed=False,
         )
 
     saved_items: list[SavedItem] = []

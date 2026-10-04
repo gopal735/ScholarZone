@@ -29,9 +29,116 @@ REQUIRED_COLUMNS = {
     "scholarships": {
         "image_kind": "VARCHAR(32) NULL",
     },
+    # Application Workspace 1.0. Every column below is additive and nullable or
+    # carries a default, so an existing row survives with a sensible value: a
+    # live application created before this migration gains outcome='pending',
+    # version=1 and a null note rather than becoming invalid. Nothing here
+    # rewrites or drops an existing value, which is what makes running this twice
+    # safe and running it on live data non-destructive.
+    "application_records": {
+        "outcome": "VARCHAR(16) NOT NULL DEFAULT 'pending'",
+        "version": "INTEGER NOT NULL DEFAULT 1",
+        "notes": "TEXT NULL",
+        "scholarship_name_snapshot": "VARCHAR(255) NULL",
+        "scholarship_country_snapshot": "VARCHAR(120) NULL",
+        "scholarship_degree_snapshot": "VARCHAR(255) NULL",
+        "scholarship_provider_snapshot": "VARCHAR(255) NULL",
+        "scholarship_funding_snapshot": "VARCHAR(120) NULL",
+        "scholarship_deadline_text_snapshot": "TEXT NULL",
+        "scholarship_deadline_date_snapshot": "DATE NULL",
+        "scholarship_source_url_snapshot": "VARCHAR(2048) NULL",
+    },
 }
 
 REQUIRED_TABLES = {
+    # application_records is listed here as well as having its new columns in
+    # REQUIRED_COLUMNS, and both are needed. Against a database that already has
+    # the table - production - the CREATE is a no-op and the ALTERs add what is
+    # missing. Against a fresh database the CREATE establishes the complete new
+    # shape and the ALTERs find nothing to do. Without the CREATE, the ALTERs
+    # would run against a table that does not exist yet.
+    "application_records": {
+        "postgresql": """
+            id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+            user_id INTEGER NOT NULL REFERENCES users(id),
+            scholarship_id INTEGER NOT NULL REFERENCES scholarships(id),
+            state VARCHAR(16) NOT NULL DEFAULT 'saved',
+            outcome VARCHAR(16) NOT NULL DEFAULT 'pending',
+            version INTEGER NOT NULL DEFAULT 1,
+            notes TEXT NULL,
+            scholarship_name_snapshot VARCHAR(255) NULL,
+            scholarship_country_snapshot VARCHAR(120) NULL,
+            scholarship_degree_snapshot VARCHAR(255) NULL,
+            scholarship_provider_snapshot VARCHAR(255) NULL,
+            scholarship_funding_snapshot VARCHAR(120) NULL,
+            scholarship_deadline_text_snapshot TEXT NULL,
+            scholarship_deadline_date_snapshot DATE NULL,
+            scholarship_source_url_snapshot VARCHAR(2048) NULL,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            CONSTRAINT uq_application_records_user_scholarship UNIQUE (user_id, scholarship_id)
+        """,
+        "sqlite": """
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL REFERENCES users(id),
+            scholarship_id INTEGER NOT NULL REFERENCES scholarships(id),
+            state VARCHAR(16) NOT NULL DEFAULT 'saved',
+            outcome VARCHAR(16) NOT NULL DEFAULT 'pending',
+            version INTEGER NOT NULL DEFAULT 1,
+            notes TEXT NULL,
+            scholarship_name_snapshot VARCHAR(255) NULL,
+            scholarship_country_snapshot VARCHAR(120) NULL,
+            scholarship_degree_snapshot VARCHAR(255) NULL,
+            scholarship_provider_snapshot VARCHAR(255) NULL,
+            scholarship_funding_snapshot VARCHAR(120) NULL,
+            scholarship_deadline_text_snapshot TEXT NULL,
+            scholarship_deadline_date_snapshot DATE NULL,
+            scholarship_source_url_snapshot VARCHAR(2048) NULL,
+            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            CONSTRAINT uq_application_records_user_scholarship UNIQUE (user_id, scholarship_id)
+        """,
+    },
+    # The checklist is a table, not a JSON column on the parent. Its integrity
+    # rules - unique key per application, ordered positions, completion
+    # timestamps, weights - are exactly what relational storage enforces and a
+    # blob would have to re-check on every read.
+    "application_checklist_items": {
+        "postgresql": """
+            id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+            application_id INTEGER NOT NULL REFERENCES application_records(id),
+            key VARCHAR(64) NOT NULL,
+            label VARCHAR(200) NOT NULL,
+            description TEXT NULL,
+            action_target VARCHAR(200) NULL,
+            source VARCHAR(32) NOT NULL DEFAULT 'generic',
+            source_detail VARCHAR(120) NULL,
+            position INTEGER NOT NULL DEFAULT 0,
+            weight INTEGER NOT NULL DEFAULT 1,
+            completed BOOLEAN NOT NULL DEFAULT FALSE,
+            completed_at TIMESTAMPTZ,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            CONSTRAINT uq_application_checklist_items_application_key UNIQUE (application_id, key)
+        """,
+        "sqlite": """
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            application_id INTEGER NOT NULL REFERENCES application_records(id),
+            key VARCHAR(64) NOT NULL,
+            label VARCHAR(200) NOT NULL,
+            description TEXT NULL,
+            action_target VARCHAR(200) NULL,
+            source VARCHAR(32) NOT NULL DEFAULT 'generic',
+            source_detail VARCHAR(120) NULL,
+            position INTEGER NOT NULL DEFAULT 0,
+            weight INTEGER NOT NULL DEFAULT 1,
+            completed BOOLEAN NOT NULL DEFAULT 0,
+            completed_at DATETIME NULL,
+            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            CONSTRAINT uq_application_checklist_items_application_key UNIQUE (application_id, key)
+        """,
+    },
     "image_reviews": {
         "postgresql": """
             id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
@@ -148,26 +255,6 @@ REQUIRED_TABLES = {
             CONSTRAINT uq_saved_scholarships_user_scholarship UNIQUE (user_id, scholarship_id)
         """,
     },
-    "application_records": {
-        "postgresql": """
-            id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-            user_id INTEGER NOT NULL REFERENCES users(id),
-            scholarship_id INTEGER NOT NULL REFERENCES scholarships(id),
-            state VARCHAR(16) NOT NULL DEFAULT 'saved',
-            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-            updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-            CONSTRAINT uq_application_records_user_scholarship UNIQUE (user_id, scholarship_id)
-        """,
-        "sqlite": """
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            user_id INTEGER NOT NULL REFERENCES users(id),
-            scholarship_id INTEGER NOT NULL REFERENCES scholarships(id),
-            state VARCHAR(16) NOT NULL DEFAULT 'saved',
-            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            CONSTRAINT uq_application_records_user_scholarship UNIQUE (user_id, scholarship_id)
-        """,
-    },
 }
 
 REQUIRED_INDEXES = {
@@ -192,6 +279,12 @@ REQUIRED_INDEXES = {
     "application_records": [
         "ix_application_records_user_updated ON application_records (user_id, updated_at)",
         "ix_application_records_state ON application_records (state)",
+        # The workspace orders a student's applications by state within a user,
+        # so the two-column form is what actually serves that query.
+        "ix_application_records_user_state ON application_records (user_id, state)",
+    ],
+    "application_checklist_items": [
+        "ix_application_checklist_items_application_position ON application_checklist_items (application_id, position)",
     ],
 }
 
@@ -236,6 +329,14 @@ def run_migration(engine, dry_run: bool = False) -> list[str]:
 
     with engine.begin() as conn:
         for table_name, columns in REQUIRED_COLUMNS.items():
+            # A column can only be added to a table that exists. When the table
+            # is absent, the CREATE further down establishes the complete shape
+            # and there is nothing to ALTER - so skip rather than issuing DDL
+            # against a table the database does not have. This keeps the
+            # migration usable against a partially built database instead of
+            # failing halfway with an opaque "no such table".
+            if not table_exists(engine, table_name):
+                continue
             for column_name, definition in columns.items():
                 if not column_exists(engine, table_name, column_name):
                     if dialect == "postgresql":

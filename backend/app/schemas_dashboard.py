@@ -334,6 +334,12 @@ class ScholarshipReference(BaseModel):
     verification_status: str
     verified: bool
     verification_display: str
+    #: False when the scholarship has left the public universe - archived, or no
+    #: longer publicly verified. The name and context are then served from the
+    #: immutable snapshot the student took when they acted on it, because dropping
+    #: the row outright would silently erase the student's own history the moment
+    #: a round closed. Trust is never claimed for an unlisted record.
+    is_listed: bool = True
 
 
 class DeadlineItem(BaseModel):

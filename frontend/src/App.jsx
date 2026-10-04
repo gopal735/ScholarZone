@@ -9,6 +9,7 @@ import RegisterPage from './pages/RegisterPage'
 import SavedScholarshipsPage from './pages/SavedScholarshipsPage'
 import ComparePage from './pages/ComparePage'
 import DashboardPage from './pages/DashboardPage'
+import ApplicationsPage from './pages/ApplicationsPage'
 import AdminPage from './pages/AdminPage'
 import AdminVerificationPage from './pages/AdminVerificationPage'
 import CountryPage from './pages/CountryPage'
@@ -38,6 +39,10 @@ function App() {
             client-side guard, because the guard would only be able to trust a
             value the browser supplied. */}
         <Route path="/dashboard" element={<DashboardPage />} />
+        {/* Declared before the catch-all. Like the dashboard, it resolves its
+            own access state from the server session rather than wrapping the route
+            in a client-side guard that could only trust a browser-supplied value. */}
+        <Route path="/applications" element={<ApplicationsPage />} />
         <Route path="/compare" element={<ComparePage />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/admin/verification" element={<AdminVerificationPage />} />

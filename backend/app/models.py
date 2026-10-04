@@ -636,16 +636,35 @@ class SavedScholarship(Base):
 class ApplicationRecord(Base):
     """A scholarship the student has started to apply to.
 
-    ``state`` is deliberately a short, fixed vocabulary rather than a workflow
-    engine. Dashboard 1.0 records where a student is; it does not orchestrate
-    documents, deadlines or submissions, and adding that machinery here would be
-    building the Application Workspace by accident.
+    ``state`` remains the canonical lifecycle vocabulary published by Dashboard
+    1.0 - ``saved``, ``planning``, ``in_progress``, ``submitted``, ``withdrawn`` -
+    and Application Workspace validates transitions against it rather than
+    introducing a second one.
+
+    ``outcome`` is deliberately a separate column rather than a state. An
+    application is *submitted* and the provider then *accepts* or *rejects* it;
+    collapsing those would either lose the fact that it was submitted or make
+    "submitted" mean two different things depending on timing.
+
+    ``version`` carries optimistic concurrency. Two tabs editing the same
+    application is ordinary, not exceptional, and a plain read-then-write loses
+    one of the writes silently. Every mutation is a conditional update against
+    this value, so a stale write is refused by the database rather than by a
+    hopeful read.
+
+    The ``*_snapshot`` columns are an immutable record of what the provider
+    published when the student started. The catalogue stays canonical for
+    everything live, and these are read only when a record has left the public
+    universe - archived, or no longer publicly verified - so a student's history
+    does not silently lose its subject. They are display-only and never the
+    source of a score, a deadline count or a trust claim.
     """
 
     __tablename__ = "application_records"
     __table_args__ = (
         UniqueConstraint("user_id", "scholarship_id", name="uq_application_records_user_scholarship"),
         Index("ix_application_records_user_updated", "user_id", "updated_at"),
+        Index("ix_application_records_user_state", "user_id", "state"),
     )
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
@@ -655,6 +674,76 @@ class ApplicationRecord(Base):
     #: so adding a state is a code change plus a migration, never a type
     #: rewrite of live rows.
     state: Mapped[str] = mapped_column(String(16), nullable=False, default="saved", index=True)
+    #: One of ``APPLICATION_OUTCOMES``. ``pending`` means no outcome is recorded
+    #: yet, which is the honest default - it is not a claim that an outcome is
+    #: expected, and it is not "unknown" masquerading as a value.
+    outcome: Mapped[str] = mapped_column(String(16), nullable=False, default="pending")
+    #: Optimistic concurrency token. Incremented by every accepted write.
+    version: Mapped[int] = mapped_column(Integer, nullable=False, default=1)
+    #: Free text, owned by one student. Bounded and plain - never rendered as
+    #: HTML anywhere in the product.
+    notes: Mapped[str | None] = mapped_column(Text, nullable=True)
+
+    # --- Immutable display snapshot, read only when the live record is hidden.
+    scholarship_name_snapshot: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    scholarship_country_snapshot: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    scholarship_degree_snapshot: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    scholarship_provider_snapshot: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    scholarship_funding_snapshot: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    scholarship_deadline_text_snapshot: Mapped[str | None] = mapped_column(Text, nullable=True)
+    scholarship_deadline_date_snapshot: Mapped[date | None] = mapped_column(Date, nullable=True)
+    scholarship_source_url_snapshot: Mapped[str | None] = mapped_column(String(2048), nullable=True)
+
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
+
+
+class ApplicationChecklistItem(Base):
+    """One bounded, ordered task inside an application.
+
+    A relational table rather than a JSON blob on the parent. The brief for this
+    workspace is explicit about integrity, and a blob would have to re-validate
+    every key, weight and completion timestamp on each read while still being
+    impossible to index or to reason about in SQL.
+
+    ``key`` is a stable slug, not a label. Relabelling a task must not orphan a
+    student's completion of it, so the identity survives copy changes and only
+    ``label`` is presentation.
+
+    ``source`` records where the task came from, and it is not decoration: a
+    generic preparation step and a step derived from a real published requirement
+    are different claims, and a reader deciding whether to trust the task needs
+    to be able to tell them apart. Nothing may claim a specific document is
+    required unless ``source`` says it came from published data.
+    """
+
+    __tablename__ = "application_checklist_items"
+    __table_args__ = (
+        UniqueConstraint("application_id", "key", name="uq_application_checklist_items_application_key"),
+        Index("ix_application_checklist_items_application_position", "application_id", "position"),
+    )
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    application_id: Mapped[int] = mapped_column(ForeignKey("application_records.id"), nullable=False, index=True)
+    #: Stable slug, e.g. ``review_official_requirements``.
+    key: Mapped[str] = mapped_column(String(64), nullable=False)
+    label: Mapped[str] = mapped_column(String(200), nullable=False)
+    description: Mapped[str | None] = mapped_column(Text, nullable=True)
+    #: Where completing this task happens, e.g. ``/scholarships/12``.
+    action_target: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    #: One of ``CHECKLIST_SOURCES``.
+    source: Mapped[str] = mapped_column(String(32), nullable=False, default="generic")
+    #: The specific gap code or requirement kind behind the task, when there is
+    #: one. Empty for a generic task, which is the honest value.
+    source_detail: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    #: Deterministic display order.
+    position: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    #: Contribution to progress. Zero means the task exists but does not count
+    #: towards the total, so a non-applicable step cannot drag a percentage down
+    #: and cannot masquerade as completed either.
+    weight: Mapped[int] = mapped_column(Integer, nullable=False, default=1)
+    completed: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
 
