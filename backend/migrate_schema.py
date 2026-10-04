@@ -324,47 +324,71 @@ def _dialect_name(engine) -> str:
 
 
 def run_migration(engine, dry_run: bool = False) -> list[str]:
+    """Plan the whole migration first, then apply one statement at a time.
+
+    The planning and applying phases were previously interleaved inside a single
+    ``engine.begin()`` block. That held a write transaction open while every
+    ``table_exists``/``column_exists`` inspection ran, each of which needs its own
+    connection - so the transaction sat idle for the whole inspection phase. Neon
+    enforces ``idle_in_transaction_session_timeout`` and killed it, which is why a
+    migration with more columns to inspect failed partway with nothing applied.
+
+    Planning with no open write transaction, then applying each statement in its
+    own short transaction, fixes that and also means no lock is held across the
+    inspection work. Still idempotent: everything here is IF NOT EXISTS or is
+    guarded by an existence check.
+    """
     changes: list[str] = []
     dialect = _dialect_name(engine)
+    tables_to_create: set[str] = set()
 
-    with engine.begin() as conn:
-        for table_name, columns in REQUIRED_COLUMNS.items():
-            # A column can only be added to a table that exists. When the table
-            # is absent, the CREATE further down establishes the complete shape
-            # and there is nothing to ALTER - so skip rather than issuing DDL
-            # against a table the database does not have. This keeps the
-            # migration usable against a partially built database instead of
-            # failing halfway with an opaque "no such table".
-            if not table_exists(engine, table_name):
+    # ---- plan (no write transaction open) --------------------------------
+    for table_name, columns in REQUIRED_COLUMNS.items():
+        # A column can only be added to a table that exists. When the table is
+        # absent, the CREATE below establishes the complete shape and there is
+        # nothing to ALTER - so skip rather than issuing DDL against a table the
+        # database does not have.
+        if not table_exists(engine, table_name):
+            continue
+        for column_name, definition in columns.items():
+            if column_exists(engine, table_name, column_name):
                 continue
-            for column_name, definition in columns.items():
-                if not column_exists(engine, table_name, column_name):
-                    if dialect == "postgresql":
-                        sql = f"ALTER TABLE {table_name} ADD COLUMN IF NOT EXISTS {column_name} {definition}"
-                    else:
-                        sql = f"ALTER TABLE {table_name} ADD COLUMN {column_name} {definition}"
-                    changes.append(sql)
-                    if not dry_run:
-                        conn.execute(text(sql))
+            if dialect == "postgresql":
+                changes.append(
+                    f"ALTER TABLE {table_name} ADD COLUMN IF NOT EXISTS {column_name} {definition}"
+                )
+            else:
+                changes.append(f"ALTER TABLE {table_name} ADD COLUMN {column_name} {definition}")
 
-        for table_name, ddl_map in REQUIRED_TABLES.items():
-            if not table_exists(engine, table_name):
-                ddl = ddl_map.get(dialect, ddl_map.get("postgresql", ""))
-                sql = f"CREATE TABLE IF NOT EXISTS {table_name} ({ddl})"
-                changes.append(sql)
-                if not dry_run:
-                    conn.execute(text(sql))
+    for table_name, ddl_map in REQUIRED_TABLES.items():
+        if not table_exists(engine, table_name):
+            ddl = ddl_map.get(dialect, ddl_map.get("postgresql", ""))
+            changes.append(f"CREATE TABLE IF NOT EXISTS {table_name} ({ddl})")
+            # A table this run is about to create does not exist yet, so its
+            # indexes have to be planned from this list rather than from the
+            # database. Missing this leaves a brand-new table permanently
+            # unindexed until a later run notices.
+            tables_to_create.add(table_name)
 
-        for table_name, index_defs in REQUIRED_INDEXES.items():
-            for index_def in index_defs:
-                index_name = index_def.split(" ON ")[0].strip()
-                if not index_exists(engine, table_name, index_name):
-                    sql = f"CREATE INDEX IF NOT EXISTS {index_def}"
-                    changes.append(sql)
-                    if not dry_run:
-                        conn.execute(text(sql))
+    for table_name, index_defs in REQUIRED_INDEXES.items():
+        if not table_exists(engine, table_name) and table_name not in tables_to_create:
+            continue
+        for index_def in index_defs:
+            index_name = index_def.split(" ON ")[0].strip()
+            if not index_exists(engine, table_name, index_name):
+                changes.append(f"CREATE INDEX IF NOT EXISTS {index_def}")
 
-    return changes
+    if dry_run:
+        return changes
+
+    # ---- apply (one short transaction per statement) ----------------------
+    applied: list[str] = []
+    for sql in changes:
+        with engine.begin() as conn:
+            conn.execute(text(sql))
+        applied.append(sql)
+
+    return applied
 
 
 def validate_schema(engine) -> bool:
