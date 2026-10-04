@@ -248,6 +248,13 @@ def _clear_stored_image(session: "Session", scholarship_id: int) -> None:
     scholarship.image_kind = None
     scholarship.image_alt_text = None
     scholarship.image_verified_at = None
+    # The terminal evaluation status is cleared with the image it described.
+    # Holding it at 'verified' while the image is gone produced a record that
+    # could never publish and could never be re-evaluated: the coverage sweep
+    # skips terminally evaluated rows, so the contradiction locked the record
+    # out of its own recovery path.
+    scholarship.image_evaluation_status = None
+    scholarship.image_evaluated_at = None
     session.flush()
 
 """Image discovery orchestrator main class (appended to image_discovery_orchestrator.py)."""
