@@ -848,10 +848,19 @@ class TestAutonomousContract:
         # dependency on any stage that could change its input, which is what
         # would let the delete depend on run ordering.
         assert worker.STAGE_DEPENDENCIES["purge_closed"] == ("auto_delete_candidate",)
-        assert list(worker.STAGE_ORDER) != [
-            s for s in worker.STAGE_ORDER if s != "purge_closed"
-        ]
-        assert worker.PURGE_CLOSED_EXCLUDED_FROM_ALL is True
+        # Phase 3 activated the scheduled lifecycle, so the deleting stage is no
+        # longer held out of "all". What replaces the exclusion is asserted rather
+        # than assumed: the flag is compared against the real selection, and when
+        # the stage is reachable the arming stage must be reachable too and must
+        # come first. A refactor that reintroduces a hard-coded stage name fails
+        # here rather than quietly deciding the question on its own.
+        import inspect as _inspect
+
+        main_source = _inspect.getsource(worker.main)
+        assert "does not match the stage selection" in main_source
+        assert "would run before the arming stage" in main_source
+        assert 's != "purge_closed"' not in main_source
+        assert isinstance(worker.PURGE_CLOSED_EXCLUDED_FROM_ALL, bool)
         # Every declared stage must have a runner and a dependency entry. A
         # stage wired into only one of the three lists passes the tests above
         # and then fails at dispatch, mid-run.

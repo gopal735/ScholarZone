@@ -73,11 +73,16 @@ class TestTheScheduledPathSelectsArmingOnly:
         assert selection(PURGE) == [PURGE]
         assert selection(CANDIDATE) == [CANDIDATE]
 
-    def test_the_exclusion_is_declared_rather_than_hardcoded_in_one_place(self):
-        # The flag is asserted in main() so a future edit that puts the stage
-        # back into "all" fails loudly at the first scheduled run.
-        assert worker.PURGE_CLOSED_EXCLUDED_FROM_ALL is True
-        assert "PURGE_CLOSED_EXCLUDED_FROM_ALL" in inspect.getsource(worker.main)
+    def test_the_deleting_stages_reachability_is_declared_and_asserted(self):
+        # Phase 2 asserted the stage was excluded; Phase 3 flipped the flag, so
+        # the assertion follows the flag rather than a literal. What must hold in
+        # both states is that the flag is compared against the real selection in
+        # main() - otherwise a refactor could hard-code the stage name back into
+        # the comprehension and the flag would silently describe nothing.
+        assert isinstance(worker.PURGE_CLOSED_EXCLUDED_FROM_ALL, bool)
+        source = inspect.getsource(worker.main)
+        assert "does not match the stage selection" in source
+        assert 's != "purge_closed"' not in source
 
 
 class TestNothingReachableFromArmingDeletes:
