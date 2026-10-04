@@ -41,6 +41,13 @@ jobs:
         env:
           SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
 
+      - name: Forensic pre-flight (read-only)
+        run: |
+          cd backend
+          python scripts/forensic_preflight.py
+        env:
+          SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
+
       - name: Verify image mutation audit (read-only)
         run: |
           cd backend
