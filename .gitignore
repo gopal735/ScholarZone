@@ -77,3 +77,9 @@ migration_validation.sql
 archive/
 
 backend/gh_token.txt
+
+# Build provenance artefact: written during the Vercel build from the
+# commit it built, read by the service at runtime. Generated per build, so it
+# must never be committed - a committed copy is exactly the falsifiable label
+# this mechanism exists to remove.
+backend/app/build_provenance.json

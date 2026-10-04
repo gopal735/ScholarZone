@@ -486,36 +486,62 @@ class TestBuildRevision:
         assert "revision" in source
         assert "build_revision()" in source
 
-    def test_revision_is_the_env_value_truncated(self, monkeypatch):
+    def test_revision_is_the_exact_sha_recorded_at_build_time(self, monkeypatch, tmp_path):
+        """The full commit id, never a twelve-character prefix.
+
+        Truncation was the original defect: a prefix cannot identify a build,
+        and it left two different commits able to satisfy the same gate.
+        """
+        import json
+
+        import app.provenance as provenance
         from app.main import build_revision
 
-        monkeypatch.setenv("SCHOLARZONE_BUILD_REVISION", "abcdef1234567890")
-        assert build_revision() == "abcdef123456"
+        sha = "abcdef1234567890abcdef1234567890abcdef12"
+        assert len(sha) == 40
+        artefact = tmp_path / "build_provenance.json"
+        artefact.write_text(json.dumps({"git_commit_sha": sha}), encoding="utf-8")
+        monkeypatch.setattr(provenance, "ARTIFACT", artefact)
+        provenance.reset_cache()
 
-    def test_development_reports_dev(self, monkeypatch):
-        from app.core.config import get_settings
+        # An environment variable claiming something else must be ignored.
+        monkeypatch.setenv("SCHOLARZONE_BUILD_REVISION", "0" * 40)
+        monkeypatch.setenv("VERCEL_GIT_COMMIT_SHA", "1" * 40)
+        assert build_revision() == sha
+        provenance.reset_cache()
+    def test_development_reports_dev(self, monkeypatch, tmp_path):
+        import app.provenance as provenance
         import app.main as main_module
 
+        monkeypatch.setattr(provenance, "ARTIFACT", tmp_path / "absent.json")
+        provenance.reset_cache()
         monkeypatch.delenv("SCHOLARZONE_BUILD_REVISION", raising=False)
         monkeypatch.setenv("SCHOLARZONE_ENVIRONMENT", "development")
         assert main_module.build_revision() == "dev"
-
-    def test_production_without_a_revision_reports_unknown(self, monkeypatch):
+        provenance.reset_cache()
+    def test_production_without_a_revision_is_unproven_not_unknown(self, monkeypatch, tmp_path):
+        """A production build with no artefact must not read as successful."""
+        import app.provenance as provenance
         import app.main as main_module
 
+        monkeypatch.setattr(provenance, "ARTIFACT", tmp_path / "absent.json")
+        provenance.reset_cache()
         monkeypatch.delenv("SCHOLARZONE_BUILD_REVISION", raising=False)
         monkeypatch.setenv("SCHOLARZONE_ENVIRONMENT", "production")
         monkeypatch.setenv("SCHOLARZONE_DATABASE_URL", "postgresql://u:p@host/db")
-        assert main_module.build_revision() == "unknown"
-
-    def test_no_secret_is_exposed(self, monkeypatch):
+        assert main_module.build_revision() == "unproven-build"
+        provenance.reset_cache()
+    def test_no_secret_is_exposed(self, monkeypatch, tmp_path):
+        import app.provenance as provenance
         from app.main import build_revision
 
+        monkeypatch.setattr(provenance, "ARTIFACT", tmp_path / "absent.json")
+        provenance.reset_cache()
         monkeypatch.setenv("SCHOLARZONE_BUILD_REVISION", "abc123")
         monkeypatch.setenv("SCHOLARZONE_VERIFICATION_SECRET", "topsecret")
         monkeypatch.setenv("SCHOLARZONE_ADMIN_SECRET", "anothersecret")
         assert "secret" not in build_revision()
-
+        provenance.reset_cache()
     def test_deploy_workflow_verifies_the_revision(self):
         from pathlib import Path
 
@@ -529,22 +555,26 @@ class TestBuildRevision:
         assert "operator action" in text.lower() or "Operator action" in text
 
     def test_a_healthy_but_stale_container_is_not_success(self):
+        """HTTP 200 is not proof. The gate must still require an exact commit.
+
+        The comparison is against the full 40-character id: a prefix match would
+        let a truncated or stale identity satisfy the gate.
+        """
         from pathlib import Path
 
         text = (
             Path(__file__).resolve().parents[2] / ".github/workflows/deploy.yml"
         ).read_text(encoding="utf-8")
-        # The health-200 branch must still require a revision match.
         assert "CURRENT" in text
-        assert 'if [ "$CURRENT" = "$EXPECTED_SHORT" ]' in text
+        assert 'if [ "$CURRENT" = "$EXPECTED_FULL" ]' in text
+        assert "EXPECTED_SHORT" not in text, (
+            "a truncated 12-character comparison must not survive in the "
+            "deployment gate"
+        )
+        assert "^[0-9a-f]{40}$" in text, (
+            "the gate must require a full commit id, not a 7-to-40 character range"
+        )
 
-
-# ---------------------------------------------------------------------------
-# K. Completeness reporting
-# ---------------------------------------------------------------------------
-
-
-class TestCompletenessReport:
     def test_the_report_distinguishes_the_failure_modes(self, factory):
         from app.data.catalogue_completeness_report import build_report
 
