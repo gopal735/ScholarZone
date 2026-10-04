@@ -760,7 +760,7 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
         from app.models import Scholarship
         from app.repositories.scholarships import public_visibility_conditions
         from app.services.catalogue_quarantine import QUARANTINE_STATUS
-        from app.services.image_discovery_orchestrator import LOGO_IDENTITY_KINDS
+        from app.services.image_discovery_orchestrator import ACCEPTED_IMAGE_KINDS
 
         session = factory()
         try:
@@ -2643,17 +2643,18 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
         return detail
 
     def do_purge() -> dict:
-        """Clear stored images that are not official identity marks.
+        """Clear stored images the pipeline never accepted.
 
-        A programme photograph is decoration, not provenance: it does not say
-        who awards the scholarship. This stage removes those images so the
-        images stage can go looking for a logo instead, and so the catalogue
-        stops presenting a stock campus photo as though it were a verified
-        emblem.
+        An unidentified photograph is decoration rather than provenance: it
+        does not say who awards the scholarship, and the images stage should be
+        free to go looking for a real one.
 
-        Only the kind is used as the test, and a record whose kind was never
-        recorded counts as non-logo. That is the conservative direction: an
-        image we cannot identify is one we should not keep.
+        An image the verification pipeline *accepted* is a different matter.
+        PROGRAM_IMAGE and OFFICIAL_BANNER are legitimate results of that
+        pipeline, and deleting them purely because they are not a logo discards a
+        verified image for a reason unrelated to whether it was verified. An
+        accepted image is therefore preserved regardless of its kind; only
+        images that carry no acceptance are cleared.
         """
         from sqlalchemy import select
 
@@ -2665,9 +2666,42 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
             rows = session.scalars(
                 select(Scholarship).where(Scholarship.image_url.isnot(None))
             ).all()
+            # An accepted image is kept whatever its kind. The previous test was
+
+            # `kind not in LOGO_IDENTITY_KINDS`, which classified every accepted
+
+            # PROGRAM_IMAGE and OFFICIAL_BANNER as disposable and could delete a
+
+            # verified image outright.
+
+            # An identity mark is kept, exactly as before. Beyond that, an
+            # image the pipeline accepted is also kept: PROGRAM_IMAGE and
+            # OFFICIAL_BANNER are valid results of the same verification
+            # process, and deleting one merely because it is not a logo
+            # discards a verified image for an unrelated reason.
             offenders = [
                 r for r in rows
                 if (r.image_kind or "") not in LOGO_IDENTITY_KINDS
+                and not (
+                    r.image_verified_at is not None
+                    and (r.image_kind or "") in ACCEPTED_IMAGE_KINDS
+                )
+            ]
+            preserved = [
+                r for r in rows
+                if (r.image_kind or "") in ACCEPTED_IMAGE_KINDS
+                and (r.image_kind or "") not in LOGO_IDENTITY_KINDS
+                and r.image_verified_at is not None
+            ]
+
+            preserved = [
+
+                r for r in rows
+
+                if r.image_verified_at is not None
+
+                and (r.image_kind or "") in ACCEPTED_IMAGE_KINDS
+
             ]
             if args.dry_run:
                 return {
@@ -2694,6 +2728,7 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
             detail = {
                 "image_rows": len(rows),
                 "cleared": len(offenders),
+                  "preserved_accepted": len(preserved),
                 "kept_identity_kinds": sorted(LOGO_IDENTITY_KINDS),
             }
             recorder.record_counts({"image_non_logo_cleared": len(offenders)})
