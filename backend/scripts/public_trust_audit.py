@@ -54,7 +54,7 @@ def main() -> int:
         print(f"  uncertain status             : {UNCERTAIN_VERIFICATION_STATUS!r}")
         print(f"  STORAGE                      : {len(B)}")
         print(f"  PUBLIC (current predicate)   : {len(A)}")
-        print(f"  STORAGE_ONLY                 : {len(set(B) - set(A))}")
+        print(f"  STORAGE_ONLY                 : {len(B - set(A))}")
         print(f"  PUBLIC_ONLY                  : {len(set(A) - set(B))}")
         print()
 
