@@ -1,7 +1,6 @@
 from contextlib import asynccontextmanager
 import logging
 import os
-import re
 import sys
 from threading import Lock, Thread
 
@@ -11,6 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from sqlalchemy import text
 
+from . import provenance
 from .core.config import get_settings
 from .database import close_database, get_engine, init_database
 from .middleware.api_prefix import StripApiPrefix
@@ -49,33 +49,18 @@ logging.basicConfig(
 
 
 def build_revision() -> str:
-    """Short git SHA of the running build, or ``dev``/``unknown``.
+    """The exact commit this process was built from - a full 40-char SHA.
 
-    Resolved once at import, from the platform's own deployment identity.
-
-    Order matters. The platform identifier comes first because it cannot be
-    falsified by hand: Vercel injects ``VERCEL_GIT_COMMIT_SHA`` for the exact
-    commit it built, so the value describes the artefact actually running rather
-    than a label somebody remembered to set. An operator-supplied variable is
-    accepted only as a fallback, because a build that is told what revision to
-    claim will happily claim it while serving older code - which is precisely
-    the failure this endpoint exists to make detectable.
-
-    A production build with no identifiable commit reports ``unknown``, and the
-    deployment verification treats anything that is not the expected SHA as a
-    failure. A healthy process serving the wrong commit must never be reported
-    as a successful deployment.
+    Read from the artefact written during the build. The previous implementation
+    resolved this from ``VERCEL_GIT_COMMIT_SHA`` at import and truncated it to
+    twelve characters, which made the reported revision (a) settable per
+    deployment via the environment and (b) not the commit id at all. A healthy
+    process serving the wrong commit is exactly what this endpoint exists to
+    make detectable, so it now reads a build-time artefact that nothing at
+    runtime can change, and reports the full SHA or an explicit
+    ``unproven-build``.
     """
-    for variable in ("VERCEL_GIT_COMMIT_SHA", "VERCEL_GIT_COMMIT_REF"):
-        raw = (os.getenv(variable) or "").strip()
-        if raw and re.fullmatch(r"[0-9a-fA-F]{7,64}", raw):
-            return raw[:12]
-    raw = (os.getenv("SCHOLARZONE_BUILD_REVISION") or "").strip()
-    if raw and re.fullmatch(r"[0-9a-fA-F]{7,64}", raw):
-        return raw[:12]
-    if get_settings().environment != "production":
-        return "dev"
-    return "unknown"
+    return provenance.build_revision(get_settings().environment)
 
 _db_ready = False
 _db_init_error: str | None = None
@@ -234,10 +219,6 @@ def health() -> JSONResponse:
         try:
             with get_engine().connect() as conn:
                 conn.execute(text("SELECT 1"))
-            return JSONResponse(
-                status_code=200,
-                content={"status": "ok", "revision": build_revision()},
-            )
         except Exception as exc:
             logger.warning("Health check failed: %s", exc)
             content = {
@@ -248,6 +229,35 @@ def health() -> JSONResponse:
             if _db_init_error:
                 content["init_error"] = _db_init_error
             return JSONResponse(status_code=503, content=content)
+
+        # Build identity is checked before liveness is reported. A process whose
+        # provenance is unproven must not answer "ok": a deployment gate that
+        # only looks at the status code would certify exactly the failure this
+        # endpoint exists to catch - a healthy process serving an unidentifiable
+        # build. Production therefore fails closed with 503; development without
+        # an artefact stays usable.
+        revision, provenance_error = provenance.artifact_state(
+            get_settings().environment
+        )
+        if provenance_error:
+            logger.error("Build provenance unproven: %s", provenance_error)
+            return JSONResponse(
+                status_code=503,
+                content={
+                    "status": "error",
+                    "detail": "Build provenance unproven",
+                    "revision": revision,
+                    "provenance_error": provenance_error,
+                },
+            )
+
+        # Either an exact 40-character SHA, or "dev" in development with no
+        # artefact. Production cannot reach this point unproven: that returned
+        # 503 above.
+        return JSONResponse(
+            status_code=200,
+            content={"status": "ok", "revision": revision},
+        )
 
 
 # NOTE: Legacy APScheduler is intentionally NOT started in production.

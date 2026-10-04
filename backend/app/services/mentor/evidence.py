@@ -51,6 +51,10 @@ class EvidenceItem:
     scholarship_id: int | None = None
 
 
+#: Scope used when deduplicating the student's own profile chips, which belong to
+#: no scholarship. Distinct from every ``scholarship_id`` by construction.
+_STUDENT_SCOPE = "__student__"
+
 #: The Match engine's normalised funding vocabulary, in words.
 #:
 #: ``dashboard.py`` publishes ``MatchRecommendation.funding`` as
@@ -348,7 +352,17 @@ def collect(context: MentorContext, *, limit: int = 10) -> list[EvidenceItem]:
     #: Showing the identical sentence twice reads as two findings rather than one
     #: confirmed one, so a repeated (label, value) pair is collapsed onto the
     #: first, highest-priority basis that reported it.
-    seen_values: set[tuple[str, str]] = set()
+    #:
+    #: The pair is scoped to the record the chip is ABOUT, because an identical
+    #: sentence about a different scholarship is a different fact, not a repeat.
+    #: Keying on the bare pair made every record after the first lose its chips
+    #: wherever they shared a verification state, funding wording or day count -
+    #: which is most of the catalogue, since 60 of 63 records share one
+    #: (verification, funding) combination. ``scholarship_id`` is the right scope
+    #: for both a scholarship and an application, because an application's chips
+    #: are about that scholarship; the same fact reported by either system is
+    #: therefore still recognised as one.
+    seen_values: set[tuple[object, str, str]] = set()
 
     focused = context.focused_scholarship_id
     focused_application = context.focused_application_id
@@ -381,7 +395,7 @@ def collect(context: MentorContext, *, limit: int = 10) -> list[EvidenceItem]:
             ):
                 if len(items) >= limit:
                     return items
-                fingerprint = (chip.label, chip.value)
+                fingerprint = (entry.scholarship_id, chip.label, chip.value)
                 if chip.key in seen or fingerprint in seen_values:
                     continue
                 seen.add(chip.key)
@@ -391,7 +405,7 @@ def collect(context: MentorContext, *, limit: int = 10) -> list[EvidenceItem]:
     for entry in student_evidence(context.student):
         if len(items) >= limit:
             return items
-        fingerprint = (entry.label, entry.value)
+        fingerprint = (_STUDENT_SCOPE, entry.label, entry.value)
         if entry.key in seen or fingerprint in seen_values:
             continue
         seen.add(entry.key)

@@ -51,11 +51,19 @@ jobs:
 
           MAX_ATTEMPTS=40
           DELAY=15
-          EXPECTED_SHORT="${EXPECTED_REVISION:0:12}"
+          # The FULL 40-character commit id. A 12-character prefix cannot
+          # identify a build: two commits can share one, and a truncated
+          # value is what let a stale deployment look current.
+          EXPECTED_FULL="${EXPECTED_REVISION}"
+          if ! printf '%s' "$EXPECTED_FULL" | grep -Eq '^[0-9a-f]{40}$'; then
+            echo "::error::Expected revision '$EXPECTED_FULL' is not a full"
+            echo "::error::40-character commit id. Refusing to verify."
+            exit 1
+          fi
           CURRENT=""
 
           for i in $(seq 1 "$MAX_ATTEMPTS"); do
-            echo "Health check attempt $i of $MAX_ATTEMPTS (expecting revision ${EXPECTED_SHORT})..."
+            echo "Health check attempt $i of $MAX_ATTEMPTS (expecting ${EXPECTED_FULL})..."
             HTTP_CODE=$(curl -s -o /tmp/health.json -w "%{http_code}" \
               --connect-timeout 10 \
               --max-time 20 \
@@ -82,18 +90,27 @@ jobs:
               /tmp/health.json | head -1)
             CURRENT=${CURRENT:-}
 
-            if [ "$CURRENT" = "$EXPECTED_SHORT" ]; then
-              echo "Healthy and current."
+            if [ "$CURRENT" = "$EXPECTED_FULL" ]; then
+              echo "Healthy and current - exact commit match."
               cat /tmp/health.json
               exit 0
+            fi
+
+            # A prefix of the expected commit is NOT a match. It is the
+            # signature of a build that reports a truncated identity, and it
+            # must never satisfy this gate.
+            if [ "$EXPECTED_FULL" != "$CURRENT" ] && [ "${EXPECTED_FULL:0:${#CURRENT}}" = "$CURRENT" ] && [ -n "$CURRENT" ]; then
+              echo "::error::Reported revision '$CURRENT' is only a prefix of"
+              echo "::error::$EXPECTED_FULL. A prefix is not a build identity."
+              exit 1
             fi
 
             # Anything that is not a full git SHA cannot be trusted as a build
             # identity. "unknown", "dev" and a hand-written label all fail here,
             # which is what stops an old build being reported as current.
-            if ! printf '%s' "$CURRENT" | grep -Eq '^[0-9a-f]{7,40}$'; then
+            if ! printf '%s' "$CURRENT" | grep -Eq '^[0-9a-f]{40}$'; then
               echo "::error::Reported revision '${CURRENT}' is missing or not a"
-              echo "::error::trustworthy build identity. Production must report the"
+              echo "::error::full 40-character build identity. Production must report the"
               echo "::error::real commit the platform built; a supplied label is not"
               echo "::error::evidence. Refusing to call this deployment current."
               echo "::error::Operator action required: the deployed build does not"
@@ -102,7 +119,7 @@ jobs:
               exit 1
             fi
 
-            echo "Healthy but serving revision ${CURRENT}, expected ${EXPECTED_SHORT}."
+            echo "Healthy but serving revision ${CURRENT}, expected ${EXPECTED_FULL}."
             cat /tmp/health.json
 
             if [ "$i" -eq "$MAX_ATTEMPTS" ]; then

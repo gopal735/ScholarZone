@@ -34,6 +34,28 @@ def app_module():
     return importlib.import_module("app.main")
 
 
+def _install_artifact(tmp_path, sha: str) -> None:
+    """Point the runtime reader at a temporary artefact holding ``sha``."""
+    import app.provenance as provenance
+
+    path = tmp_path / "build_provenance.json"
+    path.write_text(
+        json.dumps({"git_commit_sha": sha, "schema": "build-provenance/1"}),
+        encoding="utf-8",
+    )
+    monkey = provenance
+    monkey.ARTIFACT = path
+    monkey.reset_cache()
+
+
+def _clear_artifact(tmp_path) -> None:
+    import app.provenance as provenance
+
+    path = tmp_path / "absent.json"
+    provenance.ARTIFACT = path
+    provenance.reset_cache()
+
+
 class TestVercelEntrypoint:
     def test_api_entrypoint_exposes_the_existing_fastapi_app(self, app_module):
         assert API_ENTRY.exists(), "backend/api/index.py is the Vercel entrypoint"
@@ -83,34 +105,60 @@ class TestRevisionIsARealBuildIdentity:
             monkeypatch.delenv(name, raising=False)
         assert app_module.build_revision() == "dev"
 
-    def test_platform_injected_identity_is_preferred(self, app_module, monkeypatch):
-        """The platform's own commit must win over anything a human set."""
-        commit = "a" * 40
-        monkeypatch.setenv("VERCEL_GIT_COMMIT_SHA", commit)
-        monkeypatch.setenv("SCHOLARZONE_BUILD_REVISION", "b" * 40)
-        assert app_module.build_revision() == commit[:12]
+    def test_platform_injected_identity_is_preferred(self, app_module, monkeypatch, tmp_path):
+        """The build-time artefact wins over anything the environment claims.
 
-    def test_env_fallback_is_used_when_no_platform_identity(self, app_module, monkeypatch):
-        monkeypatch.delenv("VERCEL_GIT_COMMIT_SHA", raising=False)
-        monkeypatch.delenv("VERCEL_GIT_COMMIT_REF", raising=False)
+        This is the contract that replaced the old one. Previously the revision
+        was read from the environment at import and truncated; now nothing at
+        runtime can change what the service reports.
+        """
+        commit = "a" * 40
+        _install_artifact(tmp_path, commit)
+        monkeypatch.setenv("VERCEL_GIT_COMMIT_SHA", "b" * 40)
         monkeypatch.setenv("SCHOLARZONE_BUILD_REVISION", "c" * 40)
-        assert app_module.build_revision() == ("c" * 40)[:12]
+        assert app_module.build_revision() == commit
+
+    def test_an_environment_variable_can_no_longer_stand_in_for_the_artefact(
+        self, app_module, monkeypatch, tmp_path
+    ):
+        """The operator fallback is gone, by design.
+
+        SCHOLARZONE_BUILD_REVISION used to be accepted when the platform did not
+        supply a SHA. That made the reported revision hand-writable, so it no
+        longer has any effect at all.
+        """
+        _clear_artifact(tmp_path)
+        monkeypatch.setenv("VERCEL_GIT_COMMIT_SHA", "d" * 40)
+        monkeypatch.setenv("VERCEL_GIT_COMMIT_REF", "main")
+        monkeypatch.setenv("SCHOLARZONE_BUILD_REVISION", "c" * 40)
+        assert app_module.build_revision() == "dev"
 
     @pytest.mark.parametrize("value", ["unknown", "latest", "", "not-a-sha", "12345", "deadbeef!"])
-    def test_untrustworthy_revision_values_are_rejected(self, app_module, monkeypatch, value):
+    def test_untrustworthy_revision_values_are_rejected(
+        self, app_module, monkeypatch, tmp_path, value
+    ):
         """A hand-written label must not be able to stand in for a build identity."""
         monkeypatch.delenv("VERCEL_GIT_COMMIT_SHA", raising=False)
         monkeypatch.delenv("VERCEL_GIT_COMMIT_REF", raising=False)
+        _clear_artifact(tmp_path)
         monkeypatch.setenv("SCHOLARZONE_BUILD_REVISION", value)
+        monkeypatch.setenv("VERCEL_GIT_COMMIT_SHA", value)
         assert app_module.build_revision() != value, (
             f"{value!r} was accepted as a build identity"
         )
 
-    def test_production_without_an_identity_reports_unknown_not_success(
-        self, app_module, monkeypatch
+    def test_production_without_an_artefact_is_explicitly_unproven(
+        self, app_module, monkeypatch, tmp_path
     ):
+        """A production build with no artefact must not look successful.
+
+        It reports ``unproven-build``, deliberately not ``unknown``: an unknown
+        revision and a missing provenance record are different problems, and the
+        deployment gate has to be able to tell them apart.
+        """
         import dataclasses
 
+        _clear_artifact(tmp_path)
         real_settings = app_module.get_settings()
         for name in ("VERCEL_GIT_COMMIT_SHA", "VERCEL_GIT_COMMIT_REF", "SCHOLARZONE_BUILD_REVISION"):
             monkeypatch.delenv(name, raising=False)
@@ -119,16 +167,21 @@ class TestRevisionIsARealBuildIdentity:
             "get_settings",
             lambda: dataclasses.replace(real_settings, environment="production"),
         )
-        assert app_module.build_revision() == "unknown"
+        assert app_module.build_revision() == "unproven-build"
 
     def test_deploy_verification_fails_a_stale_build(self):
         """The freshness gate must reject a wrong revision, not merely report it."""
         workflow = (REPO / ".github" / "workflows" / "deploy.yml").read_text(encoding="utf-8")
         assert 'EXPECTED_REVISION: ${{ github.sha }}' in workflow
-        # A revision that is not a SHA fails immediately rather than being
-        # retried or accepted, so "unknown" cannot pass as current.
-        assert "^[0-9a-f]{7,40}$" in workflow
-        assert re.search(r'if \[ "\$CURRENT" = "\$EXPECTED_SHORT" \]', workflow)
+        # A revision that is not a FULL commit id fails immediately rather than
+        # being retried or accepted, so neither "unknown" nor a truncated SHA can
+        # pass as current.
+        assert "^[0-9a-f]{40}$" in workflow
+        assert re.search(r'if \[ "\$CURRENT" = "\$EXPECTED_FULL" \]', workflow)
+        # A prefix of the expected commit is explicitly refused.
+        assert "is only a prefix of" in workflow
+        # No 12-character comparison may survive anywhere in the gate.
+        assert "EXPECTED_SHORT" not in workflow
         # A non-200 fails rather than being treated as "not ready yet".
         assert re.search(r'if \[ "\$HTTP_CODE" != "200" \]', workflow)
 
