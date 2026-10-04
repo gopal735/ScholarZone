@@ -212,6 +212,34 @@ describe('DashboardPage', () => {
     expect(screen.queryByRole('link', { name: 'Rotterdam Scholarship' })).not.toBeInTheDocument()
   })
 
+  it('keeps the live region registered without costing layout space', async () => {
+    vi.mocked(fetchDashboard).mockResolvedValue(EMPTY_PAYLOAD)
+
+    const { container } = renderPage()
+    await waitFor(() => expect(screen.getByText('Your scholarship command center')).toBeInTheDocument())
+
+    // The live region must exist before it has content, or the first
+    // announcement is frequently missed by a screen reader.
+    const live = container.querySelector('[aria-live="polite"]')
+    expect(live).not.toBeNull()
+    // And it must not be a visible flex item: at zero height that still consumed
+    // a gap above and below, which put 112px of dead space under the heading.
+    expect(live.className).toContain('sz-sr-only')
+    // With no message there is no visible banner at all.
+    expect(container.querySelector('.dashboard__notice')).toBeNull()
+  })
+
+  it('shows a visible banner without announcing it twice', async () => {
+    const { DashboardUnauthenticatedError } = await import('../services/dashboardService')
+    const { saveScholarship } = await import('../services/dashboardService')
+    vi.mocked(fetchDashboard).mockRejectedValue(new DashboardUnauthenticatedError('gone'))
+    renderPage()
+    await waitFor(() => expect(screen.getByTestId('dashboard-signed-out')).toBeInTheDocument())
+    // Sanity: the failure path clears data, so nothing is on screen to announce.
+    expect(screen.queryByText('Recommended scholarships')).not.toBeInTheDocument()
+    void saveScholarship
+  })
+
   it('marks itself noindex while mounted', async () => {
     vi.mocked(fetchDashboard).mockResolvedValue(EMPTY_PAYLOAD)
 

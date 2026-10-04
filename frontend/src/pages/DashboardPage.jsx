@@ -240,17 +240,26 @@ export default function DashboardPage() {
         </header>
 
         {/*
-          Announced rather than shown as a banner: a mutation confirmation that
-          appears and disappears should reach a screen reader without stealing
-          focus.
+          Two elements, deliberately.
+
+          The visually-hidden live region is always in the DOM so a screen
+          reader has the region registered before its content changes -
+          otherwise the first announcement is frequently missed. Because it is
+          hidden it costs no layout, which is the point: as a visible flex item
+          it sat at zero height and still consumed a gap above and below, putting
+          112px of dead space between the heading and the first section.
+
+          The visible banner is rendered only when there is a message, and is
+          hidden from assistive technology so the two are not announced twice.
         */}
-        <p
-          className={`dashboard__notice${notice ? ` dashboard__notice--${notice.type}` : ''}`}
-          role="status"
-          aria-live="polite"
-        >
+        <p className="sz-sr-only" role="status" aria-live="polite">
           {notice ? notice.message : ''}
         </p>
+        {notice ? (
+          <p className={`dashboard__notice dashboard__notice--${notice.type}`} aria-hidden="true">
+            {notice.message}
+          </p>
+        ) : null}
 
         {hasProfile ? (
           <>

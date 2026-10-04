@@ -85,31 +85,27 @@
 }
 
 /*
- * Present in the DOM always, so the live region is registered before its
- * content changes. Empty means zero height rather than a layout jump.
+ * Rendered only when there is a message, so it needs no empty-state height
+ * handling. The always-present live region is `.sz-sr-only` and sits outside
+ * layout entirely.
  */
 .dashboard__notice {
   margin: 0;
-  min-height: 0;
-  font-size: var(--text-sm);
-  color: var(--text-secondary);
-}
-
-.dashboard__notice:not(:empty) {
-  min-height: 1lh;
   padding: var(--space-3) var(--space-4);
   border-radius: var(--radius-card);
   border: 1px solid var(--border);
   background: var(--surface-subtle);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
 }
 
-.dashboard__notice--success:not(:empty) {
+.dashboard__notice--success {
   border-color: var(--success-border);
   background: var(--success-soft);
   color: var(--text-primary);
 }
 
-.dashboard__notice--error:not(:empty) {
+.dashboard__notice--error {
   border-color: var(--danger-border);
   background: var(--danger-soft);
   color: var(--text-primary);
