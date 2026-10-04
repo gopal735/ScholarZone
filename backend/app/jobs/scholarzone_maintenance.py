@@ -78,10 +78,25 @@ STAGE_ORDER = (
     "repair_encoding", "repair_list_columns", "auto_delete_candidate", "purge_closed",
 )
 
-# purge_closed is the only stage that deletes rows. It is excluded from "all"
-# so a scheduled run cannot destroy the catalogue unattended, and named here so
-# the contract is asserted rather than assumed.
-PURGE_CLOSED_EXCLUDED_FROM_ALL = True
+# purge_closed is the only stage that deletes rows, and this flag is the single
+# place that decides whether a scheduled `--stage all` run may reach it.
+#
+# It was False-proofed through rollout: the collector shipped with deletion
+# unreachable from the schedule, Phase 2 observed arming unattended across a full
+# cycle with `deleted = 0` and `candidate_since_set = 0`, and only then was this
+# flipped. Nothing about the deletion itself changed. The stage still selects
+# nothing but records that passed the SAFE_DELETE policy, the retention period, a
+# grace period that spans earlier cycles, and a re-decision inside the deleting
+# transaction. What changed is only whether the schedule is allowed to ask.
+#
+# The flag is asserted against the real selection in main() rather than trusted,
+# so a refactor that silently re-excludes the stage fails a test rather than
+# quietly disabling the lifecycle.
+PURGE_CLOSED_EXCLUDED_FROM_ALL = False
+
+#: The only stage permitted to delete, and the stage that must arm it first.
+DELETING_STAGE = "purge_closed"
+ARMING_STAGE = "auto_delete_candidate"
 
 # Statuses that mean the round cannot be applied to.
 #
@@ -275,7 +290,14 @@ def _run_stage(name: str, fn) -> StageReport:
     """
     started = time.monotonic()
     try:
-        detail = fn() or {}
+        # Attribute any image mutation this stage makes to the stage that made
+        # it. The label is applied here, at the one place every stage passes
+        # through, rather than inside each stage: a writer that forgets to label
+        # itself is the failure mode this whole audit exists to detect.
+        from app.image_audit import image_writer
+
+        with image_writer(f"maintenance.{name}"):
+            detail = fn() or {}
         # A stage that catches its own failure and returns `{"error": ...}` is the
         # convention throughout this job, so the runner is where that convention
         # has to be honoured. Otherwise a stage that failed reports ok and a
@@ -739,12 +761,23 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
     run_all = "all" in wanted
     # "all" must never destroy rows. A scheduled run has no operator watching it,
     # so a stage that deletes records is only ever reachable by naming it.
+    excluded_from_all = {DELETING_STAGE} if PURGE_CLOSED_EXCLUDED_FROM_ALL else set()
     selected = [
         s
         for s in STAGE_ORDER
-        if (run_all and s != "purge_closed") or s in wanted
+        if (run_all and s not in excluded_from_all) or s in wanted
     ]
-    assert not (run_all and PURGE_CLOSED_EXCLUDED_FROM_ALL) or "purge_closed" not in selected
+    if run_all:
+        assert PURGE_CLOSED_EXCLUDED_FROM_ALL == (DELETING_STAGE not in selected), (
+            "PURGE_CLOSED_EXCLUDED_FROM_ALL does not match the stage selection"
+        )
+        if DELETING_STAGE in selected:
+            assert ARMING_STAGE in selected, (
+                "the schedule can delete but cannot arm; nothing would ever be eligible"
+            )
+            assert selected.index(ARMING_STAGE) < selected.index(DELETING_STAGE), (
+                "the deleting stage would run before the arming stage"
+            )
 
     # Import the runners once, after preflight has proven they load.
     from app.services.enrichment_runner import EnrichmentBatchRunner

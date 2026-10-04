@@ -196,12 +196,34 @@ class TestReversibility:
 
 
 class TestNotUnattended:
-    def test_excluded_from_all(self):
-        assert worker.PURGE_CLOSED_EXCLUDED_FROM_ALL is True
+    def test_unattended_deletion_is_bounded_by_the_policy_not_by_exclusion(self):
+        """Phase 3 removed the exclusion, so the safety has to live somewhere else.
+
+        This test used to assert ``PURGE_CLOSED_EXCLUDED_FROM_ALL is True``, which
+        meant a scheduled run could not delete at all. Activation deliberately
+        reversed that, so the assertion is replaced rather than deleted, and
+        replaced with the property that now has to hold: a scheduled run may reach
+        the stage, and the stage may only act on what the policy produced, after a
+        grace period spanning earlier cycles, re-decided inside the transaction.
+
+        The flag still has to *describe* the selection rather than be assumed to,
+        so that part of the original intent is kept.
+        """
+        import inspect as _inspect
+
+        source = _inspect.getsource(worker.main)
+        assert "PURGE_CLOSED_EXCLUDED_FROM_ALL" in source
+        assert "does not match the stage selection" in source
+
+    def test_runs_last_so_a_record_added_earlier_in_the_run_is_still_judged(self):
         # Runs last, so a record inserted earlier in the same run is also
         # judged for closure rather than surviving on the strength of being
         # added after the purge had already passed.
         assert worker.STAGE_ORDER[-1] == "purge_closed"
+        assert worker.STAGE_ORDER[-2] == "auto_delete_candidate"
+
+    def test_the_deleting_stage_still_depends_on_arming(self):
+        assert worker.STAGE_DEPENDENCIES["purge_closed"] == ("auto_delete_candidate",)
 
     def test_stage_has_a_runner_in_the_dispatch_table(self):
         tree = ast.parse(inspect.getsource(worker))
