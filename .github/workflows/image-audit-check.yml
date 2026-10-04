@@ -41,6 +41,13 @@ jobs:
         env:
           SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
 
+      - name: Probe audit boundary (rolled back)
+        run: |
+          cd backend
+          python scripts/probe_audit_boundary.py
+        env:
+          SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
+
       - name: Forensic pre-flight (read-only)
         run: |
           cd backend
