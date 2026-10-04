@@ -67,8 +67,7 @@ export default function AdminVerificationPage() {
   const [summary, setSummary] = useState(null)
   const [queue, setQueue] = useState(null)
   const [queueError, setQueueError] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [selectedId, setSelectedId] = useState(null)
+  const [settledKey, setSettledKey] = useState(null)
   const [detail, setDetail] = useState(null)
   const [detailError, setDetailError] = useState('')
   const [notice, setNotice] = useState(null)
@@ -84,6 +83,21 @@ export default function AdminVerificationPage() {
   const page = Math.max(1, Number(searchParams.get('page') || 1))
   const limit = 25
 
+  // Which record is open is a URL concern, so it is read during render instead
+  // of being copied into state. Mirroring it through an effect meant the panel
+  // lagged the URL by a render and re-rendered the page for a value already held.
+  const recordParam = searchParams.get('record')
+  const selectedId = recordParam ? Number(recordParam) : null
+
+  // Identifies the request the current filters describe. Loading is derived from
+  // whether that request has settled, so nothing is written to state while an
+  // effect body is running.
+  const requestKey = adminSecret ? `${adminSecret}|${search}|${status}|${scope}|${sort}|${page}` : null
+  const loading = requestKey !== null && settledKey !== requestKey
+
+  // Nothing is shown for no selection, without needing to clear state to say so.
+  const activeDetail = selectedId === null ? null : detail
+
   const setParam = useCallback(
     (patch) => {
       const next = new URLSearchParams(searchParams)
@@ -97,52 +111,70 @@ export default function AdminVerificationPage() {
     [searchParams, setSearchParams],
   )
 
+  const requestQueue = useCallback(() => {
+    return Promise.all([
+      fetchSummary(adminSecret),
+      fetchQueue(adminSecret, {
+        search,
+        verification_status: status,
+        scope,
+        sort,
+        order: 'asc',
+        limit,
+        offset: (page - 1) * limit,
+      }),
+    ])
+  }, [adminSecret, search, status, scope, sort, page])
+
+  // Fetching the queue is genuine synchronisation with an external system. Every
+  // state write happens in a promise callback, never in the effect body, and a
+  // stale response is discarded when the filters change underneath it.
+  useEffect(() => {
+    if (!adminSecret) return undefined
+    let cancelled = false
+    requestQueue()
+      .then(([summaryData, queueData]) => {
+        if (cancelled) return
+        setSummary(summaryData)
+        setQueue(queueData)
+        setQueueError('')
+      })
+      .catch((error) => {
+        if (cancelled) return
+        if (error.status === 401) setAuthError('That administrator secret was not accepted.')
+        else setQueueError(error.message)
+      })
+      .finally(() => {
+        if (!cancelled) setSettledKey(requestKey)
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [adminSecret, requestQueue, requestKey])
+
+  // Imperative refresh, used after a decision changes a record.
   const loadQueue = useCallback(async () => {
-    setLoading(true)
-    setQueueError('')
     try {
-      const [summaryData, queueData] = await Promise.all([
-        fetchSummary(adminSecret),
-        fetchQueue(adminSecret, {
-          search,
-          verification_status: status,
-          scope,
-          sort,
-          order: 'asc',
-          limit,
-          offset: (page - 1) * limit,
-        }),
-      ])
+      const [summaryData, queueData] = await requestQueue()
       setSummary(summaryData)
       setQueue(queueData)
+      setQueueError('')
     } catch (error) {
       if (error.status === 401) setAuthError('That administrator secret was not accepted.')
       else setQueueError(error.message)
     } finally {
-      setLoading(false)
+      setSettledKey(requestKey)
     }
-  }, [adminSecret, search, status, scope, sort, page])
+  }, [requestQueue, requestKey])
 
   useEffect(() => {
-    if (adminSecret) loadQueue()
-  }, [adminSecret, loadQueue])
-
-  // Opening a record is a URL change, so the panel survives a hard refresh.
-  useEffect(() => {
-    const id = searchParams.get('record')
-    setSelectedId(id ? Number(id) : null)
-  }, [searchParams])
-
-  useEffect(() => {
-    if (selectedId === null || !adminSecret) {
-      setDetail(null)
-      return
-    }
+    if (selectedId === null || !adminSecret) return undefined
     let cancelled = false
-    setDetailError('')
     fetchDetail(adminSecret, selectedId)
       .then((data) => {
-        if (!cancelled) setDetail(data)
+        if (cancelled) return
+        setDetail(data)
+        setDetailError('')
       })
       .catch((error) => {
         if (!cancelled) setDetailError(error.message)
@@ -153,24 +185,24 @@ export default function AdminVerificationPage() {
   }, [selectedId, adminSecret])
 
   const decide = async (decisionValue) => {
-    if (!detail) return
+    if (!activeDetail) return
     const rationale = window.prompt('Rationale for this decision (recorded in the audit trail):')
     if (!rationale || rationale.trim().length < 3) return
     setDecisionBusy(true)
     setNotice(null)
     try {
-      const result = await submitDecision(adminSecret, detail.scholarship_id, {
+      const result = await submitDecision(adminSecret, activeDetail.scholarship_id, {
         decision: decisionValue,
         rationale: rationale.trim(),
-        expected_updated_at: detail.overview.updated_at,
-        expected_verification_status: detail.claims.verification_status,
+        expected_updated_at: activeDetail.overview.updated_at,
+        expected_verification_status: activeDetail.claims.verification_status,
       })
       setNotice({
         tone: 'ok',
         text: `Recorded. Status is now ${result.verification_status}.`,
       })
       await loadQueue()
-      const refreshed = await fetchDetail(adminSecret, detail.scholarship_id)
+      const refreshed = await fetchDetail(adminSecret, activeDetail.scholarship_id)
       setDetail(refreshed)
     } catch (error) {
       setNotice({
@@ -181,7 +213,7 @@ export default function AdminVerificationPage() {
             : error.message,
       })
       if (error.status === 409) {
-        const refreshed = await fetchDetail(adminSecret, detail.scholarship_id)
+        const refreshed = await fetchDetail(adminSecret, activeDetail.scholarship_id)
         setDetail(refreshed)
       }
     } finally {
@@ -394,11 +426,11 @@ export default function AdminVerificationPage() {
               </p>
             ) : null}
 
-            {!detail && !detailError ? (
+            {!activeDetail && !detailError ? (
               <p className="avc-empty">Select a record to review it.</p>
             ) : null}
 
-            {detail ? (
+            {activeDetail ? (
               <article className="avc-review">
                 {notice ? (
                   <p className={`avc-notice avc-notice--${notice.tone}`} role="status">
@@ -406,21 +438,21 @@ export default function AdminVerificationPage() {
                   </p>
                 ) : null}
 
-                <h2 className="avc-review__title">{detail.overview.title}</h2>
+                <h2 className="avc-review__title">{activeDetail.overview.title}</h2>
                 <p className="avc-review__id">
-                  Record {detail.scholarship_id} ·{' '}
-                  {detail.scope === 'public' ? 'Public' : 'Storage-only'}
+                  Record {activeDetail.scholarship_id} ·{' '}
+                  {activeDetail.scope === 'public' ? 'Public' : 'Storage-only'}
                 </p>
 
                 <section className="avc-block">
                   <h3>Overview</h3>
                   <dl className="avc-dl">
-                    <div><dt>Country</dt><dd>{detail.overview.country || '—'}</dd></div>
-                    <div><dt>Degree</dt><dd>{detail.overview.degree || '—'}</dd></div>
-                    <div><dt>Region</dt><dd>{detail.overview.region || '—'}</dd></div>
-                    <div><dt>Funding</dt><dd>{detail.overview.funding || '—'}</dd></div>
-                    <div><dt>Deadline</dt><dd>{detail.overview.deadline_display || formatDate(detail.overview.deadline_date)}</dd></div>
-                    <div><dt>Archived</dt><dd>{detail.overview.is_archived ? 'Yes' : 'No'}</dd></div>
+                    <div><dt>Country</dt><dd>{activeDetail.overview.country || '—'}</dd></div>
+                    <div><dt>Degree</dt><dd>{activeDetail.overview.degree || '—'}</dd></div>
+                    <div><dt>Region</dt><dd>{activeDetail.overview.region || '—'}</dd></div>
+                    <div><dt>Funding</dt><dd>{activeDetail.overview.funding || '—'}</dd></div>
+                    <div><dt>Deadline</dt><dd>{activeDetail.overview.deadline_display || formatDate(activeDetail.overview.deadline_date)}</dd></div>
+                    <div><dt>Archived</dt><dd>{activeDetail.overview.is_archived ? 'Yes' : 'No'}</dd></div>
                   </dl>
                 </section>
 
@@ -429,53 +461,53 @@ export default function AdminVerificationPage() {
                   <dl className="avc-dl">
                     <div>
                       <dt>Verification status</dt>
-                      <dd>{STATUS_LABELS[detail.claims.verification_status] || detail.claims.verification_status}</dd>
+                      <dd>{STATUS_LABELS[activeDetail.claims.verification_status] || activeDetail.claims.verification_status}</dd>
                     </div>
                     <div>
                       <dt>Published as verified</dt>
-                      <dd>{detail.claims.public_verified ? 'Yes' : 'No'}</dd>
+                      <dd>{activeDetail.claims.public_verified ? 'Yes' : 'No'}</dd>
                     </div>
                     <div>
                       <dt>Stored legacy boolean</dt>
                       <dd>
-                        {detail.claims.legacy_is_verified ? 'true' : 'false'}{' '}
+                        {activeDetail.claims.legacy_is_verified ? 'true' : 'false'}{' '}
                         <span className="avc-tag">
-                          {detail.claims.legacy_agrees_with_status ? 'agrees' : 'disagrees — diagnostic only'}
+                          {activeDetail.claims.legacy_agrees_with_status ? 'agrees' : 'disagrees — diagnostic only'}
                         </span>
                       </dd>
                     </div>
-                    <div><dt>Last verified</dt><dd>{formatDate(detail.claims.last_verified_at)}</dd></div>
-                    <div><dt>Next due</dt><dd>{formatDate(detail.claims.next_verification_due)}</dd></div>
-                    <div><dt>Image state</dt><dd>{detail.claims.image_evaluation_status || 'not evaluated'}</dd></div>
+                    <div><dt>Last verified</dt><dd>{formatDate(activeDetail.claims.last_verified_at)}</dd></div>
+                    <div><dt>Next due</dt><dd>{formatDate(activeDetail.claims.next_verification_due)}</dd></div>
+                    <div><dt>Image state</dt><dd>{activeDetail.claims.image_evaluation_status || 'not evaluated'}</dd></div>
                   </dl>
                 </section>
 
                 <section className="avc-block">
                   <h3>Official sources</h3>
                   <dl className="avc-dl">
-                    <div><dt>Provider</dt><dd>{detail.sources.official_source || '—'}</dd></div>
+                    <div><dt>Provider</dt><dd>{activeDetail.sources.official_source || '—'}</dd></div>
                     <div>
                       <dt>Source</dt>
                       <dd>
-                        {detail.sources.official_source_url ? (
-                          <a href={detail.sources.official_source_url} target="_blank" rel="noreferrer noopener">
-                            {detail.sources.official_source_url}
+                        {activeDetail.sources.official_source_url ? (
+                          <a href={activeDetail.sources.official_source_url} target="_blank" rel="noreferrer noopener">
+                            {activeDetail.sources.official_source_url}
                           </a>
                         ) : (
                           '—'
                         )}
                       </dd>
                     </div>
-                    <div><dt>Last verified date</dt><dd>{formatDate(detail.sources.last_verified_date)}</dd></div>
+                    <div><dt>Last verified date</dt><dd>{formatDate(activeDetail.sources.last_verified_date)}</dd></div>
                   </dl>
                 </section>
 
                 <section className="avc-block">
                   <h3>Conflicts</h3>
-                  {detail.conflicts.length === 0 ? (
+                  {activeDetail.conflicts.length === 0 ? (
                     <p className="avc-empty">No recorded conflicts.</p>
                   ) : (
-                    detail.conflicts.map((conflict) => (
+                    activeDetail.conflicts.map((conflict) => (
                       <div className="avc-conflict" key={conflict.review_id}>
                         <p className="avc-conflict__field">{conflict.field_name}</p>
                         <p className="avc-conflict__reason">{conflict.conflict_reason}</p>
@@ -497,11 +529,11 @@ export default function AdminVerificationPage() {
 
                 <section className="avc-block">
                   <h3>Verification history</h3>
-                  {detail.history.length === 0 ? (
+                  {activeDetail.history.length === 0 ? (
                     <p className="avc-empty">No recorded history.</p>
                   ) : (
                     <ol className="avc-history">
-                      {detail.history.map((entry) => (
+                      {activeDetail.history.map((entry) => (
                         <li key={entry.id}>
                           <span className="avc-history__when">{formatDate(entry.created_at)}</span>
                           <span className="avc-history__what">

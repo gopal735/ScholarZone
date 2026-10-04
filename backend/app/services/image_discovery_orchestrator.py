@@ -40,6 +40,16 @@ LOGO_IDENTITY_KINDS: frozenset[str] = frozenset({
     "official_university",
 })
 
+#: Every image kind the verification pipeline may legitimately accept. A stored
+#: image whose kind is in this set and that carries a verification timestamp was
+#: accepted on the evidence and must not be discarded merely for not being a
+#: logo. The identity marks are a subset; PROGRAM_IMAGE and OFFICIAL_BANNER are
+#: equally valid results of the same pipeline.
+ACCEPTED_IMAGE_KINDS: frozenset[str] = LOGO_IDENTITY_KINDS | frozenset({
+    "program_image",
+    "official_banner",
+})
+
 
 class TrustworthyImageStatus(str, Enum):
     """Outcome of an orchestrated discovery run for one scholarship."""
