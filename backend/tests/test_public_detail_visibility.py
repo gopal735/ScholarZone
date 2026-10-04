@@ -325,6 +325,25 @@ class TestInternalSurfacesKeepTheirAccess:
 
         assert response.status_code in (401, 403)
 
+    def test_the_verification_pipeline_can_still_reach_a_hidden_record(self, client):
+        """The pipeline's contract, asserted functionally rather than structurally.
+
+        ``scholarship_verifier`` resolves its target through
+        ``get_scholarship_by_id``. A quarantined or archived record is exactly
+        what that pipeline exists to examine, so the loader must still return it.
+        Asserted through the loader the pipeline actually calls, which is the
+        narrowest honest form of this guarantee: a structural check on the source
+        would pass even if a caller stopped using the loader.
+        """
+        from app.repositories.scholarships import get_scholarship_by_id
+
+        session = _session(client)
+        quarantined = _seed(session, 70, verification_status="quarantined")
+        archived = _seed(session, 71, is_archived=True)
+
+        assert get_scholarship_by_id(session, quarantined.id) is not None
+        assert get_scholarship_by_id(session, archived.id) is not None
+
     def test_the_verification_queue_still_lists_hidden_records(self, client):
         """The queue is the one surface that *must* show non-public records.
 
