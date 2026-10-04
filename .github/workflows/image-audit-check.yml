@@ -41,6 +41,13 @@ jobs:
         env:
           SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
 
+      - name: Dump image audit evidence (read-only)
+        run: |
+          cd backend
+          python scripts/dump_image_audit.py
+        env:
+          SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
+
       - name: Probe audit boundary (rolled back)
         run: |
           cd backend
