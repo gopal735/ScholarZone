@@ -142,6 +142,25 @@ export default function ApplicationWorkspace({ applicationId, onClose }) {
     }
   }, [applicationId, applyPayload, applyError])
 
+  /**
+   * Re-read the stored record without leaving the current view.
+   *
+   * Used after a refused write. A full `load` would flip the workspace back to
+   * its skeleton, which unmounts the conflict notice and the reload button the
+   * reader needs in order to understand what happened and recover.
+   */
+  const refreshSilently = useCallback(async () => {
+    try {
+      const latest = await fetchApplication(applicationId)
+      setApplication(latest)
+      setNotes(latest.notes || '')
+      setError(null)
+    } catch {
+      // Leave what is on screen. It is the reader's work, and replacing it with
+      // an error because a recovery fetch failed would destroy it.
+    }
+  }, [applicationId])
+
   useEffect(() => {
     let cancelled = false
     fetchApplication(applicationId).then(
@@ -157,21 +176,37 @@ export default function ApplicationWorkspace({ applicationId, onClose }) {
     }
   }, [applicationId, applyPayload, applyError])
 
-  const mutate = async (operation, successMessage) => {
+  const mutate = async (operation, successMessage, { optimistic } = {}) => {
     setNotice(null)
     setConflict(null)
+
+    // A checkbox is a control the reader has already operated. Waiting for a
+    // round trip before it moves makes the click look ignored and invites a
+    // second one, so the visible change is applied first and rolled back from the
+    // server's answer if the write is refused.
+    if (optimistic) {
+      setApplication(optimistic)
+    }
+
     try {
       const updated = await operation()
       setApplication(updated)
       setNotes(updated.notes || '')
       setNotice({ type: 'success', message: successMessage })
+      return true
     } catch (caught) {
       if (caught && caught.status === 409) {
         // Do not overwrite anything. The reader decides what to keep.
         setConflict(caught.message)
+        // The optimistic value may now disagree with the stored record, so the
+        // authoritative copy is fetched - silently, so the conflict notice and
+        // its reload button stay on screen.
+        refreshSilently()
       } else {
         setNotice({ type: 'error', message: caught.message || 'That change did not save.' })
+        if (optimistic) refreshSilently()
       }
+      return false
     }
   }
 
@@ -190,10 +225,36 @@ export default function ApplicationWorkspace({ applicationId, onClose }) {
   }
 
   const toggleItem = (key, completed) => {
+    // Progress and the counters are recomputed here from the same weights the
+    // server uses, purely so the bar moves with the tick. The server's numbers
+    // replace these the moment it answers, so this is one frame of feedback and
+    // never becomes a second source of truth.
+    let next = null
+    if (application) {
+      const checklist = application.checklist.map((item) =>
+        item.key === key ? { ...item, completed } : item,
+      )
+      const completedCount = checklist.filter((item) => item.completed && item.weight > 0).length
+      const earned = checklist
+        .filter((item) => item.completed && item.weight > 0)
+        .reduce((sum, item) => sum + item.weight, 0)
+
+      next = {
+        ...application,
+        checklist,
+        checklist_completed: completedCount,
+        progress_percent:
+          application.checklist_total > 0
+            ? Math.max(0, Math.min(100, Math.round((100 * earned) / application.checklist_total)))
+            : null,
+      }
+    }
+
     mutate(
       () =>
         setChecklistItem(applicationId, key, { completed, expectedVersion: application.version }),
       completed ? 'Task completed.' : 'Task reopened.',
+      { optimistic: next },
     )
   }
 

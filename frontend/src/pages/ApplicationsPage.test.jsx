@@ -309,6 +309,42 @@ describe('ApplicationWorkspace', () => {
     })
   })
 
+  it('moves the checkbox immediately rather than after the round trip', async () => {
+    vi.mocked(fetchApplication).mockResolvedValue(BASE_APPLICATION)
+    // A write the server has not answered yet. A reader who clicks and sees
+    // nothing happen clicks again.
+    let release
+    setChecklistItem.mockReturnValue(new Promise((settle) => { release = settle }))
+
+    await openWorkspace()
+    const box = screen.getAllByRole('checkbox')[1]
+    expect(box).not.toBeChecked()
+
+    await userEvent.click(box)
+
+    // Applied optimistically, before the request settles.
+    expect(screen.getAllByRole('checkbox')[1]).toBeChecked()
+
+    release({ ...BASE_APPLICATION, version: 4, progress_percent: 75, checklist_completed: 3 })
+    await vi.waitFor(() => expect(setChecklistItem).toHaveBeenCalled())
+  })
+
+  it('rolls the checkbox back when the write is refused', async () => {
+    vi.mocked(fetchApplication).mockResolvedValue(BASE_APPLICATION)
+    const { ApplicationApiError } = await import('../services/applicationsService')
+    setChecklistItem.mockRejectedValue(new ApplicationApiError('Server refused the change.', 500))
+    vi.mocked(fetchApplication)
+      .mockResolvedValueOnce(BASE_APPLICATION)
+      .mockResolvedValue(BASE_APPLICATION)
+
+    await openWorkspace()
+    await userEvent.click(screen.getAllByRole('checkbox')[1])
+
+    expect(await screen.findByText('Server refused the change.')).toBeInTheDocument()
+    // The optimistic tick is undone from the server's record, not left lying.
+    await vi.waitFor(() => expect(screen.getAllByRole('checkbox')[1]).not.toBeChecked())
+  })
+
   it('offers only the transitions the server allows', async () => {
     vi.mocked(fetchApplication).mockResolvedValue(BASE_APPLICATION)
     await openWorkspace()
