@@ -18,7 +18,6 @@ import os
 from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel
 
-from app.database import get_session_factory
 from app.services.maintenance_dispatch import (
     CONFIGURATION_BLOCKED,
     run_backstop_once,
@@ -64,6 +63,8 @@ def dispatch_maintenance(request: Request) -> DispatchReportBody:
         # Not a 401: this endpoint should not be discoverable.
         raise HTTPException(status_code=404, detail="Not found")
 
+    from app.database import get_session_factory
+
     as_of = dt.datetime.now(dt.timezone.utc)
     report = run_backstop_once(get_session_factory(), as_of=as_of)
     return DispatchReportBody(
@@ -83,6 +84,7 @@ def maintenance_status(request: Request) -> dict:
     """Scheduler observability, from persisted state only."""
     if not cron_is_authorised(request):
         raise HTTPException(status_code=404, detail="Not found")
+    from app.database import get_session_factory
     from app.services.maintenance_dispatch import observability
 
     return observability(get_session_factory(), as_of=dt.datetime.now(dt.timezone.utc))

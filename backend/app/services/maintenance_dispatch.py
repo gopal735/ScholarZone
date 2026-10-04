@@ -260,6 +260,18 @@ class DispatchReport:
         return list(self.dispatched)
 
 
+def slot_time_from_id(slot_id: str) -> dt.datetime:
+    """Recover the UTC due instant encoded in a slot id.
+
+    The id is ``maint-slot-YYYYMMDDTHHMMZ``. Reconstructing the instant lets the
+    backstop claim *this* slot rather than whichever slot is due right now,
+    which is what makes multi-slot catch-up possible. Phase A identity is
+    unchanged; this only reads it back.
+    """
+    stamp = slot_id.split("-", 2)[-1]
+    return dt.datetime.strptime(stamp, "%Y%m%dT%H%MZ").replace(tzinfo=dt.timezone.utc)
+
+
 def run_backstop_once(
     session_factory,
     *,
@@ -290,9 +302,12 @@ def run_backstop_once(
         if state in (DISPATCHED, RUNNING, SUCCEEDED, FAILED):
             continue
 
+        # Claim THIS slot, not the one currently due: during catch-up the
+        # due instant differs per slot, and claiming `as_of` would collapse
+        # every iteration onto the same slot.
         claim = claim_slot(
             session_factory,
-            as_of=as_of,
+            as_of=slot_time_from_id(identifier),
             owner=owner,
             lease_seconds=lease_seconds,
             logical_source=EXTERNAL_SCHEDULER_DISPATCH,
@@ -322,13 +337,23 @@ def run_backstop_once(
 
 
 def _release_claim(session_factory, slot_id: str, as_of: dt.datetime) -> None:
-    from app.services.maintenance_slot import get_or_create_slot
+    """Hand a slot back after a dispatch that did not happen.
 
-    # EXPIRED is the explicit, visible way to hand a slot back. It is not a
-    # silent CLAIMED -> DUE.
-    session_factory().query(__import__("app.models", fromlist=["MaintenanceRun"]).MaintenanceRun).filter(
-        __import__("app.models", fromlist=["MaintenanceRun"]).MaintenanceRun.slot_id == slot_id
-    ).update({"slot_status": EXPIRED, "lease_until": None})
+    The claim is released as EXPIRED, which is the explicit, visible way to
+    release a slot: it is never silently returned to DUE. The session is closed
+    on every path; leaving it open held a SQLite write lock and stalled every
+    later reader.
+    """
+    from app.models import MaintenanceRun
+
+    session = session_factory()
+    try:
+        session.query(MaintenanceRun).filter(
+            MaintenanceRun.slot_id == slot_id
+        ).update({"slot_status": EXPIRED, "lease_until": None}, synchronize_session=False)
+        session.commit()
+    finally:
+        session.close()
 
 
 # -- Workflow-run reconciliation (Part 15) -----------------------------------
@@ -374,9 +399,14 @@ def reconcile_run(
         return None
     if current in (SUCCEEDED, FAILED):
         return None  # terminal states are never rewritten
-    from app.services.maintenance_slot import IllegalTransition
+    from app.services.maintenance_slot import RUNNING, IllegalTransition
 
     try:
+        if current == DISPATCHED and target in (SUCCEEDED, FAILED):
+            # A workflow can finish before anyone observed it in progress. The
+            # durable machine still requires RUNNING before a terminal state,
+            # so the transition is recorded rather than skipped.
+            advance(session_factory, slot_id, RUNNING, now=as_of)
         advance(session_factory, slot_id, target, now=as_of)
     except IllegalTransition:
         return None

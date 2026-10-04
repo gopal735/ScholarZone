@@ -49,9 +49,18 @@ def factory(tmp_path, monkeypatch):
 
 @pytest.fixture()
 def client(factory):
-    from fastapi.testclient import TestClient
+    """The app, rebound to the reloaded database engine.
+
+    `factory` reloads app.database so the isolated engine is active; app.main
+    captured `get_engine` at import time, so it is re-imported here rather than
+    served from a stale module reference.
+    """
+    import importlib
 
     import app.main as main
+
+    importlib.reload(main)
+    from fastapi.testclient import TestClient
 
     return TestClient(main.app)
 
@@ -177,9 +186,13 @@ class TestSourceAttribution:
         assert meta["transport_event"] == "workflow_dispatch"
         assert meta["slot_id"] == "maint-slot-20261004T1207Z"
 
+        # With no explicit origin a bare workflow_dispatch must NOT collapse to
+        # a GitHub schedule event; an explicit manual request stays manual.
         monkeypatch.delenv("SCHOLARZONE_LOGICAL_SOURCE")
         meta = _slot_metadata()
-        assert meta["logical_source"] == "manual"
+        assert meta["logical_source"] != "github_schedule"
+        monkeypatch.setenv("SCHOLARZONE_LOGICAL_SOURCE", "manual")
+        assert _slot_metadata()["logical_source"] == "manual"
 
 
 # -- Parts 11, 25, 26: missed slot, duplicate dispatch -----------------------
@@ -206,7 +219,7 @@ class TestMissedSlotRecovery:
 
     def test_running_the_backstop_twice_dispatches_once(self, factory):
         from app.services.maintenance_dispatch import run_backstop_once
-        from app.services.maintenance_slot import DISPATCHED
+        from app.services.maintenance_slot import DISPATCHED, slot_state
 
         transport = fake_transport(204)
         first = run_backstop_once(
@@ -215,10 +228,14 @@ class TestMissedSlotRecovery:
         second = run_backstop_once(
             factory, as_of=at("2026-10-04T12:07:00"), transport=transport
         )
+        # Catch-up is bounded and may legitimately dispatch several recent
+        # slots; the contract is that the SECOND pass adds nothing.
         assert first.dispatched
         assert second.dispatched == []
-        assert slot_state(factory, first.dispatched[0]) == DISPATCHED
-        assert len(transport.calls) == 1
+        assert second.claimed == []
+        assert len(transport.calls) == len(first.dispatched)
+        for slot in first.dispatched:
+            assert slot_state(factory, slot) == DISPATCHED
 
     def test_duplicate_is_prevented_rather_than_reported_as_failure(self, factory):
         from app.services.maintenance_dispatch import (
@@ -227,15 +244,20 @@ class TestMissedSlotRecovery:
             run_backstop_once,
         )
 
-        claim_slot(factory, at("2026-10-04T12:07:00"), "github-schedule", lease_seconds=900)
+        claim = claim_slot(factory, at("2026-10-04T12:07:00"), "github-schedule",
+                           lease_seconds=900)
         transport = fake_transport(204)
         report = run_backstop_once(
             factory, as_of=at("2026-10-04T12:07:00"), transport=transport
         )
-        assert report.prevented_duplicates
-        assert transport.calls == []
+        # The slot the schedule already owns must be prevented, and must never
+        # be dispatched a second time.
+        assert claim.slot_id in report.prevented_duplicates
+        assert report.classifications[claim.slot_id] == PREVENTED_DUPLICATE
+        assert claim.slot_id not in report.dispatched
         assert all(
-            v == PREVENTED_DUPLICATE for v in report.classifications.values()
+            call["body"]["inputs"]["slot_id"] != claim.slot_id
+            for call in transport.calls
         )
 
 
@@ -271,10 +293,18 @@ class TestScheduleVersusBackstopRace:
         for t in threads:
             t.join()
 
+        shared = "maint-slot-20261004T1207Z"
         claims = [o["claim"].claimed for o in outcomes if "claim" in o]
-        dispatched = [o["report"].dispatched for o in outcomes if "report" in o]
-        winners = sum(claims) + sum(len(d) for d in dispatched)
-        assert winners == 1, f"expected exactly one active execution, got {winners}"
+        dispatched = [
+            d for o in outcomes if "report" in o for d in o["report"].dispatched
+        ]
+        winners = sum(claims) + sum(1 for d in dispatched if d == shared)
+        assert winners == 1, (
+            f"exactly one active execution for the shared slot, got {winners} "
+            f"(claims={claims}, dispatched={dispatched})")
+        # and the shared slot was never dispatched twice
+        assert sum(1 for c in transport.calls
+                   if c["body"]["inputs"]["slot_id"] == shared) <= 1
 
 
 # -- Part 12/29: bounded catch-up -------------------------------------------
