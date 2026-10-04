@@ -528,3 +528,134 @@ class ContentFingerprintRecord(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
 
 
+# ---------------------------------------------------------------------------
+# Student dashboard
+#
+# Everything below is *student-owned* state. None of it is scholarship truth:
+# no column here changes how a scholarship is verified, scored, counted or
+# published. The separation is deliberate, because the public catalogue is
+# shared, auditable data and a dashboard is one student's private workspace.
+#
+# Every table is created by ``Base.metadata.create_all`` in
+# ``app/database.py``. ``init_database`` is additive by construction - it never
+# drops or rewrites a table it finds - so these appear on a fresh database and
+# are a no-op on an existing one.
+# ---------------------------------------------------------------------------
+
+
+class User(Base):
+    """A registered student account.
+
+    ``email`` is the login identity and is stored in a canonical lowercase form
+    so ``Student@Example.com`` and ``student@example.com`` cannot become two
+    accounts. The unique constraint on the column is what actually enforces
+    that; the normalisation only exists so the constraint is not the first place
+    the problem is noticed.
+    """
+
+    __tablename__ = "users"
+    __table_args__ = (UniqueConstraint("email", name="uq_users_email"),)
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    email: Mapped[str] = mapped_column(String(254), nullable=False, index=True)
+    #: A PBKDF2-HMAC-SHA256 digest, never the password. See
+    #: ``app/services/auth.py`` for the encoding and why no new dependency is
+    #: needed to produce it.
+    password_hash: Mapped[str] = mapped_column(String(255), nullable=False)
+    #: Deactivated rather than deleted, so a saved shortlist and an application
+    #: history keep their owner instead of being orphaned.
+    is_active: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
+
+
+class UserSession(Base):
+    """A server-side session.
+
+    The browser is handed an opaque random token in an httpOnly cookie. Only
+    its SHA-256 fingerprint is stored here, so a database disclosure does not
+    hand an attacker usable session cookies, and ``revoked_at`` allows sign-out
+    to actually end a session instead of merely asking the browser to forget it.
+    """
+
+    __tablename__ = "user_sessions"
+    __table_args__ = (
+        UniqueConstraint("token_hash", name="uq_user_sessions_token_hash"),
+        Index("ix_user_sessions_user_expires", "user_id", "expires_at"),
+    )
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False, index=True)
+    token_hash: Mapped[str] = mapped_column(String(64), nullable=False, index=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
+    expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, index=True)
+    revoked_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
+class StudentProfile(Base):
+    """One student's saved Match 2.0 profile.
+
+    ``payload`` holds exactly the JSON form of ``MatchProfileRequest``. Storing
+    the engine's own schema rather than a parallel dashboard profile is the point:
+    there is one definition of what a profile is, so the dashboard cannot drift
+    from what Match actually scored. Every read validates it back through
+    ``MatchProfileRequest``, which means a row written by an older or newer
+    version cannot be interpreted as a different profile.
+    """
+
+    __tablename__ = "student_profiles"
+    __table_args__ = (UniqueConstraint("user_id", name="uq_student_profiles_user"),)
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False, index=True)
+    payload: Mapped[dict] = mapped_column(JSON, nullable=False, default=dict)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
+
+
+class SavedScholarship(Base):
+    """A scholarship the student is keeping on a shortlist.
+
+    The unique pair makes saving idempotent, so a double click or a retried
+    request cannot produce two rows that then disagree about how many times the
+    student saved something.
+    """
+
+    __tablename__ = "saved_scholarships"
+    __table_args__ = (
+        UniqueConstraint("user_id", "scholarship_id", name="uq_saved_scholarships_user_scholarship"),
+        Index("ix_saved_scholarships_user_created", "user_id", "created_at"),
+    )
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False, index=True)
+    scholarship_id: Mapped[int] = mapped_column(ForeignKey("scholarships.id"), nullable=False, index=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
+
+
+class ApplicationRecord(Base):
+    """A scholarship the student has started to apply to.
+
+    ``state`` is deliberately a short, fixed vocabulary rather than a workflow
+    engine. Dashboard 1.0 records where a student is; it does not orchestrate
+    documents, deadlines or submissions, and adding that machinery here would be
+    building the Application Workspace by accident.
+    """
+
+    __tablename__ = "application_records"
+    __table_args__ = (
+        UniqueConstraint("user_id", "scholarship_id", name="uq_application_records_user_scholarship"),
+        Index("ix_application_records_user_updated", "user_id", "updated_at"),
+    )
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False, index=True)
+    scholarship_id: Mapped[int] = mapped_column(ForeignKey("scholarships.id"), nullable=False, index=True)
+    #: One of ``APPLICATION_STATES``. Stored as text rather than a database enum
+    #: so adding a state is a code change plus a migration, never a type
+    #: rewrite of live rows.
+    state: Mapped[str] = mapped_column(String(16), nullable=False, default="saved", index=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
+
+

@@ -106,7 +106,14 @@ def get_settings() -> Settings:
         allowed_origins=allowed_origins,
         resend_api_key=os.getenv("RESEND_API_KEY"),
         verification_secret=os.getenv("SCHOLARZONE_VERIFICATION_SECRET"),
-        admin_secret=os.getenv("SCHOLARZONE_ADMIN_SECRET"),
+        # The deployment already provisions SCHOLARZONE_VERIFICATION_SECRET, but
+        # only this name was ever read here, so admin_secret resolved to None and
+        # every administrator endpoint refused everyone - including the real
+        # administrator. The existing secret is reused rather than replaced: no
+        # new credential, no rotation, and nothing printed or committed. An
+        # explicitly provided SCHOLARZONE_ADMIN_SECRET still takes precedence.
+        admin_secret=os.getenv("SCHOLARZONE_ADMIN_SECRET")
+        or os.getenv("SCHOLARZONE_VERIFICATION_SECRET"),
         public_require_verified=_as_bool(
             os.getenv("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED"), True
         ),

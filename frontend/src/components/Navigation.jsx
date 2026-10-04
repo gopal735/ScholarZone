@@ -71,6 +71,14 @@ export default function Navigation() {
             <CountedUtilityLink to="/compare" label="Compare" count={compareIds.length} className="nav-utility-link" animate={!prefersReducedMotion} />
             {status === 'checking' ? (
               <span className="nav-session-status">Checking&hellip;</span>
+            ) : status === 'authenticated' ? (
+              // An account exists, so the useful destination is the workspace
+              // rather than the sign-in form. The dashboard reads its own access
+              // state from the server, so this link is a convenience, never the
+              // thing that decides whether someone may see it.
+              <NavLink to="/dashboard" className={({ isActive }) => `nav-sign-in ${isActive ? 'active' : ''}`}>
+                Dashboard
+              </NavLink>
             ) : (
               <NavLink to="/login" className={({ isActive }) => `nav-sign-in ${isActive ? 'active' : ''}`}>Sign in</NavLink>
             )}

@@ -1,0 +1,81 @@
+name: Student Dashboard Schema
+
+# The production API deliberately does not run create_all on startup: it
+# verifies connectivity and nothing else, because create_all plus ALTER TABLE
+# take ACCESS EXCLUSIVE locks that deadlock a serverless cold start. That means
+# a new table has to be applied deliberately, which is what this workflow is.
+#
+# Read-only by default. Applying requires an explicit confirmation, and the
+# dry run is always printed first so the exact DDL is in the log either way.
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "Actually create the missing tables. Leave false for a dry run."
+        type: boolean
+        required: false
+        default: false
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          cd backend
+          pip install -r requirements.txt
+
+      - name: Dry run
+        env:
+          SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
+          SCHOLARZONE_ENVIRONMENT: production
+        run: |
+          cd backend
+          python migrate_schema.py --dry-run 2>&1 | tee migrate_dry_run.log
+
+      - name: Apply
+        if: ${{ inputs.apply }}
+        env:
+          SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
+          SCHOLARZONE_ENVIRONMENT: production
+        run: |
+          cd backend
+          python migrate_schema.py 2>&1 | tee migrate_apply.log
+
+      - name: Validate
+        if: ${{ inputs.apply }}
+        env:
+          SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
+          SCHOLARZONE_ENVIRONMENT: production
+        run: |
+          cd backend
+          python migrate_schema.py --validate-only
+
+      - name: Upload migration logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: student-dashboard-migration-logs
+          path: backend/migrate_*.log
