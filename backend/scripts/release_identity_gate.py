@@ -105,12 +105,39 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--sentinel-id", type=int, help="known record id in the fixture DB")
     parser.add_argument("--sentinel-title", help="exact title of that record")
     parser.add_argument("--frontend-url", help="dev/preview server to confirm separately")
+    parser.add_argument(
+        "--expect-exact-url",
+        help="the base url must be exactly this. Use the exact deployment URL when "
+             "proving a preview, so a production alias cannot answer instead.",
+    )
+    parser.add_argument(
+        "--forbid-hosts",
+        help="comma-separated hosts the base url must NOT belong to. Use the "
+             "production alias here when the target is a preview.",
+    )
     args = parser.parse_args(argv)
 
     gate = Gate()
     print("=== RELEASE IDENTITY GATE ===")
     print(f"  base url    : {args.base_url}")
     print(f"  frontend    : {args.frontend_url or '(not checked)'}")
+
+    # 0. the target is the deployment we were asked to prove, not an alias.
+    if args.expect_exact_url:
+        gate.check(
+            "base url is the EXACT deployment url under test",
+            args.base_url.rstrip("/") == args.expect_exact_url.rstrip("/"),
+            f"base={args.base_url!r} expected={args.expect_exact_url!r}",
+        )
+    if args.forbid_hosts:
+        forbidden = [h.strip() for h in args.forbid_hosts.split(",") if h.strip()]
+        host = (args.base_url.split("//")[-1].split("/")[0]).lower()
+        offenders = [h for h in forbidden if h.lower() in host]
+        gate.check(
+            "base url is not a forbidden alias",
+            not offenders,
+            f"host={host!r} forbidden={offenders or 'none'}",
+        )
 
     # 1. the backend answers at all
     status, _ = fetch(f"{args.base_url.rstrip('/')}/health")

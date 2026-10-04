@@ -285,3 +285,53 @@ class TestTheWholeChain:
             "a committed artefact is exactly the falsifiable label this "
             "mechanism exists to remove"
         )
+
+# --------------------------------------------------------------------------
+# The gate must refuse the wrong target, not merely describe it
+# --------------------------------------------------------------------------
+
+
+class TestTheGateRefusesTheWrongTarget:
+    """A release check against the wrong deployment is worse than no check."""
+
+    def _gate(self, argv):
+        from scripts.release_identity_gate import main as gate_main
+
+        return gate_main(argv)
+
+    def test_it_refuses_a_forbidden_production_alias(self):
+        code = self._gate([
+            "--base-url", "https://scholarzone-fwzj.vercel.app/api",
+            "--expect-revision", GOOD,
+            "--forbid-hosts", "scholarzone-fwzj.vercel.app",
+        ])
+        assert code != 0, "a production alias must not satisfy a preview check"
+
+    def test_it_refuses_a_url_that_is_not_the_exact_deployment(self):
+        code = self._gate([
+            "--base-url", "https://scholarzone-fwzj.vercel.app/api",
+            "--expect-exact-url",
+            "https://scholarzone-fwzj-abc123-gopal735s-projects.vercel.app",
+            "--expect-revision", GOOD,
+        ])
+        assert code != 0
+
+    def test_it_refuses_a_truncated_expected_revision(self):
+        code = self._gate([
+            "--base-url", "http://127.0.0.1:1/api",
+            "--expect-revision", GOOD[:12],
+        ])
+        assert code == 2, (
+            "an unreachable backend must stop identity establishment entirely, "
+            "not fall through to functional checks"
+        )
+
+    def test_the_gate_exposes_the_exact_url_and_forbid_switches(self):
+        import inspect
+
+        from scripts import release_identity_gate as gate
+
+        assert "argv" in inspect.signature(gate.main).parameters
+        source = inspect.getsource(gate)
+        for switch in ("--expect-exact-url", "--forbid-hosts", "--expect-revision"):
+            assert switch in source, f"{switch} is not offered by the gate"
