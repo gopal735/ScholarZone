@@ -73,68 +73,63 @@ def get_db() -> Generator[Session, None, None]:
         session.close()
 
 
-#: Columns added to ``maintenance_runs`` for the durable logical slot. The
-#: ``run_id``/``status``/``stages`` columns are untouched, so existing rows and
-#: the meaning of existing data are preserved.
-_MAINTENANCE_SLOT_COLUMNS: tuple[tuple[str, str], ...] = (
-    ("slot_id", "VARCHAR(64)"),
-    ("slot_status", "VARCHAR(16)"),
-    ("slot_due_at", "TIMESTAMP"),
-    ("logical_source", "VARCHAR(32)"),
-    ("transport_event", "VARCHAR(64)"),
-    ("claimed_at", "TIMESTAMP"),
-    ("lease_until", "TIMESTAMP"),
-    ("claim_owner", "VARCHAR(128)"),
-)
-
-
-def ensure_maintenance_slot_columns(connection) -> None:
-    """Add the maintenance-slot columns and their uniqueness guard, if absent.
-
-    Additive and idempotent. ``slot_id`` gets a UNIQUE INDEX rather than a table
-    constraint, because SQLite cannot add one after the fact, and because a
-    nullable unique index preserves every historic row (many NULLs) while making
-    a duplicate logical slot impossible at the storage layer.
-    """
-    is_postgres = connection.dialect.name == "postgresql"
-    for name, definition in _MAINTENANCE_SLOT_COLUMNS:
-        if is_postgres:
-            connection.execute(
-                text(f"ALTER TABLE maintenance_runs ADD COLUMN IF NOT EXISTS {name} {definition}")
-            )
-        else:
-            connection.execute(text(f"PRAGMA table_info(maintenance_runs)"))
-            existing = {row[1] for row in connection.execute(
-                text("PRAGMA table_info(maintenance_runs)")).all()}
-            if name not in existing:
-                connection.execute(
-                    text(f"ALTER TABLE maintenance_runs ADD COLUMN {name} {definition}")
-                )
-    connection.execute(
-        text(
-            "CREATE UNIQUE INDEX IF NOT EXISTS ux_maintenance_runs_slot_id "
-            "ON maintenance_runs (slot_id)"
-        )
-    )
-    connection.execute(
-        text(
-            "CREATE INDEX IF NOT EXISTS ix_maintenance_runs_slot_lease "
-            "ON maintenance_runs (slot_status, lease_until)"
-        )
-    )
-
-
 def init_database() -> None:
     # Importing here prevents metadata/model import cycles during app setup.
     from .models import Base
 
     engine = get_engine()
     Base.metadata.create_all(bind=engine)
+    # ``maintenance_slots`` itself is a new table and therefore created by
+    # create_all above. ``maintenance_runs`` already exists in every deployed
+    # database, and create_all neither alters it nor creates indexes on a table
+    # it did not create, so the new slot column and its index need explicit,
+    # idempotent DDL.
+    _upgrade_maintenance_slot_schema(engine)
     if engine.dialect.name == "sqlite":
         _upgrade_sqlite_schema(engine)
     elif engine.dialect.name == "postgresql":
         _upgrade_postgresql_schema(engine)
         _validate_postgresql_schema(engine)
+
+
+def _upgrade_maintenance_slot_schema(engine: Engine) -> None:
+    """Add the logical-slot identity to the existing maintenance_runs table.
+
+    ``maintenance_runs`` predates logical slots: it records executions, and a
+    slot that came due and never ran leaves no row at all. The link back to the
+    slot is therefore a new nullable column rather than a new table, so no
+    historic row is invalidated and no backfill is required or wanted - a run
+    with no slot simply predates the concept.
+
+    Both statements are guarded and idempotent, so this runs on every startup
+    and a second run is a no-op. Nothing here drops or recreates the table: an
+    existing database keeps its rows.
+    """
+    inspector = inspect(engine)
+    if not inspector.has_table("maintenance_runs"):
+        return
+
+    columns = {column["name"] for column in inspector.get_columns("maintenance_runs")}
+    # SQLite has no ``ALTER TABLE ... ADD COLUMN IF NOT EXISTS``, so the guard is
+    # the inspection on both dialects and the clause is belt-and-braces on
+    # PostgreSQL, matching how the ``scholarships`` additions above are applied.
+    add_if_absent = "ADD COLUMN IF NOT EXISTS" if engine.dialect.name == "postgresql" else "ADD COLUMN"
+
+    with engine.begin() as connection:
+        if "slot_id" not in columns:
+            connection.execute(
+                text(
+                    f"ALTER TABLE maintenance_runs {add_if_absent} slot_id VARCHAR(64)"
+                )
+            )
+        # create_all only emits the indexes of the tables it creates, so on an
+        # already-deployed database this index would silently never appear.
+        connection.execute(
+            text(
+                "CREATE INDEX IF NOT EXISTS ix_maintenance_runs_slot_id "
+                "ON maintenance_runs (slot_id)"
+            )
+        )
 
 
 def _upgrade_postgresql_schema(engine: Engine) -> None:
@@ -144,9 +139,6 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
     to run on every application startup without dropping tables or modifying
     existing data.
     """
-    with engine.begin() as slot_connection:
-        ensure_maintenance_slot_columns(slot_connection)
-
     with engine.begin() as connection:
         columns = {column["name"] for column in inspect(engine).get_columns("scholarships")}
         additions = {
@@ -338,8 +330,11 @@ def _upgrade_sqlite_schema(engine: Engine) -> None:
     Production PostgreSQL deployments should use a reviewed migration workflow.
     The statements below are static and only target a developer's SQLite database.
     """
-    with engine.begin() as slot_connection:
-        ensure_maintenance_slot_columns(slot_connection)
+    # Slot schema is applied once for both dialects by ``init_database()`` via
+    # ``_upgrade_maintenance_slot_schema``. It is deliberately not repeated here:
+    # that helper opens its own transaction, and nesting ``engine.begin()``
+    # inside ``engine.begin()`` would check out a second connection and can
+    # deadlock against the first on SQLite.
 
     columns = {column["name"] for column in inspect(engine).get_columns("scholarships")}
     additions = {
