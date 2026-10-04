@@ -56,20 +56,27 @@ def main() -> int:
             "ORDER BY tgname"
         )):
             fires = "ROW" if "FOR EACH ROW" in definition else "STATEMENT"
-            when = "BEFORE" if definition.strip().startswith("BEFORE") else "AFTER"
-            print(f"    {trg}: {when} {fires}")
+            timing = "BEFORE" if " BEFORE " in f" {definition} " else "AFTER"
+            print(f"    {trg}: {timing} {fires}")
 
+        # Each probe runs inside its own savepoint. Without this the first
+        # rejection aborts the transaction and every later probe reports
+        # InFailedSqlTransaction, which says nothing about whether the guard
+        # would have fired.
         for label, sql in (
             ("UPDATE", f"UPDATE {AUDIT} SET writer_context = 'probe'"),
             ("DELETE", f"DELETE FROM {AUDIT}"),
             ("TRUNCATE", f"TRUNCATE {AUDIT}"),
         ):
+            conn.execute(text("SAVEPOINT probe"))
             try:
                 conn.execute(text(sql))
                 print(f"  {label:9}: NOT BLOCKED  <-- gap")
             except Exception as exc:
-                first = str(exc).splitlines()[0][:90]
+                first = str(exc).splitlines()[0][:80]
                 print(f"  {label:9}: blocked ({first})")
+            finally:
+                conn.execute(text("ROLLBACK TO SAVEPOINT probe"))
 
         after = conn.execute(text(f"SELECT count(*) FROM {AUDIT}")).scalar()
         print(f"  audit rows after : {after} (unchanged: {before == after})")
