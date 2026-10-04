@@ -197,6 +197,75 @@ def main() -> int:
             print(f"  REFUSED {item['id']} {item['column']}: {item['reason']}")
         print()
 
+        # Auto garbage collection, observed rather than assumed.
+        #
+        # `auto_delete_candidate_since` is the grace clock: a record may only be
+        # deleted after it has held every SAFE_DELETE condition continuously for
+        # DELETE_GRACE_DAYS. Counting NULL against non-NULL is what makes the
+        # rollout observable - a scheduled run that arms nothing must leave the
+        # non-NULL count unchanged, and one that arms something must raise it.
+        # `deletion_protected` is the operator override and must never move on its
+        # own.
+        print("=== AUTO-DELETE COLLECTOR STATE (read-only) ===")
+        print()
+        try:
+            print(f"  rows_total                   {scalar('SELECT COUNT(*) FROM scholarships')}")
+            print(
+                "  candidate_since_null          "
+                + str(
+                    scalar(
+                        "SELECT COUNT(*) FROM scholarships "
+                        "WHERE auto_delete_candidate_since IS NULL"
+                    )
+                )
+            )
+            print(
+                "  candidate_since_set          "
+                + str(
+                    scalar(
+                        "SELECT COUNT(*) FROM scholarships "
+                        "WHERE auto_delete_candidate_since IS NOT NULL"
+                    )
+                )
+            )
+            print(
+                "  deletion_protected           "
+                + str(
+                    scalar(
+                        "SELECT COUNT(*) FROM scholarships "
+                        "WHERE deletion_protected IS TRUE"
+                    )
+                )
+            )
+            armed = [
+                int(r[0])
+                for r in session.execute(
+                    text(
+                        "SELECT id FROM scholarships "
+                        "WHERE auto_delete_candidate_since IS NOT NULL ORDER BY id"
+                    )
+                ).all()
+            ]
+            print(f"  armed_ids                    {armed}")
+            protected = [
+                int(r[0])
+                for r in session.execute(
+                    text(
+                        "SELECT id FROM scholarships "
+                        "WHERE deletion_protected IS TRUE ORDER BY id"
+                    )
+                ).all()
+            ]
+            print(f"  deletion_protected_ids       {protected}")
+        except Exception as exc:  # noqa: BLE001
+            # A column that does not exist yet is a deploy-ordering fact, not a
+            # reason to abandon the rest of the census.
+            print(
+                f"  AUTO-DELETE COLUMNS UNAVAILABLE ({type(exc).__name__}); "
+                "the collector is not deployed on this database yet"
+            )
+        print()
+
         session.rollback()  # read-only: nothing is ever committed
     finally:
         session.close()
