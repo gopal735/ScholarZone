@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """READ-ONLY forensic dump of the image-mutation audit boundary and evidence.
 
@@ -132,7 +132,7 @@ def phase_c_ownership_grants(c) -> None:
         WHERE n.nspname='public' AND c.relname IN (:audit, :guard, 'scholarships')""",
          {"audit": AUDIT, "guard": GUARD})
     safe(c, "explicit table grants on audit table", f"""
-        SELECT grantee, table_privilege, privilege_type
+        SELECT grantee, privilege_type
         FROM information_schema.role_table_grants
         WHERE table_schema='public' AND table_name=:audit
         ORDER BY grantee, privilege_type""", {"audit": AUDIT}, show=60)
@@ -162,12 +162,12 @@ def phase_d_evidence_model(c) -> None:
     section("D. EVIDENCE MODEL: what the scholarships trigger actually covers")
     safe(c, "triggers on scholarships by event", """
         SELECT t.tgname, t.tgenabled,
-               CASE WHEN (t.tgtype & 4)  THEN 'INSERT' ELSE '' END ||
-               CASE WHEN (t.tgtype & 8)  THEN 'DELETE' ELSE '' END ||
-               CASE WHEN (t.tgtype & 16) THEN 'UPDATE' ELSE '' END ||
-               CASE WHEN (t.tgtype & 32) THEN 'TRUNCATE' ELSE '' END AS events,
-               CASE WHEN (t.tgtype & 2) THEN 'BEFORE' ELSE 'AFTER' END AS timing,
-               CASE WHEN (t.tgtype & 1) THEN 'ROW' ELSE 'STATEMENT' END AS granularity
+               CASE WHEN (t.tgtype & 4)  <> 0 THEN 'INSERT' ELSE '' END ||
+               CASE WHEN (t.tgtype & 8)  <> 0 THEN 'DELETE' ELSE '' END ||
+               CASE WHEN (t.tgtype & 16) <> 0 THEN 'UPDATE' ELSE '' END ||
+               CASE WHEN (t.tgtype & 32) <> 0 THEN 'TRUNCATE' ELSE '' END AS events,
+               CASE WHEN (t.tgtype & 2) <> 0 THEN 'BEFORE' ELSE 'AFTER' END AS timing,
+               CASE WHEN (t.tgtype & 1) <> 0 THEN 'ROW' ELSE 'STATEMENT' END AS granularity
         FROM pg_trigger t
         WHERE t.tgrelid='scholarships'::regclass AND NOT t.tgisinternal
         ORDER BY t.tgname""")
@@ -292,9 +292,7 @@ def _i6(c, sid) -> bool:
 def phase_h_maintenance_runs(c) -> None:
     section("H. RECENT MAINTENANCE RUNS (for correlation)")
     safe(c, "maintenance_runs latest 12", """
-        SELECT run_id, started_at, finished_at, status, worker,
-               stages_run, stages_failed, stages_skipped
-        FROM maintenance_runs ORDER BY started_at DESC LIMIT 12""", show=14)
+        SELECT * FROM maintenance_runs ORDER BY started_at DESC LIMIT 10""", show=14)
     safe(c, "I6 bucket: image_url set, image_kind empty (whole catalogue)", """
         SELECT id, image_url, image_kind, image_evaluation_status,
                image_verified_at, verification_status, is_archived, updated_at
