@@ -72,9 +72,13 @@ export default function AuthForm({ mode }) {
   const [notice, setNotice] = useState(null)
 
   const title = isRegister ? 'Create your ScholarZone account' : 'Welcome back to ScholarZone'
+  // Previously this promised accounts "when secure account services become
+  // available" and promised a device-local shortlist "when account services are
+  // connected". Both are now false, and a sign-in page that describes a product
+  // which does not exist is worse than no description at all.
   const description = isRegister
-    ? 'Create an account when secure account services become available.'
-    : 'Sign in to manage your scholarships across devices when account services are connected.'
+    ? 'One account keeps your profile, shortlist and application progress on every device you sign in from.'
+    : 'Sign in to reach your dashboard, saved scholarships and application progress.'
 
   function updateValue(field, value) {
     setValues((currentValues) => ({ ...currentValues, [field]: value }))
@@ -120,7 +124,14 @@ export default function AuthForm({ mode }) {
           message: 'Account services are not connected yet. Your password was not stored or sent anywhere.',
         })
       } else {
-        setNotice({ type: 'error', message: 'We could not complete that request. Please try again later.' })
+        // The server's own wording, not a replacement for it. A wrong password,
+        // a duplicate account and a network fault are different problems, and
+        // collapsing them into one generic sentence tells a reader nothing about
+        // which one happened or what to do next.
+        setNotice({
+          type: 'error',
+          message: error?.message || 'We could not complete that request. Please try again.',
+        })
       }
     } finally {
       setIsSubmitting(false)
@@ -138,7 +149,7 @@ export default function AuthForm({ mode }) {
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="m9 12 2 2 4-4m5-4v6c0 5-3.4 8.7-8 10-4.6-1.3-8-5-8-10V6l8-3 8 3Z" />
           </svg>
-          <p><strong>Privacy by design.</strong><span>Passwords stay in this form only until a secure server connection is implemented.</span></p>
+          <p><strong>Privacy by design.</strong><span>Your password is hashed on the server and never stored or transmitted again. Your session lives in a secure cookie that JavaScript cannot read.</span></p>
         </div>
       </div>
 

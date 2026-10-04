@@ -40,6 +40,16 @@ LOGO_IDENTITY_KINDS: frozenset[str] = frozenset({
     "official_university",
 })
 
+#: Every image kind the verification pipeline may legitimately accept. A stored
+#: image whose kind is in this set and that carries a verification timestamp was
+#: accepted on the evidence and must not be discarded merely for not being a
+#: logo. The identity marks are a subset; PROGRAM_IMAGE and OFFICIAL_BANNER are
+#: equally valid results of the same pipeline.
+ACCEPTED_IMAGE_KINDS: frozenset[str] = LOGO_IDENTITY_KINDS | frozenset({
+    "program_image",
+    "official_banner",
+})
+
 
 class TrustworthyImageStatus(str, Enum):
     """Outcome of an orchestrated discovery run for one scholarship."""
@@ -248,6 +258,13 @@ def _clear_stored_image(session: "Session", scholarship_id: int) -> None:
     scholarship.image_kind = None
     scholarship.image_alt_text = None
     scholarship.image_verified_at = None
+    # The terminal evaluation status is cleared with the image it described.
+    # Holding it at 'verified' while the image is gone produced a record that
+    # could never publish and could never be re-evaluated: the coverage sweep
+    # skips terminally evaluated rows, so the contradiction locked the record
+    # out of its own recovery path.
+    scholarship.image_evaluation_status = None
+    scholarship.image_evaluated_at = None
     session.flush()
 
 """Image discovery orchestrator main class (appended to image_discovery_orchestrator.py)."""
