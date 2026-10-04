@@ -225,6 +225,21 @@ CREATE TRIGGER trg_{AUDIT_TABLE}_immutable
 BEFORE UPDATE OR DELETE ON {AUDIT_TABLE}
 FOR EACH ROW EXECUTE FUNCTION scholarzone_image_mutation_guard()
 """,
+        # TRUNCATE does not fire row-level triggers, so the guard above cannot
+        # see it and the whole table could be emptied in one statement. This
+        # statement-level trigger is the only thing that stops it. The
+        # application connects as the table owner on Neon, and a PostgreSQL
+        # owner cannot have its own privileges revoked, so enforcement has to
+        # live in the database rather than in the grant.
+        f"DROP TRIGGER IF EXISTS trg_{AUDIT_TABLE}_no_truncate ON {AUDIT_TABLE}",
+        f"""
+CREATE TRIGGER trg_{AUDIT_TABLE}_no_truncate
+BEFORE TRUNCATE ON {AUDIT_TABLE}
+FOR EACH STATEMENT EXECUTE FUNCTION scholarzone_image_mutation_guard()
+""",
+        # Denied for every role that is not the owner. The owner keeps its
+        # implicit rights, which is why the triggers above exist.
+        f"REVOKE UPDATE, DELETE, TRUNCATE ON {AUDIT_TABLE} FROM PUBLIC",
         f"DROP TRIGGER IF EXISTS trg_scholarships_image_audit ON scholarships",
         f"""
 CREATE TRIGGER trg_scholarships_image_audit
@@ -360,6 +375,8 @@ BEGIN
     SELECT RAISE(ABORT, 'scholarship_image_audit is append-only; DELETE is not permitted');
 END
 """,
+        # SQLite has no TRUNCATE statement, so the delete guard is the whole
+        # boundary there.
     ]
 
 

@@ -787,6 +787,19 @@ def test_postgresql_record_function_uses_the_right_dialect():
     assert "LANGUAGE sql" not in record
 
 
+def test_postgresql_guard_blocks_truncate():
+    """TRUNCATE does not fire row-level triggers, so it needs its own guard.
+
+    Without a statement-level BEFORE TRUNCATE trigger the entire audit could be
+    emptied in a single statement, and the row-level immutability guard would
+    never see it.
+    """
+    ddl = "\n".join(postgresql_audit_ddl())
+    assert "BEFORE TRUNCATE ON scholarship_image_audit" in ddl
+    assert "FOR EACH STATEMENT" in ddl
+    assert "REVOKE UPDATE, DELETE, TRUNCATE ON scholarship_image_audit FROM PUBLIC" in ddl
+
+
 def test_postgresql_record_function_is_balanced():
     """Structural sanity: the body must open and close correctly."""
     record = next(s for s in postgresql_audit_ddl()
