@@ -424,7 +424,13 @@ class TestPublicPredicateCases:
         assert self._listed(factory, monkeypatch, **self._gate(monkeypatch)) == 0
 
     def test_unverified_is_never_public(self, factory, monkeypatch):
-        _add(factory, 1, is_verified=False, image_url="https://a.test/l.png",
+        # "Unverified" is expressed by the authoritative status. The legacy
+        # boolean alone no longer decides publication, so seeding only
+        # is_verified=False would describe a record whose verification IS
+        # resolved and which must therefore be published.
+        _add(factory, 1, is_verified=False,
+             verification_status="needs_review",
+             image_url="https://a.test/l.png",
              image_verified_at=NOW, image_source_type="official_university")
         assert self._listed(factory, monkeypatch, **self._gate(monkeypatch)) == 0
 

@@ -212,11 +212,12 @@ export function buildVerificationRecord(scholarship) {
   if (!scholarship) return null
 
   const status = verificationLabel(scholarship.verification_status)
+  // Only applicant-relevant signals. The reviewer identity, the internal
+  // verification note and the next-review date are not published, so they are
+  // not offered here with an invented stand-in either.
   const entries = [
     { id: 'status', label: 'Verification status', value: status },
     { id: 'verified', label: 'Last verified', value: readDate(scholarship.last_verified_at) },
-    { id: 'due', label: 'Next review due', value: readDate(scholarship.next_verification_due) },
-    { id: 'by', label: 'Verified by', value: readText(scholarship.verified_by) },
     { id: 'updated', label: 'Record updated', value: readDate(scholarship.updated_at) },
     {
       id: 'precision',
@@ -236,13 +237,12 @@ export function buildVerificationRecord(scholarship) {
 
   const hasImage = Boolean(image.source || image.kind || image.verified || image.sourceUrl)
 
-  if (entries.length === 0 && !hasImage && !readText(scholarship.verification_notes)) {
+  if (entries.length === 0 && !hasImage) {
     return null
   }
 
   return {
     entries,
-    notes: readText(scholarship.verification_notes),
     image: hasImage ? image : null,
   }
 }

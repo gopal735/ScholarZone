@@ -110,9 +110,13 @@ class ScholarshipResponse(BaseModel):
     )
     last_verified_at: date | None = None
     verification_status: str = UNCERTAIN_VERIFICATION_STATUS
-    next_verification_due: date | None = None
-    verified_by: str | None = None
-    verification_notes: str | None = None
+    # Deliberately absent from the public contract: verification_notes,
+    # verified_by and next_verification_due are internal workflow metadata.
+    # They record who last checked a record and when it falls due again, which
+    # is operational bookkeeping rather than anything an applicant needs, and
+    # free-text reviewer notes have no business being published. The Admin
+    # Verification Center reads them from the database directly, so removing
+    # them here costs the admin nothing.
     updated_at: datetime
     image_url: str | None = None
     image_source_type: str | None = None

@@ -21,7 +21,10 @@ from .routers.verification import router as verification_router
 from .routers.admin_image_review import router as admin_image_review_router
 from .routers.discovery import router as discovery_router
 from .routers.admin_dashboard import router as admin_dashboard_router
+from .routers.admin_verification import router as admin_verification_router
 from .routers.enrichment import router as enrichment_router
+from .routers.auth import router as auth_router
+from .routers.dashboard import router as dashboard_router
 from .seed import seed_database
 
 
@@ -146,11 +149,13 @@ if allowed_origins:
         CORSMiddleware,
         allow_origins=list(allowed_origins),
         allow_credentials=True,
-        # POST was added for POST /scholarships/match, which takes a JSON body
-        # and therefore triggers a preflight from the browser. Only POST is
-        # added: the origin list is unchanged, no method wildcard is introduced,
-        # and the read-only public catalogue keeps exactly the surface it had.
-        allow_methods=["GET", "POST"],
+        # GET and POST cover the read-only public catalogue plus the stateless
+        # Match endpoint. PUT and DELETE were added for the student dashboard's
+        # own state - saving a scholarship and moving an application forward -
+        # which are the first authenticated writes this API has. The method list
+        # is still explicit rather than a wildcard, and the origin list is
+        # unchanged.
+        allow_methods=["GET", "POST", "PUT", "DELETE"],
         allow_headers=["Accept", "Content-Type"],
     )
 
@@ -241,9 +246,15 @@ app.include_router(counts_router)
 app.include_router(scholarships_router)
 app.include_router(verification_router)
 app.include_router(admin_image_review_router)
+app.include_router(admin_verification_router)
 app.include_router(discovery_router)
 app.include_router(admin_dashboard_router)
 app.include_router(enrichment_router)
+# The student dashboard is registered last and behind a session dependency, so
+# it cannot shadow a public route and it resolves the caller from the session
+# cookie rather than from anything the browser sends.
+app.include_router(auth_router)
+app.include_router(dashboard_router)
 
 
 @app.get("/debug/fix-null-lists")
