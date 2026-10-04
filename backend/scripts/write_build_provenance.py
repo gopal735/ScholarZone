@@ -2,57 +2,63 @@
 # -*- coding: utf-8 -*-
 """Write the immutable build-provenance artefact for a deployment.
 
-This runs at BUILD time, not at request time, so the revision the service
-reports cannot be changed by anything that happens afterwards: not a runtime
-environment variable, not a request header, not a branch label, and not a
-deployment URL.
+Runs at BUILD time, not at request time, so the revision the service reports
+cannot be changed afterwards: not by a runtime environment variable, not by a
+request header, not by a branch label, not by a deployment URL.
 
-Why a file and not the runtime environment
-------------------------------------------
-``VERCEL_GIT_COMMIT_SHA`` describes what Vercel *built*, and it is trustworthy
-for exactly as long as nobody can set it per-deployment. Reading it at runtime
-means the reported revision is whatever the environment says, which is the
-failure this artefact exists to make impossible: a process can be told what
-revision to claim while serving older code. Baking the value into the bundle at
-build time removes that possibility, because there is nothing left to change.
+Validation, not normalisation
+-----------------------------
+The commit id is validated **raw**. ``" ABC... "``, ``"ABC..."`` and a
+12-character prefix all fail. Stripping or lower-casing first would turn a
+corrupt or hand-written value into a valid identity, which is precisely the
+failure this artefact exists to make impossible. The value written is the value
+supplied, unchanged.
 
 Contract
 --------
-* The SHA must be exactly 40 hexadecimal characters - the full commit id.
-* A 12-character prefix is NOT a revision. Neither is a branch, a tag, ``unknown``
-  or a URL. Anything but a full SHA is a build failure, never a warning.
-* A missing SHA is a build failure. There is no "unknown" production build.
+* exactly forty lowercase hexadecimal characters - the full commit id;
+* anything else - short, long, upper-case, whitespace-padded, branch, tag, URL,
+  ``unknown``, ``dev``, ``latest`` - fails the build;
+* a missing SHA fails the build. There is no "unknown" production build.
 
-Local and CI use ``--sha`` or ``SCHOLARZONE_BUILD_SHA`` so the self-test can
-prove the chain without a Vercel build. Neither is read at runtime.
+The build-time source is the platform's own record of the commit it built.
+``--sha`` exists for local and CI self-tests; it is validated identically and
+is never read at runtime.
 
 Usage
 -----
-    python scripts/write_build_provenance.py                 # Vercel build
-    python scripts/write_build_provenance.py --sha <40 hex>  # local / CI
+    python scripts/write_build_provenance.py                  # Vercel build
+    python scripts/write_build_provenance.py --sha <40 hex>   # local / CI
 """
 from __future__ import annotations
 
 import argparse
 import json
 import os
-import re
 import sys
 from pathlib import Path
 
 BACKEND = Path(__file__).resolve().parents[1]
 ARTIFACT = BACKEND / "app" / "build_provenance.json"
 
-#: The full commit id. Anything shorter is a prefix, not an identity.
-FULL_SHA = re.compile(r"[0-9a-f]{40}")
+sys.path.insert(0, str(BACKEND))
 
-#: Build-time inputs, in priority order. The first is the platform's own record
-#: of what it built; the second exists so CI can drive the self-test.
+from app.provenance import (  # noqa: E402
+    ALLOWED_KEYS,
+    SCHEMA,
+    is_canonical_sha,
+)
+
+#: Build-time inputs in priority order: the platform's record of what it built,
+#: then the explicit self-test input. Neither is read at runtime.
 SOURCES = ("VERCEL_GIT_COMMIT_SHA", "SCHOLARZONE_BUILD_SHA")
 
+#: Names that are *not* identities. Supplied in place of a SHA, they are called
+#: out specifically: "no SHA provided" sends the reader hunting for a missing
+#: variable, when the real mistake is offering a moving label.
 REJECTED_HINTS = {
     "VERCEL_GIT_COMMIT_REF": "a branch or tag is a moving label, not a commit",
-    "VERCEL_GIT_COMMIT_MESSAGE": "a message is not an identity",
+    "VERCEL_GIT_COMMIT_MESSAGE": "a commit message is not an identity",
     "VERCEL_URL": "a deployment URL is not an identity",
     "VERCEL_ENV": "an environment name is not an identity",
 }
@@ -63,57 +69,51 @@ class BuildProvenanceError(RuntimeError):
 
 
 def resolve_sha(explicit: str | None = None) -> str:
-    """Return the full 40-character build SHA, or refuse to build."""
+    """Return the canonical build SHA exactly as supplied, or refuse to build."""
     if explicit is not None:
-        candidate, source = explicit.strip(), "--sha"
+        candidate, source = explicit, "--sha"
     else:
         candidate, source = "", ""
         for name in SOURCES:
-            raw = (os.environ.get(name) or "").strip()
-            if raw:
-                candidate, source = raw, name
+            value = os.environ.get(name)
+            if value:
+                candidate, source = value, name
                 break
 
     if not candidate:
-        # A branch or tag was offered instead of a commit. Say so specifically:
-        # "no SHA provided" sends the reader looking for a missing variable,
-        # when the real mistake is supplying a moving label.
         for name, why in REJECTED_HINTS.items():
-            raw = (os.environ.get(name) or "").strip()
-            if raw and not FULL_SHA.fullmatch(raw):
+            value = os.environ.get(name) or ""
+            if value and not is_canonical_sha(value):
                 raise BuildProvenanceError(
-                    f"{name}={raw!r} was supplied but {why}. A build cannot "
-                    "claim a revision it cannot prove."
+                    f"{name}={value!r} was supplied but {why}. A build cannot claim "
+                    "a revision it cannot prove."
                 )
         raise BuildProvenanceError(
-            "no build-time commit SHA was provided. Set VERCEL_GIT_COMMIT_SHA "
-            "(Vercel sets this for the commit it builds) or pass --sha for a "
-            "local build. Refusing to build: a deployment that cannot name its "
-            "commit cannot be verified."
+            "no build-time commit SHA was provided. Vercel sets "
+            "VERCEL_GIT_COMMIT_SHA for the commit it builds; --sha is for local "
+            "and CI self-tests. Refusing to build: a deployment that cannot name "
+            "its commit cannot be verified."
         )
 
-    if not FULL_SHA.fullmatch(candidate):
-        detail = REJECTED_HINTS.get(source, "")
-        extra = f" ({detail})" if detail else ""
+    # Raw validation. No strip(), no lower().
+    if not is_canonical_sha(candidate):
         raise BuildProvenanceError(
-            f"{source}={candidate!r} is not a full 40-character commit SHA"
-            f"{extra}. A short prefix, a branch, a tag or a URL cannot identify "
-            "a build, so the build fails rather than shipping a revision it "
-            "cannot prove."
+            f"{source}={candidate!r} is not exactly forty lowercase hexadecimal "
+            "characters. A short prefix, an upper-case value, a padded value, a "
+            "branch, a tag or a URL cannot identify a build, so the build fails "
+            "rather than shipping a revision it cannot prove."
         )
 
-    return candidate.lower()
+    # Returned unchanged: what was supplied is what is written.
+    return candidate
 
 
 def write_artifact(sha: str, path: Path | None = None) -> Path:
-    # Resolved here rather than as a default argument, so a caller (or a test)
-    # can redirect the artefact by patching this module's ARTIFACT.
+    """Write the artefact. Resolved here so a caller may redirect it."""
     target = ARTIFACT if path is None else path
     target.parent.mkdir(parents=True, exist_ok=True)
-    payload = {
-        "git_commit_sha": sha,
-        "schema": "build-provenance/1",
-    }
+    payload = {"git_commit_sha": sha, "schema": SCHEMA}
+    assert set(payload) == set(ALLOWED_KEYS)
     target.write_text(
         json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )
@@ -124,14 +124,15 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--sha",
-        help="full 40-character commit SHA; defaults to VERCEL_GIT_COMMIT_SHA",
+        help="exactly forty lowercase hex characters; defaults to "
+             "VERCEL_GIT_COMMIT_SHA",
     )
     args = parser.parse_args(argv)
 
     try:
         sha = resolve_sha(args.sha)
     except BuildProvenanceError as exc:
-        # Loud, specific, and fatal: the build must not continue.
+        # Loud, specific, fatal. The build must not continue.
         print(f"BUILD PROVENANCE FAILURE: {exc}", file=sys.stderr)
         return 1
 
@@ -140,9 +141,7 @@ def main(argv: list[str] | None = None) -> int:
     try:
         shown = path.relative_to(BACKEND.parent)
     except ValueError:
-        # The artefact was redirected (a test, or an unusual build layout).
-        # Logging must never be the reason a build fails.
-        shown = path
+        shown = path  # redirected (a test); logging must never fail a build
     print(f"artifact        : {shown}")
     return 0
 

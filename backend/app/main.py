@@ -219,10 +219,6 @@ def health() -> JSONResponse:
         try:
             with get_engine().connect() as conn:
                 conn.execute(text("SELECT 1"))
-            return JSONResponse(
-                status_code=200,
-                content={"status": "ok", "revision": build_revision()},
-            )
         except Exception as exc:
             logger.warning("Health check failed: %s", exc)
             content = {
@@ -233,6 +229,35 @@ def health() -> JSONResponse:
             if _db_init_error:
                 content["init_error"] = _db_init_error
             return JSONResponse(status_code=503, content=content)
+
+        # Build identity is checked before liveness is reported. A process whose
+        # provenance is unproven must not answer "ok": a deployment gate that
+        # only looks at the status code would certify exactly the failure this
+        # endpoint exists to catch - a healthy process serving an unidentifiable
+        # build. Production therefore fails closed with 503; development without
+        # an artefact stays usable.
+        revision, provenance_error = provenance.artifact_state(
+            get_settings().environment
+        )
+        if provenance_error:
+            logger.error("Build provenance unproven: %s", provenance_error)
+            return JSONResponse(
+                status_code=503,
+                content={
+                    "status": "error",
+                    "detail": "Build provenance unproven",
+                    "revision": revision,
+                    "provenance_error": provenance_error,
+                },
+            )
+
+        # Either an exact 40-character SHA, or "dev" in development with no
+        # artefact. Production cannot reach this point unproven: that returned
+        # 503 above.
+        return JSONResponse(
+            status_code=200,
+            content={"status": "ok", "revision": revision},
+        )
 
 
 # NOTE: Legacy APScheduler is intentionally NOT started in production.

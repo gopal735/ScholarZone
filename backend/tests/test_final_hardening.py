@@ -500,7 +500,10 @@ class TestBuildRevision:
         sha = "abcdef1234567890abcdef1234567890abcdef12"
         assert len(sha) == 40
         artefact = tmp_path / "build_provenance.json"
-        artefact.write_text(json.dumps({"git_commit_sha": sha}), encoding="utf-8")
+        artefact.write_text(
+        json.dumps({"git_commit_sha": sha, "schema": "build-provenance/1"}),
+        encoding="utf-8",
+    )
         monkeypatch.setattr(provenance, "ARTIFACT", artefact)
         provenance.reset_cache()
 

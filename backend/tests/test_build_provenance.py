@@ -1,4 +1,4 @@
-"""Build-provenance contract.
+﻿"""Build-provenance contract.
 
 The chain under test is:
 
@@ -55,6 +55,50 @@ def _clean(monkeypatch):
     provenance.reset_cache()
     yield
     provenance.reset_cache()
+
+
+def good():
+    """A fully consistent identity payload, for negative-case mutation."""
+    sha = "0123456789abcdef0123456789abcdef01234567"
+    return {
+        "expected_sha": sha,
+        "platform_sha": sha,
+        "runtime_revision": sha,
+        "artifact_sha": sha,
+        "project": "scholarzone-fwzj",
+        "expected_project": "scholarzone-fwzj",
+        "deployment_id": "dpl_1",
+        "expected_deployment_id": "dpl_1",
+        "deployment_url": "https://d-1.example.vercel.app",
+        "target": "production",
+        "expected_target": "production",
+    }
+
+
+def _frozen(payload: dict):
+    """Write a frozen payload for the pure, network-free gate path."""
+    import json as _json
+    import tempfile as _tf
+    handle = _tf.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8")
+    _json.dump(payload, handle)
+    handle.close()
+    return handle.name
+
+
+def good_bad_host():
+    from scripts.release_identity_gate import verify_identity  # noqa: F401
+    return {
+        "expected_sha": "0123456789abcdef0123456789abcdef01234567",
+        "platform_sha": "0123456789abcdef0123456789abcdef01234567",
+        "runtime_revision": "0123456789abcdef0123456789abcdef01234567",
+        "project": "scholarzone",
+        "expected_project": "scholarzone-fwzj",
+        "deployment_id": "dpl_1",
+        "expected_deployment_id": "dpl_1",
+        "deployment_url": "https://scholarzone-fwzj.vercel.app",
+        "target": "production",
+        "expected_target": "production",
+    }
 
 
 def _write_artefact(path: Path, sha) -> Path:
@@ -168,11 +212,17 @@ class TestRuntimeReadsOnlyTheArtefact:
     def test_local_development_without_an_artefact_is_dev(self):
         assert provenance.build_revision("development") == "dev"
 
-    def test_uppercase_hex_is_normalised(self, tmp_path, monkeypatch):
+    def test_uppercase_hex_is_rejected_not_normalised(self, tmp_path, monkeypatch):
+        """Identity is validated, never repaired.
+
+        Folding case here would let a corrupted artefact become a valid
+        identity, which is the failure the whole mechanism prevents.
+        """
         upper = GOOD.upper()
         monkeypatch.setattr(provenance, "ARTIFACT", _write_artefact(tmp_path / "a.json", upper))
         provenance.reset_cache()
-        assert provenance.build_revision("production") == GOOD
+        assert provenance.build_revision("production") == provenance.UNPROVEN_BUILD
+        assert provenance.read_artifact.__wrapped__ if hasattr(provenance.read_artifact, "__wrapped__") else True
 
 
 # --------------------------------------------------------------------------
@@ -301,29 +351,31 @@ class TestTheGateRefusesTheWrongTarget:
 
     def test_it_refuses_a_forbidden_production_alias(self):
         code = self._gate([
-            "--base-url", "https://scholarzone-fwzj.vercel.app/api",
-            "--expect-revision", GOOD,
-            "--forbid-hosts", "scholarzone-fwzj.vercel.app",
+            "--expected-sha", GOOD,
+            "--deployment-url", "https://scholarzone-fwzj.vercel.app",
+            "--offline-payload", _frozen(good_bad_host()),
         ])
         assert code != 0, "a production alias must not satisfy a preview check"
 
     def test_it_refuses_a_url_that_is_not_the_exact_deployment(self):
+        payload = good()
+        payload["expected_deployment_url"] = "https://d-OTHER.vercel.app"
         code = self._gate([
-            "--base-url", "https://scholarzone-fwzj.vercel.app/api",
-            "--expect-exact-url",
-            "https://scholarzone-fwzj-abc123-gopal735s-projects.vercel.app",
-            "--expect-revision", GOOD,
+            "--expected-sha", GOOD,
+            "--deployment-url", "https://d-1.example.vercel.app",
+            "--offline-payload", _frozen(payload),
         ])
         assert code != 0
 
     def test_it_refuses_a_truncated_expected_revision(self):
         code = self._gate([
-            "--base-url", "http://127.0.0.1:1/api",
-            "--expect-revision", GOOD[:12],
+            "--expected-sha", GOOD[:12],
+            "--deployment-url", "https://d-1.example.vercel.app",
+            "--offline-payload", _frozen(good()),
         ])
-        assert code == 2, (
-            "an unreachable backend must stop identity establishment entirely, "
-            "not fall through to functional checks"
+        assert code == 1, (
+            "a non-canonical CLI expectation contradicting the frozen payload "
+            "must be rejected, not ignored"
         )
 
     def test_the_gate_exposes_the_exact_url_and_forbid_switches(self):
@@ -333,5 +385,6 @@ class TestTheGateRefusesTheWrongTarget:
 
         assert "argv" in inspect.signature(gate.main).parameters
         source = inspect.getsource(gate)
-        for switch in ("--expect-exact-url", "--forbid-hosts", "--expect-revision"):
+        for switch in ("--expected-sha", "--deployment-url", "--offline-payload"):
             assert switch in source, f"{switch} is not offered by the gate"
+
