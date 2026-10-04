@@ -32,6 +32,15 @@ from app.database import get_db
 from app.main import app
 from app.models import Base, Scholarship, StudentProfile, User
 from app.services.mentor import guards, intents
+from app.services.mentor.context import (
+    UNKNOWN_DEADLINE,
+    ApplicationFacts,
+    DeadlineFacts,
+    MentorContext,
+    ScholarshipFacts,
+    StudentFacts,
+)
+from app.services.mentor.evidence import collect
 from app.services.mentor.provider import (
     FAILURE_MALFORMED,
     FAILURE_TIMEOUT,
@@ -1239,3 +1248,159 @@ class TestIntentClassification:
         first = intents.classify(message)
         second = intents.classify(message)
         assert first.kind == second.kind
+
+
+# ---------------------------------------------------- 11. evidence chip scoping
+
+
+#: The fingerprint dedup that shipped in c3aefad had no test at all: nothing in
+#: this suite mentioned ``collect``, a fingerprint, or a duplicate, so the feature
+#: was verified only by the browser run that happened to exercise it. These tests
+#: call ``collect`` directly so the scoping is pinned from both sides - a chip is
+#: never lost across records, and a genuine repeat inside one record still folds.
+
+SHARED_DEADLINE = DeadlineFacts(
+    days_remaining=45, precision="exact", kind="fixed", closed=False
+)
+
+
+def _two_records_sharing_a_value() -> MentorContext:
+    """Two genuinely different records that happen to agree on several facts."""
+    return MentorContext(
+        as_of=AS_OF,
+        student=StudentFacts(has_profile=True, profile_is_empty=False),
+        scholarships=(
+            ScholarshipFacts(
+                scholarship_id=101,
+                name="Alpha Programme",
+                country="Netherlands",
+                degree="Master",
+                funding="Full tuition and living cost",
+                deadline=SHARED_DEADLINE,
+            ),
+            ScholarshipFacts(
+                scholarship_id=202,
+                name="Beta Programme",
+                country="Netherlands",
+                degree="Master",
+                funding="Full tuition and living cost",
+                deadline=SHARED_DEADLINE,
+            ),
+        ),
+    )
+
+
+class TestChipDedupScope:
+    def test_the_same_label_and_value_on_different_records_both_survive(self):
+        """The regression: a global fingerprint ate the second record's chips.
+
+        Two records sharing a country, degree, funding line and deadline is
+        ordinary, not unusual. Before the fix the second record was reduced to its
+        identity chip and the mentor reported it as having almost nothing to say.
+        """
+        chips = collect(_two_records_sharing_a_value(), limit=10)
+
+        funding = [c for c in chips if c.label == "Funding"]
+        deadline = [c for c in chips if c.label == "Deadline"]
+        assert len(funding) == 2, "each record keeps its own Funding chip"
+        assert len(deadline) == 2, "each record keeps its own Deadline chip"
+
+        records = {c.key.split("-")[1] for c in chips if c.key.startswith("scholarship-")}
+        assert records == {"101", "202"}, "both records are represented"
+
+    def test_a_repeat_inside_one_record_is_still_collapsed(self):
+        """Scoping must not disable deduplication, only widen it to one record.
+
+        The catalogue and the workspace can each evaluate the same deadline for
+        one record. That is one confirmed finding, not two, so the higher
+        priority basis still wins and the repeat is folded away.
+        """
+        scholarship = ScholarshipFacts(
+            scholarship_id=101,
+            name="Alpha Programme",
+            deadline=SHARED_DEADLINE,
+        )
+        application = ApplicationFacts(
+            application_id=7,
+            scholarship_id=101,
+            name="Alpha Programme",
+            state="draft",
+            state_label="Draft",
+            deadline=SHARED_DEADLINE,
+        )
+        chips = collect(
+            MentorContext(
+                as_of=AS_OF,
+                student=StudentFacts(has_profile=True, profile_is_empty=False),
+                scholarships=(scholarship,),
+                applications=(application,),
+            ),
+            limit=10,
+        )
+        deadline = [c for c in chips if c.label == "Deadline"]
+        assert len(deadline) == 1, "one record, one deadline finding, not two"
+
+    def test_a_record_repeating_itself_is_not_double_counted(self):
+        """The same (label, value) twice from one record folds onto the first."""
+        duplicated = ScholarshipFacts(
+            scholarship_id=101,
+            name="Alpha Programme",
+            funding="Full tuition and living cost",
+        )
+        chips = collect(
+            MentorContext(
+                as_of=AS_OF,
+                student=StudentFacts(has_profile=True, profile_is_empty=False),
+                scholarships=(duplicated, duplicated),
+            ),
+            limit=10,
+        )
+        funding = [c for c in chips if c.label == "Funding"]
+        assert len(funding) == 1
+
+    def test_the_focused_record_still_leads_and_keeps_its_chips(self):
+        """Record priority must survive the scoping change."""
+        context = _two_records_sharing_a_value()
+        focused = MentorContext(
+            as_of=AS_OF,
+            student=StudentFacts(has_profile=True, profile_is_empty=False),
+            scholarships=context.scholarships,
+            focused_scholarship_id=202,
+        )
+        chips = collect(focused, limit=10)
+        assert chips, "a focused record produces evidence"
+        first = chips[0]
+        assert first.key.startswith("scholarship-202"), (
+            f"the record the student named leads, got {first.key}"
+        )
+        assert any(c.key.startswith("scholarship-101") for c in chips), (
+            "the other record is still reported, not dropped"
+        )
+
+    def test_the_chip_budget_and_order_are_unchanged(self):
+        """Budget still truncates by count, and named records still spend it first."""
+        many = tuple(
+            ScholarshipFacts(
+                scholarship_id=1000 + index,
+                name=f"Programme {index}",
+                country="Netherlands",
+                degree="Master",
+                funding="Full tuition and living cost",
+                deadline=SHARED_DEADLINE,
+            )
+            for index in range(6)
+        )
+        for limit in (1, 3, 5, 10):
+            chips = collect(
+                MentorContext(
+                    as_of=AS_OF,
+                    student=StudentFacts(has_profile=True, profile_is_empty=False),
+                    scholarships=many,
+                    focused_scholarship_id=1005,
+                ),
+                limit=limit,
+            )
+            assert len(chips) == limit, f"budget of {limit} must be filled exactly"
+            assert chips[0].key.startswith("scholarship-1005"), (
+                "the focused record keeps the first slot at every budget"
+            )

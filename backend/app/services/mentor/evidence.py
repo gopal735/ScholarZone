@@ -348,7 +348,16 @@ def collect(context: MentorContext, *, limit: int = 10) -> list[EvidenceItem]:
     #: Showing the identical sentence twice reads as two findings rather than one
     #: confirmed one, so a repeated (label, value) pair is collapsed onto the
     #: first, highest-priority basis that reported it.
-    seen_values: set[tuple[str, str]] = set()
+    #:
+    #: That collapse is scoped to ONE record, which is what the comment above
+    #: always claimed. Two different scholarships can legitimately share a
+    #: country, a degree, a funding line or a deadline; a global fingerprint set
+    #: silently ate the second record's chips and reported it as having almost
+    #: nothing to say. The record id is the scope, so the first, highest-priority
+    #: basis still wins within a record and nothing is lost between records.
+    #: ``None`` is the scope for the student's own profile, which is not a record
+    #: any catalogue or workspace row can collide with.
+    seen_values: set[tuple[int | None, str, str]] = set()
 
     focused = context.focused_scholarship_id
     focused_application = context.focused_application_id
@@ -381,7 +390,7 @@ def collect(context: MentorContext, *, limit: int = 10) -> list[EvidenceItem]:
             ):
                 if len(items) >= limit:
                     return items
-                fingerprint = (chip.label, chip.value)
+                fingerprint = (entry.scholarship_id, chip.label, chip.value)
                 if chip.key in seen or fingerprint in seen_values:
                     continue
                 seen.add(chip.key)
@@ -391,7 +400,7 @@ def collect(context: MentorContext, *, limit: int = 10) -> list[EvidenceItem]:
     for entry in student_evidence(context.student):
         if len(items) >= limit:
             return items
-        fingerprint = (entry.label, entry.value)
+        fingerprint = (None, entry.label, entry.value)
         if entry.key in seen or fingerprint in seen_values:
             continue
         seen.add(entry.key)
