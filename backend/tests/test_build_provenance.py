@@ -20,15 +20,30 @@ The contract asserted here:
 
 from __future__ import annotations
 
+import os
 import shutil
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+
+# This module imports ``app.main`` at import scope, and ``TestClient(app)`` runs
+# the application lifespan, which initialises the database. With no URL set that
+# resolves to ``DEFAULT_DATABASE_URL`` - a SQLite file at
+# ``backend/scholarzone.db`` inside the source tree - so merely *collecting*
+# these tests created and seeded a git-ignored file in the repository.
+#
+# Point the application at a private temporary database before ``app.main`` is
+# imported, so running these tests never creates or reads the developer's
+# database. A release signal must not depend on ambient local state.
+_TEST_DB = Path(tempfile.mkdtemp(prefix="provenance-tests-")) / "provenance.db"
+os.environ.setdefault("SCHOLARZONE_ENVIRONMENT", "test")
+os.environ["SCHOLARZONE_DATABASE_URL"] = f"sqlite:///{_TEST_DB.as_posix()}"
 
 from app import build_provenance as provenance
 from app.build_provenance import (
