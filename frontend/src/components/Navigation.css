@@ -389,6 +389,21 @@
     min-width: 44px;
     min-height: 44px;
   }
+
+  /*
+   * Growing every control to a 44px target makes the rows wider, and a row that
+   * cannot wrap then pushes the last item past the viewport - which is how the
+   * utilities overflowed by 31px at exactly this width. Letting the menu wrap
+   * here is the same intent as the bar wrapping at 640px, applied one step
+   * earlier because the touch-target floor is applied at 1024px. Wrapped lines
+   * stay right-aligned so the row keeps its shape.
+   */
+  .nav-menu,
+  .nav-links,
+  .nav-utilities {
+    flex-wrap: wrap;
+    row-gap: var(--space-2);
+  }
 }
 
 @media (max-width: 768px) {

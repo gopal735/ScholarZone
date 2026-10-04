@@ -51,6 +51,43 @@ class EvidenceItem:
     scholarship_id: int | None = None
 
 
+#: The Match engine's normalised funding vocabulary, in words.
+#:
+#: ``dashboard.py`` publishes ``MatchRecommendation.funding`` as
+#: ``funding_state.value`` - a controlled enum, not the catalogue's prose funding
+#: text - so a raw ``UNKNOWN`` would reach the interface as a bare token and read
+#: as a fault rather than as an answer. These labels say the same thing in the
+#: language the rest of the product uses, exactly as ``verification_display`` does
+#: for verification. The vocabulary is not invented here; only the wording is.
+_FUNDING_WORDS = {
+    "FULL": "Full funding.",
+    "TUITION_PLUS_LIVING": "Tuition and living costs.",
+    "TUITION_ONLY": "Tuition only.",
+    "PARTIAL": "Partial funding.",
+    "NONE": "No funding is offered.",
+}
+
+#: The one value that is an absence rather than a measurement. A funding state of
+#: UNKNOWN means the engine could not establish coverage from the catalogue, which
+#: is a different statement from "no funding is offered".
+FUNDING_UNKNOWN = "UNKNOWN"
+
+
+def funding_is_unmeasured(value: str | None) -> bool:
+    return value is None or value.strip().upper() == FUNDING_UNKNOWN
+
+
+def funding_word(value: str | None) -> str | None:
+    """Readable wording for a canonical funding value, or ``None`` if absent.
+
+    Catalogue prose passes through untouched; only the enum tokens are relabelled.
+    """
+    if funding_is_unmeasured(value):
+        return None
+    assert value is not None
+    return _FUNDING_WORDS.get(value.strip().upper(), value.strip())
+
+
 def _verification_for(item: ScholarshipFacts) -> str:
     if not item.is_listed:
         return "No longer listed"
@@ -109,12 +146,13 @@ def scholarship_evidence(item: ScholarshipFacts) -> list[EvidenceItem]:
         )
     )
 
-    if item.funding and evidence_is_usable(item.funding, minimum=2):
+    funding = funding_word(item.funding)
+    if funding:
         evidence.append(
             EvidenceItem(
                 key=f"scholarship-{item.scholarship_id}-funding",
                 label="Funding",
-                value=bound_text(item.funding),
+                value=bound_text(funding),
                 field="scholarship.funding",
                 basis=BASIS_CATALOGUE,
                 verification=verification,
@@ -305,41 +343,59 @@ def collect(context: MentorContext, *, limit: int = 10) -> list[EvidenceItem]:
     """
     items: list[EvidenceItem] = []
     seen: set[str] = set()
+    #: Two canonical systems can independently resolve the same fact about the
+    #: same record - the catalogue and the workspace both evaluate one deadline.
+    #: Showing the identical sentence twice reads as two findings rather than one
+    #: confirmed one, so a repeated (label, value) pair is collapsed onto the
+    #: first, highest-priority basis that reported it.
+    seen_values: set[tuple[str, str]] = set()
 
     focused = context.focused_scholarship_id
-    ordered_scholarships = sorted(
-        context.scholarships,
-        key=lambda entry: (entry.scholarship_id != focused, entry.scholarship_id),
-    )
-    for scholarship in ordered_scholarships:
-        if len(items) >= limit:
-            return items
-        for entry in scholarship_evidence(scholarship):
-            if entry.key in seen:
-                continue
-            seen.add(entry.key)
-            items.append(entry)
-
     focused_application = context.focused_application_id
+
     ordered_applications = sorted(
         context.applications,
         key=lambda entry: (entry.application_id != focused_application, entry.application_id),
     )
-    for application in ordered_applications:
-        if len(items) >= limit:
-            return items
-        for entry in application_evidence(application):
-            if entry.key in seen:
-                continue
-            seen.add(entry.key)
-            items.append(entry)
+    ordered_scholarships = sorted(
+        context.scholarships,
+        key=lambda entry: (entry.scholarship_id != focused, entry.scholarship_id),
+    )
+
+    #: The record the student actually asked about comes first, and an application
+    #: the student named is placed ahead of the general scholarship list entirely.
+    #: A student asking "what should I finish in application 4" must not be shown
+    #: ten scholarship chips and no application, which is what a flat budget
+    #: spends first when a profile has eight matches.
+    groups = [ordered_applications] if focused_application is not None else []
+    groups.append(ordered_scholarships)
+    if focused_application is None:
+        groups.append(ordered_applications)
+
+    for group in groups:
+        for entry in group:
+            for chip in (
+                application_evidence(entry)
+                if isinstance(entry, ApplicationFacts)
+                else scholarship_evidence(entry)
+            ):
+                if len(items) >= limit:
+                    return items
+                fingerprint = (chip.label, chip.value)
+                if chip.key in seen or fingerprint in seen_values:
+                    continue
+                seen.add(chip.key)
+                seen_values.add(fingerprint)
+                items.append(chip)
 
     for entry in student_evidence(context.student):
         if len(items) >= limit:
             return items
-        if entry.key in seen:
+        fingerprint = (entry.label, entry.value)
+        if entry.key in seen or fingerprint in seen_values:
             continue
         seen.add(entry.key)
+        seen_values.add(fingerprint)
         items.append(entry)
 
     return items

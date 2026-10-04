@@ -25,7 +25,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 from .context import MentorContext
-from .evidence import EvidenceItem, collect
+from .evidence import EvidenceItem, collect, funding_is_unmeasured
 from .guards import bound_text
 from .intents import INTENT_LABELS, Intent
 
@@ -82,8 +82,11 @@ def _unknown_from_context(context: MentorContext) -> list[str]:
 
     Built by looking for absence, so a claim cannot slip through by omission: an
     unmeasured value appears here rather than being quietly left out of *known*.
+    Absences that repeat across many records are stated once with a count, because
+    eight identical lines is noise that buries the one gap the reader needed.
     """
     unknown: list[str] = []
+    unestablished_funding: list[str] = []
 
     if not context.student.has_profile:
         unknown.append(
@@ -104,10 +107,23 @@ def _unknown_from_context(context: MentorContext) -> list[str]:
             unknown.append(
                 f"{item.name}: no published deadline ScholarZone can count down to."
             )
+        if funding_is_unmeasured(item.funding):
+            unestablished_funding.append(item.name)
         if not item.fit_is_measured:
             unknown.append(f"{item.name}: no fit score has been measured.")
         if item.readiness_label is None:
             unknown.append(f"{item.name}: readiness has not been assessed.")
+
+    if len(unestablished_funding) == 1:
+        unknown.append(
+            f"{unestablished_funding[0]}: funding coverage has not been established "
+            "from the catalogue."
+        )
+    elif unestablished_funding:
+        unknown.append(
+            f"Funding coverage has not been established from the catalogue for "
+            f"{len(unestablished_funding)} of the records above."
+        )
 
     for item in context.applications:
         if not item.progress_is_measured:

@@ -50,9 +50,15 @@ MAX_EVIDENCE_SCHOLARSHIPS = 6
 MAX_EVIDENCE_APPLICATIONS = 6
 MAX_EVIDENCE_LINES = 8
 
-#: Precision values that mean "there is a real date, but not to the day". Used to
-#: qualify a day count rather than presenting it as exact.
+#: Precision values that mean "there is a real date, but not to the day".
 _APPROXIMATE_PRECISIONS = frozenset({"month", "year", "approximate", "varies"})
+
+#: The only precision that licenses stating a day count as exact. Anything else -
+#: including ``unknown`` - is qualified, because a count whose precision was never
+#: recorded is not evidence that the date lands on a particular day. Some
+#: canonical surfaces, notably ``ApplicationItem``, publish a day count with no
+#: precision alongside it at all.
+_EXACT_PRECISION = "exact"
 
 
 @dataclass(frozen=True)
@@ -79,6 +85,10 @@ class DeadlineFacts:
         return self.precision in _APPROXIMATE_PRECISIONS
 
     @property
+    def is_exact(self) -> bool:
+        return self.precision == _EXACT_PRECISION
+
+    @property
     def is_overdue(self) -> bool:
         """Only a real past date with a closed round is ever overdue.
 
@@ -99,9 +109,16 @@ class DeadlineFacts:
             return "A deadline is published but ScholarZone could not read it as a date."
         if self.days_remaining is None:
             return "No published deadline to count down to."
+        if self.is_exact:
+            return f"{self.days_remaining} days left."
         if self.is_approximate:
             return f"About {self.days_remaining} days left, based on a month-precision date."
-        return f"{self.days_remaining} days left."
+        # A count with no recorded precision. The date exists, but nothing in the
+        # catalogue says it lands on a particular day, so it is not stated as one.
+        return (
+            f"About {self.days_remaining} days left. The published date is not recorded "
+            "to the day, so treat this as a guide."
+        )
 
 
 UNKNOWN_DEADLINE = DeadlineFacts(
@@ -486,10 +503,13 @@ def _from_recommendation(match, saved: set[int], deadline_by_id: dict) -> Schola
     deadline = deadline_by_id.get(match.scholarship_id)
     if deadline is not None:
         days = deadline.days_remaining
-        precision = coerce_deadline_precision(deadline.deadline_precision)
+        # The deadline watch and the ranked match can carry different published
+        # precision. Whichever actually states it wins, because losing it would
+        # present a month-precision date as an exact number of days.
+        precision = deadline.deadline_precision or match.deadline_precision
     else:
         days = match.days_to_deadline
-        precision = coerce_deadline_precision(match.deadline_precision)
+        precision = match.deadline_precision
 
     return ScholarshipFacts(
         scholarship_id=match.scholarship_id,

@@ -55,11 +55,17 @@ export function evidenceTone(entry) {
   return 'neutral'
 }
 
-/** The word shown next to an evidence value, so tone is never the only signal. */
+/**
+ * The word shown next to an evidence value, so tone is never the only signal.
+ *
+ * Only the verification state qualifies. Falling back to the basis here would
+ * print "Application Workspace" twice for one row - once as a badge and once on
+ * the provenance line - which reads as two claims rather than one sourced fact.
+ * An entry with no verification state simply carries no badge.
+ */
 export function evidenceStatusWord(entry) {
   if (!entry) return ''
-  if (entry.verification) return entry.verification
-  return entry.basis || ''
+  return entry.verification || ''
 }
 
 /**

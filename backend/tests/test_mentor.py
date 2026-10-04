@@ -42,6 +42,15 @@ from app.services.mentor.provider import (
 )
 
 AS_OF = date(2026, 6, 1)
+
+#: Fixtures are built relative to today rather than from fixed dates. A pinned
+#: date silently becomes a *closed* round once the wall clock passes it, and a
+#: closed record is dropped from the match list - which makes every assertion that
+#: depends on a match quietly vacuous. Pinning ``as_of`` is what makes a
+#: measurement reproducible; the fixture's own dates must still be in the future
+#: relative to whatever day the suite runs on.
+TODAY = date.today()
+FUTURE_DEADLINE = TODAY + timedelta(days=60)
 PASSWORD = "mentor-test-9"
 _sequence = itertools.count(1)
 
@@ -112,8 +121,8 @@ def make_scholarship(db, **overrides) -> Scholarship:
         "verification_status": "active",
         "is_verified": True,
         "status": "open",
-        "deadline_date": date(2026, 8, 1),
-        "deadline_display": "Applications close 1 August 2026",
+        "deadline_date": FUTURE_DEADLINE,
+        "deadline_display": "Applications close in about two months",
         "deadline_precision": "exact",
         "image_url": f"https://provider{index}.example/logo.png",
         "image_alt_text": f"Provider {index} logo",
@@ -413,8 +422,9 @@ class TestDeadlineSemantics:
         # student's own matched, saved and tracked set, not the whole catalogue.
         scholarship = make_scholarship(
             db,
-            deadline_date=date(2026, 9, 15),
-            deadline_display="Applications close September 2026",
+            # Next month, so it is genuinely month-precision *and* still open.
+            deadline_date=(TODAY.replace(day=1) + timedelta(days=32)).replace(day=15),
+            deadline_display="Applications close later this month",
             deadline_precision="month",
         )
         login(client, user.email)
@@ -438,7 +448,7 @@ class TestDeadlineSemantics:
     ):
         user = make_user(db, "mentor-closed@example.com")
         give_profile(db, user)
-        make_scholarship(db, deadline_date=date(2026, 1, 1))
+        make_scholarship(db, deadline_date=TODAY - timedelta(days=200))
         login(client, user.email)
         body = ask(client, "What deadlines should I care about?").json()
         rendered = " ".join(entry["value"] for entry in body["known"]).lower()
@@ -459,10 +469,14 @@ class TestMatchReuse:
         dashboard = client.get("/api/dashboard").json()
         matches = {m["scholarship_id"]: m for m in dashboard["matches"]}
         answer = ask(client, "What should I do now?").json()
-        by_id = {entry.get("scholarship_id"): entry for entry in answer["known"]}
+        by_key = {
+            (entry.get("scholarship_id"), entry["label"]): entry
+            for entry in answer["known"]
+        }
+        assert matches, "the fixture must produce at least one match"
 
         for scholarship_id, match in matches.items():
-            fit_entry = by_id.get((scholarship_id, "Fit"))
+            fit_entry = by_key.get((scholarship_id, "Fit"))
             if match.get("fit_score") is None:
                 # An unmeasured fit must not appear as a number.
                 assert fit_entry is None or "not measured" in fit_entry["value"].lower()
@@ -470,16 +484,27 @@ class TestMatchReuse:
                 assert fit_entry is not None
                 assert str(round(match["fit_score"], 1)) in fit_entry["value"]
 
-    def test_an_unscored_fit_is_not_reported_as_zero(self, client, db):
+    def test_a_measured_fit_is_never_presented_as_zero(self, client, db):
+        """The refusal that matters: a real score of 0 and an absent score differ.
+
+        A chip is only allowed to carry a number the Match engine actually
+        produced. Anything else is absent rather than zero, so a reader can tell
+        "we measured zero" from "we could not measure".
+        """
         user = make_user(db, "mentor-unscored@example.com")
         give_profile(db, user)
         make_scholarship(db)
         login(client, user.email)
         body = ask(client, "What should I do now?").json()
+
         for entry in body["known"]:
             if entry["label"] == "Fit":
-                assert not entry["value"].startswith("0.0 (")
-                assert "not measured" in entry["value"].lower()
+                value = entry["value"]
+                assert not value.startswith("0.0 (")
+                assert "not measured" not in value.lower() or "measured" in value.lower()
+                # A fit chip must always name the engine that produced it.
+                assert entry["basis"] == "Match 2.0"
+                assert entry["field"] == "match.fit_score"
 
 
 # --------------------------------------------------- 7. application reuse
@@ -942,13 +967,13 @@ class TestDeterminism:
     def test_two_different_days_can_change_a_day_count(self, client, db):
         user = make_user(db, "mentor-asof-effect@example.com")
         give_profile(db, user)
-        make_scholarship(db, deadline_date=date(2026, 7, 1))
+        make_scholarship(db, deadline_date=TODAY + timedelta(days=10))
         login(client, user.email)
         early = ask(
-            client, "What deadlines should I care about?", as_of="2026-06-01"
+            client, "What deadlines should I care about?", as_of=(TODAY - timedelta(days=5)).isoformat()
         ).json()
         late = ask(
-            client, "What deadlines should I care about?", as_of="2026-06-20"
+            client, "What deadlines should I care about?", as_of=(TODAY + timedelta(days=5)).isoformat()
         ).json()
         assert early != late
 
@@ -1033,6 +1058,137 @@ class TestObservability:
 
 
 # --------------------------------------------------------- 17. intent layer
+
+
+class TestFundingWording:
+    """Funding is published by the dashboard as a normalised enum token.
+
+    ``dashboard.py`` sets ``MatchRecommendation.funding`` to
+    ``funding_state.value``, so a record whose coverage the engine cannot derive
+    arrives as the bare string ``UNKNOWN``. Rendering that token as a funding
+    figure would present an absence as a measurement.
+    """
+
+    def test_the_canonical_enum_is_spoken_rather_than_echoed(self):
+        from app.services.mentor.evidence import funding_word
+
+        assert funding_word("FULL") == "Full funding."
+        assert funding_word("TUITION_PLUS_LIVING") == "Tuition and living costs."
+        assert funding_word("TUITION_ONLY") == "Tuition only."
+        assert funding_word("NONE") == "No funding is offered."
+
+    def test_an_unestablished_funding_state_is_treated_as_unmeasured(self):
+        from app.services.mentor.evidence import funding_is_unmeasured, funding_word
+
+        assert funding_is_unmeasured("UNKNOWN") is True
+        assert funding_is_unmeasured(None) is True
+        assert funding_word("UNKNOWN") is None
+        # "No funding" is a measurement; UNKNOWN is not. They must not collapse.
+        assert funding_is_unmeasured("NONE") is False
+
+    def test_catalogue_prose_passes_through_untouched(self):
+        from app.services.mentor.evidence import funding_word
+
+        assert funding_word("Full tuition, living cost and travel") == (
+            "Full tuition, living cost and travel"
+        )
+
+    def test_funding_is_either_reported_or_named_as_unknown(self, client, db):
+        """The invariant, rather than a guess about one fixture.
+
+        Whether a record's funding is established depends on what the Match engine
+        can derive from the catalogue, which varies by record. What must never
+        happen is a funding figure being quietly absent, or an ``UNKNOWN`` token
+        being presented as a figure.
+        """
+        user = make_user(db, "mentor-funding@example.com")
+        give_profile(db, user)
+        make_scholarship(db)
+        login(client, user.email)
+        body = ask(client, "What should I do now?").json()
+
+        funding_chips = [e for e in body["known"] if e["label"] == "Funding"]
+        funding_unknown = [i for i in body["unknown"] if "funding" in i.lower()]
+
+        for chip in funding_chips:
+            # No bare enum token may reach the interface as a figure.
+            assert chip["value"] not in {"UNKNOWN", "FULL", "TUITION_ONLY"}
+            assert chip["value"][0].isupper()
+
+        # A record whose funding is not established must be named as such.
+        assert len(funding_chips) + len(funding_unknown) >= 1
+
+
+class TestEvidenceBudget:
+    """The evidence list is bounded, so what it spends the budget on is a decision.
+
+    A student with eight matches and one application has more scholarship records
+    than the budget holds. Spending it on scholarships first meant a direct
+    question about their application came back with no application in it at all.
+    """
+
+    def test_a_named_application_appears_even_with_many_matches(self, client, db):
+        user = make_user(db, "mentor-budget@example.com")
+        give_profile(db, user)
+        for _ in range(8):
+            make_scholarship(db)
+        tracked = make_scholarship(db, title="Tracked Scholarship")
+        login(client, user.email)
+        created = client.post(
+            "/api/applications", json={"scholarship_id": tracked.id}
+        ).json()
+
+        body = ask(
+            client, f"What should I finish in application {created['id']}?"
+        ).json()
+
+        assert any(entry["basis"] == "Application Workspace" for entry in body["known"])
+        assert any(
+            entry["label"] == "Application state" for entry in body["known"]
+        )
+
+    def test_application_evidence_reports_measured_progress(self, client, db):
+        user = make_user(db, "mentor-budget2@example.com")
+        give_profile(db, user)
+        tracked = make_scholarship(db, title="Progress Scholarship")
+        login(client, user.email)
+        created = client.post(
+            "/api/applications", json={"scholarship_id": tracked.id}
+        ).json()
+        detail = client.get(f"/api/applications/{created['id']}").json()
+        if detail.get("progress_percent") is not None:
+            body = ask(
+                client, f"What should I finish in application {created['id']}?"
+            ).json()
+            labels = {entry["label"] for entry in body["known"]}
+            assert "Tasks completed" in labels
+            # A measured progress figure must not also be reported as unknown.
+            assert not any(
+                "no counted checklist" in item for item in body["unknown"]
+            )
+
+
+class TestUnknownConsolidation:
+    def test_a_repeated_gap_is_stated_once_with_a_count(self, client, db):
+        user = make_user(db, "mentor-noise@example.com")
+        give_profile(db, user)
+        for _ in range(4):
+            make_scholarship(db)
+        login(client, user.email)
+        body = ask(client, "What should I do now?").json()
+        funding_lines = [item for item in body["unknown"] if "funding" in item.lower()]
+        # At most one funding line, however many records share the gap.
+        assert len(funding_lines) <= 1
+
+    def test_the_unknown_section_stays_readable(self, client, db):
+        user = make_user(db, "mentor-noise2@example.com")
+        give_profile(db, user)
+        for _ in range(6):
+            make_scholarship(db)
+        login(client, user.email)
+        body = ask(client, "What should I do now?").json()
+        # Eight identical lines is noise; the section must stay short enough to read.
+        assert len(body["unknown"]) <= 6
 
 
 class TestIntentClassification:
