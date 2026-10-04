@@ -123,8 +123,14 @@ class TestLocalImportInvariant:
         assert not offenders, "; ".join(offenders)
 
     @pytest.mark.parametrize("stage", STAGES_USING_IMAGE_KINDS)
-    def test_stage_imports_exactly_the_constants_it_uses(self, stage):
-        """Catches both directions: a missing import and a stale one."""
+    def test_stage_imports_at_least_what_it_uses(self, stage):
+        """The NameError guard: nothing used may be left unimported.
+
+        Importing *more* than a stage uses is deliberately allowed. The stages
+        import the whole constant pair, so an edit that starts using the other
+        constant cannot reintroduce a NameError. Asserting the reverse would
+        forbid that and would fail on a harmless unused import.
+        """
         fn = _stage(stage)
         used = {
             n.id
@@ -132,8 +138,10 @@ class TestLocalImportInvariant:
             if isinstance(n, ast.Name) and isinstance(n.ctx, ast.Load)
         } & IMAGE_KIND_CONSTANTS
         imported = _orchestrator_imports(fn)
-        assert used <= imported, f"{stage}() uses {sorted(used - imported)} unimported"
-        assert imported <= used, f"{stage}() imports unused {sorted(imported - used)}"
+        assert used, f"{stage}() should reference an image-kind constant"
+        assert used <= imported, (
+            f"{stage}() uses {sorted(used - imported)} without importing them"
+        )
 
 
 class TestCanonicalConstantsUnchanged:
