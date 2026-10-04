@@ -793,7 +793,7 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
         from app.models import Scholarship
         from app.repositories.scholarships import public_visibility_conditions
         from app.services.catalogue_quarantine import QUARANTINE_STATUS
-from app.services.image_discovery_orchestrator import (
+        from app.services.image_discovery_orchestrator import (
             ACCEPTED_IMAGE_KINDS,
             LOGO_IDENTITY_KINDS,
         )
