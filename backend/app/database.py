@@ -9,6 +9,10 @@ from sqlalchemy import Engine, create_engine, inspect, text
 from sqlalchemy.orm import Session, sessionmaker
 
 from .core.config import get_settings
+# Imported for its side effect: this registers the supervisor tables with
+# Base.metadata so create_all creates them on a fresh database.
+from . import models_supervisor  # noqa: F401
+from .supervisor_ddl import REQUIRED_NEW_TABLES, create_table_statements, index_statements
 from .image_audit import audit_trigger_is_installed, create_image_audit_schema
 
 _PRODUCTION_DB_PATH = (Path(__file__).resolve().parents[2] / "scholarzone.db").as_posix()
@@ -94,6 +98,15 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
     existing data.
     """
     with engine.begin() as connection:
+        # Supervisor discovery tables. create_all makes these on a fresh
+        # database; these guarded statements are the idempotent path for one
+        # that already exists. Sourced from app.supervisor_ddl so this file and
+        # the production migration script cannot describe different schemas.
+        for _statement in create_table_statements("postgresql"):
+            connection.execute(text(_statement))
+        for _statement in index_statements():
+            connection.execute(text(_statement))
+
         columns = {column["name"] for column in inspect(engine).get_columns("scholarships")}
         additions = {
             "image_url": "VARCHAR(2048)",
@@ -244,9 +257,21 @@ def _validate_postgresql_schema(engine: Engine) -> None:
     idx_created_ok = "ix_image_reviews_created_at" in image_review_indexes
     indexes_ok = idx_decision_ok and idx_created_ok
 
+    # The supervisor-discovery tables, checked by name rather than assumed: a
+    # missing table otherwise surfaces as a 500 on the first public supervisor
+    # request instead of as a named startup failure.
+    missing_supervisor_tables = [
+        _table for _table in REQUIRED_NEW_TABLES if not inspector.has_table(_table)
+    ]
+    supervisor_tables_ok = not missing_supervisor_tables
+
     logger.info("[SCHEMA VALIDATION] image_kind: %s", "OK" if image_kind_ok else "MISSING")
     logger.info("[SCHEMA VALIDATION] image_reviews: %s", "OK" if image_reviews_ok else "MISSING")
     logger.info("[SCHEMA VALIDATION] indexes: %s", "OK" if indexes_ok else "MISSING")
+    logger.info(
+        "[SCHEMA VALIDATION] supervisor tables: %s",
+        "OK" if supervisor_tables_ok else "MISSING " + ", ".join(missing_supervisor_tables),
+    )
     logger.info("[SCHEMA VALIDATION] image_audit table: %s", "OK" if image_audit_ok else "MISSING")
     logger.info("[SCHEMA VALIDATION] image_audit trigger: %s", "OK" if trigger_ok else "MISSING")
 
@@ -261,7 +286,7 @@ def _validate_postgresql_schema(engine: Engine) -> None:
             image_audit_ok, trigger_ok,
         )
 
-    if not (image_kind_ok and image_reviews_ok and indexes_ok):
+    if not (image_kind_ok and image_reviews_ok and indexes_ok and supervisor_tables_ok):
         missing = []
         if not image_kind_ok:
             missing.append("scholarships.image_kind")
@@ -271,6 +296,7 @@ def _validate_postgresql_schema(engine: Engine) -> None:
             missing.append("ix_image_reviews_scholarship_decision")
         if not idx_created_ok:
             missing.append("ix_image_reviews_created_at")
+        missing.extend(missing_supervisor_tables)
         raise RuntimeError(
             "[SCHEMA VALIDATION] STATUS: INVALID - Missing: " + ", ".join(missing)
         )
@@ -372,6 +398,7 @@ def _upgrade_sqlite_schema(engine: Engine) -> None:
         _create_content_fingerprints_table(connection)
         _upgrade_discovery_candidates_table(connection)
         _create_image_reviews_table(connection)
+        _create_supervisor_tables(connection)
         # Same audit instrumentation as PostgreSQL, so a local or test database
         # exercises the identical trigger semantics rather than a stub.
         create_image_audit_schema(connection)
@@ -466,6 +493,19 @@ def _create_image_reviews_table(connection) -> None:
     """))
     connection.execute(text("CREATE INDEX IF NOT EXISTS ix_image_reviews_scholarship_decision ON image_reviews (scholarship_id, decision)"))
     connection.execute(text("CREATE INDEX IF NOT EXISTS ix_image_reviews_created_at ON image_reviews (created_at)"))
+
+
+def _create_supervisor_tables(connection) -> None:
+    """Create the supervisor discovery tables on SQLite.
+
+    Same guarded statements as the PostgreSQL path, sourced from one module so
+    the two dialects cannot describe different schemas. create_all has usually
+    already made these on a fresh database; this covers an existing local file.
+    """
+    for _statement in create_table_statements("sqlite"):
+        connection.execute(text(_statement))
+    for _statement in index_statements():
+        connection.execute(text(_statement))
 
 
 def close_database() -> None:

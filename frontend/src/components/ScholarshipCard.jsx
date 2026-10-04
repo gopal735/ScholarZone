@@ -2,6 +2,7 @@ import { useCallback, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import ScholarshipImage from './ScholarshipImage'
 import ScholarshipActions from './ScholarshipActions'
+import SupervisorCta from './SupervisorCta'
 import { getDeadlineLabel, getLastVerifiedLabel, getScholarshipStatus } from '../utils/scholarshipPresentation'
 import './ScholarshipCard.css'
 
@@ -139,6 +140,7 @@ export default function ScholarshipCard({ scholarship }) {
       </dl>
 
       <div className="scholarship-card__footer">
+        <SupervisorCta scholarshipId={scholarship.id} />
         <ScholarshipActions scholarshipId={scholarship.id} />
         <Link to={`/scholarships/${scholarship.id}`} className="scholarship-card__button">
           View details <span aria-hidden="true">&rarr;</span>

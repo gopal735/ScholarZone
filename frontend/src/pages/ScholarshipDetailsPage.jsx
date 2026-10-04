@@ -1,6 +1,7 @@
 import { Children, useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import ScholarshipActions from '../components/ScholarshipActions'
+import SupervisorPanel from '../components/SupervisorPanel'
 import { fetchScholarshipById, ScholarshipApiError } from '../services/scholarshipService'
 import { useScholarshipDirectory } from '../hooks/useScholarshipDirectory'
 import { getDeadlineLabel, getLastVerifiedLabel, getScholarshipStatus } from '../utils/scholarshipPresentation'
@@ -513,6 +514,14 @@ const bestFit = readText(scholarship.best_fit)
             </p>
           ) : null}
         </Reveal>
+
+        {/* Supervisor discovery is a first-class section of every scholarship,
+            including the ones that have nothing verified yet. Hiding it when the
+            count is zero would make an unsearched record indistinguishable from a
+            feature that does not exist, which is the opposite of what this panel
+            is for. Placed after the hero rather than inside it: the hero
+            summarises the award, and a list of academics is not part of that. */}
+        <SupervisorPanel scholarshipId={scholarship.id} />
       </header>
 
       {/* Sticky summary — the deadline and the two decisions stay reachable

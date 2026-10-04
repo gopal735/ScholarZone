@@ -22,6 +22,12 @@ except (AttributeError, OSError):
     pass
 
 from sqlalchemy import create_engine, inspect, text
+
+from app.supervisor_ddl import NEW_TABLE_DDL, NEW_TABLE_INDEXES
+# The supervisor-discovery DDL is described once, in app/supervisor_ddl.py, and
+# imported here rather than restated. This script is the PRODUCTION migration
+# path: app startup deliberately does not migrate in production, so these
+# tables reach Neon only by being run from here.
 from sqlalchemy.exc import NoSuchTableError
 
 
@@ -287,6 +293,12 @@ REQUIRED_INDEXES = {
         "ix_application_checklist_items_application_position ON application_checklist_items (application_id, position)",
     ],
 }
+
+
+# Sourced from the shared module so the dev upgrade path in app/database.py and
+# this production script can never describe different schemas.
+REQUIRED_TABLES.update(NEW_TABLE_DDL)
+REQUIRED_INDEXES.update(NEW_TABLE_INDEXES)
 
 
 def get_engine():

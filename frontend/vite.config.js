@@ -29,6 +29,14 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react()],
     base: isVercel ? '/' : '/ScholarZone/',
+    test: {
+      // The supervisor panel is a React component, so its tests need a document.
+      // Master already runs `vitest run` and already depends on jsdom and
+      // @testing-library/react; this only declares the environment.
+      environment: 'jsdom',
+      globals: false,
+      css: false,
+    },
     server: {
       host: '0.0.0.0',
       port: 5173,

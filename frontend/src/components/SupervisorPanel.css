@@ -1,0 +1,539 @@
+/* Supervisor discovery panel.
+ *
+ * Same token vocabulary as the rest of ScholarZone — steel-blue accent on
+ * off-white, hairline borders, Instrument Serif for headings, Inter for text.
+ * Nothing here introduces a new colour: an unfamiliar palette on one card would
+ * read as a different product.
+ *
+ * Density over decoration. This panel carries a lot of honest qualifiers, and
+ * the layout has to keep them legible rather than compressing them away. */
+
+.sz-supervisor-panel {
+  margin: 2.5rem 0 0;
+  padding: 1.75rem;
+  background: var(--surface, #fff);
+  border: 1px solid var(--border, rgba(20, 19, 15, 0.12));
+  border-radius: 4px;
+}
+
+.sz-supervisor-panel__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border, rgba(20, 19, 15, 0.12));
+}
+
+.sz-supervisor-panel__eyebrow {
+  margin: 0 0 0.25rem;
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted, #6e6a61);
+}
+
+.sz-supervisor-panel__header h3 {
+  margin: 0;
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: clamp(1.375rem, 1.1rem + 1vw, 1.75rem);
+  font-weight: 400;
+  color: var(--text-primary, #14130f);
+}
+
+.sz-supervisor-panel__count {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--text-secondary, #24221c);
+}
+
+.sz-supervisor-panel__interests {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.375rem;
+  margin: 1.25rem 0;
+}
+
+.sz-supervisor-panel__interests label {
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted, #6e6a61);
+}
+
+.sz-supervisor-panel__interests input {
+  /* 44px minimum target, so the field is comfortable on a phone rather than
+     merely present. */
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  color: var(--text-primary, #14130f);
+  background: var(--page-bg, #fbfaf6);
+  border: 1px solid var(--border-strong, rgba(20, 19, 15, 0.24));
+  border-radius: 3px;
+}
+
+.sz-supervisor-panel__interests button {
+  min-height: 44px;
+  justify-self: start;
+  padding: 0.5rem 1.125rem;
+  font: inherit;
+  color: var(--page-bg, #fbfaf6);
+  background: var(--accent, #1b3a5c);
+  border: 1px solid var(--accent, #1b3a5c);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.sz-supervisor-panel__interests button:hover {
+  background: var(--accent-hover, #12283f);
+}
+
+.sz-supervisor-panel__interests p {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--text-muted, #6e6a61);
+}
+
+.sz-supervisor-panel__state {
+  margin: 1rem 0 0;
+  padding: 0.875rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--text-secondary, #24221c);
+  background: var(--surface-subtle, #f3f0e8);
+  border-left: 2px solid var(--accent-border, rgba(27, 58, 92, 0.26));
+}
+
+.sz-supervisor-panel__state--error {
+  color: var(--danger, #9a3f3f);
+  background: var(--danger-soft, rgba(154, 63, 99, 0.09));
+  border-left-color: var(--danger-border, rgba(154, 63, 99, 0.28));
+}
+
+.sz-supervisor-panel__intro {
+  margin: 1rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--text-secondary, #24221c);
+}
+
+.sz-supervisor-panel__list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* ── Professor card ──────────────────────────────────────────────────── */
+
+.sz-supervisor {
+  padding: 1.25rem;
+  background: var(--page-bg, #fbfaf6);
+  border: 1px solid var(--border, rgba(20, 19, 15, 0.12));
+  border-radius: 3px;
+}
+
+.sz-supervisor__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+}
+
+.sz-supervisor__name {
+  margin: 0;
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--text-primary, #14130f);
+}
+
+.sz-supervisor__affiliation {
+  margin: 0.125rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--text-muted, #6e6a61);
+}
+
+/* "Potential supervisor" is the strongest claim the evidence supports, so it is
+   shown as a quiet label rather than a headline. */
+.sz-supervisor__relationship {
+  padding: 0.1875rem 0.5rem;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent, #1b3a5c);
+  background: var(--accent-soft, rgba(27, 58, 92, 0.07));
+  border: 1px solid var(--accent-border, rgba(27, 58, 92, 0.26));
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+.sz-supervisor__areas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin: 0.875rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sz-supervisor__areas li {
+  padding: 0.1875rem 0.5rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary, #24221c);
+  background: var(--surface, #fff);
+  border: 1px solid var(--border, rgba(20, 19, 15, 0.12));
+  border-radius: 2px;
+}
+
+.sz-supervisor__areas-empty {
+  margin: 0.875rem 0 0;
+  font-size: 0.8125rem;
+  font-style: italic;
+  color: var(--text-muted, #6e6a61);
+}
+
+.sz-supervisor__alignment {
+  margin: 0.875rem 0 0;
+  padding: 0.75rem 0.875rem;
+  background: var(--surface, #fff);
+  border: 1px solid var(--border, rgba(20, 19, 15, 0.12));
+  border-left: 2px solid var(--text-faint, #8a857a);
+}
+
+.sz-supervisor__alignment--strong_research_alignment {
+  border-left-color: var(--success, #3d6b4f);
+}
+.sz-supervisor__alignment--moderate_research_alignment {
+  border-left-color: var(--accent, #1b3a5c);
+}
+.sz-supervisor__alignment--related {
+  border-left-color: var(--warning, #8a4b2a);
+}
+/* Insufficient evidence keeps the neutral rule. It is not a failure and must
+   not be coloured like one. */
+.sz-supervisor__alignment--insufficient_evidence {
+  border-left-color: var(--border-strong, rgba(20, 19, 15, 0.24));
+}
+
+.sz-supervisor__alignment-band {
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-secondary, #24221c);
+}
+
+.sz-supervisor__alignment p {
+  margin: 0.375rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--text-secondary, #24221c);
+}
+
+.sz-supervisor__contact {
+  display: grid;
+  gap: 0.5rem;
+  margin: 1rem 0 0;
+}
+
+.sz-supervisor__contact dt {
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted, #6e6a61);
+}
+
+.sz-supervisor__contact dd {
+  margin: 0.125rem 0 0;
+  font-size: 0.875rem;
+}
+
+.sz-supervisor__verified-note {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--success, #3d6b4f);
+}
+
+.sz-supervisor__unverified-note {
+  font-size: 0.875rem;
+  color: var(--text-muted, #6e6a61);
+}
+
+.sz-supervisor__availability-block {
+  margin-top: 1rem;
+}
+
+.sz-supervisor__availability-block h5 {
+  margin: 0;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--text-muted, #6e6a61);
+}
+
+.sz-supervisor__availability-list {
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sz-supervisor__availability {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.375rem 0.75rem;
+  padding: 0.5rem 0;
+  font-size: 0.8125rem;
+  border-bottom: 1px solid var(--border, rgba(20, 19, 15, 0.12));
+}
+
+.sz-supervisor__availability-scope {
+  min-width: 11rem;
+  color: var(--text-secondary, #24221c);
+}
+
+.sz-supervisor__availability-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.sz-supervisor__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--text-faint, #8a857a);
+}
+
+.sz-supervisor__availability--positive .sz-supervisor__dot {
+  background: var(--success, #3d6b4f);
+}
+.sz-supervisor__availability--negative .sz-supervisor__dot {
+  background: var(--danger, #9a3f3f);
+}
+.sz-supervisor__availability--warn .sz-supervisor__dot {
+  background: var(--warning, #8a4b2a);
+}
+
+.sz-supervisor__availability time {
+  font-size: 0.75rem;
+  color: var(--text-muted, #6e6a61);
+}
+
+.sz-supervisor__source-link {
+  font-size: 0.75rem;
+}
+
+.sz-supervisor__footer {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border, rgba(20, 19, 15, 0.12));
+}
+
+.sz-supervisor__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+}
+
+.sz-supervisor__button {
+  min-height: 44px;
+  padding: 0.5rem 1.125rem;
+  font: inherit;
+  color: var(--page-bg, #fbfaf6);
+  background: var(--accent, #1b3a5c);
+  border: 1px solid var(--accent, #1b3a5c);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.sz-supervisor__button:hover:not(:disabled) {
+  background: var(--accent-hover, #12283f);
+}
+
+.sz-supervisor__button--quiet {
+  color: var(--accent, #1b3a5c);
+  background: transparent;
+  border-color: var(--accent-border, rgba(27, 58, 92, 0.26));
+}
+
+.sz-supervisor__button--quiet:hover:not(:disabled) {
+  background: var(--accent-soft, rgba(27, 58, 92, 0.07));
+}
+
+.sz-supervisor__button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.sz-supervisor__draft {
+  margin-top: 1rem;
+}
+
+.sz-supervisor__draft-note {
+  margin: 0 0 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--text-muted, #6e6a61);
+}
+
+.sz-supervisor__draft-field {
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.sz-supervisor__draft-field span {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted, #6e6a61);
+}
+
+.sz-supervisor__draft-field input,
+.sz-supervisor__draft-field textarea {
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  font: inherit;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--text-primary, #14130f);
+  background: var(--surface, #fff);
+  border: 1px solid var(--border-strong, rgba(20, 19, 15, 0.24));
+  border-radius: 3px;
+  resize: vertical;
+}
+
+.sz-supervisor__unresolved {
+  margin: 0;
+  padding: 0.625rem 0.75rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--warning-strong, #6e3a20);
+  background: var(--warning-soft, rgba(138, 75, 42, 0.09));
+  border-left: 2px solid var(--warning-border, rgba(138, 75, 42, 0.28));
+}
+
+.sz-supervisor__error {
+  margin: 0.75rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--danger, #9a3f3f);
+}
+
+.sz-supervisor__sources {
+  margin-top: 1rem;
+  font-size: 0.8125rem;
+}
+
+.sz-supervisor__sources summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: var(--text-secondary, #24221c);
+}
+
+.sz-supervisor__sources ul {
+  margin: 0.5rem 0 0;
+  padding-left: 1.125rem;
+}
+
+.sz-supervisor__sources li {
+  margin-bottom: 0.25rem;
+}
+
+/* ── Outreach tracker ────────────────────────────────────────────────── */
+
+.sz-supervisor-panel__tracker {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border, rgba(20, 19, 15, 0.12));
+}
+
+.sz-supervisor-panel__tracker h4 {
+  margin: 0 0 0.75rem;
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+
+.sz-supervisor-panel__tracker ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sz-supervisor__tracker-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  padding: 0.625rem 0;
+  border-bottom: 1px solid var(--border, rgba(20, 19, 15, 0.12));
+}
+
+.sz-supervisor__tracker-status {
+  min-width: 8rem;
+  font-size: 0.8125rem;
+  text-transform: capitalize;
+  color: var(--text-secondary, #24221c);
+}
+
+.sz-supervisor__tracker-row select {
+  min-height: 44px;
+  padding: 0.375rem 0.5rem;
+  font: inherit;
+  font-size: 0.8125rem;
+  color: var(--text-primary, #14130f);
+  background: var(--surface, #fff);
+  border: 1px solid var(--border-strong, rgba(20, 19, 15, 0.24));
+  border-radius: 3px;
+}
+
+.sz-supervisor__tracker-next {
+  font-size: 0.75rem;
+  color: var(--text-muted, #6e6a61);
+}
+
+/* Visible focus everywhere, because the whole panel is reachable by keyboard
+   and a focus ring that only appears on mouse click is not a focus ring. */
+.sz-supervisor-panel :focus-visible,
+.sz-supervisor :focus-visible {
+  outline: var(--focus-ring-width, 2px) solid var(--focus-ring, rgba(27, 58, 92, 0.5));
+  outline-offset: var(--focus-ring-offset, 2px);
+}
+
+.sz-supervisor a {
+  color: var(--accent, #1b3a5c);
+}
+
+@media (max-width: 640px) {
+  .sz-supervisor-panel {
+    padding: 1.125rem;
+  }
+
+  .sz-supervisor__availability {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .sz-supervisor__availability-scope {
+    min-width: 0;
+  }
+}
+
+/* Motion is decoration here, so it is dropped entirely when the reader has asked
+   for less of it. No information is carried by the transition. */
+@media (prefers-reduced-motion: reduce) {
+  .sz-supervisor-panel *,
+  .sz-supervisor * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
