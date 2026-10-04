@@ -27,6 +27,13 @@ jobs:
           cd backend
           pip install -r requirements.txt
 
+      - name: Validate audit DDL (executed then rolled back)
+        run: |
+          cd backend
+          python scripts/validate_audit_ddl.py
+        env:
+          SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
+
       - name: Verify image mutation audit (read-only)
         run: |
           cd backend
