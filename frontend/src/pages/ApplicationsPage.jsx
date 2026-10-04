@@ -14,7 +14,7 @@
  */
 
 import { useCallback, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import ApplicationCard from '../components/applications/ApplicationCard'
 import ApplicationWorkspace from '../components/applications/ApplicationWorkspace'
 import {
@@ -34,7 +34,11 @@ export default function ApplicationsPage() {
   const [status, setStatus] = useState(PAGE_STATUS.LOADING)
   const [payload, setPayload] = useState(null)
   const [error, setError] = useState(null)
-  const [openId, setOpenId] = useState(null)
+  // The open application is addressed by the URL, not by component state, so a
+  // refresh or a pasted link lands on the same workspace instead of dropping the
+  // reader back to the list.
+  const { applicationId } = useParams()
+  const navigate = useNavigate()
 
   // Retry only. The mount path sets its own state inside promise callbacks, so
   // this is the single place that enters LOADING synchronously.
@@ -152,23 +156,26 @@ export default function ApplicationsPage() {
           <div>
             <p className="page-eyebrow">Application workspace</p>
             <h1 className="applications-page__title">
-              {openId ? 'Your application' : 'Your applications'}
+              {applicationId ? 'Your application' : 'Your applications'}
             </h1>
             <p className="applications-page__lede">
-              {openId
+              {applicationId
                 ? 'Everything you have tracked for this opportunity.'
                 : 'Every scholarship you are applying to, with its deadline, your progress and what to do next.'}
             </p>
           </div>
-          {!openId && applications.length > 0 ? (
+          {!applicationId && applications.length > 0 ? (
             <Link to="/dashboard" className="sz-btn sz-btn--secondary">
               Your dashboard
             </Link>
           ) : null}
         </header>
 
-        {openId ? (
-          <ApplicationWorkspace applicationId={openId} onClose={() => setOpenId(null)} />
+        {applicationId ? (
+          <ApplicationWorkspace
+            applicationId={Number(applicationId)}
+            onClose={() => navigate('/applications')}
+          />
         ) : applications.length === 0 ? (
           <div className="empty-state" data-testid="applications-empty">
             <h2>You have not started an application yet.</h2>
@@ -191,7 +198,7 @@ export default function ApplicationsPage() {
                 <ApplicationCard
                   key={application.id}
                   application={application}
-                  onSelect={(selected) => setOpenId(selected.id)}
+                  onSelect={(selected) => navigate(`/applications/${selected.id}`)}
                 />
               ))}
             </ul>

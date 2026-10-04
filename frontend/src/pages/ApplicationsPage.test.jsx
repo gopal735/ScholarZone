@@ -11,7 +11,7 @@
 import { describe, expect, it, vi, beforeEach } from 'vitest'
 import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { MemoryRouter } from 'react-router-dom'
+import { MemoryRouter, Route, Routes } from 'react-router-dom'
 import ApplicationsPage from './ApplicationsPage'
 import ApplicationCard from '../components/applications/ApplicationCard'
 import { AuthContext } from '../context/authContext'
@@ -112,12 +112,15 @@ const LIST_PAYLOAD = {
   outcomes: ['accepted', 'pending', 'rejected', 'waitlisted', 'withdrawn'],
 }
 
-function renderPage() {
+function renderPage({ route = '/applications' } = {}) {
   const user = { id: 1, email: 'student@example.com', created_at: '2026-01-01T00:00:00Z' }
   return render(
-    <MemoryRouter>
+    <MemoryRouter initialEntries={[route]}>
       <AuthContext.Provider value={{ status: 'authenticated', user, login: vi.fn(), register: vi.fn(), logout: vi.fn() }}>
-        <ApplicationsPage />
+        <Routes>
+          <Route path="/applications" element={<ApplicationsPage />} />
+          <Route path="/applications/:applicationId" element={<ApplicationsPage />} />
+        </Routes>
       </AuthContext.Provider>
     </MemoryRouter>,
   )
@@ -274,6 +277,17 @@ describe('ApplicationWorkspace', () => {
     await userEvent.click(await screen.findByRole('button', { name: 'Open workspace' }))
     return screen.findByRole('heading', { name: 'Rotterdam Scholarship', level: 2 })
   }
+
+  it('addresses the workspace by URL so a refresh lands on it', async () => {
+    vi.mocked(fetchApplications).mockResolvedValue(LIST_PAYLOAD)
+    vi.mocked(fetchApplication).mockResolvedValue(BASE_APPLICATION)
+
+    renderPage({ route: '/applications/1' })
+
+    // Rendered straight from the address, with no click and no state to lose.
+    await screen.findByRole('heading', { name: 'Rotterdam Scholarship', level: 2 })
+    expect(screen.queryByTestId('applications-empty')).toBeNull()
+  })
 
   it('renders the checklist with real checkboxes and their provenance', async () => {
     vi.mocked(fetchApplication).mockResolvedValue(BASE_APPLICATION)
