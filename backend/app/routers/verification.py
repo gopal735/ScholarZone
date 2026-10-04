@@ -14,6 +14,7 @@ Security:
 from __future__ import annotations
 
 import logging
+import secrets
 import time
 from datetime import datetime, timezone
 
@@ -35,14 +36,49 @@ _min_interval_seconds: float = 60.0
 
 
 def _verify_secret(provided_secret: str | None) -> bool:
-    """Validate the provided secret against the configured verification secret."""
+    """Validate the provided secret against the configured verification secret.
+
+    The comparison is constant-time. A plain ``==`` short-circuits on the first
+    differing byte, so an attacker with network precision could in principle
+    recover the expected value one character at a time by measuring how long the
+    rejection took. ``secrets.compare_digest`` removes that signal, which matters
+    here because this single shared secret is the credential that gates the
+    verification, discovery and image pipelines.
+
+    Fails closed: an unconfigured deployment admits nobody.
+    """
     settings = get_settings()
     expected = settings.verification_secret
     if expected is None:
         return False
     if provided_secret is None:
         return False
-    return provided_secret == expected
+    return secrets.compare_digest(provided_secret, expected)
+
+
+@router.get("/auth-check")
+async def auth_check(
+    x_verification_secret: str | None = Header(None, alias="X-Verification-Secret"),
+) -> dict:
+    """Prove that the deployment accepts the configured verification secret.
+
+    This exists because the deployment gate needs to be able to tell the
+    difference between "the secret works" and "the endpoint answers anybody".
+    The previous check sent the secret to two endpoints that never looked at the
+    header, so it passed unconditionally and could not detect a rotated or
+    mismatched credential.
+
+    Read-only by construction: it declares no database dependency, opens no
+    session, and starts no work, so calling it cannot mutate scholarship data or
+    trigger a verification round. It returns a fixed literal on success and
+    reveals nothing about the secret, its length, or any record.
+    """
+    if not _verify_secret(x_verification_secret):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid or missing verification secret.",
+        )
+    return {"status": "ok", "authenticated": True}
 
 
 @router.post("/verify/trigger", status_code=status.HTTP_202_ACCEPTED)

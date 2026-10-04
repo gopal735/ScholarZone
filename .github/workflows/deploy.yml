@@ -114,49 +114,65 @@ jobs:
             sleep "$DELAY"
           done
 
-      - name: Validate scholarships stats endpoint
+      - name: Validate the verification secret against the guarded endpoint
         run: |
           set -euo pipefail
 
-          HTTP_CODE=$(curl -s -o /tmp/stats.json -w "%{http_code}" \
+          # This is the step that proves the credential actually works.
+          #
+          # The two checks this replaces both sent X-Verification-Secret to
+          # endpoints that never read the header, so they returned 200 no matter
+          # what the secret contained. A rotated, mismatched or emptied secret
+          # therefore passed this gate silently. The endpoint used here is
+          # genuinely guarded and answers 401 to a wrong secret, so a bad
+          # credential now fails the deployment instead of being certified.
+          HTTP_CODE=$(curl -s -o /tmp/auth_check.json -w "%{http_code}" \
             --connect-timeout 10 \
             --max-time 20 \
             -H "Cache-Control: no-cache" \
             -H "X-Cache-Bypass: 1" \
             -H "X-Verification-Secret: $SCHOLARZONE_VERIFICATION_SECRET" \
-            "$SCHOLARZONE_API_URL/scholarships/stats" || true)
-          echo "Scholarships stats HTTP response code: $HTTP_CODE"
+            "$SCHOLARZONE_API_URL/internal/auth-check" || true)
+          echo "Guarded auth-check HTTP response code: $HTTP_CODE"
 
           if [ "$HTTP_CODE" != "200" ]; then
-            echo "::error::Scholarships stats endpoint returned HTTP $HTTP_CODE."
-            cat /tmp/stats.json 2>/dev/null || echo "  (no response body)"
+            echo "::error::The deployed API rejected the configured verification secret (HTTP $HTTP_CODE)."
+            echo "::error::The deployment and the repository secret disagree. The secret was not rotated;"
+            echo "::error::the two stores hold different values, or the new value has not been deployed yet."
+            cat /tmp/auth_check.json 2>/dev/null || echo "  (no response body)"
             exit 1
           fi
 
-          echo "Scholarships stats endpoint is healthy."
-          cat /tmp/stats.json
+          # The response is a fixed literal. Nothing secret is echoed, and the
+          # header itself is never printed, so this log stays safe to keep.
+          echo "Verification secret accepted by the guarded endpoint."
+          cat /tmp/auth_check.json
+          echo
 
-      - name: Validate internal verify status
+      - name: Validate public endpoints
         run: |
           set -euo pipefail
 
-          HTTP_CODE=$(curl -s -o /tmp/verify_status.json -w "%{http_code}" \
-            --connect-timeout 10 \
-            --max-time 20 \
-            -H "Cache-Control: no-cache" \
-            -H "X-Cache-Bypass: 1" \
-            -H "X-Verification-Secret: $SCHOLARZONE_VERIFICATION_SECRET" \
-            "$SCHOLARZONE_API_URL/internal/verify/status" || true)
-          echo "Internal verify status HTTP response code: $HTTP_CODE"
+          # These are unauthenticated by design, so they prove availability and
+          # nothing about credentials. They are kept as liveness checks and are
+          # deliberately NOT used as evidence that the secret works.
+          for path in /scholarships/stats /internal/verify/status; do
+            HTTP_CODE=$(curl -s -o /tmp/public_check.json -w "%{http_code}" \
+              --connect-timeout 10 \
+              --max-time 20 \
+              -H "Cache-Control: no-cache" \
+              -H "X-Cache-Bypass: 1" \
+              "$SCHOLARZONE_API_URL$path" || true)
+            echo "Public endpoint $path HTTP response code: $HTTP_CODE"
 
-          if [ "$HTTP_CODE" != "200" ]; then
-            echo "::error::Internal verify status endpoint returned HTTP $HTTP_CODE."
-            cat /tmp/verify_status.json 2>/dev/null || echo "  (no response body)"
-            exit 1
-          fi
+            if [ "$HTTP_CODE" != "200" ]; then
+              echo "::error::Public endpoint $path returned HTTP $HTTP_CODE."
+              cat /tmp/public_check.json 2>/dev/null || echo "  (no response body)"
+              exit 1
+            fi
+          done
 
-          echo "Internal verify status endpoint is healthy."
-          cat /tmp/verify_status.json
+          echo "Public endpoints are healthy."
 
       - name: Upload health check artifacts
         uses: actions/upload-artifact@v4
@@ -165,5 +181,5 @@ jobs:
           name: post-deploy-health-logs
           path: |
             /tmp/health.json
-            /tmp/stats.json
-            /tmp/verify_status.json
+            /tmp/auth_check.json
+            /tmp/public_check.json
