@@ -664,9 +664,7 @@ slower verification.
    a serverless fleet; not fleet-wide.
 5. **No streaming.** One complete response. A partial answer arriving before its
    evidence would be worse than a short wait.
-6. **The production deploy carrying the final wording fix has not happened yet.**
-   Production runs `3ee434c`; the wording fix in §20 is committed but not yet
-   deployed. The affected sentence is a *what is not known* line, not a fact.
+6. **Evidence is truncated silently at 10 chips.** The response does not say so.
 
 **Pre-existing, found during the audit, deliberately not fixed** (outside scope;
 each is a one-line report to whoever owns it):

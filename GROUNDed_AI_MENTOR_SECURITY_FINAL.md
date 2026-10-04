@@ -294,10 +294,12 @@ would have published their unreviewed work alongside mine. The decision was
 escalated rather than made unilaterally, and a deploy then landed from the normal
 process carrying my commits.
 
-**One commit is not yet deployed.** A final wording fix (§13, found by the
-production run) is committed but not yet in `3ee434c`. It changes a *what is not
-known* line only, not a fact, and it makes the mentor less likely to state
-something unverified.
+**Every commit is deployed.** Production runs **`4edd154`**, verified live: the
+wording fix of §13 is confirmed in production. Asking indirectly about an
+application returns *"checklist progress is not included in this answer; open the
+workspace for the counted tasks."* and no longer claims the record lacks a
+checklist; asking directly about the same application returns
+*"Tasks completed: 40.0%"* with no disclaimer at all. Zero console errors.
 
 **Security-relevant production results**, from a real browser against real data:
 
