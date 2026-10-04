@@ -27,6 +27,13 @@ jobs:
           cd backend
           pip install -r requirements.txt
 
+      - name: Install image mutation audit (idempotent schema only)
+        run: |
+          cd backend
+          python scripts/install_image_audit.py
+        env:
+          SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
+
       - name: Validate audit DDL (executed then rolled back)
         run: |
           cd backend
