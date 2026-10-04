@@ -3,7 +3,7 @@
 | | |
 | --- | --- |
 | Feature branch | `grounded-mentor` |
-| Commits | `5416914` (feature), `c3aefad` (browser-found defects), `a1f214b` (merge), `3ee434c` (reports), `f4c…` (final wording fix) |
+| Commits | `5416914` (feature) · `c3aefad` (six browser-found defects) · `a1f214b` (merge) · `3ee434c` (reports) · `27047de` (final wording fix) · `4edd154` (final numbers) |
 | Deployed production revision | **`3ee434c` — the mentor is live** (see §19) |
 | Architecture audit | `GROUNDed_AI_MENTOR_ARCHITECTURE_AUDIT.md` |
 | Security report | `GROUNDed_AI_MENTOR_SECURITY_FINAL.md` |
