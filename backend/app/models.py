@@ -490,10 +490,45 @@ class MaintenanceRun(Base):
     __table_args__ = (
         Index("ix_maintenance_runs_started", "started_at"),
         Index("ix_maintenance_runs_status_started", "status", "started_at"),
+        Index("ix_maintenance_runs_slot_lease", "slot_status", "lease_until"),
     )
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     run_id: Mapped[str] = mapped_column(String(64), nullable=False, unique=True)
+
+    # -- Durable logical maintenance slot -------------------------------------
+    #
+    # ``run_id`` identifies one execution attempt. ``slot_id`` identifies the
+    # logical UTC schedule slot the attempt belongs to ("7 */12 * * *" -> the
+    # 00:07 and 12:07 UTC slots). A slot is deterministic, so repeated
+    # invocations for the same slot collide on this column.
+    #
+    # The column is NULLABLE and UNIQUE on purpose: every pre-existing row keeps
+    # a NULL slot, and SQL permits many NULLs in a unique constraint, so historic
+    # data is untouched while the database itself guarantees at most one row -
+    # and therefore at most one active claim - per logical slot. Application
+    # timing never decides ownership; the unique index does.
+    slot_id: Mapped[str | None] = mapped_column(String(64), nullable=True, unique=True)
+    slot_status: Mapped[str | None] = mapped_column(String(16), nullable=True)
+    slot_due_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
+    #: Why the slot is being worked (github_schedule, workflow_dispatch, ...).
+    logical_source: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    #: What carried the request (github.schedule, github.workflow_dispatch, ...).
+    #: Kept separate from logical_source because a Vercel-triggered GitHub run
+    #: arrives as workflow_dispatch while its logical origin is an external
+    #: scheduler. Never derive one from the other.
+    transport_event: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    claimed_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
+    #: Exclusive end of the claim lease. An expired lease makes the slot
+    #: recoverable rather than permanently blocked.
+    lease_until: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
+    claim_owner: Mapped[str | None] = mapped_column(String(128), nullable=True)
     started_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), nullable=False, server_default=func.now()
     )

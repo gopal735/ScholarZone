@@ -73,6 +73,57 @@ def get_db() -> Generator[Session, None, None]:
         session.close()
 
 
+#: Columns added to ``maintenance_runs`` for the durable logical slot. The
+#: ``run_id``/``status``/``stages`` columns are untouched, so existing rows and
+#: the meaning of existing data are preserved.
+_MAINTENANCE_SLOT_COLUMNS: tuple[tuple[str, str], ...] = (
+    ("slot_id", "VARCHAR(64)"),
+    ("slot_status", "VARCHAR(16)"),
+    ("slot_due_at", "TIMESTAMP"),
+    ("logical_source", "VARCHAR(32)"),
+    ("transport_event", "VARCHAR(64)"),
+    ("claimed_at", "TIMESTAMP"),
+    ("lease_until", "TIMESTAMP"),
+    ("claim_owner", "VARCHAR(128)"),
+)
+
+
+def ensure_maintenance_slot_columns(connection) -> None:
+    """Add the maintenance-slot columns and their uniqueness guard, if absent.
+
+    Additive and idempotent. ``slot_id`` gets a UNIQUE INDEX rather than a table
+    constraint, because SQLite cannot add one after the fact, and because a
+    nullable unique index preserves every historic row (many NULLs) while making
+    a duplicate logical slot impossible at the storage layer.
+    """
+    is_postgres = connection.dialect.name == "postgresql"
+    for name, definition in _MAINTENANCE_SLOT_COLUMNS:
+        if is_postgres:
+            connection.execute(
+                text(f"ALTER TABLE maintenance_runs ADD COLUMN IF NOT EXISTS {name} {definition}")
+            )
+        else:
+            connection.execute(text(f"PRAGMA table_info(maintenance_runs)"))
+            existing = {row[1] for row in connection.execute(
+                text("PRAGMA table_info(maintenance_runs)")).all()}
+            if name not in existing:
+                connection.execute(
+                    text(f"ALTER TABLE maintenance_runs ADD COLUMN {name} {definition}")
+                )
+    connection.execute(
+        text(
+            "CREATE UNIQUE INDEX IF NOT EXISTS ux_maintenance_runs_slot_id "
+            "ON maintenance_runs (slot_id)"
+        )
+    )
+    connection.execute(
+        text(
+            "CREATE INDEX IF NOT EXISTS ix_maintenance_runs_slot_lease "
+            "ON maintenance_runs (slot_status, lease_until)"
+        )
+    )
+
+
 def init_database() -> None:
     # Importing here prevents metadata/model import cycles during app setup.
     from .models import Base
@@ -93,6 +144,9 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
     to run on every application startup without dropping tables or modifying
     existing data.
     """
+    with engine.begin() as slot_connection:
+        ensure_maintenance_slot_columns(slot_connection)
+
     with engine.begin() as connection:
         columns = {column["name"] for column in inspect(engine).get_columns("scholarships")}
         additions = {
@@ -284,6 +338,9 @@ def _upgrade_sqlite_schema(engine: Engine) -> None:
     Production PostgreSQL deployments should use a reviewed migration workflow.
     The statements below are static and only target a developer's SQLite database.
     """
+    with engine.begin() as slot_connection:
+        ensure_maintenance_slot_columns(slot_connection)
+
     columns = {column["name"] for column in inspect(engine).get_columns("scholarships")}
     additions = {
         "status": "VARCHAR(20) NOT NULL DEFAULT 'open'",
