@@ -253,7 +253,59 @@ class TestReadEmbedded:
 # ------------------------------------------ the runtime contract in main.py
 
 
-class TestRuntimeUsesOnlyTheArtefact:
+class TestBuildStepIsActuallyWired:
+    """The build step must be wired into the configuration, not just written.
+
+    A script that exists but is never executed would fail open: the artefact
+    would be absent, and the only symptom would be a missing revision at
+    runtime, long after the build was reported successful. These assertions
+    read vercel.json so that deleting the wiring breaks a test rather than
+    silently disabling provenance.
+    """
+
+    def _vercel_config(self) -> dict:
+        import json
+
+        return json.loads((BACKEND_ROOT.parent / "vercel.json").read_text(encoding="utf-8"))
+
+    def test_the_backend_service_runs_the_embed_step(self):
+        backend = self._vercel_config()["services"]["backend"]
+        assert "embed_build_revision.py" in backend.get("buildCommand", "")
+
+    def test_install_also_embeds_and_fails_closed(self):
+        """Dependency installation definitely runs, so provenance rides along.
+
+        Whether ``buildCommand`` is honoured for a ``framework: fastapi`` service
+        is not something this repository can assume. ``installCommand`` is
+        executed because dependencies have to be installed, and ``&&`` means a
+        provenance failure fails the install and therefore the build.
+        """
+        install = self._vercel_config()["services"]["backend"].get("installCommand", "")
+        assert "embed_build_revision.py" in install
+        assert "&&" in install, "a failure must stop the install, not be ignored"
+        assert "pip install" in install, "the default install must still happen"
+
+    def test_embedding_twice_is_idempotent(self, artifact, monkeypatch):
+        monkeypatch.setenv("VERCEL", "1")
+        monkeypatch.setenv("VERCEL_GIT_COMMIT_SHA", COMMIT)
+        assert embed_build_revision() == COMMIT
+        assert embed_build_revision() == COMMIT
+        assert artifact.read_text(encoding="utf-8").strip() == COMMIT
+
+    def test_the_artifact_is_the_sentinel(self, artifact, monkeypatch):
+        """The artefact content is deterministic and derived only from the SHA.
+
+        It is the proof that travels with the code, so it must contain nothing
+        that varies between builds of the same commit - no timestamp, no
+        hostname, no run id.
+        """
+        monkeypatch.setenv("VERCEL", "1")
+        monkeypatch.setenv("VERCEL_GIT_COMMIT_SHA", COMMIT)
+        embed_build_revision()
+        first = artifact.read_bytes()
+        embed_build_revision()
+        assert artifact.read_bytes() == first, "the artefact must be deterministic"
+        assert first.decode("utf-8").strip() == COMMIT
     def test_the_environment_cannot_override_the_embedded_revision(
         self, artifact, monkeypatch
     ):
