@@ -286,6 +286,169 @@ class TestContaminationHardening:
         assert len(result.failures) >= 4
 
 
+class TestAuthenticatedObservationOfAProtectedDeployment:
+    """A per-deployment URL sits behind Vercel Deployment Protection.
+
+    An anonymous read of one returns the platform's interstitial, not the
+    application. The gate therefore observes it through the Vercel CLI's own
+    session. Protection is a security boundary: these tests exist to prove the
+    gate can *authenticate* to observe a protected deployment without ever
+    weakening, disabling, or routing around that boundary.
+    """
+
+    def _cli_result(self, stdout: str, returncode: int = 0):
+        class Completed:
+            pass
+
+        completed = Completed()
+        completed.stdout = stdout
+        completed.stderr = ""
+        completed.returncode = returncode
+        return completed
+
+    def test_the_authenticated_read_parses_the_health_payload(self, monkeypatch):
+        import release_identity_gate as gate_module
+
+        captured = {}
+
+        def fake_run(command, **kwargs):
+            captured["command"] = command
+            captured["kwargs"] = kwargs
+            return self._cli_result('noise before {"status":"ok","revision":"%s"} after' % FULL_SHA)
+
+        monkeypatch.setattr(gate_module.shutil, "which", lambda _name: "/usr/bin/vercel")
+        monkeypatch.setattr(gate_module.subprocess, "run", fake_run)
+
+        result = gate_module.authenticated_get_json(
+            f"{DEPLOY_URL}/api/health", deployment=DEPLOY_ID
+        )
+
+        assert result["revision"] == FULL_SHA
+        # Read-only, shell=False, and the deployment is named explicitly.
+        # The executable is the *resolved* path rather than a bare "vercel":
+        # Windows' CreateProcess neither searches PATH nor appends PATHEXT, so a
+        # bare name fails even though the command works from a shell.
+        command = captured["command"]
+        assert command[0] == "/usr/bin/vercel"
+        assert command[1] == "curl"
+        assert "--deployment" in command
+        assert DEPLOY_ID in command
+        assert captured["kwargs"]["shell"] is False
+        assert "-X" not in command
+        assert "--prod" not in command
+
+    def test_it_fails_closed_when_the_cli_is_unavailable(self, monkeypatch):
+        import release_identity_gate as gate_module
+
+        monkeypatch.setattr(gate_module.shutil, "which", lambda _name: None)
+
+        with pytest.raises(gate_module.GateError) as caught:
+            gate_module.authenticated_get_json(f"{DEPLOY_URL}/api/health")
+
+        # The message must say protection was left alone, so a reader never
+        # assumes the boundary was relaxed to make this pass.
+        assert "Deployment Protection" in str(caught.value)
+
+    def test_it_fails_closed_when_authentication_fails(self, monkeypatch):
+        import release_identity_gate as gate_module
+
+        monkeypatch.setattr(gate_module.shutil, "which", lambda _name: "/usr/bin/vercel")
+        monkeypatch.setattr(
+            gate_module.subprocess, "run", lambda *a, **k: self._cli_result("", 1)
+        )
+
+        with pytest.raises(gate_module.GateError) as caught:
+            gate_module.authenticated_get_json(f"{DEPLOY_URL}/api/health")
+
+        assert "remains enabled" in str(caught.value)
+
+    def test_it_never_echoes_cli_stderr_which_may_carry_a_trace(self, monkeypatch):
+        """A failed authenticated read must not leak session material."""
+        import release_identity_gate as gate_module
+
+        class Completed:
+            stdout = ""
+            stderr = "trace-id=secret-session-material token=abc123"
+            returncode = 1
+
+        monkeypatch.setattr(gate_module.shutil, "which", lambda _name: "/usr/bin/vercel")
+        monkeypatch.setattr(gate_module.subprocess, "run", lambda *a, **k: Completed())
+
+        with pytest.raises(gate_module.GateError) as caught:
+            gate_module.authenticated_get_json(f"{DEPLOY_URL}/api/health")
+
+        message = str(caught.value)
+        assert "secret-session-material" not in message
+        assert "abc123" not in message
+
+    def test_output_with_no_json_object_is_refused(self, monkeypatch):
+        import release_identity_gate as gate_module
+
+        monkeypatch.setattr(gate_module.shutil, "which", lambda _name: "/usr/bin/vercel")
+        monkeypatch.setattr(
+            gate_module.subprocess,
+            "run",
+            lambda *a, **k: self._cli_result("<html>Protected Deployment</html>"),
+        )
+
+        with pytest.raises(gate_module.GateError):
+            gate_module.authenticated_get_json(f"{DEPLOY_URL}/api/health")
+
+    def test_the_interstitial_is_never_mistaken_for_a_health_payload(self, monkeypatch):
+        """The failure this patch exists to avoid.
+
+        An unauthenticated read of a protected URL returns an HTML login page.
+        If that were accepted, the gate would compare a web page against a commit.
+        """
+        import release_identity_gate as gate_module
+
+        monkeypatch.setattr(gate_module.shutil, "which", lambda _name: "/usr/bin/vercel")
+        monkeypatch.setattr(
+            gate_module.subprocess,
+            "run",
+            lambda *a, **k: self._cli_result("<html>Log in to Vercel</html>"),
+        )
+
+        with pytest.raises(gate_module.GateError):
+            gate_module.authenticated_get_json(f"{DEPLOY_URL}/api/health")
+
+
+class TestArtefactAgreement:
+    """The artefact and the running revision are two things, so they are compared."""
+
+    def test_a_matching_artefact_and_runtime_revision_pass(self):
+        result = verify(payload(), FULL_SHA, expected_artifact_sha=FULL_SHA)
+
+        assert result.ok, result.failures
+
+    def test_a_runtime_revision_differing_from_the_artefact_is_refused(self):
+        result = verify(payload(), FULL_SHA, expected_artifact_sha=OTHER_SHA)
+
+        assert not result.ok
+        assert any("build artefact holds" in failure for failure in result.failures)
+
+    def test_a_malformed_artefact_value_is_refused(self):
+        result = verify(payload(), FULL_SHA, expected_artifact_sha=SENTINEL)
+
+        assert not result.ok
+
+    def test_a_truncated_runtime_revision_still_fails_with_an_artefact_supplied(self):
+        result = verify(payload(), FULL_SHA[:12], expected_artifact_sha=FULL_SHA)
+
+        assert not result.ok
+        assert any("not a full 40-character" in failure for failure in result.failures)
+
+    def test_omitting_the_artefact_does_not_silently_pass_something_else(self):
+        """Without an artefact value the check is skipped, not assumed to pass.
+
+        The SHA format and identity equality still apply, so a truncated runtime
+        revision cannot slip through just because nobody supplied the artefact.
+        """
+        result = verify(payload(), FULL_SHA[:12])
+
+        assert not result.ok
+
+
 class TestEveryFailureIsReported:
     def test_multiple_problems_are_all_listed_not_just_the_first(self):
         result = verify(
