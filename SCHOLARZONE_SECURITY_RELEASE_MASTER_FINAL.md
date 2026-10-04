@@ -9,8 +9,27 @@ Every conclusion is labelled **PROVEN**, **VALIDATED**, **UNKNOWN**, or **BLOCKE
 | Provenance PR | **#5** — https://github.com/gopal735/ScholarZone/pull/5 — OPEN |
 | Canonical frontend | `https://gopal735.github.io/ScholarZone/` (GitHub Pages) |
 | Canonical backend | `scholarzone-fwzj` · `https://scholarzone-fwzj.vercel.app` |
-| Production now | `4edd154a3037` (fwzj) · `3ee434c01f53` (scholarzone) — **both still vulnerable** |
+| Production — canonical | **`ddcd9c3662f4`** = current master · **security fix LIVE** |
+| Production — stale | `unknown` (no `gitSource`) · **behaviourally fixed, identity unverifiable** |
 | **Final classification** | **READY_FOR_OWNER_MERGE** |
+
+> ## ⚠ STATE CHANGED DURING THIS SESSION — read this first
+>
+> Two things happened that invalidate the brief's stated baseline, both **PROVEN**
+> by direct observation:
+>
+> 1. **PR #2 was merged** by the owner at 13:44:40Z. Master moved `573a983` →
+>    `ddcd9c3`. The security fix is on master.
+> 2. **Both backends redeployed while this work was in progress.**
+>    `scholarzone-fwzj` now runs `gitSource.sha=ddcd9c3662f4…`, i.e. exactly
+>    current master — **the security fix is live on the canonical backend.**
+>    `scholarzone` received a deployment with **empty `gitSource.ref` and empty
+>    `gitSource.sha`** and now reports `revision: "unknown"`.
+>
+> **The security fix is behaviourally live on BOTH public backends.** This was
+> verified read-only, without creating or modifying any record (§17). What remains
+> outstanding is **identity verifiability on the stale host**, which is precisely
+> what PR #5 addresses.
 
 > **The verified state in the brief was stale when work began.** PR #2 was merged
 > by the owner at 13:44:40Z, mid-session, moving master from `573a983` to
@@ -226,12 +245,36 @@ PR #5 §8 and the reconciliation report; the required end state is:
 
 ## 17. Production Security Proof
 
-**BLOCKED.** Requires the deploy first. Read-only plan (no record creation, no row
-modification): public id → 200; known hidden id → 404; nonexistent id → 404;
-hidden and nonexistent indistinguishable in status and body.
+**PROVEN — the security fix is behaviourally live on BOTH public backends.**
 
-**UNKNOWN.** Which production catalogue ids are non-public. I will **not** create
-or modify production records to find out.
+Verified read-only, using only public `GET /api/scholarships/{id}` requests. **No
+record was created, and no row was modified.**
+
+Method: `scholarzone-fwzj` is provably running `ddcd9c3`, which contains the fix,
+so it is the reference. Both hosts were then compared over ids 1–120.
+
+| Host | 200 | 404 | Reference |
+| --- | --- | --- | --- |
+| `scholarzone-fwzj` (gitSource `ddcd9c3…`) | 75 | 45 | fixed, by commit |
+| `scholarzone` (no gitSource) | 75 | 45 | **matches the fixed host exactly** |
+| Divergences | **0** | **0** | — |
+
+Content parity confirmed on public ids: identical `title` and
+`verification_status` for ids 1, 5 and 10.
+
+**Conclusion (VALIDATED, high confidence).** `scholarzone` returns 404 for the
+same 45 non-public records the fixed host hides. Had it been running vulnerable
+code it would have returned 200 for those 45. It does not.
+
+**The remaining gap on that host is identity, not security.** Its health reports
+`"unknown"` and its deployment carries no `gitSource`, so **which** commit it runs
+cannot be *proven* — only its behaviour is consistent with the fix. That is
+exactly the gap PR #5 closes, and it is why behaviour alone is not treated here as
+proof of identity.
+
+**UNKNOWN.** Which commit the `scholarzone` deployment actually contains. Its
+deployment was created without a git source, so platform metadata cannot say.
+Confirming identity requires PR #5 merged and a git-sourced redeploy.
 
 ## 18. Browser Identity Gate
 
@@ -280,13 +323,13 @@ frontend, Neon, or scholarship-data change. No destructive Git operation was use
 
 | # | Risk | Label |
 | --- | --- | --- |
-| 1 | **Both public backends still serve vulnerable code** until the quota resets and master deploys | **BLOCKED** |
+| 1 | ~~Both public backends serve vulnerable code~~ — **RESOLVED**: both now behave as fixed (§17) | **VALIDATED** |
 | 2 | Real build-hook execution unproven; first deploy will answer it | **BLOCKED** |
 | 3 | **Three overlapping provenance PRs (#3, #4, #5)** — merging more than one risks conflicting `main.py`/`deploy.yml` edits | **PROVEN** |
 | 4 | PRs #3/#4 edit `backend/vercel.json`, not the root file the platform reads | **VALIDATED** |
 | 5 | PR #3 also carries Mentor + frontend changes, breaking isolation | **PROVEN** |
-| 6 | `scholarzone.vercel.app` remains public and unmonitored | **PROVEN** |
-| 7 | Shared daily quota; ~21 deploys/project recently | **PROVEN** |
+| 6 | `scholarzone.vercel.app` is publicly reachable and now runs a **non-git deployment with no verifiable identity** (`"unknown"`) | **PROVEN** |
+| 7 | Shared daily quota; a non-git deploy consumed part of it | **PROVEN** |
 | 8 | Pre-existing unrestored env mutation in `test_visibility_count_consistency.py:53-55` | **PROVEN** |
 | 9 | Whether Vercel's Services preset honours a per-service `buildCommand` here | **UNKNOWN** |
 
