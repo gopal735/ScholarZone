@@ -53,7 +53,7 @@ import re
 import sys
 import time
 from dataclasses import dataclass, field
-from datetime import date
+from datetime import date, datetime, timezone
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
@@ -276,8 +276,18 @@ def _run_stage(name: str, fn) -> StageReport:
     started = time.monotonic()
     try:
         detail = fn() or {}
+        # A stage that catches its own failure and returns `{"error": ...}` is the
+        # convention throughout this job, so the runner is where that convention
+        # has to be honoured. Otherwise a stage that failed reports ok and a
+        # scheduled run passes on a green tick - which is exactly how a deleting
+        # stage could stop working without anyone noticing.
+        reported_error = detail.get("error") if isinstance(detail, dict) else None
         return StageReport(
-            name=name, ok=True, detail=detail, runtime_s=time.monotonic() - started
+            name=name,
+            ok=not reported_error,
+            detail=detail,
+            error=str(reported_error) if reported_error else None,
+            runtime_s=time.monotonic() - started,
         )
     except Exception as exc:  # noqa: BLE001
         logger.warning("stage %s failed: %s", name, exc, exc_info=True)
