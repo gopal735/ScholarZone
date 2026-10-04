@@ -40,6 +40,12 @@ DEVELOPMENT_MARKER = "dev"
 #: A full commit SHA and nothing else. Anchored, lowercase, exactly 40.
 FULL_COMMIT_SHA = re.compile(r"\A[0-9a-f]{40}\Z")
 
+#: The exact on-disk shape of the artefact: the forty characters, optionally
+#: followed by the single terminal newline the writer adds. Nothing else is
+#: accepted - not a different case, not a leading space, not CRLF. Whitespace
+#: is a corruption signal, not formatting to be tidied up.
+ARTIFACT_CONTENTS = re.compile(r"\A([0-9a-f]{40})\n?\Z")
+
 #: Vercel sets this to "1" in every build environment.
 ON_PLATFORM = "VERCEL"
 PLATFORM_COMMIT = "VERCEL_GIT_COMMIT_SHA"
@@ -65,7 +71,7 @@ def platform_commit_sha() -> str | None:
     Rejects anything that is not exactly forty lowercase hex characters. A
     branch name, a short SHA, a URL or an empty string is not an identity.
     """
-    raw = (os.getenv(PLATFORM_COMMIT) or "").strip().lower()
+    raw = os.getenv(PLATFORM_COMMIT) or ""
     return raw if FULL_COMMIT_SHA.match(raw) else None
 
 
@@ -119,9 +125,10 @@ def read_embedded_revision() -> str:
             "cannot prove what it is."
         ) from error
 
-    if is_deployed_sha(raw):
-        return raw
-    if raw == DEVELOPMENT_MARKER:
+    match = ARTIFACT_CONTENTS.match(raw)
+    if match:
+        return match.group(1)
+    if raw in (DEVELOPMENT_MARKER, f"{DEVELOPMENT_MARKER}\n"):
         return DEVELOPMENT_MARKER
 
     raise ProvenanceError(

@@ -21,14 +21,25 @@ The contract asserted here:
 from __future__ import annotations
 
 import shutil
+import os
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+
+# This module imports ``app.main`` at import scope and ``TestClient(app)`` runs
+# the lifespan, which initialises the database. With no URL set that resolves to
+# ``DEFAULT_DATABASE_URL`` - a SQLite file at ``backend/scholarzone.db`` inside the
+# source tree - so merely collecting these tests created and seeded a git-ignored
+# file in the repository. Point the app at a private temporary database first.
+_TEST_DB = Path(tempfile.mkdtemp(prefix="provenance-tests-")) / "provenance.db"
+os.environ.setdefault("SCHOLARZONE_ENVIRONMENT", "test")
+os.environ["SCHOLARZONE_DATABASE_URL"] = f"sqlite:///{_TEST_DB.as_posix()}"
 
 from app import build_provenance as provenance
 from app.build_provenance import (
@@ -146,13 +157,19 @@ class TestBuildFailsWithoutAnIdentity:
         with pytest.raises(ProvenanceError):
             embed_build_revision()
 
-    def test_an_uppercase_sha_is_normalised_not_refused(self, artifact, monkeypatch):
-        """Case is a formatting difference, not an identity difference."""
+    def test_an_uppercase_sha_is_refused_not_normalised(self, artifact, monkeypatch):
+        """Case is corruption, not formatting.
+
+        This previously asserted the opposite. Folding case silently would write a
+        value the platform never reported, so the artefact could no longer be
+        compared against the provider's ``gitSource.sha`` exactly.
+        """
         upper = COMMIT.upper()
         monkeypatch.setenv("VERCEL", "1")
         monkeypatch.setenv("VERCEL_GIT_COMMIT_SHA", upper)
-        assert platform_commit_sha() == COMMIT
-        assert embed_build_revision() == COMMIT
+        assert platform_commit_sha() is None
+        with pytest.raises(ProvenanceError):
+            embed_build_revision()
 
     def test_a_refused_build_writes_no_artefact(self, artifact, monkeypatch):
         monkeypatch.setenv("VERCEL", "1")

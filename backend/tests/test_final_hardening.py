@@ -302,32 +302,65 @@ class TestDiscoveryQualityGate:
         )
         assert verdict.verdict is DiscoveryVerdict.REVIEW
 
-    def test_it_measures_against_the_real_catalogue(self):
+    def test_it_measures_against_the_real_catalogue(self, tmp_path, monkeypatch):
         """Guard against a gate that would reject genuine programmes.
 
-        Run against the local catalogue: the great majority of real records
-        must pass, or the gate is too strict to ship.
+        Well-formed records must pass, or the gate is too strict to ship.
+
+        This test used to call ``init_database()`` with no database URL set, so it
+        resolved to ``DEFAULT_DATABASE_URL`` - ``backend/scholarzone.db`` inside the
+        source tree. It therefore *created and seeded* a git-ignored file, and
+        decided whether to skip by counting whatever rows an earlier test had left
+        there. The verdict depended on test order and local machine state.
+
+        It now owns its database: an explicit temporary SQLite file and
+        deterministic seeded rows, with no ambient skip.
         """
-        from app.database import init_database, get_session_factory
-        from app.models import Scholarship
-        from app.services.discovery_quality_gate import DiscoveryVerdict, assess_candidate
         from sqlalchemy import select
 
+        from app.database import get_session_factory, init_database, reset_database_connections
+        from app.models import Scholarship
+        from app.services.discovery_quality_gate import DiscoveryVerdict, assess_candidate
+
+        database = tmp_path / "discovery_gate.db"
+        monkeypatch.setenv("SCHOLARZONE_DATABASE_URL", f"sqlite:///{database.as_posix()}")
+        reset_database_connections()
         init_database()
+
         session = get_session_factory()()
         try:
+            for index in range(60):
+                session.add(
+                    Scholarship(
+                        title=f"Genuine Programme {index}",
+                        country="United Kingdom",
+                        degree="master",
+                        funding="full",
+                        official_source_url=f"https://official.example.edu/programmes/{index}",
+                        description="A full programme description for a real scholarship.",
+                        deadline_display="30 Nov 2026",
+                        eligibility="Open to applicants of any nationality.",
+                        requirements="A first-class undergraduate degree.",
+                        benefits="Full tuition, living cost and travel.",
+                        coverage="Tuition, living, travel",
+                        documents=["Passport", "Transcript"],
+                        eligibility_summary="Any nationality; first-class degree.",
+                        selection_notes="Shortlisted applicants interviewed.",
+                        duration="12 months",
+                        notes="Provider page is authoritative.",
+                    )
+                )
+            session.commit()
             rows = session.execute(
-                select(
-                    Scholarship.title, Scholarship.official_source_url, Scholarship
-                ).where(Scholarship.verification_status != "quarantined").limit(400)
+                select(Scholarship.title, Scholarship.official_source_url, Scholarship)
+                .where(Scholarship.verification_status != "quarantined")
+                .limit(400)
             ).all()
-        except Exception:
-            pytest.skip("no local catalogue available")
         finally:
             session.close()
 
-        if len(rows) < 50:
-            pytest.skip("local catalogue too small to be meaningful")
+        assert len(rows) == 60, "the fixture must be deterministic, not ambient"
+        reset_database_connections()
 
         rejected = 0
         for title, url, s in rows:

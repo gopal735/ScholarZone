@@ -77,3 +77,9 @@ migration_validation.sql
 archive/
 
 backend/gh_token.txt
+
+# Build provenance artefact, written into the package during the Vercel
+# build by backend/scripts/embed_build_revision.py and read at runtime by
+# app/build_provenance.py. It records the identity of ONE build, so a
+# committed copy would be a stale claim about a build that never happened.
+backend/app/build_revision.txt
