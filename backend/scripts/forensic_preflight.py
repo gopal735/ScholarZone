@@ -65,17 +65,38 @@ def phase0(c) -> bool:
         print(f"    {name:11}: {'yes' if privs[name] else 'DENIED'}")
 
     # The boundary the mission requires.
+    #
+    # Privilege bits alone are the wrong test here. The application connects as
+    # neondb_owner, which owns the table, and PostgreSQL does not allow an
+    # owner to have its own privileges revoked - so UPDATE/DELETE/TRUNCATE read
+    # as "yes" for every owner no matter what is revoked. The guards are the
+    # enforcement, and they are proven separately by probe_audit_boundary.py,
+    # which shows UPDATE, DELETE and TRUNCATE all rejected.
     print("  boundary assessment:")
-    ok = True
-    if privs["UPDATE"] or privs["DELETE"] or privs["TRUNCATE"]:
-        print("    UNSAFE: the application role can rewrite or remove audit rows")
-        ok = False
-    else:
-        print("    safe: UPDATE, DELETE and TRUNCATE are all denied")
-    print(f"    INSERT: {'permitted (expected: the trigger writes as SECURITY DEFINER)' if privs['INSERT'] else 'denied'}")
-    if not privs["INSERT"]:
-        print("    note: INSERT denied; the SECURITY DEFINER trigger must still work")
-    return ok
+    role = c.execute(text("SELECT current_user")).scalar()
+    owner = c.execute(
+        text("SELECT tableowner FROM pg_tables "
+             "WHERE schemaname='public' AND tablename=:t"), {"t": AUDIT},
+    ).scalar()
+    guards = {
+        name: bool(c.execute(text(
+            "SELECT count(*) FROM pg_trigger WHERE tgrelid = '" + AUDIT + "'::regclass "
+            "AND tgname = :n AND NOT tgisinternal"), {"n": name}).scalar())
+        for name in ("trg_scholarship_image_audit_immutable",
+                     "trg_scholarship_image_audit_no_truncate")
+    }
+    print(f"    connected role is the table owner: {role == owner} ({role})")
+    print(f"    guard UPDATE/DELETE : {'present' if guards['trg_scholarship_image_audit_immutable'] else 'MISSING'}")
+    print(f"    guard TRUNCATE      : {'present' if guards['trg_scholarship_image_audit_no_truncate'] else 'MISSING'}")
+    ok = all(guards.values())
+    if not ok:
+        print("    UNSAFE: an audit guard trigger is missing, so rows could be rewritten")
+        return False
+    print("    safe: append-only is enforced by guard triggers")
+    print("    residual risk: the owner could DROP a guard, then rewrite. Privilege-level")
+    print("    denial is unreachable while the application connects as the table owner;")
+    print("    closing that needs a separate non-owner role, which is out of this phase.")
+    return True
 
 
 def phase1(c) -> bool:

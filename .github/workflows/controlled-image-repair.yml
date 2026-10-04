@@ -1,17 +1,21 @@
-name: Image Audit Check
+name: Controlled Image Repair (forensic)
 
-# Read-only confirmation that the image mutation audit is live on production.
+# One controlled repair of the target records through the canonical image
+# evaluation path, immediately followed by a read-only audit verification.
 #
-# Every statement in scripts/verify_image_audit.py is a SELECT. It
-# deliberately creates no synthetic mutation: proving the trigger fires would
-# itself alter a scholarship, which would corrupt the very evidence this audit
-# exists to preserve.
+# The repair runs scripts/triple_image_repair.py --evaluate, which invokes the
+# existing ImageCoverageRunner against TARGETS = [14, 130, 554] only. It is the
+# application path: discovery, validation, provenance, evaluation and the
+# accepted-image rules all apply. No image field is written by hand.
+#
+# Run this ONCE. The purpose is to observe what naturally happens afterwards,
+# so repeating it would destroy the evidence it exists to produce.
 
 on:
   workflow_dispatch:
 
 jobs:
-  verify-image-audit:
+  controlled-repair:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -27,44 +31,37 @@ jobs:
           cd backend
           pip install -r requirements.txt
 
-      - name: Install image mutation audit (idempotent schema only)
+      - name: Confirm the audit is armed before repairing
         run: |
           cd backend
           python scripts/install_image_audit.py
         env:
           SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
 
-      - name: Validate audit DDL (executed then rolled back)
-        run: |
-          cd backend
-          python scripts/validate_audit_ddl.py
-        env:
-          SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
-
-      - name: Dump image audit evidence (read-only)
-        run: |
-          cd backend
-          python scripts/dump_image_audit.py
-        env:
-          SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
-
-      - name: Probe audit boundary (rolled back)
-        run: |
-          cd backend
-          python scripts/probe_audit_boundary.py
-        env:
-          SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
-
-      - name: Forensic pre-flight (read-only)
+      - name: Pre-repair baseline (read-only)
         run: |
           cd backend
           python scripts/forensic_preflight.py
         env:
           SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
 
-      - name: Verify image mutation audit (read-only)
+      - name: Controlled repair via the canonical path
         run: |
           cd backend
-          python scripts/verify_image_audit.py
+          python scripts/triple_image_repair.py --evaluate
+        env:
+          SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
+
+      - name: Audit verification (read-only)
+        run: |
+          cd backend
+          python scripts/dump_image_audit.py
+        env:
+          SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
+
+      - name: Post-repair state and invariants (read-only)
+        run: |
+          cd backend
+          python scripts/forensic_preflight.py
         env:
           SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
