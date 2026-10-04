@@ -290,7 +290,14 @@ def _run_stage(name: str, fn) -> StageReport:
     """
     started = time.monotonic()
     try:
-        detail = fn() or {}
+        # Attribute any image mutation this stage makes to the stage that made
+        # it. The label is applied here, at the one place every stage passes
+        # through, rather than inside each stage: a writer that forgets to label
+        # itself is the failure mode this whole audit exists to detect.
+        from app.image_audit import image_writer
+
+        with image_writer(f"maintenance.{name}"):
+            detail = fn() or {}
         # A stage that catches its own failure and returns `{"error": ...}` is the
         # convention throughout this job, so the runner is where that convention
         # has to be honoured. Otherwise a stage that failed reports ok and a

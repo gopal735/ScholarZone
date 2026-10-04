@@ -9,6 +9,7 @@ from sqlalchemy import Engine, create_engine, inspect, text
 from sqlalchemy.orm import Session, sessionmaker
 
 from .core.config import get_settings
+from .image_audit import audit_trigger_is_installed, create_image_audit_schema
 
 _PRODUCTION_DB_PATH = (Path(__file__).resolve().parents[2] / "scholarzone.db").as_posix()
 
@@ -199,6 +200,14 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
         connection.execute(text("CREATE INDEX IF NOT EXISTS ix_image_reviews_scholarship_decision ON image_reviews (scholarship_id, decision)"))
         connection.execute(text("CREATE INDEX IF NOT EXISTS ix_image_reviews_created_at ON image_reviews (created_at)"))
 
+        # Durable, database-level attribution for image mutations. The image
+        # regression on scholarships 14/130/554 reverted with no history row
+        # and no recorded maintenance run, which left no trace of the writer.
+        # A trigger cannot be bypassed by raw SQL, a one-off script or any
+        # actor that never runs application code, so it is installed here in
+        # the same idempotent startup migration as everything else.
+        create_image_audit_schema(connection)
+
 
 def _validate_postgresql_schema(engine: Engine) -> None:
     """Validate required PostgreSQL schema objects exist after startup migration.
@@ -212,6 +221,19 @@ def _validate_postgresql_schema(engine: Engine) -> None:
         column["name"] == "image_kind" for column in inspector.get_columns("scholarships")
     )
     image_reviews_ok = inspector.has_table("image_reviews")
+    image_audit_ok = inspector.has_table("scholarship_image_audit")
+
+    # A trigger that silently fails to install is worse than none: it would let
+    # an image mutation go unrecorded while everyone believed it was audited.
+    # An audit table with no trigger behind it is exactly that failure, so it is
+    # treated as an invalid schema rather than logged and ignored.
+    trigger_ok = True
+    if image_audit_ok:
+        try:
+            trigger_ok = bool(audit_trigger_is_installed(engine))
+        except Exception:
+            logger.exception("[SCHEMA VALIDATION] image audit trigger check failed")
+            trigger_ok = False
 
     try:
         image_review_indexes = {index["name"] for index in inspector.get_indexes("image_reviews")}
@@ -225,6 +247,19 @@ def _validate_postgresql_schema(engine: Engine) -> None:
     logger.info("[SCHEMA VALIDATION] image_kind: %s", "OK" if image_kind_ok else "MISSING")
     logger.info("[SCHEMA VALIDATION] image_reviews: %s", "OK" if image_reviews_ok else "MISSING")
     logger.info("[SCHEMA VALIDATION] indexes: %s", "OK" if indexes_ok else "MISSING")
+    logger.info("[SCHEMA VALIDATION] image_audit table: %s", "OK" if image_audit_ok else "MISSING")
+    logger.info("[SCHEMA VALIDATION] image_audit trigger: %s", "OK" if trigger_ok else "MISSING")
+
+    # The audit is deliberately NOT part of the startup-fatal set below.
+    # Refusing to boot because a forensic trigger is missing would turn an
+    # observability gap into an outage. It is logged, verified explicitly after
+    # deployment, and the app stays up.
+    if not image_audit_ok or not trigger_ok:
+        logger.critical(
+            "[SCHEMA VALIDATION] image audit incomplete (table=%s trigger=%s). "
+            "Image mutations are not currently attributable.",
+            image_audit_ok, trigger_ok,
+        )
 
     if not (image_kind_ok and image_reviews_ok and indexes_ok):
         missing = []
@@ -337,6 +372,9 @@ def _upgrade_sqlite_schema(engine: Engine) -> None:
         _create_content_fingerprints_table(connection)
         _upgrade_discovery_candidates_table(connection)
         _create_image_reviews_table(connection)
+        # Same audit instrumentation as PostgreSQL, so a local or test database
+        # exercises the identical trigger semantics rather than a stub.
+        create_image_audit_schema(connection)
 
     schema = inspect(engine)
     unique_source_constraints = (

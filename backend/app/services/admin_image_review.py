@@ -137,6 +137,25 @@ def approve_image_review(
         result.error = f"scholarship {review.scholarship_id} not found"
         return result
 
+    # An operator approving an image is a writer distinct from any maintenance
+    # stage, so the mutation audit records it under its own label. Delegating
+    # keeps the existing flow and its return paths completely untouched.
+    from ..image_audit import writer_context
+
+    with writer_context(session, "admin_image_review"):
+        return _approve_image_review(
+            session, review, scholarship, result, reviewed_by, reviewer_note
+        )
+
+
+def _approve_image_review(
+    session: Session,
+    review: ImageReview,
+    scholarship: Scholarship,
+    result: ImageReviewDecisionResult,
+    reviewed_by: str,
+    reviewer_note: str | None,
+) -> ImageReviewDecisionResult:
     if scholarship.image_url is not None and scholarship.image_url != review.image_url:
         if scholarship.image_verified_at is not None:
             result.error = "Cannot overwrite verified image without explicit clear"
