@@ -9,6 +9,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
     <!--
+      Google Search Console site-ownership verification.
+
+      Google fetches this file with an ordinary HTTP GET and reads the token out
+      of the served head. It does not execute the bundle, so this has to be in
+      the document itself rather than injected by a page effect at runtime.
+
+      Deliberately NOT marked data-sz-seo. Every page effect in this app opens
+      with querySelectorAll('[data-sz-seo]').forEach(el => el.remove()) before
+      writing its own tags, so a token carrying that attribute would be deleted
+      on the first render of every route - including the homepage - and the
+      property would stop verifying itself. The ownership convention applies to
+      tags a page rewrites; this one is a constant no page owns.
+    -->
+    <meta name="google-site-verification" content="mzaQ_MW4nVgMwHhbSOxxTsr46gaV7sanks7vbnE7aaE" />
+
+    <!--
       The head below is the document's real metadata, not a placeholder.
 
       This is a single-page app, so before this existed the served HTML carried
