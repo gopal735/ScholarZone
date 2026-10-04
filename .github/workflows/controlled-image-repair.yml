@@ -1,0 +1,67 @@
+name: Controlled Image Repair (forensic)
+
+# One controlled repair of the target records through the canonical image
+# evaluation path, immediately followed by a read-only audit verification.
+#
+# The repair runs scripts/triple_image_repair.py --evaluate, which invokes the
+# existing ImageCoverageRunner against TARGETS = [14, 130, 554] only. It is the
+# application path: discovery, validation, provenance, evaluation and the
+# accepted-image rules all apply. No image field is written by hand.
+#
+# Run this ONCE. The purpose is to observe what naturally happens afterwards,
+# so repeating it would destroy the evidence it exists to produce.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  controlled-repair:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          cd backend
+          pip install -r requirements.txt
+
+      - name: Confirm the audit is armed before repairing
+        run: |
+          cd backend
+          python scripts/install_image_audit.py
+        env:
+          SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
+
+      - name: Pre-repair baseline (read-only)
+        run: |
+          cd backend
+          python scripts/forensic_preflight.py
+        env:
+          SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
+
+      - name: Controlled repair via the canonical path
+        run: |
+          cd backend
+          python scripts/triple_image_repair.py --evaluate
+        env:
+          SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
+
+      - name: Audit verification (read-only)
+        run: |
+          cd backend
+          python scripts/dump_image_audit.py
+        env:
+          SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
+
+      - name: Post-repair state and invariants (read-only)
+        run: |
+          cd backend
+          python scripts/forensic_preflight.py
+        env:
+          SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
