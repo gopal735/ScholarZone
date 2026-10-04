@@ -31,6 +31,25 @@
   gap: var(--space-12);
 }
 
+/*
+ * Touch target floor.
+ *
+ * The shared `.sz-btn` primitive lands at 43.5px, half a pixel under the 44px
+ * floor, because its border is drawn inside its box. Re-asserting the token here
+ * brings every dashboard control to exactly the floor without editing the
+ * primitive, so the change stays contained to this page and no other surface
+ * moves.
+ *
+ * Links whose text sits inside a heading or a sentence - the scholarship title,
+ * the saved-item title - are deliberately left at their line height. WCAG 2.5.8
+ * exempts a target inline in text, and padding them to 44px would break the line
+ * box and the reading rhythm they exist to support.
+ */
+.dashboard .sz-btn,
+.dashboard select.sz-input {
+  min-height: var(--sz-touch-min);
+}
+
 .dashboard__header {
   display: flex;
   flex-wrap: wrap;
