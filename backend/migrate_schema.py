@@ -70,12 +70,128 @@ REQUIRED_TABLES = {
             created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
         """,
     },
+    # Student dashboard. Five new tables, none of which touches the scholarship
+    # catalogue: they hold accounts, sessions and one student's own records.
+    # Nothing here alters or reads scholarships, so applying this migration
+    # cannot change a single published fact.
+    "users": {
+        "postgresql": """
+            id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+            email VARCHAR(254) NOT NULL,
+            password_hash VARCHAR(255) NOT NULL,
+            is_active BOOLEAN NOT NULL DEFAULT TRUE,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            CONSTRAINT uq_users_email UNIQUE (email)
+        """,
+        "sqlite": """
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            email VARCHAR(254) NOT NULL,
+            password_hash VARCHAR(255) NOT NULL,
+            is_active BOOLEAN NOT NULL DEFAULT 1,
+            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            CONSTRAINT uq_users_email UNIQUE (email)
+        """,
+    },
+    "user_sessions": {
+        "postgresql": """
+            id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+            user_id INTEGER NOT NULL REFERENCES users(id),
+            token_hash VARCHAR(64) NOT NULL,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            expires_at TIMESTAMPTZ NOT NULL,
+            revoked_at TIMESTAMPTZ,
+            CONSTRAINT uq_user_sessions_token_hash UNIQUE (token_hash)
+        """,
+        "sqlite": """
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL REFERENCES users(id),
+            token_hash VARCHAR(64) NOT NULL,
+            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            expires_at DATETIME NOT NULL,
+            revoked_at DATETIME,
+            CONSTRAINT uq_user_sessions_token_hash UNIQUE (token_hash)
+        """,
+    },
+    "student_profiles": {
+        "postgresql": """
+            id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+            user_id INTEGER NOT NULL REFERENCES users(id),
+            payload JSON NOT NULL DEFAULT '{}'::json,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            CONSTRAINT uq_student_profiles_user UNIQUE (user_id)
+        """,
+        "sqlite": """
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL REFERENCES users(id),
+            payload JSON NOT NULL DEFAULT '{}',
+            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            CONSTRAINT uq_student_profiles_user UNIQUE (user_id)
+        """,
+    },
+    "saved_scholarships": {
+        "postgresql": """
+            id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+            user_id INTEGER NOT NULL REFERENCES users(id),
+            scholarship_id INTEGER NOT NULL REFERENCES scholarships(id),
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            CONSTRAINT uq_saved_scholarships_user_scholarship UNIQUE (user_id, scholarship_id)
+        """,
+        "sqlite": """
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL REFERENCES users(id),
+            scholarship_id INTEGER NOT NULL REFERENCES scholarships(id),
+            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            CONSTRAINT uq_saved_scholarships_user_scholarship UNIQUE (user_id, scholarship_id)
+        """,
+    },
+    "application_records": {
+        "postgresql": """
+            id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+            user_id INTEGER NOT NULL REFERENCES users(id),
+            scholarship_id INTEGER NOT NULL REFERENCES scholarships(id),
+            state VARCHAR(16) NOT NULL DEFAULT 'saved',
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            CONSTRAINT uq_application_records_user_scholarship UNIQUE (user_id, scholarship_id)
+        """,
+        "sqlite": """
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL REFERENCES users(id),
+            scholarship_id INTEGER NOT NULL REFERENCES scholarships(id),
+            state VARCHAR(16) NOT NULL DEFAULT 'saved',
+            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            CONSTRAINT uq_application_records_user_scholarship UNIQUE (user_id, scholarship_id)
+        """,
+    },
 }
 
 REQUIRED_INDEXES = {
     "image_reviews": [
         "ix_image_reviews_scholarship_decision ON image_reviews (scholarship_id, decision)",
         "ix_image_reviews_created_at ON image_reviews (created_at)",
+    ],
+    "users": [
+        "ix_users_email ON users (email)",
+    ],
+    "user_sessions": [
+        "ix_user_sessions_token_hash ON user_sessions (token_hash)",
+        "ix_user_sessions_expires_at ON user_sessions (expires_at)",
+        "ix_user_sessions_user_expires ON user_sessions (user_id, expires_at)",
+    ],
+    "student_profiles": [
+        "ix_student_profiles_user_id ON student_profiles (user_id)",
+    ],
+    "saved_scholarships": [
+        "ix_saved_scholarships_user_created ON saved_scholarships (user_id, created_at)",
+    ],
+    "application_records": [
+        "ix_application_records_user_updated ON application_records (user_id, updated_at)",
+        "ix_application_records_state ON application_records (state)",
     ],
 }
 
