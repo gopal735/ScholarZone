@@ -440,6 +440,37 @@ Production base URL: `https://scholarzone-api-2ee2d.containers.snapdeploy.app`
 
 All `/internal` endpoints require the `X-Verification-Secret` header to match the configured `SCHOLARZONE_VERIFICATION_SECRET`.
 
+### One secret currently guards two different surfaces
+
+`SCHOLARZONE_ADMIN_SECRET` has never been set in production, so `config.py` falls back to it:
+
+```
+admin_secret = SCHOLARZONE_ADMIN_SECRET or SCHOLARZONE_VERIFICATION_SECRET
+```
+
+The practical consequence is that `SCHOLARZONE_VERIFICATION_SECRET` is not only the verification
+credential, it is *also* the entire admin credential — roughly fourteen admin endpoints across the
+admin verification, image review, dashboard and scholarship debug routers authenticate against it.
+Rotating the verification secret therefore rotates the admin login as a side effect, and any operator
+who has memorised the current value is locked out when it changes.
+
+This is recorded rather than fixed, because splitting the two would mean introducing a second
+credential and re-provisioning it across every consumer — a migration with real breakage potential
+for a system that currently works. The recommended follow-up, when it is worth doing deliberately:
+
+1. Set `SCHOLARZONE_ADMIN_SECRET` to its own random value.
+2. Distribute it to the admin operators and to `admin-auth-check.yml`, which already prefers it.
+3. Only then treat the two variables as independent.
+
+Until that happens, treat any change to `SCHOLARZONE_VERIFICATION_SECRET` as a change to both
+credentials at once, and change the value in the Vercel project and the GitHub repository secret
+together — a deployment that serves a new value while either store still holds the old one fails
+closed, which is the correct behaviour but an avoidable outage.
+
+`GET /internal/auth-check` is the deployment gate's credential proof. It is guarded by the same
+`_verify_secret` as the rest of the verification surface and returns a fixed literal, so the gate
+now fails when the secret is wrong instead of passing unconditionally.
+
 ### Trigger responses
 
 | Status | Meaning |
@@ -490,7 +521,7 @@ Outside production the database is seeded on startup from `data/verified_scholar
 | :--- | :---: | :--- |
 | `DATABASE_URL` | Yes | Database URL — PostgreSQL in production, SQLite in dev and test |
 | `ENVIRONMENT` | Yes | `development`, `test`, or `production` |
-| `SCHOLARZONE_VERIFICATION_SECRET` | Yes (production) | Shared secret for verification trigger endpoints |
+| `SCHOLARZONE_VERIFICATION_SECRET` | Yes (production) | Shared secret for verification trigger endpoints, **and** — while `SCHOLARZONE_ADMIN_SECRET` is unset — the admin credential as well. See the coupling note below |
 | `VERIFICATION_SECRET` | Yes | Alias used by the verification router |
 | `ALLOWED_ORIGINS` | No | Comma-separated CORS allowlist |
 | `MIN_IMAGE_DIMENSION` | No | Minimum image dimension in pixels (default 200) |
