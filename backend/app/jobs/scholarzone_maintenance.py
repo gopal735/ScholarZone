@@ -600,6 +600,40 @@ def _preflight() -> tuple:
     return factory, MaintenanceCursorStore, MaintenanceRunRecorder, MAX_WORKERS
 
 
+def _slot_metadata() -> dict:
+    """Logical slot metadata supplied by the dispatcher or the schedule.
+
+    ``SCHOLARZONE_LOGICAL_SOURCE`` is the logical origin and is never inferred
+    from the GitHub event name: an externally dispatched run arrives as
+    ``workflow_dispatch`` but is not a GitHub schedule event, and a manual run
+    must stay distinguishable from both.
+    """
+    import datetime as _dt
+    import os
+
+    from app.services.maintenance_slot import (
+        EXTERNAL_SCHEDULER_DISPATCH,
+        GITHUB_SCHEDULE,
+        resolve_logical_source,
+        slot_id_for,
+    )
+
+    transport = (os.getenv("SCHOLARZONE_TRANSPORT_EVENT") or "").strip() or None
+    supplied = (os.getenv("SCHOLARZONE_LOGICAL_SOURCE") or "").strip() or None
+    logical = resolve_logical_source(supplied, transport)
+
+    slot = (os.getenv("SCHOLARZONE_SLOT_ID") or "").strip() or None
+    if slot is None and logical in (GITHUB_SCHEDULE, EXTERNAL_SCHEDULER_DISPATCH):
+        # Establish only the CURRENT logical slot; no historical slots are
+        # fabricated for a run happening now.
+        slot = slot_id_for(_dt.datetime.now(_dt.timezone.utc))
+    return {
+        "slot_id": slot,
+        "logical_source": logical,
+        "transport_event": transport,
+    }
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -739,7 +773,14 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
         return EXIT_OK
 
     store = CursorStore(factory)
-    recorder = RunRecorder(factory, dry_run=args.dry_run)
+    _meta = _slot_metadata()
+    recorder = RunRecorder(
+        factory,
+        dry_run=args.dry_run,
+        slot_id=_meta["slot_id"],
+        logical_source=_meta["logical_source"],
+        transport_event=_meta["transport_event"],
+    )
     recorder.open()
 
     # Bring the schema up to date before any stage touches a table.

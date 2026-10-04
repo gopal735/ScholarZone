@@ -28,6 +28,7 @@ from .routers.enrichment import router as enrichment_router
 from .routers.auth import router as auth_router
 from .routers.dashboard import router as dashboard_router
 from .routers.applications import router as applications_router
+from .routers.internal_maintenance import router as internal_maintenance_router
 from .routers.mentor import router as mentor_router
 from .services.application_workspace import WorkspaceError
 from .seed import seed_database
@@ -322,6 +323,11 @@ app.include_router(applications_router)
 # dependent on scan order, which is the same discipline the match router uses
 # for /scholarships/match.
 app.include_router(mentor_router)
+
+# The internal dispatcher is mounted last and behind constant-time Cron
+# authentication. It never runs maintenance; it only reconciles, claims
+# and dispatches a logical slot to GitHub Actions.
+app.include_router(internal_maintenance_router)
 
 
 @app.get("/debug/fix-null-lists")

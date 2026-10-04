@@ -30,21 +30,26 @@ on:
     - cron: '7 */12 * * *'
   workflow_dispatch:
     inputs:
-
-      logical_source:
-
-        description: 'Logical origin of this run. Left empty for the normal schedule, which is recorded as github_schedule. A future external dispatcher passes external_scheduler_dispatch explicitly, because a GitHub workflow_dispatch event does NOT imply a manual origin.'
-
+      slot_id:
+        description: 'Durable logical slot this run belongs to, supplied by the external
+          dispatcher. Empty for the normal GitHub schedule.'
         required: false
-
         type: string
-
-      transport_event:
-
-        description: 'What carried the request (schedule, workflow_dispatch, watchdog). Recorded separately from logical_source.'
-
+      dispatch_id:
+        description: 'Correlation id for an external dispatch.'
         required: false
-
+        type: string
+      logical_source:
+        description: 'Logical origin of this run. Empty for the normal schedule, which
+          is recorded as github_schedule. The external dispatcher passes
+          external_scheduler_dispatch explicitly, because a GitHub workflow_dispatch
+          event does NOT imply a manual or scheduled origin.'
+        required: false
+        type: string
+      transport_event:
+        description: 'What carried the request (schedule, workflow_dispatch). Recorded
+          separately from logical_source.'
+        required: false
         type: string
       stage:
         description: 'Stage to run (verify, enrich, images, discover, quarantine, stats, or all)'
