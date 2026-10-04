@@ -173,6 +173,51 @@ class TestAuthentication:
         assert response.status_code == 200
         assert response.json() == {"user": None}
 
+    def test_register_returns_a_body_matching_its_own_content_length(self, client, db):
+        """Regression: a 200 with an empty body reads as a failure.
+
+        This shipped once. The handler built a bare ``Response`` and assigned a
+        body to it afterwards, which left ``content-length: 0`` in the headers.
+        The cookie was set and the account was created, but the browser received
+        nothing, failed to parse the JSON, and reported "could not complete that
+        request" for a request that had in fact succeeded - while the account
+        existed. Asserting the header against the body is the only thing that
+        catches this shape of bug.
+        """
+        response = client.post(
+            "/auth/register", json={"email": "body@example.com", "password": PASSWORD}
+        )
+
+        assert response.status_code == 200
+        declared = response.headers.get("content-length")
+        assert declared is not None, "a JSON response must declare its length"
+        assert int(declared) == len(response.content)
+        assert response.json()["user"]["email"] == "body@example.com"
+
+    def test_login_returns_a_body_matching_its_own_content_length(self, client, db):
+        make_user(db, "loginbody@example.com")
+        response = client.post(
+            "/auth/login", json={"email": "loginbody@example.com", "password": PASSWORD}
+        )
+
+        assert response.status_code == 200
+        assert int(response.headers["content-length"]) == len(response.content)
+        assert response.json()["user"]["email"] == "loginbody@example.com"
+
+    def test_a_conflict_says_so_instead_of_a_generic_failure(self, client, db):
+        """A duplicate registration must name the real reason.
+
+        The form now surfaces the server's wording, so a generic message here
+        would reach the reader verbatim.
+        """
+        make_user(db, "dupe@example.com")
+        response = client.post(
+            "/auth/register", json={"email": "dupe@example.com", "password": PASSWORD}
+        )
+
+        assert response.status_code == 409
+        assert "already exists" in response.json()["detail"].lower()
+
     def test_logout_revokes_the_session_server_side(self, client, db):
         user = make_user(db, "leaver@example.com")
         login(client, "leaver@example.com")

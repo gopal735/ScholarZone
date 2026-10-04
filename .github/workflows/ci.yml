@@ -145,6 +145,10 @@ jobs:
       - name: Run frontend tests
         run: |
           cd frontend
+          # pipefail, not a bare pipe. `npm run test | tee log` reports the exit
+          # status of tee, which is always 0 - so a failing suite would be
+          # reported green, which is exactly what the backend step above does.
+          set -o pipefail
           npm run test 2>&1 | tee vitest.log
 
       - name: Upload test results

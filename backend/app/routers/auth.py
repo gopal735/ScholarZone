@@ -23,6 +23,7 @@ from __future__ import annotations
 from datetime import datetime, timezone
 
 from fastapi import APIRouter, Depends, HTTPException, Request, Response, status
+from fastapi.responses import JSONResponse
 from sqlalchemy import func, select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
@@ -50,14 +51,20 @@ from ..services.auth import (
 router = APIRouter(prefix="/auth", tags=["auth"])
 
 
-def _issue_session(db: Session, user: User) -> Response:
-    """Create a session row and return a Response carrying its cookie.
+def _issue_session(db: Session, user: User, payload: SessionResponse) -> JSONResponse:
+    """Create a session row and return a JSON response carrying its cookie.
 
     The cookie is ``httpOnly`` (invisible to JavaScript, so an injected script
     cannot read the session), ``SameSite=Lax`` (not sent on cross-site POSTs,
     which is what blocks cookie-riding an authenticated request), ``Secure`` in
     production, and ``__Host-`` prefixed so it cannot be read by a subdomain or
     loosened by a ``Domain`` attribute.
+
+    Built as a ``JSONResponse`` rather than by mutating a bare ``Response``: a
+    bare response already carries ``content-length: 0`` in its headers, so
+    assigning a body to it afterwards produces a 200 with an empty payload. The
+    browser then fails to parse the JSON and reports a failure for a request that
+    actually succeeded - which is precisely the bug this shape avoids.
     """
     token = generate_session_token()
     now = datetime.now(timezone.utc)
@@ -71,15 +78,14 @@ def _issue_session(db: Session, user: User) -> Response:
     )
     db.commit()
 
-    secure = request_is_production()
-    response = Response(status_code=status.HTTP_200_OK)
+    response = JSONResponse(content=payload.model_dump(mode="json"), status_code=status.HTTP_200_OK)
     response.set_cookie(
         SESSION_COOKIE_NAME,
         token,
         max_age=SESSION_TTL_DAYS * 24 * 60 * 60,
         httponly=True,
         samesite="lax",
-        secure=secure,
+        secure=request_is_production(),
         path="/",
     )
     return response
@@ -124,10 +130,7 @@ def register(payload: RegisterRequest, db: Session = Depends(get_db)) -> Respons
 
     # Registration signs the student in, because making them type the password
     # they just chose a second time is friction with no security benefit.
-    response = _issue_session(db, user)
-    response.body = SessionResponse(user=_public(user)).model_dump_json().encode("utf-8")
-    response.media_type = "application/json"
-    return response
+    return _issue_session(db, user, SessionResponse(user=_public(user)))
 
 
 @router.post("/login", response_model=SessionResponse)
@@ -158,10 +161,7 @@ def login(payload: LoginRequest, db: Session = Depends(get_db)) -> Response:
             detail="That email and password combination was not recognised.",
         )
 
-    response = _issue_session(db, user)
-    response.body = SessionResponse(user=_public(user)).model_dump_json().encode("utf-8")
-    response.media_type = "application/json"
-    return response
+    return _issue_session(db, user, SessionResponse(user=_public(user)))
 
 
 @router.get("/session", response_model=SessionResponse)
