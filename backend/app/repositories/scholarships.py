@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 from ..core.config import get_settings
 from ..models import Scholarship
 from ..schemas import ScholarshipQuery, ScholarshipSort
+from ..verification_contract import AUTHORITATIVE_VERIFIED_STATUS
 
 
 def _normalise_optional_filter(value: str | None) -> str | None:
@@ -31,6 +32,9 @@ def public_visibility_conditions() -> list:
 
     The states are kept deliberately distinct:
 
+    * ``verification_status`` is authoritative: only ``active`` may be published.
+      ``is_verified`` is legacy bookkeeping and cannot admit a record whose
+      verification is still unresolved.
     * ``is_verified`` is about the *scholarship* being trustworthy.
     * ``image_verified_at`` is about an *official* image having passed
       validation.
@@ -53,7 +57,20 @@ def public_visibility_conditions() -> list:
     ]
 
     if settings.public_require_verified:
-        conditions.append(Scholarship.is_verified.is_(True))
+        # The authoritative status, not the legacy boolean. `is_verified` is
+        # internal bookkeeping and Match evidence scoring; it is never the
+        # authority for a public claim. Gating on it let a record whose
+        # verification was still unresolved - `needs_review` - satisfy the
+        # predicate on the strength of a stale True and be published as a
+        # verified opportunity.
+        #
+        # This replaces the legacy gate rather than being added beside it:
+        # requiring both would keep hiding records whose verification *is*
+        # resolved whenever the bookkeeping column disagrees, which is the same
+        # class of bug in the opposite direction.
+        conditions.append(
+            Scholarship.verification_status == AUTHORITATIVE_VERIFIED_STATUS
+        )
 
     if settings.public_require_verified_image:
         conditions.append(Scholarship.image_url.isnot(None))
