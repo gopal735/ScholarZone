@@ -55,6 +55,23 @@ function EvidenceChip({ entry }) {
           Open this scholarship
         </Link>
       ) : null}
+          {/*
+            The official page the figure was taken from. It is rendered only when the
+            server sent one, so a missing source shows nothing rather than a dead or
+            invented link - which is what lets the "Verified" badge beside it mean
+            something a reader can check.
+          */}
+          {entry.source_url ? (
+            <a
+              className="mentor-evidence__link mentor-evidence__link--source"
+              href={entry.source_url}
+              target="_blank"
+              rel="noreferrer noopener"
+              data-testid="mentor-evidence-source"
+            >
+              Official source
+            </a>
+          ) : null}
     </li>
   )
 }
