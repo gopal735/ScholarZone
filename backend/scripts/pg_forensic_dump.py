@@ -65,6 +65,10 @@ def safe(c, label, sql, params=None, show=40):
         return rows
     except Exception as exc:
         print(f"  [{label}] ERROR {type(exc).__name__}: {str(exc).splitlines()[0]}")
+        try:
+            c.rollback()
+        except Exception:
+            pass
         return []
 
 
@@ -304,7 +308,9 @@ def main() -> int:
     if engine.dialect.name != "postgresql":
         print(f"  NOT PRODUCTION: dialect is {engine.dialect.name}")
         return 1
-    with engine.connect() as c:
+    # AUTOCOMMIT: this script only ever runs SELECTs, and one failed catalog
+    # query must not abort the transaction and hide every later section.
+    with engine.connect().execution_options(isolation_level="AUTOCOMMIT") as c:
         phase_a_trigger_inventory(c)
         phase_b_functions(c)
         phase_c_ownership_grants(c)
