@@ -127,9 +127,16 @@ def _unknown_from_context(context: MentorContext) -> list[str]:
 
     for item in context.applications:
         if not item.progress_is_measured:
+            # Careful wording. The dashboard's application list publishes no
+            # progress figure, so when a question does not name a specific
+            # application this context has simply not read its checklist. Saying
+            # the application "has no counted checklist" would be a claim about
+            # the student's record that nothing here checked - and in this very
+            # product the same application can be at 40% when asked about
+            # directly. What is true is that this answer does not carry it.
             unknown.append(
-                f"{item.name}: this application has no counted checklist, so no "
-                "progress figure is claimed."
+                f"{item.name}: checklist progress is not included in this answer; "
+                "open the workspace for the counted tasks."
             )
         if not item.is_listed:
             unknown.append(

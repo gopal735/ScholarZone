@@ -3,9 +3,8 @@
 | | |
 | --- | --- |
 | Feature branch | `grounded-mentor` |
-| Commits | `5416914` (feature), `c3aefad` (browser-found defects), `a1f214b` (merge of concurrent `origin/master`) |
-| `origin/master` at time of writing | `a1f214b` |
-| Deployed production revision | `c405b49bb8b9` — **does not contain the mentor** (deployment deliberately held, see §19) |
+| Commits | `5416914` (feature), `c3aefad` (browser-found defects), `a1f214b` (merge), `3ee434c` (reports), `f4c…` (final wording fix) |
+| Deployed production revision | **`3ee434c` — the mentor is live** (see §19) |
 | Architecture audit | `GROUNDed_AI_MENTOR_ARCHITECTURE_AUDIT.md` |
 | Security report | `GROUNDed_AI_MENTOR_SECURITY_FINAL.md` |
 | Database migration | **none** — no table, no column, no index |
@@ -542,51 +541,105 @@ is to hoist the engine result rather than to add a second one.
 
 ## 19. Production deployment
 
-**NOT DEPLOYED TO VERCEL — by explicit decision.**
+**LIVE.** Production revision **`3ee434c`**, which contains the feature, all six
+browser-found fixes, and the merge of the concurrent image track.
 
-| | |
+**OBSERVED FACT.** There is **no automated Vercel deploy workflow**; production
+deploys are manual and another workstream has been driving them. I did not run
+`vercel --prod`.
+
+**Why that mattered.** Two commits from the image track landed on `master` after
+mine (`9ff021b` do_logos, `3bf92b6` ingestion), touching
+`scholarzone_maintenance.py` and `scholarship_ingestion.py` — the systems this
+brief forbids me from touching. Deploying myself would have published their
+unreviewed commits to production alongside mine.
+
+**PROVEN — I stopped rather than decided unilaterally.** I escalated, and the
+decision was to hold the deploy and prove the feature locally first (§17). A
+deploy then landed from the normal process, carrying my commits. The escalation
+cost some time and prevented an unreviewed release; that is the trade I would
+make again.
+
+**Verified against production, revision `3ee434c`:**
+
+| Check | Result |
 | --- | --- |
-| `origin/master` | `a1f214b` (contains the mentor) |
-| Deployed production | `c405b49bb8b9` (**does not**) |
-| `GET /api/mentor/overview` on production | **404** |
-| `GET /api/scholarships/stats` on production | 200 (control) |
-
-**OBSERVED FACT.** There is **no automated Vercel deploy workflow**. Production
-deploys are manual, and another workstream (the image investigation) has been
-driving them.
-
-**OBSERVED FACT.** Two commits from that track landed on `master` after mine
-(`9ff021b` do_logos, `3bf92b6` ingestion), touching `scholarzone_maintenance.py`
-and `scholarship_ingestion.py` — the systems this brief forbids me from touching.
-
-Deploying would therefore have published their unreviewed commits to production
-alongside mine. I stopped and asked rather than deciding unilaterally; the
-decision was **hold the deploy and prove the feature locally first**. That is
-what §17 is.
-
-**PROVEN.** GitHub Actions *did* deploy the frontend for my commit to GitHub
-Pages. **Risk to flag:** that build sets
-`VITE_API_BASE_URL: ${{ vars.SCHOLARZONE_API_URL }}`, i.e. the Vercel API, which
-does not yet have `/mentor`. The Mentor nav link on the Pages build will reach a
-404. The page degrades safely — a failed overview still renders the composer, and
-a failed question renders a retry — but the link is not yet functional there. This
-resolves itself when the mentor is deployed to Vercel.
+| `GET /api/health` | `{"status":"ok","revision":"3ee434c01f53"}` |
+| `GET /api/mentor/overview` | **200** — 11 intents, `max_message_length` 2000, `assistance_available: false` |
+| `POST /api/mentor/message` signed out | **401** |
+| `GET /api/dashboard` signed out | **401** |
+| `GET /api/applications` signed out | **401** |
+| `GET /api/scholarships/stats` | **200** |
+| `/mentor` signed out | h1 *Mentor*, sign-in state, `noindex, nofollow`, **0 console errors** |
 
 ---
 
 ## 20. Production verification
 
-Deferred with the deployment. What *was* verified against production, so the
-baseline is known:
+Full journey run in a real browser against production, on real catalogue data
+(KAIST, Padua, Wallonia-Brussels) with two real accounts.
 
-- `GET /api/health` → `{"status":"ok","revision":"c405b49bb8b9"}`
-- `GET /api/mentor/overview` → **404**, confirming the route is absent and not
-  half-deployed
-- `GET /api/scholarships/stats` → 200, confirming the API is otherwise healthy
+| # | Step | Result |
+| --- | --- | --- |
+| 1 | register through the real form | session established |
+| 2 | set profile | 200; **24 matches**, all `ELIGIBLE` |
+| 3 | save + start an application | application **10**, 6-item checklist, **40%** progress |
+| 4 | open `/mentor` | nav link present, `noindex`, 0 console errors |
+| 5 | ask *"What should I finish in application 10?"* | **Application Workspace evidence leads** — state, outcome, deadline, 40% progress, next task |
+| 6 | evidence carries its basis | `Application Workspace`, `ScholarZone catalogue`, `Match 2.0` |
+| 7 | ask about deadlines | KAIST reported as nearest measurable date |
+| 8 | UNKNOWN deadline | *"No published deadline to count down to."* — never 0 |
+| 9 | unsupported question | *General guidance*, **0 evidence**, 5 redirects |
+| 10 | prompt injection | invented id **999999 absent**; both notes present |
+| 11 | private note `PROD-PRIVATE-NOTE-77` | **not leaked** |
+| 12 | `"0 days left"` anywhere | **false** |
+| 13 | console errors | **0** |
 
-**UNKNOWN.** Exact production mentor behaviour, until deployed. What is
-**PROVEN** is that the same commit runs correctly against a real HTTP server, a
-real database and a real browser.
+### Real-data behaviour worth recording
+
+**PROVEN.** KAIST is stored with `deadline_precision: "unknown"` and 18 days to
+run. The mentor renders it as *"About 18 days left. The published date is not
+recorded to the day, so treat this as a guide."* — not *"18 days left."* This is
+the precision-honesty rule working against production data rather than a fixture.
+
+**PROVEN.** Padua is `varies` with no measurable date and renders *"No published
+deadline to count down to."*
+
+**PROVEN.** Funding renders as *"Full funding."* and *"Tuition and living costs."*
+— the bare `UNKNOWN` enum token no longer reaches a reader.
+
+**PROVEN.** The single next action was *"Decide on KAIST Scholarship…"*, band 50 —
+the dashboard's own `review_deadline` rule, reused rather than re-invented.
+
+**PROVEN.** The unknown list collapsed repeated gaps into one line: *"Funding
+coverage has not been established from the catalogue for 2 of the records above."*
+
+### A seventh defect, found only in production
+
+The production run exposed one more wording bug, and it was the same class as the
+most important defect in this report: **a plausible sentence about the student's
+own record that nothing had checked.** For questions that do not name an
+application, the answer said *"this application has no counted checklist"* — but
+the context had simply not read the checklist. The same KAIST application reads
+**40%** when asked about directly. It now says what is true: *checklist progress is
+not included in this answer; open the workspace for the counted tasks.*
+
+### Two methodology notes, recorded because both nearly became false reports
+
+1. **The register form appeared broken and was not.** Filling it produced no
+   request at all. The cause was my own test input: the form requires *"at least 8
+   characters, including a number"* and every password I had used had no digit.
+   The API, which does not enforce the same rule, had accepted them — which is
+   what made it look like a frontend defect. With a compliant password the form
+   worked immediately. **No product defect; my input was invalid.**
+2. **One E2E run produced off-by-one answers.** My helper waited for an answer
+   element that was already on screen from the previous question, so each result
+   was shifted by one. The application was fine; the harness was not. Fixed by
+   navigating fresh per question.
+
+Both are recorded because the alternative — reporting a "critical auth bug" or a
+"misleading injection result" that did not exist — would have been worse than
+slower verification.
 
 ---
 
@@ -594,18 +647,20 @@ real database and a real browser.
 
 **This feature:**
 
-1. **Not in production.** See §19.
-2. **No conversation is kept.** By design. Asking again is the only way to see an
+1. **No conversation is kept.** By design. Asking again is the only way to see an
    answer again.
-3. **Evidence is capped at 10 chips.** The response does not currently say it was
+2. **Evidence is capped at 10 chips.** The response does not currently say it was
    truncated.
-4. **Only the student's own matched, saved and tracked records are in scope.** The
+3. **Only the student's own matched, saved and tracked records are in scope.** The
    mentor will not enumerate the catalogue, so a question about an untracked
    scholarship that the profile never matched gets only what it can evaluate.
-5. **The rate limiter is in-process and per-instance.** Honest about its limits on
+4. **The rate limiter is in-process and per-instance.** Honest about its limits on
    a serverless fleet; not fleet-wide.
-6. **No streaming.** One complete response. A partial answer arriving before its
+5. **No streaming.** One complete response. A partial answer arriving before its
    evidence would be worse than a short wait.
+6. **The production deploy carrying the final wording fix has not happened yet.**
+   Production runs `3ee434c`; the wording fix in §20 is committed but not yet
+   deployed. The affected sentence is a *what is not known* line, not a fact.
 
 **Pre-existing, found during the audit, deliberately not fixed** (outside scope;
 each is a one-line report to whoever owns it):
@@ -631,29 +686,32 @@ each is a one-line report to whoever owns it):
     radius is already minimal. Changing the auth posture for every existing
     endpoint in the same change as a new feature is the destabilisation the brief
     warns against. Recommended as a separate minimal change.
-14. **`1 failed` CI run.** My commit's `ScholarZone CI` run was **cancelled**, not
-    passed — most likely by the concurrent track's push against a shared
-    concurrency group. I verified the equivalent locally instead (§15), but the
-    hosted CI signal for `5416914` is missing.
-15. **Two audit reports contained verified errors** (§2). Treated as untrusted
+14. **No automated Vercel deploy workflow.** Production deploys are manual, which
+    is why the deploy decision had to be escalated rather than left to CI.
+15. **`ScholarZone CI` was cancelled for `5416914`**, most likely by the concurrent
+    track's push against a shared concurrency group, so the hosted CI signal for
+    that commit is missing. Verified locally instead (§15).
+16. **Two audit reports contained verified errors** (§2). Treated as untrusted
     input and re-derived from source.
 
 ---
 
 ## 22. Future improvements
 
-1. **Deploy**, then re-run §17's E2E against production.
-2. **Global minimal CSRF hardening** as its own change (§21.13).
-3. **Conversation history**, only if it is genuinely needed — user-scoped,
-   bounded, deletable, never in a catalogue payload, and it would need a migration.
-4. **Streaming**, with the evidence arriving before the prose so a partial answer
-   is never read as a complete one.
-5. **A provider**, if a credential is added. That requires the maintainers to
-   decide about the two guard tests first (§8) — deliberately left to them.
-6. **Fix the visibility bypass** (§21.7). Highest-value item on this list and it
+1. **Deploy the final wording fix** (§21.6).
+2. **Fix the visibility bypass** (§21.7). Highest-value item on this list and it
    belongs to the catalogue, not to the mentor.
+3. **Global minimal CSRF hardening** as its own change (§21.13).
+4. **Conversation history**, only if it is genuinely needed — user-scoped,
+   bounded, deletable, never in a catalogue payload, and it would need a migration.
+5. **Streaming**, with the evidence arriving before the prose so a partial answer
+   is never read as a complete one.
+6. **A provider**, if a credential is added. That requires the maintainers to
+   decide about the two guard tests first (§8) — deliberately left to them.
 7. **Measure mentor latency at production catalogue size** and hoist the Match
    engine result if the inherited double run is felt (§18).
 8. **Fleet-wide rate limiting**, if the mentor ever fronts a paid provider.
-9. **Say so when evidence is truncated** (§21.3).
+9. **Say so when evidence is truncated** (§21.2).
 10. **Unify the three deadline thresholds** (§21.11).
+11. **An automated deploy workflow**, so releases are not dependent on whoever is
+    driving Vercel at the time.

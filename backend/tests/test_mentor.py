@@ -1162,10 +1162,44 @@ class TestEvidenceBudget:
             ).json()
             labels = {entry["label"] for entry in body["known"]}
             assert "Tasks completed" in labels
-            # A measured progress figure must not also be reported as unknown.
+            # A measured progress figure must not also be disclaimed - and the
+            # disclaimer must not assert the application lacks a checklist, which
+            # is a claim about the student's record that nothing here checked.
             assert not any(
-                "no counted checklist" in item for item in body["unknown"]
+                "not included in this answer" in item or "no counted checklist" in item
+                for item in body["unknown"]
             )
+
+    def test_progress_is_disclaimed_only_when_this_answer_did_not_read_it(
+        self, client, db
+    ):
+        """The wording must be true.
+
+        A question that does not name an application never reads its checklist, so
+        the honest statement is that *this answer* does not carry the figure - not
+        that the application has no counted tasks. In this product the same
+        application can be at 40% when asked about directly.
+        """
+        user = make_user(db, "mentor-budget3@example.com")
+        give_profile(db, user)
+        tracked = make_scholarship(db, title="Progress Wording Scholarship")
+        login(client, user.email)
+        created = client.post(
+            "/api/applications", json={"scholarship_id": tracked.id}
+        ).json()
+        detail = client.get(f"/api/applications/{created['id']}").json()
+        if detail.get("progress_percent") is None:
+            pytest.skip("fixture produced no counted checklist")
+
+        body = ask(client, "What should I do now?").json()
+        progress_lines = [
+            i for i in body["unknown"]
+            if "checklist progress" in i and "Progress Wording" in i
+        ]
+        assert progress_lines, "the gap must be named, not omitted"
+        assert "not included in this answer" in progress_lines[0]
+        # It must not claim the record itself lacks a checklist.
+        assert "no counted checklist" not in progress_lines[0]
 
 
 class TestUnknownConsolidation:

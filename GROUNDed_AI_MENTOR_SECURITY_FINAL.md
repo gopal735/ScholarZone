@@ -204,7 +204,18 @@ unqualified day count. A count with no recorded precision is qualified even thou
 it is numerically correct, because presenting it as exact would be a claim the
 catalogue does not support. This was found in the browser: `ApplicationItem`
 publishes a count with no precision beside it, so one scholarship rendered once
-qualified and once as *"42 days left."*
+qualified and once as *"42 days left."* In production, KAIST is stored with
+`deadline_precision: "unknown"` and 18 days remaining, and renders as *"About 18
+days left. The published date is not recorded to the day, so treat this as a
+guide."*
+
+**A seventh defect, found only in production.** For questions that do not name an
+application, the answer stated *"this application has no counted checklist"* — a
+claim about the student's record that nothing in the request had checked, and
+demonstrably false: the same KAIST application reads **40%** when asked about
+directly. It now says what is true: that this answer does not carry the figure.
+Recorded because it is the exact failure mode this feature exists to prevent, and
+it survived every unit test.
 
 ---
 
@@ -272,22 +283,32 @@ latency.
 
 ## 12. Deployment status
 
-**Not deployed to Vercel**, by explicit decision. `origin/master` is `a1f214b`;
-production runs `c405b49bb8b9`; `GET /api/mentor/overview` returns **404** while
-`/api/scholarships/stats` returns 200.
+**LIVE.** Production revision **`3ee434c`**, verified: `/api/mentor/overview`
+returns 200 with 11 intents, signed-out `POST /api/mentor/message` returns 401, and
+`/api/dashboard` and `/api/applications` both return 401 when unauthenticated.
 
-**Reason.** There is no automated Vercel deploy workflow, and two commits from
-the concurrent image track landed on `master` after mine, touching the systems
-this brief forbids me from touching. Deploying would have published their
-unreviewed work alongside mine. The choice was escalated rather than made
-unilaterally; the decision was to prove the feature locally first.
+**Reason I did not deploy it myself.** There is no automated Vercel deploy
+workflow, and two commits from the concurrent image track had landed on `master`
+after mine, touching the systems this brief forbids me from touching. Deploying
+would have published their unreviewed work alongside mine. The decision was
+escalated rather than made unilaterally, and a deploy then landed from the normal
+process carrying my commits.
 
-**Flagged risk.** GitHub Actions *did* deploy the frontend to GitHub Pages, and
-that build points `VITE_API_BASE_URL` at the Vercel API — which has no
-`/mentor`. The Mentor link on the Pages build reaches a 404 until the mentor is
-deployed. The page degrades safely (a failed overview still renders the composer;
-a failed question renders a retry) but the link is not functional there. This
-resolves when the mentor reaches Vercel.
+**One commit is not yet deployed.** A final wording fix (§13, found by the
+production run) is committed but not yet in `3ee434c`. It changes a *what is not
+known* line only, not a fact, and it makes the mentor less likely to state
+something unverified.
+
+**Security-relevant production results**, from a real browser against real data:
+
+| Probe | Result |
+| --- | --- |
+| Private note planted on an application | **not present** in any mentor answer |
+| Invented scholarship id in an injection attempt | **absent** |
+| `"0 days left"` on an unmeasurable deadline | **never appears** |
+| Unverified record described as official | no |
+| Cross-origin POST | refused |
+| Console errors | **0** |
 
 ---
 
