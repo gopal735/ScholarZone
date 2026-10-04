@@ -1,0 +1,53 @@
+name: Admin Verification Read Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-admin-read:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Authorized admin read
+        env:
+          ADMIN_SECRET: ${{ secrets.SCHOLARZONE_ADMIN_SECRET }}
+          VERIFICATION_SECRET: ${{ secrets.SCHOLARZONE_VERIFICATION_SECRET }}
+        run: |
+          SECRET="${ADMIN_SECRET:-$VERIFICATION_SECRET}"
+
+          if [ -z "$SECRET" ]; then
+            echo "ERROR: No admin verification secret is configured."
+            exit 1
+          fi
+
+          echo "Testing authorized admin read..."
+          STATUS=$(curl -sS -o response.json -w "%{http_code}" \
+            -H "X-Admin-Secret: $SECRET" \
+            "https://scholarzone-fwzj.vercel.app/api/admin/verification/summary")
+
+          echo "Authorized status: $STATUS"
+
+          if [ "$STATUS" != "200" ]; then
+            echo "ERROR: Authorized admin request did not return 200."
+            cat response.json
+            exit 1
+          fi
+
+          echo "AUTHORIZED ADMIN READ: PASS"
+          echo "Response:"
+          cat response.json
+
+      - name: Verify anonymous access is blocked
+        run: |
+          STATUS=$(curl -sS -o anonymous.json -w "%{http_code}" \
+            "https://scholarzone-fwzj.vercel.app/api/admin/verification/summary")
+
+          echo "Anonymous status: $STATUS"
+
+          if [ "$STATUS" != "401" ]; then
+            echo "ERROR: Anonymous request should return 401."
+            cat anonymous.json
+            exit 1
+          fi
+
+          echo "ANONYMOUS ACCESS: PASS"
