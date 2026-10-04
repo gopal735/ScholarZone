@@ -14,9 +14,11 @@ import sys
 # The application package lives one level up from this script.
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from sqlalchemy import text  # noqa: E402
+from sqlalchemy import func, select, text  # noqa: E402
 
 from app.database import get_engine  # noqa: E402
+from app.models import Scholarship  # noqa: E402
+from app.repositories.scholarships import public_visibility_conditions  # noqa: E402
 
 TARGET_IDS = (14, 130, 554)
 
@@ -67,11 +69,16 @@ def main() -> int:
         storage = c.execute(text("SELECT count(*) FROM scholarships")).scalar()
         print(f"  4. storage count: {storage}")
 
+        # The public count is measured with the application's own predicate
+        # rather than a second copy of the rule written here. A hand-written
+        # approximation is how a report ends up quoting a public total the
+        # directory contradicts.
         public = c.execute(
-            text("SELECT count(*) FROM scholarships WHERE is_archived IS NOT TRUE "
-                 "AND verification_status = 'active'")
+            select(func.count()).select_from(Scholarship).where(
+                *public_visibility_conditions()
+            )
         ).scalar()
-        print(f"  5. public count: {public}")
+        print(f"  5. public count (canonical predicate): {public}")
 
         withimg = c.execute(
             text("SELECT count(*) FROM scholarships WHERE image_url IS NOT NULL")
@@ -96,19 +103,26 @@ def main() -> int:
                   f"status={r['verification_status']}")
 
         print("  8. Match/Count/Stats invariants:")
-        stats = c.execute(
-            text("SELECT count(*) FROM scholarships WHERE is_archived IS NOT TRUE")
-        ).scalar()
-        print(f"     non-archived rows: {stats}")
+        storage = c.execute(text("SELECT count(*) FROM scholarships")).scalar()
+        print(f"     storage rows: {storage}")
         archived = c.execute(
             text("SELECT count(*) FROM scholarships WHERE is_archived IS TRUE")
         ).scalar()
         print(f"     archived rows: {archived}")
-        needs = c.execute(
-            text("SELECT count(*) FROM scholarships WHERE is_archived IS NOT TRUE "
-                 "AND verification_status <> 'active'")
+        non_archived = storage - archived
+        print(f"     non-archived rows: {non_archived}")
+
+        # Every record the predicate admits must be 'active'. A non-active
+        # record that is still counted publicly would mean the trust fix
+        # regressed.
+        leaked = c.execute(
+            select(func.count()).select_from(Scholarship).where(
+                Scholarship.is_archived.is_(False),
+                Scholarship.verification_status != "active",
+                *public_visibility_conditions(),
+            )
         ).scalar()
-        print(f"     public non-active: {needs} (expected 0)")
+        print(f"     public records not 'active': {leaked} (expected 0)")
 
     return 0
 
