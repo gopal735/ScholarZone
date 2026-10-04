@@ -52,8 +52,9 @@ def main() -> int:
         print("  guards present on the audit table:")
         for trg, definition in conn.execute(text(
             "SELECT tgname, pg_get_triggerdef(oid) FROM pg_trigger "
-            "WHERE tgrelid = :t::regclass AND NOT tgisinternal ORDER BY tgname"
-        ), {"t": AUDIT}):
+            "WHERE tgrelid = '" + AUDIT + "'::regclass AND NOT tgisinternal "
+            "ORDER BY tgname"
+        )):
             fires = "ROW" if "FOR EACH ROW" in definition else "STATEMENT"
             when = "BEFORE" if definition.strip().startswith("BEFORE") else "AFTER"
             print(f"    {trg}: {when} {fires}")
