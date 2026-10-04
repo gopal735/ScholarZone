@@ -336,9 +336,10 @@ something unverified.
 | Archived/hidden record never offered | API test | **PROVEN** |
 | Unverified never called official | API test | **PROVEN** |
 
-**77 mentor tests pass. Full suite: 4929 passed / 9 failed / 1 error, identical to
-the pre-feature baseline of 4852 passed / 9 failed / 1 error — +77, zero
-regressions.**
+**78 mentor tests pass. Full suite: 4967 passed / 8 failed / 1 error, against a
+pre-feature baseline of 4852 passed / 9 failed / 1 error. The 8 remaining
+failures are a strict subset of the baseline 9 — all in `test_neon_migration.py`,
+which needs an untracked fixture file. Zero new failures, zero regressions.**
 
 ---
 

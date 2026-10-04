@@ -374,7 +374,7 @@ Mobile input font `16px` (the iOS zoom guard).
 
 ## 15. Backend tests
 
-**77 mentor tests, all passing.** Organised around refusals rather than features,
+**78 mentor tests, all passing.** Organised around refusals rather than features,
 because the plausible regression is always "fill the gap with a zero".
 
 | Area | Covers |
@@ -415,20 +415,26 @@ with `as_of` as the thing that pins a measurement.
 
 Captured in a **clean detached worktree at `c405b49`**, before any feature change.
 
-| | Baseline (`c405b49`) | With mentor | Delta |
+| | Baseline (`c405b49`) | Final (`27047de`) | Delta |
 | --- | --- | --- | --- |
-| passed | 4852 | **4929** | **+77** |
-| failed | 9 | 9 | 0 |
+| passed | 4852 | **4967** | **+115** |
+| failed | 9 | **8** | **−1** |
 | skipped | 11 | 11 | 0 |
 | errors | 1 | 1 | 0 |
 | warnings | 13 | 13 | 0 |
 
-The 9 failures and 1 error are **pre-existing and environmental**, verified
-identical by name:
+**PROVEN: zero new failures.** The 8 remaining failures are a strict **subset**
+of the baseline 9 — verified by name, all in `test_neon_migration.py`, which
+requires the untracked `migration_export.sql`. The baseline's ninth failure,
+`test_image_constant_loading.py::...::test_no_stats_unrelated_vocabulary_binding_was_left_behind`,
+now **passes**: it was fixed by the concurrent image track's commits, which are
+ancestors of the final revision.
 
-- `test_image_constant_loading.py::...::test_no_stats_unrelated_vocabulary_binding_was_left_behind` (1)
-- `test_neon_migration.py` (8) — these require the untracked `migration_export.sql`
-- `ERROR scripts/artifact_smoke_test.py::test_endpoint` (1)
+The +115 passing is 78 mentor tests plus the image track's own new tests, which
+came in through the merge rather than from this work.
+
+**The 1 error** is `scripts/artifact_smoke_test.py::test_endpoint`, pre-existing
+and unrelated.
 
 No existing test was altered, skipped or weakened. The four AI-dependency guard
 tests were re-run after the merge and **all pass**.
