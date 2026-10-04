@@ -58,6 +58,9 @@ from .official_source_fetcher import (
 )
 from .supervisor_coverage import ensure_coverage_row, recompute_coverage
 from .supervisor_freshness import CONTACT_REFRESH_DAYS, next_check_at
+from .supervisor_jsdetect import classify_shell, looks_like_directory_listing
+from .supervisor_render import render_blocking
+from .supervisor_source import RenderBudget, RenderErrorKind, SourceOutcome
 from .supervisor_person import (
     academic_role_in,
     classify_person_candidate,
@@ -911,6 +914,188 @@ def _verification_status_for(candidate: FacultyCandidate) -> str:
     )
 
 
+def _persist_candidates(
+    db,
+    scholarship: Scholarship,
+    candidates: list[FacultyCandidate],
+    *,
+    faculty_url: str,
+    institution_name: str,
+    directory_html: str | None,
+    http_status: int | None,
+    discovery_path: str,
+) -> int:
+    """Store the candidates that earned a role, and return how many.
+
+    The single write path for both tiers. Having one is the point: a rendered page
+    and a server-rendered page reach the same storage gate, the same unique
+    constraints and the same evidence records, so rendering cannot buy a weaker
+    standard or a duplicate row.
+    """
+    stored = 0
+    directory_text = ""
+    if directory_html:
+        # Imported here, as elsewhere in this module: the parser is only needed on
+        # the path that actually has HTML to parse.
+        from bs4 import BeautifulSoup
+
+        directory_text = BeautifulSoup(directory_html[:MAX_HTML_BYTES], "html.parser").get_text(
+            " ", strip=True
+        )
+
+    for candidate in candidates:
+        # Storage gate. A professor row requires an academic role stated by the
+        # institution, on the listing or on the profile. Directory structure alone
+        # identifies a candidate to check; it does not identify a professor, and it
+        # cannot tell a person from a call to action - `/people/apply-now` and
+        # `/people/ada-lovelace` are the same shape. Dropping here means an
+        # unevidenced row is never created, rather than created and then hidden.
+        if not candidate.has_role_evidence:
+            logger.info(
+                "Skipping candidate without a stated academic role: %s (%s)",
+                candidate.name,
+                candidate.profile_url,
+            )
+            continue
+
+        professor = upsert_professor(
+            db,
+            candidate,
+            institution_name=institution_name,
+            source_type=str(SourceType.OFFICIAL_DEPARTMENT_PAGE),
+        )
+        link = upsert_link(
+            db,
+            scholarship,
+            professor,
+            relationship_type=str(ProfessorRelationshipType.POTENTIAL_SUPERVISOR),
+            evidence_url=faculty_url,
+            evidence_type=str(SourceType.OFFICIAL_DEPARTMENT_PAGE),
+            summary=candidate.evidence_summary,
+            verification_status=_verification_status_for(candidate),
+        )
+        record_evidence(
+            db,
+            professor,
+            source_url=faculty_url,
+            source_type=str(SourceType.OFFICIAL_DEPARTMENT_PAGE),
+            # Mirrors the link's own status rather than asserting VERIFIED, so the
+            # evidence row can never claim more than the relationship it supports.
+            verification_status=_verification_status_for(candidate),
+            summary=candidate.evidence_summary,
+            content=directory_html,
+            link_id=link.id,
+            scholarship_id=scholarship.id,
+            http_status=http_status,
+        )
+        record_availability(
+            db,
+            professor,
+            scope=str(AvailabilityScope.MASTERS_SUPERVISION),
+            state=_derive_availability(directory_text),
+            source_url=faculty_url,
+        )
+        stored += 1
+
+    return stored
+
+
+def _attempt_render_for_shells(
+    db,
+    scholarship: Scholarship,
+    faculty_pages: list[tuple[str, str]],
+    seed_host: str,
+    budget: RenderBudget,
+) -> tuple[str | None, str]:
+    """Try to read a client-side directory with the bounded renderer.
+
+    Returns ``(status, summary)`` where ``status`` is ``None`` when at least one
+    professor was extracted - the caller then falls through to the normal coverage
+    recompute - or the inconclusive status to record when it was not.
+
+    Every exit from this function is inconclusive or a success. There is no path
+    that returns a negative, because rendering failure cannot establish that a
+    university employs nobody.
+    """
+    shells: list[str] = []
+    rendered_reasons: list[str] = []
+    for faculty_url, _ in faculty_pages:
+        page = polite_fetch(faculty_url)
+        if not _readable(page):
+            continue
+        verdict = classify_shell(page.content or "")
+        if verdict.needs_more_than_static:
+            shells.append(faculty_url)
+            if verdict.is_shell:
+                rendered_reasons.append(f"{faculty_url}: {verdict.reason}")
+            else:
+                rendered_reasons.append(f"{faculty_url}: the response carried no readable content")
+
+    if not shells:
+        # Either the static read answered, or it was a genuine negative. Either
+        # way this function has nothing to add.
+        return None, ""
+
+    logger.info(
+        "Static tier read %s client-side shell(s) for scholarship %s; one bounded render each",
+        len(shells),
+        scholarship.id,
+    )
+
+    for faculty_url in shells[: budget.max_pages]:
+        observation = render_blocking(
+            faculty_url,
+            budget=budget,
+            seed_host=seed_host,
+            max_scroll_iterations=budget.max_scroll_iterations,
+        )
+
+        if observation.outcome == SourceOutcome.SOURCE_BLOCKED:
+            # A login wall or an anti-bot challenge. We stop, permanently, for this
+            # source. No credential is used and no barrier is attempted.
+            return (
+                str(SupervisorCoverageStatus.SOURCE_BLOCKED),
+                f"Rendering was refused for {observation.url}: "
+                f"{observation.error_kind or 'access barrier'}. Not attempted.",
+            )
+
+        if observation.outcome != SourceOutcome.SUCCESS or not observation.html:
+            continue
+
+        rendered_html = observation.html or ""
+        candidates = extract_faculty_candidates(rendered_html, faculty_url, seed_host)
+        if not candidates and not looks_like_directory_listing(rendered_html):
+            # Rendered cleanly and is not a directory. Nothing to record.
+            continue
+
+        stored = _persist_candidates(
+            db,
+            scholarship,
+            candidates,
+            faculty_url=faculty_url,
+            institution_name=_institution_name(scholarship, seed_host),
+            directory_html=rendered_html,
+            http_status=200,
+            discovery_path="browser_render",
+        )
+        if stored:
+            db.commit()
+            logger.info(
+                "Rendered %s and stored %s evidenced professor(s) for scholarship %s",
+                faculty_url,
+                stored,
+                scholarship.id,
+            )
+            return None, ""
+
+    detail = "; ".join(rendered_reasons[:3]) or "the source is client-side"
+    return (
+        str(SupervisorCoverageStatus.SOURCE_REQUIRES_RENDERING),
+        f"A static read was not sufficient ({detail}). A bounded browser render produced "
+        "no academic evidence, so no supervisor can be verified either way.",
+    )
+
+
 # ---------------------------------------------------------------------------
 # Orchestration
 # ---------------------------------------------------------------------------
@@ -964,7 +1149,9 @@ def _readable(page) -> bool:
     return page is not None and bool(getattr(page, "success", True))
 
 
-def discover_for_scholarship(db, scholarship: Scholarship) -> DiscoveryOutcome:
+def discover_for_scholarship(
+    db, scholarship: Scholarship, render_budget: RenderBudget | None = None
+) -> DiscoveryOutcome:
     """Run the pipeline for one scholarship and write its coverage state.
 
     Safe to re-run. Every write is an upsert keyed on a unique constraint, and
@@ -1035,59 +1222,17 @@ def discover_for_scholarship(db, scholarship: Scholarship) -> DiscoveryOutcome:
             continue
         pages_fetched += 1
         candidates = extract_faculty_candidates(faculty_page.content or "", faculty_url, seed_host)
-        for candidate in candidates:
-            # Storage gate. A professor row requires an academic role stated by the
-            # institution, on the listing or on the profile. Directory structure
-            # alone identifies a candidate to check; it does not identify a professor,
-            # and it cannot tell a person from a call to action - `/people/apply-now`
-            # and `/people/ada-lovelace` are the same shape. Dropping here means an
-            # unevidenced row is never created, rather than created and then hidden.
-            if not candidate.has_role_evidence:
-                logger.info(
-                    "Skipping candidate without a stated academic role: %s (%s)",
-                    candidate.name,
-                    candidate.profile_url,
-                )
-                continue
-            professor = upsert_professor(
-                db,
-                candidate,
-                institution_name=institution_name,
-                source_type=str(SourceType.OFFICIAL_DEPARTMENT_PAGE),
-            )
-            professors_written += 1
-            link = upsert_link(
-                db,
-                scholarship,
-                professor,
-                relationship_type=str(ProfessorRelationshipType.POTENTIAL_SUPERVISOR),
-                evidence_url=faculty_url,
-                evidence_type=str(SourceType.OFFICIAL_DEPARTMENT_PAGE),
-                summary=candidate.evidence_summary,
-                verification_status=_verification_status_for(candidate),
-            )
-            links_written += 1
-            record_evidence(
-                db,
-                professor,
-                source_url=faculty_url,
-                source_type=str(SourceType.OFFICIAL_DEPARTMENT_PAGE),
-                verification_status=str(RelationshipVerificationStatus.VERIFIED),
-                summary=candidate.evidence_summary,
-                content=faculty_page.content,
-                link_id=link.id,
-                scholarship_id=scholarship.id,
-                http_status=faculty_page.status_code,
-            )
-            record_availability(
-                db,
-                professor,
-                scope=str(AvailabilityScope.MASTERS_SUPERVISION),
-                state=_derive_availability(
-                    BeautifulSoup(faculty_page.content or "", "html.parser").get_text(" ", strip=True)
-                ),
-                source_url=faculty_url,
-            )
+        professors_written += _persist_candidates(
+            db,
+            scholarship,
+            candidates,
+            faculty_url=faculty_url,
+            institution_name=institution_name,
+            directory_html=faculty_page.content,
+            http_status=faculty_page.status_code,
+            discovery_path="static",
+        )
+        links_written += professors_written
         db.commit()
 
     # A search counts as completed only when the institution's own pages were
@@ -1123,39 +1268,46 @@ def discover_for_scholarship(db, scholarship: Scholarship) -> DiscoveryOutcome:
                     detail=coverage.last_error_summary,
                 )
 
-    # A page that renders its content with JavaScript was read successfully and
-    # still told us nothing: the served document is a shell. That is not the same
-    # as a page that lists no faculty, and reporting it as one would assert
-    # something about the university that we never established. The real-world
-    # pilot measured three major university directories at a 0.026-0.039 text to
-    # markup ratio, so this is the common case, not an edge case.
+    # A page that assembles its content with JavaScript was read successfully and
+    # still told us nothing. That is not the same as a page that lists no faculty.
+    #
+    # Before concluding that, the renderer gets one bounded attempt per shell,
+    # because a public JavaScript directory *can* be read safely. If rendering is
+    # unavailable, disabled, blocked, or simply unhelpful, the answer stays
+    # SOURCE_REQUIRES_RENDERING - never a negative, because nobody has established
+    # that the university employs nobody.
     if searched and not links_written:
-        for faculty_url, _ in faculty_pages:
-            faculty_page = polite_fetch(faculty_url)
-            if faculty_page is None or not _readable(faculty_page):
-                continue
-            faculty_text = BeautifulSoup(
-                faculty_page.content or "", "html.parser"
-            ).get_text(" ", strip=True)
-            if page_is_javascript_shell(faculty_page.content or "", faculty_text):
-                coverage, _ = ensure_coverage_row(db, scholarship.id)
-                coverage.status = str(SupervisorCoverageStatus.SOURCE_REQUIRES_RENDERING)
-                coverage.verified_supervisor_count = 0
-                coverage.evidence_state = "partial"
-                coverage.last_checked_at = datetime.now(timezone.utc)
-                coverage.last_error_summary = (
-                    "The faculty page renders its content with JavaScript; the served HTML "
-                    "publishes no people. No rendering is performed by this worker."
-                )[:500]
-                db.commit()
-                return DiscoveryOutcome(
-                    scholarship_id=scholarship.id,
-                    status=coverage.status,
-                    pages_fetched=pages_fetched,
-                    professors_found=0,
-                    links_written=0,
-                    detail=coverage.last_error_summary,
-                )
+        # A budget is always available; passing one in only means "you may render".
+        # Without it the driver reports that rendering is disabled, which lands on
+        # the same inconclusive state. The shell check itself must never be skipped -
+        # that is what would let an unreadable directory become a false negative.
+        render_status, render_summary = _attempt_render_for_shells(
+            db,
+            scholarship,
+            faculty_pages,
+            seed_host,
+            render_budget or RenderBudget(),
+        )
+        if render_status is not None:
+            coverage, _ = ensure_coverage_row(db, scholarship.id)
+            coverage.status = render_status
+            coverage.verified_supervisor_count = 0
+            coverage.evidence_state = "partial"
+            coverage.last_checked_at = datetime.now(timezone.utc)
+            coverage.last_error_summary = render_summary[:500]
+            db.commit()
+            return DiscoveryOutcome(
+                scholarship_id=scholarship.id,
+                status=coverage.status,
+                pages_fetched=pages_fetched,
+                professors_found=0,
+                links_written=0,
+                detail=render_summary,
+            )
+        if render_summary == "":
+            # Rendering produced a professor; fall through so coverage is
+            # recomputed from the links rather than short-circuited.
+            recompute_coverage(db, scholarship.id, searched=True)
 
     coverage = recompute_coverage(
         db,
