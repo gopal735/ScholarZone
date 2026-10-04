@@ -1,24 +1,41 @@
 # ScholarZone - public crawl policy
 #
-# The public catalogue is meant to be indexed: the directory, the country
-# pages and every scholarship detail page are the product.
+# The public catalogue is meant to be indexed: the directory, the destinations
+# page and every scholarship detail page are the product.
 #
 # The private surface is not. Admin, Saved and Compare either require a session
 # or render per-user state, and a search engine reaching them sees an empty or
 # broken shell. Compare and Saved are additionally near-duplicates of the
 # directory, so indexing them would dilute the pages that matter.
+#
+# Paths here are written for the production base path "/". They previously
+# carried the legacy GitHub Pages project-page prefix, which the app does not
+# use. On the canonical host the app is served from the root, so every prefixed
+# rule matched nothing: /admin was not actually blocked, and the Allow rules
+# below described URLs that do not exist there. A Disallow that matches nothing
+# is worse than no Disallow, because it reads as a decision that was never made.
+# /match and /mentor are deliberately absent: they are real public pages and
+# there is no reason to withhold them.
 
 User-agent: *
-Allow: /ScholarZone/
-Allow: /ScholarZone/scholarships
+Allow: /
 
-Disallow: /ScholarZone/admin
-Disallow: /ScholarZone/login
-Disallow: /ScholarZone/register
-Disallow: /ScholarZone/saved
-Disallow: /ScholarZone/compare
+# Private or per-user surfaces.
+Disallow: /admin
+Disallow: /dashboard
+Disallow: /applications
+Disallow: /login
+Disallow: /register
+Disallow: /saved
+Disallow: /compare
 
-# Crawling the single-page app shell is pointless and can be expensive.
+# The API is not a crawl target and must never be indexed.
+Disallow: /api/
+
+# Filter, search, sort and pagination variants. These are the same catalogue at
+# different offsets, so indexing them would multiply near-duplicate pages. The
+# catalogue pages that carry them also emit noindex and canonicalise to the clean
+# directory, so this rule and the page's own directives agree.
 Disallow: /*?*
 
-Sitemap: https://gopal735.github.io/ScholarZone/sitemap.xml
+Sitemap: https://scholarzone-fwzj.vercel.app/sitemap.xml
