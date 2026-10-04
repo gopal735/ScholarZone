@@ -83,18 +83,64 @@ class TestRevisionIsARealBuildIdentity:
             monkeypatch.delenv(name, raising=False)
         assert app_module.build_revision() == "dev"
 
-    def test_platform_injected_identity_is_preferred(self, app_module, monkeypatch):
-        """The platform's own commit must win over anything a human set."""
-        commit = "a" * 40
-        monkeypatch.setenv("VERCEL_GIT_COMMIT_SHA", commit)
-        monkeypatch.setenv("SCHOLARZONE_BUILD_REVISION", "b" * 40)
-        assert app_module.build_revision() == commit[:12]
+    def test_the_embedded_artefact_is_the_only_runtime_source(
+        self, app_module, monkeypatch, tmp_path
+    ):
+        """The revision is read from the package, never from the environment.
 
-    def test_env_fallback_is_used_when_no_platform_identity(self, app_module, monkeypatch):
-        monkeypatch.delenv("VERCEL_GIT_COMMIT_SHA", raising=False)
-        monkeypatch.delenv("VERCEL_GIT_COMMIT_REF", raising=False)
+        This test previously asserted the opposite: that a runtime
+        ``VERCEL_GIT_COMMIT_SHA`` wins, and that ``SCHOLARZONE_BUILD_REVISION``
+        is a legitimate fallback. Both were wrong. The runtime environment
+        describes the function, not the build, and the two have been observed to
+        disagree - a preview built from 00bc39d reported 4edd154a3037. The build
+        artefact is now the only source.
+        """
+        from app import build_provenance
+
+        commit = "a" * 40
+        monkeypatch.setattr(
+            build_provenance, "ARTIFACT", tmp_path / "build_revision.txt"
+        )
+        (tmp_path / "build_revision.txt").write_text(f"{commit}\n", encoding="utf-8")
+
+        monkeypatch.setenv("VERCEL_GIT_COMMIT_SHA", "b" * 40)
         monkeypatch.setenv("SCHOLARZONE_BUILD_REVISION", "c" * 40)
-        assert app_module.build_revision() == ("c" * 40)[:12]
+
+        assert app_module.build_revision() == commit
+
+    def test_no_environment_variable_can_override_the_embedded_sha(
+        self, app_module, monkeypatch, tmp_path
+    ):
+        from app import build_provenance
+
+        commit = "a" * 40
+        monkeypatch.setattr(
+            build_provenance, "ARTIFACT", tmp_path / "build_revision.txt"
+        )
+        (tmp_path / "build_revision.txt").write_text(f"{commit}\n", encoding="utf-8")
+
+        for name, value in (
+            ("VERCEL_GIT_COMMIT_SHA", "b" * 40),
+            ("VERCEL_GIT_COMMIT_REF", "c" * 40),
+            ("SCHOLARZONE_BUILD_REVISION", "d" * 40),
+        ):
+            monkeypatch.setenv(name, value)
+            assert app_module.build_revision() == commit, name
+
+    def test_the_reported_revision_is_never_truncated(
+        self, app_module, monkeypatch, tmp_path
+    ):
+        from app import build_provenance
+
+        commit = "0123456789abcdef0123456789abcdef01234567"
+        monkeypatch.setattr(
+            build_provenance, "ARTIFACT", tmp_path / "build_revision.txt"
+        )
+        (tmp_path / "build_revision.txt").write_text(f"{commit}\n", encoding="utf-8")
+
+        reported = app_module.build_revision()
+        assert reported == commit
+        assert len(reported) == 40
 
     @pytest.mark.parametrize("value", ["unknown", "latest", "", "not-a-sha", "12345", "deadbeef!"])
     def test_untrustworthy_revision_values_are_rejected(self, app_module, monkeypatch, value):
@@ -106,10 +152,20 @@ class TestRevisionIsARealBuildIdentity:
             f"{value!r} was accepted as a build identity"
         )
 
-    def test_production_without_an_identity_reports_unknown_not_success(
-        self, app_module, monkeypatch
+    def test_production_without_an_identity_refuses_to_answer(
+        self, app_module, monkeypatch, tmp_path
     ):
+        """Production fails instead of answering "unknown".
+
+        "unknown" was the old answer and it is not safer than a wrong SHA: both
+        are unverifiable, so a gate that tolerates either has no gate. Refusing
+        to name a revision is the only outcome that cannot be mistaken for a
+        successful deployment.
+        """
         import dataclasses
+
+        from app import build_provenance
+        from app.build_provenance import ProvenanceError
 
         real_settings = app_module.get_settings()
         for name in ("VERCEL_GIT_COMMIT_SHA", "VERCEL_GIT_COMMIT_REF", "SCHOLARZONE_BUILD_REVISION"):
@@ -119,16 +175,23 @@ class TestRevisionIsARealBuildIdentity:
             "get_settings",
             lambda: dataclasses.replace(real_settings, environment="production"),
         )
-        assert app_module.build_revision() == "unknown"
+        # No artefact at all: the build step never ran.
+        monkeypatch.setattr(
+            build_provenance, "ARTIFACT", tmp_path / "build_revision.txt"
+        )
+
+        with pytest.raises(ProvenanceError):
+            app_module.build_revision()
 
     def test_deploy_verification_fails_a_stale_build(self):
         """The freshness gate must reject a wrong revision, not merely report it."""
         workflow = (REPO / ".github" / "workflows" / "deploy.yml").read_text(encoding="utf-8")
         assert 'EXPECTED_REVISION: ${{ github.sha }}' in workflow
-        # A revision that is not a SHA fails immediately rather than being
-        # retried or accepted, so "unknown" cannot pass as current.
-        assert "^[0-9a-f]{7,40}$" in workflow
-        assert re.search(r'if \[ "\$CURRENT" = "\$EXPECTED_SHORT" \]', workflow)
+        # A revision that is not a full SHA fails immediately rather than being
+        # retried or accepted, so neither "unknown" nor a twelve-character prefix
+        # can pass as current. Only a complete commit identifies a build.
+        assert "^[0-9a-f]{40}$" in workflow
+        assert re.search(r'if \[ "\$CURRENT" = "\$EXPECTED_REVISION" \]', workflow)
         # A non-200 fails rather than being treated as "not ready yet".
         assert re.search(r'if \[ "\$HTTP_CODE" != "200" \]', workflow)
 
