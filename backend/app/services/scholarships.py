@@ -7,7 +7,11 @@ from sqlalchemy import asc, func, or_, select
 from sqlalchemy.orm import Session
 
 from ..models import Scholarship
-from ..repositories.scholarships import get_scholarship_by_id, list_scholarships
+from ..repositories.scholarships import (
+    get_scholarship_by_id,
+    list_scholarships,
+    public_visibility_conditions,
+)
 from ..schemas import PaginationMetadata, ScholarshipListResponse, ScholarshipQuery, ScholarshipVerificationUpdate
 
 
@@ -25,8 +29,34 @@ def get_scholarship_directory(session: Session, query: ScholarshipQuery) -> Scho
 
 
 def get_scholarship_details(session: Session, scholarship_id: int):
-    scholarship = get_scholarship_by_id(session, scholarship_id)
+    """The public read path for one scholarship, scoped to the public universe.
+
+    This used to call ``get_scholarship_by_id``, which is a bare primary-key
+    lookup. That made the catalogue's detail endpoint a second, larger universe
+    than its own list: anything excluded from ``/scholarships`` - archived,
+    quarantined, awaiting review, or failing the image gate - was still fully
+    readable by walking ids. The list and the detail disagreed, and the detail
+    was the more permissive of the two, which is the wrong way round for a trust
+    surface.
+
+    The predicate is the canonical one rather than a restatement of it. A copy is
+    exactly how a list and a detail page drift apart, and this repository already
+    carries a test refusing a second definition.
+
+    The deliberately permissive ``get_scholarship_by_id`` is left untouched: the
+    verification pipeline and the administrator's verify endpoint have to reach
+    records that are *meant* to be invisible to applicants, and tightening the
+    shared loader would have broken them without closing this hole. The boundary
+    belongs here, on the public read.
+    """
+    scholarship = session.scalar(
+        select(Scholarship)
+        .where(Scholarship.id == scholarship_id)
+        .where(*public_visibility_conditions())
+    )
     if scholarship is None:
+        # The caller turns this into the same 404 a missing id produces, so the
+        # response cannot be used to discover that a hidden record exists.
         return None
 
     dirty = False
