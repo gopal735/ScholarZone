@@ -15,6 +15,20 @@ from ..models import Scholarship
 
 logger = logging.getLogger(__name__)
 
+#: Image columns this mapper may write. ``image_kind`` is deliberately absent:
+#: kinds are produced by the image pipeline (``image_validator``,
+#: ``do_logos``, ``image_coverage_runner``) and ingestion has no producer
+#: semantics for them, so mapping it here would fabricate trust evidence.
+IMAGE_PERSISTENCE_FIELDS = frozenset(
+    {
+        "image_url",
+        "image_source_url",
+        "image_source_type",
+        "image_verified_at",
+        "image_alt_text",
+    }
+)
+
 
 class ScholarshipIngestionRecord(BaseModel):
     """The canonical data format for a verified scholarship catalogue entry."""
@@ -121,8 +135,27 @@ class ScholarshipIngestionRecord(BaseModel):
             "image_alt_text": "image_alt_text",
         }
         for source_field, database_field in mappings.items():
-            if source_field in self.model_fields_set:
-                fields[database_field] = getattr(self, source_field)
+            if source_field not in self.model_fields_set:
+                continue
+            value = getattr(self, source_field)
+            if database_field in IMAGE_PERSISTENCE_FIELDS and value is None:
+                # An explicit null means "this record carries no image", not
+                # "retract the image already stored on the row".
+                #
+                # Pydantic records explicitly supplied keys in model_fields_set
+                # even when the value is None, and do_add copies every key of a
+                # worklist entry straight into this model. A single entry
+                # carrying five null image keys therefore blanked the stored
+                # image of every matching record in one transaction.
+                #
+                # Ingestion is a create/enrich path: every caller supplies an
+                # image or omits the keys, and none retracts one. Canonical
+                # clearing belongs to do_purge and do_logos, which do not go
+                # through this function. Treating null as absence keeps a
+                # verified, accepted image from being deleted by a refresh that
+                # simply had nothing to say about images.
+                continue
+            fields[database_field] = value
 
         if "coverage" in self.model_fields_set:
             fields["benefits"] = self.coverage

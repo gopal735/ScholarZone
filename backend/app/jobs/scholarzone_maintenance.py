@@ -793,10 +793,7 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
         from app.models import Scholarship
         from app.repositories.scholarships import public_visibility_conditions
         from app.services.catalogue_quarantine import QUARANTINE_STATUS
-        from app.services.image_discovery_orchestrator import (
-            ACCEPTED_IMAGE_KINDS,
-            LOGO_IDENTITY_KINDS,
-        )
+        from app.services.image_discovery_orchestrator import LOGO_IDENTITY_KINDS
 
         session = factory()
         try:
@@ -950,7 +947,10 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
         """
         from urllib.parse import urlparse
 
-        from app.services.image_discovery_orchestrator import LOGO_IDENTITY_KINDS
+        from app.services.image_discovery_orchestrator import (
+            ACCEPTED_IMAGE_KINDS,
+            LOGO_IDENTITY_KINDS,
+        )
         from app.services.image_evaluation_status import ImageEvaluationStatus
         from app.services.logo_fallback_resolver import find_override, load_overrides, root_of
 
@@ -969,6 +969,7 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
 
         now = datetime.now(timezone.utc)
         attached = 0
+        cleared = 0
         skipped_existing = 0
         details: list[dict] = []
         still_missing: dict[str, int] = {}
@@ -985,10 +986,19 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
                     continue
                 key, entry = found
                 if row.image_url:
-                    # An existing verified identity mark is never replaced by a
-                    # different one; a stored photo, though, is exactly what
-                    # logo-only mode exists to remove.
-                    if (row.image_kind or "") in LOGO_IDENTITY_KINDS:
+                    # An image the verification pipeline accepted is not
+                    # decoration. PROGRAM_IMAGE and OFFICIAL_BANNER are results
+                    # of that pipeline, so treating every non-logo as removable
+                    # discarded accepted images - observed in production on
+                    # scholarship 14, where an accepted programme photograph was
+                    # cleared minutes after it was verified. Acceptance is
+                    # decided by kind: image_verified_at is corroboration, not
+                    # the safety signal, because a record can be accepted and
+                    # later have its timestamp cleared by an unrelated path.
+                    #
+                    # Unaccepted artwork is still cleared, because replacing it
+                    # with an audited logo is this stage's actual purpose.
+                    if (row.image_kind or "") in ACCEPTED_IMAGE_KINDS:
                         skipped_existing += 1
                     else:
                         row.image_url = None
@@ -1002,6 +1012,7 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
                         # the record permanently ineligible for re-evaluation.
                         row.image_evaluation_status = None
                         row.image_evaluated_at = None
+                        cleared += 1
                         still_missing[host] = still_missing.get(host, 0) + 1
                     continue
                 if args.dry_run:
@@ -1025,7 +1036,12 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
                 attached += 1
                 if len(details) < 300:
                     details.append({"id": row.id, "host": host, "matched_key": key})
-            if attached and not args.dry_run:
+            # Commit on any real mutation, not on attachment alone. Tying the
+            # commit to `attached` meant a run that only cleared unaccepted
+            # artwork reached no commit and silently discarded it on close, so
+            # whether a destructive edit persisted depended on whether the same
+            # run happened to do something useful.
+            if (attached or cleared) and not args.dry_run:
                 session.commit()
             elif args.dry_run:
                 session.rollback()
@@ -1037,6 +1053,7 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
             "overrides_loaded": len(overrides),
             "attached": attached,
             "skipped_existing_image": skipped_existing,
+            "cleared_unaccepted": cleared,
             "records_still_without_logo": sum(count for _host, count in ranked),
             "distinct_hosts_still_without_logo": len(ranked),
             "top_hosts_still_without_logo": ranked,
