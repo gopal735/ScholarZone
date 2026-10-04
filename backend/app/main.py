@@ -12,6 +12,8 @@ from fastapi.responses import JSONResponse
 from sqlalchemy import text
 
 from .core.config import get_settings
+from .build_provenance import ProvenanceError, read_embedded_revision
+from . import build_provenance
 from .database import close_database, get_engine, init_database
 from .middleware.api_prefix import StripApiPrefix
 from .routers.scholarships import router as scholarships_router
@@ -49,33 +51,41 @@ logging.basicConfig(
 
 
 def build_revision() -> str:
-    """Short git SHA of the running build, or ``dev``/``unknown``.
+    """The full git SHA this artefact was built from, or ``dev``.
 
-    Resolved once at import, from the platform's own deployment identity.
+    Read from an artefact embedded in the package at build time, never from the
+    runtime environment. The previous implementation read
+    ``VERCEL_GIT_COMMIT_SHA`` at runtime on the assumption that a platform
+    identifier cannot be falsified by hand. That assumption was wrong here: a
+    preview built from ``00bc39d`` reported ``4edd154a3037`` while Vercel's own
+    deployment metadata recorded ``00bc39d``. A runtime variable describes the
+    function's environment, not the build that produced the code, so it cannot
+    prove what is running.
 
-    Order matters. The platform identifier comes first because it cannot be
-    falsified by hand: Vercel injects ``VERCEL_GIT_COMMIT_SHA`` for the exact
-    commit it built, so the value describes the artefact actually running rather
-    than a label somebody remembered to set. An operator-supplied variable is
-    accepted only as a fallback, because a build that is told what revision to
-    claim will happily claim it while serving older code - which is precisely
-    the failure this endpoint exists to make detectable.
+    The full forty-character SHA is returned and never truncated. A twelve-
+    character prefix is not an identity: two commits can share one, and a gate
+    that compares prefixes will happily accept the wrong build.
 
-    A production build with no identifiable commit reports ``unknown``, and the
-    deployment verification treats anything that is not the expected SHA as a
-    failure. A healthy process serving the wrong commit must never be reported
-    as a successful deployment.
+    Nothing here consults an environment variable or a request header, so no
+    caller and no operator can make this process claim a revision it was not
+    built from. In production a missing or malformed artefact raises, which
+    fails ``/health`` rather than publishing a healthy response with an
+    unverified identity.
     """
-    for variable in ("VERCEL_GIT_COMMIT_SHA", "VERCEL_GIT_COMMIT_REF"):
-        raw = (os.getenv(variable) or "").strip()
-        if raw and re.fullmatch(r"[0-9a-fA-F]{7,64}", raw):
-            return raw[:12]
-    raw = (os.getenv("SCHOLARZONE_BUILD_REVISION") or "").strip()
-    if raw and re.fullmatch(r"[0-9a-fA-F]{7,64}", raw):
-        return raw[:12]
-    if get_settings().environment != "production":
-        return "dev"
-    return "unknown"
+    try:
+        return read_embedded_revision()
+    except ProvenanceError as error:
+        # A missing artefact means "nobody built this", which is normal on a
+        # developer's machine and fatal in production. A *corrupt* artefact means
+        # a build ran and produced something unusable - that is always wrong, so
+        # it always raises. Letting a corrupt artefact degrade to "dev" would let
+        # a broken deployment answer "ok" on exactly the endpoint whose job is to
+        # notice.
+        if not build_provenance.ARTIFACT.exists() and get_settings().environment != "production":
+            logger.error("No build artefact present (development): %s", error)
+            return "dev"
+        raise
+
 
 _db_ready = False
 _db_init_error: str | None = None
@@ -168,7 +178,16 @@ app.add_middleware(StripApiPrefix)
 
 # Logged here rather than at import so the revision is resolved and so the line
 # lands after the application object exists.
-logger.info("ScholarZone API configured, revision %s", build_revision())
+#
+# Guarded so a corrupt or missing build artefact is *reported* at startup rather
+# than preventing the process from booting. /health still fails on the same
+# condition, which is where a wrong revision must be caught: an unbootable
+# service takes every endpoint down with it and turns a diagnosable packaging
+# fault into an outage.
+try:
+    logger.info("ScholarZone API configured, revision %s", build_revision())
+except ProvenanceError as error:
+    logger.error("ScholarZone API has NO verified build identity: %s", error)
 
 
 @app.exception_handler(RequestValidationError)
@@ -217,9 +236,24 @@ def health() -> JSONResponse:
     which revision is running, so a deployment verification can prove the
     container is serving the commit that was just pushed.
 
-    The revision is a short git SHA supplied at build time. It is not a secret
-    and contains nothing about configuration or credentials.
-    """
+The revision is the full forty-character git SHA embedded in the package
+      at build time. It is not a secret and contains nothing about configuration
+      or credentials. It cannot be influenced by an environment variable or a
+      request header, so a caller cannot make a stale build look current.
+      """
+    # Provenance is resolved first, and separately from the database. A build
+    # that cannot name its own commit is not a healthy build, and it must not be
+    # reported as a database problem: the detail has to say what is actually
+    # wrong or the failure gets misdiagnosed as an outage.
+    try:
+        revision = build_revision()
+    except ProvenanceError as exc:
+        logger.error("Health check failed: no verified build identity: %s", exc)
+        return JSONResponse(
+            status_code=503,
+            content={"status": "error", "detail": "Build identity unavailable"},
+        )
+
     with _db_lock:
         # Verify the dependency when asked, rather than reporting a flag that a
         # background thread was supposed to set.
@@ -236,14 +270,14 @@ def health() -> JSONResponse:
                 conn.execute(text("SELECT 1"))
             return JSONResponse(
                 status_code=200,
-                content={"status": "ok", "revision": build_revision()},
+                content={"status": "ok", "revision": revision},
             )
         except Exception as exc:
             logger.warning("Health check failed: %s", exc)
             content = {
                 "status": "error",
                 "detail": "Database unreachable",
-                "revision": build_revision(),
+                "revision": revision,
             }
             if _db_init_error:
                 content["init_error"] = _db_init_error

@@ -51,11 +51,10 @@ jobs:
 
           MAX_ATTEMPTS=40
           DELAY=15
-          EXPECTED_SHORT="${EXPECTED_REVISION:0:12}"
           CURRENT=""
 
           for i in $(seq 1 "$MAX_ATTEMPTS"); do
-            echo "Health check attempt $i of $MAX_ATTEMPTS (expecting revision ${EXPECTED_SHORT})..."
+            echo "Health check attempt $i of $MAX_ATTEMPTS (expecting revision ${EXPECTED_REVISION})..."
             HTTP_CODE=$(curl -s -o /tmp/health.json -w "%{http_code}" \
               --connect-timeout 10 \
               --max-time 20 \
@@ -82,7 +81,7 @@ jobs:
               /tmp/health.json | head -1)
             CURRENT=${CURRENT:-}
 
-            if [ "$CURRENT" = "$EXPECTED_SHORT" ]; then
+            if [ "$CURRENT" = "$EXPECTED_REVISION" ]; then
               echo "Healthy and current."
               cat /tmp/health.json
               exit 0
@@ -91,7 +90,7 @@ jobs:
             # Anything that is not a full git SHA cannot be trusted as a build
             # identity. "unknown", "dev" and a hand-written label all fail here,
             # which is what stops an old build being reported as current.
-            if ! printf '%s' "$CURRENT" | grep -Eq '^[0-9a-f]{7,40}$'; then
+            if ! printf '%s' "$CURRENT" | grep -Eq '^[0-9a-f]{40}$'; then
               echo "::error::Reported revision '${CURRENT}' is missing or not a"
               echo "::error::trustworthy build identity. Production must report the"
               echo "::error::real commit the platform built; a supplied label is not"
@@ -102,7 +101,7 @@ jobs:
               exit 1
             fi
 
-            echo "Healthy but serving revision ${CURRENT}, expected ${EXPECTED_SHORT}."
+            echo "Healthy but serving revision ${CURRENT}, expected ${EXPECTED_REVISION}."
             cat /tmp/health.json
 
             if [ "$i" -eq "$MAX_ATTEMPTS" ]; then
