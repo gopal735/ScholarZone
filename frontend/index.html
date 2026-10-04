@@ -7,7 +7,80 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <title>ScholarZone · Where Ambition Meets Opportunity</title>
+
+    <!--
+      The head below is the document's real metadata, not a placeholder.
+
+      This is a single-page app, so before this existed the served HTML carried
+      a single static title and an empty <div id="root">: no description, no
+      canonical, no Open Graph and no structured data. Every indexable URL
+      returned those same 788 bytes, and all of the actual metadata was injected
+      later by JavaScript. That worked for a crawler willing to run the bundle
+      and wait on two client-side fetches, and for nothing else.
+
+      Every tag carries data-sz-seo so HomePage's existing effect owns it: that
+      effect removes all [data-sz-seo] nodes before writing its own and restores
+      the previous document on unmount, so these are replaced by identical
+      values rather than duplicated by them. Marking them here is what keeps
+      one head instead of two.
+
+      The copy states only what the site does. No counts, no deadlines, no
+      "fully funded" claims: the catalogue size and the country count are live
+      values that HomePage fills in once they arrive, and a hardcoded number here
+      would be a claim the page cannot guarantee.
+    -->
+    <title>ScholarZone · Verified Scholarship Directory</title>
+    <meta
+      name="description"
+      content="Search verified scholarships by country, degree, funding type and deadline. Every listing has been checked against the awarding body's own official page."
+      data-sz-seo="true"
+    />
+    <meta name="robots" content="index, follow" data-sz-seo="true" />
+    <link rel="canonical" href="https://scholarzone-fwzj.vercel.app/" data-sz-seo="true" />
+
+    <meta property="og:type" content="website" data-sz-seo="true" />
+    <meta property="og:site_name" content="ScholarZone" data-sz-seo="true" />
+    <meta property="og:title" content="ScholarZone – Verified Scholarship Directory" data-sz-seo="true" />
+    <meta
+      property="og:description"
+      content="Search verified scholarships by country, degree, funding type and deadline. Every listing has been checked against the awarding body's own official page."
+      data-sz-seo="true"
+    />
+    <meta property="og:url" content="https://scholarzone-fwzj.vercel.app/" data-sz-seo="true" />
+    <meta
+      property="og:locale"
+      content="en"
+      data-sz-seo="true"
+    />
+
+    <!-- No social preview image is declared: the project ships no such asset,
+         and naming a file that does not resolve is worse than advertising
+         none. A record page still declares its own, because those records do
+         carry an official image. -->
+    <meta name="twitter:card" content="summary" data-sz-seo="true" />
+    <meta name="twitter:title" content="ScholarZone – Verified Scholarship Directory" data-sz-seo="true" />
+    <meta
+      name="twitter:description"
+      content="Search verified scholarships by country, degree, funding type and deadline. Every listing has been checked against the awarding body's own official page."
+      data-sz-seo="true"
+    />
+
+    <script type="application/ld+json" data-sz-seo="true">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "ScholarZone",
+        "url": "https://scholarzone-fwzj.vercel.app/",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://scholarzone-fwzj.vercel.app/scholarships?search={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

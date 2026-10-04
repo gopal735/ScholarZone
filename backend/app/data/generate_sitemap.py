@@ -7,9 +7,11 @@ the live database so the file always describes the catalogue as it is.
 
 Rules, which are the point of the file:
 
-* only publicly indexable routes - the two quarantined non-scholarships are
-  excluded, because they are not scholarships and must not be indexed as if
-  they were;
+* only publicly indexable routes. Membership is decided by the repository's own
+  ``public_visibility_conditions``, not by a copy of it. This script previously
+  carried a weaker local rule (quarantined rows only), which is how 207 URLs for
+  non-public records reached the committed sitemap and 87 genuinely public ones
+  did not. One predicate, so the sitemap cannot disagree with the directory;
 * no filter or query URLs, which would multiply thin near-duplicate pages;
 * lastmod only where the record genuinely changed, taken from its own
   verification timestamp rather than from build time. A sitemap that claims
@@ -18,6 +20,7 @@ Rules, which are the point of the file:
 
 from __future__ import annotations
 
+import os
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -29,17 +32,19 @@ from sqlalchemy import select
 
 from app.database import get_session_factory
 from app.models import Scholarship
+from app.repositories.scholarships import public_visibility_conditions
 
-BASE_URL = "https://gopal735.github.io/ScholarZone"
+#: The canonical public frontend. Every <loc> is built from this, so the sitemap
+#: cannot advertise one host while the page's own canonical names another.
+#: Overridable so a staging build can point at itself without editing the file.
+BASE_URL = os.environ.get(
+    "SCHOLARZONE_CANONICAL_ORIGIN", "https://scholarzone-fwzj.vercel.app"
+).rstrip("/")
 #: backend/app/data -> backend/app -> backend -> repo root. Resolved from this
 #: file rather than the working directory, so the script writes to the same
 #: place whether it is run from the repo root or from backend/.
 _REPO_ROOT = Path(__file__).resolve().parents[3]
 OUTPUT = _REPO_ROOT / "frontend" / "public" / "sitemap.xml"
-
-#: Non-scholarship rows retained for audit. Indexing them would present a
-#: government front door as a funding opportunity.
-EXCLUDED_STATUS = "quarantined"
 
 
 def _lastmod(row: Scholarship) -> str | None:
@@ -59,7 +64,7 @@ def main() -> int:
     try:
         rows = session.scalars(
             select(Scholarship)
-            .where(Scholarship.verification_status != EXCLUDED_STATUS)
+            .where(*public_visibility_conditions())
             .order_by(Scholarship.id)
         ).all()
     finally:
@@ -71,8 +76,8 @@ def main() -> int:
         (f"{BASE_URL}/countries", None, "weekly", 0.7),
     ]
     for row in rows:
-        # Priority follows visibility: an open opportunity is worth more than an
-        # archived cycle, and neither competes with the directory itself.
+        # Priority follows urgency: an open opportunity is worth more than a
+        # cycle that has not opened yet, and neither competes with the directory.
         if row.status == "open":
             priority = 0.8
         elif row.status in ("closing-soon", "upcoming"):
@@ -108,10 +113,11 @@ def main() -> int:
 
     with_lastmod = sum(1 for e in entries if e[1])
     print(f"wrote {OUTPUT}")
+    print(f"  base            : {BASE_URL}")
     print(f"  urls            : {len(entries)}")
     print(f"  scholarship urls: {len(entries) - 3}")
     print(f"  with lastmod    : {with_lastmod}")
-    print(f"  excluded        : {EXCLUDED_STATUS}")
+    print("  filter          : public_visibility_conditions()")
     return 0
 
 
