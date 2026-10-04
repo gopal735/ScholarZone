@@ -455,31 +455,43 @@ export default function AdminPage() {
     }
   }, [load])
 
-  async function verify(id) {
-    await fetch(`${API}/scholarships/${id}/verify`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
+  // Verification decisions go through the Admin Verification Center API, which
+  // requires the administrator secret, records a rationale in the audit trail
+  // and refuses a decision made against a stale view of the record. The legacy
+  // PATCH endpoint it replaces accepted an unauthenticated write.
+  async function decide(id, decision, rationale) {
+    const record = scholarships.find((s) => s.id === id)
+    if (!record) {
+      setError('That record is no longer loaded. Reload and try again.')
+      return
+    }
+    if (!adminSecret) {
+      setError('Enter the administrator secret before deciding.')
+      return
+    }
+    setError(null)
+    const res = await fetch(`${API}/admin/verification/scholarships/${id}/decision`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Admin-Secret': adminSecret },
       body: JSON.stringify({
-        verification_status: 'active',
-        verified_by: 'admin',
-        verification_notes: 'Verified via admin dashboard',
+        decision,
+        rationale,
+        expected_updated_at: record.updated_at,
+        expected_verification_status: record.verification_status,
       }),
     })
+    if (!res.ok) {
+      setError(
+        res.status === 409
+          ? 'That record changed while this page was open. Reloading before you decide again.'
+          : `Decision refused (${res.status}). Reload and check the administrator secret.`,
+      )
+    }
     load()
   }
 
-  async function flag(id) {
-    await fetch(`${API}/scholarships/${id}/verify`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        verification_status: 'needs_review',
-        verified_by: 'admin',
-        verification_notes: 'Flagged for review via admin dashboard',
-      }),
-    })
-    load()
-  }
+  const verify = (id) => decide(id, 'verify', 'Verified via the admin dashboard.')
+  const flag = (id) => decide(id, 'keep_under_review', 'Flagged for review via the admin dashboard.')
 
   async function loadReviewQueue(page = reviewPage) {
     if (!adminSecret) return
