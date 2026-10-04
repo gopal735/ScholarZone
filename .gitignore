@@ -77,3 +77,12 @@ migration_validation.sql
 archive/
 
 backend/gh_token.txt
+
+# Build provenance artefact.
+#
+# Written by backend/scripts/embed_build_revision.py during a build, and read
+# back by app.build_provenance at runtime. It must never be committed: a
+# committed copy would ship inside the package and let a stale SHA - or a
+# developer machine's "dev" marker - masquerade as the identity of a real
+# deployment. The build writes it; git ignores it.
+backend/app/build_revision.txt
