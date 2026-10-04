@@ -486,11 +486,27 @@ class TestBuildRevision:
         assert "revision" in source
         assert "build_revision()" in source
 
-    def test_revision_is_the_env_value_truncated(self, monkeypatch):
+    def test_revision_comes_from_the_embedded_artefact(self, monkeypatch, tmp_path):
+        """The revision is read from the package, not the environment.
+
+        This previously asserted the opposite - that SCHOLARZONE_BUILD_REVISION
+        set the revision and that it was truncated to twelve characters. Both
+        behaviours were wrong: a runtime variable cannot prove what was built,
+        and a twelve-character prefix is not an identity.
+        """
+        from app import build_provenance
         from app.main import build_revision
 
-        monkeypatch.setenv("SCHOLARZONE_BUILD_REVISION", "abcdef1234567890")
-        assert build_revision() == "abcdef123456"
+        commit = "abcdef0123456789abcdef0123456789abcdef01"
+        monkeypatch.setattr(
+            build_provenance, "ARTIFACT", tmp_path / "build_revision.txt"
+        )
+        (tmp_path / "build_revision.txt").write_text(f"{commit}\n", encoding="utf-8")
+
+        monkeypatch.setenv("SCHOLARZONE_BUILD_REVISION", "9" * 40)
+        monkeypatch.setenv("VERCEL_GIT_COMMIT_SHA", "8" * 40)
+
+        assert build_revision() == commit
 
     def test_development_reports_dev(self, monkeypatch):
         from app.core.config import get_settings
@@ -500,13 +516,28 @@ class TestBuildRevision:
         monkeypatch.setenv("SCHOLARZONE_ENVIRONMENT", "development")
         assert main_module.build_revision() == "dev"
 
-    def test_production_without_a_revision_reports_unknown(self, monkeypatch):
+    def test_production_without_a_usable_revision_refuses_to_answer(
+        self, monkeypatch, tmp_path
+    ):
+        """Production must fail rather than report "unknown" or a guess.
+
+        "unknown" is what this used to return. It is not an improvement over a
+        wrong SHA: both are unverifiable, and a gate that accepts either has no
+        gate. Refusing to answer is the only safe outcome.
+        """
+        from app import build_provenance
+        from app.build_provenance import ProvenanceError
         import app.main as main_module
 
-        monkeypatch.delenv("SCHOLARZONE_BUILD_REVISION", raising=False)
+        monkeypatch.setattr(
+            build_provenance, "ARTIFACT", tmp_path / "build_revision.txt"
+        )
+        (tmp_path / "build_revision.txt").write_text("garbage", encoding="utf-8")
         monkeypatch.setenv("SCHOLARZONE_ENVIRONMENT", "production")
         monkeypatch.setenv("SCHOLARZONE_DATABASE_URL", "postgresql://u:p@host/db")
-        assert main_module.build_revision() == "unknown"
+
+        with pytest.raises(ProvenanceError):
+            main_module.build_revision()
 
     def test_no_secret_is_exposed(self, monkeypatch):
         from app.main import build_revision
@@ -534,9 +565,12 @@ class TestBuildRevision:
         text = (
             Path(__file__).resolve().parents[2] / ".github/workflows/deploy.yml"
         ).read_text(encoding="utf-8")
-        # The health-200 branch must still require a revision match.
+        # The health-200 branch must still require a revision match. It compares
+        # the FULL commit SHA: a twelve-character prefix is not an identity,
+        # because two commits can share one and the gate would accept either.
         assert "CURRENT" in text
-        assert 'if [ "$CURRENT" = "$EXPECTED_SHORT" ]' in text
+        assert 'if [ "$CURRENT" = "$EXPECTED_REVISION" ]' in text
+        assert "EXPECTED_SHORT" not in text
 
 
 # ---------------------------------------------------------------------------

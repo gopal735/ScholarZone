@@ -5,6 +5,7 @@
       "root": "backend",
       "framework": "fastapi",
       "entrypoint": "api.index:app",
+      "buildCommand": "python scripts/embed_build_revision.py",
       "routes": [
         {
           "src": "/api/(.*)",
