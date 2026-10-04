@@ -2,6 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "_comment": "Backend service only. The repository root vercel.json declares exactly two services (backend and frontend) and routes public traffic between them, so the API and the SPA share one origin and one deployment. This file holds only settings that belong to the backend service itself; the service's framework and routing are declared in the root vercel.json.",
   "installCommand": "pip install -r requirements.txt",
+    "buildCommand": "python scripts/write_build_provenance.py",
   "functions": {
     "api/index.py": {
       "maxDuration": 30
