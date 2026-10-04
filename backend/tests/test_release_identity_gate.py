@@ -30,12 +30,17 @@ DEPLOY_URL = "https://scholarzone-fwzj-oxfgjct80-gopal735s-projects.vercel.app"
 ALIAS_URL = "https://scholarzone-fwzj.vercel.app"
 GIT_ALIAS_URL = "https://scholarzone-fwzj-git-master-gopal735s-projects.vercel.app"
 DEPLOY_ID = "dpl_4r7L19mHjj7WvfinDw4HMVawFaJA"
+PROJECT = "scholarzone-fwzj"
+OTHER_PROJECT = "scholarzone"
+#: A value that must never be mistaken for an identity by any code path.
+SENTINEL = "SENTINEL-NOT-A-COMMIT-abcdef"
 
 
 def payload(**overrides):
     """A well-formed production deployment record."""
     base = {
         "id": DEPLOY_ID,
+        "name": PROJECT,
         "url": DEPLOY_URL,
         "target": TARGET_PRODUCTION,
         "gitSource": {"type": "github", "ref": "master", "sha": FULL_SHA},
@@ -185,6 +190,100 @@ class TestRejectsUnusableInput:
     def test_identity_construction_rejects_a_non_mapping(self):
         with pytest.raises(GateError):
             DeploymentIdentity.from_payload("nonsense")  # type: ignore[arg-type]
+
+
+class TestBindsTheProject:
+    """Two projects serve this repository from the same master branch.
+
+    Without an explicit project binding, a perfectly valid deployment of the
+    *other* project would satisfy every other check.
+    """
+
+    def test_the_expected_project_must_match(self):
+        result = verify(payload(), FULL_SHA, expected_project=PROJECT)
+
+        assert result.ok, result.failures
+
+    def test_a_deployment_of_the_wrong_project_is_refused(self):
+        result = verify(payload(), FULL_SHA, expected_project=OTHER_PROJECT)
+
+        assert not result.ok
+        assert any("project mismatch" in failure for failure in result.failures)
+
+    def test_a_deployment_that_names_no_project_cannot_confirm_the_intent(self):
+        stripped = payload()
+        stripped.pop("name")
+
+        result = verify(stripped, FULL_SHA, expected_project=PROJECT)
+
+        assert not result.ok
+        assert any("does not name a project" in f for f in result.failures)
+
+    def test_the_project_is_carried_on_the_identity(self):
+        identity = DeploymentIdentity.from_payload(payload())
+
+        assert identity.project == PROJECT
+
+
+class TestContaminationHardening:
+    """A release gate must not be satisfiable by leftover local state.
+
+    The failure this guards against is real: an earlier engagement was misled by
+    stale processes and a stray ``backend/scholarzone.db``. So each case below
+    asserts that some *other* piece of state cannot make a check pass.
+    """
+
+    def test_a_stale_process_reporting_another_commit_cannot_pass(self):
+        """A server left over from a previous build reports the wrong SHA."""
+        result = verify(payload(), OTHER_SHA)
+
+        assert not result.ok
+        assert any("identity mismatch" in failure for failure in result.failures)
+
+    def test_a_wrong_backend_cannot_pass(self):
+        result = verify(payload(), FULL_SHA, requested_url=ALIAS_URL)
+
+        assert not result.ok
+        assert any("deployment url mismatch" in f for f in result.failures)
+
+    def test_a_unique_sentinel_value_is_never_mistaken_for_an_identity(self):
+        for value in (SENTINEL, "dev", "unknown", "unproven-build"):
+            result = verify(payload(), value)
+
+            assert not result.ok, value
+
+    def test_the_gate_consults_no_database_and_no_ambient_state(self):
+        """It reads two payloads and nothing else.
+
+        Asserted structurally: if this module ever gained a database or engine
+        import, the gate's answer could start depending on which local file it
+        found, which is precisely the contamination being excluded.
+        """
+        import inspect
+
+        import release_identity_gate as gate_module
+
+        source = inspect.getsource(gate_module)
+
+        for forbidden in ("sqlalchemy", "create_engine", "sessionmaker", "sqlite"):
+            assert forbidden not in source, forbidden
+
+    def test_contamination_is_reported_in_full_rather_than_the_first_symptom(self):
+        """Several wrong things at once must all be named, not just the first.
+
+        A partially-correct release is the dangerous state: one wrong project,
+        one stale process and a truncated SHA must not collapse into a single
+        vague complaint that a hurried reader could talk themselves past.
+        """
+        result = verify(
+            payload(name=OTHER_PROJECT, gitSource={"ref": "master", "sha": SENTINEL}),
+            SENTINEL,
+            requested_url=ALIAS_URL,
+            expected_project=PROJECT,
+        )
+
+        assert not result.ok
+        assert len(result.failures) >= 4
 
 
 class TestEveryFailureIsReported:

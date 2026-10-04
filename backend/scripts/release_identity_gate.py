@@ -52,6 +52,7 @@ class DeploymentIdentity:
     deployment_id: str
     deployment_url: str
     target: str
+    project: str | None
     git_ref: str | None
     git_sha: str | None
 
@@ -69,6 +70,7 @@ class DeploymentIdentity:
             deployment_id=str(payload.get("id") or ""),
             deployment_url=url.strip(),
             target=str(payload.get("target") or ""),
+            project=(str(payload.get("name")) if payload.get("name") else None),
             git_ref=(str(git_source.get("ref")) if git_source.get("ref") else None),
             git_sha=(str(git_source.get("sha")) if git_source.get("sha") else None),
         )
@@ -110,6 +112,7 @@ def verify(
     requested_deployment_id: str | None = None,
     expected_sha: str | None = None,
     expected_target: str | None = None,
+    expected_project: str | None = None,
 ) -> GateResult:
     """Check a deployment against the revision its own artefact reports.
 
@@ -151,7 +154,22 @@ def verify(
             f"deployment is {identity.target!r}"
         )
 
-    # 4. A commit identity must exist and must be a full SHA.
+    # 4. The project must be the one that was asked about. Two Vercel projects
+    #    serve this repository from the same master branch, so a deployment that
+    #    is otherwise perfectly valid can still be the wrong project's.
+    if expected_project is not None:
+        if identity.project is None:
+            failures.append(
+                "deployment payload does not name a project, so the intended "
+                "project cannot be confirmed"
+            )
+        elif identity.project != expected_project:
+            failures.append(
+                f"project mismatch: expected {expected_project!r}, "
+                f"deployment belongs to {identity.project!r}"
+            )
+
+    # 5. A commit identity must exist and must be a full SHA.
     if not identity.git_ref:
         failures.append("deployment has no gitSource.ref")
     if not identity.git_sha:
@@ -162,7 +180,7 @@ def verify(
             "lowercase commit SHA"
         )
 
-    # 5. The running artefact must report a full SHA too.
+    # 6. The running artefact must report a full SHA too.
     #
     #    Deliberately NOT normalised. Trimming whitespace or lower-casing here
     #    would mean the gate accepts a value the artefact did not literally
@@ -179,7 +197,7 @@ def verify(
             "commit SHA; a prefix is not an identity"
         )
 
-    # 6. The exact equality the whole gate exists for.
+    # 7. The exact equality the whole gate exists for.
     if (
         identity.git_sha
         and revision
@@ -192,7 +210,7 @@ def verify(
             f"artefact reports {revision}"
         )
 
-    # 7. An explicitly expected commit must be the one deployed.
+    # 8. An explicitly expected commit must be the one deployed.
     if expected_sha:
         wanted = expected_sha.strip().lower()
         if not FULL_COMMIT_SHA.match(wanted):
@@ -230,6 +248,7 @@ def gate(
     token: str | None = None,
     expected_sha: str | None = None,
     expected_target: str | None = None,
+    expected_project: str | None = None,
     api_base: str = "https://api.vercel.com",
     timeout: float = 30.0,
 ) -> GateResult:
@@ -238,6 +257,10 @@ def gate(
     ``deployment_url`` must be the deployment's own URL. Pointing this at an
     alias is not a shortcut: the resolved deployment URL will not match and the
     gate fails, which is the intended outcome.
+
+    ``expected_project`` matters here because two projects serve this repository
+    from the same master branch. Without it, a perfectly valid deployment of the
+    *other* project would satisfy the check.
     """
     url = normalise_url(deployment_url)
     if not url:
@@ -267,23 +290,30 @@ def gate(
         requested_url=url,
         expected_sha=expected_sha,
         expected_target=expected_target,
+        expected_project=expected_project,
     )
 
 
 def main(argv: list[str] | None = None) -> int:
     args = list(sys.argv[1:] if argv is None else argv)
     if not args:
-        print("usage: release_identity_gate.py <deployment-url> [--sha SHA] [--target production|preview]")
+        print(
+            "usage: release_identity_gate.py <deployment-url> [--sha SHA] "
+            "[--target production|preview] [--project NAME]"
+        )
         return 2
 
     deployment_url = args[0]
     expected_sha = None
     expected_target = None
+    expected_project = None
     for index, token in enumerate(args):
         if token == "--sha" and index + 1 < len(args):
             expected_sha = args[index + 1]
         if token == "--target" and index + 1 < len(args):
             expected_target = args[index + 1]
+        if token == "--project" and index + 1 < len(args):
+            expected_project = args[index + 1]
 
     token = None
     try:
@@ -298,6 +328,7 @@ def main(argv: list[str] | None = None) -> int:
         token=token,
         expected_sha=expected_sha,
         expected_target=expected_target,
+        expected_project=expected_project,
     )
     print(result.describe())
     return 0 if result.ok else 1

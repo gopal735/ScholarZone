@@ -146,13 +146,23 @@ class TestBuildFailsWithoutAnIdentity:
         with pytest.raises(ProvenanceError):
             embed_build_revision()
 
-    def test_an_uppercase_sha_is_normalised_not_refused(self, artifact, monkeypatch):
-        """Case is a formatting difference, not an identity difference."""
-        upper = COMMIT.upper()
+    def test_an_uppercase_sha_is_refused(self, artifact, monkeypatch):
+        """Case is not silently normalised away.
+
+        This test previously asserted that an uppercase SHA was accepted and
+        lower-cased, reasoning that case is a formatting difference. That was
+        wrong for this system: the release identity gate refuses any revision
+        that is not exactly forty lowercase hex, so normalising on the way in
+        would leave the build contract and the gate contract disagreeing about
+        what a commit identity is - and that disagreement could only surface at
+        verification time, after a deployment, rather than at build time.
+        """
         monkeypatch.setenv("VERCEL", "1")
-        monkeypatch.setenv("VERCEL_GIT_COMMIT_SHA", upper)
-        assert platform_commit_sha() == COMMIT
-        assert embed_build_revision() == COMMIT
+        monkeypatch.setenv("VERCEL_GIT_COMMIT_SHA", COMMIT.upper())
+
+        assert platform_commit_sha() is None
+        with pytest.raises(ProvenanceError):
+            embed_build_revision()
 
     def test_a_refused_build_writes_no_artefact(self, artifact, monkeypatch):
         monkeypatch.setenv("VERCEL", "1")
@@ -228,6 +238,14 @@ class TestReadEmbedded:
     def test_the_development_marker_is_read_as_development(self, artifact):
         artifact.write_text(f"{DEVELOPMENT_MARKER}\n", encoding="utf-8")
         assert read_embedded_revision() == DEVELOPMENT_MARKER
+
+
+    def test_an_uppercase_artefact_is_refused(self, artifact):
+        """The runtime applies the same strict shape as the build and the gate."""
+        artifact.write_text(COMMIT.upper() + "\n", encoding="utf-8")
+
+        with pytest.raises(ProvenanceError):
+            read_embedded_revision()
 
     def test_a_missing_artefact_fails_safely(self, artifact):
         with pytest.raises(ProvenanceError):
@@ -383,3 +401,38 @@ class TestBuildStepIsActuallyWired:
         monkeypatch.setenv("SCHOLARZONE_ENVIRONMENT", "development")
         assert not artifact.exists()
         assert build_revision() == DEVELOPMENT_MARKER
+
+class TestTheArtefactIsNeverCommitted:
+    """The artefact is written by the build and read by the runtime.
+
+    If it were ever committed, the committed copy would ship inside the package
+    and a stale SHA - or a developer machine's ``dev`` marker - would masquerade
+    as the identity of a real deployment. The ignore rule is therefore part of
+    the contract, not hygiene.
+    """
+
+    def test_the_artefact_is_gitignored(self):
+        result = subprocess.run(
+            ["git", "check-ignore", "-q", "backend/app/build_revision.txt"],
+            cwd=BACKEND_ROOT.parent,
+            capture_output=True,
+        )
+
+        assert result.returncode == 0, (
+            "backend/app/build_revision.txt must be gitignored; a committed copy "
+            "would ship inside the package and could name a stale build"
+        )
+
+    def test_the_artefact_is_not_tracked(self):
+        tracked = subprocess.run(
+            ["git", "ls-files", "--error-unmatch", "backend/app/build_revision.txt"],
+            cwd=BACKEND_ROOT.parent,
+            capture_output=True,
+        )
+
+        assert tracked.returncode != 0, "the build artefact must never be tracked"
+
+    def test_the_ignore_rule_points_at_the_real_artefact(self):
+        ignore = (BACKEND_ROOT.parent / ".gitignore").read_text(encoding="utf-8")
+
+        assert "backend/app/build_revision.txt" in ignore

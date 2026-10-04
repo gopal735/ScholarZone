@@ -62,10 +62,22 @@ def on_platform() -> bool:
 def platform_commit_sha() -> str | None:
     """The full commit SHA the platform built, or ``None`` if unusable.
 
-    Rejects anything that is not exactly forty lowercase hex characters. A
-    branch name, a short SHA, a URL or an empty string is not an identity.
+    Accepts only exactly forty lowercase hex characters. A branch name, a short
+    SHA, a long SHA, a URL, arbitrary text or an empty string is not an identity.
+
+    Uppercase is **rejected**, not normalised. An earlier version lower-cased the
+    input first, on the reasoning that case is a formatting difference rather
+    than an identity difference. That was wrong here: this value is compared for
+    exact equality against a runtime revision that the release identity gate also
+    refuses to accept in any other form. Tolerating a different shape on the way
+    in would mean the build contract and the gate contract disagreed about what a
+    commit identity looks like, and the disagreement would only surface at
+    verification time - after a deployment - rather than at build time.
+
+    Vercel supplies the SHA in lowercase, so refusing uppercase costs nothing in
+    practice and removes a class of silent normalisation.
     """
-    raw = (os.getenv(PLATFORM_COMMIT) or "").strip().lower()
+    raw = (os.getenv(PLATFORM_COMMIT) or "").strip()
     return raw if FULL_COMMIT_SHA.match(raw) else None
 
 
@@ -109,9 +121,14 @@ def read_embedded_revision() -> str:
     ``ProvenanceError`` if the artefact is missing or malformed, because the
     only honest answer to "which commit is this?" when the answer was lost is to
     refuse to answer.
+
+    The value is read verbatim, with no case folding, for the same reason the
+    build refuses uppercase: this revision is compared for exact equality by the
+    release identity gate, so accepting a differently-shaped value here would
+    only defer the disagreement to verification time.
     """
     try:
-        raw = ARTIFACT.read_text(encoding="utf-8").strip().lower()
+        raw = ARTIFACT.read_text(encoding="utf-8").strip()
     except FileNotFoundError as error:
         raise ProvenanceError(
             f"Build artefact {ARTIFACT.name} is missing from the package. The "
