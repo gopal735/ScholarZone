@@ -49,10 +49,11 @@ import argparse
 import json
 import logging
 import os
+import re
 import sys
 import time
 from dataclasses import dataclass, field
-from datetime import date
+from datetime import date, datetime, timezone
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
@@ -74,7 +75,7 @@ MAX_STAGE_WORKERS = 16
 STAGE_ORDER = (
     "verify", "worklist", "inventory", "enrich", "programme_details", "images", "logos", "discover", "quarantine", "retire", "correct",
     "stats", "facts", "archive", "discontinued", "purge", "add", "reverify",
-    "repair_encoding", "repair_list_columns", "purge_closed",
+    "repair_encoding", "repair_list_columns", "auto_delete_candidate", "purge_closed",
 )
 
 # purge_closed is the only stage that deletes rows. It is excluded from "all"
@@ -183,7 +184,8 @@ STAGE_DEPENDENCIES: dict[str, tuple[str, ...]] = {
     "discontinued": (),
     "purge": (),
     # Destroys rows; never rides along in "all".
-    "purge_closed": (),
+    "auto_delete_candidate": (),
+    "purge_closed": ("auto_delete_candidate",),
     "add": (),
     # Re-verification only marks records whose official source was actually
     # re-read, so it runs after retire: a record retired in the same pass must
@@ -274,8 +276,18 @@ def _run_stage(name: str, fn) -> StageReport:
     started = time.monotonic()
     try:
         detail = fn() or {}
+        # A stage that catches its own failure and returns `{"error": ...}` is the
+        # convention throughout this job, so the runner is where that convention
+        # has to be honoured. Otherwise a stage that failed reports ok and a
+        # scheduled run passes on a green tick - which is exactly how a deleting
+        # stage could stop working without anyone noticing.
+        reported_error = detail.get("error") if isinstance(detail, dict) else None
         return StageReport(
-            name=name, ok=True, detail=detail, runtime_s=time.monotonic() - started
+            name=name,
+            ok=not reported_error,
+            detail=detail,
+            error=str(reported_error) if reported_error else None,
+            runtime_s=time.monotonic() - started,
         )
     except Exception as exc:  # noqa: BLE001
         logger.warning("stage %s failed: %s", name, exc, exc_info=True)
@@ -300,6 +312,40 @@ def _next_review_due(today: date) -> date:
     from datetime import timedelta
 
     return today + timedelta(days=90)
+
+
+#: The widest prefix of a verification note that fits ``verification_notes``. The
+#: column is a bounded Text, so a long finding is shortened rather than refused.
+NOTE_LIMIT = 400
+
+_SENTENCE_END = re.compile(r"[.!?][\"')\]]?(\s|$)")
+
+
+def _note_text(value: object) -> str:
+    """Shorten a verification finding to whole sentences.
+
+    A note that has been cut mid-sentence reads as though the finding itself stops
+    there, which is a different and weaker claim than the one that was made. 197 of
+    the stored confirmations were cut mid-word this way. When a finding is longer
+    than the column it is therefore trimmed at the last sentence boundary inside
+    the limit, and the fact that it was shortened is stated rather than left for a
+    reader to notice.
+    """
+    text = " ".join(str(value or "").split())
+    if not text:
+        return ""
+    if len(text) <= NOTE_LIMIT:
+        return text
+    window = text[: NOTE_LIMIT + 1]
+    ends = [m.end() for m in _SENTENCE_END.finditer(window)]
+    body = text[: ends[-1]].strip() if ends else ""
+    if not body:
+        # No sentence finishes inside the limit. Keeping the clipped text would
+        # publish a half-sentence as the finding, so the text is cut at the last
+        # word that fits and the note says it is an extract.
+        return f"(extract) {text[:NOTE_LIMIT].rsplit(' ', 1)[0].strip()} (truncated)"
+    return f"{body} (truncated)"
+
 
 def _column_length(model, field: str) -> int | None:
     """Declared length of a column, or None when it has none or does not exist.
@@ -538,7 +584,7 @@ def main(argv: list[str] | None = None) -> int:
         "--stage",
         action="append",
 choices=["verify", "worklist", "inventory", "enrich", "programme_details", "images", "logos", "discover", "quarantine", "retire", "correct",
-            "stats", "facts", "archive", "discontinued", "purge", "add", "reverify", "repair_encoding", "repair_list_columns", "purge_closed", "all"],
+            "stats", "facts", "archive", "discontinued", "purge", "add", "reverify", "repair_encoding", "repair_list_columns", "auto_delete_candidate", "purge_closed", "all"],
         default=None,
         help="Run only these stages (default: all).",
     )
@@ -1459,203 +1505,118 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
         finally:
             session.close()
 
-    def do_purge_closed() -> dict:
-        """Permanently delete records whose application round is closed.
+    def do_auto_delete_candidate() -> dict:
+        """Stage one of the closed-record collector: arm, never delete.
 
-        ``do_discontinued`` hides a dead programme and ``do_archive`` folds a
-        finished one away; both keep the row. This stage is the opposite and is
-        deliberately the only one that destroys data, so it is written to be
-        reversible by construction:
+        A record that holds every SAFE_DELETE condition gets a grace clock
+        started. The clock is cleared the moment any condition stops holding, so
+        a record that is reopened, re-verified, reviewed or referenced between
+        two cycles serves the whole grace period again. That is why the clock is
+        persisted rather than derived: nothing already on the row can tell a
+        reopen-and-reclose apart from never having reopened.
 
-        * it selects on the round being closed, never on a text match;
-        * it writes every selected row out in full before deleting any of them;
-        * the snapshot is returned and also written beside the configs, so the
-          deleted rows can be restored without re-crawling anything.
-
-        "Closed" means the round cannot be applied to right now: an explicit
-        non-open status, an archived record, or a deadline that has already
-        passed. A record with no deadline is never selected - a missing date is
-        an unknown date, not an expired one, and deleting on a guess is the one
-        outcome an applicant cannot recover from.
+        This stage writes only that timestamp. It deletes nothing, so it is safe
+        to run on every cycle, and it is the read-only audit the deletion stage
+        depends on: a dry run here reports exactly what the next stage would
+        consider.
         """
-        from pathlib import Path
-        from sqlalchemy import select
+        from app.services.auto_delete_collector import arm, collect
+        from app.services.auto_delete_policy import summarise
 
-        from app.models import Scholarship
-
-        today = date.today()
         session = factory()
         try:
-            rows = session.scalars(select(Scholarship)).all()
-            selected: list[dict] = []
-            breakdown = {
-                "status_closed": 0,
-                "archived": 0,
-                "deadline_passed": 0,
-            }
-            for row in rows:
-                reasons = []
-                status = (row.status or "").strip().lower()
-                if status in CLOSED_STATUSES:
-                    reasons.append("status_closed")
-                    breakdown["status_closed"] += 1
-                if row.is_archived:
-                    reasons.append("archived")
-                    breakdown["archived"] += 1
-                if row.deadline_date is not None and row.deadline_date < today:
-                    reasons.append("deadline_passed")
-                    breakdown["deadline_passed"] += 1
-                if not reasons:
-                    continue
-                selected.append(
-                    {
-                        "id": row.id,
-                        "title": row.title,
-                        "country": row.country,
-                        "status": row.status,
-                        "is_archived": row.is_archived,
-                        "deadline_date": (
-                            row.deadline_date.isoformat() if row.deadline_date else None
-                        ),
-                        "reasons": reasons,
-                        "official_source_url": row.official_source_url,
-                        "payload": _snapshot_row_payload(row),
-                    }
-                )
-
-            live_statuses: dict[str, int] = {}
-            for row in rows:
-                key = (row.status or "").strip().lower() or "(empty)"
-                live_statuses[key] = live_statuses.get(key, 0) + 1
-
-            selected_ids = [item["id"] for item in selected]
-
-            # Children are read before the snapshot is written so the archive
-            # contains everything that is about to disappear, not just the
-            # parent row.
-            children: dict[str, list[dict]] = {}
-            from app.models import (
-                DiscoveryCandidate,
-                ImageReview,
-                ScholarshipFetchAttempt,
-                ScholarshipRestoreRecord,
-                ScholarshipReview,
-                ScholarshipSnapshot,
-                ScholarshipVerificationHistory,
-            )
-
-            cascade_models = {
-                "ScholarshipVerificationHistory": ScholarshipVerificationHistory,
-                "ScholarshipReview": ScholarshipReview,
-                "ScholarshipSnapshot": ScholarshipSnapshot,
-                "ScholarshipFetchAttempt": ScholarshipFetchAttempt,
-                "ImageReview": ImageReview,
-                "ScholarshipRestoreRecord": ScholarshipRestoreRecord,
-            }
-            assert set(cascade_models) == set(PURGE_CASCADE_TABLES)
-            for name, model in cascade_models.items():
-                rows_for = session.scalars(
-                    select(model).where(model.scholarship_id.in_(selected_ids))
-                ).all()
-                children[name] = [_snapshot_row_payload(r) for r in rows_for]
-
-            detached = session.scalars(
-                select(DiscoveryCandidate).where(
-                    DiscoveryCandidate.matched_scholarship_id.in_(selected_ids)
-                )
-            ).all()
-            children["DiscoveryCandidate"] = [
-                _snapshot_row_payload(r) for r in detached
-            ]
-
-            snapshot_path = Path(__file__).resolve().parents[2] / "config" / "purged_records_archive.json"
-            if args.dry_run:
-                return {
-                    "error": None,
-                    "would_delete": len(selected),
-                    "breakdown": breakdown,
-                    "catalogue_statuses": dict(
-                        sorted(live_statuses.items(), key=lambda kv: -kv[1])
-                    ),
-                    "ids": [item["id"] for item in selected],
-                    "titles": [item["title"] for item in selected[:40]],
-                }
-
-            # Interlock. A row that is selected for deletion but still carries a
-            # future deadline has a non-terminal status string, which means the
-            # status vocabulary grew without this stage learning about it. That
-            # is a bug in the selection, not a closed round, and it is checked
-            # against the data rather than trusted from the code.
-            live_leak = [
-                item
-                for item in selected
-                if item["deadline_date"] and item["deadline_date"] >= today.isoformat()
-                and not (item["status"] or "").strip().lower() in CLOSED_STATUSES
-                and "archived" not in item["reasons"]
-            ]
-            if live_leak:
-                return {
-                    "error": (
-                        f"refusing to delete {len(live_leak)} record(s) that still have "
-                        "a future deadline and a non-terminal status: "
-                        + ", ".join(
-                            f"#{item['id']} {item['title']} ({item['status']})"
-                            for item in live_leak[:10]
-                        )
-                    ),
-                    "would_have_deleted": len(selected),
-                    "live_leak_count": len(live_leak),
-                }
-
-            snapshot_path.write_text(
-                json.dumps(
-                    {
-                        "purged_at": today.isoformat(),
-                        "count": len(selected),
-                        "breakdown": breakdown,
-                        "child_rows": {k: len(v) for k, v in children.items()},
-                        "children": children,
-                        "records": selected,
-                    },
-                    ensure_ascii=False,
-                    indent=2,
-                ),
-                encoding="utf-8",
-            )
-
-            deleted: list[int] = []
-            child_deleted = 0
-            for row in detached:
-                row.matched_scholarship_id = None
-                row.match_status = "unmatched"
-                child_deleted += 1
-            session.flush()
-            for name, model in cascade_models.items():
-                for child in session.scalars(
-                    select(model).where(model.scholarship_id.in_(selected_ids))
-                ).all():
-                    session.delete(child)
-                    child_deleted += 1
-            # Flush the child deletes before touching the parents. These models
-            # declare the foreign key but no ORM relationship between them, so
-            # the unit of work has no dependency graph to order the two delete
-            # sets by and emits the parent first.
-            session.flush()
-            for item in selected:
-                row = session.get(Scholarship, item["id"])
-                if row is None:
-                    continue
-                session.delete(row)
-                deleted.append(item["id"])
-            session.commit()
-
+            decisions = collect(session)
+            summary = summarise(decisions)
+            outcome = arm(session, decisions, dry_run=args.dry_run)
             return {
                 "error": None,
-                "deleted": len(deleted),
-                "child_rows_removed_or_detached": child_deleted,
-                "breakdown": breakdown,
-                "ids": deleted,
-                "snapshot_file": str(snapshot_path),
+                "as_of": datetime.now(timezone.utc).isoformat(),
+                **summary,
+                **outcome,
+            }
+        except Exception as exc:
+            session.rollback()
+            return {"error": str(exc)}
+        finally:
+            session.close()
+
+    def do_purge_closed() -> dict:
+        """Stage two of the closed-record collector: delete exactly what is safe.
+
+        ``status == "closed"`` is not a deletion condition, and this stage used
+        to treat it as one: it selected on the status being closed *or* the
+        record being archived *or* the deadline merely having passed, with no
+        retention period, no grace period, no dependency blocking and no
+        revalidation between choosing a row and deleting it. A programme that
+        closed the previous day was eligible for permanent deletion.
+
+        What it does now is narrow by design:
+
+        * selection comes from :func:`app.services.auto_delete_collector.collect`,
+          which is the SAFE_DELETE policy, so a record is only a candidate after
+          holding every condition - closed, archived, non-public, not active or
+          needing review, no dependency that must survive, and closed for at
+          least the retention period;
+        * the grace period has already elapsed, because arming happened in an
+          earlier cycle of ``auto_delete_candidate`` and any condition failing
+          in between cleared the clock;
+        * every id is re-decided inside the transaction under a row lock, and one
+          that no longer qualifies is aborted on its own rather than deleted on
+          a stale decision;
+        * nothing is deleted by id pattern, and the manifest of what disappeared
+          is written before it disappears.
+
+        A cycle that finds nothing prints NO SAFE DELETE TARGETS. That is the
+        expected result, not a failure: the policy is built to prefer keeping a
+        record over deleting it, so a quiet day is the system working.
+        """
+        from pathlib import Path
+
+        from app.services.auto_delete_collector import (
+    CONTRACT_VERSION,
+    collect,
+    delete_exact,
+)
+        from app.services.auto_delete_policy import summarise
+
+        session = factory()
+        try:
+            decisions = collect(session)
+            summary = summarise(decisions)
+            eligible_ids = summary["eligible"]
+
+            public_before = summary["counts"].get("PROTECTED", 0)
+            archive_path = (
+                Path(__file__).resolve().parents[2]
+                / "config"
+                / "purged_records_archive.json"
+            )
+
+            if not eligible_ids:
+                if not args.dry_run:
+                    session.rollback()
+                return {
+                    "error": None,
+                    "as_of": datetime.now(timezone.utc).isoformat(),
+                    "contract_version": CONTRACT_VERSION,
+                    **summary,
+                    "deleted": [],
+                    "note": "NO SAFE DELETE TARGETS",
+                }
+
+            outcome = delete_exact(
+                session,
+                eligible_ids,
+                dry_run=args.dry_run,
+                archive_path=archive_path,
+            )
+            return {
+                "error": outcome.get("error"),
+                "as_of": datetime.now(timezone.utc).isoformat(),
+                "contract_version": CONTRACT_VERSION,
+                **summary,
+                **outcome,
+                "protected_before": public_before,
             }
         except Exception as exc:
             session.rollback()
@@ -1758,7 +1719,7 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
 
         ids = [int(entry["id"]) for entry in entries if entry.get("id") is not None]
         reasons = {
-            int(entry["id"]): (entry.get("evidence") or "").strip()[:400]
+            int(entry["id"]): _note_text(entry.get("evidence"))
             for entry in entries
             if entry.get("id") is not None
         }
@@ -1776,7 +1737,13 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
                     already += 1
                     continue
                 row.verification_status = "active"
-                row.verified = True
+                # The mapped column is `is_verified`. Assigning `verified` set an
+                # unmapped attribute on the ORM object, so a record confirmed by
+                # this stage could still carry is_verified = False and be hidden by
+                # the public quality gate while its own status says active. The
+                # boolean is legacy and must not create the badge, but it must not
+                # contradict the authoritative state either.
+                row.is_verified = True
                 row.last_verified_at = checked_at
                 row.last_verified_date = checked_at
                 row.next_verification_due = checked_at + timedelta(days=90)
@@ -1990,6 +1957,7 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
         from sqlalchemy import select
 
         from app.models import Scholarship
+        from app.services.deadline_semantics import coerce_deadline_precision
 
         corrections_path = (
             Path(__file__).resolve().parents[2] / "config" / "record_corrections.json"
@@ -2023,6 +1991,22 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
             "official_source": "text",
             "description": "text",
         }
+
+        # A deadline that is not a deadline is removed rather than repaired.
+        #
+        # Extraction occasionally lands on a sentence about something else
+        # entirely - a fee-payment window, a tuition-refund clause, an
+        # enrolment instruction - and stores that fragment as the deadline. The
+        # value is then worse than empty: it is confidently wrong, and it is
+        # wrong in a way an applicant would act on. Removing it is the only safe
+        # edit, because the correct date is a separate finding that has to arrive
+        # with its own evidence; inventing one here would replace a false claim
+        # with a false claim.
+        #
+        # `deadline_precision` is NOT NULL, so it cannot be cleared to null. It
+        # falls back through the same deadline semantics every other record uses,
+        # which resolves an absent statement to "unknown" - the honest answer.
+        clearable = ("deadline_display", "deadline_date", "deadline_precision")
 
         session = factory()
         try:
@@ -2078,6 +2062,26 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
                         continue
                     setattr(row, field, value)
                     changed.append(field)
+                # Removal is explicit and per field. `clear_fields` is a list
+                # rather than a null so "this correction says nothing about the
+                # deadline" and "this correction removes the deadline" cannot be
+                # confused: an absent key must never clear a field by accident.
+                requested_clear = entry.get("clear_fields")
+                if isinstance(requested_clear, list):
+                    for field in clearable:
+                        if field not in requested_clear:
+                            continue
+                        if not _is_column(Scholarship, field):
+                            continue
+                        value = (
+                            coerce_deadline_precision(None)
+                            if field == "deadline_precision"
+                            else None
+                        )
+                        if getattr(row, field, None) == value:
+                            continue
+                        setattr(row, field, value)
+                        changed.append(field)
                 if changed:
                     row.updated_at = datetime.now(timezone.utc)
                     reason = str(entry.get("reason") or "").strip()
@@ -3007,6 +3011,7 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
         "retire": do_retire,
         "correct": do_correct,
         "purge": do_purge,
+        "auto_delete_candidate": do_auto_delete_candidate,
         "purge_closed": do_purge_closed,
         "add": do_add,
         "reverify": do_reverify,

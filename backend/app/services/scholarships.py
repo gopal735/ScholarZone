@@ -49,17 +49,27 @@ def get_scholarship_details(session: Session, scholarship_id: int):
     return scholarship
 
 
+def pending_review_conditions(today: date | None = None):
+    """The one definition of "this record is awaiting a verification decision".
+
+    A record qualifies on any one of three independent grounds, so the queue is
+    not merely "status says needs_review": a record can also fall due for periodic
+    re-verification, or have never been verified at all. Expressed once here so
+    the queue and any count derived from it cannot drift apart.
+    """
+    return (
+        or_(
+            Scholarship.verification_status == "needs_review",
+            Scholarship.next_verification_due <= (today or date.today()),
+            Scholarship.last_verified_date.is_(None),
+        )
+    )
+
+
 def get_verification_queue(session: Session) -> list[Scholarship]:
-    today = date.today()
     statement = (
         select(Scholarship)
-        .where(
-            or_(
-                Scholarship.verification_status == "needs_review",
-                Scholarship.next_verification_due <= today,
-                Scholarship.last_verified_date.is_(None),
-            )
-        )
+        .where(pending_review_conditions())
         .order_by(Scholarship.next_verification_due.asc().nullsfirst())
     )
     return list(session.scalars(statement))

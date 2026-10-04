@@ -7,6 +7,7 @@ from fastapi import APIRouter, Depends, HTTPException, Path, Query, status
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
+from ..core.admin_auth import require_admin_secret
 from ..core.config import get_settings
 from ..database import get_db
 from ..models import Scholarship
@@ -74,20 +75,41 @@ def get_scholarship_stats(
     return ScholarshipStatsResponse(**catalogue_summary(counts))
 
 
-@router.get("/verification-queue", response_model=list[ScholarshipDetailResponse])
+@router.get(
+    "/verification-queue",
+    response_model=list[ScholarshipDetailResponse],
+    dependencies=[Depends(require_admin_secret)],
+)
 def get_verification_queue_endpoint(
     session: Session = Depends(get_db),
 ) -> list[ScholarshipDetailResponse]:
+    """Administrator-only.
+
+    This used to be unauthenticated, which published the entire review queue and
+    every internal field on those records to anyone who asked. The secure
+    replacement is ``GET /admin/verification/queue``; this path is retained so an
+    existing operator bookmark keeps working, behind the same authorization.
+    """
     scholarships = get_verification_queue(session)
     return scholarships
 
 
-@router.patch("/{scholarship_id}/verify", response_model=ScholarshipDetailResponse)
+@router.patch(
+    "/{scholarship_id}/verify",
+    response_model=ScholarshipDetailResponse,
+    dependencies=[Depends(require_admin_secret)],
+)
 def verify_scholarship_endpoint(
     scholarship_id: Annotated[int, Path(ge=1)],
     payload: ScholarshipVerificationUpdate,
     session: Session = Depends(get_db),
 ) -> ScholarshipDetailResponse:
+    """Administrator-only.
+
+    This wrote a verification status on an unauthenticated request. It is the
+    most consequential of the open administrative boundaries: no secret was
+    required to change what the public catalogue claims about a record.
+    """
     scholarship = verify_scholarship(session, scholarship_id, payload)
     if scholarship is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Scholarship not found")
@@ -107,11 +129,17 @@ def get_scholarship_endpoint(
     return scholarship
 
 
-@router.get("/debug/raw/{scholarship_id}")
+@router.get("/debug/raw/{scholarship_id}", dependencies=[Depends(require_admin_secret)])
 def debug_raw_scholarship(
     scholarship_id: Annotated[int, Path(ge=1)],
     session: Session = Depends(get_db),
 ):
+    """Administrator-only.
+
+    Dumps every column of a row, including the internal verification and review
+    fields the public schema deliberately withholds. Anonymous callers were being
+    handed exactly the metadata the Admin Center protects.
+    """
     scholarship = session.get(Scholarship, scholarship_id)
     if scholarship is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Scholarship not found")
@@ -123,10 +151,16 @@ def debug_raw_scholarship(
     return raw
 
 
-@router.get("/debug/fix-null-lists")
+@router.get("/debug/fix-null-lists", dependencies=[Depends(require_admin_secret)])
 def debug_fix_null_lists(
     session: Session = Depends(get_db),
 ):
+    """Administrator-only, and it writes.
+
+    This committed a database change on an anonymous GET. Beyond the missing
+    secret, a repair of that shape belongs behind an explicit decision rather
+    than something a crawler can trigger.
+    """
     from sqlalchemy import text
     null_eligibility = session.execute(
         text("SELECT id FROM scholarships WHERE eligibility IS NULL")

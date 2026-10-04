@@ -802,7 +802,12 @@ class TestAutonomousContract:
             # Both repairs are independent, and both run before the only stage
             # that deletes rows: a row that cannot be read is a row that cannot
             # be reviewed before it is destroyed.
-            "repair_encoding", "repair_list_columns", "purge_closed",
+            "repair_encoding", "repair_list_columns",
+            # The closed-record collector is two stages and they are ordered:
+            # a record must hold every SAFE_DELETE condition for the grace
+            # period before any delete may consider it, so arming always runs
+            # first.
+            "auto_delete_candidate", "purge_closed",
         ]
         # Verification is the root; everything else is either downstream of it
         # or independent.
@@ -816,6 +821,13 @@ class TestAutonomousContract:
         # introduce a non-logo image. A dependency here would make the ordering
         # an assumption in code rather than an explicit contract.
         assert worker.STAGE_DEPENDENCIES["purge"] == ()
+        # purge_closed is the one stage that destroys rows, so it is the one
+        # stage with an ordering dependency: a record must hold every SAFE_DELETE
+        # condition for the grace period before a delete may consider it. This
+        # also keeps the destructive path a leaf with respect to the stages that
+        # could introduce a non-logo image.
+        assert worker.STAGE_DEPENDENCIES["auto_delete_candidate"] == ()
+        assert worker.STAGE_DEPENDENCIES["purge_closed"] == ("auto_delete_candidate",)
         assert worker.STAGE_ORDER.index("purge") > worker.STAGE_ORDER.index("images")
         # facts writes verified programme data, so it has to stay a leaf: it
         # reads the live page state of the records it is about to change.
@@ -831,7 +843,11 @@ class TestAutonomousContract:
         # A record inserted by "add" earlier in the same run must still be
         # judged by the purge, or freshly added rows would slip past it.
         assert worker.STAGE_ORDER.index("add") < worker.STAGE_ORDER.index("purge_closed")
-        assert worker.STAGE_DEPENDENCIES["purge_closed"] == ()
+        # The destructive stage no longer has zero dependencies, but its only
+        # one is the arming stage that immediately precedes it. It must not gain a
+        # dependency on any stage that could change its input, which is what
+        # would let the delete depend on run ordering.
+        assert worker.STAGE_DEPENDENCIES["purge_closed"] == ("auto_delete_candidate",)
         assert list(worker.STAGE_ORDER) != [
             s for s in worker.STAGE_ORDER if s != "purge_closed"
         ]

@@ -92,12 +92,26 @@ class TestSelectionContract:
         purge = "\n".join(segments)
         assert 'status not in ("open"' not in purge
         assert "status not in ('open'" not in purge
-        assert "CLOSED_STATUSES" in purge
+        # The stage no longer decides what "closed" means; it defers to the
+        # policy. What must not come back is a membership test against an
+        # open-ended set, because that is how a status vocabulary growing by one
+        # value silently starts deleting live programmes.
+        assert "CLOSED_STATUSES" not in purge
+        assert "collect" in purge and "delete_exact" in purge
 
     def test_stage_records_every_reason_it_deleted_a_row(self):
-        source = inspect.getsource(worker)
-        assert '"reasons": reasons' in source
-        assert "purged_records_archive.json" in source
+        # The selection and the reasoning moved into the policy and the
+        # collector when the stage stopped being allowed to delete on a status
+        # string. What still has to hold is that every deleted row carries a
+        # reason and lands in the archive, so the assertions follow the code
+        # rather than the file it used to live in.
+        import inspect
+
+        from app.services import auto_delete_collector
+
+        collector = inspect.getsource(auto_delete_collector.delete_exact)
+        assert "reason" in collector
+        assert "purged_records_archive.json" in inspect.getsource(worker)
 
 
 class TestSafetyInterlock:
@@ -129,9 +143,16 @@ class TestSafetyInterlock:
 
 class TestReversibility:
     def test_snapshot_is_written_before_any_delete(self):
-        source = inspect.getsource(worker)
-        write_at = source.index('snapshot_path.write_text')
-        delete_at = source.index("session.delete(row)")
+        # Reversibility moved into the collector when the stage became
+        # policy-driven. The guarantee is unchanged and still asserted: the rows
+        # are written down before the delete commits.
+        import inspect
+
+        from app.services import auto_delete_collector
+
+        collector = inspect.getsource(auto_delete_collector.delete_exact)
+        write_at = collector.index("_append_manifest(")
+        delete_at = collector.index("session.delete(row)")
         assert write_at < delete_at, "rows are deleted before they are saved"
 
     def test_snapshot_serialises_every_column(self):

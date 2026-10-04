@@ -128,6 +128,12 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
             "official_details": "JSON",
             "applicant_utility": "JSON",
             "programme_verification": "JSON",
+            # Automatic garbage collection of closed records. The candidate clock
+            # is persisted because "held every condition continuously for the
+            # grace period" is not derivable from any column already on the row.
+            "auto_delete_candidate_since": "TIMESTAMPTZ",
+            # Operator override, checked before every other condition.
+            "deletion_protected": "BOOLEAN NOT NULL DEFAULT FALSE",
         }
         for name, definition in additions.items():
             if name not in columns:
@@ -280,6 +286,36 @@ def _upgrade_sqlite_schema(engine: Engine) -> None:
         "next_verification_due": "DATE",
         "verified_by": "VARCHAR(120)",
         "verification_notes": "TEXT",
+        # Mirrors of the PostgreSQL additions above. ``is_archived`` was the
+        # load-bearing omission: ``public_visibility_conditions`` filters on
+        # ``is_archived.is_(False)``, so its absence made every public list,
+        # stats and detail query raise OperationalError on SQLite. NOT NULL with
+        # a default, so existing rows read as correctly un-archived rather than
+        # NULL, which the predicate would exclude.
+        "is_archived": "BOOLEAN NOT NULL DEFAULT FALSE",
+        "archived_at": "DATETIME",
+        "archived_reason": "VARCHAR(120)",
+        # Award economics, separated from the short ``funding`` label. See the
+        # model for why a stipend must not read as full funding.
+        "funding_amount": "NUMERIC(12, 2)",
+        "funding_currency": "VARCHAR(8)",
+        "funding_period": "VARCHAR(64)",
+        # Tri-state, not a boolean: many programmes simply do not say.
+        "tuition_coverage": "BOOLEAN",
+        "living_cost_coverage": "BOOLEAN",
+        "travel_coverage": "BOOLEAN",
+        # NOT NULL with a default, so an existing row reads as "not
+        # established as fully funded" rather than NULL, which would be
+        # ambiguous in a filter.
+        "fully_funded": "BOOLEAN NOT NULL DEFAULT FALSE",
+        # Structured detail, split by origin so published rules and derived
+        # guidance are never stored as the same kind of fact.
+        "official_details": "JSON",
+        "applicant_utility": "JSON",
+        "programme_verification": "JSON",
+        # Automatic garbage collection of closed records; see the model.
+        "auto_delete_candidate_since": "DATETIME",
+        "deletion_protected": "BOOLEAN NOT NULL DEFAULT FALSE",
     }
 
     with engine.begin() as connection:
@@ -289,6 +325,14 @@ def _upgrade_sqlite_schema(engine: Engine) -> None:
 
         connection.execute(text("CREATE INDEX IF NOT EXISTS ix_scholarships_status ON scholarships (status)"))
         connection.execute(text("CREATE INDEX IF NOT EXISTS ix_scholarships_status_deadline ON scholarships (status, deadline_date)"))
+        # The collector scans for closed, archived, unprotected rows. Without this
+        # the scan is a full table read every cycle.
+        connection.execute(
+            text(
+                "CREATE INDEX IF NOT EXISTS ix_scholarships_auto_delete "
+                "ON scholarships (status, is_archived, deletion_protected)"
+            )
+        )
 
         _create_content_fingerprints_table(connection)
         _upgrade_discovery_candidates_table(connection)

@@ -40,6 +40,25 @@ class Scholarship(Base):
     is_archived: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False, index=True)
     archived_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     archived_reason: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    # Automatic garbage collection of closed records. `archived_at` is the
+    # retention clock - it is written when the record is folded away and cleared
+    # when it is reopened, so it measures the closed-and-untouched period.
+    # `updated_at` cannot: it moves on every unrelated edit.
+    #
+    # `auto_delete_candidate_since` is the grace-period clock. A record must hold
+    # every SAFE_DELETE condition continuously for DELETE_GRACE_DAYS before a
+    # delete may execute, and "continuously" cannot be derived from anything
+    # already on the row: if a record is reopened and re-closed between two
+    # cycles, only persisted state notices. It is set when the full predicate
+    # first passes and cleared the moment any condition stops passing.
+    auto_delete_candidate_since: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
+    # An operator override. Checked before every other condition, so protecting a
+    # record never depends on the rest of the policy staying correct.
+    deletion_protected: Mapped[bool] = mapped_column(
+        Boolean, nullable=False, default=False
+    )
     is_verified: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
     last_verified_at: Mapped[date | None] = mapped_column(Date, nullable=True)
     last_verified_date: Mapped[date | None] = mapped_column(Date, nullable=True)
