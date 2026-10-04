@@ -79,22 +79,49 @@ class TestRevisionIsARealBuildIdentity:
         assert callable(app_module.health)
 
     def test_local_development_reports_dev(self, app_module, monkeypatch):
-        for name in ("VERCEL_GIT_COMMIT_SHA", "VERCEL_GIT_COMMIT_REF", "SCHOLARZONE_BUILD_REVISION"):
-            monkeypatch.delenv(name, raising=False)
+        """No build artefact means a local checkout reports ``dev``.
+
+        ``dev`` is not a claim about a commit; it is the absence of one, and the
+        deployment gate treats it as a failure rather than a success.
+        """
+        import dataclasses
+
+        monkeypatch.setattr(app_module, "_embedded_build_revision", lambda: None)
+        real_settings = app_module.get_settings()
+        monkeypatch.setattr(
+            app_module,
+            "get_settings",
+            lambda: dataclasses.replace(real_settings, environment="development"),
+        )
         assert app_module.build_revision() == "dev"
 
-    def test_platform_injected_identity_is_preferred(self, app_module, monkeypatch):
-        """The platform's own commit must win over anything a human set."""
-        commit = "a" * 40
-        monkeypatch.setenv("VERCEL_GIT_COMMIT_SHA", commit)
-        monkeypatch.setenv("SCHOLARZONE_BUILD_REVISION", "b" * 40)
-        assert app_module.build_revision() == commit[:12]
+    def test_runtime_environment_cannot_claim_an_identity(self, app_module, monkeypatch):
+        """No runtime variable may state what the build was.
 
-    def test_env_fallback_is_used_when_no_platform_identity(self, app_module, monkeypatch):
-        monkeypatch.delenv("VERCEL_GIT_COMMIT_SHA", raising=False)
-        monkeypatch.delenv("VERCEL_GIT_COMMIT_REF", raising=False)
+        This used to assert the opposite - that the platform's environment
+        variable wins and is truncated. Both halves were wrong: the value was
+        runtime-controlled, and twelve characters cannot be compared with a
+        commit. Identity now comes only from the artefact the build generated.
+        """
+        from types import SimpleNamespace
+
+        commit = "a" * 40
+        monkeypatch.setattr(app_module, "_embedded_build_revision", lambda: commit)
+        monkeypatch.setenv("VERCEL_GIT_COMMIT_SHA", "b" * 40)
         monkeypatch.setenv("SCHOLARZONE_BUILD_REVISION", "c" * 40)
-        assert app_module.build_revision() == ("c" * 40)[:12]
+        assert app_module.build_revision() == commit
+        assert len(app_module.build_revision()) == 40
+
+    def test_without_an_artifact_no_identity_is_claimed(self, app_module, monkeypatch):
+        """A missing artefact plus a runtime SHA still yields no identity."""
+        from types import SimpleNamespace
+
+        monkeypatch.setattr(app_module, "_embedded_build_revision", lambda: None)
+        monkeypatch.setattr(
+            app_module, "get_settings", lambda: SimpleNamespace(environment="production")
+        )
+        monkeypatch.setenv("SCHOLARZONE_BUILD_REVISION", "c" * 40)
+        assert app_module.build_revision() == "unknown"
 
     @pytest.mark.parametrize("value", ["unknown", "latest", "", "not-a-sha", "12345", "deadbeef!"])
     def test_untrustworthy_revision_values_are_rejected(self, app_module, monkeypatch, value):
@@ -111,9 +138,8 @@ class TestRevisionIsARealBuildIdentity:
     ):
         import dataclasses
 
+        monkeypatch.setattr(app_module, "_embedded_build_revision", lambda: None)
         real_settings = app_module.get_settings()
-        for name in ("VERCEL_GIT_COMMIT_SHA", "VERCEL_GIT_COMMIT_REF", "SCHOLARZONE_BUILD_REVISION"):
-            monkeypatch.delenv(name, raising=False)
         monkeypatch.setattr(
             app_module,
             "get_settings",

@@ -77,3 +77,7 @@ migration_validation.sql
 archive/
 
 backend/gh_token.txt
+
+# Immutable build identity, generated during the Vercel build and never committed.
+# A checked-in revision would be a claim about a build that never happened.
+backend/app/_build_revision.py

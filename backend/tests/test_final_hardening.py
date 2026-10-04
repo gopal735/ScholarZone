@@ -486,26 +486,48 @@ class TestBuildRevision:
         assert "revision" in source
         assert "build_revision()" in source
 
-    def test_revision_is_the_env_value_truncated(self, monkeypatch):
-        from app.main import build_revision
+    def test_a_runtime_variable_cannot_state_the_revision(self, monkeypatch):
+        """Identity comes from the build artefact, never from the environment.
 
-        monkeypatch.setenv("SCHOLARZONE_BUILD_REVISION", "abcdef1234567890")
-        assert build_revision() == "abcdef123456"
+        This used to assert the reverse - that ``SCHOLARZONE_BUILD_REVISION``
+        was truncated to twelve characters. A runtime variable can be set by a
+        stale process while entirely different code is served, and a prefix
+        cannot be compared against a commit, so neither half was safe.
+        """
+        from types import SimpleNamespace
 
-    def test_development_reports_dev(self, monkeypatch):
-        from app.core.config import get_settings
         import app.main as main_module
 
-        monkeypatch.delenv("SCHOLARZONE_BUILD_REVISION", raising=False)
-        monkeypatch.setenv("SCHOLARZONE_ENVIRONMENT", "development")
+        commit = "d" * 40
+        monkeypatch.setattr(main_module, "_embedded_build_revision", lambda: commit)
+        monkeypatch.setenv("SCHOLARZONE_BUILD_REVISION", "abcdef1234567890")
+        monkeypatch.setenv("VERCEL_GIT_COMMIT_SHA", "e" * 40)
+        assert main_module.build_revision() == commit
+        assert len(main_module.build_revision()) == 40
+
+    def test_development_reports_dev(self, monkeypatch):
+        import app.main as main_module
+        from types import SimpleNamespace
+
+        monkeypatch.setattr(main_module, "_embedded_build_revision", lambda: None)
+        monkeypatch.setattr(
+            main_module, "get_settings", lambda: SimpleNamespace(environment="development")
+        )
         assert main_module.build_revision() == "dev"
 
     def test_production_without_a_revision_reports_unknown(self, monkeypatch):
+        """No artefact in production claims nothing - it does not guess."""
+        import dataclasses
+
         import app.main as main_module
 
-        monkeypatch.delenv("SCHOLARZONE_BUILD_REVISION", raising=False)
-        monkeypatch.setenv("SCHOLARZONE_ENVIRONMENT", "production")
-        monkeypatch.setenv("SCHOLARZONE_DATABASE_URL", "postgresql://u:p@host/db")
+        monkeypatch.setattr(main_module, "_embedded_build_revision", lambda: None)
+        real_settings = main_module.get_settings()
+        monkeypatch.setattr(
+            main_module,
+            "get_settings",
+            lambda: dataclasses.replace(real_settings, environment="production"),
+        )
         assert main_module.build_revision() == "unknown"
 
     def test_no_secret_is_exposed(self, monkeypatch):

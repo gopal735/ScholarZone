@@ -1,7 +1,9 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "$schema": "https://openapi.vercel.com/vercel.json",
   "_comment": "Backend service only. The repository root vercel.json declares exactly two services (backend and frontend) and routes public traffic between them, so the API and the SPA share one origin and one deployment. This file holds only settings that belong to the backend service itself; the service's framework and routing are declared in the root vercel.json.",
   "installCommand": "pip install -r requirements.txt",
+  "buildCommand": "python scripts/generate_build_revision.py",
+  "_buildCommandComment": "Fails the build unless VERCEL_GIT_COMMIT_SHA is a full 40-character commit SHA. The generated app/_build_revision.py is the only thing build_revision() reads at runtime, so the running service cannot claim an identity the build did not prove. This script is never run by a local checkout, so local development is unaffected.",
   "functions": {
     "api/index.py": {
       "maxDuration": 30

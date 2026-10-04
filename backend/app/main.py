@@ -48,31 +48,50 @@ logging.basicConfig(
 )
 
 
-def build_revision() -> str:
-    """Short git SHA of the running build, or ``dev``/``unknown``.
+#: A build revision is the full 40-character commit SHA the artefact was built
+#: from. A prefix cannot be compared against a commit, so prefixes are rejected
+#: rather than accepted and shortened.
+_FULL_SHA = re.compile(r"^[0-9a-f]{40}$")
 
-    Resolved once at import, from the platform's own deployment identity.
 
-    Order matters. The platform identifier comes first because it cannot be
-    falsified by hand: Vercel injects ``VERCEL_GIT_COMMIT_SHA`` for the exact
-    commit it built, so the value describes the artefact actually running rather
-    than a label somebody remembered to set. An operator-supplied variable is
-    accepted only as a fallback, because a build that is told what revision to
-    claim will happily claim it while serving older code - which is precisely
-    the failure this endpoint exists to make detectable.
+def _embedded_build_revision() -> str | None:
+    """The revision written into the package when it was built.
 
-    A production build with no identifiable commit reports ``unknown``, and the
-    deployment verification treats anything that is not the expected SHA as a
-    failure. A healthy process serving the wrong commit must never be reported
-    as a successful deployment.
+    This is the only source of build identity. Nothing at runtime can change
+    it: not an environment variable, not a request header, not a query string.
     """
-    for variable in ("VERCEL_GIT_COMMIT_SHA", "VERCEL_GIT_COMMIT_REF"):
-        raw = (os.getenv(variable) or "").strip()
-        if raw and re.fullmatch(r"[0-9a-fA-F]{7,64}", raw):
-            return raw[:12]
-    raw = (os.getenv("SCHOLARZONE_BUILD_REVISION") or "").strip()
-    if raw and re.fullmatch(r"[0-9a-fA-F]{7,64}", raw):
-        return raw[:12]
+    try:
+        from ._build_revision import BUILD_REVISION  # type: ignore[attr-defined]
+    except Exception:
+        return None
+    value = str(BUILD_REVISION).strip()
+    return value if _FULL_SHA.match(value) else None
+
+
+def build_revision() -> str:
+    """Full git SHA of the running build.
+
+    Resolved once, from the artefact generated at build time by
+    ``scripts/generate_build_revision.py``. That module is produced by the
+    build from the exact commit Vercel built, and it is not committed, so it
+    cannot be a stale claim checked into the repository.
+
+    **Runtime cannot override this.** The previous implementation read
+    ``VERCEL_GIT_COMMIT_SHA`` and ``SCHOLARZONE_BUILD_REVISION`` at request
+    time and returned a twelve-character prefix. Both halves of that were
+    wrong: a runtime variable is something a stale process or a misconfigured
+    deploy can set while serving entirely different code, and a prefix is not
+    comparable to a commit, so the deployment gate could only ever check a
+    prefix of the value it was comparing.
+
+    A local checkout has no generated artefact, so it reports ``dev``. A
+    production build that somehow lacks one reports ``unknown`` rather than
+    guessing - and the deployment gate treats both as a failure, because a
+    healthy-looking response is exactly what this endpoint exists to disprove.
+    """
+    embedded = _embedded_build_revision()
+    if embedded is not None:
+        return embedded
     if get_settings().environment != "production":
         return "dev"
     return "unknown"
