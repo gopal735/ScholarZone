@@ -35,7 +35,7 @@ def main() -> int:
         print("MAINTENANCE RUN STAGE DETAIL (read-only)")
         print("=" * 78)
         if wanted:
-            q = ("SELECT * FROM maintenance_runs WHERE id = ANY(:ids) ORDER BY id DESC")
+            q = text("SELECT * FROM maintenance_runs WHERE id = ANY(:ids) ORDER BY id DESC")
             rows = session.execute(q, {"ids": wanted}).mappings().all()
         else:
             rows = session.execute(text(
