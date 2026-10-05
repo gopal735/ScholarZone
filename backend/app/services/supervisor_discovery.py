@@ -920,9 +920,9 @@ def _verification_status_for(candidate: FacultyCandidate) -> str:
     role from the name; for "Rachit Agarwal Professor" that is "Rachit Agarwal",
     and for "Academic Staff" it is one token that is not a name.
 
-    **An inline role has to belong to the name it is attached to.** The second
-    condition cannot see this, because both of these reach the gate as a
-    person-shaped name plus a role-looking string:
+    **The name has to have claimed a person.** The second condition cannot see this,
+    because both of these arrive at the gate as a person-shaped name plus a
+    role-looking string:
 
         "Rachit Agarwal Professor - a person and a role, in one clause"
         "Nanyang Research | Researchers - a heading, and a role beside it"
@@ -932,9 +932,13 @@ def _verification_status_for(candidate: FacultyCandidate) -> str:
     "Nanyang Research" and "S Chandra Das" are both two capitalised words - so the
     gate reads ``name_claims_person``, which
     :func:`~app.services.supervisor_person.classify_person_candidate` decided
-    while it still had the segments in hand. Only ``inline_role`` is put to that
-    question: an honorific leads its own name, and a profile role was read off
-    that person's page, so neither can borrow a claim from a neighbour.
+    while it still had the segments in hand.
+
+    It is asked of ``inline_role`` evidence, where a neighbouring segment can lend
+    its role to a name that asserted nothing. An honorific leads its own name, and
+    a profile role was read off that person's own page - the case
+    ``test_a_role_on_the_profile_promotes_a_structural_candidate`` deliberately
+    relies on, so neither is put to it.
 
     All three live here rather than in the caller so this stays the single place
     where evidence strength becomes a verification decision. There is one thing to
@@ -1005,13 +1009,12 @@ def _persist_candidates(
                 candidate.profile_url,
             )
             continue
-        # Third gate, on where the role came from. An inline role was read out of
-        # the link text, which is the one shape where a neighbouring segment can
-        # lend its role to a name that asserted nothing - "Nanyang Research |
-        # Researchers" is a heading and a role, not a person, and both the second
-        # gate and the surface form wave it through. Believing it here would write
-        # a research centre into professor_profiles as a verified professor, so it
-        # is dropped before any row is created rather than created and hidden.
+        # Third gate, on whether the name ever claimed a person. An inline role is the
+        # one shape where a neighbouring segment can lend its role to a name that
+        # asserted nothing - "Nanyang Research | Researchers" is a heading and a
+        # role, not a person. Believing it here would write a research centre into
+        # professor_profiles, so it is dropped before any row exists rather than
+        # created and hidden.
         if candidate.role_evidence == "inline_role" and not candidate.name_claims_person:
             logger.info(
                 "Skipping candidate whose name asserts no person of its own: %s (%s)",
