@@ -302,6 +302,13 @@ class FacultyCandidate:
     #: ``source_context``. Kept so a reviewer can see the reasoning rather than
     #: re-derive it.
     role_evidence: str | None = None
+    #: Whether ``name`` itself claimed a person, rather than sitting next to a role
+    #: the institution stated elsewhere in the same link text. Carried from
+    #: :class:`~app.services.supervisor_person.PersonSignal` because name and role
+    #: together cannot recover it: "Rachit Agarwal Professor" and "Nanyang Research
+    #: | Researchers" both arrive here as a person-shaped name plus a role string,
+    #: and only the classifier still knows which one made the claim.
+    name_claims_person: bool = True
 
     @property
     def has_role_evidence(self) -> bool:
@@ -644,6 +651,7 @@ def extract_faculty_candidates(
                 department=None,
                 role=signal.role,
                 role_evidence=signal.role_evidence,
+                name_claims_person=signal.name_claims_person,
                 evidence_summary=f"Listed on {page_url} ({signal.role_evidence})",
             )
         )
@@ -898,27 +906,45 @@ def timedelta_days(days: int):
 def _verification_status_for(candidate: FacultyCandidate) -> str:
     """Return the relationship status a freshly discovered candidate earns.
 
-    Two conditions, and both are necessary.
+    Three conditions, and all three are necessary.
 
     **A role was stated.** ``has_role_evidence`` is true when the institution
     stated an academic role, on the listing or on the profile. Directory
     structure alone is a weaker signal and earns ``UNVERIFIED``.
 
-    **The name is a person and not the role restated.** A label like "Academic
-    Staff" states a role and names a collective. It satisfies the first condition
-    and evidences no individual, so consulting only that condition promoted two
+    **The name is a person and not the role restated.** A label like "Academic Staff"
+    states a role and names a collective. It satisfies the first condition and
+    evidences no individual, so consulting only that condition promoted two
     navigation links on the real Cornell directory into verified professors. The
     second condition asks whether anything person-shaped survives removing the
     role from the name; for "Rachit Agarwal Professor" that is "Rachit Agarwal",
     and for "Academic Staff" it is one token that is not a name.
 
-    Both live here rather than in the caller so this stays the single place where
-    evidence strength becomes a verification decision. There is one thing to read
-    when asking whether a weak signal can promote itself.
+    **An inline role has to belong to the name it is attached to.** The second
+    condition cannot see this, because both of these reach the gate as a
+    person-shaped name plus a role-looking string:
+
+        "Rachit Agarwal Professor - a person and a role, in one clause"
+        "Nanyang Research | Researchers - a heading, and a role beside it"
+
+    The first names somebody. The second names a research centre and borrows a
+    role stated somewhere else on the page. Surface form cannot separate them -
+    "Nanyang Research" and "S Chandra Das" are both two capitalised words - so the
+    gate reads ``name_claims_person``, which
+    :func:`~app.services.supervisor_person.classify_person_candidate` decided
+    while it still had the segments in hand. Only ``inline_role`` is put to that
+    question: an honorific leads its own name, and a profile role was read off
+    that person's page, so neither can borrow a claim from a neighbour.
+
+    All three live here rather than in the caller so this stays the single place
+    where evidence strength becomes a verification decision. There is one thing to
+    read when asking whether a weak signal can promote itself.
     """
     if not candidate.has_role_evidence:
         return str(RelationshipVerificationStatus.UNVERIFIED)
     if role_words_are_the_whole_name(candidate.name, candidate.role):
+        return str(RelationshipVerificationStatus.UNVERIFIED)
+    if candidate.role_evidence == "inline_role" and not candidate.name_claims_person:
         return str(RelationshipVerificationStatus.UNVERIFIED)
     return str(RelationshipVerificationStatus.VERIFIED)
 
@@ -975,6 +1001,20 @@ def _persist_candidates(
         if role_words_are_the_whole_name(candidate.name, candidate.role):
             logger.info(
                 "Skipping candidate whose name is only the role restated: %s (%s)",
+                candidate.name,
+                candidate.profile_url,
+            )
+            continue
+        # Third gate, on where the role came from. An inline role was read out of
+        # the link text, which is the one shape where a neighbouring segment can
+        # lend its role to a name that asserted nothing - "Nanyang Research |
+        # Researchers" is a heading and a role, not a person, and both the second
+        # gate and the surface form wave it through. Believing it here would write
+        # a research centre into professor_profiles as a verified professor, so it
+        # is dropped before any row is created rather than created and hidden.
+        if candidate.role_evidence == "inline_role" and not candidate.name_claims_person:
+            logger.info(
+                "Skipping candidate whose name asserts no person of its own: %s (%s)",
                 candidate.name,
                 candidate.profile_url,
             )
