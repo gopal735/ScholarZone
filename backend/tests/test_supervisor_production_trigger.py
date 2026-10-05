@@ -17,10 +17,12 @@ throwaway values through the environment.
 
 from __future__ import annotations
 
+import json
 import os
 import re
 from datetime import date
 from pathlib import Path
+from urllib.parse import urlsplit
 
 import pytest
 
@@ -674,3 +676,101 @@ class TestTheWorkflowIsHostAgnostic:
 
     def test_an_unset_host_fails_closed(self):
         assert 'if [ -z "$SCHOLARZONE_API_URL" ]; then' in _code_only(_workflow_text())
+
+
+class TestThePublicUrlResolution:
+    """The request must reach the backend route through Vercel's public path.
+
+    This is the subtlest coupling in the whole change, so it is pinned rather
+    than documented.
+
+    ``vars.SCHOLARZONE_API_URL`` is configured as
+    ``https://<host>/api`` - it already carries the public prefix, because every
+    other workflow in this repository builds paths by appending a bare route
+    (``$SCHOLARZONE_API_URL/internal/auth-check``). So the workflow must append a
+    **bare** route, not one prefixed with a second ``/api``.
+
+    The resolution is two steps on the way in, both of which strip exactly one
+    leading ``/api``:
+
+    1. ``vercel.json`` rewrites ``/api/(.*)`` to the backend service, then a
+       ``request.path`` transform rewrites ``/api/(.*)`` to ``/$1``;
+    2. ``StripApiPrefix`` middleware removes one more leading ``/api``.
+
+    The backend therefore has to be asked for ``/internal/supervisor/discover/{id}``
+    and the caller has to send ``/api/internal/supervisor/discover/{id}``. Adding a
+    literal ``/api`` to the route would yield ``/api/api/...``, which happens to
+    survive only because two independent layers each strip one prefix. That is
+    exactly the kind of accident that survives until one layer is tightened, so it
+    is rejected here.
+    """
+
+    #: The value `vars.SCHOLARZONE_API_URL` actually holds in this repository. It is
+    #: a repository *variable*, not a secret, so it is not masked and not sensitive.
+    CONFIGURED_API_URL = "https://scholarzone-fwzj.vercel.app/api"
+
+    ROUTE_IN_WORKFLOW = "/internal/supervisor/discover/$TARGET_SCHOLARSHIP_ID"
+
+    def test_the_variable_already_carries_the_public_api_prefix(self):
+        """Precondition: the two rewrites are why a bare route is correct."""
+        vercel = json.loads((REPO / "vercel.json").read_text(encoding="utf-8"))
+        rewrites = [r["source"] for r in vercel["rewrites"]]
+        assert "/api/(.*)" in rewrites
+        backend = vercel["services"]["backend"]
+        transforms = backend["routes"][0]["transforms"]
+        assert transforms[0]["args"] == "/$1", (
+            "the backend transform must strip the /api prefix it was given"
+        )
+
+        prefix = (BACKEND / "app" / "middleware" / "api_prefix.py").read_text(
+            encoding="utf-8"
+        )
+        assert 'PREFIX = "/api"' in prefix
+        # One prefix, not a loop: a double prefix must not be silently accepted.
+        assert "while path.startswith" not in prefix
+
+    def test_the_workflow_requests_the_public_api_path(self):
+        """The resolved public URL must be exactly the documented endpoint."""
+        resolved = self.CONFIGURED_API_URL + self.ROUTE_IN_WORKFLOW
+        path = urlsplit(resolved).path
+
+        assert path == "/api/internal/supervisor/discover/$TARGET_SCHOLARSHIP_ID", (
+            f"the public endpoint resolved to {path!r}"
+        )
+        assert not path.startswith("/api/api/"), (
+            "a doubled /api prefix only works because two layers each strip one "
+            "prefix; the workflow must append a bare route"
+        )
+        assert path.endswith(self.ROUTE_IN_WORKFLOW)
+        # And the workflow really builds it that way, from the variable.
+        assert f"$SCHOLARZONE_API_URL{self.ROUTE_IN_WORKFLOW}" in _workflow_text()
+
+    def test_the_backend_route_itself_is_root_level(self):
+        """The backend route is declared without a prefix; the platform adds it."""
+        from app.middleware.api_prefix import PREFIX, StripApiPrefix
+        from app.main import app
+
+        paths = [
+            path
+            for path in app.openapi()["paths"]
+            if path.startswith("/internal/supervisor")
+        ]
+        assert paths == ["/internal/supervisor/discover/{scholarship_id}"]
+        # So it is reached at /api/internal/supervisor/discover/{id} publicly and
+        # matches exactly after either stripping step.
+        assert PREFIX == "/api"
+        assert StripApiPrefix(app=None).prefix == "/api"
+        for public, backend_path in (
+            ("/api/internal/supervisor/discover/7", "/internal/supervisor/discover/7"),
+            ("/internal/supervisor/discover/7", "/internal/supervisor/discover/7"),
+        ):
+            transformed = public[len("/api"):] if public.startswith("/api/") else public
+            assert transformed == backend_path, (
+                f"{public} would reach {transformed!r}, not {backend_path!r}"
+            )
+
+    def test_no_host_literal_is_embedded_in_the_workflow(self):
+        """The host comes only from the variable - never from a literal."""
+        code = _code_only(_workflow_text())
+        assert "scholarzone-fwzj" not in code
+        assert "vercel.app" not in code
