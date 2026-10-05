@@ -44,5 +44,11 @@
         "service": "frontend"
       }
     }
+  ],
+  "crons": [
+    {
+      "path": "/api/internal/maintenance/dispatch",
+      "schedule": "0 9 * * *"
+    }
   ]
 }

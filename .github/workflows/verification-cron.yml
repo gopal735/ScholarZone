@@ -30,6 +30,26 @@ on:
     - cron: '7 */12 * * *'
   workflow_dispatch:
     inputs:
+      slot_id:
+        # Kept on one line deliberately: a multi-line single-quoted YAML scalar is
+        # an unterminated string to Python's tokenizer, which makes the
+        # SnapDeploy-dependency check fall back to reading the whole file and then
+        # flag the historical mention in the comment at the top of this workflow.
+        description: 'Durable logical slot this run belongs to, supplied by the external dispatcher. Empty for the normal GitHub schedule.'
+        required: false
+        type: string
+      dispatch_id:
+        description: 'Correlation id for an external dispatch.'
+        required: false
+        type: string
+      logical_source:
+        description: 'Logical origin of this run. Empty for the normal schedule, which is recorded as github_schedule. The external dispatcher passes external_scheduler_dispatch explicitly, because a GitHub workflow_dispatch event does NOT imply a manual or scheduled origin.'
+        required: false
+        type: string
+      transport_event:
+        description: 'What carried the request (schedule, workflow_dispatch). Recorded separately from logical_source.'
+        required: false
+        type: string
       stage:
         description: 'Stage to run (verify, enrich, images, discover, quarantine, stats, or all)'
         required: false

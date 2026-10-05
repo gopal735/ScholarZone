@@ -87,6 +87,14 @@ class MaintenanceRunRecorder:
         )
     )
     dry_run: bool = False
+    #: Durable logical slot this run belongs to, when the dispatcher or
+    #: the schedule supplied one. None for an ad-hoc run.
+    slot_id: str | None = None
+    #: Why the run happened (github_schedule, external_scheduler_dispatch,
+    #: manual). Kept separate from transport_event by design.
+    logical_source: str | None = None
+    #: What carried the request (schedule, workflow_dispatch).
+    transport_event: str | None = None
     started_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
     stages: list[dict] = field(default_factory=list)
     counts: dict = field(default_factory=dict)
@@ -121,6 +129,9 @@ class MaintenanceRunRecorder:
                     stages=[],
                     counts={},
                     dry_run=self.dry_run,
+                    slot_id=self.slot_id,
+                    logical_source=self.logical_source,
+                    transport_event=self.transport_event,
                 )
             )
             session.commit()

@@ -2,8 +2,10 @@
 
 from datetime import date, datetime
 
-from sqlalchemy import JSON, Boolean, Date, DateTime, Float, ForeignKey, Index, Integer, Numeric, String, Text, UniqueConstraint, func
+from sqlalchemy import JSON, Boolean, CheckConstraint, Date, DateTime, Float, ForeignKey, Index, Integer, Numeric, String, Text, UniqueConstraint, func
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+
+from .maintenance_slots import LogicalSource, SlotState
 
 
 class Base(DeclarativeBase):
@@ -490,10 +492,34 @@ class MaintenanceRun(Base):
     __table_args__ = (
         Index("ix_maintenance_runs_started", "started_at"),
         Index("ix_maintenance_runs_status_started", "status", "started_at"),
+        # ``create_all`` only creates the indexes of the tables it creates, so
+        # this index is additionally applied by an explicit
+        # ``CREATE INDEX IF NOT EXISTS`` in the startup migration. Without both,
+        # an existing database would never get it.
+        Index("ix_maintenance_runs_slot_id", "slot_id"),
     )
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     run_id: Mapped[str] = mapped_column(String(64), nullable=False, unique=True)
+    #: Which logical schedule slot this execution belongs to, if any.
+    #:
+    #: Nullable, not unique, and deliberately not a foreign key. ``run_id`` stays
+    #: the execution identity, and a run may legitimately have no slot: a manual or
+    #: local dry run does real work without consuming a scheduled slot.
+    #:
+    #: The slot's state, lease and ownership deliberately do NOT live here. They
+    #: live in ``maintenance_slots``, one row per logical slot. This table is
+    #: execution history, so a dropped trigger writes no row and the slot that
+    #: never ran is invisible here - which is the entire reason the separate
+    #: table exists. Duplicating ``state``/``lease_until``/``claim_owner`` onto
+    #: the run row would reintroduce that blindness and create a second, divergent
+    #: source of truth for ownership.
+    #:
+    #: Uniqueness of ``slot_id`` therefore belongs to ``maintenance_slots.slot_id``
+    #: and nowhere else, which is what guarantees at most one active claim per
+    #: logical slot. Historic rows stay NULL and are not backfilled: inventing a
+    #: slot for a run would assert an attribution that was never recorded.
+    slot_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
     started_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), nullable=False, server_default=func.now()
     )
@@ -507,6 +533,76 @@ class MaintenanceRun(Base):
     error_summary: Mapped[str | None] = mapped_column(Text, nullable=True)
     dry_run: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
     duration_ms: Mapped[float | None] = mapped_column(Float, nullable=True)
+
+
+class MaintenanceSlot(Base):
+    """One durable row per logical schedule slot, whether or not it executed.
+
+    ``MaintenanceRun`` above is *execution history*: a row exists only because
+    something ran. A dropped scheduled trigger writes no row, so the one table
+    that could answer "which slot was due but never executed?" is empty in
+    exactly the case we need to detect. This table is created from the schedule
+    instead of from the run, so absence of a run becomes visible as a stuck
+    ``DUE`` row rather than as silence.
+
+    Identity is the deterministic ``slot_id`` produced by the pure core, and it
+    is UNIQUE. That uniqueness is the load-bearing part of the whole design:
+    "one logical slot -> one row -> at most one active claim" is then enforced by
+    the database, not by application timing.
+
+    Claims are taken with a single conditional ``UPDATE ... WHERE state IN
+    (...)`` whose row count decides the winner, and a held lease is protected by
+    the same statement rather than by a read-then-write in Python, which is what
+    makes eight concurrent contenders produce exactly one owner.
+    """
+
+    __tablename__ = "maintenance_slots"
+    __table_args__ = (
+        # Recovery and the "what is overdue" query are both driven by
+        # ``(state, lease_until)``, so that is the access path, not ``owner``.
+        Index("ix_maintenance_slots_state_lease", "state", "lease_until"),
+        Index("ix_maintenance_slots_due_at", "due_at"),
+        # An attempt count can only ever move forward. A negative value would be
+        # corrupt rather than merely wrong, and it is the number a reader uses to
+        # decide whether a slot is stuck or simply retried.
+        CheckConstraint("attempt >= 0", name="ck_maintenance_slots_attempt_non_negative"),
+    )
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    #: Canonical identity from ``maintenance_slots.slot_id``, e.g.
+    #: ``maintenance:2026-10-04T12:07:00Z``. Deterministic in the due instant.
+    slot_id: Mapped[str] = mapped_column(String(64), nullable=False, unique=True)
+    due_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    state: Mapped[str] = mapped_column(
+        String(16), nullable=False, default=SlotState.DUE.value
+    )
+    #: Why the slot was due. Kept separate from ``transport_event`` so a
+    #: backstop-dispatched run cannot be mistaken for a real GitHub schedule.
+    logical_source: Mapped[str] = mapped_column(
+        String(32), nullable=False, default=LogicalSource.GITHUB_SCHEDULE.value
+    )
+    #: What actually carried the request, e.g. ``schedule`` or
+    #: ``workflow_dispatch``.
+    transport_event: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    #: The single owner of the active claim. NULL whenever the slot is unclaimed.
+    owner: Mapped[str | None] = mapped_column(String(128), nullable=True)
+    #: The instant the current claim lapses. Compared in SQL, never in Python,
+    #: so an active lease cannot be stolen by another owner.
+    lease_until: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
+    #: The GitHub Actions run that is executing this slot, when one was dispatched.
+    workflow_run_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    #: Successful claims so far. A recovered slot carries 2 or more, which is what
+    #: distinguishes a retried slot from a stuck one.
+    attempt: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    failure_classification: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
+    )
 
 
 class ContentFingerprintRecord(Base):

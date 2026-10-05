@@ -28,6 +28,7 @@ from .routers.enrichment import router as enrichment_router
 from .routers.auth import router as auth_router
 from .routers.dashboard import router as dashboard_router
 from .routers.applications import router as applications_router
+from .routers.internal_maintenance import router as internal_maintenance_router
 from .routers.mentor import router as mentor_router
 from .routers.supervisors import router as supervisors_router
 from .routers.outreach import router as outreach_router
@@ -336,6 +337,11 @@ app.include_router(mentor_router)
 # No authentication router is added here: master already owns /auth.
 app.include_router(outreach_router)
 app.include_router(supervisor_email_router)
+
+# The internal dispatcher is mounted last and behind constant-time Cron
+# authentication. It never runs maintenance; it only reconciles, claims
+# and dispatches a logical slot to GitHub Actions.
+app.include_router(internal_maintenance_router)
 
 
 @app.get("/debug/fix-null-lists")

@@ -83,11 +83,57 @@ def init_database() -> None:
 
     engine = get_engine()
     Base.metadata.create_all(bind=engine)
+    # ``maintenance_slots`` itself is a new table and therefore created by
+    # create_all above. ``maintenance_runs`` already exists in every deployed
+    # database, and create_all neither alters it nor creates indexes on a table
+    # it did not create, so the new slot column and its index need explicit,
+    # idempotent DDL.
+    _upgrade_maintenance_slot_schema(engine)
     if engine.dialect.name == "sqlite":
         _upgrade_sqlite_schema(engine)
     elif engine.dialect.name == "postgresql":
         _upgrade_postgresql_schema(engine)
         _validate_postgresql_schema(engine)
+
+
+def _upgrade_maintenance_slot_schema(engine: Engine) -> None:
+    """Add the logical-slot identity to the existing maintenance_runs table.
+
+    ``maintenance_runs`` predates logical slots: it records executions, and a
+    slot that came due and never ran leaves no row at all. The link back to the
+    slot is therefore a new nullable column rather than a new table, so no
+    historic row is invalidated and no backfill is required or wanted - a run
+    with no slot simply predates the concept.
+
+    Both statements are guarded and idempotent, so this runs on every startup
+    and a second run is a no-op. Nothing here drops or recreates the table: an
+    existing database keeps its rows.
+    """
+    inspector = inspect(engine)
+    if not inspector.has_table("maintenance_runs"):
+        return
+
+    columns = {column["name"] for column in inspector.get_columns("maintenance_runs")}
+    # SQLite has no ``ALTER TABLE ... ADD COLUMN IF NOT EXISTS``, so the guard is
+    # the inspection on both dialects and the clause is belt-and-braces on
+    # PostgreSQL, matching how the ``scholarships`` additions above are applied.
+    add_if_absent = "ADD COLUMN IF NOT EXISTS" if engine.dialect.name == "postgresql" else "ADD COLUMN"
+
+    with engine.begin() as connection:
+        if "slot_id" not in columns:
+            connection.execute(
+                text(
+                    f"ALTER TABLE maintenance_runs {add_if_absent} slot_id VARCHAR(64)"
+                )
+            )
+        # create_all only emits the indexes of the tables it creates, so on an
+        # already-deployed database this index would silently never appear.
+        connection.execute(
+            text(
+                "CREATE INDEX IF NOT EXISTS ix_maintenance_runs_slot_id "
+                "ON maintenance_runs (slot_id)"
+            )
+        )
 
 
 def _upgrade_postgresql_schema(engine: Engine) -> None:
@@ -310,6 +356,12 @@ def _upgrade_sqlite_schema(engine: Engine) -> None:
     Production PostgreSQL deployments should use a reviewed migration workflow.
     The statements below are static and only target a developer's SQLite database.
     """
+    # Slot schema is applied once for both dialects by ``init_database()`` via
+    # ``_upgrade_maintenance_slot_schema``. It is deliberately not repeated here:
+    # that helper opens its own transaction, and nesting ``engine.begin()``
+    # inside ``engine.begin()`` would check out a second connection and can
+    # deadlock against the first on SQLite.
+
     columns = {column["name"] for column in inspect(engine).get_columns("scholarships")}
     additions = {
         "status": "VARCHAR(20) NOT NULL DEFAULT 'open'",
