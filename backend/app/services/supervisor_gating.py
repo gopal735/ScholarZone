@@ -77,7 +77,11 @@ from enum import StrEnum
 from typing import Protocol
 from urllib.parse import urlparse, urlunparse
 
-from .supervisor_person import name_is_person_shaped, role_words_are_the_whole_name
+from .supervisor_person import (
+    name_is_person_shaped,
+    profile_url_is_person_profile,
+    role_words_are_the_whole_name,
+)
 from .supervisor_status import RelationshipVerificationStatus
 
 # ---------------------------------------------------------------------------
@@ -452,6 +456,12 @@ def verify_supervisor_candidate(
         reasons.append(
             f"{name!r} borrows the role {role!r} from a neighbouring segment and "
             f"claims no individual of its own"
+        )
+    elif role_evidence == "inline_role" and not profile_url_is_person_profile(profile_url):
+        failed.append(SupervisorGate.PERSONHOOD)
+        reasons.append(
+            f"{profile_url!r} is not a person-profile URL, so inline-role evidence "
+            f"cannot establish personhood for {name!r}"
         )
 
     # 2. Role evidence. A stated academic role, established by a route this

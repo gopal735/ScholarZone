@@ -270,6 +270,20 @@ def _slug_is_personal(slug: str | None) -> bool:
     return not any(word in NAVIGATIONAL_SLUG_WORDS for word in words)
 
 
+def profile_url_is_person_profile(url: str) -> bool:
+    """Return whether ``url`` sits at a personal-profile path.
+
+    A URL is person-bearing when its path begins with a recognised personal-profile
+    root and the immediately following slug is not navigational. This is the same
+    test the classifier applies for source-context evidence, lifted here so the
+    gating layer can require it for inline-role evidence as well.
+    """
+    if not url:
+        return False
+    slug = _slug_after_person_root(url)
+    return _slug_is_personal(slug)
+
+
 def classify_person_candidate(
     label: str,
     *,
@@ -435,6 +449,7 @@ __all__ = [
     "classify_person_candidate",
     "looks_like_a_person_name",
     "name_is_person_shaped",
+    "profile_url_is_person_profile",
     "role_words_are_the_whole_name",
     "states_role_about_a_person",
 ]

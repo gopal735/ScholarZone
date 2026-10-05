@@ -75,6 +75,7 @@ from .supervisor_person import (
     academic_role_in,
     classify_person_candidate,
     looks_like_a_person_name,
+    profile_url_is_person_profile,
     role_words_are_the_whole_name,
 )
 from .supervisor_status import (
@@ -944,6 +945,20 @@ def _persist_candidates(
         if role_words_are_the_whole_name(candidate.name, candidate.role):
             logger.info(
                 "Skipping candidate whose name is only the role restated: %s (%s)",
+                candidate.name,
+                candidate.profile_url,
+            )
+            continue
+        # Inline-role evidence requires a person-profile URL. A programme page or
+        # research-centre link may use the same capitalised words as a name, but
+        # its URL does not point to an individual, so the role it states cannot
+        # establish personhood on its own.
+        if (
+            candidate.role_evidence == "inline_role"
+            and not profile_url_is_person_profile(candidate.profile_url)
+        ):
+            logger.info(
+                "Skipping inline-role candidate without a person-profile URL: %s (%s)",
                 candidate.name,
                 candidate.profile_url,
             )

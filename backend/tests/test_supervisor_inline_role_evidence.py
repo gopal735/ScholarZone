@@ -30,9 +30,15 @@ import pytest
 
 os.environ.setdefault("SCHOLARZONE_ENVIRONMENT", "test")
 
+from urllib.parse import urlparse
+
 from app.services.supervisor_discovery import (  # noqa: E402
     FacultyCandidate,
     _verification_status_for,
+)
+from app.services.supervisor_gating import (  # noqa: E402
+    SupervisorGate,
+    approve_candidate_set,
 )
 from app.services.supervisor_person import (  # noqa: E402
     academic_role_in,
@@ -366,3 +372,118 @@ def test_storage_gate_refuses_a_role_restated_as_a_name():
     assert "Academic Staff" not in names
     assert names == ["Rachit Agarwal"]
     assert db.execute(select(ScholarshipProfessorLink)).scalars().all()
+
+
+# ---------------------------------------------------------------------------
+# Test 6 - the URL contract for inline-role evidence
+# ---------------------------------------------------------------------------
+
+
+def test_inline_role_requires_a_person_profile_url():
+    """Inline-role evidence is person-eligible only when the profile URL is a
+    personal-profile path. A programme page or research-centre link does not
+    qualify, even if the remaining text looks like a name."""
+    from app.services.supervisor_gating import approve_candidate_set
+
+    candidate = FacultyCandidate(
+        name="Nanyang Research",
+        profile_url="https://www.ntu.edu.sg/education/talent-outreach/nrpjr",
+        role="researcher",
+        role_evidence="inline_role",
+        name_claims_person=True,
+    )
+    result = approve_candidate_set([candidate], seed_host="www.ntu.edu.sg", faculty_url=candidate.profile_url)
+    assert not result.approved
+    assert result.reasons_for(SupervisorGate.PERSONHOOD) >= 1
+
+
+def test_inline_role_with_person_profile_url_is_accepted():
+    """A genuine inline-role person at a personal-profile path is unaffected."""
+    from app.services.supervisor_gating import approve_candidate_set
+
+    candidate = FacultyCandidate(
+        name="Rachit Agarwal",
+        profile_url="https://uni1.edu/people/rachit-agarwal",
+        role="professor",
+        role_evidence="inline_role",
+        name_claims_person=True,
+    )
+    result = approve_candidate_set([candidate], seed_host="uni1.edu", faculty_url="https://uni1.edu/people/faculty")
+    assert [c.name for c in result.approved] == ["Rachit Agarwal"]
+
+
+@pytest.mark.parametrize(
+    "label,url",
+    [
+        ("Nanyang Research Programme Junior Researcher (NRPjr)",
+         "https://www.ntu.edu.sg/education/talent-outreach/nrpjr"),
+        ("Nanyang Research",
+         "https://www.ntu.edu.sg/education/talent-outreach/nrpjr"),
+        ("Research Centre",
+         "https://uni1.edu/research/centre"),
+        ("Department of Computing",
+         "https://uni1.edu/department/computing"),
+        ("Student Services",
+         "https://uni1.edu/services/students"),
+        ("Admissions Office",
+         "https://uni1.edu/admissions"),
+    ],
+)
+def test_organisational_labels_with_inline_role_are_refused(label, url):
+    """Programme, department, service, centre and programme names are refused
+    when they carry inline-role evidence but no person-profile URL."""
+    from app.services.supervisor_gating import approve_candidate_set
+
+    role = academic_role_in(label)
+    if role is None:
+        role = "researcher"
+    candidate = FacultyCandidate(
+        name=label,
+        profile_url=url,
+        role=role,
+        role_evidence="inline_role",
+        name_claims_person=True,
+    )
+    result = approve_candidate_set([candidate], seed_host=urlparse(url).netloc, faculty_url=url)
+    assert not result.approved, f"{label!r} at {url!r} must not be approved"
+
+
+@pytest.mark.parametrize(
+    "name,role,url",
+    [
+        ("S Chandra Das", "mr", "https://www.ntu.edu.sg/about-us/the-chancellery/mr-s.-chandra-das"),
+        ("Jennie Chua", "ms", "https://www.ntu.edu.sg/about-us/the-chancellery/ms-jennie-chua"),
+        ("Chua Thian Poh", "dr", "https://www.ntu.edu.sg/about-us/the-chancellery/dr-chua-thian-poh"),
+        ("Yaacob bin Ibrahim", "prof", "https://www.ntu.edu.sg/about-us/the-chancellery/prof-yaacob-bin-ibrahim"),
+    ],
+)
+def test_the_four_ntu_people_are_still_accepted(name, role, url):
+    """The four legitimate NTU people remain approved. They use honorific
+    evidence, so the inline-role URL contract does not apply to them."""
+    from app.services.supervisor_gating import approve_candidate_set
+
+    candidate = FacultyCandidate(
+        name=name,
+        profile_url=url,
+        role=role,
+        role_evidence="honorific",
+        name_claims_person=True,
+    )
+    result = approve_candidate_set([candidate], seed_host="www.ntu.edu.sg", faculty_url=url)
+    assert [c.name for c in result.approved] == [name]
+
+
+def test_inline_role_candidate_with_navigational_slug_is_refused():
+    """A URL under a person path root but with a navigational slug is still not
+    a person profile, so inline-role evidence cannot rely on it."""
+    from app.services.supervisor_gating import approve_candidate_set
+
+    candidate = FacultyCandidate(
+        name="Research Staff",
+        profile_url="https://uni1.edu/people/faculty",
+        role="researcher",
+        role_evidence="inline_role",
+        name_claims_person=True,
+    )
+    result = approve_candidate_set([candidate], seed_host="uni1.edu", faculty_url="https://uni1.edu/people/faculty")
+    assert not result.approved
