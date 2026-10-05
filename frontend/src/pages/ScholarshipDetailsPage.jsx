@@ -230,6 +230,7 @@ export default function ScholarshipDetailsPage() {
        both cases; it is removed as soon as a real record renders. */
     document.querySelectorAll('[data-sz-seo]').forEach(el => el.remove())
     if (loadState !== 'success' || !scholarship) {
+      document.title = 'Scholarship · ScholarZone'
       const noindex = document.createElement('meta')
       noindex.name = 'robots'
       noindex.content = 'noindex, follow'
@@ -247,19 +248,28 @@ export default function ScholarshipDetailsPage() {
     const description = readText(scholarship.description)
     const eligibility = readList(scholarship.eligibility)
     const descriptionText = description || `${scholarship.title} – ${providerName || 'Scholarship'} opportunity.`
+
+    // One title per scholarship, from the record's own fields. No count, no
+    // deadline and no funding claim is added here, because those change and a
+    // stale one in a search snippet is a claim we cannot stand behind.
+    const pageTitle = `${scholarship.title} | ScholarZone`
+    const previousTitle = document.title
+    document.title = pageTitle
     
     // Remove existing SEO tags we may have added
     document.querySelectorAll('[data-sz-seo]').forEach(el => el.remove())
     
     const metaTags = [
       { name: 'description', content: descriptionText.slice(0, 160) },
-      { property: 'og:title', content: scholarship.title },
+      { property: 'og:title', content: pageTitle },
       { property: 'og:description', content: descriptionText.slice(0, 300) },
       { property: 'og:url', content: canonicalUrl },
       { property: 'og:type', content: 'website' },
       { property: 'og:image', content: imageUrl || '' },
-      { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: scholarship.title },
+      // An image card with no image is a broken preview, so the card type
+      // follows whether the record actually has an official image.
+      { name: 'twitter:card', content: imageUrl ? 'summary_large_image' : 'summary' },
+      { name: 'twitter:title', content: pageTitle },
       { name: 'twitter:description', content: descriptionText.slice(0, 300) },
       { name: 'twitter:image', content: imageUrl || '' },
       { name: 'robots', content: 'index, follow' },
@@ -330,6 +340,7 @@ export default function ScholarshipDetailsPage() {
     // Cleanup
     return () => {
       document.querySelectorAll('[data-sz-seo]').forEach(el => el.remove())
+      document.title = previousTitle
     }
   }, [scholarship, loadState])
 

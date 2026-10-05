@@ -192,9 +192,16 @@ export default function HomePage() {
   // SEO meta tags
   useEffect(() => {
     const baseUrl = CANONICAL_ORIGIN
+    const previousTitle = document.title
 
     // Remove existing SEO tags
     document.querySelectorAll('[data-sz-seo]').forEach(el => el.remove())
+
+    // The <title> was previously never set here, so the document kept
+    // index.html's title on every route in the app. Each public page now claims
+    // its own, and index.html keeps the homepage's so the served HTML is right
+    // before this runs.
+    document.title = 'ScholarZone · Verified Scholarship Directory'
 
     const metaTags = [
       { name: 'description', content: description },
@@ -202,8 +209,7 @@ export default function HomePage() {
       { property: 'og:description', content: description },
       { property: 'og:url', content: `${baseUrl}/` },
       { property: 'og:type', content: 'website' },
-      { property: 'og:image', content: `${baseUrl}/og-image.png` },
-      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:card', content: 'summary' },
       { name: 'twitter:title', content: 'ScholarZone – Verified Scholarship Directory' },
       { name: 'twitter:description', content: description },
       { name: 'robots', content: 'index, follow' },
@@ -245,6 +251,7 @@ export default function HomePage() {
     
     return () => {
       document.querySelectorAll('[data-sz-seo]').forEach(el => el.remove())
+      document.title = previousTitle
     }
     // The description now carries the live catalogue size, so it has to be
     // rebuilt when the count arrives rather than only on mount — otherwise the

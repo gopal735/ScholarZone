@@ -94,57 +94,91 @@ export default function CountryPage() {
   // SEO meta tags
   useEffect(() => {
     const baseUrl = CANONICAL_ORIGIN
-    
+
+    const previousTitle = document.title
+    document.title = 'Explore Destinations | ScholarZone'
+
     document.querySelectorAll('[data-sz-seo]').forEach(el => el.remove())
-    
+
     const metaTags = [
       { name: 'description', content: 'Explore scholarships by country. Discover verified scholarship opportunities across the world\'s top study abroad destinations with verified official sources.' },
       { property: 'og:title', content: 'Explore Destinations | ScholarZone' },
       { property: 'og:description', content: 'Discover verified scholarship opportunities across the world\'s top study abroad destinations with verified official sources.' },
       { property: 'og:url', content: `${baseUrl}/countries` },
       { property: 'og:type', content: 'website' },
-      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:card', content: 'summary' },
       { name: 'twitter:title', content: 'Explore Destinations | ScholarZone' },
       { name: 'twitter:description', content: 'Discover verified scholarship opportunities across the world\'s top study destinations.' },
       { name: 'robots', content: 'index, follow' },
     ]
-    
-    document.querySelectorAll('[data-sz-seo]').forEach(el => el.remove())
-    
+
     metaTags.forEach(meta => {
       const el = document.createElement('meta')
       Object.entries(meta).forEach(([k, v]) => { if (v) el.setAttribute(k, v) })
       el.setAttribute('data-sz-seo', 'true')
       document.head.appendChild(el)
     })
-    
+
     const canonical = document.createElement('link')
     canonical.rel = 'canonical'
     canonical.href = `${baseUrl}/countries`
     canonical.setAttribute('data-sz-seo', 'true')
     document.head.appendChild(canonical)
-    
-    const script = document.createElement('script')
-    script.type = 'application/ld+json'
-    script.setAttribute('data-sz-seo', 'true')
-    script.textContent = JSON.stringify({
+
+    return () => {
+      document.querySelectorAll('[data-sz-seo]').forEach(el => el.remove())
+      document.title = previousTitle
+    }
+  }, [])
+
+  /* Structured data, emitted once the counts have settled.
+
+     This used to be written on mount with `itemListElement: []` and never
+     updated, so the page advertised an ItemList describing nothing. An empty
+     list is not a truthful description of a grid of destinations, and a crawler
+     cannot tell the difference between "no items" and "we did not look".
+
+     It is built from the same list the page renders, in the same order, and only
+     from countries that actually have a public scholarship: a destination card
+     showing zero is a dead end, and listing it would send a crawler nowhere. If
+     nothing qualifies the ItemList is omitted entirely rather than emitted
+     empty, leaving a CollectionPage that describes the page honestly. */
+  useEffect(() => {
+    if (loading) return undefined
+
+    const baseUrl = CANONICAL_ORIGIN
+    const page = {
       '@context': 'https://schema.org',
       '@type': 'CollectionPage',
       name: 'Explore Destinations',
-      description: 'Discover verified scholarship opportunities across the world\'s top study abroad destinations.',
+      description: 'Browse verified scholarship opportunities by country.',
       url: `${baseUrl}/countries`,
-      mainEntity: {
-        '@type': 'ItemList',
-        itemListElement: []
-      }
-    }, null, 2)
-    script.setAttribute('data-sz-seo', 'true')
-    document.head.appendChild(script)
-    
-    return () => {
-      document.querySelectorAll('[data-sz-seo]').forEach(el => el.remove())
     }
-  }, [])
+
+    const rendered = countryNames.filter((name) => (counts[name] ?? 0) > 0)
+    if (rendered.length > 0) {
+      page.mainEntity = {
+        '@type': 'ItemList',
+        numberOfItems: rendered.length,
+        itemListElement: rendered.map((name, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          name,
+          url: `${baseUrl}/scholarships?country=${encodeURIComponent(name)}`,
+        })),
+      }
+    }
+
+    const script = document.createElement('script')
+    script.type = 'application/ld+json'
+    script.setAttribute('data-sz-seo', 'true')
+    script.textContent = JSON.stringify(page, null, 2)
+    document.head.appendChild(script)
+
+    return () => {
+      script.remove()
+    }
+  }, [loading, countryNames, counts])
 
   const getTier = (name) => {
     if (!FEATURED_COUNTRIES.includes(name)) return 'tier3'
