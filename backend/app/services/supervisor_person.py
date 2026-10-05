@@ -133,6 +133,19 @@ class PersonSignal:
     #: True when an academic role was stated. Structural directory context alone
     #: is weaker and is reported as such.
     academic_role_stated: bool
+    #: True when ``name`` itself made the claim of personhood, rather than
+    #: borrowing a role stated in a neighbouring segment of the same link text.
+    #:
+    #: The storage gate sees only ``name`` and ``role``, and those two do not
+    #: distinguish "Rachit Agarwal Professor" - one clause, a person and a role -
+    #: from "Nanyang Research | Researchers" - a heading beside a role. Both arrive
+    #: as a person-shaped name plus a role string, so the gate cannot separate them
+    #: by re-reading them. The distinction is visible only here, while the segments
+    #: are still in hand, which is why it is carried rather than derived.
+    #:
+    #: Surface form cannot stand in for it: "Nanyang Research" and "S Chandra Das"
+    #: are both two capitalised words, so no word list separates them.
+    name_claims_person: bool = True
 
     @property
     def evidence_strength(self) -> str:
@@ -167,7 +180,14 @@ def _find_role(text: str) -> str | None:
     lowered = (text or "").lower()
     for phrase in ACADEMIC_ROLE_PHRASES:
         # Word-boundary match so "dr" does not match inside "drama" or a domain.
-        if re.search(rf"(?<![\w.]){re.escape(phrase)}(?![\w])", lowered):
+        #
+        # The leading boundary also excludes '-', so a role phrase is not read out
+        # of the middle of a hyphenated compound. "Non-Academic Services" is a
+        # service listing that *negates* the academic role; matching "academic"
+        # inside it and then removing it leaves the fragment "Non-" to satisfy the
+        # name test, and the listing becomes a verified professor. A role phrase
+        # has to stand as its own word to be one.
+        if re.search(rf"(?<![\w-]){re.escape(phrase)}(?![\w])", lowered):
             return phrase
     return None
 
@@ -299,6 +319,7 @@ def classify_person_candidate(
                     role_evidence="honorific",
                     academic_role_stated=honorific
                     in ("dr", "prof", "professor", "doctor", "reader", "lecturer"),
+                    name_claims_person=True,
                 )
 
     for index, segment in enumerate(segments):
@@ -314,8 +335,17 @@ def classify_person_candidate(
         # evidence of a person when something person-shaped survives removing the
         # role, which "Rachit Agarwal Professor" does and "Academic Staff" does
         # not. See states_role_about_a_person.
+        #
+        # ``segment_claims_person`` is the part a sibling cannot lend. This segment
+        # vouches for a name taken out of itself only if the role is really a word
+        # of its own and a person survives its removal. When the role belongs to
+        # another segment - "Nanyang Research | Researchers" - nothing is removed
+        # from this one, nothing person-shaped is left to find, and the name has
+        # claimed nobody. Surface form cannot say so: "Nanyang Research" and
+        # "S Chandra Das" are both two capitalised words.
+        segment_claims_person = states_role_about_a_person(segment, role)
         candidates = list(siblings)
-        if states_role_about_a_person(segment, role):
+        if segment_claims_person:
             candidates.append(" ".join(_tokens(segment)[:2]))
         for candidate in candidates:
             candidate = candidate.strip()
@@ -325,6 +355,9 @@ def classify_person_candidate(
                     role=role,
                     role_evidence="inline_role",
                     academic_role_stated=True,
+                    # A sibling segment carries its own claim about whoever the
+                    # role names, not about this name.
+                    name_claims_person=segment_claims_person,
                 )
 
     # Weaker evidence: personal-profile structure inside a known directory.
@@ -338,6 +371,9 @@ def classify_person_candidate(
                     role=None,
                     role_evidence="source_context",
                     academic_role_stated=False,
+                    # Structure said the page is a directory. That says the page is
+                    # about people, not that this label is one.
+                    name_claims_person=False,
                 )
 
     return None

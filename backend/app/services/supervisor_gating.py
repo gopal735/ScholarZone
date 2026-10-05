@@ -246,6 +246,11 @@ class _Candidate(Protocol):
     title: str | None
     role: str | None
     role_evidence: str | None
+    #: Whether ``name`` itself claimed a person, rather than borrowing a role from
+    #: a neighbouring segment of the same link text. Optional so that any object
+    #: satisfying this protocol without it is still judged - absent means "no
+    #: claim recorded", which is the conservative reading.
+    name_claims_person: bool
 
 
 @dataclass(frozen=True)
@@ -401,6 +406,9 @@ def verify_supervisor_candidate(
     profile_url = (candidate.profile_url or "").strip()
     role = getattr(candidate, "role", None)
     role_evidence = getattr(candidate, "role_evidence", None)
+    # Absent means "no claim was recorded", which is the conservative reading: a
+    # candidate that cannot say it claimed a person is not vouched for.
+    name_claims_person = bool(getattr(candidate, "name_claims_person", False))
 
     failed: list[SupervisorGate] = []
     reasons: list[str] = []
@@ -409,6 +417,25 @@ def verify_supervisor_candidate(
     #    The second clause is the 91bcdb5 invariant; dropping it would promote
     #    "Academic Staff" and "School of Computing", which are two capitalised
     #    words apiece and no more a person than a navigation link is.
+    #
+    #    The third clause is the borrowed-role case, which the first two cannot
+    #    reach. Both of these are a person-shaped name plus a role string:
+    #
+    #        "Rachit Agarwal Professor"    a person, and a role, in one clause
+    #        "Nanyang Research | Researchers"  a heading, and a role beside it
+    #
+    #    Removing the role from the second changes nothing - the role is in the
+    #    other segment - so the residue is still two capitalised words and passes.
+    #    Measured on the real NTU chancellery page, where it reached VERIFIED and
+    #    would have been stored as a verified professor. Surface form cannot
+    #    separate it from "S Chandra Das", so this asks whether the name made the
+    #    claim itself, which the classifier decided while it still had the
+    #    segments in hand and recorded as ``name_claims_person``.
+    #
+    #    It is asked of inline-role evidence only. An honorific leads its own name,
+    #    and a profile role was read off that person's own page - the case
+    #    test_a_role_on_the_profile_promotes_a_structural_candidate deliberately
+    #    relies on, so neither is put to it.
     if not name:
         failed.append(SupervisorGate.PERSONHOOD)
         reasons.append("no name was stated")
@@ -419,6 +446,12 @@ def verify_supervisor_candidate(
         failed.append(SupervisorGate.PERSONHOOD)
         reasons.append(
             f"{name!r} states only the role {role!r} and names no individual"
+        )
+    elif role_evidence == "inline_role" and not name_claims_person:
+        failed.append(SupervisorGate.PERSONHOOD)
+        reasons.append(
+            f"{name!r} borrows the role {role!r} from a neighbouring segment and "
+            f"claims no individual of its own"
         )
 
     # 2. Role evidence. A stated academic role, established by a route this

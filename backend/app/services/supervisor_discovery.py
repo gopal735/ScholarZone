@@ -288,6 +288,13 @@ class FacultyCandidate:
     #: ``source_context``. Kept so a reviewer can see the reasoning rather than
     #: re-derive it.
     role_evidence: str | None = None
+    #: Whether ``name`` itself claimed a person, rather than sitting beside a role
+    #: the institution stated elsewhere in the same link text. Carried from
+    #: :class:`~app.services.supervisor_person.PersonSignal` because name and role
+    #: together cannot recover it: "Rachit Agarwal Professor" and "Nanyang Research
+    #: | Researchers" both arrive here as a person-shaped name plus a role string,
+    #: and only the classifier still knows which one made the claim.
+    name_claims_person: bool = True
 
     @property
     def has_role_evidence(self) -> bool:
@@ -605,6 +612,7 @@ def extract_faculty_candidates(
                 department=None,
                 role=signal.role,
                 role_evidence=signal.role_evidence,
+                name_claims_person=signal.name_claims_person,
                 evidence_summary=f"Listed on {page_url} ({signal.role_evidence})",
             )
         )
