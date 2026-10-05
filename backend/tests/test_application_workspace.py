@@ -497,6 +497,53 @@ class TestChecklist:
         assert second.json()["version"] == 2
         assert next(i for i in second.json()["checklist"] if i["key"] == "review_eligibility")["completed_at"] == stamp
 
+    def test_a_timestamp_read_back_from_the_database_serialises_identically(
+        self, client, db
+    ):
+        """The representation must not depend on where the value came from.
+
+        A timestamp is written aware and read back naive, because SQLite has no
+        timezone type. If the API passes whichever form it happened to receive
+        straight through, then the instant a client saves and the instant it sees
+        after a reload are the same moment written two different ways - and a
+        client cannot compare them. Which form a given request sees depends on
+        whether the value is still sitting in the session or has been reloaded,
+        so this has to be pinned deliberately rather than left to chance.
+
+        Dropping the identity map forces the reloaded path. Without that, the
+        session may still hold the object that was assigned and the test would
+        pass whether or not the API normalised anything.
+        """
+        make_user(db, "reload@example.com")
+        scholarship = make_scholarship(db)
+        login(client, "reload@example.com")
+        application_id = start(client, scholarship.id).json()["id"]
+
+        written = client.patch(
+            f"/api/applications/{application_id}/checklist/review_eligibility",
+            json={"expected_version": 1, "completed": True},
+        ).json()
+        stamp = next(
+            i for i in written["checklist"] if i["key"] == "review_eligibility"
+        )["completed_at"]
+        assert stamp.endswith("Z"), f"expected a UTC-aware instant, got {stamp!r}"
+
+        # Forget everything held in memory so the next read genuinely comes from
+        # the database rather than from the object that was assigned.
+        db.expunge_all()
+
+        reloaded = client.get(f"/api/applications/{application_id}").json()
+        assert (
+            next(i for i in reloaded["checklist"] if i["key"] == "review_eligibility")[
+                "completed_at"
+            ]
+            == stamp
+        ), "the same instant must serialise the same way after a reload"
+
+        # The other two timestamps this module emits come off the same columns.
+        assert reloaded["created_at"].endswith("Z")
+        assert reloaded["updated_at"].endswith("Z")
+
     def test_uncompleting_clears_the_timestamp(self, client, db):
         make_user(db, "undo@example.com")
         scholarship = make_scholarship(db)

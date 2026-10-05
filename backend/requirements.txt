@@ -19,6 +19,15 @@ resend
 python-dotenv
 Pillow
 beautifulsoup4
+# Test-suite dependency, imported by tests/test_efficiency_safety.py to parse
+# the GitHub Actions workflow YAML. It was previously undeclared and reached
+# runners only by accident: nothing else in this file requires it, so a clean
+# `pip install -r requirements.txt` on a fresh CI runner left the import to fail
+# with ModuleNotFoundError. That failure was invisible because the backend test
+# step piped pytest into `tee` and so reported tee's always-zero exit status;
+# with pipefail restored it would have surfaced as a confusing collection error
+# rather than a missing dependency. No application module imports yaml.
+PyYAML>=6.0,<7
 # Official scholarship circulars are published as PDFs. Both libraries are
 # imported lazily by app/services/official_pdf_extractor.py, which means a
 # missing pin did not crash the worker - it silently skipped every PDF and the

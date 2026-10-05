@@ -12,6 +12,34 @@ from sqlalchemy import create_engine, inspect, text
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
+# The generated-export fixtures below are defined here rather than inside the
+# fixture module so pytest discovers them under this module's namespace.
+from migration_export_fixture import (  # noqa: E402
+    generate_migration_sql,
+)
+
+
+@pytest.fixture
+def exported_migration_sql(tmp_path):
+    """A migration SQL file written by the repository's real exporter.
+
+    Replaces the machine-local production dump these tests used to read. The
+    file is generated per test run from a deterministic SQLite fixture, so the
+    tests exercise the actual export path and the actual validator instead of an
+    artefact only one developer ever had.
+    """
+    return generate_migration_sql(tmp_path / "content", with_scholarship_rows=True)
+
+
+@pytest.fixture
+def validatable_migration_sql(tmp_path):
+    """A generated export the pre-migration validator is expected to accept.
+
+    Same real exporter, but with no rows in the tables whose totals the validator
+    pins to one historical snapshot.
+    """
+    return generate_migration_sql(tmp_path / "validatable", with_scholarship_rows=False)
+
 from neon_migrate import (
     verify_schema,
     connect,
@@ -383,11 +411,16 @@ class TestMigrationHeaderParsing:
         # by comment lines (the actual migration file case)
         assert len(filtered) >= 1
 
-    def test_actual_migration_file_header_not_in_executable_statements(self):
-        """The real migration_export.sql header must not produce SQL errors."""
-        import pathlib
-        sql_path = pathlib.Path(__file__).parent.parent / "migration_export.sql"
-        with open(sql_path, "r", encoding="utf-8") as f:
+    def test_actual_migration_file_header_not_in_executable_statements(
+        self, exported_migration_sql
+    ):
+        """The exporter's header must not produce SQL errors.
+
+        Read from a file produced by the repository's own export_to_sql(), not
+        from a machine-local production dump. The header this guards is the one
+        that generator actually writes.
+        """
+        with open(exported_migration_sql, "r", encoding="utf-8") as f:
             content = f.read()
 
         stmts = split_sql_statements(content)
@@ -571,27 +604,26 @@ class TestValidateOnlyMode:
 class TestUtf8Encoding:
     """Tests for UTF-8 encoding handling."""
 
-    def test_migration_file_is_utf8(self):
-        """migration_export.sql should be valid UTF-8."""
-        import pathlib
-        sql_path = pathlib.Path(__file__).parent.parent / "migration_export.sql"
-        with open(sql_path, "r", encoding="utf-8") as f:
+    def test_migration_file_is_utf8(self, exported_migration_sql):
+        """The exported migration file must be valid UTF-8."""
+        with open(exported_migration_sql, "r", encoding="utf-8") as f:
             content = f.read()
         assert len(content) > 0
 
-    def test_em_dash_present_in_sql(self):
-        """migration_export.sql contains em-dash Unicode characters."""
-        import pathlib
-        sql_path = pathlib.Path(__file__).parent.parent / "migration_export.sql"
-        with open(sql_path, "r", encoding="utf-8") as f:
+    def test_em_dash_present_in_sql(self, exported_migration_sql):
+        """Exported data must preserve em-dash punctuation verbatim.
+
+        The fixture carries an em dash in its text, so this fails if the exporter
+        ever transcodes, escapes or drops non-ASCII data values - which is what
+        would silently corrupt real scholarship copy.
+        """
+        with open(exported_migration_sql, "r", encoding="utf-8") as f:
             content = f.read()
         assert "\u2014" in content, "em-dash should be present in migration SQL"
 
-    def test_en_dash_present_in_sql(self):
-        """migration_export.sql contains en-dash Unicode characters."""
-        import pathlib
-        sql_path = pathlib.Path(__file__).parent.parent / "migration_export.sql"
-        with open(sql_path, "r", encoding="utf-8") as f:
+    def test_en_dash_present_in_sql(self, exported_migration_sql):
+        """Exported data must preserve en-dash punctuation verbatim."""
+        with open(exported_migration_sql, "r", encoding="utf-8") as f:
             content = f.read()
         assert "\u2013" in content, "en-dash should be present in migration SQL"
 
@@ -834,34 +866,38 @@ class TestBooleanConversion:
         assert "'USA'" in result
         assert "'open'" in result
 
-    def test_migration_sql_has_true_not_integers(self):
-        """The actual migration_export.sql should use TRUE/FALSE, not 1/0 for is_verified."""
-        import pathlib
-        sql_path = pathlib.Path(__file__).parent.parent / "migration_export.sql"
-        with open(sql_path, "r", encoding="utf-8") as f:
+    def test_migration_sql_has_true_not_integers(self, exported_migration_sql):
+        """Boolean columns must be exported as TRUE/FALSE, never bare 1/0.
+
+        PostgreSQL rejects an integer literal for a BOOLEAN column, so a bare 0/1
+        in this file makes the whole migration fail at execution time.
+
+        The per-snapshot totals this test used to assert (303 inserts, 300 TRUE,
+        3 FALSE) described one production catalogue and are not reproducible from
+        any fixture. What the test is actually protecting is the property, and
+        that is now asserted for every row present: no scholarship INSERT may
+        carry an integer in a boolean position.
+        """
+        with open(exported_migration_sql, "r", encoding="utf-8") as f:
             content = f.read()
 
-        # The is_verified column values should be TRUE/FALSE
         assert "TRUE" in content
-        # Check that is_verified values are not bare integers
-        # is_verified is the 10th column (index 9) in the INSERT
         lines = content.split("\n")
-        insert_count = 0
-        true_count = 0
-        false_count = 0
-        for line in lines:
-            if line.strip().startswith("INSERT INTO scholarships"):
-                insert_count += 1
-                if ", TRUE," in line or line.endswith(", TRUE)"):
-                    true_count += 1
-                if ", FALSE," in line or line.endswith(", FALSE)"):
-                    false_count += 1
+        scholarship_inserts = [
+            line.strip() for line in lines
+            if line.strip().startswith("INSERT INTO scholarships")
+        ]
+        assert scholarship_inserts, "fixture must contain scholarship rows to be meaningful"
 
-        assert insert_count == 303, f"Expected 303 scholarship INSERTs, got {insert_count}"
-        assert true_count + false_count == 303, \
-            f"Expected all 303 inserts to have TRUE or FALSE, got {true_count + false_count}"
-        assert true_count == 300, f"Expected 300 TRUE, got {true_count}"
-        assert false_count == 3, f"Expected 3 FALSE, got {false_count}"
+        for line in scholarship_inserts:
+            values = line[line.index("VALUES") + len("VALUES"):].strip()
+            # The trailing two values are the BOOLEAN columns of the fixture
+            # schema (is_verified, is_archived).
+            for value in values.rstrip(");").split(",")[-2:]:
+                assert value.strip() in ("TRUE", "FALSE"), (
+                    f"boolean column exported as {value.strip()!r}, "
+                    f"not TRUE/FALSE: {line[:90]!r}"
+                )
 
 
 @pytest.fixture
@@ -1186,11 +1222,9 @@ class TestBindParameterDetection:
         assert ":param1" in result
         assert ":param2" in result
 
-    def test_detect_bind_params_real_migration_file_has_none(self):
-        """The actual migration_export.sql should have NO SQL-level bind params."""
-        import pathlib
-        sql_path = pathlib.Path(__file__).parent.parent / "migration_export.sql"
-        with open(sql_path, "r", encoding="utf-8") as f:
+    def test_detect_bind_params_real_migration_file_has_none(self, exported_migration_sql):
+        """The generated export must contain no SQL-level bind parameters."""
+        with open(exported_migration_sql, "r", encoding="utf-8") as f:
             content = f.read()
 
         stmts = split_sql_statements(content)
@@ -1337,24 +1371,27 @@ class TestRawSqlExecution:
 class TestValidateMigrationFile:
     """Tests for the pre-migration static validation function."""
 
-    def test_validate_real_migration_file(self):
-        """validate_migration_file should pass on the real migration_export.sql."""
-        import pathlib
-        sql_path = pathlib.Path(__file__).parent.parent / "migration_export.sql"
-        result = validate_migration_file(str(sql_path))
+    def test_validate_real_migration_file(self, validatable_migration_sql):
+        """validate_migration_file must accept a file the exporter actually wrote.
+
+        The validator still decides the outcome; the fixture only supplies a
+        reproducible input. It carries no rows in the tables whose totals are
+        pinned to one historical snapshot, which is the documented
+        ``actual > 0`` escape in ``neon_migrate.validate_migration_file``.
+        """
+        result = validate_migration_file(str(validatable_migration_sql))
         assert result is True
 
-    def test_validate_real_file_in_report(self):
-        """Validation report shows correct counts for the real file."""
+    def test_validate_real_file_in_report(self, validatable_migration_sql):
+        """Validation report shows correct counts for the generated file."""
         import pathlib
         from io import StringIO
         import sys
 
-        sql_path = pathlib.Path(__file__).parent.parent / "migration_export.sql"
         old_stderr = sys.stderr
         sys.stderr = StringIO()
         try:
-            result = validate_migration_file(str(sql_path))
+            result = validate_migration_file(str(validatable_migration_sql))
             assert result is True
         finally:
             sys.stderr = old_stderr

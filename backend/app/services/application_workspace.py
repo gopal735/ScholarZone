@@ -453,6 +453,31 @@ def _resolve_action_target(target: str | None, context: ScholarshipContext | Non
     return target
 
 
+def _as_utc(value: datetime | None) -> datetime | None:
+    """Return ``value`` as an aware UTC datetime, or ``None`` if it is unset.
+
+    A timestamp written here is aware, because ``_now`` returns an aware UTC
+    value. What comes back out is not necessarily: SQLite has no timezone type,
+    so a stored column is read back naive, while the very same value can still be
+    sitting in the session's identity map as the aware object that was assigned.
+    Whether a client sees ``...076777Z`` or a bare ``...076777`` was therefore
+    decided by where the value happened to come from rather than by anything the
+    API promised - and a client cannot compare the two forms, or tell that they
+    describe the same instant, once it has seen one of each.
+
+    Normalising on the way out fixes the representation instead of the symptom:
+    the same instant always serialises the same way, whether it was just written
+    or loaded from the database. This is the read-time coercion the rest of the
+    codebase already applies - see ``auto_delete_policy._as_utc``,
+    ``supervisor_freshness._as_utc`` and ``maintenance_slot_store.to_utc``.
+    """
+    if value is None:
+        return None
+    if value.tzinfo is None:
+        return value.replace(tzinfo=timezone.utc)
+    return value.astimezone(timezone.utc)
+
+
 def _checklist_responses(
     items: list[ApplicationChecklistItem], context: ScholarshipContext | None
 ) -> list[ChecklistItemResponse]:
@@ -469,7 +494,7 @@ def _checklist_responses(
                 position=item.position,
                 weight=item.weight,
                 completed=item.completed,
-                completed_at=item.completed_at,
+                completed_at=_as_utc(item.completed_at),
                 is_counted=item.weight > 0,
             )
         )
@@ -546,7 +571,7 @@ def _summary(
         verification_status=status_value or "not_listed",
         verified=verified,
         verification_display=verification_display(status_value) if status_value else "No longer listed",
-        updated_at=record.updated_at,
+        updated_at=_as_utc(record.updated_at),
         version=record.version,
     )
 
@@ -741,7 +766,7 @@ def build_detail(
         confidence_score=match_item.confidence_score if match_item else None,
         readiness_label=match_item.readiness.label if (match_item and match_item.readiness) else None,
         open_gaps=gaps,
-        created_at=record.created_at,
+        created_at=_as_utc(record.created_at),
     )
 
 # ------------------------------------------------------------------ mutations

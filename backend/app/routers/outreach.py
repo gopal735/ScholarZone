@@ -59,6 +59,23 @@ MAX_NEXT_ACTION_LENGTH = 255
 
 _NOT_FOUND = "Outreach record not found."
 
+#: The recognised outreach statuses, as the plain strings a client sends.
+#:
+#: Membership has to be tested against this rather than against ``OutreachStatus``
+#: itself. `"sent" in OutreachStatus` is not a documented operation: on Python
+#: 3.12 and later it resolves by value, while on 3.11 - the version CI runs - it
+#: raises ``TypeError: unsupported operand type(s) for 'in': 'str' and
+#: 'EnumType'``. Same source, same request, different answer, so the branch was
+#: reachable on a laptop and unreachable in the gate.
+#:
+#: ``OutreachStatus.__members__`` is not the fix either: it is keyed by member
+#: NAME, so `"sent" in OutreachStatus.__members__` is False and every legitimate
+#: status would be rejected as unrecognised. These are the values, which is what
+#: the column and the payload both hold.
+_RECOGNISED_OUTREACH_STATUSES: frozenset[str] = frozenset(
+    str(member) for member in OutreachStatus
+)
+
 #: Notes are stored and returned as plain text and rendered as text. Rejecting
 #: angle brackets and braces costs the student nothing here and removes the
 #: temptation to treat this column as a rendering surface later.
@@ -308,7 +325,7 @@ def update_outreach(
         )
 
     if payload.status is not None and payload.status != row.status:
-        if payload.status not in OutreachStatus:
+        if payload.status not in _RECOGNISED_OUTREACH_STATUSES:
             raise HTTPException(
                 status.HTTP_422_UNPROCESSABLE_ENTITY,
                 "That outreach status is not recognised.",
