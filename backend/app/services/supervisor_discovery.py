@@ -1,4 +1,4 @@
-﻿"""Supervisor discovery.
+"""Supervisor discovery.
 
 A separate pipeline with its own politeness controls. It does not run inside the
 existing maintenance worker, and it does not touch the image, verification or
@@ -58,6 +58,16 @@ from .official_source_fetcher import (
 )
 from .supervisor_coverage import ensure_coverage_row, recompute_coverage
 from .supervisor_freshness import CONTACT_REFRESH_DAYS, next_check_at
+from .supervisor_gating import (
+    OFFICIAL_HOST_SUFFIXES,
+    ApprovedCandidateSet,
+    ApprovedSupervisorCandidate,
+    approve_candidate_set,
+    host_is_official,
+    registrable_domain as _registrable_domain,
+    same_institution as _same_institution,
+    verification_status_for,
+)
 from .supervisor_jsdetect import classify_shell, looks_like_directory_listing
 from .supervisor_render import render_blocking
 from .supervisor_source import RenderBudget, RenderErrorKind, SourceOutcome
@@ -120,36 +130,12 @@ _FACULTY_ANCHOR_PHRASES = (
 
 #: Only these hosts may receive a professor record. Anything else is not an
 #: official institutional source.
-_OFFICIAL_HOST_SUFFIXES = (
-    ".edu",
-    ".ac.uk",
-    ".edu.au",
-    ".ac.jp",
-    ".de",
-    ".fr",
-    ".nl",
-    ".se",
-    ".ch",
-    ".at",
-    ".be",
-    ".dk",
-    ".no",
-    ".fi",
-    ".es",
-    ".it",
-    ".ca",
-    ".ac.in",
-    ".ac.nz",
-    ".edu.sg",
-    ".ac.za",
-    ".edu.tr",
-    ".ac.kr",
-    ".edu.cn",
-    ".ac.th",
-    ".edu.pl",
-    ".ac.id",
-    ".ac.il",
-)
+#:
+#: The vocabulary now lives in :mod:`app.services.supervisor_gating`, which is
+#: where the gates that depend on it are decided and which must be importable
+#: without a database. It is re-bound here under its historical private name so
+#: nothing that imported it from this module breaks.
+_OFFICIAL_HOST_SUFFIXES = OFFICIAL_HOST_SUFFIXES
 
 _EMAIL_PATTERN = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
 _WHITESPACE = re.compile(r"\s+")
@@ -314,18 +300,16 @@ class FacultyCandidate:
         return self.role is not None
 
 
-def host_is_official(host: str | None) -> bool:
-    """Return whether ``host`` looks like an academic institution's own domain.
-
-    A suffix allowlist, not an authority. It cannot tell Oxford from a lookalike,
-    and it is not used for that: the host must additionally match the host of the
-    scholarship's own official source before anything is stored. This only removes
-    the obviously-wrong hosts before spending a request on them.
-    """
-    if not host:
-        return False
-    lowered = host.lower()
-    return lowered.endswith(_OFFICIAL_HOST_SUFFIXES) or ".gov." in lowered
+#: Whether a host is an academic institution's own domain.
+#:
+#: ``host_is_official``, ``registrable_domain`` and ``same_institution`` are
+#: imported from :mod:`app.services.supervisor_gating` rather than defined here,
+#: because the gates that consume them must be decidable without a database. They
+#: are module-level names in this module, and every call below resolves them at
+#: call time, so the loopback-institution tests that monkeypatch
+#: ``supervisor_discovery.host_is_official`` still take effect - which is the
+#: point: an alias captured at import time would bypass the patch and start
+#: rejecting the fixture as non-institutional.
 
 
 # Personhood is decided in app.services.supervisor_person, from positive evidence:
@@ -434,37 +418,16 @@ def _same_site(candidate_url: str, seed_host: str) -> bool:
     return host == seed or host.endswith("." + seed)
 
 
-def registrable_domain(host: str | None) -> str:
+def registrable_domain(host: str | None) -> str:  # noqa: F811 - re-export
     """Return an academic host's own institution domain.
 
-    Conservative by design. Only the academic suffixes this module already trusts
-    are recognised, and anything unrecognised returns itself unchanged - so an
-    unknown host falls back to exact-host comparison rather than being guessed
-    into someone else's institution.
-
-    The reason this exists: `admissions.msu.edu` and `msu.edu` are the same
-    university, and so are `adelaide.edu.au` and `staff.adelaide.edu.au`.
-    Comparing hostnames alone rejects the awarding institution's own faculty pages
-    and turns a reachable page into a false negative, which is a correctness bug
-    rather than a safety property.
+    Re-export of :func:`app.services.supervisor_gating.registrable_domain`. The
+    implementation lives there so the gates can decide host ownership without
+    importing a database. It remains a module-level lookup here, resolved at call
+    time, so the loopback-institution tests that monkeypatch names on this module
+    still take effect.
     """
-    host = (host or "").lower().split("@")[-1].split(":")[0]
-    if host.startswith("www."):
-        host = host[4:]
-    # Longest suffix first, so `adelaide.edu.au` matches `.edu.au` rather than any
-    # shorter suffix it happens to contain.
-    for suffix in sorted(_OFFICIAL_HOST_SUFFIXES, key=len, reverse=True):
-        if not host.endswith(suffix):
-            continue
-        base = host[: -len(suffix)]
-        if not base or "." not in base:
-            # The host is the suffix itself, e.g. `msu.edu` for `.edu`.
-            return host
-        # Keep the final label before the suffix. `admissions.msu.edu` and
-        # `msu.edu` are both `msu.edu`; stripping only the suffix would leave the
-        # first as `admissions.msu` and wrongly treat one university as two.
-        return f"{base.split('.')[-1]}{suffix}"
-    return host
+    return _registrable_domain(host)
 
 
 def same_institution(candidate_url_or_host: str, seed_host: str) -> bool:
@@ -480,9 +443,7 @@ def same_institution(candidate_url_or_host: str, seed_host: str) -> bool:
     def _host_of(value: str) -> str:
         return urlparse(value).netloc if "//" in (value or "") else (value or "")
 
-    left = registrable_domain(_host_of(candidate_url_or_host))
-    right = registrable_domain(_host_of(seed_host))
-    return bool(left) and left == right
+    return _same_institution(candidate_url_or_host, seed_host)
 
 
 def looks_like_faculty_listing(url: str, anchor_text: str = "") -> bool:
@@ -895,32 +856,17 @@ def timedelta_days(days: int):
     return timedelta(days=days)
 
 
-def _verification_status_for(candidate: FacultyCandidate) -> str:
+def _verification_status_for(candidate: FacultyCandidate) -> str:  # noqa: F811
     """Return the relationship status a freshly discovered candidate earns.
 
-    Two conditions, and both are necessary.
-
-    **A role was stated.** ``has_role_evidence`` is true when the institution
-    stated an academic role, on the listing or on the profile. Directory
-    structure alone is a weaker signal and earns ``UNVERIFIED``.
-
-    **The name is a person and not the role restated.** A label like "Academic
-    Staff" states a role and names a collective. It satisfies the first condition
-    and evidences no individual, so consulting only that condition promoted two
-    navigation links on the real Cornell directory into verified professors. The
-    second condition asks whether anything person-shaped survives removing the
-    role from the name; for "Rachit Agarwal Professor" that is "Rachit Agarwal",
-    and for "Academic Staff" it is one token that is not a name.
-
-    Both live here rather than in the caller so this stays the single place where
-    evidence strength becomes a verification decision. There is one thing to read
-    when asking whether a weak signal can promote itself.
+    Thin delegation to
+    :func:`app.services.supervisor_gating.verification_status_for`, which holds
+    the rule and its reasoning. Both live here so that there is one definition of
+    the standard rather than two that can drift: a gate that decided a candidate
+    was VERIFIED while the writer recorded it as UNVERIFIED would be a storage
+    gate that does not gate.
     """
-    if not candidate.has_role_evidence:
-        return str(RelationshipVerificationStatus.UNVERIFIED)
-    if role_words_are_the_whole_name(candidate.name, candidate.role):
-        return str(RelationshipVerificationStatus.UNVERIFIED)
-    return str(RelationshipVerificationStatus.VERIFIED)
+    return verification_status_for(candidate)
 
 
 def _persist_candidates(
@@ -934,12 +880,27 @@ def _persist_candidates(
     http_status: int | None,
     discovery_path: str,
 ) -> int:
-    """Store the candidates that earned a role, and return how many.
+    """Store candidates that earned a role, and return how many. Raw input.
 
-    The single write path for both tiers. Having one is the point: a rendered page
-    and a server-rendered page reach the same storage gate, the same unique
-    constraints and the same evidence records, so rendering cannot buy a weaker
-    standard or a duplicate row.
+    **Not the production write path any more.** The pipeline now collects through
+    :func:`collect_supervisor_plan`, which runs every gate in
+    :mod:`app.services.supervisor_gating` and hands the survivors to
+    :func:`persist_approved_candidates`. That function accepts only
+    ``ApprovedSupervisorCandidate``, so the standard cannot be bypassed by
+    forgetting to gate something.
+
+    This function is retained as the low-level writer that accepts *unclassified*
+    candidates and re-applies the two gates from ``91bcdb5`` itself before it
+    writes. It is deliberately stricter than "no checks": it refuses to store a
+    candidate with no stated role, and refuses one whose name is only the role
+    restated. Those two conditions are the invariant that stopped two navigation
+    links on the real Cornell directory being promoted to verified professors, so
+    they are duplicated here on purpose - a second line of defence that survives
+    someone replacing the gate module with a simpler one.
+
+    Keeping it is not redundancy for its own sake. Its callers are the direct
+    tests that pin that storage gate, and any future path that constructs
+    candidates directly.
     """
     stored = 0
     directory_text = ""
@@ -1022,22 +983,32 @@ def _persist_candidates(
     return stored
 
 
-def _attempt_render_for_shells(
-    db,
+def _collect_render_for_shells(
     scholarship: Scholarship,
     faculty_pages: list[tuple[str, str]],
     seed_host: str,
     budget: RenderBudget,
-) -> tuple[str | None, str]:
-    """Try to read a client-side directory with the bounded renderer.
+    *,
+    host_check=None,
+) -> tuple[str | None, str, ApprovedCandidateGroup | None]:
+    """Read a client-side directory with the bounded renderer. Write nothing.
 
-    Returns ``(status, summary)`` where ``status`` is ``None`` when at least one
-    professor was extracted - the caller then falls through to the normal coverage
-    recompute - or the inconclusive status to record when it was not.
+    Returns ``(status, summary, group)``:
 
-    Every exit from this function is inconclusive or a success. There is no path
-    that returns a negative, because rendering failure cannot establish that a
-    university employs nobody.
+    * ``group`` is not ``None`` when a rendered page produced at least one
+      candidate that cleared every gate - the caller persists it with the rest.
+    * ``status`` is ``None`` when there is nothing inconclusive left to record,
+      and otherwise the status the coverage row should carry.
+    * ``summary`` is the human explanation, and is ``""`` on the success path.
+
+    Every exit is inconclusive or a success. There is no path that returns a
+    negative, because rendering failure cannot establish that a university
+    employs nobody.
+
+    No session is taken, and the rendered candidates go through the same gates as
+    the static tier. Rendering therefore cannot buy a weaker standard or a
+    duplicate row - the tier changes how the page was *read*, never what counts as
+    evidence.
     """
     shells: list[str] = []
     rendered_reasons: list[str] = []
@@ -1056,7 +1027,7 @@ def _attempt_render_for_shells(
     if not shells:
         # Either the static read answered, or it was a genuine negative. Either
         # way this function has nothing to add.
-        return None, ""
+        return None, "", None
 
     logger.info(
         "Static tier read %s client-side shell(s) for scholarship %s; one bounded render each",
@@ -1079,6 +1050,7 @@ def _attempt_render_for_shells(
                 str(SupervisorCoverageStatus.SOURCE_BLOCKED),
                 f"Rendering was refused for {observation.url}: "
                 f"{observation.error_kind or 'access barrier'}. Not attempted.",
+                None,
             )
 
         if observation.outcome != SourceOutcome.SUCCESS or not observation.html:
@@ -1090,31 +1062,40 @@ def _attempt_render_for_shells(
             # Rendered cleanly and is not a directory. Nothing to record.
             continue
 
-        stored = _persist_candidates(
-            db,
-            scholarship,
+        decision = approve_candidate_set(
             candidates,
+            seed_host=seed_host,
             faculty_url=faculty_url,
-            institution_name=_institution_name(scholarship, seed_host),
-            directory_html=rendered_html,
-            http_status=200,
-            discovery_path="browser_render",
+            official_host_check=host_check or host_is_official,
         )
-        if stored:
-            db.commit()
+        if decision.approved:
             logger.info(
-                "Rendered %s and stored %s evidenced professor(s) for scholarship %s",
+                "Rendered %s and approved %s evidenced professor(s) for scholarship %s",
                 faculty_url,
-                stored,
+                len(decision.approved),
                 scholarship.id,
             )
-            return None, ""
+            return (
+                None,
+                "",
+                ApprovedCandidateGroup(
+                    faculty_url=faculty_url,
+                    directory_html=rendered_html,
+                    http_status=200,
+                    discovery_path="browser_render",
+                    approved=decision.approved,
+                    examined=decision.examined,
+                    rejected=decision.rejected,
+                    rejection_reasons=dict(decision.rejection_reasons),
+                ),
+            )
 
     detail = "; ".join(rendered_reasons[:3]) or "the source is client-side"
     return (
         str(SupervisorCoverageStatus.SOURCE_REQUIRES_RENDERING),
         f"A static read was not sufficient ({detail}). A bounded browser render produced "
         "no academic evidence, so no supervisor can be verified either way.",
+        None,
     )
 
 
@@ -1171,47 +1152,139 @@ def _readable(page) -> bool:
     return page is not None and bool(getattr(page, "success", True))
 
 
-def discover_for_scholarship(
-    db, scholarship: Scholarship, render_budget: RenderBudget | None = None
-) -> DiscoveryOutcome:
-    """Run the pipeline for one scholarship and write its coverage state.
+@dataclass(frozen=True)
+class CoverageOverride:
+    """An explicit coverage verdict, for the inconclusive outcomes.
 
-    Safe to re-run. Every write is an upsert keyed on a unique constraint, and
-    the coverage row is recomputed from the links rather than incremented, so a
-    repeated run cannot inflate a count.
+    ``None`` on a field means "leave it alone". That distinction is load-bearing:
+    the blocked-seed-host branch has historically set only a status and an error
+    summary, and forcing a zeroed count or a rewritten evidence state there would
+    be a silent behaviour change to a public field.
+    """
+
+    status: str
+    last_error_summary: str | None = None
+    evidence_state: str | None = None
+    zero_verified_count: bool = False
+
+
+@dataclass(frozen=True)
+class ApprovedCandidateGroup:
+    """Everything approved on one directory page, and the page they came from.
+
+    The page context travels with the candidates because the evidence row needs
+    the URL, the HTML and the HTTP status of the page the claim was read from.
+    Carrying it here means the persistence stage never has to re-fetch or guess.
+    """
+
+    faculty_url: str
+    directory_html: str | None
+    http_status: int | None
+    discovery_path: str
+    approved: tuple[ApprovedSupervisorCandidate, ...]
+    examined: int = 0
+    rejected: int = 0
+    rejection_reasons: dict[str, int] = field(default_factory=dict)
+
+
+@dataclass(frozen=True)
+class SupervisorDiscoveryPlan:
+    """The complete, final answer for one discovery run - and nothing written yet.
+
+    This is the object the safety argument rests on. Fetching, parsing,
+    classification, personhood, role, institutional domain, provenance,
+    normalization and deduplication have all finished by the time one of these
+    exists, and producing one required no session at all. Everything that can be
+    written is already decided inside it.
+
+    ``collect_supervisor_plan`` cannot write even by accident: it does not take a
+    session and imports no ORM. The only thing that can turn a plan into rows is
+    :func:`persist_supervisor_plan`, which writes each group and commits once.
+    """
+
+    scholarship_id: int
+    #: The status this run reports, which is not always the status it stores.
+    #: A run with no recorded source URL reports ``search_pending`` while storing
+    #: the honest negative; that asymmetry is long-standing public behaviour.
+    status: str
+    detail: str | None = None
+    seed_host: str = ""
+    institution_name: str = ""
+    pages_fetched: int = 0
+    searched: bool = False
+    blocked: bool = False
+    groups: tuple[ApprovedCandidateGroup, ...] = ()
+    coverage_override: CoverageOverride | None = None
+    #: Candidates approved in total, across every group.
+    approved_count: int = 0
+    #: Candidates examined in total, approved or not.
+    examined_count: int = 0
+    rejected_count: int = 0
+    rejection_reasons: dict[str, int] = field(default_factory=dict)
+
+    @property
+    def is_empty(self) -> bool:
+        return not self.groups
+
+
+def collect_supervisor_plan(
+    scholarship: Scholarship,
+    render_budget: RenderBudget | None = None,
+    *,
+    official_host_check=None,
+) -> SupervisorDiscoveryPlan:
+    """Gather, classify and gate everything for one scholarship. Write nothing.
+
+    The pre-persistence half of discovery, split out so that classification
+    provably finishes before any row exists. It performs network reads and pure
+    computation only: no session, no ``add``, no ``flush``, no ``commit``. The
+    test suite asserts that absence directly rather than trusting this docstring.
+
+    ``official_host_check`` defaults to this module's own ``host_is_official``,
+    resolved at call time so a test that stands up a loopback institution is
+    honoured by the gate that decides institutional ownership.
     """
     from bs4 import BeautifulSoup
 
-    ensure_coverage_row(db, scholarship.id)
+    host_check = official_host_check or host_is_official
+
     seed_urls = scholarship_seed_urls(scholarship)
     if not seed_urls:
-        db.commit()
-        recompute_coverage(db, scholarship.id, searched=True)
-        return DiscoveryOutcome(
+        return SupervisorDiscoveryPlan(
             scholarship_id=scholarship.id,
             status=str("search_pending"),
             detail="No official source URL is recorded for this scholarship.",
+            searched=True,
         )
 
     seed_host = (urlparse(seed_urls[0]).netloc or "").lower()
     if not host_is_official(seed_host):
-        coverage = ensure_coverage_row(db, scholarship.id)[0]
-        coverage.status = str("source_blocked")
-        coverage.last_error_summary = f"Source host {seed_host} is not an institutional domain."
-        coverage.last_checked_at = datetime.now(timezone.utc)
-        db.commit()
-        return DiscoveryOutcome(
+        return SupervisorDiscoveryPlan(
             scholarship_id=scholarship.id,
             status=str("source_blocked"),
             detail=f"Source host {seed_host} is not an institutional domain.",
+            seed_host=seed_host,
+            coverage_override=CoverageOverride(
+                status=str("source_blocked"),
+                last_error_summary=(
+                    f"Source host {seed_host} is not an institutional domain."
+                ),
+            ),
         )
 
     institution_name = _institution_name(scholarship, seed_host)
     pages_fetched = 0
-    professors_written = 0
-    links_written = 0
+    approved_total = 0
     seed_fetched = 0
     faculty_pages: list[tuple[str, str]] = []
+    #: Deduplication spans the whole run, not one page, so the same professor
+    #: listed on two department pages is collected once. Keyed on the normalised
+    #: profile URL - the same key the database's unique constraint uses.
+    seen_urls: set[str] = set()
+    groups: list[ApprovedCandidateGroup] = []
+    examined_total = 0
+    rejected_total = 0
+    reasons_total: dict[str, int] = {}
 
     for seed_url in seed_urls[:MAX_PAGES_PER_SCHOLARSHIP]:
         page = polite_fetch(seed_url)
@@ -1237,25 +1310,61 @@ def discover_for_scholarship(
                 break
 
     faculty_fetch_failed = False
-    for faculty_url, parent_url in faculty_pages:
+    for faculty_url, _parent_url in faculty_pages:
         faculty_page = polite_fetch(faculty_url)
         if not _readable(faculty_page):
             faculty_fetch_failed = True
             continue
         pages_fetched += 1
-        candidates = extract_faculty_candidates(faculty_page.content or "", faculty_url, seed_host)
-        professors_written += _persist_candidates(
-            db,
-            scholarship,
-            candidates,
-            faculty_url=faculty_url,
-            institution_name=institution_name,
-            directory_html=faculty_page.content,
-            http_status=faculty_page.status_code,
-            discovery_path="static",
+        candidates = extract_faculty_candidates(
+            faculty_page.content or "", faculty_url, seed_host
         )
-        links_written += professors_written
-        db.commit()
+        decision = approve_candidate_set(
+            candidates,
+            seed_host=seed_host,
+            faculty_url=faculty_url,
+            official_host_check=host_check,
+            seen_urls=seen_urls,
+        )
+        examined_total += decision.examined
+        rejected_total += decision.rejected
+        for gate, count in decision.rejection_reasons.items():
+            reasons_total[gate] = reasons_total.get(gate, 0) + count
+        if decision.approved:
+            groups.append(
+                ApprovedCandidateGroup(
+                    faculty_url=faculty_url,
+                    directory_html=faculty_page.content,
+                    http_status=faculty_page.status_code,
+                    discovery_path="static",
+                    approved=decision.approved,
+                    examined=decision.examined,
+                    rejected=decision.rejected,
+                    rejection_reasons=dict(decision.rejection_reasons),
+                )
+            )
+            approved_total += len(decision.approved)
+        elif decision.examined:
+            # An empty page still belongs in the report, so a run that read a
+            # directory and approved nobody is distinguishable from a run that
+            # never reached one.
+            groups.append(
+                ApprovedCandidateGroup(
+                    faculty_url=faculty_url,
+                    directory_html=faculty_page.content,
+                    http_status=faculty_page.status_code,
+                    discovery_path="static",
+                    approved=(),
+                    examined=decision.examined,
+                    rejected=decision.rejected,
+                    rejection_reasons=dict(decision.rejection_reasons),
+                )
+            )
+
+    # `links_written` in the original meant "how many professors have been
+    # approved so far", accumulated per page. It only ever mattered as a
+    # zero-or-not test, and that is the only use it has here.
+    links_approved = approved_total
 
     # A search counts as completed only when the institution's own pages were
     # actually read. Anything less is a blocked source, never a negative result.
@@ -1265,29 +1374,34 @@ def discover_for_scholarship(
     # A directory behind a sign-in is inaccessible, not empty. We read the page and
     # learned nothing about faculty; reporting a negative would turn a password
     # field into a claim that a university employs nobody.
-    if searched and not links_written:
+    if searched and not links_approved:
         for faculty_url, _ in faculty_pages:
             faculty_page = polite_fetch(faculty_url)
             if not _readable(faculty_page):
                 continue
             if page_requires_authentication(faculty_page.content or ""):
-                coverage, _ = ensure_coverage_row(db, scholarship.id)
-                coverage.status = str(SupervisorCoverageStatus.SOURCE_BLOCKED)
-                coverage.verified_supervisor_count = 0
-                coverage.evidence_state = "partial"
-                coverage.last_checked_at = datetime.now(timezone.utc)
-                coverage.last_error_summary = (
+                summary = (
                     "The official people directory requires sign-in. It is inaccessible to an "
                     "anonymous reader and cannot be searched by this worker."
-                )[:500]
-                db.commit()
-                return DiscoveryOutcome(
+                )
+                return SupervisorDiscoveryPlan(
                     scholarship_id=scholarship.id,
-                    status=coverage.status,
+                    status=str(SupervisorCoverageStatus.SOURCE_BLOCKED),
+                    detail=summary,
+                    seed_host=seed_host,
+                    institution_name=institution_name,
                     pages_fetched=pages_fetched,
-                    professors_found=0,
-                    links_written=0,
-                    detail=coverage.last_error_summary,
+                    groups=tuple(groups),
+                    coverage_override=CoverageOverride(
+                        status=str(SupervisorCoverageStatus.SOURCE_BLOCKED),
+                        last_error_summary=summary,
+                        evidence_state="partial",
+                        zero_verified_count=True,
+                    ),
+                    approved_count=approved_total,
+                    examined_count=examined_total,
+                    rejected_count=rejected_total,
+                    rejection_reasons=reasons_total,
                 )
 
     # A page that assembles its content with JavaScript was read successfully and
@@ -1298,53 +1412,215 @@ def discover_for_scholarship(
     # unavailable, disabled, blocked, or simply unhelpful, the answer stays
     # SOURCE_REQUIRES_RENDERING - never a negative, because nobody has established
     # that the university employs nobody.
-    if searched and not links_written:
+    if searched and not links_approved:
         # A budget is always available; passing one in only means "you may render".
         # Without it the driver reports that rendering is disabled, which lands on
         # the same inconclusive state. The shell check itself must never be skipped -
         # that is what would let an unreadable directory become a false negative.
-        render_status, render_summary = _attempt_render_for_shells(
-            db,
+        render_status, render_summary, render_group = _collect_render_for_shells(
             scholarship,
             faculty_pages,
             seed_host,
             render_budget or RenderBudget(),
+            host_check=host_check,
         )
+        if render_group is not None:
+            groups.append(render_group)
+            approved_total += len(render_group.approved)
         if render_status is not None:
-            coverage, _ = ensure_coverage_row(db, scholarship.id)
-            coverage.status = render_status
-            coverage.verified_supervisor_count = 0
-            coverage.evidence_state = "partial"
-            coverage.last_checked_at = datetime.now(timezone.utc)
-            coverage.last_error_summary = render_summary[:500]
-            db.commit()
-            return DiscoveryOutcome(
+            return SupervisorDiscoveryPlan(
                 scholarship_id=scholarship.id,
-                status=coverage.status,
-                pages_fetched=pages_fetched,
-                professors_found=0,
-                links_written=0,
+                status=render_status,
                 detail=render_summary,
+                seed_host=seed_host,
+                institution_name=institution_name,
+                pages_fetched=pages_fetched,
+                groups=tuple(groups),
+                coverage_override=CoverageOverride(
+                    status=render_status,
+                    last_error_summary=render_summary[:500],
+                    evidence_state="partial",
+                    zero_verified_count=True,
+                ),
+                approved_count=approved_total,
+                examined_count=examined_total,
+                rejected_count=rejected_total,
+                rejection_reasons=reasons_total,
             )
-        if render_summary == "":
-            # Rendering produced a professor; fall through so coverage is
-            # recomputed from the links rather than short-circuited.
-            recompute_coverage(db, scholarship.id, searched=True)
+
+    return SupervisorDiscoveryPlan(
+        scholarship_id=scholarship.id,
+        status="",
+        seed_host=seed_host,
+        institution_name=institution_name,
+        pages_fetched=pages_fetched,
+        searched=searched,
+        blocked=blocked,
+        groups=tuple(groups),
+        approved_count=approved_total,
+        examined_count=examined_total,
+        rejected_count=rejected_total,
+        rejection_reasons=reasons_total,
+    )
+
+
+def persist_approved_candidates(
+    db,
+    scholarship: Scholarship,
+    group: ApprovedCandidateGroup,
+    institution_name: str,
+) -> int:
+    """Write one already-approved group. Accepts nothing but approved candidates.
+
+    The type of every element of ``group.approved`` is checked, and a raw
+    candidate raises rather than being written. That is what makes the gate
+    structural instead of a matter of discipline: there is no way to reach this
+    function with an unclassified candidate except by constructing the container
+    incorrectly, which fails loudly instead of persisting an unevidenced row.
+    """
+    if not group.approved:
+        return 0
+    for approved in group.approved:
+        if not isinstance(approved, ApprovedSupervisorCandidate):
+            raise TypeError(
+                "persist_approved_candidates only accepts ApprovedSupervisorCandidate; "
+                "run approve_candidate_set before persisting. "
+                f"Got {type(approved).__name__}."
+            )
+
+    directory_text = ""
+    if group.directory_html:
+        # Imported here, as elsewhere in this module: the parser is only needed on
+        # the path that actually has HTML to parse.
+        from bs4 import BeautifulSoup
+
+        directory_text = BeautifulSoup(
+            group.directory_html[:MAX_HTML_BYTES], "html.parser"
+        ).get_text(" ", strip=True)
+
+    stored = 0
+    for approved in group.approved:
+        candidate = approved.candidate
+        professor = upsert_professor(
+            db,
+            candidate,
+            institution_name=institution_name,
+            source_type=str(SourceType.OFFICIAL_DEPARTMENT_PAGE),
+        )
+        link = upsert_link(
+            db,
+            scholarship,
+            professor,
+            relationship_type=str(ProfessorRelationshipType.POTENTIAL_SUPERVISOR),
+            evidence_url=group.faculty_url,
+            evidence_type=str(SourceType.OFFICIAL_DEPARTMENT_PAGE),
+            summary=getattr(candidate, "evidence_summary", None),
+            verification_status=approved.verification_status,
+        )
+        record_evidence(
+            db,
+            professor,
+            source_url=group.faculty_url,
+            source_type=str(SourceType.OFFICIAL_DEPARTMENT_PAGE),
+            # Mirrors the link's own status rather than asserting VERIFIED, so the
+            # evidence row can never claim more than the relationship it supports.
+            verification_status=approved.verification_status,
+            summary=getattr(candidate, "evidence_summary", None),
+            content=group.directory_html,
+            link_id=link.id,
+            scholarship_id=scholarship.id,
+            http_status=group.http_status,
+        )
+        record_availability(
+            db,
+            professor,
+            scope=str(AvailabilityScope.MASTERS_SUPERVISION),
+            state=_derive_availability(directory_text),
+            source_url=group.faculty_url,
+        )
+        stored += 1
+    return stored
+
+
+def persist_supervisor_plan(
+    db,
+    scholarship: Scholarship,
+    plan: SupervisorDiscoveryPlan,
+) -> DiscoveryOutcome:
+    """Write one plan and close the transaction. The only stage that writes.
+
+    Every professor, relationship, evidence and availability row for the run is
+    written here, after the final candidate set was already known, and the run
+    commits exactly once - or, on the inconclusive branches, not at all, because
+    those write only a coverage verdict.
+
+    Coverage is recomputed from the links that now exist rather than being
+    incremented, so re-running is idempotent and a partial run cannot inflate a
+    count.
+    """
+    written = 0
+    for group in plan.groups:
+        written += persist_approved_candidates(
+            db, scholarship, group, plan.institution_name
+        )
+
+    if plan.coverage_override is not None:
+        override = plan.coverage_override
+        coverage, _ = ensure_coverage_row(db, plan.scholarship_id)
+        coverage.status = override.status
+        if override.last_error_summary is not None:
+            coverage.last_error_summary = override.last_error_summary
+        if override.evidence_state is not None:
+            coverage.evidence_state = override.evidence_state
+        if override.zero_verified_count:
+            coverage.verified_supervisor_count = 0
+        coverage.last_checked_at = datetime.now(timezone.utc)
+        db.commit()
+        return DiscoveryOutcome(
+            scholarship_id=plan.scholarship_id,
+            status=plan.status,
+            pages_fetched=plan.pages_fetched,
+            # Approved-but-unwritten candidates are never counted as found: nothing
+            # about them reached storage, so reporting them would be a claim the
+            # database does not support.
+            professors_found=0,
+            links_written=0,
+            detail=plan.detail,
+        )
 
     coverage = recompute_coverage(
         db,
-        scholarship.id,
-        searched=searched,
-        blocked=blocked,
+        plan.scholarship_id,
+        searched=plan.searched,
+        blocked=plan.blocked,
     )
     return DiscoveryOutcome(
-        scholarship_id=scholarship.id,
+        scholarship_id=plan.scholarship_id,
         status=coverage.status,
-        pages_fetched=pages_fetched,
-        professors_found=professors_written,
-        links_written=links_written,
+        pages_fetched=plan.pages_fetched,
+        professors_found=written,
+        links_written=written,
         detail=coverage.last_error_summary,
     )
+
+
+def discover_for_scholarship(
+    db, scholarship: Scholarship, render_budget: RenderBudget | None = None
+) -> DiscoveryOutcome:
+    """Run the pipeline for one scholarship and write its coverage state.
+
+    Two stages, in this order and no other: :func:`collect_supervisor_plan`
+    gathers and classifies with no session in scope, then
+    :func:`persist_supervisor_plan` writes what survived and commits once. The
+    split exists so that the gating cannot be reordered behind a write by a future
+    edit - there is nothing to write until collection has finished.
+
+    Safe to re-run. Every write is an upsert keyed on a unique constraint, and
+    the coverage row is recomputed from the links rather than incremented, so a
+    repeated run cannot inflate a count.
+    """
+    plan = collect_supervisor_plan(scholarship, render_budget)
+    return persist_supervisor_plan(db, scholarship, plan)
 
 
 def _institution_name(scholarship: Scholarship, seed_host: str) -> str:
@@ -1432,17 +1708,24 @@ __all__ = [
     "MAX_CANDIDATES_PER_SCHOLARSHIP",
     "MAX_PAGES_PER_SCHOLARSHIP",
     "MAX_WORKERS",
+    "ApprovedCandidateGroup",
+    "CoverageOverride",
     "DiscoveryOutcome",
     "FacultyCandidate",
+    "SupervisorDiscoveryPlan",
     "clear_official_source_cache",
     "clear_robots_cache",
+    "collect_supervisor_plan",
     "discover_for_scholarship",
     "extract_faculty_candidates",
     "host_is_official",
     "looks_like_faculty_listing",
+    "persist_approved_candidates",
+    "persist_supervisor_plan",
     "polite_fetch",
     "record_availability",
     "record_evidence",
+    "registrable_domain",
     "run_discovery_batch",
     "scholarship_seed_urls",
     "upsert_link",
