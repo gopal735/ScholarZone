@@ -29,21 +29,25 @@ pypdf>=5.0,<7
 pdfplumber>=0.11,<1
 pytest
 # ---------------------------------------------------------------------------
-# Optional: browser rendering for client-side institutional directories
+# Browser rendering is deliberately NOT a production dependency.
 #
-# Supervisor discovery is static-first. This is needed only for the fallback
-# tier, which runs when a public university directory publishes its staff list
-# only after JavaScript executes - and even then only when an operator sets
-# SCHOLARZONE_SUPERVISOR_RENDER_ENABLED. With the flag off, or with this package
-# absent, those sources are recorded as source_requires_rendering, which is an
-# honest inconclusive state and never a claim that a university has no staff.
+# Supervisor discovery is static-first. The browser tier is an opt-in fallback
+# for a university directory that publishes its staff list only after JavaScript
+# executes, and it is reachable only when an operator sets
+# SCHOLARZONE_SUPERVISOR_RENDER_ENABLED.
 #
-# Install the browser binary too: `playwright install chromium`. The ordinary
-# test suite and the maintenance worker never require either.
+# The driver lives in requirements-supervisor-render.txt, not here. Its ~101 MB
+# pushed this function's bundle to 270.22 MB against a 225 MB platform limit, so
+# the build failed and nothing was deployed at all. A dependency that only a
+# fallback tier needs must not be able to stop the service shipping.
 #
-# One framework only. It is the maintained option that covers JavaScript
-# execution, headless operation, deterministic automation and CI in a single
-# dependency, and a second browser driver would have been a second set of
-# lifecycle bugs to maintain.
+# Nothing below this line changes behaviour when the driver is absent:
+# supervisor_render.playwright_available() returns False, build_driver() returns
+# a null driver, and such sources are recorded as source_requires_rendering -
+# an honest inconclusive state, never a claim that a university has no staff.
+# Static discovery needs no browser and is unaffected.
+#
+# To install the browser tier:
+#   pip install -r requirements.txt -r requirements-supervisor-render.txt
+#   playwright install chromium
 # ---------------------------------------------------------------------------
-playwright>=1.49,<2
