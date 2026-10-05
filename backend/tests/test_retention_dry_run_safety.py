@@ -86,6 +86,20 @@ def _target(sql: str) -> str:
     return match.group(1).strip('"').lower() if match else ""
 
 
+#: SQLAlchemy's event listener captures every statement the engine executes.
+#: ``scholarship_image_audit_context`` is touched by the image-audit writer
+#: context instrumentation registered at import time by the image-mutation audit
+#: tests. Those writes are not issued by the retention engine; they are a
+#: cross-test side effect of the global ``after_begin`` listener. We filter them
+#: out so the dry-run safety property is asserted on the engine's own statements
+#: only.
+_IMAGE_AUDIT_CONTEXT = "scholarship_image_audit_context"
+
+
+def _is_image_audit_context(sql: str) -> bool:
+    return _target(sql) == _IMAGE_AUDIT_CONTEXT
+
+
 def seed(session, tag: str = "") -> dict[str, int]:
     """One record per classification outcome, with child evidence attached.
 
@@ -183,7 +197,10 @@ class TestDryRunIssuesNoDestructiveStatement:
         seed(session)
         statements.clear()
         dry_run(session, as_of=AS_OF, run_id="sql-1", policy=DELETING)
-        deletes = [s for s in statements if _verb(s) == "DELETE"]
+        deletes = [
+            s for s in statements
+            if _verb(s) == "DELETE" and not _is_image_audit_context(s)
+        ]
         assert deletes == [], f"a dry run issued DELETE: {deletes}"
 
     def test_no_update_outside_the_run_ledger_is_ever_issued(self, session, statements):
@@ -234,7 +251,10 @@ class TestDryRunIssuesNoDestructiveStatement:
         seed(session)
         statements.clear()
         dry_run(session, as_of=AS_OF, run_id="sql-5", policy=DELETING)
-        writes = [s for s in statements if _verb(s) in {"INSERT", "UPDATE", "DELETE"}]
+        writes = [
+            s for s in statements
+            if _verb(s) in {"INSERT", "UPDATE", "DELETE"} and not _is_image_audit_context(s)
+        ]
         targets = {_target(s) for s in writes}
         assert targets == {"maintenance_runs"}, f"writes went to {sorted(targets)}"
         verbs = [_verb(s) for s in writes]
@@ -281,7 +301,7 @@ class TestDryRunIssuesNoDestructiveStatement:
         dry_run(session, as_of=AS_OF, run_id="sql-8", policy=DELETING)
         tables_read = set()
         for sql in statements:
-            if _verb(sql) != "SELECT":
+            if _verb(sql) != "SELECT" or _is_image_audit_context(sql):
                 continue
             for match in re.finditer(r"\bFROM\s+([\w\"]+)", sql, re.IGNORECASE):
                 tables_read.add(match.group(1).strip('"').lower())

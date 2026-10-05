@@ -10,6 +10,7 @@ guards.
 from __future__ import annotations
 
 import json
+import shutil
 from datetime import date, datetime, timedelta, timezone
 
 import pytest
@@ -90,6 +91,20 @@ def production_visibility_gate(monkeypatch):
     monkeypatch.setenv("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED", "true")
     monkeypatch.setenv("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE", "true")
     monkeypatch.setenv("SCHOLARZONE_PUBLIC_ALLOW_THIRD_PARTY_IMAGE", "false")
+
+
+@pytest.fixture(autouse=True)
+def _isolate_recovery_inventory(monkeypatch):
+    """Make recovery capability inventory deterministic across CI and local.
+
+    The inventory checks the local PATH for PostgreSQL client binaries. On
+    GitHub-hosted Ubuntu runners those binaries are present, which makes R4
+    (logical dump tooling) show as PROVEN instead of ABSENT and changes the
+    contract's unmet set. For the purpose of these tests the inventory must
+    describe the repository's stated capabilities, not the runner's installed
+    packages, so we force the lookup to miss.
+    """
+    monkeypatch.setattr("shutil.which", lambda name: None)
 
 
 def facts(sid: int, **overrides) -> RetentionFacts:
