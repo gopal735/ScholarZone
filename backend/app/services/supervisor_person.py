@@ -270,6 +270,20 @@ def _slug_is_personal(slug: str | None) -> bool:
     return not any(word in NAVIGATIONAL_SLUG_WORDS for word in words)
 
 
+def profile_url_is_person_profile(url: str) -> bool:
+    """Return whether ``url`` sits at a personal-profile path.
+
+    A URL is person-bearing when its path begins with a recognised personal-profile
+    root and the immediately following slug is not navigational. This is the same
+    test the classifier applies for source-context evidence, lifted here so the
+    gating layer can require it for inline-role evidence as well.
+    """
+    if not url:
+        return False
+    slug = _slug_after_person_root(url)
+    return _slug_is_personal(slug)
+
+
 def classify_person_candidate(
     label: str,
     *,
@@ -425,6 +439,94 @@ def looks_like_a_person_name(text: str) -> bool:
     return _find_role(text or "") is not None or _honorific_of(text or "") is not None
 
 
+def approve_personhood(
+    name: str,
+    *,
+    role: str | None = None,
+    role_evidence: str | None = None,
+    name_claims_person: bool = True,
+    profile_url: str = "",
+    directory_context: bool = False,
+    require_profile_url: bool = True,
+) -> tuple[bool, str | None]:
+    """The canonical personhood gate.
+
+    Every Supervisor candidate path (honorific, inline_role, profile_role,
+    source_context) MUST call this function. It returns ``(ok, reason)``
+    where ``ok`` is ``True`` iff the text claims an individual person.
+
+    The gate enforces the invariant established by 91bcdb5 and hardened by
+    0eeac9d: a person-shaped name is necessary but NOT sufficient. The text
+    must also claim an individual, not merely state a role.
+
+    Parameters
+    ----------
+    name: The candidate name after role/honorific extraction.
+    role: The academic role stated, if any.
+    role_evidence: The mechanism that established the role, if any.
+    name_claims_person: Whether this segment itself claimed a person, as
+        opposed to borrowing a role from a neighbouring segment. This is
+        recorded by :func:`classify_person_candidate` while segments are
+        still in hand.
+    profile_url: The candidate's profile URL, required for inline-role
+        evidence and structural signals.
+    directory_context: Whether the page is a known faculty directory.
+    require_profile_url: Whether a valid person-profile URL is required
+        for inline-role evidence. Defaults to ``True`` for safety.
+
+    Returns
+    -------
+    (ok, reason): ``(True, None)`` if personhood is approved;
+    ``(False, reason)`` with a human-readable reason if rejected.
+    """
+    if not name or not name.strip():
+        return False, "no name was stated"
+
+    name = name.strip()
+
+    # 1. Structural person shape. Necessary but not sufficient.
+    if not _is_person_shaped(name):
+        return False, f"{name!r} is not the shape of one person's name"
+
+    # 2. Not merely the role restated. The 91bcdb5 invariant.
+    # A label like "Academic Staff" states a role and names a collective.
+    # It is two capitalised words but names no individual.
+    role_for_check = role
+    if role is not None and role_words_are_the_whole_name(name, role):
+        return False, f"{name!r} states only the role and names no individual"
+
+    # 3. The borrowed-role gate (from 0eeac9d).
+    # For inline-role evidence, the segment itself must have claimed a person.
+    # A borrowed role - e.g. "Nanyang Research | Researchers" where the role
+    # is in a sibling segment - is not a person claim.
+    if role is not None and role_evidence == "inline_role":
+        # The gate requires explicit confirmation that THIS segment claimed
+        # the person. Borrowed roles fail here.
+        if not name_claims_person:
+            return False, "role borrowed from neighbouring segment; name claims no individual"
+
+    # 4. Profile URL requirement for inline-role evidence.
+    # Inline-role evidence requires a person-profile URL on the same institution.
+    if role_evidence == "inline_role":
+        if not profile_url_is_person_profile(profile_url):
+            return False, "inline-role evidence requires a person-profile URL"
+
+    # 5. Profile-role evidence: role read from the profile page itself.
+    # The profile page is assumed to be a person's page, but we must still
+    # ensure the name is not merely a role label.
+    if role_evidence == "profile_role":
+        if role_words_are_the_whole_name(name, role):
+            return False, f"{name!r} is merely the role {role!r} restated"
+
+    # 6. Honorific evidence: leading honorific with person-shaped remainder.
+    # Already validated by the calling path, but we double-check the shape.
+    if role_evidence == "honorific":
+        if not _is_person_shaped(name):
+            return False, f"{name!r} is not person-shaped after honorific removal"
+
+    return True, None
+
+
 __all__ = [
     "ACADEMIC_ROLE_PHRASES",
     "HONORIFICS",
@@ -432,9 +534,11 @@ __all__ = [
     "PERSON_PATH_ROOTS",
     "PersonSignal",
     "academic_role_in",
+    "approve_personhood",
     "classify_person_candidate",
     "looks_like_a_person_name",
     "name_is_person_shaped",
+    "profile_url_is_person_profile",
     "role_words_are_the_whole_name",
     "states_role_about_a_person",
 ]

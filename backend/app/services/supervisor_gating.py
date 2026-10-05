@@ -77,7 +77,12 @@ from enum import StrEnum
 from typing import Protocol
 from urllib.parse import urlparse, urlunparse
 
-from .supervisor_person import name_is_person_shaped, role_words_are_the_whole_name
+from .supervisor_person import (
+    name_is_person_shaped,
+    approve_personhood,
+    profile_url_is_person_profile,
+    role_words_are_the_whole_name,
+)
 from .supervisor_status import RelationshipVerificationStatus
 
 # ---------------------------------------------------------------------------
@@ -413,46 +418,21 @@ def verify_supervisor_candidate(
     failed: list[SupervisorGate] = []
     reasons: list[str] = []
 
-    # 1. Personhood. Structural person shape AND not merely the role restated.
-    #    The second clause is the 91bcdb5 invariant; dropping it would promote
-    #    "Academic Staff" and "School of Computing", which are two capitalised
-    #    words apiece and no more a person than a navigation link is.
-    #
-    #    The third clause is the borrowed-role case, which the first two cannot
-    #    reach. Both of these are a person-shaped name plus a role string:
-    #
-    #        "Rachit Agarwal Professor"    a person, and a role, in one clause
-    #        "Nanyang Research | Researchers"  a heading, and a role beside it
-    #
-    #    Removing the role from the second changes nothing - the role is in the
-    #    other segment - so the residue is still two capitalised words and passes.
-    #    Measured on the real NTU chancellery page, where it reached VERIFIED and
-    #    would have been stored as a verified professor. Surface form cannot
-    #    separate it from "S Chandra Das", so this asks whether the name made the
-    #    claim itself, which the classifier decided while it still had the
-    #    segments in hand and recorded as ``name_claims_person``.
-    #
-    #    It is asked of inline-role evidence only. An honorific leads its own name,
-    #    and a profile role was read off that person's own page - the case
-    #    test_a_role_on_the_profile_promotes_a_structural_candidate deliberately
-    #    relies on, so neither is put to it.
-    if not name:
+    # 1. Personhood - the canonical gate.
+    #    All evidence paths (honorific, inline_role, profile_role, source_context)
+    #    must pass through approve_personhood, which enforces the 91bcdb5 and 0eeac9d
+    #    invariants in a single, auditable place.
+    ok, reason = approve_personhood(
+        name,
+        role=role,
+        role_evidence=role_evidence,
+        name_claims_person=name_claims_person,
+        profile_url=profile_url,
+        directory_context=True,  # discovery always runs in a directory context
+    )
+    if not ok:
         failed.append(SupervisorGate.PERSONHOOD)
-        reasons.append("no name was stated")
-    elif not name_is_person_shaped(name):
-        failed.append(SupervisorGate.PERSONHOOD)
-        reasons.append(f"{name!r} is not the shape of one person's name")
-    elif role is not None and role_words_are_the_whole_name(name, role):
-        failed.append(SupervisorGate.PERSONHOOD)
-        reasons.append(
-            f"{name!r} states only the role {role!r} and names no individual"
-        )
-    elif role_evidence == "inline_role" and not name_claims_person:
-        failed.append(SupervisorGate.PERSONHOOD)
-        reasons.append(
-            f"{name!r} borrows the role {role!r} from a neighbouring segment and "
-            f"claims no individual of its own"
-        )
+        reasons.append(reason or "personhood gate failed")
 
     # 2. Role evidence. A stated academic role, established by a route this
     #    product recognises. Independent of personhood: a person with no stated
