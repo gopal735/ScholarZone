@@ -28,6 +28,13 @@ def at(text: str) -> dt.datetime:
     return dt.datetime.fromisoformat(text).replace(tzinfo=UTC)
 
 
+def due_at_from_slot_id(slot_id: str) -> dt.datetime:
+    """The due instant encoded in a canonical Phase A slot id."""
+    from app.maintenance_slots import due_at_from_slot_id as _due
+
+    return _due(slot_id)
+
+
 @pytest.fixture()
 def factory(tmp_path, monkeypatch):
     was_present = AMBIENT.exists()
@@ -37,14 +44,29 @@ def factory(tmp_path, monkeypatch):
     # The dispatcher reads exactly this variable name (TOKEN_ENV). The fake
     # value lives only here; the real credential is never in a fixture.
     monkeypatch.setenv("GITHUB_ACTIONS_DISPATCH_TOKEN", FAKE_TOKEN)
-    import importlib
-
     import app.database as database
 
-    importlib.reload(database)
+    # ``reset_database_connections()``, not ``importlib.reload(database)``.
+    #
+    # ``get_engine()``/``get_session_factory()`` are ``lru_cache``d and take no
+    # arguments, so their cache key is empty: once any test has an engine cached,
+    # every later ``init_database()`` reuses that same engine until something
+    # clears the cache. ``importlib.reload`` clears it by accident - by rebinding
+    # those names to brand-new functions in the shared module dict - but it
+    # simultaneously leaves every already-imported module holding the previous
+    # function objects, so later fixtures end up calling a ``reset`` that clears
+    # the new cache while the old one stays populated. The result is cached
+    # engine state surviving into unrelated test modules.
+    #
+    # Clearing the real caches explicitly achieves the same isolation with none
+    # of that cross-module damage.
+    database.reset_database_connections()
     database.init_database()
-    yield database.get_session_factory()
-    assert AMBIENT.exists() is was_present, "a test touched the ambient database"
+    try:
+        yield database.get_session_factory()
+        assert AMBIENT.exists() is was_present, "a test touched the ambient database"
+    finally:
+        database.reset_database_connections()
 
 
 @pytest.fixture()
@@ -75,6 +97,59 @@ def fake_transport(status: int, payload: dict | None = None):
     calls: list[dict] = []
     call.calls = calls
     return call
+
+
+# -- Phase A bridge -----------------------------------------------------------
+#
+# Phase B never re-implements slot identity, claiming or leases. It asserts against
+# the same Phase A persistence the runtime uses, so these helpers are deliberately
+# thin: a test that wanted to reach past them into the ORM would be testing a
+# different persistence layer from the one that actually runs.
+
+DUE_1207 = at("2026-10-04T12:07:00")
+SLOT_1207 = "maintenance:2026-10-04T12:07:00Z"
+
+
+def slot_state(factory, slot_id: str) -> str | None:
+    """The persisted state of a logical slot, or None if it has no row."""
+    from app.services.maintenance_slot_store import read_slot
+
+    session = factory()
+    try:
+        row = read_slot(session, slot_id)
+        return row.state if row is not None else None
+    finally:
+        session.close()
+
+
+def slot_row(factory, slot_id: str):
+    """The persisted slot row, for asserting attribution."""
+    from app.services.maintenance_slot_store import read_slot
+
+    session = factory()
+    try:
+        return read_slot(session, slot_id)
+    finally:
+        session.close()
+
+
+def claim(factory, slot_id: str, owner: str, *, lease_seconds: int = 900,
+          as_of: dt.datetime = DUE_1207):
+    """Ensure the slot exists as DUE, then take the Phase A atomic claim."""
+    from app.services.maintenance_slot_store import claim_slot, ensure_slot
+
+    session = factory()
+    try:
+        ensure_slot(session, due_at_from_slot_id(slot_id), as_of=as_of)
+    finally:
+        session.close()
+    session = factory()
+    try:
+        return claim_slot(
+            session, slot_id, owner, dt.timedelta(seconds=lease_seconds), as_of
+        )
+    finally:
+        session.close()
 
 
 # -- Part 8/23: authentication ------------------------------------------------
@@ -118,7 +193,7 @@ class TestCronAuthentication:
 
         monkeypatch.delenv("SCHOLARZONE_DISPATCH_TOKEN", raising=False)
         monkeypatch.delenv("GITHUB_ACTIONS_DISPATCH_TOKEN", raising=False)
-        outcome = dispatch_workflow(slot_id="maint-slot-20261004T1207Z", dispatch_id="d1")
+        outcome = dispatch_workflow(slot_id="maintenance:2026-10-04T12:07:00Z", dispatch_id="d1")
         assert outcome.accepted is False
         assert outcome.classification == CONFIGURATION_BLOCKED
         assert FAKE_TOKEN not in json.dumps(outcome.__dict__)
@@ -128,7 +203,7 @@ class TestCronAuthentication:
 
         transport = fake_transport(204)
         outcome = dispatch_workflow(
-            slot_id="maint-slot-20261004T1207Z", dispatch_id="d1", transport=transport
+            slot_id="maintenance:2026-10-04T12:07:00Z", dispatch_id="d1", transport=transport
         )
         assert outcome.accepted is True
         assert FAKE_TOKEN not in json.dumps(outcome.__dict__)
@@ -145,33 +220,40 @@ class TestSourceAttribution:
             EXTERNAL_SCHEDULER_DISPATCH,
             run_backstop_once,
         )
-        from app.services.maintenance_slot import GITHUB_SCHEDULE, slot_state
+        from app.maintenance_slots import LogicalSource as _LS
 
         transport = fake_transport(204)
         report = run_backstop_once(
             factory, as_of=at("2026-10-04T12:07:00"), transport=transport
         )
         assert report.dispatched, "a missed slot should have been dispatched"
-        from app.models import MaintenanceRun
+        from app.models import MaintenanceSlot
 
         session = factory()
-        rows = session.query(MaintenanceRun).filter(
-            MaintenanceRun.slot_id == report.dispatched[0]).all()
-        assert rows[0].logical_source == EXTERNAL_SCHEDULER_DISPATCH
-        assert rows[0].logical_source != GITHUB_SCHEDULE
-        assert rows[0].transport_event == "workflow_dispatch"
+        row = session.query(MaintenanceSlot).filter(
+            MaintenanceSlot.slot_id == report.dispatched[0]).one()
         session.close()
+        # Attribution lives on the slot, not on a run: a dispatched-but-not-yet-run
+        # slot has no MaintenanceRun at all, so recording it there would lose it.
+        assert row.logical_source == EXTERNAL_SCHEDULER_DISPATCH
+        assert row.logical_source != _LS.GITHUB_SCHEDULE.value
+        assert row.transport_event == _LS.WORKFLOW_DISPATCH.value
 
     def test_a_schedule_run_stays_a_schedule_run(self, factory):
-        from app.services.maintenance_slot import (
-            GITHUB_SCHEDULE,
-            get_or_create_slot,
-        )
+        from app.services.maintenance_slot_store import ensure_slot
 
-        row, _ = get_or_create_slot(
-            factory, at("2026-10-04T12:07:00"), transport_event="schedule"
+        session = factory()
+        ensure_slot(
+            session,
+            DUE_1207,
+            as_of=DUE_1207,
+            logical_source="github_schedule",
+            transport_event="schedule",
         )
-        assert row.logical_source == GITHUB_SCHEDULE
+        session.close()
+        row = slot_row(factory, SLOT_1207)
+        assert row.logical_source == "github_schedule"
+        assert row.transport_event == "schedule"
 
     def test_worker_maps_event_and_source_independently(self, factory, monkeypatch):
         """The worker's mapping is the integration point that must not collapse
@@ -180,11 +262,11 @@ class TestSourceAttribution:
 
         monkeypatch.setenv("SCHOLARZONE_TRANSPORT_EVENT", "workflow_dispatch")
         monkeypatch.setenv("SCHOLARZONE_LOGICAL_SOURCE", "external_scheduler_dispatch")
-        monkeypatch.setenv("SCHOLARZONE_SLOT_ID", "maint-slot-20261004T1207Z")
+        monkeypatch.setenv("SCHOLARZONE_SLOT_ID", "maintenance:2026-10-04T12:07:00Z")
         meta = _slot_metadata()
         assert meta["logical_source"] == "external_scheduler_dispatch"
         assert meta["transport_event"] == "workflow_dispatch"
-        assert meta["slot_id"] == "maint-slot-20261004T1207Z"
+        assert meta["slot_id"] == "maintenance:2026-10-04T12:07:00Z"
 
         # With no explicit origin a bare workflow_dispatch must NOT collapse to
         # a GitHub schedule event; an explicit manual request stays manual.
@@ -201,14 +283,14 @@ class TestSourceAttribution:
 class TestMissedSlotRecovery:
     def test_a_due_slot_with_no_run_is_claimed_and_dispatched(self, factory):
         from app.services.maintenance_dispatch import run_backstop_once
-        from app.services.maintenance_slot import DISPATCHED, slot_state
+        from app.maintenance_slots import SlotState as _SS
 
         transport = fake_transport(204)
         report = run_backstop_once(
             factory, as_of=at("2026-10-04T12:07:00"), transport=transport
         )
         assert report.claimed and report.dispatched
-        assert slot_state(factory, report.dispatched[0]) == DISPATCHED
+        assert slot_state(factory, report.dispatched[0]) == _SS.DISPATCHED.value
         body = transport.calls[0]["body"]
         assert body["inputs"]["logical_source"] == "external_scheduler_dispatch"
         assert body["inputs"]["slot_id"] == report.dispatched[0]
@@ -219,7 +301,7 @@ class TestMissedSlotRecovery:
 
     def test_running_the_backstop_twice_dispatches_once(self, factory):
         from app.services.maintenance_dispatch import run_backstop_once
-        from app.services.maintenance_slot import DISPATCHED, slot_state
+        from app.maintenance_slots import SlotState as _SS
 
         transport = fake_transport(204)
         first = run_backstop_once(
@@ -235,28 +317,27 @@ class TestMissedSlotRecovery:
         assert second.claimed == []
         assert len(transport.calls) == len(first.dispatched)
         for slot in first.dispatched:
-            assert slot_state(factory, slot) == DISPATCHED
+            assert slot_state(factory, slot) == _SS.DISPATCHED.value
 
     def test_duplicate_is_prevented_rather_than_reported_as_failure(self, factory):
         from app.services.maintenance_dispatch import (
             PREVENTED_DUPLICATE,
-            claim_slot,
             run_backstop_once,
         )
 
-        claim = claim_slot(factory, at("2026-10-04T12:07:00"), "github-schedule",
-                           lease_seconds=900)
+        outcome = claim(factory, SLOT_1207, "github-schedule", lease_seconds=900)
         transport = fake_transport(204)
         report = run_backstop_once(
             factory, as_of=at("2026-10-04T12:07:00"), transport=transport
         )
         # The slot the schedule already owns must be prevented, and must never
         # be dispatched a second time.
-        assert claim.slot_id in report.prevented_duplicates
-        assert report.classifications[claim.slot_id] == PREVENTED_DUPLICATE
-        assert claim.slot_id not in report.dispatched
+        assert outcome.claimed
+        assert SLOT_1207 in report.prevented_duplicates
+        assert report.classifications[SLOT_1207] == PREVENTED_DUPLICATE
+        assert SLOT_1207 not in report.dispatched
         assert all(
-            call["body"]["inputs"]["slot_id"] != claim.slot_id
+            call["body"]["inputs"]["slot_id"] != SLOT_1207
             for call in transport.calls
         )
 
@@ -267,7 +348,7 @@ class TestMissedSlotRecovery:
 class TestScheduleVersusBackstopRace:
     def test_one_winner_when_both_paths_target_the_same_slot(self, factory):
         from app.services.maintenance_dispatch import run_backstop_once
-        from app.services.maintenance_slot import claim_slot
+
 
         transport = fake_transport(204)
         when = at("2026-10-04T12:07:00")
@@ -275,9 +356,8 @@ class TestScheduleVersusBackstopRace:
         lock = threading.Lock()
 
         def from_schedule():
-            outcome = {"claim": claim_slot(factory, when, "github-schedule",
-                                          lease_seconds=900,
-                                          logical_source="github_schedule")}
+            outcome = {"claim": claim(factory, SLOT_1207, "github-schedule",
+                                      lease_seconds=900, as_of=when)}
             with lock:
                 outcomes.append(outcome)
 
@@ -293,7 +373,7 @@ class TestScheduleVersusBackstopRace:
         for t in threads:
             t.join()
 
-        shared = "maint-slot-20261004T1207Z"
+        shared = SLOT_1207
         claims = [o["claim"].claimed for o in outcomes if "claim" in o]
         dispatched = [
             d for o in outcomes if "report" in o for d in o["report"].dispatched
@@ -372,7 +452,7 @@ class TestWorkflowOutcomeClassification:
             return 0, {}
 
         outcome = dispatch_workflow(
-            slot_id="maint-slot-20261004T1207Z", dispatch_id="d",
+            slot_id="maintenance:2026-10-04T12:07:00Z", dispatch_id="d",
             transport=boom,
         )
         assert outcome.accepted is False
@@ -391,11 +471,11 @@ class TestWorkflowOutcomeClassification:
 
     def test_accepted_dispatch_is_never_called_success(self, factory):
         from app.services.maintenance_dispatch import dispatch_workflow
-        from app.services.maintenance_slot import DISPATCHED
+        from app.maintenance_slots import SlotState as _SS
 
         transport = fake_transport(204)
         outcome = dispatch_workflow(
-            slot_id="maint-slot-20261004T1207Z", dispatch_id="d", transport=transport
+            slot_id="maintenance:2026-10-04T12:07:00Z", dispatch_id="d", transport=transport
         )
         assert outcome.accepted is True
         assert outcome.classification == "dispatch-accepted"
@@ -403,7 +483,7 @@ class TestWorkflowOutcomeClassification:
     def test_a_failed_workflow_becomes_failed_and_is_not_reset(self, factory):
         from app.services.maintenance_dispatch import reconcile_run
         from app.services.maintenance_dispatch import run_backstop_once
-        from app.services.maintenance_slot import FAILED, slot_state
+        from app.maintenance_slots import SlotState as _SS
 
         transport = fake_transport(204)
         report = run_backstop_once(
@@ -412,11 +492,11 @@ class TestWorkflowOutcomeClassification:
         slot = report.dispatched[0]
         reconcile_run(factory, slot, conclusion="failure", status="completed",
                       as_of=at("2026-10-04T13:00:00"))
-        assert slot_state(factory, slot) == FAILED
+        assert slot_state(factory, slot) == _SS.FAILED.value
 
     def test_a_succeeded_slot_is_never_rewritten(self, factory):
         from app.services.maintenance_dispatch import reconcile_run, run_backstop_once
-        from app.services.maintenance_slot import SUCCEEDED, slot_state
+        from app.maintenance_slots import SlotState as _SS
 
         report = run_backstop_once(
             factory, as_of=at("2026-10-04T12:07:00"), transport=fake_transport(204)
@@ -427,7 +507,7 @@ class TestWorkflowOutcomeClassification:
         again = reconcile_run(factory, slot, conclusion="failure", status="completed",
                               as_of=at("2026-10-04T14:00:00"))
         assert again is None
-        assert slot_state(factory, slot) == SUCCEEDED
+        assert slot_state(factory, slot) == _SS.SUCCEEDED.value
 
 
 # -- Parts 18, 20, 21: recovery and observability ----------------------------
@@ -436,9 +516,9 @@ class TestWorkflowOutcomeClassification:
 class TestRecoveryAndObservability:
     def test_an_expired_lease_is_recovered_by_a_later_pass(self, factory):
         from app.services.maintenance_dispatch import run_backstop_once
-        from app.services.maintenance_dispatch import claim_slot
 
-        claim_slot(factory, at("2026-10-04T12:07:00"), "vercel-cron", lease_seconds=60)
+
+        claim(factory, SLOT_1207, "vercel-cron", lease_seconds=60)
         later = at("2026-10-04T13:00:00")
         report = run_backstop_once(factory, as_of=later, transport=fake_transport(204))
         assert report.expired_leases, "a crashed dispatcher must not block the slot"

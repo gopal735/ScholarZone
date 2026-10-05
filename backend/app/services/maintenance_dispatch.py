@@ -33,23 +33,36 @@ import uuid
 from dataclasses import dataclass, field
 from typing import Callable, Iterable
 
-from app.services.maintenance_slot import (
-    CLAIMED,
-    DISPATCHED,
-    DUE,
-    EXPIRED,
-    EXTERNAL_SCHEDULER_DISPATCH,
-    FAILED,
-    GITHUB_SCHEDULE,
-    RUNNING,
-    SUCCEEDED,
-    advance,
-    claim_slot,
-    expire_stale_claims,
-    slot_due_at,
-    slot_id_for,
-    slot_state,
+from app.maintenance_slots import (
+    LogicalSource,
+    SlotState,
+    due_at_from_slot_id,
+    latest_due_slot,
+    slot_id as canonical_slot_id,
 )
+from app.services.maintenance_slot_store import (
+    claim_slot,
+    ensure_slot,
+    expire_stale_claims,
+    read_slot,
+    to_utc,
+    transition_slot,
+)
+
+#: Slot states, named the way the rest of the codebase names them. These are the
+#: *persisted* states from the Phase A core; the dispatcher never invents one.
+DUE = SlotState.DUE.value
+CLAIMED = SlotState.CLAIMED.value
+DISPATCHED = SlotState.DISPATCHED.value
+EXPIRED = SlotState.EXPIRED.value
+RUNNING = SlotState.RUNNING.value
+SUCCEEDED = SlotState.SUCCEEDED.value
+FAILED = SlotState.FAILED.value
+
+GITHUB_SCHEDULE = LogicalSource.GITHUB_SCHEDULE.value
+EXTERNAL_SCHEDULER_DISPATCH = LogicalSource.EXTERNAL_SCHEDULER_DISPATCH.value
+WORKFLOW_DISPATCH = LogicalSource.WORKFLOW_DISPATCH.value
+WATCHDOG = LogicalSource.WATCHDOG.value
 
 #: The GitHub schedule stays the primary trigger. This is only the backstop.
 REPOSITORY = "gopal735/ScholarZone"
@@ -217,25 +230,28 @@ def missed_slot_ids(
     explicitly ``EXPIRED`` so the gap is recorded rather than silently ignored,
     and never produces an execution storm.
     """
-    due = slot_due_at(as_of)
+    due = latest_due_slot(as_of)
     floor = due - dt.timedelta(hours=window_hours)
     slot_ids: list[str] = []
     cursor = floor
     while cursor <= due:
-        slot_ids.append(slot_id_for(cursor))
+        slot_ids.append(canonical_slot_id(cursor))
         cursor += dt.timedelta(hours=12)
 
     recoverable: list[str] = []
     expired: list[str] = []
     for identifier in slot_ids:
-        state = slot_state(session_factory, identifier)
-        if state is None:
+        row = _read_slot(session_factory, identifier)
+        if row is None:
             recoverable.append(identifier)
-        elif state == EXPIRED:
+        elif row.state == EXPIRED:
             expired.append(identifier)
-        elif state in (DUE, CLAIMED, EXPIRED):
+        elif row.state in (DUE, CLAIMED, EXPIRED):
             recoverable.append(identifier)
-        # RUNNING / SUCCEEDED / FAILED are real outcomes, not missed work.
+        # DISPATCHED / RUNNING / SUCCEEDED / FAILED are real outcomes, not missed
+        # work. This is only reachable now because the slot is stored per logical
+        # slot rather than per run: a slot whose trigger was dropped has a row
+        # here even though no MaintenanceRun was ever written for it.
     return recoverable, expired
 
 
@@ -263,13 +279,73 @@ class DispatchReport:
 def slot_time_from_id(slot_id: str) -> dt.datetime:
     """Recover the UTC due instant encoded in a slot id.
 
-    The id is ``maint-slot-YYYYMMDDTHHMMZ``. Reconstructing the instant lets the
-    backstop claim *this* slot rather than whichever slot is due right now,
-    which is what makes multi-slot catch-up possible. Phase A identity is
-    unchanged; this only reads it back.
+    Reads it back out of the Phase A canonical id rather than parsing a second,
+    private format. Claiming *this* slot rather than whichever slot is due right
+    now is what makes multi-slot catch-up possible; during catch-up the due
+    instant differs per slot, so claiming ``as_of`` would collapse every
+    iteration onto the same one.
     """
-    stamp = slot_id.split("-", 2)[-1]
-    return dt.datetime.strptime(stamp, "%Y%m%dT%H%MZ").replace(tzinfo=dt.timezone.utc)
+    return due_at_from_slot_id(slot_id)
+
+
+def _session(session_factory):
+    """One short session. Always closed, so no SQLite write lock is held."""
+    return session_factory()
+
+
+def _read_slot(session_factory, slot_id: str):
+    """The durable slot row, or ``None`` when the slot is genuinely absent."""
+    session = _session(session_factory)
+    try:
+        return read_slot(session, slot_id)
+    finally:
+        session.close()
+
+
+def _ensure_slot(session_factory, slot_id: str, as_of: dt.datetime, **kwargs) -> None:
+    """Make the slot exist as DUE. Idempotent; a no-op when it already exists."""
+    session = _session(session_factory)
+    try:
+        ensure_slot(session, due_at_from_slot_id(slot_id), as_of=as_of, **kwargs)
+    finally:
+        session.close()
+
+
+def _transition(session_factory, slot_id: str, target: str, as_of: dt.datetime, **kwargs) -> None:
+    session = _session(session_factory)
+    try:
+        transition_slot(
+            session, slot_id, SlotState(target), as_of=as_of, **kwargs
+        )
+    finally:
+        session.close()
+
+
+def _lapsed_claim_ids(session_factory, as_of: dt.datetime) -> list[str]:
+    """Slots whose claim has lapsed and is therefore about to be expired.
+
+    Read immediately before :func:`expire_stale_claims`, so the report names the
+    slots the sweep actually acted on. The predicate is identical to the
+    sweep's, which is the point: the sweep is what moves them to ``EXPIRED``, and
+    this only observes.
+    """
+    from sqlalchemy import select
+
+    from app.models import MaintenanceSlot
+
+    session = _session(session_factory)
+    try:
+        return list(
+            session.execute(
+                select(MaintenanceSlot.slot_id).where(
+                    MaintenanceSlot.state == CLAIMED,
+                    MaintenanceSlot.lease_until.is_not(None),
+                    MaintenanceSlot.lease_until <= as_of,
+                )
+            ).scalars()
+        )
+    finally:
+        session.close()
 
 
 def run_backstop_once(
@@ -289,7 +365,12 @@ def run_backstop_once(
     report = DispatchReport(as_of=as_of)
 
     # A crashed dispatcher must not block a slot forever.
-    report.expired_leases = expire_stale_claims(session_factory, now=as_of)
+    report.expired_leases = _lapsed_claim_ids(session_factory, as_of)
+    session = _session(session_factory)
+    try:
+        expire_stale_claims(session, as_of=as_of)
+    finally:
+        session.close()
 
     recoverable, expired = missed_slot_ids(
         session_factory, as_of=as_of, window_hours=window_hours
@@ -298,23 +379,36 @@ def run_backstop_once(
     report.expired = expired
 
     for identifier in recoverable:
-        state = slot_state(session_factory, identifier)
-        if state in (DISPATCHED, RUNNING, SUCCEEDED, FAILED):
+        row = _read_slot(session_factory, identifier)
+        if row is not None and row.state in (DISPATCHED, RUNNING, SUCCEEDED, FAILED):
             continue
 
         # Claim THIS slot, not the one currently due: during catch-up the
         # due instant differs per slot, and claiming `as_of` would collapse
         # every iteration onto the same slot.
-        claim = claim_slot(
+        due = slot_time_from_id(identifier)
+        _ensure_slot(
             session_factory,
-            as_of=slot_time_from_id(identifier),
-            owner=owner,
-            lease_seconds=lease_seconds,
+            identifier,
+            as_of,
             logical_source=EXTERNAL_SCHEDULER_DISPATCH,
-            transport_event="workflow_dispatch",
+            transport_event=WORKFLOW_DISPATCH,
         )
+        session = _session(session_factory)
+        try:
+            claim = claim_slot(
+                session,
+                identifier,
+                owner,
+                dt.timedelta(seconds=lease_seconds),
+                due,
+            )
+        finally:
+            session.close()
         if not claim.claimed:
-            if claim.reason == "lease-active":
+            # An active lease is ordinary contention, not a failure: another
+            # worker already owns this slot.
+            if claim.owner is not None:
                 report.prevented_duplicates.append(identifier)
                 report.classifications[identifier] = PREVENTED_DUPLICATE
             continue
@@ -322,12 +416,12 @@ def run_backstop_once(
         report.claimed.append(identifier)
         outcome = dispatch_workflow(
             slot_id=identifier,
-            dispatch_id=claim.run_id or identifier,
+            dispatch_id=identifier,
             transport=transport,
         )
         report.classifications[identifier] = outcome.classification
         if outcome.accepted:
-            advance(session_factory, identifier, DISPATCHED, now=as_of)
+            _transition(session_factory, identifier, DISPATCHED, as_of)
             report.dispatched.append(identifier)
         else:
             # Release the claim so a later pass can retry; the slot is never
@@ -339,19 +433,23 @@ def run_backstop_once(
 def _release_claim(session_factory, slot_id: str, as_of: dt.datetime) -> None:
     """Hand a slot back after a dispatch that did not happen.
 
-    The claim is released as EXPIRED, which is the explicit, visible way to
-    release a slot: it is never silently returned to DUE. The session is closed
-    on every path; leaving it open held a SQLite write lock and stalled every
-    later reader.
+    The claim is released through the same recovery primitive an expired lease
+    uses, so a retry later is an ordinary ``EXPIRED -> CLAIMED`` recovery and the
+    attempt stays visible instead of the slot silently returning to DUE. The
+    session is closed on every path; leaving it open held a SQLite write lock and
+    stalled every later reader.
     """
-    from app.models import MaintenanceRun
-
-    session = session_factory()
+    row = _read_slot(session_factory, slot_id)
+    if row is None or row.state != CLAIMED:
+        return
+    if to_utc(row.lease_until) is not None and to_utc(row.lease_until) > as_of:
+        # The claim is still live, so releasing it early would break exactly the
+        # lease protection Phase A exists to provide. It expires on its own and
+        # the next pass recovers it.
+        return
+    session = _session(session_factory)
     try:
-        session.query(MaintenanceRun).filter(
-            MaintenanceRun.slot_id == slot_id
-        ).update({"slot_status": EXPIRED, "lease_until": None}, synchronize_session=False)
-        session.commit()
+        expire_stale_claims(session, as_of)
     finally:
         session.close()
 
@@ -394,21 +492,22 @@ def reconcile_run(
     target = state_for_workflow_run(conclusion, status)
     if target is None:
         return None
-    current = slot_state(session_factory, slot_id)
-    if current is None or current == target:
+    row = _read_slot(session_factory, slot_id)
+    if row is None or row.state == target:
         return None
-    if current in (SUCCEEDED, FAILED):
+    if row.state in (SUCCEEDED, FAILED):
         return None  # terminal states are never rewritten
-    from app.services.maintenance_slot import RUNNING, IllegalTransition
+
+    from app.maintenance_slots import InvalidTransition
 
     try:
-        if current == DISPATCHED and target in (SUCCEEDED, FAILED):
+        if row.state == DISPATCHED and target in (SUCCEEDED, FAILED):
             # A workflow can finish before anyone observed it in progress. The
             # durable machine still requires RUNNING before a terminal state,
             # so the transition is recorded rather than skipped.
-            advance(session_factory, slot_id, RUNNING, now=as_of)
-        advance(session_factory, slot_id, target, now=as_of)
-    except IllegalTransition:
+            _transition(session_factory, slot_id, RUNNING, as_of)
+        _transition(session_factory, slot_id, target, as_of)
+    except InvalidTransition:
         return None
     return target
 
@@ -418,40 +517,34 @@ def reconcile_run(
 
 def observability(session_factory, *, as_of: dt.datetime) -> dict:
     """Operational facts, every one derived from persisted rows."""
-    from app.models import MaintenanceRun
     from sqlalchemy import func
 
-    session = session_factory()
+    from app.models import MaintenanceSlot
+
+    session = _session(session_factory)
     try:
         by_state = dict(
-            session.query(MaintenanceRun.slot_status, func.count())
-            .filter(MaintenanceRun.slot_id.isnot(None))
-            .group_by(MaintenanceRun.slot_status)
+            session.query(MaintenanceSlot.state, func.count())
+            .group_by(MaintenanceSlot.state)
             .all()
         )
         by_source = dict(
-            session.query(MaintenanceRun.logical_source, func.count())
-            .filter(MaintenanceRun.slot_id.isnot(None))
-            .group_by(MaintenanceRun.logical_source)
+            session.query(MaintenanceSlot.logical_source, func.count())
+            .group_by(MaintenanceSlot.logical_source)
             .all()
         )
-        overdue = [
-            row.slot_id
-            for row in session.query(MaintenanceRun)
-            .filter(MaintenanceRun.slot_status.in_([DUE, EXPIRED]))
+        overdue_rows = (
+            session.query(MaintenanceSlot)
+            .filter(MaintenanceSlot.state.in_([DUE, EXPIRED]))
             .all()
+        )
+        overdue = [row.slot_id for row in overdue_rows]
+        dues = [
+            to_utc(row.due_at)
+            for row in overdue_rows
+            if row.due_at is not None
         ]
-        oldest = None
-        if overdue:
-            dues = [
-                row.slot_due_at
-                for row in session.query(MaintenanceRun)
-                .filter(MaintenanceRun.slot_id.in_(overdue))
-                .all()
-                if row.slot_due_at is not None
-            ]
-            if dues:
-                oldest = min(dues).isoformat()
+        oldest = min(dues).isoformat() if dues else None
         return {
             "as_of": as_of.isoformat(),
             "by_state": by_state,
