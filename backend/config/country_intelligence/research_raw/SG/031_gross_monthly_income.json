@@ -1,0 +1,70 @@
+{
+  "country": "SG",
+  "topic": "gross_monthly_income",
+  "source_id": "sg-moe-ges-2025-graduate-starting-salary",
+  "source_url": "https://www.moe.gov.sg/media/files/post-secondary/ges-2025/585fe7dc-65e3-470e-87c3-e23ceed5782b.pdf",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Ministry of Education, Singapore; Graduate Employment Survey conducted jointly by NUS, NTU, SMU, SUTD, SIT and SUSS",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2025 (survey conducted November 2025, employment outcomes as at 1 November 2025)",
+  "raw_extract": "Read verbatim from the GES 2025 PDF header: 'Ministry of Education, Singapore / 5,950 fresh graduates and 145 follow-up graduates from NTU were surveyed in November 2025 and the overall response rates obtained were 75.1% and 45.5% respectively. / NTU: 2025 GES Employment Rate1 and Salaries of Graduates by Bachelor Degree'. Table column headings read verbatim: 'Degree | Response Rate | Proportion of Graduates in the Labour Force who had/were Secured Employment2 / Currently Employed3 / In Full-Time Permanent Employment4 | Basic Monthly Salary5 | Gross Monthly Salary6 | Mean | Median | Mean | Median | 25th Percentile | 75th Percentile'. Rows read verbatim: 'Computer Science 72% 89.5% 85.1% 79.7% $5,675 $5,400 $5,852 $5,500 $4,900 $6,565'; 'Computer Engineering 74% 84.6% 83.1% 75.4% $5,182 $5,000 $5,348 $5,150 $4,900 $5,850'; 'Data Science and Artificial Intelligence 74% 81.0% 81.0% 75.9% $5,313 $5,250 $5,408 $5,250 $4,850 $6,130'; 'Double Degree in Business and Computer Engineering/Computing7 74% 88.9% 87.0% 83.3% $6,714 $6,500 $6,993 $6,950 $5,520 $8,000'; 'Engineering Product Development ... $4,905 $4,900 $5,020 $4,965 $4,500 $5,400'; 'Engineering Systems and Design ... $4,393 $4,525 $4,595 $4,900 $4,100 $5,200'. Footnote definitions read verbatim: 'What is the difference between mean and median salaries? The mean monthly salary is an average of the salaries of the full-time permanently employed graduates. The median monthly salary is the salary of the central (i.e. 50th Percentile) graduate amongst the full-time permanently employed graduates when they are arranged by salary.' and 'For example, the median gross monthly salary for NTU Accountancy and Business graduates shows that 50% of the graduates are earning more than $4,680, and the mean gross monthly salary is $5,385.' Also: '12. What do the 25th and 75th percentile gross monthly salaries indicate? If there are 100 students from that course who responded, then the 25th percentile (i.e. the lower quartile) gross monthly salary indicates that 25 graduates earn less than that salary, and the 75th percentile gross monthly salary indicates that 75 graduates earn less than the gross monthly salary indicated.'",
+  "claims": [
+    {
+      "claim_id": "sg-gross-monthly-001",
+      "value": 5400,
+      "unit": "SGD per month",
+      "as_of": "2025",
+      "statement": "Median basic monthly salary for NTU Computer Science graduates in full-time permanent employment was SGD 5,400 in 2025, with a mean basic monthly salary of SGD 5,675."
+    },
+    {
+      "claim_id": "sg-gross-monthly-002",
+      "value": 5500,
+      "unit": "SGD per month",
+      "as_of": "2025",
+      "statement": "Median gross monthly salary for NTU Computer Science graduates in full-time permanent employment was SGD 5,500 in 2025, with a mean gross monthly salary of SGD 5,852, a 25th percentile of SGD 4,900 and a 75th percentile of SGD 6,565."
+    },
+    {
+      "claim_id": "sg-gross-monthly-003",
+      "value": 5150,
+      "unit": "SGD per month",
+      "as_of": "2025",
+      "statement": "Median gross monthly salary for NTU Computer Engineering graduates in full-time permanent employment was SGD 5,150 in 2025, with a mean of SGD 5,348, a 25th percentile of SGD 4,900 and a 75th percentile of SGD 5,850."
+    },
+    {
+      "claim_id": "sg-gross-monthly-004",
+      "value": 5250,
+      "unit": "SGD per month",
+      "as_of": "2025",
+      "statement": "Median gross monthly salary for NTU Data Science and Artificial Intelligence graduates in full-time permanent employment was SGD 5,250 in 2025, with a mean of SGD 5,408 and a 25th percentile of SGD 4,850."
+    },
+    {
+      "claim_id": "sg-gross-monthly-005",
+      "value": 6950,
+      "unit": "SGD per month",
+      "as_of": "2025",
+      "statement": "Median gross monthly salary for NTU Double Degree in Business and Computer Engineering/Computing graduates in full-time permanent employment was SGD 6,950 in 2025, with a mean of SGD 6,993 and a 75th percentile of SGD 8,000."
+    },
+    {
+      "claim_id": "sg-gross-monthly-006",
+      "value": 4900,
+      "unit": "SGD per month",
+      "as_of": "2025",
+      "statement": "The 25th percentile gross monthly salary for NTU Computer Science and Computer Engineering graduates in full-time permanent employment was SGD 4,900 in 2025, indicating the lower quartile of the graduate salary distribution."
+    }
+  ],
+  "assumptions": [
+    "THESE ARE GROSS FIGURES, NOT NET. Do not use this artifact directly for a break-even calculation. Read the net off the separate SG net artifact (030_net_monthly_income.json), which maps a given gross to net using IRAS tax rates and CPF Board contribution rates.",
+    "Population is fresh GRADUATES in FULL-TIME PERMANENT employment only, surveyed roughly six months after completing final examinations, as at 1 November 2025. Graduates who were unemployed, on contracts, on internships, or self-employed are excluded, which biases the sample upward.",
+    "Institution is NTU. NTU, NUS, SMU, SUTD, SIT and SUSS each publish their own GES table, and medians differ substantially between institutions and between courses; a corpus quoting 'the Singapore graduate salary' as a single number would be misleading.",
+    "The survey is a self-reported survey of graduates with a 75.1% response rate, so it is subject to non-response bias; GES is a well-regarded official instrument but it is a survey rather than an administrative census.",
+    "Basic monthly salary (mean SGD 5,675) and gross monthly salary (mean SGD 5,852) are DIFFERENT measures for Computer Science: gross includes allowances, bonuses and other components. A reader who quotes the basic figure as total compensation, or the gross figure as a pure base wage, will be wrong in both directions.",
+    "Median is preferred over mean because, as the source states, the mean 'is useful ... The median is a useful reference when the salaries are not symmetrically distributed'; the source's own worked example shows a mean of $5,385 against a median of $4,680 for Accountancy and Business, illustrating upward skew from high earners.",
+    "Full-time National Service obligations affect the Singapore labour market structurally; men in particular face NS obligations that delay entry into full-time permanent employment, and those excluded from the survey are not represented here.",
+    "Excludes foreign students, who are not part of the GES population."
+  ],
+  "field_mapping": {
+    "gross_monthly_income": "career.gross_monthly_income (topic: gross_monthly_income)"
+  },
+  "notes": "GROSS, NOT NET. This is the official starting-salary anchor for Singapore graduates and is the missing gross input to the SG net calculation. For example, a Computer Science graduate at the median gross of SGD 5,500 per month falls in the band of the net artifact: income tax of SGD 197.50 per month and employee CPF of 20% = SGD 1,100 per month give cash take-home of SGD 4,202.50 per month, or SGD 5,302.50 if CPF is treated as savings rather than a deduction. A reader who took SGD 5,500 as 'net' would overstate monthly cash by about 24%. The 25th percentile of SGD 4,900 is arguably the better cost-of-living anchor for a cost-versus-salary break-even, because it represents what a quarter of graduates actually receives rather than the middle of a distribution pulled upward by high earners. The 75th percentile of SGD 6,565 shows how wide the distribution is: the top quartile earns roughly a third more than the median, so a single national figure conceals real variation.",
+  "evidence_limitations": "This artifact covers only NTU. NTU is one of six universities publishing GES data, and it skews towards engineering and computing, so it is a good proxy for a technical corpus but not a national graduate salary. NUS, SMU and SIT medians differ. GES measures salaries about six months after graduation, which is genuinely early-career, but it does not track progression, so it cannot describe a second-year or third-year salary. It also reports starting salary only for those already in full-time permanent employment, which in 2025 was 79.7% of Computer Science respondents in the labour force, so roughly a fifth of graduates are absent from these figures entirely. Because the figures are self-reported and institution-specific, they should be treated as the best available official anchor rather than a precise national statistic."
+}

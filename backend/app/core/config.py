@@ -1,4 +1,4 @@
-"""Environment-driven application configuration."""
+﻿"""Environment-driven application configuration."""
 
 from dataclasses import dataclass
 from dotenv import load_dotenv
@@ -49,25 +49,6 @@ class Settings:
     # records listed, that is an explicit product decision made here, not
     # something the resolver may decide for itself.
     public_allow_third_party_image: bool = False
-    # Whether the bounded Supervisor discovery trigger may run at all.
-    #
-    # This is a *discovery execution* switch and nothing else. It gates one
-    # endpoint that runs supervisor discovery for one named scholarship. It does
-    # not enable browser rendering, and it is not the same switch as
-    # SCHOLARZONE_SUPERVISOR_RENDER_ENABLED, which is read by
-    # app.services.supervisor_render and governs whether a client-side directory
-    # may be rendered with a browser at all.
-    #
-    # They are kept apart on purpose. Conflating them would mean that turning on
-    # discovery also turned on Playwright in production, which is a far larger
-    # change in blast radius than "run one discovery pass". Turning this on does
-    # not make the renderer available, and turning the renderer on does not make
-    # this endpoint reachable.
-    #
-    # Default OFF in every environment. An unconfigured deployment refuses the
-    # trigger, so the capability is opt-in rather than something a deploy
-    # inherits by being reachable.
-    supervisor_discovery_enabled: bool = False
 
 
 def get_settings() -> Settings:
@@ -141,8 +122,5 @@ def get_settings() -> Settings:
         ),
         public_allow_third_party_image=_as_bool(
             os.getenv("SCHOLARZONE_PUBLIC_ALLOW_THIRD_PARTY_IMAGE"), False
-        ),
-        supervisor_discovery_enabled=_as_bool(
-            os.getenv("SCHOLARZONE_SUPERVISOR_DISCOVERY_ENABLED"), False
         ),
     )

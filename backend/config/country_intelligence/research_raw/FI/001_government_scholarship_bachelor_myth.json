@@ -1,0 +1,62 @@
+{
+  "country": "FI",
+  "topic": "government_scholarship_bachelor_myth",
+  "source_id": "studyinfinland-scholarship-facts",
+  "source_url": "https://www.studyinfinland.fi/funding-your-studies/bachelors-and-masters-scholarships",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Finnish National Agency for Education (Study in Finland)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2025-12-02",
+  "raw_extract": "SOURCE A - https://www.studyinfinland.fi/funding-your-studies/bachelors-and-masters-scholarships\n\n# Bachelor's and Master's Scholarships\n\nScholarships can help you manage tuition costs in Finland, but they are competitive and do not cover any living costs. Understanding what scholarship options exist will help you plan wisely.\n\n## How to apply for a scholarship\n\nScholarships and tuition fee waivers in Finland are offered by individual universities. There are no governmental scholarship programmes available.\n\nIf the university of your choice offers scholarships, remember that they are competitive and will typically only cover your tuition fees, either partially or wholly. You must independently cover your own living costs.\n\nWith some universities, you can apply for a scholarship at the same time as you submit your admission application - making it easy to plan your studies and funding together. In other cases, scholarships may become available after you've started your studies. These can, for example, reward your progress, academic success, or even your growing Finnish language skills.\n\n## Scholarships for studying in Finland - facts\n\nYou may have seen posts and ads promoting \"Fully funded Finland government scholarships\" that would cover everything from university tuition fees to travel and living costs in Finland.\n\nBe cautious - those claims are misleading. Posts and ads like that contain a lot of false information.\n\nUpdated 04.06.2026\n\nSOURCE B - https://www.studyinfinland.fi/news-events/scholarship-facts (News 02.12.2025)\n\n# Scholarships for studies in Finland - facts!\n\nHeard about fully funded Finnish government scholarships? Be cautious - those claims are misleading. While Finland doesn't offer any governmental study scholarships, some universities do provide their own tuition fee waivers.\n\nYou may have seen posts and ads promoting \"Fully funded Finland government scholarships\" that would cover everything from university tuition fees to travel and living costs in Finland. Sounds almost too good to be true, doesn't it?\n\nThat's because it is not true.\n\nSuch posts and ads contain a lot of false information and will only mislead prospective students like you - and may also use Finnish authorities' logos without permission.\n\nThe truth is, there are no governmental scholarships for bachelor's or master's studies in Finland.\n\n## Individual Finnish universities may offer scholarships\n\n- Some individual Finnish universities have scholarships of their own for international students admitted to their fee-charging bachelor's and master's, for example in the form of tuition fee waivers.\n- In some programmes, you can apply for a scholarship at the same time as you submit your admission application - making it easy to plan your studies and funding together.\n- In other cases, scholarships become available after you've started your studies. These may reward your progress, academic success, or even your growing Finnish language skills.\n\nKeep in mind that the universities' scholarships can be very competitive - and even if you are granted a scholarship (or a tuition fee waiver) by the Finnish university, you will still need to independently cover all your living costs.",
+  "research_notes": "THE FINNISH SCHOLARSHIP MYTH IS CONFIRMED, from the national agency itself, and the confirmation is stronger than the brief anticipated. The Finnish National Agency for Education states flatly: 'Scholarships and tuition fee waivers in Finland are offered by individual universities. There are no governmental scholarship programmes available.'\n\nThat is a broader statement than 'no Bachelor's-level government scholarship'. It says there is NO Finnish governmental scholarship programme for any level. The agency also names the specific myth in its own fact-check panel: 'You may have seen posts and ads promoting \"Fully funded Finland government scholarships\" that would cover everything from university tuition fees to travel and living costs in Finland. Be cautious - those claims are misleading. Posts and ads like that contain a lot of false information.'\n\nSo the widely-repeated 'Finnish Government Scholarship' for Bachelor's study is not merely unsupported at Bachelor level; the national agency actively labels such advertising false.\n\nCORROBORATED ON A SECOND OFFICIAL PAGE, fetched in this session: https://www.oph.fi/en/education-development/support-programmes-foreigners-studying-finland, titled 'Scholarship programmes for Doctoral-level studies and research in Finland'. That page carries no Bachelor's or Master's scholarship programme at all and records that 'EDUFI Fellowship for foreign doctoral researchers will end at the end of 2025. New applications cannot be submitted after 17.10.2025.' and 'EDUFI Fellowship for doctoral students from Ukraine has ended and applications for it are no longer being accepted.' The agency is, as of 2026, winding down even its doctoral schemes.\n\nWHAT ACTUALLY EXISTS, therefore, is INSTITUTIONAL aid only: university-offered scholarships and tuition-fee waivers, which the agency says 'typically only cover your tuition fees, either partially or wholly' and never living costs. That is the honest Bachelor funding picture for Finland: a Bachelor-level international student should be modelled as self-funding tuition plus self-funding living costs.\n\nCAUTION AGAINST A SYMMETRICAL ERROR: the absence of a Finnish government scholarship must not be read as 'Finland has no scholarship'. The University of Helsinki page I fetched does describe a Master's scholarship programme (50% and 100% tuition-fee waivers) and notes a limited pathway where a Bachelor's graduate continuing to a Master's can be awarded a waiver. None of that is Bachelor's-level.\n\nRESOLVED AFTER FETCHING THE LINKED FACT-CHECK PAGE. I did fetch /news-events/scholarship-facts separately, and it is quoted in full as Source B above. It is the strongest form of the debunking: 'The truth is, there are no governmental scholarships for bachelor's or master's studies in Finland.' It also gives the mechanism of the scam, noting such ads 'may also use Finnish authorities' logos without permission', which matters because a corpus collecting Finnish scholarship claims will keep encountering logo-bearing advertorials that look governmental.\n\nThe two sources agree. There is no conflict.",
+  "claims": [
+    {
+      "claim_id": "fi-government-scholarship-bachelor-1",
+      "statement": "The Finnish National Agency for Education states that there are no governmental scholarship programmes available in Finland; scholarships and tuition fee waivers are offered by individual universities only.",
+      "value": 0,
+      "unit": "governmental scholarship programmes available",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fi-government-scholarship-bachelor-2",
+      "statement": "The Finnish National Agency for Education states there are no governmental scholarship programmes available in Finland at any study level, not only at Bachelor's.",
+      "value": 0,
+      "unit": "governmental scholarship programmes available at any level",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fi-scholarship-myth-named",
+      "statement": "The Finnish National Agency for Education explicitly labels ads promoting 'Fully funded Finland government scholarships' as misleading and containing a lot of false information.",
+      "value": "myth",
+      "unit": "status of the widely-repeated Finnish government scholarship for international students",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fi-government-scholarship-bachelor-3",
+      "statement": "The Finnish National Agency for Education's dedicated fact-check states plainly: 'The truth is, there are no governmental scholarships for bachelor's or master's studies in Finland.'",
+      "value": 0,
+      "unit": "governmental scholarships for bachelor's studies, per national agency fact-check",
+      "as_of": "2025-12-02",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fi-scholarship-scam-warning-1",
+      "statement": "The Finnish National Agency for Education warns that adverts promoting fully funded Finnish government scholarships 'may also use Finnish authorities' logos without permission'.",
+      "value": "logo-bearing false advertorials in circulation",
+      "unit": "documented scam method",
+      "as_of": "2025-12-02",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fi-bachelor-scholarship-scope-1",
+      "statement": "Where Finnish scholarships do exist they are institutional, competitive, and typically cover tuition fees only, partially or wholly, with living costs left to the student.",
+      "value": "institutional tuition-fee-only",
+      "unit": "nature of available Finnish scholarships",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

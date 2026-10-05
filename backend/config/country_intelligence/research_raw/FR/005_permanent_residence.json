@@ -1,0 +1,46 @@
+{
+  "country": "FR",
+  "topic": "permanent_residence",
+  "source_id": "fr-service-public-cartes-resident-001",
+  "source_url": "https://www.service-public.fr/particuliers/vosdroits/F11201",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Service Public / Direction de l'information légale et administrative (DILA), Premier ministre — Ministère chargé de l'intérieur",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "Carte de résident permanent d'un étranger en France\nVérifié le 01 mai 2026 - Service Public / Direction de l'information légale et administrative (Premier ministre)\nVous avez une carte de résident de 10 ans en fin de validité ? La carte de résident permanent peut vous être délivrée lors du renouvellement. Elle vous permet de continuer à séjourner en France et vous autorise à travailler. Si vous avez une carte de résident de longue durée - UE, vous pouvez demander la carte de résident permanent en renouvellement.\n\nQui peut demander une carte de résident permanent ?\nLa carte de résident permanent vous est systématiquement proposée si vous avez déjà obtenu 2 cartes de résident consécutives.\n\n[\u2026] Vous devez, en particulier, justifier d'un examen civique et de votre connaissance de la langue française qui doit être au moins égale au niveau B1 du cadre européen commun de référence pour les langues (CECRL) du Conseil de l'Europe.\n\n[\u2026] Attestation sur l'honneur indiquant que vous n'avez séjourné plus de 3 ans consécutifs en dehors de la France au cours des 10 dernières années\n\n[\u2026] La carte de résident permanent est valide 10 ans et est renouvelable. Il est également nécessaire de démontrer que les conditions initiales d'attribution de la carte sont toujours respectées.\n\n[\u2026] Vous devez régler  350 \u20ac (taxe de 300 \u20ac + droit de timbre de 50 \u20ac) par timbres fiscaux.",
+  "research_notes": "CONFIRMED from the French government's service portal (verified 01 May 2026), legal basis CESEDA article L426-4. IMPORTANT STRUCTURAL POINT THE CORPUS MUST NOT SIMPLIFY: France's permanent residence is NOT a single 'N-year' rule, and quoting one number would be wrong. There are two distinct paths, both recorded here: (1) The 'carte de résident permanent' is issued at the RENEWAL of a 10-year 'carte de résident' and is systematically offered once the applicant has already obtained 2 consecutive cartes de résident — i.e. effectively after 2 x 10 years = about 20 years of residence, and the card itself is valid 10 years and renewable. (2) A shorter route exists via the 'carte de résident de longue durée - UE' (EU long-term resident card, based on 5 years of residence), which can then be converted to the permanent card at renewal. That 5-year EU long-term resident figure is the number that most scholarship-corpus comparisons should use for France, and it is evidenced separately in file 004. Conditions confirmed for the permanent card: examen civique passed, French at least CEFR B1, no more than 3 consecutive years outside France in the last 10 years, no threat to public order, and signed engagement to respect the principles of the Republic. Algerian nationals are explicitly excluded from this card (they use a certificat de résidence instead) — recorded because it shows the rule is not universal. Fee: 350 EUR (300 EUR tax + 50 EUR stamp duty).",
+  "claims": [
+    {
+      "claim_id": "fr-permanent-residence-card-name",
+      "statement": "The official French permanent residence title is the 'carte de résident permanent', issued on renewal of a 10-year carte de résident, valid 10 years and renewable.",
+      "value": 10,
+      "unit": "years (validity of the carte de résident permanent)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fr-permanent-residence-prerequisite-consecutive-cards",
+      "statement": "The carte de résident permanent is systematically offered if the applicant has already obtained 2 consecutive cartes de résident, each of which is valid 10 years.",
+      "value": 2,
+      "unit": "consecutive 10-year residence cards (about 20 years of residence)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fr-permanent-residence-language-requirement",
+      "statement": "Applicants for the carte de résident permanent must demonstrate French at a level of at least B1 in the Common European Framework of Reference for Languages and must have passed the examen civique.",
+      "value": "B1",
+      "unit": "CEFR level",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fr-permanent-residence-conditions",
+      "statement": "Applicants must also attest that they have not stayed more than 3 consecutive years outside France in the last 10 years, must not constitute a threat to public order, and must sign the engagement to respect the principles of the Republic.",
+      "value": 350,
+      "unit": "EUR (fee: 300 EUR tax + 50 EUR stamp duty)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

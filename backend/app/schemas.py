@@ -1,4 +1,4 @@
-"""Pydantic schemas for the public scholarship API."""
+﻿"""Pydantic schemas for the public scholarship API."""
 
 from datetime import date, datetime
 from enum import Enum
@@ -110,26 +110,6 @@ class ScholarshipResponse(BaseModel):
     )
     last_verified_at: date | None = None
     verification_status: str = UNCERTAIN_VERIFICATION_STATUS
-    # The awarding body's own page, exposed here so a reader can check the
-    # claim above rather than take it on trust. The catalogue row shows this
-    # hostname as a real link beside the read date; without it in this
-    # response the row could render the date with nothing to check it
-    # against, which is an assertion of diligence rather than evidence of it.
-    #
-    # This is the same declaration, with the same type and the same default,
-    # that ScholarshipDetailResponse already carries — the list response was
-    # simply missing it. The comment above already enumerates what is
-    # deliberately withheld (verification_notes, verified_by,
-    # next_verification_due: internal workflow metadata); an official source
-    # URL is none of those, so its absence was an omission rather than a
-    # decision. Measured before the change: 478 of 481 records carry one and
-    # the detail endpoint returned it for all of them, while this response
-    # returned it for none.
-    #
-    # Null when the record has no authoritative source, which is the honest
-    # rendering — the frontend draws nothing rather than substituting
-    # anything.
-    official_source_url: str | None = None
     # Deliberately absent from the public contract: verification_notes,
     # verified_by and next_verification_due are internal workflow metadata.
     # They record who last checked a record and when it falls due again, which

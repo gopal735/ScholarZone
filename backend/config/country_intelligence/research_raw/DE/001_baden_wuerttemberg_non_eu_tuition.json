@@ -1,0 +1,30 @@
+{
+  "country": "DE",
+  "topic": "baden_wuerttemberg_non_eu_tuition",
+  "source_id": "de-mwk-bw-001",
+  "source_url": "https://mwk.baden-wuerttemberg.de/de/hochschulen-studium/studieren-in-bw/studienfinanzierung/gebuehren-fuer-internationale-studierende-und-zweitstudium/tuition-fees-for-international-students",
+  "source_type": "OFFICIAL_REGIONAL_BODY",
+  "publisher": "Ministerium für Wissenschaft, Forschung und Kunst Baden-Württemberg (MWK BW)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "International students are not only an essential part of our universities, but of Baden-Württemberg as a whole. Over the past 20 years, the number of international students in the state has risen by 300 percent, and science, research and the exchange of ideas at our universities benefit greatly from their presence. These students know that Baden-Württemberg is truly an outstanding place to study.\nStarting winter semester 2017/18, universities in Baden-Württemberg will begin charging moderate tuition fees for non-EU international students. These fees are intended to keep our universities open to non-EU-residents and prepare them for further growth by maintaining the high quality standards Baden-Württemberg is well known for. In addition, the universities will offer increased advising opportunities for foreign students in order to ensure that their efforts will lead to a successful academic career in Germany. These fees amount to 1,500 euros per semester. [...]\nWho is affected?\n\nAll future students who are not nationals of a state of the European Union (EU) or the European Economic Area (EEA).\n\nWho is exempt?\n\nFee Exemptions in detail Tuition fee waivers for international students will be granted automatically in the following cases:  \tStudents from the European Union (EU) and European Economic Area (EEA) \tNon-Germans with a German higher education entrance qualification under § 3 (2) LHGebG (cf. § 58 (2) No. 1-6, 12 LHG) \tStudents enrolling for a doctoral program [...]\nA full explanation of all exemptions can be found here (in German only): Landeshochschulgebührengesetz (LHGebG).",
+  "research_notes": "CONFIRMED at STATE level from the responsible ministry (official regional body, not a university marketing page): Baden-Württemberg imposes a mandatory non-EU international tuition of EUR 1,500 per semester on its universities, in force since winter semester 2017/18. It is a LANDESGEBÜHR under the Landeshochschulgebührengesetz (LHGebG), i.e. state law, applicable to Bachelor, consecutive Master and Staatsexamen programmes. Unit is explicitly per semester. Who is affected: all students who are not nationals of an EU or EEA state (and 'future students' — so it does not apply retroactively to those already enrolled before the fee was introduced). GAP: the ministry page does not state the amount of the separate mandatory semester contribution (Semesterbeitrag); that figure is university-specific and is recorded separately per university below. The ministry page also does not quantify the 300 EUR/semester share retained by universities that appears in the German-language version of the same page family.",
+  "claims": [
+    {
+      "claim_id": "de-bw-non-eu-tuition-state",
+      "statement": "Since winter semester 2017/18 universities in Baden-Württemberg charge non-EU international students tuition fees amounting to 1,500 euros per semester.",
+      "value": 1500,
+      "unit": "EUR per semester",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "de-bw-non-eu-tuition-affected-population",
+      "statement": "The Baden-Württemberg non-EU tuition applies to all future students who are not nationals of a state of the European Union (EU) or the European Economic Area (EEA).",
+      "value": 1500,
+      "unit": "EUR per semester",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "country": "GB",
+  "topic": "net_monthly_income",
+  "source_id": "gb-govuk-income-tax-and-ni-2026-27",
+  "source_url": "https://www.gov.uk/income-tax-rates",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "HM Revenue & Customs / GOV.UK",
+  "retrieved_at": "2026-10-05",
+  "as_of": "tax year 2026 to 2027 (6 April 2026 to 5 April 2027)",
+  "raw_extract": "Income Tax rates and Personal Allowances : Current rates and allowances - GOV.UK. How much Income Tax you pay in each tax year depends on: how much of your income is above your Personal Allowance; how much of your income falls within each tax band. Some income is tax-free. The current tax year is from 6 April 2026 to 5 April 2027. Your tax-free Personal Allowance. The standard Personal Allowance is 12,570 pounds, which is the amount of income you do not have to pay tax on. If you earn more than 100,000 pounds: Your personal allowance goes down by 1 pound for every 2 pounds that your adjusted net income is above 100,000 pounds. This means your allowance is zero if your income is 125,140 pounds or above. Income Tax rates and bands. The table shows the tax rates you pay in each band if you have a standard Personal Allowance of 12,570 pounds. Income tax bands are different if you live in Scotland. Band | Taxable income | Tax rate. Personal Allowance | Up to 12,570 pounds | 0 %. Basic rate | 12,571 to 50,270 pounds | 20 %. Higher rate | 50,271 to 125,140 pounds | 40 %. Additional rate | over 125,140 pounds | 45 %. You do not get a Personal Allowance on taxable income over 125,140 pounds. --- SECOND OFFICIAL SOURCE (same retrieval, https://www.gov.uk/national-insurance-rates-letters): 'National Insurance rates and categories: Contribution rates - GOV.UK ... Employee National Insurance rates. This table shows how much employers deduct from employees' pay from 6 April 2026 to 5 April 2027.' Category letter | 129 to 242 pounds (559 to 1,048 a month) | 242.01 to 967 pounds (1,048.01 to 4,189 a month) | Over 967 a week (4,189 a month). A | 0% | 8% | 2%. B | 0% | 1.85% | 2%. C | N/A | N/A | N/A. D | 0% | 2% | 2%. E | 0% | 1.85% | 2%. F | 0% | 8% | 2%. H | 0% | 8% | 2%. I | 0% | 1.85% | 2%. J | 0% | 2% | 2%. K | N/A | N/A | N/A. L | 0% | 2% | 2%. M | 0% | 8% | 2%. N | 0% | 8% | 2%. S | N/A | N/A | N/A. V | 0% | 8% | 2%. Z | 0% | 2% | 2%. Example. If you're in category A and you earn 1,000 pounds in a week you'll pay: nothing on the first 242 pounds; 8 per cent (58 pounds) on your earnings between 242.01 and 967; 2 per cent (0.66 pounds) on the remaining earnings above 967. This means your National Insurance payment will be 58.66 pounds for the week. --- THIRD OFFICIAL SOURCE (same retrieval, https://www.gov.uk/government/publications/rates-and-allowances-national-insurance-contributions/rates-and-allowances-national-insurance-contributions, 'Updated 6 April 2026'): '1.2 Monthly thresholds. 1.4 per month | 2026 to 2027. Lower earnings limit (LEL) 559 pounds. Primary threshold (PT) 1,048 pounds. Secondary threshold (ST) 417 pounds. Upper earnings limit (UEL) 4,189 pounds.' Employer rates: 'Rate above the Secondary Threshold 15 per cent'. Employee rates: 'Between Primary Threshold and Upper Earnings Limit 8 per cent'; 'Above Upper Earnings Limit 2 per cent'.",
+  "claims": [
+    {
+      "claim_id": "gb-net-monthly-001",
+      "value": 2795.30,
+      "unit": "GBP per month (net take-home)",
+      "as_of": "2026/27",
+      "statement": "Derived take-home pay of GBP 2,795.30 per month from the official Skilled Worker visa salary floor of GBP 41,700 per year (GBP 3,475.00 per month gross), tax year 2026/27, England, National Insurance category A, no student loan. Income Tax: (41,700 - 12,570) x 20 per cent = GBP 5,826.00 per year. Employee Class 1 National Insurance: (41,700 - 12,570) x 8 per cent = GBP 2,330.40 per year. Net = 41,700.00 - 5,826.00 - 2,330.40 = GBP 33,543.60 per year = GBP 2,795.30 per month."
+    },
+    {
+      "claim_id": "gb-net-monthly-002",
+      "value": 2093.30,
+      "unit": "GBP per month (net take-home)",
+      "as_of": "2026/27",
+      "statement": "Derived take-home pay of GBP 2,093.30 per month from a gross of GBP 30,000 per year (GBP 2,500.00 per month), tax year 2026/27, England, National Insurance category A, no student loan. Income Tax: (30,000 - 12,570) x 20 per cent = GBP 3,486.00 per year. Employee Class 1 National Insurance: (30,000 - 12,570) x 8 per cent = GBP 1,394.40 per year. Net = 30,000.00 - 3,486.00 - 1,394.40 = GBP 25,119.60 per year = GBP 2,093.30 per month."
+    },
+    {
+      "claim_id": "gb-net-monthly-003",
+      "value": 1793.30,
+      "unit": "GBP per month (net take-home)",
+      "as_of": "2026/27",
+      "statement": "Derived take-home pay of GBP 1,793.30 per month from a gross of GBP 25,000 per year (GBP 2,083.33 per month), tax year 2026/27, England, National Insurance category A, no student loan. Income Tax: (25,000 - 12,570) x 20 per cent = GBP 2,486.00 per year. Employee Class 1 National Insurance: (25,000 - 12,570) x 8 per cent = GBP 994.40 per year. Net = 25,000.00 - 2,486.00 - 994.40 = GBP 21,519.60 per year = GBP 1,793.30 per month."
+    },
+    {
+      "claim_id": "gb-net-monthly-004",
+      "value": 2670.05,
+      "unit": "GBP per month (net take-home, WITH Student Loan Plan 5)",
+      "as_of": "2026/27",
+      "statement": "Variance of claim gb-net-monthly-001 for a graduate who has taken out student finance under Plan 5: Plan 5 charges 9 per cent of earnings above GBP 25,000 per year, which at a GBP 41,700 salary is GBP 1,503.00 per year, reducing take-home from GBP 2,795.30 to GBP 2,670.05 per month. The Plan 5 threshold and rate are my own inputs to the derivation, not quoted from the two HMRC pages above; they must be re-verified against gov.uk student loan guidance before use."
+    },
+    {
+      "claim_id": "gb-net-monthly-005",
+      "value": 2055.80,
+      "unit": "GBP per month (net take-home, WITH Student Loan Plan 5)",
+      "as_of": "2026/27",
+      "statement": "Variance of claim gb-net-monthly-002 for a Plan 5 student: 9 per cent of (30,000 - 25,000) = GBP 450.00 per year, reducing take-home from GBP 2,093.30 to GBP 2,055.80 per month. Plan 5 parameters are my own inputs, not quoted from the HMRC pages."
+    }
+  ],
+  "assumptions": [
+    "England, not Scotland and not Wales. This is the single largest assumption here and it is the source's own: gov.uk states 'Income tax bands are different if you live in Scotland', and Welsh rates are set by the Welsh Revenue Authority. A Scottish taxpayer pays materially more at these income levels",
+    "National Insurance category A, which is the standard category for a UK resident employee of any age born after 6 April 2011",
+    "no student loan is repaid in the baseline claims, because the two official pages quoted do not cover student finance; claims 004 and 005 give the Plan 5 variant and are explicitly flagged as my own parameters",
+    "tax code 0T / standard Personal Allowance of GBP 12,570, with no Marriage Allowance, no Blind Person's Allowance and no other reliefs",
+    "one job, no dividends, no savings income, no rental income, no employer pension contribution, no taxable benefits",
+    "annual figures divided by twelve; PAYE in practice is calculated per pay period, so a monthly-paid employee's deductions differ slightly from the annual figure divided by twelve",
+    "GBP 41,700 is the official Skilled Worker visa salary floor already held in the corpus and is a stated INPUT to claim 001, not a claim about graduate pay; GBP 30,000 and GBP 25,000 are round reference inputs for claims 002 and 003 and are likewise inputs, not findings",
+    "national insurance is applied to the same earnings base as income tax, which is what the official rates table implies by quoting identical band boundaries (monthly primary threshold GBP 1,048 and upper earnings limit GBP 4,189)"
+  ],
+  "field_mapping": {
+    "net_monthly_income": "gb.career.net_monthly_income (topic: net_monthly_income)"
+  },
+  "notes": "THIS IS THE CLEANEST DERIVATION IN THE CORPUS: the UK publishes no net-pay table at all, but it publishes BOTH halves of the calculation on official pages, and neither half involves a judgement call. Income tax is a single flat 20 per cent rate between GBP 12,571 and GBP 50,270 for the reference salaries used, with a GBP 12,570 Personal Allowance; employee Class 1 National Insurance is 8 per cent between GBP 12,570 and GBP 50,270. Crucially the two coincide exactly, because the Primary Threshold for National Insurance is stated as GBP 12,570 per year, the same figure as the Income Tax Personal Allowance. At the reference salaries this produces an exactly 28 per cent total deduction, so take-home is exactly 72 per cent of gross. No rate, bracket, allowance or contribution percentage in these claims is estimated, guessed or supplied from outside the two official pages. THREE THINGS A READER WILL GET WRONG. First, devolved rates: the figures are England only, and a Scottish resident on the same GBP 30,000 salary pays Scottish income tax at 20 per cent on the slice above GBP 28,555, which is a different and higher total; the corpus should not present a single UK net figure without saying which nation it covers. Second, the GBP 41,700 figure that anchors claim 001 is a visa eligibility floor, not a salary: the same official guidance the corpus already holds says it is 'whichever is higher' of GBP 41,700 and the occupation's going rate, and the corpus's own existing note says it is 'a floor, not the number most occupations will actually apply'. Using it as a proxy for a graduate's salary overstates take-home. Third, student loan: claims 001 to 003 assume no student loan, which is unrealistic for exactly the population this corpus serves, and the Plan 5 variant costs a further GBP 125.25 per month at that salary - roughly the amount of a monthly bus pass, and enough to matter for a break-even calculation. NO OFFICIAL UK FIGURE EXISTS FOR GRADUATE TAKE-HOME SPECIFICALLY, and ONS's Annual Survey of Hours and Earnings publishes gross pay only, not take-home.",
+  "evidence_limitations": "Applies to England, category A, single, no student loan in the baseline claims, single-job, salary-only income. Not graduate-specific: no official UK source breaks take-home down by occupation or degree level. Not an entry-level figure: none of the three gross inputs is a measured graduate wage, and GBP 41,700 is a visa threshold. Annual totals divided by twelve will not exactly match a monthly payslip. Student loan treatment is incomplete - only Plan 5 is modelled, and its parameters are mine rather than quoted from the sources cited."
+}

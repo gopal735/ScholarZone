@@ -1,0 +1,47 @@
+{
+  "country": "DE",
+  "topic": "bavaria_non_eu_tuition_hm_munich",
+  "source_id": "de-uni-hs-muenchen-002",
+  "source_url": "https://www.hm.edu/studium_1/bewerbung/faq_gebuehren_non_eu_auslaender.de.html",
+  "source_type": "UNIVERSITY_OFFICIAL",
+  "publisher": "Hochschule München (University of Applied Sciences Munich)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "Die Hochschule München erhebt Studiengebühren für das Studium ausländischer Studierender. Eine Übersicht der von der Zahlungspflicht ausgenommenen Personen finden Sie in der Hochschulgebührensatzung der Hochschule für angewandte Wissenschaften München unter § 8 Absatz 2 \n\nStudierende, die vor dem Wintersemester 2026/2027 an der Hochschule München immatrikuliert wurden müssen keine Studiengebühren entrichten. Eine Ausnahme davon bilden Studierende, die ab dem Wintersemester 2026/2027 den Studiengang innerhalb der Hochschule wechseln\n\nWie hoch sind die Studiengebühren?\n\nDie Höhe der Studiengebühren beläuft sich auf 500,00 Euro pro Semester für einen Bachelorstudiengang und 700,00 Euro pro Semester für einen Masterstudiengang.\n\nWann und wie müssen die Studiengebühren bezahlt werden?\n\nDie Studiengebühren müssen bei Neuimmatrikulationen im Rahmen der Annahme des Studienplatzes (Antrag auf Immatrikulation) zusammen mit dem Semesterbeitrag und ggf. weiteren Gebühren für den Studiengang über das ePayment-Verfahren entrichtet werden.",
+  "research_notes": "CONFIRMED: a second Bavarian public university charges a different, LOWER Bachelor tuition for non-EU students — Hochschule München charges EUR 500.00 per semester for a Bachelor's programme (vs EUR 800 at THI). This is direct evidence that there is NO single uniform Bavarian non-EU Bachelor tuition, and that fees vary per university. This matters for the corpus: a corpus entry of 'Bavaria non-EU tuition = X' would be misleading without naming the institution. GAP: the Bavarian state ministry page (stmwk.bayern.de) could not be retrieved (404), so the enabling legal framework for Bavaria is confirmed only indirectly, via THI's citation of Art. 13(3) sentence 1 no. 6 BayHIG. The Hochschule München page does not cite BayHIG article numbers on this FAQ page.",
+  "claims": [
+    {
+      "claim_id": "de-bavaria-non-eu-tuition-hs-muenchen-bachelor",
+      "statement": "Hochschule München charges tuition fees of 500.00 Euro per semester for Bachelor's programmes for students of foreign nationalities who are not exempt under § 8 paragraph 2 of its fee statute.",
+      "value": 500,
+      "unit": "EUR per semester",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "de-bavaria-non-eu-tuition-hs-muenchen-transition",
+      "statement": "Hochschule München students enrolled before winter semester 2026/2027 do not pay tuition fees; from winter semester 2026/2027 newly enrolled students are liable.",
+      "value": 500,
+      "unit": "EUR per semester",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ],
+  "conflict": {
+    "note": "Two official Bavarian university pages state DIFFERENT non-EU Bachelor tuition amounts. Both are reported; neither is treated as the Bavarian rate.",
+    "source_a": {
+      "publisher": "Technische Hochschule Ingolstadt (THI)",
+      "url": "https://www.thi.de/en/studies/international-degree-students/tuition-fees",
+      "value": 800,
+      "unit": "EUR per semester",
+      "basis": "Art. 13 (3), sentence 1, no. 6 Bavarian Higher Education Innovation Act (BayHIG)"
+    },
+    "source_b": {
+      "publisher": "Hochschule München",
+      "url": "https://www.hm.edu/studium_1/bewerbung/faq_gebuehren_non_eu_auslaender.de.html",
+      "value": 500,
+      "unit": "EUR per semester",
+      "basis": "Hochschulgebührensatzung der Hochschule für angewandte Wissenschaften München (§ 8 exemptions referenced, amount page does not cite a BayHIG article)"
+    }
+  }
+}

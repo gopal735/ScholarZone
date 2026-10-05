@@ -1,4 +1,4 @@
-from contextlib import asynccontextmanager
+﻿from contextlib import asynccontextmanager
 import logging
 import os
 import re
@@ -19,6 +19,7 @@ from .middleware.api_prefix import StripApiPrefix
 from .routers.scholarships import router as scholarships_router
 from .routers.match import router as match_router
 from .routers.counts import router as counts_router
+from .routers.countries import router as countries_router
 from .routers.verification import router as verification_router
 from .routers.admin_image_review import router as admin_image_review_router
 from .routers.discovery import router as discovery_router
@@ -31,7 +32,6 @@ from .routers.applications import router as applications_router
 from .routers.internal_maintenance import router as internal_maintenance_router
 from .routers.mentor import router as mentor_router
 from .routers.supervisors import router as supervisors_router
-from .routers.supervisor_internal import router as supervisor_internal_router
 from .routers.outreach import router as outreach_router
 from .routers.supervisor_email import router as supervisor_email_router
 from .services.application_workspace import WorkspaceError
@@ -305,6 +305,11 @@ app.include_router(match_router)
 # scanned past, and because the counting layer depends on the Match engine rather
 # than the other way round.
 app.include_router(counts_router)
+# The country intelligence router is registered after the counts router and before
+# the scholarships router for the same reason: its literal paths (/v2/countries/meta,
+# /compare, /calculate) must be resolved by their own router rather than scanned
+# past by a dynamic sibling.
+app.include_router(countries_router)
 # The supervisor router is registered before the scholarships router for the same
 # reason the match router is: its paths are /scholarships/{id}/supervisors, so
 # registering it first makes that independence structural rather than dependent on
@@ -343,18 +348,6 @@ app.include_router(supervisor_email_router)
 # authentication. It never runs maintenance; it only reconciles, claims
 # and dispatches a logical slot to GitHub Actions.
 app.include_router(internal_maintenance_router)
-
-# The bounded Supervisor discovery trigger is mounted last of all, and for the
-# same structural reason as the dispatcher: it is internal-only, its prefix
-# /internal/supervisor has no public counterpart, and its single dynamic segment
-# follows that literal prefix, so registering it here cannot shadow any public
-# route.
-#
-# Two independent guards apply, both enforced inside the router: the caller must
-# present the verification secret AND the deployment must have Supervisor
-# discovery explicitly enabled. It reaches exactly one scholarship and nothing
-# else - no country, no batch, no caller-supplied URL.
-app.include_router(supervisor_internal_router)
 
 
 @app.get("/debug/fix-null-lists")

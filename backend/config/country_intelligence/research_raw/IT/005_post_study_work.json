@@ -1,0 +1,70 @@
+{
+  "country": "IT",
+  "topic": "post_study_work",
+  "source_id": "integrazionemigranti-cutro-study-to-jobsearch",
+  "source_url": "https://www.integrazionemigranti.gov.it/it-it/Ricerca-news/Dettaglio-news/id/3301/Conversione-del-permesso-di-soggiorno-da-studio-a-lavoro-Cosa-e-cambiato-con-il-decreto-Cutro",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "integrazionemigranti.gov.it - joint portal of the Ministry of Labour and Social Policies and the Ministry of the Interior",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2023-07-07",
+  "raw_extract": "# Conversione del permesso di soggiorno da studio a lavoro. Cosa e' cambiato con il decreto Cutro?\n\n07 luglio 2023\n\n## Le risposte alle domande piu' frequenti\n\nE' possibile richiedere la conversione del permesso di soggiorno da studio a ricerca occupazione?\n\nSi, il D.lgs. n. 71/2018, ha previsto la possibilita' di richiedere un permesso di soggiorno per la ricerca di un lavoro (subordinato o autonomo) per gli studenti stranieri che abbiano conseguito in Italia un titolo di studio (dottorato o master universitario; laurea triennale o la laurea specialistica, diploma accademico di primo livello o di secondo livello, diploma di tecnico superiore), alla scadenza del proprio permesso per studio. Il permesso di soggiorno rilasciato al fine di cercare un'occupazione o avviare un'impresa \"coerente con il percorso formativo completato\", ha una durata non inferiore ai 9 mesi e non superiore ai 12 mesi.\n\nPer effettuare la conversione permesso di soggiorno per studio in attesa occupazione, il richiedente deve andare al Centro per l'Impiego della citta' in cui dimora per rendere la dichiarazione di immediata disponibilita' al lavoro (D.I.D)\n\nAllegando la documentazione che gli rilascia il Centro per l'Impiego e' possibile presentare la richiesta per il rilascio del permesso per attesa occupazione compilando il kit disponibile presso lo Sportello Amico dell'ufficio postale. Nell'attesa della convocazione in questura per il rilascio del permesso di soggiorno per attesa occupazione e' eventualmente possibile iniziare a svolgere un'attivita' lavorativa con la sola ricevuta della richiesta di permesso di soggiorno, previo invio dell'Unilav (in caso di lavoro subordinato) o denuncia del rapporto di lavoro all'INPS (in caso di lavoro domestico). In tal caso viene meno il limite delle 20 ore settimanali previsto per i permessi per motivi di studio.\n\n... Il permesso di soggiorno rilasciato per motivi di studio, tirocinio o formazione puo' essere convertito, in presenza dei requisiti previsti dalla legge, in un permesso per motivi di lavoro subordinato o autonomo. Il cd \"decreto Cutro\" (DL 20 marzo n. 23 convertito nella Legge 5 maggio 2023 n. 50) ha soppresso la previsione che subordinava la conversione di tali permessi alla disponibilita' di una quota prevista dal decreto flussi annuale. Ne consegue che tali permessi, purché ancora in corso di validita', possono ora essere convertiti in qualsiasi momento dell'anno e senza limiti numerici.\n\nIn ogni caso i permessi rilasciati per motivi di studio sono compatibile, anche prima della conversione, con lo svolgimento di un'attivita' lavorativa subordinata, per un tempo, tuttavia, non superiore alle 20 ore settimanali, anche cumulabili per cinquantadue settimane, fermo restando il limite annuale di 1.040 ore. In caso di richiesta di conversione, l'orario di lavoro previsto nella proposta di contratto di soggiorno deve essere superiore alle 20 ore settimanali.\n\nLa richiesta di conversione puo' essere fatta anche prima della conclusione del ciclo di studi, nel caso di permessi rilasciati per frequentare l'universitaria (corsi di laurea, master o dottorato di ricerca) o nel caso di stranieri gia' presenti in Italia al compimento della maggiore eta'. Nel caso, invece, di permessi per studio rilasciati per frequentare corsi di formazione o svolgere tirocini formativi in Italia, la conversione e' possibile soltanto dopo la conclusione del corso di formazione o del tirocinio. (articolo 14, comma 6, del D.P.R. n. 394 del 1999).\n\n... La domanda di conversione del permesso di soggiorno rilasciato per motivi di studio o tirocinio o formazione professionale in lavoro subordinato deve essere inoltrata telematicamente dal titolare del permesso di soggiorno attraverso il portale del Ministero dell'Interno... una volta registrati i moduli da compilare sono:\n- modello V2 nel caso di conversione in permesso di soggiorno per lavoro subordinato per stranieri che hanno raggiunto la maggiore eta' in Italia o che si sono laureati in Italia.",
+  "research_notes": "Italy's post-study job-search permit: between 9 and 12 months, and explicitly open at Bachelor level. The source lists the qualifying degrees in brackets and includes 'laurea triennale', which is the Italian three-year Bachelor, alongside laurea specialistica and diploma accademico di primo livello. So unlike Sweden's second-cycle-only permit, Italy's is available to a Bachelor graduate.\n\nIT IS A RANGE, NOT A POINT VALUE, and that matters for any cost model: 'ha una durata non inferiore ai 9 mesi e non superiore ai 12 mesi'. The source does not say which end a given applicant receives, so I record both bounds rather than picking one.\n\nOFFICIAL NAME: permesso di soggiorno per ricerca di un lavoro, referred to also as 'attesa occupazione', created by Decreto Legislativo 71/2018. I record the name as given on this page and do not claim a single canonical string beyond it.\n\nPREREQUISITE THAT IS EASY TO MISS: the applicant must first register with the local Centro per l'Impiego and make the 'dichiarazione di immediata disponibilita' al lavoro' (D.I.D). That is a concrete procedural step before the permit application, not a formality.\n\nA GENUINELY USEFUL DETAIL ON WORK WHILE WAITING: while awaiting the Questura appointment, the applicant may begin working on the strength of the application receipt alone, with an Unilav filed for dependent work or an INPS report for domestic work, and in that situation 'viene meno il limite delle 20 ore settimanali'. So the weekly-hours cap lapses during the wait. That is a materially better position for a new graduate than the study-permit cap, and it is stated on this official page.\n\nSTUDY-PERMIT WORK CAP, for completeness and contrast with other countries: 20 hours per week, cumulative across 52 weeks, with a hard annual ceiling of 1,040 hours. Confirmed independently on the Polizia di Stato Portale Immigrazione study-permit page, which also states the permit cannot be renewed for more than three years beyond the duration of a multi-year course.\n\nSTALENESS CAVEAT. This page is dated 7 July 2023 and describes the decreto Cutro. The 9-to-12-month job-search rule it reports comes from D.lgs. 71/2018 and I found no later page in this session amending it, but the page's own age means the corpus should re-check it before treating the figure as current. A separate CINFORMI page (Trento) I saw in search results carries a stale EUR 7,101.12 social-assistance reference figure, which I did not fetch and do not record.",
+  "claims": [
+    {
+      "claim_id": "it-poststudy-duration-min-1",
+      "statement": "Italy's post-study job-search residence permit lasts not less than 9 months.",
+      "value": 9,
+      "unit": "months (minimum duration)",
+      "as_of": "2023",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "it-poststudy-duration-max-1",
+      "statement": "Italy's post-study job-search residence permit lasts not more than 12 months.",
+      "value": 12,
+      "unit": "months (maximum duration)",
+      "as_of": "2023",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "it-poststudy-bachelor-eligible-1",
+      "statement": "The Italian Ministry of Labour and Interior portal states the job-search permit is available to foreign students who obtained a qualification in Italy including a laurea triennale, that is a three-year Bachelor degree.",
+      "value": 1,
+      "unit": "bachelor degree (laurea triennale) qualifies for post-study permit",
+      "as_of": "2023",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "it-poststudy-permit-name-1",
+      "statement": "The official name is a residence permit for searching for employment or setting up a business consistent with the completed training, referred to as permesso di soggiorno per ricerca di un lavoro or attesa occupazione, created by D.lgs. 71/2018.",
+      "value": "permesso di soggiorno per ricerca di un lavoro (attesa occupazione)",
+      "unit": "official permit name",
+      "as_of": "2023",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "it-poststudy-prerequisite-1",
+      "statement": "The applicant must first register with the local Centro per l'Impiego and file a declaration of immediate availability to work before applying for the permit.",
+      "value": 1,
+      "unit": "mandatory Centro per l'Impiego registration with D.I.D",
+      "as_of": "2023",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "it-poststudy-work-while-waiting-1",
+      "statement": "While awaiting the Questura appointment the applicant may begin work on the strength of the application receipt alone, and the 20-hour weekly limit ceases to apply during that wait.",
+      "value": 1,
+      "unit": "weekly hours cap lifted while awaiting permit decision",
+      "as_of": "2023",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "it-student-work-cap-1",
+      "statement": "A study permit holder may work up to 20 hours per week, cumulative across 52 weeks, subject to an annual limit of 1,040 hours.",
+      "value": 20,
+      "unit": "hours per week (student permit); annual ceiling 1,040 hours",
+      "as_of": "2023",
+      "study_level": "bachelor"
+    }
+  ]
+}

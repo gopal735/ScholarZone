@@ -1,0 +1,30 @@
+{
+  "country": "JP",
+  "topic": "living_cost",
+  "source_id": "jasso-living-costs",
+  "source_url": "https://www.studyinjapan.go.jp/en/life/cost-of-living",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Study in Japan Official Website (JASSO / MEXT)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2023",
+  "raw_extract": "Estimated monthly living costs for international students in Japan are as follows. The rents in Tokyo and other large cities are higher than in other more rural areas. For monthly housing, while the national average is 41,000 yen, the level in Tokyo is 57,000 yen. … Breakdown of the average monthly cost of living (National average) Total expenditure: 105,000 yen. Source: 2023 Lifestyle Survey of Privately-Financed International Students (JASSO)",
+  "research_notes": "This is an official survey average, labelled ESTIMATE: it is a JASSO survey of privately financed international students, not a visa requirement and not a regulatory threshold. as_of is 2023 because that is the survey year named in the page's own source line. The 41,000 yen housing figure is the national average; Tokyo rent is 57,000 yen.",
+  "claims": [
+    {
+      "claim_id": "jp-living-cost-monthly-1",
+      "statement": "JASSO reports average monthly living costs for international students in Japan of 105,000 yen nationally, excluding study and research costs.",
+      "value": 105000,
+      "unit": "JPY per month (estimate, national average)",
+      "as_of": "2023",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "jp-living-cost-rent-tokyo-1",
+      "statement": "JASSO reports average monthly housing cost of 41,000 yen nationally and 57,000 yen in Tokyo.",
+      "value": 57000,
+      "unit": "JPY per month (estimate, Tokyo housing)",
+      "as_of": "2023",
+      "study_level": "bachelor"
+    }
+  ]
+}

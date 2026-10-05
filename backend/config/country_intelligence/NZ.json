@@ -1,0 +1,572 @@
+{
+  "contract_version": "1.0.0",
+  "country": {
+    "currency": null,
+    "iso2": "NZ",
+    "name_en": "New Zealand"
+  },
+  "gaps": [
+    {
+      "attempted_sources": [
+        "nz-ird-income-tax-rates-2026"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "nz.career.average_starting_salary.gross_monthly",
+      "reason": "3 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 15600 NZD per year (nz-ird-income-tax-rates-2026); 53500 NZD per year (nz-ird-income-tax-rates-2026); 78100 NZD per year (nz-ird-income-tax-rates-2026). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "uoa-undergraduate-international-fees"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "nz.education_costs.tuition_fees.public.bachelor",
+      "reason": "5 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 40225 NZD per year (uoa-undergraduate-international-fees); 47221 NZD per year (uoa-undergraduate-international-fees); 58009 NZD per year (uoa-undergraduate-international-fees); 86561 NZD per year (uoa-undergraduate-international-fees); 1132.8 NZD per year (uoa-undergraduate-international-fees). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "https://www.immigration.govt.nz/process-to-apply/applying-for-a-visa/providing-evidence-and-documents-to-support-your-visa-application/student-fund-requirements/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "nz.nz-financial-proof-3",
+      "reason": "Archived evidence recorded a finding with no numeric figure: Tuition fees are additional to the living-cost requirement: 'Your tuition fees are in addition to living costs. Make sure your evidence shows you can access enough funds to cover both.' Outward travel is a further separate test, satisfiable by a fully paid ticket or by extra money."
+    },
+    {
+      "attempted_sources": [
+        "https://www.immigration.govt.nz/process-to-apply/applying-for-a-visa/providing-evidence-and-documents-to-support-your-visa-application/student-fund-requirements/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "nz.nz-financial-proof-4",
+      "reason": "Archived evidence recorded a finding with no numeric figure: Prepaid accommodation costs can be deducted from the required amount, and the applicant must evidence only the remaining shortfall."
+    },
+    {
+      "attempted_sources": [
+        "https://www.immigration.govt.nz/process-to-apply/applying-for-a-visa/providing-evidence-and-documents-to-support-your-visa-application/student-fund-requirements/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "nz.nz-financial-proof-5",
+      "reason": "Archived figure recorded, but it is not a currency figure and its topic's primary field holds money. It is stored as a related figure rather than as a cost. Statement: Primary funds evidence must include bank statements showing the account holder's name and the last 3 months of transaction history, or fixed-term deposit certificates showing the deposits have been held for at least 3 months, or a scholarship award letter, education loan letters, or withdrawable provident funds."
+    },
+    {
+      "attempted_sources": [
+        "https://www.immigration.govt.nz/process-to-apply/applying-for-a-visa/providing-evidence-and-documents-to-support-your-visa-application/student-fund-requirements/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "nz.nz-financial-proof-8",
+      "reason": "Archived evidence recorded a finding with no numeric figure: Tuition must normally be paid in full for 1 year or 1 programme whichever is shorter, with only the 'approval in principle' option allowing deferral until the visa is approved in principle; screenshots of bank transfers and receipts from education agents are not acceptable evidence."
+    },
+    {
+      "attempted_sources": [
+        "https://www.immigration.govt.nz/visas/skilled-migrant-category-resident-visa/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "nz.nz-permanent-residence-1",
+      "reason": "Archived evidence recorded a finding with no numeric figure: New Zealand's skilled residence route for international graduates is the 'Skilled Migrant Category (SMC) Resident Visa', a points-based system requiring a job or job offer with an accredited employer, not a simple minimum-years-on-route test."
+    },
+    {
+      "attempted_sources": [
+        "https://www.immigration.govt.nz/visas/post-study-work-visa/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "nz.nz-post-study-work-7",
+      "reason": "Archived evidence recorded a finding with no numeric figure: From 16 November 2026 Post-Study Work Visa eligibility will be extended to applicants holding both an NZQCF level 7 graduate diploma studied full-time in New Zealand and a bachelor's degree completed in New Zealand or overseas - a change not yet in force at the retrieval date."
+    },
+    {
+      "attempted_sources": [
+        "https://www.immigration.govt.nz/visas/fee-paying-student-visa/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "nz.nz-visa-fee-2",
+      "reason": "Archived figure recorded, but it is not a currency figure and its topic's primary field holds money. It is stored as a related figure rather than as a cost. Statement: A Fee Paying Student Visa can be issued for a maximum of 4 years, and is normally issued for the same period as the study already paid for or until passport expiry, whichever is sooner - so it may be shorter than the course."
+    },
+    {
+      "attempted_sources": [
+        "https://www.immigration.govt.nz/visas/fee-paying-student-visa/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "nz.nz-visa-fee-3",
+      "reason": "Archived evidence recorded a finding with no numeric figure: Fee Paying Student Visa holders must hold medical and travel insurance from the start of the course until the visa expires, compliant with the Education (Pastoral Care of Tertiary and International Learners) Code of Practice 2021, unless they are Doctor of Philosophy (PhD) students, who do not need insurance."
+    },
+    {
+      "attempted_sources": [
+        "https://www.immigration.govt.nz/visas/fee-paying-student-visa/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "nz.nz-visa-fee-4",
+      "reason": "Archived figure recorded, but it is not a currency figure and its topic's primary field holds money. It is stored as a related figure rather than as a cost. Statement: A Fee Paying Student Visa holder may work part-time up to 25 hours a week while studying and full-time during holidays, but partners and dependent children cannot be included in the student visa application and must apply separately."
+    },
+    {
+      "attempted_sources": [
+        "inz-student-fund-requirements"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "nz.one_time_costs.blocked_account",
+      "reason": "3 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 20000 NZD per year (inz-student-fund-requirements); 2000 NZD (inz-student-fund-requirements); 9000 NZD (inz-student-fund-requirements). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "https://legislation.govt.nz/secondary-legislation/pco-drafted/2025/325/en/latest/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "nz.phd_domestic_fee",
+      "reason": "Evidence was retrieved and archived, but this topic has no explicit mapping into the corpus schema, so the figure was not placed. Adding the mapping is a reviewed change, not something ingestion should guess."
+    },
+    {
+      "attempted_sources": [
+        "inz-skilled-migrant-category"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "nz.residency.permanent_residence",
+      "reason": "4 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 4 (inz-skilled-migrant-category); 5 (inz-skilled-migrant-category); 2 (inz-skilled-migrant-category); 55 per year (inz-skilled-migrant-category). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "https://legislation.govt.nz/secondary-legislation/pco-drafted/2025/325/en/latest/",
+        "https://www.education.govt.nz/our-work/legislation/international-student-legislation/definition-domestic-student-new-zealand",
+        "https://gazette.govt.nz/notice/id/2025-sl7324",
+        "https://www.immigration.govt.nz/opsmanual/84134.htm",
+        "https://www.legislation.govt.nz/act/public/2020/0038/latest/LMS289515.html",
+        "https://www.tec.govt.nz/funding/fund-finder/dq3-7/learner-eligibility"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "nz.second_degree_domestic_fee",
+      "next_review": null,
+      "reason": "DETERMINATIVE FINDING: New Zealand has NO equivalent of Australia's one-year domestic-fee cap for a second degree. I established this from the primary instrument, not from absence of evidence. The classes of persons entitled to be treated as if they are not international students for tertiary purposes are exhaustively enumerated in the Schedule to the Education (Domestic Student: Tertiary Education and Vocational Education and Training) Notice 2025 (SL 2025/325), which came into force on 1 January 2026 and revoked its predecessor. I retrieved and read that Schedule in full: it contains exactly ten clauses - diplomatic immunity; refugee/protected-person claimants and their partners and children; study under a New Zealand Government-approved exchange programme; enrolment in a Doctor of Philosophy programme at a New Zealand university; transitional TEC Industry Training Fund apprenticeships; Accredited Employer Work Visa holders on work-based Green List or sector-agreement study; TEC-funded search and rescue training; TEC English-language/adult education on partner-of-a-New-Zealander visas; and employer-required work-related training of 10 days or less. NOT ONE of the ten clauses refers to a second degree, a second qualification, a prior degree already held, a first year of a second qualification, or any time cap on paying domestic fees. The only study-concession clauses are the exchange-programme clause and the PhD clause. Consequently an international student in New Zealand who already holds one degree and enrols in another is, on the face of this instrument, an international student for the second degree and must pay international tuition - there is no domestic-fee cap and no first-year-only concession. Two important reinforcements: (1) clause 5, 'Domestic student status not transferable', forecloses the argument that a concession earned on one programme carries across to another; (2) the Ministry of Education's current guidance page (last updated 18 August 2026) confirms SL 2025/325 is the operative instrument for tertiary education, so this is the live position rather than a superseded one. WHAT REMAINS UNVERIFIED, stated precisely so the finding is not overread: the notice fixes ENTITLEMENT to domestic treatment, not tuition PRICE, and it does not rule out discretionary, institution-specific or scholarship-based fee relief awarded by a university - NZ universities do offer their own scholarships and fee-waiver schemes, but I did not fetch any university or Education Ministry funding page, so no institutional second-degree waiver is asserted. Separately, the ~NZD 10,000 per year domestic PhD fee and the NZD 56 million Crown subsidy cap that circulate in media commentary were NOT verified: they appear only in RNZ and other news snippets I did not retrieve, and the Subsidy is being reviewed, so no figure is claimed."
+    }
+  ],
+  "research": {
+    "evidence_artifact_count": 9,
+    "researched_at": "2026-10-05"
+  },
+  "sections": {
+    "career": {
+      "average_starting_salary": {
+        "gross_monthly": {
+          "as_of": "2026/27",
+          "colliding_values": [
+            {
+              "as_of": "2026/27",
+              "currency": "NZD",
+              "per": "year",
+              "source_ids": [
+                "nz-ird-income-tax-rates-2026"
+              ],
+              "statement": "IRD's top income tax rate band starts at NZD 15,600 of annual taxable income, taxed at 10.5% for each dollar.",
+              "value": 15600
+            },
+            {
+              "as_of": "2026/27",
+              "currency": "NZD",
+              "per": "year",
+              "source_ids": [
+                "nz-ird-income-tax-rates-2026"
+              ],
+              "statement": "The 17.5% band covers annual taxable income from NZD 15,601 to NZD 53,500.",
+              "value": 53500
+            },
+            {
+              "as_of": "2026/27",
+              "currency": "NZD",
+              "per": "year",
+              "source_ids": [
+                "nz-ird-income-tax-rates-2026"
+              ],
+              "statement": "The 30% band covers annual taxable income from NZD 53,501 to NZD 78,100; above NZD 78,100 the rate is 33%, and above NZD 180,000 it is 39%.",
+              "value": 78100
+            }
+          ],
+          "currency": "NZD",
+          "note": "IRD's top income tax rate band starts at NZD 15,600 of annual taxable income, taxed at 10.5% for each dollar.",
+          "per": "year",
+          "source_ids": [
+            "nz-ird-income-tax-rates-2026"
+          ],
+          "value": 15600,
+          "value_status": "OFFICIAL_GOVERNMENT"
+        }
+      },
+      "net_monthly_income": {
+        "month": {
+          "as_of": "2026/27",
+          "currency": "NZD",
+          "note": "This figure describes gross (before-tax) income, not take-home pay. It was filed on the net topic and has been demoted rather than published, because break-even must compare money out against money that actually reaches the worker. Using gross here would roughly halve the reported months in most European countries.",
+          "per": "month",
+          "source_ids": [
+            "nz-ird-ir341-paye-monthly-2026"
+          ],
+          "value": null,
+          "value_status": "UNKNOWN"
+        }
+      }
+    },
+    "education_costs": {
+      "tuition_fees": {
+        "public": {
+          "bachelor": {
+            "as_of": "2026",
+            "colliding_values": [
+              {
+                "as_of": "2026",
+                "currency": "NZD",
+                "per": "year",
+                "source_ids": [
+                  "uoa-undergraduate-international-fees"
+                ],
+                "statement": "The University of Auckland estimates international tuition for the Bachelor of Arts (excluding performance and science-based courses) at NZ$40,225 for 2026 and NZ$42,236.40 for 2027, for a full-time year of 120 points.",
+                "value": 40225
+              },
+              {
+                "as_of": "2026",
+                "currency": "NZD",
+                "per": "year",
+                "source_ids": [
+                  "uoa-undergraduate-international-fees"
+                ],
+                "statement": "The University of Auckland estimates international tuition for the Bachelor of Science at NZ$47,221 to NZ$58,009 for 2026 and NZ$49,581.60 to NZ$60,909.60 for 2027, reflecting subject choice.",
+                "value": 47221
+              },
+              {
+                "as_of": "2026",
+                "currency": "NZD",
+                "per": "year",
+                "source_ids": [
+                  "uoa-undergraduate-international-fees"
+                ],
+                "statement": "The University of Auckland estimates international tuition for the Bachelor of Engineering (Honours) at NZ$58,009 for 2026 and NZ$60,909.60 for 2027.",
+                "value": 58009
+              },
+              {
+                "as_of": "2026",
+                "currency": "NZD",
+                "per": "year",
+                "source_ids": [
+                  "uoa-undergraduate-international-fees"
+                ],
+                "statement": "The University of Auckland estimates international tuition for the Bachelor of Medicine and Bachelor of Surgery at NZ$86,561 from year two onwards, with year one priced under the Bachelor of Health Sciences at NZ$42,818.",
+                "value": 86561
+              },
+              {
+                "as_of": "2026",
+                "currency": "NZD",
+                "per": "year",
+                "source_ids": [
+                  "uoa-undergraduate-international-fees"
+                ],
+                "statement": "University of Auckland international students additionally pay a Student Services Fee of NZ$9.44 per point, estimated at NZ$1,132.80 for full-time study (120 points) in 2026, plus a compulsory health and travel insurance charge added to the tuition fees account.",
+                "value": 1132.8
+              }
+            ],
+            "currency": "NZD",
+            "note": "The University of Auckland estimates international tuition for the Bachelor of Arts (excluding performance and science-based courses) at NZ$40,225 for 2026 and NZ$42,236.40 for 2027, for a full-time year of 120 points.",
+            "per": "year",
+            "source_ids": [
+              "uoa-undergraduate-international-fees"
+            ],
+            "value": 40225,
+            "value_status": "UNIVERSITY_OFFICIAL"
+          }
+        }
+      }
+    },
+    "one_time_costs": {
+      "blocked_account": {
+        "as_of": "2026-10-05",
+        "colliding_values": [
+          {
+            "as_of": "2026-10-05",
+            "currency": "NZD",
+            "per": "year",
+            "source_ids": [
+              "inz-student-fund-requirements"
+            ],
+            "statement": "A student visa applicant studying at tertiary level, in English language, or in other non-compulsory study must show NZD $20,000 for each year of study where the study is 1 year or more.",
+            "value": 20000
+          },
+          {
+            "as_of": "2026-10-05",
+            "currency": "NZD",
+            "per": null,
+            "source_ids": [
+              "inz-student-fund-requirements"
+            ],
+            "statement": "INZ may require secondary funds evidence where a bank account shows large deposits over NZD $2,000 or many smaller ones, or where the account was opened recently.",
+            "value": 2000
+          },
+          {
+            "as_of": "2026-10-05",
+            "currency": "NZD",
+            "per": null,
+            "source_ids": [
+              "inz-student-fund-requirements"
+            ],
+            "statement": "A pregnant applicant must additionally show NZD $9,000 for maternity health and medical costs, in addition to living costs and outward travel.",
+            "value": 9000
+          }
+        ],
+        "currency": "NZD",
+        "note": "A student visa applicant studying at tertiary level, in English language, or in other non-compulsory study must show NZD $20,000 for each year of study where the study is 1 year or more.",
+        "source_ids": [
+          "inz-student-fund-requirements"
+        ],
+        "value": 20000,
+        "value_status": "OFFICIAL_GOVERNMENT"
+      },
+      "visa_fee": {
+        "as_of": "2026-10-05",
+        "currency": "NZD",
+        "note": "A New Zealand Fee Paying Student Visa costs from NZD $850, with 80% of applications decided within 8 weeks.",
+        "related_figures": {
+          "nz-visa-fee-2": {
+            "as_of": "2026-10-05",
+            "descriptive": true,
+            "note": "A Fee Paying Student Visa can be issued for a maximum of 4 years, and is normally issued for the same period as the study already paid for or until passport expiry, whichever is sooner - so it may be shorter than the course.",
+            "per": "year",
+            "source_ids": [
+              "inz-fee-paying-student-visa"
+            ],
+            "study_level": "bachelor",
+            "value": 4,
+            "value_status": "OFFICIAL_GOVERNMENT"
+          },
+          "nz-visa-fee-4": {
+            "as_of": "2026-10-05",
+            "descriptive": true,
+            "note": "A Fee Paying Student Visa holder may work part-time up to 25 hours a week while studying and full-time during holidays, but partners and dependent children cannot be included in the student visa application and must apply separately.",
+            "per": "week",
+            "source_ids": [
+              "inz-fee-paying-student-visa"
+            ],
+            "study_level": "bachelor",
+            "value": 25,
+            "value_status": "OFFICIAL_GOVERNMENT"
+          }
+        },
+        "source_ids": [
+          "inz-fee-paying-student-visa"
+        ],
+        "study_level": "bachelor",
+        "value": 850,
+        "value_status": "OFFICIAL_GOVERNMENT"
+      }
+    },
+    "residency": {
+      "job_seeker_residence_permit": {
+        "duration": {
+          "bachelor": {
+            "as_of": "2026-10-05",
+            "note": "The official New Zealand post-study work route is the 'Post-Study Work Visa' (PSWV), allowing a stay and work in New Zealand for up to 3 years depending on the qualification studied and time spent studying.",
+            "per": "year",
+            "related_figures": {
+              "nz-post-study-work-2": {
+                "as_of": "2026-10-05",
+                "note": "A degree level 7 or higher qualification requires the applicant to have studied full-time in New Zealand for at least 30 weeks, and such a holder may do any work in any job anywhere in New Zealand, whereas a non-degree level 7 or lower qualification restricts work to a job related to what was studied.",
+                "source_ids": [
+                  "inz-post-study-work-visa"
+                ],
+                "study_level": "bachelor",
+                "value": 30,
+                "value_status": "OFFICIAL_GOVERNMENT"
+              },
+              "nz-post-study-work-3": {
+                "as_of": "2026-10-05",
+                "note": "The Post-Study Work Visa can only be held once - a holder cannot obtain a second Post-Study Work Visa after completing a further qualification.",
+                "source_ids": [
+                  "inz-post-study-work-visa"
+                ],
+                "study_level": "bachelor",
+                "value": 1,
+                "value_status": "OFFICIAL_GOVERNMENT"
+              },
+              "nz-post-study-work-4": {
+                "as_of": "2026-10-05",
+                "note": "The application deadline is 3 months after the student visa expires for a first qualification, 6 months for a doctoral degree, and up to 12 months where a PSWV-qualifying qualification was followed immediately by a higher-level qualification.",
+                "source_ids": [
+                  "inz-post-study-work-visa"
+                ],
+                "study_level": "bachelor",
+                "value": 3,
+                "value_status": "OFFICIAL_GOVERNMENT"
+              },
+              "nz-post-study-work-5": {
+                "as_of": "2026-10-05",
+                "currency": "NZD",
+                "note": "Post-Study Work Visa applicants must show at least NZD $5,000 in total for their stay, and the same NZD $5,000 figure applies to 1, 2 or 3 year stays - the test is not scaled by duration.",
+                "source_ids": [
+                  "inz-post-study-work-visa"
+                ],
+                "study_level": "bachelor",
+                "value": 5000,
+                "value_status": "OFFICIAL_GOVERNMENT"
+              },
+              "nz-post-study-work-6": {
+                "as_of": "2026-10-05",
+                "currency": "NZD",
+                "note": "A Post-Study Work Visa costs from NZD $1,670, with 80% of applications decided within 6 weeks, and can lead to a resident visa.",
+                "source_ids": [
+                  "inz-post-study-work-visa"
+                ],
+                "study_level": "bachelor",
+                "value": 1670,
+                "value_status": "OFFICIAL_GOVERNMENT"
+              }
+            },
+            "source_ids": [
+              "inz-post-study-work-visa"
+            ],
+            "study_level": "bachelor",
+            "value": 3,
+            "value_status": "OFFICIAL_GOVERNMENT"
+          }
+        }
+      },
+      "permanent_residence": {
+        "as_of": "2026-10-05",
+        "colliding_values": [
+          {
+            "as_of": "2026-10-05",
+            "currency": null,
+            "per": null,
+            "source_ids": [
+              "inz-skilled-migrant-category"
+            ],
+            "statement": "An international Level 7 Bachelor's Degree is worth 4 skilled resident points against a 6-point requirement, so a bachelor's graduate cannot qualify on qualification alone and must add 1 to 3 points from New Zealand skilled work experience - the only top-up available if relying on qualifications.",
+            "value": 4
+          },
+          {
+            "as_of": "2026-10-05",
+            "currency": null,
+            "per": null,
+            "source_ids": [
+              "inz-skilled-migrant-category"
+            ],
+            "statement": "The same bachelor's degree is worth 5 points when gained in New Zealand versus 4 points when gained overseas, and a New Zealand master's degree completed with at least 30 weeks of full-time study is worth 6 points versus 5 points for an international master's degree.",
+            "value": 5
+          },
+          {
+            "as_of": "2026-10-05",
+            "currency": null,
+            "per": null,
+            "source_ids": [
+              "inz-skilled-migrant-category"
+            ],
+            "statement": "New Zealand skilled work experience can supply 1 point for 1 year, 2 points for 1.5 years and up to 3 points for 2 years, and must be in a full-time job of at least 30 hours a week matching the ANZSCO job title and description.",
+            "value": 2
+          },
+          {
+            "as_of": "2026-10-05",
+            "currency": null,
+            "per": "year",
+            "source_ids": [
+              "inz-skilled-migrant-category"
+            ],
+            "statement": "All SMC pathways require the applicant to be aged 55 or younger at application, and a Skilled Migrant Category Resident Visa costs from NZD $6,450; there is no fee to submit an Expression of Interest, and an Invitation to Apply must be actioned within 4 months.",
+            "value": 55
+          }
+        ],
+        "month": {
+          "as_of": "2026-10-05",
+          "note": "Where section 49 conditions apply, the visa holder must not be unemployed for more than 3 months and must find another skilled job lasting at least 3 months, failing which the visa may be cancelled.",
+          "per": "month",
+          "source_ids": [
+            "inz-skilled-migrant-category"
+          ],
+          "study_level": "bachelor",
+          "value": 3,
+          "value_status": "OFFICIAL_GOVERNMENT"
+        },
+        "note": "An international Level 7 Bachelor's Degree is worth 4 skilled resident points against a 6-point requirement, so a bachelor's graduate cannot qualify on qualification alone and must add 1 to 3 points from New Zealand skilled work experience - the only top-up available if relying on qualifications.",
+        "per": "year",
+        "source_ids": [
+          "inz-skilled-migrant-category"
+        ],
+        "value": 4,
+        "value_status": "OFFICIAL_GOVERNMENT"
+      }
+    }
+  },
+  "sources": [
+    {
+      "archived": true,
+      "as_of": "site content as displayed 2026-10-05",
+      "confidence": null,
+      "id": "inz-fee-paying-student-visa",
+      "notes": "The Fee Paying Student Visa is the main student visa and its published cost is a FLOOR, not a fixed price: 'From NZD $850'. INZ does not publish the actual fee on this page and there is no health-surcharge equivalent to the UK's IHS, but there are two large mandatory NON-VISA costs that belong in any budget and are recorded here from this same page: (1) full medical and travel insurance 'from the start of your course until your visa expires', which must meet the Education (Pastoral Care of Tertiary and International Learners) Code of Practice 2021, and (2) tuition fees paid up front for 1 course or 1 year of study, whichever is shorter. The NZD $850 visa fee is therefore a minor component of real cost. Two points specific to a PhD, recorded because they corroborate the separate PhD domestic-fee finding and are cheap wins for doctoral applicants: 'Doctor of Philosophy (PhD) students do not need to have insurance', and the tuition-payment requirement does not bite because a PhD student is not paying international tuition at all. THE STAY PERIOD IS TIED TO WHAT WAS PAID FOR, NOT TO THE COURSE: 'Your visa is normally issued for the same period as the study you have paid for ... Your visa may be shorter than the length of your course. For example, if you have paid for 1 year of study for a multi-year course or if your passport expires before the end date of your study.' Maximum 4 years. PARTNER AND CHILDREN CANNOT BE INCLUDED: 'You cannot include your partner or dependent children in your visa application, but they can apply for visas based on their relationship to you' - they need separate applications. Work rights: up to 25 hours a week part-time while studying, full-time in holidays; full-time holiday work requires the course to have 'a value of 120 credits'. Timing advice recorded verbatim from the page: 'Apply online at least 3 months before you plan to travel. Student visa processing is busiest between October and March.' NOT VERIFIED AND NOT CLAIMED: the actual visa fee schedule above the 'From NZD $850' floor, the Pathway Student Visa and Exchange Visitor fees, the scholarship-specific fee waiver amount, and the specific contents of INZ's country-of-origin fund guidance.",
+      "publisher": "Immigration New Zealand (INZ), New Zealand Government",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "visa_fees evidence",
+      "url": "https://www.immigration.govt.nz/visas/fee-paying-student-visa/"
+    },
+    {
+      "archived": true,
+      "as_of": "site content as displayed 2026-10-05",
+      "confidence": null,
+      "id": "inz-post-study-work-visa",
+      "notes": "Route name and duration confirmed from INZ directly: 'Post-Study Work Visa' (abbreviated PSWV), up to 3 years. SEVERAL POINTS THAT A SIMPLE '3 years' FIELD WOULD GET WRONG. First, the headline 'up to 3 years' is explicitly qualified: 'depending on the level of your qualification and how long you spent studying for it.' A degree-level applicant must have studied 'full-time for at least 30 weeks in New Zealand', and the page states no single unconditional 3-year entitlement for a bachelor's holder - the qualification-to-duration mapping sits on a sub-page ('Staying to work after finishing your study') that I did NOT fetch, so no per-level duration table is claimed here and any exact bachelor figure would be inferred. Second, work rights are split by qualification: degree level 7 or higher ('level 8 postgraduate Diploma, level 9 masters degree or level 10 doctoral degree') permits 'any work in any job, anywhere in New Zealand', whereas a 'non-degree level 7 or lower' qualification on the eligible list restricts the holder to a job 'related to what you studied'. Third, this is a ONE-TIME visa: 'You can only have this visa once' - stacking a second PSWV after a further qualification is not possible, which is a hard ceiling most student-facing material omits. Fourth, APPLICATION WINDOW IS TIERED, not uniform: 3 months after the student visa expires for the first qualification, 6 months for a doctoral degree, and up to 12 months where a first PSWV-qualifying qualification was followed immediately by a higher-level qualification studied in under 30 weeks. Also note an internal inconsistency on the page worth flagging rather than smoothing over: one passage says a following higher-level qualification must be studied in 'less than 30 weeks', while the Step 1 application guidance says 'less than 30 months'. The 'less than 30 months' reading in Step 1 is inconsistent with the qualification-threshold logic and with the 'When to apply' section, but both wordings are on the same page and I am not resolving it; an implementer should re-check with INZ before relying on it. Fifth, the funds test is FLAT, not time-scaled, which is unusual and generous relative to other countries: 'at least NZD $5,000 in total for your stay. This applies to visa applications for 1, 2 or 3 years' - so NZD5,000 covers the whole stay regardless of length, and it is a living-expense test only (tuition is already paid). Sixth, INZ states 'Residence option: Can lead to a resident visa: Yes', which is the bridge to the PR metric recorded separately. Seventh, FORWARD-LOOKING CHANGE WORTH FLAGGING: 'From 16 November 2026, Post-Study Work Visa eligibility will be extended to applicants who have: an NZQCF level 7 graduate diploma that they studied full-time for in New Zealand, and a bachelor's degree that they completed in New Zealand or overseas.' That is six weeks after the retrieval date and is not yet in force. NOT VERIFIED AND NOT CLAIMED: the per-qualification duration table, the accompanying Partner Work Visa and dependent-child student visa terms, the exact fee above the 'From NZD $1670' floor, the specific occupations on the eligible-qualification list, and the chest X-ray / police certificate triggers beyond the stated 6-month and 24-month thresholds.",
+      "publisher": "Immigration New Zealand (INZ), New Zealand Government",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "post_study_work evidence",
+      "url": "https://www.immigration.govt.nz/visas/post-study-work-visa/"
+    },
+    {
+      "archived": true,
+      "as_of": "site content as displayed 2026-10-05",
+      "confidence": null,
+      "id": "inz-skilled-migrant-category",
+      "notes": "STRUCTURAL WARNING FIRST, because it defeats the metric template: New Zealand's residence system for international graduates is NOT a 'minimum years on the qualifying route' system like the UK, Canada or Australia. It is a POINTS system with a job-offer trigger, so no single 'X years' figure is the answer and a corpus row asking for 'years to PR' for NZ should be modelled differently. Route recorded: 'Skilled Migrant Category (SMC) Resident Visa', reached through an Expression of Interest, with three alternative pathways - Points-based, Skilled Work Experience, and Trades and Technician. For a BACHELOR'S GRADUATE THE POINTS-BASED PATHWAY IS THE ONLY REACHABLE ONE, and the qualification table is the crucial finding: an international Level 7 Bachelor's Degree is worth only 4 POINTS, against a 6-point threshold, so a bachelor's holder CANNOT qualify on qualification alone and must make up the shortfall - and the page is explicit that the only top-up available is New Zealand skilled work experience, worth 3 points for 2 years, 2 points for 1.5 years and 1 point for 1 year: 'If you do not have 6 points from your qualifications, you can use your skilled work experience in New Zealand to claim more points. You cannot use your occupational registration or income to claim more points.' A DOMESTIC/INTERNATIONAL ASYMMETRY THAT MATTERS: the same bachelor's degree is worth 5 points if gained in New Zealand (Table 1) versus 4 points if gained overseas (Table 2), and a New Zealand master's degree completed with at least 30 weeks of full-time study is worth 6 points (an automatic pass) versus 5 points for an international master's. So studying in New Zealand carries a points advantage over studying abroad. Other verified figures: application cost from NZD $6,450; there is no fee to submit an EOI; an ITA must be actioned within 4 months or a new EOI is required; all pathways require the applicant to be aged 55 or younger at application and to hold a skilled job or offer with an accredited employer (at least 30 hours a week, permanent/fixed-term of at least 12 months or contracts of at least 6 months). TIMELINE, which is the closest thing to a 'years to PR' answer: the SMC Resident Visa is granted for an indefinite stay immediately, and 'After you have had this visa for 2 years in a row, you can apply for a Permanent Resident Visa'. Citizenship is separate and later: 'after 5 years of living in New Zealand as a resident, you may be able to get New Zealand citizenship. You do not need a Permanent Resident Visa first.' SUSTAINABILITY RISK THAT IS EASY TO MISS: a section 49 condition may apply, and 'You must not be unemployed for more than 3 months. If you lose your job, you must get another skilled job that is for at least 3 months ... If you do not, we may cancel your visa and you must leave the country.' Not every SMC visa carries one, but where it applies, residence is job-conditional. NOT VERIFIED AND NOT CLAIMED: whether a section 49 condition attaches in a given case (the page says only that they 'are extra conditions we may give to some visas'); the ANZSCO occupation lists; the historic SMC wage thresholds (only the current NZD $105.00 an hour figure and a worked example of NZD $59.32 an hour were printed, and the thresholds are time-varying by design); the Amber and Red List contents; and the Green List occupations. The PhD pathway figure of 6 points is recorded but I have deliberately NOT inferred any PhD-specific scholarship or funding position from it.",
+      "publisher": "Immigration New Zealand (INZ), New Zealand Government",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "permanent_residence evidence",
+      "url": "https://www.immigration.govt.nz/visas/skilled-migrant-category-resident-visa/"
+    },
+    {
+      "archived": true,
+      "as_of": "site content as displayed 2026-10-05",
+      "confidence": null,
+      "id": "inz-student-fund-requirements",
+      "notes": "Official framing: INZ publishes this as 'Student fund requirements'. For a tertiary-level or non-compulsory-study applicant the maintenance threshold is NZD $20,000 for each year where study is 1 year or more, or NZD $1,667 per month where study is shorter than 1 year. THE TRAP IS CONFIRMED VERBATIM AND IN THE SOURCE'S OWN EMPHATIC WORDS: 'Your tuition fees are in addition to living costs. Make sure your evidence shows you can access enough funds to cover both.' So NZD $20,000 is NOT the money a student needs; total funds for a one-year course of study are NZD $20,000 living costs PLUS a full year of tuition PLUS proof of outward travel. A THIRD HEAD EXISTENS IN MOST COUNTRIES: outward travel is a separate test ('a fully paid ticket out of New Zealand, or enough extra money to buy a ticket'), and a fourth head applies to pregnant applicants (NZD $9,000 for maternity health and medical costs, stated to be 'in addition to funds for your living costs and outward travel'). THE ANNUAL FIGURE IS PER-YEAR, not first-year-only, and the page adds that for study beyond one year 'it can strengthen your application if you show us a credible plan for how you will pay for your living costs for the following years'. RELIEF EXISTS AND IS OFTEN MISSED: 'Accommodation that has been prepaid can be deducted', so a student with prepaid homestay or accommodation proves a reduced balance - the page says 'If there is a shortfall, you must show evidence of the remaining balance'. THREE ALTERNATIVE FUNDING ROUTES rather than one: money held personally, an acceptable sponsor (with a hard rule that 'You cannot change your sponsor' or 'be sponsored for a second visa if you were not sponsored for your first'), or a Financial Undertaking for a Student (form INZ 1014) from a guarantor outside New Zealand whose money must be 'their own and not loaned'. EVIDENCE-QUALITY TRAPS THAT REJECT APPLICATIONS: bank statements must include the account holder's name AND the last 3 months of transaction history; fixed-term deposit certificates only count if 'held for at least 3 months'; and INZ will demand secondary funds evidence if the account 'shows large deposits (over NZD $2,000), or many smaller ones' - a real problem for parents who fund a student in one lump sum. Two explicit anti-fraud rules on tuition: 'Screenshots of bank transfers are not acceptable. Receipts from education agents are not acceptable.' The 'approval in principle' (AIP) option lets an offshore applicant defer tuition payment until the visa is approved in principle, with a deadline 'usually 10 days, or 15 days for the FTS'. Also relevant to budgeting: 'Your visa is normally issued for the same period as the study you have paid for but may be for a shorter time if your passport expires'. NOT VERIFIED AND NOT CLAIMED: the country-specific fund guidance INZ alludes to with 'We are continuing to update our country-specific guidance' (relevant applicants from China, India, Nepal, the Philippines, Sri Lanka and Vietnam are handled through the ANZ-run Funds Transfer Scheme); the exact operations-manual thresholds, which I saw only in a search snippet of the archived immigration.govt.nz Ops Manual U3.20 rather than in fetched content; the aviation tuition-by-instalment eligibility rules; and the Fee Paying Student Visa application fee, which appeared as 'NZD $850' in a search snippet of the visa page but which I did not separately fetch - the Fee Paying Student Visa page was reached only via search results, so that figure is excluded rather than asserted.",
+      "publisher": "Immigration New Zealand (INZ), New Zealand Government",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "financial_proof evidence",
+      "url": "https://www.immigration.govt.nz/process-to-apply/applying-for-a-visa/providing-evidence-and-documents-to-support-your-visa-application/student-fund-requirements/"
+    },
+    {
+      "archived": true,
+      "as_of": "2026/27 tax year",
+      "confidence": null,
+      "id": "nz-ird-income-tax-rates-2026",
+      "notes": null,
+      "publisher": "Inland Revenue (IRD), New Zealand",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "gross_monthly_income evidence",
+      "url": "https://www.ird.govt.nz/income-tax/income-tax-for-individuals/tax-codes-and-tax-rates-for-individuals/tax-rates-for-individuals"
+    },
+    {
+      "archived": true,
+      "as_of": "2026/27 tax year (1 April 2026 - 31 March 2027)",
+      "confidence": null,
+      "id": "nz-ird-ir341-paye-monthly-2026",
+      "notes": null,
+      "publisher": "Inland Revenue (IRD), New Zealand",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "net_monthly_income evidence",
+      "url": "https://www.ird.govt.nz/-/media/project/ir/home/documents/forms-and-guides/ir300---ir399/ir341/ir341-apr-2026.pdf?modified=20260323203458"
+    },
+    {
+      "archived": true,
+      "as_of": "2026 and 2027 estimated fees",
+      "confidence": null,
+      "id": "uoa-undergraduate-international-fees",
+      "notes": "New Zealand has no single national international tuition figure, so this is one named university (the University of Auckland). Both 2026 and 2027 estimated fees are recorded because a 2027-starting applicant needs the 2027 column - the 2026 Bachelor of Science band is NZ$47,221-NZ$58,009 against NZ$49,581.60-NZ$60,909.60 for 2027, and the BA rises from NZ$40,225 to NZ$42,236.40. MEDICINE IS THE OUTLIER AND MUST NOT BE AVERAGED IN: NZ$86,561 from year two onwards is roughly twice the Bachelor of Science ceiling and more than twice the BA, so any single 'New Zealand international bachelor tuition' number is meaningless without a named programme. Note also the year-1 trap the page flags itself: for MBChB, 'Year 2 onwards (for Year 1 see Bachelor of Health Sciences)' - year one is priced as Bachelor of Health Sciences at NZ$42,818, so a three-year medical degree is NOT 3 x NZ$86,561 and is NOT 3 x NZ$42,818. LABELLED ESTIMATE, NOT A PRICE: the page says the figures are 'estimated ... assuming that you are studying full time for a full year (120 points)' and directs students to Student Services Online for 'an exact statement of your fees'. The international students' fees page (https://international.auckland.ac.nz/study/fees, also fetched) reinforces the mechanism: 'your tuition fees will be calculated based on the subjects you enrol in each semester, rather than the full programme of study you choose' and 'these are only estimates, and your fees may differ, depending on which individual subjects you decide to study'. MANDATORY ADDITIONAL COSTS recorded verbatim from the same source: a Student Services Fee of $9.44 per point, 'estimated at $1,132.80 for full-time study (120 points)' in 2026, and a compulsory Overseas Student Health Cover charge auto-enrolled on admission under the 'Studentsafe Inbound University policy by Allianz Partners' with the charge 'added to your tuition fees account' (premium amount not published on this page). Conjoint programmes study 135 points a year so cost more. CORROBORATION FOR THE SEPARATE PhD FINDING (fetched from the same university): 'Thanks to a special New Zealand Government funding scheme, if you are a new international PhD student living in New Zealand while you study, you will pay the same yearly tuition fees as other New Zealand students. The 2026 PhD tuition fee is NZ$8,847.60 per year.' That NZ$8,847.60 is the only domestic PhD fee figure I have personally seen in fetched content and it is recorded in the PhD file, not here.",
+      "publisher": "The University of Auckland (Waipapa Taumata Rau)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "UNIVERSITY_OFFICIAL",
+      "title": "bachelor_tuition evidence",
+      "url": "https://www.auckland.ac.nz/en/study/fees-and-money-matters/tuition-fees/international-student-fees/undergraduate-international-fees.html"
+    }
+  ]
+}

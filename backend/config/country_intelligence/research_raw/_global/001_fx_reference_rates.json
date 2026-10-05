@@ -1,0 +1,85 @@
+{
+  "country": "_GLOBAL",
+  "scope": "global",
+  "topic": "fx_reference_rates",
+  "source_id": "ecb-fx-2026-10-02",
+  "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
+  "source_type": "OFFICIAL_REGIONAL_BODY",
+  "publisher": "European Central Bank",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026-10-02",
+  "raw_extract": "Euro foreign exchange reference rates. The reference rates are usually updated at around 16:00 CET every working day, except on TARGET closing days. They are based on the daily concertation procedure between central banks across Europe, which normally takes place around 14:10 CET. The reference rates are published for information purposes only. Using the rates for transaction purposes is strongly discouraged.\n\n2 October 2026 - All currencies quoted against the euro (base currency)\n\nUSD US dollar 1.1225\nJPY Japanese yen 176.99\nCZK Czech koruna 24.470\nDKK Danish krone 7.4736\nGBP Pound sterling 0.85033\nHUF Hungarian forint 369.18\nPLN Polish zloty 4.3775\nRON Romanian leu 5.3488\nSEK Swedish krona 11.2900\nCHF Swiss franc 0.9279\nISK Icelandic krona 137.00\nNOK Norwegian krone 10.8315\nTRY Turkish lira 55.1650\nAUD Australian dollar 1.6176\nBRL Brazilian real 5.8610\nCAD Canadian dollar 1.5984\nCNY Chinese yuan renminbi 7.5259\nHKD Hong Kong dollar 8.8084\nIDR Indonesian rupiah 20149.32\nILS Israeli shekel 3.4408\nINR Indian rupee 108.1245\nKRW South Korean won 1513.44\nMXN Mexican peso 20.5806\nMYR Malaysian ringgit 4.5849\nNZD New Zealand dollar 2.0002\nPHP Philippine peso 70.265\nSGD Singapore dollar 1.4366\nTHB Thai baht 37.710\nZAR South African rand 18.7839\n\nOwing to current trading activity in the EUR/RUB market, the European Central Bank (ECB) is not in a position to set a reference rate that is representative of prevailing market conditions. The ECB has therefore decided to suspend its publication of a euro reference rate for the Russian rouble until further notice. The ECB last published a EUR/RUB reference rate on 1 March 2022.",
+  "research_notes": "Fetched directly from the ECB on 2026-10-05. This table covers the currencies of every target country in the corpus: EUR (DE, NL, FR, AT, IT, IE, FI), USD (US), GBP (GB), CAD (CA), AUD (AU), NZD (NZ), SGD (SG), JPY (JP), CHF (CH), PLN (PL), SEK (SE).\n\nThis unblocks cross-currency comparison, which previously had no sourced rate and therefore refused every mixed-currency row.\n\nTHREE CAVEATS, recorded because each one changes how the rate may be used:\n\n1. The ECB states the rates are 'published for information purposes only. Using the rates for transaction purposes is strongly discouraged.' They are therefore acceptable for comparing study-cost magnitudes across countries and NOT acceptable for settling a payment, budgeting an actual transfer, or stating what a student will pay. Any figure derived from these rates must say so.\n\n2. as_of is 2026-10-02, three days before retrieval. The page publishes one table per working day and the retrieved copy carried the 2 October table, not a 5 October one. The rate is therefore three days stale as of retrieval and this is stated rather than smoothed over. Rates move; a corpus that silently refreshed them would misrepresent how current it is.\n\n3. These are reference rates from a daily concertation procedure, not market quotes from a specific moment. For a tuition figure that changes on an academic-year boundary they are appropriate; for a figure expected to move within days they are not.\n\nThe rates are quoted as units of foreign currency per 1 EUR. Any conversion in this corpus must state which direction it converted, because 1 EUR = 1.1225 USD and 1 GBP = 1.1225/0.85033 = 1.3200 USD are the same fact expressed in two directions, and getting the direction wrong inverts a cost comparison.",
+  "claims": [
+    {
+      "claim_id": "fx-eur-usd",
+      "statement": "On 2026-10-02 one euro bought 1.1225 US dollars.",
+      "value": 1.1225,
+      "unit": "USD per EUR",
+      "as_of": "2026-10-02"
+    },
+    {
+      "claim_id": "fx-eur-gbp",
+      "statement": "On 2026-10-02 one euro bought 0.85033 pounds sterling.",
+      "value": 0.85033,
+      "unit": "GBP per EUR",
+      "as_of": "2026-10-02"
+    },
+    {
+      "claim_id": "fx-eur-cad",
+      "statement": "On 2026-10-02 one euro bought 1.5984 Canadian dollars.",
+      "value": 1.5984,
+      "unit": "CAD per EUR",
+      "as_of": "2026-10-02"
+    },
+    {
+      "claim_id": "fx-eur-aud",
+      "statement": "On 2026-10-02 one euro bought 1.6176 Australian dollars.",
+      "value": 1.6176,
+      "unit": "AUD per EUR",
+      "as_of": "2026-10-02"
+    },
+    {
+      "claim_id": "fx-eur-nzd",
+      "statement": "On 2026-10-02 one euro bought 2.0002 New Zealand dollars.",
+      "value": 2.0002,
+      "unit": "NZD per EUR",
+      "as_of": "2026-10-02"
+    },
+    {
+      "claim_id": "fx-eur-sgd",
+      "statement": "On 2026-10-02 one euro bought 1.4366 Singapore dollars.",
+      "value": 1.4366,
+      "unit": "SGD per EUR",
+      "as_of": "2026-10-02"
+    },
+    {
+      "claim_id": "fx-eur-jpy",
+      "statement": "On 2026-10-02 one euro bought 176.99 Japanese yen.",
+      "value": 176.99,
+      "unit": "JPY per EUR",
+      "as_of": "2026-10-02"
+    },
+    {
+      "claim_id": "fx-eur-chf",
+      "statement": "On 2026-10-02 one euro bought 0.9279 Swiss francs.",
+      "value": 0.9279,
+      "unit": "CHF per EUR",
+      "as_of": "2026-10-02"
+    },
+    {
+      "claim_id": "fx-eur-pln",
+      "statement": "On 2026-10-02 one euro bought 4.3775 Polish zloty.",
+      "value": 4.3775,
+      "unit": "PLN per EUR",
+      "as_of": "2026-10-02"
+    },
+    {
+      "claim_id": "fx-eur-sek",
+      "statement": "On 2026-10-02 one euro bought 11.2900 Swedish kronor.",
+      "value": 11.29,
+      "unit": "SEK per EUR",
+      "as_of": "2026-10-02"
+    }
+  ]
+}

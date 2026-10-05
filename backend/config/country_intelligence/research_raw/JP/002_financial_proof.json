@@ -1,0 +1,13 @@
+{
+  "country": "JP",
+  "topic": "student_visa_financial_proof",
+  "raw_status": "UNAVAILABLE",
+  "reason": "Japan does not publish a national minimum cash threshold for a student visa or Certificate of Eligibility. The government-approved Study in Japan site (JASSO) states only that proof of ability to pay may be requested and lists the document types, with no monetary figure: 'When applying for a COE or visa, you may be asked for proof that you are able to cover your expenses while studying in Japan. Required documents: Financial sponsor's (the person wishing to study in Japan or their guarantor) savings balance certificate, income certificate covering the past year, documentation identifying sources of funds, etc.' The only money figures found in official material are living-cost averages, not visa thresholds: 'Total expenditure: 105,000 yen' per month national average, source '2023 Lifestyle Survey of Privately-Financed International Students (JASSO)' (https://www.studyinjapan.go.jp/en/life/cost-of-living, fetched). Per-university screening amounts (for example Nagoya University G30's JPY 1,000,000, or Waseda CJL's JPY 1,920,000 per year) appear only in university documents, which are institution-set and not a national rule, so they are not recorded as a country-level figure.",
+  "attempted_sources": [
+    "https://www.studyinjapan.go.jp/en/planning/immigration-procedures",
+    "https://www.studyinjapan.go.jp/en/life/cost-of-living",
+    "https://www.mofa.go.jp/mofaj/toko/visa/short/study.html",
+    "https://www.studyinjapan.go.jp/en/planning/visa"
+  ],
+  "checked_at": "2026-10-05"
+}

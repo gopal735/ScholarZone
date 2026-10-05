@@ -1,0 +1,30 @@
+{
+  "country": "GB",
+  "topic": "permanent_residence",
+  "source_id": "govuk-skilled-worker-your-job",
+  "source_url": "https://www.gov.uk/skilled-worker-visa/your-job",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "UK Visas and Immigration (Home Office), GOV.UK",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "You must meet all the following requirements to be eligible for a Skilled Worker visa:\n\n-   your job is eligible for this visa\n-   you’ll be working for a UK employer that’s been approved by the Home Office\n-   you’ll be paid at least the minimum salary rate for the type of work you’ll be doing\n\nThe minimum salary for the type of work you’ll be doing is whichever is the highest of:\n\n-   £41,700 per year\n-   the ‘going rate’ for the type of work you’ll be doing\n\n## Salary requirements\n\nYou’ll usually need to be paid the ‘standard’ salary rate of at least £41,700 per year, or the ‘going rate’ for your job, whichever is higher.\n\nExample\n\nYour salary is £42,000 per year, but the annual going rate for the job you’ll be doing is £45,000. You do not meet the usual salary requirements for this visa.",
+  "research_notes": "Separate file because the figure comes from a different gov.uk page than the ILR guidance. Recorded because it is the practical bridge between study and settlement: a graduate moving from the Graduate visa to Skilled Worker - the only settlement route named on the ILR page - must clear this earnings bar, and the 'whichever is higher' rule means £41,700 is a floor, not the number most occupations will actually apply. Reduced rates exist and are noted on the same page: 'If you do not meet the usual salary requirements, and you do not work in healthcare or education, you might still be eligible if your salary will be at least £33,400 per year.' Healthcare and education roles use national pay scales instead. Sponsorship is employer-side and mandatory: 'You must have a job offer from an approved UK employer before you apply for a Skilled Worker visa.'",
+  "claims": [
+    {
+      "claim_id": "gb-skilled-worker-salary-1",
+      "statement": "The Skilled Worker visa requires a salary of at least £41,700 per year or the occupation's 'going rate', whichever is higher.",
+      "value": 41700,
+      "unit": "GBP per year",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "gb-skilled-worker-salary-2",
+      "statement": "A reduced rate of at least £33,400 per year may be available where the usual requirements are not met and the applicant does not work in healthcare or education.",
+      "value": 33400,
+      "unit": "GBP per year",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

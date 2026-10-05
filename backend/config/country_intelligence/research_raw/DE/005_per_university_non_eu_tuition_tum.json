@@ -1,0 +1,38 @@
+{
+  "country": "DE",
+  "topic": "per_university_non_eu_tuition",
+  "source_id": "de-uni-tum-004",
+  "source_url": "https://www.tum.de/en/studies/fees/tuition",
+  "source_type": "UNIVERSITY_OFFICIAL",
+  "publisher": "Technical University of Munich (TUM)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "Use the tuition fee navigator below to quickly find out whether you are required to pay tuition fees. The amount depends on your degree program. For bachelor's degree programs, tuition fees are usually 2,000 or 3,000 euros per semester. For master's degree programs, they are usually 4,000 or 6,000 euros per semester.\nYou can find the exact amounts on the page of your chosen degree program under \"Program details.\" In addition, all students must pay a semester fee, which varies depending on the campus location.\n\nIn Germany and across the EU, higher education is funded primarily through public resources. International students from non-EU countries are generally not part of these funding systems. For this reason, TUM charges tuition fees.\n\nIn general, tuition fees apply to international students from non-EU countries who enroll in a bachelor's or master’s degree program at TUM. This also applies if you obtained a European Baccalaureate, an International Baccalaureate, or a mixed-language International Baccalaureate outside Germany.\n\nThe amount of tuition fees depends on the degree program.\n \tBachelor's degree programs: usually 2,000 or 3,000 euros per semester\n \tMaster's degree programs: usually 4,000 or 6,000 euros per semester\n \tDouble degree studies: If you are enrolled in two degree programs at the same time, tuition fees must be paid for both programs.\nThe regular semester fee must be paid in addition to the tuition fees.",
+  "research_notes": "CONFIRMED: Germany has PER-UNIVERSITY tuition for non-EU students, and it is materially higher than state fees. TUM (Bavaria) charges Bachelor students from non-EU countries usually EUR 2,000 or EUR 3,000 per semester — i.e. roughly 1.3x to 2x the Baden-Württemberg state fee of EUR 1,500. IMPORTANT LIMITATION, stated honestly: TUM states a RANGE ('usually 2,000 or 3,000'), and says the exact amount depends on the degree programme and must be looked up on the individual programme page under 'Program details'. So a single definitive TUM Bachelor figure is NOT published on this page. I record the range honestly and must NOT collapse it to one number. The page also confirms the fees were introduced 'From the winter semester 2024/25 ... will only be charged for newly enrolled students in Bachelor's and Master's degree programs'. CONFIRMED SEPARATELY: TUM also states the mandatory semester fee is payable IN ADDITION to tuition, and does not give its amount on this page (see the companion file 007 for the semester fee amount). GAP: a programme-specific TUM Bachelor tuition amount would require fetching an individual programme page; not done here.",
+  "claims": [
+    {
+      "claim_id": "de-per-university-tuition-tum-bachelor-low",
+      "statement": "TUM states that for bachelor's degree programs the tuition fees for international students from non-EU countries are usually 2,000 euros per semester.",
+      "value": 2000,
+      "unit": "EUR per semester",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "de-per-university-tuition-tum-bachelor-high",
+      "statement": "TUM states that for bachelor's degree programs the tuition fees for international students from non-EU countries are usually 3,000 euros per semester (the upper end of the stated band); the exact amount depends on the degree programme.",
+      "value": 3000,
+      "unit": "EUR per semester",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "de-per-university-tuition-basis",
+      "statement": "TUM explains the basis for charging tuition as the fact that higher education is funded primarily through public resources and that international students from non-EU countries are generally not part of these funding systems.",
+      "value": 3000,
+      "unit": "EUR per semester (upper end of published band)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

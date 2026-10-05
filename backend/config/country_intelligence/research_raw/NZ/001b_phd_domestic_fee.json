@@ -1,0 +1,46 @@
+{
+  "country": "NZ",
+  "topic": "phd_domestic_fee",
+  "source_id": "nzsl2025-325-domestic-student-notice",
+  "source_url": "https://legislation.govt.nz/secondary-legislation/pco-drafted/2025/325/en/latest/",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "New Zealand Legislation (Parliamentary Counsel Office) - Education (Domestic Student: Tertiary Education and Vocational Education and Training) Notice 2025, SL 2025/325",
+  "retrieved_at": "2026-10-05",
+  "as_of": "in force from 2026-01-01; notified in Gazette 18 December 2025",
+  "raw_extract": "Education (Domestic Student: Tertiary Education and Vocational Education and Training) Notice 2025\nThis notice is made by the Minister for Vocational Education and the Minister for Universities under section 10(1) of the Education and Training Act 2020.\n\n1 Title\nThis notice is the Education (Domestic Student: Tertiary Education and Vocational Education and Training) Notice 2025.\n\n2 Commencement\nThis notice comes into force on 1 January 2026.\n\n3 Interpretation\nIn this notice, unless the context otherwise requires,—\nAct means the Education and Training Act 2020\ndependent child has the same meaning as in section 4 of the Immigration Act 2009.\n\n4 Persons to be treated as if they are not international students for purposes of Parts 4 and 5 of Act\nFor the purposes of paragraph (c) of the definition of domestic student in section 10(1) of the Act, persons of a class or description specified in the Schedule are to be treated as if they are not international students for the purposes of Parts 4 and 5 of the Act (except sections 455, 519, 520, and 524).\n\n5 Domestic student status not transferable\nTo avoid doubt, a person specified in the Schedule who is to be treated as if they are not an international student based on their programme or course of study does not qualify as a domestic student in relation to any other programme or course of study, unless the person is to be treated as if they are not an international student for that programme or course of study.\n\n6 Revocation\nThe Tertiary Education (Domestic Students) Notice 2024 (published in the Gazette on 14 March 2024, 2024-go1042) is revoked.\n\nSchedule\nPersons to be treated as if they are not international students for purposes of Part 4 and 5 of Act\ncl 4\n\n[clauses 1 to 4 are diplomatic immunity; refugee/protected-person claims; partners and dependent children of such claimants; and study under a New Zealand Government-approved exchange programme at a tertiary education provider]\n\n5\nA person who is in New Zealand to study and who is enrolled in a Doctor of Philosophy programme at a New Zealand university.\n\n[clauses 6 to 10 cover transitional TEC Industry Training Fund apprenticeships; Accredited Employer Work Visa holders studying work-based qualifications in Green List or sector-agreement occupations; TEC-funded search and rescue training; TEC English Language Teaching / Adult and Community Education on partner-of-a-New-Zealander visas; and employer-required short-term work-related training of 10 days or less]\n\nDated at Wellington this 10th day of December 2025.\nHon Penny Simmonds,\nMinister for Vocational Education.\nDated at Wellington this 10th day of December 2025.\nHon Shane Reti,\nMinister for Universities.\n\nExplanatory note\nThis note is not part of the notice but is intended to indicate its general effect.\n\nThis notice, which comes into force on 1 January 2026, is made under section 10(1) of the Education and Training Act 2020 (the Act) and specifies persons who, for the purposes of paragraph (c) of the definition of domestic student in section 10(1), are required to be treated as if they are not international students in respect of Parts 4 and 5 of the Act.\n\nThe effect of treating a person specified in the Schedule as if they are not an international student is that the person becomes entitled to tertiary education and vocational education and training in New Zealand as if they were a domestic student.",
+  "research_notes": "ANSWER TO THE BRIEF'S SPECIFIC QUESTION, FROM THE PRIMARY INSTRUMENT: YES, international PhD students pay domestic tuition fees in New Zealand - and the concession is PHD-ONLY, EXCLUDING PROFESSIONAL DOCTORATES. Clause 5 of the Schedule reads verbatim: 'A person who is in New Zealand to study and who is enrolled in a Doctor of Philosophy programme at a New Zealand university.' The wording is confined to a Doctor of Philosophy programme; nothing in the Schedule extends it to a Doctor of Medicine, Doctor of Laws, Doctor of Veterinary Science or any other professional doctorate, so a corpus entry must not generalise this to 'doctoral students' or 'postgraduate researchers'. Two further limits worth carrying: the concession requires the person to BE in New Zealand and to be enrolled at a New Zealand university, and section 5 ('Domestic student status not transferable') states it 'does not qualify as a domestic student in relation to any other programme or course of study'. SOURCING CHAIN IS FULLY CURRENT, WHICH MATTERS HERE BECAUSE THE INSTRUMENT CHANGED RECENTLY: SL 2025/325 came into force on 1 January 2026 and clause 6 expressly revoked the Tertiary Education (Domestic Students) Notice 2024 (Gazette 2024-go1042, 14 March 2024). So any corpus entry citing the 2024 Notice is citing a revoked instrument. I independently confirmed the whole chain: the New Zealand Gazette notice page for 2025-sl7324 (fetched) shows the Education (Domestic Student: Tertiary Education and Vocational Education and Training) Notice 2025 was made 10/12/25 by the Ministry of Education under section 10(1) of the Education and Training Act 2020 and notified 18 Dec 2025; and the Ministry of Education's 'Definition of a domestic student in New Zealand' page (last updated 18 August 2026, fetched) names the same 2025 Notice as the current tertiary instrument. An earlier, now-superseded immigration.govt.nz Operations Manual instruction U3.35 (version dated 19/02/2024, fetched) says the same thing in equivalent words - students 'enrolled in any Doctor of Philosophy (PhD) programme, in any New Zealand university' are 'exempt from paying foreign tuition fees for foreign students' - but that page is banner-labelled ARCHIVED and 'no longer current', so I have not used it as the authority; it is noted only as corroboration that the PhD rule survived the 2026 instrument change. NOT CLAIMED: the domestic fee AMOUNT itself (the notice fixes entitlement to domestic treatment, not a price; the ~$10,000 figure that appears in media commentary is not published in any page I fetched), any statement about the Crown subsidy that funds it, and any academic-salary or stipend associated with it. Also not claimed: the Medical Council's separate, very different fee treatment for doctors training in NZ, which could easily be mistaken for a doctorate concession.",
+  "claims": [
+    {
+      "claim_id": "nz-phd-domestic-fee-1",
+      "statement": "A person who is in New Zealand to study and enrolled in a Doctor of Philosophy programme at a New Zealand university must be treated as if they are not an international student, and is therefore entitled to tertiary education as if a domestic student.",
+      "value": null,
+      "unit": "domestic tuition treatment (concession exists)",
+      "as_of": "in force from 2026-01-01",
+      "study_level": "phd"
+    },
+    {
+      "claim_id": "nz-phd-domestic-fee-2",
+      "statement": "The concession is confined to a Doctor of Philosophy programme and is PhD-only; professional doctorates are not included in the enumerated classes of persons treated as domestic.",
+      "value": null,
+      "unit": "scope exclusion (professional doctorates)",
+      "as_of": "in force from 2026-01-01",
+      "study_level": "phd"
+    },
+    {
+      "claim_id": "nz-phd-domestic-fee-3",
+      "statement": "Domestic student status granted by this Notice is not transferable: a person treated as domestic based on their programme or course does not qualify as a domestic student for any other programme or course of study.",
+      "value": null,
+      "unit": "constraint",
+      "as_of": "in force from 2026-01-01",
+      "study_level": "phd"
+    },
+    {
+      "claim_id": "nz-phd-domestic-fee-4",
+      "statement": "The Education (Domestic Student: Tertiary Education and Vocational Education and Training) Notice 2025 (SL 2025/325) came into force on 1 January 2026 and revoked the Tertiary Education (Domestic Students) Notice 2024.",
+      "value": "2026-01-01",
+      "unit": "commencement date (predecessor revoked)",
+      "as_of": "2026-01-01",
+      "study_level": "phd"
+    }
+  ]
+}

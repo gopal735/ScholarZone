@@ -1,0 +1,12 @@
+{
+  "country": "JP",
+  "topic": "permanent_residence",
+  "raw_status": "UNAVAILABLE",
+  "reason": "No permanent-residence route tied to a minimum number of years of study was established from a fetched Japanese government page. The Immigration Services Agency page I did fetch concerns permission to work outside the Student status of residence and contains no permanent-residence rule. MOFA's visa pages (including the long-stay Student visa page) returned HTTP 403 or were not reachable, and the point system for permanent residence (高度人材points) was not fetched. No figure is asserted rather than asserting a remembered one.",
+  "attempted_sources": [
+    "https://www.mofa.go.jp/j_info/visit/visa/long/visa6.html",
+    "https://www.mofa.go.jp/mofaj/toko/visa/short/study.html",
+    "https://www.moj.go.jp/isa/applications/procedures/nyuukokukanri07_00003.html?lang=en"
+  ],
+  "checked_at": "2026-10-05"
+}

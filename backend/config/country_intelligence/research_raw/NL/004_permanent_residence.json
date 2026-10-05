@@ -1,0 +1,54 @@
+{
+  "country": "NL",
+  "topic": "permanent_residence",
+  "source_id": "nl-ind-permanent-residence-001",
+  "source_url": "https://ind.nl/en/replace-extend-renew-and-change/permanent-residency/permanent-residence-permit",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Immigratie- en Naturalisatiedienst (IND), Ministerie van Justitie en Veiligheid",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "Permanent residence permit\nLast update: 20 May 2026\nYou want to apply for a permanent residence permit. Find out what the requirements are and how you can apply for permanent residency.\n\nRequirements\nThese are the requirements for a permanent residence permit.\nYou meet the general requirements that apply to everyone.\nYou have had a valid Dutch residence permit for at least 5 consecutive years. There are exceptions to the 5-year period for permanent residency.\nOnly years from the age of 8 on count towards the 5-year period. Children can only apply for a permanent residence permit, if they are at least 13 years old and have had a valid residence permit from the age of 8.\nYou had your main residence in the Netherlands  during the entire 5-year period.\nYou have always extended your residence permit in time.\nYou have always met the requirements for your residence permit. And you still meet those requirements.\nYou now have a valid residence permit for a non-temporary residence purpose.\nDuring the application for the residence permit you have now, you did not give any false information. And you did not withhold information. \nYou meet the income requirements.\nYou are registered in the Personal Records Database (in Dutch: Basisregistratie Personen or BRP) at your local town hall. The BRP is the population register of the Netherlands.\nYou have passed the civic integration exam at at least level A2. Or you have been exempted from the civic integration exam.\n\nValidity of the residence permit\nA permanent residence permit has no end date. The residence document is valid for 5 years and you can renew it every 5 years.\nType of residence permit\nThe permanent regular residence permit is type II.\nThe residence permit for long-term EU residents is type V.\n\nResidence permit as a long-term EU resident\nAre you applying for a permanent residence permit? Then the IND will first check if you meet the requirements for the residence permit for a long-term EU resident.",
+  "research_notes": "CONFIRMED from the IND itself (page last updated 20 May 2026). Netherlands permanent residence: 5 CONSECUTIVE YEARS with a valid Dutch residence permit. Official name: verblijfsvergunning onbepaalde tijd ('permanent residence permit'), an unlimited-stay permit — 'A permanent residence permit has no end date', the document itself valid 5 years and renewable every 5 years. CRITICAL POINT FOR THE CORPUS: the requirement 'You now have a valid residence permit for a non-temporary residence purpose' means a student on a temporary study residence permit does NOT qualify at the moment of application — the 5 years must have elapsed AND the applicant must by then hold a non-temporary permit. Note also the interplay with the halving rule for study periods (see the companion exception file). Other conditions confirmed: main residence in the Netherlands for the whole 5 years; always extended on time; always met and still meets permit requirements; income requirements; BRP registration; civic integration exam passed at at least language level A2 (or exemption). Application fee EUR 254.00. The IND will first check whether the long-term EU resident requirements are met; if not, it will try to extend the current permit instead.",
+  "claims": [
+    {
+      "claim_id": "nl-permanent-residence-min-years",
+      "statement": "You must have had a valid Dutch residence permit for at least 5 consecutive years to be eligible for a permanent residence permit.",
+      "value": 5,
+      "unit": "years",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nl-permanent-residence-permit-name",
+      "statement": "The official Dutch permanent residence permit is the 'verblijfsvergunning onbepaalde tijd', a permit with no end date whose residence document is valid for 5 years and renewable every 5 years.",
+      "value": 5,
+      "unit": "years",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nl-permanent-residence-current-permit-requirement",
+      "statement": "At the time of application you must hold a valid residence permit for a non-temporary residence purpose, so a temporary student residence permit does not by itself qualify.",
+      "value": 5,
+      "unit": "years",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nl-permanent-residence-language-requirement",
+      "statement": "You must have passed the civic integration exam at at least language level A2, or be exempted from it.",
+      "value": "A2",
+      "unit": "CEFR level",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nl-permanent-residence-application-fee",
+      "statement": "The application for a permanent residence permit costs € 254,00.",
+      "value": 254,
+      "unit": "EUR",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

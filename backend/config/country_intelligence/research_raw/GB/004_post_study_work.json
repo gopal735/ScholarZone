@@ -1,0 +1,46 @@
+{
+  "country": "GB",
+  "topic": "post_study_work",
+  "source_id": "govuk-graduate-visa",
+  "source_url": "https://www.gov.uk/graduate-visa",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "UK Visas and Immigration (Home Office), GOV.UK",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "A Graduate visa gives you permission to stay in the UK for at least 18 months after successfully completing an eligible course in the UK.\n\nYou must be in the UK when you apply.\n\n## Eligibility\n\nYou can apply for a Graduate visa if all of the following are true:\n\n-   you’re in the UK\n-   your current visa is a [Student visa or Tier 4 (General) student visa](/student-visa)\n-   you studied a UK bachelor’s degree, postgraduate degree or other eligible course for a minimum period of time with your Student visa or Tier 4 (General) student visa\n-   your education provider (such as your university or college) has told the Home Office you’ve successfully completed your course\n\n## How long you can stay\n\nA Graduate visa lasts for:\n\n-   2 years if you apply on or before 31 December 2026\n-   18 months if you apply on or after 1 January 2027\n\nIf you have a PhD or other doctoral qualification, it will last for 3 years.\n\nYour visa will start from the day your application is approved.\n\n### If you want to stay longer in the UK\n\nYou cannot extend your Graduate visa. However, you may be able to switch to a different visa, for example a [Skilled Worker visa](/skilled-worker-visa).",
+  "research_notes": "Route name and duration confirmed from gov.uk rather than memory, as instructed. The official route name is 'Graduate visa' (it replaced the earlier 'Tier 4 Graduate Route'); the current page shows no 'Graduate Route' label, so the 2024-25 restructuring is visible here as a straight rename plus a duration cut. The duration is now date-dependent and this must be modelled as a function of application date, not a single number: 2 years for applications on or before 31 December 2026, dropping to 18 months for applications on or after 1 January 2027, with 3 years reserved for PhD/doctoral completers. A corpus entry that hard-codes '2 years' will be wrong for any applicant applying from 2027 onward. The route cannot be extended; progression to longer stay is via Skilled Worker (see 005).",
+  "claims": [
+    {
+      "claim_id": "gb-post-study-work-1",
+      "statement": "The official UK post-study route is the 'Graduate visa', which permits at least 18 months in the UK after successfully completing an eligible course.",
+      "value": 18,
+      "unit": "months (minimum stated on overview)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "gb-post-study-work-2",
+      "statement": "A Graduate visa lasts 2 years if the application is made on or before 31 December 2026.",
+      "value": 2,
+      "unit": "years",
+      "as_of": "applications on or before 2026-12-31",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "gb-post-study-work-3",
+      "statement": "A Graduate visa lasts 18 months if the application is made on or after 1 January 2027 - a reduction from 2 years.",
+      "value": 18,
+      "unit": "months",
+      "as_of": "applications on or after 2027-01-01",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "gb-post-study-work-4",
+      "statement": "A Graduate visa lasts 3 years where the applicant holds a PhD or other doctoral qualification.",
+      "value": 3,
+      "unit": "years",
+      "as_of": "2026",
+      "study_level": "phd"
+    }
+  ]
+}

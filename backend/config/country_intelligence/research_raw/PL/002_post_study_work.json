@@ -1,0 +1,46 @@
+{
+  "country": "PL",
+  "topic": "post_study_work",
+  "source_id": "podlaski-uw-absolwent-poszukujacy-pracy",
+  "source_url": "https://www.gov.pl/web/uw-podlaski/absolwent-poszukujacy-pracy",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Podlaski Urzad Wojewodzki w Bialymstoku (Podlaskie Provincial Office), on the Polish government portal gov.pl",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "# Absolwent poszukujacy pracy\n\n## KOMU I NA JAKI OKRES MOZNA UDZIELIC ZEZWOLENIA\n\nCudzoziemcowi, ktory jest absolwentem polskiej uczelni i poszukuje w Polsce pracy lub planuje rozpoczac wykonywanie dzialalnosci gospodarczej na tym terytorium.\n\nZezwolenia na pobyt czasowy udziela sie jesli okolicznosci, ktore sa podstawa ubiegania sie o to zezwolenie, uzasadniaja pobyt cudzoziemca na terytorium Rzeczypospolitej Polskiej przez okres dluzszy niz 3 miesiace.\n\nZezwolenie na pobyt czasowy udzielane jest jednorazowo, bezposrednio po zakonczeniu studiow na okres 9 miesiecy.\n\n## TERMIN DO ZLOZENIA WNIOSKU\n\nCudzoziemiec sklada wniosek o udzielenie mu zezwolenia na pobyt czasowy elektronicznie przez portal MOS 2, nie pozniej niz w ostatnim dniu jego legalnego pobytu na terytorium Rzeczypospolitej Polskiej.\n\n## NIEZBEDNE DOKUMENTY\n\n1. Wypelniony zgodnie z pouczeniem formularz wniosku o udzielenie zezwolenia na pobyt czasowy\n2. Trzy aktualne fotografie\n3. Kopia waznego dokumentu podrozy\n\n## TYPOWE DOKUMENTY POTRZEBNE DO ROZPATRZENIA WNIOSKU\n\n1. dyplom ukonczenia polskiej uczelni\n2. dokumenty poswiadczajace posiadanie ubezpieczenia zdrowotnego w rozumieniu ustawy z dnia 27 sierpnia 2004 r. o swiadczeniach opieki zdrowotnej finansowanych ze srodkow publicznych lub potwierdzenie pokrycia przez ubezpieczyciela kosztow leczenia na terytorium Rzeczypospolitej Polskiej\n3. dokumenty potwierdzajace posiadanie wystarczajacych srodkow finansowych na pokrycie kosztow utrzymania i powrotu. Wysokosc miesiecznych srodkow finansowych, ktore cudzoziemiec posiada na pokrycie kosztow utrzymania powinna byc wyzsza niz wysokosc dochodu uprawniajacego do swiadczen pienieznych z pomocy spolecznej okreslonych w ustawie z dnia 12 marca 2004 r. o pomocy spolecznej w odniesieniu do cudzoziemca oraz kazdego czlonka rodziny pozostajacego na jego utrzymaniu (powinna przekraczac 823zl dla osob w rodzinie lub 1010 zl dla osob samotnie gospodarujacych)\n4. dokument potwierdzajacy posiadanie zapewnionego miejsca zamieszkania\n\n## Podstawa prawna\n\nArt. 186 ust. 1 pkt 6 ustawy z dnia 12 grudnia 2013 r. o cudzoziemcach wraz z aktami wykonawczymi\n\nArt. 186 ust. 1 pkt 6 ustawy o cudzoziemcach wraz z aktami wykonawczymi [Dz.U. 2013 poz. 1650]",
+  "research_notes": "Poland's post-study job-search permit: NINE MONTHS, granted ONCE, and it must be applied for DIRECTLY AFTER graduation. The page states 'Zezwolenie na pobyt czasowy udzielane jest jednorazowo, bezposrednio po zakonczeniu studiow na okres 9 miesiecy' - granted once, immediately after finishing studies, for 9 months.\n\nBACHELOR LEVEL IS EXPLICITLY COVERED. The eligibility text reads 'Cudzoziemcowi, ktory jest absolwentem polskiej uczelni' - a foreigner who is a graduate of a Polish higher education institution. It does not restrict to Master's, and the supporting document required is 'dyplom ukonczenia polskiej uczelni' without level restriction. So unlike Sweden's second-cycle-only permit, Poland's is open at Bachelor's.\n\nTWO CONDITIONS WORTH FLAGGING FOR A FIRST-YEAR MODEL, both on this page. First, the nine months cannot be banked: the application must go in 'nie pozniej niz w ostatnim dniu jego legalnego pobytu', i.e. no later than the last day of lawful stay, so a student who defers has no deferred job-search window. Second, a proof of an arranged place of residence in Poland is required even though the permit is for job hunting.\n\nFINANCIAL THRESHOLD, recorded because the brief's financial-proof topic needs it and this page carries a specific Polish figure. The monthly funds must exceed the social-assistance income threshold: 'powinna przekraczac 823zl dla osob w rodzinie lub 1010 zl dla osob samotnie gospodarujacych'. Note the direction is EXCEED, not 'at least', so PLN 823/PLN 1,010 are floors to clear, not the required amounts. The underlying amounts are defined by the 2004 social assistance statute rather than set on this page.\n\nThe figure is attributed to one provincial office page (Podlaskie). I did not fetch a second voivodeship office or the UDSC central page, so while gov.pl is the authoritative national portal, I record this as a single-office statement of the national rule. Note also that the udsc page I fetched returned navigation only with no article body, so I could not corroborate there.\n\nLEGAL BASIS, quoted: 'Art. 186 ust. 1 pkt 6 ustawy z dnia 12 grudnia 2013 r. o cudzoziemcach'. Recorded so the corpus can point at the statute.",
+  "claims": [
+    {
+      "claim_id": "pl-poststudy-duration-1",
+      "statement": "Poland grants a foreigner who graduated from a Polish higher education institution a temporary residence permit for job-seeking or business formation for a period of 9 months.",
+      "value": 9,
+      "unit": "months",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "pl-poststudy-once-only-1",
+      "statement": "The Polish graduate job-search temporary residence permit is granted only once, directly after completion of studies.",
+      "value": 1,
+      "unit": "times the permit may be granted",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "pl-poststudy-timing-1",
+      "statement": "The application must be submitted no later than the last day of the applicant's lawful stay in Poland.",
+      "value": 0,
+      "unit": "days of slack after last day of lawful stay",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "pl-poststudy-permit-name-1",
+      "statement": "The official name is a temporary residence permit (zezwolenie na pobyt czasowy) on the ground of being a graduate of a Polish institution seeking work, under Article 186(1)(6) of the Act of 12 December 2013 on Aliens.",
+      "value": "tymczasowe zezwolenie na pobyt - absolwent polskiej uczelni poszukujacy pracy (art. 186 ust. 1 pkt 6 ustawy o cudzoziemcach)",
+      "unit": "official permit name and legal basis",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

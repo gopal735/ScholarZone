@@ -1,0 +1,14 @@
+{
+  "country": "US",
+  "topic": "student_visa_financial_proof",
+  "raw_status": "UNAVAILABLE",
+  "reason": "The United States has no federal proof-of-funds threshold for an F or M student visa. No federal figure was found on any government page I fetched. What is published is institution-specific: the Form I-20 is completed by the school, and the school certifies its own estimate of cost. The closest official document I could fetch confirms the opposite point — the Department of State directs students to the SEVP-approved school for the first step and to the SEVIS I-901 fee, with no money threshold stated — while the university pages I fetched state their own required total budget (for example Michigan Tech's USD 63,019 non-resident annual total, which is that institution's estimate, not a national requirement). Any specific I-20 amount must therefore be attributed to a named university rather than to the US government, and I did not fetch a university page that publishes a dedicated 'proof of funds' number separate from its cost-of-attendance budget. travel.state.gov returned HTTP 403 to every request, so the Department of State's student-visa document list could not be read directly.",
+  "attempted_sources": [
+    "https://travel.state.gov/content/travel/en/us-visas/study/student-visa.html",
+    "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/fees/fees-visa-services.html",
+    "https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/optional-practical-training-opt-for-f-1-students",
+    "https://www.ice.gov/sevis/i901",
+    "https://www.mtu.edu/admissions/financial/tuition/"
+  ],
+  "checked_at": "2026-10-05"
+}
