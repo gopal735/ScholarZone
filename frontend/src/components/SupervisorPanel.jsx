@@ -22,6 +22,7 @@
  */
 
 import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useAuth } from '../hooks/useAuth'
 import {
   SupervisorAuthRequired,
   fetchEmailDraft,
@@ -351,11 +352,22 @@ function ProfessorCard({ professor, onTrack, tracked }) {
  * 401 here is the ordinary signed-out case and renders an invitation to sign in
  * rather than an error. */
 function OutreachTracker({ scholarshipId, trackedIds, onChanged }) {
+  const { user } = useAuth()
   const [state, setState] = useState('loading')
   const [records, setRecords] = useState([])
   const [error, setError] = useState(null)
+  const signedIn = Boolean(user)
 
   useEffect(() => {
+    // A public scholarship page must not fire authenticated requests at a
+    // visitor who has not signed in. Doing so produced a 401 on every public
+    // detail page — harmless to correctness, but console noise on the most
+    // visited surface in the product, and a request the server can only refuse.
+    // The signed-out view is derived during render rather than assigned here, so
+    // the effect does no synchronous state write.
+    if (!signedIn) {
+      return undefined
+    }
     const controller = new AbortController()
     fetchOutreach({ signal: controller.signal })
       .then((result) => {
@@ -374,7 +386,11 @@ function OutreachTracker({ scholarshipId, trackedIds, onChanged }) {
     return () => controller.abort()
     // trackedIds changes when this panel saves a record, which is exactly when
     // the list needs re-reading.
-  }, [scholarshipId, trackedIds])
+  }, [scholarshipId, trackedIds, signedIn])
+
+  // Derived, not assigned: a signed-out visitor is in this state from the first
+  // render, so the invitation is never preceded by a loading flash.
+  const effectiveState = signedIn ? state : 'signed-out'
 
   const advance = useCallback(
     async (record, nextStatus) => {
@@ -400,21 +416,21 @@ function OutreachTracker({ scholarshipId, trackedIds, onChanged }) {
     [onChanged],
   )
 
-  if (state === 'signed-out') {
+  if (effectiveState === 'signed-out') {
     return (
       <p className="sz-supervisor-panel__state">
         Sign in to prepare an email and keep a private record of who you contacted.
       </p>
     )
   }
-  if (state === 'loading') {
+  if (effectiveState === 'loading') {
     return (
       <p className="sz-supervisor-panel__state" aria-live="polite">
         Loading your outreach for this scholarship…
       </p>
     )
   }
-  if (state === 'error') {
+  if (effectiveState === 'error') {
     return (
       <p className="sz-supervisor-panel__state sz-supervisor-panel__state--error" role="alert">
         {error}

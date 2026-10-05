@@ -13,9 +13,22 @@
  */
 
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
+import { AuthProvider } from '../context/AuthContext.jsx'
 import SupervisorPanel from './SupervisorPanel'
+
+/* Renders the panel inside the provider the application always mounts, and
+   the provider tree the application actually mounts. The visitor's session is
+   decided by what the fetch mock answers for /auth/me, so a test declares it
+   there rather than here. */
+function renderPanel(props) {
+  return render(
+    <AuthProvider>
+      <SupervisorPanel {...props} />
+    </AuthProvider>,
+  )
+}
 
 function coverageResponse({
   status = 'verified_supervisors',
@@ -70,8 +83,20 @@ function professor(overrides = {}) {
   }
 }
 
-function mockFetch(handler) {
-  const spy = vi.fn(handler)
+function mockFetch(handler, { signedIn = false } = {}) {
+  const spy = vi.fn(async (url, options) => {
+    if (String(url).includes('/auth/me')) {
+      if (!signedIn) {
+        return { ok: false, status: 401, json: async () => ({ detail: 'Authentication required.' }) }
+      }
+      return {
+        ok: true,
+        status: 200,
+        json: async () => ({ user: { id: 1, email: 'student@example.com', full_name: 'Student' } }),
+      }
+    }
+    return handler(url, options)
+  })
   globalThis.fetch = spy
   return spy
 }
@@ -87,7 +112,7 @@ describe('SupervisorPanel states', () => {
       coverageResponse({ status: 'no_verified_supervisor_found', count: 0, supervisors: [] }),
     )
 
-    render(<SupervisorPanel scholarshipId={7} />)
+    renderPanel({ scholarshipId: 7 })
 
     const message = await screen.findByText(/No verified supervisors found yet/i)
     expect(message).toBeTruthy()
@@ -100,7 +125,7 @@ describe('SupervisorPanel states', () => {
       coverageResponse({ status: 'search_pending', count: 0, pending: true, supervisors: [] }),
     )
 
-    render(<SupervisorPanel scholarshipId={7} />)
+    renderPanel({ scholarshipId: 7 })
 
     expect(await screen.findByText(/has not been completed/i)).toBeTruthy()
     expect(screen.queryByText(/No verified supervisors found yet/i)).toBeNull()
@@ -109,7 +134,7 @@ describe('SupervisorPanel states', () => {
   it('reports a blocked source as a temporary access problem', async () => {
     mockFetch(async () => coverageResponse({ status: 'source_blocked', count: 0, supervisors: [] }))
 
-    render(<SupervisorPanel scholarshipId={7} />)
+    renderPanel({ scholarshipId: 7 })
 
     const message = await screen.findByText(/could not be reached for verification/i)
     expect(message).toBeTruthy()
@@ -124,7 +149,7 @@ describe('SupervisorPanel states', () => {
       coverageResponse({ status: 'source_requires_rendering', count: 0, supervisors: [] }),
     )
 
-    render(<SupervisorPanel scholarshipId={7} />)
+    renderPanel({ scholarshipId: 7 })
 
     const message = await screen.findByText(/only after the page loads in a browser/i)
     expect(message).toBeTruthy()
@@ -135,7 +160,7 @@ describe('SupervisorPanel states', () => {
   it('reports a hidden relationship awaiting official confirmation', async () => {
     mockFetch(async () => coverageResponse({ status: 'needs_verification', count: 0, supervisors: [] }))
 
-    render(<SupervisorPanel scholarshipId={7} />)
+    renderPanel({ scholarshipId: 7 })
 
     expect(await screen.findByText(/only on secondary sources/i)).toBeTruthy()
     expect(screen.queryByText(/No verified supervisors found yet/i)).toBeNull()
@@ -161,7 +186,7 @@ describe('SupervisorPanel states', () => {
       }),
     )
 
-    render(<SupervisorPanel scholarshipId={7} />)
+    renderPanel({ scholarshipId: 7 })
 
     expect(await screen.findByText('Dr Ada Lovelace')).toBeTruthy()
     // Scoped to the badge: the panel heading also contains these words, and an
@@ -180,7 +205,7 @@ describe('SupervisorPanel states', () => {
       coverageResponse({ count: 1, supervisors: [professor()] }),
     )
 
-    const { container } = render(<SupervisorPanel scholarshipId={7} />)
+    const { container } = renderPanel({ scholarshipId: 7 })
     await screen.findByText('Dr Ada Lovelace')
 
     const text = container.textContent.toLowerCase()
@@ -192,7 +217,7 @@ describe('SupervisorPanel states', () => {
   it('surfaces an error state rather than an empty panel', async () => {
     mockFetch(async () => ({ ok: false, status: 500, json: async () => ({ detail: 'boom' }) }))
 
-    render(<SupervisorPanel scholarshipId={7} />)
+    renderPanel({ scholarshipId: 7 })
 
     expect(await screen.findByRole('alert')).toBeTruthy()
     expect(screen.getByText(/unavailable right now/i)).toBeTruthy()
@@ -201,7 +226,7 @@ describe('SupervisorPanel states', () => {
   it('shows a loading state before any response arrives', () => {
     mockFetch(() => new Promise(() => {}))
 
-    render(<SupervisorPanel scholarshipId={7} />)
+    renderPanel({ scholarshipId: 7 })
 
     expect(screen.getByText(/Looking for published faculty information/i)).toBeTruthy()
   })
@@ -216,12 +241,14 @@ describe('SupervisorPanel states', () => {
       return coverageResponse({ count: 1, supervisors: [professor()] })
     })
 
-    render(<SupervisorPanel scholarshipId={7} />)
+    renderPanel({ scholarshipId: 7 })
 
     expect(await screen.findByText('Dr Ada Lovelace')).toBeTruthy()
-    await waitFor(() => {
-      expect(screen.getByText(/Sign in to prepare an email/i)).toBeTruthy()
-    })
+    // Signed out: the panel renders the public list unchanged and invites the
+    // visitor to sign in, without asking the server for private records.
+    // The auth provider gates its children until the session check settles, so
+    // this waits rather than asserting on the first render.
+    expect(await screen.findByText(/Sign in to prepare an email/i)).toBeTruthy()
   })
 
   it('does not render a professor whose email is stored but unverified', async () => {
@@ -232,7 +259,7 @@ describe('SupervisorPanel states', () => {
       }),
     )
 
-    render(<SupervisorPanel scholarshipId={7} />)
+    renderPanel({ scholarshipId: 7 })
     await screen.findByText('Dr Ada Lovelace')
 
     expect(screen.queryByText('guess@uni1.edu')).toBeNull()
