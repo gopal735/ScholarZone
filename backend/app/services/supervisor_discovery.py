@@ -65,6 +65,7 @@ from .supervisor_person import (
     academic_role_in,
     classify_person_candidate,
     looks_like_a_person_name,
+    role_words_are_the_whole_name,
 )
 from .supervisor_status import (
     AvailabilityScope,
@@ -897,21 +898,29 @@ def timedelta_days(days: int):
 def _verification_status_for(candidate: FacultyCandidate) -> str:
     """Return the relationship status a freshly discovered candidate earns.
 
-    ``has_role_evidence`` is the deciding field: it is true when an academic role
-    was stated by the institution, on the listing or on the profile. Directory
+    Two conditions, and both are necessary.
+
+    **A role was stated.** ``has_role_evidence`` is true when the institution
+    stated an academic role, on the listing or on the profile. Directory
     structure alone is a weaker signal and earns ``UNVERIFIED``.
 
-    In practice the storage gate in :func:`discover_for_scholarship` means only
-    candidates with role evidence reach this function, so it returns VERIFIED. The
-    indirection is kept deliberately: it is the single place where evidence strength
-    is turned into a verification decision, so there is one thing to read when
-    asking whether a weak signal can promote itself.
+    **The name is a person and not the role restated.** A label like "Academic
+    Staff" states a role and names a collective. It satisfies the first condition
+    and evidences no individual, so consulting only that condition promoted two
+    navigation links on the real Cornell directory into verified professors. The
+    second condition asks whether anything person-shaped survives removing the
+    role from the name; for "Rachit Agarwal Professor" that is "Rachit Agarwal",
+    and for "Academic Staff" it is one token that is not a name.
+
+    Both live here rather than in the caller so this stays the single place where
+    evidence strength becomes a verification decision. There is one thing to read
+    when asking whether a weak signal can promote itself.
     """
-    return (
-        str(RelationshipVerificationStatus.VERIFIED)
-        if candidate.has_role_evidence
-        else str(RelationshipVerificationStatus.UNVERIFIED)
-    )
+    if not candidate.has_role_evidence:
+        return str(RelationshipVerificationStatus.UNVERIFIED)
+    if role_words_are_the_whole_name(candidate.name, candidate.role):
+        return str(RelationshipVerificationStatus.UNVERIFIED)
+    return str(RelationshipVerificationStatus.VERIFIED)
 
 
 def _persist_candidates(
@@ -953,6 +962,19 @@ def _persist_candidates(
         if not candidate.has_role_evidence:
             logger.info(
                 "Skipping candidate without a stated academic role: %s (%s)",
+                candidate.name,
+                candidate.profile_url,
+            )
+            continue
+        # Second gate, on the name itself. The check above asks whether a role was
+        # stated; this asks whether the name is anything more than that role restated
+        # as a label - "Academic Staff" says a role and names a collective, not a
+        # person, and a link that does so evidences nobody. Belt and braces rather
+        # than redundancy: classify_person_candidate already refuses these, so this
+        # catches a candidate built by any other path, including a future one.
+        if role_words_are_the_whole_name(candidate.name, candidate.role):
+            logger.info(
+                "Skipping candidate whose name is only the role restated: %s (%s)",
                 candidate.name,
                 candidate.profile_url,
             )
