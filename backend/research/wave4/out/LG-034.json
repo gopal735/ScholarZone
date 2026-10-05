@@ -1,0 +1,295 @@
+{
+  "shard_id": "LG-034",
+  "agent_completed": true,
+  "topic": "logo",
+  "records": [
+    {
+      "scholarship_id": 86,
+      "title": "Donald A. Wehrung International Student Award (UBC International Scholars Program)",
+      "outcome": "not_found",
+      "image_url": null,
+      "image_source_url": null,
+      "image_source_type": null,
+      "image_kind": null,
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": false,
+        "accessible": false,
+        "not_favicon": false,
+        "not_ui": false,
+        "not_social": false,
+        "not_third_party": false,
+        "identity_match": false,
+        "notes": "The award has no dedicated brand mark, and no provable official logo asset could be fetched. The record's official_source_url returns HTTP 404. The award exists only as an accordion panel on the official International Scholars Programme page (verified: 'Donald A. Wehrung International Student Award'), which carries no programme logo - its only images are a news photograph (ISI-2019-096-YARA9377.jpg), a cropped favicon, and FontAwesome UI icons. UBC's official brand-asset page (brand.ubc.ca) is behind a 'Browser Verification | UBC Cybersecurity' JavaScript challenge and could not be fetched with either fetcher, so no official logo file URL on brand.ubc.ca or assets.brand.ubc.ca can be proven (the only reachable asset there is a PDF rulebook, not an image). Per section 7, favicon/cropped-favicon, UI icon and spritesheet candidates are rejected outright, and an unprovable URL must stay null."
+      },
+      "source": {
+        "url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars",
+        "publisher": "The University of British Columbia (UBC Undergraduate Programs and Admissions)",
+        "retrieved_at": "2026-10-05T15:34:38Z",
+        "raw_extract": "<span class=\"accordion-title\">Donald A. Wehrung International Student Award</span>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars/donald-a-wehrung-international-student-award",
+        "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars",
+        "https://you.ubc.ca/",
+        "https://www.ubc.ca/",
+        "https://ok.ubc.ca/",
+        "https://brand.ubc.ca/",
+        "https://brand.ubc.ca/guidelines/downloads/logos-signatures-and-visual-identity-assets",
+        "https://assets.brand.ubc.ca/",
+        "https://www.ubc.ca/brand/"
+      ],
+      "rejected": [
+        {
+          "url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars/donald-a-wehrung-international-student-award",
+          "reason": "official_source_url returned HTTP 404 - the per-award page does not exist, so it yields no asset"
+        },
+        {
+          "url": "https://you.ubc.ca/wp-content/uploads/2021/10/cropped-ubc-favicon-270x270.png",
+          "reason": "favicon (WordPress cropped favicon) - explicitly rejected by section 7"
+        },
+        {
+          "url": "https://you.ubc.ca/wp-content/plugins/hcaptcha-for-forms-and-more/assets/images/hcaptcha-div-logo-white.svg",
+          "reason": "third-party CAPTCHA widget UI chrome, not a UBC brand mark"
+        },
+        {
+          "url": "https://you.ubc.ca/wp-content/uploads/2025/04/globe-stand-solid.svg",
+          "reason": "FontAwesome UI icon used as decorative list art, not a logo or brand mark"
+        },
+        {
+          "url": "https://cdn.ubc.ca/clf/7.0.3/img/ubc7-clf-sprite-blue.png",
+          "reason": "CLF spritesheet - explicitly rejected by section 7"
+        },
+        {
+          "url": "https://cdn.ubc.ca/clf/7.0.3/img/favicon.ico",
+          "reason": "favicon - explicitly rejected by section 7"
+        },
+        {
+          "url": "https://okmain.cms.ok.ubc.ca/wp-content/uploads/sites/26/2024/05/Instagram-Social-icon-RGB.72dpi-SecondaryBlue.png",
+          "reason": "social media icon on a UBC subdomain - explicitly rejected by section 7"
+        },
+        {
+          "url": "https://brand.ubc.ca/guidelines/downloads/logos-signatures-and-visual-identity-assets",
+          "reason": "official UBC brand page but unreachable: served 'Browser Verification | UBC Cybersecurity' JS challenge instead of content, so no asset URL could be verified"
+        },
+        {
+          "url": "https://assets.brand.ubc.ca/downloads/ubc_logo_rules.pdf",
+          "reason": "reachable (HTTP 200) but is a PDF rulebook, not an image asset; logo-in-document is not a usable brand asset URL"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 296,
+      "title": "International Visegrad Fund Fellowships and Scholarships (V4 mobility)",
+      "outcome": "recovered",
+      "image_url": "https://media.visegradfund.org/images/vf_logo_midnightblue.svg",
+      "image_source_url": "https://media.visegradfund.org/",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Asset is served from the International Visegrad Fund's own media-library subdomain (media.visegradfund.org), where it is the masthead 'Visegrad Fund' logo. Fetched successfully: HTTP 200, Content-Type image/svg+xml, 116x53 vector viewBox, midnight-blue (#0F3250) fill. Identity cross-checked two ways: (a) the SVG's path data is byte-identical to the VF logotype embedded in the masthead and footer of www.visegradfund.org; (b) the Fund's own brand page https://www.visegradfund.org/about-us/logo publishes the same mark as 'VF-logotype-blue/grey/black/white.pdf'. The record is an International Visegrad Fund programme (official_source_url https://www.visegradfund.org/scholarships), so the Fund's own logotype is the correct brand mark. Only PDFs/ZIP/7z are offered on the /about-us/logo page (and those proxy to the third-party host data.eu.cntmbr.com), so the media-library SVG is used as the directly renderable official asset."
+      },
+      "source": {
+        "url": "https://media.visegradfund.org/",
+        "publisher": "International Visegrad Fund",
+        "retrieved_at": "2026-10-05T15:34:38Z",
+        "raw_extract": "![Visegrad Fund](images/vf_logo_midnightblue.svg) - masthead image on the official International Visegrad Fund Media Library",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.visegradfund.org/scholarships",
+        "https://www.visegradfund.org/about-us/logo",
+        "https://media.visegradfund.org/"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.visegradfund.org/favicon.ico",
+          "reason": "favicon - explicitly rejected by section 7"
+        },
+        {
+          "url": "https://www.visegradfund.org/favicon-32x32.png",
+          "reason": "favicon-sized badge - explicitly rejected by section 7"
+        },
+        {
+          "url": "https://www.visegradfund.org/og-default.png",
+          "reason": "Open Graph social share image (decorative hero art), not a logo asset - explicitly rejected by section 7"
+        },
+        {
+          "url": "https://www.facebook.com/tr?id=982215793546581&ev=PageView&noscript=1",
+          "reason": "Facebook tracking pixel - explicitly rejected by section 7"
+        },
+        {
+          "url": "https://www.visegradfund.org/api/download?url=https%3A%2F%2Fdata.eu.cntmbr.com%2Fvisegrad%2Fvisegrad%2Fcc37a88e-113a-47c1-9518-395a9f78090b.pdf&name=VF-logotype-blue.pdf",
+          "reason": "official VF logotype, but it is a PDF and the underlying asset sits on the third-party content host data.eu.cntmbr.com (cntmbr), not the official domain"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 327,
+      "title": "Visegrad Scholarship Program 2027",
+      "outcome": "recovered",
+      "image_url": "https://media.visegradfund.org/images/vf_logo_midnightblue.svg",
+      "image_source_url": "https://media.visegradfund.org/",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Same official asset as record 296, which is correct: the Visegrad Scholarship Program is administered by the International Visegrad Fund and the Fund operates no separate programme logo. Verified against the record's own official_source_url https://www.visegradfund.org/visegrad-scholarship-program-apply ('# Visegrad Scholarship Program', 'Opens on Jan 1, 2027 at 12:00 PM'), and the logo page https://www.visegradfund.org/about-us/logo publishes the same logotype. Fetched asset: HTTP 200, image/svg+xml, 116x53, fill #0F3250, path data identical to the VF logotype in the www.visegradfund.org masthead/footer."
+      },
+      "source": {
+        "url": "https://media.visegradfund.org/",
+        "publisher": "International Visegrad Fund",
+        "retrieved_at": "2026-10-05T15:34:38Z",
+        "raw_extract": "![Visegrad Fund](images/vf_logo_midnightblue.svg) - masthead image on the official International Visegrad Fund Media Library",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.visegradfund.org/visegrad-scholarship-program-apply",
+        "https://www.visegradfund.org/scholarships",
+        "https://www.visegradfund.org/about-us/logo",
+        "https://media.visegradfund.org/"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.visegradfund.org/favicon.ico",
+          "reason": "favicon - explicitly rejected by section 7"
+        },
+        {
+          "url": "https://www.visegradfund.org/og-default.png",
+          "reason": "Open Graph social share image (decorative hero art), not a logo asset - explicitly rejected by section 7"
+        },
+        {
+          "url": "https://www.facebook.com/tr?id=982215793546581&ev=PageView&noscript=1",
+          "reason": "Facebook tracking pixel - explicitly rejected by section 7"
+        },
+        {
+          "url": "https://www.visegradfund.org/api/download?url=https%3A%2F%2Fdata.eu.cntmbr.com%2Fvisegrad%2Fvisegrad%2F2df4915c-05cd-4cc1-9aa0-d55389b970ab.pdf&name=VF-logotype-black.pdf",
+          "reason": "official VF logotype, but a PDF hosted on the third-party content host data.eu.cntmbr.com (cntmbr), not a renderable official-domain image"
+        },
+        {
+          "url": "https://www.visegradfund.org/api/download?url=https%3A%2F%2Fdata.eu.cntmbr.com%2Fvisegrad%2Fvisegrad%2Fc9cc968d-2319-453d-9d71-d896ea2f0a4b.7z&name=Logo_formats.7z",
+          "reason": "archive bundle, not a single image asset"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 600,
+      "title": "Becas Colombia Biodiversa - Fondo de Becas Colombia Biodiversa, Convocatoria II-2026",
+      "outcome": "recovered",
+      "image_url": "https://www.faae.org.co/colombiabiodiversa/wp-content/uploads/2025/09/Becas-Colombia-Biodiversa-logo.svg",
+      "image_source_url": "https://www.faae.org.co/colombiabiodiversa/instrucciones-para-la-aplicacion",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "The record's own official_source_url renders the Becas Colombia Biodiversa programme masthead logo as the first element of the page (alt text 'Becas Colombia Biodiversa', linked to the programme home /colombiabiodiversa/). The asset lives on the funding foundation's own domain www.faae.org.co under its own programme path, so it is not a shared-CDN / unrelated-department case. Fetched successfully: HTTP 200, XML/SVG, viewBox 0 0 363.94 107.41, outlines spelling 'BECAS COLOMBIA BIODIVERSA' plus the '20 anos' anniversary mark - identity matches the record title exactly and the page confirms 'Convocatoria II-2026 abierta'. The foundation's separate FAAE-W.svg mark was not used because it is the parent foundation's logo, not this scholarship programme's mark."
+      },
+      "source": {
+        "url": "https://www.faae.org.co/colombiabiodiversa/instrucciones-para-la-aplicacion",
+        "publisher": "Fundacion Alejandro Angel Escobar (FAAE) - Becas Colombia Biodiversa",
+        "retrieved_at": "2026-10-05T15:34:38Z",
+        "raw_extract": "[![Becas Colombia Biodiversa](https://www.faae.org.co/colombiabiodiversa/wp-content/uploads/2025/09/Becas-Colombia-Biodiversa-logo.svg)](/colombiabiodiversa/) ... #### Convocatoria II-2026 abierta",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.faae.org.co/colombiabiodiversa/instrucciones-para-la-aplicacion",
+        "https://www.faae.org.co/colombiabiodiversa/wp-content/uploads/2025/09/Becas-Colombia-Biodiversa-logo.svg"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.faae.org.co/colombiabiodiversa/wp-content/uploads/2026/07/COLBIO-2026-ABIERTA-2000-x-600.webp",
+          "reason": "programme call-for-applications hero/banner art - explicitly rejected by section 7"
+        },
+        {
+          "url": "https://www.faae.org.co/colombiabiodiversa/wp-content/uploads/2024/11/Becas_banner_I-2025_1200-630-1.jpg",
+          "reason": "older call banner artwork, not a logo - explicitly rejected by section 7"
+        },
+        {
+          "url": "https://www.faae.org.co/colombiabiodiversa/wp-content/uploads/2025/09/ico-facebook.svg",
+          "reason": "social media icon - explicitly rejected by section 7"
+        },
+        {
+          "url": "https://www.faae.org.co/colombiabiodiversa/wp-content/uploads/2024/12/whatsapp-logo.svg",
+          "reason": "third-party (WhatsApp) brand mark for a chat widget - explicitly rejected by section 7"
+        },
+        {
+          "url": "https://www.faae.org.co/colombiabiodiversa/wp-content/uploads/2025/09/FAAE-W.svg",
+          "reason": "parent foundation's logo, not the Becas Colombia Biodiversa programme mark (identity mismatch for this record)"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 682,
+      "title": "Nazarbayev University Financial Aid and Scholarships for International Applicants — Foundation Year and Undergraduate programmes (2027–2028 cycle)",
+      "outcome": "recovered",
+      "image_url": "https://nu.edu.kz/wp-content/uploads/2025/05/logo_nu1.svg",
+      "image_source_url": "https://nu.edu.kz/admissions/how-to-apply/foundation-undergraduate/financial-aid-end-scholarships",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "The record's official_source_url renders the Nazarbayev University wordmark lockup in its page footer, immediately above the copyright line '© Nazarbayev University / Republic of Kazakhstan, Astana city, 53 Kabanbay Batyr Ave.' - i.e. it is used as the university's own brand mark on the official page. Fetched successfully: HTTP 200, Content-Type image/svg+xml, width 180 / height 41 vector lockup on the official nu.edu.kz domain. Identity matches the record (NU financial aid & scholarships page, 'Foundation & Undergraduate ... Financial aid & Scholarships', 2027-2028 cycle: 'Final Certificates issued in 2025 and 2026 are accepted for admission to the 2027–2028 academic year'). Not a favicon, not a UI icon, not social art, not third-party."
+      },
+      "source": {
+        "url": "https://nu.edu.kz/admissions/how-to-apply/foundation-undergraduate/financial-aid-end-scholarships",
+        "publisher": "Nazarbayev University (NU)",
+        "retrieved_at": "2026-10-05T15:34:38Z",
+        "raw_extract": "![](https://nu.edu.kz/wp-content/uploads/2025/05/logo_nu1.svg) © Nazarbayev University / Republic of Kazakhstan, Astana city, 53 Kabanbay Batyr Ave.",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://nu.edu.kz/admissions/how-to-apply/foundation-undergraduate/financial-aid-end-scholarships",
+        "https://nu.edu.kz/wp-content/uploads/2025/05/logo_nu1.svg",
+        "https://nu.edu.kz/wp-content/uploads/2025/04/789-1-1.png"
+      ],
+      "rejected": [
+        {
+          "url": "https://nu.edu.kz/wp-content/uploads/2025/04/i_square_home.svg",
+          "reason": "UI icon (home button) in the page navigation - explicitly rejected by section 7"
+        },
+        {
+          "url": "https://nu.edu.kz/wp-content/uploads/2025/07/dup_arr.png",
+          "reason": "UI chevron/arrow icon used in breadcrumbs - explicitly rejected by section 7"
+        },
+        {
+          "url": "https://nu.edu.kz/wp-content/uploads/2025/04/i_page_to_top.svg",
+          "reason": "UI scroll-to-top icon - explicitly rejected by section 7"
+        },
+        {
+          "url": "https://drive.google.com/file/d/1FR42DTXA5QXHDY_4OSABFqimZxRsWD6M/view?usp=drive_link",
+          "reason": "NU Brochure on third-party Google Drive - third-party host, not an official domain"
+        }
+      ]
+    }
+  ]
+}

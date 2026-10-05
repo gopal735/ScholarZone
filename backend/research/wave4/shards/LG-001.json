@@ -1,0 +1,55 @@
+{
+  "shard_id": "LG-001",
+  "topic": "logo",
+  "hosts": [
+    "www.a-star.edu.sg"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 35,
+      "title": "SINGA Scholarship (Singapore)",
+      "official_source": "Agency for Science, Technology and Research (A*STAR)",
+      "official_source_url": "https://www.a-star.edu.sg/Scholarships/for-graduate-studies/singa-award",
+      "catalogue_url": null,
+      "country": "Singapore",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 101,
+      "title": "A*STAR Graduate Scholarship (AGS)",
+      "official_source": "Agency for Science, Technology and Research (A*STAR), A*STAR Graduate Academy",
+      "official_source_url": "https://www.a-star.edu.sg/scholarships/home/scholarships/ags--scholarship",
+      "catalogue_url": "https://www.a-star.edu.sg/scholarships",
+      "country": "Singapore",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 437,
+      "title": "A*STAR International Fellowship (AIF)",
+      "official_source": "Agency for Science, Technology and Research (A*STAR), A*STAR Graduate Academy",
+      "official_source_url": "https://www.a-star.edu.sg/scholarships/home/scholarships/astar-international-fellowship",
+      "catalogue_url": "https://www.a-star.edu.sg/scholarships",
+      "country": "Singapore",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 438,
+      "title": "National Science Scholarship (PhD)",
+      "official_source": "A Star University Sg",
+      "official_source_url": "https://www.a-star.edu.sg/scholarships/home/scholarships/national-science-scholarship-(phd)",
+      "catalogue_url": "https://www.a-star.edu.sg/scholarships",
+      "country": "Singapore",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 530,
+      "title": "National Science Scholarship (PhD)",
+      "official_source": "Agency for Science, Technology and Research (A*STAR), A*STAR Graduate Academy",
+      "official_source_url": "https://www.a-star.edu.sg/scholarships/home/scholarships/national-science-scholarship-%28phd%29",
+      "catalogue_url": null,
+      "country": "Singapore",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

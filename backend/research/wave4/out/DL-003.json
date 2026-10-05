@@ -1,0 +1,320 @@
+{
+  "shard_id": "DL-003",
+  "agent_completed": true,
+  "topic": "deadline",
+  "records": [
+    {
+      "scholarship_id": 106,
+      "title": "Nanyang Global Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "The scholarship application period is the same as the admission application period. Applications submitted after the closing date will not be considered.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.ntu.edu.sg/admissions/undergraduate/scholarships/scholarship-opportunities/detail/nanyang-scholarship",
+        "source_type": "official_scholarship_page",
+        "publisher": "Nanyang Technological University (NTU), Office of Admissions",
+        "retrieved_at": "2026-10-05T15:40:00Z",
+        "as_of": null,
+        "raw_extract": "Applicants with Year 12 equivalent results: 1. Click here to apply for the scholarship with your assigned application number before the application closing date for that qualification. The scholarship application period is the same as the admission application period. Applications submitted after the closing date will not be considered.",
+        "exact_deadline_wording": "The scholarship application period is the same as the admission application period. Applications submitted after the closing date will not be considered.",
+        "confidence": "HIGH",
+        "notes": "The award's own official page states no calendar date at all; it delegates the closing date to the NTU admission application closing date 'for that qualification'. I fetched the official NTU Important dates page (https://www.ntu.edu.sg/admissions/undergraduate/important-dates) and it publishes four DIFFERENT scholarship application closing dates depending on the applicant's qualification route: Singapore-Cambridge GCE 'A' Levels 'by 19 March 2027'; Diploma awarded by a Polytechnic 'by 21 February 2027'; International Baccalaureate 'by 19 March 2027'; NUS High School Diploma 'by 20 January 2027'. Because the single record cannot hold one of these without inventing which qualification applies, no date is written. This is a multi-route scheme, not a source conflict. I did not pick the earliest, latest, or any other date."
+      },
+      "field_mapping": {
+        "deadline_date": "no write - multiple qualification-specific closing dates published, none selected",
+        "deadline_precision": "unknown",
+        "deadline_display": "The scholarship application period is the same as the admission application period. Applications submitted after the closing date will not be considered."
+      },
+      "official_dates_observed_not_written": {
+        "why": "Each date below is verbatim from the official NTU Important dates page but applies only to the named qualification route, so none of them is a deadline for the award as a whole.",
+        "page": "https://www.ntu.edu.sg/admissions/undergraduate/important-dates",
+        "entries": [
+          {
+            "route": "Singapore Cambridge GCE 'A' Levels",
+            "verbatim": "Scholarship Application / Online Application / by 19 March 2027; Submission of photograph and appraisal form / by 26 March 2027"
+          },
+          {
+            "route": "Diploma awarded by a Polytechnic or equivalent institution in Singapore",
+            "verbatim": "Scholarship Application / Online Application / by 21 February 2027; Submission of photograph and appraisal form / by 28 February 2027"
+          },
+          {
+            "route": "International Baccalaureate",
+            "verbatim": "Application for Scholarships / Online application / by 19 March 2027; Submission of photograph and appraisal form / by 26 March 2027"
+          },
+          {
+            "route": "NUS High School Diploma",
+            "verbatim": "Application for Scholarships / Online application / by 20 January 2027; Submission of photograph and appraisal form / by 27 January 2027"
+          }
+        ]
+      },
+      "examined": [
+        "https://www.ntu.edu.sg/admissions/undergraduate/scholarships/scholarship-opportunities/detail/nanyang-scholarship",
+        "https://www.ntu.edu.sg/admissions/undergraduate/important-dates"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.ntu.edu.sg/admissions/undergraduate/important-dates",
+          "reason": "Not used as the value source: it is an admissions page and per brief section 5 an admissions deadline for a different programme cannot be written as the scholarship deadline. Consulted only to enumerate the qualification-specific scholarship deadlines; three different closing dates prevent a single-record write."
+        },
+        {
+          "url": "https://www.ntu.edu.sg/about-us/sustainability/sustainability-education/undergraduate-programmes",
+          "reason": "Catalogue URL from the shard; a sustainability-education listing page with no scholarship deadline. Not fetched for this purpose."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 107,
+      "title": "Nanyang President's Graduate Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "The application period for Academic Year 2027-2028 will be announced in due course.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.ntu.edu.sg/admissions/graduate/financialmatters/scholarships/npgs",
+        "source_type": "official_scholarship_page",
+        "publisher": "Nanyang Technological University (NTU)",
+        "retrieved_at": "2026-10-05T15:40:00Z",
+        "as_of": "Academic Year 2027-2028",
+        "raw_extract": "Academic Year 2027-2028. The application period for Academic Year 2027-2028 will be announced in due course. The application period for National Institute of Education (NIE) will also be announced in due course. Successful candidates will be informed on the outcome of their application together with the offer of admissions via email.",
+        "exact_deadline_wording": "The application period for Academic Year 2027-2028 will be announced in due course.",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url (the graduate scholarships index) was fetched first and contains no deadline text whatsoever - it is only a link list. The scholarship's own official detail page is the authoritative page for this award and it publishes no date, only 'will be announced in due course'. That is an announcement-pending state, not a recurring or rolling schedule, so UNKNOWN is the correct classification. The shard record carried deadline_precision 'recurring' from a prior wave; the live page does not state any recurring timing, so that value is not carried forward."
+      },
+      "field_mapping": {
+        "deadline_date": "no write - application period not yet announced by the provider",
+        "deadline_precision": "unknown",
+        "deadline_display": "The application period for Academic Year 2027-2028 will be announced in due course."
+      },
+      "examined": [
+        "https://www.ntu.edu.sg/admissions/graduate/financialmatters/scholarships",
+        "https://www.ntu.edu.sg/admissions/graduate/financialmatters/scholarships/npgs"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.ntu.edu.sg/admissions/graduate/radmissionguide",
+          "reason": "Research degree admission guide. A generic admissions deadline for the research programme; the brief forbids using it as the scholarship deadline."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 440,
+      "title": "Nanyang Merit Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "The same application period for admissions applies. The scholarship application period is the same as the admission application period. Applications submitted after the closing date will not be considered.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.ntu.edu.sg/admissions/undergraduate/scholarships/scholarship-opportunities/detail/college-scholarship",
+        "source_type": "official_scholarship_page",
+        "publisher": "Nanyang Technological University, Office of Admissions",
+        "retrieved_at": "2026-10-05T15:40:00Z",
+        "as_of": null,
+        "raw_extract": "Application Procedures - The same application period for admissions applies. Applicants are required to submit their application for admission before submitting their application for scholarship. ... Applicants with Year 12 equivalent results: 1. Click here to apply for the scholarship with your assigned application number before the application closing date for that qualification. The scholarship application period is the same as the admission application period. Applications submitted after the closing date will not be considered.",
+        "exact_deadline_wording": "The same application period for admissions applies. ... The scholarship application period is the same as the admission application period. Applications submitted after the closing date will not be considered.",
+        "confidence": "HIGH",
+        "notes": "No calendar date on the award's official page. As with the Nanyang Global Scholarship (record 106), the official NTU Important dates page publishes four different qualification-specific scholarship closing dates (19 March 2027, 21 February 2027, 19 March 2027, 20 January 2027). No single date is written because none applies to the award without assuming the applicant's qualification."
+      },
+      "field_mapping": {
+        "deadline_date": "no write - multiple qualification-specific closing dates published, none selected",
+        "deadline_precision": "unknown",
+        "deadline_display": "The same application period for admissions applies. The scholarship application period is the same as the admission application period. Applications submitted after the closing date will not be considered."
+      },
+      "examined": [
+        "https://www.ntu.edu.sg/admissions/undergraduate/scholarships/scholarship-opportunities/detail/college-scholarship",
+        "https://www.ntu.edu.sg/admissions/undergraduate/important-dates"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.ntu.edu.sg/admissions/undergraduate/important-dates",
+          "reason": "Admissions page; per brief section 5 not usable as the scholarship deadline value, and it publishes several different dates by qualification route."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 441,
+      "title": "NTU President Award",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "The same application period for admissions applies. The scholarship application period is the same as the admission application period. Applications submitted after the closing date will not be considered.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.ntu.edu.sg/admissions/undergraduate/scholarships/scholarship-opportunities/detail/ntu-president-award",
+        "source_type": "official_scholarship_page",
+        "publisher": "Nanyang Technological University, Office of Admissions",
+        "retrieved_at": "2026-10-05T15:40:00Z",
+        "as_of": null,
+        "raw_extract": "Application Procedures. The same application period for admissions applies. Applicants are required to submit their application for admission before submitting their application for scholarship. ... Applicants with Year 12 equivalent results: 1. Click here to apply for the scholarship with your assigned application number before the application closing date for that qualification. The scholarship application period is the same as the admission application period. Applications submitted after the closing date will not be considered.",
+        "exact_deadline_wording": "The same application period for admissions applies. ... The scholarship application period is the same as the admission application period. Applications submitted after the closing date will not be considered.",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url (https://www.ntu.edu.sg/admissions/undergraduate/scholarships) is a generic scholarships landing page with no per-award deadline. I followed the site navigation to this award's own official detail page, which is the correct scholarship-specific source. It publishes no calendar date, only the same delegation to the admission application closing date 'for that qualification', and the official Important dates page again carries several different qualification-specific closing dates. No single date written."
+      },
+      "field_mapping": {
+        "deadline_date": "no write - multiple qualification-specific closing dates published, none selected",
+        "deadline_precision": "unknown",
+        "deadline_display": "The same application period for admissions applies. The scholarship application period is the same as the admission application period. Applications submitted after the closing date will not be considered."
+      },
+      "examined": [
+        "https://www.ntu.edu.sg/admissions/undergraduate/scholarships/scholarship-opportunities/detail/ntu-president-award",
+        "https://www.ntu.edu.sg/admissions/undergraduate/important-dates"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.ntu.edu.sg/admissions/undergraduate/important-dates",
+          "reason": "Admissions page; per brief section 5 not usable as the scholarship deadline value, and it publishes several different dates by qualification route."
+        },
+        {
+          "url": "https://www.ntu.edu.sg/admissions/undergraduate/scholarships",
+          "reason": "Shards official_source_url for this record; generic scholarships landing page that states no deadline for the NTU President Award."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 450,
+      "title": "Short Term Scholarships Administered by NTU",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Application for AY26-27 will open from 1 July to 31 July 2026.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.ntu.edu.sg/admissions/undergraduate/scholarships/scholarship-opportunities/detail/short-term-scholarships-administered-by-ntu",
+        "source_type": "official_scholarship_page",
+        "publisher": "Nanyang Technological University (NTU), Office of Admissions",
+        "retrieved_at": "2026-10-05T15:40:00Z",
+        "as_of": "AY26-27",
+        "raw_extract": "Application Procedures - Application for AY26-27 will open from 1 July to 31 July 2026. Apply online here. ... Scholarship interviews will take place in August to early October. Only shortlisted applicants will be informed via email by end-September to attend the interviews. Late or incomplete applications will not be considered.",
+        "exact_deadline_wording": "Application for AY26-27 will open from 1 July to 31 July 2026.",
+        "confidence": "HIGH",
+        "notes": "This is the one record in the shard where the official page states an explicit calendar window: 1 July to 31 July 2026, i.e. a closing date of 31 July 2026 for AY26-27. That date is already in the past as at the retrieval date of 2026-10-05, while the record is open/upcoming. Per brief section 6 the observed deadline is therefore NOT written to deadline_date and is NOT silently rolled forward to the next July: the outcome is expired_mismatch. The observed closing date is recorded here verbatim as 31 July 2026 for reviewer action. NTU publishes no AY27-28 window for this award, so there is no current-cycle date to substitute."
+      },
+      "field_mapping": {
+        "deadline_date": "no write - published closing date 2026-07-31 is in the past; stale date withheld and not advanced to next year",
+        "deadline_precision": "exact",
+        "deadline_display": "Application for AY26-27 will open from 1 July to 31 July 2026."
+      },
+      "examined": [
+        "https://www.ntu.edu.sg/admissions/undergraduate/scholarships/scholarship-opportunities/detail/short-term-scholarships-administered-by-ntu"
+      ],
+      "rejected_sources": [],
+      "observed_deadline_not_written": "2026-07-31 (window 1 July to 31 July 2026, AY26-27) - expired as at 2026-10-05"
+    },
+    {
+      "scholarship_id": 502,
+      "title": "Friedrich-Ebert-Stiftung Promotionsförderung für Ausländer:innen (FES doctoral scholarship for international doctoral candidates)",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "Der richtige Zeitpunkt für die Bewerbung: bis circa zwei Jahre vor Abgabe der Dissertation. Der beste Zeitpunkt für eine Bewerbung ist deswegen so früh wie möglich.",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://www.fes.de/studienfoerderung/stipendium/promotionsfoerderung-fuer-auslaender-innen",
+        "source_type": "official_scholarship_page",
+        "publisher": "Friedrich-Ebert-Stiftung e. V., Studienförderung",
+        "retrieved_at": "2026-10-05T15:40:00Z",
+        "as_of": null,
+        "raw_extract": "Der richtige Zeitpunkt für die Bewerbung - bis circa zwei Jahre vor Abgabe der Dissertation. Wir wünschen uns, dass unsere Stipendiat:innen so lange wie möglich von einem Stipendium profitieren. Der beste Zeitpunkt für eine Bewerbung ist deswegen so früh wie möglich.",
+        "exact_deadline_wording": "bis circa zwei Jahre vor Abgabe der Dissertation",
+        "confidence": "MEDIUM",
+        "notes": "The provider publishes no calendar closing date for this programme. Its only timing rule is relative to the applicant's own dissertation submission ('bis circa zwei Jahre vor Abgabe der Dissertation') and it explicitly instructs applicants to apply as early as possible; the online application form for Promotionsförderung für Ausländer:innen is published and open. The companion official application page (https://www.fes.de/studienfoerderung/bewerbung, fetched) states: 'Der richtige Zeitpunkt für die Bewerbung - Wir wünschen uns, dass unsere Stipendiat:innen so lange wie möglich von einem Stipendium profitieren. Der beste Zeitpunkt für eine Bewerbung ist deswegen so früh wie möglich. Die Fristen finden Sie bei dem von Ihnen gewählten Stipendienprogramm.' That is the provider pointing back to this programme page for the deadlines, and this page carries no date. Classified ROLLING rather than UNKNOWN because the provider publishes no closing date and directs continuous early application; confidence is MEDIUM because the provider never uses the word 'rolling' and gives only a relative timing boundary. No calendar date was invented from this."
+      },
+      "field_mapping": {
+        "deadline_date": "no write - no calendar date exists; provider states a relative timing rule only",
+        "deadline_precision": "rolling",
+        "deadline_display": "Der richtige Zeitpunkt für die Bewerbung: bis circa zwei Jahre vor Abgabe der Dissertation. Der beste Zeitpunkt für eine Bewerbung ist deswegen so früh wie möglich."
+      },
+      "examined": [
+        "https://www.fes.de/studienfoerderung/stipendium/promotionsfoerderung-fuer-auslaender-innen",
+        "https://www.fes.de/studienfoerderung/bewerbung"
+      ],
+      "rejected_sources": [],
+      "supporting_quote": {
+        "url": "https://www.fes.de/studienfoerderung/bewerbung",
+        "verbatim": "Der Auswahlausschuss tagt acht bis zehn Mal im Jahr. Spätestens eine Woche nach der Sitzung informieren wir Sie über die endgültige Entscheidung - sowohl bei einer Zusage, als auch im Fall einer Absage.",
+        "note": "Selection-committee cadence, not an application deadline. Recorded only to show the page was read in full; deliberately not used as a deadline value."
+      }
+    },
+    {
+      "scholarship_id": 531,
+      "title": "Nanyang President's Graduate Scholarship (NPGS)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "The application period for Academic Year 2027-2028 will be announced in due course.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.ntu.edu.sg/admissions/graduate/financialmatters/scholarships/npgs",
+        "source_type": "official_scholarship_page",
+        "publisher": "Nanyang Technological University (NTU Singapore)",
+        "retrieved_at": "2026-10-05T15:40:00Z",
+        "as_of": "Academic Year 2027-2028",
+        "raw_extract": "Academic Year 2027-2028. The application period for Academic Year 2027-2028 will be announced in due course. The application period for National Institute of Education (NIE) will also be announced in due course. Successful candidates will be informed on the outcome of their application together with the offer of admissions via email.",
+        "exact_deadline_wording": "The application period for Academic Year 2027-2028 will be announced in due course.",
+        "confidence": "HIGH",
+        "notes": "This record duplicates record 107 (same award, same official page) and carries verification_status 'quarantined'. The live official page publishes no date and no month window: it only says the period 'will be announced in due course'. The shard carried deadline_precision 'month' plus an 'October/November to December' description and a research-programme admission guide quotation, but none of that text exists on the live page I fetched, and the research admission guide is a different programme's admissions deadline that the brief forbids using. Not carried forward. UNKNOWN is the truthful result."
+      },
+      "field_mapping": {
+        "deadline_date": "no write - application period not yet announced by the provider",
+        "deadline_precision": "unknown",
+        "deadline_display": "The application period for Academic Year 2027-2028 will be announced in due course."
+      },
+      "examined": [
+        "https://www.ntu.edu.sg/admissions/graduate/financialmatters/scholarships/npgs",
+        "https://www.ntu.edu.sg/admissions/graduate/financialmatters/scholarships"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.ntu.edu.sg/admissions/graduate/radmissionguide",
+          "reason": "Cited in the shard record as the source of the portal/last-day figures. Not used: it is the research degree admissions guide, a different programme's admissions deadline, which brief section 5 prohibits as evidence for a scholarship deadline."
+        },
+        {
+          "url": "https://www.ntu.edu.sg/admissions/graduate/financialmatters/scholarships",
+          "reason": "Index page listing scholarship links only; contains no application-period text."
+        }
+      ],
+      "duplicate_of": 107
+    },
+    {
+      "scholarship_id": 565,
+      "title": "Swiss Government Excellence Scholarships (ESKAS)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Applications are open starting August 20, 2026. Information on application deadlines and scholarship available by country of origin will be published here in August 2026.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships",
+        "source_type": "official_government_page",
+        "publisher": "State Secretariat for Education, Research and Innovation (SERI) / Federal Commission for Scholarships for Foreign Students (FCS / ESKAS), Switzerland",
+        "retrieved_at": "2026-10-05T15:40:00Z",
+        "as_of": "Swiss Government Excellence Scholarships 2027 - 2028",
+        "raw_extract": "Applying for a Swiss Government Excellence Scholarship. Information on application deadlines and scholarship available by country of origin will be published here in August 2026. Interested? Applications are open starting August 20, 2026. ... After applying - Selection: Applications are submitted to Swiss diplomatic representations. ... Awards: By the end of May at the latest, the FCS will announce its decisions regarding the scholarship awards for the following academic year. Outlook: Scholarships for the 2028-2029 academic year will be advertised online from August 2027.",
+        "exact_deadline_wording": "Information on application deadlines and scholarship available by country of origin will be published here in August 2026.",
+        "confidence": "MEDIUM",
+        "notes": "The only explicit calendar date on the official page is the OPENING date, 20 August 2026 - an opening date is not a deadline and was not written. The official 'at a glance' page (https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships-at-a-glance, fetched) confirms the deadline is country-specific rather than scheme-wide: 'Important: Before starting the online application, please check the available scholarship types and deadlines for your country of origin.' followed by seven per-region country/territory PDFs. The official FAQ page (https://www.sbfi.admin.ch/en/faq-swiss-government-excellence-scholarships, fetched) contains no deadline date at all. Because the closing deadline differs for each of 183 countries of origin and is set with the applicant's Swiss diplomatic representation, there is no single date for this record. I did not take the opening date as the deadline, did not infer a month range, and did not use the August 2027 re-advertising date."
+      },
+      "field_mapping": {
+        "deadline_date": "no write - deadline is set country by country with the Swiss diplomatic representation; no scheme-wide closing date published",
+        "deadline_precision": "unknown",
+        "deadline_display": "Applications are open starting August 20, 2026. Information on application deadlines and scholarship available by country of origin will be published here in August 2026."
+      },
+      "examined": [
+        "https://www.sbfi.admin.ch",
+        "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships",
+        "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships-at-a-glance",
+        "https://www.sbfi.admin.ch/en/faq-swiss-government-excellence-scholarships"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.go.eskas.ch",
+          "reason": "Catalogue URL from the shard; the GO ESKAS application portal. Not fetched as evidence - a portal entry point carries no deadline, and the official pages state the deadline is determined per country of origin."
+        }
+      ],
+      "observed_opening_date_not_written": "2026-08-20 (opening date, not a deadline)"
+    }
+  ]
+}

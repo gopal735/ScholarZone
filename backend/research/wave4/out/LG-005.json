@@ -1,0 +1,393 @@
+{
+  "shard_id": "LG-005",
+  "agent_completed": true,
+  "topic": "logo",
+  "retrieved_at": "2026-10-05T15:36:00Z",
+  "notes": "All five records were researched live against their official_source_url. Four were recovered (one awarding-body logo reused across three Ghana Scholarships Authority notices, one Institut Pascal brand lockup, one SIKAP programme mark). Every recovered asset was downloaded from the official domain and visually inspected; favicons, apple-touch-icons, og/hero article images and partner marks were rejected. No record in this shard already had an image_url, so no existing image was disturbed.",
+  "records": [
+    {
+      "scholarship_id": 550,
+      "title": "Institut Pascal (IPa) Call for Proposals 2026",
+      "outcome": "recovered",
+      "image_url": "https://www.institut-pascal.universite-paris-saclay.fr/sites/default/files/media/2021-07/Pascal-h.svg",
+      "image_source_url": "https://www.institut-pascal.universite-paris-saclay.fr/en/proposal-submissions",
+      "image_source_type": "official_scholarship",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Taken from the record's own official_source_url, found first in the preference order. The asset is the site's own brand lockup, wired as the first element inside <a class=\"navbar-brand\" href=\"/en\"> on every page of the official Institut Pascal mini-site (same reference on /en), and its footer counterpart carries class=\"logo\" and alt=\"Institut Pascal\". Downloaded from the official domain (9618 bytes, SVG, viewBox=\"0 0 327.8 52.93\", outlined vector paths) and rendered in a browser: it is the official horizontal lockup 'universite PARIS-SACLAY | INSTITUT PASCAL' in Paris-Saclay magenta and blue. FORMAT CAVEAT: the only full-colour official mark published on the domain is SVG; every raster probe returned HTTP 404 (styles/large/public/media/2021-07/Pascal-h.svg, media/2021-07/Pascal-h.png, 2021-07/Pascal-h.png, 2021-07/Pascal-v.png). The only raster logo on the domain, /sites/default/files/2021-07/Pascal-v-b.png (356x320, class=\"logo\" alt=\"Institut Pascal\"), is the white knockout variant ('b' = blanc) intended for the dark footer: downloaded and visually inspected it renders completely blank on a light background, so it is unusable as a catalogue thumbnail. The 2026 Call for Proposals publishes no programme-specific mark; this is Institut Pascal's institutional brand mark, which is the awarding body's mark named in the record's official_source field."
+      },
+      "source": {
+        "url": "https://www.institut-pascal.universite-paris-saclay.fr/en/proposal-submissions",
+        "publisher": "Institut Pascal, Universite Paris-Saclay",
+        "retrieved_at": "2026-10-05T15:36:00Z",
+        "raw_extract": "<a class=\"navbar-brand\" href=\"/en\">\n        \n\n<img loading=\"lazy\" src=\"/sites/default/files/media/2021-07/Pascal-h.svg\" typeof=\"foaf:Image\" class=\"img-fluid\" alt=\"\"/>\n\n\n    </a>",
+        "confidence": "HIGH"
+      },
+      "corroborating_extract": {
+        "url": "https://www.institut-pascal.universite-paris-saclay.fr/en/proposal-submissions",
+        "raw_extract": "<img loading=\"eager\" srcset=\"/sites/default/files/styles/930xauto/public/2021-07/Pascal-v-b.png?itok=jmmu84m7 356w\" sizes=\"(min-width: 1200px) 1983px,...\" width=\"356\" height=\"320\" src=\"/sites/default/files/styles/large/public/2021-07/Pascal-v-b.png?itok=nS2nbcG2\" typeof=\"foaf:Image\" class=\"logo img-fluid\" alt=\"Institut Pascal\"/>",
+        "note": "Same logo family in the site footer, explicitly labelled alt=\"Institut Pascal\" class=\"logo\" - this is what proves the Pascal-h.svg asset is the Institut Pascal mark and not a shared Université Paris-Saclay theme asset."
+      },
+      "examined": [
+        "https://www.institut-pascal.universite-paris-saclay.fr/en/proposal-submissions",
+        "https://www.institut-pascal.universite-paris-saclay.fr/en",
+        "https://www.institut-pascal.universite-paris-saclay.fr/sites/default/files/media/2021-07/Pascal-h.svg",
+        "https://www.institut-pascal.universite-paris-saclay.fr/sites/default/files/2021-07/Pascal-v-b.png",
+        "https://www.universite-paris-saclay.fr/en/news/institut-pascal-call-proposals-scientific-programmes-2026",
+        "https://www.institut-pascal.universite-paris-saclay.fr/sites/default/files/2026-09/2026_call_IPa_final.pdf"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.institut-pascal.universite-paris-saclay.fr/sites/default/files/2021-07/Pascal-v-b.png",
+          "reason": "not usable - white knockout logo variant; downloaded (13115 bytes, 356x320, 32bpp ARGB) and visually inspected, it renders entirely blank on a light background because every pixel is white. Also only the small 'large' style derivative exists, not an original-resolution file."
+        },
+        {
+          "url": "https://www.institut-pascal.universite-paris-saclay.fr/themes/custom/boots/favicon.ico",
+          "reason": "favicon - declared <link rel=\"icon\" href=\"/themes/custom/boots/favicon.ico\" type=\"image/vnd.microsoft.icon\"> on the record's official page; explicitly rejected by brief section 7"
+        },
+        {
+          "url": "https://www.institut-pascal.universite-paris-saclay.fr/sites/default/files/styles/large/public/media/2021-07/Pascal-h.svg",
+          "reason": "not an asset - HTTP 404, no raster/SVG style derivative of the brand logo is published"
+        },
+        {
+          "url": "https://www.institut-pascal.universite-paris-saclay.fr/sites/default/files/media/2021-07/Pascal-h.png",
+          "reason": "not an asset - HTTP 404"
+        },
+        {
+          "url": "https://www.institut-pascal.universite-paris-saclay.fr/sites/default/files/2021-07/Pascal-h.png",
+          "reason": "not an asset - HTTP 404"
+        },
+        {
+          "url": "https://www.institut-pascal.universite-paris-saclay.fr/sites/default/files/2021-07/Pascal-v.png",
+          "reason": "not an asset - HTTP 404"
+        },
+        {
+          "url": "https://www.institut-pascal.universite-paris-saclay.fr/sites/default/files/2021-09/patrim%20saclayA%2CB%2CC%C2%A9blondinHD0118_0.JPG",
+          "reason": "photograph, not an asset - alt=\"hall pascal\", interior photograph of the IPa building used as page body art"
+        },
+        {
+          "url": "https://www.institut-pascal.universite-paris-saclay.fr/sites/default/files/2021-09/patrim%20saclayA%2CB%2CC%C2%A9blondinHD0102%20-%20Copie.JPG",
+          "reason": "photograph, not an asset - alt=\"pascal building\", decorative homepage hero photograph"
+        },
+        {
+          "url": "https://www.institut-pascal.universite-paris-saclay.fr/sites/default/files/2021-09/CNRS-logo_0.png",
+          "reason": "unrelated entity's logo on a shared page - CNRS partner mark in the IPa partner strip, wrong organisation for this award"
+        },
+        {
+          "url": "https://www.institut-pascal.universite-paris-saclay.fr/sites/default/files/2021-09/cea-logo.png",
+          "reason": "unrelated entity's logo on a shared page - CEA partner mark, wrong organisation"
+        },
+        {
+          "url": "https://www.institut-pascal.universite-paris-saclay.fr/sites/default/files/2021-09/inria-logo.png",
+          "reason": "unrelated entity's logo on a shared page - Inria partner mark, wrong organisation"
+        },
+        {
+          "url": "https://www.institut-pascal.universite-paris-saclay.fr/sites/default/files/2021-09/logo_ihes.jpg",
+          "reason": "unrelated entity's logo on a shared page - IHES partner mark, wrong organisation"
+        },
+        {
+          "url": "https://www.institut-pascal.universite-paris-saclay.fr/sites/default/files/2021-09/UPSaclay.png",
+          "reason": "university-level logo, not the programme mark - Université Paris-Saclay corporate logo in the partner strip; the Institut Pascal lockup already incorporates it, and a host university logo is the wrong identity for a call published by IPa"
+        },
+        {
+          "url": "https://www.institut-pascal.universite-paris-saclay.fr/sites/default/files/menu_icons/youtube.svg",
+          "reason": "UI chrome - monochrome sidebar navigation icon (news/youtube/email menu icons), not a brand asset"
+        },
+        {
+          "url": "https://www.institut-pascal.universite-paris-saclay.fr/sites/default/files/2026-09/2026_call_IPa_final.pdf",
+          "reason": "not an image asset - the 2026 Call framework PDF, a document not a logo; no separate logo file is published alongside it"
+        },
+        {
+          "url": "https://stat.dsi.universite-paris-saclay.fr/",
+          "reason": "not an asset - Matomo analytics endpoint referenced in the page's Drupal settings, would only yield tracking scripts"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 618,
+      "title": "Presidential West African Scholarship Initiative (PWASI) 2026",
+      "outcome": "recovered",
+      "image_url": "https://scholarships.gov.gh/images/logo.png",
+      "image_source_url": "https://scholarships.gov.gh/opportunities/presidential-west-african-scholarship-initiative-pwasi-2026",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "The record's official_source is 'Ghana Scholarships Authority (Government of the Republic of Ghana)' and official_source_url is on scholarships.gov.gh, so identity is exact: this is the awarding body's own logo, not a substitute. Three independent official confirmations on the record's own page: (1) header brand <div class=\"logo premium-brand\"> with alt=\"Ghana Scholarships Authority\", (2) footer <img src=\"/images/logo.png\" alt=\"Ghana Scholarships Authority\">, (3) the page's own schema.org JSON-LD GovernmentOrganization block declares \"logo\": \"https://scholarships.gov.gh/images/logo.png\". Downloaded from the official domain: 174088 bytes, PNG, 720x267 - far above favicon size - and visually inspected: the official Ghana Scholarships Authority lockup (circular coat-of-arms seal reading 'GHANA SCHOLARSHIPS AUTHORITY / REPUBLIC OF GHANA' with black star, plus 'GHANA SCHOLARSHIPS AUTHORITY / TRANSFORMING GHANA THROUGH EDUCATION' wordmark with the national tricolour rules). The site's favicon is a different, separate file (/images/favicon.png), so this asset is not in a favicon role. Note /images/logo_transparent.png is byte-identical to /images/logo.png (same SHA-256), so the 'transparent' variant is not a usable alternative. PWASI publishes no programme-specific mark; the only per-scheme image on the page is a decorative article/hero photograph."
+      },
+      "source": {
+        "url": "https://scholarships.gov.gh/opportunities/presidential-west-african-scholarship-initiative-pwasi-2026",
+        "publisher": "Ghana Scholarships Authority (Government of the Republic of Ghana)",
+        "retrieved_at": "2026-10-05T15:36:00Z",
+        "raw_extract": "<div class=\"logo premium-brand\">\n                <h1>\n                    <a href=\"/\" title=\"Ghana Scholarships Authority\" aria-label=\"Ghana Scholarships Authority home\">\n                        <img src=\"/images/logo.png\" class=\"secondary-logo\" alt=\"Ghana Scholarships Authority\" />\n                        <img src=\"/images/logo_transparent.png\" class=\"primary-logo\"\n                            alt=\"Ghana Scholarships Authority\" />\n                    </a>\n                </h1>\n            </div>",
+        "confidence": "HIGH"
+      },
+      "corroborating_extract": {
+        "url": "https://scholarships.gov.gh/opportunities/presidential-west-african-scholarship-initiative-pwasi-2026",
+        "raw_extract": "\"@type\": \"GovernmentOrganization\", \"name\": \"Ghana Scholarship Secretariat\", \"url\": \"https://scholarships.gov.gh\", \"logo\": \"https://scholarships.gov.gh/images/logo.png\"",
+        "note": "The page's own schema.org JSON-LD names https://scholarships.gov.gh/images/logo.png as the organisation's logo."
+      },
+      "examined": [
+        "https://scholarships.gov.gh/opportunities/presidential-west-african-scholarship-initiative-pwasi-2026",
+        "https://scholarships.gov.gh/images/logo.png",
+        "https://scholarships.gov.gh/images/logo_transparent.png",
+        "https://scholarships.gov.gh/opportunities"
+      ],
+      "rejected": [
+        {
+          "url": "https://scholarships.gov.gh/images/favicon.png",
+          "reason": "favicon - declared <link rel=\"icon\" href=\"https://scholarships.gov.gh/images/favicon.png\" type=\"image/png\"> and <link rel=\"shortcut icon\" href=\"/images/favicon.png\">; explicitly rejected by brief section 7"
+        },
+        {
+          "url": "https://scholarships.gov.gh/asset-resources/blog-images/presidential-west-african-scholarship-initiative-pwasi-2026.jpg",
+          "reason": "decorative hero art, not an asset - the page's og:image / twitter:image and .opportunity-hero background, a per-notice editorial photograph used as a hero backdrop, not a brand mark"
+        },
+        {
+          "url": "https://scholarships.gov.gh/images/img/stats-background.jpeg",
+          "reason": "decorative texture, not an asset - CSS background used by the opportunity meta grid and CTA blocks"
+        },
+        {
+          "url": "https://scholarships.gov.gh/images/logo_transparent.png",
+          "reason": "duplicate, not an alternative - byte-identical to /images/logo.png (identical SHA-256, both 174088 bytes, both 720x267); recorded only for completeness"
+        },
+        {
+          "url": "https://scholarships.gov.gh/asset-resources/blog-images/the-joint-algeriaghana-government-scholarship-awards-for-the-20262027-academic-year-tenable-in-algeria.webp",
+          "reason": "wrong identity - a DIFFERENT scholarship's editorial hero image, surfaced in the 'Latest' sidebar of the PWASI page; belongs to record 713, not to PWASI"
+        },
+        {
+          "url": "https://scholarships.gov.gh/asset-resources/blog-images/scholarship-oppurtunities-in-the-kingdom-of-saudi-arabia.webp",
+          "reason": "wrong identity - a DIFFERENT scholarship's editorial hero image from the 'Latest' sidebar; belongs to record 714, not to PWASI"
+        },
+        {
+          "url": "https://scholarships.gov.gh/asset-resources/blog-images/scholarship-opportunity-in-the-republic-of-serbia.jpg",
+          "reason": "wrong identity - unrelated scholarship (Serbia) hero image from the 'Latest' sidebar"
+        },
+        {
+          "url": "https://apply.scholarships.gov.gh/",
+          "reason": "not an asset - the official application portal linked from the header; an application system, no published brand asset for the PWASI scheme"
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-HNECVW4NPF",
+          "reason": "tracking script, not an asset"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 644,
+      "title": "Scholarships for Staff and Instructors' Knowledge Advancement Program (SIKAP), Commission on Higher Education Philippines",
+      "outcome": "recovered",
+      "image_url": "https://sikap.ched.gov.ph/sikap.webp",
+      "image_source_url": "https://sikap.ched.gov.ph/heis-programs",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "sikap.ched.gov.ph is the Commission's own programme subdomain, and this is a programme-specific logo (stronger than an awarding-body corporate mark). PROVEN AS A SITE BRAND MARK, NOT A SHARE CARD: on the record's own catalogue_url page (https://sikap.ched.gov.ph/heis-programs) the asset is the header and footer logo - '<a class=\"flex items-center gap-2\" href=\"/\"><img src=\"/sikap.webp\" alt=\"SIKAP\" width=\"80\" height=\"40\" .../>' inside the fixed site header, repeated in the footer, plus <link rel=\"preload\" as=\"image\" href=\"/sikap.webp\"/>. On the record's own official_source_url it is additionally the declared site brand image (seo.og_image = https://sikap.ched.gov.ph/sikap.webp). Downloaded from the official domain: 28444 bytes WEBP, 1000x1000, and visually inspected - the official SIKAP mark, a graduation cap over a lightbulb whose filament spells S-I-K-A-P in navy with yellow/orange glow. NOT a favicon: /sikap.webp is not referenced by any <link rel=\"icon\"> or apple-touch-icon (those are /favicon.ico, /logo.png and /apple-touch-icon.png, all rejected below). FORMAT NOTE: only WEBP and PNG renderings are published, no SVG."
+      },
+      "source": {
+        "url": "https://sikap.ched.gov.ph/heis-programs",
+        "publisher": "Commission on Higher Education (CHED), Republic of the Philippines - SIKAP programme site",
+        "retrieved_at": "2026-10-05T15:36:00Z",
+        "raw_extract": "<a class=\"flex items-center gap-2\" href=\"/\"><img src=\"/sikap.webp\" alt=\"SIKAP\" width=\"80\" height=\"40\" class=\"h-10 w-auto object-contain\"/>",
+        "confidence": "HIGH"
+      },
+      "corroborating_extract": {
+        "url": "https://sikap.ched.gov.ph/call-for-applicants?type=sikap",
+        "raw_extract": "<meta property=\"og:site_name\" content=\"Sikap\" /> <meta property=\"og:description\" content=\"SIKAP - Scholarships for Instructors' Knowledge Advancement Program by CHED\" /> <meta property=\"og:image\" content=\"https://sikap.ched.gov.ph/sikap.webp\" /> ... \"seo\":{\"site_name\":\"Sikap\",\"base_url\":\"https://sikap.ched.gov.ph\",\"og_image\":\"https://sikap.ched.gov.ph/sikap.webp\"}",
+        "note": "The record's own official_source_url declares the same asset as the SIKAP site brand image and ties it verbatim to the programme name 'Scholarships for Instructors' Knowledge Advancement Program by CHED'."
+      },
+      "examined": [
+        "https://sikap.ched.gov.ph/call-for-applicants?type=sikap",
+        "https://sikap.ched.gov.ph/heis-programs",
+        "https://sikap.ched.gov.ph/",
+        "https://sikap.ched.gov.ph/login",
+        "https://sikap.ched.gov.ph/sikap.webp",
+        "https://sikap.ched.gov.ph/logo.png",
+        "https://sikap.ched.gov.ph/build/assets/app-D9M5bQF0.css"
+      ],
+      "rejected": [
+        {
+          "url": "https://sikap.ched.gov.ph/logo.png",
+          "reason": "favicon role - declared <link rel=\"icon\" href=\"/logo.png\" type=\"image/png\"> on every SIKAP page. The file itself is a fine 1000x1000 copy of the same mark, but it is wired as the site icon, which brief section 7 rejects without exception; /sikap.webp is the identical mark in a non-icon role and is therefore used instead"
+        },
+        {
+          "url": "https://sikap.ched.gov.ph/favicon.ico",
+          "reason": "favicon - declared <link rel=\"icon\" href=\"/favicon.ico\" sizes=\"any\">; explicitly rejected by brief section 7"
+        },
+        {
+          "url": "https://sikap.ched.gov.ph/apple-touch-icon.png",
+          "reason": "apple-touch-icon - explicitly rejected by brief section 7"
+        },
+        {
+          "url": "https://sikap.ched.gov.ph/logo-mascot.webp",
+          "reason": "illustrative mascot character, not a brand mark - a full-body mascot illustration sitting alongside the logo in the app footer, decorative rather than the logo itself"
+        },
+        {
+          "url": "https://sikap.ched.gov.ph/ched.webp",
+          "reason": "unrelated entity's logo on a shared page - CHED (Commission on Higher Education) corporate mark in the SIKAP footer partner row; the award is the SIKAP programme, not the Commission"
+        },
+        {
+          "url": "https://sikap.ched.gov.ph/ched-white.webp",
+          "reason": "unrelated entity's logo on a shared page - white knockout of the CHED corporate mark for the dark footer; wrong entity for the programme mark"
+        },
+        {
+          "url": "https://sikap.ched.gov.ph/bagong-pilipinas.webp",
+          "reason": "third-party/other-government brand mark - the Bagong Pilipinas government branding lockup in the footer partner row, not the scholarship's mark"
+        },
+        {
+          "url": "https://sikap.ched.gov.ph/philippines.webp",
+          "reason": "decorative national emblem art in the footer partner row, not the scholarship's brand mark"
+        },
+        {
+          "url": "https://sikap.ched.gov.ph/rbp.webp",
+          "reason": "unrelated entity's logo on a shared page - RBP mark in the footer partner row; not the scholarship's identity"
+        },
+        {
+          "url": "https://sikap.ched.gov.ph/ched-tanyag/engineering.webp",
+          "reason": "wrong identity - CHED-TAN-YAG per-discipline programme artwork (one of eleven discipline images under /ched-tanyag/), not the SIKAP scholarship logo"
+        },
+        {
+          "url": "https://sikap.ched.gov.ph/images/og-image.webp",
+          "reason": "not an asset - does not exist on this host (og-image.webp is referenced only by studyinsaudi.sa, examined for record 714); the SIKAP og image is /sikap.webp itself"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 713,
+      "title": "Joint Algeria/Ghana Government Scholarship Awards 2026/2027 (tenable in Algeria)",
+      "outcome": "recovered",
+      "image_url": "https://scholarships.gov.gh/images/logo.png",
+      "image_source_url": "https://scholarships.gov.gh/opportunities/the-joint-algeriaghana-government-scholarship-awards-for-the-20262027-academic-year-tenable-in-algeria",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "WEAKEST LINK IN THIS SHARD - read before using. Proven official and proven on the record's own official_source_url (HTTP 200, title and H1 both 'THE JOINT ALGERIA/GHANA GOVERNMENT SCHOLARSHIP AWARDS FOR THE 2026/2027 ACADEMIC YEAR TENABLE IN ALGERIA'), which publishes the Ghana Scholarships Authority logo in its header and footer with alt=\"Ghana Scholarships Authority\" - the same 720x267 PNG verified and visually inspected for record 618. SCOPE CAVEAT: this record's official_source field names 'Government of the People's Democratic Republic of Algeria, announced by the Ghana Scholarships Authority', so the image is the ANNOUNCING/admitting authority's corporate mark, not an Algerian government mark. I searched for an Algerian programme mark and did not find one that can be tied to this award: the Algerian Ministry of Higher Education and Scientific Research homepage (https://www.mesrs.dz/, title 'وزارة التعليم العالي والبحث العلمي') was fetched live and contains 0 occurrences of 'bourse' and 0 of 'Ghana', and publishes no logo asset I could tie to this scholarship; only the ministry's own generic corporate mark exists there, which would be an unproven identity for this specific award. Neither a ministry mark nor an invented Algerian programme mark is proposed. If the catalogue requires the Algerian government's own mark rather than the announcing authority's, set this record to not_found."
+      },
+      "source": {
+        "url": "https://scholarships.gov.gh/opportunities/the-joint-algeriaghana-government-scholarship-awards-for-the-20262027-academic-year-tenable-in-algeria",
+        "publisher": "Ghana Scholarships Authority (Republic of Ghana)",
+        "retrieved_at": "2026-10-05T15:36:00Z",
+        "raw_extract": "<img src=\"/images/logo.png\" class=\"secondary-logo\" alt=\"Ghana Scholarships Authority\" />\n                        <img src=\"/images/logo_transparent.png\" class=\"primary-logo\" alt=\"Ghana Scholarships Authority\" />",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://scholarships.gov.gh/opportunities/the-joint-algeriaghana-government-scholarship-awards-for-the-20262027-academic-year-tenable-in-algeria",
+        "https://www.mesrs.dz/",
+        "mesrs.dz"
+      ],
+      "rejected": [
+        {
+          "url": "https://scholarships.gov.gh/asset-resources/blog-images/the-joint-algeriaghana-government-scholarship-awards-for-the-20262027-academic-year-tenable-in-algeria.webp",
+          "reason": "decorative hero art, not an asset - this notice's og:image / twitter:image and .opportunity-hero background, an editorial photograph used as a hero backdrop, not a brand mark"
+        },
+        {
+          "url": "https://scholarships.gov.gh/images/favicon.png",
+          "reason": "favicon - declared <link rel=\"icon\" href=\"https://scholarships.gov.gh/images/favicon.png\">; explicitly rejected by brief section 7"
+        },
+        {
+          "url": "https://www.mesrs.dz/",
+          "reason": "not an asset for this award - official Algerian ministry homepage fetched live (HTTP 200) but contains 0 occurrences of 'bourse' and 0 of 'Ghana' and publishes no scholarship logo; only the ministry's generic corporate mark is available and its identity to this specific award cannot be proven from an official page"
+        },
+        {
+          "url": "https://scholarships.gov.gh/asset-resources/blog-images/scholarship-opportunity-in-the-republic-of-serbia.jpg",
+          "reason": "wrong identity - an unrelated scholarship's editorial hero image from the 'Latest' sidebar"
+        },
+        {
+          "url": "https://scholarships.gov.gh/images/img/stats-background.jpeg",
+          "reason": "decorative texture, not an asset - CSS background for the meta grid and CTA blocks"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 714,
+      "title": "Scholarship Opportunities in the Kingdom of Saudi Arabia (Study in Saudi — Ghana allocation)",
+      "outcome": "recovered",
+      "image_url": "https://scholarships.gov.gh/images/logo.png",
+      "image_source_url": "https://scholarships.gov.gh/opportunities/scholarship-oppurtunities-in-the-kingdom-of-saudi-arabia",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "WEAKEST LINK IN THIS SHARD - read before using. Proven official and proven on the record's own official_source_url (HTTP 200, title and H1 both 'SCHOLARSHIP OPPURTUNITIES IN THE KINGDOM OF SAUDI ARABIA'), which publishes the Ghana Scholarships Authority logo in header and footer with alt=\"Ghana Scholarships Authority\" - the same 720x267 PNG verified and visually inspected for record 618. SCOPE CAVEAT: this record's official_source field names 'Government of the Kingdom of Saudi Arabia, announced by the Ghana Scholarships Authority', so the image is the ANNOUNCING/admitting authority's corporate mark. WHY NOT THE 'STUDY IN SAUDI' BRAND: the shard title contains '(Study in Saudi — Ghana allocation)', so I fetched the official Study in Saudi platform (https://studyinsaudi.sa/) which does publish official marks (/images/logos/study-in-saudi-logo.svg alt=\"Study in Saudi\", /images/logos/header-logo-left.svg alt=\"Study in Saudi\", /images/logos/header-logo-right.svg alt=\"Ministry of Education\"), but the record's own official GSA notice contains ZERO occurrences of 'Study in Saudi' in its visible text, so I cannot prove from an official source that this award IS the Study in Saudi programme; the programme name appears only as a catalogue annotation. Under the brief's rule that an unproven identity must stay null, I am not proposing the Study in Saudi mark. If the catalogue requires the Saudi government's or the Study in Saudi programme's own mark rather than the announcing authority's, set this record to not_found."
+      },
+      "source": {
+        "url": "https://scholarships.gov.gh/opportunities/scholarship-oppurtunities-in-the-kingdom-of-saudi-arabia",
+        "publisher": "Ghana Scholarships Authority (Republic of Ghana)",
+        "retrieved_at": "2026-10-05T15:36:00Z",
+        "raw_extract": "<img src=\"/images/logo.png\" class=\"secondary-logo\" alt=\"Ghana Scholarships Authority\" />\n                        <img src=\"/images/logo_transparent.png\" class=\"primary-logo\" alt=\"Ghana Scholarships Authority\" />",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://scholarships.gov.gh/opportunities/scholarship-oppurtunities-in-the-kingdom-of-saudi-arabia",
+        "https://studyinsaudi.sa/"
+      ],
+      "rejected": [
+        {
+          "url": "https://studyinsaudi.sa/images/logos/study-in-saudi-logo.svg",
+          "reason": "wrong identity / unproven - real official Saudi platform logo (alt=\"Study in Saudi\"), but the record's own official Ghana Scholarships Authority notice for this award never mentions 'Study in Saudi', so the link between this award and that programme brand cannot be proven from an official source; the programme name exists only in the catalogue title. Not proposed."
+        },
+        {
+          "url": "https://studyinsaudi.sa/images/logos/header-logo-left.svg",
+          "reason": "wrong identity / unproven - small 54x41 header mark of the Study in Saudi platform, same unproven programme linkage, and favicon-scale in the rendered header"
+        },
+        {
+          "url": "https://studyinsaudi.sa/images/logos/header-logo-right.svg",
+          "reason": "unrelated entity's logo - the Saudi Ministry of Education mark sitting beside the Study in Saudi logo on that platform's header; the MoE is not the awarding body named for this Ghana-allocation record"
+        },
+        {
+          "url": "https://studyinsaudi.sa/images/og-image.webp",
+          "reason": "social share image - the platform's Open Graph share card, explicitly in the rejected 'share-button images' class of brief section 7"
+        },
+        {
+          "url": "https://scholarships.gov.gh/asset-resources/blog-images/scholarship-oppurtunities-in-the-kingdom-of-saudi-arabia.webp",
+          "reason": "decorative hero art, not an asset - this notice's og:image / twitter:image and .opportunity-hero background, an editorial photograph used as a hero backdrop, not a brand mark"
+        },
+        {
+          "url": "https://scholarships.gov.gh/images/favicon.png",
+          "reason": "favicon - declared <link rel=\"icon\" href=\"https://scholarships.gov.gh/images/favicon.png\">; explicitly rejected by brief section 7"
+        },
+        {
+          "url": "https://scholarships.gov.gh/images/logo_transparent.png",
+          "reason": "duplicate, not an alternative - byte-identical to /images/logo.png (identical SHA-256), not a distinct transparent rendering"
+        }
+      ]
+    }
+  ]
+}

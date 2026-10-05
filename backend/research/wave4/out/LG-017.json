@@ -1,0 +1,348 @@
+{
+  "shard_id": "LG-017",
+  "topic": "logo",
+  "agent_completed": true,
+  "retrieved_at": "2026-10-05T15:28:35Z",
+  "records": [
+    {
+      "scholarship_id": 353,
+      "title": "Pasteur-Paris University (PPU) International Doctoral Program 2027",
+      "outcome": "recovered",
+      "image_url": "https://www.pasteur.fr/sites/default/files/medias/image/2026-09/IP_Logo_Noir_RVB.jpg",
+      "image_source_url": "https://www.pasteur.fr/en/about-us/our-missions/education/training-programs/doctoral-programs/ppu",
+      "image_source_type": "official_scholarship",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Asset fetched and visually verified: 2390x1209 JPEG, black 'INSTITUT Pasteur' wordmark on white. It is the logo that pasteur.fr itself declares for the organisation in its own JSON-LD Organization block on the record's official_source_url (the PPU doctoral programme page). The page's only icon link is /themes/custom/pasteur/favicon.ico, which was not used."
+      },
+      "source": {
+        "url": "https://www.pasteur.fr/en/about-us/our-missions/education/training-programs/doctoral-programs/ppu",
+        "publisher": "Institut Pasteur",
+        "retrieved_at": "2026-10-05T15:28:35Z",
+        "raw_extract": "<script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":[\"ResearchOrganization\",\"NGO\"],\"@id\":\"https://www.pasteur.fr/#organization\",\"name\":\"Institut Pasteur\",\"legalName\":\"Institut Pasteur, fondation reconnue d'utilite publique\",\"url\":\"https://www.pasteur.fr/\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://www.pasteur.fr/sites/default/files/medias/image/2026-09/IP_Logo_Noir_RVB.jpg\"},\"foundingDate\":\"1887\",\"taxID\":\"775684897\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"25-28 rue du Dr Roux\",\"postalCode\":\"75724\",\"addressLocality\":\"Paris Cedex 15\",\"addressCountry\":\"FR\"}",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.pasteur.fr/en/about-us/our-missions/education/training-programs/doctoral-programs/ppu",
+        "https://ppu.pasteur.fr/ppu_etud_accueil.aspx",
+        "https://www.pasteur.fr/sites/default/files/medias/image/2026-09/IP_Logo_Noir_RVB.jpg"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.pasteur.fr/themes/custom/pasteur/favicon.ico",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://www.pasteur.fr/sites/default/files/medias/image/2026-07/UniversiteParisCite_logo_horizontal_couleur_CMJN.jpg",
+          "reason": "wrong identity - Université Paris Cité partner logo, not the PPU / Institut Pasteur programme identity"
+        },
+        {
+          "url": "https://www.pasteur.fr/sites/default/files/medias/image/2026-07/sorbonne-university-logo-vectoriel.png",
+          "reason": "wrong identity - Sorbonne Université partner logo on a shared CDN, unrelated to the scholarship identity"
+        },
+        {
+          "url": "https://www.pasteur.fr/sites/default/files/medias/image/2026-07/Logo_ComUE ParisSaclay.jpg",
+          "reason": "wrong identity - Université Paris-Saclay partner logo, unrelated department/institution mark"
+        },
+        {
+          "url": "https://www.pasteur.fr/sites/default/files/styles/577_769_577x769/public/medias/image/2026-08/call_ppu_students_2027.jpg.webp",
+          "reason": "decorative hero art - programme call flyer, not a brand mark"
+        },
+        {
+          "url": "https://www.pasteur.fr/sites/default/files/styles/3_4_300_400/public/imported/2024-02/institutpasteur_59380.jpg.webp",
+          "reason": "photograph, not a logo asset"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 537,
+      "title": "Whitley Awards 2027",
+      "outcome": "not_found",
+      "image_url": null,
+      "image_source_url": null,
+      "image_source_type": null,
+      "image_kind": null,
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": false,
+        "accessible": false,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": false,
+        "notes": "The Whitley Awards brand mark exists on whitleyaward.org only as inline SVG markup embedded directly in the header and footer of every page (13 inline <svg> elements on the record's official_source_url). No downloadable PNG/SVG/brand asset exists. The site's own JSON-LD declares an empty logo URL, and the only image files referenced are favicon/touch-icon assets. Nothing provable to link, so image_url stays null."
+      },
+      "source": {
+        "url": "https://whitleyaward.org/apply-for-conservation-funding/apply-for-a-whitley-award/",
+        "publisher": "Whitley Fund for Nature",
+        "retrieved_at": "2026-10-05T15:28:35Z",
+        "raw_extract": "<div class=\"sf-logo\"><a class=\"sf-logo__link\" href=\"https://whitleyaward.org/\" rel=\"home\" aria-label=\"Home\"><span class=\"sf-logo__text sf-logo__large\" itemprop=\"headline\"><?xml version=\"1.0\" encoding=\"UTF-8\"?><svg id=\"uuid-2602a042-e954-4283-b1d4-2f14a3044999\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 69.59\">...</svg></span>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://whitleyaward.org/apply-for-conservation-funding/apply-for-a-whitley-award/",
+        "https://whitleyaward.org/",
+        "https://whitleyaward.org/wp-json/wp/v2/media?search=logo&per_page=30",
+        "https://whitleyaward.org/wp-json/wp/v2/media?search=Whitley&per_page=10",
+        "https://whitleyaward.org/wp-json/wp/v2/media?search=Untitled&per_page=20",
+        "https://whitleyaward.org/wp-json/wp/v2/media?per_page=100&page=1&orderby=date&order=desc",
+        "https://whitleyaward.org/wp-json/wp/v2/media?per_page=100&page=2&orderby=date&order=desc",
+        "https://whitleyaward.org/content/themes/whitleyaward.org/dist/img/logo.svg",
+        "https://whitleyaward.org/content/themes/whitleyaward.org/assets/img/logo.svg",
+        "https://whitleyaward.org/content/themes/whitleyaward.org/dist/images/logo.svg",
+        "https://whitleyaward.org/wp-content/uploads/2020/02/whitley-award-logo.png"
+      ],
+      "rejected": [
+        {
+          "url": "https://whitleyaward.org/content/themes/whitleyaward.org/favicon.ico",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://whitleyaward.org/content/themes/whitleyaward.org/touch-icon-iphone.png",
+          "reason": "apple-touch-icon"
+        },
+        {
+          "url": "https://whitleyaward.org/content/themes/whitleyaward.org/touch-icon-ipad.png",
+          "reason": "apple-touch-icon"
+        },
+        {
+          "url": "https://api.whitleyaward.org/noscript.gif",
+          "reason": "tracking pixel - the only <img> present on the page"
+        },
+        {
+          "url": "https://d2pmqwflrfqd3y.cloudfront.net/content/uploads/2026/04/24123517/Untitled-design-6.png",
+          "reason": "wrong identity - 'studio bluegreen FUND' partner logo (177x82), unrelated organisation"
+        },
+        {
+          "url": "https://d2pmqwflrfqd3y.cloudfront.net/content/uploads/2026/04/02131736/logo-header.png",
+          "reason": "wrong identity - matched a media-library 'logo' search but is not the Whitley Award brand mark"
+        },
+        {
+          "url": "https://standfirst-whitleyaward-production.imgix.net/content/uploads/2026/09/07173056/Fernanda_Abra_2024_Brazil_Species_Frog.jpg",
+          "reason": "decorative hero art - og:image / social share photograph, not a logo"
+        },
+        {
+          "url": "https://d2pmqwflrfqd3y.cloudfront.net/content/uploads/2026/07/30221733/Call-for-apps-applicant-toolkit-2027.pdf",
+          "reason": "not an image asset - PDF document, not a downloadable logo file"
+        },
+        {
+          "url": "https://d2pmqwflrfqd3y.cloudfront.net/content/uploads/2023/04/19150600/WFN-30th-Anniversary-Logo-.jpg",
+          "reason": "wrong identity / commemorative - Whitley Fund for Nature 30th-anniversary mark, not the Whitley Award brand mark"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 708,
+      "title": "ITB International Undergraduate Scholarship",
+      "outcome": "recovered",
+      "image_url": "https://itb.ac.id/assets/images/logo-itb-1920-new.png",
+      "image_source_url": "https://www.itb.ac.id/scholarship",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Asset fetched and visually verified: 779x187 PNG showing the round blue ITB seal reading 'INSTITUT TEKNOLOGI BANDUNG 1920'. Served from the official university domain itb.ac.id as <img class=\"logo\" alt=\"Logo ITB\"> in the masthead, present on both the university home page and the record's catalogue_url https://www.itb.ac.id/scholarship. finaid.itb.ac.id is a client-rendered Nuxt SPA whose HTML shell exposes only favicon assets, so the university domain was used."
+      },
+      "source": {
+        "url": "https://www.itb.ac.id/scholarship",
+        "publisher": "Institut Teknologi Bandung (ITB)",
+        "retrieved_at": "2026-10-05T15:28:35Z",
+        "raw_extract": "<img class=\"logo\" src=\"https://itb.ac.id/assets/images/logo-itb-1920-new.png\" width=\"250px\" height=\"60px\" alt=\"Logo ITB\">",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://finaid.itb.ac.id/itb-international-undergraduate-scholarship",
+        "https://www.itb.ac.id/",
+        "https://www.itb.ac.id/scholarship",
+        "https://itb.ac.id/assets/images/logo-itb-1920-new.png"
+      ],
+      "rejected": [
+        {
+          "url": "https://itb.ac.id/favicon.ico",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://finaid.itb.ac.id/favicon-32x32.png",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://finaid.itb.ac.id/apple-touch-icon.png",
+          "reason": "apple-touch-icon"
+        },
+        {
+          "url": "https://finaid.itb.ac.id/favicon-16x16.png",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://itb.ac.id/assets/images/Logo ITB_COLOR_2026@4x.png",
+          "reason": "not an asset - URL contains literal spaces and the element is a 57x55 inline breadcrumb/menu mark, not the primary institutional logo; the resolved URL does not serve the asset"
+        },
+        {
+          "url": "https://itb.ac.id/files/headline/Slider%20Website%20%281%29.png",
+          "reason": "decorative hero art - homepage slider banner"
+        },
+        {
+          "url": "https://itb.ac.id/images/icons/ganesha-itb-footer.jpg",
+          "reason": "decorative campus thumbnail, not a logo"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 720,
+      "title": "Scholarships for High Achievers Higher Education (Level 7) Overseas Scheme (TSLS, Government of Fiji)",
+      "outcome": "recovered",
+      "image_url": "https://tsls.com.fj/wp-content/uploads/2023/04/Site-Logo-302-x-86-px.png",
+      "image_source_url": "https://tsls.com.fj/high-achievers-higher-education-level-7-overseas-scheme",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "tsls.com.fj is the official domain of the Tertiary Scholarships and Loans Service (TSLS), Ministry of Education, Government of Fiji. Asset fetched and visually verified: 302x86 PNG, the full TSLS lockup - circular maroon/blue mark plus 'Tertiary Scholarships & Loans Service' and the strapline 'Empowering Fiji's Future'. Rendered in the site masthead with alt=\"TSLS\" on the record's own official_source_url. Source raster is small (302x86) but it is the canonical non-favicon header logo asset; the only larger official asset, TSLS-Logo-512x512-1.png, is the emblem-only parent of the WordPress site-icon/favicon set."
+      },
+      "source": {
+        "url": "https://tsls.com.fj/high-achievers-higher-education-level-7-overseas-scheme",
+        "publisher": "Tertiary Scholarships and Loans Service (TSLS), Ministry of Education, Government of Fiji",
+        "retrieved_at": "2026-10-05T15:28:35Z",
+        "raw_extract": "<div class=\"main-menu__logo logo-retina\"><a href=\"https://tsls.com.fj/\"><img decoding=\"async\" width=\"136\" height=\"39\" src=\"https://tsls.com.fj/wp-content/uploads/2023/04/Site-Logo-302-x-86-px.png\" alt=\"TSLS\"></a></div>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://tsls.com.fj/high-achievers-higher-education-level-7-overseas-scheme",
+        "https://tsls.com.fj/cost-sharing-overseas-phd-scholarships-scheme",
+        "https://tsls.com.fj/schemes",
+        "https://tsls.com.fj/wp-json/wp/v2/media?search=logo&per_page=30",
+        "https://tsls.com.fj/wp-content/uploads/2023/04/Site-Logo-302-x-86-px.png",
+        "https://tsls.com.fj/wp-content/uploads/2024/03/TSLS-Logo-512x512-1.png"
+      ],
+      "rejected": [
+        {
+          "url": "https://tsls.com.fj/wp-content/uploads/2024/03/cropped-TSLS-Logo-512x512-1-32x32.png",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://tsls.com.fj/wp-content/uploads/2024/03/cropped-TSLS-Logo-512x512-1-192x192.png",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://tsls.com.fj/wp-content/uploads/2024/03/cropped-TSLS-Logo-512x512-1-180x180.png",
+          "reason": "apple-touch-icon"
+        },
+        {
+          "url": "https://tsls.com.fj/wp-content/uploads/2024/03/cropped-TSLS-Logo-512x512-1-270x270.png",
+          "reason": "msapplication-TileImage / favicon-sized badge"
+        },
+        {
+          "url": "https://tsls.crespire.com/wp-content/uploads/2024/03/Page-Header-Background-Image.jpg",
+          "reason": "decorative hero art - CSS page-header background"
+        },
+        {
+          "url": "https://tsls.com.fj/wp-content/uploads/2024/04/Scheme-icon-image.jpg",
+          "reason": "not an asset - generic decorative scheme thumbnail, byte-identical and reused on every scheme page (verified on both the Level 7 Overseas and Cost Sharing PhD scheme pages), so it does not identify this scheme"
+        },
+        {
+          "url": "https://tsls.com.fj/wp-content/uploads/2023/04/logo-1.jpg",
+          "reason": "not an asset - 800x799 photograph of a printed logo on merchandise"
+        },
+        {
+          "url": "https://tsls.com.fj/wp-content/uploads/2023/04/hoodie-with-logo-2-jpg",
+          "reason": "not an asset - photograph of a hoodie, not a logo asset"
+        },
+        {
+          "url": "https://tsls.com.fj/wp-content/uploads/2025/12/University-of-Queensland-Logo.jpg",
+          "reason": "wrong identity - eligible-institution logo hosted on the shared tsls.com.fj uploads path"
+        },
+        {
+          "url": "https://tsls.com.fj/wp-content/uploads/2025/12/Swinburne-University-of-Technology-Logo.jpg",
+          "reason": "wrong identity - eligible-institution logo hosted on the shared tsls.com.fj uploads path"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 723,
+      "title": "Cost Sharing Overseas PhD Scholarships Scheme with Australian Universities (TSLS, Government of Fiji)",
+      "outcome": "recovered",
+      "image_url": "https://tsls.com.fj/wp-content/uploads/2023/04/Site-Logo-302-x-86-px.png",
+      "image_source_url": "https://tsls.com.fj/cost-sharing-overseas-phd-scholarships-scheme",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Same official TSLS masthead lockup as record 720, confirmed present in the header of this record's own official_source_url. Fetched and visually verified: 302x86 PNG with the circular mark plus 'Tertiary Scholarships & Loans Service / Empowering Fiji's Future'. TSLS is the award administrator named in the record title and its domain is the official Government of Fiji agency domain."
+      },
+      "source": {
+        "url": "https://tsls.com.fj/cost-sharing-overseas-phd-scholarships-scheme",
+        "publisher": "Tertiary Scholarships and Loans Service (TSLS), Ministry of Education, Government of Fiji",
+        "retrieved_at": "2026-10-05T15:28:35Z",
+        "raw_extract": "<div class=\"main-menu__logo logo-retina\"><a href=\"https://tsls.com.fj/\"><img decoding=\"async\" width=\"136\" height=\"39\" src=\"https://tsls.com.fj/wp-content/uploads/2023/04/Site-Logo-302-x-86-px.png\" alt=\"TSLS\"></a></div>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://tsls.com.fj/cost-sharing-overseas-phd-scholarships-scheme",
+        "https://tsls.com.fj/schemes",
+        "https://tsls.com.fj/high-achievers-higher-education-level-7-overseas-scheme",
+        "https://tsls.com.fj/wp-json/wp/v2/media?search=logo&per_page=30",
+        "https://tsls.com.fj/wp-content/uploads/2023/04/Site-Logo-302-x-86-px.png"
+      ],
+      "rejected": [
+        {
+          "url": "https://tsls.com.fj/wp-content/uploads/2024/03/cropped-TSLS-Logo-512x512-1-32x32.png",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://tsls.com.fj/wp-content/uploads/2024/03/cropped-TSLS-Logo-512x512-1-180x180.png",
+          "reason": "apple-touch-icon"
+        },
+        {
+          "url": "https://tsls.com.fj/wp-content/uploads/2024/03/cropped-TSLS-Logo-512x512-1-270x270.png",
+          "reason": "msapplication-TileImage / favicon-sized badge"
+        },
+        {
+          "url": "https://tsls.com.fj/wp-content/uploads/2024/04/Scheme-icon-image.jpg",
+          "reason": "not an asset - generic decorative scheme thumbnail reused across every TSLS scheme page, not specific to this scheme"
+        },
+        {
+          "url": "https://tsls.crespire.com/wp-content/uploads/2024/03/Page-Header-Background-Image.jpg",
+          "reason": "decorative hero art - CSS page-header background"
+        },
+        {
+          "url": "https://tsls.com.fj/wp-content/uploads/2025/12/Australian-Pacific-Management-Training-Logo.jpg",
+          "reason": "wrong identity - partner/institution logo on the shared tsls.com.fj uploads path"
+        },
+        {
+          "url": "https://tsls.com.fj/wp-content/uploads/2025/11/University-of-Fiji-Logo-3.jpg",
+          "reason": "wrong identity - eligible-institution logo on the shared tsls.com.fj uploads path"
+        }
+      ]
+    }
+  ]
+}

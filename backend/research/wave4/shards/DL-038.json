@@ -1,0 +1,111 @@
+{
+  "shard_id": "DL-038",
+  "topic": "deadline",
+  "hosts": [
+    "oia-scholarship.nycu.edu.tw",
+    "scholarships.gov.gh",
+    "www.cambridgetrust.org",
+    "www.manchester.ac.uk",
+    "www.tuwien.at",
+    "www.webster.ac.at"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 69,
+      "title": "Cambridge Trust International Scholarship",
+      "official_source": "The Cambridge Trust (Cambridge Commonwealth, European & International Trust)",
+      "official_source_url": "https://www.cambridgetrust.org",
+      "catalogue_url": "https://www.postgraduate.study.cam.ac.uk/courses",
+      "country": "United Kingdom",
+      "deadline_display": "No separate scholarship application exists. The University of Cambridge admission application must be submitted by the funding deadline specific to your course, which is different from the application deadline and is listed in the Postgraduate Course Directory. The funding section of the application must be completed to be considered for funding.",
+      "deadline_precision": "varies",
+      "application_period": "The Trust's awarding period runs from the middle of February to the end of July each year, with most awards made in February and March and unclaimed awards reallocated during the period. Applicants remain under consideration until the end of July.",
+      "verification_status": "active"
+    },
+    {
+      "id": 76,
+      "title": "GREAT Scholarship for Bangladesh ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â University of Manchester",
+      "official_source": "The University of Manchester, in partnership with the British Council",
+      "official_source_url": "https://www.manchester.ac.uk/study/international/finance-and-scholarships/funding/great-scholarships",
+      "catalogue_url": "https://www.manchester.ac.uk/study/postgraduate-research/programmes/research-areas/",
+      "country": "United Kingdom",
+      "deadline_display": "23 April 2026 ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â both a conditional or unconditional offer and the scholarship application form had to be in place by this date; successful applicants were notified by 29 May 2026",
+      "deadline_precision": "recurring",
+      "application_period": "Applications opened to relevant offer-holders from December 2025 and closed on 23 April 2026 for the September 2026 entry. Manchester has not yet published dates for the following annual cycle.",
+      "verification_status": "active"
+    },
+    {
+      "id": 150,
+      "title": "NYCU Elite Ph.D. Scholarship for New Students",
+      "official_source": "National Yang Ming Chiao Tung University (NYCU), Office of International Affairs, Division of International Talent Cultivation",
+      "official_source_url": "https://oia-scholarship.nycu.edu.tw",
+      "catalogue_url": null,
+      "country": "Taiwan",
+      "deadline_display": "No application deadline exists for this award. NYCU states that the Elite Ph.D. Scholarship \"is awarded based on recommendations from the college and a review by the scholarship committee, not through the application submitted by the students\". The only recurring dates are the per-semester deadline by which existing recipients must submit transcripts and tuition payment receipts to stay eligible the following semester.",
+      "deadline_precision": "varies",
+      "application_period": "Not student-applied. New Ph.D. places are nominated by the candidate's college and reviewed by the scholarship committee within NYCU's doctoral admission cycle. Existing recipients must submit transcripts and tuition payment receipts each semester before a per-semester deadline to remain eligible in the following semester, and renewals are handled in the application period announced by the OIA.",
+      "verification_status": "active"
+    },
+    {
+      "id": 163,
+      "title": "TU Wien Scholarships for International Students",
+      "official_source": "TU Wien (Vienna University of Technology)",
+      "official_source_url": "https://www.tuwien.at/en/studies/scholarships",
+      "catalogue_url": null,
+      "country": "Austria",
+      "deadline_display": "Varies (check official website for current calls)",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 170,
+      "title": "Webster University Vienna Scholarships",
+      "official_source": "Webster University Vienna",
+      "official_source_url": "https://www.webster.ac.at/scholarships",
+      "catalogue_url": null,
+      "country": "Austria",
+      "deadline_display": "Varies (rolling admissions)",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 222,
+      "title": "Helmut Veith Stipend for Female Master's Students in Computer Science",
+      "official_source": "TU Wien",
+      "official_source_url": "https://www.tuwien.at/en/studies/studying-at-tu-wien/study-grants/helmut-veith-stipendium",
+      "catalogue_url": null,
+      "country": "Austria",
+      "deadline_display": "\"Annual Deadline: November 30th\" (the page states: \"November 30th (annually)\").",
+      "deadline_precision": "recurring",
+      "application_period": "Applications are invited from November and close annually on 30 November.",
+      "verification_status": "active"
+    },
+    {
+      "id": 618,
+      "title": "Presidential West African Scholarship Initiative (PWASI) 2026",
+      "official_source": "Ghana Scholarships Authority (Government of the Republic of Ghana)",
+      "official_source_url": "https://scholarships.gov.gh/opportunities/presidential-west-african-scholarship-initiative-pwasi-2026",
+      "catalogue_url": "https://scholarships.gov.gh/opportunities",
+      "country": "Ghana",
+      "deadline_display": "30 August 2026 for ECOWAS nominating agencies to return National Endorsement Forms (2026 cycle); deadline shown as 'Not specified' on the Authority notice",
+      "deadline_precision": "recurring",
+      "application_period": "2026/2027 academic year",
+      "verification_status": "active"
+    },
+    {
+      "id": 713,
+      "title": "Joint Algeria/Ghana Government Scholarship Awards 2026/2027 (tenable in Algeria)",
+      "official_source": "Government of the People's Democratic Republic of Algeria, announced by the Ghana Scholarships Authority (Republic of Ghana)",
+      "official_source_url": "https://scholarships.gov.gh/opportunities/the-joint-algeriaghana-government-scholarship-awards-for-the-20262027-academic-year-tenable-in-algeria",
+      "catalogue_url": "https://scholarships.gov.gh/opportunities/the-joint-algeriaghana-government-scholarship-awards-for-the-20262027-academic-year-tenable-in-algeria",
+      "country": "Algeria",
+      "deadline_display": "21 September 2026",
+      "deadline_precision": "recurring",
+      "application_period": "2026/2027 academic year; notice published 5 September 2026 and closed on 21 September 2026.",
+      "verification_status": "active"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "shard_id": "LG-030",
+  "topic": "logo",
+  "hosts": [
+    "mbzuai.ac.ae",
+    "www.deutschlandstipendium.de",
+    "www.tuni.fi",
+    "www.universite-paris-saclay.fr"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 91,
+      "title": "Université Paris-Saclay IDEX International Master's Scholarships",
+      "official_source": "Université Paris-Saclay (Government of France / IDEX)",
+      "official_source_url": "https://www.universite-paris-saclay.fr/en/admission/bourses-et-aides-financieres/international-masters-scholarships-program",
+      "catalogue_url": "http://www.universite-paris-saclay.fr/en/admissions/applying-undergraduate-programmes",
+      "country": "France",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 265,
+      "title": "Tampere University Tuition Fee Scholarship",
+      "official_source": "Tampere University",
+      "official_source_url": "https://www.tuni.fi/en/students-guide/handbook/uni/services-and-regulations-students/study-regulations/scholarships-fee-paying-students-admitted-in-2021-or-later",
+      "catalogue_url": "https://www.tuni.fi/en/tau/masters-programmes",
+      "country": "Finland",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 336,
+      "title": "Tampere University tuition fee scholarship (50%) and early bird offer",
+      "official_source": "Tampere University",
+      "official_source_url": "https://www.tuni.fi/en/tau/financial-matters/tuition-fees-and-scholarships",
+      "catalogue_url": "https://www.tuni.fi/en/tau/bachelors-programmes",
+      "country": "Finland",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 501,
+      "title": "Deutschlandstipendium",
+      "official_source": "Bundesministerium für Forschung, Technologie und Raumfahrt (BMFTR)",
+      "official_source_url": "https://www.deutschlandstipendium.de/deutschlandstipendium/de/stipendium/wie-es-funktioniert/wie-es-funktioniert.html",
+      "catalogue_url": null,
+      "country": "Germany",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 558,
+      "title": "MBZUAI Graduate Funding for M.Sc. and Ph.D. Students",
+      "official_source": "Mohamed bin Zayed University of Artificial Intelligence (MBZUAI)",
+      "official_source_url": "https://mbzuai.ac.ae/admissions/graduate-masters-admissions",
+      "catalogue_url": "https://mbzuai.ac.ae/academics/msc-programs",
+      "country": "United Arab Emirates",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

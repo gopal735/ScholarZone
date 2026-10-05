@@ -1,0 +1,292 @@
+{
+  "shard_id": "DL-012",
+  "agent_completed": true,
+  "topic": "deadline",
+  "agent_id": "DL-012",
+  "research_date": "2026-10-05",
+  "records": [
+    {
+      "scholarship_id": 12,
+      "title": "JASSO Monbukagakusho Honors Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Please ask the staff at the educational institution in which you are enrolled",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/about.html",
+        "source_type": "official_scholarship_page",
+        "publisher": "Japan Student Services Organization (JASSO)",
+        "retrieved_at": "2026-10-05T15:26:05Z",
+        "as_of": "Page carries 2026 selection results; it publishes no application deadline of its own",
+        "raw_extract": "Method of application\n\n\nPlease ask the staff at the educational institution in which you are enrolled\n\n\n\u203bThe number of students an educational institution can recommend depends on the number of international students enrolled in it. Please note that depending on your educational institution, you may not be able to apply.",
+        "exact_deadline_wording": "Please ask the staff at the educational institution in which you are enrolled",
+        "confidence": "HIGH",
+        "notes": "JASSO, the awarding body, publishes no application deadline, window or month for this scholarship. Selection is run by each enrolled educational institution, so there is no JASSO-side calendar value to record. The only cycle marker on the live page is '2026 Selection results of Monbukagakusho Honors Scholarship (In Japanese only)'. Nothing was inferred from an institution-side or prior-wave value."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Please ask the staff at the educational institution in which you are enrolled"
+      },
+      "examined": [
+        "https://www.jasso.go.jp/en/ryugaku/scholarship_j/index.html",
+        "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/yoyaku_tonichimae.html"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 25,
+      "title": "JASSO Student Exchange Support Program",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Applications for the scholarship will be accepted only from Japanese school.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/ukeire.html",
+        "source_type": "official_scholarship_page",
+        "publisher": "Japan Student Services Organization (JASSO)",
+        "retrieved_at": "2026-10-05T15:26:05Z",
+        "as_of": "Page is stamped 'As of January 31, 2024'",
+        "raw_extract": "The Whole Process\n\n\n\n\n\nApplications for the scholarship will be accepted only from Japanese school.\nUpon screening the application documents submitted by Japanese school, JASSO will decide the programs to support and notice the results.\nThe selection method of scholarship recipients is different from each school and each program. For further information and inquiry, students are advised to ask each home school.\n\n\nStarting Time of Scholarship Period\n\n\nStudents must start the study-in-Japan program at Japanese schools during each school's designated period.",
+        "exact_deadline_wording": "Applications for the scholarship will be accepted only from Japanese school.",
+        "confidence": "HIGH",
+        "notes": "No date, month or window is published. Applications originate from the Japanese host school under a bilateral exchange agreement, and JASSO explicitly directs all timing questions to each home school. The only published timing statement is tied to the host school's designated study period, which is institution-specific and cannot be turned into a calendar date."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Applications for the scholarship will be accepted only from Japanese school."
+      },
+      "examined": [
+        "https://www.jasso.go.jp/en/ryugaku/scholarship_j/index.html",
+        "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/about.html"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 49,
+      "title": "Annie Farrand Scholarship in Agricultural Science (International)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "01 December 2025",
+      "deadline_precision": "exact",
+      "published_deadline_iso": "2025-12-01",
+      "source": {
+        "url": "https://www.sydney.edu.au/scholarships/d/farrand-scholarship-in-agricultural-science--international-.html",
+        "source_type": "official_scholarship_page",
+        "publisher": "University of Sydney",
+        "retrieved_at": "2026-10-05T15:26:07Z",
+        "as_of": "Live page at retrieval: close date '01 December 2025', open date 'N/A'",
+        "raw_extract": "Highlights\nValueEligibilityOpen dateClose date$20,000 p.a. (up to 3 years)International studentHaving an unconditional offer of admission to study full-time in the Bachelor of Agricultural Science or Bachelor of Agricultural Science (Honours) N/A01 December 2025\nHow to apply\nNo application is required, as all eligible students who have secured an unconditional offer of admission will be automatically considered.",
+        "exact_deadline_wording": "01 December 2025",
+        "confidence": "HIGH",
+        "notes": "The Highlights table on the live page is the only place a date appears: Open date 'N/A', Close date '01 December 2025'. That date is roughly ten months before the retrieval date of 2026-10-05, and the record is open/upcoming, so per brief section 6 the stale date is NOT written to deadline_date and is NOT silently moved to a later year. No 2027 cycle date has been posted by the University. The published close date is preserved in published_deadline_iso for traceability only. This is an explicit calendar date, so semantics is EXACT/precision exact even though the value is not written."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "01 December 2025"
+      },
+      "examined": [],
+      "rejected_sources": [
+        {
+          "url": "https://www.sydney.edu.au/scholarships/d/farrand-scholarship-in-agricultural-science--international-.html",
+          "reason": "The page's own text was used; no other date was taken from it. No generic Bachelor of Agricultural Science admission deadline was substituted for this scholarship's close date."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 89,
+      "title": "York University President's International Scholarship of Excellence",
+      "outcome": "conflicting",
+      "deadline_semantics": "CONFLICTING",
+      "deadline_date": null,
+      "deadline_display": "Student Application Deadline: January 27, 2027 at 11:59 p.m. EST (PISE application guide page) vs Student Application Deadline: January 26, 2027 (Scholarships, Awards and Bursaries for Incoming Students page)",
+      "deadline_precision": "varies",
+      "conflicting_sources": [
+        {
+          "url": "https://futurestudents.yorku.ca/presidents-international-scholarship-excellence-application-guides",
+          "cycle_described": "Entry Fall 2027",
+          "verbatim": "Student Application Deadline:\n\nJanuary 27, 2027 at 11:59 p.m. EST\n\nNomination & Reference Submission Deadline:\n\nFebruary 4, 2027 at 11:59 p.m. EST",
+          "value": "2027-01-27"
+        },
+        {
+          "url": "https://futurestudents.yorku.ca/scholarships-incoming-students",
+          "cycle_described": "The Fall/Winter 2026-2027 application (same Fall 2027 intake; identical nomination deadline of February 4, 2027)",
+          "verbatim": "Important dates:\nThe Fall/Winter 2026-2027 application will open on November 1,  2026.\nStudent Application Deadline: January 26, 2027\nNomination Deadline: February 4, 2027",
+          "value": "2027-01-26"
+        },
+        {
+          "url": "https://futurestudents.yorku.ca/financing-your-degree/scholarships-bursaries",
+          "cycle_described": "Featured PISE card, current cycle",
+          "verbatim": "Student Application Deadline: January 27, 2027\nNomination Deadline: February 4, 2027",
+          "value": "2027-01-27"
+        }
+      ],
+      "source": {
+        "url": "https://futurestudents.yorku.ca/presidents-international-scholarship-excellence-application-guides",
+        "source_type": "official_university_page",
+        "publisher": "York University (Future Students / Student Recruitment & Admissions)",
+        "retrieved_at": "2026-10-05T15:27:40Z",
+        "as_of": "Page describes entry to Fall 2027; the same page also states 'The scholarship application is now closed.' while still publishing the January 27, 2027 deadline",
+        "raw_extract": "https://futurestudents.yorku.ca/presidents-international-scholarship-excellence-application-guides -> \"Student Application Deadline:\n\nJanuary 27, 2027 at 11:59 p.m. EST\" ... \"Deadline: January 27, 2027 at 11:59 PM EST\" ... \"Have nominees complete the online scholarship application by January 27, 2027, including your name, title and email address.\" | https://futurestudents.yorku.ca/scholarships-incoming-students -> \"Important dates:\nThe Fall/Winter 2026-2027 application will open on November 1,  2026.\nStudent Application Deadline: January 26, 2027\nNomination Deadline: February 4, 2027\" and, in the note under the same award, \"Ensure that you submit your application for admission well in advance of the scholarship application deadline January 26, 2026.\" | https://futurestudents.yorku.ca/financing-your-degree/scholarships-bursaries -> \"Student Application Deadline: January 27, 2027\nNomination Deadline: February 4, 2027\"",
+        "exact_deadline_wording": "Student Application Deadline: January 27, 2027 at 11:59 p.m. EST (guide page) / Student Application Deadline: January 26, 2027 (incoming-students page)",
+        "confidence": "HIGH",
+        "notes": "Two official York pages give different calendar days for the SAME PISE student application deadline in the SAME upcoming cycle (Fall/Winter 2026-2027 entry = Fall 2027), and the nomination deadline matches on both (February 4, 2027), so these are the same deadline and not two different programmes. A third official page agrees with January 27, 2027, but a majority reading is not a licence to resolve a published contradiction, and the incoming-students page also contradicts itself internally ('January 26, 2027' in the dates block versus 'January 26, 2026' in the note below it). Per brief section 6, a genuine disagreement between credible sources about the same deadline is recorded as CONFLICTING with deadline_date null and precision 'varies'. Both candidate values are preserved verbatim above for human review; neither was adopted."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "varies",
+        "deadline_display": "Student Application Deadline: January 27, 2027 at 11:59 p.m. EST (guide) / Student Application Deadline: January 26, 2027 (incoming-students page) - official York pages disagree"
+      },
+      "examined": [
+        "https://futurestudents.yorku.ca/financing-your-degree/international-scholarships/presidents-international-scholarship-excellence",
+        "https://futurestudents.yorku.ca/presidents-international-scholarship-excellence"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://futurestudents.yorku.ca/financing-your-degree/international-scholarships/presidents-international-scholarship-excellence",
+          "reason": "The shard's official_source_url returned HTTP 404 on the live site; the scholarship now lives at /presidents-international-scholarship-excellence with the guide at /presidents-international-scholarship-excellence-application-guides."
+        },
+        {
+          "url": "https://futurestudents.yorku.ca/requirements/deadlines",
+          "reason": "York's generic undergraduate application deadline table is a different programme's deadline and was not used, even though it was surfaced during navigation."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 146,
+      "title": "Taiwan International Graduate Program (TIGP) - Ph.D. Scholarship and Stipend, Academia Sinica",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "The TIGP Admission Office receives on-line applications from November 1st to February 1st every year.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://tigp.sinica.edu.tw/pages/2743",
+        "source_type": "official_programme_page",
+        "publisher": "Academia Sinica - Taiwan International Graduate Program (TIGP)",
+        "retrieved_at": "2026-10-05T15:27:45Z",
+        "as_of": "Recurring annual window; most recent posted cycle announcement is 'TIGP Application Announcement for 2026' published 2025-11-01 with 'before 1 February 2026 (GMT+8)', which has passed",
+        "raw_extract": "General Information\n\nThe TIGP Admission Office receives on-line applications from November 1st to February 1st every year. Results of admissions are usually announced in late June / early July; admitted applicants may be enrolled in the following fall semester.",
+        "exact_deadline_wording": "The TIGP Admission Office receives on-line applications from November 1st to February 1st every year.",
+        "confidence": "HIGH",
+        "notes": "The official TIGP programme page states a recurring annual window and no fixed current date. Checked the live News & Announcement index (https://tigp.sinica.edu.tw/pages/2748): the newest application announcement is 'TIGP Application Announcement for 2026' dated 2025-11-01 ('before 1 February 2026 (GMT+8)' - already past) and the newest item overall is 'The Announcement of 2026 TIGP Admissions' dated 2026-07-20. As of retrieval on 2026-10-05 no 2027-cycle announcement with a current calendar deadline has been posted, so per brief section 6 the recurring window is recorded as ANNUAL/recurring with deadline_date null and was NOT converted into a date. Note the stipend itself (TIGP Scholarship/Stipend) is awarded on admission, so the admissions window above is the only application timing the official programme publishes for this award."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "The TIGP Admission Office receives on-line applications from November 1st to February 1st every year."
+      },
+      "examined": [
+        "https://tigp.sinica.edu.tw",
+        "https://tigp.sinica.edu.tw/pages/2748",
+        "https://tigp.sinica.edu.tw/posts/188371"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://tigp.sinica.edu.tw/posts/188371",
+          "reason": "The only explicit calendar deadline on this page ('before 1 February 2026 (GMT+8)') belongs to the closed 2026 cycle; it was not reused as the current deadline and not rolled forward to 2027."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 240,
+      "title": "JASSO Reservation Program for Monbukagakusho Honors Scholarship for Privately-Financed International Students by Pre-arrival Admission",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Please ask school you plan to enroll in. We do not accept applications directly from students.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/yoyaku_tonichimae.html",
+        "source_type": "official_scholarship_page",
+        "publisher": "Japan Student Services Organization (JASSO)",
+        "retrieved_at": "2026-10-05T15:26:09Z",
+        "as_of": "Page lists eligible school lists for spring and autumn enrolment for academic year 2026",
+        "raw_extract": "(4) Method of application\n\n\nPlease ask school you plan to enroll in. We do not accept applications directly from students.\nTo receive the scholarship, the applicant must complete the procedure through your school.\nInformation on reservation categories and eligible schools are mentioned below.",
+        "exact_deadline_wording": "Please ask school you plan to enroll in. We do not accept applications directly from students.",
+        "confidence": "HIGH",
+        "notes": "JASSO publishes no deadline for this reservation programme: the applicant cannot apply to JASSO at all, and the timing is the nominating school's own pre-arrival admission and scholarship nomination deadline. The page does contain cycle reference dates used for building the eligible-school lists ('JASSO uses the list as of October 1, 2025 for enrollment in spring and the list as of April 1, 2026 for enrollment in September or October') and confirms the enrolment cycles (April / September or October), but none of these is an application deadline, so they were not converted into one."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Please ask school you plan to enroll in. We do not accept applications directly from students."
+      },
+      "examined": [
+        "https://www.jasso.go.jp/en/ryugaku/scholarship_j/index.html",
+        "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/about.html"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/yoyaku_tonichimae.html",
+          "reason": "The list cut-off dates on this same page ('as of October 1, 2025', 'as of April 1, 2026') describe which school list JASSO uses, not an application deadline; they were not used as one."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 376,
+      "title": "JASSO Monbukagakusho Honors Scholarship for Privately-Financed International Students",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Please ask the staff at the educational institution in which you are enrolled",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/about.html",
+        "source_type": "official_scholarship_page",
+        "publisher": "Japan Student Services Organization (JASSO)",
+        "retrieved_at": "2026-10-05T15:26:09Z",
+        "as_of": "Page carries 2026 selection results; no application deadline published",
+        "raw_extract": "Method of application\n\n\nPlease ask the staff at the educational institution in which you are enrolled\n\n\n\u203bThe number of students an educational institution can recommend depends on the number of international students enrolled in it. Please note that depending on your educational institution, you may not be able to apply.",
+        "exact_deadline_wording": "Please ask the staff at the educational institution in which you are enrolled",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url for this record (https://www.jasso.go.jp/en/ryugaku/scholarship_j/index.html) was fetched first: it is a hub page that only says 'In order to foster a financially stable environment for international students to study, JASSO provides the following financial assistance.' and lists three programme links, with no deadline. The quoted wording therefore comes from the award's own page (the record's catalogue_url), which is where JASSO states how applications are made. JASSO publishes no date, month or window; the deadline is the enrolled institution's own, so nothing was inferred."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Please ask the staff at the educational institution in which you are enrolled"
+      },
+      "examined": [
+        "https://www.jasso.go.jp/en/ryugaku/scholarship_j/index.html",
+        "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/yoyaku_tonichimae.html"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 674,
+      "title": "Kingdom of Morocco – Government of Rwanda Scholarships (2026/2027)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Application deadline:  29/08/2026",
+      "deadline_precision": "exact",
+      "published_deadline_iso": "2026-08-29",
+      "source": {
+        "url": "https://www.hec.gov.rw/fileadmin/user_upload/HEC/Scholarships/KINGDOM_OF_MOROCCO_-__GOVERNMENT_OF_RWANDA_SCHOLARSHIPS.pdf",
+        "source_type": "official_government_page",
+        "publisher": "Higher Education Council (HEC), Republic of Rwanda",
+        "retrieved_at": "2026-10-05T15:27:41Z",
+        "as_of": "Academic year 2026/2027; announcement dated 'Done at Kigali, 26/08/2026'",
+        "raw_extract": "PUBLIC ANNOUNCEMENT\nKINGDOM OF MOROCCO –  GOVERNMENT OF RWANDA SCHOLARSHIPS.\nThe Higher Education Council (HEC) wishes to inform the general public that the Kingdom of Morocco has offered to the Government of Rwanda scholarships at Diploma, Bachelors, Masters and PhD  level commencing in academic year 2026/2027 taught in French from Moroccan public training institutions/ universities.\n...\nApplication deadline:  29/08/2026\nDone at  Kigali, 26/08/2026\n\n \nDr. Edward KADOZI\nDirector General",
+        "exact_deadline_wording": "Application deadline:  29/08/2026",
+        "confidence": "HIGH",
+        "notes": "The PDF on the shard's official_source_url was fetched live and its text extracted from the document itself. It gives one explicit calendar deadline, 29 August 2026 for the 2026/2027 cycle. That date fell about five weeks before the retrieval date of 2026-10-05 and the 2026/2027 call is closed, while the record is open/upcoming, so per brief section 6 the stale date is NOT written to deadline_date and is NOT silently moved to the next cycle. The live HEC scholarships index (https://www.hec.gov.rw/updates/scholarships) shows the Morocco call dated Wednesday, 26 August 2026 and, above it, only newer unrelated items ('CALL FOR APPLICATIONS FOR GOVERNMENT STUDY LOAN – JANUARY 2027 INTAKE', 02 October 2026; 'PEOPLE'S DEMOCRATIC REPUBLIC OF ALGERIA – RWANDA GOVERNMENT SCHOLARSHIPS', 24 September 2026), so no newer 2027/2028 Morocco call exists to recover. The published date is preserved in published_deadline_iso for traceability only. This matches the shard's own verification_status of needs_review."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "Application deadline:  29/08/2026"
+      },
+      "examined": [
+        "https://www.hec.gov.rw/updates/scholarships"
+      ],
+      "rejected_sources": []
+    }
+  ]
+}

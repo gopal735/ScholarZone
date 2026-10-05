@@ -1,0 +1,290 @@
+{
+  "shard_id": "DL-041",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 136,
+      "title": "Padua International Excellence Scholarship — Università degli Studi di Padova",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "apply to an English-taught degree at the University of Padova within the deadline. ... The scholarship results will be published on the University website according to the deadlines specified in the Admission Notice. ... More information about Padua International Excellence Scholarships will be available in the Calls for Application that will be published in November 2026.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.unipd.it/en/padua-international-excellence-scholarship-programme",
+        "source_type": "official_scholarship_page",
+        "publisher": "Università degli Studi di Padova (University of Padua)",
+        "retrieved_at": "2026-10-05T15:28:00Z",
+        "as_of": null,
+        "raw_extract": "The application for the degree course of your interest automatically makes you eligible to compete for the award of the scholarship provided you meet the requirements listed above. Therefore, there is no need to submit a separate application or any additional documentation other than the documents required to apply for the chosen degree programme. [...] apply to an English-taught degree at the University of Padova within the deadline. The scholarship results will be published on the University website according to the deadlines specified in the Admission Notice. [...] More information about Padua International Excellence Scholarships will be available in the Calls for Application that will be published in November 2026.",
+        "exact_deadline_wording": "apply to an English-taught degree at the University of Padova within the deadline",
+        "confidence": "HIGH",
+        "notes": "The official scholarship page states there is no separate scholarship application: eligibility is conferred by the degree-course application. It gives no explicit calendar deadline for the scholarship. The operative deadline is the admission deadline of the chosen degree programme, published in that programme's Admission Notice, so there is no single deadline for this record. 'November 2026' is the stated publication month of the future Calls for Application, NOT a deadline, and was deliberately not recorded as a MONTH value. The 2026/2027 Call is the only call linked from the page; the 2027/2028 call does not yet exist on the live page."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "No separate scholarship deadline: apply to an English-taught degree within that degree programme's deadline; results published per the deadlines in the Admission Notice. Calls for Application to be published November 2026."
+      },
+      "examined": [
+        "https://www.unipd.it/en/padua-international-excellence-scholarship-programme",
+        "https://www.unipd.it/sites/default/files/2026-05/Call%20for%20applications%20for%20Scholarships%20for%20international%20students%20enrolling%20in%20English-taught%20Degree%20programmes%20%28A.Y.%202026-2027%29.pdf",
+        "https://www.unipd.it/en"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.unipd.it/sites/default/files/2026-05/Call%20for%20applications%20for%20Scholarships%20for%20international%20students%20enrolling%20in%20English-taught%20Degree%20programmes%20%28A.Y.%202026-2027%29.pdf",
+          "reason": "Returned HTTP 404 and is not exposed as a static anchor on the live page (accordion is JS-driven against an internal document API). The only cycle it covers is A.Y. 2026/2027, whose application windows closed in early 2026, so it could not supply an upcoming deadline even if reachable."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 370,
+      "title": "Padua International Excellence Scholarship Programme",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "apply to an English-taught degree at the University of Padova within the deadline. ... The scholarship results will be published on the University website according to the deadlines specified in the Admission Notice. ... More information about Padua International Excellence Scholarships will be available in the Calls for Application that will be published in November 2026.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.unipd.it/en/padua-international-excellence-scholarship-programme",
+        "source_type": "official_scholarship_page",
+        "publisher": "Università degli Studi di Padova (University of Padua)",
+        "retrieved_at": "2026-10-05T15:28:00Z",
+        "as_of": null,
+        "raw_extract": "The application for the degree course of your interest automatically makes you eligible to compete for the award of the scholarship provided you meet the requirements listed above. Therefore, there is no need to submit a separate application or any additional documentation other than the documents required to apply for the chosen degree programme. [...] apply to an English-taught degree at the University of Padova within the deadline. The scholarship results will be published on the University website according to the deadlines specified in the Admission Notice. [...] More information about Padua International Excellence Scholarships will be available in the Calls for Application that will be published in November 2026.",
+        "exact_deadline_wording": "apply to an English-taught degree at the University of Padova within the deadline",
+        "confidence": "HIGH",
+        "notes": "This record is the same Padua International Excellence Scholarship as id 136, sourced from the university root rather than the programme page. The record's own catalogue_url is the programme page, which is the authoritative scholarship page and is the source used here; the stated official_source_url was also fetched and contains no scholarship deadline (full page text checked: no occurrence of 'Excellence Scholarship' and no occurrence of 'deadline'). No explicit calendar deadline exists for the scholarship, so UNKNOWN."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "No separate scholarship deadline: apply to an English-taught degree within that degree programme's deadline; results published per the deadlines in the Admission Notice. Calls for Application to be published November 2026."
+      },
+      "examined": [
+        "https://www.unipd.it/en",
+        "https://www.unipd.it/en/padua-international-excellence-scholarship-programme"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 169,
+      "title": "CEU Scholarships (Central European University) — Vienna",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Please make sure to check your future program's website before you start your application. ... Candidates from any country can apply for CEU financial aid. Applicants who want to be considered for these awards must apply by the appropriate deadline.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.ceu.edu/admissions/financial-aid",
+        "source_type": "official_scholarship_page",
+        "publisher": "Central European University (CEU)",
+        "retrieved_at": "2026-10-05T15:32:00Z",
+        "as_of": null,
+        "raw_extract": "Financial aid is granted on the basis of academic merit and is available for most of our programs (only full-time programs). Please make sure to check your future program's website before you start your application. Candidates from any country can apply for CEU financial aid. Applicants who want to be considered for these awards must apply by the appropriate deadline. To be considered, indicate your interest for financial aid in the CEU Application Form ('Funding' section).",
+        "exact_deadline_wording": "Applicants who want to be considered for these awards must apply by the appropriate deadline.",
+        "confidence": "HIGH",
+        "notes": "The record's official_source_url (https://www.ceu.edu/scholarships) is dead (HTTP 404); the live official financial-aid page for the same award was used instead. That page publishes NO calendar date and explicitly defers the deadline to each degree programme. The award spans bachelor, master and doctoral levels, and the master's admissions page (https://www.ceu.edu/admissions/master, fetched) shows two financial-aid-eligible rounds with DIFFERENT dates - Round 1 'Deadline: October 15, 2026 (23:59, Central European Time)' and Round 2 'Deadline: February 2, 2027 (23:59, Central European Time)' - with 'Institutional (CEU) financial aid awards will be made in the first two rounds only', and states that some programmes 'have their own admissions calendars'. Because this record is a degree-agnostic umbrella award, selecting one of several programme/round dates would be an invention of specificity, so UNKNOWN. This is not CONFLICTING: the differing dates are different rounds/programmes, not two sources disagreeing about the same deadline. The prior catalogue value 'Typically January-February for Fall intake' is not supported by any CEU page fetched and was not carried forward."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Applicants who want to be considered for these awards must apply by the appropriate deadline (programme-specific; check the programme website)."
+      },
+      "examined": [
+        "https://www.ceu.edu/admissions/financial-aid",
+        "https://www.ceu.edu/admissions/master",
+        "https://www.ceu.edu/admissions/financial-aid/enrolled",
+        "https://www.ceu.edu/admissions/financial-aid/student-scholarships",
+        "https://www.ceu.edu/admissions/financial-aid/external-funding-opportunities",
+        "https://documents.ceu.edu/file/13282/download?token=nUux2Zy0"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.ceu.edu/scholarships",
+          "reason": "Record's stated official_source_url returns HTTP 404; does not exist. Not used as evidence."
+        },
+        {
+          "url": "https://www.ceu.edu/admissions/scholarships",
+          "reason": "Guessed URL, HTTP 404."
+        },
+        {
+          "url": "https://www.ceu.edu/admissions/financial-aid/masters-scholarships",
+          "reason": "Guessed URL, HTTP 404. No dedicated master's scholarship deadline page exists at this path."
+        },
+        {
+          "url": "https://documents.ceu.edu/file/13282/download?token=nUux2Zy0",
+          "reason": "Official CEU policy PDF, but it only refers to deadlines generically ('submit all supporting documents to the appropriate office by the general application deadline', 'by the indicated deadline') and states no calendar date. Contributed no value."
+        },
+        {
+          "url": "https://www.ceu.edu/admissions/financial-aid/enrolled",
+          "reason": "Wrong population: grants for already-enrolled students, not admission financial aid. Contains explicit dates for other grants (DRSG, Winter/Summer School) which are different awards and must not be used here."
+        },
+        {
+          "url": "https://www.ceu.edu/admissions/financial-aid/external-funding-opportunities",
+          "reason": "Third-party external scholarships aggregated by CEU, not the CEU award in this record; its deadline table is for other providers' awards."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 400,
+      "title": "New Zealand Space Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Applications for the 2027 New Zealand Space Scholarship open on 1 October 2026.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.mbie.govt.nz/science-and-technology/space/careers-scholarships-and-awards/new-zealand-space-scholarship",
+        "source_type": "official_government_page",
+        "publisher": "Ministry of Business, Innovation and Employment (MBIE) / New Zealand Space Agency, New Zealand Government",
+        "retrieved_at": "2026-10-05T15:37:00Z",
+        "as_of": "2027 scholarship round (page last updated 01 October 2026)",
+        "raw_extract": "Applications for the 2027 New Zealand Space Scholarship open on 1 October 2026. [...] The Scholarship at a glance Location: Jet Propulsion Laboratory (JPL), Southern California, USA. Duration: 3-month internship. Timing: July to September 2027. [...] Last updated: 01 October 2026",
+        "exact_deadline_wording": "Applications for the 2027 New Zealand Space Scholarship open on 1 October 2026.",
+        "confidence": "HIGH",
+        "notes": "Live official page fetched and read in full (HTTP 200, 5,611 characters of body text). The page states an OPENING date only and publishes no closing date anywhere for the 2027 round. 'July to September 2027' is the internship period, not a deadline. '1 October 2026' is an opening date, not a deadline, so it was deliberately not recorded as a deadline value. No closing date exists to recover, therefore UNKNOWN with precision unknown. The prior catalogue value is consistent with what the live page shows."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Applications for the 2027 New Zealand Space Scholarship open on 1 October 2026. (No closing date published on the official page.)"
+      },
+      "examined": [
+        "https://www.mbie.govt.nz/science-and-technology/space/careers-scholarships-and-awards/new-zealand-space-scholarship",
+        "https://www.spaceagency.govt.nz/for-careers/space-scholarship/"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.mbie.govt.nz/about/news/turning-dreams-into-reality-with-new-zealand-space-scholarships",
+          "reason": "MBIE news item for the 2026 round quoting 'Applications close Sunday, 19 October 2025' - a past cycle. Not fetched as evidence and not written; a stale date must not be carried forward or rolled to a later year."
+        },
+        {
+          "url": "https://www.mbie.govt.nz/about/news/2026-new-zealand-space-scholarship-winners-announced",
+          "reason": "Outcome announcement for the 2026 round (published 18 June 2026). Contains no deadline for the open 2027 round."
+        }
+      ],
+      "access_note": "mbie.govt.nz is protected by an Incapsula bot wall: plain HTTP fetches returned an empty body or an 'Request unsuccessful. Incapsula incident ID' interstitial. The page was successfully retrieved at HTTP 200 with a real browser session and the full body text was read, so the conclusion rests on the live official page rather than on a search snippet."
+    },
+    {
+      "scholarship_id": 468,
+      "title": "NYCU International Student Scholarship",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Application Period (for current NYCU students) ■ Fall Semester: January 15-March 15 ■ Spring Semester: July 15-September 15 ＊Late application documents will not be accepted.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://oia.nycu.edu.tw/oia/en/app/data/view?module=nycu0012&id=792&serno=0f046f83-4147-4ec7-8921-bbaccd8c678f",
+        "source_type": "official_university_page",
+        "publisher": "National Yang Ming Chiao Tung University (NYCU), Office of International Affairs",
+        "retrieved_at": "2026-10-05T15:28:00Z",
+        "as_of": "Page update date 2024-01-11 (page states 'Update Date：2024-01-11'); application windows stated as recurring semester periods with no year",
+        "raw_extract": "Application Period (for current NYCU students)\n■ Fall Semester: January 15-March 15\n■ Spring Semester: July 15-September 15\n＊Late application documents will not be accepted. [...] Incoming students\nApply along with your admission application [...] The application period will be the same as the general application period.",
+        "exact_deadline_wording": "■ Fall Semester: January 15-March 15 ■ Spring Semester: July 15-September 15",
+        "confidence": "HIGH",
+        "notes": "Semantics resolved as ANNUAL/recurring rather than EXACT: the provider gives day-level window boundaries (January 15-March 15 and July 15-September 15) but attaches no year, and presents them as the standing semester application period that repeats each cycle ('The application period will be the same as the general application period'). Per the brief a recurring value must never be converted into a calendar date, so deadline_date is null and no year was attached. Two further scope notes for reviewers: the windows are stated for CURRENT NYCU students only - for incoming students the page says 'Apply along with your admission application', i.e. no scholarship deadline is given; and the closing boundary is stated as the end of the window (September 15) rather than as a named 'deadline'. Page 'Update Date' is 2024-01-11, so the wording may predate the current cycle, but the same page is the live official source and no superseding notice was found."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "Application Period (for current NYCU students): Fall Semester January 15-March 15; Spring Semester July 15-September 15. Late application documents will not be accepted."
+      },
+      "examined": [],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 720,
+      "title": "Scholarships for High Achievers Higher Education (Level 7) Overseas Scheme (TSLS, Government of Fiji)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "All applications must be successfully submitted before the application closing date",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://tsls.com.fj/wp-content/uploads/2026/09/TSLS-Handbook-Final-Copy.pdf",
+        "source_type": "official_scholarship_page",
+        "publisher": "Tertiary Scholarships and Loans Service (TSLS), Ministry of Education, Government of Fiji",
+        "retrieved_at": "2026-10-05T15:39:00Z",
+        "as_of": "2026-2027 Financial Year (handbook cover: 'TSLS Scholarship and Policies Handbook for the 2026-2027 Financial Year')",
+        "raw_extract": "Step 3: Application Processing Status [...] 3. All applications must be successfully submitted before the application closing date 4. Late and incomplete applications will not be considered for assessment",
+        "exact_deadline_wording": "All applications must be successfully submitted before the application closing date",
+        "confidence": "HIGH",
+        "notes": "The scheme page (official_source_url, HTTP 200, read in full) publishes NO closing date: it gives eligibility, priority disciplines, eligible institutions and an 'Apply Now' link to apply.tsls.com.fj, and nothing else about timing. The official 2026-2027 Scholarship Policies Handbook PDF was then downloaded (36 MB, 60 pages) and its full text searched for closing/deadline wording; it states the RULE ('before the application closing date') but never states the date. A keyword sweep of all 60 pages for closing/close/deadline/last-date/must-be-submitted returned exactly this single line, so the closing date is genuinely not published in the handbook either. UNKNOWN. The only dated reference found anywhere on the official domain is a news post dated January 7, 2026 referring to 'the 31st January deadline' for the 2026 academic year - a past cycle, not scheme-specific, so it was neither written nor rolled forward. The prior catalogue precision 'recurring' is NOT supported by any source and was not carried forward."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "All applications must be successfully submitted before the application closing date (no date published on the scheme page or in the 2026-2027 Handbook)."
+      },
+      "examined": [
+        "https://tsls.com.fj/high-achievers-higher-education-level-7-overseas-scheme",
+        "https://tsls.com.fj/wp-content/uploads/2026/09/TSLS-Handbook-Final-Copy.pdf",
+        "https://tsls.com.fj/handbook",
+        "https://tsls.com.fj/press-release/",
+        "https://tsls.com.fj/tsls-urges-students-to-register-well-before-the-deadline/"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://tsls.com.fj/tsls-urges-students-to-register-well-before-the-deadline/",
+          "reason": "Official TSLS news post, but dated January 7, 2026 and scoped to the 2026 academic year: 'TSLS urges students to register and submit their scholarship applications well in advance of the 31st January deadline. Applications for the 2026 academic year are currently open'. That deadline is in the past and is not attributed to this scheme, so writing 2026-01-31 would be a stale value and inferring a 2027 equivalent from last year's pattern is exactly the cycle-assumption inference the brief forbids."
+        },
+        {
+          "url": "https://tsls.com.fj/press-release/",
+          "reason": "Official TSLS press release announcing the opening of online application (post dated December 5, 2025) for 2026 Academic Term 1. It announces an opening and refers to the Handbook, and states no closing date."
+        },
+        {
+          "url": "https://www.fijitimes.com.fj/160m-set-aside-for-scholarships/",
+          "reason": "Third-party newspaper (authoritative secondary) reporting the 2027 Handbook launch. The contract for this shard does not require a secondary source, the scheme page and handbook were reachable directly, and the article states no closing date."
+        },
+        {
+          "url": "https://www.fijitimes.com.fj/tsls-pilot-intake-on-hold/",
+          "reason": "Third-party newspaper about a pilot-training intake pause; unrelated to this scheme's application deadline."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 723,
+      "title": "Cost Sharing Overseas PhD Scholarships Scheme with Australian Universities (TSLS, Government of Fiji)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "All applications must be successfully submitted before the application closing date",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://tsls.com.fj/wp-content/uploads/2026/09/TSLS-Handbook-Final-Copy.pdf",
+        "source_type": "official_scholarship_page",
+        "publisher": "Tertiary Scholarships and Loans Service (TSLS), Ministry of Education, Government of Fiji",
+        "retrieved_at": "2026-10-05T15:39:00Z",
+        "as_of": "2026-2027 Financial Year (handbook cover: 'TSLS Scholarship and Policies Handbook for the 2026-2027 Financial Year')",
+        "raw_extract": "Step 3: Application Processing Status [...] 3. All applications must be successfully submitted before the application closing date 4. Late and incomplete applications will not be considered for assessment",
+        "exact_deadline_wording": "All applications must be successfully submitted before the application closing date",
+        "confidence": "HIGH",
+        "notes": "Identical situation to id 720. The scheme page (official_source_url, HTTP 200, read in full) publishes NO closing date: it gives eligibility (Fiji citizen, 3 years residency, offer letter or candidature confirmation letter from an eligible Australian/NZ institution, under 50 at time of application), priority disciplines, eligible institutions and an 'Apply Now' link, and no timing. The official 2026-2027 Scholarship Policies Handbook PDF was downloaded and fully searched; the single closing-date-related line it contains states the rule but not the date. UNKNOWN. The January 7, 2026 news post about 'the 31st January deadline' refers to the 2026 academic year and is not scheme-specific, so it was neither written nor extrapolated."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "All applications must be successfully submitted before the application closing date (no date published on the scheme page or in the 2026-2027 Handbook)."
+      },
+      "examined": [
+        "https://tsls.com.fj/cost-sharing-overseas-phd-scholarships-scheme",
+        "https://tsls.com.fj/wp-content/uploads/2026/09/TSLS-Handbook-Final-Copy.pdf",
+        "https://tsls.com.fj/handbook",
+        "https://tsls.com.fj/press-release/",
+        "https://tsls.com.fj/tsls-urges-students-to-register-well-before-the-deadline/"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://tsls.com.fj/tsls-urges-students-to-register-well-before-the-deadline/",
+          "reason": "Official TSLS news post dated January 7, 2026, scoped to the 2026 academic year ('well in advance of the 31st January deadline'). Past and not attributed to this scheme; writing it would be a stale value and projecting it to 2027 would be a cycle assumption."
+        },
+        {
+          "url": "https://tsls.com.fj/press-release/",
+          "reason": "Announces the opening of online application for 2026 Academic Term 1 and refers to the Handbook; states no closing date."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,325 @@
+{
+  "shard_id": "DL-029",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 157,
+      "title": "CERN Doctoral Student Programme",
+      "outcome": "recovered",
+      "deadline_semantics": "EXACT",
+      "deadline_date": "2026-10-16",
+      "deadline_display": "Before 16/10/2026 at 23:59 (Geneva Time)",
+      "deadline_precision": "exact",
+      "date_written": true,
+      "source": {
+        "url": "https://careers.cern/jobs/tsc-doct/",
+        "source_type": "official_programme_page",
+        "publisher": "CERN (careers.cern, CERN recruitment portal)",
+        "retrieved_at": "2026-10-05T15:31:15Z",
+        "as_of": "Doctoral Student Programme 2027-1, reference TSC-2027-1/DOCT, ideal start date 01/04/2027, contract 12 to 36 months",
+        "raw_extract": "Before 16/10/2026 at 23:59 (Geneva Time)",
+        "exact_deadline_wording": "Before 16/10/2026 at 23:59 (Geneva Time)",
+        "confidence": "HIGH",
+        "notes": "SCOPE CAVEAT - READ BEFORE WRITING. The CERN Doctoral Studentship programme page itself carries NO calendar deadline; it only says 'Apply with your CV (in English or French) and complete the online application before the deadline.' The explicit date quoted here is the deadline of the SINGLE currently published and only open round of the programme, TSC-2027-1/DOCT, which the official programme page lists under 'Open positions in the Doctoral Studentship' and links to this vacancy page. Date read as dd/mm/yyyy (Geneva time, CEST), giving 16 October 2026, which is 11 days after retrieval and therefore current/upcoming, not stale. CERN publishes a new numbered round each cycle with its own deadline, so this value must be treated as the deadline of round 2027-1, not a permanent programme deadline."
+      },
+      "field_mapping": {
+        "deadline_date": "2026-10-16",
+        "deadline_precision": "exact",
+        "deadline_display": "Before 16/10/2026 at 23:59 (Geneva Time) - Doctoral Student Programme 2027-1, ref. TSC-2027-1/DOCT"
+      },
+      "examined": [
+        "https://careers.cern/programmes/doctoral-studentship - fetched first as the shard's official_source_url; official programme page contains no calendar deadline (only 'complete the online application before the deadline') but does list the single open round TSC-2027-1/DOCT, which yielded the date"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 158,
+      "title": "CERN Research Fellowship",
+      "outcome": "conflicting",
+      "deadline_semantics": "CONFLICTING",
+      "deadline_date": null,
+      "deadline_display": "Before 05/10/2026 at 23:59 (Geneva Time) [REF4103L] / Before 02/11/2026 at 23:59 (Geneva Time) [TH-2026-1/Cat1]",
+      "deadline_precision": "varies",
+      "date_written": false,
+      "source": {
+        "url": "https://careers.cern/jobs/research-fellowship-applied-physics-engineering/",
+        "source_type": "official_programme_page",
+        "publisher": "CERN (careers.cern, CERN recruitment portal)",
+        "retrieved_at": "2026-10-05T15:31:15Z",
+        "as_of": "Two simultaneously open Research Fellowship vacancies: REF4103L 'ATS Research Fellowship (Applied Physics & Engineering)', ideal start 01/01/2027; and TH-2026-1/Cat1 'Research Fellowship: Theoretical Physics', ideal start 01/10/2027",
+        "raw_extract": "REF4103L: \"Before 05/10/2026 at 23:59 (Geneva Time)\"  ||  TH-2026-1/Cat1 (https://careers.cern/jobs/research-fellowship-theoretical-physics/): \"Before 02/11/2026 at 23:59 (Geneva Time)\"  ||  CERN Research Fellowship programme page: \"Please note that vacancies published under Experimental Physics, Applied Science and Engineering, and Theoretical Physics each correspond to distinct and separate recruitment processes.\"",
+        "exact_deadline_wording": "Before 05/10/2026 at 23:59 (Geneva Time) | Before 02/11/2026 at 23:59 (Geneva Time)",
+        "confidence": "HIGH",
+        "notes": "The single record 'CERN Research Fellowship' maps to two simultaneously live vacancies whose official deadlines are four weeks apart (5 October 2026 and 2 November 2026, both dd/mm/yyyy, Geneva time). CERN itself states these are 'distinct and separate recruitment processes', so there is no single programme-level deadline to write. No date is chosen between them because picking one would be an unevidenced selection. Both quoted dates were read from pages I fetched directly. Note also that the REF4103L deadline (05/10/2026 23:59 Geneva = 21:59 UTC) falls on the retrieval date itself and will lapse within hours."
+      },
+      "other_sources": [
+        {
+          "url": "https://careers.cern/jobs/research-fellowship-theoretical-physics/",
+          "source_type": "official_programme_page",
+          "publisher": "CERN",
+          "retrieved_at": "2026-10-05T15:31:15Z",
+          "exact_deadline_wording": "Before 02/11/2026 at 23:59 (Geneva Time)",
+          "reference": "TH-2026-1/Cat1",
+          "would_be_date": "2026-11-02"
+        },
+        {
+          "url": "https://careers.cern/programmes/research-fellowship",
+          "source_type": "official_programme_page",
+          "publisher": "CERN",
+          "retrieved_at": "2026-10-05T15:31:15Z",
+          "exact_deadline_wording": "complete the online application before the deadline",
+          "note": "Programme landing page carries no calendar deadline; used only to establish that both vacancies belong to this programme and are separate processes"
+        }
+      ],
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "varies",
+        "deadline_display": "Per-vacancy deadlines: REF4103L - 05/10/2026 23:59 (Geneva Time); TH-2026-1/Cat1 - 02/11/2026 23:59 (Geneva Time). No single programme deadline published."
+      },
+      "examined": [
+        "https://careers.cern/programmes/research-fellowship - fetched first as the shard's official_source_url; no calendar deadline on the programme page itself, only 'before the deadline' plus the warning that the three physics-domain vacancies are separate recruitment processes",
+        "https://careers.cern/jobs/research-fellowship-applied-physics-engineering/ - official REF4103L vacancy page; yielded 05/10/2026",
+        "https://careers.cern/jobs/research-fellowship-theoretical-physics/ - official TH-2026-1/Cat1 vacancy page; yielded 02/11/2026"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 272,
+      "title": "Aarhus University Danish State Scholarship",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Only applicants who have applied for a Master's degree programme no later than 15 January (summer admission) and 15 September (winter admission) will be considered for a tuition waiver/scholarship.",
+      "deadline_precision": "recurring",
+      "date_written": false,
+      "source": {
+        "url": "https://masters.au.dk/scholarships-and-grants",
+        "source_type": "official_university_page",
+        "publisher": "Aarhus University",
+        "retrieved_at": "2026-10-05T15:31:15Z",
+        "as_of": "Page footer: 'Revised 08.07.2026'; body also marked 'Updated 8 July November 2026'",
+        "raw_extract": "### Application deadline\n\nOnly applicants who have applied for a Master's degree programme no later than 15 January (summer admission) and 15 September (winter admission) will be considered for a tuition waiver/scholarship.",
+        "exact_deadline_wording": "no later than 15 January (summer admission) and 15 September (winter admission)",
+        "confidence": "HIGH",
+        "notes": "NO DATE WRITTEN, BY RULE. The official scholarship page states the deadline as two recurring day/month pairs with NO year attached, and describes the award as assessed automatically with the admission application ('You do not need to complete a separate application' / 'If you submit your application by the specified deadline, the university will automatically assess you for a scholarship'). This is recurring annual timing, so per the contract it must not be converted into a calendar date. The stored 15 January / 15 September pattern is corroborated by a live official page, which is a successful determination even though it yields no date. Do not attach a year to these two dates."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "Only applicants who have applied for a Master's degree programme no later than 15 January (summer admission) and 15 September (winter admission) will be considered for a tuition waiver/scholarship."
+      },
+      "examined": [],
+      "rejected_sources": [
+        {
+          "url": "https://masters.au.dk/masters-degree-programmes",
+          "reason": "Not fetched and not usable as evidence: a generic Master's admissions page would be a different programme's deadline, which the contract forbids"
+        },
+        {
+          "url": "https://masters.au.dk/deadlines-and-important-dates",
+          "reason": "Not fetched and deliberately not used: the generic admissions deadline page would be a different programme's deadline, not this scholarship's"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 402,
+      "title": "Rhodes Scholarship for New Zealand",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Closing date 4 August 2026.",
+      "deadline_precision": "unknown",
+      "date_written": false,
+      "source": {
+        "url": "https://www.universitiesnz.ac.nz/scholarships/rhodes-scholarship-new-zealand",
+        "source_type": "official_scholarship_page",
+        "publisher": "Universities New Zealand - Te Pokai Tara",
+        "retrieved_at": "2026-10-05T15:31:15Z",
+        "as_of": "2027 entry cycle: opening date 1 June 2026, closing date 4 August 2026, decisions November 2026",
+        "raw_extract": "## Opening date\n\n1 June 2026.\n\n## Closing date\n\n4 August 2026.\n\n## Decisions made\n\nNovember 2026.",
+        "exact_deadline_wording": "4 August 2026",
+        "confidence": "HIGH",
+        "notes": "EXPIRED MISMATCH - STALE DATE DELIBERATELY NOT WRITTEN. The official administrator publishes an explicit calendar closing date of 4 August 2026 for the 2027 entry, which is 62 days before the retrieval date of 2026-10-05, while the record is still carried as open/active. Per the contract I do not write the stale date and do not silently roll it forward to the next cycle. Independently corroborated, not contradicted, by Rhodes House (the awarding body) at https://www.rhodeshouse.ox.ac.uk/scholarships/applications/new-zealand/ which states 'Closing date: 23:50 New Zealand Standard Time, 4 August 2026' - so this is NOT a CONFLICTING case. No 2028-entry dates are published on either page. Applications are decided in November 2026, which may be why the record is still listed as active, but the application window itself is closed."
+      },
+      "other_sources": [
+        {
+          "url": "https://www.rhodeshouse.ox.ac.uk/scholarships/applications/new-zealand/",
+          "source_type": "official_scholarship_page",
+          "publisher": "Rhodes Trust / Rhodes House",
+          "retrieved_at": "2026-10-05T15:31:15Z",
+          "exact_deadline_wording": "Opening date: 1 June 2026 / Closing date: 23:50 New Zealand Standard Time, 4 August 2026",
+          "note": "Corroborates the same 4 August 2026 closing date; adds a closing time only. Also carries a stale banner reading 'Applications for the Rhodes Scholarship 2027 are open!' despite the same page stating the window closed 4 August 2026."
+        }
+      ],
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Closing date 4 August 2026 (2027 entry) - EXPIRED as at 2026-10-05; no next-cycle dates published by Universities New Zealand or Rhodes House. Annual cycle, decisions November 2026."
+      },
+      "examined": [
+        "https://www.rhodeshouse.ox.ac.uk/scholarships/applications/new-zealand/ - Rhodes Trust/Rhodes House constituency page; confirms the same closing date of 4 August 2026, publishes no later cycle dates"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.rhodeshouse.ox.ac.uk/scholarships/applications",
+          "reason": "Generic Rhodes Trust applications index with no New Zealand constituency dates; would be another constituency's deadline"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 460,
+      "title": "SNF Postdoc.Mobility",
+      "outcome": "recovered",
+      "deadline_semantics": "EXACT",
+      "deadline_date": "2027-02-02",
+      "deadline_display": "02.02.2027 17:00 CET",
+      "deadline_precision": "exact",
+      "date_written": true,
+      "source": {
+        "url": "https://www.snf.ch/en/XIZpfY3iVS5KRRoD/funding/careers/postdoc-mobility",
+        "source_type": "official_scholarship_page",
+        "publisher": "Swiss National Science Foundation (SNSF)",
+        "retrieved_at": "2026-10-05T15:31:15Z",
+        "as_of": "Postdoc.Mobility 2027 submission rounds as published on the SNSF scheme page",
+        "raw_extract": "Submission deadline:\n\n02.02.2027 17:00 CET  ||  ### SNSF submission deadlines\n\n2 February 2027  \n17:00:00h (Swiss local time)\n\n3 August 2027  \n17:00:00h (Swiss local time)",
+        "exact_deadline_wording": "02.02.2027 17:00 CET",
+        "confidence": "HIGH",
+        "notes": "Date format resolved from the same page: the SNSF's 'SNSF submission deadlines' block spells the first deadline out in full as '2 February 2027', proving the header's dd.mm.yyyy '02.02.2027' means 2 February 2027, not 2 May. SECOND OFFICIAL DEADLINE DISCLOSED: the same page also lists '3 August 2027 17:00:00h (Swiss local time)', and states 'The SNSF is reforming its career funding. The final submission deadline for Postdoc.Mobility is set for August 2027. ... A new postdoctoral funding scheme will be launched in 2028.' The value written is the scheme page's own 'Submission deadline:' header field, i.e. the next submission deadline (2 February 2027); it is not an invented choice between the two. Both dates are upcoming, so this is not an expired_mismatch. One rendering defect on the page: the sentence 'Final submission deadline for Postdoc.Mobility fellowships: , 17.00 CEST.' has a missing date in its template and was NOT used as evidence. FLAG FOR COORDINATOR: the shard marks this record verification_status 'quarantined', but the deadline is verifiable on the live official funder page."
+      },
+      "field_mapping": {
+        "deadline_date": "2027-02-02",
+        "deadline_precision": "exact",
+        "deadline_display": "02.02.2027 17:00 CET (second 2027 submission deadline also published: 3 August 2027 17:00h, final call before the 2028 scheme)"
+      },
+      "examined": [],
+      "rejected_sources": [
+        {
+          "url": "https://www.snf.ch/en/x06BkIumay67HR0F/page/programmes-newsletter",
+          "reason": "Shard catalogue_url; a newsletter subscription page carrying no Postdoc.Mobility submission deadline"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 462,
+      "title": "SNF Starting Grants",
+      "outcome": "recovered",
+      "deadline_semantics": "EXACT",
+      "deadline_date": "2027-05-04",
+      "deadline_display": "04.05.2027 17:00 CEST",
+      "deadline_precision": "exact",
+      "date_written": true,
+      "source": {
+        "url": "https://www.snf.ch/en/w728UqT1Yw256Mz2/funding/careers/snsf-starting-grants",
+        "source_type": "official_scholarship_page",
+        "publisher": "Swiss National Science Foundation (SNSF)",
+        "retrieved_at": "2026-10-05T15:31:15Z",
+        "as_of": "Page header 'Submission deadline' field; the page also carries an 'Information on the SNSF Starting Grants 2027 call' section linking the StG2027 call document",
+        "raw_extract": "Submission deadline:\n\n04.05.2027 17:00 CEST",
+        "exact_deadline_wording": "04.05.2027 17:00 CEST",
+        "confidence": "HIGH",
+        "notes": "STALE CACHED VALUE CORRECTED. The shard carried deadline_display '05.05.2026 17:00 CEST'; that was the previous call's deadline and expired on 5 May 2026, 183 days before retrieval. The live official SNSF page header now reads '04.05.2027 17:00 CEST'. Date format dd.mm.yyyy = 4 May 2027, which is upcoming. PAGE-CAVEAT for transparency: the body of this page still mixes cycle content - it retains 'Important dates for the SNSF Starting Grants 2026 call' (interviews Jan/Feb 2027, project start 1 May 2027 - 1 May 2028) and 2026-call text, and the page's lower '### Submission deadline' field rendered with its date missing (':00:00 p.m. (CEST)'), a template defect. Neither contradicts the header, which is the page's own current submission-deadline field, and the date format dd.mm.yyyy is confirmed by the sibling Postdoc.Mobility page which spells its equivalent deadline out as '2 February 2027'."
+      },
+      "field_mapping": {
+        "deadline_date": "2027-05-04",
+        "deadline_precision": "exact",
+        "deadline_display": "04.05.2027 17:00 CEST"
+      },
+      "examined": [],
+      "rejected_sources": [
+        {
+          "url": "https://www.snf.ch/en/x06BkIumay67HR0F/page/programmes-newsletter",
+          "reason": "Shard catalogue_url; a newsletter subscription page carrying no SNSF Starting Grants submission deadline"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 520,
+      "title": "Japan Africa Dream Scholarship (JADS) Program",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "All applications should go through the partner universities, no separate application to the African Development Bank is necessary.",
+      "deadline_precision": "unknown",
+      "date_written": false,
+      "source": {
+        "url": "https://www.afdb.org/en/about-us/careers/japan-africa-dream-scholarship-jads-program/list-of-universities",
+        "source_type": "official_scholarship_page",
+        "publisher": "African Development Bank Group (JADS Programme)",
+        "retrieved_at": "2026-10-05T15:31:15Z",
+        "as_of": "Page states 'Last updated: 09-Nov-2022'; no cycle year is published anywhere on the JADS pages",
+        "raw_extract": "Table column header: \"Month of Intake / Deadline of Application\". Ritsumeikan Asia Pacific University: \"Application Deadlines are as following:\\nApril Enrollment:\\nOctober\\nSeptember Enrollment:\\nApril\". Sophia University: \"Month of Intake:\\nSeptember\\nDeadline of Application:\\nWeb entry: Mid of March ~ Early April\\nApplication: Mid of April\". Hiroshima University Graduate School of Advanced Science and Engineering, course 1: \"-Month of Intake: April\\n-Preliminary Survey: Oct 18-29\\n-Application period: Nov 8-19\\n-Exam. Period: Nov 29-Dec 8\"; course 2: \"-Month of Intake: April  and October\\n-Preliminary Evaluation for Apr. Oct 4-8,\\n-Preliminary Evaluation for Oct.: Mar. 7-11,\\n-Application Period for Apr.: Nov 4-15,\\n-Application Period for Oct.: Apr. 4-22,\". The University of Tokyo Graduate School of Frontier Sciences: \"Month of Intake: April or October\\nExamination:\\nSchedule A (application period: mid June)\\nSchedule B (application period: mid November)\". Kyoto University and Kogakuin University: \"Please refer to the program website.\"",
+        "exact_deadline_wording": "Month of Intake / Deadline of Application",
+        "confidence": "HIGH",
+        "notes": "TRUTHFUL UNKNOWN. I established from the live official AfDB pages that the JADS programme publishes NO central application opening or closing date at all, so there is no central JADS deadline to quote or date. The Application Procedures page states: 'Important:  All applications should go through the partner universities, no separate application to the African Development Bank is necessary.' Deadlines exist only as partner-university intake windows, which (a) differ per partner and per course, (b) are given as months or loose windows with no year, and (c) are all in the past or undated relative to 2026-10-05 because the pages were last updated 09-Nov-2022. Writing any single deadline_date here would require inventing a year. The shard's stored precision 'varies' is corroborated by live official evidence, and 'CONFLICTING / varies' would also be defensible, but I record UNKNOWN because no value could be established from the provider - the safer and contract-preferred result. Not a case of two sources contradicting each other; it is a structural absence of a programme-level deadline."
+      },
+      "other_sources": [
+        {
+          "url": "https://www.afdb.org/en/about-us/careers/japan-africa-dream-scholarship-jads-program/application-procedures",
+          "source_type": "official_scholarship_page",
+          "publisher": "African Development Bank Group",
+          "retrieved_at": "2026-10-05T15:31:15Z",
+          "exact_deadline_wording": "Important:  All applications should go through the partner universities, no separate application to the African Development Bank is necessary.",
+          "note": "Establishes that there is no separate AfDB application window. Page 'Last updated: 09-Nov-2022'."
+        },
+        {
+          "url": "https://www.afdb.org/en/about-us/careers/japan-africa-dream-scholarship-jads-program",
+          "source_type": "official_scholarship_page",
+          "publisher": "African Development Bank Group",
+          "retrieved_at": "2026-10-05T15:31:15Z",
+          "exact_deadline_wording": "No deadline wording present on the page.",
+          "note": "Main JADS page describes benefits, contacts and selection only; 'Last updated: 11-Sep-2024'. Contains no opening or closing date."
+        }
+      ],
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "No central JADS application deadline is published by the African Development Bank. Applications go only through partner universities, each of which publishes its own intake/application window (see raw_extract); none carries a year."
+      },
+      "examined": [
+        "https://www.afdb.org/en/about-us/careers/japan-africa-dream-scholarship-jads-program - main programme page, no deadline",
+        "https://www.afdb.org/en/about-us/careers/japan-africa-dream-scholarship-jads-program/application-procedures - confirms no separate application to the Bank and no central window",
+        "https://www.afdb.org/en/about-us/careers/japan-africa-dream-scholarship-jads-program/list-of-universities - partner intake/deadline table, all month-level and undated"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.k.u-tokyo.ac.jp/exam_e/",
+          "reason": "Not fetched. Partner university link; not the AfDB award page, and third-party-to-the-provider for this record"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 634,
+      "title": "HHMI Janelia Joint Graduate Program in Neuroscience (with Johns Hopkins University)",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "The deadline for submission of completed applications, including letters of recommendation is December 3.",
+      "deadline_precision": "recurring",
+      "date_written": false,
+      "source": {
+        "url": "https://www.janelia.org/you-janelia/students-postdocs/joint-graduate-program/application-details",
+        "source_type": "official_programme_page",
+        "publisher": "HHMI Janelia Research Campus",
+        "retrieved_at": "2026-10-05T15:31:15Z",
+        "as_of": null,
+        "raw_extract": "-   The deadline for submission of completed applications, including letters of recommendation is **December 3.**",
+        "exact_deadline_wording": "The deadline for submission of completed applications, including letters of recommendation is December 3.",
+        "confidence": "HIGH",
+        "notes": "NO DATE WRITTEN, BY RULE. The official Janelia application-details page gives the deadline as a bare day-and-month, 'December 3.', with NO year attached, and describes the annual cycle as 'Interested students should apply directly to the JHU Neuroscience program in the fall'. This is recurring annual timing and must not be converted to a calendar date. Supporting non-deadline wording on the same page: 'Students accepted into the Joint Graduate Program will be informed of their acceptance by JHU by the beginning of March' and 'All candidates will be notified of the Admission Committee's decision by April 15' (notification dates, not deadlines). Second-source conflict check attempted and failed: the Johns Hopkins Department of Neuroscience apply page (the application portal this record depends on, since 'Students ... must apply directly to the JHU ... Janelia does not require a separate application') returned the department homepage instead of the application page, so I could not compare JHU's stated deadline and am not asserting a conflict. The Janelia parent programme page states no deadline at all, so December 3 stands as the single official figure found."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "The deadline for submission of completed applications, including letters of recommendation is December 3. (recurring annually; no year published)"
+      },
+      "examined": [
+        "https://www.janelia.org/you-janelia/students-postdocs/joint-graduate-program - parent programme page fetched; describes the programme and research fields but states no application deadline"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://neuroscience.jhu.edu/graduate/apply",
+          "reason": "Fetched but resolved to the JHU Department of Neuroscience homepage rather than the application page; yielded no deadline, so it cannot confirm or contradict December 3"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,295 @@
+{
+  "shard_id": "LG-028",
+  "topic": "logo",
+  "agent_completed": true,
+  "generated_at": "2026-10-05T15:33:07Z",
+  "records": [
+    {
+      "scholarship_id": 92,
+      "title": "Émile Boutmy Scholarship",
+      "outcome": "recovered",
+      "image_url": "https://www.sciencespo.fr/students/en/static/4e8c8b615cdf25da682418334c3751b6/sciencespo_logo_rouge_176c18a710.svg",
+      "image_source_url": "https://www.sciencespo.fr/students/en/fees-funding/bursaries-financial-aid/emile-boutmy-scholarship",
+      "image_source_type": "official_scholarship",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": false,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Asset is served from the record's own official_source_url host (www.sciencespo.fr) and is the institutional wordmark referenced by the Sciences Po site chrome (footer-module--logoImg). Verified HTTP 200, Content-Type image/svg+xml, 3121 bytes. SVG declares viewBox='27.86 30.87 232.47 36.45' and a single fill colour #E6142D (Sciences Po red) on all paths - a full horizontal wordmark, not an icon. not_ui is false only because the file is the same file the site header/footer uses; it is nonetheless the institution's official brand mark per AGENT_BRIEF section 7 ('official institution brand page'), not browser/UI chrome, a sprite, a loading icon or a favicon. Identity is unambiguous: the Boutmy scholarship is Sciences Po's own named award and the record's official_source is 'Sciences Po'."
+      },
+      "source": {
+        "url": "https://www.sciencespo.fr/students/en/fees-funding/bursaries-financial-aid/emile-boutmy-scholarship",
+        "publisher": "Sciences Po",
+        "retrieved_at": "2026-10-05T15:28:36Z",
+        "raw_extract": "<div class=\"site-logo\"> ... /students/en/static/4bdcf6bc629b5bdf87d343e32e6b8340/sciencespo_logo_blanc_ffaefc900f.svg (header) ... .footer-module--logoImg{height:55px;width:350px} ... /students/en/static/4e8c8b615cdf25da682418334c3751b6/sciencespo_logo_rouge_176c18a710.svg",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.sciencespo.fr/en/academics/phd-programmes/",
+        "https://www.sciencespo.fr/students/en/static/4bdcf6bc629b5bdf87d343e32e6b8340/sciencespo_logo_blanc_ffaefc900f.svg"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.sciencespo.fr/students/en/static/4bdcf6bc629b5bdf87d343e32e6b8340/sciencespo_logo_blanc_ffaefc900f.svg",
+          "reason": "Official Sciences Po wordmark but the white/reverse variant intended for dark backgrounds; renders invisible on a light card. Same identity as the chosen asset, wrong colour variant."
+        }
+      ],
+      "notes": "Chose the 'rouge' (red) variant over the 'blanc' (white) variant purely on renderability; both are the same official wordmark and both verified HTTP 200 on www.sciencespo.fr."
+    },
+    {
+      "scholarship_id": 164,
+      "title": "University of Graz Scholarships for International Students",
+      "outcome": "recovered",
+      "image_url": "https://static.uni-graz.at/_assets/ad3b1d899ce171dcc9754695b3eee153/Icons/UniGraz/Header/universitaet_graz_we_work_for_tomorrow_logo.svg",
+      "image_source_url": "https://presse.uni-graz.at/de/services-fuer-medien/corporate-design-und-logo/",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": false,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "The shard's official_source_url (https://www.uni-graz.at/en/studies/scholarships) returns HTTP 404, so I escalated up the AGENT_BRIEF section 4 hierarchy to the University's own official communications/press brand page on presse.uni-graz.at, which is an official uni-graz.at subdomain and explicitly publishes the institutional logo. Asset lives on static.uni-graz.at, the University's own asset CDN. Verified HTTP 200 both with and without the ?1790656598 cache-buster query string, Content-Type image/svg+xml, 6625 bytes - so the URL is stable without the query parameter. Not_ui is false only because this is also the live uni-graz.at header logo; it is the University's official brand mark, not browser chrome, a sprite or a favicon. identity_match holds: the record's official_source is 'University of Graz' and this is the University of Graz logo."
+      },
+      "source": {
+        "url": "https://presse.uni-graz.at/de/services-fuer-medien/corporate-design-und-logo/",
+        "publisher": "Universität Graz - Kommunikation und Öffentlichkeitsarbeit",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "raw_extract": "Das Corporate Design der Universität Graz sorgt dafür, dass die Universität in der Öffentlichkeit und bei ihren Zielgruppen als Einheit wahrgenommen wird, die ihre Werte und Botschaften klar und professionell vermittelt. Es umfasst die Farben, Schriftarten, Logos und anderen Designelemente. ... Nachfolgend finden Sie das Logo und den Claim „We work for tomorrow“ in verschiedenen Varianten zum Download.",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.uni-graz.at/en/studies/scholarships (HTTP 404 - dead link in shard)",
+        "https://welcome.uni-graz.at/en/international-students/prospective-students/",
+        "https://www.uni-graz.at/en/study/studying-at-the-university-of-graz/financing-your-studies/",
+        "https://studienabteilung.uni-graz.at/en/tuition-fee/grants-and-scholarships/",
+        "https://international.uni-graz.at/en/incoming-students-and-staff/incoming-students/",
+        "https://presse.uni-graz.at/de/wissenswertes/uni-graz-logos/",
+        "https://static.uni-graz.at/fileadmin/_files/_komm/Logos/Logo_Uni-Graz_1c__002_.jpg",
+        "https://static.uni-graz.at/fileadmin/grafik/logos/logo_uni_graz_4c.jpg"
+      ],
+      "rejected": [
+        {
+          "url": "https://static.uni-graz.at/favicon.ico",
+          "reason": "favicon - rejected by rule regardless of official provenance."
+        },
+        {
+          "url": "https://static.uni-graz.at/fileadmin/_files/_komm/Logos/Logo_Uni-Graz_1c__002_.jpg",
+          "reason": "Official and correct identity, but only 469x417 px raster from the 2013-era brand folder; the SVG header logo is the live current lockup and is resolution-independent."
+        },
+        {
+          "url": "https://static.uni-graz.at/fileadmin/grafik/logos/logo_uni_graz_4c.jpg",
+          "reason": "Legacy static.uni-graz.at grafik/logos path with no verifiable provenance on any current official page; not referenced by the official brand page."
+        },
+        {
+          "url": "https://de.m.wikipedia.org/wiki/Datei:Universit%C3%A4t_Graz_logo.svg",
+          "reason": "third-party mirror - Wikimedia Commons copy sourced from a 2012 PDF, not an official uni-graz.at asset."
+        },
+        {
+          "url": "https://bilderpool.uni-graz.at/f/1330346",
+          "reason": "not an asset URL - image-pool viewer/interstitial page, not a direct logo file."
+        }
+      ],
+      "notes": "Note for the deadline programme (not my topic): the shard's official_source_url is dead and Uni Graz's Welcome Center states 'The University of Graz does not currently award scholarships for international students.' That is a record-validity concern for the DL wave, not a logo concern; the University of Graz logo remains the correct brand mark for the record's official_source."
+    },
+    {
+      "scholarship_id": 355,
+      "title": "Mastercard Foundation Scholars Program at Sciences Po (Graduate Level)",
+      "outcome": "recovered",
+      "image_url": "https://www.sciencespo.fr/students/en/static/4e8c8b615cdf25da682418334c3751b6/sciencespo_logo_rouge_176c18a710.svg",
+      "image_source_url": "https://www.sciencespo.fr/students/en/fees-funding/bursaries-financial-aid/mastercard-foundation-scholarships/graduate-study",
+      "image_source_type": "official_scholarship",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": false,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Asset is on the record's own official_source_url host and is the Sciences Po institutional wordmark (#E6142D), verified HTTP 200 image/svg+xml 3121 bytes. not_ui is false only because it is also the site header/footer logo; it is the official brand mark, not UI chrome. Identity: the official programme page states 'The Mastercard Foundation Scholars Program at Sciences Po is designed for students from the African continent who wish to pursue a two-year Master's degree at Sciences Po' and routes enquiries to info.mcfsp@sciencespo.fr, i.e. Sciences Po administers the programme and is the record's official_source. Confidence is MEDIUM rather than HIGH purely on this point: the Mastercard Foundation is a named funding partner, so a reviewer could argue the programme's own brand is the Mastercard Foundation mark. I deliberately did NOT use a Mastercard Foundation logo, because (a) it is a different organisation than the record's official_source, and (b) the brief forbids 'an unrelated department's logo on a shared CDN' and any mark whose identity is not the record's own provider - a funder's mark would be partner branding, not provider branding. Flagging for HUMAN_REVIEW if the catalogue wants partner marks."
+      },
+      "source": {
+        "url": "https://www.sciencespo.fr/students/en/fees-funding/bursaries-financial-aid/mastercard-foundation-scholarships/graduate-study",
+        "publisher": "Sciences Po",
+        "retrieved_at": "2026-10-05T15:32:00Z",
+        "raw_extract": "The Mastercard Foundation Scholars Program at Sciences Po is designed for students from the African continent who wish to pursue a two-year Master's degree at Sciences Po. The Program covers the full financial needs of selected Scholars and provides comprehensive support throughout their two years of study at Sciences Po. ... For further questions about the Mastercard Foundation Scholars Program at Sciences Po, please contact us: info.mcfsp@sciencespo.fr.",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://www.sciencespo.fr/students/en/static/4bdcf6bc629b5bdf87d343e32e6b8340/sciencespo_logo_blanc_ffaefc900f.svg",
+        "https://www.sciencespo.fr/students/en/fees-funding/bursaries-financial-aid/mastercard-foundation-scholarships/graduate-study"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.sciencespo.fr/students/en/static/4bdcf6bc629b5bdf87d343e32e6b8340/sciencespo_logo_blanc_ffaefc900f.svg",
+          "reason": "Reverse/white variant of the same official wordmark - invisible on a light background."
+        }
+      ],
+      "notes": "Image is identical to scholarship_id 92 because both records share official_source 'Sciences Po' and the same official host. No Mastercard Foundation mark was proposed: it belongs to a separate legal entity and would be partner branding rather than the record's own provider brand."
+    },
+    {
+      "scholarship_id": 535,
+      "title": "CLP Future Conservationist Awards 2027",
+      "outcome": "not_found",
+      "image_url": null,
+      "image_source_url": null,
+      "image_source_type": null,
+      "image_kind": null,
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": false,
+        "accessible": false,
+        "not_favicon": false,
+        "not_ui": false,
+        "not_social": false,
+        "not_third_party": false,
+        "identity_match": false,
+        "notes": "HIGH confidence in the NOT_FOUND determination. The Conservation Leadership Programme does have an official logo, but it exists ONLY as an inline <svg> element embedded directly in the HTML of every page (14 inline <svg> elements per page; zero external .svg src/href references across the homepage, the award page and the About Us page). There is therefore no fetchable asset URL for it. Every logo-like FILE on the official domain is a rejected class: cropped-icon-32x32.png / 192x192 / 180x180 (apple-touch-icon) / 270x270 (msapplication-TileImage) are all favicon/app-icon derivatives. Per the brief, official absence beats fake branding, so image_url stays null rather than substituting a favicon or a partner logo."
+      },
+      "source": {
+        "url": "https://www.conservationleadershipprogramme.org/awards-opportunities/team-awards/future-conservationist-award",
+        "publisher": "Conservation Leadership Programme",
+        "retrieved_at": "2026-10-05T15:28:36Z",
+        "raw_extract": "<div class=\"header-logo\"> <a href=\"/\"> <!-- <img src=\"https://placehold.co/214x72\" width=\"214\" height=\"72\"> --> <svg width=\"215\" height=\"71\" viewBox=\"0 0 215 71\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"> ... </svg>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.conservationleadershipprogramme.org/awards-opportunities/team-awards/future-conservationist-award",
+        "https://www.conservationleadershipprogramme.org/",
+        "https://www.conservationleadershipprogramme.org/about-us/",
+        "https://www.conservationleadershipprogramme.org/wp-content/uploads/2025/01/clp-icon-200x200.jpg",
+        "https://www.conservationleadershipprogramme.org/wp-content/uploads/2025/01/fca.png",
+        "https://www.conservationleadershipprogramme.org/wp-content/uploads/2025/01/future-conservation.jpg",
+        "https://www.conservationleadershipprogramme.org/wp-content/uploads/2025/11/CLP_AnnualReport_2025.pdf"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.conservationleadershipprogramme.org/wp-content/uploads/2024/11/cropped-icon-32x32.png",
+          "reason": "favicon (link rel=icon, 32x32) - low-resolution favicon-sized badge."
+        },
+        {
+          "url": "https://www.conservationleadershipprogramme.org/wp-content/uploads/2024/11/cropped-icon-192x192.png",
+          "reason": "favicon variant (link rel=icon 192x192) - app/favicon derivative, not the brand asset."
+        },
+        {
+          "url": "https://www.conservationleadershipprogramme.org/wp-content/uploads/2024/11/cropped-icon-180x180.png",
+          "reason": "apple-touch-icon - explicitly rejected by AGENT_BRIEF section 7."
+        },
+        {
+          "url": "https://www.conservationleadershipprogramme.org/wp-content/uploads/2024/11/cropped-icon-270x270.png",
+          "reason": "msapplication-TileImage - favicon/app tile derivative."
+        },
+        {
+          "url": "https://www.conservationleadershipprogramme.org/wp-content/uploads/2025/01/clp-icon-200x200.jpg",
+          "reason": "200x200 favicon-sized badge; on the homepage it is rendered inside a quoteSlider-img avatar slot (class=\"quoteSlide-img\", 120x120), i.e. an avatar/decoration context, not a brand-asset page."
+        },
+        {
+          "url": "https://www.conservationleadershipprogramme.org/wp-content/uploads/2025/01/fca.png",
+          "reason": "not an asset I could prove official: it is a bare uploads filename with no enclosing official brand/asset page linking it as the programme logo, and no identity metadata. Cannot satisfy the proof requirement."
+        },
+        {
+          "url": "https://www.conservationleadershipprogramme.org/wp-content/uploads/2025/01/future-conservation.jpg",
+          "reason": "decorative hero/editorial artwork - not a logo."
+        },
+        {
+          "url": "https://www.conservationleadershipprogramme.org/wp-content/plugins/hcaptcha-for-forms-and-more/assets/images/hcaptcha-div-logo.svg",
+          "reason": "third-party vendor logo (hCaptcha) - CAPTCHA UI branding, unrelated organisation."
+        },
+        {
+          "url": "https://intex.digital/case-study/conservation-leadership-programme/",
+          "reason": "third-party agency case study mentioning a 'brand refresh of their logo' - an aggregator/mirror, not an official CLP asset source, and no asset URL offered."
+        },
+        {
+          "url": "https://newsroom.wcs.org/News-Releases/articleType/ArticleView/articleId/17509/Conservation-Leadership-Programme-Announces-2022-Team-Awards.aspx",
+          "reason": "partner organisation's (WCS) newsroom press release - third-party mirror of CLP content, and no CLP logo asset served from it."
+        },
+        {
+          "url": "https://uk.linkedin.com/company/conservation-leadership-programme",
+          "reason": "social media profile - explicitly rejected, and would only ever yield an avatar."
+        }
+      ],
+      "notes": "Genuine official absence of a fetchable asset, not a research failure. Recoverable only by screenshotting the inline header SVG, which the brief forbids ('screenshot crops or photographs of a logo'). BirdLife International / Fauna & Flora / WCS marks were also considered and rejected: they are partner organisations, not the CLP brand, and are not hosted on the CLP domain."
+    },
+    {
+      "scholarship_id": 707,
+      "title": "HKUST Global Learners Scholarship",
+      "outcome": "recovered",
+      "image_url": "https://join.hkust.edu.hk/themes/custom/usturao/img/svg/ust_logo_en.svg",
+      "image_source_url": "https://join.hkust.edu.hk/global-learners-scholarship",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": false,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Served from join.hkust.edu.hk, the record's own official_source_url host, which is an official HKUST admissions domain. Verified HTTP 200, Content-Type image/svg+xml, 17222 bytes. Identity is proven by the markup on the record's own page: the asset is referenced as <img src=\"/themes/custom/usturao/img/svg/ust_logo_en.svg\" class=\"ust-logo\" alt=\"HKUST\"> linked to https://hkust.edu.hk/ - i.e. explicitly the HKUST institutional logo, not the sub-brand admissions text lockup. not_ui is false only because it doubles as the site header logo; it is the official brand mark, not browser chrome, a sprite or a favicon."
+      },
+      "source": {
+        "url": "https://join.hkust.edu.hk/global-learners-scholarship",
+        "publisher": "The Hong Kong University of Science and Technology (HKUST) - Undergraduate Admissions",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "raw_extract": "<div class=\"site-logo\"> <a href=\"https://hkust.edu.hk/\" target=\"_blank\" rel=\"noreferrer\"> <img src=\"/themes/custom/usturao/img/svg/ust_logo_en.svg\" class=\"ust-logo\" alt=\"HKUST\"> </a> </div>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://join.hkust.edu.hk/global-learners-scholarship",
+        "https://join.hkust.edu.hk/themes/custom/usturao/img/svg/ust_text_logo_en.svg",
+        "https://join.hkust.edu.hk/profiles/ust/modules/custom/hkust_signature_affiliate/assets/images/ust.hk_EN_O_White.png",
+        "https://join.hkust.edu.hk/sites/default/files/2025-08/4J2A0602-min.jpg"
+      ],
+      "rejected": [
+        {
+          "url": "https://join.hkust.edu.hk/sites/default/files/ust_logo_0.svg",
+          "reason": "favicon (link rel=icon) - explicitly rejected even though the filename says 'logo'."
+        },
+        {
+          "url": "https://join.hkust.edu.hk/themes/custom/usturao/img/svg/ust_text_logo_en.svg",
+          "reason": "Sub-brand lockup - 'HKUST Undergraduate Admissions' wordmark, not the HKUST institutional logo. Would misidentify the awarding university as an admissions office."
+        },
+        {
+          "url": "https://join.hkust.edu.hk/profiles/ust/modules/custom/hkust_signature_affiliate/assets/images/ust.hk_EN_O_White.png",
+          "reason": "Official HKUST mark but the reverse/white raster variant used on a dark nav panel; renders poorly on a light card. Also raster rather than the vector lockup."
+        },
+        {
+          "url": "https://join.hkust.edu.hk/sites/default/files/2025-08/4J2A0602-min.jpg",
+          "reason": "decorative hero photograph (8215x5477 campus image) attached to the page body - not a logo."
+        },
+        {
+          "url": "https://space.bilibili.com/1954304751",
+          "reason": "social media profile - explicitly rejected."
+        }
+      ],
+      "notes": "Identity is unambiguous: HKUST is both the awarding institution and the record's official_source. Chose the vector institutional lockup over the white raster and over the admissions sub-brand text logo."
+    }
+  ],
+  "summary": {
+    "records": 5,
+    "recovered": 4,
+    "not_found": 1,
+    "rejected": 0,
+    "unknown": 0,
+    "confidence_high": 4,
+    "confidence_medium": 1,
+    "confidence_low": 0,
+    "distinct_official_providers": ["Sciences Po", "University of Graz", "HKUST", "Conservation Leadership Programme"],
+    "notes": "Only LG-028 was written. No other file edited, no database access. LG-028 covers all 5 records in the shard; none already carried an image, so no existing image was disturbed."
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "shard_id": "DL-040",
+  "topic": "deadline",
+  "hosts": [
+    "oia.ntu.edu.tw",
+    "si.se",
+    "www.cbs.dk",
+    "www.mau.se",
+    "www.uibk.ac.at",
+    "www.youarewelcomehereusa.org"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 32,
+      "title": "Swedish Institute Scholarship",
+      "official_source": "Swedish Institute (Svenska institutet)",
+      "official_source_url": "https://si.se/en/apply/scholarships",
+      "catalogue_url": "https://si.se/app/uploads/2025/11/eligible-master-programmes-si-sgp-2026_2027-tillganglighetsanpassad.pdf",
+      "country": "Sweden",
+      "deadline_display": "Typically February each year",
+      "deadline_precision": "varies",
+      "application_period": "Annual cycle. For academic year 2026/2027: university applications 16 October 2025 - 15 January 2026, SI scholarship portal 9-25 February 2026, results 23 April 2026.",
+      "verification_status": "active"
+    },
+    {
+      "id": 132,
+      "title": "#YouAreWelcomeHere Scholarship",
+      "official_source": "NAFSA: Association of International Educators (#YouAreWelcomeHere campaign) and participating U.S. universities",
+      "official_source_url": "https://www.youarewelcomehereusa.org",
+      "catalogue_url": "https://sites.newpaltz.edu/news/2019/12/center-for-international-programs-congratulates-first-youarewelcomehere-scholarship-recipients/?utm_campaign=20200106%20wir&amp;utm_content=College%20congratulates%20first%20%23YouAreWelcomeHere%20scholars&amp;utm_medium=email&amp;utm_source=newsletter",
+      "country": "United States",
+      "deadline_display": "Institution Deadlines (typically in Spring or Summer 2027) - Students should complete a #YouAreWelcomeHere scholarship application for each selected institution by the institutions' deadline",
+      "deadline_precision": "varies",
+      "application_period": "Fall 2027 campaign: institutions confirm participation by January 1, 2027, institution deadlines fall typically in spring or summer 2027, and recipients are reported to NAFSA by September 1, 2027",
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 148,
+      "title": "NTU International Outstanding Graduate Student Scholarship",
+      "official_source": "National Taiwan University (NTU), Office of International Affairs",
+      "official_source_url": "https://oia.ntu.edu.tw/en/current-students/international-degree-and-dual-degree-students-wpwq/scholarships-6v27",
+      "catalogue_url": "https://oia.ntu.edu.tw/en/prospective-students/non-degree-programs-gemk/introduction-ryty",
+      "country": "Taiwan",
+      "deadline_display": "The published application period on NTU's International Student Services scholarships page is April 23, 2026 - May 15, 2026, submitted through the International Degree Current Student System. The 2026 window has closed; the same window is expected for the next cycle.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual, with a published application period of 23 April to 15 May for existing international degree students at NTU, applying through the International Degree Current Student System.",
+      "verification_status": "active"
+    },
+    {
+      "id": 165,
+      "title": "University of Innsbruck Scholarships for International Students",
+      "official_source": "University of Innsbruck",
+      "official_source_url": "https://www.uibk.ac.at/en/studies/scholarships",
+      "catalogue_url": null,
+      "country": "Austria",
+      "deadline_display": "Varies (typically March-May)",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 191,
+      "title": "SI Scholarship for Global Professionals",
+      "official_source": "Swedish Institute",
+      "official_source_url": "https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals",
+      "catalogue_url": "https://si.se/app/uploads/2025/11/eligible-master-programmes-si-sgp-2026_2027-tillganglighetsanpassad.pdf",
+      "country": "Sweden",
+      "deadline_display": "Official wording for the 2026/2027 cycle: \"9-25 February 2026: Application portal for the SI Scholarships is open for two weeks. Please note that the portal closes at 14:59 CET on the final day.\" The portal for that cycle has closed and recipients were announced on 23 April 2026; the call is annual and the next cycle's dates are not yet published.",
+      "deadline_precision": "recurring",
+      "application_period": "Once every year, for master's studies starting in the autumn semester. 2026/2027 cycle: University Admissions application 16 October 2025 - 15 January 2026; SI scholarship application 9-25 February 2026.",
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 219,
+      "title": "Doctoral Scholarship from the University of Innsbruck",
+      "official_source": "University of Innsbruck",
+      "official_source_url": "https://www.uibk.ac.at/en/research/research-funding/phd/doctoral-scholarship",
+      "catalogue_url": "https://www.uibk.ac.at/en/programmes/",
+      "country": "Austria",
+      "deadline_display": "The page carries the current call, labelled '3rd tranche 2026'. It states that 'Funding is expected to be awarded in December 2026 (i.e. earliest start of funding is December 2026 and latest start of funding is June 2027)', but the application deadline itself sits in a collapsible section ('When will the next call for tenders be issued?') that did not render readable text on 2026-10-04, so no deadline date can be stated.",
+      "deadline_precision": "varies",
+      "application_period": "Tranche-based calls; the live page is the 3rd tranche of 2026, with funding awarded in December 2026 and funding start between December 2026 and June 2027.",
+      "verification_status": "active"
+    },
+    {
+      "id": 270,
+      "title": "Copenhagen Business School Danish Government Scholarship",
+      "official_source": "Copenhagen Business School (CBS)",
+      "official_source_url": "https://www.cbs.dk/study-programmes/master-programmes/double-degree",
+      "catalogue_url": "https://www.cbs.dk/en/study-programmes/summer-university/application-and-deadlines",
+      "country": "Denmark",
+      "deadline_display": "15 January 2026 (Round 1) / 15 October 2026 (Round 2)",
+      "deadline_precision": "varies",
+      "application_period": "Other deadlines apply for CBS Students taking elective or mandatory courses. Please see Summer University on my.cbs.dk .",
+      "verification_status": "active"
+    },
+    {
+      "id": 455,
+      "title": "Malmö University Master's Scholarship",
+      "official_source": "Mau.Se",
+      "official_source_url": "https://www.mau.se/en/education/scholarships",
+      "catalogue_url": "https://mau.se/en/education/scholarships/",
+      "country": "Sweden",
+      "deadline_display": "to pay tuition fees is 10 May.",
+      "deadline_precision": "unknown",
+      "application_period": "Applicants who have been offered a scholarship will be notified by the end of April. Those who are not offered a scholarship will not be notified individually.",
+      "verification_status": "active"
+    }
+  ]
+}

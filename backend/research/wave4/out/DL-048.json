@@ -1,0 +1,311 @@
+{
+  "shard_id": "DL-048",
+  "agent_completed": true,
+  "research_date": "2026-10-05",
+  "topic": "deadline",
+  "records": [
+    {
+      "scholarship_id": 168,
+      "title": "Erasmus Mundus Joint Master Degrees — Austria-based",
+      "outcome": "recovered",
+      "deadline_semantics": "MONTH",
+      "deadline_date": null,
+      "deadline_display": "Most master’s programmes require applications to be submitted between October and January for courses commencing the following academic year.",
+      "deadline_precision": "month",
+      "source": {
+        "url": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
+        "source_type": "official_scholarship_page",
+        "publisher": "European Education and Culture Executive Agency (EACEA), European Commission",
+        "retrieved_at": "2026-10-05T15:28:30Z",
+        "as_of": null,
+        "raw_extract": "Most master’s programmes require applications to be submitted between October and January for courses commencing the following academic year. Interested students should **visit the program's official website** and directly **contact the consortium for information** on courses, application procedures, and scholarship availability.",
+        "exact_deadline_wording": "Most master’s programmes require applications to be submitted between October and January for courses commencing the following academic year.",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url was fetched live and returned this exact catalogue-level statement. The window is expressed in months only, with no day and no year, so per contract section 6 this is MONTH with deadline_date null; no day was invented and no year was attached. The EACEA page explicitly defers the exact date to each consortium ('visit the program's official website' / 'directly contact the consortium'), and the catalogue listing (Projects: 218) contains no per-consortium deadline for Austria. Corroborated by the official European Commission Erasmus+ page for the same action: 'In most cases, you should submit your application between October and January for courses starting the following academic year.'"
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "month",
+        "deadline_display": "Most master’s programmes require applications to be submitted between October and January for courses commencing the following academic year."
+      },
+      "examined": [
+        "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters-scholarships",
+        "https://www.eacea.ec.europa.eu/about-eacea/document-register/annual-activity-reports-and-work-programmes_en"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.eacea.ec.europa.eu/about-eacea/document-register/annual-activity-reports-and-work-programmes_en",
+          "reason": "Shard catalogue_url points at EACEA annual activity reports / work programmes; this is an administrative document register with no scholarship application deadlines. Not fetched as evidence."
+        },
+        {
+          "url": "https://www.em-a.eu/",
+          "reason": "Erasmus Mundus Association - not an official EU/Awarding-body source; would be an authoritative-secondary source at best, and the official EC page already answers the question. Not fetched."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 192,
+      "title": "Erasmus Mundus Joint Master Degrees (Erasmus Mundus Catalogue)",
+      "outcome": "recovered",
+      "deadline_semantics": "MONTH",
+      "deadline_date": null,
+      "deadline_display": "In most cases, you should submit your application between October and January for courses starting the following academic year.",
+      "deadline_precision": "month",
+      "source": {
+        "url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters-scholarships",
+        "source_type": "official_programme_page",
+        "publisher": "European Commission, Directorate-General for Education, Youth, Sport and Culture (Erasmus+ programme site)",
+        "retrieved_at": "2026-10-05T15:31:10Z",
+        "as_of": "page footer states 'Last updated: 26 June 2025'",
+        "raw_extract": "## When to apply\n\nA new batch of selected Erasmus Mundus Masters is added to the list each year.\n\nIn most cases, you should submit your application between **October** and **January** for courses starting the following academic year.\n\nEach master's website has all the details about the course of study, the list of the participating universities, the entry requirements and all the steps of the application process (with and without scholarship).",
+        "exact_deadline_wording": "In most cases, you should submit your application between October and January for courses starting the following academic year.",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url (https://www.eacea.ec.europa.eu/scholarships/emjmd-catalogue_en/sweden) is dead: fetched live on 2026-10-05 and returned HTTP 404, both as a direct GET and via the alternate path. The live equivalent official EC programme page for this same action was used instead, and it is corroborated word-for-word in substance by the live EACEA Erasmus Mundus Catalogue ('Most master’s programmes require applications to be submitted between October and January for courses commencing the following academic year.'). The window is months only with no day and no year, so MONTH with deadline_date null; no day was invented. The record's stored deadline_display already matched this EC wording verbatim. No Sweden-specific or country-filtered official page is reachable, and the EC page states the exact date sits on each individual master's website."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "month",
+        "deadline_display": "In most cases, you should submit your application between October and January for courses starting the following academic year."
+      },
+      "examined": [
+        "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
+        "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en/sweden"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.eacea.ec.europa.eu/scholarships/emjmd-catalogue_en/sweden",
+          "reason": "Record's stated official_source_url. Fetched live 2026-10-05: HTTP 404 Not Found. Dead URL - cannot be used as evidence."
+        },
+        {
+          "url": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en/sweden",
+          "reason": "Second fetch attempt via the alternate catalogue path also returned HTTP 404 on 2026-10-05. Confirms the country-filtered view no longer exists."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 218,
+      "title": "One World Scholarship (Afro-Asian Institute Salzburg)",
+      "outcome": "recovered",
+      "deadline_semantics": "MONTH",
+      "deadline_date": null,
+      "deadline_display": "The call for applications for the October 2026 intake is closed. The next call is supposed to open in June 2027.",
+      "deadline_precision": "month",
+      "source": {
+        "url": "https://aai-salzburg.at/en/studies/apply",
+        "source_type": "official_scholarship_page",
+        "publisher": "Afro-Asian Institute Salzburg (Archdiocese of Salzburg)",
+        "retrieved_at": "2026-10-05T15:29:20Z",
+        "as_of": "October 2026 intake (closed); next call stated for June 2027",
+        "raw_extract": "**The call for applications for the October 2026 intake is closed. The next call is supposed to open in June 2027.** ... **1\\. Submission of the online form (until 12 July)** ... **3\\. submission of full application (until 15 July)** ... Shortly after the application deadline of 15 July, the Grants Committee will meet and decide whether to award or reject the scholarship place. **Notification of Approvel or Rejection will be sent by email in the first half of August.**",
+        "exact_deadline_wording": "The call for applications for the October 2026 intake is closed. The next call is supposed to open in June 2027.",
+        "confidence": "MEDIUM",
+        "notes": "The record's official_source_url (the One World Scholarship page) was fetched first and carries NO deadline at all - it ends with a '[go to apply]' link. The provider's own Apply page was then fetched and is where the timing lives. Reading: the only forward-looking calendar anchor the provider publishes for the next cycle is a month, 'June 2027', with no day. The within-call sub-deadlines 'until 12 July' (online form) and 'until 15 July' (full application) are published with NO year attached and the current (October 2026 intake) call is already closed, so those July dates cannot be assigned to any specific year - they were deliberately NOT dated. Verdict MONTH: a month-level window is officially stated, so deadline_date stays null and precision is 'month'; no day was invented and no year was assumed. Confidence is MEDIUM rather than HIGH because the June 2027 statement is a hedged opening ('is supposed to open') rather than a published close, and because the hedged month refers to the call opening rather than to the application deadline itself. The two internal July sub-deadlines are preserved verbatim above for whoever owns the application_period field."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "month",
+        "deadline_display": "The call for applications for the October 2026 intake is closed. The next call is supposed to open in June 2027."
+      },
+      "examined": [
+        "https://aai-salzburg.at/en/studies/one-world-scholarship"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://aai-salzburg.at/en/studies/one-world-scholarship",
+          "reason": "This IS the record's official_source_url and it was fetched - but the scholarship page itself publishes no application date at all. Superseded by the provider's own Apply page, not rejected on quality grounds."
+        },
+        {
+          "url": "https://aai-salzburg.at/en/news",
+          "reason": "News listing on the provider domain could restate dates but the Apply page is the authoritative process page; not used."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 221,
+      "title": "AITHYRA International PhD Call in AI for Biomedicine (CeMM doctoral programme)",
+      "outcome": "recovered",
+      "deadline_semantics": "EXACT",
+      "deadline_date": "2026-11-01",
+      "deadline_display": "Call Open: September 1 – November 1, 2026 / Deadline for Applicants and Referees: November 1, 2026",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://phd.aithyra.at/",
+        "source_type": "official_programme_page",
+        "publisher": "AITHYRA – Research Institute for Biomedical Artificial Intelligence of the Austrian Academy of Sciences",
+        "retrieved_at": "2026-10-05T15:33:05Z",
+        "as_of": "AITHYRA PhD Call 2026 - programme start September 1, 2027",
+        "raw_extract": "## Application Timeline\n\n**Call Open**: September 1 – November 1, 2026\n\n**Deadline for Applicants and Referees**: November 1, 2026\n\n**Panel Interviews (online)**: November 30 – December 1, 2026\n\n**Onsite visit (in person)**: January 27-29, 2027\n\n**Program start**: September 1, 2027",
+        "exact_deadline_wording": "Deadline for Applicants and Referees: November 1, 2026",
+        "confidence": "HIGH",
+        "notes": "This is the record that had been quarantined with no deadline. An explicit, still-future calendar deadline exists on two independent official AITHYRA pages, both fetched live and both agreeing on 1 November 2026: (1) phd.aithyra.at (above) and (2) https://www.aithyra.at/about/phd-program - 'The next AITHYRA International PhD Program will begin on 1 September 2027 (Application period 1 September - 1 November 2026).' Because two credible official sources agree on the SAME deadline this is EXACT, not CONFLICTING. NOT a conflict: CeMM's own PhD Program and Application Process pages publish no deadline at all ('Sign up here to receive notifications when the next call opens and stay up to date!'), and the previous AITHYRA-CeMM joint call's '30 January 2026' close was a different call for a September 2026 start - different programme cycle, not a disagreement about this deadline. Retrieved date 2026-10-05 falls inside the open window, so the value is live and not expired. The institution-level official page www.oeaw.ac.at/aithyra/open-positions returned HTTP 403 to the fetcher and was not usable; the AITHYRA-owned domains are the institute's own official domain and were used instead."
+      },
+      "field_mapping": {
+        "deadline_date": "2026-11-01",
+        "deadline_precision": "exact",
+        "deadline_display": "Deadline for Applicants and Referees: November 1, 2026"
+      },
+      "examined": [
+        "https://cemm.at/phd-program",
+        "https://cemm.at/phd-program/application-process",
+        "https://cemm.at/phd-call-2026/",
+        "https://www.aithyra.at/about/phd-program",
+        "https://www.aithyra.at/about/open-positions"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.oeaw.ac.at/aithyra/open-positions",
+          "reason": "Austrian Academy of Sciences institutional mirror of the AITHYRA open positions page. Fetched live 2026-10-05: HTTP 403 Forbidden to this client. Could not be used as evidence; superseded by the AITHYRA-owned official domain."
+        },
+        {
+          "url": "https://www.findaphd.com/phds/program/the-aithyra-international-phd-call-in-ai-for-biomedicine-all-genders/",
+          "reason": "Third-party PhD aggregator. Not fetched - rejected under the source hierarchy; a scholarship aggregator mirror is not an official provider source."
+        },
+        {
+          "url": "https://ksma.edu.kg/en/media/adverts/cemm-phd-programme",
+          "reason": "Third-party university advert mirror on a non-Austrian institution domain. Not fetched - rejected under the source hierarchy."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 568,
+      "title": "Türkiye Bursları (Türkiye Scholarships) - Turkish Government Scholarship",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "General Application Period — Application Period: January 10 – February 20",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.turkiyeburslari.gov.tr/calendar",
+        "source_type": "official_government_page",
+        "publisher": "Presidency of Turks Abroad and Relatives of Overseas Citizens (YTB) - Türkiye Scholarships",
+        "retrieved_at": "2026-10-05T15:32:40Z",
+        "as_of": null,
+        "raw_extract": "#### Application Calendar\n\n#### General Application Period\n\nApplication Period\n\nJanuary 10 – February 20\n\nEvaluation Process\n\nMarch–April\n\nInterview Period\n\nApril – June\n\nAnnouncement of Results\n\nEarly August\n\nInitial Procedures\n\nAugust\n\nTransfers of Grantees to Türkiye\n\nSeptember",
+        "exact_deadline_wording": "Application Period January 10 – February 20",
+        "confidence": "HIGH",
+        "notes": "The record's official_source_url https://scholarship.turkiye.gov.tr failed to fetch (transport error on 2026-10-05); the live official programme site on the YTB's own domain was used instead, starting from its Application Calendar page. That standing calendar publishes the General Application Period as 'January 10 - February 20' with NO YEAR, i.e. recurring annual timing for the full-time (associate, bachelor's, master's, doctoral) programmes - so ANNUAL with deadline_date null, per the contract's rule that an ANNUAL value must never be turned into a calendar date. The same page separately lists Research Scholarships on four period-specific windows (January-March, April-June, July-September, October-December) and Success Scholarship October-November, which are announced individually each cycle. Corroboration without conflict: the cycle-specific official announcement at https://www.turkiyeburslari.gov.tr/announcements/turkiye-scholarships-2026-applications-121 (fetched) states 'Application Dates: 10 January - 20 February 2026' and 'Türkiye Scholarships applications for 2026 will be received in one period'. That 2026 window closed on 20 February 2026, i.e. before the 2026-10-05 retrieval date, so the stale 2026 date was NOT written and was NOT rolled forward to 2027. The record remains correctly open/upcoming as an annual programme whose next window is the same recurring Jan 10 - Feb 20 period; it is not an expired_mismatch because no cycle-specific closed deadline is being asserted."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "General Application Period - Application Period: January 10 - February 20"
+      },
+      "examined": [
+        "https://www.turkiyeburslari.gov.tr/",
+        "https://www.turkiyeburslari.gov.tr/announcements/turkiye-scholarships-2026-applications-121"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://scholarship.turkiye.gov.tr",
+          "reason": "The record's stated official_source_url. Fetch attempted live 2026-10-05 and failed with a transport-level error (connection could not be completed). Not usable as evidence."
+        },
+        {
+          "url": "https://www.turkiyeburslari.gov.tr/ScholarshipSearch",
+          "reason": "Shard catalogue_url points at a programme search/browsing interface. Not a deadline-bearing page and not needed once the official Application Calendar resolved the value. Not fetched."
+        },
+        {
+          "url": "https://tbbs.turkiyeburslari.gov.tr",
+          "reason": "Official TBBS login/application portal. Requires authentication and yields no public deadline text; not fetched."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 627,
+      "title": "Research Fellowship 2027 — European Academy of Neurology",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Applications for 2027 are closed. / Applications for 2027 will be open from June 01 to August 31, 2026.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.ean.org/learn/fellowships-and-funding/research-fellowship",
+        "source_type": "official_scholarship_page",
+        "publisher": "European Academy of Neurology (EAN)",
+        "retrieved_at": "2026-10-05T15:29:15Z",
+        "as_of": "Research Fellowship 2027 cycle (2027 awards)",
+        "raw_extract": "# Research Fellowship\n\n## Research Fellowship 2027\n\n**Applications for 2027 are closed.** ... Applications for 2027 will be open from June 01 to August 31, 2026. All application documents must be submitted via the online application form. Important note: Notifications will be sent by the end of November 2026, and successful fellowships are valid retroactively from 1 September 2026, if their stay in the hosting department started earlier.",
+        "exact_deadline_wording": "Applications for 2027 will be open from June 01 to August 31, 2026.",
+        "confidence": "HIGH",
+        "notes": "The record's official_source_url was fetched live and it does publish a fully explicit calendar deadline for THIS cycle: the 2027 window ran 1 June - 31 August 2026, i.e. it closed on 2026-08-31, which is 35 days before the 2026-10-05 retrieval date. The page states in capitals that 'Applications for 2027 are closed.' and the awardees/winners block dates to December 2025 for the previous cycle, so nothing about this cycle is still open. Applying contract section 6: the source's deadline is clearly in the past while the record is carried as open/upcoming, so outcome is expired_mismatch, the stale date 2026-08-31 is deliberately NOT written to deadline_date, and it has NOT been silently moved to the 2028 cycle. deadline_semantics is recorded as EXACT because the source genuinely states an explicit calendar deadline - deadline_precision 'exact' describes the SOURCE's precision, while the writable field_mapping leaves deadline_date null. A reviewer who prefers strict field consistency should read this as 'explicit source deadline, expired, not writable'. The next EAN Research Fellowship cycle is not announced anywhere on the fetched page, so nothing can be said about a future window. Note the page's own internal oddity, quoted not corrected: it says fellowships are 'valid retroactively from 1 September 2026'."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "Applications for 2027 are closed. Applications for 2027 will be open from June 01 to August 31, 2026."
+      },
+      "examined": [
+        "https://www.ean.org/learn/fellowships-and-funding",
+        "https://www.ean.org/research/programmes-and-funding"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.ean.org/learn/fellowships-and-funding/research-fellowship",
+          "reason": "This IS the record's official_source_url and it WAS fetched and used as the primary source. Listed here only to flag that its 2027 window (closing 2026-08-31) is already expired, so its explicit date must not be written."
+        },
+        {
+          "url": "https://www.eanpages.org/2025/12/12/research-fellowship-winners-2026/",
+          "reason": "EAN news listing for the PREVIOUS (2026 award) cycle. Not the same deadline as this record's 2027 cycle; using it would be importing another cycle's date. Not fetched."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 686,
+      "title": "International Excellence Scholarship 2027 (The University of Newcastle, Australia)",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "No application is required for this scholarship. Scholarships are automatically assessed upon application for admission to the University.",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://www.newcastle.edu.au/scholarships/UNI_053",
+        "source_type": "official_university_page",
+        "publisher": "The University of Newcastle, Australia (International Scholarships, Global Office)",
+        "retrieved_at": "2026-10-05T15:29:50Z",
+        "as_of": "International Excellence Scholarship 2027 (students commencing 2027 or later); T&C document dated 04092026",
+        "raw_extract": "## Selection\n\n**No application is required for this scholarship. Scholarships are automatically assessed upon application for admission to the University.**\n\nEligible students will receive notification of the value of the scholarship within the Letter of Offer. ... ## Scholarship details\n\nRefer to selection details for application information",
+        "exact_deadline_wording": "No application is required for this scholarship. Scholarships are automatically assessed upon application for admission to the University.",
+        "confidence": "HIGH",
+        "notes": "The record's official_source_url was fetched live and is decisive. The university states there is no separate scholarship application at all - assessment is automatic on the admission application - and publishes no deadline field anywhere on the page (Amount 20% of gross annual international tuition fee; Number available 500; Required Documentation 'None Required.'). The eligibility wording is time-bounded rather than dated: 'This version of the scholarship applies to new international students who receive an offer and commence study in 2027 or later.' That is a no-fixed-deadline scheme, so ROLLING with deadline_date null, per the contract's rule that a rolling value is never converted to a calendar date. High confidence on the substance: the page's own wording is an explicit statement that no deadline exists, which is the ROLLING condition. Slight caveat recorded for transparency - the page never uses the word 'rolling' or the phrase 'no deadline', it expresses the same thing via 'No application is required'. The linked 2027 Terms and Conditions PDF was fetched but returned raw uncompressed PDF bytes that could not be read as text, so it is listed as examined and is NOT cited as evidence for any value."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "rolling",
+        "deadline_display": "No application is required for this scholarship. Scholarships are automatically assessed upon application for admission to the University."
+      },
+      "examined": [
+        "https://www.newcastle.edu.au/__data/assets/pdf_file/0014/1136300/UNI_053-International-Excellence-Scholarship-2027-T-and-Cs-04092026.pdf"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.newcastle.edu.au/__data/assets/pdf_file/0014/1136300/UNI_053-International-Excellence-Scholarship-2027-T-and-Cs-04092026.pdf",
+          "reason": "Official 2027 Terms & Conditions PDF. Fetched, but the fetch returned raw PDF binary (FlateDecode streams) with no extractable text, so no verbatim quote could be taken from it. Cannot be cited as evidence; deliberately NOT used to support any value."
+        },
+        {
+          "url": "https://www.newcastle.edu.au/scholarships",
+          "reason": "Shard catalogue_url, the scholarships index. A listing of awards, not a deadline source for UNI_053, which the dedicated page already settles. Not fetched."
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "record_count": 7,
+    "deadline_date_written": 1,
+    "outcomes": {
+      "recovered": 5,
+      "expired_mismatch": 1,
+      "unknown": 0,
+      "conflicting": 0,
+      "not_found": 0,
+      "rejected": 0
+    },
+    "semantics": {
+      "EXACT": 1,
+      "MONTH": 3,
+      "ANNUAL": 1,
+      "ROLLING": 1,
+      "UNKNOWN": 0,
+      "CONFLICTING": 0
+    },
+    "notes": "Only record 221 yields a writable calendar date (2026-11-01). The other six are legitimately date-less: three MONTH windows, one recurring annual window, one rolling scheme, one expired cycle. No day, year or cycle was inferred anywhere."
+  }
+}

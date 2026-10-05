@@ -1,0 +1,49 @@
+{
+  "shard_id": "LG-038",
+  "topic": "logo",
+  "hosts": [
+    "admissions.kaust.edu.sa",
+    "ares-ac.be",
+    "scholarships.uq.edu.au",
+    "www.gov.br"
+  ],
+  "record_count": 4,
+  "records": [
+    {
+      "id": 194,
+      "title": "UQ International Excellence Scholarship",
+      "official_source": "The University of Queensland",
+      "official_source_url": "https://scholarships.uq.edu.au/scholarship/uq-international-excellence-scholarship",
+      "catalogue_url": "https://scholarships.uq.edu.au/scholarships",
+      "country": "Australia",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 557,
+      "title": "KAUST Fellowship (Master's, Ph.D. and M.S./Ph.D. Pathway)",
+      "official_source": "King Abdullah University of Science and Technology (KAUST)",
+      "official_source_url": "https://admissions.kaust.edu.sa/fees-funding",
+      "catalogue_url": "https://admissions.kaust.edu.sa/study/programs-of-study",
+      "country": "Saudi Arabia",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 571,
+      "title": "ARES Scholarships - Bourses de formations internationales (scholarships for study in Belgium)",
+      "official_source": "ARES (Fédération Wallonie-Bruxelles, Belgium)",
+      "official_source_url": "https://ares-ac.be",
+      "catalogue_url": "https://www.ares-ac.be/fr/bourses",
+      "country": "Belgium",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 603,
+      "title": "PEC-PG - Brazilian Program for Exchange Students, Postgraduate Level (PEC-PG 2027)",
+      "official_source": "Ministry of Foreign Affairs of Brazil (Itamaraty) with Conselho Nacional de Desenvolvimento Cientifico e Tecnologico (CNPq)",
+      "official_source_url": "https://www.gov.br/mre/en/subjects/culture-and-education/educational-themes/study-opportunities-for-international-applicants/pec-pg-graduate/selection-process-2",
+      "catalogue_url": "https://www.gov.br/mre/en/subjects/culture-and-education/educational-themes/study-opportunities-for-international-applicants",
+      "country": "Brazil",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "shard_id": "DL-057",
+  "agent_completed": true,
+  "agent": "DL-057",
+  "retrieved_at": "2026-10-05T15:40:00Z",
+  "records": [
+    {
+      "scholarship_id": 285,
+      "title": "Stipendium Hungaricum Scholarship Programme",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "15th January 2026, 2 pm (CET) - APPLICATION DEADLINE",
+      "deadline_precision": "exact",
+      "stale_deadline_not_written": "2026-01-15",
+      "source": {
+        "url": "https://stipendiumhungaricum.hu/apply/",
+        "source_type": "official_programme_page",
+        "publisher": "Stipendium Hungaricum / Tempus Public Foundation",
+        "retrieved_at": "2026-10-05T15:40:00Z",
+        "as_of": "2026/2027 application cycle (application period closed January 2026)",
+        "raw_extract": "15th January 2026, 2 pm (CET)\nAPPLICATION DEADLINE\nYour application must be submitted by the deadline. Please make sure that all required documents are attached and all the required fields are filled out properly before submitting your application.",
+        "exact_deadline_wording": "15th January 2026, 2 pm (CET)",
+        "confidence": "HIGH",
+        "notes": "The live programme Apply page still publishes only the 2026/2027 call (documents dated 2025/10) and the timeline step '15th January 2026, 2 pm (CET) - APPLICATION DEADLINE'. The programme FAQ on the same page states 'No, there is only one application deadline each year.' The site's news index (latest item 29 September 2026) and the DreamApply portal (latest item 25 Feb 2026) show no 2027/2028 call, so no current or upcoming cycle date exists. The single published deadline (2026-01-15) is in the past as of retrieval on 2026-10-05 while the record is open/upcoming, so per brief section 6 the date is NOT written and NOT rolled to the next year."
+      },
+      "field_mapping": {
+        "deadline_date": "null (no write - published deadline 2026-01-15 is in the past as of 2026-10-05)",
+        "deadline_precision": "null (no write - record status mismatch requires review)",
+        "deadline_display": "null (no write)"
+      },
+      "examined": [
+        "https://stipendiumhungaricum.hu",
+        "https://stipendiumhungaricum.hu/news/application-is-on-for-the-2026-2027-stipendium-hungaricum-scholarship/",
+        "https://stipendiumhungaricum.hu/news/",
+        "https://apply.stipendiumhungaricum.hu/"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 499,
+      "title": "Alberta Innovates Graduate Student Scholarships",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "Due date: Continuous",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://albertainnovates.ca/programs/graduate-student-scholarships",
+        "source_type": "official_scholarship_page",
+        "publisher": "Alberta Innovates",
+        "retrieved_at": "2026-10-05T15:40:00Z",
+        "as_of": "page footer (c) 2026 Alberta Innovates; links to 2026-2027 Graduate Student Scholarships Program Guidelines dated Oct 15, 2025",
+        "raw_extract": "Intake Status: Open\n### Open Intakes\n#### Graduate Student Scholarships Program - Seasonal Intake\nDue date: Continuous\n#### Intake Details\nThis program is accepting applications on a seasonal basis.\nIntake Open Date is specific to each individual university; please contact your university of choice for deadline information. Contact information can be found on page 11 of the Program Guidelines.",
+        "exact_deadline_wording": "Due date: Continuous",
+        "confidence": "HIGH",
+        "notes": "The funder itself publishes no calendar date: the intake due date is 'Continuous' and the intake open date is delegated to each participating university. This is an explicit no-fixed-deadline (rolling) statement, so no date is written. The shard's cached reference to University of Calgary / University of Alberta intake dates was not used - those are other institutions' pages and are not official for the funder-level record."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "rolling",
+        "deadline_display": "Due date: Continuous"
+      },
+      "examined": [
+        "https://albertainnovates.ca/programs/graduate-student-scholarships"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://grad.ucalgary.ca/awards/award-opportunities/alberta-innovates",
+          "reason": "Another university's page (referenced in the cached record text). Not fetched as evidence: brief section 5 forbids another university's deadline for this record, and the funder-level value is already established as rolling."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 580,
+      "title": "HFA Research and Training Grants Programme (Heart Failure Association of the European Society of Cardiology)",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Application period is 10 April to 30 September.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.escardio.org/education/career-development/grants/hfa-grants-programme",
+        "source_type": "official_scholarship_page",
+        "publisher": "European Society of Cardiology - Heart Failure Association (HFA of the ESC)",
+        "retrieved_at": "2026-10-05T15:40:00Z",
+        "as_of": null,
+        "raw_extract": "The HFA provides grants up to EUR 10,000 to help young members undertake specialised heart failure research or training in an ESC member country outside their own country. Application period is 10 April to 30 September.\nTimeline\nDate\tProcess\n10 April - 30 September\tCall for applications\nOctober - November\tApplication review\nDecember\tResults announcement\nMay Y+1 (year after application)\tDeadline to start the accepted exchange period",
+        "exact_deadline_wording": "Application period is 10 April to 30 September.",
+        "confidence": "HIGH",
+        "notes": "The official programme page states the application window by day-and-month only, with no year attached to the current call, and the timeline uses a relative marker ('May Y+1 (year after application)'), confirming a recurring annual window rather than a dated current deadline. No year-specific deadline for the next call is published, so per brief section 6 no calendar date is written. As of retrieval on 2026-10-05 the published annual window (10 April - 30 September) is between cycles; the next call is expected to open 10 April 2027 but no source states that, so nothing was inferred."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "recurring",
+        "deadline_display": "Application period is 10 April to 30 September."
+      },
+      "examined": [
+        "https://www.escardio.org/education/career-development/grants/hfa-grants-programme"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 678,
+      "title": "E-JUST TICAD8 African Scholarships for Science, Technology and Innovation",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Application Submission - February 15, 2026",
+      "deadline_precision": "exact",
+      "stale_deadline_not_written": "2026-02-15",
+      "source": {
+        "url": "https://ejust.edu.eg/international-deadlines",
+        "source_type": "official_programme_page",
+        "publisher": "Egypt-Japan University of Science and Technology (E-JUST)",
+        "retrieved_at": "2026-10-05T15:40:00Z",
+        "as_of": "Fall 2026 semester",
+        "raw_extract": "Fall 2026 International Admission Dates and Deadlines\nProcess\nDates and Deadlines for Fall 2026 Semester\n1\nApplication Submission\nFebruary 15, 2026",
+        "exact_deadline_wording": "February 15, 2026",
+        "confidence": "HIGH",
+        "notes": "The E-JUST scholarship page (https://ejust.edu.eg/international-scholarships) states 'TICAD8 Scholarships are available for applicants who wish to pursue their M.Sc. degree for Fall 2026 semester', so the international admission deadlines table is the scholarship's own submission deadline. The live deadlines page publishes only the Fall 2026 cycle (application submission 15 February 2026); no Fall 2027 dates are published and the scholarship page still advertises Fall 2026. The only official date is therefore in the past as of 2026-10-05 while the record is open/upcoming, so it is NOT written and NOT moved to a future cycle."
+      },
+      "field_mapping": {
+        "deadline_date": "null (no write - published deadline 2026-02-15 is in the past as of 2026-10-05)",
+        "deadline_precision": "null (no write - record status mismatch requires review)",
+        "deadline_display": "null (no write)"
+      },
+      "examined": [
+        "https://ejust.edu.eg/international-scholarships",
+        "https://ejust.edu.eg/international-flyers",
+        "https://ejust.edu.eg/international-pg"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 680,
+      "title": "Qatar University International Students Scholarship",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "March 25, 2026 - Last day for online application for International Students Scholarship through the online admission application",
+      "deadline_precision": "exact",
+      "stale_deadline_not_written": "2026-03-25",
+      "source": {
+        "url": "https://www.qu.edu.qa/en-us/students/admission/scholarships/Pages/scholarships-timeline.aspx",
+        "source_type": "official_university_page",
+        "publisher": "Qatar University - Office of the Vice President for Student Affairs, Scholarships Section",
+        "retrieved_at": "2026-10-05T15:40:00Z",
+        "as_of": "Fall 2026 semester",
+        "raw_extract": "Timeline to apply for scholarship in Fall 2026 semester\nInternational Students Scholarship\nMarch 1, 2026\nStart online application for these Scholarships through the online admission application\nMarch 25, 2026\nLast day for online application for International Students Scholarship through the online admission application",
+        "exact_deadline_wording": "March 25, 2026",
+        "confidence": "HIGH",
+        "notes": "The Scholarship Types page (https://www.qu.edu.qa/en-us/students/admission/scholarships/types) defines the International Students Scholarship but carries no dates and defers to the Scholarship Timeline page, which publishes only the Fall 2026 cycle (1-25 March 2026). No Fall 2027 scholarship timeline is published as of 2026-10-05, so the only official date is in the past while the record is open/upcoming; it is NOT written and NOT rolled forward."
+      },
+      "field_mapping": {
+        "deadline_date": "null (no write - published deadline 2026-03-25 is in the past as of 2026-10-05)",
+        "deadline_precision": "null (no write - record status mismatch requires review)",
+        "deadline_display": "null (no write)"
+      },
+      "examined": [
+        "https://www.qu.edu.qa/en-us/students/admission/scholarships/types"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 681,
+      "title": "Government of Brunei Darussalam Scholarship to Foreign Students Tenable in Brunei Darussalam (BDGS)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "The closing date for application of the Scholarship is 15 February 2026.",
+      "deadline_precision": "exact",
+      "stale_deadline_not_written": "2026-02-15",
+      "source": {
+        "url": "https://www.mfa.gov.bn/Pages/online-bdgs.aspx",
+        "source_type": "official_government_page",
+        "publisher": "Ministry of Foreign Affairs, Government of Brunei Darussalam",
+        "retrieved_at": "2026-10-05T15:40:00Z",
+        "as_of": "2026/2027 academic session",
+        "raw_extract": "Applications for THE GOVERNMENT OF BRUNEI DARUSSALAM SCHOLARSHIP FOR FOREIGN STUDENTS TENABLE IN BRUNEI DARUSSALAM (BDGS) for the academic session 2026 / 2027 will open on 15 December 2025\n1. The closing date for application of the Scholarship is 15 February 2026.",
+        "exact_deadline_wording": "The closing date for application of the Scholarship is 15 February 2026.",
+        "confidence": "HIGH",
+        "notes": "The Ministry's own BDGS page states one unambiguous closing date for the 2026/2027 session. The linked official application portal (https://apps.katalyst.gov.bn/mfa/BDGS-V3/loginApplicant) independently shows 'Government of Brunei Darussalam Scholarship For Foreign Students Tenable in Brunei Darussalam Academic Session 2026/2027' with 'This application is now closed. Thank you for your interest.' The MFA site carries no announcement of a 2027/2028 session. The closing date is in the past as of 2026-10-05 while the record is open/upcoming, so it is NOT written and NOT moved to the next cycle. Note: the same page contains a stale line, 'The academic year commences July/August 2025', which refers to the academic year start rather than to the application deadline and is not a conflicting deadline value."
+      },
+      "field_mapping": {
+        "deadline_date": "null (no write - published deadline 2026-02-15 is in the past as of 2026-10-05)",
+        "deadline_precision": "null (no write - record status mismatch requires review)",
+        "deadline_display": "null (no write)"
+      },
+      "examined": [
+        "https://apps.katalyst.gov.bn/mfa/BDGS-V3/loginApplicant"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 683,
+      "title": "Brunei Darussalam Government Scholarship for Foreign Students Tenable in Brunei Darussalam (BDGS)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "The closing date for application of the Scholarship is 15 February 2026.",
+      "deadline_precision": "exact",
+      "stale_deadline_not_written": "2026-02-15",
+      "source": {
+        "url": "https://www.mfa.gov.bn/Pages/online-bdgs.aspx",
+        "source_type": "official_government_page",
+        "publisher": "Ministry of Foreign Affairs, Government of Brunei Darussalam",
+        "retrieved_at": "2026-10-05T15:40:00Z",
+        "as_of": "2026/2027 academic session",
+        "raw_extract": "Applications for THE GOVERNMENT OF BRUNEI DARUSSALAM SCHOLARSHIP FOR FOREIGN STUDENTS TENABLE IN BRUNEI DARUSSALAM (BDGS) for the academic session 2026 / 2027 will open on 15 December 2025\n1. The closing date for application of the Scholarship is 15 February 2026.",
+        "exact_deadline_wording": "The closing date for application of the Scholarship is 15 February 2026.",
+        "confidence": "MEDIUM",
+        "notes": "The record's own official_source_url (https://www.mfa.gov.bn/Pages/scholarship.aspx) carries no dates; it only lists 'THE GOVERNMENT OF BRUNEI DARUSSALAM SCHOLARSHIP FOR FOREIGN STUDENTS TENABLE IN BRUNEI DARUSSALAM (BDGS) ACADEMIC SESSION 2026/2027' linking to the Ministry's Katalyst portal, which shows 'This application is now closed. Thank you for your interest.' The explicit closing date therefore comes from the Ministry's own BDGS programme page (online-bdgs.aspx), same awarding agency, same scholarship. No 2027/2028 session is announced anywhere on mfa.gov.bn. The closing date is in the past as of 2026-10-05 while the record is open/upcoming, so it is NOT written and NOT moved forward. Confidence MEDIUM only because the record's primary URL does not itself carry the date."
+      },
+      "field_mapping": {
+        "deadline_date": "null (no write - published deadline 2026-02-15 is in the past as of 2026-10-05)",
+        "deadline_precision": "null (no write - record status mismatch requires review)",
+        "deadline_display": "null (no write)"
+      },
+      "examined": [
+        "https://www.mfa.gov.bn/Pages/scholarship.aspx",
+        "https://apps.katalyst.gov.bn/mfa/BDGS-V3/loginApplicant"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://ubd.edu.bn/admission/scholarship",
+          "reason": "Universiti Brunei Darussalam is a participating institution, not the awarding agency. A university page is not official for the Government of Brunei Darussalam BDGS award (brief section 4) and was not used."
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "record_count": 7,
+    "recovered": 2,
+    "expired_mismatch": 5,
+    "unknown": 0,
+    "conflicting": 0,
+    "dates_written": 0,
+    "semantics": {
+      "EXACT": 5,
+      "ROLLING": 1,
+      "ANNUAL": 1
+    },
+    "note": "No record received a calendar deadline_date. Two records (499 rolling, 580 annual) are structurally recovered with null dates by design; the other five publish an explicit calendar date that is already in the past relative to the 2026-10-05 retrieval date while the records are open/upcoming, so they are reported as expired_mismatch rather than written or rolled forward."
+  }
+}

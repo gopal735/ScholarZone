@@ -1,0 +1,282 @@
+{
+  "shard_id": "DL-051",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 129,
+      "title": "Dartmouth College Need-Based Financial Aid (International Students)",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Application Deadlines for Financial Aid: November 1st Early Decision / February 1st Regular Decision / March 1st Transfer Applications",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://admissions.dartmouth.edu/estimate-your-cost/apply-financial-aid",
+        "source_type": "official_university_page",
+        "publisher": "Dartmouth College, Undergraduate Admissions / Office of Financial Aid",
+        "retrieved_at": "2026-10-05T15:33:00Z",
+        "as_of": "no year stated in the deadline block; the same page otherwise references the 2027-2028 FAFSA cycle and parents' 2025 income tax statements",
+        "raw_extract": "#### Application Deadlines for Financial Aid\n\nClick to see more about: **Application Deadlines for Financial Aid**\n\n- November 1st\n\n  Early Decision\n- February 1st\n\n  Regular Decision\n- March 1st\n\n  Transfer Applications",
+        "exact_deadline_wording": "November 1st Early Decision / February 1st Regular Decision / March 1st Transfer Applications",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url (https://admissions.dartmouth.edu/affordability/international-students) returns HTTP 404 and was replaced by the live official page fetched here. The financial-aid deadline block on that page is not filtered by citizenship, so it is the same block that governs international applicants (the same page carries the international-only ISFAA/CSS Profile instructions). The three dates are stated as month-and-day with NO year, i.e. recurring annual timing, and they are three different deadlines for different applicant types (Early Decision / Regular Decision / Transfer), which the brief explicitly says is not a conflict. Per the brief, an ANNUAL value must never be converted into a calendar date, so deadline_date stays null. A second official page (glossary) states the same three dates with no year, so there is no source disagreement. The glossary page for 'Application Deadline' refers to the Common App admission deadline, not the financial aid deadline, so it was not treated as a competing value."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "Application Deadlines for Financial Aid: November 1st Early Decision / February 1st Regular Decision / March 1st Transfer Applications"
+      },
+      "corroborating_sources": [
+        {
+          "url": "https://admissions.dartmouth.edu/glossary-question/when-financial-aid-deadline",
+          "source_type": "official_university_page",
+          "publisher": "Dartmouth College, Undergraduate Admissions",
+          "retrieved_at": "2026-10-05T15:33:00Z",
+          "raw_extract": "The deadlines for financial aid are November 1 for [Early Decision](https://admissions.dartmouth.edu/glossary-term/early-decision) applicants, February 1 for [Regular Decision](https://admissions.dartmouth.edu/glossary-term/regular-decision) applicants, and March 1 for [Transfer](https://admissions.dartmouth.edu/glossary-term/transfer) applicants.",
+          "confidence": "HIGH"
+        }
+      ],
+      "examined": [
+        "https://admissions.dartmouth.edu/affordability/international-students (shard official_source_url; HTTP 404, dead link - not used as evidence)",
+        "https://admissions.dartmouth.edu/estimate-your-cost/apply-financial-aid (live page fetched; year-less dates)",
+        "https://admissions.dartmouth.edu/glossary-question/when-financial-aid-deadline (live page fetched; same dates, no year)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://admissions.dartmouth.edu/glossary-term/application-deadline",
+          "reason": "Refers to the Common App admission deadline, not the financial aid deadline for this record; would be a generic admissions deadline"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 278,
+      "title": "NTNU PhD Positions (Salaried Employment)",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "Acceptance to a PhD-programme is done continuously throughout the academic year and is not restricted to the beginning of term.",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://www.ntnu.edu/phd/admission-and-financing",
+        "source_type": "official_university_page",
+        "publisher": "Norwegian University of Science and Technology (NTNU)",
+        "retrieved_at": "2026-10-05T15:33:00Z",
+        "as_of": null,
+        "raw_extract": "Your application is written up in cooperation with your main supervisor. Acceptance to a PhD-programme is done continuously throughout the academic year and is not restricted to the beginning of term.",
+        "exact_deadline_wording": "Acceptance to a PhD-programme is done continuously throughout the academic year and is not restricted to the beginning of term.",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url (https://www.ntnu.edu/jobs) returns HTTP 404; the live NTNU PhD admission page was used instead. The provider states explicitly that admission is continuous (rolling) with no fixed deadline, and that individual positions are announced separately ('Available positions are announced at NTNU's web pages and through jobbnorge'), each with its own closing date. That is the definition of ROLLING, so deadline_date stays null and no date may be written. The vacancies page itself carries an empty 'Vacancies Portlet' and no deadline text."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "rolling",
+        "deadline_display": "Acceptance to a PhD-programme is done continuously throughout the academic year and is not restricted to the beginning of term."
+      },
+      "examined": [
+        "https://www.ntnu.edu/jobs (shard official_source_url; HTTP 404, dead link - not used as evidence)",
+        "https://www.ntnu.edu/vacancies (live page fetched; 'Vacancies Portlet' rendered empty, no deadline wording)",
+        "https://www.ntnu.edu/phd (live page fetched; links to the continuous-admission statement, no date of its own)"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 297,
+      "title": "Visegrad Scholarship Programme — study or research stay hosted by Masaryk University",
+      "outcome": "conflicting",
+      "deadline_semantics": "CONFLICTING",
+      "deadline_date": null,
+      "deadline_display": "Masaryk University: \"Annual deadline for applications: 15 March\" | International Visegrad Fund: \"Apr 15, 2027 at 12:00 PM: Final application deadline\"",
+      "deadline_precision": "varies",
+      "source": {
+        "url": "https://czs.muni.cz/en/student-from-abroad/other-possibilities/visegrad-grant",
+        "source_type": "official_university_page",
+        "publisher": "Masaryk University, Centre of Foreign Students (host institution)",
+        "retrieved_at": "2026-10-05T15:33:00Z",
+        "as_of": null,
+        "raw_extract": "## Deadlines\n\n-   **Annual deadline for applications:**  \n    15 March",
+        "exact_deadline_wording": "Annual deadline for applications: 15 March",
+        "confidence": "HIGH",
+        "notes": "Two official sources give different values for the SAME deadline (final application deadline of the Visegrad Scholarship Programme), so per the brief this is CONFLICTING and no date may be written. (1) Masaryk University (host university page, the shard's official_source_url) states 'Annual deadline for applications: 15 March' with no year. (2) The International Visegrad Fund itself - the scholarship provider and therefore higher in the source hierarchy - states on its Visegrad Scholarship Program call page: 'Opens on Jan 1, 2027 at 12:00 PM', timeline 'Jan 1, 2027 at 12:00 PM: Call opens / Apr 15, 2027 at 12:00 PM: Final application deadline / May 31, 2027 at 12:00 PM: Results announced', and 'Your application must be submitted online via My Visegrad by April 15, 12 PM (noon)'. I did not attempt to decide which is correct and did not roll either value forward; 15 March vs 15 April is a disagreement about the same deadline, not two different programmes."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "varies",
+        "deadline_display": "Masaryk University: \"Annual deadline for applications: 15 March\" | International Visegrad Fund: \"Apr 15, 2027 at 12:00 PM: Final application deadline\""
+      },
+      "conflicting_sources": [
+        {
+          "url": "https://czs.muni.cz/en/student-from-abroad/other-possibilities/visegrad-grant",
+          "publisher": "Masaryk University (host institution)",
+          "raw_extract": "Annual deadline for applications: 15 March",
+          "exact_deadline_wording": "Annual deadline for applications: 15 March",
+          "confidence": "HIGH"
+        },
+        {
+          "url": "https://www.visegradfund.org/visegrad-scholarship-program-apply/",
+          "publisher": "International Visegrad Fund (scholarship provider)",
+          "retrieved_at": "2026-10-05T15:33:00Z",
+          "raw_extract": "Jan 1, 2027 at 12:00 PM: Call opens\nApr 15, 2027 at 12:00 PM: Final application deadline\nMay 31, 2027 at 12:00 PM: Results announced",
+          "exact_deadline_wording": "Apr 15, 2027 at 12:00 PM: Final application deadline",
+          "confidence": "HIGH"
+        }
+      ],
+      "examined": [
+        "https://czs.muni.cz/en/student-from-abroad/other-possibilities/visegrad-grant (live page fetched; 15 March, no year)",
+        "https://www.visegradfund.org/visegrad-scholarship-program-apply/ (live page fetched; 15 April 2027, 12:00 PM)",
+        "https://www.visegradfund.org/scholarships/ (live page fetched; shows 'Visegrad Scholarship Program - Opens Jan 1, 2027' but no closing date, so it does not resolve the conflict)"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 399,
+      "title": "Tulī Takes Flight Scholarships",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Applications for the 2027 round are now closed. You will be notified of the outcome of your application by 18 March 2027.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.education.govt.nz/education-professionals/schools-year-0-13/scholarships-and-study-awards/pacific-scholarships/tuli-takes-flight-new-and-continuing-study-or-training-scholarships",
+        "source_type": "official_government_page",
+        "publisher": "Ministry of Education New Zealand (Te Tāhuhu o te Mātauranga)",
+        "retrieved_at": "2026-10-05T15:33:00Z",
+        "as_of": "2027 study year round; page states 'Last updated: 1 October 2026'",
+        "raw_extract": "Applications for the 2027 round are now closed.\n\nYou will be notified of the outcome of your application by 18 March 2027.",
+        "exact_deadline_wording": "Applications for the 2027 round are now closed.",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url (the 2026 news release) now returns HTTP 404 and was replaced by the live 2027 news release. The only application deadline published by the Ministry for the current round is 11.59pm Wednesday 30 September 2026 (verified verbatim on the 2027 news release, quoted below), which is in the past as of the 2026-10-05 retrieval date, while the record is flagged open/upcoming - so outcome is expired_mismatch. The stale date is deliberately NOT written and was NOT moved to the next year. The scholarship page itself no longer prints any closing date, only 'now closed' plus the 18 March 2027 outcome date, so no applicable deadline can be established and no recurring-cycle statement is made on this page; semantics therefore stay UNKNOWN rather than being inferred as ANNUAL. No date for a future round is published on either live page examined."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Applications for the 2027 round are now closed. You will be notified of the outcome of your application by 18 March 2027."
+      },
+      "corroborating_sources": [
+        {
+          "url": "https://www.education.govt.nz/news/applications-open-2027-tuli-takes-flight-and-pacific-education-foundation-scholarships",
+          "publisher": "Ministry of Education New Zealand",
+          "retrieved_at": "2026-10-05T15:33:00Z",
+          "raw_extract": "Apply now for the 2027 round of scholarships. Applications close at 11.59pm Wednesday 30 September 2026.",
+          "exact_deadline_wording": "Applications close at 11.59pm Wednesday 30 September 2026.",
+          "confidence": "HIGH"
+        }
+      ],
+      "examined": [
+        "https://www.education.govt.nz/news/applications-open-2026-tuli-takes-flight-and-pacific-education-foundation-scholarships (shard official_source_url; HTTP 404, superseded by the 2027 release)",
+        "https://www.education.govt.nz/education-professionals/schools-year-0-13/scholarships-and-study-awards/pacific-scholarships/tuli-takes-flight-new-and-continuing-study-or-training-scholarships (live page fetched; closed, no closing date)",
+        "https://www.education.govt.nz/news/applications-open-2027-tuli-takes-flight-and-pacific-education-foundation-scholarships (live page fetched; 11.59pm Wednesday 30 September 2026, now past)"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 403,
+      "title": "Ngarimu VC and 28th (Māori) Battalion Memorial Scholarships",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Applications to support study in 2027 closed on Sunday 19 July 2026. We expect to notify all applicants of outcomes by late November 2026. Applications to support study in 2028 will open mid-2027.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.education.govt.nz/parents-and-caregivers/tertiary/available-assistance/ngarimu-vc-and-28th-maori-battalion-memorial-scholarships",
+        "source_type": "official_government_page",
+        "publisher": "Ministry of Education New Zealand (Ngarimu VC and 28th (Māori) Battalion Memorial Scholarship Fund Board)",
+        "retrieved_at": "2026-10-05T15:33:00Z",
+        "as_of": "2027 study year round closed; 2028 study year round not yet published. Page states 'Last updated: 30 July 2026'",
+        "raw_extract": "Applications to support study in 2027 closed on Sunday 19 July 2026. We expect to notify all applicants of outcomes by late November 2026.\n\nApplications to support study in 2028 will open mid-2027.",
+        "exact_deadline_wording": "Applications to support study in 2027 closed on Sunday 19 July 2026.",
+        "confidence": "HIGH",
+        "notes": "The only application closing date published is 19 July 2026 for the 2027 study year, which is in the past as of the 2026-10-05 retrieval date while the record is flagged open/upcoming, so outcome is expired_mismatch. The stale date is NOT written and NOT shifted to 2027. The page does explicitly describe a recurring annual scheme ('The board awards scholarships every year to exceptional Māori students for vocational or tertiary study.') and gives only an opening window for the next round ('will open mid-2027') with no closing date, so semantics is ANNUAL/recurring with deadline_date null. Note the opening window is not a deadline and was not converted into one."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "Applications to support study in 2027 closed on Sunday 19 July 2026. We expect to notify all applicants of outcomes by late November 2026. Applications to support study in 2028 will open mid-2027."
+      },
+      "examined": [
+        "https://www.education.govt.nz/parents-and-caregivers/tertiary/available-assistance/ngarimu-vc-and-28th-maori-battalion-memorial-scholarships (live page fetched; 19 July 2026 closed, no 2028 closing date)"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 688,
+      "title": "Becas Nacionales de Inclusión 2026 (A. Becas de Licenciatura para Jefas de Familia; B. Apoyos Complementarios para Personas Indígenas; C. Apoyos Complementarios para Personas con Discapacidad)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Conclusión de recepción de solicitudes: viernes, 25 septiembre 2026 - 11:59 PM hora local CDMX.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-becas-nacionales-de-inclusion-2026",
+        "source_type": "official_government_page",
+        "publisher": "Secretaría de Ciencia, Humanidades y Tecnología (SECIHTI), Gobierno de México",
+        "retrieved_at": "2026-10-05T15:33:00Z",
+        "as_of": "Periodo 2026; page 'Fecha de publicación: lunes, 23 febrero 2026 - 1:00 PM hora local CDMX'",
+        "raw_extract": "-   Periodo: *2026*.\n-   Estatus de la convocatoria: *Abierta*.\n\n-   Fecha de publicación: *lunes, 23 febrero 2026 - 1:00 PM* hora local CDMX.\n\n-   Inicio de recepción de solicitudes: *lunes, 29 junio 2026 - 12:00 AM* hora local CDMX.\n\n-   Conclusión de recepción de solicitudes: *viernes, 25 septiembre 2026 - 11:59 PM* hora local CDMX.",
+        "exact_deadline_wording": "Conclusión de recepción de solicitudes: viernes, 25 septiembre 2026 - 11:59 PM hora local CDMX.",
+        "confidence": "HIGH",
+        "notes": "This is a single-cycle convocatoria: the page states one application window, 29 June 2026 to 25 September 2026. The closing timestamp (25 September 2026, 11:59 PM CDMX) is in the past as of the 2026-10-05 retrieval date while the record is flagged open/upcoming, so outcome is expired_mismatch. The stale date is NOT written and NOT moved to 2027. Note the page's own status field still reads 'Estatus de la convocatoria: Abierta', which disagrees with the window it prints; that is a status-vs-window inconsistency inside one page, not two credible sources giving different dates, so it is not treated as CONFLICTING. No page on secihti.mx consulted publishes a next-cycle closing date, so no recurring-cycle statement can be made and semantics stays UNKNOWN."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Conclusión de recepción de solicitudes: viernes, 25 septiembre 2026 - 11:59 PM hora local CDMX."
+      },
+      "examined": [
+        "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-becas-nacionales-de-inclusion-2026 (live page fetched; window closed 25 September 2026)"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 715,
+      "title": "Heydar Aliyev International Education Grant (Study in Azerbaijan project)",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Applications will be accepted for a period of 5 (five) years, beginning with the 2024–2025 academic year, with 100 educational grants awarded annually.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.edu.gov.az/en/programmes/study-in-azerbaijan-layihesi",
+        "source_type": "official_government_page",
+        "publisher": "Ministry of Science and Education of the Republic of Azerbaijan",
+        "retrieved_at": "2026-10-05T15:33:00Z",
+        "as_of": "multi-year programme 'beginning with the 2024–2025 academic year'; page footer states 'Şəhifənin son yenilənmə tarixi: 28.01.2026' (last updated 28.01.2026)",
+        "raw_extract": "By a decree of the President of the Republic of Azerbaijan dated July 8, 2023, an educational grant program was established to support the education of foreign citizens at higher education institutions in the Republic of Azerbaijan under the “Heydar Aliyev International Educational Grant” program. Applications will be accepted for a period of 5 (five) years, beginning with the 2024–2025 academic year, with 100 educational grants awarded annually.",
+        "exact_deadline_wording": "Applications will be accepted for a period of 5 (five) years, beginning with the 2024–2025 academic year, with 100 educational grants awarded annually.",
+        "confidence": "MEDIUM",
+        "notes": "No application deadline date is published in the HTML of either official page fetched. What the ministry states is the recurring annual award pattern ('100 educational grants awarded annually'), and the official Study in Azerbaijan portal states the grant 'will be offered annually for a period of 5 years'. That is recurring annual timing with no fixed current date, so semantics is ANNUAL and, per the brief, deadline_date stays null - no deadline was invented from the cycle pattern. The official portal page 'heydar-aliyev-international-education-grant-program' embeds only a call PDF, which was fetched but returned raw PDF binary with no extractable text through this toolchain, so no deadline was taken from it. Confidence is MEDIUM rather than HIGH because the per-call application window is only available in that PDF and could not be read."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "Applications will be accepted for a period of 5 (five) years, beginning with the 2024–2025 academic year, with 100 educational grants awarded annually."
+      },
+      "corroborating_sources": [
+        {
+          "url": "https://studyinazerbaijan.edu.az/financial-support",
+          "publisher": "Study in Azerbaijan (official portal of the Ministry of Science and Education / Ministry of Foreign Affairs)",
+          "retrieved_at": "2026-10-05T15:33:00Z",
+          "raw_extract": "The Ministry of Foreign Affairs and Ministry of Science and Education of the Republic of Azerbaijan are pleased to announce the \"Heydar Aliyev - International Education Grant Program\" for 2026-2027 academic year. ... Grant Duration\n\nThe grant will be offered annually for a period of 5 years, starting from the 2026–2027 academic year.\n\nNumber of Grants\n\n100 educational grants will be provided annually.",
+          "exact_deadline_wording": "The grant will be offered annually for a period of 5 years, starting from the 2026–2027 academic year.",
+          "confidence": "MEDIUM"
+        }
+      ],
+      "examined": [
+        "https://www.edu.gov.az/en/programmes/study-in-azerbaijan-layihesi (live page fetched; annual grant statement, no deadline date)",
+        "https://studyinazerbaijan.edu.az/scholarships (live page fetched; grant described, links to the call PDF, no deadline date)",
+        "https://studyinazerbaijan.edu.az/financial-support (live page fetched; annual grant statement, no deadline date)",
+        "https://studyinazerbaijan.edu.az/heydar-aliyev-international-education-grant-program (live page fetched; embeds only a PDF, no HTML deadline)",
+        "https://studyinazerbaijan.edu.az/H.Aliyev_IEG_CALL_18.04.pdf (fetched; raw PDF binary returned, no extractable text - no value taken)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://scholarshipsandaid.org/2026/02/16/government-of-azerbaijan-2026-scholarship/",
+          "reason": "Third-party scholarship aggregator, not an official domain"
+        },
+        {
+          "url": "https://www.hec.gov.pk/english/HECAnnouncements/Pages/HAZ.aspx",
+          "reason": "Another country's (Pakistan HEC) nomination deadline, not the award's official deadline"
+        }
+      ]
+    }
+  ]
+}

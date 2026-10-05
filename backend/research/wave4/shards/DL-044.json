@@ -1,0 +1,98 @@
+{
+  "shard_id": "DL-044",
+  "topic": "deadline",
+  "hosts": [
+    "perimeterinstitute.ca",
+    "www.clarku.edu",
+    "www.cshl.edu",
+    "www.mofa.gov.ae",
+    "www.usp.ac.fj"
+  ],
+  "record_count": 7,
+  "records": [
+    {
+      "id": 61,
+      "title": "Clark University Global Scholars Program",
+      "official_source": "Clark University",
+      "official_source_url": "https://www.clarku.edu/financial-aid/types/scholarships",
+      "catalogue_url": "https://www.clarku.edu/programs",
+      "country": "United States",
+      "deadline_display": "Varies by admission deadline (Early Decision I/EA: November 1; Early Decision II/Regular Decision: January 15)",
+      "deadline_precision": "month",
+      "application_period": "Separate essay required in addition to admission application",
+      "verification_status": "active"
+    },
+    {
+      "id": 560,
+      "title": "MOFA Scholarship Program",
+      "official_source": "United Arab Emirates Ministry of Foreign Affairs (MOFA)",
+      "official_source_url": "https://www.mofa.gov.ae/en/Scholarship",
+      "catalogue_url": "https://www.mofa.gov.ae/en/top-universities",
+      "country": "United Arab Emirates",
+      "deadline_display": "No application deadline is published on the program page; applications are registered through the online service and the review and final approval process typically takes between 3 to 5 months, with updates communicated by email or SMS",
+      "deadline_precision": "year",
+      "application_period": "No published opening or closing dates. Applicants register through the MOFA scholarship service form and are notified of results by email or SMS; amendments after submission are handled through the call centre at +971 80044444.",
+      "verification_status": "active"
+    },
+    {
+      "id": 569,
+      "title": "Global Scholars Program Scholarship (Clark University)",
+      "official_source": "Clark University",
+      "official_source_url": "https://www.clarku.edu/financial-aid/prospective-students/international-students/faqs",
+      "catalogue_url": null,
+      "country": "United States",
+      "deadline_display": "There is no separate Global Scholars application form; the award follows Clark's admission deadlines, which are Nov. 1 for Early Action / Early Decision first-year applicants and Jan. 15 for Regular Decision first-year applicants (the page's own table labels these as fall 2025 admission, and the dates recur each cycle). Transfer applicants: rolling March 1 - May 1 for fall and Nov. 1 for spring.",
+      "deadline_precision": "exact",
+      "application_period": "Apply to Clark University by the deadline for the admission plan you choose: Nov. 1 for Early Action or Early Decision, Jan. 15 for Regular Decision. Include the separate essay required for Global Scholars Program Scholarship consideration. All international students must also complete the International Student Certification of Finances and Financial Assistance Application Form in the Applicant Status Portal.",
+      "verification_status": "needs_review"
+    },
+    {
+      "id": 593,
+      "title": "Perimeter Institute PhD Residency Program Award",
+      "official_source": "Perimeter Institute for Theoretical Physics",
+      "official_source_url": "https://perimeterinstitute.ca/training/phd-students",
+      "catalogue_url": null,
+      "country": "Canada",
+      "deadline_display": null,
+      "deadline_precision": "recurring",
+      "application_period": "Expression of Interest submitted November to January, within one week of the partner-university application; partner universities issue offers February to March; Perimeter contacts selected students April to May; arrival in Waterloo August to September.",
+      "verification_status": "needs_review"
+    },
+    {
+      "id": 697,
+      "title": "CSHL School of Biological Sciences Ph.D. Program (Cold Spring Harbor Laboratory)",
+      "official_source": "Cold Spring Harbor Laboratory, School of Biological Sciences",
+      "official_source_url": "https://www.cshl.edu/phd-program/how-to-apply",
+      "catalogue_url": "https://www.cshl.edu/phd-program",
+      "country": "United States",
+      "deadline_display": "December 1",
+      "deadline_precision": "recurring",
+      "application_period": "Applications are open now and must be submitted online by December 1 each year. Each year 8 or 9 students join the programme, with applicants drawn from more than 20 US states and 25 countries.",
+      "verification_status": "needs_review"
+    },
+    {
+      "id": 719,
+      "title": "Pacific Scholarship for Excellence in Research & Innovation (PSERI)",
+      "official_source": "The University of the South Pacific (USP)",
+      "official_source_url": "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships/pacific-scholarship-for-excellence-in-research-innovation-pseri",
+      "catalogue_url": "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships",
+      "country": "Fiji",
+      "deadline_display": "midnight Monday 5 January 2026 (2026 round, now closed)",
+      "deadline_precision": "recurring",
+      "application_period": "The official page is marked CLOSED; the 2026 round closed at midnight on Monday 5 January 2026 and awards are tenable from early 2026. USP publishes a new, year-dated call each year, so the next round is expected to open in the same annual window.",
+      "verification_status": "active"
+    },
+    {
+      "id": 722,
+      "title": "Pacific Regional Sports Research Scholarship (PRSRS)",
+      "official_source": "Oceania National Olympic Committee and The University of the South Pacific",
+      "official_source_url": "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships/sports-scholars",
+      "catalogue_url": "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships",
+      "country": "Fiji",
+      "deadline_display": null,
+      "deadline_precision": "recurring",
+      "application_period": "The official page is marked CLOSED; awards for the 2026 academic year are tenable from early 2026 and three scholarships were available. USP publishes a new call annually on the same page.",
+      "verification_status": "active"
+    }
+  ]
+}

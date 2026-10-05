@@ -1,0 +1,56 @@
+{
+  "shard_id": "LG-002",
+  "topic": "logo",
+  "hosts": [
+    "anr.fr",
+    "www.ilsc.com"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 503,
+      "title": "France 2030 - PEPR GFM \"Grands Fonds Marins\" - Appel à projets - 2026",
+      "official_source": "Agence nationale de la recherche (ANR), France 2030 / CNRS, Ifremer, IRD",
+      "official_source_url": "https://anr.fr/fr/france-2030/france2030/call/france-2030-pepr-gfm-grands-fonds-marins-appel-a-projets-2026",
+      "catalogue_url": null,
+      "country": "France",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 504,
+      "title": "France 2030 - PEPR PROPSY – \"Psychiatrie de précision\" - Appel à projets - 2026",
+      "official_source": "Agence nationale de la recherche (ANR), France 2030 / PEPR PROPSY piloté par l'Inserm et le CNRS avec la Fondation FondaMental",
+      "official_source_url": "https://anr.fr/fr/france-2030/france2030/call/france-2030-pepr-propsy-psychiatrie-de-precision-appel-a-projets-2026",
+      "catalogue_url": null,
+      "country": "France",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 505,
+      "title": "Appel à projets M-ERA.NET 2026/27 - Science et ingénierie des matériaux pour l'innovation en Europe (édition 2027 pour l'ANR)",
+      "official_source": "Agence nationale de la recherche (ANR), pour le compte du consortium M-ERA.NET",
+      "official_source_url": "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
+      "catalogue_url": "https://www.m-era.net/joint-calls/joint-call-2026",
+      "country": "France",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 548,
+      "title": "AAPG - Appel à projets générique 2027 (ANR Generic Call for Proposals 2027)",
+      "official_source": "Agence nationale de la recherche (ANR)",
+      "official_source_url": "https://anr.fr/fr/detail/call/aapg-appel-a-projets-generique-2027",
+      "catalogue_url": "https://anr.fr/fr/appels",
+      "country": "France",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 712,
+      "title": "ILSC Humanitarian Scholarship",
+      "official_source": "ILSC Language Schools",
+      "official_source_url": "https://www.ilsc.com/humanitarian-scholarship",
+      "catalogue_url": null,
+      "country": "Australia",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

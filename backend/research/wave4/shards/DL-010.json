@@ -1,0 +1,110 @@
+{
+  "shard_id": "DL-010",
+  "topic": "deadline",
+  "hosts": [
+    "finaid.yale.edu",
+    "stypendia.uj.edu.pl",
+    "www.eur.nl",
+    "www.grips.ac.jp",
+    "www.studyinindia.gov.in"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 11,
+      "title": "Study in India (SII) Scholarship",
+      "official_source": "Ministry of Education, Government of India (implemented by EdCIL India Limited)",
+      "official_source_url": "https://www.studyinindia.gov.in",
+      "catalogue_url": "https://studyinindia.gov.in/courses/exploreallcorouses",
+      "country": "India",
+      "deadline_display": "Varies by institution and admission cycle",
+      "deadline_precision": "unknown",
+      "application_period": "Varies by institution and admission cycle",
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 175,
+      "title": "Erasmus University Rotterdam (EUR) — Holland Scholarship & Talent Programmes",
+      "official_source": "Erasmus University Rotterdam",
+      "official_source_url": "https://www.eur.nl/en/education/scholarships",
+      "catalogue_url": null,
+      "country": "Netherlands",
+      "deadline_display": "1 May (varies by programme)",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 292,
+      "title": "Jagiellonian University Rector's Scholarship (stypendium rektora)",
+      "official_source": "Jagiellonian University (Krakow)",
+      "official_source_url": "https://stypendia.uj.edu.pl/en_GB/pomoc-materialna/cudzoziemcy",
+      "catalogue_url": null,
+      "country": "Poland",
+      "deadline_display": "Official wording: \"The deadline for submitting the application for the Rector's scholarship is October 20 of the academic year for which the scholarship is to be awarded.\" The last published schedule (2025/2026) showed applications open from 1 to 20 October.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual. Published 2025/2026 schedule: rector's scholarship applications from 1 October to 20 October, submitted electronically in USOSweb.",
+      "verification_status": "active"
+    },
+    {
+      "id": 383,
+      "title": "Erasmus Trustfonds Scholarship",
+      "official_source": "Erasmus University Rotterdam",
+      "official_source_url": "https://www.eur.nl/en/ese/education/master/fees-and-solarships/scholarships-and-grants/erasmus-trustfonds-scholarship",
+      "catalogue_url": null,
+      "country": "Netherlands",
+      "deadline_display": "The deadline for applications has passed; information for 2027–2028 will be available in the autumn. Application: closed. Deadline: passed.",
+      "deadline_precision": "varies",
+      "application_period": "Annual cycle; the 2026-2027 round has closed and the university states information for 2027-2028 will be published in the autumn",
+      "verification_status": "active"
+    },
+    {
+      "id": 384,
+      "title": "Erasmus Trustfonds Scholarship / TSH Changemaker Scholarship (Erasmus MC)",
+      "official_source": "Erasmus University Rotterdam (Erasmus MC)",
+      "official_source_url": "https://www.eur.nl/en/erasmusmc/programmes/practical-matters/scholarships/erasmus-trustfonds-scholarship-tsh-changemaker-scholarship",
+      "catalogue_url": "https://www.eur.nl/en/erasmusmc/graduate-school/research-masters",
+      "country": "Netherlands",
+      "deadline_display": "Application Deadline 1 April 2026, 23:59 CET",
+      "deadline_precision": "recurring",
+      "application_period": "Annual Erasmus MC cycle; the published 2026-2027 round closed on 1 April 2026 at 23:59 CET and the next round's date is not yet published",
+      "verification_status": "active"
+    },
+    {
+      "id": 397,
+      "title": "Erasmus University Rotterdam Scholarships",
+      "official_source": "Eur.Nl",
+      "official_source_url": "https://www.eur.nl/en/education/masters-programmes/scholarships",
+      "catalogue_url": null,
+      "country": "Netherlands",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 481,
+      "title": "Yale College Need-Based Financial Aid 2027-2028",
+      "official_source": "Yale University",
+      "official_source_url": "https://finaid.yale.edu/apply/prospective",
+      "catalogue_url": null,
+      "country": "United States",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 515,
+      "title": "Young Leaders' Program (YLP) - Japanese Government (MEXT) Scholarship, GRIPS School of Government and School of Local Governance",
+      "official_source": "Ministry of Education, Culture, Sports, Science and Technology (MEXT), Japan - hosted at the National Graduate Institute for Policy Studies (GRIPS)",
+      "official_source_url": "https://www.grips.ac.jp/en/education/inter_programs/leader",
+      "catalogue_url": "https://www.mext.go.jp/a_menu/koutou/ryugaku/ylp.htm",
+      "country": "Japan",
+      "deadline_display": "No central deadline is published. MEXT states that all application procedures for Japanese Government (MEXT) Scholarships are conducted through Japanese embassies, consulates in your countries, or institutions of higher education in Japan, and candidates should ask their own embassy/consulate. GRIPS publishes the application window as a historical reference only: application acceptance period (last year's result) July to October, with results announced the following April.",
+      "deadline_precision": "varies",
+      "application_period": "GRIPS publishes that for the cycle it runs, application acceptance runs July to October (last year's result), enrolment is in October and graduation the following September, with results announced the following April. GRIPS has published the YLP Brochure for 2027-2028. The nominating authority in the applicant's own country sets the operative date; no central deadline exists.",
+      "verification_status": "needs_review"
+    }
+  ]
+}

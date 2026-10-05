@@ -1,0 +1,351 @@
+{
+  "shard_id": "DL-027",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 16,
+      "title": "Marie Skłodowska-Curie Actions (MSCA) Postdoctoral Fellowships",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "The Postdoctoral Fellowships 2026 call for applications opened on 9 April 2026 and will close on 9 September 2026, 17.00, CEST.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://marie-sklodowska-curie-actions.ec.europa.eu/actions/postdoctoral-fellowships/6-steps-to-prepare-your-application",
+        "source_type": "official_programme_page",
+        "publisher": "European Commission, DG Education, Youth, Sport and Culture - Marie Skłodowska-Curie Actions",
+        "retrieved_at": "2026-10-05T15:35:00Z",
+        "as_of": "MSCA Postdoctoral Fellowships 2026 call (HORIZON-MSCA-2026-PF-01)",
+        "raw_extract": "The Postdoctoral Fellowships 2026 call for applications opened on 9 April 2026 and will close on 9 September 2026, 17.00, CEST.",
+        "exact_deadline_wording": "will close on 9 September 2026, 17.00, CEST",
+        "confidence": "HIGH",
+        "notes": "Two independent official European Commission pages state the same deadline for the same call: the MSCA '6 steps' page quoted above, and the European Research Executive Agency call page (https://rea.ec.europa.eu/funding-and-grants/horizon-europe-marie-sklodowska-curie-actions/msca-postdoctoral-fellowships_en), which reads 'HORIZON-MSCA-2026-PF-01 ... 2. 9 September 2026 Deadline for applicants to submit proposals'. The deadline is in the past relative to the retrieval date (2026-10-05), so per AGENT_BRIEF section 6 no date is written and the record's open/upcoming status does not match the published source. No official page fetched publishes the dates of the next (2027) call, so nothing has been shifted forward a year."
+      },
+      "field_mapping": {
+        "deadline_date": "null (source deadline 2026-09-09 is stale; expired_mismatch, not written)",
+        "deadline_precision": "exact",
+        "deadline_display": "The Postdoctoral Fellowships 2026 call for applications opened on 9 April 2026 and will close on 9 September 2026, 17.00, CEST."
+      },
+      "examined": [
+        "https://marie-sklodowska-curie-actions.ec.europa.eu/actions/postdoctoral-fellowships",
+        "https://marie-sklodowska-curie-actions.ec.europa.eu/funding",
+        "https://marie-sklodowska-curie-actions.ec.europa.eu/actions/how-to-apply",
+        "https://rea.ec.europa.eu/funding-and-grants/horizon-europe-marie-sklodowska-curie-actions/horizon-europe-msca-how-apply_en",
+        "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-MSCA-2026-PF-01-01"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-MSCA-2026-PF-01-01",
+          "reason": "Client-side-rendered application portal; fetched response contained only 'EU Funding & Tenders Portal / Topic List' with no server-rendered deadline text, so it cannot be quoted."
+        },
+        {
+          "url": "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/wp-call/2026-2027/wp-2-marie-sklodowska-curie-actions_horizon_2026-2027_en.pdf",
+          "reason": "MSCA Work Programme PDF returned as raw binary; text could not be extracted and therefore cannot be quoted verbatim. Not used as evidence."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 95,
+      "title": "Institut Polytechnique de Paris (IP Paris) PhD Track & Master's Excellence Scholarships",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.ip-paris.fr/en/education/useful-information/scholarships",
+        "source_type": "official_university_page",
+        "publisher": "Institut Polytechnique de Paris",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "as_of": null,
+        "raw_extract": null,
+        "exact_deadline_wording": null,
+        "confidence": "LOW",
+        "notes": "No page on any ip-paris.fr host could be retrieved from this environment. Repeated attempts failed at the transport layer, so no official page was read and no deadline can be established. Nothing was inferred from search results. The only ip-paris.fr host that resolved, admission.ip-paris.fr, returned an empty JavaScript shell with no page content, and it is an admissions portal rather than a scholarship page, so its dates would in any case be a generic admissions deadline for a different programme."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "null"
+      },
+      "examined": [
+        "https://www.ip-paris.fr/en/education/useful-information/scholarships (transport error, retried 4x)",
+        "https://www.ip-paris.fr/en/education/useful-information/scholarships-and-financial-aid (transport error)",
+        "https://ip-paris.fr/en/education/useful-information/scholarships (transport error)",
+        "https://www.e4h.ip-paris.fr/en/education/useful-information/scholarships (transport error)",
+        "https://admission.ip-paris.fr/freemover2027 (host resolved, empty JavaScript shell, no content)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://admission.ip-paris.fr/freemover2027",
+          "reason": "Generic admissions-application calendar for a different programme, and the page body could not be read; excluded under AGENT_BRIEF section 5."
+        },
+        {
+          "url": "search-engine result snippets for ip-paris.fr scholarship and admissions pages",
+          "reason": "Search-result snippet, not a fetched page; excluded under AGENT_BRIEF section 5."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 110,
+      "title": "QUAD STEM Scholarship Scheme (ICCR)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "22-Apr-26 Last date of application to be submitted by students",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.indembassydili.gov.in/page/iccr-scholarship-2026-2027/",
+        "source_type": "official_government_page",
+        "publisher": "Embassy of India, Dili (Ministry of External Affairs, Government of India)",
+        "retrieved_at": "2026-10-05T15:33:00Z",
+        "as_of": "ICCR Scholarship academic year 2026-27",
+        "raw_extract": "Important timeline for the admission process is as follows: 27-Feb-26 Opening of ICCR A2A Portal (http://a2ascholarships.iccr.gov.in/) for submitting the application 22-Apr-26 Last date of application to be submitted by students 31st May 2026 Last date for universities to inform the decision to students 25th June 2026 Last date for allocating scholarship and generating offer letters",
+        "exact_deadline_wording": "22-Apr-26 Last date of application to be submitted by students",
+        "confidence": "MEDIUM",
+        "notes": "The provider's own scheme pages were fetched first and publish no deadline: https://a2ascholarships.iccr.gov.in/scheme/quad-stem-scholarship returns a JavaScript-only shell with an error image, and https://a2ascholarships.iccr.gov.in/home/scheme lists 'Quad STEM Scholarship Scheme' with a description but no date. The deadline therefore comes from the Ministry of External Affairs tier. The link from the scheme-level deadline to this scheme is that every ICCR application is submitted through the single A2A portal - ICCR's own FAQ (https://iccr.gov.in/scholarship-faqs) states 'Interested applicants should register and apply on A2A ICCR Scholarship Portal' and 'No, only online applications will be accepted' - and the AY 2026-27 A2A window is common to all schemes. Note the figure is the revised date (22 April 2026); earlier AY 2026-27 notices circulated 15 April 2026, but those notices could not be retrieved as readable pages and are not relied on. 22 April 2026 is in the past relative to the retrieval date, so no date is written and the record's open/upcoming status does not match the published source."
+      },
+      "field_mapping": {
+        "deadline_date": "null (source deadline 2026-04-22 is stale; expired_mismatch, not written)",
+        "deadline_precision": "exact",
+        "deadline_display": "22-Apr-26 Last date of application to be submitted by students"
+      },
+      "examined": [
+        "https://a2ascholarships.iccr.gov.in/scheme/quad-stem-scholarship (JavaScript-only shell, no content)",
+        "https://a2ascholarships.iccr.gov.in/home/scheme (scheme listed, no deadline published)",
+        "https://iccr.gov.in/scholarship-faqs (no dates; confirms single A2A application route)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://a2ascholarships.iccr.gov.in/assets/site/docs/Timeline-AY-2026-27.pdf",
+          "reason": "Official ICCR provider document, but returned as raw binary PDF that could not be read as quotable text; not used as the quote source."
+        },
+        {
+          "url": "https://indianembassyusa.gov.in/pdf/news/ICCR_Scholarship_Scheme_090326.pdf",
+          "reason": "Returned as raw binary PDF; could not be read or quoted, and its superseded 15 April 2026 date was not adopted."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 111,
+      "title": "Dr. S. Radhakrishnan Cultural Exchange Scholarship Scheme (ICCR)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "22-Apr-26 Last date of application to be submitted by students",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.indembassydili.gov.in/page/iccr-scholarship-2026-2027/",
+        "source_type": "official_government_page",
+        "publisher": "Embassy of India, Dili (Ministry of External Affairs, Government of India)",
+        "retrieved_at": "2026-10-05T15:33:00Z",
+        "as_of": "ICCR Scholarship academic year 2026-27",
+        "raw_extract": "Important timeline for the admission process is as follows: 27-Feb-26 Opening of ICCR A2A Portal (http://a2ascholarships.iccr.gov.in/) for submitting the application 22-Apr-26 Last date of application to be submitted by students 31st May 2026 Last date for universities to inform the decision to students 25th June 2026 Last date for allocating scholarship and generating offer letters",
+        "exact_deadline_wording": "22-Apr-26 Last date of application to be submitted by students",
+        "confidence": "MEDIUM",
+        "notes": "The provider's own scheme pages were fetched first and publish no deadline: https://a2ascholarships.iccr.gov.in/scheme/radhakrishnan-cultural-exchange returns a JavaScript-only shell, and https://a2ascholarships.iccr.gov.in/home/scheme lists 'Dr. S. Radhakrishnan Cultural Exchange Scholarship Scheme ( formerly CEP / EEP Scholarship Scheme) [A1206]' with a description but no date. The deadline therefore comes from the Ministry of External Affairs tier, applying the common AY 2026-27 A2A portal window; ICCR's own FAQ (https://iccr.gov.in/scholarship-faqs) confirms the single portal route ('Interested applicants should register and apply on A2A ICCR Scholarship Portal'). Note the figure is the revised date (22 April 2026); earlier AY 2026-27 notices circulated 15 April 2026, but those notices could not be retrieved as readable pages and are not relied on. 22 April 2026 is in the past relative to the retrieval date, so no date is written and the record's open/upcoming status does not match the published source."
+      },
+      "field_mapping": {
+        "deadline_date": "null (source deadline 2026-04-22 is stale; expired_mismatch, not written)",
+        "deadline_precision": "exact",
+        "deadline_display": "22-Apr-26 Last date of application to be submitted by students"
+      },
+      "examined": [
+        "https://a2ascholarships.iccr.gov.in/scheme/radhakrishnan-cultural-exchange (JavaScript-only shell, no content)",
+        "https://a2ascholarships.iccr.gov.in/home/scheme (scheme listed, no deadline published)",
+        "https://iccr.gov.in/scholarship-faqs (no dates; confirms single A2A application route)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://a2ascholarships.iccr.gov.in/assets/site/docs/Timeline-AY-2026-27.pdf",
+          "reason": "Official ICCR provider document, but returned as raw binary PDF that could not be read as quotable text; not used as the quote source."
+        },
+        {
+          "url": "https://indianembassyusa.gov.in/pdf/news/ICCR_Scholarship_Scheme_090326.pdf",
+          "reason": "Returned as raw binary PDF; could not be read or quoted, and its superseded 15 April 2026 date was not adopted."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 131,
+      "title": "Rotary Peace Fellowship",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "The 2027-28 Rotary Peace Fellowship application is now closed. The 2028-29 Rotary Peace Fellowship application will be available online in February 2027.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.rotary.org/en/our-programs/peace-fellowships",
+        "source_type": "official_scholarship_page",
+        "publisher": "Rotary International (The Rotary Foundation)",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": "2028-29 Rotary Peace Fellowship cycle",
+        "raw_extract": "#### **Application timeline**  \nThe 2027-28 Rotary Peace Fellowship application is now closed. The 2028-29 Rotary Peace Fellowship application will be available [online](https://my.rotary.org/en/peace-fellowship-application \"online\") in February 2027.",
+        "exact_deadline_wording": "The 2027-28 Rotary Peace Fellowship application is now closed. The 2028-29 Rotary Peace Fellowship application will be available online in February 2027.",
+        "confidence": "HIGH",
+        "notes": "The provider publishes cycle status but no closing deadline date anywhere on its own fellowship pages fetched (overview, master's degree programs, professional development certificate program). The only calendar month published is the opening month of the next cycle (February 2027), which is an opening, not a closing deadline. The fellowship is therefore an annually recurring cycle with no fixed current closing date published, so per AGENT_BRIEF section 6 no calendar date is written. Rotary district sites (rotary7070.org, rotary6270.org) and scholarship aggregators state a '15 May' closing deadline, but these are not the provider's own domain and were not used as evidence; the claim could not be confirmed on any page fetched from rotary.org or my.rotary.org."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "recurring",
+        "deadline_display": "The 2027-28 Rotary Peace Fellowship application is now closed. The 2028-29 Rotary Peace Fellowship application will be available online in February 2027."
+      },
+      "examined": [
+        "https://www.rotary.org/en/get-involved/our-programs/peace-fellowships/peace-fellowships-masters-degree-programs (no closing date)",
+        "https://www.rotary.org/en/get-involved/our-programs/peace-fellowships/peace-fellowships-certificate-program (no closing date)",
+        "https://my.rotary.org/en/peace-fellowship-application (returned an empty response)",
+        "https://my.rotary.org/en/document/rotary-peace-fellowship-application-announcement (PDF returned as raw binary; text not extractable, so not quotable)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://my-cms.rotary.org/en/peace-fellowship-application?embed=true",
+          "reason": "Official rotary.org host but carrying stale cycle text ('The 2025-26 ... will be available online in February 2025'); not used for the current cycle."
+        },
+        {
+          "url": "https://rotary7070.org/Stories/rotary-seeks-peace-fellow-candidates-apply-today-for-2027-28-rotary-peace-fellowships-from-1-february-through-15-may-2026",
+          "reason": "Rotary district site, not the awarding foundation's own domain; not an official provider source for the global deadline."
+        },
+        {
+          "url": "https://rotary6270.org/Stories/2026-rotary-peace-fellowships",
+          "reason": "Rotary district site, not the awarding foundation's own domain."
+        },
+        {
+          "url": "https://www.globalsouthopportunities.com/2026/02/03/fellowship-90/",
+          "reason": "Third-party scholarship aggregator, not an official source."
+        },
+        {
+          "url": "https://www.scholarshipset.com/scholarships/rotary-peace-fellowship-2026-fully-funded-opportunity",
+          "reason": "Third-party scholarship aggregator, not an official source."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 369,
+      "title": "Sapienza University of Rome Scholarships",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://uniroma1.web.uniroma1.it/en/pagina/scholarships",
+        "source_type": "official_university_page",
+        "publisher": "Sapienza Universita di Roma",
+        "retrieved_at": "2026-10-05T15:32:00Z",
+        "as_of": null,
+        "raw_extract": "Scholarship payments are made throughout the year. They are suspended in December and January due to Sapienza's year-end closing procedures.",
+        "exact_deadline_wording": null,
+        "confidence": "LOW",
+        "notes": "The shard's official_source_url (https://www.uniroma1.it/en/pagina/straniieri-borse-di-studio) returns HTTP 404; the live equivalent English Scholarships page fetched above is a hub that lists many separate calls ('100 scholarships for students with care responsibilities or in vulnerable circumstances', 'Call 2026-2027 for reimbursement of study materials', 'Scholarships Polo Universitario Interateneo di Rieti', 'Worthy students scholarship for Italian and International students', 'International Thesis Scholarship', 'Scholarships for Specialisation Schools', and more), each with its own published deadline. There is no single deadline for this umbrella record, and per AGENT_BRIEF section 5 an individual faculty call's deadline must not be used as this record's deadline. The quoted sentence concerns when scholarship *payments* are made, not when applications close. The wording cached in the shard ('The call for applications is usually published in September' / 'Scholarships and awards are granted throughout the year') does not appear on the live page and was not reused."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "null"
+      },
+      "examined": [
+        "https://www.uniroma1.it/en/pagina/straniieri-borse-di-studio (shard URL, HTTP 404)",
+        "https://uniroma1.web.uniroma1.it/en/pagina/scholarships (live hub; no single deadline)",
+        "https://uniroma1.web.uniroma1.it/en/pagina/scholarships-meritorious-students-italian-and-international-universities (separate call with its own deadline)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.uniroma1.it/en/pagina/straniieri-borse-di-studio",
+          "reason": "Dead link (HTTP 404); cannot be a source."
+        },
+        {
+          "url": "https://web.uniroma1.it/trasparenza/bando/241654_",
+          "reason": "Faculty-specific OVERSEAS mobility call (Architecture) with its own deadline of 4 March 2026; a different programme's deadline, excluded under AGENT_BRIEF section 5."
+        },
+        {
+          "url": "https://www.uniroma1.it/en/pagina/borse-di-perfezionamento-allestero",
+          "reason": "Different programme (post-degree scholarships abroad) with its own 16 September 2026 deadline; not this umbrella record, excluded under AGENT_BRIEF section 5."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 474,
+      "title": "Rotary Peace Fellowship 2027-2028",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "The 2027-28 Rotary Peace Fellowship application is now closed.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.rotary.org/en/our-programs/peace-fellowships",
+        "source_type": "official_scholarship_page",
+        "publisher": "Rotary International (The Rotary Foundation)",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": "2027-28 Rotary Peace Fellowship cycle (closed)",
+        "raw_extract": "The 2027-28 Rotary Peace Fellowship application is now closed. The 2028-29 Rotary Peace Fellowship application will be available [online](https://my.rotary.org/en/peace-fellowship-application \"online\") in February 2027.",
+        "exact_deadline_wording": "The 2027-28 Rotary Peace Fellowship application is now closed.",
+        "confidence": "HIGH",
+        "notes": "The awarding foundation's own live page confirms the 2027-28 cycle is closed and that the next cycle opens February 2027, but publishes no closing date for 2027-28. Because the record is open/upcoming while the named cycle is definitively over, the outcome is expired_mismatch and no date is written. Shard's official_source_url (https://www.rotary.org/get-involved/our-programs/peace-fellowships) is the same page under Rotary's legacy path; the /en/our-programs/ URL is the one actually fetched. The '15 May 2026' closing date asserted by Rotary district sites and aggregators was not used, since no page on rotary.org or my.rotary.org states it and the official application announcement PDF could not be read as text."
+      },
+      "field_mapping": {
+        "deadline_date": "null (2027-28 cycle is closed per source; expired_mismatch, not written)",
+        "deadline_precision": "unknown",
+        "deadline_display": "The 2027-28 Rotary Peace Fellowship application is now closed."
+      },
+      "examined": [
+        "https://www.rotary.org/en/get-involved/our-programs/peace-fellowships/peace-fellowships-masters-degree-programs (no 2027-28 closing date)",
+        "https://www.rotary.org/en/get-involved/our-programs/peace-fellowships/peace-fellowships-certificate-program (no 2027-28 closing date)",
+        "https://my.rotary.org/en/peace-fellowship-application (empty response)",
+        "https://my.rotary.org/en/document/rotary-peace-fellowship-application-announcement (binary PDF, text not extractable)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://my-cms.rotary.org/en/peace-fellowship-application?embed=true",
+          "reason": "Official rotary.org host but stale (references the 2025-26/2026-27 cycle); would have imported a cached prior value."
+        },
+        {
+          "url": "https://rotary6270.org/Stories/2026-rotary-peace-fellowships",
+          "reason": "Rotary district site, not the awarding foundation's own domain; states a 15 May 2026 deadline that no official foundation page confirms."
+        },
+        {
+          "url": "https://owafk-africa.com/rotary-peace-fellowship-2027-28-fully-funded",
+          "reason": "Third-party aggregator, not an official source."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 656,
+      "title": "ADB-Japan Scholarship Program (JSP)",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "Applications for scholarships should be sent at least six months prior to the planned time that you wish to commence studies.",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://www.adb.org/work-with-us/careers/japan-scholarship-program/procedures-applying",
+        "source_type": "official_scholarship_page",
+        "publisher": "Asian Development Bank (programme financed by the Government of Japan)",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": null,
+        "raw_extract": "Applications for scholarships should be sent at least six months prior to the planned time that you wish to commence studies. ... No separate application to ADB is necessary. The duly accomplished applications form together with all copies of academic records should be sent to the institution at least six (6) months before the commencement of the intake that you wish to join.",
+        "exact_deadline_wording": "should be sent to the institution at least six (6) months before the commencement of the intake that you wish to join",
+        "confidence": "HIGH",
+        "notes": "ADB publishes no fixed calendar deadline for the JSP. The official procedures page states there is no application to ADB itself and that the application goes to the applicant's chosen designated academic institution at least six months before that institution's intake, i.e. the deadline is institution-led and relative to the intended start of studies. The main JSP page confirms the same institution-routed procedure ('Request for information and application forms from your choice of a partner institution'). With no fixed date anywhere in the official source, the deadline is non-dating and must not be converted into a calendar date."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "rolling",
+        "deadline_display": "Applications for scholarships should be sent at least six months prior to the planned time that you wish to commence studies."
+      },
+      "examined": [
+        "https://www.adb.org/work-with-us/careers/japan-scholarship-program (main page; no deadline, procedure is institution-routed)",
+        "https://www.adb.org/work-with-us/careers/japan-scholarship-program/faq (request timed out, no content retrieved)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.adb.org/work-with-us/careers/japan-scholarship-program/faq",
+          "reason": "Request timed out; no content retrieved, so nothing could be quoted from it."
+        },
+        {
+          "url": "https://www.adb.org/work-with-us/careers/japan-scholarship-program/institutions",
+          "reason": "Not consulted for a deadline: per-designated-institution admission calendars are other institutions' programme deadlines, excluded under AGENT_BRIEF section 5."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "shard_id": "DL-015",
+  "topic": "deadline",
+  "hosts": [
+    "hea.ie",
+    "uncf.org",
+    "www.huygens.knaw.nl",
+    "www.uchicago.edu",
+    "www2.daad.de"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 23,
+      "title": "DAAD Development-Related Postgraduate Courses (EPOS)",
+      "official_source": "DAAD — German Academic Exchange Service (funded by BMZ)",
+      "official_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777",
+      "catalogue_url": null,
+      "country": "Germany",
+      "deadline_display": "Varies by course (typically August-November annually for next intake)",
+      "deadline_precision": "unknown",
+      "application_period": "Varies by course; applications submitted directly to individual courses",
+      "verification_status": "active"
+    },
+    {
+      "id": 230,
+      "title": "DAAD Helmut-Schmidt-Programme (Master's Scholarships for Public Policy and Good Governance - PPGG)",
+      "official_source": "DAAD (German Academic Exchange Service)",
+      "official_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50018884",
+      "catalogue_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?status=3&origin=4&subjectGrps=&daad=1&intention=&q=&page=2&detail=50026397",
+      "country": "Germany",
+      "deadline_display": "\"The application period for all seven higher education institutions is from 1 June until 31 July 2026\", with the application deadline being 31 July each year",
+      "deadline_precision": "recurring",
+      "application_period": "1 June to 31 July each year, applied for directly at the participating universities. The 2027-intake round closed on 31 July 2026, before the verification date.",
+      "verification_status": "active"
+    },
+    {
+      "id": 231,
+      "title": "DAAD Postgraduate Studies in the Field of Architecture",
+      "official_source": "DAAD (German Academic Exchange Service)",
+      "official_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135744",
+      "catalogue_url": null,
+      "country": "Germany",
+      "deadline_display": "September annually",
+      "deadline_precision": "varies",
+      "application_period": "Application deadlines are updated at least once a year. In most cases, they are in the same period as the previous year. You can find the current dates here:",
+      "verification_status": "active"
+    },
+    {
+      "id": 248,
+      "title": "Government of Ireland International Education Scholarship (GOI-IES)",
+      "official_source": "Higher Education Authority (HEA) - Government of Ireland",
+      "official_source_url": "https://hea.ie/policy/internationalisation/goi-ies",
+      "catalogue_url": "https://hea.ie/policy/internationalisation/goi-ies",
+      "country": "Ireland",
+      "deadline_display": "2026 Application deadline: 5pm (Irish time) 12 March 2026. The 2026 call is closed.",
+      "deadline_precision": "recurring",
+      "application_period": "The 2026 cycle ran to a 5pm (Irish time) deadline on 12 March 2026 with the call outcome in early June 2026. Sixty scholarships are awarded each year, so the programme is annual and the 2027 date had not been published when checked.",
+      "verification_status": "active"
+    },
+    {
+      "id": 389,
+      "title": "Thijssen-Schoute Fellowship 2027",
+      "official_source": "Huygens Institute (KNAW)",
+      "official_source_url": "https://www.huygens.knaw.nl/en/open-call-thijssen-schoute-fellowship-2027",
+      "catalogue_url": null,
+      "country": "Netherlands",
+      "deadline_display": "Submissions will be accepted up to 15 May 2026. Send your application in PDF format before 15 May 2026.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual call; the published 2027 round closed on 15 May 2026, with the funded research period running through 2027",
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 484,
+      "title": "University of Chicago International Student Financial Aid (Need-Based and Merit Scholarships for Undergraduates)",
+      "official_source": "The University of Chicago (College Admissions and Office of Financial Aid)",
+      "official_source_url": "https://www.uchicago.edu/admissions/undergraduate/financial-aid/international-students",
+      "catalogue_url": "https://collegeadmissions.uchicago.edu/financial-support/international-financial-aid",
+      "country": "United States",
+      "deadline_display": "Prospective students must have submitted a complete financial aid application by the deadline associated with their admission application round. Deadline for Financial Aid document submission: Nov 15 (Early Action and Early Decision I), Jan 15 (Early Decision II), Feb 15 (Regular Decision), March 15 (transfer Early Decision) and April 1 (transfer Rolling Decision).",
+      "deadline_precision": "recurring",
+      "application_period": "Aligned to the UChicago admission rounds for first-year applicants; aid documents are uploaded through the applicant's UChicago Account and the deadline matches the admission round chosen.",
+      "verification_status": "active"
+    },
+    {
+      "id": 546,
+      "title": "Development-Related Postgraduate Courses (EPOS)",
+      "official_source": "German Academic Exchange Service (DAAD)",
+      "official_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?status=&origin=&subjectGrps=&daad=&intention=&q=development&page=1&detail=50076777",
+      "catalogue_url": "https://static.daad.de/media/daad_de/pdfs_nicht_barrierefrei/in-deutschland-studieren-forschen-lehren/daad_epos_deadlines.pdf",
+      "country": "Germany",
+      "deadline_display": "Depending on chosen study programme; please check the DAAD list of application deadlines or the website of the chosen study programme. Applications are sent directly to the course, not to the DAAD.",
+      "deadline_precision": "varies",
+      "application_period": "Cycle-based: applicants apply directly to a listed EPOS postgraduate course for the published intake year (the current DAAD programme list is headed 'List of Application Deadlines for Intake 2027/2028'); the course's own committee then nominates candidates, who are invited to upload to the DAAD portal for the final selection.",
+      "verification_status": "needs_review"
+    },
+    {
+      "id": 633,
+      "title": "Frederick Douglass Bicentennial Scholarship Program (UNCF)",
+      "official_source": "United Negro College Fund (UNCF)",
+      "official_source_url": "https://uncf.org/pages/the-frederick-douglass-bicentennial-scholarship-program",
+      "catalogue_url": "https://uncf.org/scholarships",
+      "country": "United States",
+      "deadline_display": null,
+      "deadline_precision": "recurring",
+      "application_period": "Annual applications open each year through the 2038-39 academic year. The official page states that a link to the online application will be added when the next session opens, and no calendar date for the next session is published.",
+      "verification_status": "active"
+    }
+  ]
+}

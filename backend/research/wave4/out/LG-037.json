@@ -1,0 +1,349 @@
+{
+  "shard_id": "LG-037",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 536,
+      "title": "Rufford Small Grants Programme",
+      "outcome": "recovered",
+      "image_url": "https://apply.ruffordsmallgrants.org/static/img/rufford_logo_transbg.png",
+      "image_source_url": "https://apply.ruffordsmallgrants.org/help/criteria",
+      "image_source_type": "official_scholarship",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Found directly on the shard's own official_source_url, i.e. the official Rufford Small Grants application portal. apply.ruffordsmallgrants.org is the programme's own domain (the page footer links to http://www.rufford.org/ and describes 'The Rufford Foundation provides a staged funding process with four types of grants'). The asset is referenced from the site header as the organisation brand: <a href=\"/\" class=\"navbar-brand\"><img src=\"/static/img/rufford_logo_transbg.png\" width=\"80\" alt=\"Rufford logo\"></a>. It is a distinct brand mark, not page chrome, not an icon set, not a favicon. Verified by direct download: HTTP 200, Content-Type image/png, 300x122 px, 25,471 bytes. Rendered and visually inspected: the black 'The Ruffor(d)' wordmark with 'Foundation' in orange and the orange/black striped feather graphic - the Rufford Foundation identity. Not low-resolution/favicon-sized (300x122 is a normal wordmark size). Rejected the same page's favicon.ico and the two apple-touch-icon assets per section 7."
+      },
+      "source": {
+        "url": "https://apply.ruffordsmallgrants.org/help/criteria",
+        "publisher": "The Rufford Foundation - Rufford Small Grants official application portal (apply.ruffordsmallgrants.org)",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "raw_extract": "<nav class=\"navbar navbar-expand-lg navbar-light bg-light\"><a href=\"/\" class=\"navbar-brand\"><img src=\"/static/img/rufford_logo_transbg.png\" width=\"80\" alt=\"Rufford logo\"></a> ... <title>Rufford Small Grants for Nature Conservation - General criteria and grants available</title> ... \"The Rufford Foundation provides a staged funding process with four types of grants.\" ... footer: \"&copy; 2026 <a href=\"http://www.rufford.org/\">The Rufford Foundation</a> | <a href=\"http://www.rufford.org/disclaimer\">Disclaimer</a>\"",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://apply.ruffordsmallgrants.org/help/criteria",
+        "https://www.rufford.org/"
+      ],
+      "rejected": [
+        {
+          "url": "https://apply.ruffordsmallgrants.org/static/img/favicon.ico",
+          "reason": "favicon - declared as <link rel=\"shortcut icon\"> in the page head; banned by brief section 7"
+        },
+        {
+          "url": "https://apply.ruffordsmallgrants.org/static/img/rsg_apple_touch_180_180.png",
+          "reason": "apple-touch-icon - <link rel=\"apple-touch-icon\" sizes=\"180x180\">; banned by brief section 7"
+        },
+        {
+          "url": "https://apply.ruffordsmallgrants.org/static/img/rsg_apple_touch_120_120.png",
+          "reason": "apple-touch-icon - <link rel=\"apple-touch-icon\" sizes=\"120x120\">; banned by brief section 7"
+        },
+        {
+          "url": "https://use.fontawesome.com/releases/v5.7.1/css/all.css",
+          "reason": "third-party icon-font stylesheet / UI chrome, not a brand asset"
+        },
+        {
+          "url": "https://www.rufford.org/static/images/rufford-logo-menu-hr-360x155.png",
+          "reason": "valid official logo but not selected: a 360x155 menu-header variant on the separate rufford.org marketing site. The asset chosen instead is the one published on the shard's own official_source_url (apply.ruffordsmallgrants.org), which is the higher source in the section 7 hierarchy and carries explicit alt=\"Rufford logo\"."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 568,
+      "title": "Türkiye Bursları (Türkiye Scholarships) - Turkish Government Scholarship",
+      "outcome": "recovered",
+      "image_url": "https://www.turkiyeburslari.gov.tr/YTB/images/logo/tb-logo.png",
+      "image_source_url": "https://www.turkiyeburslari.gov.tr/ScholarshipSearch",
+      "image_source_type": "official_scholarship",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "IMPORTANT: the shard's official_source_url https://scholarship.turkiye.gov.tr is dead - DNS does not resolve it ('The remote name could not be resolved: scholarship.turkiye.gov.tr'; webfetch returned a transport error on both the bare host and the trailing-slash form). Per section 5 I did not use an archived copy; I moved to the shard's own catalogue_url, https://www.turkiyeburslari.gov.tr/ScholarshipSearch, which is the live official site of the same YTB-run programme (page <title>T&#xFC;rkiye Scholarships | Burs Arama</title>). turkiyeburslari.gov.tr is the official government domain for Türkiye Scholarships, administered by the Presidency of Turks Abroad and Relatives of Overseas Citizens (YTB). The asset is published in the site's own header brand block: <div id=\"logo\"><a href=\"/\"> ... <img id=\"TBLogo\" src=\"/YTB/images/logo/tb-logo.png\" alt=\"Türkiye Scholarships\" width=\"120px\">. Verified by direct download: HTTP 200, image/png, 410x181 px, 12,463 bytes. Rendered and visually inspected: the official Türkiye Scholarships mark - the red tulip emblem beside the wordmark 'TÜRKİYE / SCHOLARSHIPS / BURSLARI'. That wordmark is an exact identity match for the record title 'Türkiye Bursları (Türkiye Scholarships)'. Not a favicon (the page's favicon is a separate file on another CDN, rejected below), not UI chrome (it is the organisation brand, not an interface glyph), not a social avatar, not on a third-party mirror (tbbsweb.azureedge.net assets were rejected). The paired dark-background variant /YTB/images/logo/tb-logo1.png (also 410x181) was found but the light variant was chosen as it renders on white backgrounds."
+      },
+      "source": {
+        "url": "https://www.turkiyeburslari.gov.tr/ScholarshipSearch",
+        "publisher": "Türkiye Scholarships (Presidency of Turks Abroad and Relatives of Overseas Citizens - YTB), Republic of Türkiye",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "raw_extract": "<title>T&#xFC;rkiye Scholarships | Burs Arama</title> ... <!--Logo--> <div id=\"logo\"> <a href=\"/\"> <span class=\"logo-default\"> <img loading=\"lazy\" id=\"TBLogo\" class=\"img-fluid rounded\" src=\"/YTB/images/logo/tb-logo.png\" alt=\"T&#xFC;rkiye Scholarships\" style=\"width:120px\" onmouseover=\"randomHover();\" onmouseout=\"resetState();\" width=\"120px\"></span> <span class=\"logo-dark\"> <img loading=\"lazy\" id=\"TBLogo1\" class=\"img-fluid rounded\" src=\"/YTB/images/logo/tb-logo1.png\" alt=\"T&#xFC;rkiye Scholarships\" style=\"width:120px\" ... width=\"120px\"></span> </a> </div>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://scholarship.turkiye.gov.tr (DNS NXDOMAIN - dead, transport error)",
+        "https://scholarship.turkiye.gov.tr/ (DNS NXDOMAIN - dead, transport error)",
+        "https://www.turkiyeburslari.gov.tr/ScholarshipSearch"
+      ],
+      "rejected": [
+        {
+          "url": "https://cdn.turkiyeburslari.gov.tr/Content/images/fav.png",
+          "reason": "favicon - declared as <link rel=\"icon\" type=\"image/png\" href=\"https://cdn.turkiyeburslari.gov.tr/Content/images/fav.png\">; banned by brief section 7"
+        },
+        {
+          "url": "https://www.turkiyeburslari.gov.tr/YTB/images/logo/tb-logo1.png",
+          "reason": "valid official dark-background variant of the same logo, but not selected: it is the inverted variant intended for dark headers and renders poorly on white catalogue backgrounds. Kept as a documented alternative."
+        },
+        {
+          "url": "https://tbbsweb.azureedge.net/tbbsweb/YOUTUBE/turkiye-burslari-2112281209239070.png",
+          "reason": "third-party CDN (azureedge.net, not a turkiyeburslari.gov.tr host) and a 35x30 navigation menu icon - UI chrome, not a logo asset"
+        },
+        {
+          "url": "https://tbbsweb.azureedge.net/tbbsweb/YOUTUBE/medya-tanitim-2112281210525130.png",
+          "reason": "third-party CDN navigation menu icon at 35x30 - UI chrome"
+        },
+        {
+          "url": "https://tbbsweb.azureedge.net/tbbsweb/YOUTUBE/screenshot_2-211227070116263056.jpg",
+          "reason": "screenshot/thumbnail art used inside the mega-menu YouTube embed block"
+        },
+        {
+          "url": "https://www.turkiyeburslari.gov.tr/YTB/images/1/burs-arama2.jpg",
+          "reason": "decorative hero/page-title background art (data-bg-parallax), not a brand mark"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 635,
+      "title": "Becas de Excelencia del Gobierno de México para Extranjeros (Mexican Government Excellence Scholarships for Foreign Students)",
+      "outcome": "not_found",
+      "image_url": null,
+      "image_source_url": null,
+      "image_source_type": null,
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": false,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": false,
+        "notes": "NO OFFICIAL LOGO EXISTS FOR THIS AWARD ON ITS OFFICIAL PAGE. I did prove the page and then proved the absence of a usable mark. The official_source_url https://www.gob.mx/amexcid/acciones-y-programas/becas-para-extranjeros-29785 is LIVE (HTTP 200, h1 = 'Becas de Excelencia del Gobierno de México para Extranjeros 2026') but is behind a JS bot-challenge: plain webfetch and PowerShell both received only a 1,902-byte 'Challenge Validation' interstitial, so I rendered it in a real browser to read the actual DOM. Exhaustive DOM inspection of that official page found NO AMEXCID logo and no programme logo. Specifically: the primary navbar brand is an empty div - <a href=\"/\" class=\"navbar-brand\"><div class=\"logo-main\"></div></a> - and the agency sub-navbar brand is PLAIN TEXT, not an image: <a href=\"/amexcid\" class=\"navbar-brand logo\"><span class=\"btn-initial\">amexcid</span></a>. The only 24 <img> elements and the only url() background-image on the entire page are enumerated in the rejected list below: portal UI icons, social-media share icons, survey widgets, decorative hero art, a decorative CTA banner, and the gob.mx portal's own wordmark. The one candidate brand mark, framework-gb.cdn.gob.mx/gobmx/img/logo_blanco.svg (1535x476, alt 'logo gobierno de méxico'), is the shared gob.mx PORTAL chrome: it is the .logo-main background shared by every agency page on the platform, it is served from the generic framework CDN rather than from the award's own identity, it is a white (logo_blanco) wordmark that is invisible on white backgrounds, and it represents the whole portal rather than AMEXCID or this scholarship. Taking it would be exactly the rejected 'unrelated mark on a shared CDN' case, so image_url stays null. Adjacent official Mexican government hosts are unreachable from here: https://amexcid.sre.gob.mx/ and https://sigca.sre.gob.mx/ (the scholarship's own application portal) both return a Perfdrive CAPTCHA wall instead of content, so no logo could be read from them either. I did not use embamex.sre.gob.mx embassy pages or aggregator/third-party listings, which would not prove the programme's official mark."
+      },
+      "source": {
+        "url": "https://www.gob.mx/amexcid/acciones-y-programas/becas-para-extranjeros-29785",
+        "publisher": "Agencia Mexicana de Cooperación Internacional para el Desarrollo (AMEXCID) / Secretaría de Relaciones Exteriores - Gobierno de México",
+        "retrieved_at": "2026-10-05T15:33:00Z",
+        "raw_extract": "document.title = \"Becas de Excelencia del Gobierno de México para Extranjeros 2026 | Agencia Mexicana de Cooperación Internacional para el Desarrollo | Gobierno | gob.mx\"; h1 = \"Becas de Excelencia del Gobierno de México para Extranjeros 2026\"; og:title = \"Becas de Excelencia del Gobierno de México para Extranjeros 2026\"; og:site_name = \"gob.mx\"; og:image = \"\" (empty). Header: \"<a href=\\\"/\\\" class=\\\"navbar-brand\\\" title=\\\"Ir a la página inicial\\\"><div class=\\\"logo-main\\\"></div></a>\" and \"<a href=\\\"/amexcid\\\" class=\\\"navbar-brand logo\\\"><span class=\\\"btn-initial\\\">amexcid</span></a>\". Only background-image on the page: url(\"https://framework-gb.cdn.gob.mx/gobmx/img/logo_blanco.svg\"). Full <img> inventory: lupa.png 16x16; post_becas-1461081842657.jpg 385x227; ten El_texto_del_p_rrafo__N_.png / N.png files at 894x112; ico-survey-good|neutral|bad.svg 76x76; oval-white.svg 38x76; logo_blanco.svg 1535x476; facebook.png 24x24; twitter.png 25x25; instagram.png 24x24; youtube.png 24x24; 079.png 322x58.",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.gob.mx/amexcid/acciones-y-programas/becas-para-extranjeros-29785 (live; 1,902-byte JS bot-challenge to plain fetchers, rendered in a real browser for the true DOM)",
+        "https://www.gob.mx/amexcid (same JS bot-challenge wall)",
+        "https://amexcid.sre.gob.mx/ (Perfdrive CAPTCHA wall - content not retrievable)",
+        "https://sigca.sre.gob.mx/ (Perfdrive CAPTCHA wall - content not retrievable)",
+        "https://sigca.sre.gob.mx/regres/login (Perfdrive CAPTCHA wall - content not retrievable)"
+      ],
+      "rejected": [
+        {
+          "url": "https://framework-gb.cdn.gob.mx/gobmx/img/logo_blanco.svg",
+          "reason": "gob.mx PORTAL CHROME on a shared CDN, not the award's identity: it is the .logo-main background used by the navbar on every agency page on the platform, served from the generic framework-gb.cdn.gob.mx host rather than from any AMEXCID/SRE asset path. It is also a white ('logo_blanco') wordmark that is invisible on white backgrounds. Fails identity_match and not_ui."
+        },
+        {
+          "url": "https://www.gob.mx/cms/uploads/action_program/main_image/7930/post_becas-1461081842657.jpg",
+          "reason": "decorative hero art - downloaded and visually inspected: a flat illustration of a graduating student surrounded by circular study/lab/computer icons. No logo, no wordmark, no institution identity."
+        },
+        {
+          "url": "https://www.gob.mx/cms/uploads/image/file/1075979/El_texto_del_p_rrafo__5_.png",
+          "reason": "decorative call-to-action banner - downloaded and visually inspected: a burgundy rounded rectangle reading 'BECAS DE EXCELENCIA DEL GOBIERNO DE MÉXICO 2026 (CLIC AQUÍ)'. A document-list header button, not a brand mark."
+        },
+        {
+          "url": "https://www.gob.mx/cms/uploads/image/file/997428/2.png",
+          "reason": "same decorative CTA/banner family (894x112 'N.png' series), not a logo"
+        },
+        {
+          "url": "https://www.gob.mx/cms/uploads/image/file/997427/3.png",
+          "reason": "same decorative CTA/banner family (894x112), not a logo"
+        },
+        {
+          "url": "https://www.gob.mx/cms/uploads/image/file/997429/4.png",
+          "reason": "same decorative CTA/banner family (894x112), not a logo"
+        },
+        {
+          "url": "https://www.gob.mx/cms/uploads/image/file/997430/5.png",
+          "reason": "same decorative CTA/banner family (894x112), not a logo"
+        },
+        {
+          "url": "https://www.gob.mx/cms/uploads/image/file/997431/6.png",
+          "reason": "same decorative CTA/banner family (894x112), not a logo"
+        },
+        {
+          "url": "https://www.gob.mx/cms/uploads/image/file/997433/8.png",
+          "reason": "same decorative CTA/banner family (894x112), not a logo"
+        },
+        {
+          "url": "https://www.gob.mx/cms/uploads/image/file/997434/9.png",
+          "reason": "same decorative CTA/banner family (894x112), not a logo"
+        },
+        {
+          "url": "https://www.gob.mx/cms/uploads/image/file/997435/10.png",
+          "reason": "same decorative CTA/banner family (894x112), not a logo"
+        },
+        {
+          "url": "https://www.gob.mx/cms/uploads/image/file/1075976/El_texto_del_p_rrafo__3_.png",
+          "reason": "same decorative CTA/banner family (894x112), not a logo"
+        },
+        {
+          "url": "https://www.gob.mx/cms/uploads/image/file/1075980/El_texto_del_p_rrafo__6_.png",
+          "reason": "same decorative CTA/banner family (894x112), not a logo"
+        },
+        {
+          "url": "https://framework-gb.cdn.gob.mx/landing/img/lupa.png",
+          "reason": "16x16 search (magnifier) icon in the navbar - UI chrome / icon, banned by section 7"
+        },
+        {
+          "url": "https://framework-gb.cdn.gob.mx/assets/images/icons/survey/ico-survey-good.svg",
+          "reason": "survey widget icon (76x76) - UI chrome"
+        },
+        {
+          "url": "https://framework-gb.cdn.gob.mx/assets/images/icons/survey/ico-survey-neutral.svg",
+          "reason": "survey widget icon (76x76) - UI chrome"
+        },
+        {
+          "url": "https://framework-gb.cdn.gob.mx/assets/images/icons/survey/ico-survey-bad.svg",
+          "reason": "survey widget icon (76x76) - UI chrome"
+        },
+        {
+          "url": "https://framework-gb.cdn.gob.mx/assets/images/oval-white.svg",
+          "reason": "38x76 decorative oval shape used by the portal layout - not a mark"
+        },
+        {
+          "url": "https://framework-gb.cdn.gob.mx/landing/img/facebook.png",
+          "reason": "social media share button image (24x24) - banned by section 7"
+        },
+        {
+          "url": "https://framework-gb.cdn.gob.mx/landing/img/twitter.png",
+          "reason": "social media share button image (25x25) - banned by section 7"
+        },
+        {
+          "url": "https://www.gob.mx/cms/assets/instagram.png",
+          "reason": "social media share button image (24x24) - banned by section 7"
+        },
+        {
+          "url": "https://www.gob.mx/cms/assets/youtube.png",
+          "reason": "social media share button image (24x24) - banned by section 7"
+        },
+        {
+          "url": "https://framework-gb.cdn.gob.mx/gobmx/img/079.png",
+          "reason": "portal footer regulatory/award marking (322x58) belonging to the gob.mx framework, not an AMEXCID or programme identity mark"
+        },
+        {
+          "url": "https://www.gob.mxhttps://www.gob.mx/cms/uploads/action_program/main_image/7930/becas-1461081842657.jpg",
+          "reason": "malformed twitter:image meta value (concatenated base URL) and the same decorative hero illustration as post_becas-1461081842657.jpg"
+        },
+        {
+          "url": "https://captcha.perfdrive.com/captcha-public/images/ss_captcha.png",
+          "reason": "third-party CAPTCHA widget image returned in place of content by amexcid.sre.gob.mx and sigca.sre.gob.mx - not an asset of this award"
+        },
+        {
+          "url": "https://ambcittadelmessico.esteri.it/es/news/dall_ambasciata/2026/06/becas-de-excelencia-del-gobierno-de-mexico-para-extranjeros-2026",
+          "reason": "third-party mirror - Italian Ministry of Foreign Affairs embassy site restating the call; not an official source for a Mexican award's brand asset"
+        },
+        {
+          "url": "https://www.rree.go.cr/?beca=6319&cat=becas&cont=579&sec=servicios",
+          "reason": "third-party aggregator/listing site (Costa Rican foreign ministry scholarship listing) - scholarship aggregator, banned by section 7"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 653,
+      "title": "TDTU Scholarship for International Students (2026-2027 Academic Year)",
+      "outcome": "recovered",
+      "image_url": "https://tdtu.edu.vn/sites/www/files/logo_2.png",
+      "image_source_url": "https://tdtu.edu.vn/en",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "The shard's official_source_url (https://admission.tdtu.edu.vn/en/undergraduate/Scholarships, live HTTP 200, canonical self-reference, title 'TDTU Scholarship for International Students in the 2026-2027 Academic Year | Admission') contains NO logo image in its content at all - a full <img> inventory of that page yields only the preloader gif, the site header logo, a 'Tiếng Việt' link, a search icon, and stock admission-illustration tiles. Its only logo is the sub-brand header mark /sites/admission23/files/Admission-2023/Logo-admission.png, which I downloaded and measured at just 120x70 px - too small to serve as the record's image (favicon-adjacent quality). I therefore moved one level up the section 7 hierarchy to the university's own main site tdtu.edu.vn (the parent domain of the admission host, and the domain named by the record's official_source 'Ton Duc Thang University (TDTU)'), which publishes the university brand mark in its footer brand block: <div class=\"footer-logo\"><div class=\"footer-logo-1\"><img style=\"width: 64px;\" src=\"../../../../sites/www/files/logo_2.png\" /></div><div class=\"footer-logo-2\"><h2>Ton Duc Thang University</h2><p>19 Nguyen Huu Tho Street, Tan Hung Ward, Ho Chi Minh City, Vietnam</p>. Verified by direct download: HTTP 200, image/png, 534x534 px, 46,394 bytes. Rendered and visually inspected: the official TDTU mark - the interlocking red-and-blue 'TDT' monogram, the ® symbol, and the bilingual wordmark 'ĐẠI HỌC TÔN ĐỨC THẮNG / TON DUC THANG UNIVERSITY'. Exact identity match for the awarding institution. It is the footer organisation brand mark, not UI chrome, not an icon, not a favicon, and at 534x534 it is nowhere near favicon-sized. The same asset is also published identically on international.tdtu.edu.vn (/sites/international/files/uploadfile/logo_2.png, byte-identical size), corroborating that it is the standing university logo rather than a page-specific graphic."
+      },
+      "source": {
+        "url": "https://tdtu.edu.vn/en",
+        "publisher": "Ton Duc Thang University (TDTU) - official university website, tdtu.edu.vn",
+        "retrieved_at": "2026-10-05T15:32:00Z",
+        "raw_extract": "<div class=\"footer-tdtu gbb-row bg-size-cover\" style=\"background-image:url('/sites/www/files/Home/layout/bn-footer.png'); ...\"> ... <div class=\"footer-logo\"><div class=\"footer-logo-1\"><img style=\"width: 64px;\" src=\"../../../../sites/www/files/logo_2.png\" /></div><div class=\"footer-logo-2\"><h2>Ton Duc Thang University</h2><p>19 Nguyen Huu Tho Street, Tan Hung Ward, Ho Chi Minh City, Vietnam</p></div></div>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://admission.tdtu.edu.vn/en/undergraduate/Scholarships",
+        "https://admission.tdtu.edu.vn/en/undergraduate",
+        "https://tdtu.edu.vn/en",
+        "https://international.tdtu.edu.vn/",
+        "https://international.tdtu.edu.vn/sites/international/files/uploadfile/logo_2.png"
+      ],
+      "rejected": [
+        {
+          "url": "https://admission.tdtu.edu.vn/sites/admission/files/favicon.ico",
+          "reason": "favicon - declared as <link rel=\"shortcut icon\" href=\"/sites/admission/files/favicon.ico\" type=\"image/vnd.microsoft.icon\"> on the official_source_url; banned by brief section 7"
+        },
+        {
+          "url": "https://admission.tdtu.edu.vn/sites/admission23/files/Admission-2023/Logo-admission.png",
+          "reason": "genuine official sub-brand mark (alt=\"Admission - Ton Duc Thang University\", visually confirmed) but only 120x70 px / 6,001 bytes - a low-resolution badge, rejected under section 7's low-resolution clause in favour of the 534x534 university mark"
+        },
+        {
+          "url": "https://tdtu.edu.vn/sites/www/files/logo-dh_0.png",
+          "reason": "header logo variant, but only 84x50 px / 4,201 bytes - low-resolution badge; also alt=\"Home\", not an identity-bearing asset"
+        },
+        {
+          "url": "https://international.tdtu.edu.vn/sites/international/files/logo-dh_0.png",
+          "reason": "same 84x50 px low-resolution header variant on the international site"
+        },
+        {
+          "url": "https://tdtu.edu.vn/sites/www/files/Home/layout/logo-hceres.png",
+          "reason": "142x150 'HCeres' campaign artwork - a time-limited higher-education-certification campaign graphic, not the university's brand mark"
+        },
+        {
+          "url": "https://tdtu.edu.vn/themes/gavias_edubiz/images/preloader/preloader-7.gif",
+          "reason": "loading spinner / preloader animation - UI chrome, banned by section 7"
+        },
+        {
+          "url": "https://admission.tdtu.edu.vn/themes/gavias_edubiz/images/preloader/preloader-7.gif",
+          "reason": "loading spinner / preloader animation - UI chrome"
+        },
+        {
+          "url": "https://admission.tdtu.edu.vn/sites/admission/files/Tuyen-sinh/tim-kiem_1.png",
+          "reason": "navbar search (magnifier) icon - UI chrome"
+        },
+        {
+          "url": "https://admission.tdtu.edu.vn/sites/admission/files/Tuyen-sinh/2026/popup2026.gif",
+          "reason": "consultation pop-up banner artwork - decorative promo, not a logo"
+        },
+        {
+          "url": "https://admission.tdtu.edu.vn/sites/admission23/files/Tuyen-sinh/Tu-van/poup-lkqt.png",
+          "reason": "consultation pop-up button artwork - decorative promo, not a logo"
+        },
+        {
+          "url": "https://tdtu.edu.vn/sites/www/files/Logo.svg",
+          "reason": "does not exist (HTTP 404) - guessed vector variant, no such asset published"
+        },
+        {
+          "url": "https://tdtu.edu.vn/sites/www/files/logo-1.png",
+          "reason": "does not exist (HTTP 404)"
+        },
+        {
+          "url": "https://tdtu.edu.vn/sites/www/files/logo-2.png",
+          "reason": "does not exist (HTTP 404) - note the real asset is logo_2.png (underscore), not logo-2.png"
+        }
+      ]
+    }
+  ]
+}

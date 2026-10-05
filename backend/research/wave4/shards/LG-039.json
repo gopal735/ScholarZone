@@ -1,0 +1,49 @@
+{
+  "shard_id": "LG-039",
+  "topic": "logo",
+  "hosts": [
+    "admissions.msu.edu",
+    "bolashak.gov.kz",
+    "schulichleaders.com",
+    "www.harno.ee"
+  ],
+  "record_count": 4,
+  "records": [
+    {
+      "id": 63,
+      "title": "Michigan State University International Merit Scholarships",
+      "official_source": "Michigan State University",
+      "official_source_url": "https://admissions.msu.edu/cost-aid/scholarships/international",
+      "catalogue_url": "https://admissions.msu.edu/cost-aid/scholarships/international/scholarship-regulations",
+      "country": "United States",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 312,
+      "title": "Schulich Leader Scholarships",
+      "official_source": "Schulich Leader Scholarships (funded by the Schulich Foundation, administered by UJA Federation of Greater Toronto)",
+      "official_source_url": "https://schulichleaders.com",
+      "catalogue_url": "https://schulichleaders.com/universities",
+      "country": "Canada",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 509,
+      "title": "Estonian Scholarship Programme for international students, researchers and academic staff — Scholarship for degree and exchange study in Estonia",
+      "official_source": "Estonian Education and Youth Board (Haridus- ja Noorteamet) and Estonian Ministry of Education and Research",
+      "official_source_url": "https://www.harno.ee/en/scholarships-and-grants/scholarships-studying-and-working-estonia/scholarships-international",
+      "catalogue_url": null,
+      "country": "Estonia",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 646,
+      "title": "Scholarship Program for Studying at Universities in Kazakhstan (Bolashak / Center for International Programs)",
+      "official_source": "JSC \"Center for International Programs\" (Bolashak), Republic of Kazakhstan",
+      "official_source_url": "https://bolashak.gov.kz/en/scholarship-program",
+      "catalogue_url": "https://studyin.kz/admission",
+      "country": "Kazakhstan",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

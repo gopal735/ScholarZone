@@ -1,0 +1,325 @@
+{
+  "shard_id": "DL-030",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 83,
+      "title": "McCall MacBain Scholarships at McGill University",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Applications for Summer/Fall 2027 are closed. ... Application Deadlines for 2027 Admission ... Canada and United States: Students and graduates of universities in Canada and the United States, as well as Canadians abroad, had the following deadline: September 23, 2026 4:00 PM Eastern Time ... International: Students and graduates of universities located in other countries had the following deadline: August 19, 2026 4:00 PM Eastern Time",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://mccallmacbainscholars.org/apply",
+        "source_type": "official_scholarship_page",
+        "publisher": "McCall MacBain Scholarships at McGill",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": "2027 admission cycle (Summer/Fall 2027 entry)",
+        "raw_extract": "# Apply for the McCall MacBain Scholarships ... We Want to Meet You! Applications for Summer/Fall 2027 are closed. ... Application Deadlines for 2027 Admission ... Canada and United States Students and graduates of universities in Canada and the United States, as well as Canadians abroad, had the following deadline: September 23, 2026 4:00 PM Eastern Time ... International Students and graduates of universities located in other countries had the following deadline: August 19, 2026 4:00 PM Eastern Time ... Make sure to apply early! The McCall MacBain Scholarship application is available online from June to August / September 2026 for Summer / Fall 2027 admission.",
+        "exact_deadline_wording": "September 23, 2026 4:00 PM Eastern Time (Canada and United States); August 19, 2026 4:00 PM Eastern Time (International)",
+        "confidence": "HIGH",
+        "notes": "Both published 2027-cycle deadlines (2026-08-19 and 2026-09-23) are already in the past as of the retrieval date 2026-10-05, and the page itself states applications for Summer/Fall 2027 'are closed'. The record is nonetheless verification_status=active (open/upcoming), so per brief section 6 this is expired_mismatch: the stale dates are recorded here for traceability but NOT written to deadline_date, and they have deliberately not been rolled forward to a 2028 cycle, which the provider has not yet published. The two dates are two distinct applicant-category deadlines for the same 2027 cycle, not a conflict between sources. The page also gives recurring context ('application is available online from June to August / September 2026 for Summer / Fall 2027 admission'), which is cycle-specific wording for the closed 2027 round, not a forward-looking open window."
+      },
+      "field_mapping": {
+        "deadline_date": "null (source dates 2026-08-19 / 2026-09-23 are expired; not written, not rolled forward)",
+        "deadline_precision": "exact",
+        "deadline_display": "Applications for Summer/Fall 2027 are closed. Application Deadlines for 2027 Admission: September 23, 2026 4:00 PM Eastern Time (Canada and United States) / August 19, 2026 4:00 PM Eastern Time (International)"
+      },
+      "examined": [
+        "https://mccallmacbainscholars.org/apply"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://mccallmacbainscholars.org/apply",
+          "reason": "Official page yields an EXACT but already-expired calendar deadline for the 2027 cycle; rejected as a writable deadline_date, retained only as expired_mismatch evidence. Same page is NOT rejected as a source: it is the official scholarship page and its verbatim wording is quoted."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 125,
+      "title": "Harvard College Need-Based Financial Aid (International Students)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Financial Aid Application Deadlines: Restrictive Early Action and QuestBridge Match — CSS Profile November 1, FAFSA November 1, IDOC November 1; Regular Decision — CSS Profile February 1, FAFSA February 1, IDOC February 1; Transfer — CSS Profile March 1, FAFSA March 1, IDOC March 1. (The instructions below are for the 2027-2028 school year.)",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://college.harvard.edu/financial-aid/apply-financial-aid/prospective-students",
+        "source_type": "official_university_page",
+        "publisher": "Harvard College (Harvard University)",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "as_of": "2027-2028 school year",
+        "raw_extract": "The instructions below are for the 2027-2028 school year. ... Financial Aid Application Deadlines. Restrictive Early Action and QuestBridge Match / Regular Decision / Transfer — CSS Profile: November 1 / February 1 / March 1; FAFSA: November 1 / February 1 / March 1; IDOC: November 1 / February 1 / March 1. ... Our goal is to provide you with a decision about financial aid at the time that you are admitted. For Restrictive Early Action and QuestBridge Match applicants that means an estimate of financial aid in mid-December, and for both Restrictive Early Action and Regular Decision applications, a financial aid decision around April 1. Although we'll accept a late application, we may not be able to get back to you as quickly as we would if your application was submitted along the timeline below.",
+        "exact_deadline_wording": "CSS Profile / FAFSA / IDOC — Restrictive Early Action and QuestBridge Match: November 1; Regular Decision: February 1; Transfer: March 1",
+        "confidence": "HIGH",
+        "notes": "No single calendar deadline exists for this record, so deadline_date stays null. The live official pages publish a three-column table of round-dependent dates (November 1 for Restrictive Early Action/QuestBridge Match, February 1 for Regular Decision, March 1 for Transfer), repeated for each of CSS Profile, FAFSA and IDOC. Selecting one column would require inferring which admission round an international applicant uses, which the provider does not state on these pages. Harvard's International Applicants page explicitly says 'Our financial aid policies are the same for all applicants, regardless of nationality or citizenship' and 'all applicants follow the same procedures and timelables', i.e. it gives international applicants no separate single aid deadline. IMPORTANT: the string stored in this record's cached deadline_display ('Prospective Students: November 1st, for Restrictive Early Action candidates. February 1st, for Regular Decision candidates. March 1st, for Transfer candidates. Current Students: May 1st.') was NOT found on any live page fetched. The Nov/Feb/Mar figures do appear, but only as the tabular CSS/FAFSA/IDOC grid on the Prospective Students page; the separate 'Current Students: May 1st' claim belongs to the Current Students renewal page ('The deadline to renew your aid is May 1'), which is a different applicant population (enrolled students, not prospective international applicants) and has been rejected as evidence for this record. Cached prior values were not carried forward."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "Financial Aid Application Deadlines: Restrictive Early Action and QuestBridge Match — November 1; Regular Decision — February 1; Transfer — March 1 (CSS Profile, FAFSA and IDOC). Instructions are for the 2027-2028 school year."
+      },
+      "examined": [
+        "https://college.harvard.edu/financial-aid/apply-financial-aid",
+        "https://college.harvard.edu/financial-aid/apply-financial-aid/prospective-students",
+        "https://college.harvard.edu/admissions/apply/international-applicants",
+        "https://college.harvard.edu/financial-aid/apply-financial-aid/current-students"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://college.harvard.edu/financial-aid/apply-financial-aid",
+          "reason": "Record's own official_source_url. Fetched live; contains no deadline whatsoever ('We encourage you to apply for financial aid at the same time as you apply for admission'). No value available here."
+        },
+        {
+          "url": "https://college.harvard.edu/admissions/apply/international-applicants",
+          "reason": "Official university page but about admissions; confirms aid process is identical for international applicants and publishes no separate single financial-aid deadline. Cannot supply a single date for this record."
+        },
+        {
+          "url": "https://college.harvard.edu/financial-aid/apply-financial-aid/current-students",
+          "reason": "Official but wrong applicant population: 'The deadline to renew your aid is May 1' applies to current Harvard students renewing 2026-2027 aid, not prospective international applicants. Per brief section 5, a different programme/applicant track's deadline is not usable evidence."
+        },
+        {
+          "url": "https://college.harvard.edu/admissions/apply/first-year-applicants",
+          "reason": "Not fetched: admissions-round dates are not the financial-aid deadline and would be a generic admissions deadline, which brief section 5 forbids."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 166,
+      "title": "Johannes Kepler University Linz (JKU) Scholarships",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "The scholarships are awarded annually and funds have been made available by the Austrian Federal Ministry of Science, Research and the Economy. (JKU's Scholarships hub publishes no application deadline; each named sub-scheme publishes its own.)",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.jku.at/en/degree-programs/students/scholarships",
+        "source_type": "official_university_page",
+        "publisher": "Johannes Kepler University Linz (JKU)",
+        "retrieved_at": "2026-10-05T15:34:00Z",
+        "as_of": "not stated on page (schemes described as 'awarded annually')",
+        "raw_extract": "# Scholarships. The JKU rewards your academic achievements and successes! Here you will find a list of all available scholarships and grants ranging from successfully completing studies to support for a stay abroad program. ... Merit Scholarships and Study Grants ... The scholarships are awarded annually and funds have been made available by the Austrian Federal Ministry of Science, Research and the Economy. ... MORE - Scholarship for Refugees: Since 2015 the JKU Linz is part of the UNIKO MORE initiative ... The scholarships are awarded annually. ... Fellowship and Awards for Academics and Scientists: The Department of Equality, Equitable Opportunities and Diversity offers the annual IRIS FISCHLMAYR Scholarships & Awards and, since 2026, the Soroptimist Award.",
+        "exact_deadline_wording": "(none published on this page — no deadline wording appears)",
+        "confidence": "MEDIUM",
+        "notes": "The shard's official_source_url https://www.jku.at/en/studies/scholarships returns HTTP 404 and is dead; the live official JKU scholarships hub is https://www.jku.at/en/degree-programs/students/scholarships, which I fetched. That hub is an umbrella index linking at least six distinct schemes (Study Abroad Scholarship, Merit Scholarship, Study Grants, MOREclassic, Borealis-MORE, IRIS FISCHLMAYR, Soroptimist Award) and publishes no application deadline of its own. The one dated window found on an official JKU page is on the Merit Scholarship sub-page — 'Applications can be submitted from October 01, 2026 to October 31, 2026' — but that is a single specific sub-scheme, not this umbrella record, so it has deliberately NOT been written to this record. Per brief section 5 and section 6, a different programme's deadline (and differing deadlines across programmes at one institution is explicitly not a conflict) cannot be attributed to a generic 'JKU Scholarships' record. deadline_date therefore stays null. Marked confidence MEDIUM rather than HIGH only because the umbrella page's own silence is conclusive while the record's exact intended sub-scope is ambiguous; a programme owner may want to split this record."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "The scholarships are awarded annually... (JKU Scholarships hub: no application deadline published; deadlines are set per scheme)"
+      },
+      "examined": [
+        "https://www.jku.at/en/studies/scholarships",
+        "https://www.jku.at/en/degree-programs/students/scholarships",
+        "https://www.jku.at/en/degree-programs/students/scholarships/merit-scholarships"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.jku.at/en/studies/scholarships",
+          "reason": "Record's own official_source_url returned HTTP 404 (dead link); cannot be evidence."
+        },
+        {
+          "url": "https://www.jku.at/en/degree-programs/students/scholarships/merit-scholarships",
+          "reason": "Official JKU page and it does carry a dated window ('Applications can be submitted from October 01, 2026 to October 31, 2026'), but it belongs to the single Merit Scholarship scheme, which is a different, narrower programme than this umbrella 'JKU Scholarships' record. Using it would be importing another programme's deadline."
+        },
+        {
+          "url": "https://www.jku.at/en/degree-programs/international-students/jku-exchange-go-abroad/study-abroad-scholarships",
+          "reason": "Not fetched/used: Study Abroad Scholarship deadlines (June 1 / November 1) belong to a different JKU scheme."
+        },
+        {
+          "url": "https://www.jku.at/en/degree-programs/students/dates-deadlines",
+          "reason": "Not fetched/used: JKU's general Dates & Deadlines page covers enrolment/admission dates, not scholarship deadlines."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 361,
+      "title": "ANRF Ramanujan Fellowship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Selection of Ramanujan Fellows will be made periodically by an empowered Selection Committee specially appointed for the purpose.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.anrfonline.in/ANRF/Ramanujan_fellowship",
+        "source_type": "official_government_page",
+        "publisher": "Anusandhan National Research Foundation (ANRF), Government of India",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": null,
+        "raw_extract": "#### RAMANUJAN FELLOWSHIP Ramanujan Fellowship is meant for brilliant Indian/Indian Origin scientists and engineers from outside India to take up scientific research positions in India ... METHODOLOGY FOR NOMINATION & SELECTION ... Individual Scientists and Technologists should approach the Institutions of his/her choice for hosting them for the fellowship and forwarding their nominations to ANRF for the fellowship. Selection of Ramanujan Fellows will be made periodically by an empowered Selection Committee specially appointed for the purpose. ... Online Application Procedure: Nominee need to register in ANRF online portal, www.anrfonline.in ... Under Form Submission, choose Scheme: Ramanujan Fellowship, and fill the Ramanujan Fellowship nomination form ...",
+        "exact_deadline_wording": "(no deadline wording is published — the only timing statement is 'Selection of Ramanujan Fellows will be made periodically by an empowered Selection Committee specially appointed for the purpose.')",
+        "confidence": "HIGH",
+        "notes": "The official ANRF scheme page publishes no application closing date, no month, no window and no explicit statement that nominations are rolling or open year-round. The full online application procedure is described step by step with no time limit attached. The only temporal statement is that selection is made 'periodically' by an empowered Selection Committee, which describes the selection cadence and not a submission deadline. Because the provider never states rolling/annual timing, brief section 6 rules out ROLLING and ANNUAL; UNKNOWN is the correct result. Deliberately NOT written: any inference that nominations are accepted continuously all year, and any assumption about how the periodic selection rounds are timed. The record's cached application_period text ('nominations are submitted year-round ... selections are made periodically') is a prior cached characterisation, not language found on the live page, and was not carried forward as a value."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "Selection of Ramanujan Fellows will be made periodically by an empowered Selection Committee specially appointed for the purpose. (No application deadline published.)"
+      },
+      "examined": [
+        "https://www.anrfonline.in/ANRF/Ramanujan_fellowship",
+        "https://www.anrfonline.in/ANRF/registration_guidelines"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.anrfonline.in/ANRF/registration_guidelines",
+          "reason": "Official ANRF page; describes only the four-step portal registration process (Sign in / NEW USER / Submit / Verification mail) with no dates or deadlines."
+        },
+        {
+          "url": "https://serb.gov.in",
+          "reason": "Not fetched/used: SERB is the predecessor body referenced in ANRF's footer, not the awarding agency for this live ANRF scheme page."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 364,
+      "title": "University of Galway Global Scholarships",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "(none published) Global Scholarships is University of Galway's international non-EU scholarship program designed to attract and support outstanding students from around the world. ... Students who have been offered an Excellence scholarship must accept their scholarship on the Microsoft form provided within the stipulated acceptance window to be awarded. ... This scholarship is valid for Autumn 2027 entry only and cannot be deferred to future years.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.universityofgalway.ie/global-galway/globalscholarships/scholarshiptermsconditions",
+        "source_type": "official_university_page",
+        "publisher": "University of Galway",
+        "retrieved_at": "2026-10-05T15:33:00Z",
+        "as_of": "2027/28 academic year, Autumn 2027 entry",
+        "raw_extract": "**Scholarship Terms & Conditions** Global Scholarships is University of Galway's international Non-EU scholarship program designed to attract and support outstanding students from around the world. Only applicants from Non-EU countries are eligible. - Eligible students can only avail of one Global Scholarship for the 2027/28 academic year. ... - Students who have been offered an Excellence scholarship must accept their scholarship on the Microsoft form provided within the stipulated acceptance window to be awarded. - Specific college/school terms and conditions may apply. **How Your Scholarship Works** - The value of your scholarship will be deducted from your annual tuition fees for the 2027/28 academic year. This scholarship is valid for Autumn 2027 entry only and cannot be deferred to future years.",
+        "exact_deadline_wording": "within the stipulated acceptance window (no dates given)",
+        "confidence": "HIGH",
+        "notes": "Three official University of Galway pages were fetched live — the Global Scholarships hub, the Global Scholarships Terms & Conditions, and the College of Science and Engineering Global Scholarships page — and none publishes an application deadline for 2027/28. The T&C page refers to 'the stipulated acceptance window' for accepting an Excellence scholarship offer but never states what that window is. The hub is an index that routes applicants to five separate college/school scholarship pages, each a different programme with its own terms; per brief section 5 and 6, a single college-level deadline cannot be attributed to this umbrella record, and per-section 6 differing deadlines across programmes at one institution are explicitly not a conflict. This is a true UNKNOWN, not a conflict. The record's cached deadline_display ('deadlines are set per college or school scholarship page') is an accurate description of the site structure but is not itself a deadline value, so deadline_date remains null."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "No application deadline published on the Global Scholarships hub or Terms & Conditions pages for 2027/28; Excellence scholarship offers must be accepted 'within the stipulated acceptance window' (window not specified)."
+      },
+      "examined": [
+        "https://www.universityofgalway.ie/global-galway/globalscholarships",
+        "https://www.universityofgalway.ie/global-galway/globalscholarships/scholarshiptermsconditions",
+        "https://www.universityofgalway.ie/global-galway/globalscholarships/collegeofscienceandengineeringglobalscholarships/"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.universityofgalway.ie/global-galway/globalscholarships/collegeofscienceandengineeringglobalscholarships/",
+          "reason": "Official but wrong scope: a single college/school sub-scheme listing award values and eligible programmes only; publishes no deadline and is a different programme from this umbrella record."
+        },
+        {
+          "url": "https://www.universityofgalway.ie/courses/how-to-apply/",
+          "reason": "Not fetched/used: university course-application route would be a generic admissions deadline, forbidden by brief section 5."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 463,
+      "title": "UZH Student Financial Aid Office – Scholarships",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Application type — Submission deadlines fall semester — Submission deadlines spring semester: Scholarships — 15 August — 1 February",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.studienfinanzierung.uzh.ch/en/application_deadlines.html",
+        "source_type": "official_university_page",
+        "publisher": "University of Zurich, Student Financial Aid Office (SIB UZH)",
+        "retrieved_at": "2026-10-05T15:32:00Z",
+        "as_of": "no year stated; generic semester-based cycle (fall / spring semester)",
+        "raw_extract": "## Overview of deadlines Application type | Submission deadlines fall semester | Submission deadlines spring semester — Scholarships | 15 August | 1 February — Loans | 15 August | 1 November | 1 February | 1 April — Hardship loan | at any time (resubmission possible every 6 months) — «Pecunia» one-time loan | at any time ... Availability of the scholarship application form in the portal: For the autumn semester: June 15 to August 15 (submission deadline). For the spring semester: December 1 to February 1 (submission deadline). ... The submission deadlines for scholarships and loans are binding.",
+        "exact_deadline_wording": "Scholarships | 15 August | 1 February",
+        "confidence": "HIGH",
+        "notes": "Recovered as a recurring annual value, not as a dated deadline. The official UZH Student Financial Aid Office deadlines page publishes two fixed, year-independent submission deadlines for scholarships: 15 August for the fall semester and 1 February for the spring semester, with the portal form opening 15 June (autumn) and 1 December (spring). Because the provider states no calendar year, these are recurring annual dates; per brief section 6 an ANNUAL value must never be converted into a calendar date, so deadline_date is null and deadline_precision is 'recurring'. The record's own official_source_url (en.html homepage) and its catalogue_url (FAQ page) were both fetched and neither is where the deadline lives; the deadline sits on the linked 'Application — Submission of application and additional documents — Deadlines' page, which is the same official UZH SIB domain. Two separate but consistent semester windows for the same award are not a conflict. Corroboration: the FAQ states 'you will receive a decision about 8–10 weeks after the deadline', which is consistent with binding semester deadlines and contradicts nothing on the deadlines page."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "recurring",
+        "deadline_display": "Scholarships: 15 August (fall semester) / 1 February (spring semester); forms open 15 June and 1 December respectively."
+      },
+      "examined": [
+        "https://www.studienfinanzierung.uzh.ch/en.html",
+        "https://www.studienfinanzierung.uzh.ch/en/faq/faq_scholarships_loans_requests.html"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.studienfinanzierung.uzh.ch/en.html",
+          "reason": "Record's own official_source_url. Fetched live; the SIB homepage carries navigation and drop-in dates only, with no scholarship submission deadline."
+        },
+        {
+          "url": "https://www.studienfinanzierung.uzh.ch/en/faq/faq_scholarships_loans_requests.html",
+          "reason": "Record's catalogue_url. Fetched live; explains eligibility, process and 'about 8–10 weeks after the deadline' but states no deadline dates itself."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 466,
+      "title": "UZH Hardship Loan",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "Hardship loans can be applied for a maximum of one time per semester. There are no deadlines for these applications.",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://www.studienfinanzierung.uzh.ch/en/financial_support.html",
+        "source_type": "official_university_page",
+        "publisher": "University of Zurich, Student Financial Aid Office (SIB UZH)",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "as_of": "no cycle stated; current page text (copyright 2023, no dated cycle)",
+        "raw_extract": "## Hardship loan Hardship loans are available if you are enrolled at the University of Zurich and are in an acute financial emergency without any debt. You can apply for an interest-free hardship loan without any bureaucratic red tape. Applications are usually processed within a few working days. You must be able to plausibly guarantee that **the amount will be paid back within six months**. Short-term loans are intended to bridge financial gaps ... **Maximum amount per application is CHF 6,000** Hardship loans can be applied for a maximum of one time per semester. There are no deadlines for these applications.",
+        "exact_deadline_wording": "There are no deadlines for these applications.",
+        "confidence": "HIGH",
+        "notes": "Explicit rolling admissions, stated by the provider in plain words on the record's own official_source_url: 'There are no deadlines for these applications.' The only frequency limits are 'a maximum of one time per semester' and 'Repeat applications are only possible every 6 months' — both are repeat-application limits, not deadlines, so per brief section 6 this is ROLLING with a null deadline_date and is never dated. Independently corroborated on the second official UZH SIB page (/en/application_deadlines.html), whose deadline table lists 'Hardship loan — at any time (resubmission possible every 6 months)' and whose hardship section repeats 'You can submit your application at any time via portal. Repeat applications are only possible every 6 months.' The two official pages agree, so this is not CONFLICTING. Distinguishing note for the catalogue: the same deadlines table gives Loans 15 August / 1 November / 1 February / 1 April and Scholarships 15 August / 1 February, so the record's previously cached deadline_display string 'You can submit your application' was borrowed from the hardship/loan text and is not a deadline."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "rolling",
+        "deadline_display": "There are no deadlines for these applications. (Hardship loan: at any time via portal; repeat applications only possible every 6 months; max one per semester, CHF 6,000 per application.)"
+      },
+      "examined": [
+        "https://www.studienfinanzierung.uzh.ch/en/financial_support.html",
+        "https://www.studienfinanzierung.uzh.ch/en/application_deadlines.html"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 480,
+      "title": "Harvard College Need-Based Financial Aid 2027-2028",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "The instructions below are for the 2027-2028 school year. Financial Aid Application Deadlines: Restrictive Early Action and QuestBridge Match — CSS Profile November 1, FAFSA November 1, IDOC November 1; Regular Decision — CSS Profile February 1, FAFSA February 1, IDOC February 1; Transfer — CSS Profile March 1, FAFSA March 1, IDOC March 1.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://college.harvard.edu/financial-aid/apply-financial-aid/prospective-students",
+        "source_type": "official_university_page",
+        "publisher": "Harvard College (Harvard University)",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "as_of": "2027-2028 school year",
+        "raw_extract": "The process to apply for financial aid is essentially the same for all prospective students. Regardless of your citizenship or when you are applying, you will need to submit a CSS Profile and an IDOC Packet. ... The instructions below are for the 2027-2028 school year. ... Financial Aid Application Deadlines. Restrictive Early Action and QuestBridge Match / Regular Decision / Transfer — CSS Profile: November 1 / February 1 / March 1; FAFSA: November 1 / February 1 / March 1; IDOC: November 1 / February 1 / March 1. ... **Please note that you cannot access IDOC until you have completed the CSS Profile.**",
+        "exact_deadline_wording": "CSS Profile / FAFSA / IDOC — Restrictive Early Action and QuestBridge Match: November 1; Regular Decision: February 1; Transfer: March 1",
+        "confidence": "HIGH",
+        "notes": "The record's official_source_url is exactly the page carrying the 2027-2028 deadlines, and it was fetched live; it states the cycle explicitly ('The instructions below are for the 2027-2028 school year'). Even so, no single deadline_date can be written: the page publishes a round-dependent grid — November 1 for Restrictive Early Action and QuestBridge Match, February 1 for Regular Decision, March 1 for Transfer — repeated identically for CSS Profile, FAFSA and IDOC. Choosing one column would mean guessing the applicant's admission round, which the page does not state for this record, and would amount to inferring a deadline from an admissions cycle — forbidden by brief section 5. The three figures are also unyeared (month/day only), so they could not be written as YYYY-MM-DD even if one column were selected. deadline_date is therefore null with precision 'unknown'; the three conditional dates are preserved verbatim in deadline_display and raw_extract so a later pass can use them if the record is split by admission round. Note the overlap with record 125: both resolve to the same page and the same grid, and neither should receive a date."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "Financial Aid Application Deadlines (instructions for the 2027-2028 school year): Restrictive Early Action and QuestBridge Match — November 1; Regular Decision — February 1; Transfer — March 1 (CSS Profile, FAFSA and IDOC)."
+      },
+      "examined": [
+        "https://college.harvard.edu/financial-aid/apply-financial-aid/prospective-students",
+        "https://college.harvard.edu/financial-aid/apply-financial-aid",
+        "https://college.harvard.edu/financial-aid/apply-financial-aid/current-students"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://college.harvard.edu/financial-aid/apply-financial-aid/current-students",
+          "reason": "Different cycle and different population: that page still describes the 2026-2027 academic year and current-student renewal ('The deadline to renew your aid is May 1'), so it is not the 2027-2028 prospective-student deadline this record asks for."
+        },
+        {
+          "url": "https://college.harvard.edu/financial-aid/apply-financial-aid",
+          "reason": "Parent overview page contains no deadline; adds nothing beyond linking to the Prospective Students page."
+        }
+      ]
+    }
+  ]
+}

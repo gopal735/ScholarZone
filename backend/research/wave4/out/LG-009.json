@@ -1,0 +1,284 @@
+{
+  "shard_id": "LG-009",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 78,
+      "title": "GREAT Scholarships 2026 \u2014 University of Edinburgh (Ghana, Mexico and Thailand)",
+      "outcome": "recovered",
+      "image_url": "https://www.ed.ac.uk/themes/upstream/wpp_theme/images/logo.png",
+      "image_source_url": "https://www.ed.ac.uk/",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Awarding body for this record is The University of Edinburgh (in partnership with the British Council / GREAT Britain Campaign). Identity proven on the official Edinburgh Registry Services page for GREAT Scholarships 2026, which names Thailand, Mexico and Ghana exactly as the record title does. The asset is the University-wide horizontal crest + wordmark ('THE UNIVERSITY of EDINBURGH') served from the University's own Drupal theme image directory on ed.ac.uk; it is the same asset used in the header of the official scholarship page itself (registryservices.ed.ac.uk .../great renders src=\"/themes/upstream/wpp_theme/images/logo.png\"). Downloaded and visually inspected: 831x199 PNG, black-on-transparent full lockup. Rejected sibling uoe-logo-centred-black.png (144x144, favicon-sized square badge)."
+      },
+      "source": {
+        "url": "https://registryservices.ed.ac.uk/scholarships-and-student-funding/prospective-postgraduates/funding-for-international-students/great",
+        "publisher": "The University of Edinburgh, Registry Services (Scholarships and Student Funding)",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "raw_extract": "In partnership with the British Council and the GREAT Britain Campaign, The University of Edinburgh is offering 3 scholarships to students in Thailand, Mexico and Ghana, applying for one-year postgraduate courses.",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://study-uk.britishcouncil.org/scholarships-funding/great-scholarships/bangladesh (shard official_source_url) - HTTP 403 Forbidden for both webfetch and a Chrome-UA Invoke-WebRequest request; could not be fetched, and it is the Bangladesh country page which does not name Edinburgh",
+        "https://registryservices.ed.ac.uk/student-funding/postgraduate/international (confirming index page for GREAT Scholarships 2026)",
+        "https://www.ed.ac.uk/themes/upstream/wpp_theme/images/uoe-logo-centred-black.png"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.ed.ac.uk/themes/upstream/wpp_theme/images/uoe-logo-centred-black.png",
+          "reason": "low-resolution badge - 144x144 square, favicon-sized"
+        },
+        {
+          "url": "https://study-uk.britishcouncil.org/scholarships-funding/great-scholarships/bangladesh",
+          "reason": "not fetchable (HTTP 403) and wrong identity for this record - the Bangladesh GREAT Scholarships country page does not cover the Edinburgh award"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 97,
+      "title": "Barcelona School of Economics Master's Tuition Funding and Scholarships",
+      "outcome": "recovered",
+      "image_url": "https://bse.eu/_nuxt/logo_header.yFf_O8dp.svg",
+      "image_source_url": "https://bse.eu/masters-degrees/admissions",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Taken from the official admissions page's own masthead logo element: ![Logo Barcelona School Of Economics](/_nuxt/logo_header.yFf_O8dp.svg). Served from bse.eu, the Barcelona School of Economics' own domain (not a shared CDN, not a department subdomain). Verified GET 200 image/svg+xml, 34642 bytes; SVG viewBox 0 0 186 36 with all wordmark paths filled #00859B (BSE brand teal). Rendered and visually inspected: the teal B-S-E tile mark plus the 'Barcelona School of Economics' wordmark. Vector, so resolution-independent."
+      },
+      "source": {
+        "url": "https://bse.eu/masters-degrees/admissions",
+        "publisher": "Barcelona School of Economics",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "raw_extract": "[![Logo Barcelona School Of Economics](/_nuxt/logo_header.yFf_O8dp.svg)](/)",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://bse.eu/_nuxt/logo_header.yFf_O8dp.svg (fetched directly, verified 200 image/svg+xml)"
+      ],
+      "rejected": [],
+      "notes": "Shard catalogue_url points at a 2024 web.archive.org capture of bse.eu/study/masters-programs/upf-phd-track. Archived copies were not used as evidence per brief section 5; the live bse.eu masters admissions page carries the same scholarship/finance context ('Finance and scholarship details') and the current logo."
+    },
+    {
+      "scholarship_id": 157,
+      "title": "CERN Doctoral Student Programme",
+      "outcome": "recovered",
+      "image_url": "https://home.cern/wp-content/themes/cern/public/images/logo-blue.svg",
+      "image_source_url": "https://home.cern/",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "CERN is the awarding organisation, so the CERN corporate logo is the correct official brand mark. Asset lives in CERN's own WordPress theme public image directory on home.cern, alongside logo-white.svg which is the logo actually rendered in home.cern's footer 'CERN Logo' block. logo-blue.svg is the colour counterpart (fill #0033A0, CERN blue), verified 200 image/svg+xml 5026 bytes and rendered/visually inspected as the CERN ring-and-wordmark logo. Transparent background, so it renders correctly on a white card. Transparency of provenance: I could not find an HTML page on home.cern that references logo-blue.svg by name (home.cern, /press/media-kits, /about, /what-is-cern all reference only logo-white.svg); it is an unreferenced sibling of the in-use footer logo, not a stray third-party or department asset. careers.cern serves the reversed white variant of the identical artwork."
+      },
+      "source": {
+        "url": "https://careers.cern/programmes/doctoral-studentship",
+        "publisher": "CERN (careers.cern, official careers site)",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "raw_extract": "<div class=\"block-logo animated animated-4\"> <img width=\"135\" height=\"132\" src=\"https://careers.cern/wp-content/uploads/2025/01/cern-white.svg\" class=\"attachment-135x135 size-135x135\" alt=\"\" decoding=\"async\" loading=\"lazy\" /></div>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://careers.cern/programmes/doctoral-studentship (shard official_source_url) - fetched; footer logo block serves cern-white.svg, whose SVG group is explicitly id=\"logo cern filaire\" but which is white-on-transparent",
+        "https://careers.cern/explore-fields-of-work (shard catalogue_url)",
+        "https://home.cern/ - fetched; footer 'CERN Logo' block references https://home.cern/wp-content/themes/cern/public/images/logo-white.svg",
+        "https://home.cern/press/media-kits - fetched; CERN70 media kit only, no plain logo asset",
+        "https://careers.cern/wp-content/uploads/2025/01/logo-menu.svg - fetched; 61x60 careers.cern site-branding mark, not the full CERN corporate logo"
+      ],
+      "rejected": [
+        {
+          "url": "https://careers.cern/wp-content/uploads/2025/08/cropped-logo-menu-32x32.png",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://careers.cern/wp-content/uploads/2025/08/cropped-logo-menu-192x192.png",
+          "reason": "favicon / low-resolution badge"
+        },
+        {
+          "url": "https://careers.cern/wp-content/uploads/2025/08/cropped-logo-menu-180x180.png",
+          "reason": "apple-touch-icon"
+        },
+        {
+          "url": "https://careers.cern/wp-content/uploads/2025/08/cropped-logo-menu-270x270.png",
+          "reason": "msapplication-TileImage / low-resolution badge"
+        },
+        {
+          "url": "https://careers.cern/wp-content/uploads/2025/01/cern-white.svg",
+          "reason": "official but reversed white-on-transparent colourway - would render blank on a white card background; kept as an alternative, not used"
+        },
+        {
+          "url": "https://careers.cern/wp-content/themes/cern-careers/build/images/og-image.jpg",
+          "reason": "decorative social share card, not a logo asset"
+        },
+        {
+          "url": "https://careers.cern/wp-content/uploads/2025/01/Linkedin.svg",
+          "reason": "social media icon"
+        },
+        {
+          "url": "https://careers.cern/wp-content/uploads/2025/01/FB.svg",
+          "reason": "social media icon"
+        },
+        {
+          "url": "https://careers.cern/wp-content/uploads/2025/01/insta.svg",
+          "reason": "social media icon"
+        },
+        {
+          "url": "https://careers.cern/wp-content/uploads/2025/01/X.svg",
+          "reason": "social media icon"
+        },
+        {
+          "url": "https://careers.cern/wp-content/uploads/2025/04/youtube.svg",
+          "reason": "social media icon"
+        }
+      ],
+      "alternative_image_urls": [
+        "https://careers.cern/wp-content/uploads/2025/01/cern-white.svg",
+        "https://home.cern/wp-content/themes/cern/public/images/logo-white.svg"
+      ]
+    },
+    {
+      "scholarship_id": 158,
+      "title": "CERN Research Fellowship",
+      "outcome": "recovered",
+      "image_url": "https://home.cern/wp-content/themes/cern/public/images/logo-blue.svg",
+      "image_source_url": "https://home.cern/",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "CERN is the awarding organisation for the Research Fellowship, so the CERN corporate logo is the correct official brand mark. Same asset and same provenance as record 157: CERN's own theme public image directory on home.cern, the colour counterpart (fill #0033A0) of the logo-white.svg rendered in home.cern's footer 'CERN Logo' block. Verified 200 image/svg+xml 5026 bytes and rendered/visually inspected as the CERN ring-and-wordmark logo. Note for the integrator: this image_url is intentionally identical to record 157 - CERN is the awarding provider for both programmes."
+      },
+      "source": {
+        "url": "https://careers.cern/",
+        "publisher": "CERN (careers.cern, official careers site)",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "raw_extract": "<div id=\"cern-toolbar\" role=\"group\" aria-label=\"CERN toolbar\"> <div class=\"top-bar wrap\"> <div class=\"top-bar__left\"> <a target=\"_blank\" href=\"https://home.cern/\" title=\"CERN\"> CERN <span>Accelerating science</span> </a> </div>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://careers.cern/programmes/research-fellowship (shard official_source_url)",
+        "https://careers.cern/explore-fields-of-work (shard catalogue_url)",
+        "https://home.cern/ - fetched; footer 'CERN Logo' block references https://home.cern/wp-content/themes/cern/public/images/logo-white.svg"
+      ],
+      "rejected": [
+        {
+          "url": "https://careers.cern/wp-content/uploads/2025/08/cropped-logo-menu-32x32.png",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://careers.cern/wp-content/uploads/2025/08/cropped-logo-menu-180x180.png",
+          "reason": "apple-touch-icon"
+        },
+        {
+          "url": "https://careers.cern/wp-content/themes/cern-careers/build/images/og-image.jpg",
+          "reason": "decorative social share card, not a logo asset"
+        },
+        {
+          "url": "https://careers.cern/wp-content/uploads/2025/01/cern-white.svg",
+          "reason": "official but reversed white-on-transparent colourway - would render blank on a white card background; kept as an alternative, not used"
+        }
+      ],
+      "alternative_image_urls": [
+        "https://careers.cern/wp-content/uploads/2025/01/cern-white.svg",
+        "https://home.cern/wp-content/themes/cern/public/images/logo-white.svg"
+      ]
+    },
+    {
+      "scholarship_id": 267,
+      "title": "LUT Scholarship and Early Bird Discount (master's studies)",
+      "outcome": "recovered",
+      "image_url": "https://www.lut.fi/themes/custom/lut/images/logos/lut-logo-colour.svg",
+      "image_source_url": "https://www.lut.fi/en/studies/apply-lut/applying-masters-programmes/rolling-admission-masters-studies/early-bird-discount-and-scholarships-masters-studies",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "The shard's official_source_url https://www.lut.fi/en/tuition-fees-and-scholarships now returns HTTP 404; the live equivalent is the 'Discounts for master's programmes' page (canonical URL confirmed in its own og/canonical tags), which publishes the identical content the record names: 'an Early bird discount of EUR 5,000' for year one and 'a LUT scholarship of EUR 5,000' for year two. lut-logo-colour.svg is LUT's positive-colour logo asset (viewBox 0 0 311.802 108.223; fills #000000 wordmark plus #23B900 green, #ED174D red and #FF8621 orange LUT mark colours), fetched 200 image/svg+xml from LUT's own theme logo directory. Rendered and visually inspected: the multicolour LUT mark beside the black 'LUT University' wordmark. Chosen over lut-logo-nega.svg, which is the reversed white colourway actually referenced in the page header/footer."
+      },
+      "source": {
+        "url": "https://www.lut.fi/en/studies/apply-lut/applying-masters-programmes/rolling-admission-masters-studies/early-bird-discount-and-scholarships-masters-studies",
+        "publisher": "LUT University",
+        "retrieved_at": "2026-10-05T15:28:00Z",
+        "raw_extract": "First academic year: Early bird discount\nIf you are required to pay tuition fees, you will receive\n* an Early bird discount of EUR 5,000.",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.lut.fi/en/tuition-fees-and-scholarships (shard official_source_url) - HTTP 404, dead link",
+        "https://www.lut.fi/en/news/media ('For media' page) - states \"LUT University's logo\" but exposes no downloadable logo asset; graphic guidelines are only available on request from Media Services",
+        "https://www.lut.fi/en - header logo reference confirmed identical to the discounts page",
+        "https://www.lut.fi/themes/custom/lut/images/logos/lut-logo-colour.svg (fetched directly, verified 200 image/svg+xml)"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.lut.fi/themes/custom/lut/images/logos/lut-logo-nega.svg",
+          "reason": "official but reversed white-on-transparent colourway (the header/footer variant) - would render blank on a white card; kept as an alternative, not used"
+        },
+        {
+          "url": "https://www.lut.fi/themes/custom/lut/images/logos/lut-logo-nega-420.svg",
+          "reason": "reversed white colourway, same reason"
+        },
+        {
+          "url": "https://www.lut.fi/themes/custom/lut/images/icons/favicons/favicon-32x32.png",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://www.lut.fi/themes/custom/lut/images/icons/favicons/apple-touch-icon.png",
+          "reason": "apple-touch-icon"
+        },
+        {
+          "url": "https://www.lut.fi/themes/custom/lut/images/icons/favicons/favicon.ico",
+          "reason": "favicon / mask-icon"
+        },
+        {
+          "url": "https://www.lut.fi/themes/custom/lut/images/Facebook_Logo_Secondary.png",
+          "reason": "social media logo lockup for the LUT Facebook page, not the institutional brand mark"
+        },
+        {
+          "url": "https://www.lut.fi/sites/default/files/styles/social_media_share/public/2022-03/kutilan-metsat-39_0.jpg",
+          "reason": "og:image social share photo, not a logo"
+        }
+      ],
+      "alternative_image_urls": [
+        "https://www.lut.fi/themes/custom/lut/images/logos/lut-logo-nega.svg"
+      ]
+    }
+  ]
+}

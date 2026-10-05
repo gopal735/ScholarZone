@@ -1,0 +1,275 @@
+{
+  "shard_id": "LG-019",
+  "agent_completed": true,
+  "topic": "logo",
+  "records": [
+    {
+      "scholarship_id": 39,
+      "title": "Pearson International Scholarship (University of Toronto)",
+      "outcome": "recovered",
+      "image_url": "https://future.utoronto.ca/themes/utfs/images/icons/logo-svg.svg",
+      "image_source_url": "https://future.utoronto.ca/pearson-scholarships",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Shard official_source_url https://future.utoronto.ca/pearson was fetched (HTTP 200) and its canonical is https://future.utoronto.ca/pearson-scholarships, title 'Lester B Pearson International Student Scholarships | Future Students. University of Toronto'. The live Pearson programme page carries NO programme-specific brand mark of its own - the only raster content on it is editorial photography (e.g. 'large-card_0.jpg', campus promo cards). The only identity asset is the University of Toronto institutional logo, which the page itself declares as its schema.org CollegeOrUniversity logo: 'logo\":{\"@type\":\"ImageObject\",\"url\":\"https://future.utoronto.ca/themes/utfs/images/icons/logo-svg.svg\"}'. Direct GET returned HTTP 200, Content-Type image/svg+xml, 143192 bytes, root <svg width=\"162\" height=\"58\" viewBox=\"0 0 162 58\">. Rendered and visually confirmed: the University of Toronto crest plus the 'UNIVERSITY OF TORONTO' wordmark. Identity is correct - the record's official_source is 'University of Toronto'. Not a favicon: the page's favicon is a different file, /themes/utfs/favicon.ico. Note for transparency: the same graphic is also inlined site-wide via <use xlink:href=\"/themes/utfs/dist/icons.svg#logo-svg\">, but the URL proposed here is the standalone SVG file that the page explicitly declares as its logo, not a sprite fragment, and it is a vector asset so the 162x58 nominal size is not a resolution limit."
+      },
+      "source": {
+        "url": "https://future.utoronto.ca/pearson-scholarships",
+        "publisher": "University of Toronto (Future Students)",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "raw_extract": "<link rel=\"canonical\" href=\"https://future.utoronto.ca/pearson-scholarships\" /> <script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"CollegeOrUniversity\",\"name\":\"Future Students. University of Toronto\",\"url\":\"https://future.utoronto.ca/\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://future.utoronto.ca/themes/utfs/images/icons/logo-svg.svg\"},...}</script> ... <div class=\"o-header__logo\"> <a class=\"m-logo\" href=\"/\" aria-label=\"The University of Toronto, Future students Home\"> <svg class=\"l-section__decoration-svg\" aria-hidden=\"true\" ><use xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"/themes/utfs/dist/icons.svg#logo-svg\"></use> </svg> </a></div>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://future.utoronto.ca/pearson (HTTP 200, redirects/canonicalises to /pearson-scholarships - the official programme page; no programme logo, only photography)",
+        "https://future.utoronto.ca/themes/utfs/dist/icons.svg (HTTP 200 - SVG sprite sheet; explicitly rejected by brief rule 'sprites' even though it embeds the same #logo-svg graphic)"
+      ],
+      "rejected": [
+        {
+          "url": "https://future.utoronto.ca/themes/utfs/favicon.ico",
+          "reason": "favicon asset"
+        },
+        {
+          "url": "https://future.utoronto.ca/themes/utfs/dist/icons.svg#logo-svg",
+          "reason": "SVG spritesheet - rejected by brief rule, even though it carries the same graphic"
+        },
+        {
+          "url": "https://future.utoronto.ca/sites/default/files/styles/landscape_2_1_200/public/assets/image/2024/large-card_0.jpg",
+          "reason": "decorative hero/card photography (people in a library), not a logo"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 622,
+      "title": "World in Serbia Project Scholarships of the Government of the Republic of Serbia",
+      "outcome": "recovered",
+      "image_url": "https://prosveta.gov.rs/wp-content/uploads/2021/09/Logo-1.png",
+      "image_source_url": "https://prosveta.gov.rs/skolski-i-studentski-zivot/stipendije/stipendije-srbije-stranim-studentima/stipendije-svet-u-srbiji/",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Shard official_source_url is a PDF (WORLD-IN-SERBIA-PROJECT-DESCRIPTION-2026-2027-2028.pdf) on prosveta.gov.rs; nothing extractable from a PDF letterhead without cropping, which the brief forbids. I therefore used the ministry's live official programme page, fetched HTTP 200, title 'Стипендије Свет у Србији - Министарство просвете, науке и технолошког развоја' (Stipendije Svet u Srbiji), h1 'Стипендије Свет у Србији'. IMPORTANT: that page, the ministry home page, and the 2026 competition announcement page (https://prosveta.gov.rs/vesti/konkurs-za-dodelu-stipendija-u-okviru-projekta-svet-u-srbiji/, HTTP 200) expose no 'World in Serbia' project mark at all - the only images on all three pages are the ministry's own logo, a white-on-transparent variant of it, and a lazy-load placeholder. So the correct mark is the awarding body's institutional logo, which is exactly the organisation the record names as official_source: 'Ministry of Education, Science and Technological Development of the Republic of Serbia'. The proposed asset is the ministry's own WordPress custom/site logo (the 'custom-logo' + site-logo elementor slot), https://prosveta.gov.rs/wp-content/uploads/2021/09/Logo-1.png - HTTP 200, image/png, 23772 bytes, 353x96. Rendered and visually confirmed: Serbian state emblem/crest beside 'Република Србија / МИНИСТАРСТВО ПРОСВЕТЕ, НАУКЕ И ТЕХНОЛОШКОГ РАЗВОЈА РЕПУБЛИКЕ СРБИЈЕ' in black. This variant is preferred over .../2022/11/mpn-logo.png (318x96, identical crest but the lettering is white-on-transparent and would render invisible on a light card). Confidence is MEDIUM rather than HIGH for two reasons: (a) it is the administering ministry's mark rather than a 'World in Serbia' programme mark, and (b) the native asset is small (353x96)."
+      },
+      "source": {
+        "url": "https://prosveta.gov.rs/skolski-i-studentski-zivot/stipendije/stipendije-srbije-stranim-studentima/stipendije-svet-u-srbiji/",
+        "publisher": "Ministry of Education, Science and Technological Development of the Republic of Serbia (prosveta.gov.rs)",
+        "retrieved_at": "2026-10-05T15:36:00Z",
+        "raw_extract": "<title>Стипендије Свет у Србији - Министарство просвете, науке и технолошког развоја</title> ... <a class=\"elementskit-nav-logo\" href=\"https://prosveta.gov.rs\" target=\"\" rel=\"\" data-wpel-link=\"internal\"><img data-lazyloaded=\"1\" src=\"data:image/svg+xml;base64,...\" data-src=\"https://prosveta.gov.rs/wp-content/uploads/2021/09/Logo-1.png\" title=\"Logo\" alt=\"Logo\" decoding=\"async\"  width=\"353\" height=\"96\" /></a>",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://prosveta.gov.rs/skolski-i-studentski-zivot/stipendije/stipendije-srbije-stranim-studentima/stipendije-svet-u-srbiji/ (HTTP 200 - official 'Svet u Srbiji' scholarship page; no programme logo present)",
+        "https://prosveta.gov.rs/ (HTTP 200 - ministry home; images are mpn-logo.png, placeholder.png, Logo-1.png plus editorial news photos only)",
+        "https://prosveta.gov.rs/vesti/konkurs-za-dodelu-stipendija-u-okviru-projekta-svet-u-srbiji/ (HTTP 200 - 2026 competition announcement; same three images, no project mark)",
+        "https://welcometoserbia.gov.rs/scholarships (HTTP 200 - the catalogue_url; portal text confirms 'The „World in Serbia\" project is an initiative of the Government of the Republic of Serbia of national importance', but its imagery is a photo served from a test host plus the portal's own 'Welcome to Serbia' brand)"
+      ],
+      "rejected": [
+        {
+          "url": "https://welcometoserbia.test-uzda.gov.rs/media/slike/stipendije.jpg",
+          "reason": "stock photograph (the scholarships illustration on welcometoserbia.gov.rs) AND served from a test host (welcometoserbia.test-uzda.gov.rs), not the live official domain"
+        },
+        {
+          "url": "https://welcometoserbia.gov.rs/TheLisTheme/assets/img/logo.svg",
+          "reason": "wrong identity - this is the 'Welcome to Serbia' national portal brand, not the Ministry of Education / Government of Serbia awarding body"
+        },
+        {
+          "url": "https://welcometoserbia.gov.rs/TheLisTheme/assets/img/government.png",
+          "reason": "wrong identity and too small - a 98x74 Government of Serbia emblem variant rendered inside the portal footer, not the ministry that runs the competition"
+        },
+        {
+          "url": "https://prosveta.gov.rs/wp-content/uploads/2021/09/placeholder.png",
+          "reason": "lazy-loading placeholder graphic, not a logo"
+        },
+        {
+          "url": "https://prosveta.gov.rs/wp-content/uploads/2022/11/mpn-logo.png",
+          "reason": "same identity but white-on-transparent lettering that renders invisible on a light background (318x96)"
+        },
+        {
+          "url": "https://www.prosveta.gov.rs/wp-content/uploads/2026/05/WORLD-IN-SERBIA-PROJECT-DESCRIPTION-2026-2027-2028.pdf",
+          "reason": "PDF letterhead mark - extracting a logo from inside a PDF would be a crop of a logo, forbidden by the brief; also a document, not a brand asset"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 648,
+      "title": "APU International Students Scholarships & Merit Awards 2026",
+      "outcome": "recovered",
+      "image_url": "https://www.apu.edu.my/themes/custom/apu/images/navbar/navbar-logo@3x.png",
+      "image_source_url": "https://www.apu.edu.my/apu-international-students-scholarships-merit-awards",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Shard official_source_url https://www.apu.edu.my/apu-international-students-scholarships-merit-awards fetched HTTP 200, canonical self-referencing, title 'APU International Students Scholarships & Merit Awards 2026 | APU'. The page header carries APU's institutional logo with explicit alt text 'APU Logo' and an official retina srcset; I took the highest-resolution member of that srcset: navbar-logo@3x.png - HTTP 200, image/png, 51066 bytes, 289x264 px. Rendered and visually confirmed: the APU mark (green/blue globe with gold orbit) above the 'APU' wordmark and 'ASIA PACIFIC UNIVERSITY OF TECHNOLOGY & INNOVATION'. Identity matches the record's official_source exactly. NOT a favicon: APU's favicon is a different file (/themes/custom/apu/logo_vertical.svg, declared as <link rel=\"icon\">), explicitly rejected. An equally official vector variant of the same logo also exists at https://www.apu.edu.my/themes/custom/apu/logo_horizontal.svg (HTTP 200, image/svg+xml, 147191 bytes, 289x64, rendered and confirmed to read 'APU / ASIA PACIFIC UNIVERSITY OF TECHNOLOGY & INNOVATION'); it is not referenced on this particular page, so the in-use @3x PNG is the better-proven asset.",
+        "alternate_vector_asset": "https://www.apu.edu.my/themes/custom/apu/logo_horizontal.svg"
+      },
+      "source": {
+        "url": "https://www.apu.edu.my/apu-international-students-scholarships-merit-awards",
+        "publisher": "Asia Pacific University of Technology & Innovation (APU Malaysia)",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "raw_extract": "<link rel=\"canonical\" href=\"https://www.apu.edu.my/apu-international-students-scholarships-merit-awards\" /> ... <div class=\"navbar--logo-container\"><a href=\"/\"><span class=\"light\"><img class=\"navbar-logo\" src=\"/themes/custom/apu/images/navbar/navbar-logo.png\" alt=\"APU Logo\" srcset=\"/themes/custom/apu/images/navbar/navbar-logo@2x.png 2x, /themes/custom/apu/images/navbar/navbar-logo@3x.png 3x\"></span> ... </a></div>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.apu.edu.my/apu-international-students-scholarships-merit-awards (HTTP 200 - official scholarship page; header logo with alt 'APU Logo' and 2x/3x srcset is the in-use institutional logo)",
+        "https://www.apu.edu.my/about-apu (HTTP 200 - checked for a brand/media asset page; no logo_horizontal reference, no dedicated brand assets page)"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.apu.edu.my/themes/custom/apu/logo_vertical.svg",
+          "reason": "declared as <link rel=\"icon\"> - this is APU's favicon, explicitly rejected by brief rule"
+        },
+        {
+          "url": "https://www.apu.edu.my/themes/custom/apu/images/navbar/navbar-logo.png",
+          "reason": "base 1x variant only 97x88 - too small; the @3x sibling from the same official srcset is used instead"
+        },
+        {
+          "url": "https://www.apu.edu.my/themes/custom/apu/images/navbar/icon-search.svg",
+          "reason": "UI chrome / navigation icon"
+        },
+        {
+          "url": "https://apu.edu.my/branding",
+          "reason": "HTTP 404 - no official brand or press asset page exists on apu.edu.my"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 687,
+      "title": "Beca Posgrado STEM Regional (Fulbright-Garcia Robles) - COMEXUS",
+      "outcome": "recovered",
+      "image_url": "https://www.comexus.org.mx/images/logo-footer.svg",
+      "image_source_url": "https://www.comexus.org.mx/becas_para_mexicanos/posgrado_stem_regional",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Shard official_source_url fetched HTTP 200: the live 'Beca Posgrado STEM Regional' page (breadcrumb Inicio > Becas para Mexicanos > Beca Posgrado STEM Regional; body text 'La beca Fulbright-García Robles se otorga a estudiantes con nacionalidad MEXICANA'). COMEXUS publishes its own brand mark at https://www.comexus.org.mx/images/logo-footer.svg - HTTP 200, image/svg+xml, 9140 bytes, root <svg id=\"Capa_1\" ... viewBox=\"0 0 170.1 56.1\">, 44 vector paths, no embedded raster. I rendered it and visually confirmed the official COMEXUS lockup: the two-globe mark with 'FULBRIGHT' in bold, 'COMEXUS' below, and the strapline 'BECAS FULBRIGHT-GARCÍA ROBLES' in brand colours #0056A2 / #0089CF / #00B7F1. This is exactly the identity of this record (COMEXUS administers the Fulbright-García Robles programmes). It is the site's own footer brand logo, proven by the verbatim rule in COMEXUS's own stylesheet: '.logo-footer{ ... background-image: url(/images/logo-footer.svg); background-repeat: no-repeat; background-position: center; }' (https://www.comexus.org.mx/css/ab_style.css?ids=60), and the page loads that stylesheet. Not a favicon: COMEXUS's favicons live in a separate images/favicon/ directory."
+      },
+      "source": {
+        "url": "https://www.comexus.org.mx/becas_para_mexicanos/posgrado_stem_regional",
+        "publisher": "Comisión México-Estados Unidos para el Intercambio Educativo y Cultural (COMEXUS)",
+        "retrieved_at": "2026-10-05T15:33:00Z",
+        "raw_extract": "<meta name=\"description\" content=\"... Su misión principal es administrar los prestigiosos programas de becas Fulbright-García Robles.\" /> ... <li class=\"breadcrumb-item active\" aria-current=\"page\">Beca Posgrado STEM Regional</li> ... <p>La beca Fulbright-García Robles se otorga a estudiantes con nacionalidad MEXICANA.</p> ... COMEXUS stylesheet (https://www.comexus.org.mx/css/ab_style.css?ids=60): \".logo-footer{ position: relative; width: 250px; height: 80px; background-image: url(/images/logo-footer.svg); background-repeat: no-repeat; background-position: center; background-...\"",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.comexus.org.mx/becas_para_mexicanos/posgrado_stem_regional (HTTP 200 - official programme page; loads css/ab_style.css?ids=60 which defines .logo-footer with url(/images/logo-footer.svg))",
+        "https://www.comexus.org.mx/css/ab_style.css?ids=60 (HTTP 200 - official stylesheet; contains .logo-footer{ ... background-image: url(/images/logo-footer.svg) ... })"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.comexus.org.mx/images/logo.svg",
+          "reason": "the navbar variant of the mark is 100% white fill ('<style>.cls-1{fill:#fff;}</style>') for use on a dark bar - it renders invisible on a light card; same artwork, wrong colourway"
+        },
+        {
+          "url": "https://www.comexus.org.mx/images/favicon/android-icon-96x96.png",
+          "reason": "favicon asset"
+        },
+        {
+          "url": "https://www.comexus.org.mx/images/favicon/apple-icon-180x180.png",
+          "reason": "apple-touch-icon asset"
+        },
+        {
+          "url": "https://www.comexus.org.mx/images/logo_universal.png",
+          "reason": "wrong identity - rendered it and it reads 'EL UNIVERSAL', a press partner logo, not COMEXUS"
+        },
+        {
+          "url": "https://www.comexus.org.mx/documentos/imagenes/mex_postgrado_stem_2025-08-05_H_13-15-56.jpg",
+          "reason": "decorative page-banner photography used as a CSS background, not a logo"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 696,
+      "title": "Fulbright-Garcia Robles Graduate Degree Program (COMEXUS, Mexico)",
+      "outcome": "recovered",
+      "image_url": "https://www.comexus.org.mx/images/logo-footer.svg",
+      "image_source_url": "https://www.comexus.org.mx/becas_para_estadounidenses/degree",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Shard official_source_url fetched HTTP 200: the live 'Estudios de Posgrado' page under Becas para Estadounidenses (breadcrumb Inicio > Becas para Estadounidenses > Estudios de Posgrado; page carries 'APPLICATION OPEN' and the Fulbright graduate-degree programme description, and links to apply.iie.org for the Fulbright application). COMEXUS publishes its official brand mark at https://www.comexus.org.mx/images/logo-footer.svg - HTTP 200, image/svg+xml, 9140 bytes, viewBox 0 0 170.1 56.1, 44 vector paths, no embedded raster; rendered and visually confirmed as the COMEXUS lockup (two-globe mark, 'FULBRIGHT', 'COMEXUS', strapline 'BECAS FULBRIGHT-GARCÍA ROBLES', brand colours #0056A2/#0089CF/#00B7F1). That is precisely this record's identity - COMEXUS with the Fulbright Program. It is the site's own footer brand logo, proven by COMEXUS's verbatim stylesheet rule '.logo-footer{ ... background-image: url(/images/logo-footer.svg); background-repeat: no-repeat; background-position: center; }', loaded by this page (css/ab_style.css?ids=874 on this page). Not a favicon: COMEXUS's favicons live in a separate images/favicon/ directory. Same asset as record 687 because both records are COMEXUS-administered Fulbright-García Robles programmes and COMEXUS publishes a single institutional brand mark; it is not an unrelated department logo on a shared CDN - it is on comexus.org.mx, the provider's own domain."
+      },
+      "source": {
+        "url": "https://www.comexus.org.mx/becas_para_estadounidenses/degree",
+        "publisher": "Comisión México-Estados Unidos para el Intercambio Educativo y Cultural (COMEXUS), with the Fulbright Program",
+        "retrieved_at": "2026-10-05T15:33:30Z",
+        "raw_extract": "<meta name=\"description\" content=\"... Su misión principal es administrar los prestigiosos programas de becas Fulbright-García Robles.\" /> ... <li class=\"breadcrumb-item active\" aria-current=\"page\">Estudios de Posgrado</li> ... <p>Opportunity for US candidates to complete a master's or PhD degree at a Mexican qualified academic institution.</p> ... <a class=\"btn btn-primary btn-block btn-convocatoria\" target='_blank' href=\"https://apply.iie.org/apply/?sr=8fa89694-0a6b-4042-a79f-05557179c394\" role=\"button\" >INICIA TU SOLICITUD</a>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.comexus.org.mx/becas_para_estadounidenses/degree (HTTP 200 - official programme page; no programme-specific mark beyond the shared COMEXUS brand logo)",
+        "https://www.comexus.org.mx/css/ab_style.css?ids=60 (HTTP 200 - COMEXUS stylesheet containing the verbatim .logo-footer rule with url(/images/logo-footer.svg))"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.comexus.org.mx/images/logo.svg",
+          "reason": "the navbar variant of the mark is 100% white fill ('<style>.cls-1{fill:#fff;}</style>') for use on a dark bar - it renders invisible on a light card"
+        },
+        {
+          "url": "https://www.comexus.org.mx/images/favicon/favicon.ico",
+          "reason": "favicon asset"
+        },
+        {
+          "url": "https://www.comexus.org.mx/images/favicon/apple-icon-180x180.png",
+          "reason": "apple-touch-icon asset"
+        },
+        {
+          "url": "https://www.comexus.org.mx/images/logo_cnn.png",
+          "reason": "wrong identity - CNN partner logo, not COMEXUS"
+        },
+        {
+          "url": "https://www.comexus.org.mx/images/logo_inba.png",
+          "reason": "wrong identity - INBA (Instituto Nacional de Bellas Artes) logo, an unrelated organisation on the same shared images directory"
+        },
+        {
+          "url": "https://www.comexus.org.mx/documentos/imagenes/usa_students_graduate_2025-08-05_H_13-28-33.jpg",
+          "reason": "decorative page-banner photography used as a CSS background, not a logo"
+        },
+        {
+          "url": "https://apply.iie.org/apply/?sr=8fa89694-0a6b-4042-a79f-05557179c394",
+          "reason": "third-party application portal (IIE) - not the provider's own domain, and not an asset page"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "shard_id": "LG-003",
+  "topic": "logo",
+  "hosts": [
+    "www.hec.gov.pk",
+    "www.in.emb-japan.go.jp"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 360,
+      "title": "MEXT Scholarship for 2027 - Embassy Recommendation (Research Students)",
+      "official_source": "Ministry of Education, Culture, Sports, Science and Technology (MEXT), Japan",
+      "official_source_url": "https://www.in.emb-japan.go.jp/education/japanese_government_scholarships.html",
+      "catalogue_url": "https://www.studyinjapan.go.jp/en/smap-stopj-applications-research.html",
+      "country": "Japan",
+      "image_evaluation_status": "source_blocked"
+    },
+    {
+      "id": 606,
+      "title": "Overseas Scholarship for MS/M.Phil and Ph.D Studies (Phase-III), Higher Education Commission Pakistan",
+      "official_source": "Higher Education Commission (HEC), Pakistan",
+      "official_source_url": "https://www.hec.gov.pk/english/scholarshipsgrants/OSSPhase-III/Pages/default.aspx",
+      "catalogue_url": "https://www.hec.gov.pk/english/scholarshipsgrants/OSSPhase-III/Pages/Partner-Agencies-and-Univesities.aspx",
+      "country": "Pakistan",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 704,
+      "title": "Allama Muhammad Iqbal Scholarship for Central Asia & Friendly Countries (Higher Education Commission, Pakistan)",
+      "official_source": "Higher Education Commission (HEC), Government of Pakistan",
+      "official_source_url": "https://www.hec.gov.pk/english/scholarshipsgrants/CAFC/AMIC/Pages/default.aspx",
+      "catalogue_url": "https://www.hec.gov.pk/english/scholarshipsgrants/CAFC/Pages/default.aspx",
+      "country": "Pakistan",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 705,
+      "title": "Allama Muhammad Iqbal Scholarships for Students from Bangladesh (Pak-Bangladesh Knowledge Corridor, Higher Education Commission Pakistan)",
+      "official_source": "Higher Education Commission (HEC), Government of Pakistan",
+      "official_source_url": "https://www.hec.gov.pk/english/scholarshipsgrants/PBKC/Pages/AISB.aspx",
+      "catalogue_url": "https://www.hec.gov.pk/english/scholarshipsgrants/PBKC/Pages/default.aspx",
+      "country": "Bangladesh",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 706,
+      "title": "Allama Iqbal Scholarships for Srilankan Students (Pak-Sri Lanka Higher Education Cooperation Programme, Higher Education Commission Pakistan)",
+      "official_source": "Higher Education Commission (HEC), Government of Pakistan",
+      "official_source_url": "https://www.hec.gov.pk/english/scholarshipsgrants/pshecp/aiss/Pages/default.aspx",
+      "catalogue_url": "https://www.hec.gov.pk/english/scholarshipsgrants/pshecp/Pages/default.aspx",
+      "country": "Sri Lanka",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

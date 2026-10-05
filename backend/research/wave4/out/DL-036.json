@@ -1,0 +1,284 @@
+{
+  "shard_id": "DL-036",
+  "agent_completed": true,
+  "topic": "deadline",
+  "retrieved_at": "2026-10-05T15:31:21Z",
+  "records": [
+    {
+      "scholarship_id": 74,
+      "title": "LSE Excellence Scholarship",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "Awards will be made to candidates on a rolling basis during the application cycle, until all awards are allocated.",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://www.lse.ac.uk/study-at-lse/Graduate/fees-and-funding/LSE-Excellence-Scholarship.aspx",
+        "source_type": "official_scholarship_page",
+        "publisher": "London School of Economics and Political Science (LSE)",
+        "retrieved_at": "2026-10-05T15:31:21Z",
+        "as_of": "Postgraduate Taught students joining LSE in 2026",
+        "raw_extract": "LSE Excellence Scholarships are prestigious awards for exceptional Postgraduate Taught students joining LSE in 2026. These scholarships recognise applicants who demonstrate outstanding academic ability and strong potential to thrive in their chosen programme. [...] No financial support application is required for this scholarship. Awardees will be identified based on their application for admission.\n\nAwards will be made to candidates on a rolling basis during the application cycle, until all awards are allocated.",
+        "exact_deadline_wording": "Awards will be made to candidates on a rolling basis during the application cycle, until all awards are allocated.",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url (LSE Master's Awards page) states no deadline of its own and refers readers to the 'How to apply for a scholarship' page. The dedicated official page for this named award, linked from LSE's graduate 'Fees and funding' index, states the award process explicitly as rolling. The page publishes no calendar date, so per contract no deadline_date is written. The only dated item found on the related LSE how-to-apply page (Graduate Financial Support Application deadline of 23 April 2026) explicitly does NOT apply to this scholarship, because the scholarship page says 'No financial support application is required for this scholarship'. Confidence HIGH on the rolling wording; the 2026 cohort wording means no 2027 cycle date is published either."
+      },
+      "field_mapping": {
+        "deadline_date": "null (ROLLING - never date a rolling value)",
+        "deadline_precision": "rolling",
+        "deadline_display": "Awards will be made to candidates on a rolling basis during the application cycle, until all awards are allocated."
+      },
+      "examined": [
+        "https://www.lse.ac.uk/study-at-lse/graduate/fees-and-funding/lse-masters-awards - official source URL from shard; contains no deadline for any LMA and delegates deadlines to the how-to-apply page",
+        "https://www.lse.ac.uk/study-at-lse/Graduate/fees-and-funding/pgt-application-overview - states 'The deadline for submission of Graduate Financial Support Application for students commencing study at LSE in the 2026/27 academic year was 23 April 2026.' and 'Please note that applications have now closed for 2026 entry.'; this is the Graduate Financial Support Application deadline and is explicitly not required for the LSE Excellence Scholarship, so it was not used as this award's deadline",
+        "https://www.lse.ac.uk/study-at-lse/Graduate/fees-and-funding - graduate fees and funding index; used to locate the dedicated LSE Excellence Scholarship page"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.lse.ac.uk/study-at-lse/Graduate/fees-and-funding/pgt-application-overview",
+          "reason": "The 23 April 2026 date is the Graduate Financial Support Application deadline for other LSE scholarships; the Excellence Scholarship page states no financial support application is required, so using it would be borrowing a deadline from a different mechanism/programme."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 133,
+      "title": "Invest Your Talent in Italy (IYT)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Online applications must be submitted by the candidate between 20th April 2026 and 11th May 2026 at 6:00pm Italian time.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://investyourtalentapplication.esteri.it/SITOIYT/EN/current-call",
+        "source_type": "official_government_page",
+        "publisher": "Ministry of Foreign Affairs and International Cooperation (MAECI), Directorate General for Growth and Export Promotion, with ICE Agency and Uni-Italia - Invest Your Talent in Italy official portal",
+        "retrieved_at": "2026-10-05T15:31:21Z",
+        "as_of": "IYT - 11th Edition, call for the 2026-2027 academic year",
+        "raw_extract": "5.2\n\nOnline applications must be submitted by the candidate between 20th April 2026 and 11th May 2026 at 6:00pm Italian time.",
+        "exact_deadline_wording": "Online applications must be submitted by the candidate between 20th April 2026 and 11th May 2026 at 6:00pm Italian time.",
+        "confidence": "HIGH",
+        "notes": "The only explicit application deadline on the official current-call page is 11 May 2026 at 6:00pm Italian time, which is in the past as of retrieval (2026-10-05) while this record is carried as open/upcoming. Per the contract the stale date is not written and is not silently moved to 2027, so deadline_date stays null. The page also states the programme recurs annually ('expressed in the annual call for applications') and that the scholarship 'will cover a period of study of 9 (nine) months starting from October 1st, 2026', but it publishes no opening or closing dates for a 12th edition. The 20 July 2027 date in Art. 6.2 is a renewal deadline for existing 2026-2027 awardees, not a new-application deadline, so it was not used."
+      },
+      "field_mapping": {
+        "deadline_date": "null (published closing date 2026-05-11 is expired; expired_mismatch, not written and not rolled forward)",
+        "deadline_precision": "exact",
+        "deadline_display": "Online applications must be submitted by the candidate between 20th April 2026 and 11th May 2026 at 6:00pm Italian time."
+      },
+      "examined": [
+        "https://investyourtalentapplication.esteri.it/SitoIYT/EN/current-call - same live document via the other capitalisation of the path; identical 11th Edition text, no 2027 dates published"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://investyourtalentapplication.esteri.it/SITOIYT/EN/current-call#art-par-06",
+          "reason": "Art. 6.2 deadline of 20th July 2027 applies only to renewal/continuation of the 2026-2027 scholarship by existing holders, not to a new scholarship application."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 206,
+      "title": "Western Australian Premier's University Scholarship",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Applications for the WA Premier's University Scholarship Semester 2, 2026 closed at 3:00 PM (AWST) on Friday, 29 May 2026.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.wa.gov.au/organisation/department-of-energy-and-economic-diversification/international-education-western-australian-premiers-university-scholarship-program",
+        "source_type": "official_government_page",
+        "publisher": "Government of Western Australia - Department of Energy and Economic Diversification",
+        "retrieved_at": "2026-10-05T15:31:21Z",
+        "as_of": "Page states 'Last updated: 4 March 2026'; Semester 2, 2026 round",
+        "raw_extract": "Applications for the WA Premier's University Scholarship Semester 2, 2026 closed at 3:00 PM (AWST) on Friday, 29 May 2026. Please check back soon for updates on when applications for Semester 1, 2027 will open.",
+        "exact_deadline_wording": "Applications for the WA Premier's University Scholarship Semester 2, 2026 closed at 3:00 PM (AWST) on Friday, 29 May 2026.",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url (wa.gov.au service page) returned HTTP 404 on 2026-10-05, so the live Government of Western Australia programme page (the shard's catalogue_url, same programme and same publishing department) was used; it is the official government page for this award. The only published closing time is 3:00 PM (AWST) 29 May 2026, which is in the past as of retrieval, and the Semester 1, 2027 round has no published opening or closing date ('Please check back soon for updates on when applications for Semester 1, 2027 will open'). Per contract the expired date is not written and not rolled to the 2027 round."
+      },
+      "field_mapping": {
+        "deadline_date": "null (published closing date 2026-05-29 is expired; Semester 1, 2027 round has no published dates)",
+        "deadline_precision": "exact",
+        "deadline_display": "Applications for the WA Premier's University Scholarship Semester 2, 2026 closed at 3:00 PM (AWST) on Friday, 29 May 2026."
+      },
+      "examined": [
+        "https://www.wa.gov.au/service/education-and-training/education-and-training-careers/western-australian-premiers-university-scholarship - shard official_source_url returned HTTP 404 on 2026-10-05"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.wa.gov.au/organisation/department-of-energy-and-economic-diversification/international-education-western-australian-premiers-wace-scholarship",
+          "reason": "The rolling-basis statement on the live page belongs to the separate WA Premier's WACE Scholarship ('Applications for the WA Premier's WACE Scholarship are now open on a rolling basis'), a different award; a rolling status cannot be transferred to this record."
+        },
+        {
+          "url": "https://www.wa.gov.au/government/publications/western-australian-premiers-university-scholarship-semester-1-2025-application-information",
+          "reason": "Semester 1 2025 application information; a past cycle document that cannot supply a current deadline."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 265,
+      "title": "Tampere University Tuition Fee Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Tampere University tuition fee scholarships are awarded only at admission.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://opiskelijanopas.tuni.fi/en/tampere-university/study-right-and-annual-enrolment/tuition-fees-and-scholarships/scholarships-fee-paying-students-admitted-2026-or-later",
+        "source_type": "official_university_page",
+        "publisher": "Tampere University - Tampere University Student's Guide",
+        "retrieved_at": "2026-10-05T15:31:21Z",
+        "as_of": "Scholarships for students admitted in 2026 or later (page 'Updated: 15.9.2026')",
+        "raw_extract": "The Tampere University scholarship programme for students admitted in 2026 or later consists of the Tampere University tuition fee scholarship awarded at admission and the Graduate Scholarship for Tampere University bachelor's graduates. [...] Tampere University tuition fee scholarships are awarded only at admission. Those students who have been awarded a scholarship at admission have received the detailed terms and conditions of their scholarship with their letters of acceptance.",
+        "exact_deadline_wording": null,
+        "confidence": "MEDIUM",
+        "notes": "The shard's official_source_url returned HTTP 404 on 2026-10-05, so the live official Student's Guide pages for this scholarship were read instead. None of them publishes an application deadline or a calendar date for applying: the tuition fee scholarship is awarded only at admission, alongside the admissions decision. The only dated items found are acceptance/payment deadlines that apply to students who have already been offered a place for the past 2026 cycle - 'the deadline for accepting the study place and scholarship is on 10 May 2026' and 'The payment deadline for your first year tuition fee is 31 July 2026' - both expired as of retrieval and neither is an application deadline, so no semantics is asserted. Admission application-period dates on Studyinfo/tuni admission pages were deliberately not used as they would be a different programme's deadline."
+      },
+      "field_mapping": {
+        "deadline_date": "null (no application deadline published on any official page found)",
+        "deadline_precision": "unknown",
+        "deadline_display": "Tampere University tuition fee scholarships are awarded only at admission."
+      },
+      "examined": [
+        "https://www.tuni.fi/en/students-guide/handbook/uni/services-and-regulations-students/study-regulations/scholarships-fee-paying-students-admitted-in-2021-or-later - shard official_source_url returned HTTP 404 on 2026-10-05",
+        "https://opiskelijanopas.tuni.fi/en/tampere-university/study-right-and-annual-enrolment/tuition-fees-and-scholarships/scholarships-fee-paying-students-admitted-2026-or-later - live equivalent; no application deadline, no calendar date",
+        "https://opiskelijanopas.tuni.fi/en/tampere-university/new-students/finances-0/scholarships-students - only expired acceptance (10 May 2026) and tuition-payment (31 July 2026) dates for already-offered 2026 awards"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://opiskelijanopas.tuni.fi/en/tampere-university/new-students/finances-0/scholarships-students",
+          "reason": "The 10 May 2026 / 31 July 2026 dates are acceptance and tuition-payment deadlines for already-offered 2026 scholarships: expired and not an application deadline."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 288,
+      "title": "Budapest University of Technology and Economics (BME) Scholarships",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.bme.hu/en/scholarships",
+        "source_type": "official_university_page",
+        "publisher": "Budapest University of Technology and Economics (BME)",
+        "retrieved_at": "2026-10-05T15:31:21Z",
+        "as_of": null,
+        "raw_extract": "BME offers scholarships at over 350 universities across Europe and more than 20 universities outside the European Union. The same goes for professional internship opportunities—arm yourself with as much competence and knowledge as possible during your student years. We provide scholarships on an ongoing basis, even for those looking to expand their postgraduate studies.",
+        "exact_deadline_wording": null,
+        "confidence": "MEDIUM",
+        "notes": "The official BME scholarship pages publish no application deadline for this umbrella record. 'We provide scholarships on an ongoing basis' is about the availability of awards, not an explicit statement that applications are rolling or that there is no fixed deadline, so ROLLING was not asserted; it is too vague to classify. The Education-menu BME scholarship page carries only stale, unrelated dates ('available between 17th of October till 15th of November, 2022' for an E033 institution-change request, and 'The website will open for SH transfer students on 27th March, 2023' / 'The application deadline for transfer students is 16th of April, 2023'), all expired and none describing the current application window. The Hungarian home page for Aktuális ösztöndíjak also carries no date. Named programmes on that page (Stipendium Hungaricum, Hungarian Diaspora Scholarship, Scholarship for Christian Young People, Students at Risk) route applications to Tempus Public Foundation or Hungary Helps Agency; their own deadlines were not fetched and not used, since they are third-party programme deadlines for different awards."
+      },
+      "field_mapping": {
+        "deadline_date": "null (no current deadline published by BME)",
+        "deadline_precision": "unknown",
+        "deadline_display": "null"
+      },
+      "examined": [
+        "https://www.bme.hu/en/scolarships - BME Education-menu scholarships page; no current deadline, only expired 2022/2023 internal-request dates",
+        "https://www.bme.hu/aktualis-osztondijak - Hungarian-language scholarship hub linked from the same navigation; no deadline stated"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.bme.hu/en/scolarships",
+          "reason": "'We provide scholarships on an ongoing basis' does not explicitly state rolling applications or absence of a fixed deadline, so it cannot support ROLLING semantics."
+        },
+        {
+          "url": "https://www.bme.hu/en/scolarships",
+          "reason": "The 2022 E033 window and the 27 March / 16 April 2023 transfer-student dates are expired and describe internal change-of-institution/transfer requests, not this record's application deadline."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 336,
+      "title": "Tampere University tuition fee scholarship (50%) and early bird offer",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "To be considered for Tampere University Scholarships, you must apply for the scholarship as part of your application for admission during the application period for admission.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.tuni.fi/en/tau/financial-matters/tuition-fees-and-scholarships",
+        "source_type": "official_university_page",
+        "publisher": "Tampere University",
+        "retrieved_at": "2026-10-05T15:31:21Z",
+        "as_of": "'Scholarships available at admission in 2027'",
+        "raw_extract": "### Scholarships available at admission in 2027\n\nTampere University offers a limited number of partial scholarships as well as an early bird discount to support fee-paying students. [...] Tampere University tuition fee scholarship is an exclusive opportunity awarded to a limited number of the best-performing applicants.\n\nIt is a highly selective scholarship, annually only individual Tampere University scholarships are awarded to exceptionally qualified applicants. [...] Students may take advantage of the early bird offer by accepting the offered study place and paying the reduced first year tuition fee within three weeks (21 days) after receiving information on admission. [...] To be considered for Tampere University Scholarships, you must apply for the scholarship as part of your application for admission during the application period for admission. You will apply for Tampere University Scholarships with the same online application you use to apply for admission at Studyinfo.fi.",
+        "exact_deadline_wording": "To be considered for Tampere University Scholarships, you must apply for the scholarship as part of your application for admission during the application period for admission.",
+        "confidence": "HIGH",
+        "notes": "The page publishes no calendar deadline. Timing is described as recurring and tied to the admission cycle: awards are made 'at admission in 2027' and 'annually only individual Tampere University scholarships are awarded'. The early bird offer window is relative, not calendar - 'within three weeks (21 days) after receiving information on admission' - so no date can be derived from it. ANNUAL/recurring therefore, and no deadline_date is written. Studyinfo.fi admission-round dates were deliberately not imported as a deadline for this record's application."
+      },
+      "field_mapping": {
+        "deadline_date": "null (ANNUAL - never date a recurring value)",
+        "deadline_precision": "recurring",
+        "deadline_display": "To be considered for Tampere University Scholarships, you must apply for the scholarship as part of your application for admission during the application period for admission."
+      },
+      "examined": [],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 570,
+      "title": "Invest Your Talent in Italy (IYT) — MAECI / ICE / Uni-Italia scholarship programme",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Online applications must be submitted by the candidate between 20th April 2026 and 11th May 2026 at 6:00pm Italian time.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://investyourtalentapplication.esteri.it/SitoIYT/EN/current-call",
+        "source_type": "official_government_page",
+        "publisher": "Ministero degli Affari Esteri e della Cooperazione Internazionale (MAECI) - Directorate General for Growth and Export Promotion, with ICE Agency and Uni-Italia - Invest Your Talent in Italy official portal",
+        "retrieved_at": "2026-10-05T15:31:21Z",
+        "as_of": "IYT - 11th Edition, call for the 2026-2027 academic year",
+        "raw_extract": "Now in its 11th edition, the IYT project continues to be one of the most popular academic programs among international students. [...] The scholarship amounts paid within the Program descend from the clear will of the government, expressed in the annual call for applications [...] 5.2\n\nOnline applications must be submitted by the candidate between 20th April 2026 and 11th May 2026 at 6:00pm Italian time.",
+        "exact_deadline_wording": "Online applications must be submitted by the candidate between 20th April 2026 and 11th May 2026 at 6:00pm Italian time.",
+        "confidence": "HIGH",
+        "notes": "The live current-call page carries the 11th Edition call only. Its explicit application window (20 April 2026 - 11 May 2026, 6:00pm Italian time) closed before retrieval on 2026-10-05, so the record's published deadline is stale and, per contract, is neither written nor moved to a 12th edition. No opening date, closing date or application window for a 2027 (12th) edition is published on this page: the only forward-looking statements are that the programme runs an 'annual call for applications' and that the scholarship starts 'from October 1st, 2026' for the 2026-2027 academic year. The 20 July 2027 date in Art. 6.2 is a renewal deadline for 2026-2027 awardees continuing their master's, not a new-application deadline, so it was not used."
+      },
+      "field_mapping": {
+        "deadline_date": "null (published closing date 2026-05-11 is expired; no 2027 window published, nothing rolled forward)",
+        "deadline_precision": "exact",
+        "deadline_display": "Online applications must be submitted by the candidate between 20th April 2026 and 11th May 2026 at 6:00pm Italian time."
+      },
+      "examined": [
+        "https://investyourtalentapplication.esteri.it/SITOIYT/EN/current-call - identical 11th Edition call text via the other path capitalisation; no 12th edition or 2027 dates on either"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://investyourtalentapplication.esteri.it/SitoIYT/EN/current-call#art-par-06",
+          "reason": "Art. 6.2 deadline of 20th July 2027 governs renewal of an existing 2026-2027 award, not a first-time application, so it cannot stand in for an application deadline."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 682,
+      "title": "Nazarbayev University Financial Aid and Scholarships for International Applicants — Foundation Year and Undergraduate programmes (2027–2028 cycle)",
+      "outcome": "recovered",
+      "deadline_semantics": "MONTH",
+      "deadline_date": null,
+      "deadline_display": "NUET Applicants (NUFYP and Undergraduate programs, including international applicants): October 2026 – To be announced later",
+      "deadline_precision": "month",
+      "source": {
+        "url": "https://nu.edu.kz/admissions/how-to-apply/foundation-undergraduate/financial-aid-end-scholarships",
+        "source_type": "official_university_page",
+        "publisher": "Nazarbayev University (NU) - Admissions Office, Foundation & Undergraduate financial aid",
+        "retrieved_at": "2026-10-05T15:31:21Z",
+        "as_of": "2027-2028 admission cycle (page states 'Final Certificates issued in 2025 and 2026 are accepted for admission to the 2027-2028 academic year')",
+        "raw_extract": "Important Dates\nNUFYP and undergraduate programs\nApplication deadline\n\nNUET Applicants (NUFYP and Undergraduate programs, including international applicants): October 2026 – To be announced later\n\nInternational applicants applying for undergraduate programs, as well as for the NUFYP program under the SAT/ACT category: October 2026 — to be announced later.\n\nOther Categories (Undergraduate programs only: SAT/ACT, IB Diploma, A-level/NIS Grade 12 Certificate, Olympiad winners): October 2026 – To be announced later",
+        "exact_deadline_wording": "NUET Applicants (NUFYP and Undergraduate programs, including international applicants): October 2026 – To be announced later",
+        "confidence": "HIGH",
+        "notes": "All three financial-support categories on the official page give only a month with the day explicitly withheld ('October 2026 – To be announced later'), so MONTH precision and no deadline_date; a day was not invented. The page's other dated items are eligibility caps, not deadlines for this application - 'The last test dates for financial support consideration is: SAT – 05.12.2026, ACT – 28.11.2026' (test-sitting cut-offs) and 'Dates of NUET 2027 - To be announced later'. The regular-admission application window for the 2026-2027 mid-year intake is a different deadline and was not used for this financial-support deadline."
+      },
+      "field_mapping": {
+        "deadline_date": "null (MONTH - source withholds the day: 'To be announced later')",
+        "deadline_precision": "month",
+        "deadline_display": "NUET Applicants (NUFYP and Undergraduate programs, including international applicants): October 2026 – To be announced later"
+      },
+      "examined": [],
+      "rejected_sources": [
+        {
+          "url": "https://nu.edu.kz/admissions/how-to-apply/foundation-undergraduate/financial-aid-end-scholarships",
+          "reason": "'The last test dates for financial support consideration is: SAT – 05.12.2026, ACT – 28.11.2026' are admission-test sitting cut-offs, not the financial support application deadline."
+        }
+      ]
+    }
+  ]
+}

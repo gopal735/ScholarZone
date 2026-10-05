@@ -1,0 +1,99 @@
+{
+  "shard_id": "DL-051",
+  "topic": "deadline",
+  "hosts": [
+    "admissions.dartmouth.edu",
+    "czs.muni.cz",
+    "secihti.mx",
+    "www.edu.gov.az",
+    "www.education.govt.nz",
+    "www.ntnu.edu"
+  ],
+  "record_count": 7,
+  "records": [
+    {
+      "id": 129,
+      "title": "Dartmouth College Need-Based Financial Aid (International Students)",
+      "official_source": "Dartmouth College",
+      "official_source_url": "https://admissions.dartmouth.edu/affordability/international-students",
+      "catalogue_url": null,
+      "country": "United States",
+      "deadline_display": "Dartmouth's official Application Deadlines for Financial Aid are: November 1st Early Decision, February 1st Regular Decision, March 1st Transfer Applications.",
+      "deadline_precision": "varies",
+      "application_period": "Annual cycle. Financial aid materials due November 1 for Early Decision and February 1 for Regular Decision.",
+      "verification_status": "active"
+    },
+    {
+      "id": 278,
+      "title": "NTNU PhD Positions (Salaried Employment)",
+      "official_source": "Norwegian University of Science and Technology (NTNU)",
+      "official_source_url": "https://www.ntnu.edu/jobs",
+      "catalogue_url": "https://www.ntnu.edu/vacancies",
+      "country": "Norway",
+      "deadline_display": "Positions are advertised individually and applications are assessed continuously: 'Acceptance to a PhD-programme at NTNU is done continuously throughout the academic year and is not restricted to the beginning of term.' Each vacancy carries its own application deadline.",
+      "deadline_precision": "rolling",
+      "application_period": "Continuous - individual PhD vacancies are posted on NTNU's vacancy pages and on jobbnorge.no and are assessed as they arrive.",
+      "verification_status": "active"
+    },
+    {
+      "id": 297,
+      "title": "Visegrad Scholarship Programme — study or research stay hosted by Masaryk University",
+      "official_source": "International Visegrad Fund (host institution: Masaryk University, Brno)",
+      "official_source_url": "https://czs.muni.cz/en/student-from-abroad/other-possibilities/visegrad-grant",
+      "catalogue_url": "https://www.muni.cz/en/admissions/bachelors-and-masters-studies",
+      "country": "Czech Republic",
+      "deadline_display": "Official wording on the Masaryk University page: \"Annual deadline for applications: 15 March\". The page states no year, and the 2026 occurrence has already passed.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual, with an application deadline of 15 March. The Masaryk University contact step should be completed well before that so the letter of acceptance is ready.",
+      "verification_status": "active"
+    },
+    {
+      "id": 399,
+      "title": "Tulī Takes Flight Scholarships",
+      "official_source": "New Zealand Ministry of Education",
+      "official_source_url": "https://www.education.govt.nz/news/applications-open-2026-tuli-takes-flight-and-pacific-education-foundation-scholarships",
+      "catalogue_url": "https://www.education.govt.nz/our-work/strategies-policies-and-programmes/property-and-infrastructure/school-property-group/new-zealand-school-property-agency",
+      "country": "New Zealand",
+      "deadline_display": "Applications for the 2027 round are closed. The Ministry's official page states \"Applications for the 2027 round are now closed\" and \"You will be notified of the outcome of your application by 18 March 2027\". The round closes annually on 30 September at 11.59pm; no date for the next still-applicable round is published on the page as at 2026-10-04.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual round for study in the following year. The 2027 round closed at 11.59pm on Wednesday 30 September 2026, with outcomes notified by 18 March 2027. The next round is expected to follow the same pattern but no date is published yet.",
+      "verification_status": "active"
+    },
+    {
+      "id": 403,
+      "title": "Ngarimu VC and 28th (Māori) Battalion Memorial Scholarships",
+      "official_source": "Ngarimu VC and 28th (Māori) Battalion Memorial Scholarship Fund Board — Ministry of Education",
+      "official_source_url": "https://www.education.govt.nz/parents-and-caregivers/tertiary/available-assistance/ngarimu-vc-and-28th-maori-battalion-memorial-scholarships",
+      "catalogue_url": "https://web-assets.education.govt.nz/s3fs-public/2026-06/Ngarimu%20Application%20Guidelines%202026-27%2005062026.pdf?VersionId=JFh_p6dLcw4RG.CkkwpnlQwwtf8TP9hw",
+      "country": "New Zealand",
+      "deadline_display": "Applications to support study in 2027 closed on Sunday 19 July 2026, and the Ministry expects to notify all applicants of outcomes by late November 2026. Applications to support study in 2028 will open mid-2027; no exact 2028 closing date is published.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual. 2027 study year: applications closed Sunday 19 July 2026, outcomes notified by late November 2026. 2028 study year: applications open mid-2027.",
+      "verification_status": "active"
+    },
+    {
+      "id": 688,
+      "title": "Becas Nacionales de Inclusión 2026 (A. Becas de Licenciatura para Jefas de Familia; B. Apoyos Complementarios para Personas Indígenas; C. Apoyos Complementarios para Personas con Discapacidad)",
+      "official_source": "Secretaría de Ciencia, Humanidades y Tecnología (SECIHTI), Gobierno de México",
+      "official_source_url": "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-becas-nacionales-de-inclusion-2026",
+      "catalogue_url": "https://secihti.mx/convocatoria_categoria/becas-nacionales",
+      "country": "Mexico",
+      "deadline_display": "The 2026 call closed on 25 September 2026; the official page shows no date for the next cycle.",
+      "deadline_precision": "recurring",
+      "application_period": "2026 cycle: 29 June 2026 to 25 September 2026 (official wording: \"Inicio de recepción de solicitudes: lunes, 29 junio 2026\"; \"Conclusión de recepción de solicitudes: viernes, 25 septiembre 2026 - 11:59 PM\" hora local CDMX).",
+      "verification_status": "active"
+    },
+    {
+      "id": 715,
+      "title": "Heydar Aliyev International Education Grant (Study in Azerbaijan project)",
+      "official_source": "Ministry of Science and Education of the Republic of Azerbaijan",
+      "official_source_url": "https://www.edu.gov.az/en/programmes/study-in-azerbaijan-layihesi",
+      "catalogue_url": "https://studyinazerbaijan.edu.az/scholarships",
+      "country": "Azerbaijan",
+      "deadline_display": "The 2026/2027 call ran from 16 February to 15 April 2026, with registration through the Study in Azerbaijan Centralized Admission Service (SIACAS) from 18 May to 1 June 2026, selected candidates notified between 1 June and 1 July 2026, and arrival in Azerbaijan by 15 September 2026. The grant is awarded annually, so the next round is expected on the same early-year cycle.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual call with two stages: nomination documents to the applicant country authority by 15 April and SIACAS registration from 18 May to 1 June in the 2026/2027 cycle",
+      "verification_status": "active"
+    }
+  ]
+}

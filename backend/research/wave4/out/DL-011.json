@@ -1,0 +1,282 @@
+{
+  "shard_id": "DL-011",
+  "agent_completed": true,
+  "topic": "deadline",
+  "generated_at": "2026-10-05T15:40:00Z",
+  "agent_notes": "All 8 records researched live against official provider/government/university pages. Every value below is quoted verbatim from a URL that was actually fetched. Where a source published an explicit calendar deadline that had already passed at retrieval time (2026-10-05) while the record is still open/upcoming, outcome is expired_mismatch per brief section 6: the stale date is NOT written and NOT rolled forward to the next cycle; it is preserved in the extra key published_deadline_not_written. No search-result snippet, cached prior-wave value, or generic admissions deadline for a different programme was used as evidence.",
+  "records": [
+    {
+      "scholarship_id": 187,
+      "title": "Stockholm University Scholarship Scheme",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "30 March — Deadline Stockholm University Scholarship",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.su.se/english/education/how-to-apply/costs-fees-and-scholarships/tuition-fee-payment-timeline-autumn-semester-2026",
+        "source_type": "official_university_page",
+        "publisher": "Stockholm University",
+        "retrieved_at": "2026-10-05T15:33:00Z",
+        "as_of": "Autumn semester 2026 intake; page footer states \"Last updated: 2026-04-13\"",
+        "raw_extract": "The following timeline applies to students who have been admitted in the first admissions round.\n\nTuition fee timeline\n\n25 February — Deadline Swedish Institute Scholarship for Global Professionals application\n\n26 March — Master's results published\nNotification of selection results for Master's programmes is published.\n\n30 March — Deadline Stockholm University Scholarship\n\n31 March — Bachelor's results published\n...\n\n28 April — Results Stockholm University Scholarship\nThe results for the SU scholarship are announced through e-mail.",
+        "exact_deadline_wording": "30 March — Deadline Stockholm University Scholarship",
+        "confidence": "HIGH",
+        "notes": "The only calendar date Stockholm University publishes for this scholarship is 30 March in the autumn semester 2026 tuition-fee timeline, i.e. 2026-03-30, which had already passed when retrieved (2026-10-05) while the record is open/upcoming. Per brief section 6 no date is written and no roll-forward to 2027 was attempted. SU's own Scholarship Scheme page publishes no fixed calendar date for the scholarship application (only: \"The Scholarship recipients and other applicants will be informed of the results by the end of April.\"), and no autumn 2027 tuition-fee timeline exists yet (the 2027 URL returns HTTP 404), so no current-cycle deadline is recoverable. DEAD LINK: the shard's official_source_url https://www.su.se/english/education/scholarships-and-fees returns HTTP 404; the live scholarship page is https://www.su.se/english/education/how-to-apply/costs-fees-and-scholarships/scholarships."
+      },
+      "field_mapping": {
+        "deadline_date": "null (no write — published deadline 2026-03-30 already passed at retrieval; brief §6)",
+        "deadline_precision": "exact",
+        "deadline_display": "30 March — Deadline Stockholm University Scholarship"
+      },
+      "published_deadline_not_written": "2026-03-30",
+      "examined": [
+        "https://www.su.se/english/education/scholarships-and-fees (shard official_source_url — HTTP 404, dead)",
+        "https://www.su.se/english/education/how-to-apply/costs-fees-and-scholarships/scholarships (no calendar date published; application form emailed after Notification of selection results)",
+        "https://www.su.se/english/education/how-to-apply/costs-fees-and-scholarships/tuition-fee-payment-timeline-autumn-semester-2027 (HTTP 404 — autumn 2027 timeline not yet published)"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 309,
+      "title": "Merit Scholarship Program for Foreign Students (PBEEE) - Fonds de recherche du Quebec",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "December 2nd, 2025 at 16:00 (EST)",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://frq.gouv.qc.ca/en/program/merit-scholarship-program-for-foreign-students-pbeee-2026-2027-2",
+        "source_type": "official_government_page",
+        "publisher": "Fonds de recherche du Québec (Quebec government)",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "as_of": "2026-2027 competition; page header states \"[These program rules are out of competition]\"; page footer \"Last update: August 26th, 2025\"",
+        "raw_extract": "[These program rules are out of competition](https://frq.gouv.qc.ca/en/open-competitions/)\n\nDeadline (application) :\n\n**December 2nd, 2025 at 16:00 (EST)**\n\nAnnouncement of results :\n\n**April 2026**\n\nStart year of grant :\n\n**2026-2027**\n\nImportant dates\n\n- Submission to the Fonds de recherche du Québec – secteur Nature et technologies (FRQ) of preselected applications by the responsible entities (universities, CCTT Network): October 23, 2025, 4 p.m.\n- Submission to FRQ of the candidates preselected by China Scholarship Council (CSC): before March 31, 2026.\n- Submission of application to FRQ by preselected candidates: December 2, 2025, 4 p.m.",
+        "exact_deadline_wording": "December 2nd, 2025 at 16:00 (EST)",
+        "confidence": "HIGH",
+        "notes": "FRQ states the programme deadline explicitly and marks the 2026-2027 rules as out of competition. The deadline 2025-12-02 had already passed at retrieval (2026-10-05) while the record is open/upcoming, so per brief section 6 the stale date is not written and not moved to a next cycle. The other dates on the page are component-specific milestones (preselection 2025-10-23; CSC 2026-03-31), not the programme application deadline. FRQ's 'Open competitions' listing is rendered by JavaScript and returned no programme entries in the HTML, so no newer PBEE cycle could be confirmed from it."
+      },
+      "field_mapping": {
+        "deadline_date": "null (no write — published deadline 2025-12-02 already passed at retrieval; brief §6)",
+        "deadline_precision": "exact",
+        "deadline_display": "December 2nd, 2025 at 16:00 (EST)"
+      },
+      "published_deadline_not_written": "2025-12-02",
+      "secondary_published_dates_not_the_programme_deadline": {
+        "university_and_cctt_preselection": "October 23, 2025, 4 p.m.",
+        "china_scholarship_council_preselection": "before March 31, 2026",
+        "announcement_of_results": "April 2026"
+      },
+      "examined": [
+        "https://frq.gouv.qc.ca/en/open-competitions/ (fetched; the programme listing is JavaScript-rendered, no PBEE entries present in the returned HTML)",
+        "https://frq.gouv.qc.ca/en/program/merit-scholarship-program-for-foreign-students-pbeee-2027-2028 (HTTP 500 — existence of a 2027-2028 cycle could not be confirmed either way)"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 342,
+      "title": "Hanken GBSN Honor Scholarship (GBSN Scholarship for students from developing countries)",
+      "outcome": "recovered",
+      "deadline_semantics": "EXACT",
+      "deadline_date": "2027-01-21",
+      "deadline_display": "Application closes – 21.1.2027 at 15:00 (UTC+2)",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.hanken.fi/en/apply/application/masters-degree-studies-english/main-admission-round/application-process-step-step",
+        "source_type": "official_university_page",
+        "publisher": "Hanken School of Economics",
+        "retrieved_at": "2026-10-05T15:36:00Z",
+        "as_of": "Master's Main Admission round (autumn 2027 intake), application period 7.1.2027–21.1.2027",
+        "raw_extract": "Important dates\n\nApplication opens – 7.1.2027 at 8:00 (UTC+2)\nApplication closes – 21.1.2027 at 15:00 (UTC+2)\nAttachment deadline – 28.1.2027 at 15:00 (UTC+2)\nPublication of all results – 31.5.2027 (at the latest, most likely by the end of April 2027)\nDeadline to accept your admission offer – 13.7.2027 at 15:00 (UTC+3)\n...\nComplete the application in the application portal Studyinfo.fi after the application period has started. The final application deadline is 21 January 2027 at 15:00 (UTC+2).",
+        "exact_deadline_wording": "Application closes – 21.1.2027 at 15:00 (UTC+2)",
+        "confidence": "MEDIUM",
+        "notes": "This is the only date the scholarship's application can have: Hanken states on the scholarship pages that there is no separate scholarship application and no separate scholarship deadline, and that the GBSN Honor Scholarship is applied for on the Master's Main Admission round application form itself. Quoted from the scholarship page: \"Note! The scholarship is only awarded to eligible applicants within the main admission round for Master's degree studies in English.\", \"You apply for the GBSN Honor scholarship directly on the application form for admission.You cannot get a scholarship if you have not applied for it during the application period.\", \"The scholarship decision is given simultaneously with the admission decision.\"; from the tuition-fees-and-scholarships page: \"Note that the scholarship is only awarded to eligible applicants within the Master's Main Admission round.\"; from this same application page: \"You will be informed by e-mail simultaneously about the admission results and possible scholarship decision as well as your liablity for tuition fees.\" Confidence is MEDIUM, not HIGH, because the quoted date is published on Hanken's admissions page rather than on a scholarship-specific page. Attachment deadline 28.1.2027 applies to supporting documents, not to the scholarship request itself."
+      },
+      "field_mapping": {
+        "deadline_date": "2027-01-21",
+        "deadline_precision": "exact",
+        "deadline_display": "Application closes – 21.1.2027 at 15:00 (UTC+2)"
+      },
+      "corroborating_source": {
+        "url": "https://www.hanken.fi/en/apply/study-hanken/international-students/tuition-fees-and-scholarships/gbsn-scholarship-students",
+        "source_type": "official_university_page",
+        "publisher": "Hanken School of Economics",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "raw_extract": "Note! The scholarship is only awarded to eligible applicants within the main admission round for Master's degree studies in English.",
+        "notes": "Second official page establishing the equivalence (scholarship request = main admission round application). Second corroborating URL: https://www.hanken.fi/en/apply/study-hanken/international-students/tuition-fees-and-scholarships — \"You apply for the GBSN Honor scholarship directly on the application form for admission.\" and \"Note that the scholarship is only awarded to eligible applicants within the Master's Main Admission round.\" The main-admission-round landing page also shows the round's live window as \"APPLY HERE 7-21.1.2027\"."
+      },
+      "examined": [
+        "https://www.hanken.fi/en/apply/application/masters-degree-studies-english/main-admission-round (same window as a button label \"APPLY HERE 7-21.1.2027\", no extra date detail)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://gbsn.org/membership-2/information-for-members/hanken-school-of-economics-masters-program-premium-scholarship/",
+          "reason": "GBSN (the network) is not the awarding provider for this record and the page was not fetched; Hanken's own pages are official and sufficient"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 606,
+      "title": "Overseas Scholarship for MS/M.Phil and Ph.D Studies (Phase-III), Higher Education Commission Pakistan",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Last Date to apply 28-August-2026 1600 hrs",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.hec.gov.pk/english/scholarshipsgrants/OSSPhase-III/Pages/default.aspx",
+        "source_type": "official_government_page",
+        "publisher": "Higher Education Commission, Government of Pakistan",
+        "retrieved_at": "2026-10-05T15:27:00Z",
+        "as_of": "Batch-IV (online registration 09 August 2026 – 28 August 2026 16:00; HAT test 27 September 2026, rescheduled to 19-Sep-2026)",
+        "raw_extract": "Last Date to apply 28-August-2026 1600 hrs\n\n...\nImportant Dates\n\nActivity\n\nDate\n\nOnline Registration Starts\n\nAugust 09, 2026\n\nLast Date to Apply\n\nAugust 28, 2026 (1600 Hours)\n\nHAT Test\n\n27 September, 2026",
+        "exact_deadline_wording": "August 28, 2026 (1600 Hours)",
+        "confidence": "HIGH",
+        "notes": "HEC publishes an explicit closing date for the current (Batch-IV) round: 2026-08-28 at 16:00. It had already passed at retrieval (2026-10-05) while the record is open/upcoming, so per brief section 6 the stale date is not written and no Batch-V date was invented. The HEC Announcement page for the same programme repeats \"Last Date to apply 28-August-2026 1600 hrs\" and lists no batch later than Batch-IV, so no current or upcoming closing date exists to record."
+      },
+      "field_mapping": {
+        "deadline_date": "null (no write — published deadline 2026-08-28 already passed at retrieval; brief §6)",
+        "deadline_precision": "exact",
+        "deadline_display": "Last Date to apply 28-August-2026 1600 hrs"
+      },
+      "published_deadline_not_written": "2026-08-28",
+      "examined": [
+        "https://www.hec.gov.pk/english/scholarshipsgrants/OSSPhase-III/Pages/Announcement.aspx (same 28-August-2026 1600 hrs deadline; only Batch-IV announced)"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 684,
+      "title": "Mauritius-Africa Scholarship Scheme (MASS)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "submit the duly completed application forms by 27 March 2026",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://tertiaryeducation.govmu.org/te/wp-content/uploads/2025/10/Call-for-Application.pdf",
+        "source_type": "official_government_page",
+        "publisher": "Ministry of Tertiary Education, Science and Research, Republic of Mauritius",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": "Mauritius Africa Scholarship Scheme 2026 edition (PDF dated October 2025) for the academic year starting in 2026",
+        "raw_extract": "Note:\n\nApplications not processed through the nominating agency will not be considered.\n...\nAn application under this scheme is to be made solely through the nominating agency responsible for processing scholarships in the applicant's country of citizenship.\n...\nSuch Nominating Agency, which may typically be part of the Ministry of Education in the country of the applicant, will then shortlist and endorse the applications of a maximum of FIFTEEN (15) eligible candidates (the decision on the distribution of nominees from the undergraduate and/or postgraduate programmes rest on the nominating agencies) and submit the duly completed application forms by 27 March 2026",
+        "exact_deadline_wording": "submit the duly completed application forms by 27 March 2026",
+        "confidence": "MEDIUM",
+        "notes": "The Ministry publishes a single central date per edition, but it is the date by which the NOMINATING AGENCY must submit endorsed forms to the Ministry (2026-03-27), not an applicant-facing closing date; the applicant's own deadline is set nationally. The Ministry's own Guidelines for Nominating Agencies 2026 state: \"Nominating Agencies shall submit the list of applicants recommended for selection for the July/September 2026 intake by the set deadline of 27 March 2026\" and \"The Nominating Agency is free to set an appropriate deadline to receive application and inform applicants of this deadline.\" The published date 2026-03-27 had already passed at retrieval (2026-10-05) while the record is open/upcoming, so per brief section 6 nothing is written and no next-edition date is invented. The Ministry's MASS page currently publishes only Edition 2026 documents (no Edition 2027 call)."
+      },
+      "field_mapping": {
+        "deadline_date": "null (no write — published deadline 2026-03-27 already passed at retrieval; brief §6)",
+        "deadline_precision": "exact",
+        "deadline_display": "submit the duly completed application forms by 27 March 2026"
+      },
+      "published_deadline_not_written": "2026-03-27",
+      "corroborating_source": {
+        "url": "https://tertiaryeducation.govmu.org/te/wp-content/uploads/2025/10/Guidelines-for-Nominating-Agencies-2026.pdf",
+        "source_type": "official_government_page",
+        "publisher": "Ministry of Tertiary Education, Science and Research, Republic of Mauritius",
+        "retrieved_at": "2026-10-05T15:34:00Z",
+        "raw_extract": "Nominating Agencies shall submit the list of applicants recommended for selection for the July/September 2026 intake by the set deadline of 27 March 2026."
+      },
+      "examined": [
+        "https://tertiaryeducation.govmu.org/te/index.php/mass (programme page: lists Edition 2026 documents only, no deadline text of its own)"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 704,
+      "title": "Allama Muhammad Iqbal Scholarship for Central Asia & Friendly Countries (Higher Education Commission, Pakistan)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Apply online through the official HEC scholarship portal",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.hec.gov.pk/english/scholarshipsgrants/CAFC/AMIC/Pages/Application-Process.aspx",
+        "source_type": "official_government_page",
+        "publisher": "Higher Education Commission, Government of Pakistan",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": null,
+        "raw_extract": "Application Process\n\n1. Apply online through the official HEC scholarship portal\n2. Appear in required tests/interviews (if applicable)",
+        "exact_deadline_wording": null,
+        "confidence": "MEDIUM",
+        "notes": "No application deadline, closing date, month, window or recurring-timing statement is published for this scheme on any HEC page examined. The scheme is described only as a multi-year programme: \"Over a period of five years, the program will offer 350 scholarships to international students from Central Asian and friendly countries\". Because HEC says nothing about rolling, annual or any other application timing, this is reported as UNKNOWN rather than ANNUAL or ROLLING — inventing a timing class would be an unsupported inference. The HEC scholarship portal (scholarship.hec.gov.pk, linked as \"Apply here for a Scholarship\") was not readable without an account and was not used as evidence."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "Apply online through the official HEC scholarship portal"
+      },
+      "examined": [
+        "https://www.hec.gov.pk/english/scholarshipsgrants/CAFC/AMIC/Pages/default.aspx (Introduction: benefits, degrees, eligible countries — no date)",
+        "https://www.hec.gov.pk/english/scholarshipsgrants/CAFC/Pages/default.aspx (scheme Introduction: 350 scholarships over five years — no date)",
+        "https://www.hec.gov.pk/english/scholarshipsgrants/CAFC/AMIC/Pages/Eligibility-Criteria.aspx (entry requirements only — no date)"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 705,
+      "title": "Allama Muhammad Iqbal Scholarships for Students from Bangladesh (Pak-Bangladesh Knowledge Corridor, Higher Education Commission Pakistan)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Last date for submission of Applications is June 10, 2026",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.hec.gov.pk/english/scholarshipsgrants/PBKC/Pages/AISB.aspx",
+        "source_type": "official_government_page",
+        "publisher": "Higher Education Commission, Government of Pakistan",
+        "retrieved_at": "2026-10-05T15:27:00Z",
+        "as_of": "2026 cycle (no cycle year stated on the page)",
+        "raw_extract": "How to Apply:\n\n- An application form to be filled online at https://scholarship.hec.gov.pk/#/pbs\n\n- All registered candidates appear in scholarship test organized by HEC in collaboration with Pakistan High Commission in Dhaka and Bangladesh's Ministry of Higher Education.\n\n- Shortlisted candidates will appear in an online interview.\n\n- Last date for submission of Applications is June 10, 2026",
+        "exact_deadline_wording": "Last date for submission of Applications is June 10, 2026",
+        "confidence": "HIGH",
+        "notes": "CACHED-VALUE CORRECTION: the record's stored text says no deadline is published, but the live HEC programme page does publish an explicit last date — 2026-06-10. That date had already passed at retrieval (2026-10-05) while the record is open/upcoming, so per brief section 6 the stale date is not written and not rolled to a next cycle. The Pak-Bangladesh flyer PDF linked from the programme page is a scanned image with no extractable text, so it could not be checked for a newer advertised cycle; the Pak-Bangladesh Knowledge Corridor Introduction page carries no date at all."
+      },
+      "field_mapping": {
+        "deadline_date": "null (no write — published deadline 2026-06-10 already passed at retrieval; brief §6)",
+        "deadline_precision": "exact",
+        "deadline_display": "Last date for submission of Applications is June 10, 2026"
+      },
+      "published_deadline_not_written": "2026-06-10",
+      "examined": [
+        "https://www.hec.gov.pk/english/scholarshipsgrants/PBKC/Pages/default.aspx (Pak-Bangladesh Knowledge Corridor Introduction: no date)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.hec.gov.pk/english/scholarshipsgrants/PBKC/Documents/flyr.pdf",
+          "reason": "downloaded and inspected: 0 characters of extractable text (scanned image), so it cannot support any deadline value"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 706,
+      "title": "Allama Iqbal Scholarships for Srilankan Students (Pak-Sri Lanka Higher Education Cooperation Programme, Higher Education Commission Pakistan)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "The last date for submission of online applications has been extended to 05 July, 2026.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.hec.gov.pk/english/scholarshipsgrants/pshecp/aiss/Pages/default.aspx",
+        "source_type": "official_government_page",
+        "publisher": "Higher Education Commission, Government of Pakistan",
+        "retrieved_at": "2026-10-05T15:27:00Z",
+        "as_of": "2026 cycle (extension of the originally published last date; page announces no later cycle)",
+        "raw_extract": "******The last date for submission of online applications*** ***has been extended to 05 July, 2026.***",
+        "exact_deadline_wording": "has been extended to 05 July, 2026",
+        "confidence": "HIGH",
+        "notes": "The extended last date 2026-07-05 had already passed at retrieval (2026-10-05) while the record is open/upcoming, so per brief section 6 it is not written and not moved to 2027. The extension is the provider's own superseding statement, so it is used as the value rather than treated as a conflict with any earlier date. The programme's How to Apply page gives the application route (http://eportal.hec.gov.pk/paksl) but no date, and the linked advertisement is a JPEG image (final-fyler.jpg) that was not read; no competing official date was found, so CONFLICTING does not apply."
+      },
+      "field_mapping": {
+        "deadline_date": "null (no write — published deadline 2026-07-05 already passed at retrieval; brief §6)",
+        "deadline_precision": "exact",
+        "deadline_display": "The last date for submission of online applications has been extended to 05 July, 2026."
+      },
+      "published_deadline_not_written": "2026-07-05",
+      "examined": [
+        "https://www.hec.gov.pk/english/scholarshipsgrants/pshecp/aiss/Pages/How-to-Apply.aspx (application route and test/interview process — no date)"
+      ],
+      "rejected_sources": []
+    }
+  ]
+}

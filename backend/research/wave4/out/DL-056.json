@@ -1,0 +1,272 @@
+{
+  "shard_id": "DL-056",
+  "agent_completed": true,
+  "topic": "deadline",
+  "retrieved_at_all": "2026-10-05T15:32:19Z",
+  "records": [
+    {
+      "scholarship_id": 99,
+      "title": "Esade Talent Scholarships (MSc and MBA)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Calls for these scholarship applications are generic and targeted at all those who meet the legally established criteria.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.esade.edu/en/about-us/scholarship-program-and-financial-aid/scholarship-program",
+        "source_type": "official_scholarship_page",
+        "publisher": "Esade Ramon Llull University",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "as_of": null,
+        "raw_extract": "### MSc Talent Scholarships\n\nThese scholarships are for students to complete official **MBA and MSc programs**. Candidates with demonstrated talent and financial need are encouraged to apply. Our Talent Attraction Committee will study their applications to confirm that candidates meet the established requirements.\n\nThe amount of these scholarships covers between 50% and 85% of their tuition fees. Calls for these scholarship applications are generic and targeted at all those who meet the legally established criteria.",
+        "exact_deadline_wording": "Calls for these scholarship applications are generic and targeted at all those who meet the legally established criteria.",
+        "confidence": "HIGH",
+        "notes": "Two official Esade pages were fetched in full (Scholarship Program overview and Scholarship Program detail). Neither publishes a call date, opening date or closing date for the MSc/MBA Talent Scholarships; the only statement about the calls is the verbatim sentence quoted above. No date was inferred. Deadline wording that does exist on other Esade pages belongs to different items and was therefore not used as evidence for this record (see rejected_sources). Page carries only a generic '© 2026 Esade Ramon Llull University' footer, no cycle reference, hence as_of = null."
+      },
+      "field_mapping": {
+        "deadline_date": "null (no date published by Esade; nothing to write)",
+        "deadline_precision": "unknown",
+        "deadline_display": "Calls for these scholarship applications are generic and targeted at all those who meet the legally established criteria."
+      },
+      "examined": [
+        "https://www.esade.edu/en/programs/scholarship-program-and-financial-aid",
+        "https://www.esade.edu/mba/en/programmes/full-time-mba/fees-and-financing"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.esade.edu/mba/en/programmes/full-time-mba/fees-and-financing",
+          "reason": "Fetched and read: contains deadlines for other items only - 'the deadline for applying for an Excellence Award is July 15th 2026 (for the 2026 intake)' (Excellence Award, not Talent Scholarship) and 'Application deadline: June 15' under the external Fundación Princesa de Girona scholarship. The Esade Need-based/Talent Scholarship section on the same page states only 'Financial aid is open to all applicants once admitted to the MBA Program' with no date."
+        },
+        {
+          "url": "https://www.esade.edu/mba/en/programmes/full-time-mba/admissions",
+          "reason": "Not fetched; rejected on category grounds. Programme admissions deadlines (e.g. staged 30 Sep 2026 ... 30 Jun 2027 rounds) are a generic admissions deadline for a different process and are not evidence for a scholarship call date (brief section 5)."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 130,
+      "title": "Aga Khan Foundation International Scholarship Programme (AKF ISP) - Next Cycle, Opening Early 2027",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Award recipients are selected through a global, annual, and competitive application process. The AKF ISP offers a limited number of new awards in each cycle. The 2026-2027 application cycle is now closed. The next cycle will open in early 2027.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://akf.org/international-scholarship-programme",
+        "source_type": "official_scholarship_page",
+        "publisher": "Aga Khan Foundation (Aga Khan Development Network)",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": "2026-2027 application cycle closed; next cycle stated to open in early 2027",
+        "raw_extract": "Award recipients are selected through a global, annual, and competitive application process. The AKF ISP offers a limited number of new awards in each cycle. The 2026-2027 application cycle is now closed. The next cycle will open in early 2027.",
+        "exact_deadline_wording": "The 2026-2027 application cycle is now closed. The next cycle will open in early 2027.",
+        "confidence": "HIGH",
+        "notes": "Semantics recovered from the official provider page: a global, annual, competitive cycle with no published closing date for the current or next cycle. 'The next cycle will open in early 2027' is an OPENING statement, not a deadline, and it carries no day, so no calendar date was written. deadline_date stays null by rule (never convert ANNUAL into a date). A second official AKDN page was fetched and carries identical wording with no date, so there is no source disagreement."
+      },
+      "field_mapping": {
+        "deadline_date": "null (annual cycle, no published closing date; must not be dated)",
+        "deadline_precision": "recurring",
+        "deadline_display": "Award recipients are selected through a global, annual, and competitive application process. The 2026-2027 application cycle is now closed. The next cycle will open in early 2027."
+      },
+      "examined": [
+        "https://www.akdn.org/our-agencies/aga-khan-foundation/international-scholarship-programme"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.ease-initiative.org/scholarships/881/",
+          "reason": "Third-party scholarship aggregator claiming 'Deadline: March 31, 2027'. Not an official Aga Khan domain; appeared only in search results and was not fetched. Rejected per brief sections 5 and 6."
+        },
+        {
+          "url": "https://guides.scholarshipunion.com/akf/how-to-apply.html",
+          "reason": "Third-party guide asserting a 'global application deadline is March 31'. Not an official Aga Khan source, no live official page behind it, not fetched. Rejected."
+        },
+        {
+          "url": "https://globalscholarships.com/external/the-aga-khan-foundations-international-scholarship-programme-akf-isp/",
+          "reason": "Scholarship aggregator listing; no deadline established and not an official source. Not fetched."
+        },
+        {
+          "url": "https://schoolgist.ng/aga-khan-foundation-scholarship-for-postgraduate-studies-2026-2027",
+          "reason": "Third-party listing which itself records 'Application Deadline | Not Specified', consistent with the official page. Not fetched, not used as evidence."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 183,
+      "title": "Lund University Global Scholarship",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "The Lund University scholarship application is now closed. The deadline to apply was 16 February 2026.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and-awards/lund-university-global-scholarship",
+        "source_type": "official_university_page",
+        "publisher": "Lund University",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "as_of": "Page footer: 'Last updated: 26 Aug 2026'; describes the closed 2026 round",
+        "raw_extract": "### Closed for applications\n\nThe Lund University scholarship application is now closed. The deadline to apply was 16 February 2026.\n\n(Application period section, same page) The application usually opens in **early February** every year. When the application period is open, you will find a link to the application portal further down this page.\n\n(Submit your application section, same page) The application round usually opens in February every year. When the next application round opens, you will find a link to our application portal with detailed instructions on this page.",
+        "exact_deadline_wording": "The deadline to apply was 16 February 2026.",
+        "confidence": "HIGH",
+        "notes": "The only explicit calendar deadline published is 16 February 2026, which is in the past as of the 2026-10-05 retrieval date, while the record is carried as open/active. Per brief section 6 this is expired_mismatch: the stale date was not written and was not silently moved to 2027. The page's recurring wording ('usually opens in early February every year', 'usually opens in February every year') describes only the OPENING and gives no future closing date, so no forward date may be derived. deadline_date is therefore null while the published wording is preserved verbatim in deadline_display and exact_deadline_wording."
+      },
+      "field_mapping": {
+        "deadline_date": "null (published deadline 2026-02-16 is expired for an open/active record - do not write, do not roll to 2027)",
+        "deadline_precision": "exact",
+        "deadline_display": "The Lund University scholarship application is now closed. The deadline to apply was 16 February 2026."
+      },
+      "examined": [],
+      "rejected_sources": [
+        {
+          "url": "https://www.universityadmissions.se/",
+          "reason": "National study-application round referenced by the Lund page. A programme/admissions deadline is not the scholarship deadline (brief section 5); not fetched."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 242,
+      "title": "Chinese Government Scholarship - Bilateral Program (Type A)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Online application (www.campuschina.org) and the corresponding application documents should be submitted in the system before February 8, 2026.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://ee.china-embassy.gov.cn/eng/tzygg/202511/t20251108_11749274.htm",
+        "source_type": "official_government_page",
+        "publisher": "Embassy of the People's Republic of China in the Republic of Estonia",
+        "retrieved_at": "2026-10-05T15:32:00Z",
+        "as_of": "Notice published 2025-11-08 00:04, for the 2026/2027 cycle",
+        "raw_extract": "2026/2027 Chinese Government Scholarship Application\n\n2025-11-08 00:04\n\nThe 2026/2027 Chinese Government Scholarship is now open for application. Online application (www.campuschina.org) and the corresponding application documents should be submitted in the system before February 8, 2026. There is no need to send paper materials to the embassy.\n\nTime Frames\n\n1) From now on to February 8, 2026\n\nApplicants check the website (www.campuschina.org) for information about Chinese universities and scholarship programs, contact their favorite Chinese universities and obtain the Pre-Admission Documents, submit their online application. Estonian Agency Number is 2331, The study abroad program is of type A.\n\n2) February 9 to February 28, 2026\n\nThe embassy organises the interview, and sends all recommended applications to China Scholarship Council for final review.",
+        "exact_deadline_wording": "Online application (www.campuschina.org) and the corresponding application documents should be submitted in the system before February 8, 2026.",
+        "confidence": "MEDIUM",
+        "notes": "The notice is Estonia-specific (Estonian Agency Number 2331) but explicitly confirms the programme type in the record's title: 'The study abroad program is of type A'. The deadline it publishes, 8 February 2026, is in the past as of the 2026-10-05 retrieval date, so per brief section 6 the stale date is not written and not moved to the next cycle. The embassy's own Notice index (fetched) was checked for a 2027/2028 cycle notice: the 2026/2027 notice dated 2025-11-08 is still the most recent Chinese Government Scholarship notice listed, so no current or future deadline is published. The record is flagged 'quarantined' in the shard; that DB flag was not acted on, only reported. Confidence MEDIUM because the deadline is an embassy-channel deadline for one country route rather than a CSC-wide deadline, and because the authoritative CSC portal could not be reached (see examined)."
+      },
+      "field_mapping": {
+        "deadline_date": "null (published deadline 2026-02-08 is expired; no 2027/2028 cycle deadline published as of 2026-10-05)",
+        "deadline_precision": "exact",
+        "deadline_display": "Online application (www.campuschina.org) and the corresponding application documents should be submitted in the system before February 8, 2026."
+      },
+      "examined": [
+        "https://ee.china-embassy.gov.cn/eng/tzygg/",
+        "https://www.campuschina.org/"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.campuschina.org/",
+          "reason": "Fetch attempt failed with a transport error (page not retrievable), so no live CSC-system deadline could be read. Recorded as examined, not as evidence."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 310,
+      "title": "Canada Postdoctoral Research Award (CPRA)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Application deadline: September 10, 2026 (8:00 p.m. eastern)",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://sshrc-crsh.canada.ca/en/funding/opportunities/canada-postdoctoral-research-award-program.aspx",
+        "source_type": "official_government_page",
+        "publisher": "Social Sciences and Humanities Research Council (SSHRC), Government of Canada",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "as_of": "Page 'Date modified: 2026-07-31'; lists the September 2026 Competition and the September 2025 Competition only",
+        "raw_extract": "## Competitions\n\n2026\n\n### September 2026 Competition\n\n-   **Application deadline:** September 10, 2026 (8:00 p.m. eastern)\n-   **Value and duration:** $70,000 per year for 2 years\n\n2025\n\n### September 2025 Competition\n\n-   **Application deadline:** September 11, 2025 (8:00 p.m. eastern)",
+        "exact_deadline_wording": "Application deadline: September 10, 2026 (8:00 p.m. eastern)",
+        "confidence": "HIGH",
+        "notes": "The SSHRC deadline for the 2026 competition, 10 September 2026, is in the past as of the 2026-10-05 retrieval date while the record is carried as active, so per brief section 6 this is expired_mismatch: the stale date is not written and not rolled to 2027. The official NSERC tri-agency CPRA page was fetched and states the recurring, year-less pattern 'Application deadline - CIHR: September 16 / NSERC: October 17 / SSHRC: September 10', which corroborates the SSHRC figure for the same deadline and is NOT a conflict; it still carries no year for a future cycle, so it cannot be converted into 2027-09-10. The SSHRC page lists no 2027 competition, so no future date exists to write."
+      },
+      "field_mapping": {
+        "deadline_date": "null (published deadline 2026-09-10 is expired for an active record - do not write, do not roll to 2027)",
+        "deadline_precision": "exact",
+        "deadline_display": "Application deadline: September 10, 2026 (8:00 p.m. eastern)"
+      },
+      "examined": [
+        "https://www.nserc-crsng.gc.ca/Students-Etudiants/PD-NP/cpra-bprc_eng.asp"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 456,
+      "title": "African Research Universities Alliance (ARUA) Scholarship",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "The application round for the ARUA Scholarship usually opens in early February every year.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and-awards/african-research-universities-alliance-arua-scholarship",
+        "source_type": "official_university_page",
+        "publisher": "Lund University",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "as_of": "Page footer: 'Last updated: 26 Aug 2026'; no cycle-specific round is announced",
+        "raw_extract": "### Application period\n\nThe application round for the ARUA Scholarship usually opens in early February every year.\n\nApplicants who have completed an application for an international degree programme at Lund University as their first choice will be notified by email when the scholarship application period opens.\n\nYou will not be able to apply until you have received the email with the link to the scholarship application portal in February.\n\n(How to apply, same page) Once you have received the email with the link to the scholarship application portal in February, you can apply for an ARUA Scholarship.",
+        "exact_deadline_wording": "The application round for the ARUA Scholarship usually opens in early February every year.",
+        "confidence": "HIGH",
+        "notes": "The official page describes recurring annual timing for the scholarship round and publishes no closing date at all, and no portal link/email invitation for the current year is posted. Semantics therefore ANNUAL with deadline_date null; the February wording is an opening, never converted into a date. Two other dates on the same page were deliberately NOT used: 'The application deadline for studies is 15 January and the deadline for the application fee and supporting documents is in early February' belongs to the degree-programme application at universityadmissions.se, i.e. a different process from the ARUA scholarship round (brief section 5)."
+      },
+      "field_mapping": {
+        "deadline_date": "null (annual round, no published closing date; must not be dated)",
+        "deadline_precision": "recurring",
+        "deadline_display": "The application round for the ARUA Scholarship usually opens in early February every year."
+      },
+      "examined": [],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 622,
+      "title": "World in Serbia Project Scholarships of the Government of the Republic of Serbia",
+      "outcome": "conflicting",
+      "deadline_semantics": "CONFLICTING",
+      "deadline_date": null,
+      "deadline_display": "The deadline for submitting application forms with supporting documentation is no later than 1st June 2026.",
+      "deadline_precision": "varies",
+      "source": {
+        "url": "https://www.prosveta.gov.rs/wp-content/uploads/2026/05/WORLD-IN-SERBIA-PROJECT-DESCRIPTION-2026-2027-2028.pdf",
+        "source_type": "official_government_page",
+        "publisher": "Ministry of Education, Science and Technological Development of the Republic of Serbia",
+        "retrieved_at": "2026-10-05T15:32:19Z",
+        "as_of": "Document dated 'Belgrade, February 2026'; project description for Serbian-language study in 2026/2027 and enrolment in 2027/2028",
+        "raw_extract": "Application Deadline\n\nThe deadline for submitting application forms with supporting documentation is no later than 1 st  June 2026. Documentation that is not translated in to English or Serbian will not be considered.\n\nCandidates should submit their applications via the link https://docs.google.com/forms/d/e/1FAIpQLSevQItl0KUaeWDHfofPfa539kcV_T2Gb0fuoUiCOC1KkPbt5A/viewform?usp=header, and send the scanned original documentation, as well as translations into Serbian or English certified by an authorized person, to the email address worldinserbia@prosveta.gov.rs.\n\n(Nomination section, same document) The Ministry of Foreign Affairs transmits to the Ministry of Education the lists of nominated candidates, together with the application forms of all applicants, no later than 10 June. ... The decision on the final list of endorsed candidates, adopted by the Minister responsible for education no later than 26 June, is transmitted by the Ministry of Education to the Ministry of Foreign Affairs for the purpose of notifying the relevant embassies and all applicants.",
+        "exact_deadline_wording": "The deadline for submitting application forms with supporting documentation is no later than 1st June 2026.",
+        "confidence": "MEDIUM",
+        "notes": "Live PDF at the record's official_source_url was fetched and its text extracted locally. It gives a candidate deadline of 1 June 2026. The same ministry's live 'World in Serbia' page on the identical official domain gives a different candidate deadline for what appears to be the same 2026 round: window 10-26 June 2026, closing 26 June 2026. Both are official government sources on prosveta.gov.rs, they are not different programmes (the PDF's own internal milestones - MFA lists by 10 June, ministerial decision by 26 June, embassy notification 27 June-4 July - line up with the web page's 26 June / 3 July dates), so this is a genuine disagreement about the SAME deadline and is reported as CONFLICTING per brief section 6. Additionally, both candidate dates are already in the past as of the 2026-10-05 retrieval date, so no date could be written even if the sources agreed. Nothing was inferred for a 2027 cycle; the call is annual ('Every year, the Ministry of Education announces a competition') but no 2027 date is published anywhere fetched."
+      },
+      "field_mapping": {
+        "deadline_date": "null (two official sources disagree - 2026-06-01 in the project description PDF vs 2026-06-26 on the ministry call page; both expired as of 2026-10-05)",
+        "deadline_precision": "varies",
+        "deadline_display": "Conflicting official wording: PDF - 'The deadline for submitting application forms with supporting documentation is no later than 1st June 2026.'; ministry call page - 'Deadline for candidate application ... is no later than Јune 26th 2026' (window 10-26 June 2026)."
+      },
+      "examined": [
+        "https://welcometoserbia.gov.rs/scholarships",
+        "https://prosveta.gov.rs/skolski-i-studentski-zivot/stipendije/stipendije-srbije-stranim-studentima/stipendije-svet-u-srbiji/"
+      ],
+      "conflicting_sources": [
+        {
+          "url": "https://prosveta.gov.rs/skolski-i-studentski-zivot/stipendije/stipendije-srbije-stranim-studentima/stipendije-svet-u-srbiji/",
+          "publisher": "Ministry of Education, Science and Technological Development of the Republic of Serbia",
+          "retrieved_at": "2026-10-05T15:32:00Z",
+          "raw_extract": "Application deadline\n\nDeadline for candidate application via the [link] is no later than Јune 26th 2026, and the submission of the List of proposed candidates by the competent diplomatic and consular mission of the Republic of Serbia to the Ministry of Foreign Affairs of the Republic of Serbia is no later than July 3rd, 2026.",
+          "serbian_original": "Рок за пријаву кандидата путем линка ... је од 10. јуна 26. јуна 2026. године, а достављање Листе са предложеним кандидатима од стране надлежног дипломатско-конзуларног представништва Републике Србије Министарству спољних послова Републике Србије је најкасније до 3. јула 2026. године."
+        }
+      ],
+      "rejected_sources": []
+    }
+  ],
+  "summary": {
+    "records": 7,
+    "recovered": 2,
+    "unknown": 1,
+    "conflicting": 1,
+    "expired_mismatch": 3,
+    "deadline_dates_written": 0,
+    "semantics": {
+      "EXACT": 3,
+      "MONTH": 0,
+      "ANNUAL": 2,
+      "ROLLING": 0,
+      "UNKNOWN": 1,
+      "CONFLICTING": 1
+    },
+    "note": "All 7 records were researched against live official pages; every value carries a fetched URL plus a verbatim quote. No calendar date was written for this shard: three official pages publish an explicit deadline that has already passed for records carried as open/active (brief section 6 expired_mismatch), two describe recurring annual cycles with no fixed date, one has no published call date at all, and one has two official sources disagreeing on the same 2026 deadline."
+  }
+}

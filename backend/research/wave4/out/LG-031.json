@@ -1,0 +1,264 @@
+{
+  "shard_id": "LG-031",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 302,
+      "title": "University of Porto Scholarships and Funding (SASUP, Merit and Scientific Scholarships)",
+      "outcome": "recovered",
+      "image_url": "https://manualdeimagem.up.pt/files/uportofundotransparente.jpg",
+      "image_source_url": "https://manualdeimagem.up.pt/index37bc.html?/descarga/uporto-logo/",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Asset lives on manualdeimagem.up.pt, the University of Porto's own institutional identity manual ('Identidade e Normas' - Universidade do Porto, subdomain of up.pt). Section 9 'Descarga de ficheiros' > 'U.Porto Logo' publishes the primary brand mark. Verified HTTP 200, image/jpeg, 24618 bytes, measured 500x160 px (declared width='500' height='160'). Rendered and visually confirmed to read 'U.PORTO' in the official wordmark lockup. The record's official_source is 'University of Porto (U.Porto)', so the institutional brand mark is the correct identity."
+      },
+      "source": {
+        "url": "https://manualdeimagem.up.pt/index37bc.html?/descarga/uporto-logo/",
+        "publisher": "Universidade do Porto (University of Porto) - Identidade e Normas institutional identity manual",
+        "retrieved_at": "2026-10-05T15:35:00Z",
+        "raw_extract": "<p><img src='files/uportofundotransparente.jpg' width='500' height='160' /><br />\nU.PORTO Positivo Fundo Transparente <a href=\"files/logos/UPORTO_positivo_fundotransparente.zip\">(ficheiro zip)</a></p>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.up.pt/portal/en/live/student-life/scholarships-and-funding",
+        "https://manualdeimagem.up.pt/index5198.html?/extensoes/sasup/",
+        "https://manualdeimagem.up.pt/files/logosasup_v1.jpg"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.up.pt/portal/static/images/favicons/favicon.ico",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://www.up.pt/portal/en/live/student-life/scholarships-and-funding",
+          "reason": "not an asset - the U.Porto wordmark on this page is an inline <svg> element, not a retrievable image file; no downloadable logo asset is exposed here"
+        },
+        {
+          "url": "https://www.up.pt/portal/static/images/logo-up.png",
+          "reason": "404 - guessed path does not exist"
+        },
+        {
+          "url": "https://www.up.pt/portal/static/images/logo.png",
+          "reason": "404 - guessed path does not exist"
+        },
+        {
+          "url": "https://www.up.pt/portal/static/images/logos/uporto.png",
+          "reason": "404 - guessed path does not exist"
+        },
+        {
+          "url": "https://noticias.up.pt/static/images/logo-up.png",
+          "reason": "404 - guessed path does not exist"
+        }
+      ],
+      "notes": "The record title also names SASUP. U.Porto's identity manual documents SASUP (Servicos de Accao Social da Universidade do Porto) as a brand extension at https://manualdeimagem.up.pt/files/logosasup_v1.jpg (verified 200, 500x200). I did not propose it because the record's official_source is 'University of Porto (U.Porto)' and the institutional U.Porto mark is the unambiguous, lower-risk identity match for 'University of Porto Scholarships and Funding'. A human reviewer may prefer the SASUP mark if per-scheme branding is wanted; that asset is documented above."
+    },
+    {
+      "scholarship_id": 621,
+      "title": "Türkiye Scholarships (Türkiye Bursları) — Government Scholarship Programme of the Presidency of Turks Abroad and Related Communities",
+      "outcome": "recovered",
+      "image_url": "https://www.turkiyeburslari.gov.tr/YTB/images/logo/tb-logo.png",
+      "image_source_url": "https://www.turkiyeburslari.gov.tr/announcements/turkiye-scholarships-2026-applications-121",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Asset is served from the provider's own domain www.turkiyeburslari.gov.tr (official site of the Presidency of Turks Abroad and Related Communities). It is the site-wide programme logo, loaded with alt='Turkiye Burslari' in the primary header nav of every page including this record's official announcement. Verified HTTP 200, image/png, 12463 bytes, measured 410x181 px. Rendered and visually confirmed: red tulip mark + 'TURKIYE / SCHOLARSHIPS / BURSLARI'. Not the favicon (https://cdn.turkiyeburslari.gov.tr/Content/images/fav.png is, and was rejected). Not on the tbbsweb.azureedge.net CDN, so no shared-CDN ambiguity."
+      },
+      "source": {
+        "url": "https://www.turkiyeburslari.gov.tr/announcements/turkiye-scholarships-2026-applications-121",
+        "publisher": "Presidency of Turks Abroad and Related Communities (YTB) - Turkiye Scholarships",
+        "retrieved_at": "2026-10-05T15:35:00Z",
+        "raw_extract": "<div id=\"logo\">\n                        <a href=\"/\">\n                            <span class=\"logo-default\"> <img loading=\"lazy\" id=\"TBLogo\" class=\"img-fluid rounded\" src=\"/YTB/images/logo/tb-logo.png\" alt=\"T\u00fcrkiye Burslar\u0131\" style=\"width:120px\" onmouseover=\"randomHover();\" onmouseout=\"resetState();\" width=\"120px\"></span>\n                            <span class=\"logo-dark\"> <img loading=\"lazy\" id=\"TBLogo1\" class=\"img-fluid rounded\" src=\"/YTB/images/logo/tb-logo1.png\" alt=\"T\u00fcrkiye Burslar\u0131\" style=\"width:120px\" onmouseover=\"randomHover1();\" onmouseout=\"resetState1();\" width=\"120px\"></span>\n                        </a>\n                    </div>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.turkiyeburslari.gov.tr/about/mediaandpresentation",
+        "https://www.turkiyeburslari.gov.tr/about/mediaandpresentation/logo"
+      ],
+      "rejected": [
+        {
+          "url": "https://cdn.turkiyeburslari.gov.tr/Content/images/fav.png",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://storagetbbsweb.blob.core.windows.net/tbbsweb/LARGE/50x70-afis-ingilizce_page-0001-251229083835699.jpg",
+          "reason": "announcement hero image - a scan/crop of the 2026 application poster, decorative promotional art rather than a brand mark"
+        },
+        {
+          "url": "https://tbbsweb.azureedge.net/tbbsweb/Page/About/medyatanitim/promotionmaterial/tb-logo.png",
+          "reason": "not the primary domain - this is the same logo but served from the provider's Azure CDN rather than the official gov.tr domain; the equivalent first-party asset exists at /YTB/images/logo/tb-logo.png so the CDN copy is unnecessary"
+        }
+      ],
+      "notes": "The provider publishes an explicit official brand-asset page at https://www.turkiyeburslari.gov.tr/about/mediaandpresentation/logo with downloadable tb-logo.pdf/.jpg/.png (section 9 equivalent: 'Logo'). I deliberately pointed image_url at the first-party gov.tr copy of the same mark rather than the azureedge.net promotional-material copy, so official_domain holds without a CDN exception."
+    },
+    {
+      "scholarship_id": 692,
+      "title": "Türkiye Scholarships - IsDB Joint Scholarship Program",
+      "outcome": "recovered",
+      "image_url": "https://www.turkiyeburslari.gov.tr/YTB/images/logo/tb-logo.png",
+      "image_source_url": "https://www.turkiyeburslari.gov.tr/announcements/ytb-islamic-development-bank-isdb-joint-scholarship-program-2026-applicaiton-period-122",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "The joint programme is administered as a Türkiye Scholarships joint scholarship: the official announcement states applications are accepted only through the Türkiye Scholarships official website, and the only brand mark on the official page is the Türkiye Scholarships programme logo on the provider's own domain. No separate YTB-IsDB joint-programme logo exists anywhere on turkiyeburslari.gov.tr. Confidence is MEDIUM rather than HIGH because the mark is the administering programme's mark, not a bespoke joint-programme mark."
+      },
+      "source": {
+        "url": "https://www.turkiyeburslari.gov.tr/announcements/ytb-islamic-development-bank-isdb-joint-scholarship-program-2026-applicaiton-period-122",
+        "publisher": "Presidency of Turks Abroad and Related Communities (YTB) - Turkiye Scholarships",
+        "retrieved_at": "2026-10-05T15:35:00Z",
+        "raw_extract": "The T\u00fcrkiye Scholarships \u2013 IsDB Joint Scholarship Program is co-funded by the Presidency for Turks Abroad and Related Communities (YTB) and the Islamic Development Bank (IsDB). [...] Applications to the joint scholarship program are accepted only through the T\u00fcrkiye Scholarships official website. [...] <div id=\"logo\"><a href=\"/\"><span class=\"logo-default\"> <img loading=\"lazy\" id=\"TBLogo\" class=\"img-fluid rounded\" src=\"/YTB/images/logo/tb-logo.png\" alt=\"T\u00fcrkiye Burslar\u0131\"",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://www.turkiyeburslari.gov.tr/about/mediaandpresentation/logo",
+        "https://www.turkiyeburslari.gov.tr/announcements/turkiye-scholarships-2026-applications-121"
+      ],
+      "rejected": [
+        {
+          "url": "https://cdn.turkiyeburslari.gov.tr/Content/images/fav.png",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://storagetbbsweb.blob.core.windows.net/tbbsweb/LARGE/isdb-afis-2026-revised_page-0001-260129135133358.jpg",
+          "reason": "announcement hero image - a scan/crop of the 2026 IsDB joint-programme poster, decorative promotional art rather than a brand mark"
+        },
+        {
+          "url": "https://storagetbbsweb.blob.core.windows.net/tbbsweb/LARGE/isdb-afis-2026-revised-2_page-00011-260129135510048.jpg",
+          "reason": "in-body poster scan, decorative promotional art rather than a brand mark"
+        },
+        {
+          "url": "https://tbbsweb.azureedge.net/tbbsweb/SMALL/whatsapp-image-2026-02-02-at-10.41.07-1-260202114733241.jpeg",
+          "reason": "meeting photo thumbnail - photograph, not a logo"
+        }
+      ],
+      "notes": "The record is a partnered sub-programme of Türkiye Scholarships. I fetched the official announcement and the official brand-asset page; the provider publishes exactly one programme logo and no YTB/IsDB co-branded mark, so the Türkiye Scholarships mark is the correct and only official identity available. Marked MEDIUM so a reviewer can judge the co-branding nuance."
+    },
+    {
+      "scholarship_id": 715,
+      "title": "Heydar Aliyev International Education Grant (Study in Azerbaijan project)",
+      "outcome": "recovered",
+      "image_url": "https://www.studyinazerbaijan.edu.az/images/logo.png",
+      "image_source_url": "https://www.studyinazerbaijan.edu.az/",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "studyinazerbaijan.edu.az is the Ministry of Science and Education of the Republic of Azerbaijan's own official subdomain for the 'Study in Azerbaijan' project (linked from the ministry's own project page at https://edu.gov.az/en/programmes/study-in-azerbaijan-layihesi and from its og:site_name). The header logo is loaded as <img alt=\"logo\"> from /images/logo.png. Verified HTTP 200, image/png, 14427 bytes, measured 456x288 px. Rendered and visually confirmed: navy 'Study in AZERBAIJAN' wordmark with the red Azerbaijani eight-pointed star. Not the ministry favicon, not a social icon, not a hero image."
+      },
+      "source": {
+        "url": "https://www.studyinazerbaijan.edu.az/",
+        "publisher": "Ministry of Science and Education of the Republic of Azerbaijan - Study in Azerbaijan project",
+        "retrieved_at": "2026-10-05T15:35:00Z",
+        "raw_extract": "<a href=\"/\"><img alt=\"logo\" loading=\"lazy\" width=\"114\" height=\"72\" decoding=\"async\" data-nimg=\"1\" style=\"color:transparent\" srcSet=\"/_next/image?url=%2Fimages%2Flogo.png&amp;w=128&amp;q=75 1x, /_next/image?url=%2Fimages%2Flogo.png&amp;w=256&amp;q=75 2x\" src=\"/_next/image?url=%2Fimages%2Flogo.png&amp;w=256&amp;q=75\"/></a>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://edu.gov.az/en/programmes/study-in-azerbaijan-layihesi",
+        "https://www.studyinazerbaijan.edu.az/scholarships"
+      ],
+      "rejected": [
+        {
+          "url": "https://edu.gov.az/uploads/STUDY%20%C4%B0N%20AZERBA%C4%B0JAN.svg",
+          "reason": "not a logo - fetched the SVG; it is a generic 512x512 graduation-cap pictogram (two <path> elements, 1038 bytes) used as the ministry page's og:image share card. A generic education icon, not the programme's brand mark."
+        },
+        {
+          "url": "https://edu.gov.az/uploads/layiheler/2025/en/Study%20in%20Azerbaijan.jpg",
+          "reason": "decorative hero art - verified 1920x1080 full-bleed banner rendered at 800px on the ministry project page, not a logo"
+        },
+        {
+          "url": "https://edu.gov.az/site/views/site/images/favicon/favicon.ico",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://edu.gov.az/site/views/site/images/favicon/apple-touch-icon.png",
+          "reason": "apple-touch-icon"
+        },
+        {
+          "url": "https://edu.gov.az/site/views/site/images/favicon/safari-pinned-tab.svg",
+          "reason": "safari-pinned-tab"
+        },
+        {
+          "url": "https://edu.gov.az/uploads/elm-tehsil-naziriyi-logo-en.png",
+          "reason": "wrong identity - this is the Ministry of Science and Education's own institutional logo in its site header, i.e. the ministry's mark rather than the 'Study in Azerbaijan' programme mark"
+        },
+        {
+          "url": "https://edu.gov.az/uploads/icon/sosial-media/35/www.png",
+          "reason": "social media share icon, not an asset"
+        },
+        {
+          "url": "https://www.studyinazerbaijan.edu.az/_next/static/media/down.6afa80fa.svg",
+          "reason": "UI chrome - dropdown chevron icon"
+        }
+      ],
+      "notes": "The ministry's own project page exposes no programme logo, which is why I followed the hierarchy up to the programme's own official site. I pointed image_url at the static original (/images/logo.png) rather than the Next.js optimiser URL (/_next/image?url=...) so the file is stable and not query-string dependent. The white variant /images/logowhite.png is the reverse-for-dark-background version of the same mark."
+    },
+    {
+      "scholarship_id": 725,
+      "title": "Mastercard Foundation Scholars Program at the University of Rwanda (2026/2027 Cohort 5, Undergraduate)",
+      "outcome": "recovered",
+      "image_url": "https://mcfsprecruitment.ur.ac.rw/ug-recruitment/assets/img/mcf-logo.png",
+      "image_source_url": "https://mcfsprecruitment.ur.ac.rw",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "mcfsprecruitment.ur.ac.rw is the University of Rwanda's own subdomain and the official online recruitment site for this exact programme; the asset is loaded as the site-wide brand mark in its header with alt='Mastercard Foundation Scholars Program'. Verified HTTP 200, image/png, 28798 bytes, measured 229x166 px. Rendered and visually confirmed: red/orange Mastercard circles + 'mastercard foundation' + 'Scholars Program'. Confidence is MEDIUM only because 229x166 is a small header-size asset; every other validation axis is clean. The page carries an onerror text fallback reading 'Mastercard Foundation Scholars Program', confirming the asset's intended identity."
+      },
+      "source": {
+        "url": "https://mcfsprecruitment.ur.ac.rw",
+        "publisher": "University of Rwanda - Mastercard Foundation Scholars Program (Scholars Online Recruitment)",
+        "retrieved_at": "2026-10-05T15:35:00Z",
+        "raw_extract": "<a href=\"./\" aria-label=\"Mastercard Foundation Scholars Program home\">\n      <img src=\"ug-recruitment/assets/img/mcf-logo.png\" alt=\"Mastercard Foundation Scholars Program\"\n           onerror=\"this.outerHTML='<span class=&quot;fallback&quot;>Mastercard Foundation Scholars Program</span>'\">\n    </a>",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://mcfsprecruitment.ur.ac.rw/ug-recruitment/assets/img/ur-logo.png"
+      ],
+      "rejected": [
+        {
+          "url": "https://mcfsprecruitment.ur.ac.rw/ug-recruitment/assets/img/ur-logo.png",
+          "reason": "not proposed - valid official asset but it is the partner institution's mark ('UNIVERSITY of RWANDA'), not the scholarship programme's mark; documented here as the alternative"
+        }
+      ],
+      "notes": "The record's official_source is 'University of Rwanda, in partnership with the Mastercard Foundation'. I chose the programme mark over the University of Rwanda partner mark because the scholarship being catalogued is the Mastercard Foundation Scholars Program. ur-logo.png (verified 200, 224x87 px, official, reads 'UNIVERSITY of RWANDA') is a defensible alternative if a reviewer prefers the host institution's mark."
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "shard_id": "LG-013",
+  "topic": "logo",
+  "hosts": [
+    "easl.eu",
+    "icssr.org",
+    "studyinsaudi.sa",
+    "www.master-europeanforestry.eu"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 348,
+      "title": "Erasmus Mundus European Forestry (MSc EF) Scholarship",
+      "official_source": "Master Europeanforestry.Eu",
+      "official_source_url": "https://www.master-europeanforestry.eu",
+      "catalogue_url": null,
+      "country": "Finland",
+      "image_evaluation_status": "source_blocked"
+    },
+    {
+      "id": 517,
+      "title": "ICSSR Participation in International Seminar Abroad (Travel Grant Scheme)",
+      "official_source": "Indian Council of Social Science Research (ICSSR), Ministry of Education, Government of India",
+      "official_source_url": "https://icssr.org/participation-international-seminar-abroad",
+      "catalogue_url": "https://icssr.org/international-collaboration",
+      "country": "India",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 518,
+      "title": "ICSSR Financial Assistance for Data Collection Abroad",
+      "official_source": "Indian Council of Social Science Research (ICSSR), Ministry of Education, Government of India",
+      "official_source_url": "https://icssr.org/data-collection-abroad",
+      "catalogue_url": "https://icssr.org/international-collaboration",
+      "country": "India",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 578,
+      "title": "EASL Mobility / Research Fellowship Programme",
+      "official_source": "European Association for the Study of the Liver (EASL)",
+      "official_source_url": "https://easl.eu/fellowship/mobility-research-fellowship-programme",
+      "catalogue_url": "https://easl.eu/fellowships",
+      "country": "Switzerland",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 619,
+      "title": "Study in Saudi Scholarship Programme (Fully Funded Scholarships for International Students)",
+      "official_source": "Ministry of Education, Kingdom of Saudi Arabia (Study in Saudi platform)",
+      "official_source_url": "https://studyinsaudi.sa/en/VisaOptions",
+      "catalogue_url": "https://studyinsaudi.sa/en/Institutions",
+      "country": "Saudi Arabia",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

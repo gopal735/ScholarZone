@@ -1,0 +1,58 @@
+{
+  "shard_id": "LG-031",
+  "topic": "logo",
+  "hosts": [
+    "mcfsprecruitment.ur.ac.rw",
+    "www.edu.gov.az",
+    "www.turkiyeburslari.gov.tr",
+    "www.up.pt"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 302,
+      "title": "University of Porto Scholarships and Funding (SASUP, Merit and Scientific Scholarships)",
+      "official_source": "University of Porto (U.Porto)",
+      "official_source_url": "https://www.up.pt/portal/en/live/student-life/scholarships-and-funding",
+      "catalogue_url": "https://www.up.pt/portal/en/live/student-life/scholarships-and-funding",
+      "country": "Portugal",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 621,
+      "title": "Türkiye Scholarships (Türkiye Bursları) — Government Scholarship Programme of the Presidency of Turks Abroad and Related Communities",
+      "official_source": "Türkiye Scholarships — Presidency of Turks Abroad and Related Communities (YTB), Republic of Türkiye",
+      "official_source_url": "https://www.turkiyeburslari.gov.tr/announcements/turkiye-scholarships-2026-applications-121",
+      "catalogue_url": "https://www.turkiyeburslari.gov.tr/scholarshipsprograms",
+      "country": "Turkey",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 692,
+      "title": "Türkiye Scholarships - IsDB Joint Scholarship Program",
+      "official_source": "Presidency for Turks Abroad and Related Communities (YTB)",
+      "official_source_url": "https://www.turkiyeburslari.gov.tr/announcements/ytb-islamic-development-bank-isdb-joint-scholarship-program-2026-applicaiton-period-122",
+      "catalogue_url": "https://www.turkiyeburslari.gov.tr/partneredprograms",
+      "country": "Turkey",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 715,
+      "title": "Heydar Aliyev International Education Grant (Study in Azerbaijan project)",
+      "official_source": "Ministry of Science and Education of the Republic of Azerbaijan",
+      "official_source_url": "https://www.edu.gov.az/en/programmes/study-in-azerbaijan-layihesi",
+      "catalogue_url": "https://studyinazerbaijan.edu.az/scholarships",
+      "country": "Azerbaijan",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 725,
+      "title": "Mastercard Foundation Scholars Program at the University of Rwanda (2026/2027 Cohort 5, Undergraduate)",
+      "official_source": "University of Rwanda, in partnership with the Mastercard Foundation",
+      "official_source_url": "https://mcfsprecruitment.ur.ac.rw",
+      "catalogue_url": null,
+      "country": "Rwanda",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

@@ -1,0 +1,292 @@
+{
+  "shard_id": "DL-023",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 112,
+      "title": "India Science and Research Fellowship (ISRF) Programme",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "INDIA SCIENCE AND RESEARCH FELLOWSHIP (2025-2026) - (Opens on 31 December 2025) - Last date of proposal submission is 31 March 2026",
+      "deadline_precision": "unknown",
+      "observed_deadline_date": "2026-03-31",
+      "observed_deadline_expired": true,
+      "source": {
+        "url": "https://insaindia.res.in/pdf/Announcement-of-ISRF-Call-2025-26.pdf",
+        "source_type": "official_government_page",
+        "publisher": "Department of Science and Technology (DST), Ministry of Science and Technology, Government of India; published by the Indian National Science Academy (INSA)",
+        "retrieved_at": "2026-10-05T15:36:58Z",
+        "as_of": "India Science and Research Fellowship (2025-2026) cycle",
+        "raw_extract": "Department of Science and Technology (DST) / Ministry of Science and Technology / Government of India / INDIA SCIENCE AND RESEARCH FELLOWSHIP (2025-2026) / (Opens on 31 December 2025) / (for Afghanistan, Bangladesh, Bhutan, Maldives, Myanmar, Nepal, Sri Lanka and Thailand) / Last date of proposal submission is 31 March 2026",
+        "exact_deadline_wording": "Last date of proposal submission is 31 March 2026",
+        "confidence": "HIGH",
+        "notes": "Reached via the live INSA ISRF call page https://insaindia.res.in/isrf-call-2025-26/ which lists 'Announcement of ISRF Call 2025-26' -> https://insaindia.res.in/pdf/Announcement-of-ISRF-Call-2025-26.pdf (PDF text extracted locally; the PDF itself was downloaded live from the official domain). The only published submission deadline is 31 March 2026, which is 6+ months before the retrieval date of 2026-10-05. The INSA homepage ticker lists only the 2025-26 and 2024-25 ISRF calls; no 2026-27 call is published. deadline_date is left null per the brief's expired_mismatch rule: the stale date is recorded above but is not written and is not silently moved to 2027."
+      },
+      "field_mapping": {
+        "deadline_date": "null (source deadline 2026-03-31 has expired; do not write)",
+        "deadline_precision": "unknown",
+        "deadline_display": "INDIA SCIENCE AND RESEARCH FELLOWSHIP (2025-2026) - (Opens on 31 December 2025) - Last date of proposal submission is 31 March 2026"
+      },
+      "examined": [
+        "https://www.insaindia.res.in",
+        "https://insaindia.res.in/isrf-call-2025-26/",
+        "https://insaindia.res.in/pdf/Announcement-of-ISRF-Call-2025-26.pdf",
+        "https://insaindia.res.in/isrf-call-2026-27/ (HTTP 307 redirect loop, no content)",
+        "https://insaindia.res.in/isrf-call-2026-2027/ (HTTP 307 redirect loop, no content)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://insaindia.res.in/?page_id=1010",
+          "reason": "HTTP 307 on every fetch attempt; announcements index could not be read directly. The homepage ticker was used instead and lists no ISRF call newer than 2025-26."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 117,
+      "title": "Fellowship for International Research Scholars in Technology at IIT Hyderabad (FIRST@IITH)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://ir.iith.ac.in/first",
+        "source_type": "official_university_page",
+        "publisher": "Indian Institute of Technology Hyderabad (IITH), Office of International Relations",
+        "retrieved_at": "2026-10-05T15:36:58Z",
+        "as_of": null,
+        "raw_extract": "Not Found\n\nThe requested URL was not found on this server.\n\nApache/2.4.41 (Ubuntu) Server at ir.iith.ac.in Port 443",
+        "exact_deadline_wording": "",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url is dead: https://ir.iith.ac.in/first returns HTTP 404 (confirmed twice, once via plain fetch and once via a full browser load). The Office of International Relations site at https://ir.iith.ac.in/ has been rebuilt as a single-page app and contains no FIRST content at all: a rendered-DOM search for 'FIRST', 'fellowship', 'deadline' and 'scholarship' returned zero matches, and the only navigation is About Us / For Students / For Faculty / Partners / Japan Desk / Life at IITH / Downloads / Gallery / Contact Us. No official page on iith.ac.in or ir.iith.ac.in publishes a current FIRST@IITH deadline, so no value could be established. The only live official IITH statement about the scheme is a March 2023 news item describing the fifth (June/July 2023) round and saying 'IITH invites the Applications all through the Year'; that is a superseded 2023 round whose detail page (ir.iith.ac.in/first.html) is now also 404, so it was NOT used to assert ROLLING semantics for the current cycle."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "(empty - no current official deadline is published)"
+      },
+      "examined": [
+        "https://ir.iith.ac.in/first (HTTP 404)",
+        "https://ir.iith.ac.in/ (live SPA, no FIRST content)",
+        "https://ir.iith.ac.in/first.html (HTTP 404)",
+        "https://ir.iith.ac.in/first/ (HTTP 404)",
+        "https://ir.iith.ac.in/FIRST (HTTP 404)",
+        "https://ir.iith.ac.in/downloads (HTTP 404)",
+        "https://ir.iith.ac.in/downloads/ (HTTP 404)",
+        "https://iith.ac.in/news/2023/03/13/Fellowship-for-International-Research-Scholars-in-Technology (live official, but describes only the superseded 2023 round)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.prepnplaced.com/apprenticeships/research-fellowships",
+          "reason": "Third-party scholarship aggregator, not an official IITH domain. Also its entries concern unrelated IIT Hyderabad staff/research roles, not FIRST@IITH."
+        },
+        {
+          "url": "https://www.hcisingapore.gov.in/pdf/notice/FIRST-APPLICATION_FLYER.pdf",
+          "reason": "Government of Singapore embassy copy of a FIRST flyer. Third-party republication of an IIT Hyderabad document, and an undated flyer carries no current cycle deadline. Not fetched."
+        },
+        {
+          "url": "https://indembkathmandu.gov.in/storage/images/tabs/5185696.pdf",
+          "reason": "Nepal embassy third-party republication of a FIRST flyer, not an official IIT Hyderabad source. Not fetched."
+        },
+        {
+          "url": "https://eoibogota.gov.in/section/news/fellowship-for-international-research-scholars-in-technology-at-iit-hyderabad",
+          "reason": "Indian embassy news item dated 2021 describing a 2021 round. Not a current cycle deadline and not the awarding institution's own page."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 160,
+      "title": "University of Basel Financial Aid and Scholarships",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Application for the fall semester: Until June 15 (*). Application for the spring semester: Until January 15 (*).",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.unibas.ch/en/Studies/Advice-and-Support/Funding/Scholarships/Submission-Deadlines.html",
+        "source_type": "official_university_page",
+        "publisher": "University of Basel",
+        "retrieved_at": "2026-10-05T15:36:58Z",
+        "as_of": null,
+        "raw_extract": "Submission Deadlines\nUniversity scholarship funds, Kranken- und Unfallfonds, Legat Grobe, Lichtenstein Foundation\nApplication for the fall semester\nUntil June 15 (*)\n \nApplication for the spring semester\nUntil January 15 (*)\nFurther information",
+        "exact_deadline_wording": "Application for the fall semester — Until June 15 (*) / Application for the spring semester — Until January 15 (*)",
+        "confidence": "MEDIUM",
+        "notes": "The main Scholarships page (https://www.unibas.ch/en/Studies/Advice-and-Support/Funding/Scholarships.html) publishes no deadline itself and links to this dedicated Submission Deadlines page; it states 'the scholarship committee of the Senate grants supplementary scholarships for students enrolled at the University of Basel' and directs cantonal funding enquiries to the scholarship office of the parents' canton of residence. The Submission Deadlines page gives two semester-dependent cut-offs for a named group of funds with NO year stated, so they are recurring annual dates and no YYYY-MM-DD can be written without inventing a year. The '(*)' marker has no footnote text rendered on the page (checked the page text and title/footnote attributes), so its meaning could not be established - hence MEDIUM confidence. Classified ANNUAL/recurring rather than MONTH because the source states a day as well as a month."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "recurring",
+        "deadline_display": "Application for the fall semester: Until June 15 (*). Application for the spring semester: Until January 15 (*)."
+      },
+      "examined": [
+        "https://www.unibas.ch/en/Studies/Advice-and-Support/Funding/Scholarships.html",
+        "https://www.unibas.ch/en/Studies/Advice-and-Support/Funding/Scholarships/Submission-Deadlines.html"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 473,
+      "title": "AAUW International Fellowships",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Applications Open: August 17, 2026, at 9:00am ET. Applications Close: September 17, 2026, at 5:00pm ET.",
+      "deadline_precision": "unknown",
+      "observed_deadline_date": "2026-09-17",
+      "observed_deadline_expired": true,
+      "source": {
+        "url": "https://www.aauw.org/resources/programs/fellowships-grants/aauw-international-fellowships",
+        "source_type": "official_scholarship_page",
+        "publisher": "American Association of University Women (AAUW)",
+        "retrieved_at": "2026-10-05T15:36:58Z",
+        "as_of": "2027-28 academic year",
+        "raw_extract": "AAUW strongly encourages applicants to access the application portal and start their applications well in advance of the deadline to ensure sufficient time to complete and submit all required materials.\n\nApplications Open\nAugust 17, 2026, at 9:00am ET\n\nApplications Close\nSeptember 17, 2026, at 5:00pm ET\n\nAward Notification\nMarch 2027\n\nFirst Stipend Dispersed\nJuly - September 2027\n...\nApplications have closed for the 2027-28 academic year.",
+        "exact_deadline_wording": "September 17, 2026, at 5:00pm ET",
+        "confidence": "HIGH",
+        "notes": "The official page returned HTTP 403 to plain fetchers and was read by rendering it in a browser (HTTP 200, title 'International Fellowships – AAUW : Empowering Women Since 1881'). The page's own Timeline table gives the close date as September 17, 2026, at 5:00pm ET, and explicitly states 'Applications have closed for the 2027-28 academic year.' That close date precedes the retrieval date of 2026-10-05, so per the brief the stale date is recorded here but not written as deadline_date, and it has NOT been advanced to a 2027-28 cycle. Note the deadline_display above is transcribed from the page's own Timeline values."
+      },
+      "field_mapping": {
+        "deadline_date": "null (source deadline 2026-09-17 has expired; do not write)",
+        "deadline_precision": "unknown",
+        "deadline_display": "Applications Open: August 17, 2026, at 9:00am ET. Applications Close: September 17, 2026, at 5:00pm ET."
+      },
+      "examined": [
+        "https://www.aauw.org/resources/programs/fellowships-grants/aauw-international-fellowships (HTTP 403 on plain fetch; HTTP 200 when rendered)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.aauw.org/resources/programs/international-fellowships",
+          "reason": "An older AAUW page describing the 2026-27 award year ('Fellowship Application Submission Period | DEADLINE EXTENDED October 7, 2025'). Superseded by the current 2027-28 timeline page. Identified only via search and not used as evidence."
+        },
+        {
+          "url": "https://www.aauw.org/resources/programs/fellowships-grants/funding-opportunities/international-fellowships",
+          "reason": "Same superseded 2026-27 content ('August 1, 2025 - September 30, 2025'). Not used as evidence."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 615,
+      "title": "Massey University Doctoral Scholarship",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Status: Closed. Applications open: 1 August 2026. Closing date: 1 October 2026.",
+      "deadline_precision": "unknown",
+      "observed_deadline_date": "2026-10-01",
+      "observed_deadline_expired": true,
+      "source": {
+        "url": "https://www.massey.ac.nz/study/scholarships-and-awards/massey-university-doctoral-scholarship",
+        "source_type": "official_university_page",
+        "publisher": "Massey University",
+        "retrieved_at": "2026-10-05T15:36:58Z",
+        "as_of": "2026 round (applications open 1 August 2026, close 1 October 2026)",
+        "raw_extract": "Massey University Doctoral Scholarships are awarded to high achieving students to provide financial support for their doctoral study.\n\nScholarship overview\n\nStatus: Closed\n\nApplication dates\n\nApplications open: 1 August 2026\n\nClosing date: 1 October 2026\n\nApplications open 1 August 2026 and close 1 October 2026.",
+        "exact_deadline_wording": "Closing date: 1 October 2026",
+        "confidence": "HIGH",
+        "notes": "The live official page shows Status: Closed with a closing date of 1 October 2026, four days before the retrieval date of 2026-10-05. The stale date is recorded but not written, and not moved to the next year. IMPORTANT: the live page publishes only this single 2026 round. I could NOT verify the shard's cached claim of a second annual closing date of 1 April anywhere on the official page, so no 1 April date is asserted here. The scholarship regulations PDF (https://www.massey.ac.nz/documents/1464/MU_Doctoral_Scholarship.pdf, marked 9/03/2026) refers to 'the time of application closing date' without stating one, so it adds no date."
+      },
+      "field_mapping": {
+        "deadline_date": "null (source deadline 2026-10-01 has expired; do not write)",
+        "deadline_precision": "unknown",
+        "deadline_display": "Status: Closed. Applications open: 1 August 2026. Closing date: 1 October 2026."
+      },
+      "examined": [
+        "https://www.massey.ac.nz/study/scholarships-and-awards/massey-university-doctoral-scholarship",
+        "https://www.massey.ac.nz/documents/1464/MU_Doctoral_Scholarship.pdf"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 658,
+      "title": "Undergraduate International Study Grants (Massey University)",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "Status: Open. There is no separate application for the International Study Grant; you will be assessed at the point of admission.",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://www.massey.ac.nz/study/scholarships-and-awards/undergraduate-international-study-grants",
+        "source_type": "official_university_page",
+        "publisher": "Massey University",
+        "retrieved_at": "2026-10-05T15:36:58Z",
+        "as_of": "2027 academic year (grant Terms and Conditions dated 16/09/2026)",
+        "raw_extract": "For international students enrolling at Massey University for the first time in an undergraduate degree starting in any intake in 2027.\n\nScholarship overview\n\nStatus: Open\n\nHow to Apply\n\nThere is no separate application for the International Study Grant; you will be assessed at the point of admission, and, if successful, the grant will display on your admission offer of place. Apply to study at Massey University to be considered for this grant.",
+        "exact_deadline_wording": "There is no separate application for the International Study Grant; you will be assessed at the point of admission",
+        "confidence": "HIGH",
+        "notes": "Two independent official Massey sources were fetched and both show no application deadline. (1) The scholarship page above: Status: Open, with the quoted 'no separate application' wording and no Application dates block at all. (2) The linked official regulations '2027 International Study Grants' (https://www.massey.ac.nz/documents/2466/2027_International_Study_Grants_D8NcnBy.pdf), dated 16/09/2026, clause 4: '4.1 Students are not required to make a separate application for the study grant.' and '4.2 Eligibility will be confirmed when the student meets the entry requirements for the specific programme via an offer of place.' A keyword sweep of the regulations for deadline/closing/due/round/open found no date. Because the grant is assessed at the point of admission rather than on a fixed date, this is ROLLING and deadline_date stays null."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "rolling",
+        "deadline_display": "Status: Open. There is no separate application for the International Study Grant; you will be assessed at the point of admission."
+      },
+      "examined": [
+        "https://www.massey.ac.nz/study/scholarships-and-awards/undergraduate-international-study-grants",
+        "https://www.massey.ac.nz/documents/2466/2027_International_Study_Grants_D8NcnBy.pdf"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 659,
+      "title": "Postgraduate International Study Grants (Massey University)",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "Status: Open. There is no separate application for the International Study Grant; you will be assessed at the point of admission.",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://www.massey.ac.nz/study/scholarships-and-awards/postgraduate-international-study-grants",
+        "source_type": "official_university_page",
+        "publisher": "Massey University",
+        "retrieved_at": "2026-10-05T15:36:58Z",
+        "as_of": "2027 academic year (grant Terms and Conditions dated 16/09/2026)",
+        "raw_extract": "For international students enrolling at Massey University for the first time in a postgraduate degree starting in any intake in 2027.\n\nScholarship overview\n\nStatus: Open\n\nHow to Apply\n\nThere is no separate application for the International Study Grant; you will be assessed at the point of admission, and, if successful, the grant will display on your admission offer of place. Apply to study at Massey University to be considered for this grant.",
+        "exact_deadline_wording": "There is no separate application for the International Study Grant; you will be assessed at the point of admission",
+        "confidence": "HIGH",
+        "notes": "Same structure and same evidence as record 658. Both official Massey sources were fetched and neither shows an application deadline. (1) This scholarship page: Status: Open, no Application dates block, and the quoted 'no separate application' wording. (2) The linked official regulations '2027 International Study Grants' (https://www.massey.ac.nz/documents/2465/2027_International_Study_Grants.pdf), dated 16/09/2026, clause 4: '4.1 Students are not required to make a separate application for the study grant.' and '4.2 Eligibility will be confirmed when the student meets the entry requirements for the specific programme via an offer of place.' A keyword sweep of the regulations for deadline/closing/due/round/open found no date. ROLLING with deadline_date null."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "rolling",
+        "deadline_display": "Status: Open. There is no separate application for the International Study Grant; you will be assessed at the point of admission."
+      },
+      "examined": [
+        "https://www.massey.ac.nz/study/scholarships-and-awards/postgraduate-international-study-grants",
+        "https://www.massey.ac.nz/documents/2465/2027_International_Study_Grants.pdf"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 664,
+      "title": "Bond University Postgraduate Research Scholarship",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Applications Open: 1/8/2026. Applications Close: 30/9/2026.",
+      "deadline_precision": "unknown",
+      "observed_deadline_date": "2026-09-30",
+      "observed_deadline_expired": true,
+      "source": {
+        "url": "https://bond.edu.au/scholarship/bond-university-postgraduate-research-scholarship",
+        "source_type": "official_university_page",
+        "publisher": "Bond University",
+        "retrieved_at": "2026-10-05T15:36:58Z",
+        "as_of": "round with applications open 1/8/2026 and closing 30/9/2026",
+        "raw_extract": "-   Applications Open: 1/8/2026\n-   Applications Close: 30/9/2026\n\nBond University values its higher degree research student cohort and provides a substantial level of direct financial support to many students.\n\nThe Bond University HDR Scholarships Committee meets biannually to award fee waivers and living stipends based on a merit based selection process.",
+        "exact_deadline_wording": "Applications Close: 30/9/2026",
+        "confidence": "HIGH",
+        "notes": "The live official scholarship page publishes one round: Applications Open 1/8/2026, Applications Close 30/9/2026. That close date is five days before the retrieval date of 2026-10-05, so per the brief the stale date is recorded but not written and not moved to the next round. IMPORTANT: the page says only that 'The Bond University HDR Scholarships Committee meets biannually' and publishes no dates for the next round. I could NOT verify the shard's cached claim that rounds close '31 March and 30 September each year' with an 'opening 1 February' window, so none of those dates is asserted here."
+      },
+      "field_mapping": {
+        "deadline_date": "null (source deadline 2026-09-30 has expired; do not write)",
+        "deadline_precision": "unknown",
+        "deadline_display": "Applications Open: 1/8/2026. Applications Close: 30/9/2026."
+      },
+      "examined": [
+        "https://bond.edu.au/scholarship/bond-university-postgraduate-research-scholarship"
+      ],
+      "rejected_sources": []
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "shard_id": "DL-052",
+  "topic": "deadline",
+  "hosts": [
+    "admissions.msu.edu",
+    "easl.eu",
+    "sfs.mit.edu",
+    "www.edutwscholarship.moe.gov.tw",
+    "www.epfl.ch",
+    "www.nwo.nl"
+  ],
+  "record_count": 7,
+  "records": [
+    {
+      "id": 15,
+      "title": "EPFL Master Excellence Fellowships",
+      "official_source": "EPFL (École Polytechnique Fédérale de Lausanne)",
+      "official_source_url": "https://www.epfl.ch/education/master/master-excellence-fellowships",
+      "catalogue_url": "https://www.epfl.ch/education/master/programs",
+      "country": "Switzerland",
+      "deadline_display": "December 15 (1st round), March 31 (2nd round)",
+      "deadline_precision": "month",
+      "application_period": "Applications for the 2027 intake must be filed within the first Master's application window: 15 December for IS-Academia applicants and 31 January for EPFL students applying for a consecutive Master's degree.",
+      "verification_status": "active"
+    },
+    {
+      "id": 34,
+      "title": "Taiwan Scholarship Program",
+      "official_source": "Ministry of Education, Republic of China (Taiwan)",
+      "official_source_url": "https://www.edutwscholarship.moe.gov.tw",
+      "catalogue_url": "https://taiwanscholarship.moe.gov.tw/web/pages.aspx?p=7",
+      "country": "Taiwan",
+      "deadline_display": "Typically March-April, varies by embassy",
+      "deadline_precision": "varies",
+      "application_period": "Annual cycle, in principle 1 February to 31 March, with the actual window set by each Taiwan Representative Office; the scholarship year runs 1 September to 31 August",
+      "verification_status": "active"
+    },
+    {
+      "id": 63,
+      "title": "Michigan State University International Merit Scholarships",
+      "official_source": "Michigan State University",
+      "official_source_url": "https://admissions.msu.edu/cost-aid/scholarships/international",
+      "catalogue_url": "https://admissions.msu.edu/cost-aid/scholarships/international/scholarship-regulations",
+      "country": "United States",
+      "deadline_display": "Priority deadline November 1 for early action decision by January 15",
+      "deadline_precision": "month",
+      "application_period": "Automatic consideration upon admission application",
+      "verification_status": "active"
+    },
+    {
+      "id": 388,
+      "title": "Embassy Science Fellowship (ESF-NL) 2027",
+      "official_source": "Dutch Research Council (NWO) and Ministry of Foreign Affairs",
+      "official_source_url": "https://www.nwo.nl/en/calls/embassy-science-fellowship-esf-nl-2027",
+      "catalogue_url": "https://www.nwo.nl/en/researchprogrammes",
+      "country": "Netherlands",
+      "deadline_display": "10 September 2026 before 14:00:00 CEST - Deadline for proposals. Proposals submitted after the deadline will not be taken into consideration by NWO.",
+      "deadline_precision": "recurring",
+      "application_period": "2027 cycle: informative webinar 2 July 2026, proposal deadline 10 September 2026 14:00 CEST, decision by November 2026, fellowship period 1 March 2027 to 29 February 2028",
+      "verification_status": "active"
+    },
+    {
+      "id": 459,
+      "title": "EPFL Bachelor Excellence Fellowships",
+      "official_source": "EPFL",
+      "official_source_url": "https://www.epfl.ch/education/bachelor/bachelor-excellence-fellowships",
+      "catalogue_url": "https://www.epfl.ch/education/bachelor/fr/programmes/",
+      "country": "Switzerland",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 482,
+      "title": "MIT Undergraduate Need-Based Financial Aid and MIT Scholarship for International Students",
+      "official_source": "MIT Student Financial Services",
+      "official_source_url": "https://sfs.mit.edu/undergraduate-students/apply-for-aid/international",
+      "catalogue_url": "https://sfs.mit.edu/undergraduate-students/types-of-aid",
+      "country": "United States",
+      "deadline_display": "To apply for financial aid, all students must submit the CSS Profile and parental tax returns or income documentation through IDOC by the following deadlines: Early Action November 30, Regular Action February 15, Transfer February 15. MIT publishes no calendar year for these dates.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual cycle. Early Action November 30, Regular Action February 15, Transfer February 15; aid documents manageable through the MIT Application Portal until mid-May.",
+      "verification_status": "active"
+    },
+    {
+      "id": 578,
+      "title": "EASL Mobility / Research Fellowship Programme",
+      "official_source": "European Association for the Study of the Liver (EASL)",
+      "official_source_url": "https://easl.eu/fellowship/mobility-research-fellowship-programme",
+      "catalogue_url": "https://easl.eu/fellowships",
+      "country": "Switzerland",
+      "deadline_display": "1 September (annual close; 2026 call closed 1 September 2026)",
+      "deadline_precision": "recurring",
+      "application_period": null,
+      "verification_status": "active"
+    }
+  ]
+}

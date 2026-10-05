@@ -1,0 +1,111 @@
+{
+  "shard_id": "DL-028",
+  "topic": "deadline",
+  "hosts": [
+    "admission.kaist.ac.kr",
+    "mastercardfdn.org",
+    "www.aecid.es",
+    "www.ireland.ie",
+    "www.rug.nl",
+    "www.unitn.it"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 41,
+      "title": "AECID Spanish Government Scholarship",
+      "official_source": "Agencia Española de Cooperación Internacional para el Desarrollo (AECID)",
+      "official_source_url": "https://www.aecid.es/es/becas-y-lectorados",
+      "catalogue_url": "https://www.aecid.es/becas-lectorados",
+      "country": "Spain",
+      "deadline_display": "Typically March-April each year",
+      "deadline_precision": "varies",
+      "application_period": "Convocatoria 2026/2027; each sub-programme opens and closes on its own dates (2026 sub-programmes closed between April and July 2026)",
+      "verification_status": "active"
+    },
+    {
+      "id": 137,
+      "title": "UniTrento Scholarships for International Students (non-EU candidates residing abroad)",
+      "official_source": "Università degli Studi di Trento",
+      "official_source_url": "https://www.unitn.it/en/study/fees-scholarships-accommodation/scholarships-and-awards/scholarships-international-students",
+      "catalogue_url": null,
+      "country": "Italy",
+      "deadline_display": "There is no separate scholarship call: scholarships are assigned through each degree programme's admission ranking, so the deadline is that programme's admission application deadline. The University of Trento's 2026/2027 admission calls for non-European candidates closed in March 2026, and the 2027/2028 calls had not been published on 4 October 2026.",
+      "deadline_precision": "varies",
+      "application_period": "Tied to each degree programme's annual admission call for non-European candidates residing abroad. For the 2026/2027 cycle published deadlines included 4 March 2026 at 12:00 CET on several English-taught master's programmes and 23 March 2026 on others, each with a EUR 30.00 application fee.",
+      "verification_status": "active"
+    },
+    {
+      "id": 177,
+      "title": "NL Scholarship (University of Groningen)",
+      "official_source": "University of Groningen",
+      "official_source_url": "https://www.rug.nl/education/scholarships-and-financial-aid",
+      "catalogue_url": "https://www.rug.nl/education/master/international-students/financial-matters/holland-scholarship/programmes-applicable-for-holland-scholarship",
+      "country": "Netherlands",
+      "deadline_display": "\"The deadline for the 2026-2027 academic year is 1 February 2026 (23:59 CET).\" The page had not been updated with a 2027-2028 deadline when checked on 2026-10-04.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual cycle tied to the master's admission round; applications open after the applicant receives an admission offer, with a 1 February deadline for the 2026-2027 academic year and results notified by 15 March.",
+      "verification_status": "active"
+    },
+    {
+      "id": 211,
+      "title": "KAIST Scholarship (KAIST International Graduate Admission)",
+      "official_source": "Korea Advanced Institute of Science and Technology (KAIST), Office of Admissions",
+      "official_source_url": "https://admission.kaist.ac.kr/intl-graduate/FinancialSupport/Scholarship/KAISTScholarship",
+      "catalogue_url": "https://admission.kaist.ac.kr/intl-graduate/FinancialSupport/Scholarship/OtherPrograms",
+      "country": "South Korea",
+      "deadline_display": "KAIST International Graduate Admission general windows: Spring Admission: Mid August - Early September; Fall Admission (Early Track): Early December - Late December; Fall Admission (Regular Track): Early March - Late March. Published 2027-entry dates: Spring 2027 Entry: August 18 - September 1, 2026; Fall 2027 Entry: TBA.",
+      "deadline_precision": "varies",
+      "application_period": "The 2027 Spring Semester international-track window (2026/08/18 - 2026/09/01) has closed. The next published window is Fall Admission (Early Track), Early December - Late December; the Fall 2027 Entry dates are published as TBA on the official timeline page.",
+      "verification_status": "active"
+    },
+    {
+      "id": 212,
+      "title": "KAIST Prestige Scholarship for International Ph.D. Students (KPS)",
+      "official_source": "Korea Advanced Institute of Science and Technology (KAIST)",
+      "official_source_url": "https://admission.kaist.ac.kr/intl-graduate/FinancialSupport/Scholarship/KPrestige",
+      "catalogue_url": null,
+      "country": "South Korea",
+      "deadline_display": "No separate scholarship deadline - KPS follows KAIST International Graduate Admission periods, listed officially as 'Spring/Fall Early/Fall Regular'. For 2027 entries KAIST publishes 'Spring 2027 Entry: August 18 - September 1, 2026' and 'Fall 2027 Entry: TBA'.",
+      "deadline_precision": "varies",
+      "application_period": "Three annual admission periods (Spring, Fall Early, Fall Regular). Spring 2027 entry applications ran 18 Aug - 1 Sep 2026; Fall 2027 entry dates are still listed as TBA.",
+      "verification_status": "active"
+    },
+    {
+      "id": 363,
+      "title": "Ireland Fellows Programme",
+      "official_source": "Department of Foreign Affairs and Trade (Irish Aid), Government of Ireland",
+      "official_source_url": "https://www.ireland.ie/en/ireland-fellows-programme",
+      "catalogue_url": null,
+      "country": "Ireland",
+      "deadline_display": "\"Applications for the 2027/28 academic year are now closed.\" The next cycle follows a recurring three-stage annual process: Stage 1 preliminary applications approximately June/July, Stage 2 detailed applications approximately mid-September to mid-October, Stage 3 interviews approximately November/December.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual cycle: Stage 1 preliminary application approximately June/July, Stage 2 detailed application approximately mid-September to mid-October, Stage 3 interviews approximately November/December.",
+      "verification_status": "active"
+    },
+    {
+      "id": 392,
+      "title": "Eric Bleumink Fellowship",
+      "official_source": "University of Groningen",
+      "official_source_url": "https://www.rug.nl/education/scholarships/eric-bleumink-fellowship?lang=en",
+      "catalogue_url": "https://www.rug.nl/education/phd-programmes/",
+      "country": "Netherlands",
+      "deadline_display": "There is no scholarship application deadline: \"It is not possible to actively apply for an Eric Bleumink Fellowship Scholarship. Suitable candidates will be informed about a nomination.\" Applicants must hold a provisional or unconditional admission offer for a master programme received before February, and their master's application \"should be completed by the applicant before 1st of December\".",
+      "deadline_precision": "recurring",
+      "application_period": "Annual cycle tied to master's admission for a September start; master's applications to be completed before 1 December and admission offers received before February",
+      "verification_status": "active"
+    },
+    {
+      "id": 541,
+      "title": "Mastercard Foundation Scholars Program",
+      "official_source": "Mastercard Foundation",
+      "official_source_url": "https://mastercardfdn.org/en/what-we-do/our-programs/mastercard-foundation-scholars-program",
+      "catalogue_url": "https://mastercardfdn.org/en/what-we-do/our-programs/mastercard-foundation-scholars-program/where-to-apply",
+      "country": "Multiple",
+      "deadline_display": "Each partner in the Mastercard Foundation Scholars Program sets their own deadline. Please check the Program website of the partner institution(s) of your choice for the specific deadline.",
+      "deadline_precision": "year",
+      "application_period": "No central application window. The programme is published as active and ongoing from August 2012, and applications are accepted on each partner institution's own admissions schedule.",
+      "verification_status": "active"
+    }
+  ]
+}

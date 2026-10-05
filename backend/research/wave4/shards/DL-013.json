@@ -1,0 +1,110 @@
+{
+  "shard_id": "DL-013",
+  "topic": "deadline",
+  "hosts": [
+    "gocfs.ntu.edu.tw",
+    "twas.org",
+    "www.humboldt-foundation.de",
+    "www.mext.go.jp",
+    "www.tudelft.nl"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 24,
+      "title": "Humboldt Research Fellowship",
+      "official_source": "Alexander von Humboldt Foundation (German Federal Foreign Office)",
+      "official_source_url": "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/humboldt-research-fellowship",
+      "catalogue_url": "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/humboldt-research-fellowship",
+      "country": "Germany",
+      "deadline_display": "Three calls annually: March 15, July 15, November 15 (2026 schedule)",
+      "deadline_precision": "month",
+      "application_period": "Three selection rounds per year (March, July, November)",
+      "verification_status": "active"
+    },
+    {
+      "id": 114,
+      "title": "TWAS-CSIR Postgraduate Fellowship Programme",
+      "official_source": "UNESCO-TWAS and Council of Scientific & Industrial Research (CSIR), India",
+      "official_source_url": "https://twas.org/opportunity/twas-csir-postgraduate-fellowship-programme",
+      "catalogue_url": "https://twas.org/opportunities/fellowships/phd",
+      "country": "India",
+      "deadline_display": "Official wording for the 2026 call: \"Closing date of this fellowship: 6 then 20 May 2026 now extended until 3 June 2026\". The call is closed and results are expected at the end of 2026 or early 2027, with fellows starting no earlier than 2027.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual. The 2026 call opened 6 March 2026 and closed 20 May 2026, extended to 3 June 2026. Applications can only be submitted through the TWAS online portal once the call is open.",
+      "verification_status": "active"
+    },
+    {
+      "id": 147,
+      "title": "International Industrial Talents Education Special Program (INTENSE Program)",
+      "official_source": "Ministry of Education (MOE), Republic of China (Taiwan), with the National Development Council, participating universities and partner companies",
+      "official_source_url": "https://gocfs.ntu.edu.tw",
+      "catalogue_url": null,
+      "country": "Taiwan",
+      "deadline_display": "There is no single INTENSE deadline. Each participating university sets its own application window and nomination deadline per intake, and the two intakes do not coincide. Windows published by partner universities for 2027 Spring include 10 September to 12 October 2026 (NCHU), 1 to 22 October 2026 (NCU) and 21 September to 23 October 2026 (KMU), all GMT+8; for 2027 Fall, NTUT publishes a student nomination deadline of 10 March 2027. Applications for several 2027 Spring intakes are open as of 2026-10-04.",
+      "deadline_precision": "varies",
+      "application_period": "Two intakes a year. Spring intake first round runs from early October to late December and second round from early April to late June; the Fall intake mirrors those two rounds. Each participating university publishes its own exact dates, so no single application period applies.",
+      "verification_status": "needs_review"
+    },
+    {
+      "id": 236,
+      "title": "Japanese Government (MEXT) Scholarship for Undergraduate Students (Embassy Recommendation)",
+      "official_source": "MEXT (Ministry of Education, Culture, Sports, Science and Technology)",
+      "official_source_url": "https://www.mext.go.jp/en/policy/education/highered/title02/detail02/sdetail02/1373897.htm",
+      "catalogue_url": "https://www.mext.go.jp/a_menu/koutou/ryugaku/boshu/1330944.htm",
+      "country": "Japan",
+      "deadline_display": "No single central date: applicants must submit to the Japanese diplomatic mission in the country of their nationality by the deadline that mission sets, and that date is not published by MEXT. MEXT states applicants are informed of the final selection result by their diplomatic mission after February 2027, and that grantees must in principle arrive in Japan between 1 April 2027 and 7 April 2027.",
+      "deadline_precision": "varies",
+      "application_period": "Annually; the 2027 cycle guidelines were published by MEXT in April 2026 and applications were made to Japanese diplomatic missions during the first half of the year",
+      "verification_status": "active"
+    },
+    {
+      "id": 237,
+      "title": "Japanese Government (MEXT) Scholarship for Research Students (University Recommendation)",
+      "official_source": "MEXT (Ministry of Education, Culture, Sports, Science and Technology)",
+      "official_source_url": "https://www.mext.go.jp/content/20251205-mxt_kotokoku01-000046164_2.pdf",
+      "catalogue_url": "https://www.mext.go.jp/a_menu/koutou/ryugaku/boshu/1330944.htm",
+      "country": "Japan",
+      "deadline_display": "No applicant-facing deadline is published. Under the university-recommendation route the accepting university nominates the student to MEXT, so the application timetable is set between MEXT and each university and is not announced publicly.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual. MEXT publishes the guidelines for the coming year and calls universities for nominations; students apply through their prospective or current Japanese university rather than directly to MEXT",
+      "verification_status": "active"
+    },
+    {
+      "id": 238,
+      "title": "Japanese Government (MEXT) Scholarship for Japanese Studies Students (Embassy Recommendation)",
+      "official_source": "MEXT (Ministry of Education, Culture, Sports, Science and Technology)",
+      "official_source_url": "https://www.mext.go.jp/content/20251222-mxt_kotokoku01-000046488_02.pdf",
+      "catalogue_url": "https://www.mext.go.jp/a_menu/koutou/ryugaku/boshu/1330944.htm",
+      "country": "Japan",
+      "deadline_display": "No central MEXT date: applicants must submit to the Japanese diplomatic mission in the country of their nationality by that mission's designated deadline, and that date is not published by MEXT. For the 2026 cycle the guidelines required the accepting university to confirm placement by 14 August 2026, and the scholarship period began in October 2026.",
+      "deadline_precision": "varies",
+      "application_period": "Annual embassy-recommendation round. For the 2026 cycle MEXT published the guidelines in December 2025, diplomatic missions screened candidates in early 2026, placement was confirmed by 14 August 2026, and the scholarship period began in October 2026.",
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 386,
+      "title": "Justus & Louise van Effen Excellence Scholarships",
+      "official_source": "Tudelft.Nl",
+      "official_source_url": "https://www.tudelft.nl/en/education/study-programme-orientation/practical-matters/scholarships/justus-louise-van-effen-excellence-scholarships",
+      "catalogue_url": null,
+      "country": "Netherlands",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 514,
+      "title": "Japanese Government (MEXT) Scholarship for 2027 - Research Students (Embassy Recommendation)",
+      "official_source": "Ministry of Education, Culture, Sports, Science and Technology (MEXT), Japan - administered in-country through Japanese embassies/consulates",
+      "official_source_url": "https://www.mext.go.jp/a_menu/koutou/ryugaku/boshu/1415352_00008.htm",
+      "catalogue_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships",
+      "country": "Japan",
+      "deadline_display": "No central deadline is published. MEXT states that all procedures for the Japanese Government (MEXT) Scholarships are conducted through Japanese embassies, consulates in your countries, or institutions of higher education in Japan; candidates should contact the Japanese embassy (or consulate general) in their own country for the application date, and the Study in Japan page states that the type and field of application may vary from country to country and that applicants should check with the Japanese embassy or other Japanese diplomatic mission for any openings.",
+      "deadline_precision": "varies",
+      "application_period": "Applications for the 2027 cycle are handled at embassy/consulate level. MEXT lists the 2027 Embassy Recommendation Research Student recruitment under \"募集中のプログラム\" (programmes currently being recruited). No central opening or closing date is published; embassies set and publish their own deadlines and sit their own qualifying examinations.",
+      "verification_status": "needs_review"
+    }
+  ]
+}

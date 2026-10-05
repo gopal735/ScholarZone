@@ -1,0 +1,99 @@
+{
+  "shard_id": "DL-058",
+  "topic": "deadline",
+  "hosts": [
+    "appels-propositions.auf.org",
+    "en.mofa.gov.tw",
+    "studentaid.alberta.ca",
+    "www.esteri.it",
+    "www.ox.ac.uk",
+    "www.qut.edu.au"
+  ],
+  "record_count": 7,
+  "records": [
+    {
+      "id": 36,
+      "title": "MAECI Italian Government Scholarship",
+      "official_source": "Ministry of Foreign Affairs and International Cooperation (MAECI), Government of Italy",
+      "official_source_url": "https://www.esteri.it/en/opportunita/borse-di-studio",
+      "catalogue_url": "https://studyinitaly.esteri.it/ListaBandi",
+      "country": "Italy",
+      "deadline_display": "Typically April-May each year",
+      "deadline_precision": "varies",
+      "application_period": "Annual call. For 2026-2027 the deadline was 26 March 2026 at 2 p.m. CET, with grants running from 1 November 2026",
+      "verification_status": "active"
+    },
+    {
+      "id": 65,
+      "title": "Clarendon Fund Scholarships",
+      "official_source": "University of Oxford",
+      "official_source_url": "https://www.ox.ac.uk/clarendon",
+      "catalogue_url": "https://www.ox.ac.uk/admissions/graduate/courses",
+      "country": "United Kingdom",
+      "deadline_display": "There is no separate Clarendon deadline: you must apply to your Oxford course by the December or January admissions deadline, whichever is relevant to your course. 'You do not need to submit any additional documents and there are no separate scholarship application forms for Clarendon.'",
+      "deadline_precision": "varies",
+      "application_period": "Annual, tied to the Oxford graduate course deadlines. Applicants to degree-bearing courses applying by the December or January deadline for their course are automatically considered. Departmental nominations are reviewed by the academic divisions in February or March.",
+      "verification_status": "active"
+    },
+    {
+      "id": 66,
+      "title": "Weidenfeld-Hoffmann Scholarships and Leadership Programme",
+      "official_source": "University of Oxford",
+      "official_source_url": "https://www.ox.ac.uk/admissions/graduate/fees-and-funding/fees-funding-and-scholarship-search/weidenfeld-hoffmann-scholarships-and-leadership-programme",
+      "catalogue_url": "https://www.ox.ac.uk/admissions/graduate/courses",
+      "country": "United Kingdom",
+      "deadline_display": "Submit your application for graduate study by the relevant December or January deadline for your course, together with the Weidenfeld-Hoffmann Scholarships Statement. Applications held over after the December or January deadline, or placed on a waiting list, are not eligible for scholarship consideration.",
+      "deadline_precision": "varies",
+      "application_period": "2027/28 cycle. Applications must be submitted by the December or January deadline for the chosen course; shortlisted applicants are interviewed online, likely in April 2027; decisions are expected by the end of May 2027.",
+      "verification_status": "active"
+    },
+    {
+      "id": 144,
+      "title": "MOFA Taiwan Scholarship (Taiwan Scholarship Program)",
+      "official_source": "Ministry of Foreign Affairs, Republic of China (Taiwan)",
+      "official_source_url": "https://en.mofa.gov.tw/cp.aspx?n=1325",
+      "catalogue_url": null,
+      "country": "Taiwan",
+      "deadline_display": "The official guidelines state only 'from February 1 to March 31' for the application period, with no year attached. As of 2026-10-04 that window has passed for the most recent cycle and the next is expected between 1 February and 31 March 2027.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual window from 1 February to 31 March, applying to the Taiwan Scholarship cycle for the following academic year. The February-March 2026 window has closed; the next is expected 1 February to 31 March 2027.",
+      "verification_status": "active"
+    },
+    {
+      "id": 201,
+      "title": "QUT International Merit Scholarship",
+      "official_source": "Queensland University of Technology (QUT)",
+      "official_source_url": "https://www.qut.edu.au/study/fees-and-scholarships/scholarships/international-merit-scholarship",
+      "catalogue_url": "https://www.qut.edu.au/study/fees-and-scholarships/scholarships/browse?study-level_key=Any&student-type_key=Any&study-area-broad_key=Any&eligibility-citizenship_key=INT&eligibility-criteria_key=Any",
+      "country": "Australia",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": "QUT's international scholarship hub invites applications and states that the on-time application closing date for the upcoming semester is approaching, but no date for this scholarship is published on the pages that could be read. The scholarship's dedicated page could not be retrieved because its response exceeded the fetch size limit.",
+      "verification_status": "active"
+    },
+    {
+      "id": 308,
+      "title": "Alberta Graduate Excellence Scholarship (AGES)",
+      "official_source": "Alberta Student Aid (Government of Alberta)",
+      "official_source_url": "https://studentaid.alberta.ca/scholarships/alberta-graduate-excellence-scholarship",
+      "catalogue_url": "https://www.alberta.ca/designated-post-secondary-institutions-alberta.aspx",
+      "country": "Canada",
+      "deadline_display": "No application deadline is published. The official page states: 'For more information on how to apply, contact the Student Awards or Scholarships Offices at your school, or visit your school's website.'",
+      "deadline_precision": "unknown",
+      "application_period": "Annual competition; fall deadlines",
+      "verification_status": "active"
+    },
+    {
+      "id": 679,
+      "title": "AUF Virtual Mobility Grant for International Distance Degree Programmes (FOAD/IFIC call 2026/27)",
+      "official_source": "Agence universitaire de la Francophonie (AUF) / Institut de la Formation a Distance de la Francophonie (IFIC)",
+      "official_source_url": "https://appels-propositions.auf.org/appel-a-candidatures-2026-27-formations-diplomantes-internationales-a-distance",
+      "catalogue_url": "https://l.auf.org/FOAD-FD",
+      "country": "Multiple",
+      "deadline_display": "14 September 2026 at 23:59 for programmes starting January/February 2027; 9 June 2026 for programmes starting September/October 2026",
+      "deadline_precision": "recurring",
+      "application_period": "The 2026/27 call opened on 7 April 2026 and closed on 14 September 2026 at 23:59 Europe/Paris. It had two intake deadlines: 9 June 2026 for programmes starting September or October 2026, and 14 September 2026 for programmes starting January or February 2027.",
+      "verification_status": "needs_review"
+    }
+  ]
+}

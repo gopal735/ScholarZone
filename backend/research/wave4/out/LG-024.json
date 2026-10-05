@@ -1,0 +1,276 @@
+{
+  "shard_id": "LG-024",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 58,
+      "title": "Brandeis University Wien International Scholarship",
+      "outcome": "recovered",
+      "image_url": "https://www.brandeis.edu/brand/images/logo/brandeis-logo-stacked-seal-blue-digital.png",
+      "image_source_url": "https://www.brandeis.edu/brand/visual-identity-system/logo/index.html",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Fetched https://www.brandeis.edu/isso/programs/wien/index.html first; its only logo is the sprite reference //www.brandeis.edu/_files/svg/svgstore.svg#logo (rejected: sprite). Followed the hierarchy up to the university's own Visual Identity System page /brand/visual-identity-system/logo/index.html, which publishes the stacked wordmark+seal PNG with alt text 'Brandeis University wordmark and seal'. Asset verified live: HTTP 200, content-type image/png, 960x320 px, 56775 bytes, served from brandeis.edu. The official Downloads page also ships brandeis-main-logo-digital.zip / seal.zip, but a zip is not a directly renderable image asset so the published PNG was used. Note: brandeis.edu returns 403 only to non-browser user agents; with any normal browser UA the asset returns 200."
+      },
+      "source": {
+        "url": "https://www.brandeis.edu/brand/visual-identity-system/logo/index.html",
+        "publisher": "Brandeis University (Branding and Identity Guidelines, brandeis.edu)",
+        "retrieved_at": "2026-10-05T15:45:00Z",
+        "raw_extract": "<h2>The Brandeis University Logo</h2> <p class=\"p--large\">The Brandeis University logo speaks to our values and style as an institution. It is inviting, friendly, and distinctive while acknowledging our connection to the university's history.</p> <img alt=\"Brandeis University wordmark and seal\" height=\"167\" src=\"../../images/logo/brandeis-logo-stacked-seal-blue-digital.png\" width=\"500\"/> <h3>Variations</h3> <p class=\"p--large\">There are four official variations of the Brandeis University logo to suit different design circumstances.</p>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.brandeis.edu/isso/programs/wien/index.html",
+        "https://www.brandeis.edu/brand/downloads/index.html",
+        "https://www.brandeis.edu/brand/visual-identity-system/logo/index.html"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.brandeis.edu/_files/svg/svgstore.svg#logo",
+          "reason": "SVG sprite fragment referenced by the site header; rejected as sprite/UI chrome and not standalone-renderable"
+        },
+        {
+          "url": "https://www.brandeis.edu/_files/favicons/favicon-196x196.png",
+          "reason": "favicon asset"
+        },
+        {
+          "url": "https://www.brandeis.edu/_files/favicons/apple-touch-icon-180x180.png",
+          "reason": "apple-touch-icon asset"
+        },
+        {
+          "url": "https://www.brandeis.edu/brand/downloads/files/brandeis-main-logo-digital.zip",
+          "reason": "official but a zip archive, not a directly renderable image asset"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 316,
+      "title": "Tsinghua University Institutional Scholarship (Tsinghua University Scholarship)",
+      "outcome": "recovered",
+      "image_url": "https://vi.tsinghua.edu.cn/__local/8/1C/21/2F02A66E31BF084FE340463BB47_B9A95F73_185BC.jpg",
+      "image_source_url": "https://vi.tsinghua.edu.cn/gk/xxbz/xh.htm",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Fetched https://international.join-tsinghua.edu.cn/Admission1/Freshmen_Scholarships1.htm first; it carries only the admissions microsite wordmark (../image/logo.png, 272x44) and no university emblem, so the hierarchy was followed to the university's own Visual Identity System site (vi.tsinghua.edu.cn, operated by 清华大学党委宣传部 / Tsinghua University Party Committee Publicity Department), whose 校徽 (emblem) page publishes the official emblem. Asset verified live: HTTP 200, image/jpeg, 1400x600 px, 99772 bytes. Visually confirmed in a browser: purple circular emblem reading 清華大學 / TSINGHUA UNIVERSITY / 1911 with the motto 自強不息 厚德載物 and the central five-pointed star, exactly as the page text describes."
+      },
+      "source": {
+        "url": "https://vi.tsinghua.edu.cn/gk/xxbz/xh.htm",
+        "publisher": "Tsinghua University - Visual Identity System (vi.tsinghua.edu.cn, Party Committee Publicity Department)",
+        "retrieved_at": "2026-10-05T15:45:00Z",
+        "raw_extract": "校徽是学校视觉形象识别系统（以下简称VIS）的重要组成部分，是大学精神和价值理念的具象体现。学校校徽为三个同心圆构成的圆面，外环为中文校名（繁 体）、英文校名（TSINGHUA UNIVERSITY）和建校时间，中环为校训字样，中心为五角星。 <div class=\"img\"><img src=\"/__local/8/1C/21/2F02A66E31BF084FE340463BB47_B9A95F73_185BC.jpg\" alt=\"\"></div>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://international.join-tsinghua.edu.cn/Admission1/Freshmen_Scholarships1.htm",
+        "https://international.join-tsinghua.edu.cn/image/logo.png",
+        "https://international.join-tsinghua.edu.cn/image/logo272.png",
+        "https://vi.tsinghua.edu.cn/gk/xxbz/xh.htm"
+      ],
+      "rejected": [
+        {
+          "url": "https://international.join-tsinghua.edu.cn/image/logo.png",
+          "reason": "configured logo of the undergraduate-admissions microsite only, 272x44 px horizontal wordmark; not the university brand mark"
+        },
+        {
+          "url": "https://vi.tsinghua.edu.cn/image/logo296.png",
+          "reason": "site logo of the Visual Identity System microsite itself, not the Tsinghua University emblem"
+        },
+        {
+          "url": "https://international.join-tsinghua.edu.cn/favicon.ico",
+          "reason": "favicon asset"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 519,
+      "title": "University of Sharjah Research Assistant (RA) and Teaching Assistant (TA) Scholarship for Master's Students",
+      "outcome": "not_found",
+      "image_url": null,
+      "image_source_url": null,
+      "image_source_type": null,
+      "image_kind": null,
+      "confidence": "HUMAN_REVIEW",
+      "validation": {
+        "official_domain": false,
+        "accessible": false,
+        "not_favicon": true,
+        "not_ui": false,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": false,
+        "notes": "No directly renderable official University of Sharjah logo asset could be proven on the official domain. What exists: (a) the site's own header component fields brandlogowhite and brandlogoblack both point at /-/media/project/uos/sites/uos/discover-uos/vciea/brand-logo-white.svg (HTTP 200, image/svg+xml, 25483 bytes) - an all-white, single-colour reversed variant declared 140x100, which contains no colour or identity-bearing text and renders invisible on light backgrounds, and which could not be visually rendered or identity-verified (direct browser navigation to the asset timed out); (b) https://www.sharjah.ac.ae/Brand-Guideline links 'University Logo' to .../media-hub/uos_logo.zip, a 1.5 MB archive (UOS_2.png, UOS1.pdf, UOS_1.jpg) - Sitecore serves that archive for any extension under that item, so no direct image URL exists (uos_logo.png / uos_logo.svg both return application/x-zip-compressed); (c) the email template logo .../_catalogs/masterpage/UOSDesign2020/img/uos_logo.png with alt 'University of Sharjah Logo' now returns HTTP 404. Because identity of the only surviving candidate asset could not be proven and it is a reversed monochrome variant, image_url is left null per the brief. Flagged for human review: a reviewer may accept brand-logo-white.svg as the official UOS brand logo on the strength of the CMS field names."
+      },
+      "source": {
+        "url": "https://www.sharjah.ac.ae/Brand-Guideline",
+        "publisher": "University of Sharjah",
+        "retrieved_at": "2026-10-05T15:45:00Z",
+        "raw_extract": "Welcome to Brand resources; your guide to using the University Brand On this site you will find instructions on the use of the University's logo; Templates for (power point; Posters and roll ups) and a range of other useful information. <a href=\"https://www.sharjah.ac.ae/-/media/project/uos/sites/uos/media-hub/uos_logo.zip\">University Logo</a>",
+        "confidence": "LOW"
+      },
+      "examined": [
+        "https://www.sharjah.ac.ae/en/Admissions/Masters-Degree",
+        "https://www.sharjah.ac.ae/en",
+        "https://www.sharjah.ac.ae/Brand-Guideline",
+        "https://www.sharjah.ac.ae/-/media/project/uos/sites/uos/media-hub/uos_logo.zip"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.sharjah.ac.ae/-/media/project/uos/sites/uos/discover-uos/vciea/brand-logo-white.svg?iar=0&hash=BE36FA8DF9AF94ABF39CF86470FC9F7F",
+          "reason": "official brand asset by CMS field name only, but all-white reversed monochrome variant (140x100), no identity-bearing content, identity could not be verified visually; unusable as a light-background card image"
+        },
+        {
+          "url": "https://www.sharjah.ac.ae/-/media/project/uos/sites/uos/media-hub/uos_logo.zip",
+          "reason": "official download but a zip archive, not a directly renderable image URL (any extension on that item returns the archive)"
+        },
+        {
+          "url": "https://www.sharjah.ac.ae/_catalogs/masterpage/UOSDesign2020/img/uos_logo.png",
+          "reason": "referenced with alt 'University of Sharjah Logo' but HTTP 404, no longer retrievable"
+        },
+        {
+          "url": "https://www.sharjah.ac.ae/-/media/project/uos/sites/uos/others/settings/favicon.ico",
+          "reason": "favicon asset"
+        },
+        {
+          "url": "https://www.sharjah.ac.ae/-/media/project/uos/sites/uos/discover-uos/logos-academic-partners-part-2/abu-dhabi-university.png",
+          "reason": "unrelated academic partner's logo on the shared site media CDN"
+        },
+        {
+          "url": "https://www.sharjah.ac.ae/-/media/project/uos/sites/uos/media-hub/team_bg.png",
+          "reason": "decorative MS Teams background art, not a logo asset"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 685,
+      "title": "GETFund Postgraduate Local Scholarship (2026/27)",
+      "outcome": "recovered",
+      "image_url": "https://www.getfund.gov.gh/images/logos/GETFund%20logo_200cm%20Wide%20-%20%20Black.png",
+      "image_source_url": "https://www.getfund.gov.gh/",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "The record's official_source_url .../news/getfund-opens-applications-for-2026-27-undergraduate-and-postgraduate-local-scholarships 302-redirects to the SPA shell at https://www.getfund.gov.gh/, whose JSON-LD declares the organization as GovernmentOrganization 'Ghana Education Trust Fund' (alternateName 'GETFund'). The logo path declared there, /images/logos/getfund-logo.png, is NOT an image: it returns HTTP 200 with content-type image/png but the body is the SPA HTML document (<!doctype html>), i.e. a catch-all fallback. The asset actually shipped by the official site is /images/logos/GETFund logo_200cm Wide -  Black.png, referenced by the official site's own bundle https://www.getfund.gov.gh/assets/index-CxMLORKP.js. Verified live: HTTP 200, image/png, 427014 bytes, 5906x2953 px (print-resolution, not a favicon badge). Visually confirmed in a browser: circular GETFund seal with the Ghana flag rings and figures with children, beside the wordmark 'GETFund / Ghana Education Trust Fund'. The official-domain favicon/site icons (getfund-site-icon-192x192.png, getfund-cropped-icon.png) were rejected. Shared asset URL is used for both GETFund records (685, 718) because both are administered by the same official provider."
+      },
+      "source": {
+        "url": "https://www.getfund.gov.gh/",
+        "publisher": "Ghana Education Trust Fund (GETFund), Government of Ghana",
+        "retrieved_at": "2026-10-05T15:45:00Z",
+        "raw_extract": "\"@type\": \"GovernmentOrganization\", \"name\": \"Ghana Education Trust Fund\", \"alternateName\": \"GETFund\", \"description\": \"Supporting quality education for all Ghanaians from basic to tertiary level through infrastructure development, scholarships, and educational sector support.\", \"url\": \"https://getfund.gov.gh\", \"logo\": \"/images/logos/getfund-logo.png\" ... site bundle https://www.getfund.gov.gh/assets/index-CxMLORKP.js contains: /images/logos/GETFund logo_200cm Wide -  Black.png",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.getfund.gov.gh/news/getfund-opens-applications-for-2026-27-undergraduate-and-postgraduate-local-scholarships",
+        "https://www.getfund.gov.gh/scholarships/overview",
+        "https://www.getfund.gov.gh/",
+        "https://www.getfund.gov.gh/assets/index-CxMLORKP.js"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.getfund.gov.gh/images/logos/getfund-logo.png",
+          "reason": "declared as the schema.org logo but the response body is the SPA HTML document (<!doctype html>), not an image; would render broken"
+        },
+        {
+          "url": "https://www.getfund.gov.gh/images/logos/getfund-site-icon-192x192.png",
+          "reason": "site icon / favicon asset"
+        },
+        {
+          "url": "https://www.getfund.gov.gh/images/logos/getfund-cropped-icon.png",
+          "reason": "shortcut icon / favicon asset"
+        },
+        {
+          "url": "https://www.getfund.gov.gh/images/logos/getfund-logo-light-main.png",
+          "reason": "white reversed variant, only 261x103 px - poor and low-resolution"
+        },
+        {
+          "url": "https://www.getfund.gov.gh/images/logos/efpi-logo.png",
+          "reason": "belongs to EFPI, an unrelated entity, not GETFund"
+        },
+        {
+          "url": "https://www.getfund.gov.gh/apple-touch-icon.png",
+          "reason": "apple-touch-icon asset"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 718,
+      "title": "GETFund Postgraduate Foreign Scholarship (Ghana Education Trust Fund)",
+      "outcome": "recovered",
+      "image_url": "https://www.getfund.gov.gh/images/logos/GETFund%20logo_200cm%20Wide%20-%20%20Black.png",
+      "image_source_url": "https://www.getfund.gov.gh/",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Same official provider as record 685 (GETFund), so the same verified official logo applies; the local and foreign postgraduate awards are both administered by GETFund. The record's official_source_url .../news/getfund-opens-applications-for-2026-2027-postgraduate-foreign-scholarships redirects to the SPA shell at https://www.getfund.gov.gh/, whose JSON-LD identifies 'Ghana Education Trust Fund' / alternateName 'GETFund'. The declared logo path /images/logos/getfund-logo.png returns SPA HTML rather than an image; the asset actually shipped by the official site is /images/logos/GETFund logo_200cm Wide -  Black.png (referenced by the site's own bundle). Verified live: HTTP 200, image/png, 427014 bytes, 5906x2953 px, and visually confirmed in a browser as the GETFund seal plus 'Ghana Education Trust Fund' wordmark."
+      },
+      "source": {
+        "url": "https://www.getfund.gov.gh/",
+        "publisher": "Ghana Education Trust Fund (GETFund), Government of Ghana",
+        "retrieved_at": "2026-10-05T15:45:00Z",
+        "raw_extract": "\"@type\": \"GovernmentOrganization\", \"name\": \"Ghana Education Trust Fund\", \"alternateName\": \"GETFund\", \"description\": \"Supporting quality education for all Ghanaians from basic to tertiary level through infrastructure development, scholarships, and educational sector support.\", \"url\": \"https://getfund.gov.gh\", \"logo\": \"/images/logos/getfund-logo.png\" ... site bundle https://www.getfund.gov.gh/assets/index-CxMLORKP.js contains: /images/logos/GETFund logo_200cm Wide -  Black.png",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.getfund.gov.gh/news/getfund-opens-applications-for-2026-2027-postgraduate-foreign-scholarships",
+        "https://www.getfund.gov.gh/scholarships/overview",
+        "https://www.getfund.gov.gh/",
+        "https://www.getfund.gov.gh/assets/index-CxMLORKP.js"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.getfund.gov.gh/images/logos/getfund-logo.png",
+          "reason": "declared as the schema.org logo but the response body is the SPA HTML document (<!doctype html>), not an image; would render broken"
+        },
+        {
+          "url": "https://www.getfund.gov.gh/images/logos/getfund-site-icon-192x192.png",
+          "reason": "site icon / favicon asset"
+        },
+        {
+          "url": "https://www.getfund.gov.gh/images/logos/getfund-cropped-icon.png",
+          "reason": "shortcut icon / favicon asset"
+        },
+        {
+          "url": "https://www.getfund.gov.gh/images/logos/getfund-logo-light-main.png",
+          "reason": "white reversed variant, only 261x103 px - poor and low-resolution"
+        },
+        {
+          "url": "https://www.getfund.gov.gh/images/logos/efpi-logo.png",
+          "reason": "belongs to EFPI, an unrelated entity, not GETFund"
+        }
+      ]
+    }
+  ]
+}

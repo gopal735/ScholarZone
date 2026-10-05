@@ -1,0 +1,58 @@
+{
+  "shard_id": "LG-027",
+  "topic": "logo",
+  "hosts": [
+    "jobs.inria.fr",
+    "www.clinical-linguistics.eu",
+    "www.mfa.gov.bn",
+    "www.ulisboa.pt"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 304,
+      "title": "University of Lisbon International Scholarships",
+      "official_source": "University of Lisbon",
+      "official_source_url": "https://www.ulisboa.pt/en/study/fees-and-scholarships",
+      "catalogue_url": null,
+      "country": "Portugal",
+      "image_evaluation_status": "source_blocked"
+    },
+    {
+      "id": 349,
+      "title": "Erasmus Mundus EMCL Scholarship (European Master's in Clinical Linguistics)",
+      "official_source": "Clinical Linguistics.Eu",
+      "official_source_url": "https://www.clinical-linguistics.eu",
+      "catalogue_url": null,
+      "country": "Finland",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 549,
+      "title": "PhD Position F/M Spatio-temporal analysis of remote sensing data at large scales (Inria offer 2026-10352)",
+      "official_source": "Inria (Centre Inria d'Universite Cote d'Azur, TITANE team)",
+      "official_source_url": "https://jobs.inria.fr/public/classic/en/offres/2026-10352",
+      "catalogue_url": "https://jobs.inria.fr/public/classic/en/offres",
+      "country": "France",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 681,
+      "title": "Government of Brunei Darussalam Scholarship to Foreign Students Tenable in Brunei Darussalam (BDGS)",
+      "official_source": "Ministry of Foreign Affairs, Government of Brunei Darussalam",
+      "official_source_url": "https://www.mfa.gov.bn/Pages/online-bdgs.aspx",
+      "catalogue_url": "https://www.mfa.gov.bn/pages/scholarship.aspx",
+      "country": "Brunei",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 683,
+      "title": "Brunei Darussalam Government Scholarship for Foreign Students Tenable in Brunei Darussalam (BDGS)",
+      "official_source": "Government of Brunei Darussalam, Ministry of Foreign Affairs and Ministry of Education",
+      "official_source_url": "https://www.mfa.gov.bn/Pages/scholarship.aspx",
+      "catalogue_url": "https://ubd.edu.bn/admission/scholarship",
+      "country": "Brunei",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

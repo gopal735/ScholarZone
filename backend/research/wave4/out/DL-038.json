@@ -1,0 +1,259 @@
+{
+  "shard_id": "DL-038",
+  "agent_completed": true,
+  "retrieved_at": "2026-10-05T15:33:19Z",
+  "records": [
+    {
+      "scholarship_id": 69,
+      "title": "Cambridge Trust International Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Your admissions application must be submitted by the funding deadline specific to your course. The funding deadline is not the same as the application deadline.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.cambridgetrust.org/postgraduate-applicants/",
+        "source_type": "official_scholarship_page",
+        "publisher": "Cambridge Commonwealth, European & International Trust (The Cambridge Trust)",
+        "retrieved_at": "2026-10-05T15:33:19Z",
+        "as_of": "Trust guidance live at retrieval; the Trust's Find a scholarship page describes the current round as courses starting in the academic year 2027/28",
+        "raw_extract": "Meeting the deadline\n\nYour admissions application must be submitted by the **funding deadline** specific to your course. The funding deadline is not the same as the application deadline.\n\nIf you do not know what the funding deadline is for your course, you can visit the postgraduate course directory and check your subject (the funding deadline is a drop-down section on the right-hand side of the individual course page).\n\nStep 5: The awards process\n\nThe Trust's awarding period runs from the middle of February to the end of July and is an ongoing process throughout that period. Most of our awards are made early during the months of February and March, but some of our partner funded awards involve additional processes such as interviews, which means funding decisions tend to be later from April to June.",
+        "exact_deadline_wording": "Your admissions application must be submitted by the funding deadline specific to your course. The funding deadline is not the same as the application deadline.",
+        "confidence": "HIGH",
+        "notes": "The Trust publishes no single Trust-wide application deadline: the deadline is the course-specific funding deadline listed on each individual course page in the University of Cambridge postgraduate course directory, which is a different deadline per course. The only recurring Trust-wide timing stated is the awarding period (mid-February to end of July), which is a decision process, not an application deadline. The page does not use the word 'rolling' and does not give a fixed current date, so per the brief neither ROLLING nor ANNUAL can be asserted for an application deadline; no date was invented. Confidence HIGH refers to the finding that no single date exists, not to a date value."
+      },
+      "field_mapping": {
+        "deadline_date": "no write (null) - no single Trust-wide deadline exists",
+        "deadline_precision": "unknown",
+        "deadline_display": "Your admissions application must be submitted by the funding deadline specific to your course. The funding deadline is not the same as the application deadline."
+      },
+      "examined": [
+        "https://www.cambridgetrust.org",
+        "https://www.cambridgetrust.org/postgraduate-scholarships/",
+        "https://www.cambridgetrust.org/find-a-scholarship/"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 76,
+      "title": "GREAT Scholarship for Bangladesh ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â University of Manchester",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Applications will close on 23 April 2026.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.manchester.ac.uk/study/international/finance-and-scholarships/funding/great-scholarships",
+        "source_type": "official_university_page",
+        "publisher": "The University of Manchester (in partnership with the British Council / GREAT Britain Campaign)",
+        "retrieved_at": "2026-10-05T15:33:19Z",
+        "as_of": "GREAT Scholarships 2026 cycle, one-year taught Master's programmes, page heading 'GREAT scholarships 2026'",
+        "raw_extract": "GREAT Scholarships\n\nApplications for The University of Manchester's GREAT scholarships will open to relevant offer-holders from December 2025. A scholarship application form will be emailed to all relevant offer-holders by the International Office.\n\nApplications will close on 23 April 2026.\n\nWhat are the key dates I need to be aware of?\n\nScholarships can only be awarded to applicants who have:\n\n- received a conditional or unconditional offer to study at The University of Manchester by 23 April 2026;\n- submitted a scholarship application form by 23 April 2026.\n\nThe scholarship application form will be emailed to all relevant offer-holders by the International Office.\n\nSuccessful applicants will be notified by 29 May 2026.",
+        "exact_deadline_wording": "Applications will close on 23 April 2026.",
+        "confidence": "HIGH",
+        "notes": "The live official page states an explicit calendar deadline of 23 April 2026 for the 2026 cycle, but that date passed on 2026-04-23, i.e. roughly 5 months before retrieval (2026-10-05), and the page also states successful applicants were already notified by 29 May 2026. The record is flagged verification_status 'active', so the deadline is in the past while the record is presented as open/upcoming. Per the brief the stale date is NOT written and is NOT silently moved to the next annual cycle: no 2027 dates are published anywhere on the page. Stale value retained only for human review in stale_deadline_observed."
+      },
+      "field_mapping": {
+        "deadline_date": "no write (null) - stated deadline 2026-04-23 is in the past; no current-cycle date published",
+        "deadline_precision": "unknown",
+        "deadline_display": "Applications will close on 23 April 2026."
+      },
+      "examined": [],
+      "rejected_sources": [],
+      "stale_deadline_observed": "2026-04-23"
+    },
+    {
+      "scholarship_id": 150,
+      "title": "NYCU Elite Ph.D. Scholarship for New Students",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "The scholarship is awarded based on recommendations from the college and a review by the scholarship committee, not through the application submitted by the students.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://oia.nycu.edu.tw/oia/en/app/openData/data/data?module=nycu0012&serno=0f046f83-4147-4ec7-8921-bbaccd8c678f&type=json&id=792",
+        "source_type": "official_university_page",
+        "publisher": "National Yang Ming Chiao Tung University (NYCU), Office of International Affairs, Division of International Talent Cultivation",
+        "retrieved_at": "2026-10-05T15:33:19Z",
+        "as_of": "record updateDate 2024-01-11, retrieved live 2026-10-05; human-readable rendering of the same content is https://oia.nycu.edu.tw/oia/en/app/data/view?id=792&module=nycu0012&serno=0f046f83-4147-4ec7-8921-bbaccd8c678f",
+        "raw_extract": "Elite Ph.D. Scholarship\n\nThe scholarship is awarded based on recommendations from the college and a review by the scholarship committee, not through the application submitted by the students.\n\nWho is Eligible\nNew Ph.D. students with outstanding grades and who have no received scholarships or grants from the Taiwan government\n\nScholarship Content and Duration\nMonthly stipends NT$ 33,000 and the tuition waiver for 2 years\n\nImportant Notes\n- Scholarship recipients are required to submit their transcripts and tuition payment receipts for each semester before the specified deadline to be eligible for the scholarship in the following semester.\n- Recipients will receive the scholarship on the 10th of each month, except for January and the start of each semester (September).",
+        "exact_deadline_wording": "The scholarship is awarded based on recommendations from the college and a review by the scholarship committee, not through the application submitted by the students.",
+        "confidence": "HIGH",
+        "notes": "Confirmed from the live official NYCU OIA page: this award is not student-applied, so there is no application deadline to record. The only recurring timing mentioned is a per-semester obligation for existing recipients ('before the specified deadline'), with no date given; the specification is in the linked NYCU scholarship regulations PDF (Google Drive), which returned an unreadable binary stream and is not quoted here. No date was inferred from the current-student application windows of the separate NYCU International Student Scholarship, nor from the Spring 2027 NYCU New Students Scholarship window in the application system."
+      },
+      "field_mapping": {
+        "deadline_date": "no write (null) - award is not student-applied, no application deadline",
+        "deadline_precision": "unknown",
+        "deadline_display": "The scholarship is awarded based on recommendations from the college and a review by the scholarship committee, not through the application submitted by the students."
+      },
+      "examined": [
+        "https://oia-scholarship.nycu.edu.tw",
+        "https://oia-scholarship.nycu.edu.tw/student",
+        "https://oia-scholarship.nycu.edu.tw/student/apply/index/applySn/153",
+        "https://oia.nycu.edu.tw/oia/en/app/data/view?module=nycu0012&id=854&serno=32c971f3-1147-4eb8-b295-a7ca82909dc8"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://drive.google.com/uc?export=download&id=1Q5NUOTV3LWmAD-2-Y3spxpH4jH_pYIZd",
+          "reason": "official NYCU scholarship regulations PDF linked from the OIA page, but the fetch returned a raw binary PDF stream with no extractable text, so no verbatim quote could be taken from it"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 163,
+      "title": "TU Wien Scholarships for International Students",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Applications for Study Grants can usually be sent in between September and December for the wintersemester and between February and May for the summersemester.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.tuwien.at/en/studies/student-support/financial-support",
+        "source_type": "official_university_page",
+        "publisher": "TU Wien (Vienna University of Technology)",
+        "retrieved_at": "2026-10-05T15:33:19Z",
+        "as_of": "live page at retrieval 2026-10-05; no cycle or year stated for the umbrella listing",
+        "raw_extract": "Financial Support For Students\n\nWhich grants and scholarships are available for students at TU Wien?\n\nThis website provides an overview of existing financial support.\n\nStudy Grant\n\nApplications for Study Grants can usually be sent in between September and December for the wintersemester and between February and May for the summersemester. Please refer to the current deadlines on the website of the Study Grant Authority!\n\nGrants for Students Coming from Abroad\n\nGrants for Students Coming from Abroad to study at TU Wien can be found on the OeAD's GRANTS website.\n\nFoundation Grants\n\nThe TU Wien awards Foundation Grants to students with social need. The complete application must be sent by e-mail to stiftungs-stipendium@tuwien.ac.at usually until February.\n\nHelmut Veith Stipend\n\n... are invited to apply in November for the annually awarded Helmut Veith Stipend.\n\nGraduation Scholarship for Working Students\n\nThe application must be sent with all the required documents by e-mail to abschluss-stipendium@tuwien.ac.at between October and November. Please refer to the corresponding TU website for the current deadline.",
+        "exact_deadline_wording": "This website provides an overview of existing financial support.",
+        "confidence": "MEDIUM",
+        "notes": "This record is an umbrella entry covering several distinct TU Wien awards. The live official page gives a different timing for each award (Study Grant Sept-Dec / Feb-May; Foundation Grants usually until February; Graduation Scholarship between October and November; Helmut Veith Stipend apply in November) and defers to faculty pages and the Admission Office for current deadlines. Per the brief, different programmes at the same institution having different deadlines is not a conflict and none of these windows may be borrowed as the deadline for this umbrella record, so no single value can be written. The record's own official_source_url (https://www.tuwien.at/en/studies/scholarships) returned HTTP 404; the live equivalent page was located via TU Wien's own site navigation."
+      },
+      "field_mapping": {
+        "deadline_date": "no write (null) - umbrella record, each underlying award has its own timing and none is a deadline for this record",
+        "deadline_precision": "unknown",
+        "deadline_display": "Applications for Study Grants can usually be sent in between September and December for the wintersemester and between February and May for the summersemester."
+      },
+      "examined": [
+        "https://www.tuwien.at/en/studies/scholarships",
+        "https://www.tuwien.at/en/studies/studying-at-tu-wien/study-grants",
+        "https://www.tuwien.at/en/studies/financing-students/scholarships"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 170,
+      "title": "Webster University Vienna Scholarships",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "The Fall Semester scholarship application period for newly admitted students begins on March 1. The application deadline is May 31 at 13:00 CET. The Spring Semester scholarship application period for newly admitted students begins on October 1 and the application deadline is Nov. 30 at 13:00 CET.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.webster.ac.at/financialinformation/financialaid.php",
+        "source_type": "official_university_page",
+        "publisher": "Webster Vienna Private University",
+        "retrieved_at": "2026-10-05T15:33:19Z",
+        "as_of": "live page at retrieval 2026-10-05; the two scholarship application windows are stated without any year",
+        "raw_extract": "WVPU New Student Scholarships\n\nThe Fall Semester scholarship application period for newly admitted students begins on March 1. The application deadline is May 31 at 13:00 CET.\n\nThe Spring Semester scholarship application period for newly admitted students begins on October 1 and the application deadline is Nov. 30 at 13:00 CET.\n\nIf you have already been admitted and the scholarship application period has started, you can request the online scholarship application form from the Admissions Office.",
+        "exact_deadline_wording": "The Fall Semester scholarship application period for newly admitted students begins on March 1. The application deadline is May 31 at 13:00 CET.",
+        "confidence": "HIGH",
+        "notes": "The official page states two fixed annual windows with no year attached, so this is recurring (ANNUAL) and must not be converted into a calendar date. This corrects the previously cached value 'Varies (rolling admissions)', which the live official source does not support. A separate award on the same page (Austrian Federal Ministry merit award) carries an explicit dated deadline of 'Dec. 4, 2026, 1 p.m. CET'; that is a different award and was not used here. The record's official_source_url (https://www.webster.ac.at/scholarships) returned HTTP 404; the live equivalent page was located via the site's own navigation and is linked from the admissions page."
+      },
+      "field_mapping": {
+        "deadline_date": "no write (null) - annual recurring windows, must never be dated",
+        "deadline_precision": "recurring",
+        "deadline_display": "The Fall Semester scholarship application period for newly admitted students begins on March 1. The application deadline is May 31 at 13:00 CET. The Spring Semester scholarship application period for newly admitted students begins on October 1 and the application deadline is Nov. 30 at 13:00 CET."
+      },
+      "examined": [
+        "https://www.webster.ac.at/scholarships"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 222,
+      "title": "Helmut Veith Stipend for Female Master's Students in Computer Science",
+      "outcome": "recovered",
+      "deadline_semantics": "EXACT",
+      "deadline_date": "2026-11-30",
+      "deadline_display": "APPLICATION-DEADLINE: November 30th, 2026.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://jobs.tuwien.ac.at/Job/270266",
+        "source_type": "official_application_portal",
+        "publisher": "TU Wien (Vienna University of Technology), TU-ID 270266",
+        "retrieved_at": "2026-10-05T15:33:19Z",
+        "as_of": "2026 application round; the page states the award is made annually and the application is submitted via this TU Wien online system",
+        "raw_extract": "PLEASE NOTE (!)\n\n- Before applying, please review the conditions for obtaining a residence permit in Austria\n- A certified translation needs to be provided for documents that are not in German or English. Your application must be submitted via this ONLINE-System\n- APPLICATION-DEADLINE: November 30th, 2026.\n\nThe Helmut Veith Stipend is awarded annually to exceptionally talented and motivated female students in the field of computer science who pursue (or plan to pursue) one of the master's programs in Computer Science at TU Wien taught in English",
+        "exact_deadline_wording": "APPLICATION-DEADLINE: November 30th, 2026.",
+        "confidence": "HIGH",
+        "notes": "The current-round deadline is explicit and still in the future at retrieval (2026-10-05), so EXACT with a real calendar date is justified. The record's official_source_url on www.tuwien.at returned HTTP 404 on repeated attempts, so the value was taken from TU Wien's own official application portal on the jobs.tuwien.ac.at domain, which is the system the stipend page instructs applicants to use. The TU Wien 'Financial Support' overview page independently says applicants 'are invited to apply in November for the annually awarded Helmut Veith Stipend', which is consistent with 30 November and is not a conflicting source. Note the same portal lists separate, unrelated progress-review dates (April 30 for the winter term, November 30 for the summer term) which were not treated as the application deadline."
+      },
+      "field_mapping": {
+        "deadline_date": "2026-11-30",
+        "deadline_precision": "exact",
+        "deadline_display": "APPLICATION-DEADLINE: November 30th, 2026."
+      },
+      "examined": [
+        "https://www.tuwien.at/en/studies/studying-at-tu-wien/study-grants/helmut-veith-stipendium",
+        "https://www.tuwien.at/en/studies/studying-at-tu-wien/study-grants/helmut-veith-stipendium/",
+        "https://www.tuwien.at/en/studies/student-support/financial-support"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://informatics.tuwien.ac.at/study-services/scholarships",
+          "reason": "official faculty page seen only as a search result snippet, not fetched; the parent TU Wien portal was fetched instead and gives the dated deadline"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 618,
+      "title": "Presidential West African Scholarship Initiative (PWASI) 2026",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Deadline Not specified",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://scholarships.gov.gh/opportunities/presidential-west-african-scholarship-initiative-pwasi-2026",
+        "source_type": "official_government_page",
+        "publisher": "Ghana Scholarships Authority (Government of the Republic of Ghana)",
+        "retrieved_at": "2026-10-05T15:33:19Z",
+        "as_of": "notice published June 03, 2026 for the 2026/2027 academic year; page still live at retrieval 2026-10-05",
+        "raw_extract": "Status Official notice\n\nDeadline Not specified\n\nPublished June 03, 2026\n\nPosted by Ghana Scholarships Authority\n\n... 5.5 The Nominating Agency is kindly requested to email scanned copy of the National Endorsement Form and send via email to info@scholarships.gov.gh latest by 30Th August, 2026 and then dispatch/courier the complete paper applications to the Director-General, Ghana Scholarships Authority, Accra, through The Ministry of Foreign Affairs, P. O. Box M53, Accra.\n\n5.6 Nominating Agencies should take necessary measures to ensure that National Endorsement Form is received at the Ghana Scholarships Authority by the set deadlines.",
+        "exact_deadline_wording": "Deadline Not specified",
+        "confidence": "HIGH",
+        "notes": "The Authority's own notice carries the deadline field 'Not specified', so no applicant-facing deadline exists to record for this award. The only explicit date in the notice, 30Th August 2026, is a nominating-agency obligation for ECOWAS member states to return National Endorsement Forms (section 5.5) - not an applicant deadline - and it has also already passed as of retrieval. The per-institution 'TENTATIVE APPLICATION WINDOW' table in the notice lists the universities' own admissions windows, which are a different process and were not used. Nothing was dated."
+      },
+      "field_mapping": {
+        "deadline_date": "no write (null) - Authority notice states 'Deadline Not specified'",
+        "deadline_precision": "unknown",
+        "deadline_display": "Deadline Not specified"
+      },
+      "examined": [
+        "https://scholarships.gov.gh/opportunities"
+      ],
+      "rejected_sources": [],
+      "non_applicant_date_observed": "2026-08-30 - deadline for ECOWAS nominating agencies to return National Endorsement Forms (section 5.5), not an applicant deadline"
+    },
+    {
+      "scholarship_id": 713,
+      "title": "Joint Algeria/Ghana Government Scholarship Awards 2026/2027 (tenable in Algeria)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "NOT LATER THAN 21st SEPTEMBER, 2026",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://scholarships.gov.gh/opportunities/the-joint-algeriaghana-government-scholarship-awards-for-the-20262027-academic-year-tenable-in-algeria",
+        "source_type": "official_government_page",
+        "publisher": "Ghana Scholarships Authority (Republic of Ghana), announcing an award of the Government of the People's Democratic Republic of Algeria",
+        "retrieved_at": "2026-10-05T15:33:19Z",
+        "as_of": "notice published September 05, 2026 for the 2026/2027 academic year",
+        "raw_extract": "Status Open\n\nDeadline September 21, 2026\n\nPublished September 05, 2026\n\nPosted by Ghana Scholarships Authority\n\n... NOT LATER THAN 21st SEPTEMBER, 2026\n\nSIGNED\n\nDIRECTOR-GENERAL",
+        "exact_deadline_wording": "NOT LATER THAN 21st SEPTEMBER, 2026",
+        "confidence": "HIGH",
+        "notes": "The live official notice is internally inconsistent with the calendar: it still displays Status 'Open' and Deadline 'September 21, 2026', but that date passed on 2026-09-21, 14 days before retrieval (2026-10-05), and no successor call for 2027/2028 is published. Because the record is presented as open/upcoming while the only official date is clearly in the past, per the brief the stale date is NOT written and is NOT moved to a future year. The dead-letter page also contains no extension notice. Retained for human review in stale_deadline_observed."
+      },
+      "field_mapping": {
+        "deadline_date": "no write (null) - stated deadline 2026-09-21 is in the past while the notice still shows Open",
+        "deadline_precision": "unknown",
+        "deadline_display": "NOT LATER THAN 21st SEPTEMBER, 2026"
+      },
+      "examined": [
+        "https://scholarships.gov.gh/opportunities"
+      ],
+      "rejected_sources": [],
+      "stale_deadline_observed": "2026-09-21"
+    }
+  ]
+}

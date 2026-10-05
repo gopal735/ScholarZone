@@ -1,0 +1,109 @@
+{
+  "shard_id": "DL-005",
+  "topic": "deadline",
+  "hosts": [
+    "erasmus-plus.ec.europa.eu",
+    "study-uk.britishcouncil.org",
+    "www.fulbright.ca",
+    "www.sdu.dk"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 1,
+      "title": "Erasmus Mundus Joint Masters (EMJM)",
+      "official_source": "European Commission (Erasmus+)",
+      "official_source_url": "https://erasmus-plus.ec.europa.eu",
+      "catalogue_url": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
+      "country": "Multiple",
+      "deadline_display": "Varies by consortium/programme - typically Dec-Feb for a Sept/Oct intake; no single central deadline",
+      "deadline_precision": "unknown",
+      "application_period": "Varies by consortium/programme - typically Dec-Feb for a Sept/Oct intake; no single central deadline",
+      "verification_status": "active"
+    },
+    {
+      "id": 17,
+      "title": "Erasmus+ Student Exchange (Studying Abroad)",
+      "official_source": "European Commission (Erasmus+ Programme)",
+      "official_source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/studying-abroad",
+      "catalogue_url": "https://erasmus-plus.ec.europa.eu/resources-and-tools/documents-and-guidelines/higher-education-institutions-holding-an-eche-2021-2027",
+      "country": "Multiple",
+      "deadline_display": "Varies by university (typically 1–3 months before departure)",
+      "deadline_precision": "unknown",
+      "application_period": "Year-round through the sending institution, which publishes its own Erasmus+ selection deadlines for each academic year.",
+      "verification_status": "active"
+    },
+    {
+      "id": 78,
+      "title": "GREAT Scholarships 2026 â€” University of Edinburgh (Ghana, Mexico and Thailand)",
+      "official_source": "The University of Edinburgh, in partnership with the British Council",
+      "official_source_url": "https://study-uk.britishcouncil.org/scholarships-funding/great-scholarships/bangladesh",
+      "catalogue_url": null,
+      "country": "United Kingdom",
+      "deadline_display": "The deadline to apply for the 2026 scholarships has now passed; the University states that award information and application instructions for GREAT Scholarships 2027 are coming soon",
+      "deadline_precision": "recurring",
+      "application_period": "The 2026 cycle is closed and outcomes were due by the end of June/start of July 2026. The University of Edinburgh has announced that GREAT Scholarships 2027 award information and application instructions are coming soon.",
+      "verification_status": "active"
+    },
+    {
+      "id": 273,
+      "title": "University of Southern Denmark (SDU) Danish Government Scholarship",
+      "official_source": "University of Southern Denmark (SDU)",
+      "official_source_url": "https://www.sdu.dk/en/uddannelse/tuition-fees-and-scholarships",
+      "catalogue_url": null,
+      "country": "Denmark",
+      "deadline_display": "Master's: 'You must submit your application for admission no later than February 1 - even if you have a Danish residence permit'. Bachelor's: 'You must submit your application for admission no later than March 15'.",
+      "deadline_precision": "recurring",
+      "application_period": "Applications are submitted through the regular DANS admission portal; Master's interviews run 19-27 February and Bachelor's interviews in early June.",
+      "verification_status": "active"
+    },
+    {
+      "id": 293,
+      "title": "Erasmus Mundus Joint Master Degrees — Polish Universities",
+      "official_source": "European Commission / Polish Universities",
+      "official_source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters/poland",
+      "catalogue_url": null,
+      "country": "Poland",
+      "deadline_display": "Varies by programme (typically October-February)",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 298,
+      "title": "Erasmus Mundus Joint Master Degrees — Czech Universities",
+      "official_source": "European Commission / Czech Universities",
+      "official_source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters/czech-republic",
+      "catalogue_url": null,
+      "country": "Czech Republic",
+      "deadline_display": "Varies by programme (typically October-February)",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 300,
+      "title": "Erasmus Mundus Joint Master Degrees — Portuguese Universities",
+      "official_source": "European Commission / Portuguese Universities",
+      "official_source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters/portugal",
+      "catalogue_url": null,
+      "country": "Portugal",
+      "deadline_display": "Varies by programme (typically October-February)",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 695,
+      "title": "Killam Fellowships Program (Fulbright Canada)",
+      "official_source": "Fulbright Canada, Foundation for Educational Exchange between Canada and the United States of America",
+      "official_source_url": "https://www.fulbright.ca/programs/killam-fellowships",
+      "catalogue_url": "https://www.fulbright.ca/programs/killam-fellowships/awards-for-americans",
+      "country": "Canada",
+      "deadline_display": "January 31 for the open competition; institution-set internal deadline for the direct exchange",
+      "deadline_precision": "varies",
+      "application_period": "The competition opens annually on August 15. Applications are for placement in Fall or Spring of the next school year, submitted by the internal deadline of the home institution for the direct exchange route, or by January 31 for the open competition.",
+      "verification_status": "needs_review"
+    }
+  ]
+}

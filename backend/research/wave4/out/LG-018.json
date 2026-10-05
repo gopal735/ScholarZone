@@ -1,0 +1,282 @@
+{
+  "shard_id": "LG-018",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 309,
+      "title": "Merit Scholarship Program for Foreign Students (PBEEE) - Fonds de recherche du Quebec",
+      "outcome": "recovered",
+      "image_url": "https://frq.gouv.qc.ca/app/uploads/2024/06/frq_logo_couleur.png",
+      "image_source_url": "https://frq.gouv.qc.ca/le-fonds-de-recherche-du-quebec/mention-visibilite-logo/",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "The PBEEE programme page (frq.gouv.qc.ca/en/program/merit-scholarship-program-for-foreign-students-pbeee-2026-2027-2/) carries no FRQ logo image at all: the header renders the org name as text ('<div class=\"page__header__logo page__header__top__qc__logo-line\">Fonds de recherche du Quebec</div>') and the only image there is the Quebec government mark. I therefore followed the official brand page for the same publisher, frq.gouv.qc.ca/le-fonds-de-recherche-du-quebec/mention-visibilite-logo/, whose 'Logo officiel' section publishes the full-size colour PNG (1034px wide) as a direct download link. I downloaded the file and viewed it: it is the 'Fonds de recherche Quebec' wordmark with the Quebec fleur-delise flag, i.e. the genuine official FRQ logo. Identity match: the record's official_source is the Fonds de recherche du Quebec, the same organisation that publishes this logo, so identity is exact. Rejected: /app/themes/webit/favicon-32x32.png, /app/themes/webit/favicon-16x16.png, /app/themes/webit/apple-touch-icon.png, /app/themes/webit/safari-pinned-tab.svg (all favicon/mask icons), /app/themes/webit/assets/img/logo-qc.png (that is the Quebec *government* signature, a different organisation from FRQ), /app/uploads/2023/10/logo_ees.jpg (an unrelated partner/agency logo embedded in body copy), /app/themes/webit/assets/img/wave--mixed.svg (decorative hero art), the pastille PNGs (social-media roundel reserved for social use per the brand guide), and the Wikimedia Commons 'LOGO_FRQNT_720X720.png' (third-party mirror of the pre-2024 FRQNT brand)."
+      },
+      "source": {
+        "url": "https://frq.gouv.qc.ca/le-fonds-de-recherche-du-quebec/mention-visibilite-logo/",
+        "publisher": "Fonds de recherche du Quebec (FRQ)",
+        "retrieved_at": "2026-10-05T15:32:23Z",
+        "raw_extract": "## Logo officiel - Pour avoir des versions differentes de notre visuel (.eps), contactez communications.frq@frq.gouv.qc.ca - Version couleur - format PNG ... <a href=\"https://frq.gouv.qc.ca/app/uploads/2024/06/frq_logo_couleur.png\"> | Version renversee (blanc sur fond transparent) ... | Version noire. Page meta description: 'Logos des Fonds de recherche du Quebec.' Site name: 'Fonds de recherche du Quebec'.",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://frq.gouv.qc.ca/en/program/merit-scholarship-program-for-foreign-students-pbeee-2026-2027-2/",
+        "https://frq.gouv.qc.ca/en/complete-program-directory",
+        "https://frq.gouv.qc.ca/app/uploads/2025/07/image_de_marque_frq_maj_2025-07-03.pdf",
+        "https://frq.gouv.qc.ca/propriete-intellectuelle-2/"
+      ],
+      "rejected": [
+        {
+          "url": "https://frq.gouv.qc.ca/app/themes/webit/favicon-32x32.png",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://frq.gouv.qc.ca/app/themes/webit/favicon-16x16.png",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://frq.gouv.qc.ca/app/themes/webit/apple-touch-icon.png",
+          "reason": "apple-touch-icon"
+        },
+        {
+          "url": "https://frq.gouv.qc.ca/app/themes/webit/safari-pinned-tab.svg",
+          "reason": "safari-pinned-tab mask icon"
+        },
+        {
+          "url": "https://frq.gouv.qc.ca/app/themes/webit/assets/img/logo-qc.png",
+          "reason": "wrong identity - this is the Quebec government signature, not the Fonds de recherche du Quebec logo"
+        },
+        {
+          "url": "https://frq.gouv.qc.ca/app/uploads/2023/10/logo_ees.jpg",
+          "reason": "unrelated third-party organisation logo embedded in body copy"
+        },
+        {
+          "url": "https://frq.gouv.qc.ca/app/themes/webit/assets/img/wave--mixed.svg",
+          "reason": "decorative hero art (the FRQ 'vagues' motif), not a logo"
+        },
+        {
+          "url": "https://frq.gouv.qc.ca/app/uploads/2024/12/new_pastille-logo-frq_fond_bleu_marin.png",
+          "reason": "social-media roundel; the FRQ brand guide states the pastille is reserved for FRQ social media and certain official communications, so it is not the general logo asset"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:LOGO_FRQNT_720X720.png",
+          "reason": "third-party mirror, and it depicts the superseded pre-2024 'FRQ - Nature et technologies' brand, not the current unified FRQ"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 361,
+      "title": "ANRF Ramanujan Fellowship",
+      "outcome": "not_found",
+      "image_url": null,
+      "image_source_url": null,
+      "image_source_type": null,
+      "image_kind": null,
+      "confidence": "LOW",
+      "validation": {
+        "official_domain": false,
+        "accessible": false,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": false,
+        "notes": "No official ANRF logo image exists on the official domain. I fetched https://www.anrfonline.in/ANRF/Ramanujan_fellowship, which served the ANRF site (title 'The Electronic Project Proposal Management System, For ANRF'). I read the entire returned HTML and enumerated every image reference. The ANRF site lockup in the header is pure text, not an image: '<div class=\"serb-logo col-xl-4 col-lg-12\"><a href=\"ANRF/HomePage\" title=\"Anusandhan National Research Foundation\" class=\"top-heading bold\"><span class=\"hindi\">... </span><br><span class=\"english\">Anusandhan National Research Foundation</span></a></div>'. The only images on the page are: /ANRF/resources/app_srv/serb/gl/homepage_new/images/homepage/img/cadc.png (alt='cdac logo' - the unrelated Centre for Development of Advanced Computing logo in the footer), user.svg (login UI icon), and chrome/mozilla/edge/safari.png (browser UI icons), plus a data:image/png;base64 Facebook 1x1 tracking pixel. There is no ANRF logo asset, no brand/media page and no downloadable brand asset on anrfonline.in. The only public traces of an ANRF logo are LinkedIn/X posts (Sept 2025 'the official logo ... is currently under development'; a new logo 'unveiled ... at ESTIC2025'), which the contract rejects as social-media evidence and which I therefore cannot use to prove an official asset. Official absence beats fake branding, so image_url stays null."
+      },
+      "source": {
+        "url": "https://www.anrfonline.in/ANRF/Ramanujan_fellowship",
+        "publisher": "Anusandhan National Research Foundation (ANRF)",
+        "retrieved_at": "2026-10-05T15:32:23Z",
+        "raw_extract": "Site title: 'The Electronic Project Proposal Management System, For ANRF'. Header lockup (text, no image): <div class=\"serb-logo col-xl-4 col-lg-12\"><a href=\"ANRF/HomePage\" title=\"Anusandhan National Research Foundation\" class=\"top-heading bold\"><span class=\"hindi\">अनुसंधान नेशनल रिसर्च फाउंडेशन</span><br><span class=\"english\">Anusandhan National Research Foundation</span></a></div>. The only footer logo image is <img class=\"img-fluid\" src=\"/ANRF/resources/app_srv/serb/gl/homepage_new/images/homepage/img/cadc.png\" alt=\"cdac logo\" />. Head declares only favicon assets: <link rel=\"apple-touch-icon\" href=\"/ANRF/resources/app_srv/serb/gl/images/apple-icons/apple-touch-icon-precomposed.png\"> and <meta name=\"msapplication-TileImage\" content=\"/ANRF/resources/app_srv/serb/gl/images/apple-icons/apple-touch-icon-144x144-precomposed.png\">. Programme page linked from nav: <a class=\"dropdown-item\" href=\"/ANRF/Ramanujan_fellowship?HomePage=New\">Ramanujan Fellowship</a>.",
+        "confidence": "LOW"
+      },
+      "examined": [
+        "https://www.anrfonline.in/ANRF/Ramanujan_fellowship",
+        "https://www.anrfonline.in/",
+        "https://www.anrfonline.in/ANRF/seminar_symposia"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.anrfonline.in/ANRF/resources/app_srv/serb/gl/homepage_new/images/homepage/img/cadc.png",
+          "reason": "wrong identity - CDAC (Centre for Development of Advanced Computing) logo, an unrelated organisation in the footer"
+        },
+        {
+          "url": "https://www.anrfonline.in/ANRF/resources/app_srv/serb/gl/images/apple-icons/apple-touch-icon-precomposed.png",
+          "reason": "apple-touch-icon"
+        },
+        {
+          "url": "https://www.anrfonline.in/ANRF/resources/app_srv/serb/gl/images/apple-icons/apple-touch-icon-144x144-precomposed.png",
+          "reason": "msapplication-TileImage / apple-touch-icon, favicon-sized badge"
+        },
+        {
+          "url": "https://www.anrfonline.in/ANRF/resources/app_srv/serb/gl/homepage_new/images/homepage/img/user.svg",
+          "reason": "not an asset - login UI icon"
+        },
+        {
+          "url": "https://www.anrfonline.in/ANRF/resources/app_srv/serb/gl/homepage_new/images/homepage/img/chrome.png",
+          "reason": "not an asset - browser UI icon (also mozilla.png, edge.png, safari.png)"
+        },
+        {
+          "url": "https://www.linkedin.com/posts/anrfindia_anrfindia-activity-7377280762431201282-e2Cr",
+          "reason": "social media post - rejected as evidence per contract; also states the official logo was still under development"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 597,
+      "title": "Beca Generacion Bicentenario (Convocatoria extraordinaria 2026)",
+      "outcome": "recovered",
+      "image_url": "https://www.pronabec.gob.pe/wp-content/uploads/2026/09/BGB-Nuevo-Logo2.png",
+      "image_source_url": "https://www.pronabec.gob.pe/beca-generacion-bicentenario",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "This is the strongest candidate available: the programme's own logo, published on the official scholarship page for this exact record. The first element of the page content is <img fetchpriority=\"high\" ... src=\"https://www.pronabec.gob.pe/wp-content/uploads/2026/09/BGB-Nuevo-Logo2.png\" width=\"988\" height=\"454\" srcset=\"...988w, ...-300x138.png 300w, ...-768x353.png 768w\" alt=\"\"/>, placed immediately above the page heading <h2>Convocatoria extraordinaria 2026</h2>, which matches the record title verbatim. I downloaded the 988x454 PNG and viewed it: it is a clean wordmark reading 'Beca Generacion del Bicentenario' in white type on a magenta/pink speech-bubble lozenge. That is a logo, not decorative hero art, and it matches the record identity exactly. It is not a favicon, UI chrome, a social avatar, a mirror, a screenshot or a tracking pixel. PRONABEC's institutional wordmark (https://www.pronabec.gob.pe/wp-content/uploads/2022/07/Pronabec-Logo-2020.png, 380x73, blue 'PRONABEC' with a multicolour rule) is a valid official-provider fallback and is recorded here as examined, but the programme logo is preferred under the contract's source hierarchy (official scholarship/programme page first)."
+      },
+      "source": {
+        "url": "https://www.pronabec.gob.pe/beca-generacion-bicentenario",
+        "publisher": "PRONABEC - Programa Nacional de Becas y Credito Educativo, Ministerio de Educacion del Peru",
+        "retrieved_at": "2026-10-05T15:32:23Z",
+        "raw_extract": "Page title: 'Beca Generacion Bicentenario - PRONABEC | PROGRAMA NACIONAL DE BECAS Y CREDITO EDUCATIVO'. First content image: <img fetchpriority=\"high\" decoding=\"async\" class=\"e-image-base e-default-img e-7857516-ae53f35\" data-id=\"7857516\" id=\"49324\" src=\"https://www.pronabec.gob.pe/wp-content/uploads/2026/09/BGB-Nuevo-Logo2.png\" width=\"988\" height=\"454\" srcset=\"https://www.pronabec.gob.pe/wp-content/uploads/2026/09/BGB-Nuevo-Logo2.png 988w, https://www.pronabec.gob.pe/wp-content/uploads/2026/09/BGB-Nuevo-Logo2-300x138.png 300w, https://www.pronabec.gob.pe/wp-content/uploads/2026/09/BGB-Nuevo-Logo2-768x353.png 768w\" alt=\"\"/>, immediately followed by <h2 data-interaction-id=\"fa69916\" class=\"e-fa69916-86561dc e-heading-base e-default-h2\" data-e-type=\"widget\" data-id=\"fa69916\">Convocatoria extraordinaria 2026</h2> and <strong>El Peru cuenta con tu talento!</strong> plus <p>20 becas integrales para profesionales peruanos que buscan realizar estudios de maestria o doctorado en el extranjero y contribuir con un mejor Peru.</p> Site header logo: <img width=\"380\" height=\"73\" src=\"https://www.pronabec.gob.pe/wp-content/uploads/2022/07/Pronabec-Logo-2020.png\" class=\"attachment-large size-large wp-image-22873\">.",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.pronabec.gob.pe/beca-generacion-bicentenario",
+        "https://www.pronabec.gob.pe/concursos-becas-creditos",
+        "https://www.pronabec.gob.pe/wp-content/uploads/2022/07/Pronabec-Logo-2020.png"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.pronabec.gob.pe/wp-content/uploads/2022/09/Logo_libro-de-reclamaciones-digital.png",
+          "reason": "not an asset for this record - it is the 'Libro de Reclamaciones' (consumer complaints book) logo, an unrelated institutional mark"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 632,
+      "title": "2026-2027 Etta Gray Memorial Scholarship Program (UNCF)",
+      "outcome": "recovered",
+      "image_url": "https://uncf.org/wp-content/themes/uncf-wordpress/assets/img/logo_full_whiteyellorange.svg",
+      "image_source_url": "https://uncf.org/scholarships",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "The record's official_source is the United Negro College Fund, and UNCF publishes no separate logo for the Etta Gray Memorial Scholarship. The official UNCF brand mark on the official scholarships page is the site header/footer logo: <img src=\"https://uncf.org/wp-content/themes/uncf-wordpress/assets/img/logo_full_whiteyellorange.svg\" alt=\"UNCF - A Mind is a Terrible Thing to Waste\">. I downloaded the SVG and inspected it: 387x223.2, Adobe Illustrator export, fills #FFFFFF, #FDB917, #F68B33, i.e. the UNCF initials with the torch in UNCF yellow/orange. It is the genuine official logo, on the official domain (uncf.org, not a mirror), and is not a favicon, UI icon, social avatar or screenshot. Two caveats drive MEDIUM rather than HIGH: (1) it is the white reverse variant intended for UNCF's dark header, so the white portions will be low-contrast on a light page background; (2) I could not locate any official UNCF brand-asset or media-kit page offering a full-colour or black downloadable version, so this is the only provable official asset. Both are presentation concerns, not provenance concerns, hence recovered rather than not_found. Rejected: https://uncf.org/wp-content/uploads/favicon.png and the cropped-favicon-32x32/180x180/192x192/270x270 variants (favicons), https://cdn.uncf.org/wp-content/uploads/va_union_graduation_banner-1920.jpg (og:image photograph banner, not a logo), and https://cdn.uncf.org/wp-content/uploads/2026-LA-MB-Sponsorship-92.pdf (a sponsorship booking form, not a brand-asset page)."
+      },
+      "source": {
+        "url": "https://uncf.org/scholarships",
+        "publisher": "United Negro College Fund (UNCF)",
+        "retrieved_at": "2026-10-05T15:32:23Z",
+        "raw_extract": "Header brand mark: <div class=\"global-nav__logo\"><a href=\"https://uncf.org\" class=\"header-logo\"><img src=\"https://uncf.org/wp-content/themes/uncf-wordpress/assets/img/logo_full_whiteyellorange.svg\" alt=\"UNCF - A Mind is a Terrible Thing to Waste\"></a></div>. Repeated in the mobile off-canvas menu and the page footer with alt=\"UNCF Logo\". Page title: 'Scholarships for College - UNCF'; meta description: 'Discover scholarships for college students at UNCF, the nation's largest private scholarship provider. Apply now for diversity scholarships and job opportunities.' Publisher schema: {\"@type\":\"Organization\",\"@id\":\"https://uncf.org/#organization\",\"name\":\"United Negro College Fund\",\"url\":\"https://uncf.org/\"}.",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://uncf.org/scholarships",
+        "https://uncf.org/",
+        "https://uncf.org/wp-content/themes/uncf-wordpress/assets/img/logo_full_whiteyellorange.svg",
+        "https://uncf.org/pages/uncf-website-terms-and-conditions"
+      ],
+      "rejected": [
+        {
+          "url": "https://uncf.org/wp-content/uploads/favicon.png",
+          "reason": "favicon (Yoast site-icon, 512x512) - the schema.org 'logo' field points at the favicon, which the contract rejects"
+        },
+        {
+          "url": "https://cdn.uncf.org/wp-content/uploads/cropped-favicon-32x32.png",
+          "reason": "favicon (also cropped-favicon-180x180 / 192x192 / 270x270 and apple-touch-icon variants)"
+        },
+        {
+          "url": "https://cdn.uncf.org/wp-content/uploads/va_union_graduation_banner-1920.jpg",
+          "reason": "decorative hero art / photograph banner, not a logo"
+        },
+        {
+          "url": "https://cdn.uncf.org/wp-content/uploads/2026-LA-MB-Sponsorship-92.pdf",
+          "reason": "not an asset - sponsorship advertising booking form, not a brand-asset download page"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 633,
+      "title": "Frederick Douglass Bicentennial Scholarship Program (UNCF)",
+      "outcome": "recovered",
+      "image_url": "https://uncf.org/wp-content/themes/uncf-wordpress/assets/img/logo_full_whiteyellorange.svg",
+      "image_source_url": "https://uncf.org/pages/the-frederick-douglass-bicentennial-scholarship-program",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Same provider, same official asset as record 632. On the official Frederick Douglass Bicentennial Scholarship Program page the only brand mark is the UNCF site logo: <img src=\"https://uncf.org/wp-content/themes/uncf-wordpress/assets/img/logo_full_whiteyellorange.svg\" alt=\"UNCF Logo\"> in the footer, with alt=\"UNCF - A Mind is a Terrible Thing to Waste\" in the header and off-canvas menu. The page's own imagery is photographic, not a logo: the primary image is <img width=\"800\" height=\"450\" src=\"https://cdn.uncf.org/wp-content/uploads/f-douglass-scholarship-800.jpg\" class=\"attachment-medium size-medium wp-post-image\" alt=\"Frederick Douglass banner image\"> (an 800x450 banner photograph), plus gallery photographs fdouglass_03-forever-free-400.jpg, 2020-douglass-winner-800.jpg and fdouglass-scholarship-group-800.jpg. Those are decorative programme photography, not a logo, so they are rejected. UNCF publishes no separate Frederick Douglass programme logo and no official brand-asset page with a full-colour or black logo file, so the white reverse header logo is the only provable official asset; MEDIUM for the same two presentation caveats as record 632 (white reverse variant for dark backgrounds; no official colour brand asset exists), not for provenance."
+      },
+      "source": {
+        "url": "https://uncf.org/pages/the-frederick-douglass-bicentennial-scholarship-program",
+        "publisher": "United Negro College Fund (UNCF)",
+        "retrieved_at": "2026-10-05T15:32:23Z",
+        "raw_extract": "Page title: 'The Frederick Douglass Bicentennial Scholarship Program - UNCF'; meta description: 'Honor Frederick Douglass through this bicentennial scholarship. Apply now and contribute to a legacy of leadership and freedom!'. Header brand mark: <img src=\"https://uncf.org/wp-content/themes/uncf-wordpress/assets/img/logo_full_whiteyellorange.svg\" alt=\"UNCF - A Mind is a Terrible Thing to Waste\">; footer: <img src=\"https://uncf.org/wp-content/themes/uncf-wordpress/assets/img/logo_full_whiteyellorange.svg\" alt=\"UNCF Logo\">. Declared primary image (rejected, a banner photograph): {\"@type\":\"ImageObject\",\"url\":\"https://uncf.org/wp-content/uploads/f-douglass-scholarship-800.jpg\",\"caption\":\"Frederick Douglass banner image\"}. Publisher schema: {\"@type\":\"Organization\",\"@id\":\"https://uncf.org/#organization\",\"name\":\"United Negro College Fund\"}.",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://uncf.org/pages/the-frederick-douglass-bicentennial-scholarship-program",
+        "https://uncf.org/scholarships",
+        "https://uncf.org/wp-content/themes/uncf-wordpress/assets/img/logo_full_whiteyellorange.svg"
+      ],
+      "rejected": [
+        {
+          "url": "https://uncf.org/wp-content/uploads/f-douglass-scholarship-800.jpg",
+          "reason": "decorative hero art - 800x450 banner photograph captioned 'Frederick Douglass banner image', not a logo"
+        },
+        {
+          "url": "https://cdn.uncf.org/wp-content/uploads/Fdouglass_03-forever-free-400.jpg",
+          "reason": "decorative hero art - programme photography, not a logo"
+        },
+        {
+          "url": "https://cdn.uncf.org/wp-content/uploads/2020-douglass-winner-800.jpg",
+          "reason": "photograph of an award recipient, not a logo"
+        },
+        {
+          "url": "https://cdn.uncf.org/wp-content/uploads/fdouglass-scholarship-group-800.jpg",
+          "reason": "photograph of a scholarship group, not a logo"
+        },
+        {
+          "url": "https://uncf.org/wp-content/uploads/favicon.png",
+          "reason": "favicon (Yoast site-icon)"
+        },
+        {
+          "url": "https://cdn.uncf.org/wp-content/uploads/cropped-favicon-32x32.png",
+          "reason": "favicon (also cropped-favicon-180x180 / 192x192 / 270x270 and apple-touch-icon variants)"
+        }
+      ]
+    }
+  ]
+}

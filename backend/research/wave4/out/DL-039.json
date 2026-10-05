@@ -1,0 +1,280 @@
+{
+  "shard_id": "DL-039",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 33,
+      "title": "Chinese Government Scholarship (CSC)",
+      "outcome": "conflicting",
+      "deadline_semantics": "CONFLICTING",
+      "deadline_date": null,
+      "deadline_display": "The 2026/2027 Chinese Government Scholarship application(all conducted online) is scheduled to conclude by February 15, 2026.",
+      "deadline_precision": "varies",
+      "source": {
+        "url": "https://tt.china-embassy.gov.cn/eng/sgxw/202601/t20260107_11807431.htm",
+        "source_type": "official_government_page",
+        "publisher": "Embassy of the People's Republic of China in the Republic of Trinidad and Tobago",
+        "retrieved_at": "2026-10-05T21:29:00+06:00",
+        "as_of": "2026/2027 application cycle",
+        "raw_extract": "The Chinese Government Scholarship(2026/2027) is open for application. Hereafter attached are the instructions on the scholarship application, eligibility and required submission of materials. The website at www.campuschina.org is the only official portal for Chinese Government Scholarship application and for publishing Study in China information, which in the meantime include the programmes and scholarships offered by the Chinese universities. The 2026/2027 Chinese Government Scholarship application(all conducted online) is scheduled to conclude by February 15, 2026.",
+        "exact_deadline_wording": "The 2026/2027 Chinese Government Scholarship application(all conducted online) is scheduled to conclude by February 15, 2026.",
+        "confidence": "MEDIUM",
+        "notes": "No single central CSC deadline exists. The closing date is set by the application receiving agency (embassy/consulate) in each country, and official PRC government pages disagree about it for the SAME 2026/2027 cycle. Second official source fetched: https://se.china-embassy.gov.cn/eng/sgxw/202510/t20251024_11740323.htm - 'Online application: Completed application materials must be submitted to Chinese Government Scholarship Information System (CGSIS, www.campuschina.org) no later than February 8, 2026.' (Embassy of the PRC in Sweden). 8 Feb 2026 vs 15 Feb 2026 = CONFLICTING. The record's stored deadline_display ('Typically March-April each year') is contradicted by every official page examined. Note also that all published 2026/2027 CSC closing dates are already in the past relative to retrieval (2026-10-05), so no currently-open cycle deadline can be established. The shard's official_source_url https://www.campuschina.org could not be read (HTTP 412 bot block), so it produced no value."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "varies",
+        "deadline_display": "No single official deadline; varies by application receiving agency. For the 2026/2027 cycle official pages give 8 February 2026 (Sweden) and 15 February 2026 (Trinidad and Tobago)."
+      },
+      "examined": [
+        "https://www.campuschina.org",
+        "https://tt.china-embassy.gov.cn/eng/sgxw/202601/t20260107_11807431.htm",
+        "https://se.china-embassy.gov.cn/eng/sgxw/202510/t20251024_11740323.htm"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.campuschina.org",
+          "reason": "Official portal named in the shard, but returned HTTP 412 and could not be read, so it yielded no verifiable deadline."
+        },
+        {
+          "url": "https://tt.china-embassy.gov.cn/eng/sgxw/202601/t20260107_11807431.htm",
+          "reason": "Also considered as a single authoritative source, but retained as one side of the CONFLICTING finding rather than as the value."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 47,
+      "title": "Melbourne International Undergraduate Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "No application required. You are automatically considered for this scholarship, if you have applied for a course.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://scholarships.unimelb.edu.au/awards/melbourne-international-undergraduate-scholarship",
+        "source_type": "official_scholarship_page",
+        "publisher": "The University of Melbourne",
+        "retrieved_at": "2026-10-05T21:27:30+06:00",
+        "as_of": "Scholarships awarded before 2027 / from 2027 (benefit tiers); no cycle deadline stated",
+        "raw_extract": "No application required. Check eligibility ... Application status Open for automatic consideration ... How to apply: You are automatically considered for this scholarship, if you have applied for a course. ... When will I know the outcome? Successful candidates will be notified of the outcome within five working days of receiving a course offer.",
+        "exact_deadline_wording": "No application required.",
+        "confidence": "HIGH",
+        "notes": "The official award page publishes no deadline of its own and does not use the words 'rolling' or 'no fixed deadline'. Eligibility is tied to holding an offer for the year the scholarship is offered, so the timing is inherited from the undergraduate course application round, which is a different programme. Per the brief, a generic course-admissions deadline must not be substituted, and 'no application required' alone is not an explicit rolling statement. Therefore UNKNOWN. The shard's stored deadline_precision 'month' is not supported by anything on this page."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "No application required. You are automatically considered for this scholarship, if you have applied for a course."
+      },
+      "examined": [
+        "https://scholarships.unimelb.edu.au/awards/melbourne-international-undergraduate-scholarship"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 71,
+      "title": "UCL Global Master's Scholarship",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "5pm BST, Thursday 7 May 2026",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.ucl.ac.uk/scholarships/ucl-global-masters-scholarship",
+        "source_type": "official_scholarship_page",
+        "publisher": "University College London",
+        "retrieved_at": "2026-10-05T21:27:30+06:00",
+        "as_of": "2026/27 entry cycle (page still shows the 2026/27 deadline at retrieval)",
+        "raw_extract": "Deadline: 5pm BST, Thursday 7 May 2026 ... The deadline for applications to this scholarship will be at 5pm BST, Thursday 7 May 2026.",
+        "exact_deadline_wording": "5pm BST, Thursday 7 May 2026",
+        "confidence": "HIGH",
+        "notes": "expired_mismatch: the official page states an explicit, unambiguous calendar deadline of 7 May 2026 for the 2026/27 cycle, but that date is roughly five months in the past at retrieval (2026-10-05). Per the brief the stale date is deliberately NOT written and has not been rolled forward to 2027. UCL has not published a 2027/28 deadline on this page. Page also confirms the cycle it describes: 'There are up to 85 (eighty-five) scholarships available in 2026/27' and applicants must have submitted 'a complete admission application ... for a full-time Master's degree at UCL in 2026/27'. The record therefore needs its open/closed status corrected rather than a date."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "5pm BST, Thursday 7 May 2026 (2026/27 cycle, now closed; no 2027/28 date published)"
+      },
+      "examined": [],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 72,
+      "title": "UCL Humanitarian Scholarship",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "5pm BST, Thursday 7 May 2026",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.ucl.ac.uk/scholarships/ucl-humanitarian-scholarship",
+        "source_type": "official_scholarship_page",
+        "publisher": "University College London",
+        "retrieved_at": "2026-10-05T21:27:30+06:00",
+        "as_of": "2026/27 entry cycle (page still shows the 2026/27 deadline at retrieval)",
+        "raw_extract": "Deadline: 5pm BST, Thursday 7 May 2026 ... The deadline for applications to this scholarship will be at 5pm BST, Thursday 7 May 2026.",
+        "exact_deadline_wording": "5pm BST, Thursday 7 May 2026",
+        "confidence": "HIGH",
+        "notes": "expired_mismatch: same situation as the UCL Global Master's Scholarship page. The only deadline published is 7 May 2026 for 2026/27, already past at retrieval (2026-10-05), so it is not written and has not been moved to the next year. Corroborating cycle evidence on the same page: 'hold an offer of a place on your chosen full-time Master's at UCL by the scholarship panel meeting start of June 2026' and 'There are up to 3 (three) scholarships available in 2026/27'. UCL has published no date for the following annual cycle, so the shard's 'recurring' precision cannot be converted into a calendar date."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "5pm BST, Thursday 7 May 2026 (2026/27 cycle, now closed; no 2027/28 date published)"
+      },
+      "examined": [],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 151,
+      "title": "MOE Elite Scholarship Program for Lecturers from South and Southeast Asian and African Countries",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "How to Apply: Complete and submit the admission application, those received admission candidates need to finish registraion with Registrar Division. OIA will provide the list of candidates to MOE for final reviewing.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://oia.ncku.edu.tw/p/404-1032-229890.php?Lang=en",
+        "source_type": "official_university_page",
+        "publisher": "Office of International Affairs, National Cheng Kung University",
+        "retrieved_at": "2026-10-05T21:29:00+06:00",
+        "as_of": "Page update date : 2026-08-31 (2026.04.24 Updated)",
+        "raw_extract": "2. MOE Elite Scholarship - Eligibility: Doctoral/Master's degree-seeking applicants who are currently university lecturers or professors. (Fall admission applicants) South and Southeast countries in Indonesia, Philippines, Thailand, Vietnam, India, Malaysia, Singapore, Brunei, Myanmar, Cambodia, Laos, Pakistan, Bangladesh, Nepal, Sri Lanka, and Bhutan. (Fall or Spring semester admission applicants) All African countries. ... How to Apply: Complete and submit the admission application, those received admission candidates need to finish registraion with Registrar Division. OIA will provide the list of candidates to MOE for final reviewing. ... 2026/2027 MOE Elite Scholarship Information",
+        "exact_deadline_wording": "Complete and submit the admission application, those received admission candidates need to finish registraion with Registrar Division.",
+        "confidence": "HIGH",
+        "notes": "UNKNOWN. The participating university's official scholarship page describes the MOE Elite route but publishes no scholarship deadline at all - the only instruction is to submit the university admission application, after which NCKU's OIA nominates candidates to the MOE. NCKU's Degree Application Schedule page does list admission deadlines (Fall Sept 2026 entry: March 15, 2026; Spring Feb 2027 entry: September 15, 2026), but those are the general international degree admission deadlines for a different programme and the brief forbids substituting a generic admissions deadline. Searches for an official Taiwan Ministry of Education / government page carrying the MOE Elite application deadline returned only unrelated MOE schemes (教育部留學獎學金, 教育部與世界百大合作設置獎學金) and a 2005-era 菁英留學計畫 gazette entry, none of which is this award's current deadline. The NCKU-linked '2026/2027 MOE Elite Scholarship Information' PDF is the most likely place for the date but is served as an image-and-font-encoded PDF that could not be text-extracted, so nothing from it is quoted here. No deadline asserted."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "No scholarship deadline published; apply via the participating university's admission application and OIA nominates admitted candidates to the MOE."
+      },
+      "examined": [
+        "https://oia.ncku.edu.tw",
+        "https://oia.ncku.edu.tw/p/404-1032-229890.php?Lang=en",
+        "https://oia.ncku.edu.tw/p/404-1032-229816.php?Lang=en",
+        "https://oia.ncku.edu.tw/p/404-1032-229817.php?Lang=en"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://oia.ncku.edu.tw/p/404-1032-229817.php?Lang=en",
+          "reason": "Gives 'Application Deadline: March 15, 2026' (Fall Sept 2026 entry) and 'September 15, 2026' (Spring Feb 2027 entry), but these are NCKU's generic international degree admission deadlines, not an MOE Elite Scholarship deadline. Rejected under the brief's ban on generic admissions deadlines for a different programme."
+        },
+        {
+          "url": "https://oia.ncku.edu.tw/var/file/32/1032/img/4915/2026Elitescholarship(announcement)v3_for_student-appln.pdf",
+          "reason": "Likely authoritative for the 2026/2027 MOE Elite round, but returned uncompressed CID-encoded PDF binary that could not be read or quoted. Nothing taken from it."
+        },
+        {
+          "url": "https://www.scholarship.moe.gov.tw/scholarship",
+          "reason": "Seen only in search results, not fetched. It is the 教育部留學獎學金 (MOE study-abroad scholarship), a different scheme from the MOE Elite Scholarship for lecturers. Not used."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 161,
+      "title": "WIPO Fellowship Program",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "Fellowship positions may be advertised through calls for expressions of interest, published on our career website or via WIPO's LinkedIn or other social media channels.",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://www.wipo.int/en/web/working-at-wipo/fellowship-program",
+        "source_type": "official_programme_page",
+        "publisher": "World Intellectual Property Organization (WIPO)",
+        "retrieved_at": "2026-10-05T21:28:00+06:00",
+        "as_of": "Programme duration stated as 12 - 36 months; no cycle window published",
+        "raw_extract": "How to apply? Fellowship positions may be advertised through calls for expressions of interest, published on our career website or via WIPO's LinkedIn or other social media channels.",
+        "exact_deadline_wording": "Fellowship positions may be advertised through calls for expressions of interest, published on our career website or via WIPO's LinkedIn or other social media channels.",
+        "confidence": "MEDIUM",
+        "notes": "ROLLING. The official programme page publishes no fixed application window; intake is per vacancy via individual calls for expressions of interest posted on WIPO's career site and other channels, which is a continuous, per-opportunity intake rather than a dated round. Nothing is dated here. The programme FAQ page was also fetched and contains no deadline or application window, consistent with a per-vacancy model. The Taleo career portal (catalogue_url) lists individual vacancy closing dates, which are per-position rather than a programme deadline and were therefore not used."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "rolling",
+        "deadline_display": "No fixed central deadline; positions are advertised per call for expressions of interest on WIPO's career website."
+      },
+      "examined": [
+        "https://www.wipo.int/en/web/working-at-wipo/fellowship-program/faqs"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://wipo.taleo.net/careersection/wp_2_fel/jobsearch.ftl?lang=en&portal=50305027338",
+          "reason": "Vacancy-specific closing dates on the application portal are per-opportunity dates, not a programme deadline, so they cannot populate a single deadline_date for the Fellowship Program."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 195,
+      "title": "Melbourne Research Scholarship (MRS)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "No application required. If you have applied for a graduate research course by the application closing date for that course, you will receive confirmation within seven days that you are automatically considered.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://scholarships.unimelb.edu.au/awards/melbourne-research-scholarship",
+        "source_type": "official_scholarship_page",
+        "publisher": "The University of Melbourne",
+        "retrieved_at": "2026-10-05T21:28:00+06:00",
+        "as_of": "Stipend rate quoted as the 2027 full-time rate; no scholarship cycle deadline stated",
+        "raw_extract": "No application required. Check eligibility ... Application status Open for automatic consideration ... How to apply: If you have applied for a graduate research course by the application closing date for that course, you do not need to apply for this scholarship. Within seven days of having submitted your course application, you will receive confirmation that you will be automatically considered for a range of graduate research scholarship.",
+        "exact_deadline_wording": "If you have applied for a graduate research course by the application closing date for that course, you do not need to apply for this scholarship.",
+        "confidence": "HIGH",
+        "notes": "UNKNOWN. The official award page publishes no deadline for the scholarship itself; it explicitly defers to 'the application closing date for that course', which is a per-course graduate research admissions deadline for a different programme and therefore not usable here under the brief. The page also does not state that applications are rolling or that there is no fixed deadline, so ROLLING is not asserted either. Nothing dated."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "No application required. If you have applied for a graduate research course by the application closing date for that course, you will receive confirmation within seven days that you are automatically considered."
+      },
+      "examined": [
+        "https://scholarships.unimelb.edu.au/awards/melbourne-research-scholarship"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 348,
+      "title": "Erasmus Mundus European Forestry (MSc EF) Scholarship",
+      "outcome": "recovered",
+      "deadline_semantics": "EXACT",
+      "deadline_date": "2027-01-13",
+      "deadline_display": "The next call will be open 2 December 2026 – 13 January 2027 for the course starting in August 2027.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://sites.uef.fi/europeanforestry/how-to-apply/",
+        "source_type": "official_programme_page",
+        "publisher": "MSc European Forestry (Erasmus Mundus Joint Master) / University of Eastern Finland (coordinating institution)",
+        "retrieved_at": "2026-10-05T21:30:00+06:00",
+        "as_of": "August 2027 course starting; call window 2 December 2026 - 13 January 2027",
+        "raw_extract": "The next call will be open 2 December 2026 – 13 January 2027 for the course starting in August 2027. Please click on the link to learn more about our eligibility and admission requirements. All applications will be automatically considered for EMJM scholarships and the possible programme-specific tuition fee waivers that may be available and you do not need to apply for those separately.",
+        "exact_deadline_wording": "The next call will be open 2 December 2026 – 13 January 2027 for the course starting in August 2027.",
+        "confidence": "MEDIUM",
+        "notes": "Source-URL note: the shard's official_source_url https://www.master-europeanforestry.eu does not resolve (transport error on https, http, www and non-www variants) and no cached copy was used. The programme's live official website is hosted by the coordinating institution, the University of Eastern Finland, at https://sites.uef.fi/europeanforestry/ (footer: '© University of Eastern Finland'); the home page confirms the same window and identifies the programme as an Erasmus+: Erasmus Mundus Joint Master programme (EMJM). Deadline value: the EMJM scholarship carries no separate application - the page states 'All applications will be automatically considered for EMJM scholarships ... and you do not need to apply for those separately' - so the EMJM scholarship deadline is the close of the single programme application call, 13 January 2027. The home page also states 'EMJM scholarships will be available on a competitive basis' and 'Next time the call will be open 2 December 2026 – 13 January 2027 for the course starting in August 2027', which agree. Confidence is MEDIUM rather than HIGH only because the official domain differs from the one recorded in the record and the record was quarantined."
+      },
+      "field_mapping": {
+        "deadline_date": "2027-01-13",
+        "deadline_precision": "exact",
+        "deadline_display": "The next call will be open 2 December 2026 – 13 January 2027 for the course starting in August 2027."
+      },
+      "examined": [
+        "https://sites.uef.fi/europeanforestry/",
+        "https://sites.uef.fi/europeanforestry/how-to-apply/"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.master-europeanforestry.eu",
+          "reason": "Shard's recorded official_source_url. Returned 'Transport error' on https, http, and the non-www variant at retrieval; the host did not respond, so it yielded no value."
+        },
+        {
+          "url": "https://opintopolku.fi/konfo/en/toteutus/1.2.246.562.17.00000000000000026540",
+          "reason": "Studyinfo national application portal dates were visible in a search result only and the page was not fetched, so no value was taken from it."
+        },
+        {
+          "url": "https://www.linkedin.com/feed/update/urn:li:activity:7413773819175194625",
+          "reason": "Social media post. Explicitly excluded by the brief."
+        }
+      ]
+    }
+  ]
+}

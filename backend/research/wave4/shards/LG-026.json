@@ -1,0 +1,58 @@
+{
+  "shard_id": "LG-026",
+  "topic": "logo",
+  "hosts": [
+    "isd.pku.edu.cn",
+    "www.cdu.edu.au",
+    "www.maastrichtuniversity.nl",
+    "www.tilburguniversity.edu"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 180,
+      "title": "Maastricht University NL-High Potential Scholarship",
+      "official_source": "Maastricht University",
+      "official_source_url": "https://www.maastrichtuniversity.nl/studeren/toelating-inschrijving/financing-your-studies/scholarships",
+      "catalogue_url": "https://www.maastrichtuniversity.nl/support/your-studies-begin/coming-maastricht-university-abroad/um-scholarships-students-abroad",
+      "country": "Netherlands",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 315,
+      "title": "Chinese Government Scholarship for Advanced Graduate Program (Type B) at Peking University",
+      "official_source": "Peking University",
+      "official_source_url": "https://isd.pku.edu.cn/en/detail.php?id=819",
+      "catalogue_url": "https://isd.pku.edu.cn/en/detail.php?id=18",
+      "country": "China",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 394,
+      "title": "Tilburg University Waiver",
+      "official_source": "Tilburg University",
+      "official_source_url": "https://www.tilburguniversity.edu/education/masters-programs/tuition-fees-scholarships/dei-waiver",
+      "catalogue_url": null,
+      "country": "Netherlands",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 512,
+      "title": "Vice-Chancellor's International High Achievers Scholarship (VCIHAS)",
+      "official_source": "Charles Darwin University",
+      "official_source_url": "https://www.cdu.edu.au/international/how-apply/scholarships",
+      "catalogue_url": "https://www.cdu.edu.au/international/how-apply/scholarships/vice-chancellors-high-achievers-scholarship-vcihas-application",
+      "country": "Australia",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 584,
+      "title": "UM NL Global Studies Scholarship",
+      "official_source": "Maastricht University",
+      "official_source_url": "https://www.maastrichtuniversity.nl/studeren/toelating-inschrijving/financing-your-studies/scholarships/um-nl-global-studies",
+      "catalogue_url": null,
+      "country": "Netherlands",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

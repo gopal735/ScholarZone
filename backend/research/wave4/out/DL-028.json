@@ -1,0 +1,260 @@
+{
+  "shard_id": "DL-028",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 41,
+      "title": "AECID Spanish Government Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Becas y Lectorados",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.aecid.es/es/becas-y-lectorados",
+        "source_type": "official_government_page",
+        "publisher": "Agencia Espanola de Cooperacion Internacional para el Desarrollo (AECID)",
+        "retrieved_at": "2026-10-05T16:00:00Z",
+        "as_of": null,
+        "raw_extract": "Becas y Lectorados",
+        "exact_deadline_wording": "",
+        "confidence": "LOW",
+        "notes": "Official AECID index (ES and EN versions both fetched) lists programmes only. No application deadline, no 'plazo', no 'convocatoria' dates and no closing date text anywhere in the page body. The umbrella record has no single deadline; each sub-programme runs its own call. No date written."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "no deadline published on the official AECID index page"
+      },
+      "examined": [
+        "https://www.aecid.es/es/becas-y-lectorados",
+        "https://www.aecid.es/becas-lectorados"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 137,
+      "title": "UniTrento Scholarships for International Students (non-EU candidates residing abroad)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "If you are a citizen of a country outside the EU and live outside of Italy, you can apply for scholarships awarded by UniTrento based on merit and programme of study.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.unitn.it/en/study/fees-scholarships-accommodation/scholarships-and-awards/scholarships-international-students",
+        "source_type": "official_university_page",
+        "publisher": "Universita degli Studi di Trento",
+        "retrieved_at": "2026-10-05T16:00:00Z",
+        "as_of": null,
+        "raw_extract": "If you are a citizen of a country outside the EU and live outside of Italy, you can apply for scholarships awarded by UniTrento based on merit and programme of study.",
+        "exact_deadline_wording": "",
+        "confidence": "LOW",
+        "notes": "Direct webfetch returned HTTP 403; page loaded live in browser after the Cloudflare check. Full page text contains no application deadline (only credit/tuition tables and a 'by 10 August' credit check). The page points to a separate 'annual call' for MAECI scholarships, which is a different award. Degree-programme admission deadlines are not used as evidence."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "no scholarship application deadline published on the official page"
+      },
+      "examined": [
+        "https://www.unitn.it/en/study/fees-scholarships-accommodation/scholarships-and-awards/scholarships-international-students",
+        "https://www.unitn.it/en/study/fees-scholarships-accommodation/scholarships-and-awards"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.unitn.it/en/study/fees-scholarships-accommodation/scholarships-and-awards",
+          "reason": "HTTP 403 to plain fetch and not needed; scholarship page carries no deadline text"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 177,
+      "title": "NL Scholarship (University of Groningen)",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "February 1",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.rug.nl/education/scholarships/holland-scholarship?lang=en",
+        "source_type": "official_university_page",
+        "publisher": "University of Groningen",
+        "retrieved_at": "2026-10-05T16:00:00Z",
+        "as_of": null,
+        "raw_extract": "Deadline: February 1",
+        "exact_deadline_wording": "February 1",
+        "confidence": "MEDIUM",
+        "notes": "Live page title 'NL Scholarship'. Deadline is given as day/month with no year and no time, i.e. recurring annual timing. No calendar date written. Shard official_source_url returned HTTP 404."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "recurring",
+        "deadline_display": "February 1"
+      },
+      "examined": [
+        "https://www.rug.nl/education/scholarships-and-financial-aid",
+        "https://www.rug.nl/education/master/international-students/financial-matters/holland-scholarship/programmes-applicable-for-holland-scholarship"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.rug.nl/education/scholarships-and-financial-aid",
+          "reason": "HTTP 404, page does not exist"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 211,
+      "title": "KAIST Scholarship (KAIST International Graduate Admission)",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Admission Periods: Spring/Fall Early/Fall Regular",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://admission.kaist.ac.kr/intl-graduate/FinancialSupport/Scholarship/KAISTScholarship",
+        "source_type": "official_scholarship_page",
+        "publisher": "KAIST Office of Admissions",
+        "retrieved_at": "2026-10-05T16:01:00Z",
+        "as_of": null,
+        "raw_extract": "Admission Periods: Spring/Fall Early/Fall Regular ... Details: Select the KAIST scholarship option in your application.",
+        "exact_deadline_wording": "Admission Periods: Spring/Fall Early/Fall Regular",
+        "confidence": "MEDIUM",
+        "notes": "No separate scholarship call: award is selected inside the admission application. Official timeline page fetched states 'Spring 2027 Entry: August 18 - September 1, 2026' (window already closed on 2026-10-05) and 'Fall 2027 Entry : TBA', so no open calendar deadline exists. Recurring annual timing only; no date written."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "recurring",
+        "deadline_display": "Admission Periods: Spring/Fall Early/Fall Regular"
+      },
+      "examined": [
+        "https://admission.kaist.ac.kr/intl-graduate/Admission/YearlyTimelines",
+        "https://admission.kaist.ac.kr/intl-graduate/ApplicationGuide/Timeline"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://admission.kaist.ac.kr/intl-graduate/ApplicationGuide/Timeline",
+          "reason": "HTTP 404, wrong path for the timeline page"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 212,
+      "title": "KAIST Prestige Scholarship for International Ph.D. Students (KPS)",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Admission Periods: Spring/Fall Early/Fall Regular",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://admission.kaist.ac.kr/intl-graduate/FinancialSupport/Scholarship/KAISTScholarship",
+        "source_type": "official_scholarship_page",
+        "publisher": "KAIST Office of Admissions",
+        "retrieved_at": "2026-10-05T16:01:00Z",
+        "as_of": null,
+        "raw_extract": "KAIST Prestige Scholarship for International Ph.D. Students (KPS) ... Admission Periods: Spring/Fall Early/Fall Regular ... Eligible applicants are automatically considered for the KPS.",
+        "exact_deadline_wording": "Admission Periods: Spring/Fall Early/Fall Regular",
+        "confidence": "MEDIUM",
+        "notes": "Shard URL /KPrestige returned HTTP 404; the KPS block is published on the KAIST Scholarship page itself, which states automatic consideration and no separate application. Timeline page shows only the closed Spring 2027 window and 'Fall 2027 Entry : TBA'. No date written."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "recurring",
+        "deadline_display": "Admission Periods: Spring/Fall Early/Fall Regular"
+      },
+      "examined": [
+        "https://admission.kaist.ac.kr/intl-graduate/FinancialSupport/Scholarship/KPrestige",
+        "https://admission.kaist.ac.kr/intl-graduate/Admission/YearlyTimelines"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://admission.kaist.ac.kr/intl-graduate/FinancialSupport/Scholarship/KPrestige",
+          "reason": "HTTP 404, page does not exist"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 363,
+      "title": "Ireland Fellows Programme",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Stage 1 - preliminary application (approximately June/July annually) ... Applications for the 2027/28 academic year are now closed.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.ireland.ie/en/ireland-fellows-programme/ireland-fellows-programme-overview/",
+        "source_type": "official_government_page",
+        "publisher": "Department of Foreign Affairs and Trade (Irish Aid), Government of Ireland",
+        "retrieved_at": "2026-10-05T16:01:00Z",
+        "as_of": "2027/28 cycle closed as stated on page",
+        "raw_extract": "Stage 1 - preliminary application (approximately June/July annually) ... Stage 3 - Interviews (approximately November/December annually) Applications for the 2027/28 academic year are now closed.",
+        "exact_deadline_wording": "Stage 1 - preliminary application (approximately June/July annually)",
+        "confidence": "HIGH",
+        "notes": "Recurring three-stage annual cycle given only as approximate months; no calendar date published and the 2027/28 stage-1 window has closed. Second official page confirms 'Applications for 2027/28 are now closed for the Africa, Latin America, SIDS, and Asia streams.' The October 20, 2026 date on that page belongs to the separate Ireland-Palestine Scholarship Programme and was not used. No date written."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "recurring",
+        "deadline_display": "Stage 1 - preliminary application (approximately June/July annually); 2027/28 applications closed"
+      },
+      "examined": [
+        "https://www.ireland.ie/en/ireland-fellows-programme/",
+        "https://www.ireland.ie/en/ireland-fellows-programme/applying-for-the-ireland-fellows-programme/"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 392,
+      "title": "Eric Bleumink Fellowship",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "It is not possible to actively apply for an Eric Bleumink Fellowship Scholarship. Suitable candidates will be informed about a nomination.",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://www.rug.nl/education/scholarships/eric-bleumink-fellowship?lang=en",
+        "source_type": "official_university_page",
+        "publisher": "University of Groningen",
+        "retrieved_at": "2026-10-05T16:00:00Z",
+        "as_of": null,
+        "raw_extract": "Deadline: It is not possible to actively apply for an Eric Bleumink Fellowship Scholarship. Suitable candidates will be informed about a nomination.",
+        "exact_deadline_wording": "It is not possible to actively apply for an Eric Bleumink Fellowship Scholarship. Suitable candidates will be informed about a nomination.",
+        "confidence": "HIGH",
+        "notes": "Nomination-only award with no application window and therefore no fixed deadline. The page's 'before 1st of December' (master's application) and 'before February' (admission offer) are master's admission milestones, not the fellowship deadline, and were not dated."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "rolling",
+        "deadline_display": "It is not possible to actively apply for an Eric Bleumink Fellowship Scholarship. Suitable candidates will be informed about a nomination."
+      },
+      "examined": [],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 541,
+      "title": "Mastercard Foundation Scholars Program",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "Each partner in the Mastercard Foundation Scholars Program sets their own deadline. Please check the Program website of the partner institution(s) of your choice for the specific deadline.",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://mastercardfdn.org/en/what-we-do/our-programs/mastercard-foundation-scholars-program",
+        "source_type": "official_scholarship_page",
+        "publisher": "Mastercard Foundation",
+        "retrieved_at": "2026-10-05T16:00:00Z",
+        "as_of": null,
+        "raw_extract": "When is the application deadline? Each partner in the Mastercard Foundation Scholars Program sets their own deadline. Please check the Program website of the partner institution(s) of your choice for the specific deadline.",
+        "exact_deadline_wording": "Each partner in the Mastercard Foundation Scholars Program sets their own deadline. Please check the Program website of the partner institution(s) of your choice for the specific deadline.",
+        "confidence": "HIGH",
+        "notes": "No programme-level deadline exists; each partner institution/NGO sets its own, so no fixed date can be written. Reviewer may prefer precision 'unknown' since partners do publish fixed dates of their own."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "rolling",
+        "deadline_display": "Each partner in the Mastercard Foundation Scholars Program sets their own deadline."
+      },
+      "examined": [],
+      "rejected_sources": []
+    }
+  ]
+}

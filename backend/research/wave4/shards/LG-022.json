@@ -1,0 +1,58 @@
+{
+  "shard_id": "LG-022",
+  "topic": "logo",
+  "hosts": [
+    "iczu.zju.edu.cn",
+    "www.banrep.gov.co",
+    "www.eui.eu",
+    "www.secihti.mx"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 577,
+      "title": "Max Weber Fellowships — European University Institute Max Weber Programme for Postdoctoral Studies",
+      "official_source": "European University Institute (EUI) — Max Weber Programme for Postdoctoral Studies",
+      "official_source_url": "https://www.eui.eu/apply?id=max-weber-fellowships",
+      "catalogue_url": "https://www.eui.eu/apply?dis_programmes%5BrefinementList%5D%5BcleanEntryData.type%5D%5B0%5D=Fellowship",
+      "country": "Italy",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 581,
+      "title": "Jean Monnet Fellowships — Robert Schuman Centre for Advanced Studies, European University Institute",
+      "official_source": "European University Institute (EUI) — Robert Schuman Centre for Advanced Studies",
+      "official_source_url": "https://www.eui.eu/apply?id=jean-monnet-fellowships",
+      "catalogue_url": "https://www.eui.eu/apply?dis_programmes%5BrefinementList%5D%5BcleanEntryData.type%5D%5B0%5D=Fellowship",
+      "country": "Italy",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 590,
+      "title": "Convocatoria de Becas Nacionales para Estudios de Posgrado 2026 (National Postgraduate Scholarships 2026)",
+      "official_source": "Secretaría de Ciencia, Humanidades, Tecnología e Innovación (SECIHTI) - Dirección General de Becas y Apoyos a la Comunidad Científica y Humanista",
+      "official_source_url": "https://www.secihti.mx/convocatoria/becas-nacionales/convocatoria-de-becas-nacionales-para-estudios-de-posgrado-2026",
+      "catalogue_url": "https://www.secihti.mx/becas-nacionales",
+      "country": "Mexico",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 598,
+      "title": "Programa de patrocinios del Banco de la República para estudios de posgrado en el exterior",
+      "official_source": "Banco de la República (Central Bank of Colombia)",
+      "official_source_url": "https://www.banrep.gov.co/es/contenidos/programas-estudios-el-exterior",
+      "catalogue_url": "https://www.banrep.gov.co/es/contenidos/programas-estudios-el-exterior",
+      "country": "Colombia",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 650,
+      "title": "Zhejiang University \"Belt and Road\" International School of Medicine Scholarship (PhD)",
+      "official_source": "International School of Medicine, Zhejiang University (ZJU-ISM)",
+      "official_source_url": "https://iczu.zju.edu.cn/admissionsen/2022/0530/c68996a2590725/page.htm",
+      "catalogue_url": "https://iczu.zju.edu.cn/admissionsen/wcholarships/list.htm",
+      "country": "China",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

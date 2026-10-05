@@ -1,0 +1,242 @@
+{
+  "shard_id": "LG-039",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 63,
+      "title": "Michigan State University International Merit Scholarships",
+      "outcome": "recovered",
+      "image_url": "https://edge.sitecorecloud.io/michigansta4a14-msu70a4-prod718c-8cd0/media/project/msu/shared/logos/msu_wordmark_green.svg",
+      "image_source_url": "https://brand.msu.edu/downloads",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Discovered by following the official_source_url (admissions.msu.edu) up to the university's own brand asset page. brand.msu.edu/downloads is on the official msu.edu domain and publishes the MSU wordmark. The asset itself is served from MSU's own Sitecore edge media delivery under /media/project/msu/shared/logos/ (the same shared/logos media path that admissions.msu.edu itself references for its own icon), and the file renders as the Spartan-green (#18453B) 'Michigan State University' wordmark with the green rule - not a favicon, not a department signature, not UI chrome. Fetched and read the SVG: vector artwork, viewBox 264.75 x 56.391, glyph paths filled #18453B plus '<rect y=\"29.805\" fill=\"#18453B\" width=\"264.266\" height=\"1.786\"/>'. The brand page component supplies alt=\"Michigan State University\" and links to https://msu.edu, proving identity. Note: brand.msu.edu states 'Access to these files is limited to faculty and staff of Michigan State University' for the downloadable logo toolkits, but the wordmark SVG used by the page's own BrandBar/footer component is publicly served and was directly fetched, so it is a genuinely official published asset."
+      },
+      "source": {
+        "url": "https://brand.msu.edu/downloads",
+        "publisher": "Michigan State University - MSU Brand Studio (brand.msu.edu)",
+        "retrieved_at": "2026-10-05T15:33:00Z",
+        "raw_extract": "\"image\":{\"value\":{\"value\":{\"src\":\"https://edge.sitecorecloud.io/michigansta4a14-msu70a4-prod718c-8cd0/media/project/msu/shared/logos/msu_wordmark_green.svg?iar=0\",\"alt\":\"Michigan State University\"}}} ... \"link\":{\"value\":{\"value\":{\"href\":\"https://msu.edu\",\"text\":\"MSU\",\"linktype\":\"external\",\"url\":\"https://msu.edu\"}}} ... \"label\":{\"value\":{\"value\":\"(c) Michigan State University\"}}",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://admissions.msu.edu/cost-aid/scholarships/international",
+        "https://admissions.msu.edu/cost-aid/scholarships/international/scholarship-regulations",
+        "https://brand.msu.edu/downloads",
+        "https://brand.msu.edu/logos",
+        "https://edge.sitecorecloud.io/michigansta4a14-msu70a4-prod718c-8cd0/media/project/msu/shared/logos/msu_wordmark_green.svg"
+      ],
+      "rejected": [
+        {
+          "url": "https://edge.sitecorecloud.io/michiganstab57e-msustrategi129d-prod9868-7e5e/media/project/msu/shared/logos/favicon.ico",
+          "reason": "favicon - declared as <link rel=\"icon\"> on the official_source_url; explicitly banned by brief section 7"
+        },
+        {
+          "url": "https://admissions.msu.edu/favicon.ico?favicon.2-x85vtqgh2hy.ico",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://edge.sitecorecloud.io/michigansta4a14-msu70a4-prod718c-8cd0/media/project/msu/shared/logos/msu_logo_white.svg",
+          "reason": "official but white-on-transparent helmet+wordmark; renders blank on a light card background, so not usable as a record image"
+        },
+        {
+          "url": "https://edge.sitecorecloud.io/michigansta4a14-msu70a4-prod718c-8cd0/media/Project/MSU/shared/footer/KNOWmore-green-2.png",
+          "reason": "unrelated footer campaign logo, not the university mark"
+        },
+        {
+          "url": "https://edge.sitecorecloud.io/michigansta4a14-msu70a4-prod718c-8cd0/media/Project/MSU/shared/footer/budget-performance-transparency-logo-2.png",
+          "reason": "unrelated footer compliance logo, not the university mark"
+        },
+        {
+          "url": "https://edge.sitecorecloud.io/michigansta4a14-msu70a4-prod718c-8cd0/media/project/msu/admissions/images/cost-and-aid/hannah-admin-building.jpg",
+          "reason": "decorative page photography / hero art, not a logo asset"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 312,
+      "title": "Schulich Leader Scholarships",
+      "outcome": "recovered",
+      "image_url": "https://schulichleaders.com/wp-content/themes/schulichleaders/images/logo.svg",
+      "image_source_url": "https://schulichleaders.com",
+      "image_source_type": "official_scholarship",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "The official_source_url homepage renders its brand mark inline inside <a class=\"logo\" href=\"https://schulichleaders.com\"> as a 180x60 SVG wordmark ('SCHULICH SCHOLARSHIPS' with the graduate-cap/lightbulb figure, fill #1a1919). The identical artwork also exists as a standalone asset file in the official theme's own images directory at /wp-content/themes/schulichleaders/images/logo.svg, which returned HTTP 200 with byte-identical path data to the inline header logo - proving it is the provider's own published logo file, not a guess. Same directory holds favicon.svg, which was rejected. Not a favicon (not referenced by any <link rel=\"icon\">), not a partner-university logo, not hero art, not a social asset, and hosted on the official scholarship domain itself."
+      },
+      "source": {
+        "url": "https://schulichleaders.com",
+        "publisher": "Schulich Leader Scholarships / The Schulich Foundation, administered by UJA Federation of Greater Toronto",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "raw_extract": "<title>Schulich Leader Scholarships</title> <meta property=\"og:site_name\" content=\"Schulich Leaders\" /> ... <a class=\"logo\" href=\"https://schulichleaders.com\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"180\" height=\"60\" viewBox=\"0 0 180 60\"><g><g><g><path fill=\"#1a1919\" d=\"M34.293 59.053...\"/>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://schulichleaders.com",
+        "https://schulichleaders.com/universities",
+        "https://schulichleaders.com/media/",
+        "https://schulichleaders.com/wp-content/themes/schulichleaders/images/logo.svg",
+        "https://schulichleaders.com/wp-content/themes/schulichleaders/manifest.json.php"
+      ],
+      "rejected": [
+        {
+          "url": "https://bunny-wp-pullzone-wfzlzpgylc.b-cdn.net/wp-content/themes/schulichleaders/images/favicon.svg?v=0.7",
+          "reason": "favicon - declared as <link rel=\"icon\"> and reused as the PWA manifest icon at 57x57/114x114/192x192"
+        },
+        {
+          "url": "https://bunny-wp-pullzone-wfzlzpgylc.b-cdn.net/wp-content/uploads/home_facts1.svg",
+          "reason": "decorative stat icon in the 'facts' section, not the brand mark"
+        },
+        {
+          "url": "https://bunny-wp-pullzone-wfzlzpgylc.b-cdn.net/wp-content/uploads/University_of_Waterloo_logo.png",
+          "reason": "unrelated partner-university logo hosted on the scholarship site; wrong identity (Waterloo, not Schulich Leaders). Same applies to the other 19 partner-university logos on /universities."
+        },
+        {
+          "url": "https://bunny-wp-pullzone-wfzlzpgylc.b-cdn.net/wp-content/uploads/2025/08/Schulich-2026-Banner.jpg",
+          "reason": "decorative hero banner art"
+        },
+        {
+          "url": "https://bunny-wp-pullzone-wfzlzpgylc.b-cdn.net/wp-content/uploads/2026/06/CCB_2026_SLS_SocialMediaPosts10-1024x1024.png",
+          "reason": "social media share graphic"
+        },
+        {
+          "url": "https://bunny-wp-pullzone-wfzlzpgylc.b-cdn.net/wp-content/uploads/2026/04/Screenshot-2026-04-07-110952.png",
+          "reason": "screenshot crop of third-party press art"
+        },
+        {
+          "url": "https://bunny-wp-pullzone-wfzlzpgylc.b-cdn.net/wp-content/uploads/2024/09/2025-brochure_Online_EN.pdf",
+          "reason": "brochure document, not a logo asset; also a stale cycle (2025) and hosted on a Bunny CDN pull zone rather than the provider domain"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 509,
+      "title": "Estonian Scholarship Programme for international students, researchers and academic staff — Scholarship for degree and exchange study in Estonia",
+      "outcome": "recovered",
+      "image_url": "https://www.harno.ee/sites/default/files/HARNO%20ENG.svg",
+      "image_source_url": "https://www.harno.ee/en/scholarships-and-grants/scholarships-studying-and-working-estonia/scholarships-international",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "The official_source_url is on harno.ee, the official domain of the Estonian Education and Youth Board (Haridus- ja Noorteamet), which the record names as the awarding body alongside the Ministry of Education and Research. The page's own navbar brand element loads the agency logo: <a href=\"/en\" title=\"Home\" rel=\"home\" class=\"navbar-brand\"><img src=\"/sites/default/files/HARNO%20ENG.svg\" alt=\"Logo\" ...>. The site self-identifies via og:site_name 'Haridus- ja Noorteamet'. Fetched the SVG successfully: vector artwork, viewBox 0 0 55 11, brand colours #003087 and #005BBB with the #FFD500 accent of the agency mark. Two caveats kept at MEDIUM rather than HIGH: (a) this is the agency's institutional mark, not a mark specific to the Estonian Scholarship Programme - no programme-specific logo exists on this domain (the page contains no other logo file), and (b) the SVG's intrinsic size is 55x11 px, so it renders very small unless scaled; it is vector, not a low-resolution raster, and the header sizes it with 'mh-100 mw-100'."
+      },
+      "source": {
+        "url": "https://www.harno.ee/en/scholarships-and-grants/scholarships-studying-and-working-estonia/scholarships-international",
+        "publisher": "Estonian Education and Youth Board (Haridus- ja Noorteamet)",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "raw_extract": "<a href=\"/en\" title=\"Home\" rel=\"home\" class=\"navbar-brand\"><img src=\"/sites/default/files/HARNO%20ENG.svg\" alt=\"Logo\" class=\"mh-100 mw-100\" /></a> ... <meta property=\"og:site_name\" content=\"Haridus- ja Noorteamet\" /> ... <meta name=\"description\" content=\"Estonian Ministry of Education and Research and Education and Youth Board offer scholarships to foreign nationals, pursuant to bilateral intergovernmental or inter-ministerial agreements concluded with other countries.\" />",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.harno.ee/en/scholarships-and-grants/scholarships-studying-and-working-estonia/scholarships-international",
+        "https://www.harno.ee/sites/default/files/HARNO%20ENG.svg"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.harno.ee/sites/default/files/EV_16_72.png",
+          "reason": "favicon - declared as <link rel=\"icon\" href=\"/sites/default/files/EV_16_72.png\" type=\"image/png\" />; also a 16x72-style small badge"
+        },
+        {
+          "url": "https://www.harno.ee/profiles/vp_distro/themes/vp_distro_theme/assets/dist/spritemap.svg",
+          "reason": "UI icon sprite sheet"
+        },
+        {
+          "url": "https://www.harno.ee/sites/default/files/styles/media_full/public/2020-12/polva-226.jpg",
+          "reason": "decorative page photography in the menu panel, not a logo"
+        },
+        {
+          "url": "https://www.harno.ee/sites/default/files/2020-11/laps%20gloobus.jpg",
+          "reason": "decorative menu hero photograph, not a logo"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 646,
+      "title": "Scholarship Program for Studying at Universities in Kazakhstan (Bolashak / Center for International Programs)",
+      "outcome": "recovered",
+      "image_url": "https://bolashak.gov.kz/storage/app/media/logoog.jpg",
+      "image_source_url": "https://bolashak.gov.kz/en/scholarship-program",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "The official_source_url is on bolashak.gov.kz, the official domain of JSC 'Center for International Programs' (Bolashak), and the page states the operator verbatim: 'The operator of the Scholarship Program is JSC \"Center for International Programs\".' The site logo is /storage/app/media/logo.svg, used in both the header (<a class=\"logo\">) and the footer (<a class=\"logofoot\">), but that file is a white-on-transparent knockout (all paths fill:#fff, .cls-1 { fill: #fff; }) built for the dark site header, so it renders blank on a light card. The full-colour official mark of the same logo system - navy 'BOLASHAK' wordmark over the light-blue 'Center for International Programs' lockup with the blue/white emblem - is published on the same official domain as /storage/app/media/logoog.jpg and is the logo image the official page itself declares. Fetched and visually inspected: it is a clean logo lockup on a plain white field, no share-card furniture, no people, no badge. Kept at MEDIUM only because this particular file is the page's og:image declaration; the artwork itself is the genuine official brand mark. No favicon, no UI icon, no third-party mirror, no decorative hero art."
+      },
+      "source": {
+        "url": "https://bolashak.gov.kz/en/scholarship-program",
+        "publisher": "JSC \"Center for International Programs\" (Bolashak), Republic of Kazakhstan",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "raw_extract": "<a class=\"logo\" href=\"https://bolashak.gov.kz/en\"><img src=\"/storage/app/media/logo.svg\"></a> ... <a class=\"logofoot\" href=\"https://bolashak.gov.kz/en\"><img src=\"/storage/app/media/logo.svg\"></a> ... <meta property=\"og:image\" content=\"https://bolashak.gov.kz/storage/app/media/logoog.jpg\" /> ... <p><b>The operator of the Scholarship Program is JSC \"Center for International Programs\".</b></p>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://bolashak.gov.kz/en/scholarship-program",
+        "https://bolashak.gov.kz/storage/app/media/logo.svg",
+        "https://bolashak.gov.kz/storage/app/media/logoog.jpg",
+        "https://bolashak.gov.kz/kz"
+      ],
+      "rejected": [
+        {
+          "url": "https://bolashak.gov.kz/storage/app/media/favicon.png",
+          "reason": "favicon - declared as <link rel=\"icon\" href=\"/storage/app/media/favicon.png\">"
+        },
+        {
+          "url": "https://bolashak.gov.kz/storage/app/media/logo.svg",
+          "reason": "official but white-on-transparent knockout (.cls-1 { fill: #fff; }); unusable on a light card background, so the colour variant was used instead"
+        },
+        {
+          "url": "https://bolashak.gov.kz/storage/app/media/a-logo.png",
+          "reason": "third-party developer watermark (ANTIKOR design agency), not the Bolashak mark"
+        },
+        {
+          "url": "https://bolashak.gov.kz/storage/app/media/Slider/new-logo-banner-home/prozrachnoe-logo.png",
+          "reason": "unrelated third-party partner logo sitting in the same media folder; wrong identity"
+        },
+        {
+          "url": "https://bolashak.gov.kz/storage/app/media/banervypuskmezhgranty.jpg",
+          "reason": "decorative page banner art"
+        },
+        {
+          "url": "https://bolashak.gov.kz/storage/app/media/copyright.svg",
+          "reason": "footer credit line for the web developer, not a logo"
+        },
+        {
+          "url": "https://studyin.kz/admission",
+          "reason": "application portal; not examined as an image source and in any case not the operator's own brand domain for this record"
+        }
+      ]
+    }
+  ]
+}

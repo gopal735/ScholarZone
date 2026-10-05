@@ -1,0 +1,484 @@
+{
+  "shard_id": "LG-004",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 112,
+      "title": "India Science and Research Fellowship (ISRF) Programme",
+      "outcome": "recovered",
+      "image_url": "https://insaindia.res.in/wp-content/uploads/2022/09/insa_logo.png",
+      "image_source_url": "https://insaindia.res.in/isrf-call-2025-26/",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Official emblem of the Indian National Science Academy, the awarding body named in the record's official_source ('Indian National Science Academy (INSA) for Department of Science & Technology (DST), Govt. of India'). Identity is legible inside the artwork itself: the roundel reads 'INDIAN NATIONAL SCIENCE ACADEMY' with the Hindi 'भारतीय विज्ञान अकादमी' below, around the rising-sun motif. Domain insaindia.res.in is INSA's own site and is the record's official_source host. GET verified 200, image/png, 337938 bytes, 529x529. The ISRF Call 2025-26 page (title 'ISRF Call 2025-26 - Indian National Science Academy') carries this emblem in its site header as a 150x150 scaled copy of the same artwork at wp-content/uploads/2022/11/insa_logo-1-1-1.png; the 529x529 original in wp-content/uploads/2022/09/ was chosen for resolution. ISRF itself publishes no separate programme logo: the only other image on the ISRF call page is imageonline-co-transparentimage-1.png, a third-party web-image-hosting mark."
+      },
+      "source": {
+        "url": "https://insaindia.res.in/isrf-call-2025-26/",
+        "publisher": "Indian National Science Academy (INSA)",
+        "retrieved_at": "2026-10-05T15:34:00Z",
+        "raw_extract": "Page title: \"ISRF Call 2025-26  - Indian National Science Academy\". Body text: \"Brochure and Application of India Science and Research Fellowship Programme 2025-26 call for applications\". Site header markup: \"<img src=\\\"https://insaindia.res.in/wp-content/uploads/2022/11/insa_logo-1-1-1.png\\\">\" - the same INSA emblem artwork, served at 150x150 from the 2022/11 uploads folder, with the full-resolution original at \"https://insaindia.res.in/wp-content/uploads/2022/09/insa_logo.png\" (529x529).",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.insaindia.res.in/ - 307 redirects to https://insaindia.res.in/ (verified in a real browser engine; plain webfetch and Invoke-WebRequest both get HTTP 307 with no Location header from the Sucuri/Cloudproxy edge)",
+        "https://insaindia.res.in/ - INSA homepage, HTTP 200 in browser, title 'Indian National Science Academy - Established in 1935'",
+        "https://insaindia.res.in/wp-content/uploads/2022/11/insa_logo-1-1-1.png - 200, image/png, 39258 bytes, 150x150: the header-scaled copy of the chosen emblem, superseded by the 529x529 original",
+        "https://insaindia.res.in/wp-content/uploads/2022/11/insa_logo-1-1.png - 200, 735922 bytes, 793x793, a further copy of the same emblem in the shared uploads tree",
+        "https://insaindia.res.in/wp-content/uploads/2022/09/insa_logo-1.png - 200, 34545 bytes, 150x150, same emblem, smaller copy",
+        "https://insaindia.res.in/wp-content/uploads/2022/09/cropped-insa_logo-300x300.png - 200, 300x300: WordPress crop of the emblem, not the original asset"
+      ],
+      "rejected": [
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2022/09/cropped-insa_logo-32x32.png",
+          "reason": "favicon - declared as rel=icon on the ISRF page and every INSA page"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2022/09/cropped-insa_logo-192x192.png",
+          "reason": "favicon - apple-touch-icon / android-chrome family, low-resolution square crop"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2022/09/cropped-insa_logo-180x180.png",
+          "reason": "favicon - apple-touch-icon family, low-resolution square crop"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2023/02/imageonline-co-transparentimage-1.png",
+          "reason": "third-party - logo of web-image-hosting service imageonline.co, present in the INSA site chrome"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2022/11/insa_logo-1-1-1.png",
+          "reason": "superseded - valid official emblem but a 150x150 scaled copy; the 529x529 original was used instead"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2025/12/P10-1519-264x300.jpg",
+          "reason": "not a logo - 264x300 cropped publication cover, and a WordPress-generated thumbnail size"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2022/07/B-P-Pal-1-150x150.jpg",
+          "reason": "not a logo - 150x150 social/avatar-sized photograph of a person"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2022/12/Inyas_logoM.jpg",
+          "reason": "wrong identity - INYAS is a different, unrelated academy; an unrelated organisation's logo hosted on INSA's shared uploads CDN"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2022/12/councilM.png",
+          "reason": "navigation menu icon, not an identity logo"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2022/12/informaticsM.png",
+          "reason": "navigation menu icon, not an identity logo"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2022/12/publicationM.png",
+          "reason": "navigation menu icon, not an identity logo"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2022/12/webinarM.png",
+          "reason": "navigation menu icon, not an identity logo"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2022/12/Bookpgm.png",
+          "reason": "navigation menu icon, not an identity logo"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2022/11/wSciprom3.png",
+          "reason": "navigation menu icon, not an identity logo"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2022/12/internationl1M.png",
+          "reason": "navigation menu icon, not an identity logo"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2022/11/wList1.png",
+          "reason": "navigation menu icon, not an identity logo"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2022/12/facilities12M.png",
+          "reason": "navigation menu icon, not an identity logo"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2022/12/jantar3.png",
+          "reason": "navigation menu icon, not an identity logo"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2022/12/bookreleaseM.png",
+          "reason": "navigation menu icon, not an identity logo"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2022/12/whats-new-2.png",
+          "reason": "section banner art, not an identity logo"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2022/12/2022122723143538_88_4_CoverFigure_thumbnail.jpg",
+          "reason": "journal cover thumbnail, not a logo"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2022/12/202210319531657__3__Cover.jpg",
+          "reason": "journal cover, not a logo"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2022/12/202211993532Vol53_2022_4_Cover.jpg",
+          "reason": "journal cover, not a logo"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2026/06/BRICS-Poster.jpeg",
+          "reason": "event poster, decorative programme art rather than the provider brand mark"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2026/06/Flyer-FEBS-IUBMB-ENABLE-Conference-2026-.png",
+          "reason": "event flyer art, not the provider brand mark"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2026/08/Poster-for-website.png",
+          "reason": "event poster art, not the provider brand mark"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/plugins/wp-accessibility-helper/assets/images/accessibility-48.jpg",
+          "reason": "plugin UI icon, browser/UI chrome"
+        },
+        {
+          "url": "https://insaindia.res.in/f.png",
+          "reason": "social media share-button icon"
+        },
+        {
+          "url": "https://insaindia.res.in/Twitter.png",
+          "reason": "social media share-button icon"
+        },
+        {
+          "url": "https://insaindia.res.in/youtube.png",
+          "reason": "social media share-button icon"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2026/06/1780895120595.jpg",
+          "reason": "photograph, not a logo"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2026/07/rs.jpg",
+          "reason": "photograph, not a logo"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2026/10/WhatsApp-Image-2026-10-01-at-5.37.55-PM.jpeg",
+          "reason": "WhatsApp image, social-messaging upload rather than a brand asset"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2026/03/232026.jpg",
+          "reason": "meeting photograph, not a logo"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2026/03/2121212.png",
+          "reason": "meeting photograph, not a logo"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2026/03/132026.jpg",
+          "reason": "meeting photograph, not a logo"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2026/01/AF__8365.jpg",
+          "reason": "meeting photograph, not a logo"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2026/01/AF__8383.jpg",
+          "reason": "meeting photograph, not a logo"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2025/12/DSC_8711.jpg",
+          "reason": "photograph, not a logo"
+        },
+        {
+          "url": "https://insaindia.res.in/newweb/insa4/wp-content/uploads/2022/12/whats-new-2.png",
+          "reason": "duplicate section banner on a stale legacy web root"
+        },
+        {
+          "url": "https://insaindia.res.in/wp-content/uploads/2022/09/insa_logo-300x300.png",
+          "reason": "not found - probed WordPress size variant, HTTP 404"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 319,
+      "title": "Chinese Government Scholarship (Chinese University Program) at Fudan University 2026",
+      "outcome": "recovered",
+      "image_url": "https://www.fudan.edu.cn/_upload/tpl/00/06/6/template6/images/logo.png",
+      "image_source_url": "https://www.fudan.edu.cn/en/",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "The university's own sitelogo, referenced by every page of Fudan University's official English site as <div class=\"sitelogo\"> ... <img src=\"/_upload/tpl/00/06/6/template6/images/logo.png\">. Identity is legible in the artwork: the Fudan roundel seal beside '复旦大学' and 'FUDAN UNIVERSITY'. Domain www.fudan.edu.cn is Fudan University's official domain. GET verified 200, image/png, 7036 bytes, 222x64. This is emphatically NOT the favicon: Fudan's favicon family is a separate file at /_upload/tpl/00/06/6/template6/images/favicon.ico (verified 200, 4286 bytes, 32x32) and is declared via rel=\"shortcut icon\". Resolution caveat: 222x64 is the size Fudan itself publishes for this asset and no higher-resolution official copy is exposed anywhere on fudan.edu.cn (checked the EN homepage, /en/Media/list.htm, /en/265/list.htm Download, the CN homepage and its stylesheets). Same asset applies to records 320 and 321, which share official_source 'Fudan University'."
+      },
+      "source": {
+        "url": "https://www.fudan.edu.cn/en/",
+        "publisher": "Fudan University",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "raw_extract": "Header markup, verbatim: \"<div class=\\\"sitelogo\\\" frag=\\\"窗口11\\\" portletmode=\\\"simpleSiteAttri\\\"><a href=\\\"/en/main.htm\\\" title=\\\"返回英文网首页\\\"><img src=\\\"/_upload/tpl/00/06/6/template6/images/logo.png\\\"></a></div>\". Page <title> is \"Fudan University\" and the footer reads \"220 Handan Rd., Shanghai(200433) | Operator：+86-21-65642222  © 2019 FUDAN UNIVERSITY.\"",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://iso.fudan.edu.cn/isoenglish/82/fe/c17458a754430/page.htm - the record's official_source_url; HTTP 200 but the page body is only an embedded PDF of the Chinese University Program call, no Fudan logo asset beyond the ISO site chrome",
+        "https://www.fudan.edu.cn/en/ - Fudan University official English homepage, HTTP 200, canonical <title>Fudan University</title>",
+        "https://www.fudan.edu.cn/ - Fudan University official Chinese homepage, HTTP 200; its template14 assets are hero banners (main_img_1.png 1920x970, 948815 bytes) and banners (111.png 1920x312, 222.png 1920x456), no standalone logo file",
+        "https://www.fudan.edu.cn/en/Media/list.htm - official Gateway for Media page; contains no downloadable brand asset, only a WeChat official-account QR code",
+        "https://www.fudan.edu.cn/en/265/list.htm - official Download page; lists admission guides, maps, calendar and an About Shanghai PDF, no brand assets",
+        "https://www.fudan.edu.cn/_upload/tpl/00/06/6/template6/images/foot_logo.png - 200, 8170 bytes, 222x64: the same Fudan mark in the footer variant",
+        "https://www.fudan.edu.cn/_upload/site/00/0a/10/style/4/4.css and /_upload/site/1/style/1/1.css - both fetched and searched for logo background-image rules; no additional logo asset referenced"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.fudan.edu.cn/_upload/tpl/00/06/6/template6/images/favicon.ico",
+          "reason": "favicon - rel=\"shortcut icon\", verified 200 with dimensions 32x32"
+        },
+        {
+          "url": "https://iso.fudan.edu.cn/_upload/tpl/15/dd/5597/template5597/images/logo.png",
+          "reason": "wrong identity for the record - this is the International Students Office's 'STUDY AT FUDAN' sub-brand lockup (verified 200, 321x155), a recruiting brand rather than the university's identity. Retained as a known official alternative; the university mark was preferred because official_source is 'Fudan University'"
+        },
+        {
+          "url": "https://iso.fudan.edu.cn/_upload/tpl/15/dd/5597/template5597/images/favicon.ico",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://www.fudan.edu.cn/_upload/article/images/c2/b8/2a35fc0f47f498c15a97b685525e/3de7b750-6689-4f38-936e-b99ee05537b5.png",
+          "reason": "WeChat official-account QR code, social platform asset"
+        },
+        {
+          "url": "https://www.fudan.edu.cn/_upload/tpl/00/06/6/template6/images/more.png",
+          "reason": "UI chrome - 'Learn more' arrow control"
+        },
+        {
+          "url": "https://www.fudan.edu.cn/_upload/tpl/00/06/6/template6/images/list_banner.jpg",
+          "reason": "decorative column banner art"
+        },
+        {
+          "url": "https://www.fudan.edu.cn/_upload/article/images/4a/31/6d4f5968476b9a6488e3d6b20064/d84413f9-a311-4e33-aca0-9b40eeff00cd_s.png",
+          "reason": "social media share-button icon, width 19"
+        },
+        {
+          "url": "https://www.fudan.edu.cn/_upload/article/images/6d/28/e584c2234f8b90270bb2e82d30f6/76204922-e177-4dac-8679-1591d834307c_s.png",
+          "reason": "social media share-button icon, width 19"
+        },
+        {
+          "url": "https://www.fudan.edu.cn/_upload/article/images/3e/04/c900318743db895f0c8fca7d126e/0e283e08-c1c2-4ef6-84bf-a2a341293bc9_s.png",
+          "reason": "social media share-button icon, width 19"
+        },
+        {
+          "url": "https://www.fudan.edu.cn/_upload/article/images/51/33/50e3ea2a430eb31b379609ef93a8/f9f7ef78-1749-42da-ac56-f3e4c92fd9b4_s.png",
+          "reason": "social media share-button icon, width 19"
+        },
+        {
+          "url": "https://www.fudan.edu.cn/_upload/article/images/f1/01/e8eaa91b4f4fa72faf4a5604eb4c/5a98ae53-757f-4398-8e8c-dcf1be03508d.png",
+          "reason": "social media share-button icon, width 19"
+        },
+        {
+          "url": "https://www.fudan.edu.cn/_upload/site/00/0a/10/style/4/4.css",
+          "reason": "stylesheet, not an image asset"
+        },
+        {
+          "url": "https://www.fudan.edu.cn/_upload/tpl/00/06/6/template6/video_o/mediaelement-and-player.js",
+          "reason": "player script, not an asset"
+        },
+        {
+          "url": "https://www.fudan.edu.cn/_upload/tpl/00/06/6/template6/images/logo-1.png",
+          "reason": "not found - probed variant path, HTTP 404"
+        },
+        {
+          "url": "https://www.fudan.edu.cn/_upload/tpl/00/01/1/template1/images/logo.png",
+          "reason": "not found - probed alternative template path, HTTP 404"
+        },
+        {
+          "url": "https://www.fudan.edu.cn/images/logo.png",
+          "reason": "not found - probed root path, HTTP 404"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 320,
+      "title": "Chinese Government Scholarship (Youth of Excellence Scheme) at Fudan University 2026",
+      "outcome": "recovered",
+      "image_url": "https://www.fudan.edu.cn/_upload/tpl/00/06/6/template6/images/logo.png",
+      "image_source_url": "https://www.fudan.edu.cn/en/",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Same official Fudan University mark as records 319 and 321: all three share official_source 'Fudan University', so the duplicate image_url is correct. <div class=\"sitelogo\"> on https://www.fudan.edu.cn/en/ points at /_upload/tpl/00/06/6/template6/images/logo.png on every page of the official English site. Artwork shows the Fudan roundel with '复旦大学' and 'FUDAN UNIVERSITY'. GET verified 200, image/png, 7036 bytes, 222x64. Fudan's favicon is the separate /_upload/tpl/00/06/6/template6/images/favicon.ico (32x32), which was rejected. No higher-resolution official copy is published anywhere on fudan.edu.cn."
+      },
+      "source": {
+        "url": "https://www.fudan.edu.cn/en/",
+        "publisher": "Fudan University",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "raw_extract": "Header markup, verbatim: \"<div class=\\\"sitelogo\\\" frag=\\\"窗口11\\\" portletmode=\\\"simpleSiteAttri\\\"><a href=\\\"/en/main.htm\\\" title=\\\"返回英文网首页\\\"><img src=\\\"/_upload/tpl/00/06/6/template6/images/logo.png\\\"></a></div>\". Page <title> is \"Fudan University\"; footer reads \"© 2019 FUDAN UNIVERSITY.\"",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://iso.fudan.edu.cn/isoenglish/82/fd/c17458a754429/page.htm - the record's official_source_url; HTTP 200 but body is only an embedded PDF of the Youth of Excellence Scheme call, no Fudan logo asset beyond ISO site chrome",
+        "https://www.fudan.edu.cn/en/ - Fudan University official English homepage carrying the sitelogo",
+        "https://www.fudan.edu.cn/en/Media/list.htm - official media page, no downloadable brand asset",
+        "https://www.fudan.edu.cn/en/265/list.htm - official Download page, no brand assets",
+        "https://www.fudan.edu.cn/_upload/tpl/00/06/6/template6/images/foot_logo.png - 200, 8170 bytes, 222x64, the footer variant of the same mark"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.fudan.edu.cn/_upload/tpl/00/06/6/template6/images/favicon.ico",
+          "reason": "favicon - rel=\"shortcut icon\", 32x32"
+        },
+        {
+          "url": "https://iso.fudan.edu.cn/_upload/tpl/15/dd/5597/template5597/images/logo.png",
+          "reason": "wrong identity for the record - 'STUDY AT FUDAN' International Students Office sub-brand lockup rather than the university identity mark"
+        },
+        {
+          "url": "https://iso.fudan.edu.cn/_upload/tpl/15/dd/5597/template5597/images/favicon.ico",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://www.fudan.edu.cn/_upload/article/images/c2/b8/2a35fc0f47f498c15a97b685525e/3de7b750-6689-4f38-936e-b99ee05537b5.png",
+          "reason": "WeChat official-account QR code, social platform asset"
+        },
+        {
+          "url": "https://www.fudan.edu.cn/_upload/tpl/00/06/6/template6/images/more.png",
+          "reason": "UI chrome control"
+        },
+        {
+          "url": "https://www.fudan.edu.cn/_upload/tpl/00/06/6/template6/images/list_banner.jpg",
+          "reason": "decorative column banner art"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 321,
+      "title": "Shanghai Government Scholarship at Fudan University 2026",
+      "outcome": "recovered",
+      "image_url": "https://www.fudan.edu.cn/_upload/tpl/00/06/6/template6/images/logo.png",
+      "image_source_url": "https://www.fudan.edu.cn/en/",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Same official Fudan University mark as records 319 and 320: all three share official_source 'Fudan University', so the duplicate image_url is correct. The award here is the Shanghai municipal scholarship, but the awarding and administering body recorded for this record is Fudan University, so Fudan's institutional mark is the correct identity - deliberately NOT a Shanghai municipal or Chinese government emblem. Artwork shows the Fudan roundel with '复旦大学' and 'FUDAN UNIVERSITY'. GET verified 200, image/png, 7036 bytes, 222x64 on the official domain www.fudan.edu.cn. Fudan's favicon is the separate /_upload/tpl/00/06/6/template6/images/favicon.ico (32x32), rejected."
+      },
+      "source": {
+        "url": "https://www.fudan.edu.cn/en/",
+        "publisher": "Fudan University",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "raw_extract": "Header markup, verbatim: \"<div class=\\\"sitelogo\\\" frag=\\\"窗口11\\\" portletmode=\\\"simpleSiteAttri\\\"><a href=\\\"/en/main.htm\\\" title=\\\"返回英文网首页\\\"><img src=\\\"/_upload/tpl/00/06/6/template6/images/logo.png\\\"></a></div>\". Page <title> is \"Fudan University\"; footer reads \"220 Handan Rd., Shanghai(200433) ... © 2019 FUDAN UNIVERSITY.\"",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://iso.fudan.edu.cn/isoenglish/82/fb/c17458a754427/page.htm - the record's official_source_url; HTTP 200 but body is only an embedded PDF of the Shanghai Government Scholarship call, no Fudan logo asset beyond ISO site chrome",
+        "https://www.fudan.edu.cn/en/ - Fudan University official English homepage carrying the sitelogo",
+        "https://www.fudan.edu.cn/en/Media/list.htm - official media page, no downloadable brand asset",
+        "https://www.fudan.edu.cn/en/265/list.htm - official Download page, no brand assets",
+        "https://www.fudan.edu.cn/_upload/tpl/00/06/6/template6/images/foot_logo.png - 200, 8170 bytes, 222x64, the footer variant of the same mark"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.fudan.edu.cn/_upload/tpl/00/06/6/template6/images/favicon.ico",
+          "reason": "favicon - rel=\"shortcut icon\", 32x32"
+        },
+        {
+          "url": "https://iso.fudan.edu.cn/_upload/tpl/15/dd/5597/template5597/images/logo.png",
+          "reason": "wrong identity for the record - 'STUDY AT FUDAN' International Students Office sub-brand lockup rather than the university identity mark"
+        },
+        {
+          "url": "https://iso.fudan.edu.cn/_upload/tpl/15/dd/5597/template5597/images/favicon.ico",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://www.fudan.edu.cn/_upload/article/images/c2/b8/2a35fc0f47f498c15a97b685525e/3de7b750-6689-4f38-936e-b99ee05537b5.png",
+          "reason": "WeChat official-account QR code, social platform asset"
+        },
+        {
+          "url": "https://www.fudan.edu.cn/_upload/tpl/00/06/6/template6/images/list_banner.jpg",
+          "reason": "decorative column banner art"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 647,
+      "title": "International Graduate Student Scholarship (IGSS)",
+      "outcome": "recovered",
+      "image_url": "https://www.upm.edu.my/assets/images23/20170406143426UPM-New_FINAL.jpg",
+      "image_source_url": "https://www.upm.edu.my/",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "The official Universiti Putra Malaysia logo lockup as served in the site header of UPM's main official website: the UPM crest beside the 'UPM' wordmark and the lines 'UNIVERSITI PUTRA MALAYSIA' and 'BERILMU BERBAKTI'. Identity is unambiguous and matches official_source 'Universiti Putra Malaysia (UPM), School of Graduate Studies'. Domain www.upm.edu.my is UPM's own official domain. GET verified 200, image/jpeg, 1750822 bytes, 3543x2126. The record's own official_source_url (the School of Graduate Studies page at sgs.upm.edu.my) carries no UPM logo of publishable quality - it shows only /assets/images/logoupm.png at 117x50 (verified 200, image/png, 8686 bytes, same artwork) alongside /assets/images/jatanegara.png, which is Malaysia's federal Jata Negara emblem rather than a UPM mark. The full-resolution master from the university's main domain was therefore preferred; the School of Graduate Studies uses the identical logo, so identity is consistent across both official hosts. The IGSS scheme itself publishes no dedicated programme logo; /summer-uploads/20171213121134blobid0.jpg on the SGS page is decorative header art (a 147px-tall banner above the H2 heading), not a logo."
+      },
+      "source": {
+        "url": "https://www.upm.edu.my/",
+        "publisher": "Universiti Putra Malaysia (UPM)",
+        "retrieved_at": "2026-10-05T15:33:00Z",
+        "raw_extract": "Header image markup, verbatim from the UPM homepage: \"<img src=\\\"/assets/images23/20170406143426UPM-New_FINAL.jpg\\\">\" (the only full-size header logo; the sole sibling reference is the WordPress-generated crop \"<img src=\\\"/assets/images23/cropped-20170406143426UPM-New_FINAL-300x120.jpg\\\">\"). Artwork verified visually: UPM crest + 'UPM' + 'UNIVERSITI PUTRA MALAYSIA' + 'BERILMU BERBAKTI'.",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://sgs.upm.edu.my/financial_assistance_scholarships/scholarship_financial_assistance_upm/international_graduate_student_scholarship_igss-1402 - the record's official_source_url, HTTP 200; no SGS-specific logo, no UPM logo above publishable resolution",
+        "https://www.upm.edu.my/ - Universiti Putra Malaysia official homepage, HTTP 200, carries the full-resolution official logo lockup",
+        "https://sgs.upm.edu.my/assets/images/logoupm.png - 200, image/png, 8686 bytes, 117x50: the same UPM logo on the record's own official_source host, but low resolution",
+        "https://sgs.upm.edu.my/assets/images/jatanegara.png - the Malaysian federal Jata Negara emblem present in all Malaysian federal sites; wrong identity for a university record"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.upm.edu.my/assets/images23/cropped-20170406143426UPM-New_FINAL-300x120.jpg",
+          "reason": "low-resolution WordPress-generated crop of the chosen logo, 300x120"
+        },
+        {
+          "url": "https://sgs.upm.edu.my/assets/images/logoupm.png",
+          "reason": "superseded - valid official UPM mark on the record's own host but only 117x50; the 3543x2126 master from upm.edu.my was used instead"
+        },
+        {
+          "url": "https://sgs.upm.edu.my/assets/images/jatanegara.png",
+          "reason": "wrong identity - Malaysia's federal Jata Negara emblem, not a Universiti Putra Malaysia mark"
+        },
+        {
+          "url": "https://sgs.upm.edu.my/summer-uploads/20171213121134blobid0.jpg",
+          "reason": "decorative header art - a 147px-tall banner image placed above the scheme's H2 heading, not a logo or brand mark"
+        },
+        {
+          "url": "https://www.upm.edu.my/images/logoupm.png",
+          "reason": "not an image - probed alternative path, returned non-image content"
+        },
+        {
+          "url": "https://www.upm.edu.my/img/logoupm.png",
+          "reason": "not an image - probed alternative path, returned non-image content"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,299 @@
+{
+  "shard_id": "DL-018",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 90,
+      "title": "University of Waterloo International Student Entrance Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "No application is required.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://uwaterloo.ca/future-students/financing/international-scholarships",
+        "source_type": "official_university_page",
+        "publisher": "University of Waterloo",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": null,
+        "raw_extract": "## New! $10,000 International Student Entrance Scholarship\n\nInternational fee-paying students admitted to full-time, first-year degree studies will receive $10,000 for their first-year studies. No application is required.\n\n#### Do I need to apply for this scholarship?\n\nNo, you don't need to apply. Students who are eligible will be automatically granted the scholarship. It will appear on the Awards and financial aid tab in the Waterloo applicant portal starting in mid-April.\n\n#### When will I know if I've been awarded the International Student Entrance Scholarship?\n\nEligible students will see this appear on the Awards and financial aid tab in the Waterloo applicant portal beginning in April.",
+        "exact_deadline_wording": "No application is required. / No, you don't need to apply.",
+        "confidence": "HIGH",
+        "notes": "The official scholarship page publishes no application deadline at all for this award; the scholarship is automatic on admission. I therefore did not find any calendar date or rolling/annual statement to record. The record's existing display '~September 20, 2026 (next cycle)' does not appear anywhere on the Waterloo international-scholarships page, and the only 'September 20'-type values on uwaterloo.ca would come from admission or document deadlines for a different process, which the brief forbids using. Recorded as UNKNOWN rather than borrowing an admissions date."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "No application is required. (No application deadline published by Waterloo for this automatic award.)"
+      },
+      "examined": [
+        "https://uwaterloo.ca/future-students/admissions/deadlines"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://uwaterloo.ca/future-students/admissions/deadlines",
+          "reason": "Fetched and read in full. Contains only undergraduate admission and document deadlines (e.g. 'Programs other than Engineering February 1, 2027 / February 15, 2027', 'Engineering programs (other than Architecture) January 15, 2027 / February 1, 2027') and no 'September 20' value. It is a generic admissions deadline for a different process, so it cannot supply this scholarship's deadline."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 283,
+      "title": "Ghent University Top-Up Grant for International Students",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "These scholarships are no longer available.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://imanema.ugent.be/apply/scholarships/",
+        "source_type": "official_university_page",
+        "publisher": "Ghent University - IMaNema (Department of Plant Pathology)",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": null,
+        "raw_extract": "### UGent TopUp Grants for candidates from developing countries\n\nThese scholarships are no longer available.",
+        "exact_deadline_wording": "These scholarships are no longer available.",
+        "confidence": "MEDIUM",
+        "notes": "The shard's official_source_url (https://www.ugent.be/en/financial/topupgrant) returns HTTP 404. The live ugent.be pages I could reach publish no Top-Up Grant deadline: the central 'Scholarship possibilities for candidates from the Global South' page lists only ICP Connect, IFS and PhD items, and the CESAM funding page still links a 'Master Grants' URL that redirects to that same Global South page. The only explicit official statement about this grant I found is the ugent.be faculty page quoted above, which says the scholarships are no longer available. With no open call there is no deadline to report; I did not import the 'typically February-April' wording or any March 1 / April 1 date from third-party aggregators, and I did not treat the separate Master Mind or VLIRUOS/ICP Connect deadlines as this award's deadline."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "These scholarships are no longer available. (Ghent University; no open call, so no published deadline.)"
+      },
+      "programme_status": "discontinued per official ugent.be page",
+      "examined": [
+        "https://www.ugent.be/en/research/funding/devcoop/grants-scholarships/top-up-grants",
+        "https://www.ugent.be/en/research/funding/globalsouth/globalsouth-grants.htm",
+        "https://www.ugent.be/en/research/funding/globalsouth",
+        "https://www.ugent.be/cesam/en/funding",
+        "https://www.ugent.be/en/research/funding/devcoop/master-grants"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.ugent.be/en/financial/topupgrant",
+          "reason": "The shard's official_source_url. Fetched: HTTP 404 Not Found, so it cannot be used and no cached copy was substituted."
+        },
+        {
+          "url": "https://www.ugent.be/en/research/funding/devcoop/master-grants",
+          "reason": "Fetched: silently redirects to https://www.ugent.be/en/research/funding/globalsouth, which no longer contains any Top-Up Grant / Master Grants text or deadline."
+        },
+        {
+          "url": "https://www.ugent.be/en/research/funding/devcoop/grants-scholarships/top-up-grants",
+          "reason": "Fetched: HTTP 404 Not Found."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 319,
+      "title": "Chinese Government Scholarship (Chinese University Program) at Fudan University 2026",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Application Period: From October 13, 2025 to December 10, 2025",
+      "deadline_precision": "unknown",
+      "observed_semantics": "EXACT",
+      "observed_deadline_in_past": "2025-12-10",
+      "source": {
+        "url": "https://iso.fudan.edu.cn/_upload/article/files/9d/76/d6586ac74c93af96c0846a4b4c9d/7ebc6a42-9399-4ba4-a45b-55a4d9ef74a2.pdf",
+        "landing_page": "https://iso.fudan.edu.cn/isoenglish/82/fe/c17458a754430/page.htm",
+        "source_type": "official_university_page",
+        "publisher": "Fudan University, International Students Office (ISO)",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": "2026 intake; PDF created 2025-10-31, announced on ISO site 2025-10-31",
+        "raw_extract": "2026 Chinese Government Scholarship (University Program) for\n\nApplication Period\nFrom October 13, 2025 to December 10, 2025",
+        "exact_deadline_wording": "Application Period / From October 13, 2025 to December 10, 2025",
+        "confidence": "HIGH",
+        "notes": "The official ISO article page carries no body text; its entire content is an embedded PDF, which I downloaded from the page's own pdfsrc link and read. It states a single explicit window, so the 2026-cycle close was 2025-12-10 (EXACT). That date is ~10 months in the past as of 2026-10-05 while the record is open/upcoming, so per the brief I set outcome expired_mismatch, wrote no deadline_date, and did not roll the date forward to 2026. Fudan's live scholarship index (https://iso.fudan.edu.cn/xsjxj/list.htm, fetched) shows no 2027-cycle notice; the newest items are dated 2026-04-06 and 2026-03-03 and the three 2026 government-shanghai notices are still the latest government-scholarship announcements."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Application Period: From October 13, 2025 to December 10, 2025 (2026 cycle, closed 2025-12-10; no 2027 cycle announced)"
+      },
+      "examined": [
+        "https://iso.fudan.edu.cn/isoenglish/82/fe/c17458a754430/page.htm",
+        "https://iso.fudan.edu.cn/82/fa/c16813a754426/page.htm",
+        "https://iso.fudan.edu.cn/xsjxj/list.htm",
+        "https://iso.fudan.edu.cn/isoenglish/51337/list.htm"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 320,
+      "title": "Chinese Government Scholarship (Youth of Excellence Scheme) at Fudan University 2026",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Application Period: 2025.10.13-2025.12.12; 2026.03.01-2026.03.15.",
+      "deadline_precision": "unknown",
+      "observed_semantics": "EXACT",
+      "observed_deadline_in_past": "2026-03-15",
+      "source": {
+        "url": "https://iso.fudan.edu.cn/_upload/article/files/d4/14/39526067427faec83b98d4aaaa5b/4d47073d-b128-489d-ad88-edb06a2f730f.pdf",
+        "landing_page": "https://iso.fudan.edu.cn/isoenglish/82/fd/c17458a754429/page.htm",
+        "source_type": "official_university_page",
+        "publisher": "Fudan University, International Students Office (ISO)",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": "2026 intake; PDF created 2025-10-31, announced on ISO site 2025-10-31",
+        "raw_extract": "Application Period\n2025.10.13-2025.12.12; 2026.03.01-2026.03.15.\n\n... IV. After applicants' documents being approved by university, we would issue a pre-admission letter to applicants. Applicants can visit CSC website http://www.campuschina.org to apply scholarship before March 25, 2026.",
+        "exact_deadline_wording": "Application Period / 2025.10.13-2025.12.12; 2026.03.01-2026.03.15.",
+        "confidence": "HIGH",
+        "notes": "Same situation as the sibling record: the official ISO article has an empty text body and embeds a PDF, which I downloaded from the page's pdfsrc and read. The Fudan window for this programme is two sub-windows with a final close of 2026-03-15, plus a separate China Scholarship Council submission sub-deadline of 'before March 25, 2026'. Every one of those dates is in the past as of 2026-10-05 while the record is open/upcoming, so no deadline_date is written and nothing is moved to 2027. Note the Fudan paper is the university's own call for this scheme, so the generic CSC 'March 31, 2026' figure seen on other universities' and other embassies' pages was not used here - it is a different award cycle statement and would in any case be past."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Application Period: 2025.10.13-2025.12.12; 2026.03.01-2026.03.15. (2026 cycle, closed 2026-03-15; CSC submission 'before March 25, 2026'; no 2027 cycle announced)"
+      },
+      "examined": [
+        "https://iso.fudan.edu.cn/isoenglish/82/fd/c17458a754429/page.htm",
+        "https://iso.fudan.edu.cn/82/f8/c16813a754424/page.htm",
+        "https://iso.fudan.edu.cn/xsjxj/list.htm"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.campuschina.org/content/details3_790440.html",
+          "reason": "CSC guidelines page linked from other embassies for this scheme. Fetched: HTTP 412 Precondition Failed, so it could not be read and was not used."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 321,
+      "title": "Shanghai Government Scholarship at Fudan University 2026",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Application Period: From October 13, 2025 to December 10, 2025",
+      "deadline_precision": "unknown",
+      "observed_semantics": "EXACT",
+      "observed_deadline_in_past": "2025-12-10",
+      "source": {
+        "url": "https://iso.fudan.edu.cn/_upload/article/files/57/73/705fe7f44aebab32b316c3a8a22d/74cb9068-3844-442d-9022-bf71c12d48dd.pdf",
+        "landing_page": "https://iso.fudan.edu.cn/isoenglish/82/fb/c17458a754427/page.htm",
+        "source_type": "official_university_page",
+        "publisher": "Fudan University, International Students Office (ISO)",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": "2026 intake; PDF created 2025-10-31, announced on ISO site 2025-10-31",
+        "raw_extract": "2026 Shanghai Government Scholarship for International Students\n\nApplication Period\nFrom October 13, 2025 to December 10, 2025",
+        "exact_deadline_wording": "Application Period / From October 13, 2025 to December 10, 2025",
+        "confidence": "HIGH",
+        "notes": "Official ISO article body is an embedded PDF only; I downloaded it from the page's pdfsrc link and read it. Explicit window, so the 2026-cycle close was 2025-12-10 (EXACT), which is in the past relative to 2026-10-05 while the record is open/upcoming. Per the brief: no deadline_date written, date not moved to the next year, outcome expired_mismatch. Fudan's live index shows the 2026-cycle notice is still the newest Shanghai Government Scholarship announcement; the 2026 award results were published in 2026 (e.g. 2026-06-30 shortlisted lists), so the cycle is complete rather than pending."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Application Period: From October 13, 2025 to December 10, 2025 (2026 cycle, closed 2025-12-10; no 2027 cycle announced)"
+      },
+      "examined": [
+        "https://iso.fudan.edu.cn/isoenglish/82/fb/c17458a754427/page.htm",
+        "https://iso.fudan.edu.cn/82/f7/c16813a754423/page.htm",
+        "https://iso.fudan.edu.cn/xsjxj/list.htm"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 323,
+      "title": "2026/2027 Chinese Government Scholarship - China-Indonesia Scholarship in Higher Education Program",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Online application (www.campuschina.org) and the corresponding application documents should be submitted in the system before February 8, 2026.",
+      "deadline_precision": "unknown",
+      "observed_semantics": "EXACT",
+      "observed_deadline_in_past": "2026-02-08",
+      "source": {
+        "url": "https://id.china-embassy.gov.cn/eng/sgdt/202510/t20251027_11741674.htm",
+        "source_type": "official_government_page",
+        "publisher": "Embassy of the People's Republic of China in the Republic of Indonesia",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": "2026/2027 cycle, notice published 2025-10-27",
+        "raw_extract": "The 2026/2027 Chinese Government Scholarship is now open for application . Online application (www.campuschina.org) and the corresponding application documents should be submitted in the system before February 8, 2026. There is no need to send paper materials to the embassy.\n\nTime Frames\n1) From now on to February 8, 2026",
+        "exact_deadline_wording": "should be submitted in the system before February 8, 2026",
+        "confidence": "HIGH",
+        "notes": "The official notice states one explicit deadline, 2026-02-08, for the 2026/2027 cycle (EXACT). That date passed about eight months before this retrieval, and the record is still open/upcoming, so per the brief I did not write the stale date and did not push it to 2027. I fetched the embassy's live 'Educational Cooperation' index (https://id.china-embassy.gov.cn/eng/whjy/lxxx/), which still lists this 2025-10-27 notice as its most recent Chinese Government Scholarship announcement; there is no published 2027/2028 cycle date, so no current value exists to record."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Online application (www.campuschina.org) and the corresponding application documents should be submitted in the system before February 8, 2026. (2026/2027 cycle, closed 2026-02-08; no 2027/2028 notice published)"
+      },
+      "examined": [
+        "https://id.china-embassy.gov.cn/eng/whjy",
+        "https://id.china-embassy.gov.cn/eng/whjy/lxxx/"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://cscpath.com/blog/csc-scholarship-indonesia-guide",
+          "reason": "Third-party blog. It speculates ('expect the 2027-28 notice around late October-November 2026'); a projection is not an official deadline and was not used."
+        },
+        {
+          "url": "https://tt.china-embassy.gov.cn/eng/sgxw/202601/t20260107_11807431.htm",
+          "reason": "A different mission's notice (Trinidad and Tobago) giving 'February 15, 2026' for its own national deadline. Not this record's dispatching authority, so not evidence for Indonesia's deadline."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 620,
+      "title": "Pan African University (PAU) Scholarship - African Union Commission",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "The Call will be launched on 15 November and will close on 15 December 2025.",
+      "deadline_precision": "unknown",
+      "observed_semantics": "EXACT",
+      "observed_deadline_in_past": "2025-12-15",
+      "source": {
+        "url": "https://au.int/en/announcements/20251115/pan-african-university-call-scholarships-applications-academic-year-2026-2027",
+        "source_type": "official_scholarship_page",
+        "publisher": "African Union Commission",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": "Academic Year 2026-2027 call, announcement dated Nov 15, 2025",
+        "raw_extract": "The Call will be launched on 15 November and will close on 15 December 2025.\n\nApplications received after this deadline will NOT be considered.",
+        "exact_deadline_wording": "The Call will be launched on 15 November and will close on 15 December 2025.",
+        "confidence": "HIGH",
+        "notes": "The wording mixes a recurring pattern ('15 November') with a hard, year-pinned close ('15 December 2025'). The pinned close is in the past relative to 2026-10-05 while the record is open/upcoming, so outcome is expired_mismatch, no deadline_date is written, and the 15 December figure is NOT generalised into an ANNUAL/recurring value - the AUC has not published a 2027-2028 call, and inventing 2026-12-15 would be exactly the silent roll-forward the brief forbids. The 2026-2027 cycle has closed and the next call is normally announced in mid-November, but that is an assumption and was not written down as a value."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "The Call will be launched on 15 November and will close on 15 December 2025. (2026-2027 call, closed 2025-12-15; no 2027-2028 call published)"
+      },
+      "examined": [],
+      "rejected_sources": [
+        {
+          "url": "https://au.int/sites/default/files/announcements/45594-annc-2026_PAU_Admission_Call_Englsih.pdf",
+          "reason": "The official PDF call document linked from the announcement. Not needed: the live HTML announcement already carries the deadline wording verbatim, and the linked PDF was not fetched."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 712,
+      "title": "ILSC Humanitarian Scholarship",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "Applications are open year-round.",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://www.ilsc.com/humanitarian-scholarship",
+        "source_type": "official_scholarship_page",
+        "publisher": "ILSC Language Schools (ILSC Education Group)",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": null,
+        "raw_extract": "How to Apply, Application Deadlines & Important Dates\n\nSubmit your application for the ILSC Humanitarian Scholarship here:\n\nImportant Dates & Deadlines\n- Applications are open year-round.\n- Applicants will receive a link to complete ILSC's Online English Placement Test. This test must be completed by the deadline mentioned in the email.\n- Successful candidates will be offered the scholarship based on the earliest available date.",
+        "exact_deadline_wording": "Applications are open year-round.",
+        "confidence": "HIGH",
+        "notes": "The provider states an explicitly rolling intake with no published closing date, so semantics are ROLLING with deadline_date null and precision 'rolling'; no calendar date is derived. The only other date ILSC mentions is per-applicant ('the deadline mentioned in the email' for the placement test) and an award timing, not a fixed public deadline. The record's existing rolling description is confirmed by the live page."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "rolling",
+        "deadline_display": "Applications are open year-round."
+      },
+      "examined": [
+        "https://www.ilsc.com/humanitarian-scholarship"
+      ],
+      "rejected_sources": []
+    }
+  ]
+}

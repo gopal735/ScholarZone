@@ -1,0 +1,369 @@
+{
+  "shard_id": "LG-027",
+  "topic": "logo",
+  "agent_completed": true,
+  "agent": "Logo LG-027 (@general subagent)",
+  "generated_at": "2026-10-05T15:35:00Z",
+  "records": [
+    {
+      "scholarship_id": 304,
+      "title": "University of Lisbon International Scholarships",
+      "outcome": "not_found",
+      "image_url": null,
+      "image_source_url": null,
+      "image_source_type": null,
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": false,
+        "accessible": false,
+        "not_favicon": false,
+        "not_ui": false,
+        "not_social": false,
+        "not_third_party": false,
+        "identity_match": false,
+        "notes": "www.ulisboa.pt returns HTTP 403 to every client method tried, so no page and no asset could be fetched and nothing could be proven. official_domain is false here in the sense of 'not verifiable': the domain IS the official University of Lisbon domain, but it is unreachable from this environment, so official_domain could not be affirmed. accessible=false is decisive. not_favicon/not_ui/not_social/not_third_party/identity_match are all recorded false because there is no candidate at all to validate - they are not assertions that a fetched asset failed those tests. Per brief section 7, a truthful not_found beats an unverifiable image."
+      },
+      "source": {
+        "url": "https://www.ulisboa.pt/en/study/fees-and-scholarships",
+        "publisher": "Universidade de Lisboa (official domain, content not retrievable)",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "raw_extract": "webfetch -> StatusCode: non 2xx status code (403 GET https://www.ulisboa.pt/en/study/fees-and-scholarships). No response body was returned, so no verbatim page quote exists.",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.ulisboa.pt/en/study/fees-and-scholarships (403 via webfetch)",
+        "https://www.ulisboa.pt/en (403 via webfetch)",
+        "https://www.ulisboa.pt/en (403 via headless Chromium/Playwright)",
+        "https://www.ulisboa.pt/en/study/fees-and-scholarships (403 via headless Chromium/Playwright, both /en and the record URL)",
+        "https://www.ulisboa.pt/robots.txt (403 via Invoke-WebRequest with Chrome UA)",
+        "http://www.ulisboa.pt/en (403 via Invoke-WebRequest with Chrome UA)",
+        "https://ulisboa.pt/en (TLS/connection failure via Invoke-WebRequest)",
+        "https://ulisboa.pt/en/study/fees-and-scholarships (TLS/connection failure via Invoke-WebRequest)",
+        "https://www.ulisboa.pt/sites/default/files/inline-images/ulisboa-logo.png (403 - candidate institutional logo asset, could not be fetched or visually verified)",
+        "https://www.ulisboa.pt/sites/default/files/inline-images/logos_sem_ulisboa.png (403 - candidate asset, could not be fetched)",
+        "https://www.ulisboa.pt/sites/ulisboa.pt/files/public/ulisboa-logo.png (403 - candidate asset, could not be fetched)",
+        "https://www.ulisboa.pt/sites/ulisboa.pt.v1/themes/bs3/logo.png (403 - candidate asset, could not be fetched)",
+        "https://www.ulisboa.pt/sites/default/files/assets/Log%C3%B3tipos/logo_erc-flag_fp.png (403 - unrelated funder logo anyway)"
+      ],
+      "rejected": [
+        {
+          "url": "https://web.archive.org/cdx/search/cdx?url=ulisboa.pt*&filter=original:.*logo.*&filter=mimetype:image/png&collapse=urlkey&limit=60&output=text&fl=original,statuscode,mimetype",
+          "reason": "Third-party web archive used only to enumerate candidate asset paths. NOT used as evidence and NOT used as a fallback source: the live official domain serves 403 for every one of those asset paths, so no image on the official domain could be fetched or verified. Listing came from an aggregator index, which the contract rejects; the page markup that would establish identity was never reachable."
+        },
+        {
+          "url": "https://www.ulisboa.pt/sites/default/files/inline-images/ulisboa-logo.png",
+          "reason": "Official-domain candidate asset, but HTTP 403 - not accessible, so accessible=false and identity could not be confirmed from any live official page."
+        },
+        {
+          "url": "https://www.ulisboa.pt/sites/ulisboa.pt.v1/themes/bs3/logo.png",
+          "reason": "Official-domain candidate asset, but HTTP 403 - not accessible; not proposed."
+        }
+      ],
+      "notes": "The whole ulisboa.pt domain (www, non-www, http, https) blocks this environment at the edge: HTML pages, robots.txt and static PNG paths alike all return 403, including from a real Chromium engine. DNS itself is healthy (ulisboa.pt -> 194.117.3.27, NS a.ul.pt/b.ul.pt/ns1-2.tecnico.ulisboa.pt), so this is an edge/WAF or geo/IP block, not a dead domain. No third-party mirror, Wikimedia copy or archive copy was substituted. Recommend re-running this record from a network the site accepts, or sourcing the logo from an official University of Lisboa brand page once reachable."
+    },
+    {
+      "scholarship_id": 349,
+      "title": "Erasmus Mundus EMCL Scholarship (European Master's in Clinical Linguistics)",
+      "outcome": "recovered",
+      "image_url": "https://www.emcl.eu/img/logo-petrol.png",
+      "image_source_url": "https://www.emcl.eu/",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "DOMAIN SUBSTITUTION, disclosed deliberately. The shard's official_source_url clinical-linguistics.eu is DEAD: NXDOMAIN for A and NS on the local resolver AND on Google Public DNS 8.8.8.8, for both the apex and www. No asset can exist on a non-resolving domain. The current official website of the identical degree programme is https://www.emcl.eu/, and that is where the logo was taken. Official-domain justification, all fetched: (a) the Consortium Agreement published by the programme itself at https://emcl.eu/files/CA.pdf states the University of Groningen as Coordinating Institution is responsible for 'developing, hosting and maintaining the EMCL++ website' and that 'Information about the Degree Programme and application procedures can be retrieved in the English language from the' same site; (b) two consortium partners link to emcl.eu from their own official sites - UEF (uef.fi) 'Visit the EMCL website for detailed information about the programme' and UGENT's official studiekiezer programme page prints 'www.emcl.eu' as the place for 'All practical information concerning the application for registration'. Identity: the record is the EMCL scholarship for the European Master's in Clinical Linguistics; emcl.eu is the official site of exactly that named degree programme and its /fees page documents the 'Erasmus Mundus Joint Master (EMJM) Scholarships' that the record is. MEDIUM rather than HIGH purely because the shard's own named official_source_url differs from the domain used; provenance and identity are otherwise fully proven. The asset is 1654x1654 image/png, GET-verified 200 / 357066 bytes, downloaded and visually inspected: a head silhouette formed from a word cloud containing 'Clinical Linguistics', 'EMCL++', 'Master', 'SLI', 'Ghent', 'Groningen', 'Joensuu', with an 'EMCL++' wordmark beneath - unambiguously the programme's own mark, not photography and not decorative hero art. Rejected as required: /img/favicon.ico, and the four footer PARTNER logos /img/EU-logo.png, /img/RUGWhite.png, /img/UGentWhite.png, /img/uef.png - these are the European Commission and the three universities, i.e. different legal entities, so they would misidentify the awarding body (same reasoning LG-028 applied to partner branding). Also rejected the carousel hero photographs /img/harmo-Michel-de-Groot.jpg, /img/groningen2.jpg, /img/ghent.jpg as decorative hero art."
+      },
+      "source": {
+        "url": "https://www.emcl.eu/",
+        "publisher": "EMCL - European Master's in Clinical Linguistics (official programme website, maintained by coordinating institution University of Groningen)",
+        "retrieved_at": "2026-10-05T15:32:00Z",
+        "raw_extract": "Logo reference in the official site masthead: '<span class=\"navbar-brand\">\\n\\t\\t\\t\\t<img src=\"/img/logo-petrol.png\" alt=\"\" height=\"60px\">\\n\\t\\t\\t</span>' - and, on the same page, the programme identity: '<title>\\n\\tEMCL-25\\n</title>' ... 'The <b>European Master's in Clinical Linguistics (EMCL)</b> is an Erasmus Mundus Joint Master Degree (EMJMD) that has been running for over 20 years. The newest edition is offered by the universities of <a href=\"https://www.uef.fi/en\">Eastern Finland</a> (Finland), <a href=\"https://www.ugent.be/en\">Ghent</a> (Belgium) and <a href=\"https://www.rug.nl/?lang=en\">Groningen </a> (The Netherlands).' Official-site-authority quote from the programme's own Consortium Agreement at https://emcl.eu/files/CA.pdf: 'The University of Groningen (Netherlands), acting as coordinator ... is responsible for: developing, hosting and maintaining the EMCL++ website ... Information about the Degree Programme and application procedures can be retrieved in the English language from the'",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://www.clinical-linguistics.eu (the shard's official_source_url - DNS NXDOMAIN, cannot exist)",
+        "http://www.clinical-linguistics.eu/ (DNS NXDOMAIN, apex and www confirmed on 8.8.8.8 for A and NS)",
+        "https://www.emcl.eu/ (fetched live, 200 - logo located here)",
+        "https://www.emcl.eu/about (fetched, confirms EMCL-25 identity, Erasmus Mundus labels 2004/2009/2016/2020/2025, three full partners)",
+        "https://www.emcl.eu/fees (fetched, documents the EMJM scholarship this record is)",
+        "https://emcl.eu/files/CA.pdf (fetched - Consortium Agreement establishing who owns and maintains the emcl.eu site)",
+        "https://www.uef.fi/en/degree-programme/masters-degree-programme-in-clinical-linguistics (fetched via search index - UEF official page linking to the EMCL website; not used as the asset host)",
+        "https://studiekiezer.ugent.be/infobrochure/en/HMEMCL/2026 (fetched via search index - UGENT official programme page printing www.emcl.eu; not used as the asset host)",
+        "https://www.emcl.eu/img/logo-petrol.png (asset GET-verified: 200, image/png, 1654x1654, 357066 bytes, downloaded and visually inspected)",
+        "https://erasmuscatalogue.com/emcl-erasmus-mundus (third-party scholarship aggregator - rejected outright, never used as evidence)"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.emcl.eu/img/favicon.ico",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://www.emcl.eu/img/EU-logo.png",
+          "reason": "wrong identity - European Commission logo, a different legal entity from the scholarship provider"
+        },
+        {
+          "url": "https://www.emcl.eu/img/RUGWhite.png",
+          "reason": "wrong identity / unrelated department logo on a shared host - University of Groningen mark, a consortium partner, not the programme's own brand"
+        },
+        {
+          "url": "https://www.emcl.eu/img/UGentWhite.png",
+          "reason": "wrong identity - Ghent University mark, a consortium partner, not the programme's own brand"
+        },
+        {
+          "url": "https://www.emcl.eu/img/uef.png",
+          "reason": "wrong identity - University of Eastern Finland mark, a consortium partner, not the programme's own brand"
+        },
+        {
+          "url": "https://www.emcl.eu/img/harmo-Michel-de-Groot.jpg",
+          "reason": "decorative hero art - carousel photograph, not a logo"
+        },
+        {
+          "url": "https://www.emcl.eu/img/groningen2.jpg",
+          "reason": "decorative hero art - carousel photograph, not a logo"
+        },
+        {
+          "url": "https://www.emcl.eu/img/ghent.jpg",
+          "reason": "decorative hero art - carousel photograph, not a logo"
+        },
+        {
+          "url": "https://erasmuscatalogue.com/emcl-erasmus-mundus",
+          "reason": "third-party scholarship aggregator / listing site"
+        }
+      ],
+      "notes": "The record's stored official_source_url (clinical-linguistics.eu) is a dead domain and its image_evaluation_status was 'invalid_candidates', consistent with previous agents having scraped nothing usable from a domain that does not resolve. Recommend re-pointing this record's official_source_url to https://www.emcl.eu/ so future waves do not re-hit the dead host. Also recommend re-pointing official_source to name the consortium (UEF / UGENT / RUG) rather than the dead domain."
+    },
+    {
+      "scholarship_id": 549,
+      "title": "PhD Position F/M Spatio-temporal analysis of remote sensing data at large scales (Inria offer 2026-10352)",
+      "outcome": "recovered",
+      "image_url": "https://jobs.inria.fr/images/inr_logo_blanc.png",
+      "image_source_url": "https://jobs.inria.fr/public/classic/en/offres/2026-10352",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Provenance is airtight and fully proven, confidence is MEDIUM only for a PRESENTATION caveat. The asset is the institutional wordmark carried in the masthead of the record's own official_source_url, on jobs.inria.fr, Inria's official job-offers domain (the page itself declares og:site_name 'Inria' and og:title the exact offer title). Identity is explicit in the markup: id=\"logo-inria\", alt=\"Inria\", and the enclosing anchor title=\"Inria job offers - Inria\". It is an <img> logo file, not a sprite, not a sprite slice, not UI chrome, not a social share button, not third-party. Verified asset: GET 200, image/png, 645x227, Format32bppArgb, 7509 bytes - real logo resolution, well above favicon/badge size. CAVEAT, and the reason for MEDIUM: pixel sampling shows the file is the WHITE reverse variant - every sampled pixel is RGB 255,255,255 with varying alpha (2604 samples at A=0, 407 at A=255). It is the Inria logotype intended for a dark/coloured masthead, so it will be near-invisible on a white catalogue card. I probed for an official full-colour or black variant on the official domain and found none: https://jobs.inria.fr/images/inr_logo.png, /images/inr_logo_rouge.png, /images/inr_logo_rouge.svg, /images/logo-inria.png all HTTP 404; commons.inria.fr (the official Inria asset host referenced by the page) returns 117 bytes at / and 404 for /images/inria.png and /img/logo.png; and www.inria.fr, where the brand charter 'charte d'utilisation de l'identite visuelle' lives, is now gated behind an Anubis proof-of-work wall that returns no page content. I did not substitute any third-party or archive copy of the Inria logo. Same caveat and same MEDIUM treatment LG-018 recorded for the UNCF white-on-dark logo. If the catalogue can composite the PNG on a dark tile, this becomes a clean HIGH."
+      },
+      "source": {
+        "url": "https://jobs.inria.fr/public/classic/en/offres/2026-10352",
+        "publisher": "Inria - Institut national de recherche en informatique et en automatique (official job offers site)",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "raw_extract": "Official masthead of the record's own source page: '<a href=\"/public/classic/en/offres?locale=en\" id=\"logoinria\" class=\"pull-left inriatoplinklogo\" title=\"Inria job offers - Inria\">\\n                <img id=\"logo-inria\" alt=\"Inria\" src=\"/images/inr_logo_blanc.png\" />\\n            </a>' - and, from the same page, the provider identity: '<meta property=\"og:site_name\" content=\"Inria\"/>' and 'Inria, the French national institute for research in digital science and technology, supports the French government in national research and innovation strategies in the digital field'. The offer is confirmed as this record's: '<h1 class=\"h1-detail\">PhD Position F/M Spatio-temporal analysis of remote sensing data at large scales</h1>' with 'Offer #2026-10352'.",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://jobs.inria.fr/public/classic/en/offres/2026-10352 (fetched live, 200 - official_source_url; logo located here)",
+        "https://jobs.inria.fr/images/inr_logo_blanc.png (asset GET-verified: 200, image/png, 645x227, 7509 bytes; downloaded, dimensions and pixel alpha sampled)",
+        "https://jobs.inria.fr/css/app/main_public.css (fetched, searched for the masthead rule; only .inriatoplinklogo sizing found, no coloured variant)",
+        "https://jobs.inria.fr/css/inria.css (fetched, 2182 bytes, contains no logo rule)",
+        "https://jobs.inria.fr/images/inr_logo.png (404 - no colour variant published)",
+        "https://jobs.inria.fr/images/inr_logo_rouge.png (404 - no colour variant published)",
+        "https://jobs.inria.fr/images/inr_logo_rouge.svg (404 - no colour variant published)",
+        "https://jobs.inria.fr/images/logo-inria.png (404 - no colour variant published)",
+        "https://commons.inria.fr/ (fetched, 200 but 117 bytes only; the official Inria asset host has no browsable logo path)",
+        "https://commons.inria.fr/images/inria.png (404)",
+        "https://commons.inria.fr/img/logo.png (404)",
+        "https://www.inria.fr/en/charter-use-visual-identity-inria (fetched, but returns an Anubis proof-of-work challenge page with no content, so the official brand charter and its logo files are unreachable)"
+      ],
+      "rejected": [
+        {
+          "url": "https://jobs.inria.fr/favicon-16x16.png",
+          "reason": "favicon - GET-verified to exist at 200, 1406 bytes, 16x16, explicitly rejected. This is the classic trap on this page: it is the only other image reference besides the logo and it must not be used."
+        },
+        {
+          "url": "https://seeklogo.com/vector-logo/360492/inria",
+          "reason": "third-party logo aggregator / mirror"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Inr_logo_rouge.svg",
+          "reason": "third-party mirror - Wikimedia Commons. Its own description page cites the inria.fr brand charter as source, but the charter is Anubis-gated and the file is not served from an Inria domain, so official provenance cannot be proven from the file itself. Not used."
+        },
+        {
+          "url": "https://team.inria.fr/cedar/team-visual-identity",
+          "reason": "wrong identity - this is the CEDAR team's own logo page; its 'Inria' entry (INRIA_CORPO_SANS_SIGNATURE_RVB) is a team-hosted re-upload and the page is for a different team's identity, so it fails the 'unrelated department logo' test."
+        }
+      ],
+      "notes": "Distinct from the rejected third-party INRIA_CORPO_SANS_SIGNATURE_RVB copies that circulate on team sites and Wikimedia: the asset proposed here is served by jobs.inria.fr itself and is referenced by the record's own official_source_url markup, so its official-domain status needs no inference."
+    },
+    {
+      "scholarship_id": 681,
+      "title": "Government of Brunei Darussalam Scholarship to Foreign Students Tenable in Brunei Darussalam (BDGS)",
+      "outcome": "recovered",
+      "image_url": "https://www.mfa.gov.bn/Shared%20Documents/Brunei%20Logo.png",
+      "image_source_url": "https://www.mfa.gov.bn/Pages/online-bdgs.aspx",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Strongest case in this shard. The asset is rendered by the record's own official_source_url, https://www.mfa.gov.bn/Pages/online-bdgs.aspx, as the header mark of the BDGS scholarship content itself, immediately above the BDGS 2023 eligibility/procedure/terms/FAQ sections. Official domain: www.mfa.gov.bn is the Ministry of Foreign Affairs, Government of Brunei Darussalam, self-declared in its own page metadata ('webTitle: Ministry of Foreign Affairs', meta description 'The Ministry of Foreign Affairs was formally established upon the resumption of Brunei Darussalam's full independence on 1 January 1984'). Identity: the record is the Brunei Darussalam Government Scholarship, and the mark is the national emblem/coat of arms of Brunei Darussalam - verified by download and visual inspection (red crest with wing and raised hands, Jawi motto band reading 'Dimeric钰 Kell...'/'dimeric' - the state motto ' Permanen dan Stability' script band), i.e. the correct sovereign mark for a Brunei government award, and it is named 'Brunei Logo' in the site's own asset path. Verified asset: GET 200, image/png, 37510 bytes, 339x308, Format32bppArgb - full emblem resolution, nowhere near favicon/badge size. Note the display size in the page markup is width:100px/height:91px, which is the site's CSS sizing, NOT the file's intrinsic resolution; the file itself is 339x308, so the low-resolution-badge rejection does not apply. Rejected on this host: /site/IMAGES/favicon_brunei.ico (favicon, declared by <link rel=\"shortcut icon\">), the SharePoint web-icon family (/_catalogs/theme/Themed/DBB599EF/*.themedpng, spcommon, spintl, searchresultui, HelpIcon.gif, SharePointMetroAppTile.png, siteIcon-*.themedpng - all browser/UI chrome), /site/IMAGES/iconmail3.png (mail icon), the BDGS accordion arrows up-eligible/up-procedure/up-terms/up-faqs/down-*.jpg (UI affordances), and /Shared%20Documents/BDGS%20Flyer%2024-25.png (a 550x712 promotional flyer, not a logo). The site's own masthead CSS .sitelogo points at a different asset, /site/IMAGES/logo-mofat.png (the Ministry of Foreign Affairs wordmark, used site-wide on every page); I did not use it because the national emblem is the mark the official BDGS scholarship page itself presents for this award, and the ministry wordmark is a different, less specific mark."
+      },
+      "source": {
+        "url": "https://www.mfa.gov.bn/Pages/online-bdgs.aspx",
+        "publisher": "Ministry of Foreign Affairs, Government of Brunei Darussalam",
+        "retrieved_at": "2026-10-05T15:28:52Z",
+        "raw_extract": "Official BDGS scholarship page, content web part: '<div class=\"ms-rtestate-field\"><h1 style=\"text-align: center;\"><img src=\"/Shared%20Documents/Brunei%20Logo.png\" alt=\"\" style=\"margin: 5px; width: 100px; height: 91px;\"/><br/></h1>\\n<img src=\"/PublishingImages/bdgs2023/up-eligible.jpg\" alt=\"\" style=\"width: 256px; height: 26px;\"/>\\n<img src=\"/PublishingImages/bdgs2023/up-procedure.jpg\" .../>\\n<img src=\"/PublishingImages/bdgs2023/up-terms.jpg\" .../>\\n<img src=\"/PublishingImages/bdgs2023/up-faqs.jpg\" .../>' - and, from the same page head, the publisher identity: '<link rel=\"canonical\" href=\"https://www.mfa.gov.bn:443/Pages/online-bdgs.aspx\" />' with 'webTitle: \"Ministry of Foreign Affairs\"' and meta description 'The Ministry of Foreign Affairs was formally established upon the resumption of Brunei Darussalam's full independence on 1 January 1984.'",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.mfa.gov.bn/Pages/online-bdgs.aspx (fetched live, 200 - the record's official_source_url; logo located here)",
+        "https://www.mfa.gov.bn/Shared%20Documents/Brunei%20Logo.png (asset GET-verified: 200, image/png, 37510 bytes, downloaded and visually inspected as the Brunei Darussalam national emblem)",
+        "https://www.mfa.gov.bn/Pages/scholarship.aspx (fetched live, 200 - sibling official scholarship page; enumerated every <img> on it, see rejected list)",
+        "https://www.mfa.gov.bn/site/CSS/style_deault.css (fetched; .sitelogo resolves to url(\"../IMAGES/logo-mofat.png\"), the site-wide MFA masthead wordmark)",
+        "https://ubd.edu.bn/admission/scholarship (not fetched as an asset host - the record's catalogue_url belongs to a different institution (Universiti Brunei Darussalam) and would be the wrong identity for a Brunei government award)"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.mfa.gov.bn/site/IMAGES/favicon_brunei.ico",
+          "reason": "favicon - declared as <link rel=\"shortcut icon\" href=\"/site/IMAGES/favicon_brunei.ico\" id=\"favicon\" />"
+        },
+        {
+          "url": "https://www.mfa.gov.bn/_catalogs/theme/Themed/DBB599EF/siteIcon-2129F729.themedpng",
+          "reason": "browser/UI chrome - SharePoint site icon sprite"
+        },
+        {
+          "url": "https://www.mfa.gov.bn/_layouts/15/images/spcommon.png",
+          "reason": "spritesheet - SharePoint UI chrome"
+        },
+        {
+          "url": "https://www.mfa.gov.bn/_layouts/15/images/SharePointMetroAppTile.png",
+          "reason": "msapplication-TileImage / app tile, a favicon-family asset"
+        },
+        {
+          "url": "https://www.mfa.gov.bn/_layouts/15/images/HelpIcon.gif",
+          "reason": "browser/UI chrome"
+        },
+        {
+          "url": "https://www.mfa.gov.bn/site/IMAGES/iconmail3.png",
+          "reason": "not a logo - webmail navigation icon"
+        },
+        {
+          "url": "https://www.mfa.gov.bn/PublishingImages/bdgs2023/up-eligible.jpg",
+          "reason": "not a logo - accordion expand/collapse UI affordance"
+        },
+        {
+          "url": "https://www.mfa.gov.bn/Shared%20Documents/BDGS%20Flyer%2024-25.png",
+          "reason": "promotional flyer (550x712), not a logo or brand mark"
+        },
+        {
+          "url": "https://www.mfa.gov.bn/site/IMAGES/logo-mofat.png",
+          "reason": "valid official ministry masthead wordmark but not used - it is the site-wide MFA chrome logo, less specific to this award than the national emblem the BDGS page itself presents; recorded as an official fallback"
+        }
+      ],
+      "notes": "Record 681 and record 683 are the same Brunei Darussalam Government Scholarship under two different official_source_url values on the same official domain, so they intentionally share one image_url. Expect that duplicate at integration - it is correct, and both name the Brunei government as provider."
+    },
+    {
+      "scholarship_id": 683,
+      "title": "Brunei Darussalam Government Scholarship for Foreign Students Tenable in Brunei Darussalam (BDGS)",
+      "outcome": "recovered",
+      "image_url": "https://www.mfa.gov.bn/Shared%20Documents/Brunei%20Logo.png",
+      "image_source_url": "https://www.mfa.gov.bn/Pages/scholarship.aspx",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Same asset as record 681, on the same official government domain, for the same scholarship - MEDIUM, not HIGH, on one specific and disclosed point: the record's own official_source_url, https://www.mfa.gov.bn/Pages/scholarship.aspx, carries NO logo image of its own. I fetched it live (200) and enumerated every <img> tag in it: the only ones are /site/IMAGES/favicon_brunei.ico (favicon), /site/IMAGES/iconmail3.png (mail icon), a zero-size SharePoint 'Skip Navigation Links' WebResource image, and the SharePoint themed UI sprites. A literal search of the page for 'Brunei Logo' returns nothing, and the site's masthead .sitelogo div is empty in the markup (its logo arrives via CSS background logo-mofat.png). The emblem was therefore located on the sibling official BDGS scholarship page https://www.mfa.gov.bn/Pages/online-bdgs.aspx on the same official domain - the online-BDGS page for this identical award - which renders it in its content area. Everything else validates fully: official domain www.mfa.gov.bn (Ministry of Foreign Affairs, Government of Brunei Darussalam, self-declared in its metadata); correct identity (Brunei Darussalam national emblem, verified by download and visual inspection, sitting on the official page for this very scholarship); not a favicon; not UI chrome; not social; not third-party; real resolution 339x308 / 37510 bytes PNG. Records 681 and 683 are the same programme with two official_source_url values, so sharing the mark is correct rather than a shortcut. An integrator who wants zero inference for this record should either re-point 683's official_source_url to /Pages/online-bdgs.aspx (the page that actually carries the emblem) or use the site-wide ministry masthead /site/IMAGES/logo-mofat.png, which is present on every page of the domain including scholarship.aspx."
+      },
+      "source": {
+        "url": "https://www.mfa.gov.bn/Pages/scholarship.aspx",
+        "publisher": "Ministry of Foreign Affairs, Government of Brunei Darussalam (official scholarship page; the emblem itself was read off the sibling official BDGS page on the same domain)",
+        "retrieved_at": "2026-10-05T15:29:17Z",
+        "raw_extract": "Record's own official_source_url, fetched live, HTTP 200, <link rel=\"canonical\" href=\"https://www.mfa.gov.bn:443/Pages/scholarship.aspx\" /> and 'webTitle: \"Ministry of Foreign Affairs\"'. Its complete image inventory contains NO logo: '<link rel=\"shortcut icon\" href=\"/site/IMAGES/favicon_brunei.ico\" type=\"image/vnd.microsoft.icon\" id=\"favicon\" />', '<img src=\"/site/IMAGES/iconmail3.png\"/>', '<img alt=\"Skip Navigation Links\" src=\"/WebResource.axd?...\" width=\"0\" height=\"0\" ... />', '<div class=\"sitelogo\"></div>' (empty; logo supplied by CSS background url(\"../IMAGES/logo-mofat.png\") in /site/CSS/style_deault.css). Emblem markup, from the sibling official BDGS scholarship page for this same award, https://www.mfa.gov.bn/Pages/online-bdgs.aspx: '<img src=\"/Shared%20Documents/Brunei%20Logo.png\" alt=\"\" style=\"margin: 5px; width: 100px; height: 91px;\"/>'",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://www.mfa.gov.bn/Pages/scholarship.aspx (fetched live, 200 - the record's official_source_url; full <img> inventory taken, no logo present)",
+        "https://www.mfa.gov.bn/Pages/online-bdgs.aspx (fetched live, 200 - sibling official BDGS scholarship page on the same domain; the emblem was located here)",
+        "https://www.mfa.gov.bn/Shared%20Documents/Brunei%20Logo.png (asset GET-verified: 200, image/png, 37510 bytes, 339x308, downloaded and visually inspected as the Brunei Darussalam national emblem)",
+        "https://www.mfa.gov.bn/site/CSS/style_deault.css (fetched; .sitelogo background url(\"../IMAGES/logo-mofat.png\") - the site-wide MFA masthead wordmark, recorded as an official fallback present on this very page)",
+        "https://ubd.edu.bn/admission/scholarship (the record's catalogue_url - NOT fetched as an asset host: UBD is a different institution from the awarding Brunei government ministry, so a UBD logo would be the wrong identity for this record)"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.mfa.gov.bn/site/IMAGES/favicon_brunei.ico",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://www.mfa.gov.bn/site/IMAGES/iconmail3.png",
+          "reason": "not a logo - webmail navigation icon"
+        },
+        {
+          "url": "https://www.mfa.gov.bn/_layouts/15/images/spcommon.png",
+          "reason": "spritesheet - SharePoint UI chrome"
+        },
+        {
+          "url": "https://www.mfa.gov.bn/_layouts/15/images/SharePointMetroAppTile.png",
+          "reason": "msapplication-TileImage / favicon-family asset"
+        },
+        {
+          "url": "https://www.mfa.gov.bn/_catalogs/theme/Themed/DBB599EF/searchresultui-61174269.themedpng",
+          "reason": "browser/UI chrome - search button icon"
+        },
+        {
+          "url": "https://www.mfa.gov.bn/Shared%20Documents/BDGS%20Flyer%2024-25.png",
+          "reason": "promotional flyer, not a logo - and it lives on online-bdgs.aspx, not on this record's own page"
+        }
+      ],
+      "notes": "Duplicate image_url with record 681 is intentional and correct: both records are the Brunei Darussalam Government Scholarship (BDGS) offered by the Brunei Ministry of Foreign Affairs, differing only in which of the ministry's two official pages the catalogue happens to point at."
+    }
+  ],
+  "shard_summary": {
+    "record_count": 5,
+    "recovered": 4,
+    "not_found": 1,
+    "rejected": 0,
+    "confidence_high": 2,
+    "confidence_medium": 2,
+    "confidence_low": 0,
+    "duplicate_image_urls": [
+      {
+        "image_url": "https://www.mfa.gov.bn/Shared%20Documents/Brunei%20Logo.png",
+        "scholarship_ids": [681, 683],
+        "reason": "same award, same awarding government body, two official_source_url values on the same official domain"
+      }
+    ],
+    "dead_official_source_urls": [
+      {
+        "scholarship_id": 349,
+        "url": "https://www.clinical-linguistics.eu",
+        "detail": "NXDOMAIN for A and NS on the local resolver and on Google Public DNS 8.8.8.8, apex and www. Live official programme site is https://www.emcl.eu/ (maintained by coordinating institution University of Groningen, per the programme's own Consortium Agreement). Recommend re-pointing this record."
+      }
+    ],
+    "blocked_official_source_urls": [
+      {
+        "scholarship_id": 304,
+        "url": "https://www.ulisboa.pt/en/study/fees-and-scholarships",
+        "detail": "Entire ulisboa.pt domain returns HTTP 403 to every method tried - webfetch, PowerShell with a Chrome UA, and headless Chromium - for HTML pages, /robots.txt and static PNG paths alike. DNS is healthy (ulisboa.pt -> 194.117.3.27), so this is an edge/WAF or geo/IP block, not a dead domain. Any LG or DL shard covering www.ulisboa.pt will get nothing; recommend re-running from an accepted network."
+      }
+    ],
+    "notes": "All three proposed image_url values were GET-verified live (200, correct Content-Type) and downloaded and visually inspected. No third-party mirror, aggregator, social avatar, screenshot or archive copy was used as evidence anywhere in this shard. The Wayback CDX index was queried only to enumerate candidate ulisboa asset paths; because every one of those paths is 403 on the official domain, nothing from the archive was used to fill any field."
+  }
+}

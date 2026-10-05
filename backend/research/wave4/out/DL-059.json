@@ -1,0 +1,288 @@
+{
+  "shard_id": "DL-059",
+  "agent_completed": true,
+  "topic": "deadline",
+  "researched_at": "2026-10-05T15:32:31Z",
+  "records": [
+    {
+      "scholarship_id": 13,
+      "title": "POSCO TJ Park Foundation Global Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "deadline_date_written": false,
+      "source": {
+        "url": "https://www.postf.org/en/asia/purpose",
+        "source_type": "official_scholarship_page",
+        "publisher": "POSCO TJ Park Foundation",
+        "retrieved_at": "2026-10-05T15:27:30Z",
+        "as_of": null,
+        "raw_extract": "#### *POSCO Global Scholarship*, empowering global talents and building a better future together.\n\nThe POSCO TJ Park Foundation operates the *POSCO Global Scholarship program* to promote mutual understanding through global talent exchange and collaboration.\n\nKey initiatives include :\n**- POSCO Global Scholarship in Korea** : an in-bound scholarship that invites global talents to Korea and supports master's/doctorate degree acquisition.\n**- Scholarship for Global Universities** : Support for outstanding students currently enrolled in leading universities around the world.\n**- POSCO Overseas Fellowship** : Support for oustanding Korean students pursuing degrees at leading universities worldwide.",
+        "exact_deadline_wording": null,
+        "confidence": "HIGH",
+        "notes": "The record's official_source_url (the POSCO Global Scholarship 'Purpose' page) was fetched in full and contains NO deadline, no cycle, and no application timing of any kind - it is a descriptive page listing the programme's three component initiatives. No amount is therefore recoverable for this umbrella record. The Foundation publishes month-level selection timing only on the separate 'POSCO Global Scholarship in Korea' component page (https://www.postf.org/en/asia/abroad/business), which is a distinct sub-programme and is researched separately as record 553 in this shard; per AGENT_BRIEF section 5 a sibling programme's timing must not be borrowed for this record. IMPORTANT DATA-QUALITY FLAG: the shard's cached deadline_display for this record reads 'Typically May annually'. That wording appears nowhere on any POSCO TJ Park Foundation page fetched (purpose, program, FAQ), and nothing on the Foundation's site supports a May deadline - the previously cached value has no live official source behind it and should not be trusted or re-derived."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": null
+      },
+      "examined": [
+        "https://www.postf.org/en/asia/purpose",
+        "https://www.postf.org/en/asia/abroad/business",
+        "https://www.postf.org/en/asia/abroad/faq",
+        "https://www.postf.org/en/asia/abroad/faq?c=application"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.postf.org/en/asia/abroad/business",
+          "reason": "Month-level selection timing published here belongs to the distinct 'POSCO Global Scholarship in Korea' component (record 553), not to this umbrella programme record. Borrowed per AGENT_BRIEF section 5 prohibition on another programme's deadline."
+        },
+        {
+          "url": "https://www.postf.org/en/asia/abroad/faq?c=application",
+          "reason": "The 'Submission of Application' tab renders empty server-side ('No List') - its content is JavaScript-loaded and no deadline text is retrievable from the live page."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 80,
+      "title": "Rhodes Scholarship (Global Constituency) — University of Oxford",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "deadline_date_written": false,
+      "record_status_recommendation": "programme suspended by the Rhodes Trust Board of Trustees - no Global constituency application deadline exists; recommend the record be closed/quarantined rather than kept open",
+      "source": {
+        "url": "https://www.rhodeshouse.ox.ac.uk/scholarships/applications/global",
+        "source_type": "official_scholarship_page",
+        "publisher": "Rhodes Trust",
+        "retrieved_at": "2026-10-05T15:28:00Z",
+        "as_of": null,
+        "raw_extract": "### **Important Notice Regarding the Global Rhodes Scholarships:**\n\nPlease note that the Board of Trustees have decided to suspend the awarding of Global Rhodes Scholarships with immediate effect due to shifting strategic priorities.  \n\nWe understand that this will be disappointing to those hoping to apply to the Global Scholarship this year. Alternative funding opportunities available for graduate study at the University of Oxford can be found here",
+        "exact_deadline_wording": null,
+        "confidence": "HIGH",
+        "notes": "MATERIAL FINDING: the official Global constituency page states the Global Rhodes Scholarships are SUSPENDED with immediate effect. Because the programme is not being awarded, no Global application deadline exists - there is nothing to date, and no deadline may be inferred from the general Rhodes cycle. The page carries a site-wide banner reading 'Applications for the Rhodes Scholarship 2027 are open!' but that banner is constituency-agnostic and is contradicted, for the Global constituency specifically, by the suspension notice on the very same page; it is therefore not evidence of a Global deadline and is NOT treated as a source conflict, because neither text states a date for the same deadline. The constituency-lookup page (https://www.rhodeshouse.ox.ac.uk/scholarships/applications/) was also fetched and resolves constituencies only via a JavaScript country selector, so it publishes no Global deadline either. The shard's cached deadline_display ('Varies by constituency (Global deadline ~late August/September 2026 for 2027 entry)') is not supported by the live official source."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": null
+      },
+      "examined": [
+        "https://www.rhodeshouse.ox.ac.uk/scholarships/applications/global",
+        "https://www.rhodeshouse.ox.ac.uk/scholarships/applications/",
+        "https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship/"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.rhodeshouse.ox.ac.uk/scholarships/applications/",
+          "reason": "Constituency selection is JavaScript-driven; the page body contains no deadline table and no Global entry. Yields no value for the Global constituency."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 149,
+      "title": "NTHU International Student Scholarship",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Application Deadline: 3:00 p.m., September 30, 2026",
+      "deadline_precision": "exact",
+      "deadline_date_written": false,
+      "expired_value_withheld": "2026-09-30",
+      "source": {
+        "url": "https://apply.nthu.edu.tw/en/article/210-admission",
+        "source_type": "official_university_page",
+        "publisher": "National Tsing Hua University, Office of Global Affairs / Division of International Talent Cultivation",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "as_of": "Spring 2027 international degree programme intake (classes begin early February 2027); announcement dated 06.Jul.2026",
+        "raw_extract": "## 【Admission】Spring 2027 Admission for International Degree Programs\n\nApplication Period: August 3, 2026 – September 30, 2026 (Taiwan Time)\n\nKey Dates for Your Application (Taiwan Time):\n\nOnline Application Opens: August 3, 2026  \nApplication Deadline: 3:00 p.m., September 30, 2026  \nAdmission Results Announced: December 1, 2026  \nScholarship Results Announced: Late December 2026  \nEnrollment Confirmation Deadline: December 20, 2026  \nRegistration / Classes Begin: Early February 2027\n\n※ All application documents must be uploaded and submitted before the application deadline. Late or incomplete applications will not be considered.",
+        "exact_deadline_wording": "Application Deadline: 3:00 p.m., September 30, 2026",
+        "confidence": "HIGH",
+        "notes": "The record's own official_source_url (https://apply.nthu.edu.tw/en/article/102-nthu-scholarship) was fetched first and publishes NO scholarship deadline of its own; it ties the scholarship to the degree-programme application instead, verbatim: 'Use the portal link as \"Apply\". Apply scholarship through the same online system for international degree programs. By selection \"Apply for NTHU international student scholarship\".' Because the award is applied for inside the international degree programme application, the operative deadline is that intake's application deadline, taken from NTHU's own official intake page (same domain, same portal). This is the deadline of the very programme through which this scholarship is claimed, not a generic admissions deadline for a different programme. The only intake published on the live site at retrieval time was Spring 2027, whose deadline (30 September 2026, 15:00 Taiwan time) had already passed by the 5 October 2026 retrieval date, while the record is flagged verification_status=active. Per AGENT_BRIEF section 6 the stale date is therefore NOT written and has NOT been rolled forward to a later intake. The site's own 'Scholarship Results Announced: Late December 2026' line confirms the scholarship decision is tied to this closed intake. No Fall 2027 intake dates were published on the live official pages at retrieval time, and none have been inferred."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "Application Deadline: 3:00 p.m., September 30, 2026 (Spring 2027 intake, closed 30 Sep 2026 - not written, see notes)"
+      },
+      "examined": [
+        "https://apply.nthu.edu.tw/en/article/102-nthu-scholarship",
+        "https://apply.nthu.edu.tw/en/article/210-admission",
+        "https://apply.nthu.edu.tw/en/article/70-international-students"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://apply.nthu.edu.tw/en/article/97-apply-directly-to-nthu-for-admission",
+          "reason": "Overseas Compatriot / Hong Kong-Macau admission route (14 Aug - 15 Oct 2026), a different applicant status and a different application system; not the international degree programme route through which this scholarship is claimed."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 162,
+      "title": "University of Vienna Scholarships for International Students",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "deadline_date_written": false,
+      "source": {
+        "url": "https://studieren.univie.ac.at/en/studying-and-learning/financial-matters/grants-and-scholarships",
+        "source_type": "official_university_page",
+        "publisher": "University of Vienna",
+        "retrieved_at": "2026-10-05T15:32:00Z",
+        "as_of": null,
+        "raw_extract": "# Grants and scholarships\n\nDo you need financial support whilst you're studying? Here you'll find various grants and scholarships. Most grants and scholarships are awarded on the basis of outstanding academic performance.\n\n## Current listings from the University of Vienna\n\n### Research scholarship\n\n17.09.2026 Grants\n\nReceive support for your ongoing academic work through the research scholarship.\n\n### Merit scholarship\n\n17.09.2026 Grants\n\nOutstanding academic performance pays off: The merit scholarship is awarded on the basis of academic achievement to date.\n\n## Do you have questions about our scholarships?\n\n### Office of the Studienpräses\n\nThe Office of the Studienpräses will be happy to advise you on the grants and scholarships currently available at the University of Vienna.",
+        "exact_deadline_wording": null,
+        "confidence": "HIGH",
+        "notes": "The record's official_source_url (https://studieren.univie.ac.at/en/scholarships) returns HTTP 404 - it is dead. The live successor page on the same official domain (located via the site's own navigation tree: Studying and learning > Financial matters > Grants and scholarships) was fetched in full: it is a hub listing the University's grants and scholarships (Research scholarship and Merit scholarship, both listed 17.09.2026) and links out to the Studienpraeses and to external databases, but it publishes NO application deadline, no application period, and no cycle. The University of Vienna's own English-language description of these grants also makes clear the merit/research grants are aimed at 'students with EU/EEA/CH citizenship and students with equal status', so they do not match this record's 'for International Students' scope either. Per AGENT_BRIEF section 5 the University of Vienna's degree-programme ADMISSION periods (which are the dates a search surfaces for this host) were deliberately NOT used: those are admission deadlines for a different thing, and inferring a scholarship deadline from them is explicitly prohibited. The shard's cached deadline_display ('Varies (typically March-May for winter semester)') is unsupported by anything on the University's scholarship pages and must not be re-derived."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": null
+      },
+      "examined": [
+        "https://studieren.univie.ac.at/en/scholarships",
+        "https://studieren.univie.ac.at/en/scholarships-and-financing/",
+        "https://studieren.univie.ac.at/en/",
+        "https://studieren.univie.ac.at/en/studying-and-learning/financial-matters/grants-and-scholarships"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://studieren.univie.ac.at/en/applying-for-a-programme/deadlines",
+          "reason": "Degree programme application/admission periods (e.g. winter/summer semester application windows). These are admission deadlines for degree programmes, not a scholarship deadline - excluded by AGENT_BRIEF section 5 ('A generic admissions deadline for a different programme')."
+        },
+        {
+          "url": "https://studieren.univie.ac.at/en/admission/application-and-admission-periods/",
+          "reason": "Same category: University of Vienna degree programme admission periods, not a scholarship deadline. Not used as evidence."
+        },
+        {
+          "url": "https://studienpraeses.univie.ac.at/stipendien/",
+          "reason": "German-language Studienpraeses announcement portal carrying the StudFG merit/research grant Bewerbungsfristen. Different award, restricted to Austrian / equal-status EU-EEA-CH eligibility, so it is not this record's 'Scholarships for International Students'; its dates were not adopted."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 356,
+      "title": "Hungarian Bilateral State Scholarships",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "19 February 2026",
+      "deadline_precision": "exact",
+      "deadline_date_written": false,
+      "expired_value_withheld": "2026-02-19",
+      "source": {
+        "url": "https://en.tka.hu/bilateral-state-scholarships-information-for-applicants",
+        "source_type": "official_scholarship_page",
+        "publisher": "Tempus Public Foundation",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": "academic year 2026-2027 ('For the academic year 2026-2027')",
+        "raw_extract": "### **Calls for application**\n\nYou may read details about the general application conditions, provisions, documents to be submitted, etc. within the Calls for application **for the academic year 2026-2027.**\n\n## **For the academic year 2026-2027**\n\n#### **Scholarship Type** **Semester/partial studies**\n\nDuration\n\n3-10 months\n\nEligibility\n\nbachelor or master or doctoral\n\nDeadline\n\n**19 February 2026**\n\n#### **Scholarship Type** **Full degree studies**\n\nDuration\n\n36/24/36/48 months respectively\n\nEligibility\n\nbachelor or master or doctoral\n\nDeadline\n\n**19 February 2026**\n\n#### **Scholarship Type** **Short or long-term study visits**\n\nDuration\n\n3 days - 6 months\n\nEligibility\n\nmaster or doctoral\n\nDeadline\n\n**19 February 2026**\n\n#### **Scholarship Type** **Summer course**\n\nDuration\n\n2-4 weeks\n\nEligibility\n\nbachelor or master or doctoral\n\nDeadline\n\n**27 February 2026, 5 pm CET**\n\nApplication deadline\n\n-   19 February 2026: Semester/partial studies - Full degree - Short or long-term study visits\n-   27 February 2026, 5 pm CET: Summer courses",
+        "exact_deadline_wording": "19 February 2026 (semester/partial studies, full degree studies, short or long-term study visits); 27 February 2026, 5 pm CET (summer courses)",
+        "confidence": "HIGH",
+        "notes": "CORRECTS THE SHARD'S CACHED VALUE. The shard holds deadline_precision 'unknown' with the note that 'No application deadline is published on the Tempus Public Foundation pages for bilateral state scholarships'. That is incorrect: the Foundation's own official 'Information for applicants' page publishes explicit calendar deadlines for the bilateral state scholarship calls, and they were read directly from the live page. Deadlines published: 19 February 2026 for Semester/partial studies, Full degree studies and Short or long-term study visits; 27 February 2026, 5 pm CET for Summer courses (all for academic year 2026-2027). Both dates had already passed by the 5 October 2026 retrieval date while the record is flagged verification_status=active, so per AGENT_BRIEF section 6 the outcome is expired_mismatch: the stale dates are NOT written and have NOT been rolled forward to a 2027-2028 cycle that the Foundation has not yet published. There is no source conflict: the programme overview page (https://en.tka.hu/bilateral_state_scholarships) correctly describes the two application routes (home-country nomination via the partner's national scholarship office, or an individual application into the Foundation's online system) and publishes no date itself - the route description and the published application deadline are complementary, not contradictory. Note also that the Foundation's homepage currently headlines a different programme (CEEPUS, 'open until 31 August 2026'), which is not this record and was not used."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "19 February 2026 (AY 2026-2027, already passed - not written, see notes); summer courses 27 February 2026, 5 pm CET"
+      },
+      "examined": [
+        "https://en.tka.hu",
+        "https://en.tka.hu/bilateral_state_scholarships",
+        "https://en.tka.hu/bilateral-state-scholarships-information-for-applicants"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://en.tka.hu/deadline-extended-for-ceepus-student-teacher-and-staff-mobilities-to-hungary",
+          "reason": "CEEPUS is a separate Tempus Public Foundation programme, not the bilateral state scholarship. Its 31 August 2026 date was not used."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 553,
+      "title": "POSCO Global Scholarship in Korea (Global Future Leaders Scholarship Program)",
+      "outcome": "recovered",
+      "deadline_semantics": "MONTH",
+      "deadline_date": null,
+      "deadline_display": "Graduate School Admission (~Nov) / Recommendation submission by Graduate School (~Dec) / Interview By Foundation (~Jan) / Final Selection Announcement (~Feb) / Certificate Award Ceremony (Mar)",
+      "deadline_precision": "month",
+      "deadline_date_written": false,
+      "source": {
+        "url": "https://www.postf.org/en/asia/abroad/business",
+        "source_type": "official_scholarship_page",
+        "publisher": "POSCO TJ Park Foundation",
+        "retrieved_at": "2026-10-05T15:28:30Z",
+        "as_of": null,
+        "raw_extract": "#### Selection  \nProcedure\n\n1.  01 **Graduate School Admission  \n    (~Nov)**\n    \n2.  02 **Recommendation submission by Graduate School  \n    (~Dec)**\n    \n3.  03 **Interview By Foundation  \n    (~Jan)**\n    \n4.  04 **Final Selection Announcement  \n    (~Feb)**\n    \n5.  05 **Certificate Award Ceremony  \n    (Mar)**\n\n#### Eligibility\n\nApplicants must have been admitted to a Master's or Doctoral program at a Korean graduate school and must be recommended by their admitting institution.",
+        "exact_deadline_wording": "Recommendation submission by Graduate School (~Dec)",
+        "confidence": "HIGH",
+        "notes": "The record's official_source_url was fetched first and is the correct page: it publishes the selection cycle at MONTH level only, with approximate months and no day. Recorded as MONTH per AGENT_BRIEF section 6, so deadline_date MUST stay null - no day has been invented for the '~Nov'/'~Dec' markers. The Foundation accepts no direct application from the applicant: the page states applicants 'must have been admitted to a Master's or Doctoral program at a Korean graduate school and must be recommended by their admitting institution', so the applicant-facing step is admission to a Korean graduate school (whose own deadline is set by that university and is NOT this scholarship's deadline), and the Foundation's own intake point is the institution's recommendation submission in approximately December. The '~Dec' recommendation step is therefore cited as the deadline wording while the full month-level cycle is preserved verbatim in deadline_display. The FAQ page and its 'Submission of Application' tab were checked and carry no additional timing (the tab renders empty, 'No List'). Consistent with the shard's existing note, the first step of the cycle is graduate school admission, so a candidate who has not been admitted to a Korean graduate school cannot yet enter the current round."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "month",
+        "deadline_display": "Graduate School Admission (~Nov) / Recommendation submission by Graduate School (~Dec) / Interview By Foundation (~Jan) / Final Selection Announcement (~Feb) / Certificate Award Ceremony (Mar)"
+      },
+      "examined": [
+        "https://www.postf.org/en/asia/abroad/business",
+        "https://www.postf.org/en/asia/abroad/faq",
+        "https://www.postf.org/en/asia/abroad/faq?c=application"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.postf.org/en/asia/abroad/faq?c=application",
+          "reason": "'Submission of Application' tab content is JavaScript-loaded and empty server-side ('No List'); yields no deadline text from the live page."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 600,
+      "title": "Becas Colombia Biodiversa - Fondo de Becas Colombia Biodiversa, Convocatoria II-2026",
+      "outcome": "recovered",
+      "deadline_semantics": "EXACT",
+      "deadline_date": "2026-10-05",
+      "deadline_display": "El plazo máximo para realizar la preinscripción  vence a las 5:00 p.m. del 5 de octubre de 2026.",
+      "deadline_precision": "exact",
+      "deadline_date_written": true,
+      "source": {
+        "url": "https://www.faae.org.co/colombiabiodiversa/wp-content/uploads/2026/07/BasesBecasColBioII2026.pdf",
+        "source_type": "official_scholarship_page",
+        "publisher": "Fundación Alejandro Ángel Escobar (FAAE) - Fondo de Becas Colombia Biodiversa",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": "Convocatoria II-2026 (official Bases document, 8 pages, published in the site's 2026/07 upload path)",
+        "raw_extract": "BECAS COLOMBIA BIODIVERSA \nCONVOCATORIA II – 2026 \nAbierta desde el 5 de agosto hasta el 5 de octubre \nBASES\n\n4. Procedimiento \n\nPara participar por una de las Becas del Fondo Colombia Biodiversa los estudiantes interesados deben realizar el siguiente procedimiento: \na. Preinscripción:  \n\nConsiste en diligenciar el formulario de preinscripción en línea. Disponible desde las 8.00 a.m. del 5 de agosto y hasta las 5:00 p.m. del 5 de octubre de 2026.\n\nEl plazo máximo para realizar la preinscripción  vence a las 5:00 p.m. del 5 de octubre de 2026. Una vez el estudiante haya terminado de diligenciar el formulario y cargado o subido debidamente los archivos solicitados, recibirá vía correo electrónico un número de preinscripción.",
+        "exact_deadline_wording": "El plazo máximo para realizar la preinscripción  vence a las 5:00 p.m. del 5 de octubre de 2026.",
+        "confidence": "HIGH",
+        "notes": "CLOSING DATE FOUND, contrary to the shard's cached expectation. The record's official_source_url (the FAAE application-instructions page) was fetched first and, as the shard noted, publishes no closing date of its own - but that same official page links the authoritative document for this call: 'Consulte aquí las Bases de la convocatoria II-2026' -> https://www.faae.org.co/colombiabiodiversa/wp-content/uploads/2026/07/BasesBecasColBioII2026.pdf. The Bases were downloaded from the provider's own domain and read directly (text extracted from the PDF, not a search snippet); they state the closing date three separate times: the cover line 'Abierta desde el 5 de agosto hasta el 5 de octubre', the procedure section 'Disponible desde las 8.00 a.m. del 5 de agosto y hasta las 5:00 p.m. del 5 de octubre de 2026', and the explicit 'El plazo máximo para realizar la preinscripción vence a las 5:00 p.m. del 5 de octubre de 2026'. The year is stated as 2026 in the procedure text itself, and the record is Convocatoria II-2026, so the closing date is 2026-10-05 at 17:00 Colombia time (UTC-5). Timeliness note for the integrator: retrieval was 2026-10-05T15:29Z = 10:29 Colombia time, i.e. the call was still open at retrieval but closes the SAME DAY at 17:00 COT - this value will go stale within hours and should be re-verified before any user-facing publication. The page's other date line, 'Convocatoria I - 2026, abierta del 15 de enero al 20 de marzo', describes the PREVIOUS call and was deliberately not used. The preinscripcion form page itself was also checked and is stale (titled 'Convocatoria I-2024'), so it was not relied on."
+      },
+      "field_mapping": {
+        "deadline_date": "2026-10-05",
+        "deadline_precision": "exact",
+        "deadline_display": "El plazo máximo para realizar la preinscripción  vence a las 5:00 p.m. del 5 de octubre de 2026."
+      },
+      "examined": [
+        "https://www.faae.org.co/colombiabiodiversa/instrucciones-para-la-aplicacion",
+        "https://www.faae.org.co/colombiabiodiversa/wp-content/uploads/2026/07/BasesBecasColBioII2026.pdf",
+        "https://www.faae.org.co/colombiabiodiversa/instrucciones-para-la-aplicacion/formulario-de-preinscripcion/"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.faae.org.co/colombiabiodiversa/instrucciones-para-la-aplicacion/formulario-de-preinscripcion/",
+          "reason": "Stale page headed 'Convocatoria I-2024'; carries no deadline for Convocatoria II-2026."
+        },
+        {
+          "url": "https://www.faae.org.co/colombiabiodiversa/instrucciones-para-la-aplicacion/",
+          "reason": "The date line on this page, 'Convocatoria I - 2026, abierta del 15 de enero al 20 de marzo', refers to the PREVIOUS call (Convocatoria I-2026), not to Convocatoria II-2026. Different deadline, therefore not usable evidence for this record."
+        }
+      ]
+    }
+  ]
+}

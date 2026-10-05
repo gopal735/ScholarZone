@@ -1,0 +1,111 @@
+{
+  "shard_id": "DL-037",
+  "topic": "deadline",
+  "hosts": [
+    "nus.edu.sg",
+    "scholarship.ptdf.gov.ng",
+    "www.brandeis.edu",
+    "www.lut.fi",
+    "www.turkiyeburslari.gov.tr",
+    "www.waikato.ac.nz"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 58,
+      "title": "Brandeis University Wien International Scholarship",
+      "official_source": "Brandeis University",
+      "official_source_url": "https://www.brandeis.edu/isso/programs/wien/index.html",
+      "catalogue_url": null,
+      "country": "United States",
+      "deadline_display": "Varies by admission deadline (Early Decision I: November 1; Early Decision II/Regular Decision: January 15)",
+      "deadline_precision": "month",
+      "application_period": "Automatic consideration upon admission application",
+      "verification_status": "active"
+    },
+    {
+      "id": 105,
+      "title": "NUS International Undergraduate Scholarship",
+      "official_source": "National University of Singapore, Office of Admissions",
+      "official_source_url": "https://nus.edu.sg/oam/scholarships/scholarships-for-freshmen-international-students/nus-international-undergraduate-scholarship",
+      "catalogue_url": null,
+      "country": "Singapore",
+      "deadline_display": "The official 'Important Dates and Application' page lists the Application Period for the NUS International Undergraduate Scholarship as \"Based on admissions application timeline.\" The NUS admissions 'Important Dates' page shows the AY2027/2028 application windows as \"16 December 2026 to 4 January 2027 [Closed]\" (NUS High School Diploma), \"16 December 2026 to 3 February 2027 [Closed]\" (Polytechnic Diploma from Singapore), \"16 December 2026 to 17 February 2027 [Closed]\" (IB Diploma) and \"18 February 2027 (Late Afternoon) to 19 March 2027 [Closed]\" (Singapore-Cambridge GCE A-Level), with \"Application Form: CLOSED\".",
+      "deadline_precision": "varies",
+      "application_period": "Considered automatically through the NUS undergraduate admissions application; selection interviews are conducted from January to July and interviewed candidates are informed of scholarship outcomes by mid-July. For AY2027/2028 the NUS admissions application form is currently shown as CLOSED, so the next cycle has not yet opened as at 2026-10-04.",
+      "verification_status": "active"
+    },
+    {
+      "id": 267,
+      "title": "LUT Scholarship and Early Bird Discount (master's studies)",
+      "official_source": "LUT University",
+      "official_source_url": "https://www.lut.fi/en/tuition-fees-and-scholarships",
+      "catalogue_url": "https://www.lut.fi/en/studies/technology/masters-programmes-technology",
+      "country": "Finland",
+      "deadline_display": "No scholarship application deadline exists: the awards are automatic. The early bird discount requires that you 'accept your study place and pay the remaining first-year tuition fee of EUR 10,000 within 21 days of your official admission email'. The LUT scholarship requires 60 ECTS recorded on your Transcript of Records by 31 July. LUT's own homepage states applications to English-language master's programmes are open until 31 March 2027 under rolling admission.",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 407,
+      "title": "Vice-Chancellor's International Excellence Scholarship",
+      "official_source": "University of Waikato",
+      "official_source_url": "https://www.waikato.ac.nz/assets/Uploads/VCIES-2026-all-other-countries-v2.pdf",
+      "catalogue_url": "https://www.waikato.ac.nz/assets/Uploads/VCIES-2026-all-other-countries-v2.pdf",
+      "country": "New Zealand",
+      "deadline_display": "No single closing date: 'This scholarship is for all areas of study and is reviewed monthly. The above closing date does not apply.' Applications must be received by 30 November for A trimester offers of place, 31 May for B trimester, 31 August for C trimester, and 31 October for H or X trimester.",
+      "deadline_precision": "varies",
+      "application_period": "Continuous, with monthly review. Cut-offs by offer of place: 30 November (A trimester), 31 May (B trimester), 31 August (C trimester), 31 October (H or X trimester).",
+      "verification_status": "active"
+    },
+    {
+      "id": 621,
+      "title": "Türkiye Scholarships (Türkiye Bursları) — Government Scholarship Programme of the Presidency of Turks Abroad and Related Communities",
+      "official_source": "Türkiye Scholarships — Presidency of Turks Abroad and Related Communities (YTB), Republic of Türkiye",
+      "official_source_url": "https://www.turkiyeburslari.gov.tr/announcements/turkiye-scholarships-2026-applications-121",
+      "catalogue_url": "https://www.turkiyeburslari.gov.tr/scholarshipsprograms",
+      "country": "Turkey",
+      "deadline_display": "Applications 10 January – 20 February each year (2026 cycle: 10 January – 20 February 2026)",
+      "deadline_precision": "recurring",
+      "application_period": "One annual period, 10 January – 20 February, for all degree levels; Research Scholarships and Success Scholarships run on separate periods",
+      "verification_status": "active"
+    },
+    {
+      "id": 623,
+      "title": "PTDF Overseas Postgraduate Scholarship Scheme (MSc/PhD)",
+      "official_source": "Petroleum Technology Development Fund (PTDF)",
+      "official_source_url": "https://scholarship.ptdf.gov.ng/news/13/2026-overseas-postgraduate-scholarship-scheme-for-universities-in-the-united-kingdom--germany--france--and-malaysia",
+      "catalogue_url": "https://scholarship.ptdf.gov.ng/approved-schools/oss",
+      "country": "Nigeria",
+      "deadline_display": "Six weeks from the date of publication of the call (2026 call closed 27 February 2026)",
+      "deadline_precision": "recurring",
+      "application_period": "2026 cycle: call published 18 January 2026, applications closed 27 February 2026",
+      "verification_status": "active"
+    },
+    {
+      "id": 673,
+      "title": "Petroleum Technology Development Fund (PTDF) In-Country Scholarship Scheme (ISS) 2026/27",
+      "official_source": "Petroleum Technology Development Fund (PTDF), a Federal Government of Nigeria agency",
+      "official_source_url": "https://scholarship.ptdf.gov.ng/guidelines",
+      "catalogue_url": "https://scholarship.ptdf.gov.ng/approved-schools/iss",
+      "country": "Nigeria",
+      "deadline_display": "Friday 5 June 2026 (2026/27 cycle: applications opened Monday 27 April 2026 and closed Friday 5 June 2026, a six-week window)",
+      "deadline_precision": "recurring",
+      "application_period": "27 April 2026 to 5 June 2026 for the 2026/27 cycle. No 2027/28 window is published as of 2026-10-04; PTDF publishes an annual cycle under the same scheme.",
+      "verification_status": "active"
+    },
+    {
+      "id": 692,
+      "title": "Türkiye Scholarships - IsDB Joint Scholarship Program",
+      "official_source": "Presidency for Turks Abroad and Related Communities (YTB)",
+      "official_source_url": "https://www.turkiyeburslari.gov.tr/announcements/ytb-islamic-development-bank-isdb-joint-scholarship-program-2026-applicaiton-period-122",
+      "catalogue_url": "https://www.turkiyeburslari.gov.tr/partneredprograms",
+      "country": "Turkey",
+      "deadline_display": "20 February",
+      "deadline_precision": "recurring",
+      "application_period": "The 2026 application period ran 10 January to 20 February 2026. Türkiye Scholarships publishes a General Application Period of 10 January to 20 February in its Application Calendar, so the next window falls in January and February 2027.",
+      "verification_status": "active"
+    }
+  ]
+}

@@ -1,0 +1,234 @@
+{
+  "shard_id": "LG-002",
+  "agent_completed": true,
+  "topic": "logo",
+  "records": [
+    {
+      "scholarship_id": 503,
+      "title": "France 2030 - PEPR GFM \"Grands Fonds Marins\" - Appel à projets - 2026",
+      "outcome": "recovered",
+      "image_url": "https://anr.fr/typo3conf/ext/anr_skin/Resources/Public/assets/img/anr-logo-2021-complet.png",
+      "image_source_url": "https://anr.fr/fr/contact/charte-graphique-et-logo/",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Agence nationale de la recherche (ANR) is the record's named official_source and the publisher of the scholarship page. The asset is ANR's institutional logo (2021 'complet' version, i.e. logotype with signature) declared on ANR's own official brand page 'Charte graphique et logo' as that page's og:image, and used as the header institutional logo on every anr.fr page. Direct GET returned HTTP 200, Content-Type image/png, 18350 bytes; a 3x retina variant anr-logo-2021@3x.png (HTTP 200, image/png, 34915 bytes) also exists. The official brand page states the principal logo is published at 1939x497 px, so this is not a low-resolution badge. Co-pilot institutions (CNRS, Ifremer, IRD) named in the record are research partners, not the awarding provider, so the provider logo is the correct identity."
+      },
+      "source": {
+        "url": "https://anr.fr/fr/contact/charte-graphique-et-logo/",
+        "publisher": "Agence nationale de la recherche (ANR)",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "raw_extract": "<meta property=\"og:image\" content=\"https://anr.fr/typo3conf/ext/anr_skin/Resources/Public/assets/img/anr-logo-2021-complet.png\">  ...  <p>Le logo ANR se décline en trois versions (de gauche à droite) : </p><ul><li>Le logo principal pour un usage institutionnel ;</li><li>Le logo sigle seul pour un usage relatif aux projets financés et avec les partenaires ;</li><li>Le logo avec la signature pour un usage par l'ANR.</li></ul>  ...  <p><a href=\"/fileadmin/documents/2022/ANR-logo-2021.zip\" title=\"Télécharger ce document\" target=\"_blank\" class=\"icon-download\">Téléchargez le logo ANR (Un fichier zip pour) :</a> </p><ul><li>Logo ANR principal couleur.jpg (avec fond blanc) aux dimensions 1939x497 px</li>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://anr.fr/fr/france-2030/france2030/call/france-2030-pepr-gfm-grands-fonds-marins-appel-a-projets-2026 (HTTP 200; scholarship page itself - carries only the ANR institutional logo, no PEPR GFM programme mark)",
+        "https://anr.fr/fileadmin/documents/2021/ANR-logo-couleurs.png (HTTP 200, image/png, 24333 bytes - official but a composite plate of all logo variants, not a single logo)",
+        "https://anr.fr/fileadmin/documents/2022/ANR-logo-2021.zip (official downloadable brand bundle; could not be retrieved - TLS transport EOF from this host)"
+      ],
+      "rejected": [
+        {
+          "url": "https://anr.fr/fileadmin/images/logos/france-2030-150x150.jpg",
+          "reason": "low-resolution 150x150 badge of the France 2030 national programme, not the provider brand mark for this ANR-issued call"
+        },
+        {
+          "url": "https://anr.fr/typo3conf/ext/anr_skin/Resources/Public/img/france-2030-actu.png",
+          "reason": "100x98 news-icon used as a news-list bullet, favicon-sized badge"
+        },
+        {
+          "url": "https://anr.fr/fileadmin/images/logos/logo-bluesky-128-trans.png",
+          "reason": "third-party social platform avatar"
+        },
+        {
+          "url": "https://anr.fr/fileadmin/images/logos/afnor.png",
+          "reason": "unrelated certification body logo"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 504,
+      "title": "France 2030 - PEPR PROPSY – \"Psychiatrie de précision\" - Appel à projets - 2026",
+      "outcome": "recovered",
+      "image_url": "https://anr.fr/typo3conf/ext/anr_skin/Resources/Public/assets/img/anr-logo-2021-complet.png",
+      "image_source_url": "https://anr.fr/fr/contact/charte-graphique-et-logo/",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Record's official_source is the ANR, which publishes this call on anr.fr. ANR's official brand page 'Charte graphique et logo' declares this exact asset as its og:image and documents it as 'Le logo principal pour un usage institutionnel'. Direct GET returned HTTP 200, image/png, 18350 bytes. Inserm, CNRS and Fondation FondaMental pilot the PEPR PROPSY programme but the call for proposals is issued by the ANR, so the ANR logo is the correct provider identity."
+      },
+      "source": {
+        "url": "https://anr.fr/fr/contact/charte-graphique-et-logo/",
+        "publisher": "Agence nationale de la recherche (ANR)",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "raw_extract": "<meta property=\"og:image\" content=\"https://anr.fr/typo3conf/ext/anr_skin/Resources/Public/assets/img/anr-logo-2021-complet.png\">  ...  <p>Le logo ANR se décline en trois versions (de gauche à droite) : </p><ul><li>Le logo principal pour un usage institutionnel ;</li><li>Le logo sigle seul pour un usage relatif aux projets financés et avec les partenaires ;</li><li>Le logo avec la signature pour un usage par l'ANR.</li></ul>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://anr.fr/fr/france-2030/france2030/call/france-2030-pepr-propsy-psychiatrie-de-precision-appel-a-projets-2026 (HTTP 200, page title 'France 2030 - PEPR PROPSY – \"Psychiatrie de précision\" - Appel à projets - 2026 | ANR'; confirmed ANR logo present, no dedicated PEPR PROPSY mark)"
+      ],
+      "rejected": [
+        {
+          "url": "https://anr.fr/fileadmin/images/logos/france-2030-150x150.jpg",
+          "reason": "low-resolution 150x150 France 2030 programme badge, not the provider brand mark"
+        },
+        {
+          "url": "https://anr.fr/typo3conf/ext/anr_skin/Resources/Public/img/france-2030-actu.png",
+          "reason": "100x98 news-list bullet icon, favicon-sized badge"
+        },
+        {
+          "url": "https://anr.fr/fileadmin/images/logos/linkedin-128.png",
+          "reason": "third-party social platform avatar"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 505,
+      "title": "Appel à projets M-ERA.NET 2026/27 - Science et ingénierie des matériaux pour l'innovation en Europe (édition 2027 pour l'ANR)",
+      "outcome": "recovered",
+      "image_url": "https://anr.fr/typo3conf/ext/anr_skin/Resources/Public/assets/img/anr-logo-2021-complet.png",
+      "image_source_url": "https://anr.fr/fr/contact/charte-graphique-et-logo/",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Record's official_source is 'Agence nationale de la recherche (ANR), pour le compte du consortium M-ERA.NET', and the record's official_source_url is the anr.fr call page. The ANR is therefore the awarding/issuing provider for the French edition, so ANR's institutional logo is the provable official mark. Direct GET returned HTTP 200, image/png, 18350 bytes, and the asset is declared as the og:image of ANR's own official brand page 'Charte graphique et logo'."
+      },
+      "source": {
+        "url": "https://anr.fr/fr/contact/charte-graphique-et-logo/",
+        "publisher": "Agence nationale de la recherche (ANR)",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "raw_extract": "<meta property=\"og:image\" content=\"https://anr.fr/typo3conf/ext/anr_skin/Resources/Public/assets/img/anr-logo-2021-complet.png\">  ...  <p>Le logo ANR se décline en trois versions (de gauche à droite) : </p><ul><li>Le logo principal pour un usage institutionnel ;</li><li>Le logo sigle seul pour un usage relatif aux projets financés et avec les partenaires ;</li><li>Le logo avec la signature pour un usage par l'ANR.</li></ul>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe (HTTP 200, page title 'Appel à projets M-ERA.NET 2026/27 - Science et ingénierie des matériaux pour l’innovation en Europe | ANR'; confirmed ANR logo present)"
+      ],
+      "rejected": [
+        {
+          "url": "https://anr.fr/fileadmin/images/logos/youtube-128.png",
+          "reason": "third-party social platform avatar"
+        },
+        {
+          "url": "https://anr.fr/fileadmin/documents/2021/ANR-logo-couleurs.png",
+          "reason": "official but composite plate of three logo variants rather than a single logo asset"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 548,
+      "title": "AAPG - Appel à projets générique 2027 (ANR Generic Call for Proposals 2027)",
+      "outcome": "recovered",
+      "image_url": "https://anr.fr/typo3conf/ext/anr_skin/Resources/Public/assets/img/anr-logo-2021-complet.png",
+      "image_source_url": "https://anr.fr/fr/contact/charte-graphique-et-logo/",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "The ANR Generic Call (AAPG) is issued by the ANR itself, so identity match is unambiguous. The asset is ANR's official institutional logo, declared as the og:image of ANR's official brand page 'Charte graphique et logo' and used as the header logo site-wide. Direct GET returned HTTP 200, image/png, 18350 bytes."
+      },
+      "source": {
+        "url": "https://anr.fr/fr/contact/charte-graphique-et-logo/",
+        "publisher": "Agence nationale de la recherche (ANR)",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "raw_extract": "<meta property=\"og:image\" content=\"https://anr.fr/typo3conf/ext/anr_skin/Resources/Public/assets/img/anr-logo-2021-complet.png\">  ...  <p>Le logo ANR se décline en trois versions (de gauche à droite) : </p><ul><li>Le logo principal pour un usage institutionnel ;</li><li>Le logo sigle seul pour un usage relatif aux projets financés et avec les partenaires ;</li><li>Le logo avec la signature pour un usage par l'ANR.</li></ul>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://anr.fr/fr/detail/call/aapg-appel-a-projets-generique-2027 (HTTP 200, page title 'AAPG - Appel à projets générique 2027 | ANR'; confirmed ANR logo present)"
+      ],
+      "rejected": [
+        {
+          "url": "https://anr.fr/typo3conf/ext/anr_skin/Resources/Public/assets/img/anr-logo-mobile-2021-small.png",
+          "reason": "small responsive header variant of the same mark, not the full institutional logo"
+        },
+        {
+          "url": "https://anr.fr/typo3conf/ext/anr_skin/Resources/Public/assets/img/RF-logo.svg",
+          "reason": "French Republic state mark, not the agency identity for this record"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 712,
+      "title": "ILSC Humanitarian Scholarship",
+      "outcome": "recovered",
+      "image_url": "https://www.ilsc.com/hubfs/Language%20School-Color-Logo-Horizontal.svg",
+      "image_source_url": "https://www.ilsc.com/humanitarian-scholarship",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "The record's official_source is 'ILSC Language Schools' and the scholarship page is on the official domain www.ilsc.com. The asset is that page's own primary site logo, marked <img id=\"main-logo\"> with alt text 'ILSC Language Schools and Greystone College', and the same file is reused in the ILSC Language Schools brand card further down the page. Direct GET returned HTTP 200, Content-Type image/svg+xml, 9309 bytes. Confidence is MEDIUM rather than HIGH because the wordmark is a dual lockup 'ILSC Language Schools and Greystone College' (ILSC is a Greystone College School of Languages) rather than an ILSC-only mark; there is no official ILSC-only logo asset discoverable on ilsc.com. Vector SVG is a legitimate brand asset and not a favicon-sized badge."
+      },
+      "source": {
+        "url": "https://www.ilsc.com/humanitarian-scholarship",
+        "publisher": "ILSC Education Group",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "raw_extract": "<a class=\"navbar-brand\" href=\"https://www.ilsc.com\"><img id=\"main-logo\" src=\"https://www.ilsc.com/hubfs/Language%20School-Color-Logo-Horizontal.svg\" alt=\"ILSC Language Schools and Greystone College\"></a>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.ilsc.com/hubfs/template-resources/images/internal/background/img_ls_selector.png (HTTP 200, image/png, 19853 bytes - same horizontal colour wordmark as raster, but served as an internal template background graphic for a campus selector widget)",
+        "https://www.ilsc.com/hubfs/Logos/ILSC_Education-Group_Vertical_Logo_White.png (HTTP 200, image/png, 57100 bytes - footer lockup, white-on-white variant)"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.ilsc.com/hubfs/favicon_0.ico",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://www.ilsc.com/hubfs/Website/Other/Humanitarian%20Scholarship/ilsc-humanitarian-scholarship-HERO-islamic-woman-sitting-using-laptop.jpg",
+          "reason": "decorative hero photograph used as the page og:image, not a logo"
+        },
+        {
+          "url": "https://www.ilsc.com/hubfs/Website/Other/Humanitarian%20Scholarship/Duolingo%20logo.svg",
+          "reason": "third-party partner logo, wrong identity"
+        },
+        {
+          "url": "https://www.ilsc.com/hubfs/Greystone%20College-One%20Color-Logo-Horizontal.svg",
+          "reason": "sister-brand logo (Greystone College), wrong identity for an ILSC Language Schools record"
+        },
+        {
+          "url": "https://www.ilsc.com/hs-fs/hubfs/Logos/ELS_Educational%20Services_Logo_Orange_high%20res.png",
+          "reason": "partner company logo (ELS), wrong identity"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,286 @@
+{
+  "shard_id": "DL-060",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 138,
+      "title": "Bicocca International Scholarship Programme (BISP) — Università degli Studi di Milano-Bicocca",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "No separate application is required: all applicants to eligible programmes are automatically considered for the scholarship.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://apply.unimib.it/en_GB/news/new/38-scholarship-programs",
+        "source_type": "official_application_portal",
+        "publisher": "University of Milano-Bicocca (apply.unimib.it)",
+        "retrieved_at": "2026-10-05T15:41:00Z",
+        "as_of": "page dated \"15 Sept 2026\"",
+        "raw_extract": "The scholarship is awarded to the top student for each **Bachelor's** and **Master's degree programme taught in English**, including single-cycle degree programmes. No separate application is required: all applicants to eligible programmes are automatically considered for the scholarship.\n\nThe scholarship amounts to **€10,000 per year (gross)**, plus an exemption from tuition fees.\n\nFor more information, visit the official page **[here](https://en.unimib.it/study/information-international-students/bicocca-international-scholarship)**.",
+        "exact_deadline_wording": null,
+        "confidence": "HIGH",
+        "notes": "Confidence HIGH applies to the UNKNOWN determination, i.e. high confidence that no scholarship deadline could be established. The only official portal page I could fetch for BISP publishes no deadline at all — it says the award is automatic and then defers to the en.unimib.it scholarship page, which is the page that would carry any deadline. That page is unreachable from this client: https://en.unimib.it/study/information-international-students/bicocca-international-scholarship returns HTTP 403. BISP deadlines track each individual degree programme's own admission call, and brief section 5 forbids substituting a generic admissions deadline for a different programme, so no date was written. Search-engine snippets for this page were deliberately NOT used as evidence (brief section 5)."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "No separate application is required: all applicants to eligible programmes are automatically considered for the scholarship."
+      },
+      "notes": "No official deadline could be read. The record's own official_source_url returns HTTP 403 and so does every variant on en.unimib.it and www.unimib.it, and the official BISP call PDF on en.unimib.it times out twice. apply.unimib.it loads and carries a BISP description but no deadline. Writing UNKNOWN rather than importing a degree-programme admission deadline.",
+      "examined": [
+        "https://en.unimib.it/study/fees-and-scholarships/bisp-bicocca-international-scholarship-programme — HTTP 403 (record's official_source_url); also retried with a real browser engine (Playwright/Chromium) and still HTTP 403",
+        "https://www.unimib.it/study/fees-and-scholarships/bisp-bicocca-international-scholarship-programme — HTTP 403",
+        "https://en.unimib.it/study/information-international-students/bicocca-international-scholarship — HTTP 403 (current official BISP page, linked from apply.unimib.it); retried with a real browser engine (Playwright/Chromium, isolated page) and still HTTP 403 with an empty body, so the block is not user-agent based",
+        "https://en.unimib.it/sites/sten/files/2026-01/Bando%20BISP%202026_2027.pdf — request timed out (twice)",
+        "https://apply.unimib.it/ — fetched, BISP not dated here",
+        "https://apply.unimib.it/call-for-applications — request timed out",
+        "https://apply.unimib.it/en_GB/news/new/38-scholarship-programs — fetched, BISP described but no deadline published"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.european-funding-guide.eu/scholarship/bicocca-international-scholarship-programme",
+          "reason": "third-party scholarship aggregator/listing site, not an official provider domain"
+        },
+        {
+          "url": "https://www.unimib.it/sites/default/files/2026-07/BISP%2026-27_rankings_second%20session%20%28close%20access%20and%20open%20access%29.docx.pdf",
+          "reason": "ranking decree document; not fetched and not a deadline source"
+        },
+        {
+          "url": "https://apply.unimib.it/en_GB/news/new/39-apply-202627-admission-calls-and-deadlines",
+          "reason": "degree-programme admission deadlines, i.e. a generic admissions deadline for a different process - prohibited by brief section 5 as a scholarship deadline"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 202,
+      "title": "RMIT Future Leaders Scholarship",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "No scholarship application is required",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://www.rmit.edu.au/scholarships/international-scholarships/future-leaders-scholarship",
+        "source_type": "official_scholarship_page",
+        "publisher": "RMIT University",
+        "retrieved_at": "2026-10-05T15:35:00Z",
+        "as_of": "eligibility stated for \"offer letter to commence from 2026 intakes onwards\"; page footer \"Copyright © 2026 RMIT University\"",
+        "raw_extract": "### No scholarship application is required\n\n### Apply to study at RMIT\n\nFollow our step-by-step guide on how to apply to RMIT as an international student.\n\nIf you are successful, you will receive an offer letter with the scholarship details outlined.\n\n[from Eligibility]  have an offer letter to commence from 2026 intakes onwards in one of the following programs at RMIT:  \n    -   Bachelor degree\n    -   Masters by Coursework",
+        "exact_deadline_wording": "No scholarship application is required",
+        "confidence": "MEDIUM",
+        "notes": "Transparency on the label: RMIT never uses the words \"rolling\" or \"no deadline\" anywhere on this page, so ROLLING is not a verbatim classification. It rests on three things read on the provider's own scholarship page: (1) the verbatim \"No scholarship application is required\"; (2) the award is applied automatically to tuition fees via the offer letter rather than an application with a window; (3) eligibility is open-ended - \"have an offer letter to commence from 2026 intakes onwards\" - with no closing date published. I also fetched the International Scholarships Terms and Conditions page RMIT links from the Future Leaders terms, and it contains no application-deadline statement either (its only date language is \"if the scholarship is not accepted within the specified date on the scholarship letter\", which concerns accepting an offer, not applying). No calendar date is written, per brief section 6. A reviewer who requires the explicit word \"rolling\" should downgrade this to UNKNOWN."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "rolling",
+        "deadline_display": "No scholarship application is required"
+      },
+      "notes": "No date written. RMIT publishes no closing date and there is no scholarship application step to close.",
+      "examined": [
+        "https://www.rmit.edu.au/scholarships/international-scholarships — fetched (record's official_source_url); generic index of ~200 scholarships, nothing Future-Leaders-specific, no deadline",
+        "https://www.rmit.edu.au/scholarships/international-scholarships/future-leaders-scholarship — fetched, this is the source used",
+        "https://www.rmit.edu.au/scholarships/international-scholarships/international-scholarships-terms-and-conditions — fetched; no application deadline stated"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.rmit.edu.au/study-with-us/applying-to-rmit/local-student-applications/application-dates",
+          "reason": "RMIT intake/key-dates page for course applications - a generic admissions deadline for a different process, prohibited by brief section 5 as a scholarship deadline"
+        },
+        {
+          "url": "https://www.rmit.edu.au/study-with-us/international-students/intakes-in-australia-for-international-students",
+          "reason": "intake dates, not a Future Leaders Scholarship deadline"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 299,
+      "title": "2026 Call for PhD Studentships – Regular Line of Application (FCT)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "The Call is open from March 2nd to 5:00 pm (Lisbon time) March 31st, 2026.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.fct.pt/en/concursos/concurso-bolas-de-doutoramento-2026-linha-de-candidatura-geral",
+        "source_type": "official_scholarship_page",
+        "publisher": "Fundação para a Ciência e a Tecnologia (FCT)",
+        "retrieved_at": "2026-10-05T15:33:00Z",
+        "as_of": "2026 Call; page footer \"Atualizado em 31 Julho 2026\" (updated 31 July 2026)",
+        "raw_extract": "The Call is open from **March 2nd to 5:00 pm (Lisbon time) March 31st, 2026**.\n\n-   **February 25th 2026**  \n    Announcement of the call\n-   **02 march 2026 (12h)**  \n    Opening of applications\n-   **31 march 2026 (17h)**  \n    Closing of applications\n-   **July 31st, 2026**  \n    Preliminary results\n-   **beginning of November 2026**  \n    Final results\n\nThe requirements applied by FCT in this call have remained the same for several years, as have, in general, the usual timing of the call, which takes place each year in March or, occasionally, between March and April.",
+        "exact_deadline_wording": "The Call is open from March 2nd to 5:00 pm (Lisbon time) March 31st, 2026.",
+        "confidence": "HIGH",
+        "notes": "FCT states an explicit calendar deadline of 2026-03-31 (17:00 Lisbon). That date is in the past as of retrieval on 2026-10-05, while the record is verification_status=active (open/upcoming), so per brief section 6 this is expired_mismatch: the stale date is deliberately NOT written and was NOT silently moved to 2027. FCT's own Expected Calls tab was fetched and shows \"There are currently no Calls.\", so no 2027 dates are published anywhere as of 2026-10-05. deadline_semantics is recorded as EXACT because that is genuinely the source's precision; deadline_date is null solely because the value is expired. The call itself has not fully concluded - FCT states final results are expected \"beginning of November 2026\" - but the application window is definitively shut. FCT's remark that the call \"takes place each year in March\" is recurring-timer context only and is not used to derive any date."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "The Call is open from March 2nd to 5:00 pm (Lisbon time) March 31st, 2026."
+      },
+      "notes": "Official deadline 2026-03-31 confirmed verbatim but expired. Not written. Not rolled to 2027. The record's cached deadline_precision of \"recurring\" was not relied on; this finding comes from a live fetch.",
+      "examined": [
+        "https://www.fct.pt/en/concursos?tab=scheduled&paged=1 — fetched; FCT \"Expected Calls\" tab returns \"There are currently no Calls.\", confirming no published 2027 call dates",
+        "https://myfct.fct.pt — application portal, not fetched, no date published there beyond the call page"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.fct.pt/en/wp-content/uploads/2026/03/CalendarioConcursosFCT_2026.pdf",
+          "reason": "FCT 2026 competitions calendar; not fetched and not needed - the live call page already carries the deadline verbatim"
+        },
+        {
+          "url": "https://scholarshiproar.com/danish-government-scholarship-sdu/",
+          "reason": "third-party scholarship aggregator - not relevant to this record and not an official source"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 329,
+      "title": "Danish Government Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "The scholarships are administered by the Danish universities, who each select the students, who are awarded with a scholarship.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://studyindenmark.dk/study-options/scholarships",
+        "source_type": "official_government_page",
+        "publisher": "Study in Denmark (studyindenmark.dk), managed by the Danish Ministry of Science, Higher Education and Digital Affairs",
+        "retrieved_at": "2026-10-05T15:37:00Z",
+        "as_of": "no cycle or date stated on the page",
+        "raw_extract": "Danish universities receive a limited number of government scholarships each year to fund highly qualified full-degree students from non-EU/EEA countries and Switzerland.\n\nThe scholarships are administered by the Danish universities, who each select the students, who are awarded with a scholarship.\n\nFor further information about the government scholarship, please consult the admission details of the higher education institution of your choice.",
+        "exact_deadline_wording": null,
+        "confidence": "HIGH",
+        "notes": "Confidence HIGH applies to the UNKNOWN determination. Two independent reasons no deadline could be written. First, the record's own official_source_url, studies.ku.dk/education/student-life/finances-and-scholarships/scholarships-for-international-students, returns HTTP 404 - it is dead. Second, and more fundamentally, a university admissions page is not an official source for a Danish government award under brief section 4, so the hierarchy required going to the government domain. The national government page publishes no application deadline and explicitly hands the timing to each individual institution: \"The scholarships are administered by the Danish universities, who each select the students\" and \"please consult the admission details of the higher education institution of your choice.\" I could therefore find no single official date, and per brief section 5 another university's deadline, or the national Optagelse.dk admissions deadline, may not be borrowed. Semantics recorded as UNKNOWN rather than ANNUAL because although the page says awards are made \"each year\", it states no annual timing window and no date - a \"recurring\" precision would imply a national annual schedule that does not exist."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "The scholarships are administered by the Danish universities, who each select the students, who are awarded with a scholarship."
+      },
+      "notes": "No national deadline exists to record. Timing is institution-specific by design. A per-institution deadline could only be recovered by a record whose official_source is that specific university.",
+      "examined": [
+        "https://studies.ku.dk/education/student-life/finances-and-scholarships/scholarships-for-international-students — HTTP 404 (record's official_source_url, dead link)",
+        "https://studyindenmark.dk/scholarships/danish-government-scholarship — HTTP 404 (guessed deep link)",
+        "https://studyindenmark.dk/study-options/scholarships — fetched, this is the source used"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://studyindenmark.dk/study-options/how-to-apply",
+          "reason": "generic Optagelse.dk university admission deadlines (15 March / 5 July, 12 noon CET) - a generic admissions deadline for a different process, prohibited by brief section 5"
+        },
+        {
+          "url": "https://guides.scholarshipunion.com/denmark-scholarship/deadline.html",
+          "reason": "third-party scholarship aggregator; also this is precisely the kind of another-institution deadline the brief forbids"
+        },
+        {
+          "url": "https://scholarshiproar.com/danish-government-scholarship-sdu/",
+          "reason": "third-party aggregator asserting invented-looking deadlines (01 Feb 2027 / 15 Mar 2027); not official and explicitly not used"
+        },
+        {
+          "url": "https://student.dtu.dk/en/help-and-guidance/scholarships-travel-funds/-application-deadlines",
+          "reason": "another university's scholarship deadlines - prohibited by brief section 5"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 362,
+      "title": "Government of Ireland Postgraduate Scholarship Programme",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "23rd October 2025, 16:00 Irish local time",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.researchireland.ie/funding/government-ireland-postgraduate",
+        "source_type": "official_scholarship_page",
+        "publisher": "Research Ireland",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": "2026 Call; page status \"Closed\", window shown as \"11 Sept 2025 / 20 Feb 2026\"",
+        "raw_extract": "Closed\n\n11 Sept 2025 / 20 Feb 2026\n\nDeadline\n\n### 23rd October 2025\n\n23rd October 2025, 16:00 Irish local time\n\nAchieved\n\nApplicant deadline",
+        "exact_deadline_wording": "23rd October 2025, 16:00 Irish local time",
+        "confidence": "HIGH",
+        "notes": "The live official programme page states status \"Closed\" and every milestone in the 2026 Important Dates table is tagged \"Achieved\", including the Applicant deadline of 23rd October 2025, 16:00 Irish local time. That is roughly 11.5 months before retrieval on 2026-10-05, while the record is verification_status=active (open/upcoming). Per brief section 6 this is expired_mismatch: the stale date is deliberately NOT written and was NOT silently moved to October 2026. As of 2026-10-05 the page publishes only the 2026 call and no 2027 call dates, so there is no upcoming official date to record either. deadline_semantics is EXACT because that is the source's real precision; deadline_date is null solely because the value is expired. The catalogue_url 2026 call document was not needed - the programme page itself carries the deadline verbatim."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "23rd October 2025, 16:00 Irish local time"
+      },
+      "notes": "Official deadline 2025-10-23 confirmed verbatim but expired; call is Closed and all milestones Achieved. Not written, not rolled forward. No 2027 call date is published as of 2026-10-05.",
+      "examined": [
+        "https://www.researchireland.ie/funding/government-ireland-postgraduate — fetched, this is the source used"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://media.researchireland.ie/wp-content/uploads/2026/02/Government-of-Ireland-Postgraduate-Scholarship-2026_Call-Document.pdf",
+          "reason": "record's catalogue_url; the 2026 call document, not fetched because the live programme page already carries the deadline verbatim and the call is closed"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 367,
+      "title": "Government of Ireland Postdoctoral Fellowship Programme",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "23rd October 2025, 16:00 Irish local time",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.researchireland.ie/funding/government-ireland-postdoctoral",
+        "source_type": "official_scholarship_page",
+        "publisher": "Research Ireland",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "as_of": "2026 CALL; page status \"Closed\", window shown as \"11 Sept 2025 / 20 Feb 2026\"",
+        "raw_extract": "Closed\n\n11 Sept 2025 / 20 Feb 2026\n\nDeadline\n\n### 23rd October 2025\n\n23rd October 2025, 16:00 Irish local time\n\nAchieved\n\nApplicant deadline",
+        "exact_deadline_wording": "23rd October 2025, 16:00 Irish local time",
+        "confidence": "HIGH",
+        "notes": "Same situation as the Postgraduate Scholarship Programme, verified independently on its own live official page rather than carried across from the sibling record. The page states status \"Closed\", header \"2026 CALL\", and every milestone in Important Dates is tagged \"Achieved\", including \"23rd October 2025, 16:00 Irish local time / Achieved / Applicant deadline\". The Applicant deadline and the page-level Deadline badge are the same date on this page, so there is no internal conflict to report. That date is well in the past as of retrieval on 2026-10-05 while the record is verification_status=active (open/upcoming), so per brief section 6 this is expired_mismatch: the stale date is NOT written and was NOT moved to 2026. No 2027 call dates are published on the page as of 2026-10-05. Award start date shown is \"1st September 2026 / Achieved\"."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "23rd October 2025, 16:00 Irish local time"
+      },
+      "notes": "Official deadline 2025-10-23 confirmed verbatim but expired; call is Closed and all milestones Achieved. Not written, not rolled forward. No 2027 call date is published as of 2026-10-05.",
+      "examined": [
+        "https://www.researchireland.ie/funding/government-ireland-postdoctoral — fetched, this is the source used"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://media.researchireland.ie/wp-content/uploads/2026/02/Government-of-Ireland-Postdoctoral-Fellowship-2026_Call-Document_FINAL.pdf",
+          "reason": "record's catalogue_url; the 2026 call document, not fetched because the live programme page already carries the deadline verbatim and the call is closed"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 536,
+      "title": "Rufford Small Grants Programme",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "There are no deadlines – you can apply at any time of year.",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://apply.ruffordsmallgrants.org/help/criteria",
+        "source_type": "official_scholarship_page",
+        "publisher": "The Rufford Foundation",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": "page footer \"© 2026 The Rufford Foundation\"; no cycle stated",
+        "raw_extract": "There are no deadlines – you can apply at any time of year. You can only make one funding application in any 12-month period. If your application is rejected, you must wait 12 months before you can reapply. If you are funded, you cannot apply for further support for at least 12 months.",
+        "exact_deadline_wording": "There are no deadlines – you can apply at any time of year.",
+        "confidence": "HIGH",
+        "notes": "The cleanest ROLLING in the shard: the provider states in its own words that there are no deadlines and that applications can be made at any time of year. Confirmed independently on a second official Foundation page, the FAQ, which answers the question \"What are the deadlines?\" with \"There are no deadlines, you can apply at any time of year.\" No calendar date is written, per brief section 6. The record's cached deadline_precision of \"varies\" is not what the source says; rolling is. The one-app-per-12-months rule is a per-applicant eligibility limit, not a deadline, and is deliberately not converted into a date."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "rolling",
+        "deadline_display": "There are no deadlines – you can apply at any time of year."
+      },
+      "notes": "No date written. Two independent official Rufford Foundation pages state there are no deadlines.",
+      "examined": [
+        "https://apply.ruffordsmallgrants.org/help/faqs — fetched; corroborates verbatim: \"What are the deadlines? There are no deadlines, you can apply at any time of year.\"",
+        "https://apply.ruffordsmallgrants.org/help/criteria — fetched, this is the source used"
+      ],
+      "rejected_sources": []
+    }
+  ]
+}

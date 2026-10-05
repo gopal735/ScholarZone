@@ -1,0 +1,111 @@
+{
+  "shard_id": "DL-036",
+  "topic": "deadline",
+  "hosts": [
+    "investyourtalentapplication.esteri.it",
+    "nu.edu.kz",
+    "www.bme.hu",
+    "www.lse.ac.uk",
+    "www.tuni.fi",
+    "www.wa.gov.au"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 74,
+      "title": "LSE Excellence Scholarship",
+      "official_source": "London School of Economics and Political Science",
+      "official_source_url": "https://www.lse.ac.uk/study-at-lse/graduate/fees-and-funding/lse-masters-awards",
+      "catalogue_url": "https://www.lse.ac.uk/study-at-lse/global-programmes",
+      "country": "United Kingdom",
+      "deadline_display": "No fixed deadline is published for the LSE Excellence Scholarship; awards are made on a rolling basis during the application cycle until all awards are allocated",
+      "deadline_precision": "recurring",
+      "application_period": "The published cycle covers students joining LSE in 2026 and awards were made on a rolling basis until all awards were allocated. LSE has not published a date for the following cycle as of 2026-10-04.",
+      "verification_status": "active"
+    },
+    {
+      "id": 133,
+      "title": "Invest Your Talent in Italy (IYT)",
+      "official_source": "Ministry of Foreign Affairs (MAECI), ICE Agency, Uni-Italia",
+      "official_source_url": "https://investyourtalentapplication.esteri.it/SITOIYT/EN/current-call",
+      "catalogue_url": null,
+      "country": "Italy",
+      "deadline_display": "20 April 2026 – 11 May 2026 (18:00 Italian time)",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 206,
+      "title": "Western Australian Premier's University Scholarship",
+      "official_source": "Western Australian Government",
+      "official_source_url": "https://www.wa.gov.au/service/education-and-training/education-and-training-careers/western-australian-premiers-university-scholarship",
+      "catalogue_url": "https://www.wa.gov.au/organisation/department-of-energy-and-economic-diversification/international-education-western-australian-premiers-university-scholarship-program",
+      "country": "Australia",
+      "deadline_display": "Applications for Semester 2, 2026 closed at 3:00 PM (AWST) on Friday, 29 May 2026. The Department asks applicants to \"check back soon for updates on when applications for Semester 1, 2027 will open\"; no Semester 1, 2027 dates are published yet.",
+      "deadline_precision": "recurring",
+      "application_period": "Semester-based rounds. Round 7 (Semester 2, 2026 enrolments) ran 9:00am 3 March to 3:00pm 29 May 2026; Round 8 for Semester 1, 2027 enrolments is not yet open.",
+      "verification_status": "active"
+    },
+    {
+      "id": 265,
+      "title": "Tampere University Tuition Fee Scholarship",
+      "official_source": "Tampere University",
+      "official_source_url": "https://www.tuni.fi/en/students-guide/handbook/uni/services-and-regulations-students/study-regulations/scholarships-fee-paying-students-admitted-in-2021-or-later",
+      "catalogue_url": "https://www.tuni.fi/en/tau/masters-programmes",
+      "country": "Finland",
+      "deadline_display": "\"To be considered for Tampere University Scholarships, you must apply for the scholarship as part of your application for admission during the application period for admission.\" No calendar deadline is published on this page; the deadline is the university's admission application period.",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 288,
+      "title": "Budapest University of Technology and Economics (BME) Scholarships",
+      "official_source": "Budapest University of Technology and Economics",
+      "official_source_url": "https://www.bme.hu/en/scholarships",
+      "catalogue_url": "https://xplore.bme.hu/available-programmes/",
+      "country": "Hungary",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 336,
+      "title": "Tampere University tuition fee scholarship (50%) and early bird offer",
+      "official_source": "Tampere University",
+      "official_source_url": "https://www.tuni.fi/en/tau/financial-matters/tuition-fees-and-scholarships",
+      "catalogue_url": "https://www.tuni.fi/en/tau/bachelors-programmes",
+      "country": "Finland",
+      "deadline_display": "\"To be considered for Tampere University Scholarships, you must apply for the scholarship as part of your application for admission during the application period for admission. You will apply for Tampere University Scholarships with the same online application you use to apply for admission at Studyinfo.fi.\" The early bird offer requires accepting the study place and paying the reduced first-year tuition \"within three weeks (21 days) after receiving information on admission.\"",
+      "deadline_precision": "recurring",
+      "application_period": "Scholarships at admission 2027; applied for within the admission application",
+      "verification_status": "active"
+    },
+    {
+      "id": 570,
+      "title": "Invest Your Talent in Italy (IYT) — MAECI / ICE / Uni-Italia scholarship programme",
+      "official_source": "Ministero degli Affari Esteri e della Cooperazione Internazionale (MAECI) — Directorate General for Growth and Export Promotion, with ICE and Uni-Italia",
+      "official_source_url": "https://investyourtalentapplication.esteri.it/SitoIYT/EN/current-call",
+      "catalogue_url": null,
+      "country": "Italy",
+      "deadline_display": "The 11th edition (academic year 2026-2027) call was open from 20 April 2026 and closed at 6:00pm Italian time on 11 May 2026. The official programme site announces that the new call opens in 2027 (the 12th edition).",
+      "deadline_precision": "year",
+      "application_period": "The 11th edition ran 20 April 2026 to 11 May 2026 at 6:00pm Italian time and is closed, with 1634 applications received, 982 eligible and 211 scholarships awarded. The official site carries the banner 'NEW APPLICATION OPENS 2027!' / 'IL NUOVO BANDO APRE NEL 2027!', so the next edition is announced but no opening date, closing date or application window has been published.",
+      "verification_status": "active"
+    },
+    {
+      "id": 682,
+      "title": "Nazarbayev University Financial Aid and Scholarships for International Applicants — Foundation Year and Undergraduate programmes (2027–2028 cycle)",
+      "official_source": "Nazarbayev University (NU), Office of the Registrar / International Admissions, Astana, Kazakhstan",
+      "official_source_url": "https://nu.edu.kz/admissions/how-to-apply/foundation-undergraduate/financial-aid-end-scholarships",
+      "catalogue_url": "https://nu.edu.kz/admissions/how-to-apply/foundation-undergraduate/financial-aid-end-scholarships",
+      "country": "Kazakhstan",
+      "deadline_display": "Financial support application deadline published as October 2026, exact dates to be announced later; the linked regular-admission application window for the 2026–2027 mid-year intake is 18 August – 28 November 2026",
+      "deadline_precision": "month",
+      "application_period": "The official Financial Aid and Scholarships page publishes the financial support application deadline for the 2027–2028 cycle as 'October 2026 – To be announced later' for all categories, including NUET Applicants and international applicants applying under the SAT/ACT category.",
+      "verification_status": "active"
+    }
+  ]
+}

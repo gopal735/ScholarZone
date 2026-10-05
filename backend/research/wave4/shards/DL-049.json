@@ -1,0 +1,99 @@
+{
+  "shard_id": "DL-049",
+  "topic": "deadline",
+  "hosts": [
+    "adelaide.edu.au",
+    "cis.chinese.cn",
+    "scholarships.online.unsw.edu.au",
+    "www.eastwestcenter.org",
+    "www.educanada.ca",
+    "www.niied.go.kr"
+  ],
+  "record_count": 7,
+  "records": [
+    {
+      "id": 26,
+      "title": "Global Korea Scholarship (GKS) Non-degree Exchange Program",
+      "official_source": "National Institute for International Education (NIIED), South Korea",
+      "official_source_url": "https://www.niied.go.kr/web/niied/contents/niiedEng/eng_gksNonDegreeExchange",
+      "catalogue_url": null,
+      "country": "South Korea",
+      "deadline_display": "Varies by affiliated university",
+      "deadline_precision": "unknown",
+      "application_period": "Varies by university",
+      "verification_status": "needs_review"
+    },
+    {
+      "id": 81,
+      "title": "Study in Canada Scholarships",
+      "official_source": "Global Affairs Canada (Government of Canada)",
+      "official_source_url": "https://www.educanada.ca/scholarships-bourses/non_can/index.aspx?lang=eng",
+      "catalogue_url": null,
+      "country": "Canada",
+      "deadline_display": "11:59 p.m. EDT, March 31, 2026 â€” deadline for Canadian institutions to apply through the My EduCanada portal and email the completed Management and Accountability Framework; results were communicated to institutions in May 2026",
+      "deadline_precision": "recurring",
+      "application_period": "The 2026-2027 application period is now closed. Global Affairs Canada announces a call for applications from Canadian institutions each cycle, historically opening in January and closing at the end of March; the next cycle's dates are not yet published.",
+      "verification_status": "active"
+    },
+    {
+      "id": 193,
+      "title": "Adelaide Academic Excellence Scholarship (50%)",
+      "official_source": "Adelaide University",
+      "official_source_url": "https://adelaide.edu.au/study/scholarships/int/adelaide-academic-excellence-scholarship-50",
+      "catalogue_url": "https://adelaide.edu.au/study/scholarships/int",
+      "country": "Australia",
+      "deadline_display": "Applications open from Monday 24 August 2026; applications are reviewed on a rolling basis with scholarship offers made throughout the recruitment cycle until all allocations have been exhausted.",
+      "deadline_precision": "rolling",
+      "application_period": "Applications open from Monday 24 August 2026 and are considered on a rolling basis during the recruitment cycle until allocations are exhausted.",
+      "verification_status": "active"
+    },
+    {
+      "id": 205,
+      "title": "UNSW International Scientia Coursework Scholarship (PUCA1025)",
+      "official_source": "UNSW Sydney",
+      "official_source_url": "https://scholarships.online.unsw.edu.au/scholarship/unsw-international-scientia-coursework-scholarship",
+      "catalogue_url": "https://scholarships.online.unsw.edu.au",
+      "country": "Australia",
+      "deadline_display": "The PUCA1029 application \"will open on 1 December 2025 and close at AEST 11:59PM on 26 February 2026\". That round has closed; the next Term round's dates are not yet published.",
+      "deadline_precision": "recurring",
+      "application_period": "Term 2, 2026 international commencement round: 1 December 2025 to 26 February 2026, 11:59pm AEST. Rounds are term-based and repeat each intake.",
+      "verification_status": "active"
+    },
+    {
+      "id": 247,
+      "title": "Confucius Institute Scholarship",
+      "official_source": "Confucius Institute Headquarters (Hanban)",
+      "official_source_url": "https://cis.chinese.cn",
+      "catalogue_url": null,
+      "country": "China",
+      "deadline_display": "Varies (typically January-April through local Confucius Institute)",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 311,
+      "title": "Scholarships and Educational Exchanges for Development - Phase 2 (SEED-2)",
+      "official_source": "Global Affairs Canada",
+      "official_source_url": "https://www.educanada.ca/scholarships-bourses/can/institutions/asean-anase.aspx?lang=eng",
+      "catalogue_url": "https://www.educanada.ca/scholarships-bourses/non_can/index.aspx?lang=eng",
+      "country": "Canada",
+      "deadline_display": "Canadian institutions must apply on behalf of eligible candidates before the deadline of 11:59 p.m. EDT, March 24, 2026. The page states 'Application period for 2026-27 is closed.' Institutions are encouraged to set an earlier internal deadline with candidates and their home institutions.",
+      "deadline_precision": "recurring",
+      "application_period": "Applications open January 2026; institutional deadline March 24, 2026",
+      "verification_status": "active"
+    },
+    {
+      "id": 472,
+      "title": "East-West Center Graduate Degree Fellowship 2027",
+      "official_source": "Eastwestcenter.Org",
+      "official_source_url": "https://www.eastwestcenter.org/education/ewc-graduate-degree-fellowship",
+      "catalogue_url": null,
+      "country": "United States",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": null,
+      "verification_status": "active"
+    }
+  ]
+}

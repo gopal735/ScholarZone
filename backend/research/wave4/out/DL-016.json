@@ -1,0 +1,279 @@
+{
+  "shard_id": "DL-016",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 108,
+      "title": "Lee Kong Chian Scholars' Programme (LKCSP)",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "If you would like to be considered for this scholarship, please indicate your interest in the Scholarship section of the online application form for admission. There is no separate scholarship application form.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://admissions.smu.edu.sg/financial-aid/lee-kong-chian-scholars-programme",
+        "source_type": "official_scholarship_page",
+        "publisher": "Singapore Management University - Office of Admissions and Financial Assistance",
+        "retrieved_at": "2026-10-05T15:35:00Z",
+        "as_of": "Page live on 2026-10-05. SMU 'Important Dates' page (https://admissions.smu.edu.sg/admissions-requirements/important-dates) publishes only the Academic Year 2026-27 cycle; no Academic Year 2027-28 dates were published at retrieval.",
+        "raw_extract": "Application Information\nIf you would like to be considered for this scholarship, please indicate your interest in the Scholarship section of the online application form for admission. There is no separate scholarship application form.\nApplicants are required to submit a scholarship personal essay (to be completed and submitted online when applying for admission). ... Shortlisted applicants will be invited to SMU for a panel interview.\n\n[Corroborating official page, https://admissions.smu.edu.sg/admissions-requirements/important-dates, table row rendered as three consecutive lines]\"Academic Year 2026-27 \nApplication Closing Date\t\n \n19 March 2026\n \n11.59pm, Singapore Standard Time\"",
+        "exact_deadline_wording": "There is no separate scholarship application form.",
+        "confidence": "MEDIUM",
+        "notes": "The scholarship page itself publishes NO deadline of its own. It states that interest is indicated in the admission application form and that no separate scholarship application form exists, so any deadline is the deadline of that admission application - the provider's own words, not an assumption about a cycle. The only cycle SMU currently publishes (Academic Year 2026-27) closed 19 March 2026, which is in the past as of 2026-10-05, and SMU has not published Academic Year 2027-28 opening/closing dates. The scholarship therefore has recurring annual timing with no fixed current date; per the brief no calendar date was written and nothing was rolled to the next cycle. MEDIUM rather than HIGH because the recurring-cycle label combines the scholarship page's 'no separate application' statement with the annual, Academic-Year-keyed structure of SMU's Important Dates page rather than from one single sentence. The record's own official_source_url (the international-students scholarship listing) was fetched live and carries only programme blurbs, no deadline text. SMU serves bot-challenged HTML to non-browser clients (Incapsula), so these pages were read by rendering them in a real browser engine; the Important Dates row text above is the rendered table text."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "There is no separate scholarship application form; interest is indicated in the Scholarship section of the SMU undergraduate online admission application form, so the deadline follows SMU's published admission cycle (latest published cycle, Academic Year 2026-27, closed 19 March 2026 11.59pm SGT; next cycle dates not yet published)."
+      },
+      "examined": [
+        "https://admissions.smu.edu.sg/scholarships/prospective-students/international-students (record's official_source_url; fetched live in a browser - listing of SMU-administered scholarships for international students, no deadline text)",
+        "https://admissions.smu.edu.sg/admissions-requirements/important-dates (fetched live - only Academic Year 2026-27 dates published; next cycle not published)",
+        "https://admissions.smu.edu.sg/undergraduate/important-dates (fetched live - SMU 'Page not found' page, no dates)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://admissions.smu.edu.sg/undergraduate/important-dates",
+          "reason": "HTTP 404 page-not-found on the official domain; contains no admission dates, so it yields nothing."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 115,
+      "title": "Netaji Subhas-ICAR International Fellowship (NS-ICAR IF)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Last date for submission of the application is September 25, 2026.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://icar.org.in/sites/default/files/2026-08/NETAJI%20SUBHAS%20-%20ICAR%20INTERNATIONAL%20FELLOWSHIP.pdf",
+        "source_type": "official_government_page",
+        "publisher": "Indian Council of Agricultural Research (ICAR), Agricultural Education Division, Ministry of Agriculture and Farmers Welfare, Government of India",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": "Announcement for the 2026 cycle (document published on ICAR's site under /sites/default/files/2026-08/, linked from the official ICAR page https://icar.org.in/en/node/26210)",
+        "raw_extract": "The Indian Council of Agricultural Research (ICAR) invites applications from Indian as well as overseas nationals having Master's degree in Agriculture and Allied Sciences for the Netaji Subhas-ICAR International Fellowships (NS-ICARIFs) for the year 2026. ... The application should be submitted by September 25, 2026, to ADG (HRD) at adg.hrd.applications@gmail.com, mentioning the \"Application for NSIF: Name of Applicant and contact number\" in the subject line of the mail.\n\nLast date for submission of the application is September 25, 2026.\n\n[guidelines, section 8.6] \"Applications for NS-ICAR IFs will be invited on annual basis through announcements published in Indian national newspapers and the notification on ICAR website\"",
+        "exact_deadline_wording": "Last date for submission of the application is September 25, 2026.",
+        "confidence": "HIGH"
+      },
+      "published_deadline_date_not_written": "2026-09-25",
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "Last date for submission of the application is September 25, 2026. (2026 cycle; that date has passed - ICAR states applications are invited annually and has not published the next cycle's date)"
+      },
+      "examined": [
+        "https://icar.org.in/en/node/26210 (record's catalogue_url; fetched live - official ICAR page for the fellowship, carries the PDF link only, no deadline text in HTML)",
+        "https://icar.org.in/en/node/22051 (fetched live - ICAR notification page for this fellowship, lists PDF/DOCX attachments only, no deadline text in HTML)",
+        "https://www.icar.gov.in (record's official_source_url; root reachable but no fellowship deadline published at that URL; the deadline lives in the ICAR announcement document)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://icar.org.in/en/extension-last-date-submission-applications-under-netaji-subhas-icar-international-fellowship",
+          "reason": "Extension notice for the 2025-26 programme year, not the 2026 cycle; using it would import a stale-cycle date."
+        },
+        {
+          "url": "https://www.hcicolombo.gov.in/section/press-releases/netaji-subhas-icar-international-fellowship/",
+          "reason": "Diplomatic-mission republication of the ICAR announcement (consistent, but a secondary rendering of the same notice); the ICAR document itself was fetched instead."
+        },
+        {
+          "url": "https://www.9curry.com/notices/c10b2c",
+          "reason": "Third-party aggregator; the contract rejects aggregator listings as evidence."
+        }
+      ],
+      "notes": "The published official deadline for the 2026 cycle is 25 September 2026 (two verbatim statements of the same date in the ICAR announcement, so this is not a conflict). That date is in the past as of 2026-10-05 while the record is still flagged active/open, so per brief section 6 the stale date was NOT written and was NOT moved to 2027. The verified date is preserved in the extra key published_deadline_date_not_written. ICAR's own guideline states invitations are annual ('invited on annual basis'), which is why the record is annual in nature, but no future date is published and none was inferred."
+    },
+    {
+      "scholarship_id": 338,
+      "title": "University of Eastern Finland Early Bird Discount (30%) and Tuition Waivers",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "To qualify for the Early Bird discount, students must accept their offer of admission and pay the tuition fee, or the first instalment of the tuition fee, by the deadline stated in the admission letter (usually 21 days of the publication of the admission results).",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.uef.fi/en/tuition-fees-waivers-and-scholarships",
+        "source_type": "official_university_page",
+        "publisher": "University of Eastern Finland",
+        "retrieved_at": "2026-10-05T15:27:00Z",
+        "as_of": "Page section 'Tuition waivers for 2027 intake', page notes 'Updated on 3 August 2026.'",
+        "raw_extract": "First academic year (Early Bird discount): To qualify for the Early Bird discount, students must accept their offer of admission and pay the tuition fee, or the first instalment of the tuition fee, by the deadline stated in the admission letter (usually 21 days of the publication of the admission results). If the fee is paid in two equal instalments, the second instalment must be paid by 31 August.\n\nTo qualify for the discount, students must accept their offer of admission and pay the tuition fee, or the first instalment of the fee, within 21 days of the publication of the admission results. Detailed payment instructions and the applicable payment deadline will be provided in the admission letter.\n\nSecond and subsequent years: The annual tuition fee must be paid by 31 August, either as a single payment or in two equal instalments.",
+        "exact_deadline_wording": "by the deadline stated in the admission letter (usually 21 days of the publication of the admission results)",
+        "confidence": "HIGH",
+        "notes": "The official page publishes no fixed calendar application deadline for this award. The Early Bird discount is not applied for on a published date: it is triggered by accepting the admission offer and paying within a window that UEF states per admission letter. The only fixed day-month on the page is '31 August', which applies to (a) the second instalment of the first year's tuition fee and (b) the annual tuition fee in second and subsequent years - both are payment obligations, not an application deadline for the award, and neither carries a year, so no date could be written even if it were treated as the deadline. The second/third-year tuition waiver is awarded on academic progress with 'A separate application period is organized after the first year of studies' and no dates published, so no application deadline exists for that part either. Returned as UNKNOWN rather than guessing a date from the Finnish national application cycle, which would be an inference from a different programme. A maintainer who wants to model this record as a recurring 31 August payment obligation can do so from the verbatim quotes above, but that is a modelling choice, not a published application deadline."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "No published calendar deadline. Early Bird discount: pay by 'the deadline stated in the admission letter (usually 21 days of the publication of the admission results)'. Tuition fee: 'The annual tuition fee must be paid by 31 August' (no year stated)."
+      },
+      "examined": [],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 442,
+      "title": "SMU Global Impact Scholarship Award",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "If you would like to be considered for this scholarship, please indicate your interest in the Scholarship section of the online application form for admission. There is no separate scholarship application form.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://admissions.smu.edu.sg/financial-aid/smu-global-impact-scholarship-award",
+        "source_type": "official_scholarship_page",
+        "publisher": "Singapore Management University - Office of Admissions and Financial Assistance",
+        "retrieved_at": "2026-10-05T15:36:00Z",
+        "as_of": "Page live on 2026-10-05. SMU 'Important Dates' page publishes only the Academic Year 2026-27 cycle; no Academic Year 2027-28 dates were published at retrieval.",
+        "raw_extract": "APPLICATION PROCESS\nIf you would like to be considered for this scholarship, please indicate your interest in the Scholarship section of the online application form for admission. There is no separate scholarship application form. Click here to apply to SMU.\nApplicants are required to submit a scholarship personal essay (to be completed and submitted online when applying for admission). Letters of recommendation by their tutor or principal are optional but applicants are strongly encouraged to obtain such recommendations...\n\n[Corroborating official page, https://admissions.smu.edu.sg/admissions-requirements/important-dates, table row rendered as three consecutive lines]\"Academic Year 2026-27 \nApplication Closing Date\t\n \n19 March 2026\n \n11.59pm, Singapore Standard Time\"",
+        "exact_deadline_wording": "There is no separate scholarship application form.",
+        "confidence": "MEDIUM",
+        "notes": "The scholarship page's APPLICATION PROCESS section contains no deadline; it states that interest is indicated in the admission application form and that there is no separate scholarship application form, so the applicable deadline is that of the admission application - stated by the provider, not inferred. The only admission cycle SMU publishes (Academic Year 2026-27) closed 19 March 2026, in the past as of 2026-10-05, and no Academic Year 2027-28 dates are published. Recurring annual timing, no fixed current date, so no calendar date written and nothing rolled forward. MEDIUM because the recurring label rests on the scholarship page plus SMU's Academic-Year-keyed Important Dates page rather than one sentence. Note: the page's ELIGIBILITY/APPLICATION INFORMATION tabs are hidden in the rendered view; the APPLICATION PROCESS text quoted above was read from the page's full text content, which is the same page."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "There is no separate scholarship application form; interest is indicated in the Scholarship section of the SMU undergraduate online admission application form, so the deadline follows SMU's published admission cycle (latest published cycle, Academic Year 2026-27, closed 19 March 2026 11.59pm SGT; next cycle dates not yet published)."
+      },
+      "examined": [
+        "https://admissions.smu.edu.sg/scholarships/prospective-students/international-students (fetched live - listing page, no deadline text)",
+        "https://admissions.smu.edu.sg/admissions-requirements/important-dates (fetched live - only Academic Year 2026-27 dates published)"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 443,
+      "title": "SMU Merit Scholarship",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "If you would like to be considered for this scholarship, please indicate your interest in the Scholarship section of the online application form for admission. There is no separate scholarship application form.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://admissions.smu.edu.sg/financial-aid/smu-merit-scholarship",
+        "source_type": "official_scholarship_page",
+        "publisher": "Singapore Management University - Office of Admissions and Financial Assistance",
+        "retrieved_at": "2026-10-05T15:35:00Z",
+        "as_of": "Page live on 2026-10-05; page states benefits start 'from Academic Year 2027-28'. SMU 'Important Dates' page publishes only the Academic Year 2026-27 cycle.",
+        "raw_extract": "Application Information\nIf you would like to be considered for this scholarship, please indicate your interest in the Scholarship section of the online application form for admission. There is no separate scholarship application form.\nApplicants are required to submit a scholarship personal essay (to be completed and submitted online when applying for admission). Letters of recommendation by their tutor or principal are optional but applicants are strongly encouraged to obtain such recommendations to support their scholarship application. ... Shortlisted applicants will be invited to SMU for a panel interview.\n\n[BENEFITS, same page] \"Waiver of annual subsidized tuition fees for regular terms, (i.e. semesters 1 and 2), for up to 4 years, starting from Academic Year 2027-28.\"\n\n[Corroborating official page, https://admissions.smu.edu.sg/admissions-requirements/important-dates, table row rendered as three consecutive lines]\"Academic Year 2026-27 \nApplication Closing Date\t\n \n19 March 2026\n \n11.59pm, Singapore Standard Time\"",
+        "exact_deadline_wording": "There is no separate scholarship application form.",
+        "confidence": "MEDIUM",
+        "notes": "No deadline is published on the scholarship page. It states that interest is indicated in the admission application form and that no separate scholarship application form exists, so the applicable deadline is the admission application deadline - the provider's own statement. The only published admission cycle (Academic Year 2026-27) closed 19 March 2026, in the past as of 2026-10-05; SMU has not published Academic Year 2027-28 dates even though this page advertises benefits 'starting from Academic Year 2027-28'. Recurring annual timing with no fixed current date: no calendar date written, nothing rolled forward. MEDIUM for the same reason as the other SMU records - the recurring label combines two official pages rather than one sentence."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "There is no separate scholarship application form; interest is indicated in the Scholarship section of the SMU undergraduate online admission application form, so the deadline follows SMU's published admission cycle (latest published cycle, Academic Year 2026-27, closed 19 March 2026 11.59pm SGT; next cycle dates not yet published)."
+      },
+      "examined": [
+        "https://admissions.smu.edu.sg/scholarships/prospective-students/singapore-citizens (record's official_source_url; fetched live - listing page of scholarships for Singapore citizens, no deadline text)",
+        "https://admissions.smu.edu.sg/admissions-requirements/important-dates (fetched live - only Academic Year 2026-27 dates published)"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 523,
+      "title": "UNHCR Tertiary Refugee Scholarship Programme (DAFI) - Albert Einstein German Academic Refugee Initiative",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Applications will be accepted from 15 July to 7 August 2026. Please note that late applications will not be considered. (UNHCR Rwanda country-operation call for the 2026/2027 academic year; deadlines are set per country operation, not globally)",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://help.unhcr.org/rwanda/2026/07/15/call-for-application-for-dafi-scholarship-programme-for-academic-year-2026-2027/",
+        "source_type": "official_programme_page",
+        "publisher": "UNHCR Rwanda Country Operation (UNHCR Help portal, help.unhcr.org)",
+        "retrieved_at": "2026-10-05T15:33:00Z",
+        "as_of": "Call for the 2026/2027 academic year, published 15 July 2026; page carries 'Information printed on: 2026-10-05 15:32:57'",
+        "raw_extract": "UNHCR's Tertiary Refugee Scholarship Programme (DAFI) offers qualified refugee and returnee (in selected countries*) students the possibility to earn an undergraduate degree in their country of asylum or home country. The scholarship package varies from country to country and covers a range of costs including tuition and study materials, food, transportation, and accommodation.\n\nTimeframe:\nApplications will be accepted from 15 July to 7 August 2026. Please note that late applications will not be considered.\n\nApplications are now open for the 2026/2027 academic year, and eligible refugees and asylum-seekers are invited to apply by 7 August 2026.",
+        "exact_deadline_wording": "Applications will be accepted from 15 July to 7 August 2026.",
+        "confidence": "HIGH",
+        "notes": "DAFI is a global programme with no single global deadline: each UNHCR country operation runs its own call and publishes its own window. The record's official_source_url (the DAFI Programme Management Platform page) was fetched but is JavaScript-gated and publishes no deadline text; the platform itself lists only per-country rounds. Two official UNHCR country pages were fetched and they show different deadlines for the same 2026/2027 cycle - Rwanda 'Applications will be accepted from 15 July to 7 August 2026' (https://help.unhcr.org/rwanda/2026/07/15/call-for-application-for-dafi-scholarship-programme-for-academic-year-2026-2027/) and Slovakia 'The call for applications for DAFI scholarships for the 2026/2027 academic year is now CLOSED.' (https://help.unhcr.org/slovakia/education/dafi-scholarship-programme/). Per brief section 6, different country calls having different deadlines is NOT a conflict, so CONFLICTING was not used. Because the record is programme-wide and no single date applies, deadline_date is null and precision stays unknown; a country-specific record would be needed to carry a date. All 2026/2027 country calls were already closed as of 2026-10-05, but new country calls are announced per country and no future global date was published, so nothing was inferred or rolled forward."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "No global deadline is published. Deadlines are set and published per UNHCR country operation (2026/2027 cycle examples: Rwanda 15 July - 7 August 2026; Slovakia call closed). Applicants must check their own country operation's call and apply through the DAFI Programme Management Platform."
+      },
+      "examined": [
+        "https://unhcr-dafi-tertiary.scholarshipsplatform.com/page/ynXGvbmb (record's official_source_url; fetched - JavaScript-gated, returns only the platform shell, no deadline text)",
+        "https://unhcr-dafi-tertiary.scholarshipsplatform.com/ (fetched - JavaScript-gated platform shell, no global deadline published)",
+        "https://help.unhcr.org/scholarships (fetched - UNHCR scholarship opportunities dashboard, no DAFI deadline)",
+        "https://help.unhcr.org/slovakia/education/dafi-scholarship-programme/ (fetched - official UNHCR Slovakia DAFI page, states the 2026/2027 call is now CLOSED, gives no date)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://uct.ac.za/sites/default/files/media/documents/uct_ac_za/2747/dafi-scholarship-2026-advert.pdf",
+          "reason": "Third-party university advertisement with its own country-specific closing date; not a UNHCR source and not applicable to the programme-wide record."
+        },
+        {
+          "url": "https://studytrust.org.za/dafi-scholarship/",
+          "reason": "Third-party bursary administrator mirror of a country call; rejected under the source hierarchy."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 571,
+      "title": "ARES Scholarships - Bourses de formations internationales (scholarships for study in Belgium)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Date limite : Vendredi 18 septembre 2026",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.ares-ac.be/fr/bourses-de-formations-internationales-2027-2028",
+        "source_type": "official_scholarship_page",
+        "publisher": "ARES - Agence de la Communauté française et Wallonie-Bruxelles pour l'enseignement supérieur et la recherche",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "as_of": "Call for the 2027-2028 academic year (quinquennial programme 2027-2032), opened 3 August 2026",
+        "raw_extract": "Bourses de formations internationales 2027-2028\nDate limite : \nVendredi 18 septembre 2026\n...\nAppel à bourses de formations internationales 2027-2028\n / Appel bourses 2027-2028\n\nL'appel bourses 2027-2028 est clôturé.\nProchain appel : Aout 2027.",
+        "exact_deadline_wording": "Date limite : Vendredi 18 septembre 2026",
+        "confidence": "HIGH"
+      },
+      "published_deadline_date_not_written": "2026-09-18",
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "Date limite : Vendredi 18 septembre 2026 (2027-2028 call). ARES states the call is closed and the next call is in August 2027."
+      },
+      "examined": [
+        "https://www.ares-ac.be/fr/bourses (record's catalogue_url; fetched - returns only the anti-bot JavaScript interstitial, no readable content)",
+        "https://ares-ac.be/en/international-training-scholarships-2027-2028 (fetched - returns only the anti-bot JavaScript interstitial, no readable content)",
+        "https://www.ares-ac.be/sites/default/files/2026-08/fi-2027-2028_document-d-appel-fr-vf_2.pdf (official call document; direct fetch returns the anti-bot interstitial HTML instead of the PDF, so no text could be read)",
+        "https://giraf.ares-ac.be/ (official application portal; returns a JavaScript redirect stub with no call deadline)",
+        "https://form.ares-ac.be/formations_internationales_2027_2028 (fetched - official ARES submission form, states only 'Désolé... Ce formulaire est clos aux nouvelles soumissions.', no deadline date)"
+      ],
+      "rejected_sources": [],
+      "notes": "ARES's own call page states an explicit calendar deadline, Friday 18 September 2026, which is in the past as of 2026-10-05, and the provider states the call is closed ('L'appel bourses 2027-2028 est clôturé'). The record is still flagged active/open, so per brief section 6 the stale date was NOT written and was NOT moved to 2027. The verified date is preserved in the extra key published_deadline_date_not_written. ARES gives only 'Prochain appel : Aout 2027' - a month with no day - so no next-cycle date can be written either, and none was invented. Single credible official source, so no CONFLICTING. Note for other agents: ares-ac.be serves a Radware/anti-bot JavaScript interstitial to plain HTTP clients, including for /sites/default/files/*.pdf; the page text above was obtained by rendering it in a real browser engine."
+    },
+    {
+      "scholarship_id": 591,
+      "title": "Horatio Alger Association National Scholarship",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Junior Application Period: December 1 - March 1",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://horatioalger.org/scholarships",
+        "source_type": "official_scholarship_page",
+        "publisher": "Horatio Alger Association of Distinguished Americans",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "as_of": "Page live on 2026-10-05; no application year stated anywhere on the page",
+        "raw_extract": "UNDERGRADUATE SCHOLARSHIPS\n\nFor current high school juniors, \nhigh school seniors, and college \nstudents planning to pursue a \nbachelor's degree  \n\nJunior Application Period:  \nDecember 1 - March 1\n\nSenior Application Period:  \nDecember 1 - February 15",
+        "exact_deadline_wording": "Junior Application Period: December 1 - March 1",
+        "confidence": "HIGH",
+        "notes": "This record is the High School Junior National Scholarship (105 awards at $25,000), so the applicable window is the junior one: December 1 - March 1. The provider publishes the window with no year at all, so it is recurring annual timing and no calendar date may be written (the brief forbids inventing a day/year). Corroborated by the official applicant FAQ (https://horatioalger.org/undergraduate-applicant-faq/, fetched 2026-10-05T15:38:00Z): 'The undergraduate scholarship applications are open now through March 1st for high school juniors and February 15th for high school seniors. To be considered, your application and all required materials must be submitted online application by 12:00 p.m. E.T..' Two official pages agree, so no CONFLICTING. The senior window (December 1 - February 15) is a different applicant class, not a conflicting deadline for this record. As of 2026-10-05 the current cycle is closed and the next window opens on the recurring December 1 date; the provider publishes no explicit year, so that opening date was not written."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "Junior Application Period: December 1 - March 1 (no year published; submissions must be made by 12:00 p.m. E.T. on the closing day)"
+      },
+      "examined": [
+        "https://horatioalger.org/scholarships-and-services/undergraduate-scholarships (record's official_source_url; fetched - confirms this record's National Scholarship is for high school juniors, 105 awards at $25,000, but publishes no application dates)",
+        "https://horatioalger.org/undergraduate-applicant-faq/ (fetched - official FAQ restating the same window with no year)"
+      ],
+      "rejected_sources": []
+    }
+  ]
+}

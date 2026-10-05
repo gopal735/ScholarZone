@@ -1,0 +1,269 @@
+{
+  "shard_id": "LG-029",
+  "agent_completed": true,
+  "topic": "logo",
+  "records": [
+    {
+      "scholarship_id": 136,
+      "title": "Padua International Excellence Scholarship — Università degli Studi di Padova",
+      "outcome": "recovered",
+      "image_url": "https://wwwassets.unipd.it/sites/default/files/media/2025-09/Marchio%20STD%20RED_0.svg",
+      "image_source_url": "https://www.unipd.it/en/padua-international-excellence-scholarship-programme",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "wwwassets.unipd.it is the University of Padua's own Drupal public-files asset host (the site's site_config embeds it), not a third-party CDN. Asset referenced from the record's own official_source_url in the site header with aria-label \"Unipd Logo\". HEAD verified 200, content-type image/svg+xml, 199508 bytes. SVG viewBox 0 0 210.3140357617 68.031496063, internal group id=\"logotipo\". Rendered and visually verified: red Universita' di Padova seal + wordmark."
+      },
+      "source": {
+        "url": "https://www.unipd.it/en/padua-international-excellence-scholarship-programme",
+        "publisher": "Universita' degli Studi di Padova",
+        "retrieved_at": "2026-10-05T15:29:41Z",
+        "raw_extract": "<img alt=\"\" title=\"\" aria-label=\"Unipd Logo\" tabindex=\"0\" loading=\"lazy\" width=\"208\" height=\"93\" decoding=\"async\" data-nimg=\"1\" style=\"color:transparent\" srcSet=\"/_next/image?url=https%3A%2F%2Fwwwassets.unipd.it%2Fsites%2Fdefault%2Ffiles%2Fmedia%2F2025-09%2FMarchio%2520STD%2520RED_0.svg&amp;w=256&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fwwwassets.unipd.it%2Fsites%2Fdefault%2Ffiles%2Fmedia%2F2025-09%2FMarchio%2520STD%2520RED_0.svg&amp;w=640&amp;q=75 2x\"",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.unipd.it/en/padua-international-excellence-scholarship-programme",
+        "https://wwwassets.unipd.it/sites/default/files/media/2025-09/Marchio%20STD%20RED_0.svg"
+      ],
+      "rejected": [
+        {
+          "url": "https://wwwassets.unipd.it/sites/default/files/media/2025-09/Marchio%20STD%20WHITE.svg",
+          "reason": "Reverse white variant of the same mark; invisible on light catalogue backgrounds. The RED standard mark is the primary asset."
+        },
+        {
+          "url": "https://wwwassets.unipd.it/sites/default/files/media/2026-01/visual%20C.svg",
+          "reason": "decorative hero art, not a logo"
+        },
+        {
+          "url": "https://www.unipd.it/default-image.jpg",
+          "reason": "generic CMS placeholder image, not a brand mark"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 448,
+      "title": "Singapore University of Social Sciences Scholarship (Part-time Undergraduate)",
+      "outcome": "recovered",
+      "image_url": "https://www.suss.edu.sg/assets/images/logo.png",
+      "image_source_url": "https://www.suss.edu.sg/admissions/financial-matters/scholarships-sponsorships/part-time-undergraduate",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "suss.edu.sg blocks non-browser clients with HTTP 403 (Akamai/WAF), so webfetch and Invoke-WebRequest both fail on this host; verified by driving a real browser engine, which returned HTTP 200 with the page title 'Scholarships/Sponsorships | SUSS | SUSS'. The logo img is in the site navbar (parent class 'logo navbar-brand', wrapping <a href=\"/\">), natural size 1000x248, alt 'Singapore University of social sciences'. Rendered and visually verified as the SUSS wordmark with 'SINGAPORE UNIVERSITY OF SOCIAL SCIENCES' and the 'DREAM, DARE, DO.' lockup."
+      },
+      "source": {
+        "url": "https://www.suss.edu.sg/admissions/financial-matters/scholarships-sponsorships/part-time-undergraduate",
+        "publisher": "Singapore University of Social Sciences (SUSS)",
+        "retrieved_at": "2026-10-05T15:31:16Z",
+        "raw_extract": "IMG src=\"/assets/images/logo.png\" alt=\"Singapore University of social sciences\" rendered inside parent class=\"logo navbar-brand\", resolved currentSrc https://www.suss.edu.sg/assets/images/logo.png, naturalWidth 1000 naturalHeight 248",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.suss.edu.sg/admissions/financial-matters/scholarships-sponsorships/part-time-undergraduate",
+        "https://www.suss.edu.sg/assets/images/logo.png"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.suss.edu.sg/favicon.ico",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://www.suss.edu.sg/favicon-96x96.png",
+          "reason": "favicon-family asset"
+        },
+        {
+          "url": "https://www.suss.edu.sg/favicon.svg",
+          "reason": "favicon-family asset despite the svg extension"
+        },
+        {
+          "url": "https://www.suss.edu.sg/apple-touch-icon.png",
+          "reason": "apple-touch-icon"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 449,
+      "title": "SUSS Research Scholarship",
+      "outcome": "recovered",
+      "image_url": "https://www.suss.edu.sg/assets/images/logo.png",
+      "image_source_url": "https://www.suss.edu.sg/academics/programmes/graduate-programmes/admissions/financial-assistance/scholarship",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Same official SUSS institutional mark as record 448 - expected, SUSS is the awarding body for both. Fetched on this record's own official_source_url (HTTP 200, title 'Scholarship | SUSS') with a real browser engine; suss.edu.sg returns 403 to non-browser HTTP clients. Asset: /assets/images/logo.png in the navbar, alt 'Singapore University of social sciences', natural size 1000x248."
+      },
+      "source": {
+        "url": "https://www.suss.edu.sg/academics/programmes/graduate-programmes/admissions/financial-assistance/scholarship",
+        "publisher": "Singapore University of Social Sciences (SUSS)",
+        "retrieved_at": "2026-10-05T15:31:16Z",
+        "raw_extract": "IMG src=\"/assets/images/logo.png\" alt=\"Singapore University of social sciences\" rendered inside parent class=\"logo navbar-brand\", resolved currentSrc https://www.suss.edu.sg/assets/images/logo.png",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.suss.edu.sg/academics/programmes/graduate-programmes/admissions/financial-assistance/scholarship",
+        "https://www.suss.edu.sg/assets/images/logo.png"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.suss.edu.sg/favicon.svg",
+          "reason": "favicon-family asset"
+        },
+        {
+          "url": "https://www.suss.edu.sg/apple-touch-icon.png",
+          "reason": "apple-touch-icon"
+        },
+        {
+          "url": "https://www.suss.edu.sg/favicon-96x96.png",
+          "reason": "favicon-family asset"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 541,
+      "title": "Mastercard Foundation Scholars Program",
+      "outcome": "not_found",
+      "image_url": null,
+      "image_source_url": null,
+      "image_source_type": null,
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": false,
+        "accessible": false,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": false,
+        "identity_match": false,
+        "notes": "No fetchable official logo image asset exists on mastercardfdn.org. The Foundation wordmark appears only as an inline <svg> in the global header (and again in the footer) of every page, so there is no URL to record. The official brand page (https://mastercardfdn.org/en/mastercard-foundation-brand-guidelines/) publishes the mark two ways, neither of them a clean asset URL: (a) an annotated guideline figure on cdn.buttercms.com with alt 'Mastercard Foundation logo guide' that renders the mark with 'Logo' / 'Word mark' bracket labels and a TM glyph - a crop from the guidelines document, not the logo file; (b) a ZIP archive at https://cdn.buttercms.com/MPuSQak9T7WMs107u9iV labelled 'Mastercard Foundation Logos' (verified 200, content-type application/zip, 2149948 bytes) - a multi-file download, not a direct image. Every image on the programme page and homepage is programme photography, YouTube thumbnails, or icon art. Consistent with the same finding on record 535 in shard LG-028."
+      },
+      "source": {
+        "url": "https://mastercardfdn.org/en/mastercard-foundation-brand-guidelines/",
+        "publisher": "Mastercard Foundation",
+        "retrieved_at": "2026-10-05T15:30:12Z",
+        "raw_extract": "<header id=\"bedrockaxtcismt\" class=\"global-header\"> <a class=\"global-header__logo\" href=\"/en/\" aria-label=\"Go to the Home page\"> <svg id=\"bedrockitvfgsjg\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" viewbox=\"37 21 235 98\"> ... | <li class=\"link-list__items__item\"> <a href=\"https://cdn.buttercms.com/MPuSQak9T7WMs107u9iV\" class=\"btn ...\"> <span class=\"btn__text\">Mastercard Foundation Logos</span>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://mastercardfdn.org/en/what-we-do/our-programs/mastercard-foundation-scholars-program",
+        "https://mastercardfdn.org/en/what-we-do/our-programs/mastercard-foundation-scholars-program/where-to-apply/",
+        "https://mastercardfdn.org/en/mastercard-foundation-brand-guidelines/",
+        "https://mastercardfdn.org/en/press/",
+        "https://mastercardfdn.org/en/the-mastercard-foundation-asset-management-mfam-corporation/",
+        "https://mastercardfdn.org/en/",
+        "https://mastercardfdn.org/assets/css/bedrock.css",
+        "https://mastercardfdn.org/sitemap.xml"
+      ],
+      "rejected": [
+        {
+          "url": "https://mastercardfdn.org/assets/images/favicons/android-chrome-512x512.png",
+          "reason": "favicon - despite being declared as schema.org 'logo' in the site's own JSON-LD, it lives under /assets/images/favicons/ and is a 512px app icon, not a logo asset"
+        },
+        {
+          "url": "https://cdn.buttercms.com/ylNCBVWCTQOQkgUwQbWk",
+          "reason": "annotated guideline figure (alt 'Mastercard Foundation logo guide') - screenshot crop from the brand guidelines with 'Logo'/'Word mark' bracket labels; also third-party CDN"
+        },
+        {
+          "url": "https://cdn.buttercms.com/MPuSQak9T7WMs107u9iV",
+          "reason": "ZIP archive of logo files (application/zip), not a direct image URL"
+        },
+        {
+          "url": "https://cdn.buttercms.com/d1qYPmCzTEyQYYaeW4HI",
+          "reason": "og:image of the page - decorative hero photo, not a logo"
+        },
+        {
+          "url": "https://img.youtube.com/vi/ccKAc1m__J0/hqdefault.jpg",
+          "reason": "YouTube video thumbnail"
+        },
+        {
+          "url": "https://mastercardfdn.org/assets/images/twiglet--thin--horizontal.svg",
+          "reason": "UI divider ornament"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 596,
+      "title": "Dos becas de investigacion: sedes Costa Rica y Ecuador (Fellowships CALAS 2027)",
+      "outcome": "recovered",
+      "image_url": "http://calas.lat/sites/default/files/imagotipo_color.png",
+      "image_source_url": "http://calas.lat/es/convocatorias/dos-becas-de-investigaci%C3%B3n-sedes-costa-rica-y-ecuador",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "calas.lat is CALAS's own domain and is the awarding body for this fellowship ('El Centro Maria Sibylla Merian de Estudios Latinoamericanos Avanzados (CALAS) y la Universidad de Bielefeld estan aceptando solicitudes...'). The record's shard official_source_url on cucsh.udg.mx republishes the call and itself points to calas.lat as the authoritative source ('MAS INFORMACION EN: http://calas.lat/es/convocatorias/dos-becas-de-investigacion-sedes-costa-rica-y-ecuador'); CALAS is headquartered at CUCSH/UdG, so both hosts are the same organisation. The chosen asset is the footer brand mark of that page, <img alt=\"CALAS\" src=\"/sites/default/files/imagotipo_color.png\">. Verified 200, image/png, 77719 bytes, 3010x1080; rendered and visually confirmed as the CALAS 'Maria Sibylla Merian Center' logo. CAVEAT: calas.lat serves HTTP only - https:// on that host fails to connect - so the image_url is an http URL; downstream consumers on an https-only page will need a fetch-and-store step."
+      },
+      "source": {
+        "url": "http://calas.lat/es/convocatorias/dos-becas-de-investigaci%C3%B3n-sedes-costa-rica-y-ecuador",
+        "publisher": "Centro Maria Sibylla Merian de Estudios Latinoamericanos Avanzados (CALAS)",
+        "retrieved_at": "2026-10-05T15:31:04Z",
+        "raw_extract": "<!-- CONTENEDOR DEL LOGO (ANCHO AJUSTABLE) --><div style=\"float: left; width: 220px; margin-right: 25px; margin-bottom: 15px;\"><img alt=\"CALAS\" src=\"http://calas.lat/sites/default/files/imagotipo_color.png\" style=\"width: 100%; display: block;\" /></div>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.cucsh.udg.mx/convocatorias/fellowships-calas-2027-costa-rica-y-ecuador",
+        "http://calas.lat/es/convocatorias/dos-becas-de-investigaci%C3%B3n-sedes-costa-rica-y-ecuador",
+        "http://calas.lat/sites/default/files/imagotipo_color.png",
+        "http://calas.lat/sites/all/themes/calastrap/logo.png",
+        "http://calas.lat/sites/all/themes/calastrap/logo_shared.png"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.cucsh.udg.mx/themes/drudg8b3/images/BG_escudo-header-01.svg",
+          "reason": "Universidad de Guadalajara coat of arms - the host university's crest, not the awarding body's mark; would misidentify the provider"
+        },
+        {
+          "url": "https://www.cucsh.udg.mx/themes/drudg8b3/images/logo_udg_web_cads.svg",
+          "reason": "UdG logo variant - host institution, not CALAS"
+        },
+        {
+          "url": "https://www.cucsh.udg.mx/sites/default/files/2026-08/bcihac-flacso27_facebook-copia-4.png",
+          "reason": "promotional social-media artwork for the call (facebook crop), not a logo"
+        },
+        {
+          "url": "https://www.cucsh.udg.mx/sites/default/files/2026-09/hero-banner.webp",
+          "reason": "decorative hero banner"
+        },
+        {
+          "url": "http://calas.lat/sites/all/themes/calastrap/logo_shared.png",
+          "reason": "320x200 og:image / image_src crop, too low resolution to serve as the logo"
+        },
+        {
+          "url": "http://calas.lat/favicon.ico",
+          "reason": "favicon"
+        }
+      ]
+    }
+  ]
+}

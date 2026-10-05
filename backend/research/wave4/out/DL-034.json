@@ -1,0 +1,302 @@
+{
+  "shard_id": "DL-034",
+  "agent_completed": true,
+  "topic": "deadline",
+  "retrieved_at": "2026-10-05T15:38:28Z",
+  "records": [
+    {
+      "scholarship_id": 37,
+      "title": "OeAD Austria Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Find details on open scholarship opportunities and their application deadlines for stays in the academic year 2027/28. [Ernst Mach Grant - worldwide] New Application Deadline: 1 December 2026 [Ernst Mach Grant for Studying at an Austrian University of Applied Sciences] Application Deadline: 1 February 2027 [Ernst Mach Follow-up Grant] Application Deadline: 1 February 2027 [Ernst Mach Grant - ASEA-UNINET] Application Deadline: 1 March 2027 [Franz Werfel Fellowship] Application Deadlines: 1 March 2027 & 15 September 2027",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.oead.at/de/aktuelles/artikel/2026/09/oead-scholarship-programmes-and-further-grants-to-austria-for-2027-28",
+        "source_type": "official_scholarship_page",
+        "publisher": "OeAD - Agentur fuer Bildung und Internationalisierung (Agency for Education and Internationalisation), Austria",
+        "retrieved_at": "2026-10-05T15:31:10Z",
+        "as_of": "academic year 2027/2028 (article dated 28 September 2026)",
+        "raw_extract": "OeAD Scholarship Programmes and Further Grants for Academic Stays in Austria 2027/2028 | Find details on open scholarship opportunities and their application deadlines for stays in the academic year 2027/28. | The OeAD provides grants and scholarships for students and researchers from all over the world. Our programmes include both broad-based funding opportunities and specialised grants targeted at specific fields of study or regions. Below you will find an overview of open calls for incoming programmes, along with direct links to the respective grant announcements. | The Ernst Mach Grant - worldwide ... New Application Deadline: 1 December 2026 | Undergraduate and graduate students from non-European countries ... can apply for the Ernst Mach Grant for Studying at an Austrian University of Applied Sciences ... Application Deadline: 1 February 2027 | The Ernst Mach Follow-up Grant (non-European developing countries) ... Application Deadline: 1 February 2027 | The Ernst Mach Grant - ASEA-UNINET ... Application Deadline: 1 March 2027 | The Franz Werfel Fellowship ... Application Deadlines: 1 March 2027 & 15 September 2027 | Please also check the Austrian Database for Scholarships and Research Grants grants.at for an overview of all funding programmes administered by OeAD.",
+        "exact_deadline_wording": "New Application Deadline: 1 December 2026 | Application Deadline: 1 February 2027 | Application Deadline: 1 February 2027 | Application Deadline: 1 March 2027 | Application Deadlines: 1 March 2027 & 15 September 2027",
+        "confidence": "HIGH",
+        "notes": "The record's own official_source_url https://grants.oead.at does not resolve (NXDOMAIN, verified 2026-10-05), so the record's named source page is dead. Replaced with a live page on the awarding body's own domain (www.oead.at), which is the provider's official call announcement. The live source publishes FIVE different, explicit calendar deadlines, one per OeAD programme, spanning 1 December 2026 to 15 September 2027 for the 2027/28 cycle. This record is an aggregate 'OeAD Austria Scholarship' row that names no single programme, so no single deadline_date can be written for it. Per the brief, differing deadlines for different programmes at the same institution are not a conflict, and this is therefore UNKNOWN rather than CONFLICTING. The range quoted here (1 December 2026 to 15 September 2027) was independently re-verified on the live OeAD page and matches the range already carried in the record's application_period field; the individual dates above were read from the page, not from any cached value."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "No single deadline: OeAD publishes a separate explicit application deadline for each of its own programmes (currently 1 December 2026, 1 February 2027, 1 March 2027 and 15 September 2027 for academic year 2027/28). See the official OeAD call announcement."
+      },
+      "examined": [
+        "https://grants.oead.at",
+        "https://grants.oead.at/en",
+        "https://www.oead.at/",
+        "https://grants.at/en/"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://grants.oead.at",
+          "reason": "record's official_source_url is dead - DNS resolution fails ('No such host is known'); also fails for www.grants.oead.at and scholarships.oead.at. No live page to quote."
+        },
+        {
+          "url": "https://grants.at/en/",
+          "reason": "live but yields no aggregate deadline - it is the search front end of the database ('grants.at - Austrian Database for Scholarships and Research Grants'); deadlines sit on individual programme entries, and none was quoted from a snippet"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 51,
+      "title": "UWA Global Excellence Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "A separate scholarship application is not required. Please submit an application to your chosen course. Our Admissions team will automatically assess your eligibility for a Global Excellence Scholarship once you provide your final transcripts.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.uwa.edu.au/study/scholarships-and-fees/scholarships/international-scholarships/global-excellence-scholarship",
+        "source_type": "official_scholarship_page",
+        "publisher": "The University of Western Australia",
+        "retrieved_at": "2026-10-05T15:27:40Z",
+        "as_of": "2027 intake (page states the scholarship is in place for 2027-2029 intakes)",
+        "raw_extract": "How do I apply for the Global Excellence Scholarship? A separate scholarship application is not required. Please submit an application to your chosen course. Our Admissions team will automatically assess your eligibility for a Global Excellence Scholarship once you provide your final transcripts. | The scholarship is automatically awarded to those who are eligible based on ATAR/WAM requirements. | The Global Excellence Scholarship is an annual tuition fee discount for the normal full-time duration of the awardee’s course as specified in their letter of offer. | The Global Excellence Scholarship is in place for 2027 - 2029 intakes, so you can defer your commencement to 2028 with confidence that your scholarship and place at UWA is there for when you are ready to join us.",
+        "exact_deadline_wording": "A separate scholarship application is not required. Please submit an application to your chosen course. Our Admissions team will automatically assess your eligibility for a Global Excellence Scholarship once you provide your final transcripts.",
+        "confidence": "HIGH",
+        "notes": "Fetched the record's official_source_url directly; it is live. The page publishes NO scholarship deadline of any kind: a case-insensitive search of the fetched HTML for the string 'deadline' returns 0 occurrences. There is no scholarship application to apply for and no cut-off date; the award is made automatically on assessment of the applicant's final transcript. I deliberately did NOT use UWA's international course application deadlines, because a course-admission deadline for a different process is inadmissible evidence for a scholarship deadline. ROLLING was considered and rejected: the page never uses the word 'rolling' and never says 'no fixed deadline', and there is no application window to be open, so 'rolling' would wrongly suggest an applicant may apply at any time. UNKNOWN is the truthful classification, with the verbatim 'no separate application' wording preserved in deadline_display so the reason is visible to catalogue users."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "A separate scholarship application is not required. Please submit an application to your chosen course. Our Admissions team will automatically assess your eligibility for a Global Excellence Scholarship once you provide your final transcripts."
+      },
+      "examined": [
+        "https://www.uwa.edu.au/study/scholarships-and-fees/scholarships/international-scholarships/global-excellence-scholarship"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 167,
+      "title": "Austrian Database for Scholarships (OeAD) — Additional Programs",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Please also check the Austrian Database for Scholarships and Research Grants grants.at for an overview of all funding programmes administered by OeAD.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://grants.at/en/",
+        "source_type": "official_scholarship_page",
+        "publisher": "OeAD - Agentur fuer Bildung und Internationalisierung, Austria (operator of grants.at)",
+        "retrieved_at": "2026-10-05T15:32:20Z",
+        "as_of": "live database front end, retrieved 2026-10-05",
+        "raw_extract": "grants.at - Austrian Database for Scholarships and Research Grants | The OeAD, Austria's Agency for education and internationalisation, is a non-profit limited liability company owned by the Republic of Austria. The ownership rights are exercised by the Austrian Federal Ministry of Women, Science and Research. | (OeAD call announcement of 28 September 2026, read on www.oead.at: 'Please also check the Austrian Database for Scholarships and Research Grants grants.at for an overview of all funding programmes administered by OeAD.')",
+        "exact_deadline_wording": "Please also check the Austrian Database for Scholarships and Research Grants grants.at for an overview of all funding programmes administered by OeAD.",
+        "confidence": "MEDIUM",
+        "notes": "The record's official_source_url https://grants.oead.at/en does not resolve (NXDOMAIN, verified 2026-10-05). I followed the source hierarchy up to the awarding body: OeAD's own live site designates grants.at as 'the Austrian Database for Scholarships and Research Grants', and grants.at is published by OeAD (site credit '(c) OeAD'), so it is an official provider database rather than a third-party aggregator. The landing page carries no deadline: it is a search front end, and each programme's own deadline lives on that programme's database entry. This record is an aggregate row ('Additional Programs') covering many OeAD programmes, so no single deadline exists for it. The same page on www.oead.at (28 September 2026) lists the currently open incoming calls with five different explicit dates for 2027/28 - 1 December 2026, 1 February 2027, 1 March 2027 and 15 September 2027 - which confirms that deadlines here are programme-specific. Per the brief, that is not a conflict between two sources about the same deadline, so this is UNKNOWN and not CONFLICTING. No per-programme entry was opened, because the record does not name a specific programme and guessing which entry belongs to it would be an invention."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Varies by program: the OeAD database (grants.at) lists each programme with its own application deadline; the open incoming calls for 2027/28 run from 1 December 2026 to 15 September 2027."
+      },
+      "examined": [
+        "https://grants.oead.at/en",
+        "https://grants.at/en/",
+        "https://grants.at/de/",
+        "https://www.oead.at/",
+        "https://www.oead.at/de/aktuelles/artikel/2026/09/oead-scholarship-programmes-and-further-grants-to-austria-for-2027-28"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://grants.oead.at/en",
+          "reason": "record's official_source_url is dead - DNS resolution fails ('No such host is known')"
+        },
+        {
+          "url": "https://grants.at/en/",
+          "reason": "not a deadline source for this record - official database landing/search page with no aggregate deadline; individual deadlines live on per-programme entries and the record does not identify a programme"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 251,
+      "title": "Trinity Global Excellence Undergraduate Scholarship",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Early application is advised. Final deadlines for each region are listed below. Africa: 1 May 2026 / Central, North and South America: 1 April 2026 / South East Asia and Oceania: 15 July 2026 / All other regions: 15 June 2026",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.tcd.ie/study/international/scholarships/undergraduate/geug.php",
+        "source_type": "official_scholarship_page",
+        "publisher": "Trinity College Dublin, The University of Dublin",
+        "retrieved_at": "2026-10-05T15:28:20Z",
+        "as_of": "academic year 2026/2027 (page footer: 'Updated 3 June 2026')",
+        "raw_extract": "Applicants must have a course offer to commence year one of a full-time undergraduate degree programme at Trinity College Dublin for academic year 2026/2027. | Selection Process - Applications will be assessed and awarded on a rolling basis. | Timelines - Early application is advised. Final deadlines for each region are listed below. Awardees will be expected to fully accept their course offer to receive their award. Scholarship awards will be applied to the tuition fee bills of awardees. Africa: 1 May 2026 | Central, North and South America: 1 April 2026 | South East Asia and Oceania: 15 July 2026 | All other regions: 15 June 2026 | If you are in doubt about the deadline for your region, please contact the Trinity Regional Manager / Advisor for your country. | Updated 3 June 2026",
+        "exact_deadline_wording": "Early application is advised. Final deadlines for each region are listed below. Africa: 1 May 2026 / Central, North and South America: 1 April 2026 / South East Asia and Oceania: 15 July 2026 / All other regions: 15 June 2026",
+        "confidence": "HIGH",
+        "notes": "The record's official_source_url is live and I fetched it. It publishes four explicit regional final deadlines, all of which fell before today's retrieval date (2026-10-05): 1 April, 1 May, 15 June and 15 July 2026, i.e. between roughly three and six months ago. The page is still scoped to academic year 2026/2027 and no 2027/2028 dates are published anywhere on it, so this is an expired round on a record the catalogue still carries as open/active. Per the brief I therefore set outcome expired_mismatch, wrote NO date, and did not roll the dates forward to 2027. The only exact dates the page states are 1 April 2026, 1 May 2026, 15 June 2026 and 15 July 2026 (four different regional variants of the same final deadline - not a conflict); they are recorded here in notes only so that nothing is lost, and must not be copied into deadline_date. 'deadline_precision' at record level is 'exact' because that is the precision the source states; the field_mapping below deliberately proposes no write at all, because storing 'exact' with no date would imply a usable date exists. The page also says applications are 'assessed and awarded on a rolling basis', but that describes assessment order, not the closing dates, which the page gives explicitly."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Regional final deadlines for the 2026/2027 cycle have all passed (1 April 2026, 1 May 2026, 15 June 2026 and 15 July 2026); Trinity has not published 2027/2028 dates on this page."
+      },
+      "examined": [
+        "https://www.tcd.ie/study/international/scholarships/",
+        "https://www.tcd.ie/study/international/scholarships/postgraduate/gexpg.php"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.tcd.ie/study/international/scholarships/",
+          "reason": "hub page only ('Updated 7 December 2023'); links to the UG/PG scholarship sections but publishes no deadline for this award and no 2027/2028 cycle"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 252,
+      "title": "Trinity College Dublin Global Excellence Postgraduate Scholarships",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Early application is advised. Final deadlines for each region are listed below. Africa: 1 May 2026 / Central, North and South America: 1 April 2026 / South East Asia and Oceania: 15 July 2026 / All other regions: 15 June 2026",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.tcd.ie/study/international/scholarships/postgraduate/gexpg.php",
+        "source_type": "official_scholarship_page",
+        "publisher": "Trinity College Dublin, The University of Dublin",
+        "retrieved_at": "2026-10-05T15:28:45Z",
+        "as_of": "academic year 2026/2027 (page footer: 'Updated 3 June 2026')",
+        "raw_extract": "Applicants must have a course offer to commence a full-time postgraduate degree programme at Trinity College Dublin for academic year 2026/2027. | Selection Process - Applications will be assessed and awarded on a rolling basis. | Timelines - Early application is advised. Final deadlines for each region are listed below. Awardees will be expected to fully accept their course offer to receive their award. Scholarship awards will be applied to the tuition fee bills of awardees. Africa: 1 May 2026 | Central, North and South America: 1 April 2026 | South East Asia and Oceania: 15 July 2026 | All other regions: 15 June 2026 | Updated 3 June 2026",
+        "exact_deadline_wording": "Early application is advised. Final deadlines for each region are listed below. Africa: 1 May 2026 / Central, North and South America: 1 April 2026 / South East Asia and Oceania: 15 July 2026 / All other regions: 15 June 2026",
+        "confidence": "HIGH",
+        "notes": "The record's official_source_url is live and I fetched it. It publishes the same four explicit regional final deadlines as the undergraduate page, all of which fell before today's retrieval date (2026-10-05): 1 April, 1 May, 15 June and 15 July 2026. The page is still scoped to academic year 2026/2027 and publishes no 2027/2028 dates, so the live source is an expired round on a record the catalogue still treats as open. Outcome is expired_mismatch; no date is written and the dates are not rolled forward. The two Trinity pages (undergraduate and postgraduate) agree exactly on all four dates, so there is no conflict between them - they are different programmes with the same regional cut-offs, not two sources disagreeing about one deadline. The only exact dates on the page are recorded in notes for traceability and must not be copied into deadline_date. The catalogue_url on this record (tcd.ie/study/undergraduate/scholarships-funding/) was not needed: it is an undergraduate funding hub and would be the wrong programme for this postgraduate award."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Regional final deadlines for the 2026/2027 cycle have all passed (1 April 2026, 1 May 2026, 15 June 2026 and 15 July 2026); Trinity has not published 2027/2028 dates on this page."
+      },
+      "examined": [
+        "https://www.tcd.ie/study/international/scholarships/",
+        "https://www.tcd.ie/study/international/scholarships/undergraduate/geug.php"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.tcd.ie/study/international/scholarships/",
+          "reason": "hub page only ('Updated 7 December 2023'); publishes no deadline for this award and no 2027/2028 cycle"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 271,
+      "title": "University of Copenhagen Danish Government Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "All non-EU/EEA applicants to the University of Copenhagen’s MA/MSc degree programmes will automatically be considered for the Danish Government Scholarship, provided they are eligible. Therefore, you do not submit an individual application.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.ku.dk/studies/admission/scholarships-for-full-degree-students",
+        "source_type": "official_university_page",
+        "publisher": "University of Copenhagen (UCPH)",
+        "retrieved_at": "2026-10-05T15:29:10Z",
+        "as_of": "live page, retrieved 2026-10-05; no cycle year stated for the scholarship",
+        "raw_extract": "Danish government Scholarships - The University of Copenhagen offers a limited number of tuition waivers and grants through the Danish Government Scholarship programme. ... All non-EU/EEA applicants offered admission will automatically be considered for the scholarship; you do not submit an individual application for the scholarship. | How do we award the scholarship? ... All non-EU/EEA applicants to the University of Copenhagen's MA/MSc degree programmes will automatically be considered for the Danish Government Scholarship, provided they are eligible. Therefore, you do not submit an individual application. | Nominated students receive information directly through the application portal. If you are offered a scholarship, but do not accept it within the specified deadline, the scholarship offer will be revoked, and offered to another applicant. | Faculty of Humanities - All non-EU/EEA students applying for a master's degree programme at the Faculty of Humanities are automatically considered for the Danish Government Scholarships. This means that there is no separate scholarship application process or any additional documents required for applying",
+        "exact_deadline_wording": "All non-EU/EEA applicants to the University of Copenhagen’s MA/MSc degree programmes will automatically be considered for the Danish Government Scholarship, provided they are eligible. Therefore, you do not submit an individual application.",
+        "confidence": "HIGH",
+        "notes": "Fetched the record's official_source_url directly; it is live, and its in-page 'FAQ about Danish Government Scholarships' accordion is included in the quote above. The page publishes NO scholarship application deadline: there is no scholarship application form, so there is no scholarship closing date. The only 'specified deadline' mentioned is an offer-acceptance deadline for nominated students, and the page gives it no date. I deliberately did not use the master's course application deadlines (15 January 23:59 CET for non-EU September intake, etc.) that appear on UCPH's admissions pages: those are the deadline for a different process (the course application) and are inadmissible as this scholarship's deadline. Likewise the Faculty of Theology note about the date for tuition payment 'in the email listing the terms of payment of the tuition fee (sent around mid-May)' is a tuition payment date, not a scholarship application deadline. ROLLING was considered and rejected - the page never says 'rolling' and there is no application window. UNKNOWN is the truthful result; the verbatim 'you do not submit an individual application' wording is preserved in deadline_display so users are not sent looking for a form."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "No scholarship application and no scholarship deadline: all eligible non-EU/EEA applicants to MA/MSc programmes are automatically considered; you do not submit an individual application."
+      },
+      "examined": [
+        "https://www.ku.dk/studies/admission/scholarships-for-full-degree-students",
+        "https://www.ku.dk/studies/admission/masters-important-dates-and-deadlines"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.ku.dk/studies/admission/masters-important-dates-and-deadlines",
+          "reason": "inadmissible as evidence for this record - it publishes master's COURSE APPLICATION deadlines (e.g. '15 January at 23:59 (CET)' for applicants from outside the EU/EEA, study start September), which are a different process from this scholarship, which has no application at all"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 598,
+      "title": "Programa de patrocinios del Banco de la República para estudios de posgrado en el exterior",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "El Banco de la República patrocina programas de posgrado en universidades extranjeras de reconocida excelencia académica. Anualmente:",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.banrep.gov.co/es/contenidos/programas-estudios-el-exterior",
+        "source_type": "official_government_page",
+        "publisher": "Banco de la República de Colombia (Central Bank of Colombia)",
+        "retrieved_at": "2026-10-05T15:33:40Z",
+        "as_of": "most recent call on the page: 'Programa de estudios de posgrado en el exterior para particulares - 2026', announced LUNES, 15 DE DICIEMBRE DE 2025",
+        "raw_extract": "Programas de estudios en el exterior | A continuación, se listan los contenidos disponibles en el portal relacionados con la consulta. | El Banco de la República abre la convocatoria para el ‘Programa de estudios de posgrado en el exterior para particulares - 2026’ Noticias | LUNES, 15 DE DICIEMBRE DE 2025 | El Banco de la República anunció que la Convocatoria Estudios de posgrado para particulares 2026, patrocinará los siguientes estudios: | Patrocinio para estudios en el exterior - Generalidades | Página simple | MIÉRCOLES, 9 DE JUNIO DE 2021 | El Banco de la República patrocina programas de posgrado en universidades extranjeras de reconocida excelencia académica. Anualmente: | Posgrado en Artes Plásticas - Programas de estudios en el exterior | Página simple | MIÉRCOLES, 9 DE JUNIO DE 2021 | La apertura de esta convocatoria será en el segundo semestre de 2026. | Doctorado en Economía, maestría en Administración Pública y Políticas Públicas | Página simple | JUEVES, 17 DE JUNIO DE 2021 | Este patrocinio se ofrece para que en 2026 el postulante pueda:",
+        "exact_deadline_wording": "Anualmente:",
+        "confidence": "HIGH",
+        "notes": "Read live in a real browser session on 2026-10-05 (the site is protected by a Radware Bot Manager that returns a CAPTCHA page to plain HTTP clients, so webfetch/Invoke-WebRequest could not read it; a headless-browser fetch of the record's own official_source_url did succeed). The programme page publishes NO application closing date. It states the programme recurs every year - the Generalidades entry on this very page reads 'Anualmente:' - and each annual call is announced as a news item; the most recent call on the page is the 2026 cycle, opened 15 December 2025. That is a stated recurring annual timing with no fixed current date, so per the brief this is ANNUAL / precision 'recurring' and deadline_date must stay null. The sub-line 'La apertura de esta convocatoria será en el segundo semestre de 2026' (Artes Plásticas) is an opening/availability statement for a call, not an application deadline, and was not used as a deadline. No closing date was taken from the 15 December 2025 news item: that page is behind the same WAF and returned a CAPTCHA on every attempt, so it is listed as examined-and-blocked. Nothing was inferred from the news headline or from any search snippet, and no secondary source was used."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "Anualmente: the Banco de la República sponsors this postgraduate study-abroad programme every year; each annual call is opened by a news notice on the programme page and no fixed calendar closing date is published."
+      },
+      "examined": [
+        "https://www.banrep.gov.co/es/noticias/convocatoria-programa-estudios-exterior-2026",
+        "https://www.banrep.gov.co/es/banco/patrocinio-estudios-exterior/generalidades"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.banrep.gov.co/es/noticias/convocatoria-programa-estudios-exterior-2026",
+          "reason": "unreadable - Radware Bot Manager CAPTCHA ('Incident ID: 71fb86ce-...') on every attempt with and without a browser session, including a 20 s cooldown; the 2026 call's closing date, if any, could not be quoted from the page itself, so no date was taken"
+        },
+        {
+          "url": "https://www.banrep.gov.co/es/banco/patrocinio-estudios-exterior/generalidades",
+          "reason": "unreadable - same Radware CAPTCHA block; the 'Anualmente:' wording used here is quoted from the Generalidades entry as rendered on the index page I did successfully fetch"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 710,
+      "title": "New Horizons for Women: Hine Kahukura Education Awards",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Applications close at 11.59 pm on Tuesday, 25 August 2026.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://newhorizonsforwomen.org.nz/faqs.html",
+        "source_type": "official_scholarship_page",
+        "publisher": "New Horizons for Women: Hine Kahukura (the Trust's own site)",
+        "retrieved_at": "2026-10-05T15:36:20Z",
+        "as_of": "2026 award round, for study in 2027 (round closed; outcomes notified October 2026)",
+        "raw_extract": "Frequently Asked Questions | What time on 25 August do applications close?Applications close at 11.59 pm on Tuesday, 25 August 2026. | Can I submit a late application?No, we don’t accept late applications. The link to our application form will not be available after 11.59 pm on Tuesday, 25 August. | When will I hear whether my application has been successful or not.You will receive a notification by email by the end of October 2026 to tell you whether your application has been successful.",
+        "exact_deadline_wording": "Applications close at 11.59 pm on Tuesday, 25 August 2026.",
+        "confidence": "HIGH",
+        "notes": "Found the exact closing date the record was missing, on the Trust's own domain, in its official FAQs page (note: the page's HTML <title> says 'Research Awards' while the URL and content are the general FAQs page - I quote the FAQ body, which is the FAQ body for these awards). The only application closing time the Trust publishes is 11.59 pm on Tuesday, 25 August 2026, which is 41 days BEFORE the retrieval date of 2026-10-05, so the 2026 round is already closed. The record is nonetheless carried in the open/upcoming set with no deadline_date, and the Trust publishes no next-round opening or closing date anywhere on its site, so per the brief this is expired_mismatch: no date is written and the 2026 date is not rolled forward to 2027. 25 August 2026 appears in notes only and must not be copied into deadline_date. Corroborating page (record's official_source_url, same domain) states 'Applications are CLOSED' and 'All applications will receive a response in October 2026', with 'We offer an annual programme of sponsored financial awards to help cover the costs associated with pursuing education.' and eligibility 'Are enrolled in an NZQA or Universities NZ approved tertiary qualification for study in 2027'. The FAQs page is undated, so I did not treat it as describing a 2027 round."
+      },
+      "corroborating_sources": [
+        {
+          "url": "https://newhorizonsforwomen.org.nz/education-awards.html",
+          "retrieved_at": "2026-10-05T15:29:40Z",
+          "raw_extract": "Education Awards | Applications are CLOSEDAll applications will receive a response in October 2026 | We offer an annual programme of sponsored financial awards to help cover the costs associated with pursuing education. | Are enrolled in an NZQA or Universities NZ approved tertiary qualification for study in 2027",
+          "note": "record's own official_source_url - confirms the current round is closed and that awards are annual, but publishes no opening date for the next round"
+        }
+      ],
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Applications are CLOSED. All applications will receive a response in October 2026. The 2026 round closed at 11.59 pm on Tuesday, 25 August 2026; no next-round opening date is published."
+      },
+      "examined": [
+        "https://newhorizonsforwomen.org.nz/education-awards.html",
+        "https://newhorizonsforwomen.org.nz/faqs.html"
+      ],
+      "rejected_sources": []
+    }
+  ]
+}

@@ -1,0 +1,302 @@
+{
+  "shard_id": "DL-013",
+  "agent_completed": true,
+  "topic": "deadline",
+  "records": [
+    {
+      "scholarship_id": 24,
+      "title": "Humboldt Research Fellowship",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "Corresponding to the three selection rounds per year, there will be three calls for applications annually, each opening approximately eight months before the respective selection meeting. Once a call has reached the maximum number of currently 800 applications, the application round will be closed.",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/humboldt-research-fellowship",
+        "source_type": "official_scholarship_page",
+        "publisher": "Alexander von Humboldt Foundation",
+        "retrieved_at": "2026-10-05T15:25:40Z",
+        "as_of": "Page fetched 2026-10-05; it states the current call has reached the maximum number of applications and gives a 'Calls schedule for 2026' (calls opening 15 March 2026, 15 July 2026, 15 November 2026).",
+        "raw_extract": "We have received the maximum number of applications for the current call. Therefore, unfortunately, no new applications can be created at present. The next call will open on November 15, 2026. | Deadlines: Corresponding to the three selection rounds per year, there will be three calls for applications annually, each opening approximately eight months before the respective selection meeting. Once a call has reached the maximum number of currently 800 applications, the application round will be closed. Applicants who have already started their application at that time will be able to save and continue working on it but will not be able to submit until the next call opens. | Calls schedule: Call opens ... on 15 March / ... on 15 July / ... on 15 November",
+        "exact_deadline_wording": "Once a call has reached the maximum number of currently 800 applications, the application round will be closed.",
+        "confidence": "HIGH",
+        "notes": "No calendar submission deadline exists for this programme. The Foundation publishes call OPENING dates only (15 March / 15 July / 15 November); each round closes when it reaches a cap of 800 applications, i.e. first-come, volume-based closure. 15 November 2026 is an opening date, not a deadline, so it is not written as deadline_date. Retrieved page is the live official programme page; no cached copy was used."
+      },
+      "field_mapping": {
+        "deadline_date": "null (no fixed calendar deadline; rounds close on reaching 800 applications)",
+        "deadline_precision": "rolling",
+        "deadline_display": "Three calls annually opening 15 March / 15 July / 15 November; each call closes when the maximum of 800 applications is reached (next call opens on November 15, 2026)"
+      },
+      "examined": [
+        "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/humboldt-research-fellowship"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 114,
+      "title": "TWAS-CSIR Postgraduate Fellowship Programme",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Closing date of this fellowship: 6 then 20 May 2026 now extended until 3 June 2026",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://twas.org/opportunity/twas-csir-postgraduate-fellowship-programme",
+        "source_type": "official_scholarship_page",
+        "publisher": "TWAS / UNESCO (The World Academy of Sciences) with CSIR, India",
+        "retrieved_at": "2026-10-05T15:25:40Z",
+        "as_of": "Page fetched 2026-10-05 describes the 2026 call: opened 6 March 2026, closed 3 June 2026; the page's status field reads 'The call is closed'.",
+        "raw_extract": "The call is closed | Opening date of this fellowship: 6 March 2026 | Closing date of this fellowship: 6 then 20 May 2026 now extended until 3 June 2026 | Results of the fellowship selection should be available in at the end of 2026 or early 2027 and selected candidates will be able to start their fellowship NO earlier than 2027.",
+        "exact_deadline_wording": "Closing date of this fellowship: 6 then 20 May 2026  now extended until 3 June 2026",
+        "confidence": "HIGH",
+        "notes": "The only closing date published on the official TWAS page is 3 June 2026 (an extension of the original 6 then 20 May 2026), which is more than four months in the past as of 2026-10-05. The record is open/upcoming in the catalogue, so per the brief this is an expired_mismatch: the stale 2026-06-03 date is deliberately NOT written and is NOT silently moved to 2027. The TWAS 'Deadlines' listing on the same site (fetched 2026-10-05) shows no open TWAS-CSIR Postgraduate call for a 2027 cycle (current entries: IIE Scholar Rescue Fund 11 Oct 2026; TWAS-SISSA-Lincei 31 Oct 2026; TWAS Research Professors in LDCs 23 Nov 2026; TWAS Visiting Expert 23 Nov 2026; TWAS-FAPESP Postdoctoral 01 Apr 2027), so no successor deadline exists to record."
+      },
+      "field_mapping": {
+        "deadline_date": "null (official closing date 2026-06-03 is in the past; not written)",
+        "deadline_precision": "exact",
+        "deadline_display": "Closing date of this fellowship: 6 then 20 May 2026 now extended until 3 June 2026 (call closed)"
+      },
+      "examined": [
+        "https://twas.org/opportunity/twas-csir-postgraduate-fellowship-programme",
+        "https://twas.org/opportunities/deadlines"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://twas.org/opportunities/fellowships/phd",
+          "reason": "Catalogue index page for TWAS PhD fellowships; not the programme's own call page and does not state this fellowship's closing date."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 147,
+      "title": "International Industrial Talents Education Special Program (INTENSE Program)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://employment.nsysu.edu.tw/p/412-1374-26844.php?Lang=en",
+        "source_type": "official_university_page",
+        "publisher": "National Sun Yat-sen University (NSYSU) Startup Quarter / Career Development Office",
+        "retrieved_at": "2026-10-05T15:25:40Z",
+        "as_of": "Page fetched 2026-10-05; describes the national INTENSE Programme run by the Ministry of Education with the National Development Council, with no year attached to the intake windows it lists.",
+        "raw_extract": "In response to the declining birthrate in Taiwan, the industry's demand for mid- to high-level talents, and the need to strengthen the domestic labor structure, the Ministry of Education, in coordination with the National Development Council, is promoting the \"International Industrial Talents Education Special Program (INTENSE Program)\" ... | 📅 Application Timeline Overview ... Spring Intake – First Round (Early Oct – Late Dec) Spring Intake – Second Round (Early Apr – Late Jun) Fall Intake – First Round (Early Apr – Late Jun) Fall Intake – Second Round (Early Oct – Late Dec)",
+        "exact_deadline_wording": "Spring Intake – First Round (Early Oct – Late Dec) / Spring Intake – Second Round (Early Apr – Late Jun) / Fall Intake – First Round (Early Apr – Late Jun) / Fall Intake – Second Round (Early Oct – Late Dec)",
+        "confidence": "LOW",
+        "notes": "No single INTENSE application deadline exists at programme level. The official INTENSE page reachable here (a participating Taiwanese university) publishes only the school-side intake round structure in month ranges with no day, no year and no applicant-facing closing date, and it is not a source for a deadline for this national programme. The shard's own official_source_url (gocfs.ntu.edu.tw) is NTU's Office of Student Affairs page for overseas compatriot and mainland Chinese students and contains nothing about INTENSE, so it cannot establish a deadline. No date invented; deadline_date left null. Individual participating universities publish entirely different windows (e.g. ISU 2025-11-17 to 2025-12-12, CCU 2026-01-15 to 2026-04-15, KMU 2026-02-02 to 2026-03-16, Providence 2026-04-01 to 2026-05-10, NTCUST 2026-04-07 to 2026-05-03, Hungkuo 2026-04-22 to 2026-05-15), which confirms the deadline is per-institution rather than programme-wide."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "null (no programme-level deadline is published; each participating university sets its own application window)"
+      },
+      "examined": [
+        "https://gocfs.ntu.edu.tw",
+        "https://employment.nsysu.edu.tw/p/412-1374-26844.php?Lang=en",
+        "https://intact.ntust.edu.tw/intense-program",
+        "https://www.ndc.gov.tw/Content_List.aspx?n=CAD832E1C5330721"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://gocfs.ntu.edu.tw",
+          "reason": "Shard 'official_source_url'. Live page is NTU Office of Student Affairs / Overseas Compatriot and Mainland Chinese Students Advising Division; it has no INTENSE Program content and no application deadline."
+        },
+        {
+          "url": "https://riseafricascholars.org/",
+          "reason": "Third-party aggregator, not an official provider or programme source."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 236,
+      "title": "Japanese Government (MEXT) Scholarship for Undergraduate Students (Embassy Recommendation)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Applicants must submit the following documents to the Japanese diplomatic mission in the country of the applicant's nationality by the designated deadline.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.mext.go.jp/content/20260420-mxt-kotokoku01-000049232_02.pdf",
+        "source_type": "official_government_page",
+        "publisher": "Ministry of Education, Culture, Sports, Science and Technology (MEXT), Japan",
+        "retrieved_at": "2026-10-05T15:25:40Z",
+        "as_of": "FY2027 cycle: 'JAPANESE GOVERNMENT (MEXT) SCHOLARSHIP FOR 2027', published 2026-04-20, linked from MEXT's 募集中のプログラム listing as of 2026-10-05.",
+        "raw_extract": "10. APPLICATION DOCUMENTS Applicants must submit the following documents to the Japanese diplomatic mission in the country of the applicant's nationality by the designated deadline. The submitted documents will not be returned. | (12) If there are any questions about the content of the written text in this Application Guidelines or any other matters, applicants/grantees should inquire at the Japanese diplomatic mission in the country of the applicant's nationality and follow their instructions. | (4) Applicants will be informed of the final selection results by the Japanese diplomatic mission in the applicant's country after February 2027.",
+        "exact_deadline_wording": "Applicants must submit the following documents to the Japanese diplomatic mission in the country of the applicant's nationality by the designated deadline.",
+        "confidence": "HIGH",
+        "notes": "MEXT publishes no applicant-facing deadline for this programme: the 2027 guidelines require submission to the applicant's own Japanese diplomatic mission 'by the designated deadline' and tell applicants to follow that mission's instructions. No calendar date exists on the MEXT page to record, so deadline_date stays null. Not labelled CONFLICTING because there is no disagreement between two sources; MEXT simply states the deadline is set by each mission. The shard's own official_source_url (mext.go.jp/en/.../sdetail02/1373897.htm) resolves to the generic MEXT 'STUDY in JAPAN' page with no deadline for this programme."
+      },
+      "field_mapping": {
+        "deadline_date": "null (MEXT publishes no central deadline; each diplomatic mission sets its own)",
+        "deadline_precision": "unknown",
+        "deadline_display": "No central date: submit to the Japanese diplomatic mission in your country of nationality by that mission's designated deadline"
+      },
+      "examined": [
+        "https://www.mext.go.jp/content/20260420-mxt-kotokoku01-000049232_02.pdf",
+        "https://www.mext.go.jp/a_menu/koutou/ryugaku/boshu/1415354_00011.htm",
+        "https://www.mext.go.jp/a_menu/koutou/ryugaku/1415351_00008.htm",
+        "https://www.mext.go.jp/a_menu/koutou/ryugaku/06032818.htm",
+        "https://www.mext.go.jp/en/policy/education/highered/title02/detail02/sdetail02/1373897.htm"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.mext.go.jp/en/policy/education/highered/title02/detail02/sdetail02/1373897.htm",
+          "reason": "Shard 'official_source_url'. Live page is the generic MEXT 'STUDY in JAPAN' overview; it describes the MEXT scholarship system in general and states no undergraduate embassy-recommendation deadline."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 237,
+      "title": "Japanese Government (MEXT) Scholarship for Research Students (University Recommendation)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Application Period: Monday, January 5, 2026 – Thursday, January 15, 2026 (must be received by this date)",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.mext.go.jp/content/20251205-mxt_kotokoku01-000046164_2.pdf",
+        "source_type": "official_government_page",
+        "publisher": "Ministry of Education, Culture, Sports, Science and Technology (MEXT), Japan",
+        "retrieved_at": "2026-10-05T15:25:40Z",
+        "as_of": "University-recommendation guidelines published 2025-12-05, covering grantees arriving April 2026 and October 2026 (the most recent university-recommendation cycle published as of 2026-10-05).",
+        "raw_extract": "6. APPLICATION PERIOD AND NOTIFICATION OF GRANTEES (1) Grantees who will arrive in Japan during the April term, 2026 (Research Students/ Undergraduate Students) Application Period: Monday, January 5, 2026 – Thursday, January 15, 2026 (must be received by this date) Notification of Grantees: by the end of February (planned) | (2) Grantees who will arrive in Japan during the October term, 2026 (Research Students) Application Period: Friday, February 20, 2026 –Tuesday, March , 2026 (must be received by this date) | (3) Grantees who will arrive in Japan during the October term, 2026 (Undergraduate Students) Application Period: Monday, May 19, 2026 –Monday, May 26, 2026 (must be received by this date) | ・Any documents submitted after the designated deadline will not be accepted.",
+        "exact_deadline_wording": "Application Period: Monday, January 5, 2026 – Thursday, January 15, 2026 (must be received by this date)",
+        "confidence": "MEDIUM",
+        "notes": "The only application periods published in the live official guidelines are all in the past (2026-01-15, 2026-03, 2026-05-26) and are university-to-MEXT nomination windows, not applicant-facing dates. As of 2026-10-05 MEXT's 募集中のプログラム listing shows only the two 2027 embassy-recommendation programmes, so no 2027 university-recommendation application period has been published for the open/upcoming record. Stale dates are deliberately not written and not shifted to 2027; confidence is MEDIUM because these windows are internal nomination deadlines rather than an applicant deadline, and the second window's closing day is not legible in the extracted PDF text ('Tuesday, March , 2026')."
+      },
+      "field_mapping": {
+        "deadline_date": "null (published periods 2026-01-15 / March 2026 / 2026-05-26 are all in the past; not written)",
+        "deadline_precision": "exact",
+        "deadline_display": "University recommendation application periods are set per cycle between MEXT and each university (2026 cycle: 5-15 January 2026, February-March 2026, 19-26 May 2026); none published for the current cycle"
+      },
+      "examined": [
+        "https://www.mext.go.jp/content/20251205-mxt_kotokoku01-000046164_2.pdf",
+        "https://www.mext.go.jp/a_menu/koutou/ryugaku/06032818.htm",
+        "https://www.mext.go.jp/a_menu/koutou/ryugaku/1415351_00008.htm",
+        "https://www.mext.go.jp/a_menu/koutou/ryugaku/boshu/1415351_00007.htm"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.mext.go.jp/a_menu/koutou/ryugaku/1423055_00022.htm",
+          "reason": "Not fetched as evidence; listed only as the 2026-cycle university-recommendation index page. No live 2027 equivalent is published under MEXT's 募集中のプログラム."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 238,
+      "title": "Japanese Government (MEXT) Scholarship for Japanese Studies Students (Embassy Recommendation)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Applicants must submit the following documents to the Japanese diplomatic mission in the applicant's country by the designated deadline.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.mext.go.jp/content/20251222-mxt-kotokoku01-000046488_02.pdf",
+        "source_type": "official_government_page",
+        "publisher": "Ministry of Education, Culture, Sports, Science and Technology (MEXT), Japan",
+        "retrieved_at": "2026-10-05T15:25:40Z",
+        "as_of": "FY2026 cycle: 'APPLICATION GUIDELINES JAPANESE GOVERNMENT (MEXT) SCHOLARSHIP FOR 2026 (JAPANESE STUDIES STUDENTS)', published 2025-12-22. Most recent cycle published; no 2027 Japanese Studies Students call exists under MEXT's 募集中のプログラム as of 2026-10-05.",
+        "raw_extract": "7．APPLICATION DOCUMENTS Applicants must submit the following documents to the Japanese diplomatic mission in the applicant's country by the designated deadline. The submitted documents will not be returned. | ① Application Form ○  Use the FY2026 Application Form. (See Note 4.)",
+        "exact_deadline_wording": "Applicants must submit the following documents to the Japanese diplomatic mission in the applicant's country by the designated deadline.",
+        "confidence": "HIGH",
+        "notes": "No central MEXT date is published for this programme; the deadline is the one designated by the applicant's own diplomatic mission. MEXT publishes no date, so nothing is written to deadline_date. Note also that the FY2026 cycle is effectively over as of 2026-10-05 and MEXT's 募集中のプログラム listing contains no 2027 Japanese Studies Students recruitment, so this record should not be treated as having a forthcoming deadline. The direct PDF URL in the shard initially returned HTTP 404 on one fetch attempt and succeeded on retry from the live MEXT page https://www.mext.go.jp/a_menu/koutou/ryugaku/1423055_00023.htm; the text above is from the successfully fetched live file."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "No central MEXT date: submit to the Japanese diplomatic mission in your country of nationality by that mission's designated deadline"
+      },
+      "examined": [
+        "https://www.mext.go.jp/content/20251222-mxt-kotokoku01-000046488_02.pdf",
+        "https://www.mext.go.jp/a_menu/koutou/ryugaku/1423055_00023.htm",
+        "https://www.mext.go.jp/a_menu/koutou/ryugaku/1415351_00007.htm",
+        "https://www.mext.go.jp/a_menu/koutou/ryugaku/06032818.htm"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 386,
+      "title": "Justus & Louise van Effen Excellence Scholarships",
+      "outcome": "recovered",
+      "deadline_semantics": "EXACT",
+      "deadline_date": "2026-12-01",
+      "deadline_display": "1 December 2026 (23:59 CET)",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.tudelft.nl/en/education/study-programme-orientation/practical-matters/scholarships",
+        "source_type": "official_university_page",
+        "publisher": "Delft University of Technology (TU Delft)",
+        "retrieved_at": "2026-10-05T15:25:40Z",
+        "as_of": "Page fetched 2026-10-05; scholarship application form on the same page is the 2027-2029 edition and awarding is stated as 'by the end of March 2027', so this is the upcoming 2027-2028 round.",
+        "raw_extract": "Justus & Louise van Effen Excellence Scholarship? ... Application deadline **1 December 2026 (23:59 CET)** ... Students who have been granted a scholarship will be informed by TU Delft via email by the end of March 2027. | Heads up! Missing the first deadline means your scholarship application won't be reviewed. | Scholarship application form: https://filelist.tudelft.nl/TUDelft/Onderwijs/Praktische_zaken/Scholarships/Scholarship%20Application%20Form%202027-2029.pdf",
+        "exact_deadline_wording": "1 December 2026 (23:59 CET)",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url (https://www.tudelft.nl/en/education/study-programme-orientation/practical-matters/scholarships/justus-louise-van-effen-excellence-scholarships) returns HTTP 404; the scholarship content now lives on the parent TU Delft Scholarships page, which was fetched live and states the deadline explicitly. The date is in the future relative to 2026-10-05, consistent with the record being open/upcoming. The separately listed Microelectronics Scholarship on the same page shares the same 1 December 2026 deadline but is a different award; the value written here is for the Justus & Louise van Effen Excellence Scholarship."
+      },
+      "field_mapping": {
+        "deadline_date": "2026-12-01",
+        "deadline_precision": "exact",
+        "deadline_display": "1 December 2026 (23:59 CET)"
+      },
+      "examined": [
+        "https://www.tudelft.nl/en/education/study-programme-orientation/practical-matters/scholarships",
+        "https://www.tudelft.nl/en/education/practical-matters/scholarships/justus-louise-van-effen-excellence-scholarships"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.tudelft.nl/en/education/study-programme-orientation/practical-matters/scholarships/justus-louise-van-effen-excellence-scholarships",
+          "reason": "Shard 'official_source_url'; HTTP 404 on live fetch (page removed/merged into the parent Scholarships page)."
+        },
+        {
+          "url": "https://www.tudelft.nl/en/delft-university-fund/support-us/your-named-fund/justus-louise-van-effen-excellence-scholarships",
+          "reason": "Official TU Delft fund page, but it describes the fund and states no application deadline; not usable for the deadline value."
+        },
+        {
+          "url": "https://www.mastersportal.com/scholarships/10291/justus-louise-van-effen-excellence-scholarships.html",
+          "reason": "Third-party aggregator; also still shows the previous cycle (01 Dec 2025), not the live value."
+        },
+        {
+          "url": "https://riseafricascholars.org/scholarship/justus-louise-van-effen-excellence-scholarships",
+          "reason": "Third-party aggregator, not an official source."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 514,
+      "title": "Japanese Government (MEXT) Scholarship for 2027 - Research Students (Embassy Recommendation)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "The deadline for submission of application documents varies according to each Japanese diplomatic mission. Make sure to confirm the deadline at the website of the Japanese diplomatic mission in the country of your nationality or in some other way.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.mext.go.jp/content/20260420-mxt-kotokoku01-000049243_02.pdf",
+        "source_type": "official_government_page",
+        "publisher": "Ministry of Education, Culture, Sports, Science and Technology (MEXT), Japan",
+        "retrieved_at": "2026-10-05T15:25:40Z",
+        "as_of": "FY2027 cycle: 'JAPANESE GOVERNMENT (MEXT) SCHOLARSHIP FOR 2027 (RESEARCH STUDENTS)', published 2026-04-20, linked from MEXT's 募集中のプログラム listing as of 2026-10-05.",
+        "raw_extract": "8. THE PROCESS OF APPLICATION AND SELECTION <Notes> Call for applications opens at each Japanese diplomatic mission / Submission of application documents: The deadline for submission of application documents varies according to each Japanese diplomatic mission. Make sure to confirm the deadline at the website of the Japanese diplomatic mission in the country of your nationality or in some other way. | Applicants who pass the first screening shall submit a completed Placement Preference Application Form to the Japanese diplomatic mission. The deadline for submission of this form varies according to each Japanese diplomatic mission. | 9. APPLICATION DOCUMENTS Applicants must submit the following documents to the Japanese diplomatic mission in the country of the applicant's nationality by the designated deadline. | (6) Applicants will be notified by the Japanese diplomatic mission of the final selection results and the grantees' accepting university from January 2027 to early March 2027.",
+        "exact_deadline_wording": "The deadline for submission of application documents varies according to each Japanese diplomatic mission. Make sure to confirm the deadline at the website of the Japanese diplomatic mission in the country of your nationality or in some other way.",
+        "confidence": "HIGH",
+        "notes": "MEXT explicitly states there is no central deadline for this programme because each Japanese diplomatic mission sets its own, so no calendar date exists to record and none is inferred. Labelled UNKNOWN rather than CONFLICTING: the brief reserves CONFLICTING for two credible sources disagreeing about the same deadline, whereas here a single official source states the deadline is mission-specific. Final-selection notification is only given as a range (January 2027 to early March 2027), which is a result date and not a deadline, so it is not used."
+      },
+      "field_mapping": {
+        "deadline_date": "null (no central deadline; varies by Japanese diplomatic mission)",
+        "deadline_precision": "unknown",
+        "deadline_display": "The deadline for submission of application documents varies according to each Japanese diplomatic mission."
+      },
+      "examined": [
+        "https://www.mext.go.jp/a_menu/koutou/ryugaku/boshu/1415352_00008.htm",
+        "https://www.mext.go.jp/content/20260420-mxt-kotokoku01-000049243_02.pdf",
+        "https://www.mext.go.jp/a_menu/koutou/ryugaku/06032818.htm"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships",
+          "reason": "Catalogue URL not used as evidence: it is a JASSO/Study in Japan overview that itself directs applicants to their Japanese embassy and publishes no deadline for this programme."
+        }
+      ]
+    }
+  ]
+}

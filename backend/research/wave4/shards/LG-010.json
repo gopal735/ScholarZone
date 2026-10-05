@@ -1,0 +1,58 @@
+{
+  "shard_id": "LG-010",
+  "topic": "logo",
+  "hosts": [
+    "cis.chinese.cn",
+    "college.harvard.edu",
+    "study.fsv.cuni.cz",
+    "www.marihe.eu"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 125,
+      "title": "Harvard College Need-Based Financial Aid (International Students)",
+      "official_source": "Harvard University",
+      "official_source_url": "https://college.harvard.edu/financial-aid/apply-financial-aid",
+      "catalogue_url": null,
+      "country": "United States",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 247,
+      "title": "Confucius Institute Scholarship",
+      "official_source": "Confucius Institute Headquarters (Hanban)",
+      "official_source_url": "https://cis.chinese.cn",
+      "catalogue_url": null,
+      "country": "China",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 325,
+      "title": "Czech Government Scholarship - Developing Countries (AY 2027/28), Charles University Faculty of Social Sciences",
+      "official_source": "Ministry of Education, Youth and Sports of the Czech Republic (Government of the Czech Republic scholarship, administered by DZS)",
+      "official_source_url": "https://study.fsv.cuni.cz/czech-government-scholarship-developing-countries-for-the-ay-2027-28",
+      "catalogue_url": "https://study.fsv.cuni.cz/how-to-apply/scholarships",
+      "country": "Czech Republic",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 346,
+      "title": "Erasmus Mundus MARIHE Scholarship (Master in Research and Innovation in Higher Education)",
+      "official_source": "Marihe.Eu",
+      "official_source_url": "http://www.marihe.eu",
+      "catalogue_url": "https://www.marihe.eu/programs/description-and-objectives/",
+      "country": "Finland",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 480,
+      "title": "Harvard College Need-Based Financial Aid 2027-2028",
+      "official_source": "Harvard University",
+      "official_source_url": "https://college.harvard.edu/financial-aid/apply-financial-aid/prospective-students",
+      "catalogue_url": null,
+      "country": "United States",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

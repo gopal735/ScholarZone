@@ -1,0 +1,342 @@
+{
+  "shard_id": "LG-014",
+  "agent_completed": true,
+  "topic": "logo",
+  "records": [
+    {
+      "scholarship_id": 599,
+      "title": "Beca de la Escuela Doctoral Franco-Peruana en Ciencias de la Ingeniería y Geociencias (EDFPCIG) - Convocatoria 2026",
+      "outcome": "not_found",
+      "image_url": null,
+      "image_source_url": null,
+      "image_source_type": null,
+      "image_kind": null,
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": false,
+        "accessible": false,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": false,
+        "notes": "No official EDFPCIG logo asset exists on any official source. The only logo on the record's own page is the Escuela de Posgrado PUCP site-header logo, which is (a) present in the header of every posgrado.pucp.edu.pe page and therefore site chrome rather than a mark belonging to this scholarship, (b) the parent unit's mark rather than the EDFPCIG programme's own, and (c) served from the shared third-party-hosted bucket s3.amazonaws.com/files.pucp.edu.pe rather than from the official domain. The page's programme artwork is a 2048x810 composite hero banner. Leaving image_url null is the truthful outcome."
+      },
+      "source": {
+        "url": "https://posgrado.pucp.edu.pe/becas/beca-escuela-doctoral-franco-peruana-ciencias-ingenieria-y-geociencias",
+        "publisher": "Escuela de Posgrado - Pontificia Universidad Catolica del Peru (PUCP)",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "raw_extract": "Site header, every page: <a class=\"header__left header__logo\" href=\"https://posgrado.pucp.edu.pe\"><img src=\"https://s3.amazonaws.com/files.pucp.edu.pe/pucp-general/img-header/logo-EP.svg\" alt=\"Escuela de Posgrado - PUCP\"></a>. The only programme-specific image on the page is the hero banner: <img width=\"1920\" height=\"758\" src=\"https://posgrado.pucp.edu.pe/wp-content/uploads/2021/10/2026.png\" class=\"img-responsive\" alt=\"\" decoding=\"async\" fetchpriority=\"high\">",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://posgrado.pucp.edu.pe/becas/beca-escuela-doctoral-franco-peruana-ciencias-ingenieria-y-geociencias",
+        "https://posgrado.pucp.edu.pe/becas",
+        "https://posgrado.pucp.edu.pe/wp-content/uploads/2021/10/2026.png",
+        "web search: EDFPCIG \"Escuela Doctoral Franco-Peruana\" logo oficial pucp (returned no official EDFPCIG logo asset; only PUCP institutional brand pages and unrelated third parties)"
+      ],
+      "rejected": [
+        {
+          "url": "https://s3.amazonaws.com/files.pucp.edu.pe/pucp-general/img-header/logo-EP.svg",
+          "reason": "Site-chrome header logo of the Escuela de Posgrado PUCP (present in the header of every page of the site), i.e. the parent unit's mark on a shared third-party asset bucket s3.amazonaws.com - an unrelated-unit logo on a shared CDN. Not a mark belonging to the EDFPCIG scholarship."
+        },
+        {
+          "url": "https://posgrado.pucp.edu.pe/wp-content/uploads/2021/10/2026.png",
+          "reason": "Decorative hero art: 2048x810 composite banner. Downloaded and visually inspected - it is a field photograph overlaid with a 'Convocatoria 2026' caption, the scholarship title in type, and three separate partner logos (Ambassade de France au Perou, IRD, Escuela de Posgrado PUCP). Not a standalone logo."
+        },
+        {
+          "url": "https://s3.amazonaws.com/files.pucp.edu.pe/pucp-general/img-header/favicon/favicon.ico",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://s3.amazonaws.com/files.pucp.edu.pe/pucp-general/img-header/favicon/apple-icon-180x180.png",
+          "reason": "apple-touch-icon"
+        },
+        {
+          "url": "https://s3.amazonaws.com/files.pucp.edu.pe/pucp-general/img-header/favicon/android-icon-192x192.png",
+          "reason": "favicon-sized app icon"
+        },
+        {
+          "url": "https://posgrado.pucp.edu.pe/wp-content/uploads/2021/10/Bases-Escuela-Doctoral-Franco-Peruana-2026.docx",
+          "reason": "Call bases document, not a brand asset; a document body is not a logo."
+        },
+        {
+          "url": "https://cdn.prod.website-files.com/60c8d29050a5cb271fbb9ea2/69fa55bc64006a54dbf2a546_2.%20Uso%20de%20logo%20PUCP%20(2).pdf",
+          "reason": "Third-party CDN copy (website-files.com) of the PUCP institutional identity manual; wrong identity (PUCP institutional mark, not the EDFPCIG scholarship) and not an official host."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 604,
+      "title": "Beca Universidad de Chile (BUCH)",
+      "outcome": "recovered",
+      "image_url": "https://portaluchile.uchile.cl/dam/jcr:16e04a92-537b-42ea-a94a-89ca5e2c7844/logobuch_portal_recortada.png",
+      "image_source_url": "https://uchile.cl/convocatorias/37944/beca-universidad-de-chile",
+      "image_source_type": "official_scholarship",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "This is the scholarship's own programme logo, not the university's institutional mark. It is the itemprop=\"image\" of the record's own convocatoria page (alt=\"Beca Universidad de Chile\"), it is stored in the Universidad de Chile's own AEM DAM repository (jcr: content path) on uchile.cl, and it is the page's declared og:image. Downloaded and visually inspected: a four-quadrant square mark in the University of Chile green/yellow/red/blue with the stacked lettering 'BUCH' and 'Beca Universidad de Chile'. HTTP GET verified 200, image/png, 64310 bytes, 858x858. The university-level marks on the same page (logo-universidad-de-chile.svg, escudo-uchile-horizontal-color.jpg) were deliberately not used: they identify the university, not the BUCH programme."
+      },
+      "source": {
+        "url": "https://uchile.cl/convocatorias/37944/beca-universidad-de-chile",
+        "publisher": "Universidad de Chile - Direccion de Bienestar y Desarrollo Estudiantil (DIRBDE)",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "raw_extract": "<img itemprop=\"image\" src=\"https://portaluchile.uchile.cl//.imaging/stk/uchile/ancho1000/dam/imagenes/Uchile/dirbde/logobuch_portal_recortada.png/jcr:content/logobuch_portal_recortada.png.png\" alt=\"Beca Universidad de Chile\" class=\"img-responsive center-block op2 \">  ...  <meta property=\"og:image\" content=\"https://uchile.cl/dam/jcr:16e04a92-537b-42ea-a94a-89ca5e2c7844/logobuch_portal_recortada.png\">",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://uchile.cl/convocatorias/37944/beca-universidad-de-chile",
+        "https://uchile.cl/dam/jcr:16e04a92-537b-42ea-a94a-89ca5e2c7844/logobuch_portal_recortada.png",
+        "https://portaluchile.uchile.cl/dam/jcr:16e04a92-537b-42ea-a94a-89ca5e2c7844/logobuch_portal_recortada.png",
+        "https://portaluchile.uchile.cl//.imaging/stk/uchile/ancho1000/dam/imagenes/Uchile/dirbde/logobuch_portal_recortada.png/jcr:content/logobuch_portal_recortada.png.png"
+      ],
+      "rejected": [
+        {
+          "url": "https://uchile.cl/.resources/portal-uchile/images/logo-universidad-de-chile.svg",
+          "reason": "Wrong identity: the Universidad de Chile institutional logo, not the BUCH scholarship's own mark. The page does carry a programme-specific logo, so the institutional mark is not needed."
+        },
+        {
+          "url": "https://uchile.cl/.resources/portal-uchile/images/escudo-uchile-horizontal-color.jpg",
+          "reason": "University coat of arms (escudo) - the institution's emblem, not the programme logo."
+        },
+        {
+          "url": "https://uchile.cl/.resources/portal-uchile/images/acreditacion_footer.svg",
+          "reason": "Accreditation footer badge - a third-party accreditation mark unrelated to the award."
+        },
+        {
+          "url": "https://uchile.cl/.resources/portal-uchile/favicon.svg",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://uchile.cl/.resources/portal-uchile/favicon/apple-touch-icon.png",
+          "reason": "apple-touch-icon"
+        },
+        {
+          "url": "https://uchile.cl/.resources/portal-uchile/mstile-150x150.png",
+          "reason": "msapplication tile icon, favicon-sized badge"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 617,
+      "title": "Government Scholarship in Saudi Public Universities for Non-Saudi Students (external scholarship) - Ministry of Education, Kingdom of Saudi Arabia",
+      "outcome": "recovered",
+      "image_url": "https://www.moe.gov.sa/_layouts/15/Portal/Images/Logo.svg",
+      "image_source_url": "https://www.moe.gov.sa/en/education/ResidentsAndvisitors/pages/publicuniversitiesscholarships.aspx",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Official Ministry of Education (Saudi Arabia) brand asset on the official government domain moe.gov.sa, injected site-wide as the masthead brand image linking to /en, i.e. it is the ministry's own identity mark - the awarding body for this scholarship - not a partner or sponsor mark. HTTP GET verified 200, image/svg+xml, 51003 bytes, viewBox 0 0 86 44. Downloaded and rendered to confirm identity: it is the ministry's dot-seeds emblem above the Arabic wordmark 'وزارة التعليم'. MEDIUM rather than HIGH for two honest reasons: (1) this is the white knockout variant (CSS class LogoW), so it is low-contrast on a light card - no colour or black variant of the ministry logo is published anywhere on moe.gov.sa; (2) the ministry publishes no logo specific to this scholarship, so the institutional mark stands in for the programme. If the catalogue prefers an invisible-on-white asset, prefer not_found over this one."
+      },
+      "source": {
+        "url": "https://www.moe.gov.sa/en/education/ResidentsAndvisitors/pages/publicuniversitiesscholarships.aspx",
+        "publisher": "Ministry of Education, Kingdom of Saudi Arabia",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "raw_extract": "Site-wide masthead, injected by https://www.moe.gov.sa/MOECore/JS/Functions/EnDrowHtml.js: $('.droopmenu-inner').append('<div class=\"droopmenu-header\"><a href=\"/en\" class=\"droopmenu-brand\"><img class=\"LogoW\" src=\"/_layouts/15/Portal/Images/Logo.svg\" /></a><a href=\"#\" class=\"droopmenu-toggle\"></a></div>')",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://www.moe.gov.sa/en/education/ResidentsAndvisitors/pages/publicuniversitiesscholarships.aspx",
+        "https://www.moe.gov.sa/en/Home.aspx",
+        "https://www.moe.gov.sa/ar/Home.aspx",
+        "https://www.moe.gov.sa/MOECore/JS/Functions/EnDrowHtml.js",
+        "https://www.moe.gov.sa/MOECore/css/EnStyle.css",
+        "https://www.moe.gov.sa/_layouts/15/Portal/Images/Logo.svg",
+        "https://www.moe.gov.sa/MOECore/Images/MoeSnap.png",
+        "https://www.moe.gov.sa/MOECore/Images/SC001.png"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.moe.gov.sa/MOECore/Images/MoeSnap.png",
+          "reason": "Social media platform icon: the Snapchat ghost with the handle 'moe_gov'. A social profile icon, not a brand mark. (Downloaded and visually inspected.)"
+        },
+        {
+          "url": "https://www.moe.gov.sa/Style%20Library/Images/v2030_LightColors.svg",
+          "reason": "Wrong identity: the Saudi 'Vision 2030' national programme logo used in the site footer, not the Ministry of Education and not this scholarship."
+        },
+        {
+          "url": "https://www.moe.gov.sa/MOECore/favicon/safari-pinned-tab.svg",
+          "reason": "safari-pinned-tab"
+        },
+        {
+          "url": "https://www.moe.gov.sa/MOECore/favicon/apple-touch-icon.png",
+          "reason": "apple-touch-icon"
+        },
+        {
+          "url": "https://www.moe.gov.sa/MOECore/favicon/favicon-32x32.png",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://www.moe.gov.sa/_layouts/15/images/siteicon.png",
+          "reason": "SharePoint site icon, favicon-class"
+        },
+        {
+          "url": "https://www.moe.gov.sa/MOECore/Images/SC001.png",
+          "reason": "Decorative stock imagery used as a page banner on the scholarship page (student/architecture photo), not a logo."
+        },
+        {
+          "url": "https://www.moe.gov.sa/MOECore/Images/Preload.svg",
+          "reason": "Loading/preloader animation - UI chrome."
+        },
+        {
+          "url": "https://www.moe.gov.sa/MOECore/Images/DC.svg",
+          "reason": "Domain/hosting or accessibility certification seal in the footer, unrelated to the award."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 640,
+      "title": "Beca Doctoral PUCP - Programa de Apoyo a la Investigación Doctoral",
+      "outcome": "not_found",
+      "image_url": null,
+      "image_source_url": null,
+      "image_source_type": null,
+      "image_kind": null,
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": false,
+        "accessible": false,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": false,
+        "notes": "No official 'Beca Doctoral PUCP' logo asset exists. The scholarship has no mark of its own: the only logo on the record's own page is the Escuela de Posgrado PUCP header logo (site chrome, shared third-party asset bucket), and the only programme artwork is a 2250x888 composite hero banner. Leaving image_url null is the truthful outcome."
+      },
+      "source": {
+        "url": "https://posgrado.pucp.edu.pe/becas/becas-doctoral-pucp",
+        "publisher": "Escuela de Posgrado - Pontificia Universidad Catolica del Peru (PUCP)",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "raw_extract": "Site header, every page: <a class=\"header__left header__logo\" href=\"https://posgrado.pucp.edu.pe\"><img src=\"https://s3.amazonaws.com/files.pucp.edu.pe/pucp-general/img-header/logo-EP.svg\" alt=\"Escuela de Posgrado - PUCP\"></a>. Programme artwork on the page: <meta property=\"og:image\" content=\"https://posgrado.pucp.edu.pe/wp-content/uploads/2022/12/Becadoctoral_2025-1.jpg\" /> and <img width=\"1920\" height=\"758\" src=\"https://posgrado.pucp.edu.pe/wp-content/uploads/2022/12/Becadoctoral_2025-1-1920x758.jpg\" class=\"img-responsive\" alt=\"\" decoding=\"async\" fetchpriority=\"high\">",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://posgrado.pucp.edu.pe/becas/becas-doctoral-pucp",
+        "https://posgrado.pucp.edu.pe/wp-content/uploads/2022/12/Becadoctoral_2025-1.jpg",
+        "https://posgrado.pucp.edu.pe/wp-content/uploads/2022/12/Becadoctoral_2025-1-1920x758.jpg"
+      ],
+      "rejected": [
+        {
+          "url": "https://posgrado.pucp.edu.pe/wp-content/uploads/2022/12/Becadoctoral_2025-1.jpg",
+          "reason": "Decorative hero art: 2250x888 composite banner. Downloaded and visually inspected - it is a stock photograph of a man on a campus staircase next to a blue title block reading 'Beca Doctoral PUCP / Vicerrectorado de Investigacion / Direccion de Fomento de la Investigacion', with the PUCP shield cut off at the left edge. A banner, not a logo."
+        },
+        {
+          "url": "https://s3.amazonaws.com/files.pucp.edu.pe/pucp-general/img-header/logo-EP.svg",
+          "reason": "Site-chrome header logo of the Escuela de Posgrado PUCP (in the header of every page of the site), the parent unit's mark served from the shared third-party bucket s3.amazonaws.com rather than the official domain. The scholarship is run jointly by the Vicerrectorado de Investigacion and the Escuela de Posgrado, so neither unit's mark is this scholarship's own mark."
+        },
+        {
+          "url": "https://s3.amazonaws.com/files.pucp.edu.pe/pucp-general/img-header/favicon/favicon.ico",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://s3.amazonaws.com/files.pucp.edu.pe/pucp-general/img-header/favicon/android-icon-192x192.png",
+          "reason": "favicon-sized app icon"
+        },
+        {
+          "url": "https://posgrado.pucp.edu.pe/wp-content/uploads/2022/12/Beca-Doctoral-PUCP-2026-FINAL-1.pdf",
+          "reason": "Call bases PDF - a document, not a brand asset."
+        },
+        {
+          "url": "https://connect.facebook.net/en_US/fbevents.js",
+          "reason": "Social Meta Pixel tracking script on the page (and its 1x1 noscript beacon) - tracking pixel, explicitly rejected."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 678,
+      "title": "E-JUST TICAD8 African Scholarships for Science, Technology and Innovation",
+      "outcome": "recovered",
+      "image_url": "https://ejust.edu.eg/assets/img/logo.png",
+      "image_source_url": "https://ejust.edu.eg/international-scholarships",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Official E-JUST institutional brand asset on the official university domain ejust.edu.eg, used as the site brand lockup in the navbar on the record's own scholarship page and consistently on /about and /media. Downloaded and visually inspected: the E-JUST emblem (red disc inside a black ring with the rising-sun rays) beside the university name in English, Arabic and Japanese. HTTP GET verified 200, image/png, 13823 bytes, 335x100. MEDIUM for two reasons: (1) the asset is only 335x100 - small, though still well above favicon/badge size; (2) E-JUST publishes no logo specific to the TICAD8 scholarship, so the university mark stands in for the programme. The sibling assets were examined and rejected: ejlogo.png (4760x988) is the white knockout variant and renders invisible on a light background; mini.png is a 53x68 footer mark."
+      },
+      "source": {
+        "url": "https://ejust.edu.eg/international-scholarships",
+        "publisher": "Egypt-Japan University of Science and Technology (E-JUST)",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "raw_extract": "Masthead brand lockup: <a class=\"navbar-brand\" href=\"/\"><img class=\"black-logo\" src=\"https://ejust.edu.eg/assets/img/logo.png\" alt=\"black-logo\"></a> ... footer: <div class=\"copyright-logo\"><a href=\"/\"><img src=\"https://ejust.edu.eg/assets/img/mini.png\" alt=\"black-logo\"></a></div>",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://ejust.edu.eg/international-scholarships",
+        "https://ejust.edu.eg/",
+        "https://ejust.edu.eg/about",
+        "https://ejust.edu.eg/media",
+        "https://ejust.edu.eg/international-flyers",
+        "https://ejust.edu.eg/assets/img/logo.png",
+        "https://ejust.edu.eg/assets/img/ejlogo.png",
+        "https://ejust.edu.eg/assets/img/mini.png"
+      ],
+      "rejected": [
+        {
+          "url": "https://ejust.edu.eg/assets/img/ejlogo.png",
+          "reason": "White knockout variant of the same lockup (4760x988). Downloaded and rendered: it is drawn in near-white outlines and is effectively invisible on a light card background. Presentation failure, not a provenance failure."
+        },
+        {
+          "url": "https://ejust.edu.eg/assets/img/mini.png",
+          "reason": "Low-resolution footer mark, 53x68 - favicon-sized badge."
+        },
+        {
+          "url": "https://ejust.edu.eg/assets/img/TICAD8-flyer2-01.jpg",
+          "reason": "Decorative document art: a rendered page of the TICAD8 scholarship flyer, not a logo asset."
+        },
+        {
+          "url": "https://ejust.edu.eg/assets/img/TICAD8-flyer2.s.pdf",
+          "reason": "Decorative flyer document, not a brand asset."
+        },
+        {
+          "url": "https://ejust.edu.eg/img/favicon.png",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://ejust.edu.eg/assets/img/favicon-32x32.png",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://ejust.edu.eg/assets/img/favicon-16x16.png",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://ejust.edu.eg/assets/img/apple-touch-icon.png",
+          "reason": "apple-touch-icon"
+        },
+        {
+          "url": "https://ejust.edu.eg/assets/img/into.jpg",
+          "reason": "Decorative hero art: the dark campus photograph used as the page banner background behind the 'International Postgraduates Admission' heading."
+        },
+        {
+          "url": "https://www.facebook.com/ejust.official/",
+          "reason": "Social profile - social media avatars are rejected, and no social image was used as evidence."
+        }
+      ]
+    }
+  ],
+  "shard_notes": "5/5 records covered. 3 recovered (604, 617, 678), 2 not_found (599, 640). Every image_url was GET-verified for status and Content-Type, downloaded and visually inspected for identity. Records 599 and 640 are the same situation: posgrado.pucp.edu.pe publishes no programme logo for either scholarship, only the site-header Escuela de Posgrado PUCP logo (chrome, served from the shared s3.amazonaws.com/files.pucp.edu.pe bucket) and a composite hero banner. Re-running LG-014 will not change those two unless PUCP publishes a real per-scheme mark."
+}

@@ -1,0 +1,324 @@
+{
+  "shard_id": "DL-008",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 35,
+      "title": "SINGA Scholarship (Singapore)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Not published on any live official A*STAR page. The shard's official_source_url (https://www.a-star.edu.sg/Scholarships/for-graduate-studies/singa-award) returned HTTP 404, and SINGA is absent from A*STAR's current scholarship directory, its application hub and its applicant portal.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.a-star.edu.sg/scholarships/home/apply-now",
+        "source_type": "official_scholarship_page",
+        "publisher": "Agency for Science, Technology and Research (A*STAR)",
+        "retrieved_at": "2026-10-05T15:35:03Z",
+        "as_of": "A*STAR Graduate Academy scholarship and fellowship application hub as published on 2026-10-05",
+        "raw_extract": "## Scholarship & Fellowship Applications\n\nReady to take the next step in your research journey?\n\n## Undergraduate Scholarship\n\nNational Science Scholarship (BS-PhD)\n\n## Graduate Scholarships\n\nNational Science Scholarship (PhD)\n\nA\\*STAR Graduate Scholarship\n\n## Postdoctoral Fellowships\n\nA\\*STAR International Fellowship (Research)\n\nA\\*STAR International Fellowship (Innovation)\n\nExplore all scholarships and fellowships",
+        "exact_deadline_wording": "",
+        "confidence": "HIGH",
+        "notes": "No deadline value found. A*STAR's own current application hub lists only NSS (BS-PhD), NSS (PhD), A*STAR Graduate Scholarship and A*STAR International Fellowship (Research/Innovation). SINGA is not listed, so there is no official A*STAR page from which to quote a deadline. I did not use the '1 December' / '1 June' SINGA close dates that circulate on third-party sites (universite-paris-saclay PDF brochure, opportunitiesnexus, oyaop, SMU) because none is a current live A*STAR page; per the brief a cached brochure or aggregator is not admissible evidence."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Not published on any live official A*STAR page. The shard's official_source_url (https://www.a-star.edu.sg/Scholarships/for-graduate-studies/singa-award) returned HTTP 404, and SINGA is absent from A*STAR's current scholarship directory, its application hub and its applicant portal."
+      },
+      "examined": [
+        "https://www.a-star.edu.sg/Scholarships/for-graduate-studies/singa-award (shard official_source_url) - HTTP 404",
+        "https://www.a-star.edu.sg/singa-award - HTTP 404",
+        "https://www.a-star.edu.sg/scholarships/home/scholarships/singa - HTTP 404",
+        "https://www.a-star.edu.sg/Scholarships/For-Graduate-Studies/Singapore-International-Graduate-Award-SINGA - HTTP 404",
+        "https://www.a-star.edu.sg/scholarships - fetched; landing page does not list SINGA",
+        "https://www.a-star.edu.sg/scholarships/astar-graduate-academy - fetched; does not list SINGA",
+        "https://www.a-star.edu.sg/scholarships/home/scholarships - fetched; scholarship directory lists only NSS (BS-PhD), NSS (PhD), AGS and AIF",
+        "https://sms-applicant-app.a-star.edu.sg/ - fetched; portal closed for new applications and lists only BS-PhD, PhD, AGS, AIF"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.universite-paris-saclay.fr/sites/default/files/2023-08/astar_international_awards_-_july_2023.pdf",
+          "reason": "Third-party university-hosted copy of a 2023 A*STAR brochure; not a live official A*STAR page and no current cycle year."
+        },
+        {
+          "url": "https://opportunitiesnexus.com/singa-scholarship-2027",
+          "reason": "Scholarship aggregator / blog; not an official source and states a 1 December 2026 close date with no A*STAR citation I could open."
+        },
+        {
+          "url": "https://graduatestudies.smu.edu.sg/phd/singa-smu-programme",
+          "reason": "Host-university page for a different programme's administration of SINGA, and its text refers to the August 2022 intake (closing date 1 December 2021) - a past cycle, not the current deadline."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 119,
+      "title": "Global Undergraduate Exchange Program (Global UGRAD)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Application deadlines vary by program and region. Please visit the program websites below or contact the U.S. Embassy in your home country for further details and eligibility requirements.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://exchanges.state.gov/non-us/program/global-undergraduate-exchange-program-global-ugrad",
+        "source_type": "official_government_page",
+        "publisher": "U.S. Department of State, Bureau of Educational and Cultural Affairs",
+        "retrieved_at": "2026-10-05T15:35:03Z",
+        "as_of": "Live ECA programme page as published on 2026-10-05; still references the August 2025 or January 2026 start terms",
+        "raw_extract": "**Public applications are accepted.**Two organizations administer the Global UGRAD Program on behalf of the Bureau of Educational and Cultural Affairs. Application deadlines vary by program and region. Please visit the program websites below or contact the U.S. Embassy in your home country for further details and eligibility requirements.",
+        "exact_deadline_wording": "Application deadlines vary by program and region. Please visit the program websites below or contact the U.S. Embassy in your home country for further details and eligibility requirements.",
+        "confidence": "HIGH",
+        "notes": "The awarding agency itself states there is no single central deadline; each country is administered separately (World Learning, IREX, and Fulbright Commissions) and publishes its own. The only other dates on the page are start terms, not deadlines: 'be able to begin studies in the United States in August 2025 or January 2026'. Those are past and are not application deadlines, so they were not written as a deadline. Not classified CONFLICTING because no two credible sources give different dates for the same deadline - there is simply no single published deadline. No 'rolling' wording appears, so ROLLING is not claimed either."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Application deadlines vary by program and region. Please visit the program websites below or contact the U.S. Embassy in your home country for further details and eligibility requirements."
+      },
+      "examined": [
+        "https://exchanges.state.gov/non-us/program/global-undergraduate-exchange-program-ugrad (shard official_source_url) - HTTP 404",
+        "https://exchanges.state.gov/non-us/program/global-undergraduate-exchange-program-global-ugrad (shard catalogue_url) - fetched, no central deadline"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.worldlearning.org/program/global-undergraduate-exchange-program/",
+          "reason": "Not fetched as evidence: administering organisation's page is subordinate to and country-window specific, so it cannot establish a single programme-wide deadline; the State Department page is the official provider source and it states none exists centrally."
+        },
+        {
+          "url": "http://www.irex.org/projects/global-undergraduate-exchange-program-pakistan-global-ugrad-pakistan",
+          "reason": "Pakistan-only programme window; another country's deadline is not the deadline for this record."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 372,
+      "title": "ITALYOU - L'Italia nel tuo futuro (MAECI scholarship for the ItAS Master's degree, University for Foreigners of Perugia)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "The MAECI programme page for ITALYOU publishes the edition, the scholarship intake and the start date, but no application deadline: \"4th Edition - Academic Year 2026-2027 ... confirms the awarding of 70 new annual scholarships ... The scholarships will start on October 1, 2026.\"",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.esteri.it/en/servizi-opportunita/opportunita/borse-di-studio/per-cittadini-stranieri/progetti-speciali/italyou-litalia-nel-tuo-futuro/",
+        "source_type": "official_government_page",
+        "publisher": "Ministry of Foreign Affairs and International Cooperation (MAECI), Italy",
+        "retrieved_at": "2026-10-05T15:35:03Z",
+        "as_of": "ITALYOU 4th edition, academic year 2026-2027, as published on the MAECI programme page on 2026-10-05",
+        "raw_extract": "4th Edition - Academic Year 2026-2027\n\nNow in its fourth edition, the program-proven highly successful in promoting Italofonia -confirms the awarding of 70 new annual scholarships worth EUR 8,000 each, disbursed over 12 monthly installments, to students from Algeria, Cameroon, Egypt, Libya, Morocco, Senegal, and Tunisia . The scholarships will start on October 1, 2026.\n\nIn addition, 64 students from the 3rd edition will be eligible to renew their scholarships for the 2026-2027 academic year , provided they have met the minimum academic requirements, namely passing exams worth at least 40 university credits (CFU).",
+        "exact_deadline_wording": "",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url https://studyinitaly.esteri.it/en/italyou returned HTTP 404. MAECI's own live programme page for ITALYOU contains no application deadline at all, and it delegates the selection to the University for Foreigners of Perugia and to Italian diplomatic missions in each target country, each of which runs a national call. I did not substitute the general MAECI IRE call deadline (26 March 2026) or a single embassy's national ITALYOU call, because those are different calls for a different programme. Note for the coordinator: the 4th edition appears already concluded - the MAECI page says scholarships start 1 October 2026 and the Italian Embassy in Tripoli published the 'Graduatoria finale del bando ITALYOU' for a.a. 2026-2027 on 31 August 2026 - so a refreshed open cycle may be expected, but no official source states a future deadline."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "The MAECI programme page for ITALYOU publishes the edition, the scholarship intake and the start date, but no application deadline: \"4th Edition - Academic Year 2026-2027 ... confirms the awarding of 70 new annual scholarships ... The scholarships will start on October 1, 2026.\""
+      },
+      "examined": [
+        "https://studyinitaly.esteri.it/en/italyou (shard official_source_url) - HTTP 404",
+        "https://www.esteri.it/en/servizi-opportunita/opportunita/borse-di-studio/per-cittadini-stranieri/progetti-speciali/italyou-litalia-nel-tuo-futuro/ - fetched; confirms 4th edition a.a. 2026-2027, no deadline stated",
+        "https://www.unistrapg.it/it/studiare-in-un-ateneo-internazionale/corsi-di-laurea-e-laurea-magistrale/italiano-per-l-insegnamento-a-stranieri-itas - fetched; ItAS degree page carries admission requirements and curriculum only, no ITALYOU scholarship deadline",
+        "https://ambtripoli.esteri.it/it/news - fetched; shows the Libya ITALYOU bando published 21 May 2026 and the final ranking published 31 August 2026, but the listing states no application deadline and is a single-country call"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://iicmadrid.esteri.it/wp-content/uploads/2026/03/BANDO-BORSE-2026-2027-ENG.pdf",
+          "reason": "Deadline 'March 26th 2026' belongs to the general MAECI IRE scholarship call, a different programme from ITALYOU. Per the brief, a deadline for a different programme is not admissible evidence."
+        },
+        {
+          "url": "https://ambbeirut.esteri.it/en/news/dall_ambasciata/2025/04/italian-government-scholarships-for-the-academic-year-2025-2026-call-for-applications-now-open",
+          "reason": "General MAECI IRE call for 2025-2026 (deadline 16 May 2025), wrong programme and a past cycle."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 385,
+      "title": "LUF - Lutfia Rabbani Scholarship Fund",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "31 March 23:59 CET annually (applications open 1 January annually)",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.student.universiteitleiden.nl/en/scholarships/sea/leiden-university-fund---lutfia-rabbani-scholarship-fund",
+        "source_type": "official_university_page",
+        "publisher": "Leiden University",
+        "retrieved_at": "2026-10-05T15:35:03Z",
+        "as_of": "Live Leiden University scholarship page as published on 2026-10-05; no year attached to the deadline",
+        "raw_extract": "Deadline\n\n31 March 23:59 CET annually (applications open 1 January annually)",
+        "exact_deadline_wording": "31 March 23:59 CET annually (applications open 1 January annually)",
+        "confidence": "HIGH",
+        "notes": "The awarding university's own page states the deadline explicitly and explicitly as annual. Because the day and month are fixed but no year is given, this is ANNUAL/recurring and the deadline_date is left null rather than inventing a year such as 2026-03-31. The page also states the fund 'shall provide one scholarship annually' and refers the reader to the Lutfia Rabbani Foundation website for application procedures, confirming a repeating cycle."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "31 March 23:59 CET annually (applications open 1 January annually)"
+      },
+      "examined": [],
+      "rejected_sources": [
+        {
+          "url": "https://www.universiteitleiden.nl/en/education/admission-and-application/bachelors/admission-requirements#programmes-with-limited-places-numerus-fixus",
+          "reason": "Generic numerus fixus admissions page for a different (bachelor's) process; not the LUF Lutfia Rabbani Scholarship Fund deadline and not used."
+        },
+        {
+          "url": "https://rabbanifoundation.org/1-aplication-requirements-luf/",
+          "reason": "Foundation page referenced by Leiden for procedures; the university page already supplies the deadline wording, and the foundation's requirements page is not the awarding provider's stated deadline."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 436,
+      "title": "SINGA - Singapore International Graduate Award",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Not published on any live official A*STAR page. The shard's official_source_url (https://www.a-star.edu.sg/singa-award) returned HTTP 404, and SINGA is absent from A*STAR's current scholarship directory, its application hub and its applicant portal.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.a-star.edu.sg/scholarships/home/scholarships",
+        "source_type": "official_scholarship_page",
+        "publisher": "Agency for Science, Technology and Research (A*STAR)",
+        "retrieved_at": "2026-10-05T15:35:03Z",
+        "as_of": "A*STAR Graduate Academy scholarship directory as published on 2026-10-05",
+        "raw_extract": "## Undergraduate\n\nNational Science Scholarship (BS-PhD)\n\nThe National Science Scholarship (BS-PhD) is the only through-train scholarship in Singapore which provides for your undergraduate studies to PhD training.\n\n**Application Deadline:** 1 March\n\n## Graduate\n\nNational Science Scholarship (PhD)\n\n...**Application Deadline:** 14 April and 1 October\n\nA\\*STAR Graduate Scholarship ...**Application Deadline:** 15 February and 10 August\n\n## Post Doctoral\n\nA\\*STAR International Fellowship ...**Application Deadline:** 14 April and 1 October",
+        "exact_deadline_wording": "",
+        "confidence": "HIGH",
+        "notes": "No deadline value found for SINGA. A*STAR's own live scholarship directory enumerates every current scholarship it offers - NSS (BS-PhD), NSS (PhD), A*STAR Graduate Scholarship and A*STAR International Fellowship - and SINGA is not among them. I did not use the '1 December' / '1 June' SINGA close dates found on aggregators or a 2023 A*STAR brochure mirrored on a third-party university site, because those are not current live official A*STAR pages."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Not published on any live official A*STAR page. The shard's official_source_url (https://www.a-star.edu.sg/singa-award) returned HTTP 404, and SINGA is absent from A*STAR's current scholarship directory, its application hub and its applicant portal."
+      },
+      "examined": [
+        "https://www.a-star.edu.sg/singa-award (shard official_source_url) - HTTP 404",
+        "https://www.a-star.edu.sg/Scholarships/for-graduate-studies/singa-award - HTTP 404",
+        "https://www.a-star.edu.sg/scholarships/home/scholarships/singa - HTTP 404",
+        "https://www.a-star.edu.sg/Scholarships/For-Graduate-Studies/Singapore-International-Graduate-Award-SINGA - HTTP 404",
+        "https://www.a-star.edu.sg/scholarships/home/scholarships - fetched; SINGA not listed",
+        "https://www.a-star.edu.sg/scholarships/home/apply-now - fetched; SINGA not listed",
+        "https://sms-applicant-app.a-star.edu.sg/ - fetched; 'applications are no longer accepted through this portal', SINGA not listed"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://opportunitiesnexus.com/singa-scholarship-2027",
+          "reason": "Aggregator; asserts '1 December 2026' close date for the August 2027 intake with no openable A*STAR citation."
+        },
+        {
+          "url": "https://graduatestudies.smu.edu.sg/phd/singa-smu-programme",
+          "reason": "Host-university page describing SMU's administration of SINGA for the August 2022 intake; past cycle, not a current official deadline."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 437,
+      "title": "A*STAR International Fellowship (AIF)",
+      "outcome": "conflicting",
+      "deadline_semantics": "CONFLICTING",
+      "deadline_date": null,
+      "deadline_display": "Dedicated AIF page: 'First application cycle: Opens on 1 January Closes on 1 April ... Second application cycle: Opens on 14 July Closes on 1 October'. A*STAR scholarship directory for the same AIF: 'Application Deadline: 14 April and 1 October'.",
+      "deadline_precision": "varies",
+      "source": {
+        "url": "https://www.a-star.edu.sg/scholarships/home/scholarships/astar-international-fellowship",
+        "source_type": "official_scholarship_page",
+        "publisher": "Agency for Science, Technology and Research (A*STAR), A*STAR Graduate Academy",
+        "retrieved_at": "2026-10-05T15:35:03Z",
+        "as_of": "Live A*STAR AIF page as published on 2026-10-05; cycle dates carry no year",
+        "raw_extract": "Application Timeline\n\nApplication Cycle / Interviews / Application Outcomes\n\nFirst application cycle:  Opens on 1 January  Closes on 1 April  Mid-April to May  From mid-June\n\nSecond application cycle:  Opens on 14 July  Closes on 1 October  Mid-October to mid-November  From December\n\n\\*A\\*GA may consider off-cycle applications on a case-by-case basis",
+        "exact_deadline_wording": "First application cycle: Opens on 1 January Closes on 1 April / Second application cycle: Opens on 14 July Closes on 1 October",
+        "confidence": "MEDIUM",
+        "notes": "Two pages on the awarding body's own domain give different closing dates for the same AIF first application cycle: the dedicated AIF page says 'Closes on 1 April' and the A*STAR scholarship directory (https://www.a-star.edu.sg/scholarships/home/scholarships, fetched 2026-10-05) says for A\\*STAR International Fellowship '**Application Deadline:** 14 April and 1 October'. The second-cycle close (1 October) agrees; the first-cycle close (1 April vs 14 April) does not. Both pages also omit a year, so neither alone would support a calendar date. Per brief section 6 this is reported as CONFLICTING with a null date rather than choosing one source. Additional caution for the integrator: the A*STAR site also renders year-stamped 'Application Period' banners (e.g. 'A*STAR International Fellowship (Research) - 14 Jul 2026 to 1 Oct 2026') on its home/search surfaces, but that banner text was not retrievable in the pages I fetched, so it is not used as evidence and any such value should be re-verified directly."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "varies",
+        "deadline_display": "Dedicated AIF page: 'First application cycle: Opens on 1 January Closes on 1 April ... Second application cycle: Opens on 14 July Closes on 1 October'. A*STAR scholarship directory for the same AIF: 'Application Deadline: 14 April and 1 October'."
+      },
+      "examined": [
+        "https://www.a-star.edu.sg/scholarships/home/scholarships/astar-international-fellowship (shard official_source_url) - fetched, states closing dates without a year",
+        "https://www.a-star.edu.sg/scholarships/home/scholarships - fetched, states '14 April and 1 October' for the same AIF"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.a-star.edu.sg/scholarships",
+          "reason": "Search-snippet-only rendering showed year-stamped application periods such as '14 Jul 2026 to 1 Oct 2026'; the text was not present in the page I actually fetched, and a snippet is not admissible evidence per brief section 5."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 438,
+      "title": "National Science Scholarship (PhD)",
+      "outcome": "conflicting",
+      "deadline_semantics": "CONFLICTING",
+      "deadline_date": null,
+      "deadline_display": "Dedicated NSS (PhD) page: 'Application period: 1 January to 1 April & 1 July to 1 October' and timeline 'First application cycle: Opens on 1 January Closes on 1 April / Second application cycle: Opens on 14 July Closes on 1 October'. A*STAR scholarship directory for the same scholarship: 'Application Deadline: 14 April and 1 October'.",
+      "deadline_precision": "varies",
+      "source": {
+        "url": "https://www.a-star.edu.sg/scholarships/home/scholarships/national-science-scholarship-(phd)",
+        "source_type": "official_scholarship_page",
+        "publisher": "Agency for Science, Technology and Research (A*STAR), A*STAR Graduate Academy",
+        "retrieved_at": "2026-10-05T15:35:03Z",
+        "as_of": "Live A*STAR NSS (PhD) page as published on 2026-10-05; cycle dates carry no year",
+        "raw_extract": "Application period: 1 January to 1 April & 1 July to 1 October\n\nApplication Timeline\n\nFirst application cycle:  Opens on 1 January  Closes on 1 April  Mid-April to May  From mid-June\n\nSecond application cycle:  Opens on 14 July  Closes on 1 October  Mid-October to mid-November  From December\n\n\\*A\\*GA may consider off-cycle applications on a case-by-case basis",
+        "exact_deadline_wording": "Application period: 1 January to 1 April & 1 July to 1 October",
+        "confidence": "MEDIUM",
+        "notes": "Two pages on the awarding body's own domain disagree about the same NSS (PhD) deadline. The dedicated page gives '1 January to 1 April & 1 July to 1 October' and a timeline closing 1 April / 1 October; the A*STAR scholarship directory (https://www.a-star.edu.sg/scholarships/home/scholarships, fetched 2026-10-05) gives for National Science Scholarship (PhD) '**Application Deadline:** 14 April and 1 October'. First-cycle close: 1 April vs 14 April. Second cycle: the directory's opening day is not stated and the dedicated page is internally inconsistent (facts list says '1 July', timeline says '14 July'). Neither page attaches a year, so no calendar date is defensible. Reported as CONFLICTING with a null date. For the integrator: the shard's literal-parenthesis URL resolved successfully, so the record's official_source_url is live."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "varies",
+        "deadline_display": "Dedicated NSS (PhD) page: 'Application period: 1 January to 1 April & 1 July to 1 October' and timeline 'First application cycle: Opens on 1 January Closes on 1 April / Second application cycle: Opens on 14 July Closes on 1 October'. A*STAR scholarship directory for the same scholarship: 'Application Deadline: 14 April and 1 October'."
+      },
+      "examined": [
+        "https://www.a-star.edu.sg/scholarships/home/scholarships/national-science-scholarship-(phd) (shard official_source_url) - fetched, states closing dates without a year",
+        "https://www.a-star.edu.sg/scholarships/home/scholarships - fetched, states '14 April and 1 October' for the same NSS (PhD)",
+        "https://sms-applicant-app.a-star.edu.sg/ - fetched; portal closed to new applications, states only 'For applicants who applied from 2 August 2025 to 1 April 2026', not a forward deadline"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://nusgs.nus.edu.sg/scholarships/astar-graduate-scholarship",
+          "reason": "NUS Graduate School page for the A*STAR Graduate Scholarship, a different A*STAR programme, and its 'Deadline: February 8 / August 1' are NUS admission dates. Another programme's and another institution's deadline is not admissible."
+        },
+        {
+          "url": "https://www.a-star.edu.sg/scholarships",
+          "reason": "Search-snippet-only rendering showed year-stamped application periods; not present in the fetched page text, and snippets are not admissible evidence."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 603,
+      "title": "PEC-PG - Brazilian Program for Exchange Students, Postgraduate Level (PEC-PG 2027)",
+      "outcome": "recovered",
+      "deadline_semantics": "MONTH",
+      "deadline_date": null,
+      "deadline_display": "From December 2026, each HEI/ICT will conduct its own selection of candidates for the PEC-PG program.",
+      "deadline_precision": "month",
+      "source": {
+        "url": "https://www.gov.br/mre/en/subjects/culture-and-education/educational-themes/study-opportunities-for-international-applicants/pec-pg-graduate/selection-process-2",
+        "source_type": "official_government_page",
+        "publisher": "Ministry of Foreign Affairs of Brazil (Itamaraty / MRE) with CNPq",
+        "retrieved_at": "2026-10-05T15:35:03Z",
+        "as_of": "PEC-PG 2027 selection process page, published Aug 28, 2025 and updated Jul 07, 2026 01:28 PM; candidate-selection stage described for a.a. 2026-2027 awards paid March 2027 to March 2028",
+        "raw_extract": "The selection process for the PEC-PG program will consist of the following stages:\n\n-   From June 29th to August 13th, Brazilian institutions (HEIs/ICTs) will submit proposals to CNPq.\n-   In December 2026, CNPq will publish the list of HEIs/ICTs that will be eligible to receive PEC-PG students.\n-   From December 2026, each HEI/ICT will conduct its own selection of candidates for the PEC-PG program.\n-   Between March 2027 and March 2028, HEIs/ICTs must begin paying out scholarships.",
+        "exact_deadline_wording": "From December 2026, each HEI/ICT will conduct its own selection of candidates for the PEC-PG program.",
+        "confidence": "HIGH",
+        "notes": "The candidate-facing stage of PEC-PG is institution-run. The only timing the official page gives for it is a month, 'December 2026', with no day, and the page explicitly instructs applicants to 'Contact the HEIs/ICTs of your interest, or access their websites, to find out how to apply'. So this is MONTH with a null deadline_date; no day was invented. The page's other explicit dates - 'Deadline for challenging the Call Notice July 9, 2026' and 'Deadline for HEIs/ICTs to submit proposals to CNPq Until August 13, 2026' - are obligations on the Call Notice and on Brazilian institutions, not on scholarship applicants, and were deliberately not used as this record's deadline."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "month",
+        "deadline_display": "From December 2026, each HEI/ICT will conduct its own selection of candidates for the PEC-PG program."
+      },
+      "examined": [
+        "https://www.gov.br/mre/en/subjects/culture-and-education/educational-themes/study-opportunities-for-international-applicants/pec-pg-graduate/selection-process-2 (shard official_source_url) - fetched, month-level candidate stage only"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-16-2026/chamada-publica-cnpq-N-16-2026",
+          "reason": "Linked from the page as the original Portuguese Call Notice; the MRE page already carries the operative calendar, and the notice governs the institutional proposal round (HEI/ICT proposals) rather than the applicant deadline."
+        }
+      ]
+    }
+  ]
+}

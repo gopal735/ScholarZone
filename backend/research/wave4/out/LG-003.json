@@ -1,0 +1,245 @@
+{
+  "shard_id": "LG-003",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 360,
+      "title": "MEXT Scholarship for 2027 - Embassy Recommendation (Research Students)",
+      "outcome": "recovered",
+      "image_url": "https://www.mext.go.jp/en/mod/img/logo.png",
+      "image_source_url": "https://www.mext.go.jp/en/",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Official_source_url https://www.in.emb-japan.go.jp/education/japanese_government_scholarships.html returns HTTP 403 to every fetch attempt (plain webfetch, and Invoke-WebRequest with a Chrome user-agent plus Accept/Referer headers), so no logo could be read from that page. Fell back up the hierarchy to the awarding ministry's own English site, mext.go.jp, which is the official government domain for MEXT (Ministry of Education, Culture, Sports, Science and Technology), the named official_source of this record. The asset is the site's persistent <h1 class=\"logo\"> brand mark, alt text 'MEXT : Ministry of Education, Culture, Sports, Science and Technology' - an inline brand lockup, not a favicon and not page chrome. Verified live: HTTP 200, Content-Type image/png, 297x55 px, 12907 bytes. Identity match is exact: the MEXT mark is the brand of the ministry that awards this scholarship; the 2027 Research Students (Embassy Recommendation) guidelines are published on the same mext.go.jp domain (https://www.mext.go.jp/content/20260420-mxt-kotokoku01-000049243_02.pdf, verified reachable)."
+      },
+      "source": {
+        "url": "https://www.mext.go.jp/en/",
+        "publisher": "Ministry of Education, Culture, Sports, Science and Technology (MEXT), Japan",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "raw_extract": "<h1 class=\"logo\"><a href=\"/en/index.htm\"><img src=\"/en/mod/img/logo.png\" alt=\"MEXT : Ministry of Education, Culture, Sports, Science and Technology\" /></a></h1>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.in.emb-japan.go.jp/education/japanese_government_scholarships.html",
+        "https://www.studyinjapan.go.jp/en/smap-stopj-applications-research.html",
+        "https://www.studyinjapan.go.jp/en/planning/scholarship/",
+        "https://www.mext.go.jp/en/policy/education/highereducation/title02/detail02/1403917.htm"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.in.emb-japan.go.jp/education/japanese_government_scholarships.html",
+          "reason": "HTTP 403 Forbidden on repeated attempts with browser-like headers - page unreadable, so no asset could be verified from it"
+        },
+        {
+          "url": "https://www.studyinjapan.go.jp/en/assets/images/common/logo_adobe.png",
+          "reason": "Study in JAPAN portal wordmark - a related but different programme brand, not the MEXT mark that is the identity of this record"
+        },
+        {
+          "url": "https://www.studyinjapan.go.jp/ja/assets/images/common/icon_facebook.svg",
+          "reason": "social media icon"
+        },
+        {
+          "url": "https://www.studyinjapan.go.jp/ja/assets/images/common/study_in_japan.webp",
+          "reason": "portal brand of Study in JAPAN, not the awarding ministry's logo; sibling link-logo in the same partner footer row"
+        },
+        {
+          "url": "https://www.mext.go.jp/en/policy/education/highereducation/title02/detail02/1403917.htm",
+          "reason": "HTTP 404 - guessed URL, no page"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 606,
+      "title": "Overseas Scholarship for MS/M.Phil and Ph.D Studies (Phase-III), Higher Education Commission Pakistan",
+      "outcome": "recovered",
+      "image_url": "https://www.hec.gov.pk/SiteAssets/higher-education-commission-pakistan-logo.png",
+      "image_source_url": "https://www.hec.gov.pk/english/scholarshipsgrants/OSSPhase-III/Pages/default.aspx",
+      "image_source_type": "official_scholarship",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Fetched the record's official_source_url live (HTTP 200, SharePoint site 'Overseas Scholarships for PhD in Selected Phase-III'). The page's own SharePoint page context declares the site logo as /SiteAssets/higher-education-commission-pakistan-logo.png. Asset verified live: HTTP 200, image/png, 279x300 px, 74806 bytes. Rendered and inspected visually: full HEC emblem - star and crescent above the blue HEC roundel, green laurel wreath, green banner reading 'HIGHER EDUCATION COMMISSION'. This is the Higher Education Commission of Pakistan, the exact official_source of this record; not an unrelated department logo and not a favicon (checked: the page carries no favicon/apple-touch/og:image/tile meta referencing this asset). No programme-specific mark exists for OSS Phase-III, so the awarding body's official mark is the correct brand mark."
+      },
+      "source": {
+        "url": "https://www.hec.gov.pk/english/scholarshipsgrants/OSSPhase-III/Pages/default.aspx",
+        "publisher": "Higher Education Commission (HEC), Government of Pakistan",
+        "retrieved_at": "2026-10-05T15:28:46Z",
+        "raw_extract": "\"webTitle\":\"Overseas Scholarships for PhD in Selected Phase-III\" ... \"siteAbsoluteUrl\":\"https://www.hec.gov.pk\",\"siteId\":\"{2f4a338e-362f-4dfc-8928-c23cbb3bc205}\" ... \"webLogoUrl\":\"/SiteAssets/higher-education-commission-pakistan-logo.png\"",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.hec.gov.pk/english/scholarshipsgrants/OSSPhase-III/Pages/Partner-Agencies-and-Univesities.aspx"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.hec.gov.pk/Style%20Library/HEC/images/header-logo.svg",
+          "reason": "same emblem but declared viewBox 0 0 47 51 - a tiny header icon asset, rejected as favicon-sized badge even though the file itself is 409 KB of paths"
+        },
+        {
+          "url": "https://www.hec.gov.pk/Style%20Library/HEC/images/main-logo.png",
+          "reason": "118x171 low-resolution version of the same mark, grey circular treatment - too small to serve as the record logo"
+        },
+        {
+          "url": "https://www.hec.gov.pk/Style%20Library/HEC/images/menu-logo.png",
+          "reason": "76x84 low-resolution version - too small"
+        },
+        {
+          "url": "https://www.hec.gov.pk/_layouts/15/images/searchresultui.png",
+          "reason": "SharePoint search UI chrome"
+        },
+        {
+          "url": "https://www.hec.gov.pk/_layouts/15/images/spcommon.png",
+          "reason": "SharePoint sprite/UI chrome"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 704,
+      "title": "Allama Muhammad Iqbal Scholarship for Central Asia & Friendly Countries (Higher Education Commission, Pakistan)",
+      "outcome": "recovered",
+      "image_url": "https://www.hec.gov.pk/SiteAssets/higher-education-commission-pakistan-logo.png",
+      "image_source_url": "https://www.hec.gov.pk/english/scholarshipsgrants/CAFC/AMIC/Pages/default.aspx",
+      "image_source_type": "official_scholarship",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Fetched the record's official_source_url live (HTTP 200, SharePoint site 'Allama Muhammad Iqbal Scholarships for Students'). Page context declares \"webLogoUrl\":\"/SiteAssets/higher-education-commission-pakistan-logo.png\". Body text confirms identity: 'The Higher Education Commission of Pakistan (HEC) is pleased to announce the Allama Iqbal Scholarships for Central Asian and Friendly Countries.' No programme-specific mark is published for this scholarship, so the awarding body's official HEC logo is the correct brand mark. Asset verified live: HTTP 200, image/png, 279x300 px, 74806 bytes, and visually confirmed as the full HEC crest."
+      },
+      "source": {
+        "url": "https://www.hec.gov.pk/english/scholarshipsgrants/CAFC/AMIC/Pages/default.aspx",
+        "publisher": "Higher Education Commission (HEC), Government of Pakistan",
+        "retrieved_at": "2026-10-05T15:28:56Z",
+        "raw_extract": "\"webTitle\":\"Allama Muhammad Iqbal Scholarships for Students\" ... \"siteAbsoluteUrl\":\"https://www.hec.gov.pk\" ... \"webLogoUrl\":\"/SiteAssets/higher-education-commission-pakistan-logo.png\" | page body: \"The Higher Education Commission of Pakistan (HEC) is pleased to announce the Allama Iqbal Scholarships for Central Asian and Friendly Countries. Over a period of five years, the program will offer 350 scholarships to international students from Central Asian and friendly countries...\"",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.hec.gov.pk/english/scholarshipsgrants/CAFC/Pages/default.aspx"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.hec.gov.pk/Style%20Library/HEC/images/header-logo.svg",
+          "reason": "viewBox 0 0 47 51 header icon - favicon-sized badge"
+        },
+        {
+          "url": "https://www.hec.gov.pk/Style Library/HEC/images/main-logo.png",
+          "reason": "118x171 low-resolution variant"
+        },
+        {
+          "url": "https://www.hec.gov.pk/_layouts/15/images/spcommon.png",
+          "reason": "SharePoint UI sprite"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 705,
+      "title": "Allama Muhammad Iqbal Scholarships for Students from Bangladesh (Pak-Bangladesh Knowledge Corridor, Higher Education Commission Pakistan)",
+      "outcome": "recovered",
+      "image_url": "https://www.hec.gov.pk/SiteAssets/higher-education-commission-pakistan-logo.png",
+      "image_source_url": "https://www.hec.gov.pk/english/scholarshipsgrants/PBKC/Pages/AISB.aspx",
+      "image_source_type": "official_scholarship",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Fetched the record's official_source_url live (HTTP 200, 66387 bytes of HTML). Enumerated every <img src> on the page: the only raster/vector assets are SharePoint chrome (searchresultui.png, spcommon.png) and three header SVGs. No programme logo is published; the page declares \"webLogoUrl\":\"/SiteAssets/higher-education-commission-pakistan-logo.png\", the Higher Education Commission of Pakistan mark - the exact official_source of this record. Asset verified live on the official domain: HTTP 200, image/png, 279x300 px, 74806 bytes, visually confirmed as the full HEC crest (star and crescent, HEC roundel, laurel wreath, 'HIGHER EDUCATION COMMISSION' banner)."
+      },
+      "source": {
+        "url": "https://www.hec.gov.pk/english/scholarshipsgrants/PBKC/Pages/AISB.aspx",
+        "publisher": "Higher Education Commission (HEC), Government of Pakistan",
+        "retrieved_at": "2026-10-05T15:31:30Z",
+        "raw_extract": "\"siteAbsoluteUrl\":\"https://www.hec.gov.pk\",\"siteId\":\"{2f4a338e-362f-4dfc-8928-c23cbb3bc205}\" ... \"webLogoUrl\":\"/SiteAssets/higher-education-commission-pakistan-logo.png\"",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.hec.gov.pk/english/scholarshipsgrants/PBKC/Pages/default.aspx"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.hec.gov.pk/_layouts/15/images/searchresultui.png?rev=43",
+          "reason": "SharePoint search UI chrome"
+        },
+        {
+          "url": "https://www.hec.gov.pk/Style Library/HEC/images/header-search.svg",
+          "reason": "UI chrome (search icon)"
+        },
+        {
+          "url": "https://www.hec.gov.pk/Style Library/HEC/images/header-logo.svg",
+          "reason": "viewBox 0 0 47 51 icon-sized emblem - favicon-sized badge"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 706,
+      "title": "Allama Iqbal Scholarships for Srilankan Students (Pak-Sri Lanka Higher Education Cooperation Programme, Higher Education Commission Pakistan)",
+      "outcome": "recovered",
+      "image_url": "https://www.hec.gov.pk/SiteAssets/higher-education-commission-pakistan-logo.png",
+      "image_source_url": "https://www.hec.gov.pk/english/scholarshipsgrants/pshecp/aiss/Pages/default.aspx",
+      "image_source_type": "official_scholarship",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Fetched the record's official_source_url live (HTTP 200, 65706 bytes of HTML). Enumerated every <img src>: SharePoint chrome, three header SVGs, and an animated 'New-Blink.gif' UI decoration. No scholarship-specific logo is published. The page declares \"webLogoUrl\":\"/SiteAssets/higher-education-commission-pakistan-logo.png\" - the Higher Education Commission of Pakistan mark, which is the exact official_source of this record. Asset verified live on the official domain: HTTP 200, image/png, 279x300 px, 74806 bytes, visually confirmed as the full HEC crest."
+      },
+      "source": {
+        "url": "https://www.hec.gov.pk/english/scholarshipsgrants/pshecp/aiss/Pages/default.aspx",
+        "publisher": "Higher Education Commission (HEC), Government of Pakistan",
+        "retrieved_at": "2026-10-05T15:31:30Z",
+        "raw_extract": "\"siteAbsoluteUrl\":\"https://www.hec.gov.pk\" ... \"webLogoUrl\":\"/SiteAssets/higher-education-commission-pakistan-logo.png\"",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.hec.gov.pk/english/scholarshipsgrants/pshecp/Pages/default.aspx"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.hec.gov.pk/Style Library/HEC/images/New-Blink.gif",
+          "reason": "animated UI decoration / loading blink, not a brand mark"
+        },
+        {
+          "url": "https://www.hec.gov.pk/Style Library/HEC/images/header-logo.svg",
+          "reason": "viewBox 0 0 47 51 icon-sized emblem - favicon-sized badge"
+        },
+        {
+          "url": "https://www.hec.gov.pk/Style Library/HEC/images/footer-subscribe-icon.svg",
+          "reason": "newsletter subscribe UI icon"
+        }
+      ]
+    }
+  ]
+}

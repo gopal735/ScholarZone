@@ -1,0 +1,310 @@
+{
+  "shard_id": "DL-032",
+  "agent_completed": true,
+  "topic": "deadline",
+  "retrieved_session_date": "2026-10-05",
+  "records": [
+    {
+      "scholarship_id": 4,
+      "title": "Global Korea Scholarship (GKS)",
+      "outcome": "recovered",
+      "deadline_semantics": "MONTH",
+      "deadline_date": null,
+      "deadline_display": "Embassy Track: September / University Track: September - November",
+      "deadline_precision": "month",
+      "source": {
+        "url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
+        "source_type": "official_programme_page",
+        "publisher": "National Institute for International Education (NIIED) - Study in Korea (Korean Government)",
+        "retrieved_at": "2026-10-05T15:28:00Z",
+        "as_of": "Programme page describes the recurring annual GKS cycle (announcement in September, final results in December); it states no specific intake year and no day-level date.",
+        "raw_extract": "### Selection Process 1. 1 Announcement **NIIED** September 2. 2 Application Submission **Embassy University** Embassy Track: September / University Track: September - November 3. 3 Screening and Selection ... October - December 4. 4 Final Results **NIIED** December",
+        "exact_deadline_wording": "Embassy Track: September / University Track: September - November",
+        "confidence": "HIGH",
+        "notes": "Month-level timing only on the official programme page; no day is published there, so no calendar date is written. The shard's official_source_url (https://www.studyinkorea.go.kr, portal homepage) carries no deadline text, so the official programme page on the same official NIIED domain was used. The official GKS notice board shows the current cycle's guidelines were announced on 2026-09-09 ('2027 Global Korea Scholarship for Undergraduate Degrees') and that day-level deadlines live inside the attached official PDF, which was fetched but returned binary content that could not be read as text, so nothing from it is quoted or used. The same page publishes a different month window for GKS graduate degree programs ('Application Period : February' / 'Application Submission ... February - March'); that is a different programme, not a conflict, and was not applied to this record."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "month",
+        "deadline_display": "Embassy Track: September / University Track: September - November"
+      },
+      "examined": [
+        "https://www.studyinkorea.go.kr/ko/notice/scholarshipsList.do?boardSort=3 (official notice board; lists cycle announcements, no deadline text on the list itself)",
+        "https://www.studyinkorea.go.kr/en/plan/gksNoticeRead.do?bbsId=BBSMSTR_000000000461&nttId=4522 (official notice for the 2027 GKS-U guidelines; defers deadlines to an attached PDF)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://gksscholarships.com/wp-content/uploads/2026/09/GKS-Undergraduate-Scholarship-2027-GKS-U-Application-Guidelines-English.pdf",
+          "reason": "third-party mirror of the NIIED guideline; not the official domain and not fetched"
+        },
+        {
+          "url": "https://kecmx.net/wp-content/uploads/2026/09/2027-GKS-U-Application-Guidelines-English.pdf",
+          "reason": "third-party mirror of the NIIED guideline; not the official domain and not fetched"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 145,
+      "title": "Huayu Enrichment Scholarship (HES), Ministry of Education, Republic of China (Taiwan)",
+      "outcome": "recovered",
+      "deadline_semantics": "MONTH",
+      "deadline_date": null,
+      "deadline_display": "before the deadline specified in the scholarship guidelines issued by that authorized overseas office (usually in January or February each year)",
+      "deadline_precision": "month",
+      "source": {
+        "url": "https://english.moe.gov.tw/cp-24-24284-3ea37-1.html",
+        "source_type": "official_government_page",
+        "publisher": "Ministry of Education, Republic of China (Taiwan)",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": "Page dated 2020-12-14; site-wide 'Last Updated: 2026-09-15'; no cycle year stated in the deadline sentence itself.",
+        "raw_extract": "Applicants shall submit the following documents and apply to the authorized overseas office in their country of nationality or to the authorized overseas office that has jurisdiction over Taiwan-related matters in their country of nationality before the deadline specified in the scholarship guidelines issued by that authorized overseas office (usually in January or February each year). However, applications are not subject to being made in this way when another method is required to facilitate the implementation of a policy.",
+        "exact_deadline_wording": "before the deadline specified in the scholarship guidelines issued by that authorized overseas office (usually in January or February each year)",
+        "confidence": "HIGH",
+        "notes": "MOE publishes no single fixed day; it names a month window ('usually in January or February each year') and defers the exact date to each applicant's own ROC overseas mission. Month-level wording with no day, so MONTH/month with a null date; the word 'usually' is a month window, not a fixed date, and no day was invented. The shard's official_source_url (https://english.moe.gov.tw/cp-24-16833-23C09-1.html) is the MOE page for a DIFFERENT scholarship (Taiwan Scholarship Program) and contains no HES deadline apart from mentioning that a prior HES award is disqualifying; the correct official HES page was located through MOE's own Scholarships index (lp-24-1.html). The MOE 'HES International Student Directions' portal (https://taiwanscholarship.moe.gov.tw/web/index.aspx) is linked from that page but was not fetched, so nothing from it is quoted."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "month",
+        "deadline_display": "before the deadline specified in the scholarship guidelines issued by that authorized overseas office (usually in January or February each year)"
+      },
+      "examined": [
+        "https://english.moe.gov.tw/cp-24-16833-23C09-1.html (shard official_source_url - page for the Taiwan Scholarship Program, a different award; no HES deadline)",
+        "https://english.moe.gov.tw/lp-24-1.html (MOE Scholarships index; confirms the official HES page id, contains no deadline itself)"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 178,
+      "title": "Utrecht University Excellence Scholarships",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "No new UES applications will be accepted as of the upcoming admissions cycle.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.uu.nl/en/masters/utrecht-excellence-scholarships",
+        "source_type": "official_university_page",
+        "publisher": "Utrecht University",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": "Refers to programmes starting in the 2026-2027 academic year and 'the upcoming admissions cycle'.",
+        "raw_extract": "# Utrecht Excellence Scholarships\n\nDue to significant budget cuts, the Utrecht Excellence Scholarship (UES) will no longer be offered for programmes starting in the 2026\u20132027 academic year.\n\nNo new UES applications will be accepted as of the upcoming admissions cycle.\n\nIf you have already been awarded a UES, your scholarship remains unchanged and will continue as agreed.",
+        "exact_deadline_wording": "No new UES applications will be accepted as of the upcoming admissions cycle.",
+        "confidence": "HIGH",
+        "notes": "expired_mismatch: the record is verification_status 'active' but the official Utrecht University page states the UES is discontinued from the 2026-2027 academic year and that no new applications are accepted, so there is no open cycle to date. The record's own official_source_url (https://www.uu.nl/en/organisation/scholarships-and-grants/utrecht-university-excellence-scholarships) returns HTTP 404; the live official page above was used instead. The previously stored display '1 February (for September intake)' is NOT present on the live official page and was therefore not carried forward, per the rule against using a cached prior value with no live source behind it. No calendar date written; the record needs its status revisited rather than a deadline."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "No new UES applications will be accepted as of the upcoming admissions cycle."
+      },
+      "examined": [
+        "https://www.uu.nl/en/organisation/scholarships-and-grants/utrecht-university-excellence-scholarships (shard official_source_url - HTTP 404, no content)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.uu.nl/en/masters/general-information/application-and-admission/scholarships-and-grants/nl-scholarship",
+          "reason": "different scholarship (NL Scholarship); its 1 February deadline must not be used for UES, and the page was not fetched"
+        },
+        {
+          "url": "https://scholarsworld.ng/utrecht-excellence-scholarships/",
+          "reason": "third-party listing site/aggregator; not fetched and not official"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 215,
+      "title": "KOICA Scholarship Program (Scholarship Program, CIAT)",
+      "outcome": "recovered",
+      "deadline_semantics": "MONTH",
+      "deadline_date": null,
+      "deadline_display": "March - KOICA overseas office / Korean Embassy Screening Phase - Apply",
+      "deadline_precision": "month",
+      "source": {
+        "url": "https://www.koica.go.kr/ciat/7807/subview.do",
+        "source_type": "official_programme_page",
+        "publisher": "Korea International Cooperation Agency (KOICA) - CIAT",
+        "retrieved_at": "2026-10-05T15:32:00Z",
+        "as_of": null,
+        "raw_extract": "### Overview of Application Procedure - Procedure overview list Period Procedures Details March KOICA overseas office / Korean Embassy Screening Phase Apply - Prepare all required documents for your admission package and fill out the \u2018Document Checklist\u2019. - Submit the KOICA application forms via e-mail to KOICA overseas office/Korean Embassy). ... April To June Instituion (University) Screening Phase ... July Admission Notification ... August Final Screening Phase ... ** The written schedule is subject to change based on KOICA circumstances etc.",
+        "exact_deadline_wording": "March KOICA overseas office / Korean Embassy Screening Phase Apply",
+        "confidence": "MEDIUM",
+        "notes": "KOICA's official CIAT Application Procedure page publishes month-level phases only; no day-level deadline is published there, so no calendar date is written. Confidence MEDIUM because the same page's programme list is headed 'Programs for 2024 admission (20 Master's courses, 5 Doctoral Courses)', i.e. the schedule block is undated legacy content, and KOICA marks it 'subject to change based on KOICA circumstances etc.' The current-cycle official guideline does exist: KOICA's own CIAT notice page lists '[Scholarship Program] 2027 KOICA Application Guideline and Application Form' dated Jun. 08, 2026 with attachment '[KOICA SP] 2027 KOICA Scholarship Program Guideline(2).pdf'; that PDF was fetched from koica.go.kr but returned binary content that could not be read as text, so nothing from it is quoted and no date from it was used. The shard's official_source_url (https://www.koica.go.kr/eng) failed with a transport error."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "month",
+        "deadline_display": "March - KOICA overseas office / Korean Embassy Screening Phase - Apply"
+      },
+      "examined": [
+        "https://www.koica.go.kr/eng (shard official_source_url - transport error, no content retrieved)",
+        "https://www.koica.go.kr/ciat/7815/subview.do?enc=Zm5jdDF8QEB8JTJGYmJzJTJGY2lhdCUyRjE5NTIlMkYzOTA1NTIlMkZhcnRjbFZpZXcuZG8lM0Y%3D (official CIAT notice board; confirms the 2027 guideline notice, no deadline text in HTML)",
+        "https://www.koica.go.kr/bbs/ciat/1952/354322/download.do (official 2027 guideline PDF - fetched but binary/unparseable, so unusable as a quote)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://ge.mofa.go.kr/ge-en/brd/m_28696/view.do?seq=118",
+          "reason": "Korean Embassy in Georgia country-specific notice; a per-embassy date for one country, not KOICA's programme-level deadline, and not fetched"
+        },
+        {
+          "url": "https://becas.mef.gov.py/media/archivos_oferentes/KOICA%20CIAT%202027/5._Gu%C3%ADa_de_Aplicaci%C3%B3n_Maestrias_y_Doctorados_A%C3%B1o_2027-28_30.pdf",
+          "reason": "KOICA guideline PDF mirrored on a third-party government/university server; not the live official document and not fetched"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 467,
+      "title": "MOE Short Term Research Award (STRA)",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Applications must arrive at the host institution no later than September 30 each year.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://english.moe.gov.tw/cp-24-16836-FEE8B-1.html",
+        "source_type": "official_government_page",
+        "publisher": "Ministry of Education, Republic of China (Taiwan)",
+        "retrieved_at": "2026-10-05T15:28:00Z",
+        "as_of": "Page dated 2020-12-08; the deadline sentence is written as a standing annual rule ('each year') with no cycle year attached.",
+        "raw_extract": "Applications for an STRA to undertake a research project in Taiwan in the following year must be submitted to a university, or tertiary college in Taiwan, or a research organization affiliated with the MOE\u2014such as the Center for Chinese Studies, or the National Academy for Educational Research\u2014at which the applicant would like to undertake research (referred to below as \u201cthe host institution\u201d). Applications must arrive at the host institution no later than September 30 each year.",
+        "exact_deadline_wording": "Applications must arrive at the host institution no later than September 30 each year.",
+        "confidence": "HIGH",
+        "notes": "The source states a recurring annual deadline (30 September each year, for research in the following year). Per the contract this is ANNUAL/recurring with a null date and was NOT converted into a calendar date. Not an expired_mismatch: the deadline is explicitly recurring ('each year'), so the elapsed 30 September is not a stale one-off value for an open record - the next occurrence is the following year's 30 September. MOE publishes no day-varying round beyond this rule."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "recurring",
+        "deadline_display": "Applications must arrive at the host institution no later than September 30 each year."
+      },
+      "examined": [
+        "https://english.moe.gov.tw/lp-24-1.html (MOE Scholarships index confirming this is the official STRA page; no deadline text of its own)"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 516,
+      "title": "GKS (Global Korea Scholarship) Program - Undergraduate Degree Programs",
+      "outcome": "recovered",
+      "deadline_semantics": "MONTH",
+      "deadline_date": null,
+      "deadline_display": "Embassy Track: September / University Track: September - November",
+      "deadline_precision": "month",
+      "source": {
+        "url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
+        "source_type": "official_programme_page",
+        "publisher": "National Institute for International Education (NIIED) - Study in Korea (Korean Government)",
+        "retrieved_at": "2026-10-05T15:28:00Z",
+        "as_of": "Undergraduate degree programme section of the official GKS page; annual cycle, no intake year or day-level date published there.",
+        "raw_extract": "### Selection Process 1. 1 Announcement **NIIED** September 2. 2 Application Submission **Embassy University** Embassy Track: September / University Track: September - November 3. 3 Screening and Selection ... October - December 4. 4 Final Results **NIIED** December ※ For detailed information, please refer to the application guidelines and announcements posted in the GKS notices.",
+        "exact_deadline_wording": "Embassy Track: September / University Track: September - November",
+        "confidence": "HIGH",
+        "notes": "Month-level timing only; no day is published on this page, so no calendar date was written. The official GKS notice board confirms the current cycle: '2027 Global Korea Scholarship for Undergraduate Degrees / 2027년 정부초청 외국인 학부 장학생 모집 요강', GKS Team, 2026-09-09, which states 'For detailed information on application deadlines, required documents, schedules, and other procedures, please refer to the attached Application Guidelines.' The attached official English guideline PDF ('2027 GKS-U Application Guidelines (English) 0914.pdf') was fetched but returned binary content that could not be read as text, so no day-level date from it is quoted or used. University's own University Track deadlines are per-institution, so a single date could not be derived. Same-day state of the apply button on the page reads 'It is not the application period.' (JavaScript-gated)."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "month",
+        "deadline_display": "Embassy Track: September / University Track: September - November"
+      },
+      "examined": [
+        "https://www.studyinkorea.go.kr/en/plan/gksNoticeRead.do?bbsId=BBSMSTR_000000000461&nttId=4522 (official 2027 GKS-U guideline notice; defers deadlines to attachments)",
+        "https://www.studyinkorea.go.kr/ko/notice/scholarshipsList.do?boardSort=3 (official GKS notice board listing the 2027 cycle announcements)",
+        "https://www.studyinkorea.go.kr/public/v3/download/gks_undergraduate_user_guide.pdf (official NIIED user guide - fetched but binary/unparseable, so unusable as a quote)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.uakoreaedu.org/doc/2027%20GKS-U%20Application%20Guidlines%20(Korean).pdf",
+          "reason": "third-party university mirror of the NIIED guideline; not the official domain and not fetched"
+        },
+        {
+          "url": "https://www.mofa.go.kr/ke-en/brd/m_10538/view.do?seq=761541",
+          "reason": "Kenyan embassy country-specific announcement with a day-level online window; per-country guidance for one embassy, not fetched, and not used in place of NIIED's own programme page"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 567,
+      "title": "Swiss-European Mobility Programme (SEMP) - Incoming Mobility to Switzerland",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Deadlines provided by their home institution",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://movetia.ch/en/funding-opportunities/student-exchange/semester-abroad-for-students",
+        "source_type": "official_programme_page",
+        "publisher": "Movetia (Swiss agency for exchange and mobility)",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": "Page describes the current Swiss Programme for Erasmus+ and states the next call 'will therefore likely be launched within the framework of Erasmus+' with 'Detailed information will be published here in autumn 2026'.",
+        "raw_extract": "### Deadlines\n\nFor participants:\n\n-   Deadlines provided by their home institution\u00a0\n\nFor institutions:\n\n-   Application for accreditation: can be submitted annually at the beginning of March\n-   Application for funding: can be submitted annually at the beginning of March\n-   Start of the funding period: 1 June\n\n### Next steps\n\n### For institutions:\n\nNext application deadline: spring 2027 likely under Erasmus+",
+        "exact_deadline_wording": "Deadlines provided by their home institution",
+        "confidence": "HIGH",
+        "notes": "UNKNOWN for this record's level. Movetia, the programme operator, publishes NO participant-level (incoming student) deadline: 'Deadlines provided by their home institution', i.e. the date is set per applicant by their own home/host institution's International Relations Office. No day or even month can be written for an individual incoming applicant, and 'Deadlines provided by their home institution' is not an explicit rolling/continuous-intake statement either, so neither ROLLING nor MONTH was asserted. The institutional-level lines on the same page ('Application for accreditation / for funding: can be submitted annually at the beginning of March', funding period starts 1 June) describe Swiss institutions applying to Movetia, a different applicant level from an incoming student, so they were NOT used as this record's value. Movetia also states the next institutional deadline as 'spring 2027 likely under Erasmus+' - month-level but hedged and institution-level. The shard's official_source_url (https://movetia.ch/en/funding-opportunities/study-in-switzerland) returns HTTP 404; the live equivalent English page above was used. The prior stored 'rolling/institutional March' framing was not carried forward because no fetched official page supports rolling intake for students."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "Deadlines provided by their home institution"
+      },
+      "examined": [
+        "https://movetia.ch/en/funding-opportunities/study-in-switzerland (shard official_source_url - HTTP 404, no content)",
+        "https://movetia.ch/en/funding-opportunities/student-exchange (funding-opportunities hub - no participant deadline)",
+        "https://movetia.ch/en/how-to/guidance-and-funding-practice/planning-your-project/swiss-european-mobility-programme (official SEMP how-to page; German-language institutional section gives past, dated 2026 institution-level deadlines - 'Frist für die ECHE-Akkreditierung: 24. März 2026' and 'Bitte beachten Sie, dass die Antragsfrist für die Fördermittel der 4. März 2026 ist.' - not a participant/student deadline and already past, so not used)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://movetia.ch/en/funding-opportunities/student-exchange/semester-abroad-for-students#deadlines",
+          "reason": "rejected only as an inference path: the institutional March/1 June cycle must not be applied to an incoming student's own deadline"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 667,
+      "title": "Arab Fund Fellowship for Academic Excellence (برنامج الزمالات للتميز الأكاديمي)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.arabfund.org/overview/fellowships-program",
+        "source_type": "official_programme_page",
+        "publisher": "Arab Fund for Economic and Social Development (AFESD)",
+        "retrieved_at": "2026-10-05T15:36:00Z",
+        "as_of": null,
+        "raw_extract": "",
+        "exact_deadline_wording": null,
+        "confidence": "LOW",
+        "notes": "No official page could be retrieved, so no quote and no value. Every attempt on the official Arab Fund domain returned HTTP 403 (bot-protected): /overview/fellowships-program, /overview/fellowships-program/ (trailing slash), /overview/fellowships, /en/overview/fellowships-program, /Overview/Fellowships-Program, /overview and the site root (request timeout). The official application portal https://zamalat.arabfund.org/ returned a transport error on two attempts (root and /index.php). Because no live official content was read, the record's previously stored 'rolling' value (submission at least one year before the stay) could NOT be verified and was deliberately not carried forward; search-result snippets and aggregator/third-party copies of the Arab Fund fellowship text were seen but are explicitly not admissible evidence. Semantics remain UNKNOWN pending a reachable official page."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "null"
+      },
+      "examined": [
+        "https://www.arabfund.org/overview/fellowships-program (shard official_source_url - HTTP 403)",
+        "https://www.arabfund.org/overview/fellowships-program/ (HTTP 403)",
+        "https://www.arabfund.org/overview/fellowships (HTTP 403)",
+        "https://www.arabfund.org/en/overview/fellowships-program (HTTP 403)",
+        "https://www.arabfund.org/Overview/Fellowships-Program (HTTP 403)",
+        "https://www.arabfund.org/overview (HTTP 403)",
+        "https://www.arabfund.org/ (request timed out)",
+        "https://zamalat.arabfund.org/ (transport error)",
+        "https://zamalat.arabfund.org/index.php (transport error)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://academicpositions.com/ad/the-arab-fund-for-economic-and-social-development/2026/the-arab-fund-fellowships-program/249827",
+          "reason": "third-party job/listing aggregator; its '2026-12-31' deadline is an aggregator artefact, not an Arab Fund publication, and was not fetched"
+        },
+        {
+          "url": "https://applyscholars.com/arab-fund-fellowships-program/",
+          "reason": "third-party scholarship aggregator; not official and not fetched"
+        },
+        {
+          "url": "https://www.linkedin.com/posts/afesd_arabfund-activity-7494638782843928577-IV2q",
+          "reason": "social media post; explicitly inadmissible under the contract"
+        }
+      ]
+    }
+  ]
+}

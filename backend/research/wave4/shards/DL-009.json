@@ -1,0 +1,110 @@
+{
+  "shard_id": "DL-009",
+  "topic": "deadline",
+  "hosts": [
+    "finaid.itb.ac.id",
+    "studyinlatvia.lv",
+    "www.bi.no",
+    "www.griffith.edu.au",
+    "www.studyinbelgium.be"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 274,
+      "title": "BI Presidential Scholarship",
+      "official_source": "BI Norwegian Business School",
+      "official_source_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-presidential-scholarships",
+      "catalogue_url": null,
+      "country": "Norway",
+      "deadline_display": "1 March 2026",
+      "deadline_precision": "varies",
+      "application_period": "The application deadline is March 1.",
+      "verification_status": "active"
+    },
+    {
+      "id": 275,
+      "title": "Master International Scholarship – Bergen",
+      "official_source": "BI Norwegian Business School",
+      "official_source_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/master-of-science-international-scholarship--bergen",
+      "catalogue_url": null,
+      "country": "Norway",
+      "deadline_display": "Application deadline is March 1. International applicants must upload a complete application for admission, including the scholarship application, to the online application portal. Applications for scholarship are not accepted by email. Late applications will not be considered.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual: scholarship materials uploaded with the admission application before 1 March; results notified by the end of April.",
+      "verification_status": "active"
+    },
+    {
+      "id": 276,
+      "title": "BI International Baccalaureate Scholarship",
+      "official_source": "BI Norwegian Business School",
+      "official_source_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-international-baccalaureate-scholarship",
+      "catalogue_url": null,
+      "country": "Norway",
+      "deadline_display": "March 1 for international applicants who do not reside in Norway. April 15 for Norwegian citizens and international citizens enrolled in Norwegian high school or who are residents of Norway; those applicants apply for admission by April 15 and must then submit their final diploma no later than July 7.",
+      "deadline_precision": "varies",
+      "application_period": "Annual: 1 March for international applicants not resident in Norway; 15 April for Norwegian citizens and residents, with the final diploma due by 7 July. Bachelor's scholarships are awarded in two rounds, end of April and July.",
+      "verification_status": "active"
+    },
+    {
+      "id": 277,
+      "title": "Future African Leader Scholarship",
+      "official_source": "BI Norwegian Business School",
+      "official_source_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/future-african-leader-scholarship",
+      "catalogue_url": null,
+      "country": "Norway",
+      "deadline_display": "Application deadline is March 1. International and domestic applicants must upload a complete application for admission, including the scholarship application, to the online application portal. Applications for scholarship are not accepted by email. Late applications will not be considered.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual: scholarship materials uploaded with the admission application before 1 March; results notified by the end of April. Two MSc scholarships are offered.",
+      "verification_status": "active"
+    },
+    {
+      "id": 284,
+      "title": "Erasmus Mundus Joint Masters Degrees (EMJMD/EMJM) Scholarships",
+      "official_source": "European Commission (Erasmus+ Programme)",
+      "official_source_url": "https://www.studyinbelgium.be/en/scholarships/erasmus-mundus-joint-masters-degrees-emjmd",
+      "catalogue_url": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
+      "country": "Belgium",
+      "deadline_display": "In most cases you should submit your application between October and January for courses starting the following academic year. Deadlines are set by each individual consortium.",
+      "deadline_precision": "varies",
+      "application_period": "Each consortium sets its own deadlines; the European Commission states that in most cases applications are submitted between October and January for courses starting the following academic year.",
+      "verification_status": "active"
+    },
+    {
+      "id": 585,
+      "title": "Latvian State Scholarship for Foreign Students (Scholarship for Studies in Latvia)",
+      "official_source": "State Education Development Agency (VIAA), Latvia",
+      "official_source_url": "https://studyinlatvia.lv/scholarships",
+      "catalogue_url": "https://scholarships.viaa.gov.lv",
+      "country": "Latvia",
+      "deadline_display": "1 April (annual call closes); applications open 1 February",
+      "deadline_precision": "recurring",
+      "application_period": "1 February - 1 April annually",
+      "verification_status": "active"
+    },
+    {
+      "id": 613,
+      "title": "International Academic Merit Scholarship (Griffith University)",
+      "official_source": "Griffith University",
+      "official_source_url": "https://www.griffith.edu.au/international/scholarships-finance/scholarships/international-academic-merit-scholarship",
+      "catalogue_url": "https://www.griffith.edu.au/international/scholarships-finance",
+      "country": "Australia",
+      "deadline_display": "No closing date - the scholarship is assessed automatically when you apply to study at Griffith",
+      "deadline_precision": "rolling",
+      "application_period": "Rolling. Official start options: Trimester 3, 2025 or any trimester in 2026 or 2027. Students who defer commencement to 2028 or later are not eligible.",
+      "verification_status": "needs_review"
+    },
+    {
+      "id": 708,
+      "title": "ITB International Undergraduate Scholarship",
+      "official_source": "Institut Teknologi Bandung (ITB)",
+      "official_source_url": "https://finaid.itb.ac.id/itb-international-undergraduate-scholarship",
+      "catalogue_url": "https://www.itb.ac.id/scholarship",
+      "country": "Indonesia",
+      "deadline_display": "The 2026 intake document-submission window ran from 5 June to 1 July 2026 and has closed; the following stages (finalization deadline and the ITB academic and English-language qualification simulation) were marked 'Will be informed later' when the page was read",
+      "deadline_precision": "recurring",
+      "application_period": "The page published on 2026-10-04 is headed '2026 INTAKE' and its selection milestones show Step 1 document submission and online registration from 5 June to 1 July 2026, followed by a finalization deadline marked 'Will be informed later' and an ITB AQ and ELQ simulation stage. No 2027 intake window was published at the time of checking, so this is treated as a recurring annual award whose next cycle follows the same pattern.",
+      "verification_status": "active"
+    }
+  ]
+}

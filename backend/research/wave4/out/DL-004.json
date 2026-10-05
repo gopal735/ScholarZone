@@ -1,0 +1,291 @@
+{
+  "shard_id": "DL-004",
+  "agent_completed": true,
+  "agent_id": "DL-004",
+  "topic": "deadline",
+  "records": [
+    {
+      "scholarship_id": 203,
+      "title": "Flinders International Postgraduate Research Scholarship (FIPRS)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Applications close Thursday 18 June 2026 Australian Central Standard Time.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.flinders.edu.au/scholarships/flinders-university-international-research-scholarship",
+        "source_type": "official_scholarship_page",
+        "publisher": "Flinders University",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "as_of": "2027 HDR Annual Scholarship Round - International; page footer states \"Last Updated: 28 Apr 2026\"",
+        "raw_extract": "**Closing date**\n\n18-06-2026\n\n**Opening date**\n\n30-04-2026\n\n\"Applications close Thursday 18 June 2026 Australian Central Standard Time.\"",
+        "exact_deadline_wording": "Applications close Thursday 18 June 2026 Australian Central Standard Time.",
+        "confidence": "HIGH",
+        "notes": "The official Flinders scholarship page states an explicit calendar deadline of 18 June 2026 (ACST) for the 2027 HDR Annual Scholarship Round - International, with an opening date of 30 April 2026. Both the structured 'Closing date' field (18-06-2026) and the prose sentence agree. However, 18 June 2026 is in the past relative to the retrieval date of 2026-10-05, while the record is flagged verification_status=active (open/upcoming). Per brief section 6 this is an expired_mismatch: the stale date is deliberately NOT written and has NOT been silently rolled forward to 2027. The award is annual, so a future 2028 HDR round will exist, but the page publishes no later closing date, so no upcoming date can be established. Applicant must also lodge an HDR admission application before the scholarship application."
+      },
+      "field_mapping": {
+        "deadline_date": "null (source deadline 2026-06-18 already passed; not written per expired_mismatch rule)",
+        "deadline_precision": "exact",
+        "deadline_display": "Applications close Thursday 18 June 2026 Australian Central Standard Time."
+      },
+      "examined": [
+        "https://www.flinders.edu.au/content/dam/documents/scholarships/2027%20hdr-scholarships-international-fact-sheet.pdf"
+      ],
+      "rejected_sources": [],
+      "examined_note": "The linked fact sheet PDF was not needed as evidence: the live scholarship page itself states the closing date explicitly and unambiguously. Writing that past date as the record's upcoming deadline was rejected per the expired_mismatch rule rather than accepting or rolling it forward."
+    },
+    {
+      "scholarship_id": 257,
+      "title": "University of Otago Global Scholarships",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Opening date: 1 May in year prior to study for offshore students; 1 July for onshore students. Closing dates: 10 December for semester 1 (February) start; 30 April for semester 2 (July) start for offshore students; 15 August for onshore students.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.otago.ac.nz/international/future-students/subjects-courses/postgraduate-study/scholarships/global-scholarships",
+        "source_type": "official_university_page",
+        "publisher": "University of Otago | Otakou Whakaihu Waka",
+        "retrieved_at": "2026-10-05T15:32:00Z",
+        "as_of": "No cycle year stated on the page; describes recurring annual Entrance Scholarship timing",
+        "raw_extract": "Opening date\t1 May in year prior to study for offshore students\n1 July for onshore students\nClosing dates\t10 December for semester 1 (February) start\n30 April for semester 2 (July) start for offshore students\n15 August for onshore students",
+        "exact_deadline_wording": "Closing dates: 10 December for semester 1 (February) start; 30 April for semester 2 (July) start for offshore students; 15 August for onshore students",
+        "confidence": "MEDIUM",
+        "notes": "The official scholarship detail page gives recurring month-and-day timing with NO year attached, split by applicant residency status (offshore vs onshore) and by intended semester of start. This is recurring annual timing, so per brief section 6 no calendar date is written. NOTE: the shard's official_source_url is the general 'Scholarships for International Students' hub page (https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships#global-scholarship); that hub page contains NO dates for this scholarship and instead says 'Scholarship offers must be actively accepted by the deadline indicated in the scholarship offer letter'. The scholarship-specific detail page reached via that hub's own 'Details of University of Otago Global Scholarships' link is the higher-ranked official source and states the closing dates above. The two statements describe different steps (Entrance Scholarship application window vs. acceptance deadline printed in the individual offer letter) rather than two conflicting dates for the same deadline, so this is not classified CONFLICTING. Confidence is MEDIUM because which of the two steps the catalogue's 'deadline' field should mean is ambiguous.",
+        "shard_url_404_or_unused": "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships#global-scholarship (live but carries no dates)"
+      },
+      "field_mapping": {
+        "deadline_date": "null (recurring annual month/day timing, no year published)",
+        "deadline_precision": "recurring",
+        "deadline_display": "Opening date: 1 May in year prior to study for offshore students; 1 July for onshore students. Closing dates: 10 December for semester 1 (February) start; 30 April for semester 2 (July) start for offshore students; 15 August for onshore students."
+      },
+      "examined": [
+        "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships#global-scholarship"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 258,
+      "title": "Vice-Chancellor's Scholarships for International Students",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Opening date: 1 May in year prior to study for offshore students; 1 July for onshore students. Closing dates: 10 December for semester 1 (February) start; 30 April for semester 2 (July) start for offshore students; 15 August for onshore students.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.otago.ac.nz/international/future-students/subjects-courses/postgraduate-study/scholarships/vice-chancellors-scholarship-for-international-students",
+        "source_type": "official_university_page",
+        "publisher": "University of Otago | Otakou Whakaihu Waka",
+        "retrieved_at": "2026-10-05T15:32:00Z",
+        "as_of": "No cycle year stated on the page; describes recurring annual Entrance Scholarship timing",
+        "raw_extract": "Opening date\t\n\n1 May in year prior to study for offshore students\n1 July for onshore students\n\nClosing dates\t10 December for semester 1 (February) start\n30 April for semester 2 (July) start for offshore students\n15 August for onshore students",
+        "exact_deadline_wording": "Closing dates: 10 December for semester 1 (February) start; 30 April for semester 2 (July) start for offshore students; 15 August for onshore students",
+        "confidence": "MEDIUM",
+        "notes": "Official scholarship detail page states recurring month-and-day timing with no year, split by offshore/onshore residency status and intended semester. Recorded as ANNUAL/recurring with no calendar date, per brief section 6. The shard's official_source_url is the general international scholarships hub page (#vice-chancellors); that hub page carries no dates for this scholarship and instead says 'Scholarship offers must be actively accepted by the deadline indicated in the scholarship offer letter'. That hub statement concerns acceptance of an individual offer rather than the application window, so it is not a contradiction of the same deadline and CONFLICTING is not warranted. Note this scholarship appears to be the same award as record 408; both resolve to the same official page and the same wording, so there is no disagreement between them.",
+        "shard_url_404_or_unused": "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships#vice-chancellors (live but carries no dates)"
+      },
+      "field_mapping": {
+        "deadline_date": "null (recurring annual month/day timing, no year published)",
+        "deadline_precision": "recurring",
+        "deadline_display": "Opening date: 1 May in year prior to study for offshore students; 1 July for onshore students. Closing dates: 10 December for semester 1 (February) start; 30 April for semester 2 (July) start for offshore students; 15 August for onshore students."
+      },
+      "examined": [
+        "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships#vice-chancellors"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 259,
+      "title": "University of Otago International Academic Excellence Scholarships",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Opening date 1 May in year prior to study. Closing date 2 weeks upon invitation to apply.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.otago.ac.nz/international/future-students/subjects-courses/postgraduate-study/scholarships/international-academic-excellence-scholarship",
+        "source_type": "official_university_page",
+        "publisher": "University of Otago | Otakou Whakaihu Waka",
+        "retrieved_at": "2026-10-05T15:32:00Z",
+        "as_of": "No cycle year stated on the page",
+        "raw_extract": "Opening date\t1 May in year prior to study\nClosing date\t2 weeks upon invitation to apply",
+        "exact_deadline_wording": "Closing date: 2 weeks upon invitation to apply",
+        "confidence": "HIGH",
+        "notes": "The official scholarship page does state a closing date, but it is relative rather than calendar-based: '2 weeks upon invitation to apply'. Applicants are only invited after accepting an earlier offer: 'Upon a successful offer of place into the applicant's chosen programme(s) of study, eligible candidates will be invited to apply and provide further information for consideration for this award.' Because the deadline is anchored to an individually-issued invitation with no calendar anchor, no calendar date is derivable and this is deliberately NOT recorded as EXACT, MONTH or ROLLING (the page never says rolling or anytime). The 2-week response window is recorded verbatim in deadline_display so the information is not lost. Outcome is therefore unknown with precision unknown, per the rule that a plausible invention is worse than a truthful UNKNOWN.",
+        "related_window": "invitation-triggered; 2-week response window"
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "Closing date 2 weeks upon invitation to apply (invitation-triggered; no calendar date is published)"
+      },
+      "examined": [
+        "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships#academic-excellence"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 355,
+      "title": "Mastercard Foundation Scholars Program at Sciences Po (Graduate Level)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Detailed information and the application timeline for requesting an application fee waiver as part of the Mastercard Foundation Scholars Program eligibility process will be published on this page shortly. Applications for the fee waiver will be open from October to mid-December 2026.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.sciencespo.fr/students/en/fees-funding/bursaries-financial-aid/mastercard-foundation-scholarships/graduate-study",
+        "source_type": "official_programme_page",
+        "publisher": "Sciences Po",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "as_of": "2027 intake; page footer states (c)2026 Sciences Po",
+        "raw_extract": "**Detailed information and the application timeline** for requesting an application fee waiver as part of the Mastercard Foundation Scholars Program eligibility process will be published on this page **shortly**.\n\n**Applications for the fee waiver will be open from October to mid-December 2026.**",
+        "exact_deadline_wording": "Applications for the fee waiver will be open from October to mid-December 2026.",
+        "confidence": "HIGH",
+        "notes": "The official Mastercard Foundation Scholars Program page at Sciences Po explicitly states that the application timeline will be published 'shortly', i.e. the programme's own application deadline has NOT been published. The only timing statement on the page is a month-level window for the application FEE WAIVER (a prerequisite eligibility step, not the scholarship application deadline): 'Applications for the fee waiver will be open from October to mid-December 2026.' That window is recorded verbatim but is not promoted to the record's deadline, because it describes a different step and no day is given. Verified on the official Sciences Po admissions deadlines calendar, which lists 'Mastercard Scholarship' under 'Scholarships deadlines' but only links back to this same programme page and gives no date, stating instead: 'If you are applying for a Boutmy or Mastercard scholarship for your two-year master's programme at Sciences Po, you must submit your application before the deadline of the scholarship, regardless of the selected programmes.' The 21 February 2027 closing date published on that calendar is the deadline for the two-year Master's programme international admissions procedure, NOT the scholarship deadline, and per brief section 5 a generic admissions deadline for a different procedure must not be used as evidence here. Result: truthful UNKNOWN.",
+        "fee_waiver_window": "October to mid-December 2026 (month-level window, prerequisite step)",
+        "unpublished_at_retrieval": true
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "Scholarship application timeline not yet published; fee waiver applications open October to mid-December 2026"
+      },
+      "examined": [
+        "https://www.sciencespo.fr/admissions/en/graduate/international-admissions/",
+        "https://www.sciencespo.fr/admissions/en/graduate/international-admissions/deadlines/"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.sciencespo.fr/admissions/en/graduate/international-admissions/deadlines/",
+          "reason": "Its 'Closing date ... 21 February 2027' is the deadline for the two-year Master's programme international admissions procedure, a different procedure from the Mastercard Foundation scholarship application. Brief section 5 forbids using a generic admissions deadline for a different programme."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 408,
+      "title": "Vice-Chancellor's Scholarship for International Students",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Opening date: 1 May in year prior to study for offshore students; 1 July for onshore students. Closing dates: 10 December for semester 1 (February) start; 30 April for semester 2 (July) start for offshore students; 15 August for onshore students.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.otago.ac.nz/courses/scholarships/vice-chancellors-scholarship-for-international-students",
+        "source_type": "official_university_page",
+        "publisher": "University of Otago | Otakou Whakaihu Waka",
+        "retrieved_at": "2026-10-05T15:33:00Z",
+        "as_of": "No cycle year stated on the page; describes recurring annual Entrance Scholarship timing",
+        "raw_extract": "Value\tNZD$10,000\nNumber offered\tVaries\nOpening date\t\n\n1 May in year prior to study for offshore students\n1 July for onshore students\n\nClosing dates\t10 December for semester 1 (February) start\n30 April for semester 2 (July) start for offshore students\n15 August for onshore students",
+        "exact_deadline_wording": "Closing dates: 10 December for semester 1 (February) start; 30 April for semester 2 (July) start for offshore students; 15 August for onshore students",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url (https://www.otago.ac.nz/courses/scholarships/vice-chancellors-international-postgraduate-scholarships) is DEAD: it returns HTTP 404 with the body 'The page you requested could not be found.' The live replacement was located on the same official domain at /courses/scholarships/vice-chancellors-scholarship-for-international-students (HTTP 200, page title 'Vice-Chancellor's Scholarship for International Students, Scholarships Database | University of Otago'), which carries the opening/closing dates quoted here. That page is the scholarship-specific official scholarship-database entry and is a higher-ranked source than the hub page. The dates are recurring month-and-day with no year, split by offshore/onshore residency status and intended semester, so ANNUAL/recurring is recorded and no calendar date is invented. This award appears to be the same scholarship as record 258; both resolve to the same official page with identical wording, so the two records agree and this is not a conflict.",
+        "shard_url_status": "404 Not Found (dead link in shard; live equivalent used)"
+      },
+      "field_mapping": {
+        "deadline_date": "null (recurring annual month/day timing, no year published)",
+        "deadline_precision": "recurring",
+        "deadline_display": "Opening date: 1 May in year prior to study for offshore students; 1 July for onshore students. Closing dates: 10 December for semester 1 (February) start; 30 April for semester 2 (July) start for offshore students; 15 August for onshore students."
+      },
+      "examined": [
+        "https://www.otago.ac.nz/courses/scholarships/vice-chancellors-international-postgraduate-scholarships",
+        "https://www.otago.ac.nz/courses/scholarships?vice-chancellor",
+        "https://www.otago.ac.nz/courses/scholarships/vice-chancellors-international-scholarship"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.otago.ac.nz/courses/scholarships/vice-chancellors-international-postgraduate-scholarships",
+          "reason": "HTTP 404 - dead page, no content available."
+        },
+        {
+          "url": "https://www.otago.ac.nz/courses/scholarships/vice-chancellors-international-scholarship",
+          "reason": "HTTP 404 - candidate URL tested while relocating the dead shard link; no content."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 409,
+      "title": "University of Otago International Master's Research Scholarship",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "Applicants can apply anytime but applications will be reviewed four times a year (1 March, 1 June, 1 September and 1 November)",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://www.otago.ac.nz/courses/scholarships/university-of-otago-international-masters-research-scholarship",
+        "source_type": "official_university_page",
+        "publisher": "University of Otago | Otakou Whakaihu Waka",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "as_of": "No cycle year stated on the page; describes continuous intake with quarterly review rounds",
+        "raw_extract": "Closing date\tApplicants can apply anytime but applications will be reviewed four times  a year (1 March, 1 June,  1 September and 1 November)",
+        "exact_deadline_wording": "Applicants can apply anytime but applications will be reviewed four times a year (1 March, 1 June, 1 September and 1 November)",
+        "confidence": "HIGH",
+        "notes": "The official scholarship database page states explicitly that applicants can apply at any time; the only fixed points named are four internal review rounds per year. This satisfies the brief's ROLLING definition ('source explicitly says rolling / no fixed deadline'), so deadline_date is null and precision is 'rolling'. The 1 March / 1 June / 1 September / 1 November dates are internal assessment rounds, not an application closing deadline, and have NOT been converted into a deadline date. Number offered: 4 (normally one scholarship per Academic Division)."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "rolling",
+        "deadline_display": "Applicants can apply anytime but applications will be reviewed four times a year (1 March, 1 June, 1 September and 1 November)"
+      },
+      "examined": [
+        "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships",
+          "reason": "Hub page lists this scholarship with its value but states no application deadline at all; the scholarship-specific database page is the higher-ranked source and does."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 410,
+      "title": "University of Otago Doctoral Scholarship",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "Applicants can apply anytime; applications are considered at quarterly rounds held in March, June, September and November. Applications must be submitted via eVision with a completed departmental assessment by the first day of each round month.",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://www.otago.ac.nz/courses/scholarships/university-of-otago-doctoral-scholarship",
+        "source_type": "official_university_page",
+        "publisher": "University of Otago | Otakou Whakaihu Waka",
+        "retrieved_at": "2026-10-05T15:27:00Z",
+        "as_of": "No cycle year stated on the page; describes continuous intake with quarterly consideration rounds",
+        "raw_extract": "Closing date\tApplicants can apply anytime; applications are considered at quarterly rounds held in March, June, September and November. Applications must be submitted via eVision with a completed departmental assessment by the first day of each round month.",
+        "exact_deadline_wording": "Applicants can apply anytime; applications are considered at quarterly rounds held in March, June, September and November. Applications must be submitted via eVision with a completed departmental assessment by the first day of each round month.",
+        "confidence": "HIGH",
+        "notes": "The official scholarship database page states explicitly that applicants can apply at any time, with quarterly consideration rounds. This is ROLLING per brief section 6, so deadline_date is null and precision is 'rolling'. The 'first day of each round month' reference is an internal cut-off tied to the quarterly round, not a fixed annual application closing deadline, and has NOT been converted into a date. Additional live context from the same page: 'An important doctoral funding announcement - Otago is currently reviewing its doctoral scholarship programme.' and 'Up to 153 annually'; value 'Doctor of Philosophy - NZ$34,128 stipend per annum plus a domestic tuition fees waiver for 36 months'."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "rolling",
+        "deadline_display": "Applicants can apply anytime; applications are considered at quarterly rounds held in March, June, September and November."
+      },
+      "examined": [
+        "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships",
+          "reason": "Hub page lists the doctoral scholarship value only and states no application deadline; the scholarship-specific database page is the higher-ranked source and does."
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "record_count": 8,
+    "recovered": 6,
+    "unknown": 1,
+    "expired_mismatch": 1,
+    "conflicting": 0,
+    "deadline_dates_written": 0,
+    "semantics_breakdown": {
+      "EXACT": 1,
+      "MONTH": 0,
+      "ANNUAL": 3,
+      "ROLLING": 2,
+      "UNKNOWN": 2,
+      "CONFLICTING": 0
+    },
+    "notes": "Zero deadline_date values were written for this shard. That is deliberate: the three Otago Entrance Scholarships (257, 258, 408) publish only year-less recurring month/day timing (ANNUAL), the two Otago postgraduate awards (409, 410) explicitly accept applications at any time (ROLLING), record 203's only published closing date (18 June 2026) had already passed at retrieval time so it is an expired_mismatch rather than an upcoming date, record 259's deadline is relative to an individually-issued invitation ('2 weeks upon invitation to apply'), and record 355's programme page states its application timeline will be published 'shortly' so no deadline exists yet. No date was invented for any MONTH-level value and no ROLLING/ANNUAL value was converted into a calendar date. One shard source URL was dead (408, HTTP 404) and a live equivalent on the same official domain was used."
+  }
+}

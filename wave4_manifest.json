@@ -1,0 +1,996 @@
+[
+  {
+    "shard_id": "DL-001",
+    "topic": "deadline",
+    "records": 12,
+    "outcome_counts": {
+      "recovered": 4,
+      "unknown": 5,
+      "expired_mismatch": 3
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-001.json"
+  },
+  {
+    "shard_id": "DL-002",
+    "topic": "unknown",
+    "records": 8,
+    "outcome_counts": {
+      "expired_mismatch": 6,
+      "unknown": 2
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-002.json"
+  },
+  {
+    "shard_id": "DL-003",
+    "topic": "deadline",
+    "records": 8,
+    "outcome_counts": {
+      "unknown": 6,
+      "expired_mismatch": 1,
+      "recovered": 1
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-003.json"
+  },
+  {
+    "shard_id": "DL-004",
+    "topic": "deadline",
+    "records": 8,
+    "outcome_counts": {
+      "expired_mismatch": 1,
+      "recovered": 5,
+      "unknown": 2
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-004.json"
+  },
+  {
+    "shard_id": "DL-005",
+    "topic": "unknown",
+    "records": 8,
+    "outcome_counts": {
+      "recovered": 6,
+      "unknown": 1,
+      "expired_mismatch": 1
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-005.json"
+  },
+  {
+    "shard_id": "DL-006",
+    "topic": "unknown",
+    "records": 8,
+    "outcome_counts": {
+      "unknown": 5,
+      "recovered": 1,
+      "expired_mismatch": 2
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-006.json"
+  },
+  {
+    "shard_id": "DL-007",
+    "topic": "unknown",
+    "records": 8,
+    "outcome_counts": {
+      "recovered": 5,
+      "expired_mismatch": 2,
+      "unknown": 1
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-007.json"
+  },
+  {
+    "shard_id": "DL-008",
+    "topic": "unknown",
+    "records": 8,
+    "outcome_counts": {
+      "unknown": 4,
+      "recovered": 2,
+      "conflicting": 2
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-008.json"
+  },
+  {
+    "shard_id": "DL-009",
+    "topic": "deadline",
+    "records": 8,
+    "outcome_counts": {
+      "expired_mismatch": 5,
+      "recovered": 3
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-009.json"
+  },
+  {
+    "shard_id": "DL-011",
+    "topic": "deadline",
+    "records": 8,
+    "outcome_counts": {
+      "expired_mismatch": 6,
+      "recovered": 1,
+      "unknown": 1
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-011.json"
+  },
+  {
+    "shard_id": "DL-012",
+    "topic": "deadline",
+    "records": 8,
+    "outcome_counts": {
+      "unknown": 4,
+      "expired_mismatch": 2,
+      "conflicting": 1,
+      "recovered": 1
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-012.json"
+  },
+  {
+    "shard_id": "DL-013",
+    "topic": "deadline",
+    "records": 8,
+    "outcome_counts": {
+      "recovered": 2,
+      "expired_mismatch": 2,
+      "unknown": 4
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-013.json"
+  },
+  {
+    "shard_id": "DL-014",
+    "topic": "unknown",
+    "records": 8,
+    "outcome_counts": {
+      "unknown": 5,
+      "recovered": 2,
+      "expired_mismatch": 1
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-014.json"
+  },
+  {
+    "shard_id": "DL-015",
+    "topic": "unknown",
+    "records": 8,
+    "outcome_counts": {
+      "unknown": 3,
+      "expired_mismatch": 3,
+      "recovered": 2
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-015.json"
+  },
+  {
+    "shard_id": "DL-016",
+    "topic": "unknown",
+    "records": 8,
+    "outcome_counts": {
+      "recovered": 4,
+      "expired_mismatch": 2,
+      "unknown": 2
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-016.json"
+  },
+  {
+    "shard_id": "DL-017",
+    "topic": "deadline",
+    "records": 8,
+    "outcome_counts": {
+      "recovered": 1,
+      "unknown": 2,
+      "expired_mismatch": 5
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-017.json"
+  },
+  {
+    "shard_id": "DL-018",
+    "topic": "unknown",
+    "records": 8,
+    "outcome_counts": {
+      "unknown": 2,
+      "expired_mismatch": 5,
+      "recovered": 1
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-018.json"
+  },
+  {
+    "shard_id": "DL-019",
+    "topic": "unknown",
+    "records": 8,
+    "outcome_counts": {
+      "expired_mismatch": 3,
+      "unknown": 3,
+      "recovered": 2
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-019.json"
+  },
+  {
+    "shard_id": "DL-020",
+    "topic": "unknown",
+    "records": 8,
+    "outcome_counts": {
+      "unknown": 3,
+      "recovered": 4,
+      "expired_mismatch": 1
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-020.json"
+  },
+  {
+    "shard_id": "DL-021",
+    "topic": "unknown",
+    "records": 8,
+    "outcome_counts": {
+      "expired_mismatch": 5,
+      "recovered": 1,
+      "unknown": 2
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-021.json"
+  },
+  {
+    "shard_id": "DL-022",
+    "topic": "unknown",
+    "records": 8,
+    "outcome_counts": {
+      "unknown": 5,
+      "recovered": 2,
+      "expired_mismatch": 1
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-022.json"
+  },
+  {
+    "shard_id": "DL-023",
+    "topic": "unknown",
+    "records": 8,
+    "outcome_counts": {
+      "expired_mismatch": 4,
+      "unknown": 1,
+      "recovered": 3
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-023.json"
+  },
+  {
+    "shard_id": "DL-024",
+    "topic": "unknown",
+    "records": 8,
+    "outcome_counts": {
+      "unknown": 3,
+      "expired_mismatch": 5
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-024.json"
+  },
+  {
+    "shard_id": "DL-026",
+    "topic": "deadline",
+    "records": 8,
+    "outcome_counts": {
+      "expired_mismatch": 6,
+      "unknown": 2
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-026.json"
+  },
+  {
+    "shard_id": "DL-027",
+    "topic": "unknown",
+    "records": 8,
+    "outcome_counts": {
+      "expired_mismatch": 4,
+      "unknown": 2,
+      "recovered": 2
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-027.json"
+  },
+  {
+    "shard_id": "DL-028",
+    "topic": "unknown",
+    "records": 8,
+    "outcome_counts": {
+      "unknown": 2,
+      "recovered": 6
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-028.json"
+  },
+  {
+    "shard_id": "DL-029",
+    "topic": "unknown",
+    "records": 8,
+    "outcome_counts": {
+      "recovered": 5,
+      "conflicting": 1,
+      "expired_mismatch": 1,
+      "unknown": 1
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-029.json"
+  },
+  {
+    "shard_id": "DL-030",
+    "topic": "unknown",
+    "records": 8,
+    "outcome_counts": {
+      "expired_mismatch": 1,
+      "unknown": 5,
+      "recovered": 2
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-030.json"
+  },
+  {
+    "shard_id": "DL-031",
+    "topic": "deadline",
+    "records": 8,
+    "outcome_counts": {
+      "recovered": 4,
+      "unknown": 2,
+      "rejected": 1,
+      "expired_mismatch": 1
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-031.json"
+  },
+  {
+    "shard_id": "DL-032",
+    "topic": "deadline",
+    "records": 8,
+    "outcome_counts": {
+      "recovered": 5,
+      "expired_mismatch": 1,
+      "unknown": 2
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-032.json"
+  },
+  {
+    "shard_id": "DL-033",
+    "topic": "deadline",
+    "records": 8,
+    "outcome_counts": {
+      "recovered": 3,
+      "expired_mismatch": 2,
+      "unknown": 3
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-033.json"
+  },
+  {
+    "shard_id": "DL-034",
+    "topic": "deadline",
+    "records": 8,
+    "outcome_counts": {
+      "unknown": 4,
+      "expired_mismatch": 3,
+      "recovered": 1
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-034.json"
+  },
+  {
+    "shard_id": "DL-035",
+    "topic": "deadline",
+    "records": 8,
+    "outcome_counts": {
+      "recovered": 6,
+      "expired_mismatch": 1,
+      "unknown": 1
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-035.json"
+  },
+  {
+    "shard_id": "DL-036",
+    "topic": "deadline",
+    "records": 8,
+    "outcome_counts": {
+      "recovered": 3,
+      "expired_mismatch": 3,
+      "unknown": 2
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-036.json"
+  },
+  {
+    "shard_id": "DL-037",
+    "topic": "unknown",
+    "records": 8,
+    "outcome_counts": {
+      "unknown": 3,
+      "recovered": 3,
+      "expired_mismatch": 2
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-037.json"
+  },
+  {
+    "shard_id": "DL-038",
+    "topic": "unknown",
+    "records": 8,
+    "outcome_counts": {
+      "unknown": 4,
+      "expired_mismatch": 2,
+      "recovered": 2
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-038.json"
+  },
+  {
+    "shard_id": "DL-039",
+    "topic": "unknown",
+    "records": 8,
+    "outcome_counts": {
+      "conflicting": 1,
+      "unknown": 3,
+      "expired_mismatch": 2,
+      "recovered": 2
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-039.json"
+  },
+  {
+    "shard_id": "DL-040",
+    "topic": "deadline",
+    "records": 8,
+    "outcome_counts": {
+      "expired_mismatch": 3,
+      "recovered": 2,
+      "unknown": 3
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-040.json"
+  },
+  {
+    "shard_id": "DL-041",
+    "topic": "unknown",
+    "records": 7,
+    "outcome_counts": {
+      "unknown": 6,
+      "recovered": 1
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-041.json"
+  },
+  {
+    "shard_id": "DL-042",
+    "topic": "deadline",
+    "records": 7,
+    "outcome_counts": {
+      "unknown": 3,
+      "expired_mismatch": 3,
+      "conflicting": 1
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-042.json"
+  },
+  {
+    "shard_id": "DL-043",
+    "topic": "deadline",
+    "records": 7,
+    "outcome_counts": {
+      "recovered": 2,
+      "expired_mismatch": 5
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-043.json"
+  },
+  {
+    "shard_id": "DL-044",
+    "topic": "unknown",
+    "records": 7,
+    "outcome_counts": {
+      "unknown": 3,
+      "recovered": 2,
+      "expired_mismatch": 2
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-044.json"
+  },
+  {
+    "shard_id": "DL-045",
+    "topic": "deadline",
+    "records": 7,
+    "outcome_counts": {
+      "recovered": 4,
+      "unknown": 1,
+      "expired_mismatch": 2
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-045.json"
+  },
+  {
+    "shard_id": "DL-046",
+    "topic": "deadline",
+    "records": 7,
+    "outcome_counts": {
+      "unknown": 5,
+      "expired_mismatch": 2
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-046.json"
+  },
+  {
+    "shard_id": "DL-047",
+    "topic": "deadline",
+    "records": 7,
+    "outcome_counts": {
+      "expired_mismatch": 2,
+      "unknown": 4,
+      "recovered": 1
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-047.json"
+  },
+  {
+    "shard_id": "DL-048",
+    "topic": "deadline",
+    "records": 7,
+    "outcome_counts": {
+      "recovered": 6,
+      "expired_mismatch": 1
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-048.json"
+  },
+  {
+    "shard_id": "DL-049",
+    "topic": "deadline",
+    "records": 7,
+    "outcome_counts": {
+      "unknown": 2,
+      "expired_mismatch": 2,
+      "recovered": 3
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-049.json"
+  },
+  {
+    "shard_id": "DL-050",
+    "topic": "deadline",
+    "records": 7,
+    "outcome_counts": {
+      "unknown": 3,
+      "conflicting": 1,
+      "recovered": 3
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-050.json"
+  },
+  {
+    "shard_id": "DL-051",
+    "topic": "unknown",
+    "records": 7,
+    "outcome_counts": {
+      "recovered": 3,
+      "conflicting": 1,
+      "expired_mismatch": 3
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-051.json"
+  },
+  {
+    "shard_id": "DL-052",
+    "topic": "unknown",
+    "records": 7,
+    "outcome_counts": {
+      "recovered": 4,
+      "unknown": 1,
+      "expired_mismatch": 2
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-052.json"
+  },
+  {
+    "shard_id": "DL-053",
+    "topic": "unknown",
+    "records": 7,
+    "outcome_counts": {
+      "recovered": 2,
+      "expired_mismatch": 2,
+      "unknown": 2,
+      "conflicting": 1
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-053.json"
+  },
+  {
+    "shard_id": "DL-054",
+    "topic": "unknown",
+    "records": 7,
+    "outcome_counts": {
+      "expired_mismatch": 4,
+      "unknown": 2,
+      "recovered": 1
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-054.json"
+  },
+  {
+    "shard_id": "DL-055",
+    "topic": "unknown",
+    "records": 7,
+    "outcome_counts": {
+      "expired_mismatch": 3,
+      "unknown": 1,
+      "recovered": 3
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-055.json"
+  },
+  {
+    "shard_id": "DL-056",
+    "topic": "deadline",
+    "records": 7,
+    "outcome_counts": {
+      "unknown": 1,
+      "recovered": 2,
+      "expired_mismatch": 3,
+      "conflicting": 1
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-056.json"
+  },
+  {
+    "shard_id": "DL-057",
+    "topic": "unknown",
+    "records": 7,
+    "outcome_counts": {
+      "expired_mismatch": 5,
+      "recovered": 2
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-057.json"
+  },
+  {
+    "shard_id": "DL-058",
+    "topic": "unknown",
+    "records": 7,
+    "outcome_counts": {
+      "expired_mismatch": 2,
+      "recovered": 3,
+      "unknown": 2
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-058.json"
+  },
+  {
+    "shard_id": "DL-059",
+    "topic": "deadline",
+    "records": 7,
+    "outcome_counts": {
+      "unknown": 3,
+      "expired_mismatch": 2,
+      "recovered": 2
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-059.json"
+  },
+  {
+    "shard_id": "DL-060",
+    "topic": "unknown",
+    "records": 7,
+    "outcome_counts": {
+      "unknown": 2,
+      "recovered": 2,
+      "expired_mismatch": 3
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\DL-060.json"
+  },
+  {
+    "shard_id": "LG-001",
+    "topic": "logo",
+    "records": 5,
+    "outcome_counts": {
+      "recovered": 5
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-001.json"
+  },
+  {
+    "shard_id": "LG-002",
+    "topic": "logo",
+    "records": 5,
+    "outcome_counts": {
+      "recovered": 5
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-002.json"
+  },
+  {
+    "shard_id": "LG-003",
+    "topic": "unknown",
+    "records": 5,
+    "outcome_counts": {
+      "recovered": 5
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-003.json"
+  },
+  {
+    "shard_id": "LG-004",
+    "topic": "unknown",
+    "records": 5,
+    "outcome_counts": {
+      "recovered": 5
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-004.json"
+  },
+  {
+    "shard_id": "LG-005",
+    "topic": "logo",
+    "records": 5,
+    "outcome_counts": {
+      "recovered": 5
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-005.json"
+  },
+  {
+    "shard_id": "LG-006",
+    "topic": "logo",
+    "records": 5,
+    "outcome_counts": {
+      "not_found": 1,
+      "recovered": 4
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-006.json"
+  },
+  {
+    "shard_id": "LG-007",
+    "topic": "logo",
+    "records": 5,
+    "outcome_counts": {
+      "recovered": 5
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-007.json"
+  },
+  {
+    "shard_id": "LG-008",
+    "topic": "unknown",
+    "records": 5,
+    "outcome_counts": {
+      "recovered": 5
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-008.json"
+  },
+  {
+    "shard_id": "LG-009",
+    "topic": "unknown",
+    "records": 5,
+    "outcome_counts": {
+      "recovered": 5
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-009.json"
+  },
+  {
+    "shard_id": "LG-010",
+    "topic": "unknown",
+    "records": 5,
+    "outcome_counts": {
+      "recovered": 5
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-010.json"
+  },
+  {
+    "shard_id": "LG-011",
+    "topic": "unknown",
+    "records": 5,
+    "outcome_counts": {
+      "recovered": 4,
+      "not_found": 1
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-011.json"
+  },
+  {
+    "shard_id": "LG-012",
+    "topic": "logo",
+    "records": 5,
+    "outcome_counts": {
+      "recovered": 5
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-012.json"
+  },
+  {
+    "shard_id": "LG-013",
+    "topic": "unknown",
+    "records": 5,
+    "outcome_counts": {
+      "recovered": 5
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-013.json"
+  },
+  {
+    "shard_id": "LG-014",
+    "topic": "logo",
+    "records": 5,
+    "outcome_counts": {
+      "not_found": 2,
+      "recovered": 3
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-014.json"
+  },
+  {
+    "shard_id": "LG-015",
+    "topic": "unknown",
+    "records": 5,
+    "outcome_counts": {
+      "recovered": 5
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-015.json"
+  },
+  {
+    "shard_id": "LG-016",
+    "topic": "logo",
+    "records": 5,
+    "outcome_counts": {
+      "recovered": 4,
+      "not_found": 1
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-016.json"
+  },
+  {
+    "shard_id": "LG-017",
+    "topic": "logo",
+    "records": 5,
+    "outcome_counts": {
+      "recovered": 4,
+      "not_found": 1
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-017.json"
+  },
+  {
+    "shard_id": "LG-018",
+    "topic": "unknown",
+    "records": 5,
+    "outcome_counts": {
+      "recovered": 4,
+      "not_found": 1
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-018.json"
+  },
+  {
+    "shard_id": "LG-019",
+    "topic": "logo",
+    "records": 5,
+    "outcome_counts": {
+      "recovered": 5
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-019.json"
+  },
+  {
+    "shard_id": "LG-020",
+    "topic": "logo",
+    "records": 5,
+    "outcome_counts": {
+      "recovered": 5
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-020.json"
+  },
+  {
+    "shard_id": "LG-021",
+    "topic": "logo",
+    "records": 5,
+    "outcome_counts": {
+      "recovered": 3,
+      "not_found": 2
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-021.json"
+  },
+  {
+    "shard_id": "LG-022",
+    "topic": "logo",
+    "records": 5,
+    "outcome_counts": {
+      "recovered": 5
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-022.json"
+  },
+  {
+    "shard_id": "LG-024",
+    "topic": "unknown",
+    "records": 5,
+    "outcome_counts": {
+      "recovered": 4,
+      "not_found": 1
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-024.json"
+  },
+  {
+    "shard_id": "LG-025",
+    "topic": "logo",
+    "records": 5,
+    "outcome_counts": {
+      "not_found": 1,
+      "recovered": 4
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-025.json"
+  },
+  {
+    "shard_id": "LG-026",
+    "topic": "logo",
+    "records": 5,
+    "outcome_counts": {
+      "recovered": 5
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-026.json"
+  },
+  {
+    "shard_id": "LG-027",
+    "topic": "logo",
+    "records": 5,
+    "outcome_counts": {
+      "not_found": 1,
+      "recovered": 4
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-027.json"
+  },
+  {
+    "shard_id": "LG-028",
+    "topic": "logo",
+    "records": 5,
+    "outcome_counts": {
+      "recovered": 4,
+      "not_found": 1
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-028.json"
+  },
+  {
+    "shard_id": "LG-029",
+    "topic": "logo",
+    "records": 5,
+    "outcome_counts": {
+      "recovered": 4,
+      "not_found": 1
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-029.json"
+  },
+  {
+    "shard_id": "LG-030",
+    "topic": "unknown",
+    "records": 5,
+    "outcome_counts": {
+      "recovered": 4,
+      "not_found": 1
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-030.json"
+  },
+  {
+    "shard_id": "LG-031",
+    "topic": "unknown",
+    "records": 5,
+    "outcome_counts": {
+      "recovered": 5
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-031.json"
+  },
+  {
+    "shard_id": "LG-033",
+    "topic": "logo",
+    "records": 5,
+    "outcome_counts": {
+      "recovered": 5
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-033.json"
+  },
+  {
+    "shard_id": "LG-034",
+    "topic": "logo",
+    "records": 5,
+    "outcome_counts": {
+      "not_found": 1,
+      "recovered": 4
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-034.json"
+  },
+  {
+    "shard_id": "LG-035",
+    "topic": "logo",
+    "records": 4,
+    "outcome_counts": {
+      "recovered": 4
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-035.json"
+  },
+  {
+    "shard_id": "LG-036",
+    "topic": "unknown",
+    "records": 4,
+    "outcome_counts": {
+      "not_found": 2,
+      "recovered": 2
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-036.json"
+  },
+  {
+    "shard_id": "LG-037",
+    "topic": "unknown",
+    "records": 4,
+    "outcome_counts": {
+      "recovered": 3,
+      "not_found": 1
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-037.json"
+  },
+  {
+    "shard_id": "LG-038",
+    "topic": "logo",
+    "records": 4,
+    "outcome_counts": {
+      "recovered": 3,
+      "not_found": 1
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-038.json"
+  },
+  {
+    "shard_id": "LG-039",
+    "topic": "unknown",
+    "records": 4,
+    "outcome_counts": {
+      "recovered": 4
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-039.json"
+  },
+  {
+    "shard_id": "LG-040",
+    "topic": "unknown",
+    "records": 4,
+    "outcome_counts": {
+      "not_found": 1,
+      "recovered": 3
+    },
+    "output_path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\kilo\\sz-wave4\\backend\\research\\wave4\\out\\LG-040.json"
+  }
+]

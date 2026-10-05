@@ -1,0 +1,111 @@
+{
+  "shard_id": "DL-024",
+  "topic": "deadline",
+  "hosts": [
+    "bs.china-embassy.gov.cn",
+    "isd.pku.edu.cn",
+    "www.abo.fi",
+    "www.insead.edu",
+    "www.nokiafoundation.com",
+    "www.unibo.it"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 94,
+      "title": "INSEAD Scholarships (Master in Management, MBA and Master in Finance)",
+      "official_source": "INSEAD",
+      "official_source_url": "https://www.insead.edu/master-programmes/master-business-administration/international-funding",
+      "catalogue_url": "https://www.insead.edu/scholarship/listing",
+      "country": "France",
+      "deadline_display": "There is no separate scholarship deadline: to be considered for a scholarship you must first start the MIM application. The named scholarships are open to candidates admitted in specific admission rounds (Kung Family and Qinqin and Xin Zhang: Rounds 1-3; L'Oréal for Youth: Rounds 1-2).",
+      "deadline_precision": "varies",
+      "application_period": "Aligned to the INSEAD admissions rounds for each programme; MIM is a multi-campus (France and Singapore) August intake.",
+      "verification_status": "active"
+    },
+    {
+      "id": 315,
+      "title": "Chinese Government Scholarship for Advanced Graduate Program (Type B) at Peking University",
+      "official_source": "Peking University",
+      "official_source_url": "https://isd.pku.edu.cn/en/detail.php?id=819",
+      "catalogue_url": "https://isd.pku.edu.cn/en/detail.php?id=18",
+      "country": "China",
+      "deadline_display": "For the 2026 cycle the Peking University online scholarship application was 'open now until Beijing Time at 9:00 a.m. on March 9' and the China Scholarship Council application 'open now until Beijing Time at 24:00 on March 17'. Both dates have passed; the 2027 notice was not published on 2026-10-04.",
+      "deadline_precision": "recurring",
+      "application_period": "The standing programme page states 'Application Time: Generally in January and March each year'. The 2026 cycle ran from the notice date of 12 January 2026 to 9 March 2026 (PKU) and 17 March 2026 (CSC).",
+      "verification_status": "active"
+    },
+    {
+      "id": 324,
+      "title": "2026/2027 Chinese Government Scholarship - Embassy of the People's Republic of China in the Commonwealth of The Bahamas",
+      "official_source": "Embassy of the People's Republic of China in the Commonwealth of The Bahamas",
+      "official_source_url": "https://bs.china-embassy.gov.cn/eng/sggg/202510/t20251028_11742717.htm",
+      "catalogue_url": null,
+      "country": "China",
+      "deadline_display": "The notice required the online application and documents to be submitted in the system \"before February 14, 2026\"; that date has passed and the Embassy has published no date for the following cycle.",
+      "deadline_precision": "recurring",
+      "application_period": "2026/2027 cycle ran from the 2025-10-28 notice to 2026-02-14; the Embassy forwarded recommended applications to the China Scholarship Council between 2026-02-24 and 2026-03-03, and results became available in the system in July-August 2026.",
+      "verification_status": "active"
+    },
+    {
+      "id": 340,
+      "title": "Åbo Akademi University tuition fee scholarship - early commitment offer and second-year reduction",
+      "official_source": "Åbo Akademi University",
+      "official_source_url": "https://www.abo.fi/en/study/apply/international-master-programmes/scholarship-programme-for-master-students",
+      "catalogue_url": "https://www.abo.fi/en/study/apply/international-master-programmes",
+      "country": "Finland",
+      "deadline_display": "\"Admitted students can claim the offer by accepting their study place and paying the tuition fee within a deadline specified in their admissions letter. Admitted students who do not accept their study place and do not pay the tuition fee within the deadline for the early commitment offer need to pay the full amount of 12000 €.\" For the second year, \"Applicants do not need to apply separately for this second year scholarship.\"",
+      "deadline_precision": "varies",
+      "application_period": "For students admitted for studies starting in the autumn of 2026 or later; the first-year offer is claimed through the admissions letter and the second-year reduction is automatic",
+      "verification_status": "active"
+    },
+    {
+      "id": 343,
+      "title": "Nokia Scholarship",
+      "official_source": "Nokia Foundation",
+      "official_source_url": "https://www.nokiafoundation.com/nokia-scholarship-info",
+      "catalogue_url": "https://www.nokiafoundation.com/nokia-scholarship",
+      "country": "Finland",
+      "deadline_display": "Deadline for the 2026 round was \"15 September 2026.\" Applications for that round opened on 3 August 2026, so the round is now closed and the award runs as an annual cycle.",
+      "deadline_precision": "recurring",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 344,
+      "title": "Nokia Foundation Fellow",
+      "official_source": "Nokia Foundation",
+      "official_source_url": "https://www.nokiafoundation.com/foundation-fellow",
+      "catalogue_url": "https://www.nokiafoundation.com/grants-introduction",
+      "country": "Finland",
+      "deadline_display": "\"Call for applications is open from 18 May 2026 to 15 September 2026.\" That 2026 call closed before this verification on 2026-10-04; the call recurs annually.",
+      "deadline_precision": "recurring",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 345,
+      "title": "Jorma Ollila Grant",
+      "official_source": "Nokia Foundation",
+      "official_source_url": "https://www.nokiafoundation.com/jorma-ollila-grants",
+      "catalogue_url": "https://www.nokiafoundation.com/jorma-ollila-grants",
+      "country": "Finland",
+      "deadline_display": "Applications can be submitted twice a year. For 2026: the spring call ran from 2 March until 17 April 2026 as part of the Tutkijat maailmalle programme, and the autumn call was open \"from 3 August until 15 September 2026\". Both 2026 deadlines have passed.",
+      "deadline_precision": "recurring",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 371,
+      "title": "University of Bologna Study Grants and Subsidies",
+      "official_source": "University of Bologna",
+      "official_source_url": "https://www.unibo.it/en/study",
+      "catalogue_url": "https://www.unibo.it/en/study/study-grants-and-subsidies/scholarships-and-funding-opportunities",
+      "country": "Italy",
+      "deadline_display": "The official page publishes no single deadline. It states \"The call for applications is usually published in September\" for grants for students experiencing difficulties, and \"Scholarships and awards are granted throughout the year.\"",
+      "deadline_precision": "varies",
+      "application_period": "Rolling portfolio of calls; the September call is the stated convention for grants for students experiencing difficulties, and awards are granted throughout the year.",
+      "verification_status": "active"
+    }
+  ]
+}

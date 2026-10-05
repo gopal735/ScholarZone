@@ -1,0 +1,111 @@
+{
+  "shard_id": "DL-029",
+  "topic": "deadline",
+  "hosts": [
+    "careers.cern",
+    "masters.au.dk",
+    "www.afdb.org",
+    "www.janelia.org",
+    "www.snf.ch",
+    "www.universitiesnz.ac.nz"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 157,
+      "title": "CERN Doctoral Student Programme",
+      "official_source": "CERN",
+      "official_source_url": "https://careers.cern/programmes/doctoral-studentship",
+      "catalogue_url": "https://careers.cern/explore-fields-of-work",
+      "country": "Switzerland",
+      "deadline_display": "Vacancies are published as recruitment rounds on the CERN careers site, with the deadline set on each individual vacancy. As of 2026-10-04 the Doctoral Studentship page lists live rounds under the reference TSC-2027-1/DOCT (Doctoral Student Programme 2027-1, 12 to 36 month contract).",
+      "deadline_precision": "rolling",
+      "application_period": "Continuous, round-based recruitment. Each published vacancy carries its own application deadline on the CERN careers portal.",
+      "verification_status": "active"
+    },
+    {
+      "id": 158,
+      "title": "CERN Research Fellowship",
+      "official_source": "CERN",
+      "official_source_url": "https://careers.cern/programmes/research-fellowship",
+      "catalogue_url": "https://careers.cern/explore-fields-of-work",
+      "country": "Switzerland",
+      "deadline_display": "Vacancies are published as recruitment rounds on the CERN careers site, with the deadline set on each individual vacancy. As of 2026-10-04 the Research Fellowship page lists live vacancies including 'ATS Research Fellowship (Applied Physics and Engineering)', reference REF4103L, and 'Research Fellowship: Theoretical Physics', reference TH-2026-1/Cat1, both 24-month contracts.",
+      "deadline_precision": "rolling",
+      "application_period": "Continuous, round-based recruitment. Each published vacancy carries its own application deadline, and the page warns that vacancies under Experimental Physics, Applied Science and Engineering, and Theoretical Physics each correspond to distinct and separate recruitment processes.",
+      "verification_status": "active"
+    },
+    {
+      "id": 272,
+      "title": "Aarhus University Danish State Scholarship",
+      "official_source": "Aarhus University",
+      "official_source_url": "https://masters.au.dk/scholarships-and-grants",
+      "catalogue_url": "https://masters.au.dk/masters-degree-programmes",
+      "country": "Denmark",
+      "deadline_display": "Only applicants who have applied for a Master's degree programme no later than 15 January (summer admission) and 15 September (winter admission) will be considered for a tuition waiver/scholarship.",
+      "deadline_precision": "recurring",
+      "application_period": "Assessed automatically with the admission application; 15 January for summer admission and 15 September for winter admission.",
+      "verification_status": "active"
+    },
+    {
+      "id": 402,
+      "title": "Rhodes Scholarship for New Zealand",
+      "official_source": "Universities New Zealand – Te Pōkai Tara",
+      "official_source_url": "https://www.universitiesnz.ac.nz/scholarships/rhodes-scholarship-new-zealand",
+      "catalogue_url": "https://www.rhodeshouse.ox.ac.uk/scholarships/applications",
+      "country": "New Zealand",
+      "deadline_display": "For the 2027 entry the application period ran from an opening date of 1 June 2026 to a closing date of 4 August 2026, with decisions made in November 2026. The 2027 entry's closing date has now passed; the next cycle's dates are not published on this page.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual. 2027 entry: applications opened 1 June 2026 and closed 4 August 2026; decisions November 2026. Rhodes House publishes the cycle dates for each national constituency.",
+      "verification_status": "active"
+    },
+    {
+      "id": 460,
+      "title": "SNF Postdoc.Mobility",
+      "official_source": "Snf.Ch",
+      "official_source_url": "https://www.snf.ch/en/XIZpfY3iVS5KRRoD/funding/careers/postdoc-mobility",
+      "catalogue_url": "https://www.snf.ch/en/x06BkIumay67HR0F/page/programmes-newsletter",
+      "country": "Switzerland",
+      "deadline_display": "02.02.2027 17:00 CET",
+      "deadline_precision": "unknown",
+      "application_period": "Applications for return grants must be submitted by the official deadlines while the Postdoc.Mobility fellowship respectively is still ongoing.",
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 462,
+      "title": "SNF Starting Grants",
+      "official_source": "Snf.Ch",
+      "official_source_url": "https://www.snf.ch/en/w728UqT1Yw256Mz2/funding/careers/snsf-starting-grants",
+      "catalogue_url": "https://www.snf.ch/en/x06BkIumay67HR0F/page/programmes-newsletter",
+      "country": "Switzerland",
+      "deadline_display": "05.05.2026 17:00 CEST",
+      "deadline_precision": "unknown",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 520,
+      "title": "Japan Africa Dream Scholarship (JADS) Program",
+      "official_source": "African Development Bank Group, with the Government of Japan",
+      "official_source_url": "https://www.afdb.org/en/about-us/careers/japan-africa-dream-scholarship-jads-program",
+      "catalogue_url": null,
+      "country": "Japan",
+      "deadline_display": "The African Development Bank publishes no central JADS call opening or closing date, so there is no central deadline to quote. Applications go only through the partner universities, and the AfDB's own \"List of Universities\" page publishes each partner's intake and application window: Ritsumeikan Asia Pacific University - \"Application Deadlines are as following: April Enrollment: October / September Enrollment: April\"; Hiroshima University Graduate School of Advanced Science and Engineering - \"Month of Intake: April - Preliminary Survey: Oct 18-29 - Application period: Nov 8-19 - Exam. Period: Nov 29-Dec 8\" and, for its second course, \"Preliminary Evaluation for Apr. Oct 4-8, Preliminary Evaluation for Oct.: Mar. 7-11, Application Period for Apr.: Nov 4-15, Application Period for Oct.: Apr. 4-22\"; The University of Tokyo Graduate School of Frontier Sciences - \"Month of Intake: April or October / Examination: Schedule A (application period: mid June) Schedule B (application period: mid November)\"; Sophia University - \"Month of Intake: September / Deadline of Application: Web entry: Mid of March ~ Early April; Application: Mid of April\". Kyoto University and Kogakuin University are listed with \"Please refer to the program website\".",
+      "deadline_precision": "varies",
+      "application_period": "Annual partner-university admissions cycle. As published by AfDB on 2026-10-01, the next windows relative to that date are: Ritsumeikan Asia Pacific University April-intake deadline in October 2026; Hiroshima University preliminary survey 18-29 October 2026 and application period 8-19 November 2026; Hiroshima University second course preliminary evaluation 4-8 October 2026; The University of Tokyo Schedule B application period in mid November 2026. AfDB states there is no separate application to the Bank and no central JADS window.",
+      "verification_status": "needs_review"
+    },
+    {
+      "id": 634,
+      "title": "HHMI Janelia Joint Graduate Program in Neuroscience (with Johns Hopkins University)",
+      "official_source": "HHMI Janelia Research Campus, in collaboration with Johns Hopkins University School of Medicine",
+      "official_source_url": "https://www.janelia.org/you-janelia/students-postdocs/joint-graduate-program/application-details",
+      "catalogue_url": "https://www.janelia.org/you-janelia/students-postdocs/joint-graduate-program",
+      "country": "United States",
+      "deadline_display": "December 3",
+      "deadline_precision": "recurring",
+      "application_period": "Applications to the Johns Hopkins neuroscience PhD programme are submitted in the autumn each year; the deadline for completed applications including letters of recommendation is December 3 and candidates are notified by April 15.",
+      "verification_status": "needs_review"
+    }
+  ]
+}

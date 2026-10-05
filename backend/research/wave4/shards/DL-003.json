@@ -1,0 +1,108 @@
+{
+  "shard_id": "DL-003",
+  "topic": "deadline",
+  "hosts": [
+    "www.fes.de",
+    "www.ntu.edu.sg",
+    "www.sbfi.admin.ch"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 106,
+      "title": "Nanyang Global Scholarship",
+      "official_source": "Nanyang Technological University (NTU), Office of Admissions",
+      "official_source_url": "https://www.ntu.edu.sg/admissions/undergraduate/scholarships/scholarship-opportunities/detail/nanyang-scholarship",
+      "catalogue_url": "https://www.ntu.edu.sg/about-us/sustainability/sustainability-education/undergraduate-programmes",
+      "country": "Singapore",
+      "deadline_display": "The official page states: \"The scholarship application period is the same as the admission application period.\" The NTU 'Important dates' page publishes the AY2027/2028 windows as \"15 October 2026 - 19 March 2027\" for International Baccalaureate (Application for Scholarships, online application: \"by 19 March 2027\"; submission of photograph and appraisal form: \"by 26 March 2027\"), \"1 December 2026 - 20 January 2027\" for NUS High School Diploma (scholarship online application: \"by 20 January 2027\"; photograph and appraisal form: \"by 27 January 2027\"), and \"15 Oct 2026 - 20 Jan 2027\" or \"15 Oct 2026 - 19 Mar 2027\" for other international and equivalent qualifications.",
+      "deadline_precision": "varies",
+      "application_period": "The scholarship application period matches the NTU admission application period for the applicant's qualification. For AY2027/2028 the earliest published window opens on 15 October 2026, so no window is open as at 2026-10-04. Scholarship selection interviews take place between March and May, and shortlisted applicants are informed by e-mail by mid-May.",
+      "verification_status": "active"
+    },
+    {
+      "id": 107,
+      "title": "Nanyang President's Graduate Scholarship",
+      "official_source": "Nanyang Technological University (NTU)",
+      "official_source_url": "https://www.ntu.edu.sg/admissions/graduate/financialmatters/scholarships",
+      "catalogue_url": "https://www.ntu.edu.sg/about-us/sustainability/sustainability-education/undergraduate-programmes",
+      "country": "Singapore",
+      "deadline_display": "The official page states: \"The application period for Academic Year 2027-2028 will be announced in due course. The application period for National Institute of Education (NIE) will also be announced in due course.\" No exact date is published for any cycle.",
+      "deadline_precision": "recurring",
+      "application_period": "The application period is announced by NTU in due course for each Academic Year. Successful candidates are informed of the outcome together with the offer of admissions via email.",
+      "verification_status": "active"
+    },
+    {
+      "id": 440,
+      "title": "Nanyang Merit Scholarship",
+      "official_source": "Nanyang Technological University, Office of Admissions",
+      "official_source_url": "https://www.ntu.edu.sg/admissions/undergraduate/scholarships/scholarship-opportunities/detail/college-scholarship",
+      "catalogue_url": "https://www.ntu.edu.sg/about-us/sustainability/sustainability-education/undergraduate-programmes",
+      "country": "Singapore",
+      "deadline_display": "The same application period for admissions applies. The scholarship application period is the same as the admission application period. Applications submitted after the closing date will not be considered.",
+      "deadline_precision": "varies",
+      "application_period": "Tied to the NTU undergraduate admission application period for each qualification route, so the closing date differs by qualification and by admission round rather than being a single fixed date.",
+      "verification_status": "active"
+    },
+    {
+      "id": 441,
+      "title": "NTU President Award",
+      "official_source": "Nanyang Technological University, Office of Admissions",
+      "official_source_url": "https://www.ntu.edu.sg/admissions/undergraduate/scholarships",
+      "catalogue_url": "https://www.ntu.edu.sg/about-us/sustainability/sustainability-education/undergraduate-programmes",
+      "country": "Singapore",
+      "deadline_display": "The same application period for admissions applies. The scholarship application period is the same as the admission application period. Applications submitted after the closing date will not be considered.",
+      "deadline_precision": "varies",
+      "application_period": "Tied to the NTU undergraduate admission application period, so the closing date depends on the applicant's qualification and admission route.",
+      "verification_status": "active"
+    },
+    {
+      "id": 450,
+      "title": "Short Term Scholarships Administered by NTU",
+      "official_source": "Nanyang Technological University (NTU Singapore)",
+      "official_source_url": "https://www.ntu.edu.sg/admissions/undergraduate/scholarships/scholarship-opportunities/detail/short-term-scholarships-administered-by-ntu",
+      "catalogue_url": "https://www.ntu.edu.sg/admissions/undergraduate/scholarships-and-awards",
+      "country": "Singapore",
+      "deadline_display": "NTU states 'Application for AY26-27 will open from 1 July to 31 July 2026.' That AY26-27 window has already closed, so the next window is expected in the same July period but no dated calendar is published.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual window of 1 July to 31 July for the AY26-27 intake. Shortlisted applicants are notified by email by end-September, and interviews take place from August to early October.",
+      "verification_status": "active"
+    },
+    {
+      "id": 502,
+      "title": "Friedrich-Ebert-Stiftung Promotionsförderung für Ausländer:innen (FES doctoral scholarship for international doctoral candidates)",
+      "official_source": "Friedrich-Ebert-Stiftung e. V., Studienförderung",
+      "official_source_url": "https://www.fes.de/studienfoerderung/stipendium/promotionsfoerderung-fuer-auslaender-innen",
+      "catalogue_url": null,
+      "country": "Germany",
+      "deadline_display": "No fixed calendar deadline is published. The programme page states the right time to apply is up to about two years before submission of the dissertation ('bis circa zwei Jahre vor Abgabe der Dissertation'), and the application page directs applicants to the individual scholarship programme for the deadlines. The online application form for Promotionsförderung für Ausländer:innen is published and open.",
+      "deadline_precision": "varies",
+      "application_period": "Continuous/rolling: applications are accepted while the doctoral thesis can still be completed within the funding period, in principle from about two years before submission of the dissertation. The selection committee meets eight to ten times a year and the final decision is communicated at the latest one week after the relevant meeting.",
+      "verification_status": "active"
+    },
+    {
+      "id": 531,
+      "title": "Nanyang President's Graduate Scholarship (NPGS)",
+      "official_source": "Nanyang Technological University (NTU Singapore)",
+      "official_source_url": "https://www.ntu.edu.sg/admissions/graduate/financialmatters/scholarships/npgs",
+      "catalogue_url": null,
+      "country": "Singapore",
+      "deadline_display": "The NPGS application window is open annually from October/November to December. The application period for Academic Year 2027-2028 will be announced in due course. The application period for National Institute of Education (NIE) will also be announced in due course. (NTU Research Programmes Admission Guide: for the August intake the application portal opens on 1 October and the last day for submission of the online application with supporting documents is 31 January, with school-specific deadlines of 15 November for ADM, SoH, SSS and WKWSCI, and 31 December for LKCMedicine and RSIS.)",
+      "deadline_precision": "month",
+      "application_period": "Annually from October/November to December for NPGS, with outcomes sent by email together with the offer of admissions. This sits inside NTU's research degree application periods: August (Semester 1) intake - portal opens 1 October, university last day 31 January; January (Semester 2) intake - portal opens 1 June, university last day 31 July.",
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 565,
+      "title": "Swiss Government Excellence Scholarships (ESKAS)",
+      "official_source": "State Secretariat for Education, Research and Innovation (SERI) - Federal Commission for Scholarships for Foreign Students (FCS / ESKAS), Switzerland",
+      "official_source_url": "https://www.sbfi.admin.ch",
+      "catalogue_url": "https://www.go.eskas.ch",
+      "country": "Switzerland",
+      "deadline_display": "Applications are open from 20 August 2026. Applications are submitted to the applicant's Swiss diplomatic representation, and the deadline is set country by country: information on application deadlines and scholarship opportunities by country of origin is published by the Federal Commission in August each year.",
+      "deadline_precision": "varies",
+      "application_period": "Annual cycle. Applications open on 20 August 2026, country-specific deadlines apply between August and December 2026, and the Federal Commission announces its award decisions by the end of May at the latest for the following academic year.",
+      "verification_status": "active"
+    }
+  ]
+}

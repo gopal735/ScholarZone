@@ -1,0 +1,58 @@
+{
+  "shard_id": "LG-021",
+  "topic": "logo",
+  "hosts": [
+    "horatioalger.org",
+    "www.ares-ac.be",
+    "www.ean.org",
+    "www.rotary-yoneyama.or.jp"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 40,
+      "title": "ARES Scholarships (Belgium)",
+      "official_source": null,
+      "official_source_url": "https://www.ares-ac.be/en/cooperation-au-developpement/bourses",
+      "catalogue_url": null,
+      "country": "Belgium",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 380,
+      "title": "Rotary Yoneyama Memorial Scholarship 2027 (Overseas Candidates)",
+      "official_source": "Rotary Yoneyama Memorial Foundation",
+      "official_source_url": "https://www.rotary-yoneyama.or.jp/english/overseas",
+      "catalogue_url": "https://www.rotary-yoneyama.or.jp/english/overseas",
+      "country": "Japan",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 591,
+      "title": "Horatio Alger Association National Scholarship",
+      "official_source": "Horatio Alger Association of Distinguished Americans",
+      "official_source_url": "https://horatioalger.org/scholarships-and-services/undergraduate-scholarships",
+      "catalogue_url": "https://horatioalger.org/scholarships",
+      "country": "United States",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 625,
+      "title": "Clinical Fellowship 2027 — European Academy of Neurology",
+      "official_source": "European Academy of Neurology (EAN)",
+      "official_source_url": "https://www.ean.org/learn/fellowships-and-funding/clinical-fellowship",
+      "catalogue_url": "https://www.ean.org/learn/fellowships-and-funding",
+      "country": "Austria",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 627,
+      "title": "Research Fellowship 2027 — European Academy of Neurology",
+      "official_source": "European Academy of Neurology (EAN)",
+      "official_source_url": "https://www.ean.org/learn/fellowships-and-funding/research-fellowship",
+      "catalogue_url": "https://www.ean.org/learn/fellowships-and-funding",
+      "country": "Austria",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

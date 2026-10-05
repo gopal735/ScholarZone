@@ -1,0 +1,99 @@
+{
+  "shard_id": "DL-060",
+  "topic": "deadline",
+  "hosts": [
+    "apply.ruffordsmallgrants.org",
+    "en.unimib.it",
+    "studies.ku.dk",
+    "www.fct.pt",
+    "www.researchireland.ie",
+    "www.rmit.edu.au"
+  ],
+  "record_count": 7,
+  "records": [
+    {
+      "id": 138,
+      "title": "Bicocca International Scholarship Programme (BISP) — Università degli Studi di Milano-Bicocca",
+      "official_source": "Università degli Studi di Milano-Bicocca",
+      "official_source_url": "https://en.unimib.it/study/fees-and-scholarships/bisp-bicocca-international-scholarship-programme",
+      "catalogue_url": "https://apply.unimib.it",
+      "country": "Italy",
+      "deadline_display": "There is no separate scholarship application form: the deadline is the admission deadline of the chosen degree programme. For the 2026/2027 call, candidates on free entrance courses had to be admitted and confirm their admission offer by 15 March 2026, and results were published by mid-April 2026 for free-access programmes and after the admission ranking list for limited-access programmes. The 2026/2027 cycle is complete, with ranking decrees issued on 28 April 2026 and 15 July 2026.",
+      "deadline_precision": "varies",
+      "application_period": "Aligned with each degree programme's admission calls, referred to on the apply.unimib.it website. For 2026/2027 the key milestone was confirmation of admission by 15 March 2026 for free entrance courses, with a second session reflected in a further ranking decree on 15 July 2026.",
+      "verification_status": "active"
+    },
+    {
+      "id": 202,
+      "title": "RMIT Future Leaders Scholarship",
+      "official_source": "RMIT University",
+      "official_source_url": "https://www.rmit.edu.au/scholarships/international-scholarships",
+      "catalogue_url": "https://www.rmit.edu.au/study-with-us/international-students/programs-for-international-students",
+      "country": "Australia",
+      "deadline_display": "No scholarship application is required — RMIT states \"No scholarship application is required\"; the award is applied automatically to the tuition fees of an eligible offer letter.",
+      "deadline_precision": "rolling",
+      "application_period": "Offer letter to commence from 2026 intakes onwards; no closing date is published.",
+      "verification_status": "active"
+    },
+    {
+      "id": 299,
+      "title": "2026 Call for PhD Studentships – Regular Line of Application (FCT)",
+      "official_source": "Foundation for Science and Technology (FCT)",
+      "official_source_url": "https://www.fct.pt/en/concursos/concurso-bolsas-de-doutoramento-2026-linha-de-candidatura-geral",
+      "catalogue_url": "https://myfct.fct.pt",
+      "country": "Portugal",
+      "deadline_display": "Official wording: \"The Call is open from March 2nd to 5:00 pm (Lisbon time) March 31st, 2026.\" FCT adds that the call \"takes place each year in March or, occasionally, between March and April\", but no 2027 dates had been published on the page as of 2026-10-04.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual. The 2026 cycle ran 2 to 31 March 2026 (closing 17:00 Lisbon time). A separate line of application for research work plans carried out mainly in non-academic institutions exists within the same call.",
+      "verification_status": "active"
+    },
+    {
+      "id": 329,
+      "title": "Danish Government Scholarship",
+      "official_source": "University of Copenhagen",
+      "official_source_url": "https://studies.ku.dk/education/student-life/finances-and-scholarships/scholarships-for-international-students",
+      "catalogue_url": null,
+      "country": "Denmark",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 362,
+      "title": "Government of Ireland Postgraduate Scholarship Programme",
+      "official_source": "Research Ireland",
+      "official_source_url": "https://www.researchireland.ie/funding/government-ireland-postgraduate",
+      "catalogue_url": "https://media.researchireland.ie/wp-content/uploads/2026/02/Government-of-Ireland-Postgraduate-Scholarship-2026_Call-Document.pdf",
+      "country": "Ireland",
+      "deadline_display": "The 2026 call applicant deadline was \"23rd October 2025, 16:00 Irish local time\"; the next annual call is expected but no date is published yet.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual call; the 2026 call ran 11 September 2025 to 23 October 2025, with award start date 1 September 2026.",
+      "verification_status": "active"
+    },
+    {
+      "id": 367,
+      "title": "Government of Ireland Postdoctoral Fellowship Programme",
+      "official_source": "Research Ireland",
+      "official_source_url": "https://www.researchireland.ie/funding/government-ireland-postdoctoral",
+      "catalogue_url": "https://media.researchireland.ie/wp-content/uploads/2026/02/Government-of-Ireland-Postdoctoral-Fellowship-2026_Call-Document_FINAL.pdf",
+      "country": "Ireland",
+      "deadline_display": "The 2026 call applicant deadline was \"23rd October 2025, 16:00 Irish local time\"; no date is published for the next annual call.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual call; the 2026 call ran 11 September 2025 to 23 October 2025, with award start date 1 September 2026.",
+      "verification_status": "active"
+    },
+    {
+      "id": 536,
+      "title": "Rufford Small Grants Programme",
+      "official_source": "The Rufford Foundation",
+      "official_source_url": "https://apply.ruffordsmallgrants.org/help/criteria",
+      "catalogue_url": null,
+      "country": "Multiple",
+      "deadline_display": "There are no deadlines - applications can be submitted at any time of year. You can only make one funding application in any 12-month period; if an application is rejected you must wait 12 months before you can reapply; if you are funded you cannot apply for further support for at least 12 months.",
+      "deadline_precision": "varies",
+      "application_period": "Rolling. Applications can be submitted at any time of year, with no published closing date. One application per 12-month period per applicant.",
+      "verification_status": "active"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "shard_id": "LG-024",
+  "topic": "logo",
+  "hosts": [
+    "international.join-tsinghua.edu.cn",
+    "www.brandeis.edu",
+    "www.getfund.gov.gh",
+    "www.sharjah.ac.ae"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 58,
+      "title": "Brandeis University Wien International Scholarship",
+      "official_source": "Brandeis University",
+      "official_source_url": "https://www.brandeis.edu/isso/programs/wien/index.html",
+      "catalogue_url": null,
+      "country": "United States",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 316,
+      "title": "Tsinghua University Institutional Scholarship (Tsinghua University Scholarship)",
+      "official_source": "Tsinghua University",
+      "official_source_url": "https://international.join-tsinghua.edu.cn/Admission1/Freshmen_Scholarships1.htm",
+      "catalogue_url": "https://international.join-tsinghua.edu.cn/Admission1/Undergraduate_Programs_Overview.htm",
+      "country": "China",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 519,
+      "title": "University of Sharjah Research Assistant (RA) and Teaching Assistant (TA) Scholarship for Master's Students",
+      "official_source": "University of Sharjah",
+      "official_source_url": "https://www.sharjah.ac.ae/en/Admissions/Masters-Degree",
+      "catalogue_url": null,
+      "country": "United Arab Emirates",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 685,
+      "title": "GETFund Postgraduate Local Scholarship (2026/27)",
+      "official_source": "Ghana Education Trust Fund (GETFund)",
+      "official_source_url": "https://www.getfund.gov.gh/news/getfund-opens-applications-for-2026-27-undergraduate-and-postgraduate-local-scholarships",
+      "catalogue_url": "https://www.getfund.gov.gh/scholarships/overview",
+      "country": "Ghana",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 718,
+      "title": "GETFund Postgraduate Foreign Scholarship (Ghana Education Trust Fund)",
+      "official_source": "Ghana Education Trust Fund (GETFund)",
+      "official_source_url": "https://www.getfund.gov.gh/news/getfund-opens-applications-for-2026-2027-postgraduate-foreign-scholarships",
+      "catalogue_url": "https://www.getfund.gov.gh/scholarships/overview",
+      "country": "Ghana",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

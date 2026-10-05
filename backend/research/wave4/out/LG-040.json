@@ -1,0 +1,267 @@
+{
+  "shard_id": "LG-040",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 115,
+      "title": "Netaji Subhas-ICAR International Fellowship (NS-ICAR IF)",
+      "outcome": "not_found",
+      "image_url": null,
+      "image_source_url": null,
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": false,
+        "notes": "The official ICAR programme page (https://icar.org.in/en/node/26210) is reachable and does render an ICAR brand mark in the site header, but every published instance of it is a favicon-sized raster. Measured dimensions: /sites/default/files/2024-06/icar-logo.png = 60x83 px (6850 bytes); /sites/default/files/icar-logo.png = 60x83 px (6850 bytes, byte-identical, this is also the declared <link rel=\"icon\">); /sites/default/files/inline-images/logo.png = 60x83 px (6850 bytes). The only other header mark, /sites/default/files/2024-06/emb-logo.png, is 60x100 px and is the Government of India national emblem, i.e. a different identity, not ICAR. All of these are rejected under section 7 ('a low-resolution favicon-sized badge' / favicon asset / wrong identity). No higher-resolution ICAR logo or official brand-asset page was found on icar.org.in or www.icar.gov.in. The NS-ICAR IF programme content is published only as a PDF attachment (/sites/default/files/2026-08/NETAJI SUBHAS - ICAR INTERNATIONAL FELLOWSHIP.pdf), which is not an image asset. image_url stays null rather than substituting a favicon, a government emblem, or a third-party mirror."
+      },
+      "source": {
+        "url": "https://icar.org.in/en/node/26210",
+        "publisher": "Indian Council of Agricultural Research (ICAR), Ministry of Agriculture and Farmers Welfare, Government of India",
+        "retrieved_at": "2026-10-05T16:05:00Z",
+        "raw_extract": "Page title: \"NETAJI SUBHAS - ICAR INTERNATIONAL FELLOWSHIP | ICAR\"; meta description: \"NETAJI SUBHAS - ICAR INTERNATIONAL FELLOWSHIP - | Indian Council of Agricultural Research Krishi Bhavan\"; canonical: \"https://icar.org.in/hi/netaji-subhas-icar-international-fellowship\". Header brand block verbatim: \"<a href=\\\"https://www.icar.org.in/\\\" class=\\\"wow fadeInLeft\\\" title=\\\"ICAR\\\" rel=\\\"home\\\" style=\\\"visibility: visible; animation-name: fadeInLeft;\\\" tabindex=\\\"-1\\\"><img src=\\\"/sites/default/files/2024-06/emb-logo.png\\\" alt=\\\"logo\\\" title=\\\"logo\\\" /><img src=\\\"/sites/default/files/2024-06/icar-logo.png\\\" alt=\\\"logo\\\" title=\\\"logo\\\" /><p>भारतीय कृषि अनुसंधान परिषद<br /><span class=\\\"firsttitle\\\">indian council of agricultural research</span> <span>Ministry of Agriculture and Farmers Welfare</span></p></a>\". Documented icon: \"<link rel=\\\"icon\\\" href=\\\"/sites/default/files/icar-logo.png\\\" type=\\\"image/png\\\" />\". Body content is a single attachment link: \"<a href=\\\"/sites/default/files/2026-08/NETAJI%20SUBHAS%20-%20ICAR%20INTERNATIONAL%20FELLOWSHIP.pdf\\\" type=\\\"application/pdf\\\">NETAJI SUBHAS - ICAR INTERNATIONAL FELLOWSHIP.pdf</a>\".",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.icar.gov.in",
+        "https://icar.org.in/en/node/26210",
+        "https://icar.org.in/en/netaji-subhas-icar-international-fellowship",
+        "https://icar.org.in/en/about-us",
+        "https://icar.org.in/sites/default/files/2024-06/icar-logo.png",
+        "https://icar.org.in/sites/default/files/icar-logo.png",
+        "https://icar.org.in/sites/default/files/inline-images/logo.png",
+        "https://icar.org.in/sites/default/files/2024-06/emb-logo.png"
+      ],
+      "rejected": [
+        {
+          "url": "https://icar.org.in/sites/default/files/icar-logo.png",
+          "reason": "favicon - it is the declared <link rel=\"icon\"> asset, and measures only 60x83 px (low-resolution favicon-sized badge)"
+        },
+        {
+          "url": "https://icar.org.in/sites/default/files/2024-06/icar-logo.png",
+          "reason": "low-resolution favicon-sized badge - 60x83 px, 6850 bytes; byte-identical to the favicon"
+        },
+        {
+          "url": "https://icar.org.in/sites/default/files/inline-images/logo.png",
+          "reason": "low-resolution favicon-sized badge - 60x83 px, 6850 bytes; byte-identical to the favicon"
+        },
+        {
+          "url": "https://icar.org.in/sites/default/files/2024-06/emb-logo.png",
+          "reason": "wrong identity - this is the Government of India national emblem (60x100 px), not the ICAR brand mark"
+        },
+        {
+          "url": "https://icar.org.in/sites/default/files/2026-08/NETAJI%20SUBHAS%20-%20ICAR%20INTERNATIONAL%20FELLOWSHIP.pdf",
+          "reason": "not an image asset - PDF document attachment, not a fetchable logo file"
+        },
+        {
+          "url": "https://icar.org.in/en/netaji-subhas-icar-international-fellowship",
+          "reason": "wrong URL - HTTP 404; the English node alias is /en/node/26210"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 482,
+      "title": "MIT Undergraduate Need-Based Financial Aid and MIT Scholarship for International Students",
+      "outcome": "recovered",
+      "image_url": "https://brand.mit.edu/sites/default/files/2023-08/logo-colors-mit-red.png",
+      "image_source_url": "https://brand.mit.edu/logos-marks/mit-logo",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Official_source_url (sfs.mit.edu international aid page) carries the MIT mark only as an inline <svg class=\"mit-logo\"> - there is no fetchable raster asset there, and its og:image (social-logo.jpg) is a social share image, rejected. Escalated to MIT's official Brand Guide (brand.mit.edu, run by the MIT Institute Office of Communications, linked from comms.mit.edu/brand/branding), which publishes the Institute logo as downloadable files. Chosen file measures 1134x765 px, 15384 bytes, HTTP 200, image/png, served from MIT's own origin at the original (non style-derivative) path /sites/default/files/2023-08/logo-colors-mit-red.png, and the page describes it verbatim as 'MIT logo in MIT red'. All section-7 rejections cleared: not a favicon (the favicon files are /themes/mit/assets/favicon/favicon.ico and favicon.svg, separately published), not UI chrome, not a social avatar, not third-party, not a screenshot. Confidence is MEDIUM rather than HIGH for one honest caveat: MIT's canonical logo package (.ai/.eps/.png/.svg) is behind Touchstone login on brand.mit.edu/downloads, so this is the Brand Guide's published documentation tile - genuine MIT logo artwork on a 1134x765 canvas rather than a clean transparent standalone logo file. A reviewer may prefer to swap it for a transparent-background variant if one becomes publicly reachable."
+      },
+      "source": {
+        "url": "https://brand.mit.edu/logos-marks/mit-logo",
+        "publisher": "Massachusetts Institute of Technology - Institute Office of Communications (MIT Brand Guide, brand.mit.edu)",
+        "retrieved_at": "2026-10-05T16:05:00Z",
+        "raw_extract": "Page lead-in verbatim: \"As the Institute's primary graphic symbol, the MIT logo should appear on all communications, including websites and other digital collateral, print publications, stationery, and signage.\" Asset markup verbatim: \"<img loading=\\\"lazy\\\" srcset=\\\"/sites/default/files/styles/tile_narrow/public/2023-08/logo-colors-mit-red.png?itok=k08Ir4pB 1x, /sites/default/files/styles/tile_narrow/public/2023-08/logo-colors-mit-red.png?itok=k08Ir4pB 2x\\\" width=\\\"1134\\\" height=\\\"765\\\" src=\\\"/sites/default/files/styles/tile_narrow/public/2023-08/logo-colors-mit-red.png?itok=k08Ir4pB\\\" alt=\\\"MIT logo in MIT red\\\" />\" under the heading \"MIT logo in the core palette colors\". Download gate verbatim (brand.mit.edu/downloads): \"Downloads are available to the MIT community via Touchstone (login required). If you are from outside MIT, visit our Contact page for guidance on requesting the files.\" Rendered header/logo mark on the record's own official_source_url (sfs.mit.edu) is inline SVG: \"<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" viewBox=\\\"0 0 4666.85 732.17\\\" class=\\\"mit-logo site-nav__logo\\\">\".",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://sfs.mit.edu/undergraduate-students/apply-for-aid/international",
+        "https://sfs.mit.edu/undergraduate-students/types-of-aid",
+        "https://www.mit.edu/about/",
+        "https://brand.mit.edu/",
+        "https://brand.mit.edu/logos-marks",
+        "https://brand.mit.edu/logos-marks/mit-logo",
+        "https://brand.mit.edu/downloads",
+        "https://brand.mit.edu/sites/default/files/2023-08/logo-colors-mit-red.png"
+      ],
+      "rejected": [
+        {
+          "url": "https://sfs.mit.edu/wp-content/themes/custom/mit-sfs-theme/static/img/social-logo.jpg?v=2",
+          "reason": "social share image - it is the og:image / twitter:image declared on the MIT SFS page"
+        },
+        {
+          "url": "https://sfs.mit.edu/wp-content/themes/custom/mit-sfs-theme/static/img/favicon/apple-icon-180x180.png",
+          "reason": "favicon - apple-touch-icon asset"
+        },
+        {
+          "url": "https://sfs.mit.edu/wp-content/uploads/2023/11/cropped-favicon-512x512-1-192x192.png",
+          "reason": "favicon - declared <link rel=\"icon\"> apple/tile asset"
+        },
+        {
+          "url": "https://www.mit.edu/themes/mit/assets/favicon/favicon.svg",
+          "reason": "favicon - browser UI chrome, not a brand asset"
+        },
+        {
+          "url": "https://brand.mit.edu/sites/default/files/2023-08/favicon-white-on-black.png",
+          "reason": "favicon - MIT brand guide's favicon illustration"
+        },
+        {
+          "url": "https://brand.mit.edu/sites/default/files/2023-08/clearspace-jumplink_0.png",
+          "reason": "not an asset - a diagram illustrating minimum clear space, not the logo itself"
+        },
+        {
+          "url": "https://brand.mit.edu/sites/default/files/2023-08/logo--placement_1.png",
+          "reason": "not an asset - a website placement mock-up, not the logo file"
+        },
+        {
+          "url": "https://brand.mit.edu/sites/default/files/2023-08/30-MIT-logo-do_0.jpg",
+          "reason": "not an asset - a do/don't documentation photograph, not a clean logo file"
+        },
+        {
+          "url": "https://brand.mit.edu/sites/default/files/2023-08/logo-micro.png",
+          "reason": "wrong variant - the micro logo is reserved for 15-30 px digital / .125\".25\" print use only"
+        },
+        {
+          "url": "https://brand.mit.edu/downloads",
+          "reason": "login required - canonical logo package is behind Touchstone authentication, no public direct file"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 522,
+      "title": "African Institute for Mathematical Sciences (AIMS) Structured Master's Scholarship - January 2027 intake (South African applicants)",
+      "outcome": "recovered",
+      "image_url": "https://aims.ac.za/images/logo.png",
+      "image_source_url": "https://aims.ac.za/academics/prospective_students",
+      "image_source_type": "official_scholarship",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Fetched the record's official_source_url first. https://aims.ac.za/images/logo.png returns HTTP 200 image/png, 154334 bytes, measured 2048x411 px. It is the AIMS South Africa institutional logo: the page declares it as the site logo with og:image / twitter:image plus og:image:width 2048 and og:image:height 411, and the masthead renders the identical mark (same 5:1 aspect ratio) via the derivatives /images/logo_hu4600616865369929826.webp and /images/logo-w_hu14195724773755920410.webp, both with alt=\"AIMS South Africa\". Identity matches the record: African Institute for Mathematical Sciences (AIMS), Muizenberg, Cape Town. The favicon files (/images/favicon_hu*.png, 48x48/96x96/144x144, apple-touch-icon) were examined and rejected; the AIMS favicons are separate files from logo.png. logo.png is the source logo artwork, not an avatar or share crop. All section-7 rejections cleared."
+      },
+      "source": {
+        "url": "https://aims.ac.za/academics/prospective_students",
+        "publisher": "African Institute for Mathematical Sciences (AIMS), Muizenberg, Cape Town, South Africa",
+        "retrieved_at": "2026-10-05T16:05:00Z",
+        "raw_extract": "Logo metadata verbatim: \"<meta property=\\\"og:image\\\" content=\\\"https://aims.ac.za/images/logo.png\\\" />\", \"<meta name=\\\"twitter:image\\\" content=\\\"https://aims.ac.za/images/logo.png\\\" />\", \"<meta property=\\\"og:image:width\\\" content=\\\"2048\\\" />\", \"<meta property=\\\"og:image:height\\\" content=\\\"411\\\" />\", \"<meta property=\\\"og:image:type\\\" content=\\\"image/.png\\\" />\". Masthead verbatim: \"<a class=\\\"navbar-brand\\\" href=\\\"/\\\"> ... <img class=\\\"img img-light\\\" width=\\\"280\\\" height=\\\"411\\\" src=\\\"/images/logo_hu4600616865369929826.webp\\\" alt=\\\"AIMS South Africa\\\" />\". Rejected favicon set verbatim: \"<link rel=\\\"icon\\\" href=\\\"/images/favicon_hu5681221619359289116.png\\\" type=\\\"image/png\\\">\", \"<link rel=\\\"apple-touch-icon\\\" sizes=\\\"144x144\\\" href=\\\"/images/favicon_hu17099878449417317818.png\\\">\". Programme context confirming identity verbatim: \"Applications for our prestigious Structured Master's programme are completed online.\" and \"For our Mathematical Sciences stream, we have a September intake, open January to March and a January intake (South African applicants) open August to October of the preceding year.\"",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://aims.ac.za/academics/prospective_students",
+        "https://aims.ac.za/images/logo.png",
+        "https://aims.ac.za/images/logo_hu10911764487100562301.png",
+        "https://aims.ac.za/images/logo-w_hu3748385471851927753.png"
+      ],
+      "rejected": [
+        {
+          "url": "https://aims.ac.za/images/favicon_hu4287049027302083701.png",
+          "reason": "favicon - declared <link rel=\"icon\"> asset (96x96)"
+        },
+        {
+          "url": "https://aims.ac.za/images/favicon_hu5681221619359289116.png",
+          "reason": "favicon - declared <link rel=\"icon\"> asset (48x48), favicon-sized badge"
+        },
+        {
+          "url": "https://aims.ac.za/images/favicon_hu17099878449417317818.png",
+          "reason": "favicon - declared apple-touch-icon asset"
+        },
+        {
+          "url": "https://aims.ac.za/images/academics/prospective_students/Academics_ProspectiveStudents_hu2431187193807776144.JPG",
+          "reason": "decorative hero art - page background photograph, not a brand mark"
+        },
+        {
+          "url": "https://aims.ac.za/images/logo_hu4600616865369929826.webp",
+          "reason": "not chosen - derivative of logo.png, only 280x411 rendering; the original 2048x411 PNG was used instead"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 664,
+      "title": "Bond University Postgraduate Research Scholarship",
+      "outcome": "recovered",
+      "image_url": "https://bond.edu.au/themes/custom/bond_theme/images/logo-colour.svg",
+      "image_source_url": "https://bond.edu.au/",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Fetched the record's official_source_url (the scholarship page) first: bond.edu.au renders the Bond wordmark only as inline <svg class=\"bond-logo-colour\"> / <svg class=\"bond-logo-outline\"> inside the header, so there was no fetchable asset there and its og:image is a campus building photograph (rejected). Escalated to the Bond University homepage on the same official domain, where Bond publishes the logo URL itself in its schema.org Organization markup. The asset returns HTTP 200 image/svg+xml from bond.edu.au and is Bond's colour wordmark (fill #003663, matching the site's --brand-1). Identity matches the record (Bond University, Gold Coast, Australia). Favicon set (favicon.ico, icon.svg, apple-touch-icon.png, site.webmanifest) was examined and rejected - logo-colour.svg is a separate file in the theme's images/ directory, not a favicon. A sibling logo-colour.png does not exist (404), so the SVG is the official published form. All section-7 rejections cleared."
+      },
+      "source": {
+        "url": "https://bond.edu.au/",
+        "publisher": "Bond University, Gold Coast, Queensland, Australia",
+        "retrieved_at": "2026-10-05T16:05:00Z",
+        "raw_extract": "schema.org Organization block verbatim from bond.edu.au: \"<script type=\\\"application/ld+json\\\">{ \\\"@context\\\": \\\"https://schema.org\\\", \\\"@type\\\": \\\"Organization\\\", \\\"name\\\": \\\"Bond University\\\", \\\"url\\\": \\\"https://bond.edu.au/\\\", \\\"logo\\\": \\\"https://bond.edu.au/themes/custom/bond_theme/images/logo-colour.svg\\\" }</script>\". Header inline mark on the scholarship page verbatim: \"<a href=\\\"/\\\" class=\\\"global-header-logo\\\" data-gtm-category=\\\"Logo\\\" data-gtm-label=\\\"Bond University\\\"> <svg xmlns=\\\"http://www.w3.org/2000/svg\\\" xml:space=\\\"preserve\\\" width=\\\"132\\\" height=\\\"52\\\" class=\\\"bond-logo-colour\\\" fill=\\\"#003663\\\" role=\\\"presentation\\\" viewBox=\\\"0 0 163 63\\\">\". Scholarship page context verbatim: \"Bond University values its higher degree research student cohort and provides a substantial level of direct financial support to many students.\"",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://bond.edu.au/scholarship/bond-university-postgraduate-research-scholarship",
+        "https://bond.edu.au/research/research-degrees/fees-and-scholarships",
+        "https://bond.edu.au/",
+        "https://bond.edu.au/search?keys=logo",
+        "https://bond.edu.au/themes/custom/bond_theme/images/logo-colour.svg"
+      ],
+      "rejected": [
+        {
+          "url": "https://bond.edu.au/themes/custom/bond_theme/favicon/icon.svg",
+          "reason": "favicon - declared <link rel=\"icon\" type=\"image/svg+xml\"> asset"
+        },
+        {
+          "url": "https://bond.edu.au/themes/custom/bond_theme/favicon/apple-touch-icon.png",
+          "reason": "favicon - declared apple-touch-icon asset (180x180)"
+        },
+        {
+          "url": "https://bond.edu.au/themes/custom/bond_theme/favicon/favicon.ico",
+          "reason": "favicon - declared icon asset"
+        },
+        {
+          "url": "https://bond.edu.au/themes/custom/bond_theme/images/bond-og.jpg",
+          "reason": "not an asset - OpenGraph share image, not a brand mark"
+        },
+        {
+          "url": "https://bond.edu.au/sites/default/files/2022-07/2020_FSD_Building%20Exterior_CAV_1.jpg",
+          "reason": "decorative hero art - campus building photograph used as the scholarship page og:image, not a logo"
+        },
+        {
+          "url": "https://bond.edu.au/themes/custom/bond_theme/images/logo-colour.png",
+          "reason": "not an asset - HTTP 404; Bond publishes the colour wordmark only in SVG form"
+        },
+        {
+          "url": "https://www.brandsoftheworld.com/logo/bond-university",
+          "reason": "third-party aggregator - not examined as evidence and not used; listed only to record that the logo-search results surfaced it and it was discarded"
+        }
+      ]
+    }
+  ]
+}

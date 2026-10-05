@@ -1,0 +1,111 @@
+{
+  "shard_id": "DL-017",
+  "topic": "deadline",
+  "hosts": [
+    "asian-university.org",
+    "english.ucas.ac.cn",
+    "iczu.zju.edu.cn",
+    "universityofgalway.ie",
+    "www.ie.edu",
+    "www.ugc.gov.in"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 98,
+      "title": "IE University Master's Awards and Scholarships",
+      "official_source": "IE University",
+      "official_source_url": "https://www.ie.edu/financial-aid/masters/awardsandscholarships",
+      "catalogue_url": "https://www.ie.edu/financial-aid/scholarship-list",
+      "country": "Spain",
+      "deadline_display": "There is no standalone scholarship call: Direct Awards are granted automatically upon admission, and 'The application deadline for IE Awards is the program start date.' Individual IE Foundation Scholarships carry their own deadlines.",
+      "deadline_precision": "varies",
+      "application_period": "Aligned to each master's programme's admission and start dates; IE Awards close on the programme start date.",
+      "verification_status": "active"
+    },
+    {
+      "id": 113,
+      "title": "UGC Junior Research Fellowship (JRF) and Research Associateship (RA) for Foreign Nationals",
+      "official_source": "University Grants Commission (UGC), Govt. of India",
+      "official_source_url": "https://www.ugc.gov.in",
+      "catalogue_url": "https://www.ugc.gov.in/publication/XI_Plan_Guidelines",
+      "country": "India",
+      "deadline_display": "No fixed calendar deadline is published. The official guidelines state that \"The applications are invited through circulation to Indian embassies/Indian missions abroad\", so the timing is set by each mission's local call.",
+      "deadline_precision": "varies",
+      "application_period": "Annual, circulated through Indian embassies and Indian missions abroad. Foreign students already in India apply through the university they propose to work with.",
+      "verification_status": "active"
+    },
+    {
+      "id": 245,
+      "title": "UCAS Chinese Government Scholarship (University of Chinese Academy of Sciences)",
+      "official_source": "University of Chinese Academy of Sciences (UCAS) & China Scholarship Council (CSC)",
+      "official_source_url": "https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid/6656-call-for-2026-chinese-government-scholarship-for-international-students-to-study-at-ucas",
+      "catalogue_url": "https://english.ucas.ac.cn/index.php/admission/international-students",
+      "country": "China",
+      "deadline_display": "Application deadline: January 31st, 2026 (Beijing Time), with the application filed in both the CSC system and the UCAS international admission system.",
+      "deadline_precision": "recurring",
+      "application_period": "The 2026 call set a deadline of 31 January 2026 (Beijing Time). The call is issued annually; the 2027 call had not been published as of 2026-10-04, so no date is recorded for the next cycle.",
+      "verification_status": "active"
+    },
+    {
+      "id": 313,
+      "title": "UCAS Scholarship for International Students",
+      "official_source": "University of Chinese Academy of Sciences (UCAS)",
+      "official_source_url": "https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid/6658-ucas-scholarship-for-international-students-2026-call-for-applications",
+      "catalogue_url": "https://english.ucas.ac.cn/index.php/admission/international-students/notice",
+      "country": "China",
+      "deadline_display": "For PhD and Master's programs: 31st January 2026 (Beijing Time). For Senior visiting and Regular visiting programs: no deadline.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual cycle tied to the Call for 2026 Master's/Doctoral Degree Programs for International Students; the 2026 call has closed and no 2027 call is published yet.",
+      "verification_status": "active"
+    },
+    {
+      "id": 314,
+      "title": "CAS-ANSO Scholarship (Degree Program) 2026",
+      "official_source": "University of Chinese Academy of Sciences (UCAS)",
+      "official_source_url": "https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid/6657-cas-anso-scholarship-degree-program-2026-call-for-applications-to-study-at-ucas",
+      "catalogue_url": "https://english.ucas.ac.cn/index.php/research/research-programs",
+      "country": "China",
+      "deadline_display": "Deadline for Applicants and Referees: 31st January 2026 (Beijing Time) for the 2026 cycle, which has now closed. The 2027 call was not published on the UCAS site on 2026-10-04.",
+      "deadline_precision": "recurring",
+      "application_period": "15 October 2025 to 31 January 2026 (Beijing Time) for the 2026 cycle. The 2027 window was not published on 2026-10-04.",
+      "verification_status": "active"
+    },
+    {
+      "id": 365,
+      "title": "Hardiman PhD Scholarships",
+      "official_source": "University of Galway",
+      "official_source_url": "https://universityofgalway.ie/hardiman-scholarships",
+      "catalogue_url": "https://www.universityofgalway.ie/media/hardiman/files/Applicants_Guide_2026.docx",
+      "country": "Ireland",
+      "deadline_display": "The 2026 round closed on 6 February 2026 at 17:00 Irish time, when the application, supervisor form and two academic reference forms were all due. The next round \"normally re-opens in early December for the following September intake\", with no exact date published.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual cycle: the application system normally re-opens in early December for the following September intake, with a February closing date.",
+      "verification_status": "active"
+    },
+    {
+      "id": 608,
+      "title": "Asian University for Women Scholarships and Financial Aid (full and partial need-based aid)",
+      "official_source": "Asian University for Women (AUW), Chittagong",
+      "official_source_url": "https://asian-university.org/admissions/scholarships-financial-aid",
+      "catalogue_url": null,
+      "country": "Bangladesh",
+      "deadline_display": "No closing date is published; applications run with the annual admissions cycle and the official pages state that admissions are open",
+      "deadline_precision": "recurring",
+      "application_period": "Recurs with each annual admissions cycle. As of 2026-10-04 every AUW admissions page carries the banner \"ADMISSIONS ARE OPEN!\" and no closing date is stated.",
+      "verification_status": "needs_review"
+    },
+    {
+      "id": 650,
+      "title": "Zhejiang University \"Belt and Road\" International School of Medicine Scholarship (PhD)",
+      "official_source": "International School of Medicine, Zhejiang University (ZJU-ISM)",
+      "official_source_url": "https://iczu.zju.edu.cn/admissionsen/2022/0530/c68996a2590725/page.htm",
+      "catalogue_url": "https://iczu.zju.edu.cn/admissionsen/wcholarships/list.htm",
+      "country": "China",
+      "deadline_display": "The official page publishes an application deadline of 28 February (申请截止时间：2025年2月28日) for the cycle it documents, with results readable in the ZJU international student application system at the end of July or the beginning of August",
+      "deadline_precision": "recurring",
+      "application_period": "Annual cycle tied to the Zhejiang University international doctoral intake. The page read on 2026-10-04 still documents the cycle with a 28 February application deadline and late July/early August results; no 2027 intake call had been posted on the International College notice board at the time of checking (the most recent notice there is dated 2026-07-28).",
+      "verification_status": "active"
+    }
+  ]
+}

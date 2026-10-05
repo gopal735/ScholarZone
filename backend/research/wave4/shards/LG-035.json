@@ -1,0 +1,48 @@
+{
+  "shard_id": "LG-035",
+  "topic": "logo",
+  "hosts": [
+    "portal.gov.gy",
+    "www.fnr.lu",
+    "www.worldbank.org"
+  ],
+  "record_count": 4,
+  "records": [
+    {
+      "id": 475,
+      "title": "Joint Japan/World Bank Graduate Scholarship Program (JJ/WBGSP) 2027 - Application Window #1 (Developing Country Nationals)",
+      "official_source": "World Bank, Development Economics Vice Presidency (programme funded by the Government of Japan)",
+      "official_source_url": "https://www.worldbank.org/en/programs/scholarships/jj-wbgsp",
+      "catalogue_url": "https://www.worldbank.org/en/programs/scholarships/brief/jjwbgsp-participating-programs-2022-2024-application-window-1",
+      "country": "Multiple",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 507,
+      "title": "AFdoc – Aides à la formation doctorale (FNR PhD funding scheme)",
+      "official_source": "Fonds National de la Recherche (FNR), Luxembourg",
+      "official_source_url": "https://www.fnr.lu/funding-instruments/afdoc",
+      "catalogue_url": null,
+      "country": "Luxembourg",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 564,
+      "title": "Joint Japan/World Bank Graduate Scholarship Program (JJ/WBGSP) 2027 - Application Window for Japanese Nationals",
+      "official_source": "World Bank, Development Economics Vice Presidency, JJ/WBGSP Secretariat (scholarship fully funded by the Government of Japan)",
+      "official_source_url": "https://www.worldbank.org/en/programs/scholarships/japanese-nationals",
+      "catalogue_url": "https://www.worldbank.org/en/programs/scholarships/jj-wbgsp",
+      "country": "Japan",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 716,
+      "title": "Government of Guyana Scholarships",
+      "official_source": "Ministry of Public Service, Government Efficiency and Implementation, Government of Guyana",
+      "official_source_url": "https://portal.gov.gy/services/scholarship",
+      "catalogue_url": "https://mps.gov.gy/scholarships/gog",
+      "country": "Guyana",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

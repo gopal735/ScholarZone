@@ -1,0 +1,58 @@
+{
+  "shard_id": "LG-033",
+  "topic": "logo",
+  "hosts": [
+    "msmt.gov.cz",
+    "www.eur.nl",
+    "www.usp.ac.fj",
+    "www.westminster.ac.uk"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 294,
+      "title": "Scholarships of the Government of the Czech Republic for Students from Developing Countries",
+      "official_source": "Ministry of Education, Youth and Sports (MŠMT) / Dům zahraniční spolupráce (DZS)",
+      "official_source_url": "https://msmt.gov.cz/eu-and-international-affairs/government-scholarships-developing-countries",
+      "catalogue_url": "https://www.studyin.cz",
+      "country": "Czech Republic",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 384,
+      "title": "Erasmus Trustfonds Scholarship / TSH Changemaker Scholarship (Erasmus MC)",
+      "official_source": "Erasmus University Rotterdam (Erasmus MC)",
+      "official_source_url": "https://www.eur.nl/en/erasmusmc/programmes/practical-matters/scholarships/erasmus-trustfonds-scholarship-tsh-changemaker-scholarship",
+      "catalogue_url": "https://www.eur.nl/en/erasmusmc/graduate-school/research-masters",
+      "country": "Netherlands",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 524,
+      "title": "Postgraduate Sanctuary Scholarship - University of Westminster",
+      "official_source": "University of Westminster",
+      "official_source_url": "https://www.westminster.ac.uk/study/fees-and-funding/scholarships/postgraduate-sanctuary-scholarship",
+      "catalogue_url": null,
+      "country": "United Kingdom",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 719,
+      "title": "Pacific Scholarship for Excellence in Research & Innovation (PSERI)",
+      "official_source": "The University of the South Pacific (USP)",
+      "official_source_url": "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships/pacific-scholarship-for-excellence-in-research-innovation-pseri",
+      "catalogue_url": "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships",
+      "country": "Fiji",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 722,
+      "title": "Pacific Regional Sports Research Scholarship (PRSRS)",
+      "official_source": "Oceania National Olympic Committee and The University of the South Pacific",
+      "official_source_url": "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships/sports-scholars",
+      "catalogue_url": "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships",
+      "country": "Fiji",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "shard_id": "LG-014",
+  "topic": "logo",
+  "hosts": [
+    "ejust.edu.eg",
+    "posgrado.pucp.edu.pe",
+    "uchile.cl",
+    "www.moe.gov.sa"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 599,
+      "title": "Beca de la Escuela Doctoral Franco-Peruana en Ciencias de la Ingeniería y Geociencias (EDFPCIG) - Convocatoria 2026",
+      "official_source": "Escuela Doctoral Franco-Peruana en Ciencias de la Ingeniería y Geociencias (EDFPCIG), administrada por la Escuela de Posgrado de la PUCP",
+      "official_source_url": "https://posgrado.pucp.edu.pe/becas/beca-escuela-doctoral-franco-peruana-ciencias-ingenieria-y-geociencias",
+      "catalogue_url": "https://posgrado.pucp.edu.pe/becas",
+      "country": "Peru",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 604,
+      "title": "Beca Universidad de Chile (BUCH)",
+      "official_source": "Universidad de Chile - Direccion de Bienestar y Desarrollo Estudiantil (DIRBDE)",
+      "official_source_url": "https://uchile.cl/convocatorias/37944/beca-universidad-de-chile",
+      "catalogue_url": "https://uchile.cl/u5076",
+      "country": "Chile",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 617,
+      "title": "Government Scholarship in Saudi Public Universities for Non-Saudi Students (external scholarship) - Ministry of Education, Kingdom of Saudi Arabia",
+      "official_source": "Ministry of Education, Kingdom of Saudi Arabia (Study in Saudi platform)",
+      "official_source_url": "https://www.moe.gov.sa/en/education/ResidentsAndvisitors/pages/publicuniversitiesscholarships.aspx",
+      "catalogue_url": "https://www.moe.gov.sa/en/education/ResidentsAndvisitors/pages/publicuniversitiesscholarships.aspx",
+      "country": "Saudi Arabia",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 640,
+      "title": "Beca Doctoral PUCP - Programa de Apoyo a la Investigación Doctoral",
+      "official_source": "Pontificia Universidad Católica del Perú (PUCP) - Vicerrectorado de Investigación and Escuela de Posgrado",
+      "official_source_url": "https://posgrado.pucp.edu.pe/becas/becas-doctoral-pucp",
+      "catalogue_url": "https://posgrado.pucp.edu.pe/becas",
+      "country": "Peru",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 678,
+      "title": "E-JUST TICAD8 African Scholarships for Science, Technology and Innovation",
+      "official_source": "Egypt-Japan University of Science and Technology (E-JUST)",
+      "official_source_url": "https://ejust.edu.eg/international-scholarships",
+      "catalogue_url": "https://ejust.edu.eg/international-pg",
+      "country": "Egypt",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

@@ -1,0 +1,319 @@
+{
+  "shard_id": "DL-007",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 124,
+      "title": "Simmons University Kotzen Scholarship",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Applicants must complete and submit their Simmons Distinguished Scholar essay and their admission application to the University by December 1.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.simmons.edu/admission-aid/financial-aid/scholarships/simmons-distinguished-scholar-award",
+        "source_type": "official_university_page",
+        "publisher": "Simmons University (Office of Undergraduate Admission)",
+        "retrieved_at": "2026-10-05T15:27:00Z",
+        "as_of": null,
+        "raw_extract": "## Application Deadline\n\nApplicants must complete and submit their Simmons Distinguished Scholar essay and their admission application to the University by December 1.\n\nFinalists for scholarship consideration will be notified by the end of January and will be required to complete an interview in February. Recipients will be notified by March 1.",
+        "exact_deadline_wording": "Applicants must complete and submit their Simmons Distinguished Scholar essay and their admission application to the University by December 1.",
+        "confidence": "MEDIUM",
+        "notes": "Sharded official_source_url https://www.simmons.edu/undergraduate-admission/kotzen-scholarship returned HTTP 404. The legacy shortlink https://www.simmons.edu/kotzen now serves the current official Simmons scholarship page 'Simmons Distinguished Scholar Award' (https://www.simmons.edu/admission-aid/financial-aid/scholarships/simmons-distinguished-scholar-award), which is the top merit award that 'supersedes any previous merit scholarship' and is therefore the current official home of the Kotzen program. Identity caveat: Simmons itself now uses the name 'Simmons Distinguished Scholar Award'; the Kotzen name survives only on the legacy shortlink and in the undergraduate catalogue. No year is printed next to the deadline on the official page, so no YYYY-MM-DD can be formed without inventing one; recorded as recurring annual December 1 rather than a calendar date. Deadline wording gives a day (the 1st) plus month but no year, so MONTH ('source gives a month or window, no day') does not apply either; recurring annual precision is the accurate label."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "December 1 (no year stated on the official page; annual cycle: apply by December 1, finalists notified by end of January, recipients notified by March 1)"
+      },
+      "examined": [
+        "https://www.simmons.edu/undergraduate-admission/kotzen-scholarship",
+        "https://www.simmons.edu/kotzen",
+        "https://www.simmons.edu/admission-aid/financial-aid/scholarships"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.simmons.edu/undergraduate-admission/kotzen-scholarship",
+          "reason": "HTTP 404 - the sharded official_source_url no longer exists; not a usable live source"
+        },
+        {
+          "url": "https://www.scholarshipsrank.com/usa-scholarships/review/simmons-university-kotzen-scholarships-fully-funded",
+          "reason": "third-party scholarship aggregator; not an official Simmons source and snippet-only"
+        },
+        {
+          "url": "https://scholarshipden.com/simmons-university-kotzen-scholarship-2026/",
+          "reason": "third-party aggregator citing a non-existent official URL; not official"
+        },
+        {
+          "url": "https://simmons.smartcatalogiq.com/en/2023-2024/undergraduate-course-catalog/admission/first-year-students/merit-scholarship-programs",
+          "reason": "official but a stale 2023-2024 archived catalogue year with no deadline stated; not usable as current-cycle evidence"
+        },
+        {
+          "url": "https://the-updates.com/simmons-university-kotzen-scholarship-2027-fully-funded/",
+          "reason": "third-party site; its claim that Kotzen is 'officially known as the Simmons Distinguished Scholar Award' is unverified by any Simmons page and was not relied upon"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 246,
+      "title": "Nankai University Chinese Government Scholarship - Silk Road Program",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "From now until May 18, 2026.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://ensie.nankai.edu.cn/info/1047/1347.htm",
+        "source_type": "official_university_page",
+        "publisher": "Nankai University, School of International Education (International Students Section)",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "as_of": "2026 Silk Road Program intake",
+        "raw_extract": "##### Silk Road Program\n\n/\n\n2026 Nankai University Chinese Government Scholarship Silk Road Program\n\n**I. Application Deadline**\n\nFrom now until May 18, 2026.",
+        "exact_deadline_wording": "From now until May 18, 2026.",
+        "confidence": "HIGH",
+        "notes": "The live official page states an explicit calendar closing date of 2026-05-18 for the 2026 Silk Road round, but that date is roughly four and a half months in the past relative to retrieval on 2026-10-05, while the record is carried as open/upcoming. Per brief section 6 the stale date is therefore NOT written and NOT silently rolled forward to 2027. semantics is EXACT because the source does state an explicit calendar deadline; deadline_date stays null because the value is expired. The same page ties this intake to September 2026 registration ('Registration date: Early September 2026'), confirming the 2026 cycle has closed. No 2027 call was found on the live page as of retrieval. If the catalogue needs a live value for an open record, a human must confirm whether the record should be re-pointed at the 2027 CSC call before any date is written."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "From now until May 18, 2026. (2026 Silk Road round; expired as of retrieval - 2027 call not yet published)"
+      },
+      "examined": [
+        "https://ensie.nankai.edu.cn/info/1047/1347.htm",
+        "https://sie.nankai.edu.cn"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://studyinchina.csc.edu.cn",
+          "reason": "China Scholarship Council portal referenced by the Nankai page, but the Nankai-hosted deadline governs the Nankai-hosted round and the CSC portal was not fetched for a date; not used as evidence"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 268,
+      "title": "Danish Government Scholarship for Non-EU/EEA Full-Degree Students",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "The scholarships are administered by the Danish universities, who each select the students, who are awarded with a scholarship. For further information about the government scholarship, please consult the admission details of the higher education institution of your choice.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://studyindenmark.dk/study-options/scholarships",
+        "source_type": "official_government_page",
+        "publisher": "Danish Ministry of Science, Higher Education and Digital Affairs (studyindenmark.dk)",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "as_of": null,
+        "raw_extract": "## **Danish government scholarships for highly qualified non-EU/EEA students**\n\nDanish universities receive a limited number of government scholarships each year to fund highly qualified full-degree students from non-EU/EEA countries and Switzerland.\n\n[...]\n\nThe scholarships are administered by the Danish universities, who each select the students, who are awarded with a scholarship.\n\nFor further information about the government scholarship, please consult the admission details of the higher education institution of your choice.\n\n***Please note:*** The government scholarship consists of two parts and can be given as full or partial tuition fee waivers and/or grants towards covering your living costs. However, since the scholarships are administered by the higher education institutions themselves, you should enquire at the institution of your choice for further details.",
+        "exact_deadline_wording": "The scholarships are administered by the Danish universities, who each select the students, who are awarded with a scholarship. For further information about the government scholarship, please consult the admission details of the higher education institution of your choice.",
+        "confidence": "HIGH",
+        "notes": "Verified against the live official ministry page: the ministry publishes NO application deadline of its own for this award. It explicitly delegates the deadline to each individual university's admissions process ('consult the admission details of the higher education institution of your choice'). There is therefore no single official deadline value for this record. Per brief section 5 an individual university's admissions deadline is NOT admissible evidence for this record (another institution's deadline cannot stand in for the ministry award), and no single university was designated in the shard, so no date could be recovered. This is not ROLLING - the source never says rolling or no fixed deadline; it simply does not state one. Not CONFLICTING either, since that requires two credible sources disagreeing about the SAME deadline; here no source states a deadline at all. UNKNOWN is the truthful result and is confirmed, not guessed: the absence of a ministry deadline is itself directly evidenced by the fetched page."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "No ministry-published deadline. The Danish Ministry states: 'The scholarships are administered by the Danish universities, who each select the students, who are awarded with a scholarship. For further information about the government scholarship, please consult the admission details of the higher education institution of your choice.' The deadline is therefore set by each individual university and differs per institution."
+      },
+      "examined": [
+        "https://studyindenmark.dk/study-options/scholarships",
+        "https://studyindenmark.dk/study-options/higher-education-institutions"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://studyindenmark.dk/portal",
+          "reason": "programme finder only; the ministry itself directs applicants to individual institutions, and the shard designates no specific university whose deadline could be used"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 668,
+      "title": "COMSTECH Fellowships for Research and Trainings in Human Nutrition, Nutraceuticals and Food Sciences",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "COMSTECH will accept applications on a yearly basis and select the candidates based on the pre-approved selection criteria. Only 10 fellowships are available and will be awarded on a first-come, first-served basis, subject to eligibility. Call Status: The call is currently open",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://comstech.org/comstech-fellowships-for-research-and-trainings-in-human",
+        "source_type": "official_scholarship_page",
+        "publisher": "OIC-COMSTECH (COMSTECH Secretariat, Islamabad)",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "as_of": null,
+        "raw_extract": "Selection Criteria: Only 10 fellowships are available and will be awarded on a first-come, first-served basis, subject to eligibility\n\n[...]\n\n-   COMSTECH will accept applications on a yearly basis and select the candidates based on the pre-approved selection criteria.\n\n[...]\n\n**Call Status**\n\n**The call is currently open**",
+        "exact_deadline_wording": "COMSTECH will accept applications on a yearly basis and select the candidates based on the pre-approved selection criteria.",
+        "confidence": "HIGH",
+        "notes": "The live official page publishes NO closing date and no application window. The operative admission mechanism is 'first-come, first-served basis, subject to eligibility' against a capped 10 places, with Call Status 'The call is currently open' - i.e. the call remains open until places are exhausted, with no fixed calendar deadline. Classified ROLLING on that basis. Transparency note: the same page also says applications are accepted 'on a yearly basis', which describes when the fellowship recurs; ANNUAL was considered and rejected as the primary label because the operative application mechanism is first-come-first-served with no closing date rather than a periodic fixed-date window. Either label yields deadline_date null, so no date is asserted in any case. deadline_date deliberately null: per brief section 6 an open-ended/rolling call is never converted into a calendar date."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "rolling",
+        "deadline_display": "No closing date published. Applications accepted on a yearly basis and the 10 fellowships are awarded first-come, first-served while places remain; the page records Call Status: 'The call is currently open'."
+      },
+      "examined": [
+        "https://comstech.org/comstech-fellowships-for-research-and-trainings-in-human"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://drive.google.com/file/d/1MIUGUB8WHnvR3REz8JMwpnR9-c1CJapB/view?usp=drive_link",
+          "reason": "the page's own 'Flyer attached' PDF on Google Drive; not fetched/rendered, so no deadline was read from it and it was not used as evidence"
+        },
+        {
+          "url": "https://form.jotform.com/251382418954463",
+          "reason": "third-party form host (Jotform), not an official COMSTECH domain; used for submission, not for deadline evidence"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 669,
+      "title": "COMSTECH Fellowships for Research and Advanced Training in Virology and Vaccine Technologies",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "The call is currently open",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://comstech.org/comstech-fellowship",
+        "source_type": "official_scholarship_page",
+        "publisher": "OIC-COMSTECH (COMSTECH Secretariat, Islamabad)",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "as_of": null,
+        "raw_extract": "****The call is currently open****\n\n[**flyer**](https://comstech.org/wp-content/uploads/2020/08/Virology-2024-Featured-Image.jpg)\n\n[...]\n\n**Details of the call:**\n\n**Call Status**\n\n**The call is currently open**\n\n[...]\n\n**Application submission mode**: Applications can only be submitted through email to COMSTECH Headquarters, Islamabad, Pakistan ([khazima@comstech.org](mailto:khazima@comstech.org) or [comstech@comstech.org](mailto:comstech@comstech.org) ) and would be jointly reviewed by an expert committee of the COMSTECH and Host institutions.",
+        "exact_deadline_wording": "The call is currently open",
+        "confidence": "MEDIUM",
+        "notes": "The live official page states only 'The call is currently open' (stated twice) and publishes NO closing date and no application window anywhere on the page. Applications are accepted by email to COMSTECH HQ at any time with no stated cutoff, which establishes an open-ended call with no fixed calendar deadline, hence ROLLING. Confidence is MEDIUM rather than HIGH because the page never uses the literal words 'rolling' or 'no deadline'; the ROLLING reading is an interpretation of an open call that publishes no cutoff, not a verbatim statement of rolling admission. By contrast the two COMSTECH LDC calls (records 670 and 672) DO state rolling admission verbatim ('open all around the year') and are graded HIGH on that basis. deadline_date deliberately null - a rolling call is never converted into a calendar date."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "rolling",
+        "deadline_display": "No closing date published; the official page states 'The call is currently open' and accepts applications by email to COMSTECH HQ with no stated cutoff."
+      },
+      "examined": [
+        "https://comstech.org/comstech-fellowship"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://comstech.org/wp-content/uploads/2020/08/Virology-2024-Featured-Image.jpg",
+          "reason": "this is the image asset the page labels 'flyer' (a 2024 featured image), not a deadline-bearing document; an image is not deadline evidence"
+        },
+        {
+          "url": "https://form.jotform.com/251402374966460",
+          "reason": "third-party form host (Jotform), not an official COMSTECH domain; not deadline evidence"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 670,
+      "title": "COMSTECH Research Fellowships for Women Scientists in Least Developed Countries (LDCs) in the OIC",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "Deadline: Applications /Nominations are open all around the year",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://comstech.org/comstech-research-fellowships-for-women-scientists-ldc-oic",
+        "source_type": "official_scholarship_page",
+        "publisher": "OIC-COMSTECH (COMSTECH Secretariat, Islamabad)",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "as_of": "Call for the applications 2026",
+        "raw_extract": "**Call for the applications** **2026**\n\n**Applications /Nominations are open all around the year**\n\n[...]\n\n**Deadline:**\n\n**Applications /Nominations are open all around the year**\n\n[...]\n\n**Call Status**\n\n**The call is currently open**",
+        "exact_deadline_wording": "Applications /Nominations are open all around the year",
+        "confidence": "HIGH",
+        "notes": "The live official page carries an explicit 'Deadline:' heading whose entire content is the statement 'Applications /Nominations are open all around the year'. This is a verbatim explicit statement of rolling, year-round admission with no fixed calendar deadline, so ROLLING is a direct reading of the source rather than an inference - hence HIGH confidence. The page is headed 'Call for the applications 2026' with Call Status 'The call is currently open', confirming the current cycle is open. deadline_date deliberately null: a rolling call is never converted into a calendar date, and the year in the page heading is the call year, not a deadline year."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "rolling",
+        "deadline_display": "No fixed deadline; the awarding body's own 'Deadline:' section states 'Applications /Nominations are open all around the year'."
+      },
+      "examined": [
+        "https://comstech.org/comstech-research-fellowships-for-women-scientists-ldc-oic"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://drive.google.com/file/d/12_Fxb25x5_fT_NG-O0qCWo9ow425Hg8F/view?usp=drive_link",
+          "reason": "the page's own 'Flyer attached' PDF on Google Drive; not fetched, so not used as deadline evidence"
+        },
+        {
+          "url": "https://form.jotform.com/251522195826459",
+          "reason": "third-party form host (Jotform), not an official COMSTECH domain; not deadline evidence"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 672,
+      "title": "COMSTECH Research Fellowships for Least Developed Countries (LDCs) in the OIC",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "Deadline: Applications /Nominations are open all around the year",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://comstech.org/comstech-research-fellowships-for-least-developed-countries-2",
+        "source_type": "official_scholarship_page",
+        "publisher": "OIC-COMSTECH (COMSTECH Secretariat, Islamabad)",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "as_of": null,
+        "raw_extract": "#### **The call is currently open**\n\n[...]\n\n**Call Status**\n\n**The call is currently open**\n\n[...]\n\n**Deadline:**\n\n**Applications /Nominations are open all around the year**\n\n[...]\n\n**Application submission mode**: Applications can only be submitted through email to COMSTECH Headquarters, Islamabad, Pakistan ([khazima@comstech.org](mailto:khazima@comstech.org) or [comstech@comstech.org](mailto:comstech@comstech.org) ) and would be jointly reviewed by an expert committee of the COMSTECH and Host institutions.",
+        "exact_deadline_wording": "Applications /Nominations are open all around the year",
+        "confidence": "HIGH",
+        "notes": "The live official page carries an explicit 'Deadline:' heading whose entire content is 'Applications /Nominations are open all around the year' - a verbatim explicit statement of rolling, year-round admission with no fixed calendar deadline, so ROLLING is a direct reading of the source rather than an inference (HIGH confidence). Call Status reads 'The call is currently open' and applications are accepted by email with no stated cutoff. deadline_date deliberately null: a rolling call is never converted into a calendar date."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "rolling",
+        "deadline_display": "No fixed deadline; the awarding body's own 'Deadline:' section states 'Applications /Nominations are open all around the year'."
+      },
+      "examined": [
+        "https://comstech.org/comstech-research-fellowships-for-least-developed-countries-2"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://drive.google.com/file/d/10ad1yub8LGPU8w0wzCMk2_3-FDDElx9z/view?usp=drive_link",
+          "reason": "the page's own linked flyer PDF on Google Drive; not fetched, so not used as deadline evidence"
+        },
+        {
+          "url": "https://drive.google.com/file/d/1rbybMDb-srz4oMe_0i2lCMSy7nLahQmM/view?usp=drive_link",
+          "reason": "linked list of past awardees, not a deadline source"
+        },
+        {
+          "url": "http://jotform.com/251401778805459",
+          "reason": "third-party form host (Jotform), not an official COMSTECH domain; not deadline evidence"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 718,
+      "title": "GETFund Postgraduate Foreign Scholarship (Ghana Education Trust Fund)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Applications for the scholarship opened on 13th April 2026 and will close on 30th April 2026.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.getfund.gov.gh/news/getfund-opens-applications-for-2026-2027-postgraduate-foreign-scholarships",
+        "source_type": "official_government_page",
+        "publisher": "Ghana Education Trust Fund (GETFund), Government of Ghana",
+        "retrieved_at": "2026-10-05T15:28:00Z",
+        "as_of": "2026/2027 academic year intake",
+        "raw_extract": "GETFund Opens Applications for 2026/2027 Postgraduate Foreign Scholarships\nApril 14, 2026\n\nThe Ghana Education Trust Fund (GETFund) has officially announced the opening of applications for its Postgraduate Foreign Scholarship Programme for the 2026/2027 academic year. [...]\n\nApplications for the scholarship opened on 13th April 2026 and will close on 30th April 2026. Prospective applicants are required to complete the application process within this period through the official GETFund scholarship portal.",
+        "exact_deadline_wording": "Applications for the scholarship opened on 13th April 2026 and will close on 30th April 2026.",
+        "confidence": "HIGH",
+        "notes": "The official GETFund page is a JavaScript single-page application, so a plain fetch returns only the page title and no article body; the article text quoted here was obtained by actually loading and rendering the live page in a browser and reading document.body.innerText on 2026-10-05. It states an explicit calendar closing date of 2026-04-30 for the 2026/2027 postgraduate foreign scholarship round. That date is over five months in the past relative to retrieval while the record is carried as active/upcoming, so per brief section 6 the stale date is NOT written and NOT silently moved to the 2027/2028 round. semantics is EXACT because the source does state an explicit calendar deadline; deadline_date stays null because the value is expired. The same live site carries a newer item, 'GETFund Opens Applications for 2026/27 Undergraduate and Postgraduate Local Scholarships' (dated Oct 2, 2026), but that is a DIFFERENT scheme (local, not foreign) and per brief section 6 different programmes are not a conflict and its deadline was not imported into this record. A human should confirm the record's cycle before any date is written."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "Applications for the scholarship opened on 13th April 2026 and will close on 30th April 2026. (2026/2027 round; expired as of retrieval)"
+      },
+      "examined": [
+        "https://www.getfund.gov.gh/news/getfund-opens-applications-for-2026-2027-postgraduate-foreign-scholarships",
+        "https://www.getfund.gov.gh/scholarships/overview"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.getfund.gov.gh/scholarships/overview",
+          "reason": "official but a JavaScript-rendered overview SPA that returned no readable body text via fetch; no deadline was obtained from it"
+        }
+      ]
+    }
+  ]
+}

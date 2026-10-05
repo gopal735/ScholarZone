@@ -1,0 +1,275 @@
+{
+  "shard_id": "DL-055",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 96,
+      "title": "ENS de Lyon Scholarships of Excellence (Ampère and GRADUATE +)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Call for application 2026-2027 is now closed. | Calendar for 2026-2027 | Application Opening Date | Deadline fo submission | Results | November 14, 2025 | January 23, 2026, at 11:59pm (CET) | mid March 2026 | Calendar for 2027 - 2028 will be updated in November 2026.",
+      "deadline_precision": "exact",
+      "withheld_stale_date": "2026-01-23",
+      "withheld_reason": "expired_mismatch: the only explicit calendar deadline published on the official page (2026-01-23) is in the past as of 2026-10-05, while the record is open/upcoming. Not rolled forward to 2027, because ENS states the 2027-2028 calendar is not published until November 2026.",
+      "source": {
+        "url": "https://www.ens-lyon.fr/en/studies/admissions/application-masters-degrees-and-scholarships",
+        "source_type": "official_university_page",
+        "publisher": "Ecole normale superieure de Lyon (ENS de Lyon)",
+        "retrieved_at": "2026-10-05T15:32:39Z",
+        "as_of": "2026-2027 application cycle (closed); page states the 2027-2028 calendar will be updated in November 2026",
+        "raw_extract": "Call for application 2026-2027 is now closed. | Calendar for 2026-2027 | Application Opening Date | Deadline fo submission | Results | November 14, 2025 | January 23, 2026, at 11:59pm (CET) | mid March 2026 | Calendar for 2027 - 2028 will be updated in November 2026.",
+        "exact_deadline_wording": "January 23, 2026, at 11:59pm (CET)",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url (https://www.ens-lyon.fr/en/admission/scholarships) returned HTTP 404. The live equivalent page on the same official domain was located and fetched. The page states the 2026-2027 call is closed and that all three online application forms are marked CLOSED, so no currently-open cycle deadline exists on the official page. 'Deadline fo submission' is reproduced with the source's own typo."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": null,
+        "deadline_display": "Call for application 2026-2027 is now closed. | Calendar for 2026-2027 | Application Opening Date | Deadline fo submission | Results | November 14, 2025 | January 23, 2026, at 11:59pm (CET) | mid March 2026 | Calendar for 2027 - 2028 will be updated in November 2026."
+      },
+      "examined": [
+        "https://www.ens-lyon.fr/en/admission/scholarships (HTTP 404, dead legacy URL)",
+        "https://www.ens-lyon.fr/en/studies/student-information/grants-and-scholarships (index page; defers to the application page for process and deadlines, no separate calendar)",
+        "https://www.ens-lyon.fr/en/article/studies/international-students-application-scholarship-excellence-2025-2026 (prior 2025-2026 cycle article, superseded)",
+        "https://www.ens-lyon.fr/en/article/about-us/eiffel-excellence-scholarship-program-application-2026-2027 (different award - Eiffel Excellence Scholarship, not this record; deadline 2025-11-22 not applicable)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.ens-lyon.fr/en/article/about-us/eiffel-excellence-scholarship-program-application-2026-2027",
+          "reason": "Different award (Eiffel Excellence Scholarship, French Ministry for Europe and Foreign Affairs), not the ENS Scholarships of Excellence (Ampere / GRADUATE +) named in this record."
+        },
+        {
+          "url": "https://graduate-plus.fr/bourses-dexcellence/",
+          "reason": "Third-party/consortium programme site for the Graduate+ initiative, not the ENS de Lyon official scholarship page; no independent calendar obtained."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 241,
+      "title": "Kyushu University International Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.kyushu-u.ac.jp/en/admission/fees/support",
+        "source_type": "official_university_page",
+        "publisher": "Kyushu University",
+        "retrieved_at": "2026-10-05T15:32:39Z",
+        "as_of": null,
+        "raw_extract": "Scholarships for International Students | [Japanese Government (Monbukagakusho) Scholarship] ... [Kyushu University Friendship Scholarship] ... [JASSO (Japan Student Services Organization) Scholarship] ... [Scholarships for Self-supporting International Students]",
+        "exact_deadline_wording": null,
+        "confidence": "LOW",
+        "notes": "The shard's official_source_url (https://www.kyushu-u.ac.jp/en/admission/financial_aid/scholarship) returned HTTP 404. The two live successor pages on the same official domain were fetched in full. Neither the university scholarship index nor the Financial Aid page lists any programme named 'Kyushu University International Scholarship', and no deadline is published for one. The only named matches for the record's title exist on LinkedIn profiles describing an internal award given to a few high-GPA enrolled students, which is not an open application programme and is not an acceptable source under the contract. No deadline could be established from an official page, so the value stays UNKNOWN rather than borrowing a different programme's deadline."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": null,
+        "deadline_display": null
+      },
+      "examined": [
+        "https://www.kyushu-u.ac.jp/en/admission/financial_aid/scholarship (HTTP 404, shard official_source_url)",
+        "https://www.kyushu-u.ac.jp/en/admission/fees/scholarship (live index: MEXT, privately funded international students, CSC programme only)",
+        "https://www.isc.kyushu-u.ac.jp/intlweb/en/student/page-012 (Scholarships Offered by Private Organizations; no programme of this name)",
+        "https://www.kyushu-u.ac.jp/en/admissions/financial-support/ (HTTP 404)",
+        "https://www.kyushu-u.ac.jp/en/admissions/ (HTTP 404)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.linkedin.com/in/steffano-limman",
+          "reason": "Social media / personal profile. Prohibited as evidence; also describes a closed internal award, not an open application programme."
+        },
+        {
+          "url": "https://almin7.com/scholarship/kyushu-university-international-scholarship/",
+          "reason": "Third-party scholarship aggregator. Not an official Kyushu University page and contains only generic, unsourced cycle commentary."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 243,
+      "title": "MOFCOM Scholarship - CSC Program (Ministry of Commerce of China and China Scholarship Council Joint Program)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "The Economic and Commercial Counselor's Office (ECCO) of the Chinese Embassy in your country will be open for application until 6th June 2026.",
+      "deadline_precision": "exact",
+      "withheld_stale_date": "2026-06-06",
+      "withheld_reason": "expired_mismatch: the official application window closed 6th June 2026, which is in the past as of 2026-10-05, while the record is open/upcoming. Not rolled forward to the 2027 cycle, which has not been published.",
+      "other_official_dates": [
+        {
+          "url": "https://sl.china-embassy.gov.cn/eng/xwdt/202604/t20260403_11886183.htm",
+          "date": "2026-05-12",
+          "relationship": "Second official date on the same government domain, for a different step of the same 2026 cycle (Sierra Leone embassy submission cut-off, earlier than the programme-wide 6 June 2026 close). Also in the past.",
+          "raw_extract": "MOFCOM-CSC:By May 12, 2026-Email materials (PDF) + Appendix 3 should should be sent to sl@mofcom.gov.cn, with the mail subject as:: \"MOFCOM-CSC, GPAand Scale(e.g., 3.25/4), Applicant Name, WhatsApp Number\"."
+        }
+      ],
+      "source": {
+        "url": "https://sl.china-embassy.gov.cn/eng/xwdt/202604/P020260403009201102513.pdf",
+        "source_type": "official_government_page",
+        "publisher": "Ministry of Commerce of the People's Republic of China (document hosted by the Embassy of the PRC in Sierra Leone, sl.china-embassy.gov.cn)",
+        "retrieved_at": "2026-10-05T15:32:39Z",
+        "as_of": "2026 enrollment cycle (document titled 'MOFCOM SCHOLARSHIP-CSC Program (2026 Enrollment Guide)')",
+        "raw_extract": "II Application Procedures | The Economic and Commercial Counselor's Office (ECCO) of the Chinese Embassy in your country will be open for application until 6th June 2026.",
+        "exact_deadline_wording": "will be open for application until 6th June 2026",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url was fetched directly (HTTP 200, 369638 bytes, PDF). The document uses subset fonts with custom glyph encodings, so a plain text fetch returned binary; the text quoted here was read by downloading the same PDF and decoding its embedded /ToUnicode CMaps, i.e. the words come from this exact file, not from a search snippet. The same official domain also publishes an HTML notice for the identical 2026 recruitment whose MOFCOM-CSC embassy submission cut-off is 2026-05-12; both official dates are past, so no date is written. Programme is recruited annually, but no 2027 notice was found."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": null,
+        "deadline_display": "The Economic and Commercial Counselor's Office (ECCO) of the Chinese Embassy in your country will be open for application until 6th June 2026."
+      },
+      "examined": [
+        "https://sl.china-embassy.gov.cn/eng/xwdt/202604/t20260403_11886183.htm (official HTML notice for the same 2026 recruitment; gives the 2026-05-12 embassy submission cut-off, also past)",
+        "https://sl.china-embassy.gov.cn/eng/tz/202604/t20260403_11886185.htm (official HTML version of the same notice; same dates)",
+        "https://sl.china-embassy.gov.cn/zytz/202604/t20260403_11886186.htm (official Chinese-language notice; 2026 年 5 月 12 日 embassy submission date)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://bursaries-southafrica.co.za/china-mofcom-scholarship-csc-programme-2026/",
+          "reason": "Third-party scholarship listing site, not an official MOFCOM/CSC/embassy domain."
+        },
+        {
+          "url": "https://internationalscholarships.dhet.gov.za/index.php?download=0&id=359&option=com_content&print=1&tmpl=component&view=article",
+          "reason": "South African government department republication that explicitly defers to the sponsor and states its own 'encouraged' date of 20 May 2026; not the awarding authority and not the deadline for this record."
+        },
+        {
+          "url": "https://studyinchina.csc.edu.cn/#/login",
+          "reason": "CSC application portal requiring login; no publicly readable deadline published at the entry point."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 488,
+      "title": "JWU Global Full Tuition Scholarship (Johnson & Wales University)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Scholarship Deadline: January 4, 2026. Scholarship deadline different from application deadline.",
+      "deadline_precision": "exact",
+      "withheld_stale_date": "2026-01-04",
+      "withheld_reason": "expired_mismatch: the deadline published on the official EducationUSA record (2026-01-04) is in the past as of 2026-10-05, while the record is open/upcoming. Not rolled forward to the 2027 Early Action 2 cycle, because no 2027 date is published on any fetchable official page.",
+      "source": {
+        "url": "https://educationusa.state.gov/scholarships/jwu-global-full-tuition-scholarship",
+        "source_type": "official_government_page",
+        "publisher": "EducationUSA, U.S. Department of State",
+        "retrieved_at": "2026-10-05T15:32:39Z",
+        "as_of": "2026 cycle (page states Early Action 2 deadline of January 4, 2026; no 2027 cycle published)",
+        "raw_extract": "Must be invited to apply through JWU Admissions Portal. Must have fully complete, Undergraduate application by Early Action 2 deadline (January 4, 2026). ... Scholarship Deadline | January 4, 2026 | Scholarship deadline different from application deadline",
+        "exact_deadline_wording": "January 4, 2026",
+        "confidence": "HIGH",
+        "notes": "EducationUSA is an official U.S. Department of State page and is the shard's official_source_url; it was fetched live and states the scholarship deadline explicitly. The award is invitation-based ('If you meet eligibility criteria, you'll be invited to apply in January'), so the January date is a scholarship-application cut-off tied to the Early Action 2 admission deadline, which the same page flags as different from the admission application deadline. The provider's own site (jwu.edu) could not be fetched (WAF block), so no superseding 2027 cycle date could be confirmed."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": null,
+        "deadline_display": "Scholarship Deadline: January 4, 2026. Scholarship deadline different from application deadline."
+      },
+      "examined": [
+        "https://www.jwu.edu/admissions/paying-for-college/scholarships-and-grants.html (provider 'More information' link; blocked by Incapsula WAF, could not be fetched)",
+        "https://www.jwu.edu/admissions-aid/cost-aid/scholarships-grants-loans (shard catalogue_url; blocked by Incapsula WAF, could not be fetched)"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 522,
+      "title": "African Institute for Mathematical Sciences (AIMS) Structured Master's Scholarship - January 2027 intake (South African applicants)",
+      "outcome": "recovered",
+      "deadline_semantics": "MONTH",
+      "deadline_date": null,
+      "deadline_display": "For our Mathematical Sciences stream, we have a September intake, open January to March and a January intake (South African applicants) open August to October of the preceding year.",
+      "deadline_precision": "month",
+      "source": {
+        "url": "https://aims.ac.za/academics/prospective_students",
+        "source_type": "official_scholarship_page",
+        "publisher": "African Institute for Mathematical Sciences (AIMS) South Africa",
+        "retrieved_at": "2026-10-05T15:32:39Z",
+        "as_of": "Page describes both the September intake and the January intake; academic year 'kicks off in September and runs through until the end of June'",
+        "raw_extract": "Our academic year kicks off in September and runs through until the end of June. Applications are open from January to March. | For the AI for Science stream we only have the September intake with applications open from January to March. For our Mathematical Sciences stream, we have a September intake, open January to March and a January intake (South African applicants) open August to October of the preceding year.",
+        "exact_deadline_wording": "a January intake (South African applicants) open August to October of the preceding year",
+        "confidence": "HIGH",
+        "notes": "AIMS publishes the application window as months only and gives no day-level closing date anywhere on the page, so no day was inferred. For the January 2027 intake for South African applicants, 'of the preceding year' means the window runs August to October 2026, i.e. the closing month is October 2026. The AI for Science stream is explicitly excluded from this window (September intake only, January to March)."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "month",
+        "deadline_display": "For our Mathematical Sciences stream, we have a September intake, open January to March and a January intake (South African applicants) open August to October of the preceding year."
+      },
+      "examined": [
+        "https://aims.ac.za/academics/msc/ (Structured Master's programme page; carries no application window or closing date, confirms no day-level date is published on the programme page)"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 573,
+      "title": "Kyushu University Friendship Scholarship",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "There are two recruitment periods in a fiscal year. Period I: Scholarship recipients who will begin their studies at Kyushu University between April and September will be recruited around February through their host departments at Kyushu University. Term II: Scholarship recipients who will begin their studies at Kyushu University between October and March will be recruited around May through their host departments at Kyushu University.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.isc.kyushu-u.ac.jp/intlweb/en/admission/school-fees",
+        "source_type": "official_university_page",
+        "publisher": "International Student Center (Global Gateways), Kyushu University",
+        "retrieved_at": "2026-10-05T15:32:39Z",
+        "as_of": null,
+        "raw_extract": "Application Period | There are two recruitment periods in a fiscal year. | Period I: Scholarship recipients who will begin their studies at Kyushu University between April and September will be recruited around February through their host departments at Kyushu University. | Term II: Scholarship recipients who will begin their studies at Kyushu University between October and March will be recruited around May through their host departments at Kyushu University.",
+        "exact_deadline_wording": "There are two recruitment periods in a fiscal year.",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url (https://www.kyushu-u.ac.jp/en/admissions/financial-support/scholarships/international) returned HTTP 404. The live official International Student Center page was fetched instead; it is also the shard's catalogue_url, and the university's own Financial Aid page (https://www.kyushu-u.ac.jp/en/admission/fees/support) links to this exact section for the Kyushu University Friendship Scholarship, confirming identity. Kyushu publishes no fixed date: recruitment happens 'around February' and 'around May', and the application is made through the applicant's prospective host department, which sets its own internal date within the period. Recurring annual timing only, so no calendar date was written."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "There are two recruitment periods in a fiscal year. Period I: Scholarship recipients who will begin their studies at Kyushu University between April and September will be recruited around February through their host departments at Kyushu University. Term II: Scholarship recipients who will begin their studies at Kyushu University between October and March will be recruited around May through their host departments at Kyushu University."
+      },
+      "examined": [
+        "https://www.kyushu-u.ac.jp/en/admissions/financial-support/scholarships/international (HTTP 404, shard official_source_url)",
+        "https://www.kyushu-u.ac.jp/en/admission/fees/support (live Kyushu Financial Aid page; describes the Friendship Scholarship and links to the ISC page used as the source, publishes no date of its own)",
+        "https://www.kyushu-u.ac.jp/en/admissions/financial-support/scholarships (HTTP 404)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.tj.kyushu-u.ac.jp/en/igses/c_education/scholarships.php",
+          "reason": "A Kyushu University faculty/department microsite describing the Friendship Scholarship in general terms with no application date for the current cycle; a departmental page rather than the official university scholarship page."
+        },
+        {
+          "url": "https://kyoso.kyushu-u.ac.jp/global/prospective-students/international-undergraduates/scholarship/",
+          "reason": "Third-party/partner college scholarship portal, not the official Kyushu University scholarship page; no deadline for this scholarship obtained."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 698,
+      "title": "Posse Foundation Scholarship",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Apply on time; depending on the Posse city or program, nominations are accepted in the spring and summer before senior year begins (contact your local Posse office for specific deadlines)",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.possefoundation.org/recruiting-students/the-nomination-process",
+        "source_type": "official_scholarship_page",
+        "publisher": "The Posse Foundation",
+        "retrieved_at": "2026-10-05T15:32:39Z",
+        "as_of": null,
+        "raw_extract": "Depending on the Posse city or program, nomination timelines and deadlines may vary. Be sure to contact your local Posse office for details at the start of every calendar year. | Apply on time; depending on the Posse city or program, nominations are accepted in the spring and summer before senior year begins (contact your local Posse office for specific deadlines)",
+        "exact_deadline_wording": "nominations are accepted in the spring and summer before senior year begins (contact your local Posse office for specific deadlines)",
+        "confidence": "HIGH",
+        "notes": "Posse publishes no fixed date at all: it states deadlines vary by Posse city or programme and that applicants must contact their local Posse office for the specific dates at the start of every calendar year. The award is nomination-based rather than self-applied ('Are you part of a high school or a community-based organization... If you're registered with Posse, you can nominate high school students as early as their second semester junior year'). Recurring annual timing with no current calendar date, so no date was written. The record's existing verification_status of needs_review is consistent with this."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "Apply on time; depending on the Posse city or program, nominations are accepted in the spring and summer before senior year begins (contact your local Posse office for specific deadlines)"
+      },
+      "examined": [
+        "https://www.possefoundation.org/supporting-scholars (shard catalogue_url; describes Posse Scholar support and partner colleges, publishes no nomination deadline)"
+      ],
+      "rejected_sources": []
+    }
+  ]
+}

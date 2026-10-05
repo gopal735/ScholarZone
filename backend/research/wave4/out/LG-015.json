@@ -1,0 +1,342 @@
+{
+  "shard_id": "LG-015",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 246,
+      "title": "Nankai University Chinese Government Scholarship - Silk Road Program",
+      "outcome": "recovered",
+      "image_url": "https://ensie.nankai.edu.cn/images/logo.png",
+      "image_source_url": "https://ensie.nankai.edu.cn/info/1047/1347.htm",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Asset is the site masthead logo of the School of International Education (SIE) English site of Nankai University - the exact host that publishes the Silk Road Program call and the exact host named in the shard. Verified HTTP 200, Content-Type image/png, 566x78 px, 15686 bytes, magic PNG. Rendered and inspected visually: Nankai University round seal ('NANKAI UNIVERSITY / 南开 / NANKAI 1919') + '南开大学 Nankai University' wordmark + 'School of International Education'. This is the administering institution's own brand mark, not an unrelated department and not on a shared CDN (it is served from the SIE English site's own /images/ path). Not a favicon (no /favicon path, not <=32px), not a UI icon, not a social avatar, not a screenshot."
+      },
+      "source": {
+        "url": "https://ensie.nankai.edu.cn/info/1047/1347.htm",
+        "publisher": "School of International Education, Nankai University (Office for International Academic Exchanges, International Students Section)",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "raw_extract": "<!-- \u7f51\u7ad9logo\u56fe\u7247\u5730\u5740\u8bf7\u5728\u672c\u7ec4\u4ef6\"\u5185\u5bb9\u914d\u7f6e-\u7f51\u7ad9logo\"\u5904\u586b\u5199 --> <div class=\"logo\"> <a href=\"../../index.htm\" title=\"\u56fd\u9645\u6559\u80b2\u5b66\u9662\u82f1\u6587\u7ad9\"><img src=\"../../images/logo.png\" /></a></div>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://sie.nankai.edu.cn/images/logo.png",
+        "https://sie.nankai.edu.cn",
+        "https://ensie.nankai.edu.cn/images/flogo.png",
+        "https://ensie.nankai.edu.cn/images/banner.jpg",
+        "https://ensie.nankai.edu.cn/SCHOLARSHIP/CHINESE_GOVERNMENT_SCHOLARSHIP/Silk_Road_Program.htm"
+      ],
+      "rejected": [
+        {
+          "url": "https://sie.nankai.edu.cn/images/logo.png",
+          "reason": "Same Nankai SIE brand mark but only 417x78 px and it is the Chinese-language SIE site's variant, not the asset referenced by this record's official_source_url. The 566x78 asset on ensie.nankai.edu.cn was used instead."
+        },
+        {
+          "url": "https://ensie.nankai.edu.cn/images/flogo.png",
+          "reason": "Small 210x70 duplicate footer rendition of the same lockup; lower resolution than the masthead asset."
+        },
+        {
+          "url": "https://ensie.nankai.edu.cn/images/banner.jpg",
+          "reason": "Decorative page hero/banner image, not a logo or brand mark."
+        },
+        {
+          "url": "https://ensie.nankai.edu.cn/images/ewm.jpg",
+          "reason": "WeChat official-account QR code, not a logo."
+        },
+        {
+          "url": "https://ensie.nankai.edu.cn/images/sjmtbiao1.png",
+          "reason": "Social-media entry icon, not a logo or brand mark."
+        },
+        {
+          "url": "https://ensie.nankai.edu.cn/img/search.png",
+          "reason": "Browser/UI chrome (search button icon)."
+        },
+        {
+          "url": "https://ensie.nankai.edu.cn/img/up.png",
+          "reason": "Browser/UI chrome (back-to-top arrow icon)."
+        },
+        {
+          "url": "https://www.csc.edu.cn/",
+          "reason": "China Scholarship Council site is linked as a partner; its mark is a different organisation's brand and is not the identity of this Nankai University record."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 560,
+      "title": "MOFA Scholarship Program",
+      "outcome": "recovered",
+      "image_url": "https://www.mofa.gov.ae/MOFAAssets/images/logo.png",
+      "image_source_url": "https://www.mofa.gov.ae/en/Scholarship",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "www.mofa.gov.ae is the official UAE Ministry of Foreign Affairs domain and is the record's official_source_url. The asset is the site's masthead logo and, on this specific Scholarship page, its alt text is literally 'Ministry of Foreign Affairs - MOFA Scholarship Program', tying the mark directly to the programme. Verified HTTP 200, Content-Type image/png, 292x79 px, 23232 bytes. Rendered and inspected visually: UAE coat of arms (eagle, dhow, falcons, coffee pot, date palms) + 'UNITED ARAB EMIRATES MINISTRY OF FOREIGN AFFAIRS' wordmark. Not a favicon: the favicons on this page are separate files under /MOFAAssets/images/favicon/. 292x79 is small but it is the ministry's own primary logo asset, not a favicon-sized badge."
+      },
+      "source": {
+        "url": "https://www.mofa.gov.ae/en/Scholarship",
+        "publisher": "United Arab Emirates Ministry of Foreign Affairs (MOFA)",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "raw_extract": "<div class=\"header-logo logos rtl:flex-row-reverse\"><div class=\"logo-item rtl:me-0! rtl:ms-4! rtl:md:ms-5! rtl:lg:ms-6! rtl:xl:ms-10!\"><a class=\"logo block\" href=\"/\"><img src=\"/MOFAAssets/images/logo.png\" alt=\"Ministry of Foreign Affairs - MOFA Scholarship Program\">",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.mofa.gov.ae/en/top-universities",
+        "https://www.mofa.gov.ae/MOFAAssets/images/logo@2x.png",
+        "https://www.mofa.gov.ae/MOFAAssets/images/logo.svg",
+        "https://www.mofa.gov.ae/MOFAAssets/images/logo-large.png",
+        "https://www.mofa.gov.ae/MOFAAssets/images/logo-white.png",
+        "https://www.mofa.gov.ae/MOFAAssets/images/brand/logo.png"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.mofa.gov.ae/MOFAAssets/images/favicon/favicon-32x32.png",
+          "reason": "Favicon."
+        },
+        {
+          "url": "https://www.mofa.gov.ae/MOFAAssets/images/favicon/favicon-16x16.png",
+          "reason": "Favicon."
+        },
+        {
+          "url": "https://www.mofa.gov.ae/MOFAAssets/images/favicon/apple-touch-icon.png",
+          "reason": "Apple touch icon."
+        },
+        {
+          "url": "https://www.mofa.gov.ae/MOFAAssets/images/favicon/safari-pinned-tab.svg",
+          "reason": "Safari pinned-tab mask icon."
+        },
+        {
+          "url": "https://www.mofa.gov.ae/MOFAAssets/images/global-star.png",
+          "reason": "Separate 'Global star rating' accreditation badge rendered next to the logo in the header - a different mark, not the ministry identity."
+        },
+        {
+          "url": "https://www.mofa.gov.ae/MOFAAssets/images/tawasul.png",
+          "reason": "Tawasul UAE government services portal brand, a different organisation's mark."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 605,
+      "title": "Programa de Becas de Cooperacion Sur-Sur - Republica de Chile 2027 (AGCID)",
+      "outcome": "recovered",
+      "image_url": "https://www.agcid.gob.cl/images/logo_agci.png",
+      "image_source_url": "https://www.agcid.gob.cl/becas/becas-para-extranjeros/ofertas-vigentes",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "www.agcid.gob.cl is the official domain of Agencia Chilena de Cooperacion Internacional para el Desarrollo (AGCID), the awarding body named in the record title and official_source, and it is the record's own catalogue_url. Verified HTTP 200, Content-Type image/png, 226x135 px, 7281 bytes. Rendered and inspected visually: 'agcidChile' wordmark with the Chilean star motif, subtitle 'Cooperacion Chilena para el Desarrollo' and 'MINISTERIO DE RELACIONES EXTERIORES' - i.e. unambiguously the AGCID institutional logo, not the unrelated AGCI agency. CAVEAT driving MEDIUM: the filename says 'logo_agci' - a CMS copy/paste misnomer on AGCID's own site (the page's alt attribute is also mislabelled 'logo agci'). The same site also serves /images/banners/logo_agcid_35.webp (303x108), whose filename is correct but which the origin server returns with Content-Type 'audio/unknown', so it risks failing to render in strict pipelines; the PNG was chosen for reliable rendering. Identity is proven by the domain and by visual inspection, not by the filename."
+      },
+      "source": {
+        "url": "https://www.agcid.gob.cl/becas/becas-para-extranjeros/ofertas-vigentes",
+        "publisher": "Agencia Chilena de Cooperacion Internacional para el Desarrollo (AGCID), Government of Chile",
+        "retrieved_at": "2026-10-05T15:36:00Z",
+        "raw_extract": "<img src=\"/images/logo_agci.png\" alt=\"logo agci\" />",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://web.icetex.gov.co/es/-/becas-maestria-chile-agcid-2027",
+        "https://www.agcid.gob.cl/images/banners/logo_agcid_35.webp",
+        "https://www.agcid.gob.cl/images/Insumos_IMG/home/logo_header_AGCID_GOB_30.png",
+        "https://www.agcid.gob.cl/images/Insumos_IMG/home/logo_header_AGCID_GOB_35.webp",
+        "https://www.agcid.gob.cl/images/banners/logo_header_AGCID_30.webp",
+        "https://www.agcid.gob.cl/images/logo_agcid.png",
+        "https://www.agcid.gob.cl/images/banners/logo_agci.webp"
+      ],
+      "rejected": [
+        {
+          "url": "https://web.icetex.gov.co/documents/20122/0/pagina-oficial-icetex.jpeg.jpg/8526dbf8-2951-4be1-2765-fa60a4c52342?version=3.0&t=1706134046293&imagePreview=1",
+          "reason": "Wrong identity (ICETEX is the Colombian agency relaying the Chilean offer, not AGCID, which is the awarding body named in the title) AND it is a social-share preview variant: og:image with imagePreview=1, declared 1200x630 - a social media share card, explicitly a reject."
+        },
+        {
+          "url": "https://web.icetex.gov.co/o/icetex-theme/images/favicon.ico",
+          "reason": "Favicon."
+        },
+        {
+          "url": "https://www.agcid.gob.cl/templates/yoo_unity/apple_touch_icon.png",
+          "reason": "Apple touch icon (site template, not AGCID brand)."
+        },
+        {
+          "url": "https://www.agcid.gob.cl/images/Insumos_IMG/home/logo_header_AGCID_GOB_30.png",
+          "reason": "Renders as a blank white 3787x2243 canvas - no usable logo artwork."
+        },
+        {
+          "url": "https://www.agcid.gob.cl/images/Insumos_IMG/home/logo_header_AGCID_GOB_35.webp",
+          "reason": "AGCID + Gobierno de Chile co-brand header lockup that renders blank/white in isolation, and it is a composite header banner rather than the AGCID mark."
+        },
+        {
+          "url": "https://www.agcid.gob.cl/images/banners/logo_header_AGCID_30.webp",
+          "reason": "Small 177x160 header variant, lower legibility than the 226x135 PNG lockup and served with a broken Content-Type."
+        },
+        {
+          "url": "https://www.agcid.gob.cl/images/Insumos_IMG/home/banner_lobby.gif",
+          "reason": "Lobby banner artwork, not a brand mark."
+        },
+        {
+          "url": "https://www.agcid.gob.cl/images/banners/redbecas_2021.jpg",
+          "reason": "Programme banner artwork from a 2021 edition, not an official logo."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 623,
+      "title": "PTDF Overseas Postgraduate Scholarship Scheme (MSc/PhD)",
+      "outcome": "recovered",
+      "image_url": "https://ptdf.gov.ng/logo.png",
+      "image_source_url": "https://ptdf.gov.ng/",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "ptdf.gov.ng is the Petroleum Technology Development Fund's own official domain. Verified HTTP 200, Content-Type image/png, 225x225 px, 99230 bytes. Rendered and inspected visually: the PTDF gear-and-flame emblem - gold gear ring lettered 'PETROLEUM TECHNOLOGY DEVELOPMENT FUND' and 'DEVELOPMENT FUND', central tricolour shield (flame/torch, oil derrick and pipeline, hammer-and-pick over green grid) above 'PTDF'. Identity confirmed by the alt text on ptdf.gov.ng itself. A byte-identical copy (same SHA-256) is served by the scholarship portal at https://scholarship.ptdf.gov.ng/images/ptdf_logo.png, and a 522x522 copy at https://cms.ptdf.gov.ng/uploads/ptdf_logo_f52473aa3f.png (alt 'Official logo for Petroleum Technology Development Fund'); the apex-domain URL was chosen because it is the asset actually referenced in fetched markup with official alt text. Not favicon-sized, not UI, not social, not a screenshot."
+      },
+      "source": {
+        "url": "https://ptdf.gov.ng/",
+        "publisher": "Petroleum Technology Development Fund (PTDF), Federal Government of Nigeria agency",
+        "retrieved_at": "2026-10-05T15:38:00Z",
+        "raw_extract": "<img alt=\"Official logo of the Petroleum Technology Development Fund (PTDF)\" loading=\"lazy\" width=\"50\" height=\"50\" decoding=\"async\" data-nimg=\"1\" class=\"w-[50px] h-auto\" style=\"color:transparent\" srcSet=\"/_next/image?url=%2Flogo.png&w=64&q=75 1x, /_next/image?url=%2Flogo.png&w=128&q=75 2x\" src=\"/_next/image?url=%2Flogo.png&w=128&q=75\"/>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://scholarship.ptdf.gov.ng/news/13/2026-overseas-postgraduate-scholarship-scheme-for-universities-in-the-united-kingdom--germany--france--and-malaysia",
+        "https://scholarship.ptdf.gov.ng/",
+        "https://ptdf.gov.ng/logo.png",
+        "https://scholarship.ptdf.gov.ng/images/ptdf_logo.png",
+        "https://cms.ptdf.gov.ng/uploads/ptdf_logo_f52473aa3f.png"
+      ],
+      "rejected": [
+        {
+          "url": "https://scholarship.ptdf.gov.ng/images/ptdf_logo_small.png",
+          "reason": "Low-resolution navbar badge - measured 56x56 px. Rejected as a favicon-sized/low-res badge even though it is on the official portal."
+        },
+        {
+          "url": "https://scholarship.ptdf.gov.ng/favicon-32x32.png",
+          "reason": "Favicon."
+        },
+        {
+          "url": "https://scholarship.ptdf.gov.ng/apple-touch-icon.png",
+          "reason": "Apple touch icon."
+        },
+        {
+          "url": "https://scholarship.ptdf.gov.ng/safari-pinned-tab.svg",
+          "reason": "Safari pinned-tab mask icon."
+        },
+        {
+          "url": "https://cms.ptdf.gov.ng/uploads/thunder_94979ee8f0.svg",
+          "reason": "Decorative 58x58 icon - page alt text: 'An illustrative icon representing PTDF's strategic initiatives and focus areas'. Icon, not the brand mark."
+        },
+        {
+          "url": "https://twitter.com/PTDF_Nigeria",
+          "reason": "Social media profile / share target, not a brand asset."
+        },
+        {
+          "url": "https://facebook.com/PTDFng",
+          "reason": "Social media profile / share target, not a brand asset."
+        },
+        {
+          "url": "https://cms.ptdf.gov.ng/uploads/Abu_1_4d37940e54.jpeg",
+          "reason": "News article photograph (feature image for a CAPESK workshop article), a photograph, not a logo."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 673,
+      "title": "Petroleum Technology Development Fund (PTDF) In-Country Scholarship Scheme (ISS) 2026/27",
+      "outcome": "recovered",
+      "image_url": "https://ptdf.gov.ng/logo.png",
+      "image_source_url": "https://ptdf.gov.ng/",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Same PTDF institutional brand mark as record 623 - both records are PTDF scholarship schemes and PTDF is a single awarding brand, so one verified official asset covers both. The record's official_source_url (https://scholarship.ptdf.gov.ng/guidelines) renders only the 56x56 'ptdf_logo_small.png' navbar badge, which is too low-resolution, so the hierarchy was followed up to the official institution brand page ptdf.gov.ng. Verified HTTP 200, Content-Type image/png, 225x225 px, 99230 bytes; rendered and inspected visually as the PTDF gear-and-flame emblem lettered 'PETROLEUM TECHNOLOGY DEVELOPMENT FUND' / 'PTDF' / 'DEVELOPMENT FUND'. Byte-identical copy served at https://scholarship.ptdf.gov.ng/images/ptdf_logo.png and a 522x522 copy at https://cms.ptdf.gov.ng/uploads/ptdf_logo_f52473aa3f.png."
+      },
+      "source": {
+        "url": "https://ptdf.gov.ng/",
+        "publisher": "Petroleum Technology Development Fund (PTDF), Federal Government of Nigeria agency",
+        "retrieved_at": "2026-10-05T15:38:00Z",
+        "raw_extract": "<img alt=\"Official logo of the Petroleum Technology Development Fund (PTDF)\" loading=\"lazy\" width=\"50\" height=\"50\" decoding=\"async\" data-nimg=\"1\" class=\"w-[50px] h-auto\" style=\"color:transparent\" srcSet=\"/_next/image?url=%2Flogo.png&w=64&q=75 1x, /_next/image?url=%2Flogo.png&w=128&q=75 2x\" src=\"/_next/image?url=%2Flogo.png&w=128&q=75\"/>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://scholarship.ptdf.gov.ng/guidelines",
+        "https://scholarship.ptdf.gov.ng/",
+        "https://scholarship.ptdf.gov.ng/approved-schools/iss",
+        "https://ptdf.gov.ng/logo.png",
+        "https://scholarship.ptdf.gov.ng/images/ptdf_logo.png",
+        "https://cms.ptdf.gov.ng/uploads/ptdf_logo_f52473aa3f.png"
+      ],
+      "rejected": [
+        {
+          "url": "https://scholarship.ptdf.gov.ng/images/ptdf_logo_small.png",
+          "reason": "Low-resolution navbar badge - measured 56x56 px, referenced by the record's own official_source_url but too small to serve as the record's logo."
+        },
+        {
+          "url": "https://scholarship.ptdf.gov.ng/favicon-32x32.png",
+          "reason": "Favicon."
+        },
+        {
+          "url": "https://scholarship.ptdf.gov.ng/favicon-16x16.png",
+          "reason": "Favicon."
+        },
+        {
+          "url": "https://scholarship.ptdf.gov.ng/apple-touch-icon.png",
+          "reason": "Apple touch icon."
+        },
+        {
+          "url": "https://scholarship.ptdf.gov.ng/safari-pinned-tab.svg",
+          "reason": "Safari pinned-tab mask icon."
+        },
+        {
+          "url": "https://cms.ptdf.gov.ng/uploads/thunder_94979ee8f0.svg",
+          "reason": "Decorative strategic-initiatives icon, not the brand mark."
+        },
+        {
+          "url": "https://twitter.com/PTDF_Nigeria",
+          "reason": "Social media profile / share target, not a brand asset."
+        },
+        {
+          "url": "https://facebook.com/PTDFng",
+          "reason": "Social media profile / share target, not a brand asset."
+        }
+      ]
+    }
+  ]
+}

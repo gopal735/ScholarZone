@@ -1,0 +1,301 @@
+{
+  "shard_id": "DL-022",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 8,
+      "title": "France Excellence Charpak Scholarship Program",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.inde.campusfrance.org/france-excellence-charpak-scholarship-program",
+        "source_type": "official_programme_page",
+        "publisher": "Campus France India / Embassy of France in India (Institut Francais en Inde)",
+        "retrieved_at": "2026-10-05T15:35:00Z",
+        "as_of": "page describes the umbrella Charpak programme and its 4 sub-programmes; no application cycle/date is stated",
+        "raw_extract": "France Excellence Charpak is the French government scholarship programme in India. It is divided into 4 sub-programmes and allows Indian students to study at undergraduate or postgraduate levels in public and private institutions in France.",
+        "exact_deadline_wording": "",
+        "confidence": "LOW",
+        "notes": "The official umbrella page (record's official_source_url) publishes no application deadline at all, and the programme is explicitly split into 4 sub-programmes that are administered separately (Bachelor, Master, Summer Training, Exchange). Two of the four official track pages were fetched: the Charpak Bachelor page states under TIMELINE 'Applications for the 2026 session will not be accepted.' and the Charpak Master page states under TIMELINE 'The results for the France Excellence Charpak Master scholarship program 2026 have been finalized, and selected candidates have been informed via email.' Neither page publishes a submission deadline date or month for the current or next cycle, and no single deadline can represent all four tracks. The interview window quoted on the Master page (13 April - 30 April 2026) is a selection stage, not an application deadline, so it was NOT used as a deadline. No deadline_date written."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": null
+      },
+      "examined": [
+        "https://www.inde.campusfrance.org/france-excellence-charpak-scholarship-program (fetched, no deadline)",
+        "https://www.inde.campusfrance.org/charpak-master-s-scholarship (fetched, 2026 cycle closed, no deadline published)",
+        "https://www.inde.campusfrance.org/charpak-bachelor-s-scholarship (fetched, 2026 session closed, no deadline published)"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 118,
+      "title": "KIIT University India Scholarships Programme (KUISP)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://international.kiit.ac.in",
+        "source_type": "official_university_page",
+        "publisher": "Kalinga Institute of Industrial Technology (KIIT) Deemed to be University",
+        "retrieved_at": "2026-10-05T15:35:00Z",
+        "as_of": "page advertises the 2026-27 admission cycle for NRI and foreign nationals; no KUISP scholarship deadline is published",
+        "raw_extract": "Admissions 2026-27 Open Now\nOnly for NRI & Foreign Nationals",
+        "exact_deadline_wording": "",
+        "confidence": "LOW",
+        "notes": "The record's official_source_url was fetched: it is KIIT's international admission application portal (registration/login form, course list, fee links) and contains no KUISP scholarship deadline, no application window and no scholarship dates. The university's own scholarship pages on kiit.ac.in returned HTTP 403 to this client and therefore could not be fetched or quoted, so no value could be taken from them. KUISP deadline dates circulating for previous cycles exist only on third-party aggregators and on Indian diplomatic-mission notices tied to country quotas for earlier academic years; those are not the provider's current-cycle deadline and, per the source hierarchy, were not used. No deadline_date written."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": null
+      },
+      "examined": [
+        "https://international.kiit.ac.in (fetched, admissions portal only, no scholarship deadline)",
+        "https://kiit.ac.in/scholarships-fellowships/ (HTTP 403, not retrievable)",
+        "https://kiit.ac.in/academics/scholarships-fellowships/ (HTTP 403, not retrievable)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://kiit.ac.in/scholarships-fellowships/",
+          "reason": "Official provider domain but returned HTTP 403 to this client; page could not be read, so no quote and no value taken."
+        },
+        {
+          "url": "https://kiit.ac.in/academics/scholarships-fellowships/",
+          "reason": "Official provider domain but returned HTTP 403 to this client; page could not be read, so no quote and no value taken."
+        },
+        {
+          "url": "https://www.topuniversities.com/scholarships/kiit-university-india-scholarships-programme-kuisp-2025-ug",
+          "reason": "Third-party scholarship aggregator (not in the source hierarchy); seen in search results only, not fetched, and its date (15 September 2025) belongs to a past cycle."
+        },
+        {
+          "url": "https://www.hcipretoria.gov.in/page/kiit-university-india-scholarships-programme-kuisp-2025/",
+          "reason": "Indian diplomatic-mission notice seen in search results only, not fetched; it is a country-quota recommendation deadline for a past cycle, not the provider's official programme deadline."
+        },
+        {
+          "url": "https://www.eoibogota.gov.in/page/kiit-university-kuisp-scholarship-program-100-scholarship-of-the-tuition-fee/",
+          "reason": "Indian diplomatic-mission notice seen in search results only, not fetched; refers to the 2024-25 cycle, not the current one."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 164,
+      "title": "University of Graz Scholarships for International Students",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.uni-graz.at/en/study/studying-at-the-university-of-graz/financing-your-studies/",
+        "source_type": "official_university_page",
+        "publisher": "University of Graz (Karl-Franzens-Universität Graz)",
+        "retrieved_at": "2026-10-05T15:35:00Z",
+        "as_of": "page states tuition figures for effective study year 2025/26; no scholarship application deadline published",
+        "raw_extract": "You can apply for a merit-based scholarship if you meet the requirements specified by the relevant faculty.\n\nThese can be awarded, on application, to students with Austrian citizenship, EEA citizens as well as stateless persons and refugees (as defined in Section 4 of the Student Support Act (StudFG)) who are following an ordinary course at the University of Graz (Karl-Franzens-Universität Graz) and have achieved outstanding academic results in accordance with the degree programme regulations.\n\nFurther details of merit-based scholarships can be found on the webpages of the relevant faculty!",
+        "exact_deadline_wording": "",
+        "confidence": "LOW",
+        "notes": "The record's official_source_url (https://www.uni-graz.at/en/studies/scholarships) returned HTTP 404 and no live page was found at that path. The university's current official pages on funding and scholarships publish no application deadline or month for international students. The Studienabteilung page states only: 'Calls for tenders of awards, grants and scholarships are stated in our University Gazette.' The merit-based scholarship described is restricted by the university to Austrian citizens, EEA citizens, stateless persons and refugees, and the details are delegated to individual faculties, so no university-wide deadline exists to record. The Welcome Center page quoted by search engines (welcome.uni-graz.at/en/international-students/prospective-students/) returned HTTP 404 and was therefore not used. No deadline_date written."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": null
+      },
+      "examined": [
+        "https://www.uni-graz.at/en/study/studying-at-the-university-of-graz/financing-your-studies/ (fetched, no deadline)",
+        "https://studienabteilung.uni-graz.at/en/tuition-fee/grants-and-scholarships/ (fetched, no deadline; refers to University Gazette)",
+        "https://www.uni-graz.at/en/studies/scholarships (HTTP 404, record's official_source_url)",
+        "https://welcome.uni-graz.at/en/international-students/prospective-students/ (HTTP 404)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://welcome.uni-graz.at/en/international-students/prospective-students/",
+          "reason": "Official university domain but HTTP 404; the statement about international students circulating in search results could not be read on a live page and was not used."
+        },
+        {
+          "url": "https://international.uni-graz.at/en/incoming-students-and-staff/incoming-students/go-styria-scholarship-programme/",
+          "reason": "A different, named scholarship programme (Go Styria), not the record's 'Scholarships for International Students'; deadlines for it belong to a different programme."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 223,
+      "title": "FWF ESPRIT (Early-Stage Program: Research - Innovation - Training)",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "Rolling submissions using the online application portal elane",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://www.fwf.ac.at/en/funding/portfolio/careers/esprit",
+        "source_type": "official_programme_page",
+        "publisher": "Austrian Science Fund (FWF)",
+        "retrieved_at": "2026-10-05T15:35:00Z",
+        "as_of": "live programme page as retrieved on 2026-10-05; the Shown Event is 'Sep. 17, 2026: FWF Coaching Workshop', i.e. the programme is active",
+        "raw_extract": "Application information\nRolling submissions using the online application portal elane\n\nSubmissions\nRolling",
+        "exact_deadline_wording": "Rolling submissions using the online application portal elane",
+        "confidence": "HIGH",
+        "notes": "The record's official_source_url (https://www.fwf.ac.at/en/funding/funding-portfolio/fwf-espriT) returned HTTP 404; the FWF site has moved to /en/funding/portfolio/careers/esprit, which was fetched live. The page explicitly states rolling submissions and lists 'Submissions: Rolling', so the programme has no fixed calendar deadline. Per the brief, a ROLLING value is never converted into a date; deadline_date stays null."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "rolling",
+        "deadline_display": "Rolling submissions using the online application portal elane"
+      },
+      "examined": [
+        "https://www.fwf.ac.at/en/funding/funding-portfolio/fwf-espriT (HTTP 404, stale path in the record)"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 224,
+      "title": "FWF ASTRA Awards",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Currently no submissions",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.fwf.ac.at/en/funding/portfolio/careers/fwf-astra-awards",
+        "source_type": "official_programme_page",
+        "publisher": "Austrian Science Fund (FWF)",
+        "retrieved_at": "2026-10-05T15:35:00Z",
+        "as_of": "live programme page as retrieved on 2026-10-05; no open or forthcoming submission window is published",
+        "raw_extract": "Application information\nProposals can be submitted during the application period using the online application portal elane\n\nSubmissions\nCurrently no submissions\n\nFurther information\nThe formal announcement of the FWF ASTRA Awards takes place in June.",
+        "exact_deadline_wording": "Currently no submissions",
+        "confidence": "MEDIUM",
+        "notes": "The record's official_source_url (https://www.fwf.ac.at/en/funding/funding-portfolio/fwf-astra) returned HTTP 404; the live page is at /en/funding/portfolio/careers/fwf-astra-awards and was fetched. On the retrieval date the page's Submissions field reads 'Currently no submissions', i.e. no application window is open and no future window has been published. The programme is a periodic call ('Expected 18 award winners per call'), but the page states no annual application timing, no month and no day, so no date, month or recurring value was inferred. The official ASTRA Application Guidelines PDF listed on the page was fetched but returned unparseable binary (PDF byte stream), so no verbatim quote could be taken from it and no past deadline is asserted here. Because the live source states no deadline at all, outcome is unknown rather than expired_mismatch."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Currently no submissions"
+      },
+      "examined": [
+        "https://www.fwf.ac.at/en/funding/portfolio/careers/fwf-astra-awards (fetched, no open or future window published)",
+        "https://www.fwf.ac.at/en/funding/funding-portfolio/fwf-astra (HTTP 404, stale path in the record)",
+        "https://www.fwf.ac.at/fileadmin/Website/Dokumente/Foerdern/Portfolio/ASTRA/fwf_ast_application_guidelines.pdf (fetched but returned raw PDF binary; no quotable text)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.fwf.ac.at/en/news/detail/applications-now-being-accepted-for-the-new-fwf-astra-awards",
+          "reason": "2024 news item about a closed first call (search result only, not fetched); not the current deadline."
+        },
+        {
+          "url": "https://www.fwf.ac.at/en/discover/awards/fwf-astra-awards/2026",
+          "reason": "Awards/press page for awarded projects, not an application deadline source (search result only, not fetched)."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 225,
+      "title": "FWF Doctoral Programs DK",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.fwf.ac.at/en/funding/portfolio/careers/docfunds",
+        "source_type": "official_programme_page",
+        "publisher": "Austrian Science Fund (FWF)",
+        "retrieved_at": "2026-10-05T15:35:00Z",
+        "as_of": "live FWF portfolio page as retrieved on 2026-10-05; the FWF Careers portfolio lists only ESPRIT, FWF ASTRA Awards, Erwin Schroedinger, doc.funds and doc.funds.connect",
+        "raw_extract": "No applications accepted for additional funding for ongoing FWF-funded projects from the Doctoral Programs, doc.funds, or and doc.funds.connect programs",
+        "exact_deadline_wording": "",
+        "confidence": "LOW",
+        "notes": "The record's official_source_url (https://www.fwf.ac.at/en/funding/funding-portfolio/doctoral-programmes) returned HTTP 404, as does the current-path variant /en/funding/portfolio/careers/doctoral-programmes. No live FWF programme page for 'Doctoral Programs (DK)' exists under that name; the current FWF Careers portfolio lists only ESPRIT, ASTRA, Erwin Schroedinger, doc.funds and doc.funds.connect. The doc.funds page quoted above is the closest live official FWF page that still names 'Doctoral Programs' as a programme category, and it states that no applications are accepted for additional funding from it; it is a different programme from DK and its own Submissions field ('Currently no submissions') was deliberately NOT used as a deadline for this record. Nothing official was found that publishes a DK application deadline, so nothing was written."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": null
+      },
+      "examined": [
+        "https://www.fwf.ac.at/en/funding/portfolio/careers/docfunds (fetched; different programme - doc.funds - not treated as DK)",
+        "https://www.fwf.ac.at/en/funding/funding-portfolio/doctoral-programmes (HTTP 404, record's official_source_url)",
+        "https://www.fwf.ac.at/en/funding/portfolio/careers/doctoral-programmes (HTTP 404)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.fwf.ac.at/en/research-radar/10.55776/W1259",
+          "reason": "Individual funded-project record ('Status Ended'), seen in search results only, not fetched; not a programme deadline source."
+        },
+        {
+          "url": "https://forschungsmanagement.uni-graz.at/en/major-research-projects/fwf-projects/doctoral-programs-dk-and-doc.funds/",
+          "reason": "A third institution's (University of Graz) research-management listing of running projects; not the funder's application deadline and seen only in search results."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 335,
+      "title": "Aalto University Excellence Scholarship (100% tuition fee waiver)",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Tuition-fee students may apply for the scholarship during the admission process.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.aalto.fi/en/international-students/scholarships-study-right-started-on-or-after-1-august-2025",
+        "source_type": "official_university_page",
+        "publisher": "Aalto University",
+        "retrieved_at": "2026-10-05T15:35:00Z",
+        "as_of": "page footer states 'Updated: 18.3.2026', 'Published: 17.3.2025'",
+        "raw_extract": "Aalto University Excellence Scholarships are awarded as tuition fee waivers, covering the full tuition fee. Tuition-fee students may apply for the scholarship during the admission process.\n\nIn order for the scholarship to be valid, you must agree to the terms of the scholarship by the given deadline.",
+        "exact_deadline_wording": "Tuition-fee students may apply for the scholarship during the admission process.",
+        "confidence": "MEDIUM",
+        "notes": "The scholarship has no deadline of its own: it is applied for within the degree programme's admission process, which recurs each admission round, hence ANNUAL / precision 'recurring' and a null deadline_date. The page states no calendar date, month or window for the scholarship, and the 'given deadline' it mentions refers to agreeing the scholarship terms after an award, not to applying. No admission-round date was imported from any Aalto admissions page, and no date was invented. The same page notes other recurring internal milestones (study review by end of March, issues resolved by end of April, annual enrolment beginning in May, credits registered by 31 July); these are post-award obligations and were NOT treated as application deadlines."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "Tuition-fee students may apply for the scholarship during the admission process."
+      },
+      "examined": [],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 646,
+      "title": "Scholarship Program for Studying at Universities in Kazakhstan (Bolashak / Center for International Programs)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Applicants can apply online from 30 March to 31 May 2026 until 23:59 Astana time at the following link: https://studyin.kz/admission",
+      "deadline_precision": "exact",
+      "stale_deadline_date_not_written": "2026-05-31",
+      "source": {
+        "url": "https://bolashak.gov.kz/en/scholarship-program",
+        "source_type": "official_government_page",
+        "publisher": "JSC \"Center for International Programs\" (Bolashak), Republic of Kazakhstan",
+        "retrieved_at": "2026-10-05T15:35:00Z",
+        "as_of": "2026 intake cycle (window 30 March - 31 May 2026), already closed at retrieval time",
+        "raw_extract": "The acceptance of documents for participation in scholarship programs has started.\n\nApplicants can apply online from 30 March to 31 May 2026 until 23:59 Astana time at the following link: https://studyin.kz/admission.",
+        "exact_deadline_wording": "Applicants can apply online from 30 March to 31 May 2026 until 23:59 Astana time",
+        "confidence": "HIGH",
+        "notes": "The official operator page states one explicit calendar deadline: 31 May 2026 at 23:59 Astana time. That date had already passed on the retrieval date (2026-10-05) while the record is still flagged active/open-upcoming, so per the brief this is reported as expired_mismatch and the stale date is deliberately NOT written into deadline_date, and it has NOT been rolled forward to a 2027 cycle that the operator has not published. The operator's 'For applicants' page (https://bolashak.gov.kz/en/applicants) was also fetched and shows no new or later application window, so no upcoming deadline could be established."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "Applicants can apply online from 30 March to 31 May 2026 until 23:59 Astana time at the following link: https://studyin.kz/admission"
+      },
+      "examined": [
+        "https://bolashak.gov.kz/en/applicants (fetched, no new window published)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://studyin.kz/admission",
+          "reason": "Official application portal linked by the operator; not fetched as a deadline source because the operator page already states the window explicitly, and the portal is an application system rather than a published deadline statement."
+        }
+      ]
+    }
+  ]
+}

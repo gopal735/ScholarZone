@@ -1,0 +1,425 @@
+{
+  "shard_id": "DL-001",
+  "agent_completed": true,
+  "topic": "deadline",
+  "hosts_covered": ["study.gov.pl"],
+  "records": [
+    {
+      "scholarship_id": 291,
+      "title": "Visegrad Scholarship Programme",
+      "outcome": "recovered",
+      "deadline_semantics": "EXACT",
+      "deadline_date": "2027-04-15",
+      "deadline_display": "Apr 15, 2027 at 12:00 PM: Final application deadline",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://visegradfund.org/visegrad-scholarship-program-apply",
+        "source_type": "official_scholarship_page",
+        "publisher": "International Visegrad Fund",
+        "retrieved_at": "2026-10-05T15:40:00Z",
+        "as_of": "Visegrad Scholarship Program 2027 round (call opens Jan 1, 2027)",
+        "raw_extract": "Opens on Jan 1, 2027 at 12:00 PM ... ## Timeline Jan 1, 2027 at 12:00 PM: Call opens Apr 15, 2027 at 12:00 PM: Final application deadline May 31, 2027 at 12:00 PM: Results announced ... Your application must be submitted online via [My Visegrad](http://my.visegradfund.org/Account/Login) by April 15, 12 PM (noon)",
+        "exact_deadline_wording": "Apr 15, 2027 at 12:00 PM: Final application deadline",
+        "confidence": "HIGH",
+        "notes": "This upgrades the record from 'no closing date published yet' to an explicit closing date. study.gov.pl/visegrad-scholarship-programme contains no deadline and only links to the Fund's site. The Fund's programme page states the deadline twice (Timeline list and How-to-apply paragraph). Not a conflict: the index page at visegradfund.org/scholarships only shows the opening date and no close date."
+      },
+      "field_mapping": {
+        "deadline_date": "2027-04-15",
+        "deadline_precision": "exact",
+        "deadline_display": "Apr 15, 2027 at 12:00 PM: Final application deadline"
+      },
+      "examined": [
+        "https://study.gov.pl/visegrad-scholarship-programme",
+        "https://visegradfund.org/scholarships"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 411,
+      "title": "Ignacy Łukasiewicz Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://nawa.gov.pl/en/students/foreign-students/the-ignacy-lukasiewicz-scholarship-programme",
+        "source_type": "official_programme_page",
+        "publisher": "Polish National Agency for Academic Exchange (NAWA)",
+        "retrieved_at": "2026-10-05T15:42:00Z",
+        "as_of": null,
+        "raw_extract": "Candidates are selected on the basis of the calls for proposals announced on **the annual basis**. Application process for the Ignacy Łukasiewicz Scholarship Programme is operated by NAWA's ICT system, available at https://programs.nawa.gov.pl/login.",
+        "exact_deadline_wording": "the calls for proposals announced on the annual basis",
+        "confidence": "LOW",
+        "notes": "The programme page describes annual calls but publishes no date, month or window. Every link under this programme is filed under 'Closed calls' / 'Programy zakończone' (completed programmes) and the most recent listed call is 2020, so the page describes an annual cycle with no current call open. The NAWA recruitment schedule PDF for 2026 was not readable as text, and I did not use it. Nothing supports any specific date."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "null"
+      },
+      "examined": [
+        "https://study.gov.pl/ignacy-%C5%82ukasiewicz-scholarship",
+        "https://study.gov.pl/ignacy-łukasiewicz-scholarship",
+        "https://study.gov.pl/scholarships",
+        "https://nawa.gov.pl/en/students/foreign-students/the-ignacy-lukasiewicz-scholarship-programme",
+        "https://nawa.gov.pl/en/nawa-programmes/nawa-programmes-alias/harmonogram-naborow"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://study.gov.pl/ignacy-%C5%82ukasiewicz-scholarship",
+          "reason": "official_source_url returns HTTP 404; this programme does not exist on study.gov.pl"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 412,
+      "title": "Stefan Banach NAWA Programme",
+      "outcome": "recovered",
+      "deadline_semantics": "EXACT",
+      "deadline_date": "2026-05-08",
+      "deadline_display": "The call is open until May 8, 2026, 3:00 p.m. CEST or until the application limit for a given group of countries is reached.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://nawa.gov.pl/en/students/foreign-students/the-banach-scholarship-programme/landing",
+        "source_type": "official_programme_page",
+        "publisher": "Polish National Agency for Academic Exchange (NAWA)",
+        "retrieved_at": "2026-10-05T15:41:00Z",
+        "as_of": "Banach NAWA call no. 16/2026 of 13 April 2026, for the winter semester 2026/27",
+        "raw_extract": "The call for applications is now open for a programme addressed to young people from developing countries who want to pursue second-cycle studies in Poland or take part in a preparatory course. The call is open until **May 8, 2026, 3:00 p.m. CEST** or until the application limit for a given group of countries is reached. ... ### Application deadline The deadline for submitting applications is **May 8, 2026, 3:00 p.m. CEST**. The call may close earlier if the application limit for a given group of countries is reached. ... Results are expected by July 31, 2026.",
+        "exact_deadline_wording": "The deadline for submitting applications is May 8, 2026, 3:00 p.m. CEST.",
+        "confidence": "HIGH",
+        "notes": "Date verified live on NAWA's own English programme page, which is the provider, not on study.gov.pl. Both official NAWA surfaces agree: the Polish landing page reads 'Termin składania wniosków upływa 8 maja 2026 r. o godz. 15:00 czasu warszawskiego' and gov.pl's Poland-in-Albania notice gives the same May 8, 2026 3:00 p.m. CET. No conflict. This 2026 call has already closed, so the record's open/upcoming status needs human review."
+      },
+      "field_mapping": {
+        "deadline_date": "2026-05-08",
+        "deadline_precision": "exact",
+        "deadline_display": "The deadline for submitting applications is May 8, 2026, 3:00 p.m. CEST."
+      },
+      "examined": [
+        "https://study.gov.pl/stefan-banach-nawa-programme",
+        "https://nawa.gov.pl/en/students/foreign-students/the-banach-scholarship-programme/landing"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 413,
+      "title": "Konstanty Kalinowski Scholarship",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Przyjmowanie aplikacji będzie odbywało się od 31 sierpnia 2020 r. w trybie ciągłym, aż do wyczerpania limitu miejsc.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.gov.pl/web/bialorus/program-im-konstantego-kalinowskiego",
+        "source_type": "official_government_page",
+        "publisher": "Portal Gov.pl (Polska na Białorusi)",
+        "retrieved_at": "2026-10-05T15:52:00Z",
+        "as_of": "announcement dated 30.10.2020",
+        "raw_extract": "W związku z obecną sytuacją na Białorusi i przewidywanym wzrostem liczby osób represjonowanych, będących statutowymi adresatami Programu Stypendialnego Rządu RP im. Konstantego Kalinowskiego, Dyrektor Programu, w porozumieniu z władzami państwowymi i uniwersyteckimi, zdecydował o uruchomieniu dodatkowego naboru. ... Przyjmowanie aplikacji będzie odbywało się od 31 sierpnia 2020 r. w trybie ciągłym, aż do wyczerpania limitu miejsc. ... Nabór kandydatur odbywa się od 31 sierpnia do wyczerpania limitu miejsc.",
+        "exact_deadline_wording": "Przyjmowanie aplikacji będzie odbywało się od 31 sierpnia 2020 r. w trybie ciągłym, aż do wyczerpania limitu miejsc.",
+        "confidence": "MEDIUM",
+        "notes": "The official_source_url 404s and no current NAWA page for this programme exists; NAWA's site files the Kalinowski programme nowhere in its current foreign-student menu. The only official government page I could fetch dates from 30.10.2020 and describes a rolling intake opened 31 August 2020 'until the quota is exhausted'. That intake is six years old and cannot support any current deadline. Per the brief I am not writing the stale date and not rolling it forward; the record's open/upcoming flag is wrong or the programme is dormant. Note also that this 2020 notice is an 'additional intake' decision, so it may not represent the programme's normal cycle."
+      },
+      "field_mapping": {
+        "deadline_date": "null (stale 2020 intake, not written)",
+        "deadline_precision": "unknown",
+        "deadline_display": "Przyjmowanie aplikacji będzie odbywało się od 31 sierpnia 2020 r. w trybie ciągłym, aż do wyczerpania limitu miejsc."
+      },
+      "examined": [
+        "https://study.gov.pl/konstanty-kalinowski-scholarship-programme",
+        "https://www.gov.pl/web/bialorus/program-im-konstantego-kalinowskiego",
+        "https://nawa.gov.pl/en/students/foreign-students",
+        "https://nawa.gov.pl/en/students/foreign-students/the-ignacy-lukasiewicz-scholarship-programme"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://study.gov.pl/konstanty-kalinowski-scholarship-programme",
+          "reason": "official_source_url returns HTTP 404; no such page exists on study.gov.pl"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 414,
+      "title": "General Anders Scholarship Programme for Polish Diaspora (gen. Anders Programme)",
+      "outcome": "recovered",
+      "deadline_semantics": "EXACT",
+      "deadline_date": "2026-07-09",
+      "deadline_display": "studia I stopnia i jednolite magisterskie – termin składania wniosków upływa 9 lipca 2026 r. | studia II stopnia – termin składania wniosków 21 maja 2026 r.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://nawa.gov.pl/studenci/studenci-zagraniczni/program-im-gen-andersa/nabory-2026",
+        "source_type": "official_programme_page",
+        "publisher": "Polish National Agency for Academic Exchange (NAWA)",
+        "retrieved_at": "2026-10-05T15:47:00Z",
+        "as_of": "2026 calls (two separate rounds: first-cycle/unified master's and second-cycle)",
+        "raw_extract": "Każdego roku NAWA przeprowadza **dwa oddzielne nabory wniosków o stypendium**. Szczegółowe informacje o zasadach i wytycznych obowiązujących w naborach w 2026 roku, znajdują się odpowiednio w ogłoszeniach o naborze wniosków o stypendium na: - [**studia I stopnia i jednolite magisterskie**](https://www.nawa.gov.pl/studenci/studenci-zagraniczni/program-im-gen-andersa/nabory-2026/studia-i-stopnia/ogloszenie-anders) – termin składania wniosków upływa 9 lipca 2026 r. - [**studia II stopnia**](https://www.nawa.gov.pl/studenci/studenci-zagraniczni/program-im-gen-andersa/nabory-2026/studia-ii-stopnia/ogloszenie-anders-nawa) – termin składania wniosków 21 maja 2026 r.",
+        "exact_deadline_wording": "termin składania wniosków upływa 9 lipca 2026 r.",
+        "confidence": "MEDIUM",
+        "notes": "study.gov.pl/general-władysław-anders returns HTTP 404. NAWA's own 2026 call page states two different deadlines because the programme runs two separate rounds per year. Per the brief, different rounds of the same institution are not a conflict. I have written the first-cycle/unified-master's round (9 July 2026) because it is the current round listed as open on the 2026 calls page; the second-cycle round closed 21 May 2026. Both 2026 deadlines are now in the past as of 2026-10-05, so the record's open/upcoming flag needs human review. The English 'Calls for proposals 2026' page links announcement no. 13/2026 dated 31 March 2026 for first-cycle studies, consistent with this."
+      },
+      "field_mapping": {
+        "deadline_date": "2026-07-09",
+        "deadline_precision": "exact",
+        "deadline_display": "termin składania wniosków upływa 9 lipca 2026 r. (studia I stopnia i jednolite magisterskie)"
+      },
+      "examined": [
+        "https://study.gov.pl/general-w%C5%82adys%C5%82aw-anders",
+        "https://nawa.gov.pl/studenci/studenci-zagraniczni/program-im-gen-andersa/nabory-2026",
+        "https://nawa.gov.pl/en/students/foreign-students/the-gen-anders-programme/calls-for-proposals-2026/bachelor-studies/call-for-applications-bachelor-degree"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://study.gov.pl/general-w%C5%82adys%C5%82aw-anders",
+          "reason": "official_source_url returns HTTP 404"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 420,
+      "title": "Lane Kirkland Scholarship Program",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Konkurs na stypendia im. Lane'a Kirklanda oraz Programu Kirkland Research ogłaszany jest co roku na początku grudnia, zaś termin zgłoszeń upływa 1 marca. ... 1/03 Deadline — Każdego roku termin nadsyłania aplikacji ubiega 1 marca.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://kirkland.edu.pl/dla-kandydatow",
+        "source_type": "official_scholarship_page",
+        "publisher": "Fundacja Liderzy Przemian (Lane Kirkland Scholarship Program administrator)",
+        "retrieved_at": "2026-10-05T15:44:00Z",
+        "as_of": null,
+        "raw_extract": "**Konkurs na stypendia im. Lane'a Kirklanda oraz Programu Kirkland Research** ogłaszany jest co roku na początku grudnia, zaś termin zgłoszeń upływa 1 marca. ... ### Kalendarz rekrutacji ### Etapy rekrutacji 1/03 Deadline Każdego roku termin nadsyłania aplikacji ubiega 1 marca.",
+        "exact_deadline_wording": "Konkurs na stypendia im. Lane'a Kirklanda oraz Programu Kirkland Research ogłaszany jest co roku na początku grudnia, zaś termin zgłoszeń upływa 1 marca.",
+        "confidence": "HIGH",
+        "notes": "This is a genuine upgrade: the official programme site publishes the recruitment calendar and states an explicit recurring rule of 'applications close 1 March every year', with the call announced in early December. Because the provider states recurring timing with no year attached, the brief requires ANNUAL/recurring with a null date, not a calendar date. I did not invent 2027-03-01. The 2026/27 call announcement PDF is linked on the same page (kirkland.edu.pl/wp-content/uploads/2025/12/OGLOESZNIE-PK_PL.pdf) but is a Canva-generated PDF that returned no extractable text, so it adds nothing. study.gov.pl/lane-kirkland-scholarship-program carries no deadline and still describes the 2021/22 cycle."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "recurring",
+        "deadline_display": "termin zgłoszeń upływa 1 marca (każdego roku)"
+      },
+      "examined": [
+        "https://study.gov.pl/lane-kirkland-scholarship-program",
+        "https://kirkland.edu.pl/dla-kandydatow",
+        "https://kirkland.edu.pl/wp-content/uploads/2025/12/OGLOESZNIE-PK_PL.pdf"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://kirkland.edu.pl/wp-content/uploads/2025/12/OGLOESZNIE-PK_PL.pdf",
+          "reason": "official call announcement PDF; Canva-generated, returned only binary/object streams with no extractable text, so no quotable deadline wording could be obtained from it"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 422,
+      "title": "UNESCO/Poland Co-Sponsored Fellowships in Engineering",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "The National Commission of invited Member States will select qualified candidates and transmit to UNESCO the Letters of Endorsement and all the application documents of the nominated candidates ... by Monday 26 May 2025, Midnight Paris time at the latest.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.unesco.org/en/fellowships/poland-engineering",
+        "source_type": "official_government_page",
+        "publisher": "UNESCO (co-sponsored by the Polish National Commission for UNESCO and the UNESCO Chair at AGH University)",
+        "retrieved_at": "2026-10-05T15:46:00Z",
+        "as_of": "2025 edition, page last updated 13 June 2025",
+        "raw_extract": "# UNESCO/Poland Co-Sponsored Fellowships in Engineering 2025 edition Last update:13 June 2025 ... **The 2025 edition of this Programme is closed for applications.** ... The National Commission of invited Member States will select qualified candidates and transmit to UNESCO the Letters of Endorsement and all the application documents of the nominated candidates, by e-mail to agh.poland@unesco.org ... **by Monday 26 May 2025, Midnight Paris time at the latest.** Candidatures with incomplete applications, or submitted after this deadline won't be considered. ... Due to the intergovernmental character of UNESCO, individual applications will not be accepted by UNESCO. Only applications endorsed by the National Commissions for UNESCO will be considered.",
+        "exact_deadline_wording": "by Monday 26 May 2025, Midnight Paris time at the latest.",
+        "confidence": "HIGH",
+        "notes": "Live verification corrects one detail in the shard: the 2025 edition deadline was 26 May 2025, not 'Monday 26 May 2025' stated as Monday is correct, and the fellowship ran 1 October 2025 to 31 March 2026 as the shard said. The page is explicitly marked closed and no 2026/27 edition or deadline is published, so the only official date available is in the past. Per the brief I set expired_mismatch and did not write the stale date or move it to 2027. study.gov.pl/unescopoland-co-sponsored-fellowships-programme-engineering still describes the 2023 edition (deadline 9 June 2023) and is older, so UNESCO is the correct higher-tier source. Note applications are only accepted via National Commissions, never directly from individuals."
+      },
+      "field_mapping": {
+        "deadline_date": "null (2025 edition closed, no 2026/27 date published)",
+        "deadline_precision": "unknown",
+        "deadline_display": "The 2025 edition of this Programme is closed for applications."
+      },
+      "examined": [
+        "https://study.gov.pl/unescopoland-co-sponsored-fellowships-programme-engineering",
+        "https://www.unesco.org/en/fellowships/poland-engineering"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://study.gov.pl/unescopoland-co-sponsored-fellowships-programme-engineering",
+          "reason": "stale: page still describes the 2023 edition (candidatures by 9 June 2023, fellowships starting 2 October 2023); superseded by the live UNESCO page"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 423,
+      "title": "Erasmus+ Programme",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://study.gov.pl/erasmus",
+        "source_type": "official_government_page",
+        "publisher": "NAWA / MNISW (study.gov.pl)",
+        "retrieved_at": "2026-10-05T15:48:00Z",
+        "as_of": null,
+        "raw_extract": "The Erasmus+ Programme has been developed by the EU's European Commission and is implemented by the Executive Agency for Education, Audiovisual and Culture (EACEA) in Brussels and the National Agencies (NAs) located in each of the 33 Programme Countries. The institution that has been appointed as the Polish National Agency of Erasmus+ Programme is the Foundation for the Development of the Education System. The Foundation's main aim is support, in its broad sense, for activities serving the development of education in Poland.",
+        "exact_deadline_wording": "",
+        "confidence": "LOW",
+        "notes": "Neither the catalogue_url (/erasmus) nor the shard's /erasmus-plus-programme (which is not linked from the site's own scholarship menu and which I did not need, since /erasmus is the live Erasmus page) publishes any application deadline. The page states that the Polish National Agency is the Foundation for the Development of the Education System and defers all detail to that body and to individual institutions, but does not itself state a deadline. I am not upgrading this to ROLLING, because the source never uses rolling language or says there is no fixed deadline, and I am not inventing an institution-level date. Genuine UNKNOWN."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "null"
+      },
+      "examined": [
+        "https://study.gov.pl/erasmus",
+        "https://study.gov.pl/scholarships"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.frse.org.pl/",
+          "reason": "not fetched; the Polish National Agency is named by study.gov.pl as the deadline holder, so a follow-up agent should read the FRSE/erasmusplus.org.pl calls page directly rather than infer a date"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 424,
+      "title": "Fulbright Program (Poland-US)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://fulbright.edu.pl/grants-for-polish-citizens/",
+        "source_type": "official_scholarship_page",
+        "publisher": "Polish-U.S. Fulbright Commission",
+        "retrieved_at": "2026-10-05T15:49:00Z",
+        "as_of": null,
+        "raw_extract": "**When to apply: ** February-April ... **When to apply: ** May-October ... **When to apply: ** February-May ... **When to apply: ** May-September ... **When to apply: ** September-December",
+        "exact_deadline_wording": "",
+        "confidence": "LOW",
+        "notes": "study.gov.pl/fulbright-program carries no deadline at all and only links out to the Commission. The Commission's own pages give per-award application WINDOWS in month ranges (Graduate Student Award February-April, Junior Research Award May-October, Polish Scholar Award February-May, Polish Studies Award May-September, STEM Impact Award February-May, Schuman September-December), and the linked 'Call for applications' pages are stated to be in Polish only. This record is the umbrella 'Fulbright Program (Poland-US)' with no specific award, and the windows differ per award, so there is no single deadline to record. Per the brief I am not picking one award's window and I am not converting a month range into a date. Not CONFLICTING either: these are different awards, not two sources disagreeing about one deadline."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "null"
+      },
+      "examined": [
+        "https://study.gov.pl/fulbright-program",
+        "https://fulbright.edu.pl/en/",
+        "https://fulbright.edu.pl/grants-for-polish-citizens/"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 425,
+      "title": "CEEPUS Exchange Programme",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.ceepus.info/content/how",
+        "source_type": "official_programme_page",
+        "publisher": "Central CEEPUS Office",
+        "retrieved_at": "2026-10-05T15:45:00Z",
+        "as_of": null,
+        "raw_extract": "Which deadlines do apply? **June 1st:** network mobility applications for the following winter term **November 1st**: network mobility application for the following summer term **July 1st and November 1st:** Freemover-applications, where applicable ... When can I start a network application? The call for applications will be launched by the end of September 2026. Deadline for the 27/28 network applications is **November 30th**.",
+        "exact_deadline_wording": "",
+        "confidence": "MEDIUM",
+        "notes": "Two different things are published and neither is this record's deadline. (1) The network application round: ceepus.info's home page news dated 21 September 2026 says 'Network Application Round 2027/28 enabled / Deadline: 30th November, 2026, 23:59 CET. Extended deadline for signed documents (letters): 15th December, 2026, 23:59 CET', and /content/how confirms 'Deadline for the 27/28 network applications is November 30th'. That is an exact date but it is for institutions/network coordinators applying for network funding, not for scholarship applicants. (2) The individual mobility/scholarship deadlines are stated only as recurring month-days with no year: network mobility by June 1st (winter term) or November 1st (summer term), freemover by July 1st and November 1st. Those would be ANNUAL, but this record is the umbrella exchange programme with no fixed direction or applicant type, and the brief forbids inventing a day for a recurring rule without a stated current date, so I am reporting UNKNOWN rather than picking one. To be explicit about a near miss: I did not write 2026-11-30, because that is the network round and writing it as this record's scholarship deadline would be wrong; if a future shard scopes this record to the 2027/28 network round, that date becomes EXACT."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "null"
+      },
+      "examined": [
+        "https://study.gov.pl/ceepus-exchange-programme-central-and-eastern-europe",
+        "https://www.ceepus.info/",
+        "https://www.ceepus.info/content/apply",
+        "https://www.ceepus.info/content/how"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://study.gov.pl/ceepus-exchange-programme-central-and-eastern-europe",
+          "reason": "describes the programme generally and publishes no deadline; points only to ceepus.info"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 426,
+      "title": "Polish Government Scholarships (Bilateral Agreements)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://study.gov.pl/pl/stypendia-w-ramach-um-w-dwustronnych",
+        "source_type": "official_government_page",
+        "publisher": "NAWA / MNISW (study.gov.pl)",
+        "retrieved_at": "2026-10-05T15:53:00Z",
+        "as_of": null,
+        "raw_extract": "Dostępnych jest wiele stypendiów na warunkach określonych w umowach dwustronnych. Są one finansowane przez rząd polski lub rząd partnera zagranicznego, często w celu zwiększenia wymiany studentów z określonego kierunku geograficznego lub w obszarze danego kierunku studiów. Kwota stypendium zależy od poziomu studiów. Więcej informacji na ten temat można znaleźć na stronie Narodowej Agencji Wymiany Akademickiej www.nawa.gov.pl . Rekrutacją na pobyty stypendialne w ramach umów i porozumień dwustronnych zajmują się właściwe instytucje, koordynujące wymianę akademicką w krajach pochodzenia kandydatów.",
+        "exact_deadline_wording": "",
+        "confidence": "LOW",
+        "notes": "The English official_source_url /polish-government-scholarships returns HTTP 404; the live equivalent on the same official domain is the Polish page /pl/stypendia-w-ramach-um-w-dwustronnych, which I fetched. It publishes no deadline and states that recruitment for bilateral scholarship stays is handled by the relevant institutions coordinating exchange in the candidates' countries of origin. That is an explicit statement that there is no single central deadline, but the page does not use the words 'rolling' or 'no fixed deadline', so I am not upgrading to ROLLING. Genuine UNKNOWN, not invented."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "null"
+      },
+      "examined": [
+        "https://study.gov.pl/polish-government-scholarships",
+        "https://study.gov.pl/pl/stypendia-w-ramach-um-w-dwustronnych",
+        "https://nawa.gov.pl/studenci/studenci-polscy"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://study.gov.pl/polish-government-scholarships",
+          "reason": "official_source_url returns HTTP 404; Polish-language equivalent on the same official domain was used instead"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 427,
+      "title": "Solidarity with Belarus Scholarship Initiative",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Wnioski wraz z załącznikami należy składać wyłącznie za pośrednictwem systemu teleinformatycznego NAWA do 20 października 2021 r. do godz. 15:00 czasu lokalnego (Warszawa).",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://nawa.gov.pl/nawa/aktualnosci/nabor-wnioskow-do-dzialania-solidarni-z-bialorusia-studenci-otwarty",
+        "source_type": "official_programme_page",
+        "publisher": "Polish National Agency for Academic Exchange (NAWA)",
+        "retrieved_at": "2026-10-05T15:51:00Z",
+        "as_of": "2021 edition, article dated 30.09.2021",
+        "raw_extract": "**Solidarni z Białorusią – studenci, edycja 2021** ... Wnioski wraz z załącznikami należy składać wyłącznie za pośrednictwem systemu teleinformatycznego NAWA do **20 października 2021 r. do godz. 15:00** czasu lokalnego (Warszawa).",
+        "exact_deadline_wording": "Wnioski wraz z załącznikami należy składać wyłącznie za pośrednictwem systemu teleinformatycznego NAWA do 20 października 2021 r. do godz. 15:00 czasu lokalnego (Warszawa).",
+        "confidence": "HIGH",
+        "notes": "Important correction to the shard: the record's title implies an open initiative, but study.gov.pl's news page is undated ('05 Oct') and links to this NAWA article, which is explicitly the 2021 edition ('edycja 2021', article dated 30.09.2021) with a deadline of 20 October 2021, 15:00 Warsaw time. I searched for a current Belarus intake on NAWA and found none; NAWA's current foreign-student menu lists only the Anders, Poland My First Choice, Zawacka, Polonista, summer courses and Banach programmes. So the only official deadline is nearly five years stale. Per the brief: expired_mismatch, stale date not written, not silently moved to 2026 or 2027. The study.gov.pl English text 'will be able to submit applications ... until October 20' omits the year, which is exactly the kind of undated wording that must not be turned into a current date."
+      },
+      "field_mapping": {
+        "deadline_date": "null (2021 edition, stale; not written)",
+        "deadline_precision": "unknown",
+        "deadline_display": "null"
+      },
+      "examined": [
+        "https://study.gov.pl/news/call-applications-solidarity-belarus-students-initiative-has-been-announced",
+        "https://nawa.gov.pl/nawa/aktualnosci/nabor-wnioskow-do-dzialania-solidarni-z-bialorusia-studenci-otwarty",
+        "https://nawa.gov.pl/studenci/studenci-zagraniczni"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://study.gov.pl/news/call-applications-solidarity-belarus-students-initiative-has-been-announced",
+          "reason": "gives 'until October 20' with no year and its own date line shows only '05 Oct'; resolves to the 2021 edition via the NAWA link, so it cannot support a current date on its own"
+        }
+      ]
+    }
+  ]
+}

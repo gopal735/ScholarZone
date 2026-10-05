@@ -1,0 +1,288 @@
+{
+  "shard_id": "DL-019",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 100,
+      "title": "University of Barcelona (UB) Master's Degree+UB Scholarships",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "The deadline for submitting applications is from 5 May to 5 June 2026, both inclusive.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://web.ub.edu/en/web/beques-graus-masters/beques-m%C3%A0ster-ub",
+        "source_type": "official_university_page",
+        "publisher": "University of Barcelona (Unitat de Beques i Ajudes a l'Estudi, web.ub.edu)",
+        "retrieved_at": "2026-10-05T15:34:40Z",
+        "as_of": "Academic year 2026/2027, April 2026 call edition",
+        "raw_extract": "Application panel (id=collapse-solli): \"The application must be completed electronically, after authentication, through the University of Barcelona's e-Office (https://seu.ub.edu). Once the application has been confirmed, no modifications can be made. The application must be attached, electronically, to the documentation specified in Base IV.\\n\\nThe deadline for submitting applications is from 5 May to 5 June 2026, both inclusive.\" || Calls panel (id=collapse-convo): \"The collaboration scholarships of the Master+ program with the University of Barcelona are announced\\n\\nRules of the April 2026 call\\n\\nApril 2026 call\\n\\nDocumentation claim NEW\\n\\nThe deadline for submitting documentation is from 12 to 26 June 2026, both inclusive.\" || Resolutions panel (id=collapse-resol): \"UB MASTER+ SCHOLARSHIP for the 2026-2027 academic year:\\nDuring the documentation claim period from 12 June to 26 June 2026, both inclusive.\" || Page body: \"MASTER+ UB PROGRAMME TO ATTRACT STUDENTS TO STUDY A UNIVERSITY MASTER'S DEGREE AND ENCOURAGE SCIENTIFIC VOCATIONS WITHIN A RESEARCH GROUP. ACADEMIC YEAR 2026/2027 ... The call consists of two editions, one in April and the other in October.\"",
+        "exact_deadline_wording": "The deadline for submitting applications is from 5 May to 5 June 2026, both inclusive.",
+        "confidence": "HIGH",
+        "notes": "Expired mismatch. The official UB page publishes one concrete application window for the 2026-2027 academic year: 5 May to 5 June 2026, both inclusive. Both dates are in the past as of 2026-10-05, so the stale date was NOT written and was NOT moved to a later year, per the brief. The related documentation-claim window (12 to 26 June 2026, both inclusive) is also past. The page states the programme has two editions, 'one in April and the other in October', but only the April 2026 call is published; no deadline for an October 2026 edition is stated anywhere on the page, and no 2027 round is announced. Note for method: this Liferay page renders its content in collapsed bootstrap panels (buttons with data-target '#collapse-convo', '#collapse-solli', '#collapse-resol'); the deadline text is present in the served DOM but only becomes visible after expanding the panels, so a plain text scrape of the page returns no deadline. The cookie-consent overlay blocks automated clicking of the accordion buttons, so the panel text was read directly from the DOM nodes. Direct webfetch of this URL returns HTTP 403; a real browser session was required."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "The deadline for submitting applications is from 5 May to 5 June 2026, both inclusive."
+      },
+      "examined": [
+        "https://web.ub.edu/en/web/beques-graus-masters/beques-m%C3%A0ster-ub"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 102,
+      "title": "NUS Research Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Please refer to faculty websites for respective application deadlines",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://nusgs.nus.edu.sg/scholarships/nus-research-scholarship",
+        "source_type": "official_scholarship_page",
+        "publisher": "NUS Graduate School, National University of Singapore",
+        "retrieved_at": "2026-10-05T15:28:10Z",
+        "as_of": "Page as published for the current admissions cycle; no cycle year stated",
+        "raw_extract": "\"Application Deadlines\\nFor Admission in\\tApplication Window\\nAugust\\n(Semester 1 Intake)\\tPlease refer to faculty websites for respective application deadlines\\nJanuary\\n(Semester 2 Intake)\\tPlease refer to faculty websites for respective application deadlines\"",
+        "exact_deadline_wording": "Please refer to faculty websites for respective application deadlines",
+        "confidence": "HIGH",
+        "notes": "Deliberate UNKNOWN. The official NUS Graduate School page publishes an 'Application Deadlines' table, but for BOTH intakes the deadline cell contains only the deferral text 'Please refer to faculty websites for respective application deadlines'. No calendar date, month or window is given for this scholarship. The 'August' and 'January' strings are admission INTAKE months, not application deadlines, so they were not converted into a deadline value. No deadline was borrowed from a faculty site, because per the brief a faculty's deadline is a different programme's deadline and the shard's source hierarchy does not permit substituting it here. Method note: nusgs.nus.edu.sg sits behind an Imperva/Incapsula WAF; plain webfetch and Invoke-WebRequest both return a 7-line JS challenge stub, so the page was rendered in a real browser and the table read from the rendered DOM. Confidence HIGH refers to the finding that no deadline is published, not to any date."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Please refer to faculty websites for respective application deadlines"
+      },
+      "examined": [
+        "https://nusgs.nus.edu.sg/scholarships/nus-research-scholarship"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://nusgs.nus.edu.sg/scholarships/commonwealth-scholarship",
+          "reason": "Different NUS scholarship; not this record. Not used as evidence for the NUS Research Scholarship."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 103,
+      "title": "Commonwealth Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Please refer to faculty websites for respective application deadlines",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://nusgs.nus.edu.sg/scholarships/commonwealth-scholarship",
+        "source_type": "official_scholarship_page",
+        "publisher": "NUS Graduate School, National University of Singapore",
+        "retrieved_at": "2026-10-05T15:29:05Z",
+        "as_of": "Page as published for the current admissions cycle; no cycle year stated",
+        "raw_extract": "\"Application Deadlines\\nFor Admission in\\tApplication Window\\nAugust\\n(Semester 1 Intake)\\tPlease refer to faculty websites for respective application deadlines\\nJanuary\\n(Semester 2 Intake)\\tPlease refer to faculty websites for respective application deadlines\\nHow to Apply?\\n\\nApplicants may apply for the scholarship within their admissions application through GradApp and fulfill additional scholarship application requirements stated there.\\n\\nIncoming graduate students should indicate their interest in the Scholarship in their application for admission.\"",
+        "exact_deadline_wording": "Please refer to faculty websites for respective application deadlines",
+        "confidence": "HIGH",
+        "notes": "Deliberate UNKNOWN. The official page's 'Application Deadlines' table defers to faculty websites for both the August (Semester 1) and January (Semester 2) intakes and states no calendar date. 'August' and 'January' are admission intake months, not deadlines, and were not converted. The scholarship is applied for inside the GradApp admissions application, but the page does not publish that application's deadline, and a generic NUS graduate admissions deadline was not substituted because the brief forbids using a generic admissions deadline for a different programme. Method note: nusgs.nus.edu.sg is behind an Imperva/Incapsula WAF, so the page was rendered in a real browser rather than fetched as raw text. Confidence HIGH refers to the finding that no deadline is published."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Please refer to faculty websites for respective application deadlines"
+      },
+      "examined": [
+        "https://nusgs.nus.edu.sg/scholarships/commonwealth-scholarship"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://nusgs.nus.edu.sg/scholarships/nus-research-scholarship",
+          "reason": "Different NUS scholarship; not this record."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 104,
+      "title": "President's Graduate Fellowship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Please refer to faculty websites for respective application deadlines",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://nusgs.nus.edu.sg/scholarships/presidents-graduate-fellowship",
+        "source_type": "official_scholarship_page",
+        "publisher": "NUS Graduate School, National University of Singapore",
+        "retrieved_at": "2026-10-05T15:29:10Z",
+        "as_of": "Page as published for the current admissions cycle; no cycle year stated",
+        "raw_extract": "\"Application Deadlines\\nFor Admission in\\tApplication Window\\nAugust\\n(Semester 1 Intake)\\tPlease refer to faculty websites for respective application deadlines\\nJanuary\\n(Semester 2 Intake)\\tPlease refer to faculty websites for respective application deadlines\\nHow to Apply?\\n\\nApplicants may apply for the scholarship within their admissions application through GradApp and fulfill additional scholarship application requirements stated there.\\n\\nFurther application procedures will be advised when the applicants are assessed to be eligible.\" || \"Successful applicants will be informed of the outcome of their applications sometime in May (for admission in August) or October (for admission in January).\"",
+        "exact_deadline_wording": "Please refer to faculty websites for respective application deadlines",
+        "confidence": "HIGH",
+        "notes": "Deliberate UNKNOWN. The official page's 'Application Deadlines' table defers to faculty websites for both intakes; no calendar date is published. 'August'/'January' are admission intake months and were not treated as deadlines. The May/October wording on this page is a notification-of-outcome month, not an application deadline, so it was NOT recorded as a MONTH deadline; converting an outcome date into an application deadline would be an invention. The Fellowship is by nomination, so no applicant-facing closing date exists on the page at all. Method note: nusgs.nus.edu.sg is behind an Imperva/Incapsula WAF; the page was rendered in a real browser. Confidence HIGH refers to the finding that no deadline is published."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Please refer to faculty websites for respective application deadlines"
+      },
+      "examined": [
+        "https://nusgs.nus.edu.sg/scholarships/presidents-graduate-fellowship"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://nusgs.nus.edu.sg/scholarships/nus-research-scholarship",
+          "reason": "Different NUS scholarship; not this record."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 159,
+      "title": "IMD MBA Scholarships",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "Deadline to apply: Throughout 2026 (available until allocated)",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://www.imd.org/degree/mba/financing/imd-mba-scholarships",
+        "source_type": "official_scholarship_page",
+        "publisher": "IMD Business School",
+        "retrieved_at": "2026-10-05T15:29:50Z",
+        "as_of": "2026 intake (page states deadlines throughout 2026)",
+        "raw_extract": "\"Deadline to apply: Throughout 2026 (available until allocated)\" [stated 5 times, identically, for the MBA5 Scholarship - CHF 50K, the Hilti STEM Scholars Program - CHF 50K, the Nestle Scholarship for Women - CHF 40K and two further merit scholarships] || BackPack Scholarship for Women - full funding: \"Deadline to apply: 14 July\" || Bursaries: \"Deadline to apply: same as admissions application\\nYour bursary application form can be found directly on your admissions application\" || \"To apply, please complete the scholarship application in the Program section of your MBA application form.\"",
+        "exact_deadline_wording": "Deadline to apply: Throughout 2026 (available until allocated)",
+        "confidence": "MEDIUM",
+        "notes": "This single record aggregates several distinct IMD MBA awards whose deadlines differ, which the brief states is NOT a source conflict. Semantics ROLLING is recorded because the dominant, explicitly stated behaviour for the merit scholarships is 'Throughout 2026 (available until allocated)' - availability is governed by allocation, not by a fixed closing date. ROLLING was NOT converted into a calendar date. Two documented exceptions, deliberately NOT written as deadline_date: (1) the BackPack Scholarship for Women states 'Deadline to apply: 14 July' with NO YEAR, so no YYYY-MM-DD can be formed and no year was invented; (2) Bursary applications state 'same as admissions application', but the IMD admissions application deadline is not published on this page, so it was not resolved and no admissions date was borrowed. Confidence MEDIUM because one record cannot represent three different deadline behaviours; the verbatim wording of each is preserved here and in deadline_display so a reviewer can split the record if the programme is decomposed downstream. Method note: webfetch of this URL timed out; the page was rendered in a real browser and the text read from the rendered DOM."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "rolling",
+        "deadline_display": "Deadline to apply: Throughout 2026 (available until allocated)"
+      },
+      "examined": [
+        "https://www.imd.org/degree/mba/financing/imd-mba-scholarships",
+        "https://www.imd.org/degree/mba"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 279,
+      "title": "NORPART – Norwegian Partnership Programme",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Grants you can apply for now: 0",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://hkdir.no/en/programmes-and-grant-schemes/norpart",
+        "source_type": "official_government_page",
+        "publisher": "The Directorate for Higher Education and Skills (HK-dir), Norway",
+        "retrieved_at": "2026-10-05T15:31:20Z",
+        "as_of": "Programme page as live on 2026-10-05; most recent call documented is the 2024 call",
+        "raw_extract": "\"Grants you can apply for now: 0\" || \"The Norwegian government has proposed to end support for the NORPART-programme in the 2025 National Budget. This means that only around seven projects will receive funding in the planned allocation in October, based on the NOK 35 million that was allocated to the programme for 2024.\\n\\nOngoing projects will receive funding in accordance with their agreements.\" || \"Results of the call for applications 2024\\nThe deadline for the call for proposals for 2024 was 3. June. By the deadline, 191 applications were received. The Directorate for Higher Education and Skills allocates approximately 35 million NOK to 7 projects.\" || \"The NORPART programme is funded by the Norwegian Ministry of Education and Research and the Norwegian Ministry of Foreign Affairs and is administered by The Directorate for Higher Education and Skills (HK-dir).\"",
+        "exact_deadline_wording": "Grants you can apply for now: 0",
+        "confidence": "HIGH",
+        "notes": "Expired mismatch, and a substantive correction to the shard's existing value. The shard carries deadline_display '15 October 2026'. NO official source supports that date. The official administrator (HK-dir states on the same page that the programme 'is administered by The Directorate for Higher Education and Skills (HK-dir)') shows 'Grants you can apply for now: 0', i.e. there is no open call at all, and the only deadline the official page publishes is a PAST one: 'The deadline for the call for proposals for 2024 was 3. June.' The programme is also being wound down ('The Norwegian government has proposed to end support for the NORPART-programme in the 2025 National Budget'). Because the record is presented as open/upcoming while the official source shows no open call and only a 2024 deadline that is long past, outcome is expired_mismatch; the stale 3 June 2024 date was NOT written and no date was invented or rolled forward. The '15 October 2026' value appears only on the third-party aggregator scholar.africa, which the brief forbids as evidence; it was not used. Shard host note: the shard's official_source_url host www.uhr.no no longer serves this page (HTTP 404); the successor official domain is hkdir.no, which is the Norwegian government agency for this award."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Grants you can apply for now: 0"
+      },
+      "examined": [
+        "https://hkdir.no/en/programmes-and-grant-schemes/norpart",
+        "https://hkdir.no/en/programmes-and-grant-schemes"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.uhr.no/programmes-and-agreements/norpart-norwegian-partnership-programme",
+          "reason": "Shard's official_source_url returns HTTP 404; page no longer exists at this host. Superseded by hkdir.no."
+        },
+        {
+          "url": "https://scholar.africa/scholarships/norpart-norwegian-partnership",
+          "reason": "Third-party scholarship aggregator. Sole origin of the '15 October 2026' value; explicitly forbidden as evidence by the brief. Contradicted by the official administrator, which shows 0 open grants."
+        },
+        {
+          "url": "https://guides.scholarshipunion.com/norway-scholarship",
+          "reason": "Third-party aggregator guide; not an official source for a Norwegian government award."
+        },
+        {
+          "url": "https://www.sib.no/en/programmes/norpart",
+          "reason": "Transport error / URL not resolvable; not used."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 330,
+      "title": "Danish State Scholarship",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Only applicants who have applied for a Master's degree programme no later than 15 January (summer admission) and 15 September (winter admission) will be considered for a tuition waiver/scholarship.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://masters.au.dk/scholarships-and-grants",
+        "source_type": "official_university_page",
+        "publisher": "Aarhus University (Master's Web Editorial Team)",
+        "retrieved_at": "2026-10-05T15:32:10Z",
+        "as_of": "Page revised 08.07.2026; describes recurring admissions years, no single named year",
+        "raw_extract": "\"### Application deadline\\nOnly applicants who have applied for a Master's degree programme no later than 15 January (summer admission) and 15 September (winter admission) will be considered for a tuition waiver/scholarship.\" || Section heading context: \"## Danish state scholarships for non-EU/EEA students ... ### How to apply for a Danish state scholarship ... When you apply for admission, your application will automatically be assessed with a view to a possible scholarship along with our academic assessment of your qualifications.\" || \"Aarhus University offers a limited number of Danish state scholarships for non-EU students. Our scholarships are financed by the Danish state.\" || \"Revised 08.07.2026\"",
+        "exact_deadline_wording": "Only applicants who have applied for a Master's degree programme no later than 15 January (summer admission) and 15 September (winter admission) will be considered for a tuition waiver/scholarship.",
+        "confidence": "MEDIUM",
+        "notes": "Semantics ANNUAL, precision recurring, deadline_date null. The official page publishes two explicit day-month cut-offs (15 January for summer admission, 15 September for winter admission) but attaches NO year to either, and the page is a standing description that recurs each admissions year. Because no year is stated, an EXACT YYYY-MM-DD cannot be formed without inventing one, and ANNUAL was NOT converted into a calendar date per the brief. This wording is scholarship-specific, not a generic admissions deadline: it appears under the 'Danish state scholarships' heading and states explicitly that only applicants who apply by those dates 'will be considered for a tuition waiver/scholarship', so it is the scholarship consideration cut-off. Confidence MEDIUM for one reason worth flagging to the reviewer: this is the awarding university's own page, whereas the underlying award is financed by the Danish state, so a government-domain source (the Danish Agency for Higher Education and Science) would be the strictly correct authority for this award; the shard itself attributes this record to Aarhus University, and no separate government page publishing a deadline was located. Also note the same page lists a DIFFERENT and unrelated date further down ('final deadline 1 April (summer admission) or 1 November (winter admission)'); that is the tuition-fee-payment deadline for non-recipients, not the scholarship deadline, and was deliberately not used. Shard host note: the shard's official_source_url international.au.dk/education/finance/scholarships now returns HTTP 404; this is the live official equivalent page."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "Only applicants who have applied for a Master's degree programme no later than 15 January (summer admission) and 15 September (winter admission) will be considered for a tuition waiver/scholarship."
+      },
+      "examined": [
+        "https://masters.au.dk/scholarships-and-grants",
+        "https://masters.au.dk/how-to-apply/after-application"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://international.au.dk/education/finance/scholarships",
+          "reason": "Shard's official_source_url returns HTTP 404; page no longer exists."
+        },
+        {
+          "url": "https://masters.au.dk/deadlines-and-important-dates/timeline-winter-eu",
+          "reason": "Generic admissions timeline for a different applicant group (EU students). A generic admissions deadline is explicitly not permitted evidence."
+        },
+        {
+          "url": "https://projects.au.dk/scicomm/international-applicants",
+          "reason": "Programme-specific page for Science Communication; its 15 January 2027 date is another programme's deadline."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 661,
+      "title": "First Nations Cancer Scholarship",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Close: 11/09/2026",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://aurorafoundation.com.au/our-work/indigenous-pathways-portal/scholarships/first-nations-cancer-scholarship",
+        "source_type": "official_application_portal",
+        "publisher": "Aurora Education Foundation (Aurora Indigenous Pathways Portal)",
+        "retrieved_at": "2026-10-05T15:27:30Z",
+        "as_of": "2026 round: opened 16 June 2026, closed 11 September 2026, status \"Closed\"",
+        "raw_extract": "\"Open: 16/06/2026\\n2026-06-16T00:00:00+00:00\\n\\nClose: 11/09/2026\\n2026-09-11T00:00:00+00:00\" || status line on the same page: \"Closed\" || \"Your application will not be considered complete or pass the shortlisting process if all required documents are not submitted by the Scholarship closing date.\" || Companion official page https://aurorafoundation.com.au/cancer-scholarship: \"Up to four scholarships will be awarded yearly from 2024 to 2026.\" and \"Before applying, applicants should read the Scholarship Guidelines to ensure they meet the eligibility criteria and can provide the required documents. Applications are available via Aurora's Indigenous Pathways Portal\"",
+        "exact_deadline_wording": "Close: 11/09/2026",
+        "confidence": "HIGH",
+        "notes": "Expired mismatch. The official Aurora Indigenous Pathways Portal publishes an explicit close date of 11/09/2026 for the 2026 round, with machine-readable datetime 2026-09-11T00:00:00+00:00, and the page's own status reads 'Closed'. As of 2026-10-05 that date is in the past, so per the brief the stale date was NOT written as deadline_date and was NOT moved forward to a 2027 round that does not exist. This is a genuine end-of-programme situation, not merely a stale page: the official scholarship page states 'Up to four scholarships will be awarded yearly from 2024 to 2026', bounding the programme to 2026, and no 2027 window is published anywhere on either official page. The shard's own cached values (opened 16 June 2026, closed 11 September 2026, 'now closed') were independently re-confirmed against the live portal rather than copied. Note: the shard's primary official_source_url https://aurorafoundation.com.au/cancer-scholarship carries NO deadline of any kind; it only points to the Guidelines PDF and the Indigenous Pathways Portal. The deadline was taken from the portal, which is Aurora's own application system on the provider's own domain."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "Close: 11/09/2026 (Closed)"
+      },
+      "examined": [
+        "https://aurorafoundation.com.au/our-work/indigenous-pathways-portal/scholarships/first-nations-cancer-scholarship",
+        "https://aurorafoundation.com.au/cancer-scholarship",
+        "https://aurorafoundation.com.au/wp-content/uploads/2024/07/First-Nations-Cancer-Scholarship-Guidelines.pdf"
+      ],
+      "rejected_sources": []
+    }
+  ]
+}

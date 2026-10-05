@@ -1,0 +1,58 @@
+{
+  "shard_id": "LG-034",
+  "topic": "logo",
+  "hosts": [
+    "nu.edu.kz",
+    "www.faae.org.co",
+    "www.visegradfund.org",
+    "you.ubc.ca"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 86,
+      "title": "Donald A. Wehrung International Student Award (UBC International Scholars Program)",
+      "official_source": "University of British Columbia",
+      "official_source_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars/donald-a-wehrung-international-student-award",
+      "catalogue_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars",
+      "country": "Canada",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 296,
+      "title": "International Visegrad Fund Fellowships and Scholarships (V4 mobility)",
+      "official_source": "International Visegrad Fund",
+      "official_source_url": "https://www.visegradfund.org/scholarships",
+      "catalogue_url": "https://www.visegradfund.org/scholarships",
+      "country": "Czech Republic",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 327,
+      "title": "Visegrad Scholarship Program 2027",
+      "official_source": "International Visegrad Fund",
+      "official_source_url": "https://www.visegradfund.org/visegrad-scholarship-program-apply",
+      "catalogue_url": "https://www.visegradfund.org/scholarships",
+      "country": "Czech Republic",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 600,
+      "title": "Becas Colombia Biodiversa - Fondo de Becas Colombia Biodiversa, Convocatoria II-2026",
+      "official_source": "Fundación Alejandro Ángel Escobar (FAAE)",
+      "official_source_url": "https://www.faae.org.co/colombiabiodiversa/instrucciones-para-la-aplicacion",
+      "catalogue_url": "https://www.faae.org.co/colombiabiodiversa",
+      "country": "Colombia",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 682,
+      "title": "Nazarbayev University Financial Aid and Scholarships for International Applicants — Foundation Year and Undergraduate programmes (2027–2028 cycle)",
+      "official_source": "Nazarbayev University (NU), Office of the Registrar / International Admissions, Astana, Kazakhstan",
+      "official_source_url": "https://nu.edu.kz/admissions/how-to-apply/foundation-undergraduate/financial-aid-end-scholarships",
+      "catalogue_url": "https://nu.edu.kz/admissions/how-to-apply/foundation-undergraduate/financial-aid-end-scholarships",
+      "country": "Kazakhstan",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

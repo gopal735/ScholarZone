@@ -1,0 +1,58 @@
+{
+  "shard_id": "LG-015",
+  "topic": "logo",
+  "hosts": [
+    "ensie.nankai.edu.cn",
+    "scholarship.ptdf.gov.ng",
+    "web.icetex.gov.co",
+    "www.mofa.gov.ae"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 246,
+      "title": "Nankai University Chinese Government Scholarship - Silk Road Program",
+      "official_source": "Nankai University & China Scholarship Council (CSC)",
+      "official_source_url": "https://ensie.nankai.edu.cn/info/1047/1347.htm",
+      "catalogue_url": "https://sie.nankai.edu.cn",
+      "country": "China",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 560,
+      "title": "MOFA Scholarship Program",
+      "official_source": "United Arab Emirates Ministry of Foreign Affairs (MOFA)",
+      "official_source_url": "https://www.mofa.gov.ae/en/Scholarship",
+      "catalogue_url": "https://www.mofa.gov.ae/en/top-universities",
+      "country": "United Arab Emirates",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 605,
+      "title": "Programa de Becas de Cooperacion Sur-Sur - Republica de Chile 2027 (AGCID)",
+      "official_source": "Agencia Chilena de Cooperacion Internacional para el Desarrollo (AGCID), Government of Chile",
+      "official_source_url": "https://web.icetex.gov.co/es/-/becas-maestria-chile-agcid-2027",
+      "catalogue_url": "https://www.agcid.gob.cl/becas/becas-para-extranjeros/ofertas-vigentes",
+      "country": "Chile",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 623,
+      "title": "PTDF Overseas Postgraduate Scholarship Scheme (MSc/PhD)",
+      "official_source": "Petroleum Technology Development Fund (PTDF)",
+      "official_source_url": "https://scholarship.ptdf.gov.ng/news/13/2026-overseas-postgraduate-scholarship-scheme-for-universities-in-the-united-kingdom--germany--france--and-malaysia",
+      "catalogue_url": "https://scholarship.ptdf.gov.ng/approved-schools/oss",
+      "country": "Nigeria",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 673,
+      "title": "Petroleum Technology Development Fund (PTDF) In-Country Scholarship Scheme (ISS) 2026/27",
+      "official_source": "Petroleum Technology Development Fund (PTDF), a Federal Government of Nigeria agency",
+      "official_source_url": "https://scholarship.ptdf.gov.ng/guidelines",
+      "catalogue_url": "https://scholarship.ptdf.gov.ng/approved-schools/iss",
+      "country": "Nigeria",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

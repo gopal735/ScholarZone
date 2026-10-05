@@ -1,0 +1,342 @@
+{
+  "shard_id": "LG-025",
+  "agent_completed": true,
+  "topic": "logo",
+  "records": [
+    {
+      "scholarship_id": 511,
+      "title": "UC Doctoral Scholarship (UCDS)",
+      "outcome": "not_found",
+      "image_url": null,
+      "image_source_url": null,
+      "image_source_type": null,
+      "image_kind": null,
+      "confidence": "LOW",
+      "validation": {
+        "official_domain": false,
+        "accessible": false,
+        "not_favicon": false,
+        "not_ui": false,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": false,
+        "notes": "No usable official logo asset could be proven. UC Doctoral Scholarships has no scholarship-specific mark, and the University of Canterbury's Advertising and Brand Management Policy states it has 'a single official logo' and that 'secondary logos are not permitted', with brand guidelines restricted to staff. The only UC logo file exposed on the official domain from this page is an SVG symbol sprite whose direct URL renders nothing standalone. Nothing was written."
+      },
+      "source": {
+        "url": "https://www.canterbury.ac.nz/study/getting-started/scholarships/doctoral-scholarships/uc-doctoral-scholarships",
+        "publisher": "University of Canterbury (Te Whare Wananga o Waitaha), Scholarships Office",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "raw_extract": "<a href=\"/\" aria-label=\"UC Logo - Home: University of Canterbury\"> <svg viewBox=\"0 0 111 60\" class=\"cmp-image__image cmp-header__logo--sm\" aria-hidden=\"true\"><use xlink:href=\"/content/dam/uoc-restricted/logos/header-logo.svg#sm-logo\"></use></svg> ... | <meta name=\"UC.modifiedDate\" content=\"2026-10-01\"/> | <title>UC Doctoral Scholarships | UC</title>",
+        "confidence": "HIGH",
+        "notes": "Source page fetched in full; asset inventory extracted from the live HTML. The page references exactly one logo asset, an SVG symbol sprite, plus favicon/apple-touch-icon/android-icon sets. No standalone renderable logo file exists at a provable official URL."
+      },
+      "examined": [
+        "https://www.canterbury.ac.nz/study/getting-started/scholarships/doctoral-scholarships/uc-doctoral-scholarships",
+        "https://www.canterbury.ac.nz/study/getting-started/scholarships",
+        "https://www.canterbury.ac.nz/content/dam/uoc-restricted/logos/header-logo.svg",
+        "https://www.canterbury.ac.nz/about-uc/corporate-information/policies/advertising-and-brand-management-policy",
+        "https://www.canterbury.ac.nz/about-uc/corporate-information/privacy-copyright-official-information/copyright"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.canterbury.ac.nz/content/dam/uoc-restricted/logos/header-logo.svg",
+          "reason": "SVG sprite sheet, not a logo asset. Verified by fetching: the file body contains only three <symbol> definitions (id=\"sm-logo\", \"lg-logo\", \"xl-logo\") and no top-level renderable content, so loading this URL directly as an <img src> yields a blank image. Also served from a 'uoc-restricted' DAM path. Brief rejects spritesheets."
+        },
+        {
+          "url": "https://www.canterbury.ac.nz/content/dam/uoc-restricted/icons/favicon.ico",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://www.canterbury.ac.nz/content/dam/uoc-restricted/icons/apple-icon-180x180.png",
+          "reason": "apple-touch-icon"
+        },
+        {
+          "url": "https://www.canterbury.ac.nz/content/dam/uoc-restricted/icons/android-icon-192x192.png",
+          "reason": "browser/UI icon set, not a logo"
+        },
+        {
+          "url": "https://www.canterbury.ac.nz/content/dam/uoc-restricted/logos/placeholder-thumbnail.png",
+          "reason": "not an asset - generic CMS placeholder thumbnail (loaded with class=\"cmp-image--hide\")"
+        },
+        {
+          "url": "https://www.canterbury.ac.nz/content/dam/uoc-main-site/images/3-people-images/g-studying/Website-section-image-PhD-uc.jpg/_jcr_content/renditions/cq5dam.web.1280.1280.jpeg",
+          "reason": "decorative hero art - photograph of students used as the page hero image"
+        },
+        {
+          "url": "https://www.canterbury.ac.nz/content/dam/uoc-main-site/site-assets/default-maori-patterns/wananga-landing.svg",
+          "reason": "decorative hero art - Maori pattern background, not a logo"
+        },
+        {
+          "url": "https://www.canterbury.ac.nz/content/dam/uoc-main-site/images/5-other-images/hands-typing-on-a-laptop-uc.jpg",
+          "reason": "decorative card photography, not a logo"
+        },
+        {
+          "url": "https://www.canterbury.ac.nz/content/dam/uoc-main-site/images/5-other-images/Glossary.jpg",
+          "reason": "decorative card photography, not a logo"
+        },
+        {
+          "url": "https://www.canterbury.ac.nz/content/dam/uoc-main-site/site-assets/default-maori-patterns/footer_pattern.svg",
+          "reason": "decorative footer pattern, not a logo"
+        },
+        {
+          "url": "https://shielded.co.nz/img/custom-logo.png",
+          "reason": "third-party - logo of the unrelated commercial service 'shielded' embedded in the site footer"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 639,
+      "title": "Becas de apoyo a la investigacion del Instituto Riva-Aguero 2027",
+      "outcome": "recovered",
+      "image_url": "https://ira.pucp.edu.pe/wp-content/themes/irapucp/img/instituto-RivaAguero.svg",
+      "image_source_url": "https://ira.pucp.edu.pe/investigacion/proyectos-ganadores-de-las-becas",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Asset is the Instituto Riva-Aguero institutional logo, served from the institute's own WordPress theme directory on ira.pucp.edu.pe. Verified by fetching: 9275 bytes, image/svg+xml, standalone <svg width=\"210\" height=\"60\" viewBox=\"0 0 210 60\"> built from vector paths (wordmark proportions), so it renders on its own and is not a sprite. Identity match is to the scholarship provider (Instituto Riva-Aguero - PUCP); the 2027 research-support scholarship itself publishes no separate mark."
+      },
+      "source": {
+        "url": "https://ira.pucp.edu.pe/investigacion/proyectos-ganadores-de-las-becas",
+        "publisher": "Instituto Riva-Aguero - PUCP (Pontificia Universidad Catolica del Peru)",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "raw_extract": "<div class=\"menuprin-cont header-logo-azul\"><div class=\"container\"><a class=\"header-logo-azul__url\" href=\"https://ira.pucp.edu.pe\"><img src=\"https://ira.pucp.edu.pe/wp-content/themes/irapucp/img/instituto-RivaAguero.svg\" alt=\"\"></a></div></div> | <title>Proyectos ganadores de las becas | Instituto Riva-Agüero – PUCP</title>",
+        "confidence": "HIGH",
+        "notes": "The official_source_url on the record is a 2027 convocatoria PDF; the catalogue_url was fetched as the live HTML page to obtain the site header logo reference. No separate scholarship-specific brand mark exists for this programme."
+      },
+      "examined": [
+        "https://ira.pucp.edu.pe/investigacion/proyectos-ganadores-de-las-becas",
+        "https://ira.pucp.edu.pe/wp-content/themes/irapucp/img/instituto-RivaAguero.svg",
+        "https://ira.pucp.edu.pe/wp-content/uploads/2020/04/logo-ira.jpg"
+      ],
+      "rejected": [
+        {
+          "url": "https://ira.pucp.edu.pe/wp-content/uploads/2020/04/logo-ira.jpg",
+          "reason": "low-resolution badge - Yoast schema declares this as the organisation logo but it is a 95x34 JPEG (5809 bytes). Official but too low-resolution; the vector SVG wordmark was used instead."
+        },
+        {
+          "url": "https://ira.pucp.edu.pe/wp-content/uploads/2020/10/cropped-isotipo.fw_-32x32.png",
+          "reason": "favicon (declared via <link rel=\"icon\" sizes=\"32x32\">)"
+        },
+        {
+          "url": "https://ira.pucp.edu.pe/wp-content/uploads/2020/10/cropped-isotipo.fw_-192x192.png",
+          "reason": "favicon (declared via <link rel=\"icon\" sizes=\"192x192\">)"
+        },
+        {
+          "url": "https://ira.pucp.edu.pe/wp-content/uploads/2020/10/cropped-isotipo.fw_-180x180.png",
+          "reason": "apple-touch-icon"
+        },
+        {
+          "url": "https://ira.pucp.edu.pe/wp-content/uploads/2020/10/cropped-isotipo.fw_-270x270.png",
+          "reason": "msapplication-TileImage, browser UI chrome"
+        },
+        {
+          "url": "https://s3.amazonaws.com/files.pucp.edu.pe/pucp-general/img-header/favicon/apple-icon-180x180.png",
+          "reason": "apple-touch-icon"
+        },
+        {
+          "url": "https://s3.amazonaws.com/files.pucp.edu.pe/pucp-general/img-header/favicon/favicon.ico",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://s3.amazonaws.com/files.pucp.edu.pe/pucp-general/img-header/favicon/favicon-96x96.png",
+          "reason": "favicon / low-resolution badge"
+        },
+        {
+          "url": "https://ira.pucp.edu.pe/wp-content/uploads/2020/07/FACHADA-CASONA-IRA-1024x787.jpg",
+          "reason": "decorative hero art - photograph of the Casa Riva-Aguero facade, used as the page og:image"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 645,
+      "title": "TaiwanICDF Scholarship Program (International Higher Education Scholarship Program), TaiwanICDF",
+      "outcome": "recovered",
+      "image_url": "https://www.icdf.org.tw/wSite/xslGip/style2/images/logo.svg",
+      "image_source_url": "https://www.icdf.org.tw/wSite/ct?ctNode=31562&mp=2&xItem=12505",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Asset is the TaiwanICDF institutional logo, served from the provider's own site stylesheet directory on www.icdf.org.tw and rendered as the site's <h1> logo inside <a href=\"mp?mp=2\">. Verified by fetching: 500x66 standalone SVG (Adobe Illustrator export) containing the ICDF three-petal mark, the Chinese wordmark 財團法人國際合作發展基金會 and the English line International Cooperation and Development Fund. The favicon on this site is a separate file (xslGip/style2/images/favicon.png), so this is not a favicon."
+      },
+      "source": {
+        "url": "https://www.icdf.org.tw/wSite/ct?ctNode=31562&mp=2&xItem=12505",
+        "publisher": "International Cooperation and Development Fund (TaiwanICDF), Taiwan",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "raw_extract": "<h1><a href=\"mp?mp=2\"><img alt=\"財團法人國際合作發展基金會\" src=\"xslGip/style2/images/logo.svg\"></a></h1> | <title>TaiwanICDF - TaiwanICDF International Higher Education Scholarship Program</title> | <link rel=\"icon\" type=\"image/x-icon\" href=\"xslGip/style2/images/favicon.png\">",
+        "confidence": "HIGH",
+        "notes": "The official scholarship/programme page itself was fetched first, per the source preference order. TaiwanICDF publishes no separate logo for the International Higher Education Scholarship Program; the organisation logo above is the official brand mark for the provider."
+      },
+      "examined": [
+        "https://www.icdf.org.tw/wSite/ct?ctNode=31562&mp=2&xItem=12505",
+        "https://www.icdf.org.tw/wSite/xslGip/style2/images/logo.svg"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.icdf.org.tw/wSite/xslGip/style2/images/favicon.png",
+          "reason": "favicon (declared via <link rel=\"icon\" type=\"image/x-icon\">)"
+        },
+        {
+          "url": "https://www.icdf.org.tw/wSite/public/Data/f1644908737164.jpg",
+          "reason": "decorative hero art - inner-page banner image for the scholarship node (alt=\"TaiwanICDF Scholarship Program\"); a page banner, not a logo asset"
+        },
+        {
+          "url": "https://www.icdf.org.tw/wSite/xslGip/style2/images/logo_footer.svg",
+          "reason": "not used - a duplicate footer instance of the same mark, not a distinct or better asset than the header logo"
+        },
+        {
+          "url": "https://www.icdf.org.tw/wSite/xslGip/style2/images/nav_icon01.png",
+          "reason": "browser/UI chrome - navigation icon"
+        },
+        {
+          "url": "https://www.icdf.org.tw/wSite/xslGip/style2/images/basic/icon_facebook.svg",
+          "reason": "social media share-button image"
+        },
+        {
+          "url": "https://www.icdf.org.tw/wSite/xslGip/style2/images/icon_google.jpg",
+          "reason": "browser/UI chrome - Google Maps marker icon in the footer"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 654,
+      "title": "TaiwanICDF Scholarship Program (Taiwan International Cooperation and Development Fund International Higher Education Scholarship)",
+      "outcome": "recovered",
+      "image_url": "https://www.icdf.org.tw/wSite/xslGip/style2/images/logo.svg",
+      "image_source_url": "https://www.icdf.org.tw/wSite/ct?xItem=12505&ctNode=31562&mp=2",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Same official TaiwanICDF programme page as record 645 (identical ctNode=31562 / xItem=12505 content item, query parameters only reordered), so the same official provider logo applies. Asset verified by direct fetch: 500x66 standalone SVG containing the ICDF three-petal mark, 財團法人國際合作發展基金會 and 'International Cooperation and Development Fund'. Not a favicon; the site favicon is a separate xslGip/style2/images/favicon.png."
+      },
+      "source": {
+        "url": "https://www.icdf.org.tw/wSite/ct?xItem=12505&ctNode=31562&mp=2",
+        "publisher": "International Cooperation and Development Fund (TaiwanICDF), Taiwan",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "raw_extract": "<h1><a href=\"mp?mp=2\"><img alt=\"財團法人國際合作發展基金會\" src=\"xslGip/style2/images/logo.svg\"></a></h1> | <title>TaiwanICDF - TaiwanICDF International Higher Education Scholarship Program</title> | <link rel=\"icon\" type=\"image/x-icon\" href=\"xslGip/style2/images/favicon.png\">",
+        "confidence": "HIGH",
+        "notes": "This record's official_source_url resolves to the same content item (xItem=12505, ctNode=31562) as record 645; parameter order differs only. Verified directly rather than assumed. No catalogue_url was supplied on this record."
+      },
+      "examined": [
+        "https://www.icdf.org.tw/wSite/ct?xItem=12505&ctNode=31562&mp=2",
+        "https://www.icdf.org.tw/wSite/xslGip/style2/images/logo.svg"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.icdf.org.tw/wSite/xslGip/style2/images/favicon.png",
+          "reason": "favicon (declared via <link rel=\"icon\" type=\"image/x-icon\">)"
+        },
+        {
+          "url": "https://www.icdf.org.tw/wSite/public/Data/f1644908737164.jpg",
+          "reason": "decorative hero art - inner-page banner image for the scholarship node, not a logo asset"
+        },
+        {
+          "url": "https://www.icdf.org.tw/wSite/xslGip/style2/images/logo_footer.svg",
+          "reason": "not used - duplicate footer instance of the same mark"
+        },
+        {
+          "url": "https://www.icdf.org.tw/wSite/xslGip/style2/images/basic/icon_facebook.svg",
+          "reason": "social media share-button image"
+        },
+        {
+          "url": "https://www.icdf.org.tw/wSite/xslGip/style2/images/nav_icon06.png",
+          "reason": "browser/UI chrome - language-switch navigation icon"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 717,
+      "title": "National Scholarship Programme of the Slovak Republic (Národný štipendijný program SR, NŠP)",
+      "outcome": "recovered",
+      "image_url": "https://www.stipendia.sk/_custom/img/logo_NS-SK.png",
+      "image_source_url": "https://www.stipendia.sk",
+      "image_source_type": "official_scholarship",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "This is the strongest possible identity match in the shard: the NSP programme's own brand mark, not the administering agency's or the funder's. Served from www.stipendia.sk as the site's header logo (id=\"logo-header\") alongside the wordmark 'Národný štipendijný program Slovenskej republiky'. Verified by download and visual inspection: red rounded square bearing 'NŠP' over 'Národný štipendijný program'. HTTP 200, image/png, 10062 bytes. Confidence held at MEDIUM only because the native raster is small at 72x120 pixels - it will look soft if displayed large, though it is the authentic official asset and not a favicon-sized badge derived from one. The site favicon is a separate file (favicon.ico)."
+      },
+      "source": {
+        "url": "https://www.stipendia.sk",
+        "publisher": "SAIA, n. o. (Slovak Academic and Information Agency), administrator of the National Scholarship Programme of the Slovak Republic",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "raw_extract": "<!-- Logo --><div class=\"logo\"><a href=\"sk/\"><img id=\"logo-header\" src=\"_custom/img/logo_NS-SK.png?r=1\" alt=\"Logo\"><span>Národný štipendijný program Slovenskej republiky</span></a></div> | <title>Národný štipendijný program - Hlavná stránka</title> | <link rel=\"shortcut icon\" href=\"favicon.ico\">",
+        "confidence": "HIGH",
+        "notes": "official_source_url on the record is https://www.stipendia.sk, fetched first. Clean asset URL without the ?r=1 cache-buster was verified separately and also returns HTTP 200 image/png."
+      },
+      "examined": [
+        "https://www.stipendia.sk",
+        "https://www.stipendia.sk/_custom/img/logo_NS-SK.png",
+        "https://www.stipendia.sk/sk/main/podmienky-pre-predkladanie-ziadosti"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.stipendia.sk/favicon.ico",
+          "reason": "favicon (declared via <link rel=\"shortcut icon\">)"
+        },
+        {
+          "url": "https://www.stipendia.sk/_user/images/SAIA/MSVVS-logo/logo MSVVaM - SK.jpg",
+          "reason": "wrong identity - logo of the Ministry of Education, Research, Development and Youth of the Slovak Republic, which funds the programme; it is not the scholarship's own brand mark"
+        },
+        {
+          "url": "https://www.stipendia.sk/_custom/img/logo_SAIA_wh.png",
+          "reason": "wrong identity - logo of SAIA, the administering agency, not the scholarship programme"
+        },
+        {
+          "url": "https://www.stipendia.sk/_user/images/Euraxess/logo_Euraxess.png",
+          "reason": "third-party - Euraxess partner logo shown under 'Spolupracujeme s:'"
+        },
+        {
+          "url": "https://www.stipendia.sk/assets/components/phpthumbof/cache/6.10.2026banner-webtitulka-fb.e5cc5c923b07587bfafd56fbfaaea869.png",
+          "reason": "decorative hero art - homepage slideshow banner"
+        },
+        {
+          "url": "https://www.stipendia.sk/assets/components/phpthumbof/cache/skusenostistipendistov.2065b5dcbfdf18a1e66b652b9f222a0d.png",
+          "reason": "decorative hero art - homepage slideshow banner"
+        },
+        {
+          "url": "https://www.stipendia.sk/assets/components/phpthumbof/cache/NSP_infografika_2025_SK_5.5.2026.574e7c609b3ef31947d02f7ffdd4ea66.png",
+          "reason": "decorative hero art - homepage slideshow infographic banner, not a logo"
+        },
+        {
+          "url": "https://www.stipendia.sk/assets/components/phpthumbof/cache/Illia2_1.32362dabc68c92dba22f68ef1e4f0a56.jpg",
+          "reason": "decorative hero art - photograph of a scholarship holder in the homepage slideshow"
+        },
+        {
+          "url": "https://www.stipendia.sk/assets/components/phpthumbof/cache/Zorica2_1.123ca56baf41b524f2c024be234132f3.jpg",
+          "reason": "decorative hero art - photograph of a scholarship holder in the homepage slideshow"
+        }
+      ]
+    }
+  ]
+}

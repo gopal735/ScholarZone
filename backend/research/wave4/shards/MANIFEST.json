@@ -1,0 +1,1942 @@
+{
+  "deadline_shards": 60,
+  "logo_shards": 40,
+  "deadline_records": 464,
+  "logo_records": 194,
+  "shards": {
+    "deadline": [
+      {
+        "shard_id": "DL-001",
+        "path": "backend/research/wave4/shards/DL-001.json",
+        "hosts": [
+          "study.gov.pl"
+        ],
+        "record_ids": [
+          291,
+          411,
+          412,
+          413,
+          414,
+          420,
+          422,
+          423,
+          424,
+          425,
+          426,
+          427
+        ]
+      },
+      {
+        "shard_id": "DL-002",
+        "path": "backend/research/wave4/shards/DL-002.json",
+        "hosts": [
+          "nawa.gov.pl",
+          "www.royalsociety.org.nz"
+        ],
+        "record_ids": [
+          289,
+          290,
+          401,
+          415,
+          416,
+          417,
+          418,
+          421
+        ]
+      },
+      {
+        "shard_id": "DL-003",
+        "path": "backend/research/wave4/shards/DL-003.json",
+        "hosts": [
+          "www.fes.de",
+          "www.ntu.edu.sg",
+          "www.sbfi.admin.ch"
+        ],
+        "record_ids": [
+          106,
+          107,
+          440,
+          441,
+          450,
+          502,
+          531,
+          565
+        ]
+      },
+      {
+        "shard_id": "DL-004",
+        "path": "backend/research/wave4/shards/DL-004.json",
+        "hosts": [
+          "www.flinders.edu.au",
+          "www.otago.ac.nz",
+          "www.sciencespo.fr"
+        ],
+        "record_ids": [
+          203,
+          257,
+          258,
+          259,
+          355,
+          408,
+          409,
+          410
+        ]
+      },
+      {
+        "shard_id": "DL-005",
+        "path": "backend/research/wave4/shards/DL-005.json",
+        "hosts": [
+          "erasmus-plus.ec.europa.eu",
+          "study-uk.britishcouncil.org",
+          "www.fulbright.ca",
+          "www.sdu.dk"
+        ],
+        "record_ids": [
+          1,
+          17,
+          78,
+          273,
+          293,
+          298,
+          300,
+          695
+        ]
+      },
+      {
+        "shard_id": "DL-006",
+        "path": "backend/research/wave4/shards/DL-006.json",
+        "hosts": [
+          "study.fsv.cuni.cz",
+          "www.gatescambridge.org",
+          "www.sgs.utoronto.ca",
+          "www.studyinjapan.go.jp"
+        ],
+        "record_ids": [
+          5,
+          68,
+          239,
+          307,
+          325,
+          373,
+          374,
+          375
+        ]
+      },
+      {
+        "shard_id": "DL-007",
+        "path": "backend/research/wave4/shards/DL-007.json",
+        "hosts": [
+          "comstech.org",
+          "ensie.nankai.edu.cn",
+          "studyindenmark.dk",
+          "www.getfund.gov.gh",
+          "www.simmons.edu"
+        ],
+        "record_ids": [
+          124,
+          246,
+          268,
+          668,
+          669,
+          670,
+          672,
+          718
+        ]
+      },
+      {
+        "shard_id": "DL-008",
+        "path": "backend/research/wave4/shards/DL-008.json",
+        "hosts": [
+          "exchanges.state.gov",
+          "studyinitaly.esteri.it",
+          "www.a-star.edu.sg",
+          "www.gov.br",
+          "www.student.universiteitleiden.nl"
+        ],
+        "record_ids": [
+          35,
+          119,
+          372,
+          385,
+          436,
+          437,
+          438,
+          603
+        ]
+      },
+      {
+        "shard_id": "DL-009",
+        "path": "backend/research/wave4/shards/DL-009.json",
+        "hosts": [
+          "finaid.itb.ac.id",
+          "studyinlatvia.lv",
+          "www.bi.no",
+          "www.griffith.edu.au",
+          "www.studyinbelgium.be"
+        ],
+        "record_ids": [
+          274,
+          275,
+          276,
+          277,
+          284,
+          585,
+          613,
+          708
+        ]
+      },
+      {
+        "shard_id": "DL-010",
+        "path": "backend/research/wave4/shards/DL-010.json",
+        "hosts": [
+          "finaid.yale.edu",
+          "stypendia.uj.edu.pl",
+          "www.eur.nl",
+          "www.grips.ac.jp",
+          "www.studyinindia.gov.in"
+        ],
+        "record_ids": [
+          11,
+          175,
+          292,
+          383,
+          384,
+          397,
+          481,
+          515
+        ]
+      },
+      {
+        "shard_id": "DL-011",
+        "path": "backend/research/wave4/shards/DL-011.json",
+        "hosts": [
+          "frq.gouv.qc.ca",
+          "tertiaryeducation.govmu.org",
+          "www.hanken.fi",
+          "www.hec.gov.pk",
+          "www.su.se"
+        ],
+        "record_ids": [
+          187,
+          309,
+          342,
+          606,
+          684,
+          704,
+          705,
+          706
+        ]
+      },
+      {
+        "shard_id": "DL-012",
+        "path": "backend/research/wave4/shards/DL-012.json",
+        "hosts": [
+          "futurestudents.yorku.ca",
+          "tigp.sinica.edu.tw",
+          "www.hec.gov.rw",
+          "www.jasso.go.jp",
+          "www.sydney.edu.au"
+        ],
+        "record_ids": [
+          12,
+          25,
+          49,
+          89,
+          146,
+          240,
+          376,
+          674
+        ]
+      },
+      {
+        "shard_id": "DL-013",
+        "path": "backend/research/wave4/shards/DL-013.json",
+        "hosts": [
+          "gocfs.ntu.edu.tw",
+          "twas.org",
+          "www.humboldt-foundation.de",
+          "www.mext.go.jp",
+          "www.tudelft.nl"
+        ],
+        "record_ids": [
+          24,
+          114,
+          147,
+          236,
+          237,
+          238,
+          386,
+          514
+        ]
+      },
+      {
+        "shard_id": "DL-014",
+        "path": "backend/research/wave4/shards/DL-014.json",
+        "hosts": [
+          "graduate.yonsei.ac.kr",
+          "uic.yonsei.ac.kr",
+          "www.humphreyfellowship.org",
+          "www.studyinnl.org",
+          "www.ucd.ie"
+        ],
+        "record_ids": [
+          31,
+          53,
+          172,
+          213,
+          214,
+          250,
+          381,
+          396
+        ]
+      },
+      {
+        "shard_id": "DL-015",
+        "path": "backend/research/wave4/shards/DL-015.json",
+        "hosts": [
+          "hea.ie",
+          "uncf.org",
+          "www.huygens.knaw.nl",
+          "www.uchicago.edu",
+          "www2.daad.de"
+        ],
+        "record_ids": [
+          23,
+          230,
+          231,
+          248,
+          389,
+          484,
+          546,
+          633
+        ]
+      },
+      {
+        "shard_id": "DL-016",
+        "path": "backend/research/wave4/shards/DL-016.json",
+        "hosts": [
+          "admissions.smu.edu.sg",
+          "ares-ac.be",
+          "horatioalger.org",
+          "unhcr-dafi-tertiary.scholarshipsplatform.com",
+          "www.icar.gov.in",
+          "www.uef.fi"
+        ],
+        "record_ids": [
+          108,
+          115,
+          338,
+          442,
+          443,
+          523,
+          571,
+          591
+        ]
+      },
+      {
+        "shard_id": "DL-017",
+        "path": "backend/research/wave4/shards/DL-017.json",
+        "hosts": [
+          "asian-university.org",
+          "english.ucas.ac.cn",
+          "iczu.zju.edu.cn",
+          "universityofgalway.ie",
+          "www.ie.edu",
+          "www.ugc.gov.in"
+        ],
+        "record_ids": [
+          98,
+          113,
+          245,
+          313,
+          314,
+          365,
+          608,
+          650
+        ]
+      },
+      {
+        "shard_id": "DL-018",
+        "path": "backend/research/wave4/shards/DL-018.json",
+        "hosts": [
+          "au.int",
+          "id.china-embassy.gov.cn",
+          "iso.fudan.edu.cn",
+          "uwaterloo.ca",
+          "www.ilsc.com",
+          "www.ugent.be"
+        ],
+        "record_ids": [
+          90,
+          283,
+          319,
+          320,
+          321,
+          323,
+          620,
+          712
+        ]
+      },
+      {
+        "shard_id": "DL-019",
+        "path": "backend/research/wave4/shards/DL-019.json",
+        "hosts": [
+          "aurorafoundation.com.au",
+          "international.au.dk",
+          "nusgs.nus.edu.sg",
+          "web.ub.edu",
+          "www.imd.org",
+          "www.uhr.no"
+        ],
+        "record_ids": [
+          100,
+          102,
+          103,
+          104,
+          159,
+          279,
+          330,
+          661
+        ]
+      },
+      {
+        "shard_id": "DL-020",
+        "path": "backend/research/wave4/shards/DL-020.json",
+        "hosts": [
+          "bandi.unibo.it",
+          "international.colostate.edu",
+          "study.anu.edu.au",
+          "wellcome.org",
+          "www.immigration.govt.nz",
+          "www.ulisboa.pt"
+        ],
+        "record_ids": [
+          50,
+          134,
+          196,
+          304,
+          513,
+          562,
+          614,
+          636
+        ]
+      },
+      {
+        "shard_id": "DL-021",
+        "path": "backend/research/wave4/shards/DL-021.json",
+        "hosts": [
+          "bd.china-embassy.gov.cn",
+          "international.cvut.cz",
+          "workforce.education.govt.nz",
+          "www.dfat.gov.au",
+          "www.in.emb-japan.go.jp",
+          "www.umu.se"
+        ],
+        "record_ids": [
+          30,
+          43,
+          44,
+          189,
+          322,
+          328,
+          360,
+          404
+        ]
+      },
+      {
+        "shard_id": "DL-022",
+        "path": "backend/research/wave4/shards/DL-022.json",
+        "hosts": [
+          "bolashak.gov.kz",
+          "international.kiit.ac.in",
+          "www.aalto.fi",
+          "www.fwf.ac.at",
+          "www.inde.campusfrance.org",
+          "www.uni-graz.at"
+        ],
+        "record_ids": [
+          8,
+          118,
+          164,
+          223,
+          224,
+          225,
+          335,
+          646
+        ]
+      },
+      {
+        "shard_id": "DL-023",
+        "path": "backend/research/wave4/shards/DL-023.json",
+        "hosts": [
+          "bond.edu.au",
+          "ir.iith.ac.in",
+          "www.aauw.org",
+          "www.insaindia.res.in",
+          "www.massey.ac.nz",
+          "www.unibas.ch"
+        ],
+        "record_ids": [
+          112,
+          117,
+          160,
+          473,
+          615,
+          658,
+          659,
+          664
+        ]
+      },
+      {
+        "shard_id": "DL-024",
+        "path": "backend/research/wave4/shards/DL-024.json",
+        "hosts": [
+          "bs.china-embassy.gov.cn",
+          "isd.pku.edu.cn",
+          "www.abo.fi",
+          "www.insead.edu",
+          "www.nokiafoundation.com",
+          "www.unibo.it"
+        ],
+        "record_ids": [
+          94,
+          315,
+          324,
+          340,
+          343,
+          344,
+          345,
+          371
+        ]
+      },
+      {
+        "shard_id": "DL-025",
+        "path": "backend/research/wave4/shards/DL-025.json",
+        "hosts": [
+          "bse.eu",
+          "iucea.org",
+          "www.aciar.gov.au",
+          "www.instituto-camoes.pt",
+          "www.sutd.edu.sg",
+          "www.unibocconi.it"
+        ],
+        "record_ids": [
+          97,
+          109,
+          139,
+          303,
+          446,
+          447,
+          611,
+          671
+        ]
+      },
+      {
+        "shard_id": "DL-026",
+        "path": "backend/research/wave4/shards/DL-026.json",
+        "hosts": [
+          "careers.univie.ac.at",
+          "liu.se",
+          "www.acu.edu.au",
+          "www.international.vluhr.be",
+          "www.unige.ch",
+          "yz.tsinghua.edu.cn"
+        ],
+        "record_ids": [
+          152,
+          188,
+          227,
+          244,
+          280,
+          317,
+          318,
+          665
+        ]
+      },
+      {
+        "shard_id": "DL-027",
+        "path": "backend/research/wave4/shards/DL-027.json",
+        "hosts": [
+          "a2ascholarships.iccr.gov.in",
+          "marie-sklodowska-curie-actions.ec.europa.eu",
+          "www.adb.org",
+          "www.ip-paris.fr",
+          "www.rotary.org",
+          "www.uniroma1.it"
+        ],
+        "record_ids": [
+          16,
+          95,
+          110,
+          111,
+          131,
+          369,
+          474,
+          656
+        ]
+      },
+      {
+        "shard_id": "DL-028",
+        "path": "backend/research/wave4/shards/DL-028.json",
+        "hosts": [
+          "admission.kaist.ac.kr",
+          "mastercardfdn.org",
+          "www.aecid.es",
+          "www.ireland.ie",
+          "www.rug.nl",
+          "www.unitn.it"
+        ],
+        "record_ids": [
+          41,
+          137,
+          177,
+          211,
+          212,
+          363,
+          392,
+          541
+        ]
+      },
+      {
+        "shard_id": "DL-029",
+        "path": "backend/research/wave4/shards/DL-029.json",
+        "hosts": [
+          "careers.cern",
+          "masters.au.dk",
+          "www.afdb.org",
+          "www.janelia.org",
+          "www.snf.ch",
+          "www.universitiesnz.ac.nz"
+        ],
+        "record_ids": [
+          157,
+          158,
+          272,
+          402,
+          460,
+          462,
+          520,
+          634
+        ]
+      },
+      {
+        "shard_id": "DL-030",
+        "path": "backend/research/wave4/shards/DL-030.json",
+        "hosts": [
+          "college.harvard.edu",
+          "mccallmacbainscholars.org",
+          "www.anrfonline.in",
+          "www.jku.at",
+          "www.studienfinanzierung.uzh.ch",
+          "www.universityofgalway.ie"
+        ],
+        "record_ids": [
+          83,
+          125,
+          166,
+          361,
+          364,
+          463,
+          466,
+          480
+        ]
+      },
+      {
+        "shard_id": "DL-031",
+        "path": "backend/research/wave4/shards/DL-031.json",
+        "hosts": [
+          "en.snu.ac.kr",
+          "moe.gov.sg",
+          "www.apu.edu.my",
+          "www.kdischool.ac.kr",
+          "www.studyinfinland.fi",
+          "www.up.pt"
+        ],
+        "record_ids": [
+          208,
+          209,
+          262,
+          302,
+          341,
+          489,
+          609,
+          648
+        ]
+      },
+      {
+        "shard_id": "DL-032",
+        "path": "backend/research/wave4/shards/DL-032.json",
+        "hosts": [
+          "english.moe.gov.tw",
+          "movetia.ch",
+          "www.arabfund.org",
+          "www.koica.go.kr",
+          "www.studyinkorea.go.kr",
+          "www.uu.nl"
+        ],
+        "record_ids": [
+          4,
+          145,
+          178,
+          215,
+          467,
+          516,
+          567,
+          667
+        ]
+      },
+      {
+        "shard_id": "DL-033",
+        "path": "backend/research/wave4/shards/DL-033.json",
+        "hosts": [
+          "foreign.fulbrightonline.org",
+          "msmt.gov.cz",
+          "www.ares-ac.be",
+          "www.kth.se",
+          "www.suss.edu.sg",
+          "www.uu.se"
+        ],
+        "record_ids": [
+          27,
+          40,
+          184,
+          294,
+          448,
+          449,
+          452,
+          469
+        ]
+      },
+      {
+        "shard_id": "DL-034",
+        "path": "backend/research/wave4/shards/DL-034.json",
+        "hosts": [
+          "grants.oead.at",
+          "newhorizonsforwomen.org.nz",
+          "www.banrep.gov.co",
+          "www.ku.dk",
+          "www.tcd.ie",
+          "www.uwa.edu.au"
+        ],
+        "record_ids": [
+          37,
+          51,
+          167,
+          251,
+          252,
+          271,
+          598,
+          710
+        ]
+      },
+      {
+        "shard_id": "DL-035",
+        "path": "backend/research/wave4/shards/DL-035.json",
+        "hosts": [
+          "icssr.org",
+          "nias.knaw.nl",
+          "www.bc.edu",
+          "www.kuleuven.be",
+          "www.temasek.com.sg",
+          "www.vlaanderen.be"
+        ],
+        "record_ids": [
+          123,
+          282,
+          391,
+          444,
+          445,
+          508,
+          517,
+          518
+        ]
+      },
+      {
+        "shard_id": "DL-036",
+        "path": "backend/research/wave4/shards/DL-036.json",
+        "hosts": [
+          "investyourtalentapplication.esteri.it",
+          "nu.edu.kz",
+          "www.bme.hu",
+          "www.lse.ac.uk",
+          "www.tuni.fi",
+          "www.wa.gov.au"
+        ],
+        "record_ids": [
+          74,
+          133,
+          206,
+          265,
+          288,
+          336,
+          570,
+          682
+        ]
+      },
+      {
+        "shard_id": "DL-037",
+        "path": "backend/research/wave4/shards/DL-037.json",
+        "hosts": [
+          "nus.edu.sg",
+          "scholarship.ptdf.gov.ng",
+          "www.brandeis.edu",
+          "www.lut.fi",
+          "www.turkiyeburslari.gov.tr",
+          "www.waikato.ac.nz"
+        ],
+        "record_ids": [
+          58,
+          105,
+          267,
+          407,
+          621,
+          623,
+          673,
+          692
+        ]
+      },
+      {
+        "shard_id": "DL-038",
+        "path": "backend/research/wave4/shards/DL-038.json",
+        "hosts": [
+          "oia-scholarship.nycu.edu.tw",
+          "scholarships.gov.gh",
+          "www.cambridgetrust.org",
+          "www.manchester.ac.uk",
+          "www.tuwien.at",
+          "www.webster.ac.at"
+        ],
+        "record_ids": [
+          69,
+          76,
+          150,
+          163,
+          170,
+          222,
+          618,
+          713
+        ]
+      },
+      {
+        "shard_id": "DL-039",
+        "path": "backend/research/wave4/shards/DL-039.json",
+        "hosts": [
+          "oia.ncku.edu.tw",
+          "scholarships.unimelb.edu.au",
+          "www.campuschina.org",
+          "www.master-europeanforestry.eu",
+          "www.ucl.ac.uk",
+          "www.wipo.int"
+        ],
+        "record_ids": [
+          33,
+          47,
+          71,
+          72,
+          151,
+          161,
+          195,
+          348
+        ]
+      },
+      {
+        "shard_id": "DL-040",
+        "path": "backend/research/wave4/shards/DL-040.json",
+        "hosts": [
+          "oia.ntu.edu.tw",
+          "si.se",
+          "www.cbs.dk",
+          "www.mau.se",
+          "www.uibk.ac.at",
+          "www.youarewelcomehereusa.org"
+        ],
+        "record_ids": [
+          32,
+          132,
+          148,
+          165,
+          191,
+          219,
+          270,
+          455
+        ]
+      },
+      {
+        "shard_id": "DL-041",
+        "path": "backend/research/wave4/shards/DL-041.json",
+        "hosts": [
+          "oia.nycu.edu.tw",
+          "tsls.com.fj",
+          "www.ceu.edu",
+          "www.mbie.govt.nz",
+          "www.unipd.it"
+        ],
+        "record_ids": [
+          136,
+          169,
+          370,
+          400,
+          468,
+          720,
+          723
+        ]
+      },
+      {
+        "shard_id": "DL-042",
+        "path": "backend/research/wave4/shards/DL-042.json",
+        "hosts": [
+          "ousf.duke.edu",
+          "www.auckland.ac.nz",
+          "www.clinical-linguistics.eu",
+          "www.modul.ac.at",
+          "www.unisg.ch"
+        ],
+        "record_ids": [
+          122,
+          154,
+          155,
+          171,
+          349,
+          405,
+          406
+        ]
+      },
+      {
+        "shard_id": "DL-043",
+        "path": "backend/research/wave4/shards/DL-043.json",
+        "hosts": [
+          "outgoing.sbfi.admin.ch",
+          "www.campusfrance.org",
+          "www.cranfield.ac.uk",
+          "www.moe.gov.sg",
+          "www.unito.it"
+        ],
+        "record_ids": [
+          9,
+          19,
+          77,
+          140,
+          141,
+          435,
+          566
+        ]
+      },
+      {
+        "shard_id": "DL-044",
+        "path": "backend/research/wave4/shards/DL-044.json",
+        "hosts": [
+          "perimeterinstitute.ca",
+          "www.clarku.edu",
+          "www.cshl.edu",
+          "www.mofa.gov.ae",
+          "www.usp.ac.fj"
+        ],
+        "record_ids": [
+          61,
+          560,
+          569,
+          593,
+          697,
+          719,
+          722
+        ]
+      },
+      {
+        "shard_id": "DL-045",
+        "path": "backend/research/wave4/shards/DL-045.json",
+        "hosts": [
+          "portal.gov.gy",
+          "www.daad-bangladesh.org",
+          "www.deakin.edu.au",
+          "www.monash.edu",
+          "www.utu.fi"
+        ],
+        "record_ids": [
+          52,
+          198,
+          199,
+          228,
+          266,
+          339,
+          716
+        ]
+      },
+      {
+        "shard_id": "DL-046",
+        "path": "backend/research/wave4/shards/DL-046.json",
+        "hosts": [
+          "research.google",
+          "www.daad.de",
+          "www.deutschlandstipendium.de",
+          "www.mpp.govt.nz",
+          "www.uva.nl"
+        ],
+        "record_ids": [
+          3,
+          10,
+          173,
+          398,
+          486,
+          501,
+          721
+        ]
+      },
+      {
+        "shard_id": "DL-047",
+        "path": "backend/research/wave4/shards/DL-047.json",
+        "hosts": [
+          "royalsociety.org",
+          "www.dcu.ie",
+          "www.dtu.dk",
+          "www.mq.edu.au",
+          "www.wgtn.ac.nz"
+        ],
+        "record_ids": [
+          204,
+          260,
+          261,
+          269,
+          331,
+          366,
+          368
+        ]
+      },
+      {
+        "shard_id": "DL-048",
+        "path": "backend/research/wave4/shards/DL-048.json",
+        "hosts": [
+          "aai-salzburg.at",
+          "cemm.at",
+          "scholarship.turkiye.gov.tr",
+          "www.eacea.ec.europa.eu",
+          "www.ean.org",
+          "www.newcastle.edu.au"
+        ],
+        "record_ids": [
+          168,
+          192,
+          218,
+          221,
+          568,
+          627,
+          686
+        ]
+      },
+      {
+        "shard_id": "DL-049",
+        "path": "backend/research/wave4/shards/DL-049.json",
+        "hosts": [
+          "adelaide.edu.au",
+          "cis.chinese.cn",
+          "scholarships.online.unsw.edu.au",
+          "www.eastwestcenter.org",
+          "www.educanada.ca",
+          "www.niied.go.kr"
+        ],
+        "record_ids": [
+          26,
+          81,
+          193,
+          205,
+          247,
+          311,
+          472
+        ]
+      },
+      {
+        "shard_id": "DL-050",
+        "path": "backend/research/wave4/shards/DL-050.json",
+        "hosts": [
+          "admission.princeton.edu",
+          "cuni.cz",
+          "scholarships.uq.edu.au",
+          "www.ed.ac.uk",
+          "www.education.gov.au",
+          "www.novasbe.unl.pt"
+        ],
+        "record_ids": [
+          45,
+          46,
+          79,
+          127,
+          194,
+          295,
+          301
+        ]
+      },
+      {
+        "shard_id": "DL-051",
+        "path": "backend/research/wave4/shards/DL-051.json",
+        "hosts": [
+          "admissions.dartmouth.edu",
+          "czs.muni.cz",
+          "secihti.mx",
+          "www.edu.gov.az",
+          "www.education.govt.nz",
+          "www.ntnu.edu"
+        ],
+        "record_ids": [
+          129,
+          278,
+          297,
+          399,
+          403,
+          688,
+          715
+        ]
+      },
+      {
+        "shard_id": "DL-052",
+        "path": "backend/research/wave4/shards/DL-052.json",
+        "hosts": [
+          "admissions.msu.edu",
+          "easl.eu",
+          "sfs.mit.edu",
+          "www.edutwscholarship.moe.gov.tw",
+          "www.epfl.ch",
+          "www.nwo.nl"
+        ],
+        "record_ids": [
+          15,
+          34,
+          63,
+          388,
+          459,
+          482,
+          578
+        ]
+      },
+      {
+        "shard_id": "DL-053",
+        "path": "backend/research/wave4/shards/DL-053.json",
+        "hosts": [
+          "admissions.yale.edu",
+          "education.gov.bb",
+          "sgs.upm.edu.my",
+          "www.embo.org",
+          "www.gla.ac.uk",
+          "www.nzscholarships.govt.nz"
+        ],
+        "record_ids": [
+          126,
+          254,
+          525,
+          576,
+          582,
+          647,
+          693
+        ]
+      },
+      {
+        "shard_id": "DL-054",
+        "path": "backend/research/wave4/shards/DL-054.json",
+        "hosts": [
+          "aefe.gouv.fr",
+          "education.ki.se",
+          "sis.gov.eg",
+          "www.en.aau.dk",
+          "www.helsinki.fi",
+          "www.oulu.fi"
+        ],
+        "record_ids": [
+          20,
+          332,
+          333,
+          334,
+          337,
+          453,
+          675
+        ]
+      },
+      {
+        "shard_id": "DL-055",
+        "path": "backend/research/wave4/shards/DL-055.json",
+        "hosts": [
+          "aims.ac.za",
+          "educationusa.state.gov",
+          "sl.china-embassy.gov.cn",
+          "www.ens-lyon.fr",
+          "www.kyushu-u.ac.jp",
+          "www.possefoundation.org"
+        ],
+        "record_ids": [
+          96,
+          241,
+          243,
+          488,
+          522,
+          573,
+          698
+        ]
+      },
+      {
+        "shard_id": "DL-056",
+        "path": "backend/research/wave4/shards/DL-056.json",
+        "hosts": [
+          "akf.org",
+          "ee.china-embassy.gov.cn",
+          "sshrc-crsh.canada.ca",
+          "www.esade.edu",
+          "www.lunduniversity.lu.se",
+          "www.prosveta.gov.rs"
+        ],
+        "record_ids": [
+          99,
+          130,
+          183,
+          242,
+          310,
+          456,
+          622
+        ]
+      },
+      {
+        "shard_id": "DL-057",
+        "path": "backend/research/wave4/shards/DL-057.json",
+        "hosts": [
+          "albertainnovates.ca",
+          "ejust.edu.eg",
+          "stipendiumhungaricum.hu",
+          "www.escardio.org",
+          "www.mfa.gov.bn",
+          "www.qu.edu.qa"
+        ],
+        "record_ids": [
+          285,
+          499,
+          580,
+          678,
+          680,
+          681,
+          683
+        ]
+      },
+      {
+        "shard_id": "DL-058",
+        "path": "backend/research/wave4/shards/DL-058.json",
+        "hosts": [
+          "appels-propositions.auf.org",
+          "en.mofa.gov.tw",
+          "studentaid.alberta.ca",
+          "www.esteri.it",
+          "www.ox.ac.uk",
+          "www.qut.edu.au"
+        ],
+        "record_ids": [
+          36,
+          65,
+          66,
+          144,
+          201,
+          308,
+          679
+        ]
+      },
+      {
+        "shard_id": "DL-059",
+        "path": "backend/research/wave4/shards/DL-059.json",
+        "hosts": [
+          "apply.nthu.edu.tw",
+          "en.tka.hu",
+          "studieren.univie.ac.at",
+          "www.faae.org.co",
+          "www.postf.org",
+          "www.rhodeshouse.ox.ac.uk"
+        ],
+        "record_ids": [
+          13,
+          80,
+          149,
+          162,
+          356,
+          553,
+          600
+        ]
+      },
+      {
+        "shard_id": "DL-060",
+        "path": "backend/research/wave4/shards/DL-060.json",
+        "hosts": [
+          "apply.ruffordsmallgrants.org",
+          "en.unimib.it",
+          "studies.ku.dk",
+          "www.fct.pt",
+          "www.researchireland.ie",
+          "www.rmit.edu.au"
+        ],
+        "record_ids": [
+          138,
+          202,
+          299,
+          329,
+          362,
+          367,
+          536
+        ]
+      }
+    ],
+    "logo": [
+      {
+        "shard_id": "LG-001",
+        "path": "backend/research/wave4/shards/LG-001.json",
+        "hosts": [
+          "www.a-star.edu.sg"
+        ],
+        "record_ids": [
+          35,
+          101,
+          437,
+          438,
+          530
+        ]
+      },
+      {
+        "shard_id": "LG-002",
+        "path": "backend/research/wave4/shards/LG-002.json",
+        "hosts": [
+          "anr.fr",
+          "www.ilsc.com"
+        ],
+        "record_ids": [
+          503,
+          504,
+          505,
+          548,
+          712
+        ]
+      },
+      {
+        "shard_id": "LG-003",
+        "path": "backend/research/wave4/shards/LG-003.json",
+        "hosts": [
+          "www.hec.gov.pk",
+          "www.in.emb-japan.go.jp"
+        ],
+        "record_ids": [
+          360,
+          606,
+          704,
+          705,
+          706
+        ]
+      },
+      {
+        "shard_id": "LG-004",
+        "path": "backend/research/wave4/shards/LG-004.json",
+        "hosts": [
+          "iso.fudan.edu.cn",
+          "sgs.upm.edu.my",
+          "www.insaindia.res.in"
+        ],
+        "record_ids": [
+          112,
+          319,
+          320,
+          321,
+          647
+        ]
+      },
+      {
+        "shard_id": "LG-005",
+        "path": "backend/research/wave4/shards/LG-005.json",
+        "hosts": [
+          "scholarships.gov.gh",
+          "sikap.ched.gov.ph",
+          "www.institut-pascal.universite-paris-saclay.fr"
+        ],
+        "record_ids": [
+          550,
+          618,
+          644,
+          713,
+          714
+        ]
+      },
+      {
+        "shard_id": "LG-006",
+        "path": "backend/research/wave4/shards/LG-006.json",
+        "hosts": [
+          "sis.gov.eg",
+          "www.auckland.ac.nz",
+          "www.ip-paris.fr"
+        ],
+        "record_ids": [
+          95,
+          255,
+          405,
+          406,
+          675
+        ]
+      },
+      {
+        "shard_id": "LG-007",
+        "path": "backend/research/wave4/shards/LG-007.json",
+        "hosts": [
+          "southafrica-france-scholarships.com",
+          "www.kth.se",
+          "www.nokiafoundation.com"
+        ],
+        "record_ids": [
+          343,
+          344,
+          345,
+          352,
+          457
+        ]
+      },
+      {
+        "shard_id": "LG-008",
+        "path": "backend/research/wave4/shards/LG-008.json",
+        "hosts": [
+          "studies.ku.dk",
+          "www.leeds.ac.uk",
+          "yz.tsinghua.edu.cn"
+        ],
+        "record_ids": [
+          244,
+          317,
+          318,
+          329,
+          574
+        ]
+      },
+      {
+        "shard_id": "LG-009",
+        "path": "backend/research/wave4/shards/LG-009.json",
+        "hosts": [
+          "bse.eu",
+          "careers.cern",
+          "study-uk.britishcouncil.org",
+          "www.lut.fi"
+        ],
+        "record_ids": [
+          78,
+          97,
+          157,
+          158,
+          267
+        ]
+      },
+      {
+        "shard_id": "LG-010",
+        "path": "backend/research/wave4/shards/LG-010.json",
+        "hosts": [
+          "cis.chinese.cn",
+          "college.harvard.edu",
+          "study.fsv.cuni.cz",
+          "www.marihe.eu"
+        ],
+        "record_ids": [
+          125,
+          247,
+          325,
+          346,
+          480
+        ]
+      },
+      {
+        "shard_id": "LG-011",
+        "path": "backend/research/wave4/shards/LG-011.json",
+        "hosts": [
+          "convocatorias.conicet.gov.ar",
+          "cuni.cz",
+          "studyindenmark.dk",
+          "www.master-bioceb.eu"
+        ],
+        "record_ids": [
+          268,
+          295,
+          326,
+          350,
+          601
+        ]
+      },
+      {
+        "shard_id": "LG-012",
+        "path": "backend/research/wave4/shards/LG-012.json",
+        "hosts": [
+          "czs.muni.cz",
+          "formeditais.campusvirtual.fiocruz.br",
+          "studyinlatvia.lv",
+          "www.master-ediss.eu"
+        ],
+        "record_ids": [
+          297,
+          347,
+          585,
+          595,
+          637
+        ]
+      },
+      {
+        "shard_id": "LG-013",
+        "path": "backend/research/wave4/shards/LG-013.json",
+        "hosts": [
+          "easl.eu",
+          "icssr.org",
+          "studyinsaudi.sa",
+          "www.master-europeanforestry.eu"
+        ],
+        "record_ids": [
+          348,
+          517,
+          518,
+          578,
+          619
+        ]
+      },
+      {
+        "shard_id": "LG-014",
+        "path": "backend/research/wave4/shards/LG-014.json",
+        "hosts": [
+          "ejust.edu.eg",
+          "posgrado.pucp.edu.pe",
+          "uchile.cl",
+          "www.moe.gov.sa"
+        ],
+        "record_ids": [
+          599,
+          604,
+          617,
+          640,
+          678
+        ]
+      },
+      {
+        "shard_id": "LG-015",
+        "path": "backend/research/wave4/shards/LG-015.json",
+        "hosts": [
+          "ensie.nankai.edu.cn",
+          "scholarship.ptdf.gov.ng",
+          "web.icetex.gov.co",
+          "www.mofa.gov.ae"
+        ],
+        "record_ids": [
+          246,
+          560,
+          605,
+          623,
+          673
+        ]
+      },
+      {
+        "shard_id": "LG-016",
+        "path": "backend/research/wave4/shards/LG-016.json",
+        "hosts": [
+          "fgs.science-scholarships.ph",
+          "secihti.mx",
+          "wellcome.org",
+          "www.niied.go.kr"
+        ],
+        "record_ids": [
+          26,
+          562,
+          688,
+          689,
+          690
+        ]
+      },
+      {
+        "shard_id": "LG-017",
+        "path": "backend/research/wave4/shards/LG-017.json",
+        "hosts": [
+          "finaid.itb.ac.id",
+          "tsls.com.fj",
+          "whitleyaward.org",
+          "www.pasteur.fr"
+        ],
+        "record_ids": [
+          353,
+          537,
+          708,
+          720,
+          723
+        ]
+      },
+      {
+        "shard_id": "LG-018",
+        "path": "backend/research/wave4/shards/LG-018.json",
+        "hosts": [
+          "frq.gouv.qc.ca",
+          "uncf.org",
+          "www.anrfonline.in",
+          "www.pronabec.gob.pe"
+        ],
+        "record_ids": [
+          309,
+          361,
+          597,
+          632,
+          633
+        ]
+      },
+      {
+        "shard_id": "LG-019",
+        "path": "backend/research/wave4/shards/LG-019.json",
+        "hosts": [
+          "future.utoronto.ca",
+          "www.apu.edu.my",
+          "www.comexus.org.mx",
+          "www.prosveta.gov.rs"
+        ],
+        "record_ids": [
+          39,
+          622,
+          648,
+          687,
+          696
+        ]
+      },
+      {
+        "shard_id": "LG-020",
+        "path": "backend/research/wave4/shards/LG-020.json",
+        "hosts": [
+          "gulbenkian.pt",
+          "www.arabfund.org",
+          "www.dtu.dk",
+          "www.qu.edu.qa"
+        ],
+        "record_ids": [
+          269,
+          331,
+          628,
+          667,
+          680
+        ]
+      },
+      {
+        "shard_id": "LG-021",
+        "path": "backend/research/wave4/shards/LG-021.json",
+        "hosts": [
+          "horatioalger.org",
+          "www.ares-ac.be",
+          "www.ean.org",
+          "www.rotary-yoneyama.or.jp"
+        ],
+        "record_ids": [
+          40,
+          380,
+          591,
+          625,
+          627
+        ]
+      },
+      {
+        "shard_id": "LG-022",
+        "path": "backend/research/wave4/shards/LG-022.json",
+        "hosts": [
+          "iczu.zju.edu.cn",
+          "www.banrep.gov.co",
+          "www.eui.eu",
+          "www.secihti.mx"
+        ],
+        "record_ids": [
+          577,
+          581,
+          590,
+          598,
+          650
+        ]
+      },
+      {
+        "shard_id": "LG-023",
+        "path": "backend/research/wave4/shards/LG-023.json",
+        "hosts": [
+          "inlife.sorbonne-universite.fr",
+          "www.berea.edu",
+          "www.fes.de",
+          "www.sgs.utoronto.ca"
+        ],
+        "record_ids": [
+          121,
+          307,
+          354,
+          502,
+          544
+        ]
+      },
+      {
+        "shard_id": "LG-024",
+        "path": "backend/research/wave4/shards/LG-024.json",
+        "hosts": [
+          "international.join-tsinghua.edu.cn",
+          "www.brandeis.edu",
+          "www.getfund.gov.gh",
+          "www.sharjah.ac.ae"
+        ],
+        "record_ids": [
+          58,
+          316,
+          519,
+          685,
+          718
+        ]
+      },
+      {
+        "shard_id": "LG-025",
+        "path": "backend/research/wave4/shards/LG-025.json",
+        "hosts": [
+          "ira.pucp.edu.pe",
+          "www.canterbury.ac.nz",
+          "www.icdf.org.tw",
+          "www.stipendia.sk"
+        ],
+        "record_ids": [
+          511,
+          639,
+          645,
+          654,
+          717
+        ]
+      },
+      {
+        "shard_id": "LG-026",
+        "path": "backend/research/wave4/shards/LG-026.json",
+        "hosts": [
+          "isd.pku.edu.cn",
+          "www.cdu.edu.au",
+          "www.maastrichtuniversity.nl",
+          "www.tilburguniversity.edu"
+        ],
+        "record_ids": [
+          180,
+          315,
+          394,
+          512,
+          584
+        ]
+      },
+      {
+        "shard_id": "LG-027",
+        "path": "backend/research/wave4/shards/LG-027.json",
+        "hosts": [
+          "jobs.inria.fr",
+          "www.clinical-linguistics.eu",
+          "www.mfa.gov.bn",
+          "www.ulisboa.pt"
+        ],
+        "record_ids": [
+          304,
+          349,
+          549,
+          681,
+          683
+        ]
+      },
+      {
+        "shard_id": "LG-028",
+        "path": "backend/research/wave4/shards/LG-028.json",
+        "hosts": [
+          "join.hkust.edu.hk",
+          "www.conservationleadershipprogramme.org",
+          "www.sciencespo.fr",
+          "www.uni-graz.at"
+        ],
+        "record_ids": [
+          92,
+          164,
+          355,
+          535,
+          707
+        ]
+      },
+      {
+        "shard_id": "LG-029",
+        "path": "backend/research/wave4/shards/LG-029.json",
+        "hosts": [
+          "mastercardfdn.org",
+          "www.cucsh.udg.mx",
+          "www.suss.edu.sg",
+          "www.unipd.it"
+        ],
+        "record_ids": [
+          136,
+          448,
+          449,
+          541,
+          596
+        ]
+      },
+      {
+        "shard_id": "LG-030",
+        "path": "backend/research/wave4/shards/LG-030.json",
+        "hosts": [
+          "mbzuai.ac.ae",
+          "www.deutschlandstipendium.de",
+          "www.tuni.fi",
+          "www.universite-paris-saclay.fr"
+        ],
+        "record_ids": [
+          91,
+          265,
+          336,
+          501,
+          558
+        ]
+      },
+      {
+        "shard_id": "LG-031",
+        "path": "backend/research/wave4/shards/LG-031.json",
+        "hosts": [
+          "mcfsprecruitment.ur.ac.rw",
+          "www.edu.gov.az",
+          "www.turkiyeburslari.gov.tr",
+          "www.up.pt"
+        ],
+        "record_ids": [
+          302,
+          621,
+          692,
+          715,
+          725
+        ]
+      },
+      {
+        "shard_id": "LG-032",
+        "path": "backend/research/wave4/shards/LG-032.json",
+        "hosts": [
+          "mohesr.gov.iq",
+          "www.en.aau.dk",
+          "www.tuwien.at",
+          "www.uva.nl"
+        ],
+        "record_ids": [
+          163,
+          173,
+          222,
+          332,
+          676
+        ]
+      },
+      {
+        "shard_id": "LG-033",
+        "path": "backend/research/wave4/shards/LG-033.json",
+        "hosts": [
+          "msmt.gov.cz",
+          "www.eur.nl",
+          "www.usp.ac.fj",
+          "www.westminster.ac.uk"
+        ],
+        "record_ids": [
+          294,
+          384,
+          524,
+          719,
+          722
+        ]
+      },
+      {
+        "shard_id": "LG-034",
+        "path": "backend/research/wave4/shards/LG-034.json",
+        "hosts": [
+          "nu.edu.kz",
+          "www.faae.org.co",
+          "www.visegradfund.org",
+          "you.ubc.ca"
+        ],
+        "record_ids": [
+          86,
+          296,
+          327,
+          600,
+          682
+        ]
+      },
+      {
+        "shard_id": "LG-035",
+        "path": "backend/research/wave4/shards/LG-035.json",
+        "hosts": [
+          "portal.gov.gy",
+          "www.fnr.lu",
+          "www.worldbank.org"
+        ],
+        "record_ids": [
+          475,
+          507,
+          564,
+          716
+        ]
+      },
+      {
+        "shard_id": "LG-036",
+        "path": "backend/research/wave4/shards/LG-036.json",
+        "hosts": [
+          "admision.pucp.edu.pe",
+          "akf.org",
+          "research.google",
+          "www.fnu.ac.fj"
+        ],
+        "record_ids": [
+          130,
+          486,
+          641,
+          663
+        ]
+      },
+      {
+        "shard_id": "LG-037",
+        "path": "backend/research/wave4/shards/LG-037.json",
+        "hosts": [
+          "admission.tdtu.edu.vn",
+          "apply.ruffordsmallgrants.org",
+          "scholarship.turkiye.gov.tr",
+          "www.gob.mx"
+        ],
+        "record_ids": [
+          536,
+          568,
+          635,
+          653
+        ]
+      },
+      {
+        "shard_id": "LG-038",
+        "path": "backend/research/wave4/shards/LG-038.json",
+        "hosts": [
+          "admissions.kaust.edu.sa",
+          "ares-ac.be",
+          "scholarships.uq.edu.au",
+          "www.gov.br"
+        ],
+        "record_ids": [
+          194,
+          557,
+          571,
+          603
+        ]
+      },
+      {
+        "shard_id": "LG-039",
+        "path": "backend/research/wave4/shards/LG-039.json",
+        "hosts": [
+          "admissions.msu.edu",
+          "bolashak.gov.kz",
+          "schulichleaders.com",
+          "www.harno.ee"
+        ],
+        "record_ids": [
+          63,
+          312,
+          509,
+          646
+        ]
+      },
+      {
+        "shard_id": "LG-040",
+        "path": "backend/research/wave4/shards/LG-040.json",
+        "hosts": [
+          "aims.ac.za",
+          "bond.edu.au",
+          "sfs.mit.edu",
+          "www.icar.gov.in"
+        ],
+        "record_ids": [
+          115,
+          482,
+          522,
+          664
+        ]
+      }
+    ]
+  }
+}

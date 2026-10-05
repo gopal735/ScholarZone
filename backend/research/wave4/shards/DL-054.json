@@ -1,0 +1,99 @@
+{
+  "shard_id": "DL-054",
+  "topic": "deadline",
+  "hosts": [
+    "aefe.gouv.fr",
+    "education.ki.se",
+    "sis.gov.eg",
+    "www.en.aau.dk",
+    "www.helsinki.fi",
+    "www.oulu.fi"
+  ],
+  "record_count": 7,
+  "records": [
+    {
+      "id": 20,
+      "title": "France Excellence Major Scholarship",
+      "official_source": "AEFE (Agency for French Education Abroad) / French Ministry for Europe and Foreign Affairs",
+      "official_source_url": "https://aefe.gouv.fr/fr/aefe/operateur-educatif-du-ministere-de-leurope-et-des-affaires-etrangeres/dispositif-des-bourses-france-excellence-major",
+      "catalogue_url": "https://aefe.gouv.fr/fr/etablissements",
+      "country": "France",
+      "deadline_display": "Typically February-March annually (2026 campaign: 16 February - 12 March 2026)",
+      "deadline_precision": "month",
+      "application_period": "February-March annually",
+      "verification_status": "active"
+    },
+    {
+      "id": 332,
+      "title": "Aalborg University International Student Scholarship (tuition fee waiver and monthly stipend)",
+      "official_source": "Aalborg University",
+      "official_source_url": "https://www.en.aau.dk/education/finance/scholarships",
+      "catalogue_url": null,
+      "country": "Denmark",
+      "deadline_display": "There is no separate scholarship application: \"All non-EU applicants are automatically considered when applying to a master's programme. Therefore, it is not possible to apply for a scholarship separately.\" AAU states \"We will inform all applicants about the scholarship decision by the beginning of July at the latest, though it may be earlier.\"",
+      "deadline_precision": "recurring",
+      "application_period": "September intake only",
+      "verification_status": "active"
+    },
+    {
+      "id": 333,
+      "title": "RESDOC Doctoral Researcher Positions - Resilient and Just Systems Doctoral Project (MSCA COFUND)",
+      "official_source": "University of Helsinki",
+      "official_source_url": "https://www.helsinki.fi/en/research/doctoral-school/resdoc-project",
+      "catalogue_url": "https://jobs.helsinki.fi/job/Helsinki-Doctoral-Researchers-%2830-positions%29-in-various-disciplines-at-the-University-of-Helsinki%2C-Finland/1362391657",
+      "country": "Finland",
+      "deadline_display": "Applications for the 2026 RESDOC call had to be submitted \"by 31 August 2026 at latest 11:59 PM (Finnish time EET)\". The call is now closed and no date for the next RESDOC call has been published.",
+      "deadline_precision": "recurring",
+      "application_period": "One annual call; the 2026 call closed on 31 August 2026 and evaluation began in September 2026",
+      "verification_status": "active"
+    },
+    {
+      "id": 334,
+      "title": "University-funded doctoral researcher positions (University of Helsinki Doctoral School)",
+      "official_source": "University of Helsinki",
+      "official_source_url": "https://www.helsinki.fi/en/research/doctoral-school/university-funded-doctoral-researcher-positions",
+      "catalogue_url": null,
+      "country": "Finland",
+      "deadline_display": "\"The next application period for salaried positions is August 24 - September 7, 2026.\" The 2026 window closed on 7 September 2026 and the annual cycle repeats, but no date for the next period is published.",
+      "deadline_precision": "recurring",
+      "application_period": "One annual application period covering all of the University's doctoral programmes; the 2026 period ran 24 August - 7 September 2026",
+      "verification_status": "active"
+    },
+    {
+      "id": 337,
+      "title": "University of Oulu Early Bird Discount and Tuition Fee Waiver Scholarship",
+      "official_source": "University of Oulu",
+      "official_source_url": "https://www.oulu.fi/en/apply/how-apply/university-oulu-tuition-fees-and-scholarships-for-international-applicants",
+      "catalogue_url": "https://www.oulu.fi/en/apply/international-programmes",
+      "country": "Finland",
+      "deadline_display": "\"The discount is granted if the tuition fee is paid within three weeks of the admission results being published.\" For continuing students, \"Tuition fee waiver scholarships are available from the second year onwards\" and eligibility depends on completing at least 60 ECTS credits in the preceding academic year.",
+      "deadline_precision": "varies",
+      "application_period": "Autumn 2026 and spring 2027 admission rounds for studies beginning in the 2027-2028 academic year; the Early Bird Discount is granted by paying within three weeks of the admission results",
+      "verification_status": "active"
+    },
+    {
+      "id": 453,
+      "title": "KI Global Master's Scholarship",
+      "official_source": "Karolinska Institute",
+      "official_source_url": "https://education.ki.se/bachelors-masters-studies/scholarships/the-ki-global-masters-scholarships-for-fee-paying-students",
+      "catalogue_url": "https://education.ki.se/bachelors-masters-studies/scholarships",
+      "country": "Sweden",
+      "deadline_display": "to accept",
+      "deadline_precision": "unknown",
+      "application_period": "You apply directly to KI during the scholarship application period.",
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 675,
+      "title": "Future Scientists Scholarship (منحة علماء المستقبل) 2026/2027 — Ministry of Higher Education and Scientific Research and Central Bank of Egypt",
+      "official_source": "Ministry of Higher Education and Scientific Research (Egypt), in cooperation with the Central Bank of Egypt",
+      "official_source_url": "https://sis.gov.eg/ar/%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2-%D8%A7%D9%84%D8%A5%D8%B9%D9%84%D8%A7%D9%85%D9%8A/%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1/%D9%85%D8%AF-%D9%81%D8%AA%D8%B1%D8%A9-%D8%A7%D9%84%D8%AA%D9%82%D8%AF%D9%8A%D9%85-%D9%84%D9%85%D9%86%D8%AD%D8%A9-%D8%B9%D9%84%D9%85%D8%A7%D8%A1-%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D9%82%D8%A8%D9%84",
+      "catalogue_url": "https://futurescholars.mohesr.gov.eg",
+      "country": "Egypt",
+      "deadline_display": "4 September 2026, 19:00 (extended from 2 September 2026, 17:00)",
+      "deadline_precision": "recurring",
+      "application_period": "2026/2027 academic year; applications opened 11:00 on Saturday 29 August 2026 and were extended to 19:00 on Friday 4 September 2026.",
+      "verification_status": "active"
+    }
+  ]
+}

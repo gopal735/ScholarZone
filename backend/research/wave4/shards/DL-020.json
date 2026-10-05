@@ -1,0 +1,111 @@
+{
+  "shard_id": "DL-020",
+  "topic": "deadline",
+  "hosts": [
+    "bandi.unibo.it",
+    "international.colostate.edu",
+    "study.anu.edu.au",
+    "wellcome.org",
+    "www.immigration.govt.nz",
+    "www.ulisboa.pt"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 50,
+      "title": "ANU Chancellor's International Scholarship",
+      "official_source": "Australian National University (ANU)",
+      "official_source_url": "https://study.anu.edu.au/scholarships/find-scholarship/anu-chancellors-international-scholarship",
+      "catalogue_url": "https://study.anu.edu.au/scholarships",
+      "country": "Australia",
+      "deadline_display": "Application period is open all year round. However, the official page currently states \"The scholarship is currently unavailable\" and lists the application period as \"Application closed\".",
+      "deadline_precision": "month",
+      "application_period": "Open all year round; automatic consideration upon admission application",
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 134,
+      "title": "International Talents @unibo — Scholarships for International Students Enrolling in Second Cycle Degree Programmes",
+      "official_source": "Alma Mater Studiorum – Università di Bologna",
+      "official_source_url": "https://bandi.unibo.it/s/diri/bando-international-talents-unibo",
+      "catalogue_url": "https://bandi.unibo.it/agevolazioni/opportunita",
+      "country": "Italy",
+      "deadline_display": "Applications for the 2025/26 edition closed at 12:00 CEST on 30 May 2025 (\"scadenza: 30 maggio 2025, 12:00\"); the call is published annually and no open window was visible on bandi.unibo.it on 4 October 2026.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual call, opening in mid-January and closing at 12:00 CEST in late May (17 January 2025 12:00 CET to 30 May 2025 12:00 CEST for the 2025/26 edition); results published in July",
+      "verification_status": "active"
+    },
+    {
+      "id": 196,
+      "title": "ANU University Research Scholarship",
+      "official_source": "The Australian National University",
+      "official_source_url": "https://study.anu.edu.au/scholarships/find-scholarship/anu-university-research-scholarships",
+      "catalogue_url": "https://study.anu.edu.au/scholarships/find-scholarship",
+      "country": "Australia",
+      "deadline_display": "Round 1 (commencement by end of March the following year): International application deadline 31 August; Domestic application deadline 31 October. Round 2: commencement by end of August the same year. No separate application is required.",
+      "deadline_precision": "recurring",
+      "application_period": "ANU states the application period is open all year round, with consideration organised into two annual central rounds. Round 1 international applications close 31 August and domestic applications 31 October for commencement by the end of March the following year; Round 2 is for commencement by the end of August the same year.",
+      "verification_status": "active"
+    },
+    {
+      "id": 304,
+      "title": "University of Lisbon International Scholarships",
+      "official_source": "University of Lisbon",
+      "official_source_url": "https://www.ulisboa.pt/en/study/fees-and-scholarships",
+      "catalogue_url": null,
+      "country": "Portugal",
+      "deadline_display": "Varies by faculty and programme",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 513,
+      "title": "ANU Vice-Chancellor's International Achievement Award",
+      "official_source": "The Australian National University",
+      "official_source_url": "https://study.anu.edu.au/scholarships/find-scholarship/anu-vice-chancellors-international-achievement-award",
+      "catalogue_url": "https://www.anu.edu.au/study/scholarships",
+      "country": "Australia",
+      "deadline_display": "Application period: Open for applications. ANU publishes no closing date for this award; consideration is automatic with the admissions application.",
+      "deadline_precision": "rolling",
+      "application_period": "Continuous. ANU's scholarship page shows the application period as 'Open for applications' with no closing date, because no separate scholarship application is required: all eligible students applying for admission to commence at the University are considered automatically.",
+      "verification_status": "needs_review"
+    },
+    {
+      "id": 562,
+      "title": "Wellcome Early-Career Award",
+      "official_source": "Wellcome Trust",
+      "official_source_url": "https://wellcome.org/grant-funding/schemes/early-career-awards",
+      "catalogue_url": "https://wellcome.org/research-funding/funding-portfolio/funded-grants?page=&scheme=Early-Career+Awards",
+      "country": "Multiple",
+      "deadline_display": "There are no deadlines for applications to this scheme. Applications can be submitted at any time. Apply anytime - Applications are accepted year-round.",
+      "deadline_precision": "year",
+      "application_period": "Rolling, applications accepted year-round. Location eligibility changes on 29 October 2026: from that date applications are only accepted from lead applicants based at eligible administering organisations in the UK and low- and middle-income countries in Africa, South Asia and South-East Asia. Applications submitted on or before 28 October 2026 are assessed under the current location eligibility requirements.",
+      "verification_status": "active"
+    },
+    {
+      "id": 614,
+      "title": "New Zealand Refugee Health Scholarship",
+      "official_source": "Immigration New Zealand (Ministry of Business, Innovation and Employment)",
+      "official_source_url": "https://www.immigration.govt.nz/about-us/our-strategies-and-programmes/supporting-refugees-and-asylum-seekers/new-zealand-refugee-health-scholarship-programme",
+      "catalogue_url": "https://www.universitiesnz.ac.nz/scholarships/new-zealand-refugee-health-scholarship",
+      "country": "New Zealand",
+      "deadline_display": "1 October 2026 (2027 intake, now closed)",
+      "deadline_precision": "recurring",
+      "application_period": "The 2027 intake opened 1 July 2026 and closed 1 October 2026. The first intake opened 15 October 2025. The programme is described as multi-year and annual, so the next window is expected to open in July 2027, but no 2028 closing date is published.",
+      "verification_status": "active"
+    },
+    {
+      "id": 636,
+      "title": "Organization of American States (OAS) Scholarship at Colorado State University",
+      "official_source": "Colorado State University International Enrollment Center, in partnership with the Organization of American States",
+      "official_source_url": "https://international.colostate.edu/iec/oas-scholarship",
+      "catalogue_url": "https://www.oas.org/en/scholarships",
+      "country": "United States",
+      "deadline_display": "No closing date published - the OAS announcement lists 'Rolling admission' for CSU bachelor's programmes and states that graduate admission deadlines vary; applications are being taken for newly admitted Fall 2027 students",
+      "deadline_precision": "rolling",
+      "application_period": "Applications are being accepted for newly admitted students entering Fall 2027; the OAS announcement records rolling admission for bachelor's programmes and instructs applicants to contact CSU International for graduate deadlines",
+      "verification_status": "needs_review"
+    }
+  ]
+}

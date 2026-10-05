@@ -1,0 +1,282 @@
+{
+  "shard_id": "LG-011",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 268,
+      "title": "Danish Government Scholarship for Non-EU/EEA Full-Degree Students",
+      "outcome": "recovered",
+      "image_url": "https://studyindenmark.dk/static/media/ministry-logo.9d8d6e22.png",
+      "image_source_url": "https://studyindenmark.dk/study-options/scholarships",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Asset is the site footer institutional mark on studyindenmark.dk, the official Danish Ministry of Science, Higher Education and Digital Affairs portal named as this record's official_source. Rendered in the page markup as <img class=\"logo\" src=\"/static/media/ministry-logo.9d8d6e22.png\" alt=\"Ministry of Science, Higher Education and Digital Affairs\"/>. Downloaded and visually inspected: Danish crown-of-Dannebrog glyph plus the wordmark 'Ministry of Science, Higher Education and Digital Affairs' in black. 993x223 px, 28464 bytes, PNG with full transparent background (alpha channel present, RGB 26,23,26). Confirmed by GET: HTTP 200, Content-Type image/png, Content-Length 28464 (verified both via curl and via a real browser request). Rejected siblings on the same page: /apple-touch-icon.png and /icon.svg (favicon family - /icon.svg is in fact a 32x32 PNG mislabelled as svg), /static/media/hero-bottom.578d78df.jpg and the study-options/scholarships/sidcampus_066.jpg plus all /@@image-*-resized Plone derivatives (decorative hero art and responsive image derivatives, not brand assets), and the inline base64 social-media share button sprite (tracking/social chrome). Note for integration: the same page also carries the portal's own 'STUDY IN DENMARK' wordmark at https://studyindenmark.dk/@@site-logo/logonew.png (368x107, 5383 bytes, HTTP 200 image/png, visually verified) - that is an equally official brand mark for the same provider and is a valid alternative if the catalogue prefers the portal identity over the ministry identity. It is lower resolution (368x107) and is a Plone site-header logo, which is why the higher-resolution ministry mark was selected for a record whose official_source names the Ministry."
+      },
+      "source": {
+        "url": "https://studyindenmark.dk/study-options/scholarships",
+        "publisher": "Danish Ministry of Science, Higher Education and Digital Affairs (studyindenmark.dk)",
+        "retrieved_at": "2026-10-05T15:44:29Z",
+        "raw_extract": "<img class=\"logo\" src=\"/static/media/ministry-logo.9d8d6e22.png\" alt=\"Ministry of Science, Higher Education and Digital Affairs\"/>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://studyindenmark.dk/portal",
+        "https://studyindenmark.dk/@@site-logo/logonew.png",
+        "https://studyindenmark.dk/static/media/ministry-logo.9d8d6e22.png",
+        "https://studyindenmark.dk/icon.svg",
+        "https://studyindenmark.dk/apple-touch-icon.png"
+      ],
+      "rejected": [
+        {
+          "url": "https://studyindenmark.dk/icon.svg",
+          "reason": "favicon - declared in the page as <link rel=\"icon\">; the served bytes are a 32x32 raster PNG mislabelled with an .svg extension"
+        },
+        {
+          "url": "https://studyindenmark.dk/apple-touch-icon.png",
+          "reason": "favicon family - apple-touch-icon asset"
+        },
+        {
+          "url": "https://studyindenmark.dk/static/media/hero-bottom.578d78df.jpg",
+          "reason": "decorative hero art, not a logo"
+        },
+        {
+          "url": "https://studyindenmark.dk/study-options/scholarships/sidcampus_066.jpg",
+          "reason": "decorative campus photograph, not a logo"
+        },
+        {
+          "url": "https://studyindenmark.dk/@@image-128-8c3599625c36db8470d2230bd94a638a.png",
+          "reason": "favicon-sized (128px) responsive derivative of a site photograph, representative of the whole /@@image-* Plone resizing family"
+        },
+        {
+          "url": "inline base64 img.social-media in page source",
+          "reason": "social media share-button sprite embedded as a data: URI - social chrome, not a brand asset"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 295,
+      "title": "Charles University Doctoral Study Income (full-time doctoral students)",
+      "outcome": "recovered",
+      "image_url": "https://cuni.cz/sablona/dist/img/UK-logo-horizontal-EN_hd.png",
+      "image_source_url": "https://cuni.cz/UKEN-1617.html",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "This is the horizontal Charles University logotype served from cuni.cz, the record's own official_source_url, where it is the site masthead element. Downloaded and visually inspected: the red stylised Crown of St Wenceslas glyph followed by the 'Charles University' wordmark in the University's dark blue - 1280x255 px, 38498 bytes, RGBA PNG. GET verification: HTTP 200, Content-Type image/png, Content-Length 38498. Deliberately distinguished from the favicon: the page declares <link rel=\"icon\" type=\"image/x-icon\" href=\"/sablona/dist/img/favicon.png\"> and that file is a separate 1131-byte asset; the selected file is 38 KB at 1280x255 and is used as the institutional masthead, not a browser icon. No third-party mirror, aggregator, social avatar, screenshot crop or unrelated-department asset was used. The Open Graph image on this page (https://cuni.cz/sablona/dist/img/UK-logo-specialni-EN_fullhd.jpg) was NOT used because og:image is a social-share surface; the masthead PNG is the brand asset proper."
+      },
+      "source": {
+        "url": "https://cuni.cz/UKEN-1617.html",
+        "publisher": "Charles University (cuni.cz)",
+        "retrieved_at": "2026-10-05T15:44:29Z",
+        "raw_extract": "<div class='logo'>\n    <a href='/UKEN-1.html'>\n        <img src='/UKEN-1-version1-afoto2.png' class='top' alt='Logo'>\n        <img src='/sablona/dist/img/UK-logo-horizontal-EN_hd.png' class='sticky' alt='Logo'>\n    </a>\n</div>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://cuni.cz/UKEN-1617.html",
+        "https://cuni.cz/UKEN-1-version1-afoto2.png",
+        "https://cuni.cz/sablona/dist/img/UK-logo-horizontal-EN_hd.png",
+        "https://cuni.cz/sablona/dist/img/favicon.png",
+        "https://cuni.cz/UKEN-1280.html"
+      ],
+      "rejected": [
+        {
+          "url": "https://cuni.cz/sablona/dist/img/favicon.png",
+          "reason": "favicon - explicitly declared as rel=\"icon\" and rel=\"apple-touch-icon\" on the page; 1131 bytes"
+        },
+        {
+          "url": "https://cuni.cz/sablona/dist/img/UK-logo-specialni-EN_fullhd.jpg",
+          "reason": "Open Graph / Twitter card share image surface (declared <meta property='og:image'>), i.e. a social-share asset rather than the brand asset"
+        },
+        {
+          "url": "https://cuni.cz/UKEN-1-version1-sectionimagenew.jpg",
+          "reason": "decorative masthead background photograph, not a logo"
+        },
+        {
+          "url": "https://cuni.cz/UKEN-537-version1-charles_university_annual_report_2023.pdf",
+          "reason": "PDF annual report; points at a third-party DAM host (autority.brandcloud.pro) rather than an official cuni.cz asset, and is a document not an asset"
+        },
+        {
+          "url": "https://en.lf1.cuni.cz/file/105167/logo-manual-final-2024-en-1.pdf",
+          "reason": "wrong identity - this is the First Faculty of Medicine's own brand guidelines, i.e. a faculty/department logo, not the University-wide mark this record needs"
+        },
+        {
+          "url": "https://platform.tracxn.com/a/d/company/53194718e4b0f7e165f50dae/charles%20university",
+          "reason": "third-party aggregator/mirror, rejected by contract"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 326,
+      "title": "Václav Havel Bursary - Charles University",
+      "outcome": "recovered",
+      "image_url": "https://cuni.cz/sablona/dist/img/UK-logo-horizontal-EN_hd.png",
+      "image_source_url": "https://cuni.cz/UKEN-2329.html",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Same official asset as record 295 - Charles University is the awarding provider for both records, so a duplicate image_url is correct and expected. The bursary's own page states 'The financial support is provided directly by Charles University.' (Rector's Directive No. 56/2025), which confirms Charles University - not the international Visegrad Fund / People in Need operator - is the provider of record for this scholarship, so the University logotype is the right identity match. Asset served from cuni.cz as the site masthead: <img src='/sablona/dist/img/UK-logo-horizontal-EN_hd.png' class='sticky' alt='Logo'>. Downloaded and visually inspected (red Crown of St Wenceslas + 'Charles University' wordmark), 1280x255 px, 38498 bytes. GET verification: HTTP 200, Content-Type image/png, Content-Length 38498. Kept distinct from /sablona/dist/img/favicon.png (1131 bytes, the declared rel=icon). No per-programme Václav Havel Bursary logo exists on cuni.cz: the only programme-specific image on the page is a photograph, rejected below."
+      },
+      "source": {
+        "url": "https://cuni.cz/UKEN-2329.html",
+        "publisher": "Charles University (cuni.cz)",
+        "retrieved_at": "2026-10-05T15:44:29Z",
+        "raw_extract": "<div class='logo'>\n    <a href='/UKEN-1.html'>\n        <img src='/UKEN-1-version1-afoto2.png' class='top' alt='Logo'>\n        <img src='/sablona/dist/img/UK-logo-horizontal-EN_hd.png' class='sticky' alt='Logo'>\n    </a>\n</div>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://cuni.cz/UKEN-2329.html",
+        "https://cuni.cz/UKEN-1617.html",
+        "https://cuni.cz/UKEN-2329-version1-uk_9988_version1_foto_svh_1.png",
+        "https://cuni.cz/UKEN-2329-version1-uk_9988_version1_foto_svh_1_bwfilter.png",
+        "https://cuni.cz/sablona/dist/img/UK-logo-horizontal-EN_hd.png",
+        "https://cuni.cz/UKEN-714-version1-or_56_2025_vaclav_havel_bursary.pdf"
+      ],
+      "rejected": [
+        {
+          "url": "https://cuni.cz/UKEN-2329-version1-uk_9988_version1_foto_svh_1.png",
+          "reason": "photograph of Václav Havel, not a logo - the filename component 'foto' (Czech for photograph) and the page's use as page-body editorial imagery confirm it; a photograph of a person is a rejected class under the contract"
+        },
+        {
+          "url": "https://cuni.cz/UKEN-2329-version1-uk_9988_version1_foto_svh_1_bwfilter.png",
+          "reason": "greyscale derivative of the same photograph of Václav Havel - photograph, not an asset"
+        },
+        {
+          "url": "https://cuni.cz/sablona/dist/img/favicon.png",
+          "reason": "favicon - declared as rel=\"icon\" and rel=\"apple-touch-icon\" on the page"
+        },
+        {
+          "url": "https://cuni.cz/sablona/dist/img/UK-logo-specialni-EN_fullhd.jpg",
+          "reason": "Open Graph share image surface, not the brand asset"
+        },
+        {
+          "url": "https://cuni.cz/UKEN-714-version1-or_56_2025_vaclav_havel_bursary.pdf",
+          "reason": "Rector's Directive PDF - a legal document, not a brand asset"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 350,
+      "title": "Erasmus Mundus Joint Master Scholarship - Bioceb (European Master in Biological and Chemical Engineering for a Sustainable Bioeconomy)",
+      "outcome": "recovered",
+      "image_url": "https://www.bioceb.eu/IMG/logo/logo_bioceb_light.png",
+      "image_source_url": "https://www.bioceb.eu/",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "IMPORTANT CORRECTION TO THE SHARD. The shard's official_source_url https://www.master-bioceb.eu does not resolve at all (NXDOMAIN for master-bioceb.eu, www.master-bioceb.eu, bioceb-master.eu and master.bioceb.eu). The live official programme site is https://www.bioceb.eu, whose page title is 'Bioceb - European Master in Biological and Chemical Engineering for a Sustainable Bioeconomy' and whose body carries the programme navigation, the Erasmus Mundus / Erasmus+ / 'Co-funded by the European Union' marks and the five partner universities (Aalto, AgroParisTech, Universite de Liege, TalTech, URCA) - all consistent with this record. The selected asset is that site's masthead logo, in the page markup as <a rel=\"start home\" href=\"https://bioceb.eu/\" title=\"Home\"><img src=\"IMG/logo/logo_bioceb_light.png?1780672359\" class=\"img-fluid header-logo-bioceb\" width=\"970\" height=\"400\" alt=\"\"></a>. Dimensions declared in markup and confirmed by decoding: 970x400 px, Content-Type image/png, 31556 bytes. Verified accessible at HTTP 200 both with and without the ?1780672359 cache-buster (identical 31556-byte response), and the clean URL is submitted. CAVEAT FOR INTEGRATION: www.bioceb.eu sits behind bot protection - plain curl and Invoke-WebRequest both receive HTTP 503 with a 'Test de securite / Security check' interstitial, while a real browser engine receives HTTP 200. Validation above was performed with a real browser fetch plus in-page fetch(). Any downstream fetcher that re-validates this URL with a non-browser client should expect the 503. NAME-COLLISION WARNING: www.biocev.eu (one 'e', resolved to 147.231.236.169) is a completely different organisation - BIOCEV, a biotechnology research centre in Vestec, Czech Republic, publishing its own logo at https://www.biocev.eu/assets/front/img/logo_new.svg. It is NOT the Bioceb master's programme and its logo was rejected as wrong identity. A careless re-run that resolves biocev.eu instead of bioceb.eu would attach the wrong organisation's mark to this record."
+      },
+      "source": {
+        "url": "https://www.bioceb.eu/",
+        "publisher": "Bioceb Consortium (AgroParisTech secretariat) - European Master in Biological and Chemical Engineering for a Sustainable Bioeconomy",
+        "retrieved_at": "2026-10-05T15:44:29Z",
+        "raw_extract": "<a rel=\"start home\" href=\"https://bioceb.eu/\" title=\"Home\">\n\t\t\t\t<img src=\"IMG/logo/logo_bioceb_light.png?1780672359\" class=\"img-fluid header-logo-bioceb\" width=\"970\" height=\"400\" alt=\"\">\n\t\t\t</a>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.master-bioceb.eu",
+        "https://master-bioceb.eu",
+        "https://www.biocev.eu/en",
+        "https://www.bioceb.eu/scholarships-15.html",
+        "https://www.biocev.eu/assets/front/img/logo_new.svg",
+        "https://www.bioceb.eu/IMG/logo/logo_bioceb_light.png",
+        "https://www.biocev.eu/IMG/pdf/en_brochure_note_bioceb_10april2024.pdf"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.biocev.eu/assets/front/img/logo_new.svg",
+          "reason": "wrong identity - www.biocev.eu is BIOCEV, a biotechnology research centre in Vestec, Czech Republic (address 'Prumyslova 595 252 50 Vestec Czech Republic'), a different organisation from the Bioceb Erasmus Mundus master's programme. Classic one-letter domain-collision trap."
+        },
+        {
+          "url": "https://www.biocev.eu/IMG/pdf/en_brochure_note_bioceb_10april2024.pdf",
+          "reason": "not an asset and not resolvable - HTTP 404 from the BIOCEV host; also a document rather than a brand file"
+        },
+        {
+          "url": "https://www.bioceb.eu/squelettes/img/EN_co_fundedvertical_RGB_POS.svg",
+          "reason": "funder branding - 'Co-funded by the European Union' mark. This is the European Commission's identity, not the Bioceb programme's own brand mark, so it would misidentify the awarding body."
+        },
+        {
+          "url": "https://www.bioceb.eu/squelettes/img/logos-taltech.png",
+          "reason": "partner university logo (TalTech), representative of the whole logos-*.png partner family (logos-aalto.png, logos-uliege.png) - an unrelated institution's mark"
+        },
+        {
+          "url": "https://www.bioceb.eu/IMG/jpg/high-angle-shot-curvy-lake-forest-surrounded-by-lot-tall-green-trees.jpg",
+          "reason": "decorative hero photograph, representative of the whole /IMG/jpg/ editorial image set on the homepage"
+        },
+        {
+          "url": "https://forge.bioceb.eu/",
+          "reason": "stale/duplicate mirror deployment of the same site found in search results; the canonical domain www.bioceb.eu was used instead"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 601,
+      "title": "Beca Interna Postdoctoral - Convocatoria Becas 2026 (CONICET)",
+      "outcome": "not_found",
+      "image_url": null,
+      "image_source_url": null,
+      "image_source_type": null,
+      "image_kind": null,
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": false,
+        "accessible": false,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": false,
+        "notes": "CONICET could not be reached by any method, so no official asset could be proven. DNS resolves - both www.conicet.gov.ar and convocatorias.conicet.gov.ar resolve to 45.71.5.46 - but the host accepts no TCP connection. Six-plus attempts across three independent clients all failed: curl.exe returned 'Failed to connect to www.conicet.gov.ar:443/80' (exit 7 connection refused, exit 28 timeout) on repeated tries; Invoke-WebRequest returned 'Unable to connect to the remote server' at 45-second and 60-second timeouts; a real Chromium browser engine returned net::ERR_CONNECTION_REFUSED and net::ERR_ABORTED. Connecting directly to 45.71.5.46 with a Host: www.conicet.gov.ar header also failed on both 443 and 80, and Test-NetConnection to port 443 returned False. Sibling hosts were also probed and are equally unusable: ri.conicet.gov.ar timed out, conicet.gov.ar (apex) refused, sede.conicet.gov.ar and www.conicet.edu.ar do not resolve. Because I never obtained a single byte from an official conicet.gov.ar page, I cannot prove that any candidate file is an official CONICET mark rather than a third-party copy, so image_url stays null. No aggregator, mirror, cached copy or social avatar was substituted - official absence beats fake branding. Recommended action: re-run this record when the CONICET host is reachable; the institutional mark is very likely present at that point."
+      },
+      "source": {
+        "url": null,
+        "publisher": null,
+        "retrieved_at": "2026-10-05T15:44:29Z",
+        "raw_extract": null,
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://convocatorias.conicet.gov.ar/becas/convocatoria-vigente",
+        "https://convocatorias.conicet.gov.ar/becas",
+        "https://www.conicet.gov.ar/",
+        "https://www.conicet.gov.ar/?lan=en",
+        "https://conicet.gov.ar/",
+        "https://ri.conicet.gov.ar/",
+        "https://45.71.5.46/ (direct IP, Host: www.conicet.gov.ar, ports 443 and 80)"
+      ],
+      "rejected": []
+    }
+  ]
+}

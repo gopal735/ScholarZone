@@ -1,0 +1,99 @@
+{
+  "shard_id": "DL-055",
+  "topic": "deadline",
+  "hosts": [
+    "aims.ac.za",
+    "educationusa.state.gov",
+    "sl.china-embassy.gov.cn",
+    "www.ens-lyon.fr",
+    "www.kyushu-u.ac.jp",
+    "www.possefoundation.org"
+  ],
+  "record_count": 7,
+  "records": [
+    {
+      "id": 96,
+      "title": "ENS de Lyon Scholarships of Excellence (Ampère and GRADUATE +)",
+      "official_source": "ENS de Lyon",
+      "official_source_url": "https://www.ens-lyon.fr/en/admission/scholarships",
+      "catalogue_url": null,
+      "country": "France",
+      "deadline_display": "Call for application 2026-2027 is now closed. Deadline for submission was January 23, 2026 at 11:59pm (CET), with applications opening on November 14, 2025 and results in mid-March 2026. The calendar for 2027-2028 will be updated in November 2026.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual single-round call, opening in November and closing in late January for the following academic year. The next calendar will be published in November 2026.",
+      "verification_status": "active"
+    },
+    {
+      "id": 241,
+      "title": "Kyushu University International Scholarship",
+      "official_source": "Kyushu University",
+      "official_source_url": "https://www.kyushu-u.ac.jp/en/admission/financial_aid/scholarship",
+      "catalogue_url": null,
+      "country": "Japan",
+      "deadline_display": "Varies (check Kyushu University admissions)",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 243,
+      "title": "MOFCOM Scholarship - CSC Program (Ministry of Commerce of China and China Scholarship Council Joint Program)",
+      "official_source": "Ministry of Commerce of China (MOFCOM) & China Scholarship Council (CSC)",
+      "official_source_url": "https://sl.china-embassy.gov.cn/eng/xwdt/202604/P020260403009201102513.pdf",
+      "catalogue_url": "https://studyinchina.csc.edu.cn/#/login",
+      "country": "China",
+      "deadline_display": "Applicants for MOFCOM-CSC must email their PDF materials and Appendix 3 to sl@mofcom.gov.cn by May 12, 2026; shortlisted applicants are notified in late May 2026 and results are announced around July-August 2026.",
+      "deadline_precision": "recurring",
+      "application_period": "The 2026 recruitment notice was issued 3 April 2026, materials were due 12 May 2026, interviews were expected in late May 2026 and admission results were expected July-August 2026. The programme is recruited annually.",
+      "verification_status": "active"
+    },
+    {
+      "id": 488,
+      "title": "JWU Global Full Tuition Scholarship (Johnson & Wales University)",
+      "official_source": "Johnson & Wales University (listed by EducationUSA, U.S. Department of State)",
+      "official_source_url": "https://educationusa.state.gov/scholarships/jwu-global-full-tuition-scholarship",
+      "catalogue_url": "https://www.jwu.edu/admissions-aid/cost-aid/scholarships-grants-loans",
+      "country": "United States",
+      "deadline_display": "Must be invited to apply through the JWU Admissions Portal, and must have a fully complete undergraduate application by the Early Action 2 deadline (January 4, 2026 in the 2026 cycle). Application Process: Apply to JWU for Early Action 1 or Early Action 2. If you meet eligibility criteria, you'll be invited to apply in January.",
+      "deadline_precision": "varies",
+      "application_period": "Invitation-based. Applicants first apply for admission under Early Action 1 or Early Action 2, and only those who meet the eligibility criteria are invited to apply for the scholarship in January. The scholarship deadline is different from the admission application deadline.",
+      "verification_status": "active"
+    },
+    {
+      "id": 522,
+      "title": "African Institute for Mathematical Sciences (AIMS) Structured Master's Scholarship - January 2027 intake (South African applicants)",
+      "official_source": "African Institute for Mathematical Sciences (AIMS), Muizenberg, Cape Town",
+      "official_source_url": "https://aims.ac.za/academics/prospective_students",
+      "catalogue_url": null,
+      "country": "South Africa",
+      "deadline_display": "\"Applications are open from January to March.\" and \"For our Mathematical Sciences stream, we have a September intake, open January to March and a January intake (South African applicants) open August to October of the preceding year.\" No day-level closing date is published, so the January 2027 intake window is stated only as closing in October 2026, and no day has been inferred.",
+      "deadline_precision": "varies",
+      "application_period": "Two published windows. September intake (African applicants): applications open January to March. January intake (South African applicants): applications open August to October of the preceding year. As at 2026-10-01 the only window still running is the January 2027 intake for South African applicants, open August to October 2026. The AI for Science stream is not part of this window because AIMS states: \"For the AI for Science stream we only have the September intake with applications open from January to March.\"",
+      "verification_status": "active"
+    },
+    {
+      "id": 573,
+      "title": "Kyushu University Friendship Scholarship",
+      "official_source": "Kyushu University",
+      "official_source_url": "https://www.kyushu-u.ac.jp/en/admissions/financial-support/scholarships/international",
+      "catalogue_url": "https://www.isc.kyushu-u.ac.jp/intlweb/en/admission/school-fees",
+      "country": "Japan",
+      "deadline_display": "No exact date is published. There are two recruitment periods in each fiscal year: Period I is recruited around February for grantees starting between April and September, and Period II is recruited around May for grantees starting between October and March. Applications are made through the applicant's prospective host department at Kyushu University, so the department sets its own internal date within the period.",
+      "deadline_precision": "recurring",
+      "application_period": "Two recruitment periods a year. Period I: around February, for study starting between April and September. Period II: around May, for study starting between October and the following March.",
+      "verification_status": "active"
+    },
+    {
+      "id": 698,
+      "title": "Posse Foundation Scholarship",
+      "official_source": "The Posse Foundation",
+      "official_source_url": "https://www.possefoundation.org/recruiting-students/the-nomination-process",
+      "catalogue_url": "https://www.possefoundation.org/supporting-scholars",
+      "country": "United States",
+      "deadline_display": null,
+      "deadline_precision": "varies",
+      "application_period": "Posse states that nominations are accepted in the spring and summer before senior year begins, and that nomination timelines and deadlines vary by Posse city or programme, so applicants must contact their local Posse office for the specific dates at the start of every calendar year.",
+      "verification_status": "needs_review"
+    }
+  ]
+}

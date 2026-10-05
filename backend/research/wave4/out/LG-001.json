@@ -1,0 +1,381 @@
+{
+  "shard_id": "LG-001",
+  "agent_completed": true,
+  "topic": "logo",
+  "retrieved_at": "2026-10-05T15:19:13Z",
+  "resolved_logo_asset": {
+    "image_url": "https://www.a-star.edu.sg/api/media/53d6d556-a0aa-4bcb-9ba8-4eb1fc9ae750/ASTAR%20HQ%20Corporate%20Website.png",
+    "what_it_is": "A*STAR corporate logo (blue 'a' mark with red star + wordmark 'Agency for Science, Technology and Research / SINGAPORE')",
+    "verified": "Downloaded directly from www.a-star.edu.sg. 20365 bytes, PNG, 530x200. Opened and visually inspected: it is a real corporate logo lockup, not a photo, screenshot, favicon or badge.",
+    "canonical_proof": "The identical media GUID is served as the site header logo on the A*STAR corporate homepage (alt=\"HQ\") and on the A*STAR Graduate Academy scholarship site (alt=\"Scholarships\"), so it is A*STAR's own corporate mark rather than a page-specific graphic.",
+    "scope_caveat": "None of these five A*STAR awards publishes a standalone programme logo. The A*STAR corporate logo is the official brand mark of the awarding body, which is the official_source named on every record in this shard."
+  },
+  "records": [
+    {
+      "scholarship_id": 35,
+      "title": "SINGA Scholarship (Singapore)",
+      "outcome": "recovered",
+      "image_url": "https://www.a-star.edu.sg/api/media/53d6d556-a0aa-4bcb-9ba8-4eb1fc9ae750/ASTAR%20HQ%20Corporate%20Website.png",
+      "image_source_url": "https://www.a-star.edu.sg/",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "WEAKEST LINK IN THIS SHARD - read before using. The record's own official_source_url is dead (HTTP 404) and SINGA's dedicated microsite is offline, so the logo could NOT be taken from the scholarship's own official page the way records 101/437/438/530 were. The asset used is A*STAR's official corporate logo, published on the A*STAR corporate homepage. Identity is nonetheless established from an official A*STAR page, not from a third party: www.a-star.edu.sg/bii/join-us/graduate-research states verbatim 'The Singapore International Graduate Award (SINGA) is a collaboration between the Agency for Science, Technology & Research (A*STAR), the Nanyang Technological University (NTU), the National University of Singapore (NUS) and the Singapore University of Technology and Design (SUTD).' www.a-star.edu.sg/ime/careers also lists SINGA among A*STAR graduate awards for international students. No SINGA-specific programme logo exists on the official domain. SINGA is also absent from the live A*STAR Graduate Academy scholarship listing (0 occurrences of 'SINGA'), so this award appears to be in a transitional state on A*STAR's site. If the catalogue requires a programme-specific mark rather than the awarding body's mark, set this to not_found."
+      },
+      "source": {
+        "url": "https://www.a-star.edu.sg/",
+        "publisher": "Agency for Science, Technology and Research (A*STAR)",
+        "retrieved_at": "2026-10-05T15:19:13Z",
+        "raw_extract": "<div class=\"header__logo\"><a href=\"/\" aria-label=\"Logo\"><img alt=\"HQ\" loading=\"lazy\" width=\"240\" height=\"89\" decoding=\"async\" srcSet=\"/_next/image?url=%2Fapi%2Fmedia%2F53d6d556-a0aa-4bcb-9ba8-4eb1fc9ae750%2FASTAR%20HQ%20Corporate%20Website.png&amp;w=256&amp;q=75 1x, /_next/image?url=%2Fapi%2Fmedia%2F53d6d556-a0aa-4bcb-9ba8-4eb1fc9ae750%2FASTAR%20HQ%20Corporate%20Website.png&amp;w=640&amp;q=75 2x\" src=\"/_next/image?url=%2Fapi%2Fmedia%2F53d6d556-a0aa-4bcb-9ba8-4eb1fc9ae750%2FASTAR%20HQ%20Corporate%20Website.png&amp;w=640&amp;q=75\"/></a></div>",
+        "confidence": "MEDIUM"
+      },
+      "identity_evidence": {
+        "url": "https://www.a-star.edu.sg/bii/join-us/graduate-research",
+        "raw_extract": "## Singapore International Graduate Award (SINGA)  The Singapore International Graduate Award (SINGA) is a collaboration between the Agency for Science, Technology & Research (A*STAR), the Nanyang Technological University (NTU), the National University of Singapore (NUS) and the Singapore University of Technology and Design (SUTD)."
+      },
+      "examined": [
+        "https://www.a-star.edu.sg/Scholarships/for-graduate-studies/singa-award",
+        "https://www.a-star.edu.sg/talent/for-graduate-studies/singapore-international-graduate-award-singa",
+        "https://www.a-star.edu.sg/talent/for-graduate-studies/singapore-international-graduate-award-singa/nus-supervisors-projects",
+        "https://www.a-star.edu.sg/talent/for-graduate-studies/singapore-international-graduate-award-singa/ntu-supervisors-projects",
+        "https://www.a-star.edu.sg/talent/for-graduate-studies/singapore-international-graduate-award-singa/a-star-supervisors-projects",
+        "https://www.a-star.edu.sg/scholarships/home/scholarships",
+        "https://www.a-star.edu.sg/scholarships/home/international-awards",
+        "https://sms-applicant-app.a-star.edu.sg/",
+        "https://www.a-star.edu.sg/bii/join-us/graduate-research",
+        "https://www.a-star.edu.sg/ime/careers",
+        "https://www.a-star.edu.sg/sris/training-and-mentorship",
+        "singa.a-star.edu.sg",
+        "www.singa.a-star.edu.sg",
+        "a-star.edu.sg/SINGA",
+        "https://www.a-star.edu.sg/SINGA"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.a-star.edu.sg/Scholarships/for-graduate-studies/singa-award",
+          "reason": "not an asset - HTTP 404, the record's own official_source_url no longer resolves after the A*STAR site rebuild"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/talent/for-graduate-studies/singapore-international-graduate-award-singa",
+          "reason": "not an asset - HTTP 404; SINGA's dedicated microsite is offline so no programme-specific logo is published there"
+        },
+        {
+          "url": "https://singa.a-star.edu.sg/",
+          "reason": "not an asset - host unreachable ('Unable to connect to the remote server'); SINGA's dedicated domain is offline"
+        },
+        {
+          "url": "https://www.singa.a-star.edu.sg/",
+          "reason": "not an asset - DNS resolution failure, subdomain no longer exists"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/SINGA",
+          "reason": "not an asset - HTTP 308 redirect, no page content and no logo asset"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/scholarships/home/scholarships",
+          "reason": "examined, no SINGA content - 0 occurrences of 'SINGA' or 'Singapore International Graduate Award' in the live A*STAR Graduate Academy scholarship listing"
+        },
+        {
+          "url": "https://sms-applicant-app.a-star.edu.sg/App_Themes/Applicant/images/astar_logo.jpg",
+          "reason": "not the asset and not the right identity - applicant-portal page theme chrome image for a retired portal, not the scholarship's brand mark"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/bii/join-us/graduate-research",
+          "reason": "examined, no SINGA logo on page - page proves A*STAR awards SINGA but its only image (see next entry) is a department logo"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/5416604d-0947-4b40-ac60-37efa3c9a973",
+          "reason": "unrelated department's logo on a shared CDN - downloaded and visually inspected at 530x200: it is the A*STAR 'a' mark with a Singapore-shaped cutout and the wordmark 'A*STAR | BIOLOGICAL ...' (a biology institute brand lockup), not the A*STAR corporate logo and not SINGA"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/177d640a-2c97-48ff-b193-65c7362f7038",
+          "reason": "unrelated department's logo on a shared CDN - IME (Institute of Materials Engineering) institute logo from /ime/careers, wrong entity for SINGA"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/867ab78f-c433-4489-9de0-51f3937f384c/favicon.ico",
+          "reason": "favicon - also wired as rel=\"apple-touch-icon\" on the same pages; explicitly rejected by brief section 7"
+        },
+        {
+          "url": "https://www.facebook.com/tr?id=1807319519567560&ev=PageView&noscript=1",
+          "reason": "tracking pixel"
+        },
+        {
+          "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/957701170/",
+          "reason": "tracking pixel - advertising conversion beacon"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 101,
+      "title": "A*STAR Graduate Scholarship (AGS)",
+      "outcome": "recovered",
+      "image_url": "https://www.a-star.edu.sg/api/media/53d6d556-a0aa-4bcb-9ba8-4eb1fc9ae750/ASTAR%20HQ%20Corporate%20Website.png",
+      "image_source_url": "https://www.a-star.edu.sg/scholarships/home/scholarships/ags--scholarship",
+      "image_source_type": "official_scholarship",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Taken from the scholarship's own official page on www.a-star.edu.sg, found first in the preference order. Page title is 'A*STAR Graduate Scholarship' and the page is under the A*STAR Graduate Academy scholarship site, so the header logo is the awarding body's own mark on the scholarship's official page. AGS publishes no standalone programme logo; the four AGS track graphics on the page are decorative stock-style hero art, not wordmarks."
+      },
+      "source": {
+        "url": "https://www.a-star.edu.sg/scholarships/home/scholarships/ags--scholarship",
+        "publisher": "Agency for Science, Technology and Research (A*STAR) - A*STAR Graduate Academy",
+        "retrieved_at": "2026-10-05T15:19:13Z",
+        "raw_extract": "<div class=\"header__logo\"><a href=\"/scholarships\" aria-label=\"Logo\"><img alt=\"Scholarships\" loading=\"lazy\" width=\"240\" height=\"89\" decoding=\"async\" src=\"/_next/image?url=%2Fapi%2Fmedia%2F53d6d556-a0aa-4bcb-9ba8-4eb1fc9ae750%2FASTAR%20HQ%20Corporate%20Website.png&amp;w=640&amp;q=75\"/></a></div>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.a-star.edu.sg/scholarships/home/scholarships",
+        "https://www.a-star.edu.sg/",
+        "https://www.a-star.edu.sg/api/media/0b92fd70-7ca3-4f7d-aa9d-d179cd9e0324.pdf"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.a-star.edu.sg/api/media/7cd8b02b-f03a-41e6-866b-449534b877c2.png",
+          "reason": "decorative hero art, not an asset - downloaded and visually inspected at 800x550: generic stock-style laboratory image (test tubes, DNA helix) captioned 'ags-stem'; a track illustration, not a logo"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/9a11b133-367b-41b2-8c38-8e7dd44183b9.png",
+          "reason": "decorative hero art, not an asset - 'ags-semiconductor' track illustration, not a logo"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/51731863-c706-408f-8381-c27d61f15f05.png",
+          "reason": "decorative hero art, not an asset - 'ags-quantum' track illustration, not a logo"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/72a909f4-6ee0-4374-88ee-66db348dce73.png",
+          "reason": "decorative hero art, not an asset - 'ags-computing' track illustration, not a logo"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/861adfae-2edb-47ba-8925-7606d7913603.png",
+          "reason": "decorative infographic, not an asset - 'Your Scholarship Journey' full-width flow graphic, downloaded at 2000x2045; journey diagram, not a logo"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/098fc4fc-ca59-4ae1-9a97-7a9766836759.jpg",
+          "reason": "photograph of a person, not an asset - captioned 'Dr Joyce Tay Jia Xin, A*STAR Graduate Scholarship Recipient'"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/8f0e7ea7-0218-4ba7-90d9-0be805aa3d9b.png",
+          "reason": "decorative how-to-apply graphic (alt=\"astar-image-placeholder\"), not an asset"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/e5bd6377-249a-4804-87b4-c1a66880213e.jpg",
+          "reason": "decorative stock photo of a graduate in a cap and gown, not an asset"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/3a44c995-b198-4bed-aa53-27384e3ee849.jpg",
+          "reason": "decorative stock photo of people in a laboratory, not an asset"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/867ab78f-c433-4489-9de0-51f3937f384c/favicon.ico",
+          "reason": "favicon - also wired as rel=\"apple-touch-icon\"; explicitly rejected by brief section 7"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/0b92fd70-7ca3-4f7d-aa9d-d179cd9e0324.pdf",
+          "reason": "not an image asset - AGS brochure PDF, a document not a logo; no logo file is published alongside it"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 437,
+      "title": "A*STAR International Fellowship (AIF)",
+      "outcome": "recovered",
+      "image_url": "https://www.a-star.edu.sg/api/media/53d6d556-a0aa-4bcb-9ba8-4eb1fc9ae750/ASTAR%20HQ%20Corporate%20Website.png",
+      "image_source_url": "https://www.a-star.edu.sg/scholarships/home/scholarships/astar-international-fellowship",
+      "image_source_type": "official_scholarship",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Taken from the fellowship's own official page on www.a-star.edu.sg, found first in the preference order. Page title is 'A*STAR International Fellowship' and the H1 is 'A*STAR International Fellowship'. AIF publishes no standalone programme logo; the two track graphics are decorative photos/art, not wordmarks."
+      },
+      "source": {
+        "url": "https://www.a-star.edu.sg/scholarships/home/scholarships/astar-international-fellowship",
+        "publisher": "Agency for Science, Technology and Research (A*STAR) - A*STAR Graduate Academy",
+        "retrieved_at": "2026-10-05T15:19:13Z",
+        "raw_extract": "<div class=\"header__logo\"><a href=\"/scholarships\" aria-label=\"Logo\"><img alt=\"Scholarships\" loading=\"lazy\" width=\"240\" height=\"89\" decoding=\"async\" src=\"/_next/image?url=%2Fapi%2Fmedia%2F53d6d556-a0aa-4bcb-9ba8-4eb1fc9ae750%2FASTAR%20HQ%20Corporate%20Website.png&amp;w=640&amp;q=75\"/></a></div>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.a-star.edu.sg/scholarships/home/scholarships",
+        "https://www.a-star.edu.sg/",
+        "https://www.a-star.edu.sg/api/media/9b5f2f38-11cd-4bac-8045-cda8d9d24c8a.pdf"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.a-star.edu.sg/api/media/4f6a9a01-3be3-45a6-8f2d-a955ab4990cd.jpg",
+          "reason": "decorative hero art, not an asset - 'AIF-research-img' track illustration, not a logo"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/23db057c-2c62-4166-a2f2-039d334e6fce.jpg",
+          "reason": "decorative hero art, not an asset - 'AIF-innovation-img' track illustration, not a logo"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/843812be-8d1c-4d1f-b88d-0b7dc920bf22.png",
+          "reason": "decorative infographic, not an asset - 'Your Scholarship Journey' full-width flow graphic, not a logo"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/72cf5d33-94ad-48dc-a2bd-aa137657cede.jpg",
+          "reason": "photograph of a person, not an asset - captioned 'Dr Han Shui'Er, A*STAR International Fellowship Recipient'"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/823a62ad-e517-4914-b235-5bb191d31778.png",
+          "reason": "decorative how-to-apply graphic (alt=\"astar-image-placeholder\"), not an asset"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/6ece252d-615c-4320-b709-4a0484ac0562.jpg",
+          "reason": "decorative stock photo of a graduate in a cap and gown, not an asset"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/867ab78f-c433-4489-9de0-51f3937f384c/favicon.ico",
+          "reason": "favicon - also wired as rel=\"apple-touch-icon\"; explicitly rejected by brief section 7"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/9b5f2f38-11cd-4bac-8045-cda8d9d24c8a.pdf",
+          "reason": "not an image asset - AIF brochure PDF, a document not a logo"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 438,
+      "title": "National Science Scholarship (PhD)",
+      "outcome": "recovered",
+      "image_url": "https://www.a-star.edu.sg/api/media/53d6d556-a0aa-4bcb-9ba8-4eb1fc9ae750/ASTAR%20HQ%20Corporate%20Website.png",
+      "image_source_url": "https://www.a-star.edu.sg/scholarships/home/scholarships/national-science-scholarship-(phd)",
+      "image_source_type": "official_scholarship",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Taken from the scholarship's own official page on www.a-star.edu.sg, found first in the preference order. Page title and H1 are both 'National Science Scholarship (PhD)'. Note the shard's official_source field for this record reads 'A Star University Sg', which is a data-entry artefact - the National Science Scholarship is an A*STAR award, confirmed on the official page itself and on www.a-star.edu.sg/ime/careers. No standalone NSS logo is published; the header logo is the awarding body's mark."
+      },
+      "source": {
+        "url": "https://www.a-star.edu.sg/scholarships/home/scholarships/national-science-scholarship-(phd)",
+        "publisher": "Agency for Science, Technology and Research (A*STAR) - A*STAR Graduate Academy",
+        "retrieved_at": "2026-10-05T15:19:13Z",
+        "raw_extract": "<div class=\"header__logo\"><a href=\"/scholarships\" aria-label=\"Logo\"><img alt=\"Scholarships\" loading=\"lazy\" width=\"240\" height=\"89\" decoding=\"async\" src=\"/_next/image?url=%2Fapi%2Fmedia%2F53d6d556-a0aa-4bcb-9ba8-4eb1fc9ae750%2FASTAR%20HQ%20Corporate%20Website.png&amp;w=640&amp;q=75\"/></a></div>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.a-star.edu.sg/scholarships/home/scholarships",
+        "https://www.a-star.edu.sg/",
+        "https://www.a-star.edu.sg/ime/careers"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.a-star.edu.sg/api/media/8f31c4b0-f868-43d6-ab11-d38634948d58.jpg",
+          "reason": "decorative stock photo, not an asset - original alt is a stock filename '/images/default-source/default-album/tristan-choo_1200x700'"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/1c18f0a1-bfd3-4f6a-a0c5-3fb606baed38.jpg",
+          "reason": "decorative stock photo, not an asset - original alt is a stock filename '/images/65astargraduateacademyagalibraries/aga/others/girl-with-red-cap-is-smiling-with-her-friends...'"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/206872ec-bc54-4ace-8bdd-3973d030fbb0.png",
+          "reason": "decorative how-to-apply graphic (alt=\"astar-image-placeholder\"), not an asset"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/861adfae-2edb-47ba-8925-7606d7913603.png",
+          "reason": "decorative infographic, not an asset - 'Your Scholarship Journey' full-width flow graphic, not a logo"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/c1985d29-9394-47c7-b100-2d9ad2277fd6.jpg",
+          "reason": "decorative stock photo of people in a laboratory, not an asset"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/177d640a-2c97-48ff-b193-65c7362f7038",
+          "reason": "unrelated department's logo on a shared CDN - IME institute logo, wrong entity"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/867ab78f-c433-4489-9de0-51f3937f384c/favicon.ico",
+          "reason": "favicon - also wired as rel=\"apple-touch-icon\"; explicitly rejected by brief section 7"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 530,
+      "title": "National Science Scholarship (PhD)",
+      "outcome": "recovered",
+      "image_url": "https://www.a-star.edu.sg/api/media/53d6d556-a0aa-4bcb-9ba8-4eb1fc9ae750/ASTAR%20HQ%20Corporate%20Website.png",
+      "image_source_url": "https://www.a-star.edu.sg/scholarships/home/scholarships/national-science-scholarship-(phd)",
+      "image_source_type": "official_scholarship",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Duplicate of record 438 - same title, same award. The shard's official_source_url for 530 is the percent-encoded form of record 438's URL; both resolve to the same live page (HTTP 200, identical H1 'National Science Scholarship (PhD)'), so the same verified official asset applies. Flagged as a likely duplicate record in the catalogue."
+      },
+      "source": {
+        "url": "https://www.a-star.edu.sg/scholarships/home/scholarships/national-science-scholarship-(phd)",
+        "publisher": "Agency for Science, Technology and Research (A*STAR) - A*STAR Graduate Academy",
+        "retrieved_at": "2026-10-05T15:19:13Z",
+        "raw_extract": "<div class=\"header__logo\"><a href=\"/scholarships\" aria-label=\"Logo\"><img alt=\"Scholarships\" loading=\"lazy\" width=\"240\" height=\"89\" decoding=\"async\" src=\"/_next/image?url=%2Fapi%2Fmedia%2F53d6d556-a0aa-4bcb-9ba8-4eb1fc9ae750%2FASTAR%20HQ%20Corporate%20Website.png&amp;w=640&amp;q=75\"/></a></div>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.a-star.edu.sg/scholarships/home/scholarships/national-science-scholarship-%28phd%29",
+        "https://www.a-star.edu.sg/scholarships/home/scholarships",
+        "https://www.a-star.edu.sg/"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.a-star.edu.sg/api/media/8f31c4b0-f868-43d6-ab11-d38634948d58.jpg",
+          "reason": "decorative stock photo, not an asset"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/1c18f0a1-bfd3-4f6a-a0c5-3fb606baed38.jpg",
+          "reason": "decorative stock photo, not an asset"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/206872ec-bc54-4ace-8bdd-3973d030fbb0.png",
+          "reason": "decorative how-to-apply graphic (alt=\"astar-image-placeholder\"), not an asset"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/861adfae-2edb-47ba-8925-7606d7913603.png",
+          "reason": "decorative infographic, not an asset"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/c1985d29-9394-47c7-b100-2d9ad2277fd6.jpg",
+          "reason": "decorative stock photo, not an asset"
+        },
+        {
+          "url": "https://www.a-star.edu.sg/api/media/867ab78f-c433-4489-9de0-51f3937f384c/favicon.ico",
+          "reason": "favicon - also wired as rel=\"apple-touch-icon\"; explicitly rejected by brief section 7"
+        }
+      ]
+    }
+  ]
+}

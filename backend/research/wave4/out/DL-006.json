@@ -1,0 +1,341 @@
+{
+  "shard_id": "DL-006",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 5,
+      "title": "MEXT (Monbukagakusho) Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "No application deadline is published centrally. The official page states only: \"Some application requirements are more detailed than those listed here, so please check with the Japanese embassy or other Japanese diplomatic mission in your country. The type and field of application may vary from country to country.\"",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships",
+        "source_type": "official_programme_page",
+        "publisher": "Japan Student Services Organization (JASSO), Study in Japan - government-approved information site, for MEXT",
+        "retrieved_at": "2026-10-05T15:25:39Z",
+        "as_of": null,
+        "raw_extract": "Some application requirements are more detailed than those listed here, so please check with the Japanese embassy or other Japanese diplomatic mission in your country. The type and field of application may vary from country to country. Please check with the Japanese embassy or other Japanese diplomatic mission in your country to see if there are any openings in the type and field you wish to apply for.",
+        "exact_deadline_wording": "This umbrella record covers all seven MEXT scholarship types (research students, teacher training students, undergraduate students, Japanese studies students, college of technology students, specialized training college students, Young Leaders Program students) under both embassy recommendation and university recommendation. The page publishes no calendar date, month, or window for applications; it defers entirely to each Japanese embassy/consulate or each recommending university. No deadline value of any kind can be established for the programme as a whole.",
+        "confidence": "HIGH",
+        "notes": "UN-semantics = UNKNOWN is the truthful result here, not a research gap. I fetched the record's official_source_url (https://www.studyinjapan.go.jp, which resolves to the Japanese homepage and carries no scholarship deadline), the catalogue page above, the About Scholarships overview page, and the Flowchart page. None publishes an application date or window. The page explicitly routes timing decisions to embassies, universities and, per the eligibility footnote on the same page, 'Recommendations from official overseas recommending organizations' for YLP. I did not import a date from any single-track guideline PDF in this shard, because per AGENT_BRIEF section 5 a schedule published for a different MEXT track is not evidence for this umbrella record."
+      },
+      "field_mapping": {
+        "deadline_date": "null - no official deadline published; nothing to write",
+        "deadline_precision": "unknown",
+        "deadline_display": "No central deadline published. Recruitment is conducted through Japanese embassies/consulates or recommending universities; timing is set per country and per recommending body. Applicants must check the Japanese embassy or consulate general in their own country."
+      },
+      "examined": [
+        "https://www.studyinjapan.go.jp",
+        "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships",
+        "https://www.studyinjapan.go.jp/en/planning/scholarships/about-scholarships",
+        "https://www.studyinjapan.go.jp/en/planning/flow-chart/"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.studyinjapan.go.jp/en/planning/flow-chart/",
+          "reason": "Generic study-in-Japan preparation timeline ('<12 months prior to studying in Japan>', '6-9 months prior'). Contains no scholarship application deadline; would be a generic admissions/cycle assumption for a different purpose."
+        },
+        {
+          "url": "https://www.mext.go.jp/a_menu/koutou/ryugaku/boshu/1415354_00011.htm",
+          "reason": "Search-result lead only (Japanese-language index of 2027 embassy-recommended guidelines). Not fetched, and an index page would not state a deadline for this umbrella record in any case."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 68,
+      "title": "Gates Cambridge Scholarship",
+      "outcome": "recovered",
+      "deadline_semantics": "EXACT",
+      "deadline_date": "2026-10-14",
+      "deadline_display": "Applications for entry in the academic year 2027/8 are now open. US citizens resident in the USA: \"Application deadline - Wednesday 14th October 2026 (Full application must be submitted by 11:59pm UK time on the date given)\". All other eligible applicants: \"Application deadline* - Dependent on your course - either Tuesday 8th December 2026 or Wednesday 6th January 2027 (see Course Directory). (Full application must be submitted by 11:59pm UK time)\"",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.gatescambridge.org/apply/timeline/",
+        "source_type": "official_scholarship_page",
+        "publisher": "Gates Cambridge Trust",
+        "retrieved_at": "2026-10-05T15:25:39Z",
+        "as_of": "Applications for entry in the academic year 2027/8 are now open (applications opened 11th September 2026)",
+        "raw_extract": "Applications for entry in the academic year 2027/8 are now open. | US citizens resident in the USA ... Applications open 11th September 2026 | Application deadline: Wednesday 14th October 2026 (Full application must be submitted by 11:59pm UK time on the date given) | All other eligible applicants ... Application deadline*: Dependent on your course - either Tuesday 8th December 2026 or Wednesday 6th January 2027 (see Course Directory). (Full application must be submitted by 11:59pm UK time)",
+        "exact_deadline_wording": "Wednesday 14th October 2026 (Full application must be submitted by 11:59pm UK time on the date given)",
+        "confidence": "MEDIUM",
+        "notes": "IMPORTANT SCOPE CAVEAT - read before writing. The Trust publishes TWO selection rounds with two different deadlines for the same open 2027/8 cycle, and a single deadline_date field cannot represent both. deadline_date 2026-10-14 is the US-citizens-resident-in-the-USA round deadline: it is the only single explicit calendar deadline the Trust publishes, it is the first-closing round, and it is still open at the retrieval date. The page states US-round applicants 'must apply in October' and 'are not eligible for the later round'. For all other eligible applicants the deadline is course-dependent (8 December 2026 OR 6 January 2027) and is set by the University Course Directory, so the majority of applicants do NOT close on 14 October 2026. This is NOT a CONFLICTING case: the brief reserves that for two sources disagreeing about the same deadline, whereas here a single source describes two distinct rounds. If the integrator requires one date that is valid for every applicant, treat this record as precision 'varies' instead and use the wording in deadline_display. This is not an inference from University of Cambridge postgraduate funding deadlines; both dates are stated verbatim on the Trust's own Timeline page."
+      },
+      "field_mapping": {
+        "deadline_date": "2026-10-14",
+        "deadline_precision": "exact",
+        "deadline_display": "US citizens resident in the USA: Wednesday 14th October 2026 (11:59pm UK time). All other eligible applicants: dependent on course - either Tuesday 8th December 2026 or Wednesday 6th January 2027 (11:59pm UK time)."
+      },
+      "all_published_deadlines_2027_8_cycle": [
+        {
+          "round": "US citizens resident in the USA",
+          "deadline": "2026-10-14",
+          "verbatim": "Wednesday 14th October 2026 (Full application must be submitted by 11:59pm UK time on the date given)",
+          "note": "Single explicit date. Still open at retrieval 2026-10-05."
+        },
+        {
+          "round": "All other eligible applicants",
+          "deadline": null,
+          "verbatim": "Dependent on your course - either Tuesday 8th December 2026 or Wednesday 6th January 2027 (see Course Directory). (Full application must be submitted by 11:59pm UK time)",
+          "note": "Two possible dates depending on the course's Course Funding Deadline; resolved per-course in the University Course Directory."
+        }
+      ],
+      "examined": [
+        "https://www.gatescambridge.org/programme/the-scholarship"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.gatescambridge.org/programme/the-scholarship",
+          "reason": "The record's official_source_url. Fetched first as instructed; it describes funding, eligibility criteria and selection criteria but publishes NO application dates or timeline at all, so it could not yield the value. Followed the on-page navigation to the Trust's Timeline page, which does."
+        },
+        {
+          "url": "https://www.postgraduate.study.cam.ac.uk/courses",
+          "reason": "Referenced by the Trust but not fetched and not needed: the course-dependent December/January alternatives are already stated verbatim on the Trust's own page, and a per-course Course Funding Deadline would not be authoritative for a single programme-level record."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 239,
+      "title": "Young Leaders Program (YLP) Students - Japanese Government (MEXT) Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "No central deadline is published. \"Recruitment will be conducted through the recommending authorities of each eligible country. Please ask the Japanese Embassy for further information.\" Applications must \"reach your recommending authority by the designated deadline\".",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.mext.go.jp/en/policy/education/highered/title02/detail02/sdetail02/sdetail02/20260806-mxt-kotokoku01-1.pdf",
+        "source_type": "official_government_page",
+        "publisher": "Ministry of Education, Culture, Sports, Science and Technology (MEXT), Japan",
+        "retrieved_at": "2026-10-05T15:25:39Z",
+        "as_of": "2027 intake - APPLICATION GUIDELINES JAPANESE GOVERNMENT (MEXT) SCHOLARSHIP FOR 2027 YOUNG LEADERS' PROGRAM (YLP) STUDENT (SCHOOL OF GOVERNMENT); program commences October 2027",
+        "raw_extract": "5. Recruitment and Selection (1) Method of Recruitment Recruitment will be conducted through the recommending authorities of each eligible country. Please ask the Japanese Embassy for further information. (2) Screening Procedure 1 First screening by the recommending authorities 2 Second screening by GRIPS 3 Final screening by the YLP committee organized by MEXT ... Notes for application documents (2) A complete set of your required application documents must reach your recommending authority by the designated deadline. Incomplete applications or applications received after the deadline will not be considered.",
+        "exact_deadline_wording": "Applicants must submit ... by the designated deadline",
+        "confidence": "HIGH",
+        "notes": "This is the primary MEXT document for the 2027 YLP cycle, and it publishes no calendar date, month or window - only 'the designated deadline', which is set by each country's recommending authority. YLP is the one MEXT type with NO embassy-recommendation route: the studyinjapan.go.jp page records 'Embassy recommendation: No' and 'Recommendations from official overseas recommending organizations'. I verified all three 2027 YLP tracks (School of Government, Law, Business Administration) on mext.go.jp and each routes applicants to the embassy/recommending authority with no published date; no explicit application date appears in any of them. The record's own official_source_url (the About Scholarships overview page) contains no timing information either, confirming the record's existing deadline_display. Per the brief I did not use any embassy page (country-specific, and no single country is identified in the record) and did not use search snippets."
+      },
+      "field_mapping": {
+        "deadline_date": "null - no official deadline published; nothing to write",
+        "deadline_precision": "unknown",
+        "deadline_display": "No central deadline published. Recruitment for YLP students is conducted through the recommending authorities of each eligible country; applicants must ask the Japanese Embassy in their own country, and documents must reach the recommending authority by that authority's designated deadline."
+      },
+      "examined": [
+        "https://www.studyinjapan.go.jp/en/planning/scholarships/about-scholarships",
+        "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships",
+        "https://www.mext.go.jp/en/policy/education/highered/title02/detail02/sdetail02/sdetail02/20260806-mxt-kotokoku01-9.pdf",
+        "https://www.mext.go.jp/en/policy/education/highered/title02/detail02/sdetail02/sdetail02/20260806-mxt-kotokoku01-7.pdf"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships",
+          "reason": "Confirms the YLP route is recommendation-based ('Recommendations from official overseas recommending organizations', Embassy recommendation = No) but states no dates at all. Corroborates the UNKNOWN rather than supplying a value."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 307,
+      "title": "Ontario Graduate Scholarship (OGS) - University of Toronto",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Student Deadline: Date set by graduate unit (see button above) | Application Dates: Determined by graduate unit | Graduate Unit Deadline: Refer to SGS Memo (not for students - unit must forward all OGS nominations to SGS by this date) | Results: Mid-July",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.sgs.utoronto.ca/awards/ontario-graduate-scholarship",
+        "source_type": "official_university_page",
+        "publisher": "School of Graduate Studies, University of Toronto",
+        "retrieved_at": "2026-10-05T15:25:39Z",
+        "as_of": "Award cycle for 2026-2027 registration (page states eligibility requires registration 'in an eligible program on a full-time basis in 2026-2027')",
+        "raw_extract": "Student Deadline : Date set by graduate unit (see button above) | Application Dates : Determined by graduate unit | Graduate Unit Deadline : Refer to SGS Memo (not for students - unit must forward all OGS nominations to SGS by this date) | Level of Study : Doctoral, Master's | Results : Mid-July ... Each graduate unit will have their own internal submission deadline to which applicants must adhere. ... Important note for prospective students: OGS awards are not transferrable between universities or between graduate units at U of T. Accordingly, students must submit an OGS application to each graduate unit for which they are seeking admission at U of T",
+        "exact_deadline_wording": "Date set by graduate unit",
+        "confidence": "HIGH",
+        "notes": "This is the decisive finding: the University of Toronto deliberately publishes NO single OGS application deadline for the programme. The deadline is set independently by each of 80+ graduate units. The record in this shard is the programme-level OGS, not a named graduate unit's OGS, so no single date is authoritative for it and none was written. I also fetched the SGS OGS Application Instructions page, which repeats the same position ('your graduate unit deadline') and contains no central date. ADDITIONAL STATUS SIGNAL, not a deadline: the schedule SGS links as its 'Student deadlines' button lists per-unit deadlines that run from 15-Dec-2025 to 18-May-2026, and SGS lists Results as 'Mid-July', so the 2026-27 OGS competition appears to have concluded before this retrieval. I did not use that schedule as evidence (see rejected_sources) and I did not derive any date from it."
+      },
+      "field_mapping": {
+        "deadline_date": "null - U of T sets no single OGS deadline; nothing to write",
+        "deadline_precision": "unknown",
+        "deadline_display": "Student Deadline: Date set by graduate unit. Application Dates: Determined by graduate unit. Graduate Unit Deadline: refer to SGS Memo. Results: Mid-July. Applicants must apply separately to each graduate unit and adhere to that unit's internal deadline."
+      },
+      "examined": [
+        "https://www.sgs.utoronto.ca/awards-funding/scholarships-awards/ontario-graduate-scholarship-application-instructions/"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://docs.google.com/spreadsheets/d/1yIYCMEsMHxDca_K6xcYDFfBa7kamr-1IHfCLlVx5bPw/edit#gid=0",
+          "reason": "Off-provider host: docs.google.com is not a utoronto.ca domain, so it fails the brief's section-4 test for an official source. Independently unusable as a value because it is per-graduate-unit granularity (80+ rows, each with a different date) whereas this record is the programme-level OGS. I did fetch it and read it, but only as corroboration of the SGS page's own wording; its title is '2026-27 University of Toronto OGS Student Deadlines to Graduate Units', last updated March 17, 2026, with unit deadlines spanning 15-Dec-2025 to 18-May-2026. No date was taken from it."
+        },
+        {
+          "url": "https://forms.provost.utoronto.ca/",
+          "reason": "The OGS application system itself. Requires login; also an application portal rather than a published deadline, and it cannot yield a programme-level date."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 325,
+      "title": "Czech Government Scholarship - Developing Countries (AY 2027/28), Charles University Faculty of Social Sciences",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "For studies beginning in the academic year 2027/2028, the application deadline is September 30, 2026.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://study.fsv.cuni.cz/czech-government-scholarship-developing-countries-for-the-ay-2027-28",
+        "source_type": "official_university_page",
+        "publisher": "Faculty of Social Sciences, Charles University (Study at FSV UK)",
+        "retrieved_at": "2026-10-05T15:25:39Z",
+        "as_of": "Academic year 2027/2028 intake; page dated 21. 8. 2026",
+        "raw_extract": "For studies beginning in the academic year 2027/2028, the application deadline is September 30, 2026. For more information on the scholarships and for the online application form, please click here. Please note that FSV UK does not administer this scholarship. Applications must be submitted with an embassy in your country and FSV UK does not become involved in the process until the Ministry of Education's initial selection is complete.",
+        "exact_deadline_wording": "For studies beginning in the academic year 2027/2028, the application deadline is September 30, 2026.",
+        "confidence": "HIGH",
+        "notes": "The source states an explicit, unambiguous calendar deadline - 2026-09-30 - which is 5 days BEFORE the retrieval date of 2026-10-05. Per AGENT_BRIEF section 6 I therefore set outcome to expired_mismatch, left deadline_date null, and did NOT silently roll the date forward to 30 September 2027. The stale value is recorded separately in source_stated_deadline purely for reviewer visibility. This is NOT a CONFLICTING case: the two official sources I checked agree exactly. Two further points for the integrator: (1) the deadline is already past, so the AY 2027/28 cycle is closed and the record should not be presented as open; (2) the Faculty publishes one notice per intake, so the next cycle's date does not yet exist and must not be inferred from this year's -9 month pattern. Applications are lodged with the applicant's embassy, not with FSV UK."
+      },
+      "field_mapping": {
+        "deadline_date": "null - not written; the only published deadline (2026-09-30) is already past, so the record is flagged expired_mismatch rather than given a stale date",
+        "deadline_precision": "exact",
+        "deadline_display": "For studies beginning in the academic year 2027/2028, the application deadline is September 30, 2026. (Cycle closed; applications are submitted with the applicant's embassy.)"
+      },
+      "source_stated_deadline": "2026-09-30",
+      "source_stated_deadline_status": "published but expired as of retrieval 2026-10-05; deliberately not written to deadline_date",
+      "corroborating_sources": [
+        {
+          "url": "https://msmt.gov.cz/en/scholarships/government-scholarships-developing-countries",
+          "source_type": "official_government_page",
+          "publisher": "Ministry of Education, Youth and Sports of the Czech Republic (M\u0161MT), administered by DZS",
+          "retrieved_at": "2026-10-05T15:25:39Z",
+          "agrees_with_primary_source": true,
+          "raw_extract": "The applications period for the academic year 2027/2028 is from 21 August until 30 September 2026. ... Each applicant is obliged to fill in an electronic application form by 30 September 2026 at the latest. The successful applicants start studying in the academic year 2027/2028."
+        },
+        {
+          "url": "https://study.fsv.cuni.cz/how-to-apply/scholarships",
+          "source_type": "official_university_page",
+          "publisher": "Faculty of Social Sciences, Charles University",
+          "retrieved_at": "2026-10-05T15:25:39Z",
+          "agrees_with_primary_source": true,
+          "raw_extract": "The deadline for applications is usually in September, a year in advance (i.e. for studies beginning in the academic year 2027/28 apply for the scholarship by 30 September 2026)."
+        }
+      ],
+      "examined": [
+        "https://study.fsv.cuni.cz/how-to-apply/scholarships",
+        "https://msmt.gov.cz/en/scholarships/government-scholarships-developing-countries"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.dzs.cz/",
+          "reason": "Not used as evidence: DZS is the administering agency and links were surfaced only inside the M\u0161MT page. The M\u0161MT page already states the deadline explicitly and unambiguously, so no lower-hierarchy source was needed."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 373,
+      "title": "Japanese Government (MEXT) Scholarship for 2027 (Undergraduate Students) - Embassy Recommendation",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Applicants must submit the following documents to the Japanese diplomatic mission in the country of the applicant's nationality by the designated deadline. (No date published.)",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.studyinjapan.go.jp/en/_mt/2026/04/2027_Guidelines_Undergraduate_E.pdf",
+        "source_type": "official_programme_page",
+        "publisher": "Japan Student Services Organization (JASSO), Study in Japan - government-approved information site, hosting the MEXT application guidelines",
+        "retrieved_at": "2026-10-05T15:25:39Z",
+        "as_of": "APPLICATION GUIDELINES JAPANESE GOVERNMENT (MEXT) SCHOLARSHIP FOR 2027 (UNDERGRADUATE STUDENTS) (EMBASSY RECOMMENDATION)",
+        "raw_extract": "9. SELECTION (1) The Japanese diplomatic missions will conduct the First Screening of applicants through examination of submitted application documents, written academic examinations and interviews. (2) The date and time of the notification of the results of the First Screening will be specified separately by the Japanese diplomatic mission in the applicant's country ... (4) Applicants will be informed of the final selection results by the Japanese diplomatic mission in the applicant's country after February 2027. ... 10. APPLICATION DOCUMENTS Applicants must submit the following documents to the Japanese diplomatic mission in the country of the applicant's nationality by the designated deadline. The submitted documents will not be returned.",
+        "exact_deadline_wording": "by the designated deadline",
+        "confidence": "HIGH",
+        "notes": "I extracted the full text of all 10 pages of the live 2027 Undergraduate guidelines PDF (the record's catalogue_url) and enumerated its section headings: 1 Definition, 2 Fields of Study, 3 Preparatory Education, 4 Direct Placement, 5 Qualifications and Conditions, 6 Period of Scholarship, 7 Scholarship Benefits, 8 Suspension of Payment, 9 Selection, 10 Application Documents, 11 Unavoidable Circumstances, 12 Notes. There is NO schedule/recruitment-window section in this document - unlike the Research Students guidelines in this same shard, which do carry a dated process chart. The only deadline-related wording is 'by the designated deadline', with the deadline set separately by each embassy; the only dated milestone is 'final selection results ... after February 2027'. CRITICAL FLAG FOR THE INTEGRATOR: the sentence currently stored in this record's deadline_display - 'Recruitment for those arriving in Japan next April is made between April and May of the previous year. First screening is conducted between May and August by the Japanese Embassies or Consulates General.' - does NOT appear anywhere in the live 2027 guidelines PDF I fetched. I could not verify it against the current official document, so per AGENT_BRIEF section 5 I did not carry it forward as evidence and did not convert it into a MONTH value. It may originate from an earlier guideline edition or from another page; it should not be trusted without re-sourcing."
+      },
+      "field_mapping": {
+        "deadline_date": "null - official guidelines publish no deadline date or window; nothing to write",
+        "deadline_precision": "unknown",
+        "deadline_display": "No deadline published in the official 2027 guidelines. Applicants must submit documents to the Japanese diplomatic mission in their country of nationality 'by the designated deadline', which each embassy sets separately. First Screening is conducted by the diplomatic mission; final selection results are notified after February 2027."
+      },
+      "examined": [
+        "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships",
+          "reason": "The record's official_source_url. Fetched first; it is the generic MEXT scholarship page and publishes no dates at all for any track, so it cannot yield this track's deadline."
+        },
+        {
+          "url": "https://www.studyinjapan.go.jp/en/_mt/2026/04/0102-2027_Research_Guidelines_E.pdf",
+          "reason": "Research Students guidelines from the same cycle. These DO carry a dated process chart ('Around mid-Apr. 2026'), but per AGENT_BRIEF section 5 a schedule published for a different programme may not be used as this record's deadline. Deliberately not borrowed."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 374,
+      "title": "Japanese Government (MEXT) Scholarship for 2027 (Research Students) - Embassy Recommendation",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "MONTH",
+      "deadline_date": null,
+      "deadline_display": "Around mid-Apr. 2026 Call for applications opens at each Japanese diplomatic mission/Submission of application documents. The deadline for submission of application documents varies according to each Japanese diplomatic mission. Make sure to confirm the deadline at the website of the Japanese diplomatic mission in the country of your nationality or in some other way. / Around early May.-late Jul. 2026 First screening. The dates for the first screening and notification of screening results vary according to each Japanese diplomatic mission.",
+      "deadline_precision": "month",
+      "source": {
+        "url": "https://www.studyinjapan.go.jp/en/_mt/2026/04/0102-2027_Research_Guidelines_E.pdf",
+        "source_type": "official_programme_page",
+        "publisher": "Japan Student Services Organization (JASSO), Study in Japan - government-approved information site, hosting the MEXT application guidelines",
+        "retrieved_at": "2026-10-05T15:25:39Z",
+        "as_of": "2027 cycle - guidelines for applicants arriving in Japan in April 2027 or September/October 2027",
+        "raw_extract": "8. THE PROCESS OF APPLICATION AND SELECTION ... Around mid-Apr. 2026 Call for applications opens at each Japanese diplomatic mission/Submission of application documents The deadline for submission of application documents varies according to each Japanese diplomatic mission. Make sure to confirm the deadline at the website of the Japanese diplomatic mission in the country of your nationality or in some other way. / Around early May.-late Jul. 2026 First screening The dates for the first screening and notification of screening results vary according to each Japanese diplomatic mission. / Until Sep. 1, 2026 Request for a provisional acceptance to Japanese universities ... / Around mid-Sep-early Oct. 2026 Submission of a Placement Preference Application Form ... The deadline for submission of this form varies according to each Japanese diplomatic mission. / From Nov. 2026 Second screening and university placement / Jan. to Mar. 2027 Notification of results of selection and university placement",
+        "exact_deadline_wording": "The deadline for submission of application documents varies according to each Japanese diplomatic mission.",
+        "confidence": "HIGH",
+        "notes": "This is the only record in the shard where the official source publishes a month-level window for the deadline itself. Section 8 of the live 2027 Research Students guidelines schedules the call for applications to open 'Around mid-Apr. 2026' and first screening to run 'Around early May.-late Jul. 2026', so the embassy-set submission deadline necessarily falls inside roughly April-July 2026. No day is published and none was invented - deadline_date stays null and precision is 'month'. No MEXT or embassy source disagrees with another, so CONFLICTING does not apply. WHY expired_mismatch: the entire published submission window (mid-April to late July 2026) closed roughly two months before the retrieval date of 2026-10-05, and the next stage of the official chart ('From Nov. 2026 Second screening') has not yet begun, so embassy submissions for this 2027 cycle are finished - yet the record is flagged active in this programme. Per the brief the window was NOT rolled forward to a 2027 equivalent. The record's existing deadline_display ('Recruitment for those arriving in Japan in April 2027 or September/October 2027 is made between April and May of the previous year. First screening is conducted between May and July...') is close in substance to the live chart but is not verbatim; the wording in deadline_display above is."
+      },
+      "field_mapping": {
+        "deadline_date": "null - no day published, and the published April-July 2026 window has closed; not written",
+        "deadline_precision": "month",
+        "deadline_display": "Embassy submission deadline varies by Japanese diplomatic mission and falls within the published 2027-cycle window: call for applications opens around mid-April 2026, first screening runs around early May to late July 2026. Confirm the exact deadline with the embassy for the applicant's country. (This window has passed.)"
+      },
+      "source_stated_deadline_window": "2026-04 to 2026-07 (approximately, per the official process chart)",
+      "source_stated_deadline_window_status": "published but expired as of retrieval 2026-10-05; deliberately not converted to a date and not rolled forward",
+      "examined": [],
+      "rejected_sources": [
+        {
+          "url": "https://www.studyinjapan.go.jp/en/_mt/2026/04/01-2027_Research_Guidelines_E.pdf",
+          "reason": "The record's catalogue_url, a sibling Research Students guidelines file on the same official host. The primary file fetched (0102-..._Research_Guidelines_E.pdf) already carried the section 8 process chart, so the sibling was not needed as evidence and its wording was not mixed in."
+        },
+        {
+          "url": "https://www.mext.go.jp/content/20260420-mxt-kotokoku01-000049243_02.pdf",
+          "reason": "Identical 2027 Research Students guidelines on MEXT's own domain, identified via search. Not fetched: the hierarchy was already satisfied at the record's own official_source_url, and using a second copy of the same document could not change the answer."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 375,
+      "title": "Japanese Government (MEXT) Scholarship for 2026 (Japanese Studies Students)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Applicants must submit the following documents to the Japanese diplomatic mission in the applicant's country by the designated deadline. (No date published.)",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.studyinjapan.go.jp/en/_mt/2025/12/1_2026Application_Guidelines_for_Japanese_Studies_Students.pdf",
+        "source_type": "official_programme_page",
+        "publisher": "Japan Student Services Organization (JASSO), Study in Japan - government-approved information site, hosting the MEXT application guidelines",
+        "retrieved_at": "2026-10-05T15:25:39Z",
+        "as_of": "APPLICATION GUIDELINES JAPANESE GOVERNMENT (MEXT) SCHOLARSHIP FOR 2026 (JAPANESE STUDIES STUDENTS)",
+        "raw_extract": "6. SELECTION (1) The Japanese diplomatic missions will conduct the First Screening of applicants by means of examination of submitted application documents, a written examination (subject: Japanese) and interviews. (2) The date and time of the notification of the results of the First Screening will be specified separately by the Japanese diplomatic mission in the applicant's country; the reasons for the results of the screening will not be disclosed. (4) The results of the final selection will be notified on a date separately designated by the Japanese diplomatic mission in the applicant's country. ... 7. APPLICATION DOCUMENTS Applicants must submit the following documents to the Japanese diplomatic mission in the applicant's country by the designated deadline. The submitted documents will not be returned.",
+        "exact_deadline_wording": "by the designated deadline",
+        "confidence": "HIGH",
+        "notes": "I extracted the full text of all 9 pages of the live 2026 Japanese Studies Students guidelines PDF (the record's official_source_url and catalogue_url) and enumerated its section headings: 1 Qualifications and Conditions, 2 Placement and Study, 3 Period of Scholarship, 4 Scholarship Benefits, 5 Suspension, 6 Selection, 7 Application Documents, 8 Unavoidable Circumstances. As with the Undergraduate guidelines, there is NO schedule or recruitment-window section: the only deadline wording is 'by the designated deadline', set separately by each embassy. I searched the whole extracted text for any explicit calendar date and every date found is unrelated to applying (arrival window, scholarship period, age cut-offs). CRITICAL FLAG FOR THE INTEGRATOR: the sentence currently stored in this record's deadline_display - 'Recruitment for those arriving in Japan next October is made between December of the previous year and the following February. The first screening is conducted between January and February...' - does NOT appear in the live document, so per AGENT_BRIEF section 5 I did not carry it forward and did not convert it into a MONTH value. STATUS SIGNAL, deliberately not recorded as a deadline: the same document states 'If the accepting university has yet to be determined by the specified period of time (by August 14, 2026), the applicant will be rejected' and sets the scholarship period from October 2026, which indicates the 2026 cycle has concluded and this record is unlikely to be genuinely open. I left outcome as unknown rather than expired_mismatch because the source publishes no application deadline at all, so there is no past deadline to mismatch; the integrator should review the record's open/closed status on that basis."
+      },
+      "field_mapping": {
+        "deadline_date": "null - official guidelines publish no deadline date or window; nothing to write",
+        "deadline_precision": "unknown",
+        "deadline_display": "No deadline published in the official 2026 guidelines. Applicants must submit documents to the Japanese diplomatic mission in their country 'by the designated deadline', set separately by each embassy; First Screening is conducted by the diplomatic mission and results are notified on a separately designated date."
+      },
+      "examined": [],
+      "rejected_sources": [
+        {
+          "url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships",
+          "reason": "Generic MEXT page with no dates for any track; the track-specific official guideline PDF was available and was used instead."
+        },
+        {
+          "url": "https://www.mext.go.jp/content/20251222-mxt-kotokoku01-000046488_02.pdf",
+          "reason": "Surfaced in search as a 2026 Japanese Studies Students guidelines copy on MEXT's domain. Not fetched: the hierarchy was already satisfied by the record's own official_source_url on studyinjapan.go.jp."
+        }
+      ]
+    }
+  ]
+}
