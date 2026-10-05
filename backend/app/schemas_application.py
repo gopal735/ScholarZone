@@ -33,15 +33,51 @@ system to inherit from.
 
 from __future__ import annotations
 
-from datetime import date, datetime
+from datetime import date, datetime, timezone
 from enum import Enum
+from typing import Annotated
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, BeforeValidator, ConfigDict, Field
 
 from .verification_contract import (
     normalize_public_verification_status,
     public_verified_from_status,
 )
+
+
+def _as_utc(value: datetime | None) -> datetime | None:
+    """Return ``value`` as a UTC-aware datetime, without moving the instant.
+
+    Every timestamp in this file is written by the application as
+    ``datetime.now(timezone.utc)``. Reading it back does not always preserve that:
+    SQLite's ``DateTime`` has no timezone type, so a value that has made a
+    round trip through the database comes back naive, while the same value still
+    held in memory arrives aware. Both describe the same instant, so the API was
+    publishing one field in two different formats depending on whether the row
+    had been refreshed - ``...618155Z`` on one response and ``...618155`` on the
+    next, for a value that never changed.
+
+    A client cannot parse that pair the same way twice, and it made an idempotent
+    retry look like a changed timestamp. Normalising here, at the serialization
+    boundary, fixes the published representation for every consumer at once and
+    is a no-op on PostgreSQL, which returns aware values already.
+
+    A naive value is *assumed* UTC rather than localised, and that assumption is
+    safe here because nothing in this module writes local time: it is the same
+    reasoning ``app.routers.admin_verification._as_utc`` already applies to
+    verification timestamps. The instant is never shifted, and the microseconds
+    are never truncated - only the tzinfo label is made explicit.
+    """
+    if value is None:
+        return None
+    if value.tzinfo is None:
+        return value.replace(tzinfo=timezone.utc)
+    return value.astimezone(timezone.utc)
+
+
+#: A timestamp that reaches the wire as UTC-aware whatever the storage dialect
+#: did to it. Named so a field using it says so at the point of declaration.
+UtcTimestamp = Annotated[datetime, BeforeValidator(_as_utc)]
 
 
 class ApplicationOutcome(str, Enum):
@@ -178,7 +214,7 @@ class ChecklistItemResponse(BaseModel):
     position: int
     weight: int
     completed: bool
-    completed_at: datetime | None = None
+    completed_at: UtcTimestamp | None = None
     #: True when this item is excluded from the progress denominator because its
     #: weight is zero. Surfaced so the interface can say why a task does not move
     #: the number, rather than leaving a student wondering.
@@ -246,7 +282,7 @@ class ApplicationSummary(BaseModel):
     verified: bool
     verification_display: str
 
-    updated_at: datetime
+    updated_at: UtcTimestamp
     version: int
 
 
@@ -274,7 +310,7 @@ class ApplicationDetail(ApplicationSummary):
     #: scholarship, as structured evidence with a reason for each.
     open_gaps: list[dict] = Field(default_factory=list)
 
-    created_at: datetime
+    created_at: UtcTimestamp
 
 
 class ApplicationListResponse(BaseModel):
