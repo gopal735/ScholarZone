@@ -1,0 +1,180 @@
+name: Supervisor Discovery Proof
+
+# The first bounded production execution of Supervisor discovery.
+#
+# This workflow exists to make ONE supervised discovery run happen in production,
+# on purpose, with the owner watching. It is the smallest thing that can prove
+# the pipeline is reachable, authenticated and gated in a real deployment -
+# and it is deliberately the *only* thing it can do.
+#
+# What it will not do, and each of these is an absence rather than a setting:
+#
+#   * it cannot run on a schedule, a push, a pull request or a repository event.
+#     `workflow_dispatch` is the sole trigger, so nothing recurs and nothing
+#     fires by accident;
+#   * it cannot discover for a country, a batch or a range. The only input is one
+#     integer scholarship id, and the endpoint it calls has no other parameter;
+#   * it cannot be given a URL to crawl. The source is read from the
+#     scholarship's own recorded official source inside the backend;
+#   * it cannot reach the database. It receives no database credential, is not
+#     given one, and needs no schema access: it makes exactly one authenticated
+#     HTTPS request and reports the JSON that comes back;
+#   * it cannot switch on browser rendering. Rendering availability is a separate
+#     deployment setting with a separate name, and this trigger does not mention
+#     it.
+#
+# The secret is read from the repository secret at runtime, is passed to the
+# backend in a request header, and is never echoed, traced, or written to an
+# artifact. `set -x` is not enabled - deliberately, and asserted by the test
+# suite - because shell tracing would print the expanded header value.
+#
+# Failure is loud. Every step exits non-zero on a non-200, so a failed proof can
+# never be mistaken for a passed one in the Actions tab.
+
+on:
+  workflow_dispatch:
+    inputs:
+      scholarship_id:
+        description: >-
+          The single scholarship id to discover supervisors for. One id, one run.
+        required: true
+        type: string
+
+# Least privilege. This job makes an outbound HTTPS request and reads a
+# repository variable; it needs no token scope at all. Stated explicitly so a
+# future edit cannot inherit the default write-all token set.
+permissions:
+  contents: read
+
+# One Supervisor proof at a time. Two concurrent runs would interleave their
+# coverage writes for the same scholarship and make the before/after row counts
+# unreadable, which is the one thing a controlled proof must not be. Queued, not
+# cancelled: cancelling a proof in flight destroys the evidence it was run to
+# collect.
+concurrency:
+  group: supervisor-discovery-proof
+  cancel-in-progress: false
+
+jobs:
+  prove:
+    name: Bounded Supervisor discovery (one scholarship)
+    runs-on: ubuntu-latest
+    # Bounded on purpose. One static directory plus its profiles is a small
+    # amount of work; anything that overruns this is a hang, and a hang must
+    # fail the proof rather than sit open.
+    timeout-minutes: 20
+    env:
+      # A repository *variable*, not a secret: it is a public HTTPS hostname and
+      # carrying it as a variable keeps it readable in the Actions UI.
+      SCHOLARZONE_API_URL: ${{ vars.SCHOLARZONE_API_URL }}
+      SCHOLARZONE_VERIFICATION_SECRET: ${{ secrets.SCHOLARZONE_VERIFICATION_SECRET }}
+      TARGET_SCHOLARSHIP_ID: ${{ inputs.scholarship_id }}
+
+    steps:
+      - name: Validate the dispatch input
+        run: |
+          set -euo pipefail
+
+          # Validated here as well as at the endpoint. The endpoint validates too
+          # - it must, because it is reachable by other callers - but failing at
+          # the call site means a typo costs zero requests and reads as an input
+          # error rather than as an authentication or validation failure.
+          if [ -z "$TARGET_SCHOLARSHIP_ID" ]; then
+            echo "::error::scholarship_id is required. Dispatch with a single scholarship id."
+            exit 1
+          fi
+
+          # Explicitly digits-only. This rejects every attempt to smuggle a list,
+          # a range, a URL or a shell fragment through the one input that exists,
+          # before it reaches a command line.
+          if ! printf '%s' "$TARGET_SCHOLARSHIP_ID" | grep -Eq '^[0-9]+$'; then
+            echo "::error::scholarship_id must be a single positive integer."
+            echo "::error::This proof discovers for exactly one scholarship. Country-wide"
+            echo "::error::and batch discovery are not available here, by design."
+            exit 1
+          fi
+
+          if [ "$TARGET_SCHOLARSHIP_ID" -lt 1 ]; then
+            echo "::error::scholarship_id must be 1 or greater."
+            exit 1
+          fi
+
+          # The id itself is not a secret and is worth stating, so the run log
+          # records which scholarship the proof actually targeted.
+          echo "Target scholarship id: $TARGET_SCHOLARSHIP_ID"
+
+      - name: Validate the runtime configuration
+        run: |
+          set -euo pipefail
+
+          # Failing closed. An unconfigured host would otherwise produce a
+          # confusing DNS error that reads like an outage rather than a missing
+          # repository variable.
+          if [ -z "$SCHOLARZONE_API_URL" ]; then
+            echo "::error::The SCHOLARZONE_API_URL repository variable is not set."
+            exit 1
+          fi
+
+          # Only the emptiness of the secret is reported. Its value is never
+          # printed, echoed, or interpolated into any output.
+          if [ -z "$SCHOLARZONE_VERIFICATION_SECRET" ]; then
+            echo "::error::The SCHOLARZONE_VERIFICATION_SECRET repository secret is not set."
+            exit 1
+          fi
+
+          echo "Target host is configured and the runtime secret is present."
+
+      - name: Run the bounded discovery
+        run: |
+          set -euo pipefail
+
+          # Only the status code is echoed. The response body is written to a
+          # file and printed separately, so a failure can be diagnosed without
+          # the request ever being echoed back.
+          HTTP_CODE=$(curl -sS -o supervisor_response.json -w "%{http_code}" \
+            --connect-timeout 10 \
+            --max-time 900 \
+            -X POST \
+            -H "X-Verification-Secret: $SCHOLARZONE_VERIFICATION_SECRET" \
+            -H "Accept: application/json" \
+            "$SCHOLARZONE_API_URL/internal/supervisor/discover/$TARGET_SCHOLARSHIP_ID" \
+            || true)
+
+          echo "Supervisor discovery HTTP response code: $HTTP_CODE"
+
+          if [ "$HTTP_CODE" != "200" ]; then
+            echo "::error::The bounded Supervisor discovery trigger did not succeed (HTTP $HTTP_CODE)."
+            echo "::error::Nothing further is inferred from this run."
+            cat supervisor_response.json 2>/dev/null || echo "(no response body)"
+            exit 1
+          fi
+
+          echo "Bounded Supervisor discovery accepted."
+
+      - name: Report the outcome
+        if: always()
+        run: |
+          set -euo pipefail
+
+          # The response body is counts and provenance only - scholarship id,
+          # coverage status, pages read, candidates examined, candidates
+          # approved, candidates rejected, per-gate rejection histogram,
+          # professors written. It contains no secret and no candidate content.
+          #
+          # It is printed rather than uploaded so the proof's result is visible in
+          # the run itself, and uploaded so it survives as an artifact.
+          if [ -f supervisor_response.json ]; then
+            echo "--- supervisor discovery report ---"
+            cat supervisor_response.json
+            echo
+          else
+            echo "No response body was produced; the run failed before the request."
+          fi
+
+      - name: Upload the discovery report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: supervisor-discovery-report
+          path: supervisor_response.json
+          if-no-files-found: warn

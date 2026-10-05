@@ -343,6 +343,30 @@ def classify_person_candidate(
     return None
 
 
+def name_is_person_shaped(text: str) -> bool:
+    """Return whether ``text`` has the surface form of one person's name.
+
+    The *structural* half of personhood: capitalised tokens, the right number of
+    them, no acronyms, no digits. :func:`looks_like_a_person_name` answers the
+    narrower question of whether a role or honorific appears, and is the wrong
+    tool for a storage decision.
+
+    This is necessary but not sufficient on its own, and using it alone is a
+    known trap: "Academic Staff" and "School of Computing" are both two
+    capitalised words, so both pass here and neither names an individual. Pair it
+    with :func:`role_words_are_the_whole_name`, which removes the role and asks
+    whether anything person-shaped survives - and which is what makes the pair
+    equivalent to "this text claims a person" rather than "this text is two
+    capitalised words".
+
+    Public so the gate module can ask the question without reaching into this
+    module's internals. It delegates to the same private predicate
+    :func:`classify_person_candidate` uses, so there is one definition of
+    person shape and the two cannot drift apart.
+    """
+    return _is_person_shaped(text)
+
+
 def academic_role_in(text: str) -> str | None:
     """Return the first academic role ``text`` states about a person, if any.
 
@@ -374,6 +398,7 @@ __all__ = [
     "academic_role_in",
     "classify_person_candidate",
     "looks_like_a_person_name",
+    "name_is_person_shaped",
     "role_words_are_the_whole_name",
     "states_role_about_a_person",
 ]
