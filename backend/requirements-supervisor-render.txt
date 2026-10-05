@@ -1,0 +1,32 @@
+# Optional extra: the browser tier of Supervisor Discovery.
+#
+# NOT part of the production dependency set. requirements.txt deliberately does
+# not include this, and the canonical Vercel backend build must never install it.
+#
+# Why it is separate rather than pinned in requirements.txt: the Playwright
+# driver is ~101 MB on its own, which pushed the FastAPI function bundle to
+# 270.22 MB against a 225 MB platform limit. The build failed, so no deployment
+# was produced at all. A dependency that only a fallback tier needs must not be
+# able to stop the whole service from shipping.
+#
+# Install it where a browser is genuinely wanted:
+#
+#     pip install -r requirements.txt -r requirements-supervisor-render.txt
+#     playwright install chromium
+#
+# With this file absent - which is the normal production state - the behaviour
+# is already defined and safe, not broken:
+#
+#   * app/services/supervisor_render.py::playwright_available() returns False
+#   * build_driver() returns NullRenderDriver("No browser driver is installed.")
+#   * a JavaScript-only source is recorded as SOURCE_REQUIRES_RENDERING
+#
+# SOURCE_REQUIRES_RENDERING is an honest inconclusive state. It never becomes a
+# claim that a university has no staff, and it never becomes a negative. Static
+# discovery is unaffected and needs no browser.
+#
+# One framework only. It is the maintained option that covers JavaScript
+# execution, headless operation, deterministic automation and CI in a single
+# dependency, and a second browser driver would have been a second set of
+# lifecycle bugs to maintain.
+playwright>=1.49,<2
