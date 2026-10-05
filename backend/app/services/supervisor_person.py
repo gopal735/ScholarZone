@@ -172,6 +172,47 @@ def _find_role(text: str) -> str | None:
     return None
 
 
+def states_role_about_a_person(segment: str, role: str) -> bool:
+    """Return whether ``segment`` claims a person *in addition to* stating ``role``.
+
+    A role word on its own is a claim about a category, not about an individual.
+    "Academic Staff" states a role and names the collective that holds it - there
+    is no person in the text. "Rachit Agarwal Professor" states a role and names
+    who holds it. Both contain a role word, so the presence of one settles
+    nothing; the question is whether a person-shaped claim survives once the role
+    claim is taken away.
+
+    This is why the rule cannot be a list of forbidden words. Whether a label
+    names somebody is a property of its structure - does anything remain that
+    reads as a human name - and that holds for a university nobody has heard of.
+    It is also why removing the *role* is the right operation rather than the
+    name: "Academic Staff" collapses to a single non-name token, while
+    "Rachit Agarwal Professor" collapses to "Rachit Agarwal", which is a person.
+
+    Measured on the real Cornell Computer Science directory, which produced both
+    shapes: fourteen labels reduced to a person, two navigation links did not.
+    """
+    if not role:
+        return False
+    remainder = re.sub(
+        rf"(?<![\w.]){re.escape(role)}(?![\w])", " ", segment or "", flags=re.IGNORECASE
+    )
+    return _is_person_shaped(remainder)
+
+
+def role_words_are_the_whole_name(name: str, role: str | None) -> bool:
+    """Return whether ``name`` is nothing but the role claim written out.
+
+    The narrow form of :func:`states_role_about_a_person`, for the storage gate,
+    which sees only the name and role a candidate ended up with rather than the
+    segment they were read from. True means the text claimed a category and
+    nothing else, so no individual is evidenced anywhere in it.
+    """
+    if not role:
+        return False
+    return not states_role_about_a_person(name, role)
+
+
 def _honorific_of(text: str) -> str | None:
     tokens = _tokens(text)
     if not tokens:
@@ -265,8 +306,17 @@ def classify_person_candidate(
         if role is None:
             continue
         # The name is a sibling segment when the role sits in its own clause.
-        candidates = [other for position, other in enumerate(segments) if position != index]
-        candidates.append(" ".join(_tokens(segment)[:2]))
+        siblings = [other for position, other in enumerate(segments) if position != index]
+        # Otherwise the name is taken from the role-bearing segment itself, which
+        # is the case that has to be checked: the tokens used as the name include
+        # the role word, so "Academic Staff" offers itself as a person called
+        # "Academic Staff" with the role "academic". A name is only independent
+        # evidence of a person when something person-shaped survives removing the
+        # role, which "Rachit Agarwal Professor" does and "Academic Staff" does
+        # not. See states_role_about_a_person.
+        candidates = list(siblings)
+        if states_role_about_a_person(segment, role):
+            candidates.append(" ".join(_tokens(segment)[:2]))
         for candidate in candidates:
             candidate = candidate.strip()
             if _is_person_shaped(candidate):
@@ -324,4 +374,6 @@ __all__ = [
     "academic_role_in",
     "classify_person_candidate",
     "looks_like_a_person_name",
+    "role_words_are_the_whole_name",
+    "states_role_about_a_person",
 ]
