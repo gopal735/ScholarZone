@@ -1,0 +1,107 @@
+name: Supervisor One-Shot Discovery
+
+# Owner-triggered, one scholarship, once. This is an operational proof tool, not
+# a scheduler: there is no schedule, no push trigger, no pull_request trigger, no
+# repository_dispatch and no matrix, so nothing can make this run on its own and
+# continuous Supervisor activation stays OFF.
+on:
+  workflow_dispatch:
+    inputs:
+      scholarship_id:
+        description: >-
+          The single scholarship id to run Supervisor discovery for. Must be a
+          positive integer. There is no batch, country or "all" option, because
+          the endpoint it calls takes exactly one id and has no other route.
+        required: true
+        type: string
+
+# One run at a time. A second dispatch while one is in flight waits rather than
+# racing the same row twice.
+concurrency:
+  group: supervisor-one-shot-discovery
+  cancel-in-progress: false
+
+# Least privilege. The job reads nothing from the repository and writes nothing
+# to it; it only makes one outbound HTTPS call.
+permissions:
+  contents: read
+
+# Explicit ceiling. Discovery is polite and bounded by design, so this is a guard
+# rail against a hang, not an expected duration.
+timeout-minutes: 15
+
+jobs:
+  discover-one:
+    name: Discover supervisors for one scholarship
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Validate the input
+        id: input
+        env:
+          RAW_SCHOLARSHIP_ID: ${{ inputs.scholarship_id }}
+        run: |
+          set -euo pipefail
+          # Positive integer, nothing else. This rejects an empty value, a list,
+          # a country name, a URL and a second id before any request is made -
+          # the endpoint would reject them anyway, but failing here costs no
+          # network call and gives a clearer message.
+          if ! [[ "$RAW_SCHOLARSHIP_ID" =~ ^[1-9][0-9]*$ ]]; then
+            echo "::error::scholarship_id must be a single positive integer, got: $RAW_SCHOLARSHIP_ID"
+            exit 1
+          fi
+          echo "scholarship_id=$RAW_SCHOLARSHIP_ID" >> "$GITHUB_OUTPUT"
+
+      - name: Run one-shot Supervisor discovery
+        env:
+          # Only this step can read the credential, and it is passed straight to
+          # the request. The header value is never echoed, never printed and never
+          # written to a file; -s silences curl's progress meter for the same
+          # reason.
+          SCHOLARZONE_VERIFICATION_SECRET: ${{ secrets.SCHOLARZONE_VERIFICATION_SECRET }}
+          SCHOLARZONE_API_URL: ${{ vars.SCHOLARZONE_API_URL }}
+          SCHOLARSHIP_ID: ${{ steps.input.outputs.scholarship_id }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "${SCHOLARZONE_VERIFICATION_SECRET:-}" ]; then
+            echo "::error::SCHOLARZONE_VERIFICATION_SECRET is not configured for this repository"
+            exit 1
+          fi
+
+          base="${SCHOLARZONE_API_URL:-https://scholarzone-fwzj.vercel.app}"
+          url="$base/api/internal/supervisor/discover/$SCHOLARSHIP_ID"
+
+          echo "Target scholarship: $SCHOLARSHIP_ID"
+          echo "Endpoint           : POST $base/api/internal/supervisor/discover/<id>"
+
+          # --fail makes a non-2xx response an error exit, so a refused or failed
+          # call can never be reported as a successful run. The body goes to a
+          # file and only the status line is printed, so no header and no
+          # credential can reach the log.
+          status=$(curl --silent --show-error --fail-with-body \
+            --output response.json --write-out '%{http_code}' \
+            --max-time 600 \
+            --request POST "$url" \
+            --header "X-Verification-Secret: $SCHOLARZONE_VERIFICATION_SECRET" \
+            --header "Accept: application/json") || {
+            echo "::error::Supervisor discovery request failed (HTTP $status)"
+            if [ -s response.json ]; then
+              echo "--- response body ---"
+              cat response.json
+            fi
+            exit 1
+          }
+
+          echo "HTTP status: $status"
+          echo "--- response body ---"
+          cat response.json
+          echo
+
+          # Report the shape of the result without depending on jq being present.
+          if grep -q '"professors_found"' response.json; then
+            echo "Supervisor discovery completed and the outcome is above."
+          else
+            echo "::error::response did not carry a discovery outcome"
+            exit 1
+          fi

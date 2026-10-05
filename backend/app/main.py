@@ -31,6 +31,7 @@ from .routers.applications import router as applications_router
 from .routers.internal_maintenance import router as internal_maintenance_router
 from .routers.mentor import router as mentor_router
 from .routers.supervisors import router as supervisors_router
+from .routers.supervisor_trigger import router as supervisor_trigger_router
 from .routers.outreach import router as outreach_router
 from .routers.supervisor_email import router as supervisor_email_router
 from .services.application_workspace import WorkspaceError
@@ -337,6 +338,17 @@ app.include_router(mentor_router)
 # No authentication router is added here: master already owns /auth.
 app.include_router(outreach_router)
 app.include_router(supervisor_email_router)
+
+# The one-shot Supervisor discovery trigger is mounted last, beside the internal
+# maintenance dispatcher, because it is the other half of the internal surface:
+# constant-time X-Verification-Secret authentication, one scholarship per call,
+# no collection route and no scheduler behind it. It is mounted after the public
+# routers deliberately - its prefix /internal/supervisor has no public
+# counterpart, so it cannot shadow anything - and it is mounted *before* the
+# maintenance dispatcher so the two internal routers stay adjacent and reviewable
+# together. Mounting it adds no way to run maintenance, and maintenance still has
+# no path to Supervisor discovery.
+app.include_router(supervisor_trigger_router)
 
 # The internal dispatcher is mounted last and behind constant-time Cron
 # authentication. It never runs maintenance; it only reconciles, claims
