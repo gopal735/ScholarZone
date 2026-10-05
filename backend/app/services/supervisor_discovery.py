@@ -73,6 +73,7 @@ from .supervisor_render import render_blocking
 from .supervisor_source import RenderBudget, RenderErrorKind, SourceOutcome
 from .supervisor_person import (
     academic_role_in,
+    approve_personhood,
     classify_person_candidate,
     looks_like_a_person_name,
     profile_url_is_person_profile,
@@ -936,31 +937,20 @@ def _persist_candidates(
                 candidate.profile_url,
             )
             continue
-        # Second gate, on the name itself. The check above asks whether a role was
-        # stated; this asks whether the name is anything more than that role restated
-        # as a label - "Academic Staff" says a role and names a collective, not a
-        # person, and a link that does so evidences nobody. Belt and braces rather
-        # than redundancy: classify_person_candidate already refuses these, so this
-        # catches a candidate built by any other path, including a future one.
-        if role_words_are_the_whole_name(candidate.name, candidate.role):
+        ok, reason = approve_personhood(
+            candidate.name,
+            role=candidate.role,
+            role_evidence=candidate.role_evidence,
+            name_claims_person=getattr(candidate, "name_claims_person", False),
+            profile_url=candidate.profile_url,
+            directory_context=True,
+        )
+        if not ok:
             logger.info(
-                "Skipping candidate whose name is only the role restated: %s (%s)",
+                "Skipping candidate failing personhood: %s (%s): %s",
                 candidate.name,
                 candidate.profile_url,
-            )
-            continue
-        # Inline-role evidence requires a person-profile URL. A programme page or
-        # research-centre link may use the same capitalised words as a name, but
-        # its URL does not point to an individual, so the role it states cannot
-        # establish personhood on its own.
-        if (
-            candidate.role_evidence == "inline_role"
-            and not profile_url_is_person_profile(candidate.profile_url)
-        ):
-            logger.info(
-                "Skipping inline-role candidate without a person-profile URL: %s (%s)",
-                candidate.name,
-                candidate.profile_url,
+                reason,
             )
             continue
 
