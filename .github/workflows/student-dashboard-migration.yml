@@ -21,6 +21,16 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false
 
+# `shell: bash` adds `-o pipefail`, which GitHub's default Linux shell omits.
+# Without it the two migration steps below reported tee's exit status - always 0
+# - so a dry run that failed to connect, or a migration that failed to apply, was
+# logged as a success. migrate_schema.py already exits 0 for a genuine no-op
+# ("Schema is already up to date") and 1 only on a real failure, so this makes a
+# real failure visible without turning a normal no-op run red.
+defaults:
+  run:
+    shell: bash
+
 jobs:
   migrate:
     runs-on: ubuntu-latest

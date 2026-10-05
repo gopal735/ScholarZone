@@ -7,6 +7,46 @@ on:
     branches: [main, master]
   workflow_dispatch:
 
+# `shell: bash` runs every step as `bash --noprofile --norc -eo pipefail {0}`.
+# GitHub's *default* shell on Linux is `bash -e {0}`, which does NOT set pipefail.
+# That difference is invisible until a step pipes: a pipeline reports the exit
+# status of its last command, so `some_check.py 2>&1 | tee check.log` recorded
+# tee's status - which is always 0 - and a failing check was reported green.
+#
+# Fixing the backend test step alone was not enough. Six more steps in this
+# workflow had the same shape and the same hole, and one of them was preflight:
+# the gate whose entire purpose is to catch a failing check. Each of the
+# producers below returns a correct non-zero exit code - the tee was throwing it
+# away.
+#
+#   job                producer                     check name
+#   backend-tests      pytest                       backend-tests
+#   import-smoke       import_smoke_test.py         import-smoke
+#   git-integrity      git_integrity_check.py       git-integrity
+#   env-config         env_config_check.py          env-config
+#   schema-compat      schema_compat_check.py       schema-compat
+#   build-and-smoke    artifact_smoke_test.py       build-and-smoke
+#   preflight          preflight.py                 preflight
+#
+# Declared once at the workflow level, so the invariant is a property of the
+# workflow rather than something each step has to remember:
+#
+#     producer exits non-zero -> step exits non-zero -> job exits non-zero
+#                               -> the PR check fails
+#     producer exits zero     -> step succeeds
+#
+# Measured, not assumed: with a producer exiting 1, the default shell records 0
+# and this one records 1; with a producer exiting 0 both record 0, so this adds
+# no false reds. tee still captures the output either way, so the `if: failure()`
+# artifact uploads are unaffected.
+#
+# The per-step `set -o pipefail` lines below are kept: they are now redundant
+# rather than wrong, and they keep the rule intact if a step is ever copied into
+# a workflow that has not declared the default.
+defaults:
+  run:
+    shell: bash
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -80,9 +120,18 @@ jobs:
           # pipefail, not a bare pipe. `pytest ... | tee log` reports the exit
           # status of tee, which is always 0 - so a failing backend suite was
           # reported green. This step was the one the frontend step below was
-          # already guarding against; both now use the same rule.
+          # already guarding against; both now use the same rule. It is also set
+          # workflow-wide under `defaults:` further up.
           set -o pipefail
-          python -m pytest tests/ -x --tb=short 2>&1 | tee pytest.log
+          # No `-x`. This job is the backend release gate, so its result has to
+          # mean "the selected suite passed" rather than "it stopped at the first
+          # thing that went wrong". With `-x` the run that first restored the
+          # real exit code reported `1 failed, 259 passed` and then stopped -
+          # 261 of the 5517 tests collected under tests/ never ran, so the green
+          # half of that result said nothing about the other 95%. Run the whole
+          # selection, so the collection count, the execution count and the exit
+          # code are one statement rather than three.
+          python -m pytest tests/ --tb=short 2>&1 | tee pytest.log
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
