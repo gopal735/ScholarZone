@@ -274,3 +274,180 @@ class ScholarshipVerificationUpdate(BaseModel):
     verification_notes: str | None = None
     verified_by: str | None = None
 # redeploy trigger
+
+
+# ---------------------------------------------------------------------------
+# Supervisor discovery, public
+#
+# No field here can carry a fabricated fact: availability is a list of explicit
+# states with their sources, alignment is a band with its reasoning, and there is
+# no field for a probability, a response rate or a count of publications.
+# ---------------------------------------------------------------------------
+
+
+class SupervisorAvailabilityResponse(BaseModel):
+    scope: str
+    state: str
+    source_url: str
+    verified_at: str
+
+
+class SupervisorSourceResponse(BaseModel):
+    source_url: str
+    source_host: str
+    source_type: str
+    retrieved_at: str | None = None
+    verified_at: str | None = None
+    evidence_summary: str | None = None
+
+
+class ResearchAlignmentResponse(BaseModel):
+    band: str
+    matched_interests: list[str] = []
+    matched_areas: list[str] = []
+    explanation: str = ""
+
+
+class ProfessorResponse(BaseModel):
+    id: int
+    name: str
+    title: str | None = None
+    institution: str
+    department: str | None = None
+    research_areas: list[str] = []
+    official_profile_url: str
+    official_email: str | None = None
+    official_email_verified: bool = False
+    lab_url: str | None = None
+    relationship_type: str
+    availability: list[SupervisorAvailabilityResponse] = []
+    research_alignment: ResearchAlignmentResponse
+    evidence_source_url: str
+    evidence_source_type: str
+    evidence_summary: str | None = None
+    verified_at: str | None = None
+    last_verified_at: str | None = None
+    sources: list[SupervisorSourceResponse] = []
+
+
+class SupervisorCoverageResponse(BaseModel):
+    coverage_status: str
+    verified_supervisor_count: int
+    evidence_state: str
+    last_checked_at: str | None = None
+    discovery_pending: bool = False
+
+
+class SupervisorListResponse(BaseModel):
+    scholarship_id: int
+    coverage: SupervisorCoverageResponse
+    supervisors: list[ProfessorResponse] = []
+
+
+class SupervisorSummaryResponse(BaseModel):
+    """The lightweight shape a scholarship card needs.
+
+    Deliberately carries no professor names. A card asks "does this feature have
+    anything to show", and answering that must not mean shipping every profile
+    and source to a list page.
+    """
+
+    scholarship_id: int
+    coverage_status: str
+    verified_supervisor_count: int
+    last_checked_at: str | None = None
+    discovery_pending: bool = False
+
+
+# ---------------------------------------------------------------------------
+# Outreach, private
+#
+# Every one of these models is served only from an authenticated session, and the
+# user id is never accepted from the client.
+# ---------------------------------------------------------------------------
+
+
+class OutreachCreateRequest(BaseModel):
+    scholarship_id: int
+    professor_id: int
+    template_id: int | None = None
+    draft_subject: str | None = None
+    draft_body: str | None = None
+    next_action: str | None = None
+
+
+class OutreachUpdateRequest(BaseModel):
+    status: str | None = None
+    draft_subject: str | None = None
+    draft_body: str | None = None
+    next_action: str | None = None
+    notes: str | None = None
+    follow_up_due_at: datetime | None = None
+    response_status: str | None = None
+    #: Required on every update. A write that does not carry the version it read
+    #: is refused with 409 rather than allowed to overwrite a concurrent edit.
+    version: int
+
+
+class OutreachResponse(BaseModel):
+    id: int
+    scholarship_id: int
+    professor_id: int
+    application_id: int | None = None
+    status: str
+    draft_subject: str | None = None
+    draft_body: str | None = None
+    first_contacted_at: datetime | None = None
+    last_contacted_at: datetime | None = None
+    follow_up_due_at: datetime | None = None
+    response_status: str | None = None
+    response_at: datetime | None = None
+    next_action: str | None = None
+    notes: str | None = None
+    template_id: int | None = None
+    version: int
+    created_at: datetime
+    updated_at: datetime
+
+
+class OutreachSummaryResponse(BaseModel):
+    """Counts of the student's own outreach.
+
+    A separate surface from the catalogue's counts. Nothing here is added to, or
+    subtracted from, the application, match, saved or catalogue totals.
+    """
+
+    total: int
+    by_status: dict[str, int]
+    follow_ups_due: int
+    awaiting_reply: int
+    positive_responses: int
+
+
+class ContactTemplateResponse(BaseModel):
+    id: int
+    template_key: str
+    title: str
+    degree_level: str | None = None
+    subject_hint: str | None = None
+    body_text: str
+
+
+class EmailDraftRequest(BaseModel):
+    scholarship_id: int
+    professor_id: int
+    template_key: str | None = None
+    #: The student's own stated interests, used for this draft only. Not stored,
+    #: and never inferred from anything the student did not type here.
+    interests: list[str] = []
+
+
+class EmailDraftResponse(BaseModel):
+    subject: str
+    body: str
+    #: What the drafter could not fill in, named rather than invented. A missing
+    #: verified publication is reported as absent so the student can write their
+    #: own sentence instead of receiving a confident invention.
+    unresolved: list[str] = []
+    template_key: str
+    to_address: str | None = None

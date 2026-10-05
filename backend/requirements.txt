@@ -28,4 +28,22 @@ beautifulsoup4
 pypdf>=5.0,<7
 pdfplumber>=0.11,<1
 pytest
-
+# ---------------------------------------------------------------------------
+# Optional: browser rendering for client-side institutional directories
+#
+# Supervisor discovery is static-first. This is needed only for the fallback
+# tier, which runs when a public university directory publishes its staff list
+# only after JavaScript executes - and even then only when an operator sets
+# SCHOLARZONE_SUPERVISOR_RENDER_ENABLED. With the flag off, or with this package
+# absent, those sources are recorded as source_requires_rendering, which is an
+# honest inconclusive state and never a claim that a university has no staff.
+#
+# Install the browser binary too: `playwright install chromium`. The ordinary
+# test suite and the maintenance worker never require either.
+#
+# One framework only. It is the maintained option that covers JavaScript
+# execution, headless operation, deterministic automation and CI in a single
+# dependency, and a second browser driver would have been a second set of
+# lifecycle bugs to maintain.
+# ---------------------------------------------------------------------------
+playwright>=1.49,<2

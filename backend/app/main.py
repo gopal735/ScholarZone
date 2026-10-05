@@ -29,6 +29,9 @@ from .routers.auth import router as auth_router
 from .routers.dashboard import router as dashboard_router
 from .routers.applications import router as applications_router
 from .routers.mentor import router as mentor_router
+from .routers.supervisors import router as supervisors_router
+from .routers.outreach import router as outreach_router
+from .routers.supervisor_email import router as supervisor_email_router
 from .services.application_workspace import WorkspaceError
 from .seed import seed_database
 
@@ -300,6 +303,11 @@ app.include_router(match_router)
 # scanned past, and because the counting layer depends on the Match engine rather
 # than the other way round.
 app.include_router(counts_router)
+# The supervisor router is registered before the scholarships router for the same
+# reason the match router is: its paths are /scholarships/{id}/supervisors, so
+# registering it first makes that independence structural rather than dependent on
+# scan order.
+app.include_router(supervisors_router)
 app.include_router(scholarships_router)
 app.include_router(verification_router)
 app.include_router(admin_image_review_router)
@@ -322,6 +330,12 @@ app.include_router(applications_router)
 # dependent on scan order, which is the same discipline the match router uses
 # for /scholarships/match.
 app.include_router(mentor_router)
+# Supervisor outreach and email drafting sit behind the same session dependency as
+# the dashboard and workspace. Their prefixes are /outreach and /supervisor-email
+# with no public counterpart, so registering them last cannot shadow anything.
+# No authentication router is added here: master already owns /auth.
+app.include_router(outreach_router)
+app.include_router(supervisor_email_router)
 
 
 @app.get("/debug/fix-null-lists")
