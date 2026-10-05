@@ -77,6 +77,11 @@ jobs:
       - name: Run backend tests
         run: |
           cd backend
+          # pipefail, not a bare pipe. `pytest ... | tee log` reports the exit
+          # status of tee, which is always 0 - so a failing backend suite was
+          # reported green. This step was the one the frontend step below was
+          # already guarding against; both now use the same rule.
+          set -o pipefail
           python -m pytest tests/ -x --tb=short 2>&1 | tee pytest.log
 
       - name: Upload test results
