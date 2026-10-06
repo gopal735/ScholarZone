@@ -97,7 +97,7 @@ _IMAGE_AUDIT_CONTEXT = "scholarship_image_audit_context"
 
 
 def _is_image_audit_context(sql: str) -> bool:
-    return _target(sql) == _IMAGE_AUDIT_CONTEXT
+    return _IMAGE_AUDIT_CONTEXT in sql.lower()
 
 
 def seed(session, tag: str = "") -> dict[str, int]:
