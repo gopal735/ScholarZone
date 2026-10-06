@@ -1,0 +1,30 @@
+﻿{
+  "country": "IE",
+  "topic": "gross_monthly_income",
+  "source_id": "ie-hea-graduate-outcomes-2025",
+  "source_url": "https://hea.ie/2025/11/27/graduate-outcomes-survey-2025/",
+  "source_type": "OFFICIAL_STATISTICS",
+  "publisher": "Higher Education Authority (HEA), Ireland - statutory body under the Department of Further and Higher Education, Research, Innovation and Science",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2024 graduates, published 2025",
+  "raw_extract": "Graduate Outcomes Survey 2025, by James Holohan, posted 27 November 2025\n\n'90% of 2024 Graduates are in Employment or Further Study Nine Months after Graduation'\n\n'Just over 80% of graduates from the Class of 2024 were in employment nine months after graduation, while a further 10.7% were engaged in Further Study. This is according to the results of the latest Graduate Outcomes Survey released by the Higher Education Authority today.'\n\n'## Employment\n\n- Overall, 80.2% of 2024 graduates were in employment nine months after graduation (up very slightly on 80.0% for the Class of 2023). Employment is highest for Education graduates (91.6%) and lowest for Arts & Humanities graduates (63.1%).\n- 66.4% of all graduates were in Permanent or open-ended contracts while a further 21.1% were in contracts of 12 months or more.\n- Almost 50% of all Graduates earn over EUR 40,000 EUR.\n- 73% of all graduates were employed in \"High Skilled\" occupations, compared with 46% of the total national workforce.'\n\n'## Further Study\n\n- The proportion of graduates pursuing further study is 10.7%. ...'\n\n'In 2025, just under 71,000 graduates were surveyed. The most common award types were Undergraduate Honours Degrees (49.8%), followed by Taught Masters (27.8%). The most common fields of study were Business, Administration & Law (24.3%), Health & Welfare (16.2%), and Engineering, Manufacturing and Construction (11.0%). In total, 50% of graduates responded to the survey.'",
+  "claims": [
+    {
+      "claim_id": "ie-gross-annual-distribution-001",
+      "value": 40000,
+      "unit": "EUR per year (annual salary threshold, GROSS)",
+      "as_of": "Class of 2024 graduates, survey published 2025-11-27",
+      "statement": "The Higher Education Authority states that 'Almost 50% of all Graduates earn over EUR 40,000 EUR', for graduates surveyed nine months after graduation. This is a threshold in a distribution, not a median or a mean."
+    }
+  ],
+  "assumptions": [
+    "The HEA figure is an ANNUAL gross salary threshold, not a monthly figure and not a median.",
+    "'Almost 50%' is the HEA's own wording; the precise percentage is not given on this page.",
+    "Survey non-response: only about half of graduates responded to the survey, and in related HEA key-findings releases a material minority of employed Level 6/7 graduates decline to state earnings, so the earnings distribution is self-selected and upward-biased."
+  ],
+  "field_mapping": {
+    "gross_monthly_income": "career.gross_monthly_income (topic: gross_monthly_income)"
+  },
+  "notes": "THIS IS A GROSS FIGURE. It is annual, not monthly, and it is a distribution threshold, not a typical value. It MUST NOT be used directly for a cost-versus-salary break-even calculation; use artifact 020_net_monthly_income.json in this directory for a NET figure. It is included here to justify the gross input used in the net derivation: EUR 40,000 per year is about EUR 3,333 per month gross, and the EUR 4,000 per month gross used in the net derivation (EUR 48,000 per year) is above the point that roughly half of Irish graduates clear.",
+  "evidence_limitations": "Population: all Irish third-level graduates of the Class of 2024, all fields, all levels, in employment, surveyed nine months after graduation. Not a new-graduate-only figure (nine months after graduation is close to, but not the same as, first employment), not adjusted for field of study, occupation or region, and self-reported with roughly 50% survey response. Nine months after graduation is NOT a standard first-salary measurement point, so this may be higher or lower than a starting salary. This is the only official Irish graduate earnings statement I could obtain; the HEA's full earnings report (which uses Revenue's CSO Educational Longitudinal Database data) would be the route to a proper median, and I did not retrieve a median from it within this pass."
+}

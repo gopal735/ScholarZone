@@ -1,0 +1,54 @@
+﻿{
+  "country": "CA",
+  "topic": "post_study_work",
+  "source_id": "ircc-pgwp-about",
+  "source_url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/about.html",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Immigration, Refugees and Citizenship Canada (IRCC)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026-03-09",
+  "raw_extract": "Post-graduation work permit\nAbout the post-graduation work permit\n\nThe post-graduation work permit (PGWP) allows students who have graduated from eligible designated learning institutions (DLIs) to gain valuable Canadian work experience.\n\nGraduating from a designated learning institution (DLI) doesn't automatically make you eligible for a PGWP.\n\nCheck the DLI list to find out which schools have eligible programs.\n\nAs of November 1, 2024, the eligibility requirements for a PGWP changed. Most PGWP applicants now need to give proof of language results when they apply.\n\nIf you submitted your PGWP application before November 1, 2024, or are a flight school graduate, you're exempt from the new requirements.\n\nHow long is a post-graduation work permit valid?\n\nThe length of your PGWP depends on the level and duration of your study program, as well as the expiry date of your passport, whichever comes first.\n\nFor master's degree programs as of February 15, 2024\n\nYou can apply for a 3-year PGWP, even if your master's program was less than 2 years, as long as\n\nyour program was at least 8 months (or 900 hours for Quebec programs) and\n\nyou meet all other eligibility requirements\n\nThis doesn't apply to certificate or diploma programs.\n\nFor all other programs\n\nIf your program was at least 8 months (or 900 hours for Quebec credentials), but less than 2 years\n\nWe may give you a PGWP that's valid for up to the same length as your study program.\n\nFor example, if you completed a 9-month program, we may give you a work permit for up to 9 months.\n\nIf your program was 2 years or more\n\nWe may give you a PGWP that's valid for 3 years.\n\nIf you completed more than 1 program\n\nYou may be able to get a PGWP that combines the length of each program as long as you meet the eligibility requirement for each program.\n\nEach of the programs you completed must be\n\nPGWP eligible and\n\nat least 8 months (or 900 hours for Quebec credentials) in length\n\nYou can't get a PGWP if you already had one after completing an earlier program of study.\n\nIf your passport expires before your PGWP\n\nMake sure your passport is valid for the full length of time you're eligible for a PGWP before you apply.\n\nYour work permit will only be issued for the period your passport is valid.\n\n[Page footer date modified: 2026-03-09]",
+  "research_notes": "Official route name: 'Post-graduation work permit' (PGWP), confirmed from IRCC, not from memory. DURATION IS TIERED BY PROGRAM LENGTH, NOT A SINGLE NUMBER - this is the main modelling trap for Canada. For a bachelor's degree, which falls under 'For all other programs' (the 3-year rule is stated only for master's degree programs), the published rule is: at least 8 months but under 2 years of study gives a permit up to the same length as the program; 2 years or more gives up to 3 years. A typical 3-4 year bachelor's therefore falls in the '2 years or more' band at 3 years, but that is an inference from the printed brackets, so it is recorded as a claim against the 2-years-or-more rule rather than asserted as a separate bachelor-specific number. The much-quoted '3-year PGWP for a 1-year master's' does NOT transfer to a bachelor's and must not be copied across. Two further hard limits: the permit cannot exceed the passport validity ('the expiry date of your passport, whichever comes first'), and eligibility depends on the school AND program being on the DLI list - graduation alone is not sufficient ('Graduating from a designated learning institution (DLI) doesn't automatically make you eligible for a PGWP'). Since 1 November 2024 most applicants must also supply approved language-test results. Not verified here: the specific language scores, the TEER category list detail, and the Provincial Nominee Program alternative - each needs its own fetch and none is claimed.",
+  "claims": [
+    {
+      "claim_id": "ca-post-study-work-1",
+      "statement": "The official Canadian post-study work route is the 'Post-graduation work permit' (PGWP), for graduates of eligible designated learning institutions (DLIs).",
+      "value": null,
+      "unit": "route name",
+      "as_of": "2026-03-09",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ca-post-study-work-2",
+      "statement": "For a study program of 2 years or more, IRCC may grant a PGWP valid for 3 years.",
+      "value": 3,
+      "unit": "years",
+      "as_of": "2026-03-09",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ca-post-study-work-3",
+      "statement": "For a study program of at least 8 months but less than 2 years, IRCC may grant a PGWP valid for up to the same length as the study program (e.g. a 9-month program gives up to 9 months).",
+      "value": null,
+      "unit": "months (equal to program length)",
+      "as_of": "2026-03-09",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ca-post-study-work-4",
+      "statement": "PGWP length cannot exceed the applicant's passport validity, whichever comes first, so passport expiry can shorten the permit.",
+      "value": null,
+      "unit": "constraint",
+      "as_of": "2026-03-09",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ca-post-study-work-5",
+      "statement": "Each qualifying program must be at least 8 months (or 900 hours for Quebec credentials) long, and a second PGWP cannot be obtained if one was already held after an earlier program.",
+      "value": 8,
+      "unit": "months minimum program length",
+      "as_of": "2026-03-09",
+      "study_level": "bachelor"
+    }
+  ]
+}

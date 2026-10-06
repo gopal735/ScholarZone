@@ -1,0 +1,22 @@
+﻿{
+  "country": "US",
+  "topic": "permanent_residence",
+  "source_id": "uscis-green-card-eligibility-categories",
+  "source_url": "https://www.uscis.gov/green-card/green-card-eligibility-categories",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "U.S. Citizenship and Immigration Services (USCIS)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026-09-04",
+  "raw_extract": "To apply for a Green Card, you must be eligible under one of the categories listed below. … Green Card through Employment You may be eligible to apply as a… If you… Immigrant worker Are a first preference immigrant worker, meaning you: Have extraordinary ability in the sciences, arts, education, business or athletics, or Are an outstanding professor or researcher, or Are a multinational manager or executive who meets certain criteria …",
+  "research_notes": "The full category list fetched from USCIS contains no student-status or post-study route to a Green Card; there is no minimum-years-of-study pathway. Study in the US can only lead towards permanent residence indirectly, through an employment-based category (for example an EB-2/EB-3 worker or an EB-1 extraordinary-ability applicant), and to reach those the applicant must first hold a separate nonimmigrant work status such as H-1B. The fetched page publishes no minimum number of years, so the requested 'minimum years' figure is UNAVAILABLE and is not asserted. Category names and the employment-based structure above are quoted from the page.",
+  "claims": [
+    {
+      "claim_id": "us-permanent-residence-route-1",
+      "statement": "USCIS lists no student-status route to a Green Card; permanent residence is reachable only through categories such as family, employment, special immigrant, refugee/asylee, humanitarian or registry, so there is no minimum study duration that confers permanent residence.",
+      "value": null,
+      "unit": "no study-based PR route",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

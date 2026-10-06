@@ -1,0 +1,78 @@
+﻿{
+  "country": "NL",
+  "topic": "net_monthly_income",
+  "source_id": "nl-belastingdienst-cijferbijlage-2026",
+  "source_url": "https://odb.belastingdienst.nl/wp-content/uploads/2025/12/Cijferbijlage-2026-bij-Nieuwsbrief-LH-LH-209-1B61FD%5FTG.pdf",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Belastingdienst (Dutch tax and customs administration), Ministry of Finance",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026 (rates in force from 1 January 2026)",
+  "raw_extract": "Tarieven, bedragen en percentages loonheffingen vanaf 1 januari 2026 / Bijlage bij de Nieuwsbrief Loonheffingen 2026 / 16 december 2025\n\nTabel 1  Schijventarief loonbelasting/premie volksverzekeringen\n\nSchijf | Voor loon per jaar Van meer dan | Tot en met | Jonger dan de AOW-leeftijd | AOW-leeftijd en ouder, geboren in 1946 of later\n1 | EUR 0 | EUR 38.883 | 35,75% | 17,85%\n2a | EUR 38.883 | EUR 78.426 | 37,56% | 37,56%\n3 | EUR 78.426 | - | 49,50% | 49,50%\n\nHet tarief van de schijven is als volgt samengesteld:\nSchijf | Heffingscomponent | Jonger dan de AOW-leeftijd | AOW-leeftijd en ouder\n1 | premie AOW | 17,90% | -\n1 | premie Anw | 0,10% | 0,10%\n1 | premie Wlz | 9,65% | 9,65%\n1 | loonbelasting | 8,10% | 8,10%\n1 | totaal schijf 1 | 35,75% | 17,85%\n2a en 2b | loonbelasting | 37,56% | 37,56%\n3 | loonbelasting | 49,50% | 49,50%\n\nTabel 2a/2b  Heffingskortingen voor de loonbelasting/premie volksverzekeringen\nAlle bedragen in deze tabel zijn op jaarbasis\n\nHeffingskorting | Jonger dan de AOW-leeftijd Bedrag | Percentage | Bijzonderheid\nAlgemene heffingskorting | EUR 3.115 | - | Voor loon tot EUR 29.736\nAfbouw algemene heffingskorting | - | 6,398% | Voor loon vanaf EUR 29.736, maar niet meer dan EUR 78.426\nMaximale afbouw | EUR 3.115 | - | Bereikt bij EUR 78.426\nArbeidskorting 1e opbouwpercentage | - | 8,324% | Voor loon uit tegenwoordige dienstbetrekking tot EUR 11.965\nArbeidskorting 1e opbouw maximaal | EUR 996 | - | -\nArbeidskorting 2e opbouwpercentage | - | 31,009% | Voor loon uit tegenwoordige dienstbetrekking vanaf EUR 11.965 tot EUR 25.845\nArbeidskorting 2e opbouw maximaal | EUR 4.304 | - | -\nArbeidskorting 3e opbouwpercentage | - | 1,950% | Voor loon uit tegenwoordige dienstbetrekking vanaf EUR 25.845\nArbeidskorting 3e opbouw maximaal | EUR 385 | - | Bereikt bij EUR 45.592\nTotale arbeidskorting maximaal | EUR 5.685 | - | -\nAfbouw arbeidskorting | - | 6,510% | Voor loon uit tegenwoordige dienstbetrekking vanaf EUR 45.592\nMaximale afbouw | EUR 5.685 | - | Bereikt bij EUR 132.290",
+  "derivation": {
+    "method": "DERIVED from the Belastingdienst's own complete, published 2026 parameter set (Tabel 1 brackets and Tabel 2a/2b credits). Every parameter is quoted from the official Cijferbijlage above. No percentage-of-gross guess was used. The Belastingdienst also publishes the statutory witte maandloon-tabel (see supporting_sources) but its PDF column semantics could not be resolved from the machine text layer, so the deterministic parameter route was used instead.",
+    "tax_year": "2026 (rates in force from 1 January 2026)",
+    "gross_input_eur_per_month": 3000.0,
+    "gross_input_note": "EUR 3,000 gross per month (EUR 36,000 per year) is a stated INPUT chosen by me. It is NOT a published graduate salary. I could not obtain a Dutch graduate-specific gross from CBS within this pass.",
+    "step_1_levy_eur_per_year": 12870.0,
+    "step_1_working": "EUR 36,000 is below the first bracket ceiling of EUR 38,883 per year, so 100% sits in schijf 1 at 35,75% for someone younger than AOW age. EUR 36,000 x 35,75% = EUR 12,870.00. This 35,75% already includes premie AOW 17,90%, premie Anw 0,10%, premie Wlz 9,65% and loonbelasting 8,10%.",
+    "step_2_algemene_heffingskorting_eur_per_year": 2714.23,
+    "step_2_working": "EUR 36,000 exceeds the EUR 29,736 'Voor loon tot' limit, so the afbouw applies: EUR 3,115 - 6,398% x (EUR 36,000 - EUR 29,736) = EUR 3,115 - 6,398% x EUR 6,264 = EUR 3,115 - EUR 400.77 = EUR 2,714.23.",
+    "step_3_arbeidskorting_eur_per_year": 5498.02,
+    "step_3_working": "1e: 8,324% x EUR 11,965 = EUR 996.00 (at the EUR 996 cap). 2e: 31,009% x (EUR 25,845 - EUR 11,965) = 31,009% x EUR 13,880 = EUR 4,304.05, capped at EUR 4,304. 3e: 1,950% x (EUR 36,000 - EUR 25,845) = 1,950% x EUR 10,155 = EUR 198.02. Total = EUR 996.00 + EUR 4,304.00 + EUR 198.02 = EUR 5,498.02. No afbouw: the 6,510% afbouw only starts above EUR 45,592.",
+    "step_4_total_credits_eur_per_year": 8212.25,
+    "step_4_working": "EUR 2,714.23 + EUR 5,498.02 = EUR 8,212.25",
+    "step_5_net_eur_per_year": 31342.25,
+    "step_5_working": "EUR 36,000.00 - EUR 12,870.00 + EUR 8,212.25 = EUR 31,342.25",
+    "net_eur_per_month": 2611.85,
+    "net_working": "EUR 31,342.25 / 12 = EUR 2,611.85 net per month",
+    "upper_bound_warning": "This figure OMITS the employee premie werknemersverzekering (the WAO/ZW/WA-ong unemployment insurance premium), which is a separate payroll deduction not covered by the 35,75% schijf 1 rate. The Cijferbijlage 2026 Tabel 1 and Tabel 2a/2b, as quoted above, contain no employee werknemersverzekering rate, and I did not locate one on an official page within this pass. I therefore did not invent a rate. The true net is lower than EUR 2,611.85 by that premium; a reader should treat EUR 2,611.85 as an UPPER BOUND."
+  },
+  "supporting_sources": [
+    {
+      "role": "statutory withholding table for employers (not used numerically - see notes)",
+      "source_url": "https://download.belastingdienst.nl/belastingdienst/dl/rekenhulpen/loonheffing/2026/v01/pdf/wit_mnd_nl_std_20260101.pdf",
+      "publisher": "Belastingdienst",
+      "raw_extract": "PDF text layer, header row as extracted: 'Tabelloon | Jonger dan de AOW-leeftijd (zonder loonheffingskorting | met loonheffingskorting | verrekende arbeidskorting) | AOW-leeftijd en ouder, geboren in 1945 of eerder (zonder loonheffingskorting | met loonheffingskorting excl. alleenstaande ouderenkorting | met loonheffingskorting incl. alleenstaande ouderenkorting | verrekende arbeidskorting) | AOW-leeftijd en ouder, geboren in 1946 of later (zonder | met excl. | met incl. | verrekende)'. Example data row, tabelloon 2,997,00: '2.997,00 | 773,75 | 1.130,92 | 458,17 | 534,92 | 20,67 | 0,00 | 228,83 | 534,92 | 20,67 | 0,00 | 228,83'. The 4th value of the younger-than-AOW group (458,17) does reconcile to the arbeidskorting in the Cijferbijlage for a wage of EUR 2,997.00 (EUR 5,498.02/12 = EUR 458.17), which confirms the tabelloon column IS the wage; the semantics of the other columns did not reconcile and I could not resolve them, so no net figure was read off this table."
+    },
+    {
+      "role": "employer premium table, for completeness (employer-side, not employee)",
+      "source_url": "https://odb.belastingdienst.nl/wp-content/uploads/2025/12/Cijferbijlage-2026-bij-Nieuwsbrief-LH-LH-209-1B61FD%5FTG.pdf",
+      "publisher": "Belastingdienst",
+      "raw_extract": "Tabel 9 Premies werknemersverzekeringen - Soort premie / Percentage: Premie AWf laag 2,74%; Premie AWf hoog 7,74%; Gedifferentieerde premie Whk - Zie mededeling of beschikking; Gedifferentieerde premie Aof laag 6,27%; Gedifferentieerde premie Aof hoog 7,63%; Opslag Wko 0,50%; Ufo premie 0,68%. 'Voor 2026 geldt als gemiddeld premieloon per werknemer: EUR 43.300'. These are UWV/employer-side premiums paid on top of the wage by the employer, not deducted from the employee's net, and they are not the employee premium."
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "nl-net-monthly-001",
+      "value": 2611.85,
+      "unit": "EUR per month",
+      "as_of": "2026",
+      "statement": "DERIVED take-home pay in the Netherlands, tax year 2026, for a single employee younger than AOW age with no dependants and no other income, earning EUR 3,000 gross per month (EUR 36,000 per year): EUR 36,000 gross less EUR 12,870.00 loonbelasting/premie volksverzekeringen (the Belastingdienst's published 35,75% first-bracket rate) plus EUR 8,212.25 in heffingskorting (algemene heffingskorting EUR 2,714.23 after the published 6,398% afbouw, plus arbeidskorting EUR 5,498.02) = EUR 31,342.25 per year = EUR 2,611.85 per month. This is a NET figure, not gross. It is an UPPER BOUND because it omits the employee premie werknemersverzekering."
+    },
+    {
+      "claim_id": "nl-net-monthly-002",
+      "value": 2645.08,
+      "unit": "EUR per month",
+      "as_of": "2026",
+      "statement": "SENSITIVITY, DERIVED FROM THE SAME OFFICIAL TABLES. The same EUR 3,000 gross per month for an employee aged AOW age or older and born in 1946 or later, who does not pay the AOW premium. Working, all from Tabel 1 and Tabel 2a/2b of the same Cijferbijlage: levy = EUR 36,000 x 17,85% = EUR 6,426.00 (schijf 1 runs to EUR 41,123 for this group); algemene heffingskorting = EUR 1,556 - 3,195% x (EUR 36,000 - EUR 29,736) = EUR 1,355.86; arbeidskorting = 4,156% x EUR 11,965 = EUR 497.26, plus 15,483% x EUR 13,880 = EUR 214.90, plus 0,974% x EUR 10,155 = EUR 98.91, total EUR 811.07, no afbouw. Net = (EUR 36,000 - EUR 6,426.00 + EUR 2,166.93) / 12 = EUR 31,740.93 / 12 = EUR 2,645.08. Note the direction: an AOW-age employee takes home MORE than a younger employee at the same gross, because the AOW premium of 17,90% is not payable by them. This is still an upper bound for the same reason as the headline figure, and it is still before the health insurance premium."
+    }
+  ],
+  "assumptions": [
+    "TAX YEAR 2026. All brackets and all credit amounts are taken from the Belastingdienst's Cijferbijlage 'vanaf 1 januari 2026' (published 16 December 2025).",
+    "First (and only) job with a current employment contract. The arbeidskorting percentages in Tabel 2a/2b are explicitly qualified 'Voor loon uit tegenwoordige dienstbetrekking' (salary from a current employment contract), so a second or former job gets a materially different arbeidskorting and a different net. This figure is therefore NOT valid for a second job.",
+    "Younger than AOW age, so schijf 1 is 35,75% and the algemene heffingskorting maximum is EUR 3,115 with a 6,398% afbouw. See claim nl-net-monthly-002 for the AOW age band, which takes home MORE at the same gross.",
+    "No dependants. No partner, so no additional heffingskorting and no shared credits. No childcare, no housing or healthcare-related credits, no 30% ruling, no small-employer scheme, no Zelfstandigenaftrek, no overtime or shift premium.",
+    "Full-time 12 months. Dutch pay is annualised: the Cijferbijlage states 'Alle bedragen in deze tabel zijn op jaarbasis' (all amounts in Tabel 2a/2b are on an annual basis), so the annual credits are divided by 12 to get the monthly figure. This annualisation is correct for a full-year employee and is NOT valid for a first or final partial year.",
+    "GROSS INPUT: EUR 3,000 per month was chosen by me, not published as a graduate salary. CBS (Centraal Bureau voor de Statistiek) is the correct official source for a Dutch graduate earnings figure and I did not obtain one within this pass.",
+    "OMISSION: the employee premie werknemersverzekering is not deducted. This makes the figure an upper bound, not a net. See derivation.upper_bound_warning."
+  ],
+  "field_mapping": {
+    "net_monthly_income": "career.net_monthly_income (topic: net_monthly_income)"
+  },
+  "notes": "Claim nl-net-monthly-001 (EUR 2,611.85) is a NET (take-home) figure derived from a complete, public, deterministic 2026 tax model in which every parameter is published by the tax authority: the three bracket rates, the composition of the first bracket, and every heffingskorting percentage, cap and afbouw threshold. Nothing is guessed. Three things would mislead a reader. First, it is an upper bound because the employee unemployment insurance premium is missing; the true take-home is lower. Second, and more important for a break-even calculation, this NET IS BEFORE the mandatory Dutch health insurance premium (zorgverzekering). That premium is not withheld from payroll in the Netherlands - the employee pays it separately, usually by direct debit - so it does not appear in any net-pay figure and does not appear in this one. A break-even calculation built on EUR 2,611.85 will be optimistic by the whole of the health insurance premium. Third, Dutch net is strongly non-linear in gross: the 6,398% afbouw on the algemene heffingskorting from EUR 29,736 and the 6,510% afbouw on the arbeidskorting from EUR 45,592 mean that a EUR 1,000 raise in that region delivers substantially less than EUR 1,000 of net, so this figure must not be scaled by any assumed percentage.",
+  "evidence_limitations": "Population covered: a hypothetical Dutch employee with a single full-time current employment contract, no partner, no dependants, no other income, younger than AOW age, earning exactly EUR 3,000 gross per month. This is NOT a measured Dutch graduate salary and NOT a measured Dutch graduate take-home. No Dutch official source publishes a graduate take-home median. The chosen gross is a stated input of mine, not sourced. Sector and occupation are not accounted for: Dutch graduate starting salaries vary a great deal between public sector, profit sector and non-profit, and between HBO and university level, and the collective labour agreements set the gross independently of tax law. A reader would be misled by: (a) treating EUR 2,611.85 as disposable income once health insurance is paid; (b) using it for a second job, since the arbeidskorting is much lower there; (c) using it for an AOW-age employee, where the rate structure is materially different and the net is in fact higher; (d) scaling it linearly with gross; (e) assuming it is a Dutch median - it is a single point on a curve.",
+  "attempted_sources_not_used": [
+    "https://www.belastingdienst.nl/... witte maandloon-tabel 2026 (wit_mnd_nl_std_20260101.pdf) - downloaded and read, but the PDF's eleven data columns could not be reliably mapped to their meaning from the machine text layer, so no net was read off it. The Cijferbijlage parameter route was used because it is unambiguous. The white table remains the statutory instrument an employer actually uses, and is the right place to verify a payslip.",
+    "CBS (https://www.cbs.nl/nl-nl/cijfers/) - the tables 'Werkzame beroepsbevolking; gemiddeld inkomen' (85277NED) and 'Beroeps- en niet-beroepsbevolking; gemiddeld inkomen en arbeidspositie' (85271NED) do break income down by Persoonskenmerken including opleidingsniveau, but the figures are annual individual income for ages 15-75, not a monthly wage for recent graduates, and I did not extract a figure I could quote. CBS is the right next source for a Dutch graduate gross."
+  ]
+}

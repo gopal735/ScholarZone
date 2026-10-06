@@ -1,0 +1,30 @@
+﻿{
+  "country": "DE",
+  "topic": "mandatory_fees_semester_fee_tum",
+  "source_id": "de-uni-tum-fees-005",
+  "source_url": "https://www.tum.de/en/studies/fees",
+  "source_type": "UNIVERSITY_OFFICIAL",
+  "publisher": "Technical University of Munich (TUM)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "The semester fees must be transferred in time for each semester in which you wish to begin or continue your studies. Please click on the location of your degree program below and read all the information carefully before transferring.\n\nAmount of semester fees\n\nThe amount of the semester fee depends on which campus the degree program is located.\nIn the summer semester 2026, the semester fee amounts to \n* 97.00 Euro in Munich, Garching and Weihenstephan\n* 82.00 Euro in Straubing \n* 97.00 Euro in Heilbronn\nAdditional fees apply for some continuing education courses. Information on this can be found at the respective school.",
+  "research_notes": "CONFIRMED: the mandatory semester fee at TUM, stated as a CAMPUS-DEPENDENT amount and explicitly tied to summer semester 2026. EUR 97.00 at Munich/Garching/Weihenstephan and Heilbronn; EUR 82.00 at Straubing. This is the mandatory fee (StudentCard/semester contribution) payable by ALL students, separate from and additional to the non-EU tuition. Cross-reference: TUM's tuition page states 'The regular semester fee must be paid in addition to the tuition fees', so tuition and this fee are distinct and additive. IMPORTANT NUANCE FOR THE CORPUS: this is one university's own fee, NOT a German-wide figure. It must not be used as a national value. Unit is per semester; the page gives an explicit semester (summer semester 2026), so as_of is 2026.",
+  "claims": [
+    {
+      "claim_id": "de-mandatory-semester-fee-tum-munich",
+      "statement": "In the summer semester 2026 the semester fee at TUM amounts to 97.00 Euro for degree programs located in Munich, Garching, Weihenstephan and Heilbronn.",
+      "value": 97,
+      "unit": "EUR per semester",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "de-mandatory-semester-fee-tum-straubing",
+      "statement": "In the summer semester 2026 the semester fee at TUM amounts to 82.00 Euro for degree programs located in Straubing.",
+      "value": 82,
+      "unit": "EUR per semester",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

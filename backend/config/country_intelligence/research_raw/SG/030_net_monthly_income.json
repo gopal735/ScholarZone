@@ -1,0 +1,77 @@
+﻿{
+  "country": "SG",
+  "topic": "net_monthly_income",
+  "source_id": "sg-iras-cpf-grad-net-2026",
+  "source_url": "https://www.iras.gov.sg/taxes/individual-income-tax/basics-of-individual-income-tax/tax-residency-and-tax-rates/individual-income-tax-rates",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Inland Revenue Authority of Singapore (IRAS); contribution rates from CPF Board",
+  "retrieved_at": "2026-10-05",
+  "as_of": "YA2026",
+  "raw_extract": "IRAS, 'Individual Income Tax rates', read verbatim: \"Singapore's personal income tax rates for tax resident individuals are progressive, meaning individuals with higher income are taxed at a higher rate. The current highest personal income tax rate is at 24%.\" Resident tax rates 'From YA 2024 onwards', table columns 'Chargeable Income / Income Tax Rate (%) / Gross Tax Payable ($)': 'First $20,000 | Next $10,000 | 0 | 2 | 0 | 200'; 'First $30,000 | Next $10,000 | - | 3.50 | 200 | 350'; 'First $40,000 | Next $40,000 | - | 7 | 550 | 2,800'; 'First $80,000 | Next $40,000 | - | 11.5 | 3,350 | 4,600'; 'First $120,000 | Next $40,000 | - | 15 | 7,950 | 6,000'; 'First $160,000 | Next $40,000 | - | 18 | 13,950 | 7,200'; 'First $200,000 | Next $40,000 | - | 19 | 21,150 | 7,600'; 'First $240,000 | Next $40,000 | - | 19.5 | 28,750 | 7,800'; 'First $280,000 | Next $40,000 | - | 20 | 36,550 | 8,000'; 'First $320,000 | Next $180,000 | - | 22 | 44,550 | 39,600'; 'First $500,000 | Next $500,000 | - | 23 | 84,150 | 115,000'; 'First $1,000,000 | In excess of $1,000,000 | - | 24 | 199,150'. 'Personal Income Tax Rebate / YA 2025: For YA 2025, a Personal Income Tax Rebate of 60% of tax payable, up to maximum of $200 was granted to tax resident individuals.' Non-resident: 'Employment income of a non-resident individual is taxed at the flat rate of 15% or the progressive resident tax rates (see table above), whichever is the higher tax amount.' Also on the same page: 'You may also use the YA 2026 Income Tax Calculator for Tax Resident Individuals (XLSM, 69KB) to estimate your tax payable.' --- CPF Board, 'How much CPF contributions to pay', read verbatim: 'What are the CPF contribution rates? The following table summarises the current contribution rates for Singaporeans and SPRs (from third year and onwards) with monthly wages above $750, across the different age groups.' Table headed 'Contribution rates from 1 January 2026 (monthly wages > $750)': '55 and below | 17 | 20 | 37' (employer / employee / total, % of wage); 'Above 55 to 60 | 16 | 18 | 34'; 'Above 60 to 65 | 12.5 | 12.5 | 25'; 'Above 65 to 70 | 9 | 7.5 | 16.5'; 'Above 70 | 7.5 | 5 | 12.5'. And: 'You are entitled to recover the employee's share of CPF contributions when paying your employee's wages for the month.' 'Note that if your employee earns above $50 but not more than $500 per month, there's no employee's share of CPF contributions.'",
+  "claims": [
+    {
+      "claim_id": "sg-net-monthly-001",
+      "value": 3472.5,
+      "unit": "SGD per month",
+      "as_of": "YA2026",
+      "statement": "For a tax resident aged 55 and below earning a gross monthly salary of SGD 4,500 (SGD 54,000 per year), IRAS resident income tax on the annual chargeable income is SGD 850 in total, which is SGD 70.83 per month. CPF Board's employee contribution rate from 1 January 2026 is 20% of wage for this age group, i.e. SGD 900 per month. Cash take-home is therefore 4,500 - 70.83 - 900 = SGD 3,472.50 per month."
+    },
+    {
+      "claim_id": "sg-net-monthly-002",
+      "value": 3837.5,
+      "unit": "SGD per month",
+      "as_of": "YA2026",
+      "statement": "For a tax resident aged 55 and below earning a gross monthly salary of SGD 5,000 (SGD 60,000 per year), IRAS resident income tax on the annual chargeable income is SGD 1,950 in total, which is SGD 162.50 per month. CPF employee contribution is 20% = SGD 1,000 per month. Cash take-home is 5,000 - 162.50 - 1,000 = SGD 3,837.50 per month."
+    },
+    {
+      "claim_id": "sg-net-monthly-003",
+      "value": 3107.5,
+      "unit": "SGD per month",
+      "as_of": "YA2026",
+      "statement": "For a tax resident aged 55 and below earning a gross monthly salary of SGD 4,000 (SGD 48,000 per year), IRAS resident income tax on the annual chargeable income is SGD 1,110 in total, which is SGD 92.50 per month. CPF employee contribution is 20% = SGD 800 per month. Cash take-home is 4,000 - 92.50 - 800 = SGD 3,107.50 per month."
+    },
+    {
+      "claim_id": "sg-net-monthly-004",
+      "value": 4202.5,
+      "unit": "SGD per month",
+      "as_of": "YA2026",
+      "statement": "For a tax resident aged 55 and below earning a gross monthly salary of SGD 5,500 (SGD 66,000 per year), IRAS resident income tax on the annual chargeable income is SGD 2,370 in total, which is SGD 197.50 per month. CPF employee contribution is 20% = SGD 1,100 per month. Cash take-home is 5,500 - 197.50 - 1,100 = SGD 4,202.50 per month."
+    },
+    {
+      "claim_id": "sg-net-monthly-005",
+      "value": 4567.5,
+      "unit": "SGD per month",
+      "as_of": "YA2026",
+      "statement": "For a tax resident aged 55 and below earning a gross monthly salary of SGD 6,000 (SGD 72,000 per year), IRAS resident income tax on the annual chargeable income is SGD 2,790 in total, which is SGD 232.50 per month. CPF employee contribution is 20% = SGD 1,200 per month. Cash take-home is 6,000 - 232.50 - 1,200 = SGD 4,567.50 per month."
+    },
+    {
+      "claim_id": "sg-net-monthly-006",
+      "value": 2365.83,
+      "unit": "SGD per month",
+      "as_of": "YA2026",
+      "statement": "For a tax resident aged 55 and below earning a gross monthly salary of SGD 3,000 (SGD 36,000 per year), IRAS resident income tax on the annual chargeable income is SGD 410 in total, which is SGD 34.17 per month. CPF employee contribution is 20% = SGD 600 per month. Cash take-home is 3,000 - 34.17 - 600 = SGD 2,365.83 per month."
+    },
+    {
+      "claim_id": "sg-net-monthly-007",
+      "value": 2742.5,
+      "unit": "SGD per month",
+      "as_of": "YA2026",
+      "statement": "For a tax resident aged 55 and below earning a gross monthly salary of SGD 3,500 (SGD 42,000 per year), IRAS resident income tax on the annual chargeable income is SGD 690 in total, which is SGD 57.50 per month. CPF employee contribution is 20% = SGD 700 per month. Cash take-home is 3,500 - 57.50 - 700 = SGD 2,742.50 per month."
+    }
+  ],
+  "assumptions": [
+    "Tax resident (Singapore Citizen or Singapore Permanent Resident). Source: 'You will be treated as a tax resident for a particular Year of Assessment (YA) if you are a Singapore Citizen or Singapore Permanent Resident who resides in Singapore except for temporary absences'.",
+    "Employee aged 55 and below, so CPF total 37% with the EMPLOYEE share at 20% and employer share at 17%, per CPF Board's table 'Contribution rates from 1 January 2026'.",
+    "Monthly salary is below the SGD 8,000 Ordinary Wage ceiling in force from 1 January 2026, so CPF is computed on the FULL salary at the flat 20% employee rate with no wage-band truncation.",
+    "Salary is the employee's only income; no bonus, no Additional Wages, no other income streams.",
+    "Employment in Singapore under a contract of service. Self-employed persons are taxed differently and are not covered by this calculation.",
+    "Tax is computed on annual chargeable income then divided by 12; IRAS does not withhold income tax monthly in Singapore, so 'take-home per month' is an averaging convention, not a payroll deduction.",
+    "No tax relief, deduction or rebate claimed beyond the published brackets. Note the YA2025 rebate of 60% of tax payable capped at $200 was a one-off and is NOT assumed to recur in YA2026.",
+    "Annual employee income is below SGD 120,000, so the top 22% and 24% brackets are never reached."
+  ],
+  "field_mapping": {
+    "net_monthly_income": "career.net_monthly_income (topic: net_monthly_income)"
+  },
+  "notes": "CRITICAL AND EASY TO GET WRONG: in Singapore, tax is not what reduces take-home the most. CPF is. For a citizen or PR aged 55 and below, the employee contributes 20% of salary to CPF on top of income tax, so a large share of 'gross salary' never reaches a bank account at all. This artifact reports CASH take-home EXCLUDING the employee's CPF contribution. If a cost-of-living corpus instead treats CPF as savings rather than a deduction (defensible, since it is the employee's own retirement savings), the comparable figure is gross minus income tax only: SGD 4,429.17 per month at a gross of SGD 4,500. Both are defensible; the corpus must state which it uses. A reader who takes gross-minus-income-tax as 'net' without mentioning CPF will materially overstate monthly disposable cash in Singapore, and the opposite reader will understate total compensation. Employer CPF of 17% is correctly excluded from take-home. This artifact does not establish what a graduate earns: it maps gross to net using fully official parameters.",
+  "evidence_limitations": "No Singapore authority publishes a NET graduate salary. IRAS publishes tax rates; CPF Board publishes contribution rates; neither publishes net by occupation. MOM's Graduate Employment Survey reports GROSS starting salaries only (see the separate SG gross artifact), which is why this artifact is parameterised by gross rather than claiming a graduate net directly. The figures assume a full-time resident employee; a foreign non-resident professional (for example on a work pass) faces entirely different treatment, with employment income taxed at the flat 15% or the resident progressive rates, whichever is higher, and no CPF. Singapore has no social security or pension contributions in the European sense beyond CPF and MediSave, so the net calculation is otherwise unusually simple and comparatively reliable."
+}

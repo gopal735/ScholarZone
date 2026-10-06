@@ -1,0 +1,78 @@
+﻿{
+  "country": "PL",
+  "topic": "financial_proof",
+  "source_id": "uw-welcome-point-financial-resources",
+  "source_url": "https://welcome.uw.edu.pl/wp/4-steps-to-legalise-your-stay-step-2-proof-of-sufficient-financial-resources/",
+  "source_type": "UNIVERSITY_OFFICIAL",
+  "publisher": "University of Warsaw, Welcome Point (Office of Academic and Student Affairs)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "# STEP 2 - Proof of sufficient financial resources\n\nYou always ask a lot of questions about financial resources you must have to legalise your stay. We hope that thanks to our instructions you will know how to calculate how much money you need.\n\nFirst of all, if you are a first-year student you should have a minimum amount of PLN 1 010 (for persons living alone) or PLN 823 (for persons living in a family) + rental and utility fees for each month of stay for the period of 15 months of stay or for the whole period of stay in Poland, when your stay will be shorter than 15 months.\n\nIf you are the second/third year student, then you should show PLN 1 010 (for persons living alone) or PLN 823 (for persons living in a family)+ rental and utilities fees per month +3 months from the graduation date which is written at the University statement.\n\nIn both cases, you should also have money to cover the cost of your studies.\n\nAdditionally, you should have funds to cover the cost of return travel to the country of your origin:\n\n- PLN 200 if you are from one of Poland's neighboring states;\n- PLN 500 if you are from other EU country (not neighboring with Poland);\n- PLN 2500 when you arrived from a third country (not belonging to EU);\n\nEXAMPLE:\nIf you come from China and you rent a room for PLN 900 (including all bills), you must have PLN 1910 for each month of planned stay in Poland + PLN 2500 for a return ticket to your country + money to cover tuition fees for the rest of your studies.\n\nOf course, you can have the equivalent of these amounts in foreign currency. The Office uses the average exchange rate of this currency announced by the National Bank of Poland on the last working day preceding the submission of the application for a temporary residence permit to convert your funds into the Polish currency.\n\n### How can I confirm my funds?\n\nDocuments that can confirm the possibility for a foreigner to obtain financial resources to cover the costs of living in the territory of the Republic of Poland and a return trip to the country of origin are:\n\n- certificate of the limit on your credit card issued by the bank which has issued the credit card\n- certificate of having funds on an account from a bank based in Poland\n- certificate of awarding the scholarship\n- certificate of employment and amount of earnings\n\nIMPORTANT INFORMATION: Certificates must be issued not earlier than one month before the date of submission of the application for a temporary residence permit.",
+  "research_notes": "Poland's student-residence financial proof, stated in a form that is directly usable. Base monthly amount: PLN 1,010 for a person living alone, PLN 823 for a person living in a family. Critically, the base figure is NOT the total: the page says the base is 'plus rental and utility fees for each month of stay'. Any Polish cost model that uses PLN 1,010 as the total monthly requirement will understate it by the whole rent and utilities.\n\nHORIZON IS 15 MONTHS, which is unusual and easy to miss: 'for the period of 15 months of stay or for the whole period of stay in Poland, when your stay will be shorter than 15 months'. So the first-year proof is fifteen months of base plus rent, not twelve. Separately, the page notes a third-country return-travel requirement of PLN 2,500, PLN 500 for a non-neighbouring EU citizen, and PLN 200 for a neighbour.\n\nThe page's own worked example is quoted verbatim and is the clearest single illustration of how the components combine: a person from China renting at PLN 900 all-inclusive 'must have PLN 1910 for each month of planned stay in Poland + PLN 2500 for a return ticket to your country + money to cover tuition fees for the rest of your studies.' PLN 1,010 + PLN 900 = PLN 1,910, which is the page doing the addition itself, so I do not rely on my own arithmetic.\n\nACCEPTABLE PROOF DOCUMENTS, and one of them matters for a scholarship corpus: 'certificate of awarding the scholarship' is an accepted instrument. Also credit card limit certificate, a Polish bank account certificate, and an employment and earnings certificate.\n\nTIMING CONSTRAINT: certificates must be issued no earlier than one month before submission.\n\nPROVENANCE CAVEAT, stated rather than hidden. This is a university page, and the priority for this metric is the national authority. It is credible and detailed but it is a university's guidance, not the regulation. I attempted two national sources: the Podlaskie provincial office graduate page (fetched successfully, and it carries the same PLN 823 / PLN 1,010 thresholds for the GRADUATE permit, recorded in 002_post_study_work.json) and the Lublin and Lower Silesian provincial office student-permit pages, both of which returned transport errors, plus the UDSC central page which returned navigation with no article body. The underlying regulation is a 2022 Minister of the Interior ordinance on the amount of financial resources a foreigner undertaking studies must hold; I saw it referenced in search results but did not fetch a readable copy, so I do not quote its figures.\n\nWHAT I DID NOT ESTABLISH: the exact PLN amount that the ordinance itself sets, and any 2026 update to the PLN 823 / PLN 1,010 thresholds. The university's page carries no explicit 'as of' year on the figures, so as_of is recorded conservatively.",
+  "claims": [
+    {
+      "claim_id": "pl-financial-proof-1",
+      "statement": "The University of Warsaw states a first-year student must show a minimum of PLN 1,010 per month if living alone.",
+      "value": 1010,
+      "unit": "PLN per month (base amount, living alone)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "pl-financial-proof-2",
+      "statement": "The University of Warsaw states a first-year student must show a minimum of PLN 823 per month if living in a family.",
+      "value": 823,
+      "unit": "PLN per month (base amount, living in family)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "pl-financial-proof-rent-additive-1",
+      "statement": "The PLN 1,010 and PLN 823 figures are base amounts to which rental and utility fees must be added for each month of stay, not total amounts.",
+      "value": "base amount plus rent and utilities",
+      "unit": "structure of the Polish financial proof requirement",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "pl-financial-proof-horizon-1",
+      "statement": "The University of Warsaw states the funds must cover a period of 15 months of stay for a first-year student, or the whole stay where shorter than 15 months.",
+      "value": 15,
+      "unit": "months of funds to be shown (first year)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "pl-financial-proof-return-thirdcountry-1",
+      "statement": "The University of Warsaw states a person arriving from a third country outside the EU must additionally show PLN 2,500 to cover return travel.",
+      "value": 2500,
+      "unit": "PLN return travel funds (third-country national)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "pl-financial-proof-return-eu-1",
+      "statement": "The University of Warsaw states return travel funds of PLN 500 for a non-neighbouring EU citizen and PLN 200 for a citizen of a neighbouring state.",
+      "value": 500,
+      "unit": "PLN return travel funds (non-neighbouring EU citizen)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "pl-financial-proof-scholarship-accepted-1",
+      "statement": "The University of Warsaw states that a certificate of awarding a scholarship is an accepted document for proving financial resources.",
+      "value": 1,
+      "unit": "scholarship certificates accepted as proof of funds",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "pl-financial-proof-statement-age-1",
+      "statement": "The University of Warsaw states proof must also cover the cost of studies themselves, in addition to maintenance, rent and travel.",
+      "value": 1,
+      "unit": "tuition costs included in the proof requirement",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

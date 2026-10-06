@@ -1,0 +1,185 @@
+{
+  "contract_version": "1.0.0",
+  "country": {
+    "currency": null,
+    "iso2": "US",
+    "name_en": "United States"
+  },
+  "gaps": [
+    {
+      "attempted_sources": [
+        "mtu-tuition-fees"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "us.education_costs.tuition_fees.public.bachelor.bachelor",
+      "reason": "2 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 44504 USD per year (mtu-tuition-fees); 63019 USD per year (mtu-tuition-fees). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "uscis-opt-f1"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "us.residency.work_while_studying.month",
+      "reason": "2 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 12 per month (uscis-opt-f1); 24 per month (uscis-opt-f1). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "https://www.ice.gov/sevis/i901"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "us.student_visa_fee",
+      "reason": "Evidence was retrieved and archived, but this topic has no explicit mapping into the corpus schema, so the figure was not placed. Adding the mapping is a reviewed change, not something ingestion should guess."
+    },
+    {
+      "attempted_sources": [
+        "https://travel.state.gov/content/travel/en/us-visas/study/student-visa.html",
+        "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/fees/fees-visa-services.html",
+        "https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/optional-practical-training-opt-for-f-1-students",
+        "https://www.ice.gov/sevis/i901",
+        "https://www.mtu.edu/admissions/financial/tuition/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "us.student_visa_financial_proof",
+      "next_review": null,
+      "reason": "The United States has no federal proof-of-funds threshold for an F or M student visa. No federal figure was found on any government page I fetched. What is published is institution-specific: the Form I-20 is completed by the school, and the school certifies its own estimate of cost. The closest official document I could fetch confirms the opposite point — the Department of State directs students to the SEVP-approved school for the first step and to the SEVIS I-901 fee, with no money threshold stated — while the university pages I fetched state their own required total budget (for example Michigan Tech's USD 63,019 non-resident annual total, which is that institution's estimate, not a national requirement). Any specific I-20 amount must therefore be attributed to a named university rather than to the US government, and I did not fetch a university page that publishes a dedicated 'proof of funds' number separate from its cost-of-attendance budget. travel.state.gov returned HTTP 403 to every request, so the Department of State's student-visa document list could not be read directly."
+    },
+    {
+      "attempted_sources": [
+        "https://www.uscis.gov/green-card/green-card-eligibility-categories"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "us.us-permanent-residence-route-1",
+      "reason": "Archived evidence recorded a finding with no numeric figure: USCIS lists no student-status route to a Green Card; permanent residence is reachable only through categories such as family, employment, special immigrant, refugee/asylee, humanitarian or registry, so there is no minimum study duration that confers permanent residence."
+    }
+  ],
+  "research": {
+    "evidence_artifact_count": 5,
+    "researched_at": "2026-10-05"
+  },
+  "sections": {
+    "education_costs": {
+      "tuition_fees": {
+        "public": {
+          "bachelor": {
+            "bachelor": {
+              "as_of": "2025-26",
+              "colliding_values": [
+                {
+                  "as_of": "2025-26",
+                  "currency": "USD",
+                  "per": "year",
+                  "source_ids": [
+                    "mtu-tuition-fees"
+                  ],
+                  "statement": "Michigan Technological University charges non-Michigan-resident undergraduates USD 44,504 in tuition per year.",
+                  "value": 44504
+                },
+                {
+                  "as_of": "2025-26",
+                  "currency": "USD",
+                  "per": "year",
+                  "source_ids": [
+                    "mtu-tuition-fees"
+                  ],
+                  "statement": "Michigan Technological University's estimated annual undergraduate budget for a non-resident, including tuition, fees, housing and food, books and materials, personal expenses and transportation, totals USD 63,019.",
+                  "value": 63019
+                }
+              ],
+              "currency": "USD",
+              "note": "Michigan Technological University charges non-Michigan-resident undergraduates USD 44,504 in tuition per year.",
+              "per": "year",
+              "source_ids": [
+                "mtu-tuition-fees"
+              ],
+              "value": 44504,
+              "value_status": "UNIVERSITY_OFFICIAL"
+            }
+          }
+        }
+      }
+    },
+    "residency": {
+      "work_while_studying": {
+        "as_of": "2024",
+        "month": {
+          "as_of": "2024",
+          "colliding_values": [
+            {
+              "as_of": "2024",
+              "currency": null,
+              "per": "month",
+              "source_ids": [
+                "uscis-opt-f1"
+              ],
+              "statement": "F-1 students may receive up to 12 months of OPT employment authorisation before and/or after completing their academic studies.",
+              "value": 12
+            },
+            {
+              "as_of": "2024",
+              "currency": null,
+              "per": "month",
+              "source_ids": [
+                "uscis-opt-f1"
+              ],
+              "statement": "F-1 students who received a STEM degree on the STEM Designated Degree Program List and whose employer uses E-Verify may apply for a 24-month extension of post-completion OPT.",
+              "value": 24
+            }
+          ],
+          "note": "F-1 students may receive up to 12 months of OPT employment authorisation before and/or after completing their academic studies.",
+          "per": "month",
+          "source_ids": [
+            "uscis-opt-f1"
+          ],
+          "value": 12,
+          "value_status": "OFFICIAL_GOVERNMENT"
+        },
+        "note": "An F-1 student holding pre-completion OPT authorisation may work 20 hours or fewer per week while school is in session, and full time when school is not in session.",
+        "per": "week",
+        "source_ids": [
+          "uscis-opt-f1"
+        ],
+        "study_level": "bachelor",
+        "value": 20,
+        "value_status": "OFFICIAL_GOVERNMENT"
+      }
+    }
+  },
+  "sources": [
+    {
+      "archived": true,
+      "as_of": "2025-26",
+      "confidence": null,
+      "id": "mtu-tuition-fees",
+      "notes": "Michigan Tech is a single named US university, chosen because its own admissions page publishes a full, labelled breakdown. International (visa-holding) undergraduates are charged the non-Michigan-resident rate, plus a $250 per-semester international surcharge. The university-level tuition is USD 44,504 per year; mandatory fees add USD 1,095 (374 required fees + 621 lab and course fees + 100 from the two $250 semester surcharges for a two-semester year), and housing, food, books and personal costs are listed separately as budgeted expenses rather than billed tuition. These figures are university-set, not federal; they are not transferable to other US institutions.",
+      "publisher": "Michigan Technological University",
+      "retrieved_at": "2026-10-05",
+      "source_type": "UNIVERSITY_OFFICIAL",
+      "title": "bachelor_tuition evidence",
+      "url": "https://www.mtu.edu/admissions/financial/tuition/"
+    },
+    {
+      "archived": true,
+      "as_of": "2026-09-04",
+      "confidence": null,
+      "id": "uscis-green-card-eligibility-categories",
+      "notes": "The full category list fetched from USCIS contains no student-status or post-study route to a Green Card; there is no minimum-years-of-study pathway. Study in the US can only lead towards permanent residence indirectly, through an employment-based category (for example an EB-2/EB-3 worker or an EB-1 extraordinary-ability applicant), and to reach those the applicant must first hold a separate nonimmigrant work status such as H-1B. The fetched page publishes no minimum number of years, so the requested 'minimum years' figure is UNAVAILABLE and is not asserted. Category names and the employment-based structure above are quoted from the page.",
+      "publisher": "U.S. Citizenship and Immigration Services (USCIS)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "permanent_residence evidence",
+      "url": "https://www.uscis.gov/green-card/green-card-eligibility-categories"
+    },
+    {
+      "archived": true,
+      "as_of": "2024-11-25",
+      "confidence": null,
+      "id": "uscis-opt-f1",
+      "notes": "USCIS is the issuing authority and this is its own OPT page, last reviewed 25 November 2024. Official permission name: Optional Practical Training (OPT) for F-1 students, requiring a DSO recommendation endorsed on Form I-20 plus a separate Form I-765 filed with USCIS. Hour caps: pre-completion OPT is limited to 20 hours or fewer per week while school is in session, full time when school is not; post-completion OPT requires at least 20 hours per week. Duration: up to 12 months at each educational level, with a further 24-month STEM OPT extension (36 months total per degree). On-campus employment rules were not captured from a fetched page and are not asserted.",
+      "publisher": "U.S. Citizenship and Immigration Services (USCIS)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "student_work_rights evidence",
+      "url": "https://uscis.gov/working-in-the-united-states/students-and-exchange-visitors/optional-practical-training-opt-for-f-1-students"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+﻿{
+  "country": "CH",
+  "topic": "bachelor_tuition_secondary_university",
+  "source_id": "uzh-fees-contributions",
+  "source_url": "https://www.uzh.ch/en/studies/application/fees.html",
+  "source_type": "UNIVERSITY_OFFICIAL",
+  "publisher": "University of Zurich (UZH)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2025",
+  "raw_extract": "Tuition Fee per Semester — Amount in CHF — Students 720.— — PhD students 150.— — Surcharge for foreign students at Bachelor level 500.— — Surcharge for foreign students at Master, PhD level or in Teacher training 100.— — Mandatory Semester Contributions — Total Mandatory Semester Contributions 59.— (Scholarship Fund 6.50, Libraries and collections 15.—, Academic Sports Association Zurich 35.—, Student concerns 2.50) — Application Fee — Bachelor's and Master's Degree for applicants with foreign qualifications (from 1 January 2025) 150.—",
+  "research_notes": "Second named Swiss university, fetched to show the fee model is not uniform. UZH uses a base tuition plus an explicit foreign-student surcharge, whereas ETH uses a threefold multiplier for non-qualifying third-country students (see 001_bachelor_tuition.json). A third-country Bachelor student at UZH therefore pays CHF 720 + CHF 500 = CHF 1,220 per semester of tuition plus the CHF 59 mandatory semester contributions, i.e. CHF 1,279 per semester and CHF 2,558 for two semesters, plus a non-refundable application fee of CHF 150 for applicants with foreign qualifications. Note the tuition-fee components and the contributions are billed as distinct items and the CHF 2,558 figure is an arithmetic sum of the page's own numbers, not a figure printed on the page.",
+  "claims": [
+    {
+      "claim_id": "ch-bachelor-tuition-uzh-1",
+      "statement": "The University of Zurich charges a tuition fee of CHF 720 per semester for students, plus a surcharge of CHF 500 per semester for foreign students at Bachelor level.",
+      "value": 720,
+      "unit": "CHF per semester (base tuition, foreign Bachelor surcharge of CHF 500 additional)",
+      "as_of": "2025",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ch-bachelor-mandatory-contrib-uzh-1",
+      "statement": "The University of Zurich adds mandatory semester contributions totalling CHF 59, made up of a scholarship fund contribution of CHF 6.50, libraries and collections CHF 15, academic sport CHF 35 and student concerns CHF 2.50.",
+      "value": 59,
+      "unit": "CHF per semester",
+      "as_of": "2025",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ch-application-fee-uzh-1",
+      "statement": "The University of Zurich charges applicants with foreign qualifications an application fee of CHF 150, applicable from 1 January 2025, and states that application fees are not refunded or credited against other fees.",
+      "value": 150,
+      "unit": "CHF (application fee)",
+      "as_of": "2025",
+      "study_level": "bachelor"
+    }
+  ]
+}

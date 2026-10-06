@@ -1,0 +1,30 @@
+﻿{
+  "country": "NL",
+  "topic": "permanent_residence_study_period_credit",
+  "source_id": "nl-ind-exceptions-permanent-residency-001",
+  "source_url": "https://ind.nl/en/exceptions-to-5-year-term-for-permanent-residency",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Immigratie- en Naturalisatiedienst (IND), Ministerie van Justitie en Veiligheid",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "Exceptions to 5-year term for permanent residency\nLast update: 16 June 2025\n\nYou want to apply for a permanent residence permit (in Dutch: verblijfsvergunning onbepaalde tijd) or a long-term EU residence permit. One of the requirements is that you must have had a valid residence permit for at least 5 years. Find out when this requirement does not apply.\n\nExtra exceptions for EU long-term residents\nDid you not have a Dutch residence permit for 5 consecutive years? And you do meet all other requirements? In that case there are situations in which you can still apply for a long-term EU residence permit:\n\nYou lived in the European Union for at least 5 consecutive years with a valid residence permit. During this period, you may have lived in different countries of the EU. The minimal stay of 5 years counts the period that you lived in an EU country with a:\nEuropean Blue Card\nPermit for a highly skilled job\nResearch permit\nAsylum permit\nStudy permit. You may count this period for 50%. \n\nIn those 5 years, you did not live outside the European Union for more than 18 months. In that period of 18 months, you are not allowed to have lived more than 12 consecutive months outside the European Union.",
+  "research_notes": "CONFIRMED from the IND (page last updated 16 June 2025). This file exists because it contains a rule that materially changes how the NL '5 years' headline figure should be interpreted for a student audience. Under the EU long-term resident route, the 5-year residence period may be accumulated across different EU countries and counts Blue Card, highly skilled job, research and asylum time at 100%, but STUDY PERMIT TIME COUNTS ONLY 50% ('You may count this period for 50%'). Additional condition: in those 5 years the person must not have lived outside the EU for more than 18 months, with no more than 12 consecutive months outside. CONSEQUENCE FOR THE CORPUS: a student who spends 3 years on a Dutch study permit and 2 years on a work permit cannot count 5 years for the EU long-term resident card — the study years are only worth half. This is the SAME structural trap found independently in Germany (§ 9(4) no. 3 AufenthG: study/vocational-training time counts 'zur Hälfte'), so it is a cross-country pattern rather than a one-off. IMPORTANT NUANCE, stated honestly: the 50% study credit is documented by the IND for the LONG-TERM EU RESIDENT route ('a residence permit for a long-term EU residence permit'), and appears on a page about permanent residency in general. It is not stated on the IND's general 'permanent residence permit' requirements page, which says only '5 consecutive years' without the halving rule. I therefore record the halving as evidenced specifically for the EU long-term resident route and do NOT assert it for the Dutch verblijfsvergunning onbepaalde tijd on this evidence alone. GAP: I did not fetch the IND page 'Apply for a residence permit for long-term EU residents' to see whether the halving rule is expressed there in the same terms.",
+  "claims": [
+    {
+      "claim_id": "nl-eu-long-term-resident-study-period-50-percent",
+      "statement": "For the EU long-term resident residence permit, a minimum stay of 5 years in the EU counts Blue Card, highly skilled job, research and asylum permit periods at full value, but a study permit period may be counted for 50% only.",
+      "value": 50,
+      "unit": "percent of study period credited",
+      "as_of": "2025",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nl-eu-long-term-resident-absence-limit",
+      "statement": "In those 5 years you must not have lived outside the European Union for more than 18 months, and within that 18 months you must not have lived more than 12 consecutive months outside the EU.",
+      "value": 18,
+      "unit": "months maximum absence from the EU within the 5-year period",
+      "as_of": "2025",
+      "study_level": "bachelor"
+    }
+  ]
+}

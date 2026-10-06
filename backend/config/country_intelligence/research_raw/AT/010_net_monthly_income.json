@@ -1,0 +1,61 @@
+﻿{
+  "country": "AT",
+  "topic": "net_monthly_income",
+  "source_id": "at-statistik-monatseinkommen-net-001",
+  "source_url": "https://www.statistik.at/statistiken/bevoelkerung-und-soziales/einkommen-und-soziale-lage/monatseinkommen",
+  "source_type": "OFFICIAL_STATISTICS",
+  "publisher": "Statistik Austria (Bundesanstalt fuer Statistik Oesterreich)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2024",
+  "raw_extract": "Nettomonatseinkommen\n2024\n2 711 Euro\nGestiegen +206 Euro zu 2023\nMedian\n\nBeschreibung: Das Monatseinkommen umfasst das Einkommen aus unselbstaendig Erwerbstaetigkeit in der Haupttätigkeit inklusive anteiligem Urlaubs- und Weihnachtsgeld. Ebenfalls enthalten sind Abgeltungen regulaerer Mehrarbeit sowie Boni und Verguetungen. Nicht enthalten sind unregelmaessig bezogene Einkommenskomponenten wie z.B. Abfertigungen. Das Einkommen wird netto und brutto dargestellt. Die Datengrundlage fuer die Berechnung des Monatseinkommens bilden die Lohnsteuerdaten sowie Daten des Dachverbandes der oesterreichischen Sozialversicherungstraeger die mit Befragungsdaten der Mikrozensus-Arbeitskraefteerhebung (AKE) zusammengefuehrt werden.\n\nHighlights table (verbatim):\nMonatseinkommen (Median) der unselbstaendig Erwerbstaetigen nach Vollzeit/Teilzeit und Geschlecht 2024 - in Euro\nUnselbstaendig Erwerbstaetige | Monatseinkommen (Median) | Maenner und Frauen | Maenner | Frauen\nUnselbstaendig Erwerbstaetige zusammen | Brutto | 3 713 | 4 289 | 3 013\nUnselbstaendig Erwerbstaetige zusammen | Netto | 2 711 | 3 075 | 2 282\nVollzeit | Brutto | 4 317 | 4 517 | 3 959\nVollzeit | Netto | 3 084 | 3 222 | 2 850\nTeilzeit | Brutto | 2 178 | 2 115 | 2 185\nTeilzeit | Netto | 1 773 | 1 716 | 1 778\n\nQ: STATISTIK AUSTRIA, Mikrozensus-Arbeitskraefteerhebung und Lohnsteuer-/DV-Daten. Erstellt am 11.12.2025. - Einkommen inkl. anteiligem Urlaubs- und Weihnachtsgeld. Bevoelkerung in Privathaushalten ohnePraesenz- und Zivildiener, ohne Personen in Elternkarenz und ohne Personen mit freiem Dienstvertrag. - Vollzeit/Teilzeit beruht auf Selbstzuordnung.",
+  "claims": [
+    {
+      "claim_id": "at-net-monthly-001",
+      "value": 3084,
+      "unit": "EUR per month",
+      "as_of": "2024",
+      "statement": "Vollzeit / Netto: monthly income median of full-time employees in Austria, men and women combined, 2024 = EUR 3 084. Published by Statistik Austria as 'Nettomonatseinkommen ... Median' for the group 'Vollzeit' (full-time)."
+    },
+    {
+      "claim_id": "at-net-monthly-002",
+      "value": 3222,
+      "unit": "EUR per month",
+      "as_of": "2024",
+      "statement": "Vollzeit / Netto / Maenner: monthly net income median of full-time male employees in Austria, 2024 = EUR 3 222."
+    },
+    {
+      "claim_id": "at-net-monthly-003",
+      "value": 2850,
+      "unit": "EUR per month",
+      "as_of": "2024",
+      "statement": "Vollzeit / Netto / Frauen: monthly net income median of full-time female employees in Austria, 2024 = EUR 2 850."
+    },
+    {
+      "claim_id": "at-net-monthly-004",
+      "value": 2711,
+      "unit": "EUR per month",
+      "as_of": "2024",
+      "statement": "Unselbstaendig Erwerbstaetige zusammen / Netto (headline figure on the page): monthly net income median of all employees in Austria (full-time AND part-time combined), men and women combined, 2024 = EUR 2 711."
+    },
+    {
+      "claim_id": "at-net-monthly-005",
+      "value": 1773,
+      "unit": "EUR per month",
+      "as_of": "2024",
+      "statement": "Teilzeit / Netto: monthly net income median of part-time employees in Austria, men and women combined, 2024 = EUR 1 773."
+    }
+  ],
+  "assumptions": [
+    "SOURCE'S OWN: population = employees (unselbstaendig Erwerbstaetige) in private households in Austria, excluding persons on parental leave (Elternkarenz), civil servants (Zivildiener) and those on free-service contracts (freier Dienstvertrag); employees aged 15+.",
+    "SOURCE'S OWN: income includes pro-rata holiday and Christmas remuneration, regular overtime, bonuses and commissions; excludes irregular one-off components such as severance (Abfertigungen).",
+    "SOURCE'S OWN: full-time/part-time classification is by self-assessment (Selbstzuordnung).",
+    "SOURCE'S OWN: 'Netto' here is net monthly pay from dependent employment after withheld social insurance contributions and wage tax, produced by merging Lohnsteuer (wage tax) register data with Sozialversicherung (social insurance) register data and the Labour Force Survey. The page does not give a formula for 'Netto'; it states only 'Das Einkommen wird netto und brutto dargestellt'. The parallel Statistik Austria definition of Nettojahreseinkommen (gross annual pay per Sec. 25 EStG minus total withheld social insurance contributions minus total withheld wage tax, before employee tax assessment) is recorded in artifact 020_net_annual_income.json.",
+    "NOT THE SOURCE'S / MINE: no assumption about marital status, children, tax credits, tax class, church tax, or health-insurance waiver was applied. The published figure already embeds each individual's actual withholding situation, averaged/mediated across the population.",
+    "NOT THE SOURCE'S / MINE: no assumption about occupation, field of study, age or seniority. This is an all-occupation figure."
+  ],
+  "field_mapping": {
+    "net_monthly_income": "career.net_monthly_income (topic: net_monthly_income)"
+  },
+  "notes": "This is an OFFICIAL, PUBLISHED NET (take-home) MONTHLY MEDIAN - not a gross figure and not an estimate. Preferred figure for Austria: 3084 EUR/month (full-time, both sexes). Use 3222 / 2850 if a sex-specific figure is needed, and 2711 only if the intended population genuinely includes part-timers (a large part-time female workforce pulls the combined median down by 373 EUR). The measure is a MEDIAN, not a mean, so it is not distorted by a small number of very high earners, but it is also not the arithmetic average of what a graduate will feel in their bank account. The figure is gross-of-13th/14th-month salary in the sense that holiday and Christmas pay is spread pro rata across the year, which is why it is higher than a naive monthly division of an annual total. Currency: EUR. Period: calendar year 2024, published 11 December 2025. Next official update: Monatseinkommen 2025, scheduled 17.12.2026.",
+  "evidence_limitations": "Population covered: ALL employees in Austria, not graduates. It therefore includes cleaners, retail staff, hospitality workers and part-timers as well as graduates, which biases it DOWNWARD relative to an early-career graduate. Conversely it includes long-tenured mid-career staff, which biases it UPWARD relative to someone in their first job. The two effects partly cancel and the net direction is not knowable from this figure alone. No occupation, field-of-study, age or seniority breakdown is published at this level of detail on the public page; the detailed .ods file linked from the page ('Detailtabellen zu Monatseinkommen, AKE 2024') may carry socio-demographic breakdowns but was not parsed for this artifact. A reader would be misled if they treated 3084 EUR as a graduate salary: it is the whole-employed-population median. Readers should also note that this is take-home pay BEFORE any annual employee tax assessment (Arbeitnehmerveranlagung) refund, so refundable credits such as the Familienbonus Plus or commuter/education expense claims are not reflected and a graduate with study-related tax-deductible expenses would end up with more than this figure in practice."
+}

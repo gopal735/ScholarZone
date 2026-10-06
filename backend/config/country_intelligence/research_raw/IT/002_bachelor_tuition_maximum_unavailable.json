@@ -1,0 +1,13 @@
+﻿{
+  "country": "IT",
+  "topic": "bachelor_tuition",
+  "source_id": "it-bachelor-tuition-maximum-national",
+  "raw_status": "UNAVAILABLE",
+  "reason": "Italy's per-course maximum Bachelor tuition could not be established from a fetched official page. The structure (fixed EUR 157.04 plus income-banded variable component, banded by ISEE) IS confirmed from the University of Bologna page, and the regional tax of EUR 140 within that fixed amount is confirmed too. What is missing is the upper bound. The University of Bologna publishes the maximum per course only in a PDF ('Tabella importi massimi 2026-2027.pdf'), and my fetch attempts on that PDF and on the MUR tuition-calculation PDF returned raw PDF binary streams that this tooling could not decode into readable text. The MUR 'Study in Italy' page I did fetch carries a stale maintenance figure from 2001 and says nothing about tuition bands. So the maximum is a real, published number that I personally could not read, and I will not substitute a remembered or search-indexed figure for it. Note also that Italian maxima are per-course AND per-university, so even a single Bologna maximum would not be a national figure.",
+  "attempted_sources": [
+    "https://www.unibo.it/it/allegati/Tabellaimportimassimi2627.pdf/@@download/file/Tabella%20importi%20massimi%202026-2027.pdf",
+    "https://www.unibo.it/it/allegati/sistema-di-calcolo-delle-tasse-a-a-2026-27/@@download/file/Sistema-di-calcolo-delle-tasse-anno-accademico-2026-2027.pdf",
+    "https://miur.mur.gov.it/studiare-in-italia/studying/info-23.html"
+  ],
+  "checked_at": "2026-10-05"
+}

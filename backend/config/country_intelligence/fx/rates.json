@@ -1,0 +1,21 @@
+﻿{
+  "as_of": "2026-10-02",
+  "base": "EUR",
+  "caveat": "European Central Bank reference rates are published for information purposes only; the ECB discourages using them for transactions. These figures compare the magnitude of study costs between countries and must not be used to budget a currency transfer.",
+  "contract_version": "1.0.0",
+  "publisher": "European Central Bank",
+  "rates": {
+    "AUD": 1.6176,
+    "CAD": 1.5984,
+    "CHF": 0.9279,
+    "GBP": 0.85033,
+    "JPY": 176.99,
+    "NZD": 2.0002,
+    "PLN": 4.3775,
+    "SEK": 11.29,
+    "SGD": 1.4366,
+    "USD": 1.1225
+  },
+  "source_id": "ecb-fx-2026-10-02",
+  "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html"
+}

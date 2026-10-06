@@ -1,0 +1,44 @@
+﻿{
+  "country": "AT",
+  "topic": "gross_monthly_income",
+  "source_id": "at-statistik-monatseinkommen-brutto-001",
+  "source_url": "https://www.statistik.at/statistiken/bevoelkerung-und-soziales/einkommen-und-soziale-lage/monatseinkommen",
+  "source_type": "OFFICIAL_STATISTICS",
+  "publisher": "Statistik Austria (Bundesanstalt fuer Statistik Oesterreich)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2024",
+  "raw_extract": "Bruttomonatseinkommen\n2024\n3 713 Euro\nGestiegen +291 Euro zu 2023\nMedian\n\nHighlights table (verbatim):\nMonatseinkommen (Median) der unselbstaendig Erwerbstaetigen nach Vollzeit/Teilzeit und Geschlecht 2024 - in Euro\nUnselbstaendig Erwerbstaetige | Monatseinkommen (Median) | Maenner und Frauen | Maenner | Frauen\nUnselbstaendig Erwerbstaetige zusammen | Brutto | 3 713 | 4 289 | 3 013\nUnselbstaendig Erwerbstaetige zusammen | Netto | 2 711 | 3 075 | 2 282\nVollzeit | Brutto | 4 317 | 4 517 | 3 959\nVollzeit | Netto | 3 084 | 3 222 | 2 850\nTeilzeit | Brutto | 2 178 | 2 115 | 2 185\nTeilzeit | Netto | 1 773 | 1 716 | 1 778",
+  "claims": [
+    {
+      "claim_id": "at-gross-monthly-001",
+      "value": 4317,
+      "unit": "EUR per month",
+      "as_of": "2024",
+      "statement": "Vollzeit / Brutto: monthly GROSS income median of full-time employees in Austria, men and women combined, 2024 = EUR 4 317."
+    },
+    {
+      "claim_id": "at-gross-monthly-002",
+      "value": 3713,
+      "unit": "EUR per month",
+      "as_of": "2024",
+      "statement": "Unselbstaendig Erwerbstaetige zusammen / Brutto (headline figure on the page): monthly GROSS income median of all employees in Austria, full-time and part-time combined, 2024 = EUR 3 713."
+    },
+    {
+      "claim_id": "at-gross-monthly-003",
+      "value": 4517,
+      "unit": "EUR per month",
+      "as_of": "2024",
+      "statement": "Vollzeit / Brutto / Maenner: monthly gross median of full-time male employees in Austria, 2024 = EUR 4 517."
+    }
+  ],
+  "assumptions": [
+    "SOURCE'S OWN: gross monthly income from dependent employment in the main job, including pro-rata holiday and Christmas remuneration, regular overtime compensation, bonuses and commissions; excluding irregular one-off components such as severance payments.",
+    "SOURCE'S OWN: full-time/part-time by self-assessment; population = private-household residents excluding parental leave, civil servants and free-service-contract holders.",
+    "THIS IS A GROSS FIGURE. It is before all social insurance contributions and before wage tax. It must NOT be used for a cost-vs-salary break-even calculation."
+  ],
+  "field_mapping": {
+    "gross_monthly_income": "career.gross_monthly_income (topic: gross_monthly_income)"
+  },
+  "notes": "*** THIS IS GROSS, NOT NET. *** EUR 4 317 is what a full-time Austrian employee earns before the state takes anything. For the corresponding take-home figure use artifact 010_net_monthly_income.json (EUR 3 084). The two figures come from the same table on the same page, so the published-implied relationship at the median is roughly 4 317 gross -> 3 084 net for the same population, i.e. the official net/gross ratio at the median is about 71.4 per cent - but note this is a ratio of two MEDIANS of different sub-populations' underlying withholding situations, NOT an individual effective tax rate, and it must not be reused as a general 'net = x% of gross' conversion rule for other countries or other incomes. Currency EUR, reference year 2024.",
+  "evidence_limitations": "All employees, not graduates. Same population caveats as artifact 010. Included here only so the corpus can see the official gross counterpart to the official net median and can sanity-check that a gross figure has not been mistaken for a net one."
+}

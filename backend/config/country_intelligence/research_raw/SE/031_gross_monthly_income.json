@@ -1,0 +1,22 @@
+﻿{
+  "country": "SE",
+  "topic": "gross_monthly_income",
+  "source_id": "se-skatteverket-bruttolonestatistik",
+  "source_url": "https://www.scb.se/en/finding-statistics/statistics-by-subject-area/labour-market/labour-force-survey/",
+  "source_type": "OFFICIAL_STATISTICS",
+  "publisher": "Statistics Sweden (SCB)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2024 (latest annual data published 2026-01-20)",
+  "raw_extract": "SCB 'Income and tax statistics' landing page, read verbatim: 'Official statistics of Sweden / The statistics show the distribution of incomes and taxes for individuals and households, and are available by county, municipality, sex, age, country of birth, occupation and level of education.' Listed outputs read verbatim: 'Statistical news: Net gain/loss | Excel file | 2026-01-20'; 'Income - Persons (Countries and municipalities): Net income 2024 | Excel file | 2026-01-20'; 'Total income from employment 1991-2024, by municipality. Median values in 2024 prices | Excel file | 2026-01-20'. Tables in the Statistical Database listed as 'Start year/End year 2000/2005 - 2019/2024 | 2026-03-26': 'Persistency in income group, net income. Period 2000-2000 - 2019-2024'; 'Number of years in income group, net income. Period 2000-2005 - 2019-2024'; 'Taxes: Income from employment by region, sex, age and income bracket. Year 2000 - 2024 | 2026-01-20'. No median gross or net monthly salary figure was read from these pages, because each is an Excel file or a query-driven StatBank table that was not opened and read in this pass.",
+  "claims": [],
+  "assumptions": [
+    "No figure is claimed. This artifact deliberately records NO value rather than importing a gross salary from a secondary aggregator, because an unverified gross anchor would contaminate the net calculation derived from the official skattetabell.",
+    "SCB's LFS/Income and tax statistics are the correct primary source for a Swedish graduate gross anchor, and the landing page confirms they are broken down by 'occupation and level of education', which is exactly the graduate dimension required.",
+    "The data are available in both gross and net form; SCB publishes 'Net income 2024' directly, so a future pass could obtain an OFFICIAL NET figure for a graduate population, which would be a stronger result than the derived table mapping in 030_net_monthly_income.json."
+  ],
+  "field_mapping": {
+    "gross_monthly_income": "career.gross_monthly_income (topic: gross_monthly_income)"
+  },
+  "notes": "STATUS: NO VALUE ESTABLISHED. This is a partial result and is recorded as such rather than filled with a guess. For Sweden the deduction side is fully solved: Skatteverket publishes an official net-gross table (see 030_net_monthly_income.json), so net at any gross is a lookup. The remaining gap is the gross earnings level for an early-career graduate. The SCB sources identified here are the right ones and were reachable, but the actual figures sit in downloadable Excel files and query-driven StatBank tables that were not opened in this pass. A reader should complete this by retrieving SCB's income-from-employment distribution by level of education for ages corresponding to early career, or by using SCB's statistical database (PxWeb) with a defined occupation and education filter. SCB also publishes an official NET income series by municipality, which would permit a genuinely official net graduate figure for Sweden rather than a derived one.",
+  "evidence_limitations": "No specific Swedish graduate salary value was read or verified, so this artifact supports no numeric claim. Statistics Sweden's income statistics are distributed as Excel workbooks and StatBank queries rather than as static HTML pages, which means extracting a single citable number requires opening the file or building a StatBank API query; that work was not completed here. Note also that Swedish income statistics distinguish 'income from employment' (which includes employer benefits in kind and, in some presentations, tax-favoured savings) from take-home pay, and 'net income' in SCB usage is typically disposable income after final tax rather than the payroll take-home figure in a Skatteverket skattetabell, so the two would need careful reconciliation before being combined."
+}

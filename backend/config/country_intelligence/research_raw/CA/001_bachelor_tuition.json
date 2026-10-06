@@ -1,0 +1,46 @@
+﻿{
+  "country": "CA",
+  "topic": "bachelor_tuition",
+  "source_id": "utsc-tuition-and-fees",
+  "source_url": "https://www.utsc.utoronto.ca/admissions/tuition-and-fees",
+  "source_type": "UNIVERSITY_OFFICIAL",
+  "publisher": "University of Toronto Scarborough (Admissions & Student Recruitment)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "current year, indicative of fall 2027",
+  "raw_extract": "International students\n\nInternational students\n\n| International students | First Year Fee | Year 2 and up |\n| Computer Science | $66,110 | $72,480 |\n| Management | $66,110 | $78,160 |\n| Arts, Science, all other programs | $66,110 | $68,750 |\n\nAdditional required fees\n\n| Fee | Amount | Notes |\n| Incidental/ancillary fees | $2,286 | These costs cover course fees (e.g. for lab fees or field study) and many campus and student union services, including support services, the Extended Health and Dental plan, and access to the fitness facilities at the Toronto Pan Am Sports Centre. |\n\nThere are some international students, meeting specific criteria, who may be eligible for domestic fees. See details here.\n\nOther university expenses\n\nIn addition to tuition fees, your other costs to attend university may include (September to April, unless otherwise stated)\n\n| Fee | Amount | Notes |\n| Co-op program | $1,010 to $3,444 | Cover the preparation and administration of work terms, field experiences. |\n| Joint program with Centennial College | $40 to $200 | Cover course materials for college courses. |\n| On-campus housing (residence) | $8,367 to $18,022 | If you are not living with family, you will need to budget living on- or off- campus. On-campus housing includes heat, water and internet. |\n| Meal plan | $6,800 | First year students who live on...",
+  "research_notes": "Canada has no single national international tuition figure, so this is one named university (University of Toronto, UTSC admissions page) and is labelled as such. CURRENCY AMBIGUITY RESOLVED BY THE PAGE ITSELF: the amounts are unqualified '$66,110' but this is a Canadian university publishing in its own jurisdiction, and the page separately lists incidental fees in the same units; the currency is therefore recorded as CAD. STRUCTURAL POINT THAT AFFECTS TOTAL COST: Canadian international tuition is normally billed in two tiers, so a multi-year bachelor's cannot be costed at 3 x first-year fee. The page's own table gives First Year $66,110 and a distinct 'Year 2 and up' figure that differs by program ($68,750 Arts/Science, $72,480 Computer Science, $78,160 Management) - the gap is up to $12,050 per year on top of year one. Incidental/ancillary fees of $2,286 are mandatory and additional. Living costs on the same page are ESTIMATES, not government figures: on-campus housing $8,367-$18,022 for September-April and a $6,800 meal plan. HONEST CAVEAT ON AS_OF: the page itself states 'Below are the fees for full-time students during the current year, to help you estimate fees for fall 2027. Accurate fees will be approved in spring 2027, and posted on this page', so these are official indicative fees, not finalised 2027-28 fees. The phrase 'There are some international students, meeting specific criteria, who may be eligible for domestic fees' is recorded as text only - the criteria were not fetched and no domestic-fee claim is made. Also not verified and not claimed: the University of Toronto's PhD domestic-fee alignment (it appeared only in a search snippet of a budget PDF), and the Tuition Explorer per-faculty breakdown, which showed a different incidental figure ($2,100.29) for University College Arts & Science - a genuine minor discrepancy between two U of T systems that should not be silently merged.",
+  "claims": [
+    {
+      "claim_id": "ca-bachelor-tuition-1",
+      "statement": "The University of Toronto charges international students CAD 66,110 in first year of the Bachelor of Science in Computer Science.",
+      "value": 66110,
+      "unit": "CAD first year",
+      "as_of": "current year (indicative of fall 2027)",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ca-bachelor-tuition-2",
+      "statement": "The University of Toronto charges international students CAD 66,110 in first year for Arts, Science and all other undergraduate programs.",
+      "value": 66110,
+      "unit": "CAD first year",
+      "as_of": "current year (indicative of fall 2027)",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ca-bachelor-tuition-3",
+      "statement": "For years 2 and above the international tuition is program-differentiated at U of T: CAD 68,750 for Arts/Science, CAD 72,480 for Computer Science and CAD 78,160 for Management.",
+      "value": 68750,
+      "unit": "CAD per year from year 2 (Arts and Science)",
+      "as_of": "current year (indicative of fall 2027)",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ca-bachelor-tuition-4",
+      "statement": "International students at the University of Toronto also pay mandatory incidental/ancillary fees of CAD 2,286, covering course costs and campus/student union services including the Extended Health and Dental plan.",
+      "value": 2286,
+      "unit": "CAD per year (incidental/ancillary)",
+      "as_of": "current year",
+      "study_level": "bachelor"
+    }
+  ]
+}

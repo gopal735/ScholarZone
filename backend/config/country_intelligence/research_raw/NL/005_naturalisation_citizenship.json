@@ -1,0 +1,46 @@
+﻿{
+  "country": "NL",
+  "topic": "naturalisation_citizenship",
+  "source_id": "nl-ind-naturalisation-001",
+  "source_url": "https://ind.nl/en/dutch-citizenship/becoming-a-dutch-national-through-naturalisation",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Immigratie- en Naturalisatiedienst (IND), Ministerie van Justitie en Veiligheid",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "Becoming a Dutch national through naturalisation\nLast update: 28 August 2026\n\nRequirements\nThe following requirements apply to naturalisation:\nYou must be 18 years or older.\nYou can prove your identity and nationality with valid documents.\nYou have lived in the Kingdom of the Netherlands for at least 5 consecutive years with a valid residence permit. You have always applied for an extension of your residence permit on time. In some cases you can apply for naturalisation earlier. Find out about exceptions to the 5-year term. \nAt the time of your application for naturalisation, during the procedure and on the day of the naturalisation ceremony, you have one of the following residence permits:\nAn asylum permanent residence permit or regular permanent residence permit.\nA residence permit as a long-term EU resident.\nA temporary residence permit with a non-temporary purpose of stay.\nA resident permit as a family member of an EU national (including stay with minor Dutch child, ruling Chavez-Vilchez).\nYou have residence pursuant to EU law because you have the nationality of an EU or EEA country or Switzerland. You do not need to have a residence permit.\nA residence document Article 50 TEU Withdrawal Agreement Brexit (in Dutch: Terugtrekkingsakkoord Brexit) for UK nationals and their family members.\nOn the date of the naturalisation ceremony, your residence permit is still valid or you still have a valid right of residence under EU law. Does your residence permit expire during the procedure? Then apply for extension.\nYou have fulfilled the integration requirement. This means you must have passed the civic integration exam on at least language level A2. Sometimes you are exempted from the civic integration exam.\nYou are not a danger to the public order or national security of the Kingdom of the Netherlands.\nYou must renounce your current nationality. There are exemptions to this rule.\nYou must be willing to make the declaration of solidarity during the naturalisation ceremony.\n\nDecision period\nThe IND must take a decision within 12 months.\n\nNaturalisation abroad: no residence permit, but conditions are required\nAre you applying from abroad? Then you do not need a Dutch residence permit. You must meet the requirements that apply to a residence permit for a non-temporary purpose.",
+  "research_notes": "CONFIRMED from the IND itself (page last updated 28 August 2026). Netherlands naturalisation: minimum 5 CONSECUTIVE YEARS lived in the Kingdom of the Netherlands with a valid residence permit. Official route: naturalisation, applied for via the municipality (gemeente) which forwards the request to the IND; a Royal Decree is then signed by the King and a naturalisation ceremony with a Declaration of Solidarity must be attended within 1 year of the positive decision or the nationality is not granted and a new application is required. CRITICAL POINT FOR THE CORPUS: the qualifying-permit list requires, at the time of application, during the procedure AND on the day of the ceremony, a permanent residence permit, a long-term EU resident permit, or 'A temporary residence permit with a non-temporary purpose of stay'. A Dutch study residence permit is a temporary permit with a TEMPORARY purpose, so it does not qualify on its own — the applicant must first hold a non-temporary status. Confirmed conditions: 18+, identity/nationality evidenced, always applied for extensions on time, civic integration exam passed at least at language level A2 (or exemption), not a danger to public order or national security, and generally must renounce current nationality (exemptions exist), plus the Declaration of Solidarity. IND decision period: 12 months. Language level required is A2 — materially LOWER than Germany's B1 and France's B1, which is a genuine comparative finding for the corpus. GAP: the IND page does not state the naturalisation application fee; it directs readers to a separate fees page I did not fetch, so no fee figure is recorded. The 'exceptions to the 5-year term' page for naturalisation was not fetched either.",
+  "claims": [
+    {
+      "claim_id": "nl-naturalisation-min-years",
+      "statement": "You must have lived in the Kingdom of the Netherlands for at least 5 consecutive years with a valid residence permit to be eligible for naturalisation.",
+      "value": 5,
+      "unit": "years",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nl-naturalisation-permit-requirement",
+      "statement": "At the time of application, during the procedure and on the day of the ceremony you must hold an asylum or regular permanent residence permit, a long-term EU resident permit, or a temporary residence permit with a non-temporary purpose of stay — a temporary study permit does not qualify on its own.",
+      "value": 5,
+      "unit": "years",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nl-naturalisation-language-requirement",
+      "statement": "You must have fulfilled the integration requirement, meaning you must have passed the civic integration exam on at least language level A2, or be exempted from it.",
+      "value": "A2",
+      "unit": "CEFR level",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nl-naturalisation-other-conditions",
+      "statement": "You must also not be a danger to public order or national security, generally renounce your current nationality (exemptions exist), and be willing to make the Declaration of Solidarity at the naturalisation ceremony; the IND must decide within 12 months.",
+      "value": 12,
+      "unit": "months (IND decision period)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

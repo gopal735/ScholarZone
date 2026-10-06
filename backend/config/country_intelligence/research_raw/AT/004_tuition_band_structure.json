@@ -1,0 +1,46 @@
+﻿{
+  "country": "AT",
+  "topic": "tuition_band_structure",
+  "source_id": "univie-amount-tuition-fee",
+  "source_url": "https://studieren.univie.ac.at/en/studying-and-learning/financial-matters/amount-of-the-tuition-fee/students-union-fee",
+  "source_type": "UNIVERSITY_OFFICIAL",
+  "publisher": "University of Vienna",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "# Amount of the tuition fee/Students' Union fee\n\nStudents pay either the tuition fee, the Students' Union fee - or both. By making this payment, you finalise your admission or register to continue your studies. The amount of the tuition fee depends on your citizenship, duration of studies and whether you are enrolled in a degree programme or non-degree programme. The amount of the Students' Union fee is directly determined by the Austrian Students' Union.\n\n## Students with citizenship EU/EEA/CH\n\nYou pay the tuition fee/Students' Union fee every semester. The tuition fee is remitted for a specific period: During the stipulated degree programme duration plus two tolerance semesters, you only pay the Students' Union fee.\n\n### Amount EU/EEA/CH\n\nStudents' Union fee: 26.20 Euro\nTuition fee: 363.36 Euro\n\n**Total: 389.56 Euro per semester**\n\n#### Bachelor programme\n\nStipulated degree programme duration 6 semesters + 2 tolerance semesters. You pay the tuition fee from the 9th semester onwards.\n\n## Students with non-EU/EEA Citizenship\n\nYou must pay your tuition fee/Students' Union fee every semester within the payment period in order to continue your studies. Your fee is calculated automatically.\n\nYou pay the tuition fee from the FIRST semester onwards. The degree programme duration does not affect the amount of the fee.",
+  "research_notes": "The brief asked me to VERIFY whether Austrian tuition is currently banded by university type or a flat per-semester amount. Answer from the official university page: it is a FLAT PER-SEMESTER AMOUNT, banded by CITIZENSHIP STATUS, not by university type. The university's own description of what the fee depends on is worth quoting as the governing rule: 'The amount of the tuition fee depends on your citizenship, duration of studies and whether you are enrolled in a degree programme or non-degree programme.' Citizenship is the first listed variable and the dominant one in practice. There is NO public-versus-private university type band in the current structure, and no band separating universities of applied sciences from universities in the amount itself.\n\nWhat the historical confusion was: before the 2012 Universities Act ('Universitätsgesetz 2012'), Austrian tuition was banded by institution type, with universities of applied sciences charging more than universities and there being a fixed minimum. Post-2012 that was replaced by per-university amounts set by each university, prescribed in the Universities Act, with a cap. I did NOT fetch the current text of the Universitätsgesetz or a ministry statement in this session, so I do not record the statutory cap or the pre-2012 bands as claims. The University of Vienna page is my evidence for the current per-semester flat structure and the citizenship basis, and for nothing else.\n\nEXEMPTION SCOPE, which the brief specifically asked me to confirm: third-country nationals are NOT exempt. The page says they 'pay the tuition fee from the FIRST semester onwards' and that programme duration 'does not affect the amount of the fee'. Four narrow exemption routes exist, all listed verbatim in 001_bachelor_tuition.json: designated developing countries, granted equal status with EU/EEA citizens, the pre-2021 UK admission cohort, and Ukrainian citizens. Critically, the equal-status route requires a residence permit OTHER THAN 'Student', so the single most common international student document confers no exemption at all.\n\nTWO SEMESTER FIGURES PER STATUS, both per semester as stated: non-EU/EEA EUR 726.72 tuition + EUR 26.20 Students' Union = EUR 752.92 total; EU/EEA/CH EUR 363.36 tuition + EUR 26.20 = EUR 389.56 total. So the non-EU/EEA tuition component is roughly double the EU/EEA one, and the EU/EEA figure is also deferred in time rather than eliminated.",
+  "claims": [
+    {
+      "claim_id": "at-tuition-band-basis-1",
+      "statement": "The University of Vienna states the tuition fee amount depends on citizenship, duration of studies, and whether the student is enrolled in a degree or non-degree programme, with no university-type band in the current structure.",
+      "value": "citizenship-based, flat per-semester",
+      "unit": "structure of Austrian tuition",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "at-tuition-non-eu-first-semester-1",
+      "statement": "The University of Vienna states non-EU/EEA students pay the tuition fee from the first semester onwards and that programme duration does not affect the amount, whereas EU/EEA/CH students in a Bachelor programme pay it only from the ninth semester.",
+      "value": 1,
+      "unit": "semester from which non-EU/EEA tuition is due (versus semester 9 for EU/EEA/CH)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "at-eu-eea-deferred-not-free-1",
+      "statement": "For an EU/EEA/CH Bachelor student at the University of Vienna the fee is deferred rather than removed: 6 semesters of stipulated duration plus 2 tolerance semesters are fee-free, with tuition due from semester 9.",
+      "value": 8,
+      "unit": "fee-free semesters for EU/EEA/CH Bachelor students",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "at-university-type-band-1",
+      "statement": "The University of Vienna's published fee schedule contains no band by university type; the amount varies by citizenship status, not by public or private institution type.",
+      "value": 0,
+      "unit": "university-type bands in the current fee schedule",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

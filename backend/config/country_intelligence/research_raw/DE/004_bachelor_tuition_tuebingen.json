@@ -1,0 +1,30 @@
+﻿{
+  "country": "DE",
+  "topic": "bachelor_tuition_public_non_eu",
+  "source_id": "de-uni-tuebingen-003",
+  "source_url": "https://uni-tuebingen.de/en/study/organizing-your-studies/fees/tuition-fees/tuition-fees-for-international-students",
+  "source_type": "UNIVERSITY_OFFICIAL",
+  "publisher": "University of Tübingen",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "Tuition fees for international students (1,500.00 euros per semester)\n\nLegal basis\nThe information below is intended to outline the relevant law and the related procedures; the sole legally binding document is the Landeshochschulgebührengesetz des Landes Baden-Württemberg.\nTuition fee exceptions will be granted automatically in the following cases: \tStudents who are citizens of an EU or EEA member state, \tStudents enrolling for a doctoral program, \tStudents on exchanges arising from partnership agreements with the University of Tübingen (e.g. Erasmus), \tDouble Degree students from partner institutions abroad [...]\nFrom the winter semester 2021/2022, students form the United Kingdom who wish to enroll in an undergraduate degree program (=Bachelor's degree program, Staatsexamens program and full Theology programs culminating in an academic or ecclesiastic qualification) or a consecutive Master's degree program at the University of Tübingen will be charged a tuition fee of 1,500 euros per semester. The tuition fee would not be charged in case of an exception or exemption.",
+  "research_notes": "SECOND independent Baden-Württemberg university confirming the same EUR 1,500 per semester non-EU Bachelor tuition. Two independent official university pages plus the state ministry all agree on 1,500 EUR/semester for Baden-Württemberg, so this figure is well corroborated. This page states the fee in the page title itself, and explicitly ties it to the undergraduate/Bachelor degree programme. Note it also demonstrates a Brexit-specific consequence: UK students enrolling from WS 2021/22 became fee-liable for undergraduate programmes. GAP: this page does NOT state a separate mandatory semester contribution figure, unlike the Stuttgart page — so the semester fee cannot be assumed identical at Tübingen.",
+  "claims": [
+    {
+      "claim_id": "de-bw-non-eu-tuition-tuebingen-bachelor",
+      "statement": "The University of Tübingen charges international students from outside the EU/EEA a tuition of 1,500.00 euros per semester for undergraduate degree programmes.",
+      "value": 1500,
+      "unit": "EUR per semester",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "de-bw-non-eu-tuition-uk-undergrad-post-brexit",
+      "statement": "From the winter semester 2021/2022, students from the United Kingdom enrolling in an undergraduate degree programme at the University of Tübingen are charged a tuition fee of 1,500 euros per semester.",
+      "value": 1500,
+      "unit": "EUR per semester",
+      "as_of": "2021",
+      "study_level": "bachelor"
+    }
+  ]
+}

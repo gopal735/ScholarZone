@@ -1,0 +1,299 @@
+{
+  "contract_version": "1.0.0",
+  "country": {
+    "currency": null,
+    "iso2": "IT",
+    "name_en": "Italy"
+  },
+  "gaps": [
+    {
+      "attempted_sources": [
+        "https://www.unibo.it/it/allegati/Tabellaimportimassimi2627.pdf/@@download/file/Tabella%20importi%20massimi%202026-2027.pdf",
+        "https://www.unibo.it/it/allegati/sistema-di-calcolo-delle-tasse-a-a-2026-27/@@download/file/Sistema-di-calcolo-delle-tasse-anno-accademico-2026-2027.pdf",
+        "https://miur.mur.gov.it/studiare-in-italia/studying/info-23.html"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "it.bachelor_tuition",
+      "next_review": null,
+      "reason": "Italy's per-course maximum Bachelor tuition could not be established from a fetched official page. The structure (fixed EUR 157.04 plus income-banded variable component, banded by ISEE) IS confirmed from the University of Bologna page, and the regional tax of EUR 140 within that fixed amount is confirmed too. What is missing is the upper bound. The University of Bologna publishes the maximum per course only in a PDF ('Tabella importi massimi 2026-2027.pdf'), and my fetch attempts on that PDF and on the MUR tuition-calculation PDF returned raw PDF binary streams that this tooling could not decode into readable text. The MUR 'Study in Italy' page I did fetch carries a stale maintenance figure from 2001 and says nothing about tuition bands. So the maximum is a real, published number that I personally could not read, and I will not substitute a remembered or search-indexed figure for it. Note also that Italian maxima are per-course AND per-university, so even a single Bologna maximum would not be a national figure."
+    },
+    {
+      "attempted_sources": [
+        "unibo-tasse-2026-27"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "it.education_costs.tuition_fees.public.bachelor",
+      "reason": "4 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 157.04 EUR per year (unibo-tasse-2026-27); 140 EUR per year (unibo-tasse-2026-27); 27000 EUR (unibo-tasse-2026-27); 30 EUR (unibo-tasse-2026-27). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "https://miur.mur.gov.it/studiare-in-italia/studying/info-23.html"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "it.financial_proof_conflict",
+      "reason": "Evidence was retrieved and archived, but this topic has no explicit mapping into the corpus schema, so the figure was not placed. Adding the mapping is a reviewed change, not something ingestion should guess."
+    },
+    {
+      "attempted_sources": [
+        "https://www.unibo.it/it/studiare/iscrizioni-tasse-e-altre-procedure/lauree-e-lauree-magistrali/tasse-e-contributi/tasse-ed-esenzioni-importi-e-scadenze"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "it.it-bachelor-tuition-nonoecd-flat-1",
+      "reason": "Archived evidence recorded a finding with no numeric figure: The University of Bologna states a citizen of a particularly poor or developing country, or of a non-OECD country, whose family income and assets are entirely outside Italy may benefit from a reduced flat tax."
+    },
+    {
+      "attempted_sources": [
+        "https://amblaja.esteri.it/it/servizi-consolari-e-visti/servizi-per-il-cittadino-straniero/visti/visto-di-studio/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "it.it-financial-proof-blocked-account-1",
+      "reason": "Archived figure recorded, but it is not a currency figure and its topic's primary field holds money. It is stored as a related figure rather than as a cost. Statement: The Italian Embassy in The Hague states that blocked/escrowed accounts in the student's name are accepted, and that the nominal account balance at application time is not sufficient on its own."
+    },
+    {
+      "attempted_sources": [
+        "https://amblaja.esteri.it/it/servizi-consolari-e-visti/servizi-per-il-cittadino-straniero/visti/visto-di-studio/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "it.it-financial-proof-excludes-1",
+      "reason": "Archived evidence recorded a finding with no numeric figure: The Italian Embassy in The Hague states the EUR 10,179.85 figure excludes return travel costs and university tuition fees, which if unpaid must be added to the subsistence calculation."
+    },
+    {
+      "attempted_sources": [
+        "https://amblaja.esteri.it/it/servizi-consolari-e-visti/servizi-per-il-cittadino-straniero/visti/visto-di-studio/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "it.it-financial-proof-scholarship-awarded-1",
+      "reason": "Archived figure recorded, but it is not a currency figure and its topic's primary field holds money. It is stored as a related figure rather than as a cost. Statement: The Italian Embassy in The Hague states that merely applying for or being eligible for a scholarship, absent an official award attestation, cannot count toward proving means of subsistence."
+    },
+    {
+      "attempted_sources": [
+        "https://www.integrazionemigranti.gov.it/it-it/Ricerca-news/Dettaglio-news/id/3301/Conversione-del-permesso-di-soggiorno-da-studio-a-lavoro-Cosa-e-cambiato-con-il-decreto-Cutro"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "it.it-poststudy-permit-name-1",
+      "reason": "Archived evidence recorded a finding with no numeric figure: The official name is a residence permit for searching for employment or setting up a business consistent with the completed training, referred to as permesso di soggiorno per ricerca di un lavoro or attesa occupazione, created by D.lgs. 71/2018."
+    },
+    {
+      "attempted_sources": [
+        "https://amblaja.esteri.it/it/servizi-consolari-e-visti/servizi-per-il-cittadino-straniero/visti/visto-di-studio/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "it.it-visa-deadline-bachelor-1",
+      "reason": "Archived evidence recorded a finding with no numeric figure: The Italian Embassy in The Hague states that for academic year 2026/2027, study visa applications for Laurea and Diploma accademico di primo livello must be submitted by 30 November 2026."
+    },
+    {
+      "attempted_sources": [
+        "https://amblaja.esteri.it/it/servizi-consolari-e-visti/servizi-per-il-cittadino-straniero/visti/visto-di-studio/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "it.it-visa-processing-1",
+      "reason": "Archived figure recorded, but it is not a currency figure and its topic's primary field holds money. It is stored as a related figure rather than as a cost. Statement: The Italian Embassy in The Hague states that examination of Type D study visa applications may take up to 90 days."
+    },
+    {
+      "attempted_sources": [
+        "amblaja-study-visa-means-2026"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "it.one_time_costs.blocked_account",
+      "reason": "2 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 10179.85 EUR per year (amblaja-study-visa-means-2026); 50 EUR (amblaja-study-visa-means-2026). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "integrazionemigranti-cutro-study-to-jobsearch"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "it.residency.job_seeker_residence_permit.duration.bachelor.month",
+      "reason": "2 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 9 per month (integrazionemigranti-cutro-study-to-jobsearch); 12 per month (integrazionemigranti-cutro-study-to-jobsearch). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    }
+  ],
+  "research": {
+    "evidence_artifact_count": 6,
+    "researched_at": "2026-10-05"
+  },
+  "sections": {
+    "career": {
+      "net_monthly_income": {
+        "as_of": "in force in 2026",
+        "note": "This figure describes gross (before-tax) income, not take-home pay. It was filed on the net topic and has been demoted rather than published, because break-even must compare money out against money that actually reaches the worker. Using gross here would roughly halve the reported months in most European countries.",
+        "source_ids": [
+          "it-agenziaentrate-irpef-aliquote-2026"
+        ],
+        "value": null,
+        "value_status": "UNKNOWN"
+      }
+    },
+    "education_costs": {
+      "tuition_fees": {
+        "public": {
+          "bachelor": {
+            "as_of": "2026/2027",
+            "colliding_values": [
+              {
+                "as_of": "2026/2027",
+                "currency": "EUR",
+                "per": "year",
+                "source_ids": [
+                  "unibo-tasse-2026-27"
+                ],
+                "statement": "The University of Bologna states the annual amount payable ranges from a minimum of 157.04 EUR to a maximum that varies by course, so no student pays less than 157.04 EUR.",
+                "value": 157.04
+              },
+              {
+                "as_of": "2026/2027",
+                "currency": "EUR",
+                "per": "year",
+                "source_ids": [
+                  "unibo-tasse-2026-27"
+                ],
+                "statement": "The University of Bologna states the fixed 157.04 EUR comprises a regional tax of 140.00 EUR, a stamp duty of 16.00 EUR and an insurance premium of 1.04 EUR.",
+                "value": 140
+              },
+              {
+                "as_of": "2026/2027",
+                "currency": "EUR",
+                "per": null,
+                "source_ids": [
+                  "unibo-tasse-2026-27"
+                ],
+                "statement": "The University of Bologna states the tuition structure is banded by family economic indicator, with total exemption from the variable component at an indicator of 27,000 EUR or less and partial exemption above it.",
+                "value": 27000
+              },
+              {
+                "as_of": "2026/2027",
+                "currency": "EUR",
+                "per": null,
+                "source_ids": [
+                  "unibo-tasse-2026-27"
+                ],
+                "statement": "The University of Bologna states a late-payment mora of 30 EUR for delays up to 30 days past the deadline and 150 EUR for longer delays, and that the academic record is blocked until paid.",
+                "value": 30
+              }
+            ],
+            "currency": "EUR",
+            "note": "The University of Bologna states the annual amount payable ranges from a minimum of 157.04 EUR to a maximum that varies by course, so no student pays less than 157.04 EUR.",
+            "source_ids": [
+              "unibo-tasse-2026-27"
+            ],
+            "value": 157.04,
+            "value_status": "UNIVERSITY_OFFICIAL"
+          }
+        }
+      }
+    },
+    "one_time_costs": {
+      "blocked_account": {
+        "as_of": "2026/2027",
+        "colliding_values": [
+          {
+            "as_of": "2026/2027",
+            "currency": "EUR",
+            "per": "year",
+            "source_ids": [
+              "amblaja-study-visa-means-2026"
+            ],
+            "statement": "The Italian Embassy in The Hague states students must demonstrate means of subsistence quantified at EUR 10,179.85 per year for academic year 2026/2027.",
+            "value": 10179.85
+          },
+          {
+            "as_of": "2026/2027",
+            "currency": "EUR",
+            "per": null,
+            "source_ids": [
+              "amblaja-study-visa-means-2026"
+            ],
+            "statement": "The Italian Embassy in The Hague states the Type D study visa application carries a non-refundable fee of 50 EUR.",
+            "value": 50
+          }
+        ],
+        "currency": "EUR",
+        "note": "The Italian Embassy in The Hague states students must demonstrate means of subsistence quantified at EUR 10,179.85 per year for academic year 2026/2027.",
+        "related_figures": {
+          "it-visa-processing-1": {
+            "as_of": "2026/2027",
+            "descriptive": true,
+            "note": "The Italian Embassy in The Hague states that examination of Type D study visa applications may take up to 90 days.",
+            "per": "day",
+            "source_ids": [
+              "amblaja-study-visa-means-2026"
+            ],
+            "study_level": "bachelor",
+            "value": 90,
+            "value_status": "OFFICIAL_GOVERNMENT"
+          }
+        },
+        "source_ids": [
+          "amblaja-study-visa-means-2026"
+        ],
+        "value": 10179.85,
+        "value_status": "OFFICIAL_GOVERNMENT"
+      }
+    },
+    "residency": {
+      "job_seeker_residence_permit": {
+        "duration": {
+          "bachelor": {
+            "as_of": "2023",
+            "note": "A study permit holder may work up to 20 hours per week, cumulative across 52 weeks, subject to an annual limit of 1,040 hours.",
+            "per": "week",
+            "source_ids": [
+              "integrazionemigranti-cutro-study-to-jobsearch"
+            ],
+            "study_level": "bachelor",
+            "value": 20,
+            "value_status": "OFFICIAL_GOVERNMENT"
+          }
+        }
+      }
+    }
+  },
+  "sources": [
+    {
+      "archived": true,
+      "as_of": "2026/2027",
+      "confidence": null,
+      "id": "amblaja-study-visa-means-2026",
+      "notes": "Italy's financial proof for a student: EUR 10,179.85 per year, for academic year 2026/2027, quoted verbatim from an Italian diplomatic mission's own published requirements.\n\nTWO FIGURES IN CIRCULATION, AND A GENUINE CONFLICT WORTH RECORDING. I fetched a second, higher-ranking official source: the MUR (Ministry of University and Research) 'Study in Italy' page at miur.mur.gov.it, which states 'l'importo minimo ritenuto indispensabile per il proprio sostentamento e' di Euro 350.57 mensili per ciascun mese dell'intero anno accademico (DI del 20.11.2001)'. EUR 350.57 per month is roughly EUR 4,207 per year, which is about 59 percent LOWER than the EUR 10,179.85 that current consular posts require. I have recorded both in the conflict block of the companion file. The likely explanation, and it matters: the MUR page is quoting a 2001 ministerial decree and is plainly stale, whereas the embassy page is dated to the 2026/2027 procedures. Neither source can be dismissed on its face, so the corpus should carry both and treat the embassy figure as the operative one with the MUR figure flagged as a legacy amount. A search result also surfaced EUR 467.65/month (EUR 6,079.45/year) attributed to MUR circulars and university guidance for 2025/26, which sits between the two and would be a third distinct figure; I did not fetch a page I could read to verify that one, so I do not record it as a claim.\n\nTHE AMOUNT IS NOT THE WHOLE REQUIREMENT. Three exclusions stated verbatim: it excludes the return journey, it excludes university tuition fees, and the nominal current-account balance alone is not sufficient. Proof can be a blocked/escrowed account ('conti vincolati'), three months of statements, or a relative's guarantee up to the fourth degree of kinship legalised by the Italian mission.\n\nSCHOLARSHIPS COUNT AS PROOF but applying for one does not. The embassy is emphatic: 'la semplice candidatura o il possesso dei requisiti di idoneita' per una borsa di studio, in assenza di un'attestazione ufficiale di assegnazione, non puo' essere considerata ai fini della verifica dei mezzi di sussistenza.' An award letter from an Italian institution (universities included) is acceptable. Same trap as Poland and Austria, and worth flagging to the corpus as a recurring pattern: three of five countries require an AWARD, not an APPLICATION.\n\nOTHER VERBATIM COSTS AND DEADLINES: EUR 50 non-refundable visa fee; suitable accommodation must be a university residence contract, registered lease, or hotel booking of at least 30 days, and merely being eligible for a residence place does not count; Type D visa processing may take up to 90 days; applications for Laurea / Diploma accademico di primo livello for 2026/2027 must be lodged by 30 November 2026. The Laurea / first-level diploma category in that sentence is exactly the Bachelor-level route, so this deadline is the Bachelor visa deadline.",
+      "publisher": "Ambasciata d'Italia a L'Aja (Italian Embassy in The Hague), Ministry of Foreign Affairs and International Cooperation",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "financial_proof evidence",
+      "url": "https://amblaja.esteri.it/it/servizi-consolari-e-visti/servizi-per-il-cittadino-straniero/visti/visto-di-studio/"
+    },
+    {
+      "archived": true,
+      "as_of": "2023-07-07",
+      "confidence": null,
+      "id": "integrazionemigranti-cutro-study-to-jobsearch",
+      "notes": "Italy's post-study job-search permit: between 9 and 12 months, and explicitly open at Bachelor level. The source lists the qualifying degrees in brackets and includes 'laurea triennale', which is the Italian three-year Bachelor, alongside laurea specialistica and diploma accademico di primo livello. So unlike Sweden's second-cycle-only permit, Italy's is available to a Bachelor graduate.\n\nIT IS A RANGE, NOT A POINT VALUE, and that matters for any cost model: 'ha una durata non inferiore ai 9 mesi e non superiore ai 12 mesi'. The source does not say which end a given applicant receives, so I record both bounds rather than picking one.\n\nOFFICIAL NAME: permesso di soggiorno per ricerca di un lavoro, referred to also as 'attesa occupazione', created by Decreto Legislativo 71/2018. I record the name as given on this page and do not claim a single canonical string beyond it.\n\nPREREQUISITE THAT IS EASY TO MISS: the applicant must first register with the local Centro per l'Impiego and make the 'dichiarazione di immediata disponibilita' al lavoro' (D.I.D). That is a concrete procedural step before the permit application, not a formality.\n\nA GENUINELY USEFUL DETAIL ON WORK WHILE WAITING: while awaiting the Questura appointment, the applicant may begin working on the strength of the application receipt alone, with an Unilav filed for dependent work or an INPS report for domestic work, and in that situation 'viene meno il limite delle 20 ore settimanali'. So the weekly-hours cap lapses during the wait. That is a materially better position for a new graduate than the study-permit cap, and it is stated on this official page.\n\nSTUDY-PERMIT WORK CAP, for completeness and contrast with other countries: 20 hours per week, cumulative across 52 weeks, with a hard annual ceiling of 1,040 hours. Confirmed independently on the Polizia di Stato Portale Immigrazione study-permit page, which also states the permit cannot be renewed for more than three years beyond the duration of a multi-year course.\n\nSTALENESS CAVEAT. This page is dated 7 July 2023 and describes the decreto Cutro. The 9-to-12-month job-search rule it reports comes from D.lgs. 71/2018 and I found no later page in this session amending it, but the page's own age means the corpus should re-check it before treating the figure as current. A separate CINFORMI page (Trento) I saw in search results carries a stale EUR 7,101.12 social-assistance reference figure, which I did not fetch and do not record.",
+      "publisher": "integrazionemigranti.gov.it - joint portal of the Ministry of Labour and Social Policies and the Ministry of the Interior",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "post_study_work evidence",
+      "url": "https://www.integrazionemigranti.gov.it/it-it/Ricerca-news/Dettaglio-news/id/3301/Conversione-del-permesso-di-soggiorno-da-studio-a-lavoro-Cosa-e-cambiato-con-il-decreto-Cutro"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "it-agenziaentrate-irpef-aliquote-2026",
+      "notes": null,
+      "publisher": "Agenzia delle Entrate (Italian Revenue Agency), Ministry of Economy and Finance",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "net_monthly_income evidence",
+      "url": "https://www.agenziaentrate.gov.it/portale/imposta-sul-reddito-delle-persone-fisiche-irpef-/aliquote-e-calcolo-dell-irpef"
+    },
+    {
+      "archived": true,
+      "as_of": "2026/2027",
+      "confidence": null,
+      "id": "unibo-tasse-2026-27",
+      "notes": "ITALY TUITION IS BANDED AND MEANS-TESTED, NOT A FLAT FEE. The brief asked me to confirm whether it is tuition-free-with-regional-tax or banded. The answer is banded, and more precisely a two-part structure: a fixed component plus an income-dependent variable component. The University of Bologna's own page states: 'La tassa universitaria è composta da due quote: una quota fissa di 157,04 EUR; una parte variabile che dipende dal corso che sceglierai ed è calcolata in base alla situazione economica del tuo nucleo familiare.'\n\nSO THE 'ZERO TUITION' IDEA IS TRUE ONLY AT THE LOW END OF THE BAND. The page states: 'Poiché la quota fissa è sempre dovuta, l'importo da pagare ogni anno va da un minimo di 157,04 EUR ad un massimo che cambia a seconda del corso'. So EUR 157.04 per year is a genuine floor that every student pays and no student escapes, and it is composed of a regional right-to-study tax (EUR 140.00), a stamp duty (EUR 16.00) and an insurance premium (EUR 1.04). That decomposition is confirmed elsewhere on the same official site: 'Agli importi calcolati come sopra indicato si aggiungono 157,04 EUR per tassa regionale (140,00 EUR), bollo (16,00 EUR) e premio assicurativo (1,04 EUR)'. So the regional tax DOES exist and is EUR 140, but it is only part of the floor, not the whole cost.\n\nTHE MECHANISM IS ISEE-INCOME BANDING, not nationality. Exemption from the variable component is total if 'l'indicatore della situazione economica del nucleo familiare è pari o inferiore a 27.000 EUR' and partial above it. This is the Italian household economic indicator. For a non-EU student with income abroad, the university requires equivalent documentation of foreign income and assets through the regional body for university study (ER.GO in Emilia-Romagna), which is a material administrative burden that a plain 'is Italy cheap for foreigners' framing misses.\n\nSPECIFIC TO NON-EU / NON-OECD, AND FAVOURABLE: 'hai la cittadinanza in uno dei Paesi particolarmente poveri e in via di sviluppo o in uno dei Paesi non appartenenti all'OCSE e la tua famiglia ha redditi, patrimoni solo al di fuori dell'Italia. In questo caso puoi beneficiare di tassa fissa agevolata' - a reduced flat tax, meaning the income test is effectively waived for a poor or non-OECD national whose money is all foreign. A Flat Tax option also exists, requiring no economic documentation at all.\n\nI DID NOT ESTABLISH A NATIONAL MAXIMUM. The maximum is per-course and published in a PDF I could not read; the page links it as 'Tabella importi massimi 2026-2027.pdf'. Two fetch attempts returned raw PDF binary that this tool cannot decode. So the maximum Italian Bachelor fee is recorded as UNAVAILABLE in the companion file rather than guessed. A per-course maximum does appear in the Bologna maximum-fee table as EUR 2,842.96 for EU students and EUR 5,842.96 for extra-EU students on certain second-cycle curricula with a higher-fee track, but those rows are second-cycle and I do not record them as Bachelor figures.\n\nALSO VERBATIM AND RELEVANT TO A BUDGET: late-payment mora of EUR 30 up to 30 days, EUR 150 beyond, and a EUR 500 or EUR 1,000 final-exam reduction if only the thesis remains. Recorded because they are small amounts that a cost model should not omit.",
+      "publisher": "Universita di Bologna (University of Bologna)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "UNIVERSITY_OFFICIAL",
+      "title": "bachelor_tuition evidence",
+      "url": "https://www.unibo.it/it/studiare/iscrizioni-tasse-e-altre-procedure/lauree-e-lauree-magistrali/tasse-e-contributi/tasse-ed-esenzioni-importi-e-scadenze"
+    }
+  ]
+}

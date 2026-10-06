@@ -1,0 +1,37 @@
+﻿{
+  "country": "PL",
+  "topic": "gross_monthly_income",
+  "source_id": "pl-zus-2026-minimum-wage-and-base",
+  "source_url": "https://www.zus.pl/baza-wiedzy/skladki-wskazniki-odsetki/skladki/wysokosc-skladek-na-ubezpieczenia-spoleczne",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Social Insurance Institution (ZUS), Poland",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "ZUS, read verbatim: 'Kwota prognozowanego przecietnego wynagrodzenia w 2026 roku wynosi 9420 zl. Roczna podstawa wymiaru na ubezpieczenia emerytalne i rentowe w 2026 roku moze wynosic maksymalnie 282 600 zl. Miesieczna podstawa wymiaru skladek na dobrowolne ubezpieczenie chorobowe nie moze przekroczyc miesiecznie 23 550,00 zl.' ZUS 'Wysokosc skladek na ubezpieczenia spoleczne', contribution table for 2026 read verbatim: 'Rodzaj ubezpieczenia/funduszu: Emerytalne | Rentowe | Wypadkowe | Chorobowe | FP i FS / Podstawa wymiaru 5 652 zl / Wysokosc skladki w % 19,52% | 8% | 1,67% | 2,45% | 2,45% / Kwota skladki 1103,27 zl | 452,16 zl | 94,39 zl | 138,47 zl | 138,47 zl'. NOTE: the PLN 5,652 base and PLN 4,806 minimum wage figures above are the statutory minima for a self-employed person (60% of the projected average wage) as published by ZUS; they are NOT an earnings statistic for employees. No graduate gross salary figure was read from this source.",
+  "claims": [
+    {
+      "claim_id": "pl-gross-reference-001",
+      "value": 9420,
+      "unit": "PLN per month",
+      "as_of": "2026",
+      "statement": "ZUS publishes a projected average monthly wage of PLN 9,420 for 2026 ('Kwota prognozowanego przecietnego wynagrodzenia w 2026 roku wynosi 9420 zl'), used to set contribution bases. This is an economy-wide projection, not a graduate salary."
+    },
+    {
+      "claim_id": "pl-gross-reference-002",
+      "value": 282600,
+      "unit": "PLN per year",
+      "as_of": "2026",
+      "statement": "ZUS publishes an annual contribution base cap of PLN 282,600 for pension and disability insurance in 2026, equal to 30 times the projected average monthly wage."
+    }
+  ],
+  "assumptions": [
+    "These are CONTRIBUTION REFERENCE PARAMETERS, not earnings statistics. No Polish graduate gross salary is claimed in this artifact.",
+    "The PLN 9,420 projected average wage is a national projection across the whole economy, which necessarily sits well above the earnings of a new graduate and well below the earnings of senior professionals. It must NOT be used as a graduate salary proxy.",
+    "The PLN 5,652 minimum contribution base is the statutory minimum for a business person, not an employee's actual wage."
+  ],
+  "field_mapping": {
+    "gross_monthly_income": "career.gross_monthly_income (topic: gross_monthly_income)"
+  },
+  "notes": "STATUS: CONTRIBUTION PARAMETERS ONLY, NO GRADUATE GROSS EARNINGS FIGURE ESTABLISHED. Recorded because ZUS's published 2026 parameters are needed to check the derivation in 030_net_monthly_income.json: they confirm the PLN 282,600 cap that guarantees the 13.71% employee contribution applies in full at graduate salary levels, and the PLN 9,420 projected average wage as a scale reference. For Poland the deduction chain is fully primary-sourced; the gap is the earnings level. Statistics Poland's (GUS) Structure of Earnings Survey ('badania struktury wynagrodzeń') is the authoritative source and does break remuneration down by level of education, which is the dimension a graduate corpus needs; GUS also publishes monthly average gross and net earnings by voivodeship and sector. Neither was retrieved in this pass.",
+  "evidence_limitations": "No Polish graduate gross or net salary figure was read from a primary source in this pass, so this artifact supports no earnings claim. The Institute of Labour and Social Studies (Instytut Pracy i Zawodowa, IPiZ) and the Polish Confederation of Employers (Konfederacja Pracodawców Polskich) publish well-regarded graduate salary studies, but they are institutional research reports and typically report GROSS earnings; they should be labelled INSTITUTIONAL_REPORT or MEDIA rather than treated as official statistics. A further caution for Poland: because the 12% band ends at PLN 120,000 of annual income and the second band is 32%, the NET-to-GROSS relationship is not linear and any corpus that extrapolates a single effective rate across a salary range will misrepresent individuals just above the threshold."
+}

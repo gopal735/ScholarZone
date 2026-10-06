@@ -1,0 +1,63 @@
+﻿{
+  "country": "FI",
+  "topic": "net_monthly_income",
+  "source_id": "fi-veronmaksajat-palkansaajan-veroprosentit-2026",
+  "source_url": "https://www.veronmaksajat.fi/tutkimus-ja-tilastot/tuloverot/palkansaajan-veroprosentit/",
+  "source_type": "INSTITUTIONAL_REPORT",
+  "publisher": "Veronmaksajain Keskusliitto ry (Association of Finnish Taxpayers)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "estimate": true,
+  "raw_extract": "Palkan­saajan vero­prosentit 2026. Kuinka paljon palkasta maksetaan veroja ja paljonko jää käteen? Kuvion ja taulukon veroasteet ja veroprosentit kertovat maksettavien tuloverojen ja veronluonteisten maksujen osuuden eri tulotasoilla. Loppuosa bruttopalkasta jää nettona verojen jälkeen käteen. Marginaalivero kertoo, kuinka suuren osan verojen muutos vie tulojen muutoksesta. Esimerkiksi kun 50 000 euroa vuodessa ansaitsevan palkansaajan tulot nousevat 100 euroa, hänen verot ja veronluonteiset maksut nousevat 50,4 euroa ja nettotulot 49,6 euroa (50 100 euron vuosituloilla tuloveroja ja veronluonteisia maksuja tulee maksettavaksi 50,4 euroa enemmän kuin 50 000 euron vuosituloilla). Näin marginaalivero on 50,4. Laskelmien veroprosentit sisältävät verohallinnon perimät tuloverot (valtion tulovero, kunnallisvero, kirkollisvero, yleisradiovero, sairausvakuutuksen sairaanhoito- ja päivärahamaksut) sekä palkasta pidätettävät veronluonteiset työntekijän työeläke- ja työttömyys­vakuutus­maksut. Laskelmat kuvaavat lopullista verotusta (ei verokortin mukaista ennakkoverotusta) ja sitä, kuinka paljon palkasta jää käteen, kun koko vuoden ansiotulo koostuu palkkatuloista. Verokortin prosenttiin verratessa on syytä huomioida, että verokortin prosentissa ei ole mukana bruttopalkasta perittäviä työeläke- ja työttömyysvakuutusmaksuja, jotka ovat yhteensä noin 8,2 % palkasta 18-64-vuotiailla. Esimerkeissä on käytetty keskimääräistä verotettavilla tuloilla painotettua kunnallisveroprosenttia (7,57) ja kirkollisveroprosenttia (1,38) sekä huomioitu automaattisesti verottajan viran puolesta laskemat palkkatuloon perustuvat vähennykset (alle 65-v työtulovähennys, ei työtulovähennyksen lapsikorotusta). [Taulukon otsakkeet] Ansiotulo*, €/vuosi | Kk-palkka**, € | Verot ja maksut, €/v | Vero-prosentti | Marginaali-vero*** | Nettotulo, €/v. [Taulukon rivit, kopioitu] 20 000 | 1 600 | 2 013 | 10,1 % | 35,9 % | 17 987 // 24 000 | 1 920 | 3 407 | 14,2 % | 33,4 % | 20 593 // 33 000 | 2 750 | 6 823 | 20,7 % | 35,5 % | 26 177 // 36 000 | 2 880 | 7 893 | 21,9 % | 37,5 % | 28 107 // 45 000 | 3 600 | 12 120 | 26,9 % | 50,4 % | 32 880 // 60 000 | 4 800 | 19 585 | 32,6 % | 52,3 % | 40 415",
+  "claims": [
+    {
+      "claim_id": "fi-net-monthly-est-001",
+      "value": 1793.30,
+      "unit": "EUR per month (net, take-home)",
+      "as_of": "2026",
+      "statement": "Take-home pay of EUR 17,987 per year, i.e. EUR 1,498.92 per month, on an annual earned income of EUR 20,000 (published monthly gross EUR 1,600). Source row: '20 000 | 1 600 | 2 013 | 10,1 % | 35,9 % | 17 987'."
+    },
+    {
+      "claim_id": "fi-net-monthly-est-002",
+      "value": 1716.08,
+      "unit": "EUR per month (net, take-home)",
+      "as_of": "2026",
+      "statement": "Take-home pay of EUR 20,593 per year, i.e. EUR 1,716.08 per month, on an annual earned income of EUR 24,000 (published monthly gross EUR 2,000). Source row: '24 000 | 1 920 | 3 407 | 14,2 % | 33,4 % | 20 593'."
+    },
+    {
+      "claim_id": "fi-net-monthly-est-003",
+      "value": 2181.42,
+      "unit": "EUR per month (net, take-home)",
+      "as_of": "2026",
+      "statement": "Take-home pay of EUR 26,177 per year, i.e. EUR 2,181.42 per month, on an annual earned income of EUR 33,000 (published monthly gross EUR 2,750). Source row: '33 000 | 2 750 | 6 823 | 20,7 % | 35,5 % | 26 177'."
+    },
+    {
+      "claim_id": "fi-net-monthly-est-004",
+      "value": 2740.00,
+      "unit": "EUR per month (net, take-home)",
+      "as_of": "2026",
+      "statement": "Take-home pay of EUR 32,880 per year, i.e. EUR 2,740.00 per month, on an annual earned income of EUR 45,000 (published monthly gross EUR 3,600). Source row: '45 000 | 3 600 | 12 120 | 26,9 % | 50,4 % | 32 880'."
+    },
+    {
+      "claim_id": "fi-net-monthly-est-005",
+      "value": 3367.92,
+      "unit": "EUR per month (net, take-home)",
+      "as_of": "2026",
+      "statement": "Take-home pay of EUR 40,415 per year, i.e. EUR 3,367.92 per month, on an annual earned income of EUR 60,000 (published monthly gross EUR 4,800). Source row: '60 000 | 4 800 | 19 585 | 32,6 % | 52,3 % | 40 415'."
+    }
+  ],
+  "assumptions": [
+    "The publisher's own stated method, which I quote rather than invent: the percentages and net figures describe FINAL taxation ('lopullista verotusta'), explicitly NOT tax-card advance withholding ('ei verokortin mukaista ennakkoverotusta')",
+    "The whole year's earned income consists of salary only ('kun koko vuoden ansiotulo koostuu palkkatuloista')",
+    "Taxes covered: state income tax, municipal tax, church tax, Yleisradio tax, and the Kela health insurance day-care and daily allowance charges, plus the employee pension and unemployment insurance contributions withheld from pay",
+    "The publisher's own stated parameters: an income-weighted average municipal tax rate of 7.57 per cent and church tax rate of 1.38 per cent; the earnings-related deduction (työtulovähennys) for under-65s is applied, with NO child supplement to it",
+    "Employee pension and unemployment insurance contributions taken as 'noin 8,2 % palkasta 18-64-vuotiailla' (about 8.2 per cent of pay for ages 18-64), as the publisher states",
+    "Monthly figures are the publisher's annual Nettotulo column divided by twelve; the publisher's own Kk-palkka column is annual income divided by twelve and does not model holiday-pay timing",
+    "Each claim states its own gross input, taken from the publisher's adjacent Kk-palkka column rather than interpolated"
+  ],
+  "field_mapping": {
+    "net_monthly_income": "fi.career.net_monthly_income (topic: net_monthly_income) - secondary/estimated, lower priority than FI/020_net_monthly_income.json"
+  },
+  "notes": "WHY THIS IS FILED AS AN ESTIMATE AND NOT AS OFFICIAL EVIDENCE. The Veronmaksajain Keskusliitto is the established Finnish professional association of tax advisers and is the standard secondary authority for net-pay arithmetic in Finland, but it is NOT a government body and it does not publish an observed or measured take-home wage. Its net column is produced by the association's own model of the 2026 tax rules, using national AVERAGE municipal and church rates rather than any real person's rates. It is filed here because it is the only source found that PRINTS an explicit take-home figure for a range of gross salaries, which makes the break-even calculation directly usable, whereas the official Verohallinto page in FI/020_net_monthly_income.json gives the components but not a net. It is also useful as a cross-check on the official route: at the shared EUR 30,000 gross anchor the association shows net EUR 24,316 per year (EUR 2,026.33 per month) against EUR 2,084.38 per month from the Verohallinto components, a gap of EUR 58.05 per month, entirely explained by the use of average municipal and church rates here versus the Helsinki rate in Verohallinto's own stated example case. THE TWO FIGURES ARE NOT AVERAGED. NOT A GRADUATE FIGURE: the association is explicit that its table is a general schedule across income levels, with no occupational, age-at-graduation or degree-level breakdown, and it says nothing about graduates. Every claim states its own gross input so the corpus can apply whichever gross it holds rather than treating EUR 2,181.42 or EUR 2,740.00 as 'the Finnish graduate net'.",
+  "evidence_limitations": "Secondary, modelled, not observed. Uses average municipal tax (7.57 %) and church tax (1.38 %) rates, so the result varies by home municipality and by church membership; a non-member of the Evangelical Lutheran Church keeps more. Rounds the pension and unemployment contribution to 'noin 8,2 %'. Monthly figures are annualised and ignore the 5.5-month holiday pay structure. No occupational or graduate-specific breakdown exists. Gross inputs are the publisher's own illustrative levels, not measured wages."
+}

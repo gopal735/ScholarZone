@@ -1,0 +1,70 @@
+﻿{
+  "country": "NZ",
+  "topic": "permanent_residence",
+  "source_id": "inz-skilled-migrant-category",
+  "source_url": "https://www.immigration.govt.nz/visas/skilled-migrant-category-resident-visa/",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Immigration New Zealand (INZ), New Zealand Government",
+  "retrieved_at": "2026-10-05",
+  "as_of": "site content as displayed 2026-10-05",
+  "raw_extract": "# Skilled Migrant Category Resident Visa\n\nYou can submit an expression of interest (EOI) if you have a job or job offer from an accredited employer, and meet the requirements for one of the Skilled Migrant Category (SMC) pathways.\n\nLength of stay: Live, work and study indefinitely\nCost: From NZD $6450\nAge range: From 55 years or younger\n\nTo apply you must:\n\n-   be aged 55 or younger when you apply\n-   be working for, or have a job offer from, an and the job is\n-   meet the requirements for an SMC pathway, and\n-   speak and understand English.\n\nYou must submit an expression of interest (EOI) and if accepted, we invite you to apply.\n\nYou must be eligible for 1 of the 3 SMC pathways. The Points-based pathway, Skilled Work Experience pathway or Trades and Technicians pathway.\n\n## SMC pathways\n\n### Points-based pathway\n\nYou must have 6 points to be eligible for the Points-based pathway. You can claim up to 6 points from either your:\n\n-   qualification\n-   income (pay), or\n-   occupational registration (for example, if you are a chartered accountant or registered plumber).\n\nIf you cannot claim all 6 points from one of these categories, you may be able to claim an additional 1 to 3 points from skilled work experience in New Zealand.\n\n### Skilled Work Experience pathway\n\nTo be eligible, you must have at least 5 years of directly relevant work experience, including at least 2 years of skilled work experience in New Zealand.\n\n### Trades and Technician pathway\n\nTo be eligible, you must have a relevant qualification, and at least 4 years of post-qualification work experience, including at least 18 months of skilled work experience in New Zealand.\n\n### Table 2: Skilled resident points you can claim for international qualifications\n\nQualification | Points you can claim | Bachelor's degree required\nLevel 10 Doctoral Degree | 6 | No\nLevel 9 Master's Degree | 5 | Yes\nLevel 8 Honour's Degree, Postgraduate Diploma or Post-graduate Certificate | 4 | Yes\nLevel 7 Bachelor's Degree | 4 | Not applicable\n\n### Table 1: Skilled resident points you can claim for New Zealand qualifications\n\nNew Zealand qualification | Points you can claim | Bachelor's degree required\nLevel 10 Doctoral Degree | 6 | No\nLevel 9 Master's Degree (30 weeks of full-time study) | 6 | Yes\nLevel 9 Master's Degree (not full-time study) | 5 | No\nLevel 8 Honour's Degree, Postgraduate Diploma or Post-graduate Certificate | 5 | Yes\nLevel 7 Bachelor's Degree | 5 | Not applicable\n\n## Check your points\n\nCheck if you have enough points to be invited to apply. You need 6 points in total. You still need to meet all requirements and provide evidence in your visa application.\n\n### Table 5: Additional skilled resident points you can claim for skilled work experience in New Zealand\n\nSkilled work experience in New Zealand required | Points you can claim\n2 years | 3\n1.5 years | 2\n1 year | 1\n\n## How long you can stay\n\nA Skilled Migrant Category Resident Visa lets you stay in New Zealand indefinitely.\n\nAfter you have had this visa for 2 years in a row, you can apply for a Permanent Resident Visa that lets you travel in and out of New Zealand indefinitely.\n\n## Requirements for all pathways\n\nAll SMC pathways require you to:\n\n-   be aged 55 or younger\n-   have an offer of, or be working in, a skilled job with an accredited employer\n-   be in good health\n-   be of good character\n-   have a genuine relationship with your partner and dependent children, if including them, and\n-   speak and understand English.\n\n### Current job or job offer\n\nTo be considered a skilled job, it must:\n\n-   be with an\n-   be and (for at least 30 hours a week)\n-   permanent or fixed-term for at least 12 months, or a contract or continuous contracts for at least 6 months, and\n-   meet any pay requirements for your SMC pathway.\n\n### Getting citizenship\n\nFor most people, after 5 years of living in New Zealand as a resident, you may be able to get New Zealand citizenship. You do not need a Permanent Resident Visa first.\n\n### Section 49 conditions\n\nYou must not be unemployed for more than 3 months. If you lose your job, you must get another skilled job that is for at least 3 months to meet your section 49 conditions. If you do not, we may cancel your visa and you must leave the country.",
+  "research_notes": "STRUCTURAL WARNING FIRST, because it defeats the metric template: New Zealand's residence system for international graduates is NOT a 'minimum years on the qualifying route' system like the UK, Canada or Australia. It is a POINTS system with a job-offer trigger, so no single 'X years' figure is the answer and a corpus row asking for 'years to PR' for NZ should be modelled differently. Route recorded: 'Skilled Migrant Category (SMC) Resident Visa', reached through an Expression of Interest, with three alternative pathways - Points-based, Skilled Work Experience, and Trades and Technician. For a BACHELOR'S GRADUATE THE POINTS-BASED PATHWAY IS THE ONLY REACHABLE ONE, and the qualification table is the crucial finding: an international Level 7 Bachelor's Degree is worth only 4 POINTS, against a 6-point threshold, so a bachelor's holder CANNOT qualify on qualification alone and must make up the shortfall - and the page is explicit that the only top-up available is New Zealand skilled work experience, worth 3 points for 2 years, 2 points for 1.5 years and 1 point for 1 year: 'If you do not have 6 points from your qualifications, you can use your skilled work experience in New Zealand to claim more points. You cannot use your occupational registration or income to claim more points.' A DOMESTIC/INTERNATIONAL ASYMMETRY THAT MATTERS: the same bachelor's degree is worth 5 points if gained in New Zealand (Table 1) versus 4 points if gained overseas (Table 2), and a New Zealand master's degree completed with at least 30 weeks of full-time study is worth 6 points (an automatic pass) versus 5 points for an international master's. So studying in New Zealand carries a points advantage over studying abroad. Other verified figures: application cost from NZD $6,450; there is no fee to submit an EOI; an ITA must be actioned within 4 months or a new EOI is required; all pathways require the applicant to be aged 55 or younger at application and to hold a skilled job or offer with an accredited employer (at least 30 hours a week, permanent/fixed-term of at least 12 months or contracts of at least 6 months). TIMELINE, which is the closest thing to a 'years to PR' answer: the SMC Resident Visa is granted for an indefinite stay immediately, and 'After you have had this visa for 2 years in a row, you can apply for a Permanent Resident Visa'. Citizenship is separate and later: 'after 5 years of living in New Zealand as a resident, you may be able to get New Zealand citizenship. You do not need a Permanent Resident Visa first.' SUSTAINABILITY RISK THAT IS EASY TO MISS: a section 49 condition may apply, and 'You must not be unemployed for more than 3 months. If you lose your job, you must get another skilled job that is for at least 3 months ... If you do not, we may cancel your visa and you must leave the country.' Not every SMC visa carries one, but where it applies, residence is job-conditional. NOT VERIFIED AND NOT CLAIMED: whether a section 49 condition attaches in a given case (the page says only that they 'are extra conditions we may give to some visas'); the ANZSCO occupation lists; the historic SMC wage thresholds (only the current NZD $105.00 an hour figure and a worked example of NZD $59.32 an hour were printed, and the thresholds are time-varying by design); the Amber and Red List contents; and the Green List occupations. The PhD pathway figure of 6 points is recorded but I have deliberately NOT inferred any PhD-specific scholarship or funding position from it.",
+  "claims": [
+    {
+      "claim_id": "nz-permanent-residence-1",
+      "statement": "New Zealand's skilled residence route for international graduates is the 'Skilled Migrant Category (SMC) Resident Visa', a points-based system requiring a job or job offer with an accredited employer, not a simple minimum-years-on-route test.",
+      "value": null,
+      "unit": "route name and structure",
+      "as_of": "2026-10-05",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nz-permanent-residence-2",
+      "statement": "An international Level 7 Bachelor's Degree is worth 4 skilled resident points against a 6-point requirement, so a bachelor's graduate cannot qualify on qualification alone and must add 1 to 3 points from New Zealand skilled work experience - the only top-up available if relying on qualifications.",
+      "value": 4,
+      "unit": "points (international Level 7 Bachelor's Degree)",
+      "as_of": "2026-10-05",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nz-permanent-residence-3",
+      "statement": "The same bachelor's degree is worth 5 points when gained in New Zealand versus 4 points when gained overseas, and a New Zealand master's degree completed with at least 30 weeks of full-time study is worth 6 points versus 5 points for an international master's degree.",
+      "value": 5,
+      "unit": "points (New Zealand Level 7 Bachelor's Degree)",
+      "as_of": "2026-10-05",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nz-permanent-residence-4",
+      "statement": "New Zealand skilled work experience can supply 1 point for 1 year, 2 points for 1.5 years and up to 3 points for 2 years, and must be in a full-time job of at least 30 hours a week matching the ANZSCO job title and description.",
+      "value": 2,
+      "unit": "years NZ skilled work experience for the maximum 3 points",
+      "as_of": "2026-10-05",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nz-permanent-residence-5",
+      "statement": "A Skilled Migrant Category Resident Visa allows an indefinite stay in New Zealand, and after holding it for 2 years in a row the holder can apply for a Permanent Resident Visa; New Zealand citizenship is available after 5 years of living in New Zealand as a resident and does not require a Permanent Resident Visa first.",
+      "value": 2,
+      "unit": "years on the SMC Resident Visa before Permanent Resident Visa eligibility",
+      "as_of": "2026-10-05",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nz-permanent-residence-6",
+      "statement": "All SMC pathways require the applicant to be aged 55 or younger at application, and a Skilled Migrant Category Resident Visa costs from NZD $6,450; there is no fee to submit an Expression of Interest, and an Invitation to Apply must be actioned within 4 months.",
+      "value": 55,
+      "unit": "years (maximum age at application)",
+      "as_of": "2026-10-05",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nz-permanent-residence-7",
+      "statement": "Where section 49 conditions apply, the visa holder must not be unemployed for more than 3 months and must find another skilled job lasting at least 3 months, failing which the visa may be cancelled.",
+      "value": 3,
+      "unit": "months (maximum unemployment before visa cancellation risk)",
+      "as_of": "2026-10-05",
+      "study_level": "bachelor"
+    }
+  ]
+}

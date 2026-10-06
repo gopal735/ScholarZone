@@ -1,0 +1,38 @@
+﻿{
+  "country": "SG",
+  "topic": "bachelor_tuition",
+  "source_id": "ntu-undergrad-tuition-2026",
+  "source_url": "https://www.ntu.edu.sg/admissions/undergraduate/financial-matters/tuition-fees/accepted-programme-offer-in-2026",
+  "source_type": "UNIVERSITY_OFFICIAL",
+  "publisher": "Nanyang Technological University (NTU Singapore)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "Tuition Fees - Full Time Programme - Annual tuition fee is fixed at the 2026 rate for the duration of the degree programme. Programme of Study Subsidised Students Non-Subsidised Students (not receiving tuition grant) (inclusive of GST) Singapore Citizens Singapore Permanent Residents ASEAN IS (inclusive of GST) All Other IS (inclusive of GST) Lab Based Non-Lab Based All Programmes (except for those listed below) $ 8,300 $ 11,600 $ 18,050 $ 21,400 $ 40,600 $ 36,350 Accountancy Accountancy (Sustainability Management and Analytics) Applied computing in Finance Business Accountancy & Business Business & Computing Business & Computer Engineering $ 9,500 $ 13,300 $ 20,700 $ 21,800 $ 45,600 Medicine $ 36,100 $51,850 $ 80,850 $ 91,250 Not Applicable … Amounts quoted are exclusive of GST. The GST on the tuition fee is subsidised by the Ministry of Education (MOE) for these students. For ASEAN IS and all other international students on subsidised tuition fees and students of all nationalities on non-subsidised tuition fees, the fee amounts quoted are inclusive of 9% GST. GST on the tuition fee is to be borne by students.",
+  "research_notes": "NTU is a named Singapore university and this is its own fee table for offers accepted in 2026 (academic year 2026/27). Table columns are ordered Subsidised (Singapore Citizens, Singapore Permanent Residents, ASEAN international students lab-based, ASEAN international students non-lab-based) then Non-Subsidised (all other international students lab-based, non-lab-based). For 'All Programmes (except for those listed below)' the non-ASEAN international figures are USD-equivalent SGD 40,600 lab-based and SGD 36,350 non-lab-based. Medicine and accountancy-related programmes differ and are reported separately. GST treatment differs between the subsidised and non-subsidised columns exactly as the page states. NUS figures were not usable: its undergraduate fee table is published only as a PDF (nus.edu.sg/registrar/docs/.../ugtuitioncurrent.pdf) which returned binary content rather than extractable text, so no NUS figure is claimed.",
+  "claims": [
+    {
+      "claim_id": "sg-bachelor-tuition-ntu-1",
+      "statement": "For all NTU programmes other than those separately listed, an international student outside ASEAN on subsidised tuition pays SGD 40,600 per year if the programme is lab-based, inclusive of 9% GST.",
+      "value": 40600,
+      "unit": "SGD per year",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "sg-bachelor-tuition-ntu-2",
+      "statement": "For all NTU programmes other than those separately listed, an international student outside ASEAN on subsidised tuition pays SGD 36,350 per year if the programme is non-lab-based, inclusive of 9% GST.",
+      "value": 36350,
+      "unit": "SGD per year",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "sg-bachelor-tuition-ntu-3",
+      "statement": "At NTU the accountancy, business and computing-related programmes cost SGD 45,600 per year for a non-ASEAN international student in receipt of the tuition grant.",
+      "value": 45600,
+      "unit": "SGD per year",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

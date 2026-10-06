@@ -1,0 +1,37 @@
+﻿{
+  "country": "JP",
+  "topic": "gross_monthly_income",
+  "source_id": "jp-mext-kokuritsu-daigaku-sharyo-2024",
+  "source_url": "https://www.mext.go.jp/content/20250630-ope_dev03-000043341-81.pdf",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Ministry of Education, Culture, Sports, Science and Technology (MEXT / 文部科学省), Japan - hosting the statutory salary-level disclosure of a national university corporation (国立大学法人総合研究大学院大学)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "FY2024 (令和6年度)",
+  "raw_extract": "４ モデル給与\n\n○22歳（大卒初任給）\n月額 220,000円 年間給与3,634,400円\n○35歳（一般職員）\n月額 291,818円 年間給与4,820,833円\n○50歳（係長）\n月額 394,320円 年間給与6,692,399円\n○30歳（助教：博士修了初任給）\n月額 370,370円 年間給与6,212,766円\n○35歳（助教）\n月額 379,274円 年間給与6,361,872円\n○50歳（准教授）\n月額 515,862円 年間給与8,781,075円\n\n[Context on the same document: '○事務・技術職員 / ○教育職員（大学教員）と国家公務員との給与水準の比較指標 96.1'; '前年度の国家公務員に対する事務・技術職員の比較指標は89.5で、当年度0.5ポイント増加した。'; '一般職給与法及び人事院規則の改正を踏まえ、... ①本給表の引き上げ（初任給（一般職（大卒））で12.1%、全体で約3.0%）、②期末手当・勤勉手当の支給率について0.05月分の引き上げを実施した。']",
+  "claims": [
+    {
+      "claim_id": "jp-gross-monthly-001",
+      "value": 220000,
+      "unit": "JPY per month",
+      "as_of": "FY2024 (令和6年度)",
+      "statement": "MEXT publishes, in the statutory salary-level disclosure of a Japanese national university corporation, the model salary for age 22 as '月額 220,000円 年間給与3,634,400円' - that is, a starting salary for a university graduate of JPY 220,000 per month. This is a GROSS monthly figure. It is the '大卒初任給' (new-graduate starting salary) for the public national university sector."
+    },
+    {
+      "claim_id": "jp-gross-monthly-002",
+      "value": 231000,
+      "unit": "JPY per month",
+      "as_of": "FY2024 (令和6年度)",
+      "statement": "MEXT publishes, in the same model-salary table, '○30歳（助教：博士修了初任給） / 月額 370,370円 年間給与6,212,766円' for a teaching assistant post at the age-30 doctoral-completion starting salary. Recorded only to show the scale spread in the same official table; note this is age 30, not an entry-level graduate salary."
+    }
+  ],
+  "assumptions": [
+    "The JPY 220,000 figure is a 'monthly salary' in the Japanese sense: it is the base monthly pay (本給 plus the standard allowances that the model-salary table's 年間給与 of JPY 3,634,400 is built from), before social insurance and before income tax.",
+    "It is the public national university sector (国立大学法人), which is not the same as the much larger private-sector new-graduate market, though MEXT uses the same civil-service-linked pay scale that many Japanese employers reference.",
+    "FY2024 (令和6年度) is the salary year. It is not the 2026 tax year."
+  ],
+  "field_mapping": {
+    "gross_monthly_income": "career.gross_monthly_income (topic: gross_monthly_income)"
+  },
+  "notes": "THIS IS A GROSS FIGURE AND MUST NOT BE USED FOR A COST-VERSUS-SALARY BREAK-EVEN CALCULATION. In Japan, a JPY 220,000 gross monthly salary is reduced by employee social insurance (厚生年金保険料, 健康保険 and 介護保険料, 雇用保険料) and then by 源泉徴収税額, so the take-home amount is materially lower. For a genuine NET figure derived from the National Tax Agency's own 源泉徴収税額表, see 020_net_monthly_income.json in this directory. A reader would be badly misled by treating JPY 220,000 as disposable income: the tax-only component at this salary, read from the National Tax Agency's own table, is about JPY 3,840 per month, and social insurance adds a further deduction on top.",
+  "evidence_limitations": "Population: model salary (モデル給与) for permanent staff of one national university corporation (国立大学法人総合研究大学院大学), disclosed to MEXT under the statutory salary-level disclosure regime. This is a single institution within one sector, and the model salary is an illustrative pay-scale point rather than an average of actual payments. It is not a survey of the Japanese private-sector new-graduate market, and MEXT's published aggregate tables for national university corporations report average annual pay for all staff and by age band, not a new-graduate starting salary. It also excludes the private sector entirely, which is where the large majority of Japanese graduates work, and it excludes the much-discussed 'job-hopping' initial salary premium."
+}

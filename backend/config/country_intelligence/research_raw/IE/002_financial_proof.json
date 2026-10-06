@@ -1,0 +1,62 @@
+﻿{
+  "country": "IE",
+  "topic": "financial_proof",
+  "source_id": "cib-student-visas",
+  "source_url": "https://www.citizensinformation.ie/en/moving-country/visas-for-ireland/student-visas/",
+  "source_type": "OFFICIAL_REGIONAL_BODY",
+  "publisher": "Citizens Information Board (Citizens Information, Ireland) - page edited 23 June 2026",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026-06-23",
+  "raw_extract": "You will need to provide the following with your visa application. (Please remember, original documents are required and must be in English or accompanied by a notarised translation):\n\n- Letter of acceptance from a recognised school or college or university in Ireland confirming that you have been accepted on a course of study. This course of study must be full-time (lasting an academic year) and have a minimum of 15 hours per week study time.\n\n- Evidence of your academic ability to pursue the chosen course through the English language (unless it is an English language course).\n\n- Evidence that the fees for the course have been paid in full.\n\n- Evidence that you have enough funds to maintain yourself for the initial part of your stay.\n\n- Evidence that you or a sponsor have access to at least EUR10,000 for each subsequent year of your studies, in addition to the course fees for each of those years.\n\n- Evidence that you have private medical insurance\n\n- An explanation of any gaps in your educational history\n\n- Confirmation that you intend to return to your country of permanent residence when you leave Ireland.\n\n## Permission to stay\n\nStudents from a non-EEA country who intend studying in Ireland for a period of more than 3 months must register with the Irish immigration authorities, known as Immigration Service Delivery (ISD).\n\nFor courses that result in a stay of 6 to 8 months, you must show evidence that you can access EUR833 per month (a total of EUR4,998 for a 6 month stay or EUR6,665 for an 8 month stay). For courses of study that are one year in duration, you must show that you have access to EUR10,000. This applies to both visa and non-visa required students.\n\n## Visa fees\n\nStandard non-refundable visa application processing fees are:\n\nSingle-journey visa: EUR60\n\nMultiple-journey visa: EUR100\n\n## Access to employment while in Ireland on a student visa\n\nIf you are attending a course on the Interim List of Eligible Programmes (ILEP) you will have stamp number 2 endorsed on your passport when you register with your local immigration officer. You will be allowed to take up casual employment of up to 20 hours part-time work per week in term time or up to 40 hours per week during college vacation periods, that is, from June to September inclusive and from 15 December to 15 January. Your entitlement to take up employment ends when your permission to stay expires.\n\n***Page edited:** 23 June 2026",
+  "research_notes": "SOURCING CAVEAT, stated plainly: Ireland has no single government page like gov.uk's 'Money you need'. The financial-proof rule is split across the visa application criteria and the permission-to-stay registration criteria, and the page that would carry the underlying Department of Justice rules (irishimmigration.ie) was unreachable from this environment. This record therefore comes from citizensinformation.ie, the Citizens Information Board - a statutory public body of the Irish Government - rather than from the Department of Justice itself. It is an official public-body source, but it is a second-tier one for a legal requirement, and that is the correct degree of confidence to attach. THE TRAP, AND IT IS SHARPER THAN IN CANADA OR AUSTRALIA: the EUR 10,000 figure is stated as being required 'in addition to the course fees for each of those years', and course fees must separately be 'paid in full' as a separate bullet. So the EUR 10,000 is a living-cost threshold only; total funds needed for year one is EUR 10,000 PLUS the full first-year tuition PLUS private medical insurance. A budget built to EUR 10,000 alone is wrong by the entire tuition fee. The figure is ALSO time-scaled rather than flat: EUR 833 per month for courses giving a stay of 6 to 8 months (stated as EUR 4,998 for 6 months and EUR 6,665 for 8 months), rising to EUR 10,000 for a one-year course. Note that the page's own arithmetic is slightly loose - 833 x 6 = 4,998 and 833 x 8 = 6,664, but it prints 6,665 - so the monthly rate and the printed 8-month total do not agree exactly; I have recorded the printed figures verbatim rather than silently correcting them. The requirement applies to both visa-required and non-visa-required students, the latter proving it at the immigration desk on arrival rather than at a visa appointment. Course eligibility is restricted to full-time courses on the Interim List of Eligible Programmes (ILEP) at NFQ level 6 or above, with a maximum 7 years of study at that level. NOT VERIFIED AND NOT CLAIMED, because they live only on the unreachable irishimmigration.ie page: the requirement that bank statements cover six months, the rejection of fixed-term savings accounts, the education-bond alternative worth a minimum of EUR 10,000 for degree students only, the instruction to pay at least EUR 6,000 of course fees before a visa application, and the Financial Summary Form. Those came from search-engine summaries of pages I did not retrieve, so they are excluded rather than asserted. Working-hours rights on the student stamp are recorded from this page since they materially affect whether a student can fund the gap above.",
+  "claims": [
+    {
+      "claim_id": "ie-financial-proof-1",
+      "statement": "For a course of study of one year in duration, a non-EEA student must show access to EUR 10,000 for living costs.",
+      "value": 10000,
+      "unit": "EUR per academic year",
+      "as_of": "2026-06-23",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ie-financial-proof-2",
+      "statement": "The EUR 10,000 must be shown 'in addition to the course fees for each of those years', and course fees must separately be paid in full - so the financial-proof threshold excludes tuition entirely.",
+      "value": null,
+      "unit": "scope exclusion (tuitional and separate)",
+      "as_of": "2026-06-23",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ie-financial-proof-3",
+      "statement": "For courses resulting in a stay of 6 to 8 months, a non-EEA student must show access to EUR 833 per month, stated as a total of EUR 4,998 for a 6 month stay or EUR 6,665 for an 8 month stay.",
+      "value": 833,
+      "unit": "EUR per month (6-8 month courses)",
+      "as_of": "2026-06-23",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ie-financial-proof-4",
+      "statement": "The financial-proof requirement applies to both visa-required and non-visa-required students; the non-visa route proves it at immigration registration rather than at a visa application.",
+      "value": null,
+      "unit": "scope of application",
+      "as_of": "2026-06-23",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ie-financial-proof-5",
+      "statement": "Non-EEA students on a course on the Interim List of Eligible Programmes are limited to 20 hours part-time work per week in term time and up to 40 hours per week during college vacation periods (June to September, and 15 December to 15 January).",
+      "value": 20,
+      "unit": "hours per week (term-time work limit)",
+      "as_of": "2026-06-23",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ie-visa-fee-1",
+      "statement": "Standard non-refundable Irish visa application processing fees are EUR 60 for a single-journey visa and EUR 100 for a multiple-journey visa.",
+      "value": 60,
+      "unit": "EUR (single-journey visa application fee)",
+      "as_of": "2026-06-23",
+      "study_level": "bachelor"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+﻿{
+  "country": "DE",
+  "topic": "bachelor_tuition_public_general",
+  "source_id": "de-uni-tu-berlin-financing-001",
+  "source_url": "https://www.tu.berlin/en/studying/organizing-your-studies/financing-your-studies",
+  "source_type": "UNIVERSITY_OFFICIAL",
+  "publisher": "Technische Universität Berlin (TU Berlin)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "How much does it cost to study at TU Berlin?\n\nThere are no tuition fees to pay at TU Berlin. The only exceptions to this are continuing education master’s programs.\n\nEach semester, students are required to pay a semester fee, which can vary slightly from semester to semester. All students are required to pay this fee, which is made up of a number of sub-fees. One of these is the fee for the Semesterticket, which provides you with unlimited public transport travel in Berlin.\n\n[...]\n\nPlease note that different rules and regulations for funding options listed on this page may apply for EU citizens and students of other nationalities. Detailed information can be found on the website of the respective funding organization.",
+  "research_notes": "CONFIRMED from the university's own official financing page. This is the DIRECT ANSWER to the 'is general public Bachelor tuition free for non-EU students in Germany?' question, and the honest answer is: THERE IS NO NATIONWIDE RULE — it depends on the Land and the university. TU Berlin, a large public university in a Land that levies no non-EU state tuition, states plainly: 'There are no tuition fees to pay at TU Berlin. The only exceptions to this are continuing education master's programs.' The only mandatory charge is a semester fee payable by all students, made up of sub-fees including the Semesterticket (Berlin public transport). CRITICAL HONESTY CAVEAT: this page states the no-tuition rule WITHOUT any nationality carve-out, so it supports 'no tuition at TU Berlin', not a general claim about all of Germany. The same page notes only that different funding (not fee) rules may apply for EU citizens and students of other nationalities. Taken together with the verified Baden-Württemberg (EUR 1,500/semester), Bavaria (EUR 500-800/semester, institution-dependent) and TUM (EUR 2,000-3,000/semester) evidence, Germany is demonstrably NOT simply 'public tuition = free' for non-EU students. A corpus entry must be keyed to Land and/or institution, never to 'Germany' as a whole. GAP: I did not obtain a federal-government or DAAD statement establishing a general national rule, because make-it-in-germany.com (the usual federal portal) is behind Radware bot protection and could not be fetched.",
+  "claims": [
+    {
+      "claim_id": "de-public-bachelor-tuition-no-fee-tu-berlin",
+      "statement": "There are no tuition fees to pay at TU Berlin; the only exceptions are continuing education master's programs.",
+      "value": 0,
+      "unit": "EUR per semester (tuition)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "de-public-bachelor-mandatory-fee-only-tu-berlin",
+      "statement": "Each semester all students at TU Berlin are required to pay a semester fee, which can vary slightly from semester to semester and is made up of a number of sub-fees, one of which is the fee for the Semesterticket providing unlimited public transport travel in Berlin.",
+      "value": 0,
+      "unit": "EUR per semester (tuition); semester fee charged separately — see 012_mandatory_fees_tu_berlin.json",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

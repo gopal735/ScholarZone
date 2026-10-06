@@ -1,0 +1,38 @@
+﻿{
+  "country": "SG",
+  "topic": "student_pass_fee",
+  "source_id": "ica-stp-ihl-fee",
+  "source_url": "https://www.ica.gov.sg/reside/STP/apply/ihl",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Immigration & Checkpoints Authority (ICA), Singapore",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "Fees A non-refundable S$45 processing fee is payable. Payment can be made using: Visa or MasterCard credit/debit card or, American Express (AMEX) credit card or, Internet Direct Debit (DBS/POSB, OCBC, UOB and Standard Chartered Bank Internet Banking accounts in Singapore) or, PayNow. Processing Time The processing time for application is within one week (and within two weeks if Visa is required) (excluding the date of submission).",
+  "research_notes": "Two distinct ICA charges apply and both come from ICA's own pages. The S$45 non-refundable processing fee is for the Student's Pass application at an Institute of Higher Learning. The separate S$60 issuance fee and S$30 multiple-journey visa fee are published on ICA's Completion of Formalities page: 'A S$60 issuance fee for Student's Pass and a S$30 for Multiple Journey Visa (if applicable) are payable via Internet Banking, AMEX, a Visa or MasterCard credit/debit card online.' No other government fee for the Singapore student route was found. The IHL page footer reads 'Last updated on 19 June 2026.'",
+  "claims": [
+    {
+      "claim_id": "sg-student-pass-processing-fee-1",
+      "statement": "ICA charges a non-refundable SGD 45 processing fee for a Student's Pass application at an Institute of Higher Learning.",
+      "value": 45,
+      "unit": "SGD",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "sg-student-pass-issuance-fee-1",
+      "statement": "ICA charges an SGD 60 issuance fee for a Student's Pass, payable at completion of formalities.",
+      "value": 60,
+      "unit": "SGD",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "sg-multiple-journey-visa-fee-1",
+      "statement": "ICA charges SGD 30 for a Multiple Journey Visa where applicable.",
+      "value": 30,
+      "unit": "SGD",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+﻿{
+  "country": "FR",
+  "topic": "naturalisation_citizenship",
+  "source_id": "fr-service-public-naturalisation-001",
+  "source_url": "https://www.service-public.fr/particuliers/vosdroits/F2213",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Service Public / Direction de l'information légale et administrative (DILA), Premier ministre — Ministère chargé de l'intérieur",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "Naturalisation française par décret\nVérifié le 16 juillet 2026 - Service Public / Direction de l'information légale et administrative (Premier ministre)\n\nDurée minimale de résidence en France\nUne durée minimale de 5 ans de résidence en France est exigée.\nToutefois, il y a des exceptions.\n\nAucune durée minimale de résidence en France n'est exigée si vous êtes dans l'une des situations suivantes :\nVous avez le statut de réfugié\nVous venez d'un pays francophone et vous parlez le français, car c'est votre langue maternelle\nVous venez d'un pays francophone et avez été scolarisé 5 ans ou plus dans un établissement enseignant en langue française\nVous avez fait votre service militaire dans l'armée française\nVous vous êtes engagé dans l'armée française ou une armée alliée en temps de guerre\nVous avez rendu des services exceptionnels à la France.\n\nUne durée minimale de 2 ans de résidence en France est exigée si vous êtes dans l'une des situations suivantes :\nVous avez obtenu un diplôme d'un établissement d'enseignement supérieur français après 2 ans d'études\nVous pouvez rendre (ou avez rendu) des services importants à la France compte tenu de vos capacités et talents\nVous avez accompli un parcours exceptionnel d'intégration (activités ou actions accomplies dans les domaines civique, scientifique, économique, culturel ou sportif\u2026).\n\nAssimilation à la communauté française\nVous devez justifier de votre assimilation à la communauté française.\nVotre assimilation à la communauté française sera vérifiée par :\nla réussite à l'examen civique\net un entretien en préfecture.\n\nConnaissance de la langue française\nVous devez justifier d'une connaissance suffisante de la langue française.\n\n[\u2026] La démarche coûte 255 \u20ac.",
+  "research_notes": "CONFIRMED from the French government's service portal (verified 16 July 2026). France naturalisation by décret: standard minimum residence is 5 YEARS. Official route name: 'naturalisation française par décret'. HIGHLY RELEVANT EXCEPTION FOR A SCHOLARSHIP CORPUS: the minimum drops to 2 YEARS for someone who 'a obtenu un diplôme d'un établissement d'enseignement supérieur français après 2 ans d'études' — i.e. a holder of a French higher-education degree obtained after two years of study. This is directly on point for international scholarship holders who study in France. No minimum residence at all for refugees, certain francophone-country nationals, French military service, and those who rendered exceptional services. Other conditions confirmed: you must reside in France at the moment the décret is signed and hold a centre of interests there; a valid residence permit at the time of application; assimilation verified via the examen civique plus a prefecture interview; sufficient French; stable sufficient income; good character. NOTE ON A POINT NOT PINNED DOWN: the page says 'connaissance suffisante' of French and requires 'Diplôme ou attestation justifiant de votre niveau de connaissance de la langue française' but does NOT state a CEFR level on this page, so I am NOT recording a B1 level for naturalisation. (The separate carte de résident permanent page does state B1 — recorded in the permanent-residence file.) Fee: 255 EUR.",
+  "claims": [
+    {
+      "claim_id": "fr-naturalisation-min-years",
+      "statement": "A minimum residence period of 5 years in France is required for naturalisation française par décret, subject to exceptions.",
+      "value": 5,
+      "unit": "years",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fr-naturalisation-min-years-french-degree",
+      "statement": "A minimum residence period of 2 years in France is required where the applicant has obtained a diploma from a French higher education institution after 2 years of study.",
+      "value": 2,
+      "unit": "years",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fr-naturalisation-permit-name",
+      "statement": "The official French citizenship route is 'naturalisation française par décret', requiring residence in France at the time the décret is signed and a valid residence permit at the time of application.",
+      "value": 5,
+      "unit": "years",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fr-naturalisation-conditions",
+      "statement": "Naturalisation requires demonstrating assimilation to the French community, verified by passing the examen civique and an interview at the prefecture, together with sufficient knowledge of French, stable sufficient income and good character.",
+      "value": 255,
+      "unit": "EUR (processing fee for the naturalisation procedure)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

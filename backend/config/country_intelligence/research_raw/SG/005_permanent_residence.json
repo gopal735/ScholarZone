@@ -1,0 +1,12 @@
+﻿{
+  "country": "SG",
+  "topic": "permanent_residence",
+  "raw_status": "UNAVAILABLE",
+  "reason": "Singapore Permanent Residence is not conferred by a minimum number of years of study and I did not fetch an ICA or Ministry of Home Affairs page establishing any minimum-years rule, so no figure is recorded. The Student's Pass pages I did fetch say nothing about a PR route: ICA's completion-of-formalities page states only that on expiry of the Student's Pass 'you will need to get a work pass to work in Singapore.' Any PR qualification would have to be assessed under ICA's discretionary PR application process, which is not a study-length threshold and was not fetched. Recording this as UNAVAILABLE rather than inventing a minimum.",
+  "attempted_sources": [
+    "https://www.ica.gov.sg/reside/STP/collect",
+    "https://www.ica.gov.sg/reside/STP/apply/ihl",
+    "https://www.mom.gov.sg/passes-and-permits/work-pass-exemption-for-foreign-students"
+  ],
+  "checked_at": "2026-10-05"
+}

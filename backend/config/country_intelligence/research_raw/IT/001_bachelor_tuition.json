@@ -1,0 +1,62 @@
+﻿{
+  "country": "IT",
+  "topic": "bachelor_tuition",
+  "source_id": "unibo-tasse-2026-27",
+  "source_url": "https://www.unibo.it/it/studiare/iscrizioni-tasse-e-altre-procedure/lauree-e-lauree-magistrali/tasse-e-contributi/tasse-ed-esenzioni-importi-e-scadenze",
+  "source_type": "UNIVERSITY_OFFICIAL",
+  "publisher": "Universita di Bologna (University of Bologna)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026/2027",
+  "raw_extract": "# Tasse ed esenzioni: importi e scadenze\n\nQuanto costa iscriversi e quali esenzioni o altre agevolazioni puoi avere per studiare all'Universita di Bologna nell'anno accademico 2026/27, se hai cittadinanza italiana o estera e vuoi iscriverti a un corso di laurea, laurea magistrale a ciclo unico o laurea magistrale.\n\n## 1 degree ANNO\n\n### Quanto dovr\u00f2 pagare\n\nLa tassa universitaria \u00e8 composta da due quote:\n\n- una quota fissa di 157,04 EUR;\n- una parte variabile che dipende dal corso che sceglierai ed \u00e8 calcolata in base alla situazione economica del tuo nucleo familiare.\n\nPoiche la quota fissa \u00e8 sempre dovuta, l'importo da pagare ogni anno va da un minimo di 157,04 EUR ad un massimo che cambia a seconda del corso a cui ti iscriverai. Consulta l'elenco degli importi interi per ogni corso.\n\nHai l'esenzione totale della quota variabile e paghi solo 157,04 EUR se ti trovi in una delle seguenti condizioni:\n\n- l'indicatore della situazione economica del nucleo familiare \u00e8 pari o inferiore a 27.000 EUR;\n\nHai esenzione parziale della quota variabile se ti trovi in una delle seguenti condizioni:\n\n- l'indicatore della situazione economica del nucleo familiare \u00e8 superiore a 27.000 EUR.\n- hai familiari che frequentano l'Universita di Bologna e un indicatore situazione economica nucleo familiare inferiore a 60.000 EUR\n- hai la cittadinanza in uno dei Paesi particolarmente poveri e in via di sviluppo o in uno dei Paesi non appartenenti all'OCSE e la tua famiglia ha redditi, patrimoni solo al di fuori dell'Italia. In questo caso puoi beneficiare di tassa fissa agevolata.\n\n- per Lauree o Lauree magistrali a ciclo unico la scadenza per pagare le tasse \u00e8 il 24 settembre 2026;\n- per Lauree magistrali la scadenza per pagare le tasse \u00e8 il 29 ottobre 2026.\n\nSe presenti l'ISEE o i documenti per redditi esteri per avere le esenzioni pagherai le tasse a rate:\n\n- prima rata di importo pari a 157,04 EUR entro il 24 settembre 2026\n- seconda rata (eventuale) entro il 18 dicembre 2026\n- terza rata (eventuale) entro il 15 marzo 2027\n\nPuoi pagare le tasse solo con PagoPA.\n\nSe non paghi le tasse entro le scadenze fissate la tua carriera sara bloccata: non potrai dare esami n\u00e9 compiere altri atti. Per riattivarla e proseguire il percorso, dovrai:\n\n1. pagare le tasse dovute;\n2. pagare una mora di 30 EUR per ritardi fino a 30 giorni dalla scadenza; 150 EUR per ritardi maggiori.\n\n## Riduzione delle tasse se ti manca solo la prova finale\n\nPer ottenere la riduzione devi:\n\n- avere un indicatore della situazione economica del nucleo familiare pari o inferiore a 40.000 euro\n- aver completato entro la scadenza del bando, tutti i CFU del percorso tranne quelli della prova finale e delle eventuali attivita preparatorie alla prova finale.\n\nSe la tua domanda viene accolta, paghi:\n\n- 500 EUR se ti laurei entro il 30 settembre 2027\n- 1.000 euro se ti laurei entro il 31 dicembre 2027",
+  "research_notes": "ITALY TUITION IS BANDED AND MEANS-TESTED, NOT A FLAT FEE. The brief asked me to confirm whether it is tuition-free-with-regional-tax or banded. The answer is banded, and more precisely a two-part structure: a fixed component plus an income-dependent variable component. The University of Bologna's own page states: 'La tassa universitaria \u00e8 composta da due quote: una quota fissa di 157,04 EUR; una parte variabile che dipende dal corso che sceglierai ed \u00e8 calcolata in base alla situazione economica del tuo nucleo familiare.'\n\nSO THE 'ZERO TUITION' IDEA IS TRUE ONLY AT THE LOW END OF THE BAND. The page states: 'Poich\u00e9 la quota fissa \u00e8 sempre dovuta, l'importo da pagare ogni anno va da un minimo di 157,04 EUR ad un massimo che cambia a seconda del corso'. So EUR 157.04 per year is a genuine floor that every student pays and no student escapes, and it is composed of a regional right-to-study tax (EUR 140.00), a stamp duty (EUR 16.00) and an insurance premium (EUR 1.04). That decomposition is confirmed elsewhere on the same official site: 'Agli importi calcolati come sopra indicato si aggiungono 157,04 EUR per tassa regionale (140,00 EUR), bollo (16,00 EUR) e premio assicurativo (1,04 EUR)'. So the regional tax DOES exist and is EUR 140, but it is only part of the floor, not the whole cost.\n\nTHE MECHANISM IS ISEE-INCOME BANDING, not nationality. Exemption from the variable component is total if 'l'indicatore della situazione economica del nucleo familiare \u00e8 pari o inferiore a 27.000 EUR' and partial above it. This is the Italian household economic indicator. For a non-EU student with income abroad, the university requires equivalent documentation of foreign income and assets through the regional body for university study (ER.GO in Emilia-Romagna), which is a material administrative burden that a plain 'is Italy cheap for foreigners' framing misses.\n\nSPECIFIC TO NON-EU / NON-OECD, AND FAVOURABLE: 'hai la cittadinanza in uno dei Paesi particolarmente poveri e in via di sviluppo o in uno dei Paesi non appartenenti all'OCSE e la tua famiglia ha redditi, patrimoni solo al di fuori dell'Italia. In questo caso puoi beneficiare di tassa fissa agevolata' - a reduced flat tax, meaning the income test is effectively waived for a poor or non-OECD national whose money is all foreign. A Flat Tax option also exists, requiring no economic documentation at all.\n\nI DID NOT ESTABLISH A NATIONAL MAXIMUM. The maximum is per-course and published in a PDF I could not read; the page links it as 'Tabella importi massimi 2026-2027.pdf'. Two fetch attempts returned raw PDF binary that this tool cannot decode. So the maximum Italian Bachelor fee is recorded as UNAVAILABLE in the companion file rather than guessed. A per-course maximum does appear in the Bologna maximum-fee table as EUR 2,842.96 for EU students and EUR 5,842.96 for extra-EU students on certain second-cycle curricula with a higher-fee track, but those rows are second-cycle and I do not record them as Bachelor figures.\n\nALSO VERBATIM AND RELEVANT TO A BUDGET: late-payment mora of EUR 30 up to 30 days, EUR 150 beyond, and a EUR 500 or EUR 1,000 final-exam reduction if only the thesis remains. Recorded because they are small amounts that a cost model should not omit.",
+  "claims": [
+    {
+      "claim_id": "it-bachelor-tuition-fixed-1",
+      "statement": "The University of Bologna states the Italian university tuition is composed of a fixed quota of 157.04 EUR and a variable part calculated from the family economic situation.",
+      "value": 157.04,
+      "unit": "EUR per academic year (fixed component, always due)",
+      "as_of": "2026/2027",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "it-bachelor-tuition-minimum-1",
+      "statement": "The University of Bologna states the annual amount payable ranges from a minimum of 157.04 EUR to a maximum that varies by course, so no student pays less than 157.04 EUR.",
+      "value": 157.04,
+      "unit": "EUR per academic year (minimum, tuition band floor)",
+      "as_of": "2026/2027",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "it-bachelor-tuition-regional-tax-1",
+      "statement": "The University of Bologna states the fixed 157.04 EUR comprises a regional tax of 140.00 EUR, a stamp duty of 16.00 EUR and an insurance premium of 1.04 EUR.",
+      "value": 140,
+      "unit": "EUR per year regional right-to-study tax",
+      "as_of": "2026/2027",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "it-bachelor-tuition-is-banded-1",
+      "statement": "The University of Bologna states the tuition structure is banded by family economic indicator, with total exemption from the variable component at an indicator of 27,000 EUR or less and partial exemption above it.",
+      "value": 27000,
+      "unit": "EUR household economic indicator (ISEE) threshold for total variable-component exemption",
+      "as_of": "2026/2027",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "it-bachelor-tuition-nonoecd-flat-1",
+      "statement": "The University of Bologna states a citizen of a particularly poor or developing country, or of a non-OECD country, whose family income and assets are entirely outside Italy may benefit from a reduced flat tax.",
+      "value": "reduced flat tax available",
+      "unit": "non-EU non-OECD tuition treatment",
+      "as_of": "2026/2027",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "it-late-payment-mora-1",
+      "statement": "The University of Bologna states a late-payment mora of 30 EUR for delays up to 30 days past the deadline and 150 EUR for longer delays, and that the academic record is blocked until paid.",
+      "value": 30,
+      "unit": "EUR late-payment mora (up to 30 days); 150 EUR beyond",
+      "as_of": "2026/2027",
+      "study_level": "bachelor"
+    }
+  ]
+}

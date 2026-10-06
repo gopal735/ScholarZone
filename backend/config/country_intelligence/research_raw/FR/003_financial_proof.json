@@ -1,0 +1,46 @@
+﻿{
+  "country": "FR",
+  "topic": "financial_proof",
+  "source_id": "fr-service-public-etudiant-001",
+  "source_url": "https://www.service-public.fr/particuliers/vosdroits/F2231",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Service Public / Direction de l'information légale et administrative (DILA), Premier ministre — Ministère chargé de l'intérieur",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "Étudiant étranger en France : visa de long séjour ou titre de séjour\nVérifié le 01 août 2026 - Service Public / Direction de l'information légale et administrative (Premier ministre)\nSi vous êtes étranger et voulez étudier en France, vous devez d'abord demander un visa de long séjour valant titre de séjour (VLS-TS) mention étudiant (valable 4 mois à 1 an). Après 1 an, vous pouvez demander une carte de séjour temporaire étudiant (valable 1 an) ou pluriannuelle étudiant (valable 2 à 4 ans). Vous devez respecter des conditions de ressources.\n\n[\u2026] Vous devez pouvoir justifier de ressources au moins égales à  877,5 \u20ac  par mois.\nMais cette condition de ressources ne s'applique pas si vous avez réussi le concours d'entrée dans un établissement d'enseignement supérieur ayant signé une convention avec l'État.\n\n[\u2026] Vous devez pouvoir justifier de ressources au moins égales à  877,5 \u20ac  par mois qui seront appréciées en fonction de votre situation particulière.\n\n[\u2026] Justificatifs de vos ressources qui doivent être au moins égales à  877,5 \u20ac  par mois :\nSi vous êtes boursier du gouvernement français ou bénéficiaire de programmes européens : justificatif de cette situation\nSi vous êtes boursier dans votre pays d'origine : attestation de bourse de l'organisme payeur du pays d'origine précisant le montant et la durée de la bourse\nSi vous travaillez : vos 3 dernières fiches de paie\nSi vous êtes pris en charge par un tiers : justificatif d'identité du tiers + attestations bancaires de la programmation de virements réguliers\nSi vous avez les ressources suffisantes : attestation bancaire de solde créditeur suffisant\n\n[\u2026] Vous devez régler une taxe et un droit de timbre de 100 \u20ac par timbres fiscaux.\n\n[\u2026] Conditions : être inscrit dans un établissement (public ou privé) d'enseignement ou de formation initiale. Et justifier de ressources mensuelles au moins égales à 877,5 \u20ac.\n\nTextes et références : Code de l'entrée et du séjour des étrangers et du droit d'asile : article R422-7 — Montant des ressources",
+  "research_notes": "CONFIRMED from the French government's service portal (verified 01 August 2026), legal basis CESEDA article R422-7 'Montant des ressources'. France financial proof for a student residence permit: EUR 877.50 PER MONTH. This is a MONTHLY resources threshold, not a blocked-account scheme — France has no German-style Sperrkonto; proof can be a bank certificate of sufficient credit balance, a parents' declaration, a third-party undertaking, payslips, or a scholarship attestation. IMPORTANT EXCEPTION confirmed on the page: the resources condition does NOT apply to those who passed the entrance competitive examination (concours) of a higher-education institution that has signed a convention with the state — i.e. the grandes écoles / ENS route. Note for corpus integrity: France's threshold is far lower than Germany's (877.50 vs 992.00 EUR/month) and than the Netherlands' (1,130.77 EUR/month), and unlike Germany the French figure is a 'means' threshold to be evidenced rather than a mandatory blocked account. Also confirmed: VLS-TS mention étudiant valid 4 months to 1 year; then temporary student card valid 1 year, renewable, or pluriannuelle student card valid 2 to 4 years matching the remaining years of the study cycle; tax and stamp duty EUR 100 on VLS-TS validation; a permanent student permit requires proving 'caractère réel et sérieux' of the studies.",
+  "claims": [
+    {
+      "claim_id": "fr-financial-proof-monthly-resources",
+      "statement": "You must be able to justify resources of at least 877,5 euros per month to obtain a student visa long séjour valant titre de séjour (VLS-TS) mention étudiant or a student residence permit in France.",
+      "value": 877.5,
+      "unit": "EUR per month",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fr-financial-proof-legal-basis",
+      "statement": "The French student resources requirement is set in Code de l'entrée et du séjour des étrangers et du droit d'asile article R422-7 (Montant des ressources).",
+      "value": 877.5,
+      "unit": "EUR per month",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fr-financial-proof-grande-ecole-exception",
+      "statement": "The condition of resources does not apply if the applicant passed the entrance competitive examination (concours) of a higher education institution that has signed a convention with the State.",
+      "value": 877.5,
+      "unit": "EUR per month",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fr-student-permit-validity",
+      "statement": "A VLS-TS mention étudiant is valid for 4 months to 1 year; after 1 year of residence a temporary student residence permit valid 1 year or a pluriannuelle student permit valid 2 to 4 years may be applied for, costing 100 euros in tax and stamp duty.",
+      "value": 100,
+      "unit": "EUR (tax and stamp duty on VLS-TS validation)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

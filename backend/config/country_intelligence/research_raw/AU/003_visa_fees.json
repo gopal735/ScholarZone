@@ -1,0 +1,46 @@
+﻿{
+  "country": "AU",
+  "topic": "visa_fees",
+  "source_id": "homeaffairs-subclass500-overview",
+  "source_url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Australian Government - Department of Home Affairs, Immigration and Citizenship",
+  "retrieved_at": "2026-10-05",
+  "as_of": "page last updated 2 October 2026",
+  "raw_extract": "Subclass 500\nStudent visa\n\nVisit Australia to participate in a course of study.\n\nStay\n\nUp to 6 years and in line with your enrolment.\n\nCost\n\nFrom AUD2,500.00 (concessions apply in limited circumstances).\n\nCost concession\n\nA lower visa cost applies to eligible Pacific Island and Timor-Leste citizens, eligible ASEAN citizens and applicants in the ELICOS and Non-Award sector who lodge a valid Student visa application. See About this visa.\n\nTo work out what your visa will cost, use the Visa Pricing Estimator. The estimator does not take into account the other costs.\n\nWith this visa you can\n\nparticipate in an eligible course of study in Australia\n\ntravel in and out of Australia\n\nwork up to 48 hours a fortnight when your course of study or training is in session.\n\nCheck your eligibility\n\nYou must\n\napply online\n\napply from outside Australia unless you hold an eligible visa and meet an exemption allowing you to apply in Australia\n\nbe enrolled in a course of study in Australia and hold a valid Confirmation of Enrolment (CoE) when we decide your visa\n\nhold Overseas Student Health Cover (OSHC), or fall in one of the exemption categories\n\nbe 6 years or older\n\nprove you have a welfare arrangement, if you are under 18\n\nnot bring family members (partners and children) to Australia, unless exempt.\n\n[Page footer] Last updated: 2 October 2026",
+  "research_notes": "AUSTRALIA HAS NO SINGLE NATIONALLY-QUOTED VISA PRICE: Home Affairs publishes only a 'From' figure plus a concession list, and directs applicants to the Visa Pricing Estimator for the actual amount, explicitly warning 'The estimator does not take into account the other costs.' So AUD2,500.00 is a FLOOR, not the price a typical applicant pays, and it should never be presented as 'the Australian student visa fee'. Concessions apply to eligible Pacific Island and Timor-Leste citizens, eligible ASEAN citizens, and ELICOS/Non-Award sector applicants. Related mandatory cost recorded from the same page: Overseas Student Health Cover (OSHC) must be held unless the applicant falls into an exemption category - this is a separate recurring cost from the visa application charge and is a large part of a realistic student budget. Also recorded: work rights on the Student visa are capped at 'up to 48 hours a fortnight when your course of study or training is in session', and stay is 'Up to 6 years and in line with your enrolment'. Note also that this page is dated two days before retrieval (last updated 2 October 2026), which coincides with the rule change recorded separately in 003b_student_visa_rule_change_2026-10-02.json.",
+  "claims": [
+    {
+      "claim_id": "au-visa-fee-1",
+      "statement": "A Subclass 500 Student visa costs from AUD 2,500.00, with concessions applying in limited circumstances; Home Affairs publishes only a 'from' figure and directs applicants to the Visa Pricing Estimator for the actual amount.",
+      "value": 2500,
+      "unit": "AUD from (per application)",
+      "as_of": "2026-10-02",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "au-visa-fee-2",
+      "statement": "A lower Subclass 500 visa cost applies to eligible Pacific Island and Timor-Leste citizens, eligible ASEAN citizens, and applicants in the ELICOS and Non-Award sector.",
+      "value": null,
+      "unit": "concession categories",
+      "as_of": "2026-10-02",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "au-visa-fee-3",
+      "statement": "Subclass 500 holders must hold Overseas Student Health Cover (OSHC) unless they fall into an exemption category - a cost separate from the visa application charge.",
+      "value": null,
+      "unit": "mandatory insurance requirement",
+      "as_of": "2026-10-02",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "au-visa-fee-4",
+      "statement": "A Subclass 500 Student visa allows a stay of up to 6 years in line with enrolment, and work of up to 48 hours a fortnight while the course is in session.",
+      "value": 48,
+      "unit": "hours per fortnight (work limit)",
+      "as_of": "2026-10-02",
+      "study_level": "bachelor"
+    }
+  ]
+}

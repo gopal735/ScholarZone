@@ -1,0 +1,83 @@
+﻿{
+  "country": "SE",
+  "topic": "net_monthly_income",
+  "source_id": "se-skatteverket-tabell-32-2026",
+  "source_url": "https://www.skatteverket.se/download/18.1522bf3f19aea8075ba61b/1765290451072/allmanna-tabeller-manad-tabell-32.pdf",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Skatteverket (Swedish Tax Agency)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "Document header read verbatim from the PDF: 'Skatteavdrag f\u00f6r m\u00e5nadsl\u00f6n 2026 Bilaga / Prelimin\u00e4r skatt f\u00f6r kolumn / SKVFS 2025:20 32Tabell / Prelimin\u00e4r skatt f\u00f6r kolumn / L\u00f6n kr 1 2 3 4 5 6'. Rows read verbatim from column 1 (m\u00e5nadsl\u00f6n) for the 2026 table: '29801 5703 5574 2469 5703 8826 8826' (l\u00f6n 29,801-30,000 kr \u2192 5,703 kr tax); '31801 6190 6050 2946 6190 9530 9530' (31,801-32,000 \u2192 6,190); '34801 6922 6773 3669 6922 10586 10586' (34,801-35,000 \u2192 6,922); '39801 8151 7997 4893 8139 12309 12309' (39,801-40,000 \u2192 8,151); '44801 ... 9751 ...' (44,801-45,000 \u2192 9,751); '49801 ... 11351 ...' (49,801-50,000 \u2192 11,351); '59801 ... 15544 ...' (59,801-60,000 \u2192 15,544). Skatteverket's own English e-service guide states how the tables are applied: 'If you receive a salary, pension or other compensation from a single payer, who deducts tax according to the tax table, you can use this service to work out what your monthly income after tax will be in 2026.' and 'Your tax rate is the sum of municipal/regional taxes and funeral fee. ... Round the tax rate up to a whole number. The rounded up number indicates the tax table. 32:50 = table 32. 32:51 = table 33.' and 'Based on the year of birth you filled in and what type of income you selected, the column from which your tax deduction was taken is also shown.'",
+  "claims": [
+    {
+      "claim_id": "se-net-monthly-001",
+      "value": 24297,
+      "unit": "SEK per month",
+      "as_of": "2026",
+      "statement": "On skattetabell 32 (2026), column 1, a monthly salary of 30,000 SEK attracts a preliminary tax deduction of 5,703 SEK, leaving 24,297 SEK after preliminary tax."
+    },
+    {
+      "claim_id": "se-net-monthly-002",
+      "value": 26517,
+      "unit": "SEK per month",
+      "as_of": "2026",
+      "statement": "On skattetabell 32 (2026), column 1, a monthly salary of 33,000 SEK attracts a preliminary tax deduction of 6,483 SEK, leaving 26,517 SEK after preliminary tax."
+    },
+    {
+      "claim_id": "se-net-monthly-003",
+      "value": 28030,
+      "unit": "SEK per month",
+      "as_of": "2026",
+      "statement": "On skattetabell 32 (2026), column 1, a monthly salary of 35,000 SEK attracts a preliminary tax deduction of 6,970 SEK, leaving 28,030 SEK after preliminary tax."
+    },
+    {
+      "claim_id": "se-net-monthly-004",
+      "value": 31849,
+      "unit": "SEK per month",
+      "as_of": "2026",
+      "statement": "On skattetabell 32 (2026), column 1, a monthly salary of 40,000 SEK attracts a preliminary tax deduction of 8,151 SEK, leaving 31,849 SEK after preliminary tax."
+    },
+    {
+      "claim_id": "se-net-monthly-005",
+      "value": 35249,
+      "unit": "SEK per month",
+      "as_of": "2026",
+      "statement": "On skattetabell 32 (2026), column 1, a monthly salary of 45,000 SEK attracts a preliminary tax deduction of 9,751 SEK, leaving 35,249 SEK after preliminary tax."
+    },
+    {
+      "claim_id": "se-net-monthly-006",
+      "value": 38649,
+      "unit": "SEK per month",
+      "as_of": "2026",
+      "statement": "On skattetabell 32 (2026), column 1, a monthly salary of 50,000 SEK attracts a preliminary tax deduction of 11,351 SEK, leaving 38,649 SEK after preliminary tax."
+    },
+    {
+      "claim_id": "se-net-monthly-007",
+      "value": 20516,
+      "unit": "SEK per month",
+      "as_of": "2026",
+      "statement": "On skattetabell 32 (2026), column 1, a monthly salary of 25,000 SEK attracts a preliminary tax deduction of 4,484 SEK, leaving 20,516 SEK after preliminary tax."
+    },
+    {
+      "claim_id": "se-net-monthly-008",
+      "value": 44456,
+      "unit": "SEK per month",
+      "as_of": "2026",
+      "statement": "On skattetabell 32 (2026), column 1, a monthly salary of 60,000 SEK attracts a preliminary tax deduction of 15,544 SEK, leaving 44,456 SEK after preliminary tax."
+    }
+  ],
+  "assumptions": [
+    "Column 1 of skattetabell 32 is used: monthly salary (l\u00f6n) as the primary income for a person who reaches the age of 66 later in 2026 (born 1938 or later). Column 2 is the alternative for those who reach 66 during 2026 and would give a HIGHER net; column 1 is the conservative, correct choice for a graduate.",
+    "Municipality band: skattetabell 32 corresponds to a combined municipal + regional + funeral-fee rate of 31.51-32.50 percent, per Skatteverket's rounding rule ('32:50 = table 32. 32:51 = table 33'). The municipality of residence is NOT named in the source; table 32 is a band, not a single city.",
+    "Person is NOT a member of the Church of Sweden or any other registered religious community, so no kyrkoavgift (church tax) is added. Members of a religious community add roughly 0.5-1.2 percentage points, i.e. a lower net.",
+    "Single, no children: no barnbidrag/for\u00e4ldrabidrag reductions applied.",
+    "Salary is treated as the person's main and only income for 2026; basic tax-free allowance (grundavdrag) and jobbskatteavdrag are already embedded in the table's tax amount.",
+    "These are PRELIMINARY tax deductions (prelimin\u00e4r skatteavdrag) as used by employers for monthly payroll, not the final assessed tax. Skatteverket itself labels the document 'Prelimin\u00e4r skatt f\u00f6r kolumn'. Final tax can differ.",
+    "No student loan repayment (studie\u00e5nsl\u00e5n) deducted, and no union or other voluntary deductions."
+  ],
+  "field_mapping": {
+    "net_monthly_income": "career.net_monthly_income (topic: net_monthly_income)"
+  },
+  "notes": "This is an OFFICIAL net-gross table published by the tax authority itself, so the net figures are DERIVABLE with high confidence: net = gross minus the published table value, both read from the same Skatteverket PDF (SKVFS 2025:20). This is the single best kind of evidence in the corpus for Sweden because Skatteverket publishes a per-municipality, per-income-bracket net table. It covers: gross salary, state income tax, municipal income tax, regional tax and funeral fee as combined by the authority into one skattetabell, and it already nets off grundavdrag and jobbskatteavdrag. It does NOT cover: state income tax above the skiktgr\u00e4ns of 643,000 SEK/yr (irrelevant at these levels), kyrkoavgift (church tax, excluded by assumption), studie\u00e5nsl\u00e5n (student loan repayments, common for international students and would REDUCE net materially), union fees, and employer-side arbetsgivaravgift (correctly excluded from take-home). Crucially, the figure is NOT specific to graduates: it is a function of gross salary only. To use it for a graduate one must first establish an official graduate gross salary figure, which this artifact deliberately does not assume. Choose the gross point from a separate official graduate-earnings source and read the net off the matching row of this table.",
+  "evidence_limitations": "No Swedish authority publishes a NET MEDIAN for 'early-career graduates' as such. Skatteverket publishes net-gross tables indexed by municipality and income, not by occupation or seniority, so this artifact maps gross to net but does not establish what a graduate earns gross. Statistics Sweden (SCB) publishes income distributions by education level and occupation; that would be the appropriate companion gross source. The exact net for any given person also depends on their municipality (the 31.51-32.50% band of table 32 spans many municipalities; higher-taxing municipalities such as G\u00f6teborg use table 33 and take home less at identical gross) and on religious membership. Using a single table number without stating the municipality band risks overstating take-home for high-tax municipalities."
+}

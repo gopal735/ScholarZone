@@ -1,0 +1,22 @@
+﻿{
+  "country": "GB",
+  "topic": "bachelor_tuition",
+  "source_id": "uom-ba-liberal-arts-2027",
+  "source_url": "https://www.manchester.ac.uk/study/undergraduate/courses/2026/19115/ba-liberal-arts-with-international-study/",
+  "source_type": "UNIVERSITY_OFFICIAL",
+  "publisher": "The University of Manchester",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2027 entry",
+  "raw_extract": "### Fees\n\nTuition fees for home students commencing their studies in September 2027 will be £10,050 per annum. Tuition fees for international students will be £29,200 per annum.\n\nFor general information please see the [undergraduate finance](https://www.manchester.ac.uk/study/undergraduate/fees-and-funding/) pages.",
+  "research_notes": "Second Manchester course fetched on the same 2027 cycle, to demonstrate that the international figure is course-specific rather than a single institutional number: £29,200 (Liberal Arts, 4 years incl. year abroad) versus £39,700 (Computer Science) on the identically-worded Fees line. The 2026-entry URL was requested; the site served the 2027-entry profile (canonical path /study/undergraduate/courses/2027/19115/ba-liberal-arts-with-international-study/).",
+  "claims": [
+    {
+      "claim_id": "gb-bachelor-tuition-3",
+      "statement": "The University of Manchester charges international students £29,200 per annum for the BA Liberal Arts with International Study (4 years, 2027 entry).",
+      "value": 29200,
+      "unit": "GBP per year",
+      "as_of": "2027 entry",
+      "study_level": "bachelor"
+    }
+  ]
+}

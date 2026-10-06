@@ -1,0 +1,13 @@
+﻿{
+  "country": "SG",
+  "topic": "student_pass_financial_proof",
+  "raw_status": "UNAVAILABLE",
+  "reason": "ICA does not publish a monetary financial-proof threshold for a Student's Pass. The pages I fetched from the Immigration & Checkpoints Authority require financial information to be supplied but state no amount. Verbatim from the ICA Institutes of Higher Learning page: 'You will need the following documents/ information to complete your Student's Pass application, please have them ready before you apply: The Registration Acknowledgement Letter from the school you plan to attend; Your travel document biodata page and birth certificate (if applicable); Your personal information, including the list of countries / places you have previously resided in, your educational background, employment history and financial support; Your parents', spouse's, and/or siblings' personal information (if applicable); Your residential address and contact details in Singapore; Your email address; Your recent, passport-sized, digital, colour photograph taken within the last three months.' The corresponding ICA form V36, surfaced in search, asks for 'Applicant Average Monthly Income for past 6 months: SGD', 'Current Saving: SGD' and 'Other financial support' amounts, which confirms ICA asks for financial data without setting a floor. Singapore does publish a per-capita income threshold, but for MOE means-tested financial aid (S$1,875 PCI for international students), not for the Student's Pass — so no such figure is reported as a visa requirement.",
+  "attempted_sources": [
+    "https://www.ica.gov.sg/reside/STP/apply/ihl",
+    "https://www.ica.gov.sg/reside/STP/collect",
+    "https://www.ica.gov.sg/reside/STP/apply",
+    "https://www.ica.gov.sg/docs/default-source/ica/forms/form-v36.pdf"
+  ],
+  "checked_at": "2026-10-05"
+}

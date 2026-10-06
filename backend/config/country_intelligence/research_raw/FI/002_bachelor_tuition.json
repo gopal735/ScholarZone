@@ -1,0 +1,77 @@
+﻿{
+  "country": "FI",
+  "topic": "bachelor_tuition",
+  "source_id": "helsinki-tuition-fees-bachelor-english",
+  "source_url": "https://www.helsinki.fi/en/admissions-and-education/apply-bachelors-and-masters-programmes/tuition-fees-and-scholarship-programme",
+  "source_type": "UNIVERSITY_OFFICIAL",
+  "publisher": "University of Helsinki",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "# Tuition fees and scholarship programme\n\nThis page contains information about tuition fees for the University of Helsinki Bachelor's and Master's Programmes in English and the scholarship programme of the university.\n\nTuition fees\n\nThe fees for the University of Helsinki Master's Programmes in English are 13,000, 15,000 and 18,000 EUR per academic year, depending on the programme. The fee for the English-language bachelor's programmes is 13,000 EUR per academic year. In the joint programmes, the fees may differ from these. You can find the programme-specific fee from the .\n\nThe individual student's fee will remain the same throughout the completion of the programme. The fees are not charged of students who began their studies before 1 August 2017.\n\n**Due to changes to the Universities Act, there have been changes to tuition fee exemptions, taking place from 1 December 2024.**\n\n**A) The student is legally liable to pay tuition fees at the University of Helsinki (from 1 December 2024)**:\n\nIf they are not citizen of a European Union/European Economic Area country or Switzerland OR do not have permanent residence status in Finland.\n\n### Students liable to pay Tuition Fee:\n\n- non-EU/non-EEA students studying in English in Master's or Bachelor's degree programme\n\n## How to pay your tuition fee?\n\nThe University of Helsinki tuition fee is paid in advance of each academic year. The payment details for the first year will be sent at the same time as the letter of acceptance.\n\nThe deadline for tuition fee payment for the first academic year is 31 August 2026.\n\n## Are there Scholarships for applicants in English-language bachelor's programmes?\n\nThere are no tuition fee waivers for applicants applying for the English-language Bachelor's degrees. However, the degree programme may award a Dean's award (1.000 EUR) for second and third year students on the basis of previous academic year's study performance.\n\nPlease note that university of Helsinki does not offer scholarships to cover living expenses.",
+  "research_notes": "Bachelor tuition for Finland, from a named university's own fee page. The University of Helsinki states a single figure: 'The fee for the English-language bachelor's programmes is 13,000 EUR per academic year.' That is PER ACADEMIC YEAR, not per semester, and it is a flat single figure for the English-language Bachelor's programmes rather than a banded range. The Master's range (13,000/15,000/18,000) is recorded here only to demonstrate that the Bachelor figure is not part of a band; the brief's rule against inferring Master's funding means the Master's fees are context, not a claim for this metric.\n\nWHO PAYS. The university states liability as 'non-EU/non-EEA students studying in English in Master's or Bachelor's degree programme', with exemptions for EU/EEA/Swiss citizens and holders of certain Finnish residence statuses including a permanent residence card. Note the university flags that a continuous residence permit (type A) does NOT exempt a student where it was granted on the basis of studying.\n\nMATERIAL FINDING FOR A SCHOLARSHIP CORPUS, and it belongs here rather than in a file about the myth, because it changes what a Bachelor applicant in Finland faces: 'There are no tuition fee waivers for applicants applying for the English-language Bachelor's degrees.' So a non-EU Bachelor applicant at Helsinki pays the full 13,000 EUR per year with no fee-waiver route through the university's own scheme. The only mention is a Dean's award of 1.000 EUR (European decimal notation: EUR 1,000) for second and third year students based on prior academic performance, which is a performance award, not a means-based waiver. This corroborates the Finnish National Agency for Education's statement that such aid is institutional and tuition-only, and here it is tuition-only AND not available at Bachelor entry.\n\nCORROBORATION AND A DISCREPANCY ON THE BAND, from a second official source fetched in this session (https://www.studyinfinland.fi/funding-your-studies/fees-and-cost-living, the Finnish National Agency for Education): 'Tuition fees typically range from EUR 9,000 to EUR 20,000 per year, depending on the university and programme.' Helsinki's 13,000 sits inside that national range. No conflict, but note the national page's lower bound differs from what a student might expect: Finland's per-student Bachelor tuition is materially higher than the historical EUR 800 minimum that circulated in older material, and the agency page also states 'Degree programmes taught in Finnish or Swedish do not charge tuition fees', which is the genuine zero-fee route for a Finnish-taught Bachelor.\n\nThe '13,000' is University of Helsinki specifically. Novia and the University of Turku, per pages I saw only in search index rather than as fetched pages, are not recorded here because I did not fetch them.",
+  "claims": [
+    {
+      "claim_id": "fi-bachelor-tuition-helsinki-1",
+      "statement": "The University of Helsinki states the fee for its English-language Bachelor's programmes is 13,000 EUR per academic year.",
+      "value": 13000,
+      "unit": "EUR per academic year",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fi-bachelor-tuition-helsinki-2",
+      "statement": "The University of Helsinki charges tuition fees to non-EU/non-EEA students studying in English in a Bachelor's degree programme.",
+      "value": 1,
+      "unit": "tuition applies to non-EU Bachelor students",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fi-bachelor-tuition-waiver-availability-1",
+      "statement": "The University of Helsinki states there are no tuition fee waivers for applicants applying for the English-language Bachelor's degrees.",
+      "value": 0,
+      "unit": "tuition fee waivers available to English-language Bachelor applicants",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fi-bachelor-tuition-national-range-1",
+      "statement": "The Finnish National Agency for Education states Finnish tuition fees typically range from EUR 9,000 to EUR 20,000 per year depending on university and programme.",
+      "value": 9000,
+      "unit": "EUR per year national lower bound",
+      "as_of": "2026-09-18",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fi-bachelor-tuition-national-range-max-1",
+      "statement": "The Finnish National Agency for Education states Finnish tuition fees typically reach EUR 20,000 per year at the upper end depending on university and programme.",
+      "value": 20000,
+      "unit": "EUR per year national upper bound",
+      "as_of": "2026-09-18",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fi-bachelor-tuition-finnish-language-1",
+      "statement": "The Finnish National Agency for Education states degree programmes taught in Finnish or Swedish do not charge tuition fees, and doctoral programmes are tuition-free regardless of nationality.",
+      "value": 0,
+      "unit": "EUR tuition for Finnish or Swedish taught degree programmes",
+      "as_of": "2026-09-18",
+      "study_level": "bachelor"
+    }
+  ],
+  "conflict": {
+    "note": "Not a conflict between sources but a distinction the corpus must not flatten. HELSINKI SPECIFIC: EUR 13,000 per academic year for English-language Bachelor's programmes (University of Helsinki, fetched 2026-10-05). NATIONAL RANGE: EUR 9,000 to EUR 20,000 per year across universities and programmes (Finnish National Agency for Education, fetched 2026-10-05, page updated 18.09.2026). Both are official and both are quoted verbatim above. Helsinki's figure is a named-university figure and must be labelled as such; it is not a national Finnish Bachelor tuition.",
+    "source_a": {
+      "publisher": "University of Helsinki",
+      "value": 13000,
+      "unit": "EUR per academic year",
+      "url": "https://www.helsinki.fi/en/admissions-and-education/apply-bachelors-and-masters-programmes/tuition-fees-and-scholarship-programme"
+    },
+    "source_b": {
+      "publisher": "Finnish National Agency for Education",
+      "value": "9000-20000",
+      "unit": "EUR per year typical national range",
+      "url": "https://www.studyinfinland.fi/funding-your-studies/fees-and-cost-living"
+    }
+  }
+}

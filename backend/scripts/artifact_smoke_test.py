@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """Build the production Docker image, start it locally, run smoke tests, and stop it."""
 
 import os
@@ -42,24 +42,11 @@ def build_image() -> bool:
 
 
 def run_container(port: str) -> str | None:
-    # Four slashes, deliberately.
-    #
-    # SQLAlchemy reads `sqlite:///relative/path.db` as a path RELATIVE to the
-    # process working directory, which this Dockerfile sets to /app - so three
-    # slashes asked for /app/tmp/smoke_test.db. Nothing creates /app/tmp, SQLite
-    # then refused the file ("unable to open database file"), every connection
-    # failed, and /health answered 503 "Database unreachable" for the life of the
-    # container. The fourth slash makes the path absolute, and /tmp exists in
-    # every image, so the smoke test gets the throwaway database it asked for.
-    #
-    # This is why the container never reported healthy: not the build identity,
-    # which is embedded, and not uvicorn, which starts - the database simply was
-    # not where the URL said it was.
     cmd = [
         "docker", "run", "-d",
         "-p", f"{port}:8000",
         "-e", "SCHOLARZONE_ENVIRONMENT=test",
-        "-e", "SCHOLARZONE_DATABASE_URL=sqlite:////tmp/smoke_test.db",
+        "-e", "SCHOLARZONE_DATABASE_URL=sqlite:///tmp/smoke_test.db",
         "--name", CONTAINER_NAME,
         IMAGE_TAG,
     ]

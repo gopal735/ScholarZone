@@ -1,0 +1,30 @@
+﻿{
+  "country": "AU",
+  "topic": "visa_rules_change",
+  "source_id": "homeaffairs-changes-to-student-visa-rules",
+  "source_url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/changes-to-student-visa-application-rules-500-590",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Australian Government - Department of Home Affairs, Immigration and Citizenship",
+  "retrieved_at": "2026-10-05",
+  "as_of": "effective 2026-10-02 (page last updated 2 October 2026)",
+  "raw_extract": "Changes to Student visa application rules (subclasses 500 & 590)\n\nMake sure you know how the new rules affect you before making visa, study, travel or relocation plans.\n\nFrom 2 October 2026, there are new rules for Student visa (subclass 500) and Student Guardian (subclass 590) visas. The rules change who can apply for and be granted a visa while in Australia, and whether family members can be included.\n\nAustralia continues to welcome international students. You can still apply for a Student visa if you meet the visa requirements.\n\nThe changes may affect you if you are:\n\n- applying for a Student visa while in Australia\n\n- a Student visa holder applying for another Student visa\n\n- thinking about including family members in your Student visa application\n\n- considering whether family members can join you later.\n\nFact sheets and infographic:\n\nChanges to Student visa application rules (subclasses 500 & 590) - Fact sheet (297KB PDF)\n\nApplying for a Student visa (subclass 500) - Infographic (172KB PDF)\n\n[Page footer] Last updated: 2 October 2026",
+  "research_notes": "Recorded because it is materially current: the rules changed on 2 October 2026, THREE DAYS before this research was carried out (2026-10-05). Any dataset built on pre-October-2026 Australian student visa guidance is now out of date on two axes - onshore application eligibility and whether family members can be included. Corroborated from the independently fetched Subclass 500 overview page (see 003_visa_fees.json), whose eligibility list now includes the bare requirement 'not bring family members (partners and children) to Australia, unless exempt' - a much more restrictive default than the pre-change position and a major change for students planning to study with a spouse or children. HONEST LIMIT: the detail of the changes is in a linked 297KB PDF fact sheet and a 172KB infographic that I did NOT open, so the specific new conditions (which onshore categories remain exempt, and what happens to dependants already in Australia) are NOT claimed here. The page summary above is the full extent of what I verified.",
+  "claims": [
+    {
+      "claim_id": "au-student-visa-rule-change-1",
+      "statement": "From 2 October 2026 new rules apply to Subclass 500 (Student) and Subclass 590 (Student Guardian) visas, changing who can apply for and be granted a visa while in Australia and whether family members can be included.",
+      "value": null,
+      "unit": "regulatory change",
+      "as_of": "2026-10-02",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "au-student-visa-rule-change-2",
+      "statement": "Following the 2 October 2026 changes, the Subclass 500 eligibility criteria state that an applicant must 'not bring family members (partners and children) to Australia, unless exempt'.",
+      "value": null,
+      "unit": "eligibility restriction",
+      "as_of": "2026-10-02",
+      "study_level": "bachelor"
+    }
+  ]
+}

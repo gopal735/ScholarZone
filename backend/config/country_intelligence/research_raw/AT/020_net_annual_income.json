@@ -1,0 +1,39 @@
+﻿{
+  "country": "AT",
+  "topic": "net_monthly_income",
+  "source_id": "at-statistik-einkommensbericht-net-jahre-001",
+  "source_url": "https://www.statistik.at/statistiken/bevoelkerung-und-soziales/einkommen-und-soziale-lage/allgemeiner-einkommensbericht",
+  "source_type": "OFFICIAL_STATISTICS",
+  "publisher": "Statistik Austria (Bundesanstalt fuer Statistik Oesterreich) - Allgemeiner Einkommensbericht prepared for the Rechnungshof (Court of Audit) under the Bezuegebegrenzungsgesetz",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2023",
+  "raw_extract": "Nettojahreseinkommen (Median) der unselbstaendig Erwerbstaetigen\n2023\n26 497 Euro\nGestiegen 7,5 % zu 2022\n\nAnzahl der unselbstaendig Erwerbstaetigen 2023: 4 724 335\nBruttojahreseinkommen (Median) der unselbstaendig Erwerbstaetigen 2023: 35 314 Euro\n\nBeschreibung: Der Allgemeine Einkommensbericht gemaess Bezuegebegrenzungsgesetz wird jedes zweite Jahr im Auftrag des Rechnungshofes erstellt und bezieht sich jeweils auf die beiden vorangegangenen Jahre. Im Bericht finden sich die durchschnittlichen Einkommen, aufgeschluesselt nach Frauen und Maennern sowie - entsprechend dem Gesetzesauftrag - getrennt nach Branchen, Berufsgruppen und Funktionen. Die sehr detaillierten Auswertungen beruhen auf Administrativdaten (Lohnsteuerdaten, Einkommensteuerdaten, Daten des Dachverbandes der oesterreichischen Sozialversicherungstraeger), ergaenzt durch Daten des Mikrozensus.\n\nVERBATIM DEFINITION OF 'NET' (source note on the highlights table 'Anzahl und mittlere Jahreseinkommen der unselbstaendig Erwerbstaetigen nach Geschlecht 2023 in Euro'):\n'Q: STATISTIK AUSTRIA, Allgemeiner Einkommensbericht 2024, Lohnsteuer- und SV-Daten. Erstellt am 19.12.2024. - Ohne Lehrlinge. - Bruttojahreseinkommen entspricht den Bruttojahresbezuegen gemaess Paragraf 25 EStG. - Nettojahreseinkommen entspricht den Bruttojahresbezuegen gemaess Paragraf 25 EStG abzueglich der insgesamt einbehaltenen Sozialversicherungsbeitraege und abzueglich der insgesamt einbehaltenen Lohnsteuer (vor Arbeitnehmerveranlagung).'",
+  "claims": [
+    {
+      "claim_id": "at-net-annual-001",
+      "value": 26497,
+      "unit": "EUR per year",
+      "as_of": "2023",
+      "statement": "Nettojahreseinkommen (Median) der unselbstaendig Erwerbstaetigen 2023 = 26 497 Euro. This is an officially published NET annual median. The source's own definition: net annual income equals gross annual pay per Sec. 25 EStG minus total withheld social insurance contributions minus total withheld wage tax, before employee tax assessment."
+    },
+    {
+      "claim_id": "at-net-annual-002",
+      "value": 2208.08,
+      "unit": "EUR per month",
+      "as_of": "2023",
+      "statement": "DERIVED BY ARITHMETIC ONLY, NOT PUBLISHED BY THE SOURCE: 26 497 EUR / 12 = 2 208.08 EUR per month. This is included only to give a monthly reading of the official annual net figure. It is NOT a source figure, and it will understate a real monthly take-home because Austrian monthly pay is conventionally discussed on a 13- or 14-times-annual basis (holiday and Christmas remuneration), which is exactly why Statistik Austria's own Monatseinkommen series (artifact 010_net_monthly_income.json) reports 2 711 EUR for all employees in 2024 rather than a simple annual/12 division. Prefer artifact 010 for any monthly break-even calculation."
+    }
+  ],
+  "assumptions": [
+    "SOURCE'S OWN: 'Nettojahreseinkommen' = Bruttojahresbezuege gemaess Sec. 25 EStG minus the total of withheld social insurance contributions minus the total of withheld wage tax, explicitly '(vor Arbeitnehmerveranlagung)' i.e. before the annual employee tax assessment.",
+    "SOURCE'S OWN: population excludes apprentices ('Ohne Lehrlinge'); employees are wage-tax registered persons resident in Austria.",
+    "SOURCE'S OWN: this is a MEDIAN (Zentralwert), not an arithmetic mean, despite the page text calling the underlying report 'durchschnittliche Einkommen'.",
+    "NOT THE SOURCE'S / MINE: no marital status, children, or tax-class assumptions were invented. The published figure embeds each individual's actual withholding situation across the population.",
+    "DERIVATION FLAG: the monthly claim_id at-net-annual-002 is 26 497 / 12 and nothing else. No tax rate, no assumed deduction percentage and no adjustment was applied."
+  ],
+  "field_mapping": {
+    "net_monthly_income": "career.net_monthly_income (topic: net_monthly_income)"
+  },
+  "notes": "This is an OFFICIAL PUBLISHED NET figure (after-tax, after social insurance) but it is ANNUAL and one tax year older than artifact 010. Its real value to the corpus is that it is the only Austrian official net figure for which the statistical agency has published an explicit, quotable DEFINITION of 'net' - gross per Sec. 25 EStG minus withheld SV contributions minus withheld wage tax, before employee tax assessment. That definition is worth archiving on its own. DO NOT use the derived monthly figure for a cost-vs-salary break-even: use artifact 010 (Statistik Austria Monatseinkommen 2024), which is a genuine published monthly net median. Also note the 12x-vs-13x/14x trap described in the claims: dividing an Austrian annual figure by 12 systematically understates the monthly take-home because Urlaubs- and Weihnachtsgeld (holiday and Christmas pay) are paid as extra months. Currency EUR, reference year 2023, published 19 December 2024. Next edition: Allgemeiner Einkommensbericht 2026, scheduled 17.12.2026.",
+  "evidence_limitations": "Same population problem as artifact 010: all employees, not graduates. Also older (2023) and annual, so it cannot capture within-year progression, and it excludes any refund obtainable via the annual employee tax assessment (Arbeitnehmerveranlagung). A reader could easily mis-misread '26 497 Euro' as a take-home figure net of everything and net of nothing further; it is net only of withheld SV contributions and wage tax. The report's own breakdown by branch, occupation (Berufsgruppen) and function is published in downloadable .ods annexes that were not parsed for this artifact, so an occupation-specific net figure for Austria is plausible but was not obtained here."
+}

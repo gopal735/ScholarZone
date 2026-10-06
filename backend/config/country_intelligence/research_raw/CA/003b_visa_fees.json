@@ -1,0 +1,38 @@
+﻿{
+  "country": "CA",
+  "topic": "visa_fees",
+  "source_id": "justice-irpr-section-300",
+  "source_url": "https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/section-300.html",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Department of Justice Canada (Justice Laws Website) - Immigration and Refugee Protection Regulations, SOR/2002-227, section 300",
+  "retrieved_at": "2026-10-05",
+  "as_of": "regulations current to 2026-09-21, last amended 2026-07-15",
+  "raw_extract": "Immigration and Refugee Protection Regulations (SOR/2002-227)\n\nRegulations are current to 2026-09-21 and last amended on 2026-07-15.\n\nMarginal note:Fee — $150\n\n300 (1) A fee of $150 is payable for processing an application for a study permit.\n\nMarginal note:Exception\n\n(2) The following persons are not required to pay the fee referred to in subsection (1):\n\n(a) a person in Canada who has made a refugee claim that has not yet been determined by the Refugee Protection Division, and their family members;\n\n(b) a person in Canada on whom refugee protection has been conferred, and their family members;\n\n(c) a person who is a member of the Convention refugees abroad class or a humanitarian-protected persons abroad class, and their family members;\n\n(d) a properly accredited diplomat, consular officer, representative or official of a country other than Canada, of the United Nations or any of its agencies or of any intergovernmental organization of which Canada is a member, the members of the suite of such a person and the family members of such a person;\n\n(e) a member of the armed forces of a country that is a designated state for the purposes of the Visiting Forces Act, including a person who has been designated as a civilian component of that visiting force under paragraph 4(c) of that Act, and their family members;\n\n(f) a person who holds a study permit and is temporarily destitute, as described in paragraph 208(a);\n\n(g) a person whose study in Canada is under an agreement or arrangement between Canada and another country that provides for reciprocity of student exchange programs;\n(h) a person who works in Canada as an officer of the United States Immigration and Naturalization Service or of United States Customs carrying out pre-inspection duties, as an American member of the International Joint Commission or as a United States grain inspector, and their family members; and\n\n(i) a United States Government official in possession of an official United States passport who is assigned to a temporary posting in Canada, and their family members.\n\nSOR/2011-222, s. 9\nSOR/2014-19, s. 5\nSOR/2015-25, s. 5(E)\n\nPrevious Version\n\nDate modified: 2026-09-28",
+  "research_notes": "Taken from the regulation itself rather than the IRCC fee list, because canada.ca repeatedly returned HTTP 404 on fee-related paths during this session while the Justice Laws consolidation served the same figure and is the statutory authority. The marginal note reads exactly 'Fee — $150' and subsection 300(1) reads 'A fee of $150 is payable for processing an application for a study permit.' Currency is CAD. IMPORTANT CONTEXT THAT THE $150 FIGURE CONCEALS: this is a PROCESSING fee only. A study permit applicant in the ordinary course also pays for the initial passport, medicals and police certificates, plus any provincial document requirement, and - as recorded in 002_financial_proof.json - must show funds for tuition, living expenses and transportation. So $150 is not the cost of getting a Canadian study visa. NO HEALTH SURCHARGE ANALOGUE: unlike the UK (Immigration Health Surcharge, recorded at GB/003b), the fee schedule for a Canadian study permit contains no per-year health component, and I did not find one; I have NOT asserted that none exists in every circumstance, only that section 300 sets out a single flat processing fee with the exemptions listed. The nine fee exemptions in subsection 300(2) are recorded verbatim and are broader than most applicants expect: pending and accepted refugee claimants, Convention Refugee and Humanitarian-Assisted Person classes abroad, diplomats and their suites, visiting forces and civilian components, temporarily destitute current permit holders, students under bilateral reciprocal exchange agreements, certain US pre-inspection staff, and certain US officials on temporary posting. Clause (g) is the one most relevant to scholarship applicants: study under a Canada-country agreement providing for reciprocity of student exchange is fee-exempt. CITATION NOTE: the amendments credited to this section are SOR/2011-222 s.9, SOR/2014-19 s.5 and SOR/2015-25 s.5(E) - i.e. the $150 figure itself has not been amended in the versions displayed, though the regulations as a whole were last amended 2026-07-15. NOT VERIFIED AND NOT CLAIMED: the 'Restore your status as a student' composite fee of CAD 396.25 and the CAD 246.25 status-restoration fee, which appeared only in IRCC search-engine snippets (ircc.canada.ca fee list, dated 2026-09-21) that I did not fetch; biometrics fees; and the Canadian eTA / TRV costs. Those are excluded rather than asserted.",
+  "claims": [
+    {
+      "claim_id": "ca-visa-fee-1",
+      "statement": "A fee of CAD 150 is payable for processing an application for a Canadian study permit.",
+      "value": 150,
+      "unit": "CAD per application",
+      "as_of": "regulations current to 2026-09-21",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ca-visa-fee-2",
+      "statement": "The CAD 150 study permit fee is a processing fee only and is not the total cost of obtaining a Canadian study visa; no per-year health surcharge is set under section 300 of the Immigration and Refugee Protection Regulations.",
+      "value": null,
+      "unit": "scope (processing fee, no health component)",
+      "as_of": "2026-09-21",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ca-visa-fee-3",
+      "statement": "The study permit processing fee is waived for nine classes of person, including students whose study in Canada is under an agreement or arrangement between Canada and another country providing for reciprocity of student exchange programs.",
+      "value": null,
+      "unit": "fee exemptions (9 classes)",
+      "as_of": "2026-09-21",
+      "study_level": "bachelor"
+    }
+  ]
+}

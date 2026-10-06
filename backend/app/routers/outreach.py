@@ -1,7 +1,7 @@
-"""Private outreach routes.
+﻿"""Private outreach routes.
 
 Everything here is scoped to the signed-in student, resolved by
-``app.dependencies.require_user`` — the same dependency Dashboard 1.0 and
+``app.dependencies.require_user`` â€” the same dependency Dashboard 1.0 and
 Application Workspace use. No second identity system is introduced, and no
 ``user_id`` is ever accepted from a request.
 
@@ -72,9 +72,7 @@ _NOT_FOUND = "Outreach record not found."
 #: NAME, so `"sent" in OutreachStatus.__members__` is False and every legitimate
 #: status would be rejected as unrecognised. These are the values, which is what
 #: the column and the payload both hold.
-_RECOGNISED_OUTREACH_STATUSES: frozenset[str] = frozenset(
-    str(member) for member in OutreachStatus
-)
+
 
 #: Notes are stored and returned as plain text and rendered as text. Rejecting
 #: angle brackets and braces costs the student nothing here and removes the
@@ -206,7 +204,7 @@ def outreach_summary(
 
     A separate surface from the catalogue's counts on purpose. These numbers are
     never added to the application, match, saved or catalogue totals, and no
-    response-rate style metric is derived from them — there is not yet enough real
+    response-rate style metric is derived from them â€” there is not yet enough real
     outbound data to support one, and a synthesised one would be a fiction.
     """
     now = datetime.now(timezone.utc)
@@ -325,7 +323,7 @@ def update_outreach(
         )
 
     if payload.status is not None and payload.status != row.status:
-        if payload.status not in _RECOGNISED_OUTREACH_STATUSES:
+        if payload.status not in {s.value for s in OutreachStatus}:
             raise HTTPException(
                 status.HTTP_422_UNPROCESSABLE_ENTITY,
                 "That outreach status is not recognised.",
@@ -397,3 +395,4 @@ __all__ = [
     "MAX_SUBJECT_LENGTH",
     "router",
 ]
+

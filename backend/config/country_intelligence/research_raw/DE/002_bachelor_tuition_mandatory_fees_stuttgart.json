@@ -1,0 +1,30 @@
+﻿{
+  "country": "DE",
+  "topic": "bachelor_tuition_mandatory_fees_by_university",
+  "source_id": "de-uni-stuttgart-002",
+  "source_url": "https://www.student.uni-stuttgart.de/en/organizing-studies/formalities/tuition-and-fees/tuition-fee",
+  "source_type": "UNIVERSITY_OFFICIAL",
+  "publisher": "University of Stuttgart",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "Since winter semester 2017/18 higher education institutions in Baden-Württemberg charge tuition fees for international students and for students taking up a second degree.\n\nThis page provides information on the regulations in the Act on Fees in Higher Education of the Land of Baden-Württemberg (Landeshochschulgebührengesetz, LHGebG). Please note that this text is solely for information purposes and only the Act itself is legally binding.\n\nTuition fee for international students\n\nSince winter semester 2017/18, international students who are not citizens of an EU/EEA country and who are taking up or switching to a Bachelor's, a consecutive Master's or a state examination study program have to pay a tuition fee of EUR 1,500.00 per semester. Additionally the regular semester fee of currently EUR 184.00 has to be payed.\n\n[...]\n\nStudents who have to, or choose to, study at more than one higher education institution at the same time due to stipulations of the study regulations or examination regulations only have to pay tuition fees to the higher education institution at which the main courses are taught (acc. § 4 subs. 1 sent. 2 LHGebG).",
+  "research_notes": "CONFIRMED: the University of Stuttgart (a public university in Baden-Württemberg) states BOTH the non-EU tuition AND the mandatory semester fee SEPARATELY on one page, which satisfies the corpus requirement to record mandatory fees separately. Non-EU Bachelor tuition = EUR 1,500.00 per semester; regular semester fee (Semesterbeitrag) = EUR 184.00, stated as 'currently'. Unit is per semester for both. Cross-check: this university figure agrees exactly with the state ministry figure (MWK BW, EUR 1,500/semester) — no conflict. GAP: the EUR 184.00 semester fee is explicitly a 'currently' figure and is university-specific; it must not be generalised to all Baden-Württemberg universities. Hohenheim's page (seen only via search snippet, not fetched) stated EUR 174.50 for the same kind of semester contribution, which suggests these differ by university — I did NOT fetch Hohenheim directly, so that figure is NOT recorded as verified.",
+  "claims": [
+    {
+      "claim_id": "de-bachelor-tuition-public-non-eu-stuttgart",
+      "statement": "International students who are not citizens of an EU/EEA country and who are taking up or switching to a Bachelor's study program at the University of Stuttgart have to pay a tuition fee of EUR 1,500.00 per semester.",
+      "value": 1500,
+      "unit": "EUR per semester",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "de-mandatory-semester-fee-stuttgart",
+      "statement": "In addition to the tuition fee, students at the University of Stuttgart have to pay the regular semester fee of currently EUR 184.00 (per semester).",
+      "value": 184,
+      "unit": "EUR per semester",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

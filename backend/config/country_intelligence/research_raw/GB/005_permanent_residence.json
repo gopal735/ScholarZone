@@ -1,0 +1,46 @@
+﻿{
+  "country": "GB",
+  "topic": "permanent_residence",
+  "source_id": "govuk-ilr-skilled-worker",
+  "source_url": "https://www.gov.uk/indefinite-leave-to-remain-tier-2-t2-skilled-worker-visa",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "UK Visas and Immigration (Home Office), GOV.UK",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "You may be able to settle permanently in the UK if you have one of the following visas:\n\n-   Skilled Worker, Health and Care Worker or Tier 2 (General)\n-   T2 Minister of Religion or Tier 2 (Minister of Religion)\n-   International Sportsperson, T2 Sportsperson or Tier 2 (Sportsperson)\n\nIndefinite leave to remain is how you settle in the UK. It’s also called ‘settlement’.\n\n## Eligibility\n\nYou must:\n\n-   have lived and worked in the UK for 5 years - there are rules for what [counts towards your time in the UK](/indefinite-leave-to-remain-tier-2-t2-skilled-worker-visa/time-uk)\n-   meet the [salary requirements](/indefinite-leave-to-remain-tier-2-t2-skilled-worker-visa/salary-requirements)\n-   continue to be needed for your job and meet the salary requirements after you get indefinite leave to remain - you’ll need a document from your employer (sponsor) to confirm this\n\n## When to apply\n\nThe earliest you can apply is 28 days before you’ve been in the UK for 5 years on a qualifying visa.\n\n## Fees and how long it takes\n\nIt costs £3,226 for each person applying.",
+  "research_notes": "The UK settlement route is officially called 'Indefinite leave to remain' (ILR). The minimum qualifying period on the main work route is 5 years. CRITICAL for a student-corpus: the 5 years is a requirement to 'have lived AND worked in the UK'. Time on a Student visa is not time on a qualifying route, and the Graduate visa is likewise not listed among the qualifying visas on this page. So a student's realistic ILR timeline is 5 years of Skilled Worker, not 5 years total from arrival - a student arriving at 19 would not be eligible before roughly age 24+ and would need to qualify for Skilled Worker in the interim. Supporting figure from the same research pass: Skilled Worker requires a salary of at least £41,700 per year (or the going rate for the job, whichever is higher), so the work route also imposes a substantial earnings bar. Fee recorded: £3,226 per person.",
+  "claims": [
+    {
+      "claim_id": "gb-permanent-residence-1",
+      "statement": "The UK permanent residence route is officially 'Indefinite leave to remain' (ILR), and on the Skilled Worker route you must have lived and worked in the UK for 5 years.",
+      "value": 5,
+      "unit": "years on the qualifying route",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "gb-permanent-residence-2",
+      "statement": "ILR also requires you to meet the salary requirements and to remain needed for your job after settlement, evidenced by a document from your sponsor.",
+      "value": null,
+      "unit": "additional condition",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "gb-permanent-residence-3",
+      "statement": "An ILR application costs £3,226 per person, and the earliest it can be filed is 28 days before completing the 5-year qualifying period.",
+      "value": 3226,
+      "unit": "GBP per person",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "gb-permanent-residence-4",
+      "statement": "The Skilled Worker visa that precedes ILR requires pay of at least £41,700 per year, or the going rate for the occupation, whichever is higher.",
+      "value": 41700,
+      "unit": "GBP per year",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

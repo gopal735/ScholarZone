@@ -1,0 +1,63 @@
+﻿{
+  "country": "FR",
+  "topic": "bachelor_tuition",
+  "source_id": "fr-service-public-droits-2026-001",
+  "source_url": "https://www.service-public.gouv.fr/particuliers/actualites/A17481",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Service Public / Direction de l'information légale et administrative (DILA), Premier ministre — republishing Ministère de l'Enseignement supérieur et de la Recherche",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "Enseignement supérieur - Université : quels sont les montants des frais d'inscription en 2026 ?\nPublié le 21 août 2026 - Service Public / Direction de l'information légale et administrative (Premier ministre)\nPour l'année universitaire 2026-2027, les droits d'inscription sont fixés à :\n178 € pour une licence ou un diplôme national délivré au cours d'études conduisant au grade de licence ;\n255 € pour un master [...]\n2 620 € pour un diplôme d'ingénieur [...]\n630 € pour les autres diplômes d'ingénieur [...]\n\nDepuis avril 2019, des droits d'inscription différenciés sont mis en place pour les étudiants non-Français, qui sont inscrits dans un établissement d'enseignement supérieur pour l'obtention d'un diplôme national de niveau licence ou master. Ces étudiants étrangers doivent payer des droits d'inscription d'un montant différent de celui applicable aux ressortissants français.\n\nPour l'année universitaire 2026-2027, les droits d'inscription différenciés s'élèvent à :\n2 902 € pour une licence ou un diplôme national délivré au cours d'études conduisant au grade de licence (et 1 934 € pour le taux réduit, appliqué aux cursus supplémentaires en cas d'inscription à plus d'une formation dans le même établissement) ;\n3 950 € pour un master ou un diplôme national délivré au cours d'études conduisant au grade de master (et 2 633 € pour le taux réduit [...]).\nLes droits d'inscriptions différenciés ne s'appliquent pas aux doctorats [...]\n\nRappel Les universités peuvent exonérer certains étudiants étrangers de ces droits différenciés. Les règles concernant cette possibilité d'exonération ont évolué le 21 mai 2026.\n\nTextes et références : Arrêté du 19 avril 2019 relatif aux droits d'inscription dans les établissements publics d'enseignement supérieur relevant du ministre chargé de l'enseignement supérieur",
+  "research_notes": "CONFIRMED from two pages of the same official French government portal (A17481, published 21 Aug 2026, and A18927, published 26 May 2026 updated 20 Aug 2026), both stating the identical figures, so the number is not a one-off. France public-university Bachelor (licence) tuition for non-EU students, academic year 2026-2027: EUR 2,902 PER YEAR under differentiated tuition (droits d'inscription différenciés). The standard French/EU/EEA/Swiss rate for the same licence is EUR 178 per year. Legal basis: differentiated fees introduced April 2019 under the Arrêté du 19 avril 2019; the exemption regime was tightened by Décret n° 2026-385 du 19 mai 2026, in force for the 2026-2027 academic year. Important nuance for the corpus: differentiated fees do NOT apply to doctorates; the cap on the proportion of non-EU students a university may exempt is 30% for 2026-2027 and 25% for 2027-2028, trending to a long-term ceiling of 20%. CONFLICT FLAGGED BUT NOT ADOPTED: two press reports surfaced during searching (TF1 Info, 20 May 2026, and franceinfo, 20 April 2026) citing EUR 2,895 licence and EUR 3,941/3,950 master. I did NOT fetch those pages, so per the evidence rule I am not recording those figures as claims; I note the discrepancy because the corpus should be aware that press coverage of the May 2026 decree circulated slightly different licence/master numbers than the official government portal, and the official portal figure (2,902 / 3,950) should be preferred. If a second independent official confirmation is wanted, the MESR table linked from this page and etudiant.gouv.fr are the places to check.",
+  "claims": [
+    {
+      "claim_id": "fr-bachelor-tuition-non-eu-differentiated",
+      "statement": "For the 2026-2027 academic year, differentiated tuition fees for non-French students enrolling for a national licence degree amount to 2 902 € per year.",
+      "value": 2902,
+      "unit": "EUR per year",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fr-bachelor-tuition-national-rate",
+      "statement": "For the 2026-2027 academic year the standard tuition fee for a licence or a national diploma leading to the grade of licence is 178 € per year, compared with 2 902 € for non-EU students under differentiated fees.",
+      "value": 178,
+      "unit": "EUR per year",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fr-bachelor-tuition-reduced-rate-multi-programme",
+      "statement": "The reduced differentiated rate for additional programmes in the same institution is 1 934 € for a licence.",
+      "value": 1934,
+      "unit": "EUR per year",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fr-bachelor-tuition-exemptions",
+      "statement": "Some foreign students are not subject to differentiated tuition — notably nationals of EU and EEA Member States, Quebec and Switzerland — and universities may exempt certain foreign students; the exemption rules changed on 21 May 2026 under Décret n° 2026-385, with the maximum share of exempt non-EU students set at 30% for 2026-2027 and 25% for 2027-2028.",
+      "value": 2902,
+      "unit": "EUR per year",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ],
+  "conflict": {
+    "note": "Press coverage of Décret n° 2026-385 du 19 mai 2026 circulated licence/master figures that differ from the official government portal. The official portal is used; the press figures were NOT fetched and are therefore not asserted here as verified claims. Listed for corpus awareness only.",
+    "source_a": {
+      "publisher": "Service Public / DILA, Premier ministre (official)",
+      "url": "https://www.service-public.gouv.fr/particuliers/actualites/A17481",
+      "value": 2902,
+      "unit": "EUR per year (licence, differentiated)",
+      "fetched_and_verified": true
+    },
+    "source_b": {
+      "publisher": "TF1 Info / AFP (press, NOT fetched)",
+      "url": "https://www.tf1info.fr/education/universites-le-decret-augmentant-les-frais-d-inscription-des-etudiants-etrangers-est-paru-ce-mercredi-20-mai-2026-2442559.html",
+      "value": 2895,
+      "unit": "EUR per year (licence, differentiated)",
+      "fetched_and_verified": false
+    }
+  }
+}

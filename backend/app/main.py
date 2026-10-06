@@ -1,4 +1,4 @@
-from contextlib import asynccontextmanager
+﻿from contextlib import asynccontextmanager
 import logging
 import os
 import re
@@ -19,6 +19,7 @@ from .middleware.api_prefix import StripApiPrefix
 from .routers.scholarships import router as scholarships_router
 from .routers.match import router as match_router
 from .routers.counts import router as counts_router
+from .routers.countries import router as countries_router
 from .routers.verification import router as verification_router
 from .routers.admin_image_review import router as admin_image_review_router
 from .routers.discovery import router as discovery_router
@@ -305,6 +306,8 @@ app.include_router(match_router)
 # scanned past, and because the counting layer depends on the Match engine rather
 # than the other way round.
 app.include_router(counts_router)
+# The country intelligence router is registered after the counts router and before the scholarships router for the same reason: its literal paths (/v2/countries/meta, /compare, /calculate) must be resolved by their own router rather than scanned past by a dynamic sibling.
+app.include_router(countries_router)
 # The supervisor router is registered before the scholarships router for the same
 # reason the match router is: its paths are /scholarships/{id}/supervisors, so
 # registering it first makes that independence structural rather than dependent on

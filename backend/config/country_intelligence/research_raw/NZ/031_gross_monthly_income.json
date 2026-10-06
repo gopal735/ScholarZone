@@ -1,0 +1,45 @@
+﻿{
+  "country": "NZ",
+  "topic": "gross_monthly_income",
+  "source_id": "nz-ird-income-tax-rates-2026",
+  "source_url": "https://www.ird.govt.nz/income-tax/income-tax-for-individuals/tax-codes-and-tax-rates-for-individuals/tax-rates-for-individuals",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Inland Revenue (IRD), New Zealand",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026/27 tax year",
+  "raw_extract": "IRD 'Tax rates for individuals', read verbatim: 'New Zealand has progressive or gradual tax rates. The rates increase as your income increases. From 1 April 2025 - For each dollar of income / Tax rate / 0 - $15,600 / 10.5% / $15,601 - $53,500 / 17.5% / $53,501 - $78,100 / 30% / $78,101 - $180,000 / 33% / $180,001 and over / 39%'. Also read verbatim: 'Income tax rates are the percentages of tax that you must pay. The rates are based on your total income for the tax year. Your income could include: salary or wages; a Work and Income benefit; schedular payments; interest from a bank account or investment; earnings from self-employment; money from renting out property; overseas income.' And: 'Some income is taxed before you get paid. This includes salaries, wages, Work and Income benefits, schedular payments and interest. The amount of tax your employer or payer deducts depends on the tax code and income information you gave them.' The page links the current deduction tables, read verbatim: 'Weekly and fortnightly PAYE deduction tables IR340 Apr 2026 (PDF 5MB) Download document' and 'Four weekly and monthly PAYE deduction tables IR341 Apr 2026 (PDF 2MB) Download form', together with 'Income tax calculator / This calculator will work out tax on your annual income using rates from 2012 to the current year'.",
+  "claims": [
+    {
+      "claim_id": "nz-tax-bracket-001",
+      "value": 15600,
+      "unit": "NZD per year",
+      "as_of": "2026/27",
+      "statement": "IRD's top income tax rate band starts at NZD 15,600 of annual taxable income, taxed at 10.5% for each dollar."
+    },
+    {
+      "claim_id": "nz-tax-bracket-002",
+      "value": 53500,
+      "unit": "NZD per year",
+      "as_of": "2026/27",
+      "statement": "The 17.5% band covers annual taxable income from NZD 15,601 to NZD 53,500."
+    },
+    {
+      "claim_id": "nz-tax-bracket-003",
+      "value": 78100,
+      "unit": "NZD per year",
+      "as_of": "2026/27",
+      "statement": "The 30% band covers annual taxable income from NZD 53,501 to NZD 78,100; above NZD 78,100 the rate is 33%, and above NZD 180,000 it is 39%."
+    }
+  ],
+  "assumptions": [
+    "These are TAX BRACKET THRESHOLDS, not earnings figures. No gross salary for graduates is claimed in this artifact.",
+    "The IRD page labels its rate table 'From 1 April 2025', while the linked deduction tables are dated April 2026 and run to 31 March 2027. The rate page is the authority for the bracket STRUCTURE; the dated IR341/IR340 tables are the authority for the PAYE amount for any specific period, and are what 030_net_monthly_income.json uses.",
+    "Brackets apply to total annual taxable income from all sources, not to salary alone.",
+    "IRD notes the rates apply to 'total income for the tax year', so a person with side income pays higher rates on the total, which the IRD 'secondary tax' codes (S, SH, ST, SA) exist to handle."
+  ],
+  "field_mapping": {
+    "gross_monthly_income": "career.gross_monthly_income (topic: gross_monthly_income)"
+  },
+  "notes": "STATUS: TAX STRUCTURE ONLY, NO GRADUATE GROSS EARNINGS FIGURE ESTABLISHED. Recorded because the bracket thresholds are the primary-source parameters that the IR341 deduction tables implement, and because they let a reader sanity-check the net figures in 030_net_monthly_income.json: the effective PAYE rate at a NZD 48,000 salary sits between the 17.5% top band and the 10.5% bottom band, which is consistent with the published NZD 686.00 monthly deduction (about 17.2% of NZD 4,000). For New Zealand the deduction side is fully solved by IRD's own PAYE table; the missing input is the graduate gross salary. Note that NZ also has a specific statutory minimum wage for holders of student visas that differs from the general minimum wage. That figure is set under immigration legislation and is not published on the IRD tax page, so it is deliberately NOT asserted here rather than being recalled from memory.",
+  "evidence_limitations": "No New Zealand gross earnings figure for graduates was read from an official source in this pass. The appropriate primary sources are Statistics NZ's Longitudinal Census or the New Zealand Income Survey (both break down by age, occupation and qualification), and the Ministry of Education and Tertiary Education Commission's Graduate Earnings Programme, which tracks graduate earnings after completion. Inland Revenue publishes tax parameters and payroll deduction tables, not earnings statistics, so it cannot supply this gap. A reader should treat any New Zealand graduate gross salary currently in the corpus as unsourced until one of those statistics is retrieved and cited."
+}

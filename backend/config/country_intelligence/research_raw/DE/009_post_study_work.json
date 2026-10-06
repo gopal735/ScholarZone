@@ -1,0 +1,38 @@
+﻿{
+  "country": "DE",
+  "topic": "post_study_work",
+  "source_id": "de-aufenthg-20-001",
+  "source_url": "https://www.gesetze-im-internet.de/aufenthg_2004/__20.html",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Bundesministerium der Justiz / Bundesamt für Justiz — gesetze-im-internet.de (Gesetz über den Aufenthalt, die Erwerbstätigkeit und die Integration von Ausländern im Bundesgebiet, AufenthG § 20)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "§ 20 AufenthG — Arbeitsplatzsuche im Anschluss an Aufenthalte im Bundesgebiet\n(1) Zur Suche nach einer Erwerbstätigkeit 1.wird einem Ausländer nach erfolgreichem Abschluss eines Studiums im Bundesgebiet im Rahmen eines Aufenthalts nach § 16b oder § 16c eine Aufenthaltserlaubnis erteilt, [...]\n(2) Die Erteilung einer Aufenthaltserlaubnis nach Absatz 1 setzt die Lebensunterhaltssicherung voraus. Sie wird in den Fällen des Absatzes 1 Nummer 1 bis 4 für einen Zeitraum von bis zu 18 Monaten erteilt. In den Fällen des Absatzes 1 Nummer 5 wird sie für einen Zeitraum von bis zu zwölf Monaten erteilt und kann einmalig um bis zu sechs Monate verlängert werden, wenn der Lebensunterhalt gesichert ist. Die Verlängerung nach Absatz 1 über diese Zeiträume hinaus ist ausgeschlossen.",
+  "research_notes": "CONFIRMED from the primary federal statute, published by the Bundesamt für Justiz. Post-study job search in Germany: 18 MONTHS. Lawful name of the instrument: this is a residence permit ('Aufenthaltserlaubnis') granted under § 20 AufenthG for the purpose of 'Arbeitsplatzsuche im Anschluss an Aufenthalte im Bundesgebiet' (job search following residence in Germany). Germany does not use a named permit such as the UK's 'Graduate visa' or the Netherlands' 'orientation year'; the correct official naming for the corpus is a § 20 AufenthG Aufenthaltserlaubnis for job search (Arbeitsplatzsuche). Note precisely who the 18 months applies to: § 20(1) no. 1 covers students who successfully completed a study in Germany under § 16b or § 16c; numbers 1 to 4 share the 18-month cap. Number 5 (care/nursing Assistenz- or Helferausbildung) gets 12 months extendable once by 6. IMPORTANT CONDITION: securing livelihood (Lebensunterhaltssicherung) is a precondition, and extension beyond these periods is expressly excluded. I initially fetched § 27 AufenthG expecting the study/job-search provision and it turned out to be family reunification — recorded here so the corpus does not cite § 27 for this purpose.",
+  "claims": [
+    {
+      "claim_id": "de-post-study-work-duration",
+      "statement": "After successfully completing a study in Germany under § 16b or § 16c AufenthG, a residence permit for the purpose of job search is granted for a period of up to 18 months.",
+      "value": 18,
+      "unit": "months",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "de-post-study-work-permit-name",
+      "statement": "The official name of the German post-study job-search permit is a residence permit (Aufenthaltserlaubnis) for job search under § 20 AufenthG, titled 'Arbeitsplatzsuche im Anschluss an Aufenthalte im Bundesgebiet'.",
+      "value": 18,
+      "unit": "months",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "de-post-study-work-conditions",
+      "statement": "Grant of the § 20 AufenthG residence permit presupposes that the person's livelihood is secured, and extension beyond these periods is excluded.",
+      "value": 18,
+      "unit": "months",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

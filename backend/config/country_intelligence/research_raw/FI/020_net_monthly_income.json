@@ -1,0 +1,39 @@
+﻿{
+  "country": "FI",
+  "topic": "net_monthly_income",
+  "source_id": "fi-verohallinto-palkan-veroprosentit-2026",
+  "source_url": "https://www.vero.fi/henkiloasiakkaat/verokortti-ja-veroilmoitus/tulot/ansiotulot/palkan-el%C3%A4kkeen-ja-etuuden-veroprosentit/",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Verohallinto (Finnish Tax Administration)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "Esimerkkejä palkan, eläkkeen ja etuuden veroprosenteista vuonna 2026. Veroprosentti tarkoittaa sitä, kuinka paljon sinulle maksetusta tulosta menee veroa. Veroprosentti määräytyy vuoden aikana kertyvien ansiotulojen mukaan. Ansiotuloja ovat esimerkiksi palkat, eläkkeet ja etuudet. Lopulliseen veroprosenttiin vaikuttavat muun muassa vuositulojen määrä, kotikunta, kirkon jäsenyys ja erilaiset vähennykset. Taulukon veroprosentit perustuvat tilanteeseen, jossa henkilö on 17−64 -vuotias, asuu Helsingissä, kuuluu evankelisluterilaiseen kirkkoon, saa vain yhdentyyppistä tuloa vuoden aikana − esimerkiksi vain palkkaa, ei muita tuloja, ei alaikäisiä huollettavia lapsia, on saanut verokortin vuoden alussa. Lisäksi taulukon veroprosenteissa on otettu huomioon vähennykset, jotka Verohallinto tekee automaattisesti. [Taulukon rivit] Tulon määrä vuodessa / Palkan veroprosentti / Etuuden veroprosentti / Eläkkeen veroprosentti: 10 000 euroa 0,0 % 14,0 % 0,0 %; 16 000 euroa 0,5% 18,0 % 5,0 %; 20 000 euroa 1,5 % 20,0 % 12,0 %; 30 000 euroa 8,5 % 23,0 % 19,0 %; 40 000 euroa 14,0 % 26,0 % 24,5 %; 50 000 euroa 19,0 % 29,0 % 29,0 %; 60 000 euroa 22,5 % 31,5 % 31,5 %; 70 000 euroa 25,0 % 33,5 % 34,5 %. Palkasta menee veron lisäksi erikseen eläke- ja työttömyysvakuutusmaksu, joka esimerkkitapauksessa olisi 8,19 %. Työnantaja perii eläke- ja työttömyysmaksun palkasta ja tilittää sen eläkelaitokselle. [Toinen taulukko] Tulon määrä vuodessa / Veron määrä palkasta / Veron määrä etuudesta / Veron määrä eläkkeestä: 10 000 euroa 0,00 € 1 382,56 € 0,00 €; 16 000 euroa 2,50 € 2 850,25 € 784,06 €; 20 000 euroa 278,50 € 3 914,55 € 2 340,15 €; 30 000 euroa 2 530,49 € 6 797,80 € 5 699,42 €; 40 000 euroa 5 511,99 € 10 309,30 € 9 614,77 €; 50 000 euroa 9 361,96 € 14 410,30 € 14 410,30 €; 60 000 euroa 13 244,84 € 18 850,05 € 18 850,05 €; 70 000 euroa 17 415,60 € 23 379,05 € 23 964,05 €. Sivu on viimeksi päivitetty 22.11.2025",
+  "claims": [
+    {
+      "claim_id": "fi-net-monthly-001",
+      "value": 2084.38,
+      "unit": "EUR per month (net, take-home)",
+      "as_of": "2026",
+      "statement": "Derived take-home pay of EUR 2,084.38 per month from an annual earned income of EUR 30,000 (EUR 2,500 per month gross), tax year 2026, computed from the Finnish Tax Administration's own published figures for this example case: 'Veron määrä palkasta' EUR 2,530.49, plus the eläke- ja työttömyysvakuutusmaksu which the source states 'esimerkkitapauksessa olisi 8,19 %' of pay (= EUR 2,457.00). Net = 30,000.00 - 2,530.49 - 2,457.00 = EUR 25,012.51 per year = EUR 2,084.38 per month."
+    },
+    {
+      "claim_id": "fi-net-monthly-002",
+      "value": 8.19,
+      "unit": "percent of gross salary (employee pension and unemployment insurance contribution, 2026, this example case)",
+      "as_of": "2026",
+      "statement": "The Finnish Tax Administration states: 'Palkasta menee veron lisäksi erikseen eläke- ja työttömyysvakuutusmaksu, joka esimerkkitapauksessa olisi 8,19 %. Työnantaja perii eläke- ja työttömyysmaksun palkasta ja tilittää sen eläkelaitokselle.'"
+    }
+  ],
+  "assumptions": [
+    "The reference person is exactly the one the source defines, and these are the SOURCE'S assumptions, not mine: aged 17-64, living in Helsinki, member of the Evangelical Lutheran Church, earning only one type of income during the year (salary only), with no dependent minor children, and in receipt of a tax card from the start of the year (source: 'on saanut verokortin vuoden alussa')",
+    "The source's own statement that the automatic deductions made by Verohallinto are already reflected in these amounts",
+    "The 8.19 per cent eläke- ja työttömyysvakuutusmaksu is stated by the source as the rate 'in the example case'; it is an age-banded statutory contribution, so a person over 64 would pay less",
+    "Annualised monthly figure: the source works in annual income, so the monthly figure is the annual net divided by twelve; Finnish pay practice includes 5.5 months' holiday pay (lomaraha), so a monthly-paid employee's monthly take-home is not simply annual net divided by twelve",
+    "gross of EUR 2,500 per month is the EUR 30,000 annual example the source publishes; it is a stated input to the calculation, NOT a claim about what a Finnish graduate earns"
+  ],
+  "field_mapping": {
+    "net_monthly_income": "fi.career.net_monthly_income (topic: net_monthly_income)"
+  },
+  "notes": "THIS IS THE OFFICIAL ROUTE, AND IT IS A DERIVATION RATHER THAN A PRINTED NET FIGURE. Verohallinto publishes, for a stated annual salary, (a) the income tax on that salary and (b) separately, the pension and unemployment insurance contribution rate. Both are deducted from gross to obtain take-home. Neither figure is itself labelled 'net'. No official Finnish statistics body publishes a national median take-home monthly wage for graduates that I could find, so this derivation is the highest-ranked evidence available. A COMPARABILITY WARNING THAT MATTERS MORE THAN THE NUMBER: Verohallinto's percentage is the VEROKORTTI (tax card) withholding percentage, and it is NOT the same as the final tax liability. The source says so: 'Veroprosentti tarkoittaa sitä, kuinka paljon sinulle maksetusta tulosta menee veroa' and the tax card rate is an advance withholding estimate ('ennakkoperintä'), rounded up to the nearest half percentage point, recalculated during the year as actual income accrues, and reconciled at year end - so the eventual take-home can differ from any single tax-card-derived figure. The 8.19 per cent contribution is a true final charge and does not vary with the year. Independent read-across: the Veronmaksajain Keskusliitto, the Finnish tax professionals' association, publishes its own explicit net column for the same year and states its percentages 'kuvaavat lopullista verotusta (ei verokortin mukaista ennakkoverotusta)' - final taxation, not tax-card withholding - and gives net EUR 24,316 per year at an identical EUR 30,000 gross. That is EUR 2,026.33 per month, EUR 58.05 below the Verohallinto-based figure in claim 001, because the association applies an income-weighted average municipal tax rate of 7.57 per cent and a church rate of 1.38 per cent, whereas Verohallinto's stated example uses the Helsinki rate. Both are recorded; neither has been averaged. SEE ALSO 020b_net_monthly_income_estimate_veronmaksajat.json, which prints explicit net figures for a range of gross salaries from the same association.",
+  "evidence_limitations": "The reference person lives in Helsinki and pays the Helsinki municipal tax rate; a resident of a lower-tax municipality keeps more, so this understates take-home for some regions and overstates it for high-tax cities. Church membership is assumed; a non-member pays no church tax and keeps more. Not graduate-specific and not entry-level: the EUR 30,000 annual salary is a round example figure chosen by the tax administration to illustrate percentages, not a measured graduate wage, and it sits above the Finnish overall median wage. The monthly figure is annualised across twelve months and ignores holiday-pay timing. No national median or mean take-home for graduates was found in official Finnish statistics."
+}

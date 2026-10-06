@@ -1,0 +1,62 @@
+﻿{
+  "country": "FI",
+  "topic": "financial_proof",
+  "source_id": "studyinfinland-fees-living-migri-800",
+  "source_url": "https://www.studyinfinland.fi/funding-your-studies/fees-and-cost-living",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Finnish National Agency for Education (Study in Finland)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026-09-18",
+  "raw_extract": "# Fees and Cost of Living\n\n## Living expenses\n\nBeyond tuition, you need to be able to cover your living costs independently.\n\nFinland is a relatively expensive country to live in, so while the official minimum requirement set by Finnish Immigration Service Migri is EUR 800 per month (EUR 9,600 per year), we recommend you reserve a bit more money for your living expenses, approximately EUR 900-EUR 1,200 per month, depending on the location. This includes food, accommodation, and travel.\n\nYou must prove sufficient finances and insurance when applying for a student residence permit.\n\n## Student healthcare fee\n\nIf you are studying for a bachelor's or a master's degree: in order to use the services of the Finnish Student Health Service FSHS, you'll be required to pay an annual student healthcare fee - currently around EUR 35 per term (that's about EUR 70 per year).\n\n## Can I work part-time during studies?\n\n- As an international student you are allowed to work part-time up to 30 hours per week on average during the academic year and full-time during holidays.\n\n- Finding employment during your studies is challenging, especially without Finnish/Swedish skills. What's more, possible part-time job salaries would not be sufficient to cover both tuition and living costs.\n\n- You should not base your financial plans on the uncertain prospect of finding part-time employment during your studies.\n\n## Student union fees\n\nUniversity students pay an annual student union fee of about EUR 50-EUR 70 per academic year, granting access to discounts in student restaurants and public transport. Student union membership at universities of applied sciences (UAS) is optional.\n\nUpdated 18.09.2026",
+  "research_notes": "Financial proof for Finland, EUR 800 per month. IMPORTANT ATTRIBUTION CAVEAT, stated rather than hidden: this page is the Finnish National Agency for Education's Study in Finland site, and the agency is RELAYING the number rather than setting it. Its words are 'the official minimum requirement set by Finnish Immigration Service Migri is EUR 800 per month (EUR 9,600 per year)'. The requirement is therefore MIGRI's, and the authoritative source is the Finnish Immigration Service. I attempted https://migri.fi/en/income-requirement-for-students, which the page links to as the place to prove sufficient finances, and the fetch FAILED with a timeout. I also received HTTP 403 on migri.fi earlier in this session. So the figure below is attested by one official government publisher quoting another official authority, at second hand. It is solid but it is not the primary document, and that distinction should survive into whatever canonical file consumes it.\n\nThe page gives both the monthly figure and the annual derivation (EUR 9,600 per year), which is convenient because the annual form is what a first-year cost model needs and here it does not require my own arithmetic.\n\nESTIMATE, CLEARLY LABELLED: the EUR 900-EUR 1,200 per month recommended figure is explicitly the agency's recommendation for actual living expenses, not a legal threshold. Anything derived from that range must carry an ESTIMATE marker.\n\nALSO RECORDED, all verbatim from this page, because a first-year budget needs them and they are small enough to be lost by rounding: student union membership about EUR 50-EUR 70 per academic year; FSHS student healthcare fee currently around EUR 35 per term, about EUR 70 per year, payable to Kela and required for Bachelor's and Master's students.\n\nWORK RIGHTS, from this same official page: international students 'are allowed to work part-time up to 30 hours per week on average during the academic year and full-time during holidays.' This is a markedly more permissive figure than Sweden's new 15-hour cap, and the two should not be conflated. The agency adds the practical caution that such wages 'would not be sufficient to cover both tuition and living costs', i.e. part-time work is not a funding plan.",
+  "claims": [
+    {
+      "claim_id": "fi-financial-proof-1",
+      "statement": "The Finnish National Agency for Education states that the official minimum financial requirement set by the Finnish Immigration Service (Migri) for a student is EUR 800 per month.",
+      "value": 800,
+      "unit": "EUR per month",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fi-financial-proof-annual-1",
+      "statement": "The Finnish National Agency for Education states the same Migri minimum requirement as EUR 9,600 per year.",
+      "value": 9600,
+      "unit": "EUR per year",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fi-living-cost-estimate-1",
+      "statement": "The Finnish National Agency for Education recommends reserving approximately EUR 900 to EUR 1,200 per month for living expenses in Finland, depending on location. This is an ESTIMATE and a recommendation, not an official threshold.",
+      "value": "900-1200",
+      "unit": "EUR per month (ESTIMATE, recommended, not official)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fi-student-health-fee-1",
+      "statement": "Bachelor's and Master's degree students in Finland must pay an annual student healthcare fee of around EUR 35 per term, about EUR 70 per year, to use the Finnish Student Health Service (FSHS).",
+      "value": 70,
+      "unit": "EUR per year student healthcare fee",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fi-student-union-fee-1",
+      "statement": "University students in Finland pay an annual student union fee of about EUR 50 to EUR 70 per academic year.",
+      "value": "50-70",
+      "unit": "EUR per academic year student union fee",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fi-student-work-rights-1",
+      "statement": "The Finnish National Agency for Education states international students may work part-time up to 30 hours per week on average during the academic year and full-time during holidays.",
+      "value": 30,
+      "unit": "hours per week",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

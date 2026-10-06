@@ -1,0 +1,30 @@
+﻿{
+  "country": "SG",
+  "topic": "student_work_rights",
+  "source_id": "mom-work-pass-exemption-students",
+  "source_url": "https://www.mom.gov.sg/passes-and-permits/work-pass-exemption-for-foreign-students",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Ministry of Manpower (MOM), Singapore",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026-05-11",
+  "raw_extract": "If you are holding a Student's Pass in Singapore issued by ICA, you are only allowed to work if you meet specific requirements. … Working during school term You can work during the school term without a work pass if you meet all of the following criteria: You are a full-time matriculated or registered student in one of the institutions listed below. You hold a Student's Pass issued by the Immigration and Checkpoints Authority (ICA). Additionally, your work needs to meet one of these requirements: It is for a maximum of 16 hours a week. It is under an industrial attachment or internship programme conducted by your university or educational institution. The industrial attachment can be either compulsory or elective but it must contribute towards your graduation requirements. You need not notify us before you start work. … You must apply for a work pass if you want to take a leave of absence during your school term to do additional industrial attachments that do not contribute towards your graduation. Not allowed to work You are not allowed to work if you are an exchange student in Singapore.",
+  "research_notes": "MOM, not ICA, is the authority on the work exemption, and its page is dated 11 May 2026. The permission is a statutory work-pass exemption, exercised automatically: no application and no prior notification. It applies only to students of the listed institutions, which include NUS, NTU, SMU, SIT, SUTD, SUSS and the polytechnics, and requires age 14 or above. During vacations there is no hour cap. Working more than 16 hours per week outside a qualifying industrial attachment or internship requires the employer to obtain a work pass. The underlying instrument is the Employment of Foreign Manpower (Work Pass Exemptions for Seamen and Full-time Students) Notification, whose text appears in search results on sso.agc.gov.sg with the 'less than 16 hours per week' test; I did not successfully fetch the statute page itself, so the statute is cited as corroboration only and the MOM page is the source of record. Singapore has no post-study work permission as such: the page states 'Once you have completed your studies and your Student's Pass expires, you will need to get a work pass to work in Singapore. Your employer will need to apply for your work pass,' so no duration-based post-study right is claimed.",
+  "claims": [
+    {
+      "claim_id": "sg-student-work-cap-1",
+      "statement": "A Student's Pass holder at a listed Singapore institution may work during the school term without a work pass for a maximum of 16 hours per week, or under an industrial attachment or internship contributing to graduation requirements.",
+      "value": 16,
+      "unit": "hours per week",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "sg-student-work-post-1",
+      "statement": "After studies are completed and the Student's Pass expires, the employer must apply for a work pass; Singapore grants no automatic post-study work permission to former international students.",
+      "value": 0,
+      "unit": "months of post-study work permission",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

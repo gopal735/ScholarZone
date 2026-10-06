@@ -1,0 +1,45 @@
+﻿{
+  "country": "CH",
+  "topic": "net_monthly_income",
+  "source_id": "ch-zg-fachstelle-lse-nettolohn-001",
+  "source_url": "https://www.zg.ch/behoerden/gesundheitsdirektion/statistikfachstelle/themen/arbeitsmarkt/lohn",
+  "source_type": "OFFICIAL_REGIONAL_BODY",
+  "publisher": "Fachstelle fuer Daten und Statistik, Gesundheitsdirektion, Kanton Zuerich (Canton of Zurich statistical office), reporting figures from the Bundesamt fuer Statistik (BFS) Lohnstrukturerhebung",
+  "retrieved_at": "2026-10-05",
+  "as_of": "not stated on the page",
+  "raw_extract": "VERBATIM section 'Verteilung der Loehne' from the Canton of Zurich statistical office page, which explicitly attributes its wage figures to the federal survey:\n\n'Rund 27 Prozent aller Erwerbstaetigen im Kanton Zug erhalten einen Nettolohn unter 4'000 Franken. In der gesamten Schweiz betraegt dieser Anteil 33 Prozent. Erwerbstaetige Personen mit tiefen Einkommen sind im Kanton Zug somit seltener als in der gesamten Schweiz. Deutlich ueberrepraesentiert sind im Kanton Zug hingegen Personen mit einem sehr hohen Einkommen. In der Gesamtschweiz erhielten 1,1 Prozent der Erwerbstaetigen einen Nettolohn von ueber 20'000 Franken, im Kanton Zug sind es 3,1 Prozent.'\n\nVERBATIM context from the same page, establishing the source of the wage data:\n'Die Lohnstrukturerhebung des Bundesamtes fuer Statistik gibt Auskunft ueber die Einkommen der Erwerbstaetigen im Kanton Zuerich (nach dem Arbeitsortprinzip). Sie ermoeglicht Lohnvergleiche zwischen Branchen, Geschlechtern und anderen soziodemographischen Gruppen. Um moeglichst zuverlaessig Schluesse ziehen zu koennen, bestellt der Kanton Zuerich alle vier Jahre eine vergroesserte Stichprobe.'\n'(Note: the quoted sentence about the LSE describing the canton reads Zuerich, while the surrounding figures are labelled Kanton Zug. This is an apparent inconsistency in the source page itself, recorded here rather than silently corrected.)'\n\nVERBATIM from the same page, gross for comparison: 'Im Privatsektor betraegt der monatliche Bruttolohn (Medianwert) im Kanton Zug bei Vollbeschaeftigung rund 7263 Franken.'\n\nVERBATIM from the same page: 'Erwerbstaetige mit Universitaetsabschluss erhalten einen fast doppelt so hohen Monatslohn wie Personen mit einer abgeschlossenen Berufslehre.'",
+  "claims": [
+    {
+      "claim_id": "ch-net-dist-below-4000-001",
+      "value": 33,
+      "unit": "percent of employed persons",
+      "as_of": "not stated on the page",
+      "statement": "VERBATIM: 'In der gesamten Schweiz betraegt dieser Anteil 33 Prozent', where 'dieser Anteil' refers to 'einen Nettolohn unter 4'000 Franken'. So in Switzerland as a whole, 33 per cent of employed persons receive a NET monthly wage below CHF 4 000. This is a NET figure, reported by an official cantonal statistical body and attributed to the Federal Statistical Office's Lohnstrukturerhebung."
+    },
+    {
+      "claim_id": "ch-net-dist-above-20000-002",
+      "value": 1.1,
+      "unit": "percent of employed persons",
+      "as_of": "not stated on the page",
+      "statement": "VERBATIM: 'In der Gesamtschweiz erhielten 1,1 Prozent der Erwerbstaetigen einen Nettolohn von ueber 20'000 Franken'. In Switzerland as a whole, 1.1 per cent of employed persons receive a NET monthly wage above CHF 20 000. (For comparison the same page gives 3.1 per cent for the canton of Zug.)"
+    },
+    {
+      "claim_id": "ch-net-dist-zug-below-4000-003",
+      "value": 27,
+      "unit": "percent of employed persons",
+      "as_of": "not stated on the page",
+      "statement": "VERBATIM: 'Rund 27 Prozent aller Erwerbstaetigen im Kanton Zug erhalten einen Nettolohn unter 4'000 Franken.' Canton-specific figure, recorded for completeness; NOT to be used as a Swiss national figure."
+    }
+  ],
+  "assumptions": [
+    "SOURCE'S OWN: 'Nettolohn' is used in its normal Swiss payroll sense, i.e. the amount actually paid to the employee after all deductions. The page does not enumerate which deductions, but the standard Swiss deductions are the employee shares of AHV/IV/EO, ALV, NBU and BVG, plus federal/cantonal/municipal income tax and, where applicable, withholding tax (Quellensteuer) on foreign workers.",
+    "NOT THE SOURCE'S / MINE: no assumption about marital status, canton, children, church tax, pension fund level or permit status was made. The source pools all of these.",
+    "CRITICAL GAP: the page does NOT state the reference year of the LSE figures it reports, does not state whether the net distribution is a full-time-equivalent standardised series, and does not state whether family and child allowances are included (the BFS gross definition explicitly excludes them). All three omissions are recorded here rather than guessed at.",
+    "NOT THE SOURCE'S / MINE: no net median has been interpolated, back-solved or estimated from these distribution thresholds. A distribution giving 33 per cent below CHF 4 000 and 1.1 per cent above CHF 20 000 does not determine a median, and the corpus must not treat it as if it did."
+  ],
+  "field_mapping": {
+    "net_monthly_income": "career.net_monthly_income (topic: net_monthly_income)"
+  },
+  "notes": "*** THIS IS THE ONLY OFFICIAL SWISS NET EARNINGS EVIDENCE FOUND, AND IT IS NOT A MEDIAN. *** What it gives is two official NET thresholds: about one third of Swiss employed persons take home less than CHF 4 000 per month, and about 1 per cent take home more than CHF 20 000 per month. The corpus can use these as sanity bounds on any Swiss net figure: a claimed Swiss graduate take-home should sit somewhere between roughly CHF 4 000 and CHF 20 000, and a plausible reading of the shape of the distribution puts the national net median somewhere in the CHF 4 500 to CHF 6 000 band - but that band is MY inference from the two published thresholds, not a published figure, and it must not be recorded as one. A reader would be misled if they took '33 per cent below CHF 4 000' as describing graduates: the LSE population is all employed persons including part-timers, and Switzerland's part-time share is high. A reader would also be misled by the source attribution, which is a CANTONAL statistical office (Canton of Zurich) relaying federal survey data, not the FSO's own net release; the FSO's public outputs for the LSE are gross only. Source class is therefore OFFICIAL_REGIONAL_BODY relaying OFFICIAL_STATISTICS, and that indirection is why this is filed as topic net_monthly_income with heavy limitations rather than as a headline salary figure. Currency CHF. Reference year not stated by the source - see artifact 030 for the status record.",
+  "evidence_limitations": "Distribution thresholds only, no median, no mean, no graduate breakdown, no canton breakdown (the only canton given is Zug, a high-income canton). Reference year not stated. Second-hand attribution through a cantonal office. The underlying FSO survey does collect net wage data - that is proven by the fact that a cantonal office can quote national net thresholds from it - but the FSO's own published LSE tables reached in this research are titled 'Monatlicher Bruttolohn ...' throughout and expose no net variable. Because income tax in Switzerland is cantonal and municipal, a single national net figure would in any case be of limited use for a break-even calculation; a canton-specific net figure is what the corpus actually needs and that was not obtained."
+}

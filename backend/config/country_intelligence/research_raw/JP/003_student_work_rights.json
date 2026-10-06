@@ -1,0 +1,30 @@
+﻿{
+  "country": "JP",
+  "topic": "student_work_rights",
+  "source_id": "moj-isa-shikagaku-gaikatsugyou",
+  "source_url": "https://www.moj.go.jp/isa/applications/procedures/nyuukokukanri07_00003.html?lang=en",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Immigration Services Agency of Japan (Ministry of Justice)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "１　包括許可（１週について２８時間以内で稼働する場合） １週について２８時間以内（教育機関の長期休業期間にあっては、１日について８時間以内）の収入を伴う事業を運営する活動（注）又は報酬を受ける活動を行う場合は、資格外活動の包括許可が必要となります。 … 【必要書類】・申請書のみ",
+  "research_notes": "The page is served by the Immigration Services Agency of Japan. The English-locale request returned the Japanese original of the 'Student' status of residence permission page; the verbatim Japanese above is the operative text. The official name of the permission is 資格外活動許可 / Permission to Engage in Activities Outside Those Permitted Under the Status of Residence Previously Granted, split into a blanket permit (包括許可, 28 hours or fewer per week) and an individual permit (個別許可). Holiday relaxation is 8 hours per day during the educational institution's long vacation. The agency page carries no effective date, so as_of is recorded as the retrieval year 2026. I did not fetch a MOFA source on the post-graduation job-seeking route, so no claim is made about that.",
+  "claims": [
+    {
+      "claim_id": "jp-student-parttime-cap-1",
+      "statement": "Under Japan's blanket permit for activities outside those permitted by the 'Student' status of residence, a student may work 28 hours or fewer per week.",
+      "value": 28,
+      "unit": "hours per week",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "jp-student-parttime-holiday-1",
+      "statement": "During the educational institution's long vacation, the same blanket permit allows 8 hours per day.",
+      "value": 8,
+      "unit": "hours per day",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

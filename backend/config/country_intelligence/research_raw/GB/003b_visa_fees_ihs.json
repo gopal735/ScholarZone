@@ -1,0 +1,38 @@
+﻿{
+  "country": "GB",
+  "topic": "visa_fees_ihs",
+  "source_id": "govuk-ihs-how-much-pay",
+  "source_url": "https://www.gov.uk/healthcare-immigration-application/how-much-pay",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "UK Visas and Immigration (Home Office), GOV.UK",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "## Cost for a year\n\nYou’ll have to pay:\n\n-   £776 per year for students, their dependants, and those on a Youth Mobility Scheme visa, for example £1,552 for a 2-year visa\n-   £776 per year for visa and immigration applicants who are under the age of 18 at time of application\n-   £1,035 per year for all other visa and immigration applications, for example £3,105 for a 3-year visa\n\n## Cost for part of a year\n\nThe amount you have to pay depends on the length of the visa you’re given and where you apply from.\n\n### 6 months or less\n\nYou do not need to pay the surcharge if you’re applying from outside the UK for 6 months or less.\n\nIf you’re applying from inside the UK, you’ll have to pay half the yearly cost. For example:\n\n-   £388 for students, their dependants or under-18 applications\n-   £517.50 for any other application\n\n### More than 6 months but less than one year\n\nWherever you apply from, you’ll have to pay the cost of a full year.\n\n## Cost for more than one year\n\nIf your visa is for more than a year, you’ll have to pay:\n\n-   the yearly cost plus half the yearly cost, if it’s for 18 months or less\n-   the cost of 2 full years, if it’s for more than 18 months but less than 2 years",
+  "research_notes": "This is the Immigration Health Surcharge (IHS), the 'healthcare surcharge' referenced by the Student visa page. The Student rate is £776/year, materially lower than the £1,035/year general rate - using the general rate for a student would overstate cost. IMPORTANT for budgeting: a UK Student visa is normally issued longer than the course (gov.uk's own Student visa page confirms up to 1 month before a course over 6 months, and universities note a 4-month post-course tail), so a single 3-year bachelor's course can trigger more than three years of IHS. The fetched page's own worked example (£776 x 2 = £1,552 for a 2-year visa) is the only fully-published worked figure here; totals for a 3-year bachelor course are not printed on this page, so any such total must be computed from the stated rules, not quoted. The pre-2024 history of the rate (£470 for students, £624 general) was seen only in a search-engine snippet of the Immigration (Health Charge) (Amendment) Order 2024, not in a page I successfully fetched - legislation.gov.uk returned an empty body on two attempts (https://www.legislation.gov.uk/uksi/2015/792/schedule/1) - so the historical rates are deliberately NOT recorded as a claim.",
+  "claims": [
+    {
+      "claim_id": "gb-ihs-1",
+      "statement": "The Immigration Health Surcharge for students and their dependants is £776 per year of visa length.",
+      "value": 776,
+      "unit": "GBP per year of visa",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "gb-ihs-2",
+      "statement": "The general IHS rate for all other visa and immigration applications aged 18 or over is £1,035 per year.",
+      "value": 1035,
+      "unit": "GBP per year of visa",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "gb-ihs-3",
+      "statement": "Where a visa exceeds one year, the payable IHS is the yearly cost plus half the yearly cost if the visa is 18 months or less, or the cost of 2 full years if it is more than 18 months but less than 2 years.",
+      "value": null,
+      "unit": "rule",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+﻿{
+  "country": "IE",
+  "topic": "bachelor_tuition",
+  "source_id": "ucd-non-eu-undergrad-fees-2026-27",
+  "source_url": "https://www.ucd.ie/students/fees/noneucoursefees/internationalnon-euundergraduatefees202627/",
+  "source_type": "UNIVERSITY_OFFICIAL",
+  "publisher": "University College Dublin (Student Registration, Fees and Data Operations)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026/27 academic year",
+  "raw_extract": "International (Non-EU) Undergraduate Fees 2026/27\nNon-EU Undergraduate Fees 2026/27\nThese are the Non EU fee rates\nEuro\n\nBA DN520 - BAU5 | College of Arts and Humanities Adm | Full Time | Per Year | 22,600.00\n\nBSc Psychology DN720 - PCS2 | School of Psychology | Full Time | Per Year | 22,600.00\n\nBSc Economics DN710 - ECS4 | School of Economics | Full Time | Per Year | 22,600.00\n\nBSc Social Sciences DN700 - COS1 | Central Office - College of Social Sciences and Law | Full Time | Per Year | 22,600.00\n\nLaw DN600 - LWS6 | School of Law | Full Time | Per Year | 22,600.00\n\nMusic DN517 - MCS2 | School of Music | Full Time | Per Year | 22,600.00\n\nBSc Business DNBUS - B722 | School of Business | Full Time | Per Year | 23,170.00\n\nCommerce DN650 - BSS1 | School of Business | Full Time | Per Year | 23,170.00\n\nBComm International DN660 - BSW1 | School of Business | Full Time | Per Year | 23,170.00\n\nBSc Sustainability DN240 - STS1 | College of Science Administration Office | Full Time | Per Year | 26,200.00\n\nComputer Science DN201 - CSSA | School of Computer Science | Full Time | Per Year | 29,500.00\n\nScience DN200 - SCU1 | College of Science Administration Office | Full Time | Per Year | 29,500.00\n\nMathematics (includes Applied/Financial/Statistics) DN200 - MHS2 | School of Mathematics and Statistics | Full Time | Per Year | 29,500.00\n\nEngineering DN150 - NUS1 | College of Engineering and Architecture Administration Office | Full Time | Per Year | 29,500.00\n\nBSc Physiotherapy DN420 - MDS5 | School of Public Health, Physiotherapy and Sports Science | Full Time | Per Year | 29,500.00\n\nBSc Nursing DN450 - NSS1 | School of Nursing, Midwifery and Health Systems | Full Time | Per Year | 29,500.00\n\nBSc Midwifery DN452 - NSS4 | School of Nursing, Midwifery and Health Systems | Full Time | Per Year | 29,500.00\n\nBSc Radiography DN410 - MDS4 | School of Medicine | Full Time | Per Year | 36,250.00\n\nVeterinary Medicine DN300 - VTS1 | School of Veterinary Medicine | Full Time | Per Year | 38,000.00\n\nVet Medicine (Graduate Entry) DN301 - VTS3 | School of Veterinary Medicine | Full Time | Per Year | 44,880.00\n\nMedicine - MDS2 | School of Medicine | Full Time | Per Year | 63,890.00\n\nMedicine (Graduate Entry) DN401 - MDS9 | School of Medicine | Full Time | Per Year | 66,360.00\n\nFOOTNOTES (verbatim)\nfb - Year 2 Pyschology nonEU Fees pay an additional charge EUR2,000\nzsa - \"All Students entering Medicine are required to demonstrate evidence of immunity to certain infectious diseases (Hepatitis B and Tuberculosis). Students are required to pay an additional charge for Healthcare Screening on registration. EUR330\"\nzv1 - Non-EU students that enter Undergraduate Direct Entry Veterinary Medicine (DN300) from 2019/20 onwards will be subject to annual fee increases\n\nPREFATORY TEXT from the parent page (verbatim)\nPlease note that if you started a multi-year programme on a non-EU fee rate in, or after, the 2014/2015 academic year, your fees will remain the same as the year you started the programme in (providing you remain on the same programme).\nFees published for the Colleges below are inclusive of a Student Centre Levy which must be paid by all students.\nNon-EU students that enter Undergraduate Direct Entry Veterinary Medicine (DN300) and EU and non EU students that enter Graduate Entry Veterinary Medicine (DN301 ) from 2019/20 onwards will be subject to annual increases.\nThe UCD Students Union held a referendum on 4th April 2025 to rejoin Aontas na Mac Leinn in Eirinn/AMLE (formally Union of Students in Ireland (USI)), the national representative body for students in Ireland. As such, and on the request of UCDSU, the Student Registration, Fees & Data Operations Unit has applied a levy of EUR5 to students registered for the 2026-2027 academic year. This EUR5 fee is not included in the published fees below.",
+  "research_notes": "Ireland has no single national international tuition figure, so this is one named university: University College Dublin. The fee table is not in the parent page's HTML - it is loaded from the UCD Student Information System publish frame at https://sisweb.ucd.ie/usis/!W_HU_MENU.P_PUBLISH?p_tag=FEESLEVEL&RESD=NONEU&DGLEV=UG&ACYR=2026, which was fetched directly and from which the verbatim rows above are taken. An earlier webfetch of the parent page returned a variant prefatory line saying the EUR5 Students Union levy applied to students registered for the 2025-2026 academic year, whereas the browser-rendered parent page read on the same date says 2026-2027; the year of application is therefore recorded as 2026-27 from the later read and the discrepancy is flagged rather than silently reconciled. SPREAD IS THE HEADLINE POINT: across ordinary bachelor's degrees at UCD the 2026/27 non-EU rate runs from EUR 22,600 (BA, BSc Psychology, BSc Economics, BSc Social Sciences, Law, Music) through EUR 23,170 (Business/Commerce) and EUR 26,200 (BSc Sustainability) to EUR 29,500 (Computer Science, Science, Mathematics, Engineering, Physiotherapy, Nursing, Midwifery), then jumps sharply for professional programmes at EUR 36,250 (BSc Radiography), EUR 38,000 (Veterinary Medicine), EUR 44,880 (Graduate Entry Veterinary Medicine), EUR 63,890 (Medicine) and EUR 66,360 (Graduate Entry Medicine). A corpus that stored one Irish 'bachelor tuition' number would understate medicine by roughly three times. TOTALS ARE NOT SIMPLY MULTIPLY-UP: the page states fees are fixed at the entry-year level for programmes started from 2014/15 onward, EXCEPT Direct Entry Veterinary Medicine (DN300) and Graduate Entry Veterinary Medicine (DN301) which take annual increases - and its own footnote zv1 repeats this. Some programmes are also quoted per-year with different year values (BSc Radiography MDSJ: Year 1 32,880.00, Year 2 32,240.00, Year 3 16,120.00). Additional compulsory charges that a budget must carry and that are printed as footnotes: an additional Healthcare Screening charge of EUR330 for Medicine (zsa) and Physiotherapy (zsc), and an additional EUR2,000 in Year 2 for non-EU Psychology students (fb). Part-time study is priced per credit (Arts P/T BAU2: 376.70 per credit) and must not be annualised. Published figures include a Student Centre Levy but exclude the EUR5 Students Union levy. All amounts are in Euro as printed on the page.",
+  "claims": [
+    {
+      "claim_id": "ie-bachelor-tuition-1",
+      "statement": "University College Dublin charges non-EU students EUR 22,600 per year for the BA (DN520 - BAU5) in the College of Arts and Humanities for 2026/27.",
+      "value": 22600,
+      "unit": "EUR per year",
+      "as_of": "2026/27",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ie-bachelor-tuition-2",
+      "statement": "UCD charges non-EU students EUR 22,600 per year for the BSc in Psychology (DN720 - PCS2) for 2026/27 - the same rate as the BA.",
+      "value": 22600,
+      "unit": "EUR per year",
+      "as_of": "2026/27",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ie-bachelor-tuition-3",
+      "statement": "UCD charges non-EU students EUR 29,500 per year for the BSc in Computer Science (DN201 - CSSA) and for the BSc in Science (DN200 - SCU1) for 2026/27.",
+      "value": 29500,
+      "unit": "EUR per year",
+      "as_of": "2026/27",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ie-bachelor-tuition-4",
+      "statement": "UCD charges non-EU students EUR 29,500 per year for the BE in Engineering (DN150 - NUS1) for 2026/27.",
+      "value": 29500,
+      "unit": "EUR per year",
+      "as_of": "2026/27",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ie-bachelor-tuition-5",
+      "statement": "UCD charges non-EU students EUR 63,890 per year for the undergraduate Medicine programme (MDS2) for 2026/27 - nearly three times the BA rate.",
+      "value": 63890,
+      "unit": "EUR per year",
+      "as_of": "2026/27",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ie-bachelor-tuition-6",
+      "statement": "UCD charges non-EU students EUR 23,170 per year for the BSc in Business (DNBUS - B722) and EUR 26,200 per year for the BSc in Sustainability (DN240 - STS1) for 2026/27.",
+      "value": 23170,
+      "unit": "EUR per year (BSc Business)",
+      "as_of": "2026/27",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ie-bachelor-tuition-7",
+      "statement": "For most multi-year programmes started from the 2014/2015 academic year, UCD fees stay at the entry-year level for the duration of the programme, but Direct Entry Veterinary Medicine (DN300) and Graduate Entry Veterinary Medicine (DN301) entered from 2019/20 onwards are subject to annual fee increases.",
+      "value": null,
+      "unit": "fee escalation rule",
+      "as_of": "2026/27",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ie-bachelor-tuition-8",
+      "statement": "Published UCD fees are inclusive of a Student Centre Levy but exclude a EUR5 Students Union levy; in addition, non-EU Psychology students pay an extra EUR2,000 in Year 2 and Medicine and Physiotherapy students pay an extra EUR330 Healthcare Screening charge.",
+      "value": 5,
+      "unit": "EUR (Students Union levy, excluded from published fees)",
+      "as_of": "2026/27",
+      "study_level": "bachelor"
+    }
+  ]
+}

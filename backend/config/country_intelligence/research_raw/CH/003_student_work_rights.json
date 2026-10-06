@@ -1,0 +1,38 @@
+﻿{
+  "country": "CH",
+  "topic": "student_work_rights",
+  "source_id": "zh-studierende-praktikanten",
+  "source_url": "https://www.zh.ch/de/wirtschaft-arbeit/erwerbstaetigkeit-auslaender/studierende-und-praktikanten.html",
+  "source_type": "OFFICIAL_REGIONAL_BODY",
+  "publisher": "Canton of Zurich, Amt für Wirtschaft (Office of Economic Affairs)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "Studierende aus Drittstaaten können in der Schweiz nur in Ausnahmefällen einer Nebenbeschäftigung nachgehen. … Nebenerwerb während Studium Drittstaatsangehörigen, die in der Schweiz eine Aus- oder Weiterbildung an einer Hochschule oder Fachhochschule absolvieren, kann frühestens sechs Monate nach Beginn der Ausbildung eine Nebenbeschäftigung bewilligt werden, wenn Vorteile: die Schulleitung schriftlich bestätigt, dass diese Tätigkeit im Rahmen der Ausbildung verantwortbar ist, die Erwerbstätigkeit den Ausbildungsabschluss nicht verzögert und die wöchentliche Arbeitszeit ausserhalb der Ferien 15 Stunden nicht überschreitet. Die Bewilligung ist von der Arbeitgeberin / dem Arbeitgeber zu beantragen. … Stellensuche nach dem Studium Drittstaatsangehörige können nach erfolgreichem Abschluss des Studiums an einer Schweizer Hochschule eine Kurzaufenthaltsbewilligung zur Stellensuche beantragen. Eine solche wird für sechs Monate erteilt, wenn Vorteile: genügend finanzielle Mittel vorhanden sind, eine bedarfsgerechte Unterkunft gegeben ist und das Abschlussdiplom oder eine Bestätigung vorliegt, dass das Studium erfolgreich abgeschlossen wurde.",
+  "research_notes": "Canton Zurich is the cantonal authority that issues the permits it describes, so this is an official regional source for the rule rather than a university summary. Key points: the permission is a cantonal Bewilligung for Nebenbeschäftigung (part-time employment), applied for by the employer, not the student; the 15-hour weekly cap applies outside school holidays, so term-time part-time work is capped but holiday work is not capped on this page; employment may not begin earlier than six months after the start of the programme; three cumulative conditions apply (school confirms the job fits within the programme, the job must not delay graduation, and the 15-hour term-time cap). This is the 'percentage FTE' rule expressed in hours: 15 hours per week against a nominal full-time week, i.e. roughly a 37.5% FTE in term time. For comparison, the SEM free-movement FAQ fetched from the federal source confirms the equivalent EU/EFTA figure: 'Students are issued this permit for one year and are granted yearly renewals until the completion of their studies, if they continue to fulfil the respective conditions' and notes that the free-movement agreement does not cover permanent residence. Post-study: a six-month short-stay permit for job search is available on graduation, and a six-month Kurzaufenthaltsbewilligung after a completed degree is confirmed above. Separately, the Canton Zurich page states that graduates of a Swiss higher-education institution may be admitted to work under a cantonal permit where the field has a shortage of labour ('In Frage kommen nur Bereiche, in denen nicht bereits ein genügendes Angebot an Arbeitskräften besteht'), which is a labour-shortage test rather than an automatic right. No claim is made about a national maximum working percentage because no federal page stating one was fetchable; the figures above are cantonal.",
+  "claims": [
+    {
+      "claim_id": "ch-student-work-cap-zh-1",
+      "statement": "In Canton Zurich, a third-country national student may be permitted part-time employment once the employment does not exceed 15 hours per week outside school holidays.",
+      "value": 15,
+      "unit": "hours per week",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ch-student-work-startdelay-zh-1",
+      "statement": "In Canton Zurich, a student from a third country may only be granted permission for part-time employment at the earliest six months after the start of their programme.",
+      "value": 6,
+      "unit": "months after programme start",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ch-poststudy-jobsearch-zh-1",
+      "statement": "Canton Zurich grants a six-month short-stay permit to third-country nationals who have successfully completed a study at a Swiss higher-education institution in order to look for work, provided they have sufficient financial means, suitable accommodation and a confirmed diploma.",
+      "value": 6,
+      "unit": "months",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

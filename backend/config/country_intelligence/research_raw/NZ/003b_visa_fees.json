@@ -1,0 +1,46 @@
+﻿{
+  "country": "NZ",
+  "topic": "visa_fees",
+  "source_id": "inz-fee-paying-student-visa",
+  "source_url": "https://www.immigration.govt.nz/visas/fee-paying-student-visa/",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Immigration New Zealand (INZ), New Zealand Government",
+  "retrieved_at": "2026-10-05",
+  "as_of": "site content as displayed 2026-10-05",
+  "raw_extract": "# Fee Paying Student Visa\n\nThis visa is for students who are paying international tuition fees themselves, or with support from family, a loan, or a partial scholarship. You must have an offer of place from an approved education provider.\n\nLength of stay: Up to 4 years\nCost: From NZD $850\nProcessing time: 80% within 8 weeks\n\nTo apply you must:\n\n-   be offered a place on a by an\n-   have enough money to pay your tuition fees, or have a scholarship\n-   have enough money to pay your living expenses, or have an acceptable sponsor\n-   declare that you will have insurance that is acceptable to your education provider\n-   have your parent or legal guardian with you if you are aged under 10 and not living in an New Zealand Qualifications Authority (NZQA)-approved hostel\n-   meet the other requirements of this visa.\n\nThis visa lets you:\n\n-   study full-time in New Zealand on an approved course, including primary, secondary, tertiary study\n-   work part-time up to 25 hours a week while studying and full-time in holidays, depending on your visa conditions\n-   travel in and out of New Zealand until your visa expires.\n\nYou cannot include your partner or dependent children in your visa application, but they can apply for visas based on their relationship to you.\n\n### Medical and travel insurance\n\nYou must agree to have insurance for travel and any health care you need, from the start of your course until your visa expires. This will be a condition of your student visa.\n\nYour insurance policy must meet the requirements set out in the Education (Pastoral Care of Tertiary and International Learners) Code of Practice 2021, and be acceptable to your education provider.\n\nDoctor of Philosophy (PhD) students do not need to have insurance.\n\n## How long you can stay\n\nYour visa is normally issued for the same period as the study you have paid for, or up to when your passport expires if that is due to happen sooner. Your visa may be shorter than the length of your course. For example, if you have paid for 1 year of study for a multi-year course or if your passport expires before the end date of your study.\n\nThis visa can be issued for a maximum of 4 years.\n\n## If your studies are tertiary level, English language or other non-compulsory study you must have:\n\nIf you are paying for yourself\n\n-   NZD $20,000 for each year if you are studying for 1 year or more\n-   NZD $1,667 for each month if your study is shorter than 1 year.\n\n## Leaving New Zealand\n\nYou must be able to show that you plan to leave the country at the end of your stay.\n\n**Note**\n\nThe money for your ticket must be in addition to what you have to live on.",
+  "research_notes": "The Fee Paying Student Visa is the main student visa and its published cost is a FLOOR, not a fixed price: 'From NZD $850'. INZ does not publish the actual fee on this page and there is no health-surcharge equivalent to the UK's IHS, but there are two large mandatory NON-VISA costs that belong in any budget and are recorded here from this same page: (1) full medical and travel insurance 'from the start of your course until your visa expires', which must meet the Education (Pastoral Care of Tertiary and International Learners) Code of Practice 2021, and (2) tuition fees paid up front for 1 course or 1 year of study, whichever is shorter. The NZD $850 visa fee is therefore a minor component of real cost. Two points specific to a PhD, recorded because they corroborate the separate PhD domestic-fee finding and are cheap wins for doctoral applicants: 'Doctor of Philosophy (PhD) students do not need to have insurance', and the tuition-payment requirement does not bite because a PhD student is not paying international tuition at all. THE STAY PERIOD IS TIED TO WHAT WAS PAID FOR, NOT TO THE COURSE: 'Your visa is normally issued for the same period as the study you have paid for ... Your visa may be shorter than the length of your course. For example, if you have paid for 1 year of study for a multi-year course or if your passport expires before the end date of your study.' Maximum 4 years. PARTNER AND CHILDREN CANNOT BE INCLUDED: 'You cannot include your partner or dependent children in your visa application, but they can apply for visas based on their relationship to you' - they need separate applications. Work rights: up to 25 hours a week part-time while studying, full-time in holidays; full-time holiday work requires the course to have 'a value of 120 credits'. Timing advice recorded verbatim from the page: 'Apply online at least 3 months before you plan to travel. Student visa processing is busiest between October and March.' NOT VERIFIED AND NOT CLAIMED: the actual visa fee schedule above the 'From NZD $850' floor, the Pathway Student Visa and Exchange Visitor fees, the scholarship-specific fee waiver amount, and the specific contents of INZ's country-of-origin fund guidance.",
+  "claims": [
+    {
+      "claim_id": "nz-visa-fee-1",
+      "statement": "A New Zealand Fee Paying Student Visa costs from NZD $850, with 80% of applications decided within 8 weeks.",
+      "value": 850,
+      "unit": "NZD from (per application)",
+      "as_of": "2026-10-05",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nz-visa-fee-2",
+      "statement": "A Fee Paying Student Visa can be issued for a maximum of 4 years, and is normally issued for the same period as the study already paid for or until passport expiry, whichever is sooner - so it may be shorter than the course.",
+      "value": 4,
+      "unit": "years (maximum stay)",
+      "as_of": "2026-10-05",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nz-visa-fee-3",
+      "statement": "Fee Paying Student Visa holders must hold medical and travel insurance from the start of the course until the visa expires, compliant with the Education (Pastoral Care of Tertiary and International Learners) Code of Practice 2021, unless they are Doctor of Philosophy (PhD) students, who do not need insurance.",
+      "value": null,
+      "unit": "mandatory insurance (PhD exempt)",
+      "as_of": "2026-10-05",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nz-visa-fee-4",
+      "statement": "A Fee Paying Student Visa holder may work part-time up to 25 hours a week while studying and full-time during holidays, but partners and dependent children cannot be included in the student visa application and must apply separately.",
+      "value": 25,
+      "unit": "hours per week (part-time work limit)",
+      "as_of": "2026-10-05",
+      "study_level": "bachelor"
+    }
+  ]
+}

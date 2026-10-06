@@ -1,0 +1,419 @@
+{
+  "contract_version": "1.0.0",
+  "country": {
+    "currency": null,
+    "iso2": "AT",
+    "name_en": "Austria"
+  },
+  "gaps": [
+    {
+      "attempted_sources": [
+        "https://oead.at/en/to-austria/entry-and-residence/residence-permit-student-no-mobility-programme"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "at.at-financial-proof-horizon-1",
+      "reason": "Archived figure recorded, but it is not a currency figure and its topic's primary field holds money. It is stored as a related figure rather than as a cost. Statement: OeAD states the funds must be proven for twelve months in advance and held in a savings book or bank account in the applicant's own name accessible from Austria."
+    },
+    {
+      "attempted_sources": [
+        "https://www.migration.gv.at/de/formen-der-zuwanderung/dauerhafte-zuwanderung/studienabsolventinnen/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "at.at-poststudy-permit-name-1",
+      "reason": "Archived evidence recorded a finding with no numeric figure: Austria's post-study job-search phase is a twelve-month extension of the 'Aufenthaltsbewilligung Student' for job-seeking or business formation, not a separate permit."
+    },
+    {
+      "attempted_sources": [
+        "https://studieren.univie.ac.at/en/studying-and-learning/financial-matters/amount-of-the-tuition-fee/students-union-fee"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "at.at-student-permit-not-exempt-1",
+      "reason": "Archived figure recorded, but it is not a currency figure and its topic's primary field holds money. It is stored as a related figure rather than as a cost. Statement: The University of Vienna's equal-status exemption requires holding a residence permit other than 'Student' (Aufenthaltsbewilligung Student), so holding a plain student residence permit does not exempt a non-EU/EEA national from tuition."
+    },
+    {
+      "attempted_sources": [
+        "https://oead.at/en/to-austria/entry-and-residence/residence-permit-student-no-mobility-programme"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "at.at-student-work-rights-1",
+      "reason": "Archived figure recorded, but it is not a currency figure and its topic's primary field holds money. It is stored as a related figure rather than as a cost. Statement: OeAD states holders of a Residence Permit - Student can obtain a work permit for up to 20 hours per week, including minor employment, granted without a labour market check."
+    },
+    {
+      "attempted_sources": [
+        "https://studieren.univie.ac.at/en/studying-and-learning/financial-matters/amount-of-the-tuition-fee/students-union-fee"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "at.at-third-country-not-exempt-1",
+      "reason": "Archived figure recorded, but it is not a currency figure and its topic's primary field holds money. It is stored as a related figure rather than as a cost. Statement: The University of Vienna states that non-EU/EEA students pay the tuition fee from the first semester onwards and that degree programme duration does not affect the amount of the fee, confirming third-country nationals are not exempt."
+    },
+    {
+      "attempted_sources": [
+        "at-statistik-monatseinkommen-brutto-001"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "at.career.average_starting_salary.gross_monthly.month",
+      "reason": "3 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 4317 EUR per month (at-statistik-monatseinkommen-brutto-001); 3713 EUR per month (at-statistik-monatseinkommen-brutto-001); 4517 EUR per month (at-statistik-monatseinkommen-brutto-001). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "at-statistik-monatseinkommen-net-001"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "at.career.net_monthly_income.month",
+      "reason": "5 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 3084 EUR per month (at-statistik-monatseinkommen-net-001); 3222 EUR per month (at-statistik-monatseinkommen-net-001); 2850 EUR per month (at-statistik-monatseinkommen-net-001); 2711 EUR per month (at-statistik-monatseinkommen-net-001); 1773 EUR per month (at-statistik-monatseinkommen-net-001). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "univie-amount-tuition-fee-non-eueea"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "at.education_costs.tuition_fees.public.bachelor.semester",
+      "reason": "5 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 726.72 EUR per semester (univie-amount-tuition-fee-non-eueea); 752.92 EUR per semester (univie-amount-tuition-fee-non-eueea); 26.2 EUR per semester (univie-amount-tuition-fee-non-eueea); 363.36 EUR per semester (univie-amount-tuition-fee-non-eueea); 389.56 EUR per semester (univie-amount-tuition-fee-non-eueea). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "oead-student-permit-financial-means-2026"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "at.one_time_costs.blocked_account.month",
+      "reason": "5 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 722.58 EUR per month (oead-student-permit-financial-means-2026); 1308.39 EUR per month (oead-student-permit-financial-means-2026); 2064.12 EUR per month (oead-student-permit-financial-means-2026); 386.43 EUR per month (oead-student-permit-financial-means-2026); 78.84 EUR per month (oead-student-permit-financial-means-2026). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "https://studieren.univie.ac.at/en/studying-and-learning/financial-matters/amount-of-the-tuition-fee/students-union-fee"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "at.tuition_band_structure",
+      "reason": "Evidence was retrieved and archived, but this topic has no explicit mapping into the corpus schema, so the figure was not placed. Adding the mapping is a reviewed change, not something ingestion should guess."
+    }
+  ],
+  "research": {
+    "evidence_artifact_count": 7,
+    "researched_at": "2026-10-05"
+  },
+  "sections": {
+    "career": {
+      "average_starting_salary": {
+        "gross_monthly": {
+          "month": {
+            "as_of": "2024",
+            "colliding_values": [
+              {
+                "as_of": "2024",
+                "currency": "EUR",
+                "per": "month",
+                "source_ids": [
+                  "at-statistik-monatseinkommen-brutto-001"
+                ],
+                "statement": "Vollzeit / Brutto: monthly GROSS income median of full-time employees in Austria, men and women combined, 2024 = EUR 4 317.",
+                "value": 4317
+              },
+              {
+                "as_of": "2024",
+                "currency": "EUR",
+                "per": "month",
+                "source_ids": [
+                  "at-statistik-monatseinkommen-brutto-001"
+                ],
+                "statement": "Unselbstaendig Erwerbstaetige zusammen / Brutto (headline figure on the page): monthly GROSS income median of all employees in Austria, full-time and part-time combined, 2024 = EUR 3 713.",
+                "value": 3713
+              },
+              {
+                "as_of": "2024",
+                "currency": "EUR",
+                "per": "month",
+                "source_ids": [
+                  "at-statistik-monatseinkommen-brutto-001"
+                ],
+                "statement": "Vollzeit / Brutto / Maenner: monthly gross median of full-time male employees in Austria, 2024 = EUR 4 517.",
+                "value": 4517
+              }
+            ],
+            "currency": "EUR",
+            "note": "Vollzeit / Brutto: monthly GROSS income median of full-time employees in Austria, men and women combined, 2024 = EUR 4 317.",
+            "per": "month",
+            "source_ids": [
+              "at-statistik-monatseinkommen-brutto-001"
+            ],
+            "value": 4317,
+            "value_status": "OFFICIAL_STATISTICS"
+          }
+        }
+      },
+      "net_monthly_income": {
+        "as_of": "2023",
+        "currency": "EUR",
+        "month": {
+          "as_of": "2023",
+          "currency": "EUR",
+          "note": "Refused: this figure was computed from another published figure rather than published in its own right, so it cannot carry the source's authority. The underlying published figure belongs in the corpus; a derived monthly reading of an annual figure needs a registered formula before it can be shown, because 'a year divided by twelve' is not the same number as a monthly median and readers will treat it as one.",
+          "per": "month",
+          "refusal": {
+            "operation": "period conversion",
+            "reason": "Refused: this figure was computed from another published figure rather than published in its own right, so it cannot carry the source's authority. The underlying published figure belongs in the corpus; a derived monthly reading of an annual figure needs a registered formula before it can be shown, because 'a year divided by twelve' is not the same number as a monthly median and readers will treat it as one.",
+            "required_input": "A monthly figure published by the source, or a registered formula that annual-to-monthly conversion is allowed to use."
+          },
+          "source_ids": [
+            "at-statistik-einkommensbericht-net-jahre-001"
+          ],
+          "value": null,
+          "value_status": "REFUSED"
+        },
+        "note": "This figure describes gross (before-tax) income, not take-home pay. It was filed on the net topic and has been demoted rather than published, because break-even must compare money out against money that actually reaches the worker. Using gross here would roughly halve the reported months in most European countries.",
+        "per": "year",
+        "source_ids": [
+          "at-statistik-einkommensbericht-net-jahre-001"
+        ],
+        "value": null,
+        "value_status": "UNKNOWN"
+      }
+    },
+    "education_costs": {
+      "tuition_fees": {
+        "public": {
+          "bachelor": {
+            "related_figures": {
+              "at-student-permit-not-exempt-1": {
+                "as_of": "2026",
+                "descriptive": true,
+                "note": "The University of Vienna's equal-status exemption requires holding a residence permit other than 'Student' (Aufenthaltsbewilligung Student), so holding a plain student residence permit does not exempt a non-EU/EEA national from tuition.",
+                "source_ids": [
+                  "univie-amount-tuition-fee-non-eueea"
+                ],
+                "study_level": "bachelor",
+                "value": 0,
+                "value_status": "UNIVERSITY_OFFICIAL"
+              },
+              "at-third-country-not-exempt-1": {
+                "as_of": "2026",
+                "descriptive": true,
+                "note": "The University of Vienna states that non-EU/EEA students pay the tuition fee from the first semester onwards and that degree programme duration does not affect the amount of the fee, confirming third-country nationals are not exempt.",
+                "source_ids": [
+                  "univie-amount-tuition-fee-non-eueea"
+                ],
+                "study_level": "bachelor",
+                "value": 1,
+                "value_status": "UNIVERSITY_OFFICIAL"
+              }
+            },
+            "semester": {
+              "as_of": "2026",
+              "colliding_values": [
+                {
+                  "as_of": "2026",
+                  "currency": "EUR",
+                  "per": "semester",
+                  "source_ids": [
+                    "univie-amount-tuition-fee-non-eueea"
+                  ],
+                  "statement": "The University of Vienna charges non-EU/EEA students a tuition fee of EUR 726.72 per semester.",
+                  "value": 726.72
+                },
+                {
+                  "as_of": "2026",
+                  "currency": "EUR",
+                  "per": "semester",
+                  "source_ids": [
+                    "univie-amount-tuition-fee-non-eueea"
+                  ],
+                  "statement": "The University of Vienna's total charge for non-EU/EEA students is EUR 752.92 per semester, comprising a EUR 726.72 tuition fee and a EUR 26.20 Students' Union fee.",
+                  "value": 752.92
+                },
+                {
+                  "as_of": "2026",
+                  "currency": "EUR",
+                  "per": "semester",
+                  "source_ids": [
+                    "univie-amount-tuition-fee-non-eueea"
+                  ],
+                  "statement": "The University of Vienna charges all students a Students' Union fee of EUR 26.20 per semester, determined by the Austrian Students' Union.",
+                  "value": 26.2
+                },
+                {
+                  "as_of": "2026",
+                  "currency": "EUR",
+                  "per": "semester",
+                  "source_ids": [
+                    "univie-amount-tuition-fee-non-eueea"
+                  ],
+                  "statement": "The University of Vienna charges EU/EEA/Swiss students a tuition fee of EUR 363.36 per semester from the 9th semester of a Bachelor programme onwards, being the stipulated 6 semesters plus 2 tolerance semesters.",
+                  "value": 363.36
+                },
+                {
+                  "as_of": "2026",
+                  "currency": "EUR",
+                  "per": "semester",
+                  "source_ids": [
+                    "univie-amount-tuition-fee-non-eueea"
+                  ],
+                  "statement": "The University of Vienna's total charge for EU/EEA/Swiss students is EUR 389.56 per semester.",
+                  "value": 389.56
+                }
+              ],
+              "currency": "EUR",
+              "note": "The University of Vienna charges non-EU/EEA students a tuition fee of EUR 726.72 per semester.",
+              "per": "semester",
+              "source_ids": [
+                "univie-amount-tuition-fee-non-eueea"
+              ],
+              "value": 726.72,
+              "value_status": "UNIVERSITY_OFFICIAL"
+            }
+          }
+        }
+      }
+    },
+    "one_time_costs": {
+      "blocked_account": {
+        "as_of": "2026",
+        "currency": "EUR",
+        "note": "OeAD states a non-refundable application fee of EUR 218 applies for a Residence Permit - Student.",
+        "related_figures": {
+          "at-student-work-rights-1": {
+            "as_of": "2026",
+            "descriptive": true,
+            "note": "OeAD states holders of a Residence Permit - Student can obtain a work permit for up to 20 hours per week, including minor employment, granted without a labour market check.",
+            "per": "week",
+            "source_ids": [
+              "oead-student-permit-financial-means-2026"
+            ],
+            "study_level": "bachelor",
+            "value": 20,
+            "value_status": "OFFICIAL_GOVERNMENT"
+          }
+        },
+        "source_ids": [
+          "oead-student-permit-financial-means-2026"
+        ],
+        "study_level": "bachelor",
+        "value": 218,
+        "value_status": "OFFICIAL_GOVERNMENT"
+      }
+    },
+    "residency": {
+      "job_seeker_residence_permit": {
+        "duration": {
+          "bachelor": {
+            "month": {
+              "as_of": "2026",
+              "note": "A third-country national who completed study in Austria on a Student residence permit may extend that permit by twelve months for job-seeking or business formation.",
+              "per": "month",
+              "source_ids": [
+                "migration-gv-at-studienabsolventinnen"
+              ],
+              "study_level": "bachelor",
+              "value": 12,
+              "value_status": "OFFICIAL_GOVERNMENT"
+            },
+            "related_figures": {
+              "at-poststudy-bachelor-eligible-1": {
+                "as_of": "2026",
+                "note": "The Austrian source explicitly lists a completed Bachelorstudium among the degrees qualifying for the graduate Red-White-Red Card route, so the post-study option is open at Bachelor's level.",
+                "source_ids": [
+                  "migration-gv-at-studienabsolventinnen"
+                ],
+                "study_level": "bachelor",
+                "value": 1,
+                "value_status": "OFFICIAL_GOVERNMENT"
+              },
+              "at-poststudy-rwr-plus-1": {
+                "as_of": "2026",
+                "note": "A Red-White-Red Card plus with unrestricted labour market access may be applied for after at least 21 months of qualifying employment within the last 24 months.",
+                "source_ids": [
+                  "migration-gv-at-studienabsolventinnen"
+                ],
+                "study_level": "bachelor",
+                "value": 21,
+                "value_status": "OFFICIAL_GOVERNMENT"
+              },
+              "at-poststudy-upgrade-1": {
+                "as_of": "2026",
+                "note": "A graduate who secures a job matching their qualification within the twelve months may apply for a Red-White-Red Card without a labour market check if paid the customary minimum gross for domestic entry-level graduates, and no points system applies to graduates.",
+                "source_ids": [
+                  "migration-gv-at-studienabsolventinnen"
+                ],
+                "study_level": "bachelor",
+                "value": 0,
+                "value_status": "OFFICIAL_GOVERNMENT"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "sources": [
+    {
+      "archived": true,
+      "as_of": "2023",
+      "confidence": null,
+      "id": "at-statistik-einkommensbericht-net-jahre-001",
+      "notes": null,
+      "publisher": "Statistik Austria (Bundesanstalt fuer Statistik Oesterreich) - Allgemeiner Einkommensbericht prepared for the Rechnungshof (Court of Audit) under the Bezuegebegrenzungsgesetz",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_STATISTICS",
+      "title": "net_monthly_income evidence",
+      "url": "https://www.statistik.at/statistiken/bevoelkerung-und-soziales/einkommen-und-soziale-lage/allgemeiner-einkommensbericht"
+    },
+    {
+      "archived": true,
+      "as_of": "2024",
+      "confidence": null,
+      "id": "at-statistik-monatseinkommen-brutto-001",
+      "notes": null,
+      "publisher": "Statistik Austria (Bundesanstalt fuer Statistik Oesterreich)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_STATISTICS",
+      "title": "gross_monthly_income evidence",
+      "url": "https://www.statistik.at/statistiken/bevoelkerung-und-soziales/einkommen-und-soziale-lage/monatseinkommen"
+    },
+    {
+      "archived": true,
+      "as_of": "2024",
+      "confidence": null,
+      "id": "at-statistik-monatseinkommen-net-001",
+      "notes": null,
+      "publisher": "Statistik Austria (Bundesanstalt fuer Statistik Oesterreich)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_STATISTICS",
+      "title": "net_monthly_income evidence",
+      "url": "https://www.statistik.at/statistiken/bevoelkerung-und-soziales/einkommen-und-soziale-lage/monatseinkommen"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "migration-gv-at-studienabsolventinnen",
+      "notes": "Austria's post-study job-search permission: TWELVE MONTHS, and crucially it is a RENEWAL of the existing student residence permit rather than a separate permit. The source states 'koennen Sie Ihre Aufenthaltsbewilligung \"Student\" um zwoelf Monate zur Arbeitsuche oder Unternehmensgruendung in Oesterreich verlaengern' - you extend your 'Aufenthaltsbewilligung Student' by twelve months for job-seeking or business formation.\n\nBACHELOR EXPLICITLY QUALIFIES. The same page lists the qualifying degrees and a Bachelor's is named: 'Nachzuweisen ist, dass Sie ein Diplomstudium zumindest ab dem zweiten Studienabschnitt, ein Bachelorstudium, ein Masterstudium oder ein Doktoratsstudium erfolgreich abgeschlossen haben.' So this permit is confirmed available at Bachelor level, unlike Sweden's second-cycle-only job-search permit.\n\nCORROBORATION ON A SECOND OFFICIAL SOURCE, the OeAD student residence permit checklist fetched in this session: 'Students who have completed their studies holding a \"Residence Permit - Student\" may apply for a renewal of the permit for another 12 months to look for a job or set up a business.' Twelve months, both sources, no conflict.\n\nA MATERIAL CONDITION THAT IS EASY TO MISS: on job search the general requirements still apply EXCEPT customary accommodation. So the applicant no longer has to prove accommodation, but health insurance and the other general conditions remain. A job-search applicant therefore carries health insurance and the cost of living without the usual accommodation proof.\n\nUPGRADE ROUTE. If a job at a level matching the qualification is found within the twelve months, the graduate may apply for a 'Rot-Weiss-Rot - Karte' (Red-White-Red Card) WITHOUT a labour market check, provided the pay meets the customary minimum gross for domestic entry-level graduates in that role. The page is explicit that no points system applies to graduates. A Red-White-Red Card plus with unrestricted labour market access follows after at least 21 months of qualifying employment within the last 24 months.\n\nNote the parallel structure across the five countries: Austria names its post-study route after a permit type rather than giving it a standalone name, so 'Red-White-Red Card for graduates' is the destination permit while the job-search phase is a student-permit extension.",
+      "publisher": "migration.gv.at, the Austrian Federal Ministry for Labour, Social Affairs, Health, Care and Consumer Protection, and the Federal Ministry of the Interior",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "post_study_work evidence",
+      "url": "https://www.migration.gv.at/de/formen-der-zuwanderung/dauerhafte-zuwanderung/studienabsolventinnen/"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "oead-student-permit-financial-means-2026",
+      "notes": "Austria's financial-proof requirement for a student residence permit, as of 2026, AGE-BANDED. This is the single most decision-relevant Austrian finding in this pass: the required monthly amount depends on the applicant's AGE, not on the cost of a banded tuition. Two thresholds appear:\n\n  - Students UNDER 24 years of age: EUR 722.58 per month\n  - Students AS OF the age of 24: EUR 1,308.39 per month\n\nThat EUR 1,308.39 is materially higher than the 24-and-over figure a corpus might expect from a simple 'student' line item. It is because the Austrian student figure is derived from the general 'Ausgleichszulagenrichtsatz' (social assistance reference rate) for a single person, and the under-24 rate is a reduced student rate.\n\nCORROBORATION FROM AN INDEPENDENT MINISTERIAL SOURCE, fetched separately: the Austrian Federal Ministry of the Interior page 'Voraussetzungen fuer die Erteilung von Aufenthaltstitel an Drittstaatsangehoerige' (https://www.bmi.gv.at/312/04/start.html, page footer 'Letzte Aktualisierung: 10. Februar 2026') gives the 2026 rates as 'Fuer Alleinstehende: EUR 1.308,39 / Fuer Ehepaare: EUR 2.064,12 / Fuer jedes Kind zusaetzlich: EUR 201,88' and explains that the amounts must be available net per month after deducting running costs such as rent or loan instalments. BMI does not restate the under-24 student rate on that page, so the OeAD checklist is the source for the age split.\n\nRENT IS DEDUCTIBLE, and the deduction is capped. OeAD: 'If the costs for accommodation exceed EUR 386,43/month [as of 2026], you have to prove additional funds.' So the EUR 386.43 is the threshold of accommodation cost absorbable within the base rate; rent above that must be added to the required amount. Any Austrian first-year budget that ignores this will understate the required proof by the excess of actual rent over EUR 386.43.\n\nFUNDS MUST COVER TWELVE MONTHS IN ADVANCE and sit in a savings book or account in the applicant's own name, accessible from Austria. Acceptable alternatives listed: a declaration of guarantee from an EU resident, traveller's cheques, or a scholarship confirmation. So a scholarship certificate IS accepted as the proof instrument, which is directly relevant to a scholarship corpus.\n\nHEALTH INSURANCE, a first-year cost line: student self-insurance with the Austrian health insurance institution is EUR 78.84 per month as of 2026. Recorded here because it is verbatim on the same official checklist page and is compulsory.\n\nAPPLICATION COST: EUR 218, non-refundable. Recorded because the brief asks for auditable cost evidence and this one is on the official page.\n\nWORK RIGHTS, on the same page: a student residence permit holder can get a work permit for up to 20 hours per week, including minor employment, granted without a labour market check. This is the Austrian figure and is distinct from Sweden's new 15-hour cap and Finland's 30-hour allowance; the three must not be merged.\n\nPERMIT VALIDITY: 12 months for the standard (no mobility programme) student permit. Note that OeAD's separate mobility-programme page sets a different rule for two-year permits; I did not fetch that page and make no claim about it here beyond the validity of the standard permit.",
+      "publisher": "OeAD (Austria's Agency for Education and Internationalisation), on behalf of the Federal Ministry of Women, Science and Research",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "financial_proof evidence",
+      "url": "https://oead.at/en/to-austria/entry-and-residence/residence-permit-student-no-mobility-programme"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "univie-amount-tuition-fee-non-eueea",
+      "notes": "THE BRIEF'S QUESTION ABOUT AUSTRIAN TUITION IS ANSWERED, AND THE ANSWER CONTRADICTS THE HISTORICAL BANDING. The current structure is NOT banded by university type (public full-time vs private, and not the old university-of-applied-sciences vs university split). It is a FLAT PER-SEMESTER amount per university, differing by citizenship status, and the amount is prescribed by the individual university rather than nationally banded.\n\nFor the University of Vienna, which is a public university: non-EU/EEA students pay 'Tuition fee: 726.72 Euro' plus 'Students' Union fee: 26.20 Euro', 'Total: 752.92 Euro per semester'. PER SEMESTER. Two semesters = EUR 1,505.84 per academic year for the tuition component alone, though that doubling is my arithmetic and the page says per semester.\n\nTHIRD-COUNTRY NATIONALS ARE NOT EXEMPT. The brief asked me to confirm this, and the page confirms it in the plainest possible terms. The university states non-EU/EEA students 'You pay the tuition fee from the first semester onwards. The degree programme duration does not affect the amount of the fee.' A third-country national pays from semester one, at the full rate, with no progression. This is materially different from the EU/EEA rule, where the page sets out 'Stipulated degree programme duration 6 semesters + 2 tolerance semesters. You pay the tuition fee from the 9th semester onwards' for a Bachelor programme.\n\nEXEMPTIONS, all four, from the same page, and they are narrower than a casual reading of 'exempt' would suggest. Only students from a designated list of developing countries, or with granted equal status, or the pre-2021 UK cohort, or Ukrainian citizens, avoid the fee. A plain student residence permit is NOT enough: the equal-status route explicitly requires 'a residence permit other than \"Student\" (Aufenthaltsbewilligung Student)'. That last point matters for a scholarship corpus because the most common international student holds exactly the permit that does not qualify.\n\nThe Students' Union fee of EUR 26.20 is a separate compulsory charge and the page notes it 'is directly determined by the Austrian Students' Union'. Total non-EU/EEA cost of attendance per semester is therefore EUR 752.92, and the tuition element is EUR 726.72.\n\nTwo earlier URL guesses of mine returned 404 (www.univie.ac.at/en/studies/fees-and-scholarships/tuition-fees/ and studieren.univie.ac.at/en/tuition-fee/amount-tuition-fee/); the URL above is the live one. The page is the University's own fee page, which is the priority source for tuition.",
+      "publisher": "University of Vienna",
+      "retrieved_at": "2026-10-05",
+      "source_type": "UNIVERSITY_OFFICIAL",
+      "title": "bachelor_tuition evidence",
+      "url": "https://studieren.univie.ac.at/en/studying-and-learning/financial-matters/amount-of-the-tuition-fee/students-union-fee"
+    }
+  ]
+}

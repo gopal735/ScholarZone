@@ -1,0 +1,50 @@
+﻿{
+  "country": "AU",
+  "topic": "net_monthly_income",
+  "source_id": "au-ato-rates-plus-abs-gross-net-001",
+  "source_url": "https://www.ato.gov.au/tax-rates-and-codes/tax-rates-australian-residents",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Australian Taxation Office (ATO) - resident individual income tax rates; gross input sourced from Australian Bureau of Statistics (ABS) Employee earnings August 2025",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2025-26",
+  "derivation": "DERIVED",
+  "estimate": false,
+  "raw_extract": "ATO, 'Tax rates - Australian resident'. Page states: 'Use these tax rates if you were both: an Australian resident for tax purposes for the full year; entitled to the full tax-free threshold.' 'The above rates do not include the Medicare levy of 2%.'\n\nVERBATIM 'Resident tax rates 2025-26' table:\nTaxable income | Tax on this income\n0 - $18,200 | Nil\n$18,201 - $45,000 | 16c for each $1 over $18,200\n$45,001 - $135,000 | $4,288 plus 30c for each $1 over $45,000\n$135,001 - $190,000 | $31,288 plus 37c for each $1 over $135,000\n$190,001 and over | $51,638 plus 45c for each $1 over $190,000\n'The above rates do not include the Medicare levy of 2%.'\n\nGROSS INPUT, read from the ABS release 'Employee earnings, August 2025' (https://www.abs.gov.au/statistics/labour/earnings-and-working-conditions/employee-earnings/latest-release), section 'Educational qualifications': 'In August 2025, median weekly earners were highest amongst employees with a postgraduate degree ($2,000 per week), and were lowest for those without non-school qualifications ($1,000).' Chart table 'Median weekly earnings in main job, by highest educational qualification' gives Bachelor Degree Aug-25 = $1,700 per week.\n\nFULL ARITHMETIC SHOWN (nothing else applied):\ngross weekly = 1,700; gross annual = 1,700 x 52 = 88,400\nincome tax = $4,288 + 0.30 x (88,400 - 45,000) = 4,288 + 13,020 = 17,308\nMedicare levy = 0.02 x 88,400 = 1,768.00\ntotal withheld = 19,076.00\nnet annual = 88,400 - 19,076 = 69,324.00\nnet per month = 69,324 / 12 = 5,777.00\nnet per week = 69,324 / 52 = 1,333.15\neffective total deduction rate = 19,076 / 88,400 = 21.58%",
+  "claims": [
+    {
+      "claim_id": "au-net-monthly-001",
+      "value": 5777,
+      "unit": "AUD per month",
+      "as_of": "2025-26",
+      "statement": "DERIVED, NOT PUBLISHED AS A SINGLE FIGURE BY ANY SOURCE. Applying the ATO's published 2025-26 resident rates and the 2% Medicare levy to the ABS official median gross earnings of employees holding a Bachelor Degree (AUD 1 700 per week = AUD 88 400 per year) gives net take-home pay of AUD 69 324 per year = AUD 5 777.00 per month."
+    },
+    {
+      "claim_id": "au-net-weekly-002",
+      "value": 1333.15,
+      "unit": "AUD per week",
+      "as_of": "2025-26",
+      "statement": "DERIVED: same calculation expressed weekly = AUD 1 333.15 per week, against the AUD 1 700 gross weekly median, i.e. a net/gross ratio of 78.4 per cent at that income level."
+    },
+    {
+      "claim_id": "au-net-monthly-postgrad-003",
+      "value": 6661,
+      "unit": "AUD per month",
+      "as_of": "2025-26",
+      "statement": "DERIVED, for the postgraduate-degree gross figure only: gross AUD 2,000 x 52 = AUD 104,000 per year; income tax = 4,288 + 0.30 x (104,000 - 45,000) = 4,288 + 17,700 = 21,988; Medicare levy = 0.02 x 104,000 = 2,080; net = 104,000 - 21,988 - 2,080 = 79,932 per year = AUD 6,661.00 per month."
+    }
+  ],
+  "assumptions": [
+    "ATO'S OWN, quoted from the page: the rates apply only if you were 'an Australian resident for tax purposes for the full year' and 'entitled to the full tax-free threshold'. Both conditions are assumed to hold here.",
+    "ATO'S OWN, quoted from the page: the bracket table 'does not include the Medicare levy of 2%'. The 2% has therefore been added separately, as required.",
+    "TAX YEAR MISMATCH - DECLARED, NOT HIDDEN: the ATO brackets used are 2025-26 (1 July 2025 to 30 June 2026). The ABS gross median is reference period August 2025, which falls inside 2025-26, so the two are consistent by date. Good.",
+    "NOT THE SOURCE'S / MINE - and deliberately EXCLUDED from the calculation: (a) Low and Middle Income Tax Offset (LITO); the ATO rate table does not apply it and I did not model it, so this net is slightly understated for low-to-middle incomes where LITO still bites. (b) Medicare levy surcharge - depends on private hospital cover, unknown. (c) HELP/HECS income-contingent loan repayments - not modelled; a genuine recent graduate with a Commonwealth-HELP debt pays them from take-home pay and this figure ignores that entirely. (d) Superannuation (SG) contributions - treated as employer-funded and NOT deducted from take-home pay, which is the standard Australian model; I did NOT verify this from a primary source in this research pass, so treat it as an assumption to confirm. (e) Low income tax offset tapering above $66,667 for 2025-26. (f) Any work-related, travel or self-education deductions.",
+    "NOT THE SOURCE'S / MINE: no marital status, number of dependants, HELP debt balance, private health cover status or superannuation salary-sacrifice election was assumed. Each of those is real and would move the number.",
+    "NOT THE SOURCE'S / MINE: no averaging of figures from two different sources was performed. There is exactly one gross input (ABS) and one tax model (ATO); the arithmetic above is a single deterministic chain.",
+    "PERIOD CONVENTION: 'per month' is annual / 12 (an average month). Australian pay is usually discussed fortnightly or annually; the ATO's PAYG withholding tables themselves work in weekly/fortnightly pay periods, which would give a slightly different in-year profile due to the tax-free threshold being applied per pay period."
+  ],
+  "field_mapping": {
+    "net_monthly_income": "career.net_monthly_income (topic: net_monthly_income)"
+  },
+  "notes": "AUSTRALIA HAS NO OFFICIAL PUBLISHED TAKE-HOME FIGURE. This is category-3 evidence: an official GROSS figure from the national statistical agency (ABS) plus a complete, public, deterministic tax model published by the tax authority (ATO brackets plus the Medicare levy). It is labelled DERIVED, not official, and it is NOT an estimate in the sense of a guessed percentage - every parameter is quoted from a primary source and the arithmetic is shown in full so it can be re-run or rejected. Recommended figure for Australia: AUD 5 777 per month net (on the AUD 7 367 gross median for Bachelor Degree holders). Corroborating ratio at this level: net is 78.4 per cent of gross, total deductions 21.58 per cent. IMPORTANT WARNING: because the ABS qualification measure is 'highest qualification ever held', this is a whole-career degree-holder figure and a new graduate's actual take-home will be materially LOWER. Do not present AUD 5 777 as a graduate starting salary. The other thing a reader would be misled by: LITO, the Medicare levy surcharge and HELP/HECS repayments are all absent, and HELP debt in particular is the norm rather than the exception for an Australian recent graduate, so a real graduate's bank balance will be lower than this figure. Currency AUD; tax year 2025-26; gross reference period August 2025.",
+  "evidence_limitations": "There is no official Australian net/take-home median for graduates or for any other population. The ABS Survey of Income and Housing, which historically produced income-after-tax measures, was discontinued after 2019-20; the ABS methodology page for 2019-20 does define 'disposable income' as 'the income available to a person or household after income tax, Medicare levy and Medicare levy surcharge (if applicable) have been deducted', but no current published value was located. The ATO Taxation Statistics publications report 'net tax' and 'taxable income' by assessment range, but taxable income is after deductions rather than gross salary, so it cannot be converted into a take-home pay figure. This artifact therefore inherits every limitation of the ABS gross input, plus its own exclusions listed in assumptions."
+}
