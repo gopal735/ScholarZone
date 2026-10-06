@@ -38,8 +38,8 @@
     "title": "Stefan Banach NAWA Programme",
     "topic": "deadline",
     "shard_id": "DL-001",
-    "mutation_type": "DEADLINE_FILL",
-    "proposed_deadline_date": "2026-05-08",
+    "mutation_type": "STALE_VALUE_PRESERVED",
+    "proposed_deadline_date": null,
     "proposed_deadline_precision": "exact",
     "proposed_deadline_display": "The call is open until May 8, 2026, 3:00 p.m. CEST or until the application limit for a given group of countries is reached.",
     "proposed_deadline_semantics": "EXACT",
@@ -48,7 +48,7 @@
     "old_url": null,
     "new_url": null,
     "correction_reason": null,
-    "notes": "Date verified live on NAWA's own English programme page, which is the provider, not on study.gov.pl. Both official NAWA surfaces agree: the Polish landing page reads 'Termin składania wniosków upływa 8 maja 2026 r. o godz. 15:00 czasu warszawskiego' and gov.pl's Poland-in-Albania notice gives the same May 8, 2026 3:00 p.m. CET. No conflict. This 2026 call has already closed, so the record's open/upcoming status needs human review."
+    "notes": "Date verified live on NAWA's own English programme page, which is the provider, not on study.gov.pl. Both official NAWA surfaces agree: the Polish landing page reads 'Termin składania wniosków upływa 8 maja 2026 r. o godz. 15:00 czasu warszawskiego' and gov.pl's Poland-in-Albania notice gives the same May 8, 2026 3:00 p.m. CET. No conflict. This 2026 call has already closed, so the record's open/upcoming status needs human review. [RECLASSIFIED 2026-10-06: Expired as of audit date 2026-10-06; reclassified from DEADLINE_FILL to STALE_VALUE_PRESERVED per AGENT_BRIEF section 6 expired_mismatch rule. Stale date not written, not rolled forward.]"
   },
   {
     "scholarship_id": 413,
@@ -72,8 +72,8 @@
     "title": "General Anders Scholarship Programme for Polish Diaspora (gen. Anders Programme)",
     "topic": "deadline",
     "shard_id": "DL-001",
-    "mutation_type": "DEADLINE_FILL",
-    "proposed_deadline_date": "2026-07-09",
+    "mutation_type": "STALE_VALUE_PRESERVED",
+    "proposed_deadline_date": null,
     "proposed_deadline_precision": "exact",
     "proposed_deadline_display": "studia I stopnia i jednolite magisterskie – termin składania wniosków upływa 9 lipca 2026 r. | studia II stopnia – termin składania wniosków 21 maja 2026 r.",
     "proposed_deadline_semantics": "EXACT",
@@ -82,7 +82,7 @@
     "old_url": "https://study.gov.pl/general-w%C5%82adys%C5%82aw-anders",
     "new_url": "https://nawa.gov.pl/studenci/studenci-zagraniczni/program-im-gen-andersa/nabory-2026",
     "correction_reason": "official_source_url returns HTTP 404",
-    "notes": "study.gov.pl/general-władysław-anders returns HTTP 404. NAWA's own 2026 call page states two different deadlines because the programme runs two separate rounds per year. Per the brief, different rounds of the same institution are not a conflict. I have written the first-cycle/unified-master's round (9 July 2026) because it is the current round listed as open on the 2026 calls page; the second-cycle round closed 21 May 2026. Both 2026 deadlines are now in the past as of 2026-10-05, so the record's open/upcoming flag needs human review. The English 'Calls for proposals 2026' page links announcement no. 13/2026 dated 31 March 2026 for first-cycle studies, consistent with this."
+    "notes": "study.gov.pl/general-władysław-anders returns HTTP 404. NAWA's own 2026 call page states two different deadlines because the programme runs two separate rounds per year. Per the brief, different rounds of the same institution are not a conflict. I have written the first-cycle/unified-master's round (9 July 2026) because it is the current round listed as open on the 2026 calls page; the second-cycle round closed 21 May 2026. Both 2026 deadlines are now in the past as of 2026-10-05, so the record's open/upcoming flag needs human review. The English 'Calls for proposals 2026' page links announcement no. 13/2026 dated 31 March 2026 for first-cycle studies, consistent with this. [RECLASSIFIED 2026-10-06: Expired as of audit date 2026-10-06; reclassified from DEADLINE_FILL to STALE_VALUE_PRESERVED per AGENT_BRIEF section 6 expired_mismatch rule. Stale date not written, not rolled forward.]"
   },
   {
     "scholarship_id": 420,
@@ -3421,8 +3421,8 @@
     "title": "Becas Colombia Biodiversa - Fondo de Becas Colombia Biodiversa, Convocatoria II-2026",
     "topic": "deadline",
     "shard_id": "DL-059",
-    "mutation_type": "DEADLINE_FILL",
-    "proposed_deadline_date": "2026-10-05",
+    "mutation_type": "STALE_VALUE_PRESERVED",
+    "proposed_deadline_date": null,
     "proposed_deadline_precision": "exact",
     "proposed_deadline_display": "El plazo máximo para realizar la preinscripción  vence a las 5:00 p.m. del 5 de octubre de 2026.",
     "proposed_deadline_semantics": "EXACT",
@@ -3431,7 +3431,7 @@
     "old_url": "https://www.faae.org.co/colombiabiodiversa/instrucciones-para-la-aplicacion/formulario-de-preinscripcion/",
     "new_url": "https://www.faae.org.co/colombiabiodiversa/wp-content/uploads/2026/07/BasesBecasColBioII2026.pdf",
     "correction_reason": "Stale page headed 'Convocatoria I-2024'; carries no deadline for Convocatoria II-2026.",
-    "notes": "CLOSING DATE FOUND, contrary to the shard's cached expectation. The record's official_source_url (the FAAE application-instructions page) was fetched first and, as the shard noted, publishes no closing date of its own - but that same official page links the authoritative document for this call: 'Consulte aquí las Bases de la convocatoria II-2026' -> https://www.faae.org.co/colombiabiodiversa/wp-content/uploads/2026/07/BasesBecasColBioII2026.pdf. The Bases were downloaded from the provider's own domain and read directly (text extracted from the PDF, not a search snippet); they state the closing date three separate times: the cover line 'Abierta desde el 5 de agosto hasta el 5 de octubre', the procedure section 'Disponible desde las 8.00 a.m. del 5 de agosto y hasta las 5:00 p.m. del 5 de octubre de 2026', and the explicit 'El plazo máximo para realizar la preinscripción vence a las 5:00 p.m. del 5 de octubre de 2026'. The year is stated as 2026 in the procedure text itself, and the record is Convocatoria II-2026, so the closing date is 2026-10-05 at 17:00 Colombia time (UTC-5). Timeliness note for the integrator: retrieval was 2026-10-05T15:29Z = 10:29 Colombia time, i.e. the call was still open at retrieval but closes the SAME DAY at 17:00 COT - this value will go stale within hours and should be re-verified before any user-facing publication. The page's other date line, 'Convocatoria I - 2026, abierta del 15 de enero al 20 de marzo', describes the PREVIOUS call and was deliberately not used. The preinscripcion form page itself was also checked and is stale (titled 'Convocatoria I-2024'), so it was not relied on."
+    "notes": "CLOSING DATE FOUND, contrary to the shard's cached expectation. The record's official_source_url (the FAAE application-instructions page) was fetched first and, as the shard noted, publishes no closing date of its own - but that same official page links the authoritative document for this call: 'Consulte aquí las Bases de la convocatoria II-2026' -> https://www.faae.org.co/colombiabiodiversa/wp-content/uploads/2026/07/BasesBecasColBioII2026.pdf. The Bases were downloaded from the provider's own domain and read directly (text extracted from the PDF, not a search snippet); they state the closing date three separate times: the cover line 'Abierta desde el 5 de agosto hasta el 5 de octubre', the procedure section 'Disponible desde las 8.00 a.m. del 5 de agosto y hasta las 5:00 p.m. del 5 de octubre de 2026', and the explicit 'El plazo máximo para realizar la preinscripción vence a las 5:00 p.m. del 5 de octubre de 2026'. The year is stated as 2026 in the procedure text itself, and the record is Convocatoria II-2026, so the closing date is 2026-10-05 at 17:00 Colombia time (UTC-5). Timeliness note for the integrator: retrieval was 2026-10-05T15:29Z = 10:29 Colombia time, i.e. the call was still open at retrieval but closes the SAME DAY at 17:00 COT - this value will go stale within hours and should be re-verified before any user-facing publication. The page's other date line, 'Convocatoria I - 2026, abierta del 15 de enero al 20 de marzo', describes the PREVIOUS call and was deliberately not used. The preinscripcion form page itself was also checked and is stale (titled 'Convocatoria I-2024'), so it was not relied on. [RECLASSIFIED 2026-10-06: Expired as of audit date 2026-10-06; reclassified from DEADLINE_FILL to STALE_VALUE_PRESERVED per AGENT_BRIEF section 6 expired_mismatch rule. Stale date not written, not rolled forward.]"
   },
   {
     "scholarship_id": 35,
