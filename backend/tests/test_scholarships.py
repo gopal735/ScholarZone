@@ -12,12 +12,19 @@ TEST_DATABASE_PATH = Path(tempfile.gettempdir()) / f"scholarzone-test-{uuid4().h
 os.environ["SCHOLARZONE_DATABASE_URL"] = f"sqlite:///{TEST_DATABASE_PATH.as_posix()}"
 os.environ["SCHOLARZONE_ENVIRONMENT"] = "test"
 
+# CRITICAL: Clear any cached database connections from other test modules
+# (e.g., test_country_intelligence.py sets SCHOLARZONE_DATABASE_URL to sqlite:///:memory:
+# and imports app, which caches the engine/session_factory with the wrong URL).
+# This MUST be called BEFORE importing app.main or app.database.
+from app.database import reset_database_connections
+reset_database_connections()
+
 from pydantic import ValidationError  # noqa: E402
 from starlette.testclient import TestClient  # noqa: E402
 from sqlalchemy import func, select  # noqa: E402
 from sqlalchemy.exc import IntegrityError  # noqa: E402
 
-from app.database import get_session_factory, reset_database_connections  # noqa: E402
+from app.database import get_session_factory, reset_database_connections as _  # noqa: E402
 from app.main import app  # noqa: E402
 from app.models import Scholarship  # noqa: E402
 from app.seed import seed_database, seed_scholarships  # noqa: E402
