@@ -50,76 +50,92 @@ def session():
     """
     from app.models import Base, Scholarship
 
-    os.environ["SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED"] = "true"
-    os.environ["SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE"] = "true"
-    os.environ["SCHOLARZONE_PUBLIC_ALLOW_THIRD_PARTY_IMAGE"] = "false"
-    _reset_settings_cache()
+    # Save original environment values to restore after the fixture.
+    original_env = {
+        "SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED": os.environ.get("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED"),
+        "SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE": os.environ.get("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE"),
+        "SCHOLARZONE_PUBLIC_ALLOW_THIRD_PARTY_IMAGE": os.environ.get("SCHOLARZONE_PUBLIC_ALLOW_THIRD_PARTY_IMAGE"),
+    }
 
-    path = os.path.join(tempfile.mkdtemp(), "visibility.db")
-    engine = create_engine(f"sqlite:///{path}")
-    Base.metadata.create_all(bind=engine)
-    factory = sessionmaker(bind=engine)
+    try:
+        os.environ["SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED"] = "true"
+        os.environ["SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE"] = "true"
+        os.environ["SCHOLARZONE_PUBLIC_ALLOW_THIRD_PARTY_IMAGE"] = "false"
+        _reset_settings_cache()
 
-    db = factory()
-    rows = [
-        # Fully public: passes every gate.
-        Scholarship(
-            id=1, title="Fully listed", country="Canada", degree="PhD", funding="Full",
-            is_verified=True, is_archived=False, verification_status="active",
-            image_url="https://example.org/logo.svg",
-            image_verified_at=__import__("datetime").date(2026, 10, 1),
-            image_source_type="official_government",
-        ),
-        # Archived: closed round, must not be offered.
-        Scholarship(
-            id=2, title="Archived", country="UK", degree="PhD", funding="Full",
-            is_verified=True, is_archived=True, verification_status="active",
-            image_url="https://example.org/a.svg",
-            image_verified_at=__import__("datetime").date(2026, 10, 1),
-            image_source_type="official_government",
-        ),
-        # Quarantined.
-        Scholarship(
-            id=3, title="Quarantined", country="UK", degree="PhD", funding="Full",
-            is_verified=True, is_archived=False, verification_status="quarantined",
-            image_url="https://example.org/q.svg",
-            image_verified_at=__import__("datetime").date(2026, 10, 1),
-            image_source_type="official_government",
-        ),
-        # Not verified.
-        Scholarship(
-            id=4, title="Unverified", country="UK", degree="PhD", funding="Full",
-            # "Not verified" is now expressed by the authoritative status, not by the
-        # legacy boolean. Seeding is_verified=False with an "active" status
-        # described a record whose verification IS resolved while its
-        # bookkeeping disagreed - which the contract says must publish.
-        is_verified=False, is_archived=False,
-        verification_status="needs_review",
-            image_url="https://example.org/u.svg",
-            image_verified_at=__import__("datetime").date(2026, 10, 1),
-            image_source_type="official_government",
-        ),
-        # Image present but never validated: unevaluated, not trusted.
-        Scholarship(
-            id=5, title="Unvalidated image", country="UK", degree="PhD", funding="Full",
-            is_verified=True, is_archived=False, verification_status="active",
-            image_url="https://example.org/n.svg", image_verified_at=None,
-            image_source_type="official_government",
-        ),
-        # Third-party hosted image.
-        Scholarship(
-            id=6, title="Third party image", country="UK", degree="PhD", funding="Full",
-            is_verified=True, is_archived=False, verification_status="active",
-            image_url="https://upload.wikimedia.org/x.png",
-            image_verified_at=__import__("datetime").date(2026, 10, 1),
-            image_source_type="wikimedia",
-        ),
-    ]
-    for row in rows:
-        db.add(row)
-    db.commit()
-    yield db
-    db.close()
+        path = os.path.join(tempfile.mkdtemp(), "visibility.db")
+        engine = create_engine(f"sqlite:///{path}")
+        Base.metadata.create_all(bind=engine)
+        factory = sessionmaker(bind=engine)
+
+        db = factory()
+        rows = [
+            # Fully public: passes every gate.
+            Scholarship(
+                id=1, title="Fully listed", country="Canada", degree="PhD", funding="Full",
+                is_verified=True, is_archived=False, verification_status="active",
+                image_url="https://example.org/logo.svg",
+                image_verified_at=__import__("datetime").date(2026, 10, 1),
+                image_source_type="official_government",
+            ),
+            # Archived: closed round, must not be offered.
+            Scholarship(
+                id=2, title="Archived", country="UK", degree="PhD", funding="Full",
+                is_verified=True, is_archived=True, verification_status="active",
+                image_url="https://example.org/a.svg",
+                image_verified_at=__import__("datetime").date(2026, 10, 1),
+                image_source_type="official_government",
+            ),
+            # Quarantined.
+            Scholarship(
+                id=3, title="Quarantined", country="UK", degree="PhD", funding="Full",
+                is_verified=True, is_archived=False, verification_status="quarantined",
+                image_url="https://example.org/q.svg",
+                image_verified_at=__import__("datetime").date(2026, 10, 1),
+                image_source_type="official_government",
+            ),
+            # Not verified.
+            Scholarship(
+                id=4, title="Unverified", country="UK", degree="PhD", funding="Full",
+                # "Not verified" is now expressed by the authoritative status, not by the
+                # legacy boolean. Seeding is_verified=False with an "active" status
+                # described a record whose verification IS resolved while its
+                # bookkeeping disagreed - which the contract says must publish.
+                is_verified=False, is_archived=False,
+                verification_status="needs_review",
+                image_url="https://example.org/u.svg",
+                image_verified_at=__import__("datetime").date(2026, 10, 1),
+                image_source_type="official_government",
+            ),
+            # Image present but never validated: unevaluated, not trusted.
+            Scholarship(
+                id=5, title="Unvalidated image", country="UK", degree="PhD", funding="Full",
+                is_verified=True, is_archived=False, verification_status="active",
+                image_url="https://example.org/n.svg", image_verified_at=None,
+                image_source_type="official_government",
+            ),
+            # Third-party hosted image.
+            Scholarship(
+                id=6, title="Third party image", country="UK", degree="PhD", funding="Full",
+                is_verified=True, is_archived=False, verification_status="active",
+                image_url="https://upload.wikimedia.org/x.png",
+                image_verified_at=__import__("datetime").date(2026, 10, 1),
+                image_source_type="wikimedia",
+            ),
+        ]
+        for row in rows:
+            db.add(row)
+        db.commit()
+        yield db
+    finally:
+        db.close()
+        # Restore original environment values so other tests are not affected.
+        for key, value in original_env.items():
+            if value is None:
+                os.environ.pop(key, None)
+            else:
+                os.environ[key] = value
+        _reset_settings_cache()
 
 
 def canonical_count(db) -> int:
