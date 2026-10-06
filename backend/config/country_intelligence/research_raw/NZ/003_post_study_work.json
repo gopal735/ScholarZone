@@ -1,0 +1,70 @@
+{
+  "country": "NZ",
+  "topic": "post_study_work",
+  "source_id": "inz-post-study-work-visa",
+  "source_url": "https://www.immigration.govt.nz/visas/post-study-work-visa/",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Immigration New Zealand (INZ), New Zealand Government",
+  "retrieved_at": "2026-10-05",
+  "as_of": "site content as displayed 2026-10-05",
+  "raw_extract": "Post-Study Work Visa\n\nApply for this visa if you want to work in New Zealand soon after you have completed your studies here. It allows you to stay and work in New Zealand for up to 3 years, depending on what you studied.\n\nLength of stay: Up to 3 years\nCost: From NZD $1670\nProcessing time: 80% within 6 weeks\nResidence option: Can lead to a resident visa: Yes\n\nTo apply you must:\n\n-   have recently finished studying in New Zealand for an approved qualification\n-   apply no later than 3, 6 or 12 months after your student visa expires, depending on what you studied and what visa you had\n-   have at least NZD $5,000 to pay your living expenses\n-   meet the other requirements of this visa.\n\nThis visa lets you:\n\n-   stay and work in New Zealand for up to 3 years depending on your study\n-   work in New Zealand if you have a degree level 7 or higher qualification\n-   work for an employer in a job that meets our requirements if you have a non-degree level 7 or lower qualification\n-   support visas for your partner and dependent children — your partner can apply for a work visa and your children can apply for student visas to study as in New Zealand.\n\nYou can only have this visa once.\n\nNote\n\nFrom 16 November 2026, Post-Study Work Visa eligibility will be extended to applicants who have:\n\n-   an NZQCF level 7 graduate diploma that they studied full-time for in New Zealand, and\n-   a bachelor’s degree that they completed in New Zealand or overseas.\n\nSee the announcement for more information.\n\n## How long you can stay\n\nYou can stay and work in New Zealand for up to 3 years depending on the level of your qualification and how long you spent studying for it.\n\n## Who can apply\n\nTo apply for this visa, you must have recently finished studying in New Zealand and have:\n\n-   a degree level 7 or higher qualification — level 8 postgraduate Diploma, level 9 masters degree or level 10 doctoral degree\n-   a non-degree level 7 or lower qualification that is on the list of qualifications eligible for a Post-Study Work Visa — you must intend to work in a job that is related to what you studied, and apply in time\n-   be in good health\n-   have a good character\n-   have a genuine reason for coming to New Zealand\n-   have enough money to pay your expenses.\n\nIf you have studied a degree level 7 or higher qualification, you must have studied it full-time for at least 30 weeks in New Zealand.\n\n## When to apply\n\nYou must apply for a Post-Study Work Visa (PSWV) no later than 3 months after the student visa expires, or within 3 months of the end date of your student visa for a second qualification (if you completed a bachelor's degree immediately followed by an honours or post-graduate diploma and held consecutive student visas for these qualifications), except if you completed:\n\n-   a doctoral degree, you must apply for a PSWV no later than 6 months after your student visa expires\n-   an eligible qualification for a PSWV and then, immediately after, completed a higher-level qualification in less than 30 weeks, you can apply for a PSWV based on your first qualification no later than 12 months after your student visa for the first qualification expires.\n\n## Have enough money to live on\n\nWhen you apply you must provide documents, such as bank statements in your name, that show you have at least NZD $5,000 in total for your stay.\n\nThis applies to visa applications for 1, 2 or 3 years.\n\nWe may ask to see these documents when you arrive in New Zealand.\n\n### Degree level 7 or higher qualification\n\nIf you have a degree level 7 or higher qualification, you can do any work in any job, anywhere in New Zealand, as long as:\n\n-   the work you do is legal\n-   you do not provide commercial sexual services\n-   you do not invest or operate in a business that provides commercial sexual services\n-   you have any occupational registration that is needed to do that work in New Zealand.\n\n### Study\n\nYou can study for up to 3 months in any 12-month period.",
+  "research_notes": "Route name and duration confirmed from INZ directly: 'Post-Study Work Visa' (abbreviated PSWV), up to 3 years. SEVERAL POINTS THAT A SIMPLE '3 years' FIELD WOULD GET WRONG. First, the headline 'up to 3 years' is explicitly qualified: 'depending on the level of your qualification and how long you spent studying for it.' A degree-level applicant must have studied 'full-time for at least 30 weeks in New Zealand', and the page states no single unconditional 3-year entitlement for a bachelor's holder - the qualification-to-duration mapping sits on a sub-page ('Staying to work after finishing your study') that I did NOT fetch, so no per-level duration table is claimed here and any exact bachelor figure would be inferred. Second, work rights are split by qualification: degree level 7 or higher ('level 8 postgraduate Diploma, level 9 masters degree or level 10 doctoral degree') permits 'any work in any job, anywhere in New Zealand', whereas a 'non-degree level 7 or lower' qualification on the eligible list restricts the holder to a job 'related to what you studied'. Third, this is a ONE-TIME visa: 'You can only have this visa once' - stacking a second PSWV after a further qualification is not possible, which is a hard ceiling most student-facing material omits. Fourth, APPLICATION WINDOW IS TIERED, not uniform: 3 months after the student visa expires for the first qualification, 6 months for a doctoral degree, and up to 12 months where a first PSWV-qualifying qualification was followed immediately by a higher-level qualification studied in under 30 weeks. Also note an internal inconsistency on the page worth flagging rather than smoothing over: one passage says a following higher-level qualification must be studied in 'less than 30 weeks', while the Step 1 application guidance says 'less than 30 months'. The 'less than 30 months' reading in Step 1 is inconsistent with the qualification-threshold logic and with the 'When to apply' section, but both wordings are on the same page and I am not resolving it; an implementer should re-check with INZ before relying on it. Fifth, the funds test is FLAT, not time-scaled, which is unusual and generous relative to other countries: 'at least NZD $5,000 in total for your stay. This applies to visa applications for 1, 2 or 3 years' - so NZD5,000 covers the whole stay regardless of length, and it is a living-expense test only (tuition is already paid). Sixth, INZ states 'Residence option: Can lead to a resident visa: Yes', which is the bridge to the PR metric recorded separately. Seventh, FORWARD-LOOKING CHANGE WORTH FLAGGING: 'From 16 November 2026, Post-Study Work Visa eligibility will be extended to applicants who have: an NZQCF level 7 graduate diploma that they studied full-time for in New Zealand, and a bachelor's degree that they completed in New Zealand or overseas.' That is six weeks after the retrieval date and is not yet in force. NOT VERIFIED AND NOT CLAIMED: the per-qualification duration table, the accompanying Partner Work Visa and dependent-child student visa terms, the exact fee above the 'From NZD $1670' floor, the specific occupations on the eligible-qualification list, and the chest X-ray / police certificate triggers beyond the stated 6-month and 24-month thresholds.",
+  "claims": [
+    {
+      "claim_id": "nz-post-study-work-1",
+      "statement": "The official New Zealand post-study work route is the 'Post-Study Work Visa' (PSWV), allowing a stay and work in New Zealand for up to 3 years depending on the qualification studied and time spent studying.",
+      "value": 3,
+      "unit": "years (maximum)",
+      "as_of": "2026-10-05",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nz-post-study-work-2",
+      "statement": "A degree level 7 or higher qualification requires the applicant to have studied full-time in New Zealand for at least 30 weeks, and such a holder may do any work in any job anywhere in New Zealand, whereas a non-degree level 7 or lower qualification restricts work to a job related to what was studied.",
+      "value": 30,
+      "unit": "weeks minimum full-time study",
+      "as_of": "2026-10-05",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nz-post-study-work-3",
+      "statement": "The Post-Study Work Visa can only be held once - a holder cannot obtain a second Post-Study Work Visa after completing a further qualification.",
+      "value": 1,
+      "unit": "times available (lifetime)",
+      "as_of": "2026-10-05",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nz-post-study-work-4",
+      "statement": "The application deadline is 3 months after the student visa expires for a first qualification, 6 months for a doctoral degree, and up to 12 months where a PSWV-qualifying qualification was followed immediately by a higher-level qualification.",
+      "value": 3,
+      "unit": "months after student visa expiry (first qualification)",
+      "as_of": "2026-10-05",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nz-post-study-work-5",
+      "statement": "Post-Study Work Visa applicants must show at least NZD $5,000 in total for their stay, and the same NZD $5,000 figure applies to 1, 2 or 3 year stays - the test is not scaled by duration.",
+      "value": 5000,
+      "unit": "NZD total for the stay (living expenses)",
+      "as_of": "2026-10-05",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nz-post-study-work-6",
+      "statement": "A Post-Study Work Visa costs from NZD $1,670, with 80% of applications decided within 6 weeks, and can lead to a resident visa.",
+      "value": 1670,
+      "unit": "NZD from (per application)",
+      "as_of": "2026-10-05",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nz-post-study-work-7",
+      "statement": "From 16 November 2026 Post-Study Work Visa eligibility will be extended to applicants holding both an NZQCF level 7 graduate diploma studied full-time in New Zealand and a bachelor's degree completed in New Zealand or overseas - a change not yet in force at the retrieval date.",
+      "value": "2026-11-16",
+      "unit": "future eligibility change date",
+      "as_of": "2026-11-16",
+      "study_level": "bachelor"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "country": "FR",
+  "topic": "post_study_work",
+  "source_id": "fr-service-public-rece-001",
+  "source_url": "https://www.service-public.fr/particuliers/vosdroits/F17319",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Service Public / Direction de l'information légale et administrative (DILA), Premier ministre — Ministère chargé de l'intérieur",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "Carte de séjour ou VLS-TS - Recherche d'emploi/création d'entreprise\nVérifié le 01 juin 2026 - Service Public / Direction de l'information légale et administrative (Premier ministre)\nSi vous êtes étranger non européen, que vous êtes diplômé d'un établissement français (master ou équivalent) et souhaitez travailler en France après vos études supérieures, vous pouvez demander un visa long séjour valant titre de séjour (VLS-TS) ou une carte de séjour recherche d'emploi ou création d'entreprise.\n\nLa carte de séjour temporaire ou VLS-TS - recherche d'emploi/création d'entreprise vous permet de rester en France, pendant 1 an, afin de vous permettre de chercher un emploi ou de créer une entreprise en lien avec vos études ou vos recherches.\nPendant sa validité, cette carte vous permet de travailler en tant que salarié. L'employeur est dispensé de demander une autorisation de travail.\n\n[\u2026] Vous devez remplir les 2 conditions suivantes :\nSéjourner en France avec une carte de séjour étudiant ou étudiant programme de mobilité\nAvoir obtenu au cours des 12 derniers mois, une licence professionnelle, un Mastère Spécialisé, un Master of Science (labellisé par la conférence des grandes écoles) ou un autre diplôme au moins équivalent au master\n\n[\u2026] L'emploi doit obligatoirement remplir les 2 conditions suivantes :\nÊtre en lien avec vos études\nÊtre assorti d'une rémunération mensuelle brute supérieure à  2 800,53 \u20ac.\n\nQuelle est la durée de validité de la carte de séjour ou du VLS-TS - recherche d'emploi/création d'entreprise ?\nLa carte de séjour ou le VLS-TS est valable 1 an.\nLe renouvellement n'est pas possible.\n\n[\u2026] Faire votre demande dans le délai maximal de 4 ans à compter de l'obtention de votre diplôme.",
+  "research_notes": "CONFIRMED from the French government's own service portal (DILA, Premier ministre), with a stated verification date of 01 June 2026. France post-study job search: 1 YEAR. Official name: 'carte de séjour recherche d'emploi/création d'entreprise' (also obtainable as a visa long séjour valant titre de séjour, VLS-TS, with the mention 'recherche d'emploi/Création d'entreprise'). CRITICAL SCOPING LIMITATION THE CORPUS MUST NOT GLOSS OVER: this permit is limited to people who graduated from a FRENCH institution (établissement français) with a licence professionnelle, Mastère Spécialisé, Master of Science (labellisé par la conférence des grandes écoles) or another diploma at least equivalent to a master. It is therefore NOT available to a student who completed a Bachelor's degree abroad, and a Bachelor's degree (licence) alone is generally below the listed thresholds — the listed credentials are Master-level. A separate, shorter route exists for holders of a 'carte de séjour talent-chercheur'. Conditions: job must be related to the studies and gross monthly pay above EUR 2,800.53; the 60% working-hours cap does not apply; the card is 1 year and NOT renewable; application must be made within a maximum of 4 years of obtaining the diploma if the person has left France.",
+  "claims": [
+    {
+      "claim_id": "fr-post-study-work-duration",
+      "statement": "The carte de séjour recherche d'emploi/création d'entreprise allows a foreign non-EU graduate of a French institution to stay in France for 1 year to look for a job or create a company.",
+      "value": 1,
+      "unit": "year",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fr-post-study-work-permit-name",
+      "statement": "The official name of the French post-study job-search permit is the 'carte de séjour recherche d'emploi/création d'entreprise', obtainable in France or abroad as a visa long séjour valant titre de séjour (VLS-TS) bearing the mention 'recherche d'emploi/Création d'entreprise'.",
+      "value": 1,
+      "unit": "year",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fr-post-study-work-eligibility",
+      "statement": "Eligibility requires residence in France on a student or mobility-programme student residence permit and having obtained, within the last 12 months, a licence professionnelle, a Mastère Spécialisé, a Master of Science labelled by the conférence des grandes écoles, or another diploma at least equivalent to a master.",
+      "value": 1,
+      "unit": "year",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fr-post-study-work-salary-floor",
+      "statement": "During the validity of the carte de séjour recherche d'emploi/création d'entreprise, employment must be related to the student's studies and paid a gross monthly salary of more than 2,800.53 euros.",
+      "value": 2800.53,
+      "unit": "EUR gross per month (threshold; must exceed)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

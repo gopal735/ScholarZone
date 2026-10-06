@@ -1,0 +1,68 @@
+{
+  "country": "AU",
+  "topic": "gross_monthly_income",
+  "source_id": "au-abs-employee-earnings-qual-001",
+  "source_url": "https://www.abs.gov.au/statistics/labour/earnings-and-working-conditions/employee-earnings/latest-release",
+  "source_type": "OFFICIAL_STATISTICS",
+  "publisher": "Australian Bureau of Statistics (ABS), Employee earnings, August 2025 (Characteristics of Employment survey)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2025-08",
+  "raw_extract": "Reference period August 2025. Released 12/12/2025. 'Weekly earnings of employees, including distribution of earnings and hourly earnings, by State, Occupation, Industry and Qualifications'\n\nKey statistics, In August 2025: 'Median employee earnings in main job was $1,425 per week, up $26 (1.9%) since August 2024.' 'Median hourly earnings in main job was $42.90 per hour, up $2.90 since August 2024.'\n\nVERBATIM SECTION 'Educational qualifications':\n'In August 2025, median weekly earners were highest amongst employees with a postgraduate degree ($2,000 per week), and were lowest for those without non-school qualifications ($1,000).'\n\nVERBATIM CHART TABLE 'Median weekly earnings in main job, by highest educational qualification':\nAug-20 | Aug-25\nPostgraduate Degree | 1,600 | 2,000\nGraduate Diploma/Graduate Certificate | 1,573 | 1,900\nBachelor Degree | 1,400 | 1,700\nAdvanced Diploma/Diploma | 1,150 | 1,462\nCertificate III/IV | 1,140 | 1,400\nCertificate I/II and Other | 1,048 | 1,300\nNo Non-School Qualifications | 850 | 1,000\n\nVERBATIM SECTION 'Occupation':\n'In August 2025, the occupation groups with highest median weekly earnings were Managers ($2,072 per week) and Professionals ($1,900). The lowest were Sales workers ($742) and Labourers ($940).'\n\nVERBATIM full-time / part-time table:\nEmployees | Males | Females | Persons\nAll employees Aug-25: $1,600 / $1,250 / $1,425\nFull-time employees Aug-25: $1,841 / $1,631 / $1,741",
+  "claims": [
+    {
+      "claim_id": "au-gross-week-bachelor-001",
+      "value": 1700,
+      "unit": "AUD per week",
+      "as_of": "2025-08",
+      "statement": "Median weekly earnings in main job of employees whose highest educational qualification is a Bachelor Degree, men and women combined, August 2025 = AUD 1 700 per week. This is the official ABS gross figure closest to a typical graduate. Published in 'Median weekly earnings in main job, by highest educational qualification'."
+    },
+    {
+      "claim_id": "au-gross-week-postgrad-002",
+      "value": 2000,
+      "unit": "AUD per week",
+      "as_of": "2025-08",
+      "statement": "Median weekly earnings in main job of employees with a Postgraduate Degree, men and women combined, August 2025 = AUD 2 000 per week."
+    },
+    {
+      "claim_id": "au-gross-week-gradcert-003",
+      "value": 1900,
+      "unit": "AUD per week",
+      "as_of": "2025-08",
+      "statement": "Median weekly earnings in main job of employees with a Graduate Diploma/Graduate Certificate, men and women combined, August 2025 = AUD 1 900 per week."
+    },
+    {
+      "claim_id": "au-gross-month-bachelor-004",
+      "value": 7366.67,
+      "unit": "AUD per month",
+      "as_of": "2025-08",
+      "statement": "DERIVED BY PURE ARITHMETIC, NOT PUBLISHED BY THE SOURCE: AUD 1 700 per week x 52 weeks / 12 months = AUD 7 366.67 per month GROSS. The multiplication by 52 and division by 12 are the only operations applied; no tax adjustment, no currency conversion, no inflation adjustment."
+    },
+    {
+      "claim_id": "au-gross-month-allstaff-005",
+      "value": 6166.67,
+      "unit": "AUD per month",
+      "as_of": "2025-08",
+      "statement": "DERIVED BY PURE ARITHMETIC, NOT PUBLISHED BY THE SOURCE: all-employee median weekly gross earnings AUD 1 425 x 52 / 12 = AUD 6 166.67 per month GROSS."
+    },
+    {
+      "claim_id": "au-gross-week-professionals-006",
+      "value": 1900,
+      "unit": "AUD per week",
+      "as_of": "2025-08",
+      "statement": "Median weekly earnings in main job for the 'Professionals' occupation group, August 2025 = AUD 1 900 per week. Published in the 'Median hourly earnings in main job, by occupation and skill level' context text."
+    }
+  ],
+  "assumptions": [
+    "SOURCE'S OWN: measure is 'earnings in main job' of employees, from the Characteristics of Employment survey, reference period August of the stated year. It is pre-tax remuneration as reported by employees.",
+    "SOURCE'S OWN: the by-qualification table pools full-time and part-time employees. It is not restricted to full-time workers, so the AUD 1 700 median for Bachelor Degree holders is dragged down by degree-qualified part-timers. The all-full-time employees median is AUD 1 741 per week, so the full-time/restricted figure is slightly higher.",
+    "SOURCE'S OWN: qualification is the HIGHEST educational qualification held, at the time of survey, across the whole career. It does not mean 'recently graduated'.",
+    "SOURCE'S OWN: 'Employee' excludes self-employed and unemployed; the ABS Employee earnings release does not cover the very large caseload of contractors and gig workers.",
+    "SOURCE'S OWN: figures are in nominal Australian dollars; the ABS release does not deflate them. August 2025 nominal dollars.",
+    "NOT THE SOURCE'S / MINE: no FX rate, no PPP factor and no assumption about tax residency, HELP/HECS debt, superannuation or tax credits has been applied to these GROSS figures. The x52/12 monthly conversions are the only arithmetic applied."
+  ],
+  "field_mapping": {
+    "gross_monthly_income": "career.gross_monthly_income (topic: gross_monthly_income)"
+  },
+  "notes": "*** THIS IS GROSS, NOT NET. *** AUD 1 700 per week (approx. AUD 7 367 per month) for Bachelor Degree holders is pre-tax. The corresponding official-model NET take-home is in artifact 020_net_monthly_income.json. Do NOT use these numbers for a cost-vs-salary break-even; they overstate spendable cash by roughly 22 per cent at this income level. Key warning a reader would be misled by: the highest qualification is the highest qualification EVER HELD, so this figure describes the whole population of degree holders aged across the career, not a fresh graduate in a first job. A new graduate almost certainly sits well below AUD 1 700 per week; treating this as a starting salary would overstate a new graduate's income substantially. The companion Professionals occupation figure (AUD 1 900/week) has the same all-career-stages problem. Currency AUD, reference period August 2025, released 12 December 2025. Note for corpus maintainers: the ABS also published 'August 2025 was the last time the Characteristics of Employment survey was conducted in its current form', with a redesigned survey expected from the second half of 2026, so this series' methodology is about to change.",
+  "evidence_limitations": "Qualification is a career-stock measure, not a career-stage measure; there is no official ABS median for 'recent graduates' in this release. Full-time and part-time are pooled in the qualification table. The measure is self-reported earnings in the main job and excludes income from any second job, which biases the figure DOWNWARD for people who hold more than one job, and excludes self-employment income entirely. Median, not mean, so the top of the professional distribution is not represented. No net or take-home figure is published by ABS in this release under any heading - see the raw_status artifact for that finding."
+}

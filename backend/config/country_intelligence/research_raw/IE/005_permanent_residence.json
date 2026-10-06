@@ -1,0 +1,38 @@
+{
+  "country": "IE",
+  "topic": "permanent_residence",
+  "source_id": "cib-critical-skills-employment-permit",
+  "source_url": "https://www.citizensinformation.ie/en/moving-country/working-in-ireland/employment-permits/green-card-permits/",
+  "source_type": "OFFICIAL_REGIONAL_BODY",
+  "publisher": "Citizens Information Board (Citizens Information, Ireland) - page edited 2 April 2026",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026-04-02",
+  "raw_extract": "## Applying for a Stamp 4 after 21 months\n\nThe Critical Skills Employment Permit is issued for 2 years.\n\n21 months after you started work in Ireland, you can apply for a Stamp 4 permission to live and work in Ireland without an employment permit.\n\nIf you are granted a Stamp 4 permission, it will be issued for 2 years and can be renewed provided you continue to satisfy the criteria. When you have been legally resident for 5 years, you can apply for citizenship by naturalisation.\n\nIf you are not eligible for a Stamp 4, you will continue to need an employment permit to work in Ireland.",
+  "research_notes": "Ireland has no route named 'permanent residence'. The end state for a non-EEA graduate on the Critical Skills path is CITIZENSHIP BY NATURALISATION after 5 years of legal residence - and that 5-year figure is confirmed verbatim on this page. The 5 years is counted as LEGAL RESIDENCE, not as years on a single visa, and it is reached well after the point at which the employment permit stops being needed (21 months), so a student should not model Ireland as '5 years on the work permit'. Corroborating figure from the gov.ie Department of Enterprise publication fetched in the same session, which expresses the same threshold in months: 'On achieving 60 months residency permission, Critical Skills Employment Permit or Green Card Employment Permit holders will then be permitted to make an application for long term residence'. Two independent official sources therefore agree on 5 years / 60 months, from different framings. Long-term residence (distinct from citizenship) is a separate status and the gov.ie text says the 60-month threshold permits an application for it; the distinct Irish 'long-term residence' scheme itself lives on irishimmigration.ie, which was unreachable, so its full criteria are NOT claimed here.",
+  "claims": [
+    {
+      "claim_id": "ie-permanent-residence-1",
+      "statement": "After 5 years of legal residence in Ireland a Critical Skills Employment Permit holder can apply for citizenship by naturalisation.",
+      "value": 5,
+      "unit": "years of legal residence",
+      "as_of": "2026-04-02",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ie-permanent-residence-2",
+      "statement": "The equivalent threshold expressed by the Department of Enterprise is 60 months of residency permission, at which point a Critical Skills Employment Permit or Green Card Employment Permit holder may apply for long-term residence.",
+      "value": 60,
+      "unit": "months of residency permission (gov.ie wording)",
+      "as_of": "2025-02-13",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ie-permanent-residence-3",
+      "statement": "Ireland's settlement end state is citizenship by naturalisation rather than a route officially named permanent residence; the employment permit is no longer required once a Stamp 4 permission is granted at 21 months.",
+      "value": null,
+      "unit": "route characterisation",
+      "as_of": "2026-04-02",
+      "study_level": "bachelor"
+    }
+  ]
+}

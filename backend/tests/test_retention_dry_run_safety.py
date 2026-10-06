@@ -82,7 +82,7 @@ def _verb(sql: str) -> str:
 
 
 def _target(sql: str) -> str:
-    match = re.match(r"^\s*(?:INSERT\s+INTO|UPDATE|DELETE\s+FROM)\s+([\w\"]+)", sql, re.IGNORECASE)
+    match = re.match(r"^\s*(?:SELECT\s+|INSERT\s+INTO|UPDATE|DELETE\s+FROM)\s+([\w\"]+)", sql, re.IGNORECASE)
     return match.group(1).strip('"').lower() if match else ""
 
 
@@ -97,7 +97,7 @@ _IMAGE_AUDIT_CONTEXT = "scholarship_image_audit_context"
 
 
 def _is_image_audit_context(sql: str) -> bool:
-    return _target(sql) == _IMAGE_AUDIT_CONTEXT
+    return _IMAGE_AUDIT_CONTEXT in sql.lower()
 
 
 def seed(session, tag: str = "") -> dict[str, int]:

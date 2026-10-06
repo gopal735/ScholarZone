@@ -1,0 +1,46 @@
+{
+  "country": "NL",
+  "topic": "post_study_work",
+  "source_id": "nl-business-gov-orientation-year-001",
+  "source_url": "https://business.gov.nl/coming-to-the-netherlands/permits-and-visa/residence-permit-for-orientation-year",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Business.gov.nl — official government information site for entrepreneurs; article published by the Immigratie- en Naturalisatiedienst (IND), Ministerie van Justitie en Veiligheid",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "Residence permit for orientation year: find work after your study\nPublished by: Immigration and Naturalisation Service, IND\n\nHighly educated persons can apply for a residence permit for orientation year. The holder of this permit can work or start a business in the Netherlands for 1 year without any restrictions.\n\nA residence permit for highly educated persons\n\nThe residence permit for orientation year is a 1-year residence permit for recently graduated students, PhD graduates, and researchers. This year can be used to search for a job as a highly skilled employee or to develop a business idea. During the year, employers do not need to apply for a separate work permit (tewerkstellingsvergunning, TWV) for the employee.\n\nCheck the conditions for applicants\n\nYou can apply for the residence permit for orientation year within 3 years of completing your studies, obtaining your PhD, or finishing your research.\n\nHow long is the permit valid?\n\nThe residence permit for orientation year is issued for a maximum period of 1 year. It is not possible to extend it. Do you want to extend your stay in the Netherlands after the orientation year has ended? Then you must apply for another type of residence permit.",
+  "research_notes": "CONFIRMED from two official Dutch government sources, both fetched: (a) business.gov.nl, whose article is explicitly 'Published by: Immigration and Naturalisation Service, IND', and (b) government.nl, which names the full official instrument and its commencement date. Netherlands post-study job search: 1 YEAR. Official name: 'residence permit for the orientation year as a highly educated migrant seeking employment' (commonly 'orientation year' / Dutch 'oriëntatiejaar'); it came into effect on 1 March 2016. Confirmed benefits: free to work or start a business in the Netherlands for 1 year with no work permit (TWV) required; also permits starting a start-up. IMPORTANT SCOPE DETAIL for the corpus: eligibility is NOT limited to Dutch graduates. The government.nl page states the permit is intended for (i) foreign students studying in the Netherlands, (ii) foreign students who graduated from a top university OUTSIDE the Netherlands, and (iii) foreign scientific researchers who carried out research in the Netherlands — with application within 3 years of graduating. business.gov.nl adds that for study programmes completed outside the Netherlands the institution must be a 'designated international educational institution', i.e. top 200 of at least 2 of the main rankings (THE, QS, Shanghai) at the date of completion. This matters because a Bachelor-only graduate IS eligible (the IND form covers accredited bachelor's or master's programmes), unlike France where the equivalent permit is Master-level only. Confirmed limits: maximum 1 year, NOT extendable; a further orientation year can only be granted after a NEW completed study/research period after the previous permit expired; illegal overstay risks a Schengen entry ban. GAP: neither official page states the application fee amount; the IND fee (EUR 254, per the IND orientation-year application form) was seen only in search snippets and is NOT recorded as a claim here because I did not fetch a readable IND fee page. The IND's own orientation-year page (ind.nl/en/residence-permits/work/residence-permit-for-orientation-year) renders behind a nationality-input wizard, so its detailed condition list could not be quoted verbatim.",
+  "claims": [
+    {
+      "claim_id": "nl-post-study-work-duration",
+      "statement": "The residence permit for orientation year is issued for a maximum period of 1 year and it is not possible to extend it.",
+      "value": 1,
+      "unit": "year",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nl-post-study-work-permit-name",
+      "statement": "The official name of the Dutch post-study permit is the 'residence permit for the orientation year as a highly educated migrant seeking employment', which came into effect on 1 March 2016.",
+      "value": 1,
+      "unit": "year",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nl-post-study-work-eligibility",
+      "statement": "The orientation year permit is intended for foreign students who studied in the Netherlands, foreign students who graduated from a top university outside the Netherlands, and foreign scientific researchers who carried out research in the Netherlands, and can be applied for within 3 years of graduating.",
+      "value": 3,
+      "unit": "years (window to apply after graduation)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nl-post-study-work-rights",
+      "statement": "During the orientation year the holder can work or start a business in the Netherlands for 1 year without any restrictions, and employers do not need to apply for a separate work permit (TWV).",
+      "value": 1,
+      "unit": "year",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "country": "AU",
+  "topic": "post_study_work",
+  "source_id": "homeaffairs-subclass485-post-higher-education-work",
+  "source_url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-graduate-485/post-higher-education-work",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Australian Government - Department of Home Affairs, Immigration and Citizenship",
+  "retrieved_at": "2026-10-05",
+  "as_of": "page last updated 24 September 2026",
+  "raw_extract": "Temporary Graduate visa (subclass 485)\nPost-Higher Education Work stream\n\nThis visa is for international students who have recently graduated with a degree from an Australian institution. It allows you to live, work and study in Australia temporarily.\n\nStay\n\nUsually between 2 and 3 years, depending on your qualification.\n\nHong Kong and British National Overseas passport holders may stay for 5 years.\n\nCost\n\nFrom AUD5,750.00 (concessions apply in limited circumstances).\n\nCost concession\n\nA lower visa cost applies to eligible Pacific Island and Timor-Leste citizens who lodge a valid Temporary Graduate visa application. For more information, visit About this visa.\n\nTo work out what your visa will cost, use the Visa Pricing Estimator. The estimator does not take into account the other costs.\n\nCheck your eligibility\n\nYou must\n\nbe aged 35 years or under when you apply. *Exceptions apply\n\nbe in Australia when you apply for this visa\n\nhold an eligible visa\n\nhave held a Student visa in the last 6 months\n\nhave a recent degree in a CRICOS-registered course\n\nprovide evidence of adequate health insurance for all applicants when you apply\n\nprovide evidence you have applied for an Australian Federal Police check when you apply. See character requirements\n\nprovide evidence of the required level of English with your application.\n\n[Page footer] Last updated: 24 September 2026",
+  "research_notes": "Route name confirmed from Home Affairs, not memory: 'Temporary Graduate visa (subclass 485)', and for a degree-level graduate the relevant stream is the 'Post-Higher Education Work stream'. Note the page's own exact wording of duration is deliberately non-specific - 'Usually between 2 and 3 years, depending on your qualification' - so a corpus entry asserting a single number for a bachelor's holder would be inventing precision the government does not publish here; the mapping of qualification to length lives on a sub-page I did not fetch and is NOT claimed. Passport-dependent variation is material and is recorded: Hong Kong and British National Overseas passport holders may stay 5 years. (A search snippet of the Home Affairs BR0097 program report additionally indicated Indian nationals may stay 2-4 years under AI-ECTA, but I did not fetch that PDF so that nationality variant is deliberately excluded.) AGE CEILING WORTH FLAGGING: the applicant must be 35 or under when they apply, with exceptions - this interacts badly with long course+PR pipelines and is a hard constraint most student-facing material omits. Other verified conditions: the applicant must be physically in Australia when applying, must have held a Student visa within the last 6 months, and the degree must be from a CRICOS-registered course. Visa cost recorded from the same page: from AUD5,750.00.",
+  "claims": [
+    {
+      "claim_id": "au-post-study-work-1",
+      "statement": "The official Australian post-study work route is the 'Temporary Graduate visa (subclass 485)', and for graduates of a degree from an Australian institution the relevant stream is the 'Post-Higher Education Work stream'.",
+      "value": 485,
+      "unit": "visa subclass",
+      "as_of": "2026-09-24",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "au-post-study-work-2",
+      "statement": "A Temporary Graduate visa (subclass 485) Post-Higher Education Work stream stay is usually between 2 and 3 years, depending on the qualification obtained.",
+      "value": null,
+      "unit": "years (range 2-3, qualification-dependent)",
+      "as_of": "2026-09-24",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "au-post-study-work-3",
+      "statement": "Hong Kong and British National Overseas passport holders may stay 5 years on this stream.",
+      "value": 5,
+      "unit": "years (HK / BNO passport holders)",
+      "as_of": "2026-09-24",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "au-post-study-work-4",
+      "statement": "Applicants must be aged 35 years or under when they apply (exceptions apply), must be in Australia when applying, must have held a Student visa in the last 6 months, and must hold a recent degree in a CRICOS-registered course.",
+      "value": 35,
+      "unit": "years (maximum age at application)",
+      "as_of": "2026-09-24",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "au-post-study-work-5",
+      "statement": "A Temporary Graduate visa (subclass 485) Post-Higher Education Work stream application costs from AUD 5,750.00.",
+      "value": 5750,
+      "unit": "AUD from (per application)",
+      "as_of": "2026-09-24",
+      "study_level": "bachelor"
+    }
+  ]
+}

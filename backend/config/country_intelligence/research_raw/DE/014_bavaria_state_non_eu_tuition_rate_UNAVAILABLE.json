@@ -1,0 +1,13 @@
+{
+  "country": "DE",
+  "topic": "bavaria_state_non_eu_tuition_rate",
+  "raw_status": "UNAVAILABLE",
+  "reason": "No single mandatory Bavarian state-wide tuition rate for non-EU Bachelor's students could be verified. (1) The Bavarian state ministry page for tuition fees is not at the assumed URL and returned HTTP 404, so no consolidated state figure was obtained. (2) Even with the two Bavarian university pages that were successfully fetched, the amounts DISAGREE (THI EUR 800/semester vs Hochschule München EUR 500/semester), which indicates the fee is set per university rather than by one uniform state rate, so there may be no single state figure to find. I am therefore not asserting a Bavarian state rate. Per-university values ARE verified and recorded separately in 007_bavaria_non_eu_tuition_thi.json (800 EUR/semester) and 008_bavaria_non_eu_tuition_hs_muenchen.json (500 EUR/semester). The enabling legal framework, Art. 13 (3) sentence 1 no. 6 BayHIG, is confirmed only indirectly via THI's own citation of it.",
+  "attempted_sources": [
+    "https://www.stmwk.bayern.de/studium/tuition-fees.html — HTTP 404",
+    "https://www.thi.de/en/studies/international-degree-students/tuition-fees — FETCHED, no uniform state rate stated; institution-specific amount only (800 EUR/semester, citing Art. 13 (3) sentence 1 no. 6 BayHIG)",
+    "https://www.hm.edu/studium_1/bewerbung/faq_gebuehren_non_eu_auslaender.de.html — FETCHED, different institution-specific amount (500.00 EUR/semester), references Hochschulgebührensatzung § 8 exemptions but no BayHIG article",
+    "https://www.tum.de/en/studies/fees/tuition — FETCHED, but publishes only a band (usually 2,000 or 3,000 EUR/semester for Bachelor) and no single Bavarian state rate"
+  ],
+  "checked_at": "2026-10-05"
+}
