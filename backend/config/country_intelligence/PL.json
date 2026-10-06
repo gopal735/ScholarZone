@@ -1,0 +1,335 @@
+{
+  "contract_version": "1.0.0",
+  "country": {
+    "currency": null,
+    "iso2": "PL",
+    "name_en": "Poland"
+  },
+  "gaps": [
+    {
+      "attempted_sources": [
+        "uw-wz-business-and-management-bachelor-2026"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "pl.education_costs.tuition_fees.public.bachelor",
+      "reason": "4 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 4000 EUR per year (uw-wz-business-and-management-bachelor-2026); 2200 EUR (uw-wz-business-and-management-bachelor-2026); 1200 EUR (uw-wz-business-and-management-bachelor-2026); 22 PLN (uw-wz-business-and-management-bachelor-2026). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "uw-welcome-point-financial-resources"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "pl.one_time_costs.blocked_account",
+      "reason": "2 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 2500 PLN (uw-welcome-point-financial-resources); 500 PLN (uw-welcome-point-financial-resources). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "uw-welcome-point-financial-resources"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "pl.one_time_costs.blocked_account.month",
+      "reason": "2 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 1010 PLN per month (uw-welcome-point-financial-resources); 823 PLN per month (uw-welcome-point-financial-resources). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "https://wz.uw.edu.pl/en/candidate/study-in-english/business-and-management/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "pl.pl-bachelor-tuition-national-unique-1",
+      "reason": "Archived figure recorded, but it is not a currency figure and its topic's primary field holds money. It is stored as a related figure rather than as a cost. Statement: The University of Warsaw states that tuition fees differ depending on the terms of admission, the language of studies and the year of admission, so no single national Polish Bachelor tuition figure exists."
+    },
+    {
+      "attempted_sources": [
+        "https://welcome.uw.edu.pl/wp/4-steps-to-legalise-your-stay-step-2-proof-of-sufficient-financial-resources/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "pl.pl-financial-proof-horizon-1",
+      "reason": "Archived figure recorded, but it is not a currency figure and its topic's primary field holds money. It is stored as a related figure rather than as a cost. Statement: The University of Warsaw states the funds must cover a period of 15 months of stay for a first-year student, or the whole stay where shorter than 15 months."
+    },
+    {
+      "attempted_sources": [
+        "https://welcome.uw.edu.pl/wp/4-steps-to-legalise-your-stay-step-2-proof-of-sufficient-financial-resources/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "pl.pl-financial-proof-rent-additive-1",
+      "reason": "Archived evidence recorded a finding with no numeric figure: The PLN 1,010 and PLN 823 figures are base amounts to which rental and utility fees must be added for each month of stay, not total amounts."
+    },
+    {
+      "attempted_sources": [
+        "https://welcome.uw.edu.pl/wp/4-steps-to-legalise-your-stay-step-2-proof-of-sufficient-financial-resources/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "pl.pl-financial-proof-scholarship-accepted-1",
+      "reason": "Archived figure recorded, but it is not a currency figure and its topic's primary field holds money. It is stored as a related figure rather than as a cost. Statement: The University of Warsaw states that a certificate of awarding a scholarship is an accepted document for proving financial resources."
+    },
+    {
+      "attempted_sources": [
+        "https://welcome.uw.edu.pl/wp/4-steps-to-legalise-your-stay-step-2-proof-of-sufficient-financial-resources/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "pl.pl-financial-proof-statement-age-1",
+      "reason": "Archived figure recorded, but it is not a currency figure and its topic's primary field holds money. It is stored as a related figure rather than as a cost. Statement: The University of Warsaw states proof must also cover the cost of studies themselves, in addition to maintenance, rent and travel."
+    },
+    {
+      "attempted_sources": [
+        "https://www.gov.pl/web/uw-podlaski/absolwent-poszukujacy-pracy"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "pl.pl-poststudy-permit-name-1",
+      "reason": "Archived evidence recorded a finding with no numeric figure: The official name is a temporary residence permit (zezwolenie na pobyt czasowy) on the ground of being a graduate of a Polish institution seeking work, under Article 186(1)(6) of the Act of 12 December 2013 on Aliens."
+    }
+  ],
+  "research": {
+    "evidence_artifact_count": 5,
+    "researched_at": "2026-10-05"
+  },
+  "sections": {
+    "career": {
+      "average_starting_salary": {
+        "gross_monthly": {
+          "as_of": "2026",
+          "currency": "PLN",
+          "note": "ZUS publishes an annual contribution base cap of PLN 282,600 for pension and disability insurance in 2026, equal to 30 times the projected average monthly wage.",
+          "per": "year",
+          "source_ids": [
+            "pl-zus-2026-minimum-wage-and-base"
+          ],
+          "value": 282600,
+          "value_status": "OFFICIAL_GOVERNMENT"
+        }
+      },
+      "net_monthly_income": {
+        "month": {
+          "as_of": "2026",
+          "currency": "PLN",
+          "note": "This figure describes gross (before-tax) income, not take-home pay. It was filed on the net topic and has been demoted rather than published, because break-even must compare money out against money that actually reaches the worker. Using gross here would roughly halve the reported months in most European countries.",
+          "per": "month",
+          "source_ids": [
+            "pl-mf-zus-net-model-2026"
+          ],
+          "value": null,
+          "value_status": "UNKNOWN"
+        }
+      }
+    },
+    "education_costs": {
+      "tuition_fees": {
+        "public": {
+          "bachelor": {
+            "as_of": "2026/2027",
+            "colliding_values": [
+              {
+                "as_of": "2026/2027",
+                "currency": "EUR",
+                "per": "year",
+                "source_ids": [
+                  "uw-wz-business-and-management-bachelor-2026"
+                ],
+                "statement": "The Faculty of Management, University of Warsaw, charges 4,000 EUR for the English-language Bachelor's programme in Business and Management for the 2026/2027 academic year when paid in one instalment.",
+                "value": 4000
+              },
+              {
+                "as_of": "2026/2027",
+                "currency": "EUR",
+                "per": null,
+                "source_ids": [
+                  "uw-wz-business-and-management-bachelor-2026"
+                ],
+                "statement": "The same University of Warsaw Bachelor programme can be paid as two instalments of 2,200 EUR each for the academic year.",
+                "value": 2200
+              },
+              {
+                "as_of": "2026/2027",
+                "currency": "EUR",
+                "per": null,
+                "source_ids": [
+                  "uw-wz-business-and-management-bachelor-2026"
+                ],
+                "statement": "The same University of Warsaw Bachelor programme can be paid as four instalments of 1,200 EUR each for the academic year.",
+                "value": 1200
+              },
+              {
+                "as_of": "2026",
+                "currency": "PLN",
+                "per": null,
+                "source_ids": [
+                  "uw-wz-business-and-management-bachelor-2026"
+                ],
+                "statement": "The University of Warsaw charges a student ID (ELS) payment of 22 PLN as part of the application for its English-language Bachelor programme.",
+                "value": 22
+              }
+            ],
+            "currency": "PLN",
+            "note": "The Faculty of Management, University of Warsaw, charges 4,000 EUR for the English-language Bachelor's programme in Business and Management for the 2026/2027 academic year when paid in one instalment.",
+            "source_ids": [
+              "uw-wz-business-and-management-bachelor-2026"
+            ],
+            "value": 4000,
+            "value_status": "UNIVERSITY_OFFICIAL"
+          }
+        }
+      }
+    },
+    "one_time_costs": {
+      "blocked_account": {
+        "as_of": "2026",
+        "colliding_values": [
+          {
+            "as_of": "2026",
+            "currency": "PLN",
+            "per": null,
+            "source_ids": [
+              "uw-welcome-point-financial-resources"
+            ],
+            "statement": "The University of Warsaw states a person arriving from a third country outside the EU must additionally show PLN 2,500 to cover return travel.",
+            "value": 2500
+          },
+          {
+            "as_of": "2026",
+            "currency": "PLN",
+            "per": null,
+            "source_ids": [
+              "uw-welcome-point-financial-resources"
+            ],
+            "statement": "The University of Warsaw states return travel funds of PLN 500 for a non-neighbouring EU citizen and PLN 200 for a citizen of a neighbouring state.",
+            "value": 500
+          }
+        ],
+        "currency": "PLN",
+        "note": "The University of Warsaw states a person arriving from a third country outside the EU must additionally show PLN 2,500 to cover return travel.",
+        "related_figures": {
+          "pl-financial-proof-scholarship-accepted-1": {
+            "as_of": "2026",
+            "descriptive": true,
+            "note": "The University of Warsaw states that a certificate of awarding a scholarship is an accepted document for proving financial resources.",
+            "source_ids": [
+              "uw-welcome-point-financial-resources"
+            ],
+            "study_level": "bachelor",
+            "value": 1,
+            "value_status": "UNIVERSITY_OFFICIAL"
+          },
+          "pl-financial-proof-statement-age-1": {
+            "as_of": "2026",
+            "descriptive": true,
+            "note": "The University of Warsaw states proof must also cover the cost of studies themselves, in addition to maintenance, rent and travel.",
+            "source_ids": [
+              "uw-welcome-point-financial-resources"
+            ],
+            "study_level": "bachelor",
+            "value": 1,
+            "value_status": "UNIVERSITY_OFFICIAL"
+          }
+        },
+        "source_ids": [
+          "uw-welcome-point-financial-resources"
+        ],
+        "value": 2500,
+        "value_status": "UNIVERSITY_OFFICIAL"
+      }
+    },
+    "residency": {
+      "job_seeker_residence_permit": {
+        "duration": {
+          "bachelor": {
+            "month": {
+              "as_of": "2026",
+              "note": "Poland grants a foreigner who graduated from a Polish higher education institution a temporary residence permit for job-seeking or business formation for a period of 9 months.",
+              "per": "month",
+              "source_ids": [
+                "podlaski-uw-absolwent-poszukujacy-pracy"
+              ],
+              "study_level": "bachelor",
+              "value": 9,
+              "value_status": "OFFICIAL_GOVERNMENT"
+            },
+            "related_figures": {
+              "pl-poststudy-once-only-1": {
+                "as_of": "2026",
+                "note": "The Polish graduate job-search temporary residence permit is granted only once, directly after completion of studies.",
+                "source_ids": [
+                  "podlaski-uw-absolwent-poszukujacy-pracy"
+                ],
+                "study_level": "bachelor",
+                "value": 1,
+                "value_status": "OFFICIAL_GOVERNMENT"
+              },
+              "pl-poststudy-timing-1": {
+                "as_of": "2026",
+                "note": "The application must be submitted no later than the last day of the applicant's lawful stay in Poland.",
+                "source_ids": [
+                  "podlaski-uw-absolwent-poszukujacy-pracy"
+                ],
+                "study_level": "bachelor",
+                "value": 0,
+                "value_status": "OFFICIAL_GOVERNMENT"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "sources": [
+    {
+      "archived": true,
+      "as_of": "2026 tax year",
+      "confidence": null,
+      "id": "pl-mf-zus-net-model-2026",
+      "notes": null,
+      "publisher": "Ministry of Finance / National Tax Administration (podatki.gov.pl, KAS) and Social Insurance Institution (ZUS)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "net_monthly_income evidence",
+      "url": "https://www.podatki.gov.pl/podatki-osobiste/pit/informacje-podstawowe/co-jest-opodatkowane/zbycie-rzeczy-ruchomej"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "pl-zus-2026-minimum-wage-and-base",
+      "notes": null,
+      "publisher": "Social Insurance Institution (ZUS), Poland",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "gross_monthly_income evidence",
+      "url": "https://www.zus.pl/baza-wiedzy/skladki-wskazniki-odsetki/skladki/wysokosc-skladek-na-ubezpieczenia-spoleczne"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "podlaski-uw-absolwent-poszukujacy-pracy",
+      "notes": "Poland's post-study job-search permit: NINE MONTHS, granted ONCE, and it must be applied for DIRECTLY AFTER graduation. The page states 'Zezwolenie na pobyt czasowy udzielane jest jednorazowo, bezposrednio po zakonczeniu studiow na okres 9 miesiecy' - granted once, immediately after finishing studies, for 9 months.\n\nBACHELOR LEVEL IS EXPLICITLY COVERED. The eligibility text reads 'Cudzoziemcowi, ktory jest absolwentem polskiej uczelni' - a foreigner who is a graduate of a Polish higher education institution. It does not restrict to Master's, and the supporting document required is 'dyplom ukonczenia polskiej uczelni' without level restriction. So unlike Sweden's second-cycle-only permit, Poland's is open at Bachelor's.\n\nTWO CONDITIONS WORTH FLAGGING FOR A FIRST-YEAR MODEL, both on this page. First, the nine months cannot be banked: the application must go in 'nie pozniej niz w ostatnim dniu jego legalnego pobytu', i.e. no later than the last day of lawful stay, so a student who defers has no deferred job-search window. Second, a proof of an arranged place of residence in Poland is required even though the permit is for job hunting.\n\nFINANCIAL THRESHOLD, recorded because the brief's financial-proof topic needs it and this page carries a specific Polish figure. The monthly funds must exceed the social-assistance income threshold: 'powinna przekraczac 823zl dla osob w rodzinie lub 1010 zl dla osob samotnie gospodarujacych'. Note the direction is EXCEED, not 'at least', so PLN 823/PLN 1,010 are floors to clear, not the required amounts. The underlying amounts are defined by the 2004 social assistance statute rather than set on this page.\n\nThe figure is attributed to one provincial office page (Podlaskie). I did not fetch a second voivodeship office or the UDSC central page, so while gov.pl is the authoritative national portal, I record this as a single-office statement of the national rule. Note also that the udsc page I fetched returned navigation only with no article body, so I could not corroborate there.\n\nLEGAL BASIS, quoted: 'Art. 186 ust. 1 pkt 6 ustawy z dnia 12 grudnia 2013 r. o cudzoziemcach'. Recorded so the corpus can point at the statute.",
+      "publisher": "Podlaski Urzad Wojewodzki w Bialymstoku (Podlaskie Provincial Office), on the Polish government portal gov.pl",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "post_study_work evidence",
+      "url": "https://www.gov.pl/web/uw-podlaski/absolwent-poszukujacy-pracy"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "uw-welcome-point-financial-resources",
+      "notes": "Poland's student-residence financial proof, stated in a form that is directly usable. Base monthly amount: PLN 1,010 for a person living alone, PLN 823 for a person living in a family. Critically, the base figure is NOT the total: the page says the base is 'plus rental and utility fees for each month of stay'. Any Polish cost model that uses PLN 1,010 as the total monthly requirement will understate it by the whole rent and utilities.\n\nHORIZON IS 15 MONTHS, which is unusual and easy to miss: 'for the period of 15 months of stay or for the whole period of stay in Poland, when your stay will be shorter than 15 months'. So the first-year proof is fifteen months of base plus rent, not twelve. Separately, the page notes a third-country return-travel requirement of PLN 2,500, PLN 500 for a non-neighbouring EU citizen, and PLN 200 for a neighbour.\n\nThe page's own worked example is quoted verbatim and is the clearest single illustration of how the components combine: a person from China renting at PLN 900 all-inclusive 'must have PLN 1910 for each month of planned stay in Poland + PLN 2500 for a return ticket to your country + money to cover tuition fees for the rest of your studies.' PLN 1,010 + PLN 900 = PLN 1,910, which is the page doing the addition itself, so I do not rely on my own arithmetic.\n\nACCEPTABLE PROOF DOCUMENTS, and one of them matters for a scholarship corpus: 'certificate of awarding the scholarship' is an accepted instrument. Also credit card limit certificate, a Polish bank account certificate, and an employment and earnings certificate.\n\nTIMING CONSTRAINT: certificates must be issued no earlier than one month before submission.\n\nPROVENANCE CAVEAT, stated rather than hidden. This is a university page, and the priority for this metric is the national authority. It is credible and detailed but it is a university's guidance, not the regulation. I attempted two national sources: the Podlaskie provincial office graduate page (fetched successfully, and it carries the same PLN 823 / PLN 1,010 thresholds for the GRADUATE permit, recorded in 002_post_study_work.json) and the Lublin and Lower Silesian provincial office student-permit pages, both of which returned transport errors, plus the UDSC central page which returned navigation with no article body. The underlying regulation is a 2022 Minister of the Interior ordinance on the amount of financial resources a foreigner undertaking studies must hold; I saw it referenced in search results but did not fetch a readable copy, so I do not quote its figures.\n\nWHAT I DID NOT ESTABLISH: the exact PLN amount that the ordinance itself sets, and any 2026 update to the PLN 823 / PLN 1,010 thresholds. The university's page carries no explicit 'as of' year on the figures, so as_of is recorded conservatively.",
+      "publisher": "University of Warsaw, Welcome Point (Office of Academic and Student Affairs)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "UNIVERSITY_OFFICIAL",
+      "title": "financial_proof evidence",
+      "url": "https://welcome.uw.edu.pl/wp/4-steps-to-legalise-your-stay-step-2-proof-of-sufficient-financial-resources/"
+    },
+    {
+      "archived": true,
+      "as_of": "2026/2027",
+      "confidence": null,
+      "id": "uw-wz-business-and-management-bachelor-2026",
+      "notes": "Bachelor tuition at a named public Polish university. The Faculty of Management, University of Warsaw, English-language Bachelor's programme 'Business and Management' is 'Paid studies' with tuition for 2026/2027 of 4 000 EUR for one instalment covering the academic year, or 2 200 EUR for each of two instalments for the academic year, or four instalments of 1 200 EUR. The page header states 'Bachelor's studies (Full-time studies)' and 'Duration: 3 years/6 semesters', so this is unambiguously a Bachelor's figure.\n\nPER ACADEMIC YEAR, NOT PER SEMESTER. The page's own headings attach the amounts to 'for the academic year'. Two instalments at 2 200 EUR each equals the 4 000 EUR single-instalment figure, which is internally consistent and confirms the annual reading. The earlier search-engine snippet for this programme rendered the figure as '4 000 EUR/semester', which would be wrong by a factor of two; the fetched page is the authority and it says per academic year. That discrepancy is worth flagging because a search index is exactly where a doubled tuition figure would enter a corpus unchecked.\n\nThe university also charges a PLN 22 student ID (legitymacja) payment, recorded verbatim on the same page.\n\nCOVERAGE LIMIT, stated rather than glossed. This is one faculty at one university. Poland does not have a single national Bachelor tuition figure: it is set per programme by each institution. The University of Warsaw's central admissions office publishes a per-faculty fee schedule as a PDF, and I attempted to fetch two of those PDFs (rekrutacja.uw.edu.pl/files/pdf/tuition_fees_2026-2027_05.10.2026.pdf and the WNE faculty fee declaration). Both returned raw PDF binary streams that this tool could not decode into readable text, so I could not quote them. Their existence is visible from the university pages I did fetch, but I do not record any figure from them. Other faculties at the same university carry different fees, and the WNE faculty fee declaration surfaced in search results showing figures such as 4 900 EUR per year for its business programmes, which is consistent with per-faculty variation, but I did not fetch a page I could read and so I do not record it.\n\nA separate official university page, the Welcome Point tuition-fees page, confirms the mechanism in prose I did read verbatim: 'Tuition fees differ depending on the terms of admission, the language of studies, and the year of admission.' That sentence is the reason a single Polish national figure cannot be asserted, and it is why this file carries a named-university figure only.",
+      "publisher": "Faculty of Management, University of Warsaw (Wydzial Zarzadzania UW)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "UNIVERSITY_OFFICIAL",
+      "title": "bachelor_tuition evidence",
+      "url": "https://wz.uw.edu.pl/en/candidate/study-in-english/business-and-management/"
+    }
+  ]
+}

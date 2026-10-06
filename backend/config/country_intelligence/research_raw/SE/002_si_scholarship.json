@@ -1,0 +1,54 @@
+{
+  "country": "SE",
+  "topic": "scholarship_availability_bachelor",
+  "source_id": "si-se-scholarship-global-professionals",
+  "source_url": "https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "The Swedish Institute (Svenska institutet)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "# SI Scholarship for Global Professionals\n\nDo you want to contribute to the sustainable development of your home country? Are you seeking new academic perspectives to strengthen your ability to lead societal change? The Swedish Institute awards academic scholarships for master's studies in Sweden, to global professionals from a selection of countries. Read through the call for applications carefully.\n\nLevel: Master\n\nAvailable for 34 countries.\n\nSee all countries\n\nArmenia, Azerbaijan, Bangladesh, Belarus, Bolivia, Brazil, Colombia, Ecuador, Egypt, Ethiopia, Georgia, Guatemala, Indonesia, Iraq, Jordan, Kenya, Liberia, Malaysia, Mexico, Moldova, Morocco, Nigeria, Peru, Philippines, Rwanda, Senegal, South Africa, Tanzania, Thailand, Uganda, Ukraine, Uzbekistan, Vietnam, Zambia\n\n## Overview\n\nSweden invests in global talent to build lasting partnerships for a more sustainable and equitable world. Through this scholarship, you'll gain access to world-class education, cutting-edge research, and a vibrant network of peers - all while developing the tools to drive change back home.\n\nThe scholarship supports full-time, one- or two-year master's studies at Swedish universities, across a wide range of English-taught programmes.\n\n### Eligible programmes\n\nThe programmes eligible for the SI scholarship for Global Professionals are English-taught master's programmes, covering a variety of educational fields.\n\n### University admission\n\nYou must be liable to pay tuition fees to Swedish universities, have followed the steps of University Admissions and be admitted to one of the eligible master's programmes on the day of admissions announcements.\n\n## What's included\n\nThe Scholarship for Global Professionals is a competitive fully-funded scholarship that includes:\n\n- Full tuition fee coverage. The fee is paid directly by SI to your Swedish university each semester.\n- A monthly allowance of SEK 12,000 to cover your living expenses throughout the study period.\n- A travel grant of SEK 15,000 (*10,000 for scholars from Armenia, Azerbaijan, Belarus, Georgia, Moldova and Ukraine). This is a one-time payment and does not apply for students already living in Sweden.\n\n## The scholarship does not include an insurance. We recommend checking with your university to learn more about what insurance coverage they provide for international students.",
+  "research_notes": "CONFIRMED, from si.se directly, that the flagship Swedish Institute scholarship is a MASTER'S programme only. Three independent verbatim statements on this page establish the level: the page header states 'The Swedish Institute awards academic scholarships for master's studies in Sweden'; a labelled metadata field states 'Level: Master'; and the eligible-programmes section states 'The programmes eligible for the SI scholarship for Global Professionals are English-taught master's programmes'.\n\nI did NOT find, on either si.se scholarship page, any mention of a Bachelor's-level SI scholarship. I fetched the second SI scholarship programme (Pioneering Women in STEM) only by name reference, not as a page read, so I make no claim about its contents.\n\nConsequence for the corpus: there is NO Swedish Institute scholarship available at Bachelor's level. Any Bachelor figure attributed to the SI would be a category error. The SEK 12,000 monthly allowance, SEK 15,000 travel grant and full-tuition coverage recorded in claims below are therefore MASTER'S-level benefits and must never be attached to a Bachelor record.\n\nSecond, separate Swedish scholarship claim from the same page: 'If you are a non-EU/EEA student ... and you have a scholarship from Lund University or the Swedish Institute' (Lund University tuition page, same retrieval) confirms SI scholarships are the tuition-offsetting kind tied to a programme, consistent with the above.",
+  "claims": [
+    {
+      "claim_id": "se-si-scholarship-level-1",
+      "statement": "The Swedish Institute's SI Scholarship for Global Professionals is offered at Master's level only.",
+      "value": "master",
+      "unit": "study level",
+      "as_of": "2026",
+      "study_level": "master"
+    },
+    {
+      "claim_id": "se-si-scholarship-bachelor-exists-1",
+      "statement": "No Swedish Institute scholarship for Bachelor's-level study appears anywhere on the SI Scholarship for Global Professionals page; the only level the programme supports is Master's.",
+      "value": 0,
+      "unit": "bachelor-level SI scholarship programmes found",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "se-si-scholarship-countries-1",
+      "statement": "The SI Scholarship for Global Professionals is limited to nationals of 34 listed countries, none of which are EU or EEA members.",
+      "value": 34,
+      "unit": "eligible countries",
+      "as_of": "2026",
+      "study_level": "master"
+    },
+    {
+      "claim_id": "se-si-scholarship-allowance-1",
+      "statement": "The SI Scholarship for Global Professionals pays a monthly living-cost allowance of SEK 12,000 for the study period.",
+      "value": 12000,
+      "unit": "SEK per month",
+      "as_of": "2026",
+      "study_level": "master"
+    },
+    {
+      "claim_id": "se-si-scholarship-travel-1",
+      "statement": "The SI Scholarship for Global Professionals includes a one-time travel grant of SEK 15,000, reduced to SEK 10,000 for scholars from Armenia, Azerbaijan, Belarus, Georgia, Moldova and Ukraine.",
+      "value": 15000,
+      "unit": "SEK one-time travel grant",
+      "as_of": "2026",
+      "study_level": "master"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "country": "CA",
+  "topic": "permanent_residence",
+  "source_id": "ircc-canadian-experience-class",
+  "source_url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/who-can-apply/canadian-experience-class.html",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Immigration, Refugees and Citizenship Canada (IRCC)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "Canadian Experience Class\n\nThe Canadian Experience Class is for skilled workers who have Canadian work experience and want to become permanent residents.\n\nCheck your Canadian work experience\n\nYour Canadian work experience must meet all the following requirements. It must\n\nbe in 1 or more of these NOC categories: training, education, experience and responsibilities (TEER) 0, 1, 2 or 3\n\nYour experience can be in more than 1 job or NOC.\n\nbe gained by working in Canada (including the province of Quebec) while authorized to work under temporary resident status\n\nIf you worked remotely, you must have been physically in Canada and working for a Canadian employer.\n\nshow that you performed:\n\nthe actions in the lead statement of the NOC job description, and\n\nmost of the main duties listed\n\nbe paid work (you must have been paid wages or earned commission-volunteer work or unpaid internships don't count)\n\ntotal at least 1 year of work or 1,560 hours total (30 hours per week) in the 3 years before you apply\n\nWork experience you can't count\n\nYou can't count work experience if\n\nyou were studying full-time while you worked (co-op work terms also don't count)\n\nyou were self-employed (some physicians can count their time spent self-employed)\n\nyou were a volunteer or an unpaid intern\n\nyou were not legally allowed to work in Canada\n\nHow to count your work hours\n\nYou can meet the 1,560-hour requirement in a few different ways:\n\nfull-time at 1 job: up to 30 hours a week for 12 months = 1 year full-time (1,560 hours)\n\nequal amount in part-time work: for example, 15 hours a week for 24 months = 1 year full time (1,560 hours)\n\nfull-time at more than 1 job: up to 30 hours a week combined across more than 1 job, for 12 months = 1 year full-time (1,560 hours)\n\nWhere you can live in Canada\n\nWhen you fill out your profile, we'll ask you where you plan to live in Canada.\n\nYou must plan to live outside the province of Quebec. The province of Quebec selects its own skilled workers.",
+  "research_notes": "Route recorded: the Canadian Experience Class (CEC), one of the three Express Entry programmes. Note that the URL requested (…/express-entry/eligibility/canadian-experience-class.html) redirected to …/express-entry/who-can-apply/canadian-experience-class.html and the page loaded under that final URL, which is the one recorded. CRITICAL POINT for a student corpus: the minimum qualifying period is 1 year (1,560 hours) of PAID skilled Canadian work experience gained while authorized to work as a temporary resident - which for a graduate is typically the PGWP period - and it must fall within the 3 years before the application. A student's full-time study work does NOT count: 'You can't count work experience if you were studying full-time while you worked (co-op work terms also don't count)'. So co-op placements cannot be run back-to-back to manufacture PR eligibility; the student must be out of full-time study and working. Also excluded: self-employment (bar a narrow physician policy), volunteering, unpaid internships, and work done without authorization. Quebec is excluded from CEC entirely. Not verified here and therefore not claimed: the Express Entry points grid, CRS cut-off scores (which are invitation-dependent and change per draw), the Federal Skilled Worker Program's 1-year requirement, and Provincial Nominee Program streams - the PNP is usually the faster PR route for international graduates and a corpus entry that names only CEC would be misleading, but I did not fetch a PNP source so no PNP figure is asserted here.",
+  "claims": [
+    {
+      "claim_id": "ca-permanent-residence-1",
+      "statement": "The Canadian Experience Class requires at least 1 year of work, or 1,560 hours total (30 hours per week), of skilled Canadian work experience in the 3 years before applying.",
+      "value": 1,
+      "unit": "years (1,560 hours)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ca-permanent-residence-2",
+      "statement": "Qualifying work must be paid, must be in a NOC TEER 0, 1, 2 or 3 category, and must have been performed in Canada while authorized to work under temporary resident status.",
+      "value": null,
+      "unit": "eligibility condition",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ca-permanent-residence-3",
+      "statement": "Work done while studying full-time does not count toward CEC, and co-op work terms also do not count.",
+      "value": null,
+      "unit": "exclusion",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ca-permanent-residence-4",
+      "statement": "The CEC is not available to applicants who plan to live in Quebec, which selects its own skilled workers.",
+      "value": null,
+      "unit": "geographic exclusion",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

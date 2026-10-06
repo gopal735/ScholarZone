@@ -1,0 +1,46 @@
+{
+  "country": "DE",
+  "topic": "mandatory_fees_itemised_semester_fee",
+  "source_id": "de-uni-tu-berlin-semester-fees-002",
+  "source_url": "https://www.tu.berlin/en/studierendensekretariat/topics-a-z/semester-fees",
+  "source_type": "UNIVERSITY_OFFICIAL",
+  "publisher": "Technische Universität Berlin (TU Berlin), Department I - Student Services, I A - Office of Student Affairs",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "Semester Fees / Costs for enrollment & re-registration\nYou pay the semester fee for enrollment and re-registration via transfer to the University Cashier. It is not possible to pay the semester fee in cash to the University Cashier. And it is not possible to pay the semester fee in installments.\n\nThe semester fees are made up of several other fees:\nSemester fees for the winter semester 2026/27\n€50.00 Administrative fee — Pursuant to Section 2 (8) BerlHG\n€14.56 Student body contribution fee pursuant to the student body contribution ordinance — in conjunction with Section 20 BerlHG\n€85.00 studierendenWERK Berlin contribution — pursuant to Sozialbeitragsverordnung\n€149.56 Total without the semesterticket\n€226.80 Semesterticket contribution pursuant to the Semesterticket Regulations — in conjunction with Section 18a (4) BerlHG\n+ €2.70 Contribution to the social fund for the semesterticket — pursuant to Sozialfonds-Satzung in conjunction with Section 18a (5) BerlHG\n€379.06 Total with the semesterticket\n+ €19.94 An additional late fee is charged in the event of a late re-registration made after the deadline stated in the reminder. Pursuant to Section 32 (3) AllgStuPO\n\nExemption from the administrative fee for refugees\nRefugees who receive benefits according to the \"Asylbewerberleistungsgesetz\" and Refugees with a residence permit according to section 24 Aufenthaltsgesetz (AufenthG) can get an exemption from the administrative fee of 50 euros under certain conditions.",
+  "research_notes": "CONFIRMED from TU Berlin's own Student Affairs office, with an itemised breakdown — the best-evidenced mandatory-fee record in this corpus because it separates the components exactly as the schema requires. Winter semester 2026/27: EUR 379.06 per semester TOTAL including the Semesterticket, or EUR 149.56 per semester WITHOUT the Semesterticket. Components: EUR 50.00 administrative fee (Section 2(8) BerlHG), EUR 14.56 student body contribution (Section 20 BerlHG), EUR 85.00 studierendenWERK Berlin contribution (Sozialbeitragsverordnung), EUR 226.80 Semesterticket contribution (Section 18a(4) BerlHG), EUR 2.70 social fund contribution (Section 18a(5) BerlHG). Late re-registration adds EUR 19.94. IMPORTANT SCOPE WARNINGS FOR THE CORPUS: (1) The TU Berlin figure is NOT a German national figure — it is heavily shaped by the Berlin Semesterticket, which most German cities do not have in the same form. Compare instead the Stuttgart figure of EUR 184.00/semester and the TUM figure of EUR 97.00 (Munich) / EUR 82.00 (Straubing), which are 2x to 4x lower. (2) Berlin charges no tuition for non-EU students but still charges this semester fee, so 'free' in Germany means 'tuition-free', not 'cost-free'. (3) Confirmed exemption relevant to scholarship corpora: refugees under the Asylbewerberleistungsgesetz and under Section 24 AufenthG may be exempted from the EUR 50 administrative fee, and the AStA social fund can subsidise Semesterticket hardship cases. Unit is per semester, semester stated explicitly (WS 2026/27), so as_of = 2026.",
+  "claims": [
+    {
+      "claim_id": "de-mandatory-semester-fee-tu-berlin-total",
+      "statement": "For winter semester 2026/27 the total semester fee at TU Berlin is €379.06, comprising the administrative fee, student body contribution, studierendenWERK Berlin contribution, Semesterticket contribution and social fund contribution.",
+      "value": 379.06,
+      "unit": "EUR per semester",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "de-mandatory-semester-fee-tu-berlin-excl-transport",
+      "statement": "For winter semester 2026/27 the semester fee at TU Berlin is €149.56 excluding the Semesterticket, made up of a €50.00 administrative fee, €14.56 student body contribution fee and €85.00 studierendenWERK Berlin contribution.",
+      "value": 149.56,
+      "unit": "EUR per semester (excluding Semesterticket)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "de-mandatory-semester-fee-tu-berlin-semiticket",
+      "statement": "The Semesterticket component at TU Berlin for winter semester 2026/27 is a €226.80 contribution pursuant to Section 18a (4) BerlHG, plus a €2.70 contribution to the social fund for the semesterticket.",
+      "value": 226.8,
+      "unit": "EUR per semester (Semesterticket contribution)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "de-mandatory-semester-fee-components",
+      "statement": "The mandatory components at TU Berlin for winter semester 2026/27 are a €50.00 administrative fee pursuant to Section 2 (8) BerlHG, a €14.56 student body contribution fee pursuant to the student body contribution ordinance in conjunction with Section 20 BerlHG, and a €85.00 studierendenWERK Berlin contribution pursuant to Sozialbeitragsverordnung; a late re-registration adds €19.94.",
+      "value": 50,
+      "unit": "EUR per semester (administrative fee)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

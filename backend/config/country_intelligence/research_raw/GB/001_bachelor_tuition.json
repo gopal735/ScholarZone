@@ -1,0 +1,30 @@
+{
+  "country": "GB",
+  "topic": "bachelor_tuition",
+  "source_id": "uom-bsc-cs-2027",
+  "source_url": "https://www.manchester.ac.uk/study/undergraduate/courses/2026/00560/bsc-computer-science/",
+  "source_type": "UNIVERSITY_OFFICIAL",
+  "publisher": "The University of Manchester",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2027 entry",
+  "raw_extract": "### Fees\n\nTuition fees for home students commencing their studies in September 2027 will be £10,050 per annum. Tuition fees for international students will be £39,700 per annum.\n\nFor general information please see the [undergraduate finance](https://www.manchester.ac.uk/study/undergraduate/fees-and-funding/) pages.",
+  "research_notes": "Requested the 2026-entry URL; the site served the 2027-entry course profile (page title 'BSc Computer Science (2027 entry) | The University of Manchester', canonical path /study/undergraduate/courses/2027/00560/bsc-computer-science/). The verbatim Fees line is recorded exactly as returned. The UK has no single national international tuition figure - fees are set per institution and per course, so this is one named university's price for one named course (BSc Computer Science, 3 years, UCAS G400). The same fetch also confirms the England home-fee cap of £10,050 for 2027/28, which is a different (domestic) figure and must not be used as the international number. A second Manchester course was fetched on the same 2027 cycle to show within-institution spread (see 001b file).",
+  "claims": [
+    {
+      "claim_id": "gb-bachelor-tuition-1",
+      "statement": "The University of Manchester charges international students £39,700 per annum for the BSc Computer Science (3 years, 2027 entry).",
+      "value": 39700,
+      "unit": "GBP per year",
+      "as_of": "2027 entry",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "gb-bachelor-tuition-2",
+      "statement": "The same University of Manchester page states home (domestic) students commencing studies in September 2027 will pay £10,050 per annum - the England home fee cap figure, not the international rate.",
+      "value": 10050,
+      "unit": "GBP per year",
+      "as_of": "2027 entry",
+      "study_level": "bachelor"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "country": "IT",
+  "topic": "net_monthly_income",
+  "source_id": "it-agenziaentrate-irpef-aliquote-2026",
+  "source_url": "https://www.agenziaentrate.gov.it/portale/imposta-sul-reddito-delle-persone-fisiche-irpef-/aliquote-e-calcolo-dell-irpef",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Agenzia delle Entrate (Italian Revenue Agency), Ministry of Economy and Finance",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "aliquote Irpef\n\nfino a euro 28.000 -> 23%\n6.440 euro + 23% sul reddito che supera i euro 15.000 fino a euro 28.000\n\nda 28.001 fino a euro 50.000\n35%\n6.440 euro + 35% sul reddito che supera i 28.000 euro fino a 50.000 euro\n\noltre a euro 50.000\n43%\n14.140 euro + 43% sul reddito che supera i 50.000 euro\n\nATTENZIONE: la legge di Bilancio 2026 ha ridotto la seconda aliquota dell'Irpef dal 35 al 33 per cento. Ne consegue che, per i redditi imponibili superiori a 50.000 euro, l'imposta dovuta e' pari a 13.700 euro (non piu' 14.140) + il 43% sul reddito eccedente i 50.000 euro. Nei confronti dei contribuenti con reddito complessivo superiore a 200.000 euro, e' stato previsto un meccanismo di sterilizzazione del beneficio fiscale derivante dalla riduzione dell'aliquota (articolo 1, commi 3 e 4, legge n. 199/2025).\n\nL'Irpef dovuta dal contribuente e' determinata sottraendo dall'imposta lorda le detrazioni previste dalla normativa: ad esempio, le detrazioni previste per tipologia di reddito prodotto (lavoro dipendente, pensione, autonomo), la detrazione per il coniuge, i figli ... e gli ascendenti che convivano con il contribuente, e le detrazioni riconosciute a fronte di alcune tipologie di spese sostenute durante l'anno (come salute, istruzione, interessi per il mutuo dell'abitazione, ecc). Inoltre vanno sottratti i crediti d'imposta spettanti.",
+  "supporting_sources": [
+    {
+      "role": "employee social security (IVS) contribution rate",
+      "source_url": "https://www.inps.it/it/it/dettaglio-scheda.it.schede-servizio-strumento.schede-servizi.50286.denuncia-e-versamento-dei-contributi-ex-enpals-fondo-pensioni-lavoratori-dello-spettacolo-e-fondo-pensioni-sportivi-professionisti-.html",
+      "publisher": "Istituto Nazionale della Previdenza Sociale (INPS)",
+      "raw_extract": "La contribuzione pensionistica e' pari al 33% della retribuzione giornaliera lorda (o compenso), di cui il 23,81% a carico del datore di lavoro (o committente) e il 9,19% a carico del lavoratore. In particolare, il contributo (33% ovvero il 35,70% per ballerini e tersicorei) e' calcolato sulla base, ed entro i limiti, di appositi massimali variabili a seconda dell'anzianita' assicurativa del lavoratore."
+    },
+    {
+      "role": "2026 contributory wage ceiling and minimum, used to confirm no additional 1% contribution applies",
+      "source_url": "https://www.inps.it/content/dam/inps-site/it/scorporati/circolari-e-messaggi/2026/03/Circolare_15198/Allegati/16638_Circolare-numero-27-del-11-03-2026.pdf",
+      "publisher": "INPS, Circolare n. 27 del 11 marzo 2026",
+      "raw_extract": "la prima fascia di retribuzione annuale oltre la quale e' prevista l'applicazione dell'aliquota aggiuntiva dell'1% (art. 3-ter del decreto-legge 19 settembre 1992, n. 384 ...) e' pari a 56.224,00 euro; il massimale di cui all'articolo 2, comma 18, della legge 8 agosto 1995, n. 335 ... e' pari a 122.295,00 euro. ... Per l'anno 2026, l'aliquota contributiva a carico dei lavoratori dipendenti non agricoli ... e' pari al 33%."
+    }
+  ],
+  "derivation": {
+    "method": "DERIVED from the official 2026 IRPEF bracket schedule and the official INPS employee IVS contribution rate. Every input is either quoted from an official page or a stated gross input. No percentage-of-gross guess was used.",
+    "gross_input_eur_per_month": 2000.0,
+    "months_paid_per_year": 13,
+    "gross_input_note": "EUR 2,000 gross per month over 13 monthly payments is a stated INPUT chosen by me, not a published graduate salary. 13 payments (12 mensilita plus the 13th) is the normal Italian CCNL pattern and is used because the annual IRPEF liability is spread over 13 months, so dividing the annual net by 13 gives the average monthly take-home.",
+    "step_1_inps_ivs_employee_eur_per_year": 2389.4,
+    "step_1_working": "EUR 26,000 x 9.19% = EUR 2,389.40. The 2026 contributory ceiling is EUR 122,295, so the whole EUR 26,000 is contributory; EUR 26,000 is also well below the EUR 56,224 threshold above which an additional 1% applies, so no add-on.",
+    "step_2_taxable_income_eur_per_year": 23610.6,
+    "step_2_working": "EUR 26,000.00 - EUR 2,389.40 = EUR 23,610.60. This falls in the first IRPEF bracket, taxed at 23%.",
+    "step_3_irpef_gross_tax_eur_per_year": 5430.44,
+    "step_3_working": "EUR 23,610.60 x 23% = EUR 5,430.44. No second or third bracket reached.",
+    "step_4_no_deductions_applied": true,
+    "step_4_note": "I have deliberately applied NO detrazioni (tax credits) and NO addizionale regionale or comunale. I did not find an official 2026 detrazioni-per-lavoro-dipendente table on an Agenzia delle Entrate page within this pass, so applying an unsourced credit table would have been an invention. Omitting credits makes this figure a LOWER BOUND on true take-home; see the sensitivity note below.",
+    "net_eur_per_year": 18180.16,
+    "net_eur_per_month": 1398.47,
+    "net_working": "(26,000.00 - 2,389.40 - 5,430.44) / 13 = EUR 18,180.16 / 13 = EUR 1,398.47 net per month"
+  },
+  "claims": [
+    {
+      "claim_id": "it-net-monthly-001",
+      "value": 1398.47,
+      "unit": "EUR per month",
+      "as_of": "2026",
+      "statement": "DERIVED take-home pay for an Italian private-sector employee paid EUR 2,000 gross per month over 13 months (EUR 26,000 gross per year) in tax year 2026: EUR 26,000 gross less EUR 2,389.40 employee INPS IVS contribution at the officially published 9.19% rate, less EUR 5,430.44 IRPEF at the Agenzia delle Entrate's officially published 23% first-bracket rate, divided by 13 payments = EUR 1,398.47 net per month. This is a NET figure, not gross, and it is a deliberate LOWER BOUND because no tax credits and no regional or municipal surcharges are applied."
+    },
+    {
+      "claim_id": "it-net-monthly-002",
+      "value": 1589.08,
+      "unit": "EUR per month",
+      "as_of": "2026",
+      "statement": "ILLUSTRATIVE SENSITIVITY, NOT A SOURCE FIGURE. The same derivation with the employee income-work tax credit (detrazione per lavoro dipendente) applied at EUR 2,477.90 per year, which is the formula in Agenzia delle Entrate Circolare 4/E of 16 May 2025 for an income between EUR 15,000 and EUR 28,000, namely EUR 1,910 + EUR 1,190 x ((28,000 - 23,610.60) / (28,000 - 15,000)) = EUR 1,910 + EUR 567.90. I did NOT read a confirmed 2026 credit table, so treat this as an indication of the size of the credit and NOT as evidence. Still no regional or municipal add-on."
+    },
+    {
+      "claim_id": "it-inps-rate-003",
+      "value": 9.19,
+      "unit": "percent of gross (employee IVS contribution rate)",
+      "as_of": "in force in 2026",
+      "statement": "INPS states the pension contribution is 33% of gross pay 'di cui il 23,81% a carico del datore di lavoro (o committente) e il 9,19% a carico del lavoratore', i.e. 9.19% is borne by the employee. The employee's total burden is higher than 9.19% because additional items can apply (see evidence_limitations)."
+    }
+  ],
+  "assumptions": [
+    "TAX YEAR 2026 for the IRPEF brackets and the INPS parameters. Note the 2026 change: the Agenzia delle Entrate page carries a warning that the 2026 Budget Law cut the second IRPEF rate from 35% to 33%, which only affects taxable income above EUR 50,000 and therefore does not touch this calculation.",
+    "Private-sector employee on the Fondo Pensioni Lavoratori Dipendenti (FPLD), standard contract. Public-sector employees are on a different arrangement and their rates differ (widely published as lower), as do apprentices, who pay a reduced rate. This figure does NOT cover them.",
+    "GROSS INPUT: EUR 2,000 per month over 13 payments was chosen by me. It is NOT a published graduate salary. It is a plausible entry-level professional figure but I could not source an official Italian graduate starting salary within this pass.",
+    "NO detrazioni (income tax credits) applied. This understates net.",
+    "NO addizionale regionale and NO addizionale comunale applied. These vary by region of residence and by municipality of residence and are normally a few percent of taxable income. I could not obtain a primary-source regional table within this pass, so rather than invent a rate I omit them. THIS FIGURE IS THEREFORE NOT A NATIONAL AVERAGE AND IS NOT A FIGURE FOR ANY SPECIFIC REGION OR MUNICIPALITY - it is a no-add-on baseline.",
+    "No TFR (Italian severance provision, accrued at 6.91% of gross) is deducted. TFR is not paid out monthly, so excluding it from a monthly take-home figure is correct, but the employer cost is higher than the gross implies.",
+    "No other income, no imputed family deductions, no rent or mortgage tax relief, no fringe benefits."
+  ],
+  "field_mapping": {
+    "net_monthly_income": "career.net_monthly_income (topic: net_monthly_income)"
+  },
+  "notes": "This is a genuine NET (in-busta) figure, not gross and not a percentage of gross. It is built from the Agenzia delle Entrate's own published 2026 IRPEF bracket schedule and the INPS's own published employee contribution rate, both quoted verbatim above. The result of EUR 1,398.47 is a LOWER BOUND: a real employee would also receive the detrazione per lavoro dipendente (claim it-net-monthly-002 suggests roughly EUR 190 per month more) and would have the regional and municipal add-ons withheld, which together would take the true figure somewhere in the region of EUR 1,500 to EUR 1,600 per month in a low-add-on region, and lower in a high-add-on region or city. It is NOT a national average: Italian take-home varies materially by region and municipality because of the regional and municipal IRPEF add-ons, and this figure applies to none of them specifically. I could not find an official Italian net-pay table or calculator published by Agenzia delle Entrate, INPS or the Ministry of Labour; the Agenzia delle Entrate does not publish ritenuta alla fonte tables for ordinary Italian-resident employees (those tables are for non-resident foreign workers and are published by the recipient institution, not by the Revenue Agency), so the net had to be derived from primary-source parameters rather than read off a published net table.",
+  "evidence_limitations": "Population covered: a hypothetical private-sector employee on a standard CCNL earning exactly EUR 2,000 gross per month, 13 payments, with no family situation and no tax credits. This is NOT a measured Italian graduate salary and NOT a measured Italian graduate take-home. No Italian official source publishes a graduate-specific take-home median that I could locate. Gross-to-net in Italy is highly individual (household composition, rent, second income, contract type, region) and highly nonlinear because of the three-band IRPEF structure, so a reader must not scale this figure by any assumed percentage. A reader would also be misled by treating it as a national average, because the regional and municipal add-ons that I omitted are real, region-specific, and are withheld monthly from the same payslip. The 9.19% INPS figure is the pension (IVS) contribution only; the true employee deduction on an Italian payslip also normally includes NASpI-type and other items that vary by employer size and sector, so the true net is lower than my figure and my figure is lower than the true net in the credits/region sense; the two errors partly offset but neither is measured here.",
+  "attempted_sources_not_used": [
+    "https://www.lavoro.gov.it/ - searched for an official Ministry of Labour net-pay ('calcolo busta paga') tool; no such official calculator is published at this address, and the results were third-party commercial calculators which are not acceptable evidence.",
+    "INPS Circolare n. 6 del 30 gennaio 2026 (https://www.inps.it/it/it/inps-comunica/atti/circolari-messaggi-e-normativa/dettaglio.circolari-e-messaggi.2026.01.circolare-numero-6-del-30-01-2026_15151.html) - the circular is published, but the PDF attachment path I tried returned HTTP 404 and the HTML landing page carries only the menu. The 2026 massimale, minimale and the 1% additional-contribution threshold were instead read from INPS Circolare n. 27 of 11 March 2026, which states them explicitly and which I did read.",
+    "Agenzia delle Entrate 2026 detrazioni per lavoro dipendente table - not located on an official page within this pass; the 2025 schedule (Circolare 4/E) is quoted in claim it-net-monthly-002 and explicitly flagged as unverified for 2026."
+  ]
+}

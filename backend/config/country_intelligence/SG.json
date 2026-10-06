@@ -1,0 +1,295 @@
+{
+  "contract_version": "1.0.0",
+  "country": {
+    "currency": null,
+    "iso2": "SG",
+    "name_en": "Singapore"
+  },
+  "gaps": [
+    {
+      "attempted_sources": [
+        "sg-moe-ges-2025-graduate-starting-salary"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "sg.career.average_starting_salary.gross_monthly.month",
+      "reason": "6 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 5400 SGD per month (sg-moe-ges-2025-graduate-starting-salary); 5500 SGD per month (sg-moe-ges-2025-graduate-starting-salary); 5150 SGD per month (sg-moe-ges-2025-graduate-starting-salary); 5250 SGD per month (sg-moe-ges-2025-graduate-starting-salary); 6950 SGD per month (sg-moe-ges-2025-graduate-starting-salary); 4900 SGD per month (sg-moe-ges-2025-graduate-starting-salary). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "ntu-undergrad-tuition-2026"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "sg.education_costs.tuition_fees.public.bachelor",
+      "reason": "3 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 40600 SGD per year (ntu-undergrad-tuition-2026); 36350 SGD per year (ntu-undergrad-tuition-2026); 45600 SGD per year (ntu-undergrad-tuition-2026). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "https://www.ica.gov.sg/reside/STP/collect",
+        "https://www.ica.gov.sg/reside/STP/apply/ihl",
+        "https://www.mom.gov.sg/passes-and-permits/work-pass-exemption-for-foreign-students"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "sg.permanent_residence",
+      "next_review": null,
+      "reason": "Singapore Permanent Residence is not conferred by a minimum number of years of study and I did not fetch an ICA or Ministry of Home Affairs page establishing any minimum-years rule, so no figure is recorded. The Student's Pass pages I did fetch say nothing about a PR route: ICA's completion-of-formalities page states only that on expiry of the Student's Pass 'you will need to get a work pass to work in Singapore.' Any PR qualification would have to be assessed under ICA's discretionary PR application process, which is not a study-length threshold and was not fetched. Recording this as UNAVAILABLE rather than inventing a minimum."
+    },
+    {
+      "attempted_sources": [
+        "mom-work-pass-exemption-students"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "sg.residency.work_while_studying",
+      "reason": "2 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 16 per week (mom-work-pass-exemption-students); 0 (mom-work-pass-exemption-students). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "https://www.ica.gov.sg/reside/STP/apply/ihl"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "sg.student_pass_fee",
+      "reason": "Evidence was retrieved and archived, but this topic has no explicit mapping into the corpus schema, so the figure was not placed. Adding the mapping is a reviewed change, not something ingestion should guess."
+    },
+    {
+      "attempted_sources": [
+        "https://www.ica.gov.sg/reside/STP/apply/ihl",
+        "https://www.ica.gov.sg/reside/STP/collect",
+        "https://www.ica.gov.sg/reside/STP/apply",
+        "https://www.ica.gov.sg/docs/default-source/ica/forms/form-v36.pdf"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "sg.student_pass_financial_proof",
+      "next_review": null,
+      "reason": "ICA does not publish a monetary financial-proof threshold for a Student's Pass. The pages I fetched from the Immigration & Checkpoints Authority require financial information to be supplied but state no amount. Verbatim from the ICA Institutes of Higher Learning page: 'You will need the following documents/ information to complete your Student's Pass application, please have them ready before you apply: The Registration Acknowledgement Letter from the school you plan to attend; Your travel document biodata page and birth certificate (if applicable); Your personal information, including the list of countries / places you have previously resided in, your educational background, employment history and financial support; Your parents', spouse's, and/or siblings' personal information (if applicable); Your residential address and contact details in Singapore; Your email address; Your recent, passport-sized, digital, colour photograph taken within the last three months.' The corresponding ICA form V36, surfaced in search, asks for 'Applicant Average Monthly Income for past 6 months: SGD', 'Current Saving: SGD' and 'Other financial support' amounts, which confirms ICA asks for financial data without setting a floor. Singapore does publish a per-capita income threshold, but for MOE means-tested financial aid (S$1,875 PCI for international students), not for the Student's Pass — so no such figure is reported as a visa requirement."
+    }
+  ],
+  "research": {
+    "evidence_artifact_count": 7,
+    "researched_at": "2026-10-05"
+  },
+  "sections": {
+    "career": {
+      "average_starting_salary": {
+        "gross_monthly": {
+          "month": {
+            "as_of": "2025",
+            "colliding_values": [
+              {
+                "as_of": "2025",
+                "currency": "SGD",
+                "per": "month",
+                "source_ids": [
+                  "sg-moe-ges-2025-graduate-starting-salary"
+                ],
+                "statement": "Median basic monthly salary for NTU Computer Science graduates in full-time permanent employment was SGD 5,400 in 2025, with a mean basic monthly salary of SGD 5,675.",
+                "value": 5400
+              },
+              {
+                "as_of": "2025",
+                "currency": "SGD",
+                "per": "month",
+                "source_ids": [
+                  "sg-moe-ges-2025-graduate-starting-salary"
+                ],
+                "statement": "Median gross monthly salary for NTU Computer Science graduates in full-time permanent employment was SGD 5,500 in 2025, with a mean gross monthly salary of SGD 5,852, a 25th percentile of SGD 4,900 and a 75th percentile of SGD 6,565.",
+                "value": 5500
+              },
+              {
+                "as_of": "2025",
+                "currency": "SGD",
+                "per": "month",
+                "source_ids": [
+                  "sg-moe-ges-2025-graduate-starting-salary"
+                ],
+                "statement": "Median gross monthly salary for NTU Computer Engineering graduates in full-time permanent employment was SGD 5,150 in 2025, with a mean of SGD 5,348, a 25th percentile of SGD 4,900 and a 75th percentile of SGD 5,850.",
+                "value": 5150
+              },
+              {
+                "as_of": "2025",
+                "currency": "SGD",
+                "per": "month",
+                "source_ids": [
+                  "sg-moe-ges-2025-graduate-starting-salary"
+                ],
+                "statement": "Median gross monthly salary for NTU Data Science and Artificial Intelligence graduates in full-time permanent employment was SGD 5,250 in 2025, with a mean of SGD 5,408 and a 25th percentile of SGD 4,850.",
+                "value": 5250
+              },
+              {
+                "as_of": "2025",
+                "currency": "SGD",
+                "per": "month",
+                "source_ids": [
+                  "sg-moe-ges-2025-graduate-starting-salary"
+                ],
+                "statement": "Median gross monthly salary for NTU Double Degree in Business and Computer Engineering/Computing graduates in full-time permanent employment was SGD 6,950 in 2025, with a mean of SGD 6,993 and a 75th percentile of SGD 8,000.",
+                "value": 6950
+              },
+              {
+                "as_of": "2025",
+                "currency": "SGD",
+                "per": "month",
+                "source_ids": [
+                  "sg-moe-ges-2025-graduate-starting-salary"
+                ],
+                "statement": "The 25th percentile gross monthly salary for NTU Computer Science and Computer Engineering graduates in full-time permanent employment was SGD 4,900 in 2025, indicating the lower quartile of the graduate salary distribution.",
+                "value": 4900
+              }
+            ],
+            "currency": "SGD",
+            "note": "Median basic monthly salary for NTU Computer Science graduates in full-time permanent employment was SGD 5,400 in 2025, with a mean basic monthly salary of SGD 5,675.",
+            "per": "month",
+            "source_ids": [
+              "sg-moe-ges-2025-graduate-starting-salary"
+            ],
+            "value": 5400,
+            "value_status": "OFFICIAL_GOVERNMENT"
+          }
+        }
+      },
+      "net_monthly_income": {
+        "month": {
+          "as_of": "YA2026",
+          "currency": "SGD",
+          "note": "This figure describes gross (before-tax) income, not take-home pay. It was filed on the net topic and has been demoted rather than published, because break-even must compare money out against money that actually reaches the worker. Using gross here would roughly halve the reported months in most European countries.",
+          "per": "month",
+          "source_ids": [
+            "sg-iras-cpf-grad-net-2026"
+          ],
+          "value": null,
+          "value_status": "UNKNOWN"
+        }
+      }
+    },
+    "education_costs": {
+      "tuition_fees": {
+        "public": {
+          "bachelor": {
+            "as_of": "2026",
+            "colliding_values": [
+              {
+                "as_of": "2026",
+                "currency": "SGD",
+                "per": "year",
+                "source_ids": [
+                  "ntu-undergrad-tuition-2026"
+                ],
+                "statement": "For all NTU programmes other than those separately listed, an international student outside ASEAN on subsidised tuition pays SGD 40,600 per year if the programme is lab-based, inclusive of 9% GST.",
+                "value": 40600
+              },
+              {
+                "as_of": "2026",
+                "currency": "SGD",
+                "per": "year",
+                "source_ids": [
+                  "ntu-undergrad-tuition-2026"
+                ],
+                "statement": "For all NTU programmes other than those separately listed, an international student outside ASEAN on subsidised tuition pays SGD 36,350 per year if the programme is non-lab-based, inclusive of 9% GST.",
+                "value": 36350
+              },
+              {
+                "as_of": "2026",
+                "currency": "SGD",
+                "per": "year",
+                "source_ids": [
+                  "ntu-undergrad-tuition-2026"
+                ],
+                "statement": "At NTU the accountancy, business and computing-related programmes cost SGD 45,600 per year for a non-ASEAN international student in receipt of the tuition grant.",
+                "value": 45600
+              }
+            ],
+            "currency": "SGD",
+            "note": "For all NTU programmes other than those separately listed, an international student outside ASEAN on subsidised tuition pays SGD 40,600 per year if the programme is lab-based, inclusive of 9% GST.",
+            "per": "year",
+            "source_ids": [
+              "ntu-undergrad-tuition-2026"
+            ],
+            "value": 40600,
+            "value_status": "UNIVERSITY_OFFICIAL"
+          }
+        }
+      }
+    },
+    "residency": {
+      "work_while_studying": {
+        "as_of": "2026",
+        "colliding_values": [
+          {
+            "as_of": "2026",
+            "currency": null,
+            "per": "week",
+            "source_ids": [
+              "mom-work-pass-exemption-students"
+            ],
+            "statement": "A Student's Pass holder at a listed Singapore institution may work during the school term without a work pass for a maximum of 16 hours per week, or under an industrial attachment or internship contributing to graduation requirements.",
+            "value": 16
+          },
+          {
+            "as_of": "2026",
+            "currency": null,
+            "per": null,
+            "source_ids": [
+              "mom-work-pass-exemption-students"
+            ],
+            "statement": "After studies are completed and the Student's Pass expires, the employer must apply for a work pass; Singapore grants no automatic post-study work permission to former international students.",
+            "value": 0
+          }
+        ],
+        "note": "A Student's Pass holder at a listed Singapore institution may work during the school term without a work pass for a maximum of 16 hours per week, or under an industrial attachment or internship contributing to graduation requirements.",
+        "source_ids": [
+          "mom-work-pass-exemption-students"
+        ],
+        "value": 16,
+        "value_status": "OFFICIAL_GOVERNMENT"
+      }
+    }
+  },
+  "sources": [
+    {
+      "archived": true,
+      "as_of": "2026-05-11",
+      "confidence": null,
+      "id": "mom-work-pass-exemption-students",
+      "notes": "MOM, not ICA, is the authority on the work exemption, and its page is dated 11 May 2026. The permission is a statutory work-pass exemption, exercised automatically: no application and no prior notification. It applies only to students of the listed institutions, which include NUS, NTU, SMU, SIT, SUTD, SUSS and the polytechnics, and requires age 14 or above. During vacations there is no hour cap. Working more than 16 hours per week outside a qualifying industrial attachment or internship requires the employer to obtain a work pass. The underlying instrument is the Employment of Foreign Manpower (Work Pass Exemptions for Seamen and Full-time Students) Notification, whose text appears in search results on sso.agc.gov.sg with the 'less than 16 hours per week' test; I did not successfully fetch the statute page itself, so the statute is cited as corroboration only and the MOM page is the source of record. Singapore has no post-study work permission as such: the page states 'Once you have completed your studies and your Student's Pass expires, you will need to get a work pass to work in Singapore. Your employer will need to apply for your work pass,' so no duration-based post-study right is claimed.",
+      "publisher": "Ministry of Manpower (MOM), Singapore",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "student_work_rights evidence",
+      "url": "https://www.mom.gov.sg/passes-and-permits/work-pass-exemption-for-foreign-students"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "ntu-undergrad-tuition-2026",
+      "notes": "NTU is a named Singapore university and this is its own fee table for offers accepted in 2026 (academic year 2026/27). Table columns are ordered Subsidised (Singapore Citizens, Singapore Permanent Residents, ASEAN international students lab-based, ASEAN international students non-lab-based) then Non-Subsidised (all other international students lab-based, non-lab-based). For 'All Programmes (except for those listed below)' the non-ASEAN international figures are USD-equivalent SGD 40,600 lab-based and SGD 36,350 non-lab-based. Medicine and accountancy-related programmes differ and are reported separately. GST treatment differs between the subsidised and non-subsidised columns exactly as the page states. NUS figures were not usable: its undergraduate fee table is published only as a PDF (nus.edu.sg/registrar/docs/.../ugtuitioncurrent.pdf) which returned binary content rather than extractable text, so no NUS figure is claimed.",
+      "publisher": "Nanyang Technological University (NTU Singapore)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "UNIVERSITY_OFFICIAL",
+      "title": "bachelor_tuition evidence",
+      "url": "https://www.ntu.edu.sg/admissions/undergraduate/financial-matters/tuition-fees/accepted-programme-offer-in-2026"
+    },
+    {
+      "archived": true,
+      "as_of": "YA2026",
+      "confidence": null,
+      "id": "sg-iras-cpf-grad-net-2026",
+      "notes": null,
+      "publisher": "Inland Revenue Authority of Singapore (IRAS); contribution rates from CPF Board",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "net_monthly_income evidence",
+      "url": "https://www.iras.gov.sg/taxes/individual-income-tax/basics-of-individual-income-tax/tax-residency-and-tax-rates/individual-income-tax-rates"
+    },
+    {
+      "archived": true,
+      "as_of": "2025 (survey conducted November 2025, employment outcomes as at 1 November 2025)",
+      "confidence": null,
+      "id": "sg-moe-ges-2025-graduate-starting-salary",
+      "notes": null,
+      "publisher": "Ministry of Education, Singapore; Graduate Employment Survey conducted jointly by NUS, NTU, SMU, SUTD, SIT and SUSS",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "gross_monthly_income evidence",
+      "url": "https://www.moe.gov.sg/media/files/post-secondary/ges-2025/585fe7dc-65e3-470e-87c3-e23ceed5782b.pdf"
+    }
+  ]
+}

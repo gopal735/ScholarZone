@@ -1,0 +1,323 @@
+{
+  "contract_version": "1.0.0",
+  "country": {
+    "currency": null,
+    "iso2": "FR",
+    "name_en": "France"
+  },
+  "gaps": [
+    {
+      "attempted_sources": [
+        "fr-service-public-droits-2026-001"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "fr.education_costs.tuition_fees.public.bachelor",
+      "reason": "3 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 2902 EUR per year (fr-service-public-droits-2026-001); 178 EUR per year (fr-service-public-droits-2026-001); 1934 EUR per year (fr-service-public-droits-2026-001). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "https://www.service-public.fr/particuliers/vosdroits/F11201"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "fr.fr-permanent-residence-language-requirement",
+      "reason": "Archived evidence recorded a finding with no numeric figure: Applicants for the carte de résident permanent must demonstrate French at a level of at least B1 in the Common European Framework of Reference for Languages and must have passed the examen civique."
+    },
+    {
+      "attempted_sources": [
+        "https://www.service-public.gouv.fr/particuliers/actualites/A17481"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "fr.mandatory_fees_cvec",
+      "reason": "Evidence was retrieved and archived, but this topic has no explicit mapping into the corpus schema, so the figure was not placed. Adding the mapping is a reviewed change, not something ingestion should guess."
+    },
+    {
+      "attempted_sources": [
+        "https://www.service-public.gouv.fr/particuliers/vosdroits/F2302",
+        "https://bofip.impots.gouv.fr/bofip/11255-PGP.html/identifiant%3DBOI-BAREME-000037-20260407",
+        "https://www.impots.gouv.fr/particulier/questions/comment-calculer-mon-taux-dimposition-dapres-le-bareme-progressif-de-limpot",
+        "https://www.impots.gouv.fr/simulateurs",
+        "https://www.service-public.gouv.fr/particuliers/vosdroits/F34328",
+        "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-secteur-prive.html",
+        "https://www.economie.gouv.fr/entreprises/gerer-ses-ressources-humaines-et-ses-salaries/tout-savoir-sur-la-fiche-de-paie",
+        "https://boss.gouv.fr/portail/accueil/bulletin-de-paie/regles-generales-relatives-au-bu.html",
+        "https://solidarites.gouv.fr/sites/solidarite/files/2023-06/Brochure%20Le%20montant%20net%20social.pdf"
+      ],
+      "checked_at": null,
+      "field": "fr.net_monthly_income",
+      "next_review": null,
+      "reason": "No official French source publishes a take-home (net a payer) or median net monthly wage statistic for graduates, or for employees at all. Established positively, not by failure to find a page: the official French data portal INSEE publishes gross wage distributions and, for its wage statistics, publishes DECILES rather than take-home, because its wage data are collected as gross; the official income-tax authority impots.gouv.fr publishes the withholding rate grids (archived in FR/021_net_monthly_income_pas_grille_officielle.json) and a net imposable calculator, but no net a payer table; the official social security portal service-public.fr publishes employee contribution rates and bases (archived in FR/020_net_monthly_income.json) but no net a payer table. No French authority publishes a gross-to-net conversion table, so the figure the corpus holds has to be DERIVED from those two official component sets rather than quoted as a published net. The derivation is recorded in FR/020_net_monthly_income.json (net a payer EUR 2,205.69 per month from EUR 2,800.53 gross) and is usable. What does not exist is the thing this file would otherwise have supplied: an official published median take-home figure."
+    },
+    {
+      "attempted_sources": [
+        "https://www.service-public.fr/particuliers/vosdroits/F17359"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "fr.permanent_residence_eu_long_term",
+      "reason": "Evidence was retrieved and archived, but this topic has no explicit mapping into the corpus schema, so the figure was not placed. Adding the mapping is a reviewed change, not something ingestion should guess."
+    },
+    {
+      "attempted_sources": [
+        "fr-service-public-naturalisation-001"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "fr.residency.citizenship",
+      "reason": "2 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 5 per year (fr-service-public-naturalisation-001); 255 EUR (fr-service-public-naturalisation-001). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "fr-service-public-cartes-resident-001"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "fr.residency.permanent_residence",
+      "reason": "3 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 10 per year (fr-service-public-cartes-resident-001); 2 (fr-service-public-cartes-resident-001); 350 EUR (fr-service-public-cartes-resident-001). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    }
+  ],
+  "research": {
+    "evidence_artifact_count": 10,
+    "researched_at": "2026-10-05"
+  },
+  "sections": {
+    "career": {
+      "net_monthly_income": {
+        "as_of": "from 1 May 2026",
+        "month": {
+          "as_of": "at 1 January 2026",
+          "currency": "EUR",
+          "note": "career.net_monthly_income.month: a net-income figure must declare the circumstances it holds under. Missing: dependents (Number of dependents claimed, or an explicit statement that none are claimed. A household-level median silently averages different household tax positions together.); employee_social_contributions (Whether pension, health and unemployment contributions are deducted from this figure, and which. Some systems have no such deduction; Singapore's CPF is a large deduction that never reaches the worker.); marital_status (Single or married. Usually the largest single adjustment to take-home pay, and a family fact rather than an employment fact.); residency (Resident or non-resident status, where the jurisdiction distinguishes them. Several systems tax residents and non-residents differently.). Defaulting any of these would publish a confident number for a household, tax year or residency status nobody stated.",
+          "per": "month",
+          "source_ids": [
+            "fr-bofip-pas-grille-taux-2026"
+          ],
+          "value": null,
+          "value_status": "UNKNOWN"
+        },
+        "note": "career.net_monthly_income: a net-income figure must declare the circumstances it holds under. Missing: dependents (Number of dependents claimed, or an explicit statement that none are claimed. A household-level median silently averages different household tax positions together.); employee_social_contributions (Whether pension, health and unemployment contributions are deducted from this figure, and which. Some systems have no such deduction; Singapore's CPF is a large deduction that never reaches the worker.); marital_status (Single or married. Usually the largest single adjustment to take-home pay, and a family fact rather than an employment fact.); per (needed for a period to exist); residency (Resident or non-resident status, where the jurisdiction distinguishes them. Several systems tax residents and non-residents differently.). Defaulting any of these would publish a confident number for a household, tax year or residency status nobody stated.",
+        "source_ids": [
+          "fr-bofip-pas-grille-taux-2026"
+        ],
+        "value": null,
+        "value_status": "UNKNOWN"
+      }
+    },
+    "education_costs": {
+      "tuition_fees": {
+        "public": {
+          "bachelor": {
+            "as_of": "2026",
+            "currency": "EUR",
+            "note": "Some foreign students are not subject to differentiated tuition — notably nationals of EU and EEA Member States, Quebec and Switzerland — and universities may exempt certain foreign students; the exemption rules changed on 21 May 2026 under Décret n° 2026-385, with the maximum share of exempt non-EU students set at 30% for 2026-2027 and 25% for 2027-2028.",
+            "per": "year",
+            "source_ids": [
+              "fr-service-public-droits-2026-001"
+            ],
+            "study_level": "bachelor",
+            "value": 2902,
+            "value_status": "OFFICIAL_GOVERNMENT"
+          }
+        }
+      }
+    },
+    "one_time_costs": {
+      "blocked_account": {
+        "as_of": "2026",
+        "currency": "EUR",
+        "note": "A VLS-TS mention étudiant is valid for 4 months to 1 year; after 1 year of residence a temporary student residence permit valid 1 year or a pluriannuelle student permit valid 2 to 4 years may be applied for, costing 100 euros in tax and stamp duty.",
+        "source_ids": [
+          "fr-service-public-etudiant-001"
+        ],
+        "study_level": "bachelor",
+        "value": 100,
+        "value_status": "OFFICIAL_GOVERNMENT"
+      }
+    },
+    "residency": {
+      "citizenship": {
+        "as_of": "2026",
+        "colliding_values": [
+          {
+            "as_of": "2026",
+            "currency": null,
+            "per": "year",
+            "source_ids": [
+              "fr-service-public-naturalisation-001"
+            ],
+            "statement": "The official French citizenship route is 'naturalisation française par décret', requiring residence in France at the time the décret is signed and a valid residence permit at the time of application.",
+            "value": 5
+          },
+          {
+            "as_of": "2026",
+            "currency": "EUR",
+            "per": null,
+            "source_ids": [
+              "fr-service-public-naturalisation-001"
+            ],
+            "statement": "Naturalisation requires demonstrating assimilation to the French community, verified by passing the examen civique and an interview at the prefecture, together with sufficient knowledge of French, stable sufficient income and good character.",
+            "value": 255
+          }
+        ],
+        "currency": "EUR",
+        "note": "The official French citizenship route is 'naturalisation française par décret', requiring residence in France at the time the décret is signed and a valid residence permit at the time of application.",
+        "source_ids": [
+          "fr-service-public-naturalisation-001"
+        ],
+        "value": 5,
+        "value_status": "OFFICIAL_GOVERNMENT"
+      },
+      "job_seeker_residence_permit": {
+        "duration": {
+          "bachelor": {
+            "as_of": "2026",
+            "month": {
+              "as_of": "2026",
+              "currency": "EUR",
+              "note": "During the validity of the carte de séjour recherche d'emploi/création d'entreprise, employment must be related to the student's studies and paid a gross monthly salary of more than 2,800.53 euros.",
+              "per": "month",
+              "source_ids": [
+                "fr-service-public-rece-001"
+              ],
+              "study_level": "bachelor",
+              "value": 2800.53,
+              "value_status": "OFFICIAL_GOVERNMENT"
+            },
+            "note": "Eligibility requires residence in France on a student or mobility-programme student residence permit and having obtained, within the last 12 months, a licence professionnelle, a Mastère Spécialisé, a Master of Science labelled by the conférence des grandes écoles, or another diploma at least equivalent to a master.",
+            "per": "year",
+            "source_ids": [
+              "fr-service-public-rece-001"
+            ],
+            "study_level": "bachelor",
+            "value": 1,
+            "value_status": "OFFICIAL_GOVERNMENT"
+          }
+        }
+      },
+      "permanent_residence": {
+        "as_of": "2026",
+        "colliding_values": [
+          {
+            "as_of": "2026",
+            "currency": null,
+            "per": "year",
+            "source_ids": [
+              "fr-service-public-cartes-resident-001"
+            ],
+            "statement": "The official French permanent residence title is the 'carte de résident permanent', issued on renewal of a 10-year carte de résident, valid 10 years and renewable.",
+            "value": 10
+          },
+          {
+            "as_of": "2026",
+            "currency": null,
+            "per": null,
+            "source_ids": [
+              "fr-service-public-cartes-resident-001"
+            ],
+            "statement": "The carte de résident permanent is systematically offered if the applicant has already obtained 2 consecutive cartes de résident, each of which is valid 10 years.",
+            "value": 2
+          },
+          {
+            "as_of": "2026",
+            "currency": "EUR",
+            "per": null,
+            "source_ids": [
+              "fr-service-public-cartes-resident-001"
+            ],
+            "statement": "Applicants must also attest that they have not stayed more than 3 consecutive years outside France in the last 10 years, must not constitute a threat to public order, and must sign the engagement to respect the principles of the Republic.",
+            "value": 350
+          }
+        ],
+        "currency": "EUR",
+        "note": "The official French permanent residence title is the 'carte de résident permanent', issued on renewal of a 10-year carte de résident, valid 10 years and renewable.",
+        "source_ids": [
+          "fr-service-public-cartes-resident-001"
+        ],
+        "value": 10,
+        "value_status": "OFFICIAL_GOVERNMENT"
+      }
+    }
+  },
+  "sources": [
+    {
+      "archived": true,
+      "as_of": "withholding grid in force from 1 May 2026",
+      "confidence": null,
+      "id": "fr-bofip-pas-grille-taux-2026",
+      "notes": null,
+      "publisher": "Direction generale des Finances publiques (DGFiP) - Bulletin Officiel des Finances Publiques - Impots (BOFiP), BOI-BAREME-000037",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "net_monthly_income evidence",
+      "url": "https://bofip.impots.gouv.fr/bofip/11255-PGP.html/identifiant%3DBOI-BAREME-000037-20260407"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "fr-service-public-cartes-resident-001",
+      "notes": "CONFIRMED from the French government's service portal (verified 01 May 2026), legal basis CESEDA article L426-4. IMPORTANT STRUCTURAL POINT THE CORPUS MUST NOT SIMPLIFY: France's permanent residence is NOT a single 'N-year' rule, and quoting one number would be wrong. There are two distinct paths, both recorded here: (1) The 'carte de résident permanent' is issued at the RENEWAL of a 10-year 'carte de résident' and is systematically offered once the applicant has already obtained 2 consecutive cartes de résident — i.e. effectively after 2 x 10 years = about 20 years of residence, and the card itself is valid 10 years and renewable. (2) A shorter route exists via the 'carte de résident de longue durée - UE' (EU long-term resident card, based on 5 years of residence), which can then be converted to the permanent card at renewal. That 5-year EU long-term resident figure is the number that most scholarship-corpus comparisons should use for France, and it is evidenced separately in file 004. Conditions confirmed for the permanent card: examen civique passed, French at least CEFR B1, no more than 3 consecutive years outside France in the last 10 years, no threat to public order, and signed engagement to respect the principles of the Republic. Algerian nationals are explicitly excluded from this card (they use a certificat de résidence instead) — recorded because it shows the rule is not universal. Fee: 350 EUR (300 EUR tax + 50 EUR stamp duty).",
+      "publisher": "Service Public / Direction de l'information légale et administrative (DILA), Premier ministre — Ministère chargé de l'intérieur",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "permanent_residence evidence",
+      "url": "https://www.service-public.fr/particuliers/vosdroits/F11201"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "fr-service-public-droits-2026-001",
+      "notes": "CONFIRMED from two pages of the same official French government portal (A17481, published 21 Aug 2026, and A18927, published 26 May 2026 updated 20 Aug 2026), both stating the identical figures, so the number is not a one-off. France public-university Bachelor (licence) tuition for non-EU students, academic year 2026-2027: EUR 2,902 PER YEAR under differentiated tuition (droits d'inscription différenciés). The standard French/EU/EEA/Swiss rate for the same licence is EUR 178 per year. Legal basis: differentiated fees introduced April 2019 under the Arrêté du 19 avril 2019; the exemption regime was tightened by Décret n° 2026-385 du 19 mai 2026, in force for the 2026-2027 academic year. Important nuance for the corpus: differentiated fees do NOT apply to doctorates; the cap on the proportion of non-EU students a university may exempt is 30% for 2026-2027 and 25% for 2027-2028, trending to a long-term ceiling of 20%. CONFLICT FLAGGED BUT NOT ADOPTED: two press reports surfaced during searching (TF1 Info, 20 May 2026, and franceinfo, 20 April 2026) citing EUR 2,895 licence and EUR 3,941/3,950 master. I did NOT fetch those pages, so per the evidence rule I am not recording those figures as claims; I note the discrepancy because the corpus should be aware that press coverage of the May 2026 decree circulated slightly different licence/master numbers than the official government portal, and the official portal figure (2,902 / 3,950) should be preferred. If a second independent official confirmation is wanted, the MESR table linked from this page and etudiant.gouv.fr are the places to check.",
+      "publisher": "Service Public / Direction de l'information légale et administrative (DILA), Premier ministre — republishing Ministère de l'Enseignement supérieur et de la Recherche",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "bachelor_tuition evidence",
+      "url": "https://www.service-public.gouv.fr/particuliers/actualites/A17481"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "fr-service-public-etudiant-001",
+      "notes": "CONFIRMED from the French government's service portal (verified 01 August 2026), legal basis CESEDA article R422-7 'Montant des ressources'. France financial proof for a student residence permit: EUR 877.50 PER MONTH. This is a MONTHLY resources threshold, not a blocked-account scheme — France has no German-style Sperrkonto; proof can be a bank certificate of sufficient credit balance, a parents' declaration, a third-party undertaking, payslips, or a scholarship attestation. IMPORTANT EXCEPTION confirmed on the page: the resources condition does NOT apply to those who passed the entrance competitive examination (concours) of a higher-education institution that has signed a convention with the state — i.e. the grandes écoles / ENS route. Note for corpus integrity: France's threshold is far lower than Germany's (877.50 vs 992.00 EUR/month) and than the Netherlands' (1,130.77 EUR/month), and unlike Germany the French figure is a 'means' threshold to be evidenced rather than a mandatory blocked account. Also confirmed: VLS-TS mention étudiant valid 4 months to 1 year; then temporary student card valid 1 year, renewable, or pluriannuelle student card valid 2 to 4 years matching the remaining years of the study cycle; tax and stamp duty EUR 100 on VLS-TS validation; a permanent student permit requires proving 'caractère réel et sérieux' of the studies.",
+      "publisher": "Service Public / Direction de l'information légale et administrative (DILA), Premier ministre — Ministère chargé de l'intérieur",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "financial_proof evidence",
+      "url": "https://www.service-public.fr/particuliers/vosdroits/F2231"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "fr-service-public-f2302-cotisations-salariales-2026",
+      "notes": null,
+      "publisher": "Service Public (Direction de l'information legale et administrative, Premier ministre)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "net_monthly_income evidence",
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2302"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "fr-service-public-naturalisation-001",
+      "notes": "CONFIRMED from the French government's service portal (verified 16 July 2026). France naturalisation by décret: standard minimum residence is 5 YEARS. Official route name: 'naturalisation française par décret'. HIGHLY RELEVANT EXCEPTION FOR A SCHOLARSHIP CORPUS: the minimum drops to 2 YEARS for someone who 'a obtenu un diplôme d'un établissement d'enseignement supérieur français après 2 ans d'études' — i.e. a holder of a French higher-education degree obtained after two years of study. This is directly on point for international scholarship holders who study in France. No minimum residence at all for refugees, certain francophone-country nationals, French military service, and those who rendered exceptional services. Other conditions confirmed: you must reside in France at the moment the décret is signed and hold a centre of interests there; a valid residence permit at the time of application; assimilation verified via the examen civique plus a prefecture interview; sufficient French; stable sufficient income; good character. NOTE ON A POINT NOT PINNED DOWN: the page says 'connaissance suffisante' of French and requires 'Diplôme ou attestation justifiant de votre niveau de connaissance de la langue française' but does NOT state a CEFR level on this page, so I am NOT recording a B1 level for naturalisation. (The separate carte de résident permanent page does state B1 — recorded in the permanent-residence file.) Fee: 255 EUR.",
+      "publisher": "Service Public / Direction de l'information légale et administrative (DILA), Premier ministre — Ministère chargé de l'intérieur",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "naturalisation_citizenship evidence",
+      "url": "https://www.service-public.fr/particuliers/vosdroits/F2213"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "fr-service-public-rece-001",
+      "notes": "CONFIRMED from the French government's own service portal (DILA, Premier ministre), with a stated verification date of 01 June 2026. France post-study job search: 1 YEAR. Official name: 'carte de séjour recherche d'emploi/création d'entreprise' (also obtainable as a visa long séjour valant titre de séjour, VLS-TS, with the mention 'recherche d'emploi/Création d'entreprise'). CRITICAL SCOPING LIMITATION THE CORPUS MUST NOT GLOSS OVER: this permit is limited to people who graduated from a FRENCH institution (établissement français) with a licence professionnelle, Mastère Spécialisé, Master of Science (labellisé par la conférence des grandes écoles) or another diploma at least equivalent to a master. It is therefore NOT available to a student who completed a Bachelor's degree abroad, and a Bachelor's degree (licence) alone is generally below the listed thresholds — the listed credentials are Master-level. A separate, shorter route exists for holders of a 'carte de séjour talent-chercheur'. Conditions: job must be related to the studies and gross monthly pay above EUR 2,800.53; the 60% working-hours cap does not apply; the card is 1 year and NOT renewable; application must be made within a maximum of 4 years of obtaining the diploma if the person has left France.",
+      "publisher": "Service Public / Direction de l'information légale et administrative (DILA), Premier ministre — Ministère chargé de l'intérieur",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "post_study_work evidence",
+      "url": "https://www.service-public.fr/particuliers/vosdroits/F17319"
+    }
+  ]
+}

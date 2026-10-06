@@ -1,0 +1,38 @@
+{
+  "country": "NL",
+  "topic": "financial_proof",
+  "source_id": "nl-ind-income-requirements-001",
+  "source_url": "https://ind.nl/en/required-amounts-income-requirements",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Immigratie- en Naturalisatiedienst (IND), Ministerie van Justitie en Veiligheid",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "Required amounts and income requirements\nRequired amounts 2026\n\nFor study\n\nIf you are applying for a residence permit for study, or you are a family member of someone with a residence permit for study, you must show that you have enough money for your studies in the Netherlands. In 2026, the required amounts are:\n\nStudents at a university of applied sciences (hbo) or a university: € 1,130.77 per month. This includes students who follow a course that is at least 2 years in duration.\nStudents at a university of applied sciences (hbo) of at least 1 year in duration: € 1,053.27 per month\nStudents at a university of applied sciences (hbo) of exactly 1 year in duration: € 892.88 per month\n\nFor orientation year\n\nIf you are applying for a residence permit for the orientation year, you must show that you have enough money to live in the Netherlands. In 2026, the required amount is: € 1,494.63 per month\n\nFor highly educated migrant\n\nIf you are applying for a residence permit as a highly educated migrant, you must show that you have enough money to live in the Netherlands. In 2026, the required amount is: € 4,171.02 per month\n\nFor research\n\nIf you are applying for a residence permit for research, you must show that you have enough money to live in the Netherlands. In 2026, the required amount is: € 2,059.10 per month",
+  "research_notes": "CONFIRMED from the immigration authority itself (IND), and the page is explicitly year-versioned as 'Required amounts 2026', so as_of = 2026. Netherlands financial proof for a study residence permit: EUR 1,130.77 PER MONTH for students at a university (or hbo) — covering courses of at least 2 years in duration, which includes Bachelor's-level study. This is the highest of the three countries researched (NL 1,130.77 vs DE 992.00 vs FR 877.50 EUR/month), a genuinely useful comparative finding. STRUCTURAL POINT: the Netherlands has NO German-style blocked account (Sperrkonto). The requirement is a monthly income threshold that must be evidenced, not a locked sum of money. The same IND page also publishes the two other thresholds directly relevant to a scholarship corpus, both recorded here: the ORIENTATION YEAR amount EUR 1,494.63 per month and the HIGHLY EDUCATED MIGRANT amount EUR 4,171.02 per month — the latter is a gross/monthly salary reference for highly skilled migrant sponsorship. Lower hbo bands (1-year: 892.88; 1+ year: 1,053.27) are recorded as context only. All amounts are month-1 figures for 2026 and are index-linked, so they must be re-verified each year.",
+  "claims": [
+    {
+      "claim_id": "nl-financial-proof-study-monthly",
+      "statement": "In 2026, students at a university of applied sciences (hbo) or a university who apply for a study residence permit must show they have € 1,130.77 per month, including students following a course of at least 2 years in duration.",
+      "value": 1130.77,
+      "unit": "EUR per month",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nl-financial-proof-orientation-year",
+      "statement": "In 2026, applicants for a residence permit for the orientation year must show € 1,494.63 per month.",
+      "value": 1494.63,
+      "unit": "EUR per month",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nl-financial-proof-highly-educated-migrant",
+      "statement": "In 2026, applicants for a residence permit as a highly educated migrant must show € 4,171.02 per month.",
+      "value": 4171.02,
+      "unit": "EUR per month",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

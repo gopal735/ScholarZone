@@ -1,0 +1,46 @@
+{
+  "country": "NL",
+  "topic": "bachelor_tuition",
+  "source_id": "nl-uva-tuition-001",
+  "source_url": "https://www.uva.nl/en/education/fees-and-funding/tuition-fees/tuition-fees.html",
+  "source_type": "UNIVERSITY_OFFICIAL",
+  "publisher": "University of Amsterdam (Universiteit van Amsterdam)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "Tuition fees\n\nAs a student at the UvA, you pay a tuition fee. The amount depends on your nationality, where you are from and which degree programme you are enrolled in. You will pay the tuition fee per year. You will pay the tuition fee per year. The tuition fee has to be paid before 1 January for the following academic year, except for the January admission round.\n\nInstitutional tuition fee\n\nIf you have a non-EU/EFTA nationality, you will pay an institutional tuition fee. The institutional tuition fees are:\n\nNon-EU/EFTA students\n\nBachelor's programmes: € 16,100 -\n€ 19,900 per year\nMaster's programmes: € 17,400 -\n€ 22,600 per year\n\nEU/EFTA students\n\nBachelor's programmes: € 2,694 per year\nMaster's programmes: € 2,694 per year",
+  "research_notes": "CONFIRMED from the university's own official fees page. Netherlands Bachelor tuition for non-EU/EFTA students at a public university: the University of Amsterdam charges an INSTITUTIONAL tuition fee of EUR 16,100 to EUR 19,900 PER YEAR for Bachelor's programmes. IMPORTANT HONEST LIMITATION: the UvA publishes a BAND, not a single figure, and states 'The amount depends on your nationality, where you are from and which degree programme you are enrolled in.' The exact amount is programme-specific and would require opening an individual programme page — I did not do that, so I must NOT collapse the band into a single number. For comparison, the same page gives EU/EFTA students EUR 2,694 per year for Bachelor's programmes, i.e. the non-EU/EU ratio at UvA is roughly 6x to 7x. Unit is explicitly per year (per the page: 'You will pay the tuition fee per year'). STRUCTURAL POINT FOR THE CORPUS: unlike France, where tuition is a national statutory tariff, Dutch non-EU tuition is an 'institutional tuition fee' set by each university individually, so there is no single Dutch non-EU Bachelor figure — any corpus value must name the institution and must not be presented as a national rate. GAP: the UvA page does NOT state a separate mandatory enrolment/student-society contribution, so no NL mandatory-fee figure is recorded from this source; I did not locate an official Dutch national mandatory-fee figure.",
+  "claims": [
+    {
+      "claim_id": "nl-bachelor-tuition-non-eu-uva-low",
+      "statement": "Non-EU/EFTA students pay an institutional tuition fee at the University of Amsterdam for Bachelor's programmes of 16,100 euros per year at the lower end of the published range.",
+      "value": 16100,
+      "unit": "EUR per year",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nl-bachelor-tuition-non-eu-uva-high",
+      "statement": "Non-EU/EFTA students pay an institutional tuition fee at the University of Amsterdam for Bachelor's programmes of up to 19,900 euros per year; the exact amount depends on the degree programme.",
+      "value": 19900,
+      "unit": "EUR per year",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nl-bachelor-tuition-eu-uva",
+      "statement": "EU/EFTA students pay 2,694 euros per year in tuition fees for Bachelor's programmes at the University of Amsterdam.",
+      "value": 2694,
+      "unit": "EUR per year",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nl-bachelor-tuition-institutional-basis",
+      "statement": "Non-EU/EFTA students pay an 'institutional tuition fee', meaning the amount is set by the university rather than nationally, and depends on nationality, country of origin and degree programme.",
+      "value": 16100,
+      "unit": "EUR per year (lower end of institutional band)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "country": "DE",
+  "topic": "naturalisation_citizenship",
+  "source_id": "de-stag-10-001",
+  "source_url": "https://www.gesetze-im-internet.de/stag/__10.html",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Bundesministerium der Justiz / Bundesamt für Justiz — gesetze-im-internet.de (Staatsangehörigkeitsgesetz § 10)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "§ 10 StAG\n(1) Ein Ausländer, der seit fünf Jahren rechtmäßig seinen gewöhnlichen Aufenthalt im Inland hat und handlungsfähig nach § 34 Satz 1 oder gesetzlich vertreten ist, ist auf Antrag einzubürgern, wenn seine Identität und Staatsangehörigkeit geklärt sind und er\n1. sich zur freiheitlichen demokratischen Grundordnung des Grundgesetzes für die Bundesrepublik Deutschland bekennt [...]\n1a. sich zur besonderen historischen Verantwortung Deutschlands für die nationalsozialistische Unrechtsherrschaft und ihre Folgen, insbesondere für den Schutz jüdischen Lebens, sowie zum friedlichen Zusammenleben der Völker und dem Verbot der Führung eines Angriffskrieges bekennt,\n2. ein unbefristetes Aufenthaltsrecht oder als Staatsangehöriger der Schweiz oder dessen Familienangehöriger eine Aufenthaltserlaubnis auf Grund des Abkommens vom 21. Juni 1999 [...] über die Freizügigkeit, eine Blaue Karte EU oder einen Aufenthaltstitel für andere als die in den §§ 16a, 16b, 16d, 16e, 16f, 17, 18f, 19, 19b, 19e, 20, 20a, 22, 23a, 24, 25 Absatz 3 bis 5 und § 104c des Aufenthaltsgesetzes aufgeführten Aufenthaltszwecke besitzt,\n3. den Lebensunterhalt für sich und seine unterhaltsberechtigten Familienangehörigen ohne Inanspruchnahme von Leistungen nach dem Zweiten oder Zwölften Buch Sozialgesetzbuch bestreiten kann; [...]\n5. weder wegen einer rechtswidrigen Tat zu einer Strafe verurteilt noch gegen ihn auf Grund seiner Schuldunfähigkeit eine Maßregel der Besserung und Sicherung angeordnet worden ist,\n6. über ausreichende Kenntnisse der deutschen Sprache verfügt und\n7. über Kenntnisse der Rechts- und Gesellschaftsordnung und der Lebensverhältnisse in Deutschland verfügt.\n\n(2) Der Ehegatte oder eingetragene Lebenspartner und die minderjährigen Kinder des Ausländers können nach Maßgabe des Absatzes 1 mit eingebürgert werden, auch wenn sie sich noch nicht seit fünf Jahren rechtmäßig im Inland aufhalten.\n\n(3) (weggefallen)\n(3a) (weggefallen)\n\n(4) Die Voraussetzungen des Absatzes 1 Satz 1 Nr. 6 liegen vor, wenn der Ausländer die Anforderungen einer Sprachprüfung der Stufe B 1 des Gemeinsamen Europäischen Referenzrahmens für Sprachen erfüllt. [...]\n\n(5) Die Voraussetzungen des Absatzes 1 Satz 1 Nr. 7 sind in der Regel durch einen erfolgreichen Einbürgerungstest nachgewiesen. Zur Vorbereitung darauf werden Einbürgerungskurse angeboten; die Teilnahme daran ist nicht verpflichtend.",
+  "research_notes": "CONFIRMED from the primary federal statute (correct URL is /stag/__10.html, NOT /stag_1913/__10.html which 404s). Germany naturalisation, discretionary entitlement (Anspruchseinbürgerung) under § 10 StAG: minimum 5 YEARS of lawful habitual residence in Germany ('seit fünf Jahren rechtmäßig seinen gewöhnlichen Aufenthalt im Inland'). This is the post-2024 figure; it was reduced from 8 years by the Gesetz zur Modernisierung des Staatsangehörigkeitsrechts of 22 March 2024 (in force 27 June 2024). CRITICAL POINT THAT MUST NOT BE MISSED IN THE CORPUS: § 10(1) no. 2 requires the applicant to hold an unlimited residence right, an EU Blue Card, or a residence permit for a purpose OTHER THAN those listed in §§ 16a, 16b, 16d, 16e, 16f, 17, 18f, 19, 19b, 19e, 20, 20a, 22, 23a, 24, 25(3)-(5) and § 104c AufenthG — and § 16b is the STUDY permit. So five years on a § 16b student residence permit do NOT by themselves satisfy the naturalisation route; the student must first hold a qualifying non-student title. Also confirmed: § 10(3) and § 10(3a) are now marked '(weggefallen)' (repealed) — the former 3-year reduced-residence route for special integration achievements no longer exists. Language: CEFR B1 (§ 10(4)); legal/social knowledge: usually via the Einbürgerungstest (§ 10(5)), with Einbürgerungskurse offered but attendance not mandatory. Additional: commitment to the free democratic order and to Germany's special historical responsibility; livelihood secured without SGB II/XII benefits; no disqualifying conviction.",
+  "claims": [
+    {
+      "claim_id": "de-naturalisation-min-years",
+      "statement": "Under § 10(1) StAG a foreign national who has had lawful habitual residence in Germany for five years must be naturalised on application, provided the other conditions are met.",
+      "value": 5,
+      "unit": "years",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "de-naturalisation-student-permit-excluded",
+      "statement": "§ 10(1) no. 2 StAG requires an unlimited residence right, an EU Blue Card, or a residence permit for a purpose other than those listed in §§ 16a, 16b, 16d, 16e, 16f, 17, 18f, 19, 19b, 19e, 20, 20a, 22, 23a, 24, 25(3)-(5) and § 104c AufenthG — § 16b being the study permit, so a student residence permit is not a qualifying title for this naturalisation route.",
+      "value": 5,
+      "unit": "years",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "de-naturalisation-language-requirement",
+      "statement": "The German language requirement under § 10(1) no. 6 StAG is met when the applicant satisfies a level B1 language test in the Common European Framework of Reference for Languages.",
+      "value": "B1",
+      "unit": "CEFR level",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "de-naturalisation-three-year-route-repealed",
+      "statement": "§ 10(3) and § 10(3a) StAG are now marked '(weggefallen)', i.e. repealed, removing the former reduced three-year pre-residence requirement for special integration achievements.",
+      "value": 5,
+      "unit": "years (no 3-year reduced route remains)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}
