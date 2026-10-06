@@ -99,12 +99,44 @@ export default function ScholarshipCard({ scholarship }) {
           aria-hidden="true"
         />
         <small className="scholarship-card__citation">
-          ↳ {needsReview
-            ? 'Not yet re-checked against the official page'
-            : hasOfficialLogo
-              ? 'Official source captured'
-              : 'No official logo'}
-          {verifiedOn ? ` · last checked ${verifiedOn}` : ''}
+          {(() => {
+            const raw = scholarship.official_source_url || scholarship.application_link;
+            let sourceHost = null;
+            let sourceUrl = null;
+            if (typeof raw === 'string' && raw.trim()) {
+              try {
+                sourceUrl = raw;
+                sourceHost = new URL(raw).hostname.replace(/^www\./, '');
+              } catch {
+                sourceHost = null;
+              }
+            }
+            if (sourceHost && sourceUrl) {
+              return (
+                <>
+                  <a
+                    href={sourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="scholarship-card__source"
+                  >
+                    {sourceHost}
+                  </a>
+                  {verifiedOn ? ` · last checked ${verifiedOn}` : ''}
+                </>
+              );
+            }
+            return (
+              <>
+                {needsReview
+                  ? 'Not yet re-checked against the official page'
+                  : hasOfficialLogo
+                    ? 'Official source captured'
+                    : 'No official logo'}
+                {verifiedOn ? ` · last checked ${verifiedOn}` : ''}
+              </>
+            );
+          })()}
         </small>
 
         {scholarship.provider && (
