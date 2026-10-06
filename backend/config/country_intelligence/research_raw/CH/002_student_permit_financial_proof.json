@@ -1,0 +1,30 @@
+{
+  "country": "CH",
+  "topic": "student_permit_financial_proof",
+  "source_id": "unibe-financial-proof",
+  "source_url": "https://www.unibe.ch/studies/mobility/incoming/general_information/einreise_und_aufenthaltsbestimmungen/index_eng.html",
+  "source_type": "UNIVERSITY_OFFICIAL",
+  "publisher": "University of Bern (stating the City of Bern Migration Office requirement)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "Exchange Students Non-EU/EFTA … Almost all nationals of non-EU/EFTA countries require a visa. Contact the embassy or the Swiss consulate in your home country for information on visa regulations and applying for a visa. Please note that it takes at least eight weeks for a visa to be issued. You cannot study in Switzerland on a tourist visa. Non-EU/FTA nationals who have a valid Schengen residence permit do not require a visa. You must apply for a residence permit after entering Switzerland. For your visa and/or residence permit, you must prove that you have CHF 1,500 per month at your disposal. Examples of this financial proof: recent bank statement, confirmation from a person who is supporting you financially (with a copy of that person's passport) and/or proof of a grant. … Regular Students Non-EU/EFTA … After arriving in Bern, you must submit the following documents to the Migration Office of the city of Bern by e-mail or post within 14 days: Registration form for third-country nationals ('Formular Anmeldung Drittstaatsangehörige', only avialable in German). Confirmation of enrolment from the university (including study program, exact duration of studies) Letter of motivation Confirmation of sufficient financial means Tenancy agreement Curriculum vitae",
+  "research_notes": "Switzerland has no federal monetary threshold; the requirement is cantonal, and figures differ by canton and by whether the applicant is EU/EFTA or a third-country national. This figure is the City of Bern's requirement as stated on the University of Bern's official international-students page, which is an official university source quoting the cantonal/municipal authority that administers the permit. CHF 1,500 per month equals CHF 18,000 per academic year of nine months, or about CHF 16,500 over a typical 11-month year, and it is stated as a monthly figure rather than an annual one. The same page quotes a residence permit fee of approximately CHF 90 for EU/EFTA exchange students and states that the permit must be applied for within 14 days of arrival. Federal sources (SEM, EDA) could not be fetched on this point: sem.admin.ch and eda.admin.ch both returned HTTP 404 or 403, and the City of Bern PDF 'Ermittlung ausreichende finanzielle Mittel' returned 404, so no second cantonal figure is claimed.",
+  "claims": [
+    {
+      "claim_id": "ch-financial-proof-bern-1",
+      "statement": "Under the City of Bern's rules for non-EU/EFTA nationals, an applicant must prove access to CHF 1,500 per month to obtain a visa and/or residence permit.",
+      "value": 1500,
+      "unit": "CHF per month",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ch-residence-permit-fee-bern-1",
+      "statement": "The City of Bern charges approximately CHF 90 for a residence permit for EU/EFTA exchange students.",
+      "value": 90,
+      "unit": "CHF (approximate permit fee)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

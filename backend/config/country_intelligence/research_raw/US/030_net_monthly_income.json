@@ -1,0 +1,59 @@
+{
+  "country": "US",
+  "topic": "net_monthly_income",
+  "source_id": "us-irs-p15t-federal-fica-2026",
+  "source_url": "https://www.irs.gov/pub/irs-pdf/p15t.pdf",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Internal Revenue Service (IRS), Publication 15-T (2026)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026 tax year",
+  "raw_extract": "IRS Publication 15-T (2026), 'Wage Bracket Method Tables for Manual Payroll Systems With Forms W-4 From 2020 or Later', section 2, MONTHLY Payroll Period table, column group 'Single or Married Filing Separately' with sub-columns 'Standard withholding' and 'Form W-4, Step 2, Checkbox withholding', read verbatim: '$3,985 $4,025 $132 $299 $210 $364 $299 $513'; '$4,705 $4,745 $204 $385 $296 $522 $385 $672'; '$4,985 $5,025 $237 $419 $330 $584 $419 $733'; '$5,965 $6,015 $354 $580 $447 $810 $580 $966'; '$7,985 $8,045 $598 $1,026 $728 $1,297 $1,026 $1,453'. Column key read verbatim: 'If the Adjusted Wage Amount (line 1h) is | Married Filing Jointly | Head of Household | Single or Married Filing Separately | Standard withholding | Form W-4, Step 2, Checkbox withholding | ... | At least | But less than | The Tentative Withholding Amount is:'. Worksheet 2 read verbatim: '1a Enter the employee's total taxable wages this payroll period ... 2a Use the amount on line 1h to look up the tentative amount to withhold in the appropriate Wage Bracket Method table in this section for your pay frequency, given the employee's filing status and whether the employee has checked the box in Step 2 of Form W-4.' Publication scope read verbatim: 'These Wage Bracket Method tables cover a limited amount of annual wages (generally, less than $100,000). If you can't use the Wage Bracket Method tables because taxable wages exceed the amount from the last bracket of the table (based on filing status and pay period), use the Percentage Method tables in section 4.'",
+  "claims": [
+    {
+      "claim_id": "us-net-monthly-001",
+      "value": 3395.0,
+      "unit": "USD per month",
+      "as_of": "2026",
+      "statement": "FEDERAL AND FICA ONLY. For a single filer with standard withholding (Form W-4 Step 2 box not checked) at a gross monthly wage of USD 4,000, the IRS wage bracket table gives federal income tax withholding of USD 299 per month. Adding the employee share of FICA at 7.65% (Social Security 6.2% plus Medicare 1.45%) of USD 306.00, take-home before state income tax and before health insurance premiums is USD 3,395.00 per month."
+    },
+    {
+      "claim_id": "us-net-monthly-002",
+      "value": 4198.5,
+      "unit": "USD per month",
+      "as_of": "2026",
+      "statement": "FEDERAL AND FICA ONLY. At a gross monthly wage of USD 5,000, single filer, standard withholding: IRS wage bracket table federal income tax USD 419; FICA at 7.65% is USD 382.50; take-home before state income tax and health insurance is USD 4,198.50 per month."
+    },
+    {
+      "claim_id": "us-net-monthly-003",
+      "value": 5006.0,
+      "unit": "USD per month",
+      "as_of": "2026",
+      "statement": "FEDERAL AND FICA ONLY. At a gross monthly wage of USD 6,000, single filer, standard withholding: IRS wage bracket table federal income tax USD 535; FICA at 7.65% is USD 459.00; take-home before state income tax and health insurance is USD 5,006.00 per month."
+    },
+    {
+      "claim_id": "us-net-monthly-004",
+      "value": 6661.0,
+      "unit": "USD per month",
+      "as_of": "2026",
+      "statement": "FEDERAL AND FICA ONLY. At a gross monthly wage of USD 8,000, single filer, standard withholding: IRS wage bracket table federal income tax USD 727; FICA at 7.65% is USD 612.00; take-home before state income tax and health insurance is USD 6,661.00 per month."
+    }
+  ],
+  "assumptions": [
+    "Filing status Single or Married Filing Separately, STANDARD withholding. This is the column that corresponds to a 2020-or-later Form W-4 with the Step 2 'multiple jobs or spouse works' checkbox NOT checked. The same IRS table shows that checking that box RAISES withholding substantially: at USD 4,000 per month the Single standard figure is USD 299 versus USD 513 for the Step 2 checkbox column, a USD 214 difference.",
+    "MONTHLY payroll period. IRS publishes separate tables for weekly, biweekly, semimonthly, monthly and daily pay, and the withholding differs by pay frequency because the standard deduction is spread over a different number of periods.",
+    "Adjusted wage amount equals total taxable wages, i.e. no Form W-4 Step 4 additional withholding and no extra tax on other income. Per Worksheet 2, Step 1, the Adjusted Wage Amount would be reduced by any W-4 Step 4(a) amount; none is assumed.",
+    "FICA is 7.65% of gross: Social Security (OASDI) 6.2% up to the annual contribution and benefit base, plus Medicare (HI) 1.45% with no cap. The Social Security cap does not bind at these wage levels (USD 4,000 per month is USD 48,000 per year against a base far above that), so 6.2% applies in full.",
+    "No Additional Medicare Tax of 0.9%, which only begins above USD 200,000 of annual wages for a single filer.",
+    "No state income tax is included. This is the single largest omission in any US net figure and is stated explicitly.",
+    "No health insurance premium is included. Employer-sponsored premiums are typically pre-tax and therefore already absent from the wage this table indexes, but employee-only premiums and any post-tax deductions would reduce net further.",
+    "No state or local income tax, no city tax (for example Philadelphia), no state disability or unemployment insurance, no retirement contribution beyond what FICA covers, no 401(k) or IRA deferral.",
+    "No refundable or non-refundable tax credits claimed. A young low-income graduate may qualify for the earned income tax credit or education credits, which would materially RAISE net; a student loan interest deduction would lower taxable income and raise net slightly. Neither is claimed, so this figure is conservative.",
+    "Wage is the person's only income for 2026.",
+    "The wage bracket table is the withholding instrument employers actually use, so the federal figure reflects payroll practice rather than an idealised return computation; the final annual liability can differ."
+  ],
+  "field_mapping": {
+    "net_monthly_income": "career.net_monthly_income (topic: net_monthly_income)"
+  },
+  "notes": "THE FIGURES IN THIS ARTIFACT ARE FEDERAL-AND-FICA ONLY AND ARE NOT A COMPLETE US TAKE-HOME PAY. A federal income tax table is not a net income figure. The claim values therefore already subtract FICA, but they still omit state and local income tax, which in the US ranges from zero (Texas, Florida, Nevada, Washington, Wyoming) to above 13% on high earnings (California, New York City), plus health insurance premiums. A reader using USD 3,395.00 as 'take-home in the US' would overstate net in a high-tax state and understate it slightly in a no-income-tax state; the state is the missing variable, and no single national US net figure exists without stating an assumption about it. A SECOND MATERIAL TRAP: the choice of the Form W-4 Step 2 checkbox changes federal withholding by more than USD 200 per month at USD 4,000 of wage, so any US net figure that does not state the W-4 configuration is underspecified. A THIRD: FICA is a genuine employee cost but it buys a pension and Medicare entitlement, so some analysts add employer-side FICA-equivalents when comparing total compensation across countries; that is a different metric and must not be mixed into a take-home figure. Note that the underlying gross wage here is a placeholder: no BLS graduate-specific wage was established in this pass, so the artifact is a federal-and-FICA mapping from gross to net rather than a graduate net claim.",
+  "evidence_limitations": "No US federal authority publishes a single national NET median income figure, and none publishes a graduate-specific net figure. The IRS publishes withholding tables and tax rates; the Social Security Administration publishes contribution bases and benefit statistics; the Bureau of Labor Statistics publishes GROSS median weekly and hourly earnings by occupation and education, never net. SSA does publish net compensation series for some worker populations, but these are compensation measures for programme and trust-fund purposes rather than a monthly take-home for a new graduate, and they were not established for this artifact. Consequently the gap here is: which gross wage applies to a graduate, which state applies, and which health insurance arrangement applies. Any US net figure presented without naming those three is unusable for a cost-versus-salary break-even calculation. The IRS table is also explicitly limited to annual wages generally below USD 100,000 and states 'If you can't use the Wage Bracket Method tables because taxable wages exceed the amount from the last bracket of the table ... use the Percentage Method tables in section 4', so higher-earner cases need the percentage method instead. Finally, withholding is not the same as final tax: the Wage Bracket Method produces a payroll amount, and the employee settles up against actual liability at filing."
+}

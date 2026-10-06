@@ -1,0 +1,30 @@
+{
+  "country": "FR",
+  "topic": "mandatory_fees_cvec",
+  "source_id": "fr-service-public-cvec-001",
+  "source_url": "https://www.service-public.gouv.fr/particuliers/actualites/A17481",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Service Public / Direction de l'information légale et administrative (DILA), Premier ministre — republishing Ministère de l'Enseignement supérieur et de la Recherche",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "Pour vous inscrire dans un établissement d'enseignement supérieur, vous devez payer des droits d'inscription ainsi qu'une cotisation vie étudiante et de campus (CVEC). Pour l'année universitaire 2026-2027, la CVEC s'élève à 105 €.\nÀ savoir  Les étudiants boursiers sont exonérés des droits d'inscription et de la CVEC.",
+  "research_notes": "CONFIRMED from the French government's service portal (published 21 August 2026). France mandatory fee, stated SEPARATELY from tuition as the corpus requires: the CVEC (cotisation vie étudiante et de campus / Contribution vie étudiante et de campus) is EUR 105 PER YEAR for academic year 2026-2027. This is a national mandatory contribution paid to the CROUS alongside tuition, and it applies to non-EU international students too. CONFIRMED EXEMPTION relevant to scholarship holders: scholarship students (étudiants boursiers) are exempt from both the tuition fees and the CVEC — directly material for a scholarship corpus. CORROBORATION FROM A UNIVERSITY PAGE: Sorbonne Université's own fee page states the same mechanism — 'Tout étudiant qui s'inscrit en formation initiale à l'université doit, au préalable, acquitter une taxe annuelle obligatoire auprès du CROUS, la CVEC, Contribution à la vie étudiante et de campus' — confirming CVEC is an annual mandatory university-enrolment tax, though the Sorbonne page does not restate the amount. GAP: the Sorbonne page does not state the CVEC amount, so the 105 EUR figure rests on the government portal only; I did not fetch etudiant.gouv.fr's MESR table to double-confirm the amount.",
+  "claims": [
+    {
+      "claim_id": "fr-mandatory-fee-cvec",
+      "statement": "To enrol in a higher education institution you must pay tuition fees as well as the student and campus life contribution (CVEC); for the 2026-2027 academic year the CVEC amounts to 105 €.",
+      "value": 105,
+      "unit": "EUR per year",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fr-mandatory-fee-scholarship-exemption",
+      "statement": "Scholarship students (étudiants boursiers) are exempt from both the tuition fees and the CVEC.",
+      "value": 105,
+      "unit": "EUR per year (exempt for scholarship holders)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

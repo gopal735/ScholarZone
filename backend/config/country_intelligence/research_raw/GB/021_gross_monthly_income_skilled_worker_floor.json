@@ -1,0 +1,29 @@
+{
+  "country": "GB",
+  "topic": "net_monthly_income",
+  "source_id": "gb-govuk-skilled-worker-minimum-salary",
+  "source_url": "https://www.gov.uk/skilled-worker-visa/your-job",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "UK Visas and Immigration / GOV.UK",
+  "retrieved_at": "2026-10-05",
+  "as_of": "recorded in the corpus on 2026-10-05; threshold not re-fetched in this pass",
+  "raw_extract": "You must meet all the following requirements to be eligible for a Skilled Worker visa: your job is eligible for this visa; you'll be working for a UK employer that's been approved by the Home Office; you'll be paid at least the minimum salary rate for the type of work you'll be doing. The minimum salary for the type of work you'll be doing is whichever is the highest of: 41,700 pounds per year; the 'going rate' for the type of work you'll be doing. Salary requirements. You'll usually need to be paid the 'standard' salary rate of at least 41,700 pounds per year, or the 'going rate' for your job, whichever is higher. Example. Your salary is 42,000 pounds per year, but the annual going rate for the job you'll be doing is 45,000 pounds. You do not meet the usual salary requirements for this visa. If you do not meet the usual salary requirements, and you do not work in healthcare or education, you might still be eligible if your salary will be at least 33,400 pounds per year. Healthcare and education roles use national pay scales instead.",
+  "claims": [
+    {
+      "claim_id": "gb-gross-anchor-001",
+      "value": 41700.0,
+      "unit": "GBP per year (GROSS salary floor, Skilled Worker visa)",
+      "as_of": "2026",
+      "statement": "The Skilled Worker visa requires a salary of at least GBP 41,700 per year or the occupation's 'going rate', whichever is higher. Reduced rate of GBP 33,400 per year applies outside healthcare and education."
+    }
+  ],
+  "assumptions": [
+    "this is a GROSS figure, stated so that the take-home in GB/020_net_monthly_income.json can be applied to it without any further gross-to-net guess",
+    "the threshold is the 'whichever is higher' figure, so for most occupations the actual applicable minimum is the going rate, not GBP 41,700"
+  ],
+  "field_mapping": {
+    "gross_monthly_income": "gb.career.gross_monthly_income (topic: gross_monthly_income) - the gross input to claim gb-net-monthly-001"
+  },
+  "notes": "GROSS, NOT NET. This figure must never be used for a cost-versus-salary break-even calculation. It is recorded in the same directory as the take-home derivation solely because it is the only official gross anchor the corpus holds for the United Kingdom, and the take-home in GB/020_net_monthly_income.json is anchored on it. IMPORTANT: this figure is a VISA ELIGIBILITY FLOOR, not a graduate salary and not an entry-level salary. It sits well above what most UK graduates earn on entering full-time work, so it must not be presented as a typical graduate gross. The official guidance's own example shows the floor failing in practice: 'Your salary is 42,000 pounds per year, but the annual going rate for the job you'll be doing is 45,000 pounds. You do not meet the usual salary requirements for this visa.' No official UK source was found in this pass that publishes a graduate-specific gross or net wage. The ONS Annual Survey of Hours and Earnings publishes gross pay only, and the Low Pay Commission publishes National Minimum Wage and Living Wage rates, both of which are gross. PROVENANCE NOTE, recorded for honesty: this extract is carried over from the corpus's earlier verified artifact GB/005b_permanent_residence_skilled_worker_salary.json, which was fetched and read on the same date. It was NOT re-fetched in this research pass; the source_url recorded above is the section anchor used previously and the exact URL may differ by a path segment.",
+  "evidence_limitations": "Gross, not net. A visa eligibility threshold, not a wage statistic: no population is measured by it. The 'whichever is higher' rule means GBP 41,700 is a floor that most occupations exceed. Excludes healthcare and education, which use national pay scales instead. Not re-fetched in this pass; see provenance note."
+}

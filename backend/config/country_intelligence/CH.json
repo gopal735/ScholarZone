@@ -1,0 +1,326 @@
+{
+  "contract_version": "1.0.0",
+  "country": {
+    "currency": null,
+    "iso2": "CH",
+    "name_en": "Switzerland"
+  },
+  "gaps": [
+    {
+      "attempted_sources": [
+        "https://www.uzh.ch/en/studies/application/fees.html"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ch.bachelor_tuition_secondary_university",
+      "reason": "Evidence was retrieved and archived, but this topic has no explicit mapping into the corpus schema, so the figure was not placed. Adding the mapping is a reviewed change, not something ingestion should guess."
+    },
+    {
+      "attempted_sources": [
+        "ch-bfs-lse-2024-brutto-001"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ch.career.average_starting_salary.gross_monthly.month",
+      "reason": "5 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 7024 CHF per month (ch-bfs-lse-2024-brutto-001); 6368 CHF per month (ch-bfs-lse-2024-brutto-001); 5708 CHF per month (ch-bfs-lse-2024-brutto-001); 4635 CHF per month (ch-bfs-lse-2024-brutto-001); 12526 CHF per month (ch-bfs-lse-2024-brutto-001). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "https://www.sem.admin.ch/sem/en/home/themen/aufenthalt/eu_efta/ausweis_c_eu_efta.html"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ch.ch-permanent-residence-c-permit-1",
+      "reason": "Archived evidence recorded a finding with no numeric figure: Switzerland's settlement permit (C permit) is granted after five or ten years of residence, and SEM determines the earliest date from which cantonal authorities may grant it."
+    },
+    {
+      "attempted_sources": [
+        "ethz-tuition-fees"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ch.education_costs.tuition_fees.public.bachelor.semester",
+      "reason": "2 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 2190 CHF per semester (ethz-tuition-fees); 730 CHF per semester (ethz-tuition-fees). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "https://www.bfs.admin.ch/bfs/de/home/statistiken/arbeit-erwerb/loehne-erwerbseinkommen-arbeitskosten/lohnstruktur.html",
+        "https://www.bfs.admin.ch/bfs/de/home/statistiken/arbeit-erwerb/loehne-erwerbseinkommen-arbeitskosten/lohnstruktur/personenbezogene-merkmale.html",
+        "https://www.bfs.admin.ch/bfs/de/home/statistiken/arbeit-erwerb/loehne-erwerbseinkommen-arbeitskosten/lohnstruktur/berufsgruppen.html",
+        "https://www.bfs.admin.ch/bfs/de/home/statistiken/arbeit-erwerb/loehne-erwerbseinkommen-arbeitskosten/lohnstruktur/grossregionen.html",
+        "https://www.bfs.admin.ch/bfs/de/home/statistiken/arbeit-erwerb/loehne-erwerbseinkommen-arbeitskosten/lohnstruktur/lohnunterschied.html",
+        "https://www.bfs.admin.ch/bfs/de/home/statistiken/arbeit-erwerb/loehne-erwerbseinkommen-arbeitskosten/lohnstruktur/salarium.html",
+        "https://www.bfs.admin.ch/bfs/de/home/statistiken/arbeit-erwerb/loehne-erwerbseinkommen-arbeitskosten/erwerbseinkommen.html",
+        "https://www.bfs.admin.ch/bfs/de/home/statistiken/arbeit-erwerb.html",
+        "https://www.pxweb.bfs.admin.ch/api/v1/de/px-x-0304010000_205",
+        "https://www.pxweb.bfs.admin.ch/pxweb/de/px-x-0304010000_205/px-x-0304010000_205/px-x-0304010000_205.px",
+        "https://www.bfs.admin.ch/bfs/de/home/statistiken/wirtschaftliche-soziale-situation-bevoelkerung/soziale-situation-wohlbefinden-und-armut/ungleichheit-der-einkommensverteilung/einkommensverteilung.html",
+        "https://sozialversicherungen.admin.ch/de/f/6465",
+        "https://www.zg.ch/behoerden/gesundheitsdirektion/statistikfachstelle/themen/arbeitsmarkt/lohn",
+        "https://www.seco.admin.ch/de/anleitung-anmeldung-arbeitsverhaeltnis-und-lohnabrechnung"
+      ],
+      "checked_at": null,
+      "field": "ch.net_monthly_income",
+      "next_review": null,
+      "reason": "No official SWISS national net (take-home) monthly median income figure could be obtained from the Federal Statistical Office's published outputs. This is a PUBLICATION gap, not a data gap and not a fetch outage: the Swiss Earnings Structure Survey (Lohnstrukturerhebung, LSE) demonstrably DOES collect net wage data - a cantonal statistical office quotes national net wage distribution thresholds derived from it (see 020_net_monthly_income.json) - but every BFS-published LSE table reached in this research is a GROSS table, and no net median is exposed. Switzerland's structural context makes this gap harder to fill elsewhere too: federal, cantonal and municipal income taxes all apply, so there is no single national net figure to find even in principle, and any net number must be canton-specific. No net figure was invented to fill the gap."
+    },
+    {
+      "attempted_sources": [
+        "zh-studierende-praktikanten"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ch.residency.work_while_studying",
+      "reason": "2 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 15 per week (zh-studierende-praktikanten); 6 (zh-studierende-praktikanten). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "https://www.unibe.ch/studies/mobility/incoming/general_information/einreise_und_aufenthaltsbestimmungen/index_eng.html"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ch.student_permit_financial_proof",
+      "reason": "Evidence was retrieved and archived, but this topic has no explicit mapping into the corpus schema, so the figure was not placed. Adding the mapping is a reviewed change, not something ingestion should guess."
+    }
+  ],
+  "research": {
+    "evidence_artifact_count": 8,
+    "researched_at": "2026-10-05"
+  },
+  "sections": {
+    "career": {
+      "average_starting_salary": {
+        "gross_monthly": {
+          "month": {
+            "as_of": "2024",
+            "colliding_values": [
+              {
+                "as_of": "2024",
+                "currency": "CHF",
+                "per": "month",
+                "source_ids": [
+                  "ch-bfs-lse-2024-brutto-001"
+                ],
+                "statement": "VERBATIM: 'Im Jahr 2024 betrug der Medianlohn 7024 Franken brutto pro Monat.' Median standardised GROSS monthly wage for a full-time post (100%) in the Swiss economy as a whole, private and public sector combined, from the Swiss Earnings Structure Survey 2024. Expressed by the BFS as CHF 84 288 per year on a 12x basis, or CHF 91 312 on the Swiss conventional 13x basis.",
+                "value": 7024
+              },
+              {
+                "as_of": "2024",
+                "currency": "CHF",
+                "per": "month",
+                "source_ids": [
+                  "ch-bfs-lse-2024-brutto-001"
+                ],
+                "statement": "VERBATIM table row 5: employees WITHOUT management responsibility (Berufliche Stellung 5), median gross monthly wage, men and women combined, Switzerland 2024 = CHF 6 368. This is the closest published bracket to the situation of a new graduate, who will not be a manager.",
+                "value": 6368
+              },
+              {
+                "as_of": "2024",
+                "currency": "CHF",
+                "per": "month",
+                "source_ids": [
+                  "ch-bfs-lse-2024-brutto-001"
+                ],
+                "statement": "VERBATIM regional table: Canton Ticino (Tessin), all professional positions, median gross monthly wage 2024 = CHF 5 708, the lowest of the seven Swiss gross regions. Zurich is CHF 7 502. Recorded to make the size of the regional spread explicit.",
+                "value": 5708
+              },
+              {
+                "as_of": "2024",
+                "currency": "CHF",
+                "per": "month",
+                "source_ids": [
+                  "ch-bfs-lse-2024-brutto-001"
+                ],
+                "statement": "VERBATIM: 'Die 10% der Arbeitnehmenden mit den tiefsten Loehnen verdienten weniger als 4635 Franken pro Monat.' The 10th percentile (Tieflohn) gross monthly wage threshold, Switzerland 2024.",
+                "value": 4635
+              },
+              {
+                "as_of": "2024",
+                "currency": "CHF",
+                "per": "month",
+                "source_ids": [
+                  "ch-bfs-lse-2024-brutto-001"
+                ],
+                "statement": "VERBATIM: 'waehrend die am besten bezahlten 10% der Arbeitnehmenden einen Lohn von ueber 12 526 Franken erhielten.' The 90th percentile gross monthly wage threshold, Switzerland 2024.",
+                "value": 12526
+              }
+            ],
+            "currency": "CHF",
+            "note": "VERBATIM: 'Im Jahr 2024 betrug der Medianlohn 7024 Franken brutto pro Monat.' Median standardised GROSS monthly wage for a full-time post (100%) in the Swiss economy as a whole, private and public sector combined, from the Swiss Earnings Structure Survey 2024. Expressed by the BFS as CHF 84 288 per year on a 12x basis, or CHF 91 312 on the Swiss conventional 13x basis.",
+            "per": "month",
+            "source_ids": [
+              "ch-bfs-lse-2024-brutto-001"
+            ],
+            "value": 7024,
+            "value_status": "OFFICIAL_STATISTICS"
+          }
+        }
+      },
+      "net_monthly_income": {
+        "as_of": "not stated on the page",
+        "note": "Refused: this figure was computed from another published figure rather than published in its own right, so it cannot carry the source's authority. The underlying published figure belongs in the corpus; a derived monthly reading of an annual figure needs a registered formula before it can be shown, because 'a year divided by twelve' is not the same number as a monthly median and readers will treat it as one.",
+        "refusal": {
+          "operation": "period conversion",
+          "reason": "Refused: this figure was computed from another published figure rather than published in its own right, so it cannot carry the source's authority. The underlying published figure belongs in the corpus; a derived monthly reading of an annual figure needs a registered formula before it can be shown, because 'a year divided by twelve' is not the same number as a monthly median and readers will treat it as one.",
+          "required_input": "A monthly figure published by the source, or a registered formula that annual-to-monthly conversion is allowed to use."
+        },
+        "source_ids": [
+          "ch-zg-fachstelle-lse-nettolohn-001"
+        ],
+        "value": null,
+        "value_status": "REFUSED"
+      }
+    },
+    "education_costs": {
+      "tuition_fees": {
+        "public": {
+          "bachelor": {
+            "semester": {
+              "as_of": "2025",
+              "colliding_values": [
+                {
+                  "as_of": "2025",
+                  "currency": "CHF",
+                  "per": "semester",
+                  "source_ids": [
+                    "ethz-tuition-fees"
+                  ],
+                  "statement": "ETH Zurich charges students who do not qualify for the simple tuition fee, including most third-country national Bachelor students, a threefold tuition fee of CHF 2,190 per semester.",
+                  "value": 2190
+                },
+                {
+                  "as_of": "2025",
+                  "currency": "CHF",
+                  "per": "semester",
+                  "source_ids": [
+                    "ethz-tuition-fees"
+                  ],
+                  "statement": "ETH Zurich charges the simple tuition fee of CHF 730 per semester, covering tuition and semester fees, to Swiss and Liechtenstein citizens and to students resident in Switzerland or Liechtenstein when they obtained their university entrance qualification.",
+                  "value": 730
+                }
+              ],
+              "currency": "CHF",
+              "note": "ETH Zurich charges students who do not qualify for the simple tuition fee, including most third-country national Bachelor students, a threefold tuition fee of CHF 2,190 per semester.",
+              "per": "semester",
+              "source_ids": [
+                "ethz-tuition-fees"
+              ],
+              "value": 2190,
+              "value_status": "UNIVERSITY_OFFICIAL"
+            }
+          }
+        }
+      }
+    },
+    "residency": {
+      "permanent_residence": {
+        "as_of": "2021",
+        "note": "Nationals of the EU-15 and of EFTA states Iceland, Liechtenstein and Norway are granted settlement permits after five years of regular and uninterrupted residence in Switzerland.",
+        "source_ids": [
+          "sem-c-eu-efta-permit"
+        ],
+        "study_level": "bachelor",
+        "value": 5,
+        "value_status": "OFFICIAL_GOVERNMENT"
+      },
+      "work_while_studying": {
+        "as_of": "2026",
+        "colliding_values": [
+          {
+            "as_of": "2026",
+            "currency": null,
+            "per": "week",
+            "source_ids": [
+              "zh-studierende-praktikanten"
+            ],
+            "statement": "In Canton Zurich, a third-country national student may be permitted part-time employment once the employment does not exceed 15 hours per week outside school holidays.",
+            "value": 15
+          },
+          {
+            "as_of": "2026",
+            "currency": null,
+            "per": null,
+            "source_ids": [
+              "zh-studierende-praktikanten"
+            ],
+            "statement": "In Canton Zurich, a student from a third country may only be granted permission for part-time employment at the earliest six months after the start of their programme.",
+            "value": 6
+          }
+        ],
+        "month": {
+          "as_of": "2026",
+          "note": "Canton Zurich grants a six-month short-stay permit to third-country nationals who have successfully completed a study at a Swiss higher-education institution in order to look for work, provided they have sufficient financial means, suitable accommodation and a confirmed diploma.",
+          "per": "month",
+          "source_ids": [
+            "zh-studierende-praktikanten"
+          ],
+          "study_level": "bachelor",
+          "value": 6,
+          "value_status": "OFFICIAL_REGIONAL_BODY"
+        },
+        "note": "In Canton Zurich, a third-country national student may be permitted part-time employment once the employment does not exceed 15 hours per week outside school holidays.",
+        "source_ids": [
+          "zh-studierende-praktikanten"
+        ],
+        "value": 15,
+        "value_status": "OFFICIAL_REGIONAL_BODY"
+      }
+    }
+  },
+  "sources": [
+    {
+      "archived": true,
+      "as_of": "2024",
+      "confidence": null,
+      "id": "ch-bfs-lse-2024-brutto-001",
+      "notes": null,
+      "publisher": "Bundesamt fuer Statistik (BFS / FSO, Swiss Federal Statistical Office), Schweizerische Lohnstrukturerhebung (LSE / Swiss Earnings Structure Survey) 2024",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_STATISTICS",
+      "title": "gross_monthly_income evidence",
+      "url": "https://www.bfs.admin.ch/bfs/de/home/statistiken/arbeit-erwerb/loehne-erwerbseinkommen-arbeitskosten/lohnstruktur.html"
+    },
+    {
+      "archived": true,
+      "as_of": "not stated on the page",
+      "confidence": null,
+      "id": "ch-zg-fachstelle-lse-nettolohn-001",
+      "notes": null,
+      "publisher": "Fachstelle fuer Daten und Statistik, Gesundheitsdirektion, Kanton Zuerich (Canton of Zurich statistical office), reporting figures from the Bundesamt fuer Statistik (BFS) Lohnstrukturerhebung",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_REGIONAL_BODY",
+      "title": "net_monthly_income evidence",
+      "url": "https://www.zg.ch/behoerden/gesundheitsdirektion/statistikfachstelle/themen/arbeitsmarkt/lohn"
+    },
+    {
+      "archived": true,
+      "as_of": "2025",
+      "confidence": null,
+      "id": "ethz-tuition-fees",
+      "notes": "ETH Zurich replaced its two-tier fee structure in Autumn Semester 2025 with a Simple / Threefold structure covering both tuition and semester fees combined. A third-country national Bachelor student without a qualifying EU/EFTA permit status pays the threefold fee of CHF 2,190 per semester, so CHF 4,380 for a standard two-semester year. The page is explicit that a permit carrying only 'right to gainful employment up to 15 hrs/week' is NOT sufficient for the simple fee, which matters because that is exactly the status most students hold. Reallocation to the simple group must be requested before enrolment and is not possible during studies. ETH is the federal institute, so this is also the cheapest-case official tuition benchmark for a highly selective public university, not a general Swiss average. UZH (University of Zurich) publishes a different structure — CHF 720 per semester plus a CHF 500 surcharge for foreign students at Bachelor level plus CHF 59 mandatory semester contributions, from https://www.uzh.ch/en/studies/application/fees.html — recorded as a second university in file 006.",
+      "publisher": "ETH Zurich",
+      "retrieved_at": "2026-10-05",
+      "source_type": "UNIVERSITY_OFFICIAL",
+      "title": "bachelor_tuition evidence",
+      "url": "https://ethz.ch/students/en/studies/financial/tuition-fees.html"
+    },
+    {
+      "archived": true,
+      "as_of": "2021-03-01",
+      "confidence": null,
+      "id": "sem-c-eu-efta-permit",
+      "notes": "Permanent residence in Switzerland is the C permit (Niederlassungsbewilligung), described by SEM as granted 'after five or ten years' residence in Switzerland'. The five-year figure is verified for the EU-15 and EFTA (Iceland, Liechtenstein, Norway) list printed on the page. The ten-year figure applies to other groups, but I could not fetch the federal page that states the ten-year rule for third-country nationals specifically: sem.admin.ch/sem/en/home/themen/aufenthalt/nicht_eu_efta/ausweis_c.html returned 404 and the English naturalisation page returned 404, and the SEM free-movement FAQ I did fetch only clarifies the EU/EFTA side ('nationals from states other than those mentioned above are granted a settlement permit after a regular period of ten years', referring to remaining EU member states, not third countries). So the ten-year third-country minimum is reported as UNAVAILABLE within this file rather than asserted. Two further qualifications from the same federal source set: the free-movement agreement does not cover permanent residence, and the SEM determines the earliest date from which cantonal authorities may grant the permit, so a C permit is not automatic on the fifth anniversary. Importantly for scholarship applicants, time on a study permit is residence, but the C permit itself is residence-based, not study-based: no Swiss route was found that converts a completed degree into permanent residence directly.",
+      "publisher": "State Secretariat for Migration (SEM), Federal Department of Justice and Police",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "permanent_residence evidence",
+      "url": "https://www.sem.admin.ch/sem/en/home/themen/aufenthalt/eu_efta/ausweis_c_eu_efta.html"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "zh-studierende-praktikanten",
+      "notes": "Canton Zurich is the cantonal authority that issues the permits it describes, so this is an official regional source for the rule rather than a university summary. Key points: the permission is a cantonal Bewilligung for Nebenbeschäftigung (part-time employment), applied for by the employer, not the student; the 15-hour weekly cap applies outside school holidays, so term-time part-time work is capped but holiday work is not capped on this page; employment may not begin earlier than six months after the start of the programme; three cumulative conditions apply (school confirms the job fits within the programme, the job must not delay graduation, and the 15-hour term-time cap). This is the 'percentage FTE' rule expressed in hours: 15 hours per week against a nominal full-time week, i.e. roughly a 37.5% FTE in term time. For comparison, the SEM free-movement FAQ fetched from the federal source confirms the equivalent EU/EFTA figure: 'Students are issued this permit for one year and are granted yearly renewals until the completion of their studies, if they continue to fulfil the respective conditions' and notes that the free-movement agreement does not cover permanent residence. Post-study: a six-month short-stay permit for job search is available on graduation, and a six-month Kurzaufenthaltsbewilligung after a completed degree is confirmed above. Separately, the Canton Zurich page states that graduates of a Swiss higher-education institution may be admitted to work under a cantonal permit where the field has a shortage of labour ('In Frage kommen nur Bereiche, in denen nicht bereits ein genügendes Angebot an Arbeitskräften besteht'), which is a labour-shortage test rather than an automatic right. No claim is made about a national maximum working percentage because no federal page stating one was fetchable; the figures above are cantonal.",
+      "publisher": "Canton of Zurich, Amt für Wirtschaft (Office of Economic Affairs)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_REGIONAL_BODY",
+      "title": "student_work_rights evidence",
+      "url": "https://www.zh.ch/de/wirtschaft-arbeit/erwerbstaetigkeit-auslaender/studierende-und-praktikanten.html"
+    }
+  ]
+}

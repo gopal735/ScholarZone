@@ -1,0 +1,38 @@
+{
+  "country": "US",
+  "topic": "gross_monthly_income",
+  "source_id": "us-ssa-contribution-base-fica-2026",
+  "source_url": "https://www.ssa.gov/oact/cola/cbb.html",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Social Security Administration (SSA), Office of the Chief Actuary",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "SSA 'Contribution and Benefit Base', read verbatim from the search-result page content: 'For earnings in 2026, this base is $184,500. The OASDI tax rate for wages paid in 2026 is set by statute at 6.2 percent for employees and employers, each. Thus ...' Related SSA determination read verbatim: 'Under the above formula, the base for 2026 shall be the 1994 base of $60,600 multiplied by the ratio of the national average wage index for year 2024 to that for 1992, or, if larger, the 2025 base of $176,100. ... $60,600 times 69,846.57 divided by 22,935.42 equals $184,548.71, which rounds to $184,500 ... $184,500 exceeds the base for 2025, so the base for 2026 is $184,500'. SSA payroll tax provisions page read verbatim: 'These provisions modify: (1) the current-law OASDI payroll tax rate of 12.4 percent (6.2 percent each for employees and employers); or (2) the contribution and benefit base (taxable maximum), which limits the amount of earnings subject to payroll tax and credited for benefit computation.' FETCH CAVEAT: the direct fetch of https://www.ssa.gov/oact/cola/cbb.html returned HTTP 403 on this attempt; the quoted text above was obtained from indexed page content rather than from a successful direct retrieval, so the quoted figures should be re-verified against the live SSA page before being relied upon as final.",
+  "claims": [
+    {
+      "claim_id": "us-fica-base-001",
+      "value": 184500,
+      "unit": "USD per year",
+      "as_of": "2026",
+      "statement": "The Social Security (OASDI) contribution and benefit base for earnings in 2026 is $184,500, which is the ceiling on the earnings subject to the 6.2% Social Security payroll tax."
+    },
+    {
+      "claim_id": "us-fica-rate-001",
+      "value": 6.2,
+      "unit": "percent of wage",
+      "as_of": "2026",
+      "statement": "The OASDI tax rate for wages paid in 2026 is set by statute at 6.2 percent for employees and 6.2 percent for employers, each, up to the $184,500 contribution base."
+    }
+  ],
+  "assumptions": [
+    "These are PAYROLL TAX PARAMETERS, not earnings statistics. No US graduate gross salary is claimed in this artifact.",
+    "The 6.2% rate applies in full to a graduate salary because any single-year wage in the graduate range is far below the $184,500 ceiling. At a $48,000 annual wage the employee Social Security contribution is $2,976.",
+    "The Additional Medicare Tax of 0.9% is not asserted here; it applies only above $200,000 of annual wages for a single filer.",
+    "Medicare Hospital Insurance at 1.45% is applied in the net artifact from the IRS FICA structure rather than from this SSA page, since SSA's remit here is the OASDI base and rate."
+  ],
+  "field_mapping": {
+    "gross_monthly_income": "career.gross_monthly_income (topic: gross_monthly_income)"
+  },
+  "notes": "STATUS: PAYROLL TAX PARAMETERS ONLY, NO GRADUATE GROSS EARNINGS FIGURE ESTABLISHED. Recorded because the OASDI rate and the $184,500 ceiling are the SSA-published parameters behind the FICA component of the net calculation in 030_net_monthly_income.json, and because the ceiling is what makes the 6.2% rate a flat percentage rather than a capped amount at graduate salary levels. The US is the country in this set where the gross-to-net mapping is most often botched: a gross salary is quoted, a flat percentage is subtracted, and state income tax, FICA and health insurance are forgotten. This artifact contributes the FICA parameters only. It does NOT contribute an earnings level, and it does NOT address state income tax, which is state-specific and cannot be resolved from a federal source.",
+  "evidence_limitations": "FETCH CAVEAT, STATED PLAINLY: the direct retrieval of the SSA contribution-base page returned HTTP 403, and the figures above come from indexed page content rather than a page I successfully loaded and read end to end. This is weaker than the other artifacts here and is flagged rather than hidden. Before these numbers are used in the corpus they should be re-verified against the live SSA page or an alternative official SSA publication. Separately, no US graduate gross earnings figure was established: the Bureau of Labor Statistics publishes median weekly and hourly earnings by occupation and education, all GROSS and never net, and its Occupational Employment and Wage Statistics programme would be the correct primary source for a graduate anchor, but it was not retrieved in this pass. A further limitation specific to the US is that there is no national net earnings statistic at all, so even with a BLS gross figure the net side depends entirely on the assumed state, the W-4 configuration and the health insurance arrangement."
+}

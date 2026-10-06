@@ -1,0 +1,97 @@
+{
+  "country": "IE",
+  "topic": "post_study_work",
+  "source_id": "cib-critical-skills-employment-permit",
+  "source_url": "https://www.citizensinformation.ie/en/moving-country/working-in-ireland/employment-permits/green-card-permits/",
+  "source_type": "OFFICIAL_REGIONAL_BODY",
+  "publisher": "Citizens Information Board (Citizens Information, Ireland) - page edited 2 April 2026",
+  "retrieved_at": "2026-10-05",
+  "as_of": "salary thresholds effective 2026-03-01; page edited 2026-04-02",
+  "raw_extract": "What is a Critical Skills Employment Permit?\n\nIf you are from a country that is outside the European Economic Area (the EU, plus Norway, Iceland and Lichtenstein), the UK or Switzerland, you need permission to work in Ireland. In most cases, this means you have to apply for an employment permit.\n\nThe Critical Skills Employment Permit is for skilled workers who are qualified in professions where there is a shortage of skills in Ireland.\n\nNew employment permit salary thresholds\n\nFrom 1 March 2026, the minimum annual salary requirement for employment permits will increase.\n\nWho is eligible for a Critical Skills Employment Permit?\n\nYou (or the employer) can apply for a Critical Skills Employment Permit if you are offered a job that has either:\n\nAn annual salary of at least EUR40,904 a year (from 1 March 2026) in an occupation that is on the Critical Skills Occupation List\n\nAn annual salary of EUR68,911 a year in an occupation that is not on the list of ineligible occupations\n\nIf you got your qualification within the 12 months before the date you apply for the permit, and the job is on the Critical Skills Occupation List, the minimum annual salary is EUR36,848.\n\n### Qualifications\n\nFor eligible jobs in the EUR40,904 or more salary range you must have a degree or higher qualification.\n\nFor eligible jobs with an annual salary of EUR68,911 or over, you must have a degree or equivalent experience.\n\n### Job offer\n\nThe job offer must be for 2 years or more.\n\n### Labour market needs test\n\nA labour market needs test is not required for a Critical Skills Employment Permit.\n\n## Applying for a Stamp 4 after 21 months\n\nThe Critical Skills Employment Permit is issued for 2 years.\n\n21 months after you started work in Ireland, you can apply for a Stamp 4 permission to live and work in Ireland without an employment permit.\n\nIf you are granted a Stamp 4 permission, it will be issued for 2 years and can be renewed provided you continue to satisfy the criteria. When you have been legally resident for 5 years, you can apply for citizenship by naturalisation.\n\nIf you are not eligible for a Stamp 4, you will continue to need an employment permit to work in Ireland.\n\n## Fee\n\nNew | EUR1,000 | Up to 2 years\n\nIf an application is refused or withdrawn, 90% of the fee will be refunded to the applicant.\n\nThe fee for registering with immigration and getting an IRP is EUR300.\n\n***Page edited:** 2 April 2026",
+  "research_notes": "Ireland's post-study work model is different in kind from the UK/Canada/Australia/NZ models and this should be modelled as such rather than squeezed into a 'post-study work visa' slot. There is no single Irish post-study work PERMIT comparable to Canada's PGWP or the UK's Graduate visa. Instead the sequence is: (a) after study, a limited post-study permission on Stamp 1G under the Third Level Graduate Programme, then (b) transition into an employment permit. The official route named in the brief - the Critical Skills route - is the 'Critical Skills Employment Permit' (CSEP), which replaced the former Green Card permit. Verified figures: CSEP issued for 2 years; a Stamp 4 permission to live and work WITHOUT an employment permit may be applied for 21 months after starting work in Ireland, and that Stamp 4 is itself issued for 2 years and renewable; naturalisation available after 5 years of legal residence. Remuneration thresholds effective 1 March 2026: EUR 40,904 for occupations on the Critical Skills Occupation List (degree required), EUR 68,911 for any occupation not on the Ineligible List (degree or equivalent experience), and EUR 36,848 where the applicant obtained their qualification within the 12 months before applying - the last of these is a genuine recent-graduate concession and the one most relevant to new graduates. GENUINE SOURCE CONFLICT, documented rather than silently resolved: the gov.ie publication 'Critical Skills Employment Permits' (Department of Enterprise, Tourism and Employment, last updated 13 February 2025) still publishes EUR 38,000 and EUR 64,000. See the conflict block below. Two independent official sources carrying a 2026 effective date (enterprise.gov.ie and citizensinformation.ie) agree on the higher figures, and citizensinformation.ie additionally states the increase took effect 1 March 2026, so the gov.ie page is stale rather than a genuine policy difference. Costs recorded: EUR 1,000 CSEP application fee (90% refunded if refused) and EUR 300 for IRP registration. NOT VERIFIED: the Third Level Graduate Programme / Stamp 1G duration, because irishimmigration.ie (the authoritative source, Immigration Service Delivery) was completely unreachable from this environment across four attempts - two webfetch calls (one HTTP 200 with a decode error), two Playwright navigations (both timeouts), one Invoke-WebRequest (timeout) and one curl (TLS 'server closed abruptly', 0 bytes). That figure is therefore recorded as UNAVAILABLE in 003b rather than filled from memory. Also not verified and not claimed: the Critical Skills Occupation List contents, the Irish Naturalisation general 5-year residency rule beyond what is stated above, and the GEP route's own salary figures.",
+  "claims": [
+    {
+      "claim_id": "ie-post-study-work-1",
+      "statement": "Ireland's principal skilled employment route is the Critical Skills Employment Permit, which is issued for 2 years and requires a job offer of 2 years or more.",
+      "value": 2,
+      "unit": "years (permit duration)",
+      "as_of": "2026-04-02",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ie-post-study-work-2",
+      "statement": "21 months after starting work in Ireland a Critical Skills Employment Permit holder can apply for a Stamp 4 permission to live and work in Ireland without an employment permit; that Stamp 4 is issued for 2 years and is renewable.",
+      "value": 21,
+      "unit": "months before Stamp 4 eligibility",
+      "as_of": "2026-04-02",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ie-post-study-work-3",
+      "statement": "From 1 March 2026 the Critical Skills Employment Permit minimum annual salary is EUR 40,904 for occupations on the Critical Skills Occupation List, where a degree or higher qualification is required.",
+      "value": 40904,
+      "unit": "EUR per year",
+      "as_of": "from 2026-03-01",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ie-post-study-work-4",
+      "statement": "The Critical Skills Employment Permit minimum annual salary is EUR 68,911 for occupations not on the Ineligible List of Occupations, where a degree or equivalent experience is required.",
+      "value": 68911,
+      "unit": "EUR per year",
+      "as_of": "from 2026-03-01",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ie-post-study-work-5",
+      "statement": "Where the applicant obtained their qualification within the 12 months before applying and the job is on the Critical Skills Occupation List, the minimum annual salary is EUR 36,848 - a reduced recent-graduate threshold.",
+      "value": 36848,
+      "unit": "EUR per year (recent graduate concession)",
+      "as_of": "from 2026-03-01",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ie-post-study-work-6",
+      "statement": "A Labour Market Needs Test is not required for a Critical Skills Employment Permit.",
+      "value": null,
+      "unit": "employer obligation waived",
+      "as_of": "2026-04-02",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ie-post-study-work-7",
+      "statement": "The Critical Skills Employment Permit application fee is EUR 1,000 (90% refunded if refused or withdrawn) and the fee for immigration registration and an Irish Residence Permit is EUR 300.",
+      "value": 1000,
+      "unit": "EUR (CSEP application fee)",
+      "as_of": "2026-04-02",
+      "study_level": "bachelor"
+    }
+  ],
+  "conflict": {
+    "description": "Two official Irish government sources disagree on the Critical Skills Employment Permit salary thresholds. Both are recorded rather than one being silently preferred.",
+    "source_a": {
+      "source_id": "cib-critical-skills-employment-permit",
+      "publisher": "Citizens Information Board (citizensinformation.ie)",
+      "source_url": "https://www.citizensinformation.ie/en/moving-country/working-in-ireland/employment-permits/green-card-permits/",
+      "page_edited": "2026-04-02",
+      "raw_extract": "From 1 March 2026, the minimum annual salary requirement for employment permits will increase. ... An annual salary of at least EUR40,904 a year (from 1 March 2026) in an occupation that is on the Critical Skills Occupation List ... An annual salary of EUR68,911 a year in an occupation that is not on the list of ineligible occupations",
+      "values": {
+        "critical_skills_occupation_list_threshold_eur_per_year": 40904,
+        "general_threshold_eur_per_year": 68911
+      }
+    },
+    "source_b": {
+      "source_id": "govie-critical-skills-employment-permits",
+      "publisher": "gov.ie - Department of Enterprise, Tourism and Employment",
+      "source_url": "https://www.gov.ie/en/department-of-enterprise-tourism-and-employment/publications/critical-skills-employment-permits/",
+      "published_on": "2025-01-20",
+      "last_updated_on": "2025-02-13",
+      "raw_extract": "Published on: 20 January 2025 - Last updated on: 13 February 2025 ... Occupations with a minimum annual remuneration of EUR38,000 for a restricted number of strategically important occupations contained in the Critical Skills Occupations List a relevant degree qualification or higher is required. ... All occupations with a minimum annual remuneration of over EUR64,000, other than those on the Ineligible List of Occupations for employment permits ... In order to achieve the minimum remuneration threshold of EUR38,000 or EUR64,000 for a Critical Skills Employment Permit",
+      "values": {
+        "critical_skills_occupation_list_threshold_eur_per_year": 38000,
+        "general_threshold_eur_per_year": 64000
+      }
+    },
+    "assessment": "Resolved in favour of the higher figures. citizensinformation.ie carries an explicit 'From 1 March 2026' effective date and was page-edited 2 April 2026, and the identical EUR 40,904 / EUR 68,911 / EUR 36,848 figures appear on enterprise.gov.ie (fetched 2026-10-05). The gov.ie page was last updated 13 February 2025 and predates the March 2026 indexation, so it is stale rather than a competing policy. Both figures are nonetheless retained above because a corpus that ingests only gov.ie would otherwise carry the superseded thresholds. Neither page carries an explicit 'last reviewed' stamp on the enterprise.gov.ie copy, so the recency of that page is inferred from it matching the dated citizensinformation.ie figures rather than established from its own metadata."
+  }
+}

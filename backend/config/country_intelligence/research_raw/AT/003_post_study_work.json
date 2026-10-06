@@ -1,0 +1,54 @@
+{
+  "country": "AT",
+  "topic": "post_study_work",
+  "source_id": "migration-gv-at-studienabsolventinnen",
+  "source_url": "https://www.migration.gv.at/de/formen-der-zuwanderung/dauerhafte-zuwanderung/studienabsolventinnen/",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "migration.gv.at, the Austrian Federal Ministry for Labour, Social Affairs, Health, Care and Consumer Protection, and the Federal Ministry of the Interior",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "# StudienabsolventInnen einer oesterreichischen Hochschule oder Fachhochschule\n\n## StudienabsolventInnen aus Drittstaaten\n\n### Aufenthalt zur Arbeitsuche und Unternehmensgruendung\n\nWenn Sie aus einem Drittstaat kommen und Ihr Studium bzw. Ihre an ein Studium anschliessende verpflichtende Ausbildung in Oesterreich als Inhaberin einer Aufenthaltsbewilligung \"Student\" abgeschlossen haben, koennen Sie Ihre Aufenthaltsbewilligung \"Student\" um zwoelf Monate zur Arbeitsuche oder Unternehmensgruendung in Oesterreich verlaengern. Dafuer muessen Sie allgemeine Voraussetzungen (ausgenommen ortsuebliche Unterkunft) erfuellen.\n\n### Rot-Weiss-Rot - Karte fuer StudienabsolventInnen\n\nSofern Sie innerhalb dieser zwoelf Monate ein ihrem Ausbildungsniveau entsprechendes Beschaeftigungsangebot eines konkreten Unternehmens (Arbeitsvertrag) erhalten, koennen Sie eine Rot-Weiss-Rot - Karte ohne Arbeitsmarktpruefung beantragen, wenn Sie die folgenden Voraussetzungen erfuellen:\n\n- Sie erhalten das fuer inlandische StudienabsolventInnen (BerufseinsteigerInnen) ortsuebliche monatliche Mindestbruttentgelt und\n- erfuellen die allgemeinen Voraussetzungen (ausgenommen ortsuebliche Unterkunft und Unterhaltsmittel nach dem NAG).\n\nFuer StudienabsolventInnen ist kein Punktesystem vorgesehen. Die Rot-Weiss-Rot - Karte berechtigt Sie zur befristeten Niederlassung und zur Beschaeftigung bei einem konkreten Unternehmen. Sie koennen eine Rot-Weiss-Rot - Karte erhalten, wenn Sie Ihr Studium an einer Universitaet, Fachhochschule, Privathochschule oder Privatuniversitaet gemaess dem Privathochschulgesetz (PrivHG) absolviert haben. Nachzuweisen ist, dass Sie ein Diplomstudium zumindest ab dem zweiten Studienabschnitt, ein Bachelorstudium, ein Masterstudium oder ein Doktoratsstudium erfolgreich abgeschlossen haben.\n\n### Rot-Weiss-Rot - Karte plus fuer StudienabsolventInnen\n\nSie koennen eine Rot-Weiss-Rot - Karte plus mit unbeschraenktem Arbeitsmarktzugang beantragen, wenn Sie innerhalb der letzten 24 Monate zumindest 21 Monate unter den fuer die Zulassung massgeblichen Voraussetzungen beschaeftigt waren.\n\n## Welche Dokumente sind vorzulegen?\n\n- gueltiges Reisedokument (z.B. Reisepass)\n- Lichtbild, das nicht aelter als ein halbes Jahr sein darf (Groesse: 45x35 mm)\n- Nachweis ueber einen Krankenversicherungsschutz, der alle Risiken abdeckt (Pflichtversicherung oder eine entsprechende Versicherungspolizze)\n- Berufen sich AntragstellerInnen auf Leistungen oder die Leistungsfaehigkeit von verpflichteten Dritten, ist darueber jeweils ein Nachweis vorzulegen.\n- Nachweis ueber den erfolgreichen Abschluss eines Studiums oder einer entsprechenden Ausbildung\n\nEine Haftungserklaerung kann bei Beantragung einer Aufenthaltsbewilligung \"Student\" zur Arbeitssuche oder Unternehmensgruendung abgegeben werden. Der Umstieg auf eine \"Rot-Weiss-Rot - Karte\" ist bei Vorliegen der Voraussetzungen moeglich",
+  "research_notes": "Austria's post-study job-search permission: TWELVE MONTHS, and crucially it is a RENEWAL of the existing student residence permit rather than a separate permit. The source states 'koennen Sie Ihre Aufenthaltsbewilligung \"Student\" um zwoelf Monate zur Arbeitsuche oder Unternehmensgruendung in Oesterreich verlaengern' - you extend your 'Aufenthaltsbewilligung Student' by twelve months for job-seeking or business formation.\n\nBACHELOR EXPLICITLY QUALIFIES. The same page lists the qualifying degrees and a Bachelor's is named: 'Nachzuweisen ist, dass Sie ein Diplomstudium zumindest ab dem zweiten Studienabschnitt, ein Bachelorstudium, ein Masterstudium oder ein Doktoratsstudium erfolgreich abgeschlossen haben.' So this permit is confirmed available at Bachelor level, unlike Sweden's second-cycle-only job-search permit.\n\nCORROBORATION ON A SECOND OFFICIAL SOURCE, the OeAD student residence permit checklist fetched in this session: 'Students who have completed their studies holding a \"Residence Permit - Student\" may apply for a renewal of the permit for another 12 months to look for a job or set up a business.' Twelve months, both sources, no conflict.\n\nA MATERIAL CONDITION THAT IS EASY TO MISS: on job search the general requirements still apply EXCEPT customary accommodation. So the applicant no longer has to prove accommodation, but health insurance and the other general conditions remain. A job-search applicant therefore carries health insurance and the cost of living without the usual accommodation proof.\n\nUPGRADE ROUTE. If a job at a level matching the qualification is found within the twelve months, the graduate may apply for a 'Rot-Weiss-Rot - Karte' (Red-White-Red Card) WITHOUT a labour market check, provided the pay meets the customary minimum gross for domestic entry-level graduates in that role. The page is explicit that no points system applies to graduates. A Red-White-Red Card plus with unrestricted labour market access follows after at least 21 months of qualifying employment within the last 24 months.\n\nNote the parallel structure across the five countries: Austria names its post-study route after a permit type rather than giving it a standalone name, so 'Red-White-Red Card for graduates' is the destination permit while the job-search phase is a student-permit extension.",
+  "claims": [
+    {
+      "claim_id": "at-poststudy-duration-1",
+      "statement": "A third-country national who completed study in Austria on a Student residence permit may extend that permit by twelve months for job-seeking or business formation.",
+      "value": 12,
+      "unit": "months",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "at-poststudy-permit-name-1",
+      "statement": "Austria's post-study job-search phase is a twelve-month extension of the 'Aufenthaltsbewilligung Student' for job-seeking or business formation, not a separate permit.",
+      "value": "extension of the Aufenthaltsbewilligung Student for Arbeitssuche or Unternehmensgruendung",
+      "unit": "permit structure",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "at-poststudy-bachelor-eligible-1",
+      "statement": "The Austrian source explicitly lists a completed Bachelorstudium among the degrees qualifying for the graduate Red-White-Red Card route, so the post-study option is open at Bachelor's level.",
+      "value": 1,
+      "unit": "bachelor degree qualifies for post-study route",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "at-poststudy-upgrade-1",
+      "statement": "A graduate who secures a job matching their qualification within the twelve months may apply for a Red-White-Red Card without a labour market check if paid the customary minimum gross for domestic entry-level graduates, and no points system applies to graduates.",
+      "value": 0,
+      "unit": "points system applicable to graduates",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "at-poststudy-rwr-plus-1",
+      "statement": "A Red-White-Red Card plus with unrestricted labour market access may be applied for after at least 21 months of qualifying employment within the last 24 months.",
+      "value": 21,
+      "unit": "months of qualifying employment within 24 months",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

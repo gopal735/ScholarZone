@@ -1,0 +1,41 @@
+{
+  "country": "CH",
+  "topic": "permanent_residence",
+  "source_id": "sem-c-eu-efta-permit",
+  "source_url": "https://www.sem.admin.ch/sem/en/home/themen/aufenthalt/eu_efta/ausweis_c_eu_efta.html",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "State Secretariat for Migration (SEM), Federal Department of Justice and Police",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2021-03-01",
+  "raw_extract": "Settled foreign nationals are foreign nationals who have been granted a settlement permit after five or ten years' residence in Switzerland. The right to settle in Switzerland is not subject to any time restrictions or conditions. The State Secretariat for Migration (SEM) determines the earliest date from which the competent national authorities may grant settlement permits. In the case of EU/EFTA nationals, the issue of settlement permits is governed by the provisions of the Foreign Nationals and Integration Act and the settlement treaties. This is because the Free Movement of Persons Agreement does not contain any provisions relating to settlement permits. If they meet the required conditions, nationals of Austria, Belgium, Denmark, Finland, France, Germany, Greece, Ireland, Italy, Luxembourg, the Netherlands, Portugal, Spain and Sweden as well as EFTA nationals (Iceland, Liechtenstein, Norway) are granted settlement permits pursuant to settlement treaties or reciprocal agreements after five years' regular and uninterrupted residence in Switzerland. No such treaties exist for nationals of the other EU member states.",
+  "research_notes": "Permanent residence in Switzerland is the C permit (Niederlassungsbewilligung), described by SEM as granted 'after five or ten years' residence in Switzerland'. The five-year figure is verified for the EU-15 and EFTA (Iceland, Liechtenstein, Norway) list printed on the page. The ten-year figure applies to other groups, but I could not fetch the federal page that states the ten-year rule for third-country nationals specifically: sem.admin.ch/sem/en/home/themen/aufenthalt/nicht_eu_efta/ausweis_c.html returned 404 and the English naturalisation page returned 404, and the SEM free-movement FAQ I did fetch only clarifies the EU/EFTA side ('nationals from states other than those mentioned above are granted a settlement permit after a regular period of ten years', referring to remaining EU member states, not third countries). So the ten-year third-country minimum is reported as UNAVAILABLE within this file rather than asserted. Two further qualifications from the same federal source set: the free-movement agreement does not cover permanent residence, and the SEM determines the earliest date from which cantonal authorities may grant the permit, so a C permit is not automatic on the fifth anniversary. Importantly for scholarship applicants, time on a study permit is residence, but the C permit itself is residence-based, not study-based: no Swiss route was found that converts a completed degree into permanent residence directly.",
+  "claims": [
+    {
+      "claim_id": "ch-permanent-residence-c-permit-1",
+      "statement": "Switzerland's settlement permit (C permit) is granted after five or ten years of residence, and SEM determines the earliest date from which cantonal authorities may grant it.",
+      "value": null,
+      "unit": "5 years (EU-15/EFTA) or 10 years (others); not study-based",
+      "as_of": "2021",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ch-permanent-residence-eu-efta-1",
+      "statement": "Nationals of the EU-15 and of EFTA states Iceland, Liechtenstein and Norway are granted settlement permits after five years of regular and uninterrupted residence in Switzerland.",
+      "value": 5,
+      "unit": "years of residence",
+      "as_of": "2021",
+      "study_level": "bachelor"
+    }
+  ],
+  "unresolved": {
+    "metric": "third-country national settlement permit minimum years",
+    "raw_status": "UNAVAILABLE",
+    "reason": "No federal page stating the ten-year minimum for non-EU/EFTA nationals could be fetched; the URLs returned 404 or 403 and the federal entry-visa page reachable in search only states the qualitative requirement ('sie verfügen über ausreichende finanzielle Mittel') without an amount.",
+    "attempted_sources": [
+      "https://www.sem.admin.ch/sem/en/home/themen/aufenthalt/nicht_eu_efta/ausweis_c.html",
+      "https://www.sem.admin.ch/sem/en/home/integration-einbuergerung/schweizer-werden/ordentliche-einbuergerung.html",
+      "https://www.sem.admin.ch/sem/en/home/themen/aufenthalt/nicht_eu_efta.html"
+    ],
+    "checked_at": "2026-10-05"
+  }
+}

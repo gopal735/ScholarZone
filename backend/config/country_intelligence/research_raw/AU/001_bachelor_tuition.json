@@ -1,0 +1,38 @@
+{
+  "country": "AU",
+  "topic": "bachelor_tuition",
+  "source_id": "anu-bsc-2026",
+  "source_url": "https://programsandcourses.anu.edu.au/2026/program/BSC",
+  "source_type": "UNIVERSITY_OFFICIAL",
+  "publisher": "The Australian National University",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026 academic year",
+  "raw_extract": "Bachelor of Science\n\nA single three year undergraduate award offered by the ANU College of Science and Medicine\n\nBSC\n\nAcademic Year 2026\n\n- Length 3 year full-time\n- Minimum 144 Units\n- Academic plan BSC\n- Post Nominal BSc\n- CRICOS code 000335K\n\nIndicative fees\n\nDomestic International\n\nCommonwealth Supported Place (CSP)\n\nFor more information see: http://www.anu.edu.au/students/program-administration/costs-fees\n\nAnnual indicative fee for international students\n\n$56,120.00\n\nFor further information on International Tuition Fees see: https://www.anu.edu.au/students/program-administration/fees-payments/international-tuition-fees\n\nFee Information\n\nAll students are required to pay the Services and amenities fee (SA Fee)\n\nThe annual indicative fee provides an estimate of the program tuition fees for international students and domestic students (where applicable). The annual indicative fee for a program is based on the standard full-time enrolment load of 48 units per year (unless the program duration is less than 48 units). Fees for courses vary by discipline meaning that the fees for a program can vary depending on the courses selected. Course fees are reviewed on an annual basis and typically will increase from year to year. The tuition fees payable are dependent on the year of commencement and the courses selected and are subject to increase during the period of study.",
+  "research_notes": "Australia has no single national international tuition figure; fees are set per institution and per discipline band, so this is one named university (ANU) and one named award (Bachelor of Science, 3 years, CRICOS 000335K). Currency is recorded as AUD: the amount is published as a bare '$56,120.00' by an Australian university on an Australian-fee schedule, and the same page's footnote describes international students as paying an 'annual indicative fee' on a 48-unit load. ANU publishes tuition in BANDED form, which a corpus must not miss: its 2026 Schedule of Tuition Fees sets six International Student Fee bands for a 48-unit load ranging from $46,680 to $62,440, and $56,120 is the Band 4 rate. I saw that band table only in a search-engine snippet of the ANU PDF and did not fetch the PDF, so the band range is NOT recorded as a claim - but it is the reason a single ANU number must never be presented as 'the' Australian international fee. HONEST LABELLING OF THE FIGURE: ANU itself calls this an 'annual indicative fee' that 'provides an estimate', based on a standard 48-unit load, and warns that course fees 'vary by discipline' and 'typically will increase from year to year', so it is an estimate rather than an invoice. Additional mandatory cost recorded: a Services and Amenities (SA) Fee payable by all students, amount not published on this page and therefore not claimed. Not verified and not claimed: the 2026 Schedule of Tuition Fees PDF band table, the SA Fee amount, OSHC premium rates, and any domestic-fee exemption criteria.",
+  "claims": [
+    {
+      "claim_id": "au-bachelor-tuition-1",
+      "statement": "The Australian National University charges international students an annual indicative fee of AUD 56,120.00 for the three-year Bachelor of Science, based on a standard 48-unit full-time enrolment load.",
+      "value": 56120,
+      "unit": "AUD per year",
+      "as_of": "2026 academic year",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "au-bachelor-tuition-2",
+      "statement": "ANU states the annual indicative fee is an estimate based on a 48-unit load, that fees vary by discipline according to the courses selected, and that course fees are reviewed annually and typically increase from year to year.",
+      "value": null,
+      "unit": "qualification of the figure",
+      "as_of": "2026 academic year",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "au-bachelor-tuition-3",
+      "statement": "All students at ANU are additionally required to pay a Services and Amenities (SA) Fee on top of tuition (amount not published on the page fetched).",
+      "value": null,
+      "unit": "mandatory additional fee (amount not published here)",
+      "as_of": "2026 academic year",
+      "study_level": "bachelor"
+    }
+  ]
+}

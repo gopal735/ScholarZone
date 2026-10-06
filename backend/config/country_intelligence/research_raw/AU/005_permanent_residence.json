@@ -1,0 +1,54 @@
+{
+  "country": "AU",
+  "topic": "permanent_residence",
+  "source_id": "homeaffairs-subclass186-trt",
+  "source_url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186/temporary-residence-transition-stream",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Australian Government - Department of Home Affairs, Immigration and Citizenship",
+  "retrieved_at": "2026-10-05",
+  "as_of": "page last updated 3 August 2026",
+  "raw_extract": "Employer Nomination Scheme (subclass 186)\nEmployer Nomination Scheme (subclass 186)\nTemporary Residence Transition stream\n\nThis visa lets skilled workers nominated by their current employer live and work in Australia permanently.\n\nSkilled visa income thresholds are increasing in line with changes to annual Average Weekly Ordinary Time Earnings. For more information see Annual indexation of skilled visa income thresholds from 1 July 2026.\n\nStay\n\nPermanent\n\nCost\n\nFrom AUD6,140.00\n\nConcessions apply in limited circumstances.\n\nCost Concession\n\nFrom 1 July 2026, a lower visa cost applies to eligible Pacific Island and Timor-Leste citizens who lodge a valid visa application. See About this visa.\n\nTo see what your visa will cost use the Visa Pricing Estimator. The estimator does not consider the second instalment or other costs.\n\nWith this visa you can\n\nlive, work and study in Australia indefinitely\n\nsponsor eligible family members to come to Australia\n\napply for Australian citizenship, if eligible.\n\nCheck your eligibility\n\nYou must\n\nhold a subclass 457, 482 or eligible bridging visa\n\nusually, have worked in eligible sponsored employment for at least 2 years full time while holding a subclass 457 or 482 visa\n\nhave a nomination from an Australian employer that we approved in the 6 months before you applied.\n\n[Page footer] Last updated: 3 August 2026",
+  "research_notes": "Australian permanent residence has no single route for international graduates and I have recorded only the one I could verify from the government. This is the Employer Nomination Scheme (subclass 186), Temporary Residence Transition (TRT) stream, which is the standard employer-sponsored PR path from the subclass 482 Skills in Demand visa that a Temporary Graduate visa holder typically graduates into. Minimum qualifying period: 'at least 2 years full time' of eligible sponsored employment while holding a subclass 457 or 482 visa - two years, not the older three years. TWO IMPORTANT QUALIFIATIONS the page itself signals and a corpus must not drop: (1) 'usually' - the 2-year rule is not absolute, so it should not be encoded as an unconditional minimum; (2) the employer must first obtain an approved nomination, valid for 6 months before the application. The applicant must already hold a 457, 482 or eligible bridging visa, so this route is NOT available directly from a Student visa or a Temporary Graduate visa - the student must first convert to 482. HONEST SCOPE LIMITS: I did NOT fetch the subclass 189 (Skilled Independent) points-tested page, so no points figure, no points threshold and no invitation-round information is claimed; nor did I fetch the 186 Direct Entry stream (which third-party sources describe as requiring 3 years of relevant work experience plus a skills assessment). The under-45 age ceiling for the 186 is widely asserted in the commentary I saw but was not on this overview page, so it is deliberately NOT claimed. The Current Average Weekly Ordinary Time Earnings indexation notice on this page confirms skilled visa income thresholds moved from 1 July 2026 but no dollar figure is published here, so none is claimed. Visa cost recorded as stated: from AUD6,140.00.",
+  "claims": [
+    {
+      "claim_id": "au-permanent-residence-1",
+      "statement": "Australian permanent residence via the Employer Nomination Scheme (subclass 186), Temporary Residence Transition stream, normally requires at least 2 years of full-time eligible sponsored employment held while on a subclass 457 or 482 visa.",
+      "value": 2,
+      "unit": "years full-time sponsored employment",
+      "as_of": "2026-08-03",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "au-permanent-residence-2",
+      "statement": "The qualifying period is stated as applying 'usually', indicating exceptions exist rather than the 2-year rule being absolute.",
+      "value": null,
+      "unit": "conditional wording",
+      "as_of": "2026-08-03",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "au-permanent-residence-3",
+      "statement": "The applicant must already hold a subclass 457, 482 or eligible bridging visa, and must have an Australian employer nomination approved in the 6 months before applying - so this route is not available directly from a Student or Temporary Graduate visa.",
+      "value": 6,
+      "unit": "months (nomination validity window)",
+      "as_of": "2026-08-03",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "au-permanent-residence-4",
+      "statement": "A subclass 186 grant allows the holder to live, work and study in Australia indefinitely and to apply for Australian citizenship if eligible.",
+      "value": "Permanent",
+      "unit": "stay",
+      "as_of": "2026-08-03",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "au-permanent-residence-5",
+      "statement": "Skilled visa income thresholds are indexed in line with changes to annual Average Weekly Ordinary Time Earnings, with indexation taking effect from 1 July 2026 (no dollar threshold published on this page).",
+      "value": null,
+      "unit": "indexation rule (amount not published here)",
+      "as_of": "2026-07-01",
+      "study_level": "bachelor"
+    }
+  ]
+}

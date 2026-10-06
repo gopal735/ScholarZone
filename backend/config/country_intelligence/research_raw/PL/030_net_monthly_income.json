@@ -1,0 +1,66 @@
+{
+  "country": "PL",
+  "topic": "net_monthly_income",
+  "source_id": "pl-mf-zus-net-model-2026",
+  "source_url": "https://www.podatki.gov.pl/podatki-osobiste/pit/informacje-podstawowe/co-jest-opodatkowane/zbycie-rzeczy-ruchomej",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Ministry of Finance / National Tax Administration (podatki.gov.pl, KAS) and Social Insurance Institution (ZUS)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026 tax year",
+  "raw_extract": "podatki.gov.pl (Ministry of Finance / KAS), 'Skala podatkowa w 2026 roku', read verbatim: 'Skala podatkowa w 2026 roku / Podstawa odliczenia podatku (zl) / Podatek wynosi: / ponad | do / \\- | 120 000 | 12% minus kwota zmniejszajaca podatek 3 600 zl / 120 000 | \\- | 10 800 zl + 32% nadwyzki ponad 120 000 zl'. The same page confirms the legal basis: 'Ustawa z dnia 26 lipca 1991 r. o podatku dochodowym od osob fizycznych'. --- ZUS, 'Wysokosc skladek na ubezpieczenia spoleczne', read verbatim: 'na ubezpieczenie emerytalne - 19,52% podstawy wymiaru'; 'na ubezpieczenia rentowe - 8,00% podstawy wymiaru'; 'na ubezpieczenie chorobowe - 2,45% podstawy wymiaru'; 'na ubezpieczenie wypadkowe - stopa procentowa skladki jest zroznicowana'. ZUS annual limit, read verbatim: 'Kwota prognozowanego przecietnego wynagrodzenia w 2026 roku wynosi 9420 zl. Roczna podstawa wymiaru na ubezpieczenia emerytalne i rentowe w 2026 roku moze wynosic maksymalnie 282 600 zl. Miesieczna podstawa wymiaru skladek na dobrowolne ubezpieczenie chorobowe nie moze przekroczyc miesiecznie 23 550,00 zl.' --- ZUS, 'Finansowanie skladek na ubezpieczenia spoleczne', read verbatim: 'Skladki na ubezpieczenie emerytalne finansujecie w rownych czesciach Ty i Twoj platnik skladek (po 9,76 proc. podstawy wymiaru skladek).'; 'Skladki na ubezpieczenia rentowe finansujecie: - Ty - w wysokosci 1,5 proc. podstawy wymiaru, - Twoj platnik skladek - w wysokosci 6,5 proc. podstawy wymiaru,'; 'Skladki na ubezpieczenie chorobowe finansujesz w calosci Ty.'; 'Skladki na ubezpieczenie wypadkowe finansuje w calosci Twoj platnik skladek.'",
+  "claims": [
+    {
+      "claim_id": "pl-net-monthly-001",
+      "value": 5107.84,
+      "unit": "PLN per month",
+      "as_of": "2026",
+      "statement": "For an employee on a contract of employment (umowa o prace) with a gross monthly salary of PLN 7,000, statutory deductions for 2026 give a net monthly take-home of PLN 5,107.84: employee ZUS social contributions of PLN 959.70 (13.71% = 9.76% pension + 1.5% disability + 2.45% sickness), health insurance of PLN 543.63 (9% of gross minus social contributions), and monthly income tax averaging PLN 388.84."
+    },
+    {
+      "claim_id": "pl-net-monthly-002",
+      "value": 5789.53,
+      "unit": "PLN per month",
+      "as_of": "2026",
+      "statement": "For an employee with a gross monthly salary of PLN 8,000, statutory 2026 deductions give a net monthly take-home of PLN 5,789.53: ZUS employee contributions PLN 1,096.80, health insurance PLN 621.29, income tax PLN 492.38 per month."
+    },
+    {
+      "claim_id": "pl-net-monthly-003",
+      "value": 6471.22,
+      "unit": "PLN per month",
+      "as_of": "2026",
+      "statement": "For an employee with a gross monthly salary of PLN 9,000, statutory 2026 deductions give a net monthly take-home of PLN 6,471.22: ZUS employee contributions PLN 1,233.90, health insurance PLN 698.95, income tax PLN 595.93 per month."
+    },
+    {
+      "claim_id": "pl-net-monthly-004",
+      "value": 7152.91,
+      "unit": "PLN per month",
+      "as_of": "2026",
+      "statement": "For an employee with a gross monthly salary of PLN 10,000, statutory 2026 deductions give a net monthly take-home of PLN 7,152.91: ZUS employee contributions PLN 1,371.00, health insurance PLN 776.61, income tax PLN 699.48 per month."
+    },
+    {
+      "claim_id": "pl-net-monthly-005",
+      "value": 4426.15,
+      "unit": "PLN per month",
+      "as_of": "2026",
+      "statement": "For an employee with a gross monthly salary of PLN 6,000, statutory 2026 deductions give a net monthly take-home of PLN 4,426.15: ZUS employee contributions PLN 822.60, health insurance PLN 465.97, income tax PLN 285.29 per month."
+    }
+  ],
+  "assumptions": [
+    "Employment is an umowa o prace (contract of employment). This matters: a umowa zlecenie or umowa o dzielo carries a different and usually lighter ZUS burden and a different cost-of-earning deduction, so these figures must not be transferred to other contract types.",
+    "Employee pays the full 13.71% of gross in social contributions: pension 9.76%, disability 1.5%, sickness 2.45%. Sickness insurance is stated by ZUS as financed 'w calosci Ty' (entirely by you), so it is included.",
+    "Health insurance (skladka zdrowotna) is 9% of (gross minus employee social contributions), deducted in full. It is NOT deductible against income tax.",
+    "Cost of earning (koszty uzyskania przychodu) of PLN 250 per month for an employee is subtracted before tax. PLN 300 per month applies to other employment titles; PLN 250 is the standard for employees and is the conservative, widely applied figure.",
+    "The annual tax-free amount (kwota zmniejszajaca podatek) is taken as PLN 3,600 per year, which podatki.gov.pl states directly as part of the 12% band formula ('12% minus kwota zmniejszajaca podatek 3 600 zl'). This is equivalent to PLN 300 per month.",
+    "No ulga (relief) is claimed: not the family/child relief, not the under-26 relief (ulga dla mlodych), not IP BOX, not R&D. The under-26 relief is especially relevant for a graduate corpus and is deliberately excluded so the figure is not flattering; including it would RAISE net, so the numbers here are a conservative lower bound for under-26s.",
+    "No PPK (employee capital plan) contribution, which is optional and would reduce net by 2% of gross by default.",
+    "No commuting cost deduction (ulga na dojazdy), no internet relief, no IKZE. Adding relief deductions would raise net.",
+    "Assumes no second income, no spouse, no children.",
+    "Assumes the salary is below the PLN 282,600 annual pension/disability contribution base (30 times the projected average wage of PLN 9,420), so no cap is reached. All figures here are far below that cap.",
+    "Assumes a 12-month continuous employment year so that annual tax can be spread evenly. Actual monthly take-home varies because the Polish tax scale is annual and monthly advances are recalculated on the cumulative annual base, and crossing the PLN 120,000 threshold produces a visible drop in net."
+  ],
+  "field_mapping": {
+    "net_monthly_income": "career.net_monthly_income (topic: net_monthly_income)"
+  },
+  "notes": "Poland has NO official published net-pay table in the way Sweden or New Zealand do. Instead every parameter of the deduction chain is published by primary sources, so the net figure is DERIVED deterministically rather than looked up. The parameters are: the 12%/32% two-band scale with a PLN 3,600 credit (podatki.gov.pl), employee ZUS of 13.71% split into 9.76% + 1.5% + 2.45% (ZUS), health insurance at 9% of gross minus social contributions (ZUS), and PLN 250 per month cost of earning. The resulting deduction rate is only about 22.7% of gross plus tax, so a PLN 7,000 gross salary yields PLN 5,107.84, an effective take-home of about 73%. That is much higher than the UK, Germany or the US, and a reader comparing countries would be misled if they assumed Polish deductions resemble British ones. TWO TRAPS. First, the PLN 120,000 second threshold is the notorious 'Polish tax cliff': a salary just above it loses roughly a fifth of its net in one month, so a corpus quoting only the headline rate obscures a real discontinuity. Second, the health insurance base excludes social contributions rather than being a flat PLN 300, which is a common error in online calculators; this artifact uses the 9%-of-reduced-base rule from ZUS, not a flat amount. This artifact reports statutory employee deductions only; employer-side costs (employer ZUS of about 20.5%, accident insurance, Labour Fund) are correctly excluded from take-home.",
+  "evidence_limitations": "No Polish authority publishes a net income figure for graduates. Statistics Poland (GUS) publishes average and median gross and net earnings, generally by sector, voivodeship and employment form rather than by graduate status; the Institute of Labour and Social Studies (IPS) and the Polish Confederation of Employers publish graduate salary studies, but those are typically institutional research rather than primary government statistics and are usually gross. So the gap in this artifact is the gross salary level, not the deduction logic: the tax chain is complete and primary-sourced, but 'what a Polish graduate earns gross' must come from a separate source such as GUS's Structure of Earnings Survey (badania struktury wynagrodzeń), which does break down by education level. Also note the 2026 minimum wage is PLN 4,806 gross, so the PLN 6,000 point is only modestly above the floor and may flatter a low-paid new graduate. Three further limitations: this is a derived figure rather than a published net number, so any reader should reproduce it from the cited parameters; relief deductions that most graduates could actually claim are excluded, making the figure conservative; and the figures assume 2026 rules, which are scheduled to change from 2027 when the government has announced a third band at 24% and a raised first threshold."
+}

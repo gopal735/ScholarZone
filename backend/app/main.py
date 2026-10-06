@@ -34,6 +34,7 @@ from .routers.supervisors import router as supervisors_router
 from .routers.supervisor_internal import router as supervisor_internal_router
 from .routers.outreach import router as outreach_router
 from .routers.supervisor_email import router as supervisor_email_router
+from .routers.countries import router as countries_router
 from .services.application_workspace import WorkspaceError
 from .seed import seed_database
 
@@ -355,6 +356,7 @@ app.include_router(internal_maintenance_router)
 # discovery explicitly enabled. It reaches exactly one scholarship and nothing
 # else - no country, no batch, no caller-supplied URL.
 app.include_router(supervisor_internal_router)
+app.include_router(countries_router)
 
 
 @app.get("/debug/fix-null-lists")
