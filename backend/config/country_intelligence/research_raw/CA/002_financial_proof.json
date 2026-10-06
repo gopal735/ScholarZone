@@ -1,0 +1,62 @@
+{
+  "country": "CA",
+  "topic": "financial_proof",
+  "source_id": "ircc-proof-of-financial-support",
+  "source_url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/get-documents/financial-support.html",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Immigration, Refugees and Citizenship Canada (IRCC)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026-09-01 onward",
+  "raw_extract": "Proof of financial support\n\nYou must prove that you have enough money, without working in Canada, to pay for all the following:\n\n- tuition fees for the course or program of studies\n- living expenses for yourself and the family members who come with you while you're in Canada\n- transportation to and from Canada for yourself and your accompanying family members\n\nHow to show you meet the financial capacity requirements\n\nYou must provide us with documents that prove you have the required funds available for all the costs listed above. This means that\n\n- you must show you have enough financial resources for the first year of your studies\n- for programs more than a year long, you must also tell us how you plan to pay for the full duration of your studies\n  - For example, you can show proof that your scholarship is more than a year long, proof that your parents are employed, etc.\n\nWe'll assess the amount of funds you have and their source, and confirm that you have funds available to you throughout the full duration of your studies.\n\nHow much money you need for living expenses\n\nThis chart tells you how much money you will need to support yourself and your family members in Canada for the first year of your program of studies. These amounts are updated each year.\n\nThese amounts do not include tuition and transportation costs.\n\nIf you apply on or after September 1, 2026\n\nAll provinces and territories except Quebec\n\nNumber of family members (including the applicant) | Amount required per year (excluding tuition and transportation costs) (in CAN$)\n1 | $23,448\n2 | $29,192\n3 | $35,888\n4 | $43,572\n5 | $49,419\n6 | $55,736\n7 | $62,054\nIf more than 7 people, each additional family member | $6,318\n\nIf you apply between January 1, 2025, and August 31, 2026 (inclusively)\n\nNumber of family members (including the applicant) | Amount required per year (excluding tuition and transportation costs) (in CAN$)\n1 | $22,895\n2 | $28,502\n3 | $35,040\n4 | $42,543\n5 | $48,252\n6 | $54,420\n7 | $60,589\nIf more than 7 people, each additional family member | $6,170\n\nQuebec\n\nTo obtain a Quebec Acceptance Certificate (Certificat d'acceptation du Quebec [CAQ]) and study in Quebec, applicants must show they can financially cover the costs outlined by the Ministere de l'Immigration, de la Francisation et de l'Integration.\n\n[Page footer] Date modified: 2026-08-28",
+  "research_notes": "Official name of the requirement: the page heading is 'Proof of financial support'; the body also refers to the 'financial capacity requirements'. Two distinct figures are published and BOTH are recorded because IRCC assesses the version in force on the application date, so a single hard-coded number is wrong for roughly half of all applicants. As at the retrieval date (2026-10-05) the applicable figure is $23,448 for a single applicant (applications on or after 2026-09-01); $22,895 applies only to applications filed between 2025-01-01 and 2026-08-31 inclusive. THE TRAP CONFIRMED VERBATIM: the table column header itself is 'Amount required per year (excluding tuition and transportation costs)' and the sentence immediately above it reads 'These amounts do not include tuition and transportation costs.' A student who budgets to $23,448 as the total money needed is wrong by the whole of their tuition plus return airfare; the opening list makes clear three separate things must be proven - tuition fees, living expenses, AND transportation to and from Canada. Quebec is excluded from the federal table and sets its own requirement via the CAQ, so the federal number must not be applied to Quebec. Note also 'without working in Canada' - the money must be available before arrival. Not recorded because not seen on this page: the $26,360 (2024) and $20,635 (January 2024) historical rates, which appeared only in third-party blog snippets; and the 75%-of-LICO derivation method, which likewise came from search snippets rather than a fetched IRCC page.",
+  "claims": [
+    {
+      "claim_id": "ca-financial-proof-1",
+      "statement": "For study permit applications submitted on or after September 1, 2026, a single applicant outside Quebec must show CAD 23,448 per year for living expenses.",
+      "value": 23448,
+      "unit": "CAD per year",
+      "as_of": "applications on or after 2026-09-01",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ca-financial-proof-2",
+      "statement": "For study permit applications submitted between January 1, 2025 and August 31, 2026 inclusive, a single applicant outside Quebec must show CAD 22,895 per year for living expenses.",
+      "value": 22895,
+      "unit": "CAD per year",
+      "as_of": "applications 2025-01-01 to 2026-08-31",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ca-financial-proof-3",
+      "statement": "The published living-expense amounts explicitly EXCLUDE tuition fees and transportation costs - the IRCC table column is headed 'Amount required per year (excluding tuition and transportation costs)'. Applicants must separately prove tuition fees and transportation to and from Canada in addition to living expenses.",
+      "value": null,
+      "unit": "scope exclusion",
+      "as_of": "2026-08-28",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ca-financial-proof-4",
+      "statement": "For applicants bringing 2 family members (3 people total), the amount required per year outside Quebec is CAD 35,888 for applications on or after September 1, 2026, and CAD 35,040 for applications in the 2025-01-01 to 2026-08-31 window.",
+      "value": 35888,
+      "unit": "CAD per year (3-person family)",
+      "as_of": "applications on or after 2026-09-01",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ca-financial-proof-5",
+      "statement": "The requirement is officially named 'Proof of financial support' and the funds must be available without working in Canada; for programs longer than a year the applicant must also explain how the full duration will be funded.",
+      "value": null,
+      "unit": "requirement name",
+      "as_of": "2026-08-28",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ca-financial-proof-6",
+      "statement": "The federal amounts do not apply to Quebec, which requires proof of financial cover for the costs set by the Ministere de l'Immigration, de la Francisation et de l'Integration in order to obtain a Quebec Acceptance Certificate (CAQ).",
+      "value": null,
+      "unit": "jurisdictional carve-out",
+      "as_of": "2026-08-28",
+      "study_level": "bachelor"
+    }
+  ]
+}

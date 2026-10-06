@@ -1,0 +1,84 @@
+{
+  "country": "NZ",
+  "topic": "net_monthly_income",
+  "source_id": "nz-ird-ir341-paye-monthly-2026",
+  "source_url": "https://www.ird.govt.nz/-/media/project/ir/home/documents/forms-and-guides/ir300---ir399/ir341/ir341-apr-2026.pdf?modified=20260323203458",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Inland Revenue (IRD), New Zealand",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026/27 tax year (1 April 2026 - 31 March 2027)",
+  "raw_extract": "IR341 cover, read verbatim: 'IR341 / April 2026 / ird.govt.nz / 2027 / 4 weekly and monthly / PAYE deduction tables / Tax tables for pay periods between 1 April 2026 and March 2027'. Monthly table column header, read verbatim: 'Monthly Pay Periods - Earnings $5 to $200 / Earnings / Codes M ME / Student loan SL / KiwiSaver 3.5% 4% 6% 8% 10% / Net / CEC and ESCT'. Rows read verbatim for monthly pay periods (columns: Earnings, code M, code ME, Student loan, KiwiSaver 3.5%): '3000.00 493.48 453.48 137.28 105.00 120.00 180.00 240.00 300.00 ...'; '3500.00 589.72 549.72 197.28 122.50 140.00 210.00 280.00 350.00 ...'; '4000.00 686.00 646.00 257.28 140.00 160.00 240.00 320.00 400.00 ...'; '4500.00 830.32 790.32 317.28 157.50 180.00 270.00 360.00 450.00 ...'; '5000.00 989.04 949.04 377.28 175.00 200.00 300.00 400.00 500.00 ...'. The IRD 'Tax rates for individuals' page, read verbatim, gives the brackets these tables implement: 'New Zealand has progressive or gradual tax rates. The rates increase as your income increases. From 1 April 2025 - For each dollar of income / Tax rate / 0 - $15,600 / 10.5% / $15,601 - $53,500 / 17.5% / $53,501 - $78,100 / 30% / $78,101 - $180,000 / 33% / $180,001 and over / 39%'. That page also states: 'Some income is taxed before you get paid. This includes salaries, wages, Work and Income benefits, schedular payments and interest. The amount of tax your employer or payer deducts depends on the tax code and income information you gave them.' and lists the current tables: 'Weekly and fortnightly PAYE deduction tables IR340 Apr 2026 (PDF 5MB)' and 'Four weekly and monthly PAYE deduction tables IR341 Apr 2026 (PDF 2MB)'.",
+  "claims": [
+    {
+      "claim_id": "nz-net-monthly-001",
+      "value": 3314.0,
+      "unit": "NZD per month",
+      "as_of": "2026/27",
+      "statement": "Under Inland Revenue's IR341 monthly PAYE deduction table for tax code M, a gross monthly salary of NZD 4,000 has a PAYE deduction of NZD 686.00, leaving NZD 3,314.00 per month before any student loan or KiwiSaver deduction."
+    },
+    {
+      "claim_id": "nz-net-monthly-002",
+      "value": 3669.68,
+      "unit": "NZD per month",
+      "as_of": "2026/27",
+      "statement": "Under IR341 for tax code M, a gross monthly salary of NZD 4,500 has a PAYE deduction of NZD 830.32, leaving NZD 3,669.68 per month before any student loan or KiwiSaver deduction."
+    },
+    {
+      "claim_id": "nz-net-monthly-003",
+      "value": 4010.96,
+      "unit": "NZD per month",
+      "as_of": "2026/27",
+      "statement": "Under IR341 for tax code M, a gross monthly salary of NZD 5,000 has a PAYE deduction of NZD 989.04, leaving NZD 4,010.96 per month before any student loan or KiwiSaver deduction."
+    },
+    {
+      "claim_id": "nz-net-monthly-004",
+      "value": 2910.28,
+      "unit": "NZD per month",
+      "as_of": "2026/27",
+      "statement": "Under IR341 for tax code M, a gross monthly salary of NZD 3,500 has a PAYE deduction of NZD 589.72, leaving NZD 2,910.28 per month before any student loan or KiwiSaver deduction."
+    },
+    {
+      "claim_id": "nz-net-monthly-005",
+      "value": 2506.52,
+      "unit": "NZD per month",
+      "as_of": "2026/27",
+      "statement": "Under IR341 for tax code M, a gross monthly salary of NZD 3,000 has a PAYE deduction of NZD 493.48, leaving NZD 2,506.52 per month before any student loan or KiwiSaver deduction."
+    },
+    {
+      "claim_id": "nz-net-monthly-006",
+      "value": 3056.72,
+      "unit": "NZD per month",
+      "as_of": "2026/27",
+      "statement": "Under IR341, a gross monthly salary of NZD 4,000 with BOTH the tax code M PAYE deduction (686.00) and the student loan deduction (257.28) leaves NZD 3,056.72 per month. This is the figure for a student-loan borrower, which includes most international students on a study visa."
+    },
+    {
+      "claim_id": "nz-net-monthly-007",
+      "value": 2916.72,
+      "unit": "NZD per month",
+      "as_of": "2026/27",
+      "statement": "Under IR341, a gross monthly salary of NZD 4,000 with PAYE (686.00), student loan (257.28) and KiwiSaver at the default 3.5% (140.00) leaves NZD 2,916.72 per month. This is the most realistic disposable figure for an international student who has both a student loan and is auto-enrolled in KiwiSaver."
+    },
+    {
+      "claim_id": "nz-net-monthly-008",
+      "value": 3352.4,
+      "unit": "NZD per month",
+      "as_of": "2026/27",
+      "statement": "Under IR341, a gross monthly salary of NZD 4,500 with PAYE (830.32) and student loan (317.28) leaves NZD 3,352.40 per month."
+    }
+  ],
+  "assumptions": [
+    "Tax code M: the standard code for a person with no other income, no Independent Earner Tax Credit. IRD publishes codes M, ME, SA, SB, S, SH, ST; ME pays less PAYE because it grants an Independent Earner Tax Credit, so code M is the conservative and correct choice for a single-income employee.",
+    "Monthly pay periods. IRD publishes separate tables for weekly, fortnightly, four-weekly and monthly pay; the monthly table was used and the frequency is stated rather than assumed.",
+    "Salary is the person's only income source for the tax year, consistent with tax code M.",
+    "Employee KiwiSaver contributions are NOT included in the headline net claims. KiwiSaver is optional and the rate is employee-chosen (3.5%, 4%, 6%, 8%, 10% all appear in the same IR341 table), so including it by default would import an invented assumption. A claim with KiwiSaver at the 3.5% default is given separately and labelled.",
+    "Student loan repayment is NOT included in the headline net claims. It applies only if the person has a student loan, which is stated as a separate claim rather than assumed for everyone. This matters enormously for the international-graduate audience: many carry a student loan.",
+    "No employer contributions (KiwiSaver employer share, ACC earner's levy is included in PAYE, ACC employer levy is not a take-home item).",
+    "IRD's PAYE tables are a payroll withholding instrument; the final annual tax assessment can differ, and IRD itself says: 'You might get a refund or have tax to pay at the end of the tax year if you've been taxed at the wrong rate during the year.'",
+    "For people aged under 65, no General Excise or other adjustment applies; ACC earners' levy is embedded in the PAYE figure IRD publishes, so it is already counted."
+  ],
+  "field_mapping": {
+    "net_monthly_income": "career.net_monthly_income (topic: net_monthly_income)"
+  },
+  "notes": "This is the strongest form of evidence available for New Zealand because Inland Revenue publishes an actual payroll deduction TABLE rather than just rates: the deduction for a given gross and tax code is a published lookup, not a calculation. Net here means gross minus the officially published PAYE deduction. What is included: income tax and the ACC earner's levy (IRD folds both into the single PAYE figure, as the table header 'Earnings / Codes M ME / Student loan SL / KiwiSaver' confirms). What is NOT included: student loan repayments, KiwiSaver employee contributions, union dues, and any voluntary deductions. Both exclusions are material, so the corpus should pick a headline deliberately: NZD 3,314.00 for a NZD 4,000 gross salary with no student loan and no KiwiSaver, versus NZD 2,916.72 for the same salary with both. For an international-student readership the second is closer to reality, and the gap is 12% of take-home. Note also that NZ tax settings differ from the tax year: the published brackets on the IRD page are 'From 1 April 2025', while IR341 is dated April 2026 and covers 1 April 2026 to 31 March 2027, so the deduction table is the authoritative source for the period and the rate page is the authority for the bracket structure.",
+  "evidence_limitations": "IRD publishes gross-to-PAYE mappings, not a graduate-specific net figure. No New Zealand authority publishes net pay for 'early-career graduates' as a defined population. The IR341 tables do not distinguish occupation, seniority or field; they are a function of gross salary and tax code only. The headline figures therefore describe a NET AT A GIVEN GROSS, and a reader wanting a graduate net must combine them with an official graduate gross earnings figure (for example from Stats NZ's Longitudinal Census, the New Zealand Income Survey, or the Graduate Earnings Programme published by the Tertiary Education Commission and the Ministry of Education). A second caution: Inland Revenue's tax tables assume a person who is tax resident and who has properly declared their circumstances; someone who has failed to update their tax code after a change in circumstances will have incorrect PAYE deducted and will receive a refund or owe tax later. Also, NZ has a specific minimum wage for holders of student visas, but that is an immigration-law floor rather than an Inland Revenue figure, so it is not asserted in this artifact."
+}

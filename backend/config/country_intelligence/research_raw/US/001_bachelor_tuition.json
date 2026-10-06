@@ -1,0 +1,38 @@
+{
+  "country": "US",
+  "topic": "bachelor_tuition",
+  "source_id": "mtu-tuition-fees",
+  "source_url": "https://www.mtu.edu/admissions/financial/tuition/",
+  "source_type": "UNIVERSITY_OFFICIAL",
+  "publisher": "Michigan Technological University",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2025-26",
+  "raw_extract": "2025-26 Estimated Undergraduate Expenses … Michigan Residents | Non-Michigan Residents … Tuition1,2 $19,608 $44,504 … Required Fees3 374 374 … Lab and Course Fees 621 621 … Housing and Food4 14,142 14,142 … Books, Materials, and Equipment 1,200 1,200 … Personal Expenses 640 640 … Transportation 1,474 1,474 … Loan Origination Fee5 64 64 … Annual TOTAL6 $38,123 $63,019 … Note: International students are assessed a $250 per semester surcharge (excluding summer semester).",
+  "research_notes": "Michigan Tech is a single named US university, chosen because its own admissions page publishes a full, labelled breakdown. International (visa-holding) undergraduates are charged the non-Michigan-resident rate, plus a $250 per-semester international surcharge. The university-level tuition is USD 44,504 per year; mandatory fees add USD 1,095 (374 required fees + 621 lab and course fees + 100 from the two $250 semester surcharges for a two-semester year), and housing, food, books and personal costs are listed separately as budgeted expenses rather than billed tuition. These figures are university-set, not federal; they are not transferable to other US institutions.",
+  "claims": [
+    {
+      "claim_id": "us-bachelor-tuition-mtu-1",
+      "statement": "Michigan Technological University charges non-Michigan-resident undergraduates USD 44,504 in tuition per year.",
+      "value": 44504,
+      "unit": "USD per year",
+      "as_of": "2025-26",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "us-bachelor-tuition-mtu-2",
+      "statement": "Michigan Technological University assesses international students a USD 250 per semester surcharge, excluding the summer semester.",
+      "value": 250,
+      "unit": "USD per semester",
+      "as_of": "2025-26",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "us-bachelor-budget-mtu-1",
+      "statement": "Michigan Technological University's estimated annual undergraduate budget for a non-resident, including tuition, fees, housing and food, books and materials, personal expenses and transportation, totals USD 63,019.",
+      "value": 63019,
+      "unit": "USD per year (cost of attendance estimate)",
+      "as_of": "2025-26",
+      "study_level": "bachelor"
+    }
+  ]
+}

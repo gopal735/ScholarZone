@@ -1,0 +1,312 @@
+{
+  "contract_version": "1.0.0",
+  "country": {
+    "currency": null,
+    "iso2": "SE",
+    "name_en": "Sweden"
+  },
+  "gaps": [
+    {
+      "attempted_sources": [
+        "https://www.scb.se/en/finding-statistics/statistics-by-subject-area/labour-market/labour-force-survey/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "se.gross_monthly_income",
+      "reason": "Evidence was archived but carries no claims."
+    },
+    {
+      "attempted_sources": [
+        "migrationsverket-study-permit-maintenance-requirement"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "se.one_time_costs.blocked_account.month",
+      "reason": "4 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 10656 SEK per month (migrationsverket-study-permit-maintenance-requirement); 10584 SEK per month (migrationsverket-study-permit-maintenance-requirement); 4736 SEK per month (migrationsverket-study-permit-maintenance-requirement); 4440 SEK per month (migrationsverket-study-permit-maintenance-requirement). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "migrationsverket-look-for-work-after-completing-studies-in-sweden"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "se.residency.job_seeker_residence_permit.duration.bachelor.month",
+      "reason": "2 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 12 per month (migrationsverket-look-for-work-after-completing-studies-in-sweden); 10656 SEK per month (migrationsverket-look-for-work-after-completing-studies-in-sweden). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "migrationsverket-look-for-work-second-cycle"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "se.residency.job_seeker_residence_permit.duration.master.month",
+      "reason": "2 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 9 per month (migrationsverket-look-for-work-second-cycle); 13000 SEK per month (migrationsverket-look-for-work-second-cycle). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "se.scholarship_availability_bachelor",
+      "reason": "Evidence was retrieved and archived, but this topic has no explicit mapping into the corpus schema, so the figure was not placed. Adding the mapping is a reviewed change, not something ingestion should guess."
+    },
+    {
+      "attempted_sources": [
+        "https://www.migrationsverket.se/English/Private-individuals/Working-in-Sweden/Look-for-work-or-start-a-business.html"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "se.se-poststudy-permit-name-1",
+      "reason": "Archived evidence recorded a finding with no numeric figure: Sweden's post-study job-search residence permit, as described by the Swedish Migration Agency, is the permit to 'look for work or start a business' after second-cycle study."
+    },
+    {
+      "attempted_sources": [
+        "https://www.migrationsverket.se/en/you-want-to-extend/study/look-for-work-after-completing-your-studies-in-sweden.html"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "se.se-poststudy-permit-name-2",
+      "reason": "Archived evidence recorded a finding with no numeric figure: The official in-country Swedish name for the Bachelor-graduate job-search permit is a residence permit to look for work after completing your studies in Sweden, distinct from the separate second-cycle-only permit to look for work or start a business."
+    },
+    {
+      "attempted_sources": [
+        "https://www.migrationsverket.se/English/Private-individuals/Studying-in-Sweden/Universities-and-university-college.html"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "se.se-student-work-cap-1",
+      "reason": "Archived figure recorded, but it is not a currency figure and its topic's primary field holds money. It is stored as a related figure rather than as a cost. Statement: The Swedish Migration Agency states that a student at bachelor's or master's level may work a maximum of 15 hours per week where the residence permit was granted on or after 11 June 2026."
+    }
+  ],
+  "research": {
+    "evidence_artifact_count": 6,
+    "researched_at": "2026-10-05"
+  },
+  "sections": {
+    "career": {
+      "net_monthly_income": {
+        "month": {
+          "as_of": "2026",
+          "currency": "SEK",
+          "note": "career.net_monthly_income.month: a net-income figure must declare the circumstances it holds under. Missing: dependents (Number of dependents claimed, or an explicit statement that none are claimed. A household-level median silently averages different household tax positions together.); employee_social_contributions (Whether pension, health and unemployment contributions are deducted from this figure, and which. Some systems have no such deduction; Singapore's CPF is a large deduction that never reaches the worker.); marital_status (Single or married. Usually the largest single adjustment to take-home pay, and a family fact rather than an employment fact.); residency (Resident or non-resident status, where the jurisdiction distinguishes them. Several systems tax residents and non-residents differently.). Defaulting any of these would publish a confident number for a household, tax year or residency status nobody stated.",
+          "per": "month",
+          "source_ids": [
+            "se-skatteverket-tabell-32-2026"
+          ],
+          "value": null,
+          "value_status": "UNKNOWN"
+        }
+      }
+    },
+    "one_time_costs": {
+      "blocked_account": {
+        "as_of": "2026",
+        "currency": "SEK",
+        "note": "The Swedish Migration Agency charges a fee of SEK 1,500 for an adult higher-education study residence permit application.",
+        "source_ids": [
+          "migrationsverket-study-permit-maintenance-requirement"
+        ],
+        "study_level": "bachelor",
+        "value": 1500,
+        "value_status": "OFFICIAL_GOVERNMENT"
+      }
+    },
+    "residency": {
+      "job_seeker_residence_permit": {
+        "duration": {
+          "bachelor": {
+            "month": {
+              "as_of": "2026",
+              "colliding_values": [
+                {
+                  "as_of": "2026",
+                  "currency": null,
+                  "per": "month",
+                  "source_ids": [
+                    "migrationsverket-look-for-work-after-completing-studies-in-sweden"
+                  ],
+                  "statement": "The Swedish Migration Agency states that after completing bachelor's or master's level studies in Sweden a residence permit to look for work can be granted for up to one year.",
+                  "value": 12
+                },
+                {
+                  "as_of": "2026",
+                  "currency": "SEK",
+                  "per": "month",
+                  "source_ids": [
+                    "migrationsverket-look-for-work-after-completing-studies-in-sweden"
+                  ],
+                  "statement": "For the in-country look-for-work-after-studies permit the Swedish Migration Agency requires financial maintenance of at least SEK 10,656 per month for 2026 applications, sufficient for the entire validity period of the permit.",
+                  "value": 10656
+                }
+              ],
+              "currency": "SEK",
+              "note": "The Swedish Migration Agency states that after completing bachelor's or master's level studies in Sweden a residence permit to look for work can be granted for up to one year.",
+              "per": "month",
+              "source_ids": [
+                "migrationsverket-look-for-work-after-completing-studies-in-sweden"
+              ],
+              "value": 12,
+              "value_status": "OFFICIAL_GOVERNMENT"
+            },
+            "related_figures": {
+              "se-poststudy-bachelor-eligible-1": {
+                "as_of": "2026",
+                "note": "The Swedish Migration Agency states that a holder of a first-cycle (bachelor's) study permit who has completed their studies in Sweden can be granted a residence permit to look for work or explore starting a business.",
+                "source_ids": [
+                  "migrationsverket-look-for-work-after-completing-studies-in-sweden"
+                ],
+                "study_level": "bachelor",
+                "value": 1,
+                "value_status": "OFFICIAL_GOVERNMENT"
+              },
+              "se-poststudy-completion-requirement-1": {
+                "as_of": "2026",
+                "note": "The Swedish Migration Agency requires the applicant to have completed the entire higher education programme to which they were first admitted, with passing grades in all courses, and a minimum of two semesters at a Swedish university or university college; higher vocational education does not count.",
+                "source_ids": [
+                  "migrationsverket-look-for-work-after-completing-studies-in-sweden"
+                ],
+                "study_level": "bachelor",
+                "value": 2,
+                "value_status": "OFFICIAL_GOVERNMENT"
+              },
+              "se-poststudy-eligibility-bachelor-1": {
+                "as_of": "2026",
+                "note": "This permit's qualifying degree is defined by the agency as second-cycle only (60- or 120-credit Master's, professional degree 60-330 credits, or postgraduate/PhD); a Bachelor's degree is not a listed qualifying qualification.",
+                "source_ids": [
+                  "migrationsverket-look-for-work-second-cycle"
+                ],
+                "study_level": "bachelor",
+                "value": 0,
+                "value_status": "OFFICIAL_GOVERNMENT"
+              },
+              "se-poststudy-permit-fee-1": {
+                "as_of": "2026",
+                "currency": "SEK",
+                "note": "The Swedish Migration Agency charges an application fee of SEK 1,500 for adults and SEK 750 for children under 18, with no refund if the application is rejected.",
+                "source_ids": [
+                  "migrationsverket-look-for-work-after-completing-studies-in-sweden"
+                ],
+                "study_level": "bachelor",
+                "value": 1500,
+                "value_status": "OFFICIAL_GOVERNMENT"
+              },
+              "se-poststudy-timing-1": {
+                "as_of": "2026",
+                "note": "The Swedish Migration Agency states the application must be submitted before the current higher-education permit expires.",
+                "source_ids": [
+                  "migrationsverket-look-for-work-after-completing-studies-in-sweden"
+                ],
+                "study_level": "bachelor",
+                "value": 0,
+                "value_status": "OFFICIAL_GOVERNMENT"
+              }
+            }
+          },
+          "master": {
+            "month": {
+              "as_of": "2026",
+              "colliding_values": [
+                {
+                  "as_of": "2026",
+                  "currency": null,
+                  "per": "month",
+                  "source_ids": [
+                    "migrationsverket-look-for-work-second-cycle"
+                  ],
+                  "statement": "The Swedish Migration Agency states the job-search residence permit after second-cycle studies can be granted for a maximum of nine months, but never beyond passport validity.",
+                  "value": 9
+                },
+                {
+                  "as_of": "2026",
+                  "currency": "SEK",
+                  "per": "month",
+                  "source_ids": [
+                    "migrationsverket-look-for-work-second-cycle"
+                  ],
+                  "statement": "For the look-for-work permit the Swedish Migration Agency requires demonstrated bank assets of at least SEK 13,000 for each month of the permit applied for.",
+                  "value": 13000
+                }
+              ],
+              "currency": "SEK",
+              "note": "The Swedish Migration Agency states the job-search residence permit after second-cycle studies can be granted for a maximum of nine months, but never beyond passport validity.",
+              "per": "month",
+              "source_ids": [
+                "migrationsverket-look-for-work-second-cycle"
+              ],
+              "value": 9,
+              "value_status": "OFFICIAL_GOVERNMENT"
+            },
+            "related_figures": {
+              "se-poststudy-permit-fee-1": {
+                "as_of": "2026",
+                "currency": "SEK",
+                "note": "The Swedish Migration Agency charges a fee of SEK 2,200 for the look-for-work or start-a-business residence permit application.",
+                "source_ids": [
+                  "migrationsverket-look-for-work-second-cycle"
+                ],
+                "study_level": "master",
+                "value": 2200,
+                "value_status": "OFFICIAL_GOVERNMENT"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "sources": [
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "migrationsverket-look-for-work-after-completing-studies-in-sweden",
+      "notes": "This file SUPERSEDES the gap I recorded in 003_post_study_work.json. I initially found only the second-cycle-only permit page and recorded the Bachelor-level post-study duration as unestablished. The correct page exists at a different path and I have now fetched it.\n\nSWEDEN HAS TWO DISTINCT JOB-SEEKING PERMITS, and conflating them is the main trap in this country's data. First, the in-country permit I am recording here, 'Look for work after completing your studies in Sweden'. Second, the out-of-country permit on the page I fetched earlier, 'Look for work or start a business', which is restricted to second-cycle qualifications, lasts a maximum of nine months, requires you to be outside Sweden, and cannot be extended. They differ in length, in eligibility level, in where you apply from, and in whether extension is possible. Any corpus row that says 'Sweden job-search permit: 9 months' is describing the second-cycle outbound permit and is wrong for a Bachelor graduate.\n\nTHE BACHELOR-LEVEL PERMIT: UP TO ONE YEAR, and it is open at Bachelor's. The agency states first-cycle study permits qualify: 'studies at the first-cycle, second-cycle, or third-cycle (doctoral) level'. Duration: 'After completing bachelor's or master's level studies, you can be granted a residence permit for up to one year.' Note 'up to': twelve months is a ceiling, not an entitlement, and the page also caps the permit at passport validity. A further agency page I saw in search results states the permit cannot be extended, but I did not fetch that page, so I do not record non-extendability as a claim here.\n\nFINANCIAL PROOF FOR THIS PERMIT IS THE SAME FIGURE as the study permit, which is a useful cross-check: SEK 10,656 per month for 2026 applications, covering the ENTIRE validity period of the permit. That is materially lower than the SEK 13,000 per month required for the second-cycle outbound permit, because the two permits have different maintenance rules.\n\nTWO PREREQUISITES THAT CONSTRAIN TIMING. The application must be filed before the study permit expires, and the study must be COMPLETE with passing grades in all courses, the whole programme to which the applicant was first admitted. A minimum of two semesters at a Swedish university or university college is required; higher vocational education does not count. If the permit is about to expire before grades are issued, the agency says apply anyway and supplement with the completion certificate later. Useful detail: an applicant with an ongoing study-extension application who has finished does not need a fresh application, just a call to the agency.\n\nFamily can apply simultaneously, and adult family members granted permits are permitted to work. Application fee SEK 1,500 adult, SEK 750 child under 18, non-refundable on rejection.",
+      "publisher": "The Swedish Migration Agency (Migrationsverket)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "post_study_work evidence",
+      "url": "https://www.migrationsverket.se/en/you-want-to-extend/study/look-for-work-after-completing-your-studies-in-sweden.html"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "migrationsverket-look-for-work-second-cycle",
+      "notes": "CRITICAL SCOPE LIMIT, read off the official page rather than assumed. The Swedish post-study job-search permit at this URL is restricted to SECOND-CYCLE qualifications only, and the page defines that term exhaustively as 'a 60-credit Master's degree, a 120-credit Master's degree, a professional degree worth 60-330 credits, or a postgraduate/PhD-level degree.' A Bachelor's degree (first-cycle) is not in that list.\n\nSo the honest reading of this source is: for a BACHELOR graduate, this particular permit is NOT available. The nine-month duration I record belongs to the second-cycle / Master's pathway. I did NOT find and did NOT fetch a separate Swedish Migration Agency page for a first-cycle (Bachelor's) job-search permit, so I am not able to state a duration for a Bachelor graduate and I am not going to infer one from the second-cycle rule.\n\nSUPERSEDED GAP, RESOLVED AFTER THIS FILE WAS WRITTEN. At the time of this fetch I had not located the first-cycle permit page and recorded the Bachelor duration as unestablished rather than inferring it. I later found and fetched it at a different path, and the Bachelor-level answer is UP TO ONE YEAR, not nine months: see 004_post_study_work_bachelor.json, which also documents this as a two-permit conflict. This file is retained unedited in its quoted figures because it is a real and still-current source about the SECOND-CYCLE outbound permit.\n\nThe page also carries an unusually useful figure: the financial-proof requirement for THIS permit is 'at least SEK 13,000 for each month for which you are applying'. I record it because it is verbatim on this page, but note the distinction from study permits: Sweden's study-permit maintenance requirement is a separate amount set by Migrationsverket and I did not fetch that page (see 002 file status). The two figures should not be merged.\n\nRetrieval note: I reached this page at the /English/Private-individuals/... URL. It returned HTTP 200 with full content on 2026-10-05. The page's own news feed shows items dated up to 2026-10-01, confirming the page is current rather than a stale copy.",
+      "publisher": "The Swedish Migration Agency (Migrationsverket)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "post_study_work evidence",
+      "url": "https://www.migrationsverket.se/English/Private-individuals/Working-in-Sweden/Look-for-work-or-start-a-business.html"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "migrationsverket-study-permit-maintenance-requirement",
+      "notes": "This is the authoritative Swedish maintenance requirement for a student residence permit covering FIRST- or second-cycle study, so it applies to a Bachelor's student. The agency states the amount twice, by application year, which lets me record as_of honestly: SEK 10,656 per month for 2026 applications, SEK 10,584 per month for 2025 applications.\n\nThe agency does NOT express this as an annual or 12-month block total. Anyone wanting an annual figure must multiply, and that multiplication would be my arithmetic, not the agency's. I record the monthly figure because the monthly figure is what the page actually says.\n\nDistinct from the job-search permit figure in 003_post_study_work.json. That permit (second-cycle / Master's) requires SEK 13,000 per month. The study permit (first- and second-cycle, so including Bachelor's) requires SEK 10,656 per month. These are two different rules on two different pages and must not be merged. I record both.\n\nAlso recorded because it is on this page and is materially relevant to a student planner: work rights during study. The agency states a 15-hour weekly cap for bachelor's and master's students where the permit was granted on or after 11 June 2026, a change from the previous regime. The exemptions listed on the page are internship as part of education, student representation/administration/research at the institution, artistic research, and June-August.\n\nIMPORTANT GAP: I did NOT fetch the Swedish Migration Agency page for the FIRST-CYCLE (Bachelor's) job-search permit. The page I did fetch for job search explicitly defines its eligibility as second-cycle only. So no Bachelor-level post-study duration is established by my evidence.",
+      "publisher": "The Swedish Migration Agency (Migrationsverket)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "financial_proof evidence",
+      "url": "https://www.migrationsverket.se/English/Private-individuals/Studying-in-Sweden/Universities-and-university-college.html"
+    },
+    {
+      "archived": true,
+      "as_of": "2024 (latest annual data published 2026-01-20)",
+      "confidence": null,
+      "id": "se-skatteverket-bruttolonestatistik",
+      "notes": null,
+      "publisher": "Statistics Sweden (SCB)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_STATISTICS",
+      "title": "gross_monthly_income evidence",
+      "url": "https://www.scb.se/en/finding-statistics/statistics-by-subject-area/labour-market/labour-force-survey/"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "se-skatteverket-tabell-32-2026",
+      "notes": null,
+      "publisher": "Skatteverket (Swedish Tax Agency)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "net_monthly_income evidence",
+      "url": "https://www.skatteverket.se/download/18.1522bf3f19aea8075ba61b/1765290451072/allmanna-tabeller-manad-tabell-32.pdf"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "country": "IE",
+  "topic": "post_study_work_graduation_route",
+  "raw_status": "UNAVAILABLE",
+  "reason": "Ireland's actual post-GRADUATION route is the 'Third Level Graduate Programme', which grants a Stamp 1G permission (generally 12 months for a Level 8 honours bachelor's degree, and a longer renewable initial permission for Level 9 or above) to non-EEA graduates of Irish institutions so they can seek graduate-level employment. I could not verify this from a primary source. The authoritative publisher, Immigration Service Delivery, is irishimmigration.ie, and that host was completely unreachable from this environment across six independent attempts and three different clients, so no page on it was ever fetched. Consequently I have NO fetched page containing the 12-month duration, the Level 8 / Level 9 distinction, the €300 registration fee, the six-month application window after being notified of the award, or the seven-year / eight-year aggregate student-pathway caps - and I will not write any of those numbers from memory. This is deliberately left UNAVAILABLE rather than backfilled from the search-engine snippets, which were summaries of an unread page and a 2017-revision policy PDF rather than text I retrieved. A corpus entry that filled this from memory would be unprovable.",
+  "attempted_sources": [
+    "https://www.irishimmigration.ie/my-situation-has-changed-since-i-arrived-in-ireland/third-level-graduate-programme/",
+    "https://www.irishimmigration.ie/my-situation-has-changed-since-i-arrived-in-ireland/student-permission/",
+    "https://www.irishimmigration.ie/wp-content/uploads/2024/03/third-level-graduate-programme.pdf",
+    "https://www.citizensinformation.ie/en/moving-country/studying-in-ireland/third-level-graduate-programme/"
+  ],
+  "failure_detail": "webfetch on the main Third Level Graduate Programme URL returned '(200 GET) Decode error' rather than content; the same URL and the student-permission URL both timed out in Playwright; Invoke-WebRequest timed out at 120s; curl exited 56 ('schannel: server closed abruptly (missing close_notify)') having downloaded 0 bytes. The citizensinformation.ie Third Level Graduate Programme URL returned HTTP 404 (that topic sits at a different path on that site, which I did not locate).",
+  "related_verified_material": "The employment-permit leg of the Irish path IS verified and is recorded in 003_post_study_work.json (Critical Skills Employment Permit, 2-year duration, Stamp 4 at 21 months, naturalisation after 5 years, and the March 2026 salary thresholds). It is the graduation-permission leg specifically that is unverified.",
+  "checked_at": "2026-10-05"
+}

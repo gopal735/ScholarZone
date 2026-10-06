@@ -1,0 +1,46 @@
+{
+  "country": "GB",
+  "topic": "financial_proof",
+  "source_id": "govuk-student-visa-money",
+  "source_url": "https://www.gov.uk/student-visa/money",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "UK Visas and Immigration (Home Office), GOV.UK",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "## Money to support yourself (‘financial requirement’)\n\nYou’ll need to show you have enough money to support yourself - unless you’ve been in the UK with a valid visa for at least 12 months on the date of your application.\n\nHow much money you need depends on where you will be studying. You’ll need either:\n\n-   £1,529 per month (for up to 9 months) for courses in London\n-   £1,171 per month (for up to 9 months) for courses outside London\n\nIf you’re boarding at a residential independent school, you’ll need to pay boarding fees instead. The amount you need to pay will be on your CAS.\n\nLondon means the City of London and the 32 London boroughs.\n\nYou’ll need to prove you have [extra money for each family member you bring](/student-visa/family-members) with you.\n\nYou must have this money for at least 28 days in a row. The end date of the 28-day period must be within 31 days of the date you apply for your visa.\n\nExample\n\nIf you submit your application on 1 January, you’d have to show that the funds were in your bank account for at least the 28-day period ending on 1 December.",
+  "research_notes": "The official name of the requirement, as used by UKVI on this page, is the 'financial requirement' (the page heading reads: Money to support yourself ('financial requirement')). Critical scoping detail confirmed verbatim in the same fetch: the course fee is a SEPARATE test, not part of the maintenance figure - 'You need enough money to pay for your course for 1 academic year (up to 9 months). The amount you need to pay will be on your Confirmation of Acceptance for Studies (CAS).' So the maintenance sums below EXCLUDE tuition, exactly the budgeting trap flagged in the brief. The 9-month multiplier yields 9 x £1,529 = £13,761 (London) and 9 x £1,171 = £10,539 (outside London) for a full 9-month course; those totals are arithmetic on the fetched monthly rates, not separately published figures. Also confirmed: a 'differential evidence requirement' list exists (UK, Australia, Canada, Ireland, New Zealand and ~65 other countries are named on the page) under which applicants may not be asked to prove maintenance funds up front. Source note: the page was fetched 2026-10-05 and shows the current rates; the underlying statutory instrument is the Immigration (Health Charge) / student financial requirement rules, which are revised periodically, so as_of should be read as 'as displayed on 2026-10-05'.",
+  "claims": [
+    {
+      "claim_id": "gb-financial-proof-1",
+      "statement": "UKVI requires a student visa applicant to show £1,529 per month for up to 9 months if the course is in London.",
+      "value": 1529,
+      "unit": "GBP per month",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "gb-financial-proof-2",
+      "statement": "UKVI requires a student visa applicant to show £1,171 per month for up to 9 months if the course is outside London.",
+      "value": 1171,
+      "unit": "GBP per month",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "gb-financial-proof-3",
+      "statement": "The requirement is officially named the 'financial requirement' and is the money needed to support yourself, assessed separately from and excluding the course fee (which is proven via the CAS).",
+      "value": null,
+      "unit": "requirement name",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "gb-financial-proof-4",
+      "statement": "The funds must have been held for at least 28 consecutive days, with the end of that 28-day period falling within 31 days of the visa application date.",
+      "value": 28,
+      "unit": "days of held funds",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

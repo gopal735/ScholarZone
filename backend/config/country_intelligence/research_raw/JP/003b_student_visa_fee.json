@@ -1,0 +1,17 @@
+{
+  "country": "JP",
+  "topic": "student_visa_fee",
+  "raw_status": "UNAVAILABLE",
+  "reason": "No Japan Ministry of Foreign Affairs visa-fee page could be fetched. Every MOFA URL attempted returned HTTP 403 to this client (mofa.go.jp/mofaj/toko/visa/short/study.html, mofa.go.jp/mofaj/toko/visa/fee.html, mofa.go.jp/j_info/visit/visa/procedure/fee.html, mofa.go.jp/j_info/visit/visa/procedure/pagewe_000001_00391.html, mofa.go.jp/mofaj/toko/visa/tetsuzuki/pagew_000001_02672.html), as did overseas mission mirrors (emb-japan.go.jp, id/th/vn.emb-japan.go.jp, uk.emb-japan.go.jp). Search-result snippets suggested MOFA consular fee figures exist and were revised with effect from 1 July 2026, but a snippet is not a fetched page, so no value is recorded. Japan also uses a Certificate of Eligibility route administered by the Immigration Services Agency, whose fee schedule is separate from MOFA consular fees and was not fetched either.",
+  "attempted_sources": [
+    "https://www.mofa.go.jp/j_info/visit/visa/procedure/fee.html",
+    "https://www.mofa.go.jp/j_info/visit/visa/procedure/pagewe_000001_00391.html",
+    "https://www.mofa.go.jp/mofaj/toko/visa/tetsuzuki/pagew_000001_02672.html",
+    "https://www.mofa.go.jp/mofaj/toko/visa/fee.html",
+    "https://www.mofa.go.jp/mofaj/toko/visa/short/study.html",
+    "https://www.emb-japan.go.jp/itpr_en/visa.html",
+    "https://www.id.emb-japan.go.jp/itpr_en/visa.html",
+    "https://www.uk.emb-japan.go.jp/itpr_en/toko.html"
+  ],
+  "checked_at": "2026-10-05"
+}

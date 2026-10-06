@@ -1,0 +1,54 @@
+{
+  "country": "CA",
+  "topic": "gross_monthly_income",
+  "source_id": "ca-statcan-graduates-chart-gross-001",
+  "source_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/240322/cg-b001-eng.htm",
+  "source_type": "OFFICIAL_STATISTICS",
+  "publisher": "Statistics Canada, The Daily - National Graduates Survey, class of 2020",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2023",
+  "raw_extract": "Chart 1 - 'Median full-time employment income of 2020 postsecondary graduates in 2023, by level of study'\n\nVERBATIM accessible chart description:\n'This is a bar clustered chart. Median full-time employment income of 2020 postsecondary graduates in 2023, by level of study, median full-time employment income in 2023 ($)'\n\nLevel of study | Employment status or plans affected by the pandemic | Employment status or plans not affected by the pandemic\nCollege | 48,000 | 53,100\nBachelor's | 60,000 | 70,000\nMaster's | 72,800 | 87,000\nDoctoral | 81,900 | 93,000\n\n'1 Results are significantly different between those who experienced a pandemic-related change to employment status or plans and those who did not (p = 0.05).'\n'Source(s): National Graduates Survey, class of 2020 (5012).'\n\nContext read on the parent Daily article page: The release is 'Labour market outcomes for college and university graduates' and describes median employment income by educational qualification, field of study, gender, age group and status of student, at national, provincial and territorial level, derived from the Postsecondary Student Information System (PSIS) linked with tax data (T1 Family File, Administrative Personal Income Masterfile) and the Census of Population.",
+  "claims": [
+    {
+      "claim_id": "ca-gross-year-bachelor-001",
+      "value": 70000,
+      "unit": "CAD per year",
+      "as_of": "2023",
+      "statement": "Median full-time employment income in 2023 of 2020 bachelor's degree graduates whose employment status or plans were NOT affected by the pandemic = CAD 70 000 per year. This is employment income as recorded in the tax file, i.e. GROSS / pre-tax."
+    },
+    {
+      "claim_id": "ca-gross-year-bachelor-affected-002",
+      "value": 60000,
+      "unit": "CAD per year",
+      "as_of": "2023",
+      "statement": "Median full-time employment income in 2023 of 2020 bachelor's degree graduates whose employment status or plans WERE affected by the pandemic = CAD 60 000 per year. Statistics Canada states the difference between the two groups is statistically significant (p = 0.05)."
+    },
+    {
+      "claim_id": "ca-gross-year-masters-003",
+      "value": 87000,
+      "unit": "CAD per year",
+      "as_of": "2023",
+      "statement": "Median full-time employment income in 2023 of 2020 master's degree graduates whose employment status or plans were not affected by the pandemic = CAD 87 000 per year. Master's graduates who were affected = CAD 72 800."
+    },
+    {
+      "claim_id": "ca-gross-month-bachelor-004",
+      "value": 5833.33,
+      "unit": "CAD per month",
+      "as_of": "2023",
+      "statement": "DERIVED BY PURE ARITHMETIC, NOT PUBLISHED BY THE SOURCE: CAD 70 000 per year / 12 = CAD 5,833.33 per month GROSS (pandemic-unaffected bachelor's group). The CAD 60 000 group gives CAD 5,000.00 per month gross. Division by 12 is the only operation applied."
+    }
+  ],
+  "assumptions": [
+    "SOURCE'S OWN: the measure is 'full-time employment income' as captured in the tax file, i.e. GROSS / pre-tax. It is an annual figure for the 2023 tax year.",
+    "SOURCE'S OWN: population is graduates of a single cohort, the class of 2020, measured roughly three years after graduation, who reported FULL-TIME employment. Part-time-working graduates are excluded from this figure.",
+    "SOURCE'S OWN: two sub-groups are reported and the difference is statistically significant - pandemic-affected employment status/plans versus not affected. Both values are recorded rather than averaged, in line with the rule against averaging two different sources' figures.",
+    "NOT THE SOURCE'S / MINE: no province, no field of study and no sex was selected; the figure is national and pooled across all of them. Provincial and field-of-study breakdowns exist in the underlying tables (37-10-0281-01 and 37-10-0284-01) but were not extracted.",
+    "NOT THE SOURCE'S / MINE: no assumption about tuition, student debt, tax credits, RRSP/TFSA use or pension contributions. This is a gross figure and nothing has been deducted.",
+    "NOT THE SOURCE'S / MINE: no FX conversion, no PPP factor and no inflation adjustment. Nominal Canadian dollars for the 2023 reference year."
+  ],
+  "field_mapping": {
+    "gross_monthly_income": "career.gross_monthly_income (topic: gross_monthly_income)"
+  },
+  "notes": "*** THIS IS GROSS, NOT NET. *** CAD 70,000 per year (approx. CAD 5,833 per month) for a 2020 bachelor's graduate who worked full time is pre-tax employment income. The corresponding modelled net is in artifact 020_net_monthly_income.json. Currency CAD. Income year 2023, cohort 2020, published 22 March 2024. This is the best official Canadian figure located for an actual graduate population, which is a real advantage over Austria, Australia and Switzerland in this corpus, where official graduate-specific earnings are either all-employee or whole-career measures. Warning a reader would be misled by: the figure comes from the 2020 graduating cohort, i.e. graduates who entered the labour market during the COVID-19 pandemic, and Statistics Canada had to split the results because pandemic disruption hit that cohort hard. The affected group's median is CAD 10,000 lower. Newer administrative cohorts exist - Statistics Canada released 'Labour market outcomes for college and university graduates, 2010 to 2022' on 24 June 2026 (tables 37-10-0279-01 to 37-10-0301-01) - and those would give a non-pandemic-affected reading, but the specific values were not extracted for this artifact.",
+  "evidence_limitations": "Single cohort (2020), which is not a typical cohort and required a statistical split because of pandemic disruption. Full-time workers only, so graduates in part-time or gig work are excluded and their earnings are lower. Median, not mean. Tax-file employment income only, so it excludes non-employment income entirely. No occupation, industry, province or field-of-study detail. Roughly a three-year post-graduation horizon, so it is not a first-year salary."
+}

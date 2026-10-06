@@ -1,0 +1,951 @@
+{
+  "contract_version": "1.0.0",
+  "country": {
+    "currency": null,
+    "iso2": "DE",
+    "name_en": "Germany"
+  },
+  "gaps": [
+    {
+      "attempted_sources": [
+        "https://www.student.uni-stuttgart.de/en/organizing-studies/formalities/tuition-and-fees/tuition-fee"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "de.bachelor_tuition_mandatory_fees_by_university",
+      "reason": "Evidence was retrieved and archived, but this topic has no explicit mapping into the corpus schema, so the figure was not placed. Adding the mapping is a reviewed change, not something ingestion should guess."
+    },
+    {
+      "attempted_sources": [
+        "https://www.tu.berlin/en/studying/organizing-your-studies/financing-your-studies"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "de.bachelor_tuition_public_general",
+      "reason": "Evidence was retrieved and archived, but this topic has no explicit mapping into the corpus schema, so the figure was not placed. Adding the mapping is a reviewed change, not something ingestion should guess."
+    },
+    {
+      "attempted_sources": [
+        "https://uni-tuebingen.de/en/study/organizing-your-studies/fees/tuition-fees/tuition-fees-for-international-students"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "de.bachelor_tuition_public_non_eu",
+      "reason": "Evidence was retrieved and archived, but this topic has no explicit mapping into the corpus schema, so the figure was not placed. Adding the mapping is a reviewed change, not something ingestion should guess."
+    },
+    {
+      "attempted_sources": [
+        "https://www.thi.de/en/studies/international-degree-students/tuition-fees"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "de.bavaria_non_eu_tuition",
+      "reason": "Evidence was retrieved and archived, but this topic has no explicit mapping into the corpus schema, so the figure was not placed. Adding the mapping is a reviewed change, not something ingestion should guess."
+    },
+    {
+      "attempted_sources": [
+        "https://www.hm.edu/studium_1/bewerbung/faq_gebuehren_non_eu_auslaender.de.html"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "de.bavaria_non_eu_tuition_hm_munich",
+      "reason": "Evidence was retrieved and archived, but this topic has no explicit mapping into the corpus schema, so the figure was not placed. Adding the mapping is a reviewed change, not something ingestion should guess."
+    },
+    {
+      "attempted_sources": [
+        "https://www.stmwk.bayern.de/studium/tuition-fees.html — HTTP 404",
+        "https://www.thi.de/en/studies/international-degree-students/tuition-fees — FETCHED, no uniform state rate stated; institution-specific amount only (800 EUR/semester, citing Art. 13 (3) sentence 1 no. 6 BayHIG)",
+        "https://www.hm.edu/studium_1/bewerbung/faq_gebuehren_non_eu_auslaender.de.html — FETCHED, different institution-specific amount (500.00 EUR/semester), references Hochschulgebührensatzung § 8 exemptions but no BayHIG article",
+        "https://www.tum.de/en/studies/fees/tuition — FETCHED, but publishes only a band (usually 2,000 or 3,000 EUR/semester for Bachelor) and no single Bavarian state rate"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "de.bavaria_state_non_eu_tuition_rate",
+      "next_review": null,
+      "reason": "No single mandatory Bavarian state-wide tuition rate for non-EU Bachelor's students could be verified. (1) The Bavarian state ministry page for tuition fees is not at the assumed URL and returned HTTP 404, so no consolidated state figure was obtained. (2) Even with the two Bavarian university pages that were successfully fetched, the amounts DISAGREE (THI EUR 800/semester vs Hochschule München EUR 500/semester), which indicates the fee is set per university rather than by one uniform state rate, so there may be no single state figure to find. I am therefore not asserting a Bavarian state rate. Per-university values ARE verified and recorded separately in 007_bavaria_non_eu_tuition_thi.json (800 EUR/semester) and 008_bavaria_non_eu_tuition_hs_muenchen.json (500 EUR/semester). The enabling legal framework, Art. 13 (3) sentence 1 no. 6 BayHIG, is confirmed only indirectly via THI's own citation of it."
+    },
+    {
+      "checked_at": null,
+      "field": "de.career.average_starting_salary.academics_median_monthly_gross",
+      "reason": "Carried forward from hand-curated data. This claim cites a source URL, but no archived artifact holds the verbatim extract it was read from, so the figure cannot be audited against the page that states it. The claim is retained rather than deleted, and is marked evidence_archived=false. Treat it as unverified until the source is archived."
+    },
+    {
+      "checked_at": null,
+      "field": "de.career.average_starting_salary.all_full_time_median_monthly_gross",
+      "reason": "Carried forward from hand-curated data. This claim cites a source URL, but no archived artifact holds the verbatim extract it was read from, so the figure cannot be audited against the page that states it. The claim is retained rather than deleted, and is marked evidence_archived=false. Treat it as unverified until the source is archived."
+    },
+    {
+      "attempted_sources": [
+        "https://www.gesetze-im-internet.de/stag/__10.html"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "de.de-naturalisation-language-requirement",
+      "reason": "Archived evidence recorded a finding with no numeric figure: The German language requirement under § 10(1) no. 6 StAG is met when the applicant satisfies a level B1 language test in the Common European Framework of Reference for Languages."
+    },
+    {
+      "attempted_sources": [
+        "https://www.make-it-in-germany.com/en/study-vocational-training/studies-in-germany/fees — BLOCKED by Radware bot protection, no content returned",
+        "https://www.uni-berlin.de/en/studies/admission/fees — HTTP 404",
+        "https://www.tu.berlin/en/studying/organizing-your-studies/financing-your-studies — FETCHED: 'There are no tuition fees to pay at TU Berlin' (institution-level only)",
+        "https://mwk.baden-wuerttemberg.de/.../tuition-fees-for-international-students — FETCHED: EUR 1,500/semester state fee for non-EU",
+        "https://www.tum.de/en/studies/fees/tuition — FETCHED: usually EUR 2,000 or 3,000/semester for non-EU Bachelor's",
+        "https://www.gesetze-im-internet.de/stag/__10.html — FETCHED but this is the nationality law, contains no tuition provision"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "de.de_general_public_tuition_free_claim_national_source",
+      "next_review": null,
+      "reason": "The widely-circulated claim that 'public universities in Germany charge no tuition for non-EU students' could NOT be confirmed from a national or federal primary source, and the fetched university evidence actively contradicts it as a general statement. Blocked/attempted: make-it-in-germany.com (the federal portal normally used for this) is behind Radware bot protection and returns no content, as warned. The Bundesministerium für Bildung und Forschung (BMBF) and the DAAD national tuition page were not reached. What WAS verified instead, from official pages: Baden-Württemberg levies EUR 1,500/semester on non-EU students via Landeshochschulgebührengesetz; Bavaria charges EUR 500-800/semester depending on the university; TUM charges usually EUR 2,000-3,000/semester. TU Berlin charges no tuition at all. Therefore the claim is not merely unsourced, it is false as a national statement. A corpus must key the German tuition metric to Land and/or institution."
+    },
+    {
+      "attempted_sources": [
+        "de-uni-tum-fees-005"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "de.education_costs.mandatory_fees.tum.semester",
+      "reason": "2 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 97 EUR per semester (de-uni-tum-fees-005); 82 EUR per semester (de-uni-tum-fees-005). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "checked_at": null,
+      "field": "de.education_costs.tuition_fees.public.bachelor",
+      "reason": "Carried forward from hand-curated data. This claim cites a source URL, but no archived artifact holds the verbatim extract it was read from, so the figure cannot be audited against the page that states it. The claim is retained rather than deleted, and is marked evidence_archived=false. Treat it as unverified until the source is archived."
+    },
+    {
+      "checked_at": null,
+      "field": "de.education_costs.tuition_fees.public.master",
+      "reason": "Carried forward from hand-curated data. This claim cites a source URL, but no archived artifact holds the verbatim extract it was read from, so the figure cannot be audited against the page that states it. The claim is retained rather than deleted, and is marked evidence_archived=false. Treat it as unverified until the source is archived."
+    },
+    {
+      "checked_at": null,
+      "field": "de.education_costs.tuition_fees.public.phd",
+      "reason": "Carried forward from hand-curated data. This claim cites a source URL, but no archived artifact holds the verbatim extract it was read from, so the figure cannot be audited against the page that states it. The claim is retained rather than deleted, and is marked evidence_archived=false. Treat it as unverified until the source is archived."
+    },
+    {
+      "attempted_sources": [
+        "https://service.berlin.de/dienstleistung/305244/en"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "de.financial_proof_blocked_account",
+      "reason": "Evidence was retrieved and archived, but this topic has no explicit mapping into the corpus schema, so the figure was not placed. Adding the mapping is a reviewed change, not something ingestion should guess."
+    },
+    {
+      "attempted_sources": [
+        "https://www.tu.berlin/en/studierendensekretariat/topics-a-z/semester-fees"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "de.mandatory_fees_itemised_semester_fee",
+      "reason": "Evidence was retrieved and archived, but this topic has no explicit mapping into the corpus schema, so the figure was not placed. Adding the mapping is a reviewed change, not something ingestion should guess."
+    },
+    {
+      "attempted_sources": [
+        "https://www.bmf-steuerrechner.de/bl/bl2026/eingabeformbl2026.xhtml",
+        "https://www.bmf-steuerrechner.de/bl/bl2026/resultbl2026.xhtml",
+        "https://www.bundesfinanzministerium.de/Web/DE/Themen/Steuern/Steuerarten/Lohnsteuer/lohnsteuer.html",
+        "https://www.bundesfinanzministerium.de/Datenportal/Daten/frei-nutzbare-produkte/Anwendungen/Programmablaufplan-2026/Programmablaufplan-2026-Anlage2.pdf",
+        "https://www.lohnsteuertabelle-online.de/",
+        "https://amtliche-handbuecher.bundesfinanzministerium.de/lsth/2026/tabellarische-Uebersicht/inhalt.html",
+        "https://www.gesetze-im-internet.de/estg/__32a.html",
+        "https://www.gesetze-im-internet.de/estg/__11.html",
+        "https://www.gesetze-im-internet.de/svbezgrv_2026/__3.html",
+        "https://www.gesetze-im-internet.de/svbezgrv_2026/__4.html"
+      ],
+      "checked_at": null,
+      "field": "de.net_monthly_income",
+      "next_review": null,
+      "reason": "Official German wage tax tables that give net pay directly for a stated gross wage DO NOT EXIST and cannot be obtained for tax year 2026, because they were abolished. Established from the primary instrument, not inferred. The Bundesministerium der Finanzen publishes only Programmablaeufe (machine-calculation programmes) for wage tax, plus calculators and informational modules. The 2026 BMF navigation, which I read, lists exactly four wage-tax sections and no table: 'FAKTORVERFAHREN', 'BERECHNUNG DER LOHNSTEUER', 'ERMITTLUNG DES ZU VERSTEUERNDEN JAHRESBETRAGS' and 'ARBEITSLOHNGRENZEN'. Under BERECHNUNG DER LOHNSTEUER the only years offered are calculators (2026, 2025, 2024 Dezember, 2024 bis November, 2023 ab Juli, 2023 bis Juni, 2022, 2021), and the 2026 entry is titled 'Lohn- und Einkommensteuerrechner: Eingabeformular 2026 Lohnsteuer'. Corroborated by a secondary publisher of German wage tax tables, which I fetched and read and which states the position directly: 'Fuer den Lohnsteuerabzug gab es bis 2003 amtliche Lohnsteuertabellen von der Finanzverwaltung. Es werden nur noch Programmablaeufe zur Berechnung der Lohnsteuer veroeffentlicht. Mit den Lohnsteuerrechnern koennen Sie die Lohnsteuer stufenlos berechnen. Dennoch werden weiterhin (nicht amtliche) Lohnsteuertabellen veroeffentlicht, weil sie uebersichtlich sind und ohne maschinelle Berechnung einfach ablesbar sind.' CONSEQUENCE FOR THIS CORPUS: the ideal German evidence tier, an official tax authority publishing a net-pay table, is permanently unavailable. A net figure can only be produced by running the authority's own calculator or by implementing its Programmablaufplan, which is what DE/020_net_monthly_income.json and DE/020b_net_monthly_income_academics.json do."
+    },
+    {
+      "checked_at": null,
+      "field": "de.one_time_costs.blocked_account",
+      "reason": "Carried forward from hand-curated data. This claim cites a source URL, but no archived artifact holds the verbatim extract it was read from, so the figure cannot be audited against the page that states it. The claim is retained rather than deleted, and is marked evidence_archived=false. Treat it as unverified until the source is archived."
+    },
+    {
+      "checked_at": null,
+      "field": "de.one_time_costs.blocked_account_monthly_release",
+      "reason": "Carried forward from hand-curated data. This claim cites a source URL, but no archived artifact holds the verbatim extract it was read from, so the figure cannot be audited against the page that states it. The claim is retained rather than deleted, and is marked evidence_archived=false. Treat it as unverified until the source is archived."
+    },
+    {
+      "checked_at": null,
+      "field": "de.one_time_costs.visa_fee",
+      "reason": "Carried forward from hand-curated data. This claim cites a source URL, but no archived artifact holds the verbatim extract it was read from, so the figure cannot be audited against the page that states it. The claim is retained rather than deleted, and is marked evidence_archived=false. Treat it as unverified until the source is archived."
+    },
+    {
+      "attempted_sources": [
+        "https://www.tum.de/en/studies/fees/tuition"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "de.per_university_non_eu_tuition",
+      "reason": "Evidence was retrieved and archived, but this topic has no explicit mapping into the corpus schema, so the figure was not placed. Adding the mapping is a reviewed change, not something ingestion should guess."
+    },
+    {
+      "checked_at": null,
+      "field": "de.residency.citizenship.dual_citizenship_allowed",
+      "reason": "Carried forward from hand-curated data. This claim cites a source URL, but no archived artifact holds the verbatim extract it was read from, so the figure cannot be audited against the page that states it. The claim is retained rather than deleted, and is marked evidence_archived=false. Treat it as unverified until the source is archived."
+    },
+    {
+      "checked_at": null,
+      "field": "de.residency.citizenship.language_requirement",
+      "reason": "Carried forward from hand-curated data. This claim cites a source URL, but no archived artifact holds the verbatim extract it was read from, so the figure cannot be audited against the page that states it. The claim is retained rather than deleted, and is marked evidence_archived=false. Treat it as unverified until the source is archived."
+    },
+    {
+      "checked_at": null,
+      "field": "de.residency.citizenship.residence_requirement_years",
+      "reason": "Carried forward from hand-curated data. This claim cites a source URL, but no archived artifact holds the verbatim extract it was read from, so the figure cannot be audited against the page that states it. The claim is retained rather than deleted, and is marked evidence_archived=false. Treat it as unverified until the source is archived."
+    },
+    {
+      "checked_at": null,
+      "field": "de.residency.eu_blue_card.duration",
+      "reason": "Carried forward from hand-curated data. This claim cites a source URL, but no archived artifact holds the verbatim extract it was read from, so the figure cannot be audited against the page that states it. The claim is retained rather than deleted, and is marked evidence_archived=false. Treat it as unverified until the source is archived."
+    },
+    {
+      "checked_at": null,
+      "field": "de.residency.eu_blue_card.salary_threshold_reduced",
+      "reason": "Carried forward from hand-curated data. This claim cites a source URL, but no archived artifact holds the verbatim extract it was read from, so the figure cannot be audited against the page that states it. The claim is retained rather than deleted, and is marked evidence_archived=false. Treat it as unverified until the source is archived."
+    },
+    {
+      "checked_at": null,
+      "field": "de.residency.eu_blue_card.salary_threshold_standard",
+      "reason": "Carried forward from hand-curated data. This claim cites a source URL, but no archived artifact holds the verbatim extract it was read from, so the figure cannot be audited against the page that states it. The claim is retained rather than deleted, and is marked evidence_archived=false. Treat it as unverified until the source is archived."
+    },
+    {
+      "attempted_sources": [
+        "de-aufenthg-9-001"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "de.residency.permanent_residence",
+      "reason": "2 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 5 per year (de-aufenthg-9-001); 50 (de-aufenthg-9-001). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "checked_at": null,
+      "field": "de.residency.permanent_residence.blue_card_with_a1",
+      "reason": "Carried forward from hand-curated data. This claim cites a source URL, but no archived artifact holds the verbatim extract it was read from, so the figure cannot be audited against the page that states it. The claim is retained rather than deleted, and is marked evidence_archived=false. Treat it as unverified until the source is archived."
+    },
+    {
+      "checked_at": null,
+      "field": "de.residency.permanent_residence.blue_card_with_b1",
+      "reason": "Carried forward from hand-curated data. This claim cites a source URL, but no archived artifact holds the verbatim extract it was read from, so the figure cannot be audited against the page that states it. The claim is retained rather than deleted, and is marked evidence_archived=false. Treat it as unverified until the source is archived."
+    },
+    {
+      "checked_at": null,
+      "field": "de.residency.permanent_residence.skilled_worker_graduated_in_germany",
+      "reason": "Carried forward from hand-curated data. This claim cites a source URL, but no archived artifact holds the verbatim extract it was read from, so the figure cannot be audited against the page that states it. The claim is retained rather than deleted, and is marked evidence_archived=false. Treat it as unverified until the source is archived."
+    },
+    {
+      "checked_at": null,
+      "field": "de.residency.student_residence_permit.duration",
+      "reason": "Carried forward from hand-curated data. This claim cites a source URL, but no archived artifact holds the verbatim extract it was read from, so the figure cannot be audited against the page that states it. The claim is retained rather than deleted, and is marked evidence_archived=false. Treat it as unverified until the source is archived."
+    }
+  ],
+  "research": {
+    "evidence_artifact_count": 18,
+    "researched_at": "2026-10-05"
+  },
+  "sections": {
+    "career": {
+      "average_starting_salary": {
+        "academics_median_monthly_gross": {
+          "as_of": "2025",
+          "basis": "gross",
+          "currency": "EUR",
+          "evidence_archived": false,
+          "note": "Median monthly gross pay of full-time employees subject to social insurance with an academic qualification, Germany 2025. IMPORTANT: this is a stock figure for all employed graduates at any career stage, not an entry-level salary, and it is not split by Bachelor/Master/PhD. Recorded with basis 'gross' so it can never be used as take-home pay. Carried forward from hand-curated data; the verbatim extract behind this figure is not in research_raw/, so it cannot be audited from the repository.",
+          "per": "month",
+          "previous": {
+            "amount": 5943,
+            "as_of": "2024"
+          },
+          "source_ids": [
+            "de-s11"
+          ],
+          "value": 6146,
+          "value_status": "OFFICIAL_STATISTICS"
+        },
+        "all_full_time_median_monthly_gross": {
+          "as_of": "2025",
+          "basis": "gross",
+          "currency": "EUR",
+          "evidence_archived": false,
+          "note": "Median monthly gross for all full-time employees subject to social security contributions, Germany 2025. Useful as the benchmark denominator when comparing graduate pay. Carried forward from hand-curated data; the verbatim extract behind this figure is not in research_raw/, so it cannot be audited from the repository.",
+          "per": "month",
+          "source_ids": [
+            "de-s11"
+          ],
+          "value": 4217,
+          "value_status": "OFFICIAL_STATISTICS"
+        },
+        "master": {
+          "basis": null,
+          "currency": "EUR",
+          "max": null,
+          "min": null,
+          "note": "Not established. The Bundesagentur fuer Arbeit publishes median pay by occupation and by highest formal qualification (no vocational / recognised vocational / academic), NOT by degree level and not as an entry-level figure. Job boards carry degree-level entry salary but are self-reported and undated, so no figure is published here.",
+          "per": "year",
+          "value_status": "UNKNOWN"
+        }
+      },
+      "graduate_employment_outcomes": {
+        "employment_rate_within_12_months": {
+          "currency": null,
+          "note": "Germany publishes no official per-graduation employment rate. Bundesagentur employment statistics are cross-sectional at a reference date and are not linked to graduation cohorts; the Destatis/Bildungsbericht chapter on graduate destinations rests on voluntary self-reported panel surveys. No official 12-month figure exists to report, and a survey-derived number would not be the same claim.",
+          "per": "rate",
+          "value": null,
+          "value_status": "UNKNOWN"
+        }
+      },
+      "net_monthly_income": {
+        "as_of": "2026",
+        "currency": "EUR",
+        "note": "This figure describes gross (before-tax) income, not take-home pay. It was filed on the net topic and has been demoted rather than published, because break-even must compare money out against money that actually reaches the worker. Using gross here would roughly halve the reported months in most European countries.",
+        "per": "year",
+        "source_ids": [
+          "de-bmf-lohnsteuerrechner-2026-73752"
+        ],
+        "value": null,
+        "value_status": "UNKNOWN"
+      },
+      "top_employers": {
+        "note": "Not researched in this build. Named employers with both an average salary and a hiring volume sit with job boards and commercial surveys, which are self-reported and undated at employer level.",
+        "value": null,
+        "value_status": "UNKNOWN"
+      }
+    },
+    "education_costs": {
+      "mandatory_fees": {
+        "tum": {
+          "semester": {
+            "as_of": "2026",
+            "colliding_values": [
+              {
+                "as_of": "2026",
+                "currency": "EUR",
+                "per": "semester",
+                "source_ids": [
+                  "de-uni-tum-fees-005"
+                ],
+                "statement": "In the summer semester 2026 the semester fee at TUM amounts to 97.00 Euro for degree programs located in Munich, Garching, Weihenstephan and Heilbronn.",
+                "value": 97
+              },
+              {
+                "as_of": "2026",
+                "currency": "EUR",
+                "per": "semester",
+                "source_ids": [
+                  "de-uni-tum-fees-005"
+                ],
+                "statement": "In the summer semester 2026 the semester fee at TUM amounts to 82.00 Euro for degree programs located in Straubing.",
+                "value": 82
+              }
+            ],
+            "currency": "EUR",
+            "note": "In the summer semester 2026 the semester fee at TUM amounts to 97.00 Euro for degree programs located in Munich, Garching, Weihenstephan and Heilbronn.",
+            "per": "semester",
+            "source_ids": [
+              "de-uni-tum-fees-005"
+            ],
+            "value": 97,
+            "value_status": "UNIVERSITY_OFFICIAL"
+          }
+        }
+      },
+      "tuition_fees": {
+        "baden_wuerttemberg": {
+          "non_eu_tuition_per_semester": {
+            "currency": "EUR",
+            "note": "The EUR 1,500 per semester figure for non-EU international students is widely published for Baden-Wuerttemberg, but it was NOT confirmed on a page fetched during this build. Recorded as not established rather than published, because a widely-repeated number nobody in this build could open is exactly the kind of figure that goes stale unnoticed. The state's own international tuition page must be checked before this reaches students.",
+            "per": "semester",
+            "value": null,
+            "value_status": "UNKNOWN"
+          }
+        },
+        "by_state": {
+          "baden_wuerttemberg": {
+            "non_eu_per_semester": {
+              "as_of": "2026",
+              "currency": "EUR",
+              "note": "The Baden-Württemberg non-EU tuition applies to all future students who are not nationals of a state of the European Union (EU) or the European Economic Area (EEA).",
+              "per": "semester",
+              "source_ids": [
+                "de-mwk-bw-001"
+              ],
+              "study_level": "bachelor",
+              "value": 1500,
+              "value_status": "OFFICIAL_REGIONAL_BODY"
+            }
+          }
+        },
+        "private_institutions": {
+          "bachelor": {
+            "currency": "EUR",
+            "max": null,
+            "min": null,
+            "note": "Not researched in this build. German private institutions charge a wide range and there is no national figure worth publishing without a per-institution source.",
+            "per": "year",
+            "value_status": "UNKNOWN"
+          }
+        },
+        "public": {
+          "bachelor": {
+            "as_of": "2026",
+            "currency": "EUR",
+            "evidence_archived": false,
+            "note": "Sourced zero, not an unknown: German public universities charge no tuition for Bachelor's study. A non-EU student pays the semester contribution instead, recorded separately below. EU/EEA and most non-EU students alike face no tuition at this level. Carried forward from hand-curated data; the verbatim extract behind this figure is not in research_raw/, so it cannot be audited from the repository. This claim stated that the cost is zero, and it is not published, because the only source(s) behind the zero are de-s16, whose verbatim extract is not archived, so the claim that the cost is zero cannot be audited against the page that states it. A zero is a strong claim rather than a missing value: it asserts the country charges nothing, and it reaches a total that a reader treats as a budget. It is recorded as UNKNOWN so the total refuses, which is the safe direction, rather than publishing an unearned zero that understates the cost. The source and date behind the refused claim are retained above.",
+            "per": "year",
+            "source_ids": [
+              "de-s16"
+            ],
+            "value": null,
+            "value_status": "UNKNOWN"
+          },
+          "master": {
+            "as_of": "2026",
+            "currency": "EUR",
+            "evidence_archived": false,
+            "note": "Sourced zero: no tuition at public universities for Master's study. Baden-Wuerttemberg charges non-EU students EUR 1,500 per semester for certain programmes; that state-specific charge is recorded under tuition_fees.baden_wuerttemberg rather than folded into a national figure. Carried forward from hand-curated data; the verbatim extract behind this figure is not in research_raw/, so it cannot be audited from the repository. This claim stated that the cost is zero, and it is not published, because the only source(s) behind the zero are de-s16, whose verbatim extract is not archived, so the claim that the cost is zero cannot be audited against the page that states it. A zero is a strong claim rather than a missing value: it asserts the country charges nothing, and it reaches a total that a reader treats as a budget. It is recorded as UNKNOWN so the total refuses, which is the safe direction, rather than publishing an unearned zero that understates the cost. The source and date behind the refused claim are retained above.",
+            "per": "year",
+            "source_ids": [
+              "de-s16"
+            ],
+            "value": null,
+            "value_status": "UNKNOWN"
+          },
+          "phd": {
+            "as_of": "2026",
+            "currency": "EUR",
+            "evidence_archived": false,
+            "note": "Sourced zero. In practice most German PhD candidates are employed as research staff, so there is no tuition line at all. Carried forward from hand-curated data; the verbatim extract behind this figure is not in research_raw/, so it cannot be audited from the repository. This claim stated that the cost is zero, and it is not published, because the only source(s) behind the zero are de-s16, whose verbatim extract is not archived, so the claim that the cost is zero cannot be audited against the page that states it. A zero is a strong claim rather than a missing value: it asserts the country charges nothing, and it reaches a total that a reader treats as a budget. It is recorded as UNKNOWN so the total refuses, which is the safe direction, rather than publishing an unearned zero that understates the cost. The source and date behind the refused claim are retained above.",
+            "per": "year",
+            "source_ids": [
+              "de-s16"
+            ],
+            "value": null,
+            "value_status": "UNKNOWN"
+          }
+        },
+        "semester_contribution": {
+          "currency": "EUR",
+          "note": "Charged by each university and varying by institution and by the student's circumstances (often reduced or waived for the same students who pay no tuition). No single national figure exists, so none is published here.",
+          "note_reason": "Set per university; no national statutory amount. Not estimated.",
+          "per": "semester",
+          "value": null,
+          "value_status": "UNKNOWN"
+        },
+        "system_note": {
+          "currency": null,
+          "note": "Germany has no general tuition at public universities. The costs a non-EU student actually faces are the semester contribution (Studentenwerksbeitrag) and, in Baden-Wuerttemberg only, a tuition fee for non-EU internationals. This is the opposite shape to the UK/US/NL, where non-EU students pay the dominant cost.",
+          "per": null,
+          "source_ids": [
+            "de-s16"
+          ],
+          "value": null,
+          "value_status": "OFFICIAL_GOVERNMENT"
+        }
+      }
+    },
+    "living_costs": {
+      "monthly_costs": {
+        "high": {
+          "cities": [
+            "Munich",
+            "Frankfurt am Main",
+            "Hamburg",
+            "Duesseldorf"
+          ],
+          "rent_1br_city_center": {
+            "currency": "EUR",
+            "max": 1500,
+            "min": 900,
+            "note": "Numbeo German city range for a one-bedroom apartment in the city centre. Crowdsourced from user submissions and weighted toward larger cities; not an official statistic. Contributor counts for the German national page were not captured in this build.",
+            "per": "month",
+            "sample_size": null,
+            "source_ids": [
+              "de-s14"
+            ],
+            "value_status": "CROWDSOURCED"
+          },
+          "total": {
+            "currency": "EUR",
+            "max": null,
+            "min": null,
+            "note": "Not researched in this build. Numbeo publishes German city rents (de-s14), but a city-tier monthly total assembled here would mix a crowdsourced rent with unsourced food, utilities and insurance figures. Refused rather than partially estimated - a total that omits four of its six components reads as complete and understates the budget.",
+            "per": "month",
+            "value_status": "UNKNOWN"
+          }
+        },
+        "low": {
+          "cities": [
+            "Dresden",
+            "Chemnitz",
+            "Magdeburg",
+            "Rostock"
+          ],
+          "total": {
+            "currency": "EUR",
+            "max": null,
+            "min": null,
+            "note": "Not researched in this build.",
+            "per": "month",
+            "value_status": "UNKNOWN"
+          }
+        },
+        "medium": {
+          "cities": [
+            "Berlin",
+            "Cologne",
+            "Stuttgart",
+            "Leipzig"
+          ],
+          "total": {
+            "currency": "EUR",
+            "max": null,
+            "min": null,
+            "note": "Not researched in this build. See the high-tier note: a partial sum would understate a real budget.",
+            "per": "month",
+            "value_status": "UNKNOWN"
+          }
+        }
+      }
+    },
+    "one_time_costs": {
+      "blocked_account": {
+        "as_of": "2026",
+        "currency": "EUR",
+        "evidence_archived": false,
+        "note": "Minimum amount to block for a student residence permit, 2026. Verified directly on the make-it-in-germany.com requirements page during this build. CORRECTS a widely circulated figure of EUR 11,208, which is the 2025 level. Carried forward from hand-curated data; the verbatim extract behind this figure is not in research_raw/, so it cannot be audited from the repository.",
+        "per": "year",
+        "previous": {
+          "amount": 11208,
+          "as_of": "2025"
+        },
+        "source_ids": [
+          "de-s1",
+          "de-s2"
+        ],
+        "value": 11904,
+        "value_status": "OFFICIAL_GOVERNMENT"
+      },
+      "blocked_account_monthly_release": {
+        "as_of": "2026",
+        "currency": "EUR",
+        "evidence_archived": false,
+        "formula": "11904 / 12 = 992",
+        "note": "The amount actually released each month from the blocked account, indexed to the maximum BAfoeg rates. 12 x 992 = 11,904. Carried forward from hand-curated data; the verbatim extract behind this figure is not in research_raw/, so it cannot be audited from the repository.",
+        "per": "month",
+        "source_ids": [
+          "de-s1",
+          "de-s2"
+        ],
+        "value": 992,
+        "value_status": "OFFICIAL_GOVERNMENT"
+      },
+      "visa_fee": {
+        "as_of": "2026",
+        "currency": "EUR",
+        "evidence_archived": false,
+        "note": "Residence permit fee for full-time study under Sec. 16b AufenthG. Carried forward from hand-curated data; the verbatim extract behind this figure is not in research_raw/, so it cannot be audited from the repository.",
+        "per": "application",
+        "source_ids": [
+          "de-s15"
+        ],
+        "value": 75,
+        "value_status": "OFFICIAL_GOVERNMENT"
+      }
+    },
+    "quality_of_life": {
+      "note": "Not researched in this build beyond the Numbeo figures below. Every index Numbeo publishes is crowdsourced and is labelled as such; it is a perception measure, not an official statistic."
+    },
+    "residency": {
+      "citizenship": {
+        "dual_citizenship_allowed": {
+          "as_of": "2026",
+          "evidence_archived": false,
+          "note": "Germany has NO requirement to renounce a previous citizenship. The Act to Modernise Nationality Law entered into force on 27 June 2024. The only caveat is that the country of origin must also permit dual nationality. Carried forward from hand-curated data; the verbatim extract behind this figure is not in research_raw/, so it cannot be audited from the repository.",
+          "source_ids": [
+            "de-s10",
+            "de-s13"
+          ],
+          "value": true,
+          "value_status": "OFFICIAL_GOVERNMENT"
+        },
+        "language_requirement": {
+          "as_of": "2026",
+          "evidence_archived": false,
+          "note": "CEFR B1 for the standard five-year route. C1 applied only to the now-repealed three-year fast track, so it is not the current requirement. Carried forward from hand-curated data; the verbatim extract behind this figure is not in research_raw/, so it cannot be audited from the repository.",
+          "source_ids": [
+            "de-s12",
+            "de-s13"
+          ],
+          "value": "B1",
+          "value_status": "OFFICIAL_GOVERNMENT"
+        },
+        "official_name": "Einbuergerung (Sec. 10 StAG)",
+        "residence_requirement_years": {
+          "as_of": "2026",
+          "currency": null,
+          "evidence_archived": false,
+          "note": "Five years of lawful, habitual and regular residence, reduced from eight by the 2024 reform. CORRECTS the eight-year figure still in wide circulation. Carried forward from hand-curated data; the verbatim extract behind this figure is not in research_raw/, so it cannot be audited from the repository.",
+          "per": "years",
+          "previous": {
+            "amount": 8,
+            "as_of": "2024"
+          },
+          "source_ids": [
+            "de-s10",
+            "de-s12",
+            "de-s13"
+          ],
+          "value": 5,
+          "value_status": "OFFICIAL_GOVERNMENT"
+        },
+        "three_year_fast_track": {
+          "currency": null,
+          "note": "The three-year fast track introduced in June 2024 NO LONGER EXISTS. It was repealed: the sixth amendment to the Nationality Act was adopted by the Federal Cabinet on 14 May 2025, passed by the Bundestag on 8 October 2025, and promulgated as BGBl. 2025 I Nr. 256 on 29 October 2025, repealing Sec. 10(3) StAG without replacement. A uniform five-year minimum now applies. CORRECTS a widely circulated figure presenting a 3-year fast track as current.",
+          "per": "years",
+          "value": null,
+          "value_status": "UNKNOWN"
+        }
+      },
+      "eu_blue_card": {
+        "duration": {
+          "as_of": "2026",
+          "currency": null,
+          "evidence_archived": false,
+          "note": "Maximum four years; normally issued for the employment contract length plus three months. Carried forward from hand-curated data; the verbatim extract behind this figure is not in research_raw/, so it cannot be audited from the repository.",
+          "per": "years",
+          "source_ids": [
+            "de-s3"
+          ],
+          "value": 4,
+          "value_status": "OFFICIAL_GOVERNMENT"
+        },
+        "official_name": "EU Blue Card (Sec. 18g AufenthG)",
+        "salary_threshold_reduced": {
+          "as_of": "2026",
+          "currency": "EUR",
+          "evidence_archived": false,
+          "note": "45.3% of the annual pension insurance contribution ceiling. Applies to shortage (bottleneck) occupations, to new entrants who graduated within the last three years regardless of occupation, and to IT specialists without a degree. Federal Employment Agency approval is required below the standard threshold. CORRECTS a widely circulated figure of EUR 45,552. Carried forward from hand-curated data; the verbatim extract behind this figure is not in research_raw/, so it cannot be audited from the repository.",
+          "per": "year",
+          "previous": {
+            "amount": 43759.8,
+            "as_of": "2025"
+          },
+          "source_ids": [
+            "de-s3",
+            "de-s4"
+          ],
+          "value": 45934.2,
+          "value_status": "OFFICIAL_GOVERNMENT"
+        },
+        "salary_threshold_standard": {
+          "as_of": "2026",
+          "currency": "EUR",
+          "evidence_archived": false,
+          "note": "Minimum gross annual salary for an EU Blue Card in 2026. Verified on make-it-in-germany.com and confirmed independently by the Bundesagentur fuer Arbeit. CORRECTS a widely circulated figure of EUR 58,400, which does not correspond to any year. Bonus and fully variable pay do not count toward the threshold; Federal Employment Agency approval is waived at or above this level. Carried forward from hand-curated data; the verbatim extract behind this figure is not in research_raw/, so it cannot be audited from the repository.",
+          "per": "year",
+          "previous": {
+            "amount": 48300,
+            "as_of": "2025"
+          },
+          "source_ids": [
+            "de-s3",
+            "de-s4"
+          ],
+          "value": 50700,
+          "value_status": "OFFICIAL_GOVERNMENT"
+        }
+      },
+      "job_seeker_residence_permit": {
+        "duration": {
+          "bachelor": {
+            "month": {
+              "as_of": "2026",
+              "note": "Grant of the § 20 AufenthG residence permit presupposes that the person's livelihood is secured, and extension beyond these periods is excluded.",
+              "per": "month",
+              "source_ids": [
+                "de-aufenthg-20-001"
+              ],
+              "study_level": "bachelor",
+              "value": 18,
+              "value_status": "OFFICIAL_GOVERNMENT"
+            }
+          },
+          "month": {
+            "as_of": "2026",
+            "note": "Grant of the § 20 AufenthG residence permit presupposes that the person's livelihood is secured, and extension beyond these periods is excluded.",
+            "per": "month",
+            "source_ids": [
+              "de-aufenthg-20-001"
+            ],
+            "study_level": "bachelor",
+            "value": 18,
+            "value_status": "OFFICIAL_GOVERNMENT"
+          }
+        },
+        "official_name": "Aufenthaltserlaubnis zur Arbeitsplatzsuche (Sec. 20 AufenthG)"
+      },
+      "permanent_residence": {
+        "blue_card_with_a1": {
+          "as_of": "2026",
+          "currency": null,
+          "evidence_archived": false,
+          "note": "At least 27 months with German at CEFR A1 ('basic'). CORRECTS a widely circulated figure of 33 months, which is not the current rule. Carried forward from hand-curated data; the verbatim extract behind this figure is not in research_raw/, so it cannot be audited from the repository.",
+          "per": "months",
+          "source_ids": [
+            "de-s7"
+          ],
+          "value": 27,
+          "value_status": "OFFICIAL_GOVERNMENT"
+        },
+        "blue_card_with_b1": {
+          "as_of": "2026",
+          "currency": null,
+          "evidence_archived": false,
+          "note": "At least 21 months of employment holding an EU Blue Card or another Sec. 18g title, with German at B1 ('sufficient'), plus the integration-course knowledge element, adequate pension provision, secured livelihood and sufficient living space. Also requires address reporting within 30 days of moving. Carried forward from hand-curated data; the verbatim extract behind this figure is not in research_raw/, so it cannot be audited from the repository.",
+          "per": "months",
+          "source_ids": [
+            "de-s7"
+          ],
+          "value": 21,
+          "value_status": "OFFICIAL_GOVERNMENT"
+        },
+        "official_name": "Niederlassungserlaubnis",
+        "skilled_worker_graduated_in_germany": {
+          "as_of": "2026",
+          "currency": null,
+          "evidence_archived": false,
+          "note": "Where vocational training or a course of study was completed in Germany, both the residence-title and the pension-contribution requirements drop to 24 months. Language requirement B1. This is the fastest permanent-residence route for a German-educated graduate who does not take the Blue Card. Carried forward from hand-curated data; the verbatim extract behind this figure is not in research_raw/, so it cannot be audited from the repository.",
+          "per": "months",
+          "source_ids": [
+            "de-s8"
+          ],
+          "value": 24,
+          "value_status": "OFFICIAL_GOVERNMENT"
+        }
+      },
+      "student_residence_permit": {
+        "duration": {
+          "as_of": "2026",
+          "currency": null,
+          "evidence_archived": false,
+          "note": "Generally granted and extended for two years. Carried forward from hand-curated data; the verbatim extract behind this figure is not in research_raw/, so it cannot be audited from the repository.",
+          "per": "years",
+          "source_ids": [
+            "de-s15"
+          ],
+          "value": 2,
+          "value_status": "OFFICIAL_GOVERNMENT"
+        },
+        "official_name": "Aufenthaltserlaubnis zum Zweck des Studiums (Sec. 16b AufenthG)"
+      }
+    },
+    "scholarship_landscape": {
+      "note": "Scholarship counts for Germany are NOT published here. The catalogue's own measured scholarship counts for Germany are computed per request from the live database and published separately as the measured plane; duplicating them as a researched figure would create two numbers for one claim."
+    }
+  },
+  "sources": [
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "de-aufenthg-20-001",
+      "notes": "CONFIRMED from the primary federal statute, published by the Bundesamt für Justiz. Post-study job search in Germany: 18 MONTHS. Lawful name of the instrument: this is a residence permit ('Aufenthaltserlaubnis') granted under § 20 AufenthG for the purpose of 'Arbeitsplatzsuche im Anschluss an Aufenthalte im Bundesgebiet' (job search following residence in Germany). Germany does not use a named permit such as the UK's 'Graduate visa' or the Netherlands' 'orientation year'; the correct official naming for the corpus is a § 20 AufenthG Aufenthaltserlaubnis for job search (Arbeitsplatzsuche). Note precisely who the 18 months applies to: § 20(1) no. 1 covers students who successfully completed a study in Germany under § 16b or § 16c; numbers 1 to 4 share the 18-month cap. Number 5 (care/nursing Assistenz- or Helferausbildung) gets 12 months extendable once by 6. IMPORTANT CONDITION: securing livelihood (Lebensunterhaltssicherung) is a precondition, and extension beyond these periods is expressly excluded. I initially fetched § 27 AufenthG expecting the study/job-search provision and it turned out to be family reunification — recorded here so the corpus does not cite § 27 for this purpose.",
+      "publisher": "Bundesministerium der Justiz / Bundesamt für Justiz — gesetze-im-internet.de (Gesetz über den Aufenthalt, die Erwerbstätigkeit und die Integration von Ausländern im Bundesgebiet, AufenthG § 20)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "post_study_work evidence",
+      "url": "https://www.gesetze-im-internet.de/aufenthg_2004/__20.html"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "de-aufenthg-9-001",
+      "notes": "CONFIRMED from the primary federal statute. Germany permanent residence: minimum 5 YEARS of holding an Aufenthaltserlaubnis (§ 9(2) sentence 1 no. 1). Official name: Niederlassungserlaubnis, which per § 9(1) is an UNLIMITED-STAY residence title (unbefristeter Aufenthaltstitel). IMPORTANT CAVEAT THAT MATTERS FOR A SCHOLARSHIP CORPUS: § 9(4) no. 3 provides that lawful residence for the PURPOSE OF STUDY OR VOCATIONAL TRAINING in Germany counts only HALF ('zur Hälfte'). So a period spent on a student residence permit does NOT count 1:1 toward the 5 years for permanent residence — it counts at half. A corpus entry of '5 years' must carry this halving rule or it is misleading. Additional requirements confirmed: livelihood secured, 60 months of pension contributions, adequate German language skills (B1 per § 2(11) AufenthG), basic knowledge of German law and society, sufficient living space. A separate 3-year route exists only for spouses of holders of a Niederlassungserlaubnis under § 18c (mobile employment) — NOT a general rule and not applicable to ordinary graduates, so it is recorded but explicitly flagged as inapplicable. Halving of study periods also applies, so the practical time to Niederlassungserlaubnis for a graduate who studied the whole period in Germany is substantially longer than 5 calendar years.",
+      "publisher": "Bundesministerium der Justiz / Bundesamt für Justiz — gesetze-im-internet.de (Aufenthaltsgesetz § 9)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "permanent_residence evidence",
+      "url": "https://www.gesetze-im-internet.de/aufenthg_2004/__9.html"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "de-bmf-lohnsteuerrechner-2026-50604",
+      "notes": null,
+      "publisher": "Bundesministerium der Finanzen (BMF) - Lohn- und Einkommensteuerrechner",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "net_monthly_income evidence",
+      "url": "https://www.bmf-steuerrechner.de/bl/bl2026/resultbl2026.xhtml"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "de-bmf-lohnsteuerrechner-2026-73752",
+      "notes": null,
+      "publisher": "Bundesministerium der Finanzen (BMF) - Lohn- und Einkommensteuerrechner",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "net_monthly_income evidence",
+      "url": "https://www.bmf-steuerrechner.de/bl/bl2026/resultbl2026.xhtml"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "de-mwk-bw-001",
+      "notes": "CONFIRMED at STATE level from the responsible ministry (official regional body, not a university marketing page): Baden-Württemberg imposes a mandatory non-EU international tuition of EUR 1,500 per semester on its universities, in force since winter semester 2017/18. It is a LANDESGEBÜHR under the Landeshochschulgebührengesetz (LHGebG), i.e. state law, applicable to Bachelor, consecutive Master and Staatsexamen programmes. Unit is explicitly per semester. Who is affected: all students who are not nationals of an EU or EEA state (and 'future students' — so it does not apply retroactively to those already enrolled before the fee was introduced). GAP: the ministry page does not state the amount of the separate mandatory semester contribution (Semesterbeitrag); that figure is university-specific and is recorded separately per university below. The ministry page also does not quantify the 300 EUR/semester share retained by universities that appears in the German-language version of the same page family.",
+      "publisher": "Ministerium für Wissenschaft, Forschung und Kunst Baden-Württemberg (MWK BW)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_REGIONAL_BODY",
+      "title": "baden_wuerttemberg_non_eu_tuition evidence",
+      "url": "https://mwk.baden-wuerttemberg.de/de/hochschulen-studium/studieren-in-bw/studienfinanzierung/gebuehren-fuer-internationale-studierende-und-zweitstudium/tuition-fees-for-international-students"
+    },
+    {
+      "accessed": "2026-10-05",
+      "id": "de-s1",
+      "publisher": "make-it-in-germany.com (Federal Ministry for Economic Affairs and Energy)",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "Requirements for studying in Germany - securing funding",
+      "url": "https://www.make-it-in-germany.com/en/study-vocational-training/studies-in-germany/requirements"
+    },
+    {
+      "accessed": "2026-10-05",
+      "id": "de-s10",
+      "publisher": "Auswaertiges Amt / germany.info",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "Germany's nationality law - significant changes (Act in force 27 June 2024)",
+      "url": "https://www.germany.info/us-en/service/03-citizenship/2665448-2665448"
+    },
+    {
+      "accessed": "2026-10-05",
+      "id": "de-s11",
+      "publisher": "Bundesagentur fuer Arbeit",
+      "source_type": "OFFICIAL_STATISTICS",
+      "title": "Salaries for full-time employees rose significantly in 2025 (Medianentgelt)",
+      "url": "https://www.arbeitsagentur.de/en/press/2026-27-salaries-for-full-time-employees-rose-significantly-in-2025"
+    },
+    {
+      "accessed": "2026-10-05",
+      "id": "de-s12",
+      "publisher": "BAMF (Bundesamt fuer Migration und Fluechtlinge)",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "Einbuergerung - Voraussetzungen und Kosten",
+      "url": "https://www.bamf.de/DE/Themen/Integration/ZugewanderteTeilnehmende/Einbuergerung/einbuergerung-node.html"
+    },
+    {
+      "accessed": "2026-10-05",
+      "id": "de-s13",
+      "publisher": "gesetze-im-internet.de (BMJ)",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "Sec. 10 Staatsangehoerigkeitsgesetz (StAG)",
+      "url": "https://www.gesetze-im-internet.de/stag/__10.html"
+    },
+    {
+      "accessed": "2026-10-05",
+      "id": "de-s14",
+      "publisher": "Numbeo",
+      "source_type": "CROWDSOURCED",
+      "title": "Cost of Living in Germany",
+      "url": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Germany"
+    },
+    {
+      "accessed": "2026-10-05",
+      "id": "de-s15",
+      "publisher": "ServicePortal Berlin",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "Residence permit for the purpose of full-time studies (Sec. 16b AufenthG)",
+      "url": "https://service.berlin.de/dienstleistung/305244/en"
+    },
+    {
+      "accessed": "2026-10-05",
+      "id": "de-s16",
+      "publisher": "make-it-in-germany.com (BMWK)",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "Skilled Immigration Act",
+      "url": "https://www.make-it-in-germany.com/en/visa-residence/skilled-immigration-act"
+    },
+    {
+      "accessed": "2026-10-05",
+      "id": "de-s2",
+      "publisher": "make-it-in-germany.com (BMWK)",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "Financial security for individual living expenses according to purpose of stay (2026)",
+      "url": "https://www.make-it-in-germany.com/fileadmin/1_Rebrush_2022/a_Fachkraefte/PDF-Dateien/3_Visum_u_Aufenthalt/Visagrafik_EN/Lebensunterhaltssicherung_Uebersicht_EN.pdf"
+    },
+    {
+      "accessed": "2026-10-05",
+      "id": "de-s3",
+      "publisher": "make-it-in-germany.com (BMWK)",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "EU Blue Card",
+      "url": "https://www.make-it-in-germany.com/en/visa-residence/types/eu-blue-card"
+    },
+    {
+      "accessed": "2026-10-05",
+      "id": "de-s4",
+      "publisher": "Bundesagentur fuer Arbeit",
+      "source_type": "OFFICIAL_STATISTICS",
+      "title": "EU Blue Card (issue 03-2026): 2026 salary thresholds",
+      "url": "https://www.arbeitsagentur.de/vor-ort/zav/working-and-living-in-germany/iss-en/issue-03-2026/blue-card"
+    },
+    {
+      "accessed": "2026-10-05",
+      "id": "de-s5",
+      "publisher": "ServicePortal Berlin (Landesamt fuer Einwanderung)",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "Residence permit to seek for a job following a stay in Germany (Sec. 20 AufenthG)",
+      "url": "https://service.berlin.de/dienstleistung/324661/en/"
+    },
+    {
+      "accessed": "2026-10-05",
+      "id": "de-s6",
+      "publisher": "Berlin Immigration Office (Landesamt fuer Einwanderung)",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "Studies - working during your studies",
+      "url": "https://www.berlin.de/einwanderung/en/residence/study"
+    },
+    {
+      "accessed": "2026-10-05",
+      "id": "de-s7",
+      "publisher": "ServicePortal Berlin",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "Permanent settlement permit for EU Blue Card holders (Sec. 18c(2) AufenthG)",
+      "url": "https://service.berlin.de/dienstleistung/326556/en/"
+    },
+    {
+      "accessed": "2026-10-05",
+      "id": "de-s8",
+      "publisher": "ServicePortal Berlin",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "Permanent settlement permit for qualified skilled workers (Sec. 18c AufenthG)",
+      "url": "https://service.berlin.de/dienstleistung/326558/en/"
+    },
+    {
+      "accessed": "2026-10-05",
+      "id": "de-s9",
+      "publisher": "Bundesministerium des Innern",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "Federal Cabinet decides to end fast-track naturalisation (repeal of the 3-year route)",
+      "url": "https://www.bmi.bund.de/SharedDocs/pressemitteilungen/EN/2025/05/kabinett.html"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "de-stag-10-001",
+      "notes": "CONFIRMED from the primary federal statute (correct URL is /stag/__10.html, NOT /stag_1913/__10.html which 404s). Germany naturalisation, discretionary entitlement (Anspruchseinbürgerung) under § 10 StAG: minimum 5 YEARS of lawful habitual residence in Germany ('seit fünf Jahren rechtmäßig seinen gewöhnlichen Aufenthalt im Inland'). This is the post-2024 figure; it was reduced from 8 years by the Gesetz zur Modernisierung des Staatsangehörigkeitsrechts of 22 March 2024 (in force 27 June 2024). CRITICAL POINT THAT MUST NOT BE MISSED IN THE CORPUS: § 10(1) no. 2 requires the applicant to hold an unlimited residence right, an EU Blue Card, or a residence permit for a purpose OTHER THAN those listed in §§ 16a, 16b, 16d, 16e, 16f, 17, 18f, 19, 19b, 19e, 20, 20a, 22, 23a, 24, 25(3)-(5) and § 104c AufenthG — and § 16b is the STUDY permit. So five years on a § 16b student residence permit do NOT by themselves satisfy the naturalisation route; the student must first hold a qualifying non-student title. Also confirmed: § 10(3) and § 10(3a) are now marked '(weggefallen)' (repealed) — the former 3-year reduced-residence route for special integration achievements no longer exists. Language: CEFR B1 (§ 10(4)); legal/social knowledge: usually via the Einbürgerungstest (§ 10(5)), with Einbürgerungskurse offered but attendance not mandatory. Additional: commitment to the free democratic order and to Germany's special historical responsibility; livelihood secured without SGB II/XII benefits; no disqualifying conviction.",
+      "publisher": "Bundesministerium der Justiz / Bundesamt für Justiz — gesetze-im-internet.de (Staatsangehörigkeitsgesetz § 10)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "naturalisation_citizenship evidence",
+      "url": "https://www.gesetze-im-internet.de/stag/__10.html"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "de-uni-tum-fees-005",
+      "notes": "CONFIRMED: the mandatory semester fee at TUM, stated as a CAMPUS-DEPENDENT amount and explicitly tied to summer semester 2026. EUR 97.00 at Munich/Garching/Weihenstephan and Heilbronn; EUR 82.00 at Straubing. This is the mandatory fee (StudentCard/semester contribution) payable by ALL students, separate from and additional to the non-EU tuition. Cross-reference: TUM's tuition page states 'The regular semester fee must be paid in addition to the tuition fees', so tuition and this fee are distinct and additive. IMPORTANT NUANCE FOR THE CORPUS: this is one university's own fee, NOT a German-wide figure. It must not be used as a national value. Unit is per semester; the page gives an explicit semester (summer semester 2026), so as_of is 2026.",
+      "publisher": "Technical University of Munich (TUM)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "UNIVERSITY_OFFICIAL",
+      "title": "mandatory_fees_semester_fee_tum evidence",
+      "url": "https://www.tum.de/en/studies/fees"
+    }
+  ]
+}

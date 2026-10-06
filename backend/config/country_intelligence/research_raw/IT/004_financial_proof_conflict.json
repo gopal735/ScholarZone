@@ -1,0 +1,47 @@
+{
+  "country": "IT",
+  "topic": "financial_proof_conflict",
+  "source_id": "mur-studyinitaly-means-2001-decree",
+  "source_url": "https://miur.mur.gov.it/studiare-in-italia/studying/info-23.html",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "MUR - Ministero dell'Universita e della Ricerca, 'Study in Italy' portal (in collaboration with CIMEA, powered by Cineca)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2001 (decree cited on the page); page undated as to its own currency",
+  "raw_extract": "# Mezzi di sostentamento (cittadini non-Ue residenti all'estero)\n\nI cittadini non-Ue che vogliono ottenere il visto di studio per l'Italia devono dimostrare di disporre di mezzi economici sufficienti per mantenersi nel nostro Paese. Possono fornire prova di possedere risorse economiche personali, oppure dimostrare di essere garantiti finanziariamente da terzi.\n\nDi norma si accettano le garanzie economiche fornite da:\n\n- istituzioni ed enti italiani di accertato credito, oppure\n- Governi stranieri, oppure\n- istituzioni e enti stranieri considerati affidabili dalla competente Rappresentanza diplomatica italiana.\n\nAttualmente l'importo minimo ritenuto indispensabile per il proprio sostentamento e' di Euro 350.57 mensili per ciascun mese dell'intero anno accademico (DI del 20.11.2001, pubblicato su Gazzetta Ufficiale n 283 del 5.12.2001).\n\nRicorda\n\nLa semplice candidatura a una borsa di studio del Governo italiano non e' ritenuta prova valida a dimostrare la tua capacita' di mantenerti in Italia.\n\nSe vuoi iscriverti ad un corso di studio di istruzione superiore sulla base delle presenti disposizioni, e hai presentato domanda di borsa di studio del Governo italiano ma non l'hai ancora ottenuta, devi presentare un altro documento, diverso dalla semplice candidatura alla borsa di studio, che dimostri la tua capacita' di mantenerti in Italia; tale documento di copertura economica deve essere valido per ogni mese di durata dell'anno accademico, cosi come si richiede a tutti gli altri candidati che presentano domanda di pre-iscrizione.",
+  "research_notes": "This file exists solely to document a CONFLICT between two official Italian sources on the subsistence requirement, which is the point the brief asked me to be blunt about. Both were fetched and read in full; neither figure is invented.\n\nSOURCE A, the operative one: the Italian Embassy in The Hague, procedures for academic year 2026/2027, states 'mezzi economici di sussistenza ... quantificati in EUR 10.179,85 annui'. See 003_financial_proof.json.\n\nSOURCE B, this file: MUR's own 'Study in Italy' portal states 'Euro 350.57 mensili per ciascun mese dell'intero anno accademico (DI del 20.11.2001, pubblicato su Gazzetta Ufficiale n 283 del 5.12.2001)'. Approximately EUR 4,207 per year.\n\nTHE GAP IS LARGE: roughly EUR 10,180 versus roughly EUR 4,207 per year, so the ministry portal figure is about 59 percent of the embassy figure, or the embassy figure is roughly 2.4 times the ministry figure. That is too big to be a rounding or indexation drift.\n\nMY READING OF THE CAUSE, offered as reasoning and not as a sourced fact: MUR's number is self-dating. It cites a ministerial decree of 20 November 2001 published in the 2001 Gazzetta Ufficiale, and Italian financial thresholds of this kind are periodically revised. The page itself uses the present tense, 'Attualmente l'importo minimo ritenuto indispensabile', which is what makes it misleading rather than merely old: it reads as current while citing a 2001 instrument. The embassy page, by contrast, is explicitly scoped 'Procedure valide per l'Anno accademico 2026-2027 e 2027-2028' and points to the current MUR circular.\n\nCONSEQUENCE FOR THE CORPUS: treat EUR 10,179.85 per year as the operative Italian financial-proof figure on the strength of the dated consular requirement, and keep EUR 350.57 per month on file as a stale-but-live official figure. If a future pass fetches the current MUR circular 2026-2027 that the embassy links (https://universitaly-private.cineca.it/uploads/universitaly-pubblico/Circolare_2026-2027_studenti_internazionali.pdf), that should settle it from the top of the ministry chain. I did not fetch that PDF in this pass.\n\nTWO USEFUL AGREEMENTS DESPITE THE NUMERIC CONFLICT: both sources independently state that merely applying for an Italian government scholarship does not prove means. Both sources independently name the Directorate Directive of 1 March 2000 as the instrument behind the thresholds, which is why both figures descend from the same legal family and differ by revision date.",
+  "claims": [
+    {
+      "claim_id": "it-financial-proof-conflict-1",
+      "statement": "The MUR Study in Italy portal states the minimum subsistence amount for a non-EU study visa is EUR 350.57 per month, citing a ministerial decree of 20 November 2001.",
+      "value": 350.57,
+      "unit": "EUR per month (legacy MUR figure, decree of 2001)",
+      "as_of": "2001",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "it-financial-proof-mur-portal-stale-1",
+      "statement": "The MUR portal states the figure in the present tense as 'Attualmente l'importo minimo ritenuto indispensabile' while citing a 2001 decree, so the page presents a legacy amount as current.",
+      "value": "presented as current but self-dated to 2001",
+      "unit": "source currency assessment",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ],
+  "conflict": {
+    "note": "DIRECT NUMERIC CONFLICT between two official Italian publishers on the student subsistence requirement. Both figures are quoted verbatim above and in 003_financial_proof.json. Neither is inferred. Recommended resolution: EUR 10,179.85 per year (Embassy, dated to academic year 2026/2027) as operative; EUR 350.57 per month (MUR portal, citing a 2001 decree) as a stale-but-live legacy figure. The conflict is not resolved by this file and should be re-tested against the current MUR circular before being closed.",
+    "source_a": {
+      "publisher": "Ambasciata d'Italia a L'Aja (Italian Embassy in The Hague), MAECI",
+      "value": 10179.85,
+      "unit": "EUR per year",
+      "as_of": "2026/2027",
+      "url": "https://amblaja.esteri.it/it/servizi-consolari-e-visti/servizi-per-il-cittadino-straniero/visti/visto-di-studio/"
+    },
+    "source_b": {
+      "publisher": "MUR - Ministero dell'Universita e della Ricerca, Study in Italy portal",
+      "value": 350.57,
+      "unit": "EUR per month",
+      "as_of": "2001 (decree date cited by the page)",
+      "url": "https://miur.mur.gov.it/studiare-in-italia/studying/info-23.html"
+    }
+  }
+}

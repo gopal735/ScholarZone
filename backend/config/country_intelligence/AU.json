@@ -1,0 +1,494 @@
+{
+  "contract_version": "1.0.0",
+  "country": {
+    "currency": null,
+    "iso2": "AU",
+    "name_en": "Australia"
+  },
+  "gaps": [
+    {
+      "attempted_sources": [
+        "https://programsandcourses.anu.edu.au/2026/program/BSC"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "au.au-bachelor-tuition-2",
+      "reason": "Archived evidence recorded a finding with no numeric figure: ANU states the annual indicative fee is an estimate based on a 48-unit load, that fees vary by discipline according to the courses selected, and that course fees are reviewed annually and typically increase from year to year."
+    },
+    {
+      "attempted_sources": [
+        "https://programsandcourses.anu.edu.au/2026/program/BSC"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "au.au-bachelor-tuition-3",
+      "reason": "Archived evidence recorded a finding with no numeric figure: All students at ANU are additionally required to pay a Services and Amenities (SA) Fee on top of tuition (amount not published on the page fetched)."
+    },
+    {
+      "attempted_sources": [
+        "https://www.legislation.gov.au/F2019L01366/2024-05-10/2024-05-10/text/original/epub/OEBPS/document_1/document_1.html"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "au.au-financial-proof-2",
+      "reason": "Archived evidence recorded a finding with no numeric figure: The financial capacity funds test must additionally cover travel expenses AND course fees minus any amount already paid - so AUD 29,710 is the living-costs element only and is not the total funds required."
+    },
+    {
+      "attempted_sources": [
+        "https://www.legislation.gov.au/F2019L01366/2024-05-10/2024-05-10/text/original/epub/OEBPS/document_1/document_1.html"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "au.au-financial-proof-3",
+      "reason": "Archived figure recorded, but it is not a currency figure and its topic's primary field holds money. It is stored as a related figure rather than as a cost. Statement: Where the period of study exceeds 12 months, the course fees to be evidenced are limited to course fees for the first 12 months of the period of study in Australia."
+    },
+    {
+      "attempted_sources": [
+        "https://www.legislation.gov.au/F2019L01366/2024-05-10/2024-05-10/text/original/epub/OEBPS/document_1/document_1.html"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "au.au-financial-proof-6",
+      "reason": "Archived evidence recorded a finding with no numeric figure: For stays of less than 12 months the annual living cost figure is pro-rated by dividing the annual amount by 365 and multiplying by the number of days the applicant intends to stay."
+    },
+    {
+      "attempted_sources": [
+        "https://www.legislation.gov.au/F2019L01366/2024-05-10/2024-05-10/text/original/epub/OEBPS/document_1/document_1.html"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "au.au-financial-proof-7",
+      "reason": "Archived evidence recorded a finding with no numeric figure: Only four forms of funds evidence are specified: a money deposit with a financial institution, a loan with a financial institution, government loans, and a scholarship or financial support."
+    },
+    {
+      "attempted_sources": [
+        "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186/temporary-residence-transition-stream"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "au.au-permanent-residence-2",
+      "reason": "Archived evidence recorded a finding with no numeric figure: The qualifying period is stated as applying 'usually', indicating exceptions exist rather than the 2-year rule being absolute."
+    },
+    {
+      "attempted_sources": [
+        "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186/temporary-residence-transition-stream"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "au.au-permanent-residence-4",
+      "reason": "Archived evidence recorded a finding with no numeric figure: A subclass 186 grant allows the holder to live, work and study in Australia indefinitely and to apply for Australian citizenship if eligible."
+    },
+    {
+      "attempted_sources": [
+        "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186/temporary-residence-transition-stream"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "au.au-permanent-residence-5",
+      "reason": "Archived evidence recorded a finding with no numeric figure: Skilled visa income thresholds are indexed in line with changes to annual Average Weekly Ordinary Time Earnings, with indexation taking effect from 1 July 2026 (no dollar threshold published on this page)."
+    },
+    {
+      "attempted_sources": [
+        "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-graduate-485/post-higher-education-work"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "au.au-post-study-work-2",
+      "reason": "Archived evidence recorded a finding with no numeric figure: A Temporary Graduate visa (subclass 485) Post-Higher Education Work stream stay is usually between 2 and 3 years, depending on the qualification obtained."
+    },
+    {
+      "attempted_sources": [
+        "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "au.au-visa-fee-2",
+      "reason": "Archived evidence recorded a finding with no numeric figure: A lower Subclass 500 visa cost applies to eligible Pacific Island and Timor-Leste citizens, eligible ASEAN citizens, and applicants in the ELICOS and Non-Award sector."
+    },
+    {
+      "attempted_sources": [
+        "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "au.au-visa-fee-3",
+      "reason": "Archived evidence recorded a finding with no numeric figure: Subclass 500 holders must hold Overseas Student Health Cover (OSHC) unless they fall into an exemption category - a cost separate from the visa application charge."
+    },
+    {
+      "attempted_sources": [
+        "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "au.au-visa-fee-4",
+      "reason": "Archived figure recorded, but it is not a currency figure and its topic's primary field holds money. It is stored as a related figure rather than as a cost. Statement: A Subclass 500 Student visa allows a stay of up to 6 years in line with enrolment, and work of up to 48 hours a fortnight while the course is in session."
+    },
+    {
+      "attempted_sources": [
+        "au-abs-employee-earnings-qual-001"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "au.career.average_starting_salary.gross_monthly",
+      "reason": "3 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 1700 AUD per week (au-abs-employee-earnings-qual-001); 2000 AUD per week (au-abs-employee-earnings-qual-001); 1900 AUD per week (au-abs-employee-earnings-qual-001). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "au-abs-employee-earnings-qual-001"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "au.career.average_starting_salary.gross_monthly.month",
+      "reason": "2 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 7366.67 AUD per month (au-abs-employee-earnings-qual-001); 6166.67 AUD per month (au-abs-employee-earnings-qual-001). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "https://www.abs.gov.au/statistics/labour/earnings-and-working-conditions/employee-earnings/latest-release",
+        "https://www.abs.gov.au/statistics/labour/earnings-and-working-conditions/personal-income-australia/latest-release",
+        "https://www.abs.gov.au/statistics/detailed-methodology-information/concepts-sources-methods/survey-income-and-housing-user-guide-australia/2019-20/income",
+        "https://www.abs.gov.au/statistics/labour/earnings-and-working-conditions/personal-income-australia/2015-16-2019-20",
+        "https://www.abs.gov.au/statistics/economy/national-accounts/australian-national-accounts-distribution-household-income-consumption-and-wealth",
+        "https://www.ato.gov.au/about-ato/research-and-statistics/in-detail/taxation-statistics/taxation-statistics-previous-editions/taxation-statistics-2021-22/statistics/individuals-statistics",
+        "https://www.ato.gov.au/tax-rates-and-codes/tax-rates-australian-residents",
+        "https://www.ato.gov.au/calculators-and-tools/income-tax-estimator",
+        "https://www.ato.gov.au/calculators-and-tools/tax-return-medicare-levy",
+        "https://treasury.gov.au/employment-whitepaper/final-report",
+        "https://treasury.gov.au/sites/default/files/2023-09/p2023-447996-working-future.pdf",
+        "https://www.fwc.gov.au/documents/sites/wage-reviews/2024-25/c2025-1-statistical-report-version-4.pdf"
+      ],
+      "checked_at": null,
+      "field": "au.net_monthly_income",
+      "next_review": null,
+      "reason": "No official Australian net / take-home pay figure exists in current official statistics for graduates or for any other population. Every official Australian earnings series published by the Australian Bureau of Statistics is GROSS. The survey that used to produce an income-after-tax measure (the Survey of Income and Housing, previously Survey of Income and Housing Costs) was discontinued after reference year 2019-20, and no successor release publishes a current net/take-home value. The Australian Taxation Office publishes tax rates, levies and 'net tax' on tax returns, but taxable income is stated after deductions rather than as gross salary, so it cannot be converted into a take-home pay figure. What was found instead is a complete published tax model (see 020_net_monthly_income.json), which satisfies the 'official gross plus complete deterministic tax model' route, but it is a derivation performed by this research, not a figure published by any Australian authority."
+    },
+    {
+      "attempted_sources": [
+        "au-legislation-lin-19-198-compilation-2"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "au.one_time_costs.blocked_account",
+      "reason": "3 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 29710 AUD per year (au-legislation-lin-19-198-compilation-2); 87856 AUD per year (au-legislation-lin-19-198-compilation-2); 10394 AUD per year (au-legislation-lin-19-198-compilation-2). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "homeaffairs-subclass485-post-higher-education-work"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "au.residency.job_seeker_residence_permit.duration.bachelor",
+      "reason": "2 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 5 per year (homeaffairs-subclass485-post-higher-education-work); 35 per year (homeaffairs-subclass485-post-higher-education-work). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/changes-to-student-visa-application-rules-500-590"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "au.visa_rules_change",
+      "reason": "Evidence was retrieved and archived, but this topic has no explicit mapping into the corpus schema, so the figure was not placed. Adding the mapping is a reviewed change, not something ingestion should guess."
+    }
+  ],
+  "research": {
+    "evidence_artifact_count": 9,
+    "researched_at": "2026-10-05"
+  },
+  "sections": {
+    "career": {
+      "average_starting_salary": {
+        "gross_monthly": {
+          "as_of": "2025-08",
+          "colliding_values": [
+            {
+              "as_of": "2025-08",
+              "currency": "AUD",
+              "per": "week",
+              "source_ids": [
+                "au-abs-employee-earnings-qual-001"
+              ],
+              "statement": "Median weekly earnings in main job of employees whose highest educational qualification is a Bachelor Degree, men and women combined, August 2025 = AUD 1 700 per week. This is the official ABS gross figure closest to a typical graduate. Published in 'Median weekly earnings in main job, by highest educational qualification'.",
+              "value": 1700
+            },
+            {
+              "as_of": "2025-08",
+              "currency": "AUD",
+              "per": "week",
+              "source_ids": [
+                "au-abs-employee-earnings-qual-001"
+              ],
+              "statement": "Median weekly earnings in main job of employees with a Postgraduate Degree, men and women combined, August 2025 = AUD 2 000 per week.",
+              "value": 2000
+            },
+            {
+              "as_of": "2025-08",
+              "currency": "AUD",
+              "per": "week",
+              "source_ids": [
+                "au-abs-employee-earnings-qual-001"
+              ],
+              "statement": "Median weekly earnings in main job of employees with a Graduate Diploma/Graduate Certificate, men and women combined, August 2025 = AUD 1 900 per week.",
+              "value": 1900
+            }
+          ],
+          "currency": "AUD",
+          "note": "Median weekly earnings in main job of employees whose highest educational qualification is a Bachelor Degree, men and women combined, August 2025 = AUD 1 700 per week. This is the official ABS gross figure closest to a typical graduate. Published in 'Median weekly earnings in main job, by highest educational qualification'.",
+          "per": "week",
+          "source_ids": [
+            "au-abs-employee-earnings-qual-001"
+          ],
+          "value": 1700,
+          "value_status": "OFFICIAL_STATISTICS"
+        }
+      },
+      "net_monthly_income": {
+        "as_of": "2025-26",
+        "currency": "AUD",
+        "month": {
+          "as_of": "2025-26",
+          "currency": "AUD",
+          "note": "This figure describes gross (before-tax) income, not take-home pay. It was filed on the net topic and has been demoted rather than published, because break-even must compare money out against money that actually reaches the worker. Using gross here would roughly halve the reported months in most European countries.",
+          "per": "month",
+          "source_ids": [
+            "au-ato-rates-plus-abs-gross-net-001"
+          ],
+          "value": null,
+          "value_status": "UNKNOWN"
+        },
+        "note": "This figure describes gross (before-tax) income, not take-home pay. It was filed on the net topic and has been demoted rather than published, because break-even must compare money out against money that actually reaches the worker. Using gross here would roughly halve the reported months in most European countries.",
+        "per": "week",
+        "source_ids": [
+          "au-ato-rates-plus-abs-gross-net-001"
+        ],
+        "value": null,
+        "value_status": "UNKNOWN"
+      }
+    },
+    "education_costs": {
+      "tuition_fees": {
+        "public": {
+          "bachelor": {
+            "as_of": "2026 academic year",
+            "currency": "AUD",
+            "note": "The Australian National University charges international students an annual indicative fee of AUD 56,120.00 for the three-year Bachelor of Science, based on a standard 48-unit full-time enrolment load.",
+            "per": "year",
+            "source_ids": [
+              "anu-bsc-2026"
+            ],
+            "study_level": "bachelor",
+            "value": 56120,
+            "value_status": "UNIVERSITY_OFFICIAL"
+          }
+        }
+      }
+    },
+    "one_time_costs": {
+      "blocked_account": {
+        "as_of": "2024-05-10 compilation, in force at 2026-10-05",
+        "colliding_values": [
+          {
+            "as_of": "2024-05-10 compilation, in force at 2026-10-05",
+            "currency": "AUD",
+            "per": "year",
+            "source_ids": [
+              "au-legislation-lin-19-198-compilation-2"
+            ],
+            "statement": "A primary applicant for a Subclass 500 (Student) visa staying 12 months or more must show sufficient funds covering AUD 29,710 in primary applicant annual living costs.",
+            "value": 29710
+          },
+          {
+            "as_of": "2024-05-10",
+            "currency": "AUD",
+            "per": "year",
+            "source_ids": [
+              "au-legislation-lin-19-198-compilation-2"
+            ],
+            "statement": "As an alternative to showing funds, a primary applicant may produce official Government documentation issued in the previous 12 months showing a parent, spouse or de facto partner personal annual income of at least AUD 87,856 (no secondary applicant) or AUD 102,500 (with a secondary applicant).",
+            "value": 87856
+          },
+          {
+            "as_of": "2024-05-10",
+            "currency": "AUD",
+            "per": "year",
+            "source_ids": [
+              "au-legislation-lin-19-198-compilation-2"
+            ],
+            "statement": "Additional annual amounts per accompanying family member: AUD 10,394 for a spouse or de facto partner, AUD 4,449 for a dependent child, and AUD 13,502 in annual school costs for each school-age dependant staying more than 12 months.",
+            "value": 10394
+          }
+        ],
+        "currency": "AUD",
+        "note": "A primary applicant for a Subclass 500 (Student) visa staying 12 months or more must show sufficient funds covering AUD 29,710 in primary applicant annual living costs.",
+        "per": "year",
+        "source_ids": [
+          "au-legislation-lin-19-198-compilation-2"
+        ],
+        "value": 29710,
+        "value_status": "OFFICIAL_GOVERNMENT"
+      },
+      "visa_fee": {
+        "as_of": "2026-10-02",
+        "currency": "AUD",
+        "note": "A Subclass 500 Student visa costs from AUD 2,500.00, with concessions applying in limited circumstances; Home Affairs publishes only a 'from' figure and directs applicants to the Visa Pricing Estimator for the actual amount.",
+        "related_figures": {
+          "au-visa-fee-4": {
+            "as_of": "2026-10-02",
+            "descriptive": true,
+            "note": "A Subclass 500 Student visa allows a stay of up to 6 years in line with enrolment, and work of up to 48 hours a fortnight while the course is in session.",
+            "source_ids": [
+              "homeaffairs-subclass500-overview"
+            ],
+            "study_level": "bachelor",
+            "value": 48,
+            "value_status": "OFFICIAL_GOVERNMENT"
+          }
+        },
+        "source_ids": [
+          "homeaffairs-subclass500-overview"
+        ],
+        "study_level": "bachelor",
+        "value": 2500,
+        "value_status": "OFFICIAL_GOVERNMENT"
+      }
+    },
+    "residency": {
+      "job_seeker_residence_permit": {
+        "duration": {
+          "bachelor": {
+            "as_of": "2026-09-24",
+            "colliding_values": [
+              {
+                "as_of": "2026-09-24",
+                "currency": null,
+                "per": "year",
+                "source_ids": [
+                  "homeaffairs-subclass485-post-higher-education-work"
+                ],
+                "statement": "Hong Kong and British National Overseas passport holders may stay 5 years on this stream.",
+                "value": 5
+              },
+              {
+                "as_of": "2026-09-24",
+                "currency": null,
+                "per": "year",
+                "source_ids": [
+                  "homeaffairs-subclass485-post-higher-education-work"
+                ],
+                "statement": "Applicants must be aged 35 years or under when they apply (exceptions apply), must be in Australia when applying, must have held a Student visa in the last 6 months, and must hold a recent degree in a CRICOS-registered course.",
+                "value": 35
+              }
+            ],
+            "note": "Hong Kong and British National Overseas passport holders may stay 5 years on this stream.",
+            "per": "year",
+            "related_figures": {
+              "au-post-study-work-5": {
+                "as_of": "2026-09-24",
+                "currency": "AUD",
+                "note": "A Temporary Graduate visa (subclass 485) Post-Higher Education Work stream application costs from AUD 5,750.00.",
+                "source_ids": [
+                  "homeaffairs-subclass485-post-higher-education-work"
+                ],
+                "study_level": "bachelor",
+                "value": 5750,
+                "value_status": "OFFICIAL_GOVERNMENT"
+              }
+            },
+            "source_ids": [
+              "homeaffairs-subclass485-post-higher-education-work"
+            ],
+            "value": 5,
+            "value_status": "OFFICIAL_GOVERNMENT"
+          }
+        }
+      },
+      "permanent_residence": {
+        "as_of": "2026-08-03",
+        "month": {
+          "as_of": "2026-08-03",
+          "note": "The applicant must already hold a subclass 457, 482 or eligible bridging visa, and must have an Australian employer nomination approved in the 6 months before applying - so this route is not available directly from a Student or Temporary Graduate visa.",
+          "per": "month",
+          "source_ids": [
+            "homeaffairs-subclass186-trt"
+          ],
+          "study_level": "bachelor",
+          "value": 6,
+          "value_status": "OFFICIAL_GOVERNMENT"
+        },
+        "note": "Australian permanent residence via the Employer Nomination Scheme (subclass 186), Temporary Residence Transition stream, normally requires at least 2 years of full-time eligible sponsored employment held while on a subclass 457 or 482 visa.",
+        "source_ids": [
+          "homeaffairs-subclass186-trt"
+        ],
+        "study_level": "bachelor",
+        "value": 2,
+        "value_status": "OFFICIAL_GOVERNMENT"
+      }
+    }
+  },
+  "sources": [
+    {
+      "archived": true,
+      "as_of": "2026 academic year",
+      "confidence": null,
+      "id": "anu-bsc-2026",
+      "notes": "Australia has no single national international tuition figure; fees are set per institution and per discipline band, so this is one named university (ANU) and one named award (Bachelor of Science, 3 years, CRICOS 000335K). Currency is recorded as AUD: the amount is published as a bare '$56,120.00' by an Australian university on an Australian-fee schedule, and the same page's footnote describes international students as paying an 'annual indicative fee' on a 48-unit load. ANU publishes tuition in BANDED form, which a corpus must not miss: its 2026 Schedule of Tuition Fees sets six International Student Fee bands for a 48-unit load ranging from $46,680 to $62,440, and $56,120 is the Band 4 rate. I saw that band table only in a search-engine snippet of the ANU PDF and did not fetch the PDF, so the band range is NOT recorded as a claim - but it is the reason a single ANU number must never be presented as 'the' Australian international fee. HONEST LABELLING OF THE FIGURE: ANU itself calls this an 'annual indicative fee' that 'provides an estimate', based on a standard 48-unit load, and warns that course fees 'vary by discipline' and 'typically will increase from year to year', so it is an estimate rather than an invoice. Additional mandatory cost recorded: a Services and Amenities (SA) Fee payable by all students, amount not published on this page and therefore not claimed. Not verified and not claimed: the 2026 Schedule of Tuition Fees PDF band table, the SA Fee amount, OSHC premium rates, and any domestic-fee exemption criteria.",
+      "publisher": "The Australian National University",
+      "retrieved_at": "2026-10-05",
+      "source_type": "UNIVERSITY_OFFICIAL",
+      "title": "bachelor_tuition evidence",
+      "url": "https://programsandcourses.anu.edu.au/2026/program/BSC"
+    },
+    {
+      "archived": true,
+      "as_of": "2025-08",
+      "confidence": null,
+      "id": "au-abs-employee-earnings-qual-001",
+      "notes": null,
+      "publisher": "Australian Bureau of Statistics (ABS), Employee earnings, August 2025 (Characteristics of Employment survey)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_STATISTICS",
+      "title": "gross_monthly_income evidence",
+      "url": "https://www.abs.gov.au/statistics/labour/earnings-and-working-conditions/employee-earnings/latest-release"
+    },
+    {
+      "archived": true,
+      "as_of": "2025-26",
+      "confidence": null,
+      "id": "au-ato-rates-plus-abs-gross-net-001",
+      "notes": null,
+      "publisher": "Australian Taxation Office (ATO) - resident individual income tax rates; gross input sourced from Australian Bureau of Statistics (ABS) Employee earnings August 2025",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "net_monthly_income evidence",
+      "url": "https://www.ato.gov.au/tax-rates-and-codes/tax-rates-australian-residents"
+    },
+    {
+      "archived": true,
+      "as_of": "compilation date 2024-05-10, in force as at retrieval",
+      "confidence": null,
+      "id": "au-legislation-lin-19-198-compilation-2",
+      "notes": "The official name of the requirement is 'evidence of financial capacity' (per s 6 of the instrument), made under Migration Regulations 1994 Schedule 2 subclause 500.214. Taken from the PRIMARY legal instrument rather than the Home Affairs website or a migration-agent summary, because the immi.homeaffairs.gov.au Student 500 pages did not render their financial section on fetch (returned an empty 'Loading' shell), and third-party pages had already shown the figures. CURRENCY VERIFIED AS AUD: the instrument itself writes 'AUD29,710', 'AUD87,856' etc. CURRENCY WARNING: AUD29,710 is the LIVING COSTS element only. Section 6(2)(b) requires funds to cover THREE separate heads - (i) travel expenses, (ii) living costs, and (iii) course fees minus any amount already paid. Budgeting to AUD29,710 as the total money needed is the same error as Canada's tuition exclusion. Note also the course-fee head is capped in scope: where the study period exceeds 12 months only 'course fees for the first 12 months' need be evidenced, so the visa test is a 12-month test, not a full-course test. There are TWO alternative evidence routes, not one: the funds route in s 6(2) and the income route in s 6(3) (official Government documentation of a parent/spouse/partner's personal annual income of AUD87,856, or AUD102,500 if a secondary applicant is included). Additional accepted evidence forms are listed in s 10 and exclude casual cash-in-hand claims. Dependant additions: spouse/de facto partner AUD10,394, dependent child AUD4,449, school-age dependant AUD13,502 per year. Pro-rata rule for stays under 12 months: annual amount / 365 x days. STALENESS CHECK PERFORMED: the instrument's Endnote 3 legislation history lists amendments only up to F2024L00529 (commenced 10 May 2024), and the Federal Register register page for F2019L01366 showed compilation No. 2 as the current version with no later amendment, so AUD29,710 appears still to be the in-force figure at the October 2026 retrieval date - but the figure has not been re-indexed since May 2024 and this should be re-verified before any real applicant relies on it. NOT verified and NOT claimed: the separate 'Genuine Student' (GS) requirement, which is a distinct evidentiary test from financial capacity and is not mentioned anywhere in this instrument; the AUD amount for the Student visa application fee; and the Subclass 500 Visa Pricing Arrangement. A third-party migration summary asserted the AUD29,710 figure was derived as a proportion of the National Minimum Wage rather than CPI - that methodology claim came from a search snippet, not from a fetched page, so it is excluded.",
+      "publisher": "Federal Register of Legislation (Commonwealth of Australia) - Migration (LIN 19/198: Evidence of financial capacity - Subclass 500 Visa and Subclass 590 Visa) Instrument 2019, Compilation No. 2",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "financial_proof evidence",
+      "url": "https://www.legislation.gov.au/F2019L01366/2024-05-10/2024-05-10/text/original/epub/OEBPS/document_1/document_1.html"
+    },
+    {
+      "archived": true,
+      "as_of": "page last updated 3 August 2026",
+      "confidence": null,
+      "id": "homeaffairs-subclass186-trt",
+      "notes": "Australian permanent residence has no single route for international graduates and I have recorded only the one I could verify from the government. This is the Employer Nomination Scheme (subclass 186), Temporary Residence Transition (TRT) stream, which is the standard employer-sponsored PR path from the subclass 482 Skills in Demand visa that a Temporary Graduate visa holder typically graduates into. Minimum qualifying period: 'at least 2 years full time' of eligible sponsored employment while holding a subclass 457 or 482 visa - two years, not the older three years. TWO IMPORTANT QUALIFIATIONS the page itself signals and a corpus must not drop: (1) 'usually' - the 2-year rule is not absolute, so it should not be encoded as an unconditional minimum; (2) the employer must first obtain an approved nomination, valid for 6 months before the application. The applicant must already hold a 457, 482 or eligible bridging visa, so this route is NOT available directly from a Student visa or a Temporary Graduate visa - the student must first convert to 482. HONEST SCOPE LIMITS: I did NOT fetch the subclass 189 (Skilled Independent) points-tested page, so no points figure, no points threshold and no invitation-round information is claimed; nor did I fetch the 186 Direct Entry stream (which third-party sources describe as requiring 3 years of relevant work experience plus a skills assessment). The under-45 age ceiling for the 186 is widely asserted in the commentary I saw but was not on this overview page, so it is deliberately NOT claimed. The Current Average Weekly Ordinary Time Earnings indexation notice on this page confirms skilled visa income thresholds moved from 1 July 2026 but no dollar figure is published here, so none is claimed. Visa cost recorded as stated: from AUD6,140.00.",
+      "publisher": "Australian Government - Department of Home Affairs, Immigration and Citizenship",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "permanent_residence evidence",
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186/temporary-residence-transition-stream"
+    },
+    {
+      "archived": true,
+      "as_of": "page last updated 24 September 2026",
+      "confidence": null,
+      "id": "homeaffairs-subclass485-post-higher-education-work",
+      "notes": "Route name confirmed from Home Affairs, not memory: 'Temporary Graduate visa (subclass 485)', and for a degree-level graduate the relevant stream is the 'Post-Higher Education Work stream'. Note the page's own exact wording of duration is deliberately non-specific - 'Usually between 2 and 3 years, depending on your qualification' - so a corpus entry asserting a single number for a bachelor's holder would be inventing precision the government does not publish here; the mapping of qualification to length lives on a sub-page I did not fetch and is NOT claimed. Passport-dependent variation is material and is recorded: Hong Kong and British National Overseas passport holders may stay 5 years. (A search snippet of the Home Affairs BR0097 program report additionally indicated Indian nationals may stay 2-4 years under AI-ECTA, but I did not fetch that PDF so that nationality variant is deliberately excluded.) AGE CEILING WORTH FLAGGING: the applicant must be 35 or under when they apply, with exceptions - this interacts badly with long course+PR pipelines and is a hard constraint most student-facing material omits. Other verified conditions: the applicant must be physically in Australia when applying, must have held a Student visa within the last 6 months, and the degree must be from a CRICOS-registered course. Visa cost recorded from the same page: from AUD5,750.00.",
+      "publisher": "Australian Government - Department of Home Affairs, Immigration and Citizenship",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "post_study_work evidence",
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-graduate-485/post-higher-education-work"
+    },
+    {
+      "archived": true,
+      "as_of": "page last updated 2 October 2026",
+      "confidence": null,
+      "id": "homeaffairs-subclass500-overview",
+      "notes": "AUSTRALIA HAS NO SINGLE NATIONALLY-QUOTED VISA PRICE: Home Affairs publishes only a 'From' figure plus a concession list, and directs applicants to the Visa Pricing Estimator for the actual amount, explicitly warning 'The estimator does not take into account the other costs.' So AUD2,500.00 is a FLOOR, not the price a typical applicant pays, and it should never be presented as 'the Australian student visa fee'. Concessions apply to eligible Pacific Island and Timor-Leste citizens, eligible ASEAN citizens, and ELICOS/Non-Award sector applicants. Related mandatory cost recorded from the same page: Overseas Student Health Cover (OSHC) must be held unless the applicant falls into an exemption category - this is a separate recurring cost from the visa application charge and is a large part of a realistic student budget. Also recorded: work rights on the Student visa are capped at 'up to 48 hours a fortnight when your course of study or training is in session', and stay is 'Up to 6 years and in line with your enrolment'. Note also that this page is dated two days before retrieval (last updated 2 October 2026), which coincides with the rule change recorded separately in 003b_student_visa_rule_change_2026-10-02.json.",
+      "publisher": "Australian Government - Department of Home Affairs, Immigration and Citizenship",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "visa_fees evidence",
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500"
+    }
+  ]
+}
