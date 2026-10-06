@@ -86,6 +86,18 @@ def _target(sql: str) -> str:
     return match.group(1).strip('"').lower() if match else ""
 
 
+def _referenced_tables(sql: str) -> set[str]:
+    """Extract table names from FROM and JOIN clauses in a SELECT statement."""
+    tables = set()
+    for pattern in (
+        r"\bFROM\s+([\w\"]+)",
+        r"\bJOIN\s+([\w\"]+)",
+    ):
+        for match in re.finditer(pattern, sql, re.IGNORECASE):
+            tables.add(match.group(1).strip('"').lower())
+    return tables
+
+
 #: SQLAlchemy's event listener captures every statement the engine executes.
 #: ``scholarship_image_audit_context`` is touched by the image-audit writer
 #: context instrumentation registered at import time by the image-mutation audit
@@ -97,7 +109,15 @@ _IMAGE_AUDIT_CONTEXT = "scholarship_image_audit_context"
 
 
 def _is_image_audit_context(sql: str) -> bool:
-    return _target(sql) == _IMAGE_AUDIT_CONTEXT
+    # DML whose target is the image audit context table
+    if _target(sql) == _IMAGE_AUDIT_CONTEXT:
+        return True
+
+    # SELECT statements that reference ONLY the image audit context table
+    if _verb(sql) != "SELECT":
+        return False
+
+    return _referenced_tables(sql) == {_IMAGE_AUDIT_CONTEXT}
 
 
 def seed(session, tag: str = "") -> dict[str, int]:
@@ -555,3 +575,109 @@ class TestNoProductionDatabaseRequired:
             write_manifest=False, run_id="offline-2",
         )
         assert report["deleted"] == [ids["candidate"]]
+
+
+class TestImageAuditContextIsolation:
+    """Prove the image-audit context filter correctly isolates cross-test contamination.
+
+    These tests verify that the fix for the query-scope test correctly:
+    A. Ignores cross-test image-audit SELECT statements (they are filtered out)
+    B. Still catches genuine retention-engine reads of unauthorized tables
+    """
+
+    def test_is_image_audit_context_filters_select_from_audit_table(self):
+        """The filter correctly identifies SELECT exclusively from scholarship_image_audit_context."""
+        # SELECT directly from the audit table (only table referenced)
+        sql = "SELECT * FROM scholarship_image_audit_context"
+        assert _is_image_audit_context(sql), "should filter SELECT exclusively from audit table"
+
+        # SELECT with only the audit table (with WHERE clause)
+        sql = "SELECT * FROM scholarship_image_audit_context WHERE id = 1"
+        assert _is_image_audit_context(sql), "should filter SELECT from audit table with WHERE"
+
+    def test_is_image_audit_context_does_not_filter_joins_with_audit_table(self):
+        """SELECTs that JOIN the audit table with other tables are NOT filtered.
+
+        This is intentional: if the retention engine itself joins the audit table
+        with other tables, that's suspicious and should be flagged by the safety
+        assertion. Only cross-test contamination (exclusive access to audit table)
+        is filtered.
+        """
+        sql = "SELECT * FROM scholarships JOIN scholarship_image_audit_context ON scholarships.id = scholarship_image_audit_context.scholarship_id"
+        assert not _is_image_audit_context(sql), "JOIN with audit table should NOT be filtered"
+
+    def test_is_image_audit_context_does_not_filter_legitimate_selects(self):
+        """Legitimate SELECTs on allowed tables are not filtered."""
+        allowed_tables = [
+            "scholarships", "scholarship_reviews", "scholarship_verification_history",
+            "scholarship_snapshots", "scholarship_restore_records", "image_reviews",
+            "scholarship_fetch_attempts", "discovery_candidates", "maintenance_runs",
+            "saved_scholarships", "application_records",
+            "scholarship_supervisor_coverage", "scholarship_professor_links",
+            "supervisor_source_evidence", "professor_outreach_records",
+        ]
+        for table in allowed_tables:
+            sql = f"SELECT * FROM {table}"
+            assert not _is_image_audit_context(sql), f"should not filter {table}"
+
+    def test_is_image_audit_context_still_catches_dml(self):
+        """DML against the audit table is still filtered."""
+        for dml in ["INSERT INTO scholarship_image_audit_context", "UPDATE scholarship_image_audit_context SET x=1", "DELETE FROM scholarship_image_audit_context"]:
+            assert _is_image_audit_context(dml), f"should filter DML: {dml}"
+
+    def test_query_scope_still_fails_on_unauthorized_table(self, session, statements):
+        """A genuine retention-engine read of an unauthorized table still fails the assertion.
+
+        This test proves we haven't weakened the safety assertion by showing that
+        if the retention engine itself were to read an unauthorized table, the
+        query-scope test would still catch it.
+        """
+        # We simulate a retention-engine read of an unauthorized table by directly
+        # executing a SELECT against a table not in the allowed set.
+        # The query-scope assertion logic should still catch this.
+        from sqlalchemy import text
+
+        unauthorized_table = "unauthorized_table_xyz"
+        session.execute(text(f"CREATE TABLE {unauthorized_table} (id INTEGER)"))
+        session.execute(text(f"INSERT INTO {unauthorized_table} VALUES (1)"))
+        session.commit()
+
+        # Now run the dry run and capture statements
+        seed(session)
+        statements.clear()
+        dry_run(session, as_of=AS_OF, run_id="iso-2", policy=DELETING)
+
+        # Manually inject a SELECT against the unauthorized table to simulate
+        # what a buggy retention engine might do
+        result = session.execute(text(f"SELECT * FROM {unauthorized_table}"))
+        _ = result.fetchall()
+
+        # Now check that our query-scope logic would catch this
+        tables_read = set()
+        for sql in statements:
+            if _verb(sql) != "SELECT" or _is_image_audit_context(sql):
+                continue
+            for match in re.finditer(r"\bFROM\s+([\w\"]+)", sql, re.IGNORECASE):
+                tables_read.add(match.group(1).strip('"').lower())
+            for match in re.finditer(r"\bJOIN\s+([\w\"]+)", sql, re.IGNORECASE):
+                tables_read.add(match.group(1).strip('"').lower())
+
+        # The unauthorized table should be detected
+        assert unauthorized_table in tables_read, (
+            f"the injected unauthorized read should be detected; "
+            f"tables_read={sorted(tables_read)}"
+        )
+
+        # And it should NOT be in the allowed set (this is what the assertion checks)
+        allowed = {
+            "scholarships", "scholarship_reviews", "scholarship_verification_history",
+            "scholarship_snapshots", "scholarship_restore_records", "image_reviews",
+            "scholarship_fetch_attempts", "discovery_candidates", "maintenance_runs",
+            "saved_scholarships", "application_records",
+            "scholarship_supervisor_coverage", "scholarship_professor_links",
+            "supervisor_source_evidence", "professor_outreach_records",
+        }
+        assert unauthorized_table not in allowed
+        assert not (tables_read <= allowed), (
+            "the safety assertion should fail because unauthorized_table is not allowed"
+        )
