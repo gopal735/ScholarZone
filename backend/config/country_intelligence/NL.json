@@ -1,0 +1,297 @@
+{
+  "contract_version": "1.0.0",
+  "country": {
+    "currency": null,
+    "iso2": "NL",
+    "name_en": "Netherlands"
+  },
+  "gaps": [
+    {
+      "attempted_sources": [
+        "nl-uva-tuition-001"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "nl.education_costs.tuition_fees.public.bachelor",
+      "reason": "3 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 16100 EUR per year (nl-uva-tuition-001); 19900 EUR per year (nl-uva-tuition-001); 2694 EUR per year (nl-uva-tuition-001). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "https://ind.nl/en/dutch-citizenship/becoming-a-dutch-national-through-naturalisation"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "nl.nl-naturalisation-language-requirement",
+      "reason": "Archived evidence recorded a finding with no numeric figure: You must have fulfilled the integration requirement, meaning you must have passed the civic integration exam on at least language level A2, or be exempted from it."
+    },
+    {
+      "attempted_sources": [
+        "https://ind.nl/en/replace-extend-renew-and-change/permanent-residency/permanent-residence-permit"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "nl.nl-permanent-residence-language-requirement",
+      "reason": "Archived evidence recorded a finding with no numeric figure: You must have passed the civic integration exam at at least language level A2, or be exempted from it."
+    },
+    {
+      "attempted_sources": [
+        "nl-ind-income-requirements-001"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "nl.one_time_costs.blocked_account.month",
+      "reason": "3 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 1130.77 EUR per month (nl-ind-income-requirements-001); 1494.63 EUR per month (nl-ind-income-requirements-001); 4171.02 EUR per month (nl-ind-income-requirements-001). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "https://ind.nl/en/exceptions-to-5-year-term-for-permanent-residency"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "nl.permanent_residence_study_period_credit",
+      "reason": "Evidence was retrieved and archived, but this topic has no explicit mapping into the corpus schema, so the figure was not placed. Adding the mapping is a reviewed change, not something ingestion should guess."
+    },
+    {
+      "attempted_sources": [
+        "nl-business-gov-orientation-year-001"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "nl.residency.job_seeker_residence_permit.duration.bachelor",
+      "reason": "2 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 1 per year (nl-business-gov-orientation-year-001); 3 per year (nl-business-gov-orientation-year-001). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "nl-ind-permanent-residence-001"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "nl.residency.permanent_residence",
+      "reason": "2 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 5 per year (nl-ind-permanent-residence-001); 254 EUR (nl-ind-permanent-residence-001). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    }
+  ],
+  "research": {
+    "evidence_artifact_count": 7,
+    "researched_at": "2026-10-05"
+  },
+  "sections": {
+    "career": {
+      "net_monthly_income": {
+        "month": {
+          "as_of": "2026",
+          "currency": "EUR",
+          "note": "This figure describes gross (before-tax) income, not take-home pay. It was filed on the net topic and has been demoted rather than published, because break-even must compare money out against money that actually reaches the worker. Using gross here would roughly halve the reported months in most European countries.",
+          "per": "month",
+          "source_ids": [
+            "nl-belastingdienst-cijferbijlage-2026"
+          ],
+          "value": null,
+          "value_status": "UNKNOWN"
+        }
+      }
+    },
+    "education_costs": {
+      "tuition_fees": {
+        "public": {
+          "bachelor": {
+            "as_of": "2026",
+            "currency": "EUR",
+            "note": "Non-EU/EFTA students pay an 'institutional tuition fee', meaning the amount is set by the university rather than nationally, and depends on nationality, country of origin and degree programme.",
+            "per": "year",
+            "source_ids": [
+              "nl-uva-tuition-001"
+            ],
+            "study_level": "bachelor",
+            "value": 16100,
+            "value_status": "UNIVERSITY_OFFICIAL"
+          }
+        }
+      }
+    },
+    "one_time_costs": {
+      "blocked_account": {
+        "month": {
+          "as_of": "2026",
+          "colliding_values": [
+            {
+              "as_of": "2026",
+              "currency": "EUR",
+              "per": "month",
+              "source_ids": [
+                "nl-ind-income-requirements-001"
+              ],
+              "statement": "In 2026, students at a university of applied sciences (hbo) or a university who apply for a study residence permit must show they have € 1,130.77 per month, including students following a course of at least 2 years in duration.",
+              "value": 1130.77
+            },
+            {
+              "as_of": "2026",
+              "currency": "EUR",
+              "per": "month",
+              "source_ids": [
+                "nl-ind-income-requirements-001"
+              ],
+              "statement": "In 2026, applicants for a residence permit for the orientation year must show € 1,494.63 per month.",
+              "value": 1494.63
+            },
+            {
+              "as_of": "2026",
+              "currency": "EUR",
+              "per": "month",
+              "source_ids": [
+                "nl-ind-income-requirements-001"
+              ],
+              "statement": "In 2026, applicants for a residence permit as a highly educated migrant must show € 4,171.02 per month.",
+              "value": 4171.02
+            }
+          ],
+          "currency": "EUR",
+          "note": "In 2026, students at a university of applied sciences (hbo) or a university who apply for a study residence permit must show they have € 1,130.77 per month, including students following a course of at least 2 years in duration.",
+          "per": "month",
+          "source_ids": [
+            "nl-ind-income-requirements-001"
+          ],
+          "value": 1130.77,
+          "value_status": "OFFICIAL_GOVERNMENT"
+        }
+      }
+    },
+    "residency": {
+      "citizenship": {
+        "as_of": "2026",
+        "month": {
+          "as_of": "2026",
+          "note": "You must also not be a danger to public order or national security, generally renounce your current nationality (exemptions exist), and be willing to make the Declaration of Solidarity at the naturalisation ceremony; the IND must decide within 12 months.",
+          "per": "month",
+          "source_ids": [
+            "nl-ind-naturalisation-001"
+          ],
+          "study_level": "bachelor",
+          "value": 12,
+          "value_status": "OFFICIAL_GOVERNMENT"
+        },
+        "note": "At the time of application, during the procedure and on the day of the ceremony you must hold an asylum or regular permanent residence permit, a long-term EU resident permit, or a temporary residence permit with a non-temporary purpose of stay — a temporary study permit does not qualify on its own.",
+        "per": "year",
+        "source_ids": [
+          "nl-ind-naturalisation-001"
+        ],
+        "study_level": "bachelor",
+        "value": 5,
+        "value_status": "OFFICIAL_GOVERNMENT"
+      },
+      "job_seeker_residence_permit": {
+        "duration": {
+          "bachelor": {
+            "as_of": "2026",
+            "note": "During the orientation year the holder can work or start a business in the Netherlands for 1 year without any restrictions, and employers do not need to apply for a separate work permit (TWV).",
+            "per": "year",
+            "source_ids": [
+              "nl-business-gov-orientation-year-001"
+            ],
+            "study_level": "bachelor",
+            "value": 1,
+            "value_status": "OFFICIAL_GOVERNMENT"
+          }
+        }
+      },
+      "permanent_residence": {
+        "as_of": "2026",
+        "colliding_values": [
+          {
+            "as_of": "2026",
+            "currency": null,
+            "per": "year",
+            "source_ids": [
+              "nl-ind-permanent-residence-001"
+            ],
+            "statement": "At the time of application you must hold a valid residence permit for a non-temporary residence purpose, so a temporary student residence permit does not by itself qualify.",
+            "value": 5
+          },
+          {
+            "as_of": "2026",
+            "currency": "EUR",
+            "per": null,
+            "source_ids": [
+              "nl-ind-permanent-residence-001"
+            ],
+            "statement": "The application for a permanent residence permit costs € 254,00.",
+            "value": 254
+          }
+        ],
+        "currency": "EUR",
+        "note": "At the time of application you must hold a valid residence permit for a non-temporary residence purpose, so a temporary student residence permit does not by itself qualify.",
+        "source_ids": [
+          "nl-ind-permanent-residence-001"
+        ],
+        "value": 5,
+        "value_status": "OFFICIAL_GOVERNMENT"
+      }
+    }
+  },
+  "sources": [
+    {
+      "archived": true,
+      "as_of": "2026 (rates in force from 1 January 2026)",
+      "confidence": null,
+      "id": "nl-belastingdienst-cijferbijlage-2026",
+      "notes": null,
+      "publisher": "Belastingdienst (Dutch tax and customs administration), Ministry of Finance",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "net_monthly_income evidence",
+      "url": "https://odb.belastingdienst.nl/wp-content/uploads/2025/12/Cijferbijlage-2026-bij-Nieuwsbrief-LH-LH-209-1B61FD%5FTG.pdf"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "nl-business-gov-orientation-year-001",
+      "notes": "CONFIRMED from two official Dutch government sources, both fetched: (a) business.gov.nl, whose article is explicitly 'Published by: Immigration and Naturalisation Service, IND', and (b) government.nl, which names the full official instrument and its commencement date. Netherlands post-study job search: 1 YEAR. Official name: 'residence permit for the orientation year as a highly educated migrant seeking employment' (commonly 'orientation year' / Dutch 'oriëntatiejaar'); it came into effect on 1 March 2016. Confirmed benefits: free to work or start a business in the Netherlands for 1 year with no work permit (TWV) required; also permits starting a start-up. IMPORTANT SCOPE DETAIL for the corpus: eligibility is NOT limited to Dutch graduates. The government.nl page states the permit is intended for (i) foreign students studying in the Netherlands, (ii) foreign students who graduated from a top university OUTSIDE the Netherlands, and (iii) foreign scientific researchers who carried out research in the Netherlands — with application within 3 years of graduating. business.gov.nl adds that for study programmes completed outside the Netherlands the institution must be a 'designated international educational institution', i.e. top 200 of at least 2 of the main rankings (THE, QS, Shanghai) at the date of completion. This matters because a Bachelor-only graduate IS eligible (the IND form covers accredited bachelor's or master's programmes), unlike France where the equivalent permit is Master-level only. Confirmed limits: maximum 1 year, NOT extendable; a further orientation year can only be granted after a NEW completed study/research period after the previous permit expired; illegal overstay risks a Schengen entry ban. GAP: neither official page states the application fee amount; the IND fee (EUR 254, per the IND orientation-year application form) was seen only in search snippets and is NOT recorded as a claim here because I did not fetch a readable IND fee page. The IND's own orientation-year page (ind.nl/en/residence-permits/work/residence-permit-for-orientation-year) renders behind a nationality-input wizard, so its detailed condition list could not be quoted verbatim.",
+      "publisher": "Business.gov.nl — official government information site for entrepreneurs; article published by the Immigratie- en Naturalisatiedienst (IND), Ministerie van Justitie en Veiligheid",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "post_study_work evidence",
+      "url": "https://business.gov.nl/coming-to-the-netherlands/permits-and-visa/residence-permit-for-orientation-year"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "nl-ind-income-requirements-001",
+      "notes": "CONFIRMED from the immigration authority itself (IND), and the page is explicitly year-versioned as 'Required amounts 2026', so as_of = 2026. Netherlands financial proof for a study residence permit: EUR 1,130.77 PER MONTH for students at a university (or hbo) — covering courses of at least 2 years in duration, which includes Bachelor's-level study. This is the highest of the three countries researched (NL 1,130.77 vs DE 992.00 vs FR 877.50 EUR/month), a genuinely useful comparative finding. STRUCTURAL POINT: the Netherlands has NO German-style blocked account (Sperrkonto). The requirement is a monthly income threshold that must be evidenced, not a locked sum of money. The same IND page also publishes the two other thresholds directly relevant to a scholarship corpus, both recorded here: the ORIENTATION YEAR amount EUR 1,494.63 per month and the HIGHLY EDUCATED MIGRANT amount EUR 4,171.02 per month — the latter is a gross/monthly salary reference for highly skilled migrant sponsorship. Lower hbo bands (1-year: 892.88; 1+ year: 1,053.27) are recorded as context only. All amounts are month-1 figures for 2026 and are index-linked, so they must be re-verified each year.",
+      "publisher": "Immigratie- en Naturalisatiedienst (IND), Ministerie van Justitie en Veiligheid",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "financial_proof evidence",
+      "url": "https://ind.nl/en/required-amounts-income-requirements"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "nl-ind-naturalisation-001",
+      "notes": "CONFIRMED from the IND itself (page last updated 28 August 2026). Netherlands naturalisation: minimum 5 CONSECUTIVE YEARS lived in the Kingdom of the Netherlands with a valid residence permit. Official route: naturalisation, applied for via the municipality (gemeente) which forwards the request to the IND; a Royal Decree is then signed by the King and a naturalisation ceremony with a Declaration of Solidarity must be attended within 1 year of the positive decision or the nationality is not granted and a new application is required. CRITICAL POINT FOR THE CORPUS: the qualifying-permit list requires, at the time of application, during the procedure AND on the day of the ceremony, a permanent residence permit, a long-term EU resident permit, or 'A temporary residence permit with a non-temporary purpose of stay'. A Dutch study residence permit is a temporary permit with a TEMPORARY purpose, so it does not qualify on its own — the applicant must first hold a non-temporary status. Confirmed conditions: 18+, identity/nationality evidenced, always applied for extensions on time, civic integration exam passed at least at language level A2 (or exemption), not a danger to public order or national security, and generally must renounce current nationality (exemptions exist), plus the Declaration of Solidarity. IND decision period: 12 months. Language level required is A2 — materially LOWER than Germany's B1 and France's B1, which is a genuine comparative finding for the corpus. GAP: the IND page does not state the naturalisation application fee; it directs readers to a separate fees page I did not fetch, so no fee figure is recorded. The 'exceptions to the 5-year term' page for naturalisation was not fetched either.",
+      "publisher": "Immigratie- en Naturalisatiedienst (IND), Ministerie van Justitie en Veiligheid",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "naturalisation_citizenship evidence",
+      "url": "https://ind.nl/en/dutch-citizenship/becoming-a-dutch-national-through-naturalisation"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "nl-ind-permanent-residence-001",
+      "notes": "CONFIRMED from the IND itself (page last updated 20 May 2026). Netherlands permanent residence: 5 CONSECUTIVE YEARS with a valid Dutch residence permit. Official name: verblijfsvergunning onbepaalde tijd ('permanent residence permit'), an unlimited-stay permit — 'A permanent residence permit has no end date', the document itself valid 5 years and renewable every 5 years. CRITICAL POINT FOR THE CORPUS: the requirement 'You now have a valid residence permit for a non-temporary residence purpose' means a student on a temporary study residence permit does NOT qualify at the moment of application — the 5 years must have elapsed AND the applicant must by then hold a non-temporary permit. Note also the interplay with the halving rule for study periods (see the companion exception file). Other conditions confirmed: main residence in the Netherlands for the whole 5 years; always extended on time; always met and still meets permit requirements; income requirements; BRP registration; civic integration exam passed at at least language level A2 (or exemption). Application fee EUR 254.00. The IND will first check whether the long-term EU resident requirements are met; if not, it will try to extend the current permit instead.",
+      "publisher": "Immigratie- en Naturalisatiedienst (IND), Ministerie van Justitie en Veiligheid",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "permanent_residence evidence",
+      "url": "https://ind.nl/en/replace-extend-renew-and-change/permanent-residency/permanent-residence-permit"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "nl-uva-tuition-001",
+      "notes": "CONFIRMED from the university's own official fees page. Netherlands Bachelor tuition for non-EU/EFTA students at a public university: the University of Amsterdam charges an INSTITUTIONAL tuition fee of EUR 16,100 to EUR 19,900 PER YEAR for Bachelor's programmes. IMPORTANT HONEST LIMITATION: the UvA publishes a BAND, not a single figure, and states 'The amount depends on your nationality, where you are from and which degree programme you are enrolled in.' The exact amount is programme-specific and would require opening an individual programme page — I did not do that, so I must NOT collapse the band into a single number. For comparison, the same page gives EU/EFTA students EUR 2,694 per year for Bachelor's programmes, i.e. the non-EU/EU ratio at UvA is roughly 6x to 7x. Unit is explicitly per year (per the page: 'You will pay the tuition fee per year'). STRUCTURAL POINT FOR THE CORPUS: unlike France, where tuition is a national statutory tariff, Dutch non-EU tuition is an 'institutional tuition fee' set by each university individually, so there is no single Dutch non-EU Bachelor figure — any corpus value must name the institution and must not be presented as a national rate. GAP: the UvA page does NOT state a separate mandatory enrolment/student-society contribution, so no NL mandatory-fee figure is recorded from this source; I did not locate an official Dutch national mandatory-fee figure.",
+      "publisher": "University of Amsterdam (Universiteit van Amsterdam)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "UNIVERSITY_OFFICIAL",
+      "title": "bachelor_tuition evidence",
+      "url": "https://www.uva.nl/en/education/fees-and-funding/tuition-fees/tuition-fees.html"
+    }
+  ]
+}

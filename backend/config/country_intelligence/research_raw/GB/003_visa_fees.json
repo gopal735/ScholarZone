@@ -1,0 +1,30 @@
+{
+  "country": "GB",
+  "topic": "visa_fees",
+  "source_id": "govuk-student-visa-overview-fees",
+  "source_url": "https://www.gov.uk/student-visa",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "UK Visas and Immigration (Home Office), GOV.UK",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "## Fees\n\nIt costs:\n\n-   £558 to apply for a Student visa from outside the UK\n-   £558 to extend or switch to a Student visa from inside the UK\n\nYou must pay the visa fee for each person that joins you.\n\n### Healthcare surcharge\n\nYou’ll also have to [pay the healthcare surcharge](/healthcare-immigration-application) as part of your application.\n\nHow much you pay depends on how long your visa lasts.",
+  "research_notes": "Application fee taken verbatim from the 'Fees' section of the Student visa overview page (note: the URL /student-visa/how-much-it-costs redirected to this overview, so this overview page is the authoritative location for the figure). The Immigration Health Surcharge is a separate charge and is published on a separate gov.uk page, recorded in 003b_visa_fees_ihs.json. The IHS is a per-year cost, not a flat fee, so it must not be added as a single figure to a budget.",
+  "claims": [
+    {
+      "claim_id": "gb-visa-fee-1",
+      "statement": "A Student visa application made from outside the UK costs £558.",
+      "value": 558,
+      "unit": "GBP per application",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "gb-visa-fee-2",
+      "statement": "Extending or switching to a Student visa from inside the UK also costs £558, and the fee is payable per person for each dependant.",
+      "value": 558,
+      "unit": "GBP per application",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

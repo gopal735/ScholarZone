@@ -1,0 +1,54 @@
+{
+  "country": "CA",
+  "topic": "net_monthly_income",
+  "source_id": "ca-statcan-cis-aftertax-001",
+  "source_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260429/dq260429a-eng.htm",
+  "source_type": "OFFICIAL_STATISTICS",
+  "publisher": "Statistics Canada, The Daily - Canadian Income Survey, 2024 (source table 11-10-0190-01)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2024",
+  "raw_extract": "Canadian Income Survey, 2024. Released: 2026-04-29. 'Median after-tax income, economic families and persons not in an economic family $75,500 2024. Source(s): Table 11-10-0190-01.'\n\nVERBATIM: 'The median after-tax income of Canadian families and unattached individuals was $75,500 in 2024, relatively unchanged from 2023, after adjusting for inflation.'\n\nVERBATIM: 'The median after-tax income among Canadian families was $108,900 in 2024, up 1.8 per cent over the previous year, while it was $41,000 for unattached individuals, virtually unchanged from 2023.'\n\nVERBATIM: 'Among unattached individuals, seniors also continued to see year-over-year increases in their median after-tax income, to $38,600 in 2024 (+3.5 per cent in 2024; +3.9 per cent in 2023). The median for unattached non-seniors was unchanged at $42,700.'\n\nVERBATIM DEFINITIONS: 'After-tax income is the total of market income and government transfers, less income tax.' 'Market income consists of employment income and private pensions, as well as income from investments and other market sources.' 'Government transfers include benefits such as Old Age Security, the Guaranteed Income Supplement, the Canada Pension Plan and the Quebec Pension Plan, employment insurance, social assistance, the goods and services tax credit, provincial tax credits, and child benefits.' 'An unattached individual refers to a person not in an economic family. It is a person living either alone or with others to whom they are unrelated, such as roommates or a lodger.' 'Income estimates are expressed in 2024 constant dollars to factor in inflation and enable comparisons across time in real terms.'",
+  "claims": [
+    {
+      "claim_id": "ca-net-annual-unattached-nonsenior-001",
+      "value": 42700,
+      "unit": "CAD per year",
+      "as_of": "2024",
+      "statement": "VERBATIM from the release: 'The median for unattached non-seniors was unchanged at $42,700.' This is Statistics Canada's official published AFTER-TAX (net) median income for unattached individuals under age 65 in Canada, 2024, in 2024 constant dollars. It is the closest thing Statistics Canada publishes to an individual-level net income figure."
+    },
+    {
+      "claim_id": "ca-net-annual-unattached-all-002",
+      "value": 41000,
+      "unit": "CAD per year",
+      "as_of": "2024",
+      "statement": "VERBATIM: 'while it was $41,000 for unattached individuals, virtually unchanged from 2023.' Median after-tax income of ALL unattached individuals including seniors, 2024."
+    },
+    {
+      "claim_id": "ca-net-annual-families-003",
+      "value": 108900,
+      "unit": "CAD per year",
+      "as_of": "2024",
+      "statement": "VERBATIM: 'The median after-tax income among Canadian families was $108,900 in 2024.' Recorded for completeness; this is an economic-family unit and is NOT an individual income."
+    },
+    {
+      "claim_id": "ca-net-monthly-unattached-nonsenior-004",
+      "value": 3558.33,
+      "unit": "CAD per month",
+      "as_of": "2024",
+      "statement": "DERIVED BY PURE ARITHMETIC, NOT PUBLISHED BY THE SOURCE: 42,700 / 12 = CAD 3,558.33 per month. Division by 12 is the only operation applied. DO NOT use this as a graduate take-home salary: see notes. It is a 12-month average of total personal after-tax income for a broad age band, not a monthly salary."
+    }
+  ],
+  "assumptions": [
+    "SOURCE'S OWN: after-tax income = total of market income and government transfers, LESS income tax. This is a genuine NET concept and it is the reason this artifact is worth archiving.",
+    "SOURCE'S OWN: the unit of analysis is the economic family or the unattached individual. An unattached individual is 'a person living either alone or with others to whom they are unrelated'. It is NOT an employed individual and NOT a wage.",
+    "SOURCE'S OWN: values are in 2024 constant dollars, i.e. inflation-adjusted.",
+    "SOURCE'S OWN: the under-65 'non-senior' category still contains people from their mid-twenties to their early sixties, employed and unemployed, and in every province pooled.",
+    "NOT THE SOURCE'S / MINE: no assumption about marital status, children, employment, occupation, hours, province or field of study was made. None of these are variables of this figure.",
+    "DERIVATION FLAG: the monthly claim is 42,700 / 12 and nothing else. No tax rate or deduction percentage was applied or reversed."
+  ],
+  "field_mapping": {
+    "net_monthly_income": "career.net_monthly_income (topic: net_monthly_income)"
+  },
+  "notes": "*** USE WITH EXTREME CARE. *** This IS an official published NET figure from a national statistical agency, and its definition (after-tax income = market income plus government transfers, less income tax) is quoted verbatim above. But it is NOT a take-home salary and it is NOT a graduate figure, and treating it as one would badly mislead a reader in either direction. Four specific traps: (1) it includes government transfers - OAS, GIS, CPP/QPP, EI, social assistance, GSTB, child benefits - so it is not wages; (2) it is total personal after-tax income, so a figure of CAD 42,700 can equally describe someone working and someone not; (3) the under-65 band pools ages 25 to 64, so it is not early-career; (4) it is annual, retrospectively measured, in constant dollars, and cannot be divided by 12 to become a monthly salary in any meaningful sense. For a Canadian early-career graduate take-home, use artifact 020_net_monthly_income.json (CAD 4,575 per month, DERIVED) instead. This artifact is archived because it is the only official Canadian NET income figure found, and because its definition is the anchor that shows what Statistics Canada means by 'after-tax'. Currency CAD, income year 2024, released 29 April 2026.",
+  "evidence_limitations": "Not a wage measure. Not a graduate measure. Not an employment measure. Includes non-wage income sources by definition. Unattached individuals are a minority of the adult population - most Canadians live in an economic family and are therefore in the CAD 108,900 figure, which is a household unit and even further from a salary. Median, not mean. Annual and retrospective. Pooled across all provinces, so it says nothing about the cost of living in a specific city. The pandemic-era releases note that 'For 2020, 2021 and part of 2022, government transfers included emergency response and recovery benefits', which affects the comparability of the series around those years."
+}

@@ -1,0 +1,505 @@
+{
+  "contract_version": "1.0.0",
+  "country": {
+    "currency": null,
+    "iso2": "GB",
+    "name_en": "United Kingdom"
+  },
+  "gaps": [
+    {
+      "attempted_sources": [
+        "uom-bsc-cs-2027",
+        "uom-ba-liberal-arts-2027"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "gb.education_costs.tuition_fees.public.bachelor",
+      "reason": "3 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 39700 GBP per year (uom-bsc-cs-2027); 10050 GBP per year (uom-bsc-cs-2027); 29200 GBP per year (uom-ba-liberal-arts-2027). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "https://www.gov.uk/student-visa/money"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "gb.gb-financial-proof-3",
+      "reason": "Archived evidence recorded a finding with no numeric figure: The requirement is officially named the 'financial requirement' and is the money needed to support yourself, assessed separately from and excluding the course fee (which is proven via the CAS)."
+    },
+    {
+      "attempted_sources": [
+        "https://www.gov.uk/student-visa/money"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "gb.gb-financial-proof-4",
+      "reason": "Archived figure recorded, but it is not a currency figure and its topic's primary field holds money. It is stored as a related figure rather than as a cost. Statement: The funds must have been held for at least 28 consecutive days, with the end of that 28-day period falling within 31 days of the visa application date."
+    },
+    {
+      "attempted_sources": [
+        "https://www.gov.uk/healthcare-immigration-application/how-much-pay"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "gb.gb-ihs-3",
+      "reason": "Archived evidence recorded a finding with no numeric figure: Where a visa exceeds one year, the payable IHS is the yearly cost plus half the yearly cost if the visa is 18 months or less, or the cost of 2 full years if it is more than 18 months but less than 2 years."
+    },
+    {
+      "attempted_sources": [
+        "https://www.gov.uk/indefinite-leave-to-remain-tier-2-t2-skilled-worker-visa"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "gb.gb-permanent-residence-2",
+      "reason": "Archived evidence recorded a finding with no numeric figure: ILR also requires you to meet the salary requirements and to remain needed for your job after settlement, evidenced by a document from your sponsor."
+    },
+    {
+      "attempted_sources": [
+        "govuk-student-visa-money"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "gb.one_time_costs.blocked_account.month",
+      "reason": "2 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 1529 GBP per month (govuk-student-visa-money); 1171 GBP per month (govuk-student-visa-money). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "govuk-ihs-how-much-pay"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "gb.one_time_costs.immigration_health_surcharge",
+      "reason": "2 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 776 GBP per year (govuk-ihs-how-much-pay); 1035 GBP per year (govuk-ihs-how-much-pay). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "govuk-graduate-visa",
+        "govuk-graduate-visa-costs"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "gb.residency.job_seeker_residence_permit.duration.bachelor",
+      "reason": "3 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 2 per year (govuk-graduate-visa); 937 GBP per once (govuk-graduate-visa-costs); 1035 GBP per year (govuk-graduate-visa-costs). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "govuk-ilr-skilled-worker",
+        "govuk-skilled-worker-your-job"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "gb.residency.permanent_residence",
+      "reason": "5 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 5 (govuk-ilr-skilled-worker); 3226 GBP (govuk-ilr-skilled-worker); 41700 GBP per year (govuk-ilr-skilled-worker); 41700 GBP per year (govuk-skilled-worker-your-job); 33400 GBP per year (govuk-skilled-worker-your-job). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    }
+  ],
+  "research": {
+    "evidence_artifact_count": 11,
+    "researched_at": "2026-10-05"
+  },
+  "sections": {
+    "career": {
+      "net_monthly_income": {
+        "as_of": "2026",
+        "currency": "GBP",
+        "note": "career.net_monthly_income: a net-income figure must declare the circumstances it holds under. Missing: dependents (Number of dependents claimed, or an explicit statement that none are claimed. A household-level median silently averages different household tax positions together.); employee_social_contributions (Whether pension, health and unemployment contributions are deducted from this figure, and which. Some systems have no such deduction; Singapore's CPF is a large deduction that never reaches the worker.); marital_status (Single or married. Usually the largest single adjustment to take-home pay, and a family fact rather than an employment fact.); residency (Resident or non-resident status, where the jurisdiction distinguishes them. Several systems tax residents and non-residents differently.). Defaulting any of these would publish a confident number for a household, tax year or residency status nobody stated.",
+        "per": "year",
+        "source_ids": [
+          "gb-govuk-skilled-worker-minimum-salary"
+        ],
+        "value": null,
+        "value_status": "UNKNOWN"
+      }
+    },
+    "education_costs": {
+      "tuition_fees": {
+        "public": {
+          "bachelor": {
+            "as_of": "2027 entry",
+            "colliding_values": [
+              {
+                "as_of": "2027 entry",
+                "currency": "GBP",
+                "per": "year",
+                "source_ids": [
+                  "uom-bsc-cs-2027"
+                ],
+                "statement": "The University of Manchester charges international students £39,700 per annum for the BSc Computer Science (3 years, 2027 entry).",
+                "value": 39700
+              },
+              {
+                "as_of": "2027 entry",
+                "currency": "GBP",
+                "per": "year",
+                "source_ids": [
+                  "uom-bsc-cs-2027"
+                ],
+                "statement": "The same University of Manchester page states home (domestic) students commencing studies in September 2027 will pay £10,050 per annum - the England home fee cap figure, not the international rate.",
+                "value": 10050
+              },
+              {
+                "as_of": "2027 entry",
+                "currency": "GBP",
+                "per": "year",
+                "source_ids": [
+                  "uom-ba-liberal-arts-2027"
+                ],
+                "statement": "The University of Manchester charges international students £29,200 per annum for the BA Liberal Arts with International Study (4 years, 2027 entry).",
+                "value": 29200
+              }
+            ],
+            "currency": "GBP",
+            "note": "The University of Manchester charges international students £39,700 per annum for the BSc Computer Science (3 years, 2027 entry).",
+            "per": "year",
+            "source_ids": [
+              "uom-bsc-cs-2027"
+            ],
+            "value": 39700,
+            "value_status": "UNIVERSITY_OFFICIAL"
+          }
+        }
+      }
+    },
+    "one_time_costs": {
+      "blocked_account": {
+        "month": {
+          "as_of": "2026",
+          "colliding_values": [
+            {
+              "as_of": "2026",
+              "currency": "GBP",
+              "per": "month",
+              "source_ids": [
+                "govuk-student-visa-money"
+              ],
+              "statement": "UKVI requires a student visa applicant to show £1,529 per month for up to 9 months if the course is in London.",
+              "value": 1529
+            },
+            {
+              "as_of": "2026",
+              "currency": "GBP",
+              "per": "month",
+              "source_ids": [
+                "govuk-student-visa-money"
+              ],
+              "statement": "UKVI requires a student visa applicant to show £1,171 per month for up to 9 months if the course is outside London.",
+              "value": 1171
+            }
+          ],
+          "currency": "GBP",
+          "note": "UKVI requires a student visa applicant to show £1,529 per month for up to 9 months if the course is in London.",
+          "per": "month",
+          "source_ids": [
+            "govuk-student-visa-money"
+          ],
+          "value": 1529,
+          "value_status": "OFFICIAL_GOVERNMENT"
+        },
+        "related_figures": {
+          "gb-financial-proof-4": {
+            "as_of": "2026",
+            "descriptive": true,
+            "note": "The funds must have been held for at least 28 consecutive days, with the end of that 28-day period falling within 31 days of the visa application date.",
+            "source_ids": [
+              "govuk-student-visa-money"
+            ],
+            "study_level": "bachelor",
+            "value": 28,
+            "value_status": "OFFICIAL_GOVERNMENT"
+          }
+        }
+      },
+      "immigration_health_surcharge": {
+        "as_of": "2026",
+        "colliding_values": [
+          {
+            "as_of": "2026",
+            "currency": "GBP",
+            "per": "year",
+            "source_ids": [
+              "govuk-ihs-how-much-pay"
+            ],
+            "statement": "The Immigration Health Surcharge for students and their dependants is £776 per year of visa length.",
+            "value": 776
+          },
+          {
+            "as_of": "2026",
+            "currency": "GBP",
+            "per": "year",
+            "source_ids": [
+              "govuk-ihs-how-much-pay"
+            ],
+            "statement": "The general IHS rate for all other visa and immigration applications aged 18 or over is £1,035 per year.",
+            "value": 1035
+          }
+        ],
+        "currency": "GBP",
+        "note": "The Immigration Health Surcharge for students and their dependants is £776 per year of visa length.",
+        "per": "year",
+        "source_ids": [
+          "govuk-ihs-how-much-pay"
+        ],
+        "value": 776,
+        "value_status": "OFFICIAL_GOVERNMENT"
+      },
+      "visa_fee": {
+        "as_of": "2026",
+        "currency": "GBP",
+        "note": "Extending or switching to a Student visa from inside the UK also costs £558, and the fee is payable per person for each dependant.",
+        "per": "once",
+        "source_ids": [
+          "govuk-student-visa-overview-fees"
+        ],
+        "study_level": "bachelor",
+        "value": 558,
+        "value_status": "OFFICIAL_GOVERNMENT"
+      }
+    },
+    "residency": {
+      "job_seeker_residence_permit": {
+        "duration": {
+          "bachelor": {
+            "as_of": "applications on or before 2026-12-31",
+            "colliding_values": [
+              {
+                "as_of": "applications on or before 2026-12-31",
+                "currency": null,
+                "per": "year",
+                "source_ids": [
+                  "govuk-graduate-visa"
+                ],
+                "statement": "A Graduate visa lasts 2 years if the application is made on or before 31 December 2026.",
+                "value": 2
+              },
+              {
+                "as_of": "2026",
+                "currency": "GBP",
+                "per": "once",
+                "source_ids": [
+                  "govuk-graduate-visa-costs"
+                ],
+                "statement": "Applying for a Graduate visa costs £937.",
+                "value": 937
+              },
+              {
+                "as_of": "2026",
+                "currency": "GBP",
+                "per": "year",
+                "source_ids": [
+                  "govuk-graduate-visa-costs"
+                ],
+                "statement": "A Graduate visa applicant must also pay the healthcare surcharge, usually £1,035 for each year they will be in the UK - the general rate, not the £776 student rate.",
+                "value": 1035
+              }
+            ],
+            "currency": "GBP",
+            "note": "A Graduate visa lasts 2 years if the application is made on or before 31 December 2026.",
+            "per": "year",
+            "source_ids": [
+              "govuk-graduate-visa"
+            ],
+            "value": 2,
+            "value_status": "OFFICIAL_GOVERNMENT"
+          },
+          "phd": {
+            "as_of": "2026",
+            "note": "A Graduate visa lasts 3 years where the applicant holds a PhD or other doctoral qualification.",
+            "per": "year",
+            "source_ids": [
+              "govuk-graduate-visa"
+            ],
+            "study_level": "phd",
+            "value": 3,
+            "value_status": "OFFICIAL_GOVERNMENT"
+          }
+        }
+      },
+      "permanent_residence": {
+        "as_of": "2026",
+        "colliding_values": [
+          {
+            "as_of": "2026",
+            "currency": null,
+            "per": null,
+            "source_ids": [
+              "govuk-ilr-skilled-worker"
+            ],
+            "statement": "The UK permanent residence route is officially 'Indefinite leave to remain' (ILR), and on the Skilled Worker route you must have lived and worked in the UK for 5 years.",
+            "value": 5
+          },
+          {
+            "as_of": "2026",
+            "currency": "GBP",
+            "per": null,
+            "source_ids": [
+              "govuk-ilr-skilled-worker"
+            ],
+            "statement": "An ILR application costs £3,226 per person, and the earliest it can be filed is 28 days before completing the 5-year qualifying period.",
+            "value": 3226
+          },
+          {
+            "as_of": "2026",
+            "currency": "GBP",
+            "per": "year",
+            "source_ids": [
+              "govuk-ilr-skilled-worker"
+            ],
+            "statement": "The Skilled Worker visa that precedes ILR requires pay of at least £41,700 per year, or the going rate for the occupation, whichever is higher.",
+            "value": 41700
+          },
+          {
+            "as_of": "2026",
+            "currency": "GBP",
+            "per": "year",
+            "source_ids": [
+              "govuk-skilled-worker-your-job"
+            ],
+            "statement": "The Skilled Worker visa requires a salary of at least £41,700 per year or the occupation's 'going rate', whichever is higher.",
+            "value": 41700
+          },
+          {
+            "as_of": "2026",
+            "currency": "GBP",
+            "per": "year",
+            "source_ids": [
+              "govuk-skilled-worker-your-job"
+            ],
+            "statement": "A reduced rate of at least £33,400 per year may be available where the usual requirements are not met and the applicant does not work in healthcare or education.",
+            "value": 33400
+          }
+        ],
+        "currency": "GBP",
+        "note": "The UK permanent residence route is officially 'Indefinite leave to remain' (ILR), and on the Skilled Worker route you must have lived and worked in the UK for 5 years.",
+        "per": "year",
+        "source_ids": [
+          "govuk-ilr-skilled-worker"
+        ],
+        "value": 5,
+        "value_status": "OFFICIAL_GOVERNMENT"
+      }
+    }
+  },
+  "sources": [
+    {
+      "archived": true,
+      "as_of": "tax year 2026 to 2027 (6 April 2026 to 5 April 2027)",
+      "confidence": null,
+      "id": "gb-govuk-income-tax-and-ni-2026-27",
+      "notes": null,
+      "publisher": "HM Revenue & Customs / GOV.UK",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "net_monthly_income evidence",
+      "url": "https://www.gov.uk/income-tax-rates"
+    },
+    {
+      "archived": true,
+      "as_of": "recorded in the corpus on 2026-10-05; threshold not re-fetched in this pass",
+      "confidence": null,
+      "id": "gb-govuk-skilled-worker-minimum-salary",
+      "notes": null,
+      "publisher": "UK Visas and Immigration / GOV.UK",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "net_monthly_income evidence",
+      "url": "https://www.gov.uk/skilled-worker-visa/your-job"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "govuk-graduate-visa",
+      "notes": "Route name and duration confirmed from gov.uk rather than memory, as instructed. The official route name is 'Graduate visa' (it replaced the earlier 'Tier 4 Graduate Route'); the current page shows no 'Graduate Route' label, so the 2024-25 restructuring is visible here as a straight rename plus a duration cut. The duration is now date-dependent and this must be modelled as a function of application date, not a single number: 2 years for applications on or before 31 December 2026, dropping to 18 months for applications on or after 1 January 2027, with 3 years reserved for PhD/doctoral completers. A corpus entry that hard-codes '2 years' will be wrong for any applicant applying from 2027 onward. The route cannot be extended; progression to longer stay is via Skilled Worker (see 005).",
+      "publisher": "UK Visas and Immigration (Home Office), GOV.UK",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "post_study_work evidence",
+      "url": "https://www.gov.uk/graduate-visa"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "govuk-graduate-visa-costs",
+      "notes": "Cost of the post-study route itself, recorded because the Graduate visa is itself a paid visa and any budget that omits it understates the cost of staying in the UK after study. Note the contrast, recorded verbatim from two separate gov.uk pages: the Graduate visa attracts the GENERAL healthcare surcharge rate of £1,035/year, whereas a Student visa attracts the reduced student rate of £776/year (see 003b). The same page flags a cheaper alternative - 'If you're a doctor or nurse, or you work in health or adult social care, check if you're eligible to apply for the Health and Care Worker visa instead. It's cheaper to apply for and you do not need to pay the annual immigration health surcharge.'",
+      "publisher": "UK Visas and Immigration (Home Office), GOV.UK",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "post_study_work evidence",
+      "url": "https://www.gov.uk/graduate-visa"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "govuk-ihs-how-much-pay",
+      "notes": "This is the Immigration Health Surcharge (IHS), the 'healthcare surcharge' referenced by the Student visa page. The Student rate is £776/year, materially lower than the £1,035/year general rate - using the general rate for a student would overstate cost. IMPORTANT for budgeting: a UK Student visa is normally issued longer than the course (gov.uk's own Student visa page confirms up to 1 month before a course over 6 months, and universities note a 4-month post-course tail), so a single 3-year bachelor's course can trigger more than three years of IHS. The fetched page's own worked example (£776 x 2 = £1,552 for a 2-year visa) is the only fully-published worked figure here; totals for a 3-year bachelor course are not printed on this page, so any such total must be computed from the stated rules, not quoted. The pre-2024 history of the rate (£470 for students, £624 general) was seen only in a search-engine snippet of the Immigration (Health Charge) (Amendment) Order 2024, not in a page I successfully fetched - legislation.gov.uk returned an empty body on two attempts (https://www.legislation.gov.uk/uksi/2015/792/schedule/1) - so the historical rates are deliberately NOT recorded as a claim.",
+      "publisher": "UK Visas and Immigration (Home Office), GOV.UK",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "visa_fees_ihs evidence",
+      "url": "https://www.gov.uk/healthcare-immigration-application/how-much-pay"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "govuk-ilr-skilled-worker",
+      "notes": "The UK settlement route is officially called 'Indefinite leave to remain' (ILR). The minimum qualifying period on the main work route is 5 years. CRITICAL for a student-corpus: the 5 years is a requirement to 'have lived AND worked in the UK'. Time on a Student visa is not time on a qualifying route, and the Graduate visa is likewise not listed among the qualifying visas on this page. So a student's realistic ILR timeline is 5 years of Skilled Worker, not 5 years total from arrival - a student arriving at 19 would not be eligible before roughly age 24+ and would need to qualify for Skilled Worker in the interim. Supporting figure from the same research pass: Skilled Worker requires a salary of at least £41,700 per year (or the going rate for the job, whichever is higher), so the work route also imposes a substantial earnings bar. Fee recorded: £3,226 per person.",
+      "publisher": "UK Visas and Immigration (Home Office), GOV.UK",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "permanent_residence evidence",
+      "url": "https://www.gov.uk/indefinite-leave-to-remain-tier-2-t2-skilled-worker-visa"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "govuk-skilled-worker-your-job",
+      "notes": "Separate file because the figure comes from a different gov.uk page than the ILR guidance. Recorded because it is the practical bridge between study and settlement: a graduate moving from the Graduate visa to Skilled Worker - the only settlement route named on the ILR page - must clear this earnings bar, and the 'whichever is higher' rule means £41,700 is a floor, not the number most occupations will actually apply. Reduced rates exist and are noted on the same page: 'If you do not meet the usual salary requirements, and you do not work in healthcare or education, you might still be eligible if your salary will be at least £33,400 per year.' Healthcare and education roles use national pay scales instead. Sponsorship is employer-side and mandatory: 'You must have a job offer from an approved UK employer before you apply for a Skilled Worker visa.'",
+      "publisher": "UK Visas and Immigration (Home Office), GOV.UK",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "permanent_residence evidence",
+      "url": "https://www.gov.uk/skilled-worker-visa/your-job"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "govuk-student-visa-money",
+      "notes": "The official name of the requirement, as used by UKVI on this page, is the 'financial requirement' (the page heading reads: Money to support yourself ('financial requirement')). Critical scoping detail confirmed verbatim in the same fetch: the course fee is a SEPARATE test, not part of the maintenance figure - 'You need enough money to pay for your course for 1 academic year (up to 9 months). The amount you need to pay will be on your Confirmation of Acceptance for Studies (CAS).' So the maintenance sums below EXCLUDE tuition, exactly the budgeting trap flagged in the brief. The 9-month multiplier yields 9 x £1,529 = £13,761 (London) and 9 x £1,171 = £10,539 (outside London) for a full 9-month course; those totals are arithmetic on the fetched monthly rates, not separately published figures. Also confirmed: a 'differential evidence requirement' list exists (UK, Australia, Canada, Ireland, New Zealand and ~65 other countries are named on the page) under which applicants may not be asked to prove maintenance funds up front. Source note: the page was fetched 2026-10-05 and shows the current rates; the underlying statutory instrument is the Immigration (Health Charge) / student financial requirement rules, which are revised periodically, so as_of should be read as 'as displayed on 2026-10-05'.",
+      "publisher": "UK Visas and Immigration (Home Office), GOV.UK",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "financial_proof evidence",
+      "url": "https://www.gov.uk/student-visa/money"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "govuk-student-visa-overview-fees",
+      "notes": "Application fee taken verbatim from the 'Fees' section of the Student visa overview page (note: the URL /student-visa/how-much-it-costs redirected to this overview, so this overview page is the authoritative location for the figure). The Immigration Health Surcharge is a separate charge and is published on a separate gov.uk page, recorded in 003b_visa_fees_ihs.json. The IHS is a per-year cost, not a flat fee, so it must not be added as a single figure to a budget.",
+      "publisher": "UK Visas and Immigration (Home Office), GOV.UK",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "visa_fees evidence",
+      "url": "https://www.gov.uk/student-visa"
+    },
+    {
+      "archived": true,
+      "as_of": "2027 entry",
+      "confidence": null,
+      "id": "uom-ba-liberal-arts-2027",
+      "notes": "Second Manchester course fetched on the same 2027 cycle, to demonstrate that the international figure is course-specific rather than a single institutional number: £29,200 (Liberal Arts, 4 years incl. year abroad) versus £39,700 (Computer Science) on the identically-worded Fees line. The 2026-entry URL was requested; the site served the 2027-entry profile (canonical path /study/undergraduate/courses/2027/19115/ba-liberal-arts-with-international-study/).",
+      "publisher": "The University of Manchester",
+      "retrieved_at": "2026-10-05",
+      "source_type": "UNIVERSITY_OFFICIAL",
+      "title": "bachelor_tuition evidence",
+      "url": "https://www.manchester.ac.uk/study/undergraduate/courses/2026/19115/ba-liberal-arts-with-international-study/"
+    },
+    {
+      "archived": true,
+      "as_of": "2027 entry",
+      "confidence": null,
+      "id": "uom-bsc-cs-2027",
+      "notes": "Requested the 2026-entry URL; the site served the 2027-entry course profile (page title 'BSc Computer Science (2027 entry) | The University of Manchester', canonical path /study/undergraduate/courses/2027/00560/bsc-computer-science/). The verbatim Fees line is recorded exactly as returned. The UK has no single national international tuition figure - fees are set per institution and per course, so this is one named university's price for one named course (BSc Computer Science, 3 years, UCAS G400). The same fetch also confirms the England home-fee cap of £10,050 for 2027/28, which is a different (domestic) figure and must not be used as the international number. A second Manchester course was fetched on the same 2027 cycle to show within-institution spread (see 001b file).",
+      "publisher": "The University of Manchester",
+      "retrieved_at": "2026-10-05",
+      "source_type": "UNIVERSITY_OFFICIAL",
+      "title": "bachelor_tuition evidence",
+      "url": "https://www.manchester.ac.uk/study/undergraduate/courses/2026/00560/bsc-computer-science/"
+    }
+  ]
+}

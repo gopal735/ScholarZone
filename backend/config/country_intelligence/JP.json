@@ -1,0 +1,262 @@
+{
+  "contract_version": "1.0.0",
+  "country": {
+    "currency": null,
+    "iso2": "JP",
+    "name_en": "Japan"
+  },
+  "gaps": [
+    {
+      "attempted_sources": [
+        "jp-mext-kokuritsu-daigaku-sharyo-2024"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "jp.career.average_starting_salary.gross_monthly.month",
+      "reason": "2 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 220000 JPY per month (jp-mext-kokuritsu-daigaku-sharyo-2024); 231000 JPY per month (jp-mext-kokuritsu-daigaku-sharyo-2024). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "utokyo-tuition-fees"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "jp.education_costs.tuition_fees.public.bachelor",
+      "reason": "2 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 642960 JPY per year (utokyo-tuition-fees); 282000 JPY (utokyo-tuition-fees). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "https://www.studyinjapan.go.jp/en/life/cost-of-living"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "jp.living_cost",
+      "reason": "Evidence was retrieved and archived, but this topic has no explicit mapping into the corpus schema, so the figure was not placed. Adding the mapping is a reviewed change, not something ingestion should guess."
+    },
+    {
+      "attempted_sources": [
+        "https://www.mofa.go.jp/j_info/visit/visa/long/visa6.html",
+        "https://www.mofa.go.jp/mofaj/toko/visa/short/study.html",
+        "https://www.moj.go.jp/isa/applications/procedures/nyuukokukanri07_00003.html?lang=en"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "jp.permanent_residence",
+      "next_review": null,
+      "reason": "No permanent-residence route tied to a minimum number of years of study was established from a fetched Japanese government page. The Immigration Services Agency page I did fetch concerns permission to work outside the Student status of residence and contains no permanent-residence rule. MOFA's visa pages (including the long-stay Student visa page) returned HTTP 403 or were not reachable, and the point system for permanent residence (高度人材points) was not fetched. No figure is asserted rather than asserting a remembered one."
+    },
+    {
+      "attempted_sources": [
+        "moj-isa-shikagaku-gaikatsugyou"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "jp.residency.work_while_studying",
+      "reason": "2 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 28 per week (moj-isa-shikagaku-gaikatsugyou); 8 per day (moj-isa-shikagaku-gaikatsugyou). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "https://www.mofa.go.jp/j_info/visit/visa/procedure/fee.html",
+        "https://www.mofa.go.jp/j_info/visit/visa/procedure/pagewe_000001_00391.html",
+        "https://www.mofa.go.jp/mofaj/toko/visa/tetsuzuki/pagew_000001_02672.html",
+        "https://www.mofa.go.jp/mofaj/toko/visa/fee.html",
+        "https://www.mofa.go.jp/mofaj/toko/visa/short/study.html",
+        "https://www.emb-japan.go.jp/itpr_en/visa.html",
+        "https://www.id.emb-japan.go.jp/itpr_en/visa.html",
+        "https://www.uk.emb-japan.go.jp/itpr_en/toko.html"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "jp.student_visa_fee",
+      "next_review": null,
+      "reason": "No Japan Ministry of Foreign Affairs visa-fee page could be fetched. Every MOFA URL attempted returned HTTP 403 to this client (mofa.go.jp/mofaj/toko/visa/short/study.html, mofa.go.jp/mofaj/toko/visa/fee.html, mofa.go.jp/j_info/visit/visa/procedure/fee.html, mofa.go.jp/j_info/visit/visa/procedure/pagewe_000001_00391.html, mofa.go.jp/mofaj/toko/visa/tetsuzuki/pagew_000001_02672.html), as did overseas mission mirrors (emb-japan.go.jp, id/th/vn.emb-japan.go.jp, uk.emb-japan.go.jp). Search-result snippets suggested MOFA consular fee figures exist and were revised with effect from 1 July 2026, but a snippet is not a fetched page, so no value is recorded. Japan also uses a Certificate of Eligibility route administered by the Immigration Services Agency, whose fee schedule is separate from MOFA consular fees and was not fetched either."
+    },
+    {
+      "attempted_sources": [
+        "https://www.studyinjapan.go.jp/en/planning/immigration-procedures",
+        "https://www.studyinjapan.go.jp/en/life/cost-of-living",
+        "https://www.mofa.go.jp/mofaj/toko/visa/short/study.html",
+        "https://www.studyinjapan.go.jp/en/planning/visa"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "jp.student_visa_financial_proof",
+      "next_review": null,
+      "reason": "Japan does not publish a national minimum cash threshold for a student visa or Certificate of Eligibility. The government-approved Study in Japan site (JASSO) states only that proof of ability to pay may be requested and lists the document types, with no monetary figure: 'When applying for a COE or visa, you may be asked for proof that you are able to cover your expenses while studying in Japan. Required documents: Financial sponsor's (the person wishing to study in Japan or their guarantor) savings balance certificate, income certificate covering the past year, documentation identifying sources of funds, etc.' The only money figures found in official material are living-cost averages, not visa thresholds: 'Total expenditure: 105,000 yen' per month national average, source '2023 Lifestyle Survey of Privately-Financed International Students (JASSO)' (https://www.studyinjapan.go.jp/en/life/cost-of-living, fetched). Per-university screening amounts (for example Nagoya University G30's JPY 1,000,000, or Waseda CJL's JPY 1,920,000 per year) appear only in university documents, which are institution-set and not a national rule, so they are not recorded as a country-level figure."
+    }
+  ],
+  "research": {
+    "evidence_artifact_count": 8,
+    "researched_at": "2026-10-05"
+  },
+  "sections": {
+    "career": {
+      "average_starting_salary": {
+        "gross_monthly": {
+          "month": {
+            "as_of": "FY2024 (令和6年度)",
+            "colliding_values": [
+              {
+                "as_of": "FY2024 (令和6年度)",
+                "currency": "JPY",
+                "per": "month",
+                "source_ids": [
+                  "jp-mext-kokuritsu-daigaku-sharyo-2024"
+                ],
+                "statement": "MEXT publishes, in the statutory salary-level disclosure of a Japanese national university corporation, the model salary for age 22 as '月額 220,000円 年間給与3,634,400円' - that is, a starting salary for a university graduate of JPY 220,000 per month. This is a GROSS monthly figure. It is the '大卒初任給' (new-graduate starting salary) for the public national university sector.",
+                "value": 220000
+              },
+              {
+                "as_of": "FY2024 (令和6年度)",
+                "currency": "JPY",
+                "per": "month",
+                "source_ids": [
+                  "jp-mext-kokuritsu-daigaku-sharyo-2024"
+                ],
+                "statement": "MEXT publishes, in the same model-salary table, '○30歳（助教：博士修了初任給） / 月額 370,370円 年間給与6,212,766円' for a teaching assistant post at the age-30 doctoral-completion starting salary. Recorded only to show the scale spread in the same official table; note this is age 30, not an entry-level graduate salary.",
+                "value": 231000
+              }
+            ],
+            "currency": "JPY",
+            "note": "MEXT publishes, in the statutory salary-level disclosure of a Japanese national university corporation, the model salary for age 22 as '月額 220,000円 年間給与3,634,400円' - that is, a starting salary for a university graduate of JPY 220,000 per month. This is a GROSS monthly figure. It is the '大卒初任給' (new-graduate starting salary) for the public national university sector.",
+            "per": "month",
+            "source_ids": [
+              "jp-mext-kokuritsu-daigaku-sharyo-2024"
+            ],
+            "value": 220000,
+            "value_status": "OFFICIAL_GOVERNMENT"
+          }
+        }
+      },
+      "net_monthly_income": {
+        "as_of": "令和8年分 (2026)",
+        "note": "This figure is a tax-model evaluation at a chosen gross salary, not an observed net income. The arithmetic may be sound and the tax parameters official, but no source publishes a gross salary for the population this claim describes, so the result is a fact about the tax system rather than about what someone in this country would take home.",
+        "refusal": {
+          "operation": "net from gross via published tax parameters",
+          "reason": "This figure is a tax-model evaluation at a chosen gross salary, not an observed net income. The arithmetic may be sound and the tax parameters official, but no source publishes a gross salary for the population this claim describes, so the result is a fact about the tax system rather than about what someone in this country would take home.",
+          "required_input": "A cited source publishing a gross salary for the same population, with its own URL and date."
+        },
+        "source_ids": [
+          "jp-nta-genshuchoryo-zeigakuhyo-2026"
+        ],
+        "value": null,
+        "value_status": "REFUSED"
+      }
+    },
+    "education_costs": {
+      "tuition_fees": {
+        "public": {
+          "bachelor": {
+            "as_of": "2026",
+            "colliding_values": [
+              {
+                "as_of": "2026",
+                "currency": "JPY",
+                "per": "year",
+                "source_ids": [
+                  "utokyo-tuition-fees"
+                ],
+                "statement": "The University of Tokyo charges undergraduates an annual tuition fee of JPY 642,960.",
+                "value": 642960
+              },
+              {
+                "as_of": "2026",
+                "currency": "JPY",
+                "per": null,
+                "source_ids": [
+                  "utokyo-tuition-fees"
+                ],
+                "statement": "The University of Tokyo charges a one-off admission fee of JPY 282,000 at admission.",
+                "value": 282000
+              }
+            ],
+            "currency": "JPY",
+            "note": "The University of Tokyo charges undergraduates an annual tuition fee of JPY 642,960.",
+            "source_ids": [
+              "utokyo-tuition-fees"
+            ],
+            "value": 642960,
+            "value_status": "UNIVERSITY_OFFICIAL"
+          }
+        }
+      }
+    },
+    "residency": {
+      "work_while_studying": {
+        "as_of": "2026",
+        "colliding_values": [
+          {
+            "as_of": "2026",
+            "currency": null,
+            "per": "week",
+            "source_ids": [
+              "moj-isa-shikagaku-gaikatsugyou"
+            ],
+            "statement": "Under Japan's blanket permit for activities outside those permitted by the 'Student' status of residence, a student may work 28 hours or fewer per week.",
+            "value": 28
+          },
+          {
+            "as_of": "2026",
+            "currency": null,
+            "per": "day",
+            "source_ids": [
+              "moj-isa-shikagaku-gaikatsugyou"
+            ],
+            "statement": "During the educational institution's long vacation, the same blanket permit allows 8 hours per day.",
+            "value": 8
+          }
+        ],
+        "note": "Under Japan's blanket permit for activities outside those permitted by the 'Student' status of residence, a student may work 28 hours or fewer per week.",
+        "per": "day",
+        "source_ids": [
+          "moj-isa-shikagaku-gaikatsugyou"
+        ],
+        "value": 28,
+        "value_status": "OFFICIAL_GOVERNMENT"
+      }
+    }
+  },
+  "sources": [
+    {
+      "archived": true,
+      "as_of": "FY2024 (令和6年度)",
+      "confidence": null,
+      "id": "jp-mext-kokuritsu-daigaku-sharyo-2024",
+      "notes": null,
+      "publisher": "Ministry of Education, Culture, Sports, Science and Technology (MEXT / 文部科学省), Japan - hosting the statutory salary-level disclosure of a national university corporation (国立大学法人総合研究大学院大学)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "gross_monthly_income evidence",
+      "url": "https://www.mext.go.jp/content/20250630-ope_dev03-000043341-81.pdf"
+    },
+    {
+      "archived": true,
+      "as_of": "令和8年分 (Reiwa 8 = 2026 income year)",
+      "confidence": null,
+      "id": "jp-nta-genshuchoryo-zeigakuhyo-2026",
+      "notes": null,
+      "publisher": "National Tax Agency (国税庁, NTA), Japan",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "net_monthly_income evidence",
+      "url": "https://www.nta.go.jp/publication/pamph/gensen/zeigakuhyo2026/data/19-22.pdf"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "moj-isa-shikagaku-gaikatsugyou",
+      "notes": "The page is served by the Immigration Services Agency of Japan. The English-locale request returned the Japanese original of the 'Student' status of residence permission page; the verbatim Japanese above is the operative text. The official name of the permission is 資格外活動許可 / Permission to Engage in Activities Outside Those Permitted Under the Status of Residence Previously Granted, split into a blanket permit (包括許可, 28 hours or fewer per week) and an individual permit (個別許可). Holiday relaxation is 8 hours per day during the educational institution's long vacation. The agency page carries no effective date, so as_of is recorded as the retrieval year 2026. I did not fetch a MOFA source on the post-graduation job-seeking route, so no claim is made about that.",
+      "publisher": "Immigration Services Agency of Japan (Ministry of Justice)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "student_work_rights evidence",
+      "url": "https://www.moj.go.jp/isa/applications/procedures/nyuukokukanri07_00003.html?lang=en"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "utokyo-tuition-fees",
+      "notes": "The University of Tokyo is a national university and the page is its own official fee table. Confirmed: undergraduate annual tuition is JPY 642,960 for the current cohort (the JPY 535,800 line on this table applies to undergraduates who enrolled in or before 2024, and to graduate students from other categories), plus a one-off admission fee of JPY 282,000. The same university page lists a separate, current national-university-wide comparison elsewhere, but I only report what appears in this fetched table. No course-level differentiation exists on this page (it is faculty-wide). I did not verify a private-university figure from an official page.",
+      "publisher": "The University of Tokyo",
+      "retrieved_at": "2026-10-05",
+      "source_type": "UNIVERSITY_OFFICIAL",
+      "title": "bachelor_tuition evidence",
+      "url": "https://www.u-tokyo.ac.jp/en/prospective-students/tuition_fees.html"
+    }
+  ]
+}

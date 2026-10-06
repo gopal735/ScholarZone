@@ -1,0 +1,30 @@
+{
+  "country": "GB",
+  "topic": "post_study_work",
+  "source_id": "govuk-graduate-visa-costs",
+  "source_url": "https://www.gov.uk/graduate-visa",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "UK Visas and Immigration (Home Office), GOV.UK",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "## How much it costs\n\nWhen you apply for a Graduate visa, you’ll need to:\n\n-   pay the £937 application fee\n-   pay the healthcare surcharge - this is usually £1,035 for each year you’ll be in the UK\n\n[Check how much it will cost](/graduate-visa/how-much-it-costs).",
+  "research_notes": "Cost of the post-study route itself, recorded because the Graduate visa is itself a paid visa and any budget that omits it understates the cost of staying in the UK after study. Note the contrast, recorded verbatim from two separate gov.uk pages: the Graduate visa attracts the GENERAL healthcare surcharge rate of £1,035/year, whereas a Student visa attracts the reduced student rate of £776/year (see 003b). The same page flags a cheaper alternative - 'If you're a doctor or nurse, or you work in health or adult social care, check if you're eligible to apply for the Health and Care Worker visa instead. It's cheaper to apply for and you do not need to pay the annual immigration health surcharge.'",
+  "claims": [
+    {
+      "claim_id": "gb-graduate-visa-fee-1",
+      "statement": "Applying for a Graduate visa costs £937.",
+      "value": 937,
+      "unit": "GBP per application",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "gb-graduate-visa-fee-2",
+      "statement": "A Graduate visa applicant must also pay the healthcare surcharge, usually £1,035 for each year they will be in the UK - the general rate, not the £776 student rate.",
+      "value": 1035,
+      "unit": "GBP per year in the UK",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

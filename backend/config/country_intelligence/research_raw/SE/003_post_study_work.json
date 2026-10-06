@@ -1,0 +1,54 @@
+﻿{
+  "country": "SE",
+  "topic": "post_study_work",
+  "source_id": "migrationsverket-look-for-work-second-cycle",
+  "source_url": "https://www.migrationsverket.se/English/Private-individuals/Working-in-Sweden/Look-for-work-or-start-a-business.html",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "The Swedish Migration Agency (Migrationsverket)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "# You want to apply Look for work or start a businessYou want to apply Look for work or start a business\n\nYou have completed studies equivalent to a second-cycle qualification and want to come to Sweden to look for work or explore the possibilities for starting your own business here.\n\nIf you are a citizen of a country outside the EU/EEA, you will in most cases need a permit to work in Sweden.\n\nIf you have completed second-cycle studies and want to come to Sweden to look for work or explore the possibilities for starting your own business here, you must meet certain requirements.\n\n## Requirements to get a residence permit\n\nThese requirements must be met in order for you to be granted a residence permit:\n\nYou must have a valid passport\n\nYou must have completed studies corresponding to a second-cycle qualification\nFor a degree to count as a second-cycle qualification, it must correspond to either a 60-credit Master's degree, a 120-credit Master's degree, a professional degree worth 60-330 credits, or a postgraduate/PhD-level degree.\n\nYou must be planning to look for work or investigate the possibilities for starting your own business\n\nYou must be able to support yourself financially\nYou must be able to support yourself during the period for which you are applying for a permit. This means that you must demonstrate that you have bank assets equivalent to at least SEK 13,000 for each month for which you are applying for a residence permit. In addition to this, you should also have money to cover the cost of your return journey.\n\nYou must have comprehensive health insurance valid for care in Sweden\n\nYou must currently be located outside of Sweden\n\n## For how long can I be granted a residence permit?\n\nYou can be granted a residence permit for a maximum of nine months, but never for longer than your passport is valid.\n\n## What does it cost to apply?\n\nFee: SEK 2,200.",
+  "research_notes": "CRITICAL SCOPE LIMIT, read off the official page rather than assumed. The Swedish post-study job-search permit at this URL is restricted to SECOND-CYCLE qualifications only, and the page defines that term exhaustively as 'a 60-credit Master's degree, a 120-credit Master's degree, a professional degree worth 60-330 credits, or a postgraduate/PhD-level degree.' A Bachelor's degree (first-cycle) is not in that list.\n\nSo the honest reading of this source is: for a BACHELOR graduate, this particular permit is NOT available. The nine-month duration I record belongs to the second-cycle / Master's pathway. I did NOT find and did NOT fetch a separate Swedish Migration Agency page for a first-cycle (Bachelor's) job-search permit, so I am not able to state a duration for a Bachelor graduate and I am not going to infer one from the second-cycle rule.\n\nSUPERSEDED GAP, RESOLVED AFTER THIS FILE WAS WRITTEN. At the time of this fetch I had not located the first-cycle permit page and recorded the Bachelor duration as unestablished rather than inferring it. I later found and fetched it at a different path, and the Bachelor-level answer is UP TO ONE YEAR, not nine months: see 004_post_study_work_bachelor.json, which also documents this as a two-permit conflict. This file is retained unedited in its quoted figures because it is a real and still-current source about the SECOND-CYCLE outbound permit.\n\nThe page also carries an unusually useful figure: the financial-proof requirement for THIS permit is 'at least SEK 13,000 for each month for which you are applying'. I record it because it is verbatim on this page, but note the distinction from study permits: Sweden's study-permit maintenance requirement is a separate amount set by Migrationsverket and I did not fetch that page (see 002 file status). The two figures should not be merged.\n\nRetrieval note: I reached this page at the /English/Private-individuals/... URL. It returned HTTP 200 with full content on 2026-10-05. The page's own news feed shows items dated up to 2026-10-01, confirming the page is current rather than a stale copy.",
+  "claims": [
+    {
+      "claim_id": "se-poststudy-permit-name-1",
+      "statement": "Sweden's post-study job-search residence permit, as described by the Swedish Migration Agency, is the permit to 'look for work or start a business' after second-cycle study.",
+      "value": "look for work or start a business",
+      "unit": "official permit name",
+      "as_of": "2026",
+      "study_level": "master"
+    },
+    {
+      "claim_id": "se-poststudy-duration-1",
+      "statement": "The Swedish Migration Agency states the job-search residence permit after second-cycle studies can be granted for a maximum of nine months, but never beyond passport validity.",
+      "value": 9,
+      "unit": "months",
+      "as_of": "2026",
+      "study_level": "master"
+    },
+    {
+      "claim_id": "se-poststudy-eligibility-bachelor-1",
+      "statement": "This permit's qualifying degree is defined by the agency as second-cycle only (60- or 120-credit Master's, professional degree 60-330 credits, or postgraduate/PhD); a Bachelor's degree is not a listed qualifying qualification.",
+      "value": 0,
+      "unit": "bachelor degrees qualifying for this permit as defined on page",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "se-poststudy-financial-proof-1",
+      "statement": "For the look-for-work permit the Swedish Migration Agency requires demonstrated bank assets of at least SEK 13,000 for each month of the permit applied for.",
+      "value": 13000,
+      "unit": "SEK per month",
+      "as_of": "2026",
+      "study_level": "master"
+    },
+    {
+      "claim_id": "se-poststudy-permit-fee-1",
+      "statement": "The Swedish Migration Agency charges a fee of SEK 2,200 for the look-for-work or start-a-business residence permit application.",
+      "value": 2200,
+      "unit": "SEK application fee",
+      "as_of": "2026",
+      "study_level": "master"
+    }
+  ]
+}

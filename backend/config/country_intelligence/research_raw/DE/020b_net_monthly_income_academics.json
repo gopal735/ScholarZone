@@ -1,0 +1,51 @@
+{
+  "country": "DE",
+  "topic": "net_monthly_income",
+  "source_id": "de-bmf-lohnsteuerrechner-2026-73752",
+  "source_url": "https://www.bmf-steuerrechner.de/bl/bl2026/resultbl2026.xhtml",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Bundesministerium der Finanzen (BMF) - Lohn- und Einkommensteuerrechner",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "BERECHNUNG DER LOHNSTEUER 2026 / Ergebnis der Berechnung der Lohnsteuer fuer 2026. Ihre Eingabedaten: Geburtsjahr: 2000 | Jahresbruttolohn: 73.752,00 Euro | davon Versorgungsbezuege: 0,00 Euro | Steuerklasse: 1 | Zahl der Kinderfreibetraege: 0,0 | Kirchensteuerabzug: nein | Rentenversicherung: gesetzlich | Arbeitslosenversicherung: gesetzlich | Krankenversicherung: gesetzlich | Pflegeversicherung: ohne Zuschlag, nicht Sachsen | Zahl der fuer die Pflegeversicherung beruecksichtigten Kinder: 0 oder 1 | monatlicher Beitrag zur privaten KV/PV: 0,00 Euro | monatlicher Arbeitgeberzuschuss zur privaten KV/PV: 0,00 Euro | Zusatzbeitragssatz der gesetzlichen Krankenversicherung: 2,90 % | Freibetrag: 0,00 Euro | Hinzurechnungsbetrag: 0,00 Euro. Ergebnis der Berechnung der Lohnsteuer fuer 2026: Die Lohnsteuer betraegt: 13.649,00 Euro | Der Solidaritaetszuschlag betraegt: 0,00 Euro | Die Kirchensteuer betraegt: 0,00 Euro. Hinweis: Dieser Lohnsteuerrechner beruecksichtigt die Vorgaben des bundeseinheitlichen 'Programmablaufplans fuer die maschinelle Berechnung ...'",
+  "claims": [
+    {
+      "claim_id": "de-net-monthly-academics-001",
+      "value": 3735.17,
+      "unit": "EUR per month (net, take-home)",
+      "as_of": "2026",
+      "statement": "Derived take-home pay of EUR 3,735.17 per month for an employee with the German academics median gross of EUR 6,146 per month (EUR 73,752 per year), tax year 2026. Components, all from official sources: official BMF Lohnsteuer EUR 13,649.00 per year (= EUR 1,137.42/month, from the BMF Lohn- und Einkommensteuerrechner at Steuerklasse I, 0 children allowances, no church tax, statutory pension/unemployment/health insurance, Zusatzbeitrag 2.90 %); employee statutory social contributions EUR 1,273.41 per month computed from the 2026 published contribution rates and 2026 contribution assessment ceilings. Solidaritätszuschlag is EUR 0.00 per the same official calculation, so net = 6,146.00 - 1,137.42 - 1,273.41 = EUR 3,735.17."
+    },
+    {
+      "claim_id": "de-net-monthly-academics-002",
+      "value": 3700.29,
+      "unit": "EUR per month (net, take-home)",
+      "as_of": "2026",
+      "statement": "Variant of the same calculation for a childless employee aged 23 or over, who is liable for the 0.6 per cent Pflegeversicherung Beitragszuschlag für Kinderlose. Employee social contributions rise from EUR 1,273.41 to EUR 1,308.29 per month and net take-home falls to EUR 3,700.29 per month."
+    },
+    {
+      "claim_id": "de-net-monthly-academics-official-component-001",
+      "value": 13649.0,
+      "unit": "EUR per year (Lohnsteuer, official BMF calculator output, tax year 2026)",
+      "as_of": "2026",
+      "statement": "Official Bundesministerium der Finanzen Lohnsteuerrechner output: for an annual gross of EUR 73,752.00, Steuerklasse I, 0.0 Kinderfreibeträge, no church tax, birth year 2000, the Lohnsteuer for 2026 is EUR 13,649.00, the Solidaritätszuschlag EUR 0.00 and the Kirchensteuer EUR 0.00."
+    }
+  ],
+  "assumptions": [
+    "Steuerklasse I (single), as selected in the official BMF calculator - this is the source's own default",
+    "Zahl der Kinderfreibeträge 0,0 (no children) - the calculator's own default",
+    "Kirchensteuerabzug: nein (not a member of a religious tax-paying church)",
+    "no Solidaritätszuschlag: the official calculator returns EUR 0.00, i.e. the levy is fully abolished for 2026",
+    "Rentenversicherung gesetzlich, Arbeitslosenversicherung gesetzlich, Krankenversicherung gesetzlich (calculator defaults)",
+    "Pflegeversicherung 'ohne Zuschlag, nicht Sachsen' - the calculator's own default; claim de-net-monthly-academics-002 is the variant that adds the childless surcharge",
+    "Geburtsjahr 2000 (age 26 in 2026): under 64 so no Altersentlastungsbetrag",
+    "Zusatzbeitrag der gesetzlichen Krankenversicherung set to 2.90 per cent, the Bundesgesundheitsministerium's published average Zusatzbeitragssatz for 2026, not the individual's Krankenkasse rate",
+    "Employee social contributions computed from the 2026 published rates (RV 18.6 % -> employee 9.3 %, unemployment 2.6 % -> 1.3 %, health insurance allgemeiner Beitragssatz 14.6 % -> employee 7.3 % plus half of the 2.9 % average Zusatzbeitrag = 1.45 %, long-term care 3.6 % employee share plus the 0.15 % Insolvenzgeldumlage) and the 2026 SVBezGrV ceilings (pension/unemployment EUR 8,450/month; health/long-term care EUR 5,812.50/month). EUR 6,146 gross is below both ceilings, so no ceiling truncates the calculation",
+    "twelve equal monthly payments, no bonuses, no 13th-month salary, no Sachbezüge"
+  ],
+  "field_mapping": {
+    "net_monthly_income": "de.career.net_monthly_income (topic: net_monthly_income) - closer match to the graduate audience than 020, because the gross input is the academics-qualified median rather than the all-employee median"
+  },
+  "notes": "THIS IS THE FIGURE THE CORPUS SHOULD PREFER FOR GERMANY. The Lohnsteuer component is an OFFICIAL figure read directly off the Bundesministerium der Finanzen' own Lohn- und Einkommensteuerrechner result screen for tax year 2026; the calculator states it implements the bundeseinheitlicher Programmablaufplan. The employee social contribution component is DERIVED from published 2026 rates and the 2026 SVBezGrV contribution ceilings. THE CRITICAL LIMITATION IS POPULATION, NOT TAX: EUR 6,146 gross is the official median monthly gross of ALL employed academics in Germany at ANY career stage, not an entry-level graduate salary. The corpus's own existing note on this figure says it is 'a stock figure for all employed graduates at any career stage, not an entry-level salary, and it is not split by Bachelor/Master/PhD'. A new entrant is normally paid materially below the all-career-stage median. Consequence for break-even: because German tax and social contributions are mildly progressive, a LOWER gross yields a HIGHER net-to-gross ratio, so applying this EUR 3,735 net to a junior salary would UNDERSTATE take-home. If the corpus needs a true entry-level German graduate net, it must first establish an official entry-level gross - the Bundesagentur fuer Arbeit does not publish one - and then rerun the same official BMF calculator at that gross. Official German net-pay lookup tables no longer exist: a secondary publisher of 'Lohnsteuertabellen 2026' states 'Fuer den Lohnsteuerabzug gab es bis 2003 amtliche Lohnsteuertabellen von der Finanzverwaltung. Es werden nur noch Programmablaufplaene zur Berechnung der Lohnsteuer veroeffentlicht.', which I confirmed against the BMF, whose 2026 offering is Programmablaeufe plus this calculator.",
+  "evidence_limitations": "Not a graduate-specific and certainly not entry-level figure: the underlying gross is a median across all employed academics regardless of career stage or degree level. Holds for a single, childless, non-church-paying employee under 64 in the statutory insurance system, with no pension income and no other income. Uses the national average Zusatzbeitrag (2.9 %) rather than an individual Krankenkasse rate. Figures are annual rates divided by twelve and will not exactly match a monthly payslip."
+}

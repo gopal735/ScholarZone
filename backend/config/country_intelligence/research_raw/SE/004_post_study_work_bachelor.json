@@ -1,0 +1,89 @@
+{
+  "country": "SE",
+  "topic": "post_study_work",
+  "source_id": "migrationsverket-look-for-work-after-completing-studies-in-sweden",
+  "source_url": "https://www.migrationsverket.se/en/you-want-to-extend/study/look-for-work-after-completing-your-studies-in-sweden.html",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "The Swedish Migration Agency (Migrationsverket)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "# You want to extend Look for work after completing your studies in Sweden\n\nYou have completed your higher education studies in Sweden and want to apply for a residence permit to look for work or investigate the possibilities of starting your own business here. Your family can apply at the same time as you.\n\nIf you have a residence permit for higher education in Sweden, i.e., studies at the first-cycle, second-cycle, or third-cycle (doctoral) level, and have completed your studies here, you can be granted a residence permit to look for work or explore the possibilities of starting your own business here.\n\nYou can also apply for a residence permit to look for work in Sweden if you have had a residence permit for studies in another EU country and have stayed in Sweden for at least two semesters as part of your studies.\n\n## Requirements to get a residence permit\n\nYou must have a valid passport\n\nYou must submit your application before your current permit for higher education expires. This applies regardless of whether the permit has been issued by Sweden or by another EU country.\n\nYou must have completed a higher education programme lasting at least two semesters. This means that you must have completed the entire education programme to which you were first admitted and have passed all your courses. \"Higher education programme\" means education completed at a university or university college. Studies in, e.g., a higher vocational education programme do not count.\n\nYou must be planning to look for work or investigate the possibilities of starting your own business\n\nYou must be able to support yourself financially. Your means of financial maintenance must be sufficient for the entire validity period of your permit.\n\nYou must have, or have applied for, a comprehensive health insurance policy. If the total continuous period of time for your residence permits in Sweden is less than one year, you need health insurance.\n\n## For how long can I be granted a residence permit?\n\nAfter completing bachelor's or master's level studies, you can be granted a residence permit for up to one year. After completing doctoral studies, you can be granted a residence permit for between one year and 18 months. You cannot be granted a residence permit for a longer period than your passport is valid for.\n\n## What does the maintenance requirement mean?\n\nThe maintenance requirement is\n\n- at least SEK 10,656 per month, if you applied in 2026\n- at least SEK 10,584 per month, if you applied in 2025.\n\nIf you can show that you receive free housing and/or food through the higher education institution or an organisation that works for international exchange, the amount per month can be reduced. The monthly amount can be reduced by\n\n- SEK 2,960 per month for free food and SEK 4,736 per month for free housing, if you applied in 2026\n- SEK 2,940 per month for free food and SEK 4,704 per month for free housing, if you applied in 2025.\n\nIf your family applies with you, the monthly amount will be higher. In that case, it will include an additional\n\n- SEK 4,440 per month for a spouse or cohabiting partner\n- SEK 2,664 per month for each child.\n\n## What does it cost to apply?\n\nAdults: SEK 1,500\nChildren under 18 years of age: SEK 750\n\nYou will not receive a refund if your application is rejected.",
+  "research_notes": "This file SUPERSEDES the gap I recorded in 003_post_study_work.json. I initially found only the second-cycle-only permit page and recorded the Bachelor-level post-study duration as unestablished. The correct page exists at a different path and I have now fetched it.\n\nSWEDEN HAS TWO DISTINCT JOB-SEEKING PERMITS, and conflating them is the main trap in this country's data. First, the in-country permit I am recording here, 'Look for work after completing your studies in Sweden'. Second, the out-of-country permit on the page I fetched earlier, 'Look for work or start a business', which is restricted to second-cycle qualifications, lasts a maximum of nine months, requires you to be outside Sweden, and cannot be extended. They differ in length, in eligibility level, in where you apply from, and in whether extension is possible. Any corpus row that says 'Sweden job-search permit: 9 months' is describing the second-cycle outbound permit and is wrong for a Bachelor graduate.\n\nTHE BACHELOR-LEVEL PERMIT: UP TO ONE YEAR, and it is open at Bachelor's. The agency states first-cycle study permits qualify: 'studies at the first-cycle, second-cycle, or third-cycle (doctoral) level'. Duration: 'After completing bachelor's or master's level studies, you can be granted a residence permit for up to one year.' Note 'up to': twelve months is a ceiling, not an entitlement, and the page also caps the permit at passport validity. A further agency page I saw in search results states the permit cannot be extended, but I did not fetch that page, so I do not record non-extendability as a claim here.\n\nFINANCIAL PROOF FOR THIS PERMIT IS THE SAME FIGURE as the study permit, which is a useful cross-check: SEK 10,656 per month for 2026 applications, covering the ENTIRE validity period of the permit. That is materially lower than the SEK 13,000 per month required for the second-cycle outbound permit, because the two permits have different maintenance rules.\n\nTWO PREREQUISITES THAT CONSTRAIN TIMING. The application must be filed before the study permit expires, and the study must be COMPLETE with passing grades in all courses, the whole programme to which the applicant was first admitted. A minimum of two semesters at a Swedish university or university college is required; higher vocational education does not count. If the permit is about to expire before grades are issued, the agency says apply anyway and supplement with the completion certificate later. Useful detail: an applicant with an ongoing study-extension application who has finished does not need a fresh application, just a call to the agency.\n\nFamily can apply simultaneously, and adult family members granted permits are permitted to work. Application fee SEK 1,500 adult, SEK 750 child under 18, non-refundable on rejection.",
+  "claims": [
+    {
+      "claim_id": "se-poststudy-bachelor-duration-1",
+      "statement": "The Swedish Migration Agency states that after completing bachelor's or master's level studies in Sweden a residence permit to look for work can be granted for up to one year.",
+      "value": 12,
+      "unit": "months (up to one year, stated as a ceiling)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "se-poststudy-bachelor-eligible-1",
+      "statement": "The Swedish Migration Agency states that a holder of a first-cycle (bachelor's) study permit who has completed their studies in Sweden can be granted a residence permit to look for work or explore starting a business.",
+      "value": 1,
+      "unit": "bachelor degree qualifies for the in-country job-search permit",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "se-poststudy-permit-name-2",
+      "statement": "The official in-country Swedish name for the Bachelor-graduate job-search permit is a residence permit to look for work after completing your studies in Sweden, distinct from the separate second-cycle-only permit to look for work or start a business.",
+      "value": "residence permit to look for work after completing your studies in Sweden",
+      "unit": "official permit name",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "se-poststudy-completion-requirement-1",
+      "statement": "The Swedish Migration Agency requires the applicant to have completed the entire higher education programme to which they were first admitted, with passing grades in all courses, and a minimum of two semesters at a Swedish university or university college; higher vocational education does not count.",
+      "value": 2,
+      "unit": "semesters minimum in Swedish higher education",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "se-poststudy-financial-proof-1",
+      "statement": "For the in-country look-for-work-after-studies permit the Swedish Migration Agency requires financial maintenance of at least SEK 10,656 per month for 2026 applications, sufficient for the entire validity period of the permit.",
+      "value": 10656,
+      "unit": "SEK per month",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "se-poststudy-timing-1",
+      "statement": "The Swedish Migration Agency states the application must be submitted before the current higher-education permit expires.",
+      "value": 0,
+      "unit": "days of slack after study permit expiry for a first application",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "se-poststudy-permit-fee-1",
+      "statement": "The Swedish Migration Agency charges an application fee of SEK 1,500 for adults and SEK 750 for children under 18, with no refund if the application is rejected.",
+      "value": 1500,
+      "unit": "SEK application fee (adult)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ],
+  "conflict": {
+    "note": "RESOLVED AFTER FURTHER FETCHING, but recorded because the confusion is easy to reproduce and this corpus will keep encountering it. Two DIFFERENT Swedish permits, not a contradiction in one source. (1) 'Look for work or start a business', out-of-country, second-cycle qualifications only, maximum NINE months, must be applied for from outside Sweden. (2) 'Look for work after completing your studies in Sweden', in-country, first-cycle/bachelor's included, up to ONE YEAR. Both are on the same official site, both HTTP 200, fetched 2026-10-05. A nine-month Swedish job-search figure attached to a Bachelor graduate is a category error. Maintenance also differs: SEK 13,000/month for the nine-month second-cycle permit versus SEK 10,656/month for the twelve-month in-country permit.",
+    "source_a": {
+      "publisher": "The Swedish Migration Agency",
+      "permit": "look for work after completing your studies in Sweden",
+      "value": 12,
+      "unit": "months, up to one year",
+      "eligibility": "first-cycle (bachelor) included",
+      "url": "https://www.migrationsverket.se/en/you-want-to-extend/study/look-for-work-after-completing-your-studies-in-sweden.html"
+    },
+    "source_b": {
+      "publisher": "The Swedish Migration Agency",
+      "permit": "look for work or start a business (out-of-country, second-cycle)",
+      "value": 9,
+      "unit": "months maximum",
+      "eligibility": "second-cycle only; bachelor's not listed",
+      "url": "https://www.migrationsverket.se/English/Private-individuals/Working-in-Sweden/Look-for-work-or-start-a-business.html"
+    }
+  }
+}

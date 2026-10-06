@@ -1,0 +1,30 @@
+{
+  "country": "DE",
+  "topic": "bavaria_non_eu_tuition",
+  "source_id": "de-uni-thi-ingolstadt-001",
+  "source_url": "https://www.thi.de/en/studies/international-degree-students/tuition-fees",
+  "source_type": "UNIVERSITY_OFFICIAL",
+  "publisher": "Technische Hochschule Ingolstadt (THI)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "From summer term 2026, Technische Hochschule Ingolstadt (THI) charges tuition fees of 800 euros per semester for Bachelor and 1.200 euros per semester for Master students from third countries* in accordance with Art. 13 (3), sentence 1, no. 6 Bavarian Higher Education Innovation Act (BayHIG). THI students already paying service fees of 500€ or continuing their studies in the same study programme in the summer term 2026 are not affected. These fees will be used to expand the services for onboarding, integration and career entry for international students. The services are provided by the International Welcome Centre (IWC). All students are still required to pay the student union fee per semester. [...] Who pays service fees? Persons who start their academic studies from summer term 2026 with a *citizenship outside the European Union (EU) and the European Economic Area (EEA). Tuition fees are charged for the duration of the entire degree programme and enrolment at THI.",
+  "research_notes": "CONFIRMED: at least one Bavarian public university charges a semester tuition fee for non-EU third-country students in Bachelor's programmes. THI (Technische Hochschule Ingolstadt) charges EUR 800 per semester for Bachelor's students from outside the EU/EEA who start in summer term 2026, under Art. 13(3) sentence 1 no. 6 BayHIG (Bavarian Higher Education Innovation Act). Master students pay EUR 1,200 per semester, but Master's is out of scope for this corpus and is recorded only as context. Verified that this is a per-semester amount. NOT CONFIRMED / GAP: I could NOT retrieve the Bavarian state ministry (stmwk.bayern.de) consolidated fee page — https://www.stmwk.bayern.de/studium/tuition-fees.html returned HTTP 404. Therefore I cannot state a single statewide Bavarian mandatory fee, nor whether the fee is uniform across Bavarian universities. Per-university variation is therefore NOT established from this evidence: only THI is confirmed. Note the odd English rendering 'service fees' alongside 'tuition fees' on the same page (German original uses Studiengebühren); the two are used interchangeably there.",
+  "claims": [
+    {
+      "claim_id": "de-bavaria-non-eu-tuition-thi-bachelor",
+      "statement": "Technische Hochschule Ingolstadt (THI), a public university in Bavaria, charges tuition fees of 800 euros per semester for Bachelor's students from third countries (outside the EU and EEA) starting from summer term 2026.",
+      "value": 800,
+      "unit": "EUR per semester",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "de-bavaria-non-eu-tuition-thi-start-date",
+      "statement": "The THI fee applies to persons who start their academic studies from summer term 2026 with a citizenship outside the European Union (EU) and the European Economic Area (EEA).",
+      "value": 800,
+      "unit": "EUR per semester",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

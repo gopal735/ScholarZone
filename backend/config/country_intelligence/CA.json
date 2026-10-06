@@ -1,0 +1,462 @@
+{
+  "contract_version": "1.0.0",
+  "country": {
+    "currency": null,
+    "iso2": "CA",
+    "name_en": "Canada"
+  },
+  "gaps": [
+    {
+      "attempted_sources": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/get-documents/financial-support.html"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ca.ca-financial-proof-3",
+      "reason": "Archived evidence recorded a finding with no numeric figure: The published living-expense amounts explicitly EXCLUDE tuition fees and transportation costs - the IRCC table column is headed 'Amount required per year (excluding tuition and transportation costs)'. Applicants must separately prove tuition fees and transportation to and from Canada in addition to living expenses."
+    },
+    {
+      "attempted_sources": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/get-documents/financial-support.html"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ca.ca-financial-proof-5",
+      "reason": "Archived evidence recorded a finding with no numeric figure: The requirement is officially named 'Proof of financial support' and the funds must be available without working in Canada; for programs longer than a year the applicant must also explain how the full duration will be funded."
+    },
+    {
+      "attempted_sources": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/get-documents/financial-support.html"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ca.ca-financial-proof-6",
+      "reason": "Archived evidence recorded a finding with no numeric figure: The federal amounts do not apply to Quebec, which requires proof of financial cover for the costs set by the Ministere de l'Immigration, de la Francisation et de l'Integration in order to obtain a Quebec Acceptance Certificate (CAQ)."
+    },
+    {
+      "attempted_sources": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/who-can-apply/canadian-experience-class.html"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ca.ca-permanent-residence-2",
+      "reason": "Archived evidence recorded a finding with no numeric figure: Qualifying work must be paid, must be in a NOC TEER 0, 1, 2 or 3 category, and must have been performed in Canada while authorized to work under temporary resident status."
+    },
+    {
+      "attempted_sources": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/who-can-apply/canadian-experience-class.html"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ca.ca-permanent-residence-3",
+      "reason": "Archived evidence recorded a finding with no numeric figure: Work done while studying full-time does not count toward CEC, and co-op work terms also do not count."
+    },
+    {
+      "attempted_sources": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/who-can-apply/canadian-experience-class.html"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ca.ca-permanent-residence-4",
+      "reason": "Archived evidence recorded a finding with no numeric figure: The CEC is not available to applicants who plan to live in Quebec, which selects its own skilled workers."
+    },
+    {
+      "attempted_sources": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/about.html"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ca.ca-post-study-work-1",
+      "reason": "Archived evidence recorded a finding with no numeric figure: The official Canadian post-study work route is the 'Post-graduation work permit' (PGWP), for graduates of eligible designated learning institutions (DLIs)."
+    },
+    {
+      "attempted_sources": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/about.html"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ca.ca-post-study-work-3",
+      "reason": "Archived evidence recorded a finding with no numeric figure: For a study program of at least 8 months but less than 2 years, IRCC may grant a PGWP valid for up to the same length as the study program (e.g. a 9-month program gives up to 9 months)."
+    },
+    {
+      "attempted_sources": [
+        "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/about.html"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ca.ca-post-study-work-4",
+      "reason": "Archived evidence recorded a finding with no numeric figure: PGWP length cannot exceed the applicant's passport validity, whichever comes first, so passport expiry can shorten the permit."
+    },
+    {
+      "attempted_sources": [
+        "https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/section-300.html"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ca.ca-visa-fee-2",
+      "reason": "Archived evidence recorded a finding with no numeric figure: The CAD 150 study permit fee is a processing fee only and is not the total cost of obtaining a Canadian study visa; no per-year health surcharge is set under section 300 of the Immigration and Refugee Protection Regulations."
+    },
+    {
+      "attempted_sources": [
+        "https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/section-300.html"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ca.ca-visa-fee-3",
+      "reason": "Archived evidence recorded a finding with no numeric figure: The study permit processing fee is waived for nine classes of person, including students whose study in Canada is under an agreement or arrangement between Canada and another country providing for reciprocity of student exchange programs."
+    },
+    {
+      "attempted_sources": [
+        "ca-statcan-graduates-chart-gross-001"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ca.career.average_starting_salary.gross_monthly",
+      "reason": "3 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 70000 CAD per year (ca-statcan-graduates-chart-gross-001); 60000 CAD per year (ca-statcan-graduates-chart-gross-001); 87000 CAD per year (ca-statcan-graduates-chart-gross-001). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "utsc-tuition-and-fees"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ca.education_costs.tuition_fees.public.bachelor",
+      "reason": "3 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 66110 CAD (utsc-tuition-and-fees); 68750 CAD per year (utsc-tuition-and-fees); 2286 CAD per year (utsc-tuition-and-fees). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "ircc-proof-of-financial-support"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ca.one_time_costs.blocked_account",
+      "reason": "3 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 23448 CAD per year (ircc-proof-of-financial-support); 22895 CAD per year (ircc-proof-of-financial-support); 35888 CAD per year (ircc-proof-of-financial-support). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    }
+  ],
+  "research": {
+    "evidence_artifact_count": 8,
+    "researched_at": "2026-10-05"
+  },
+  "sections": {
+    "career": {
+      "average_starting_salary": {
+        "gross_monthly": {
+          "as_of": "2023",
+          "colliding_values": [
+            {
+              "as_of": "2023",
+              "currency": "CAD",
+              "per": "year",
+              "source_ids": [
+                "ca-statcan-graduates-chart-gross-001"
+              ],
+              "statement": "Median full-time employment income in 2023 of 2020 bachelor's degree graduates whose employment status or plans were NOT affected by the pandemic = CAD 70 000 per year. This is employment income as recorded in the tax file, i.e. GROSS / pre-tax.",
+              "value": 70000
+            },
+            {
+              "as_of": "2023",
+              "currency": "CAD",
+              "per": "year",
+              "source_ids": [
+                "ca-statcan-graduates-chart-gross-001"
+              ],
+              "statement": "Median full-time employment income in 2023 of 2020 bachelor's degree graduates whose employment status or plans WERE affected by the pandemic = CAD 60 000 per year. Statistics Canada states the difference between the two groups is statistically significant (p = 0.05).",
+              "value": 60000
+            },
+            {
+              "as_of": "2023",
+              "currency": "CAD",
+              "per": "year",
+              "source_ids": [
+                "ca-statcan-graduates-chart-gross-001"
+              ],
+              "statement": "Median full-time employment income in 2023 of 2020 master's degree graduates whose employment status or plans were not affected by the pandemic = CAD 87 000 per year. Master's graduates who were affected = CAD 72 800.",
+              "value": 87000
+            }
+          ],
+          "currency": "CAD",
+          "month": {
+            "as_of": "2023",
+            "currency": "CAD",
+            "note": "DERIVED BY PURE ARITHMETIC, NOT PUBLISHED BY THE SOURCE: CAD 70 000 per year / 12 = CAD 5,833.33 per month GROSS (pandemic-unaffected bachelor's group). The CAD 60 000 group gives CAD 5,000.00 per month gross. Division by 12 is the only operation applied.",
+            "per": "month",
+            "source_ids": [
+              "ca-statcan-graduates-chart-gross-001"
+            ],
+            "value": 5833.33,
+            "value_status": "OFFICIAL_STATISTICS"
+          },
+          "note": "Median full-time employment income in 2023 of 2020 bachelor's degree graduates whose employment status or plans were NOT affected by the pandemic = CAD 70 000 per year. This is employment income as recorded in the tax file, i.e. GROSS / pre-tax.",
+          "per": "year",
+          "source_ids": [
+            "ca-statcan-graduates-chart-gross-001"
+          ],
+          "value": 70000,
+          "value_status": "OFFICIAL_STATISTICS"
+        }
+      },
+      "net_monthly_income": {
+        "as_of": "2024",
+        "currency": "CAD",
+        "month": {
+          "as_of": "2024",
+          "currency": "CAD",
+          "note": "Refused: this figure was computed from another published figure rather than published in its own right, so it cannot carry the source's authority. The underlying published figure belongs in the corpus; a derived monthly reading of an annual figure needs a registered formula before it can be shown, because 'a year divided by twelve' is not the same number as a monthly median and readers will treat it as one.",
+          "per": "month",
+          "refusal": {
+            "operation": "period conversion",
+            "reason": "Refused: this figure was computed from another published figure rather than published in its own right, so it cannot carry the source's authority. The underlying published figure belongs in the corpus; a derived monthly reading of an annual figure needs a registered formula before it can be shown, because 'a year divided by twelve' is not the same number as a monthly median and readers will treat it as one.",
+            "required_input": "A monthly figure published by the source, or a registered formula that annual-to-monthly conversion is allowed to use."
+          },
+          "source_ids": [
+            "ca-statcan-cis-aftertax-001"
+          ],
+          "value": null,
+          "value_status": "REFUSED"
+        },
+        "note": "Refused: this figure was computed from another published figure rather than published in its own right, so it cannot carry the source's authority. The underlying published figure belongs in the corpus; a derived monthly reading of an annual figure needs a registered formula before it can be shown, because 'a year divided by twelve' is not the same number as a monthly median and readers will treat it as one.",
+        "per": "year",
+        "refusal": {
+          "operation": "period conversion",
+          "reason": "Refused: this figure was computed from another published figure rather than published in its own right, so it cannot carry the source's authority. The underlying published figure belongs in the corpus; a derived monthly reading of an annual figure needs a registered formula before it can be shown, because 'a year divided by twelve' is not the same number as a monthly median and readers will treat it as one.",
+          "required_input": "A monthly figure published by the source, or a registered formula that annual-to-monthly conversion is allowed to use."
+        },
+        "source_ids": [
+          "ca-statcan-cis-aftertax-001"
+        ],
+        "value": null,
+        "value_status": "REFUSED"
+      }
+    },
+    "education_costs": {
+      "tuition_fees": {
+        "public": {
+          "bachelor": {
+            "as_of": "current year (indicative of fall 2027)",
+            "colliding_values": [
+              {
+                "as_of": "current year (indicative of fall 2027)",
+                "currency": "CAD",
+                "per": null,
+                "source_ids": [
+                  "utsc-tuition-and-fees"
+                ],
+                "statement": "The University of Toronto charges international students CAD 66,110 in first year for Arts, Science and all other undergraduate programs.",
+                "value": 66110
+              },
+              {
+                "as_of": "current year (indicative of fall 2027)",
+                "currency": "CAD",
+                "per": "year",
+                "source_ids": [
+                  "utsc-tuition-and-fees"
+                ],
+                "statement": "For years 2 and above the international tuition is program-differentiated at U of T: CAD 68,750 for Arts/Science, CAD 72,480 for Computer Science and CAD 78,160 for Management.",
+                "value": 68750
+              },
+              {
+                "as_of": "current year",
+                "currency": "CAD",
+                "per": "year",
+                "source_ids": [
+                  "utsc-tuition-and-fees"
+                ],
+                "statement": "International students at the University of Toronto also pay mandatory incidental/ancillary fees of CAD 2,286, covering course costs and campus/student union services including the Extended Health and Dental plan.",
+                "value": 2286
+              }
+            ],
+            "currency": "CAD",
+            "note": "The University of Toronto charges international students CAD 66,110 in first year for Arts, Science and all other undergraduate programs.",
+            "per": "year",
+            "source_ids": [
+              "utsc-tuition-and-fees"
+            ],
+            "value": 66110,
+            "value_status": "UNIVERSITY_OFFICIAL"
+          }
+        }
+      }
+    },
+    "one_time_costs": {
+      "blocked_account": {
+        "as_of": "applications on or after 2026-09-01",
+        "colliding_values": [
+          {
+            "as_of": "applications on or after 2026-09-01",
+            "currency": "CAD",
+            "per": "year",
+            "source_ids": [
+              "ircc-proof-of-financial-support"
+            ],
+            "statement": "For study permit applications submitted on or after September 1, 2026, a single applicant outside Quebec must show CAD 23,448 per year for living expenses.",
+            "value": 23448
+          },
+          {
+            "as_of": "applications 2025-01-01 to 2026-08-31",
+            "currency": "CAD",
+            "per": "year",
+            "source_ids": [
+              "ircc-proof-of-financial-support"
+            ],
+            "statement": "For study permit applications submitted between January 1, 2025 and August 31, 2026 inclusive, a single applicant outside Quebec must show CAD 22,895 per year for living expenses.",
+            "value": 22895
+          },
+          {
+            "as_of": "applications on or after 2026-09-01",
+            "currency": "CAD",
+            "per": "year",
+            "source_ids": [
+              "ircc-proof-of-financial-support"
+            ],
+            "statement": "For applicants bringing 2 family members (3 people total), the amount required per year outside Quebec is CAD 35,888 for applications on or after September 1, 2026, and CAD 35,040 for applications in the 2025-01-01 to 2026-08-31 window.",
+            "value": 35888
+          }
+        ],
+        "currency": "CAD",
+        "note": "For study permit applications submitted on or after September 1, 2026, a single applicant outside Quebec must show CAD 23,448 per year for living expenses.",
+        "per": "year",
+        "source_ids": [
+          "ircc-proof-of-financial-support"
+        ],
+        "value": 23448,
+        "value_status": "OFFICIAL_GOVERNMENT"
+      },
+      "visa_fee": {
+        "as_of": "regulations current to 2026-09-21",
+        "currency": "CAD",
+        "note": "A fee of CAD 150 is payable for processing an application for a Canadian study permit.",
+        "per": "once",
+        "source_ids": [
+          "justice-irpr-section-300"
+        ],
+        "study_level": "bachelor",
+        "value": 150,
+        "value_status": "OFFICIAL_GOVERNMENT"
+      }
+    },
+    "residency": {
+      "job_seeker_residence_permit": {
+        "duration": {
+          "bachelor": {
+            "as_of": "2026-03-09",
+            "note": "For a study program of 2 years or more, IRCC may grant a PGWP valid for 3 years.",
+            "per": "year",
+            "related_figures": {
+              "ca-post-study-work-5": {
+                "as_of": "2026-03-09",
+                "note": "Each qualifying program must be at least 8 months (or 900 hours for Quebec credentials) long, and a second PGWP cannot be obtained if one was already held after an earlier program.",
+                "source_ids": [
+                  "ircc-pgwp-about"
+                ],
+                "study_level": "bachelor",
+                "value": 8,
+                "value_status": "OFFICIAL_GOVERNMENT"
+              }
+            },
+            "source_ids": [
+              "ircc-pgwp-about"
+            ],
+            "study_level": "bachelor",
+            "value": 3,
+            "value_status": "OFFICIAL_GOVERNMENT"
+          }
+        }
+      },
+      "permanent_residence": {
+        "as_of": "2026",
+        "note": "The Canadian Experience Class requires at least 1 year of work, or 1,560 hours total (30 hours per week), of skilled Canadian work experience in the 3 years before applying.",
+        "per": "year",
+        "source_ids": [
+          "ircc-canadian-experience-class"
+        ],
+        "study_level": "bachelor",
+        "value": 1,
+        "value_status": "OFFICIAL_GOVERNMENT"
+      }
+    }
+  },
+  "sources": [
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "ca-cra-2026-model-plus-statcan-gross-net-001",
+      "notes": null,
+      "publisher": "Canada Revenue Agency (CRA) - payroll deduction formulas / rates and income thresholds; gross input sourced from Statistics Canada National Graduates Survey",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "net_monthly_income evidence",
+      "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/payroll/payroll-deductions-formulas/t4127-jul/t4127-jul-payroll-deductions-formulas.html"
+    },
+    {
+      "archived": true,
+      "as_of": "2024",
+      "confidence": null,
+      "id": "ca-statcan-cis-aftertax-001",
+      "notes": null,
+      "publisher": "Statistics Canada, The Daily - Canadian Income Survey, 2024 (source table 11-10-0190-01)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_STATISTICS",
+      "title": "net_monthly_income evidence",
+      "url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260429/dq260429a-eng.htm"
+    },
+    {
+      "archived": true,
+      "as_of": "2023",
+      "confidence": null,
+      "id": "ca-statcan-graduates-chart-gross-001",
+      "notes": null,
+      "publisher": "Statistics Canada, The Daily - National Graduates Survey, class of 2020",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_STATISTICS",
+      "title": "gross_monthly_income evidence",
+      "url": "https://www150.statcan.gc.ca/n1/daily-quotidien/240322/cg-b001-eng.htm"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "ircc-canadian-experience-class",
+      "notes": "Route recorded: the Canadian Experience Class (CEC), one of the three Express Entry programmes. Note that the URL requested (…/express-entry/eligibility/canadian-experience-class.html) redirected to …/express-entry/who-can-apply/canadian-experience-class.html and the page loaded under that final URL, which is the one recorded. CRITICAL POINT for a student corpus: the minimum qualifying period is 1 year (1,560 hours) of PAID skilled Canadian work experience gained while authorized to work as a temporary resident - which for a graduate is typically the PGWP period - and it must fall within the 3 years before the application. A student's full-time study work does NOT count: 'You can't count work experience if you were studying full-time while you worked (co-op work terms also don't count)'. So co-op placements cannot be run back-to-back to manufacture PR eligibility; the student must be out of full-time study and working. Also excluded: self-employment (bar a narrow physician policy), volunteering, unpaid internships, and work done without authorization. Quebec is excluded from CEC entirely. Not verified here and therefore not claimed: the Express Entry points grid, CRS cut-off scores (which are invitation-dependent and change per draw), the Federal Skilled Worker Program's 1-year requirement, and Provincial Nominee Program streams - the PNP is usually the faster PR route for international graduates and a corpus entry that names only CEC would be misleading, but I did not fetch a PNP source so no PNP figure is asserted here.",
+      "publisher": "Immigration, Refugees and Citizenship Canada (IRCC)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "permanent_residence evidence",
+      "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/who-can-apply/canadian-experience-class.html"
+    },
+    {
+      "archived": true,
+      "as_of": "2026-03-09",
+      "confidence": null,
+      "id": "ircc-pgwp-about",
+      "notes": "Official route name: 'Post-graduation work permit' (PGWP), confirmed from IRCC, not from memory. DURATION IS TIERED BY PROGRAM LENGTH, NOT A SINGLE NUMBER - this is the main modelling trap for Canada. For a bachelor's degree, which falls under 'For all other programs' (the 3-year rule is stated only for master's degree programs), the published rule is: at least 8 months but under 2 years of study gives a permit up to the same length as the program; 2 years or more gives up to 3 years. A typical 3-4 year bachelor's therefore falls in the '2 years or more' band at 3 years, but that is an inference from the printed brackets, so it is recorded as a claim against the 2-years-or-more rule rather than asserted as a separate bachelor-specific number. The much-quoted '3-year PGWP for a 1-year master's' does NOT transfer to a bachelor's and must not be copied across. Two further hard limits: the permit cannot exceed the passport validity ('the expiry date of your passport, whichever comes first'), and eligibility depends on the school AND program being on the DLI list - graduation alone is not sufficient ('Graduating from a designated learning institution (DLI) doesn't automatically make you eligible for a PGWP'). Since 1 November 2024 most applicants must also supply approved language-test results. Not verified here: the specific language scores, the TEER category list detail, and the Provincial Nominee Program alternative - each needs its own fetch and none is claimed.",
+      "publisher": "Immigration, Refugees and Citizenship Canada (IRCC)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "post_study_work evidence",
+      "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/about.html"
+    },
+    {
+      "archived": true,
+      "as_of": "2026-09-01 onward",
+      "confidence": null,
+      "id": "ircc-proof-of-financial-support",
+      "notes": "Official name of the requirement: the page heading is 'Proof of financial support'; the body also refers to the 'financial capacity requirements'. Two distinct figures are published and BOTH are recorded because IRCC assesses the version in force on the application date, so a single hard-coded number is wrong for roughly half of all applicants. As at the retrieval date (2026-10-05) the applicable figure is $23,448 for a single applicant (applications on or after 2026-09-01); $22,895 applies only to applications filed between 2025-01-01 and 2026-08-31 inclusive. THE TRAP CONFIRMED VERBATIM: the table column header itself is 'Amount required per year (excluding tuition and transportation costs)' and the sentence immediately above it reads 'These amounts do not include tuition and transportation costs.' A student who budgets to $23,448 as the total money needed is wrong by the whole of their tuition plus return airfare; the opening list makes clear three separate things must be proven - tuition fees, living expenses, AND transportation to and from Canada. Quebec is excluded from the federal table and sets its own requirement via the CAQ, so the federal number must not be applied to Quebec. Note also 'without working in Canada' - the money must be available before arrival. Not recorded because not seen on this page: the $26,360 (2024) and $20,635 (January 2024) historical rates, which appeared only in third-party blog snippets; and the 75%-of-LICO derivation method, which likewise came from search snippets rather than a fetched IRCC page.",
+      "publisher": "Immigration, Refugees and Citizenship Canada (IRCC)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "financial_proof evidence",
+      "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/get-documents/financial-support.html"
+    },
+    {
+      "archived": true,
+      "as_of": "regulations current to 2026-09-21, last amended 2026-07-15",
+      "confidence": null,
+      "id": "justice-irpr-section-300",
+      "notes": "Taken from the regulation itself rather than the IRCC fee list, because canada.ca repeatedly returned HTTP 404 on fee-related paths during this session while the Justice Laws consolidation served the same figure and is the statutory authority. The marginal note reads exactly 'Fee — $150' and subsection 300(1) reads 'A fee of $150 is payable for processing an application for a study permit.' Currency is CAD. IMPORTANT CONTEXT THAT THE $150 FIGURE CONCEALS: this is a PROCESSING fee only. A study permit applicant in the ordinary course also pays for the initial passport, medicals and police certificates, plus any provincial document requirement, and - as recorded in 002_financial_proof.json - must show funds for tuition, living expenses and transportation. So $150 is not the cost of getting a Canadian study visa. NO HEALTH SURCHARGE ANALOGUE: unlike the UK (Immigration Health Surcharge, recorded at GB/003b), the fee schedule for a Canadian study permit contains no per-year health component, and I did not find one; I have NOT asserted that none exists in every circumstance, only that section 300 sets out a single flat processing fee with the exemptions listed. The nine fee exemptions in subsection 300(2) are recorded verbatim and are broader than most applicants expect: pending and accepted refugee claimants, Convention Refugee and Humanitarian-Assisted Person classes abroad, diplomats and their suites, visiting forces and civilian components, temporarily destitute current permit holders, students under bilateral reciprocal exchange agreements, certain US pre-inspection staff, and certain US officials on temporary posting. Clause (g) is the one most relevant to scholarship applicants: study under a Canada-country agreement providing for reciprocity of student exchange is fee-exempt. CITATION NOTE: the amendments credited to this section are SOR/2011-222 s.9, SOR/2014-19 s.5 and SOR/2015-25 s.5(E) - i.e. the $150 figure itself has not been amended in the versions displayed, though the regulations as a whole were last amended 2026-07-15. NOT VERIFIED AND NOT CLAIMED: the 'Restore your status as a student' composite fee of CAD 396.25 and the CAD 246.25 status-restoration fee, which appeared only in IRCC search-engine snippets (ircc.canada.ca fee list, dated 2026-09-21) that I did not fetch; biometrics fees; and the Canadian eTA / TRV costs. Those are excluded rather than asserted.",
+      "publisher": "Department of Justice Canada (Justice Laws Website) - Immigration and Refugee Protection Regulations, SOR/2002-227, section 300",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "visa_fees evidence",
+      "url": "https://laws-lois.justice.gc.ca/eng/regulations/SOR-2002-227/section-300.html"
+    },
+    {
+      "archived": true,
+      "as_of": "current year, indicative of fall 2027",
+      "confidence": null,
+      "id": "utsc-tuition-and-fees",
+      "notes": "Canada has no single national international tuition figure, so this is one named university (University of Toronto, UTSC admissions page) and is labelled as such. CURRENCY AMBIGUITY RESOLVED BY THE PAGE ITSELF: the amounts are unqualified '$66,110' but this is a Canadian university publishing in its own jurisdiction, and the page separately lists incidental fees in the same units; the currency is therefore recorded as CAD. STRUCTURAL POINT THAT AFFECTS TOTAL COST: Canadian international tuition is normally billed in two tiers, so a multi-year bachelor's cannot be costed at 3 x first-year fee. The page's own table gives First Year $66,110 and a distinct 'Year 2 and up' figure that differs by program ($68,750 Arts/Science, $72,480 Computer Science, $78,160 Management) - the gap is up to $12,050 per year on top of year one. Incidental/ancillary fees of $2,286 are mandatory and additional. Living costs on the same page are ESTIMATES, not government figures: on-campus housing $8,367-$18,022 for September-April and a $6,800 meal plan. HONEST CAVEAT ON AS_OF: the page itself states 'Below are the fees for full-time students during the current year, to help you estimate fees for fall 2027. Accurate fees will be approved in spring 2027, and posted on this page', so these are official indicative fees, not finalised 2027-28 fees. The phrase 'There are some international students, meeting specific criteria, who may be eligible for domestic fees' is recorded as text only - the criteria were not fetched and no domestic-fee claim is made. Also not verified and not claimed: the University of Toronto's PhD domestic-fee alignment (it appeared only in a search snippet of a budget PDF), and the Tuition Explorer per-faculty breakdown, which showed a different incidental figure ($2,100.29) for University College Arts & Science - a genuine minor discrepancy between two U of T systems that should not be silently merged.",
+      "publisher": "University of Toronto Scarborough (Admissions & Student Recruitment)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "UNIVERSITY_OFFICIAL",
+      "title": "bachelor_tuition evidence",
+      "url": "https://www.utsc.utoronto.ca/admissions/tuition-and-fees"
+    }
+  ]
+}

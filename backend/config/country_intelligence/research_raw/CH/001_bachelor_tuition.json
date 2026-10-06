@@ -1,0 +1,30 @@
+{
+  "country": "CH",
+  "topic": "bachelor_tuition",
+  "source_id": "ethz-tuition-fees",
+  "source_url": "https://ethz.ch/students/en/studies/financial/tuition-fees.html",
+  "source_type": "UNIVERSITY_OFFICIAL",
+  "publisher": "ETH Zurich",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2025",
+  "raw_extract": "The study fees include the tuition and the semester fees. Since the autumn semester 2025, a new regulation has been in effect that distinguishes between two tuition fee groups. Simple tuition fee: CHF 730 / semester for students with Swiss citizenship. for students with Liechtenstein citizenship. for students who were resident in Switzerland or the Principality of Liechtenstein at the time they obtained their university entrance qualification certificate (e.g. Matura, Abitur, etc.). This applies to all students regardless of their nationality. Other foreign students For all other foreign students, the simple tuition fee applies ONLY IF: they have an EU/EFTA citizenship and a B, L or G permit with the remark 'right to gainful employment' or a settlement permit C before starting their studies. Note: The remark 'right to gainful employment up to 15 hrs/week' is not sufficient. … Threefold tuition fee: CHF 2190 / semester All students who do not fulfil the criteria for simple tuition fee will be assigned to the second group paying a threefold tuition fee. See above:  Students simple tuition fee (Group 1). As part of the admission procedure, ETH Zurich will check whether a threefold tuition fee is required. … Transitional regulations The threefold tuition fee for foreign students will apply from the Autumn Semester 2025. Exempt from this rule are students who prior to this date were already: a. enrolled in a Bachelor's degree programme at ETH. In this case the previous fees apply until completion of the Bachelor's degree programme … updated 19.11.2025",
+  "research_notes": "ETH Zurich replaced its two-tier fee structure in Autumn Semester 2025 with a Simple / Threefold structure covering both tuition and semester fees combined. A third-country national Bachelor student without a qualifying EU/EFTA permit status pays the threefold fee of CHF 2,190 per semester, so CHF 4,380 for a standard two-semester year. The page is explicit that a permit carrying only 'right to gainful employment up to 15 hrs/week' is NOT sufficient for the simple fee, which matters because that is exactly the status most students hold. Reallocation to the simple group must be requested before enrolment and is not possible during studies. ETH is the federal institute, so this is also the cheapest-case official tuition benchmark for a highly selective public university, not a general Swiss average. UZH (University of Zurich) publishes a different structure — CHF 720 per semester plus a CHF 500 surcharge for foreign students at Bachelor level plus CHF 59 mandatory semester contributions, from https://www.uzh.ch/en/studies/application/fees.html — recorded as a second university in file 006.",
+  "claims": [
+    {
+      "claim_id": "ch-bachelor-tuition-ethz-1",
+      "statement": "ETH Zurich charges students who do not qualify for the simple tuition fee, including most third-country national Bachelor students, a threefold tuition fee of CHF 2,190 per semester.",
+      "value": 2190,
+      "unit": "CHF per semester",
+      "as_of": "2025",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "ch-bachelor-tuition-ethz-2",
+      "statement": "ETH Zurich charges the simple tuition fee of CHF 730 per semester, covering tuition and semester fees, to Swiss and Liechtenstein citizens and to students resident in Switzerland or Liechtenstein when they obtained their university entrance qualification.",
+      "value": 730,
+      "unit": "CHF per semester",
+      "as_of": "2025",
+      "study_level": "bachelor"
+    }
+  ]
+}

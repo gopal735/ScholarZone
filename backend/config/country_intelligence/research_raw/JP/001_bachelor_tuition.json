@@ -1,0 +1,30 @@
+{
+  "country": "JP",
+  "topic": "bachelor_tuition",
+  "source_id": "utokyo-tuition-fees",
+  "source_url": "https://www.u-tokyo.ac.jp/en/prospective-students/tuition_fees.html",
+  "source_type": "UNIVERSITY_OFFICIAL",
+  "publisher": "The University of Tokyo",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "Student Category | Undergraduate | Graduate (excl. School of Law) | School of Law Master's/Professional | Doctoral/PhD in Medicine or Veterinary Science -- Admission fee ¥282,000 ¥282,000 ¥282,000 -- Tuition fee (annual) ¥642,960 ¥535,800 ¥520,800 ¥804,000 for those who enrolled in or before 2024 ¥535,800 -- Examination fee 1st stage ¥4,000 ¥30,000 ¥30,000 ¥7,000 2nd stage ¥13,000 - - ¥23,000",
+  "research_notes": "The University of Tokyo is a national university and the page is its own official fee table. Confirmed: undergraduate annual tuition is JPY 642,960 for the current cohort (the JPY 535,800 line on this table applies to undergraduates who enrolled in or before 2024, and to graduate students from other categories), plus a one-off admission fee of JPY 282,000. The same university page lists a separate, current national-university-wide comparison elsewhere, but I only report what appears in this fetched table. No course-level differentiation exists on this page (it is faculty-wide). I did not verify a private-university figure from an official page.",
+  "claims": [
+    {
+      "claim_id": "jp-bachelor-tuition-utokyo-1",
+      "statement": "The University of Tokyo charges undergraduates an annual tuition fee of JPY 642,960.",
+      "value": 642960,
+      "unit": "JPY per year",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "jp-bachelor-tuition-utokyo-2",
+      "statement": "The University of Tokyo charges a one-off admission fee of JPY 282,000 at admission.",
+      "value": 282000,
+      "unit": "JPY one-off",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}
