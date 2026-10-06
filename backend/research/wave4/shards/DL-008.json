@@ -1,0 +1,110 @@
+{
+  "shard_id": "DL-008",
+  "topic": "deadline",
+  "hosts": [
+    "exchanges.state.gov",
+    "studyinitaly.esteri.it",
+    "www.a-star.edu.sg",
+    "www.gov.br",
+    "www.student.universiteitleiden.nl"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 35,
+      "title": "SINGA Scholarship (Singapore)",
+      "official_source": "Agency for Science, Technology and Research (A*STAR)",
+      "official_source_url": "https://www.a-star.edu.sg/Scholarships/for-graduate-studies/singa-award",
+      "catalogue_url": null,
+      "country": "Singapore",
+      "deadline_display": "Typically June and December (2 intakes)",
+      "deadline_precision": "varies",
+      "application_period": "Not published on the awarding body's live site",
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 119,
+      "title": "Global Undergraduate Exchange Program (Global UGRAD)",
+      "official_source": "U.S. Department of State, Bureau of Educational and Cultural Affairs",
+      "official_source_url": "https://exchanges.state.gov/non-us/program/global-undergraduate-exchange-program-ugrad",
+      "catalogue_url": "https://exchanges.state.gov/non-us/program/global-undergraduate-exchange-program-global-ugrad",
+      "country": "United States",
+      "deadline_display": "Official wording: \"Application deadlines vary by program and region. Please visit the program websites below or contact the U.S. Embassy in your home country for further details and eligibility requirements.\" No single central deadline is published, so each applicant must follow the deadline set by the U.S. Embassy or Fulbright Commission in their own country.",
+      "deadline_precision": "varies",
+      "application_period": "Annual, administered through U.S. embassies and the Fulbright Commissions in each country. Deadlines vary by programme and region and are commonly set in the autumn and winter months for the following August or January start.",
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 372,
+      "title": "ITALYOU - L'Italia nel tuo futuro (MAECI scholarship for the ItAS Master's degree, University for Foreigners of Perugia)",
+      "official_source": "Ministry of Foreign Affairs and International Cooperation (MAECI), Italy",
+      "official_source_url": "https://studyinitaly.esteri.it/en/italyou",
+      "catalogue_url": null,
+      "country": "Italy",
+      "deadline_display": null,
+      "deadline_precision": "varies",
+      "application_period": "Annual edition. The 4th edition covers academic year 2026-2027, with scholarships starting 1 October 2026.",
+      "verification_status": "active"
+    },
+    {
+      "id": 385,
+      "title": "LUF - Lutfia Rabbani Scholarship Fund",
+      "official_source": "Leiden University",
+      "official_source_url": "https://www.student.universiteitleiden.nl/en/scholarships/sea/leiden-university-fund---lutfia-rabbani-scholarship-fund",
+      "catalogue_url": "https://www.universiteitleiden.nl/en/education/admission-and-application/bachelors/admission-requirements#programmes-with-limited-places-numerus-fixus",
+      "country": "Netherlands",
+      "deadline_display": "31 March 23:59 CET annually (applications open 1 January annually)",
+      "deadline_precision": "recurring",
+      "application_period": "Annual cycle: applications open 1 January and close 31 March at 23:59 CET each year",
+      "verification_status": "active"
+    },
+    {
+      "id": 436,
+      "title": "SINGA - Singapore International Graduate Award",
+      "official_source": "A Star University Sg",
+      "official_source_url": "https://www.a-star.edu.sg/singa-award",
+      "catalogue_url": null,
+      "country": "Singapore",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": null,
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 437,
+      "title": "A*STAR International Fellowship (AIF)",
+      "official_source": "Agency for Science, Technology and Research (A*STAR), A*STAR Graduate Academy",
+      "official_source_url": "https://www.a-star.edu.sg/scholarships/home/scholarships/astar-international-fellowship",
+      "catalogue_url": "https://www.a-star.edu.sg/scholarships",
+      "country": "Singapore",
+      "deadline_display": "First application cycle opens on 1 January and closes on 1 April; second application cycle opens on 14 July and closes on 1 October.",
+      "deadline_precision": "recurring",
+      "application_period": "Two application cycles a year: 1 January to 1 April and 14 July to 1 October. A*GA may consider off-cycle applications on a case-by-case basis.",
+      "verification_status": "active"
+    },
+    {
+      "id": 438,
+      "title": "National Science Scholarship (PhD)",
+      "official_source": "A Star University Sg",
+      "official_source_url": "https://www.a-star.edu.sg/scholarships/home/scholarships/national-science-scholarship-(phd)",
+      "catalogue_url": "https://www.a-star.edu.sg/scholarships",
+      "country": "Singapore",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": "Application Cycle",
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 603,
+      "title": "PEC-PG - Brazilian Program for Exchange Students, Postgraduate Level (PEC-PG 2027)",
+      "official_source": "Ministry of Foreign Affairs of Brazil (Itamaraty) with Conselho Nacional de Desenvolvimento Cientifico e Tecnologico (CNPq)",
+      "official_source_url": "https://www.gov.br/mre/en/subjects/culture-and-education/educational-themes/study-opportunities-for-international-applicants/pec-pg-graduate/selection-process-2",
+      "catalogue_url": "https://www.gov.br/mre/en/subjects/culture-and-education/educational-themes/study-opportunities-for-international-applicants",
+      "country": "Brazil",
+      "deadline_display": null,
+      "deadline_precision": "varies",
+      "application_period": "Call Notice released 29 June 2026; list of eligible institutions published December 2026; institution-level candidate selection runs from December 2026; scholarships paid March 2027 to March 2028",
+      "verification_status": "active"
+    }
+  ]
+}

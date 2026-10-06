@@ -1,0 +1,58 @@
+{
+  "shard_id": "LG-012",
+  "topic": "logo",
+  "hosts": [
+    "czs.muni.cz",
+    "formeditais.campusvirtual.fiocruz.br",
+    "studyinlatvia.lv",
+    "www.master-ediss.eu"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 297,
+      "title": "Visegrad Scholarship Programme — study or research stay hosted by Masaryk University",
+      "official_source": "International Visegrad Fund (host institution: Masaryk University, Brno)",
+      "official_source_url": "https://czs.muni.cz/en/student-from-abroad/other-possibilities/visegrad-grant",
+      "catalogue_url": "https://www.muni.cz/en/admissions/bachelors-and-masters-studies",
+      "country": "Czech Republic",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 347,
+      "title": "Erasmus Mundus EDISS Scholarship (Engineering of Data-intensive Intelligent Software Systems)",
+      "official_source": "EU EMJMD programme",
+      "official_source_url": "http://www.master-ediss.eu/scholarship/",
+      "catalogue_url": null,
+      "country": "Finland",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 585,
+      "title": "Latvian State Scholarship for Foreign Students (Scholarship for Studies in Latvia)",
+      "official_source": "State Education Development Agency (VIAA), Latvia",
+      "official_source_url": "https://studyinlatvia.lv/scholarships",
+      "catalogue_url": "https://scholarships.viaa.gov.lv",
+      "country": "Latvia",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 595,
+      "title": "Bolsas Doutorado Sanduiche no Exterior - Edital Comite Gestor Fiocruz no 01/2026 (CAPES-Global.Edu)",
+      "official_source": "Fundacao Oswaldo Cruz (Fiocruz)",
+      "official_source_url": "https://formeditais.campusvirtual.fiocruz.br/editais/cg-fiocruz-012026",
+      "catalogue_url": "https://formeditais.campusvirtual.fiocruz.br/editais",
+      "country": "Brazil",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 637,
+      "title": "Bolsas Capacitacao de Curta Duracao no Exterior - Edital Comite Gestor Fiocruz no 02/2026 (CAPES-Global.Edu)",
+      "official_source": "Fundacao Oswaldo Cruz (Fiocruz)",
+      "official_source_url": "https://formeditais.campusvirtual.fiocruz.br/editais/cg-fiocruz-022026",
+      "catalogue_url": "https://formeditais.campusvirtual.fiocruz.br/editais",
+      "country": "Brazil",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

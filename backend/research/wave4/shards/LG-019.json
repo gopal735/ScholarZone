@@ -1,0 +1,58 @@
+{
+  "shard_id": "LG-019",
+  "topic": "logo",
+  "hosts": [
+    "future.utoronto.ca",
+    "www.apu.edu.my",
+    "www.comexus.org.mx",
+    "www.prosveta.gov.rs"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 39,
+      "title": "Pearson International Scholarship (University of Toronto)",
+      "official_source": "University of Toronto",
+      "official_source_url": "https://future.utoronto.ca/pearson",
+      "catalogue_url": "https://future.utoronto.ca/undergraduate-programs",
+      "country": "Canada",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 622,
+      "title": "World in Serbia Project Scholarships of the Government of the Republic of Serbia",
+      "official_source": "Ministry of Education, Science and Technological Development of the Republic of Serbia",
+      "official_source_url": "https://www.prosveta.gov.rs/wp-content/uploads/2026/05/WORLD-IN-SERBIA-PROJECT-DESCRIPTION-2026-2027-2028.pdf",
+      "catalogue_url": "https://welcometoserbia.gov.rs/scholarships",
+      "country": "Serbia",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 648,
+      "title": "APU International Students Scholarships & Merit Awards 2026",
+      "official_source": "Asia Pacific University Malaysia (APU)",
+      "official_source_url": "https://www.apu.edu.my/apu-international-students-scholarships-merit-awards",
+      "catalogue_url": null,
+      "country": "Malaysia",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 687,
+      "title": "Beca Posgrado STEM Regional (Fulbright-Garcia Robles) - COMEXUS",
+      "official_source": "U.S.-Mexico Commission for Educational and Cultural Exchange (COMEXUS), the Fulbright Commission in Mexico",
+      "official_source_url": "https://www.comexus.org.mx/becas_para_mexicanos/posgrado_stem_regional",
+      "catalogue_url": "https://www.comexus.org.mx/becas_mexicanos_home.php",
+      "country": "United States",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 696,
+      "title": "Fulbright-Garcia Robles Graduate Degree Program (COMEXUS, Mexico)",
+      "official_source": "Comision Mexico-Estados Unidos para el Intercambio Educativo y Cultural (COMEXUS), with the Fulbright Program",
+      "official_source_url": "https://www.comexus.org.mx/becas_para_estadounidenses/degree",
+      "catalogue_url": "https://www.comexus.org.mx/becas_estadounidenses_home.php",
+      "country": "Mexico",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "shard_id": "LG-020",
+  "topic": "logo",
+  "hosts": [
+    "gulbenkian.pt",
+    "www.arabfund.org",
+    "www.dtu.dk",
+    "www.qu.edu.qa"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 269,
+      "title": "DTU Tuition Fee Waiver for International non-EU/EEA MSc Students",
+      "official_source": "Technical University of Denmark (DTU)",
+      "official_source_url": "https://www.dtu.dk/english/education/graduate/fees-and-funding/external-scholarships",
+      "catalogue_url": "https://www.dtu.dk/english/education/graduate",
+      "country": "Denmark",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 331,
+      "title": "Tuition Fee Waiver",
+      "official_source": "Dtu.Dk",
+      "official_source_url": "https://www.dtu.dk/education/student-life/finances-and-scholarships/scholarships-for-international-students",
+      "catalogue_url": null,
+      "country": "Denmark",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 628,
+      "title": "Gulbenkian Institute for Advanced Study Fellowships 2027/28",
+      "official_source": "Fundacao Calouste Gulbenkian",
+      "official_source_url": "https://gulbenkian.pt/en/bolsas-lista/fellowships-gulbenkian-institute-for-advanced-study",
+      "catalogue_url": null,
+      "country": "Portugal",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 667,
+      "title": "Arab Fund Fellowship for Academic Excellence (برنامج الزمالات للتميز الأكاديمي)",
+      "official_source": "Arab Fund for Economic and Social Development (AFESD)",
+      "official_source_url": "https://www.arabfund.org/overview/fellowships-program",
+      "catalogue_url": null,
+      "country": "Kuwait",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 680,
+      "title": "Qatar University International Students Scholarship",
+      "official_source": "Qatar University, Office of the Vice President for Student Affairs — Scholarships Section",
+      "official_source_url": "https://www.qu.edu.qa/en-us/students/admission/scholarships/types",
+      "catalogue_url": "https://www.qu.edu.qa/en-us/students/admission/scholarships/types",
+      "country": "Qatar",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

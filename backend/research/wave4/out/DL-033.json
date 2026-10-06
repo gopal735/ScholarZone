@@ -1,0 +1,311 @@
+{
+  "shard_id": "DL-033",
+  "agent_completed": true,
+  "topic": "deadline",
+  "agent_notes": "All 8 records researched live. ARES and SUSS block plain HTTP clients (Radware / Cloudflare), so those official pages were fetched in a real browser engine and quoted from the rendered DOM. No value was taken from a search snippet, a prior wave, or an aggregator. 1 record yielded a writable calendar date (KTH). 2 yielded recurring-window semantics with no date. 2 official deadlines are already past (ARES, Czech government scholarship) and are reported as expired_mismatch without writing the stale date. 3 stayed UNKNOWN because no official programme-level date exists.",
+  "records": [
+    {
+      "scholarship_id": 452,
+      "title": "KTH Scholarship",
+      "outcome": "recovered",
+      "deadline_semantics": "EXACT",
+      "deadline_date": "2027-01-15",
+      "deadline_display": "15 January 2027: Application closes",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.kth.se/en/studies/master/admissions/scholarships/kth-scholarship-1.72827",
+        "source_type": "official_university_page",
+        "publisher": "KTH Royal Institute of Technology",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "as_of": "Next application round: opens 1 December 2026, closes 15 January 2027. Page footer states 'Last changed: Sep 23, 2026'.",
+        "raw_extract": "Application deadlines for the KTH Scholarship\n1 December 2026: Application opens\n15 January 2027: Application closes\n1 April 2027: Scholarship results announced",
+        "exact_deadline_wording": "15 January 2027: Application closes",
+        "confidence": "HIGH",
+        "notes": "This is the shard's official_source_url and it was fetched first. The page publishes a complete dated cycle for the KTH Scholarship award itself, and the closing date is in the future relative to retrieval (2026-10-05), so the value is writable. The same page also mentions a different milestone, 'These documents must be submitted by the document submission deadline, 2 February.' - that is the supporting-document deadline for the universityadmissions.se application, not the scholarship application deadline, so it was not used. The KTH scholarships index page was also fetched (https://www.kth.se/en/studies/master/admissions/scholarships) and confirms the KTH Scholarship is a distinct award from the KTH One-Year, KTH Joint Programme and KTH India Scholarships; it publishes no competing date for the KTH Scholarship, so this is not CONFLICTING. The separate joint-programme application processes noted in the shard are a different award, not a disagreement about this deadline."
+      },
+      "field_mapping": {
+        "deadline_date": "2027-01-15",
+        "deadline_precision": "exact",
+        "deadline_display": "15 January 2027: Application closes"
+      },
+      "examined": [
+        "https://www.kth.se/en/studies/master/admissions/scholarships"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 40,
+      "title": "ARES Scholarships (Belgium)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Deadline: 18.09.2026",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.ares-ac.be/en/scholarships",
+        "source_type": "official_scholarship_page",
+        "publisher": "ARES (Academie de recherche et d'enseignement superieur), Federation of higher education institutions of the Wallonia-Brussels Federation",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": "International Training Scholarships call 2027-2028 - closed. The page states the next call is August 2027.",
+        "raw_extract": "The 2027-2028 scholarship call for applications is now closed. Next call: August 2027.\nDetails of the call\nInternational Training Scholarships 2027-2028\nDeadline:\n18.09.2026\nTarget audience:\nStudent or young professional",
+        "exact_deadline_wording": "Deadline: 18.09.2026",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url https://www.ares-ac.be/en/cooperation-au-developpement/bourses is dead: it renders ARES' own 'Page introuvable' (page not found) page. The current official ARES scholarship page was therefore fetched. The only explicit calendar deadline ARES publishes is 18.09.2026, for the International Training Scholarships 2027-2028 call. At retrieval (2026-10-05) that date is already past and the page states the call is closed, while the record is carried as active, so per brief section 6 the stale date is NOT written and NOT moved to the next cycle. The only forward-looking statement is 'Next call: August 2027', a month with no day, so no calendar date can be produced from it either. IMPORTANT: the shard's stored deadline_display 'Typically February each year' is contradicted by the official page and no official source for it was found; it should not be trusted. Both the date of the current call and the fact that ARES runs an annual five-year programme (2027-2032) were confirmed on the official page."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "Deadline: 18.09.2026"
+      },
+      "stale_deadline_date": "2026-09-18",
+      "stale_deadline_note": "The exact date the official source states for the closed 2027-2028 call. Deliberately NOT written to deadline_date because it is in the past; recorded here only so the value is not lost.",
+      "next_announced_call": "August 2027 (month precision only, no day published)",
+      "examined": [
+        "https://www.ares-ac.be/en/cooperation-au-developpement/bourses",
+        "https://ares-ac.be/sites/default/files/2026-08/fi-2027-2028_document-d-appel-en-vf_2.pdf"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.globalsouthopportunities.com/2026/08/08/scholar-15",
+          "reason": "Third-party scholarship aggregator. Not official for ARES, not fetched, content known only from a search-result snippet."
+        },
+        {
+          "url": "https://viamu.app/opportunities/ares-international-training-scholarships",
+          "reason": "Third-party opportunity listing/mirror. Not an official ARES domain, not fetched."
+        },
+        {
+          "url": "https://opportunitydesk.org/2026/08/19/ares-international-training-scholarships-2027-2028",
+          "reason": "Third-party aggregator. Not official for ARES, not fetched."
+        },
+        {
+          "url": "https://www.ayfnhq.org/ares-scholarship",
+          "reason": "Private training academy blog restating ARES. Not official, not fetched."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 294,
+      "title": "Scholarships of the Government of the Czech Republic for Students from Developing Countries",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Each applicant is obliged to fill in an electronic application form by 30 September 2026 at the latest.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://msmt.gov.cz/en/scholarships/government-scholarships-developing-countries",
+        "source_type": "official_government_page",
+        "publisher": "Ministry of Education, Youth and Sports (MEYS/M\u0160MT) of the Czech Republic",
+        "retrieved_at": "2026-10-05T15:36:00Z",
+        "as_of": "Academic year 2027/2028 call. Application period 21 August - 30 September 2026.",
+        "raw_extract": "The Government of the Czech Republic offers scholarships within the framework of its Foreign Development Cooperation in support of the study of foreign nationals from developing countries listed below at public institutions of higher education in the Czech Republic. The applications period for the academic year 2027/2028 is from 21 August until 30 September 2026.\nAPPLICATION SUBMISSION AND DEADLINE\nEach applicant is obliged to fill in an electronic application form by 30 September 2026 at the latest. The successful applicants start studying in the academic year 2027/2028.",
+        "exact_deadline_wording": "Each applicant is obliged to fill in an electronic application form by 30 September 2026 at the latest.",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url now 301-redirects to https://archiv.msmt.gov.cz/eu-and-international-affairs/government-scholarships-developing-countries, an archive host whose own footer states (in Czech) 'Toto je archiv webu M\u0160MT. Od 20. 8. 2026 nen\u00ed obsah t\u011bchto str\u00e1nek aktualizov\u00e1n. Aktu\u00e1ln\u00ed informace naleznete na msmt.gov.cz .' i.e. content no longer updated since 20 Aug 2026. Per brief section 5 an archived copy is not acceptable when a live page exists, so the live, current English page on msmt.gov.cz was fetched and used as the source instead. It states the 2027/2028 application period as 21 August to 30 September 2026 and the electronic-form deadline as 30 September 2026. That date is in the past at retrieval (2026-10-05) while the record is carried as active, so per brief section 6 the stale date is NOT written and NOT advanced to the next annual cycle; no 2028/2029 call has been announced on the pages read. The shard's stored claim that 'supporting documents are due 15 January 2027' was not verifiable in the live page text and was not used."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "Each applicant is obliged to fill in an electronic application form by 30 September 2026 at the latest."
+      },
+      "stale_deadline_date": "2026-09-30",
+      "stale_deadline_note": "The exact date the live official government page states for the 2027/2028 call. Deliberately NOT written to deadline_date because it is in the past; recorded here only so the value is not lost.",
+      "next_announced_call": null,
+      "examined": [
+        "https://msmt.gov.cz/eu-and-international-affairs/government-scholarships-developing-countries",
+        "https://archiv.msmt.gov.cz/eu-and-international-affairs/government-scholarships-developing-countries",
+        "https://msmt.gov.cz",
+        "https://studyin.gov.cz/"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://archiv.msmt.gov.cz/eu-and-international-affairs/government-scholarships-developing-countries",
+          "reason": "Served by the archive host with a banner stating the content is no longer updated since 20 Aug 2026. Fetched and read, but rejected as the citation target in favour of the live msmt.gov.cz page."
+        },
+        {
+          "url": "https://studyin.gov.cz/",
+          "reason": "The application portal named in the guidelines; did not load in the browser (chrome-error://chromewebdata), so it yielded no deadline evidence."
+        },
+        {
+          "url": "https://www.studyin.cz",
+          "reason": "Shard catalogue_url. Fetch attempt to index.php?pageid=42 did not load; superseded by the live government page for this award."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 184,
+      "title": "Uppsala University Global Scholarship",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "The scholarship application for studies starting in autumn 2026 is now closed. The application period was 16 January\u20132 February 2026, and late applications cannot be accepted. The next scholarship round will open in early 2027 for students applying to Uppsala University.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.uu.se/en/study/masters-studies/scholarships/uppsala-university-scholarships",
+        "source_type": "official_university_page",
+        "publisher": "Uppsala University",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": "Autumn 2026 studies round (closed). Page footer states 'Last modified: 2026-09-10'.",
+        "raw_extract": "Uppsala University Global Scholarship\nApplication closed\nThe scholarship application for studies starting in autumn 2026 is now closed. The application period was 16 January\u20132 February 2026, and late applications cannot be accepted. The next scholarship round will open in early 2027 for students applying to Uppsala University.",
+        "exact_deadline_wording": "The application period was 16 January\u20132 February 2026, and late applications cannot be accepted. The next scholarship round will open in early 2027 for students applying to Uppsala University.",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url https://www.uu.se/en/admissions/scholarships returns HTTP 404, so the shard's own catalogue_url on the same official domain was used. The page carries the 'Uppsala University Global Scholarship' heading and describes a recurring annual round: the last window (16 January - 2 February 2026) has closed and the next round is announced only as 'early 2027', with no day and no exact dates. Per the brief an ANNUAL value is never converted into a calendar date, so deadline_date stays null and precision is 'recurring'. Do NOT write 2027-02-02: that is a cycle assumption, not something the page states. The page also links the separate University Admissions deadline ('You must have applied for the Master's programme before the University Admissions deadline'), which is a different deadline for a different procedure and was deliberately not used. The companion page https://www.uu.se/en/study/masters-studies/scholarships/application-guide was also fetched and carries identical wording, corroborating the finding rather than conflicting with it."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "The scholarship application for studies starting in autumn 2026 is now closed. The application period was 16 January\u20132 February 2026, and late applications cannot be accepted. The next scholarship round will open in early 2027 for students applying to Uppsala University."
+      },
+      "examined": [
+        "https://www.uu.se/en/admissions/scholarships",
+        "https://www.uu.se/en/study/masters-studies/scholarships/application-guide"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.universityadmissions.se/en/key-dates-and-deadlines/",
+          "reason": "National university admissions portal, not the scholarship provider. Its dates are a different procedure (programme admission) and are explicitly not this scholarship's deadline."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 448,
+      "title": "Singapore University of Social Sciences Scholarship (Part-time Undergraduate)",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Scholarship application period: January Semester: 1 August to 15 September; July Semester: 1 February to 15 March",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.suss.edu.sg/admissions/financial-matters/scholarships-sponsorships/part-time-undergraduate",
+        "source_type": "official_university_page",
+        "publisher": "Singapore University of Social Sciences (SUSS)",
+        "retrieved_at": "2026-10-05T15:33:00Z",
+        "as_of": "Recurring two-intake cycle; the page states no year for either window.",
+        "raw_extract": "Singapore University of Social Sciences Scholarship\n...\nHow to Apply?\nScholarship application period:\nJanuary Semester: 1 August to 15 September\nJuly Semester: 1 February to 15 March\nTo apply for the SUSS Scholarship, you need to submit your application online by the stipulated closing date. You may wish to view the e-guide before you apply for the SUSS Scholarship .\nFor new students, you must submit your admission e-application first before submitting your application for the Scholarship.\nPreviously unsuccessful candidates need not re-apply. Candidates will be notified of the application outcome via email by end November for the January Semester, and by end June for the July Semester.",
+        "exact_deadline_wording": "Scholarship application period: January Semester: 1 August to 15 September July Semester: 1 February to 15 March",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url was fetched first (SUSS sits behind Cloudflare, so the page was rendered in a real browser engine and quoted from the live DOM). The quote is taken from the 'Singapore University of Social Sciences Scholarship' block, the first award on that page, which is also the one whose Terms state 'Scholarship is only awarded for part-time undergraduate programmes' - matching this record. The page publishes two recurring windows with day-level detail but NO year, so the value is recurring and no calendar date can be written. At retrieval (2026-10-05) the January Semester window (1 August - 15 September) had already closed, and the next window (1 February - 15 March) carries no year on the page, so writing 2027-03-15 would be silently moving the value to the next cycle and was not done. Note the same page contains several other awards and sponsorships (Kewalram Chanrai, Hong Leong Foundation, ST Engineering - SUSS, UOB Future Resilience, and the SUSS sponsorships) that repeat the same two windows; the Hong Leong Foundation Scholarship lists only the July Semester window. These are different awards on the same page, not disagreements about this record's deadline, so this is not CONFLICTING."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "Scholarship application period: January Semester: 1 August to 15 September; July Semester: 1 February to 15 March"
+      },
+      "examined": [
+        "https://www.suss.edu.sg/admissions/financial-matters/scholarships-sponsorships/full-time-undergraduate"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.suss.edu.sg/admissions/financial-matters/scholarships-sponsorships/full-time-undergraduate",
+          "reason": "Fetched, but it covers the separate full-time undergraduate award set, not this part-time undergraduate record. A generic page for a different programme is not evidence for this deadline."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 27,
+      "title": "Fulbright Foreign Student Program",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Candidates are required to submit their Fulbright application and provide all supporting documents to their respective Fulbright office per established country/award deadlines.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://foreign.fulbrightonline.org/apply",
+        "source_type": "official_application_portal",
+        "publisher": "Institute of International Education (IIE) for the U.S. Department of State Fulbright Program",
+        "retrieved_at": "2026-10-05T15:33:00Z",
+        "as_of": null,
+        "raw_extract": "The Fulbright Program for Foreign Students and Foreign Language Teaching Assistants (FLTAs) application and selection process is administered by binational Fulbright Commissions/Foundations or U.S. Embassies. All Foreign Student and FLTA Program applications are processed by these offices.\n...\nIIE-Placement\nIIE Placement: IIE's Placement service works to secure degree and non-degree opportunities on behalf of Fulbright candidates. Candidates are required to submit their Fulbright application and provide all supporting documents to their respective Fulbright office per established country/award deadlines.\n...\nPlacement types for the Fulbright Foreign Student Program\nProgram eligibility, U.S. university admission & placement, and selection procedures vary widely by country.",
+        "exact_deadline_wording": "Candidates are required to submit their Fulbright application and provide all supporting documents to their respective Fulbright office per established country/award deadlines.",
+        "confidence": "MEDIUM",
+        "notes": "The shard's official_source_url (site root) was fetched first and carries no deadline at all - only an audience selector stating 'If you are a non-U.S. citizen looking to applying for a Fulbright grant to study in the United States you will apply to the Fulbright Commissions/Foundations or U.S. Embassy in your home country.' The substantive official page /apply was therefore fetched on the same official domain. It establishes that this programme has no single programme-level deadline: applications are handled by each country's binational commission/embassy, which set their own country/award deadlines, and the page states procedures 'vary widely by country'. This is not recorded as ROLLING because the page never says rolling or 'no fixed deadline' - it says the deadline is country-specific, which is a different statement - and it is not CONFLICTING because no two sources give different dates for the same deadline. NOTE on the shard's stored wording: 'U.S. Embassies/Fulbright Commissions must submit nominations by mid-September' does not appear anywhere on the official portal and no official source for it was found; it was not adopted. The page's country drop-down loads per-country detail via script that was not individually enumerated for every country, so per-country deadlines remain unexamined; a single country-specific date would not be a valid programme-level value for this record in any case."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Candidates are required to submit their Fulbright application and provide all supporting documents to their respective Fulbright office per established country/award deadlines."
+      },
+      "examined": [
+        "https://foreign.fulbrightonline.org",
+        "https://foreign.fulbrightonline.org/apply"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 469,
+      "title": "Fulbright Foreign Student Program",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Candidates are required to submit their Fulbright application and provide all supporting documents to their respective Fulbright office per established country/award deadlines.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://foreign.fulbrightonline.org/apply",
+        "source_type": "official_application_portal",
+        "publisher": "Institute of International Education (IIE) for the U.S. Department of State Fulbright Program",
+        "retrieved_at": "2026-10-05T15:33:00Z",
+        "as_of": null,
+        "raw_extract": "The Fulbright Program for Foreign Students and Foreign Language Teaching Assistants (FLTAs) application and selection process is administered by binational Fulbright Commissions/Foundations or U.S. Embassies. All Foreign Student and FLTA Program applications are processed by these offices.\n...\nIIE-Placement\nIIE Placement: IIE's Placement service works to secure degree and non-degree opportunities on behalf of Fulbright candidates. Candidates are required to submit their Fulbright application and provide all supporting documents to their respective Fulbright office per established country/award deadlines.\n...\nProgram eligibility, U.S. university admission & placement, and selection procedures vary widely by country.",
+        "exact_deadline_wording": "Candidates are required to submit their Fulbright application and provide all supporting documents to their respective Fulbright office per established country/award deadlines.",
+        "confidence": "MEDIUM",
+        "notes": "This is the shard's official_source_url and it was fetched first; it is the same official programme page as record 27 and the two records are duplicates of the same award, which is why both resolve identically. The official portal assigns the application and selection process to each binational Fulbright Commission/Foundation or U.S. Embassy and states that procedures and deadlines vary widely by country. There is therefore no programme-level calendar deadline to write. The page's per-country drop-down detail was not enumerated for every country; a country-specific date would not be a valid value for a record whose country field is 'United States' (the awarding/host country, not a nominating country), so no date was inferred. The record's stored 'Varies by country' framing is consistent with the official page; no specific date is recoverable at programme level."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Candidates are required to submit their Fulbright application and provide all supporting documents to their respective Fulbright office per established country/award deadlines."
+      },
+      "examined": [
+        "https://foreign.fulbrightonline.org/apply",
+        "https://foreign.fulbrightonline.org"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://fulbrightscholars.org",
+          "reason": "Reached from the official portal but it is the Fulbright Scholar Program (faculty/researchers), a different programme from the Foreign Student Program in this record."
+        },
+        {
+          "url": "https://fulbright.useducation.gov",
+          "reason": "U.S. Student Program site, a different programme (for U.S. citizens), not the Foreign Student Program in this record."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 449,
+      "title": "SUSS Research Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Eligible applicants to the three programmes will be evaluated on a merit basis during their admissions interviews. Potential applicants for the scholarship will be identified and nominated as part of the interview process.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.suss.edu.sg/academics/programmes/graduate-programmes/admissions/financial-assistance/scholarship",
+        "source_type": "official_university_page",
+        "publisher": "Singapore University of Social Sciences (SUSS)",
+        "retrieved_at": "2026-10-05T15:34:00Z",
+        "as_of": null,
+        "raw_extract": "SUSS Research Scholarship\nValue: Tuition fees & monthly stipend\nEligibility: Applicants seeking to one of the following three Postgraduate programmes:\nDoctor of Philosophy\nDoctor of Philosophy (Gerontology)\nMaster of Applied Research in Social Sciences Programme\n...\nHow to Apply?\nEligible applicants to the three programmes will be evaluated on a merit basis during their admissions interviews. Potential applicants for the scholarship will be identified and nominated as part of the interview process.\nSUSS will notify nominated applicants via email to attend a panel interview for the scholarship.",
+        "exact_deadline_wording": "Eligible applicants to the three programmes will be evaluated on a merit basis during their admissions interviews. Potential applicants for the scholarship will be identified and nominated as part of the interview process.",
+        "confidence": "MEDIUM",
+        "notes": "The shard's official_source_url was fetched first (SUSS is behind Cloudflare, so it was rendered in a real browser engine and quoted from the live DOM). The official page for this exact award, the 'SUSS Research Scholarship', publishes NO standalone application window or closing date. The award is not applied for directly: candidates are identified and nominated by SUSS during the admissions interviews for the three eligible postgraduate programmes, and the page gives no date for that. The admission deadlines of the three individual programmes are a different procedure and were deliberately not borrowed. The page's other awards do carry explicit windows (e.g. the graduate page also shows 'Award application period: 1 February - 15 March' and 'January Semester: 1 August - 15 September' for other scholarships), which confirms the absence of a date here is specific to the Research Scholarship rather than a page that simply omits dates everywhere. Not recorded as ROLLING because the page never uses rolling or 'no fixed deadline' wording."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Eligible applicants to the three programmes will be evaluated on a merit basis during their admissions interviews. Potential applicants for the scholarship will be identified and nominated as part of the interview process."
+      },
+      "examined": [
+        "https://www.suss.edu.sg/academics/programmes/graduate-programmes/admissions/financial-assistance/scholarship"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.suss.edu.sg/admissions/financial-matters/scholarships-sponsorships/part-time-undergraduate",
+          "reason": "Fetched for another record in this shard. It publishes '1 August to 15 September' / '1 February to 15 March' windows for undergraduate scholarships and sponsorships; those are a different award and a different programme, so they are not evidence for the SUSS Research Scholarship."
+        },
+        {
+          "url": "https://www.suss.edu.sg/admissions/financial-matters/scholarships-sponsorships/full-time-undergraduate",
+          "reason": "Fetched; a different programme (full-time undergraduate) with its own award set. Not evidence for this postgraduate award."
+        }
+      ]
+    }
+  ]
+}

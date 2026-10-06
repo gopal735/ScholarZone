@@ -1,0 +1,296 @@
+{
+  "shard_id": "DL-009",
+  "agent_completed": true,
+  "topic": "deadline",
+  "researched_at": "2026-10-05T15:26:00Z",
+  "records": [
+    {
+      "scholarship_id": 274,
+      "title": "BI Presidential Scholarship",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "The application deadline is March 1.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-presidential-scholarships",
+        "source_type": "official_scholarship_page",
+        "publisher": "BI Norwegian Business School",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "as_of": "Page states the scholarship applies only to candidates commencing Autumn 2026; no year is attached to the deadline itself. Page footer: \"(c) 2026 BI Norwegian Business School\".",
+        "raw_extract": "Application Deadline\n\n**The application deadline is March 1.**\n\n**International and domestic applicants:** A complete application for admission, including your scholarship application, must be uploaded to the online application portal. Scholarship applications are not accepted by email.\n\n**Siviloekonom 3rd year students:** Scholarship application letters must be emailed to info@bi.no.\n\n*Late applications will not be considered.*\n\n... *Only candidates admitted to a master's programme commencing in Autumn 2026 will be considered for this scholarship.*",
+        "exact_deadline_wording": "The application deadline is March 1.",
+        "confidence": "HIGH",
+        "notes": "Live page states ONE deadline for this scholarship: 'March 1', with no year. The page scopes the award to candidates 'commencing Autumn 2026', so the only deadline it publishes belongs to a cycle whose date is 1 March 2026 - about seven months before the retrieval date of 2026-10-05. Per AGENT_BRIEF section 6 this is an expired_mismatch, so deadline_date is left null and the stale date is NOT rolled forward to 2027-03-01, which the page does not state. The page also notes a separate email route for 3rd-year Siviloekonom students 'in the spring of their 3rd year' with no date given; that route has no stated deadline and is not used as the value. This refines the shard's cached deadline_precision of 'varies' - the live page states a single deadline, not a varying one."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "The application deadline is March 1."
+      },
+      "examined": [
+        "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-presidential-scholarships",
+        "https://www.bi.no/en/programmes-and-individual-courses/scholarships/"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 275,
+      "title": "Master International Scholarship – Bergen",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Application deadline is March 1.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/master-of-science-international-scholarship--bergen",
+        "source_type": "official_scholarship_page",
+        "publisher": "BI Norwegian Business School",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "as_of": "Page states the scholarship applies only to candidates commencing Autumn 2026 at campus Bergen; no year is attached to the deadline itself.",
+        "raw_extract": "Application Deadline\n\n**Application deadline is March 1.**\n\n**International applicants:** A complete application for admission, including your scholarship application, must be uploaded to the online application portal. Applications for scholarship are not accepted by email.\n\n*Late applications will not be considered.*\n\n... *Only candidates admitted to a Master of Science programme at campus Bergen commencing Autumn 2026 will be considered for this scholarship.*",
+        "exact_deadline_wording": "Application deadline is March 1.",
+        "confidence": "HIGH",
+        "notes": "Live page states the deadline as 'March 1' with no year, described as a standing annual rule ('Each year, the number of scholarship applications...'). The page scopes the award to the Autumn 2026 Bergen intake, making the published deadline 1 March 2026, which is in the past relative to retrieval on 2026-10-05. Recorded as expired_mismatch per AGENT_BRIEF section 6; deadline_date is null and no 2027 date is inferred from the page's annual wording."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "Application deadline is March 1."
+      },
+      "examined": [
+        "https://www.bi.no/en/programmes-and-individual-courses/scholarships/master-of-science-international-scholarship--bergen"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 276,
+      "title": "BI International Baccalaureate Scholarship",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "March 1 — International applicants who do not reside in Norway. April 15 — Norwegian citizens and international citizens enrolled in Norwegian high school or who are residents of Norway. Apply for admission by April 15 and then applicants must submit their final diploma no later than July 7.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-international-baccalaureate-scholarship",
+        "source_type": "official_scholarship_page",
+        "publisher": "BI Norwegian Business School",
+        "retrieved_at": "2026-10-05T15:27:00Z",
+        "as_of": "Page states the scholarship applies only to candidates commencing Autumn 2026; no year is attached to either deadline.",
+        "raw_extract": "Application Deadline\n\n**March 1**\nInternational applicants who do not reside in Norway.\n\n**April 15**\nNorwegian citizens and international citizens enrolled in Norwegian high school or who are residents of Norway. Apply for admission by April 15 and then applicants must submit their final diploma no later than July 7.\n\n... *Only candidates admitted to the Bachelor of Data Science for Business, Bachelor of Business Administration, or Bachelor of Digital Business programme commencing Autumn 2026 will be considered for this scholarship.*",
+        "exact_deadline_wording": "March 1 / April 15",
+        "confidence": "HIGH",
+        "notes": "The live page publishes TWO category-dependent deadlines, neither carrying a year: 1 March for international applicants not resident in Norway, and 15 April for Norwegian citizens and residents (with final diploma due no later than 7 July). This is a single source describing different deadlines for different applicant categories, NOT a conflict between sources, so CONFLICTING is not used. Because no single date applies to the record, no date is written. The page scopes the award to the Autumn 2026 intake, so both published dates (2026-03-01 and 2026-04-15) fall before the 2026-10-05 retrieval date, making this an expired_mismatch. The category breakdown is preserved in the additional key applicant_category_deadlines rather than being collapsed into one fabricated date."
+      },
+      "applicant_category_deadlines": [
+        {
+          "category": "International applicants who do not reside in Norway",
+          "wording_verbatim": "March 1",
+          "date": null
+        },
+        {
+          "category": "Norwegian citizens and international citizens enrolled in Norwegian high school or who are residents of Norway",
+          "wording_verbatim": "April 15",
+          "date": null
+        },
+        {
+          "category": "Final diploma submission (follow-on step for the April 15 category, not an application deadline)",
+          "wording_verbatim": "no later than July 7",
+          "date": null
+        }
+      ],
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "March 1 (international applicants not resident in Norway) / April 15 (Norwegian citizens and residents); final diploma no later than July 7."
+      },
+      "examined": [
+        "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-international-baccalaureate-scholarship"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 277,
+      "title": "Future African Leader Scholarship",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Application deadline is March 1.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/future-african-leader-scholarship",
+        "source_type": "official_scholarship_page",
+        "publisher": "BI Norwegian Business School",
+        "retrieved_at": "2026-10-05T15:27:00Z",
+        "as_of": "Page states the scholarship applies only to candidates commencing Autumn 2026 at campus Oslo or campus Bergen; no year is attached to the deadline.",
+        "raw_extract": "Application Deadline\n\n**Application deadline is March 1.**\n\n**International and domestic applicants**: A complete application for admission, including your scholarship application, must be uploaded to the online application portal. Applications for scholarship are not accepted by email.\n\n*Late applications will not be considered.*\n\n... *Only candidates admitted to a Master of Science degree programme at campus Oslo or campus Bergen commencing Autumn 2026 will be considered for this scholarship.*",
+        "exact_deadline_wording": "Application deadline is March 1.",
+        "confidence": "HIGH",
+        "notes": "Identical structure to the other BI master's scholarships: deadline stated as 'March 1' with no year, scoped to the Autumn 2026 intake. The published date is therefore 1 March 2026, past relative to retrieval on 2026-10-05, so outcome is expired_mismatch and deadline_date is null. Not rolled forward to 2027 on the strength of the recurring wording."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "Application deadline is March 1."
+      },
+      "examined": [
+        "https://www.bi.no/en/programmes-and-individual-courses/scholarships/future-african-leader-scholarship"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 284,
+      "title": "Erasmus Mundus Joint Masters Degrees (EMJMD/EMJM) Scholarships",
+      "outcome": "recovered",
+      "deadline_semantics": "MONTH",
+      "deadline_date": null,
+      "deadline_display": "In most cases, you should submit your application between October and January for courses starting the following academic year.",
+      "deadline_precision": "month",
+      "source": {
+        "url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+        "source_type": "official_government_page",
+        "publisher": "European Commission, Directorate-General for Education, Youth, Sport and Culture (Erasmus+ programme)",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": "Page states \"Last updated: 26 June 2025\" and describes the annual selection round generically, with no year-specific date.",
+        "raw_extract": "## When to apply\n\nA new batch of selected Erasmus Mundus Masters is added to the list each year.\n\nIn most cases, you should submit your application between **October** and **January** for courses starting the following academic year.\n\nEach master's website has all the details about the course of study, the list of the participating universities, the entry requirements and all the steps of the application process (with and without scholarship).",
+        "exact_deadline_wording": "In most cases, you should submit your application between October and January for courses starting the following academic year.",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url (studyinbelgium.be, a Wallonie-Bruxelles Campus agency page) was fetched live and contains NO deadline text whatsoever - the shard's cached display string could not be located there. Following the hierarchy upward, the awarding body's own European Commission Erasmus+ student page states the October-January window verbatim, and the EACEA Erasmus Mundus Catalogue independently corroborates it: \"Most master's programmes require applications to be submitted between October and January for courses commencing the following academic year. Interested students should visit the program's official website and directly contact the consortium for information on courses, application procedures, and scholarship availability.\" Two official Commission sources agree, so this is not CONFLICTING. The window is months only with no day, so MONTH/month is correct and deadline_date is null. This is a framework-level award covering 218 consortia; the Commission explicitly defers to each consortium's own site for the binding date, so no single date is derivable for the record."
+      },
+      "corroborating_sources": [
+        {
+          "url": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
+          "source_type": "official_government_page",
+          "publisher": "European Education and Culture Executive Agency (EACEA)",
+          "retrieved_at": "2026-10-05T15:28:00Z",
+          "raw_extract": "Most master's programmes require applications to be submitted between October and January for courses commencing the following academic year. Interested students should visit the program's official website and directly contact the consortium for information on courses, application procedures, and scholarship availability."
+        }
+      ],
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "month",
+        "deadline_display": "In most cases, applications are submitted between October and January for courses starting the following academic year; individual consortia set their own deadlines."
+      },
+      "examined": [
+        "https://www.studyinbelgium.be/en/scholarships/erasmus-mundus-joint-masters-degrees-emjmd",
+        "https://erasmus-plus.ec.europa.eu/fr/opportunities/opportunities-for-organisations/cooperation-among-organisations-and-institutions/erasmus-mundus-joint-masters?facets__field_eac_tags=186"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.studyinbelgium.be/en/scholarships/erasmus-mundus-joint-masters-degmd",
+          "reason": "Fetched live as the shard's official_source_url. Page contains no deadline or application-window text at all; it only states that EMJMDs 'award EU-funded scholarships to the best student candidates applying under annual selection rounds'. The shard's cached deadline_display string was NOT found on this page."
+        },
+        {
+          "url": "https://erasmus-plus.ec.europa.eu/fr/opportunities/opportunities-for-organisations/cooperation-among-organisations-and-institutions/erasmus-mundus-joint-masters?facets__field_eac_tags=186",
+          "reason": "This is the Erasmus+ action page addressed to higher education institutions applying for programme funding, not the student scholarship page. It contains no student application deadline and was not used."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 585,
+      "title": "Latvian State Scholarship for Foreign Students (Scholarship for Studies in Latvia)",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Annual Call for Applications — From 1 February to 1 April!",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://studyinlatvia.lv/scholarships",
+        "source_type": "official_scholarship_page",
+        "publisher": "State Education Development Agency (VIAA), Latvia — Study in Latvia",
+        "retrieved_at": "2026-10-05T15:28:00Z",
+        "as_of": "Page presents the call generically as 'Annual Call for Applications' with no year attached to the window. Page carries 2026-era content (summer school dates such as 28.06. - 07.07.2026, and a citation of Cabinet Regulation No. 298 of 26 May 2026).",
+        "raw_extract": "## Annual Call for Applications\n\nFrom 1 February to 1 April!\n\n### How to Apply?\n\nThe application process takes place online in an electronic application system.\n\n[Apply here](https://scholarships.viaa.gov.lv)\n\n...\n4 submit the application by the deadline of the call,\n5 receive an official decision on the award of the scholarship by e-mail in June, and the decision is available in the candidate's profile of the electronic application system.",
+        "exact_deadline_wording": "Annual Call for Applications — From 1 February to 1 April!",
+        "confidence": "HIGH",
+        "notes": "studyinlatvia.lv is VIAA's own programme site (page footer links izm.gov.lv, contact scholarships@viaa.gov.lv) and is therefore official for this award, at hierarchy level 1/2 rather than the portal at level 5. The page states a fixed annual window closing 1 April, opening 1 February, but attaches no year to it. Because the closing date is a recurring annual rule rather than a dated instance, ANNUAL/recurring is used and deadline_date is null per AGENT_BRIEF section 6. Explicitly NOT converted to 2026-04-01 (would invent a year) nor to 2027-04-01 (would assume the next cycle). The same 1 February - 1 April window is restated for summer schools on the same page."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "Annual call for applications: 1 February - 1 April (closes 1 April); decisions notified by email in June."
+      },
+      "examined": [
+        "https://studyinlatvia.lv/scholarships",
+        "https://scholarships.viaa.gov.lv/en/login",
+        "https://scholarships.viaa.gov.lv/"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://scholarships.viaa.gov.lv/en/login",
+          "reason": "Official VIAA application portal (shard catalogue_url). Not reachable - returned a transport error on fetch attempt. No value could be read from it."
+        },
+        {
+          "url": "https://scholarships.viaa.gov.lv/",
+          "reason": "Official VIAA application portal root. Second attempt, again a transport error. Not usable as evidence."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 613,
+      "title": "International Academic Merit Scholarship (Griffith University)",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "You don't need to apply for the scholarship, we've kept it as easy as possible. Just apply to study at Griffith and we will let you know if you have been successful.",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://www.griffith.edu.au/international/scholarships-finance/scholarships/international-academic-merit-scholarship",
+        "source_type": "official_scholarship_page",
+        "publisher": "Griffith University",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": "No cycle date on the page. Eligibility window: start study in Trimester 3, 2025 or any trimester in 2026 or 2027.",
+        "raw_extract": "## How to apply\n\nYou don't need to apply for the scholarship, we've kept it as easy as possible. Just apply to study at Griffith and we will let you know if you have been successful.\n\n### Process\n\n- Apply to study an undergraduate or postgraduate coursework program at Griffith University.\n- We will assess your application for scholarship eligibility.\n- If you are successful we will advise you in your Letter of Offer, in Tuition and other fees - Total program fees.\n\n### Start\nCommence study in Trimester 3, 2025 or any trimester in 2026 or 2027\n\n... Scholarship applies to tuition fees only for students commencing in Trimester 3, 2025 or any trimester in 2026 or 2027. Students who defer commencement to 2028 or later are not eligible to receive the scholarship.",
+        "exact_deadline_wording": "You don't need to apply for the scholarship, we've kept it as easy as possible. Just apply to study at Griffith and we will let you know if you have been successful.",
+        "confidence": "MEDIUM",
+        "notes": "The live page states NO closing date and NO scholarship application step: the award is assessed automatically as part of the admission application. Confidence is MEDIUM rather than HIGH because the page never uses the words 'rolling' or 'no fixed deadline' - the ROLLING classification rests on the explicit absence of any separate scholarship application or stated closing date plus automatic assessment on enrolment, not on a verbatim 'rolling' declaration. deadline_date is null and no date is invented. Separately, note the eligibility window is finite: commencement is limited to Trimester 3 2025 or any trimester in 2026 or 2027, and deferral to 2028 or later forfeits eligibility. As of the 2026-10-05 retrieval date the 2026 and 2027 options remain open, so the record is genuinely still live. The shard carries verification_status 'needs_review'; this confirms the rolling characterisation but does not address that review flag. The parent scholarship index page was not separately quoted because the scholarship page itself carries the governing terms."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "rolling",
+        "deadline_display": "No scholarship application or closing date - assessed automatically when you apply to study at Griffith. Eligible starts: Trimester 3, 2025 or any trimester in 2026 or 2027."
+      },
+      "examined": [
+        "https://www.griffith.edu.au/international/scholarships-finance/scholarships/international-academic-merit-scholarship",
+        "https://www.griffith.edu.au/international/scholarships-finance"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 708,
+      "title": "ITB International Undergraduate Scholarship",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Application deadline: July 01, 2026",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://finaid.itb.ac.id/itb-international-undergraduate-scholarship",
+        "source_type": "official_scholarship_page",
+        "publisher": "Institut Teknologi Bandung (ITB), Directorate of Student Admissions",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": "Page is headed \"SCHOLARSHIP - FULLY FUNDED - 2026 INTAKE\" and carries the stamp \"Telah diperbaharui: 29 June 2026\" (last updated 29 June 2026).",
+        "raw_extract": "Ready to apply?\nApplication deadline: July 01, 2026\nCLICK HERE\n\n... 4. SELECTION MILESTONES TIMELINE (2026 INTAKE)\n\nApplicants must carefully observe the standard administrative cycles for the 2026 academic entry:\n\nStep 1: Jun 5 - Jul 01\nDocument Submission & Online Registration: Applicants complete forms, upload passport copy, 12-year high school credentials, recommendation, test score certificates, and video statement.\nStep 2: Finalization Deadline Will be informed later\nStep 3: ITB AQ &ELQ Simulation\nStep 4: Jul 6, 2026 ITB ELQ Test\nJul 7, 2026 Drawing Test for Architecture\nJul 7, 2026 Drawing Test for Art, and Design (FSRD)\nJul 8, 2026 ITB AQ Test\nJuly 16, 2026 Announcement of Selection Results\nJuly 17-24, 2026 Re-registration",
+        "exact_deadline_wording": "Application deadline: July 01, 2026",
+        "confidence": "HIGH",
+        "notes": "The page is JavaScript-rendered and returns only the title 'ITB FinAid' to a plain fetch; it was rendered in a real browser to read the live content, which confirms the shard's cached note that the page is headed '2026 INTAKE'. MATERIAL FINDING beyond the shard's cached value: the live page carries an explicit, unambiguous calendar deadline in its call-to-action - 'Application deadline: July 01, 2026' - which the cached deadline_display had not captured (it described only the 5 June - 1 July document-submission window). That date is EXACT. However 2026-07-01 fell about three months before the 2026-10-05 retrieval date while the record is verification_status 'active', so per AGENT_BRIEF section 6 the outcome is expired_mismatch and the stale date is NOT written to deadline_date and NOT moved to a 2027 cycle that the page does not publish. The value 2026-07-01 is preserved verbatim in published_deadline_withheld for audit. Note Step 2 'Finalization Deadline' is explicitly 'Will be informed later' and is not a deadline. No 2027 intake window is published on the page."
+      },
+      "published_deadline_withheld": "2026-07-01",
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "Application deadline: July 01, 2026 (2026 intake; this date has passed and no 2027 intake window is published)"
+      },
+      "examined": [
+        "https://finaid.itb.ac.id/itb-international-undergraduate-scholarship",
+        "https://www.itb.ac.id/scholarship"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.itb.ac.id/scholarship",
+          "reason": "The shard's catalogue_url, on the official ITB domain. Fetched live: it is a generic prose page about ITB scholarship partners (Ikatan Orang Tua Mahasiswa, Bidikmisi, Dompet Dhuafa, BCA, Djarum Foundation etc.) and contains NO deadline, intake window or schedule for the International Undergraduate Scholarship. It also cites Bidik Misi quota years as far back as 2010-2012. Not usable as deadline evidence."
+        }
+      ]
+    }
+  ]
+}

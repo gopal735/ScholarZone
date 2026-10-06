@@ -1,0 +1,98 @@
+{
+  "shard_id": "DL-041",
+  "topic": "deadline",
+  "hosts": [
+    "oia.nycu.edu.tw",
+    "tsls.com.fj",
+    "www.ceu.edu",
+    "www.mbie.govt.nz",
+    "www.unipd.it"
+  ],
+  "record_count": 7,
+  "records": [
+    {
+      "id": 136,
+      "title": "Padua International Excellence Scholarship — Università degli Studi di Padova",
+      "official_source": "Università degli Studi di Padova",
+      "official_source_url": "https://www.unipd.it/en/padua-international-excellence-scholarship-programme",
+      "catalogue_url": "https://www.unipd.it/en/english-degrees",
+      "country": "Italy",
+      "deadline_display": "There is no separate scholarship deadline: the application for the degree programme automatically makes the candidate eligible, so the deadline is the admission deadline of the chosen degree programme, published in its Admission Notice. The call for the 2027/2028 edition had not yet been published on the verification date and the University states it will appear in November 2026.",
+      "deadline_precision": "varies",
+      "application_period": "Aligned with each degree programme's admission call. For the 2026/2027 cycle the official call set first application periods of 2 November 2025 to 2 February 2026 for unlimited-access programmes and 7 January to 7 March 2026 for limited-access programmes, with scholarship results published from 11 March 2026 and 10 April 2026 respectively. The 2027/2028 call is due in November 2026.",
+      "verification_status": "active"
+    },
+    {
+      "id": 169,
+      "title": "CEU Scholarships (Central European University) — Vienna",
+      "official_source": "Central European University (CEU) — Vienna",
+      "official_source_url": "https://www.ceu.edu/scholarships",
+      "catalogue_url": null,
+      "country": "Austria",
+      "deadline_display": "Typically January-February for Fall intake",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 370,
+      "title": "Padua International Excellence Scholarship Programme",
+      "official_source": "University of Padua",
+      "official_source_url": "https://www.unipd.it/en",
+      "catalogue_url": "https://www.unipd.it/en/padua-international-excellence-scholarship-programme",
+      "country": "Italy",
+      "deadline_display": "There is no separate scholarship application: \"The application for the degree course of your interest automatically makes you eligible to compete for the award of the scholarship provided you meet the requirements listed above.\" Candidates must \"apply to an English-taught degree at the University of Padova within the deadline\", and the University states that for 2027/28 the first application window \"closes on 15 November 2026\" while the scholarship Calls for Application will be published in November 2026.",
+      "deadline_precision": "varies",
+      "application_period": "Tied to the English-taught degree application cycle. For 2027/28 entry the first application window for candidates with foreign qualifications closes on 15 November 2026; Calls for Application for the scholarship are published in November 2026.",
+      "verification_status": "active"
+    },
+    {
+      "id": 400,
+      "title": "New Zealand Space Scholarship",
+      "official_source": "Ministry of Business, Innovation and Employment (MBIE), New Zealand Space Agency",
+      "official_source_url": "https://www.mbie.govt.nz/science-and-technology/space/careers-scholarships-and-awards/new-zealand-space-scholarship",
+      "catalogue_url": null,
+      "country": "New Zealand",
+      "deadline_display": "The Ministry states \"Applications for the 2027 New Zealand Space Scholarship open on 1 October 2026\" but publishes no closing date for the 2027 round on this page.",
+      "deadline_precision": "unknown",
+      "application_period": "The 2027 round opened on 1 October 2026 and is open now. The internship itself runs July to September 2027. No closing date is published on the official page.",
+      "verification_status": "active"
+    },
+    {
+      "id": 468,
+      "title": "NYCU International Student Scholarship",
+      "official_source": "National Yang Ming Chiao Tung University (NYCU) Office of International Affairs",
+      "official_source_url": "https://oia.nycu.edu.tw/oia/en/app/data/view?module=nycu0012&id=792&serno=0f046f83-4147-4ec7-8921-bbaccd8c678f",
+      "catalogue_url": null,
+      "country": "Taiwan",
+      "deadline_display": "Application Period for current NYCU students: Fall Semester January 15-March 15, Spring Semester July 15-September 15. Late application documents will not be accepted.",
+      "deadline_precision": "recurring",
+      "application_period": "Twice yearly windows (January 15-March 15 and July 15-September 15) for current students; incoming students apply with the admission application",
+      "verification_status": "active"
+    },
+    {
+      "id": 720,
+      "title": "Scholarships for High Achievers Higher Education (Level 7) Overseas Scheme (TSLS, Government of Fiji)",
+      "official_source": "Tertiary Scholarships and Loans Service (TSLS), Ministry of Education, Government of Fiji",
+      "official_source_url": "https://tsls.com.fj/high-achievers-higher-education-level-7-overseas-scheme",
+      "catalogue_url": "https://tsls.com.fj/schemes",
+      "country": "Fiji",
+      "deadline_display": null,
+      "deadline_precision": "recurring",
+      "application_period": "TSLS published its 2027 Scholarship Policies Handbook in September 2026 and its TSLS Apply portal was live and linked as \"Apply Now\" on the scheme page when checked on 2026-10-04. TSLS does not publish a closing date on the scheme page.",
+      "verification_status": "active"
+    },
+    {
+      "id": 723,
+      "title": "Cost Sharing Overseas PhD Scholarships Scheme with Australian Universities (TSLS, Government of Fiji)",
+      "official_source": "Tertiary Scholarships and Loans Service (TSLS), Ministry of Education, Government of Fiji",
+      "official_source_url": "https://tsls.com.fj/cost-sharing-overseas-phd-scholarships-scheme",
+      "catalogue_url": "https://tsls.com.fj/schemes",
+      "country": "Fiji",
+      "deadline_display": null,
+      "deadline_precision": "recurring",
+      "application_period": "TSLS published its 2027 Scholarship Policies Handbook in September 2026 and its TSLS Apply portal was live and linked as \"Apply Now\" on the scheme page when checked on 2026-10-04. TSLS does not publish a closing date on the scheme page.",
+      "verification_status": "active"
+    }
+  ]
+}

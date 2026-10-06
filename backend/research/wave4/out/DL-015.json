@@ -1,0 +1,311 @@
+{
+  "shard_id": "DL-015",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 23,
+      "title": "DAAD Development-Related Postgraduate Courses (EPOS)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Depending on chosen study programme; please check scholarship brochure or the website of your chosen study programme.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777",
+        "source_type": "official_scholarship_page",
+        "publisher": "Deutscher Akademischer Austauschdienst (DAAD)",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": "DAAD scholarship database entry as served on 2026-10-05; entry refers to the \"List of all Postgraduate courses with application deadlines 2027/2028\"",
+        "raw_extract": "Application Procedure / Application deadline / Depending on chosen study programme; please check scholarship brochure or the website of your chosen study programme. Application documents / Applications have only to be sent to the respective course directly! Please refer to their respective websites for the application procedure (e.g. online application), for the application deadline and the documents to be submitted. Applications sent to the DAAD will not be forwarded to the respective course/university.",
+        "exact_deadline_wording": "Depending on chosen study programme; please check scholarship brochure or the website of your chosen study programme.",
+        "confidence": "HIGH",
+        "notes": "DAAD publishes no programme-level application date for EPOS; the deadline is delegated to each individual postgraduate course. The shard's official_source_url (same page but with a trailing slash before the query string) returned HTTP 404, so the non-slash canonical URL was fetched instead. Confidence HIGH refers to the finding that no programme-level date exists, not to any date value. Deadline date is not derivable and was not inferred from the per-course list."
+      },
+      "field_mapping": {
+        "deadline_date": "null (leave unchanged)",
+        "deadline_precision": "unknown",
+        "deadline_display": "Depending on chosen study programme; please check scholarship brochure or the website of your chosen study programme."
+      },
+      "examined": [
+        "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777 (shard official_source_url; HTTP 404)",
+        "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/ (database index; no deadline for EPOS at programme level)",
+        "https://static.daad.de/media/daad_de/pdfs_nicht_barrierefrei/in-deutschland-studieren-forschen-lehren/daad_epos_deadlines.pdf (live official PDF, HTTP 200, text extracted: per-course table in which the DAAD Scholarship column reads \"see website of the course\" for each course, i.e. no single programme deadline)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "web search result excerpts for daad_epos_deadlines.pdf",
+          "reason": "search-result snippet; brief section 5 forbids using snippets as evidence. The PDF was fetched directly and its text extracted instead."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 230,
+      "title": "DAAD Helmut-Schmidt-Programme (Master's Scholarships for Public Policy and Good Governance - PPGG)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "The application period for all seven higher education institutions is from 1 June until 31 July 2026",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://static.daad.de/media/daad_de/pdfs_nicht_barrierefrei/in-deutschland-studieren-forschen-lehren/daad_helmut_schmidt_programme_current_announcement.pdf",
+        "source_type": "official_programme_page",
+        "publisher": "Deutscher Akademischer Austauschdienst (DAAD)",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "as_of": "Document version \"ST42 - Helmut-Schmidt-Programm Stipendienausschreibung 05/2026, Seite 5 von 6\"; linked as \"Current Announcement\" from the live DAAD scholarship-database entry for this programme",
+        "raw_extract": "APPLICATION DEADLINE The application period for all seven higher education institutions is from 1 June until 31 July 2026",
+        "exact_deadline_wording": "The application period for all seven higher education institutions is from 1 June until 31 July 2026",
+        "confidence": "HIGH",
+        "notes": "The live DAAD scholarship-database page for this programme carries no deadline itself; under \"Application Procedure\" it states only \"Please check the Current Announcement for Information on the application procedure.\" The deadline therefore comes from the Current Announcement PDF that the live page links (the PDF was fetched live and its text extracted locally). The only published application deadline is 31 July 2026, which is in the past relative to the retrieval date 2026-10-05, while the record is verification_status=active (open/upcoming). Per brief section 6 the stale date is not written and was not silently moved to 2027. The document contains no reference to a 2027 round. The shard's official_source_url detail=50018884 returns HTTP 404; the live entry for this programme is detail=50026397, which is the id in the shard's own catalogue_url."
+      },
+      "field_mapping": {
+        "deadline_date": "null (leave unchanged - published date 2026-07-31 is expired and must not be written)",
+        "deadline_precision": "unknown",
+        "deadline_display": "The application period for all seven higher education institutions is from 1 June until 31 July 2026"
+      },
+      "examined": [
+        "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50018884 (shard official_source_url; HTTP 404)",
+        "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50026397 (live DAAD entry for this programme; no deadline value, defers to the Current Announcement PDF)",
+        "https://www.daad.de/en/studying-in-germany/scholarships/daad-funding-programmes/helmut-schmidt-programme/ (official DAAD programme page; describes the programme and the seven participating courses, states no application deadline)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www2.daad.de/medien/deutschland/stipendien/formulare/ausschreibung_helmut-schmidt-programm_en.pdf",
+          "reason": "\"Call for applications 2021\" - superseded document, not the current announcement"
+        },
+        {
+          "url": "https://static.daad.de/media/daad_de/helmutschmidt2023_web.pdf",
+          "reason": "2023 edition flyer - not the current announcement"
+        },
+        {
+          "url": "web search result excerpts",
+          "reason": "search-result snippets; not admissible as evidence under brief section 5"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 231,
+      "title": "DAAD Postgraduate Studies in the Field of Architecture",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Application deadlines are updated at least once a year. In most cases, they are in the same period as the previous year. You can find the current dates here:",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=57135744",
+        "source_type": "official_scholarship_page",
+        "publisher": "Deutscher Akademischer Austauschdienst (DAAD)",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": "DAAD scholarship database entry as served on 2026-10-05 (portal currently closed for this programme)",
+        "raw_extract": "Application deadline Application deadlines are updated at least once a year. In most cases, they are in the same period as the previous year. You can find the current dates here:<br></p> [...] Applications for this scholarship programme are possible between 1 June and the stated application deadline. [...] Currently you cannot apply for this programme. Please note the application deadline specified under the Application procedure tab.",
+        "exact_deadline_wording": "Application deadlines are updated at least once a year. In most cases, they are in the same period as the previous year. You can find the current dates here:",
+        "confidence": "HIGH",
+        "notes": "In the live served HTML the sentence \"You can find the current dates here:\" is immediately followed by a closing </p> - there is no hyperlink and no date value. The only two explicit dates anywhere on the page are post-application work-sample milestones (\"you will receive a link to upload your work samples to the DAAD media database by 23 October at the latest ... please upload the work samples to the media database by 4 November CET at the latest\"), which are not the application deadline. The page also states the window opens 1 June but never states its closing date. Therefore no application deadline can be recovered. The shard's stored value \"September annually\" could NOT be confirmed against the live source and was not reused. The shard's official_source_url (trailing slash before the query string) returns HTTP 404; the non-slash canonical URL was fetched."
+      },
+      "field_mapping": {
+        "deadline_date": "null (leave unchanged)",
+        "deadline_precision": "unknown",
+        "deadline_display": "Application deadlines are updated at least once a year. In most cases, they are in the same period as the previous year. You can find the current dates here:"
+      },
+      "examined": [
+        "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135744 (shard official_source_url; HTTP 404)",
+        "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=57135744 (fetched in markdown and in raw HTML to resolve the missing \"current dates here\" link; no date present in either)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "web search result excerpts for the DAAD architecture scholarship entry",
+          "reason": "search-result snippets; the underlying page was fetched directly and contains no deadline value"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 248,
+      "title": "Government of Ireland International Education Scholarship (GOI-IES)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "2026 Application deadline — 5pm (Irish time) 12 March 2026",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://hea.ie/policy/internationalisation/goi-ies",
+        "source_type": "official_government_page",
+        "publisher": "Higher Education Authority (HEA), Ireland",
+        "retrieved_at": "2026-10-05T15:26:30Z",
+        "as_of": "2026 GOI-IES call; page heading reads \"Government of Ireland International Education Scholarships 2026 Call Closed\"",
+        "raw_extract": "Key dates 2026 Application deadline 5pm (Irish time) 12 March 2026 2026 Call outcome Early June 2026 [...] Under the initiative, 60 scholarships are awarded each year for one year of full-time study at NFQ levels 9 or 10. [...] Applications cannot be submitted once the deadline has passed.",
+        "exact_deadline_wording": "5pm (Irish time) 12 March 2026",
+        "confidence": "HIGH",
+        "notes": "The live HEA page publishes exactly one application deadline, for the 2026 call: 12 March 2026, which is in the past relative to the retrieval date 2026-10-05. The page explicitly labels the call closed and lists only 2026 key dates; no 2027 call date is published. The record is verification_status=active (open/upcoming), so per brief section 6 this is an expired_mismatch: the stale 2026-03-12 date is recorded here for traceability but NOT written to deadline_date, and no date was invented for 2027 from the annual award pattern."
+      },
+      "field_mapping": {
+        "deadline_date": "null (leave unchanged - published date 2026-03-12 is expired and must not be written)",
+        "deadline_precision": "unknown",
+        "deadline_display": "2026 Application deadline — 5pm (Irish time) 12 March 2026"
+      },
+      "examined": [
+        "https://hea.ie/policy/internationalisation/goi-ies (fetched; sole official programme page for this award)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://webportalapp.com/sp/heagrantapplication_26",
+          "reason": "linked application portal, not examined: the programme page already establishes that the 2026 call is closed and publishes no later deadline"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 389,
+      "title": "Thijssen-Schoute Fellowship 2027",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Submissions will be accepted up to 15 May 2026.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.huygens.knaw.nl/en/open-call-thijssen-schoute-fellowship-2027",
+        "source_type": "official_programme_page",
+        "publisher": "Huygens Institute (KNAW Humanities Cluster), for the Dr. C. Louise Thijssen-Schoute Foundation",
+        "retrieved_at": "2026-10-05T15:26:30Z",
+        "as_of": "Open Call: Thijssen-Schoute Fellowship 2027, news item dated 08-01-2026; funded research period runs through 2027",
+        "raw_extract": "Submissions will be accepted up to 15 May 2026. [...] How to apply Send your application in PDF format before 15 May 2026, including: [...] Period: your research will take place in 2027",
+        "exact_deadline_wording": "Submissions will be accepted up to 15 May 2026.",
+        "confidence": "HIGH",
+        "notes": "The live official call page states the submission deadline twice, as 15 May 2026. That date is in the past relative to the retrieval date 2026-10-05; only the funded research period (2027) is still ahead, and the application window itself is closed. No later or reopened round is published. The record carries verification_status=quarantined in the database (a status this codebase uses for records held back rather than for live open calls). Per brief section 6 the expired date is recorded for traceability but NOT written to deadline_date, and it was not rolled forward to a 2027 deadline."
+      },
+      "field_mapping": {
+        "deadline_date": "null (leave unchanged - published date 2026-05-15 is expired and must not be written)",
+        "deadline_precision": "unknown",
+        "deadline_display": "Submissions will be accepted up to 15 May 2026."
+      },
+      "examined": [
+        "https://www.huygens.knaw.nl/en/open-call-thijssen-schoute-fellowship-2027 (fetched; the official open-call page named as this record's official_source_url)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://thijssen-schoute.nl/",
+          "reason": "foundation's own site; not needed because the host institute's official call page states the deadline explicitly and was fetched"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 484,
+      "title": "University of Chicago International Student Financial Aid (Need-Based and Merit Scholarships for Undergraduates)",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Institutional Financial Aid Deadlines — Early Action & Early Decision I November 15th*; Early Decision II January 15th*; Regular Decision February 15th* (* If a financial aid deadline falls on a weekend or holiday, the deadline will instead be the next business day.)",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://collegeadmissions.uchicago.edu/financial-support/financial-overview/",
+        "source_type": "official_university_page",
+        "publisher": "The University of Chicago, College Admissions (Office of Financial Aid)",
+        "retrieved_at": "2026-10-05T15:32:00Z",
+        "as_of": "Institutional Financial Aid Deadlines as published on the live Financial Overview page on 2026-10-05; no cycle year attached to the dates",
+        "raw_extract": "Institutional Financial Aid Deadlines Early Action & Early Decision I November 15th* Early Decision II January 15th* Regular Decision February 15th* * If a financial aid deadline falls on a weekend or holiday, the deadline will instead be the next business day. [International Financial Aid page] International students should apply for financial aid at the time they apply to UChicago for admission. International students are eligible for financial aid only if they apply for funding during the admissions process, and will not be eligible for financial aid after receiving their admissions decision or during their four years in the College.",
+        "exact_deadline_wording": "Early Action & Early Decision I November 15th* / Early Decision II January 15th* / Regular Decision February 15th*",
+        "confidence": "HIGH",
+        "notes": "Classified ANNUAL rather than EXACT: the official page states fixed month-and-day financial aid deadlines that recur every admission cycle, but attaches no year, and the applicable date depends on which admission round the applicant chooses, so no single YYYY-MM-DD can be written without inventing a year. deadline_date is therefore null with precision \"recurring\" and the multi-date wording preserved verbatim. The record's official_source_url (www.uchicago.edu/admissions/undergraduate/financial-aid/international-students) returns HTTP 404. The live replacement page for this exact award, /financial-support/international-financial-aid/, states that international aid must be requested during the admissions process but gives no dates at all; the dates above come from the sibling official Financial Overview page, which is explicitly headed \"Institutional Financial Aid Deadlines\" and is therefore on-topic for a financial-aid record rather than a generic admission deadline. Transfer financial aid dates were not used: UChicago states international transfer applicants are not eligible for financial aid."
+      },
+      "field_mapping": {
+        "deadline_date": "null (no single date is published; month-day recurs per admission round)",
+        "deadline_precision": "recurring",
+        "deadline_display": "Institutional Financial Aid Deadlines — Early Action & Early Decision I November 15th*; Early Decision II January 15th*; Regular Decision February 15th* (* If a financial aid deadline falls on a weekend or holiday, the deadline will instead be the next business day.)"
+      },
+      "examined": [
+        "https://www.uchicago.edu/admissions/undergraduate/financial-aid/international-students (shard official_source_url; HTTP 404 Page Not Found)",
+        "https://collegeadmissions.uchicago.edu/financial-support/international-financial-aid (HTTP 200; live page for this award - describes required materials and the rule that aid must be applied for during the admissions process, but publishes no application deadline date)",
+        "https://collegeadmissions.uchicago.edu/financial-support/ (HTTP 200; section index)",
+        "https://collegeadmissions.uchicago.edu/apply/dates (HTTP 404)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://collegeadmissions.uchicago.edu/apply/application (application-round dates, e.g. \"Early Decision I Application Deadline Nov 2, 2026\")",
+          "reason": "these are admission application deadlines for a different process, not financial aid deadlines; brief section 5 forbids substituting them"
+        },
+        {
+          "url": "https://collegeadmissions.uchicago.edu/account",
+          "reason": "snippet-only source dated to the previous cycle (Nov 3, 2025 / Jan 5, 2026); not fetched and describes account deadlines, not aid deadlines"
+        },
+        {
+          "url": "web search result excerpts",
+          "reason": "search-result snippets; the Financial Overview page was rendered and read directly to obtain the verbatim quote"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 546,
+      "title": "Development-Related Postgraduate Courses (EPOS)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Depending on chosen study programme; please check scholarship brochure or the website of your chosen study programme.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777",
+        "source_type": "official_scholarship_page",
+        "publisher": "Deutscher Akademischer Austauschdienst (DAAD)",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": "DAAD scholarship database entry as served on 2026-10-05; refers to the \"List of all Postgraduate courses with application deadlines 2027/2028\"",
+        "raw_extract": "What can be funded? Individual scholarships exclusively for Postgraduate courses in Germany that are listed on the List of all Postgraduate courses with application deadlines 2027/2028. [...] Application Procedure / Application deadline / Depending on chosen study programme; please check scholarship brochure or the website of your chosen study programme. Application documents / Applications have only to be sent to the respective course directly! Please refer to their respective websites for the application procedure (e.g. online application), for the application deadline and the documents to be submitted. Applications sent to the DAAD will not be forwarded to the respective course/university.",
+        "exact_deadline_wording": "Depending on chosen study programme; please check scholarship brochure or the website of your chosen study programme.",
+        "confidence": "HIGH",
+        "notes": "Identical DAAD programme to record id 23 (same detail id 50076777); the two catalogue records differ only in URL form and stored notes. DAAD publishes no programme-level application date - the deadline belongs to each individual course, and the linked official deadline list (static.daad.de .../daad_epos_deadlines.pdf, fetched live, text extracted) shows the \"DAAD Scholarship\" column reading \"see website of the course\" row by row, with a couple of exceptions carrying their own dates. Because those dates belong to individual courses and not to the EPOS programme record, no single value was written and none was inferred. Confidence HIGH refers to the finding that no programme-level date exists."
+      },
+      "field_mapping": {
+        "deadline_date": "null (leave unchanged)",
+        "deadline_precision": "unknown",
+        "deadline_display": "Depending on chosen study programme; please check scholarship brochure or the website of your chosen study programme."
+      },
+      "examined": [
+        "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database?detail=50076777 (shard official_source_url carries a q=development search parameter; the canonical entry was fetched directly)",
+        "https://static.daad.de/media/daad_de/pdfs_nicht_barrierefrei/in-deutschland-studieren-forschen-lehren/daad_epos_deadlines.pdf (shard catalogue_url; live HTTP 200, text extracted - per-course table, header \"List of Application Deadlines ... ST42 - EPOS Deadlines\", each row's scholarship deadline is \"see website of the course\" or a course-specific date)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://static.daad.de/media/daad_de/pdfs_nicht_barrierefrei/in-deutschland-studieren-forschen-lehren/daad_epos_deadlines_2026_27.pdf",
+          "reason": "prior-cycle list (intake 2026/2027); superseded by the live daad_epos_deadlines.pdf for intake 2027/2028"
+        },
+        {
+          "url": "https://static.daad.de/media/daad_de/pdfs_nicht_barrierefrei/in-deutschland-studieren-forschen-lehren/daad_epos_-_deadlines_2025_26.pdf",
+          "reason": "2025/2026 cycle list; not the current cycle"
+        },
+        {
+          "url": "web search result excerpts",
+          "reason": "search-result snippets; not admissible as evidence under brief section 5"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 633,
+      "title": "Frederick Douglass Bicentennial Scholarship Program (UNCF)",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "The inaugural application opened during the 2018-19 academic year, with annual applications opening each year through the 2038-39 academic year. A link to the online application will be added to the page when the next session opens. All application materials must be received by the deadline.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://uncf.org/pages/the-frederick-douglass-bicentennial-scholarship-program",
+        "source_type": "official_scholarship_page",
+        "publisher": "United Negro College Fund (UNCF)",
+        "retrieved_at": "2026-10-05T15:26:30Z",
+        "as_of": "Programme page as published on the live UNCF site on 2026-10-05; programme runs through academic year 2038-39",
+        "raw_extract": "The inaugural application opened during the 2018-19 academic year, with annual applications opening each year through the 2038-39 academic year. [...] Application Process A link to the online application will be added to the page when the next session opens. All application materials must be received by the deadline. [...] The program, which recognizes and celebrates one of the most transformative figures in our nation's history, will be administered and managed by UNCF for a period of 20 years, through academic year 2038-39.",
+        "exact_deadline_wording": "All application materials must be received by the deadline.",
+        "confidence": "HIGH",
+        "notes": "The official programme page describes explicitly recurring annual timing and deliberately publishes no calendar date for the next session - the application link is added only when the session opens. Per brief section 6 an ANNUAL value is never converted into a calendar date, so deadline_date is null with precision \"recurring\". No month, day or window was invented, and none was taken from the shard's stored note. The page's only deadline reference is the generic sentence \"All application materials must be received by the deadline\", which names no date."
+      },
+      "field_mapping": {
+        "deadline_date": "null (no calendar date is published; not invented)",
+        "deadline_precision": "recurring",
+        "deadline_display": "The inaugural application opened during the 2018-19 academic year, with annual applications opening each year through the 2038-39 academic year. A link to the online application will be added to the page when the next session opens. All application materials must be received by the deadline."
+      },
+      "examined": [
+        "https://uncf.org/pages/the-frederick-douglass-bicentennial-scholarship-program (fetched; official UNCF programme page named as this record's official_source_url)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://uncf.org/scholarships",
+          "reason": "not used as the deadline source: the dedicated official programme page is authoritative and explicitly states that no date is published until the next session opens"
+        }
+      ]
+    }
+  ]
+}

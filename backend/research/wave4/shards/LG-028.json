@@ -1,0 +1,58 @@
+{
+  "shard_id": "LG-028",
+  "topic": "logo",
+  "hosts": [
+    "join.hkust.edu.hk",
+    "www.conservationleadershipprogramme.org",
+    "www.sciencespo.fr",
+    "www.uni-graz.at"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 92,
+      "title": "Émile Boutmy Scholarship",
+      "official_source": "Sciences Po",
+      "official_source_url": "https://www.sciencespo.fr/students/en/fees-funding/bursaries-financial-aid/emile-boutmy-scholarship",
+      "catalogue_url": "https://www.sciencespo.fr/en/academics/phd-programmes/",
+      "country": "France",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 164,
+      "title": "University of Graz Scholarships for International Students",
+      "official_source": "University of Graz",
+      "official_source_url": "https://www.uni-graz.at/en/studies/scholarships",
+      "catalogue_url": null,
+      "country": "Austria",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 355,
+      "title": "Mastercard Foundation Scholars Program at Sciences Po (Graduate Level)",
+      "official_source": "Sciences Po",
+      "official_source_url": "https://www.sciencespo.fr/students/en/fees-funding/bursaries-financial-aid/mastercard-foundation-scholarships/graduate-study",
+      "catalogue_url": "https://www.sciencespo.fr/students/en/fees-funding/bursaries-financial-aid/mastercard-foundation-scholarships/graduate-study",
+      "country": "France",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 535,
+      "title": "CLP Future Conservationist Awards 2027",
+      "official_source": "Conservation Leadership Programme (BirdLife International, Fauna & Flora International and the Wildlife Conservation Society)",
+      "official_source_url": "https://www.conservationleadershipprogramme.org/awards-opportunities/team-awards/future-conservationist-award",
+      "catalogue_url": null,
+      "country": "Multiple",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 707,
+      "title": "HKUST Global Learners Scholarship",
+      "official_source": "The Hong Kong University of Science and Technology (HKUST)",
+      "official_source_url": "https://join.hkust.edu.hk/global-learners-scholarship",
+      "catalogue_url": "https://join.hkust.edu.hk/intlscholarships",
+      "country": "Hong Kong",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

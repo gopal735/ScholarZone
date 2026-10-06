@@ -1,0 +1,111 @@
+{
+  "shard_id": "DL-031",
+  "topic": "deadline",
+  "hosts": [
+    "en.snu.ac.kr",
+    "moe.gov.sg",
+    "www.apu.edu.my",
+    "www.kdischool.ac.kr",
+    "www.studyinfinland.fi",
+    "www.up.pt"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 208,
+      "title": "SNU President Fellowship Program (SPF)",
+      "official_source": "Seoul National University",
+      "official_source_url": "https://en.snu.ac.kr/admission/graduate/scholarships/before_application",
+      "catalogue_url": "https://en.snu.ac.kr/admission",
+      "country": "South Korea",
+      "deadline_display": "Application Period: \"During admission period for international students every semester\". The scholarship application is submitted with the SNU online admission application, so the deadline is the SNU international graduate admission deadline for the semester applied for.",
+      "deadline_precision": "recurring",
+      "application_period": "Every semester, alongside the SNU international graduate admission application cycle; approximately 8 recipients are awarded each semester.",
+      "verification_status": "active"
+    },
+    {
+      "id": 209,
+      "title": "SNU Graduate Scholarship for Excellent Foreign Students (GSFS)",
+      "official_source": "Seoul National University",
+      "official_source_url": "https://en.snu.ac.kr/admission/graduate/scholarships/gsfs",
+      "catalogue_url": "https://oga.snu.ac.kr/scholarship-finder",
+      "country": "South Korea",
+      "deadline_display": "Application Period: \"During admission period for international students every semester\". The scholarship application is made at the same time as the online application for admission to SNU's Office of Admissions.",
+      "deadline_precision": "recurring",
+      "application_period": "Every semester, alongside the SNU international graduate admission cycle; approximately 20 recipients.",
+      "verification_status": "active"
+    },
+    {
+      "id": 262,
+      "title": "Bachelor's and Master's Scholarships in Finland (university-offered; no national government scholarship programme)",
+      "official_source": "Study in Finland, published by the Finnish National Agency for Education",
+      "official_source_url": "https://www.studyinfinland.fi/funding-your-studies/bachelors-and-masters-scholarships",
+      "catalogue_url": "https://studyinfo.fi",
+      "country": "Finland",
+      "deadline_display": "No deadline is published on this page. Study in Finland says only that 'With some universities, you can apply for a scholarship at the same time as you submit your admission application', i.e. the deadline is the individual university's admission application deadline.",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 302,
+      "title": "University of Porto Scholarships and Funding (SASUP, Merit and Scientific Scholarships)",
+      "official_source": "University of Porto (U.Porto)",
+      "official_source_url": "https://www.up.pt/portal/en/live/student-life/scholarships-and-funding",
+      "catalogue_url": "https://www.up.pt/portal/en/live/student-life/scholarships-and-funding",
+      "country": "Portugal",
+      "deadline_display": "Deadlines and application results vary by scheme and are published on the SASUP website; the U.Porto portal page states no calendar date.",
+      "deadline_precision": "varies",
+      "application_period": "Annually; SASUP states 'the scholarship is granted and renewed annually, with deadlines and application results published on the SASUP website'.",
+      "verification_status": "active"
+    },
+    {
+      "id": 341,
+      "title": "Finland Scholarship (National Programme for Master's Students)",
+      "official_source": "Studyinfinland.Fi",
+      "official_source_url": "https://www.studyinfinland.fi",
+      "catalogue_url": "https://www.studyinfinland.fi/funding-your-studies/bachelors-and-masters-scholarships",
+      "country": "Finland",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": null,
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 489,
+      "title": "Ministry of Education (MOE)",
+      "official_source": null,
+      "official_source_url": "https://moe.gov.sg/",
+      "catalogue_url": "https://www.moe.gov.sg/financial-matters/awards-scholarships",
+      "country": "Singapore",
+      "deadline_display": null,
+      "deadline_precision": "month",
+      "application_period": null,
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 609,
+      "title": "Seoul G20 Global Leaders Scholarship (KDI School of Public Policy and Management)",
+      "official_source": "KDI School of Public Policy and Management, Korea Development Institute",
+      "official_source_url": "https://www.kdischool.ac.kr/menu.es?mid=a40203000000",
+      "catalogue_url": null,
+      "country": "South Korea",
+      "deadline_display": null,
+      "deadline_precision": "recurring",
+      "application_period": "Spring and Fall admissions cycles; the Spring 2027 cycle ran to a document-review result on 2 October 2026 and a final result announcement on 19 October 2026",
+      "verification_status": "active"
+    },
+    {
+      "id": 648,
+      "title": "APU International Students Scholarships & Merit Awards 2026",
+      "official_source": "Asia Pacific University Malaysia (APU)",
+      "official_source_url": "https://www.apu.edu.my/apu-international-students-scholarships-merit-awards",
+      "catalogue_url": null,
+      "country": "Malaysia",
+      "deadline_display": null,
+      "deadline_precision": "rolling",
+      "application_period": "Open continuously on a first-come first-served basis; the page carries an \"Application Deadline\" heading but publishes no date.",
+      "verification_status": "active"
+    }
+  ]
+}

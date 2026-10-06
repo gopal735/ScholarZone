@@ -1,0 +1,278 @@
+{
+  "shard_id": "DL-040",
+  "agent_completed": true,
+  "topic": "deadline",
+  "records": [
+    {
+      "scholarship_id": 32,
+      "title": "Swedish Institute Scholarship",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "The scholarship application period for master's studies starting in the autumn semester 2026 is 9-25 February 2026. The application portal will close at 14:59 CET, 25 February 2026.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://si.se/en/apply/faq-scholarships-on-masters-level/",
+        "source_type": "official_scholarship_page",
+        "publisher": "Swedish Institute (Svenska institutet)",
+        "retrieved_at": "2026-10-05T15:31:54Z",
+        "as_of": "Master's studies starting in the autumn semester 2026 (2026/2027 cycle)",
+        "raw_extract": "When is the scholarship application period? The scholarship application period for master's studies starting in the autumn semester 2026 is 9-25 February 2026. The application portal will close at 14:59 CET, 25 February 2026.",
+        "exact_deadline_wording": "The scholarship application period for master's studies starting in the autumn semester 2026 is 9-25 February 2026. The application portal will close at 14:59 CET, 25 February 2026.",
+        "confidence": "HIGH",
+        "notes": "The record's own official_source_url (https://si.se/en/apply/scholarships) carries no dates at all - it only lists the current calls (Global Professionals, Pioneering Women in STEM). The provider's general SI Scholarships FAQ is the official umbrella-level statement of the SI master's scholarship application period. That window closed at 14:59 CET on 25 February 2026, which is in the past relative to the retrieval date (2026-10-05), while this record's verification_status is 'active'. Per the brief, the stale date is therefore not written and the next cycle has not been published by SI; the call recurs annually (the programme page states the scholarship 'is open for applications once every year'). The record's cached display 'Typically February each year' was NOT used as evidence."
+      },
+      "field_mapping": {
+        "deadline_date": "null - no write. The only published closing date, 2026-02-25, is in the past and the record is open/upcoming, so it must not be written and must not be moved to 2027.",
+        "deadline_precision": "recurring",
+        "deadline_display": "The scholarship application period for master's studies starting in the autumn semester 2026 is 9-25 February 2026. The application portal will close at 14:59 CET, 25 February 2026."
+      },
+      "examined": [
+        "https://si.se/en/apply/scholarships",
+        "https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 132,
+      "title": "#YouAreWelcomeHere Scholarship",
+      "outcome": "recovered",
+      "deadline_semantics": "MONTH",
+      "deadline_date": null,
+      "deadline_display": "Institution Deadlines (typically in Spring or Summer 2027) - Students should complete a #YouAreWelcomeHere scholarship application for each selected institution by the institutions' deadline",
+      "deadline_precision": "month",
+      "source": {
+        "url": "https://www.youarewelcomehereusa.org/scholarship",
+        "source_type": "official_scholarship_page",
+        "publisher": "NAFSA: Association of International Educators (#YouAreWelcomeHere campaign)",
+        "retrieved_at": "2026-10-05T15:31:54Z",
+        "as_of": "Fall 2027 Campaign (academic year 2027 - 2028 scholarship campaign)",
+        "raw_extract": "Timeline\n\nJanuary 1, 2027 - Colleges and universities should confirm their participation in the academic year 2027 - 2028 scholarship campaign with NAFSA by submitting the sign-up form.\n\nInstitution Deadlines (typically in Spring or Summer 2027) - Students should complete a #YouAreWelcomeHere scholarship application for each selected institution by the institutions' deadline, including either an essay or multimedia submission explaining how they will apply their leadership skills in the campus community.\n\nSeptember 1, 2027 - Colleges and universities should notify NAFSA of their institution's scholarship recipients",
+        "exact_deadline_wording": "Institution Deadlines (typically in Spring or Summer 2027)",
+        "confidence": "HIGH",
+        "notes": "NAFSA, the campaign owner, publishes no single calendar deadline: the deadline is set by each participating institution. It publishes only a window ('typically in Spring or Summer 2027'), which supports MONTH semantics with deadline_date null. The page also states 'Applicant meets the admission criteria and adhere to the deadlines at each college or university. Details will vary from school to school.' No day may be invented, and one institution's deadline must not be used for the campaign."
+      },
+      "field_mapping": {
+        "deadline_date": "null - no write. The official campaign page publishes no day, only a season window; deadlines are institution-specific.",
+        "deadline_precision": "month",
+        "deadline_display": "Institution Deadlines (typically in Spring or Summer 2027) - Students should complete a #YouAreWelcomeHere scholarship application for each selected institution by the institutions' deadline"
+      },
+      "examined": [
+        "https://www.youarewelcomehereusa.org",
+        "https://www.youarewelcomehereusa.org/information-students"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://sites.newpaltz.edu/news/2019/12/center-for-international-programs-congratulates-first-youarewelcomehere-scholarship-recipients/",
+          "reason": "catalogue_url in the shard is a third-party university news item about 2019 recipients; not fetched, and a news release about past recipients is not deadline evidence for the 2027 campaign"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 148,
+      "title": "NTU International Outstanding Graduate Student Scholarship",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Application period April 23, 2026 – May 15, 2026",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://isss.ntu.edu.tw/en/scholarship",
+        "source_type": "official_university_page",
+        "publisher": "National Taiwan University, Office of International Affairs - International Student Services (ISSS), ntu.edu.tw",
+        "retrieved_at": "2026-10-05T15:31:54Z",
+        "as_of": "Published application window for the 2026 cycle: 23 April 2026 - 15 May 2026",
+        "raw_extract": "NTU International Outstanding Graduate Student Scholarship (Graduate)\n\nEligibility\n\n1. Current international graduate student at NTU\n2. Master's students under the 2nd year; PhD students under the 4th year\n...\nApplication period\n\nApril 23, 2026 – May 15, 2026\n\nApplication link\n\nInternational Degree Current Student System\n\nI would like to continue receiving the scholarship next academic year. What should I do?\n\nThe scholarship renewal application will take place between April and May each year.",
+        "exact_deadline_wording": "April 23, 2026 – May 15, 2026",
+        "confidence": "HIGH",
+        "notes": "The record's official_source_url (https://oia.ntu.edu.tw/en/current-students/international-degree-and-dual-degree-students-wpwq/scholarships-6v27) is stale: it carries 'Last update : 2024 / 04 / 23', lists only items dated 2020/2021, and does not contain this scholarship at all - it cannot support the record's cached display. The current official source is NTU's International Student Services scholarships page (isss.ntu.edu.tw, linked from oia.ntu.edu.tw as 'International Student Services'), which names the scholarship exactly and gives an explicit window, 23 April - 15 May 2026. That window closed on 15 May 2026, before the retrieval date (2026-10-05), while the record's verification_status is 'active', so the stale date is not written and the window was not moved to 2027. Recurrence is stated by the source ('between April and May each year'), which supports ANNUAL/recurring."
+      },
+      "field_mapping": {
+        "deadline_date": "null - no write. The published closing date 2026-05-15 is in the past and the record is open/upcoming; the 2027 window is not published.",
+        "deadline_precision": "recurring",
+        "deadline_display": "Application period April 23, 2026 – May 15, 2026"
+      },
+      "examined": [
+        "https://oia.ntu.edu.tw/en/current-students/international-degree-and-dual-degree-students-wpwq/scholarships-6v27"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 165,
+      "title": "University of Innsbruck Scholarships for International Students",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.uibk.ac.at/en/studies/scholarships",
+        "source_type": "official_university_page",
+        "publisher": "University of Innsbruck",
+        "retrieved_at": "2026-10-05T15:31:54Z",
+        "as_of": null,
+        "raw_extract": "GET https://www.uibk.ac.at/en/studies/scholarships returned HTTP 404 on 2026-10-05 - the record's official_source_url does not exist, so it yields no text and no deadline. The closest official University of Innsbruck scholarship landing page, https://www.uibk.ac.at/en/college-service-center/scholarships/, states verbatim: \"Applications for performance-based scholarships for the academic year 2024/25 can be submitted from September 01st, 2025 until October 03rd, 2025 via the student's platform LFU:online.\" - a different programme, open only to Austrian/EEA citizens, so it cannot be attributed to this record.",
+        "exact_deadline_wording": null,
+        "confidence": "LOW",
+        "notes": "No official University of Innsbruck page matching this record title ('Scholarships for International Students') could be found. The university's official scholarship calls are (a) performance-based scholarships and (b) scholarships for scientific theses, both restricted by the Austrian Federal Student Support Act to Austrian citizens, EEA citizens and persons of equal status, and both a different programme from this record; and (c) an 'International > Current offers and calls' index that aggregates many external funding bodies (Fulbright, OeAD, Institut francais, ILUNO) each with its own different deadline. Per the brief, another programme's deadline and a generic index of other programmes may not be used, so evidence is insufficient. The record's cached display 'Varies (typically March-May)' was NOT used as evidence - it appears nowhere on any official page fetched."
+      },
+      "field_mapping": {
+        "deadline_date": "null - no write",
+        "deadline_precision": "unknown",
+        "deadline_display": "null - no official wording could be quoted for this record"
+      },
+      "examined": [
+        "https://www.uibk.ac.at/en/studies/scholarships",
+        "https://www.uibk.ac.at/en/studies/financing/",
+        "https://www.uibk.ac.at/en/college-service-center/scholarships/",
+        "https://www.uibk.ac.at/en/international/current-offers-and-calls/"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.uibk.ac.at/en/college-service-center/scholarships/",
+          "reason": "different programme: performance-based and scientific-thesis scholarships for Austrian/EEA citizens, not scholarships for international students"
+        },
+        {
+          "url": "https://www.uibk.ac.at/en/international/current-offers-and-calls/",
+          "reason": "index of unrelated external funding calls (Fulbright 30.10.2026, OeAD, Institut francais, ILUNO 1 April/1 July/1 December); multiple different deadlines for different programmes, none of them this record's"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 191,
+      "title": "SI Scholarship for Global Professionals",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "9-25 February 2026: Application portal for the SI Scholarships is open for two weeks. Please note that the portal closes at 14:59 CET on the final day.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals",
+        "source_type": "official_scholarship_page",
+        "publisher": "Swedish Institute (Svenska institutet)",
+        "retrieved_at": "2026-10-05T15:31:54Z",
+        "as_of": "2026/2027 cycle, master's studies beginning autumn 2026",
+        "raw_extract": "Application closed\n\nApplication and Eligibility\n\nThe scholarship is open for applications once every year, for master's studies beginning in the autumn semester.\n\nKey dates:\n\n16 October 2025 - 15 January 2026: Apply to Swedish master's programmes through University Admissions.\nMid-November 2025: SI Scholarship application documents and eligible master programmes are published on this page.\n9-25 February 2026: Application portal for the SI Scholarships is open for two weeks. Please note that the portal closes at 14:59 CET on the final day.\n26 March 2026: University admissions announcement.\n23 April 2026: SI Scholarship announcement.",
+        "exact_deadline_wording": "9-25 February 2026: Application portal for the SI Scholarships is open for two weeks. Please note that the portal closes at 14:59 CET on the final day.",
+        "confidence": "HIGH",
+        "notes": "The live official call page carries an explicit closing date of 25 February 2026 (14:59 CET) for the 2026/2027 cycle, but that date is in the past relative to the retrieval date (2026-10-05) and the page itself is badged 'Application closed', with recipients announced on 23 April 2026. The call is annual ('open for applications once every year') and SI has not published the next cycle's dates, so per the brief the stale date is not written and nothing was moved to 2027. The record's verification_status is 'quarantined', which is consistent with a cycle that has closed."
+      },
+      "field_mapping": {
+        "deadline_date": "null - no write. The only published closing date, 2026-02-25, is in the past; the next cycle's dates are not published.",
+        "deadline_precision": "recurring",
+        "deadline_display": "9-25 February 2026: Application portal for the SI Scholarships is open for two weeks. Please note that the portal closes at 14:59 CET on the final day."
+      },
+      "examined": [
+        "https://si.se/en/apply/faq-scholarships-on-masters-level/",
+        "https://si.se/en/apply/scholarships"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 219,
+      "title": "Doctoral Scholarship from the University of Innsbruck",
+      "outcome": "recovered",
+      "deadline_semantics": "EXACT",
+      "deadline_date": "2026-10-09",
+      "deadline_display": "from August 24, 2026 to October 9, 2026 inclusive",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.uibk.ac.at/en/research/research-funding/phd/doctoral-scholarship",
+        "source_type": "official_university_page",
+        "publisher": "University of Innsbruck, Vice-Rectorate for Research (project.service.office)",
+        "retrieved_at": "2026-10-05T15:31:54Z",
+        "as_of": "3rd tranche 2026",
+        "raw_extract": "How does the application process work?\n\nApplications must be submitted during the submission period\n\nfrom August 24, 2026 to October 9, 2026 inclusive\n\nvia the Student portal LFU:online",
+        "exact_deadline_wording": "from August 24, 2026 to October 9, 2026 inclusive",
+        "confidence": "HIGH",
+        "notes": "The submission window now renders as readable text on the live page, so the deadline can be stated exactly: the call closes on 9 October 2026, which is still in the future at retrieval time (2026-10-05, four days remaining). The page also states 'Funding is expected to be awarded in December 2026 (i.e. earliest start of funding is December 2026 and latest start of funding is June 2027)' and 'The next call is expected to be published in late 2026/early 2027' - those are funding-start and next-call statements, not this deadline."
+      },
+      "field_mapping": {
+        "deadline_date": "2026-10-09",
+        "deadline_precision": "exact",
+        "deadline_display": "from August 24, 2026 to October 9, 2026 inclusive"
+      },
+      "examined": [],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 270,
+      "title": "Copenhagen Business School Danish Government Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.cbs.dk/study-programmes/master-programmes/double-degree",
+        "source_type": "official_university_page",
+        "publisher": "Copenhagen Business School (CBS)",
+        "retrieved_at": "2026-10-05T15:31:54Z",
+        "as_of": null,
+        "raw_extract": "You can apply for the double degree option in the first semester of your MSc programme. There are some criteria you will have to fullfill to apply. A selection of candidates will be invited to an interview as part of the selection process.\n\nYou can find all information and details on my.cbs.dk (CBS login required) when you are admitted to your CBS programme.",
+        "exact_deadline_wording": null,
+        "confidence": "LOW",
+        "notes": "The record's official_source_url (CBS Double Degree) contains no mention of the Danish Government Scholarship and no deadline of any kind; it defers admissions detail to a login-gated student portal. No official cbs.dk page publishing a Danish Government Scholarship deadline was found. The record's cached display '15 January 2026 (Round 1) / 15 October 2026 (Round 2)' and its cached application_period ('Other deadlines apply for CBS Students taking elective or mandatory courses. Please see Summer University on my.cbs.dk.') both trace to the Summer University course-application page, which is a different programme (short summer courses, not the master's Danish Government Scholarship), and even that page no longer shows those dates - its current window is '26 January at 12:00 CET - 13 April at 12:00 CEST' for summer 2027. Third-party aggregators surfaced by search gave mutually inconsistent CBS rounds (15 January/15 October vs 1 February) but were not fetched and are not official sources, so this is recorded as UNKNOWN rather than CONFLICTING."
+      },
+      "field_mapping": {
+        "deadline_date": "null - no write",
+        "deadline_precision": "unknown",
+        "deadline_display": "null - no official deadline wording exists on any CBS page fetched"
+      },
+      "examined": [
+        "https://www.cbs.dk/study-programmes/master-programmes/double-degree",
+        "https://www.cbs.dk/en/study-programmes/international-students",
+        "https://www.cbs.dk/en/uddannelser/international-students/international-full-degree-students",
+        "https://www.cbs.dk/en/study-programmes/international-students/international-full-degree-students"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.cbs.dk/en/study-programmes/summer-university/application-and-deadlines",
+          "reason": "different programme: CBS Summer University course application rounds (not the Danish Government Scholarship), and it is the page the record's cached text came from"
+        },
+        {
+          "url": "https://guides.scholarshipunion.com/denmark-scholarship/deadline.html",
+          "reason": "third-party scholarship aggregator, not fetched, not an official CBS or Danish government source; may not be used as evidence"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 455,
+      "title": "Malmö University Master's Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.mau.se/en/education/scholarships",
+        "source_type": "official_university_page",
+        "publisher": "Malmö University",
+        "retrieved_at": "2026-10-05T15:31:54Z",
+        "as_of": null,
+        "raw_extract": "To apply for the scholarship, follow these steps:\n\nApply for one of our master's programmes through University Admissions as your first priority. Make sure to pay the application fee to University Admissions.\nAdmitted students will receive more information on how to apply for the scholarship after Notification of Selection Results.\nScholarship selection will be based on previous academic excellence, the experience described in your CV, and your ability to motivate social engagement through your chosen programme at Malmö University.\nApplicants who have been offered a scholarship will be notified by the end of April. Those who are not offered a scholarship will not be notified individually.\n\nPlease note\n\nOnly a few students are granted scholarships every year. You should, therefore, start planning for ways to finance your tuition and stay in Sweden well in advance, in case you are not awarded a scholarship. The deadline to pay tuition fees is 10 May.",
+        "exact_deadline_wording": null,
+        "confidence": "LOW",
+        "notes": "The official Malmö University page for this scholarship publishes no application deadline. The scholarship application is not applied for at a published fixed date: applicants must have applied in the first admissions round via University Admissions, and 'Admitted students will receive more information on how to apply for the scholarship after Notification of Selection Results.' The only two calendar statements on the page are not deadlines for this scholarship: award notification 'by the end of April' (an outcome notification, not an application deadline) and 'The deadline to pay tuition fees is 10 May' (the tuition-fee payment milestone for admitted students, a different milestone). The record's cached display 'to pay tuition fees is 10 May.' misattributes that tuition-fee milestone to the scholarship and was NOT used as evidence; using it would be the prohibited 'generic admissions deadline for a different programme'."
+      },
+      "field_mapping": {
+        "deadline_date": "null - no write",
+        "deadline_precision": "unknown",
+        "deadline_display": "null - the official page states no scholarship application deadline"
+      },
+      "examined": [
+        "https://www.mau.se/en/education/scholarships"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.mau.se/en/education/scholarships",
+          "reason": "the page's 'The deadline to pay tuition fees is 10 May' is the tuition-fee payment milestone for admitted students, not a scholarship application deadline, so it may not be recorded as this record's deadline"
+        },
+        {
+          "url": "https://student.mau.se/en/my-studies/scholarships/#excellence-scholarship",
+          "reason": "not fetched; a different scholarship (Malmö University Excellence Scholarship for continuing fee-paying students) and a different deadline"
+        }
+      ]
+    }
+  ]
+}

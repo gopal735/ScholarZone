@@ -1,0 +1,111 @@
+{
+  "shard_id": "DL-032",
+  "topic": "deadline",
+  "hosts": [
+    "english.moe.gov.tw",
+    "movetia.ch",
+    "www.arabfund.org",
+    "www.koica.go.kr",
+    "www.studyinkorea.go.kr",
+    "www.uu.nl"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 4,
+      "title": "Global Korea Scholarship (GKS)",
+      "official_source": "National Institute for International Education (NIIED)",
+      "official_source_url": "https://www.studyinkorea.go.kr",
+      "catalogue_url": "https://www.studyinkorea.go.kr/ko/notice/scholarshipsList.do?boardSort=3",
+      "country": "South Korea",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": "Annual cycle: NIIED announces in September, Embassy Track applications are submitted in September and University Track applications in September to November, screening runs October to December and final results are announced in December.",
+      "verification_status": "active"
+    },
+    {
+      "id": 145,
+      "title": "Huayu Enrichment Scholarship (HES), Ministry of Education, Republic of China (Taiwan)",
+      "official_source": "Ministry of Education (MOE), Republic of China (Taiwan)",
+      "official_source_url": "https://english.moe.gov.tw/cp-24-16833-23C09-1.html",
+      "catalogue_url": null,
+      "country": "Taiwan",
+      "deadline_display": "Applicants must apply to the authorized overseas office for their country of nationality 'before the deadline specified in the scholarship guidelines issued by that authorized overseas office (usually in January or February each year)'. MOE publishes no single fixed date, so no ISO deadline date can be recorded.",
+      "deadline_precision": "varies",
+      "application_period": "Annual, with the deadline set by each applicant's own ROC overseas mission or representative office, which MOE says is 'usually in January or February each year'. The round for the current cycle has closed as of 2026-10-04; the next nominations are expected in January or February 2027.",
+      "verification_status": "active"
+    },
+    {
+      "id": 178,
+      "title": "Utrecht University Excellence Scholarships",
+      "official_source": "Utrecht University",
+      "official_source_url": "https://www.uu.nl/en/organisation/scholarships-and-grants/utrecht-university-excellence-scholarships",
+      "catalogue_url": null,
+      "country": "Netherlands",
+      "deadline_display": "1 February (for September intake)",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 215,
+      "title": "KOICA Scholarship Program (Scholarship Program, CIAT)",
+      "official_source": "Korea International Cooperation Agency (KOICA) - Korean Government",
+      "official_source_url": "https://www.koica.go.kr/eng",
+      "catalogue_url": null,
+      "country": "South Korea",
+      "deadline_display": "KOICA does not publish a single central application deadline on its Scholarship Program page: candidates apply through their country's KOICA Overseas Office or the Korean Embassy in the first round, followed by a university screening round, and KOICA states the deadline is set by each respective KOICA overseas office or embassy.",
+      "deadline_precision": "varies",
+      "application_period": "Two-stage annual cycle: a KOICA Overseas Office / Korean Embassy round followed by a university round. Dates are set locally by each KOICA overseas office or embassy.",
+      "verification_status": "active"
+    },
+    {
+      "id": 467,
+      "title": "MOE Short Term Research Award (STRA)",
+      "official_source": "Ministry of Education, Republic of China (Taiwan)",
+      "official_source_url": "https://english.moe.gov.tw/cp-24-16836-FEE8B-1.html",
+      "catalogue_url": null,
+      "country": "Taiwan",
+      "deadline_display": "Applications for research in Taiwan in the following year must arrive at the host institution no later than September 30 each year",
+      "deadline_precision": "recurring",
+      "application_period": "Annual; applications submitted by 30 September for research the following year",
+      "verification_status": "active"
+    },
+    {
+      "id": 516,
+      "title": "GKS (Global Korea Scholarship) Program - Undergraduate Degree Programs",
+      "official_source": "National Institute for International Education (NIIED), Ministry of Education, Republic of Korea",
+      "official_source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
+      "catalogue_url": null,
+      "country": "South Korea",
+      "deadline_display": "Announcement by NIIED in September. Application submission: Embassy Track in September; University Track September - November. Screening and selection October - December. Final results announced by NIIED in December. The page publishes month-level timing only; no day-level deadline is published on this page.",
+      "deadline_precision": "varies",
+      "application_period": "Embassy Track: applications accepted in September. University Track: applications accepted September to November. On 2026-10-01 the University Track falls inside the published September-November window; the Embassy Track submission month published is September.",
+      "verification_status": "needs_review"
+    },
+    {
+      "id": 567,
+      "title": "Swiss-European Mobility Programme (SEMP) - Incoming Mobility to Switzerland",
+      "official_source": "Movetia (Swiss agency for exchange and mobility), implementing the Swiss Programme for Erasmus+ on behalf of SERI",
+      "official_source_url": "https://movetia.ch/en/funding-opportunities/study-in-switzerland",
+      "catalogue_url": "https://movetia.ch/en/how-to/further-advice-centres/international-relations-offices",
+      "country": "Switzerland",
+      "deadline_display": "There is no central deadline for individual students: applications are handled by the international relations office of the Swiss host institution, which sets its own dates. At institutional level, accreditation and funding applications go to Movetia annually in early March for a funding period starting 1 June. Movetia currently states that the next application deadline is spring 2027, likely under Erasmus+.",
+      "deadline_precision": "varies",
+      "application_period": "Annual institutional cycle with applications each March and a funding period from 1 June; student-level applications run through the Swiss host institution's own deadlines. Movetia expects the next call to be launched under Erasmus+ following Switzerland's planned participation from 2027.",
+      "verification_status": "active"
+    },
+    {
+      "id": 667,
+      "title": "Arab Fund Fellowship for Academic Excellence (برنامج الزمالات للتميز الأكاديمي)",
+      "official_source": "Arab Fund for Economic and Social Development (AFESD)",
+      "official_source_url": "https://www.arabfund.org/overview/fellowships-program",
+      "catalogue_url": null,
+      "country": "Kuwait",
+      "deadline_display": null,
+      "deadline_precision": "rolling",
+      "application_period": "Continuous intake; applications must be submitted at least one year before the expected starting date of the stay at the foreign university",
+      "verification_status": "active"
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "shard_id": "DL-047",
+  "topic": "deadline",
+  "hosts": [
+    "royalsociety.org",
+    "www.dcu.ie",
+    "www.dtu.dk",
+    "www.mq.edu.au",
+    "www.wgtn.ac.nz"
+  ],
+  "record_count": 7,
+  "records": [
+    {
+      "id": 204,
+      "title": "Macquarie International Research Training Program (iRTP)",
+      "official_source": "Macquarie University",
+      "official_source_url": "https://www.mq.edu.au/research/phd-and-research-degrees/how-to-apply/scholarship-opportunities/scholarship-search/international-scholarship-round",
+      "catalogue_url": "https://www.mq.edu.au/research/phd-and-research-degrees/how-to-apply/scholarship-opportunities",
+      "country": "Australia",
+      "deadline_display": "Applications open 15 June 2026, close 31 July 2026 at 11pm for Session 1 2027. The next round's dates are not yet published.",
+      "deadline_precision": "recurring",
+      "application_period": "Session 1 2027 international scholarship round: 15 June 2026 to 31 July 2026, 11pm.",
+      "verification_status": "active"
+    },
+    {
+      "id": 260,
+      "title": "VUW Postgraduate International Scholarship",
+      "official_source": "Te Herenga Waka — Victoria University of Wellington",
+      "official_source_url": "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
+      "catalogue_url": "https://www.wgtn.ac.nz/scholarships/scholarships-office",
+      "country": "New Zealand",
+      "deadline_display": "Closing date(s): Same as the programme application closing date. A scholarship application is not required; students are assessed for eligibility on application for their programme.",
+      "deadline_precision": "varies",
+      "application_period": "Aligned with programme applications; there is no separate scholarship application window and the outcome is communicated in the applicant's Offer of Place",
+      "verification_status": "active"
+    },
+    {
+      "id": 261,
+      "title": "VUW Undergraduate International Scholarship",
+      "official_source": "Te Herenga Waka — Victoria University of Wellington",
+      "official_source_url": "https://www.wgtn.ac.nz/international/scholarships-fees/scholarships",
+      "catalogue_url": "https://www.wgtn.ac.nz/scholarships/scholarships-office",
+      "country": "New Zealand",
+      "deadline_display": "Closing date(s): Same as the programme application closing date. A scholarship application is not required; students are assessed for eligibility on application for their programme.",
+      "deadline_precision": "varies",
+      "application_period": "Aligned with programme applications; there is no separate scholarship application window and the outcome is communicated in the applicant's Offer of Place",
+      "verification_status": "active"
+    },
+    {
+      "id": 269,
+      "title": "DTU Tuition Fee Waiver for International non-EU/EEA MSc Students",
+      "official_source": "Technical University of Denmark (DTU)",
+      "official_source_url": "https://www.dtu.dk/english/education/graduate/fees-and-funding/external-scholarships",
+      "catalogue_url": "https://www.dtu.dk/english/education/graduate",
+      "country": "Denmark",
+      "deadline_display": "\"All non-EU/EEA students who apply by the 15 January deadline and who wish to apply for a tuition fee waiver must submit a separate personal statement with the application, clearly specifying that you are applying for the tuition fee waiver.\" DTU's important dates page for the autumn intake gives '15 January Application deadline - Non-EU' and 'April Tuition fee waivers announced - Non-EU'.",
+      "deadline_precision": "recurring",
+      "application_period": "Please note that your application will not be processed until the application fee payment has been registered at DTU.",
+      "verification_status": "active"
+    },
+    {
+      "id": 331,
+      "title": "Tuition Fee Waiver",
+      "official_source": "Dtu.Dk",
+      "official_source_url": "https://www.dtu.dk/education/student-life/finances-and-scholarships/scholarships-for-international-students",
+      "catalogue_url": null,
+      "country": "Denmark",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": null,
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 366,
+      "title": "DCU International Scholarships for Non-EU Students",
+      "official_source": "Dublin City University",
+      "official_source_url": "https://www.dcu.ie/global/dcu-international-scholarships-non-eu-students-2027-28",
+      "catalogue_url": "https://www.dcu.ie/scholarships",
+      "country": "Ireland",
+      "deadline_display": "No separate scholarship deadline is published. Applicants are \"automatically considered\" for the scholarship when they apply as a non-EU student to DCU, so the relevant date is the course application deadline.",
+      "deadline_precision": "varies",
+      "application_period": "Awarded for the 2027-28 academic year, tied to the corresponding course application cycle.",
+      "verification_status": "active"
+    },
+    {
+      "id": 368,
+      "title": "Royal Society - Research Ireland University Research Fellowship",
+      "official_source": "The Royal Society (with Research Ireland)",
+      "official_source_url": "https://royalsociety.org/-/media/grants/university-research-fellowship/sfi-urf-scheme-notes-final.pdf",
+      "catalogue_url": "https://royalsociety.org/grants-schemes-awards/grants/university-research",
+      "country": "Ireland",
+      "deadline_display": "The 2027 round is listed as Status: Closed, with Open date 14 July 2026, Close date 09 September 2026 and Decision by 31 May 2027. No dates are published for the following round.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual competitive round. The 2027 cycle ran from 14 July 2026 to 9 September 2026, with decisions by 31 May 2027.",
+      "verification_status": "active"
+    }
+  ]
+}

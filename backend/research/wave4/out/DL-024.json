@@ -1,0 +1,331 @@
+{
+  "shard_id": "DL-024",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 94,
+      "title": "INSEAD Scholarships (Master in Management, MBA and Master in Finance)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "To apply for a scholarship, or to be automatically considered for one, you must first start your MIM application.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.insead.edu/master-programmes/master-business-administration/insead-scholarships",
+        "source_type": "official_scholarship_page",
+        "publisher": "INSEAD",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "as_of": "MBA Financial Aid Calendar covering the January 2027 and August 2027 intakes",
+        "raw_extract": "Scholarship Application Deadlines\n\nAfter you submit your INSEAD MBA application, you'll be able to access the scholarship portal and select up to 4 scholarships to apply for. See the Financial Aid Calendar below for application deadlines.\n\nFinancial Aid Calendar\nJanuary 2027 Intake\nAugust 2027 Intake\n  Scholarship application deadline Decision notification\nROUND 1 20 April 2026 22 May 2026\nROUND 2 01 June 2026 08 July 2026\nROUND 3 03 August 2026 11 September 2026\nROUND 4 04 September 2026 30 October 2026\n\nApplications must be complete and submitted by 23:59 CET on the day of the deadline. We regret that we cannot accept any scholarship applications after the deadlines. All scholarship applications will be reviewed right after the deadline.",
+        "exact_deadline_wording": "ROUND 1 20 April 2026 | ROUND 2 01 June 2026 | ROUND 3 03 August 2026 | ROUND 4 04 September 2026 (January 2027 Intake); ROUND 1 22 October 2026 | ROUND 2 07 December 2026 | ROUND 3 24 February 2027 | ROUND 4 12 April 2027 (August 2027 Intake)",
+        "confidence": "HIGH",
+        "notes": "This record is a COMPOSITE covering three separate INSEAD programmes (MIM, MBA and MIF), and INSEAD publishes no single deadline for it. I fetched the three official programme scholarship pages directly (insead.edu blocks plain HTTP fetches with 403, so I rendered the live pages in a browser and read the rendered DOM). Findings per programme: (1) MIM - the official MIM scholarships page states only 'To apply for a scholarship, or to be automatically considered for one, you must first start your MIM application.' and ties named scholarships to admission rounds ('Open for all candidates admitted in Rounds 1-3' for Kung Family and Qinqin and Xin Zhang; 'Open for all candidates admitted in Rounds 1-2' for L'Oréal for Youth) with NO calendar date anywhere on the page. (2) MBA - the official MBA scholarships page publishes a Financial Aid Calendar with eight distinct round deadlines across two intakes (January 2027 Intake: 20 April 2026, 01 June 2026, 03 August 2026, 04 September 2026; August 2027 Intake: 22 October 2026, 07 December 2026, 24 February 2027, 12 April 2027). (3) MIF - the official MIF financing page (/master-programmes/master-finance/financing) contains no deadline text at all. Because the record spans three programmes with different (and partly absent) deadlines, per AGENT_BRIEF section 6 this is not a CONFLICTING case - different programmes at the same institution having different deadlines is explicitly not a conflict - and it is not ROLLING either, because no source says 'rolling'. Writing any single one of these eight dates would misrepresent the other seven, so deadline_date stays null and the outcome is a truthful UNKNOWN. Note for the coordinator: four of the eight MBA dates (22 October 2026, 07 December 2026, 24 February 2027, 12 April 2027) are still in the future as of 2026-10-05, so if this record were ever split per programme the MBA August 2027 intake would be genuinely open; I did not select one on the record's behalf. Also note the record's stated official_source_url (the MBA international-funding page) is a lender/scheme directory and contains no deadline at all, so it cannot support any value for this record."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "To apply for a scholarship, or to be automatically considered for one, you must first start your MIM application."
+      },
+      "examined": [
+        "https://www.insead.edu/master-programmes/master-business-administration/international-funding",
+        "https://www.insead.edu/master-programmes/master-business-administration/insead-scholarships",
+        "https://www.insead.edu/master-programmes/master-management/insead-scholarships",
+        "https://www.insead.edu/master-programmes/master-finance/financing",
+        "https://www.insead.edu/master-programmes/master-in-finance/insead-scholarships",
+        "https://www.insead.edu/master-programmes/master-in-finance/scholarships",
+        "https://www.insead.edu/scholarship/listing"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.insead.edu/master-programmes/master-business-administration/international-funding",
+          "reason": "This is the record's own official_source_url. Fetched live (HTTP 200 via browser); it is a directory of third-party lenders and global funding schemes and contains no application deadline, so it cannot support any value."
+        },
+        {
+          "url": "https://www.insead.edu/master-programmes/master-in-finance/insead-scholarships",
+          "reason": "Returns HTTP 404 ERROR 404 | INSEAD. Not a live page; cannot be cited."
+        },
+        {
+          "url": "https://www.insead.edu/master-programmes/master-in-finance/scholarships",
+          "reason": "Returns HTTP 404 ERROR 404 | INSEAD. Not a live page; cannot be cited."
+        },
+        {
+          "url": "https://leapscholar.com/blog/top-mbas-with-100-scholarships/",
+          "reason": "Third-party scholarship aggregator/blog. Not official; snippet only. Rejected under brief sections 4-5."
+        },
+        {
+          "url": "https://www.mim-essay.com/insead-mba-scholarships",
+          "reason": "Third-party essay-service site reproducing INSEAD's calendar. Not official. The same figures were independently confirmed on INSEAD's own page, which is what I cite instead."
+        },
+        {
+          "url": "https://www.mbaschools.org/resources/mba-admissions-rounds/",
+          "reason": "Third-party admissions blog, and it contradicts itself on whether INSEAD is round-based or rolling. Not official; explicitly not used."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 315,
+      "title": "Chinese Government Scholarship for Advanced Graduate Program (Type B) at Peking University",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "(1) Complete the Peking University online scholarship application (open now until Beijing Time at 9:00 a.m. on March 9) (2) Complete the application of the China Scholarship Council (open now until Beijing Time at 24:00 on March 17)",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://isd.pku.edu.cn/en/detail.php?id=819",
+        "source_type": "official_university_page",
+        "publisher": "Peking University, International Students Division, Office of International Relations",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "as_of": "2026 cycle; notice signed 'January 12, 2026'",
+        "raw_extract": "2026 Scholarship Applications Are Now Open for Prospective International Graduate Students of Peking University\n\nI. Chinese Government Scholarship for Advanced Graduate Program\n\n4. Application Procedure\n\n(1) Complete the Peking University online scholarship application (open now until Beijing Time at 9:00 a.m. on March 9)\n\nLog onto Peking University International Student Service System (http://www.studyatpku.com), select Home - Scholarship Application - Application for Prospective Students, fill in information, upload your official transcripts of past educational experiences and other supporting documents, and submit application.\n\n(2) Complete the application of the China Scholarship Council (open now until Beijing Time at 24:00 on March 17)\n\n[...]\n5. The final scholarship award decision is expected to be announced by email around July and August of 2026.\n\nInternational Students Division\n\nOffice of International Relations\n\nPeking University\n\nJanuary 12, 2026",
+        "exact_deadline_wording": "open now until Beijing Time at 9:00 a.m. on March 9 [Peking University online scholarship application]; open now until Beijing Time at 24:00 on March 17 [China Scholarship Council application]",
+        "confidence": "HIGH",
+        "notes": "expired_mismatch per AGENT_BRIEF section 6. The only cycle-specific notice published on the official PKU International Students Division site is the 2026 notice, signed 'January 12, 2026'. Its two deadlines resolve to 2026-03-09 (PKU system) and 2026-03-17 (China Scholarship Council system). Both are in the past as of my retrieval on 2026-10-05, while the record is carried as open/upcoming (verification_status 'active'), so I set outcome expired_mismatch, left deadline_date null, and did NOT roll the dates forward to 2027. I verified no 2027 notice exists: I fetched the official scholarship notices index (https://isd.pku.edu.cn/en/scholarship.php), whose most recent entries are '2026 Beijing Government Scholarship Applications Are Now Open for Current International Students of Peking University' (2026-09-03, id=835), '2026 Application Information for the Atomic Energy Scholarship Program of China' (2026-03-11, id=824), two 2026-03-05 Chinese-language teacher-scholarship notices, and then this 2026 graduate notice (2026-01-12, id=819). No 2027 Chinese Government Scholarship notice has been published. I also fetched the standing programme page (id=18), which states only the recurring pattern 'IV. Application Time - Generally in January and March each year.' That is a recurring month pattern, not a date, and per the brief it must not be converted into a calendar day or moved to the next cycle. Because no current, writable deadline exists, deadline_semantics is UNKNOWN and precision is unknown; the stale 2026 dates are preserved above verbatim in exact_deadline_wording and raw_extract rather than written to the field."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "(1) Complete the Peking University online scholarship application (open now until Beijing Time at 9:00 a.m. on March 9) (2) Complete the application of the China Scholarship Council (open now until Beijing Time at 24:00 on March 17)"
+      },
+      "examined": [
+        "https://isd.pku.edu.cn/en/scholarship.php",
+        "https://isd.pku.edu.cn/en/detail.php?id=18"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://isd.pku.edu.cn/en/detail.php?id=18",
+          "reason": "Official standing programme page, but it states only 'Application Time: Generally in January and March each year.' - a recurring month pattern with no day and no current cycle. Not usable as a deadline value and not convertible into one."
+        },
+        {
+          "url": "http://www.campuschina.org",
+          "reason": "The China Scholarship Council portal linked by the notice. It is the system where the application is submitted, but I did not fetch it and it publishes no per-university deadline; the brief forbids inferring a deadline from an application portal I did not read."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 324,
+      "title": "2026/2027 Chinese Government Scholarship - Embassy of the People's Republic of China in the Commonwealth of The Bahamas",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "The 2026/2027 Chinese Government Scholarship is now open for application. Online application (http://www.campuschina.org) and the corresponding application documents should be submitted in the system before February 14, 2026.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://bs.china-embassy.gov.cn/eng/sggg/202510/t20251028_11742717.htm",
+        "source_type": "official_government_page",
+        "publisher": "Embassy of the People's Republic of China in the Commonwealth of The Bahamas",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "as_of": "2026/2027 cycle; notice dated 2025-10-28 22:41",
+        "raw_extract": "2026/2027 Chinese Government Scholarship Application\n\n2025-10-28 22:41\n\nMore provincial scholarships are coming. The 2026/2027 Chinese Government Scholarship is now open for application. Online application (http://www.campuschina.org) and the corresponding application documents should be submitted in the system before February 14, 2026. No paper material is required.\n\n[...]\nTime Frames\n\n1) From now on to February 14, 2026\n\nApplicants check the Chinese Government Scholarship website (http:// www.campuschina.org) for information about Chinese universities and scholarship programs, contact their favorite Chinese universities and obtain the Pre-Admission Documents, submit their online application (Bahamian Program Category A, Agency Number 0441), and take CSCA exam on December 21, 2025, or January 25, 2026.\n\n2) February 24 to March 3, 2026\n\nThe embassy sends all recommended applications to China Scholarship Council for final review.\n\n3) July to August, 2026\n\nApplicants can check the admission results in the system by themselves.",
+        "exact_deadline_wording": "should be submitted in the system before February 14, 2026",
+        "confidence": "HIGH",
+        "notes": "expired_mismatch per AGENT_BRIEF section 6. The Embassy's own notice gives one explicit application deadline, 'before February 14, 2026' (= 2026-02-14), with a stated timeline running to 'February 24 to March 3, 2026' for Embassy's referral to the China Scholarship Council and 'July to August, 2026' for results. The deadline is in the past as of my retrieval on 2026-10-05 while the record is carried as open/upcoming (verification_status 'active'), so deadline_date stays null and I did not silently move the date to the following cycle. I verified that the Embassy has published no successor notice: I fetched the official Notice index (https://bs.china-embassy.gov.cn/eng/sggg/), where the scholarship entries are '2026/2027 Chinese Government Scholarship Application' (2025-10-28) and the prior '2023/2024 Chinese Government Scholarship Application' (2023-02-21), with an undated 'Information on Chinese Government Scholarship' (2025-06-13) in between. Every other notice on the index dated after 2025-10-28 is consular or holiday business (for example the 2026-09-07 suspension of consular services and the 2026-02-12 / 2026-06-17 visa office holiday schedules), not a new scholarship cycle. Because no current, writable deadline exists, deadline_semantics is UNKNOWN and precision is unknown; the stale 2026 date is preserved verbatim above rather than written to the field."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "The 2026/2027 Chinese Government Scholarship is now open for application. Online application (http://www.campuschina.org) and the corresponding application documents should be submitted in the system before February 14, 2026."
+      },
+      "examined": [
+        "https://bs.china-embassy.gov.cn/eng/sggg/"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://bs.china-embassy.gov.cn/eng/sggg/202506/t20250613_11647647.htm",
+          "reason": "Listed on the Embassy's Notice index as 'Information on Chinese Government Scholarship' (2025-06-13). I did not fetch it and it is a general information item, not a dated application call; the 2025-10-28 notice is the operative call and is the one I cite."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 340,
+      "title": "Åbo Akademi University tuition fee scholarship - early commitment offer and second-year reduction",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Admitted students can claim the offer by accepting their study place and paying the tuition fee within a deadline specified in their admissions letter. Admitted students who do not accept their study place and do not pay the tuition fee within the deadline for the early commitment offer need to pay the full amount of 12000 €.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.abo.fi/en/study/apply/international-master-programmes/scholarship-programme-for-master-students",
+        "source_type": "official_university_page",
+        "publisher": "Åbo Akademi University",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "as_of": "Page section 'Scholarships for students admitted in 2026 or later'",
+        "raw_extract": "Scholarships for students admitted in 2026 or later\n\nÅbo Akademi University grants an early commitment offer for students liable to pay tuition fees and who are admitted for studies starting in the autumn of 2026 or later. The early commitment offer is a discount of 4000 €, which means that the remaining tuition fee for the first academic year is 8000 €. Admitted students can claim the offer by accepting their study place and paying the tuition fee within a deadline specified in their admissions letter. Admitted students who do not accept their study place and do not pay the tuition fee within the deadline for the early commitment offer need to pay the full amount of 12000 €.\n\nFor the second year, all admitted students are awarded a tuition fee reduction of 4000 €, leaving the remaining annual tuition fee at 8000 €. Applicants do not need to apply separately for this second year scholarship.",
+        "exact_deadline_wording": "within a deadline specified in their admissions letter",
+        "confidence": "HIGH",
+        "notes": "The official scholarship page publishes NO calendar date for this award. The deadline is explicitly individualised: it is 'a deadline specified in their admissions letter'. I deliberately did NOT write 2027-07-13. I fetched the official application-process page (https://www.abo.fi/en/study/apply/international-master-programmes/application-process/), which does publish a dated 'Admissions timeline 2027' including '13 July 3:00 pm (Helsinki time) Deadline to accept the offered study place' - but that is a generic admissions acceptance deadline, not the scholarship deadline, and the scholarship page itself says the scholarship deadline is the one specified in the admissions letter. Substituting the admissions date for the scholarship deadline is exactly the generic-admissions-deadline substitution the brief bans in section 5, so I rejected it and recorded it here for transparency. The second-year component has no application step at all ('Applicants do not need to apply separately for this second year scholarship'), so it contributes no deadline. I did not classify this ROLLING: although the absence of a public fixed date is functionally close, the source never says 'rolling' or 'no fixed deadline' - it says a real deadline exists and is communicated per admission - so UNKNOWN with precision 'unknown' is the truthful label."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Admitted students can claim the offer by accepting their study place and paying the tuition fee within a deadline specified in their admissions letter."
+      },
+      "examined": [
+        "https://www.abo.fi/en/study/apply/international-master-programmes/application-process/",
+        "https://www.abo.fi/en/study/apply/international-master-programmes"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.abo.fi/en/study/apply/international-master-programmes/application-process/",
+          "reason": "Official page, but the only dates it gives are the general 2027 admissions timeline (application period 7-21 January 2027, '13 July 3:00 pm (Helsinki time) Deadline to accept the offered study place'). That is an admissions deadline, not this scholarship's deadline, and the scholarship page says the scholarship deadline is the one in the admissions letter. Rejected as evidence for this field under brief section 5."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 343,
+      "title": "Nokia Scholarship",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Application submission begins on 3 August 2026.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.nokiafoundation.com/nokia-scholarship-info",
+        "source_type": "official_scholarship_page",
+        "publisher": "Nokia Foundation",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "as_of": "2026 round; page states the window '3 August 2026' to '15 September 2026'",
+        "raw_extract": "#### How to apply\n\nApplication submission begins on 3 August 2026.\n\nNokia Scholarship Application\n\n#### Deadline\n\n15 September 2026.\n\n#### Key dates/info\n\nThe Nokia Scholarship recipients will be published in December 2026 on the Nokia Foundation website. Scholarships are paid directly to the grantees by the end of December 2026.",
+        "exact_deadline_wording": "15 September 2026.",
+        "confidence": "HIGH",
+        "notes": "expired_mismatch per AGENT_BRIEF section 6. The official page states an unambiguous EXACT deadline of 15 September 2026 (2026-09-15), with the window opening 3 August 2026. That date is in the past as of my retrieval on 2026-10-05, while the record is carried as open/upcoming (verification_status 'active'), so deadline_date stays null and I did not move the date to the 2027 round. I corroborated the same window on the Nokia Foundation's own official application portal (https://nokiafoundation.apurahat.net/), which states 'Calls for applications for Nokia Scholarship and Jorma Ollila grant were open from 3rd August 2026 until 15th September 2026.' and lists 'Nokia Scholarship 3.8 - 15.9.2026 23.59' - note the portal's past-tense 'were open'. The two official sources agree, so this is not CONFLICTING. The December 2026 publication and payment dates on the page are downstream decision/payout dates, not an application deadline, and do not make the round open. Because no current, writable deadline exists, deadline_semantics is UNKNOWN and precision is unknown; the stale 2026 date is preserved verbatim above rather than written to the field."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Application submission begins on 3 August 2026. / Deadline: 15 September 2026."
+      },
+      "examined": [
+        "https://nokiafoundation.apurahat.net/",
+        "https://www.nokiafoundation.com/nokia-scholarship"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.nokiafoundation.com/nokia-scholarship",
+          "reason": "The record's catalogue_url. It resolves to the same 'Nokia Scholarship' content as the official_source_url (the site menu links both paths to the same page), so it adds no independent deadline evidence."
+        },
+        {
+          "url": "https://nokiafoundation.apurahat.net/",
+          "reason": "Official application portal and it does confirm the same 2026 window, but it is the corroborating source only; the already-closed date cannot be written. Cited in notes rather than as the primary source."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 344,
+      "title": "Nokia Foundation Fellow",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Call for applications is open from 18 May 2026 to 15 September 2026.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.nokiafoundation.com/foundation-fellow",
+        "source_type": "official_scholarship_page",
+        "publisher": "Nokia Foundation",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "as_of": "2026 call; page states the window '18 May 2026' to '15 September 2026'",
+        "raw_extract": "#### Deadline\n\nCall for applications is open from **18 May 2026 to 15 September 2026**.\n\n[...]\n#### Key dates/info\n\nGrant decisions are scheduled for late October 2026. The granted research projects may begin in early 2027 and must conclude no later than August 2028.",
+        "exact_deadline_wording": "Call for applications is open from 18 May 2026 to 15 September 2026.",
+        "confidence": "HIGH",
+        "notes": "expired_mismatch per AGENT_BRIEF section 6. The official page gives an explicit closing date of 15 September 2026 (2026-09-15), in the past as of my retrieval on 2026-10-05, while the record is carried as open/upcoming (verification_status 'active'). deadline_date stays null and I did not move the date to a future call. I corroborated the identical window on the Nokia Foundation's official application portal (https://nokiafoundation.apurahat.net/): 'Call for applications for Nokia Foundation Fellow was open from 18th May 2026 until 15th September 2026.' and 'Nokia Foundation Fellow 18.5 - 15.9.2026 23.59' - again past tense. The two official sources agree, so this is not CONFLICTING. Two nearby dates on the page are deliberately NOT treated as the application deadline: 'Grant decisions are scheduled for late October 2026' is a decision date, and the project end of 'August 2028' is a grant term. The page's note that 'it is possible to reapply for an extension via next year's application process' confirms the call recurs but publishes no future date, so it cannot supply a value. Because no current, writable deadline exists, deadline_semantics is UNKNOWN and precision is unknown; the stale 2026 date is preserved verbatim above rather than written to the field."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Call for applications is open from 18 May 2026 to 15 September 2026."
+      },
+      "examined": [
+        "https://nokiafoundation.apurahat.net/",
+        "https://www.nokiafoundation.com/grants-introduction"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.nokiafoundation.com/grants-introduction",
+          "reason": "The record's catalogue_url. Fetched live; it is only an archive of grant and scholarship honorees from 1995 onward and states no application deadline. Contributed no value."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 345,
+      "title": "Jorma Ollila Grant",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Calls for applications for Nokia Scholarship and Jorma Ollila grant were open from 3rd August 2026 until 15th September 2026.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://nokiafoundation.apurahat.net/",
+        "source_type": "official_application_portal",
+        "publisher": "Nokia Foundation (grant system operated by Aspicore Oy)",
+        "retrieved_at": "2026-10-05T15:27:00Z",
+        "as_of": "2026 call list on the portal; window '3.8 - 15.9.2026 23.59'",
+        "raw_extract": "## **Welcome to the Nokia Foundation's Grant System!**\n\n## As a new user of this system you have to register first.\n\n**Calls for applications for Nokia Scholarship and Jorma Ollila grant were open from 3rd August 2026 until 15th September 2026.**\n\n**Call for applications for Nokia Foundation Fellow was open from 18th May 2026 until 15th September 2026.**\n\n**Call for applications for Visiting Professor is open from 1st July 2026 until 5th November 2026.**\n\n## Call for grant applications\n\nFrance-Nokia Chaire d´Excellence (ICT)\n\n8.12.2025 - 16.4.2026 23.59\n\nNokia Foundation Fellow\n\n18.5 - 15.9.2026 23.59\n\nNokia Visiting Professor Grant\n\n1.7 - 5.11.2026 23.59\n\nJorma Ollila Grant\n\n3.8 - 15.9.2026 23.59\n\nNokia Scholarship\n\n3.8 - 15.9.2026 23.59",
+        "exact_deadline_wording": "Jorma Ollila Grant 3.8 - 15.9.2026 23.59",
+        "confidence": "HIGH",
+        "notes": "expired_mismatch per AGENT_BRIEF section 6. IMPORTANT: the record's official_source_url (https://www.nokiafoundation.com/jorma-ollila-grants) does NOT contain any application deadline. I fetched it live and it is purely an archive of grant recipients by year (2014 through 'Jorma Ollila Grants 2025' listing Djelouat Hamza, Petrus Mikkola and Yamac Mehmet), with no 'Deadline' section, no application window and no application instructions. The deadline for this award exists only on the Nokia Foundation's own official application portal, which lists 'Jorma Ollila Grant 3.8 - 15.9.2026 23.59' and states in prose that the calls 'were open from 3rd August 2026 until 15th September 2026'. That closing date, 15 September 2026 (2026-09-15), is in the past as of my retrieval on 2026-10-05, while the record is carried as open/upcoming (verification_status 'active'), so deadline_date stays null and I did not move the date to the following round. I also checked the sibling page https://www.nokiafoundation.com/tutkijat-maailmalle, which like the Jorma Ollila page is only a recipient archive and carries no deadline. CORRECTION TO THE PRIOR-WAVE CACHED VALUE: the shard's stored deadline_display asserts a spring call 'from 2 March until 17 April 2026 as part of the Tutkijat maailmalle programme'. I could not verify that anywhere in live official sources - neither the Tutkijat maailmalle page nor the portal's call list mentions a 2 March to 17 April 2026 window for Jorma Ollila or Tutkijat maailmalle. Per AGENT_BRIEF section 5, a previous wave's cached value with no live source behind it is not evidence, so I discarded it. Because no current, writable deadline exists, deadline_semantics is UNKNOWN and precision is unknown; the stale 2026 date is preserved verbatim above rather than written to the field."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Calls for applications for Nokia Scholarship and Jorma Ollila grant were open from 3rd August 2026 until 15th September 2026."
+      },
+      "examined": [
+        "https://www.nokiafoundation.com/jorma-ollila-grants",
+        "https://www.nokiafoundation.com/tutkijat-maailmalle",
+        "https://www.nokiafoundation.com/grants-introduction",
+        "https://www.nokiafoundation.com/news"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.nokiafoundation.com/jorma-ollila-grants",
+          "reason": "This is the record's own official_source_url. Fetched live; it is a recipient archive (2014-2025 awardees) with no application deadline, no application window and no application instructions. It cannot support any deadline value, which is why the official application portal is cited instead."
+        },
+        {
+          "url": "https://www.nokiafoundation.com/tutkijat-maailmalle",
+          "reason": "Fetched live in the belief it might carry the spring call the prior wave described. It is only a recipient archive (grantees 2023-2025) and contains no dates at all. It does not support the cached '2 March until 17 April 2026' spring claim."
+        },
+        {
+          "url": "https://www.nokiafoundation.com/news",
+          "reason": "Fetched live looking for a newer Jorma Ollila call. Most recent item is 'Nokia Foundation 30 years history' (2025-12-05); no announcement of a new or extended application window. Contributed no value."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 371,
+      "title": "University of Bologna Study Grants and Subsidies",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Scholarships for those experiencing particular personal, family and economic difficulties. The call for applications is usually published in September. / Scholarships and awards are granted throughout the year.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.unibo.it/en/study/study-grants-and-subsidies/scholarships-and-funding-opportunities",
+        "source_type": "official_university_page",
+        "publisher": "University of Bologna",
+        "retrieved_at": "2026-10-05T15:27:00Z",
+        "as_of": "Live 'Study grants and subsidies' hub page as published for the 2026/27 academic year",
+        "raw_extract": "### Study grants for students experiencing difficulties\n\nScholarships for those experiencing particular personal, family and economic difficulties. The call for applications is usually published in September.\n\n[Read the calls for applications and find the award you can apply for](https://bandi.unibo.it/agevolazioni/opportunita?tipobando=agevolazioni%23borse)\n\n### Scholarships and study awards\n\nScholarships and awards are granted throughout the year.\n\n[Read the calls for applications and find the award you can apply for](https://bandi.unibo.it/agevolazioni/opportunita?tipobando=agevolazioni%23borse)",
+        "exact_deadline_wording": "The call for applications is usually published in September. / Scholarships and awards are granted throughout the year.",
+        "confidence": "HIGH",
+        "notes": "This record is a PORTFOLIO record covering a large hub of distinct benefits (ER.GO regional grants, 150-hour collaboration grants, study grants for students experiencing difficulties, international mobility scholarships, fee exemptions, Unibo for Refugees, MUR-CRUI and MAECI scholarships, degree and doctoral awards, and more), each of which is a separate call with its own deadline. The official page publishes no single deadline for the record, and none of the two statements on it is an application deadline: 'The call for applications is usually published in September' describes when one specific call is PUBLISHED (not when applications close), and 'Scholarships and awards are granted throughout the year' describes when awards are GRANTED (not when applications close). I therefore did not record MONTH precision for September - that would convert a publication-timing convention into a deadline month and would apply it to a single sub-benefit while wrongly implying it governs the whole portfolio - and I did not record ROLLING, because the page never says applications are open on a rolling basis. Per AGENT_BRIEF section 6, differing deadlines across the different benefits at this one institution are not a conflict, so this is not CONFLICTING. The two quotes above are recorded verbatim so the convention is not lost, but no date is written. A truthful UNKNOWN is the correct result for a portfolio-level record; a per-benefit breakdown would require records that are not in this shard."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "The call for applications is usually published in September. / Scholarships and awards are granted throughout the year."
+      },
+      "examined": [
+        "https://www.unibo.it/en/study"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.unibo.it/en/study",
+          "reason": "This is the record's official_source_url. Fetched live; it is a top-level study navigation hub whose 'Scholarships and funding opportunities' tile just links onward. It states no deadline of any kind and cannot support a value."
+        },
+        {
+          "url": "https://bandi.unibo.it/agevolazioni/opportunita?tipobando=agevolazioni%23borse",
+          "reason": "This is the University's official calls repository that the page links to for actual deadlines, but it is a filtered search interface listing many separate live calls with individual deadlines. It is not a single deadline for this portfolio record, and I did not fetch and reconcile it call by call, so I cite no value from it."
+        }
+      ]
+    }
+  ]
+}

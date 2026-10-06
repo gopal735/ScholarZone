@@ -1,0 +1,239 @@
+{
+  "shard_id": "DL-050",
+  "agent_completed": true,
+  "topic": "deadline",
+  "notes": "All 7 records researched live. No calendar date was written for any record: no official source for this shard publishes a single unambiguous fixed calendar deadline for its record. Four records have an explicitly non-dated (rolling / no application) basis stated verbatim by the provider; three are UNKNOWN or have two cycle-specific official dates that cannot be reduced to one date.",
+  "records": [
+    {
+      "scholarship_id": 45,
+      "title": "Australian Government Research Training Program (RTP)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Universities are responsible for the application, selection and offer processes for RTP scholarships. To apply for an RTP scholarship, contact your chosen eligible Australian university directly.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.education.gov.au/research-block-grants/research-training-program/research-training-program-frequently-asked-questions-students",
+        "source_type": "official_government_page",
+        "publisher": "Australian Government Department of Education",
+        "retrieved_at": "2026-10-05T15:44:44Z",
+        "as_of": "Page states RTP is administered under the Higher Education Support (Commonwealth Scholarships) Guidelines 2025, which replaced the Commonwealth Scholarships Guidelines (Research) 2017 on 3 December 2025",
+        "raw_extract": "3. What are the deadlines and how do I apply for an RTP scholarship? Universities are responsible for the application, selection and offer processes for RTP scholarships. To apply for an RTP scholarship, contact your chosen eligible Australian university directly.",
+        "exact_deadline_wording": "Universities are responsible for the application, selection and offer processes for RTP scholarships. To apply for an RTP scholarship, contact your chosen eligible Australian university directly.",
+        "confidence": "HIGH",
+        "notes": "The Department publishes no national RTP application deadline. The live FAQ page text was retrieved via a rendered-DOM read of the page; the accordion answer for FAQ 3 was read from the page body. The programme landing page carries no occurrence of 'deadline' at all. The deadline is set per-institution, so no single value exists at the programme level and no individual university deadline was used (a single university's deadline would be a different-programme/generic admissions value under brief section 5)."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "Universities are responsible for the application, selection and offer processes for RTP scholarships. To apply for an RTP scholarship, contact your chosen eligible Australian university directly."
+      },
+      "examined": [
+        "https://www.education.gov.au/research-block-grants/research-training-program",
+        "https://www.education.gov.au/research-block-grants/research-training-program/research-training-program-frequently-asked-questions-students"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 46,
+      "title": "Destination Australia Program (DAP)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "As part of the 2024-2025 Budget, the Australian Government announced there will be no further funding rounds of the Destination Australia program (DAP) from 1 July 2024.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.education.gov.au/destination-australia",
+        "source_type": "official_government_page",
+        "publisher": "Australian Government Department of Education",
+        "retrieved_at": "2026-10-05T15:44:27Z",
+        "as_of": "2024-2025 Budget announcement; no subsequent round announced on the live page",
+        "raw_extract": "As part of the 2024-2025 Budget, the Australian Government announced there will be no further funding rounds of the Destination Australia program (DAP) from 1 July 2024. All current Destination Australia scholarship recipients will continue to be supported for the remainder of their studies, for up to four years, provided they continue to meet eligibility criteria. Individual students should direct any questions regarding their scholarship to their tertiary education provider.",
+        "exact_deadline_wording": "there will be no further funding rounds of the Destination Australia program (DAP) from 1 July 2024",
+        "confidence": "HIGH",
+        "notes": "The live official page states the programme is closed to new applicants: no further funding rounds from 1 July 2024, and only existing recipients are supported. There is therefore no application deadline to record, open or closed. Recorded as UNKNOWN rather than expired_mismatch because no past deadline is published either - the programme has no round to be in the past of. The page is short (4,598 characters) and was read in full via a rendered-DOM read. Note the shard's cached application_period matches this live wording, but the conclusion here rests on the fetched page, not the cache."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "As part of the 2024-2025 Budget, the Australian Government announced there will be no further funding rounds of the Destination Australia program (DAP) from 1 July 2024."
+      },
+      "examined": [
+        "https://www.education.gov.au/destination-australia"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 79,
+      "title": "Edinburgh Global Research Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.ed.ac.uk/student-funding/postgraduate/international",
+        "source_type": "official_university_page",
+        "publisher": "The University of Edinburgh (Registry Services)",
+        "retrieved_at": "2026-10-05T15:45:44Z",
+        "as_of": "Live page as fetched; page carries no cycle reference for this record",
+        "raw_extract": "Funding for international students - In addition to financial assistance, the University of Edinburgh offers a range of scholarships to international students. (The page's funding index and sub-navigation do not list any award named 'Edinburgh Global Research Scholarship', and the string 'deadline' does not appear anywhere in the page text.)",
+        "exact_deadline_wording": "",
+        "confidence": "HIGH",
+        "notes": "The record's official_source_url does not mention this scholarship. I worked up the official hierarchy without finding any live official page for an award of this name: the funding index, Awards by region (all regions, including Multi-regional awards), the Edinburgh Doctoral College Scholarships pages, the University Scholarship Search tool (which requires a filter selection and returns no such award), and study.ed.ac.uk research-degree funding guidance. The University no longer appears to publish an Edinburgh Global Research Scholarship page, so no deadline can be established from an official source. Third-party aggregator pages (globaladmissions.com, scholarshiptab.com, scholarsanta.com) surfaced in search results and were NOT used: they are not official and their snippets are explicitly disallowed evidence under brief section 5. The record's cached value ('Early February 2026 (verify on official site)') is unverified by any live source and was not adopted."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": null
+      },
+      "examined": [
+        "https://www.ed.ac.uk/student-funding/postgraduate/international",
+        "https://www.ed.ac.uk/student-funding/postgraduate/international/region",
+        "https://www.ed.ac.uk/student-funding/postgraduate/international/region/multi-regional-awards",
+        "https://www.ed.ac.uk/student-funding/postgraduate/international/other-funding/doctoral-college",
+        "https://www.ed.ac.uk/student-funding/search-scholarships?search=global+research",
+        "https://study.ed.ac.uk/postgraduate/applying/research-degrees/funding"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.globaladmissions.com/scholarship/edinburgh-scholarship",
+          "reason": "third-party scholarship aggregator / consulting site, not an official University of Edinburgh domain"
+        },
+        {
+          "url": "https://www.scholarshiptab.com/scholarships-by-school/university-of-edinburgh",
+          "reason": "third-party listing site, not official"
+        },
+        {
+          "url": "https://scholarsanta.com/scholarships/edinburgh-global-scholarship-2026",
+          "reason": "third-party listing site; its '15 May 2026' figure refers to the separate Edinburgh Global Scholarship, not this record, and was visible only as a search snippet"
+        },
+        {
+          "url": "https://edwebcontent.ed.ac.uk/sites/default/files/atoms/files//pg_funding_booklet_2015.pdf",
+          "reason": "2015 archived funding booklet; superseded by the live site and its deadline figures (1 May 2015 / 29 May 2015) are historical and not current-cycle"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 127,
+      "title": "Princeton University Need-Based Financial Aid Program (International Students)",
+      "outcome": "conflicting",
+      "deadline_semantics": "CONFLICTING",
+      "deadline_date": null,
+      "deadline_display": "Nov. 9 Princeton Financial Aid Application Due (single-choice early action) / Feb. 1 Princeton Financial Aid Application Due (regular decision)",
+      "deadline_precision": "varies",
+      "source": {
+        "url": "https://admission.princeton.edu/apply/first-year-application-dates-deadlines",
+        "source_type": "official_university_page",
+        "publisher": "Princeton University, Office of Admission",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "as_of": "2026/27 first-year application cycle (page copyright '© 2026 The Trustees of Princeton University'); no explicit year attached to the dates themselves",
+        "raw_extract": "Single-Choice Early Action ... Nov. 1 Application with Princeton-specific Questions Due ... Nov. 9 Princeton Financial Aid Application Due ... Regular Decision ... Jan. 1 Application with Princeton-specific Questions Due ... Feb. 1 Princeton Financial Aid Application Due",
+        "exact_deadline_wording": "Nov. 9 Princeton Financial Aid Application Due (single-choice early action); Feb. 1 Princeton Financial Aid Application Due (regular decision)",
+        "confidence": "HIGH",
+        "notes": "Not a source-versus-source disagreement: one official page publishes TWO different Financial Aid Application deadlines for this same record, conditional on admission route, and attaches no year to either. Writing either date alone would be an arbitrary pick, so deadline_date is null and precision is 'varies'. The record's own official_source_url (https://admission.princeton.edu/apply/international-students) was fetched first and contains no deadline at all - it only states 'Our financial aid program is entirely based on need. Princeton does not offer academic or athletic merit scholarships' and links to the dates page and /cost-aid. The international-students page does confirm this aid applies to international students: 'The full need of all admitted international students is met the same as it is for students from the United States.'"
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "varies",
+        "deadline_display": "Nov. 9 Princeton Financial Aid Application Due (single-choice early action) / Feb. 1 Princeton Financial Aid Application Due (regular decision)"
+      },
+      "examined": [
+        "https://admission.princeton.edu/apply/international-students"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 194,
+      "title": "UQ International Excellence Scholarship",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "You don't need to apply for this scholarship. When you apply to study a program at UQ, you're automatically assessed for this scholarship. ... We will let you know the deadline for accepting your scholarship offer.",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://scholarships.uq.edu.au/scholarship/uq-international-excellence-scholarship",
+        "source_type": "official_scholarship_page",
+        "publisher": "The University of Queensland",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "as_of": "Scholarship terms and conditions year 2027 (page links 'UQ International Excellence Scholarship TCs 2027.pdf'); eligibility stated for applicants commencing 2027",
+        "raw_extract": "How to apply - You don't need to apply for this scholarship. When you apply to study a program at UQ, you're automatically assessed for this scholarship. What happens next - If you are eligible, we will notify you that you're offered this scholarship together with your unconditional letter of offer to study at UQ or once you have satisfied all the conditions of your conditional letter of offer. We will let you know the deadline for accepting your scholarship offer.",
+        "exact_deadline_wording": "You don't need to apply for this scholarship. ... We will let you know the deadline for accepting your scholarship offer.",
+        "confidence": "HIGH",
+        "notes": "The provider states there is no scholarship application and no published fixed date; the only deadline is communicated to the individual after an offer is issued. Classified ROLLING (no fixed deadline) rather than ANNUAL because UQ describes continuous automatic assessment rather than a recurring annual window. The live page does not use the word 'rolling' itself, hence the MEDIUM->HIGH confidence rests on the explicit 'You don't need to apply' wording; the accept-offer deadline is per-offer and cannot be published as a calendar value. Never dated, per brief section 6."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "rolling",
+        "deadline_display": "You don't need to apply for this scholarship. When you apply to study a program at UQ, you're automatically assessed for this scholarship. We will let you know the deadline for accepting your scholarship offer."
+      },
+      "examined": [
+        "https://scholarships.uq.edu.au/scholarship/uq-international-excellence-scholarship"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 295,
+      "title": "Charles University Doctoral Study Income (full-time doctoral students)",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "As a full-time doctoral student, you receive a doctoral study income in a guaranteed minimum amount of 1.2 times the minimum wage in Czechia during the standard length of your studies (4 years).",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://cuni.cz/UKEN-1617.html",
+        "source_type": "official_university_page",
+        "publisher": "Charles University, Prague",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "as_of": "Page 'Last change: August 14, 2026, 15:09'",
+        "raw_extract": "PhD students - As a full-time doctoral student, you receive a doctoral study income in a guaranteed minimum amount of 1.2 times the minimum wage in Czechia during the standard length of your studies (4 years). The doctoral study income may consist of: a doctoral scholarship; a salary or a wage for creative activities directly related to the preparation of the dissertation; a combination of both.",
+        "exact_deadline_wording": "you receive a doctoral study income in a guaranteed minimum amount of 1.2 times the minimum wage in Czechia during the standard length of your studies (4 years)",
+        "confidence": "HIGH",
+        "notes": "Standing entitlement for every enrolled full-time doctoral student, not a competitive call: there is no application, no round and no closing date anywhere on the page. The live page's own text uses 'during the standard length of your studies (4 years)' and its last-change stamp is 14 August 2026, which corroborates the shard's cached wording. ROLLING is used because the entitlement runs continuously for the standard doctorate; no calendar date is derivable and none was written."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "rolling",
+        "deadline_display": "As a full-time doctoral student, you receive a doctoral study income in a guaranteed minimum amount of 1.2 times the minimum wage in Czechia during the standard length of your studies (4 years)."
+      },
+      "examined": [
+        "https://cuni.cz/UKEN-1617.html"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://cuni.cz/UKEN-1632.html",
+          "reason": "Charles University 'Application Deadlines' page - this is the generic programme-admissions deadline for a different process and is explicitly not usable as the doctoral study income deadline under brief section 5"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 301,
+      "title": "Nova SBE Master's Scholarships and Awards (including the Nova SBE Merit Scholarship)",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "Applications are open for the Fall Intake and cannot be considered after the application to the Master's program has been submitted. Scholarships are awarded on a rolling basis to applicants, which means that the budget available for scholarships may be used before the end of the Master's admission cycle. Due to the high volume of deserving candidates and the limited funding available for scholarships, we strongly recommend that you apply as early as possible.",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://www.novasbe.unl.pt/en/programs/scholarships-funding/masters",
+        "source_type": "official_programme_page",
+        "publisher": "Nova School of Business and Economics, Universidade NOVA de Lisboa",
+        "retrieved_at": "2026-10-05T15:33:00Z",
+        "as_of": "DGES Scholarship 2026/27 cycle referenced on the same page ('Applications for the DGES Scholarship for the 2026/27 academic year will open on August 14'); the Nova SBE Merit Scholarship section itself is undated",
+        "raw_extract": "Nova SBE Merit Scholarship - Application: Candidates must show interest in a merit scholarship during their application to the Master's program by filling in the designated area in the application form for this matter. Applications are open for the Fall Intake and cannot be considered after the application to the Master's program has been submitted. Scholarships are awarded on a rolling basis to applicants, which means that the budget available for scholarships may be used before the end of the Master's admission cycle. Due to the high volume of deserving candidates and the limited funding available for scholarships, we strongly recommend that you apply as early as possible.",
+        "exact_deadline_wording": "Applications are open for the Fall Intake and cannot be considered after the application to the Master's program has been submitted / Scholarships are awarded on a rolling basis to applicants",
+        "confidence": "HIGH",
+        "notes": "Nova SBE states the term 'rolling basis' explicitly, in the Merit Scholarship section and in each of the other scholarship sections on the page, so ROLLING is the provider's own wording rather than an inference. The page publishes no fixed date for the Merit Scholarship. The '13 November 2025 to 23 March 2026' windows mentioned in the shard's cached application_period belong to separate partner scholarships on the same page and are NOT this record's deadline; they were not adopted. The only dated item on the page (DGES Scholarship opening 'August 14') is a different award and was not used."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "rolling",
+        "deadline_display": "Applications are open for the Fall Intake and cannot be considered after the application to the Master's program has been submitted. Scholarships are awarded on a rolling basis to applicants."
+      },
+      "examined": [
+        "https://www.novasbe.unl.pt/en/programs/scholarships-funding/masters"
+      ],
+      "rejected_sources": []
+    }
+  ]
+}

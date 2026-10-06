@@ -1,0 +1,258 @@
+{
+  "shard_id": "DL-045",
+  "agent_completed": true,
+  "topic": "deadline",
+  "agent_notes": "All 7 records researched live on 2026-10-05 (UTC). No deadline_date was written for any record: every official page fetched either publishes no calendar deadline (rolling / relative / invite-based) or publishes only a past, cycle-specific date. Search-result snippets, aggregator pages and social posts were never used as evidence. Outcome convention used here: 'recovered' = the nature of the deadline was established from an official page at MEDIUM/HIGH confidence (rolling/recurring, deadline_date stays null); 'unknown' = no live official page or no usable deadline statement; 'expired_mismatch' = the official page's stated deadline is clearly in the past while the record is open/upcoming.",
+  "records": [
+    {
+      "scholarship_id": 52,
+      "title": "Monash International Leadership Scholarship",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "No applications required. Students that have received an undergraduate course offer from Monash will automatically be considered. Can be deferred within the same calendar year only.",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://www.monash.edu/study/fees-scholarships/scholarships/find-a-scholarship/monash-international-leadership-scholarship-5571Z",
+        "source_type": "official_scholarship_page",
+        "publisher": "Monash University",
+        "retrieved_at": "2026-10-05T15:28:30Z",
+        "as_of": "Page states \"Last updated: Oct 2026\"; no application cycle or closing date is published",
+        "raw_extract": "No applications required. Students that have received an undergraduate course offer from Monash will automatically be considered. Can be deferred within the same calendar year only.",
+        "exact_deadline_wording": "No applications required. Students that have received an undergraduate course offer from Monash will automatically be considered.",
+        "confidence": "MEDIUM",
+        "notes": "The scholarship page carries no closing date, no 'applications open/close' field and no reference to a scholarship application round. The only application wording is 'No applications required ... automatically be considered', i.e. there is no application window and therefore no fixed deadline; the page does not use the word 'rolling', hence MEDIUM confidence on the ROLLING mapping. The shard's cached precision 'month' is not supported by anything on the live page. Not dated."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "rolling",
+        "deadline_display": "No applications required. Students that have received an undergraduate course offer from Monash will automatically be considered. Can be deferred within the same calendar year only."
+      },
+      "examined": [
+        "https://www.monash.edu/study/fees-scholarships/scholarships/find-a-scholarship/monash-international-leadership-scholarship-5571Z"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 198,
+      "title": "Deakin Vice-Chancellor's International Scholarship",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "Complete the International Scholarship Program application form and email it to Deakin International Admissions at least one month before your program starts. Scholarships are assessed on a rolling basis in the lead-up to each trimester.",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://www.deakin.edu.au/study/fees-and-scholarships/scholarships/find-a-scholarship/deakin-vice-chancellors-international-scholarship",
+        "source_type": "official_scholarship_page",
+        "publisher": "Deakin University",
+        "retrieved_at": "2026-10-05T15:28:30Z",
+        "as_of": null,
+        "raw_extract": "Complete the [International Scholarship Program application form (PDF, 536KB)](https://www.deakin.edu.au/__data/assets/pdf_file/0020/117137/deakin-international-scholarship-program-form.pdf) and email it to Deakin International Admissions at least one month before your program starts. Only successful applicants will be contacted with an outcome. | Scholarships are assessed on a rolling basis in the lead-up to each trimester.",
+        "exact_deadline_wording": "Scholarships are assessed on a rolling basis in the lead-up to each trimester.",
+        "confidence": "HIGH",
+        "notes": "The official page states rolling assessment explicitly, so ROLLING is a direct quotation, not an inference. The page also states a relative cut-off ('at least one month before your program starts') rather than a calendar date, so no deadline_date can be written and none was invented. The record's shard verification_status is 'quarantined'; that is a database-side flag and does not change the sourced answer. A third-party page (scholarshipsfuture.com) asserted '30 November 2025' for 2026 - not used, it is a non-official aggregator and disagrees with the official relative wording."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "rolling",
+        "deadline_display": "Complete the International Scholarship Program application form and email it to Deakin International Admissions at least one month before your program starts. Scholarships are assessed on a rolling basis in the lead-up to each trimester."
+      },
+      "examined": [
+        "https://www.deakin.edu.au/study/fees-and-scholarships/scholarships/find-a-scholarship/deakin-vice-chancellors-international-scholarship"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://scholarshipsfuture.com/deakin-university-vice-chancellors-scholarship-2026/",
+          "reason": "third-party aggregator; invented a calendar deadline ('30 November 2025') that the official page does not state"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 199,
+      "title": "Deakin International Vice-Chancellor's Scholarship 100% (South Asia)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.deakin.edu.au/study/fees-and-scholarships/scholarships/find-a-scholarship/international-vice-chancellors-scholarship-100-south-asia",
+        "source_type": "official_scholarship_page",
+        "publisher": "Deakin University",
+        "retrieved_at": "2026-10-05T15:32:10Z",
+        "as_of": null,
+        "raw_extract": "",
+        "exact_deadline_wording": "",
+        "confidence": "LOW",
+        "notes": "The record's official_source_url returns HTTP 404 Not Found on every live attempt (fetched 4x on 2026-10-05, with and without trailing slash, plus the slug variant '.../international-vice-chancellors-scholarship-100'). The scholarship is not listed on Deakin's live 'Scholarships for international students' page, and the find-a-scholarship catalogue is a client-side tool whose results are not present in the fetched HTML, so no live official page was reachable for this award. A search engine still serves an indexed copy of the old page ('Applications now open' / 'recommended ... at least one month prior to commencing your studies'), but a search snippet and a cached copy are not admissible evidence, and the sibling Deakin award (record 198) is not this award. No deadline asserted; the shard's cached 'Rolling (apply 1+ month before start)' has no live source behind it."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": null
+      },
+      "examined": [
+        "https://www.deakin.edu.au/study/fees-and-scholarships/scholarships/find-a-scholarship/international-vice-chancellors-scholarship-100-south-asia (HTTP 404)",
+        "https://www.deakin.edu.au/study/fees-and-scholarships/scholarships/find-a-scholarship/international-vice-chancellors-scholarship-100-south-asia/ (HTTP 404)",
+        "https://www.deakin.edu.au/study/fees-and-scholarships/scholarships/find-a-scholarship/international-vice-chancellors-scholarship-100 (HTTP 404)",
+        "https://www.deakin.edu.au/study/fees-and-scholarships/scholarships/find-a-scholarship (catalogue tool, no server-rendered results for this award)",
+        "https://www.deakin.edu.au/international-students/international-student-scholarships (does not list this award)",
+        "https://www.deakin.edu.au/__data/assets/pdf_file/0019/123931/deakin-scholarships-guide.pdf (fetched but returned raw PDF binary; no quotable text extracted, so not used as evidence)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.deakin.edu.au/study/fees-and-scholarships/scholarships/find-a-scholarship/international-vice-chancellors-scholarship-100-south-asia (search-engine index copy)",
+          "reason": "search-result snippet / cached copy of a page that is no longer live; brief section 5 forbids it"
+        },
+        {
+          "url": "https://daadscholarship.com/deakin-university-international-vice-chancellor-scholarship-spring-2025/",
+          "reason": "third-party scholarship aggregator"
+        },
+        {
+          "url": "https://www.mastersportal.com/scholarships/4074/international-vice-chancellors-scholarship-100.html",
+          "reason": "third-party aggregator; shows 'Application deadline: Anytime' which is not an official statement"
+        },
+        {
+          "url": "https://www.collegenp.com/scholarship/international-vice-chancellors-scholarship-at-deakin-university",
+          "reason": "third-party aggregator"
+        },
+        {
+          "url": "https://www.linkedin.com/posts/gain-scholarships_deakinscholarship2027-deakinuniversity-activity-7489682007581646849-tDbt",
+          "reason": "social media post"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 228,
+      "title": "DAAD Research Grants in Germany (for doctoral candidates and early postdocs)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Application deadlines are updated annually in the second quarter. In most cases, they are in the same period as the previous year.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?status=4&origin=&subjectGrps=&daad=&intention=2&q=&page=1&detail=57742121",
+        "source_type": "official_programme_page",
+        "publisher": "Deutscher Akademischer Austauschdienst (DAAD)",
+        "retrieved_at": "2026-10-05T15:29:40Z",
+        "as_of": "2027 funding period (\"The funding must begin in 2027\"); page retrieved 2026-10-05",
+        "raw_extract": "[daad.de] \"Application deadlines are updated annually in the second quarter. In most cases, they are in the same period as the previous year. You can find the current dates here:\" | [daad.de] \"Currently you cannot apply for this programme. Please note the application deadline specified under the [Application procedure] tab.\" | [daad.de] \"The access to the application portal opens **at least 6 weeks before the application deadline.**\" | [daad-bangladesh.org] \"The application deadline was 21 October 2024. The decision of the selection committee will be shared with applicants around April 2025.  Successful applicants can plan their stay in Germany from May 2025 onward. The next deadline will be communicated in July 2025.\"",
+        "exact_deadline_wording": "Application deadlines are updated annually in the second quarter. In most cases, they are in the same period as the previous year.",
+        "confidence": "HIGH",
+        "notes": "expired_mismatch: the record's own official_source_url (DAAD Bangladesh country site) still publishes only the past cycle - 'The application deadline was 21 October 2024' - while the central DAAD announcement (same programme, detail=57742121, reached from that page) shows the 2027 round as closed ('Currently you cannot apply for this programme') and renders no calendar date for the 2027 deadline. The record is open/upcoming, so the only explicit date on the record's official source is stale; it was not written and not rolled forward to 2025/2026/2027. What the official programme page does establish is the annual update policy, hence ANNUAL / recurring with deadline_date null. Do not infer a 2027 Q2 date from the policy sentence."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "recurring",
+        "deadline_display": "Application deadlines are updated annually in the second quarter. In most cases, they are in the same period as the previous year."
+      },
+      "examined": [
+        "https://www.daad-bangladesh.org/en/studying-in-germany/phd-studies/research-grants-in-germany-for-phd-scholars (record official_source_url; fetched, past-cycle deadline only)",
+        "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?status=4&origin=&subjectGrps=&daad=&intention=2&q=&page=1&detail=57742121 (fetched, no rendered 2027 date)"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 266,
+      "title": "University of Turku Merit Scholarship and Early Bird Discount",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "To receive the Early Bird discount, the applicant must accept the study offer and pay the tuition fee within 28 days after the admission decisions have been published. There is a separate application process for the merit scholarships. The admission services of the University will invite all eligible applicants to apply for the scholarship when the application round opens in spring.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.utu.fi/en/study-at-utu/scholarships-and-tuition-fees",
+        "source_type": "official_university_page",
+        "publisher": "University of Turku",
+        "retrieved_at": "2026-10-05T15:31:20Z",
+        "as_of": "\"Information on this page is for students admitted in 2026.\"",
+        "raw_extract": "The University of Turku offers an Early Bird discount of 2000 € for newly admitted master's degree students. To receive the Early Bird discount, the applicant must accept the study offer and pay the tuition fee within 28 days after the admission decisions have been published. | To receive the discount in 2026, the final date to accept the study offer and pay the tuition fee is 24 April. | Note: The time for accepting the study place and paying the tuition fee in order to receive the Early Bird discount was previously incorrectly stated as 30 days. The correct time is 28 days. (Information updated 10 March 2026) | There is a separate application process for the merit scholarships. The admission services of the University will invite all eligible applicants to apply for the scholarship when the application round opens in spring.",
+        "exact_deadline_wording": "the applicant must accept the study offer and pay the tuition fee within 28 days after the admission decisions have been published",
+        "confidence": "HIGH",
+        "notes": "The record's official_source_url (https://www.utu.fi/en/study-at-turku/tuition-fees-and-scholarships) returns HTTP 404 (fetched 2x). The live official University of Turku page that carries both components named in this record's title (Merit Scholarship and Early Bird discount) is https://www.utu.fi/en/study-at-utu/scholarships-and-tuition-fees - same institution, same two instruments - and it is used as the source. Neither component has a datable deadline: the Early Bird condition is relative (28 days after admission decisions are published) and the Merit Scholarship round is invitation-based in spring. The only calendar day on the page, '24 April', is explicitly scoped to 2026 and had already passed on the 2026-10-05 retrieval date, so it was neither written nor moved to 2027. Not dated."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "recurring",
+        "deadline_display": "Early Bird: the applicant must accept the study offer and pay the tuition fee within 28 days after the admission decisions have been published. Merit Scholarship: the admission services of the University will invite all eligible applicants to apply for the scholarship when the application round opens in spring."
+      },
+      "examined": [
+        "https://www.utu.fi/en/study-at-turku/tuition-fees-and-scholarships (record official_source_url; HTTP 404 on 2 attempts)",
+        "https://www.utu.fi/en/study-at-utu/scholarships-and-tuition-fees (live official equivalent page; fetched)",
+        "https://www.utu.fi/en/study-at-utu/FAQ (fetched; repeats the invite-based spring merit round and the 28-day Early Bird window, no date for the merit round)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.utu.fi/en/study-at-utu/scholarships-before-2025",
+          "reason": "official page but scoped to students admitted in 2025 or before, i.e. a superseded scholarship system; not the current cycle"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 339,
+      "title": "University of Turku Merit Scholarship (50% of tuition) and Early Bird Discount",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "To receive the discount in 2026, the final date to accept the study offer and pay the tuition fee is 24 April. To receive the Early Bird discount, the applicant must accept the study offer and pay the tuition fee within 28 days after the admission decisions have been published. There is a separate application process for the merit scholarships. The admission services of the University will invite all eligible applicants to apply for the scholarship when the application round opens in spring.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.utu.fi/en/study-at-utu/scholarships-and-tuition-fees",
+        "source_type": "official_university_page",
+        "publisher": "University of Turku",
+        "retrieved_at": "2026-10-05T15:31:20Z",
+        "as_of": "\"Information on this page is for students admitted in 2026.\"",
+        "raw_extract": "To receive the discount in 2026, the final date to accept the study offer and pay the tuition fee is 24 April. | To receive the Early Bird discount, the applicant must accept the study offer and pay the tuition fee within 28 days after the admission decisions have been published. | There is a separate application process for the merit scholarships. The admission services of the University will invite all eligible applicants to apply for the scholarship when the application round opens in spring.",
+        "exact_deadline_wording": "To receive the discount in 2026, the final date to accept the study offer and pay the tuition fee is 24 April.",
+        "confidence": "HIGH",
+        "notes": "Both halves of this record were re-read live on the record's own official_source_url, which fetched successfully (the older /en/study-at-turku/... URL forms for the same content 404'd during this session). The Early Bird condition is published as a relative window ('within 28 days after the admission decisions have been published'); the only calendar day, '24 April', is explicitly scoped 'in 2026' and had passed on the 2026-10-05 retrieval date, so 2026-04-24 was deliberately not written and not rolled forward to a 2027 equivalent. The Merit Scholarship has no published application deadline at all (invitation-based, spring round). The record bundles two instruments with different mechanics from a single official page; that is not a CONFLICT (no two sources disagree about the same deadline), so semantics is ANNUAL / recurring rather than CONFLICTING / varies, and the shard's cached precision 'varies' is not supported by the live page. Not dated."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "recurring",
+        "deadline_display": "Early Bird: the applicant must accept the study offer and pay the tuition fee within 28 days after the admission decisions have been published (the page's '24 April' anchor is stated for 2026 only). Merit Scholarship: the admission services of the University will invite all eligible applicants to apply for the scholarship when the application round opens in spring."
+      },
+      "examined": [
+        "https://www.utu.fi/en/study-at-utu/scholarships-and-tuition-fees (record official_source_url; fetched)",
+        "https://www.utu.fi/en/study-at-utu/FAQ (fetched; same relative wording, no merit-round date)",
+        "https://www.utu.fi/en/study-at-turku/scholarships-and-tuition-fees (HTTP 404; older URL form)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.utu.fi/en/study-at-utu/scholarships-before-2025",
+          "reason": "superseded scholarship system, scoped to students admitted 2025 or before"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 716,
+      "title": "Government of Guyana Scholarships",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Closing date for submission of applications is September 30, 2026. (all awards currently listed on the Ministry page are marked \"Closed\")",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://mps.gov.gy/scholarships/gog",
+        "source_type": "official_government_page",
+        "publisher": "Ministry of Public Service, Government Efficiency and Implementation, Government of Guyana",
+        "retrieved_at": "2026-10-05T15:29:50Z",
+        "as_of": "awards advertised for the 2026/2027 and 2027/2028 academic years; page retrieved 2026-10-05",
+        "raw_extract": "# Guyana – Chile 2026 Scholarship Offer – Closed ... Closing date for submission of applications is September 30, 2026. | #  Commonwealth Scholarship Commission Scholarships 2027/2028  #  – Closed ... Closing date for submission of applications is September 27, 2026. | [portal.gov.gy] \"Requirements differ by award and are stated in the advertisement for each scholarship.\" | [portal.gov.gy] \"The Ministry of Public Service, Government Efficiency and Implementation advertises and administers Government of Guyana scholarships. Awards are offered in three categories, undergraduate, technical and vocational education, and postgraduate, based on national workforce requirements.\"",
+        "exact_deadline_wording": "Closing date for submission of applications is September 30, 2026.",
+        "confidence": "HIGH",
+        "notes": "This record is an umbrella over many individually advertised awards, so it has no single deadline: the official government portal states requirements and dates are 'stated in the advertisement for each scholarship', and the Ministry page lists a different closing date per award (latest: 30 September 2026, Commonwealth Scholarship Commission 2027/2028: 27 September 2026; others 12 July, 24 May, 15 March, 27 March 2026, 9 August 2026, 31 July 2026 and older ones). Outcome expired_mismatch: as of the 2026-10-05 retrieval every award on the official page is labelled \"Closed\" and the most recent closing date has already passed, while the record is open/upcoming - so no currently open application window exists and nothing may be written as an upcoming deadline. Timing is annual/per-advertisement (each award is issued for a named academic year such as 2026/2027 or 2027/2028), so precision is recorded as recurring, not as a date. No single annual date is published by the Ministry, so none was derived."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "recurring",
+        "deadline_display": "Each scholarship is advertised individually and its requirements and closing date are stated in that advertisement; no single annual date is published. As of 2026-10-05 all awards listed on https://mps.gov.gy/scholarships/gog are marked \"Closed\" (latest closing date: September 30, 2026)."
+      },
+      "examined": [
+        "https://portal.gov.gy/services/scholarship (record official_source_url; fetched, publishes no closing date)",
+        "https://mps.gov.gy/scholarships/gog (record catalogue_url; fetched, per-award closing dates all past)"
+      ],
+      "rejected_sources": []
+    }
+  ]
+}

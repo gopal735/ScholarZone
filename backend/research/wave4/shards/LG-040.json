@@ -1,0 +1,49 @@
+{
+  "shard_id": "LG-040",
+  "topic": "logo",
+  "hosts": [
+    "aims.ac.za",
+    "bond.edu.au",
+    "sfs.mit.edu",
+    "www.icar.gov.in"
+  ],
+  "record_count": 4,
+  "records": [
+    {
+      "id": 115,
+      "title": "Netaji Subhas-ICAR International Fellowship (NS-ICAR IF)",
+      "official_source": "Indian Council of Agricultural Research (ICAR), Ministry of Agriculture and Farmers Welfare, Govt. of India",
+      "official_source_url": "https://www.icar.gov.in",
+      "catalogue_url": "https://icar.org.in/en/node/26210",
+      "country": "India",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 482,
+      "title": "MIT Undergraduate Need-Based Financial Aid and MIT Scholarship for International Students",
+      "official_source": "MIT Student Financial Services",
+      "official_source_url": "https://sfs.mit.edu/undergraduate-students/apply-for-aid/international",
+      "catalogue_url": "https://sfs.mit.edu/undergraduate-students/types-of-aid",
+      "country": "United States",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 522,
+      "title": "African Institute for Mathematical Sciences (AIMS) Structured Master's Scholarship - January 2027 intake (South African applicants)",
+      "official_source": "African Institute for Mathematical Sciences (AIMS), Muizenberg, Cape Town",
+      "official_source_url": "https://aims.ac.za/academics/prospective_students",
+      "catalogue_url": null,
+      "country": "South Africa",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 664,
+      "title": "Bond University Postgraduate Research Scholarship",
+      "official_source": "Bond University",
+      "official_source_url": "https://bond.edu.au/scholarship/bond-university-postgraduate-research-scholarship",
+      "catalogue_url": "https://bond.edu.au/research/research-degrees/fees-and-scholarships",
+      "country": "Australia",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

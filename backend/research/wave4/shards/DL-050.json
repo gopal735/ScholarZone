@@ -1,0 +1,99 @@
+{
+  "shard_id": "DL-050",
+  "topic": "deadline",
+  "hosts": [
+    "admission.princeton.edu",
+    "cuni.cz",
+    "scholarships.uq.edu.au",
+    "www.ed.ac.uk",
+    "www.education.gov.au",
+    "www.novasbe.unl.pt"
+  ],
+  "record_count": 7,
+  "records": [
+    {
+      "id": 45,
+      "title": "Australian Government Research Training Program (RTP)",
+      "official_source": "Department of Education, Australian Government",
+      "official_source_url": "https://www.education.gov.au/research-block-grants/research-training-program",
+      "catalogue_url": null,
+      "country": "Australia",
+      "deadline_display": null,
+      "deadline_precision": "month",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 46,
+      "title": "Destination Australia Program (DAP)",
+      "official_source": "Department of Education, Australian Government",
+      "official_source_url": "https://www.education.gov.au/destination-australia",
+      "catalogue_url": null,
+      "country": "Australia",
+      "deadline_display": null,
+      "deadline_precision": "month",
+      "application_period": "No further funding rounds from 1 July 2024; existing recipients continue to be supported",
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 79,
+      "title": "Edinburgh Global Research Scholarship",
+      "official_source": "The University of Edinburgh",
+      "official_source_url": "https://www.ed.ac.uk/student-funding/postgraduate/international",
+      "catalogue_url": null,
+      "country": "United Kingdom",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 127,
+      "title": "Princeton University Need-Based Financial Aid Program (International Students)",
+      "official_source": "Princeton University",
+      "official_source_url": "https://admission.princeton.edu/apply/international-students",
+      "catalogue_url": "https://admission.princeton.edu/academics/minors-and-certificate-programs",
+      "country": "United States",
+      "deadline_display": "Princeton publishes separate deadlines for the application and the aid form. Applications are due Nov. 1 (single-choice early action) or Jan. 1 (regular decision), and the Princeton Financial Aid Application is due Nov. 9 (single-choice early action) or Feb. 1 (regular decision).",
+      "deadline_precision": "varies",
+      "application_period": "Annual cycle. Single-choice early action application Nov. 1 with the financial aid application due Nov. 9; regular decision application Jan. 1 with the financial aid application due Feb. 1. Applications open in mid-August.",
+      "verification_status": "active"
+    },
+    {
+      "id": 194,
+      "title": "UQ International Excellence Scholarship",
+      "official_source": "The University of Queensland",
+      "official_source_url": "https://scholarships.uq.edu.au/scholarship/uq-international-excellence-scholarship",
+      "catalogue_url": "https://scholarships.uq.edu.au/scholarships",
+      "country": "Australia",
+      "deadline_display": "No application deadline: eligibility is assessed automatically with the program application. UQ states \"We will let you know the deadline for accepting your scholarship offer\" once an offer is issued.",
+      "deadline_precision": "varies",
+      "application_period": "Assessed automatically for applicants applying to study full-time at UQ commencing in 2027; scholarship offers are issued with the unconditional letter of offer or once all conditions of a conditional offer are satisfied.",
+      "verification_status": "active"
+    },
+    {
+      "id": 295,
+      "title": "Charles University Doctoral Study Income (full-time doctoral students)",
+      "official_source": "Charles University (Prague)",
+      "official_source_url": "https://cuni.cz/UKEN-1617.html",
+      "catalogue_url": null,
+      "country": "Czech Republic",
+      "deadline_display": "No application deadline. The official page states the doctoral study income is received \"during the standard length of your studies (4 years)\" by every full-time doctoral student, so it is a standing entitlement rather than a competitive call.",
+      "deadline_precision": "rolling",
+      "application_period": "Continuous for the standard length of the doctorate (4 years) once enrolled as a full-time doctoral student.",
+      "verification_status": "active"
+    },
+    {
+      "id": 301,
+      "title": "Nova SBE Master's Scholarships and Awards (including the Nova SBE Merit Scholarship)",
+      "official_source": "Nova School of Business and Economics (Nova SBE), Universidade NOVA de Lisboa",
+      "official_source_url": "https://www.novasbe.unl.pt/en/programs/scholarships-funding/masters",
+      "catalogue_url": "https://www.novasbe.unl.pt/en/programs/masters",
+      "country": "Portugal",
+      "deadline_display": "No fixed date is published for the Nova SBE Merit Scholarship. The official wording is \"Applications are open for the Fall Intake and cannot be considered after the application to the Master's program has been submitted\", and \"Scholarships are awarded on a rolling basis to applicants\". Partner scholarships with published windows on the same page ran from 13 November 2025 to 23 March 2026 for the Fall Intake.",
+      "deadline_precision": "rolling",
+      "application_period": "Rolling award during the master's admission cycle, for the Fall Intake only for the Merit Scholarship. The Social Mobility and Continuity Scholarships are available for both the Fall and Spring intakes. Separate partner scholarships on the same page state explicit windows of 13 November 2025 to 23 March 2026.",
+      "verification_status": "active"
+    }
+  ]
+}

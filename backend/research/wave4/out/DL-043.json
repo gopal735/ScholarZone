@@ -1,0 +1,239 @@
+{
+  "shard_id": "DL-043",
+  "agent_completed": true,
+  "agent": "DL-043",
+  "topic": "deadline",
+  "retrieved_at": "2026-10-05T15:36:03Z",
+  "records": [
+    {
+      "scholarship_id": 9,
+      "title": "MOPGA Visiting Fellowship Program",
+      "outcome": "recovered",
+      "deadline_semantics": "EXACT",
+      "deadline_date": "2026-12-15",
+      "deadline_display": "15 December 2026: Application deadline",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.campusfrance.org/en/mopga-2027",
+        "source_type": "official_scholarship_page",
+        "publisher": "Campus France (agency of the French Ministry for Europe and Foreign Affairs implementing the MOPGA call)",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": "MOPGA 2027 call (tenth call for applications); page states \"Updated on 15 September 2026\" and the timeline is for the 2027 cohort arriving between September and December 2027",
+        "raw_extract": "## **TIMELINE**\n\n-   **15 September 2026:** Applications open\n-   **15 December 2026:** Application deadline\n-   **May\u2013June 2027:** Notification of results\n-   **Between September and December 2027:** Successful applicants arrive in France and begin their research stay at French host institutions",
+        "exact_deadline_wording": "15 December 2026: Application deadline",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url is only the year-index of MOPGA editions and carries no deadline text; the live, currently open edition page for this programme (the shard's catalogue_url) is the official Campus France call page and states an explicit calendar deadline. Application window is open at retrieval (opened 15 September 2026, closes 15 December 2026), so the date is not stale and is not an inference from cycle assumptions."
+      },
+      "field_mapping": {
+        "deadline_date": "2026-12-15",
+        "deadline_precision": "exact",
+        "deadline_display": "15 December 2026: Application deadline"
+      },
+      "examined": [
+        "https://www.campusfrance.org/en/mopga-make-our-planet-great-again-funding-programs"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 19,
+      "title": "France Excellence Europa Scholarship",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "The deadline for submitting applications is 30 April 2025.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.campusfrance.org/en/france-excellence-europa-scholarship-program",
+        "source_type": "official_scholarship_page",
+        "publisher": "Campus France (French Ministry for Europe and Foreign Affairs programme page)",
+        "retrieved_at": "2026-10-05T15:28:00Z",
+        "as_of": "2025 edition only: page states \"Updated on 07 March 2025\", eligibility and admission year \"for the 2025-26 academic year\", calendar steps all dated 2025",
+        "raw_extract": "### Application Deadline\n\nThe deadline for submitting applications is 30 April 2025.",
+        "exact_deadline_wording": "The deadline for submitting applications is 30 April 2025.",
+        "confidence": "HIGH",
+        "notes": "expired_mismatch: the only deadline published on the official programme page is 30 April 2025, which is already in the past at retrieval (2026-10-05), while the record is carried as open/upcoming. Per the brief the stale date is not written and is not silently rolled forward to 2026/2027. Campus France's bursaries-for-foreign-students hub lists a single \"France Excellence Europa\" programme page and no newer edition is published, so no current-cycle deadline could be established. No month-only or annual claim is made here because the source states a full calendar date for a closed edition."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": null
+      },
+      "examined": [
+        "https://www.campusfrance.org/en/bursaries-foreign-students"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 77,
+      "title": "Cranfield University GREAT Scholarship 2026 Bangladesh",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Applications must be submitted by the deadline of Monday 18th May 2026 at 5pm.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.cranfield.ac.uk/funding/funding-opportunities/great-cranfield-university-scholarship-bangladesh",
+        "source_type": "official_university_page",
+        "publisher": "Cranfield University (in partnership with the British Council / GREAT Scholarships campaign)",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": "2026 cycle, for courses \"starting in September or October 2026\"; page also states \"All applicants will be notified of the outcome of this scholarship by the end of June 2026\"",
+        "raw_extract": "Applications must be submitted by the deadline of Monday 18th May 2026 at 5pm.",
+        "exact_deadline_wording": "Applications must be submitted by the deadline of Monday 18th May 2026 at 5pm.",
+        "confidence": "HIGH",
+        "notes": "expired_mismatch: the official scholarship page states the 2026 deadline (18 May 2026, 5pm) and that outcomes were notified by end of June 2026 - both already past at retrieval (2026-10-05) - while the record is carried as open/upcoming. The stale date is not written and not moved to the next annual cycle; no next-cycle date is published on the page. The at-a-glance block on the same page also reads \"Deadline 18 May 2026\", consistent with the same closed deadline (not a conflicting source). The shard's catalogue_url points at a School of Management executive-programmes page, which is not a funding source for this award and was not used."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": null
+      },
+      "examined": [],
+      "rejected_sources": [
+        {
+          "url": "https://www.cranfield.ac.uk/som/open-executive-programmes",
+          "reason": "shard catalogue_url; School of Management executive programmes index, not an official funding page for this scholarship and carries no scholarship deadline"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 140,
+      "title": "Talents 4 UniTo \u2014 Two-Year Scholarships for International Students Enrolling in English-Taught Master's Degrees (University of Turin)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.unito.it/internazionalita/studenti-e-ospiti-internazionali/studenti-internazionali/borse-studenti",
+        "source_type": "official_scholarship_page",
+        "publisher": "Universit\u00e0 degli Studi di Torino (official hub \"Borse per studenti internazionali\")",
+        "retrieved_at": "2026-10-05T15:34:00Z",
+        "as_of": "hub as published on 2026-10-05 lists the most recent Talent 4 UniTo edition as a.a. 2026-2027, with the call document under /2025-12/ and the ranking plus rectification documents under /2026-06/",
+        "raw_extract": "Se hai un titolo di studio estero e vuoi venire a studiare all'Universit\u00e0 di Torino, scopri le borse di studio che l'Ateneo mette a disposizione.\n\nSe non trovi un'opportunit\u00e0 adatta a te, ti consigliamo di visitare spesso questa pagina perch\u00e9 l'elenco dei bandi viene aggiornato regolarmente.\n\nUniversity corridors for refugees - UNICORE 8.0 - a.a. 2026-2027\nBorse di studio e/o esonero per studenti internazionali provenienti da Paesi in conflitto armato a.a. 2025-2026\n40 borse di studio biennali per studenti internazionali \"Talents 4 UniTo\" a.a. 2026-2027\n[...] links: Bando || https://www.unito.it/sites/default/files/2025-12/bando_talents4unito_2026_2027.pdf ; Graduatoria || https://www.unito.it/sites/default/files/2026-06/graduatoria_bando_talents4unito_2026_2027_en.pdf ; Rettifica graduatoria (aggiornata al 17 giugno 2026) || https://www.unito.it/sites/default/files/2026-06/rettifica_graduatoria_bando_talents4unito_2026_2027_en.pdf",
+        "exact_deadline_wording": null,
+        "confidence": "MEDIUM",
+        "notes": "expired_mismatch on the basis of the official call cycle, with no deadline wording established. The shard's official_source_url (https://www.unito.it/en/university/what-we-do/International-relations-and-cooperation/Talent-4-UniTo) now serves the official \"Pagina non trovata\" (404) page, so it yields no value. The current call document is a PDF on unito.it that could not be read: direct HTTPS fetch returns HTTP 403 (Cloudflare) and the in-browser PDF viewer exposes no extractable text, so no deadline sentence is quoted and none is inferred. The official hub shows the newest published edition is a.a. 2026-2027 and that its ranking and rectification were published in June 2026, i.e. the call has concluded, and it lists no a.a. 2027-2028 edition as of 2026-10-05. The record is carried as open/upcoming, so no date is written."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": null
+      },
+      "examined": [
+        "https://www.unito.it/en/university/what-we-do/International-relations-and-cooperation/Talent-4-UniTo",
+        "https://www.unito.it/avvisi/pubblicazione-bando-le-borse-di-studio-talents-4-unito",
+        "https://www.unito.it/sites/default/files/2025-12/bando_talents4unito_2026_2027.pdf",
+        "https://www.unito.it/sites/default/files/2026-06/graduatoria_bando_talents4unito_2026_2027_en.pdf"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://apply.unito.it",
+          "reason": "official Apply@UniTo portal, but its published dates are general admissions rounds for degree programmes, not the Talent 4 UniTo scholarship deadline; a generic admissions deadline for a different programme is not admissible evidence"
+        },
+        {
+          "url": "https://www.unito.it/avvisi/pubblicazione-bando-le-borse-di-studio-talents-4-unito",
+          "reason": "official but archived notice for the previous edition (published 10 December 2024, a.a. 2025-2026, deadline 30 January 2025); a different cycle from the record's current edition and its date is long past"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 141,
+      "title": "UNICORE 8.0 University Corridors for Refugees \u2014 University of Turin Scholarship (a.y. 2026-2027 / 2027-2028)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "La scadenza per la presentazione delle domande \u00e8 fissata per venerd\u00ec 17 aprile 2026, ore 12 (mezzogiorno, ora italiana).",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.unito.it/avvisi/progetto-unicore-80-university-corridors-refugees-bando-3-borse-di-studio",
+        "source_type": "official_university_page",
+        "publisher": "Universit\u00e0 degli Studi di Torino (official call notice \"Progetto UNICORE 8.0 University Corridors for Refugees - Bando per 3 borse di studio\")",
+        "retrieved_at": "2026-10-05T15:33:00Z",
+        "as_of": "notice published \"Mercoled\u00ec 11 Marzo 2026\" and flagged \"AVVISO IN ARCHIVIO\" (archived notice) for UNICORE 8.0, UniTo offering 3 scholarships",
+        "raw_extract": "Pubblicato il nuovo bando relativo al Progetto UNICORE - University Corridors for Refugees.\n\nPromosso dall'Alto Commissariato delle Nazioni Unite per i Rifugiati (UNHCR), UNICORE intende consentire a studenti/esse rifugiati/e in Etiopia, India, Kenya, Malawi, Mozambico, Namibia, Niger, Nigeria, Sudafrica, Tanzania, Uganda, Zambia, Zimbabwe di continuare il loro percorso accademico nelle universit\u00e0 italiane.\n\nPer il progetto UNICORE 8.0, l'Universit\u00e0 di Torino offre 3 borse di studio per accedere ad alcuni corsi di laurea magistrale ad accesso libero in lingua inglese.\n\nLa scadenza per la presentazione delle domande \u00e8 fissata per venerd\u00ec 17 aprile 2026, ore 12 (mezzogiorno, ora italiana).",
+        "exact_deadline_wording": "La scadenza per la presentazione delle domande \u00e8 fissata per venerd\u00ec 17 aprile 2026, ore 12 (mezzogiorno, ora italiana).",
+        "confidence": "HIGH",
+        "notes": "expired_mismatch: the official UniTo notice states a single common application deadline of Friday 17 April 2026, 12:00 Italian time, which is already in the past at retrieval (2026-10-05), and the notice is marked as archived. The stale date is not written and not moved to a future edition. UniTo's official international-students scholarship hub (fetched 2026-10-05) still lists only \"University corridors for refugees - UNICORE 8.0 - a.a. 2026-2027\", so no 2027-2028 edition deadline is published. The UNICORE portal universitycorridors.unhcr.it was not used as the source of the wording because the university's own call notice is the higher official source and states the deadline directly."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": null
+      },
+      "examined": [
+        "https://www.unito.it/internazionalita/studenti-e-ospiti-internazionali/studenti-internazionali/borse-studenti"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 435,
+      "title": "Singapore-Industry Scholarship (SgIS)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "You can apply online from Thursday, 15 January 2026 to Monday, 23 March 2026",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.moe.gov.sg/sgis/application/how-to-apply",
+        "source_type": "official_government_page",
+        "publisher": "Ministry of Education, Singapore",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": "page states \"Last Updated:  24 Mar 2026\"; window is the 2026 intake",
+        "raw_extract": "You can apply online from **Thursday, 15 January 2026 to Monday, 23 March 2026**:",
+        "exact_deadline_wording": "You can apply online from Thursday, 15 January 2026 to Monday, 23 March 2026",
+        "confidence": "HIGH",
+        "notes": "expired_mismatch: the official MOE page publishes one application window per intake, 15 January 2026 to 23 March 2026, which closed before retrieval (2026-10-05), while the record is carried as open/upcoming (shard verification_status: quarantined). The past date is not written and not rolled forward. MOE's SgIS application overview page (fetched same day, \"Last Updated: 17 Mar 2026\") repeats the same window (\"KEY DATES Thu, 15 Jan to Mon, 23 Mar 2026\"), so the sources agree and there is no conflict; no 2027 intake dates are published on the MOE SgIS site as of retrieval."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": null
+      },
+      "examined": [
+        "https://www.moe.gov.sg/sgis/application"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 566,
+      "title": "Swiss-European Mobility Programme (SEMP)",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Deadlines provided by their home institution / Application for funding: can be submitted annually at the beginning of March / Start of the funding period: 1 June",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://movetia.ch/en/funding-opportunities/student-exchange/semester-abroad-for-students",
+        "source_type": "official_programme_page",
+        "publisher": "Movetia (Swiss agency for exchange and mobility; implements the SEMP funding measures on behalf of SERI/SBFi)",
+        "retrieved_at": "2026-10-05T15:35:00Z",
+        "as_of": "page describes the current SEMP call cycle (Call 2026, funding period starting 1 June) and states that the next application deadline is spring 2027, likely under Erasmus+",
+        "raw_extract": "### Deadlines\n\nFor participants:\n\n-   Deadlines provided by their home institution\n\nFor institutions:\n\n-   Application for accreditation: can be submitted annually at the beginning of March\n-   Application for funding: can be submitted annually at the beginning of March\n-   Start of the funding period: 1 June\n\nNext steps\n\nFor institutions:\n\nNext application deadline: spring 2027 likely under Erasmus+",
+        "exact_deadline_wording": "Application for funding: can be submitted annually at the beginning of March",
+        "confidence": "HIGH",
+        "notes": "No calendar deadline exists centrally, so no date is written. The official programme page states that participant deadlines are set by the home institution, while institutional accreditation and funding applications \"can be submitted annually at the beginning of March\" with the funding period starting 1 June - i.e. recurring annual timing, hence ANNUAL/recurring. Movetia also states \"Next application deadline: spring 2027 likely under Erasmus+\" and that \"Detailed information will be published here in autumn 2026\"; neither is a fixed date, so neither is converted into deadline_date. The already-passed Call 2026 institutional funding deadline (4 March 2026, stated on Movetia's SEMP how-to page) is deliberately not written. The shard's official_source_url https://outgoing.sbfi.admin.ch could not be reached (connection failure, HTTP 000, on three separate attempts); SERI's own page confirms Movetia is the body that \"implements the funding measures on behalf of SERI\" and points applicants to the Movetia website for conditions and procedures, which is why the Movetia programme page is cited as the official source."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "Deadlines provided by their home institution / Application for funding: can be submitted annually at the beginning of March / Start of the funding period: 1 June"
+      },
+      "examined": [
+        "https://outgoing.sbfi.admin.ch",
+        "https://www.sbfi.admin.ch/en/international-mobility-and-cooperation-in-education",
+        "https://movetia.ch/en/how-to/guidance-and-funding-practice/planning-your-project/swiss-european-mobility-programme",
+        "https://movetia.ch/en/funding-opportunities/student-exchange"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://outgoing.sbfi.admin.ch",
+          "reason": "shard official_source_url; host did not resolve on any attempt (curl and fetch both returned HTTP 000 / transport error), so no value could be read from it"
+        },
+        {
+          "url": "https://movetia.ch/en/how-to/further-advice-centres/international-relations-offices",
+          "reason": "shard catalogue_url; directory of institutions' International Relations Offices, contains no programme deadline"
+        }
+      ]
+    }
+  ]
+}

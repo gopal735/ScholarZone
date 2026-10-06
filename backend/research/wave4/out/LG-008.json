@@ -1,0 +1,334 @@
+{
+  "shard_id": "LG-008",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 244,
+      "title": "Chinese Government Scholarship - Tsinghua University Program (Type B)",
+      "outcome": "recovered",
+      "image_url": "https://vi.tsinghua.edu.cn/__local/4/10/01/C1E0D8CBFBF501179EE54BE1AE8_26CB747B_DB63.jpg",
+      "image_source_url": "https://vi.tsinghua.edu.cn/gk/xxbz/bzzh1.htm",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Asset lives on vi.tsinghua.edu.cn, Tsinghua University's own Visual Identity (VI) site, published by the Party Committee Publicity Department / Culture Office (address block on the page: 清华大学党委宣传部, 100084 Beijing). It is the standard horizontal lockup (seal omitted, horizontal Chinese standard wordmark + English 'Tsinghua University' wordmark) in the university's official 标准色 purple, exactly as the VI guide requires. Downloaded (1400x600 JPEG, 56163 bytes) and visually inspected: clean logo artwork on a white ground, no page chrome, no crop. Identity is unambiguous: the scholarship page states 'Type B generally refers to CGS programs responsible by Chinese universities under the CGS-Chinese University Program', so Tsinghua University is the responsible/awarding body for this record, and Tsinghua is named in the record title itself."
+      },
+      "source": {
+        "url": "https://yz.tsinghua.edu.cn/en/info/1027/1117.htm",
+        "publisher": "Tsinghua University Graduate Admissions Office",
+        "retrieved_at": "2026-10-05T15:50:18Z",
+        "raw_extract": "Type B through Tsinghua University Type B generally refers to CGS programs responsible by Chinese universities under the CGS-C[SC] ... University Program",
+        "exact_deadline_wording": "Type B programs, such as applicable programs/majors, nationalities, and so on",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://yz.tsinghua.edu.cn/en/info/1027/1117.htm",
+        "https://yz.tsinghua.edu.cn/en/index.htm",
+        "https://yz.tsinghua.edu.cn/image/logo.png",
+        "https://www.tsinghua.edu.cn/en/image/logo159.png",
+        "https://www.tsinghua.edu.cn/image/logo180.png",
+        "https://vi.tsinghua.edu.cn/gk/xxbz/xh.htm",
+        "https://vi.tsinghua.edu.cn/gk/xxbz/bzz.htm",
+        "https://vi.tsinghua.edu.cn/gk/xxbz/bzzh1/xhyhsbzzzyzh.htm",
+        "https://vi.tsinghua.edu.cn/gk/xxbz/scgf.htm",
+        "https://www.bxai.org/",
+        "https://studyinchina.csc.edu.cn/"
+      ],
+      "rejected": [
+        {
+          "url": "https://yz.tsinghua.edu.cn/image/logo.png",
+          "reason": "410x60 white-on-transparent artwork for the Graduate Admissions office lockup; blank on any light background, so unusable as a record image"
+        },
+        {
+          "url": "https://www.tsinghua.edu.cn/en/image/logo159.png",
+          "reason": "159x50 white-on-transparent reverse variant (the site header logo) - renders blank on a light card"
+        },
+        {
+          "url": "https://www.tsinghua.edu.cn/image/logo180.png",
+          "reason": "180x58 white-on-transparent reverse variant - renders blank on a light card"
+        },
+        {
+          "url": "https://vi.tsinghua.edu.cn/image/logo296.png",
+          "reason": "wrong identity: this is the logo of the VI *system* ('清华大学 视觉形象识别'), not the university mark"
+        },
+        {
+          "url": "https://vi.tsinghua.edu.cn/gk/xxbz/xh.htm",
+          "reason": "page only; its artwork is rendered as padded 1400x600 VI slide images, not a standalone asset"
+        },
+        {
+          "url": "https://studyinchina.csc.edu.cn/",
+          "reason": "HTTP 412 to non-browser fetches; no reachable official CSC logo asset obtained"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 317,
+      "title": "Asian Future Leaders Scholarship Program (AFLSP) 2026",
+      "outcome": "recovered",
+      "image_url": "https://www.bxai.org/wp-content/uploads/2019/09/bai-xian-logo.jpg",
+      "image_source_url": "https://www.bxai.org/",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Asset is on bxai.org, Bai Xian Asia Institute's own domain, and is the logo their site publishes in its own header (img alt=\"logo\", wrapped in the homepage link). Downloaded (768x300 JPEG, 746752 bytes) and visually inspected: the BAI XIAN ASIA INSTITUTE / 百賢亞洲研究院 brand mark with its monogram. Identity: the record's own scholarship page states AFLSP is 'offered by Bai Xian Asia Institute (BXAI)' and that BXAI runs the mandatory enrichment programmes, i.e. BXAI is the awarding organisation; Tsinghua is the delivering partner university and is also the record's official_source. MEDIUM, not HIGH, because the choice of the funder's mark over the host university's mark is a judgement call and because no AFLSP-specific brand mark exists anywhere: the entire bxai.org/aflsp/ section carries only the shared header logo plus photography (DSC_4266.jpg, DSC_6598.jpg)."
+      },
+      "source": {
+        "url": "https://yz.tsinghua.edu.cn/en/info/1027/1477.htm",
+        "publisher": "Tsinghua University Graduate Admissions Office",
+        "retrieved_at": "2026-10-05T15:50:18Z",
+        "raw_extract": "AFLSP), offered by Bai Xian Asia Institute (BXAI), aims to promote cross-cultural understanding between the people of Asia",
+        "exact_deadline_wording": "AFLSP offers successful candidates scholarships for one or two years including:- Tuition fees;-- Living allowance",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://yz.tsinghua.edu.cn/en/info/1027/1477.htm",
+        "https://www.bxai.org/",
+        "https://www.bxai.org/aflsp/",
+        "https://www.bxai.org/aflsp/scholarships/aflsp-overview/",
+        "https://vi.tsinghua.edu.cn/"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.bxai.org/aflsp/scholarships/aflsp-overview/",
+          "reason": "the AFLSP overview page carries no AFLSP mark; its only images (DSC_4266.jpg, DSC_6598.jpg) are programme photography = decorative hero art"
+        },
+        {
+          "url": "https://yz.tsinghua.edu.cn/image/logo.png",
+          "reason": "white-on-transparent Graduate Admissions lockup, blank on a light background"
+        },
+        {
+          "url": "https://www.bxai.org/wp-content/uploads/2019/09/bai-xian-logo.jpg",
+          "reason": "NOT rejected - this is the proposed asset; listed here only to note the sibling wp-content favicon-family files (site-icon-*.png) were rejected"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 318,
+      "title": "Atomic Energy Scholarship Program of China 2026",
+      "outcome": "recovered",
+      "image_url": "https://vi.tsinghua.edu.cn/__local/4/10/01/C1E0D8CBFBF501179EE54BE1AE8_26CB747B_DB63.jpg",
+      "image_source_url": "https://vi.tsinghua.edu.cn/gk/xxbz/bzzh1.htm",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Same official Tsinghua University VI asset as record 244 (intentional duplicate: one provider, one official source). Provenance is airtight - vi.tsinghua.edu.cn is the university's own Visual Identity site. Confidence is MEDIUM rather than HIGH purely on identity mapping: the page states the programme is run jointly by the China Atomic Energy Authority (CAEA) and the Ministry of Education with the China Scholarship Council, so Tsinghua is the host/delivering institution rather than the funder. I deliberately did not use a CAEA or MOE mark - those are co-funders, i.e. partner branding, not this record's provider - which is the same judgement LG-028 applied to the Mastercard Foundation at Sciences Po. No CAEA logo was verified as a fetchable official asset in any case."
+      },
+      "source": {
+        "url": "https://yz.tsinghua.edu.cn/en/info/1027/1391.htm",
+        "publisher": "Tsinghua University Graduate Admissions Office",
+        "retrieved_at": "2026-10-05T15:50:18Z",
+        "raw_extract": "The Atomic Energy Authority (CAEA) and the Ministry of Education of the People's Republic of China (MOE) with the aim of fostering outstanding young talent ... Atomic Energy Authority, the Ministry of Education of the People's Republic of China and the China Scholarship Council for acceptance",
+        "exact_deadline_wording": "The Atomic Energy Scholarship Program of China",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://yz.tsinghua.edu.cn/en/info/1027/1391.htm",
+        "https://vi.tsinghua.edu.cn/gk/xxbz/bzzh1.htm",
+        "https://vi.tsinghua.edu.cn/gk/xxbz/xh.htm",
+        "https://studyinchina.csc.edu.cn/"
+      ],
+      "rejected": [
+        {
+          "url": "https://yz.tsinghua.edu.cn/image/logo.png",
+          "reason": "white-on-transparent Graduate Admissions lockup, blank on a light background"
+        },
+        {
+          "url": "https://vi.tsinghua.edu.cn/image/logo296.png",
+          "reason": "wrong identity: logo of the VI system, not the university"
+        },
+        {
+          "url": "https://studyinchina.csc.edu.cn/",
+          "reason": "HTTP 412 to non-browser fetches; no reachable official CSC logo asset obtained"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 329,
+      "title": "Danish Government Scholarship",
+      "outcome": "recovered",
+      "image_url": "https://cdn.ku.dk/styles/0.0.1.395/img/print_logo.png",
+      "image_source_url": "https://cdn.ku.dk/styles/0.0.1.395/img/",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "cdn.ku.dk is the University of Copenhagen's own asset host for its web design system (directory listing at /styles/<version>/img/). print_logo.png is the complete official UCPH logo: the red university seal, the two red identity circles (bomaerke) and the KØBENHAVNS UNIVERSITET wordmark. Downloaded (448x73 PNG, 2935 bytes) and visually inspected after 3x upscaling - the whole lockup is present, nothing cropped, and it reads correctly on a light card. Identity is unambiguous and correct for this record: UCPH is the awarding institution ('The University of Copenhagen offers a limited number of tuition waivers and grants through the Danish Government Scholarship'). Note the shard's official_source_url is DEAD - studies.ku.dk/education/student-life/finances-and-scholarships/scholarships-for-international-students returns HTTP 404; the live official page is https://www.ku.dk/studies/admission/scholarships-for-full-degree-students, which is what I verified the scholarship wording against."
+      },
+      "source": {
+        "url": "https://www.ku.dk/studies/admission/scholarships-for-full-degree-students",
+        "publisher": "University of Copenhagen",
+        "retrieved_at": "2026-10-05T15:50:18Z",
+        "raw_extract": "Danish government Scholarships The University of Copenhagen offers a limited number of tuition waivers and grants through the Danish Government Scholarship ... Danish Government Scholarship is granted either as full or partial tuition fee waivers and/or as an amount that covers basic living expenses",
+        "exact_deadline_wording": "Danish Government Scholarships",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://studies.ku.dk/education/student-life/finances-and-scholarships/scholarships-for-international-students",
+        "https://studies.ku.dk/",
+        "https://www.ku.dk/studies",
+        "https://www.ku.dk/studies/masters/application-and-admission/scholarships",
+        "https://www.ku.dk/studies/admission/scholarships-for-full-degree-students",
+        "https://www.ku.dk/",
+        "https://www.ku.dk/en",
+        "https://designguide.ku.dk/om_design/logo_og_farve/logo",
+        "https://designguide.ku.dk/om_design/logo_og_farve/logoplaacering",
+        "https://designguide.ku.dk/om_design/logo_og_farve/farve",
+        "https://designguide.ku.dk/om_design/logo_og_farve/navnetraek",
+        "https://designguide.ku.dk/om_design/faelles_identitet",
+        "https://designguide.ku.dk/om_design/faelles_identitet/branding",
+        "https://designguide.ku.dk/om_design/skabloner_med_logo",
+        "https://news.ku.dk/",
+        "https://news.ku.dk/press-service",
+        "https://om.ku.dk/",
+        "https://om.ku.dk/profil",
+        "https://www.ku.dk/media-relations",
+        "https://cdn.ku.dk/",
+        "https://cdn.ku.dk/styles/",
+        "https://cdn.ku.dk/styles/0.0.1.395/img/"
+      ],
+      "rejected": [
+        {
+          "url": "https://cdn.jsdelivr.net/gh/ku-kom/bootstrap@294f7fa35a686a0c662e08655a7319ee8ca836ae/docs/images/branding/faelles.svg",
+          "reason": "third-party mirror: jsDelivr proxying the ku-kom GitHub repo, not an official ku.dk domain"
+        },
+        {
+          "url": "https://www.ku.dk/fileadmin/_processed_/1/3/csm_KU-logo_1500x1000_red_12626a6ac6.png",
+          "reason": "official domain but a CMS-processed (csm_ = TYPO3 crop/scale) rendition whose source file is itself cropped: roughly the bottom 40% of the circular seal is missing. Rejected as a cropped derivative. All four renditions (800x533 png, 800x533 / 700x467 webp) share the same crop."
+        },
+        {
+          "url": "https://www.ku.dk/fileadmin/_processed_/f/0/csm_KU-logo_1500x1000_trans_21a5d90f79.png",
+          "reason": "official domain but the white/transparent reverse seal; renders blank on a light card and is cropped the same way"
+        },
+        {
+          "url": "https://cdn.ku.dk/styles/0.0.1.395/img/footersegl.svg",
+          "reason": "isolated seal only, square 69x70 viewBox - UCPH's own design guide forbids using the seal in isolation without an exception"
+        },
+        {
+          "url": "https://cdn.ku.dk/styles/0.0.1.395/img/icon-kulogo.svg",
+          "reason": "vertical nameplate (557x1024 viewBox), not the horizontal logo lockup"
+        },
+        {
+          "url": "https://cdn.ku.dk/styles/0.0.1.395/img/logo.png",
+          "reason": "wrong identity: this is the KUnet (UCPH IT service) logo, not the university logo"
+        },
+        {
+          "url": "https://cdn.ku.dk/styles/0.0.1.395/img/ku_logo.png",
+          "reason": "78x60 - favicon-sized badge"
+        },
+        {
+          "url": "https://www.ku.dk/_assets/12a46eea25fd08a7277319b85c785b6b/Icons/",
+          "reason": "favicon family (favicon.ico, apple-touch-icon, favicon-180x180, favicon.svg)"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Ku-ucph-logo-svg.svg",
+          "reason": "third-party mirror"
+        },
+        {
+          "url": "https://cdn.prod.website-files.com/5f7d6d69c230c16738e9c910/6704e52d6ff76b3cdd7fde4f_Logo.pdf",
+          "reason": "third-party mirror / not an image asset"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 574,
+      "title": "Masters International Excellence Scholarships",
+      "outcome": "recovered",
+      "image_url": "https://jaducdn.leeds.ac.uk/uol-ds/1.0.21/img/uol-logo.svg",
+      "image_source_url": "https://designsystem.leeds.ac.uk/components/detail/uol-logo-uol.html",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "jaducdn.leeds.ac.uk is the University of Leeds' own asset CDN - the live www.leeds.ac.uk pages load their design-system assets from https://jaducdn.leeds.ac.uk/uol-ds/1.0.21/ (confirmed on www.leeds.ac.uk/media-relations). uol-logo.svg is the primary University of Leeds logo shipped in the University's own official design system bundle (designsystem.leeds.ac.uk/assets.zip, entry img/uol-logo.svg, 2197 bytes, byte-identical to the CDN copy). I rendered it in a browser to verify: a single black path, 183x53, drawing the 'UNIVERSITY OF LEEDS' wordmark with the White Cloth Hall tower mark. I chose the SVG over the sibling raster uol-logo.png (183x53, 2898 bytes) deliberately: the PNG is the white reverse variant and renders blank on a light card, whereas the SVG's fill is #000000. Identity is unambiguous - the University of Leeds is the awarding institution."
+      },
+      "source": {
+        "url": "https://www.leeds.ac.uk/scholarship/12/masters-international-excellence-scholarships",
+        "publisher": "University of Leeds",
+        "retrieved_at": "2026-10-05T15:50:18Z",
+        "raw_extract": "International Excellence Scholarships | Scholarships | University of Leeds ... We offer a substantial number of scholarships worth GBP 3,000, GBP 6,000 ... If you are awarded a University of Leeds scholarship, you can only accept one scholarship",
+        "exact_deadline_wording": "International Excellence Scholarships for students starting their course in 2026 can be found on the 2026 scholarships page",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.leeds.ac.uk/scholarship/12/masters-international-excellence-scholarships",
+        "https://www.leeds.ac.uk/",
+        "https://www.leeds.ac.uk/media-relations",
+        "https://designsystem.leeds.ac.uk/",
+        "https://designsystem.leeds.ac.uk/components/detail/uol-logo-uol.html",
+        "https://designsystem.leeds.ac.uk/components/render/uol-logo-uol.html",
+        "https://designsystem.leeds.ac.uk/assets.zip",
+        "https://comms.leeds.ac.uk/our-visual-identity",
+        "https://digitalmedialibrary.leeds.ac.uk/guidelines/guide/e6607b3f-10dc-42f6-a4fb-d7ccd70a7ebe"
+      ],
+      "rejected": [
+        {
+          "url": "https://jaducdn.leeds.ac.uk/uol-ds/1.0.21/img/uol-logo.png",
+          "reason": "correct logo but the white reverse variant (blank on a light card); the SVG sibling is the black version of the same asset"
+        },
+        {
+          "url": "https://jaducdn.leeds.ac.uk/uol-ds/1.0.21/img/uol-logo-white.svg",
+          "reason": "white reverse variant, unusable on a light card"
+        },
+        {
+          "url": "https://jaducdn.leeds.ac.uk/uol-ds/1.0.21/favicons/",
+          "reason": "favicon family (favicon.ico, favicon.svg, favicon-96x96.png, apple-touch-icon.png, web-app-manifest-*.png)"
+        },
+        {
+          "url": "https://comms.leeds.ac.uk/our-visual-identity",
+          "reason": "HTTP 403 to non-browser fetches; the brand portal that would carry the downloadable logo pack was not reachable"
+        },
+        {
+          "url": "https://designsystem.leeds.ac.uk/assets.zip",
+          "reason": "not an image URL; used only to enumerate the official asset inventory (how img/uol-logo.svg was confirmed as the primary logo)"
+        }
+      ]
+    }
+  ],
+  "agent_notes": {
+    "summary": "5/5 records covered. 5 recovered, 0 not_found, 0 rejected. Confidence: HIGH 3 (244, 329, 574), MEDIUM 2 (317, 318). All five image_url values were GET-verified 200 with an image/* Content-Type and were downloaded and visually inspected.",
+    "integration_notes": [
+      "Records 244 and 318 intentionally share one image_url. Tsinghua University is the official_source for both and no per-scheme mark exists for either; this matches the duplicate-URL pattern other LG shards have reported.",
+      "DEAD LINK (record 329): studies.ku.dk/education/student-life/finances-and-scholarships/scholarships-for-international-students returns HTTP 404. The live official page is https://www.ku.dk/studies/admission/scholarships-for-full-degree-students, which does carry the Danish Government Scholarship text. Any deadline shard covering record 329 needs the same substitution.",
+      "Tsinghua publishes NO usable positive-colour logo on www.tsinghua.edu.cn: both image/logo159.png and image/logo180.png are white-on-transparent reverse variants for the site's dark header, and yz.tsinghua.edu.cn/image/logo.png is the same. Any other shard covering a yz.tsinghua.edu.cn record must go to vi.tsinghua.edu.cn (the official Visual Identity site) for a usable purple or black mark.",
+      "UCPH publishes no full logo on ku.dk pages at all - the header logo is an inline <svg> with no fetchable URL. The only fetchable official asset is cdn.ku.dk/styles/<version>/img/print_logo.png; the Design Guide's own red seal is a CMS crop with the bottom ~40% of the seal missing, so it should not be used by other shards either."
+    ]
+  }
+}

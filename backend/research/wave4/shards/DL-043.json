@@ -1,0 +1,98 @@
+{
+  "shard_id": "DL-043",
+  "topic": "deadline",
+  "hosts": [
+    "outgoing.sbfi.admin.ch",
+    "www.campusfrance.org",
+    "www.cranfield.ac.uk",
+    "www.moe.gov.sg",
+    "www.unito.it"
+  ],
+  "record_count": 7,
+  "records": [
+    {
+      "id": 9,
+      "title": "MOPGA Visiting Fellowship Program",
+      "official_source": "Campus France (French Ministry for Europe and Foreign Affairs)",
+      "official_source_url": "https://www.campusfrance.org/en/mopga-make-our-planet-great-again-funding-programs",
+      "catalogue_url": "https://www.campusfrance.org/en/mopga-2027",
+      "country": "France",
+      "deadline_display": "Typically December–January annually",
+      "deadline_precision": "month",
+      "application_period": "Calls for application launched yearly in September; applicants notified by email in May; fellowship starts between September and December",
+      "verification_status": "active"
+    },
+    {
+      "id": 19,
+      "title": "France Excellence Europa Scholarship",
+      "official_source": "Campus France (French Ministry for Europe and Foreign Affairs)",
+      "official_source_url": "https://www.campusfrance.org/en/france-excellence-europa-scholarship-program",
+      "catalogue_url": "https://www.campusfrance.org/en/finding-a-university-programme-France",
+      "country": "France",
+      "deadline_display": "Typically April annually (2025 deadline: 30 April 2025; 2026 call expected similar timeline)",
+      "deadline_precision": "month",
+      "application_period": "Typically spring annually",
+      "verification_status": "active"
+    },
+    {
+      "id": 77,
+      "title": "Cranfield University GREAT Scholarship 2026 Bangladesh",
+      "official_source": "Cranfield University, in partnership with the British Council",
+      "official_source_url": "https://www.cranfield.ac.uk/funding/funding-opportunities/great-cranfield-university-scholarship-bangladesh",
+      "catalogue_url": "https://www.cranfield.ac.uk/som/open-executive-programmes",
+      "country": "United Kingdom",
+      "deadline_display": "Monday 18th May 2026 at 5pm (17:00 GMT) Ã¢â‚¬â€ the online scholarship application had to be submitted by this time",
+      "deadline_precision": "recurring",
+      "application_period": "For courses starting September or October 2026. Applications closed at 5pm on Monday 18 May 2026 and all applicants were to be notified by the end of June 2026. Cranfield has not published dates for the next annual cycle.",
+      "verification_status": "active"
+    },
+    {
+      "id": 140,
+      "title": "Talents 4 UniTo — Two-Year Scholarships for International Students Enrolling in English-Taught Master's Degrees (University of Turin)",
+      "official_source": "Università degli Studi di Torino",
+      "official_source_url": "https://www.unito.it/en/university/what-we-do/International-relations-and-cooperation/Talent-4-UniTo",
+      "catalogue_url": "https://apply.unito.it",
+      "country": "Italy",
+      "deadline_display": "Applications had to be submitted on apply.unito.it between 25 November 2025 and 29 January 2026 for the a.y. 2026-2027 cycle, and that call is now closed. Rankings were published from 14 May 2026, and ranking scroll was not possible after 30 November 2026. The next edition's window had not been published on 4 October 2026.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual call with a fixed window. For a.y. 2026-2027 the Apply@Unito application window opened on 25 November 2025 and closed on 29 January 2026; rankings followed from 14 May 2026. The previous edition funded 38 scholarships, and the 2027-2028 call was not published at the verification date.",
+      "verification_status": "active"
+    },
+    {
+      "id": 141,
+      "title": "UNICORE 8.0 University Corridors for Refugees — University of Turin Scholarship (a.y. 2026-2027 / 2027-2028)",
+      "official_source": "Università degli Studi di Torino (within the UNHCR-promoted UNICORE 8.0 project)",
+      "official_source_url": "https://www.unito.it/avvisi/progetto-unicore-80-university-corridors-refugees-bando-3-borse-di-studio",
+      "catalogue_url": "https://universitycorridors.unhcr.it",
+      "country": "Italy",
+      "deadline_display": "Applications had to be submitted exclusively through the online procedure at https://universitycorridors.unhcr.it/ by 17 April 2026 at 12:00 (noon, Italian time, UTC+2). That window has closed and the 2026/2028 edition is complete; the next edition had not been published on 4 October 2026.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual project edition with a single common deadline across participating universities. For the eighth edition the deadline was 17 April 2026 at 12:00 Italian time, with applications running from early March 2026, and students expected to arrive in Italy in September 2026.",
+      "verification_status": "active"
+    },
+    {
+      "id": 435,
+      "title": "Singapore-Industry Scholarship (SgIS)",
+      "official_source": "Ministry of Education, Singapore",
+      "official_source_url": "https://www.moe.gov.sg/sgis/application/how-to-apply",
+      "catalogue_url": "https://www.moe.gov.sg/sgis/sponsoring-organisations",
+      "country": "Singapore",
+      "deadline_display": "'Submit your online application from Thursday, 15 January 2026 to Monday, 23 March 2026.' No date for the next cycle is published as at 2026-10-04.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual cycle. The most recent published window was 15 January to 23 March 2026; interviews ran April to June 2026 and offers followed.",
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 566,
+      "title": "Swiss-European Mobility Programme (SEMP)",
+      "official_source": "State Secretariat for Education, Research and Innovation (SERI), Switzerland - implemented by Movetia",
+      "official_source_url": "https://outgoing.sbfi.admin.ch",
+      "catalogue_url": "https://movetia.ch/en/how-to/further-advice-centres/international-relations-offices",
+      "country": "Switzerland",
+      "deadline_display": "There is no central student deadline. Participants apply through their home institution's International Relations Office and the deadline is set by that institution. For institutions, accreditation and funding applications can be submitted annually at the beginning of March and the funding period starts on 1 June of the year of application. Movetia currently states that the next application deadline is spring 2027, likely under Erasmus+.",
+      "deadline_precision": "varies",
+      "application_period": "Annual institutional cycle: applications from accredited institutions each March, funding period from 1 June. Student-level applications run year-round through the home institution's own deadlines. Movetia expects the next call to be launched under Erasmus+ following Switzerland's planned association from 2027.",
+      "verification_status": "active"
+    }
+  ]
+}

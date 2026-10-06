@@ -1,0 +1,57 @@
+{
+  "shard_id": "LG-008",
+  "topic": "logo",
+  "hosts": [
+    "studies.ku.dk",
+    "www.leeds.ac.uk",
+    "yz.tsinghua.edu.cn"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 244,
+      "title": "Chinese Government Scholarship - Tsinghua University Program (Type B)",
+      "official_source": "Tsinghua University & China Scholarship Council (CSC)",
+      "official_source_url": "https://yz.tsinghua.edu.cn/en/info/1027/1117.htm",
+      "catalogue_url": "https://yz.tsinghua.edu.cn/en/Programs/Schools___Departments.htm",
+      "country": "China",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 317,
+      "title": "Asian Future Leaders Scholarship Program (AFLSP) 2026",
+      "official_source": "Yz.Tsinghua University Cn",
+      "official_source_url": "https://yz.tsinghua.edu.cn/en/info/1027/1477.htm",
+      "catalogue_url": "https://yz.tsinghua.edu.cn/en/Programs/Doctoral_Degrees.htm",
+      "country": "China",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 318,
+      "title": "Atomic Energy Scholarship Program of China 2026",
+      "official_source": "Yz.Tsinghua University Cn",
+      "official_source_url": "https://yz.tsinghua.edu.cn/en/info/1027/1391.htm",
+      "catalogue_url": "https://yz.tsinghua.edu.cn/en/Programs/Doctoral_Degrees.htm",
+      "country": "China",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 329,
+      "title": "Danish Government Scholarship",
+      "official_source": "University of Copenhagen",
+      "official_source_url": "https://studies.ku.dk/education/student-life/finances-and-scholarships/scholarships-for-international-students",
+      "catalogue_url": null,
+      "country": "Denmark",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 574,
+      "title": "Masters International Excellence Scholarships",
+      "official_source": "University of Leeds",
+      "official_source_url": "https://www.leeds.ac.uk/scholarship/12/masters-international-excellence-scholarships",
+      "catalogue_url": "https://www.leeds.ac.uk/scholarships",
+      "country": "United Kingdom",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

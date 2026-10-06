@@ -1,0 +1,281 @@
+{
+  "shard_id": "DL-005",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 1,
+      "title": "Erasmus Mundus Joint Masters (EMJM)",
+      "outcome": "recovered",
+      "deadline_semantics": "MONTH",
+      "deadline_date": null,
+      "deadline_display": "In most cases, you should submit your application between October and January for courses starting the following academic year.",
+      "deadline_precision": "month",
+      "source": {
+        "url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+        "source_type": "official_programme_page",
+        "publisher": "European Commission, Directorate-General for Education, Youth, Sport and Culture (Erasmus+ programme site)",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "as_of": "Page last updated 26 June 2025; describes the annual intake cycle generically, with no cycle-specific year",
+        "raw_extract": "When to apply\n\nA new batch of selected Erasmus Mundus Masters is added to the list each year.\n\nIn most cases, you should submit your application between October and January for courses starting the following academic year.\n\nEach master's website has all the details about the course of study, the list of the participating universities, the entry requirements and all the steps of the application process (with and without scholarship).",
+        "exact_deadline_wording": "In most cases, you should submit your application between October and January for courses starting the following academic year.",
+        "confidence": "HIGH",
+        "notes": "Official European Commission programme page for EMJM. It publishes a two-month application WINDOW (October to January), not a fixed calendar deadline, so per brief section 6 this is MONTH with null deadline_date; no day was invented. Independently corroborated by the EACEA catalogue page, which uses the same October-January window, so there is no conflict. Students apply directly to each consortium; per-programme deadlines are set by each master's own website and are not published by the European Commission."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "month",
+        "deadline_display": "In most cases, you should submit your application between October and January for courses starting the following academic year."
+      },
+      "examined": [
+        "https://erasmus-plus.ec.europa.eu (the shard's official_source_url: site homepage, contains no application timing at all)",
+        "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en (fetched; states the same October-January window, listed as corroboration)"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 17,
+      "title": "Erasmus+ Student Exchange (Studying Abroad)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "There's no central application form to study abroad with Erasmus+. You can reach out to the international or Erasmus+ office of your university or higher education institution to start the process.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/studying-abroad",
+        "source_type": "official_programme_page",
+        "publisher": "European Commission, Directorate-General for Education, Youth, Sport and Culture (Erasmus+ programme site)",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "as_of": "Page last updated 18 December 2025",
+        "raw_extract": "How to apply\n\nThere's no central application form to study abroad with Erasmus+.\n\nYou can reach out to the international or Erasmus+ office of your university or higher education institution to start the process.\n\nYour sending higher education institution is obliged to select applicants in a fair and transparent way.",
+        "exact_deadline_wording": "(none - the page states no deadline, no application window and no rolling basis)",
+        "confidence": "HIGH",
+        "notes": "The official page confirms there is no central EU-level application route, but it never uses the words rolling, year-round or no fixed deadline, and it gives no application window. Brief section 6 allows ROLLING only where the source explicitly says rolling / no fixed deadline, so this stays UNKNOWN rather than being upgraded to ROLLING. The shard's stated 'typically 1-3 months before departure' was not confirmed by any official page and was not written. Each sending institution publishes its own Erasmus+ selection deadlines per academic year, which are not derivable from any EU-level page."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "No central deadline published; applications are handled by the sending institution."
+      },
+      "examined": [
+        "https://erasmus-plus.ec.europa.eu/resources-and-tools/how-to-apply (fetched; concerns organisation grant applications, not individual student mobility - no deadline)",
+        "https://erasmus-plus.ec.europa.eu/about-erasmus/how-to-take-part (fetched; general guidance, no mobility deadline)",
+        "https://erasmus-plus.ec.europa.eu/resources-and-tools/documents-and-guidelines/higher-education-institutions-holding-an-eche-2021-2027 (shard catalogue_url: an institution list, not a deadline source)"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 78,
+      "title": "GREAT Scholarships 2026 â€” University of Edinburgh (Ghana, Mexico and Thailand)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "The deadline to apply for these scholarships has now passed.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://registryservices.ed.ac.uk/scholarships-and-student-funding/prospective-postgraduates/funding-for-international-students/great",
+        "source_type": "official_university_page",
+        "publisher": "The University of Edinburgh, Registry Services (Scholarships and Student Funding)",
+        "retrieved_at": "2026-10-05T15:27:00Z",
+        "as_of": "Page is still titled 'GREAT Scholarships 2026'; the 2026 cycle is closed and GREAT Scholarships 2027 information had not been published as of 2026-10-05",
+        "raw_extract": "In partnership with the British Council and the GREAT Britain Campaign, The University of Edinburgh is offering 3 scholarships to students in Thailand, Mexico and Ghana, applying for one-year postgraduate courses.\n\n### Important Information\n\nAward information and instructions on how to apply for the **GREAT Scholarships 2027** is coming soon! Please continue to check this webpage for updated information.\n\n...\n\nApplying\n\n**The deadline to apply for these scholarships has now passed.**",
+        "exact_deadline_wording": "The deadline to apply for these scholarships has now passed.",
+        "confidence": "HIGH",
+        "notes": "The official university page states the deadline has passed and that 2027 award information and application instructions are still 'coming soon'. No current or upcoming deadline date is published, so deadline_date is null. Because the only published cycle (2026) has expired while the record is flagged active, outcome is expired_mismatch per brief section 6. I deliberately did not write the 1 May 2026 date that appears in search snippets and on aggregator sites: the only official page naming a date was the British Council Study UK Edinburgh page, which returned HTTP 403 and could not be read, and a secondary value with no readable official source is inadmissible. The shard's official_source_url points at the Study UK GREAT Scholarships Bangladesh page, which is the wrong country page for this record and also returned HTTP 403."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "The deadline to apply for these scholarships has now passed. GREAT Scholarships 2027 information is coming soon."
+      },
+      "examined": [
+        "https://study-uk.britishcouncil.org/scholarships-funding/great-scholarships/university-edinburgh (official British Council page for this exact record; HTTP 403 Forbidden, could not be read)",
+        "https://study-uk.britishcouncil.org/scholarships-funding/great-scholarships/bangladesh (the shard's official_source_url; HTTP 403 and in any case the Bangladesh page, not Edinburgh/Ghana/Mexico/Thailand)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.mastersportal.com/scholarships/15822/great-scholarships.html",
+          "reason": "Third-party scholarship aggregator; not an official University of Edinburgh or British Council domain. Used only as a pointer to the official page, never as evidence."
+        },
+        {
+          "url": "https://myeduvantage.com/university-of-edinburgh-great-scholarship/",
+          "reason": "Third-party aggregator stating 'Application Closing Date 1st May 2026'. Rejected under brief section 5; no readable official page behind the value."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 273,
+      "title": "University of Southern Denmark (SDU) Danish Government Scholarship",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "You must submit your application for admission no later than February 1 - even if you have a Danish residence permit (master level) / You must submit your application for admission no later than March 15 (bachelor level)",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.sdu.dk/en/uddannelse/fees_and_funding/scholarships",
+        "source_type": "official_university_page",
+        "publisher": "University of Southern Denmark (SDU)",
+        "retrieved_at": "2026-10-05T15:27:00Z",
+        "as_of": "Undated standing policy page (no intake year stated anywhere on the page)",
+        "raw_extract": "Application and selection criteria – bachelor level\n\nTo be considered for the scholarship you simply apply for admission to one or more of the relevant programmes. No separate scholarship application is needed.\n\n#### To be eligible for a scholarship, please note: \n\n-   You must submit your application for admission no later than March 15 \n-   Applicants with the highest score in the online admission test (uniTEST) will be invited to an interview.\n...\n\nApplication and selection criteria – master level\n\n#### To be eligible for a scholarship, please note:\n\n-   You must submit your application for admission no later than February 1 - even if you have a Danish residence permit",
+        "exact_deadline_wording": "You must submit your application for admission no later than February 1 - even if you have a Danish residence permit / You must submit your application for admission no later than March 15",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url (https://www.sdu.dk/en/uddannelse/tuition-fees-and-scholarships) returns HTTP 404; the live canonical page was located via SDU's Fees and Funding navigation. The page states two fixed month-and-day cut-offs (1 February for master's, 15 March for bachelor's) but attaches no year to either, and describes them as a standing, repeating selection rule ('Interviews will take place between February 19 and 27', 'Interviews will take place in early June'). Per brief section 6 this is ANNUAL / precision recurring, and the dates were NOT converted into a calendar deadline such as 2027-02-01. Note also that these are admission-application deadlines used for scholarship eligibility, not a separate scholarship deadline: 'No separate scholarship application is needed.'"
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "Master's: submit admission application no later than February 1; Bachelor's: no later than March 15 (recurring annually, no year stated)"
+      },
+      "examined": [
+        "https://www.sdu.dk/en/uddannelse/fees_and_funding/scholarships (page the value was taken from; also lists the eligible MSc/BSc programmes and the Vejle/Sonderborg campus restriction)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.sdu.dk/en/uddannelse/tuition-fees-and-scholarships",
+          "reason": "The shard's official_source_url returns HTTP 404 Not Found (dead link); replaced with the live SDU page at /en/uddannelse/fees_and_funding/scholarships."
+        },
+        {
+          "url": "https://www.sdu.dk/en/uddannelse/bachelor/bachelor-admission/scholarships-grants",
+          "reason": "Bachelor-level scholarship page only. Its dates were not used for this combined bachelor's + master's record, and it carries no master's deadline."
+        },
+        {
+          "url": "https://www.sdu.dk/en/uddannelse/kandidat",
+          "reason": "Generic international master's admissions page listing 'February intake: 15 October'. This is a general programme-admission deadline, not the Danish Government Scholarship deadline, and was excluded under brief section 5."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 293,
+      "title": "Erasmus Mundus Joint Master Degrees â€” Polish Universities",
+      "outcome": "recovered",
+      "deadline_semantics": "MONTH",
+      "deadline_date": null,
+      "deadline_display": "Most master's programmes require applications to be submitted between October and January for courses commencing the following academic year.",
+      "deadline_precision": "month",
+      "source": {
+        "url": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
+        "source_type": "official_programme_page",
+        "publisher": "European Education and Culture Executive Agency (EACEA), European Commission",
+        "retrieved_at": "2026-10-05T15:27:00Z",
+        "as_of": "Catalogue described as 'updated annually'; lists 218 projects and exposes a Country filter that includes Poland",
+        "raw_extract": "Most master's programmes require applications to be submitted between October and January for courses commencing the following academic year. Interested students should **visit the program's official website** and directly **contact the consortium for information** on courses, application procedures, and scholarship availability.",
+        "exact_deadline_wording": "Most master's programmes require applications to be submitted between October and January for courses commencing the following academic year.",
+        "confidence": "HIGH",
+        "notes": "The shard's country-filtered URL (…/erasmus-mundus-joint-masters/poland) returns HTTP 404, so the official EC EMJM page and the official EACEA catalogue were used instead; both publish the same October-January window, so there is no conflict. The value is a month window, not a fixed deadline: the Commission publishes no per-country and no per-consortium deadline, and each Polish consortium's own website sets its date. No day was invented. The shard's 'typically October-February' wording is NOT supported by these official pages and was not used."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "month",
+        "deadline_display": "Applications are typically submitted between October and January for the following academic year (varies by consortium)."
+      },
+      "examined": [
+        "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters/poland (the shard's official_source_url; HTTP 404 Not Found)",
+        "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters (fetched; states the same October-January window, used as corroboration)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en#country-filter",
+          "reason": "Not a distinct source. The Polish/Czech/Portuguese cohorts are selected client-side by the Country facet on the same official catalogue page; the Commission publishes no separate country page or country-specific deadline."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 298,
+      "title": "Erasmus Mundus Joint Master Degrees â€” Czech Universities",
+      "outcome": "recovered",
+      "deadline_semantics": "MONTH",
+      "deadline_date": null,
+      "deadline_display": "Most master's programmes require applications to be submitted between October and January for courses commencing the following academic year.",
+      "deadline_precision": "month",
+      "source": {
+        "url": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
+        "source_type": "official_programme_page",
+        "publisher": "European Education and Culture Executive Agency (EACEA), European Commission",
+        "retrieved_at": "2026-10-05T15:27:00Z",
+        "as_of": "Catalogue described as 'updated annually'; lists 218 projects and exposes a Country filter that includes Czechia",
+        "raw_extract": "Most master's programmes require applications to be submitted between October and January for courses commencing the following academic year. Interested students should **visit the program's official website** and directly **contact the consortium for information** on courses, application procedures, and scholarship availability.",
+        "exact_deadline_wording": "Most master's programmes require applications to be submitted between October and January for courses commencing the following academic year.",
+        "confidence": "HIGH",
+        "notes": "The shard's country-filtered URL (…/erasmus-mundus-joint-masters/czech-republic) returns HTTP 404. Official EC sources give only the October-January window, corroborated identically by the Erasmus+ EMJM page, so there is no conflict. Month window, not a fixed deadline; individual Czech consortia set their own dates. No day was invented and the shard's 'typically October-February' wording was not used."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "month",
+        "deadline_display": "Applications are typically submitted between October and January for the following academic year (varies by consortium)."
+      },
+      "examined": [
+        "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters/czech-republic (the shard's official_source_url; HTTP 404 Not Found)",
+        "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters (fetched; states the same October-January window, used as corroboration)"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 300,
+      "title": "Erasmus Mundus Joint Master Degrees â€” Portuguese Universities",
+      "outcome": "recovered",
+      "deadline_semantics": "MONTH",
+      "deadline_date": null,
+      "deadline_display": "Most master's programmes require applications to be submitted between October and January for courses commencing the following academic year.",
+      "deadline_precision": "month",
+      "source": {
+        "url": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
+        "source_type": "official_programme_page",
+        "publisher": "European Education and Culture Executive Agency (EACEA), European Commission",
+        "retrieved_at": "2026-10-05T15:27:00Z",
+        "as_of": "Catalogue described as 'updated annually'; lists 218 projects and exposes a Country filter that includes Portugal",
+        "raw_extract": "Most master's programmes require applications to be submitted between October and January for courses commencing the following academic year. Interested students should **visit the program's official website** and directly **contact the consortium for information** on courses, application procedures, and scholarship availability.",
+        "exact_deadline_wording": "Most master's programmes require applications to be submitted between October and January for courses commencing the following academic year.",
+        "confidence": "HIGH",
+        "notes": "The shard's country-filtered URL (…/erasmus-mundus-joint-masters/portugal) returns HTTP 404. Official EC sources give only the October-January window, corroborated identically by the Erasmus+ EMJM page, so there is no conflict. Month window, not a fixed deadline; individual Portuguese consortia set their own dates. No day was invented and the shard's 'typically October-February' wording was not used."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "month",
+        "deadline_display": "Applications are typically submitted between October and January for the following academic year (varies by consortium)."
+      },
+      "examined": [
+        "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters/portugal (the shard's official_source_url; HTTP 404 Not Found)",
+        "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters (fetched; states the same October-January window, used as corroboration)"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 695,
+      "title": "Killam Fellowships Program (Fulbright Canada)",
+      "outcome": "recovered",
+      "deadline_semantics": "EXACT",
+      "deadline_date": "2027-01-31",
+      "deadline_display": "The deadline for the open competition for the 2027-28 Killam Fellowships competition is January 31, 2027.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.fulbright.ca/programs/killam-fellowships/americans/application-deadlines",
+        "source_type": "official_scholarship_page",
+        "publisher": "Fulbright Canada, Foundation for Educational Exchange between Canada and the United States of America",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "as_of": "2027-28 Killam Fellowships competition; page banner reads 'COMPETITION OPEN on AUGUST 15, 2026'",
+        "raw_extract": "COMPETITION OPEN on AUGUST 15, 2026\n\nThe deadline for the open competition for the 2027-28 Killam Fellowships competition is January 31, 2027. If you are a student at one of our partner institutions and you are planning to apply to the direct exchange program, you are encouraged to contact a study abroad advisor at your institution to identify the date on which your institution's internal competition ends. All partner institutions have internal deadlines. Please consult the relevant officials at your home university.",
+        "exact_deadline_wording": "The deadline for the open competition for the 2027-28 Killam Fellowships competition is January 31, 2027.",
+        "confidence": "HIGH",
+        "notes": "IMPORTANT SCOPE CAVEAT for downstream use: 2027-01-31 is the deadline for the OPEN COMPETITION route only. The Program has two routes and the direct exchange route has no single date - each home institution sets its own internal deadline ('All partner institutions have internal deadlines'). The date was written as EXACT because it is stated explicitly, with a year, on two independent official pages that agree: /americans/application-deadlines and /canadians/application-deadlines, both reading 'January 31, 2027' for the 2027-28 competition, and /americans/how-to-apply ('by January 31st'). No conflict exists between these sources. If the record is meant to represent the whole Program rather than the open competition route, it should be re-scoped to two entries or downgraded to precision 'varies'; the deadline_date above must not be presented as the direct-exchange deadline."
+      },
+      "field_mapping": {
+        "deadline_date": "2027-01-31",
+        "deadline_precision": "exact",
+        "deadline_display": "Open competition: 31 January 2027 (2027-28 competition, opened 15 August 2026). Direct exchange: home institution's internal deadline, no single date."
+      },
+      "examined": [
+        "https://www.fulbright.ca/programs/killam-fellowships (the shard's official_source_url; states the open date and that 'The application must be submitted according to the internal deadline of your institution (in the case of the direct exchange), or by January 31st (in the case of the open competition)' - no year given)",
+        "https://www.fulbright.ca/programs/killam-fellowships/awards-for-americans (the shard's catalogue_url; 'COMPETITION OPEN on AUGUST 15, 2026', 'by January 31st', no year)",
+        "https://www.fulbright.ca/programs/killam-fellowships/canadians (same January 31st wording, no year)",
+        "https://www.fulbright.ca/programs/killam-fellowships/canadians/application-deadlines ('January 31, 2027' for the 2027-28 competition - agrees with the Americans page)",
+        "https://www.fulbright.ca/programs/killam-fellowships/americans/how-to-apply (open competition 'by January 31st'; direct exchange 'by the deadline posted by their home institution')"
+      ],
+      "rejected_sources": [
+        {
+          "url": "http://www.killamfellowships.com/programs/killam-fellowships.html",
+          "reason": "Legacy/partner listing domain linked from the Fulbright Canada pages; not the provider's own domain (fulbright.ca) and publishes no authoritative current deadline."
+        }
+      ]
+    }
+  ]
+}

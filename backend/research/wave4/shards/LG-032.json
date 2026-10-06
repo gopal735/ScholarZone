@@ -1,0 +1,58 @@
+{
+  "shard_id": "LG-032",
+  "topic": "logo",
+  "hosts": [
+    "mohesr.gov.iq",
+    "www.en.aau.dk",
+    "www.tuwien.at",
+    "www.uva.nl"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 163,
+      "title": "TU Wien Scholarships for International Students",
+      "official_source": "TU Wien (Vienna University of Technology)",
+      "official_source_url": "https://www.tuwien.at/en/studies/scholarships",
+      "catalogue_url": null,
+      "country": "Austria",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 173,
+      "title": "Amsterdam Merit Scholarship (AMS)",
+      "official_source": "University of Amsterdam",
+      "official_source_url": "https://www.uva.nl/en/education/scholarships-financial-support/uva-merit-scholarship.html",
+      "catalogue_url": "https://www.uva.nl/en/education/fees-and-funding/masters-scholarships-and-loans/amsterdam-merit-scholarship/amsterdam-merit-scholarship.html",
+      "country": "Netherlands",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 222,
+      "title": "Helmut Veith Stipend for Female Master's Students in Computer Science",
+      "official_source": "TU Wien",
+      "official_source_url": "https://www.tuwien.at/en/studies/studying-at-tu-wien/study-grants/helmut-veith-stipendium",
+      "catalogue_url": null,
+      "country": "Austria",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 332,
+      "title": "Aalborg University International Student Scholarship (tuition fee waiver and monthly stipend)",
+      "official_source": "Aalborg University",
+      "official_source_url": "https://www.en.aau.dk/education/finance/scholarships",
+      "catalogue_url": null,
+      "country": "Denmark",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 676,
+      "title": "KINGS Master's Scholarship 2027 (KEPCO International Nuclear Graduate School, South Korea) — non-employee quota announced by Iraq's Ministry of Higher Education",
+      "official_source": "Ministry of Higher Education and Scientific Research (Iraq), Department of Missions and Cultural Relations",
+      "official_source_url": "https://mohesr.gov.iq/ar/post/%D8%A7%D9%84%D8%AA%D8%B9%D9%84%D9%8A%D9%85-%D8%AA%D8%B9%D9%84%D9%86-%D8%AA%D9%88%D9%81%D8%B1-%D9%85%D9%86%D8%AD-%D8%AF%D8%B1%D8%A7%D8%B3%D9%8A%D8%A9-%D9%81%D9%8A-%D9%83%D9%88%D8%B1%D9%8A%D8%A7-%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9-2026-09-20-14",
+      "catalogue_url": "https://portal.scrd-gate.gov.iq",
+      "country": "Iraq",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

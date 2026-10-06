@@ -1,0 +1,353 @@
+{
+  "shard_id": "DL-026",
+  "agent_completed": true,
+  "topic": "deadline",
+  "retrieved_at": "2026-10-05T15:26:00Z",
+  "records": [
+    {
+      "scholarship_id": 152,
+      "title": "Excellence Master Fellowships (Faculty of Science, University of Geneva)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Next application deadline is 28 February, 2026 (for Masters starting September 14, 2026).",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.unige.ch/sciences/en/enseignements/formations/masters/excellencemasterfellowships",
+        "source_type": "official_scholarship_page",
+        "publisher": "University of Geneva, Faculty of Science",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "as_of": "Masters starting September 14, 2026",
+        "raw_extract": "The application is made online, from the beginning of January of each year. After registering, you will receive an e-mail containing a personal link allowing you to fill out the application form.\n\nNext application deadline is **28 February, 2026** (for Masters starting September 14, 2026).",
+        "exact_deadline_wording": "Next application deadline is 28 February, 2026 (for Masters starting September 14, 2026).",
+        "confidence": "HIGH",
+        "notes": "The official Fellowship page states one explicit calendar deadline: 28 February 2026, for the September 14, 2026 Masters intake. That date is in the past as of retrieval (2026-10-05), so per AGENT_BRIEF section 6 the stale date is not written and the date is not rolled forward to 2027. The page also describes the recurring cycle qualitatively ('The application is made online, from the beginning of January of each year') and the page now links to a 'Winners Spring 2026' page, both indicating the 2026 round has concluded. No future deadline is published on the live page. The value verified live matches the shard's cached deadline_display wording."
+      },
+      "field_mapping": {
+        "write_recommended": false,
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "Next application deadline is 28 February, 2026 (for Masters starting September 14, 2026).",
+        "reason_not_written": "outcome=expired_mismatch: the only published deadline (2026-02-28) is in the past relative to retrieval date 2026-10-05"
+      },
+      "examined": [
+        "https://www.unige.ch/sciences/en/enseignements/formations/masters/excellencemasterfellowships (fetched; contains the deadline)",
+        "https://www.unige.ch/sciences/en/enseignements/formations/masters/excellencemasterfellowships/winners-2026 (linked 'Winners Spring 2026' page, referenced from the fellowship page; confirms the 2026 round has been run)"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 188,
+      "title": "LiU International Scholarship",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "30 March – Application period will close at 23:59 CET.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://liu.se/en/article/scholarships",
+        "source_type": "official_scholarship_page",
+        "publisher": "Linköping University",
+        "retrieved_at": "2026-10-05T15:27:00Z",
+        "as_of": "the 2026 application round",
+        "raw_extract": "### The application for 2026\n\nThe application period for LiU Scholarships opens each year on the day students receive the Notification of Selection Results, and is only open for a short window. In 2026, the application period is as follows:\n\n-   **26 March** – Application period opens.\n-   **30 March** – Application period will close at 23:59 CET.\n-   **10 April** – Scholarship recipients will be published on this page.\n\nEligible students are invited to apply before the deadline for applications closes. No additional documents are needed to support your application",
+        "exact_deadline_wording": "30 March – Application period will close at 23:59 CET.",
+        "confidence": "HIGH",
+        "notes": "IMPORTANT: the shard's official_source_url (https://liu.se/en/education/scholarships) returns HTTP 404. The scholarship now lives at https://liu.se/en/article/scholarships, which is the page quoted here. The live page states explicit calendar dates for the 2026 round: opens 26 March, closes 30 March at 23:59 CET, recipients published 10 April. All three are in the past as of retrieval (2026-10-05), and the page already carries a 'Winners announced 2026' section with the recipient list PDF. The 2027 cycle has NO published date: https://liu.se/en/education/degree-studies states, verbatim, 'LiU Scholarship application period' / 'TBD' for the 2027 intake (autumn semester starts August 2027). Per AGENT_BRIEF sections 5 and 6, 'TBD' is not a value, the recurring pattern ('opens each year on the day students receive the Notification of Selection Results') is not converted into a date, and the stale 2026-03-30 is not written."
+      },
+      "field_mapping": {
+        "write_recommended": false,
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "30 March – Application period will close at 23:59 CET.",
+        "reason_not_written": "outcome=expired_mismatch: the published 2026 close date (2026-03-30) is in the past; the 2027 cycle is published only as 'TBD'"
+      },
+      "examined": [
+        "https://liu.se/en/education/scholarships (shard's official_source_url — HTTP 404 Not Found, no content)",
+        "https://liu.se/en/article/scholarships (fetched; contains the 2026 application period dates)",
+        "https://liu.se/en/education/admitted (fetched; 'Important dates & deadlines 2026': '✔ 26-30 March LiU International Scholarship application open' and '✔ 10 April LiU International Scholarship recipients announced' — corroborates the 2026 round, no 2027 dates)",
+        "https://liu.se/en/education/degree-studies (fetched; 'LiU Scholarship application period' = 'TBD' for the 2027 intake — no date published)",
+        "https://liu.se/en/article/scholarships-rules (linked rules page; eligibility/continuation rules only, no deadline)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://liu.se/en/education/scholarships",
+          "reason": "HTTP 404 Not Found - the URL recorded in the shard no longer exists; replaced by https://liu.se/en/article/scholarships"
+        },
+        {
+          "url": "https://liu.se/en/education/application-and-admission/how-to-apply",
+          "reason": "generic master's admission deadlines (15 January 2027 submission deadline), not the LiU Scholarship application window"
+        },
+        {
+          "url": "https://liu.se/en/article/courses-and-application",
+          "reason": "course application deadlines (15 April / 15 October) for a different process, not the LiU International Scholarship"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 227,
+      "title": "Doctoral Recruitment Call 2026 - Social Sciences, Humanities & Cultural Studies (SSH Call 2026), University of Vienna",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Application period: 7 January – 2 March 2026, 14:00 CET",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://careers.univie.ac.at/en/praedoc/praedoc-ssh",
+        "source_type": "official_university_page",
+        "publisher": "University of Vienna",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "as_of": "SSH Call 2026, start of employment 1 October 2026",
+        "raw_extract": "Update: The application deadline was 2 March, 14:00 CET.\n\nYou can still access your submitted application via the [**Application Portal**](https://phd.careers.univie.ac.at/datenabfrage/sshcall2026).\n\n---\n\nApplication period:\n\n7 January – 2 March 2026, 14:00 CET\n\nStart of employment:\n\n1 October 2026 (early start from July possible)",
+        "exact_deadline_wording": "Application period: 7 January – 2 March 2026, 14:00 CET",
+        "confidence": "HIGH",
+        "notes": "The live official SSH Call 2026 page itself declares the deadline closed, in the past tense: 'Update: The application deadline was 2 March, 14:00 CET.' The deadline 2026-03-02 is well in the past relative to retrieval (2026-10-05), so it is not written. No SSH Call 2027 exists as of retrieval: the official Praedoc index (https://careers.univie.ac.at/en/praedoc) describes the SSH Call only in past tense ('At the beginning of 2026, the University of Vienna opened a central call for applications for at least 40 doctoral positions ... in the humanities, social sciences, and cultural studies.') and lists only two other, separate 2026 calls (Autumn Call, STEM Call). Per AGENT_BRIEF section 6 the annual-recurrence assumption is not used to invent a 2027 window, and per section 6 'Different programmes at the same institution having different deadlines is not a conflict' - the Autumn/STEM Calls are not treated as the SSH Call's deadline."
+      },
+      "field_mapping": {
+        "write_recommended": false,
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "Application period: 7 January – 2 March 2026, 14:00 CET",
+        "reason_not_written": "outcome=expired_mismatch: the published deadline (2026-03-02) is in the past and the page itself states it 'was' 2 March"
+      },
+      "examined": [
+        "https://careers.univie.ac.at/en/praedoc/praedoc-ssh (fetched; contains the application period)",
+        "https://careers.univie.ac.at/en/praedoc (fetched; Praedoc index - no SSH Call 2027 published)",
+        "https://careers.univie.ac.at/en/praedoc/praedoc-ssh/faqs-to-the-ssh-call (shard catalogue_url; selection-process and timeline information only)",
+        "https://phd.careers.univie.ac.at/datenabfrage/sshcall2026 (application portal linked from the call; post-submission status lookup, not a source of a new deadline)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://careers.univie.ac.at/en/praedoc/autumn-call",
+          "reason": "different programme (Autumn Call Prae Doc, opens September 2026) - a different call at the same institution is not this record's deadline"
+        },
+        {
+          "url": "https://careers.univie.ac.at/en/praedoc/stem-call",
+          "reason": "different programme (STEM Call, March 2026) - not the SSH Call"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 244,
+      "title": "Chinese Government Scholarship - Tsinghua University Program (Type B)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Applicants are highly recommended to apply before Mid-December, 2025; the exact date is set by each school or department of Tsinghua University, so there is no single university-wide deadline.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://yz.tsinghua.edu.cn/en/info/1027/1117.htm",
+        "source_type": "official_university_page",
+        "publisher": "Tsinghua University, Graduate Admissions Office",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "as_of": "\"2026 Chinese Government Scholarship\" page, dated 2025.11",
+        "raw_extract": "**Step 1 Pre-admission**\n\nAn applicant shall apply for graduate programs at Tsinghua University for pre-admission and reach the schools/departments for a recommendation.\n\nOnline application at: [https://yzbm.tsinghua.edu.cn/intlLogin](https://yzbm.tsinghua.edu.cn/intlLogin).\n\n\\*Applicants are highly recommended to apply before Mid-December, 2025 (please refer to the application deadline of each department or school for specidic date). Otherwise, you may miss the deadline of some CGS Type B programs.",
+        "exact_deadline_wording": "Applicants are highly recommended to apply before Mid-December, 2025 (please refer to the application deadline of each department or school for specidic date).",
+        "confidence": "HIGH",
+        "notes": "No usable deadline exists on the official source. The page states no Tsinghua-wide CGS Type B deadline: it explicitly defers the date to each admitting department/school ('please refer to the application deadline of each department or school for specidic date'). The only timing reference, 'before Mid-December, 2025', is framed as a recommendation ('highly recommended to apply before'), not a deadline, and no day is given. It is also in the past relative to retrieval (2026-10-05). Because the page's own guidance is that the deadline varies per department, this is not recorded as MONTH either - and a partial per-department survey of the Faculty of Science / Engineering Physics pages would not be a university-wide value for this record. No 2027 CGS page is published: the official Financial Aid > Scholarship Application index (https://yz.tsinghua.edu.cn/en/Financial_Aid/Scholarship_Application.htm) lists exactly four entries, the newest being the 2026 Chinese Government Scholarship (published 2025.11), 2026 AFLSP, 2024 Atomic Energy Scholarship, and Full Scholarships for Certain Programs."
+      },
+      "field_mapping": {
+        "write_recommended": false,
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Applicants are highly recommended to apply before Mid-December, 2025; the exact date is set by each school or department of Tsinghua University, so there is no single university-wide deadline.",
+        "reason_not_written": "outcome=unknown: the official page states no university-wide deadline; its only timing reference is a per-department deferral plus a past recommendation"
+      },
+      "examined": [
+        "https://yz.tsinghua.edu.cn/en/info/1027/1117.htm (fetched; the record's official_source_url - contains no university-wide deadline)",
+        "https://yz.tsinghua.edu.cn/en/Financial_Aid/Scholarship_Application.htm (fetched; index of Tsinghua scholarship announcements - no 2027 CGS page exists)",
+        "https://yz.tsinghua.edu.cn/en/Financial_Aid/Contact.htm (referenced by the page for the per-department scholarship contacts; confirms deadlines are department-level)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://worldwidestudies.info/chinese-government-scholarship-2027/",
+          "reason": "third-party scholarship aggregator; its 'CSC 2027 opens December 2026 / deadlines January-April 2027' content is explicitly speculative ('expected', 'typically') and is not an official source. Also rejected because search-result content is not admissible evidence under AGENT_BRIEF section 5."
+        },
+        {
+          "url": "https://tt.china-embassy.gov.cn/eng/sgxw/202601/t20260107_11807431.htm",
+          "reason": "official but wrong route: a Chinese Embassy (Category Type A / bilateral) announcement for Singapore, not the Tsinghua University Category Type B programme"
+        },
+        {
+          "url": "https://www.gov.ie/en/department-of-further-and-higher-education-research-innovation-and-science/services/chinese-government-scholarship-2026-2027/",
+          "reason": "official but wrong route: Irish government bilateral (Type A) scholarship, not Tsinghua University Type B"
+        },
+        {
+          "url": "https://yz.tsinghua.edu.cn/en/Admissions/How_to_Apply.htm",
+          "reason": "Tsinghua's generic international graduate ADMISSION deadline is a different process from the CGS Type B scholarship deadline (AGENT_BRIEF section 5 forbids a generic admissions deadline for a different programme)"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 280,
+      "title": "Master Mind Scholarships — Flemish Government",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Deadline for application: 27th April 2026 23h59 GMT+1",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.international.vluhr.be/scholarships/master-mind-scholarships",
+        "source_type": "official_programme_page",
+        "publisher": "VLUHR International (Huis Hoger Onwijs) - coordinator of the Flemish Master Mind Scholarships",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "as_of": "academic year 2026-2027",
+        "raw_extract": "## Timing\n\n-   Launch of the call: January 2026\n-   Deadline for application at Flemish Host institutions (will be published [here](https://www.studyinflanders.be/scholarships/master-mind-scholarships/host-institutions) as soon as they are confirmed)\n-   Start application procedure in Mobility-Online: from 16th February 2026 onwards\n-   Deadline for application: 27th April 2026 23h59 GMT+1\n-   Selection: May 2026\n-   Announcement of selection results: End of May 2026\n-   Start of mobility: September 2026",
+        "exact_deadline_wording": "Deadline for application: 27th April 2026 23h59 GMT+1",
+        "confidence": "HIGH",
+        "notes": "Two independent official pages agree that the 2026-2027 call is closed, so this is NOT a CONFLICTING case. VLUHR (quoted here) gives the explicit deadline '27th April 2026 23h59 GMT+1' and repeats it in Step 6 ('before the deadline of 27th April 2026 23h59 GMT+1. Applications validated submitted after 27th April 2026 23h59 GMT+1 will not be accepted.'). The official Flemish government portal studyinflanders.be states, verbatim: 'The call for the academic year 2026-2027 is now **closed**.' The 2026-04-27 deadline is in the past relative to retrieval (2026-10-05), so it is not written. No 2027-2028 deadline is published; both pages warn the programme is being reviewed - 'Note that the scholarship is currently under review by the Ministry of Education and as such, the awarded grant, selection process, criteria, and modalities may change for the academic year 2027-2028.' - so the previous year must not be rolled forward."
+      },
+      "field_mapping": {
+        "write_recommended": false,
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "Deadline for application: 27th April 2026 23h59 GMT+1",
+        "reason_not_written": "outcome=expired_mismatch: the published deadline (2026-04-27) is in the past; the 2027-2028 call is not published and is under ministerial review"
+      },
+      "examined": [
+        "https://www.international.vluhr.be/scholarships/master-mind-scholarships (fetched; contains the Timing/deadline)",
+        "https://www.studyinflanders.be/scholarships/master-mind-scholarships (fetched; official Flemish government portal - confirms 'The call for the academic year 2026-2027 is now closed', no 2027-2028 date)",
+        "https://www.studyinflanders.be/scholarships/master-mind-scholarships/host-institutions (linked from the VLUHR Timing section for host-institution internal deadlines; not published as confirmed on the VLUHR page)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.international.vluhr.be/news/brains-on-the-move-selectieresultaten-asem-work-placement-en-master-mind-scholarships-2025-2025",
+          "reason": "shard catalogue_url is a news item about 2025-2025 result selection, an earlier cycle; not the current call's deadline"
+        },
+        {
+          "url": "https://www.internationalisering.vluhr.be/studentenmobiliteit/master-mind-scholarships",
+          "reason": "Dutch-language mirror of the same VLUHR content; the English page already supplied the value"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 317,
+      "title": "Asian Future Leaders Scholarship Program (AFLSP) 2026",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Deadline to submit scholarship materials (Beijing Time): March 1, 2026",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://yz.tsinghua.edu.cn/en/info/1027/1477.htm",
+        "source_type": "official_university_page",
+        "publisher": "Tsinghua University, Graduate Admissions Office",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "as_of": "\"2026 Asian Future Leaders Scholarship Program\" 2026 cohort, page dated 2024.11",
+        "raw_extract": "Step 2: Submit scholarship application materials through email to the target dept./school ([contacts of schools/depts](https://yz.tsinghua.edu.cn/en/Financial_Aid/Contact.htm)) by March 1, 2026(Beijing Time).\n\n**Deadline to submit scholarship materials (Beijing Time):** **March** **1****, 202****6**",
+        "exact_deadline_wording": "Deadline to submit scholarship materials (Beijing Time): March 1, 2026",
+        "confidence": "HIGH",
+        "notes": "This is a genuine live recovery of the deadline wording: the shard's cached deadline_display was truncated mid-sentence ('to submit scholarship materials (Beijing Time):'). The live page carries the full heading 'Deadline to submit scholarship materials (Beijing Time): March 1, 2026', corroborated in Step 2 ('by March 1, 2026(Beijing Time)') and in Selection Process step 1 ('submit the scholarship application materials to the target dept./school ... by March 1, 2026'). The date 2026-03-01 is in the past relative to retrieval (2026-10-05) - the page's own timeline (dept/school recommendation list by 23 March 2026, Tsinghua nominations to BXAI by end of April 2026, BXAI selection results by end of May 2026, nominees informed June 2026) has fully elapsed - so per AGENT_BRIEF section 6 the stale date is not written and no 2027 AFLSP cycle is published on the official site. Note the document's own internal inconsistency (BXAI Summer Program 'August, 2027' on a 2026-cohort page); it does not affect the deadline."
+      },
+      "field_mapping": {
+        "write_recommended": false,
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "Deadline to submit scholarship materials (Beijing Time): March 1, 2026",
+        "reason_not_written": "outcome=expired_mismatch: the published deadline (2026-03-01) is in the past and no 2027 cohort deadline is published"
+      },
+      "examined": [
+        "https://yz.tsinghua.edu.cn/en/info/1027/1477.htm (fetched; contains the deadline)",
+        "https://yz.tsinghua.edu.cn/en/Financial_Aid/Scholarship_Application.htm (fetched; index - the AFLSP entry is still the 2026 cohort, no 2027 announcement)",
+        "https://www.bxai.org/ (provider, Bai Xian Asia Institute; named by the page for 'other requirements' - no published AFLSP application deadline there, and the Tsinghua page is the official applying channel)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://yz.tsinghua.edu.cn/en/Programs/Doctoral_Degrees.htm",
+          "reason": "shard catalogue_url; a programme index with no AFLSP deadline - AFLSP is a master's scholarship and the deadline is not on this page"
+        },
+        {
+          "url": "https://yzbm.tsinghua.edu.cn/intlLogin",
+          "reason": "generic Tsinghua graduate admission portal for the September 2025-February 2026 master's round; not the AFLSP scholarship-materials deadline"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 318,
+      "title": "Atomic Energy Scholarship Program of China 2026",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "No application deadline is stated on the official source. The live page is the 2024 cycle and its only date is a results-notification date: \"The scholarship recipients will be notified by the university via email before July 31st of the year of admission.\"",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://yz.tsinghua.edu.cn/en/info/1027/1391.htm",
+        "source_type": "official_university_page",
+        "publisher": "Tsinghua University, Graduate Admissions Office",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "as_of": "\"2024 The Atomic Energy Scholarship Program of China\" page, dated 2024.02 (no 2026 version published)",
+        "raw_extract": "**Application Procedure**\n\n1\\. Pre-admission\n\nAn applicant shall apply for the following graduate programs at Tsinghua University for pre-admission and reach the requirements of departments for a recommendation.\n\n...\n\n2\\. Complete the System Application\n\nAll the applicants need to fill in and submit information via the Chinese Government Scholarship Information System ([http://studyinchina.csc.edu.cn](http://studyinchina.csc.edu.cn/)) when you are informed by the pre-admitted departments.\n\n3\\. Assessment\n\nApplicants who meet the scholarship requirements will be reviewed by the university and assessed and decided by the China Atomic Energy Authority, the Ministry of Education of the People's Republic of China and the China Scholarship Council for acceptance. The scholarship recipients will be notified by the university via email before July 31st of the year of admission.",
+        "exact_deadline_wording": "",
+        "confidence": "HIGH",
+        "notes": "The official page for this record's official_source_url states NO application deadline at any point. The Application Procedure is described entirely in relative terms ('when you are informed by the pre-admitted departments'), with no closing date for either the pre-admission step or the CSC system submission. The only calendar date on the page, 'before July 31st of the year of admission', is a recipient-notification date, not an application deadline, so it cannot be used as one. Separately, the page is the 2024 cycle while the record is titled 2026, and no 2025/2026/2027 version is published: the official Financial Aid > Scholarship Application index lists only this '2024 The Atomic Energy Scholarship Program of China' entry. No value is available, so no value is written."
+      },
+      "field_mapping": {
+        "write_recommended": false,
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": null,
+        "reason_not_written": "outcome=unknown: the official page states no application deadline; its only date is a results-notification date"
+      },
+      "examined": [
+        "https://yz.tsinghua.edu.cn/en/info/1027/1391.htm (fetched; the record's official_source_url - contains no application deadline)",
+        "https://yz.tsinghua.edu.cn/en/Financial_Aid/Scholarship_Application.htm (fetched; index - only the 2024 AES page is published, no 2026 version exists)",
+        "http://studyinchina.csc.edu.cn (CSC system named by the page for the application submission; no AES-specific deadline published there)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://yz.tsinghua.edu.cn/en/Programs/Doctoral_Degrees.htm",
+          "reason": "shard catalogue_url; programme index with no AES deadline"
+        },
+        {
+          "url": "https://yz.tsinghua.edu.cn/en/info/1027/1117.htm",
+          "reason": "different scholarship (Chinese Government Scholarship Type B); its 'Mid-December' guidance is not the Atomic Energy Scholarship's deadline"
+        },
+        {
+          "url": "https://yz.tsinghua.edu.cn/en/info/1027/1477.htm",
+          "reason": "different scholarship (AFLSP 2026); its 1 March 2026 deadline is not the Atomic Energy Scholarship's deadline"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 665,
+      "title": "ACU Stipend Scholarship",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Round 1 Application deadline: Wednesday 1 April 2026, 11:59 PM (AEDT) / Round 2 Application deadline: Thursday 1 October 2026, 11:59 PM (AEST)",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.acu.edu.au/research-and-enterprise/graduate-research-school/scholarships/acu-stipend-scholarship",
+        "source_type": "official_scholarship_page",
+        "publisher": "Australian Catholic University, Graduate Research School",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": "2026 rounds (Round 1 April 2026, Round 2 October 2026); stipend value marked '* 2026 value, indexed annually'",
+        "raw_extract": "Application deadline\n\nApplications open twice per annum in April and October.\n\nRound 1\nApplication deadline: Wednesday 1 April 2026, 11:59 PM (AEDT)\nDomestic commencement: First workday of August\nInternational commencement: First day of Research Term D in October\nRound 2\nApplication deadline: Thursday 1 October 2026, 11:59 PM (AEST)\nDomestic commencement: First workday in February of the following year\nInternational commencement: First day of Research Term C in July of the following year",
+        "exact_deadline_wording": "Round 1 Application deadline: Wednesday 1 April 2026, 11:59 PM (AEDT); Round 2 Application deadline: Thursday 1 October 2026, 11:59 PM (AEST)",
+        "confidence": "HIGH",
+        "notes": "Retrieval note: plain HTTP fetch of acu.edu.au returns HTTP 403 (bot protection); the page was retrieved at HTTP 200 with a headless browser and the rendered text quoted verbatim above. The live page publishes exactly two deadlines, both for 2026: Wednesday 1 April 2026 and Thursday 1 October 2026. BOTH are in the past as of retrieval (2026-10-05) - Round 2 closed the previous day. MATERIAL CORRECTION: the shard's cached deadline_display claims '1 April 2027 (next round)'; the string '2027' does not appear anywhere in the scholarship page's deadline section. That value was an inference from the recurring pattern and is not supported by the live source, so it is rejected. The page does state the recurrence qualitatively ('Applications open twice per annum in April and October'), but per AGENT_BRIEF sections 6 and 7 an annual pattern is not converted into a date, so no deadline_date is written."
+      },
+      "field_mapping": {
+        "write_recommended": false,
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "Round 1 Application deadline: Wednesday 1 April 2026, 11:59 PM (AEDT) / Round 2 Application deadline: Thursday 1 October 2026, 11:59 PM (AEST)",
+        "reason_not_written": "outcome=expired_mismatch: both published 2026 round deadlines (2026-04-01 and 2026-10-01) are in the past; no 2027 round dates are published"
+      },
+      "examined": [
+        "https://www.acu.edu.au/research-and-enterprise/graduate-research-school/scholarships/acu-stipend-scholarship (fetched at HTTP 200 via headless browser; contains both round deadlines)",
+        "https://www.acu.edu.au/research-and-enterprise/graduate-research-school/scholarships (shard catalogue_url; retrieved via headless browser - the scholarship cards load dynamically and exposed no additional deadline text for this scholarship)",
+        "https://www.acu.edu.au/research-and-enterprise/graduate-research-school/scholarships/acu-stipend-scholarship (plain webfetch returned HTTP 403; headless-browser retrieval used instead)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.acu.edu.au/research-and-enterprise/graduate-research-school/scholarships (cached value '1 April 2027')",
+          "reason": "the prior-wave cached deadline_display '1 April 2027 (next round)' is not present on the live page; AGENT_BRIEF section 5 forbids a previous wave's cached value with no live source behind it"
+        },
+        {
+          "url": "https://www.acu.edu.au/study-with-acu/courses/research-doctorates-phds-and-masters-by-research",
+          "reason": "not fetched - generic ACU research-degree admissions information would be a different programme's deadline per AGENT_BRIEF section 5"
+        }
+      ]
+    }
+  ]
+}

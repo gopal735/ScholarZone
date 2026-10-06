@@ -1,0 +1,58 @@
+{
+  "shard_id": "LG-018",
+  "topic": "logo",
+  "hosts": [
+    "frq.gouv.qc.ca",
+    "uncf.org",
+    "www.anrfonline.in",
+    "www.pronabec.gob.pe"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 309,
+      "title": "Merit Scholarship Program for Foreign Students (PBEEE) - Fonds de recherche du Quebec",
+      "official_source": "Fonds de recherche du Quebec (FRQ) - secteur Nature et technologies, commissioned by the Ministere de l'Enseignement superieur du Quebec",
+      "official_source_url": "https://frq.gouv.qc.ca/en/program/merit-scholarship-program-for-foreign-students-pbeee-2026-2027-2",
+      "catalogue_url": "https://frq.gouv.qc.ca/en/complete-program-directory",
+      "country": "Canada",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 361,
+      "title": "ANRF Ramanujan Fellowship",
+      "official_source": "Anusandhan National Research Foundation (ANRF)",
+      "official_source_url": "https://www.anrfonline.in/ANRF/Ramanujan_fellowship",
+      "catalogue_url": "https://www.anrfonline.in/ANRF/Ramanujan_fellowship",
+      "country": "India",
+      "image_evaluation_status": "no_official_image"
+    },
+    {
+      "id": 597,
+      "title": "Beca Generación Bicentenario (Convocatoria extraordinaria 2026)",
+      "official_source": "PRONABEC - Programa Nacional de Becas y Crédito Educativo, Ministerio de Educación del Perú",
+      "official_source_url": "https://www.pronabec.gob.pe/beca-generacion-bicentenario",
+      "catalogue_url": "https://www.pronabec.gob.pe/concursos-becas-creditos",
+      "country": "Peru",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 632,
+      "title": "2026-2027 Etta Gray Memorial Scholarship Program (UNCF)",
+      "official_source": "United Negro College Fund (UNCF)",
+      "official_source_url": "https://uncf.org/scholarships",
+      "catalogue_url": "https://uncf.org/scholarships",
+      "country": "United States",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 633,
+      "title": "Frederick Douglass Bicentennial Scholarship Program (UNCF)",
+      "official_source": "United Negro College Fund (UNCF)",
+      "official_source_url": "https://uncf.org/pages/the-frederick-douglass-bicentennial-scholarship-program",
+      "catalogue_url": "https://uncf.org/scholarships",
+      "country": "United States",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

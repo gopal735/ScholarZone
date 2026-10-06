@@ -1,0 +1,58 @@
+{
+  "shard_id": "LG-011",
+  "topic": "logo",
+  "hosts": [
+    "convocatorias.conicet.gov.ar",
+    "cuni.cz",
+    "studyindenmark.dk",
+    "www.master-bioceb.eu"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 268,
+      "title": "Danish Government Scholarship for Non-EU/EEA Full-Degree Students",
+      "official_source": "Danish Ministry of Science, Higher Education and Digital Affairs (Study in Denmark)",
+      "official_source_url": "https://studyindenmark.dk/study-options/scholarships",
+      "catalogue_url": "https://studyindenmark.dk/portal",
+      "country": "Denmark",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 295,
+      "title": "Charles University Doctoral Study Income (full-time doctoral students)",
+      "official_source": "Charles University (Prague)",
+      "official_source_url": "https://cuni.cz/UKEN-1617.html",
+      "catalogue_url": null,
+      "country": "Czech Republic",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 326,
+      "title": "Václav Havel Bursary - Charles University",
+      "official_source": "Charles University",
+      "official_source_url": "https://cuni.cz/UKEN-2329.html",
+      "catalogue_url": null,
+      "country": "Czech Republic",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 350,
+      "title": "Erasmus Mundus Joint Master Scholarship - Bioceb (European Master in Biological and Chemical Engineering for a Sustainable Bioeconomy)",
+      "official_source": "Bioceb consortium (Erasmus Mundus Joint Master)",
+      "official_source_url": "https://www.master-bioceb.eu",
+      "catalogue_url": "https://www.bioceb.eu/scholarships-15.html",
+      "country": "France",
+      "image_evaluation_status": "source_blocked"
+    },
+    {
+      "id": 601,
+      "title": "Beca Interna Postdoctoral - Convocatoria Becas 2026 (CONICET)",
+      "official_source": "CONICET - Consejo Nacional de Investigaciones Científicas y Técnicas, Argentina",
+      "official_source_url": "https://convocatorias.conicet.gov.ar/becas/convocatoria-vigente",
+      "catalogue_url": "https://convocatorias.conicet.gov.ar/becas",
+      "country": "Argentina",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

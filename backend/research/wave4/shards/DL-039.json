@@ -1,0 +1,111 @@
+{
+  "shard_id": "DL-039",
+  "topic": "deadline",
+  "hosts": [
+    "oia.ncku.edu.tw",
+    "scholarships.unimelb.edu.au",
+    "www.campuschina.org",
+    "www.master-europeanforestry.eu",
+    "www.ucl.ac.uk",
+    "www.wipo.int"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 33,
+      "title": "Chinese Government Scholarship (CSC)",
+      "official_source": null,
+      "official_source_url": "https://www.campuschina.org",
+      "catalogue_url": null,
+      "country": "China",
+      "deadline_display": "Typically March-April each year",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 47,
+      "title": "Melbourne International Undergraduate Scholarship",
+      "official_source": "University of Melbourne",
+      "official_source_url": "https://scholarships.unimelb.edu.au/awards/melbourne-international-undergraduate-scholarship",
+      "catalogue_url": "https://scholarships.unimelb.edu.au/eligible-countries",
+      "country": "Australia",
+      "deadline_display": "No application required. \"You are automatically considered for this scholarship, if you have applied for a course.\"",
+      "deadline_precision": "month",
+      "application_period": "Open for automatic consideration when applying for admission",
+      "verification_status": "active"
+    },
+    {
+      "id": 71,
+      "title": "UCL Global Master's Scholarship",
+      "official_source": "University College London",
+      "official_source_url": "https://www.ucl.ac.uk/scholarships/ucl-global-masters-scholarship",
+      "catalogue_url": null,
+      "country": "United Kingdom",
+      "deadline_display": "5pm BST, 7 May 2026",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "needs_review"
+    },
+    {
+      "id": 72,
+      "title": "UCL Humanitarian Scholarship",
+      "official_source": "University College London",
+      "official_source_url": "https://www.ucl.ac.uk/scholarships/ucl-humanitarian-scholarship",
+      "catalogue_url": null,
+      "country": "United Kingdom",
+      "deadline_display": "5pm BST, Thursday 7 May 2026",
+      "deadline_precision": "recurring",
+      "application_period": "The 2026/27 cycle closed at 5pm BST on Thursday 7 May 2026. UCL has not yet published the date for the following annual cycle.",
+      "verification_status": "active"
+    },
+    {
+      "id": 151,
+      "title": "MOE Elite Scholarship Program for Lecturers from South and Southeast Asian and African Countries",
+      "official_source": "Ministry of Education (MOE), Republic of China (Taiwan)",
+      "official_source_url": "https://oia.ncku.edu.tw",
+      "catalogue_url": null,
+      "country": "Taiwan",
+      "deadline_display": "There is no single ministry deadline. Applicants apply through the participating university's admission application, and the published application windows have been mid-December to mid-March for Fall entry (National Cheng Kung University's AY2026/27 window was mid-December 2025 to mid-March 2026). After admission results, the university emails the MOE-Elite guidelines, forms and upload links, and applicants must submit by the deadline stated in that email. MOE then announces recipients, around late October for Fall intake and late April for the African Spring intake.",
+      "deadline_precision": "varies",
+      "application_period": "Tied to each participating university's admission cycle, with published Fall application windows running from around mid-December to mid-March, followed by a post-admission document submission stage with its own email-stated deadline. MOE announces recipient lists around late October for Fall and late April for the African Spring intake. The AY2026/27 Fall window closed in mid-March 2026; the next is expected to open around mid-December 2026 for 2027 Fall entry.",
+      "verification_status": "active"
+    },
+    {
+      "id": 161,
+      "title": "WIPO Fellowship Program",
+      "official_source": "World Intellectual Property Organization (WIPO)",
+      "official_source_url": "https://www.wipo.int/en/web/working-at-wipo/fellowship-program",
+      "catalogue_url": "https://wipo.taleo.net/careersection/wp_2_fel/jobsearch.ftl?lang=en&portal=50305027338",
+      "country": "Switzerland",
+      "deadline_display": "Fellowship positions may be advertised through calls for expressions of interest published on WIPO's career website, or via WIPO's LinkedIn or other social media channels. No fixed central deadline is published on the programme page.",
+      "deadline_precision": "rolling",
+      "application_period": "Continuous, per vacancy. Positions are announced through calls for expressions of interest on WIPO's Taleo career site and on LinkedIn, so there is no single application window.",
+      "verification_status": "active"
+    },
+    {
+      "id": 195,
+      "title": "Melbourne Research Scholarship (MRS)",
+      "official_source": "The University of Melbourne",
+      "official_source_url": "https://scholarships.unimelb.edu.au/awards/melbourne-research-scholarship",
+      "catalogue_url": "https://scholarships.unimelb.edu.au/awards/graduate-research-scholarships",
+      "country": "Australia",
+      "deadline_display": "No application required. If you have applied for a graduate research course by the application closing date for that course, you will receive confirmation within seven days that you are automatically considered.",
+      "deadline_precision": "varies",
+      "application_period": "No scholarship application window of its own; eligibility follows the application closing date of the graduate research course, which varies by course.",
+      "verification_status": "active"
+    },
+    {
+      "id": 348,
+      "title": "Erasmus Mundus European Forestry (MSc EF) Scholarship",
+      "official_source": "Master Europeanforestry.Eu",
+      "official_source_url": "https://www.master-europeanforestry.eu",
+      "catalogue_url": null,
+      "country": "Finland",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": null,
+      "verification_status": "quarantined"
+    }
+  ]
+}

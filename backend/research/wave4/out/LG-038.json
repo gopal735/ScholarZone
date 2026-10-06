@@ -1,0 +1,235 @@
+{
+  "shard_id": "LG-038",
+  "agent_completed": true,
+  "topic": "logo",
+  "records": [
+    {
+      "scholarship_id": 194,
+      "title": "UQ International Excellence Scholarship",
+      "outcome": "recovered",
+      "image_url": "https://static.uq.net.au/v11/logos/corporate/uq-logo--reversed.svg",
+      "image_source_url": "https://scholarships.uq.edu.au/scholarship/uq-international-excellence-scholarship",
+      "image_source_type": "official_scholarship",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "The scholarship itself has no programme-specific mark; the official UQ master-brand logo used in the header of the official scholarship page is the only provable official asset. Fetched the scholarship page first: its header logo src is https://static.uq.net.au/v11/logos/corporate/uq-logo--reversed.svg (same asset is referenced by uq.edu.au and study.uq.edu.au). Asset fetched directly: HTTP 200, Content-Type image/svg+xml, 11022 bytes, viewBox 0 0 204.09 53.58, <title>The University of Queensland, Australia</title>, <desc>White horizontal logo of The University of Queensland. https://www.uq.edu.au</desc>. CAVEAT: the file is the official white/reversed (knockout) variant - its only paint is .mono-white{fill:#fff;} - so it is invisible on a white card background. No colour UQ logo file is publicly downloadable without DAM authentication (marketing-communication.uq.edu.au/uq-brand-assets redirects and is unreachable; UQ Brand Procedure states logo downloads are in the Digital Asset Manager behind an approval workflow). Recommend human review of the knockout rendering before this is written. Rejected: static.uq.net.au/v10/logos/corporate/uq-apple-touch-icon.png (apple-touch-icon), the 2160x540px Standard-UQ hero banner on the scholarship page (decorative hero art, not a logo)."
+      },
+      "source": {
+        "url": "https://scholarships.uq.edu.au/scholarship/uq-international-excellence-scholarship",
+        "publisher": "The University of Queensland (scholarships.uq.edu.au)",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "raw_extract": "[![The University of Queensland](https://static.uq.net.au/v11/logos/corporate/uq-logo--reversed.svg)](https://uq.edu.au) - page title: \"UQ International Excellence Scholarship - Scholarships - The University of Queensland\"; footer: \"(c) The University of Queensland / ABN: 63 942 912 684 / CRICOS: 00025B\"",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://scholarships.uq.edu.au/scholarship/uq-international-excellence-scholarship",
+        "https://static.uq.net.au/v11/logos/corporate/uq-logo--reversed.svg",
+        "https://scholarships.uq.edu.au/scholarships",
+        "https://uq.edu.au/",
+        "https://study.uq.edu.au/",
+        "https://programs-courses.uq.edu.au/",
+        "https://marketing-communication.uq.edu.au/uq-brand-assets",
+        "https://marketing-communication.uq.edu.au/assets/social-media-guidelines",
+        "https://policies.uq.edu.au/document/view-current.php?id=358",
+        "https://www.uq.edu.au/styleguide"
+      ],
+      "rejected": [
+        {
+          "url": "https://static.uq.net.au/v10/logos/corporate/uq-apple-touch-icon.png",
+          "reason": "favicon - apple-touch-icon asset"
+        },
+        {
+          "url": "https://scholarships.uq.edu.au/sites/default/files/styles/hero_banner_medium/public/2021-10/2160x540px_standard_hero_110521_Generic-UQ_v1.jpg?itok=o1A6TIqx",
+          "reason": "decorative hero banner artwork, not a logo or brand mark"
+        },
+        {
+          "url": "https://www.uq.edu.au/styleguide/images/universities-australia-logo.svg",
+          "reason": "wrong identity - Group of Eight (Go8) membership logo, not the UQ master brand and not the scholarship"
+        },
+        {
+          "url": "https://www.uq.edu.au/styleguide/images/go8-logo.svg",
+          "reason": "wrong identity - Go8 consortium logo, unrelated organisation"
+        },
+        {
+          "url": "https://brandfetch.com/uq.edu.au",
+          "reason": "third-party aggregator/mirror of brand assets, not an official UQ domain"
+        },
+        {
+          "url": "https://seeklogo.com/vector-logo/251644/university-of-queensland",
+          "reason": "third-party logo repository, unofficial provenance"
+        },
+        {
+          "url": "https://policies.uq.edu.au/document/view-current.php?id=113",
+          "reason": "policy text page, not a downloadable brand asset; logo downloads sit behind the authenticated DAM"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 557,
+      "title": "KAUST Fellowship (Master's, Ph.D. and M.S./Ph.D. Pathway)",
+      "outcome": "recovered",
+      "image_url": "https://admissions.kaust.edu.sa/images/default-source/interface/site-branding/KAUST_Logo.svg",
+      "image_source_url": "https://admissions.kaust.edu.sa/fees-funding",
+      "image_source_type": "official_scholarship",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Fetched official_source_url first (KAUST admissions Fees & Funding page, which describes the KAUST Fellowship). Its masthead logo element is [KAUST](/images/default-source/interface/site-branding/KAUST_Logo.svg), i.e. the University's own site-branding asset served from the official kaust.edu.sa domain. Asset fetched directly: valid Adobe Illustrator 27.5 SVG export, viewBox 0 0 546.5 201.3, full-colour palette (#F3901D, #EEB111, #C1CD23, #00B1B0 mark plus #6F6259 bilingual wordmark text), so it renders visibly on light backgrounds. Corroborated on the main KAUST domain: www.kaust.edu.sa/en references /ResourcePackages/KAUSTMain/assets/dist/images/kaust-logo.svg for the same institutional mark. No Fellowship-specific mark exists; the institutional logo is the correct provider identity. Format note: vector SVG, not raster."
+      },
+      "source": {
+        "url": "https://admissions.kaust.edu.sa/fees-funding",
+        "publisher": "King Abdullah University of Science and Technology (KAUST)",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "raw_extract": "[![KAUST](/images/default-source/interface/site-branding/KAUST_Logo.svg)](/)] - and page text: \"The KAUST Fellowship is designed to ensure that you can focus entirely on your studies and research with the peace of mind that comes from financial support.\"; footer: \"(c) KAUST. All rights reserved.\"",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://admissions.kaust.edu.sa/fees-funding",
+        "https://admissions.kaust.edu.sa/images/default-source/interface/site-branding/KAUST_Logo.svg",
+        "https://admissions.kaust.edu.sa/study/programs-of-study",
+        "https://www.kaust.edu.sa/en",
+        "https://www.kaust.edu.sa/en/about/media-relations"
+      ],
+      "rejected": [
+        {
+          "url": "https://admissions.kaust.edu.sa/about-kaust/virtual-tour",
+          "reason": "not an asset - virtual tour page, no logo file"
+        },
+        {
+          "url": "https://gds.kaust.edu.sa/student-conduct/policies",
+          "reason": "unrelated KAUST subdivision (Graduate Development School) page on a subdomain; shared-CDN department asset, not the university mark"
+        },
+        {
+          "url": "https://ciss.kaust.edu.sa/media",
+          "reason": "unrelated KAUST centre/department site, not the official university brand asset"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 571,
+      "title": "ARES Scholarships - Bourses de formations internationales (scholarships for study in Belgium)",
+      "outcome": "recovered",
+      "image_url": "https://ares-ac.be/themes/custom/frontend/medias/images/logo_ares.png",
+      "image_source_url": "https://ares-ac.be/fr/bourses",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "ares-ac.be is protected by a WAF that blocks non-browser clients ('Requete non autorisee', bot-9378249633796125513), so the official page had to be rendered in a real browser to be read. Rendered https://ares-ac.be/fr/bourses (page title 'Bourses de formations internationales | ARES', HTTP 200) and extracted the masthead: <img src=\"/themes/custom/frontend/medias/images/logo_ares.png\" alt=\"ARES - Academie de recherche et d'enseignement superieur - Page d'accueil\">. Asset verified through the browser context: HTTP 200, Content-Type image/png, content-length 8441, naturalWidth 350 x naturalHeight 63, displayed at 220px in the ARES masthead - a wordmark, not a favicon-sized badge. Visually confirmed the rendered mark reads 'ARES - ACADEMIE DE RECHERCHE ET D'ENSEIGNEMENT SUPERIEUR'. Official domain, correct identity, no programme-specific sub-brand."
+      },
+      "source": {
+        "url": "https://ares-ac.be/fr/bourses",
+        "publisher": "ARES - Academie de recherche et d'enseignement superieur (Federation Wallonie-Bruxelles)",
+        "retrieved_at": "2026-10-05T15:33:00Z",
+        "raw_extract": "<div class=\"logoGroup\"><a class=\"navbar-brand\" href=\"/fr\"><img src=\"/themes/custom/frontend/medias/images/logo_ares.png\" href=\"/\" alt=\"ARES - Academie de recherche et d'enseignement superieur - Page d'accueil\"></a></div>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://ares-ac.be/fr/bourses",
+        "https://ares-ac.be/themes/custom/frontend/medias/images/logo_ares.png",
+        "https://ares-ac.be",
+        "https://ares-ac.be/fr",
+        "https://www.ares-ac.be/fr/bourses"
+      ],
+      "rejected": [
+        {
+          "url": "https://ares-ac.be/sites/default/files/styles/image_white_header_paragraph/public/2025-02/header-wk-fi_v2.jpg?itok=WAfiEaVZ",
+          "reason": "decorative page header artwork (CSS background-image), not a logo"
+        },
+        {
+          "url": "https://ares-ac.be/sites/default/files/styles/evnet_teaser_image/public/2025-02/header-wk-fi_v2_0.jpg?itok=d0SX3vHs",
+          "reason": "decorative event teaser artwork, not a logo"
+        },
+        {
+          "url": "https://ares-ac.be/fr/cooperation-au-developpement/bourses",
+          "reason": "404 - page introuvable on the official site"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 603,
+      "title": "PEC-PG - Brazilian Program for Exchange Students, Postgraduate Level (PEC-PG 2027)",
+      "outcome": "not_found",
+      "image_url": null,
+      "image_source_url": null,
+      "image_source_type": null,
+      "image_kind": null,
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": false,
+        "accessible": false,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": false,
+        "notes": "No official logo or brand mark exists for PEC-PG on any official page examined. Fetched official_source_url (MRE PEC-PG 2027 selection process, HTTP 200): every <img> on it is an inline base64 data URI - a 1x1 tracking pixel and two 32x32 base64 icons for the Facebook/Twitter/LinkedIn/WhatsApp share buttons; there is no external image asset at all, and the page carries no programme logo. Same for the parent 'Study opportunities for international applicants' page, the Portuguese PEC-G section pages (/programas-de-estudo-para-estrangeiros/pec-g and /pec-g/sobre) and the linked CNPq Call No. 16/2026 page: zero non-data: image sources. The MRE institutional logomarca/brand-asset page (gov.br/mre/pt-br/centrais-de-conteudo/fotos-logomarcas-institucionais, which advertises 'Assinatura entre o MRE e Governo Federal' PNG/PDF downloads) renders as 'Conteudo Restrito - E necessario autenticar para visualizar essa pagina', so no MRE mark is publicly retrievable either, and an MRE/Itamaraty institutional signature is not the PEC-PG programme identity in any case. Federal Government brand manuals on gov.br are for other organs (Ministério da Defesa, IEC, PR Secretaria de Comunicacao) and would be an identity mismatch. The Brazilian national coat of arms is a state symbol, not a programme logo. Per the brief, image_url stays null: official absence beats invented branding."
+      },
+      "source": {
+        "url": "https://www.gov.br/mre/en/subjects/culture-and-education/educational-themes/study-opportunities-for-international-applicants/pec-pg-graduate/selection-process-2",
+        "publisher": "Ministerio das Relacoes Exteriores (Itamaraty) / gov.br",
+        "retrieved_at": "2026-10-05T15:35:00Z",
+        "raw_extract": "Page content is '## PEC-PG 2027 selection process' followed by the calendar, call notice, benefits, eligibility, application and documents sections; the only imagery in the page source is inline base64: \"IMG: data:image/png;base64,R0lGODdhNgFQAIQAAHRydLy6vNze3JSWlPTy9MzOzKyqrIyKjMTGxOzq7...\" (1x1 tracking pixel) and two 32x32 base64 share-button icons - no logo or brand mark asset exists on the page.",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.gov.br/mre/en/subjects/culture-and-education/educational-themes/study-opportunities-for-international-applicants/pec-pg-graduate/selection-process-2",
+        "https://www.gov.br/mre/en/subjects/culture-and-education/educational-themes/study-opportunities-for-international-applicants",
+        "https://www.gov.br/mre/pt-br",
+        "https://www.gov.br/mre/pt-br/assuntos/cultura-e-educacao/temas-educacionais/programas-de-estudo-para-estrangeiros/pec-g",
+        "https://www.gov.br/mre/pt-br/assuntos/cultura-e-educacao/temas-educacionais/programas-de-estudo-para-estrangeiros/pec-g/sobre",
+        "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-16-2026/chamada-publica-cnpq-N-16-2026",
+        "https://www.gov.br/mre/pt-br/centrais-de-conteudo/fotos-logomarcas-institucionais",
+        "https://www.gov.br/mre/pt-br/acesso-a-informacao/institucional/apresentacao"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.gov.br/mre/en/subjects/culture-and-education/educational-themes/study-opportunities-for-international-applicants/pec-pg-graduate/selection-process-2 (inline base64 1x1 PNG)",
+          "reason": "tracking pixel"
+        },
+        {
+          "url": "https://www.gov.br/mre/en/subjects/culture-and-education/educational-themes/study-opportunities-for-international-applicants/pec-pg-graduate/selection-process-2 (inline base64 32x32 PNGs)",
+          "reason": "browser/UI chrome - social share-button icons"
+        },
+        {
+          "url": "https://www.gov.br/mre/pt-br/centrais-de-conteudo/fotos-logomarcas-institucionais",
+          "reason": "inaccessible - 'Conteudo Restrito: E necessario autenticar para visualizar essa pagina', so no MRE logomarca is publicly retrievable; also an institutional MRE/Governo Federal signature, not a PEC-PG programme mark"
+        },
+        {
+          "url": "https://www.gov.br/defesa/pt-br/arquivos/lai/institucional/identidade_visual/manual_2_atualizado_2023_versao_site.pdf",
+          "reason": "wrong identity - Ministério da Defesa brand manual on a shared gov.br asset host, unrelated to MRE/PEC-PG"
+        },
+        {
+          "url": "https://www.gov.br/iec/pt-br/canais_atendimento/imprensa/manual-de-identidade-visual-nova-logo-iec_2022.pdf",
+          "reason": "wrong identity - IEC (health surveillance) brand manual, unrelated department logo on shared CDN"
+        },
+        {
+          "url": "https://www.gov.br/mre/pt-br/acesso-a-informacao/institucional/apresentacao (meteoro_for_web.jpg)",
+          "reason": "photograph of the 'Meteoro' sculpture, decorative institutional photography, not a logo"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "shard_id": "LG-037",
+  "topic": "logo",
+  "hosts": [
+    "admission.tdtu.edu.vn",
+    "apply.ruffordsmallgrants.org",
+    "scholarship.turkiye.gov.tr",
+    "www.gob.mx"
+  ],
+  "record_count": 4,
+  "records": [
+    {
+      "id": 536,
+      "title": "Rufford Small Grants Programme",
+      "official_source": "The Rufford Foundation",
+      "official_source_url": "https://apply.ruffordsmallgrants.org/help/criteria",
+      "catalogue_url": null,
+      "country": "Multiple",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 568,
+      "title": "Türkiye Bursları (Türkiye Scholarships) - Turkish Government Scholarship",
+      "official_source": "Presidency of Turks Abroad and Relatives of Overseas Citizens (YTB) - Türkiye Scholarships",
+      "official_source_url": "https://scholarship.turkiye.gov.tr",
+      "catalogue_url": "https://www.turkiyeburslari.gov.tr/ScholarshipSearch",
+      "country": "Turkey",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 635,
+      "title": "Becas de Excelencia del Gobierno de México para Extranjeros (Mexican Government Excellence Scholarships for Foreign Students)",
+      "official_source": "Secretaría de Relaciones Exteriores, Agencia Mexicana de Cooperación Internacional para el Desarrollo (AMEXCID)",
+      "official_source_url": "https://www.gob.mx/amexcid/acciones-y-programas/becas-para-extranjeros-29785",
+      "catalogue_url": null,
+      "country": "Mexico",
+      "image_evaluation_status": null
+    },
+    {
+      "id": 653,
+      "title": "TDTU Scholarship for International Students (2026-2027 Academic Year)",
+      "official_source": "Ton Duc Thang University (TDTU)",
+      "official_source_url": "https://admission.tdtu.edu.vn/en/undergraduate/Scholarships",
+      "catalogue_url": "https://admission.tdtu.edu.vn/en/undergraduate",
+      "country": "Vietnam",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

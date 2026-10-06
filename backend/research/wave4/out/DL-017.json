@@ -1,0 +1,502 @@
+{
+  "shard_id": "DL-017",
+  "agent_completed": true,
+  "topic": "deadline",
+  "agent_id": "DL-017",
+  "research_window_utc": "2026-10-05T15:29:48Z",
+  "records": [
+    {
+      "scholarship_id": 98,
+      "title": "IE University Master's Awards and Scholarships",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "Most financial aid applications are accepted and evaluated on a rolling basis. You can submit your financial aid application once you have applied for admission and always before the start of the program.",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://www.ie.edu/financial-aid/masters/how-to-apply/",
+        "source_type": "official_scholarship_page",
+        "publisher": "IE University",
+        "retrieved_at": "2026-10-05T15:29:48Z",
+        "as_of": "Page carries the site footer \"IE University 2026\"; no specific intake cycle is named on the page.",
+        "raw_extract": "ROLLING PROCESS\n\nMost financial aid applications are accepted and evaluated on a rolling basis. You can submit your financial aid application once you have applied for admission and always before the start of the program.",
+        "exact_deadline_wording": "Most financial aid applications are accepted and evaluated on a rolling basis. You can submit your financial aid application once you have applied for admission and always before the start of the program.",
+        "confidence": "HIGH",
+        "notes": "Provider states the process explicitly as rolling and gives no calendar date, so ROLLING is used and no date is invented. The bound is the programme start date, not a published closing date. Two official IE pages agree and do not conflict."
+      },
+      "corroborating_sources": [
+        {
+          "url": "https://www.ie.edu/financial-aid/masters/awardsandscholarships",
+          "source_type": "official_scholarship_page",
+          "publisher": "IE University",
+          "retrieved_at": "2026-10-05T15:29:48Z",
+          "raw_extract": "DIRECT AWARDS\n\nThese merit-based awards are granted automatically upon admission\u2014no separate financial aid application is required. All applicants are considered as part of the admissions process.\n\nIE AWARDS\n\nThese awards are available to candidates across all master\u2019s programs and may cover between 10% and 40% of tuition fees. All IE Awards require the submission of a financial aid application and are assessed based on both merit and financial need. The application deadline for IE Awards is the program start date.\n\nIE FOUNDATION SCHOLARSHIPS\n\nIE Foundation partners with a range of organizations to offer these scholarships and awards opportunities. Be sure to review the specific eligibility criteria, deadlines, and application requirements for each scholarship and award, as some may require submitting an additional, scholarship-specific essay in the \u201cAdditional Documentation\u201d section of the IE Financial Aid Application.",
+          "supports": "Consistent with the rolling statement on the how-to-apply page: Direct Awards need no separate application, IE Awards close on the programme start date, and individual IE Foundation Scholarships carry their own separate deadlines (which are not published on this page and were not resolved per scholarship)."
+        }
+      ],
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "rolling",
+        "deadline_display": "Most financial aid applications are accepted and evaluated on a rolling basis. You can submit your financial aid application once you have applied for admission and always before the start of the program.",
+        "note": "ROLLING is never converted into a calendar date. deadline_date stays null."
+      },
+      "examined": [
+        "https://www.ie.edu/financial-aid/scholarships-list/",
+        "https://www.ie.edu/financial-aid/masters/how-to-apply/",
+        "https://www.ie.edu/financial-aid/masters/awardsandscholarships"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.ie.edu/financial-aid/scholarship-list/",
+          "reason": "Catalogue page renders its filterable scholarship list client-side; the fetched HTML contains no per-scholarship deadline text, so it yields no value."
+        },
+        {
+          "url": "https://my.ie.edu/applymasfaid/",
+          "reason": "Application portal / login page, not an official published deadline statement; not fetched as evidence."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 113,
+      "title": "UGC Junior Research Fellowship (JRF) and Research Associateship (RA) for Foreign Nationals",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "The applications are invited through circulation to Indian embassies/Indian missions abroad.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.ugc.gov.in/oldpdf/xiplanpdf/JRFSAforeignnational.pdf",
+        "source_type": "official_government_page",
+        "publisher": "University Grants Commission, Government of India",
+        "retrieved_at": "2026-10-05T15:29:48Z",
+        "as_of": "XIth Plan Guidelines; no cycle year, edition date or application year is stated in the document.",
+        "raw_extract": "PROCEDURE FOR APPLYING FOR THE SCHEME:\n\nThe applications are invited through circulation to Indian embassies/Indian missions abroad. They will receive applications from eligible candidates and after due screening locally, will send them to the UGC for consideration. Foreign students from Asia, Africa and Latin America studying in India who have completed their master's degrees or doctoral degrees and desire to pursue research may send their applications through the university they propose to work with. The application will have to be endorsed by their respective embassies for consideration by the Commission.",
+        "exact_deadline_wording": "The applications are invited through circulation to Indian embassies/Indian missions abroad.",
+        "confidence": "HIGH",
+        "notes": "The official 25-page UGC guidelines for this exact scheme were downloaded and read in full (all pages extracted). They contain NO calendar application deadline of any kind. The only timing reference is an age-eligibility cut-off, not a deadline: \"For Junior Research Fellowship (JRF): 35 years for male candidates as on 1 July of the year of application and 40 years for female candidates.\" Using that date would misreport an eligibility rule as an application deadline, so it was rejected. Because the guidelines neither state a rolling basis nor state recurring annual timing, ANNUAL and ROLLING were both refused as inferences. UNKNOWN is the truthful result. The PDF is the official document linked from UGC's live XI Plan Guidelines index as item 16 under \"For Individual\", titled \"Junior Research Fellowship (JRF) and Research Associateship (RA) for Foreign Nationals\"."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "The applications are invited through circulation to Indian embassies/Indian missions abroad.",
+        "note": "No official calendar deadline exists to write. Timing is set by each Indian mission's own local call, which is not published by UGC."
+      },
+      "examined": [
+        "https://www.ugc.gov.in",
+        "https://www.ugc.gov.in/publication/XI_Plan_Guidelines",
+        "https://www.ugc.gov.in/oldpdf/xiplanpdf/JRFSAforeignnational.pdf",
+        "https://www.ugc.gov.in/Notices"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.ugc.gov.in",
+          "reason": "Homepage carries no JRF/RA-for-foreign-nationals call. Its live Notices block (latest items dated 08/2026-09/2026) lists Stipendium Hungaricum, DUO-CIMEA/Italy, Indo-Norwegian, NSPG/Ishan Uday and similar schemes, but no JRF/RA foreign-nationals call and no deadline for this scheme."
+        },
+        {
+          "url": "https://www.ugc.gov.in/Notices",
+          "reason": "Notices index is rendered client-side and returned an empty table on fetch; no notice text was available to examine."
+        },
+        {
+          "url": "https://www.ugc.gov.in/oldpdf/xiplanpdf/JRFSAforeignnational.pdf#eligibility",
+          "reason": "The \"1 July of the year of application\" dates in this document are upper-age-limit reference dates, not application deadlines. Rejected as evidence of a deadline."
+        },
+        {
+          "url": "https://backup.pondiuni.edu.in/sites/default/files/Annexure%20VII-22012020.pdf",
+          "reason": "Third-party mirror of a UGC XII Plan annexure for a different scheme (JRF in Science/Humanities for Indian candidates), not this scheme and not the official domain."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 245,
+      "title": "UCAS Chinese Government Scholarship (University of Chinese Academy of Sciences)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "January 31st, 2026 (Beijing Time)",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid/6656-call-for-2026-chinese-government-scholarship-for-international-students-to-study-at-ucas",
+        "source_type": "official_scholarship_page",
+        "publisher": "University of Chinese Academy of Sciences",
+        "retrieved_at": "2026-10-05T15:29:48Z",
+        "as_of": "\"Call for 2026 Chinese Government Scholarship for International Students to Study at UCAS\" \u2014 the 2026 application cycle.",
+        "raw_extract": "APPLICATION DEADLINE\n\nJanuary 31st, 2026 (Beijing Time)",
+        "exact_deadline_wording": "January 31st, 2026 (Beijing Time)",
+        "confidence": "HIGH",
+        "notes": "expired_mismatch: the source states an explicit calendar deadline of 2026-01-31, which is in the past as of 2026-10-05, while the record is open/upcoming. Per brief section 6 the stale date is not written and is not silently moved to 2027. The evidence is EXACT, so deadline_semantics is recorded as EXACT while deadline_date is withheld. A 2027 call has not been published: the live UCAS Financial Aids index lists the 2026 calls as its three most recent entries, ahead of the 2025 and 2024 calls."
+      },
+      "withheld_deadline": {
+        "value": "2026-01-31",
+        "reason": "Stale for an open/upcoming record. Recorded here only for traceability; deliberately NOT written to deadline_date or field_mapping.deadline_date."
+      },
+      "corroborating_sources": [
+        {
+          "url": "https://english.ucas.ac.cn/index.php/admission/international-students/deadline",
+          "source_type": "official_scholarship_page",
+          "publisher": "University of Chinese Academy of Sciences",
+          "retrieved_at": "2026-10-05T15:29:48Z",
+          "raw_extract": "CAS-ANSO Scholarship 2026-01-31 15:00:08\nChinese Government Scholarship 2026-01-31 07:59:46\nUCAS Scholarship for International Students 2026-01-31 15:59:32",
+          "supports": "UCAS's own dedicated Deadline page independently states 2026-01-31 for the Chinese Government Scholarship. Same value as the call page, so this is agreement, not a conflict, and it also confirms no newer (2027) deadline is published."
+        }
+      ],
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "January 31st, 2026 (Beijing Time)",
+        "note": "expired_mismatch \u2014 the exact 2026-01-31 deadline is evidenced but withheld because it is in the past for an open/upcoming record."
+      },
+      "examined": [
+        "https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid/6656-call-for-2026-chinese-government-scholarship-for-international-students-to-study-at-ucas",
+        "https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid",
+        "https://english.ucas.ac.cn/index.php/admission/international-students/deadline",
+        "https://english.ucas.ac.cn/index.php/admission/international-students/notice"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://studyinchina.csc.edu.cn/#/login",
+          "reason": "CSC online application login. Referenced by the call page as the filing system, but it is a login portal that publishes no deadline text and was not used as evidence."
+        },
+        {
+          "url": "https://is.ucas.ac.cn/#/login",
+          "reason": "UCAS international student admission login portal; no published deadline text."
+        },
+        {
+          "url": "https://english.ucas.ac.cn/index.php/admission/international-students",
+          "reason": "General admissions landing page; carries no CSC deadline and would be a generic-admissions source for a different instrument."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 313,
+      "title": "UCAS Scholarship for International Students",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "For PhD and Master's programs: 31st January 2026 (Beijing Time)",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid/6658-ucas-scholarship-for-international-students-2026-call-for-applications",
+        "source_type": "official_scholarship_page",
+        "publisher": "University of Chinese Academy of Sciences",
+        "retrieved_at": "2026-10-05T15:29:48Z",
+        "as_of": "\"UCAS Scholarship for International Students 2026 Call for Applications\" \u2014 the 2026 application cycle.",
+        "raw_extract": "Deadline for Applicants\n\nFor PhD and Master's programs: 31st January 2026 (Beijing Time)\n\nFor Senior visiting and Regular visiting programs: no deadline.",
+        "exact_deadline_wording": "For PhD and Master's programs: 31st January 2026 (Beijing Time)",
+        "confidence": "HIGH",
+        "notes": "expired_mismatch: the source states an explicit calendar deadline of 2026-01-31, in the past as of 2026-10-05, while the record is open/upcoming. Per brief section 6 the stale date is not written and not moved to 2027. Evidence is EXACT, so deadline_semantics is EXACT and deadline_date is withheld. Note the same call also states \"For Senior visiting and Regular visiting programs: no deadline.\" That is an explicit no-deadline statement for the visiting sub-track only; it was not generalised to the whole record, not treated as a rolling date, and not used to fabricate a date for the degree programmes."
+      },
+      "withheld_deadline": {
+        "value": "2026-01-31",
+        "reason": "Stale for an open/upcoming record. Recorded only for traceability; deliberately NOT written to deadline_date."
+      },
+      "corroborating_sources": [
+        {
+          "url": "https://english.ucas.ac.cn/index.php/admission/international-students/deadline",
+          "source_type": "official_scholarship_page",
+          "publisher": "University of Chinese Academy of Sciences",
+          "retrieved_at": "2026-10-05T15:29:48Z",
+          "raw_extract": "CAS-ANSO Scholarship 2026-01-31 15:00:08\nChinese Government Scholarship 2026-01-31 07:59:46\nUCAS Scholarship for International Students 2026-01-31 15:59:32",
+          "supports": "UCAS's own Deadline page independently states 2026-01-31 for the UCAS Scholarship for International Students. Agreement with the call page, not a conflict, and no 2027 date is published."
+        }
+      ],
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "For PhD and Master's programs: 31st January 2026 (Beijing Time)",
+        "note": "expired_mismatch \u2014 the exact 2026-01-31 deadline is evidenced but withheld because it is in the past for an open/upcoming record."
+      },
+      "examined": [
+        "https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid/6658-ucas-scholarship-for-international-students-2026-call-for-applications",
+        "https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid",
+        "https://english.ucas.ac.cn/index.php/admission/international-students/deadline",
+        "https://english.ucas.ac.cn/index.php/admission/international-students/notice"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://is.ucas.ac.cn/#/login",
+          "reason": "Online Admission System login portal; publishes no deadline text."
+        },
+        {
+          "url": "https://english.ucas.ac.cn/index.php/admission/international-students",
+          "reason": "Generic admissions landing page; would be an admissions deadline for a different instrument."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 314,
+      "title": "CAS-ANSO Scholarship (Degree Program) 2026",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Deadline for Applicants and Referees: 31st January 2026 (Beijing Time)",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid/6657-cas-anso-scholarship-degree-program-2026-call-for-applications-to-study-at-ucas",
+        "source_type": "official_scholarship_page",
+        "publisher": "University of Chinese Academy of Sciences",
+        "retrieved_at": "2026-10-05T15:29:48Z",
+        "as_of": "\"CAS-ANSO Scholarship (Degree Program) 2026 Call for Applications to Study at UCAS\" \u2014 the 2026 cycle, which opened 15 October 2025.",
+        "raw_extract": "The 2026 CAS-ANSO Scholarship is open for application on 15th October 2025 (The exact dates might be slightly different, please check their websites for details).\n\nDeadline for Applicants and Referees: 31st January 2026 (Beijing Time)",
+        "exact_deadline_wording": "Deadline for Applicants and Referees: 31st January 2026 (Beijing Time)",
+        "confidence": "HIGH",
+        "notes": "expired_mismatch: explicit calendar deadline 2026-01-31, in the past as of 2026-10-05, while the record is open/upcoming. Not written, not moved to 2027. The 2026 window (15 October 2025 to 31 January 2026) has fully closed and UCAS has since posted the outcome announcement \"ANNOUNCEMENT: Results of the 2026 CAS-ANSO Scholarship\". No 2027 CAS-ANSO call is published on the UCAS Financial Aids index, whose three most recent entries are the 2026 calls."
+      },
+      "withheld_deadline": {
+        "value": "2026-01-31",
+        "reason": "Stale for an open/upcoming record. Recorded only for traceability; deliberately NOT written to deadline_date."
+      },
+      "corroborating_sources": [
+        {
+          "url": "https://english.ucas.ac.cn/index.php/admission/international-students/deadline",
+          "source_type": "official_scholarship_page",
+          "publisher": "University of Chinese Academy of Sciences",
+          "retrieved_at": "2026-10-05T15:29:48Z",
+          "raw_extract": "CAS-ANSO Scholarship 2026-01-31 15:00:08\nChinese Government Scholarship 2026-01-31 07:59:46\nUCAS Scholarship for International Students 2026-01-31 15:59:32",
+          "supports": "UCAS's own Deadline page independently states 2026-01-31 for the CAS-ANSO Scholarship. Agreement, not conflict."
+        },
+        {
+          "url": "https://english.ucas.ac.cn/index.php/admission/international-students/notice",
+          "source_type": "official_programme_page",
+          "publisher": "University of Chinese Academy of Sciences",
+          "retrieved_at": "2026-10-05T15:29:48Z",
+          "raw_extract": "ANNOUNCEMENT: Results of the 2026 CAS-ANSO Scholarship",
+          "supports": "Confirms the 2026 cycle has concluded and results are out, so the 2026-01-31 deadline is closed."
+        }
+      ],
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "Deadline for Applicants and Referees: 31st January 2026 (Beijing Time)",
+        "note": "expired_mismatch \u2014 the exact 2026-01-31 deadline is evidenced but withheld because it is in the past for an open/upcoming record."
+      },
+      "examined": [
+        "https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid/6657-cas-anso-scholarship-degree-program-2026-call-for-applications-to-study-at-ucas",
+        "https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid",
+        "https://english.ucas.ac.cn/index.php/admission/international-students/deadline",
+        "https://english.ucas.ac.cn/index.php/admission/international-students/notice"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.anso.org.cn",
+          "reason": "ANSO is a partner organisation, not the awarding body for this UCAS-administered call; it publishes ANSO's own separate fellowships, so it is not authoritative for the UCAS CAS-ANSO deadline."
+        },
+        {
+          "url": "https://is.ucas.ac.cn/#/login",
+          "reason": "Online Admission System login portal; publishes no deadline text."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 365,
+      "title": "Hardiman PhD Scholarships",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Submit a complete application by 6 February 2026 (17:00 Irish Time).",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://universityofgalway.ie/hardiman-scholarships",
+        "source_type": "official_scholarship_page",
+        "publisher": "University of Galway",
+        "retrieved_at": "2026-10-05T15:29:48Z",
+        "as_of": "2026 round, for PhD students starting 1 September 2026; page states applications are now closed.",
+        "raw_extract": "The 2026 Hardiman Scholarship applications are now closed. All applicants have been informed of their outcomes.",
+        "exact_deadline_wording": "Submit a complete application by 6 February 2026 (17:00 Irish Time).",
+        "confidence": "HIGH",
+        "notes": "expired_mismatch: the page publishes an explicit closing date of 2026-02-06 (17:00 Irish Time) for the application, the supervisor form and the two academic references, and separately declares the round closed. That date is in the past as of 2026-10-05 while the record is open/upcoming, so per brief section 6 the stale date is not written and not rolled forward to 6 February 2027. Evidence is EXACT, so deadline_semantics is EXACT and deadline_date is withheld. The page does also describe recurrence in its FAQ \u2014 \"The Hardiman Scholarships application system normally re-opens in early December for the following September intake\" \u2014 but that statement carries no exact future date, so no ANNUAL/recurring date was fabricated from it."
+      },
+      "withheld_deadline": {
+        "value": "2026-02-06",
+        "reason": "Stale for an open/upcoming record, and the page explicitly states the 2026 round is closed. Recorded only for traceability; deliberately NOT written to deadline_date."
+      },
+      "corroborating_sources": [
+        {
+          "url": "https://universityofgalway.ie/hardiman-scholarships",
+          "source_type": "official_scholarship_page",
+          "publisher": "University of Galway",
+          "retrieved_at": "2026-10-05T15:29:48Z",
+          "raw_extract": "1. Find a Supervisor\n\nApplicants must nominate one supervisor. Click here to find a supervisor. A supervisor form must be submitted by proposed supervisor by 6 February 2026 (17:00 Irish Time)\n\n2. Application\n\nSubmit a complete application by 6 February 2026 (17:00 Irish Time). Applications accepted in English or Irish only.\n\n3. Academic References\n\nTwo references that indicate your academic suitability & potential to undertake postgraduate research must be received by 6 February 2026 (17:00 Irish Time).",
+          "supports": "Same page, three consistent statements of the single 2026-02-06 deadline. Same deadline repeated, so this is agreement and not a CONFLICTING case."
+        },
+        {
+          "url": "https://universityofgalway.ie/hardiman-scholarships",
+          "source_type": "official_scholarship_page",
+          "publisher": "University of Galway",
+          "retrieved_at": "2026-10-05T15:29:48Z",
+          "raw_extract": "Q: When can we expect Hardiman Scholarship process to open for next intake?\n\nA: The Hardiman Scholarships application system normally re-opens in early December for the following September intake. Details will be available on webpage https://www.universityofgalway.ie/hardiman-scholarships/ in due course.",
+          "supports": "Official statement of annual recurrence with no exact next-round date published. Recorded as context; not converted into a date."
+        }
+      ],
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "Submit a complete application by 6 February 2026 (17:00 Irish Time).",
+        "note": "expired_mismatch \u2014 the exact 2026-02-06 deadline is evidenced but withheld because it is in the past and the page states the round is closed."
+      },
+      "examined": [
+        "https://universityofgalway.ie/hardiman-scholarships",
+        "https://www.universityofgalway.ie/media/hardiman/files/Applicants_Guide_2026.docx"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.universityofgalway.ie/media/hardiman/files/Hardiman_Application_Form_2025.docx",
+          "reason": "Application form linked from the page but dated 2025 for the previous cycle; it is not the authoritative 2026 deadline source."
+        },
+        {
+          "url": "https://nuigalway.elluciancrmrecruit.com/Apply/Account/Login",
+          "reason": "Structured PhD programme application system. A separate programme admissions process, not the Hardiman scholarship deadline."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 608,
+      "title": "Asian University for Women Scholarships and Financial Aid (full and partial need-based aid)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "ADMISSIONS ARE OPEN!",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://asian-university.org/admissions/scholarships-financial-aid",
+        "source_type": "official_scholarship_page",
+        "publisher": "Asian University for Women, Chittagong, Bangladesh",
+        "retrieved_at": "2026-10-05T15:29:48Z",
+        "as_of": "Site footer reads \"Copyright \u00a9 2026, Asian University for Women\"; no intake year named.",
+        "raw_extract": "All financial aid awards are assessed prior to the beginning of each academic program (i.e., Pathways for Promise, or the Undergraduate Program). Transfer students are ineligible for financial aid.",
+        "exact_deadline_wording": "ADMISSIONS ARE OPEN!",
+        "confidence": "HIGH",
+        "notes": "UNKNOWN is the truthful result: AUW publishes no closing date for scholarships and financial aid. The official pages were read in full and state only that applications are open, plus a near-deadline rule for a different track (\"The deadline for transfer applications depends on the applicant's desired start date.\"). The only timing signal is \"AUW intakes students three times per year: Spring Season (Class starts in January), Summer Season (Class starts in May) and Fall Season (Class starts in September)\", which describes class-start months, not application deadlines; converting it into an application deadline would be inference, and \"once per year\" would also be wrong against three intakes. Neither ANNUAL nor ROLLING was asserted because AUW never uses either word here. Note the shard's existing precision of \"recurring\" is not supportable from the live pages."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "ADMISSIONS ARE OPEN!",
+        "note": "No official closing date is published. Nothing is inferred from class-start months or from the admissions-open banner."
+      },
+      "examined": [
+        "https://asian-university.org/admissions/scholarships-financial-aid",
+        "https://asian-university.org/admissions/frequently-asked-questions/",
+        "https://asian-university.org/admissions/how-to-apply/"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://asian-university.org/admissions/frequently-asked-questions/",
+          "reason": "Official FAQ read in full; answers cost, programmes, language instruction and scholarship support, but states no application or scholarship deadline."
+        },
+        {
+          "url": "https://asian-university.org/admissions/how-to-apply/",
+          "reason": "Official page read in full. The only deadline sentence is \"The deadline for transfer applications depends on the applicant's desired start date.\", which concerns transfer applicants (explicitly ineligible for financial aid) and gives no date. The three-intake list gives class-start months, not deadlines."
+        },
+        {
+          "url": "http://apps.auw.edu.bd:8087/erp/auw/r/admission-portal/",
+          "reason": "Application portal; the official how-to-apply page defers all process detail to it (\"Full details of the application process and answers to frequently asked questions can be found in the online portal\"), but the portal itself is not a published deadline statement and was not used as evidence."
+        },
+        {
+          "url": "http://auwsf.wpengine.com/admissions/scholarships-financial-aid/",
+          "reason": "Non-official WP Engine-hosted staging/legacy host linked from the AUW FAQ. Not the provider's own live domain and not used."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 650,
+      "title": "Zhejiang University \"Belt and Road\" International School of Medicine Scholarship (PhD)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "\u7533\u8bf7\u622a\u6b62\u65f6\u95f4\uff1a2025\u5e742\u670828\u65e5",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://iczu.zju.edu.cn/admissionsen/2022/0530/c68996a2590725/page.htm",
+        "source_type": "official_scholarship_page",
+        "publisher": "International School of Medicine / International College, Zhejiang University",
+        "retrieved_at": "2026-10-05T15:29:48Z",
+        "as_of": "The page (URL path dated 2022-05-30) documents the cycle it was written for: a 28 February 2025 application deadline with results queryable late July / early August 2025.",
+        "raw_extract": "\u7533\u8bf7\u622a\u6b62\u65f6\u95f4\uff1a2025\u5e742\u670828\u65e5\n\n\u6ce8\uff1a\u7533\u8bf7\u4eba\u5fc5\u987b\u5728\u622a\u6b62\u65e5\u671f\u524d\u53d1\u9001\u90ae\u4ef6\uff0c\u5e76\u540c\u65f6\u5728\u6d59\u6c5f\u5927\u5b66\u56fd\u9645\u5b66\u751f\u7533\u8bf7\u7cfb\u7edf\u5b8c\u6210\u7f51\u4e0a\u7533\u8bf7\uff0c\u6309\u8981\u6c42\u5b8c\u6574\u63d0\u4f9b\u5404\u9879\u6750\u6599\u3002",
+        "exact_deadline_wording": "\u7533\u8bf7\u622a\u6b62\u65f6\u95f4\uff1a2025\u5e742\u670828\u65e5",
+        "english_rendering_of_quote": "Application deadline: February 28, 2025. Note: applicants must send the email before the closing date and simultaneously complete the online application in the Zhejiang University international student application system, providing all materials as required.",
+        "confidence": "HIGH",
+        "notes": "expired_mismatch: the official page states an explicit calendar deadline, 2025-02-28, which is in the past as of 2026-10-05, while the record is open/upcoming. Per brief section 6 the stale date is not written and is not silently moved to 2026 or 2027. Evidence is EXACT, so deadline_semantics is EXACT and deadline_date is withheld. This live page still publishes the 2025 cycle and no replacement exists: the International College PhD Scholarships index still points to this same 2022-dated page for \"Scholarship of International School of Medicine\", and the Notice & Admission Results board's most recent item is 2026-07-28 (a Chinese Government Scholarship recipients announcement), not an ISM scholarship call. Zhejiang University's generic international doctoral admissions deadline was deliberately NOT substituted, since brief section 5 forbids using a generic admissions deadline for a different programme."
+      },
+      "withheld_deadline": {
+        "value": "2025-02-28",
+        "reason": "Stale for an open/upcoming record. Recorded only for traceability; deliberately NOT written to deadline_date."
+      },
+      "corroborating_sources": [
+        {
+          "url": "https://iczu.zju.edu.cn/admissionsen/2022/0530/c68996a2590725/page.htm",
+          "source_type": "official_scholarship_page",
+          "publisher": "International School of Medicine / International College, Zhejiang University",
+          "retrieved_at": "2026-10-05T15:29:48Z",
+          "raw_extract": "2\u3001\u7533\u8bf7\u4eba\u53ef\u4e8e2025\u5e747\u6708\u672b\u62168\u6708\u521d\u5728\u6d59\u6c5f\u5927\u5b66\u56fd\u9645\u5b66\u751f\u7533\u8bf7\u7cfb\u7edf\u5185\u67e5\u8be2\u5956\u5b66\u91d1\u7684\u7533\u8bf7\u7ed3\u679c\u3002",
+          "english_rendering_of_quote": "Applicants may query the scholarship application result in the Zhejiang University international student application system at the end of July or the beginning of August 2025.",
+          "supports": "The same page ties the result date to the same 2025 cycle, confirming the documented cycle is closed."
+        },
+        {
+          "url": "https://iczu.zju.edu.cn/admissionsen/whwwwcholarships/list.htm",
+          "source_type": "official_university_page",
+          "publisher": "International College, Zhejiang University",
+          "retrieved_at": "2026-10-05T15:29:48Z",
+          "raw_extract": "PhD Scholarships ... Scholarship of International School of Medicine /admissionsen/2022/0530/c68996a2590725/page.htm ... per page 14 records total 8 records",
+          "supports": "The official PhD Scholarships index (8 records total) still lists this scholarship against the same 2022-dated page, so no newer ISM scholarship deadline page exists to recover."
+        },
+        {
+          "url": "https://iczu.zju.edu.cn/admissionsen/woticewwwwdmissionwwesults/list.htm",
+          "source_type": "official_university_page",
+          "publisher": "International College, Zhejiang University",
+          "retrieved_at": "2026-10-05T15:29:48Z",
+          "raw_extract": "Announcement: Chinese Government Scholarship (Chinese University Program) Recipients, Zhejiang University, 2026\u20132027 Academic Year 2026-07-28 ... per page 14 records total 15 records",
+          "supports": "Most recent notice is dated 2026-07-28 and concerns CSC recipients, not an ISM scholarship call. No 2026/2027 ISM scholarship deadline is posted."
+        }
+      ],
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "\u7533\u8bf7\u622a\u6b62\u65f6\u95f4\uff1a2025\u5e742\u670828\u65e5",
+        "note": "expired_mismatch \u2014 the exact 2025-02-28 deadline is evidenced but withheld because it is in the past for an open/upcoming record. Zhejiang University's generic doctoral admissions deadline was not substituted."
+      },
+      "examined": [
+        "https://iczu.zju.edu.cn/admissionsen/2022/0530/c68996a2590725/page.htm",
+        "https://iczu.zju.edu.cn/admissionsen/whwwwcholarships/list.htm",
+        "https://iczu.zju.edu.cn/admissionsen/woticewwwwdmissionwwesults/list.htm",
+        "https://iczu.zju.edu.cn/admissionsen/wcholarships/list.htm"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://ism.zju.edu.cn/",
+          "reason": "International School of Medicine own site, cited on the page only for contact details. Not checked as a deadline source because the scholarship's application window is administered by the International College; no ISM-scholarship deadline is published there."
+        },
+        {
+          "url": "http://isinfosys.zju.edu.cn/recruit/login.shtml",
+          "reason": "ZJU international student application system login; publishes no deadline text."
+        },
+        {
+          "url": "https://intlstudent.zju.edu.cn/",
+          "reason": "ZJU International Campus application portal, a different programme and intake from the International School of Medicine doctoral scholarship."
+        },
+        {
+          "url": "https://mp.weixin.qq.com/s/fy5JOvAB7Hqmt_kcwQHLnQ",
+          "reason": "Social-media post (\"2022 ZIBS Admissions On a Rolling Basis!\"). Excluded by brief section 5: social media posts and another programme's admissions basis are not evidence for this record."
+        }
+      ]
+    }
+  ],
+  "shard_summary": {
+    "record_count": 8,
+    "recovered": 1,
+    "unknown": 2,
+    "expired_mismatch": 5,
+    "conflicting": 0,
+    "rejected": 0,
+    "not_found": 0,
+    "deadline_date_written": 0,
+    "semantics_breakdown": {
+      "EXACT": 5,
+      "MONTH": 0,
+      "ANNUAL": 0,
+      "ROLLING": 1,
+      "UNKNOWN": 2,
+      "CONFLICTING": 0
+    },
+    "note": "No deadline_date was written for any record. Five records carry an explicit but past calendar deadline and are reported as expired_mismatch with the evidence date preserved only under withheld_deadline for traceability, never in deadline_date. One record (IE University) is ROLLING on the provider's explicit wording. Two records (UGC JRF/RA foreign nationals; Asian University for Women) publish no deadline at all and are UNKNOWN. No source disagreed with another source about the same deadline, so no CONFLICTING was recorded."
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "shard_id": "LG-016",
+  "topic": "logo",
+  "hosts": [
+    "fgs.science-scholarships.ph",
+    "secihti.mx",
+    "wellcome.org",
+    "www.niied.go.kr"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 26,
+      "title": "Global Korea Scholarship (GKS) Non-degree Exchange Program",
+      "official_source": "National Institute for International Education (NIIED), South Korea",
+      "official_source_url": "https://www.niied.go.kr/web/niied/contents/niiedEng/eng_gksNonDegreeExchange",
+      "catalogue_url": null,
+      "country": "South Korea",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 562,
+      "title": "Wellcome Early-Career Award",
+      "official_source": "Wellcome Trust",
+      "official_source_url": "https://wellcome.org/grant-funding/schemes/early-career-awards",
+      "catalogue_url": "https://wellcome.org/research-funding/funding-portfolio/funded-grants?page=&scheme=Early-Career+Awards",
+      "country": "Multiple",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 688,
+      "title": "Becas Nacionales de Inclusión 2026 (A. Becas de Licenciatura para Jefas de Familia; B. Apoyos Complementarios para Personas Indígenas; C. Apoyos Complementarios para Personas con Discapacidad)",
+      "official_source": "Secretaría de Ciencia, Humanidades y Tecnología (SECIHTI), Gobierno de México",
+      "official_source_url": "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-becas-nacionales-de-inclusion-2026",
+      "catalogue_url": "https://secihti.mx/convocatoria_categoria/becas-nacionales",
+      "country": "Mexico",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 689,
+      "title": "Apoyo Complementario de Maternidad y Paternidad Nacional, en el Extranjero y de Consolidación 2026",
+      "official_source": "Secretaría de Ciencia, Humanidades y Tecnología (SECIHTI), Gobierno de México",
+      "official_source_url": "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-2026-apoyo-complementario-de-maternidad-y-paternidad-nacional-en-el-extranjero-y-de-consolidacion",
+      "catalogue_url": "https://secihti.mx/convocatoria_categoria/becas-nacionales",
+      "country": "Mexico",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 690,
+      "title": "DOST-SEI Foreign Graduate Scholarships in Specialized Priority Fields in Science and Technology (Philippines)",
+      "official_source": "Department of Science and Technology - Science Education Institute (DOST-SEI), Philippines",
+      "official_source_url": "https://fgs.science-scholarships.ph",
+      "catalogue_url": "https://fgs.science-scholarships.ph",
+      "country": "Philippines",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

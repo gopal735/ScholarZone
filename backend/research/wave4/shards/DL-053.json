@@ -1,0 +1,99 @@
+{
+  "shard_id": "DL-053",
+  "topic": "deadline",
+  "hosts": [
+    "admissions.yale.edu",
+    "education.gov.bb",
+    "sgs.upm.edu.my",
+    "www.embo.org",
+    "www.gla.ac.uk",
+    "www.nzscholarships.govt.nz"
+  ],
+  "record_count": 7,
+  "records": [
+    {
+      "id": 126,
+      "title": "Yale College Need-Based Financial Aid and Yale Scholarship (International Students)",
+      "official_source": "Yale University",
+      "official_source_url": "https://admissions.yale.edu/affordability",
+      "catalogue_url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+      "country": "United States",
+      "deadline_display": "Yale publishes separate aid-document deadlines: \"QuestBridge: November 1; Early Action: November 1 (US Citizens/Permanent Residents), December 1 (International Citizens); Regular Decision: February 15; Transfer: April 1; Eli Whitney: April 1.\"",
+      "deadline_precision": "varies",
+      "application_period": "Annual cycle matched to Yale's admission rounds; international citizens have a December 1 Early Action aid-document deadline and a February 15 Regular Decision deadline.",
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 254,
+      "title": "Manaaki New Zealand Scholarships",
+      "official_source": "New Zealand Government (Manaaki New Zealand Scholarship Programme, administered by Education New Zealand | Manapou ki te Ao)",
+      "official_source_url": "https://www.nzscholarships.govt.nz",
+      "catalogue_url": "https://www.nzscholarships.govt.nz/conduct-requirements-of-new-zealand-scholars",
+      "country": "New Zealand",
+      "deadline_display": "The official site states: \"Tertiary applications for the Manaaki New Zealand Scholarship Programme have now closed.\" The only dated window published on the pages read is the Samoa Foundation round: \"Applications for Samoa Foundation open midnight 4 August 2026 and close midday 4 September 2026\". The awarding body also warns that \"the Manaaki New Zealand Scholarship Programme application system may close early to countries with a large volume of applications\".",
+      "deadline_precision": "varies",
+      "application_period": "Annual round with country- and region-specific opening and closing dates published on the official site; the 2026 tertiary round has closed and the next round's dates are not yet published.",
+      "verification_status": "active"
+    },
+    {
+      "id": 525,
+      "title": "University of Glasgow Sanctuary Scholarship",
+      "official_source": "University of Glasgow",
+      "official_source_url": "https://www.gla.ac.uk/scholarships/sanctuaryscholarships",
+      "catalogue_url": null,
+      "country": "United Kingdom",
+      "deadline_display": "Applications for this scholarship for the 2027-28 academic session will open soon. In the meantime please provide your details and we will be in touch when the scholarship is open for applications.",
+      "deadline_precision": "month",
+      "application_period": "For the 2027/28 academic year the scholarship is announced and not yet open for applications: the University states applications 'will open soon' and invites applicants to register their interest in the meantime. No opening date or closing date has been published for the 2027/28 cycle.",
+      "verification_status": "needs_review"
+    },
+    {
+      "id": 576,
+      "title": "World Changers Glasgow Scholarship",
+      "official_source": "University of Glasgow",
+      "official_source_url": "https://www.gla.ac.uk/scholarships/worldchangersglasgowscholarship",
+      "catalogue_url": "https://www.gla.ac.uk/scholarships",
+      "country": "United Kingdom",
+      "deadline_display": null,
+      "deadline_precision": "rolling",
+      "application_period": "September 2027 or January 2028 postgraduate intake",
+      "verification_status": "active"
+    },
+    {
+      "id": 582,
+      "title": "EMBO Postdoctoral Fellowships",
+      "official_source": "European Molecular Biology Organization (EMBO)",
+      "official_source_url": "https://www.embo.org/funding/fellowships-grants-and-career-support/postdoctoral-fellowships",
+      "catalogue_url": "https://www.embo.org/funding/fellowships-grants-and-career-support/postdoctoral-fellowships",
+      "country": "Multiple",
+      "deadline_display": "Applications accepted throughout the year; next cutoff date / hard deadline Friday 22 January 2027, 14:00 CET",
+      "deadline_precision": "rolling",
+      "application_period": "Rolling applications; evaluation rounds with hard cutoffs (next cutoff 22 January 2027, 14:00 CET)",
+      "verification_status": "needs_review"
+    },
+    {
+      "id": 647,
+      "title": "International Graduate Student Scholarship (IGSS)",
+      "official_source": "Universiti Putra Malaysia (UPM), School of Graduate Studies",
+      "official_source_url": "https://sgs.upm.edu.my/financial_assistance_scholarships/scholarship_financial_assistance_upm/international_graduate_student_scholarship_igss-1402",
+      "catalogue_url": null,
+      "country": "Malaysia",
+      "deadline_display": "31 August 2026 (published window for First Semester 2026/2027; now closed)",
+      "deadline_precision": "recurring",
+      "application_period": "Published window for First Semester 2026/2027 was 01-31 August 2026; the page was last updated 02/07/2026 and has not published the next round.",
+      "verification_status": "active"
+    },
+    {
+      "id": 693,
+      "title": "Errol Walton Barrow Scholarships",
+      "official_source": "Ministry of Education Transformation, Government of Barbados",
+      "official_source_url": "https://education.gov.bb/2026-errol-walton-barrow-scholarships",
+      "catalogue_url": "https://education.gov.bb/news",
+      "country": "Barbados",
+      "deadline_display": "6 August 2026 (2026 cycle, now closed)",
+      "deadline_precision": "recurring",
+      "application_period": "The 2026 cycle closed on 6 August 2026. The Ministry publishes a new call each year on its Latest News page, so the next round is expected in the same annual cycle.",
+      "verification_status": "needs_review"
+    }
+  ]
+}

@@ -1,0 +1,277 @@
+{
+  "shard_id": "LG-016",
+  "topic": "logo",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 26,
+      "title": "Global Korea Scholarship (GKS) Non-degree Exchange Program",
+      "outcome": "recovered",
+      "image_url": "https://www.niied.go.kr/design/theme/niied/images/common/logo_b.png",
+      "image_source_url": "https://www.niied.go.kr/web/niied/contents/niiedEng/eng_gksNonDegreeExchange",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "GET verified 2026-10-05: HTTP 200, Content-Type image/png, 3945 bytes, intrinsic 177x57 px. Visually inspected: the NIIED emblem (navy + crimson swoosh, blue 'NIIED' panel) plus the English wordmark 'National Institute for International Education' in dark ink on a transparent background. It is the logo of the record's own official_source, NIIED, a national institute operated under the Korean Ministry of Education, and the page's own footer alt text says so verbatim ('교육부 소속 책임운영기관 국립국제교육원'). Confidence is MEDIUM for two reasons only: (a) the mark is the awarding INSTITUTION's logo, not a GKS-programme-specific mark - no GKS-specific brand asset is published anywhere on the record's official page, and the GKS programme is named separately in the page text; (b) 177x57 is the only resolution NIIED publishes for this lockup (the site's own CSS sizes it at 215x56), so it is small for a catalogue card. Not a favicon: NIIED's favicon family is a different asset entirely. Two colourways of the identical lockup exist; logo_b.png (used here) is the dark-ink version referenced by the record page's own stylesheet and renders on light backgrounds. The white-ink sibling /design/theme/niied/images/common/logo_w.png (same 177x57, same artwork, footer <img> with the descriptive alt) is an equally official alternative if a dark card is ever needed."
+      },
+      "source": {
+        "url": "https://www.niied.go.kr/web/niied/contents/niiedEng/eng_gksNonDegreeExchange",
+        "publisher": "National Institute for International Education (NIIED), Republic of Korea",
+        "retrieved_at": "2026-10-05T15:32:00Z",
+        "raw_extract": "Page footer of the record's own official_source_url carries a semantic logo element: <img src=\"/design/theme/niied/images/common/logo_w.png\" alt=\"교육부 소속 책임운영기관 국립국제교육원\"> (i.e. 'National Institute for International Education, responsible operating institution under the Ministry of Education'). The same page links its own stylesheet /design/theme/niied/eng/css/common.css, in which the header lockup is declared verbatim as: .float-area .iwd-box .logo a{display: block;width: 215px;height: 56px;background: url('../images/common/logo_b.png') center no-repeat;} The English page title/breadcrumb of the fetched page reads 'Global Korea Scholarship(GKS) - non-degree exchange'. asset GET: 200 image/png 3945 bytes 177x57.",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://www.niied.go.kr/web/niied/contents/niiedEng/eng_gksNonDegreeExchange (the record's official_source_url - fetched first; contains only the NIIED institutional logo, no GKS programme mark)",
+        "https://www.niied.go.kr/web/niied/contents/niiedEng/eng_gksDegree (sibling GKS page, fetched to look for a GKS-specific asset - same NIIED logo only, no GKS mark)",
+        "https://www.niied.go.kr/design/theme/niied/eng/css/common.css (page's own stylesheet; enumerated every logo reference - only logo_b.png and logo_w.png exist)",
+        "https://www.niied.go.kr/design/theme/niiedeng/images/sub/sub_swiperr_test_img01.png",
+        "/web/main/file/image/uu/* footer carousel banners (studyinkorea, TOPIK, EPIK, GEC, CFL) - other NIIED programmes, wrong identity"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.niied.go.kr/design/theme/niiedeng/images/sub/sub_swiperr2_img01.png",
+          "reason": "decorative hero art - downloaded and visually inspected: a 622x372 photograph of four women in hanbok. Not a logo."
+        },
+        {
+          "url": "https://www.niied.go.kr/design/theme/niiedeng/images/sub/sub_swiperr2_img02.png",
+          "reason": "decorative hero art - downloaded and visually inspected: a 622x372 photograph of men in traditional dress at a cultural wall. Not a logo."
+        },
+        {
+          "url": "https://www.niied.go.kr/design/theme/niiedeng/images/sub/sub_swiperr_test_img01.png",
+          "reason": "decorative swiper artwork on the sibling GKS page (alt literally 'swiper_img01'), not a brand mark"
+        },
+        {
+          "url": "https://www.niied.go.kr/web/main/file/image/uu/8c2aa84783a74d82ad292524c48338d1",
+          "reason": "unrelated programme mark on the same shared site - alt 'studyinkorea', a different NIIED programme brand (wrong identity for GKS)"
+        },
+        {
+          "url": "https://www.niied.go.kr/design/theme/niiedeng/images/sub/icon_home.png",
+          "reason": "browser/UI chrome - breadcrumb home icon"
+        },
+        {
+          "url": "https://www.niied.go.kr/theme/niied/images/common/icon_mobile_sns01.png, icon_mobile_sns02.png",
+          "reason": "social media icons (Instagram, YouTube), not brand marks"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 562,
+      "title": "Wellcome Early-Career Award",
+      "outcome": "not_found",
+      "image_url": null,
+      "image_source_url": null,
+      "image_source_type": null,
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "not_found is a well-evidenced absence, not a gap in effort. Wellcome DOES have an official logo and DOES publish it - but only inside a ZIP archive. Its canonical brand page https://wellcome.org/research-funding/guidance/ending-a-grant/logo-usage (linked as 'Wellcome logo' from the official media page https://wellcome.org/about-us/media-queries) offers exactly one download: a link labelled 'Download our logo' pointing at /sites/default/files/wellcome-logos.zip. I downloaded that 15,193,126-byte archive from cms.wellcome.org (HTTP 200, application/zip) and enumerated it: it contains Wellcome_logo/_Wellcome_logo_Off_Black.png (59,743 B), _Wellcome_logo_Off_White.png, the same two as .eps, plus the 'Funded by Wellcome' lockups and an 11 MB usage PDF. Those individual files are NOT addressable over HTTP - six candidate direct paths under cms.wellcome.org and wellcome.org all return 404, and the archive itself is not an image. The Wellcome wordmark used in the header/footer of every page on wellcome.org (including this record's own page) is an INLINE <svg> element with no src/href at all: <svg aria-labelledby=\"site-header-logo\" class=\"c-site-header__logo ...\" viewBox=\"0 0 80 80\"><title id=\"site-header-logo\">Wellcome home</title><path d=\"M27.68 67.106...\"/>. I also checked the record page's CSS bundle (/_next/static/chunks/1d7gb5k7ik2s-.css, 257,571 bytes) - it contains zero url() references containing 'logo' - and the official application portal funding.wellcome.org, whose HTML shell has no <img> element at all and whose probed logo paths 404. Every other logo-like FILE on the official domains is a rejected class. Therefore image_url stays null per section 7. Third-party copies exist (seeklogo.com, Wikimedia Commons 'Wellcome Trust logo.svg') but section 7 rejects third-party mirrors outright, and the Commons file is additionally the superseded pre-2016 Wellcome Trust brand."
+      },
+      "source": {
+        "url": "https://wellcome.org/research-funding/guidance/ending-a-grant/logo-usage",
+        "publisher": "Wellcome Trust",
+        "retrieved_at": "2026-10-05T15:41:00Z",
+        "raw_extract": "Section 'Download the logos' reads verbatim: 'Download our logo' -> href=\"/sites/default/files/wellcome-logos.zip\" title=\"wellcome-logos.zip\", with the page text 'Download our logo [ZIP 534KB] in a JPG, GIF, PNG or EPS format.' Section 'How to get approval to use Wellcome's logo': 'Please email logo@wellcome.org'. The record's own page https://wellcome.org/grant-funding/schemes/early-career-awards (title 'Wellcome Early-Career Awards') renders its logo as inline markup only: <svg aria-labelledby=\"site-header-logo\" class=\"c-site-header__logo tw-z-high tw-block tw-text-wdsNeutral-10\" preserveAspectRatio=\"xMinYMid\" role=\"img\" viewBox=\"0 0 80 80\"><title id=\"site-header-logo\">Wellcome home</title> - no src, no href, no file behind it. Archive fetched from the linked location resolves to https://cms.wellcome.org/sites/default/files/wellcome-logos.zip (HTTP 200, application/zip, 15193126 bytes); ZIP central directory lists 'Wellcome_logo_set/Wellcome_logo/_Wellcome_logo_Off_Black.png' (59743), '_Wellcome_logo_Off_White.png' (64038) and the two .eps siblings.",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://wellcome.org/grant-funding/schemes/early-career-awards (the record's official_source_url - fetched first; inline SVG logo only, no external asset)",
+        "https://wellcome.org/research-funding/guidance/ending-a-grant/logo-usage (Wellcome's official brand-asset page - publishes only a ZIP archive)",
+        "https://cms.wellcome.org/sites/default/files/wellcome-logos.zip (downloaded, 15.2 MB, entry list enumerated in memory; individual logo files are not separately addressable)",
+        "https://wellcome.org/about-us/media-queries (official media page; its 'Wellcome logo' link 301s to the logo-usage page, no separate asset)",
+        "https://wellcome.org/grant-funding/guidance/logo-usage (301 -> /research-funding/guidance/ending-a-grant/logo-usage)",
+        "https://wellcome.org/_next/static/chunks/1d7gb5k7ik2s-.css (page's own stylesheet - zero logo url() references)",
+        "https://funding.wellcome.org/ (official application portal - HTML shell contains no img element; /logo.png, /assets/logo.svg, /favicon.ico all 404)",
+        "https://cms.wellcome.org/sites/default/files/wellcome-logos/Wellcome_logo/_Wellcome_logo_Off_Black.png (404)",
+        "https://cms.wellcome.org/sites/default/files/Wellcome_logo/_Wellcome_logo_Off_Black.png (404)",
+        "https://cms.wellcome.org/sites/default/files/wellcome-logos/Wellcome_logo/Wellcome_logo_Off_Black.png (404)",
+        "https://cms.wellcome.org/sites/default/files/wellcome-logos/_Wellcome_logo_Off_Black.png (404)",
+        "https://cms.wellcome.org/sites/default/files/2020-11/wellcome-logos.zip (404)",
+        "https://wellcome.org/img/wellcome-logo.svg (404), https://wellcome.org/logos/wellcome-logo.png (404)"
+      ],
+      "rejected": [
+        {
+          "url": "https://wellcome.org/icons/favicon.ico",
+          "reason": "favicon - the only logo-like FILE linked anywhere in the ECA page head"
+        },
+        {
+          "url": "https://cms.wellcome.org/sites/default/files/images/2022-11/neutral-teal-w-crop.png",
+          "reason": "decorative page banner used as the ECA page's og:image; not a logo"
+        },
+        {
+          "url": "https://wellcome.org/sites/default/files/wellcome-logos.zip",
+          "reason": "official but not an image - an archive; the logo files inside it are not separately addressable (verified by HTTP probe), so it cannot serve as image_url"
+        },
+        {
+          "url": "https://wellcome.org/_next/image?url=%2Fimg%2Fplaceholder-square_80w.png",
+          "reason": "loading/placeholder image, not a brand mark"
+        },
+        {
+          "url": "https://seeklogo.com/vector-logo/466513/wellcome-trust",
+          "reason": "third-party logo aggregator - rejected by section 7"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/File:Wellcome_Trust_logo.svg",
+          "reason": "third-party mirror; also the superseded pre-2016 Wellcome Trust brand, wrong identity for the current Wellcome mark"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 688,
+      "title": "Becas Nacionales de Inclusión 2026 (A. Becas de Licenciatura para Jefas de Familia; B. Apoyos Complementarios para Personas Indígenas; C. Apoyos Complementarios para Personas con Discapacidad)",
+      "outcome": "recovered",
+      "image_url": "https://secihti.mx/wp-content/uploads/2025/03/secihti_2024-2030_horizontal_color.svg",
+      "image_source_url": "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-becas-nacionales-de-inclusion-2026/",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "GET verified 2026-10-05: HTTP 200, Content-Type image/svg+xml, 96937 bytes. The asset is declared by the record's own page twice over: (1) in its Yoast schema.org graph, as the Organization logo with an explicit caption, and (2) as the rendered WordPress custom site logo (elementor-widget-theme-site-logo) at intrinsic 803x96. SVG header inspected: viewBox='0 0 803.4 96.9' with fills #611232 (guinda), #161a1d and #a57f2c (gold) - the exact SECIHTI brand palette also used on the page (data-dce-background-color='#611232', data-dce-title-color='#FFFFFF'/advanced background #A57F2C). IMPORTANT FOR INTEGRATION, contrast with LG-018's UNCF finding: here the schema.org 'logo' field points at the real horizontal wordmark lockup, NOT at a favicon. The favicon on this site is a different file entirely (favicon_escudo_nacional_dorado.svg, the Mexican national coat of arms). Identity match is exact: the record's official_source is 'Secretaría de Ciencia, Humanidades y Tecnología (SECIHTI), Gobierno de México' and the logo caption reads 'SECIHTI'. There is no Becas Nacionales programme-specific mark, so the ministry's own official lockup is the correct award brand. Same asset will be written for record 689 (same provider, same host) - that duplicate is intentional."
+      },
+      "source": {
+        "url": "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-becas-nacionales-de-inclusion-2026/",
+        "publisher": "Secretaría de Ciencia, Humanidades y Tecnología (SECIHTI), Gobierno de México",
+        "retrieved_at": "2026-10-05T15:35:00Z",
+        "raw_extract": "Page <title> reads 'Convocatoria Becas Nacionales de Inclusión 2026 - SECIHTI' and <h1> reads 'Convocatoria Becas Nacionales de Inclusión 2026'. Its Yoast schema.org Organization node declares verbatim: \"logo\":{\"@type\":\"ImageObject\",\"inLanguage\":\"es\",\"@id\":\"https://secihti.mx/#/schema/logo/image/\",\"url\":\"https://secihti.mx/wp-content/uploads/2025/03/secihti_2024-2030_horizontal_color.svg\",\"contentUrl\":\"https://secihti.mx/wp-content/uploads/2025/03/secihti_2024-2030_horizontal_color.svg\",\"width\":803,\"height\":96,\"caption\":\"SECIHTI\"}. The rendered site-logo widget carries the same file: <img ... width=\"803\" height=\"96\" data-src=\"https://secihti.mx/wp-content/uploads/2025/03/secihti_2024-2030_horizontal_color.svg\" class=\"attachment-full size-full wp-image-1779\" alt=\"\" />. asset GET: 200 image/svg+xml 96937 bytes.",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-becas-nacionales-de-inclusion-2026 (the record's official_source_url - fetched first; carries the ministry lockup in header, site-logo widget and schema.org)",
+        "https://secihti.mx/convocatoria_categoria/becas-nacionales (the record's catalogue_url - same theme, no programme-specific mark)",
+        "https://secihti.mx/wp-content/uploads/2025/03/logotipo_simple_SECIHTI_patria_blanco_Mesa-de-trabajo-1.svg (193x20 monochrome white header variant of the same wordmark; legitimate official alternate colourway, not used because the colour horizontal lockup is the fuller mark)"
+      ],
+      "rejected": [
+        {
+          "url": "https://secihti.mx/wp-content/uploads/2025/03/favicon_escudo_nacional_dorado.svg",
+          "reason": "favicon - it is the rel='icon', apple-touch-icon AND msapplication-TileImage of this site (the Mexican national coat of arms), i.e. exactly the low-resolution badge class section 7 forbids"
+        },
+        {
+          "url": "https://secihti.mx/wp-content/themes/secihti-2430/images/textura_gobmx_floral_320x320px.svg",
+          "reason": "decorative background texture, not a logo"
+        },
+        {
+          "url": "https://secihti.mx/wp-content/uploads/2025/03/textura_floral_guinda_pleca_footer_01.svg",
+          "reason": "decorative footer art, not a logo"
+        },
+        {
+          "url": "https://secihti.mx/wp-content/uploads/2026/02/Conv_Inclusion26-20260625T235701.pdf",
+          "reason": "the official convocatoria PDF - a document, not an image asset"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 689,
+      "title": "Apoyo Complementario de Maternidad y Paternidad Nacional, en el Extranjero y de Consolidación 2026",
+      "outcome": "recovered",
+      "image_url": "https://secihti.mx/wp-content/uploads/2025/03/secihti_2024-2030_horizontal_color.svg",
+      "image_source_url": "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-2026-apoyo-complementario-de-maternidad-y-paternidad-nacional-en-el-extranjero-y-de-consolidacion/",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Identical asset and identical proof chain as record 688, re-verified on THIS record's own official page (HTTP 200, image/svg+xml, 96937 bytes, intrinsic 803x96). Both records share official_source 'SECIHTI, Gobierno de México' and the same host, so both legitimately carry the ministry lockup; SECIHTI publishes no per-convocatoria brand mark. The favicon on this site is a separate file (favicon_escudo_nacional_dorado.svg) and was not used. A second, different SECIHTI mark was NOT substituted: logotipo_simple_SECIHTI_patria_blanco...svg is a 193x20 monochrome header strip, too small to serve as a catalogue mark."
+      },
+      "source": {
+        "url": "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-2026-apoyo-complementario-de-maternidad-y-paternidad-nacional-en-el-extranjero-y-de-consolidacion/",
+        "publisher": "Secretaría de Ciencia, Humanidades y Tecnología (SECIHTI), Gobierno de México",
+        "retrieved_at": "2026-10-05T15:38:00Z",
+        "raw_extract": "Page <title> reads 'Convocatoria 2026 Apoyo Complementario De Maternidad y Paternidad Nacional, en el Extranjero y de Consolidación - SECIHTI' and <h1> reads 'Convocatoria 2026 Apoyo Complementario De Maternidad y Paternidad Nacional, en el Extranjero y de Consolidación'. Its Yoast schema.org Organization node declares verbatim: \"logo\":{\"@type\":\"ImageObject\",...,\"url\":\"https://secihti.mx/wp-content/uploads/2025/03/secihti_2024-2030_horizontal_color.svg\",\"contentUrl\":\"https://secihti.mx/wp-content/uploads/2025/03/secihti_2024-2030_horizontal_color.svg\",\"width\":803,\"height\":96,\"caption\":\"SECIHTI\"}. asset GET: 200 image/svg+xml 96937 bytes.",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-2026-apoyo-complementario-de-maternidad-y-paternidad-nacional-en-el-extranjero-y-de-consolidacion (the record's official_source_url - fetched first; 200, canonical URL confirmed with trailing slash)",
+        "https://secihti.mx/convocatoria_categoria/becas-nacionales (the record's catalogue_url - same theme, no programme-specific mark)"
+      ],
+      "rejected": [
+        {
+          "url": "https://secihti.mx/wp-content/uploads/2025/03/favicon_escudo_nacional_dorado.svg",
+          "reason": "favicon (rel=icon + apple-touch-icon + msapplication-TileImage) - the Mexican national coat of arms, rejected class"
+        },
+        {
+          "url": "https://secihti.mx/wp-content/uploads/2025/03/logotipo_simple_SECIHTI_patria_blanco_Mesa-de-trabajo-1.svg",
+          "reason": "not wrong identity, but rejected as the chosen asset: a 193x20 monochrome white header strip, too small and reverse-only to serve as a catalogue mark"
+        },
+        {
+          "url": "https://secihti.mx/wp-content/themes/secihti-2430/images/textura_gobmx_floral_320x320px.svg",
+          "reason": "decorative background texture, not a logo"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 690,
+      "title": "DOST-SEI Foreign Graduate Scholarships in Specialized Priority Fields in Science and Technology (Philippines)",
+      "outcome": "recovered",
+      "image_url": "https://fgs.science-scholarships.ph/assets/dost-sei-logo.svg",
+      "image_source_url": "https://fgs.science-scholarships.ph/partials/header.html",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "The record's official_source_url is a JavaScript single-page app (its root index.html contains no markup but <header id=\"header\" class=\"topbar\"></header>), so the logo had to be traced through the site's own loader scripts: scripts/routes.js loads 'partials/header.html' into #header and 'pages/home.html' into #main-content. GET verified 2026-10-05: HTTP 200, Content-Type image/svg+xml, 2630 bytes, <svg width=\"573\" height=\"573\" viewBox=\"0 0 573 573\">. Identity match is exact - the record's official_source is 'Department of Science and Technology - Science Education Institute (DOST-SEI), Philippines' and this is DOST-SEI's own header brand mark on DOST-SEI's own FGS site, with the wordmark 'DOST-SEI / SCIENCE EDUCATION INSTITUTE' set as adjacent HTML text. CRITICAL DISTINCTION: this site ALSO ships a favicon at ./assets/dost-sei-logo.ico (declared <link rel=\"icon\" href=\"./assets/dost-sei-logo.ico\" type=\"image/x-icon\" />). That .ico is a rejected favicon and was NOT used; the vector .svg referenced by the in-page <img alt=\"DOST-SEI\"> brand element is a different, full-size 573x573 asset and is what is proposed. There is no FGS-programme-specific mark on the site (pages/home.html contains zero <img> elements), so the DOST-SEI institutional mark is the correct award brand."
+      },
+      "source": {
+        "url": "https://fgs.science-scholarships.ph/partials/header.html",
+        "publisher": "Department of Science and Technology - Science Education Institute (DOST-SEI), Philippines",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "raw_extract": "partials/header.html begins verbatim: <a class=\"brand\" href=\"#top\" aria-label=\"Foreign Graduate Scholarships home\"> <img src=\"assets/dost-sei-logo.svg\" alt=\"DOST-SEI\" /> <span class=\"brand-copy\"> <strong>DOST-SEI</strong> <small>SCIENCE EDUCATION INSTITUTE</small> <em>OneDOST4U: Solutions and Opportunities for All</em> </span> </a>. Serving host is the record's own official_source_url, fgs.science-scholarships.ph. Root index.html declares the separate favicon <link rel=\"icon\" href=\"./assets/dost-sei-logo.ico\" type=\"image/x-icon\" /> and the loader scripts/routes.js references routes {\"/\": \"pages/home.html\"} plus loadPartial(\"partials/header.html\", \"header\"). asset GET: 200 image/svg+xml 2630 bytes.",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://fgs.science-scholarships.ph (the record's official_source_url - fetched first; empty SPA shell, logo injected by JS)",
+        "https://fgs.science-scholarships.ph/scripts/load-components.js (site's own loader; confirms partials/header.html is what renders the header)",
+        "https://fgs.science-scholarships.ph/scripts/routes.js (site's own router; confirms partials/header.html, partials/footer.html, pages/home.html)",
+        "https://fgs.science-scholarships.ph/pages/home.html (the FGS content page - contains zero <img> elements and no asset references; no programme-specific FGS mark exists)"
+      ],
+      "rejected": [
+        {
+          "url": "https://fgs.science-scholarships.ph/assets/dost-sei-logo.ico",
+          "reason": "favicon - declared as rel='icon' in the site head. Same artwork family as the proposed .svg but the wrong asset class; deliberately not used"
+        },
+        {
+          "url": "https://fgs.science-scholarships.ph/partials/footer.html",
+          "reason": "not an asset - returned a decode error over the fetcher and carries no logo reference"
+        },
+        {
+          "url": "https://static.cloudflareinsights.com/beacon.min.js",
+          "reason": "third-party analytics beacon injected into the page, not a brand asset"
+        }
+      ]
+    }
+  ]
+}

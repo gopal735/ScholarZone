@@ -1,0 +1,273 @@
+{
+  "shard_id": "DL-049",
+  "agent_completed": true,
+  "topic": "deadline",
+  "records": [
+    {
+      "scholarship_id": 26,
+      "title": "Global Korea Scholarship (GKS) Non-degree Exchange Program",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.niied.go.kr/web/niied/contents/niiedEng/eng_gksNonDegreeExchange",
+        "source_type": "official_scholarship_page",
+        "publisher": "National Institute for International Education (NIIED), Republic of Korea",
+        "retrieved_at": "2026-10-05T15:28:00Z",
+        "as_of": null,
+        "raw_extract": "Selection Procedure - The National Institute for International Education (NIIED) selects universities to operate the GKS Exchange Students Program > NIIED reviews and selects scholarship applicants recommended by the selected universities",
+        "exact_deadline_wording": null,
+        "confidence": "HIGH",
+        "notes": "No deadline is published. The NIIED programme page (fetched) carries Program Overview, Support period, Application Qualifications, Selection Procedure and Scholarship Benefits only. The official Study in Korea GKS portal likewise publishes no application deadline or selection schedule for the GKS Exchange Students Program; it states only that NIIED first selects the participating universities and then reviews candidates recommended by them, i.e. the application is administered by each affiliated university and no central deadline exists. Existing record value 'Varies by affiliated university' is directionally consistent with the source but is not quoted from it, so nothing is asserted."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": null
+      },
+      "examined": [
+        "https://www.niied.go.kr/web/niied/contents/niiedEng/eng_gksNonDegreeExchange",
+        "https://www.studyinkorea.go.kr/en/plan/scholarship.do?tab=gks-tab4",
+        "https://www.studyinkorea.go.kr/english/sub/subLink.do?linkIdx=401&menuIdx=449"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do?tab=gks-tab4",
+          "reason": "Page contains a dated selection schedule ('26.5.7(Thu) 10:00~'26.5.20(Wed) 10:00 (System Deadline)') but it belongs to a different programme on the same page (Government-Funded Scholarships for Domestic Students / For Koreans), not to the GKS Exchange Students Program. Using it would be a generic deadline for a different programme."
+        },
+        {
+          "url": "https://www.studyinkorea.go.kr/cmm/fms/FileDown.do?atchFileId=FILE_000000000535168&fileSn=1",
+          "reason": "2026 GKS-G Application Guidelines PDF governing the GKS-G degree track, not the non-degree exchange track. Not fetched and not applicable to this record."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 81,
+      "title": "Study in Canada Scholarships",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "The deadline for Canadian institutions to apply and email the completed Management and Accountability Framework to Scholarships-Info-Bourses@international.gc.ca is 11:59 p.m. EDT, March 31, 2026.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.educanada.ca/scholarships-bourses/can/institutions/study-in-canada-sep-etudes-au-canada-pct.aspx?lang=eng",
+        "source_type": "official_government_page",
+        "publisher": "Global Affairs Canada / EduCanada (Government of Canada)",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": "2026-2027 cycle; page 'Date modified: 2026-04-20'",
+        "raw_extract": "The application period is now closed. ... ### Application deadline - The deadline for Canadian institutions to apply and email the completed *Management and Accountability Framework* to Scholarships-Info-Bourses@international.gc.ca is **11:59 p.m. EDT, March 31, 2026.**",
+        "exact_deadline_wording": "is **11:59 p.m. EDT, March 31, 2026.**",
+        "confidence": "HIGH",
+        "notes": "expired_mismatch: the official programme page states an explicit calendar deadline of 2026-03-31 and simultaneously states 'The application period is now closed.' That deadline is in the past relative to the retrieval date 2026-10-05, while the record is flagged verification_status 'active'. Per the brief the stale date is NOT written and is not silently moved to the next cycle; the next cycle's dates are not published on the page. Semantics remain EXACT because the source does state an explicit calendar deadline - deadline_date is null only because that deadline has expired. The official_source_url supplied in the shard (the general 'Scholarships for international applicants' index) was fetched first and carries no deadline; the programme-specific page linked from it was used instead."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "The deadline for Canadian institutions to apply and email the completed Management and Accountability Framework to Scholarships-Info-Bourses@international.gc.ca is 11:59 p.m. EDT, March 31, 2026."
+      },
+      "examined": [
+        "https://www.educanada.ca/scholarships-bourses/non_can/index.aspx?lang=eng"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 193,
+      "title": "Adelaide Academic Excellence Scholarship (50%)",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "Applications open from Monday 24 August 2026",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://adelaide.edu.au/study/scholarships/int/adelaide-academic-excellence-scholarship-50",
+        "source_type": "official_university_page",
+        "publisher": "Adelaide University",
+        "retrieved_at": "2026-10-05T15:28:00Z",
+        "as_of": "applications open from Monday 24 August 2026 (current recruitment cycle)",
+        "raw_extract": "Applications open from Monday 24 August 2026 Scholarships. Scholarships are limited. ... Your application will be assessed by a selection panel and based on merit. Applications will be reviewed on a rolling basis with scholarship offers made throughout the recruitment cycle, until all allocations have been exhausted.",
+        "exact_deadline_wording": "Applications open from Monday 24 August 2026",
+        "confidence": "HIGH",
+        "notes": "The official page states no closing date and explicitly describes rolling assessment: 'Applications will be reviewed on a rolling basis with scholarship offers made until all allocations have been exhausted.' 'Applications open from Monday 24 August 2026' is an opening date, not a deadline, and is not converted into deadline_date. ROLLING is taken from the provider's own explicit wording; no calendar date is written for a rolling value."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "rolling",
+        "deadline_display": "Applications open from Monday 24 August 2026"
+      },
+      "examined": [],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 205,
+      "title": "UNSW International Scientia Coursework Scholarship (PUCA1025)",
+      "outcome": "recovered",
+      "deadline_semantics": "EXACT",
+      "deadline_date": "2026-10-30",
+      "deadline_display": "this application will open on 06 July 2026 and close at AEST 11:59PM on 30 October 2026",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.scholarships.unsw.edu.au/scholarships/id/1988",
+        "source_type": "official_scholarship_page",
+        "publisher": "UNSW Sydney",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": "UNSW Scholarships for International Students Commencing Term 1, 2027 (PUCA1029); round status 'Open'",
+        "raw_extract": "Opens 15/07/2026 Closes 30/10/2026 ... *This page and application process is for international students commencing their first term of studies at UNSW in Term 1 2027* ... **\\*Please note this application will open on 06 July 2026 and close at AEST 11:59PM on 30 October 2026.** ... International Scientia Coursework Scholarship (PUCA1025) | Offer 1: Full tuition fee scholarship ... - Be commencing full-time study in a UNSW undergraduate or postgraduate coursework degree program (excluding UNSW online and UNSW Canberra) in Term 1, 2027.",
+        "exact_deadline_wording": "close at AEST 11:59PM on 30 October 2026",
+        "confidence": "HIGH",
+        "notes": "The official_source_url in the shard (https://scholarships.online.unsw.edu.au/scholarship/unsw-international-scientia-coursework-scholarship) returns HTTP 404 - it is not a live page. PUCA1025 has no standalone page of its own (https://www.scholarships.unsw.edu.au/international-scientia-coursework-scholarship-puca1025 also 404s); it is applied for through the parent PUCA1029 term-based round, and the award name appears verbatim in that round's award table. The currently open round (Term 1, 2027) closes 30 October 2026, which is in the future relative to the retrieval date 2026-10-05, so the record is genuinely open and the value is written. Note a same-page discrepancy in the OPENING date only (criteria block 'Opens 15/07/2026' vs body note 'will open on 06 July 2026'); both statements give the closing date as 30 October 2026, so the deadline itself is not in conflict. The prior Term 2, 2026 round closed 26 February 2026 and is superseded, so it is not used."
+      },
+      "field_mapping": {
+        "deadline_date": "2026-10-30",
+        "deadline_precision": "exact",
+        "deadline_display": "this application will open on 06 July 2026 and close at AEST 11:59PM on 30 October 2026"
+      },
+      "examined": [
+        "https://scholarships.online.unsw.edu.au/scholarship/unsw-international-scientia-coursework-scholarship",
+        "https://www.scholarships.unsw.edu.au/international-scientia-coursework-scholarship-puca1025",
+        "https://scholarships.online.unsw.edu.au/scholarship/sc_al_search_detail.display_scholarship_details?p_schedule_id=7002&p_scholarship_specific_id=1923"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.unsw.edu.au/study/your-future/international-scholarships",
+          "reason": "University marketing page describing the award in general terms with no application deadline for any specific round."
+        },
+        {
+          "url": "https://search.studyaustralia.gov.au/scholarship/international-scientia-coursework-scholarship-puca1025/056c4abb2770fb21dd120aed47a6faac",
+          "reason": "Third-party government-finder aggregator listing, not the scholarship provider's own page, and it carries no current-round deadline."
+        },
+        {
+          "url": "https://www.studiesinaustralia.com/scholarships-in-australia/unsw-sydney/international-scientia-coursework-scholarship-puca1025",
+          "reason": "Third-party scholarship aggregator/mirror. Its dates belong to the superseded Term 3 2025 round."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 247,
+      "title": "Confucius Institute Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.chinese.cn/page/#/pcpage/project?id=115",
+        "source_type": "official_scholarship_page",
+        "publisher": "Center for Language Education and Cooperation (中外语言交流合作中心), Ministry of Education, PRC - successor administrator of Confucius Institute Headquarters (Hanban)",
+        "retrieved_at": "2026-10-05T15:38:00Z",
+        "as_of": null,
+        "raw_extract": "国际中文教师奖学金 项目介绍 致力于培养各国本土中文教师和后备力量，高级中文人才等，提供学历教育和研修两大类奖学金。资助优秀青年来华攻读学位、短期研修，支持国际中文教师人才库建设。 申请者可以登录https://pmplatform.chinese.cn进行申请。",
+        "exact_deadline_wording": null,
+        "confidence": "HIGH",
+        "notes": "No deadline is obtainable from an official source. The award's official_source_url https://cis.chinese.cn redirects to https://pmplatform.chinese.cn/ui/start/#/login, an application portal that returns HTTP 404 behind a login wall and publishes no dates. The administering body's official project page for this scholarship (fetched, quoted above) describes categories and routes applications to the platform but states no deadline. The existing record value 'Varies (typically January-April through local Confucius Institute)' is not supported by anything on the official pages fetched and is not asserted. No calendar date, month or rolling/annual characterisation is claimed, because no official page fetched states one."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": null
+      },
+      "examined": [
+        "https://cis.chinese.cn",
+        "https://pmplatform.chinese.cn/",
+        "https://www.chinese.cn/",
+        "https://www.chinese.cn/page/#/pcpage/project?id=115"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.chinese.cn/uploads/word/%E5%9B%BD%E9%99%85%E4%B8%AD%E6%96%87%E6%95%99%E5%B8%88%E5%A5%96%E5%AD%A6%E9%87%91%E7%94%B3%E8%AF%B7%E5%8A%9E%E6%B3%95%EF%BC%882025%E5%B9%B4%EF%BC%89.pdf",
+          "reason": "Official 《国际中文教师奖学金申请办法（2025年）》 hosted on the provider's own domain (HTTP 200 confirmed), but the file is a PDF whose text could not be read with the tools available - plain fetch returned raw PDF bytes and the browser PDF viewer exposes no DOM text. Without a verbatim quote from a page I actually read, no value is taken from it. It is also the 2025 edition, superseded by a 2026 edition referenced by host institutions."
+        },
+        {
+          "url": "http://www.hanban.org/",
+          "reason": "Former Confucius Institute Headquarters domain; does not resolve (ERR_HTTP_RESPONSE_CODE_FAILURE)."
+        },
+        {
+          "url": "https://intl.csu.edu.cn/info/1145/3868.htm",
+          "reason": "Central South University host-institution page. A university admissions page is not official for a headquarters/foreign-government award, and its dates are that university's own intake schedule."
+        },
+        {
+          "url": "https://www.sie.dlut.edu.cn/English/Scholarship1/CIS_Scholarship/CIS_Scholarship.htm",
+          "reason": "Dalian University of Technology host-institution page; another university's schedule, not the provider's official deadline."
+        },
+        {
+          "url": "http://www.admissions.cn/scholarship/cis.html",
+          "reason": "Third-party scholarship listing site / mirror, not the provider's own domain."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 311,
+      "title": "Scholarships and Educational Exchanges for Development - Phase 2 (SEED-2)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "The deadline for Canadian institutions to submit online applications on behalf of candidates and email the ranking of applications is 11:59 p.m. EDT, March 24, 2026.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.educanada.ca/scholarships-bourses/can/institutions/seed-bpeed.aspx?lang=eng",
+        "source_type": "official_government_page",
+        "publisher": "Global Affairs Canada / EduCanada (Government of Canada)",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": "2026-27 cycle; page 'Date modified: 2026-08-18'",
+        "raw_extract": "Application period for 2026-27 is closed. ... ### Application process - Canadian post-secondary institutions must apply on behalf of eligible candidates before the deadline on **March 24, 2026 at 11:59 p.m. EDT**. ... ### Application deadline - The deadline for Canadian institutions to submit online applications on behalf of candidates and email the ranking of applications is **11:59 p.m. EDT, March 24, 2026**.",
+        "exact_deadline_wording": "is **11:59 p.m. EDT, March 24, 2026**",
+        "confidence": "HIGH",
+        "notes": "expired_mismatch: the official page states an explicit calendar deadline of 2026-03-24 and states 'Application period for 2026-27 is closed.' That deadline is in the past relative to the retrieval date 2026-10-05 while the record is flagged verification_status 'active'. Per the brief the stale date is NOT written and is not silently moved to the next cycle. Semantics remain EXACT because the source does state an explicit calendar deadline. IMPORTANT URL CORRECTION: the official_source_url supplied in the shard, /scholarships-bourses/can/institutions/asean-anase.aspx?lang=eng, was fetched and is the Canada-ASEAN Scholarships and Educational Exchanges for Development (SEED) PHASE 1 page ('Application period for 2025 is closed', deadline '11:59 p.m. EDT, March 31, 2025'). That is a different programme from the record's titled SEED-2, so its dates are not used and this is not a source conflict. The SEED-2 page used here is linked directly from the official EduCanada scholarships index."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "The deadline for Canadian institutions to submit online applications on behalf of candidates and email the ranking of applications is 11:59 p.m. EDT, March 24, 2026."
+      },
+      "examined": [
+        "https://www.educanada.ca/scholarships-bourses/can/institutions/asean-anase.aspx?lang=eng",
+        "https://www.educanada.ca/scholarships-bourses/non_can/index.aspx?lang=eng"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.educanada.ca/scholarships-bourses/can/institutions/asean-anase.aspx?lang=eng",
+          "reason": "Supplied as official_source_url but it is the phase-1 SEED programme page, not SEED-2. Its deadline (March 31, 2025) belongs to a different programme and must not be used for this record."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 472,
+      "title": "East-West Center Graduate Degree Fellowship 2027",
+      "outcome": "recovered",
+      "deadline_semantics": "EXACT",
+      "deadline_date": "2026-12-01",
+      "deadline_display": "CLOSING DATE Dec 1, 2026",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.eastwestcenter.org/apply/east-west-center-graduate-degree-fellowship-apply-now",
+        "source_type": "official_scholarship_page",
+        "publisher": "East-West Center",
+        "retrieved_at": "2026-10-05T15:33:00Z",
+        "as_of": "academic year 2026-2027 competition",
+        "raw_extract": "OPENING DATE Aug 16, 2026 CLOSING DATE Dec 1, 2026 ... Fellowships are awarded annually in an international competition. Applications for the academic year 2026-2027 competition will open on August 15 and close on December 1.",
+        "exact_deadline_wording": "Applications for the academic year 2026-2027 competition will open on August 15 and close on December 1.",
+        "confidence": "HIGH",
+        "notes": "www.eastwestcenter.org returns HTTP 403 to plain command-line fetches; the same live URL was fetched and read in a real browser session (HTTP 200) and the text above is quoted from that rendering. The shard's official_source_url (https://www.eastwestcenter.org/education/ewc-graduate-degree-fellowship) was also fetched in the browser: it renders the programme overview and the APPLY NOW / STUDENT LIFE / AWARD DETAILS / FAQs tabs but contains no deadline itself, so the official application page was used instead. Note a same-page discrepancy in the OPENING date only ('OPENING DATE Aug 16, 2026' vs 'will open on August 15'); every statement on the page gives the closing date as December 1 and the criteria block states 'CLOSING DATE Dec 1, 2026', so the deadline is unambiguous and is not a source conflict. 1 December 2026 is in the future relative to the retrieval date 2026-10-05, matching the record's '2027' label (academic year 2026-2027 competition). Separately, the EWC FAQ page fixes the automatic portal close at 11:59PM Hawai'i Standard Time on December 1."
+      },
+      "field_mapping": {
+        "deadline_date": "2026-12-01",
+        "deadline_precision": "exact",
+        "deadline_display": "CLOSING DATE Dec 1, 2026"
+      },
+      "examined": [
+        "https://www.eastwestcenter.org/education/ewc-graduate-degree-fellowship"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.eastwestcenter.org/sites/default/files/2023-09/2023%20Graduate%20Degree%20Fellowship%20application%20checklist.pdf",
+          "reason": "Official but dated 2023 application checklist; superseded cycle document, not used for the current 2026-2027 deadline."
+        },
+        {
+          "url": "https://www.eastwestcenter.org/apply/obuchi-student-scholarship-application",
+          "reason": "Different programme (Obuchi Student Scholarship), though it shares the same annual closing date. Another programme's deadline is not evidence for this record."
+        }
+      ]
+    }
+  ]
+}

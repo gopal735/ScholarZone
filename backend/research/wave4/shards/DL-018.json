@@ -1,0 +1,111 @@
+{
+  "shard_id": "DL-018",
+  "topic": "deadline",
+  "hosts": [
+    "au.int",
+    "id.china-embassy.gov.cn",
+    "iso.fudan.edu.cn",
+    "uwaterloo.ca",
+    "www.ilsc.com",
+    "www.ugent.be"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 90,
+      "title": "University of Waterloo International Student Entrance Scholarship",
+      "official_source": "University of Waterloo",
+      "official_source_url": "https://uwaterloo.ca/future-students/financing/international-scholarships",
+      "catalogue_url": "https://uwaterloo.ca/future-students/programs",
+      "country": "Canada",
+      "deadline_display": "~September 20, 2026 (next cycle)",
+      "deadline_precision": "varies",
+      "application_period": "If you suspect that you do not meet the English proficiency requirements, you should take a test as soon as possible to meet the document deadline.",
+      "verification_status": "active"
+    },
+    {
+      "id": 283,
+      "title": "Ghent University Top-Up Grant for International Students",
+      "official_source": "Ghent University",
+      "official_source_url": "https://www.ugent.be/en/financial/topupgrant",
+      "catalogue_url": null,
+      "country": "Belgium",
+      "deadline_display": "Varies by programme (typically February-April)",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 319,
+      "title": "Chinese Government Scholarship (Chinese University Program) at Fudan University 2026",
+      "official_source": "Fudan University",
+      "official_source_url": "https://iso.fudan.edu.cn/isoenglish/82/fe/c17458a754430/page.htm",
+      "catalogue_url": "https://iso.fudan.edu.cn/isoenglish/SummerPrograms/list.htm",
+      "country": "China",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 320,
+      "title": "Chinese Government Scholarship (Youth of Excellence Scheme) at Fudan University 2026",
+      "official_source": "Fudan University",
+      "official_source_url": "https://iso.fudan.edu.cn/isoenglish/82/fd/c17458a754429/page.htm",
+      "catalogue_url": "https://iso.fudan.edu.cn/isoenglish/SummerPrograms/list.htm",
+      "country": "China",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 321,
+      "title": "Shanghai Government Scholarship at Fudan University 2026",
+      "official_source": "Fudan University",
+      "official_source_url": "https://iso.fudan.edu.cn/isoenglish/82/fb/c17458a754427/page.htm",
+      "catalogue_url": "https://iso.fudan.edu.cn/isoenglish/SummerPrograms/list.htm",
+      "country": "China",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 323,
+      "title": "2026/2027 Chinese Government Scholarship - China-Indonesia Scholarship in Higher Education Program",
+      "official_source": "Embassy of the People's Republic of China in the Republic of Indonesia",
+      "official_source_url": "https://id.china-embassy.gov.cn/eng/sgdt/202510/t20251027_11741674.htm",
+      "catalogue_url": "https://id.china-embassy.gov.cn/eng/whjy",
+      "country": "China",
+      "deadline_display": "Applications for the 2026/2027 cycle had to be submitted online \"before February 8, 2026\"; that date has passed and the Embassy has published no date for the following cycle.",
+      "deadline_precision": "recurring",
+      "application_period": "2026/2027 cycle ran from the 2025-10-27 announcement to 2026-02-08; the Embassy then forwarded recommended applications to the China Scholarship Council between 2026-02-09 and 2026-03-05, and results were available in the system in July-August 2026.",
+      "verification_status": "active"
+    },
+    {
+      "id": 620,
+      "title": "Pan African University (PAU) Scholarship - African Union Commission",
+      "official_source": "African Union Commission",
+      "official_source_url": "https://au.int/en/announcements/20251115/pan-african-university-call-scholarships-applications-academic-year-2026-2027",
+      "catalogue_url": null,
+      "country": "Multiple",
+      "deadline_display": "15 December (annual close); call opens 15 November",
+      "deadline_precision": "recurring",
+      "application_period": "15 November to 15 December each year, for the following academic year. The 2026-2027 call ran 15 November to 15 December 2025.",
+      "verification_status": "active"
+    },
+    {
+      "id": 712,
+      "title": "ILSC Humanitarian Scholarship",
+      "official_source": "ILSC Language Schools",
+      "official_source_url": "https://www.ilsc.com/humanitarian-scholarship",
+      "catalogue_url": null,
+      "country": "Australia",
+      "deadline_display": "Rolling intake - applications are open year-round and no closing date is published",
+      "deadline_precision": "rolling",
+      "application_period": "Applications are open year-round. Applicants receive a link to complete ILSC's Online English Placement Test, which must be completed by the deadline stated in that email, and successful candidates are offered the earliest available date.",
+      "verification_status": "active"
+    }
+  ]
+}

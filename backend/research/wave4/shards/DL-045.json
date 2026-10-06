@@ -1,0 +1,98 @@
+{
+  "shard_id": "DL-045",
+  "topic": "deadline",
+  "hosts": [
+    "portal.gov.gy",
+    "www.daad-bangladesh.org",
+    "www.deakin.edu.au",
+    "www.monash.edu",
+    "www.utu.fi"
+  ],
+  "record_count": 7,
+  "records": [
+    {
+      "id": 52,
+      "title": "Monash International Leadership Scholarship",
+      "official_source": "Monash University",
+      "official_source_url": "https://www.monash.edu/study/fees-scholarships/scholarships/find-a-scholarship/monash-international-leadership-scholarship-5571Z",
+      "catalogue_url": null,
+      "country": "Australia",
+      "deadline_display": "No applications required. Students that have received an undergraduate course offer from Monash will automatically be considered. Can be deferred within the same calendar year only.",
+      "deadline_precision": "month",
+      "application_period": "Automatic consideration upon receiving course offer",
+      "verification_status": "active"
+    },
+    {
+      "id": 198,
+      "title": "Deakin Vice-Chancellor's International Scholarship",
+      "official_source": "Deakin University",
+      "official_source_url": "https://www.deakin.edu.au/study/fees-and-scholarships/scholarships/find-a-scholarship/deakin-vice-chancellors-international-scholarship",
+      "catalogue_url": "https://www.deakin.edu.au/study/fees-and-scholarships/scholarships/find-a-scholarship",
+      "country": "Australia",
+      "deadline_display": "Complete the International Scholarship Program application form and email it to Deakin International Admissions at least one month before your program starts. Scholarships are assessed on a rolling basis in the lead-up to each trimester.",
+      "deadline_precision": "rolling",
+      "application_period": "Applications must reach Deakin International Admissions at least one month before the program starts; scholarships are assessed on a rolling basis in the lead-up to each trimester.",
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 199,
+      "title": "Deakin International Vice-Chancellor's Scholarship 100% (South Asia)",
+      "official_source": "Deakin University",
+      "official_source_url": "https://www.deakin.edu.au/study/fees-and-scholarships/scholarships/find-a-scholarship/international-vice-chancellors-scholarship-100-south-asia",
+      "catalogue_url": null,
+      "country": "Australia",
+      "deadline_display": "Rolling (apply 1+ month before start)",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 228,
+      "title": "DAAD Research Grants in Germany (for doctoral candidates and early postdocs)",
+      "official_source": "DAAD (German Academic Exchange Service)",
+      "official_source_url": "https://www.daad-bangladesh.org/en/studying-in-germany/phd-studies/research-grants-in-germany-for-phd-scholars",
+      "catalogue_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?status=4&origin=&subjectGrps=&daad=&intention=2&q=&page=1&detail=57742121",
+      "country": "Germany",
+      "deadline_display": "\"Application deadlines are updated annually in the second quarter. In most cases, they are in the same period as the previous year.\" The DAAD page for the 2027 funding period showed \"Currently you cannot apply for this programme\" on 2026-10-04; the exact calendar date was not rendered on the page read.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual cycle. The DAAD portal opens at least six weeks before the deadline and closes at 24:00 CET or CEST on the last application day. For the 2027 funding round the applications were closed on the 2026-10-04 verification date.",
+      "verification_status": "active"
+    },
+    {
+      "id": 266,
+      "title": "University of Turku Merit Scholarship and Early Bird Discount",
+      "official_source": "University of Turku",
+      "official_source_url": "https://www.utu.fi/en/study-at-turku/tuition-fees-and-scholarships",
+      "catalogue_url": "https://www.utu.fi/en/study-at-utu/masters-degree-programmes",
+      "country": "Finland",
+      "deadline_display": "\"There is a separate application process for the merit scholarships. The admission services of the University will invite all eligible applicants to apply for the scholarship when the application round opens in spring.\" For the Early Bird discount the deadline is relative: \"the applicant must accept the study offer and pay the tuition fee within 28 days after the admission decisions have been published.\"",
+      "deadline_precision": "recurring",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 339,
+      "title": "University of Turku Merit Scholarship (50% of tuition) and Early Bird Discount",
+      "official_source": "University of Turku",
+      "official_source_url": "https://www.utu.fi/en/study-at-utu/scholarships-and-tuition-fees",
+      "catalogue_url": "https://www.utu.fi/en/study-at-utu/bachelors-and-masters-degree-programmes",
+      "country": "Finland",
+      "deadline_display": "Early Bird: \"the applicant must accept the study offer and pay the tuition fee within 28 days after the admission decisions have been published\" - for 2026, \"the final date to accept the study offer and pay the tuition fee is 24 April\". Merit Scholarship: \"The admission services of the University will invite all eligible applicants to apply for the scholarship when the application round opens in spring.\"",
+      "deadline_precision": "varies",
+      "application_period": "Merit Scholarship invitations are issued when the application round opens in spring; the 2026 Early Bird deadline was 24 April 2026",
+      "verification_status": "active"
+    },
+    {
+      "id": 716,
+      "title": "Government of Guyana Scholarships",
+      "official_source": "Ministry of Public Service, Government Efficiency and Implementation, Government of Guyana",
+      "official_source_url": "https://portal.gov.gy/services/scholarship",
+      "catalogue_url": "https://mps.gov.gy/scholarships/gog",
+      "country": "Guyana",
+      "deadline_display": "Each scholarship is advertised individually and its requirements and closing date are stated in that advertisement, which appears on the Ministry's website, in the newspapers and on its social media pages; no single annual date is published",
+      "deadline_precision": "recurring",
+      "application_period": "Rolling, in line with the individual advertisement for each scholarship category",
+      "verification_status": "active"
+    }
+  ]
+}

@@ -1,0 +1,263 @@
+{
+  "shard_id": "LG-013",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 348,
+      "title": "Erasmus Mundus European Forestry (MSc EF) Scholarship",
+      "outcome": "recovered",
+      "image_url": "https://sites.uef.fi/europeanforestry/wp-content/uploads/sites/62/2020/05/Logo.jpg",
+      "image_source_url": "https://sites.uef.fi/europeanforestry/",
+      "image_source_type": "official_programme_page",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Shard official_source_url https://www.master-europeanforestry.eu does not resolve (webfetch transport error; PowerShell reports 'The remote name could not be resolved: master-europeanforestry.eu'), and www.europeanforestry.eu fails TLS trust, so neither live source could be used. Fell back to the current official programme website of the consortium coordinator, University of Eastern Finland (sites.uef.fi/europeanforestry), confirmed as the live programme site. Asset verified through the site's own WordPress REST media API: media id 1526, slug 'logo', alt_text 'MSc EF logo', attached to the programme front page (post 17), 266x323 JPEG. Rendered and visually confirmed: three stylised conifers above the wordmark 'MSc European Forestry' with 'ERASMUS MUNDUS' beneath, i.e. the programme's own brand mark, not a partner logo. Rejected as non-programme marks: the site's favicon (white-label/favicon.ico), the Erasmus+ / EU co-funding lockups (logosbeneficaireserasmus*, EU-logo-web), the Studyinfo.fi logo (third-party national study portal), and the AQAS / BOKU / Lleida / Freiburg / AgroParisTech / Transilvania / UEF partner logos. Confidence is MEDIUM rather than HIGH only because the shard's own official_source_url is dead and the asset is a modest 266x323 JPEG."
+      },
+      "source": {
+        "url": "https://sites.uef.fi/europeanforestry/wp-json/wp/v2/media?slug=logo",
+        "publisher": "University of Eastern Finland (MSc European Forestry programme site)",
+        "retrieved_at": "2026-10-05T15:36:00Z",
+        "raw_extract": "\"slug\":\"logo\" ... \"alt_text\":\"MSc EF logo\" ... \"media_type\":\"image\",\"mime_type\":\"image\\/jpeg\",\"media_details\":{\"width\":266,\"height\":323,\"file\":\"2020\\/05\\/Logo.jpg\" ... \"source_url\":\"https:\\/\\/sites.uef.fi\\/europeanforestry\\/wp-content\\/uploads\\/sites\\/62\\/2020\\/05\\/Logo.jpg\" ... \"post\":17",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://www.master-europeanforestry.eu (shard official_source_url - DNS does not resolve, no page, no asset)",
+        "https://www.europeanforestry.eu (legacy domain named in programme leaflets - TLS trust failure, cannot be used as a live source)",
+        "https://sites.uef.fi/europeanforestry/ (live official programme home; header uses a text wordmark, no logo image; hero image is decorative banner art)",
+        "https://sites.uef.fi/europeanforestry/wp-content/themes/white-label/favicon.ico (rejected: favicon)"
+      ],
+      "rejected": [
+        {
+          "url": "https://sites.uef.fi/europeanforestry/wp-content/themes/white-label/favicon.ico",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://sites.uef.fi/europeanforestry/wp-content/uploads/sites/62/2020/05/logosbeneficaireserasmusrightfunded.jpg",
+          "reason": "not an asset for this record: Erasmus+ programme co-funding lockup, not the MSc EF programme logo"
+        },
+        {
+          "url": "https://sites.uef.fi/europeanforestry/wp-content/uploads/sites/62/2020/05/Study-info.png",
+          "reason": "third-party mark: Studyinfo.fi national study portal logo (alt 'Studyinfo.fi logo')"
+        },
+        {
+          "url": "https://sites.uef.fi/europeanforestry/wp-content/uploads/sites/62/2023/11/cropped-Bannerikuva_MC_European_Forestry-8-1-7-1440x570px.jpg",
+          "reason": "decorative hero art"
+        },
+        {
+          "url": "https://sites.uef.fi/europeanforestry/wp-content/uploads/sites/62/2020/05/boku_hauptlogo_rgb.jpg",
+          "reason": "unrelated partner institution logo on the same media library"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 517,
+      "title": "ICSSR Participation in International Seminar Abroad (Travel Grant Scheme)",
+      "outcome": "recovered",
+      "image_url": "https://icssr.org/themes/custom/icssr/images/ICSSR_logo.svg",
+      "image_source_url": "https://icssr.org/participation-international-seminar-abroad",
+      "image_source_type": "official_government_page",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Official scheme page on icssr.org (Indian Council of Social Science Research, Ministry of Education, Government of India) fetched successfully. The site does not use an <img> tag for its logo: the masthead draws the ICSSR brand mark as a CSS background, `.logo:before{background:url(../images/ICSSR_logo.svg) no-repeat;width:42px;height:84px}`, resolving to https://icssr.org/themes/custom/icssr/images/ICSSR_logo.svg. That is the organisation's own header logo, i.e. an official brand asset on the official domain, not a favicon. Fetched the SVG (1570 bytes, Adobe Illustrator export) and rendered it locally to confirm it is the ICSSR flame/lamp mark, not a placeholder. Same mark is repeated in the footer as a white variant (../images/footerlogo.png) via `.fhttext:before`. Rejected: /themes/custom/icssr/favicon.ico (favicon), images/Emblem.svg and images/indianembelam.png (State Emblem of India - the Government's emblem, not ICSSR's own mark), and the mygov / datagov / indiagov / rti / nvsp / digitalindia images (other departments' and programmes' logos on the same shared theme image directory). Confidence MEDIUM because the asset is the header mark only (the ICSSR wordmark itself is HTML text on the page) and is not offered through any dedicated brand/press page."
+      },
+      "source": {
+        "url": "https://icssr.org/participation-international-seminar-abroad",
+        "publisher": "Indian Council of Social Science Research (ICSSR), Ministry of Education, Government of India",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "raw_extract": "<div class=\"logo\"><h1 class=\"headingtext\"><a href=\"https://icssr.org\" title=\"Indian Council of Social Science Research\">भारतीय सामाजिक विज्ञान अनुसंधान परिषद्&nbsp;</a> <a href=\"https://icssr.org\" title=\"Indian Council of Social Science Research\">Indian Council of Social Science Research</a></h1> ... (masthead logo mark supplied by the theme stylesheet icssr.css: \".logo:before{content:'';position:absolute;left:0;top:0;background:url(../images/ICSSR_logo.svg) no-repeat;width:42px;height:84px}\")",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://icssr.org/participation-international-seminar-abroad (official scheme page - logo is CSS-supplied, found the asset path in icssr.css)",
+        "https://icssr.org/themes/custom/icssr/css/icssr.css (official stylesheet naming the logo asset)",
+        "https://icssr.org/themes/custom/icssr/images/ICSSR_logo.svg (asset fetched and rendered - ICSSR mark)",
+        "https://icssr.org/about-us (checked for a dedicated brand/press asset page - none; logo mark is the only ICSSR-owned logo asset)"
+      ],
+      "rejected": [
+        {
+          "url": "https://icssr.org/themes/custom/icssr/favicon.ico",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://icssr.org/themes/custom/icssr/images/Emblem.svg",
+          "reason": "wrong identity: State Emblem of India (Government of India), not an ICSSR mark"
+        },
+        {
+          "url": "https://icssr.org/themes/custom/icssr/images/indianembelam.png",
+          "reason": "wrong identity: State Emblem of India, not an ICSSR mark"
+        },
+        {
+          "url": "https://icssr.org/themes/custom/icssr/images/mygov.png",
+          "reason": "unrelated department/programme logo on the same shared theme image directory"
+        },
+        {
+          "url": "https://icssr.org/themes/custom/icssr/images/digitalindia.png",
+          "reason": "unrelated department/programme logo on the same shared theme image directory"
+        },
+        {
+          "url": "https://icssr.org/themes/custom/icssr/images/icssrbreadcrumb.jpg",
+          "reason": "decorative page background art"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 518,
+      "title": "ICSSR Financial Assistance for Data Collection Abroad",
+      "outcome": "recovered",
+      "image_url": "https://icssr.org/themes/custom/icssr/images/ICSSR_logo.svg",
+      "image_source_url": "https://icssr.org/data-collection-abroad",
+      "image_source_type": "official_government_page",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Same official ICSSR scheme page family as record 517. https://icssr.org/data-collection-abroad fetched successfully and uses the identical theme masthead, so the same official ICSSR brand asset applies: https://icssr.org/themes/custom/icssr/images/ICSSR_logo.svg, declared as the header logo by the official stylesheet rule `.logo:before{background:url(../images/ICSSR_logo.svg) no-repeat;width:42px;height:84px}`. Asset fetched (1570 bytes) and rendered locally to confirm the ICSSR mark. Both records are separate ICSSR schemes on icssr.org, so the organisation's own logo is the correct identity for each. Rejected: favicon.ico, Emblem.svg / indianembelam.png (State Emblem of India, wrong identity), and the mygov / datagov / indiagov / rti / nvsp / digitalindia footer images (unrelated departments' logos in the same shared image directory). Confidence MEDIUM for the same reason as 517: the mark is the header logo only, with the ICSSR wordmark supplied as page text."
+      },
+      "source": {
+        "url": "https://icssr.org/data-collection-abroad",
+        "publisher": "Indian Council of Social Science Research (ICSSR), Ministry of Education, Government of India",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "raw_extract": "<div class=\"logo\"><h1 class=\"headingtext\"><a href=\"https://icssr.org\" title=\"Indian Council of Social Science Research\">भारतीय सामाजिक विज्ञान अनुसंधान परिषद्&nbsp;</a> <a href=\"https://icssr.org\" title=\"Indian Council of Social Science Research\">Indian Council of Social Science Research</a></h1><p><a href=\"https://icssr.org\" title=\"Indian Council of Social Science Research\"><span>शिक्षा मंत्रालय | Ministry of Education</span></a></p></div>",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://icssr.org/data-collection-abroad (official scheme page - identical ICSSR masthead)",
+        "https://icssr.org/themes/custom/icssr/css/icssr.css (official stylesheet naming the logo asset)",
+        "https://icssr.org/themes/custom/icssr/images/ICSSR_logo.svg (asset fetched and rendered - ICSSR mark)",
+        "https://icssr.org/about-us (checked for a dedicated brand/press asset page - none found)"
+      ],
+      "rejected": [
+        {
+          "url": "https://icssr.org/themes/custom/icssr/favicon.ico",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://icssr.org/themes/custom/icssr/images/Emblem.svg",
+          "reason": "wrong identity: State Emblem of India (Government of India), not an ICSSR mark"
+        },
+        {
+          "url": "https://icssr.org/themes/custom/icssr/images/rti.png",
+          "reason": "unrelated department/programme logo on the same shared theme image directory"
+        },
+        {
+          "url": "https://icssr.org/themes/custom/icssr/images/icssrbreadcrumb.jpg",
+          "reason": "decorative page background art"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 578,
+      "title": "EASL Mobility / Research Fellowship Programme",
+      "outcome": "recovered",
+      "image_url": "https://easl.eu/wp-content/uploads/2025/10/logo.svg",
+      "image_source_url": "https://easl.eu/fellowship/mobility-research-fellowship-programme",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Official fellowship page on easl.eu fetched successfully. The page's own Yoast schema declares the organisation logo explicitly: {\"@type\":\"Organization\",\"@id\":\"https://easl.eu/#organization\",\"name\":\"EASL-The Home of Hepatology.\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://easl.eu/wp-content/uploads/2025/10/logo.svg\",\"width\":805,\"height\":211,\"caption\":\"EASL-The Home of Hepatology.\"}}. That is EASL's own self-declared logo on its own domain - the strongest available proof of both officiality and identity. Fetched the SVG (10914 bytes) and confirmed it is the EASL hexagon mark plus the 'EASL / The Home of Hepatology' wordmark. Rejected: the page's og:image and social card https://easl.eu/wp-content/uploads/2025/07/Mobility-Research-Fellowship-Programme-1.png - fetched and visually confirmed it is a plain typographic title card ('Mobility / Research Fellowship Programme 2025') on a gradient, i.e. programme promo art, not a logo or brand mark; also rejected the page hero image bg-interior.png (decorative hero art) and the site favicon. Confidence HIGH: EASL is the provider of this record, so the provider's own self-declared logo is the correct identity."
+      },
+      "source": {
+        "url": "https://easl.eu/fellowship/mobility-research-fellowship-programme",
+        "publisher": "European Association for the Study of the Liver (EASL)",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "raw_extract": "{\"@type\":\"Organization\",\"@id\":\"https://easl.eu/#organization\",\"name\":\"EASL-The Home of Hepatology.\",\"url\":\"https://easl.eu/\",\"logo\":{\"@type\":\"ImageObject\",\"inLanguage\":\"en-GB\",\"@id\":\"https://easl.eu/#/schema/logo/image/\",\"url\":\"https://easl.eu/wp-content/uploads/2025/10/logo.svg\",\"contentUrl\":\"https://easl.eu/wp-content/uploads/2025/10/logo.svg\",\"width\":805,\"height\":211,\"caption\":\"EASL-The Home of Hepatology.\"}}",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://easl.eu/fellowship/mobility-research-fellowship-programme (official fellowship page - organisation logo found in its own structured data)",
+        "https://easl.eu/wp-content/uploads/2025/10/logo.svg (asset fetched and inspected - EASL hexagon mark + wordmark)",
+        "https://easl.eu/wp-content/uploads/2025/07/Mobility-Research-Fellowship-Programme-1.png (fetched and rendered - typographic promo card, not a logo)"
+      ],
+      "rejected": [
+        {
+          "url": "https://easl.eu/wp-content/uploads/2025/07/Mobility-Research-Fellowship-Programme-1.png",
+          "reason": "not an asset: programme promo title card (gradient background with the programme name only), used as og:image/twitter card, not a logo or brand mark"
+        },
+        {
+          "url": "https://easl.eu/wp-content/uploads/2025/10/bg-interior.png",
+          "reason": "decorative hero art"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 619,
+      "title": "Study in Saudi Scholarship Programme (Fully Funded Scholarships for International Students)",
+      "outcome": "recovered",
+      "image_url": "https://studyinsaudi.sa/images/logos/header-logo-left-colored.svg",
+      "image_source_url": "https://studyinsaudi.sa/en/VisaOptions",
+      "image_source_type": "official_government_page",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Official platform page studyinsaudi.sa/en/VisaOptions fetched successfully. The page masthead contains two official marks side by side: <img src=\"/images/logos/header-logo-right-colored.svg\" alt=\"Ministry of Education\" .../> and <img src=\"/images/logos/header-logo-left-colored.svg\" alt=\"Study in Saudi\" .../>. This record is the Study in Saudi scholarship programme, so the Study in Saudi programme mark is the correct identity; the Ministry of Education mark is the parent ministry, not the programme. Both are first-party assets on the official government platform domain. Fetched header-logo-left-colored.svg (32164 bytes) and rendered it locally to confirm it is the 'STUDY IN SAUDI' wordmark with the orange outline of Saudi Arabia and the Arabic 'الدراسة في السعودية', i.e. the programme's own brand mark. The page's JSON-LD names the platform's logo as header-logo-right.svg and the Digital Government Authority registration block (license 20260418673) confirms the site is an official Government of the Kingdom of Saudi Arabia website. Rejected: /favicon.ico and /apple-touch-icon.png (favicon assets), /images/og-image.webp (social share image), and the DGA verification card mark (a third-party government authority's stamp, not the programme identity). Confidence HIGH: first-party asset on the official government domain, identity confirmed visually and by the page's own alt text."
+      },
+      "source": {
+        "url": "https://studyinsaudi.sa/en/VisaOptions",
+        "publisher": "Ministry of Education, Kingdom of Saudi Arabia (Study in Saudi platform)",
+        "retrieved_at": "2026-10-05T15:32:00Z",
+        "raw_extract": "<a href=\"/en\" class=\"flex items-center gap-3 transition-opacity sm:gap-4 shrink-0 hover:opacity-80\">\n            <img src=\"/images/logos/header-logo-right-colored.svg\" alt=\"Ministry of Education\" class=\"h-[41px] w-auto\" width=\"53\" height=\"41\" fetchpriority=\"high\" />\n            <div class=\"w-px h-[27px] bg-gray-300\"></div>\n            <img src=\"/images/logos/header-logo-left-colored.svg\" alt=\"Study in Saudi\" class=\"h-[41px] w-auto\" width=\"54\" height=\"41\" fetchpriority=\"high\" />\n        </a>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://studyinsaudi.sa/en/VisaOptions (official programme page - two first-party masthead logos found)",
+        "https://studyinsaudi.sa/images/logos/header-logo-left-colored.svg (fetched and rendered - Study in Saudi programme mark)",
+        "https://studyinsaudi.sa/images/logos/header-logo-right-colored.svg (fetched and rendered - Ministry of Education mark; parent ministry, not the programme identity)"
+      ],
+      "rejected": [
+        {
+          "url": "https://studyinsaudi.sa/favicon.ico",
+          "reason": "favicon"
+        },
+        {
+          "url": "https://studyinsaudi.sa/apple-touch-icon.png",
+          "reason": "apple-touch-icon"
+        },
+        {
+          "url": "https://studyinsaudi.sa/images/og-image.webp",
+          "reason": "social share image (og:image/twitter:image), not a brand asset"
+        },
+        {
+          "url": "https://studyinsaudi.sa/images/logos/header-logo-right-colored.svg",
+          "reason": "wrong identity for this record: Ministry of Education corporate mark, i.e. the parent ministry rather than the Study in Saudi programme brand"
+        }
+      ]
+    }
+  ]
+}

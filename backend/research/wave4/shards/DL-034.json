@@ -1,0 +1,111 @@
+{
+  "shard_id": "DL-034",
+  "topic": "deadline",
+  "hosts": [
+    "grants.oead.at",
+    "newhorizonsforwomen.org.nz",
+    "www.banrep.gov.co",
+    "www.ku.dk",
+    "www.tcd.ie",
+    "www.uwa.edu.au"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 37,
+      "title": "OeAD Austria Scholarship",
+      "official_source": "OeAD (Agentur für Bildung und Internationalisierung), Austria",
+      "official_source_url": "https://grants.oead.at",
+      "catalogue_url": "https://grants.at",
+      "country": "Austria",
+      "deadline_display": "Varies by programme — check grants.oead.at",
+      "deadline_precision": "varies",
+      "application_period": "Programme-specific. Calls for academic year 2027/2028 are open now, with deadlines from 1 December 2026 to 15 September 2027",
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 51,
+      "title": "UWA Global Excellence Scholarship",
+      "official_source": "University of Western Australia (UWA)",
+      "official_source_url": "https://www.uwa.edu.au/study/scholarships-and-fees/scholarships/international-scholarships/global-excellence-scholarship",
+      "catalogue_url": "https://www.uwa.edu.au/study/how-to-apply/pathways-and-eligibility/university-preparation-programs",
+      "country": "Australia",
+      "deadline_display": "A separate scholarship application is not required and no scholarship deadline is published. The award is made automatically once UWA Admissions assesses your final academic transcripts after you apply for a 2027 course.",
+      "deadline_precision": "month",
+      "application_period": "Automatic consideration upon application; assessed upon final transcript submission",
+      "verification_status": "active"
+    },
+    {
+      "id": 167,
+      "title": "Austrian Database for Scholarships (OeAD) — Additional Programs",
+      "official_source": "OeAD (Austrian Agency for Education and Internationalisation)",
+      "official_source_url": "https://grants.oead.at/en",
+      "catalogue_url": null,
+      "country": "Austria",
+      "deadline_display": "Varies by program",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 251,
+      "title": "Trinity Global Excellence Undergraduate Scholarship",
+      "official_source": "Trinity College Dublin, The University of Dublin",
+      "official_source_url": "https://www.tcd.ie/study/international/scholarships/undergraduate/geug.php",
+      "catalogue_url": "https://www.tcd.ie/study/international/scholarships/undergraduate/geug.php",
+      "country": "Ireland",
+      "deadline_display": "Regional final deadlines for 2026/27: Central, North and South America 1 April 2026; Africa 1 May 2026; all other regions 15 June 2026; South East Asia and Oceania 15 July 2026. Early application is advised and awards are made on a rolling basis.",
+      "deadline_precision": "varies",
+      "application_period": "The 2026/27 cycle closed on a rolling basis with regional deadlines running from 1 April to 15 July 2026. The scheme is annual for students starting a full-time undergraduate degree at Trinity in September.",
+      "verification_status": "active"
+    },
+    {
+      "id": 252,
+      "title": "Trinity College Dublin Global Excellence Postgraduate Scholarships",
+      "official_source": "Trinity College Dublin",
+      "official_source_url": "https://www.tcd.ie/study/international/scholarships/postgraduate/gexpg.php",
+      "catalogue_url": "https://www.tcd.ie/study/undergraduate/scholarships-funding/",
+      "country": "Ireland",
+      "deadline_display": "The official page states: \"Early application is advised. Final deadlines for each region are listed below\" - Africa: 1 May 2026; Central, North and South America: 1 April 2026; South East Asia and Oceania: 15 July 2026; All other regions: 15 June 2026. All four regional dates for the 2026/2027 cycle had passed before this verification date, and no 2027/2028 dates are published.",
+      "deadline_precision": "varies",
+      "application_period": "Annual round tied to the 2026/2027 academic year; the 2026 regional deadlines ran from 1 April to 15 July 2026 and have all passed.",
+      "verification_status": "active"
+    },
+    {
+      "id": 271,
+      "title": "University of Copenhagen Danish Government Scholarship",
+      "official_source": "University of Copenhagen",
+      "official_source_url": "https://www.ku.dk/studies/admission/scholarships-for-full-degree-students",
+      "catalogue_url": "https://www.ku.dk/studies/masters/all-programmes",
+      "country": "Denmark",
+      "deadline_display": "No scholarship deadline is published and no application exists: 'All non-EU/EEA applicants to the University of Copenhagen's MA/MSc degree programmes will automatically be considered for the Danish Government Scholarship, provided they are eligible. Therefore, you do not submit an individual application.' The operative deadline is the master's admission deadline, and the faculty of theology notes that decisions are generally made after admission offers are issued and that the tuition payment date in the terms-of-payment email, sent around mid-May, must be met.",
+      "deadline_precision": "varies",
+      "application_period": "If you are unsure whether you must pay the application deposit fee, please contact the student guidance before the application deadline.",
+      "verification_status": "active"
+    },
+    {
+      "id": 598,
+      "title": "Programa de patrocinios del Banco de la República para estudios de posgrado en el exterior",
+      "official_source": "Banco de la República (Central Bank of Colombia)",
+      "official_source_url": "https://www.banrep.gov.co/es/contenidos/programas-estudios-el-exterior",
+      "catalogue_url": "https://www.banrep.gov.co/es/contenidos/programas-estudios-el-exterior",
+      "country": "Colombia",
+      "deadline_display": null,
+      "deadline_precision": "recurring",
+      "application_period": "Annual cycle announced by news item on the programme page (most recent read: 15 December 2025 for the 2026 cycle); the arts-plastics line states the call opens in the second half of 2026 and the economic-law line is offered from the second half of 2026",
+      "verification_status": "active"
+    },
+    {
+      "id": 710,
+      "title": "New Horizons for Women: Hine Kahukura Education Awards",
+      "official_source": "New Horizons for Women: Hine Kahukura",
+      "official_source_url": "https://newhorizonsforwomen.org.nz/education-awards.html",
+      "catalogue_url": "https://newhorizonsforwomen.org.nz/awards.html",
+      "country": "New Zealand",
+      "deadline_display": "Applications closed for the current round; outcomes notified October 2026",
+      "deadline_precision": "recurring",
+      "application_period": "The Trust's Education Awards page states 'Applications are CLOSED' and that all applications will receive a response in October 2026, for study in 2027. No next opening date is published on the Trust's own site.",
+      "verification_status": "needs_review"
+    }
+  ]
+}

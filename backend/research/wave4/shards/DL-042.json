@@ -1,0 +1,98 @@
+{
+  "shard_id": "DL-042",
+  "topic": "deadline",
+  "hosts": [
+    "ousf.duke.edu",
+    "www.auckland.ac.nz",
+    "www.clinical-linguistics.eu",
+    "www.modul.ac.at",
+    "www.unisg.ch"
+  ],
+  "record_count": 7,
+  "records": [
+    {
+      "id": 122,
+      "title": "Duke University Karsh International Scholars Program",
+      "official_source": "Duke University",
+      "official_source_url": "https://ousf.duke.edu/merit-scholarships/karsh-international-scholars-program",
+      "catalogue_url": null,
+      "country": "United States",
+      "deadline_display": "No separate application or scholarship deadline is published. The official page states \"Simply apply to Duke University\" and directs applicants to the Duke Financial Aid website; consideration therefore follows Duke University's own admission cycle.",
+      "deadline_precision": "varies",
+      "application_period": "Tied to Duke University's undergraduate admission cycle; the programme page publishes no separate window.",
+      "verification_status": "active"
+    },
+    {
+      "id": 154,
+      "title": "Excellence Scholarship for Bachelor Students (University of St.Gallen)",
+      "official_source": "University of St.Gallen (HSG)",
+      "official_source_url": "https://www.unisg.ch/en/studying/orientation/advice-and-support/financing-your-studies/hsg-funds-and-excellence-scholarships",
+      "catalogue_url": "https://www.unisg.ch/en/studying/orientation/advice-and-support/financing-your-studies/hsg-funds-and-excellence-scholarships/",
+      "country": "Switzerland",
+      "deadline_display": "There is no public application deadline. The Advice Center for Study Funding identifies students with an outstanding academic performance in the HSG Assessment Year and invites them to apply; an application without an invitation is not possible.",
+      "deadline_precision": "varies",
+      "application_period": "Invitation-driven. Invitations are issued by the Advice Center for Study Funding to enrolled students with outstanding Assessment Year performance, and applications are submitted by those invitees only.",
+      "verification_status": "active"
+    },
+    {
+      "id": 155,
+      "title": "Starr International Foundation Scholarship (University of St.Gallen)",
+      "official_source": "University of St.Gallen (HSG)",
+      "official_source_url": "https://www.unisg.ch/en/studying/orientation/advice-and-support/financing-your-studies/hsg-funds-and-excellence-scholarships/starr-international-foundation-scholarship",
+      "catalogue_url": "https://www.unisg.ch/en/studying/admission/admission-master",
+      "country": "Switzerland",
+      "deadline_display": "Applications for the 2026 Best Talents cohort were accepted until June 12, 2026. The application portal will reopen in November 2026 for the 2027 cohort application cycle.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual cohort cycle. The 2026 cohort window closed on June 12, 2026; the portal reopens in November 2026 for the 2027 cohort.",
+      "verification_status": "active"
+    },
+    {
+      "id": 171,
+      "title": "Modul University Vienna Scholarships",
+      "official_source": "Modul University Vienna",
+      "official_source_url": "https://www.modul.ac.at/scholarships",
+      "catalogue_url": null,
+      "country": "Austria",
+      "deadline_display": "Varies (check official website)",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 349,
+      "title": "Erasmus Mundus EMCL Scholarship (European Master's in Clinical Linguistics)",
+      "official_source": "Clinical Linguistics.Eu",
+      "official_source_url": "https://www.clinical-linguistics.eu",
+      "catalogue_url": null,
+      "country": "Finland",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": null,
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 405,
+      "title": "University of Auckland Top Achiever Scholarship",
+      "official_source": "University of Auckland (Waipapa Taumata Rau)",
+      "official_source_url": "https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/university-of-auckland-top-achiever-scholarship-900-all.html",
+      "catalogue_url": "https://www.auckland.ac.nz/assets/study/scholarships-and-funding/find-a-scholarship-or-award/regulations/university-of-auckland-top-achiever-scholarship.pdf",
+      "country": "New Zealand",
+      "deadline_display": "Opening date 20 May 2026; closing date 12 August 2026 at midday. The page states 'Application status: Not currently open for applications'. The next round's dates are not published.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual. 2027 round: 20 May 2026 to 12 August 2026 at midday. The University notes applications 'will usually open around six weeks before the closing date'.",
+      "verification_status": "active"
+    },
+    {
+      "id": 406,
+      "title": "University of Auckland Vaka Moana Scholarship",
+      "official_source": "University of Auckland (Waipapa Taumata Rau)",
+      "official_source_url": "https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/uoa-vaka-moana-scholarship-1080-all.html",
+      "catalogue_url": "https://www.auckland.ac.nz/assets/study/scholarships-and-funding/find-a-scholarship-or-award/regulations/university-of-auckland-vaka-moana-scholarship.pdf",
+      "country": "New Zealand",
+      "deadline_display": "Opening date 20 May 2026; closing date 12 August 2026 at midday. The page states 'Application status: Not currently open for applications'. The next round's dates are not published.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual. 2027 round: 20 May 2026 to 12 August 2026 at midday. The University notes applications 'will usually open around six weeks before the closing date'.",
+      "verification_status": "active"
+    }
+  ]
+}

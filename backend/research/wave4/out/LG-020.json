@@ -1,0 +1,282 @@
+{
+  "shard_id": "LG-020",
+  "agent_completed": true,
+  "topic": "logo",
+  "records": [
+    {
+      "scholarship_id": 269,
+      "title": "DTU Tuition Fee Waiver for International non-EU/EEA MSc Students",
+      "outcome": "recovered",
+      "image_url": "https://designguide.dtu.dk/-/media/subsites/designguide/design-basics/logo/dtu_logo_roed.jpg",
+      "image_source_url": "https://designguide.dtu.dk/logo",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "DTU's own visual-identity guide (designguide.dtu.dk, a dtu.dk subdomain) publishes the downloadable primary corporate logo. Asset verified live: HTTP 200, Content-Type image/jpeg, 310x387 px, 37931 bytes, and visually confirmed to be the DTU primary corporate logo (crimson 'DTU' logotype above the three stylized lions described in DTU's brand hierarchy page: 'The logo-with the DTU logotype and the three stylized lions-always comes first'). The scholarship page itself (https://www.dtu.dk/english/education/graduate/fees-and-funding/tuition_fee_waivers) contains zero external image assets - the DTU mark is an inline <svg><symbol id=\"dtu-logo\"> sprite, i.e. no fetchable URL there - which is why the official brand-asset page was used instead. Lowest-risk choice on the design guide is this red primary logo; the white/negative variant (dtu_logo_hvid.jpg) is invisible on light backgrounds and the 'sekundaer' variants are discouraged secondary colours, so those were rejected."
+      },
+      "source": {
+        "url": "https://designguide.dtu.dk/logo",
+        "publisher": "Technical University of Denmark (DTU) - Designguide / Visual Identity",
+        "retrieved_at": "2026-10-05T15:35:00Z",
+        "raw_extract": "Primary corporate logo - \"The corporate logo is used in letterheads, on business cards, and in other corporate forms of communication. The primary logo comes in three variations: in colour (DTU red), in white (negative), and in black.\" Page renders the primary corporate logo as <img src=\"/-/media/subsites/designguide/design-basics/logo/dtu_logo_roed.jpg\"> (corporate red) alongside dtu_logo_hvid.jpg (white negative), dtu_logo_sort.jpg (black) and the sekundaer_logo_* variants. PageMap date attribute: 20260806.",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.dtu.dk/english/education/graduate/fees-and-funding/external-scholarships (shard official_source_url; fetched 200, <title>National Scholarships for DTU</title>) - carries no <img> logo asset at all; DTU mark is an inline SVG symbol, so no fetchable logo URL exists on this page",
+        "https://www.dtu.dk/english/education/graduate/fees-and-funding/tuition_fee_waivers (fetched 200, <title>Tuition fee waivers for International non-EU/EEA MSc students</title>) - the actual programme page for this record; also contains no external logo image asset",
+        "https://media.adm.dtu.dk/designguide/DTU_Design_Guide_Pro_User/DTU_Design_Guide_Logo/Corporate_Red/ (HTTP 200 but Content-Type text/html - a SharePoint-style directory browse page, not a direct asset; the logo file name inside it could not be read as an image)",
+        "https://www.dtu.dk/english/profile/visiting-dtu/brand and https://www.dtu.dk/english/about/profile/brand - both HTTP 404, no DTU brand page at those paths"
+      ],
+      "rejected": [
+        {
+          "url": "https://designguide.dtu.dk/-/media/subsites/designguide/design-basics/logo/dtu_logo_hvid.jpg",
+          "reason": "Official but white (negative) variant - invisible on light card backgrounds; not the primary corporate logo"
+        },
+        {
+          "url": "https://designguide.dtu.dk/-/media/subsites/designguide/design-basics/logo/dtu_logo_sekundaer_logo_blue.jpg",
+          "reason": "Official file but a secondary-colour logo; DTU's own guide says 'when you use a secondary logo, we recommend that all other graphic elements are kept in the same colour scheme' - wrong choice for a catalogue card"
+        },
+        {
+          "url": "https://www.dtu.dk/favicon.ico",
+          "reason": "favicon - rejected class per brief section 7"
+        },
+        {
+          "url": "https://designguide.dtu.dk/-/media/subsites/designguide/design-basics/logo/dtu_logo_respektafstande_1copy.png",
+          "reason": "Not a logo asset - it is a clear-zone/placement demonstration illustration, not the mark itself"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 331,
+      "title": "Tuition Fee Waiver",
+      "outcome": "recovered",
+      "image_url": "https://designguide.dtu.dk/-/media/subsites/designguide/design-basics/logo/dtu_logo_roed.jpg",
+      "image_source_url": "https://www.dtu.dk/english/education/graduate/fees-and-funding/tuition_fee_waivers",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Same awarding body as record 269 (official_source 'Dtu.Dk' = Technical University of Denmark), so the identical official DTU primary corporate logo is correct - a duplicate image_url across 269/331 is expected, not an error. DEAD LINK FOUND: the shard's official_source_url https://www.dtu.dk/education/student-life/finances-and-scholarships/scholarships-for-international-students returns HTTP 404, as does the English variant https://www.dtu.dk/english/student-life/finances-and-scholarships. The live DTU page that actually publishes this programme is /english/education/graduate/fees-and-funding/tuition_fee_waivers (HTTP 200). The programme page carries no external logo asset (inline SVG symbol only), so the logo was taken from DTU's official brand-asset page https://designguide.dtu.dk/logo and the asset was GET-verified: 200, image/jpeg, 310x387 px, 37931 bytes, visually confirmed as the DTU logotype + three lions."
+      },
+      "source": {
+        "url": "https://www.dtu.dk/english/education/graduate/fees-and-funding/tuition_fee_waivers",
+        "publisher": "Technical University of Denmark (DTU)",
+        "retrieved_at": "2026-10-05T15:37:00Z",
+        "raw_extract": "<title>Tuition fee waivers for International non-EU/EEA MSc students</title> / meta description: \"DTU has a very limited number of tuition fee waivers to award International new non-EU/EEA MSc students applying for the Autumn intake. The tuition fee waivers are allocated to students with excellent academic performance. A tuition fee waiver will cover the tuition fee for two years.\" (Breadcrumb: Fees and funding > Tuition fee waivers (MSc); PageMap date 20260826.) The page renders the DTU mark only as <svg class=\"a-icon__asset\" aria-label=\"DTU logo\"><use xlink:href=\"#dtu-logo\"/></svg> - an inline sprite, so the downloadable asset on https://designguide.dtu.dk/logo was used.",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.dtu.dk/education/student-life/finances-and-scholarships/scholarships-for-international-students (shard official_source_url) - HTTP 404, does not exist",
+        "https://www.dtu.dk/english/student-life/finances-and-scholarships - HTTP 404 (English equivalent of the dead path)",
+        "https://www.dtu.dk/english/education/graduate/fees-and-funding - HTTP 200, 'Fees and funding' hub; links to 'Tuition fee waivers (MSc)' but carries no external logo image asset",
+        "https://www.dtu.dk/english/education/graduate/fees-and-funding/tuition-fees - HTTP 404"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.dtu.dk/english/-/media/dtu-endk/education/msc-programmes/admission/dans-guides/online-application-guide_2022_2.pdf",
+          "reason": "A PDF application guide (2022 vintage) carrying a DTU letterhead - a document, not a brand asset page, and not a standalone logo file"
+        },
+        {
+          "url": "https://www.dtu.dk/favicon.ico",
+          "reason": "favicon - rejected class per brief section 7"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 628,
+      "title": "Gulbenkian Institute for Advanced Study Fellowships 2027/28",
+      "outcome": "recovered",
+      "image_url": "https://gulbenkian.pt/wp-content/uploads/2018/12/01_logotipo_web_fundacao_EN_50px.svg",
+      "image_source_url": "https://gulbenkian.pt/en/bolsas-lista/fellowships-gulbenkian-institute-for-advanced-study",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Site-wide brand mark of Fundacao Calouste Gulbenkian, taken from the header of the record's own official scholarship page. Asset GET-verified: HTTP 200, Content-Type image/svg+xml. Identity is proven by the markup itself - <img src=\"...01_logotipo_web_fundacao_EN_50px.svg\" alt=\"Fundacao Calouste Gulbenkian\" /> inside <div class=\"fcg-header__logo\"> - and by the EN suffix in the filename plus og:site_name \"Fundacao Calouste Gulbenkian\". Vector SVG, so resolution-independent despite the '50px' web-height marker in the filename. Separate favicon family on the same domain (wp-content/themes/fcg-common/public/images/favicon/favicon.ico, favicon.svg, apple-icon-180x180.png) was rejected."
+      },
+      "source": {
+        "url": "https://gulbenkian.pt/en/bolsas-lista/fellowships-gulbenkian-institute-for-advanced-study",
+        "publisher": "Fundacao Calouste Gulbenkian",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "raw_extract": "<header class=\"fcg-header\" style=\"background-color: #111111\"><div class=\"fcg-container\"><div class=\"fcg-header__logo\"><a href=\"https://gulbenkian.pt/en\"><img src=\"https://gulbenkian.pt/wp-content/uploads/2018/12/01_logotipo_web_fundacao_EN_50px.svg\" alt=\"Fundacao Calouste Gulbenkian\" /></a></div></div></header>  ||  <meta property=\"og:site_name\" content=\"Fundacao Calouste Gulbenkian\" />  ||  <title>Fellowships Gulbenkian Institute for Advanced Study - Fundacao Calouste Gulbenkian</title>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://gulbenkian.pt/en/bolsas-lista/ (grants-and-scholarships index) - consulted as the parent listing; no separate GIAS-specific brand asset exists",
+        "No GIAS/fellowship-specific logo file is published anywhere on gulbenkian.pt; the provider's institutional mark is the only official identity for this fellowship"
+      ],
+      "rejected": [
+        {
+          "url": "https://gulbenkian.pt/wp-content/uploads/2025/07/Gias_Website_1200x900px-1.jpg",
+          "reason": "Decorative hero photograph of the institute (1200x900), declared as og:image of the page - hero art, not a logo"
+        },
+        {
+          "url": "https://gulbenkian.pt/wp-content/uploads/2025/07/Gias_Website_1200x900px-1-576x432.jpg",
+          "reason": "Responsive derivative of the same hero photograph - hero art, and low resolution"
+        },
+        {
+          "url": "https://gulbenkian.pt/wp-content/themes/fcg-common/public/images/favicon/favicon.svg",
+          "reason": "favicon - rejected class per brief section 7, despite the .svg extension"
+        },
+        {
+          "url": "https://gulbenkian.pt/wp-content/themes/fcg-common/public/images/favicon/apple-icon-180x180.png",
+          "reason": "apple-touch-icon - rejected class per brief section 7"
+        },
+        {
+          "url": "https://www.facebook.com/fundacaocaloustegulbenkian/",
+          "reason": "social media profile (declared as article:publisher) - third-party/social avatar class, rejected"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 667,
+      "title": "Arab Fund Fellowship for Academic Excellence (برنامج الزمالات للتميز الأكاديمي)",
+      "outcome": "recovered",
+      "image_url": "https://www.arabfund.org/wp-content/uploads/2023/10/Logo-1ldpi-Copy.png",
+      "image_source_url": "https://www.arabfund.org/overview/fellowships-program",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "FETCH CAVEAT FOR THE INTEGRATOR: www.arabfund.org sits behind bot protection - plain HTTP GET returns 403 Forbidden for both the page and the image. The page and the asset were therefore rendered and measured in a real browser engine (HTTP 200, image naturalWidth 321 x naturalHeight 346). Identity confirmed visually: the image is the Arab Fund for Economic and Social Development emblem - the AFESD shield with the double-headed eagle and the Arabic legend 'الصندوق العربي للتنمية الاقتصادية والاجتماعية' - i.e. the Arabic name of the Arab Fund, exactly the awarding body named in the record. It is the site-wide brand mark, present in both the header and the footer of the record's own official fellowship page and of the homepage (no alt text, so identity rests on the rendered pixels plus page context). 'Logo-1ldpi' is WordPress's low-density export naming; the served file is 321x346 px, i.e. a full logo lockup rather than a favicon-sized badge. No higher-resolution variant is referenced anywhere on the domain, and /overview/media-center is HTTP 404, so no official brand/press asset page exists."
+      },
+      "source": {
+        "url": "https://www.arabfund.org/overview/fellowships-program",
+        "publisher": "Arab Fund for Economic and Social Development (AFESD)",
+        "retrieved_at": "2026-10-05T15:36:00Z",
+        "raw_extract": "Rendered in a browser (HTTP 200, document.title \"Fellowship for Academic Excellence - Arab Fund\"). Page body text: \"Since 1997, the Arab Fund's Fellowship Program has empowered the Arab world\u2019s scholars in different fields of specialization who have excellent academic track record to conduct advanced research and/or academic activity at some of the world\u2019s most prestigious universities.\" The same <img src=\"https://www.arabfund.org/wp-content/uploads/2023/10/Logo-1ldpi-Copy.png\"> appears twice on the page (header and footer) at natural size 321x346.",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.arabfund.org/overview/fellowships-program - plain webfetch and plain Invoke-WebRequest both return HTTP 403; only a browser engine reaches it. Recorded as an access-method finding.",
+        "https://www.arabfund.org/ (homepage, browser-rendered HTTP 200) - carries the identical Logo-1ldpi-Copy.png in header and footer; no other AFESD logo file is referenced on the site",
+        "https://www.arabfund.org/overview/media-center - HTTP 404, so no official downloadable brand-asset page exists to prefer over the site header mark"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.arabfund.org/wp-content/uploads/2024/06/Hamad-Logo.svg",
+          "reason": "Logo of the Al-Hamad Award (a different AFESD programme), 150x150 - unrelated programme logo on the same CDN"
+        },
+        {
+          "url": "https://www.arabfund.org/wp-content/uploads/2024/05/sme-1-02.svg",
+          "reason": "31x31 UI icon for the SME electronic-services menu - browser/UI chrome"
+        },
+        {
+          "url": "https://www.arabfund.org/wp-content/uploads/2023/11/search.svg",
+          "reason": "31x31 search UI icon - browser/UI chrome"
+        },
+        {
+          "url": "https://www.arabfund.org/wp-content/uploads/2023/11/grid.svg",
+          "reason": "21x25 e-services menu icon - browser/UI chrome"
+        },
+        {
+          "url": "https://www.arabfund.org/wp-content/uploads/2023/11/360.svg",
+          "reason": "30x30 e-services menu icon - browser/UI chrome"
+        },
+        {
+          "url": "https://www.arabfund.org/wp-content/uploads/2024/03/arrow_seo.svg",
+          "reason": "11x11 decorative arrow - not a logo asset"
+        },
+        {
+          "url": "https://www.arabfund.org/wp-content/themes/hello-elementor-child/assets/images/Language.svg",
+          "reason": "28x28 language-switcher UI icon - browser/UI chrome"
+        },
+        {
+          "url": "https://www.arabfund.org/wp-content/uploads/2026/06/1-1-1024x576.jpg",
+          "reason": "800x450 in-page editorial photo on the fellowship page - photograph, not a logo"
+        },
+        {
+          "url": "https://www.arabfund.org/wp-content/uploads/2024/06/404-278x300.png",
+          "reason": "Low-resolution 404 error-page illustration - not a brand asset"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 680,
+      "title": "Qatar University International Students Scholarship",
+      "outcome": "recovered",
+      "image_url": "https://www.qu.edu.qa/Style%20Library/assets/images/qulogo.png",
+      "image_source_url": "https://www.qu.edu.qa/en-us/",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "The awarding body is Qatar University itself (the Scholarships Section sits inside the Office of the Vice President for Student Affairs), so the university's own primary logo is the correct mark. qulogo.png is the header brand mark of the official qu.edu.qa homepage: GET-verified HTTP 200, Content-Type image/png, 610x135 px, 9742 bytes, and visually confirmed to be the official Qatar University logo (Arabic 'جامعة قطر' over 'QATAR UNIVERSITY' beside the maroon geometric Q emblem). The Scholarship subsite itself uses a different file, /Style Library/Logos and Themes/Students/logo/Logo.png (290x136, a composite lockup reading 'Qatar University' + 'Student Affairs'); it is on the correct official domain but is a subordinate-unit lockup at lower resolution, so the university-wide primary mark was chosen instead. Both were inspected, not assumed."
+      },
+      "source": {
+        "url": "https://www.qu.edu.qa/en-us/",
+        "publisher": "Qatar University",
+        "retrieved_at": "2026-10-05T15:39:00Z",
+        "raw_extract": "Official Qatar University homepage header contains <img src=\"/Style Library/assets/images/qulogo.png\"> rendered at naturalWidth 610 x naturalHeight 135. The scholarship subsite (https://www.qu.edu.qa/en-us/students/admission/scholarships/types, SharePoint, _spPageContextInfo \"webTitle\":\"Scholarships\") declares \"webLogoUrl\":\"/Style Library/Logos and Themes/Students/logo/Logo.png\" and renders the Student Affairs composite at 290x136.",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.qu.edu.qa/en-us/students/admission/scholarships/types (shard official_source_url, fetched HTTP 200, <title>Scholarships Types</title>) - contains no programme-specific logo; only the Student Affairs site logo, so it could not supply the record's logo directly",
+        "https://www.qu.edu.qa/Style%20Library/Logos%20and%20Themes/Students/logo/Logo.png (HTTP 200, image/png, 290x136, 6890 bytes) - valid official-domain asset and identity-correct (Qatar University + Student Affairs), but a unit lockup at lower resolution than the university primary mark; recorded as the runner-up alternative, not rejected as fake",
+        "https://www.qu.edu.qa/Style Library/assets/images/qulogo.png (HTTP 200, image/png, 610x135, 9742 bytes) - selected"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.qu.edu.qa/Style Library/assets/images/favicon.ico",
+          "reason": "favicon - rejected class per brief section 7"
+        },
+        {
+          "url": "https://www.qu.edu.qa/Style Library/assets/images/favicon.png",
+          "reason": "shortcut-icon declared in the same <link rel=\"shortcut icon\"> tag - favicon class"
+        },
+        {
+          "url": "https://www.qu.edu.qa/PublishingImages/Lists/News/Active%20News/Masar_Logo_Dark_4024x3016_white.png",
+          "reason": "Logo of Masar - a different QU entity/initiative carried in the news carousel, i.e. an unrelated logo on the same site"
+        },
+        {
+          "url": "https://www.qu.edu.qa/en-us/Offices/its/SiteAssets/close.png",
+          "reason": "512x512 modal close-button sprite - browser/UI chrome"
+        },
+        {
+          "url": "https://www.qu.edu.qa/_layouts/15/images/spcommon.png",
+          "reason": "Microsoft SharePoint chrome sprite - browser/UI chrome"
+        },
+        {
+          "url": "https://www.qu.edu.qa/_layouts/15/images/searchresultui.png",
+          "reason": "SharePoint search-box chrome image - browser/UI chrome"
+        }
+      ]
+    }
+  ]
+}

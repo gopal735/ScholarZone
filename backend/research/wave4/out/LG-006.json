@@ -1,0 +1,243 @@
+{
+  "shard_id": "LG-006",
+  "agent_completed": true,
+  "topic": "logo",
+  "records": [
+    {
+      "scholarship_id": 95,
+      "title": "Institut Polytechnique de Paris (IP Paris) PhD Track & Master's Excellence Scholarships",
+      "outcome": "not_found",
+      "image_url": null,
+      "image_source_url": null,
+      "image_source_type": null,
+      "image_kind": null,
+      "confidence": "LOW",
+      "validation": {
+        "official_domain": false,
+        "accessible": false,
+        "not_favicon": false,
+        "not_ui": false,
+        "not_social": false,
+        "not_third_party": false,
+        "identity_match": false,
+        "notes": "The official domain www.ip-paris.fr is not reachable from this environment, so official absence is NOT proven and no logo could be evaluated. Outcome is not_found for the source-unreachable reason already flagged as image_evaluation_status=source_blocked in the shard, not because ip-paris.fr was shown to have no logo. Evidence: curl.exe 4 attempts to https://www.ip-paris.fr/en/education/useful-information/scholarships, https://www.ip-paris.fr/en/ and http://www.ip-paris.fr/ all returned 'curl: (28) Failed to connect ... after ~21 s' with http_code 000; Test-NetConnection www.ip-paris.fr -Port 443 = TcpTestSucceeded=False; a real browser engine (Playwright/Chromium) returned net::ERR_CONNECTION_TIMED_OUT for https://www.ip-paris.fr/en/ and timed out on https://ip-paris.fr/. DNS resolves fine (A 141.94.29.222, AAAA 2001:41d0:303:f9de::), so this is a network egress block, not a dead domain. Per section 7, a logo from any mirror, aggregator, social profile or search snippet cannot be accepted here because the official domain could not be reached to confirm identity, so image_url stays null. Recommend a re-run of this record from a network that can reach 141.94.29.222:443 rather than accepting any third-party copy."
+      },
+      "source": {
+        "url": "https://www.ip-paris.fr/en/education/useful-information/scholarships",
+        "publisher": "Institut Polytechnique de Paris",
+        "retrieved_at": "2026-10-05T15:33:00Z",
+        "raw_extract": "ERROR - no content retrieved. curl.exe: 'curl: (28) Failed to connect to www.ip-paris.fr:443 after 21061 ms: Could not connect to server' (http_code 000); Playwright/Chromium: 'Error: page.goto: net::ERR_CONNECTION_TIMED_OUT at https://www.ip-paris.fr/en/'; Test-NetConnection www.ip-paris.fr -Port 443 -> TcpTestSucceeded=False.",
+        "confidence": "LOW"
+      },
+      "examined": [
+        "https://www.ip-paris.fr/en/education/useful-information/scholarships",
+        "https://www.ip-paris.fr/en/",
+        "https://ip-paris.fr/",
+        "http://www.ip-paris.fr/"
+      ],
+      "rejected": [],
+      "extra": {
+        "blocked_hosts": ["www.ip-paris.fr (141.94.29.222:443)", "ip-paris.fr (141.94.29.222:80)"],
+        "re_run_recommended": true
+      }
+    },
+    {
+      "scholarship_id": 255,
+      "title": "University of Auckland International Student Excellence Scholarship",
+      "outcome": "recovered",
+      "image_url": "https://media.ffycdn.net/eu/university-of-auckland/gpWfbesQePyEZnCSm6F7.png",
+      "image_source_url": "https://brand.auckland.ac.nz/document/15",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "official_domain is true for PROVENANCE, not for the asset hostname: the finding page is https://brand.auckland.ac.nz/document/15, the University of Auckland's own brand portal on an auckland.ac.nz subdomain (page title 'Logo Library - Waipapa Taumata Rau | University of Auckland', footer 'Waipapa Taumata Rau University of Auckland (c) 2026', contact brand@auckland.ac.nz, terms quoting the University's Marketing, Advertising and Publishing Policy). The Library collection is named 'Primary logo' and the asset's own alt text is 'UoA-Logo-Primary-RGB-Large', so identity is proven by the publisher, not inferred. The file itself is served from media.ffycdn.net, the Frontify DAM CDN that hosts brand.auckland.ac.nz, under the workspace path /eu/university-of-auckland/ - i.e. the University's own DAM, not a shared third-party library and not a mirror. GET verified: HTTP 200, Content-Type image/png, 107989 bytes, intrinsic 3955 x 1877 px. Downloaded and visually inspected: navy 'Waipapa Taumata Rau / University of Auckland' wordmark with the university shield - a logo, not hero art, not a photo of a logo, not a badge. Rejected on this host per section 7: /etc.clientlibs/uoa-digital/clientlibs/resources/svg/favicon.svg (favicon), /etc.clientlibs/uoa-digital/clientlibs/resources/img/sprite.svg#logo-small-new (UI spritesheet), motif-footer.svg (decorative footer motif), and the news-page JPGs under /content/auckland/en/news/2025/04/15/refreshed-university-logo-unifies-brand/ (editorial photographs of the logo). The same logo is proposed for records 405 and 406 because the University of Auckland is the awarding provider for all three - this duplicate is correct, not an error."
+      },
+      "source": {
+        "url": "https://brand.auckland.ac.nz/document/15",
+        "publisher": "Waipapa Taumata Rau, University of Auckland (official brand portal, brand.auckland.ac.nz)",
+        "retrieved_at": "2026-10-05T15:37:26Z",
+        "raw_extract": "Primary logo / Featured / 4 assets ... UoA-Logo-Primary-RGB-Small PNG 564 x 286 px - Jul 15, 2026 - 17 KB | UoA-Logo-Primary-RGB-Reversed-Small PNG 601 x 286 px - Jul 15, 2026 - 18 KB | UoA-Logo-Primary-RGB-Reversed-Large PNG 3955 x 1877 px - Jul 15, 2026 - 114 KB | UoA-Logo-Primary-RGB-Large PNG 3955 x 1877 px - Jul 15, 2026 - 114 KB; <img alt=\"UoA-Logo-Primary-RGB-Large\"> ... 'Waipapa Taumata Rau University of Auckland (c) 2026 ... For any questions about using these guidelines, please contact: Brand Team brand@auckland.ac.nz'. Access terms on https://brand.auckland.ac.nz/document/14: 'By selecting 'View logo library', you acknowledge and accept these terms.' / 'These logos are provided for authorised business use only.'",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/university-of-auckland-international-student-excellence-scholarship-844-all.html",
+        "https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/university-of-auckland-top-achiever-scholarship-900-all.html",
+        "https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/uoa-vaka-moana-scholarship-1080-all.html",
+        "https://brand.auckland.ac.nz/",
+        "https://brand.auckland.ac.nz/document/6",
+        "https://brand.auckland.ac.nz/document/11/en",
+        "https://brand.auckland.ac.nz/document/14",
+        "https://www.auckland.ac.nz/en/news/2025/04/15/refreshed-university-logo-unifies-brand.html",
+        "https://www.auckland.ac.nz/en/about-us/about-the-university/policy-hub/strategic-engagement/marketing-advertising-publishing/marketing-advertising-publishing-guidelines.html"
+      ],
+      "rejected": [
+        {"url": "https://www.auckland.ac.nz/etc.clientlibs/uoa-digital/clientlibs/resources/svg/favicon.svg", "reason": "favicon - the only logo-shaped file referenced by the record's own scholarship page; explicitly rejected by section 7"},
+        {"url": "https://www.auckland.ac.nz/etc.clientlibs/uoa-digital/clientlibs/resources/img/sprite.svg#logo-small-new", "reason": "UI spritesheet fragment; the page's header logo is an SVG <use> reference into a shared sprite, rejected as 'sprites'"},
+        {"url": "https://www.auckland.ac.nz/etc.clientlibs/uoa-digital/clientlibs/resources/svg/motif-footer.svg?v=9", "reason": "decorative footer motif - the only non-UI image on the scholarship pages; not a brand mark"},
+        {"url": "https://www.auckland.ac.nz/content/auckland/en/news/2025/04/15/refreshed-university-logo-unifies-brand/_jcr_content/leftpar/imagecomponent/image.img.480.low.jpg/1744667894355.jpg", "reason": "editorial photograph of the logo in a news article, plus a low-res derivative; section 7 rejects photographs/screenshot crops of a logo"},
+        {"url": "https://www.auckland.ac.nz/content/auckland/en/news/2025/04/15/refreshed-university-logo-unifies-brand/_jcr_content/leftpar/imagecomponent_1889013884/image.img.480.low.jpg/1744668110500.jpg", "reason": "news photo of 'a page of different logos' - not a brand asset of the awarding body"},
+        {"url": "https://media.ffycdn.net/eu/university-of-auckland/9RJvzPMM2J8EJJYDrVJE.png?width={width}&rect=0,35.85,215.11,215.11&reference_width=564", "reason": "the brand portal's own <link rel=icon> - a favicon despite the CDN path"},
+        {"url": "https://media.ffycdn.net/eu/university-of-auckland/PbrEn4v1fYDeFSmprntk.png", "reason": "UoA-Logo-Primary-RGB-Reversed-Large - official, but the white reversed variant is designed for a dark header and would be near-invisible on a light card"},
+        {"url": "https://media.ffycdn.net/eu/university-of-auckland/mSKnG7AiVopQdPPqZJDX.png", "reason": "UoA-Logo-Primary-RGB-Reversed-Small - same reversed-for-dark-background problem"},
+        {"url": "https://brandfetch.com/auckland.ac.nz", "reason": "third-party aggregator, not an official source"},
+        {"url": "https://www.publicnow.com/view/FE3D0337F6C013B2A0DA8C4D636F417E63F0CFA8", "reason": "third-party news mirror"}
+      ],
+      "extra": {
+        "asset_host": "media.ffycdn.net (Frontify DAM CDN backing brand.auckland.ac.nz; workspace path /eu/university-of-auckland/)",
+        "asset_verified": {"http_status": 200, "content_type": "image/png", "bytes": 107989, "intrinsic_px": "3955x1877"},
+        "asset_filename_per_publisher": "UoA-Logo-Primary-RGB-Large.png",
+        "lighter_official_variant": "https://media.ffycdn.net/eu/university-of-auckland/GbyZEjPCmPY4a3Y2SYPe.png (UoA-Logo-Primary-RGB-Small, 564x286, 17 KB) if payload size matters",
+        "note": "The University of Auckland publishes no per-scholarship logo; the master's 'Primary logo' from the University's own Logo Library is the official brand mark for records 255, 405 and 406."
+      }
+    },
+    {
+      "scholarship_id": 405,
+      "title": "University of Auckland Top Achiever Scholarship",
+      "outcome": "recovered",
+      "image_url": "https://media.ffycdn.net/eu/university-of-auckland/gpWfbesQePyEZnCSm6F7.png",
+      "image_source_url": "https://brand.auckland.ac.nz/document/15",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Record page fetched and confirmed live (HTTP 200, <title> 'University of Auckland Top Achiever Scholarship - University of Auckland', <h1> 'University of Auckland Top Achiever Scholarship'), so the awarding body is the University of Auckland. That page carries no brand asset of its own: the only non-UI image is the decorative motif-footer.svg, and the header mark is a sprite fragment (rejected). The logo was therefore taken from the University's own brand portal https://brand.auckland.ac.nz/document/15 (title 'Logo Library - Waipapa Taumata Rau | University of Auckland', footer 'Waipapa Taumata Rau University of Auckland (c) 2026', contact brand@auckland.ac.nz), collection 'Primary logo', asset alt 'UoA-Logo-Primary-RGB-Large'. official_domain true refers to provenance (an auckland.ac.nz subdomain); the file bytes are served from media.ffycdn.net, the DAM CDN backing that portal, under workspace path /eu/university-of-auckland/. GET verified: HTTP 200, image/png, 107989 bytes, 3955 x 1877 px, downloaded and visually inspected as the navy 'Waipapa Taumata Rau / University of Auckland' shield wordmark. Identical asset to record 255 and 406 - correct, the University of Auckland is the provider for all three."
+      },
+      "source": {
+        "url": "https://brand.auckland.ac.nz/document/15",
+        "publisher": "Waipapa Taumata Rau, University of Auckland (official brand portal, brand.auckland.ac.nz)",
+        "retrieved_at": "2026-10-05T15:40:10Z",
+        "raw_extract": "Primary logo / Featured / 4 assets ... UoA-Logo-Primary-RGB-Large PNG 3955 x 1877 px - Jul 15, 2026 - 114 KB; <img alt=\"UoA-Logo-Primary-RGB-Large\"> ... 'Waipapa Taumata Rau University of Auckland (c) 2026 ... For any questions about using these guidelines, please contact: Brand Team brand@auckland.ac.nz'. Record page verified separately: <title>University of Auckland Top Achiever Scholarship - University of Auckland</title>, <h1>University of Auckland Top Achiever Scholarship</h1>.",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/university-of-auckland-top-achiever-scholarship-900-all.html",
+        "https://www.auckland.ac.nz/assets/study/scholarships-and-funding/find-a-scholarship-or-award/regulations/university-of-auckland-top-achiever-scholarship.pdf",
+        "https://brand.auckland.ac.nz/document/14",
+        "https://brand.auckland.ac.nz/document/15",
+        "https://www.auckland.ac.nz/en/news/2025/04/15/refreshed-university-logo-unifies-brand.html"
+      ],
+      "rejected": [
+        {"url": "https://www.auckland.ac.nz/etc.clientlibs/uoa-digital/clientlibs/resources/svg/favicon.svg", "reason": "favicon"},
+        {"url": "https://www.auckland.ac.nz/etc.clientlibs/uoa-digital/clientlibs/resources/img/sprite.svg#logo-small-new", "reason": "UI spritesheet fragment"},
+        {"url": "https://www.auckland.ac.nz/etc.clientlibs/uoa-digital/clientlibs/resources/svg/motif-footer.svg?v=9", "reason": "decorative footer motif, the only non-UI image on the page"},
+        {"url": "https://www.auckland.ac.nz/assets/study/scholarships-and-funding/find-a-scholarship-or-award/regulations/university-of-auckland-top-achiever-scholarship.pdf", "reason": "regulations PDF, not a brand asset; carries no logo mark"},
+        {"url": "https://media.ffycdn.net/eu/university-of-auckland/mSKnG7AiVopQdPPqZJDX.png", "reason": "reversed (white) variant intended for dark backgrounds - poor contrast on a light card"},
+        {"url": "https://brandfetch.com/auckland.ac.nz", "reason": "third-party aggregator"}
+      ],
+      "extra": {
+        "asset_host": "media.ffycdn.net (Frontify DAM CDN backing brand.auckland.ac.nz; workspace path /eu/university-of-auckland/)",
+        "asset_verified": {"http_status": 200, "content_type": "image/png", "bytes": 107989, "intrinsic_px": "3955x1877"},
+        "duplicate_image_url_with": [255, 406]
+      }
+    },
+    {
+      "scholarship_id": 406,
+      "title": "University of Auckland Vaka Moana Scholarship",
+      "outcome": "recovered",
+      "image_url": "https://media.ffycdn.net/eu/university-of-auckland/gpWfbesQePyEZnCSm6F7.png",
+      "image_source_url": "https://brand.auckland.ac.nz/document/15",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Record page fetched and confirmed live (HTTP 200, <title> 'University of Auckland Vaka Moana Scholarship - University of Auckland', <h1> 'University of Auckland Vaka Moana Scholarship'), awarding body = University of Auckland. No brand asset on the page itself: only the decorative motif-footer.svg plus the sprite-based header mark, both rejected. Logo taken from the University's own brand portal https://brand.auckland.ac.nz/document/15, collection 'Primary logo', asset alt 'UoA-Logo-Primary-RGB-Large'. official_domain true refers to provenance (an auckland.ac.nz subdomain); the file bytes are served from media.ffycdn.net, the DAM CDN backing that portal, workspace path /eu/university-of-auckland/. GET verified: HTTP 200, image/png, 107989 bytes, 3955 x 1877 px, downloaded and visually inspected as the navy 'Waipapa Taumata Rau / University of Auckland' shield wordmark. Identical asset to records 255 and 405 - correct, the University of Auckland is the provider for all three. Note the scholarship is Pacific-Islands-targeted but is an internal University of Auckland award, so the University mark is the correct identity; no separate programme mark exists."
+      },
+      "source": {
+        "url": "https://brand.auckland.ac.nz/document/15",
+        "publisher": "Waipapa Taumata Rau, University of Auckland (official brand portal, brand.auckland.ac.nz)",
+        "retrieved_at": "2026-10-05T15:40:10Z",
+        "raw_extract": "Primary logo / Featured / 4 assets ... UoA-Logo-Primary-RGB-Large PNG 3955 x 1877 px - Jul 15, 2026 - 114 KB; <img alt=\"UoA-Logo-Primary-RGB-Large\"> ... 'Waipapa Taumata Rau University of Auckland (c) 2026 ... For any questions about using these guidelines, please contact: Brand Team brand@auckland.ac.nz'. Record page verified separately: <title>University of Auckland Vaka Moana Scholarship - University of Auckland</title>, <h1>University of Auckland Vaka Moana Scholarship</h1>.",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/uoa-vaka-moana-scholarship-1080-all.html",
+        "https://www.auckland.ac.nz/assets/study/scholarships-and-funding/find-a-scholarship-or-award/regulations/university-of-auckland-vaka-moana-scholarship.pdf",
+        "https://brand.auckland.ac.nz/document/14",
+        "https://brand.auckland.ac.nz/document/15"
+      ],
+      "rejected": [
+        {"url": "https://www.auckland.ac.nz/etc.clientlibs/uoa-digital/clientlibs/resources/svg/favicon.svg", "reason": "favicon"},
+        {"url": "https://www.auckland.ac.nz/etc.clientlibs/uoa-digital/clientlibs/resources/img/sprite.svg#logo-small-new", "reason": "UI spritesheet fragment"},
+        {"url": "https://www.auckland.ac.nz/etc.clientlibs/uoa-digital/clientlibs/resources/svg/motif-footer.svg?v=9", "reason": "decorative footer motif, the only non-UI image on the page"},
+        {"url": "https://www.auckland.ac.nz/assets/study/scholarships-and-funding/find-a-scholarship-or-award/regulations/university-of-auckland-vaka-moana-scholarship.pdf", "reason": "regulations PDF, not a brand asset"},
+        {"url": "https://media.ffycdn.net/eu/university-of-auckland/PbrEn4v1fYDeFSmprntk.png", "reason": "reversed (white) variant intended for dark backgrounds"},
+        {"url": "https://brandfetch.com/auckland.ac.nz", "reason": "third-party aggregator"}
+      ],
+      "extra": {
+        "asset_host": "media.ffycdn.net (Frontify DAM CDN backing brand.auckland.ac.nz; workspace path /eu/university-of-auckland/)",
+        "asset_verified": {"http_status": 200, "content_type": "image/png", "bytes": 107989, "intrinsic_px": "3955x1877"},
+        "duplicate_image_url_with": [255, 405]
+      }
+    },
+    {
+      "scholarship_id": 675,
+      "title": "Future Scientists Scholarship (منحة علماء المستقبل) 2026/2027 — Ministry of Higher Education and Scientific Research and Central Bank of Egypt",
+      "outcome": "recovered",
+      "image_url": "https://mohesr.gov.eg/images/logo-width.png",
+      "image_source_url": "https://mohesr.gov.eg/",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": false,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Identity is proven on the awarding body's own government domain, mohesr.gov.eg = Ministry of Higher Education and Scientific Research (Egypt), which the record names as official_source. Provenance and accessibility are solid; confidence is MEDIUM rather than HIGH for two reasons. (1) Scope: this is the Ministry's institutional mark, not a Future Scientists Scholarship programme mark - the scholarship's own application portal https://futurescholars.mohesr.gov.eg (the shard's catalogue_url) is unreachable from this environment (DNS resolves to 102.223.94.116 but TCP 443 and TCP 80 both time out, curl 'Failed to connect ... after ~21 s'), so no scholarship-specific mark could be evaluated. (2) not_ui is false because the asset is served as the site's header logo (class='logo-image'), which is how a site publishes its institutional mark; it is not browser/UI chrome, a sprite, or a favicon, so section 7 does not exclude it. It is 314 x 90 px PNG (25 838 bytes) - above favicon/badge scale, well within normal logo resolution. Rejected on the shard's official_source_url: sis.gov.eg is the State Information Services news agency, a third party to this award, and the only images there are /Assets/Images/logo.png (the SIS agency logo - wrong identity) plus og:image /media/819315/790003278-1088673930382360-7402522570707545076-n-1.jpg, an editorial news photograph, not a logo. Also rejected: /Assets/Images/favicon.ico and /Assets/images/icons/icon-152x152.png on the same page. No Central Bank of Egypt mark was used: cbe.org.eg is a co-sponsor rather than the awarding body, so its logo would misidentify the provider. Recommend a re-run of this record from a network that can reach 102.223.94.116 to look for a programme-specific Future Scientists mark."
+      },
+      "source": {
+        "url": "https://mohesr.gov.eg/",
+        "publisher": "Ministry of Higher Education and Scientific Research, Arab Republic of Egypt (mohesr.gov.eg)",
+        "retrieved_at": "2026-10-05T15:35:39Z",
+        "raw_extract": "<div class=\"logo\"><a href=\"/\"><img class='logo-image  d-none d-lg-inline-block' srcset='https://mohesr.gov.eg/images/logo-width.png 1x, https://mohesr.gov.eg/images/logo-width.png 2x' src='https://mohesr.gov.eg/images/logo-width.png'><img class='logo-image-phone d-inline-block d-lg-none' src=\"https://mohesr.gov.eg/images/logo-width.png\" alt=\"وزارة التعليم العالي والبحث العلمي\" /></a></div>",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://sis.gov.eg/ar/%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2-%D8%A7%D9%84%D8%A5%D8%B9%D9%84%D8%A7%D9%85%D9%8A/%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1/%D9%85%D8%AF-%D9%81%D8%AA%D8%B1%D8%A9-%D8%A7%D9%84%D8%AA%D9%82%D8%AF%D9%8A%D9%85-%D9%84%D9%85%D9%86%D8%AD%D8%A9-%D8%B9%D9%84%D9%85%D8%A7%D8%A1-%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D9%82%D8%A8%D9%84",
+        "https://mohesr.gov.eg/",
+        "https://futurescholars.mohesr.gov.eg",
+        "https://www.mohesr.gov.eg/",
+        "https://www.cbe.org.eg/"
+      ],
+      "rejected": [
+        {"url": "https://sis.gov.eg/Assets/Images/logo.png", "reason": "wrong identity - this is the State Information Services agency logo; sis.gov.eg is a news publisher about the award, not the awarding body"},
+        {"url": "https://sis.gov.eg//media/819315/790003278-1088673930382360-7402522570707545076-n-1.jpg", "reason": "editorial news photograph used as og:image on the announcement article - not a logo"},
+        {"url": "https://sis.gov.eg/Assets/Images/favicon.ico", "reason": "favicon"},
+        {"url": "https://sis.gov.eg/Assets/images/icons/icon-152x152.png", "reason": "apple-touch-icon / PWA icon"},
+        {"url": "https://futurescholars.mohesr.gov.eg", "reason": "unreachable - official scholarship portal, no logo could be examined (TCP 443 and 80 both time out)"},
+        {"url": "https://www.cbe.org.eg/", "reason": "co-sponsor Central Bank of Egypt; a partner/funder mark would misidentify the awarding body"}
+      ],
+      "extra": {
+        "asset_verified": {"http_status": 200, "content_type": "image/png", "bytes": 25838, "intrinsic_px": "314x90", "last_modified": "Thu, 02 Jan 2025 20:55:15 GMT"},
+        "only_logo_asset_on_domain": "mohesr.gov.eg/images/logo-width.png (enumerated every image URL on the live MOHER homepage; 17 unique images, exactly one matching logo/brand/header/footer)",
+        "visual_inspection": "downloaded and viewed - a gold ornamental emblem in Egyptian flag colours. It reads more like an institutional crest/emblem than a wordmark, which is the main presentation caveat behind MEDIUM confidence.",
+        "re_run_recommended": true
+      }
+    }
+  ]
+}

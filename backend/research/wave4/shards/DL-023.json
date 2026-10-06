@@ -1,0 +1,111 @@
+{
+  "shard_id": "DL-023",
+  "topic": "deadline",
+  "hosts": [
+    "bond.edu.au",
+    "ir.iith.ac.in",
+    "www.aauw.org",
+    "www.insaindia.res.in",
+    "www.massey.ac.nz",
+    "www.unibas.ch"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 112,
+      "title": "India Science and Research Fellowship (ISRF) Programme",
+      "official_source": "Indian National Science Academy (INSA) for Department of Science & Technology (DST), Govt. of India",
+      "official_source_url": "https://www.insaindia.res.in",
+      "catalogue_url": "https://insaindia.res.in/isrf-call-2025-26",
+      "country": "India",
+      "deadline_display": "For the 2025-26 cycle the call opened on 31 December 2025 and the official announcement states \"Last date of proposal submission is 31 March 2026\". That cycle has closed; the next annual call is expected to open around 31 December 2026 but no date is published yet.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual; applications received once a year by a Selection Committee. 2025-26 window: 31 December 2025 to 31 March 2026.",
+      "verification_status": "active"
+    },
+    {
+      "id": 117,
+      "title": "Fellowship for International Research Scholars in Technology at IIT Hyderabad (FIRST@IITH)",
+      "official_source": "Indian Institute of Technology Hyderabad (IITH)",
+      "official_source_url": "https://ir.iith.ac.in/first",
+      "catalogue_url": "https://ir.iith.ac.in",
+      "country": "India",
+      "deadline_display": "Official FIRST@IITH deadlines are intake-specific. For the January 2026 intake the page states \"The application deadline was 07-November-2025 17:00 hrs IST\". For the July 2026 intake it states \"The last date to send the application by email is 30-April-2026, 17:00 hrs IST\". Both have passed and no next-intake deadline has been published.",
+      "deadline_precision": "varies",
+      "application_period": "Two intakes a year, January and July. The January intake closes in early November and the July intake closes at the end of April.",
+      "verification_status": "active"
+    },
+    {
+      "id": 160,
+      "title": "University of Basel Financial Aid and Scholarships",
+      "official_source": "University of Basel",
+      "official_source_url": "https://www.unibas.ch/en/Studies/Advice-and-Support/Funding/Scholarships.html",
+      "catalogue_url": "https://www.unibas.ch/en/Studies.html",
+      "country": "Switzerland",
+      "deadline_display": "The page publishes no central deadline. It links to a dedicated Submission Deadlines page under Advice and Support > Funding > Scholarships, and directs students to the scholarship office of their canton of residence, whose own deadlines apply.",
+      "deadline_precision": "varies",
+      "application_period": "Varies by fund. Cantonal education contributions are handled by the cantonal offices for Basel-Stadt and Basel-Landschaft; university supplementary scholarships follow the Senate scholarship committee's schedule, published on the Submission Deadlines page.",
+      "verification_status": "active"
+    },
+    {
+      "id": 473,
+      "title": "AAUW International Fellowships",
+      "official_source": "American Association of University Women (AAUW)",
+      "official_source_url": "https://www.aauw.org/resources/programs/fellowships-grants/aauw-international-fellowships",
+      "catalogue_url": null,
+      "country": "United States",
+      "deadline_display": "Applications closed September 17, 2026, at 5:00pm ET for the 2027-28 academic year. AAUW states: 'Applications have closed for the 2027-28 academic year.'",
+      "deadline_precision": "recurring",
+      "application_period": "Annual cycle. The 2027-28 window ran from August 17, 2026, 9:00am ET to September 17, 2026, 5:00pm ET; award notification March 2027.",
+      "verification_status": "active"
+    },
+    {
+      "id": 615,
+      "title": "Massey University Doctoral Scholarship",
+      "official_source": "Massey University",
+      "official_source_url": "https://www.massey.ac.nz/study/scholarships-and-awards/massey-university-doctoral-scholarship",
+      "catalogue_url": "https://www.massey.ac.nz/study/scholarships-and-awards",
+      "country": "New Zealand",
+      "deadline_display": "1 October and 1 April each year; the 2026 round closed 1 October 2026",
+      "deadline_precision": "recurring",
+      "application_period": "The published 2026 round opened 1 August 2026 and closed 1 October 2026. The award runs on a recurring cycle with closing dates of 1 October and 1 April, so the next window is the 1 April 2027 round.",
+      "verification_status": "needs_review"
+    },
+    {
+      "id": 658,
+      "title": "Undergraduate International Study Grants (Massey University)",
+      "official_source": "Massey University",
+      "official_source_url": "https://www.massey.ac.nz/study/scholarships-and-awards/undergraduate-international-study-grants",
+      "catalogue_url": "https://www.massey.ac.nz/study/scholarships-and-awards",
+      "country": "New Zealand",
+      "deadline_display": "No application deadline - the grant is assessed at the point of admission for any 2027 intake",
+      "deadline_precision": "rolling",
+      "application_period": "Any intake in the 2027 academic year. The official page shows Status: Open as at 2026-10-04.",
+      "verification_status": "needs_review"
+    },
+    {
+      "id": 659,
+      "title": "Postgraduate International Study Grants (Massey University)",
+      "official_source": "Massey University",
+      "official_source_url": "https://www.massey.ac.nz/study/scholarships-and-awards/postgraduate-international-study-grants",
+      "catalogue_url": "https://www.massey.ac.nz/study/scholarships-and-awards",
+      "country": "New Zealand",
+      "deadline_display": "No application deadline - the grant is assessed at the point of admission for any 2027 intake",
+      "deadline_precision": "rolling",
+      "application_period": "Any intake in the 2027 academic year. The official page shows Status: Open as at 2026-10-04.",
+      "verification_status": "needs_review"
+    },
+    {
+      "id": 664,
+      "title": "Bond University Postgraduate Research Scholarship",
+      "official_source": "Bond University",
+      "official_source_url": "https://bond.edu.au/scholarship/bond-university-postgraduate-research-scholarship",
+      "catalogue_url": "https://bond.edu.au/research/research-degrees/fees-and-scholarships",
+      "country": "Australia",
+      "deadline_display": "31 March 2027 (next round); rounds close 31 March and 30 September each year",
+      "deadline_precision": "recurring",
+      "application_period": "Higher degree research scholarship rounds are held twice per year, opening 1 February and closing 31 March, then opening 1 August and closing 30 September. The 2026 round closed on 30 September 2026; the next window opens 1 February 2027.",
+      "verification_status": "active"
+    }
+  ]
+}

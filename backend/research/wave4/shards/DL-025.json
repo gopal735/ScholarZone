@@ -1,0 +1,111 @@
+{
+  "shard_id": "DL-025",
+  "topic": "deadline",
+  "hosts": [
+    "bse.eu",
+    "iucea.org",
+    "www.aciar.gov.au",
+    "www.instituto-camoes.pt",
+    "www.sutd.edu.sg",
+    "www.unibocconi.it"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 97,
+      "title": "Barcelona School of Economics Master's Tuition Funding and Scholarships",
+      "official_source": "Barcelona School of Economics",
+      "official_source_url": "https://bse.eu/masters-degrees/admissions",
+      "catalogue_url": "https://web.archive.org/web/20241114021340/https://bse.eu/study/masters-programs/upf-phd-track",
+      "country": "Spain",
+      "deadline_display": "Applications for 2026-27 intake are now closed. Candidates who submit a completed application before January 15 will be considered for all funding opportunities; those who apply after that date will be considered for any remaining available funding. First-round applicants can expect an admissions decision by the middle of February; later applicants receive a decision within approximately 5 weeks.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual cycle with a funding priority cut-off of 15 January for the intake starting the following autumn. The contact form on the page lists intake interests of 2027-2028 and 2028-2029, so the next cycle is being prepared but no calendar date is published.",
+      "verification_status": "active"
+    },
+    {
+      "id": 109,
+      "title": "SUTD PhD President's Graduate Fellowship (PGF)",
+      "official_source": "Singapore University of Technology and Design (SUTD)",
+      "official_source_url": "https://www.sutd.edu.sg/admissions/graduate/scholarship/sutd-graduate-fellowships-scholarships",
+      "catalogue_url": null,
+      "country": "Singapore",
+      "deadline_display": "The official scholarship page states no application deadline: it lists only the award terms and stipend rates. SUTD publishes application closing dates per programme and per intake on its graduate admissions pages, for example \"Application closes 31 Dec 2026 (2027 intake)\" for the Master of Architecture and \"31 May 2027 (September 2027 intake)\" for the September 2027 MSc intakes, so the closing date for a PhD applicant follows the specific programme and intake.",
+      "deadline_precision": "varies",
+      "application_period": "The Fellowship has no separate application; it is awarded to candidates admitted to a PhD programme at SUTD, and applications are submitted through SUTD's admission portal at https://admission.sutd.edu.sg/. Closing dates are set per programme and per intake.",
+      "verification_status": "active"
+    },
+    {
+      "id": 139,
+      "title": "ISU Bocconi Scholarship — First-Year Students a.y. 2027-28 (Right to University Education Scholarship)",
+      "official_source": "Università Bocconi",
+      "official_source_url": "https://www.unibocconi.it/en/applying-bocconi/bachelor-and-law-programs/funding/isu-bocconi-scholarship-first-year-students-ay-2027-28",
+      "catalogue_url": "https://apply.unibocconi.it",
+      "country": "Italy",
+      "deadline_display": "Applications are only accepted within the published windows and cannot be submitted outside them. For first-year Bachelor of Science and Law international candidates the windows are 12 to 30 November 2026 (Early Session and HEC 1st round) and 15 March to 5 April 2027 (Winter Session and HEC 2nd round). For first-year Master of Science international candidates the windows are 28 January to 8 February 2027, 4 to 18 March 2027, 13 to 27 April 2027 and 10 to 18 June 2027.",
+      "deadline_precision": "varies",
+      "application_period": "Multiple fixed windows per admission session, not yet open on the verification date: from 12 November 2026 for the first Bachelor of Science and Law international window, then 15 March to 5 April 2027, with Master of Science international rounds between 28 January and 18 June 2027. Applications submitted after the deadline or in a different modality will not be evaluated.",
+      "verification_status": "active"
+    },
+    {
+      "id": 303,
+      "title": "Camoes, I.P. Portuguese Language and Culture Scholarships",
+      "official_source": "Camões - Instituto da Cooperação e da Língua, I.P. (Ministry of Foreign Affairs, Portugal)",
+      "official_source_url": "https://www.instituto-camoes.pt/en/scholarships",
+      "catalogue_url": "https://www.instituto-camoes.pt/en/activity-camoes/what-we-do/scholarships/scholarships-camoes-i-p/pt-language-culture-scholarships",
+      "country": "Portugal",
+      "deadline_display": "The 2026 application window ran 5 to 18 May 2026 (until 17:00, Lisbon time); the 2027 call had not been published when this record was verified on 2026-10-04.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual. For the 2026 cycle all six programme calls ran 5 to 18 May 2026 (until 17:00, Lisbon time); the 2026 calls closed and provisional lists were published in May-June 2026.",
+      "verification_status": "active"
+    },
+    {
+      "id": 446,
+      "title": "SUTD Undergraduate Merit Scholarship",
+      "official_source": "Singapore University of Technology and Design (SUTD)",
+      "official_source_url": "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship",
+      "catalogue_url": null,
+      "country": "Singapore",
+      "deadline_display": "There is no separate scholarship deadline. SUTD states 'Application for the scholarships is made at the same time as application for admission to SUTD', and the published 2026 admissions application window ran 2 January to 2 March 2026 for most qualifications, and from the release of A-Level results to 19 March 2026 for Singapore-Cambridge GCE A-Level qualification.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual, tied to the SUTD undergraduate admissions cycle (the published 2026 window was 2 January to 2 March 2026, and to 19 March 2026 for A-Level holders)",
+      "verification_status": "active"
+    },
+    {
+      "id": 447,
+      "title": "SUTD Trailblazers Scholarship",
+      "official_source": "Singapore University of Technology and Design (SUTD)",
+      "official_source_url": "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-trailblazers-scholarship",
+      "catalogue_url": null,
+      "country": "Singapore",
+      "deadline_display": "There is no separate scholarship deadline. SUTD states 'Application for the scholarships is made at the same time as application for admission to SUTD', and the published 2026 admissions application window ran 2 January to 2 March 2026 for most qualifications, and from the release of A-Level results to 19 March 2026 for Singapore-Cambridge GCE A-Level qualification.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual, tied to the SUTD undergraduate admissions cycle. Listed by SUTD as 'new in AY2025', so it is offered every intake.",
+      "verification_status": "active"
+    },
+    {
+      "id": 611,
+      "title": "John Allwright Fellowship",
+      "official_source": "Australian Centre for International Agricultural Research (ACIAR)",
+      "official_source_url": "https://www.aciar.gov.au/scholarships/john-allwright-fellowship",
+      "catalogue_url": "https://www.aciar.gov.au/scholarships",
+      "country": "Australia",
+      "deadline_display": "Applications closed for the current round; the programme reopens annually",
+      "deadline_precision": "recurring",
+      "application_period": "Annual cycle. The ACIAR page showed 'Applications closed' on 2026-10-04; the next intake is expected to open in the same pattern as previous years, with applications historically opening early in the calendar year.",
+      "verification_status": "needs_review"
+    },
+    {
+      "id": 671,
+      "title": "EAC Scholarship Programme (EACSP) - Two-Year Funded Master's Scholarships, Cohort 4 (Phase II)",
+      "official_source": "Inter-University Council for East Africa (IUCEA), implementing the East African Community and Federal Republic of Germany initiative",
+      "official_source_url": "https://iucea.org/two-year-funded-masters-scholarships-for-cohort-4",
+      "catalogue_url": "https://iucea.org/publications/scholarships",
+      "country": "Multiple",
+      "deadline_display": "10 September 2026, 17:00 East Africa Time (Cohort 4 application period: 20 August to 10 September 2026)",
+      "deadline_precision": "recurring",
+      "application_period": "Cohort 4 ran 20 August to 10 September 2026 and is closed. Phase II of the programme is stated to cover three cohorts from 2025, so a further cohort is expected on the same annual cycle; no next-cohort window was published as of 2026-10-04.",
+      "verification_status": "needs_review"
+    }
+  ]
+}

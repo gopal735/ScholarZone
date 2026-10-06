@@ -1,0 +1,279 @@
+{
+  "shard_id": "DL-021",
+  "agent_completed": true,
+  "notes_on_shard": "The task instruction said 7 records; the shard file actually contains 8 records. All 8 were researched and all 8 are reported here. No records were added or dropped.",
+  "records": [
+    {
+      "scholarship_id": 30,
+      "title": "Australia Awards Scholarships",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "The 2027 intake round will open on 1 February 2026 9am Australian Eastern Standard Daylight Savings Time (AEDT) and close 30 April 2026 14:00 Australian Eastern Standard Time (AEST).",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.dfat.gov.au/people-to-people/australia-awards/australia-awards-scholarships-opening-and-closing-dates",
+        "source_type": "official_government_page",
+        "publisher": "Department of Foreign Affairs and Trade, Australian Government",
+        "retrieved_at": "2026-10-05T15:20:00Z",
+        "as_of": "Heading of the only dated table on the page: 'Dates for study commencing in 2027'",
+        "raw_extract": "H1: 'Australia Awards opening and closing dates' | H2: 'Dates for study commencing in 2027' | table row -> cell: link 'Bangladesh' (/people-to-people/australia-awards/participating-countries/bangladesh-information-for-intake) | cell '1 February 2026 0900 AEDT' | cell '30 April 2026 1400 AEST' | cell link 'inquiries@australiaawardsbangladesh.org'. The same 1 February 2026 / 30 April 2026 pair appears on every country row except Palau, which reads '30 March 2026 0900 AEDT' and '30 June 2026 1400 AEST'. The linked 'Australia Awards Scholarships' landing page itself publishes no date at all and only links onward to 'Opening and closing dates'.",
+        "exact_deadline_wording": "30 April 2026 1400 AEST",
+        "confidence": "HIGH",
+        "notes": "Not a conflicting-source case: two official DFAT pages state the same closing date for the same 2027 intake round. The dedicated dates page gives the country table (Bangladesh: '30 April 2026 1400 AEST'); the DFAT FAQ page states in prose 'The 2027 intake round will open on 1 February 2026 9am Australian Eastern Standard Daylight Savings Time (AEDT) and close 30 April 2026 14:00 Australian Eastern Standard Time (AEST).' These agree exactly. The date is nonetheless in the past as at retrieval (2026-10-05) and no 2028 intake section was observed on the dates page, so per brief section 6 no stale date is written and the date is not shifted forward a year. Note also that the record is not country-specific, so the deadline genuinely varies by country (Palau differs from every other row), which is an additional reason not to write a single date. deadline_semantics is reported as UNKNOWN because no usable value can be written; the underlying provider wording is preserved verbatim above and in raw_extract. Separately: this scholarship is explicitly NOT rolling - the DFAT FAQ answers 'Are applications assessed on a rolling basis?' with 'No. Australia Awards Scholarship applications are not assessed on a rolling basis.'"
+      },
+      "field_mapping": {
+        "deadline_date": "null (published 2027-intake closing date 2026-04-30 has passed; not written, not rolled forward)",
+        "deadline_precision": "unknown",
+        "deadline_display": "The 2027 intake round will open on 1 February 2026 9am Australian Eastern Standard Daylight Savings Time (AEDT) and close 30 April 2026 14:00 Australian Eastern Standard Time (AEST)."
+      },
+      "corroborating_sources": [
+        {
+          "url": "https://www.dfat.gov.au/people-to-people/australia-awards/frequently-asked-questions",
+          "retrieved_at": "2026-10-05T15:26:00Z",
+          "verbatim": "When do applications open and close? The 2027 intake round will open on 1 February 2026 9am Australian Eastern Standard Daylight Savings Time (AEDT) and close 30 April 2026 14:00 Australian Eastern Standard Time (AEST). Applicants should check the schedule published for their country on the Australia Awards opening and closing dates page before preparing an application.",
+          "agrees_with_source": true
+        }
+      ],
+      "examined": [
+        "https://www.dfat.gov.au/people-to-people/australia-awards/australia-awards-scholarships",
+        "https://www.dfat.gov.au/people-people/australia-awards/australia-awards-fellowships"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.umu.se/en/education/application-and-admission/key-dates-and-deadlines/",
+          "reason": "Generic university admissions calendar for a different programme; also not this provider. Explicitly barred by brief section 5."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 43,
+      "title": "Australia Awards Fellowships",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Applications for Australia Awards Fellowships Round 22 are expected to open in the final quarter of 2026.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.dfat.gov.au/people-people/australia-awards/australia-awards-fellowships/applying-australia-awards-fellowship",
+        "source_type": "official_government_page",
+        "publisher": "Department of Foreign Affairs and Trade, Australian Government",
+        "retrieved_at": "2026-10-05T15:22:00Z",
+        "as_of": "Round 21 (closed) and Round 22 (not yet open) as stated on the page",
+        "raw_extract": "heading 'How to apply' / paragraph [ref=f1e169]: 'Australia Awards Fellowships Round 21 is now closed for applications.' | heading 'Key dates for Round 21' [ref=f1e170] | listitem [ref=f1e177]: strong '16 January 2026' + text ' (11:59pm AEDT) – applications for Round 21 close' | listitem [ref=f1e178]: strong 'From August 2026' + text ' – Round 21 Outcome – successful and unsuccessful notifications made to all applicants' | heading 'Key dates for Round 22' [ref=f1e180] | paragraph [ref=f1e181]: 'Applications for Australia Awards Fellowships Round 22 are expected to open in the final quarter of 2026.' | in-page contents navigation lists links 'Key dates for Round 21' (#key-dates-21) and 'Key dates for Round 22' (#key-dates-22).",
+        "exact_deadline_wording": "Applications for Australia Awards Fellowships Round 22 are expected to open in the final quarter of 2026.",
+        "confidence": "MEDIUM",
+        "notes": "No closing date exists on the official page for any open or upcoming round. Round 21 closed 16 January 2026 (past). For Round 22 the page gives only an opening expectation of 'the final quarter of 2026' - a quarter, not a month and not a day, and hedged with 'expected'. Per brief sections 5 and 6 this has NOT been converted into a calendar date and no day has been invented. Classified ANNUAL because the page structures the programme as consecutively numbered annual rounds (resources are listed by Round 21, Round 20, Round 19) with no fixed current closing date. Confidence is MEDIUM rather than HIGH because the recurrence is evidenced by round numbering and the next-round statement rather than by an explicit sentence declaring an annual cycle, and because the Round 22 wording is non-binding ('expected'). Important URL correction: the official_source_url in the shard, https://www.dfat.gov.au/people-to-people/australia-awards/australia-awards-fellowships, returns HTTP 404; the live page sits under the duplicated path segment /people-people/ (the same typo exists in DFAT's own site navigation). A Round 21 closing date of 16 January 2026 exists but is in the past and is not written; it is quoted only as evidence of the round structure."
+      },
+      "field_mapping": {
+        "deadline_date": "null (ANNUAL - no fixed current closing date published)",
+        "deadline_precision": "recurring",
+        "deadline_display": "Applications for Australia Awards Fellowships Round 22 are expected to open in the final quarter of 2026."
+      },
+      "examined": [
+        "https://www.dfat.gov.au/people-people/australia-awards/australia-awards-fellowships"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.dfat.gov.au/people-to-people/australia-awards/australia-awards-fellowships",
+          "reason": "URL given in the shard returns HTTP 404; not a live source."
+        },
+        {
+          "url": "https://www.dfat.gov.au/sites/default/files/australia-awards-fellowships-round-21-guidelines.pdf",
+          "reason": "Seen only in search results, not fetched. Round 21 is a closed past round, so it would not supply a current deadline even if fetched."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 44,
+      "title": "Australia Awards Mekong-Australia Partnership (MAP) Scholarships",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.dfat.gov.au/people-to-people/australia-awards/mekong-australia-partnership",
+        "source_type": "official_government_page",
+        "publisher": "Department of Foreign Affairs and Trade, Australian Government",
+        "retrieved_at": "2026-10-05T15:20:30Z",
+        "as_of": null,
+        "raw_extract": "The MAP page contains no date, no deadline and no intake calendar. Verbatim: paragraph [ref=f4e147]: 'From 2026, MAP will offer scholarships for Thailand, Cambodia, Vietnam, Laos and Myanmar at postgraduate (Master's) level to undertake coursework or research in MAP thematic areas.' | heading 'The application process' [ref=f4e237] / paragraph [ref=f4e238]: 'The application process and online portal for MAP-funded scholarships will be the same as for the Australia Awards Scholarships. Applicants can apply for a MAP-funded scholarship if the choice of study or research falls within one of the key thematic areas outlined above. Applicants can also choose to apply for both an Australian Awards Scholarship and a MAP-funded scholarship in their respective countries.' | heading 'Online applications' [ref=f4e242] / paragraph [ref=f4e243]: 'Citizens from Vietnam, Cambodia, Laos and Myanmar should follow the same application procedure for the Australia Awards Scholarships for your country.'",
+        "exact_deadline_wording": null,
+        "confidence": "LOW",
+        "notes": "The record's own official page publishes no deadline at all, and a targeted search of that page for deadline/closing/close/application/2026/2027 returned only the process text quoted above. The page delegates timing to the Australia Awards Scholarships schedule. That schedule was fetched live and its rows for the four Mekong countries named on the MAP page (Vietnam, Cambodia, Laos, Myanmar) all read 30 April 2026 - already in the past as at 2026-10-05 - so no current MAP deadline can be derived from it. Additionally, Thailand is named as an eligible MAP country on the MAP page but has NO row at all on the Australia Awards opening and closing dates page, so even a past MAP date could not be stated for the full eligible set. Nothing was inferred from the expired Australia Awards dates, and no date was constructed. Reported UNKNOWN rather than expired_mismatch because the record's own primary source yields no date whatsoever."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "null"
+      },
+      "examined": [
+        "https://www.dfat.gov.au/people-to-people/australia-awards/australia-awards-scholarships-opening-and-closing-dates"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 189,
+      "title": "Umeå University Scholarship for International Students",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "4 March (23:59 CET): Deadline to register interest for a scholarship",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.umu.se/en/education/application-and-admission/scholarships/",
+        "source_type": "official_university_page",
+        "publisher": "Umeå University",
+        "retrieved_at": "2026-10-05T15:18:00Z",
+        "as_of": "'Timeline for 2026' section; page footer states 'Latest update: 2025-12-18'",
+        "raw_extract": "H1: 'Scholarships' | H2: 'Timeline for 2026' | '15 January: Deadline to have a Umeå University programme as priority 1 on University Admissions' | '2 February: Deadline to pay application fee on University Admissions' | '4–9 February: A personal invitation will be sent out via email to all eligible students' | '4 March (23:59 CET): Deadline to register interest for a scholarship' | '17 April: Scholarship results are announced via email' | Under 'Scholarship eligibility': 'have completed your application for programme studies before the application deadline on 15 January 2026;' and 'have paid the application fee by 2 February 2026' | 'Latest update: 2025-12-18'.",
+        "exact_deadline_wording": "4 March (23:59 CET): Deadline to register interest for a scholarship",
+        "confidence": "HIGH",
+        "notes": "This is the scholarship's own application deadline ('Deadline to register interest for a scholarship'), not the University Admissions deadline - the eligibility bullets separately name 15 January 2026 and 2 February 2026 as admissions deadlines. The timeline is explicitly headed 'Timeline for 2026' and the eligibility text pins it to the 15 January 2026 admissions round, so it is the autumn 2026 entry cycle. Every date in it (15 Jan, 2 Feb, 4-9 Feb, 4 Mar, 17 Apr 2026) is in the past as at retrieval on 2026-10-05, and no 2027 timeline has replaced it. The scholarships FAQ page was also fetched and adds no later cycle: it only says 'If you are eligible, you will receive a personal invitation via email at the beginning of February' with footer 'Latest update: 2025-09-11'. Per brief section 6 the stale 4 March date is NOT written and has NOT been moved to 2027. The university also states no preliminary/subject-to-change caveat in the live text captured, so that claim in the shard's stored deadline_display was not reproducible here. Note: the shard's official_source_url https://www.umu.se/en/education/scholarships returns HTTP 404; the live page is under /education/application-and-admission/scholarships/."
+      },
+      "field_mapping": {
+        "deadline_date": "null (published 2026-cycle registration deadline 4 March 2026 has passed; not written, not rolled forward to 2027)",
+        "deadline_precision": "unknown",
+        "deadline_display": "4 March (23:59 CET): Deadline to register interest for a scholarship"
+      },
+      "examined": [
+        "https://www.umu.se/en/education/application-and-admission/scholarships/faq-scholarships/",
+        "https://www.umu.se/en/education/scholarships"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.umu.se/en/education/application-and-admission/key-dates-and-deadlines/",
+          "reason": "Generic University Admissions calendar for autumn 2027 entry. Barred by brief section 5 as an admissions deadline for a different programme; it is also the wrong cycle for this scholarship's registration step."
+        },
+        {
+          "url": "https://www.umu.se/globalassets/fristaende-webbar/regelverk/engelska/first--and-second-cycle-education/fs-1.1-329-25-procedures-for-scholarships-for-fee-paying-students.pdf",
+          "reason": "Seen only in search results, not fetched. Also a governing-procedure document describing framework rules, not a published deadline."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 322,
+      "title": "Chinese Government Scholarship (CGS) / CSC Type A - Embassy of China in Bangladesh",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Application Deadline: January 10, 2026",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://bd.china-embassy.gov.cn/eng/sghd/202512/t20251219_11776194.htm",
+        "source_type": "official_government_page",
+        "publisher": "Embassy of the People's Republic of China in Bangladesh",
+        "retrieved_at": "2026-10-05T15:19:40Z",
+        "as_of": "Announcement published 2025-12-19, for the 2025/2026 application cycle",
+        "raw_extract": "H1: 'Announcement: Chinese Government Scholarship (CGS) / CSC Type A' | timestamp '2025-12-19 00:43' | 'The Government of the People's Republic of China is pleased to announce that Bangladeshi students are invited to apply for the Chinese Government Scholarship (CGS) – Type A, administered by the China Scholarship Council (CSC).' | 'All applicants must complete their application online through the official China Scholarship Council website:www.campuschina.org' | 'Applicants are advised to carefully follow the instructions and submit all required documents within the stipulated time.' | 'Application Deadline: January 10, 2026' | 'For official guidance, clarification, or inquiries regarding the application process, applicants are encouraged to contact the Embassy of the People's Republic of China in Bangladesh.'",
+        "exact_deadline_wording": "Application Deadline: January 10, 2026",
+        "confidence": "HIGH",
+        "notes": "The only deadline published on the record's own official page is 10 January 2026, which is in the past as at retrieval on 2026-10-05. The Embassy's full Press Release index was fetched to check for a successor cycle: the announcement of 2025-12-19 is still the sole CGS/CSC item, and the index runs forward to entries dated 2026-04-13 with no new scholarship announcement. No next-cycle date exists on the Embassy site, so per brief section 6 the stale date is not written and is not shifted to 2027. Recorded as expired_mismatch rather than ANNUAL: the page states one specific date and makes no claim about recurrence, so the annual expectation in the shard's stored application_period is not supported by this source. deadline_semantics is UNKNOWN because no usable value can be written; the provider's own wording is preserved verbatim."
+      },
+      "field_mapping": {
+        "deadline_date": "null (published deadline 2026-01-10 has passed; no successor cycle announced)",
+        "deadline_precision": "unknown",
+        "deadline_display": "Application Deadline: January 10, 2026"
+      },
+      "examined": [
+        "https://bd.china-embassy.gov.cn/eng/sghd/"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 328,
+      "title": "CTU Scholarship for Foreign Students - Czech Technical University in Prague",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://international.cvut.cz/students/incoming-students/ctu-scholarships",
+        "source_type": "official_university_page",
+        "publisher": "Czech Technical University in Prague",
+        "retrieved_at": "2026-10-05T15:19:20Z",
+        "as_of": "Page footer states 'Last changed: 19.09.2025'",
+        "raw_extract": "H1: 'CTU Scholarships' | The page contains no occurrence of the word 'deadline' and no closing date, intake calendar or application round anywhere in its text. Verbatim from the Master's rules: 'After obtaining the agreement of their faculty and through the International Office at their faculty, foreign students submit an application for a scholarship to the Department of International Relations at the rectorate of CTU. The application should be made on the form that is available on the web pages of the rectorate of CTU.' | 'A scholarship is normally awarded to an individual student for a period of 1 to 2 semesters.' | From the doctoral rules: 'The scholarship is awarded to an individual student for a period of 6-12 months.' | 'Decisions on the award of a scholarship are made by the vice-rector on the basis of a recommendation by the commission of vice-deans for international relations.' | Footer: 'Last changed: 19.09.2025'.",
+        "exact_deadline_wording": null,
+        "confidence": "HIGH",
+        "notes": "This is a genuine absence of evidence rather than insufficient searching. The full live page was retrieved and it describes only a standing administrative procedure (obtain faculty agreement, then apply via the faculty International Office to the Department of International Relations at the rectorate) with no published closing date, no intake calendar and no application round for either the Master's or the doctoral scheme. The absence of the word 'deadline' anywhere on the page is the reason no value is reported. ROLLING was deliberately NOT claimed: the page never says rolling, ongoing or no-fixed-deadline, so asserting ROLLING would be an inference the source does not support. No deadline has been inferred from CTU's general admissions calendar, which is a different programme and barred by brief section 5."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "null"
+      },
+      "examined": [],
+      "rejected_sources": [
+        {
+          "url": "https://portal.cvut.cz/international/wp-content/uploads/sites/2/2016/12/0-Application-Form-Scholarship-157.doc",
+          "reason": "Application form link surfaced in page text but not fetched; a form carries no deadline and the page itself states no closing date."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 360,
+      "title": "MEXT Scholarship for 2027 - Embassy Recommendation (Research Students)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "20 April-15 May,2026 — Applications closed for 2027",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.in.emb-japan.go.jp/education/japanese_government_scholarships.html",
+        "source_type": "official_government_page",
+        "publisher": "Embassy of Japan in India (Ministry of Foreign Affairs of Japan)",
+        "retrieved_at": "2026-10-05T15:23:00Z",
+        "as_of": "Page states 'Updated on 6 August 2026'; the row is explicitly labelled for the 2027 intake",
+        "raw_extract": "H1 area: 'JAPANESE GOVERNMENT (MEXT) SCHOLARSHIPS' | 'Updated on 6 August 2026' | table header row cells: 'Sl. No.' | 'Type' | 'Level' | 'No. of Scholarships' | 'Application Period' | 'Remarks' | Research Student row: link 'Research Student' (Research_Student.html) | 'Research studies (possible to continue to Master's/Ph.D course)' | 'To be announced' | '20 April-15 May,2026' | 'Applications closed for 2027'. For contrast, the sibling rows on the same table read '23 April-25 May,2026' / 'Applications closed for 2027'.",
+        "exact_deadline_wording": "20 April-15 May,2026",
+        "confidence": "HIGH",
+        "notes": "This is the most specific official evidence found in the shard: the Embassy's own schedule table gives an explicit application period with a closing day, and the Remarks column states in the provider's own words that the round is closed. The window closed 15 May 2026, which is in the past as at retrieval on 2026-10-05, so per brief section 6 the date is not written and not moved to the 2028 intake. Note that the underlying value was genuinely EXACT (a stated calendar closing date); it is reported as UNKNOWN semantics only because no usable value can be written - the exact provider wording is preserved verbatim in deadline_display and raw_extract so nothing is lost. The generic JASSO/MEXT page at studyinjapan.go.jp was also fetched and corroborates without conflict: 'Recruitment for those arriving in Japan in April 2027 or September/October 2027 is made between April and May of the previous year. First screening is conducted between May and July by the Japanese Embassies or Consulates General. As the application process and specific schedule differ according to the country of your nationality, please inquire the Japanese Embassy or Consulate General in your country for details.' This confirms that country-specific schedules are set by each mission, so the India table is the correct authority for this record. This row's 'To be announced' sits in the No. of Scholarships column, not the Application Period column, and was not misread as a missing date. The linked detail page https://www.in.emb-japan.go.jp/education/japanese_government_scholarships/Research_Student.html returns HTTP 404."
+      },
+      "field_mapping": {
+        "deadline_date": "null (published 2027-intake closing date 2026-05-15 has passed; Embassy states 'Applications closed for 2027'; not written, not rolled forward)",
+        "deadline_precision": "unknown",
+        "deadline_display": "20 April-15 May,2026 — Applications closed for 2027"
+      },
+      "examined": [
+        "https://www.studyinjapan.go.jp/en/smap-stopj-applications-research.html",
+        "https://www.in.emb-japan.go.jp/education/japanese_government_scholarships/Research_Student.html"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 404,
+      "title": "Kupe Scholarship for Māori and Pacific high achievers",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "3 August to 31 August 2026",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://workforce.education.govt.nz/becoming-teacher-new-zealand/become-teacher-scholarships/kupe-scholarship-maori-and-pacific-high-achievers",
+        "source_type": "official_government_page",
+        "publisher": "Ministry of Education - Education Workforce (TeachNZ Scholarships), New Zealand Government",
+        "retrieved_at": "2026-10-05T15:21:30Z",
+        "as_of": "Page states 'Last updated 2 October 2026'; refers to 'the 2027 round'",
+        "raw_extract": "H1: 'Kupe Scholarship for Māori and Pacific high achievers' | 'Last updated 2 October 2026' | H2: 'Application period now closed' | 'Applications are now closed. Applicants will find out if they are shortlisted in early October 2026. Final notifications will be sent by the end of November 2026.' | 'Please note the following for the 2027 round:' | 'Each year, we offer 20 scholarships to dedicated and high-achieving Māori and Pacific students who can see themselves as outstanding education role models.' | Key scholarship information table: 'Kupe Scholarship' | 'Scholarship type - Māori and Pacific high achievers' | 'Application period - 3 August to 31 August 2026' | 'Fees - Paid' | 'Allowance - NZD$15,000 over duration of study' | 'Scholarships available - 20'.",
+        "exact_deadline_wording": "3 August to 31 August 2026",
+        "confidence": "HIGH",
+        "notes": "The page states a precise application window, 3 to 31 August 2026, and closes it in the provider's own words with a dedicated 'Application period now closed' heading. The window ended 31 August 2026, in the past as at retrieval on 2026-10-05, and the page has been updated as recently as 2 October 2026 yet still publishes no 2028 round dates. Per brief section 6 the stale closing date is not written and is not shifted a year. The 'Each year, we offer 20 scholarships' sentence does indicate annual recurrence, but it is paired with a currently closed and explicitly expired window, so expired_mismatch is reported instead of ANNUAL to ensure no date is written. The shard's own record carries verification_status 'quarantined', which is consistent with the closed state found here. The 2027-round notes on the page (certified documents, resident visa holders eligible, video upload required) are changes for the next round, not a published deadline, and were not converted into one."
+      },
+      "field_mapping": {
+        "deadline_date": "null (published 2027-round closing date 2026-08-31 has passed; page states applications are now closed; not written, not rolled forward)",
+        "deadline_precision": "unknown",
+        "deadline_display": "3 August to 31 August 2026"
+      },
+      "examined": [],
+      "rejected_sources": [
+        {
+          "url": "https://assets.workforce.education.govt.nz/s3fs-public/2026-09/Applying%20for%20a%20TeachNZ%20Scholarship%20Guidance.pdf?VersionId=ykSAUbn_J_Q_mAOSOdiGJ3mN3OGRq9bb",
+          "reason": "The shard's catalogue_url. Not fetched - the live programme page already states the application period and closure unambiguously, so the PDF could not change the finding. It is guidance material, not the deadline authority."
+        }
+      ]
+    }
+  ]
+}

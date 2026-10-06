@@ -1,0 +1,110 @@
+{
+  "shard_id": "DL-011",
+  "topic": "deadline",
+  "hosts": [
+    "frq.gouv.qc.ca",
+    "tertiaryeducation.govmu.org",
+    "www.hanken.fi",
+    "www.hec.gov.pk",
+    "www.su.se"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 187,
+      "title": "Stockholm University Scholarship Scheme",
+      "official_source": "Stockholm University",
+      "official_source_url": "https://www.su.se/english/education/scholarships-and-fees",
+      "catalogue_url": null,
+      "country": "Sweden",
+      "deadline_display": "Official wording from Stockholm University's tuition fee payment timeline for autumn semester 2026: \"30 March - Deadline Stockholm University Scholarship\" and \"28 April - Results Stockholm University Scholarship\". Eligible students receive an electronic application form by email when the Notification of selection results is published, so the scholarship itself is applied for after the admissions round closes.",
+      "deadline_precision": "recurring",
+      "application_period": "After the Notification of selection results for the first (international) admission round is published; the published deadline for the autumn 2026 cycle was 30 March, with results on 28 April",
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 309,
+      "title": "Merit Scholarship Program for Foreign Students (PBEEE) - Fonds de recherche du Quebec",
+      "official_source": "Fonds de recherche du Quebec (FRQ) - secteur Nature et technologies, commissioned by the Ministere de l'Enseignement superieur du Quebec",
+      "official_source_url": "https://frq.gouv.qc.ca/en/program/merit-scholarship-program-for-foreign-students-pbeee-2026-2027-2",
+      "catalogue_url": "https://frq.gouv.qc.ca/en/complete-program-directory",
+      "country": "Canada",
+      "deadline_display": "Deadline (application): December 2nd, 2025 at 16:00 (EST) for the 2026-2027 competition. University and CCTT Network preselection of applications to FRQ: October 23, 2025, 4 p.m. Candidates preselected by the China Scholarship Council: before March 31, 2026. The 2026-2027 rules are marked out of competition and no next-cycle date was published as at 2026-10-04.",
+      "deadline_precision": "recurring",
+      "application_period": "University preselection: October 2025; FRQ final submission: December 2, 2025",
+      "verification_status": "active"
+    },
+    {
+      "id": 342,
+      "title": "Hanken GBSN Honor Scholarship (GBSN Scholarship for students from developing countries)",
+      "official_source": "Hanken School of Economics",
+      "official_source_url": "https://www.hanken.fi/en/apply/study-hanken/international-students/tuition-fees-and-scholarships",
+      "catalogue_url": "https://www.hanken.fi/en/apply/study-hanken/international-students/tuition-fees-and-scholarships/gbsn-scholarship-students",
+      "country": "Finland",
+      "deadline_display": "No separate scholarship deadline is published. Hanken states: \"Note that the scholarship is only awarded to eligible applicants within the Master's Main Admission round.\" and \"You apply for the GBSN Honor scholarship directly on the application form for admission.\"",
+      "deadline_precision": "recurring",
+      "application_period": "Tied to the annual Master's Main Admission round for English-taught Master's programmes",
+      "verification_status": "active"
+    },
+    {
+      "id": 606,
+      "title": "Overseas Scholarship for MS/M.Phil and Ph.D Studies (Phase-III), Higher Education Commission Pakistan",
+      "official_source": "Higher Education Commission (HEC), Pakistan",
+      "official_source_url": "https://www.hec.gov.pk/english/scholarshipsgrants/OSSPhase-III/Pages/default.aspx",
+      "catalogue_url": "https://www.hec.gov.pk/english/scholarshipsgrants/OSSPhase-III/Pages/Partner-Agencies-and-Univesities.aspx",
+      "country": "Pakistan",
+      "deadline_display": "Batch-IV applications closed 28 August 2026 at 16:00",
+      "deadline_precision": "recurring",
+      "application_period": "Batch-IV online registration 9 August 2026 to 28 August 2026 16:00, with the HEC Aptitude Test held 27 September 2026; further batches announced by HEC",
+      "verification_status": "active"
+    },
+    {
+      "id": 684,
+      "title": "Mauritius-Africa Scholarship Scheme (MASS)",
+      "official_source": "Ministry of Tertiary Education, Science and Research, Republic of Mauritius",
+      "official_source_url": "https://tertiaryeducation.govmu.org/te/wp-content/uploads/2025/10/Call-for-Application.pdf",
+      "catalogue_url": "https://tertiaryeducation.govmu.org/te/index.php/mass",
+      "country": "Mauritius",
+      "deadline_display": "No central date is published: each nominating agency sets its own deadline and communicates it to prospective applicants. For the 2026 edition the Mauritian public universities opened their own application windows from October 2025 and closed them between February and March 2026, so the next edition is expected to follow the same annual cycle.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual edition published by the Ministry, with applications made through the nominating agency in the applicant's country and in parallel with the chosen Mauritian public university's admission window",
+      "verification_status": "needs_review"
+    },
+    {
+      "id": 704,
+      "title": "Allama Muhammad Iqbal Scholarship for Central Asia & Friendly Countries (Higher Education Commission, Pakistan)",
+      "official_source": "Higher Education Commission (HEC), Government of Pakistan",
+      "official_source_url": "https://www.hec.gov.pk/english/scholarshipsgrants/CAFC/AMIC/Pages/default.aspx",
+      "catalogue_url": "https://www.hec.gov.pk/english/scholarshipsgrants/CAFC/Pages/default.aspx",
+      "country": "Pakistan",
+      "deadline_display": "No deadline published; HEC runs the scheme as a multi-year programme",
+      "deadline_precision": "recurring",
+      "application_period": "Multi-year programme with 350 places over five years; HEC publishes an online application through its scholarship portal but no application deadline on the pages read",
+      "verification_status": "active"
+    },
+    {
+      "id": 705,
+      "title": "Allama Muhammad Iqbal Scholarships for Students from Bangladesh (Pak-Bangladesh Knowledge Corridor, Higher Education Commission Pakistan)",
+      "official_source": "Higher Education Commission (HEC), Government of Pakistan",
+      "official_source_url": "https://www.hec.gov.pk/english/scholarshipsgrants/PBKC/Pages/AISB.aspx",
+      "catalogue_url": "https://www.hec.gov.pk/english/scholarshipsgrants/PBKC/Pages/default.aspx",
+      "country": "Bangladesh",
+      "deadline_display": "No deadline published; HEC operates this as a continuing bilateral scholarship programme",
+      "deadline_precision": "recurring",
+      "application_period": "Continuing bilateral programme; applications go through the HEC scholarship portal and HEC publishes no closing date on the pages read",
+      "verification_status": "active"
+    },
+    {
+      "id": 706,
+      "title": "Allama Iqbal Scholarships for Srilankan Students (Pak-Sri Lanka Higher Education Cooperation Programme, Higher Education Commission Pakistan)",
+      "official_source": "Higher Education Commission (HEC), Government of Pakistan",
+      "official_source_url": "https://www.hec.gov.pk/english/scholarshipsgrants/pshecp/aiss/Pages/default.aspx",
+      "catalogue_url": "https://www.hec.gov.pk/english/scholarshipsgrants/pshecp/Pages/default.aspx",
+      "country": "Sri Lanka",
+      "deadline_display": "Last date for submission of online applications was 5 July 2026; the next cycle is expected on the same annual pattern",
+      "deadline_precision": "recurring",
+      "application_period": "Annual cycle advertised by HEC; the 2026 cycle closed on 5 July 2026 after an extension, so the next window is expected in 2027",
+      "verification_status": "active"
+    }
+  ]
+}

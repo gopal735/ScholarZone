@@ -1,0 +1,251 @@
+{
+  "shard_id": "DL-020",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 50,
+      "title": "ANU Chancellor's International Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Application closed / Application period is open all year round. (The scholarship is currently unavailable.)",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://study.anu.edu.au/scholarships/find-scholarship/anu-chancellors-international-scholarship",
+        "source_type": "official_scholarship_page",
+        "publisher": "The Australian National University",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "as_of": null,
+        "raw_extract": "### **The scholarship is currently unavailable.** | ## **Key scholarship details** ### Application period / Application closed / Application period is open all year round. | There is no need to apply for the scholarship. All eligible overseas students applying for admission to commence at the university will be automatically considered. | ### Application requirement / No application is required for this scholarship as all eligible candidates will be considered. | Press the \"**Apply now**\" button to start the Admissions application process for **2026** at ANU.",
+        "exact_deadline_wording": "Application closed / Application period is open all year round.",
+        "confidence": "MEDIUM",
+        "notes": "No calendar deadline exists anywhere on the official page. The page is internally contradictory about application status: the live status badge reads 'Application closed' and the page headline says 'The scholarship is currently unavailable.', while the templated 'Key scholarship details' block simultaneously states 'Application period is open all year round.' Because one official page gives two contradictory statements about whether applications are open for the same award, and the brief reserves CONFLICTING for two credible sources disagreeing, this is recorded as UNKNOWN rather than ROLLING. Writing precision 'rolling' would assert that applications are continuously open, which the page's own status contradicts. The record is stored as open/upcoming while the provider states the scholarship is currently unavailable, so the record's availability status should be reviewed separately from its deadline."
+      },
+      "field_mapping": {
+        "deadline_date": "null (no calendar deadline published; nothing to write)",
+        "deadline_precision": "unknown",
+        "deadline_display": "Application closed / Application period is open all year round."
+      },
+      "examined": [],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 134,
+      "title": "International Talents @unibo — Scholarships for International Students Enrolling in Second Cycle Degree Programmes",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://bandi.unibo.it/agevolazioni/opportunita/scadute/?search=International+Talents",
+        "source_type": "official_scholarship_page",
+        "publisher": "Alma Mater Studiorum – Università di Bologna",
+        "retrieved_at": "2026-10-05T15:40:00Z",
+        "as_of": null,
+        "raw_extract": "Hai cercato: **International Talents** [Azzera filtri] — Non ci sono bandi **scaduti pubblicati nel 2026**. Prova a ripetere la ricerca selezionando altri parametri.",
+        "exact_deadline_wording": null,
+        "confidence": "HIGH",
+        "notes": "The record's official_source_url returns HTTP 404 ('StatusCode: non 2xx status code (404 GET https://bandi.unibo.it/s/diri/bando-international-talents-unibo)'). Searching the live official bandi.unibo.it portal for 'International Talents' returns no results at all for 2026, and the portal's open-opportunities listing ('74 opportunità **disponibili**') contains no International Talents call. No live official page publishes any deadline, opening date, or stated annual cycle for the current edition, so no semantics can be established. I did not substitute a search-engine snippet or a prior edition's call: brief sections 5 and 6 forbid inferring a deadline from an archived call or from how the cycle usually runs."
+      },
+      "field_mapping": {
+        "deadline_date": "null (no live official call or deadline found)",
+        "deadline_precision": "unknown",
+        "deadline_display": "not established - no live official source publishes a deadline"
+      },
+      "examined": [
+        "https://bandi.unibo.it/s/diri/bando-international-talents-unibo",
+        "https://bandi.unibo.it/agevolazioni/opportunita",
+        "https://bandi.unibo.it/agevolazioni/opportunita/scadute/",
+        "https://bandi.unibo.it/s/diri/"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://mongoscholar.com/scholarships/international-talents-unibo",
+          "reason": "third-party scholarship aggregator; brief section 7 logo hierarchy aside, brief section 5 bars listing sites and search snippets as deadline evidence"
+        },
+        {
+          "url": "https://bandi.unibo.it/s/diri/bando-international-talents-unibo-sat-borse-di-studio-per-studenti-internazionali-che-si-immatricolano-ai-corsi-di-laurea-e-di-laurea-magistrale-a-ciclo-unico-dell-alma-mater-studiorum-universita-di-bologna-per-l-a-a-2024-25",
+          "reason": "seen only as a search-result snippet, not fetched; also an expired prior edition whose deadline is in the past and cannot serve as the current deadline"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 196,
+      "title": "ANU University Research Scholarship",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Round 1: for commencement of study or taking up of scholarship by end of March in the following year - International application deadline: 31 August - Domestic application deadline: 31 October. Round 2: for commencement of study or taking up of scholarship by end of August in the same year. Application period is open all year round.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://study.anu.edu.au/scholarships/find-scholarship/anu-university-research-scholarships",
+        "source_type": "official_scholarship_page",
+        "publisher": "The Australian National University",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "as_of": "2026/27 central scholarship rounds (stipend rate quoted as 'Full-time base stipend rate 2027')",
+        "raw_extract": "ANU conducts two annual central scholarship rounds which includes the University Research Scholarship, RTP, and a few other centrally managed scholarships. **Round 1:** for commencement of study or taking up of scholarship by end of March in the following year - International application deadline: 31 August - Domestic application deadline: 31 October **Round 2:** for commencement of study or taking up of scholarship by end of August in the same year. | ### Application period / Open for applications / Application period is open all year round. | In order to be considered for this scholarship in Round 1 (commencement of research program in following year), International students are required to apply for admission by 31 August. Domestic students are required to apply for admission by 31 October. Applications must be complete by the Scholarship deadline, including all supporting documentation and referee reports, in order to be considered in the scholarship ranking process.",
+        "exact_deadline_wording": "Round 1: for commencement of study or taking up of scholarship by end of March in the following year - International application deadline: 31 August - Domestic application deadline: 31 October / Round 2: for commencement of study or taking up of scholarship by end of August in the same year",
+        "confidence": "HIGH",
+        "notes": "ANU states the deadlines as recurring annual month-and-day values (31 August international, 31 October domestic) with no year attached, and describes them as 'two annual central scholarship rounds'. Because no year is given and the values recur every year, this is ANNUAL / precision 'recurring' and deadline_date stays null; per brief section 6 an ANNUAL value must not be converted into a calendar date, and I did not roll 31 August forward to 2027. Note also that the international and domestic deadlines differ and that no Round 2 date is published at all - these are different applicant categories/rounds, not conflicting sources."
+      },
+      "field_mapping": {
+        "deadline_date": "null (recurring annual month/day with no year - not converted to a date)",
+        "deadline_precision": "recurring",
+        "deadline_display": "Round 1: International application deadline 31 August; Domestic application deadline 31 October (commencement by end of March the following year). Round 2: commencement by end of August in the same year. Application period is open all year round."
+      },
+      "examined": [],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 304,
+      "title": "University of Lisbon International Scholarships",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.ulisboa.pt/en/study/fees-and-scholarships",
+        "source_type": "official_university_page",
+        "publisher": "Universidade de Lisboa",
+        "retrieved_at": "2026-10-05T15:26:00Z",
+        "as_of": null,
+        "raw_extract": "StatusCode: non 2xx status code (403 GET https://www.ulisboa.pt/en/study/fees-and-scholarships)",
+        "exact_deadline_wording": null,
+        "confidence": "LOW",
+        "notes": "Every attempt to reach the official Universidade de Lisboa fees-and-scholarships page was refused by the server with HTTP 403, so the page body was never read and no deadline wording could be quoted. Attempts: https://www.ulisboa.pt/en/study/fees-and-scholarships (403), https://www.ulisboa.pt/en/study/fees-and-scholarships/ (403), https://www.ulisboa.pt/estudar/taxas-e-bolsas (403), https://www.ulisboa.pt/en/study (403), https://ulisboa.pt/en/study/fees-and-scholarships (transport error). Confidence is LOW specifically because access was blocked rather than because the page was read and found to lack a deadline; a human should retry this record from a browser. No value was inferred from the record's existing 'Varies by faculty and programme' note, which is a prior-wave cached string with no live source behind it."
+      },
+      "field_mapping": {
+        "deadline_date": "null (official page could not be retrieved - HTTP 403)",
+        "deadline_precision": "unknown",
+        "deadline_display": "not established - official page inaccessible"
+      },
+      "examined": [
+        "https://www.ulisboa.pt/en/study/fees-and-scholarships",
+        "https://www.ulisboa.pt/en/study/fees-and-scholarships/",
+        "https://www.ulisboa.pt/estudar/taxas-e-bolsas",
+        "https://www.ulisboa.pt/en/study",
+        "https://ulisboa.pt/en/study/fees-and-scholarships"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 513,
+      "title": "ANU Vice-Chancellor's International Achievement Award",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "Open for applications",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://study.anu.edu.au/scholarships/find-scholarship/anu-vice-chancellors-international-achievement-award",
+        "source_type": "official_scholarship_page",
+        "publisher": "The Australian National University",
+        "retrieved_at": "2026-10-05T15:27:00Z",
+        "as_of": "Conditions of Award 63/2026 (current award round)",
+        "raw_extract": "## **Key scholarship details** ### Application period / Open for applications / \\- ... ### Application requirement / No application is required for this scholarship as all eligible candidates will be considered. | ## **How to apply** There is no need to apply for the scholarship. All eligible students applying for admission to commence at the university will be automatically considered. Press the \"**Apply now**\" button to start the Admissions application process.",
+        "exact_deadline_wording": "Open for applications",
+        "confidence": "MEDIUM",
+        "notes": "The official page shows the application period as 'Open for applications' with no closing date field populated (the adjacent Value field renders as '\\-'), and states that no separate application is required because all eligible students are considered automatically with the admissions application. No calendar deadline of any kind appears on the page, so there is genuinely no fixed deadline and deadline_date is null. Confidence is MEDIUM rather than HIGH because ANU does not use the words 'rolling' or 'any time' here - unlike the sibling Chancellor's page, this page carries no 'open all year round' sentence - so ROLLING is inferred from an open period with no published closing date. Downstream, precision 'rolling' means exactly that: no fixed deadline."
+      },
+      "field_mapping": {
+        "deadline_date": "null (no fixed deadline published)",
+        "deadline_precision": "rolling",
+        "deadline_display": "Open for applications"
+      },
+      "examined": [],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 562,
+      "title": "Wellcome Early-Career Award",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "There are no deadlines for applications to this scheme. Applications can be submitted at any time.",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://wellcome.org/grant-funding/schemes/early-career-awards",
+        "source_type": "official_scholarship_page",
+        "publisher": "Wellcome Trust",
+        "retrieved_at": "2026-10-05T15:27:00Z",
+        "as_of": "current scheme page; includes the location-eligibility change effective 29 October 2026",
+        "raw_extract": "### Key dates / There are no deadlines for applications to this scheme. Applications can be submitted at any time. / View all key dates",
+        "exact_deadline_wording": "There are no deadlines for applications to this scheme. Applications can be submitted at any time.",
+        "confidence": "HIGH",
+        "notes": "Wellcome states the absence of a deadline explicitly and twice on the live scheme page (in the 'Scheme at a glance' summary and again in the full 'Key dates' section), so ROLLING is stated by the provider itself and deadline_date must stay null. CAUTION for downstream use: the page also carries the dates 'From 29 October 2026, we will only accept applications from lead applicants based at eligible administering organisations in the UK and low- and middle-income countries in Africa, South Asia and South-East Asia' and 'Any applications submitted to Wellcome on or before 28 October 2026 will be assessed under the current location eligibility requirements.' Those are eligibility cut-offs, not application deadlines, and must not be written to deadline_date."
+      },
+      "field_mapping": {
+        "deadline_date": "null (provider states there are no deadlines)",
+        "deadline_precision": "rolling",
+        "deadline_display": "There are no deadlines for applications to this scheme. Applications can be submitted at any time."
+      },
+      "examined": [],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 614,
+      "title": "New Zealand Refugee Health Scholarship",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Applications open: 1 July 2026. Applications close: 1 October 2026.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.immigration.govt.nz/about-us/our-strategies-and-programmes/supporting-refugees-and-asylum-seekers/new-zealand-refugee-health-scholarship-programme",
+        "source_type": "official_government_page",
+        "publisher": "Immigration New Zealand, Ministry of Business, Innovation and Employment",
+        "retrieved_at": "2026-10-05T15:27:00Z",
+        "as_of": "2027 intake (applications open 1 July 2026, applications close 1 October 2026)",
+        "raw_extract": "## When to apply - Applications open: 1 July 2026. - Applications close: 1 October 2026. | When the applications have opened you can apply through Universities New Zealand. You will need to: - complete the application form, and - upload the required documents through the Community Force platform on the Universities New Zealand website.",
+        "exact_deadline_wording": "Applications close: 1 October 2026.",
+        "confidence": "HIGH",
+        "notes": "The official Immigration New Zealand page states an explicit calendar deadline of 1 October 2026, which is 2026-10-01 - four days before today (2026-10-05). The record is stored as active/open, so per brief section 6 the stale date is NOT written to deadline_date and is NOT silently moved to the next year. The live page still shows the 2026/2027 window as at retrieval time, so no successor intake date exists to record; no 2028 closing date is published anywhere. deadline_semantics is EXACT because the provider does state a calendar deadline; the value is withheld only because it is already past. The partner application page at Universities New Zealand (the portal INZ itself directs applicants to) publishes no closing date and still refers to 'the first year of the award ... for study commencing first semester or first trimester of 2026', which is consistent rather than contradictory."
+      },
+      "field_mapping": {
+        "deadline_date": "null - the source states 2026-10-01, but that date is in the past as of 2026-10-05 while the record is open/upcoming, so brief section 6 forbids writing it and forbids rolling it forward",
+        "deadline_precision": "exact (as stated by the provider; withheld only because the date is stale)",
+        "deadline_display": "Applications open: 1 July 2026. Applications close: 1 October 2026."
+      },
+      "examined": [
+        "https://www.universitiesnz.ac.nz/scholarships/new-zealand-refugee-health-scholarship"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 636,
+      "title": "Organization of American States (OAS) Scholarship at Colorado State University",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "Bachelor's Degree Programs: Fall and Spring Semesters: Rolling admission | Graduate Degree Programs: Fall and Spring Semesters: Admission deadlines vary",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://www.oas.org/en/scholarships/",
+        "source_type": "official_scholarship_page",
+        "publisher": "Organization of American States",
+        "retrieved_at": "2026-10-05T15:35:00Z",
+        "as_of": "2026 open announcements listing",
+        "raw_extract": "COMCYT | OAS – Colorado State University | English | Admission Deadline and Scholarship Information: **Bachelor's Degree Programs:** Fall and Spring Semesters: Rolling admission, Contact internatioanl@colostate.edu with questions. Graduate Degree Programs: Fall and Spring Semesters: Admission deadlines vary. Search for and learn about program deadlines here (https://graduateschool.colostate.edu/programs/). Special Program: Impact MBA: Fall Semester: Contact the CSU at shelby.sack@colostate.edu.",
+        "exact_deadline_wording": "Bachelor's Degree Programs: Fall and Spring Semesters: Rolling admission",
+        "confidence": "MEDIUM",
+        "notes": "The award provider (OAS) publishes the deadline wording for this specific scholarship in its 2026 open-announcements table: 'Rolling admission' for CSU bachelor's programmes, while graduate programmes say 'Admission deadlines vary' and the Impact MBA is handled by direct contact. Per brief section 6 this is not a CONFLICTING result, because the variation is between different programmes/levels at the same institution rather than two sources disagreeing about one deadline. ROLLING is recorded on the strength of the provider's explicit 'Rolling admission' wording for the bachelor's track, and deadline_date is null. Confidence is MEDIUM because the record does not specify an applicant level: the rolling statement is programme-scoped, so a graduate applicant has no fixed value. The record's own official_source_url (CSU International) was also fetched in full and publishes NO deadline at all - it shows an open application form restricted to 'Only newly admitted students for Fall 2027 will be considered at this time.' That absence does not contradict the OAS wording, so it is recorded as examined rather than conflicting."
+      },
+      "field_mapping": {
+        "deadline_date": "null (provider states rolling admission; no calendar date)",
+        "deadline_precision": "rolling",
+        "deadline_display": "Rolling admission (bachelor's); graduate admission deadlines vary"
+      },
+      "examined": [
+        "https://international.colostate.edu/iec/oas-scholarship"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://international.colostate.edu/iec/international-admissions/scholarships-and-tuition/",
+          "reason": "publishes 'December 15' and 'March 15' but these are the consideration dates for CSU's own automatic-consideration undergraduate scholarships, a different programme from the OAS scholarship; brief section 5 bars a generic/different-programme deadline"
+        }
+      ]
+    }
+  ]
+}

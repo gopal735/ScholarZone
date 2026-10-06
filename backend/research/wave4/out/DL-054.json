@@ -1,0 +1,257 @@
+{
+  "shard_id": "DL-054",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 20,
+      "title": "France Excellence Major Scholarship",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Du 16 février au 12 mars 2026, saisie en ligne des dossiers par les élèves présélectionnés sur l'application Cascade, première étape de la campagne",
+      "deadline_precision": "exact",
+      "published_deadline_not_written": "2026-03-12",
+      "source": {
+        "url": "https://aefe.gouv.fr/fr/ressources-documentaires/campagne-2026-des-bourses-france-excellence-major-circulaire-et-annexes",
+        "source_type": "official_scholarship_page",
+        "publisher": "AEFE (Agence pour l'enseignement français à l'étranger), operator of the French Ministry for Europe and Foreign Affairs",
+        "retrieved_at": "2026-10-05T15:33:00Z",
+        "as_of": "Campagne 2026 de candidature et de sélection (page published 13/01/2026; circulaire n° 593 du 7 janvier 2026)",
+        "raw_extract": "3 : Calendrier de la campagne 2026 (N. B. : Du 16 février au 12 mars 2026, saisie en ligne des dossiers par les élèves présélectionnés sur l'application Cascade, première étape de la campagne)",
+        "exact_deadline_wording": "Du 16 février au 12 mars 2026, saisie en ligne des dossiers par les élèves présélectionnés sur l'application Cascade, première étape de la campagne",
+        "confidence": "HIGH",
+        "notes": "The scholarship's own official programme page (https://aefe.gouv.fr/fr/aefe/operateur-educatif-du-ministere-de-leurope-et-des-affaires-etrangeres/dispositif-des-bourses-france-excellence-major) publishes NO application deadline at all; its only timing statement is about the selection commission: 'La commission de sélection des bourses France Excellence Major est organisée par l'AEFE chaque année, courant mai.' I therefore moved up the hierarchy to the AEFE's own 2026 campaign page, which publishes the student online-entry window explicitly. That window closed on 12 March 2026, which is in the past relative to retrieval date 2026-10-05, while the record is still open/upcoming in the catalogue. Per brief section 6 this is expired_mismatch: the stale date is recorded here only as evidence and is NOT written to deadline_date, and it has NOT been rolled forward to a 2027 campaign. No 2027 campaign calendar is published on aefe.gouv.fr as of retrieval."
+      },
+      "field_mapping": {
+        "deadline_date": "null (published closing date 2026-03-12 is already past; record is open/upcoming, so no date written)",
+        "deadline_precision": "exact",
+        "deadline_display": "Du 16 février au 12 mars 2026, saisie en ligne des dossiers par les élèves présélectionnés sur l'application Cascade, première étape de la campagne"
+      },
+      "examined": [
+        "https://aefe.gouv.fr/fr/aefe/operateur-educatif-du-ministere-de-leurope-et-des-affaires-etrangeres/dispositif-des-bourses-france-excellence-major",
+        "https://aefe.gouv.fr/fr/enseignement-francais/poursuite-des-etudes-dans-le-superieur/devenir-boursier-france-excellence-major",
+        "https://aefe.gouv.fr/fr/scolarite/aide-la-scolarite-par-des-bourses-scolaires",
+        "https://aefe.gouv.fr/sites/default/files/2026-01/Annexe%20_3_calendrier_FEM_2026.pdf"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://aefe.gouv.fr/sites/default/files/2026-01/Annexe%20_3_calendrier_FEM_2026.pdf",
+          "reason": "Fetched, but the file is a scanned image PDF with no extractable text layer, so no verbatim quote can be taken from it. The parent AEFE HTML page that describes the same annex carries the quotable wording."
+        },
+        {
+          "url": "https://aefe.gouv.fr/fr/scolarite/aide-la-scolarite-par-des-bourses-scolaires",
+          "reason": "Different programme (aide a la scolarite / Scolaide for French pupils abroad, CNB twice yearly). No France Excellence Major deadline; using it would be a generic deadline from another programme."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 332,
+      "title": "Aalborg University International Student Scholarship (tuition fee waiver and monthly stipend)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "All non-EU applicants are automatically considered when applying to a master's programme. Therefore, it is not possible to apply for a scholarship separately.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.en.aau.dk/education/apply/master/finance-and-fees",
+        "source_type": "official_university_page",
+        "publisher": "Aalborg University",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": "Scholarships section on the current master's Finance and fees page; stipend rate stated for 2026 (11,225 DKK / 1503 EUR per month)",
+        "raw_extract": "All non-EU applicants are automatically considered when applying to a master’s programme. Therefore, it is not possible to apply for a scholarship separately. [...] When will the scholarships be granted? We will inform all applicants about the scholarship decision by the beginning of July at the latest, though it may be earlier. [...] Please note, Aalborg University only grants a limited number of scholarships - approximately 15 each year. [...] EU/EEA students cannot apply for scholarships at AAU.",
+        "exact_deadline_wording": "All non-EU applicants are automatically considered when applying to a master’s programme. Therefore, it is not possible to apply for a scholarship separately.",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url https://www.en.aau.dk/education/finance/scholarships returns HTTP 404; the live official home of this scholarship is the master's 'Finance and fees' page, whose Scholarships section I fetched. AAU publishes no scholarship application deadline, because no separate scholarship application exists: consideration is automatic with the master's application. The only dates AAU publishes for this scholarship are a decision-notification timing ('by the beginning of July at the latest, though it may be earlier') and the tuition-fee payment deadline, which is a payment deadline rather than a scholarship deadline. The scholarship is also restricted to the September intake and to non-EU/EEA applicants. The only binding calendar date is the master's programme admissions deadline for fee-paying applicants (15 January 23:59 CET, September intake) on the official admissions page I fetched; that is a generic admissions deadline and per brief section 5 I deliberately did NOT import it as the scholarship deadline. Writing no date is the truthful result."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "All non-EU applicants are automatically considered when applying to a master’s programme. Therefore, it is not possible to apply for a scholarship separately."
+      },
+      "examined": [
+        "https://www.en.aau.dk/education/finance/scholarships",
+        "https://www.en.aau.dk/education/apply/master/how-and-when-to-apply"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.en.aau.dk/education/apply/master/how-and-when-to-apply",
+          "reason": "Fetched and it states 'For fee-paying applicants 15 January 23:59 CET' for the September intake, but this is the generic master's admissions deadline. Brief section 5 forbids using a generic admissions deadline as the scholarship deadline, so it is not used as deadline_date."
+        },
+        {
+          "url": "https://www.en.aau.dk/education/finance/scholarships",
+          "reason": "HTTP 404 - the shard's official_source_url no longer exists, so no live page could be fetched from it."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 333,
+      "title": "RESDOC Doctoral Researcher Positions - Resilient and Just Systems Doctoral Project (MSCA COFUND)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Applications are accepted only via the online recruitment system in English, and they must be submitted by 31 August 2026 at  latest 11:59 PM (Finnish time EET).",
+      "deadline_precision": "exact",
+      "published_deadline_not_written": "2026-08-31",
+      "source": {
+        "url": "https://www.helsinki.fi/en/research/doctoral-school/resdoc-project/how-apply",
+        "source_type": "official_programme_page",
+        "publisher": "University of Helsinki, Doctoral School (RESDOC project office)",
+        "retrieved_at": "2026-10-05T15:32:00Z",
+        "as_of": "RESDOC recruitment round that closed 31 August 2026; page states applications are now in the Excellence Evaluation stage",
+        "raw_extract": "Applications are accepted only via the online recruitment system in English, and they must be submitted by 31 August 2026 at  latest 11:59 PM (Finnish time EET). [...] Contact informationWe have closed the call August 31, 2026, and are currently processing applications.",
+        "exact_deadline_wording": "they must be submitted by 31 August 2026 at  latest 11:59 PM (Finnish time EET)",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url was fetched but publishes no date at all: it only says 'A total of 30 doctoral researchers will be recruited in 2026. The call has been closed and the evaluation phase started in September 2026.' The official RESDOC 'How to Apply' page does publish the explicit closing datetime, and confirms the call is closed ('We have closed the call August 31, 2026'). That deadline (2026-08-31) is in the past relative to retrieval date 2026-10-05 while the record is still open/upcoming, so per brief section 6 this is expired_mismatch: the date is recorded as evidence only and is NOT written to deadline_date. No next RESDOC call date is published anywhere on the official pages I fetched, so nothing was rolled forward. The page also states 2,159 applications were received by that deadline and evaluation is targeted for completion mid-October 2026."
+      },
+      "field_mapping": {
+        "deadline_date": "null (published deadline 2026-08-31 is already past; record is open/upcoming, so no date written)",
+        "deadline_precision": "exact",
+        "deadline_display": "Applications are accepted only via the online recruitment system in English, and they must be submitted by 31 August 2026 at  latest 11:59 PM (Finnish time EET)."
+      },
+      "examined": [
+        "https://www.helsinki.fi/en/research/doctoral-school/resdoc-project",
+        "https://jobs.helsinki.fi/job/Helsinki-Doctoral-Researchers-%2830-positions%29-in-various-disciplines-at-the-University-of-Helsinki%2C-Finland/1362391657"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://jobs.helsinki.fi/job/Helsinki-Doctoral-Researchers-%2830-positions%29-in-various-disciplines-at-the-University-of-Helsinki%2C-Finland/1362391657",
+          "reason": "Fetched, but the posting has been withdrawn: the live page shows only 'Ansökningstiden har gått ut eller jobbannonsen har tagits bort.' (application period expired or advertisement removed) and exposes no deadline text, so it cannot supply a verbatim quote."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 334,
+      "title": "University-funded doctoral researcher positions (University of Helsinki Doctoral School)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "The next application period for salaried positions is August 24 - September 7, 2026.",
+      "deadline_precision": "exact",
+      "published_deadline_not_written": "2026-09-07",
+      "source": {
+        "url": "https://www.helsinki.fi/en/research/doctoral-school/university-funded-doctoral-researcher-positions",
+        "source_type": "official_university_page",
+        "publisher": "University of Helsinki, Doctoral School",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "as_of": "Application period 24 August - 7 September 2026 (salaried/university-funded doctoral researcher positions, all doctoral programmes)",
+        "raw_extract": "There is one application period each year for University-funded doctoral researcher positions for all of the University's doctoral programmes. The next application period for salaried positions is August 24 - September 7, 2026.",
+        "exact_deadline_wording": "August 24 - September 7, 2026",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url was fetched and is the official programme page; it publishes one explicit application window per year. The window closed on 7 September 2026, which is in the past relative to retrieval date 2026-10-05, while the record is still open/upcoming, so per brief section 6 this is expired_mismatch: the published closing date is recorded here as evidence only and is NOT written to deadline_date. The page also states there is a single annual window for all of the University's doctoral programmes, but it publishes no date for the next period, so nothing was rolled forward. Note the page text still says 'next' although the window has already passed."
+      },
+      "field_mapping": {
+        "deadline_date": "null (published window close 2026-09-07 is already past; record is open/upcoming, so no date written)",
+        "deadline_precision": "exact",
+        "deadline_display": "The next application period for salaried positions is August 24 - September 7, 2026."
+      },
+      "examined": [],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 337,
+      "title": "University of Oulu Early Bird Discount and Tuition Fee Waiver Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "The discount is granted if the tuition fee is paid within three weeks of the admission results being published.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.oulu.fi/en/apply/how-apply/university-oulu-tuition-fees-and-scholarships-for-international-applicants",
+        "source_type": "official_university_page",
+        "publisher": "University of Oulu",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "as_of": "Page states it applies to students admitted during the autumn 2026 or spring 2027 admission rounds for studies beginning in the 2027-2028 academic year",
+        "raw_extract": "The information on this page applies to students admitted during the autumn 2026 or spring 2027 admission rounds for studies beginning in the 2027-2028 academic year. [...] Early Bird discounts are available for selected degree programmes. The discount is granted if the tuition fee is paid within three weeks of the admission results being published. [...] Tuition fee waiver scholarships are available from the second year onwards. The scholarship is awarded based on successful progress in studies. To be eligible, students must complete at least 60 ECTS credits during the preceding academic year in accordance with their approved study plan, including the required Finnish language studies, which differ in scope between degree programmes.",
+        "exact_deadline_wording": "The discount is granted if the tuition fee is paid within three weeks of the admission results being published.",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url was fetched. Neither component of this record has a datable calendar deadline. The Early Bird Discount is a payment-triggered benefit, not an application: it is granted if tuition is paid within three weeks AFTER the admission results are published, a condition that is event-relative and cannot be resolved to a calendar date from the page (the actual payment deadline is sent individually in the admission offer email). The Tuition Fee Waiver Scholarship is an automatic award from the second year onwards based on completing at least 60 ECTS credits in the preceding academic year, with programme-specific percentages (no 100% waivers). The page never uses the words 'rolling' or states a fixed deadline, so ROLLING was not asserted either, and per brief section 5 I deliberately did not import the linked Bachelor's/Master's admission deadlines pages, which are generic admissions deadlines for the application round rather than a scholarship deadline. No calendar date is derivable, so the truthful answer is UNKNOWN with a null date."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "The discount is granted if the tuition fee is paid within three weeks of the admission results being published."
+      },
+      "examined": [],
+      "rejected_sources": [
+        {
+          "url": "https://www.oulu.fi/en/apply/how-apply/applying-masters-programmes/deadlines",
+          "reason": "Not fetched or used: this is the generic master's admissions deadline for the application round. Per brief section 5 a generic admissions deadline must not be used as a scholarship deadline, and the Early Bird Discount condition is payment-within-3-weeks-of-results, not the application deadline."
+        },
+        {
+          "url": "https://www.oulu.fi/en/apply/international-programmes",
+          "reason": "Not used: programme catalogue with no Early Bird Discount or tuition fee waiver deadline, and it belongs to the application cycle rather than the scholarship."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 453,
+      "title": "KI Global Master's Scholarship",
+      "outcome": "recovered",
+      "deadline_semantics": "EXACT",
+      "deadline_date": "2027-02-24",
+      "deadline_display": "8 to 24 February 2027: Scholarship application period",
+      "deadline_precision": "exact",
+      "additional_official_dates": {
+        "scholarship_application_period": "8 to 24 February 2027",
+        "results_published": "2027-04-26",
+        "accept_deadline": "2027-04-30"
+      },
+      "source": {
+        "url": "https://education.ki.se/bachelors-masters-studies/scholarships/the-ki-global-masters-scholarships-for-fee-paying-students",
+        "source_type": "official_university_page",
+        "publisher": "Karolinska Institutet (KI), Education / International Admissions",
+        "retrieved_at": "2026-10-05T15:32:00Z",
+        "as_of": "Scholarship application round published for the 2027 admission intake; page states 'Page updated: 18-09-2026' and its statistics table covers 2026 and 2025",
+        "raw_extract": "Scholarship application timeline - 8 to 24 February 2027: Scholarship application period - 26 April 2027: Results published - 30 April 2027: Deadline to accept [...] The scholarship application is a separate process from your programme application. - You apply directly to KI during the scholarship application period. - Only admitted students are considered in the final selection for the scholarship. The application link will be published on this page when the scholarship application period opens.",
+        "exact_deadline_wording": "8 to 24 February 2027: Scholarship application period",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url was fetched live and publishes an explicit dated timeline, so this is the one genuine recovery in the shard. deadline_date is the closing date of the scholarship application period (2027-02-24), which is the scholarship's own application deadline; the page confirms the scholarship application is a separate process from the programme application and that the application link appears on the page when the period opens. IMPORTANT for the integrator: the pre-existing deadline_display fragment in the catalogue was 'to accept', which corresponds to a DIFFERENT milestone on the same page - '30 April 2027: Deadline to accept' - so if the intent of that field was the acceptance milestone, the matching date is 2027-04-30, recorded above under additional_official_dates.accept_deadline (results are published 2027-04-26). This cycle is genuinely upcoming relative to retrieval date 2026-10-05, so the date is written, not treated as expired."
+      },
+      "field_mapping": {
+        "deadline_date": "2027-02-24",
+        "deadline_precision": "exact",
+        "deadline_display": "8 to 24 February 2027: Scholarship application period"
+      },
+      "examined": [
+        "https://education.ki.se/bachelors-masters-studies/scholarships"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 675,
+      "title": "Future Scientists Scholarship (منحة علماء المستقبل) 2026/2027 — Ministry of Higher Education and Scientific Research and Central Bank of Egypt",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "مد فترة التقديم لمنحة «علماء المستقبل» للعام الجامعي 2026/2027، حتى الساعة السابعة مساءً يوم الجمعة الموافق 4 سبتمبر 2026",
+      "deadline_precision": "exact",
+      "published_deadline_not_written": "2026-09-04",
+      "source": {
+        "url": "https://sis.gov.eg/ar/%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2-%D8%A7%D9%84%D8%A5%D8%B9%D9%84%D8%A7%D9%85%D9%8A/%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1/%D9%85%D8%AF-%D9%81%D8%AA%D8%B1%D8%A9-%D8%A7%D9%84%D8%AA%D9%82%D8%AF%D9%8A%D9%85-%D9%84%D9%85%D9%86%D8%AD%D8%A9-%D8%B9%D9%84%D9%85%D8%A7%D8%A1-%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D9%82%D8%A8%D9%84",
+        "source_type": "official_government_page",
+        "publisher": "State Information Service (الهيئة العامة للاستعلامات), Egypt - relaying the Ministry of Higher Education and Scientific Research with the Central Bank of Egypt",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": "News item dated ٠١ سبتمبر, ٢٠٢٦ (1 September 2026), 11:23 p.m.; extension of the application period for the 2026/2027 academic year",
+        "raw_extract": "أعلنت وزارة التعليم العالي والبحث العلمي، بالتعاون مع البنك المركزي المصري، مد فترة التقديم لمنحة «علماء المستقبل» للعام الجامعي 2026/2027، حتى الساعة السابعة مساءً يوم الجمعة الموافق 4 سبتمبر 2026، وذلك لإتاحة مزيد من الوقت أمام الطلاب المستحقين لاستكمال إجراءات التقديم.",
+        "exact_deadline_wording": "حتى الساعة السابعة مساءً يوم الجمعة الموافق 4 سبتمبر 2026",
+        "confidence": "HIGH",
+        "notes": "English rendering of the quoted Arabic deadline sentence: the Ministry of Higher Education and Scientific Research, in cooperation with the Central Bank of Egypt, extended the application period for the 'Future Scientists' scholarship for the 2026/2027 academic year until 7:00 p.m. on Friday 4 September 2026. That explicit date-time is in the past relative to retrieval date 2026-10-05, while the record is still open/upcoming, so per brief section 6 this is expired_mismatch: the date is recorded as evidence only and is NOT written to deadline_date. The page also names the official application link (https://futurescholars.mohesr.gov.eg/) but does not announce a further round, so nothing was rolled forward. The pre-existing catalogue display also referenced an earlier deadline of 2 September 2026, 17:00; this official page states only the extended closing time, so that earlier value remains unverified and was not used."
+      },
+      "field_mapping": {
+        "deadline_date": "null (published deadline 2026-09-04 19:00 is already past; record is open/upcoming, so no date written)",
+        "deadline_precision": "exact",
+        "deadline_display": "مد فترة التقديم لمنحة «علماء المستقبل» للعام الجامعي 2026/2027، حتى الساعة السابعة مساءً يوم الجمعة الموافق 4 سبتمبر 2026"
+      },
+      "examined": [
+        "https://futurescholars.mohesr.gov.eg/",
+        "https://futurescholars.mohesr.gov.eg"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://futurescholars.mohesr.gov.eg/",
+          "reason": "Official application portal named by the government page, but two fetch attempts (with and without trailing slash) failed with a transport error, so no live content could be read and no verbatim quote taken from it."
+        }
+      ]
+    }
+  ]
+}

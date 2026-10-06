@@ -1,0 +1,262 @@
+{
+  "shard_id": "LG-035",
+  "topic": "logo",
+  "agent_completed": true,
+  "generated_at": "2026-10-05T15:35:13Z",
+  "records": [
+    {
+      "scholarship_id": 475,
+      "title": "Joint Japan/World Bank Graduate Scholarship Program (JJ/WBGSP) 2027 - Application Window #1 (Developing Country Nationals)",
+      "outcome": "recovered",
+      "image_url": "https://www.worldbank.org/content/dam/sites/edge/wbglogo-topnav-eng.svg",
+      "image_source_url": "https://www.worldbank.org/wbg/aem/service/header/en",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Verified by fetching the SVG directly: it is a 220x44 vector containing the World Bank grid-globe logomark plus the 'WORLD BANK' wordmark set in #002F54, i.e. the institution's real brand mark rather than an icon or UI glyph. Hosted on the official provider domain www.worldbank.org and declared by the site's own header component with alt=\"World Bank Logo\" / title=\"World Bank Logo\". MEDIUM rather than HIGH for two honest reasons: (1) the World Bank publishes no separate JJ/WBGSP programme logotype, so this is the official logo of the awarding institution named in official_source ('World Bank, Development Economics Vice Presidency'), not a programme-specific mark; (2) it is the global top-nav variant served by the header service rather than a file published on a dedicated brand/asset page (www.worldbank.org/en/about/brand returns 404). An alternate lockup '/content/dam/wbr/logo/logo-wb-header-en.svg' (logo plus the 'Working for a World Free of Poverty' tagline) was seen only in search-engine rendering and was not fetched, so it is not asserted here."
+      },
+      "source": {
+        "url": "https://www.worldbank.org/wbg/aem/service/header/en",
+        "publisher": "The World Bank (official provider domain www.worldbank.org)",
+        "retrieved_at": "2026-10-05T15:35:13Z",
+        "raw_extract": "<img src=\"https://www.worldbank.org/content/dam/sites/edge/wbglogo-topnav-eng.svg\" alt=\"World Bank Logo\" title=\"World Bank Logo\" width=\"220\" height=\"44\" class=\"header-logo\">",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.worldbank.org/en/programs/scholarships/jj-wbgsp",
+        "https://www.worldbank.org/wbg/aem/service/header/en"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.worldbank.org/content/dam/wbr-redesign/logos/wbg-favicon.png",
+          "reason": "favicon - declared as rel=\"shortcut icon\" on the official scholarship page; explicitly rejected by the brief"
+        },
+        {
+          "url": "https://www.worldbank.org/content/dam/wbr/share-logo/social-share.jpg",
+          "reason": "social - 1200x630 og:image / twitter:image share card, not a logo asset"
+        },
+        {
+          "url": "https://worldbank.scene7.com/is/image/worldbankprod/Lydia-Girsang?wid=90&hei=90&qlt=85,0&resMode=sharp",
+          "reason": "social - 90x90 round profile photograph of a named scholar, not a brand mark"
+        },
+        {
+          "url": "https://worldbank.scene7.com/is/image/worldbankprod/chart-icon?wid=90&hei=90&qlt=85,0&resMode=sharp",
+          "reason": "decorative UI icon at 90x90, not a logo"
+        },
+        {
+          "url": "https://www.worldbank.org/content/dam/photos/780x439/2026/feb-1/Japanese-youth.jpg",
+          "reason": "decorative card photograph - hero art from a carousel slide, not a brand mark"
+        },
+        {
+          "url": "https://www.worldbank.org/content/dam/photos/780x439/2021/oct-1/Diverse-young-students.jpg",
+          "reason": "decorative card photograph - hero art from a carousel slide, not a brand mark"
+        },
+        {
+          "url": "https://thedocs.worldbank.org/en/doc/fb18adc82a2cc6746503a520fe18a3f9-0050052026/original/2027-Application-Guidelines-for-DevelopingCountryNationals-W1.pdf",
+          "reason": "application-guidelines PDF hosted on the separate documents host; a document, not a logo asset, and any logo inside it would be an embedded page crop"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 507,
+      "title": "AFdoc – Aides à la formation doctorale (FNR PhD funding scheme)",
+      "outcome": "recovered",
+      "image_url": "https://www.fnr.lu/wp-content/uploads/2023/07/FNR_LOGO.png",
+      "image_source_url": "https://www.fnr.lu/logo/",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Found on FNR's own dedicated brand page 'FNR Logo & Communication Guidelines' at https://www.fnr.lu/logo/, which is the top item of that page and is linked from the site-wide footer. I downloaded the PNG and viewed it: it is the official horizontal lockup - the FNR monogram plus the 'Luxembourg National Research Fund' wordmark - with a clean white background and no screenshot framing. The AFdoc programme page itself carries no AFdoc-specific logotype (its only imagery is a 1181x710 news/hero illustration, and the site's icons are LinkedIn avatar crops), so the funding agency's official logo is the correct identity mark for this record, whose official_source is 'Fonds National de la Recherche (FNR), Luxembourg'. The alternate colourway FNR_LOGO_Black.png is published alongside it on the same page but was not needed."
+      },
+      "source": {
+        "url": "https://www.fnr.lu/logo/",
+        "publisher": "Fonds National de la Recherche (FNR) / Luxembourg National Research Fund",
+        "retrieved_at": "2026-10-05T15:35:13Z",
+        "raw_extract": "# FNR Logo & Communication Guidelines\n\n[Download logo & guidelines]\n\n## FNR's Brand Evolution: A Fresh Look that Connects, Inspires, and Makes an Impact\n...\n![](https://www.fnr.lu/wp-content/uploads/2023/07/FNR_LOGO.png)\n\n![](https://www.fnr.lu/wp-content/uploads/2023/07/FNR_LOGO_Black.png)",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.fnr.lu/funding-instruments/afdoc",
+        "https://www.fnr.lu/logo/"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.fnr.lu/wp-content/uploads/2026/06/AFdoc_FNR_web_news_funds.jpg",
+          "reason": "decorative hero art - the page's og:image (1181x710 news promotion banner), not a logo"
+        },
+        {
+          "url": "https://www.fnr.lu/wp-content/uploads/2023/07/cropped-FNR_ProfilePic_linkedin-32x32.png",
+          "reason": "favicon - 32x32 LinkedIn avatar crop used as rel=\"icon\""
+        },
+        {
+          "url": "https://www.fnr.lu/wp-content/uploads/2023/07/cropped-FNR_ProfilePic_linkedin-192x192.png",
+          "reason": "social - 192x192 LinkedIn profile avatar crop"
+        },
+        {
+          "url": "https://www.fnr.lu/wp-content/uploads/2023/07/cropped-FNR_ProfilePic_linkedin-180x180.png",
+          "reason": "social - apple-touch-icon derived from the LinkedIn profile picture"
+        },
+        {
+          "url": "https://www.fnr.lu/wp-content/uploads/2023/07/fnr-logo-with-science-images_showcase2withdoc.png",
+          "reason": "not an asset - brand showcase mock-up of a document template, not the logo itself"
+        },
+        {
+          "url": "https://www.fnr.lu/wp-content/themes/fnr-v2/public/images/footer-logo-2.eee42f.png",
+          "reason": "wrong identity - the DORA declaration mark, a different organisation"
+        },
+        {
+          "url": "https://www.fnr.lu/wp-content/themes/fnr-v2/public/images/footer-logo-3.0718b1.png",
+          "reason": "wrong identity - the ScienceEurope mark, a different organisation"
+        },
+        {
+          "url": "https://www.fnr.lu/wp-content/themes/fnr-v2/public/images/ESCEM_logo.fa4b64.png",
+          "reason": "wrong identity - the ESCeM mark, a different organisation"
+        },
+        {
+          "url": "https://www.fnr.lu/wp-content/themes/fnr-v2/public/images/footer-logo-4.07274a.jpg",
+          "reason": "wrong identity - the Research Luxembourg mark, a different organisation"
+        },
+        {
+          "url": "https://fnrlu.sharepoint.com/:f:/s/Website/Eg_S_taqn_1Iu8af3P6CPe0Bb8x0Ef_S85QCrSSvlB50XQ?e=d1GNzu",
+          "reason": "third-party - the FNR logo pack is hosted on SharePoint, which is not the official fnr.lu domain and cannot carry the image_url"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 564,
+      "title": "Joint Japan/World Bank Graduate Scholarship Program (JJ/WBGSP) 2027 - Application Window for Japanese Nationals",
+      "outcome": "recovered",
+      "image_url": "https://www.worldbank.org/content/dam/sites/edge/wbglogo-topnav-eng.svg",
+      "image_source_url": "https://www.worldbank.org/wbg/aem/service/header/en",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Same official asset and same reasoning as scholarship_id 475. I fetched https://www.worldbank.org/en/programs/scholarships/japanese-nationals and it carries no JJ/WBGSP programme logotype - only photography and PDF links - so the World Bank institutional logo, served by the official domain's own header component as alt=\"World Bank Logo\", is the correct official brand mark. It is a genuine vector logo (grid globe + 'WORLD BANK' wordmark in #002F54), not an icon, sprite or share image. MEDIUM, not HIGH: the match is to the awarding institution named in official_source ('World Bank, Development Economics Vice Presidency, JJ/WBGSP Secretariat') rather than to a dedicated JJ/WBGSP programme mark, and the file is the top-nav variant rather than a download from a brand page."
+      },
+      "source": {
+        "url": "https://www.worldbank.org/wbg/aem/service/header/en",
+        "publisher": "The World Bank (official provider domain www.worldbank.org)",
+        "retrieved_at": "2026-10-05T15:35:13Z",
+        "raw_extract": "<img src=\"https://www.worldbank.org/content/dam/sites/edge/wbglogo-topnav-eng.svg\" alt=\"World Bank Logo\" title=\"World Bank Logo\" width=\"220\" height=\"44\" class=\"header-logo\">",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.worldbank.org/en/programs/scholarships/japanese-nationals",
+        "https://www.worldbank.org/en/programs/scholarships/jj-wbgsp",
+        "https://www.worldbank.org/wbg/aem/service/header/en"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.worldbank.org/content/dam/wbr-redesign/logos/wbg-favicon.png",
+          "reason": "favicon - declared as rel=\"shortcut icon\" on the official scholarship page; explicitly rejected by the brief"
+        },
+        {
+          "url": "https://www.worldbank.org/content/dam/wbr/share-logo/social-share.jpg",
+          "reason": "social - 1200x630 og:image / twitter:image share card, not a logo asset"
+        },
+        {
+          "url": "https://worldbank.scene7.com/is/image/worldbankprod/Lydia-Girsang?wid=90&hei=90&qlt=85,0&resMode=sharp",
+          "reason": "social - 90x90 round profile photograph of a named scholar, not a brand mark"
+        },
+        {
+          "url": "https://worldbank.scene7.com/is/image/worldbankprod/chart-icon?wid=90&hei=90&qlt=85,0&resMode=sharp",
+          "reason": "decorative UI icon at 90x90, not a logo"
+        },
+        {
+          "url": "https://www.worldbank.org/content/dam/photos/780x439/2026/feb-1/Japanese-youth.jpg",
+          "reason": "decorative card photograph - hero art from a carousel slide, not a brand mark"
+        },
+        {
+          "url": "https://www.worldbank.org/content/dam/photos/780x439/2021/oct-1/Diverse-young-students.jpg",
+          "reason": "decorative card photograph - hero art from a carousel slide, not a brand mark"
+        },
+        {
+          "url": "https://thedocs.worldbank.org/en/doc/cf2ca32f023d4c479aa358bcb30722d7-0050052026/original/2027-Application-Guidelines-for-Japanese-Nationals.pdf",
+          "reason": "application-guidelines PDF hosted on the separate documents host; a document, not a logo asset, and any logo inside it would be an embedded page crop"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 716,
+      "title": "Government of Guyana Scholarships",
+      "outcome": "recovered",
+      "image_url": "https://mps.gov.gy/wp-content/uploads/2025/11/MPSGEI-Logo-scaled.png",
+      "image_source_url": "https://mps.gov.gy/scholarships/gog",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Exact identity match. The shard's official_source is 'Ministry of Public Service, Government Efficiency and Implementation, Government of Guyana', and I downloaded this PNG and viewed it: the Guyana coat of arms beside the words 'Ministry of Public Service, Government Efficiency & Implementation'. It is the site's own site-logo (class=\"site-logo-image\") on the official Government of Guyana Scholarships page at mps.gov.gy, an official .gov.gy government domain, which is the record's own catalogue_url. The official portal page https://portal.gov.gy/services/scholarship independently confirms this body is the administrator: 'The Ministry of Public Service, Government Efficiency and Implementation advertises and administers Government of Guyana scholarships.' Rejected nearby: the coat-of-arms file used only as favicon/apple-touch-icon, the 1080x1080 MPS-Scholarship illustrations, and the Government of Guyana Portal brand mark (a different brand from the named ministry). The portal's footer also carries a National Disaster Management Agency (NDMA) logo on the shared portal CDN - an unrelated agency, rejected on that basis - but I did not re-verify its hashed Next.js build filename, so no URL is asserted for it."
+      },
+      "source": {
+        "url": "https://mps.gov.gy/scholarships/gog",
+        "publisher": "Ministry of Public Service, Government Efficiency and Implementation, Government of Guyana",
+        "retrieved_at": "2026-10-05T15:35:13Z",
+        "raw_extract": "<div id=\"site-logo\"><a href=\"https://mps.gov.gy\" title=\"Ministry of Public Service\"><img  src=\"https://mps.gov.gy/wp-content/uploads/2025/11/MPSGEI-Logo-scaled.png\" alt=\"Ministry of Public Service\" class=\"site-logo-image\" width=\"250\" data-tf-not-load=\"1\" fetchpriority=\"low\"></a></div>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://portal.gov.gy/services/scholarship",
+        "https://mps.gov.gy/scholarships/gog",
+        "https://mps.gov.gy/scholarships/"
+      ],
+      "rejected": [
+        {
+          "url": "https://mps.gov.gy/wp-content/uploads/2020/11/1200px-Coat_of_arms_of_Guyana.svg-1024x983-1.png",
+          "reason": "favicon - the coat of arms is used only as rel=\"icon\" / rel=\"apple-touch-icon\" on this site; a favicon-sized national emblem is not the provider's logo"
+        },
+        {
+          "url": "https://mps.gov.gy/wp-content/uploads/2020/11/cropped-1200px-Coat_of_arms_of_Guyana.svg-1024x983-1-180x180.png",
+          "reason": "favicon - 180x180 apple-touch-icon crop of the coat of arms"
+        },
+        {
+          "url": "https://mps.gov.gy/wp-content/uploads/2026/08/MPS-Scholarship-1.jpg",
+          "reason": "decorative hero art - 1080x1080 og:image / scholarship illustration with empty alt text, not a brand mark"
+        },
+        {
+          "url": "https://mps.gov.gy/wp-content/uploads/2026/09/MPS-Scholarship.jpg",
+          "reason": "decorative hero art - 1080x1080 in-page scholarship illustration with empty alt text, not a brand mark"
+        },
+        {
+          "url": "https://portal.gov.gy/images/gportal_003.png",
+          "reason": "wrong identity - this is the official 'Government of Guyana Government Portal' brand mark (verified by fetching and viewing the image), a different brand identity from the Ministry of Public Service named in this record's official_source"
+        },
+        {
+          "url": "https://portal.gov.gy/favicon.ico",
+          "reason": "favicon - site icon on the national portal, explicitly rejected by the brief"
+        }
+      ]
+    }
+  ]
+}

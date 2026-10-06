@@ -1,0 +1,98 @@
+{
+  "shard_id": "DL-046",
+  "topic": "deadline",
+  "hosts": [
+    "research.google",
+    "www.daad.de",
+    "www.deutschlandstipendium.de",
+    "www.mpp.govt.nz",
+    "www.uva.nl"
+  ],
+  "record_count": 7,
+  "records": [
+    {
+      "id": 3,
+      "title": "DAAD Scholarship",
+      "official_source": "DAAD — German Academic Exchange Service",
+      "official_source_url": "https://www.daad.de",
+      "catalogue_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database",
+      "country": "Germany",
+      "deadline_display": "Varies by programme - Master's typically ~30 Oct; PhD programmes vary (3 Sept or 21 Oct for 2026/27 cycle). Deadlines updated annually in Q2.",
+      "deadline_precision": "unknown",
+      "application_period": "Varies by programme - typically Sept-Nov for a Oct/Nov deadline; check DAAD database per programme",
+      "verification_status": "active"
+    },
+    {
+      "id": 10,
+      "title": "Deutschlandstipendium (Germany Scholarship)",
+      "official_source": "Federal Ministry of Education and Research (BMBF/BMFTR) + Private Sponsors",
+      "official_source_url": "https://www.deutschlandstipendium.de",
+      "catalogue_url": null,
+      "country": "Germany",
+      "deadline_display": "Varies by university (typically spring/summer for winter semester)",
+      "deadline_precision": "unknown",
+      "application_period": "Varies by university - check directly with the university's scholarship office",
+      "verification_status": "active"
+    },
+    {
+      "id": 173,
+      "title": "Amsterdam Merit Scholarship (AMS)",
+      "official_source": "University of Amsterdam",
+      "official_source_url": "https://www.uva.nl/en/education/scholarships-financial-support/uva-merit-scholarship.html",
+      "catalogue_url": "https://www.uva.nl/en/education/fees-and-funding/masters-scholarships-and-loans/amsterdam-merit-scholarship/amsterdam-merit-scholarship.html",
+      "country": "Netherlands",
+      "deadline_display": "Faculty-specific: \"Deadlines for the AMS differ per Faculty or Graduate School.\" The Faculty of Science states \"The application deadline is 15 January\"; other Graduate Schools publish different dates (for example 1 March for Psychology and 2 February for Social Sciences).",
+      "deadline_precision": "varies",
+      "application_period": "Annual cycle tied to the September intake. Applications are made as part of the master's programme application, so they open with the relevant master's admissions round and close at the faculty deadline.",
+      "verification_status": "active"
+    },
+    {
+      "id": 398,
+      "title": "University of Amsterdam Scholarships",
+      "official_source": "University of Amsterdam",
+      "official_source_url": "https://www.uva.nl/en/education/your-studies/financing-your-studies/scholarships/scholarships.html",
+      "catalogue_url": null,
+      "country": "Netherlands",
+      "deadline_display": "The umbrella hub page publishes no single deadline. Deadlines are set per scheme and per faculty: faculty scholarship pages for the Amsterdam Merit Scholarship give an application deadline of 15 January, with results announced at the end of April, while some faculties run a later round with a 2 February deadline. Amounts are determined each year and published in late autumn.",
+      "deadline_precision": "varies",
+      "application_period": "Annual. The main Amsterdam Merit Scholarship round opens at the beginning of October with a 15 January deadline and results at the end of April; individual faculties publish their own rounds, amounts and deadlines, and amounts are published in late autumn.",
+      "verification_status": "active"
+    },
+    {
+      "id": 486,
+      "title": "Google PhD Fellowship Program",
+      "official_source": "Google Research",
+      "official_source_url": "https://research.google/programs-and-events/phd-fellowship",
+      "catalogue_url": "https://research.google/programs-and-events/phd-fellowship/recipients",
+      "country": "United States",
+      "deadline_display": "Applications are currently closed for the 2026 cycle. Applications open March 5, 2026; applications close April 30, 2026; notification of proposal decisions by Aug. 31, 2026; public announcement of new fellowship recipients by Oct. 31, 2026.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual cycle. The 2026 cycle ran from March 5, 2026 to April 30, 2026. Google has not published the dates for the next cycle. Google PhD Fellowships begin at the start of the upcoming school year after award notification.",
+      "verification_status": "active"
+    },
+    {
+      "id": 501,
+      "title": "Deutschlandstipendium",
+      "official_source": "Bundesministerium für Forschung, Technologie und Raumfahrt (BMFTR)",
+      "official_source_url": "https://www.deutschlandstipendium.de/deutschlandstipendium/de/stipendium/wie-es-funktioniert/wie-es-funktioniert.html",
+      "catalogue_url": null,
+      "country": "Germany",
+      "deadline_display": "There is no central deadline. The programme page states that students apply to their university and that they should find out the procedure and deadlines directly from the university ('Zum jeweiligen Verfahren und den Fristen erkundigen Sie sich direkt an Ihrer Hochschule'). Deadlines are set by each participating university.",
+      "deadline_precision": "varies",
+      "application_period": "No central application period. Applications run through the individual university's own call for applications; universities publish their own deadlines, which the federal programme deliberately does not centralise.",
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 721,
+      "title": "Toloa Tertiary Scholarship (Toloa Scholarships - tertiary stream, Ministry for Pacific Peoples)",
+      "official_source": "Ministry for Pacific Peoples, New Zealand Government",
+      "official_source_url": "https://www.mpp.govt.nz/programmes-and-funding/education/toloa-scholarships",
+      "catalogue_url": "https://www.mpp.govt.nz/programmes-and-funding/education",
+      "country": "New Zealand",
+      "deadline_display": "5pm, Monday 9 February 2026 (2026 round, now closed)",
+      "deadline_precision": "recurring",
+      "application_period": "Applications for 2026 tertiary scholarships are closed; tertiary applications closed at 5pm on Monday 9 February 2026. The Ministry republishes the scheme annually with a new closing date each year.",
+      "verification_status": "needs_review"
+    }
+  ]
+}

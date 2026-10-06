@@ -1,0 +1,244 @@
+{
+  "shard_id": "LG-010",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 125,
+      "title": "Harvard College Need-Based Financial Aid (International Students)",
+      "outcome": "recovered",
+      "image_url": "https://www.harvard.edu/wp-content/uploads/2020/10/logo-login.png",
+      "image_source_url": "https://www.harvard.edu/about-harvard/",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Asset served from www.harvard.edu, the record's official provider domain, and declared by that site itself as its publisher logo in its JSON-LD: \"publisher\":{\"@type\":\"Organization\",\"name\":\"Harvard University\",\"logo\":\"https://www.harvard.edu/wp-content/uploads/2020/10/logo-login.png\"}. Rendered at 700x219 (shield + HARVARD UNIVERSITY wordmark, dark on transparent), not a favicon-sized raster. Identity is Harvard University, which is the record's stated official_source; the more specific 'Harvard College Griffin Financial Aid Office' lockup that appears on college.harvard.edu exists only as an inline <svg> in the page markup with no separate fetchable asset URL, and the record's official_source_url page itself exposes only /favicon-family icons for that mark. Confidence held at MEDIUM because the asset is the university-wide brand mark rather than the College financial-aid-office lockup."
+      },
+      "source": {
+        "url": "https://www.harvard.edu/about-harvard/",
+        "publisher": "Harvard University",
+        "retrieved_at": "2026-10-05T15:41:00Z",
+        "raw_extract": "\"publisher\":{\"@type\":\"Organization\",\"name\":\"Harvard University\",\"logo\":\"https://www.harvard.edu/wp-content/uploads/2020/10/logo-login.png\"}",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://college.harvard.edu/financial-aid/apply-financial-aid",
+        "https://college.harvard.edu/financial-aid/apply-financial-aid/prospective-students",
+        "https://college.harvard.edu/financial-aid",
+        "https://www.harvard.edu/",
+        "https://www.harvard.edu/wp-content/themes/core/assets/img/theme/branding-assets/footer-logo.svg",
+        "https://brand.harvard.edu/",
+        "https://brand.harvard.edu/identity/brand-center/"
+      ],
+      "rejected": [
+        {
+          "url": "https://college.harvard.edu/financial-aid/apply-financial-aid",
+          "reason": "The site-specific 'Harvard College Griffin Financial Aid Office' mark on this page is an inline <svg> element with no standalone asset URL, so there is no direct image URL to propose; every /favicon-*.svg, /apple-touch-icon-*.png and /android-chrome-*.png on this host is an explicitly rejected favicon asset."
+        },
+        {
+          "url": "https://www.harvard.edu/wp-content/themes/core/assets/img/theme/branding-assets/footer-logo.svg",
+          "reason": "Same shield but the wordmark is solid #FFFFFF (.st0{fill:#fff}) for use on the dark site footer; it renders invisible on a light card and is a footer theme element rather than the site's declared publisher logo."
+        },
+        {
+          "url": "https://brand.harvard.edu/",
+          "reason": "Official Harvard brand portal could not be loaded (transport error on every attempt), so no brand-asset page could be verified."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 247,
+      "title": "Confucius Institute Scholarship",
+      "outcome": "recovered",
+      "image_url": "https://www.chinese.cn/page/img/logo.23e2870e.png",
+      "image_source_url": "https://www.chinese.cn/",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "cis.chinese.cn, the record's official_source_url, serves no public page (HTTP 404 on / and on /account/login) and only redirects to a login portal, so it exposes no brand asset. The body that operates that scholarship platform and awards the Confucius Institute / Chinese language teachers scholarship is the Center for Language Education and Cooperation (CLEC), whose own site is www.chinese.cn; the proposed file is the site header logo of that official domain, fetched and visually confirmed as the CLEC wordmark (blue-and-red emblem plus 'Center for Language Education and Cooperation / 中外语言交流合作中心'), 800x180. Not the favicon.ico that the same page also references. Identity is the administering awarding body, not the historic 'Confucius Institute Headquarters' name in the record title, hence MEDIUM rather than HIGH."
+      },
+      "source": {
+        "url": "https://www.chinese.cn/",
+        "publisher": "Center for Language Education and Cooperation (CLEC)",
+        "retrieved_at": "2026-10-05T15:47:00Z",
+        "raw_extract": "<title>中外语言交流合作中心</title> ... <img src=\"/page/img/logo.23e2870e.png\" alt=\"\">",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://cis.chinese.cn",
+        "http://cis.chinese.cn/",
+        "http://cis.chinese.cn/account/login",
+        "https://www.chinese.cn/",
+        "https://www.ci.cn/en/",
+        "https://www.ci.cn/en/gywm/pp",
+        "https://www.ci.cn/static/themes/default/images/indexImg/logo.png"
+      ],
+      "rejected": [
+        {
+          "url": "https://cis.chinese.cn",
+          "reason": "Official portal URL from the record returns HTTP 404 for every path and only redirects to a login wall; no public logo asset exists there."
+        },
+        {
+          "url": "https://www.ci.cn/static/themes/default/images/indexImg/logo.png",
+          "reason": "Verifiably the 孔子学院 / Confucius Institutes logo, but ci.cn is operated by CIEF (Chinese International Education Foundation), a different legal entity from Hanban/CLEC which operates cis.chinese.cn and awards this scholarship. Using it would be another organisation's brand mark for this award."
+        },
+        {
+          "url": "https://www.ci.cn/static/themes/default/images/bottomUseImg.png",
+          "reason": "Decorative brand page banner strip, not a logo mark."
+        },
+        {
+          "url": "https://www.chinese.cn/favicon.ico",
+          "reason": "Favicon asset, explicitly excluded."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 325,
+      "title": "Czech Government Scholarship - Developing Countries (AY 2027/28), Charles University Faculty of Social Sciences",
+      "outcome": "recovered",
+      "image_url": "https://www.dzs.cz/themes/reason_dzs/svg/icons/logo-en.svg",
+      "image_source_url": "https://www.dzs.cz/en/",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "The Czech Government Scholarship for Developing Countries is a Ministry of Education, Youth and Sports award administered by DZS (Dum zahranicni spoluprace / CZELO), which the record's own official_source field names. The proposed file is the header logo mark of DZS's official domain, declared in the page header as the site logo: <img class=\"header__logo-icon\" src=\"/themes/reason_dzs/svg/icons/logo-en.svg\" alt=\"logo\" /> inside <a href=\"/en\" class=\"header__logo\" aria-label=\"DZS, hlavni strana\">. Vector SVG (viewBox 0 0 573 573), so not a low-resolution raster badge, and distinct from the /favicon/* family. Identity is the administering agency rather than the individual scholarship (the scholarship has no separate mark), so confidence is MEDIUM."
+      },
+      "source": {
+        "url": "https://www.dzs.cz/en/",
+        "publisher": "Dum zahranicni spoluprace (DZS / CZELO), Czech National Agency for International Education and Research",
+        "retrieved_at": "2026-10-05T15:52:00Z",
+        "raw_extract": "<a href=\"/en\" class=\"header__logo\" aria-label=\"DZS, hlavni strana\">                  <img class=\"header__logo-icon\" src=\"/themes/reason_dzs/svg/icons/logo-en.svg\" alt=\"logo\" />                </a>",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://study.fsv.cuni.cz/czech-government-scholarship-developing-countries-for-the-ay-2027-28",
+        "https://www.dzs.cz/en/",
+        "https://studujnavs.gov.cz/en/",
+        "https://www.studujnavs.cz/en/"
+      ],
+      "rejected": [
+        {
+          "url": "https://study.fsv.cuni.cz/wp-content/uploads/sites/16/2025/04/logo-en.svg",
+          "reason": "This is the 'Study at FSV UK' recruitment-portal brand lockup of the hosting faculty, not the Czech Government Scholarship award mark. Using it would attach a department portal's logo to a national government award."
+        },
+        {
+          "url": "https://www.dzs.cz/themes/reason_dzs/img/logo/logo_msmt_en_cerne_rgb.svg",
+          "reason": "Ministry of Education partner logo hosted on DZS's domain, i.e. a third party's mark served from another organisation's site rather than DZS's own identity."
+        },
+        {
+          "url": "https://studujnavs.gov.cz/assets/favicon/favicon.svg",
+          "reason": "Favicon asset, explicitly excluded. The 'Study in Czechia' programme logo that appears on that portal is inlined in the page markup with no standalone fetchable asset URL."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 346,
+      "title": "Erasmus Mundus MARIHE Scholarship (Master in Research and Innovation in Higher Education)",
+      "outcome": "recovered",
+      "image_url": "https://www.marihe.eu/wp-content/uploads/2025/06/cropped-LogoMaRIHE-1-scaled-1.png",
+      "image_source_url": "https://www.marihe.eu/",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "The record's official_source_url is www.marihe.eu, the official site of the MaRIHE Erasmus Mundus joint master. The asset is the WordPress custom logo declared in that site's own header: <img width=\"2545\" height=\"962\" src=\"https://www.marihe.eu/wp-content/uploads/2025/06/cropped-LogoMaRIHE-1-scaled-1.png\" class=\"custom-logo\" alt=\"main logo\" ...>. Fetched and visually confirmed as the MaRIHE programme mark (monogram plus 'MaRIHE Erasmus Mundus Master in Research and Innovation in Higher Education'), 2545x962, so high resolution and not a favicon badge, not a social avatar, not a mirror. The unscaled original exists at the same path without the '-scaled-1' suffix; the scaled variant is the one the official site itself renders."
+      },
+      "source": {
+        "url": "https://www.marihe.eu/",
+        "publisher": "MaRIHE consortium (official programme site)",
+        "retrieved_at": "2026-10-05T15:36:00Z",
+        "raw_extract": "<div class=\"site-branding branding-layout-standard site-brand-logo-only\"><a class=\"brand has-logo-image\" href=\"https://www.marihe.eu/\" rel=\"home\"><img width=\"2545\" height=\"962\" src=\"https://www.marihe.eu/wp-content/uploads/2025/06/cropped-LogoMaRIHE-1-scaled-1.png\" class=\"custom-logo\" alt=\"main logo\"",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "http://www.marihe.eu",
+        "https://www.marihe.eu/",
+        "https://www.marihe.eu/programs/description-and-objectives/"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.marihe.eu/wp-content/uploads/2025/06/Logos-1.png",
+          "reason": "Partner/location logo collage (including Patiala, India), not the MaRIHE programme mark."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 480,
+      "title": "Harvard College Need-Based Financial Aid 2027-2028",
+      "outcome": "recovered",
+      "image_url": "https://www.harvard.edu/wp-content/uploads/2020/10/logo-login.png",
+      "image_source_url": "https://www.harvard.edu/about-harvard/",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Same asset and same reasoning as scholarship_id 125, which is the same award family on Harvard's site. Served from www.harvard.edu, the record's official provider domain, and declared there as the publisher logo in JSON-LD: \"publisher\":{\"@type\":\"Organization\",\"name\":\"Harvard University\",\"logo\":\"https://www.harvard.edu/wp-content/uploads/2020/10/logo-login.png\"}. Rendered at 700x219 (shield plus HARVARD UNIVERSITY wordmark). The dedicated Harvard College financial-aid-office lockup on college.harvard.edu exists only as an inline <svg> in the page markup, with no fetchable asset URL, and this host's other brand assets are all favicon-family files."
+      },
+      "source": {
+        "url": "https://www.harvard.edu/about-harvard/",
+        "publisher": "Harvard University",
+        "retrieved_at": "2026-10-05T15:41:00Z",
+        "raw_extract": "\"publisher\":{\"@type\":\"Organization\",\"name\":\"Harvard University\",\"logo\":\"https://www.harvard.edu/wp-content/uploads/2020/10/logo-login.png\"}",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://college.harvard.edu/financial-aid/apply-financial-aid/prospective-students",
+        "https://college.harvard.edu/financial-aid/apply-financial-aid",
+        "https://college.harvard.edu/financial-aid",
+        "https://www.harvard.edu/",
+        "https://www.harvard.edu/wp-content/themes/core/assets/img/theme/branding-assets/footer-logo.svg",
+        "https://brand.harvard.edu/"
+      ],
+      "rejected": [
+        {
+          "url": "https://college.harvard.edu/financial-aid/apply-financial-aid/prospective-students",
+          "reason": "The 'Harvard College Griffin Financial Aid Office' logo here is an inline <svg> in the HTML with no standalone asset URL; all other brand assets on this host are /favicon-family icons, which are excluded."
+        },
+        {
+          "url": "https://www.harvard.edu/wp-content/themes/core/assets/img/theme/branding-assets/footer-logo.svg",
+          "reason": "Reversed white wordmark (.st0{fill:#fff}) intended for the dark footer; not the site's declared publisher logo."
+        },
+        {
+          "url": "https://brand.harvard.edu/",
+          "reason": "Official Harvard brand portal unreachable (transport error), so no brand-asset page could be verified."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "shard_id": "LG-005",
+  "topic": "logo",
+  "hosts": [
+    "scholarships.gov.gh",
+    "sikap.ched.gov.ph",
+    "www.institut-pascal.universite-paris-saclay.fr"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 550,
+      "title": "Institut Pascal (IPa) Call for Proposals 2026",
+      "official_source": "Institut Pascal, Université Paris-Saclay",
+      "official_source_url": "https://www.institut-pascal.universite-paris-saclay.fr/en/proposal-submissions",
+      "catalogue_url": "https://www.universite-paris-saclay.fr/en/news/institut-pascal-call-proposals-scientific-programmes-2026",
+      "country": "France",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 618,
+      "title": "Presidential West African Scholarship Initiative (PWASI) 2026",
+      "official_source": "Ghana Scholarships Authority (Government of the Republic of Ghana)",
+      "official_source_url": "https://scholarships.gov.gh/opportunities/presidential-west-african-scholarship-initiative-pwasi-2026",
+      "catalogue_url": "https://scholarships.gov.gh/opportunities",
+      "country": "Ghana",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 644,
+      "title": "Scholarships for Staff and Instructors' Knowledge Advancement Program (SIKAP), Commission on Higher Education Philippines",
+      "official_source": "Commission on Higher Education (CHED), Philippines",
+      "official_source_url": "https://sikap.ched.gov.ph/call-for-applicants?type=sikap",
+      "catalogue_url": "https://sikap.ched.gov.ph/heis-programs",
+      "country": "Philippines",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 713,
+      "title": "Joint Algeria/Ghana Government Scholarship Awards 2026/2027 (tenable in Algeria)",
+      "official_source": "Government of the People's Democratic Republic of Algeria, announced by the Ghana Scholarships Authority (Republic of Ghana)",
+      "official_source_url": "https://scholarships.gov.gh/opportunities/the-joint-algeriaghana-government-scholarship-awards-for-the-20262027-academic-year-tenable-in-algeria",
+      "catalogue_url": "https://scholarships.gov.gh/opportunities/the-joint-algeriaghana-government-scholarship-awards-for-the-20262027-academic-year-tenable-in-algeria",
+      "country": "Algeria",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 714,
+      "title": "Scholarship Opportunities in the Kingdom of Saudi Arabia (Study in Saudi — Ghana allocation)",
+      "official_source": "Government of the Kingdom of Saudi Arabia, announced by the Ghana Scholarships Authority (Republic of Ghana)",
+      "official_source_url": "https://scholarships.gov.gh/opportunities/scholarship-oppurtunities-in-the-kingdom-of-saudi-arabia",
+      "catalogue_url": "https://scholarships.gov.gh/opportunities/scholarship-oppurtunities-in-the-kingdom-of-saudi-arabia",
+      "country": "Saudi Arabia",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

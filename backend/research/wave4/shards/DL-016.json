@@ -1,0 +1,111 @@
+{
+  "shard_id": "DL-016",
+  "topic": "deadline",
+  "hosts": [
+    "admissions.smu.edu.sg",
+    "ares-ac.be",
+    "horatioalger.org",
+    "unhcr-dafi-tertiary.scholarshipsplatform.com",
+    "www.icar.gov.in",
+    "www.uef.fi"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 108,
+      "title": "Lee Kong Chian Scholars' Programme (LKCSP)",
+      "official_source": "Singapore Management University (SMU)",
+      "official_source_url": "https://admissions.smu.edu.sg/scholarships/prospective-students/international-students",
+      "catalogue_url": null,
+      "country": "Singapore",
+      "deadline_display": "There is no separate scholarship application or scholarship deadline: the official page states \"please indicate your interest in the Scholarship section of the online application form for admission. There is no separate scholarship application form.\" The scholarship therefore follows the SMU undergraduate admission closing date. The official SMU 'Important Dates' page last published \"Application Opening Date 17 November 2025 12.00pm, Singapore Standard Time\" and \"Application Closing Date 19 March 2026 11.59pm, Singapore Standard Time\" for Academic Year 2026-27; dates for the next intake were not published as at 2026-10-04.",
+      "deadline_precision": "recurring",
+      "application_period": "Considered automatically through the SMU undergraduate admission application for the August intake. For the last published cycle, Academic Year 2026-27, applications opened 17 November 2025 and closed 19 March 2026, with interviews notified January to July 2026 and classes starting 17 August 2026. The Academic Year 2027-28 opening and closing dates were not yet published as at 2026-10-04.",
+      "verification_status": "active"
+    },
+    {
+      "id": 115,
+      "title": "Netaji Subhas-ICAR International Fellowship (NS-ICAR IF)",
+      "official_source": "Indian Council of Agricultural Research (ICAR), Ministry of Agriculture and Farmers Welfare, Govt. of India",
+      "official_source_url": "https://www.icar.gov.in",
+      "catalogue_url": "https://icar.org.in/en/node/26210",
+      "country": "India",
+      "deadline_display": "Official wording for the 2026 cycle: \"The application should be submitted by September 25, 2026\" and \"Last date for submission of the application is September 25, 2026.\" That date has passed. The guidelines state applications are invited annually.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual. Applications are invited on an annual basis through announcements published in Indian national newspapers and the notification on the ICAR website, with Indian diplomatic missions informed by email. For 2026 the deadline was 25 September 2026.",
+      "verification_status": "active"
+    },
+    {
+      "id": 338,
+      "title": "University of Eastern Finland Early Bird Discount (30%) and Tuition Waivers",
+      "official_source": "University of Eastern Finland",
+      "official_source_url": "https://www.uef.fi/en/tuition-fees-waivers-and-scholarships",
+      "catalogue_url": "https://www.uef.fi/en/degree-programmes",
+      "country": "Finland",
+      "deadline_display": "\"To qualify for the Early Bird discount, students must accept their offer of admission and pay the tuition fee, or the first instalment of the tuition fee, by the deadline stated in the admission letter (usually 21 days of the publication of the admission results). If the fee is paid in two equal instalments, the second instalment must be paid by 31 August.\" Subsequent years: \"The annual tuition fee must be paid by 31 August\".",
+      "deadline_precision": "varies",
+      "application_period": "2027 intake; the Early Bird discount is triggered by accepting the admission offer and paying by the deadline in the admission letter",
+      "verification_status": "active"
+    },
+    {
+      "id": 442,
+      "title": "SMU Global Impact Scholarship Award",
+      "official_source": "Singapore Management University",
+      "official_source_url": "https://admissions.smu.edu.sg/financial-aid/smu-global-impact-scholarship-award",
+      "catalogue_url": null,
+      "country": "Singapore",
+      "deadline_display": "There is no separate scholarship application. Scholarship interest is indicated in the Scholarship section of the SMU undergraduate online admission application, which for Academic Year 2026-27 opened on 17 November 2025 at 12.00pm and closed on 19 March 2026 at 11.59pm, Singapore Standard Time.",
+      "deadline_precision": "recurring",
+      "application_period": "Tied to the SMU undergraduate admission cycle, published annually on SMU's Important Dates page. The published cycle for Academic Year 2026-27 ran 17 November 2025 to 19 March 2026; dates for the next intake were not published as at this verification.",
+      "verification_status": "active"
+    },
+    {
+      "id": 443,
+      "title": "SMU Merit Scholarship",
+      "official_source": "Singapore Management University",
+      "official_source_url": "https://admissions.smu.edu.sg/scholarships/prospective-students/singapore-citizens",
+      "catalogue_url": null,
+      "country": "Singapore",
+      "deadline_display": "There is no separate scholarship application. Scholarship interest is indicated in the Scholarship section of the SMU undergraduate online admission application, which for Academic Year 2026-27 opened on 17 November 2025 and closed on 19 March 2026, Singapore Standard Time.",
+      "deadline_precision": "recurring",
+      "application_period": "Tied to the SMU undergraduate admission cycle, published annually on SMU's Important Dates page. The published cycle for Academic Year 2026-27 ran 17 November 2025 to 19 March 2026; dates for the next intake were not published as at this verification.",
+      "verification_status": "active"
+    },
+    {
+      "id": 523,
+      "title": "UNHCR Tertiary Refugee Scholarship Programme (DAFI) - Albert Einstein German Academic Refugee Initiative",
+      "official_source": "UNHCR (funded by the Government of Germany, with support from the Governments of Denmark and the Czech Republic and private donors; implemented by UNHCR country operations and DAFI partners such as Windle International)",
+      "official_source_url": "https://unhcr-dafi-tertiary.scholarshipsplatform.com/page/ynXGvbmb",
+      "catalogue_url": null,
+      "country": "Multiple",
+      "deadline_display": "No single global deadline is published. Deadlines are set per country operation and published on the UNHCR country help pages (published 2026/2027 examples: Rwanda 7 August 2026; Kyrgyzstan 21 August 2026; Slovakia 31 August 2026). Applicants must check their own country operation's call.",
+      "deadline_precision": "month",
+      "application_period": "Country-specific. The 2026/2027 cycle ran on country-published windows in July-August 2026 (Rwanda 15 July-7 August 2026; Kyrgyzstan 7 July-21 August 2026; Slovakia 1 July-31 August 2026). New country calls for the next cycle are announced on the relevant UNHCR country help page and applications are submitted through the DAFI Programme Management Platform.",
+      "verification_status": "needs_review"
+    },
+    {
+      "id": 571,
+      "title": "ARES Scholarships - Bourses de formations internationales (scholarships for study in Belgium)",
+      "official_source": "ARES (Fédération Wallonie-Bruxelles, Belgium)",
+      "official_source_url": "https://ares-ac.be",
+      "catalogue_url": "https://www.ares-ac.be/fr/bourses",
+      "country": "Belgium",
+      "deadline_display": "For the 2027-2028 call, applications had to be submitted through the GIRAF platform by Friday 18 September 2026 at 12h (Belgian time). The call is now closed and the next call is announced for August 2027.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual cycle: the call opens in early August and applications close in mid-September, with preselection and selection running from October to May and results in June",
+      "verification_status": "active"
+    },
+    {
+      "id": 591,
+      "title": "Horatio Alger Association National Scholarship",
+      "official_source": "Horatio Alger Association of Distinguished Americans",
+      "official_source_url": "https://horatioalger.org/scholarships-and-services/undergraduate-scholarships",
+      "catalogue_url": "https://horatioalger.org/scholarships",
+      "country": "United States",
+      "deadline_display": "Junior application period: December 1 - March 1; Senior application period: December 1 - February 15",
+      "deadline_precision": "recurring",
+      "application_period": "Opens December 1 and closes March 1 for high school juniors; opens December 1 and closes February 15 for high school seniors. As of 2026-10-04 the next cycle opens on December 1, 2026.",
+      "verification_status": "active"
+    }
+  ]
+}

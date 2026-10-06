@@ -1,0 +1,57 @@
+{
+  "shard_id": "LG-007",
+  "topic": "logo",
+  "hosts": [
+    "southafrica-france-scholarships.com",
+    "www.kth.se",
+    "www.nokiafoundation.com"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 343,
+      "title": "Nokia Scholarship",
+      "official_source": "Nokia Foundation",
+      "official_source_url": "https://www.nokiafoundation.com/nokia-scholarship-info",
+      "catalogue_url": "https://www.nokiafoundation.com/nokia-scholarship",
+      "country": "Finland",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 344,
+      "title": "Nokia Foundation Fellow",
+      "official_source": "Nokia Foundation",
+      "official_source_url": "https://www.nokiafoundation.com/foundation-fellow",
+      "catalogue_url": "https://www.nokiafoundation.com/grants-introduction",
+      "country": "Finland",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 345,
+      "title": "Jorma Ollila Grant",
+      "official_source": "Nokia Foundation",
+      "official_source_url": "https://www.nokiafoundation.com/jorma-ollila-grants",
+      "catalogue_url": "https://www.nokiafoundation.com/jorma-ollila-grants",
+      "country": "Finland",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 352,
+      "title": "France-South Africa Scholarship Programme 2027",
+      "official_source": "Embassy of France in South Africa (France Excellence Scholarship)",
+      "official_source_url": "https://southafrica-france-scholarships.com",
+      "catalogue_url": "https://www.internationalscholarships.dhet.gov.za/index.php/scholarships/undergraduate-scholarships/338-france-france-south-africa-scholarship-programme-2027",
+      "country": "France",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 457,
+      "title": "KTH One-Year Scholarship",
+      "official_source": "Kth.Se",
+      "official_source_url": "https://www.kth.se/en/studies/master/admissions/scholarships/kth-one-year-scholarship-1.290744",
+      "catalogue_url": "https://www.kth.se/en/studies/master/admissions/scholarships",
+      "country": "Sweden",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

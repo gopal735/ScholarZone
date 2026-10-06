@@ -1,0 +1,58 @@
+{
+  "shard_id": "LG-025",
+  "topic": "logo",
+  "hosts": [
+    "ira.pucp.edu.pe",
+    "www.canterbury.ac.nz",
+    "www.icdf.org.tw",
+    "www.stipendia.sk"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 511,
+      "title": "UC Doctoral Scholarship (UCDS)",
+      "official_source": "Te Whare WÄnanga o Waitaha | University of Canterbury, Scholarships Office",
+      "official_source_url": "https://www.canterbury.ac.nz/study/getting-started/scholarships/doctoral-scholarships/uc-doctoral-scholarships",
+      "catalogue_url": "https://www.canterbury.ac.nz/study/getting-started/scholarships",
+      "country": "New Zealand",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 639,
+      "title": "Becas de apoyo a la investigacion del Instituto Riva-Aguero 2027",
+      "official_source": "Instituto Riva-Aguero (PUCP)",
+      "official_source_url": "https://ira.pucp.edu.pe/wp-content/uploads/2026/08/Convocatoria-Becas-IRA-individual-y-grupal-2027-.pdf",
+      "catalogue_url": "https://ira.pucp.edu.pe/investigacion/proyectos-ganadores-de-las-becas",
+      "country": "Peru",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 645,
+      "title": "TaiwanICDF Scholarship Program (International Higher Education Scholarship Program), TaiwanICDF",
+      "official_source": "International Cooperation and Development Fund (TaiwanICDF), Taiwan",
+      "official_source_url": "https://www.icdf.org.tw/wSite/ct?ctNode=31562&mp=2&xItem=12505",
+      "catalogue_url": "https://www.icdf.org.tw/wSite/lp?ctNode=31561&mp=2",
+      "country": "Taiwan",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 654,
+      "title": "TaiwanICDF Scholarship Program (Taiwan International Cooperation and Development Fund International Higher Education Scholarship)",
+      "official_source": "Taiwan International Cooperation and Development Fund (TaiwanICDF)",
+      "official_source_url": "https://www.icdf.org.tw/wSite/ct?xItem=12505&ctNode=31562&mp=2",
+      "catalogue_url": null,
+      "country": "Taiwan",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 717,
+      "title": "National Scholarship Programme of the Slovak Republic (Národný štipendijný program SR, NŠP)",
+      "official_source": "National Scholarship Programme of the Slovak Republic, administered by SAIA (Slovak Academic and Information Agency) under an agreement with the Ministry of Education, Research, Development and Youth of the Slovak Republic",
+      "official_source_url": "https://www.stipendia.sk",
+      "catalogue_url": "https://www.stipendia.sk/sk/main/podmienky-pre-predkladanie-ziadosti",
+      "country": "Slovakia",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

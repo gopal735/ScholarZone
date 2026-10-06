@@ -1,0 +1,111 @@
+{
+  "shard_id": "DL-027",
+  "topic": "deadline",
+  "hosts": [
+    "a2ascholarships.iccr.gov.in",
+    "marie-sklodowska-curie-actions.ec.europa.eu",
+    "www.adb.org",
+    "www.ip-paris.fr",
+    "www.rotary.org",
+    "www.uniroma1.it"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 16,
+      "title": "Marie Skłodowska-Curie Actions (MSCA) Postdoctoral Fellowships",
+      "official_source": "European Commission (Marie Skłodowska-Curie Actions)",
+      "official_source_url": "https://marie-sklodowska-curie-actions.ec.europa.eu/actions/postdoctoral-fellowships",
+      "catalogue_url": "https://marie-sklodowska-curie-actions.ec.europa.eu/funding",
+      "country": "Multiple",
+      "deadline_display": "Typically September/October annually",
+      "deadline_precision": "month",
+      "application_period": "Annual call. The 2026 call ran from 9 April 2026 and closed on 9 September 2026 at 17:00 CEST. The 2027 call opens 7 April 2027 and closes 8 September 2027, both marked to be confirmed.",
+      "verification_status": "active"
+    },
+    {
+      "id": 95,
+      "title": "Institut Polytechnique de Paris (IP Paris) PhD Track & Master's Excellence Scholarships",
+      "official_source": "Institut Polytechnique de Paris",
+      "official_source_url": "https://www.ip-paris.fr/en/education/useful-information/scholarships",
+      "catalogue_url": null,
+      "country": "France",
+      "deadline_display": "Session 1: 8 January 2026; Session 2: 26 March 2026; Session 3: 28 May 2026",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 110,
+      "title": "QUAD STEM Scholarship Scheme (ICCR)",
+      "official_source": "Indian Council for Cultural Relations (ICCR)",
+      "official_source_url": "https://a2ascholarships.iccr.gov.in/scheme/quad-stem-scholarship",
+      "catalogue_url": null,
+      "country": "India",
+      "deadline_display": "AY 2026-27 closed (15 April 2026). Next cycle opens ~Feb 2027",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 111,
+      "title": "Dr. S. Radhakrishnan Cultural Exchange Scholarship Scheme (ICCR)",
+      "official_source": "Indian Council for Cultural Relations (ICCR)",
+      "official_source_url": "https://a2ascholarships.iccr.gov.in/scheme/radhakrishnan-cultural-exchange",
+      "catalogue_url": null,
+      "country": "India",
+      "deadline_display": "AY 2026-27 closed (15 April 2026). Next cycle ~Feb 2027",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 131,
+      "title": "Rotary Peace Fellowship",
+      "official_source": "Rotary International (The Rotary Foundation)",
+      "official_source_url": "https://www.rotary.org/en/our-programs/peace-fellowships",
+      "catalogue_url": null,
+      "country": "Multiple",
+      "deadline_display": "Applications are submitted online to The Rotary Foundation and the global deadline is 15 May. The official application timeline states: \"The 2027-28 Rotary Peace Fellowship application is now closed. The 2028-29 Rotary Peace Fellowship application will be available online in February 2027.\"",
+      "deadline_precision": "month",
+      "application_period": "Annual cycle. Applications open in February and close 15 May; the 2027-28 cycle is closed and the 2028-29 cycle opens in February 2027.",
+      "verification_status": "active"
+    },
+    {
+      "id": 369,
+      "title": "Sapienza University of Rome Scholarships",
+      "official_source": "Sapienza Università di Roma",
+      "official_source_url": "https://www.uniroma1.it/en/pagina/straniieri-borse-di-studio",
+      "catalogue_url": null,
+      "country": "Italy",
+      "deadline_display": "The official Scholarships page publishes no single deadline. It states that for grants for students experiencing difficulties \"The call for applications is usually published in September\" and that \"Scholarships and awards are granted throughout the year\".",
+      "deadline_precision": "varies",
+      "application_period": "Rolling portfolio of calls across the year; specific calls open and close on their own published dates, with the September call noted for students in difficulty.",
+      "verification_status": "active"
+    },
+    {
+      "id": 474,
+      "title": "Rotary Peace Fellowship 2027-2028",
+      "official_source": "Rotary.Org",
+      "official_source_url": "https://www.rotary.org/get-involved/our-programs/peace-fellowships",
+      "catalogue_url": null,
+      "country": "United States",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": null,
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 656,
+      "title": "ADB-Japan Scholarship Program (JSP)",
+      "official_source": "Asian Development Bank (financed by the Government of Japan)",
+      "official_source_url": "https://www.adb.org/work-with-us/careers/japan-scholarship-program",
+      "catalogue_url": null,
+      "country": "Japan",
+      "deadline_display": "No single ADB deadline; applications go to a designated institution at least six months before the intended start of studies",
+      "deadline_precision": "varies",
+      "application_period": "Rolling, institution-led: ADB instructs applicants to send applications at least six months prior to the planned commencement of studies, so a 2027 start can be applied for now",
+      "verification_status": "needs_review"
+    }
+  ]
+}

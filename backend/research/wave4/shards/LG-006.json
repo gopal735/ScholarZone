@@ -1,0 +1,57 @@
+{
+  "shard_id": "LG-006",
+  "topic": "logo",
+  "hosts": [
+    "sis.gov.eg",
+    "www.auckland.ac.nz",
+    "www.ip-paris.fr"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 95,
+      "title": "Institut Polytechnique de Paris (IP Paris) PhD Track & Master's Excellence Scholarships",
+      "official_source": "Institut Polytechnique de Paris",
+      "official_source_url": "https://www.ip-paris.fr/en/education/useful-information/scholarships",
+      "catalogue_url": null,
+      "country": "France",
+      "image_evaluation_status": "source_blocked"
+    },
+    {
+      "id": 255,
+      "title": "University of Auckland International Student Excellence Scholarship",
+      "official_source": "University of Auckland",
+      "official_source_url": "https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/university-of-auckland-international-student-excellence-scholarship-844-all.html",
+      "catalogue_url": "https://www.auckland.ac.nz/assets/study/scholarships-and-funding/find-a-scholarship-or-award/regulations/university-of-auckland-international-student-excellence-scholarship.pdf",
+      "country": "New Zealand",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 405,
+      "title": "University of Auckland Top Achiever Scholarship",
+      "official_source": "University of Auckland (Waipapa Taumata Rau)",
+      "official_source_url": "https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/university-of-auckland-top-achiever-scholarship-900-all.html",
+      "catalogue_url": "https://www.auckland.ac.nz/assets/study/scholarships-and-funding/find-a-scholarship-or-award/regulations/university-of-auckland-top-achiever-scholarship.pdf",
+      "country": "New Zealand",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 406,
+      "title": "University of Auckland Vaka Moana Scholarship",
+      "official_source": "University of Auckland (Waipapa Taumata Rau)",
+      "official_source_url": "https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/uoa-vaka-moana-scholarship-1080-all.html",
+      "catalogue_url": "https://www.auckland.ac.nz/assets/study/scholarships-and-funding/find-a-scholarship-or-award/regulations/university-of-auckland-vaka-moana-scholarship.pdf",
+      "country": "New Zealand",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 675,
+      "title": "Future Scientists Scholarship (منحة علماء المستقبل) 2026/2027 — Ministry of Higher Education and Scientific Research and Central Bank of Egypt",
+      "official_source": "Ministry of Higher Education and Scientific Research (Egypt), in cooperation with the Central Bank of Egypt",
+      "official_source_url": "https://sis.gov.eg/ar/%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2-%D8%A7%D9%84%D8%A5%D8%B9%D9%84%D8%A7%D9%85%D9%8A/%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1/%D9%85%D8%AF-%D9%81%D8%AA%D8%B1%D8%A9-%D8%A7%D9%84%D8%AA%D9%82%D8%AF%D9%8A%D9%85-%D9%84%D9%85%D9%86%D8%AD%D8%A9-%D8%B9%D9%84%D9%85%D8%A7%D8%A1-%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D9%82%D8%A8%D9%84",
+      "catalogue_url": "https://futurescholars.mohesr.gov.eg",
+      "country": "Egypt",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

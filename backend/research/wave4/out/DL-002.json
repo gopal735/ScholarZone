@@ -1,0 +1,287 @@
+{
+  "shard_id": "DL-002",
+  "agent_completed": true,
+  "notes": "Topic: deadline. Hosts covered: nawa.gov.pl, www.royalsociety.org.nz. All 8 records were researched against live official sources on 2026-10-05. NAWA publishes each scholarship's deadline only inside the official call-for-applications PDF; those PDFs were downloaded from nawa.gov.pl and their text extracted, so every date below comes from a document I actually fetched. Six records resolve to a deadline that is explicitly in the past while the record is stored as open/upcoming, so per AGENT_BRIEF section 6 they are reported as expired_mismatch with deadline_date left null and the stale date NOT written or rolled forward. Two records (290 and 421, both Poland My First Choice NAWA) yield no deadline from any official source and stay UNKNOWN. No value was inferred from a call announcement date, a previous cycle, or a snippet.",
+  "records": [
+    {
+      "scholarship_id": 289,
+      "title": "Banach NAWA Scholarship Programme",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Application deadline: The call for applications will continue until May 8, 2026, 3:00:00 p.m. local time (Warsaw) or until 300 applications are submitted in each of country groups no. 1-3 and 200 applications in the group no. 4 (the call will be closed after the above deadline or earlier for a given group of countries if the above-mentioned number of applications is submitted).",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://nawa.gov.pl/images/Banach/2026/Banach-2026---Call-for-applications-EN.pdf",
+        "source_type": "official_programme_page",
+        "publisher": "Polish National Agency for Academic Exchange (NAWA), jointly with the Ministry of Foreign Affairs of Poland",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": "Announcement of a call for applications for participation in the Banach NAWA Programme no. 16/2026 of 13 April 2026, for studies or preparatory course from the winter semester 2026/27",
+        "raw_extract": "2.4. Deadline and other conditions for submitting an application | Application deadline The call for applications will continue until May 8, 2026, 3:00:00 p.m. local | time (Warsaw) or until 300 applications are submitted in each of country | groups no. 1-3 and 200 applications in the group no. 4 (the call will be closed | after the above deadline or earlier for a given group of countries if the | above-mentioned number of applications is submitted).",
+        "exact_deadline_wording": "The call for applications will continue until May 8, 2026, 3:00:00 p.m. local time (Warsaw)",
+        "confidence": "HIGH",
+        "notes": "The HTML pages of this programme (About the programme, Call for proposals) carry no deadline text at all; the deadline exists only inside the official call PDF, which is the document quoted here (section 2.4, page 3 of 8). The PDF text was extracted directly from the file downloaded from nawa.gov.pl. May 8, 2026 is clearly in the past relative to the retrieval date 2026-10-05 while the record is stored as open/upcoming, so per AGENT_BRIEF section 6 no deadline_date is written and the date is not rolled forward to a future year. The 'No. 16/2026 of April 13, 2026' heading is the announcement date, NOT a deadline, and was not used as one. The same PDF also states '2.11. Planned date of announcement of recruitment results | The recruitment results will be announced by July 31, 2026.' No newer Banach call has been published on the live call-for-proposals page."
+      },
+      "field_mapping": {
+        "deadline_date": "null (leave empty; source deadline 2026-05-08 is expired and must not be written)",
+        "deadline_precision": "unknown",
+        "deadline_display": "Application deadline: The call for applications will continue until May 8, 2026, 3:00:00 p.m. local time (Warsaw) or until 300 applications are submitted in each of country groups no. 1-3 and 200 applications in the group no. 4"
+      },
+      "examined": [
+        "https://nawa.gov.pl/en/students/foreign-students/the-banach-scholarship-programme/about-the-programme",
+        "https://nawa.gov.pl/en/students/foreign-students/the-banach-scholarship-programme/call-for-proposals",
+        "https://nawa.gov.pl/images/Banach/2025/Att.-1.-NAWA_Regulations-for-natural-persons-2025-ENG.pdf"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 290,
+      "title": "Poland My First Choice NAWA",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme/about-the-programme",
+        "source_type": "official_programme_page",
+        "publisher": "Polish National Agency for Academic Exchange (NAWA)",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": null,
+        "raw_extract": "Applicants select the university and the field of study at which they want to study independently, based on the offer of universities listed in the call for applications. **NAWA does not act as an intermediary in the admission of Applicants for studies**.",
+        "exact_deadline_wording": null,
+        "confidence": "LOW",
+        "notes": "No deadline of any kind appears on the official Poland My First Choice programme page: it lists the scholarship offer, the eligible countries and the exemption from tuition fees, and refers generically to 'the call for applications' without a date. The shard's stored note that the call URL returns HTTP 404 is no longer accurate: /call-for-proposals now resolves, but it serves the CLOSED 2024 call, whose deadline ('The call for applications will be open until 25th June 2024, 3 pm local time (Warsaw)') belongs to a different, past cycle and must not be used for this record. No 2026/27 call announcement page is linked from the live programme page, so no current deadline can be established from an official source. Writing UNKNOWN rather than reusing the 2024 date."
+      },
+      "field_mapping": {
+        "deadline_date": "null (no write; evidence insufficient)",
+        "deadline_precision": "unknown",
+        "deadline_display": "null (leave empty)"
+      },
+      "examined": [
+        "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme/about-the-programme",
+        "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme/call-for-proposals",
+        "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme/closed-calls/nabor-2025"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme/call-for-proposals",
+          "reason": "Serves the archived 2024 call (breadcrumb: Closed calls > Closed call 2024). Its 'open until 25th June 2024, 3 pm local time (Warsaw)' is a deadline for a previous cycle, not the record's current cycle."
+        },
+        {
+          "url": "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme/closed-calls/nabor-2025",
+          "reason": "Returns NAWA's 404 error page ('B\u0142\u0105d 404'); no 2025/2026 call page exists at this path."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 401,
+      "title": "Aotearoa New Zealand T\u0101whia te Mana Research Fellowships \u2014 New Zealand Mana T\u016bp\u0101pa Future Leader Fellowship",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "The T\u0101whia Te Mana Fellowship application portal opens on Friday, 1 May 2026 and applications close at 2.00 pm (NZST) on Thursday, 9 July 2026",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.royalsociety.org.nz/what-we-do/funds-and-opportunities/tawhia-te-mana",
+        "source_type": "official_scholarship_page",
+        "publisher": "Royal Society Te Ap\u0101rangi",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": "2026 funding round of the Aotearoa New Zealand T\u0101whia te Mana Research Fellowships (all three schemes, incl. the Mana T\u016bp\u0101pa Future Leader Fellowship)",
+        "raw_extract": "The T\u0101whia Te Mana Fellowship application portal opens on Friday, 1 May 2026 and applications close at 2.00 pm (NZST) on Thursday, 9 July 2026",
+        "exact_deadline_wording": "applications close at 2.00 pm (NZST) on Thursday, 9 July 2026",
+        "confidence": "HIGH",
+        "notes": "Direct webfetch of this URL returned HTTP 403 (bot protection), so the page was loaded and read in a real browser session at the same official URL; the sentence above is the verbatim page text for the 2026 round and applies to the fellowship schemes as a whole, including the Mana T\u016bp\u0101pa Future Leader Fellowship named in this record. 9 July 2026 is clearly in the past relative to the retrieval date 2026-10-05 while the record is stored as open/upcoming, so per AGENT_BRIEF section 6 no deadline_date is written and the date is not moved to a later round. The page publishes no opening or closing dates for the next round: a full-text scan of the page for '2027' returned zero occurrences, so there is no future round date to record and nothing was inferred from the annual pattern."
+      },
+      "field_mapping": {
+        "deadline_date": "null (leave empty; source deadline 2026-07-09 is expired and must not be written)",
+        "deadline_precision": "unknown",
+        "deadline_display": "The T\u0101whia Te Mana Fellowship application portal opens on Friday, 1 May 2026 and applications close at 2.00 pm (NZST) on Thursday, 9 July 2026"
+      },
+      "examined": [
+        "https://www.royalsociety.org.nz/what-we-do/funds-and-opportunities/"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 415,
+      "title": "Ulam NAWA Programme",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Application submission deadline: The call for applications will be open until 15 May 2026, 3:00:00 p.m., according to the official time in Poland.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://nawa.gov.pl/images/Ulam/Ulam_2026/Call-for-applications-Ulam_NAWA_2026_2.pdf",
+        "source_type": "official_programme_page",
+        "publisher": "Polish National Agency for Academic Exchange (NAWA)",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": "Call for applications for participation in the Ulam NAWA Programme no. 9/2026 of 13 February 2026",
+        "raw_extract": "2.7. Deadline and other conditions for submitting an application | 1. Application submission deadline. | The call for applications will be open until 15 May 2026, 3:00:00 p.m., according to the official | time in Poland.",
+        "exact_deadline_wording": "The call for applications will be open until 15 May 2026, 3:00:00 p.m., according to the official time in Poland.",
+        "confidence": "HIGH",
+        "notes": "The record's official_source_url (https://nawa.gov.pl/blad-404) is NAWA's error page, not the programme, so the live programme pages were used instead: /en/scientists/the-ulam-programme and /en/scientists/the-ulam-programme/announcement show the call announcement 'no. 9/2026 of 13 February 2026' with a link to the call PDF but no deadline text in HTML, and /information-for-applicants contains no deadline either. The deadline was therefore read from the official call PDF linked from the NAWA announcement page (section 2.7, page 3 of 9). 15 May 2026 is clearly in the past relative to the retrieval date 2026-10-05 while the record is stored as open/upcoming, so per AGENT_BRIEF section 6 no deadline_date is written and the date is not rolled forward."
+      },
+      "field_mapping": {
+        "deadline_date": "null (leave empty; source deadline 2026-05-15 is expired and must not be written)",
+        "deadline_precision": "unknown",
+        "deadline_display": "Application submission deadline: The call for applications will be open until 15 May 2026, 3:00:00 p.m., according to the official time in Poland."
+      },
+      "examined": [
+        "https://nawa.gov.pl/en/scientists/the-ulam-programme",
+        "https://nawa.gov.pl/en/scientists/the-ulam-programme/announcement",
+        "https://nawa.gov.pl/en/scientists/the-ulam-programme/information-for-applicants"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://nawa.gov.pl/blad-404",
+          "reason": "NAWA's generic 404 error page (the record's stored official_source_url); contains no programme content."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 416,
+      "title": "TOP200 NAWA Programme",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Submission deadline: February 27, 2026",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://nawa.gov.pl/en/scientists/top200-nawa/about-the-programme",
+        "source_type": "official_programme_page",
+        "publisher": "Polish National Agency for Academic Exchange (NAWA)",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": "TOP200 NAWA pilot call (project implementation timeframe 2026\u20132032)",
+        "raw_extract": "**Financing and the timeframe**:  **Call budget**: PLN 17 mln from NAWA;  **Submission deadline**:  February 27, 2026  **Evaluation result by**:  July 31, 2026",
+        "exact_deadline_wording": "Submission deadline: February 27, 2026",
+        "confidence": "HIGH",
+        "notes": "This is the only live NAWA page that states a TOP200 deadline in HTML, quoted verbatim above. The record's stored official_source_url path (/en/students/top200) is not the live programme path; the live programme page is /en/scientists/top200-nawa/about-the-programme, which the site menu links from the TOP200 programme. The /call-for-applications page body contains no deadline (only a link to an application-form PDF), and the programme menu lists only 'Closed call - 2025', so no later round is published. February 27, 2026 is clearly in the past relative to the retrieval date 2026-10-05 while the record is stored as open/upcoming, so per AGENT_BRIEF section 6 no deadline_date is written and the date is not moved to 2027 or any other year."
+      },
+      "field_mapping": {
+        "deadline_date": "null (leave empty; source deadline 2026-02-27 is expired and must not be written)",
+        "deadline_precision": "unknown",
+        "deadline_display": "Submission deadline: February 27, 2026"
+      },
+      "examined": [
+        "https://nawa.gov.pl/en/scientists/top200-nawa/call-for-applications"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://nawa.gov.pl/en/students/top200",
+          "reason": "Path carried in the record's stored official_source_url is not the live TOP200 programme location; used the live /en/scientists/top200-nawa pages instead."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 417,
+      "title": "Bekker NAWA Programme",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Deadline for submitting the application: The call for applications will be open until May 29th 2026 3:00 PM according to the official time in Poland.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://nawa.gov.pl/images/Bekker/Bekker-2026/00-Ogloszenie-Bekker-2026-ENG.pdf",
+        "source_type": "official_programme_page",
+        "publisher": "Polish National Agency for Academic Exchange (NAWA)",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": "Announcement of the call for applications for participation in programme Bekker NAWA, No 12/2025 of March 13th, 2026 (Bekker NAWA 2026 edition)",
+        "raw_extract": "2.4. Deadline and other conditions for submitting an application | 2.4.1. Deadline for submitting the application. | The call for applications will be open until May 29th 2026 3:00 PM according to the official time | in Poland.",
+        "exact_deadline_wording": "The call for applications will be open until May 29th 2026 3:00 PM according to the official time in Poland.",
+        "confidence": "HIGH",
+        "notes": "The live announcement page (/en/naukowcy/program-imienia-bekkera/ogloszenie) carries the call heading 'No 12/2025 of March 13th, 2026' and links the call PDF but states no deadline in HTML; the FAQ page /informacje-dla-wnioskodawcow likewise contains no submission deadline (it only refers to the project implementation period). The deadline was read from the official call PDF linked from that announcement page (section 2.4.1, page 2 of 11). May 29, 2026 is clearly in the past relative to the retrieval date 2026-10-05 while the record is stored as open/upcoming, so per AGENT_BRIEF section 6 no deadline_date is written and the date is not rolled forward. Note the odd but genuine announcement numbering 'No 12/2025 of March 13th, 2026'; the announcement number/date is not a deadline and was not used as one."
+      },
+      "field_mapping": {
+        "deadline_date": "null (leave empty; source deadline 2026-05-29 is expired and must not be written)",
+        "deadline_precision": "unknown",
+        "deadline_display": "Deadline for submitting the application: The call for applications will be open until May 29th 2026 3:00 PM according to the official time in Poland."
+      },
+      "examined": [
+        "https://nawa.gov.pl/en/naukowcy/program-imienia-bekkera/ogloszenie",
+        "https://nawa.gov.pl/en/naukowcy/program-imienia-bekkera/informacje-dla-wnioskodawcow",
+        "https://nawa.gov.pl/en/scientists/the-bekker-programme"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://nawa.gov.pl/en/scientists/bekker",
+          "reason": "Path carried in the record's stored official_source_url is not the live Bekker location; used the live /en/scientists/the-bekker-programme and /en/naukowcy/... pages linked from the site menu."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 418,
+      "title": "Walczak NAWA Programme",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "The call for applications will be open until February 28, 2025 at 3:00 PM according to the official time in Poland.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://nawa.gov.pl/images/Walczak/Walczak-2024/0-Walczak-2024-ogloszenie-ENGLISH.pdf",
+        "source_type": "official_programme_page",
+        "publisher": "Polish National Agency for Academic Exchange (NAWA)",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": "ANNOUNCEMENT OF A CALL FOR APPLICATIONS FOR PARTICIPATION IN PROGRAM WALCZAK NAWA 2024, No. 41/2024 of December 5, 2024 (most recent edition published on the live call page)",
+        "raw_extract": "submission | deadline | The call for applications will be open until February 28, 2025 at 3:00 PM | according to the official time in Poland.",
+        "exact_deadline_wording": "The call for applications will be open until February 28, 2025 at 3:00 PM according to the official time in Poland.",
+        "confidence": "HIGH",
+        "notes": "The live call page (/en/scientists/the-walczak-programme/call-for-proposals) still publishes only the Walczak NAWA 2024 announcement 'No. 41/2024 of December 5, 2024' and links its PDF; no later edition is posted, and no deadline text appears in HTML. The deadline was read from that official PDF (page 2). February 28, 2025 is long past relative to the retrieval date 2026-10-05 while the record is stored as open/upcoming, so per AGENT_BRIEF section 6 no deadline_date is written and no future date is invented. Discrepancy worth flagging for review: the shard's stored note says the programme page states the call runs 'until 31 January 2024', whereas the live 2024 call PDF itself states 'February 28, 2025 at 3:00 PM'. The PDF wording is the value quoted here; either way it is a past, superseded edition and must not be written into an open/upcoming record."
+      },
+      "field_mapping": {
+        "deadline_date": "null (leave empty; source deadline 2025-02-28 is expired and must not be written)",
+        "deadline_precision": "unknown",
+        "deadline_display": "The call for applications will be open until February 28, 2025 at 3:00 PM according to the official time in Poland."
+      },
+      "examined": [
+        "https://nawa.gov.pl/en/scientists/the-walczak-programme/call-for-proposals"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://nawa.gov.pl/en/scientists/walczak",
+          "reason": "Path carried in the record's stored official_source_url is not the live Walczak location; used the live /en/scientists/the-walczak-programme/call-for-proposals page instead."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 421,
+      "title": "Poland My First Choice NAWA Programme",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme",
+        "source_type": "official_programme_page",
+        "publisher": "Polish National Agency for Academic Exchange (NAWA)",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": null,
+        "raw_extract": "The Poland My First Choice NAWA programme aims to encourage young talented people from the countries listed below to pursue studies at the Polish university-type higher education institutions (HEIs). ... The Programme does not provide for a call for applications for fields of study offered by the HEIs supervised by other ministries.",
+        "exact_deadline_wording": null,
+        "confidence": "LOW",
+        "notes": "The record's stored official_source_url (https://nawa.gov.pl/en/students/poland-my-first-choice) returns NAWA's error page: '404 - NAWA' / 'B\u0142\u0105d 404', i.e. it carries no programme content. The live programme page and its 'about the programme' child page both describe the scholarship and the eligible countries but publish NO application deadline and link no current call-for-applications announcement. The programme's only reachable call page serves the archived 2024 call (deadline 25 June 2024), a different and past cycle, which is deliberately not reused here. The shard's stored note that a 2026 call no 19/2026 of 30 April 2026 was published could not be verified from any live official NAWA page, and an announcement number/date is not a deadline in any case. UNKNOWN is the truthful result."
+      },
+      "field_mapping": {
+        "deadline_date": "null (no write; evidence insufficient)",
+        "deadline_precision": "unknown",
+        "deadline_display": "null (leave empty)"
+      },
+      "examined": [
+        "https://nawa.gov.pl/en/students/poland-my-first-choice",
+        "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme/about-the-programme",
+        "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme/call-for-proposals"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://nawa.gov.pl/en/students/poland-my-first-choice",
+          "reason": "Returns NAWA's 404 error page ('B\u0142\u0105d 404'); no programme or deadline content."
+        },
+        {
+          "url": "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme/call-for-proposals",
+          "reason": "Serves the archived 2024 call; its 'open until 25th June 2024, 3 pm local time (Warsaw)' belongs to a superseded cycle and cannot be written for an open/upcoming record."
+        }
+      ]
+    }
+  ]
+}

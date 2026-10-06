@@ -1,0 +1,109 @@
+{
+  "shard_id": "DL-006",
+  "topic": "deadline",
+  "hosts": [
+    "study.fsv.cuni.cz",
+    "www.gatescambridge.org",
+    "www.sgs.utoronto.ca",
+    "www.studyinjapan.go.jp"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 5,
+      "title": "MEXT (Monbukagakusho) Scholarship",
+      "official_source": "Ministry of Education, Culture, Sports, Science and Technology (MEXT), Japan",
+      "official_source_url": "https://www.studyinjapan.go.jp",
+      "catalogue_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships",
+      "country": "Japan",
+      "deadline_display": "Varies by track - Embassy Recommendation (Research Students): April-June annually; varies for other tracks. For 2027 cycle, recruitment is April-May 2026.",
+      "deadline_precision": "approximate",
+      "application_period": "Embassy Recommendation (Research Students): April-June annually",
+      "verification_status": "active"
+    },
+    {
+      "id": 68,
+      "title": "Gates Cambridge Scholarship",
+      "official_source": "Gates Cambridge Trust, with the University of Cambridge",
+      "official_source_url": "https://www.gatescambridge.org/programme/the-scholarship",
+      "catalogue_url": "https://www.postgraduate.study.cam.ac.uk/courses",
+      "country": "United Kingdom",
+      "deadline_display": "Two selection rounds. US citizens resident in the USA: applications opened 11 September 2026 and the deadline is Wednesday 14 October 2026, with the full application submitted by 11:59pm UK time. All other eligible applicants: apply by the Course Funding Deadline in the University Course Directory, which is either Tuesday 8 December 2026 or Wednesday 6 January 2027 depending on the course.",
+      "deadline_precision": "varies",
+      "application_period": "2027/8 entry. Applications opened 11 September 2026. US round closes 14 October 2026 with outcomes by 14 December 2026 and scholarships offered by early February 2027. International round closes either 8 December 2026 or 6 January 2027 depending on the course, with outcomes by 8 March 2027 and scholarships offered by early April 2027.",
+      "verification_status": "active"
+    },
+    {
+      "id": 239,
+      "title": "Young Leaders Program (YLP) Students - Japanese Government (MEXT) Scholarship",
+      "official_source": "MEXT (Ministry of Education, Culture, Sports, Science and Technology)",
+      "official_source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/about-scholarships",
+      "catalogue_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships",
+      "country": "Japan",
+      "deadline_display": "No central MEXT or portal deadline is published. Recruitment is conducted through the embassies of Japan in target countries upon the recommendation of official overseas recommending organisations, so the timetable is set country by country and by the recommending organisation. Applicants must check the Japanese embassy or consulate general in their own country.",
+      "deadline_precision": "varies",
+      "application_period": "Not published centrally. Recruitment runs through the embassies of Japan in target countries upon the recommendation of official overseas recommending organisations, at timings that differ by country and region.",
+      "verification_status": "active"
+    },
+    {
+      "id": 307,
+      "title": "Ontario Graduate Scholarship (OGS) - University of Toronto",
+      "official_source": "School of Graduate Studies, University of Toronto / Ontario Ministry of Colleges, Universities, Research Excellence and Security",
+      "official_source_url": "https://www.sgs.utoronto.ca/awards/ontario-graduate-scholarship",
+      "catalogue_url": "https://www.sgs.utoronto.ca/awards-funding/scholarships-awards/ontario-graduate-scholarship-application-instructions",
+      "country": "Canada",
+      "deadline_display": "Student Deadline: date set by graduate unit. Application Dates: determined by graduate unit. Graduate Unit Deadline: refer to SGS Memo. Results: mid-July.",
+      "deadline_precision": "varies",
+      "application_period": "University-specific internal deadlines; provincial competition annually",
+      "verification_status": "active"
+    },
+    {
+      "id": 325,
+      "title": "Czech Government Scholarship - Developing Countries (AY 2027/28), Charles University Faculty of Social Sciences",
+      "official_source": "Ministry of Education, Youth and Sports of the Czech Republic (Government of the Czech Republic scholarship, administered by DZS)",
+      "official_source_url": "https://study.fsv.cuni.cz/czech-government-scholarship-developing-countries-for-the-ay-2027-28",
+      "catalogue_url": "https://study.fsv.cuni.cz/how-to-apply/scholarships",
+      "country": "Czech Republic",
+      "deadline_display": "For studies beginning in the academic year 2027/2028 the Faculty of Social Sciences states \"the application deadline is September 30, 2026\"; that date has already passed as of 2026-10-04 and the Faculty has published no date for the following year.",
+      "deadline_precision": "recurring",
+      "application_period": "The AY 2027/28 cycle closed on 2026-09-30. The Faculty's notice is published ahead of each intake and links to the online application form; applications must be lodged with the applicant's embassy.",
+      "verification_status": "active"
+    },
+    {
+      "id": 373,
+      "title": "Japanese Government (MEXT) Scholarship for 2027 (Undergraduate Students) - Embassy Recommendation",
+      "official_source": "Ministry of Education, Culture, Sports, Science and Technology (MEXT), Japan",
+      "official_source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships",
+      "catalogue_url": "https://www.studyinjapan.go.jp/en/_mt/2026/04/2027_Guidelines_Undergraduate_E.pdf",
+      "country": "Japan",
+      "deadline_display": "\"Recruitment for those arriving in Japan next April is made between April and May of the previous year. First screening is conducted between May and August by the Japanese Embassies or Consulates General.\"",
+      "deadline_precision": "varies",
+      "application_period": "Recruitment runs April-May of the year before arrival in Japan; embassy first screening May-August",
+      "verification_status": "active"
+    },
+    {
+      "id": 374,
+      "title": "Japanese Government (MEXT) Scholarship for 2027 (Research Students) - Embassy Recommendation",
+      "official_source": "Ministry of Education, Culture, Sports, Science and Technology (MEXT), Japan",
+      "official_source_url": "https://www.studyinjapan.go.jp/en/_mt/2026/04/0102-2027_Research_Guidelines_E.pdf",
+      "catalogue_url": "https://www.studyinjapan.go.jp/en/_mt/2026/04/01-2027_Research_Guidelines_E.pdf",
+      "country": "Japan",
+      "deadline_display": "\"Recruitment for those arriving in Japan in April 2027 or September/October 2027 is made between April and May of the previous year. First screening is conducted between May and July by the Japanese Embassies or Consulates General.\"",
+      "deadline_precision": "varies",
+      "application_period": "Recruitment runs April-May of the year before arrival; embassy first screening May-July",
+      "verification_status": "active"
+    },
+    {
+      "id": 375,
+      "title": "Japanese Government (MEXT) Scholarship for 2026 (Japanese Studies Students)",
+      "official_source": "Ministry of Education, Culture, Sports, Science and Technology (MEXT), Japan",
+      "official_source_url": "https://www.studyinjapan.go.jp/en/_mt/2025/12/1_2026Application_Guidelines_for_Japanese_Studies_Students.pdf",
+      "catalogue_url": "https://www.studyinjapan.go.jp/en/_mt/2025/12/1_2026Application_Guidelines_for_Japanese_Studies_Students.pdf",
+      "country": "Japan",
+      "deadline_display": "\"Recruitment for those arriving in Japan next October is made between December of the previous year and the following February. The first screening is conducted between January and February by the Japanese embassies or consulates general.\"",
+      "deadline_precision": "varies",
+      "application_period": "Recruitment runs December of the previous year through February; embassy first screening January to February",
+      "verification_status": "active"
+    }
+  ]
+}

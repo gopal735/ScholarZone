@@ -1,0 +1,248 @@
+{
+  "shard_id": "DL-047",
+  "agent_completed": true,
+  "topic": "deadline",
+  "retrieval_note": "All values below were taken from pages fetched live on 2026-10-05. No deadline_date was written for any record: 2 records had a published deadline that has already passed (expired_mismatch, stale date withheld per brief section 6), 1 record has a real official deadline expressed only as a recurring annual '15 January' with no year (ANNUAL, not dated), and 4 records have no publishable calendar deadline (UNKNOWN).",
+  "records": [
+    {
+      "scholarship_id": 204,
+      "title": "Macquarie International Research Training Program (iRTP)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "expired_deadline_date": "2026-07-31",
+      "deadline_display": "Applications open 15 June 2026, close 31 July 2026 at 11pm",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.mq.edu.au/research/phd-and-research-degrees/how-to-apply/scholarship-opportunities/scholarship-search/international-scholarship-round",
+        "source_type": "official_scholarship_page",
+        "publisher": "Macquarie University",
+        "retrieved_at": "2026-10-05T15:29:19Z",
+        "as_of": "Session 1 2027 international scholarship round",
+        "raw_extract": "Apply for the International Research Training Program (iRTP) scholarship and the International Macquarie Research Excellence Scholarship Program (iMQRES) for Session 1 2027. [...] Applications open 15 June 2026, close 31 July 2026 at 11pm [...] Applications cannot be held over to a future scholarship round. If you miss the deadline you will need to re-apply for the next round. [...] Outcomes will be available in early October 2026. If you do not receive an outcome notification by 15 November 2026, please consider your application as unsuccessful.",
+        "exact_deadline_wording": "Applications open 15 June 2026, close 31 July 2026 at 11pm",
+        "confidence": "HIGH",
+        "notes": "The official page states an explicit calendar closing date (31 July 2026, 11pm) for the Session 1 2027 iRTP/iMQRES round. As of the retrieval date (2026-10-05) that deadline is ~5 weeks in the past and the page confirms the round is finished (outcomes due early October 2026, final notification cut-off 15 November 2026). The record is carried as open/upcoming with no deadline_date, so this is an expired mismatch: per brief section 6 the stale date is NOT written and is NOT rolled forward to a 2028 round. No future round dates are published anywhere on the page, so no replacement date can be written either. 'expired_deadline_date' carries the observed value for human review only."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "Applications open 15 June 2026, close 31 July 2026 at 11pm"
+      },
+      "examined": [],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 260,
+      "title": "VUW Postgraduate International Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Same as the programme application closing date",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
+        "source_type": "official_scholarship_page",
+        "publisher": "Te Herenga Waka - Victoria University of Wellington",
+        "retrieved_at": "2026-10-05T15:29:19Z",
+        "as_of": null,
+        "raw_extract": "Scholarship level: Master's by thesis; Master's by coursework | Closing date(s): Same as the programme application closing date | Tenure: One year | Award for: International | Number offered: Varies | Value: $10,000 [...] Selection process A scholarship application is not required. Students will be assessed for their eligibility for a scholarship on application for their programme. Recipients will be advised if they have been offered the scholarship in their Offer of Place.",
+        "exact_deadline_wording": "Closing date(s): Same as the programme application closing date",
+        "confidence": "HIGH",
+        "notes": "The official scholarship page publishes no calendar deadline. It delegates the closing date to the individual programme application closing date, and there is no separate scholarship application: 'A scholarship application is not required.' Substituting a programme/admissions date would be exactly the 'generic admissions deadline for a different programme' that brief section 5 forbids, and the page never states a month, window, annual recurrence or rolling basis, so ROLLING/MONTH/ANNUAL are all unsupported. UNKNOWN is the truthful result. The same 'no application required / assessed on application for their programme' model means a single scholarship deadline does not exist for this record."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Same as the programme application closing date"
+      },
+      "examined": [
+        "https://www.wgtn.ac.nz/international/scholarships-fees/scholarships"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 261,
+      "title": "VUW Undergraduate International Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Same as the programme application closing date",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.wgtn.ac.nz/scholarships/current/vuw-undergraduate-international-scholarship",
+        "source_type": "official_scholarship_page",
+        "publisher": "Te Herenga Waka - Victoria University of Wellington",
+        "retrieved_at": "2026-10-05T15:29:19Z",
+        "as_of": null,
+        "raw_extract": "Scholarship level: Future students; School leaver | Closing date(s): Same as the programme application closing date | Tenure: One year | Award for: International | Number offered: Varies | Value: $15,000 [...] Selection process A scholarship application is not required. Students will be assessed for their eligibility for a scholarship on application for their programme. Recipients will be advised if they have been offered the scholarship in their Offer of Place.",
+        "exact_deadline_wording": "Closing date(s): Same as the programme application closing date",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url (the DCU-style landing page https://www.wgtn.ac.nz/international/scholarships-fees/scholarships) was fetched first and contains no closing date at all; it only links to the scholarship. The scholarship's own official page was then fetched and states 'Closing date(s): Same as the programme application closing date' with no calendar date, and confirms no separate scholarship application is required. No month, window, annual recurrence or rolling wording is published, so no value can be written. Imported programme/admissions dates were not substituted (brief section 5)."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Same as the programme application closing date"
+      },
+      "examined": [
+        "https://www.wgtn.ac.nz/international/scholarships-fees/scholarships"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 269,
+      "title": "DTU Tuition Fee Waiver for International non-EU/EEA MSc Students",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "All non-EU/EEA students who apply by the 15 January deadline and who wish to apply for a tuition fee waiver must submit a separate personal statement with the application, clearly specifying that you are applying for the tuition fee waiver.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.dtu.dk/english/education/graduate/fees-and-funding/tuition_fee_waivers",
+        "source_type": "official_university_page",
+        "publisher": "Technical University of Denmark (DTU)",
+        "retrieved_at": "2026-10-05T15:29:19Z",
+        "as_of": "Autumn intake, no year stated on the page",
+        "raw_extract": "DTU has a very limited number of tuition fee waivers to award International new non-EU/EEA MSc students applying for the Autumn intake. [...] All non-EU/EEA students who apply by the 15 January deadline and who wish to apply for a tuition fee waiver must submit a separate personal statement with the application, clearly specifying that you are applying for the tuition fee waiver. Non-EU/EEA applicants with a qualifying degree from Denmark must apply by the 15th January to be considered for the tuition fee waiver. [...] Tuition fee waivers are granted after you have accepted an offer of admission. For more information, please visit important dates and deadlines.",
+        "exact_deadline_wording": "apply by the 15 January deadline",
+        "confidence": "HIGH",
+        "notes": "DTU's own scholarship page states the waiver deadline as 'the 15 January deadline' for the Autumn intake, and no year appears anywhere on that page or on the linked DTU important-dates page. The deadline is therefore recurring annual timing tied to the Autumn intake, not an explicit calendar deadline, so it is classified ANNUAL with precision 'recurring' and deliberately NOT converted to 2027-01-15 (brief section 6: never date an ANNUAL value; brief section 5: no cycle assumptions). This is the scholarship's own deadline wording, not a borrowed admissions deadline: the waiver page makes the 15 January deadline the waiver deadline itself. The shard's cited quote was verified verbatim on the live page. The shard's official_source_url was also fetched and does not contain this wording; the page above is the correct official location.",
+        "corroborating_sources": [
+          {
+            "url": "https://www.dtu.dk/english/education/graduate/admission-and-deadlines/application_procedure/apply/important-dates-and-deadlines-autumn",
+            "source_type": "official_university_page",
+            "publisher": "Technical University of Denmark (DTU)",
+            "retrieved_at": "2026-10-05T15:29:19Z",
+            "raw_extract": "MSc Application Deadlines Autumn intake At a glance 15 January Application deadline - Non-EU | 1 March Application deadline - EU/EEA | 1 May Tuition fee payment - Non-EU | 1 September Semester starts - All students [...] April Tuition fee waivers announced Non-EU Tuition fee waivers are awarded to eligible non-EU/EEA applicants.",
+            "agrees": true,
+            "notes": "Second official DTU page confirming the same annual autumn cycle (15 January non-EU application deadline; waivers announced in April). No year is stated here either, and the two sources do not disagree, so the record is not CONFLICTING."
+          }
+        ]
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "All non-EU/EEA students who apply by the 15 January deadline and who wish to apply for a tuition fee waiver must submit a separate personal statement with the application, clearly specifying that you are applying for the tuition fee waiver."
+      },
+      "examined": [
+        "https://www.dtu.dk/english/education/graduate/fees-and-funding/external-scholarships"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.greenengineer.eu/scholarships/SS-DK-US-3",
+          "reason": "third-party scholarship aggregator; mirrors the DTU text and is not an official source"
+        },
+        {
+          "url": "https://www.scholafrik.com/scholarships/dtu-tuition-fee-waivers-for-international-msc-students-3b7bbfb0-f281-4efb-9d87-d2498a596caf",
+          "reason": "third-party aggregator asserting 'Jan 15, 2027'; the year is not stated by DTU and was not used"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 331,
+      "title": "Tuition Fee Waiver",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.dtu.dk/english/education/graduate/fees-and-funding",
+        "source_type": "official_university_page",
+        "publisher": "Technical University of Denmark (DTU)",
+        "retrieved_at": "2026-10-05T15:29:19Z",
+        "as_of": null,
+        "raw_extract": "EU/EEA citizens are not required to pay any fees to enrol in degree programmes in Denmark as their fees are covered by the Danish state. [...] See the links below for information on: How to pay the application fee / How to pay the tuition fee / Terms of payment [...] Subpages: How to pay application fees / How to pay tuition fees / Terms and conditions of payment / Tuition fee waivers (MSc) / External Scholarships / Non-EU/EEA citizens exempt from paying tuition",
+        "exact_deadline_wording": null,
+        "confidence": "LOW",
+        "notes": "This record is quarantined, has a generic title ('Tuition Fee Waiver'), no catalogue_url and no recorded deadline_display, and its own official_source_url (https://www.dtu.dk/education/student-life/finances-and-scholarships/scholarships-for-international-students) returns HTTP 404 - it was fetched and is dead. The DTU graduate fees-and-funding index and its external-scholarships subpage were both fetched and show that the only DTU tuition-fee-waiver page that exists is 'Tuition fee waivers (MSc)' (the page used for record 269); DTU's student-facing 'Scholarships and travel funds' pages cover private foundation awards for enrolled Danish students, not a tuition fee waiver. Because the record's identity cannot be tied to a specific live DTU award (it may be a duplicate of record 269, or a stale reference to the dead student-life path), no deadline is written. For a human reviewer: if 331 is confirmed to be the same award as 269, the official value is recurring, '15 January' (autumn intake, no year published)."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": null
+      },
+      "examined": [
+        "https://www.dtu.dk/education/student-life/finances-and-scholarships/scholarships-for-international-students",
+        "https://www.dtu.dk/english/education/graduate/fees-and-funding",
+        "https://www.dtu.dk/english/education/graduate/fees-and-funding/tuition_fee_waivers",
+        "https://www.dtu.dk/english/education/graduate/fees-and-funding/external-scholarships"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.dtu.dk/education/student-life/finances-and-scholarships/scholarships-for-international-students",
+          "reason": "404 Not Found - the record's own official source URL is dead; no live page exists at this path"
+        },
+        {
+          "url": "https://www.dtu.dk/english/education/graduate/fees-and-funding/tuition_fee_waivers",
+          "reason": "live and deadline-bearing ('15 January', no year), but its identity is the award covered by record 269; attributing it to this generic quarantined record would be an unproven match, so it is recorded as examined rather than used"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 366,
+      "title": "DCU International Scholarships for Non-EU Students",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "You are automatically considered for a scholarship when you apply as a non-EU student to DCU.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.dcu.ie/global/dcu-international-scholarships-non-eu-students-2027-28",
+        "source_type": "official_scholarship_page",
+        "publisher": "Dublin City University",
+        "retrieved_at": "2026-10-05T15:29:19Z",
+        "as_of": "2027-28 academic year",
+        "raw_extract": "DCU Merit Scholarship for Non-EU Students DCU offers partial merit-based scholarships to some non-EU students. You are automatically considered for a scholarship when you apply as a non-EU student to DCU. We'll let you know if you have qualified for a scholarship when we contact you to advise if your application to study at DCU has been successful. [...] All Non-EU applications to a full-time undergraduate or postgraduate programme in the Faculty of Engineering and Computing are automatically considered for this scholarship, and the reduction in fee will be applied directly to the student account.",
+        "exact_deadline_wording": null,
+        "confidence": "HIGH",
+        "notes": "The full official page was fetched and searched in its entirety: it publishes no scholarship application deadline, closing date, month or window. Every award on it (DCU Merit Scholarship, Humanities and Social Sciences, Engineering and Computing, Business School, Science and Health) is described as 'automatically considered' on the programme application, so no separate scholarship deadline exists to write. The page also states nothing about rolling intake. The university-wide scholarships index (https://www.dcu.ie/scholarships) was fetched and likewise contains no deadline wording for these awards. Per brief section 5, individual course application deadlines (CAO / direct application cycles, which differ per programme) were not imported as the scholarship deadline. UNKNOWN is the truthful result."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "You are automatically considered for a scholarship when you apply as a non-EU student to DCU."
+      },
+      "examined": [
+        "https://www.dcu.ie/scholarships"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 368,
+      "title": "Royal Society - Research Ireland University Research Fellowship",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "expired_deadline_date": "2026-09-09",
+      "deadline_display": "Open date 14 July 2026 / Close date 09 September 2026 / Decision by 31 May 2027",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://royalsociety.org/grants-schemes-awards/grants/university-research/",
+        "source_type": "official_scholarship_page",
+        "publisher": "The Royal Society",
+        "retrieved_at": "2026-10-05T15:29:19Z",
+        "as_of": "2027 round",
+        "raw_extract": "Status: Closed | Career Stage: Early career | 2027 | Open date 14 July 2026 | Close date 09 September 2026 | Decision by 31 May 2027 [...] Awards for this scheme that are based in the UK are funded by the Department for Business, Innovation, Science and Trade (BIST). Awards based in the Republic of Ireland are funded by Research Ireland. [...] Read the scheme notes for further information on eligibility. Those applying from Ireland (ROI) are funded by Research Ireland and will need to read the eligibility requirements in the Research Ireland-specific scheme notes.",
+        "exact_deadline_wording": "Close date 09 September 2026",
+        "confidence": "HIGH",
+        "notes": "The record's official_source_url is a legacy pre-2020 SFI scheme-notes PDF ('sfi-urf-scheme-notes-final.pdf'); it was fetched but returns raw PDF binary and is a superseded asset, so the live scheme page was used instead (brief section 5 bars legacy/cached copies when a live page exists). The live Royal Society University Research Fellowship page lists exactly one round, the 2027 round, with Status: Closed and Close date 09 September 2026, which is ~4 weeks in the past as of retrieval on 2026-10-05; the record is carried as open/upcoming, so this is an expired mismatch and the stale date is not written and not rolled to a 2028 round (no 2028 dates are published). Identity note: Republic of Ireland applicants sit inside this same URF round and are funded by Research Ireland under Research Ireland-specific scheme notes, so the single published close date governs the Research Ireland variant of the record."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "Open date 14 July 2026 / Close date 09 September 2026 / Decision by 31 May 2027"
+      },
+      "examined": [
+        "https://royalsociety.org/-/media/grants/university-research-fellowship/sfi-urf-scheme-notes-final.pdf"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://royalsociety.org/-/media/grants/university-research-fellowship/sfi-urf-scheme-notes-final.pdf",
+          "reason": "legacy pre-2020 SFI joint scheme notes; superseded by the live scheme page and returned only unparsed PDF binary, so not used as evidence"
+        }
+      ]
+    }
+  ]
+}

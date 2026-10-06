@@ -1,0 +1,301 @@
+{
+  "shard_id": "LG-026",
+  "topic": "logo",
+  "agent_completed": true,
+  "generated_at": "2026-10-05T15:52:00Z",
+  "records": [
+    {
+      "scholarship_id": 180,
+      "title": "Maastricht University NL-High Potential Scholarship",
+      "outcome": "recovered",
+      "image_url": "https://www.maastrichtuniversity.nl/themes/custom/um_corporate/logo.png",
+      "image_source_url": "https://www.maastrichtuniversity.nl/studeren/toelating-inschrijving/financing-your-studies/scholarships",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Image is Maastricht University's own site-logo asset, served from the official university domain www.maastrichtuniversity.nl under its own Drupal theme (um_corporate), alongside the vector twin https://www.maastrichtuniversity.nl/themes/custom/um_corporate/logo.svg (viewBox 0 0 1117 346, class=\"site--logo\"). The inline <svg class=\"site--logo\"> rendered in the header of the record's own official_source_url is byte-for-byte the same geometry as the SVG asset, so the PNG is the header logo of this exact page. Downloaded and visually inspected: 2480x435 px PNG, two facing triangles with 'U' (upper) and 'M' (lower) plus the 'Maastricht University' wordmark in UM corporate navy (#000831). HEAD/GET verified 200, Content-Type image/png, 31159 bytes. Not a favicon/apple-touch-icon/safari-pinned-tab asset; not a UI icon; not a social avatar; not third-party. UM's own brand library page for the logo (/support/communicatiegids/huisstijl/logo and /support/communications-guide/house-style/logo) is behind a WAF that returns HTTP 403 to non-browser clients, and per that page's own wording the logo files are only obtainable through the 'Request form UM Logo' (EPS/JPG on request), i.e. no direct asset URL there; the theme asset is the provable official substitute. Same asset intentionally reused for record 584 (both are Maastricht University awards)."
+      },
+      "source": {
+        "url": "https://www.maastrichtuniversity.nl/studeren/toelating-inschrijving/financing-your-studies/scholarships",
+        "publisher": "Maastricht University",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "raw_extract": "<title>UM scholarships for talented students</title> ... <a class=\"logo d-none d-md-block\" href=\"/\" rel=\"home\" title=\"To the homepage of Maastricht University\"> <svg viewBox=\"0 0 1117 346\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" class=\"site--logo\" style=\"margin-bottom:-1rem;margin-top:-1rem;height:80px;\"> <g class=\"logo\"><path d=\"M163.493 252.079L67.9805 205.505L163.493 158.93V252.079Z...\" fill=\"#000831\"/></g>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.maastrichtuniversity.nl/support/communicatiegids/huisstijl/logo",
+        "https://www.maastrichtuniversity.nl/support/communications-guide/house-style/logo",
+        "https://www.maastrichtuniversity.nl/support/communicatiegids/huisstijl/logo?x=1",
+        "https://www.maastrichtuniversity.nl/request-form-um-logo",
+        "https://www.maastrichtuniversity.nl/themes/custom/um_corporate/favicon.ico",
+        "https://umemory.maastrichtuniversity.nl/wiki/Category:Images_of_logos"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.maastrichtuniversity.nl/themes/custom/um_corporate/favicon.ico",
+          "reason": "favicon - explicitly rejected by brief section 7"
+        },
+        {
+          "url": "https://www.maastrichtuniversity.nl/support/communicatiegids/huisstijl/logo",
+          "reason": "official brand page could not be fetched (HTTP 403 from UM's WAF to every non-browser client tried, incl. Chrome UA + full Accept/Accept-Language/Sec-Fetch header set); not fetched, so not used as evidence"
+        },
+        {
+          "url": "https://umemory.maastrichtuniversity.nl/wiki/Category:Images_of_logos",
+          "reason": "user-uploaded MediaWiki file listing, not an official brand-asset page; entries are mixed identity and/or wrong era (e.g. 'Logo Maastricht University Leading in Learning.jpg', 'Logo Rijksuniversiteit ...', 'UMlocal-favicon.ico', FHML Lights photo)"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 315,
+      "title": "Chinese Government Scholarship for Advanced Graduate Program (Type B) at Peking University",
+      "outcome": "recovered",
+      "image_url": "https://isd.pku.edu.cn/en/Uploads/Bdlb/Picture/2021/12/02/s61a8973c3de37.png",
+      "image_source_url": "https://isd.pku.edu.cn/en/detail.php?id=819",
+      "image_source_type": "official_scholarship",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "This is the site logo of isd.pku.edu.cn, the International Students Division (Office of International Relations) of Peking University - the office that publishes and administers the Chinese Government Scholarship for the Advanced Graduate Program at PKU, i.e. the awarding body named in the record. It is rendered as the header logo of the record's own official_source_url, so it is the highest-tier source available (official scholarship/programme page). Downloaded and visually inspected: 510x59 px PNG showing the circular Peking University seal (Lu Xun 'Beida' mark, '1898') + the '北京大学 / PEKING UNIVERSITY' wordmark + '国际学生办公室 / International Students Division, Office of International Relations'. GET verified 200, image/png, 7818 bytes. MEDIUM, not HIGH, for two reasons: (a) the asset is a 510x59 header lockup, i.e. a small rather than a full-resolution brand file; (b) it is a composite lockup that names the division as well as the university, so it is a provider identity rather than the bare university seal. Peking University's official visual-identity downloads (https://vim.pku.edu.cn/xzzq/index.htm) are distributed only as .zip/.rar/.eps/.doc archives (e.g. '标志(圆形校徽).zip', '标志与英文校名组合规范.eps'), so no direct image URL exists there; the official VI manual PDF https://www.pku.edu.cn/Uploads/Picture/2019/12/04/u5de7ad0c17491.pdf (verified 200 application/pdf) is a document, not an image asset."
+      },
+      "source": {
+        "url": "https://isd.pku.edu.cn/en/detail.php?id=819",
+        "publisher": "Peking University - International Students Division",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "raw_extract": "<div class=\"logo\" style=\"min-height:10px;min-width:20px;\"><a href=\"\"><img src=\"./Uploads/Bdlb/Picture/2021/12/02/s61a8973c3de37.png\" alt=\"\" title=\"\" class=\"i\"></a></div> ... <div class=\"x_tit fontsize-40px\">2026 Scholarship Applications Are Now Open for  Prospective International Graduate Students of Peking University</div> ... <b>I. Chinese Government Scholarship for Advanced Graduate Program</b> ... Note: (1) The institution code of Peking University is 10001, and the type of application program is Type B.",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://isd.pku.edu.cn/en/detail.php?id=18",
+        "https://vim.pku.edu.cn/xzzq/index.htm",
+        "https://vim.pku.edu.cn/lsyj/index.htm",
+        "https://www.pku.edu.cn/",
+        "https://www.pku.edu.cn/Uploads/Picture/2019/12/04/u5de7ad0c17491.pdf",
+        "https://isd.pku.edu.cn/en/Public/static/themes/bdlb/favicon.ico"
+      ],
+      "rejected": [
+        {
+          "url": "https://isd.pku.edu.cn/en/Public/static/themes/bdlb/favicon.ico",
+          "reason": "favicon - explicitly rejected by brief section 7"
+        },
+        {
+          "url": "https://www.pku.edu.cn/Uploads/Picture/2019/12/08/s5decd8b95f388.png",
+          "reason": "correct identity (Peking University seal + 北京大学/PEKING UNIVERSITY, PKU red) but only 201x58 px - low-resolution header badge, rejected under the low-resolution rule"
+        },
+        {
+          "url": "https://www.pku.edu.cn/Uploads/Picture/2019/12/26/s5e04147ee4a83.png",
+          "reason": "852x240 px but renders blank white - the white/reverse footer logo on transparent, not a usable mark"
+        },
+        {
+          "url": "https://www.pku.edu.cn/Uploads/Picture/2019/12/26/s5e04176fbbfa3.png",
+          "reason": "852x240 px but renders blank white - white/reverse footer logo variant, not a usable mark"
+        },
+        {
+          "url": "https://vim.pku.edu.cn/docs/20240527144201516364.zip",
+          "reason": "official PKU brand asset ('标志(圆形校徽).zip' = circular seal) but a ZIP archive, not a direct image URL - not usable as image_url"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/File:Peking_University_seal.svg",
+          "reason": "third-party mirror of the PKU seal - not an official source"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 394,
+      "title": "Tilburg University Waiver",
+      "outcome": "recovered",
+      "image_url": "https://www.tilburguniversity.edu/themes/custom/tiu/logo.svg",
+      "image_source_url": "https://www.tilburguniversity.edu/education/masters-programs/tuition-fees-scholarships/dei-waiver",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Tilburg University renders its logo as an inline <use> reference into the icon sprite /themes/custom/tiu/assets/svg/dist.svg#tiu-logo, which is a spritesheet and therefore rejected. The same theme also serves the identical artwork as a standalone file at /themes/custom/tiu/logo.svg. Identity was proven geometrically, not by filename: the standalone file is a single self-contained graphic (zero <symbol> elements, viewBox=\"0 0 220 56\", aspect 3.93:1) and its first path begins 'M108.408077,38.7758841 C108.460385,38.7697533 C108.531923,38.7390991 ...', which is exactly the sprite symbol's first path 'M108.408 38.776c.052-.006.124-.037.173 0 ...' re-expressed with higher precision (the relative deltas reconcile to 5 decimal places), and the sprite symbol carries viewBox=\"0 0 220 56\" with fills #036 (corporate blue) and #C93 (red), the colours of the tree/book/key crest described on Tilburg's own 'Logo Tilburg University' heritage page. GET verified 200, image/svg+xml, 145502 bytes. MEDIUM rather than HIGH because: (a) the official brand-asset download links that Tilburg's own site publishes point to a SharePoint forms library (tilburgu.sharepoint.com, .../Forms/AllItems.aspx?id=...Logo/Kleur/Beeldscherm) and to the staff intranet /intranet/support/communication/visual-identity-and-design - neither is a direct fetchable asset, and both are behind auth; (b) the asset is vector only (no official raster variant exists on the domain - logo.png/logo.jpg all 404). No raster Umny variant could be proven on the official domain."
+      },
+      "source": {
+        "url": "https://www.tilburguniversity.edu/education/masters-programs/tuition-fees-scholarships/dei-waiver",
+        "publisher": "Tilburg University",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "raw_extract": "<a href=\"/\" title=\"Home\" rel=\"home\" class=\"tiu-logo\"><span class=\"sr-only\">Go to the homepage of</span> <svg aria-hidden=\"true\" width=\"173\" height=\"44\" class=\"tiu-logo__mark\"><title>Tilburg University</title><use xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"/themes/custom/tiu/assets/svg/dist.svg#tiu-logo\"></use></svg> <svg aria-hidden=\"true\" width=\"140\" height=\"17\" class=\"tiu-logo__payoff\"><title>Understanding Society</title><use ... xlink:href=\"/themes/custom/tiu/assets/svg/dist.svg#tiu-logo-payoff\"></use></svg></a> ... <title>Tilburg University Waiver | Tilburg University</title>",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://www.tilburguniversity.edu/research/research-support-portal/research-impact/science-communication/images-and-presentations",
+        "https://www.tilburguniversity.edu/about/history-and-academic-heritage/art-campus/logo-tilburg-university",
+        "https://www.tilburguniversity.edu/themes/custom/tiu/assets/svg/dist.svg",
+        "https://www.tilburguniversity.edu/themes/custom/tiu/logo.svg",
+        "https://commons.wikimedia.org/wiki/File:Tilburg_University_logo.png",
+        "https://brandfetch.com/tilburguniversity.edu"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.tilburguniversity.edu/themes/custom/tiu/assets/svg/dist.svg",
+          "reason": "icon spritesheet - fetching it returns the whole sprite, not the logo; explicitly rejected by brief section 7"
+        },
+        {
+          "url": "https://www.tilburguniversity.edu/themes/custom/tiu/images/icons/apple-touch-icon.png",
+          "reason": "apple-touch-icon - explicitly rejected by brief section 7"
+        },
+        {
+          "url": "https://www.tilburguniversity.edu/themes/custom/tiu/images/icons/favicon-32x32.png",
+          "reason": "favicon - explicitly rejected by brief section 7"
+        },
+        {
+          "url": "https://www.tilburguniversity.edu/themes/custom/tiu/images/icons/safari-pinned-tab.svg",
+          "reason": "safari-pinned-tab - explicitly rejected by brief section 7"
+        },
+        {
+          "url": "https://www.tilburguniversity.edu/sites/default/files/styles/large_width/public/image/selfie%20spot.jpg",
+          "reason": "photograph of the campus logo sculpture (the 'Selfie spot (2012)' art-campus photo) - a photograph of a logo, explicitly rejected"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Tilburg_University_logo.png",
+          "reason": "third-party mirror (Wikimedia Commons) - not an official source"
+        },
+        {
+          "url": "https://cdn.brandfetch.io/domain/tilburguniversity.edu/fallback/lettermark/theme/light/h/400/w/400/logo",
+          "reason": "third-party brand aggregator CDN - not an official source"
+        },
+        {
+          "url": "https://tilburgu.sharepoint.com/sites/MC-ECC/Gedeelde%20documenten/Forms/AllItems.aspx?id=%2Fsites%2FMC%2DECC%2FGedeelde%20documenten%2FCorporate%20en%20Visuele%20Identiteit%2FHUISSTIJL%2FLogo%27s%2FLogo%20TILBURG%20UNIVERSITY%2FLogo%2FKleur%2FBeeldscherm&p=true&ga=1",
+          "reason": "this is Tilburg's own official logo-download link, but it resolves to an authenticated SharePoint document-library form page on a third-party host, not to a direct asset URL"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 512,
+      "title": "Vice-Chancellor's International High Achievers Scholarship (VCIHAS)",
+      "outcome": "recovered",
+      "image_url": "https://advancedmanufacturing.cdu.edu.au/wp-content/uploads/2022/07/cdu-logo-padding.png",
+      "image_source_url": "https://www.cdu.edu.au/international/how-apply/scholarships",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "The record's official_source_url is the CDU international scholarships index; the dedicated VCIHAS page (https://www.cdu.edu.au/international/how-apply/scholarships/vice-chancellors-high-achievers-scholarship-vcihas-application, fetched 200, 317195 bytes) contains ZERO <img> elements - CDU publishes no per-scholarship logo. CDU's own brand library is not reachable: https://www.cdu.edu.au/brand and https://www.cdu.edu.au/brand/style-guide/logos both return an F5 BIG-IP logout page (SSO-gated), and the brand content is only served from non-canonical hosts (dev.az.cdu.edu.au, cdu-edu-au-prod.azurewebsites.net) as client-side shells with no image assets. The chosen asset is the official Charles Darwin University primary logo hosted on an official cdu.edu.au subdomain (Advanced Manufacturing Alliance project site), where it is the site's own header logo. Downloaded and visually inspected: 1133x406 px PNG showing the CDU coat of arms (Commonwealth Star, Northern Territory 7-point star, Sturt's desert pea flower) + 'CHARLES DARWIN UNIVERSITY AUSTRALIA' wordmark in CDU corporate purple #211545 - identical artwork and colour to the inline <svg aria-labelledby=\"site-logo-title\">Charles Darwin University</svg> rendered in the header of the record's official_source_url. GET verified 200, image/png, 41336 bytes. MEDIUM, not HIGH, solely on provenance: it is a CDU-unit-hosted copy of the sanctioned university logo rather than a file from the central brand library (which is SSO-gated). This is consistent with CDU's own Marketing Policy clause (7), which requires units to use the university logo and forbids creating separate unit logos."
+      },
+      "source": {
+        "url": "https://www.cdu.edu.au/international/how-apply/scholarships",
+        "publisher": "Charles Darwin University",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "raw_extract": "<a class=\"logo\" href=\"/\" title=\"Home\"> <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"160\" height=\"59\" viewBox=\"0 0 160 59\" aria-labelledby=\"site-logo-title\"><title id=\"site-logo-title\">Charles Darwin University</title><path fill=\"#211545\" fill-rule=\"evenodd\" d=\"M71.99 47.727c.742 0 1.425.117 2.047.348...\" /> </svg></a> ... <title>International student scholarships | Charles Darwin University</title> ... <meta property=\"og:site_name\" content=\"Charles Darwin University\" />",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://www.cdu.edu.au/international/how-apply/scholarships/vice-chancellors-high-achievers-scholarship-vcihas-application",
+        "https://www.cdu.edu.au/brand",
+        "https://www.cdu.edu.au/brand/style-guide/logos",
+        "https://dev.az.cdu.edu.au/brand/style-guide/logos",
+        "https://dev.az.cdu.edu.au/brand/toolkit/downloads",
+        "https://www.cdu.edu.au/files/2024-01/cdu-video-style-guide.pdf",
+        "https://advancedmanufacturing.cdu.edu.au/"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.cdu.edu.au/themes/cdu_theme/favicon/icon.svg",
+          "reason": "favicon - explicitly rejected by brief section 7 (verified 200 image/svg+xml, deliberately not proposed)"
+        },
+        {
+          "url": "https://www.cdu.edu.au/themes/cdu_theme/favicon/apple-touch-icon.png",
+          "reason": "apple-touch-icon - explicitly rejected by brief section 7"
+        },
+        {
+          "url": "https://www.cdu.edu.au/themes/cdu_theme/favicon/favicon.ico",
+          "reason": "favicon - explicitly rejected by brief section 7"
+        },
+        {
+          "url": "https://www.cdu.edu.au/files/styles/content_desktop_1x/public/2020-09/Group%201.jpg.webp?itok=8gug4bV7",
+          "reason": "og:image / hero photograph of students ('scholarship') - decorative hero art, not a logo"
+        },
+        {
+          "url": "https://dev.az.cdu.edu.au/brand/style-guide/logos",
+          "reason": "CDU brand page but on a non-canonical dev/staging host, and the response is a client-side shell with zero <img> elements - no asset to fetch"
+        },
+        {
+          "url": "https://cdu-edu-au-prod.azurewebsites.net/brand",
+          "reason": "CDU brand page on a third-party Microsoft hosting domain, not cdu.edu.au - not provable as the provider's own domain"
+        },
+        {
+          "url": "https://s363439.brambling.cdu.edu.au/ICTWEB305.html",
+          "reason": "student web-authoring tutorial on a lab subdomain referencing a 'cdu-logo' jpg in a course demo directory - not an official brand asset"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 584,
+      "title": "UM NL Global Studies Scholarship",
+      "outcome": "recovered",
+      "image_url": "https://www.maastrichtuniversity.nl/themes/custom/um_corporate/logo.png",
+      "image_source_url": "https://www.maastrichtuniversity.nl/studeren/toelating-inschrijving/financing-your-studies/scholarships/um-nl-global-studies",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Same official Maastricht University logo asset as record 180 - both records are Maastricht University awards (official_source 'Maastricht University', country Netherlands), so a shared image_url is correct, not a duplicate error. The asset is UM's own site-logo file on the official university domain; the identical inline <svg class=\"site--logo\"> logo is rendered in the header of the record's official_source_url. Downloaded and visually inspected: 2480x435 px PNG - two facing triangles carrying 'U' and 'M' plus the 'Maastricht University' wordmark in corporate navy #000831. GET verified 200, image/png, 31159 bytes. Not a favicon, UI icon, social avatar or third-party asset."
+      },
+      "source": {
+        "url": "https://www.maastrichtuniversity.nl/studeren/toelating-inschrijving/financing-your-studies/scholarships",
+        "publisher": "Maastricht University",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "raw_extract": "<title>UM scholarships for talented students</title> ... <a class=\"logo d-none d-md-block\" href=\"/\" rel=\"home\" title=\"To the homepage of Maastricht University\"> <svg viewBox=\"0 0 1117 346\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" class=\"site--logo\" ...> <g class=\"logo\"><path d=\"M163.493 252.079L67.9805 205.505L163.493 158.93V252.079Z...\" fill=\"#000831\"/></g>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.maastrichtuniversity.nl/studeren/toelating-inschrijving/financing-your-studies/scholarships/um-nl-global-studies",
+        "https://www.maastrichtuniversity.nl/support/communicatiegids/huisstijl/logo",
+        "https://www.maastrichtuniversity.nl/support/communications-guide/house-style/logo",
+        "https://www.maastrichtuniversity.nl/themes/custom/um_corporate/logo.svg",
+        "https://www.maastrichtuniversity.nl/themes/custom/um_corporate/favicon.ico"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.maastrichtuniversity.nl/themes/custom/um_corporate/favicon.ico",
+          "reason": "favicon - explicitly rejected by brief section 7"
+        },
+        {
+          "url": "https://www.maastrichtuniversity.nl/support/communicatiegids/huisstijl/logo",
+          "reason": "official brand page could not be fetched (HTTP 403 from UM's WAF to non-browser clients); not fetched, so not used as evidence"
+        },
+        {
+          "url": "https://www.maastrichtuniversity.nl/themes/custom/um_corporate/logo.png",
+          "reason": "SVG twin of the chosen PNG deliberately not proposed for this record because record 180 already carries it - one image_url per institution, no need to vary the format across two identical providers"
+        }
+      ]
+    }
+  ]
+}

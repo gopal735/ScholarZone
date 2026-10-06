@@ -1,0 +1,252 @@
+{
+  "shard_id": "DL-052",
+  "agent_completed": true,
+  "generated_at": "2026-10-05T15:31:22Z",
+  "records": [
+    {
+      "scholarship_id": 15,
+      "title": "EPFL Master Excellence Fellowships",
+      "outcome": "recovered",
+      "deadline_semantics": "MONTH",
+      "deadline_date": null,
+      "deadline_display": "Deadline: December 15.",
+      "deadline_precision": "month",
+      "source": {
+        "url": "https://www.epfl.ch/education/master/master-excellence-fellowships",
+        "source_type": "official_scholarship_page",
+        "publisher": "EPFL (Ecole polytechnique federale de Lausanne)",
+        "retrieved_at": "2026-10-05T15:28:00Z",
+        "as_of": "page explicitly scopes the deadline to the 2027 EPFL Master Excellence Fellowship cycle, but attaches no calendar year to the dates themselves",
+        "raw_extract": "Important: New deadline for the 2027 EPFL Master Excellence Fellowship. Applicants must submit their application within the first application window for a Master's program: \u2013 December 15 for applications submitted via IS-Academia. \u2013 January 31 for EPFL students applying for a consecutive Master's degree. More details in Application & deadlines section.",
+        "exact_deadline_wording": "December 15 for applications submitted via IS-Academia",
+        "confidence": "HIGH",
+        "notes": "Two official EPFL pages agree and neither states a calendar year. Corroborating official page https://www.epfl.ch/education/master/master-excellence-fellowships/how-to-apply/ (fetched) states verbatim: 'Deadline: December 15. Only applications that are paid for and validated by 15 December at the latest will be considered for the Excellence Fellowship.' and for internal EPFL candidates 'Deadline: January 31 (application and recommendation letters)'. Because no year is published anywhere, no YYYY-MM-DD can be written without inference, so precision is capped at month and deadline_date stays null. NOTE: the shard's cached deadline_display ('December 15 (1st round), March 31 (2nd round)') is contradicted by the live pages - there is no March 31 second round any more; the second route is January 31 for EPFL internal candidates."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "month",
+        "deadline_display": "Deadline: December 15."
+      },
+      "examined": [
+        "https://www.epfl.ch/education/master/master-excellence-fellowships/how-to-apply/",
+        "https://www.epfl.ch/education/master/programs"
+      ],
+      "rejected_sources": [],
+      "corroborating": [
+        {
+          "url": "https://www.epfl.ch/education/master/master-excellence-fellowships/how-to-apply/",
+          "raw_extract": "Deadline: December 15. Only applications that are paid for and validated by 15 December at the latest will be considered for the Excellence Fellowship."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 34,
+      "title": "Taiwan Scholarship Program",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://taiwanscholarship.moe.gov.tw/web/pages.aspx?p=7",
+        "source_type": "official_government_page",
+        "publisher": "Taiwan Scholarship and Huayu Enrichment Scholarship Office, Ministry of Education, Republic of China (Taiwan)",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": "Scholarship Guidelines page, Publication Date 2026-06-10, Issuing Authority OTSP, Guideline Update Date February 10, 2026",
+        "raw_extract": "All scholarship applications must be submitted to the local Taiwan Representative Office. For details on the application process: Scholarship Application Process (Internal Webpage Link). Contact information for overseas missions: The Official Website of MOFA.",
+        "exact_deadline_wording": "All scholarship applications must be submitted to the local Taiwan Representative Office.",
+        "confidence": "LOW",
+        "notes": "No application deadline is published on any official page of the programme. The Ministry of Education site deliberately delegates the submission point to each Taiwan Representative Office abroad and publishes no central window. Three official pages were fetched and read in full (Scholarship Guidelines p=7, Scholarship Application Process p=8, FAQ 'Scholarship Application and Release' p=12); none states a deadline date, month or window. The MOE Scholarship Guidelines (EN) is distributed only as a Google Drive PDF linked from p=7; per the brief a linked drive-hosted PDF was not used as the quote of record and in any case p=7 itself summarises the operative instruction as submission to the local mission. The shard's cached values ('Typically March-April, varies by embassy' and 'in principle 1 February to 31 March') are NOT supported by any live official page fetched and must not be written back as fact."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": null
+      },
+      "examined": [
+        "https://taiwanscholarship.moe.gov.tw/web/pages.aspx?p=8",
+        "https://taiwanscholarship.moe.gov.tw/web/pages.aspx?p=12",
+        "https://www.edutwscholarship.moe.gov.tw",
+        "https://www.edutwscholarship.moe.gov.tw/web/pages.aspx?p=7"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.edutwscholarship.moe.gov.tw",
+          "reason": "shard official_source_url; repeated fetch attempts returned 'Transport error' from this host and could not be read"
+        },
+        {
+          "url": "https://www.edutwscholarship.moe.gov.tw/web/pages.aspx?p=7",
+          "reason": "repeated fetch attempts returned 'Transport error' from this host; the identical page was successfully read on the working official host taiwanscholarship.moe.gov.tw instead"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 63,
+      "title": "Michigan State University International Merit Scholarships",
+      "outcome": "recovered",
+      "deadline_semantics": "MONTH",
+      "deadline_date": null,
+      "deadline_display": "Nov. 1",
+      "deadline_precision": "month",
+      "source": {
+        "url": "https://admissions.msu.edu/cost-aid/scholarships/international",
+        "source_type": "official_scholarship_page",
+        "publisher": "Michigan State University Office of Admissions",
+        "retrieved_at": "2026-10-05T15:28:00Z",
+        "as_of": "live page as published for the current cycle; no year attached to any date on the page",
+        "raw_extract": "The following scholarships are awarded to incoming first-year students with non-U.S. residency status. Unless otherwise noted, the application for admission is all that you need to submit in order to be considered for each award. Please note: - Applying by the Nov. 1 early action deadline guarantees a decision by January 15. - Only a limited number of students who are considered will receive offers for any of the following scholarships. ... Scholarship decisions for the MSU Non-resident Scholarship will be released by mid-February.",
+        "exact_deadline_wording": "Applying by the Nov. 1 early action deadline guarantees a decision by January 15.",
+        "confidence": "LOW",
+        "notes": "These MSU international scholarships have no dedicated application deadline of their own: the official page states the admission application is all that is required. The only date-bearing deadline named on the scholarship page is the Nov. 1 early action admission deadline. Two further official MSU admissions pages fetched make the scholarship linkage explicit but also show there is no single closing date: https://admissions.msu.edu/apply/international says 'The fall 2027 first-year application is now open. Apply by Nov. 1 for early action and maximum scholarship consideration.' and https://admissions.msu.edu/apply/international/dates-and-deadlines says 'Early action - Nov. 1 ... automatically ensures maximum consideration for all scholarship opportunities' and 'Regular decision - April 1 (Priority: Feb. 1) ... Students who apply for regular admission will still be automatically considered for any remaining awards/scholarships.' No official page states a calendar year for any of these dates, so deadline_date stays null and precision is capped at month. Confidence LOW because Nov. 1 is an admissions deadline used here as a consideration window rather than a scholarship closing date."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "month",
+        "deadline_display": "Nov. 1"
+      },
+      "examined": [
+        "https://admissions.msu.edu/cost-aid/scholarships/international/scholarship-regulations",
+        "https://admissions.msu.edu/apply/international",
+        "https://admissions.msu.edu/apply/international/dates-and-deadlines"
+      ],
+      "rejected_sources": [],
+      "corroborating": [
+        {
+          "url": "https://admissions.msu.edu/apply/international/dates-and-deadlines",
+          "raw_extract": "Early action - Nov. 1 Applying early action guarantees students an initial admission decision by Jan. 15 and automatically ensures maximum consideration for all scholarship opportunities."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 388,
+      "title": "Embassy Science Fellowship (ESF-NL) 2027",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "10 September 2026 before 14:00:00 CEST",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.nwo.nl/en/calls/embassy-science-fellowship-esf-nl-2027",
+        "source_type": "official_government_page",
+        "publisher": "NWO (Dutch Research Council) with the Ministry of Foreign Affairs",
+        "retrieved_at": "2026-10-05T15:28:00Z",
+        "as_of": "ESF-NL 2027 call for proposals; page status field reads 'Closed'; timeline shows assessment October 2026 and NWO Executive Board decision November 2026",
+        "raw_extract": "10 September 2026 before 14:00:00 CEST\n\nDeadline for proposals\n\nProposals submitted after the deadline will not be taken into consideration by NWO.",
+        "exact_deadline_wording": "10 September 2026 before 14:00:00 CEST",
+        "confidence": "HIGH",
+        "notes": "The official source states an explicit, fully qualified calendar deadline and would map to deadline_date 2026-09-10. That date is however already in the past as of retrieval (2026-10-05) and the NWO page itself lists the call status as 'Closed' with 'Closing date full application 10 September 2026 14:00 hrs.', yet the shard carries this record as open/upcoming (verification_status 'active', fellowship period 1 March 2027 to 29 February 2028). Per the brief this is reported as expired_mismatch and the stale date is deliberately NOT written to deadline_date; it has also not been silently moved to a later year. See verified_deadline_date_not_written for the date the official source actually publishes."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "10 September 2026 before 14:00:00 CEST"
+      },
+      "verified_deadline_date_not_written": "2026-09-10",
+      "examined": [
+        "https://www.nwo.nl/en/researchprogrammes/esf"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 459,
+      "title": "EPFL Bachelor Excellence Fellowships",
+      "outcome": "recovered",
+      "deadline_semantics": "MONTH",
+      "deadline_date": null,
+      "deadline_display": "April 30th",
+      "deadline_precision": "month",
+      "source": {
+        "url": "https://www.epfl.ch/education/bachelor/bachelor-excellence-fellowships",
+        "source_type": "official_scholarship_page",
+        "publisher": "EPFL (Ecole polytechnique federale de Lausanne)",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": "live page; no calendar year attached to the date",
+        "raw_extract": "In order to be eligible for this fellowship, students in their final year of high school must check the corresponding box on their Bachelor's application form before April 30th and provide the requested application file.",
+        "exact_deadline_wording": "before April 30th",
+        "confidence": "HIGH",
+        "notes": "The shard carried no deadline at all for this record (deadline_display null, precision unknown). The live official English page does publish one: 30 April, stated as a deadline with no year. The dedicated official 'Conditions d'admission & candidature' page (French) fetched at https://www.epfl.ch/education/bachelor/fr/bourses-dexcellence-bachelor/conditions-dadmission-candidature/ corroborates it verbatim: 'Une fois les inscriptions au Bachelor terminees (30 avril), chaque section preselectionne les meilleures candidatures'. Two official pages agree; neither gives a year, so no YYYY-MM-DD is written and precision is capped at month."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "month",
+        "deadline_display": "April 30th"
+      },
+      "examined": [
+        "https://www.epfl.ch/education/bachelor/fr/bourses-dexcellence-bachelor/conditions-dadmission-candidature/"
+      ],
+      "rejected_sources": [],
+      "corroborating": [
+        {
+          "url": "https://www.epfl.ch/education/bachelor/fr/bourses-dexcellence-bachelor/conditions-dadmission-candidature/",
+          "raw_extract": "Une fois les inscriptions au Bachelor terminees (30 avril), chaque section preselectionne les meilleures candidatures en vue d'un entretien de presentation"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 482,
+      "title": "MIT Undergraduate Need-Based Financial Aid and MIT Scholarship for International Students",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "November 30",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://sfs.mit.edu/undergraduate-students/apply-for-aid/deadlines-process/",
+        "source_type": "official_university_page",
+        "publisher": "MIT Student Financial Services",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": "live page; describes the standing annual cycle and publishes no calendar year",
+        "raw_extract": "To apply for financial aid, all students must submit the CSS Profile and parental tax returns or income documentation through IDOC by the following deadlines. Domestic students must also submit the FAFSA. Application deadlines are the same for both domestic and international students.\n\nCycle | Application deadline | Offers released\nEarly Action | November 30 | Mid-January\nRegular Action | February 15 | Mid-March\nTransfer | February 15 | After admission decisions\n\nYou can manage your aid application documents and access your offer through the MIT Application Portal until mid-May.",
+        "exact_deadline_wording": "Early Action November 30",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url https://sfs.mit.edu/undergraduate-students/apply-for-aid/international (fetched) contains no dates at all; it defers to this linked page via its 'Aid deadlines and process' navigation entry. The dates are published as a standing annual cycle table with month and day only and no year anywhere, so per the brief this is ANNUAL/recurring and is never converted to a calendar date. The page states explicitly that the deadlines are the same for international as for domestic students, which is why the international page carries no separate date. Two distinct annual dates exist (Early Action November 30 and Regular/Transfer February 15); November 30 is the earliest and is reported as the display value with February 15 noted."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "November 30"
+      },
+      "examined": [
+        "https://sfs.mit.edu/undergraduate-students/apply-for-aid/international",
+        "https://sfs.mit.edu/undergraduate-students/types-of-aid"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 578,
+      "title": "EASL Mobility / Research Fellowship Programme",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "1 September 2026",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://easl.eu/fellowship/mobility-research-fellowship-programme",
+        "source_type": "official_scholarship_page",
+        "publisher": "EASL - European Association for the Study of the Liver",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": "the current 2026 call: applications 15 July - 1 September 2026, review 5 September - 3 October 2026, award notifications November 2026",
+        "raw_extract": "Call for applications: 15 July \u2013 1 September 2026\n\nApplication review: 5 September \u2013 3 October 2026\n\nAward notifications: November 2026",
+        "exact_deadline_wording": "1 September 2026",
+        "confidence": "HIGH",
+        "notes": "The official programme page publishes a fully qualified close date of 1 September 2026 (opening 15 July 2026), which would map to deadline_date 2026-09-01. That date is already in the past as of retrieval (2026-10-05) and the review window is currently running, yet the shard carries this record as open/upcoming (verification_status 'active'). The programme's own index page https://easl.eu/fellowships confirms the state verbatim: 'Applications are now closed'. No 2027 call is announced anywhere on easl.eu. Per the brief this is reported as expired_mismatch and the stale date is deliberately NOT written to deadline_date; it has also not been silently moved to the next year. See verified_deadline_date_not_written for the date the official source actually publishes."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "1 September 2026"
+      },
+      "verified_deadline_date_not_written": "2026-09-01",
+      "examined": [
+        "https://easl.eu/fellowships"
+      ],
+      "rejected_sources": [],
+      "corroborating": [
+        {
+          "url": "https://easl.eu/fellowships",
+          "raw_extract": "Applications are now closed"
+        }
+      ]
+    }
+  ]
+}

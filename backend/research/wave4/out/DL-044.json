@@ -1,0 +1,299 @@
+{
+  "shard_id": "DL-044",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 61,
+      "title": "Clark University Global Scholars Program",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.clarku.edu/financial-aid/types/scholarships",
+        "source_type": "official_university_page",
+        "publisher": "Clark University, Office of Financial Assistance",
+        "retrieved_at": "2026-10-05T15:27:30Z",
+        "as_of": null,
+        "raw_extract": "Clark University offers a variety of merit-based scholarships. Consideration is given to students who have demonstrated exceptional academic performance and personal qualities during their secondary school years.\n\nMerit-based scholarship decisions are solely based on information presented in the admission application without consideration of financial need. Admitted students who receive a merit-based scholarship will be notified at the time of admission.\n\nAll applicants are automatically considered for merit-based scholarships.",
+        "exact_deadline_wording": "",
+        "confidence": "LOW",
+        "notes": "The record's own official_source_url was fetched first and returned HTTP 200, but the page never mentions the 'Global Scholars Program' at all and states no deadline of any kind. It documents only the Presidential Scholarship, Private Scholarships, Segal AmeriCorps, Yellow Ribbon and Tuition Exchange. Clark's pages that DO name the award (the international financial-aid FAQs page and the international-students admissions page) describe it without any date. The only dates available anywhere on clarku.edu for this scholarship are Clark's generic undergraduate admission round dates (Early Decision I / Early Action 'November 1', Early Decision II / Regular Decision 'January 15', plus rolling transfer windows). Those are the deadlines of a different process (admission), and the Global Scholars Program Scholarship additionally requires a separate essay whose own submission date Clark never publishes. Deriving a scholarship deadline from the admission-round table would be the inference the brief forbids, so no value is asserted."
+      },
+      "field_mapping": {
+        "deadline_date": "no change (remains null) - no official page publishes a Global Scholars Program deadline",
+        "deadline_precision": "no change (remains unknown) - existing value 'month' is not supported by any official Clark page fetched on 2026-10-05",
+        "deadline_display": "no change (remains null) - existing value asserts admission deadlines that no Global Scholars page states"
+      },
+      "examined": [
+        "https://www.clarku.edu/financial-aid/types/scholarships",
+        "https://www.clarku.edu/financial-aid/prospective-students/international-students/faqs",
+        "https://www.clarku.edu/offices/financial-aid/prospective-students/international-students/first-year-scholarships/",
+        "https://www.clarku.edu/offices/financial-aid/scholarships/",
+        "https://www.clarku.edu/undergraduate-admissions/apply/",
+        "https://www.clarku.edu/undergraduate-admissions/apply/international-students/",
+        "https://www.clarku.edu/undergraduate-admissions/",
+        "https://www.clarku.edu/undergraduate-admissions/deadlines/",
+        "https://www.clarku.edu/programs"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.clarku.edu/undergraduate-admissions/",
+          "reason": "Publishes Clark's admission round table ('Early Decision I ... November 1', 'Early Decision II ... January 15', 'Transfer - Fall Semester Start ... Rolling, February 1 - June 1'). This is the generic undergraduate admission deadline for a different process, carries no scholarship-specific year, and the page never states that the Global Scholars Program follows it. Explicitly barred by AGENT_BRIEF section 5."
+        },
+        {
+          "url": "https://www.clarku.edu/undergraduate-admissions/apply/international-students/",
+          "reason": "States 'International students may choose to apply as a Regular Decision, Early Action or Early Decision candidate, following the same application deadlines as all other applicants.' That ties international ADMISSION to admission deadlines but does not name the Global Scholars Program or the separate required essay, so it cannot be read as the scholarship's deadline."
+        },
+        {
+          "url": "https://www.clarku.edu/offices/financial-aid/prospective-students/international-students/first-year-scholarships/",
+          "reason": "Linked from the official FAQ page but live-fetches as a redirect to the Office of Financial Assistance index page; the Global Scholars Program Scholarship detail page it points to is not retrievable, so no wording or date could be read from it."
+        },
+        {
+          "url": "https://www.clarku.edu/news/2013/09/13/global-scholars-program-welcomes-new-students-to-clark-community-2/",
+          "reason": "University news release about a 2013 cohort; not a deadline source and not the scholarship's programme page. Seen only via search listing, not relied on."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 560,
+      "title": "MOFA Scholarship Program",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.mofa.gov.ae/en/Scholarship",
+        "source_type": "official_government_page",
+        "publisher": "United Arab Emirates Ministry of Foreign Affairs (MoFA)",
+        "retrieved_at": "2026-10-05T15:27:30Z",
+        "as_of": null,
+        "raw_extract": "**Note:** Please attach the required documents in PDF format upon registration (click [here](https://www.mofa.gov.ae/en/Services/Forms/Scholarship) to register).\n\n7. **How can I track my application status, and when will I be notified of the result?** **Applicants can track their application through program notifications. Updates, including final admission results, will be communicated via email or SMS.**\n8. **What is the expected timeframe for receiving the final admission decision?** **The review and final approval process typically take between 3 to 5 months. Applicants will be notified of any updates via email or SMS.**",
+        "exact_deadline_wording": "",
+        "confidence": "LOW",
+        "notes": "The official MoFA Scholarship Program page was fetched in full (HTTP 200) and contains no application deadline, no opening date and no closing date. Its only timing statements are the post-submission processing times quoted above. Because the page never uses the words 'rolling', 'no deadline' or 'open all year', this is not classifiable as ROLLING either - there is simply no published deadline, so UNKNOWN. The linked application service page was also fetched and is an empty service shell (title 'Scholarship', no form content, no dates), so it adds nothing. The record's existing deadline_precision of 'year' matches nothing published by MoFA."
+      },
+      "field_mapping": {
+        "deadline_date": "no change (remains null) - MoFA publishes no application deadline",
+        "deadline_precision": "no change (remains unknown) - existing value 'year' is not supported by any official MoFA page fetched on 2026-10-05",
+        "deadline_display": "no change (remains null)"
+      },
+      "examined": [
+        "https://www.mofa.gov.ae/en/Scholarship",
+        "https://www.mofa.gov.ae/en/services/forms/scholarship",
+        "https://www.mofa.gov.ae/services/forms/scholarship",
+        "https://www.mofa.gov.ae/en/top-universities"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.mofa.gov.ae/en/services/forms/scholarship",
+          "reason": "The programme's own 'Apply Now' target. Live page returns only the breadcrumb 'Home / Services / Scholarship' with no form body, no opening/closing period and no deadline."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 569,
+      "title": "Global Scholars Program Scholarship (Clark University)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.clarku.edu/financial-aid/prospective-students/international-students/faqs",
+        "source_type": "official_university_page",
+        "publisher": "Clark University, Office of Financial Assistance",
+        "retrieved_at": "2026-10-05T15:27:30Z",
+        "as_of": null,
+        "raw_extract": "Currently, international first-year students are eligible for five merit scholarships: the International Traina Scholarship, the International Achievement Scholarship, the International Jonas Clark Scholarship, the Presidential Scholarship and the Global Scholars Scholarship. All international first-year students are automatically considered for the first three scholarships. Separate essays are required to be considered for the Presidential Scholarship and the Global Scholars Program Scholarship.",
+        "exact_deadline_wording": "",
+        "confidence": "LOW",
+        "notes": "The record's official_source_url was fetched first (HTTP 200). It names the Global Scholars Program Scholarship and confirms a separate essay is required, but the live page carries NO deadline table and no admission dates of any kind - the 'fall 2025 admission' table with 'Nov. 1' / 'Jan. 15' / transfer windows that the record's cached deadline_display describes is no longer present on this page. Every other official Clark page fetched on 2026-10-05 is silent on when the Global Scholars essay must be submitted. No value is asserted. Recorded precision 'exact' in the record is not supportable from the live source."
+      },
+      "field_mapping": {
+        "deadline_date": "no change (remains null) - no deadline text for this award exists on the live official page",
+        "deadline_precision": "no change (remains unknown) - existing value 'exact' is not supported; the referenced fall-2025 table is absent from the live page",
+        "deadline_display": "no change (remains null) - existing value describes content that is no longer on the page it cites"
+      },
+      "examined": [
+        "https://www.clarku.edu/financial-aid/prospective-students/international-students/faqs",
+        "https://www.clarku.edu/financial-aid/types/scholarships",
+        "https://www.clarku.edu/offices/financial-aid/prospective-students/international-students/first-year-scholarships/",
+        "https://www.clarku.edu/offices/financial-aid/scholarships/",
+        "https://www.clarku.edu/undergraduate-admissions/apply/",
+        "https://www.clarku.edu/undergraduate-admissions/apply/international-students/",
+        "https://www.clarku.edu/undergraduate-admissions/"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.clarku.edu/undergraduate-admissions/apply/",
+          "reason": "Admission-round table ('Early Decision I ... November 1', 'Early Action ... November 1', 'Early Decision II ... January 15', 'Regular Decision ... January 15'). Generic admission deadlines for a different process, no year attached, and the page makes no statement that the Global Scholars Program essay rides these dates. Barred by AGENT_BRIEF section 5."
+        },
+        {
+          "url": "https://www.clarku.edu/undergraduate-admissions/",
+          "reason": "Same generic admission-round table on the admissions landing page; contains no reference to the Global Scholars Program Scholarship."
+        },
+        {
+          "url": "https://www.clarku.edu/offices/financial-aid/prospective-students/international-students/first-year-scholarships/",
+          "reason": "Live-fetches as a redirect to the Office of Financial Assistance index; the Global Scholars Program Scholarship description and any date it may carry are not retrievable."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 593,
+      "title": "Perimeter Institute PhD Residency Program Award",
+      "outcome": "recovered",
+      "deadline_semantics": "MONTH",
+      "deadline_date": null,
+      "deadline_display": "November-January - Students submit PhD application to partner university and Expression of Interest to Perimeter Institute",
+      "deadline_precision": "month",
+      "source": {
+        "url": "https://perimeterinstitute.ca/training/phd-students",
+        "source_type": "official_programme_page",
+        "publisher": "Perimeter Institute for Theoretical Physics",
+        "retrieved_at": "2026-10-05T15:27:30Z",
+        "as_of": null,
+        "raw_extract": "Q: What is the overall timeline for requests?\n\nThe Residency start date is generally tied to the Fall intake cycle but exceptions may be made mid-year.\n\n-   **November-January** \\- Students submit PhD application to partner university and Expression of Interest to Perimeter Institute\n-   **February-March** - Universities issue offer letters for September start. Students to upload offer letter(s) to their Expression of Interest application.\n-   **April-May** - Perimeter Institute will contact selected students with further details of the Residency program; Students commit to university program and start date\n-   **August-September** \\- Arrival in Waterloo; beginning of PhD studies",
+        "exact_deadline_wording": "November-January - Students submit PhD application to partner university and Expression of Interest to Perimeter Institute",
+        "confidence": "MEDIUM",
+        "notes": "Recovered at MONTH precision only, deliberately not dated. Perimeter states its own recurring Expression-of-Interest window as a two-month span with no day, so no YYYY-MM-DD can be written without inventing a day. The companion page https://perimeterinstitute.ca/training/phd-students/how-to-apply-for-phd-award also fetched (HTTP 200) adds the operative rule: 'NOTE: The Expression of Interest deadline is based on the application deadline of the university you are applying to. Your Expression of Interest must be submitted within one week of submitting your university application (for multiple university applications, use the earliest application date).' So the binding EOI deadline is defined relative to each partner university's own deadline and varies by university; the November-January figure is Perimeter's own cycle overview and is the only Perimeter-published timing. Classified MONTH (window, no day) rather than ANNUAL because Perimeter does name months; classified MONTH rather than ROLLING because Perimeter never says 'rolling' for this award. Confidence MEDIUM because the two statements are in mild tension: the named window is an overview of the overall request timeline, while the enforceable rule is relative to the partner university."
+      },
+      "field_mapping": {
+        "deadline_date": "no write - null (source gives a month window only; dating it would invent a day)",
+        "deadline_precision": "month",
+        "deadline_display": "November-January - Students submit PhD application to partner university and Expression of Interest to Perimeter Institute"
+      },
+      "examined": [
+        "https://perimeterinstitute.ca/training/phd-students",
+        "https://perimeterinstitute.ca/training/phd-students/how-to-apply-for-phd-award",
+        "https://academicjobsonline.org/ajo/jobs/32457"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://academicjobsonline.org/ajo/jobs/32457",
+          "reason": "Third-party application portal (Academic Jobs Online) hosting Perimeter's Expression of Interest. Not on the provider's domain, so not official under AGENT_BRIEF section 4, and its listing dates would be a portal artefact rather than Perimeter's published deadline. Not fetched or relied upon."
+        },
+        {
+          "url": "https://uwaterloo.ca/physics-astronomy/graduate-studies/how-apply",
+          "reason": "Partner university admissions page linked from Perimeter's how-to-apply. Another institution's deadline for a different programme; barred by AGENT_BRIEF section 5. Not relied upon."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 697,
+      "title": "CSHL School of Biological Sciences Ph.D. Program (Cold Spring Harbor Laboratory)",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Applications must be submitted online by December 1st.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.cshl.edu/phd-program/how-to-apply",
+        "source_type": "official_programme_page",
+        "publisher": "Cold Spring Harbor Laboratory, Watson School of Biological Sciences",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": null,
+        "raw_extract": "How to Apply Applications are now open. Applications must be submitted online by December 1. Apply Now! ... The application consists of unofficial transcripts, a personal statement, and three letters of recommendation. Students from non-English language universities must submit TOEFL or IELTS test scores. The GRE general test and subject test(s) are not required. Applications must be submitted online by December 1st.",
+        "exact_deadline_wording": "Applications must be submitted online by December 1.",
+        "confidence": "HIGH",
+        "notes": "CSHL states the deadline twice on the same page and both times as a bare month-and-day with NO year attached: 'Applications are now open. Applications must be submitted online by December 1.' and 'Applications must be submitted online by December 1st.' A month-and-day carrying no year is recurring annual timing, so per AGENT_BRIEF section 6 this is ANNUAL / precision 'recurring' and deadline_date stays null. Writing 2026-12-01 or any other year would be inventing a year the provider never printed. Retrieval note: the generic web-fetch tool received HTTP 403 from www.cshl.edu (bot protection); the page was then fetched directly over HTTPS with a browser user agent and returned HTTP 200 with the quoted text above. The sibling page https://www.cshl.edu/phd-program also returns 403 to automated fetches and https://www.cshl.edu/phd-program/admissions returns 404, so no second cycle-specific date is published anywhere reachable on the site."
+      },
+      "field_mapping": {
+        "deadline_date": "no write - null (month-and-day only, no year published; ANNUAL must not be dated)",
+        "deadline_precision": "recurring",
+        "deadline_display": "Applications must be submitted online by December 1st."
+      },
+      "examined": [
+        "https://www.cshl.edu/phd-program/how-to-apply",
+        "https://www.cshl.edu/phd-program",
+        "https://www.cshl.edu/phd-program/admissions"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.cshl.edu/phd-program",
+          "reason": "Programme landing page, but returns HTTP 403 to automated retrieval and was not readable, so it could not corroborate or contradict the December 1 wording. Not used as evidence."
+        },
+        {
+          "url": "https://www.cshl.edu/phd-program/admissions",
+          "reason": "Returns HTTP 404; no such page."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 719,
+      "title": "Pacific Scholarship for Excellence in Research & Innovation (PSERI)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Closing date for applications is  midnight Monday 5th January, 2026.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships/pacific-scholarship-for-excellence-in-research-innovation-pseri/",
+        "source_type": "official_university_page",
+        "publisher": "The University of the South Pacific, Research & Innovation Office / PG Affairs",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "as_of": "2026 award round; awards tenable from early 2026; page status badge reads CLOSED",
+        "raw_extract": "CLOSED\n\nApplications are invited from suitably qualified candidates for the Pacific Scholarship for Excellence in Research & Innovation (PSERI) to undertake a Masters degree or Doctor of Philosophy (PhD) by research only at The University of the South Pacific (USP).\n\nThe awards are tenable from early 2026 and may be held in any member country of the USP.\n...\nCompleted applications must be sent via email to pgrscholarships@usp.ac.fj with the subject line \"PSERI 2026 Application - [Your Name]\".\n...\nClosing date for applications is  midnight Monday 5th January, 2026.",
+        "exact_deadline_wording": "Closing date for applications is  midnight Monday 5th January, 2026.",
+        "confidence": "HIGH",
+        "notes": "The live official page states an explicit, fully qualified calendar deadline for the 2026 round: 5 January 2026, which is roughly nine months in the past as of retrieval on 2026-10-05, and the page itself now carries a CLOSED badge. The record is nonetheless flagged active/open, so per AGENT_BRIEF section 6 the outcome is expired_mismatch. deadline_date is deliberately left null: the stale 2026-01-05 is NOT written, and it has NOT been silently rolled forward to a 2027 date - no 2027 closing date has been published, and USP republishes a new year-dated call on this same page each cycle, so any 2027 figure would be an assumption. Retrieval note: www.usp.ac.fj sits behind a Cloudflare managed challenge and returned HTTP 403 to plain HTTPS fetches; the page was read in a real browser session that cleared the challenge, and the quoted text is that rendered page. Deadline semantics is EXACT (the source does state a calendar deadline) while the precision field records the source granularity and the date is withheld because it is stale."
+      },
+      "field_mapping": {
+        "deadline_date": "no write - null (published 2026-01-05 is in the past and the page is CLOSED; not written, not rolled forward)",
+        "deadline_precision": "exact",
+        "deadline_display": "Closing date for applications is  midnight Monday 5th January, 2026."
+      },
+      "examined": [
+        "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships/pacific-scholarship-for-excellence-in-research-innovation-pseri",
+        "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://usp.ac.fj/research/pg-affairs/post-graduate-scholarships/pacific-scholarship-for-excellence-in-research-innovation-pseri",
+          "reason": "Bare-domain variant of the official URL; does not resolve (connection timeout), so no content could be read from it."
+        },
+        {
+          "url": "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships",
+          "reason": "Parent listing page returns HTTP 403 to automated fetches (Cloudflare) and, once read in-browser, is only an index of scholarship links with no PSERI closing date of its own. Not used as the value source."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 722,
+      "title": "Pacific Regional Sports Research Scholarship (PRSRS)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Closing date is midnight Monday, 5 January, 2026.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships/sports-scholars/",
+        "source_type": "official_university_page",
+        "publisher": "The University of the South Pacific, Research & Innovation Office / PG Affairs",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "as_of": "2026 academic year round; three scholarships for 2026; page status badge reads CLOSED",
+        "raw_extract": "CLOSED\n\nApplications are invited from suitably qualified candidates for the Pacific Regional Sports Research Scholarship (PRSRS) to undertake a Master's by research degree at The University of the South Pacific (USP).\n\nThis scholarship is a collaboration between the Oceania National Olympic Committee (ONOC) and USP.\n\nThe awards are tenable from early 2026 and maybe held in any member country of the USP. There will be three scholarships awarded for the 2026 academic year.\n...\nCompleted applications must be sent via email to pgrscholarships@usp.ac.fj  with the subject line \"PRSRS 2026 Application - [Your Name]\".\n...\nClosing date is midnight Monday, 5 January, 2026.",
+        "exact_deadline_wording": "Closing date is midnight Monday, 5 January, 2026.",
+        "confidence": "HIGH",
+        "notes": "Recovery of the missing wording: the record carried deadline_display null, but the live official page does publish an explicit calendar closing date for the 2026 round - midnight Monday, 5 January 2026 - and the page carries a CLOSED badge. That date is roughly nine months in the past as of retrieval on 2026-10-05 while the record is flagged active/open, so per AGENT_BRIEF section 6 the outcome is expired_mismatch. deadline_date is deliberately left null: the stale 2026-01-05 is NOT written and NOT silently moved to 2027, because no 2027 closing date has been published. Retrieval note: www.usp.ac.fj returned HTTP 403 to plain HTTPS fetches behind a Cloudflare managed challenge; the page was read in a real browser session that cleared the challenge. Deadline semantics is EXACT (the source does state a calendar deadline) while the date is withheld because it is stale."
+      },
+      "field_mapping": {
+        "deadline_date": "no write - null (published 2026-01-05 is in the past and the page is CLOSED; not written, not rolled forward)",
+        "deadline_precision": "exact",
+        "deadline_display": "Closing date is midnight Monday, 5 January, 2026."
+      },
+      "examined": [
+        "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships/sports-scholars",
+        "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships",
+          "reason": "Parent listing page returns HTTP 403 to automated fetches (Cloudflare) and, read in-browser, is only a link index with no PRSRS closing date of its own. Not used as the value source."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,297 @@
+{
+  "shard_id": "DL-035",
+  "topic": "deadline",
+  "agent_completed": true,
+  "research_date": "2026-10-05",
+  "records": [
+    {
+      "scholarship_id": 123,
+      "title": "Boston College Gabelli Presidential Scholars Program",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Early Decision and Regular Decision applicants who submit their BC applications by the November 1 priority scholarship deadline will be considered.",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.bc.edu/bc-web/academics/sites/gabelli-presidential-scholars-program.html",
+        "source_type": "official_scholarship_page",
+        "publisher": "Boston College (Gabelli Presidential Scholars Program)",
+        "retrieved_at": "2026-10-05T15:28:00Z",
+        "as_of": null,
+        "raw_extract": "The Gabelli Presidential Scholars Program is an undergraduate academic, merit program that annually awards full-tuition scholarships and fully-funded, GPSP-sponsored summer programs to 18 incoming freshman students. Early Decision and Regular Decision applicants who submit their BC applications by the November 1 priority scholarship deadline will be considered. There is no separate application for this scholarship, but please note that only candidates for fall admission will be considered.",
+        "exact_deadline_wording": "the November 1 priority scholarship deadline",
+        "confidence": "HIGH",
+        "notes": "Both official GPSP pages (home and FAQ) state the deadline as 'November 1' with NO year attached, and describe the programme as awarding 'annually'. Per brief section 6 an ANNUAL/recurring value must never be converted to a calendar date, so deadline_date stays null and the wording is preserved verbatim. Deliberately did NOT date this as 2026-11-01: the scholarship's own pages never state a year, and the FAQ only points readers to the general Boston College Admission page for deadlines, which is a general admissions deadline and is not admissible evidence for this scholarship (brief section 5). Cross-check quote from the official GPSP FAQ page: 'To apply to be a Boston College Presidential Scholar you must apply by the priority scholarship deadline of November 1. No separate application is required and you may apply as an Early Decision I, Early Decision II or as a Regular Decision applicant. All applicants who apply by the deadline are automatically considered for the Scholarship.'"
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "Early Decision and Regular Decision applicants who submit their BC applications by the November 1 priority scholarship deadline will be considered."
+      },
+      "examined": [
+        "https://www.bc.edu/content/bc-web/academics/sites/gabelli-presidential-scholars-program/about/faq.html",
+        "https://www.bc.edu/content/bc-web/academics/sites/gabelli-presidential-scholars-program/series-and-programs.html"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.bc.edu/bc-web/admission/apply/deadlines.html",
+          "reason": "404 Not Found; no content fetched, and in any case a general BC admissions deadline page is not admissible evidence for a GPSP-specific deadline (brief section 5)."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 282,
+      "title": "Inspiring the Outstanding Scholarship",
+      "outcome": "recovered",
+      "deadline_semantics": "EXACT",
+      "deadline_date": "2027-01-15",
+      "deadline_display": "Application deadline 15 January 2027, 23.59 CET",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.kuleuven.be/scholarships/year/2027-2028/inspiring-the-outstanding-scholarship",
+        "source_type": "official_scholarship_page",
+        "publisher": "KU Leuven",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": "academic year 2027-2028; page states 'Last update: Oct 05, 2026'",
+        "raw_extract": "Applications open\n\n15 October 2026\n\nApplication deadline\n\n15 January 2027, 23.59 CET",
+        "exact_deadline_wording": "15 January 2027, 23.59 CET",
+        "confidence": "MEDIUM",
+        "notes": "The shard's official_source_url points at the 2026-2027 cycle page, whose deadline ('15 January 2026, 23.59 CET') is already in the past as of 2026-10-05 and was therefore NOT written. KU Leuven publishes one page per academic year on the same official scholarship URL pattern; the live current-cycle page for this same scholarship is the 2027-2028 page fetched here, which shows the upcoming window (applications open 15 October 2026, deadline 15 January 2027, 23.59 CET). This is the provider's own current published cycle for the record's scholarship, not an inferred or rolled-forward date. Confidence is MEDIUM only because the record does not name an academic year, so mapping this record to the 2027-2028 cycle is a judgement; the date itself is stated explicitly and verbatim. Supporting verbatim from the same page: 'Step 1 : Submit a complete application file for an eligible master's programme before 15 January 2027, 23.59 CET' and 'Step 2 : Register your scholarship candidacy via the online registration tool before 15 January 2027, 23.59 CET.'"
+      },
+      "field_mapping": {
+        "deadline_date": "2027-01-15",
+        "deadline_precision": "exact",
+        "deadline_display": "Application deadline 15 January 2027, 23.59 CET"
+      },
+      "examined": [
+        "https://www.kuleuven.be/scholarships/year/2026-2027/inspiring-the-outstanding-scholarship"
+      ],
+      "expired_prior_cycle": {
+        "url": "https://www.kuleuven.be/scholarships/year/2026-2027/inspiring-the-outstanding-scholarship",
+        "cycle": "2026-2027",
+        "verbatim": "Applications open 15 October 2025 ... Application deadline 15 January 2026, 23.59 CET",
+        "reason_not_written": "Deadline already passed on the retrieval date; stale date deliberately not recorded and not moved forward by hand."
+      },
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 391,
+      "title": "Willem F. Duisenberg Fellowship",
+      "outcome": "recovered",
+      "deadline_semantics": "EXACT",
+      "deadline_date": "2027-03-15",
+      "deadline_display": "The call for the 2028 – 2029 academic year opens on 15 January 2027 and closes on 15 March 2027 at noon (CET).",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://nias.knaw.nl/fellowships/willem-f-duisenberg-fellowship",
+        "source_type": "official_programme_page",
+        "publisher": "Netherlands Institute for Advanced Study (NIAS), Royal Netherlands Academy of Arts and Sciences",
+        "retrieved_at": "2026-10-05T15:28:00Z",
+        "as_of": "call for the 2028-2029 academic year",
+        "raw_extract": "Application Closed\n\n# Willem F. Duisenberg Fellowship\n\nThe Willem F. Duisenberg Fellowship is for researchers and policymakers in applied monetary economics, macroeconomics and public finance. The call for the 2028 – 2029 academic year opens on 15 January 2027 and closes on 15 March 2027 at noon (CET).",
+        "exact_deadline_wording": "closes on 15 March 2027 at noon (CET)",
+        "confidence": "MEDIUM",
+        "notes": "Live page states the closing date of the next call explicitly. Note the discrepancy with the shard's cached application_period (2027-2028 call '15 January to 13 April 2026'): the live page no longer describes that call and now publishes the 2028-2029 window, so the cached prior-cycle values were not used. The page currently carries an 'Application Closed' badge while announcing the call that opens 15 January 2027; the announced closing date 2027-03-15 is in the future, so it is consistent with an open/upcoming record. Confidence MEDIUM reflects cycle-mapping uncertainty (the record does not name an academic year), not doubt about the date itself. Supporting verbatim: 'The Willem F. Duisenberg Fellowship Foundation offers one five-month or ten-month fellowship each academic year.'"
+      },
+      "field_mapping": {
+        "deadline_date": "2027-03-15",
+        "deadline_precision": "exact",
+        "deadline_display": "The call for the 2028 – 2029 academic year opens on 15 January 2027 and closes on 15 March 2027 at noon (CET)."
+      },
+      "examined": [
+        "https://nias.knaw.nl/partners/willem-f-duisenberg-fellowship-foundation"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 444,
+      "title": "Temasek Undergraduate Overseas Scholarship",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "The application window for the Academic Year 2026/2027 is now open and has been extended until 15 September 2026.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.temasek.com.sg/en/our-community/temasek-scholarship/temasek-undergraduate-overseas-scholarship",
+        "source_type": "official_scholarship_page",
+        "publisher": "Temasek",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "as_of": "Academic Year 2026/2027 window (page still labelled 'now open')",
+        "raw_extract": "The application window for the Academic Year 2026/2027 is now open and has been extended until 15 September 2026.",
+        "exact_deadline_wording": "has been extended until 15 September 2026",
+        "confidence": "HIGH",
+        "notes": "expired_mismatch: the only deadline the official page publishes is 15 September 2026, which is 20 days in the past at retrieval time (2026-10-05), while the record is open/upcoming. Per brief section 6 the stale date was NOT written and was NOT silently moved to the 2027/2028 cycle. The page also still says the window 'is now open', which is inconsistent with the elapsed date. No other deadline is published on this page; 'APPLY NOW VIA BRIGHTSPARKS' is the only application route and carries no separate stated deadline. Retrieval note: a plain HTTP fetch of temasek.com.sg returns HTTP 403 (bot protection); the page was retrieved live with HTTP 200 through a real browser engine and the quoted text is that rendered page."
+      },
+      "stale_deadline_date": "2026-09-15",
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": null,
+        "deadline_display": null
+      },
+      "field_mapping_note": "No write recommended. outcome=expired_mismatch: the source's only deadline (2026-09-15) has passed; brief section 6 forbids recording the stale date or rolling it forward by hand. deadline_precision and deadline_display are also left unwritten because publishing them alongside a null deadline_date would imply a live deadline.",
+      "examined": [],
+      "rejected_sources": [
+        {
+          "url": "https://www.temasek.com.sg/en/our-community/temasek-scholarship/temasek-undergraduate-overseas-scholarship",
+          "reason": "Direct non-browser HTTP request returns 403 Forbidden; the page was instead fetched successfully (HTTP 200) via a browser engine, which is the source cited above."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 445,
+      "title": "Temasek Undergraduate Local Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.temasek.com.sg/en/our-community/temasek-scholarship",
+        "source_type": "official_scholarship_page",
+        "publisher": "Temasek",
+        "retrieved_at": "2026-10-05T15:32:00Z",
+        "as_of": null,
+        "raw_extract": "The Temasek Undergraduate Local Scholarship is offered to polytechnic graduates enrolling in STEM programmes at the Singapore Institute of Technology (SIT). SIT's focus on industry-centric education aligns well with Temasek's broader goal of plugging skills gap and supporting the development of a resilient workforce in Singapore.",
+        "exact_deadline_wording": null,
+        "confidence": "LOW",
+        "notes": "UNKNOWN is the truthful result. The official Temasek scholarship hub page (the record's official_source_url) describes the local scholarship but publishes NO application deadline, window, intake or date of any kind. The scholarship's own sub-page redirects to the administering institution, Singapore Institute of Technology: https://www.singaporetech.edu.sg/admissions/scholarships/bond-free-scholarship/temasek-scholarship (HTTP 200), which also publishes no deadline, no application window and no date. SIT's linked 'Terms and Conditions of the Award' page (https://www.singaporetech.edu.sg/admissions/scholarships/terms-and-conditions-award, 'Updated as of 25 February 2026') covers award value, CGPA, bond and repayment only, with no application deadline. SIT's only application entry point on the scholarship page is a generic 'Apply Now' link to the SITLearner admissions portal (https://learner.singaporetech.edu.sg/), which is a general admissions application and not this scholarship's deadline, so it was not used. Confidence LOW refers to the value: there is no value to establish. Nothing was inferred from the Temasek Overseas Scholarship's separate published window, which is a different scholarship."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": null
+      },
+      "examined": [
+        "https://www.temasek.com.sg/en/our-community/temasek-scholarship/temasek-undergraduate-local-scholarship",
+        "https://www.singaporetech.edu.sg/admissions/scholarships/bond-free-scholarship/temasek-scholarship",
+        "https://www.singaporetech.edu.sg/admissions/scholarships/terms-and-conditions-award",
+        "https://www.singaporetech.edu.sg/admissions/scholarships/bond-free-scholarship"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://learner.singaporetech.edu.sg/",
+          "reason": "Generic SIT undergraduate admissions application portal. A general admissions deadline for a different process is not admissible evidence for this scholarship (brief section 5); no scholarship-specific deadline was published there."
+        },
+        {
+          "url": "https://www.singaporetech.edu.sg/admissions/scholarships/bond-free-scholarship",
+          "reason": "HTTP 404 ('404 | Singapore Institute of Technology'); no content to extract."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 508,
+      "title": "Flanders Trainee Programme (Flanders Traineeship Programme)",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "You can submit your grant application up to six months in advance until one day before the start of your internship.",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://www.vlaanderen.be/en/studying/flanders-trainee-programme/flanders-trainee-programme-application-and-procedure",
+        "source_type": "official_government_page",
+        "publisher": "Government of Flanders (Departement Buitenlandse Zaken) - Flanders.be",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": "live programme page at retrieval; no cycle year stated for the rule itself",
+        "raw_extract": "Deadline\n\nYou can submit your grant application up to six months in advance until one day before the start of your internship.\n\nYou can also apply if your internship has already started. However, you will only be paid for the remaining period of your internship. ... As long as there is budget available\n\nIn principle, you can apply for a grant at any time of the year, but you can only get a grant if there is still budget available. If a budget is no longer available for the current year, it will be clearly announced on this website.",
+        "exact_deadline_wording": "In principle, you can apply for a grant at any time of the year, but you can only get a grant if there is still budget available.",
+        "confidence": "HIGH",
+        "notes": "The programme publishes an explicitly rolling rule with no fixed calendar deadline: apply any time of year, up to six months before and until one day before the internship start, subject to remaining budget. Per brief section 6 this must never be converted into a calendar date, so deadline_date stays null. IMPORTANT open-status caveat, taken verbatim from the programme landing page (https://www.vlaanderen.be/en/studying/flanders-trainee-programme): 'No more grants for 2026' / 'You can no longer apply for a grant for internships continuing into 2026. There is no more budget available for 2026.' / 'A budget will be available again in 2027. You can reapply for internships taking place in 2027 as from January 2027.' So although the deadline semantics are a clean ROLLING recovery, the record's open/upcoming status does not match the programme's current state: the 2026 budget is exhausted and applications only reopen 'as from January 2027'. 'January 2027' is a reopening month with no day given, so it was NOT dated and NOT used as a deadline. Recommend a separate status review of this record (shard already flags verification_status needs_review)."
+      },
+      "open_status_caveat": "closed_for_2026_budget; applications for 2027 internships reopen 'as from January 2027' (month-level only, not dated)",
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "rolling",
+        "deadline_display": "You can submit your grant application up to six months in advance until one day before the start of your internship."
+      },
+      "examined": [
+        "https://www.vlaanderen.be/en/studying/flanders-trainee-programme"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 517,
+      "title": "ICSSR Participation in International Seminar Abroad (Travel Grant Scheme)",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "Applications can be submitted online throughout the year. The applications should be uploaded at least three months before the due date of the Conference.",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://icssr.org/participation-international-seminar-abroad",
+        "source_type": "official_government_page",
+        "publisher": "Indian Council of Social Science Research (ICSSR), Ministry of Education, Government of India",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": "scheme page current at retrieval; page links guidelines dated 21-08-2026",
+        "raw_extract": "3.1 Applications can be submitted online throughout the year.\n\n3.2 The applications should be uploaded at least three months before the due date of the Conference followed by the hard copy of the application.",
+        "exact_deadline_wording": "Applications can be submitted online throughout the year.",
+        "confidence": "HIGH",
+        "notes": "The official ICSSR scheme page states an explicitly rolling rule, so semantics are ROLLING with deadline_date null and must never be dated. The 'three months before the due date of the Conference' requirement is a relative lead time against each applicant's own conference due date, not a calendar deadline, and was therefore not converted into a date. Supporting verbatim: '3.3 The application will not be entertained or considered in any case after participation and presentation of paper in the Conference.' Note the shard carried deadline_precision 'varies' for this record; the live page's own wording supports ROLLING, and no second credible source gives a conflicting calendar deadline, so CONFLICTING does not apply."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "rolling",
+        "deadline_display": "Applications can be submitted online throughout the year."
+      },
+      "examined": [
+        "https://icssr.org/sites/default/files/2026-08/Travel-Grant-GUIDELINES_21-08-26.pdf"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://icssr.org/sites/default/files/2026-08/Travel-Grant-GUIDELINES_21-08-26.pdf",
+          "reason": "Official ICSSR guidelines PDF linked from the page; fetched (HTTP 200) but returned raw PDF binary with no extractable text through the fetch tool, so it yielded no quotable deadline wording. The HTML scheme page's explicit rolling statement governs."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 518,
+      "title": "ICSSR Financial Assistance for Data Collection Abroad",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "Applications are received online throughout the year.",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://icssr.org/data-collection-abroad",
+        "source_type": "official_government_page",
+        "publisher": "Indian Council of Social Science Research (ICSSR), Ministry of Education, Government of India",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": "scheme page current at retrieval; page links guidelines dated 21-08-2026",
+        "raw_extract": "APPLICATION PROCEDURE\n\nApplications are received online throughout the year.\n\nAfter submitting online application, a hard copy of the same, along with all enclosures, must be sent to: In-charge, IC Division, Indian Council of Social Science Research, Aruna Asaf Ali Marg, New Delhi 110067.",
+        "exact_deadline_wording": "Applications are received online throughout the year.",
+        "confidence": "HIGH",
+        "notes": "The official ICSSR scheme page states an explicitly rolling rule, so semantics are ROLLING with deadline_date null and must never be dated. No calendar deadline, window or intake date is published anywhere on the page. The shard carried deadline_precision 'varies' for this record; the live wording supports ROLLING and no second credible source gives a conflicting calendar deadline, so CONFLICTING does not apply."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "rolling",
+        "deadline_display": "Applications are received online throughout the year."
+      },
+      "examined": [
+        "https://icssr.org/sites/default/files/2026-08/Data_Collection_Abroad_21_08_2026.pdf"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://icssr.org/sites/default/files/2026-08/Data_Collection_Abroad_21_08_2026.pdf",
+          "reason": "Official ICSSR guidelines PDF linked from the page; fetched (HTTP 200) but returned raw PDF binary with no extractable text through the fetch tool, so it yielded no quotable deadline wording. The HTML scheme page's explicit rolling statement governs."
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "record_count": 8,
+    "recovered": 6,
+    "unknown": 1,
+    "expired_mismatch": 1,
+    "conflicting": 0,
+    "deadline_date_written": 2,
+    "semantics_breakdown": {
+      "EXACT": 3,
+      "MONTH": 0,
+      "ANNUAL": 1,
+      "ROLLING": 3,
+      "UNKNOWN": 1,
+      "CONFLICTING": 0
+    },
+    "notes": "2 calendar dates written (282 -> 2027-01-15, 391 -> 2027-03-15), both from live official scholarship/programme pages with verbatim quotes. Record 444 has an explicit official date that is already past, so it is reported as expired_mismatch with no date written. Record 445 remains UNKNOWN: neither Temasek's page nor the administering institution SIT publishes any deadline."
+  }
+}

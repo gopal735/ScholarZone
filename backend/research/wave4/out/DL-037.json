@@ -1,0 +1,306 @@
+{
+  "shard_id": "DL-037",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 58,
+      "title": "Brandeis University Wien International Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.brandeis.edu/isso/programs/wien/index.html",
+        "source_type": "official_scholarship_page",
+        "publisher": "Brandeis University, International Students and Scholars Office (ISSO)",
+        "retrieved_at": "2026-10-05T15:27:40Z",
+        "as_of": null,
+        "raw_extract": "Page fetched in full. It contains no deadline, no application window, no 'how to apply' section and no closing date. Its only descriptive text reads: \"The Wien International Scholarship Program (WISP) at Brandeis University, established in 1958, is a first-of-its-kind program bringing undergraduate students from every corner of the globe to campus and engaging the entire community to be active global citizens.\" and \"Wien Scholars are identified not only by their academic achievement, but for their contributions inside and outside of the classroom prior to, during, and after their years at Brandeis.\" The only outbound links are 'Helpful Links' (Undergraduate Admissions, Current Scholar Profiles, Alumni Profiles, Wien Alumni Network, scholar statistics, news archive) and social media groups.",
+        "exact_deadline_wording": null,
+        "confidence": "HIGH",
+        "notes": "No value could be established. The official WISP programme page publishes no application deadline of any kind, and the WISP entry on the ISSO Programmes index page (https://www.brandeis.edu/isso/programs/index.html, fetched) likewise carries no date and links only to the same WISP page. The shard's cached deadline_display attributes Brandeis undergraduate admission deadlines (Early Decision I / II, Regular Decision) to this scholarship; those are the deadlines of a different process (the general undergraduate admission application) and the page that states them does not mention Wien or WISP at all, so under the contract they cannot be used as evidence for this record. Additionally, the live admissions table no longer matches the cached value, which is a further reason not to rely on it."
+      },
+      "field_mapping": {
+        "deadline_date": "no write (null)",
+        "deadline_precision": "no write (leave unchanged / unknown)",
+        "deadline_display": "no write (null)"
+      },
+      "examined": [
+        "https://www.brandeis.edu/isso/programs/wien/index.html",
+        "https://www.brandeis.edu/isso/programs/index.html",
+        "https://www.brandeis.edu/admissions/financial/scholarships.html"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.brandeis.edu/admissions/apply/application-process/index.html",
+          "reason": "Generic Brandeis undergraduate admission and financial-aid deadlines for a different process. The page never mentions Wien or WISP. It also contradicts the shard's cached value: the live table reads 'Spring Admission (for Jan. 2027 semester) Nov. 2', 'Early Decision I Nov. 2', 'Early Action Nov. 2', 'Early Decision II Jan. 15', 'Regular Decision Jan. 15' - i.e. Nov. 2 where the cached display said November 1."
+        },
+        {
+          "url": "https://www.brandeis.edu/admissions/academics/scholars/index.html",
+          "reason": "Undergraduate 'Scholars Programs' (Bernstein, Business and Economics, Community Engaged, Creative Arts, Humanities, MLK, QBReC). Different programmes; contains no WISP deadline and says 'For most programs, there is no separate application'."
+        },
+        {
+          "url": "https://www.brandeis.edu/admissions/financial/scholarships.html",
+          "reason": "Redirected/served content is the Admissions 'Scholars Programs' index; no Wien International Scholarship entry and no deadline attributable to WISP."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 105,
+      "title": "NUS International Undergraduate Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://nus.edu.sg/oam/scholarships/scholarships-for-freshmen-international-students/nus-international-undergraduate-scholarship",
+        "source_type": "official_scholarship_page",
+        "publisher": "National University of Singapore, Office of Admissions",
+        "retrieved_at": "2026-10-05T15:31:05Z",
+        "as_of": null,
+        "raw_extract": "The official page could not be retrieved. Every attempt returned an HTTP 200 with an 847-byte body reading verbatim: \"Request unsuccessful. Incapsula incident ID: 740000151368692236-1051194358141027313\" (a later attempt returned \"...-1182768125748446194\"). The Incapsula WAF blocked the university-wide nus.edu.sg host on all four attempts, including a request issued from a real browser context.",
+        "exact_deadline_wording": null,
+        "confidence": "LOW",
+        "notes": "No value established because the official page is unreachable from this environment. Nothing was written. The shard's cached deadline_display is not usable: it is a paraphrase of two different pages (the scholarship page and a separate admissions 'Important Dates' page) rather than a verbatim quote, and the brief bans a previous wave's cached value with no live source behind it. I could not read the scholarship page itself, so I cannot even confirm whether the award requires a separate application (which would make it deadline-free) or states a window. UNKNOWN is the only honest outcome here."
+      },
+      "field_mapping": {
+        "deadline_date": "no write (null)",
+        "deadline_precision": "no write (leave unchanged / unknown)",
+        "deadline_display": "no write (null)"
+      },
+      "examined": [
+        "https://nus.edu.sg/oam/scholarships/scholarships-for-freshmen-international-students/nus-international-undergraduate-scholarship",
+        "https://nus.edu.sg/oam/admissions/international-qualifications",
+        "https://oam.nus.edu.sg/programs/ug/international-qualifications"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://nus.edu.sg/oam/scholarships/scholarships-for-freshmen-international-students/nus-international-undergraduate-scholarship",
+          "reason": "Blocked by Incapsula WAF (847-byte error body, three attempts incl. a browser-context request). Could not be read, therefore not evidence."
+        },
+        {
+          "url": "https://nus.edu.sg/oam/admissions/international-qualifications",
+          "reason": "Same Incapsula WAF block; and in any case it is the general admissions page, not the scholarship page."
+        },
+        {
+          "url": "https://oam.nus.edu.sg/programs/ug/international-qualifications",
+          "reason": "Transport error, host unreachable."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 267,
+      "title": "LUT Scholarship and Early Bird Discount (master's studies)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.lut.fi/en/studies/apply-lut/applying-masters-programmes/rolling-admission-masters-studies/early-bird-discount-and-scholarships-masters-studies",
+        "source_type": "official_scholarship_page",
+        "publisher": "LUT University",
+        "retrieved_at": "2026-10-05T15:29:10Z",
+        "as_of": null,
+        "raw_extract": "Page fetched in full; it states no application deadline, no application window and does not use the words rolling or 'no fixed deadline' for either award. Verbatim: \"First academic year: Early bird discount - If you are required to pay tuition fees, you will receive an Early bird discount of EUR 5,000. To qualify, you must: accept your study place and pay the remaining first-year tuition fee of EUR 10,000 within 21 days of your official admission email.\" and \"Second academic year: LUT scholarship - If you are required to pay tuition fees, you will receive a LUT scholarship of EUR 5,000. To qualify, you must: complete at least 60 ECTS credits during your first academic year in accordance with your personal study plan and pay the second-year tuition fee on time. The required 60 ECTS credits must be included on your Transcript of Records by 31 July (the end of the academic year). Progress is checked automatically.\"",
+        "exact_deadline_wording": null,
+        "confidence": "HIGH",
+        "notes": "No calendar application deadline exists for this award pair. Both are granted automatically on admission ('you will receive'), and the only time conditions are relative rather than calendar: the early bird discount runs from the date of the admission email ('within 21 days of your official admission email') and the LUT scholarship is checked against an academic-year milestone ('by 31 July (the end of the academic year)'). '31 July' is a recurring end-of-year ECTS check, not an application deadline, and must not be written as a deadline_date. The shard's official_source_url (https://www.lut.fi/en/tuition-fees-and-scholarships) is dead (HTTP 404); the live equivalent is the page cited above."
+      },
+      "field_mapping": {
+        "deadline_date": "no write (null)",
+        "deadline_precision": "no write (leave unchanged / unknown)",
+        "deadline_display": "no write (null)"
+      },
+      "examined": [
+        "https://www.lut.fi/en/tuition-fees-and-scholarships",
+        "https://www.lut.fi/en/studies/apply-lut/applying-masters-programmes/rolling-admission-masters-studies/early-bird-discount-and-scholarships-masters-studies",
+        "https://www.lut.fi/en/studies/apply-lut/applying-masters-programmes",
+        "https://elut.lut.fi/en/completing-studies/tuition-fee/scholarship-masters-studies"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.lut.fi/en/studies/apply-lut/applying-masters-programmes",
+          "reason": "States the master's ADMISSION window '1 October 2026 at 8:00 (UTC+3)-31 March 2027 at 23:59 (UTC+3)' and 'Applications are processed on a rolling basis'. That is the admission application for a different process, not a deadline for the scholarship or the early bird discount, and the word 'rolling' there does not describe the award."
+        },
+        {
+          "url": "https://elut.lut.fi/en/completing-studies/tuition-fee/scholarship-masters-studies",
+          "reason": "Student-portal (eLUT) page for continuing students describing intake cohorts; no application deadline for the scholarship and not the applicant-facing source."
+        },
+        {
+          "url": "https://www.globaladmissions.com/scholarship/lut-university-masters-scholarship",
+          "reason": "Third-party aggregator. Never fetched and would be inadmissible in any case."
+        },
+        {
+          "url": "https://www.for9a.com/en/opportunity/lut-university-scholarships-international-students-finland",
+          "reason": "Third-party listing site. Never fetched and would be inadmissible in any case."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 407,
+      "title": "Vice-Chancellor's International Excellence Scholarship",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "Please note: This scholarship is for all areas of study and is reviewed monthly. The above closing date does not apply.\n\nTo be considered, applications must be received:\n- 30 November for A trimester offers of place\n- 31 May for B Trimester offers of place\n- 31 August for C Trimester offers of place\n- 31 October for H or X Trimester offers of place",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://www.waikato.ac.nz/study/scholarships/find-a-scholarship/vice-chancellors-international-excellence-scholarship/",
+        "source_type": "official_scholarship_page",
+        "publisher": "University of Waikato",
+        "retrieved_at": "2026-10-05T15:29:05Z",
+        "as_of": "page status on retrieval: \"Accepting applications\"",
+        "raw_extract": "\"Please note: This scholarship is for all areas of study and is reviewed monthly. The above closing date does not apply.\" followed by \"To be considered, applications must be received: - 30 November for A trimester offers of place - 31 May for B Trimester offers of place - 31 August for C Trimester offers of place - 31 October for H or X Trimester offers of place\"",
+        "exact_deadline_wording": "The above closing date does not apply.",
+        "confidence": "HIGH",
+        "notes": "ROLLING, not dated: the official page explicitly disclaims its own closing date ('The above closing date does not apply') and states the scholarship 'is reviewed monthly', i.e. there is no fixed current deadline. The four dates listed are recurring trimester cut-offs tied to the offer-of-place trimester, not a single calendar deadline, and none of them carries a year, so no deadline_date is written. The shard's official_source_url (the regulations PDF /assets/Uploads/VCIES-2026-all-other-countries-v2.pdf) returned raw uncompressed PDF bytes that the fetch tool could not decode to text; I therefore cite the live HTML scholarship page, which is the same publisher and which links that exact PDF as 'Regulations' and carries the quoted wording verbatim."
+      },
+      "field_mapping": {
+        "deadline_date": "no write (null) - rolling award, no fixed date",
+        "deadline_precision": "write \"rolling\"",
+        "deadline_display": "write \"Please note: This scholarship is for all areas of study and is reviewed monthly. The above closing date does not apply. To be considered, applications must be received: 30 November for A trimester offers of place; 31 May for B Trimester offers of place; 31 August for C Trimester offers of place; 31 October for H or X Trimester offers of place\""
+      },
+      "examined": [
+        "https://www.waikato.ac.nz/study/scholarships/find-a-scholarship/vice-chancellors-international-excellence-scholarship/",
+        "https://www.waikato.ac.nz/assets/Uploads/VCIES-2026-all-other-countries-v2.pdf"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.waikato.ac.nz/assets/Uploads/VCIES-2026-all-other-countries-v2.pdf",
+          "reason": "Official PDF but returned as raw binary (Flate-compressed streams, no extractable text) by the fetch tool, so no verbatim quote could be taken from it. Superseded by the live HTML page from the same publisher that quotes the same wording and links this PDF as the Regulations."
+        },
+        {
+          "url": "https://www.idp.com/scholarship/the-university-of-waikato/vice-chancellor's-international-excellence-scholarship/153698",
+          "reason": "Third-party aggregator, not the provider domain."
+        },
+        {
+          "url": "https://unienrol.com/study-new-zealand/university-of-waikato/scholarship/vice-chancellor-s-international-excellence-scholarship",
+          "reason": "Third-party recruitment site, not the provider domain."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 621,
+      "title": "Türkiye Scholarships (Türkiye Bursları) — Government Scholarship Programme of the Presidency of Turks Abroad and Related Communities",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "General Application Period — Application Period: January 10 – February 20",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.turkiyeburslari.gov.tr/calendar",
+        "source_type": "official_government_page",
+        "publisher": "Presidency for Turks Abroad and Related Communities (YTB) - Türkiye Scholarships",
+        "retrieved_at": "2026-10-05T15:27:55Z",
+        "as_of": null,
+        "raw_extract": "\"#### General Application Period\n\nApplication Period\n\nJanuary 10 – February 20\n\nEvaluation Process\n\nMarch–April\n\nInterview Period\n\nApril – June\n\nAnnouncement of Results\n\nEarly August\n\nInitial Procedures\n\nAugust\n\nTransfers of Grantees to Türkiye\n\nSeptember\"",
+        "exact_deadline_wording": "January 10 – February 20",
+        "confidence": "HIGH",
+        "notes": "The programme's own standing Application Calendar states the General Application Period with no year attached, i.e. recurring annual timing, so per the contract it is ANNUAL with a null deadline_date. I deliberately did not convert it into a 2027 calendar date. Corroboration from the dated announcement I also fetched (https://www.turkiyeburslari.gov.tr/announcements/turkiye-scholarships-2026-applications-121): \"Application Dates: 10 January – 20 February 2026\" and \"applications will be open between 10th January- 20th February 2026 for international students from all countries\". That confirms the same standing window and shows the most recent concrete cycle closed on 20 February 2026, so as of 2026-10-05 the record sits between cycles with no window currently open; no 2027 dates are published. Note also the announcement's carve-out: \"Other programs such as Research Scholarships, Success Scholarships, and KATIP have different application periods\"."
+      },
+      "field_mapping": {
+        "deadline_date": "no write (null) - annual window, do not pin to a year",
+        "deadline_precision": "write \"recurring\"",
+        "deadline_display": "write \"General Application Period — Application Period: January 10 – February 20\""
+      },
+      "examined": [
+        "https://www.turkiyeburslari.gov.tr/calendar",
+        "https://www.turkiyeburslari.gov.tr/announcements/turkiye-scholarships-2026-applications-121"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 623,
+      "title": "PTDF Overseas Postgraduate Scholarship Scheme (MSc/PhD)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "The closing date for applications is 27th February 2026 (six weeks from the date of this publication).",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://scholarship.ptdf.gov.ng/news/13/2026-overseas-postgraduate-scholarship-scheme-for-universities-in-the-united-kingdom--germany--france--and-malaysia",
+        "source_type": "official_government_page",
+        "publisher": "Petroleum Technology Development Fund (PTDF), Federal Government of Nigeria",
+        "retrieved_at": "2026-10-05T15:28:30Z",
+        "as_of": "2026 award cycle; call published 18 January 2026",
+        "raw_extract": "\"APPLICATION DEADLINE\n\nThe closing date for applications is 27th February 2026 (six weeks from the date of this publication).\" and \"Posted on January 18, 2026\"",
+        "exact_deadline_wording": "The closing date for applications is 27th February 2026 (six weeks from the date of this publication).",
+        "confidence": "HIGH",
+        "notes": "The official call states an explicit calendar closing date of 27 February 2026, which is in the past as of 2026-10-05, while this record is carried as active/open. Per the contract I set expired_mismatch, did NOT write the stale 2026-02-27 date into deadline_date, and did not silently roll it forward to a 2027 date: no 2027 call is published on scholarship.ptdf.gov.ng. deadline_precision 'exact' describes the precision the provider itself stated, not a date I am proposing to store."
+      },
+      "field_mapping": {
+        "deadline_date": "no write (null) - source deadline 2026-02-27 is stale; record needs re-opening/closing by the data owner",
+        "deadline_precision": "write \"exact\" (provider states an explicit date for this cycle)",
+        "deadline_display": "write \"The closing date for applications is 27th February 2026 (six weeks from the date of this publication).\""
+      },
+      "examined": [
+        "https://scholarship.ptdf.gov.ng/approved-schools/oss"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 673,
+      "title": "Petroleum Technology Development Fund (PTDF) In-Country Scholarship Scheme (ISS) 2026/27",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Applications will open from Monday, 27th April 2026 to Friday, 5th June 2026 (6 weeks)",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://scholarship.ptdf.gov.ng/guidelines",
+        "source_type": "official_government_page",
+        "publisher": "Petroleum Technology Development Fund (PTDF), Federal Government of Nigeria",
+        "retrieved_at": "2026-10-05T15:28:15Z",
+        "as_of": "2026/27 cycle",
+        "raw_extract": "\"DEADLINES FOR APPLICATION\n\nApplications will open from **Monday, 27th April 2026** to **Friday, 5th June 2026**\n\n(6 weeks)\" under the heading \"2026/27 IN-COUNTRY SCHOLARSHIP SCHEME (ISS)\" and \"APPLICATION FOR 2026/27 PTDF IN-COUNTRY SCHOLARSHIP SCHEME (ISS) FOR UNDERGRADUATE AND POSTGRADUATE AWARDS\"",
+        "exact_deadline_wording": "Applications will open from Monday, 27th April 2026 to Friday, 5th June 2026 (6 weeks)",
+        "confidence": "HIGH",
+        "notes": "The official guidelines page gives an explicit calendar window that closed on Friday 5 June 2026, which is in the past as of 2026-10-05, while this record is carried as active/open. Per the contract I set expired_mismatch, did NOT write the stale 2026-06-05 date, and did not silently move it to a 2027/28 window: no 2027/28 window is published on the live guidelines page, which still shows the 2026/27 cycle."
+      },
+      "field_mapping": {
+        "deadline_date": "no write (null) - source deadline 2026-06-05 is stale; record needs re-opening/closing by the data owner",
+        "deadline_precision": "write \"exact\" (provider states an explicit date for this cycle)",
+        "deadline_display": "write \"Applications will open from Monday, 27th April 2026 to Friday, 5th June 2026 (6 weeks)\""
+      },
+      "examined": [
+        "https://scholarship.ptdf.gov.ng/guidelines",
+        "https://scholarship.ptdf.gov.ng/approved-schools/iss"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 692,
+      "title": "Türkiye Scholarships - IsDB Joint Scholarship Program",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Application Dates: 10 January – 20 February 2026",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.turkiyeburslari.gov.tr/announcements/ytb-islamic-development-bank-isdb-joint-scholarship-program-2026-applicaiton-period-122",
+        "source_type": "official_government_page",
+        "publisher": "Presidency for Turks Abroad and Related Communities (YTB) - Türkiye Scholarships, with Islamic Development Bank (IsDB)",
+        "retrieved_at": "2026-10-05T15:27:50Z",
+        "as_of": "2026 application cycle; announcement published 29 January 2026",
+        "raw_extract": "\"**Application Dates: 10 January – 20 February 2026**\" and \"Applications to the joint scholarship program are accepted only through the Türkiye Scholarships official website.\" and \"Candidates who are eligible to apply for the Türkiye Scholarships – IsDB Joint Scholarship Program must select \"Yes\" under the \"Joint Scholarship Programs\" section on the application screen in order to apply for the joint program.\"",
+        "exact_deadline_wording": "Application Dates: 10 January – 20 February 2026",
+        "confidence": "MEDIUM",
+        "notes": "The joint programme is applied for inside the Türkiye Scholarships application itself (per the quoted text above), and the programme's own standing Application Calendar (https://www.turkiyeburslari.gov.tr/calendar, fetched) publishes an undated 'General Application Period - Application Period: January 10 – February 20' with no year. That undated standing window is why this is classified ANNUAL/recurring with a null deadline_date rather than dated: the only dated official statement I could read is the 2026 cycle, which closed on 20 February 2026. As of 2026-10-05 no window is open and no 2027 dates are published. Confidence is MEDIUM rather than HIGH because the recurring characterisation rests on linking the joint programme to the general (undated) calendar period via the announcement's own wording; the calendar itself does not name the IsDB joint programme. deadline_display is left as the announcement's verbatim wording so the year is not silently dropped."
+      },
+      "field_mapping": {
+        "deadline_date": "no write (null) - annual window, do not pin to a year",
+        "deadline_precision": "write \"recurring\"",
+        "deadline_display": "write \"Application Dates: 10 January – 20 February 2026\" (and note that the window recurs each January–February; last cycle closed 2026-02-20)"
+      },
+      "examined": [
+        "https://www.turkiyeburslari.gov.tr/announcements/ytb-islamic-development-bank-isdb-joint-scholarship-program-2026-applicaiton-period-122",
+        "https://www.turkiyeburslari.gov.tr/calendar",
+        "https://www.turkiyeburslari.gov.tr/partneredprograms"
+      ],
+      "rejected_sources": []
+    }
+  ]
+}

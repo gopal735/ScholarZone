@@ -1,0 +1,99 @@
+{
+  "shard_id": "DL-059",
+  "topic": "deadline",
+  "hosts": [
+    "apply.nthu.edu.tw",
+    "en.tka.hu",
+    "studieren.univie.ac.at",
+    "www.faae.org.co",
+    "www.postf.org",
+    "www.rhodeshouse.ox.ac.uk"
+  ],
+  "record_count": 7,
+  "records": [
+    {
+      "id": 13,
+      "title": "POSCO TJ Park Foundation Global Scholarship",
+      "official_source": "POSCO TJ Park Foundation",
+      "official_source_url": "https://www.postf.org/en/asia/purpose",
+      "catalogue_url": "https://www.postf.org/en/asia/abroad/business",
+      "country": "South Korea",
+      "deadline_display": "Typically May annually",
+      "deadline_precision": "month",
+      "application_period": "Annual cycle running from Korean graduate school admission in about November to the certificate award ceremony in March; candidates enter by being admitted to and being recommended by a Korean graduate school.",
+      "verification_status": "active"
+    },
+    {
+      "id": 80,
+      "title": "Rhodes Scholarship (Global Constituency) — University of Oxford",
+      "official_source": "Rhodes Trust",
+      "official_source_url": "https://www.rhodeshouse.ox.ac.uk/scholarships/applications/global",
+      "catalogue_url": "https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship/",
+      "country": "United Kingdom",
+      "deadline_display": "Varies by constituency (Global deadline ~late August/September 2026 for 2027 entry)",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 149,
+      "title": "NTHU International Student Scholarship",
+      "official_source": "National Tsing Hua University (NTHU), Office of Global Affairs",
+      "official_source_url": "https://apply.nthu.edu.tw/en/article/102-nthu-scholarship",
+      "catalogue_url": null,
+      "country": "Taiwan",
+      "deadline_display": "The scholarship has no separate deadline: NTHU instructs applicants to 'Apply scholarship through the same online system for international degree programs', so the deadline is the admission deadline for the relevant intake. NTHU's published Spring 2027 international degree application period was 3 August to 30 September 2026 at 15:00 Taiwan time, which has closed.",
+      "deadline_precision": "varies",
+      "application_period": "Applied for together with the international degree programme admission, in NTHU's published intake windows. The published Spring 2027 international degree application period was 3 August to 30 September 2026 (15:00 Taiwan time), with admission results on 1 December 2026 and scholarship results in late December 2026.",
+      "verification_status": "active"
+    },
+    {
+      "id": 162,
+      "title": "University of Vienna Scholarships for International Students",
+      "official_source": "University of Vienna",
+      "official_source_url": "https://studieren.univie.ac.at/en/scholarships",
+      "catalogue_url": null,
+      "country": "Austria",
+      "deadline_display": "Varies (typically March-May for winter semester)",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 356,
+      "title": "Hungarian Bilateral State Scholarships",
+      "official_source": "Tempus Public Foundation",
+      "official_source_url": "https://en.tka.hu",
+      "catalogue_url": "https://en.tka.hu/bilateral_state_scholarships",
+      "country": "Hungary",
+      "deadline_display": "No application deadline is published on the Tempus Public Foundation pages for bilateral state scholarships; applications are submitted into the Foundation's online system and assessed on a rolling basis per bilateral partner.",
+      "deadline_precision": "unknown",
+      "application_period": "No fixed dates published. Deadlines are set by each bilateral partner's national scholarship office for nominated applicants.",
+      "verification_status": "active"
+    },
+    {
+      "id": 553,
+      "title": "POSCO Global Scholarship in Korea (Global Future Leaders Scholarship Program)",
+      "official_source": "POSCO TJ Park Foundation",
+      "official_source_url": "https://www.postf.org/en/asia/abroad/business",
+      "catalogue_url": "https://www.postf.org/en/asia",
+      "country": "South Korea",
+      "deadline_display": "Selection cycle: graduate school admission around November, recommendation submission by the graduate school around December, foundation interview around January, final selection announcement around February. The page publishes month-level timing only, with no day-level deadline, and applications are submitted by the admitting institution rather than by the applicant.",
+      "deadline_precision": "month",
+      "application_period": "Graduate school admission around November, graduate school recommendation submission around December, foundation interview around January, final selection announcement around February, certificate award ceremony in March. The cycle's first step is admission to a graduate school, so an applicant who has not been admitted cannot yet apply for the current round.",
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 600,
+      "title": "Becas Colombia Biodiversa - Fondo de Becas Colombia Biodiversa, Convocatoria II-2026",
+      "official_source": "Fundación Alejandro Ángel Escobar (FAAE)",
+      "official_source_url": "https://www.faae.org.co/colombiabiodiversa/instrucciones-para-la-aplicacion",
+      "catalogue_url": "https://www.faae.org.co/colombiabiodiversa",
+      "country": "Colombia",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": "Convocatoria II-2026 announced as open on the fund's official application-instructions page; the official page read does not publish the closing date for this call",
+      "verification_status": "active"
+    }
+  ]
+}

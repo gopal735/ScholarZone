@@ -1,0 +1,111 @@
+{
+  "shard_id": "DL-033",
+  "topic": "deadline",
+  "hosts": [
+    "foreign.fulbrightonline.org",
+    "msmt.gov.cz",
+    "www.ares-ac.be",
+    "www.kth.se",
+    "www.suss.edu.sg",
+    "www.uu.se"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 27,
+      "title": "Fulbright Foreign Student Program",
+      "official_source": null,
+      "official_source_url": "https://foreign.fulbrightonline.org",
+      "catalogue_url": null,
+      "country": "United States",
+      "deadline_display": "Varies by country — U.S. Embassies/Fulbright Commissions must submit nominations by mid-September",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 40,
+      "title": "ARES Scholarships (Belgium)",
+      "official_source": null,
+      "official_source_url": "https://www.ares-ac.be/en/cooperation-au-developpement/bourses",
+      "catalogue_url": null,
+      "country": "Belgium",
+      "deadline_display": "Typically February each year",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 184,
+      "title": "Uppsala University Global Scholarship",
+      "official_source": "Uppsala University",
+      "official_source_url": "https://www.uu.se/en/admissions/scholarships",
+      "catalogue_url": "https://www.uu.se/en/study/masters-studies/scholarships/uppsala-university-scholarships",
+      "country": "Sweden",
+      "deadline_display": "The scholarship application for studies starting in autumn 2026 is now closed. The application period was 16 January-2 February 2026, and late applications cannot be accepted. The next scholarship round will open in early 2027.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual round. The most recent published window was 16 January to 2 February 2026 for autumn 2026 studies; the next round opens in early 2027 for students applying to Uppsala University.",
+      "verification_status": "active"
+    },
+    {
+      "id": 294,
+      "title": "Scholarships of the Government of the Czech Republic for Students from Developing Countries",
+      "official_source": "Ministry of Education, Youth and Sports (MŠMT) / Dům zahraniční spolupráce (DZS)",
+      "official_source_url": "https://msmt.gov.cz/eu-and-international-affairs/government-scholarships-developing-countries",
+      "catalogue_url": "https://www.studyin.cz",
+      "country": "Czech Republic",
+      "deadline_display": "Official wording from DZS: \"Each candidate is required to submit an electronic application form no later than 30 September.\" For the 2027/2028 academic year applications opened on 21 August 2026 and the electronic-form deadline was 30 September 2026, which has already passed as of 2026-10-04.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual call. 2027/2028 cycle: applications open from 21 August 2026, electronic application form due 30 September 2026, supporting documents due 15 January 2027. Applications for the following annual cycle had not been announced on the official pages read.",
+      "verification_status": "active"
+    },
+    {
+      "id": 448,
+      "title": "Singapore University of Social Sciences Scholarship (Part-time Undergraduate)",
+      "official_source": "Singapore University of Social Sciences (SUSS)",
+      "official_source_url": "https://www.suss.edu.sg/admissions/financial-matters/scholarships-sponsorships/part-time-undergraduate",
+      "catalogue_url": "https://www.suss.edu.sg/admissions/financial-matters/scholarships-sponsorships/part-time-undergraduate",
+      "country": "Singapore",
+      "deadline_display": "SUSS publishes two annual scholarship application periods: 'Scholarship application period: January Semester: 1 August to 15 September; July Semester: 1 February to 15 March'. The January Semester window closed on 15 September 2026, so the next window is the July Semester intake, 1 February to 15 March.",
+      "deadline_precision": "recurring",
+      "application_period": "Two intakes a year: 1 August to 15 September for the January Semester and 1 February to 15 March for the July Semester. Outcomes are notified by email by end November (January Semester) and end June (July Semester).",
+      "verification_status": "active"
+    },
+    {
+      "id": 449,
+      "title": "SUSS Research Scholarship",
+      "official_source": "Singapore University of Social Sciences (SUSS)",
+      "official_source_url": "https://www.suss.edu.sg/academics/programmes/graduate-programmes/admissions/financial-assistance/scholarship",
+      "catalogue_url": "https://www.suss.edu.sg/academics/programmes/graduate-programmes/admissions/financial-assistance/scholarship",
+      "country": "Singapore",
+      "deadline_display": "SUSS publishes no standalone scholarship deadline for this award. It states that 'Eligible applicants to the three programmes will be evaluated on a merit basis during their admissions interviews. Potential applicants for the scholarship will be identified and nominated as part of the interview process', so the timing follows each programme's admissions cycle.",
+      "deadline_precision": "varies",
+      "application_period": "Through admission to one of the three eligible SUSS postgraduate programmes; shortlisting and nomination happen during the admissions interview process",
+      "verification_status": "active"
+    },
+    {
+      "id": 452,
+      "title": "KTH Scholarship",
+      "official_source": "Kth.Se",
+      "official_source_url": "https://www.kth.se/en/studies/master/admissions/scholarships/kth-scholarship-1.72827",
+      "catalogue_url": "https://www.kth.se/en/studies/master/admissions/scholarships",
+      "country": "Sweden",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": "The following joint master's programmes have separate application processes and deadlines.",
+      "verification_status": "active"
+    },
+    {
+      "id": 469,
+      "title": "Fulbright Foreign Student Program",
+      "official_source": "U.S. Department of State, Fulbright Program (administered by IIE and AMIDEAST)",
+      "official_source_url": "https://foreign.fulbrightonline.org/apply",
+      "catalogue_url": null,
+      "country": "United States",
+      "deadline_display": "Program eligibility, U.S. university admission, placement and selection procedures vary widely by country; applications are processed by the Fulbright Commission or U.S. Embassy in the applicant's country of nomination",
+      "deadline_precision": "varies",
+      "application_period": "Country-specific deadlines set by each binational Fulbright Commission/Foundation or U.S. Embassy",
+      "verification_status": "quarantined"
+    }
+  ]
+}

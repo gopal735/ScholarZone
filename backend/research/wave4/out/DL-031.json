@@ -1,0 +1,272 @@
+{
+  "shard_id": "DL-031",
+  "agent_completed": true,
+  "topic": "deadline",
+  "records": [
+    {
+      "scholarship_id": 208,
+      "title": "SNU President Fellowship Program (SPF)",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Application Period: During admission period for international students every semester",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://en.snu.ac.kr/admission/graduate/scholarships/before_application",
+        "source_type": "official_scholarship_page",
+        "publisher": "Seoul National University, Office of Global Affairs / Office of Admissions (en.snu.ac.kr)",
+        "retrieved_at": "2026-10-05T15:28:00Z",
+        "as_of": "No cycle named; page footer states \"Last updated in 2023\" and \"Copyright 2026 Seoul National University\"",
+        "raw_extract": "SNU President Fellowship Program (SPF) ... Number of Recipients Approximately 8 recipients each semester ... Application Period During admission period for international students every semester ... Selection Procedure Application for SPF scholarship made at the same time for online application for admission to SNU's Office of Admissions(must check the 'Application for Scholarship' box) -> Submission of application documents to SNU OGA (evidential documents regarding scholarship application that was done online) -> SNU Admission Results -> Interview -> Decision noticed",
+        "exact_deadline_wording": "Application Period: During admission period for international students every semester",
+        "confidence": "HIGH",
+        "notes": "Official scholarship page states the application period in recurring semesterly terms only; no calendar date is published for SPF anywhere on the page. Intro also states: \"Students may apply for the programs before or during the admission application period. The annual announcement will be posted on this website.\" Per the brief a recurring value is never converted to a date, so deadline_date stays null and the SNU international graduate admission calendar dates were deliberately NOT substituted (that would be another programme's deadline). Semantics ANNUAL / precision recurring is the officially stated, quotable state of this record; no month or day is invented."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "Application Period: During admission period for international students every semester"
+      },
+      "examined": [],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 209,
+      "title": "SNU Graduate Scholarship for Excellent Foreign Students (GSFS)",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "Application Period: During admission period for international students every semester",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://en.snu.ac.kr/admission/graduate/scholarships/before_application",
+        "source_type": "official_scholarship_page",
+        "publisher": "Seoul National University, Office of Global Affairs / Office of Admissions (en.snu.ac.kr)",
+        "retrieved_at": "2026-10-05T15:28:00Z",
+        "as_of": "No cycle named; page footer states \"Last updated in 2023\"",
+        "raw_extract": "Graduate Scholarship for Excellent Foreign Students (GSFS) ... Number of Recipients Approximately 20 ... Application Period During admission period for international students every semester ... Selection Procedure Application for GSFS scholarship made at the same time for online application for admission to SNU's Office of Admissions(must check the 'Application for Scholarship' box) -> Selection made by respective Colleges/Schools based on the admission documents -> Decision noticed",
+        "exact_deadline_wording": "Application Period: During admission period for international students every semester",
+        "confidence": "HIGH",
+        "notes": "GSFS has no standalone page: the shard's official_source_url (/admission/graduate/scholarships/gsfs) returns HTTP 404 and the shard's catalogue_url (oga.snu.ac.kr/scholarship-finder) also returns HTTP 404 as fetched on 2026-10-05. The live official page for this scholarship is the Graduate > Scholarships > Before Application page, which carries a GSFS section with its own Application Period and Selection Procedure text quoted above. The page also warns that eligibility changes every semester: \"The list of eligible countries and participating colleges/schools differ every semester\". Recurring timing only, therefore no date written; SNU admission calendar dates deliberately not substituted."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "Application Period: During admission period for international students every semester"
+      },
+      "examined": [],
+      "rejected_sources": [
+        {
+          "url": "https://en.snu.ac.kr/admission/graduate/scholarships/gsfs",
+          "reason": "shard official_source_url returned HTTP 404 Not Found when fetched on 2026-10-05; no standalone GSFS page exists on en.snu.ac.kr. The scholarship is documented on /admission/graduate/scholarships/before_application, which is the source used instead."
+        },
+        {
+          "url": "https://oga.snu.ac.kr/scholarship-finder",
+          "reason": "shard catalogue_url returned HTTP 404 Not Found when fetched on 2026-10-05, so it could not be read or quoted. The same dead link is referenced from the live SNU scholarship page (\"which can be found in the guide sent out each semester by the SNU Office of Global Affairs: https://oga.snu.ac.kr/scholarship-finder\")."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 262,
+      "title": "Bachelor's and Master's Scholarships in Finland (university-offered; no national government scholarship programme)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "With some universities, you can apply for a scholarship at the same time as you submit your admission application",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.studyinfinland.fi/funding-your-studies/bachelors-and-masters-scholarships",
+        "source_type": "official_government_page",
+        "publisher": "Study in Finland, published by the Finnish National Agency for Education",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": "Page states \"Updated 04.06.2026\"; no application cycle named",
+        "raw_extract": "How to apply for a scholarship — Scholarships and tuition fee waivers in Finland are offered by individual universities. There are no governmental scholarship programmes available. ... With some universities, you can apply for a scholarship at the same time as you submit your admission application — making it easy to plan your studies and funding together. In other cases, scholarships may become available after you've started your studies. These can, for example, reward your progress, academic success, or even your growing Finnish language skills. ... You can typically find instructions for applying for a scholarship alongside the application information.",
+        "exact_deadline_wording": "With some universities, you can apply for a scholarship at the same time as you submit your admission application",
+        "confidence": "HIGH",
+        "notes": "No calendar deadline is published on this official page, and none is derivable: the page explicitly assigns both the existence and the timing of every scholarship to the individual university (\"offered by individual universities\", \"You can typically find instructions for applying for a scholarship alongside the application information\"). There is no single deadline that belongs to this record. The record's existing precision \"varies\" is a fair description of reality, but the contract reserves precision \"varies\" for CONFLICTING (two credible sources disagreeing about the same deadline), and no such disagreement exists here, so semantics/precision are recorded as UNKNOWN/unknown. The \"same time as your admission application\" sentence is a routing rule, not a date, and was not used to infer one."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "With some universities, you can apply for a scholarship at the same time as you submit your admission application"
+      },
+      "examined": [
+        "https://www.studyinfinland.fi",
+        "https://www.studyinfinland.fi/news-events/scholarship-facts"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 302,
+      "title": "University of Porto Scholarships and Funding (SASUP, Merit and Scientific Scholarships)",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "The scholarship is granted and renewed annually, with deadlines and application results published on the SASUP website",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://www.up.pt/portal/en/live/student-life/scholarships-and-funding",
+        "source_type": "official_university_page",
+        "publisher": "University of Porto (U.Porto), Reitoria - portal",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": "No cycle named; page footer states \"(c) University of Porto 2026\"",
+        "raw_extract": "SASUP Scholarships — If you are enrolled in a Bachelor's, Master's or Integrated Master's programme at U.Porto, you can apply for a study scholarship offered by the Social Support Services of the University of Porto (SASUP). ... The scholarship is granted and renewed annually, with deadlines and application results published on the SASUP website. ... Merit Scholarships — Merit scholarships are awarded every year to the U.Porto students with the best academic results. ... Scientific Scholarships — U.Porto awards undergraduate research scholarships and research scholarships for Bachelor's, Master's and Doctoral students. ... As a rule, the scholarship duration is annual and extendable up to three years and cannot be awarded for periods of less than three consecutive months.",
+        "exact_deadline_wording": "The scholarship is granted and renewed annually, with deadlines and application results published on the SASUP website",
+        "confidence": "HIGH",
+        "notes": "The record bundles three distinct schemes (SASUP study scholarship, Merit Scholarships, Scientific Scholarships) that each run under their own regulation and timing, so no single date can represent it. The record's own official page publishes recurring annual timing and explicitly delegates the deadlines to the SASUP website. I fetched the SASUP pages reachable from it (sas.up.pt home, SASUP Bolsas > Apresentacao, SASUP Informacoes Uteis); those pages publish dated application periods only for OTHER schemes (Bolsa de Colaboradores, the national IES/DGES study scholarship, accommodation), so per the brief's ban on another programme's deadline none of them was used. Note also that the SASUP study scholarship excludes International Student Status holders (\"students with the International Student Status are excluded\"), which is relevant to eligibility but does not yield a date. No date written: annual timing, no fixed current date on an official page."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "deadline_display": "The scholarship is granted and renewed annually, with deadlines and application results published on the SASUP website"
+      },
+      "examined": [
+        "https://www.sas.up.pt/",
+        "https://www.up.pt/portal/pt/sasup/bolsas/apresentacao/",
+        "https://www.up.pt/portal/pt/sasup/Informacoes-uteis/"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.up.pt/portal/pt/sasup/Informacoes-uteis/",
+          "reason": "Contains dated application periods, but for different schemes: \"Prazo de candidatura: De 08 de setembro a 21 de setembro de 2026\" (Bolsa de Colaboradores) and \"Entre 14 de agosto e 2 de outubro\" (BOLSA DE ESTUDO DO IES, I.P. - ANO LETIVO 2026-2027, a national DGES/IES scheme applied for via BeOn). Not this record's schemes, so not used."
+        },
+        {
+          "url": "https://www.up.pt/portal/en/sasup/bolsas/apresentacao/",
+          "reason": "HTTP 404 Not Found; the English SASUP scholarship section is not published at this path. The Portuguese equivalent (https://www.up.pt/portal/pt/sasup/bolsas/apresentacao/) was fetched instead and also contains no deadline."
+        },
+        {
+          "url": "https://www.up.pt/portal/pt/sasup/bolsas/candidaturas-outros/",
+          "reason": "Response body could not be decoded by the fetcher, so nothing could be read or quoted from it; therefore nothing was taken from it."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 341,
+      "title": "Finland Scholarship (National Programme for Master's Students)",
+      "outcome": "rejected",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.studyinfinland.fi/news-events/scholarship-facts",
+        "source_type": "official_government_page",
+        "publisher": "Study in Finland, published by the Finnish National Agency for Education",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "as_of": "News item dated 02.12.2025 on the official Study in Finland site",
+        "raw_extract": "Scholarships for studies in Finland - facts! ... Heard about fully funded Finnish government scholarships? Be cautious - those claims are misleading. While Finland doesn't offer any governmental study scholarships, some universities do provide their own tuition fee waivers. ... That's because it is not true. ... The truth is, there are no governmental scholarships for bachelor's or master's studies in Finland. ... Individual Finnish universities may offer scholarships - Some individual Finnish universities have scholarships of their own for international students admitted to their fee-charging bachelor's and master's, for example in the form of tuition fee waivers.",
+        "exact_deadline_wording": null,
+        "confidence": "HIGH",
+        "notes": "Record premise refuted by the official source of record. This record names a national Finnish government scholarship programme for Master's students, but the Finnish National Agency for Education states on its official site that no such programme exists and warns that advertising one is misleading. There is therefore no official page that states any deadline for this title, and no deadline can be recovered without inventing one; nothing was written. Outcome is 'rejected' (the record cannot be substantiated as an existing programme) while deadline_semantics remains UNKNOWN, since no source describes any deadline for this title. The record is already flagged verification_status=quarantined in the shard. deadline_display and exact_deadline_wording are null because no provider wording about timing exists."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": null
+      },
+      "examined": [
+        "https://www.studyinfinland.fi"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 489,
+      "title": "Ministry of Education (MOE)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.moe.gov.sg/financial-matters/awards-scholarships",
+        "source_type": "official_government_page",
+        "publisher": "Ministry of Education, Singapore",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": "Page states \"Last Updated: 12 Mar 2026\"",
+        "raw_extract": "Awards and scholarships — Learn about the different merit-based awards and scholarships available. [Centennial Fund Award] [Edusave awards and scholarships] [Edusave scholarships for Independent Schools (ESIS)] [Institute of Technical Education (ITE) Progression Award (IPA)] [MOE Pre-University Scholarship] [MOE-AU Scholarship] [Programme-specific scholarships for Pre-University] [Programme-specific scholarships for secondary schools] [Singapore-Industry Scholarship (SgIS)] [Special awards] [UPLIFT Scholarship] [ASEAN Scholarship]",
+        "exact_deadline_wording": null,
+        "confidence": "HIGH",
+        "notes": "The record title is the ministry itself, not a named award or programme. The official Awards and scholarships index is an index page: it publishes no application deadline and instead routes to twelve separate awards, each with its own page and its own timing (Edusave, MOE Pre-U, MOE-AU, ITE IPA, SgIS, UPLIFT, ASEAN, Centennial Fund, and others). Writing any single date would require borrowing a specific award's deadline for a record that names none, which the brief forbids, and different MOE awards demonstrably have different deadlines. The shard's current deadline_precision 'month' is not supported by any MOE page I fetched. No date written."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": null
+      },
+      "examined": [
+        "https://moe.gov.sg/"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 609,
+      "title": "Seoul G20 Global Leaders Scholarship (KDI School of Public Policy and Management)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Online Application Period For International Admissions: August 5 (Wed) 09:00 - August 14 (Fri) 18:00, 2026(KST)",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.kdischool.ac.kr/menu.es?mid=a40900000000",
+        "source_type": "official_programme_page",
+        "publisher": "KDI School of Public Policy and Management, Korea Development Institute",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "as_of": "2026 Spring 2027 admissions cycle (window: 2026-08-05 09:00 to 2026-08-14 18:00 KST)",
+        "raw_extract": "Online Application Period For International Admissions: August 5 (Wed) 09:00 - August 14 (Fri) 18:00, 2026(KST)",
+        "exact_deadline_wording": "Online Application Period For International Admissions: August 5 (Wed) 09:00 - August 14 (Fri) 18:00, 2026(KST)",
+        "confidence": "HIGH",
+        "notes": "expired_mismatch - the stale date was NOT written and NOT silently moved to a future cycle. KDI School's scholarship page states that for the Seoul G20 Global Leaders Scholarship \"Applicants must submit the online application along with the supporting documents as outlined in the application guidelines. No separate application for scholarship is required.\", so the scholarship's deadline is KDI School's online application deadline, which the official Application Guideline page publishes as 2026-08-05 09:00 to 2026-08-14 18:00 KST. That window closed about three weeks before retrieval (2026-10-05), and the official Admission Calendar shows the same cycle has advanced to \"09.18 [Spring 2027] Document Review Result Announcement\", \"09.28 ~ 10.02 [Spring 2027] Interview Period\" and \"10.19 [Spring 2027] Final Result Announcement\". The record is open/upcoming (verification_status active), so per the brief deadline_date stays null and semantics/precision are UNKNOWN/unknown; the verified-but-expired window is preserved verbatim above. No Fall 2027 application window is published anywhere on kdischool.ac.kr, so nothing was inferred. Data-quality note for the aggregator: the shard's application_period cites a document-review result on 2 October 2026, which does not match the live calendar (document review result 09.18; interview 09.28-10.02). The scholarship page itself is dated (site copyright 2022, references to 2021 Fall and 2024-25 cycles), so the guideline page is the current authority for the window."
+      },
+      "corroborating_sources": [
+        {
+          "url": "https://www.kdischool.ac.kr/board.es?mid=a40201000000&bid=0017&sel_date=20261006&sel_month=all",
+          "publisher": "KDI School of Public Policy and Management (Admission Calendar, full-year 2026 view)",
+          "quote": "08.05 ~ 08.14 [Spring 2027] Online Application Period",
+          "note": "Independent official confirmation that the guideline page's window is the Spring 2027 online application period, and that it is closed."
+        },
+        {
+          "url": "https://www.kdischool.ac.kr/menu.es?mid=a40203000000",
+          "publisher": "KDI School of Public Policy and Management (Scholarships)",
+          "quote": "Applicants must submit the online application along with the supporting documents as outlined in the application guidelines. No separate application for scholarship is required. ... Admissions Period: Spring & Fall Admissions(Master only)",
+          "note": "Establishes that the scholarship inherits the programme application deadline and runs on a Spring & Fall cycle; this page itself publishes no date, which is why it is listed as examined rather than as the value source."
+        }
+      ],
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Online Application Period For International Admissions: August 5 (Wed) 09:00 - August 14 (Fri) 18:00, 2026(KST)"
+      },
+      "examined": [
+        "https://www.kdischool.ac.kr/menu.es?mid=a40203000000"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 648,
+      "title": "APU International Students Scholarships & Merit Awards 2026",
+      "outcome": "recovered",
+      "deadline_semantics": "EXACT",
+      "deadline_date": "2026-10-31",
+      "deadline_display": "The deadline for this International Scholarship & Merit Awards is 31 October 2026.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.apu.edu.my/apu-international-students-scholarships-merit-awards",
+        "source_type": "official_scholarship_page",
+        "publisher": "Asia Pacific University Malaysia (APU)",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": "2026 awards cycle (page title \"APU International Students Scholarships & Merit Awards 2026\"; qualifications table references \"2026/2027 Final Results\")",
+        "raw_extract": "Application Deadline — The deadline for this International Scholarship & Merit Awards is 31 October 2026. We must receive the full set of documents for scholarship application on or before this date. All Scholarships & Merit Awards are on first come first serve basis. ... Applicants — APU Scholarships & Merit Awards for international students are available to new international students on first come first serve basis. ... Conditions of the Awards: 1. All Awards leading to fees rebate/discount are on a first come first serve basis and you may secure by paying Application & Processing Fees of RM 3,600 (approx. USD 950).",
+        "exact_deadline_wording": "The deadline for this International Scholarship & Merit Awards is 31 October 2026. We must receive the full set of documents for scholarship application on or before this date.",
+        "confidence": "HIGH",
+        "notes": "This supersedes the shard's cached precision \"rolling\" and its claim that the page's Application Deadline heading carries no date: the live official page does state an explicit calendar deadline, under the heading \"Application Deadline\", and the date 31 October 2026 is bolded on the page. The deadline is 26 days after retrieval (2026-10-05), so the record is genuinely open/upcoming and the date is current, not stale. The \"first come first serve\" wording governs how awards are allocated once the deadline is reached (and the RM 3,600 Application & Processing Fee), not the deadline itself, so this is EXACT and not ROLLING; ROLLING would also be wrong because the source fixes a date. Write 2026-10-31."
+      },
+      "field_mapping": {
+        "deadline_date": "2026-10-31",
+        "deadline_precision": "exact",
+        "deadline_display": "The deadline for this International Scholarship & Merit Awards is 31 October 2026."
+      },
+      "examined": [],
+      "rejected_sources": []
+    }
+  ]
+}

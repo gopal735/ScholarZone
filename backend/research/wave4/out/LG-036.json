@@ -1,0 +1,244 @@
+{
+  "shard_id": "LG-036",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 130,
+      "title": "Aga Khan Foundation International Scholarship Programme (AKF ISP) - Next Cycle, Opening Early 2027",
+      "outcome": "not_found",
+      "image_url": null,
+      "image_source_url": null,
+      "image_source_type": null,
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": false,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": false,
+        "notes": "akf.org, the official programme page host, publishes NO standalone Aga Khan Foundation logo image file. The header wordmark is drawn with an icon font glyph, not an image: in https://akf.org/wp-content/themes/aga-khan/assets/styles/app.css the rule set is '.icon-logo:before { content: \"\\e94b\"; color: var(--c_a1t); }' and '.icon-logo:after { content: \"\\e94c\"; }', and the only binary font files referenced are icomoon .woff/.ttf. The header markup is '<i class=\"icon-logo\"><span>Aga Khan Foundation</span></i>', i.e. there is no resolvable image URL for the AKF mark. The only image logo on the host is a favicon/tile, and the only AKDN-hosted logo belongs to the parent Aga Khan Development Network, a different legal organisation from the Aga Khan Foundation, so it fails identity_match for an AKF programme record. official_domain is false because no qualifying asset could be proven; every candidate was rejected."
+      },
+      "source": {
+        "url": "https://akf.org/international-scholarship-programme",
+        "publisher": "Aga Khan Foundation",
+        "retrieved_at": "2026-10-05T15:34:44Z",
+        "raw_extract": "The Aga Khan Foundation's International Scholarship Programme (AKF ISP) is an opportunity for outstanding scholars from selected countries, who have no other means of financing their studies, to pursue postgraduate education. ... The 2026-2027 application cycle is now closed. The next cycle will open in early 2027.",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://akf.org/international-scholarship-programme",
+        "https://akf.org/wp-content/themes/aga-khan/assets/styles/app.css?ver=1782722200",
+        "https://the.akdn/en/what-we-do/developing-human-capacity/education/international-scholarships",
+        "https://about.google/brand-resource-center/"
+      ],
+      "rejected": [
+        {
+          "url": "https://akf.org/wp-content/uploads/2023/11/AKF_favicon.png",
+          "reason": "favicon / msapplication-TileImage - explicitly declared as <meta name=\"msapplication-TileImage\"> in the page head. Rejected as a favicon asset."
+        },
+        {
+          "url": "https://akf.org/wp-content/uploads/2024/02/49643882548_ca2ba10156_k-3.jpg",
+          "reason": "decorative hero photograph - this is the page's og:image and a 2048x1366 editorial photo, not a logo or brand mark."
+        },
+        {
+          "url": "https://static.the.akdn/53832/1663743983-akdn-logo-header.png",
+          "reason": "wrong identity - this is the Aga Khan Development Network (AKDN) logo, declared as the organization logo in the.akdn schema.org block. The record is for the Aga Khan Foundation (AKF), a separate agency. Substituting the network logo for the foundation logo would be false branding."
+        },
+        {
+          "url": "https://static.the.akdn/53832/1636028154-akdn-logo-1-1.png",
+          "reason": "wrong identity and low resolution - AKDN mark served only at favicon sizes (h=16/32/96/192 via query params)."
+        },
+        {
+          "url": "https://www.akfusa.org/wp-content/uploads/DRAFT_AKFUSA_StyleGuide2025_v1.pdf",
+          "reason": "third-party / wrong entity and not an asset - this is the Aga Khan Foundation USA style guide, a separate national affiliate of the award body rather than akf.org. It is a PDF document, and it states the logo lockup files are 'available upon request', so it yields no official image file."
+        },
+        {
+          "url": "https://brandfetch.com/akdn.org",
+          "reason": "third-party aggregator - brand logo aggregator/mirror, not an official publisher."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 486,
+      "title": "Google PhD Fellowship Program",
+      "outcome": "not_found",
+      "image_url": null,
+      "image_source_url": null,
+      "image_source_type": null,
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": false,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": false,
+        "notes": "research.google, the official programme page, renders its 'Google Research' wordmark as live text in an anchor (<a href=\"/\">Google Research</a>), not as an image file. I downloaded and searched the full page HTML and the site stylesheet https://research.google/gr/static/css/googleresearch.css (556,209 bytes) and found no logo/wordmark/brand background-image rule at all, so no brand asset is published. Every logo-shaped asset on the page fails the rejection list: the only 'google' logo is a fragment reference into an icon sprite, and the only other is a 20dp Google button badge. Google has no Google Research entry in its official brand library, and that library is login-gated behind an application. official_domain is false because no qualifying asset could be proven."
+      },
+      "source": {
+        "url": "https://research.google/programs-and-events/phd-fellowship",
+        "publisher": "Google Research",
+        "retrieved_at": "2026-10-05T15:34:44Z",
+        "raw_extract": "Google PhD Fellowships directly support graduate students as they pursue their PhD. ... The Google PhD Fellowship Program was created to recognize outstanding graduate students doing exceptional and innovative research in areas relevant to computer science and related fields.",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://research.google/programs-and-events/phd-fellowship",
+        "https://research.google/gr/static/css/googleresearch.css?id=1df8cfd093ef74378ad52e9df6e91ef9",
+        "https://about.google/brand-resource-center/"
+      ],
+      "rejected": [
+        {
+          "url": "https://research.google/gr/static/assets/icons/glue-icons.svg#google-solid-logo",
+          "reason": "sprite fragment and favicon-style solid mark - a '#' fragment reference into a shared icon sprite, which is explicitly on the reject list (sprites, browser/UI chrome, favicon-sized badge). Not a standalone brand mark file."
+        },
+        {
+          "url": "https://www.gstatic.com/images/branding/googleg_gradient/1x/googleg_gradient_standard_20dp.png",
+          "reason": "low-resolution badge and UI chrome - a 20dp Google search button gradient, i.e. a favicon/button-sized product mark, not the Google Research programme brand mark."
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/images/PHD_how_to_apply.original.png",
+          "reason": "content illustration / UI - an in-article diagram on the 'How to apply' section, not a logo or brand mark."
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/images/PHD_review_criteria.original.png",
+          "reason": "content illustration / UI - an in-article diagram on the 'Review criteria' section, not a logo or brand mark."
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/images/Resources_banner_image.original.png",
+          "reason": "decorative hero art - a promotional banner for the resources section."
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/images/HO_previewImage1.width-800.format-jpeg.jpg",
+          "reason": "decorative preview thumbnail for an article/paper, not a brand mark."
+        },
+        {
+          "url": "https://storage.googleapis.com/gweb-research2023-media/original_images/earth_AI_nav.svg",
+          "reason": "UI chrome - one of the research-area navigation icons (same set as health_AI_nav, NLP_nav, etc.). Browser/navigation icon, explicitly rejected."
+        },
+        {
+          "url": "https://about.google/brand-resource-center/",
+          "reason": "login-gated and no matching brand - the page states 'Complete your application to access brand resources', and the published brand list contains no Google Research brand (only Google, Google.org and product brands)."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 641,
+      "title": "Becas R.P. Jorge Dintilhac SS.CC. (PUCP)",
+      "outcome": "recovered",
+      "image_url": "https://s3.amazonaws.com/files.pucp.edu.pe/pucp-general/img-header/logo-pucp-new.svg",
+      "image_source_url": "https://www.pucp.edu.pe/",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "IMPORTANT CAVEAT, RECOMMEND HUMAN REVIEW ON RENDERING. I downloaded the SVG and read its markup: it is the genuine PUCP institutional lockup (navy roundel plus the PUCP logotype, viewBox 0 0 183 60, on the brand navy #042354). However it is the WHITE-KNOCKOUT colourway - the outer arc is fill=\"#042354\" but the roundel interior, the crest detail and the P/U/C/P letters are all fill=\"white\". Rendered on a white background the wordmark is invisible and only the navy arc shows. It is nonetheless the logo the live official homepage actually loads in its header, which is why I am proposing it rather than reporting not_found. It is a correct-identity, official, non-favicon, non-UI, non-social asset, so MEDIUM rather than HIGH: official provenance and identity are proven, but the colourway is a known visual limitation. A dark-colourway PUCP logo is not published as a standalone image; the university instead distributes the logo inside a PDF brand guide (see rejected), so no better official image file exists to point at."
+      },
+      "source": {
+        "url": "https://www.pucp.edu.pe/",
+        "publisher": "Pontificia Universidad Catolica del Peru (PUCP)",
+        "retrieved_at": "2026-10-05T15:34:44Z",
+        "raw_extract": "The official PUCP homepage HTML references the header brand asset as <img src=\"https://s3.amazonaws.com/files.pucp.edu.pe/pucp-general/img-header/logo-pucp-new.svg\">, and the downloaded file is the PUCP institutional lockup: <svg width=\"183\" height=\"60\" viewBox=\"0 0 183 60\" fill=\"none\" ...> with the roundel arc in fill=\"#042354\" and the logotype paths in fill=\"white\". The scholarship page itself is headed 'BECAS R.P. JORGE DINTILHAC SS.CC.' and 'Financiado por: Pontificia Universidad Catolica del Peru', confirming the scholarship is a PUCP award and the university crest is the correct identity.",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://admision.pucp.edu.pe/becas-y-pensiones/becas/becas-rp-jorge-dintilhac-sscc",
+        "https://www.pucp.edu.pe/",
+        "https://puntoedu.pucp.edu.pe/se-transforma/",
+        "https://dci.pucp.edu.pe/recursos/uso-logotipo-pucp",
+        "https://masinfo.pucp.edu.pe/logo-digital"
+      ],
+      "rejected": [
+        {
+          "url": "https://admision.pucp.edu.pe/themes/custom/pucp_adm/logo.svg",
+          "reason": "not an asset / unusable colourway, and wrong sub-brand - it is the 'Logo Admision- PUCP' admissions-portfolio mark (sodipodi:docname=\"Logo Admision- PUCP.svg\") rather than the university crest, and every path is fill:#FFFFFF so it renders completely blank on a white background."
+        },
+        {
+          "url": "https://admision.pucp.edu.pe/sites/default/files/2026-08/logo-wssp.png",
+          "reason": "unrelated campaign mark - despite the 'logo' filename this is a WhatsApp social-call-to-action badge on the scholarship page, not the PUCP or scholarship brand mark."
+        },
+        {
+          "url": "https://s3.amazonaws.com/files.pucp.edu.pe/pucp-general/img-header/favicon/favicon-96x96.png",
+          "reason": "favicon - the whole pucp-general/img-header/favicon/ set (android-icon-192x192, apple-icon-*, ms-icon-144x144, favicon-16x16, etc.) is a favicon/icon set, explicitly rejected."
+        },
+        {
+          "url": "https://s3.amazonaws.com/files.pucp.edu.pe/homepucp/uploads/2021/07/19020656/favicon-512px.png",
+          "reason": "favicon - filename and 512x512 icon-set purpose make this a favicon/app icon, explicitly rejected."
+        },
+        {
+          "url": "https://assets.website-files.com/60c8d29050a5cb271fbb9ea2/60f5a990e3963b92ec16048a_version-digital-imagotipo.pdf",
+          "reason": "not an image asset and third-party CDN - this is where the official 'EL LOGO' portal (https://masinfo.pucp.edu.pe/logo-digital) redirects: a PDF brand guide ('Logo_vertical'), not a resolvable image file, and it is served from a Webflow assets host rather than a PUCP domain."
+        },
+        {
+          "url": "https://cdn.prod.website-files.com/60c37aa105a9484bef3a410a/60c388ec0a8b2009b24e05f4_logo-portal-dci.svg",
+          "reason": "unrelated department logo on a shared CDN - this is the logo of the DCI (Dirección de Comunicación Institucional) portal, a PUCP department, not the university brand mark."
+        },
+        {
+          "url": "https://cdn.prod.website-files.com/60c37aa105a9484bef3a410a/60f8876bc3c4dd224d5e6c8d_PUCP-webclip.svg",
+          "reason": "webclip / apple-touch-icon - a square webclip icon, explicitly rejected."
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:PUCP_text_logo.svg",
+          "reason": "third-party mirror - Wikimedia Commons is a mirror, not the official publisher. Not used even though it is described there as the 'Official text logo of PUCP'."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 663,
+      "title": "ACIAR Pacific Agriculture Scholarship Support (PASS) Program - Fiji National University 2027 intake",
+      "outcome": "recovered",
+      "image_url": "https://www.fnu.ac.fj/wp-content/uploads/2020/09/ACIAR.png",
+      "image_source_url": "https://www.fnu.ac.fj/research/scholarships/pass-cr/pacific-agriculture-scholarship-support-and-climate-resilience",
+      "image_source_type": "official_scholarship",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Verified by download and visual inspection, not by filename. The file is a real PNG (magic 89-50-4E-47, 33,076 bytes, content-type image/png) measuring 820x228. Rendered, it is the official Australian Centre for International Agricultural Research co-brand lockup: the ACIAR hexagonal emblem plus the 'Australian Centre for International Agricultural Research' wordmark, a divider, and the 'Australian Aid' mark. Identity is proven on the official page itself, which heads the programme image with alt=\"ACIAR\" and states 'The Australian Centre for International Agricultural Research (ACIAR) is an Australian Government statutory authority' and 'Applications are invited for the 2027 intake of the PASS Scholarship Program'. ACIAR is named first in this record's official_source. The asset is served from www.fnu.ac.fj, the official host of the official scholarship page, so it is not a third-party mirror; it is the funder's own mark, not an unrelated department's logo. The presence of the co-branded 'Australian Aid' (DFAT) mark is expected for an Australian Government statutory authority award and is not third-party branding."
+      },
+      "source": {
+        "url": "https://www.fnu.ac.fj/research/scholarships/pass-cr/pacific-agriculture-scholarship-support-and-climate-resilience",
+        "publisher": "Fiji National University (ACIAR PASS Program administered at FNU)",
+        "retrieved_at": "2026-10-05T15:34:44Z",
+        "raw_extract": "Applications are invited for the 2027 intake of the PASS Scholarship Program from suitably qualified applicants ... at Fiji National University (FNU). Application Open: Thursday 20 August 2026. Application Close: Wednesday, 21 October 2026. Scholarships will be available for Graduate Term 1, 2027. The Australian Centre for International Agricultural Research (ACIAR) is an Australian Government statutory authority within the Australian Government's Foreign Affairs portfolio. [programme image: ![ACIAR](https://www.fnu.ac.fj/wp-content/uploads/2020/09/ACIAR.png)]",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.fnu.ac.fj/research/scholarships/pass-cr/pacific-agriculture-scholarship-support-and-climate-resilience",
+        "https://www.aciar.gov.au/scholarships/pass"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.aciar.gov.au/scholarships/pass",
+          "reason": "inaccessible - returned HTTP 403 to a non-browser request, so no asset could be verified on the ACIAR domain. The FNU-hosted asset was used instead because it was directly fetchable and is the asset the official scholarship page actually publishes."
+        },
+        {
+          "url": "https://www.fnu.ac.fj/wp-content/uploads/2019/12/fnu_logo_resized.png",
+          "reason": "site chrome - this is the Fiji National University site header logo (the institution hosting the page), not the logo of the ACIAR PASS award this record describes."
+        },
+        {
+          "url": "https://www.fnu.ac.fj/wp-content/uploads/2019/08/home_page_fnu_logo.png",
+          "reason": "site chrome / wrong entity for this record - the host university's homepage logo. Defensible in isolation, but the record's award identity is the ACIAR PASS Program, whose own mark is the image published on the scholarship page, so the more precise identity match was chosen."
+        }
+      ]
+    }
+  ]
+}

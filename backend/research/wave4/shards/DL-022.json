@@ -1,0 +1,111 @@
+{
+  "shard_id": "DL-022",
+  "topic": "deadline",
+  "hosts": [
+    "bolashak.gov.kz",
+    "international.kiit.ac.in",
+    "www.aalto.fi",
+    "www.fwf.ac.at",
+    "www.inde.campusfrance.org",
+    "www.uni-graz.at"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 8,
+      "title": "France Excellence Charpak Scholarship Program",
+      "official_source": "Campus France India (French Embassy in India)",
+      "official_source_url": "https://www.inde.campusfrance.org/france-excellence-charpak-scholarship-program",
+      "catalogue_url": "https://www.inde.campusfrance.org/france-excellence-charpak-scholarship-program",
+      "country": "France",
+      "deadline_display": "Varies by track (typically spring/summer)",
+      "deadline_precision": "unknown",
+      "application_period": "Varies by track - typically spring/summer",
+      "verification_status": "active"
+    },
+    {
+      "id": 118,
+      "title": "KIIT University India Scholarships Programme (KUISP)",
+      "official_source": "Kalinga Institute of Industrial Technology (KIIT) Deemed to be University",
+      "official_source_url": "https://international.kiit.ac.in",
+      "catalogue_url": "https://international.kiit.ac.in",
+      "country": "India",
+      "deadline_display": "No current official deadline could be retrieved. The KUISP leaflets for recent cycles stated \"Application Start Date: 1st March\" and \"Application Deadline: 30th August\" for that academic year, with applications free of charge. The equivalent window for the current academic year has already passed on the verification date.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual. Recent cycles opened on 1 March and closed at the end of August of the same year, with Indian diplomatic missions also asked to recommend candidates by 30 September.",
+      "verification_status": "active"
+    },
+    {
+      "id": 164,
+      "title": "University of Graz Scholarships for International Students",
+      "official_source": "University of Graz",
+      "official_source_url": "https://www.uni-graz.at/en/studies/scholarships",
+      "catalogue_url": null,
+      "country": "Austria",
+      "deadline_display": "Varies (typically March-June)",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 223,
+      "title": "FWF ESPRIT (Early-Stage Program: Research - Innovation - Training)",
+      "official_source": "Austrian Science Fund (FWF)",
+      "official_source_url": "https://www.fwf.ac.at/en/funding/funding-portfolio/fwf-espriT",
+      "catalogue_url": "https://www.fwf.ac.at/fileadmin/Website/Dokumente/Foerdern/Portfolio/ESPRIT/fwf_esp_application_guidelines.pdf",
+      "country": "Austria",
+      "deadline_display": "\"Rolling submissions using the online application portal elane\"",
+      "deadline_precision": "rolling",
+      "application_period": "Rolling; applications can be submitted at any time via the elane portal, with five FWF approval meetings per year",
+      "verification_status": "active"
+    },
+    {
+      "id": 224,
+      "title": "FWF ASTRA Awards",
+      "official_source": "Austrian Science Fund (FWF)",
+      "official_source_url": "https://www.fwf.ac.at/en/funding/funding-portfolio/fwf-astra",
+      "catalogue_url": "https://www.fwf.ac.at/fileadmin/Website/Dokumente/Foerdern/Portfolio/ASTRA/fwf_ast_application_guidelines.pdf",
+      "country": "Austria",
+      "deadline_display": "Submissions are accepted only during a published annual application window; on 2026-10-04 the official page showed \"Currently no submissions\". The next call window is not yet published.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual call with a fixed submission window; the 2026 call has closed and the next window was not yet published on 2026-10-04",
+      "verification_status": "active"
+    },
+    {
+      "id": 225,
+      "title": "FWF Doctoral Programs DK",
+      "official_source": "Austrian Science Fund (FWF)",
+      "official_source_url": "https://www.fwf.ac.at/en/funding/funding-portfolio/doctoral-programmes",
+      "catalogue_url": null,
+      "country": "Austria",
+      "deadline_display": "Varies (positions advertised individually)",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 335,
+      "title": "Aalto University Excellence Scholarship (100% tuition fee waiver)",
+      "official_source": "Aalto University",
+      "official_source_url": "https://www.aalto.fi/en/international-students/scholarships-study-right-started-on-or-after-1-august-2025",
+      "catalogue_url": null,
+      "country": "Finland",
+      "deadline_display": "\"Tuition-fee students may apply for the scholarship during the admission process.\" The scholarship follows the admission round's application deadlines, which this page does not state, and it is only valid if the holder \"must agree to the terms of the scholarship by the given deadline.\"",
+      "deadline_precision": "recurring",
+      "application_period": "Applied for during the relevant degree programme admission round",
+      "verification_status": "active"
+    },
+    {
+      "id": 646,
+      "title": "Scholarship Program for Studying at Universities in Kazakhstan (Bolashak / Center for International Programs)",
+      "official_source": "JSC \"Center for International Programs\" (Bolashak), Republic of Kazakhstan",
+      "official_source_url": "https://bolashak.gov.kz/en/scholarship-program",
+      "catalogue_url": "https://studyin.kz/admission",
+      "country": "Kazakhstan",
+      "deadline_display": "31 May 2026, 23:59 Astana time (2026 intake closed)",
+      "deadline_precision": "recurring",
+      "application_period": "Online applications open 30 March and close 31 May 2026 at 23:59 Astana time, via https://studyin.kz/admission",
+      "verification_status": "active"
+    }
+  ]
+}

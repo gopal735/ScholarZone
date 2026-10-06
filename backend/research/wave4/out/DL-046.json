@@ -1,0 +1,236 @@
+{
+  "shard_id": "DL-046",
+  "agent_completed": true,
+  "topic": "deadline",
+  "records": [
+    {
+      "scholarship_id": 3,
+      "title": "DAAD Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "please read the call for applications for your chosen scholarship programme in the scholarship database, paying particular attention to application deadlines",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.daad.de/en/studying-in-germany/scholarships/daad-scholarships/",
+        "source_type": "official_scholarship_page",
+        "publisher": "Deutscher Akademischer Austauschdienst (DAAD) - German Academic Exchange Service",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": null,
+        "raw_extract": "If you wish to apply for a DAAD scholarship, please read the call for applications for your chosen scholarship programme in the scholarship database, paying particular attention to application deadlines. The scholarship database will take you to the application portal.",
+        "exact_deadline_wording": "please read the call for applications for your chosen scholarship programme in the scholarship database, paying particular attention to application deadlines",
+        "confidence": "HIGH",
+        "notes": "No single official DAAD deadline exists for a record generically titled 'DAAD Scholarship'. DAAD operates ~150 distinct scholarship programmes (research grants, Master's scholarships, STEM study scholarships, EPOS, Hilde Domin, In-Country/In-Region), each with its own closing date published only inside its own Call for Applications in the scholarship database. DAAD's own overview page redirects applicants to per-programme calls for deadlines. Writing any single date for this umbrella record would require picking one arbitrary programme out of the database, which the contract forbids (AGENT_BRIEF section 5: a generic deadline for a different programme; section 6: no cycle assumptions). The record is too coarse-grained to resolve to one programme. I did not consult any individual programme's database detail page, because choosing which of the 150 programmes this generic record represents would itself be an invention."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "please read the call for applications for your chosen scholarship programme in the scholarship database, paying particular attention to application deadlines"
+      },
+      "examined": [
+        "https://www.daad.de/en/studying-in-germany/scholarships/ (Scholarships & Funding index; no deadline, links onward to database and overview)",
+        "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database (record's catalogue_url; renders a filter form and states '150 Scholarship options for your selection' - per-programme search interface, no single deadline)",
+        "https://www.daad.de/en/study-and-research-in-germany/scholarships/important-information-for-scholarship-applicants/ (states 'The closing date for applications is indicated in the \"Application procedure\" tab' and 'Application procedures may vary depending on scholarship programme' - confirms deadlines are per-programme)"
+      ],
+      "rejected_sources": [],
+      "prior_cached_value_not_used": "The shard's pre-existing deadline_display ('Varies by programme - Master's typically ~30 Oct; PhD programmes vary (3 Sept or 21 Oct for 2026/27 cycle). Deadlines updated annually in Q2.') was NOT used. No fetched DAAD page states ~30 Oct, 3 Sept, 21 Oct, or a Q2 update cadence. Per AGENT_BRIEF section 5, a previous wave's cached value with no live source behind it is inadmissible. The specific figures appear to be synthesis rather than published DAAD text."
+    },
+    {
+      "scholarship_id": 10,
+      "title": "Deutschlandstipendium (Germany Scholarship)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Zum jeweiligen Verfahren und den Fristen erkundigen Sie sich direkt an Ihrer Hochschule.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.deutschlandstipendium.de/deutschlandstipendium/de/studierende/stipendiatin-oder-stipendiat-werden/stipendiatin-oder-stipendiat-werden_node.html",
+        "source_type": "official_government_page",
+        "publisher": "Bundesministerium fuer Forschung, Technologie und Raumfahrt (BMFTR) - Deutschlandstipendium",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": null,
+        "raw_extract": "4. Bewerben Sie sich Reichen Sie Ihre Bewerbung mit den geforderten Nachweisen an Ihrer Hochschule ein. Zum jeweiligen Verfahren und den Fristen erkundigen Sie sich direkt an Ihrer Hochschule.",
+        "exact_deadline_wording": "Zum jeweiligen Verfahren und den Fristen erkundigen Sie sich direkt an Ihrer Hochschule.",
+        "confidence": "HIGH",
+        "notes": "The federal programme deliberately centralises neither the application procedure nor the deadlines. The official BMFTR guidance states positively that applicants must enquire with their own university about the procedure AND the deadlines ('Fristen'). This is affirmative official evidence that no federal deadline exists for this record, not merely missing evidence. The programme FAQ corroborates the delegation: 'Die Auswahlverfahren werden im Einzelnen durch die Hochschulen festgelegt und bekanntgemacht. Die Stipendien werden oeffentlich ausgeschrieben.' Classification note: this is UNKNOWN rather than ROLLING or ANNUAL because BMFTR never says 'rolling' or 'no fixed deadline' - it says the deadline belongs to a third party (each university). Per AGENT_BRIEF section 6, differing deadlines across the ~700 participating universities is explicitly NOT a CONFLICTING case, so CONFLICTING is not used. No date can be written, and per section 5 I did not borrow any single university's Deutschlandstipendium deadline."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Zum jeweiligen Verfahren und den Fristen erkundigen Sie sich direkt an Ihrer Hochschule."
+      },
+      "examined": [
+        "https://www.deutschlandstipendium.de (record's official_source_url; homepage carries news and programme teasers only, no deadline)",
+        "https://www.deutschlandstipendium.de/deutschlandstipendium/de/stipendium/wie-es-funktioniert/wie-es-funktioniert_node.html (no deadline statement; describes the Bund/private-funder/university division of roles only)",
+        "https://www.deutschlandstipendium.de/deutschlandstipendium/de/stipendium/haeufig-gestellte-fragen/haeufig-gestellte-fragen_node.html (no deadline; states selection procedures are set and announced by the universities individually)",
+        "https://www.deutschlandstipendium.de/deutschlandstipendium/de/services/english/the-deutschlandstipendium-best-of-both-worlds-for-students.html (English overview; 'The Deutschlandstipendium is awarded by the universities. Applicants must meet the requirements of the individual institutions.' - no deadline)"
+      ],
+      "rejected_sources": [],
+      "prior_cached_value_not_used": "The shard's pre-existing deadline_display ('Varies by university (typically spring/summer for winter semester)') was NOT used. The words 'typically spring/summer' appear on no BMFTR page I fetched and appear to be inference about German university selection rounds, which AGENT_BRIEF section 5 forbids."
+    },
+    {
+      "scholarship_id": 173,
+      "title": "Amsterdam Merit Scholarship (AMS)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Applications should be submitted to the Admissions Offices of the Graduate Schools. Deadlines for the AMS differ per Faculty or Graduate School.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.uva.nl/en/education/fees-and-funding/masters-scholarships-and-loans/amsterdam-merit-scholarship/amsterdam-merit-scholarship.html",
+        "source_type": "official_university_page",
+        "publisher": "University of Amsterdam",
+        "retrieved_at": "2026-10-05T15:28:00Z",
+        "as_of": null,
+        "raw_extract": "Applications should be submitted to the Admissions Offices of the Graduate Schools. Deadlines for the AMS differ per Faculty or Graduate School. You can find the specific eligibility requirements, selection criteria and application instructions on the Faculty or Graduate School websites.",
+        "exact_deadline_wording": "Deadlines for the AMS differ per Faculty or Graduate School.",
+        "confidence": "HIGH",
+        "notes": "The record's own official_source_url is dead (HTTP 404); I used the record's catalogue_url instead, which is the live official AMS page. That page publishes NO date and states affirmatively that the AMS deadline is faculty- or graduate-school-specific. Since the record is the institution-wide AMS rather than a named faculty's AMS, there is no single deadline to write. The Faculty of Science page does say 'The application deadline is 15 January' for its single AMS award for the September 2027 start, but that is one faculty's AMS allocation and AGENT_BRIEF section 5 bars using another programme's deadline for this record. Note also that '15 January' on that page carries no year, so even if it were in scope it could not yield a YYYY-MM-DD without a cycle assumption (section 6). Not classified CONFLICTING: per section 6, different faculties of one institution having different deadlines is not a conflict."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Applications should be submitted to the Admissions Offices of the Graduate Schools. Deadlines for the AMS differ per Faculty or Graduate School."
+      },
+      "examined": [
+        "https://www.uva.nl/en/education/scholarships-financial-support/uva-merit-scholarship.html (record's official_source_url; HTTP 404, no content)",
+        "https://www.uva.nl/en/education/fees-and-funding/masters-scholarships-and-loans/faculty-scholarships-science/science.html (Faculty of Science AMS; states 'The application deadline is 15 January.' - faculty-specific, out of scope for the institution-wide record)",
+        "https://www.uva.nl/en/education/fees-and-funding/masters-scholarships-and-loans/masters-scholarships-and-loans.html (UvA master's scholarship index; no deadline)"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.uva.nl/en/education/fees-and-funding/masters-scholarships-and-loans/faculty-scholarships-science/science.html",
+          "reason": "Faculty of Science-specific AMS deadline ('The application deadline is 15 January.'), not the institution-wide AMS this record represents. AGENT_BRIEF section 5: a generic deadline for a different programme. Additionally the wording carries no year, so it cannot support a YYYY-MM-DD without a cycle assumption."
+        }
+      ],
+      "prior_cached_value_not_used": "The shard's pre-existing deadline_display (quoting 'Deadlines for the AMS differ per Faculty or Graduate School.' plus 15 January / 1 March / 2 February) was NOT used. The first clause is independently re-confirmed from the live page, but the 1 March (Psychology) and 2 February (Social Sciences) figures were not verified on any page I fetched and are not asserted here."
+    },
+    {
+      "scholarship_id": 398,
+      "title": "University of Amsterdam Scholarships",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "The University of Amsterdam (UvA) aims to attract the world's brightest students to its international classrooms. For that reason, it has established several scholarship programmes specifically designed to offer talented and motivated international students the opportunity to pursue a degree at the UvA.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.uva.nl/en/education/fees-and-funding/masters-scholarships-and-loans/masters-scholarships-and-loans.html",
+        "source_type": "official_university_page",
+        "publisher": "University of Amsterdam",
+        "retrieved_at": "2026-10-05T15:30:00Z",
+        "as_of": null,
+        "raw_extract": "The University of Amsterdam (UvA) aims to attract the world's brightest students to its international classrooms. For that reason, it has established several scholarship programmes specifically designed to offer talented and motivated international students the opportunity to pursue a degree at the UvA. ## Faculty scholarships for Master's students Each faculty also has a variety of scholarships aimed at international students. Choose a faculty below to find out about faculty-specific scholarships.",
+        "exact_deadline_wording": "no deadline wording appears anywhere on this page; it is a navigation index listing the Amsterdam Merit Scholarship plus five separate faculty scholarship schemes",
+        "confidence": "HIGH",
+        "notes": "The record's official_source_url is dead (HTTP 404). I located the live replacement hub by walking the official 'Fees and funding' section index. The hub is a pure index page: it contains no deadline, no date, and no application window, and it routes the reader to the AMS plus five per-faculty scholarship pages that each set their own deadlines. A record titled 'University of Amsterdam Scholarships' scoped this broadly has no single official deadline. Not MONTH, not ANNUAL, not ROLLING: the page makes no timing claim at all, so UNKNOWN is the only defensible classification. The shard's prior value describing a 'main AMS round ... 15 January ... results at the end of April ... amounts published in late autumn' is not present on the live hub and was not used."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "no single deadline published on the UvA scholarship hub; deadlines are set per scheme and per faculty"
+      },
+      "examined": [
+        "https://www.uva.nl/en/education/your-studies/financing-your-studies/scholarships/scholarships.html (record's official_source_url; HTTP 404, no content)",
+        "https://www.uva.nl/en/education/fees-and-funding/fees-and-funding.html (live UvA 'Fees and funding' section index used to locate the current hub; no deadline)",
+        "https://www.uva.nl/en/education/scholarships-financial-support/scholarships.html (guessed hub variant; HTTP 404)"
+      ],
+      "rejected_sources": [],
+      "prior_cached_value_not_used": "The shard's pre-existing deadline_display and application_period (a 'main AMS round' with 15 January deadline, end-of-April results, late-autumn amounts) were NOT used. None of that cycle description appears on the live UvA hub or AMS pages I fetched; the end-of-April result date and late-autumn amount publication were not verified. Not asserted here."
+    },
+    {
+      "scholarship_id": 486,
+      "title": "Google PhD Fellowship Program",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Applications are currently closed for the 2026 cycle. - Applications open March 5, 2026 - Applications close April 30, 2026",
+      "deadline_precision": "exact",
+      "withheld_past_deadline": "2026-04-30",
+      "source": {
+        "url": "https://research.google/programs-and-events/phd-fellowship",
+        "source_type": "official_programme_page",
+        "publisher": "Google Research (Google LLC)",
+        "retrieved_at": "2026-10-05T15:28:00Z",
+        "as_of": "2026 cycle",
+        "raw_extract": "## Application status Applications are currently closed for the 2026 cycle. - Applications open March 5, 2026 - Applications close April 30, 2026 - Notification of proposal decisions by Aug. 31, 2026 - Public announcement of new fellowship recipients by Oct. 31, 2026",
+        "exact_deadline_wording": "Applications close April 30, 2026",
+        "confidence": "HIGH",
+        "notes": "This is the clearest case in the shard and still does not yield a writable date. The official page states an explicit calendar closing date of 2026-04-30 for the 2026 cycle, and states in the present tense that 'Applications are currently closed'. As of retrieval on 2026-10-05 that closing date is roughly five months in the past, and the record is carried in the open/upcoming gap set. Per AGENT_BRIEF section 6, a clearly-past deadline on an open/upcoming record is outcome expired_mismatch: the stale date must not be written and must not be silently rolled forward to 2027. Google has published no 2027 cycle dates, so no substitute date exists. deadline_semantics is recorded as EXACT because that is genuinely what the source states (an explicit calendar deadline); deadline_date is null solely because of the past-date rule, and the unextracted value is preserved out-of-band in withheld_past_deadline. The two later 2026 milestones (Aug. 31 and Oct. 31 2026) are also past or imminent but are notification dates, not the application deadline, so they are not candidates. Not ROLLING: the page does not say rolling or no fixed deadline. Not CONFLICTING: only one official source was needed and none disagrees."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "Applications are currently closed for the 2026 cycle. - Applications open March 5, 2026 - Applications close April 30, 2026"
+      },
+      "examined": [],
+      "rejected_sources": [],
+      "prior_cached_value_not_used": "The shard's pre-existing deadline_display happens to match the live page verbatim, so no cached value was relied upon: the wording above was re-read from the fetched page, not copied from the shard. Note the shard's deadline_precision was 'recurring'; I did not adopt that, because the page's live semantics are an explicit dated deadline for one named cycle, and section 6 forbids dating a recurring value."
+    },
+    {
+      "scholarship_id": 501,
+      "title": "Deutschlandstipendium",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Zum jeweiligen Verfahren und den Fristen erkundigen Sie sich direkt an Ihrer Hochschule.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.deutschlandstipendium.de/deutschlandstipendium/de/studierende/stipendiatin-oder-stipendiat-werden/stipendiatin-oder-stipendiat-werden_node.html",
+        "source_type": "official_government_page",
+        "publisher": "Bundesministerium fuer Forschung, Technologie und Raumfahrt (BMFTR) - Deutschlandstipendium",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": null,
+        "raw_extract": "4. Bewerben Sie sich Reichen Sie Ihre Bewerbung mit den geforderten Nachweisen an Ihrer Hochschule ein. Zum jeweiligen Verfahren und den Fristen erkundigen Sie sich direkt an Ihrer Hochschule.",
+        "exact_deadline_wording": "Zum jeweiligen Verfahren und den Fristen erkundigen Sie sich direkt an Ihrer Hochschule.",
+        "confidence": "HIGH",
+        "notes": "This record duplicates scholarship_id 10 (same programme, same provider domain) and is flagged verification_status 'quarantined' in the shard, but the official evidence is identical, so the deadline finding is identical. The record's own official_source_url points at the 'Wie es funktioniert' page; that page contains NO deadline statement at all (it explains only the Bund/private-funder/university division of roles and the EUR 300 monthly award), so it cannot support any value. I moved one level along the same official domain to the official application-instructions page, which does state the deadline position explicitly: the deadlines ('Fristen') are to be obtained directly from the applicant's university. That is affirmative official evidence of a per-university deadline, not a missing page. UNKNOWN rather than ROLLING (BMFTR never says rolling) and rather than CONFLICTING (section 6: differing deadlines across universities is not a conflict). No university-specific Deutschlandstipendium deadline was used, per section 5."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Zum jeweiligen Verfahren und den Fristen erkundigen Sie sich direkt an Ihrer Hochschule."
+      },
+      "examined": [
+        "https://www.deutschlandstipendium.de/deutschlandstipendium/de/stipendium/wie-es-funktioniert/wie-es-funktioniert_node.html (record's official_source_url, live form; no deadline statement anywhere on the page)",
+        "https://www.deutschlandstipendium.de (homepage; no deadline)",
+        "https://www.deutschlandstipendium.de/deutschlandstipendium/de/stipendium/haeufig-gestellte-fragen/haeufig-gestellte-fragen_node.html (FAQ; no deadline, universities announce their own procedures)",
+        "https://www.deutschlandstipendium.de/deutschlandstipendium/de/services/english/the-deutschlandstipendium-best-of-both-worlds-for-students.html (English overview; no deadline)"
+      ],
+      "rejected_sources": [],
+      "notes_on_url": "The record's official_source_url uses the '.html' form (.../wie-es-funktioniert/wie-es-funktioniert.html); the live canonical path on the BMFTR site uses the '_node.html' suffix. I fetched and read the live _node.html page. Either way it yields no deadline, so the outcome does not depend on which form is used.",
+      "prior_cached_value_not_used": "The shard's pre-existing deadline_display correctly attributes the no-central-deadline position to a programme page, but attributes the quote 'Zum jeweiligen Verfahren und den Fristen erkundigen Sie sich direkt an Ihrer Hochschule' to the 'wie es funktioniert' page. That is a mis-attribution: the sentence does not appear on 'Wie es funktioniert' (I read the page in full) - it appears on 'Stipendiatin oder Stipendiat werden'. I have re-attributed the quote to the page it actually appears on. The conclusion (no central deadline) is unchanged."
+    },
+    {
+      "scholarship_id": 721,
+      "title": "Toloa Tertiary Scholarship (Toloa Scholarships - tertiary stream, Ministry for Pacific Peoples)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Tertiary scholarship applications closed at 5pm on Monday 9 February 2026.",
+      "deadline_precision": "exact",
+      "withheld_past_deadline": "2026-02-09",
+      "source": {
+        "url": "https://www.mpp.govt.nz/programmes-and-funding/education/toloa-scholarships/",
+        "source_type": "official_government_page",
+        "publisher": "Ministry for Pacific Peoples, New Zealand Government",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "as_of": "2026 academic year (400 secondary and 10 tertiary scholarships)",
+        "raw_extract": "Applications for 2026 tertiary scholarships are now closed There are 400 secondary scholarships and 10 tertiary scholarships on offer for the 2026 academic year. Secondary scholarship applications closed at 5pm on Friday 23 January 2026. Tertiary scholarship applications closed at 5pm on Monday 9 February 2026.",
+        "exact_deadline_wording": "Tertiary scholarship applications closed at 5pm on Monday 9 February 2026.",
+        "confidence": "HIGH",
+        "notes": "The tertiary stream is stated separately from the secondary stream, and only the tertiary figure is relevant to this record: 5pm on Monday 9 February 2026. The page states in the present tense that 'Applications for 2026 tertiary scholarships are now closed'. As of retrieval on 2026-10-05 that date is roughly eight months past, and the record sits in the open/upcoming gap set with verification_status 'needs_review'. Per AGENT_BRIEF section 6 this is outcome expired_mismatch: the stale date is not written and not silently moved to the 2027 round, which the Ministry has not published. deadline_semantics is EXACT because the source genuinely states an explicit calendar deadline; deadline_date is null only because of the past-date rule, with the unextracted value preserved out-of-band in withheld_past_deadline. The secondary deadline of 23 January 2026 is explicitly not used - it belongs to a different stream of the same scheme. Not ROLLING and not ANNUAL: the page gives a fixed date for a named year, not recurring timing. Not CONFLICTING: a single official page states both dates unambiguously. Note also that the page records that the Ministry funds the scheme but 'Le Va manages the application process', so the application portal itself is a third-party administrator, not an official government portal - it was not needed and was not consulted."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "Tertiary scholarship applications closed at 5pm on Monday 9 February 2026."
+      },
+      "examined": [
+        "https://www.mpp.govt.nz/programmes-and-funding/education (record's catalogue_url; HTTP 403 to automated fetch, not readable)",
+        "https://www.mpp.govt.nz/ (site root, loaded to establish that the domain serves the page to a normal browser; no deadline)"
+      ],
+      "rejected_sources": [],
+      "fetch_note": "The shard's official_source_url (no trailing slash) returned HTTP 403 to the plain fetcher. The same page was successfully loaded and read in a real browser session at the trailing-slash URL recorded above, and the quoted text was read from the rendered page rather than from any search snippet or cached copy."
+    }
+  ]
+}

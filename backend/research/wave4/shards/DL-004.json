@@ -1,0 +1,108 @@
+{
+  "shard_id": "DL-004",
+  "topic": "deadline",
+  "hosts": [
+    "www.flinders.edu.au",
+    "www.otago.ac.nz",
+    "www.sciencespo.fr"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 203,
+      "title": "Flinders International Postgraduate Research Scholarship (FIPRS)",
+      "official_source": "Flinders University",
+      "official_source_url": "https://www.flinders.edu.au/scholarships/flinders-university-international-research-scholarship",
+      "catalogue_url": "https://www.flinders.edu.au/scholarships",
+      "country": "Australia",
+      "deadline_display": "Applications close Thursday 18 June 2026 Australian Central Standard Time (2027 HDR Annual Scholarship Round - International).",
+      "deadline_precision": "recurring",
+      "application_period": "2027 HDR Annual Scholarship Round - International: opened 30 April 2026, closed 18 June 2026; applicants must first lodge an HDR admission application and then a scholarship application.",
+      "verification_status": "active"
+    },
+    {
+      "id": 257,
+      "title": "University of Otago Global Scholarships",
+      "official_source": "University of Otago",
+      "official_source_url": "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships#global-scholarship",
+      "catalogue_url": "https://www.otago.ac.nz/international/future-students/subjects-courses/postgraduate-study/scholarships/global-scholarships",
+      "country": "New Zealand",
+      "deadline_display": "Opening date 1 May in year prior to study for offshore students, 1 July for onshore students. Closing dates 10 December for semester 1 (February) start, 30 April for semester 2 (July) start for offshore students, 15 August for onshore students.",
+      "deadline_precision": "recurring",
+      "application_period": "Applications open 1 May in the year prior to study for offshore students (1 July for onshore students) and close 10 December for a Semester 1 (February) start, or 30 April for a Semester 2 (July) start for offshore students.",
+      "verification_status": "active"
+    },
+    {
+      "id": 258,
+      "title": "Vice-Chancellor's Scholarships for International Students",
+      "official_source": "University of Otago",
+      "official_source_url": "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships#vice-chancellors",
+      "catalogue_url": "https://www.otago.ac.nz/international/future-students/subjects-courses/postgraduate-study/scholarships/vice-chancellors-scholarship-for-international-students",
+      "country": "New Zealand",
+      "deadline_display": "Opening date 1 May in year prior to study for offshore students, 1 July for onshore students. Closing dates 10 December for semester 1 (February) start, 30 April for semester 2 (July) start for offshore students, 15 August for onshore students.",
+      "deadline_precision": "recurring",
+      "application_period": "Applications open 1 May in the year prior to study for offshore students (1 July for onshore students) and close 10 December for a Semester 1 (February) start, or 30 April for a Semester 2 (July) start for offshore students.",
+      "verification_status": "active"
+    },
+    {
+      "id": 259,
+      "title": "University of Otago International Academic Excellence Scholarships",
+      "official_source": "University of Otago",
+      "official_source_url": "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships#academic-excellence",
+      "catalogue_url": "https://www.otago.ac.nz/international/future-students/subjects-courses/postgraduate-study/scholarships/international-academic-excellence-scholarship",
+      "country": "New Zealand",
+      "deadline_display": "Invited to apply in eVision, after you have accepted any previous scholarship offer (e.g. Vice Chancellor's International Scholarship, Global Scholarship). Required to complete scholarship application questions and information as requested.",
+      "deadline_precision": "varies",
+      "application_period": "Invitation-based, following acceptance of an earlier Otago international scholarship offer during admission processing",
+      "verification_status": "active"
+    },
+    {
+      "id": 355,
+      "title": "Mastercard Foundation Scholars Program at Sciences Po (Graduate Level)",
+      "official_source": "Sciences Po",
+      "official_source_url": "https://www.sciencespo.fr/students/en/fees-funding/bursaries-financial-aid/mastercard-foundation-scholarships/graduate-study",
+      "catalogue_url": "https://www.sciencespo.fr/students/en/fees-funding/bursaries-financial-aid/mastercard-foundation-scholarships/graduate-study",
+      "country": "France",
+      "deadline_display": "Applications for the fee waiver will be open from October to mid-December 2026; the scholarship's own application deadline has not yet been published on the programme page.",
+      "deadline_precision": "unknown",
+      "application_period": "2027 intake. Application fee waiver window October to mid-December 2026; information sessions between September and December 2026; virtual Open House 17 October 2026; Sciences Po international graduate procedure deadline 21 February 2027 (11.59pm Paris time) for the 2027 intake.",
+      "verification_status": "active"
+    },
+    {
+      "id": 408,
+      "title": "Vice-Chancellor's Scholarship for International Students",
+      "official_source": "University of Otago | Ōtākou Whakaihu Waka",
+      "official_source_url": "https://www.otago.ac.nz/courses/scholarships/vice-chancellors-international-postgraduate-scholarships",
+      "catalogue_url": "https://www.otago.ac.nz/__data/assets/pdf_file/0035/568376/VCSIS-Regulations.pdf",
+      "country": "New Zealand",
+      "deadline_display": "Opening dates: 1 May in the year prior to study for offshore students; 1 July for onshore students. Closing dates: 10 December for semester 1 (February) start; 30 April for semester 2 (July) start for offshore students; 15 August for onshore students.",
+      "deadline_precision": "varies",
+      "application_period": "Annual cycles with applicant-type and semester-specific windows. Offshore students: apply 1 May (year prior) to 30 April for a semester 2 start, or to 10 December for a semester 1 start. Onshore students: apply 1 July to 15 August.",
+      "verification_status": "active"
+    },
+    {
+      "id": 409,
+      "title": "University of Otago International Master's Research Scholarship",
+      "official_source": "University of Otago | Ōtākou Whakaihu Waka",
+      "official_source_url": "https://www.otago.ac.nz/courses/scholarships/university-of-otago-international-masters-research-scholarship",
+      "catalogue_url": "https://www.otago.ac.nz/courses/scholarships/university-of-otago-international-masters-research-scholarship",
+      "country": "New Zealand",
+      "deadline_display": "No fixed closing date: 'Applicants can apply anytime but applications will be reviewed four times a year (1 March, 1 June, 1 September and 1 November)'.",
+      "deadline_precision": "rolling",
+      "application_period": "Continuous applications accepted year-round, with assessment rounds on 1 March, 1 June, 1 September and 1 November.",
+      "verification_status": "active"
+    },
+    {
+      "id": 410,
+      "title": "University of Otago Doctoral Scholarship",
+      "official_source": "University of Otago",
+      "official_source_url": "https://www.otago.ac.nz/courses/scholarships/university-of-otago-doctoral-scholarship",
+      "catalogue_url": "https://www.otago.ac.nz/study/scholarships",
+      "country": "New Zealand",
+      "deadline_display": "Applicants can apply anytime; applications are considered at quarterly rounds held in March, June, September and November. Applications must be submitted via eVision with a completed departmental assessment by the first day of each round month.",
+      "deadline_precision": "rolling",
+      "application_period": "Year-round submissions, assessed at quarterly rounds (March, June, September, November)",
+      "verification_status": "active"
+    }
+  ]
+}

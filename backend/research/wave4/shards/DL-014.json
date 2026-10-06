@@ -1,0 +1,110 @@
+{
+  "shard_id": "DL-014",
+  "topic": "deadline",
+  "hosts": [
+    "graduate.yonsei.ac.kr",
+    "uic.yonsei.ac.kr",
+    "www.humphreyfellowship.org",
+    "www.studyinnl.org",
+    "www.ucd.ie"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 31,
+      "title": "Netherlands Fellowship Programme (NFP/OTS)",
+      "official_source": "Nuffic (Study in NL)",
+      "official_source_url": "https://www.studyinnl.org/finances/ots-scholarships",
+      "catalogue_url": "https://www.studyinnl.org/finances/scholarships",
+      "country": "Netherlands",
+      "deadline_display": "Varies by programme — check Nuffic website",
+      "deadline_precision": "varies",
+      "application_period": "Per participating institution; no central round published",
+      "verification_status": "active"
+    },
+    {
+      "id": 53,
+      "title": "Hubert H. Humphrey Fellowship Program",
+      "official_source": "U.S. Department of State (Bureau of Educational and Cultural Affairs)",
+      "official_source_url": "https://www.humphreyfellowship.org",
+      "catalogue_url": "https://az.usembassy.gov/education/#non-degree-programs",
+      "country": "United States",
+      "deadline_display": "Varies by country — U.S. Embassies/Fulbright Commissions must submit nominations by mid-September",
+      "deadline_precision": "month",
+      "application_period": "Varies by country; nominations due mid-September, fellowships begin August-September",
+      "verification_status": "active"
+    },
+    {
+      "id": 172,
+      "title": "NL Scholarship (formerly known as Holland Scholarship)",
+      "official_source": "Nuffic (Netherlands Organisation for Internationalisation in Education)",
+      "official_source_url": "https://www.studyinnl.org/finances/holland-scholarship",
+      "catalogue_url": "https://www.studyinnl.org/finances/holland-scholarship",
+      "country": "Netherlands",
+      "deadline_display": "Institution-specific: \"Please check the website of the institution you want to apply to for the specific deadline(s).\" The official page states the 2026-2027 cycle \"opened on 1 November 2025\".",
+      "deadline_precision": "varies",
+      "application_period": "Annual cycle; the 2026-2027 academic year opened for applications on 1 November 2025 and each participating institution sets its own closing date and eligible fields of study.",
+      "verification_status": "active"
+    },
+    {
+      "id": 213,
+      "title": "UIC Admissions Scholarship (Underwood International College, Yonsei University)",
+      "official_source": "Yonsei University (Underwood International College)",
+      "official_source_url": "https://uic.yonsei.ac.kr/admission.php?mid=m04_03",
+      "catalogue_url": null,
+      "country": "South Korea",
+      "deadline_display": "No separate scholarship application - UIC states applicants 'will be automatically considered as scholarship candidates'. The next admission round is the 2nd Round for Fall 2027 entry, with an online application deadline of 'March, 2027' that UIC labels 'TBD'.",
+      "deadline_precision": "month",
+      "application_period": "Two annual rounds. 1st Round (Spring 2027 entry): online application 10:00 on 26 Aug 2026 - 17:00 on 22 Sep 2026, document submission deadline 17:00 on 2 Oct 2026, interview 11-12 Dec 2026, notification 18 Dec 2026. 2nd Round (Fall 2027 entry): March 2027 (marked TBD).",
+      "verification_status": "active"
+    },
+    {
+      "id": 214,
+      "title": "Yonsei International Companion Scholarship",
+      "official_source": "Yonsei University (Graduate School)",
+      "official_source_url": "https://graduate.yonsei.ac.kr/graduate_en/academic/scholarship02.do",
+      "catalogue_url": "https://graduate.yonsei.ac.kr/graduate_en/academic/scholarship.do",
+      "country": "South Korea",
+      "deadline_display": "No application deadline - the Graduate School's Foreigner Special Scholarship page states the award is for international-track students already enrolled in regular semesters, and eligibility is assessed per semester rather than by an application window.",
+      "deadline_precision": "recurring",
+      "application_period": "Assessed for each regular semester of enrolment; no separate application period is published.",
+      "verification_status": "active"
+    },
+    {
+      "id": 250,
+      "title": "UCD Global Excellence Scholarships (100% and 50% Tuition Fee)",
+      "official_source": "University College Dublin (UCD)",
+      "official_source_url": "https://www.ucd.ie/global/study-at-ucd/scholarshipsfinances/scholarships/globalexcellencescholarships",
+      "catalogue_url": "https://www.ucd.ie/global/study-at-ucd/scholarshipsfinances/scholarships/globalexcellencescholarships",
+      "country": "Ireland",
+      "deadline_display": "Regional deadlines for 2026/27: 1 February 2026 (undergraduate applicants from North America); 28 February 2026 (undergraduate and graduate taught applicants from the Middle East, Africa and Pakistan, and graduate taught applicants from South Asia); 31 March 2026 (all other applicants, undergraduate and graduate taught).",
+      "deadline_precision": "varies",
+      "application_period": "The 2026/27 cycle is closed. Applications for the September 2026 intake ran to regional deadlines between 1 February and 31 March 2026, with results shared approximately seven weeks after each regional deadline via SISWeb. The scheme is annual and the 2027/28 call had not been published when checked.",
+      "verification_status": "active"
+    },
+    {
+      "id": 381,
+      "title": "NL Scholarship (formerly Holland Scholarship)",
+      "official_source": "Study in NL (Nuffic) — financed by the Dutch Ministry of Education, Culture and Science and Dutch higher education institutions",
+      "official_source_url": "https://www.studyinnl.org/finances/nl-scholarship",
+      "catalogue_url": "https://www.studyinnl.org/sites/default/files/2023-11/Flyer%20NL%20Scholarship%20Study%20in%20NL%20%281%29.pdf",
+      "country": "Netherlands",
+      "deadline_display": "The application for the academic year 2026-2027 opened on 1 November 2025. Please check the website of the institution you want to apply to for the specific deadline(s).",
+      "deadline_precision": "year",
+      "application_period": "Annual cycle: applications for an academic year open on 1 November of the preceding calendar year and close on institution-specific dates earlier in the year. The central page published the 2026-2027 opening date of 1 November 2025 and had not yet published a 2027-2028 opening date when checked.",
+      "verification_status": "active"
+    },
+    {
+      "id": 396,
+      "title": "Orange Knowledge Programme (OKP) 2026",
+      "official_source": "Studyinnl.Org",
+      "official_source_url": "https://www.studyinnl.org/finances",
+      "catalogue_url": null,
+      "country": "Netherlands",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": null,
+      "verification_status": "quarantined"
+    }
+  ]
+}

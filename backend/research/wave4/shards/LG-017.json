@@ -1,0 +1,58 @@
+{
+  "shard_id": "LG-017",
+  "topic": "logo",
+  "hosts": [
+    "finaid.itb.ac.id",
+    "tsls.com.fj",
+    "whitleyaward.org",
+    "www.pasteur.fr"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 353,
+      "title": "Pasteur-Paris University (PPU) International Doctoral Program 2027",
+      "official_source": "Institut Pasteur",
+      "official_source_url": "https://www.pasteur.fr/en/about-us/our-missions/education/training-programs/doctoral-programs/ppu",
+      "catalogue_url": "https://ppu.pasteur.fr/ppu_etud_accueil.aspx",
+      "country": "France",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 537,
+      "title": "Whitley Awards 2027",
+      "official_source": "Whitley Fund for Nature",
+      "official_source_url": "https://whitleyaward.org/apply-for-conservation-funding/apply-for-a-whitley-award",
+      "catalogue_url": null,
+      "country": "Multiple",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 708,
+      "title": "ITB International Undergraduate Scholarship",
+      "official_source": "Institut Teknologi Bandung (ITB)",
+      "official_source_url": "https://finaid.itb.ac.id/itb-international-undergraduate-scholarship",
+      "catalogue_url": "https://www.itb.ac.id/scholarship",
+      "country": "Indonesia",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 720,
+      "title": "Scholarships for High Achievers Higher Education (Level 7) Overseas Scheme (TSLS, Government of Fiji)",
+      "official_source": "Tertiary Scholarships and Loans Service (TSLS), Ministry of Education, Government of Fiji",
+      "official_source_url": "https://tsls.com.fj/high-achievers-higher-education-level-7-overseas-scheme",
+      "catalogue_url": "https://tsls.com.fj/schemes",
+      "country": "Fiji",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 723,
+      "title": "Cost Sharing Overseas PhD Scholarships Scheme with Australian Universities (TSLS, Government of Fiji)",
+      "official_source": "Tertiary Scholarships and Loans Service (TSLS), Ministry of Education, Government of Fiji",
+      "official_source_url": "https://tsls.com.fj/cost-sharing-overseas-phd-scholarships-scheme",
+      "catalogue_url": "https://tsls.com.fj/schemes",
+      "country": "Fiji",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

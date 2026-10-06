@@ -1,0 +1,307 @@
+{
+  "shard_id": "LG-022",
+  "topic": "logo",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 577,
+      "title": "Max Weber Fellowships — European University Institute Max Weber Programme for Postdoctoral Studies",
+      "outcome": "recovered",
+      "image_url": "https://www.eui.eu/web-production/code/assets/img/logo-eui.svg",
+      "image_source_url": "https://www.eui.eu/apply?id=max-weber-fellowships",
+      "image_source_type": "official_scholarship",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Official scholarship page https://www.eui.eu/apply?id=max-weber-fellowships carries the European University Institute institutional logo as its own brand mark: <img alt=\"European University Institute logo\" src=\"https://www.eui.eu/web-production/code/assets/img/logo-eui.svg\">. The Max Weber Programme has no separate brand mark: its academic-unit page https://www.eui.eu/en/academic-units/max-weber-programme-for-postdoctoral-studies exposes only this same logo-eui.svg (plus cohort photographs and the Erasmus+ funder logo). Asset verified by GET: HTTP 200, image/svg+xml, 1235 bytes, viewBox 0 0 267.9 126, vector (not a favicon-sized badge, not a sprite). Identity confirmed by page text: 'The Max Weber Programme (MWP) at the European University Institute (EUI) is a unique postdoctoral programme...'."
+      },
+      "source": {
+        "url": "https://www.eui.eu/apply?id=max-weber-fellowships",
+        "publisher": "European University Institute",
+        "retrieved_at": "2026-10-05T15:47:54",
+        "raw_extract": "<title>\n\tMax Weber Fellowships • European University Institute\n</title> ... <div id=\"logo\" class=\"d-none d-xl-inline-flex align-items-center w-auto\">\n\t\t\t\t\t\t<a class=\"d-inline-flex mx-4 ms-xl-0 me-lg-5 text-decoration-none\" title=\"Go to EUI home page\" href=\"/en/home\"> \n\t\t\t\t\t\t\t<img alt=\"European University Institute logo\" src=\"https://www.eui.eu/web-production/code/assets/img/logo-eui.svg\">\n\t\t\t\t\t\t</a>\n\t\t\t\t\t</div> ... <h3 class=\"mb-4\">Programme Description</h3> ... The Max Weber Programme (MWP) at the European University Institute (EUI) is a unique postdoctoral programme in the historical, humanities and social sciences.",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.eui.eu/apply?id=max-weber-fellowships (fetched; brand mark present in header, alt text 'European University Institute logo')",
+        "https://www.eui.eu/en/academic-units/max-weber-programme-for-postdoctoral-studies (fetched; no programme-specific logo, only logo-eui.svg plus photos and the Erasmus+ funder logo)",
+        "https://www.eui.eu/web-production/code/assets/img/logo-eui.svg (GET verified 200, image/svg+xml, 1235 bytes)"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.eui.eu/web-production/code/assets/favicon/favicon-32x32.png",
+          "reason": "favicon asset"
+        },
+        {
+          "url": "https://www.eui.eu/web-production/code/assets/favicon/apple-touch-icon.png",
+          "reason": "apple-touch-icon asset"
+        },
+        {
+          "url": "https://www.eui.eu/web-production/code/assets/favicon/safari-pinned-tab.svg",
+          "reason": "masked safari-pinned-tab icon"
+        },
+        {
+          "url": "https://www.eui.eu/Content-Types-Assets/Web-Unit/Badia-Library-garden-bronze-decoration.x7b70f413.jpg",
+          "reason": "decorative hero photograph (og:image) of the Badia garden bronze, not a logo"
+        },
+        {
+          "url": "https://www.eui.eu/web-production/code/assets/img/co-founded-by-eu-logo.svg",
+          "reason": "Erasmus+ / European Union funder logo - unrelated organisation identity"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 581,
+      "title": "Jean Monnet Fellowships — Robert Schuman Centre for Advanced Studies, European University Institute",
+      "outcome": "recovered",
+      "image_url": "https://www.eui.eu/web-production/code/assets/img/logo-eui.svg",
+      "image_source_url": "https://www.eui.eu/apply?id=jean-monnet-fellowships",
+      "image_source_type": "official_scholarship",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Official fellowship page https://www.eui.eu/apply?id=jean-monnet-fellowships carries the European University Institute institutional logo: <img alt=\"European University Institute logo\" src=\"https://www.eui.eu/web-production/code/assets/img/logo-eui.svg\">. The Robert Schuman Centre / Jean Monnet Programme publishes no separate brand mark on eui.eu; the EUI logo is the only institutional mark and matches the record provider 'European University Institute (EUI)'. Asset verified by GET: HTTP 200, image/svg+xml, 1235 bytes, vector. Identity confirmed by page text: 'The Robert Schuman Centre for Advanced Studies offers one-year Jean Monnet Fellowships...'."
+      },
+      "source": {
+        "url": "https://www.eui.eu/apply?id=jean-monnet-fellowships",
+        "publisher": "European University Institute",
+        "retrieved_at": "2026-10-05T15:51:40",
+        "raw_extract": "<title>\n\tJean Monnet Fellowships • European University Institute\n</title> ... <div id=\"logo\" class=\"d-none d-xl-inline-flex align-items-center w-auto\">\n\t\t\t\t\t\t<a class=\"d-inline-flex mx-4 ms-xl-0 me-lg-5 text-decoration-none\" title=\"Go to EUI home page\" href=\"/en/home\"> \n\t\t\t\t\t\t\t<img alt=\"European University Institute logo\" src=\"https://www.eui.eu/web-production/code/assets/img/logo-eui.svg\">\n\t\t\t\t\t\t</a>\n\t\t\t\t\t</div> ... <p>The Robert Schuman Centre for Advanced Studies offers one-year Jean Monnet Fellowships to scholars who have obtained their doctorate more than five years prior to the start of the fellowship...</p>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.eui.eu/apply?id=jean-monnet-fellowships (fetched; header brand mark is logo-eui.svg)",
+        "https://www.eui.eu/web-production/code/assets/img/logo-eui.svg (GET verified 200, image/svg+xml, 1235 bytes)"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.eui.eu/web-production/code/assets/favicon/favicon-32x32.png",
+          "reason": "favicon asset"
+        },
+        {
+          "url": "https://www.eui.eu/web-production/code/assets/favicon/apple-touch-icon.png",
+          "reason": "apple-touch-icon asset"
+        },
+        {
+          "url": "https://www.eui.eu/web-production/code/assets/favicon/safari-pinned-tab.svg",
+          "reason": "masked safari-pinned-tab icon"
+        },
+        {
+          "url": "https://www.eui.eu/Content-Types-Assets/Web-Unit/Researchers-Upper-Loggia.x33f8b88d.jpg",
+          "reason": "decorative hero photograph (og:image) of the Upper Loggia, not a logo"
+        },
+        {
+          "url": "https://www.eui.eu/web-production/code/assets/img/co-founded-by-eu-logo.svg",
+          "reason": "Erasmus+ / European Union funder logo - unrelated organisation identity"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 590,
+      "title": "Convocatoria de Becas Nacionales para Estudios de Posgrado 2026 (National Postgraduate Scholarships 2026)",
+      "outcome": "recovered",
+      "image_url": "https://www.secihti.mx/wp-content/uploads/2025/03/secihti_2024-2030_horizontal_color.svg",
+      "image_source_url": "https://www.secihti.mx/convocatoria/becas-nacionales/convocatoria-de-becas-nacionales-para-estudios-de-posgrado-2026",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Proven twice on the official convocatoria page itself, with no inference: (1) the page's own Yoast schema.org graph declares the Organization logo as this exact file - '\"logo\":{\"@type\":\"ImageObject\",...\"url\":\"https://www.secihti.mx/wp-content/uploads/2025/03/secihti_2024-2030_horizontal_color.svg\",\"contentUrl\":\"https://www.secihti.mx/wp-content/uploads/2025/03/secihti_2024-2030_horizontal_color.svg\",\"width\":803,\"height\":96,\"caption\":\"SECIHTI\"}'; (2) the site header renders it through the WordPress custom-logo widget (data-widget_type=\"theme-site-logo.default\"). Identity matches the record provider (Secretaria de Ciencia, Humanidades, Tecnologia e Innovacion - SECIHTI). Asset verified by GET: HTTP 200, image/svg+xml, 96937 bytes, viewBox 0 0 803.4 96.9, brand colours #611232 / #161a1d / #a57f2c. Social share icons, the inline dce_barcode widget graphic and the site's decorative floral textures were not used."
+      },
+      "source": {
+        "url": "https://www.secihti.mx/convocatoria/becas-nacionales/convocatoria-de-becas-nacionales-para-estudios-de-posgrado-2026",
+        "publisher": "SECIHTI (Secretaria de Ciencia, Humanidades, Tecnologia e Innovacion, Mexico)",
+        "retrieved_at": "2026-10-05T15:29:12",
+        "raw_extract": "<title>Convocatoria de Becas Nacionales para Estudios de Posgrado 2026 - SECIHTI</title> ... {\"@type\":\"Organization\",\"@id\":\"https://www.secihti.mx/#organization\",\"name\":\"SECIHTI\",\"url\":\"https://www.secihti.mx/\",\"logo\":{\"@type\":\"ImageObject\",\"inLanguage\":\"es\",\"@id\":\"https://www.secihti.mx/#/schema/logo/image/\",\"url\":\"https://www.secihti.mx/wp-content/uploads/2025/03/secihti_2024-2030_horizontal_color.svg\",\"contentUrl\":\"https://www.secihti.mx/wp-content/uploads/2025/03/secihti_2024-2030_horizontal_color.svg\",\"width\":803,\"height\":96,\"caption\":\"SECIHTI\"} ... <img data-lazyloaded=\"1\" src=\"...\" width=\"803\" height=\"96\" data-src=\"https://www.secihti.mx/wp-content/uploads/2025/03/secihti_2024-2030_horizontal_color.svg\" class=\"attachment-full size-full wp-image-1779\" alt=\"\" />",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.secihti.mx/convocatoria/becas-nacionales/convocatoria-de-becas-nacionales-para-estudios-de-posgrado-2026 (fetched; declared Organization logo + header custom logo)",
+        "https://www.secihti.mx/wp-content/uploads/2025/03/secihti_2024-2030_horizontal_color.svg (GET verified 200, image/svg+xml, 96937 bytes)",
+        "https://www.secihti.mx/wp-content/uploads/2025/03/logotipo_simple_SECIHTI_patria_blanco_Mesa-de-trabajo-1.svg (GET verified 200, 10751 bytes - official white reverse variant for the dark header, considered as alternative)"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.secihti.mx/wp-content/uploads/2025/03/favicon_escudo_nacional_dorado.svg",
+          "reason": "favicon / apple-touch-icon / msapplication-TileImage asset (all three link rels point at this one file)"
+        },
+        {
+          "url": "https://www.secihti.mx/wp-content/uploads/2025/03/logotipo_simple_SECIHTI_patria_blanco_Mesa-de-trabajo-1.svg",
+          "reason": "official but white-on-dark reverse variant (193x20) sized for the header bar; primary colour brand mark chosen instead"
+        },
+        {
+          "url": "https://www.secihti.mx/wp-content/themes/secihti-2430/images/textura_gobmx_floral_guinda_320x320px.svg",
+          "reason": "decorative background texture"
+        },
+        {
+          "url": "https://www.secihti.mx/wp-content/uploads/2025/03/textura_floral_guinda_pleca_footer_01.svg",
+          "reason": "decorative footer art"
+        },
+        {
+          "url": "https://www.secihti.mx/convocatoria/becas-nacionales/convocatoria-de-becas-nacionales-para-estudios-de-posgrado-2026#share-buttons",
+          "reason": "inline Facebook/X/LinkedIn/WhatsApp share-button icons and the inline dce_barcode PNG data-URI are UI chrome / tracking graphics with no asset URL"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 598,
+      "title": "Programa de patrocinios del Banco de la República para estudios de posgrado en el exterior",
+      "outcome": "recovered",
+      "image_url": "https://www.banrep.gov.co/sites/default/files/inline-images/brc-principal_1.png",
+      "image_source_url": "https://www.banrep.gov.co/es/contenidos/programas-estudios-el-exterior",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "The award is the Banco de la Republica's own sponsorship programme, and the record's official page (https://www.banrep.gov.co/es/contenidos/programas-estudios-el-exterior, page title 'Programas de estudios en el exterior | Banco de la Republica') uses this file as its institutional header mark; asset is served from the origin domain www.banrep.gov.co, not from the CloudFront mirror. Verified visually: Banco de la Republica | Colombia lockup with the Mariana emblem and the strapline 'Somos el banco central de Colombia'. Identity independently proven by the Bank's own Manual de Identidad Visual page (fetched): 'La figura central del logo del Banco de la Republica es la efigie de una mujer de perfil, mirando a la derecha', with image alt 'Logo del Banco de la Republica - Colombia, compuesto por la efigie de la Mariana Francesa mirando a la derecha.' Asset verified by GET: HTTP 200, image/png, 550x71, 9866 bytes. Access note: plain fetches of banrep.gov.co return a Radware Bot Manager hCaptcha interstitial; the pages were read with a real browser engine (HTTP 200) and the asset itself fetches normally from the origin domain."
+      },
+      "source": {
+        "url": "https://www.banrep.gov.co/es/el-banco/gobierno-corporativo/manual-identidad-visual",
+        "publisher": "Banco de la Republica (Central Bank of Colombia)",
+        "retrieved_at": "2026-10-05T15:36:00",
+        "raw_extract": "Manual de Identidad Visual (MIV) del Banco de la Republica | Banco de la Republica ... \"La figura central del logo del Banco de la Republica es la efigie de una mujer de perfil, mirando a la derecha. Tradicionalmente se le ha dado el nombre de 'Mariana'\" ... <img alt=\"Logo del Banco de la Republica - Colombia, compuesto por la efigie de la Mariana Francesa mirando a la derecha.\" src=\"https://www.banrep.gov.co/sites/default/files/inline-images/miv-logo-br-linea.png\"> ... \"Actualmente el Banco de la Republica maneja tres variaciones que tienen fines particulares segun el medio y el tamano a emplear: logo en grises, logo en linea y logo para especies monetarias.\"",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.banrep.gov.co/es/contenidos/programas-estudios-el-exterior (read in a real browser: HTTP 200, title 'Programas de estudios en el exterior | Banco de la Republica'; header mark is brc-principal_1.png)",
+        "https://www.banrep.gov.co/es/el-banco/gobierno-corporativo/manual-identidad-visual (official brand page; declares the logo family and supplies image alt text proving identity)",
+        "https://www.banrep.gov.co/es (also Radware-blocked to plain fetchers)",
+        "https://www.banrep.gov.co/sites/default/files/inline-images/brc-principal_1.png (GET verified 200, image/png, 550x71, 9866 bytes, rendered and visually confirmed)",
+        "https://www.banrep.gov.co/sites/default/files/inline-images/miv-logo-br-linea.png (official emblem-only variant, 140x141 - too small and emblem-only; not used)",
+        "Plain webfetch/Invoke-WebRequest on every banrep.gov.co path returned 'Radware Bot Manager Captcha' (hCaptcha wall); a browser engine was required to read the pages"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.banrep.gov.co/sites/default/files/paginas/escudo.jpg",
+          "reason": "referenced only by the Radware bot-block interstitial and returns HTTP 404 from the origin - not a verifiable official page asset"
+        },
+        {
+          "url": "https://www.banrep.gov.co/sites/default/files/inline-images/miv-logo-br-linea.png",
+          "reason": "official but 140x141 emblem-only low-resolution variant; principal horizontal lockup preferred"
+        },
+        {
+          "url": "https://www.banrep.gov.co/sites/default/files/inline-images/miv-logo-grises.jpg",
+          "reason": "greyscale reproduction variant, 140x141"
+        },
+        {
+          "url": "https://www.banrep.gov.co/sites/default/files/inline-images/miv-logo-billetes.jpg",
+          "reason": "banknote-specific reproduction, 140x141"
+        },
+        {
+          "url": "https://www.banrep.gov.co/sites/default/files/inline-images/miv-logo-br-colores-corporativos.jpg",
+          "reason": "colour-palette figure, not a logo"
+        },
+        {
+          "url": "https://www.banrep.gov.co/sites/default/files/inline-images/miv-submarca-museo_0.jpg",
+          "reason": "unrelated sub-brand (Museo del Oro) logo"
+        },
+        {
+          "url": "https://www.banrep.gov.co/sites/default/files/images/miv-sen-submarca.jpg",
+          "reason": "unrelated sub-brand (SEN) logo"
+        },
+        {
+          "url": "https://www.banrep.gov.co/sites/default/files/images/miv-captura-pantalla-instagram-2024-07-10.png",
+          "reason": "screenshot crop of a social media post"
+        },
+        {
+          "url": "https://www.banrep.gov.co/sites/default/files/images/miv-captura-pantalla-facebook-2024-07-10.png",
+          "reason": "screenshot crop of a social media post"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 650,
+      "title": "Zhejiang University \"Belt and Road\" International School of Medicine Scholarship (PhD)",
+      "outcome": "recovered",
+      "image_url": "https://iczu.zju.edu.cn/_upload/tpl/0a/9b/2715/template2715/images/logo.png",
+      "image_source_url": "https://iczu.zju.edu.cn/admissionsen/2022/0530/c68996a2590725/page.htm",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "The official scholarship page on iczu.zju.edu.cn ('Scholarship of International School of Medicine') renders the International Admissions of Zhejiang University site logo in its header: <img src=\"/_upload/tpl/0a/9b/2715/template2715/./images/logo.png\" alt=\"\">. Verified visually: Zhejiang University emblem with the wordmark 'Zhejiang University / International Admissions' - correct identity for a Zhejiang University award. Asset verified by GET: HTTP 200, image/png, 391x76 (IHDR), 13892 bytes - well above favicon size. Confidence MEDIUM for two honest reasons: (a) this is the publisher's university-level lockup, not an International School of Medicine-specific mark; (b) ZJU-ISM's own site logo (ism.zju.edu.cn/_upload/tpl/0c/f6/3318/template3318/images/2/logo.png and logo-1.png) is a white-on-transparent file whose every opaque pixel is pure white (1924/1924 sampled), so it renders blank and is unusable as an image asset; (c) ism.zju.edu.cn/MediaResources/list.htm publishes no downloadable brand asset, and www.zju.edu.cn/english/ exposes no logo file in its served markup."
+      },
+      "source": {
+        "url": "https://iczu.zju.edu.cn/admissionsen/2022/0530/c68996a2590725/page.htm",
+        "publisher": "International Admissions of Zhejiang University (iczu.zju.edu.cn)",
+        "retrieved_at": "2026-10-05T15:29:00",
+        "raw_extract": "<title>Scholarship of International School of Medicine</title> ... <div class=\"logo\">\n                <a href=\"/admissionsen/main.htm\"><img src=\"/_upload/tpl/0a/9b/2715/template2715/./images/logo.png\" alt=\"\" /></a>\n            </div> ... <meta name=\"description\" content=\"... The scholarship program is offered by International School of Medicine, Zhejiang University and is ONLY open to doctoral candidates for medical programs. ...\" ... <p>Copyright@2022 International college,Zhejiang University All Rights Reserved</p>",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://iczu.zju.edu.cn/admissionsen/2022/0530/c68996a2590725/page.htm (fetched; official scholarship page, header logo identified)",
+        "https://iczu.zju.edu.cn/admissionsen/main.htm (fetched; site title 'International Admissions Of Zhejiang University', same header logo)",
+        "https://iczu.zju.edu.cn/_upload/tpl/0a/9b/2715/template2715/images/logo.png (GET verified 200, image/png, 391x76, 13892 bytes, rendered and visually confirmed)",
+        "https://iczu.zju.edu.cn/_upload/tpl/0a/9b/2715/template2715/images/logo-nav.png (GET verified 200, 492x95 - mobile-drawer variant of the same lockup)",
+        "https://ism.zju.edu.cn/ (fetched; site title 'Zhejiang University \"Belt and Road\" International School of Medicine English site'; logo asset unusable)",
+        "https://ism.zju.edu.cn/MediaResources/list.htm (fetched; five media items, no logo or brand-asset download)",
+        "https://www.zju.edu.cn/english/ (fetched HTTP 200; no logo image exposed in served markup)"
+      ],
+      "rejected": [
+        {
+          "url": "https://ism.zju.edu.cn/_upload/tpl/0c/f6/3318/template3318/images/2/logo.png",
+          "reason": "ZJU-ISM site logo is white-on-transparent: all 1924 sampled opaque pixels are pure white, so it renders as a blank image"
+        },
+        {
+          "url": "https://ism.zju.edu.cn/_upload/tpl/0c/f6/3318/template3318/images/2/logo-1.png",
+          "reason": "same white-on-transparent footer variant, unusable"
+        },
+        {
+          "url": "https://ism.zju.edu.cn/_upload/tpl/0c/f6/3318/template3318/favicon.ico",
+          "reason": "favicon asset"
+        },
+        {
+          "url": "https://iczu.zju.edu.cn/_upload/tpl/0a/9b/2715/template2715/images/search-icon.png",
+          "reason": "UI chrome (search button icon)"
+        },
+        {
+          "url": "https://iczu.zju.edu.cn/_upload/tpl/0a/9b/2715/template2715/images/close.png",
+          "reason": "UI chrome (mobile drawer close button)"
+        },
+        {
+          "url": "https://iczu.zju.edu.cn/_upload/tpl/0a/9b/2715/template2715/images/menu.png",
+          "reason": "UI chrome (hamburger menu icon)"
+        },
+        {
+          "url": "https://iczu.zju.edu.cn/_upload/tpl/0a/9b/2715/template2715/images/banner-title.png",
+          "reason": "decorative page banner title art"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "shard_id": "LG-029",
+  "topic": "logo",
+  "hosts": [
+    "mastercardfdn.org",
+    "www.cucsh.udg.mx",
+    "www.suss.edu.sg",
+    "www.unipd.it"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 136,
+      "title": "Padua International Excellence Scholarship — Università degli Studi di Padova",
+      "official_source": "Università degli Studi di Padova",
+      "official_source_url": "https://www.unipd.it/en/padua-international-excellence-scholarship-programme",
+      "catalogue_url": "https://www.unipd.it/en/english-degrees",
+      "country": "Italy",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 448,
+      "title": "Singapore University of Social Sciences Scholarship (Part-time Undergraduate)",
+      "official_source": "Singapore University of Social Sciences (SUSS)",
+      "official_source_url": "https://www.suss.edu.sg/admissions/financial-matters/scholarships-sponsorships/part-time-undergraduate",
+      "catalogue_url": "https://www.suss.edu.sg/admissions/financial-matters/scholarships-sponsorships/part-time-undergraduate",
+      "country": "Singapore",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 449,
+      "title": "SUSS Research Scholarship",
+      "official_source": "Singapore University of Social Sciences (SUSS)",
+      "official_source_url": "https://www.suss.edu.sg/academics/programmes/graduate-programmes/admissions/financial-assistance/scholarship",
+      "catalogue_url": "https://www.suss.edu.sg/academics/programmes/graduate-programmes/admissions/financial-assistance/scholarship",
+      "country": "Singapore",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 541,
+      "title": "Mastercard Foundation Scholars Program",
+      "official_source": "Mastercard Foundation",
+      "official_source_url": "https://mastercardfdn.org/en/what-we-do/our-programs/mastercard-foundation-scholars-program",
+      "catalogue_url": "https://mastercardfdn.org/en/what-we-do/our-programs/mastercard-foundation-scholars-program/where-to-apply",
+      "country": "Multiple",
+      "image_evaluation_status": null
+    },
+    {
+      "id": 596,
+      "title": "Dos becas de investigacion: sedes Costa Rica y Ecuador (Fellowships CALAS 2027)",
+      "official_source": "Centro Maria Sibylla Merian de Estudios Latinoamericanos Avanzados (CALAS)",
+      "official_source_url": "https://www.cucsh.udg.mx/convocatorias/fellowships-calas-2027-costa-rica-y-ecuador",
+      "catalogue_url": null,
+      "country": "Costa Rica",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

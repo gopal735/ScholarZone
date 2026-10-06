@@ -1,0 +1,111 @@
+{
+  "shard_id": "DL-019",
+  "topic": "deadline",
+  "hosts": [
+    "aurorafoundation.com.au",
+    "international.au.dk",
+    "nusgs.nus.edu.sg",
+    "web.ub.edu",
+    "www.imd.org",
+    "www.uhr.no"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 100,
+      "title": "University of Barcelona (UB) Master's Degree+UB Scholarships",
+      "official_source": "University of Barcelona – Scholarships Unit",
+      "official_source_url": "https://web.ub.edu/en/web/beques-graus-masters/beques-m%C3%A0ster-ub",
+      "catalogue_url": null,
+      "country": "Spain",
+      "deadline_display": "Applications for 2026-2027 intake; check official page for current round",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 102,
+      "title": "NUS Research Scholarship",
+      "official_source": "NUS Graduate School, National University of Singapore",
+      "official_source_url": "https://nusgs.nus.edu.sg/scholarships/nus-research-scholarship",
+      "catalogue_url": null,
+      "country": "Singapore",
+      "deadline_display": "No scholarship-specific deadline is published. The official page lists the application windows as \"August (Semester 1 Intake) - Please refer to faculty websites for respective application deadlines\" and \"January (Semester 2 Intake) - Please refer to faculty websites for respective application deadlines\".",
+      "deadline_precision": "varies",
+      "application_period": "Applied for within the NUS graduate admissions application (GradApp) for the August (Semester 1) or January (Semester 2) research intake; the scholarship is awarded each semester.",
+      "verification_status": "active"
+    },
+    {
+      "id": 103,
+      "title": "Commonwealth Scholarship",
+      "official_source": "NUS Graduate School, National University of Singapore",
+      "official_source_url": "https://nusgs.nus.edu.sg/scholarships/commonwealth-scholarship",
+      "catalogue_url": null,
+      "country": "Singapore",
+      "deadline_display": "No scholarship-specific deadline is published. The official page's 'Application Deadlines' table shows only 'Please refer to faculty websites for respective application deadlines' for both the August (Semester 1) and January (Semester 2) intakes.",
+      "deadline_precision": "varies",
+      "application_period": "Applied for within the NUS graduate admissions application (GradApp) for the August (Semester 1) or January (Semester 2) research intake; a number of students are selected each semester by the University.",
+      "verification_status": "active"
+    },
+    {
+      "id": 104,
+      "title": "President's Graduate Fellowship",
+      "official_source": "NUS Graduate School, National University of Singapore",
+      "official_source_url": "https://nusgs.nus.edu.sg/scholarships/presidents-graduate-fellowship",
+      "catalogue_url": null,
+      "country": "Singapore",
+      "deadline_display": "No scholarship deadline is published because the Fellowship is by nomination. The official page's 'Application Deadlines' table shows only 'Please refer to faculty websites for respective application deadlines' for the August (Semester 1) and January (Semester 2) intakes, and states that 'Successful applicants will be informed of the outcome of their applications sometime in May (for admission in August) or October (for admission in January).'",
+      "deadline_precision": "varies",
+      "application_period": "Nominated by the Faculty/Department as part of the NUS PhD admissions cycle for the August (Semester 1) or January (Semester 2) intake; outcome notified in May for August admission or October for January admission.",
+      "verification_status": "active"
+    },
+    {
+      "id": 159,
+      "title": "IMD MBA Scholarships",
+      "official_source": "IMD Business School",
+      "official_source_url": "https://www.imd.org/degree/mba/financing/imd-mba-scholarships",
+      "catalogue_url": "https://www.imd.org/degree/mba",
+      "country": "Switzerland",
+      "deadline_display": "Most IMD MBA scholarships are open throughout 2026, available until allocated. The BackPack Scholarship for Women has a fixed deadline of 14 July. Bursary applications follow the admissions application deadline.",
+      "deadline_precision": "varies",
+      "application_period": "Scholarships: throughout 2026 until allocated, except the BackPack Scholarship for Women which closes on 14 July. Bursaries: the same deadline as the admissions application.",
+      "verification_status": "active"
+    },
+    {
+      "id": 279,
+      "title": "NORPART – Norwegian Partnership Programme",
+      "official_source": "Norwegian Directorate for Higher Education and Skills (HK-dir)",
+      "official_source_url": "https://www.uhr.no/programmes-and-agreements/norpart-norwegian-partnership-programme",
+      "catalogue_url": null,
+      "country": "Norway",
+      "deadline_display": "15 October 2026",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 330,
+      "title": "Danish State Scholarship",
+      "official_source": "Aarhus University",
+      "official_source_url": "https://international.au.dk/education/finance/scholarships",
+      "catalogue_url": null,
+      "country": "Denmark",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 661,
+      "title": "First Nations Cancer Scholarship",
+      "official_source": "Aurora Education Foundation",
+      "official_source_url": "https://aurorafoundation.com.au/cancer-scholarship",
+      "catalogue_url": "https://aurorafoundation.com.au/our-work/indigenous-pathways-portal/scholarships/first-nations-cancer-scholarship",
+      "country": "Australia",
+      "deadline_display": "11 September 2026 (2026 round, now closed)",
+      "deadline_precision": "recurring",
+      "application_period": "The 2026 round opened 16 June 2026 and closed 11 September 2026. No 2027 window is published. Aurora states up to four scholarships are awarded yearly from 2024 to 2026.",
+      "verification_status": "needs_review"
+    }
+  ]
+}

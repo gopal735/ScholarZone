@@ -1,0 +1,273 @@
+{
+  "shard_id": "DL-053",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 126,
+      "title": "Yale College Need-Based Financial Aid and Yale Scholarship (International Students)",
+      "outcome": "recovered",
+      "deadline_semantics": "EXACT",
+      "deadline_date": "2026-12-01",
+      "deadline_display": "Priority Deadlines, 2027-28 Academic Year - QuestBridge: November 1, 2026; Early Action (US Citizens and Permanent Residents): November 1, 2026; Early Action (International Citizens): December 1, 2026; Regular Decision: February 15, 2027; Transfer Students: April 1, 2027",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://finaid.yale.edu/apply/prospective",
+        "source_type": "official_university_page",
+        "publisher": "Yale University, Office of Undergraduate Financial Aid",
+        "retrieved_at": "2026-10-05T15:35:00Z",
+        "as_of": "2027-28 Academic Year priority deadlines",
+        "raw_extract": "## Priority Deadlines, 2027-28 Academic Year\n\n**QuestBridge:** November 1, 2026\n\n**Early Action (US Citizens and Permanent Residents):** November 1, 2026\n\n**Early Action (International Citizens):** December 1, 2026\n\n**Regular Decision:** February 15, 2027\n\n**Transfer Students:** April 1, 2027",
+        "exact_deadline_wording": "Early Action (International Citizens): December 1, 2026",
+        "confidence": "MEDIUM",
+        "notes": "The shard's official_source_url (https://admissions.yale.edu/affordability) carries the same timeline but without years, so it cannot yield a calendar date. Following the source hierarchy upward, the official Yale Office of Undergraduate Financial Aid page finaid.yale.edu/apply/prospective gives explicit calendar dates for the 2027-28 cycle, which is a current open/upcoming cycle as of 2026-10-05. The field_mapping value 2026-12-01 is the earliest deadline that applies to this record's scope (International Citizens) - the Early Action priority deadline. The page also states a second, later applicable deadline for international citizens: \"Regular Decision: February 15, 2027\". These are two different admission rounds for the same aid requirement, not a source conflict, so only the earliest applicable one was written to the single-value deadline field; if the integrator prefers the Regular Decision round, the alternative value is 2027-02-15 from the same quote. Both dates are after today, so neither is stale. Confidence is MEDIUM only because of which of two published rounds populates a single-value field, not because the dates themselves are uncertain."
+      },
+      "field_mapping": {
+        "deadline_date": "2026-12-01 (Early Action, International Citizens, 2027-28 cycle; alternative published round Regular Decision 2027-02-15)",
+        "deadline_precision": "exact",
+        "deadline_display": "Priority Deadlines, 2027-28 Academic Year - QuestBridge: November 1, 2026; Early Action (US Citizens and Permanent Residents): November 1, 2026; Early Action (International Citizens): December 1, 2026; Regular Decision: February 15, 2027; Transfer Students: April 1, 2027"
+      },
+      "examined": [
+        "https://admissions.yale.edu/affordability",
+        "https://www.questbridge.org/apply-to-college/programs/national-college-match"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+          "reason": "Third-party programme aggregator, not a Yale or government domain; catalogue URL only, not usable as official evidence."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 254,
+      "title": "Manaaki New Zealand Scholarships",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Tertiary applications for the Manaaki New Zealand Scholarship Programme have now closed.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.nzscholarships.govt.nz/international-tertiary-students/",
+        "source_type": "official_government_page",
+        "publisher": "Education New Zealand | Manapou ki te Ao (New Zealand Government) for the Manaaki New Zealand Scholarship Programme",
+        "retrieved_at": "2026-10-05T15:33:00Z",
+        "as_of": null,
+        "raw_extract": "## Tertiary applications for the Manaaki New Zealand Scholarship Programme have now closed.",
+        "exact_deadline_wording": "Tertiary applications for the Manaaki New Zealand Scholarship Programme have now closed.",
+        "confidence": "LOW",
+        "notes": "Three official pages were fetched: the programme home page, the international tertiary students page, and the 'How to apply for a scholarship' page. The only dated window published anywhere on them belongs to a different scheme and round - the Samoa Foundation: \"Applications for Samoa Foundation open midnight 4 August 2026 and close midday 4 September 2026\" - which is not this record's tertiary deadline, so it cannot be used. The awarding body also states: \"Please note that the Manaaki New Zealand Scholarship Programme application system may close early to countries with a large volume of applications.\" No calendar date, month window or explicit rolling statement is published for the tertiary round that this record represents, so no deadline value is written. outcome is expired_mismatch because the record is carried as open/upcoming (verification_status active) while the official site states the tertiary round has closed; no next-round dates are published and none were inferred."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "Tertiary applications for the Manaaki New Zealand Scholarship Programme have now closed."
+      },
+      "examined": [
+        "https://www.nzscholarships.govt.nz",
+        "https://www.nzscholarships.govt.nz/how-to-apply-for-a-scholarship/",
+        "https://www.nzscholarships.govt.nz/conduct-requirements-of-new-zealand-scholars",
+        "https://mnzspapplicantportal.powerappsportals.com/"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://mnzspapplicantportal.powerappsportals.com/",
+          "reason": "Application portal reachable only as a login front door; it exposed no published opening or closing date for the tertiary round in the retrieved content."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 525,
+      "title": "University of Glasgow Sanctuary Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Applications for this scholarship for the 2027-28 academic session will open soon. In the meantime please provide your details and we will be in touch when the scholarship is open for applications.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.gla.ac.uk/scholarships/sanctuaryscholarships",
+        "source_type": "official_university_page",
+        "publisher": "University of Glasgow",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "as_of": "2027-28 academic session",
+        "raw_extract": "## How to apply\n\nApplications for this scholarship for the 2027-28 academic session will open soon. In the meantime please provide your details and we will be in touch when the scholarship is open for applications.",
+        "exact_deadline_wording": "Applications for this scholarship for the 2027-28 academic session will open soon.",
+        "confidence": "HIGH",
+        "notes": "The official page is the current 2027/28 cycle announcement and states only that applications \"will open soon\", with an invitation to register interest instead of an application. No opening date, closing date, month or window is published, and the page gives no explicit rolling statement. The shard's prior precision of 'month' is not supported by anything on the live page, so precision is reported as unknown. Nothing was inferred from other Glasgow scholarship deadlines."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "Applications for this scholarship for the 2027-28 academic session will open soon. In the meantime please provide your details and we will be in touch when the scholarship is open for applications."
+      },
+      "examined": [
+        "https://www.gla.ac.uk/scholarships",
+        "https://www.gla.ac.uk/explore/sanctuary/"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.gla.ac.uk/scholarships",
+          "reason": "Scholarship index page; lists other Glasgow awards with their own deadlines but says nothing about the Sanctuary Scholarship deadline, and other programmes' deadlines are not evidence for this one."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 576,
+      "title": "World Changers Glasgow Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "The tuition fee discount is applied at registration. You will be sent a communication confirming your scholarship soon after your receive your programme offer. No additional application is required.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.gla.ac.uk/scholarships/worldchangersglasgowscholarship",
+        "source_type": "official_university_page",
+        "publisher": "University of Glasgow",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "as_of": "September 2027 / January 2028 postgraduate intake",
+        "raw_extract": "## How to apply\n\nThe tuition fee discount is applied at registration. You will be sent a communication confirming your scholarship soon after your receive your programme offer. No additional application is required.",
+        "exact_deadline_wording": "No additional application is required.",
+        "confidence": "MEDIUM",
+        "notes": "The official page states there is no separate application: the award \"will automatically awarded to all eligible applicants\" for the \"September 2027/ January 2028 entry\" and the discount \"is applied at registration\". No application deadline, closing date or explicit rolling statement is published, and 'September 2027 or January 2028' is an intake descriptor, not a deadline, so it was not converted into a date. The shard's prior precision of 'rolling' is not stated in those words on the live page, so precision is reported as unknown rather than assumed. Confidence is MEDIUM because the absence of a deadline is directly evidenced, but the closest semantics label is a judgement call between ROLLING and UNKNOWN."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "The tuition fee discount is applied at registration. You will be sent a communication confirming your scholarship soon after your receive your programme offer. No additional application is required."
+      },
+      "examined": [
+        "https://www.gla.ac.uk/scholarships"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.gla.ac.uk/scholarships",
+          "reason": "Scholarship index page; contains deadlines for other Glasgow awards only, which are not evidence for this automatic award."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 582,
+      "title": "EMBO Postdoctoral Fellowships",
+      "outcome": "recovered",
+      "deadline_semantics": "ROLLING",
+      "deadline_date": null,
+      "deadline_display": "Applications accepted throughout the year (next cutoff date \u2013 hard deadline: Friday 22 January 2027, 14:00 CET)",
+      "deadline_precision": "rolling",
+      "source": {
+        "url": "https://www.embo.org/funding/fellowships-grants-and-career-support/postdoctoral-fellowships",
+        "source_type": "official_scholarship_page",
+        "publisher": "European Molecular Biology Organization (EMBO)",
+        "retrieved_at": "2026-10-05T15:32:00Z",
+        "as_of": "next evaluation cutoff 22 January 2027, 14:00 CET (Autumn 2027 selection round)",
+        "raw_extract": "**Applications accepted throughout the year (next cutoff date \u2013 hard deadline: Friday 22 January 2027, 14:00 CET)**",
+        "exact_deadline_wording": "Applications accepted throughout the year (next cutoff date \u2013 hard deadline: Friday 22 January 2027, 14:00 CET)",
+        "confidence": "HIGH",
+        "notes": "The source explicitly states applications are accepted throughout the year, which is a rolling basis, so deadline_date is null per the brief and the 22 January 2027 evaluation cutoff was deliberately not written as the deadline. The same page confirms the cutoff drives policy changes: \"Effective from the Autumn 2027 selection round (i.e., for all applications submitted after January 22, 2027, 14:00 CET), re-applications will no longer be permitted.\" The quoted cutoff is a future date, so there is no expired-mismatch condition; it is retained only as provider wording in deadline_display."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "rolling",
+        "deadline_display": "Applications accepted throughout the year (next cutoff date \u2013 hard deadline: Friday 22 January 2027, 14:00 CET)"
+      },
+      "examined": [
+        "https://www.embo.org/funding/fellowships-grants-and-career-support/postdoctoral-fellowships/application/",
+        "https://www.embo.org/funding/fellowships-grants-and-career-support/postdoctoral-fellowships/selection/"
+      ],
+      "rejected_sources": [],
+      "not_fetched": [
+        {
+          "url": "http://applications.embo.org/01/register.php?reg=S019",
+          "reason": "Login-gated application portal; would not yield published deadline wording."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 647,
+      "title": "International Graduate Student Scholarship (IGSS)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "INTERNATIONAL GRADUATE STUDENT SCHOLARSHIP (IGSS) FIRST SEMESTER 2026/2027 ... is now open for application for the First Semester 2026/2027 starting from 01 - 31 August 2026.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://sgs.upm.edu.my/financial_assistance_scholarships/scholarship_financial_assistance_upm/international_graduate_student_scholarship_igss-1402",
+        "source_type": "official_university_page",
+        "publisher": "Universiti Putra Malaysia (UPM), School of Graduate Studies",
+        "retrieved_at": "2026-10-05T15:32:00Z",
+        "as_of": "First Semester 2026/2027 intake; page states \"Updated:: 02/07/2026 [aslamiah]\"",
+        "raw_extract": "School of Graduate Studies (SGS), Universiti Putra Malaysia (UPM) is pleased to announce that the International Graduate Student Scholarship (IGSS) is now open for application for the **First Semester 2026/2027** starting from **01 - 31 August 2026.** ... 2. Please ensure your Advisor/Supervisor and Dean/Director of Faculty/School/Institute support your application online before or latest by **31 August 2026**.",
+        "exact_deadline_wording": "starting from **01 - 31 August 2026.**",
+        "confidence": "HIGH",
+        "notes": "The live official page states an explicit window with a day-level deadline: applications run 01-31 August 2026, and supervisor/dean support must be lodged \"before or latest by 31 August 2026\". Both dates are in the past relative to retrieval (2026-10-05) while the record is carried as active/open-upcoming, so per brief section 6 no stale date was written and the date was not silently moved to the next intake. The page has not published a First Semester 2027/2028 round, so no forward-looking value exists to recover. The shard's prior precision 'recurring' is also not supported: the page describes one specific semester intake, not recurring annual timing."
+      },
+      "field_mapping": {
+        "deadline_date": "null (published 2026-08-31 is stale and withheld; not shifted to a later intake)",
+        "deadline_precision": "exact",
+        "deadline_display": "INTERNATIONAL GRADUATE STUDENT SCHOLARSHIP (IGSS) FIRST SEMESTER 2026/2027 ... is now open for application for the First Semester 2026/2027 starting from 01 - 31 August 2026."
+      },
+      "examined": [
+        "https://sgs.upm.edu.my/financial_assistance_scholarships-1893",
+        "https://sgs.upm.edu.my/financial_assistance_scholarships/scholarship_financial_assistance_upm-4622"
+      ],
+      "rejected_sources": [
+        {
+          "url": "http://sgsportal.upm.edu.my:8080/sgsportal/",
+          "reason": "Login-gated application system; the public page's stated deadline is already in the past and the portal cannot supply a new published round."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 693,
+      "title": "Errol Walton Barrow Scholarships",
+      "outcome": "conflicting",
+      "deadline_semantics": "CONFLICTING",
+      "deadline_date": null,
+      "deadline_display": "Completed application forms must be submitted no later than August 6, 2026.",
+      "deadline_precision": "varies",
+      "source": {
+        "url": "https://education.gov.bb/2026-errol-walton-barrow-scholarships",
+        "source_type": "official_government_page",
+        "publisher": "Ministry of Education Transformation, Government of Barbados",
+        "retrieved_at": "2026-10-05T15:34:00Z",
+        "as_of": "2026 cycle (news item dated July 27, 2026)",
+        "raw_extract": "Further information pertaining to the scholarship and application forms can be obtained online from the Ministry of Education Transformation website ... or in the Tertiary Section, Ministry of Technological and Vocational Training ... Completed application forms must be submitted **no later than August 6, 2026.**",
+        "exact_deadline_wording": "Completed application forms must be submitted no later than August 6, 2026.",
+        "confidence": "LOW",
+        "notes": "Two current official Ministry of Education Transformation pages describe the SAME 2026 Errol Walton Barrow Scholarship cycle and give DIFFERENT closing dates. Page A (https://education.gov.bb/2026-errol-walton-barrow-scholarships, news item July 27, 2026) states: \"Completed application forms must be submitted no later than August 6, 2026.\" Page B (https://education.gov.bb/errol-walton-barrow-scholarships-2026/, news item June 3, 2026) states: \"Completed application forms must be submitted no later than July 3rd, 2026.\" Page A is the later announcement and is the source recorded here, but both are official and neither is withdrawn, so this is recorded as CONFLICTING with deadline_date null rather than picking one. Independently, both candidate dates are already in the past relative to retrieval (2026-10-05), so writing either would also be a stale value. The shard's prior note that 'the next round is expected in the same annual cycle' is an inference about recurrence, not a published deadline, and was not converted into a date; the Ministry's Latest News page shows no 2027 call at the time of retrieval."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "varies",
+        "deadline_display": "Completed application forms must be submitted no later than August 6, 2026."
+      },
+      "conflicting_sources": [
+        {
+          "url": "https://education.gov.bb/2026-errol-walton-barrow-scholarships",
+          "publisher": "Ministry of Education Transformation, Government of Barbados",
+          "retrieved_at": "2026-10-05T15:34:00Z",
+          "as_of": "2026 cycle",
+          "raw_extract": "Completed application forms must be submitted **no later than August 6, 2026.**",
+          "exact_deadline_wording": "Completed application forms must be submitted no later than August 6, 2026.",
+          "confidence": "LOW"
+        },
+        {
+          "url": "https://education.gov.bb/errol-walton-barrow-scholarships-2026/",
+          "publisher": "Ministry of Education Transformation, Government of Barbados",
+          "retrieved_at": "2026-10-05T15:35:00Z",
+          "as_of": "2026 cycle (news item dated June 3, 2026)",
+          "raw_extract": "Completed application forms must be submitted **no later than July 3rd, 2026.**",
+          "exact_deadline_wording": "Completed application forms must be submitted no later than July 3rd, 2026.",
+          "confidence": "LOW"
+        }
+      ],
+      "examined": [
+        "https://education.gov.bb/news",
+        "https://education.gov.bb/errol-walton-barrow-scholarships-2026/"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://mesgovbb-my.sharepoint.com/:b:/g/personal/information_mes_gov_bb/IQD2tHP-TsxgS4-h17cM9gKtAZ8ATSPJEinb1SPTvb0ytVs?e=zS7uM6",
+          "reason": "Linked GOVERNMENT NOTICE 2026-EWB PDF on an external Microsoft SharePoint tenant; not fetched as primary evidence because the two live official pages already disagree, and a government-notice PDF would need to be fetched and quoted to arbitrate rather than assumed."
+        }
+      ]
+    }
+  ]
+}

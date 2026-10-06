@@ -1,0 +1,293 @@
+{
+  "shard_id": "LG-007",
+  "agent_completed": true,
+  "topic": "logo",
+  "records": [
+    {
+      "scholarship_id": 343,
+      "title": "Nokia Scholarship",
+      "outcome": "recovered",
+      "image_url": "https://images.squarespace-cdn.com/content/v1/66cebc3e7d2ad2668e6a4ade/4e418de5-507a-4e37-ad31-5a5ccc93da87/NF_logo_white_165.png",
+      "image_source_url": "https://www.nokiafoundation.com/nokia-scholarship-info",
+      "image_source_type": "official_scholarship",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Asset is served from images.squarespace-cdn.com under site id 66cebc3e7d2ad2668e6a4ade, which is the Nokia Foundation's own Squarespace site asset store, referenced by the record's official_source_url. It is the site's header logo image block, not a favicon: filename 'NF_logo_white_165.png', declared data-image-dimensions=\"165x41\", alt=\"\", used on every page of the site. Identity was verified visually: composited on a dark background and rendered, the wordmark reads 'NOKIA FOUNDATION' on two lines, matching the record's official_source 'Nokia Foundation'. Only caveat is resolution: the native file is 165x41 px (2141 bytes) and Squarespace refuses to upscale (verified: ?format=1500w still returns 165x41). It is a small wordmark, not a favicon-sized badge, but it will look soft if rendered large. No larger Nokia Foundation logo asset is published anywhere on nokiafoundation.com - the only other images on the site are decorative photographic banners."
+      },
+      "source": {
+        "url": "https://www.nokiafoundation.com/nokia-scholarship-info",
+        "publisher": "Nokia Foundation",
+        "retrieved_at": "2026-10-05T15:36:13Z",
+        "raw_extract": "data-image=\"https://images.squarespace-cdn.com/content/v1/66cebc3e7d2ad2668e6a4ade/4e418de5-507a-4e37-ad31-5a5ccc93da87/NF_logo_white_165.png\" data-image-dimensions=\"165x41\" data-image-focal-point=\"0.5,0.5\" data-sqsp-image-block-image",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.nokiafoundation.com/nokia-scholarship-info",
+        "https://www.nokiafoundation.com/nokia-scholarship",
+        "https://www.nokiafoundation.com/",
+        "https://www.nokiafoundation.com/foundation-fellow",
+        "https://www.nokiafoundation.com/jorma-ollila-grants",
+        "https://www.nokiafoundation.com/grants-introduction"
+      ],
+      "rejected": [
+        {
+          "url": "https://images.squarespace-cdn.com/content/v1/66cebc3e7d2ad2668e6a4ade/7fec3a4a-dc20-49ad-b48a-0caf1c81241f/Luonto_banner_04_vaal.jpg",
+          "reason": "decorative hero art / photographic banner, not a logo or brand mark"
+        },
+        {
+          "url": "https://images.squarespace-cdn.com/content/v1/66cebc3e7d2ad2668e6a4ade/2aab76f9-0891-4db7-8d08-8af2b433e822/Luonto_banner_01_sin.jpg",
+          "reason": "decorative hero art / photographic banner, not a logo or brand mark"
+        },
+        {
+          "url": "https://images.squarespace-cdn.com/content/v1/66cebc3e7d2ad2668e6a4ade/11f88da8-2f89-42a4-b4c6-6e6ee032501b/Banner_luonto_02.jpg",
+          "reason": "decorative hero art / photographic banner, not a logo or brand mark"
+        },
+        {
+          "url": "https://assets.squarespace.com/universal/default-favicon.ico",
+          "reason": "favicon"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 344,
+      "title": "Nokia Foundation Fellow",
+      "outcome": "recovered",
+      "image_url": "https://images.squarespace-cdn.com/content/v1/66cebc3e7d2ad2668e6a4ade/4e418de5-507a-4e37-ad31-5a5ccc93da87/NF_logo_white_165.png",
+      "image_source_url": "https://www.nokiafoundation.com/foundation-fellow",
+      "image_source_type": "official_scholarship",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Same Nokia Foundation brand mark as records 343 and 345 - all three awards are administered by the same provider, Nokia Foundation, so the provider logo is the correct image. The asset is the site header logo on the record's official_source_url /foundation-fellow, served from the site's own Squarespace asset store. Identity verified visually: wordmark reads 'NOKIA FOUNDATION'. Native size 165x41 px; no higher-resolution Nokia Foundation logo is published on nokiafoundation.com."
+      },
+      "source": {
+        "url": "https://www.nokiafoundation.com/foundation-fellow",
+        "publisher": "Nokia Foundation",
+        "retrieved_at": "2026-10-05T15:36:13Z",
+        "raw_extract": "https://images.squarespace-cdn.com/content/v1/66cebc3e7d2ad2668e6a4ade/4e418de5-507a-4e37-ad31-5a5ccc93da87/NF_logo_white_165.png",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.nokiafoundation.com/foundation-fellow",
+        "https://www.nokiafoundation.com/grants-introduction",
+        "https://www.nokiafoundation.com/",
+        "https://www.nokiafoundation.com/nokia-scholarship",
+        "https://www.nokiafoundation.com/nokia-scholarship-info",
+        "https://www.nokiafoundation.com/jorma-ollila-grants"
+      ],
+      "rejected": [
+        {
+          "url": "https://images.squarespace-cdn.com/content/v1/66cebc3e7d2ad2668e6a4ade/7fec3a4a-dc20-49ad-b48a-0caf1c81241f/Luonto_banner_04_vaal.jpg",
+          "reason": "decorative hero art / photographic banner, not a logo or brand mark"
+        },
+        {
+          "url": "https://assets.squarespace.com/universal/default-favicon.ico",
+          "reason": "favicon"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 345,
+      "title": "Jorma Ollila Grant",
+      "outcome": "recovered",
+      "image_url": "https://images.squarespace-cdn.com/content/v1/66cebc3e7d2ad2668e6a4ade/4e418de5-507a-4e37-ad31-5a5ccc93da87/NF_logo_white_165.png",
+      "image_source_url": "https://www.nokiafoundation.com/jorma-ollila-grants",
+      "image_source_type": "official_scholarship",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Same Nokia Foundation brand mark as records 343 and 344. The Jorma Ollila Grant is a Nokia Foundation grant programme, so the Nokia Foundation logo is the provider brand mark. Asset confirmed as the header logo image block on the record's official_source_url and on its catalogue_url (identical URLs). Identity verified visually: wordmark reads 'NOKIA FOUNDATION'. Native size 165x41 px; no higher-resolution asset exists on the official domain."
+      },
+      "source": {
+        "url": "https://www.nokiafoundation.com/jorma-ollila-grants",
+        "publisher": "Nokia Foundation",
+        "retrieved_at": "2026-10-05T15:36:13Z",
+        "raw_extract": "data-image=\"https://images.squarespace-cdn.com/content/v1/66cebc3e7d2ad2668e6a4ade/4e418de5-507a-4e37-ad31-5a5ccc93da87/NF_logo_white_165.png\" data-image-dimensions=\"165x41\" data-image-focal-point=\"0.5,0.5\" data-sqsp-image-block-image",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.nokiafoundation.com/jorma-ollila-grants",
+        "https://www.nokiafoundation.com/grants-introduction",
+        "https://www.nokiafoundation.com/",
+        "https://www.nokiafoundation.com/foundation-fellow",
+        "https://www.nokiafoundation.com/nokia-scholarship-info"
+      ],
+      "rejected": [
+        {
+          "url": "https://images.squarespace-cdn.com/content/v1/66cebc3e7d2ad2668e6a4ade/11f88da8-2f89-42a4-b4c6-6e6ee032501b/Banner_luonto_02.jpg",
+          "reason": "decorative hero art / photographic banner, not a logo or brand mark"
+        },
+        {
+          "url": "https://assets.squarespace.com/universal/default-favicon.ico",
+          "reason": "favicon"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 352,
+      "title": "France-South Africa Scholarship Programme 2027",
+      "outcome": "recovered",
+      "image_url": "https://southafrica-france-scholarships.com/uploads/files/CAMP-logo-base-FranceExcellence-RVB.png",
+      "image_source_url": "https://southafrica-france-scholarships.com",
+      "image_source_type": "official_scholarship",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "OFFICIALITY OF THE DOMAIN PROVEN INDEPENDENTLY, not merely assumed from the shard: (a) Campus France South Africa, an agency of the French Ministries of Europe and Foreign Affairs and of Higher Education, states 'As a means to facilitate access to information for potential candidates, and to streamline the application process, we have created a dedicated website: https://www.southafrica-france-scholarships.com' (southafrica.campusfrance.org/apply-now-for-a-scholarship); (b) the French diplomatic mission site za.diplomatie.gouv.fr links to it as 'Accéder au site du programme de bourses franco-sud-africain'; (c) the South African government catalogue internationalscholarships.dhet.gov.za lists 'France-South Africa Scholarship Programme website' pointing at this domain. IDENTITY: the site carries NO programme-specific logo - I checked /, /rulebook, /faq, /contact-us, /register, /choose-france and every image reference is either the two-flag graphic, the hero banner, or a partner logo. The asset proposed here is the 'FRANCE EXCELLENCE' mark (943x647 PNG), the official French State scholarship-scheme brand, which the programme portal displays prominently on the home and application pages. Identity is supported because the shard's own official_source is 'Embassy of France in South Africa (France Excellence Scholarship)' and the programme rulebook states laureates receive 'France Excellence scholarship holder status'. CAVEAT, hence MEDIUM not HIGH: France Excellence is the umbrella scheme mark shared by several French government scholarship schemes, not a lockup unique to the France-South Africa programme. If the integrator requires a programme-exclusive mark, this record has no qualifying official logo and should be downgraded to not_found."
+      },
+      "source": {
+        "url": "https://southafrica-france-scholarships.com",
+        "publisher": "Embassy of France in South Africa - France-South Africa Scholarship Programme",
+        "retrieved_at": "2026-10-05T15:36:13Z",
+        "raw_extract": "<img class=\"figure-img img-fluid rounded mb-0\" src=\"/uploads/files/CAMP-logo-base-FranceExcellence-RVB.png\" sizes=\"(min-width: 992px) 535px, (min-width: 768px) 330px, (min-width: 381px) 540px, 200px\" srcset=\"/uploads/files/CAMP-logo-base-FranceExcellence-RVB.png\" alt=\"CAMP logo base France Excellence RVB\" />",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://southafrica-france-scholarships.com",
+        "https://southafrica-france-scholarships.com/rulebook",
+        "https://southafrica-france-scholarships.com/faq",
+        "https://southafrica-france-scholarships.com/contact-us",
+        "https://southafrica-france-scholarships.com/register",
+        "https://southafrica-france-scholarships.com/choose-france",
+        "https://southafrica-france-scholarships.com/robots.txt",
+        "https://www.southafrica.campusfrance.org/apply-now-for-a-scholarship",
+        "https://za.diplomatie.gouv.fr/fr/relations-bilaterales/cooperation-scientifique-et-academique",
+        "https://www.internationalscholarships.dhet.gov.za/index.php/scholarships/undergraduate-scholarships/470-france-south-africa-scholarship-programme-2026"
+      ],
+      "rejected": [
+        {
+          "url": "https://southafrica-france-scholarships.com/uploads/files/southafrica-france-scholarship-logo2.png",
+          "reason": "Not a logo despite its filename and alt text. Downloaded and rendered at 4x: it is a graphic strip of the French tricolour beside the South African flag - decorative national-flag artwork, not a wordmark or brand mark. The variant the site actually uses, /uploads/files/_AUTOx75_crop_center-center_none/southafrica-france-scholarship-logo2.png (189x75), is additionally an auto-cropped thumbnail of it."
+        },
+        {
+          "url": "https://southafrica-france-scholarships.com/uploads/files/banner-new.png",
+          "reason": "decorative hero art / slideshow banner (alt=\"Slideshow Item 1\")"
+        },
+        {
+          "url": "https://southafrica-france-scholarships.com/uploads/files/_150xAUTO_fit_center-center_100_none/8035/logo-Ambassade-France-en-Afrique-du-Sud-Lésotho-Malawi_2025-11-26-145536_hste.webp",
+          "reason": "unrelated organisation's logo (Embassy of France) displayed as a programme panel member, and a 150px downscaled thumbnail - not the programme's own mark"
+        },
+        {
+          "url": "https://southafrica-france-scholarships.com/uploads/files/_150xAUTO_fit_center-center_100_none/5256/DHET-logo-640x320-jpg.webp",
+          "reason": "unrelated organisation's logo (South African DHET) as a programme panel member, and a 150px downscaled thumbnail"
+        },
+        {
+          "url": "https://southafrica-france-scholarships.com/uploads/files/_150xAUTO_fit_center-center_100_none/5257/DSI-logo-1030x359-png.webp",
+          "reason": "unrelated organisation's logo (South African DSI) as a programme panel member, and a 150px downscaled thumbnail"
+        },
+        {
+          "url": "https://southafrica-france-scholarships.com/uploads/files/_150xAUTO_fit_center-center_100_none/5259/FSACCI-logo-448x110.webp",
+          "reason": "unrelated organisation's logo (FSACCI) as a programme panel member, and a 150px downscaled thumbnail"
+        },
+        {
+          "url": "https://southafrica-france-scholarships.com/uploads/files/_150xAUTO_fit_center-center_100_none/5260/NRF-logo-700x230-jpg.webp",
+          "reason": "unrelated organisation's logo (South African NRF) as a programme panel member, and a 150px downscaled thumbnail"
+        },
+        {
+          "url": "https://southafrica-france-scholarships.com/uploads/files/_150xAUTO_fit_center-center_100_none/162950/LOGO_CF_AFRIQUE-DU-SUD_COULEUR.webp",
+          "reason": "unrelated organisation's logo (Campus France South Africa office), and a 150px downscaled thumbnail"
+        }
+      ]
+    },
+    {
+      "scholarship_id": 457,
+      "title": "KTH One-Year Scholarship",
+      "outcome": "recovered",
+      "image_url": "https://www.kth.se/img/logotype-blue-ff671d438dd60cb940a663d2fd5e0cf9.svg",
+      "image_source_url": "https://www.kth.se/en/studies/master/admissions/scholarships/kth-one-year-scholarship-1.290744",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Official KTH institutional logotype as SVG on the official www.kth.se domain, served at the /img/ path that backs the site's own <a class=\"kth-logotype\"> header link on the record's own official_source_url. Identity verified visually by rendering the SVG headlessly: a crown above the words 'KTH' and 'VETENSKAP OCH KONST' inside a laurel wreath - unambiguously KTH Royal Institute of Technology, matching the record's provider. The fill is #000061, the navy blue that KTH's own brand page names as the primary logotype colour ('Our logotype is used in navy blue when placed against our lighter primary colors, and in white when placed against our darker primary colors'). Cross-checked on KTH's official brand page intra.kth.se/en/administration/kommunikation/varumarke/grafiskprofil/logotyp-1.845049, whose own header uses the sibling path /img/logotype-blue-ff671d438dd60cb940a663d2fd5e0cf9.svg and which states 'The navy blue and white wreath represents our primary logotypes.' The blue variant is preferred over logotype-white-...svg because it is legible on a light background. Vector SVG, so resolution is unlimited. Note there is no scholarship-specific KTH mark; the institutional logotype is the correct brand asset for a KTH-run scholarship."
+      },
+      "source": {
+        "url": "https://www.kth.se/en/studies/master/admissions/scholarships/kth-one-year-scholarship-1.290744",
+        "publisher": "KTH Royal Institute of Technology",
+        "retrieved_at": "2026-10-05T15:36:13Z",
+        "raw_extract": "<img alt=\"To KTH&#39;s start page\" width=\"64\" height=\"64\"\n              src=\"/img/logotype-white-6f02f4554cba157ca832fa452bf242a4.svg\">",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.kth.se/en/studies/master/admissions/scholarships/kth-one-year-scholarship-1.290744",
+        "https://www.kth.se/en/studies/master/admissions/scholarships",
+        "https://www.kth.se/",
+        "https://www.kth.se/css/kth-f00d07494a5ac2b6cdb95ab74a09bc15.css",
+        "https://www.kth.se/polopoly_fs/1.781491.1550155356!/no-tags.css",
+        "https://intra.kth.se/en/administration/kommunikation/varumarke/grafiskprofil/logotyp-1.845049",
+        "https://intra.kth.se/polopoly_fs/1.1281481.1709112784!/KTH_grafisk_manual_1.2_EN_small.pdf"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.kth.se/polopoly_fs/1.1196500.1664893402!/image/Xianglin-scholarship.jpg",
+          "reason": "photograph, not a logo (a Xianglin scholarship testimonial photo shown on the page)"
+        },
+        {
+          "url": "https://www.kth.se/polopoly_fs/1.1196568.1664916185!/image/Hooman-Scholarship.jpg",
+          "reason": "photograph, not a logo (a Hooman scholarship testimonial photo shown on the page)"
+        },
+        {
+          "url": "https://www.kth.se/img/kth/media-player-button-03f22b1cc8decfbf6ce75dfa8262778e.png",
+          "reason": "UI chrome - video play button icon"
+        },
+        {
+          "url": "https://www.kth.se/polopoly_fs/1.1104303.1733407059!/image/Scholarships-miniatyrbild-lowres.webp",
+          "reason": "decorative hero art and explicitly low-res - a poster miniature for the page's lazy-loaded modal"
+        },
+        {
+          "url": "https://intra.kth.se/polopoly_fs/1.1273722.1692876353!/image/apple-touch-icon-KTH-logo-180x180.png",
+          "reason": "apple-touch-icon - explicitly rejected asset class, despite being a genuine KTH mark"
+        },
+        {
+          "url": "https://intra.kth.se/polopoly_fs/1.1280687.1701338002!/RGB.zip",
+          "reason": "official brand download but a ZIP archive, not a directly usable image URL"
+        },
+        {
+          "url": "https://www.kth.se/polopoly_fs/1.1464756.1773991821!/image/_DSC7640_920_518.webp",
+          "reason": "photograph of a logo - the KTH logotype on a building facade, alt text 'KTH-logotyp pa fasaden.' A photograph of a logo, explicitly rejected"
+        },
+        {
+          "url": "https://www.kth.se/polopoly_fs/1.1292383.1731584774!/image/full_hor9_750.webp",
+          "reason": "wrong identity - the Unite logotype (alt text 'Unite-logotyp.'), a separate initiative"
+        }
+      ]
+    }
+  ],
+  "notes": "All 5 records covered. 5 recovered, 0 not_found, 0 rejected. Duplicate image_url across records 343, 344 and 345 is intentional and correct: all three are Nokia Foundation awards and the provider brand mark is the same asset. Every proposed image was downloaded and visually inspected before being written, not merely read from a snippet. Two MEDIUM-confidence records carry caveats recorded in validation.notes: 343/344/345 because the only Nokia Foundation logo published on the official domain is a small 165x41 white wordmark with no larger variant available, and 352 because the France Excellence mark is the umbrella French scholarship-scheme brand rather than a programme-exclusive lockup. No other files were modified and no database writes were performed."
+}

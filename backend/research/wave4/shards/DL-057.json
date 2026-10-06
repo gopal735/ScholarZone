@@ -1,0 +1,99 @@
+{
+  "shard_id": "DL-057",
+  "topic": "deadline",
+  "hosts": [
+    "albertainnovates.ca",
+    "ejust.edu.eg",
+    "stipendiumhungaricum.hu",
+    "www.escardio.org",
+    "www.mfa.gov.bn",
+    "www.qu.edu.qa"
+  ],
+  "record_count": 7,
+  "records": [
+    {
+      "id": 285,
+      "title": "Stipendium Hungaricum Scholarship Programme",
+      "official_source": "Hungarian Government / Tempus Public Foundation",
+      "official_source_url": "https://stipendiumhungaricum.hu",
+      "catalogue_url": "https://stipendiumhungaricum.hu/study-finder",
+      "country": "Hungary",
+      "deadline_display": "15th January 2026, 2 pm (CET) - APPLICATION DEADLINE (2026/2027 cycle)",
+      "deadline_precision": "recurring",
+      "application_period": "There is only one application deadline each year. For 2026/2027: find the chosen programme November-December 2025, contact the Sending Partner and register/upload documents in December 2025, submit by 15 January 2026, 2 p.m. CET; Sending Partner nomination lists February 2026; supervisor statement for doctoral applicants until 15 March 2026; entrance exams March-May 2026; results by end of June/beginning of July 2026.",
+      "verification_status": "active"
+    },
+    {
+      "id": 499,
+      "title": "Alberta Innovates Graduate Student Scholarships",
+      "official_source": "Alberta Innovates (Government of Alberta provincial agency), delivered through participating Alberta post-secondary institutions",
+      "official_source_url": "https://albertainnovates.ca/programs/graduate-student-scholarships",
+      "catalogue_url": "https://albertainnovates.ca/funding",
+      "country": "Canada",
+      "deadline_display": "No single calendar deadline is published. The Alberta Innovates programme page gives the due date as \"Continuous\" and states \"This program is accepting applications on a seasonal basis. Intake Open Date is specific to each individual university; please contact your university of choice for deadline information.\" At the University of Calgary, \"The Graduate Award Competition opens November 1 of each year\" and \"Deadlines vary by program\"; the Faculty of Graduate Studies reference deadline is February 1.",
+      "deadline_precision": "varies",
+      "application_period": "Continuous at the funder level, with a seasonal intake at each institution. Alberta Innovates publishes the due date as \"Continuous\". At the University of Calgary the Graduate Award Competition opens November 1 each year, program deadlines vary and must be confirmed with Graduate Program Staff, and results for the Alberta Innovates competition are announced September to December. Awards are paid in the following academic year, with the majority starting in September.",
+      "verification_status": "needs_review"
+    },
+    {
+      "id": 580,
+      "title": "HFA Research and Training Grants Programme (Heart Failure Association of the European Society of Cardiology)",
+      "official_source": "Heart Failure Association of the European Society of Cardiology (HFA-ESC)",
+      "official_source_url": "https://www.escardio.org/education/career-development/grants/hfa-grants-programme",
+      "catalogue_url": "https://www.escardio.org/Grants",
+      "country": "Switzerland",
+      "deadline_display": "30 September (annual close; the 2026 call closed on 30 September 2026)",
+      "deadline_precision": "recurring",
+      "application_period": "10 April to 30 September each year",
+      "verification_status": "needs_review"
+    },
+    {
+      "id": 678,
+      "title": "E-JUST TICAD8 African Scholarships for Science, Technology and Innovation",
+      "official_source": "Egypt-Japan University of Science and Technology (E-JUST)",
+      "official_source_url": "https://ejust.edu.eg/international-scholarships",
+      "catalogue_url": "https://ejust.edu.eg/international-pg",
+      "country": "Egypt",
+      "deadline_display": null,
+      "deadline_precision": "recurring",
+      "application_period": "Published cycle on the E-JUST site is the Fall 2026 semester, with application submission closing 15 February 2026; the next equivalent cycle has not yet been published as of 2026-10-04.",
+      "verification_status": "active"
+    },
+    {
+      "id": 680,
+      "title": "Qatar University International Students Scholarship",
+      "official_source": "Qatar University, Office of the Vice President for Student Affairs — Scholarships Section",
+      "official_source_url": "https://www.qu.edu.qa/en-us/students/admission/scholarships/types",
+      "catalogue_url": "https://www.qu.edu.qa/en-us/students/admission/scholarships/types",
+      "country": "Qatar",
+      "deadline_display": "Online scholarship applications run 1–25 March each year (2026 cycle: 1 March – 25 March 2026)",
+      "deadline_precision": "recurring",
+      "application_period": "Scholarship applications are submitted through the Qatar University online admission application during the announced annual period, which the official Scholarship Timeline page lists as 1 March to 25 March.",
+      "verification_status": "active"
+    },
+    {
+      "id": 681,
+      "title": "Government of Brunei Darussalam Scholarship to Foreign Students Tenable in Brunei Darussalam (BDGS)",
+      "official_source": "Ministry of Foreign Affairs, Government of Brunei Darussalam",
+      "official_source_url": "https://www.mfa.gov.bn/Pages/online-bdgs.aspx",
+      "catalogue_url": "https://www.mfa.gov.bn/pages/scholarship.aspx",
+      "country": "Brunei",
+      "deadline_display": "Applications for the 2026/2027 academic session opened on 15 December 2025 and closed on 15 February 2026; the scheme is announced annually by the Ministry of Foreign Affairs",
+      "deadline_precision": "recurring",
+      "application_period": "Annual cycle announced by the Ministry of Foreign Affairs. For the 2026/2027 academic session the Ministry published an opening date of 15 December 2025 and a closing date of 15 February 2026.",
+      "verification_status": "active"
+    },
+    {
+      "id": 683,
+      "title": "Brunei Darussalam Government Scholarship for Foreign Students Tenable in Brunei Darussalam (BDGS)",
+      "official_source": "Government of Brunei Darussalam, Ministry of Foreign Affairs and Ministry of Education",
+      "official_source_url": "https://www.mfa.gov.bn/Pages/scholarship.aspx",
+      "catalogue_url": "https://ubd.edu.bn/admission/scholarship",
+      "country": "Brunei",
+      "deadline_display": "The Ministry of Foreign Affairs BDGS applicant portal for the 2026/2027 academic session now shows \"This application is now closed\"; the scheme is opened annually by the Ministry of Education and the Ministry of Foreign Affairs, so the 2027/2028 window is expected to follow the same annual cycle",
+      "deadline_precision": "recurring",
+      "application_period": "Annual cycle announced by the Ministry of Education and the Ministry of Foreign Affairs, with applications submitted through the Ministry of Foreign Affairs Katalyst portal; the 2026/2027 session is now closed",
+      "verification_status": "active"
+    }
+  ]
+}

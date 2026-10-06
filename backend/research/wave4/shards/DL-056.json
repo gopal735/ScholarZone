@@ -1,0 +1,99 @@
+{
+  "shard_id": "DL-056",
+  "topic": "deadline",
+  "hosts": [
+    "akf.org",
+    "ee.china-embassy.gov.cn",
+    "sshrc-crsh.canada.ca",
+    "www.esade.edu",
+    "www.lunduniversity.lu.se",
+    "www.prosveta.gov.rs"
+  ],
+  "record_count": 7,
+  "records": [
+    {
+      "id": 99,
+      "title": "Esade Talent Scholarships (MSc and MBA)",
+      "official_source": "Esade Ramon Llull University",
+      "official_source_url": "https://www.esade.edu/en/programs/scholarship-program-and-financial-aid",
+      "catalogue_url": null,
+      "country": "Spain",
+      "deadline_display": "No call date is published on the Scholarship Program or overview pages. The page states only that 'Calls for these scholarship applications are generic and targeted at all those who meet the legally established criteria.'",
+      "deadline_precision": "unknown",
+      "application_period": "Annual; application calls are described as generic and open to all candidates who meet the established criteria, with no dates published.",
+      "verification_status": "active"
+    },
+    {
+      "id": 130,
+      "title": "Aga Khan Foundation International Scholarship Programme (AKF ISP) - Next Cycle, Opening Early 2027",
+      "official_source": "Aga Khan Foundation (Aga Khan Development Network)",
+      "official_source_url": "https://akf.org/international-scholarship-programme",
+      "catalogue_url": "https://akf.org/international-scholarship-programme",
+      "country": "Multiple",
+      "deadline_display": "The 2026-2027 application cycle is now closed. The next cycle will open in early 2027.",
+      "deadline_precision": "varies",
+      "application_period": "The 2026-2027 cycle is closed. The next cycle opens in early 2027; the programme is run through a global, annual and competitive application process, with applications handled by contacts in countries where AKF ISP is available.",
+      "verification_status": "active"
+    },
+    {
+      "id": 183,
+      "title": "Lund University Global Scholarship",
+      "official_source": "Lund University",
+      "official_source_url": "https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and-awards/lund-university-global-scholarship",
+      "catalogue_url": "https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and-awards/lund-university-global-scholarship",
+      "country": "Sweden",
+      "deadline_display": "The scholarship application is now closed; the deadline to apply was 16 February 2026. The application usually opens in early February every year.",
+      "deadline_precision": "recurring",
+      "application_period": "Closed for the current cycle - the deadline was 16 February 2026. The application round usually opens in early February each year for the following autumn semester, and runs alongside the national universityadmissions.se round.",
+      "verification_status": "active"
+    },
+    {
+      "id": 242,
+      "title": "Chinese Government Scholarship - Bilateral Program (Type A)",
+      "official_source": "China Scholarship Council (CSC)",
+      "official_source_url": "https://ee.china-embassy.gov.cn/eng/tzygg/202511/t20251108_11749274.htm",
+      "catalogue_url": "https://www.campuschina.org",
+      "country": "China",
+      "deadline_display": "Online application and supporting documents must be submitted in the Chinese Government Scholarship Information System before February 8, 2026 for the 2026/2027 cycle.",
+      "deadline_precision": "recurring",
+      "application_period": "The 2026/2027 notice was published 8 November 2025 and the online window ran to 8 February 2026; embassy interviews then ran 9-28 February 2026 and results were available July-August 2026. The next cycle follows the same annual pattern.",
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 310,
+      "title": "Canada Postdoctoral Research Award (CPRA)",
+      "official_source": "Social Sciences and Humanities Research Council (SSHRC)",
+      "official_source_url": "https://sshrc-crsh.canada.ca/en/funding/opportunities/canada-postdoctoral-research-award-program.aspx",
+      "catalogue_url": "https://www.nserc-crsng.gc.ca/Students-Etudiants/PD-NP/cpra-bprc_eng.asp",
+      "country": "Canada",
+      "deadline_display": "Application deadline: September 10, 2026 (8:00 p.m. eastern) for the September 2026 Competition. This deadline has passed as at 2026-10-04; the next annual competition date was not published on the page read.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual competition; September–October deadlines",
+      "verification_status": "active"
+    },
+    {
+      "id": 456,
+      "title": "African Research Universities Alliance (ARUA) Scholarship",
+      "official_source": "Lund University",
+      "official_source_url": "https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and-awards/african-research-universities-alliance-arua-scholarship",
+      "catalogue_url": "https://www.lunduniversity.lu.se/current-students/international-opportunities/grants-and-scholarships-studies-and-traineeships-abroad",
+      "country": "Sweden",
+      "deadline_display": "The scholarship application round \"usually opens in early February every year\" and applicants \"will not be able to apply until you have received the email with the link to the scholarship application portal in February.\" The related study application deadline is \"15 January\" with the application fee and supporting documents due \"in early February\". No exact calendar date is published for the scholarship round.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual: apply for an international degree programme at Lund University in the main round (deadline 15 January), then the ARUA scholarship round opens by email invitation in early February for the same autumn intake.",
+      "verification_status": "active"
+    },
+    {
+      "id": 622,
+      "title": "World in Serbia Project Scholarships of the Government of the Republic of Serbia",
+      "official_source": "Ministry of Education, Science and Technological Development of the Republic of Serbia",
+      "official_source_url": "https://www.prosveta.gov.rs/wp-content/uploads/2026/05/WORLD-IN-SERBIA-PROJECT-DESCRIPTION-2026-2027-2028.pdf",
+      "catalogue_url": "https://welcometoserbia.gov.rs/scholarships",
+      "country": "Serbia",
+      "deadline_display": "No later than 1 June 2026 for the 2026 call; the call is reissued annually, so the next cycle is expected to close around the same date in 2027",
+      "deadline_precision": "recurring",
+      "application_period": "Serbian language study in the 2026/2027 academic year, then enrolment in higher education institutions founded by the Republic of Serbia in the 2027/2028 academic year",
+      "verification_status": "active"
+    }
+  ]
+}

@@ -1,0 +1,305 @@
+{
+  "shard_id": "DL-042",
+  "agent_completed": true,
+  "topic": "deadline",
+  "agent_notes": "All 7 records researched live. No value was taken from the shard's cached deadline_display, from search-result snippets, or from an archived copy. Two records (155, 405, 406) had stored official_source_url or cited dates that were already stale or dead; those are reported honestly as expired_mismatch / unknown rather than re-dated. Zero dates were written: no source gave a still-open, currently-valid exact calendar deadline for any record in this shard.",
+  "records": [
+    {
+      "scholarship_id": 122,
+      "title": "Duke University Karsh International Scholars Program",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Please note that to apply for the Karsh Scholarship, you must apply to Duke University and request financial aid. There is no separate application.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://ousf.duke.edu/merit-scholarships/karsh-international-scholars-program",
+        "source_type": "official_university_page",
+        "publisher": "Duke University, Office of University Scholars and Fellows",
+        "retrieved_at": "2026-10-05T15:31:37Z",
+        "as_of": null,
+        "raw_extract": "Please note that to apply for the Karsh Scholarship, you must apply to Duke University and request financial aid. There is no separate application. | FAQ: 'How do I apply for this scholarship?' -> 'Simply apply to Duke University.' | FAQ: 'Are all of the Duke application and financial aid forms available online?' -> 'Yes. Please visit the Duke Financial Aid website for more information.'",
+        "exact_deadline_wording": "There is no separate application.",
+        "confidence": "HIGH",
+        "notes": "Fetched the official programme page in full. It publishes no deadline of any kind - no day, no month, no annual cycle, and no statement that applications are rolling. The page's own words are that the Karsh Scholarship has no separate application and that applicants simply apply to Duke University, with the general Duke Financial Aid website linked for forms. That is a statement about the absence of a separate scholarship application, NOT a published deadline, so it cannot be mapped to ROLLING or ANNUAL under the section-6 table; the only admissible entry is UNKNOWN. I deliberately did not carry over Duke's undergraduate admission/financial-aid deadlines: per the contract a generic admissions deadline for a different programme is not evidence for this record's deadline."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "There is no separate application. Applicants simply apply to Duke University and request financial aid."
+      },
+      "examined": [
+        "https://ousf.duke.edu/merit-scholarships/karsh-international-scholars-program",
+        "https://financialaid.duke.edu/undergrad/apply/index.html"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://financialaid.duke.edu/undergrad/apply/index.html",
+          "reason": "Returned HTTP 404 when fetched. More fundamentally, Duke's general admission/financial-aid cycle is a generic admissions deadline for a different programme and is barred as evidence by the contract, so it would not have supplied this record's deadline even if reachable."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 154,
+      "title": "Excellence Scholarship for Bachelor Students (University of St.Gallen)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Enrolled students of the University of St.Gallen with an outstanding academic performance in the HSG Assessment Year are identified by the Advice Center for Study Funding and invited to apply for an Excellence Scholarship. An application without an invitation from the University of St.Gallen is not possible.",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.unisg.ch/en/studying/orientation/advice-and-support/financing-your-studies/hsg-funds-and-excellence-scholarships",
+        "source_type": "official_university_page",
+        "publisher": "University of St.Gallen (HSG), Advice Center for Study Funding",
+        "retrieved_at": "2026-10-05T15:31:37Z",
+        "as_of": null,
+        "raw_extract": "Excellence Scholarships of the University of St.Gallen for Bachelor students: 'Excellence scholarships are awarded to students enrolled in a Bachelor's degree at the University of St.Gallen on the basis of merit. The scholarship amount corresponds to the current tuition fees at the Bachelor level for a total of 6 semesters.' / 'Currently, the University of St.Gallen and the \"Monique Dornonville de la Cour - Stiftung\" award scholarships for excellence at the Bachelor level in cooperation with the Advice Center for Study Funding.' / 'Enrolled students of the University of St.Gallen with an outstanding academic performance in the HSG Assessment Year are identified by the Advice Center for Study Funding and invited to apply for an Excellence Scholarship. An application without an invitation from the University of St.Gallen is not possible.'",
+        "exact_deadline_wording": "Enrolled students of the University of St.Gallen with an outstanding academic performance in the HSG Assessment Year are identified by the Advice Center for Study Funding and invited to apply for an Excellence Scholarship. An application without an invitation from the University of St.Gallen is not possible.",
+        "confidence": "HIGH",
+        "notes": "Fetched the live official page and read the 'Excellence Scholarships of the University of St.Gallen for Bachelor students' section in full. It states no deadline at all: access is invitation-only, driven by HSG Assessment Year performance. This is not the source saying 'rolling' and not the source describing recurring annual timing, so under the section-6 table the only admissible entry is UNKNOWN. IMPORTANT TRAP AVOIDED: the same page does carry two '1 October / 1 March' deadline statements, but I verified by reading the surrounding sections that they belong to OTHER instruments and NOT to this scholarship - (a) under 'Loan and Scholarship Fund': 'The deadlines for the submission of the application form including the required enclosures are: Autumn semester: 1 October / Spring semester: 1 March'; (b) under 'Partial or total remission' of tuition fees: 'The deadline for the submission of the application form incl. required enclosures is 1. October and 1. March.' Reusing either for this record would be borrowing another programme's deadline, which the contract forbids."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "Invitation-driven: identified by the Advice Center for Study Funding and invited to apply; no published application deadline."
+      },
+      "examined": [
+        "https://www.unisg.ch/en/studying/orientation/advice-and-support/financing-your-studies/hsg-funds-and-excellence-scholarships",
+        "https://www.unisg.ch/en/studying/why-hsg/hsg-best-talents/",
+        "https://www.unisg.ch/en/studying/orientation/advice-and-support/financing-your-studies/our-donors"
+      ],
+      "rejected_sources": []
+    },
+    {
+      "scholarship_id": 155,
+      "title": "Starr International Foundation Scholarship (University of St.Gallen)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Applications for the 2026 cohort were accepted until June 12, 2026. Selection decisions and refusals will be communicated by July 12, 2026 at the latest. The application portal will reopen in November 2026 for the 2027 cohort application cycle.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.unisg.ch/en/studying/why-hsg/hsg-best-talents/",
+        "source_type": "official_university_page",
+        "publisher": "University of St.Gallen (HSG)",
+        "retrieved_at": "2026-10-05T15:31:37Z",
+        "as_of": "Page describes the 2026 Best Talents cohort; states the application portal is closed and reopens in November 2026 for the 2027 cohort cycle.",
+        "raw_extract": "Once your admission to HSG and a specific Master programme has been confirmed, please select on this page the option \"Apply now!\" and submit the additional application documents. Our Master programmes, as well as a qualified, independent and diverse committee, are involved in selecting the cohort. Awards are made on an ongoing basis. | 'Applications for the 2026 cohort were accepted until June 12, 2026. Selection decisions and refusals will be communicated by July 12, 2026 at the latest. The application portal will reopen in November 2026 for the 2027 cohort application cycle.' | status widget: 'Application portal is closed' | 'This programme is being launched in Autumn Semester 2026 with 39 talents and, with support from our donors, is set to expand to 45 talents per cohort (each autumn).'",
+        "exact_deadline_wording": "Applications for the 2026 cohort were accepted until June 12, 2026.",
+        "confidence": "HIGH",
+        "notes": "Identity confirmed on a second live official page before trusting the Best Talents wording: https://www.unisg.ch/en/studying/orientation/advice-and-support/financing-your-studies/our-donors states verbatim 'The HSG Starr International Foundation Fund supports excellence scholarships of the Best Talents Programme.' The stored official_source_url for this record is dead (HTTP 404), so the live official equivalent is the HSG Best Talents programme page. EXPIRED MISMATCH: the only explicit calendar deadline published is 'June 12, 2026', which had already passed at retrieval (2026-10-05), and the page confirms the portal is closed. The record's verification_status is 'active' (open/upcoming), so per the contract I do NOT write the stale 2026-06-12 and do NOT silently roll it to June 2027 - the page publishes no 2027 date, only 'reopen in November 2026 for the 2027 cohort application cycle', which is a month with no day and cannot be dated. Semantics are recorded as EXACT because the source does state an explicit calendar deadline; deadline_date is deliberately null because that date is stale."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "Applications for the 2026 cohort were accepted until June 12, 2026. The application portal will reopen in November 2026 for the 2027 cohort application cycle. (stale - 2026-06-12 already passed; no 2027 date published)"
+      },
+      "semantics_note": "EXACT is asserted for source precision only. deadline_date is null per the contract's expired_mismatch rule. An equally defensible reading is ANNUAL/recurring (the next cycle is annual and undated); either way no calendar date may be written.",
+      "examined": [
+        "https://www.unisg.ch/en/studying/why-hsg/hsg-best-talents/",
+        "https://www.unisg.ch/en/studying/orientation/advice-and-support/financing-your-studies/our-donors",
+        "https://www.unisg.ch/en/studying/orientation/advice-and-support/financing-your-studies/hsg-funds-and-excellence-scholarships"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.unisg.ch/en/studying/orientation/advice-and-support/financing-your-studies/hsg-funds-and-excellence-scholarships/starr-international-foundation-scholarship",
+          "reason": "The record's stored official_source_url. Fetched it first as required: HTTP 404, page does not exist on the official domain."
+        },
+        {
+          "url": "https://www.globaladmissions.com/scholarship/university-of-stgallen-hsg-starr-international-foundation-scholarship",
+          "reason": "Third-party scholarship aggregator. Barred by the contract, and not fetched - it only appeared in a search-result listing, and snippets are not evidence."
+        },
+        {
+          "url": "https://www.unisg.ch/en/studying/admission/application-deadlines",
+          "reason": "Generic HSG admission deadlines page surfaced by search. A generic admissions deadline for a different programme is barred as evidence."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 171,
+      "title": "Modul University Vienna Scholarships",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": "Early Bird Reduction - Eligibility: Application must be submitted by March 15th (Fall semester) and August 15th (Spring semester).",
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.modul.ac.at/study-at-mu/tuition-fees/scholarships-and-grants",
+        "source_type": "official_university_page",
+        "publisher": "Modul University Vienna",
+        "retrieved_at": "2026-10-05T15:31:37Z",
+        "as_of": null,
+        "raw_extract": "'Reductions & Grants' page, section 'Reductions on tuition fees' > 'Early Bird Reduction': 'Amount: EUR 2.000 (EUR 1.000 per semester)' / 'Eligibility: Application must be submitted by March 15th (Fall semester) and August 15th (Spring semester). The admission process must be completed, and the first tuition fee instalment must be paid by April 1st (Fall semester) and September 1st (Spring semester).' | Section 'Exclusive GRANTS OFFERED AT MU' lists MU Alumni Grant, MU Valedictorian Grant, Exchange Alumni Grant and US Veterans Affairs Funding, each described by GPA/value and eligibility with NO application date of any kind.",
+        "exact_deadline_wording": "Application must be submitted by March 15th (Fall semester) and August 15th (Spring semester).",
+        "confidence": "MEDIUM",
+        "notes": "The record's stored official_source_url https://www.modul.ac.at/scholarships returns HTTP 404; the live official equivalent found via the university's own navigation is 'Reductions & Grants' at /study-at-mu/tuition-fees/scholarships-and-grants, which is what the scholarship/grants menu points to. On that page the scholarship grants themselves carry NO deadline, and the only calendar dates on the whole page belong to the Early Bird Reduction, which is a tuition-fee reduction, not a scholarship application. Writing 15 March / 15 August as this record's scholarship deadline would be conflating a discount with a scholarship, i.e. an inference, so I did not. Separately verified that the university's individual scholarship pages diverge: the 20th Anniversary Scholarship page states 'Applications will be assessed and scholarships awarded on a rolling basis, with interviews taking place once per month for applicants who receive a positive evaluation of their admission and scholarship documents.' That rolling statement belongs to one specific named scholarship and cannot be lifted onto this generic 'Modul University Vienna Scholarships' basket record. Different programmes at one institution having different deadlines is explicitly not a conflict and is not a basis for a value. Hence UNKNOWN.",
+        "identity_caveat": "This record is a generic basket ('Modul University Vienna Scholarships') whose source URL is dead. If the catalogue intends one specific MU scholarship, that sub-programme must be named before any of its rules can be applied."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "deadline_display": "No application deadline published for MU scholarships on the official Reductions & Grants page."
+      },
+      "examined": [
+        "https://www.modul.ac.at/study-at-mu/tuition-fees/scholarships-and-grants",
+        "https://www.modul.ac.at/study-at-mu/tuition-fees/mcc-scholarship",
+        "https://www.modul.ac.at/"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.modul.ac.at/scholarships",
+          "reason": "The record's stored official_source_url. Fetched first as required: HTTP 404, page no longer exists."
+        },
+        {
+          "url": "https://www.modul.ac.at/en/admissions/scholarships",
+          "reason": "Guessed alternate path for the dead URL: HTTP 404."
+        },
+        {
+          "url": "https://www.modul.ac.at/study-at-mu/tuition-fees/mcc-scholarship",
+          "reason": "Fetched: the page served is the 20th Anniversary Scholarship, not an MCC scholarship page. Its rolling wording is specific to that one named scholarship and is not evidence for the generic record."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 349,
+      "title": "Erasmus Mundus EMCL Scholarship (European Master's in Clinical Linguistics)",
+      "outcome": "conflicting",
+      "deadline_semantics": "CONFLICTING",
+      "deadline_date": null,
+      "deadline_display": "Fees and Funds page: \"...please note the deadline for scholarship applications is December 15\" || Admission page: \"Applications need to be submitted no later than December 1, 2026.\" / \"The application portal for the intake 2027-2029 opens on October 1 and closes on December 1, 2026\"",
+      "deadline_precision": "varies",
+      "source": {
+        "url": "https://www.emcl.eu/fees",
+        "source_type": "official_scholarship_page",
+        "publisher": "EMCL consortium (University of Groningen / University of Ghent / University of Eastern Finland), official programme site emcl.eu",
+        "retrieved_at": "2026-10-05T15:31:37Z",
+        "as_of": "Fees page references self-payer fees for the 2025-2027 cohort and states selection outcomes are communicated 'from mid-February'; scholarship deadline stated without a year.",
+        "raw_extract": "Section 'Erasmus Mundus Joint Master (EMJM) Scholarships': 'EMJM EMCL scholarships are awarded based on the ranking of students during the application and selection procedure;' / 'On the EMCL application form, you can indicate whether you would like to be considered for an EMCL scholarship (please note the deadline for scholarship applications is December 15);' / 'Upon the completion of the selection procedure by the EMCL Selection Board, each applicant will be informed (from mid-February) about whether s/he/they is/are offered a place in the EMCL programme with or without a scholarship;'",
+        "exact_deadline_wording": "please note the deadline for scholarship applications is December 15",
+        "confidence": "HIGH",
+        "notes": "TWO CREDIBLE OFFICIAL SOURCES DISAGREE ABOUT THE SAME DEADLINE, so per section 6 this is CONFLICTING and no date may be written. Both statements are on the live official programme domain emcl.eu and both were fetched and read in full, not taken from snippets. Source A (https://www.emcl.eu/fees, the scholarship page) says the EMCL scholarship application deadline is 'December 15' (no year given). Source B (https://www.emcl.eu/admission, the programme admission page) says the portal 'closes on December 1, 2026' and 'Applications need to be submitted no later than December 1, 2026', repeated three times, including 'It is NOT possible to submit it later than the deadline of December 1, 2026.' Since the /admission portal is the only route to the scholarship ('you can indicate whether you would like to be considered for an EMCL scholarship' on the application form), the two statements are about the same act of applying. I am NOT resolving this by preferring the more detailed page or by preferring December 1 because it is nearer: that would be invention. SOURCE-URL NOTE: this record's stored official_source_url https://www.clinical-linguistics.eu does not resolve at all (DNS ERR_NAME_NOT_RESOLVED, confirmed via a real browser navigation as well as repeated fetches); the record is flagged quarantined upstream. The current official site for the identical Erasmus Mundus Joint Master Degree is emcl.eu, which I reached via search and then verified by fetching: it names the programme 'The European Master's in Clinical Linguistics (EMCL) is an Erasmus Mundus Joint Master Degree (EMJMD)' and is run by Eastern Finland (matching the record's country Finland), Ghent and Groningen, with EU/partner logos. Identity match is strong, but the stored provider domain is dead, so this record's source URL needs repair upstream regardless of the deadline outcome.",
+        "recommendation": "Resolve with the consortium (emcl@rug.nl) which date governs the 2027-2029 intake before writing any date."
+      },
+      "conflicting_sources": [
+        {
+          "url": "https://www.emcl.eu/fees",
+          "source_type": "official_scholarship_page",
+          "quote": "On the EMCL application form, you can indicate whether you would like to be considered for an EMCL scholarship (please note the deadline for scholarship applications is December 15);",
+          "implied_date_text": "December 15 (no year published)"
+        },
+        {
+          "url": "https://www.emcl.eu/admission",
+          "source_type": "official_programme_page",
+          "quote": "The application portal for the intake 2027-2029 opens on October 1 and closes on December 1, 2026",
+          "implied_date_text": "2026-12-01"
+        },
+        {
+          "url": "https://www.emcl.eu/admission",
+          "source_type": "official_programme_page",
+          "quote": "Applications need to be submitted no later than December 1, 2026.",
+          "implied_date_text": "2026-12-01"
+        }
+      ],
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "varies",
+        "deadline_display": "Conflicting official statements: 'the deadline for scholarship applications is December 15' (emcl.eu/fees) vs 'Applications need to be submitted no later than December 1, 2026' (emcl.eu/admission)."
+      },
+      "examined": [
+        "https://www.emcl.eu/",
+        "https://www.emcl.eu/admission",
+        "https://www.emcl.eu/fees"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.clinical-linguistics.eu",
+          "reason": "The record's stored official_source_url. Fetched three times plus a real browser navigation: DNS ERR_NAME_NOT_RESOLVED, the domain no longer exists. Cannot serve as evidence."
+        },
+        {
+          "url": "https://www.emcl.eu/files/CA-new.pdf",
+          "reason": "EMCL Consortium Agreement, appeared in search results with wording about a 15 December submission date. Not opened, so not used - a snippet is not admissible evidence, and per the contract a cached/secondary rendering cannot stand in for the live pages I did fetch."
+        },
+        {
+          "url": "https://erasmusscholarship.com/erasmus-mundus-emcl-scholarship",
+          "reason": "Third-party scholarship aggregator seen only in search results. Not fetched, not used."
+        },
+        {
+          "url": "https://studiekiezer.ugent.be/infobrochure/en/HMEMCL/2026",
+          "reason": "Official university page, but it states a 15 December deadline for a different act (enrolment at the coordinating university for a prior academic year) and therefore disagrees in wording; not used to resolve the conflict in either direction."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 405,
+      "title": "University of Auckland Top Achiever Scholarship",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Closing date: 12 August 2026 at midday",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/university-of-auckland-top-achiever-scholarship-900-all.html",
+        "source_type": "official_university_page",
+        "publisher": "University of Auckland (Waipapa Taumata Rau)",
+        "retrieved_at": "2026-10-05T15:31:37Z",
+        "as_of": "Round opening 20 May 2026, closing 12 August 2026 at midday; page states 'Not currently open for applications' and 'Offer rate: Annually'.",
+        "raw_extract": "'Application status: Not currently open for applications' / 'Applicable study: First year of full-time study for an undergraduate degree programme' / 'Opening date: 20 May 2026' / 'Closing date: 12 August 2026 at midday' / 'Offer rate: Annually' | 'How to apply: Scholarship applications will usually open around six weeks before the closing date. Please read the regulations carefully to be sure you are eligible before you apply.'",
+        "exact_deadline_wording": "Closing date: 12 August 2026 at midday",
+        "confidence": "HIGH",
+        "notes": "EXPIRED MISMATCH. The official page states an explicit calendar closing date, but 12 August 2026 had already passed at retrieval (2026-10-05) and the page itself confirms the round is shut ('Not currently open for applications'). The record's verification_status is 'active' (open/upcoming), so per the contract I do NOT write the stale 2026-08-12 and do NOT silently move it to 2027. The next round is undated: the page only says applications 'will usually open around six weeks before the closing date' and that the offer rate is 'Annually', which is recurring timing and cannot be converted to a calendar date. Semantics EXACT records the source's precision; deadline_date is null because the only date published is stale."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "Closing date: 12 August 2026 at midday (stale - round already closed; next round not published)"
+      },
+      "semantics_note": "EXACT asserts source precision only; deadline_date is null under the contract's expired_mismatch rule. ANNUAL/recurring is the equally defensible reading for the undated next cycle. Either way no calendar date may be written.",
+      "examined": [
+        "https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/university-of-auckland-top-achiever-scholarship-900-all.html",
+        "https://www.auckland.ac.nz/assets/study/scholarships-and-funding/find-a-scholarship-or-award/regulations/university-of-auckland-top-achiever-scholarship.pdf"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.auckland.ac.nz/assets/study/scholarships-and-funding/find-a-scholarship-or-award/regulations/university-of-auckland-top-achiever-scholarship.pdf",
+          "reason": "The record's catalogue_url (regulations PDF). Fetched, but the response was raw undecodable PDF binary (Flate-compressed streams), so no verbatim quote can be taken from it. Recorded as examined rather than cited as a source."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 406,
+      "title": "University of Auckland Vaka Moana Scholarship",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Closing date: 12 August 2026 at midday",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/uoa-vaka-moana-scholarship-1080-all.html",
+        "source_type": "official_university_page",
+        "publisher": "University of Auckland (Waipapa Taumata Rau)",
+        "retrieved_at": "2026-10-05T15:31:37Z",
+        "as_of": "Round opening 20 May 2026, closing 12 August 2026 at midday; page states 'Not currently open for applications' and 'Offer rate: Annually'.",
+        "raw_extract": "'Application status: Not currently open for applications' / 'Applicable study: First year of undergraduate study for Pacific students' / 'Opening date: 20 May 2026' / 'Closing date: 12 August 2026 at midday' / 'Offer rate: Annually' | 'How to apply: Scholarship applications will usually open around six weeks before the closing date. Please read the regulations carefully to be sure you are eligible before you apply.'",
+        "exact_deadline_wording": "Closing date: 12 August 2026 at midday",
+        "confidence": "HIGH",
+        "notes": "Same situation as the Top Achiever Scholarship and assessed independently on this record's own official page: the page states an explicit calendar closing date of 12 August 2026 at midday, which had already passed at retrieval (2026-10-05), and the page confirms 'Not currently open for applications'. The record's verification_status is 'active', so per the contract I do NOT write the stale date and do NOT roll it to 2027. The next round is undated ('will usually open around six weeks before the closing date'; 'Offer rate: Annually'), which is recurring timing and must not be converted to a date. This is NOT a CONFLICTING case: the two University of Auckland pages agree with each other, and different scholarships at one institution having the same annual round is not a disagreement about the same deadline."
+      },
+      "field_mapping": {
+        "deadline_date": null,
+        "deadline_precision": "exact",
+        "deadline_display": "Closing date: 12 August 2026 at midday (stale - round already closed; next round not published)"
+      },
+      "semantics_note": "EXACT asserts source precision only; deadline_date is null under the contract's expired_mismatch rule. ANNUAL/recurring is the equally defensible reading for the undated next cycle. Either way no calendar date may be written.",
+      "examined": [
+        "https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/uoa-vaka-moana-scholarship-1080-all.html",
+        "https://www.auckland.ac.nz/assets/study/scholarships-and-funding/find-a-scholarship-or-award/regulations/university-of-auckland-vaka-moana-scholarship.pdf"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.auckland.ac.nz/assets/study/scholarships-and-funding/find-a-scholarship-or-award/regulations/university-of-auckland-vaka-moana-scholarship.pdf",
+          "reason": "The record's catalogue_url (regulations PDF). Fetched, but the response was raw undecodable PDF binary, so no verbatim quote can be taken from it. Recorded as examined rather than cited as a source."
+        }
+      ]
+    }
+  ]
+}

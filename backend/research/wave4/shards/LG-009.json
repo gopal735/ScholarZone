@@ -1,0 +1,58 @@
+{
+  "shard_id": "LG-009",
+  "topic": "logo",
+  "hosts": [
+    "bse.eu",
+    "careers.cern",
+    "study-uk.britishcouncil.org",
+    "www.lut.fi"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 78,
+      "title": "GREAT Scholarships 2026 â€” University of Edinburgh (Ghana, Mexico and Thailand)",
+      "official_source": "The University of Edinburgh, in partnership with the British Council",
+      "official_source_url": "https://study-uk.britishcouncil.org/scholarships-funding/great-scholarships/bangladesh",
+      "catalogue_url": null,
+      "country": "United Kingdom",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 97,
+      "title": "Barcelona School of Economics Master's Tuition Funding and Scholarships",
+      "official_source": "Barcelona School of Economics",
+      "official_source_url": "https://bse.eu/masters-degrees/admissions",
+      "catalogue_url": "https://web.archive.org/web/20241114021340/https://bse.eu/study/masters-programs/upf-phd-track",
+      "country": "Spain",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 157,
+      "title": "CERN Doctoral Student Programme",
+      "official_source": "CERN",
+      "official_source_url": "https://careers.cern/programmes/doctoral-studentship",
+      "catalogue_url": "https://careers.cern/explore-fields-of-work",
+      "country": "Switzerland",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 158,
+      "title": "CERN Research Fellowship",
+      "official_source": "CERN",
+      "official_source_url": "https://careers.cern/programmes/research-fellowship",
+      "catalogue_url": "https://careers.cern/explore-fields-of-work",
+      "country": "Switzerland",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 267,
+      "title": "LUT Scholarship and Early Bird Discount (master's studies)",
+      "official_source": "LUT University",
+      "official_source_url": "https://www.lut.fi/en/tuition-fees-and-scholarships",
+      "catalogue_url": "https://www.lut.fi/en/studies/technology/masters-programmes-technology",
+      "country": "Finland",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

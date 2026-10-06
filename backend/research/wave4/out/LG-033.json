@@ -1,0 +1,274 @@
+{
+  "shard_id": "LG-033",
+  "agent_completed": true,
+  "topic": "logo",
+  "notes": "All 5 records resolved to an official institutional brand mark on the awarding organisation's own domain. Every candidate asset was fetched and returned HTTP 200 with Content-Type: image/svg+xml, and each was rendered and visually confirmed to be the correct organisation's logo (single combined render check). No favicon/apple-touch-icon/safari-pinned-tab, sprite, social avatar, aggregator, screenshot or partner-logo-strip asset was used. The shard's official_source_url for record 294 is dead (HTTP 404, Czech 'Stranka nenalezena'); the live replacement is recorded under examined. usp.ac.fj returns HTTP 403 to plain HTTP clients, so the two USP pages were fetched in a real browser engine and the asset URLs were then re-verified directly.",
+  "records": [
+    {
+      "scholarship_id": 294,
+      "title": "Scholarships of the Government of the Czech Republic for Students from Developing Countries",
+      "outcome": "recovered",
+      "image_url": "https://msmt.gov.cz/_next/static/media/logo-cs.1qdm9b5a7bra9.svg",
+      "image_source_url": "https://msmt.gov.cz/",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Served from the Czech Ministry of Education, Youth and Sports' own government domain (msmt.gov.cz) as the site header/brand mark, not from a CDN, favicon path or social card. Fetched directly: HTTP 200, Content-Type image/svg+xml, 12604 bytes, opening markup '<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"28 27 140 64\" ...>'. Rendered and visually confirmed as the Czech lion mark plus the wordmark 'Ministerstvo školství, mládeže a tělovychovy'. The record's official_source is 'Ministry of Education, Youth and Sports (MŠMT) / Dům zahraniční spolupráce (DZS)', so the MŠMT mark is the correct official brand for the awarding ministry. The shard's official_source_url returns HTTP 404; the live programme page is https://msmt.gov.cz/mezinarodni-vztahy/stipendia-vlady-cr-rozvojove-zeme-1 and the ministry's own media/brand page is https://msmt.gov.cz/ministerstvo/pro-media."
+      },
+      "source": {
+        "url": "https://msmt.gov.cz/",
+        "publisher": "Ministerstvo školství, mládeže a tělovýchovy (Ministry of Education, Youth and Sports of the Czech Republic)",
+        "retrieved_at": "2026-10-05T15:37:28Z",
+        "raw_extract": "<link rel=\"preload\" as=\"image\" href=\"/_next/static/media/logo-cs.1qdm9b5a7bra9.svg\"/> ... <img src=\"https://msmt.gov.cz/_next/static/media/logo-cs.1qdm9b5a7bra9.svg\" alt=\"Ministerstvo školství, mládeže a tělovýchovy\" class=\"h-16 w-auto\">",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://msmt.gov.cz/eu-and-international-affairs/government-scholarships-developing-countries",
+        "https://msmt.gov.cz/mezinarodni-vztahy/stipendia-vlady-cr-rozvojove-zeme-1",
+        "https://msmt.gov.cz/ministerstvo/pro-media",
+        "https://www.dzs.cz/",
+        "https://www.studyin.cz/"
+      ],
+      "rejected": [
+        {
+          "url": "https://msmt.gov.cz/eu-and-international-affairs/government-scholarships-developing-countries",
+          "reason": "Dead link. Returns HTTP 404 with '<title>Stranka nenalezena</title>' ('Page not found'). Contains no images at all; its only icon links are favicon variants."
+        },
+        {
+          "url": "https://msmt.gov.cz/ministerstvo/pro-media",
+          "reason": "Official brand page confirmed to exist ('<title>Pro média / logo MŠMT | MŠMT</title>', contains the link labelled 'Logo MŠMT ke stažení') but it exposes no first-party downloadable logo file. It only links out to the third-party brand portal below, and its own image references are favicons plus a strip of unrelated partner logos."
+        },
+        {
+          "url": "https://statni-sprava.brandcloud.pro/cs/shared-folder/169176/173477?shareId=3gkG9N01",
+          "reason": "Third-party vendor brand portal (Brandcloud) hosting state-administration brand assets. Not an official government domain; shared multi-ministry asset store. Rejected in favour of the same logo served directly from msmt.gov.cz."
+        },
+        {
+          "url": "https://cms.msmt.gov.cz/wp-content/uploads/2025/08/logo_DZS.png",
+          "reason": "Partner-logo strip in the site navigation (rendered with alt 'Partner logo' alongside logo_NPO.png, logo_CSI2, logo_NAU, logo_cermat, logo_NTK and others on the shared WordPress CMS host). Shared-CDN partner logo grid, not a brand asset."
+        },
+        {
+          "url": "https://msmt.gov.cz/assets/og/og-image.png",
+          "reason": "Open Graph social share image. Social/UI chrome, not a brand asset."
+        },
+        {
+          "url": "https://msmt.gov.cz/favicon.ico, https://msmt.gov.cz/icon0.svg, https://msmt.gov.cz/icon1.png, https://msmt.gov.cz/apple-icon.png",
+          "reason": "favicon / apple-touch-icon assets. Explicitly rejected by the contract."
+        },
+        {
+          "url": "https://www.dzs.cz/themes/reason_dzs/img/logo/logo_msmt_cerne_rgb.svg",
+          "reason": "The MŠMT logo, but served from DZS's own theme asset directory (dzs.cz/themes/reason_dzs/img/logo/) rather than from the ministry's domain. Identity is correct but the first-party ministry-hosted copy on msmt.gov.cz is the stronger official source, so this was not used."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 384,
+      "title": "Erasmus Trustfonds Scholarship / TSH Changemaker Scholarship (Erasmus MC)",
+      "outcome": "recovered",
+      "image_url": "https://www.erasmusmc.nl/-/media/erasmusmc/images/_platform/logos/full-colour-svg-main-brand-responsive-1-4.svg?la=nl-NL&hash=C7E047C1C633FD6545DF7DA558B54C36",
+      "image_source_url": "https://www.erasmusmc.nl/nl-nl/",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "erasmusmc.nl is the official website of Erasmus MC, the awarding institution named in the record's official_source ('Erasmus University Rotterdam (Erasmus MC)'). The asset is the site's main brand logo (class 'navigation__logo', alt 'Logo Erasmus MC. Ga naar de homepagina'), served from Erasmus MC's own domain - not a CDN, favicon or social image. Fetched directly: HTTP 200, Content-Type image/svg+xml, 12393 bytes, '<svg width=\"254\" height=\"109\" viewBox=\"0 0 254 109\" ...>'. Rendered and visually confirmed as the 'Erasmus MC' wordmark with signature. The scholarship page itself on eur.nl renders its logo only as a <use> reference into an SVG sprite, which the contract rejects, so the Erasmus MC institutional brand asset was used instead."
+      },
+      "source": {
+        "url": "https://www.erasmusmc.nl/nl-nl/",
+        "publisher": "Erasmus MC (Erasmus Medisch Centrum Rotterdam)",
+        "retrieved_at": "2026-10-05T15:37:28Z",
+        "raw_extract": "<img src=\"/-/media/erasmusmc/images/_platform/logos/full-colour-svg-main-brand-responsive-1-4.svg?la=nl-NL&hash=C7E047C1C633FD6545DF7DA558B54C36\" class=\"navigation__logo\" alt=\"Logo Erasmus MC. Ga naar de homepagina\">",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.eur.nl/en/erasmusmc/programmes/practical-matters/scholarships/erasmus-trustfonds-scholarship-tsh-changemaker-scholarship",
+        "https://www.eur.nl/en/services/corporate-identity",
+        "https://www.eur.nl/services/huisstijl",
+        "https://www.eur.nl/en/services/press-images",
+        "https://www.erasmusmc.nl/nl-nl/"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.eur.nl/themes/custom/corporate/dist/images/defs/svg/sprite.defs.svg",
+          "reason": "SVG sprite/spritesheet. The eur.nl logo exists only as a <symbol id=\"logo\"> inside this 215,887-byte sprite, referenced as 'sprite.defs.svg#logo'. Rejected explicitly by the contract (sprites, spritesheets) and unusable as a direct image URL."
+        },
+        {
+          "url": "https://www.eur.nl/en/services/corporate-identity",
+          "reason": "Official corporate identity page, but exposes no downloadable logo file. Page content is only 'Do you have questions about logos, our EUR colours or which font we use...' with contact details only; zero .svg/.png/.eps/.ai/.zip asset links. Probed likely first-party logo paths (/themes/custom/corporate/dist/images/logo.svg, /logo.png, /defs/svg/logo.svg, /defs/svg/logo.defs.svg) - all HTTP 404."
+        },
+        {
+          "url": "https://www.eur.nl/services/huisstijl",
+          "reason": "Dutch-language brand guidelines page. Content is guidance and a coordinator contact ('huisstijlcoördinator', huisstijl@eur.nl) with zero downloadable asset links."
+        },
+        {
+          "url": "https://www.eur.nl/en/services/press-images",
+          "reason": "Press photography download page (campus and student photos), not a brand asset page."
+        },
+        {
+          "url": "https://www.eur.nl/favicon-16x16.png, https://www.eur.nl/favicon-32x32.png, https://www.eur.nl/apple-touch-icon.png",
+          "reason": "favicon / apple-touch-icon assets. Explicitly rejected by the contract."
+        },
+        {
+          "url": "https://www.eur.nl/system/files/styles/responsive_w1450_r21_8/private/verify/ZLqhTJmDLTlHIemuJ07h-5eeca0ceff7fe104c74923cf3642afa5.jpg.avif",
+          "reason": "Decorative photograph ('Campus Woudestein in the morning.') on the corporate identity page. Hero/decorative art, not a logo."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 524,
+      "title": "Postgraduate Sanctuary Scholarship - University of Westminster",
+      "outcome": "recovered",
+      "image_url": "https://www.westminster.ac.uk/themes/uow_theme/images/navbar-westminster-logo.svg",
+      "image_source_url": "https://www.westminster.ac.uk/study/fees-and-funding/scholarships/postgraduate-sanctuary-scholarship",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "The logo is the University of Westminster's own masthead brand asset, served from www.westminster.ac.uk and applied on the scholarship page itself (a.navbar-brand). The page renders zero <img> elements and zero inline <svg>; the brand mark is a CSS background-image on the navbar-brand anchor, so the asset URL was read out of the page's own compiled theme stylesheet. Fetched directly: HTTP 200, Content-Type image/svg+xml, 3600 bytes, '<svg ... width=\"170.214\" height=\"41.049\" ...>'. Rendered and visually confirmed as the 'UNIVERSITY OF WESTMINSTER 1836' wordmark with the cross device. Not a favicon, not a sprite, not third-party."
+      },
+      "source": {
+        "url": "https://www.westminster.ac.uk/study/fees-and-funding/scholarships/postgraduate-sanctuary-scholarship",
+        "publisher": "University of Westminster, London",
+        "retrieved_at": "2026-10-05T15:37:28Z",
+        "raw_extract": "Page title: \"Postgraduate Sanctuary Scholarship | University of Westminster, London\". Page stylesheet https://www.westminster.ac.uk/sites/default/public-files/css/css_tmvCPFjQLMqhcKad7G4bK3GC3ci2WWgUt3SDj_U2W_Y.css?...theme=uow_theme contains verbatim: \":transparent;border:0;background-color:#fff;background-image:url(/themes/uow_theme/images/navbar-westminster-logo.svg);background-position:10px 15px;background-repeat:no-repeat;\" - rendered on element <a class=\"navbar-brand\"> of this scholarship page.",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.westminster.ac.uk/study/fees-and-funding/scholarships/postgraduate-sanctuary-scholarship",
+        "https://www.westminster.ac.uk/",
+        "https://imagelibrary.westminster.ac.uk/"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.westminster.ac.uk/sites/default/public-files/styles/mini_80x80/public/general-images/students-on-street.jpg",
+          "reason": "Decorative/photographic content image in a 80x80 style derivative. Hero art, not a logo."
+        },
+        {
+          "url": "https://www.westminster.ac.uk/sites/default/public-files/masthead-courses/open-days-masthead-2025.jpg",
+          "reason": "Promotional masthead carousel photograph ('Undergraduate open day'). Decorative hero art, not a logo."
+        },
+        {
+          "url": "https://imagelibrary.westminster.ac.uk/",
+          "reason": "Photograph library for marketing imagery. No brand/wordmark assets; a photography repository, not a brand page."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 719,
+      "title": "Pacific Scholarship for Excellence in Research & Innovation (PSERI)",
+      "outcome": "recovered",
+      "image_url": "https://www.usp.ac.fj/research/wp-content/uploads/2020/07/Full-Colour.svg",
+      "image_source_url": "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships/pacific-scholarship-for-excellence-in-research-innovation-pseri/",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "The University of the South Pacific's own institutional logo, loaded from the official usp.ac.fj domain in the site's logo slot (div.footer__logo > a[href='https://www.usp.ac.fj'] > img) on the PSERI scholarship page itself. Fetched directly after discovery: HTTP 200, Content-Type image/svg+xml, 22019 bytes, '<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"146\" height=\"65\" viewBox=\"0 0 146 65\" ...>'. Rendered and visually confirmed as the USP teal circular emblem (vector, so intrinsic size is not a resolution limit). The PSERI page carries no scholarship-specific brand mark - its only other images are decorative ('web_WHYUSP_355555.jpg', 'Work-with-us-3.jpg'). Note: usp.ac.fj returns HTTP 403 to plain HTTP clients, so the page had to be read in a real browser engine; the asset URL itself was then re-verified directly."
+      },
+      "source": {
+        "url": "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships/pacific-scholarship-for-excellence-in-research-innovation-pseri/",
+        "publisher": "The University of the South Pacific (USP)",
+        "retrieved_at": "2026-10-05T15:37:28Z",
+        "raw_extract": "Page title: \"Pacific Scholarship for Excellence in Research & Innovation (PSERI) - Research\"; page <h1>: \"The Research & Innovation Office\". Verbatim logo markup from the live page: <img src=\"https://www.usp.ac.fj/research/wp-content/uploads/2020/07/Full-Colour.svg\" alt=\"\"> inside <div class=\"col-xxl-3 order-last order-xxl-first footer__logo\"> > <a href=\"https://www.usp.ac.fj\">.",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships/pacific-scholarship-for-excellence-in-research-innovation-pseri",
+        "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships/pacific-scholarship-for-excellence-in-research-innovation-pseri/",
+        "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships",
+        "https://www.usp.ac.fj/"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.usp.ac.fj/research/wp-content/uploads/2021/08/web_WHYUSP_355555.jpg",
+          "reason": "Decorative promotional photograph (400x300) on the page. Hero/content art, not a logo."
+        },
+        {
+          "url": "https://www.usp.ac.fj/research/wp-content/uploads/2021/04/Work-with-us-3.jpg",
+          "reason": "Decorative promotional photograph (489x210) on the page. Hero/content art, not a logo."
+        },
+        {
+          "url": "https://www.usp.ac.fj/wp-content/uploads/2025/05/Web-Home-Banner-2024-USP-OPOS-1920x795-v2111-homepage.jpg",
+          "reason": "Homepage event banner image. Decorative hero art, not a logo."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 722,
+      "title": "Pacific Regional Sports Research Scholarship (PRSRS)",
+      "outcome": "recovered",
+      "image_url": "https://www.usp.ac.fj/research/wp-content/uploads/2020/07/Full-Colour.svg",
+      "image_source_url": "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships/sports-scholars/",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Same official USP institutional mark as record 719 (identical asset, 22019 bytes, HTTP 200 image/svg+xml), because PRSRS is a USP-administered postgraduate scholarship whose official page is on usp.ac.fj and the scholarship itself carries no separate brand mark. The PRSRS page's only other images are the same two decorative photographs as PSERI. The co-provider named in the record, the Oceania National Olympic Committees, was checked: its own official site oceanianoc.org does publish an ONOC logo, but only from a third-party Webflow CDN and as a navigation asset, so it was not used; the USP logo is both first-party to the record's official_source_url and identity-correct. Note: usp.ac.fj returns HTTP 403 to plain HTTP clients, so the page had to be read in a real browser engine; the asset URL itself was then re-verified directly."
+      },
+      "source": {
+        "url": "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships/sports-scholars/",
+        "publisher": "The University of the South Pacific (USP)",
+        "retrieved_at": "2026-10-05T15:37:28Z",
+        "raw_extract": "Page title: \"Pacific Regional Sports Research Scholarship (PRSRS) - Research\"; page <h1>: \"The Research & Innovation Office\". Verbatim logo markup from the live page: <img src=\"https://www.usp.ac.fj/research/wp-content/uploads/2020/07/Full-Colour.svg\" alt=\"\"> inside <div class=\"col-xxl-3 order-last order-xxl-first footer__logo\"> > <a href=\"https://www.usp.ac.fj\">.",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships/sports-scholars",
+        "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships/sports-scholars/",
+        "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships",
+        "https://www.usp.ac.fj/",
+        "https://oceanianoc.org/",
+        "https://oceanianoc.org/resource-centre/"
+      ],
+      "rejected": [
+        {
+          "url": "https://cdn.prod.website-files.com/5eb4a50ae668403b239720c9/5ecda6081227750c12ade4ff_onoc-nav-logo-full.svg",
+          "reason": "The ONOC logo is real and oceanianoc.org is genuinely the official Oceania NOC site, but the asset is only served from a third-party Webflow CDN (cdn.prod.website-files.com) as a navigation logo with empty alt text. Rejected as a third-party-CDN asset; the first-party USP logo is preferred for this record."
+        },
+        {
+          "url": "https://cdn.prod.website-files.com/5eb4a50ae668403b239720c9/5fb40c968c9000334d665a03_onoc-favicon.png",
+          "reason": "favicon asset. Explicitly rejected by the contract."
+        },
+        {
+          "url": "https://www.usp.ac.fj/research/wp-content/uploads/2021/08/web_WHYUSP_355555.jpg, https://www.usp.ac.fj/research/wp-content/uploads/2021/04/Work-with-us-3.jpg",
+          "reason": "Decorative promotional photographs on the PRSRS page. Hero/content art, not a logo."
+        }
+      ]
+    }
+  ]
+}

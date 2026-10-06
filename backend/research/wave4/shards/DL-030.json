@@ -1,0 +1,111 @@
+{
+  "shard_id": "DL-030",
+  "topic": "deadline",
+  "hosts": [
+    "college.harvard.edu",
+    "mccallmacbainscholars.org",
+    "www.anrfonline.in",
+    "www.jku.at",
+    "www.studienfinanzierung.uzh.ch",
+    "www.universityofgalway.ie"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 83,
+      "title": "McCall MacBain Scholarships at McGill University",
+      "official_source": "McCall MacBain Scholarships at McGill (McGill University / McCall MacBain Foundation)",
+      "official_source_url": "https://mccallmacbainscholars.org/apply",
+      "catalogue_url": "https://mccallmacbainscholars.org/program",
+      "country": "Canada",
+      "deadline_display": "The 2027 cycle has closed: September 23, 2026 at 4:00 PM Eastern Time for students and graduates of universities in Canada and the United States and Canadians abroad, and August 19, 2026 at 4:00 PM Eastern Time for applicants from all other countries. The application is available online from June to August/September each year for Summer/Fall entry the following year.",
+      "deadline_precision": "recurring",
+      "application_period": "Applications open online in June and close in August or September each year for Summer/Fall admission the following year; the 2027 cohort closed on August 19 and September 23, 2026.",
+      "verification_status": "active"
+    },
+    {
+      "id": 125,
+      "title": "Harvard College Need-Based Financial Aid (International Students)",
+      "official_source": "Harvard University",
+      "official_source_url": "https://college.harvard.edu/financial-aid/apply-financial-aid",
+      "catalogue_url": null,
+      "country": "United States",
+      "deadline_display": "Harvard College states: \"Prospective Students: November 1st, for Restrictive Early Action candidates. February 1st, for Regular Decision candidates. March 1st, for Transfer candidates. Current Students: May 1st.\"",
+      "deadline_precision": "varies",
+      "application_period": "Annual cycle tied to Harvard's Restrictive Early Action (November 1), Regular Decision (February 1) and Transfer (March 1) admission rounds; current students reapply by May 1.",
+      "verification_status": "active"
+    },
+    {
+      "id": 166,
+      "title": "Johannes Kepler University Linz (JKU) Scholarships",
+      "official_source": "Johannes Kepler University Linz",
+      "official_source_url": "https://www.jku.at/en/studies/scholarships",
+      "catalogue_url": null,
+      "country": "Austria",
+      "deadline_display": "Varies (check official website)",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 361,
+      "title": "ANRF Ramanujan Fellowship",
+      "official_source": "Anusandhan National Research Foundation (ANRF)",
+      "official_source_url": "https://www.anrfonline.in/ANRF/Ramanujan_fellowship",
+      "catalogue_url": "https://www.anrfonline.in/ANRF/Ramanujan_fellowship",
+      "country": "India",
+      "deadline_display": "No fixed application deadline is published; nominations are submitted year-round through the ANRF online portal and selections are made periodically by an empowered Selection Committee.",
+      "deadline_precision": "unknown",
+      "application_period": "Continuous. Nominees register on the ANRF portal, fill the Ramanujan Fellowship nomination form and send it to their nominator at the host institution, who verifies and submits it to ANRF. Selection is made periodically by an empowered Selection Committee.",
+      "verification_status": "active"
+    },
+    {
+      "id": 364,
+      "title": "University of Galway Global Scholarships",
+      "official_source": "University of Galway",
+      "official_source_url": "https://www.universityofgalway.ie/global-galway/globalscholarships",
+      "catalogue_url": "https://www.universityofgalway.ie/global-galway/globalscholarships/scholarshiptermsconditions",
+      "country": "Ireland",
+      "deadline_display": "The official Global Scholarships hub and Terms & Conditions pages publish no application deadline for 2027/28; deadlines are set per college or school scholarship page.",
+      "deadline_precision": "varies",
+      "application_period": "For the 2027/28 academic year, valid for Autumn 2027 entry only. The scheme is awarded annually and more than 280 scholarships were awarded in the previous year.",
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 463,
+      "title": "UZH Student Financial Aid Office – Scholarships",
+      "official_source": "Studienfinanzierung.Uzh.Ch",
+      "official_source_url": "https://www.studienfinanzierung.uzh.ch/en.html",
+      "catalogue_url": "https://www.studienfinanzierung.uzh.ch/en/faq/faq_scholarships_loans_requests.html",
+      "country": "Switzerland",
+      "deadline_display": "You can submit your application",
+      "deadline_precision": "unknown",
+      "application_period": "Deadlines",
+      "verification_status": "active"
+    },
+    {
+      "id": 466,
+      "title": "UZH Hardship Loan",
+      "official_source": "University of Zurich Student Financial Aid Office",
+      "official_source_url": "https://www.studienfinanzierung.uzh.ch/en/financial_support.html",
+      "catalogue_url": "https://www.studienfinanzierung.uzh.ch/en/faq/faq_scholarships_loans_requests.html",
+      "country": "Switzerland",
+      "deadline_display": "\"You can submit your application at any time via portal. Repeat applications are only possible every 6 months.\"",
+      "deadline_precision": "rolling",
+      "application_period": "Rolling, all year round",
+      "verification_status": "active"
+    },
+    {
+      "id": 480,
+      "title": "Harvard College Need-Based Financial Aid 2027-2028",
+      "official_source": "Harvard University",
+      "official_source_url": "https://college.harvard.edu/financial-aid/apply-financial-aid/prospective-students",
+      "catalogue_url": null,
+      "country": "United States",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": null,
+      "verification_status": "active"
+    }
+  ]
+}

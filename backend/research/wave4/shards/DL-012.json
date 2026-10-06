@@ -1,0 +1,110 @@
+{
+  "shard_id": "DL-012",
+  "topic": "deadline",
+  "hosts": [
+    "futurestudents.yorku.ca",
+    "tigp.sinica.edu.tw",
+    "www.hec.gov.rw",
+    "www.jasso.go.jp",
+    "www.sydney.edu.au"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 12,
+      "title": "JASSO Monbukagakusho Honors Scholarship",
+      "official_source": "Japan Student Services Organization (JASSO)",
+      "official_source_url": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/about.html",
+      "catalogue_url": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/index.html",
+      "country": "Japan",
+      "deadline_display": "Varies by institution",
+      "deadline_precision": "unknown",
+      "application_period": "Varies by educational institution - inquire at the international student office of the enrolled institution",
+      "verification_status": "active"
+    },
+    {
+      "id": 25,
+      "title": "JASSO Student Exchange Support Program",
+      "official_source": "Japan Student Services Organization (JASSO)",
+      "official_source_url": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/ukeire.html",
+      "catalogue_url": null,
+      "country": "Japan",
+      "deadline_display": "Varies by Japanese host university",
+      "deadline_precision": "unknown",
+      "application_period": "Varies by host university agreement",
+      "verification_status": "active"
+    },
+    {
+      "id": 49,
+      "title": "Annie Farrand Scholarship in Agricultural Science (International)",
+      "official_source": "University of Sydney",
+      "official_source_url": "https://www.sydney.edu.au/scholarships/d/farrand-scholarship-in-agricultural-science--international-.html",
+      "catalogue_url": "https://www.sydney.edu.au/science/schools/school-of-life-and-environmental-sciences.html",
+      "country": "Australia",
+      "deadline_display": "No application required. The only close date published on the official page is 01 December 2025, which has already passed, and the open date is listed as N/A, so the next cycle's date is not yet published.",
+      "deadline_precision": "month",
+      "application_period": "Annual award, established in 2023, awarded on the basis of unconditional admission offers received by the published close date. The currently published close date of 01 December 2025 has passed and the University has not yet posted a 2027 date.",
+      "verification_status": "active"
+    },
+    {
+      "id": 89,
+      "title": "York University President's International Scholarship of Excellence",
+      "official_source": "York University",
+      "official_source_url": "https://futurestudents.yorku.ca/financing-your-degree/international-scholarships/presidents-international-scholarship-excellence",
+      "catalogue_url": null,
+      "country": "Canada",
+      "deadline_display": "~January 26, 2026",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 146,
+      "title": "Taiwan International Graduate Program (TIGP) - Ph.D. Scholarship and Stipend, Academia Sinica",
+      "official_source": "Academia Sinica (Taiwan International Graduate Program), in collaboration with partner universities",
+      "official_source_url": "https://tigp.sinica.edu.tw",
+      "catalogue_url": null,
+      "country": "Taiwan",
+      "deadline_display": "The TIGP Admission Office receives online applications 'from November 1st to February 1st every year' (GMT+8). The most recent cycle, for fall 2026 entry, closed at 1 February 2026 and admissions results were announced on 20 July 2026. No application announcement for the next cycle had been posted as of 2026-10-04, so no exact calendar date is recorded.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual, 1 November to 1 February (GMT+8). TIGP posts a 'TIGP Application Announcement' each November (the 2026 one was published 2025-11-01). Admission results are usually announced in late June or early July, and admitted applicants enrol in the following fall semester.",
+      "verification_status": "active"
+    },
+    {
+      "id": 240,
+      "title": "JASSO Reservation Program for Monbukagakusho Honors Scholarship for Privately-Financed International Students by Pre-arrival Admission",
+      "official_source": "JASSO (Japan Student Services Organization)",
+      "official_source_url": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/yoyaku_tonichimae.html",
+      "catalogue_url": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/yoyaku_tonichimae.html",
+      "country": "Japan",
+      "deadline_display": "No JASSO deadline is published. Applications are handled entirely through the school the applicant plans to enrol in, so the deadline is the school's own pre-arrival admission and scholarship nomination deadline.",
+      "deadline_precision": "varies",
+      "application_period": "School-by-school, twice a year, matching the Japanese enrolment cycles: spring enrolment (April) and autumn enrolment (September or October). JASSO publishes the eligible school and department lists for each cycle; for 2026 the autumn lists were published in June 2026 and the spring lists in January 2026.",
+      "verification_status": "active"
+    },
+    {
+      "id": 376,
+      "title": "JASSO Monbukagakusho Honors Scholarship for Privately-Financed International Students",
+      "official_source": "Japan Student Services Organization (JASSO)",
+      "official_source_url": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/index.html",
+      "catalogue_url": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/about.html",
+      "country": "Japan",
+      "deadline_display": "\"Please ask the staff at the educational institution in which you are enrolled.\" JASSO publishes no application deadline of its own; each educational institution runs its own selection.",
+      "deadline_precision": "varies",
+      "application_period": "Applications are handled by the enrolled educational institution; JASSO publishes 2026 selection results and runs annual reservation rounds tied to the EJU",
+      "verification_status": "active"
+    },
+    {
+      "id": 674,
+      "title": "Kingdom of Morocco – Government of Rwanda Scholarships (2026/2027)",
+      "official_source": "Kingdom of Morocco, scholarship call published by the Higher Education Council (HEC) of Rwanda",
+      "official_source_url": "https://www.hec.gov.rw/fileadmin/user_upload/HEC/Scholarships/KINGDOM_OF_MOROCCO_-__GOVERNMENT_OF_RWANDA_SCHOLARSHIPS.pdf",
+      "catalogue_url": "https://www.hec.gov.rw/updates/scholarships",
+      "country": "Morocco",
+      "deadline_display": "29 August 2026 (2026/2027 cycle)",
+      "deadline_precision": "recurring",
+      "application_period": "Announced 26 August 2026 for entry in academic year 2026/2027; the 2026/2027 window closed on 29 August 2026.",
+      "verification_status": "needs_review"
+    }
+  ]
+}

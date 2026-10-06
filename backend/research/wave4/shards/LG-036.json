@@ -1,0 +1,49 @@
+{
+  "shard_id": "LG-036",
+  "topic": "logo",
+  "hosts": [
+    "admision.pucp.edu.pe",
+    "akf.org",
+    "research.google",
+    "www.fnu.ac.fj"
+  ],
+  "record_count": 4,
+  "records": [
+    {
+      "id": 130,
+      "title": "Aga Khan Foundation International Scholarship Programme (AKF ISP) - Next Cycle, Opening Early 2027",
+      "official_source": "Aga Khan Foundation (Aga Khan Development Network)",
+      "official_source_url": "https://akf.org/international-scholarship-programme",
+      "catalogue_url": "https://akf.org/international-scholarship-programme",
+      "country": "Multiple",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 486,
+      "title": "Google PhD Fellowship Program",
+      "official_source": "Google Research",
+      "official_source_url": "https://research.google/programs-and-events/phd-fellowship",
+      "catalogue_url": "https://research.google/programs-and-events/phd-fellowship/recipients",
+      "country": "United States",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 641,
+      "title": "Becas R.P. Jorge Dintilhac SS.CC. (PUCP)",
+      "official_source": "Pontificia Universidad Catolica del Peru (PUCP) - Oficina de Becas y Credito Educativo",
+      "official_source_url": "https://admision.pucp.edu.pe/becas-y-pensiones/becas/becas-rp-jorge-dintilhac-sscc",
+      "catalogue_url": "https://admision.pucp.edu.pe/becas-y-pensiones/becas",
+      "country": "Peru",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 663,
+      "title": "ACIAR Pacific Agriculture Scholarship Support (PASS) Program - Fiji National University 2027 intake",
+      "official_source": "Australian Centre for International Agricultural Research (ACIAR), PASS Program administered at Fiji National University",
+      "official_source_url": "https://www.fnu.ac.fj/research/scholarships/pass-cr/pacific-agriculture-scholarship-support-and-climate-resilience",
+      "catalogue_url": "https://www.fnu.ac.fj/research/scholarships",
+      "country": "Fiji",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

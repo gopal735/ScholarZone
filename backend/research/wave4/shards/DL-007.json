@@ -1,0 +1,110 @@
+{
+  "shard_id": "DL-007",
+  "topic": "deadline",
+  "hosts": [
+    "comstech.org",
+    "ensie.nankai.edu.cn",
+    "studyindenmark.dk",
+    "www.getfund.gov.gh",
+    "www.simmons.edu"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 124,
+      "title": "Simmons University Kotzen Scholarship",
+      "official_source": "Simmons University",
+      "official_source_url": "https://www.simmons.edu/undergraduate-admission/kotzen-scholarship",
+      "catalogue_url": null,
+      "country": "United States",
+      "deadline_display": "December 1",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 246,
+      "title": "Nankai University Chinese Government Scholarship - Silk Road Program",
+      "official_source": "Nankai University & China Scholarship Council (CSC)",
+      "official_source_url": "https://ensie.nankai.edu.cn/info/1047/1347.htm",
+      "catalogue_url": "https://sie.nankai.edu.cn",
+      "country": "China",
+      "deadline_display": "Application Deadline: From now until May 18, 2026.",
+      "deadline_precision": "recurring",
+      "application_period": "The 2026 Silk Road round accepted applications until 18 May 2026, with registration for awardees in early September 2026. The round is annual; the 2027 call had not been published as of 2026-10-04.",
+      "verification_status": "active"
+    },
+    {
+      "id": 268,
+      "title": "Danish Government Scholarship for Non-EU/EEA Full-Degree Students",
+      "official_source": "Danish Ministry of Science, Higher Education and Digital Affairs (Study in Denmark)",
+      "official_source_url": "https://studyindenmark.dk/study-options/scholarships",
+      "catalogue_url": "https://studyindenmark.dk/portal",
+      "country": "Denmark",
+      "deadline_display": "The ministry publishes no deadline: 'The scholarships are administered by the Danish universities, who each select the students, who are awarded with a scholarship. For further information about the government scholarship, please consult the admission details of the higher education institution of your choice.' The deadline is therefore the admission deadline of the individual university.",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 668,
+      "title": "COMSTECH Fellowships for Research and Trainings in Human Nutrition, Nutraceuticals and Food Sciences",
+      "official_source": "OIC-COMSTECH (Ministerial Standing Committee on Scientific and Technological Cooperation of the Organisation of Islamic Cooperation)",
+      "official_source_url": "https://comstech.org/comstech-fellowships-for-research-and-trainings-in-human",
+      "catalogue_url": "https://comstech.org/comstech-fellowships-for-research-and-trainings-in-human",
+      "country": "Multiple",
+      "deadline_display": "No closing date published; COMSTECH states 'COMSTECH will accept applications on a yearly basis' and that only 10 fellowships are awarded on a first-come, first-served basis",
+      "deadline_precision": "rolling",
+      "application_period": "Yearly, on a first-come, first-served basis while places remain; 10 fellowships available. The official page shows Call Status: 'The call is currently open'.",
+      "verification_status": "needs_review"
+    },
+    {
+      "id": 669,
+      "title": "COMSTECH Fellowships for Research and Advanced Training in Virology and Vaccine Technologies",
+      "official_source": "OIC-COMSTECH (Ministerial Standing Committee on Scientific and Technological Cooperation of the Organisation of Islamic Cooperation)",
+      "official_source_url": "https://comstech.org/comstech-fellowship",
+      "catalogue_url": "https://comstech.org/comstech-fellowship",
+      "country": "Multiple",
+      "deadline_display": "No closing date published; the official page states 'The call is currently open'",
+      "deadline_precision": "rolling",
+      "application_period": "Continuously open on the awarding body's own notice, with no published closing date; the page records Call Status: 'The call is currently open'",
+      "verification_status": "needs_review"
+    },
+    {
+      "id": 670,
+      "title": "COMSTECH Research Fellowships for Women Scientists in Least Developed Countries (LDCs) in the OIC",
+      "official_source": "OIC-COMSTECH (Ministerial Standing Committee on Scientific and Technological Cooperation of the Organisation of Islamic Cooperation)",
+      "official_source_url": "https://comstech.org/comstech-research-fellowships-for-women-scientists-ldc-oic",
+      "catalogue_url": "https://comstech.org/comstech-research-fellowships-for-women-scientists-ldc-oic",
+      "country": "Multiple",
+      "deadline_display": "No fixed deadline; the awarding body states 'Applications / Nominations are open all around the year'",
+      "deadline_precision": "rolling",
+      "application_period": "Open all year on a rolling basis; the page is headed 'Call for the applications 2026' and records Call Status: 'The call is currently open'",
+      "verification_status": "needs_review"
+    },
+    {
+      "id": 672,
+      "title": "COMSTECH Research Fellowships for Least Developed Countries (LDCs) in the OIC",
+      "official_source": "OIC-COMSTECH (Ministerial Standing Committee on Scientific and Technological Cooperation of the Organisation of Islamic Cooperation)",
+      "official_source_url": "https://comstech.org/comstech-research-fellowships-for-least-developed-countries-2",
+      "catalogue_url": "https://comstech.org/comstech-research-fellowships-for-least-developed-countries-2",
+      "country": "Multiple",
+      "deadline_display": "No fixed deadline; the awarding body states 'Applications / Nominations are open all around the year'",
+      "deadline_precision": "rolling",
+      "application_period": "Open all year on a rolling basis; the page records Call Status: 'The call is currently open'",
+      "verification_status": "needs_review"
+    },
+    {
+      "id": 718,
+      "title": "GETFund Postgraduate Foreign Scholarship (Ghana Education Trust Fund)",
+      "official_source": "Ghana Education Trust Fund (GETFund)",
+      "official_source_url": "https://www.getfund.gov.gh/news/getfund-opens-applications-for-2026-2027-postgraduate-foreign-scholarships",
+      "catalogue_url": "https://www.getfund.gov.gh/scholarships/overview",
+      "country": "Ghana",
+      "deadline_display": "Applications for the 2026/2027 postgraduate foreign scholarships opened on 13 April 2026 and closed on 30 April 2026; the call is issued annually, so the next round is expected in the first half of 2027",
+      "deadline_precision": "recurring",
+      "application_period": "Annual call, with the 2026/2027 window running from 13 April to 30 April 2026",
+      "verification_status": "active"
+    }
+  ]
+}

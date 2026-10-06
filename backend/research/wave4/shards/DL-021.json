@@ -1,0 +1,111 @@
+{
+  "shard_id": "DL-021",
+  "topic": "deadline",
+  "hosts": [
+    "bd.china-embassy.gov.cn",
+    "international.cvut.cz",
+    "workforce.education.govt.nz",
+    "www.dfat.gov.au",
+    "www.in.emb-japan.go.jp",
+    "www.umu.se"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 30,
+      "title": "Australia Awards Scholarships",
+      "official_source": "Department of Foreign Affairs and Trade (DFAT), Australian Government",
+      "official_source_url": "https://www.dfat.gov.au/people-to-people/australia-awards/australia-awards-scholarships",
+      "catalogue_url": null,
+      "country": "Australia",
+      "deadline_display": "Country-specific; Bangladesh 2027 intake: 30 April 2026",
+      "deadline_precision": "month",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 43,
+      "title": "Australia Awards Fellowships",
+      "official_source": "Department of Foreign Affairs and Trade (DFAT), Australian Government",
+      "official_source_url": "https://www.dfat.gov.au/people-people/australia-awards/australia-awards-fellowships",
+      "catalogue_url": null,
+      "country": "Australia",
+      "deadline_display": null,
+      "deadline_precision": "month",
+      "application_period": "Round-dependent; Round 21 closed 16 January 2026; Round 22 expected to open Q4 2026",
+      "verification_status": "active"
+    },
+    {
+      "id": 44,
+      "title": "Australia Awards Mekong-Australia Partnership (MAP) Scholarships",
+      "official_source": "Department of Foreign Affairs and Trade (DFAT), Australian Government",
+      "official_source_url": "https://www.dfat.gov.au/people-to-people/australia-awards/mekong-australia-partnership",
+      "catalogue_url": null,
+      "country": "Australia",
+      "deadline_display": null,
+      "deadline_precision": "month",
+      "application_period": "Same as Australia Awards Scholarships for respective countries (e.g., 2027 intake: 1 Feb – 30 Apr 2026)",
+      "verification_status": "active"
+    },
+    {
+      "id": 189,
+      "title": "Umeå University Scholarship for International Students",
+      "official_source": "Umeå University",
+      "official_source_url": "https://www.umu.se/en/education/scholarships",
+      "catalogue_url": null,
+      "country": "Sweden",
+      "deadline_display": "Official wording, timeline for 2026: \"15 January: Deadline to have a Umeå University programme as priority 1 on University Admissions\", \"2 February: Deadline to pay application fee on University Admissions\", \"4-9 February: A personal invitation will be sent out via email to all eligible students\", \"4 March (23:59 CET): Deadline to register interest for a scholarship\", \"17 April: Scholarship results are announced via email\". The page for the next cycle is not yet published and the university notes the dates are preliminary and subject to change.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual, tied to the autumn semester admission: priority 1 must be set by 15 January, the application fee paid by early February, invitations sent in early February, and interest registered by the early-March deadline (4 March 2026 at 23:59 CET in the published cycle)",
+      "verification_status": "active"
+    },
+    {
+      "id": 322,
+      "title": "Chinese Government Scholarship (CGS) / CSC Type A - Embassy of China in Bangladesh",
+      "official_source": "Embassy of the People's Republic of China in Bangladesh",
+      "official_source_url": "https://bd.china-embassy.gov.cn/eng/sghd/202512/t20251219_11776194.htm",
+      "catalogue_url": null,
+      "country": "China",
+      "deadline_display": "The Embassy set \"Application Deadline: January 10, 2026\" for the 2025/2026 cycle; that date has passed and no next-cycle date has been published on the Embassy site.",
+      "deadline_precision": "recurring",
+      "application_period": "Announcement published 2025-12-19 with a 2026-01-10 closing date; applications for the following cycle are expected to be announced on the same annual cycle.",
+      "verification_status": "active"
+    },
+    {
+      "id": 328,
+      "title": "CTU Scholarship for Foreign Students - Czech Technical University in Prague",
+      "official_source": "Czech Technical University in Prague",
+      "official_source_url": "https://international.cvut.cz/students/incoming-students/ctu-scholarships",
+      "catalogue_url": "https://international.cvut.cz/students/incoming-students/ctu-scholarships/",
+      "country": "Czech Republic",
+      "deadline_display": "No application deadline is published on the CTU Scholarships page. Applications are submitted to the Department of International Relations at the rectorate of CTU via the faculty International Office, with no published closing date or intake calendar.",
+      "deadline_precision": "unknown",
+      "application_period": "No intake calendar or deadline is published. The page describes a standing procedure: obtain the faculty's agreement, then apply through the faculty International Office to the Department of International Relations at the rectorate.",
+      "verification_status": "active"
+    },
+    {
+      "id": 360,
+      "title": "MEXT Scholarship for 2027 - Embassy Recommendation (Research Students)",
+      "official_source": "Ministry of Education, Culture, Sports, Science and Technology (MEXT), Japan",
+      "official_source_url": "https://www.in.emb-japan.go.jp/education/japanese_government_scholarships.html",
+      "catalogue_url": "https://www.studyinjapan.go.jp/en/smap-stopj-applications-research.html",
+      "country": "Japan",
+      "deadline_display": "Recruitment for the 2027 intake (arrival April 2027 or September/October 2027) was made between April and May 2026, with embassy screening between May and July 2026. The next intake follows the same annual April-to-May window.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual cycle tied to arrival: recruitment April to May of the previous year, embassy first screening May to July, arrival in Japan in April or September/October. Country-specific schedules are set by each Japanese embassy or consulate general.",
+      "verification_status": "active"
+    },
+    {
+      "id": 404,
+      "title": "Kupe Scholarship for Māori and Pacific high achievers",
+      "official_source": "Ministry of Education — Education Workforce (TeachNZ Scholarships)",
+      "official_source_url": "https://workforce.education.govt.nz/becoming-teacher-new-zealand/become-teacher-scholarships/kupe-scholarship-maori-and-pacific-high-achievers",
+      "catalogue_url": "https://assets.workforce.education.govt.nz/s3fs-public/2026-09/Applying%20for%20a%20TeachNZ%20Scholarship%20Guidance.pdf?VersionId=ykSAUbn_J_Q_mAOSOdiGJ3mN3OGRq9bb",
+      "country": "New Zealand",
+      "deadline_display": "Application period 3 August to 31 August 2026. The Ministry states 'Applications are now closed. Applicants will find out if they are shortlisted in early October 2026. Final notifications will be sent by the end of November 2026.' The next round's dates are not published.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual. 2027 round: 3 August to 31 August 2026; shortlisted applicants notified early October 2026 and final notifications by end of November 2026.",
+      "verification_status": "quarantined"
+    }
+  ]
+}

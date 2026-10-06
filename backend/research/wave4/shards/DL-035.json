@@ -1,0 +1,111 @@
+{
+  "shard_id": "DL-035",
+  "topic": "deadline",
+  "hosts": [
+    "icssr.org",
+    "nias.knaw.nl",
+    "www.bc.edu",
+    "www.kuleuven.be",
+    "www.temasek.com.sg",
+    "www.vlaanderen.be"
+  ],
+  "record_count": 8,
+  "records": [
+    {
+      "id": 123,
+      "title": "Boston College Gabelli Presidential Scholars Program",
+      "official_source": "Boston College",
+      "official_source_url": "https://www.bc.edu/bc-web/academics/sites/gabelli-presidential-scholars-program.html",
+      "catalogue_url": "https://www.bc.edu/content/bc-web/academics/sites/gabelli-presidential-scholars-program/series-and-programs.html",
+      "country": "United States",
+      "deadline_display": "Early Decision and Regular Decision applicants who submit their BC applications by the November 1 priority scholarship deadline will be considered. No separate application exists.",
+      "deadline_precision": "month",
+      "application_period": "Considered only for fall admission; applications must be submitted by the November 1 priority scholarship deadline.",
+      "verification_status": "active"
+    },
+    {
+      "id": 282,
+      "title": "Inspiring the Outstanding Scholarship",
+      "official_source": "KU Leuven (financed by the KU Leuven International Scholarship Fund)",
+      "official_source_url": "https://www.kuleuven.be/scholarships/year/2026-2027/inspiring-the-outstanding-scholarship",
+      "catalogue_url": null,
+      "country": "Belgium",
+      "deadline_display": "Application deadline 15 January 2026, 23.59 CET (2026-2027 entry); applications opened 15 October 2025.",
+      "deadline_precision": "recurring",
+      "application_period": "Applications open in early October and close 15 January, 23.59 CET, for entry the following academic year (2026-2027 cycle: opened 15 October 2025, closed 15 January 2026).",
+      "verification_status": "active"
+    },
+    {
+      "id": 391,
+      "title": "Willem F. Duisenberg Fellowship",
+      "official_source": "Netherlands Institute for Advanced Study (NIAS)",
+      "official_source_url": "https://nias.knaw.nl/fellowships/willem-f-duisenberg-fellowship",
+      "catalogue_url": "https://nias.knaw.nl/partners/willem-f-duisenberg-fellowship-foundation",
+      "country": "Netherlands",
+      "deadline_display": "The call for the 2027-2028 academic year is open from 15 January to 13 April 2026.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual; the published 2027-2028 call ran from 15 January to 13 April 2026, one five-month and one ten-month fellowship awarded per academic year",
+      "verification_status": "active"
+    },
+    {
+      "id": 444,
+      "title": "Temasek Undergraduate Overseas Scholarship",
+      "official_source": "Temasek",
+      "official_source_url": "https://www.temasek.com.sg/en/our-community/temasek-scholarship/temasek-undergraduate-overseas-scholarship",
+      "catalogue_url": null,
+      "country": "Singapore",
+      "deadline_display": "The application window for the Academic Year 2026/2027 is now open and has been extended until 15 September 2026.",
+      "deadline_precision": "recurring",
+      "application_period": "A fixed annual window. The published Academic Year 2026/2027 window opened on 1 July 2026 and was extended to 15 September 2026, and the page states applications may be submitted before final cumulative GPA and examination results are received.",
+      "verification_status": "active"
+    },
+    {
+      "id": 445,
+      "title": "Temasek Undergraduate Local Scholarship",
+      "official_source": "Temasek, administered by Singapore Institute of Technology",
+      "official_source_url": "https://www.temasek.com.sg/en/our-community/temasek-scholarship",
+      "catalogue_url": null,
+      "country": "Singapore",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 508,
+      "title": "Flanders Trainee Programme (Flanders Traineeship Programme)",
+      "official_source": "Government of Flanders — Flanders Trainee Programme (Departement Buitenlandse Zaken)",
+      "official_source_url": "https://www.vlaanderen.be/en/studying/flanders-trainee-programme",
+      "catalogue_url": null,
+      "country": "Belgium",
+      "deadline_display": "No more grants for 2026: 'You can no longer apply for a grant for internships continuing into 2026. There is no more budget available for 2026. A budget will be available again in 2027. You can reapply for internships taking place in 2027 as from January 2027.' Within a funded budget year: 'You can submit your grant application up to six months in advance until one day before the start of your internship.'",
+      "deadline_precision": "month",
+      "application_period": "The 2026 budget is exhausted and applications for 2026 are closed. The 2027 budget reopens for applications in January 2027 for internships taking place in 2027, and new internship vacancies will be published on the programme's internships page from late 2026 onwards. Inside a funded budget year the published rule is that you may apply at any time of the year until one day before your internship starts, up to six months in advance, but a grant is only granted while budget remains.",
+      "verification_status": "needs_review"
+    },
+    {
+      "id": 517,
+      "title": "ICSSR Participation in International Seminar Abroad (Travel Grant Scheme)",
+      "official_source": "Indian Council of Social Science Research (ICSSR), Ministry of Education, Government of India",
+      "official_source_url": "https://icssr.org/participation-international-seminar-abroad",
+      "catalogue_url": "https://icssr.org/international-collaboration",
+      "country": "India",
+      "deadline_display": "Applications can be submitted online throughout the year. The applications should be uploaded at least three months before the due date of the Conference.",
+      "deadline_precision": "varies",
+      "application_period": "Rolling - applications are submitted online throughout the year, and must be uploaded at least three months before the due date of the Conference.",
+      "verification_status": "active"
+    },
+    {
+      "id": 518,
+      "title": "ICSSR Financial Assistance for Data Collection Abroad",
+      "official_source": "Indian Council of Social Science Research (ICSSR), Ministry of Education, Government of India",
+      "official_source_url": "https://icssr.org/data-collection-abroad",
+      "catalogue_url": "https://icssr.org/international-collaboration",
+      "country": "India",
+      "deadline_display": "Applications are received online throughout the year.",
+      "deadline_precision": "varies",
+      "application_period": "Rolling - applications are received online throughout the year.",
+      "verification_status": "active"
+    }
+  ]
+}

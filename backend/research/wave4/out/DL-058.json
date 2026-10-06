@@ -1,0 +1,262 @@
+{
+  "shard_id": "DL-058",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 36,
+      "title": "MAECI Italian Government Scholarship",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Le candidature online devono pervenire tassativamente entro le ore 14.00 (ora italiana) del 26 marzo 2026.",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://www.esteri.it/it/servizi-opportunita/opportunita/borse-di-studio/per-cittadini-stranieri/borsestudio_stranieri/",
+        "source_type": "official_government_page",
+        "publisher": "Ministero degli Affari Esteri e della Cooperazione Internazionale (MAECI), Government of Italy",
+        "retrieved_at": "2026-10-05T21:36:42+06:00",
+        "as_of": "Anno accademico 2026-2027 (academic year 2026-2027 call)",
+        "raw_extract": "Il Ministero degli Affari Esteri e della Cooperazione Internazionale (MAECI) offre borse di studio in favore di studenti stranieri e Italiani Residenti all'Estero (IRE) per l'anno accademico 2026-2027 ... Le candidature online devono pervenire tassativamente entro le ore 14.00 (ora italiana) del 26 marzo 2026.",
+        "exact_deadline_wording": "entro le ore 14.00 (ora italiana) del 26 marzo 2026",
+        "confidence": "HIGH",
+        "notes": "The shard's official_source_url https://www.esteri.it/en/opportunita/borse-di-studio returned HTTP 404. The live equivalent official MAECI page was located and fetched at the URL recorded above (it links an EN version of the same page). The official page publishes one explicit calendar deadline for the 2026-2027 call: 26 March 2026 at 14:00 Italian time. As of retrieval (2026-10-05) that deadline is more than six months in the past, while the scholarship itself is still listed as active and the awards are stated to run from 1 November 2026. Per brief section 6 the stale date is therefore NOT written and NOT rolled forward to 2027; outcome is expired_mismatch. No 2027-2028 call has been published on this page as of retrieval. deadline_semantics is recorded as EXACT because the source states an explicit calendar deadline, but deadline_date is deliberately null per the expired_mismatch rule."
+      },
+      "field_mapping": {
+        "deadline_date": "null (not written: source deadline 2026-03-26 is in the past for an open/upcoming record)",
+        "deadline_precision": "exact",
+        "deadline_display": "Le candidature online devono pervenire tassativamente entro le ore 14.00 (ora italiana) del 26 marzo 2026."
+      },
+      "examined": [
+        "https://www.esteri.it/en/opportunita/borse-di-studio",
+        "https://studyinitaly.esteri.it/ListaBandi"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.esteri.it/en/opportunita/borse-di-studio",
+          "reason": "Official source URL supplied in the shard; live fetch returned HTTP 404 (dead link), so it cannot be evidence."
+        },
+        {
+          "url": "https://studyinitaly.esteri.it/ListaBandi",
+          "reason": "Not fetched: the parent MAECI page already published the authoritative explicit deadline for the 2026-2027 call, so the hierarchy stops there (brief section 4)."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 65,
+      "title": "Clarendon Fund Scholarships",
+      "outcome": "recovered",
+      "deadline_semantics": "MONTH",
+      "deadline_date": null,
+      "deadline_display": "You must apply by the December or January admissions deadline, whichever is relevant to your course in order to be considered. Deadline information is available on the graduate course pages.",
+      "deadline_precision": "month",
+      "source": {
+        "url": "https://www.ox.ac.uk/admissions/graduate/fees-and-funding/funding/clarendon/applicants",
+        "source_type": "official_university_page",
+        "publisher": "University of Oxford",
+        "retrieved_at": "2026-10-05T21:36:42+06:00",
+        "as_of": null,
+        "raw_extract": "By applying for graduate study you will automatically be considered for a Clarendon scholarship. You do not need to submit any additional documents and there are no separate scholarship application forms for Clarendon. You must apply by the December or January admissions deadline, whichever is relevant to your course in order to be considered. Deadline information is available on the graduate course pages.",
+        "exact_deadline_wording": "You must apply by the December or January admissions deadline, whichever is relevant to your course in order to be considered.",
+        "confidence": "HIGH",
+        "notes": "Fetched live via a headless browser with a standard desktop user agent; direct HTTP fetches of www.ox.ac.uk return a Cloudflare 'Just a moment...' challenge (HTTP 403), and the shard's official_source_url https://www.ox.ac.uk/clarendon redirects to https://www.ox.ac.uk/admissions/graduate/fees-and-funding/funding/clarendon, which was also fetched. No separate Clarendon application or single fixed date exists. The deadline is explicitly deferred to the applicant's own course deadline and is expressed only as the months December or January with no day. Classified MONTH (source gives a month window, no day); deadline_date stays null. No day was inferred and no other course's date was substituted."
+      },
+      "field_mapping": {
+        "deadline_date": "null (month-level window only: December or January, varies by course)",
+        "deadline_precision": "month",
+        "deadline_display": "You must apply by the December or January admissions deadline, whichever is relevant to your course in order to be considered. Deadline information is available on the graduate course pages."
+      },
+      "examined": [
+        "https://www.ox.ac.uk/admissions/graduate/fees-and-funding/funding/clarendon/information-applicants"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.ox.ac.uk/admissions/graduate/courses",
+          "reason": "Catalogue URL from the shard, not fetched: it is the generic course-listing index for all programmes. Any individual course page's admissions deadline would be a generic admissions deadline for a different programme, which brief section 5 forbids as evidence for this record."
+        },
+        {
+          "url": "https://www.ox.ac.uk/admissions/graduate/fees-and-funding/funding/clarendon/information-applicants",
+          "reason": "Fetched live; contained no deadline, closing-date or application-timing wording at all, so it yielded nothing."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 66,
+      "title": "Weidenfeld-Hoffmann Scholarships and Leadership Programme",
+      "outcome": "recovered",
+      "deadline_semantics": "MONTH",
+      "deadline_date": null,
+      "deadline_display": "In order to be considered for this scholarship, you must select the Weidenfeld-Hoffmann Scholarships and Leadership Programme in the University of Oxford Scholarships section of the University's graduate application form and submit your application for graduate study by the relevant December or January deadline for your course. See the relevant course page for the deadline applicable to your course.",
+      "deadline_precision": "month",
+      "source": {
+        "url": "https://www.ox.ac.uk/admissions/graduate/fees-and-funding/fees-funding-and-scholarship-search/weidenfeld-hoffmann-scholarships-and-leadership-programme",
+        "source_type": "official_university_page",
+        "publisher": "University of Oxford",
+        "retrieved_at": "2026-10-05T21:36:42+06:00",
+        "as_of": "2027/28 cycle (page carries the 'Weidenfeld-Hoffmann Scholarships Statement 2027/28'; states decisions expected by end of May 2027 and interview likely April 2027)",
+        "raw_extract": "In order to be considered for this scholarship, you must select the Weidenfeld-Hoffmann Scholarships and Leadership Programme in the University of Oxford Scholarships section of the University's graduate application form and submit your application for graduate study by the relevant December or January deadline for your course. See the relevant course page for the deadline applicable to your course. You must also complete a Weidenfeld-Hoffmann Scholarships Statement and upload it, together with your graduate application form, by the deadline. ... To be eligible for consideration for this scholarship, applicants must be successful in being offered a place on their course after consideration of applications received by the relevant December or January deadline for the course. Course applications which are held over after the December or January deadline to be re-evaluated against applications received by the March deadline or course applications which have been put on a waiting list are not eligible for scholarship consideration.",
+        "exact_deadline_wording": "submit your application for graduate study by the relevant December or January deadline for your course",
+        "confidence": "HIGH",
+        "notes": "Fetched live via a headless browser with a standard desktop user agent; direct HTTP fetches of www.ox.ac.uk return a Cloudflare challenge (HTTP 403). The page gives the application deadline only as 'the relevant December or January deadline for your course', with no day, and explicitly points to individual course pages for the applicable date. The page also states the page's current cycle (2027/28) but never states a single calendar deadline for the scholarship. Classified MONTH; deadline_date stays null. The page's stated dates (April 2027 interview, end of May 2027 decisions) are outcomes/administrative milestones, NOT an application deadline, and were deliberately not used as one. No course's admissions deadline was borrowed."
+      },
+      "field_mapping": {
+        "deadline_date": "null (month-level window only: the relevant December or January deadline for the applicant's course)",
+        "deadline_precision": "month",
+        "deadline_display": "In order to be considered for this scholarship, you must select the Weidenfeld-Hoffmann Scholarships and Leadership Programme in the University of Oxford Scholarships section of the University's graduate application form and submit your application for graduate study by the relevant December or January deadline for your course. See the relevant course page for the deadline applicable to your course."
+      },
+      "examined": [],
+      "rejected_sources": [
+        {
+          "url": "https://www.ox.ac.uk/admissions/graduate/courses",
+          "reason": "Catalogue URL from the shard, not fetched: generic course-listing index. An individual course page's admissions deadline would be a generic admissions deadline for a different programme, forbidden by brief section 5."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 144,
+      "title": "MOFA Taiwan Scholarship (Taiwan Scholarship Program)",
+      "outcome": "recovered",
+      "deadline_semantics": "ANNUAL",
+      "deadline_date": null,
+      "deadline_display": "V. Application period — from February 1 to March 31",
+      "deadline_precision": "recurring",
+      "source": {
+        "url": "https://en.mofa.gov.tw/cp.aspx?n=1325",
+        "source_type": "official_government_page",
+        "publisher": "Ministry of Foreign Affairs, Republic of China (Taiwan)",
+        "retrieved_at": "2026-10-05T21:36:42+06:00",
+        "as_of": null,
+        "raw_extract": "V. Application period\n\nfrom February 1 to March 31",
+        "exact_deadline_wording": "from February 1 to March 31",
+        "confidence": "HIGH",
+        "notes": "Fetched live; the shard's official_source_url resolved correctly. The page reproduces the MOFA Scholarship Program Guidelines in full and states the application period as 'from February 1 to March 31' with NO year attached anywhere in the section. This is a recurring annual window, so it is classified ANNUAL with precision 'recurring' and deadline_date stays null. Per the binding rule, a recurring/annual value is never converted into a calendar date: no year was assumed and no specific 2026 or 2027 date was written. As of retrieval (2026-10-05) the February-March window for the current cycle has passed, but the source publishes no cycle-specific date, so no cycle-specific value exists to record."
+      },
+      "field_mapping": {
+        "deadline_date": "null (recurring annual window 1 Feb - 31 Mar; never dated)",
+        "deadline_precision": "recurring",
+        "deadline_display": "V. Application period — from February 1 to March 31"
+      },
+      "examined": [
+        "https://taiwanscholarship.moe.gov.tw/web/index.aspx"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://taiwanscholarship.moe.gov.tw/web/index.aspx",
+          "reason": "Official application portal linked from the MOFA page. Fetched live: its announcements concerned the 2025 academic-year eligibility lists and a photo contest and contained no application-period dates for the scholarship, so it yielded no deadline wording."
+        },
+        {
+          "url": "https://ws.mofa.gov.tw/Download.ashx?u=LzAwMS9VcGxvYWQvNDAzL3JlbGZpbGUvMjM2LzE2OS83M2M5NDgzYi1lMzBlLTRhYmQtYjVhMi03ZDMwNmI1YWViYjgucGRm&n=R3VpZGVsaW5lcyBmb3IgdGhlIE1PRkEgVGFpd2FuIFNjaG9sYXJzaGlwIFByb2dyYW0ucGRm",
+          "reason": "Official 'Guidelines for the MOFA Taiwan Scholarship Program' PDF linked from the same page. Retrieved as raw PDF bytes only (no extractable text layer obtained), so no verbatim quote could be taken from it. Not used; the on-page guidelines text already carry the same annual wording."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 201,
+      "title": "QUT International Merit Scholarship",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://www.qut.edu.au/study/fees-and-scholarships/scholarships/international-merit-scholarship",
+        "source_type": "official_university_page",
+        "publisher": "Queensland University of Technology (QUT)",
+        "retrieved_at": "2026-10-05T21:36:42+06:00",
+        "as_of": "Page updated: 13 August 2026",
+        "raw_extract": "How to apply\n\nYou do not need to apply for this scholarship.\n\nWe will assess your qualifications provided in your application when you apply to study at QUT, or when you articulate to your next course in your package offer, for an eligible course, and we will let you know if you meet the criteria.\n\nWhat happens next?\n\nIf you are eligible, you will receive a scholarship offer along with your admissions offer letter.",
+        "exact_deadline_wording": "",
+        "confidence": "LOW",
+        "notes": "The shard's official_source_url was successfully retrieved live via a headless browser (direct webfetch of the same URL exceeded the 5MB response limit, so the rendered page text was read instead). The full rendered scholarship page was read end to end, including the Scholarship details, Eligibility, Eligible courses, How to apply, What happens next and About the scholarship sections. It contains no closing date, no application deadline, no key-dates block and no reference to a semester intake closing date anywhere; the only date-like string on the page is the footer 'Page updated: 13 August 2026'. The page states there is no separate application, which means eligibility is assessed with the admissions application, but it does NOT explicitly say the deadline is rolling or that there is no fixed deadline, so ROLLING was not claimed. Outcome UNKNOWN per brief section 3: evidence insufficient, no calendar date inferred from QUT's generic admissions cycle."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "null"
+      },
+      "examined": [
+        "https://www.qut.edu.au/study/fees-and-scholarships/scholarships/browse?study-level_key=Any&student-type_key=Any&study-area-broad_key=Any&eligibility-citizenship_key=INT&eligibility-criteria_key=Any"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://www.qut.edu.au/study/fees-and-scholarships/scholarships/browse?study-level_key=Any&student-type_key=Any&study-area-broad_key=Any&eligibility-citizenship_key=INT&eligibility-criteria_key=Any",
+          "reason": "Catalogue browse URL from the shard, not fetched: it lists many different scholarships, so any closing date on it would belong to a different programme and is barred by brief section 5."
+        },
+        {
+          "url": "https://www.qut.edu.au/study/fees-and-scholarships/scholarships/international-merit-scholarship",
+          "reason": "Fetched and used as the source of record, but rejected as evidence FOR a deadline: it publishes no deadline wording at all, so no value can be derived from it."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 308,
+      "title": "Alberta Graduate Excellence Scholarship (AGES)",
+      "outcome": "unknown",
+      "deadline_semantics": "UNKNOWN",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "source": {
+        "url": "https://studentaid.alberta.ca/scholarships/alberta-graduate-excellence-scholarship",
+        "source_type": "official_government_page",
+        "publisher": "Alberta Student Aid, Government of Alberta",
+        "retrieved_at": "2026-10-05T21:36:42+06:00",
+        "as_of": "Eligibility refers to enrolment in the Fall 2026 and/or Winter 2027 term",
+        "raw_extract": "How to Apply\n\nFor more information on how to apply, contact the Student Awards or Scholarships Offices at your school, or visit your school's website.",
+        "exact_deadline_wording": "",
+        "confidence": "LOW",
+        "notes": "The shard's official_source_url was fetched live and returned the full current page (footer '© 2026 Government of Alberta'). The complete page was read: Value, Eligibility Criteria, Selection and How to Apply. It publishes NO application deadline of any kind. The page states selection is made by schools ('Schools will select recipients based on the minimum eligibility criteria for the Alberta Graduate Excellence Scholarship, and any additional eligibility criteria set by the school') and directs applicants to their own school's awards office for how to apply, i.e. the deadline is delegated to individual institutions. The only forward-looking dates are enrolment terms ('the Fall 2026 and/or Winter 2027 term'), which are not application deadlines. No deadline was inferred from those terms or from a generic annual cycle. Outcome UNKNOWN."
+      },
+      "field_mapping": {
+        "deadline_date": "null",
+        "deadline_precision": "unknown",
+        "deadline_display": "null"
+      },
+      "examined": [],
+      "rejected_sources": [
+        {
+          "url": "https://www.alberta.ca/designated-post-secondary-institutions-alberta.aspx",
+          "reason": "Catalogue URL from the shard, not fetched: it is a directory of designated post-secondary institutions, and any deadline on an individual institution's AGES page would be another institution's deadline, barred by brief section 5."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 679,
+      "title": "AUF Virtual Mobility Grant for International Distance Degree Programmes (FOAD/IFIC call 2026/27)",
+      "outcome": "expired_mismatch",
+      "deadline_semantics": "EXACT",
+      "deadline_date": null,
+      "deadline_display": "Clôture : 14/09/2026 à 23h59 — Fuseau horaire : Europe/Paris",
+      "deadline_precision": "exact",
+      "source": {
+        "url": "https://appels-propositions.auf.org/appel-a-candidatures-2026-27-formations-diplomantes-internationales-a-distance",
+        "source_type": "official_programme_page",
+        "publisher": "Agence universitaire de la Francophonie (AUF) / Institut de la Formation a Distance de la Francophonie (IFIC)",
+        "retrieved_at": "2026-10-05T21:36:42+06:00",
+        "as_of": "2026/27 call; Lancement 07/04/2026 à 00h01; Clôture 14/09/2026 à 23h59 Europe/Paris",
+        "raw_extract": "FOAD - IFIC\n\nAppel à candidatures 2026/27 – Formations diplômantes internationales à distance\n\nLancement :\n07/04/2026 à 00h01\n\nClôture :\n14/09/2026 à 23h59\n\nFuseau horaire : Europe/Paris\n\nCalendrier & dates clés :\n- Formations débutant en septembre / octobre 2026 : Clôture des candidatures : 9 juin 2026\n- Formations débutant en janvier / février 2027 : Clôture des candidatures : 14 septembre 2026",
+        "exact_deadline_wording": "Clôture : 14/09/2026 à 23h59",
+        "confidence": "HIGH",
+        "notes": "Fetched live; the shard's official_source_url resolved correctly. The official call page states an explicit calendar closing deadline of 14 September 2026 at 23:59 Europe/Paris, plus a second earlier intake deadline of 9 June 2026 for programmes starting September/October 2026. BOTH dates are already in the past as of retrieval (2026-10-05). The record is carried as an open/upcoming call (its own shard verification_status is needs_review), so per brief section 6 the stale dates are NOT written and NOT shifted to a future year: outcome is expired_mismatch with deadline_date null. deadline_semantics is EXACT because the source states explicit calendar dates. The AUF calls index at https://appels-propositions.auf.org/ was also fetched and shows no successor 2027/28 FOAD/IFIC distance-degree call open at retrieval, so there is no newer official date to record. The three other records' exact-date handling is unaffected: this is a genuine per-call deadline, not a recurring window."
+      },
+      "field_mapping": {
+        "deadline_date": "null (not written: official call closed 14/09/2026 23:59 Europe/Paris, in the past for an open/upcoming record)",
+        "deadline_precision": "exact",
+        "deadline_display": "Clôture : 14/09/2026 à 23h59 — Fuseau horaire : Europe/Paris"
+      },
+      "examined": [
+        "https://appels-propositions.auf.org/",
+        "https://l.auf.org/FOAD-FD"
+      ],
+      "rejected_sources": [
+        {
+          "url": "https://l.auf.org/FOAD-FD",
+          "reason": "Catalogue URL from the shard, not fetched: it is a course catalogue of participating institutions, not the call's rules page, and any date there would concern programmes rather than this grant's application deadline."
+        },
+        {
+          "url": "https://appels-propositions.auf.org/",
+          "reason": "Fetched as a cross-check for a successor open call. It lists unrelated open calls (e.g. the IFIC SPOC IA call closing 01/11/2026 and a Cyclomatic call closing 12/10/2026) but no 2027/28 version of this FOAD/IFIC distance-degree grant, so it supplied no date for this record and its unrelated dates were not borrowed."
+        }
+      ]
+    }
+  ]
+}

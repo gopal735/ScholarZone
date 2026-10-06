@@ -1,0 +1,99 @@
+{
+  "shard_id": "DL-048",
+  "topic": "deadline",
+  "hosts": [
+    "aai-salzburg.at",
+    "cemm.at",
+    "scholarship.turkiye.gov.tr",
+    "www.eacea.ec.europa.eu",
+    "www.ean.org",
+    "www.newcastle.edu.au"
+  ],
+  "record_count": 7,
+  "records": [
+    {
+      "id": 168,
+      "title": "Erasmus Mundus Joint Master Degrees — Austria-based",
+      "official_source": "European Commission (EACEA)",
+      "official_source_url": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
+      "catalogue_url": "https://www.eacea.ec.europa.eu/about-eacea/document-register/annual-activity-reports-and-work-programmes_en",
+      "country": "Austria",
+      "deadline_display": "Varies by consortium (typically October–January)",
+      "deadline_precision": "varies",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 192,
+      "title": "Erasmus Mundus Joint Master Degrees (Erasmus Mundus Catalogue)",
+      "official_source": "European Commission (EACEA)",
+      "official_source_url": "https://www.eacea.ec.europa.eu/scholarships/emjmd-catalogue_en/sweden",
+      "catalogue_url": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
+      "country": "Sweden",
+      "deadline_display": "In most cases you should submit your application between October and January for courses starting the following academic year.",
+      "deadline_precision": "varies",
+      "application_period": "Applications for courses starting the following academic year are submitted between October and January; the exact date is set by each consortium.",
+      "verification_status": "active"
+    },
+    {
+      "id": 218,
+      "title": "One World Scholarship (Afro-Asian Institute Salzburg)",
+      "official_source": "Afro-Asian Institute Salzburg (Archdiocese of Salzburg)",
+      "official_source_url": "https://aai-salzburg.at/en/studies/one-world-scholarship",
+      "catalogue_url": null,
+      "country": "Austria",
+      "deadline_display": "The Institute's apply page states: 'The call for applications for the October 2026 intake is closed. The next call is supposed to open in June 2027.' Its published multi-stage process closes the online form on 12 July and the full application on 15 July.",
+      "deadline_precision": "month",
+      "application_period": "The next call is expected to open in June 2027; within a call, the online form is due until 12 July and the full application until 15 July, followed by an online interview.",
+      "verification_status": "active"
+    },
+    {
+      "id": 221,
+      "title": "AITHYRA International PhD Call in AI for Biomedicine (CeMM doctoral programme)",
+      "official_source": "CeMM (Austrian Academy of Sciences) & AITHYRA",
+      "official_source_url": "https://cemm.at",
+      "catalogue_url": "https://cemm.at/phd-program",
+      "country": "Austria",
+      "deadline_display": "The previous joint call ran to 30 January 2026 and its programme started in September 2026. For the next intake, the Austrian Academy of Sciences' AITHYRA Open Positions page states that AITHYRA 'will open a call for PhD students in September 2026' and that the next PhD Programme 'will start in September 2027'. CeMM's own PhD Program and Application Process pages publish no deadline for the next call and instead invite applicants to 'Sign up here to receive notifications when the next call opens'.",
+      "deadline_precision": "varies",
+      "application_period": "Annual call announced for September 2026 for a September 2027 start; the application deadline for that call is not yet published on the pages read.",
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 568,
+      "title": "Türkiye Bursları (Türkiye Scholarships) - Turkish Government Scholarship",
+      "official_source": "Presidency of Turks Abroad and Relatives of Overseas Citizens (YTB) - Türkiye Scholarships",
+      "official_source_url": "https://scholarship.turkiye.gov.tr",
+      "catalogue_url": "https://www.turkiyeburslari.gov.tr/ScholarshipSearch",
+      "country": "Turkey",
+      "deadline_display": "Applications for the full-time programmes (associate, bachelor's, master's, PhD and art scholarships) are received through the Türkiye Scholarships Application System (TBBS) between 10 January and 20 February, which is the application period every year. Research Scholarships have different application periods, announced regularly on the official website. For the 2026 cycle the window was 10 January to 20 February 2026, so the next cycle is expected in the same annual window.",
+      "deadline_precision": "recurring",
+      "application_period": "One annual period each year: 10 January to 20 February for international applicants, for associate, bachelor's, master's and doctoral scholarships. Research Scholarships run on separate, individually announced periods.",
+      "verification_status": "active"
+    },
+    {
+      "id": 627,
+      "title": "Research Fellowship 2027 — European Academy of Neurology",
+      "official_source": "European Academy of Neurology (EAN)",
+      "official_source_url": "https://www.ean.org/learn/fellowships-and-funding/research-fellowship",
+      "catalogue_url": "https://www.ean.org/learn/fellowships-and-funding",
+      "country": "Austria",
+      "deadline_display": "31 August (annual close; the 2027 window ran 1 June - 31 August 2026)",
+      "deadline_precision": "recurring",
+      "application_period": "1 June - 31 August each year",
+      "verification_status": "active"
+    },
+    {
+      "id": 686,
+      "title": "International Excellence Scholarship 2027 (The University of Newcastle, Australia)",
+      "official_source": "The University of Newcastle, Australia",
+      "official_source_url": "https://www.newcastle.edu.au/scholarships/UNI_053",
+      "catalogue_url": "https://www.newcastle.edu.au/scholarships",
+      "country": "Australia",
+      "deadline_display": "No application deadline - scholarships are automatically assessed on application for admission for 2027 or later commencement",
+      "deadline_precision": "rolling",
+      "application_period": "For new international students who receive an offer and commence study in 2027 or later. Assessed automatically upon application for admission.",
+      "verification_status": "needs_review"
+    }
+  ]
+}

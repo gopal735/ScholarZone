@@ -1,0 +1,219 @@
+{
+  "shard_id": "LG-030",
+  "agent_completed": true,
+  "records": [
+    {
+      "scholarship_id": 91,
+      "title": "Université Paris-Saclay IDEX International Master's Scholarships",
+      "outcome": "recovered",
+      "image_url": "https://www.universite-paris-saclay.fr/sites/default/files/media/2019-12/logo-ups.svg",
+      "image_source_url": "https://www.universite-paris-saclay.fr/en/admission/bourses-et-aides-financieres/international-masters-scholarships-program",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Official_source_url was fetched first and it is the official scholarship programme page on universite-paris-saclay.fr. Its site header renders the institutional wordmark from the official media path /sites/default/files/media/2019-12/logo-ups.svg with alt text 'Université Paris-Saclay (aller à l'accueil)'. Direct GET of that asset returned HTTP 200, Content-Type image/svg+xml, 4994 bytes. The SVG source was read and is a vector wordmark, viewBox 0 0 190 66.7, with the two-part lockup ('université' above 'PARIS-SACLAY') plus the Saclay dot motif, filled #62003C (the Université Paris-Saclay brand plum) — a full-colour primary logo, not an icon or badge. Filename does not contain favicon/icon/apple-touch/safari-pinned-tab. Not a social avatar, not a screenshot, not a third-party mirror. The white reversed variant (/sites/default/files/media/2019-12/logo-ups-white_1.svg) also exists and was not used because the primary header mark is the safer default. Nothing on the page identifies a separate IDEX programme-specific mark, so the institutional brand mark is the correct identity for this record."
+      },
+      "source": {
+        "url": "https://www.universite-paris-saclay.fr/en/admission/bourses-et-aides-financieres/international-masters-scholarships-program",
+        "publisher": "Université Paris-Saclay",
+        "retrieved_at": "2026-10-05T15:29:00Z",
+        "raw_extract": "[![Université Paris-Saclay (aller à l'accueil)](/sites/default/files/media/2019-12/logo-ups.svg)](/en) ... Contact ![Université Paris-Saclay (logo)](/sites/default/files/media/2019-12/logo-ups-white_1.svg) 3 rue Joliot Curie Bâtiment Breguet 91190 Gif-sur-Yvette",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.universite-paris-saclay.fr/en/admission/bourses-et-aides-financieres/international-masters-scholarships-program",
+        "https://www.universite-paris-saclay.fr/sites/default/files/media/2019-12/logo-ups.svg"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.universite-paris-saclay.fr/sites/default/files/media/2019-12/logo-ups-white_1.svg",
+          "reason": "Reversed/white single-colour variant used only in the footer contact block; kept the primary full-colour header mark instead. Not rejected on quality grounds — simply not the primary asset."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 265,
+      "title": "Tampere University Tuition Fee Scholarship",
+      "outcome": "recovered",
+      "image_url": "https://sites.tuni.fi/app/uploads/6639ccd5-logo_tau_2line_eng_purple_rgb.jpg",
+      "image_source_url": "https://sites.tuni.fi/demosite",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "The shard's official_source_url returned HTTP 404 on fetch; the live equivalent resolves to https://opiskelijanopas.tuni.fi/en/tampere-university/study-right-and-annual-enrolment/tuition-fees-and-scholarships/scholarships-fee-paying-students-admitted-2026-or-later (official Student's Guide, reached via www.tuni.fi/en/node/67298). Neither the scholarship page nor the Student's Guide serves a standalone logo file — the header mark is an inline SVG component — and https://www.tuni.fi/en/tau/news/for-media states verbatim: 'To request the use of our logos, please contact our marketing team at markkinointi.tau [at] tuni.fi', i.e. TAU publishes no direct download on www.tuni.fi. The official Tampere Universities website-builder domain sites.tuni.fi does host the TAU brand asset in its official uploads store: https://sites.tuni.fi/app/uploads/6639ccd5-logo_tau_2line_eng_purple_rgb.jpg, referenced on that domain with alt text 'Logo of tampere University.'. Direct GET returned HTTP 200, image/jpeg, 53787 bytes; the file was opened and visually confirmed as the two-line purple 'Tampere University' lockup with the Tampere University's own 'TAU' arc mark, 615x353 px. Confidence is MEDIUM, not HIGH, solely because the page the asset was observed on is the website-builder demo page (sites.tuni.fi/demosite) rather than a dedicated brand/asset page; the asset itself is unambiguously the correct institution's official mark on an official tuni.fi host. All favicon.svg / apple-touch-icon / safari-pinned-tab / favicon-32x32 assets were rejected per the logo rules."
+      },
+      "source": {
+        "url": "https://sites.tuni.fi/demosite",
+        "publisher": "Tampere Universities (Tampere University / Tampere University of Applied Sciences) — website builder service, sites.tuni.fi",
+        "retrieved_at": "2026-10-05T15:32:00Z",
+        "raw_extract": "<img width=\"320\" height=\"184\" src=\"https://sites.tuni.fi/app/uploads/6639ccd5-logo_tau_2line_eng_purple_rgb-320x184.jpg\" class=\"logo-cloud-item__img js-object-fit-img\" alt=\"Logo of Tampere University.\" decoding=\"async\" loading=\"lazy\" />",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://www.tuni.fi/en/students-guide/handbook/uni/services-and-regulations-students/study-regulations/scholarships-fee-paying-students-admitted-in-2021-or-later",
+        "https://opiskelijanopas.tuni.fi/en/tampere-university/study-right-and-annual-enrolment/tuition-fees-and-scholarships/scholarships-fee-paying-students-admitted-2026-or-later",
+        "https://www.tuni.fi/en/tau/financial-matters/tuition-fees-and-scholarships",
+        "https://www.tuni.fi/en/tau/news/for-media",
+        "https://sites.tuni.fi/digitaltoolkit",
+        "https://sites.tuni.fi",
+        "https://www.tuni.fi/app/uploads/6639ccd5-logo_tau_2line_eng_purple_rgb.jpg"
+      ],
+      "rejected": [
+        {"url": "https://www.tuni.fi/shared/favicon.svg", "reason": "favicon"},
+        {"url": "https://www.tuni.fi/shared/apple-touch-icon.png", "reason": "apple-touch-icon"},
+        {"url": "https://sites.tuni.fi/app/themes/tampere3/assets/icons/favicon-32x32.png", "reason": "favicon"},
+        {"url": "https://sites.tuni.fi/app/themes/tampere3/assets/icons/safari-pinned-tab.svg", "reason": "safari-pinned-tab"},
+        {"url": "https://sites.tuni.fi/app/uploads/6639ccd5-logo_tau_2line_eng_purple_rgb-320x184.jpg", "reason": "low-resolution 320x184 thumbnail derivative; the full-size original was used instead"},
+        {"url": "https://sites.tuni.fi/app/themes/tampere3/assets/images/logos/community_en-US.svg", "reason": "wrong identity: this is the Tampere Universities (TUNI) community mark covering both TAU and TAMK, not Tampere University itself"},
+        {"url": "https://sites.tuni.fi/app/uploads/66f1b9c6-logo_tuni_en_purple_rgb.jpg", "reason": "wrong identity: Tampere Universities (TUNI) community logo, not Tampere University"},
+        {"url": "https://sites.tuni.fi/app/uploads/0579d2af-logo_tamk_2line_en_purple_rgb-320x126.jpg", "reason": "wrong identity: unrelated department/organisation logo on the same shared CDN (Tampere University of Applied Sciences)"}
+      ]
+    },
+    {
+      "scholarship_id": 336,
+      "title": "Tampere University tuition fee scholarship (50%) and early bird offer",
+      "outcome": "recovered",
+      "image_url": "https://sites.tuni.fi/app/uploads/6639ccd5-logo_tau_2line_eng_purple_rgb.jpg",
+      "image_source_url": "https://sites.tuni.fi/demosite",
+      "image_source_type": "official_university",
+      "image_kind": "official_logo",
+      "confidence": "MEDIUM",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "The shard's official_source_url (https://www.tuni.fi/en/tau/financial-matters/tuition-fees-and-scholarships) was fetched first and is live and official — it states verbatim 'Tampere University tuition fee scholarship is an exclusive opportunity awarded to a limited number of the best-performing applicants' and 'Tampere University tuition fee scholarships awarded at admission cover 50% of the tuition fees for the programme duration', plus the early bird offer section, so the record's identity is confirmed. That page carries only decorative photography (e.g. banner_tuition_tau_restricted.png, campus skyline) and the inline-SVG header mark; it publishes no standalone logo file. The official TAU brand asset was therefore taken from the official Tampere Universities host sites.tuni.fi: https://sites.tuni.fi/app/uploads/6639ccd5-logo_tau_2line_eng_purple_rgb.jpg, alt text 'Logo of Tampere University.' on that domain. Direct GET returned HTTP 200, image/jpeg, 53787 bytes; the file was opened and visually confirmed as the two-line purple 'Tampere University' lockup with the university's TAU arc mark, 615x353 px. Same MEDIUM caveat as record 265: hosting page is the website-builder demo page, not a dedicated brand page; www.tuni.fi/en/tau/news/for-media instead routes logo requests to the marketing team. Favicon/apple-touch-icon/safari-pinned-tab assets and the TUNI/TAMK marks were rejected."
+      },
+      "source": {
+        "url": "https://sites.tuni.fi/demosite",
+        "publisher": "Tampere Universities (Tampere University / Tampere University of Applied Sciences) — website builder service, sites.tuni.fi",
+        "retrieved_at": "2026-10-05T15:32:00Z",
+        "raw_extract": "<img width=\"320\" height=\"184\" src=\"https://sites.tuni.fi/app/uploads/6639ccd5-logo_tau_2line_eng_purple_rgb-320x184.jpg\" class=\"logo-cloud-item__img js-object-fit-img\" alt=\"Logo of Tampere University.\" decoding=\"async\" loading=\"lazy\" />",
+        "confidence": "MEDIUM"
+      },
+      "examined": [
+        "https://www.tuni.fi/en/tau/financial-matters/tuition-fees-and-scholarships",
+        "https://www.tuni.fi/en/tau/news/for-media",
+        "https://sites.tuni.fi/digitaltoolkit",
+        "https://sites.tuni.fi",
+        "https://sites.tuni.fi/app/uploads/6639ccd5-logo_tau_2line_eng_purple_rgb.jpg"
+      ],
+      "rejected": [
+        {"url": "https://www.tuni.fi/shared/favicon.svg", "reason": "favicon"},
+        {"url": "https://www.tuni.fi/shared/apple-touch-icon.png", "reason": "apple-touch-icon"},
+        {"url": "https://sites.tuni.fi/app/uploads/6639ccd5-logo_tau_2line_eng_purple_rgb-320x184.jpg", "reason": "low-resolution 320x184 thumbnail derivative; the full-size original was used instead"},
+        {"url": "https://sites.tuni.fi/app/themes/tampere3/assets/images/logos/community_en-US.svg", "reason": "wrong identity: Tampere Universities (TUNI) community mark, not Tampere University"},
+        {"url": "https://sites.tuni.fi/app/uploads/66f1b9c6-logo_tuni_en_purple_rgb.jpg", "reason": "wrong identity: Tampere Universities (TUNI) community logo"},
+        {"url": "https://www.tuni.fi/content-webapi.tuni.fi/image-style/w1000_scale/proxy/public/2023-10/banner_tuition_tau_restricted.png?itok=RgBbCOFC&w=1920&q=75", "reason": "decorative hero/banner art, not a logo"}
+      ]
+    },
+    {
+      "scholarship_id": 501,
+      "title": "Deutschlandstipendium",
+      "outcome": "recovered",
+      "image_url": "https://www.deutschlandstipendium.de/SiteGlobals/Frontend/Images/icons/deutschlandstipendium/logo-deutschlandstipendium.jpg?__blob=normal&v=6",
+      "image_source_url": "https://www.deutschlandstipendium.de/deutschlandstipendium/de/stipendium/wie-es-funktioniert/wie-es-funktioniert_node.html",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "The shard's official_source_url uses the old path segment /wie-es-funktioniert/wie-es-funktioniert.html and returned a transport error; the live official page on the same domain is https://www.deutschlandstipendium.de/deutschlandstipendium/de/stipendium/wie-es-funktioniert/wie-es-funktioniert_node.html (title 'Startseite - BMFTR Deutschlandstipendium', og:site_name 'Bundesministerium für Bildung und Forschung - BMBF Deutschlandstipendium'), fetched successfully. deutschlandstipendium.de is the official BMFTR/BMBF programme domain and uses the Government Site Builder, so it is an official government page for this award. That page carries the programme's own logo in the site header, distinct from the ministry logo: <p class=\"c-header__add-logo\"><img src=\"/SiteGlobals/Frontend/Images/icons/deutschlandstipendium/logo-deutschlandstipendium.jpg?__blob=normal&v=6\" alt=\"Bild-Dokument für das Frontend\" class=\"c-header__logo\" />. Direct GET of that asset returned HTTP 200, image/jpeg, 8530 bytes, 260x110 px; the file was downloaded and visually confirmed as the Deutschlandstipendium wordmark ('Deutschland' over 'STIPENDIUM' with the orange bracket device) — exact identity for the Deutschlandstipendium programme, not the ministry and not a generic Deutschland mark. The identical asset reference also appears on the official 'Downloads und Infografiken' page, confirming it is the standing programme logo. Caveat recorded honestly: 260x110 px is a modest-resolution header lockup and is the only full programme logo the site publishes — there is no higher-resolution or vector programme mark on the official domain. Favicon.ico / favicon-16x16 / favicon-32x32 / favicon-96x96 / favicon-180x180 / favicon-apple-* / favicon-safari-svg.svg and the msapplication Tile images were all rejected per the logo rules."
+      },
+      "source": {
+        "url": "https://www.deutschlandstipendium.de/deutschlandstipendium/de/stipendium/wie-es-funktioniert/wie-es-funktioniert_node.html",
+        "publisher": "Bundesministerium für Forschung, Technologie und Raumfahrt (BMFTR) — Deutschlandstipendium",
+        "retrieved_at": "2026-10-05T15:31:00Z",
+        "raw_extract": "<p class=\"c-header__add-logo\">\n  <img src=\"/SiteGlobals/Frontend/Images/icons/deutschlandstipendium/logo-deutschlandstipendium.jpg?__blob=normal&v=6\"\n     alt=\"Bild-Dokument für das Frontend\"\n     class=\"c-header__logo\"\n    />\n</p>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://www.deutschlandstipendium.de/",
+        "https://www.deutschlandstipendium.de/deutschlandstipendium/de/stipendium/wie-es-funktioniert/wie-es-funktioniert_node.html",
+        "https://www.deutschlandstipendium.de/deutschlandstipendium/de/stipendium/downloads-und-infografiken/downloads-und-infografiken_node.html",
+        "https://www.deutschlandstipendium.de/SiteGlobals/Frontend/Images/icons/deutschlandstipendium/logo-deutschlandstipendium.jpg?__blob=normal&v=6"
+      ],
+      "rejected": [
+        {"url": "https://www.deutschlandstipendium.de/SiteGlobals/Frontend/Images/icons/_common/bmftr-logo.svg?__blob=normal&v=6", "reason": "parent ministry brand (BMFTR/BMBF), not the Deutschlandstipendium programme mark; wrong identity for this record"},
+        {"url": "https://www.deutschlandstipendium.de/SiteGlobals/Frontend/Images/icons/_common/logo_bmftr_small.svg?__blob=normal&v=1", "reason": "parent ministry brand, plus the low-resolution sticky-header variant"},
+        {"url": "https://www.deutschlandstipendium.de/SiteGlobals/Frontend/Images/favicon.ico?__blob=normal&v=4", "reason": "favicon"},
+        {"url": "https://www.deutschlandstipendium.de/SiteGlobals/Frontend/Images/favicon-apple-180x180.png?__blob=normal&v=4", "reason": "apple-touch-icon / favicon-sized badge"},
+        {"url": "https://www.deutschlandstipendium.de/SiteGlobals/Frontend/Images/favicon-safari-svg.svg?__blob=normal&v=4", "reason": "safari-pinned-tab mask-icon"},
+        {"url": "https://www.deutschlandstipendium.de/SharedDocs/Bilder/de/deutschlandstipendium/img/bmbf_deutschlandstipendium_jubilaeumslogo_rgb_rz.jpg?__blob=normal&v=1", "reason": "10-year anniversary (Jubiläums) special-edition lockup, not the standing programme logo"},
+        {"url": "https://www.deutschlandstipendium.de/SharedDocs/Bilder/de/deutschlandstipendium/img/deutschlandstipendium-aktuelle-zahlen-2025.png?__blob=normal&v=2", "reason": "infographic, not a logo asset"}
+      ]
+    },
+    {
+      "scholarship_id": 558,
+      "title": "MBZUAI Graduate Funding for M.Sc. and Ph.D. Students",
+      "outcome": "not_found",
+      "image_url": null,
+      "image_source_url": null,
+      "image_source_type": null,
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": false,
+        "accessible": false,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": false,
+        "notes": "No official, retrievable MBZUAI logo file exists. Findings: (1) official_source_url https://mbzuai.ac.ae/admissions/graduate-masters-admissions returns HTTP 403 to plain HTTP fetches (even with a desktop browser User-Agent) and had to be rendered in a real browser session; when rendered, the page's masthead logo is an INLINE SVG component — <div class=\"navigation-main-logo\"><a href=\"/\" aria-label=\"MBZUAI Home\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"198\" height=\"56\" viewBox=\"0 0 198 56\" ...> — with no src attribute and therefore no URL that can be stored as image_url. (2) A full network trace of the graduate master's admissions page and the University Catalogue page returned only these SVG/PNG assets, none of which is a usable logo file: /images/BackgroundPatternNavy500.svg, /images/BackgroundPatternSand500.svg, /images/BackgroundPatternWhite.svg, /images/bullet_point_sand_bg.svg, /_nuxt/primeicons.*.svg (UI icon sprite) and /favicon.svg. (3) The declared <link rel=\"icon\"> and <link rel=\"apple-touch-icon\"> set is /favicon.svg, /apple-touch-icon.png, /apple-touch-icon-152x152.png, /apple-touch-icon-120x120.png — every one of these is a favicon/apple-touch-icon asset and is rejected without exception by the logo rules, so /favicon.svg was NOT used. (4) An official brand hub was advertised at https://mbzuai.ac.ae/brand/ ('Primary logos / Download now', 'Download full brand guidelines'), but on the live site that URL redirects to the MBZUAI homepage (https://mbzuai.ac.ae/, title 'Home'), so no brand-asset page or logo download is actually published. (5) The official Media Center (https://mbzuai.ac.ae/media and https://mbzuai.ac.ae/the-node/media-center) states verbatim: 'For images of our faculty and leadership team, or for permission to use our logos for partnerships and collaborations, please request using the form below' — i.e. MBZUAI gates logo use behind a request form and publishes no direct logo asset. (6) og:image on the admissions page is https://mbzuai.ac.ae/content/media/2026-09/fallback-image_0.jpg, a generic fallback/decorative hero image, which is rejected as decorative hero art. Conclusion: official absence. A favicon or an inline-SVG-derived guess would be fake branding, so image_url stays null."
+      },
+      "source": {
+        "url": "https://mbzuai.ac.ae/admissions/graduate-masters-admissions",
+        "publisher": "Mohamed bin Zayed University of Artificial Intelligence (MBZUAI)",
+        "retrieved_at": "2026-10-05T15:32:00Z",
+        "raw_extract": "<div class=\"navigation-main-logo flex items-center py-0 gap-4 xl:py-2 mr-auto\"><a href=\"/\" class=\"router-link-active\" aria-label=\"MBZUAI Home\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"198\" height=\"56\" viewBox=\"0 0 198 56\" fill=\"currentColor\" class=\"max-w-37.5 md:max-w-50 md:me-2\">...</svg></a></div> | og:image = https://mbzuai.ac.ae/content/media/2026-09/fallback-image_0.jpg | link rel=icon href=/favicon.svg ; link rel=apple-touch-icon href=/apple-touch-icon.png",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://mbzuai.ac.ae/admissions/graduate-masters-admissions",
+        "https://mbzuai.ac.ae/academics/msc-programs",
+        "https://mbzuai.ac.ae/",
+        "https://mbzuai.ac.ae/brand/",
+        "https://mbzuai.ac.ae/media",
+        "https://mbzuai.ac.ae/the-node/media-center",
+        "https://mbzuai.ac.ae/study/university-catalogue"
+      ],
+      "rejected": [
+        {"url": "https://mbzuai.ac.ae/favicon.svg", "reason": "favicon"},
+        {"url": "https://mbzuai.ac.ae/apple-touch-icon.png", "reason": "apple-touch-icon"},
+        {"url": "https://mbzuai.ac.ae/apple-touch-icon-152x152.png", "reason": "apple-touch-icon"},
+        {"url": "https://mbzuai.ac.ae/apple-touch-icon-120x120.png", "reason": "apple-touch-icon"},
+        {"url": "https://mbzuai.ac.ae/content/media/2026-09/fallback-image_0.jpg", "reason": "decorative hero art / generic og:image fallback, not a logo"},
+        {"url": "https://mbzuai.ac.ae/_nuxt/primeicons.Dr5RGzOO.svg", "reason": "UI icon sprite sheet"},
+        {"url": "https://mbzuai.ac.ae/images/BackgroundPatternNavy500.svg", "reason": "decorative background pattern, not a logo"},
+        {"url": "https://mbzuai.ac.ae/brand/", "reason": "redirects to the homepage; no brand assets are actually published there (search engines still index a stale 'Brand - MBZUAI' capture, which must not be treated as live evidence)"}
+      ]
+    }
+  ]
+}

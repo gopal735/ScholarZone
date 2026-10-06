@@ -1,0 +1,284 @@
+{
+  "shard_id": "LG-012",
+  "topic": "logo",
+  "agent_completed": true,
+  "retrieved_at": "2026-10-05T15:35:00Z",
+  "records": [
+    {
+      "scholarship_id": 297,
+      "title": "Visegrad Scholarship Programme — study or research stay hosted by Masaryk University",
+      "outcome": "recovered",
+      "image_url": "https://media.visegradfund.org/images/vf_logo_midnightblue.svg",
+      "image_source_url": "https://media.visegradfund.org/",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "media.visegradfund.org is the International Visegrad Fund's own media library, linked from the Fund's own site footer ('Media Library' -> https://media.visegradfund.org/). Asset is the Fund's brand logotype (vector, viewBox 0 0 116 53, fill #0F3250). Identity is proven by geometry, not filename: the downloaded SVG opens with '<svg width=\"116\" height=\"53\" viewBox=\"0 0 116 53\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M40.1353 2.49928C40.1353 3.88208 39.0424 4.99855 37.6874 4.99855...', identical to the header logotype inline SVG on https://www.visegradfund.org/about-us/logo. Verified accessible: HTTP 200, Content-Type image/svg+xml, 5691 bytes. The Fund is the named provider in the shard ('International Visegrad Fund'); Masaryk University is only the host institution."
+      },
+      "source": {
+        "url": "https://media.visegradfund.org/",
+        "publisher": "International Visegrad Fund",
+        "retrieved_at": "2026-10-05T15:35:00Z",
+        "raw_extract": "<title>Visegrad Fund</title> ... <a class=\"navbar-brand\" href=\"/\"><img src=\"images/vf_logo_midnightblue.svg\"></a> ... <h1>Media Library</h1> ... <p>Browse through the latest photos from projects supported by our grants, scholarships and artist residencies</p>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://czs.muni.cz/en/student-from-abroad/other-possibilities/visegrad-grant",
+        "https://www.visegradfund.org/about-us/logo",
+        "https://www.visegradfund.org/about-us",
+        "https://www.visegradfund.org/news/celebrating-25-years-visegrad-fund-special-anniversary-logo/"
+      ],
+      "rejected": [
+        {
+          "url": "http://czs.muni.cz/templates/czsjvs/images/og-image-en.jpg",
+          "reason": "Open Graph share image (social/preview share asset) declared in <meta property=\"og:image\"> — rejected as a social share-button / decorative hero image, not a brand mark asset."
+        },
+        {
+          "url": "https://czs.muni.cz/templates/czsjvs/images/favicon.ico",
+          "reason": "favicon.ico — rejected by rule."
+        },
+        {
+          "url": "https://czs.muni.cz/images/other/muni_czs_en.png",
+          "reason": "Wrong identity: legacy asset (referenced only inside commented-out HTML) for Masaryk University Centre for International Cooperation, not the Visegrad Scholarship Programme's provider. Also superseded by the live inline-SVG site logo."
+        },
+        {
+          "url": "https://www.visegradfund.org/og-default.png",
+          "reason": "Open Graph / Twitter share image (social share asset) — rejected by rule."
+        },
+        {
+          "url": "https://www.visegradfund.org/favicon.ico",
+          "reason": "favicon.ico — rejected by rule."
+        },
+        {
+          "url": "https://www.visegradfund.org/api/download?url=https%3A%2F%2Fdata.eu.cntmbr.com%2Fvisegrad%2Fvisegrad%2Fcc37a88e-113a-47c1-9518-395a9f78090b.pdf&name=VF-logotype-blue.pdf",
+          "reason": "Official but not an image asset (PDF vector document); the official downloadable brand asset is a PDF/ZIP/7z, not a renderable image URL. Equivalent vector logo obtained from the Fund's own site instead."
+        },
+        {
+          "url": "https://www.visegradfund.org/api/download?url=https%3A%2F%2Fdata.eu.cntmbr.com%2Fvisegrad%2Fvisegrad%2Fc9cc968d-2319-453d-9d71-d896ea2f0a4b.7z&name=Logo_formats.7z",
+          "reason": "Archive container, not an image asset."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 347,
+      "title": "Erasmus Mundus EDISS Scholarship (Engineering of Data-intensive Intelligent Software Systems)",
+      "outcome": "recovered",
+      "image_url": "https://www.master-ediss.eu/wp-content/uploads/2020/11/cropped-Logo_Only_Transparent.png",
+      "image_source_url": "https://www.master-ediss.eu/scholarship/",
+      "image_source_type": "official_scholarship",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "master-ediss.eu is the official site of the EDISS Erasmus Mundus Joint Master Degree Programme. This file is the site's own WordPress 'custom-logo' brand mark rendered in the <header id=\"masthead\"> site branding, alt=\"EDISS\", linking to the site home — i.e. the programme's official logo, not an icon set. Verified accessible: HTTP 200, Content-Type image/png, 26739 bytes, 503x462 (declared width/height in the markup)."
+      },
+      "source": {
+        "url": "https://www.master-ediss.eu/scholarship/",
+        "publisher": "EDISS Erasmus Mundus Joint Master Degree Programme (master-ediss.eu)",
+        "retrieved_at": "2026-10-05T15:35:00Z",
+        "raw_extract": "<a href=\"https://www.master-ediss.eu/\" class=\"custom-logo-link\" rel=\"home\"><img width=\"503\" height=\"462\" src=\"https://www.master-ediss.eu/wp-content/uploads/2020/11/cropped-Logo_Only_Transparent.png\" class=\"custom-logo\" alt=\"EDISS\" decoding=\"async\" fetchpriority=\"high\" srcset=\"https://www.master-ediss.eu/wp-content/uploads/2020/11/cropped-Logo_Only_Transparent.png 503w, https://www.master-ediss.eu/wp-content/uploads/2020/11/cropped-Logo_Only_Transparent-300x276.png 300w, https://www.master-ediss.eu/wp-content/uploads/2020/11/cropped-Logo_Only_Transparent-294x270.png 294w\" sizes=\"(max-width: 503px) 100vw, 503px\" /></a> ... <p class=\"site-description\">Erasmus Mundus Joint Master Degree Programme on the Engineering of Data-intensive Intelligent Software Systems</p>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "http://www.master-ediss.eu/scholarship/",
+        "https://www.master-ediss.eu/",
+        "https://www.master-ediss.eu/information-material/"
+      ],
+      "rejected": [
+        {
+          "url": "https://www.master-ediss.eu/wp-content/uploads/2020/11/Screenshot-2020-11-04-at-8.16.47-300x300.png",
+          "reason": "Declared as rel=\"icon\" sizes=\"192x192\", rel=\"apple-touch-icon\" and msapplication-TileImage — favicon/apple-touch-icon, and its filename shows it is a screenshot crop. Rejected by rule."
+        },
+        {
+          "url": "https://www.master-ediss.eu/wp-content/uploads/2020/11/Screenshot-2020-11-04-at-8.16.47-100x100.png",
+          "reason": "Favicon-sized badge and a screenshot crop — rejected by rule."
+        },
+        {
+          "url": "https://www.master-ediss.eu/wp-content/uploads/2020/11/cropped-Logo_Only_Transparent-300x276.png",
+          "reason": "WordPress generated low-resolution srcset derivative (300x276) of the accepted logo — rejected as a low-res badge; the full 503x462 original is used instead."
+        },
+        {
+          "url": "https://www.master-ediss.eu/wp-content/uploads/2020/11/cropped-Logo_Only_Transparent-294x270.png",
+          "reason": "WordPress generated low-resolution srcset derivative (294x270) — rejected as a low-res badge."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 585,
+      "title": "Latvian State Scholarship for Foreign Students (Scholarship for studies in Latvia)",
+      "outcome": "recovered",
+      "image_url": "https://www.viaa.gov.lv/lv/media/585/download?attachment",
+      "image_source_url": "https://www.viaa.gov.lv/lv/viaa_logo",
+      "image_source_type": "official_government",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "viaa.gov.lv is the official domain of the State Education Development Agency (Valsts izglitibas attistibas agentura / VIAA), the named provider, and also the parent domain of the official scholarship portal scholarships.viaa.gov.lv. The asset is taken from VIAA's own official brand page (/lv/viaa_logo), section 'Logo', under the heading 'Valsts izglitibas attistibas agenturas logo (pilnkrasu)' = full-colour agency logo, download link titled 'pilnkrasu_horizontals.jpg'. Verified accessible: HTTP 200, Content-Type image/jpeg, 210667 bytes, measured 2067x886 pixels (well above favicon/badge resolution)."
+      },
+      "source": {
+        "url": "https://www.viaa.gov.lv/lv/viaa_logo",
+        "publisher": "State Education Development Agency (VIAA), Latvia",
+        "retrieved_at": "2026-10-05T15:35:00Z",
+        "raw_extract": "<title>Logo | Valsts izglītības attīstības aģentūra</title> ... <h3>Logo</h3> ... <h3>Valsts izglītības attīstības aģentūras logo</h3> <h3>(pilnkrāsu)</h3> ... <p><strong>JPG (horizontāls):</strong></p> ... <a href=\"/lv/media/585/download?attachment\" type=\"image/jpeg; length=210667\" title=\"pilnkrasu_horizontals.jpg\" class=\"file file--mime-image-jpeg file--image\" rel=\"nofollow\" data-media=\"585\" aria-label=\"JPG datne - pilnkrasu_horizontals\">pilnkrasu_horizontals</a> ... Atjaunināts: 05.02.2026.",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://studyinlatvia.lv/scholarships",
+        "https://www.viaa.gov.lv/lv/viaa_logo",
+        "https://www.viaa.gov.lv/lv/logo",
+        "https://www.viaa.gov.lv/lv"
+      ],
+      "rejected": [
+        {
+          "url": "https://studyinlatvia.lv/favicon.ico",
+          "reason": "favicon.ico declared as rel=\"icon\" on studyinlatvia.lv — rejected by rule."
+        },
+        {
+          "url": "https://studyinlatvia.lv/favicon.png",
+          "reason": "favicon.png declared as rel=\"icon\" on studyinlatvia.lv — rejected by rule."
+        },
+        {
+          "url": "https://www.viaa.gov.lv/files/viaa-s3/s3fs-public/favikona_iesta_de_m_mazais_g_erbonis_vienkarsa_pilnkrasu_rgb_3.png",
+          "reason": "rel=\"icon\" favicon asset — rejected by rule."
+        },
+        {
+          "url": "https://www.viaa.gov.lv/lv/logo",
+          "reason": "Wrong identity: this VIAA page is the Nordplus programme logo page ('/lv/logo' is linked from the 'Par Nordplus' menu branch), not the VIAA agency logo and not the Latvian State Scholarship mark."
+        },
+        {
+          "url": "https://www.viaa.gov.lv/files/viaa-s3/s3fs-public/logo_h_lv_4.png",
+          "reason": "Correct identity and official, but only 377x97 px site-header lockup; superseded by the 2067x886 full-colour agency logo from the official brand page."
+        },
+        {
+          "url": "https://www.viaa.gov.lv/files/viaa-s3/s3fs-public/styles/100_style/public/gallery_images/txt_20_logo_ml_logo_sadalai.jpg?itok=0-WQZciR",
+          "reason": "Correct identity but a Drupal image-style derivative rendered at 277x143 for the brand-page gallery preview; superseded by the full-size downloadable brand asset."
+        },
+        {
+          "url": "https://www.mk.gov.lv/lv/valsts-parvaldes-grafiskais-standarts",
+          "reason": "Government-wide graphic standard (state arms across all ministries), not the VIAA / scholarship provider identity — a different organisation's brand mark."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 595,
+      "title": "Bolsas Doutorado Sanduiche no Exterior - Edital Comite Gestor Fiocruz no 01/2026 (CAPES-Global.Edu)",
+      "outcome": "recovered",
+      "image_url": "https://formeditais.campusvirtual.fiocruz.br/recursos/images/logo-pe-fiocruz.svg",
+      "image_source_url": "https://formeditais.campusvirtual.fiocruz.br/editais/cg-fiocruz-012026",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "formeditais.campusvirtual.fiocruz.br is Fiocruz's own edital portal on the official fiocruz.br domain. The asset is the institutional Fiocruz logo placed in the page footer of the official notice, explicitly labelled alt=\"Fiocruz\" and hyperlinked to https://portal.fiocruz.br/ — the Foundation's own site. Fiocruz (Fundacao Oswaldo Cruz) is the awarding body named in the shard. Verified accessible: HTTP 200, Content-Type image/svg+xml, 8550 bytes."
+      },
+      "source": {
+        "url": "https://formeditais.campusvirtual.fiocruz.br/editais/cg-fiocruz-012026",
+        "publisher": "Fundacao Oswaldo Cruz (Fiocruz) - Campus Virtual / Comite Gestor",
+        "retrieved_at": "2026-10-05T15:35:00Z",
+        "raw_extract": "<h1 class=\"h3\">Comitê Gestor Fiocruz — Edital nº 01/2026 - Doutorado Sanduíche no Exterior</h1> ... <footer> ... <li><a href=\"https://portal.fiocruz.br/\" target=\"_blank\"><img src=\"https://formeditais.campusvirtual.fiocruz.br/recursos/images/logo-pe-fiocruz.svg\" alt=\"Fiocruz\" class=\"img-fluid\"></a></li> ... <li><a class=\"a4 float-right\" href=\"https://portal.fiocruz.br/pt-br\" target=\"_blank\"><span>Fundação Oswaldo Cruz</span></a></li>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://formeditais.campusvirtual.fiocruz.br/editais/cg-fiocruz-012026",
+        "https://formeditais.campusvirtual.fiocruz.br/editais",
+        "https://portal.fiocruz.br/pt-br"
+      ],
+      "rejected": [
+        {
+          "url": "https://formeditais.campusvirtual.fiocruz.br/recursos/images/favicon.png",
+          "reason": "rel=\"icon\" favicon asset — rejected by rule."
+        },
+        {
+          "url": "https://formeditais.campusvirtual.fiocruz.br/recursos/images/logo-cvf.svg",
+          "reason": "Portal sub-brand (Campus Virtual Fiocruz, alt=\"Campus Virtual Fiocruz\"), not the Fiocruz institutional identity named as the record's official_source. Examined but not used as the primary mark."
+        },
+        {
+          "url": "https://formeditais.campusvirtual.fiocruz.br/recursos/images/ir-ao-topo.png",
+          "reason": "Scroll-to-top UI button image — browser/UI chrome, rejected by rule."
+        },
+        {
+          "url": "https://formeditais.campusvirtual.fiocruz.br/editais/arquivo/726",
+          "reason": "The official edital PDF itself (Edital_CG_01_2026_DSE(1).pdf, 473 KB) — a document, not a brand mark asset."
+        }
+      ]
+    },
+    {
+      "scholarship_id": 637,
+      "title": "Bolsas Capacitacao de Curta Duracao no Exterior - Edital Comite Gestor Fiocruz no 02/2026 (CAPES-Global.Edu)",
+      "outcome": "recovered",
+      "image_url": "https://formeditais.campusvirtual.fiocruz.br/recursos/images/logo-pe-fiocruz.svg",
+      "image_source_url": "https://formeditais.campusvirtual.fiocruz.br/editais/cg-fiocruz-022026",
+      "image_source_type": "official_provider",
+      "image_kind": "official_logo",
+      "confidence": "HIGH",
+      "validation": {
+        "official_domain": true,
+        "accessible": true,
+        "not_favicon": true,
+        "not_ui": true,
+        "not_social": true,
+        "not_third_party": true,
+        "identity_match": true,
+        "notes": "Same official Fiocruz institutional logo as record 595, found in the footer of this record's own official notice page on the official fiocruz.br domain, labelled alt=\"Fiocruz\" and hyperlinked to https://portal.fiocruz.br/. Both notices are issued by the same awarding body (Comite Gestor Fiocruz / Fundacao Oswaldo Cruz), so the same official provider mark is the correct identity for both records. Verified accessible: HTTP 200, Content-Type image/svg+xml, 8550 bytes."
+      },
+      "source": {
+        "url": "https://formeditais.campusvirtual.fiocruz.br/editais/cg-fiocruz-022026",
+        "publisher": "Fundacao Oswaldo Cruz (Fiocruz) - Campus Virtual / Comite Gestor",
+        "retrieved_at": "2026-10-05T15:35:00Z",
+        "raw_extract": "<h1 class=\"h3\">Comitê Gestor Fiocruz — Edital nº 02/2026 - Capacitação de Curta Duração</h1> ... <footer> ... <li><a href=\"https://portal.fiocruz.br/\" target=\"_blank\"><img src=\"https://formeditais.campusvirtual.fiocruz.br/recursos/images/logo-pe-fiocruz.svg\" alt=\"Fiocruz\" class=\"img-fluid\"></a></li> ... <li><a class=\"a4 float-right\" href=\"https://portal.fiocruz.br/pt-br\" target=\"_blank\"><span>Fundação Oswaldo Cruz</span></a></li>",
+        "confidence": "HIGH"
+      },
+      "examined": [
+        "https://formeditais.campusvirtual.fiocruz.br/editais/cg-fiocruz-022026",
+        "https://formeditais.campusvirtual.fiocruz.br/editais",
+        "https://portal.fiocruz.br/pt-br"
+      ],
+      "rejected": [
+        {
+          "url": "https://formeditais.campusvirtual.fiocruz.br/recursos/images/favicon.png",
+          "reason": "rel=\"icon\" favicon asset — rejected by rule."
+        },
+        {
+          "url": "https://formeditais.campusvirtual.fiocruz.br/recursos/images/logo-cvf.svg",
+          "reason": "Portal sub-brand (Campus Virtual Fiocruz), not the Fiocruz institutional identity named as the record's official_source."
+        },
+        {
+          "url": "https://formeditais.campusvirtual.fiocruz.br/recursos/images/ir-ao-topo.png",
+          "reason": "Scroll-to-top UI button image — browser/UI chrome, rejected by rule."
+        },
+        {
+          "url": "https://formeditais.campusvirtual.fiocruz.br/editais/arquivo/677",
+          "reason": "The official edital PDF itself (Edital CG 02_2026_Capacitacao.pdf, 500 KB) — a document, not a brand mark asset."
+        }
+      ]
+    }
+  ]
+}

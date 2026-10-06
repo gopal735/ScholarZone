@@ -1,0 +1,57 @@
+{
+  "shard_id": "LG-004",
+  "topic": "logo",
+  "hosts": [
+    "iso.fudan.edu.cn",
+    "sgs.upm.edu.my",
+    "www.insaindia.res.in"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 112,
+      "title": "India Science and Research Fellowship (ISRF) Programme",
+      "official_source": "Indian National Science Academy (INSA) for Department of Science & Technology (DST), Govt. of India",
+      "official_source_url": "https://www.insaindia.res.in",
+      "catalogue_url": "https://insaindia.res.in/isrf-call-2025-26",
+      "country": "India",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 319,
+      "title": "Chinese Government Scholarship (Chinese University Program) at Fudan University 2026",
+      "official_source": "Fudan University",
+      "official_source_url": "https://iso.fudan.edu.cn/isoenglish/82/fe/c17458a754430/page.htm",
+      "catalogue_url": "https://iso.fudan.edu.cn/isoenglish/SummerPrograms/list.htm",
+      "country": "China",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 320,
+      "title": "Chinese Government Scholarship (Youth of Excellence Scheme) at Fudan University 2026",
+      "official_source": "Fudan University",
+      "official_source_url": "https://iso.fudan.edu.cn/isoenglish/82/fd/c17458a754429/page.htm",
+      "catalogue_url": "https://iso.fudan.edu.cn/isoenglish/SummerPrograms/list.htm",
+      "country": "China",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 321,
+      "title": "Shanghai Government Scholarship at Fudan University 2026",
+      "official_source": "Fudan University",
+      "official_source_url": "https://iso.fudan.edu.cn/isoenglish/82/fb/c17458a754427/page.htm",
+      "catalogue_url": "https://iso.fudan.edu.cn/isoenglish/SummerPrograms/list.htm",
+      "country": "China",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 647,
+      "title": "International Graduate Student Scholarship (IGSS)",
+      "official_source": "Universiti Putra Malaysia (UPM), School of Graduate Studies",
+      "official_source_url": "https://sgs.upm.edu.my/financial_assistance_scholarships/scholarship_financial_assistance_upm/international_graduate_student_scholarship_igss-1402",
+      "catalogue_url": null,
+      "country": "Malaysia",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}

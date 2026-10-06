@@ -1,0 +1,154 @@
+{
+  "shard_id": "DL-001",
+  "topic": "deadline",
+  "hosts": [
+    "study.gov.pl"
+  ],
+  "record_count": 12,
+  "records": [
+    {
+      "id": 291,
+      "title": "Visegrad Scholarship Programme",
+      "official_source": "International Visegrad Fund",
+      "official_source_url": "https://study.gov.pl/visegrad-scholarship-programme",
+      "catalogue_url": "https://visegradfund.org/scholarships",
+      "country": "Multiple",
+      "deadline_display": "The International Visegrad Fund's own site states the Visegrad Scholarship Program \"Opens Jan 1, 2027\". No closing date for that round is published yet.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual cycle. The Fund's site lists the Visegrad Scholarship Program as opening on 1 January 2027; applications are then submitted through the my.visegradfund.org portal within that round's window.",
+      "verification_status": "active"
+    },
+    {
+      "id": 411,
+      "title": "Ignacy Łukasiewicz Scholarship",
+      "official_source": "Gov.Pl",
+      "official_source_url": "https://study.gov.pl/ignacy-łukasiewicz-scholarship",
+      "catalogue_url": null,
+      "country": "Poland",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": null,
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 412,
+      "title": "Stefan Banach NAWA Programme",
+      "official_source": "Polish National Agency for Academic Exchange (NAWA)",
+      "official_source_url": "https://study.gov.pl/stefan-banach-nawa-programme",
+      "catalogue_url": "https://nawa.gov.pl/en/students/foreign-students/the-banach-scholarship-programme/landing",
+      "country": "Poland",
+      "deadline_display": "This year's call is open until May 8, 2026, 3:00 p.m. (CEST) or until the application limit in a specific group is reached.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual call published in spring for the following academic year; the 2026 call closed on 8 May 2026 and results were expected by 31 July 2026",
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 413,
+      "title": "Konstanty Kalinowski Scholarship",
+      "official_source": "Gov.Pl",
+      "official_source_url": "https://study.gov.pl/konstanty-kalinowski-scholarship-programme",
+      "catalogue_url": null,
+      "country": "Poland",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 414,
+      "title": "General Anders Scholarship Programme for Polish Diaspora (gen. Anders Programme)",
+      "official_source": "Polish National Agency for Academic Exchange (NAWA)",
+      "official_source_url": "https://study.gov.pl/general-władysław-anders",
+      "catalogue_url": null,
+      "country": "Poland",
+      "deadline_display": "Calls for proposals are announced on an annual basis; the 2026 second-cycle call was announced as announcement no. 14/2026 of the Director of NAWA, dated 31 March 2026.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual; the 2026 calls for first-cycle and second-cycle studies were both open in 2026 and the next cycle is expected in spring 2027",
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 420,
+      "title": "Lane Kirkland Scholarship Program",
+      "official_source": "Gov.Pl",
+      "official_source_url": "https://study.gov.pl/lane-kirkland-scholarship-program",
+      "catalogue_url": "https://kirkland.edu.pl/dla-kandydatow",
+      "country": "Poland",
+      "deadline_display": "No application deadline is published for the 2027/28 edition as of 2026-10-04. The programme runs on an annual cycle: kirkland.edu.pl reports 'Uroczyste zakończenie XXVI edycji Programu Kirklanda' (graduation of the 26th edition) and 'Inauguracja roku stypendialnego 2026/27' in September/October 2026, and the recruitment calendar is published on the Polish candidates page.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual cycle; the 2026/27 scholarship year was inaugurated in September/October 2026, so applications for the next edition are expected before that",
+      "verification_status": "active"
+    },
+    {
+      "id": 422,
+      "title": "UNESCO/Poland Co-Sponsored Fellowships in Engineering",
+      "official_source": "Gov.Pl",
+      "official_source_url": "https://study.gov.pl/unescopoland-co-sponsored-fellowships-programme-engineering",
+      "catalogue_url": "https://www.unesco.org/en/fellowships/poland-engineering",
+      "country": "Poland",
+      "deadline_display": "2025 edition: 'National Commissions of invited Member States will select qualified candidates and transmit ... by Monday 26 May 2025, Midnight Paris time at the latest.' Individual applications are not accepted by UNESCO; only candidates endorsed by their National Commission are considered. That edition is closed and no 2026/27 deadline is published.",
+      "deadline_precision": "recurring",
+      "application_period": "Annual edition. For 2025 the National Commissions had to forward nominations by 26 May 2025 for a fellowship running 1 October 2025 to 31 March 2026.",
+      "verification_status": "active"
+    },
+    {
+      "id": 423,
+      "title": "Erasmus+ Programme",
+      "official_source": "Gov.Pl",
+      "official_source_url": "https://study.gov.pl/erasmus-plus-programme",
+      "catalogue_url": "https://study.gov.pl/erasmus",
+      "country": "Poland",
+      "deadline_display": "No central deadline is published on study.gov.pl or on the Polish National Agency's site. Erasmus+ calls are announced nationally by the Foundation for the Development of the Education System and by each sending or receiving university, so the deadline varies by institution and call.",
+      "deadline_precision": "varies",
+      "application_period": "Continuous programme with institution-level calls announced each academic year; no single national window is published",
+      "verification_status": "active"
+    },
+    {
+      "id": 424,
+      "title": "Fulbright Program (Poland-US)",
+      "official_source": "Gov.Pl",
+      "official_source_url": "https://study.gov.pl/fulbright-program",
+      "catalogue_url": "https://study.gov.pl/scholarships",
+      "country": "Poland",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": null,
+      "verification_status": "active"
+    },
+    {
+      "id": 425,
+      "title": "CEEPUS Exchange Programme",
+      "official_source": "Gov.Pl",
+      "official_source_url": "https://study.gov.pl/ceepus-exchange-programme-central-and-eastern-europe",
+      "catalogue_url": "https://www.ceepus.info",
+      "country": "Multiple",
+      "deadline_display": "The programme's own site announced on 21 September 2026 that the 'Network Application Round 2027/28' is enabled with a 'Deadline: 30th November, 2026, 23:59 CET' and an 'Extended deadline for signed documents (letters): 15th December, 2026, 23:59 CET'. That is the network (institution) application round; the student scholarship call runs separately per network and per direction, and no central student deadline is published on the pages read.",
+      "deadline_precision": "varies",
+      "application_period": "Annual cycles. The network application round for 2027/28 closed on 30 November 2026 (signed letters by 15 December 2026); student scholarship calls follow the network rounds and are announced per network.",
+      "verification_status": "active"
+    },
+    {
+      "id": 426,
+      "title": "Polish Government Scholarships (Bilateral Agreements)",
+      "official_source": "Gov.Pl",
+      "official_source_url": "https://study.gov.pl/polish-government-scholarships",
+      "catalogue_url": null,
+      "country": "Poland",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": null,
+      "verification_status": "quarantined"
+    },
+    {
+      "id": 427,
+      "title": "Solidarity with Belarus Scholarship Initiative",
+      "official_source": "Gov.Pl",
+      "official_source_url": "https://study.gov.pl/news/call-applications-solidarity-belarus-students-initiative-has-been-announced",
+      "catalogue_url": "https://study.gov.pl/scholarships",
+      "country": "Poland",
+      "deadline_display": null,
+      "deadline_precision": "unknown",
+      "application_period": null,
+      "verification_status": "quarantined"
+    }
+  ]
+}

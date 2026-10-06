@@ -1,0 +1,58 @@
+{
+  "shard_id": "LG-023",
+  "topic": "logo",
+  "hosts": [
+    "inlife.sorbonne-universite.fr",
+    "www.berea.edu",
+    "www.fes.de",
+    "www.sgs.utoronto.ca"
+  ],
+  "record_count": 5,
+  "records": [
+    {
+      "id": 121,
+      "title": "Berea College Tuition Promise Scholarship",
+      "official_source": "Berea College",
+      "official_source_url": "https://www.berea.edu/admissions",
+      "catalogue_url": "https://www.berea.edu/admissions/admission-information/apply/checklist-items/first-year",
+      "country": "United States",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 307,
+      "title": "Ontario Graduate Scholarship (OGS) - University of Toronto",
+      "official_source": "School of Graduate Studies, University of Toronto / Ontario Ministry of Colleges, Universities, Research Excellence and Security",
+      "official_source_url": "https://www.sgs.utoronto.ca/awards/ontario-graduate-scholarship",
+      "catalogue_url": "https://www.sgs.utoronto.ca/awards-funding/scholarships-awards/ontario-graduate-scholarship-application-instructions",
+      "country": "Canada",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 354,
+      "title": "InLife International Mobility Grants 2026-2027",
+      "official_source": "InLife - Initiative Sciences aux interfaces du vivant (Sorbonne Université)",
+      "official_source_url": "https://inlife.sorbonne-universite.fr/en/actualites/international-mobility-grants-2026-2027",
+      "catalogue_url": "https://inlife.sorbonne-universite.fr/en/education-1/international-mobility-grants-2026-2027",
+      "country": "France",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 502,
+      "title": "Friedrich-Ebert-Stiftung Promotionsförderung für Ausländer:innen (FES doctoral scholarship for international doctoral candidates)",
+      "official_source": "Friedrich-Ebert-Stiftung e. V., Studienförderung",
+      "official_source_url": "https://www.fes.de/studienfoerderung/stipendium/promotionsfoerderung-fuer-auslaender-innen",
+      "catalogue_url": null,
+      "country": "Germany",
+      "image_evaluation_status": "invalid_candidates"
+    },
+    {
+      "id": 544,
+      "title": "GrundfÃ¶rderung fÃ¼r AuslÃ¤nder:innen",
+      "official_source": "Friedrich-Ebert-Stiftung",
+      "official_source_url": "https://www.fes.de/studienfoerderung/stipendium/grundfoerderung-fuer-auslaender-innen",
+      "catalogue_url": "https://www.fes.de/studienfoerderung/stipendium",
+      "country": "Germany",
+      "image_evaluation_status": "invalid_candidates"
+    }
+  ]
+}
