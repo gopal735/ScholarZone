@@ -82,7 +82,7 @@ def _verb(sql: str) -> str:
 
 
 def _target(sql: str) -> str:
-    match = re.match(r"^\s*(?:INSERT\s+INTO|UPDATE|DELETE\s+FROM)\s+([\w\"]+)", sql, re.IGNORECASE)
+    match = re.match(r"^\s*(?:SELECT\s+|INSERT\s+INTO|UPDATE|DELETE\s+FROM)\s+([\w\"]+)", sql, re.IGNORECASE)
     return match.group(1).strip('"').lower() if match else ""
 
 
