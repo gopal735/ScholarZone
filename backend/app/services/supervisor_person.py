@@ -97,6 +97,7 @@ PERSON_PATH_ROOTS: tuple[str, ...] = (
     "/staff/",
     "/academics/",
     "/faculty/",
+    "/directory/",
 )
 
 #: Tokens permitted inside a name without being capitalised: the particles that
@@ -523,6 +524,17 @@ def approve_personhood(
     if role_evidence == "honorific":
         if not _is_person_shaped(name):
             return False, f"{name!r} is not person-shaped after honorific removal"
+
+    # 7. Structural (source_context) evidence: no role stated, but directory
+    # context and a valid person-profile URL. This is the weakest evidence
+    # and must be explicitly requested.
+    if role_evidence == "source_context":
+        if not directory_context:
+            return False, "source_context requires directory context"
+        if not profile_url_is_person_profile(profile_url):
+            return False, "source_context requires a person-profile URL"
+        if role is not None:
+            return False, "source_context evidence must not carry a role"
 
     return True, None
 
