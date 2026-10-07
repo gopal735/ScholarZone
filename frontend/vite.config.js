@@ -16,6 +16,10 @@ export default defineConfig(({ mode }) => {
   // on a root domain, the entry script 404ed, and nothing rendered. The explicit
   // variable still wins so a deliberate override is possible.
   //
+  // Netlify sets NETLIFY=true on every build. A Netlify build must also use
+  // base = '/' because the site is deployed at the domain root, not under a
+  // /ScholarZone/ subpath.
+  //
   // loadEnv reads from this file's directory rather than process.cwd(), which
   // under a multi-service build is the service root and not guaranteed to be the
   // frontend directory.
@@ -25,10 +29,13 @@ export default defineConfig(({ mode }) => {
     env.VITE_DEPLOY_TARGET === 'vercel' ||
     process.env.VERCEL === '1' ||
     process.env.VERCEL === 'true'
+  const isNetlify =
+    process.env.NETLIFY === 'true' ||
+    env.NETLIFY === 'true'
 
   return {
     plugins: [react()],
-    base: isVercel ? '/' : '/ScholarZone/',
+    base: isVercel || isNetlify ? '/' : '/ScholarZone/',
     test: {
       // The supervisor panel is a React component, so its tests need a document.
       // Master already runs `vitest run` and already depends on jsdom and
