@@ -32,42 +32,38 @@ def public_visibility_conditions() -> list:
 
     The states are kept deliberately distinct:
 
-    * ``verification_status`` is authoritative: only ``active`` may be published.
-      ``is_verified`` is legacy bookkeeping and cannot admit a record whose
-      verification is still unresolved.
-    * ``is_verified`` is about the *scholarship* being trustworthy.
+    * ``verification_status`` is authoritative for trust labelling, not visibility.
+      A record whose verification is ``needs_review`` or ``unverified`` is still
+      a legitimate scholarship that belongs in the public catalogue; its trust
+      label will reflect the verification state.
+    * ``is_verified`` is legacy bookkeeping and must not be used as a visibility
+      gate.
     * ``image_verified_at`` is about an *official* image having passed
-      validation.
+      validation. Missing images do not make a scholarship illegitimate.
     * A record whose source was merely blocked is not untrustworthy, it is
-      unevaluated. The image gate hides it; nothing here claims the
-      scholarship itself is bad.
-    * ``image_source_type == "wikimedia"`` is a third-party host. It never
-      satisfies the official-image gate unless the owner has explicitly opted
-      in, and it is excluded by name rather than by omission.
+      unevaluated. Missing images do not make the scholarship illegitimate.
+    * ``image_source_type == "wikimedia"`` is a third-party host. It is not an
+      official image but the scholarship itself is still legitimate.
     * ``is_archived`` is not a trust question at all. A record is archived when
       its round has closed, and it is excluded unconditionally rather than
       being left to the settings: archiving is a promise that expired
       opportunities are not offered as if they were live, and a configuration
       flag that could switch that off would quietly break the promise.
+    * ``status == "closed"`` indicates a genuinely closed/expired scholarship.
+      These are excluded from the public catalogue.
+    * ``verification_status == "quarantined"`` is a security/safety exclusion.
+      Quarantined records represent a genuine safety concern and remain hidden.
+    * Optional quality gates (off by default): verification and image gates.
+      These can be enabled via configuration for stricter public listing.
     """
     settings = get_settings()
     conditions = [
         Scholarship.verification_status != "quarantined",
         Scholarship.is_archived.is_(False),
+        Scholarship.status != "closed",
     ]
 
     if settings.public_require_verified:
-        # The authoritative status, not the legacy boolean. `is_verified` is
-        # internal bookkeeping and Match evidence scoring; it is never the
-        # authority for a public claim. Gating on it let a record whose
-        # verification was still unresolved - `needs_review` - satisfy the
-        # predicate on the strength of a stale True and be published as a
-        # verified opportunity.
-        #
-        # This replaces the legacy gate rather than being added beside it:
-        # requiring both would keep hiding records whose verification *is*
-        # resolved whenever the bookkeeping column disagrees, which is the same
-        # class of bug in the opposite direction.
         conditions.append(
             Scholarship.verification_status == AUTHORITATIVE_VERIFIED_STATUS
         )
@@ -76,10 +72,6 @@ def public_visibility_conditions() -> list:
         conditions.append(Scholarship.image_url.isnot(None))
         conditions.append(Scholarship.image_verified_at.isnot(None))
         if not settings.public_allow_third_party_image:
-            # Excluded by name, and the NULL case is included explicitly.
-            # `image_source_type != 'wikimedia'` evaluates to NULL - not true -
-            # for a row where the type was never recorded, which would silently
-            # exclude every official image that predates provenance tracking.
             conditions.append(
                 or_(
                     Scholarship.image_source_type != "wikimedia",

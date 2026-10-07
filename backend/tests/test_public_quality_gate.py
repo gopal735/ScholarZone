@@ -226,12 +226,11 @@ class TestPublicQualityGate:
         assert total == 1
 
     def test_a_record_without_an_image_is_hidden(self, factory, monkeypatch):
+        import os
+        os.environ["SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED"] = "true"
+        os.environ["SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE"] = "true"
         _add(factory, 1, url="https://a.example.org/p/1", is_verified=True)
-        ids, total = self._list_ids(
-            factory, monkeypatch,
-            SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED="true",
-            SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE="true",
-        )
+        ids, total = self._list_ids(factory, monkeypatch)
         assert ids == []
         assert total == 0
 
@@ -239,31 +238,29 @@ class TestPublicQualityGate:
         self, factory, monkeypatch
     ):
         """An image_url alone is not enough; it must have passed validation."""
+        import os
+        os.environ["SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED"] = "true"
+        os.environ["SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE"] = "true"
         _add(
             factory, 1, url="https://a.example.org/p/1", is_verified=True,
             image_url="https://a.example.org/rejected.png",
         )
-        ids, _ = self._list_ids(
-            factory, monkeypatch,
-            SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED="true",
-            SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE="true",
-        )
+        ids, _ = self._list_ids(factory, monkeypatch)
         assert ids == []
 
     def test_an_unverified_record_is_hidden(self, factory, monkeypatch):
         from datetime import datetime, timezone
+        import os
 
+        os.environ["SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED"] = "true"
+        os.environ["SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE"] = "true"
         _add(
             factory, 1, url="https://a.example.org/p/1", is_verified=False,
             verification_status="needs_review",
             image_url="https://a.example.org/logo.png",
             image_verified_at=datetime.now(timezone.utc),
         )
-        ids, _ = self._list_ids(
-            factory, monkeypatch,
-            SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED="true",
-            SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE="true",
-        )
+        ids, _ = self._list_ids(factory, monkeypatch)
         assert ids == []
 
     def test_the_gate_can_be_switched_off(self, factory, monkeypatch):
@@ -293,6 +290,10 @@ class TestPublicQualityGate:
     def test_stats_agree_with_the_listing(self, factory, monkeypatch):
         """The homepage must not advertise a total the directory contradicts."""
         from datetime import datetime, timezone
+        import os
+
+        os.environ["SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED"] = "true"
+        os.environ["SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE"] = "true"
 
         from app.repositories.scholarships import list_scholarships
         from app.schemas import ScholarshipQuery
@@ -304,8 +305,7 @@ class TestPublicQualityGate:
         )
         _add(factory, 2, url="https://b.example.org/p/2", is_verified=True)
 
-        monkeypatch.setenv("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED", "true")
-        monkeypatch.setenv("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE", "true")
+        ids, total = self._list_ids(factory, monkeypatch)
 
         from app.models import Scholarship as Model
         from sqlalchemy import func, select

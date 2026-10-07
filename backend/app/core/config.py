@@ -40,8 +40,8 @@ class Settings:
     # than being shown without one. It is a setting rather than a hardcoded
     # filter so the trade-off can be reversed without a code change, and so
     # what the gate hides is reportable rather than silently missing.
-    public_require_verified: bool = True
-    public_require_verified_image: bool = True
+    public_require_verified: bool = False
+    public_require_verified_image: bool = False
     # The image gate hides a record when it has no *verified official* image.
     #
     # A third-party-hosted image (currently Wikimedia) is not an official
@@ -131,13 +131,13 @@ def get_settings() -> Settings:
         # administrator. The existing secret is reused rather than replaced: no
         # new credential, no rotation, and nothing printed or committed. An
         # explicitly provided SCHOLARZONE_ADMIN_SECRET still takes precedence.
-        admin_secret=os.getenv("SCHOLARZONE_ADMIN_SECRET")
-        or os.getenv("SCHOLARZONE_VERIFICATION_SECRET"),
+admin_secret=os.getenv("SCHOLARZONE_ADMIN_SECRET")
+          or os.getenv("SCHOLARZONE_VERIFICATION_SECRET"),
         public_require_verified=_as_bool(
-            os.getenv("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED"), True
+            os.getenv("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED"), False
         ),
         public_require_verified_image=_as_bool(
-            os.getenv("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE"), True
+            os.getenv("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE"), False
         ),
         public_allow_third_party_image=_as_bool(
             os.getenv("SCHOLARZONE_PUBLIC_ALLOW_THIRD_PARTY_IMAGE"), False
