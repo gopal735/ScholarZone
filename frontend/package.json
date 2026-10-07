@@ -1,36 +1,37 @@
 {
-    "name":  "frontend",
-    "private":  true,
-    "version":  "0.0.0",
-    "type":  "module",
-    "scripts":  {
-                    "prebuild":  "node ../research/premium_card/generate_index.mjs",
-                    "dev":  "vite",
-                    "build":  "vite build",
-                    "lint":  "eslint .",
-                    "preview":  "vite preview",
-                    "test":  "vitest run",
-                    "test:watch":  "vitest"
-                },
-    "dependencies":  {
-                         "react":  "^19.2.8",
-                         "react-dom":  "^19.2.8",
-                         "react-router-dom":  "^7.18.2"
-                     },
-    "devDependencies":  {
-                            "@eslint/js":  "^10.0.1",
-                            "@testing-library/jest-dom":  "^7.0.1",
-                            "@testing-library/react":  "^16.3.3",
-                            "@testing-library/user-event":  "^14.6.7",
-                            "@types/react":  "^19.2.17",
-                            "@types/react-dom":  "^19.2.3",
-                            "@vitejs/plugin-react":  "^6.0.4",
-                            "eslint":  "^10.8.0",
-                            "eslint-plugin-react-hooks":  "^7.1.1",
-                            "eslint-plugin-react-refresh":  "^0.5.3",
-                            "globals":  "^17.7.0",
-                            "jsdom":  "^29.1.1",
-                            "vite":  "^8.2.0",
-                            "vitest":  "^5.0.3"
-                        }
+    "name": "frontend",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "prebuild": "node ../research/premium_card/generate_index.mjs",
+        "dev": "vite",
+        "build": "vite build",
+        "lint": "eslint .",
+        "preview": "vite preview",
+        "test": "vitest run",
+        "test:watch": "vitest"
+    },
+    "dependencies": {
+        "motion": "^13.5.1",
+        "react": "^19.2.8",
+        "react-dom": "^19.2.8",
+        "react-router-dom": "^7.18.2"
+    },
+    "devDependencies": {
+        "@eslint/js": "^10.0.1",
+        "@testing-library/jest-dom": "^7.0.1",
+        "@testing-library/react": "^16.3.3",
+        "@testing-library/user-event": "^14.6.7",
+        "@types/react": "^19.2.17",
+        "@types/react-dom": "^19.2.3",
+        "@vitejs/plugin-react": "^6.0.4",
+        "eslint": "^10.8.0",
+        "eslint-plugin-react-hooks": "^7.1.1",
+        "eslint-plugin-react-refresh": "^0.5.3",
+        "globals": "^17.7.0",
+        "jsdom": "^29.1.1",
+        "vite": "^8.2.0",
+        "vitest": "^5.0.3"
+    }
 }
