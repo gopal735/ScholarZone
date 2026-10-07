@@ -1,0 +1,30 @@
+{
+  "country": "FI",
+  "topic": "post_study_work",
+  "source_id": "studyinfinland-opportunities-after-graduation",
+  "source_url": "https://www.studyinfinland.fi/life-in-finland/opportunities-after-graduation",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Finnish National Agency for Education (Study in Finland)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026-09-18",
+  "raw_extract": "# Opportunities after graduation\n\nFinland offers a competitive post-study residence permit to look for employment in Finland. Experience a unique work-life balance after your studies!\n\n## Can I stay in Finland after graduation?\n\nIf you would like to stay in Finland after graduation and search for employment, we have some good news! Finland offers a two-year post-study permit which allows you to look for work or start a business. Find more information about the post-study permit on Migri.fi\n\nFinding employment in your own field right after graduation is not always easy - see our quick tips below to assist you in getting started!\n\n- Learning Finnish or Swedish is always recommended - knowledge of the local language can improve your chances of finding employment!\n- Utilise possible traineeship options, cooperation projects or thesis work with companies to expand your networks.\n- Start with the Career Services of your Finnish home university for advice and access to internship and job opportunities.\n\nUpdated 18.09.2026",
+  "research_notes": "Finland's post-study job-search permit, duration TWO YEARS, and the page states it in general terms without restricting it to Master's graduates: 'Finland offers a two-year post-study permit which allows you to look for work or start a business.' Since it is written as available to anyone who graduates and stays to search for employment, it is stated at Bachelor's level here. That is the plain reading and it is generous: two years is among the longest job-search windows in this corpus.\n\nSECONDARY-SOURCE CAVEAT, because it matters. This is the Finnish National Agency for Education's Study in Finland site, not Migri. The page itself points to the primary source: 'Find more information about the post-study permit on Migri.fi', linking https://migri.fi/en/after-graduation. I did NOT successfully fetch Migri. migri.fi returned HTTP 403 on an earlier attempt in this session and a request timeout on another. So the two-year figure is attested by an official national publisher that names the primary authority, but the primary page itself was not read by me. It should be confirmed against Migri before being treated as settled in a canonical file. I am recording the gap rather than concealing it.\n\nAlso worth noting for a scholarship corpus: the same page's emphasis on language and on university career services implies the permit is worth less without Finnish or Swedish. That is the agency's guidance rather than a rule, and I record it as a note, not a claim.",
+  "claims": [
+    {
+      "claim_id": "fi-poststudy-duration-1",
+      "statement": "The Finnish National Agency for Education states Finland offers a two-year post-study permit allowing graduates to look for work or start a business.",
+      "value": 2,
+      "unit": "years",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fi-poststudy-purpose-1",
+      "statement": "Finland's post-study permit is for looking for work or starting a business after graduation.",
+      "value": "look for work or start a business",
+      "unit": "permit purpose",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

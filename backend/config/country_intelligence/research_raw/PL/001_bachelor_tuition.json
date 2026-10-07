@@ -1,0 +1,54 @@
+{
+  "country": "PL",
+  "topic": "bachelor_tuition",
+  "source_id": "uw-wz-business-and-management-bachelor-2026",
+  "source_url": "https://wz.uw.edu.pl/en/candidate/study-in-english/business-and-management/",
+  "source_type": "UNIVERSITY_OFFICIAL",
+  "publisher": "Faculty of Management, University of Warsaw (Wydzial Zarzadzania UW)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026/2027",
+  "raw_extract": "# Business and Management\n\n#### Bachelor's studies (Full-time studies)\n\nDuration: 3 years/6 semesters\nLanguage of study: English\nPaid studies\n\n**Attention: Tuition fees**\n\n**Tuition fees for 2026/2027**\n\n**1 instalment for the academic year**\n\n**2 instalments for the academic year**\n\n**4 instalments for the academic year**\n\n4 000 EUR\n\n2 200 EUR\n\n2 200 EUR\n\n1 200 EUR\n\n1 200 EUR\n\n1 200 EUR\n\n1 200 EUR\n\n# Attention: Tuition fees\n\nProof of student's ID (ELS) payment: 22 PLN",
+  "research_notes": "Bachelor tuition at a named public Polish university. The Faculty of Management, University of Warsaw, English-language Bachelor's programme 'Business and Management' is 'Paid studies' with tuition for 2026/2027 of 4 000 EUR for one instalment covering the academic year, or 2 200 EUR for each of two instalments for the academic year, or four instalments of 1 200 EUR. The page header states 'Bachelor's studies (Full-time studies)' and 'Duration: 3 years/6 semesters', so this is unambiguously a Bachelor's figure.\n\nPER ACADEMIC YEAR, NOT PER SEMESTER. The page's own headings attach the amounts to 'for the academic year'. Two instalments at 2 200 EUR each equals the 4 000 EUR single-instalment figure, which is internally consistent and confirms the annual reading. The earlier search-engine snippet for this programme rendered the figure as '4 000 EUR/semester', which would be wrong by a factor of two; the fetched page is the authority and it says per academic year. That discrepancy is worth flagging because a search index is exactly where a doubled tuition figure would enter a corpus unchecked.\n\nThe university also charges a PLN 22 student ID (legitymacja) payment, recorded verbatim on the same page.\n\nCOVERAGE LIMIT, stated rather than glossed. This is one faculty at one university. Poland does not have a single national Bachelor tuition figure: it is set per programme by each institution. The University of Warsaw's central admissions office publishes a per-faculty fee schedule as a PDF, and I attempted to fetch two of those PDFs (rekrutacja.uw.edu.pl/files/pdf/tuition_fees_2026-2027_05.10.2026.pdf and the WNE faculty fee declaration). Both returned raw PDF binary streams that this tool could not decode into readable text, so I could not quote them. Their existence is visible from the university pages I did fetch, but I do not record any figure from them. Other faculties at the same university carry different fees, and the WNE faculty fee declaration surfaced in search results showing figures such as 4 900 EUR per year for its business programmes, which is consistent with per-faculty variation, but I did not fetch a page I could read and so I do not record it.\n\nA separate official university page, the Welcome Point tuition-fees page, confirms the mechanism in prose I did read verbatim: 'Tuition fees differ depending on the terms of admission, the language of studies, and the year of admission.' That sentence is the reason a single Polish national figure cannot be asserted, and it is why this file carries a named-university figure only.",
+  "claims": [
+    {
+      "claim_id": "pl-bachelor-tuition-uw-wz-1",
+      "statement": "The Faculty of Management, University of Warsaw, charges 4,000 EUR for the English-language Bachelor's programme in Business and Management for the 2026/2027 academic year when paid in one instalment.",
+      "value": 4000,
+      "unit": "EUR per academic year",
+      "as_of": "2026/2027",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "pl-bachelor-tuition-uw-wz-2",
+      "statement": "The same University of Warsaw Bachelor programme can be paid as two instalments of 2,200 EUR each for the academic year.",
+      "value": 2200,
+      "unit": "EUR per instalment (2 instalments per academic year)",
+      "as_of": "2026/2027",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "pl-bachelor-tuition-uw-wz-3",
+      "statement": "The same University of Warsaw Bachelor programme can be paid as four instalments of 1,200 EUR each for the academic year.",
+      "value": 1200,
+      "unit": "EUR per instalment (4 instalments per academic year)",
+      "as_of": "2026/2027",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "pl-bachelor-tuition-national-unique-1",
+      "statement": "The University of Warsaw states that tuition fees differ depending on the terms of admission, the language of studies and the year of admission, so no single national Polish Bachelor tuition figure exists.",
+      "value": 0,
+      "unit": "single national Polish bachelor tuition figures",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "pl-student-id-fee-uw-1",
+      "statement": "The University of Warsaw charges a student ID (ELS) payment of 22 PLN as part of the application for its English-language Bachelor programme.",
+      "value": 22,
+      "unit": "PLN student ID fee",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

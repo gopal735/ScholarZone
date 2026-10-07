@@ -1,0 +1,38 @@
+{
+  "country": "US",
+  "topic": "student_work_rights",
+  "source_id": "uscis-opt-f1",
+  "source_url": "https://uscis.gov/working-in-the-united-states/students-and-exchange-visitors/optional-practical-training-opt-for-f-1-students",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "U.S. Citizenship and Immigration Services (USCIS)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2024-11-25",
+  "raw_extract": "Optional practical training (OPT) is temporary employment that is directly related to an F-1 student's major area of study. Eligible students can apply to receive up to 12 months of OPT employment authorization before completing their academic studies (pre-completion) and/or after completing their academic studies (post-completion). … Pre-completion OPT: You may apply to participate in pre-completion OPT after you have been lawfully enrolled on a full-time basis for one full academic year at a college, university, conservatory, or seminary that has been certified by the U.S. Immigration and Customs Enforcement (ICE) Student and Exchange Visitor Program (SEVP) to enroll F-1 students. … If you are authorized to participate in pre-completion OPT, you may work (20 hours or less per week) while school is in session. You may work full time when school is not in session. … Post-completion OPT: You may apply to participate in post-completion OPT after completing your studies. If you are authorized for post-completion OPT, you must work part time (at least 20 hours per week) or full time. … STEM OPT Extension If you have earned a degree in certain Science, Technology, Engineering and Mathematics (STEM) fields, you may apply for a 24-month extension of your post-completion OPT employment authorization if you: Are an F-1 student who received a STEM degree included on the STEM Designated Degree Program List (PDF); Are employed by an employer who is enrolled in and is using E-Verify; and Received an initial grant of post-completion OPT employment authorization based on your STEM degree.",
+  "research_notes": "USCIS is the issuing authority and this is its own OPT page, last reviewed 25 November 2024. Official permission name: Optional Practical Training (OPT) for F-1 students, requiring a DSO recommendation endorsed on Form I-20 plus a separate Form I-765 filed with USCIS. Hour caps: pre-completion OPT is limited to 20 hours or fewer per week while school is in session, full time when school is not; post-completion OPT requires at least 20 hours per week. Duration: up to 12 months at each educational level, with a further 24-month STEM OPT extension (36 months total per degree). On-campus employment rules were not captured from a fetched page and are not asserted.",
+  "claims": [
+    {
+      "claim_id": "us-student-opt-precompletion-1",
+      "statement": "An F-1 student holding pre-completion OPT authorisation may work 20 hours or fewer per week while school is in session, and full time when school is not in session.",
+      "value": 20,
+      "unit": "hours per week (maximum while in session)",
+      "as_of": "2024",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "us-student-opt-duration-1",
+      "statement": "F-1 students may receive up to 12 months of OPT employment authorisation before and/or after completing their academic studies.",
+      "value": 12,
+      "unit": "months",
+      "as_of": "2024",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "us-student-stem-opt-1",
+      "statement": "F-1 students who received a STEM degree on the STEM Designated Degree Program List and whose employer uses E-Verify may apply for a 24-month extension of post-completion OPT.",
+      "value": 24,
+      "unit": "months",
+      "as_of": "2024",
+      "study_level": "bachelor"
+    }
+  ]
+}

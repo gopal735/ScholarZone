@@ -1,0 +1,62 @@
+{
+  "country": "SE",
+  "topic": "financial_proof",
+  "source_id": "migrationsverket-study-permit-maintenance-requirement",
+  "source_url": "https://www.migrationsverket.se/English/Private-individuals/Studying-in-Sweden/Universities-and-university-college.html",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "The Swedish Migration Agency (Migrationsverket)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "You must be able to support yourself financially\n\nYour means of \"financial maintenance\" must be sufficient for the entire period for which you are applying for a residence permit. If your family is applying with you, you must be able to support them as well, if they do not have their own means of financial maintenance.\n\n## What does the requirement to be able to support yourself financially mean?\n\nThe so-called \"maintenance requirement\" means that you must show that you have funds (money) available through your own bank assets, scholarship, student grants or loans from your country of origin, a sponsor, or income from employment. You can combine different forms of financial maintenance.\n\nThe maintenance requirement is\n\n- at least SEK 10,656 per month, if you applied in 2026\n- at least SEK 10,584 per month, if you applied in 2025.\n\nIf you can show that you receive free housing and/or food through the higher education institution or an organisation that works for international exchange, the amount per month can be reduced. The monthly amount can be reduced by\n\n- SEK 2,960 per month for free food and SEK 4,736 per month for free housing, if you applied in 2026\n- SEK 2,940 per month for free food and SEK 4,704 per month for free housing, if you applied in 2025.\n\nIf your family applies with you, the monthly amount will be higher. In that case, it will include an additional\n\n- SEK 4,440 per month for a spouse or cohabiting partner\n- SEK 2,664 per month for each child.\n\nThe Swedish Migration Agency assesses your family's overall ability to support yourselves financially.\n\n## For how long can I be granted a residence permit?\n\nYou can be granted a residence permit for a maximum of one or two years, depending on which higher education institution you will be studying at, but not for longer than your studies will last. You can never be granted a residence permit for longer than your passport is valid.\n\n## What does it cost to apply?\n\nAdults: SEK 1,500\nChildren under 18 years of age: SEK 750\n\nIf you are studying at bachelor's or master's level, you may work a maximum of 15 hours per week in Sweden. This applies if your residence permit was granted on or after 11 June 2026.",
+  "research_notes": "This is the authoritative Swedish maintenance requirement for a student residence permit covering FIRST- or second-cycle study, so it applies to a Bachelor's student. The agency states the amount twice, by application year, which lets me record as_of honestly: SEK 10,656 per month for 2026 applications, SEK 10,584 per month for 2025 applications.\n\nThe agency does NOT express this as an annual or 12-month block total. Anyone wanting an annual figure must multiply, and that multiplication would be my arithmetic, not the agency's. I record the monthly figure because the monthly figure is what the page actually says.\n\nDistinct from the job-search permit figure in 003_post_study_work.json. That permit (second-cycle / Master's) requires SEK 13,000 per month. The study permit (first- and second-cycle, so including Bachelor's) requires SEK 10,656 per month. These are two different rules on two different pages and must not be merged. I record both.\n\nAlso recorded because it is on this page and is materially relevant to a student planner: work rights during study. The agency states a 15-hour weekly cap for bachelor's and master's students where the permit was granted on or after 11 June 2026, a change from the previous regime. The exemptions listed on the page are internship as part of education, student representation/administration/research at the institution, artistic research, and June-August.\n\nIMPORTANT GAP: I did NOT fetch the Swedish Migration Agency page for the FIRST-CYCLE (Bachelor's) job-search permit. The page I did fetch for job search explicitly defines its eligibility as second-cycle only. So no Bachelor-level post-study duration is established by my evidence.",
+  "claims": [
+    {
+      "claim_id": "se-financial-proof-2026",
+      "statement": "The Swedish Migration Agency sets the maintenance requirement for a higher-education study residence permit at at least SEK 10,656 per month for applicants who applied in 2026.",
+      "value": 10656,
+      "unit": "SEK per month",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "se-financial-proof-2025",
+      "statement": "The Swedish Migration Agency sets the maintenance requirement at at least SEK 10,584 per month for applicants who applied in 2025, superseded by the 2026 amount.",
+      "value": 10584,
+      "unit": "SEK per month",
+      "as_of": "2025",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "se-financial-proof-reduction-housing-1",
+      "statement": "The monthly maintenance amount may be reduced by SEK 4,736 per month for free housing and SEK 2,960 per month for free food where the student receives them through the higher education institution or an international exchange organisation (2026 applicants).",
+      "value": 4736,
+      "unit": "SEK per month reduction for free housing",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "se-financial-proof-family-spouse-1",
+      "statement": "Where a family applies together, the monthly maintenance amount rises by an additional SEK 4,440 per month for a spouse or cohabiting partner and SEK 2,664 per month for each child.",
+      "value": 4440,
+      "unit": "SEK per month additional for spouse",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "se-student-work-cap-1",
+      "statement": "The Swedish Migration Agency states that a student at bachelor's or master's level may work a maximum of 15 hours per week where the residence permit was granted on or after 11 June 2026.",
+      "value": 15,
+      "unit": "hours per week",
+      "as_of": "2026-06-11",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "se-study-permit-fee-1",
+      "statement": "The Swedish Migration Agency charges a fee of SEK 1,500 for an adult higher-education study residence permit application.",
+      "value": 1500,
+      "unit": "SEK application fee",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

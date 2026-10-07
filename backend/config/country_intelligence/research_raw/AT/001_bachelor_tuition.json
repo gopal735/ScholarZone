@@ -1,0 +1,70 @@
+{
+  "country": "AT",
+  "topic": "bachelor_tuition",
+  "source_id": "univie-amount-tuition-fee-non-eueea",
+  "source_url": "https://studieren.univie.ac.at/en/studying-and-learning/financial-matters/amount-of-the-tuition-fee/students-union-fee",
+  "source_type": "UNIVERSITY_OFFICIAL",
+  "publisher": "University of Vienna",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "# Amount of the tuition fee/Students' Union fee\n\nStudents pay either the tuition fee, the Students' Union fee - or both. By making this payment, you finalise your admission or register to continue your studies. The amount of the tuition fee depends on your citizenship, duration of studies and on whether you are enrolled in a degree programme or non-degree programme. The amount of the Students' Union fee is directly determined by the Austrian Students' Union.\n\n## Students with citizenship EU/EEA/CH\n\nYou pay the tuition fee/Students' Union fee every semester. The tuition fee is remitted for a specific period: During the stipulated degree programme duration plus two tolerance semesters, you only pay the Students' Union fee.\n\n### Amount EU/EEA/CH\n\nStudents' Union fee: 26.20 Euro\nTuition fee: 363.36 Euro\n\n**Total: 389.56 Euro per semester**\n\n#### Bachelor programme\n\nStipulated degree programme duration 6 semesters + 2 tolerance semesters. You pay the tuition fee from the 9th semester onwards.\n\n## Students with non-EU/EEA Citizenship\n\nYou must pay your tuition fee/Students' Union fee every semester within the payment period in order to continue your studies. Your fee is calculated automatically.\n\nYou pay the tuition fee from the FIRST semester onwards. The degree programme duration does not affect the amount of the fee. Please note the applicable exceptions. Depending on your personal circumstances, you may pay the same tuition fee as EU/EEA citizens or only the Students' Union fee.\n\n### Amount non-EU/EEA\n\nStudents' Union fee: 26.20 Euro\nTuition fee: 726.72 Euro\n\n**Total: 752.92 Euro per semester**\n\n### Exemptions for non-EU/EEA citizens\n\n#### Exemption 1: Students from designated developing countries\n\nThe tuition fee is remitted for students with citizenship from one of the following countries during the full duration of their studies. You only pay the Students' Union fee.\n\nAfghanistan, Angola, Bangladesh, Benin, Bhutan, Burkina Faso, Burundi, Cambodia, Central African Republic, Chad, Comores, Congo - Democratic Republic, Djibouti, Eritrea, Ethiopia, Gambia, Guinea, Guinea-Bissau, Haiti, Kiribati, Lao - People's Democratic Republic, Lesotho, Liberia, Madagascar, Malawi, Mali, Mauritania, Mozambique, Myanmar, Nepal, Niger, Rwanda, Sao Tome and Principe, Senegal, Sierra Leone, Solomon Islands, Somalia, South Sudan, Sudan, United Republic of Tanzania, Timor-Leste, Togo, Tuvalu, Uganda, Yemen, Zambia\n\n#### Exemption 2: Equal status with EU/EEA citizens\n\nSubmit your application for equal status if you are enrolled in a degree programme and either\n\n- Belong to a group of persons according to the decree on groups of persons (\"Personengruppenverordnung PersGV\") or\n- Have a residence permit other than \"Student\" (Aufenthaltsbewilligung Student).\n\nAfter your application was approved, the same rules as for students with citizenship from an EU/EEA country or Switzerland apply to you.\n\n#### Exemption 3: citizenship from the United Kingdom of Great Britain and Northern Ireland with admission to the degree programme before summer semester 2021\n\nStudents with this citizenship pay the same tuition fee as students with citizenship from an EU/EEA country or Switzerland if you were admitted to the degree programme before 31 December 2020 and do not interrupt the admission.\n\n#### Exemption 4: Ukrainian citizens\n\nIf you are a Ukrainian citizen, the tuition fee will be waived automatically. You will only pay the Students' Union fee.",
+  "research_notes": "THE BRIEF'S QUESTION ABOUT AUSTRIAN TUITION IS ANSWERED, AND THE ANSWER CONTRADICTS THE HISTORICAL BANDING. The current structure is NOT banded by university type (public full-time vs private, and not the old university-of-applied-sciences vs university split). It is a FLAT PER-SEMESTER amount per university, differing by citizenship status, and the amount is prescribed by the individual university rather than nationally banded.\n\nFor the University of Vienna, which is a public university: non-EU/EEA students pay 'Tuition fee: 726.72 Euro' plus 'Students' Union fee: 26.20 Euro', 'Total: 752.92 Euro per semester'. PER SEMESTER. Two semesters = EUR 1,505.84 per academic year for the tuition component alone, though that doubling is my arithmetic and the page says per semester.\n\nTHIRD-COUNTRY NATIONALS ARE NOT EXEMPT. The brief asked me to confirm this, and the page confirms it in the plainest possible terms. The university states non-EU/EEA students 'You pay the tuition fee from the first semester onwards. The degree programme duration does not affect the amount of the fee.' A third-country national pays from semester one, at the full rate, with no progression. This is materially different from the EU/EEA rule, where the page sets out 'Stipulated degree programme duration 6 semesters + 2 tolerance semesters. You pay the tuition fee from the 9th semester onwards' for a Bachelor programme.\n\nEXEMPTIONS, all four, from the same page, and they are narrower than a casual reading of 'exempt' would suggest. Only students from a designated list of developing countries, or with granted equal status, or the pre-2021 UK cohort, or Ukrainian citizens, avoid the fee. A plain student residence permit is NOT enough: the equal-status route explicitly requires 'a residence permit other than \"Student\" (Aufenthaltsbewilligung Student)'. That last point matters for a scholarship corpus because the most common international student holds exactly the permit that does not qualify.\n\nThe Students' Union fee of EUR 26.20 is a separate compulsory charge and the page notes it 'is directly determined by the Austrian Students' Union'. Total non-EU/EEA cost of attendance per semester is therefore EUR 752.92, and the tuition element is EUR 726.72.\n\nTwo earlier URL guesses of mine returned 404 (www.univie.ac.at/en/studies/fees-and-scholarships/tuition-fees/ and studieren.univie.ac.at/en/tuition-fee/amount-tuition-fee/); the URL above is the live one. The page is the University's own fee page, which is the priority source for tuition.",
+  "claims": [
+    {
+      "claim_id": "at-bachelor-tuition-noneueea-1",
+      "statement": "The University of Vienna charges non-EU/EEA students a tuition fee of EUR 726.72 per semester.",
+      "value": 726.72,
+      "unit": "EUR per semester",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "at-bachelor-total-semester-1",
+      "statement": "The University of Vienna's total charge for non-EU/EEA students is EUR 752.92 per semester, comprising a EUR 726.72 tuition fee and a EUR 26.20 Students' Union fee.",
+      "value": 752.92,
+      "unit": "EUR per semester (tuition plus Students' Union fee)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "at-student-union-fee-1",
+      "statement": "The University of Vienna charges all students a Students' Union fee of EUR 26.20 per semester, determined by the Austrian Students' Union.",
+      "value": 26.2,
+      "unit": "EUR per semester",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "at-bachelor-tuition-eueea-1",
+      "statement": "The University of Vienna charges EU/EEA/Swiss students a tuition fee of EUR 363.36 per semester from the 9th semester of a Bachelor programme onwards, being the stipulated 6 semesters plus 2 tolerance semesters.",
+      "value": 363.36,
+      "unit": "EUR per semester (EU/EEA/CH)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "at-bachelor-tuition-eueea-total-1",
+      "statement": "The University of Vienna's total charge for EU/EEA/Swiss students is EUR 389.56 per semester.",
+      "value": 389.56,
+      "unit": "EUR per semester (EU/EEA/CH, tuition plus Students' Union fee)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "at-third-country-not-exempt-1",
+      "statement": "The University of Vienna states that non-EU/EEA students pay the tuition fee from the first semester onwards and that degree programme duration does not affect the amount of the fee, confirming third-country nationals are not exempt.",
+      "value": 1,
+      "unit": "third-country nationals liable from first semester",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "at-student-permit-not-exempt-1",
+      "statement": "The University of Vienna's equal-status exemption requires holding a residence permit other than 'Student' (Aufenthaltsbewilligung Student), so holding a plain student residence permit does not exempt a non-EU/EEA national from tuition.",
+      "value": 0,
+      "unit": "student residence permits qualifying for tuition exemption",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "source_title": "University of Stavanger PhD Fellowship in Social Studies",
+  "source_provider": "University of Stavanger (UiS)",
+  "source_file": "norway_scholarships.json",
+  "researched_at": "2026-10-06T13:40:51.148892+00:00",
+  "data": {
+    "id": "research-050",
+    "title": "University of Stavanger PhD Fellowship in Social Studies",
+    "provider": "University of Stavanger (UiS)",
+    "record_type": "scholarship",
+    "official_sources": [
+      {
+        "url": "https://www.uis.no/en/about-uis/vacant-positions-at-uis",
+        "title": "University of Stavanger PhD Fellowship in Social Studies",
+        "source_type": "official_provider",
+        "source_domain": "www.uis.no",
+        "publication_date": null,
+        "last_modified_date": null,
+        "checked_at": "2026-10-06T13:40:50.327287+00:00",
+        "source_priority": 1
+      }
+    ],
+    "image": {
+      "url": null,
+      "source_type": null,
+      "source_url": null,
+      "alt_text": null
+    },
+    "funding": {
+      "funding_type": "Fully funded (salary)",
+      "fully_funded": null,
+      "award_amount": {
+        "minimum": null,
+        "maximum": null,
+        "fixed": null,
+        "period": "unknown"
+      },
+      "currency": null
+    },
+    "eligibility": {
+      "citizenship": {
+        "required": null,
+        "eligible_countries": [],
+        "excluded_countries": [],
+        "worldwide": null
+      },
+      "age": {
+        "minimum": null,
+        "maximum": null
+      },
+      "degree": {
+        "minimum_degree": null,
+        "required_degree_field": [],
+        "final_year_allowed": null,
+        "equivalent_degree_allowed": null
+      },
+      "language": {
+        "required": null,
+        "teaching_language": [],
+        "accepted_tests": [],
+        "minimum_scores": {},
+        "moi_accepted": "unknown"
+      }
+    },
+    "application": {
+      "application_method": "unknown",
+      "official_application_url": "https://www.uis.no/en/about-uis/vacant-positions-at-uis",
+      "application_fee": {
+        "required": null,
+        "amount": null,
+        "currency": null,
+        "waiver_available": null
+      }
+    },
+    "deadlines": {
+      "status": "unknown",
+      "deadline_date": "2026-09-10",
+      "deadline_display": "2026-09-10",
+      "deadline_precision": "unknown"
+    },
+    "verification": {
+      "is_verified": false,
+      "verification_status": "pending",
+      "last_verified_date": "2026-10-06",
+      "verified_by": "automated_research"
+    },
+    "data_quality": {
+      "coverage_level": "low",
+      "missing_key_fields": [
+        "official_page_fetch"
+      ],
+      "unknown_fields": [],
+      "estimated_fields": []
+    },
+    "research_notes": [],
+    "research_errors": [
+      "Failed to fetch official page"
+    ]
+  }
+}

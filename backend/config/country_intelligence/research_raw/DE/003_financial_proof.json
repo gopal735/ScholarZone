@@ -1,0 +1,38 @@
+{
+  "country": "DE",
+  "topic": "financial_proof_blocked_account",
+  "source_id": "de-berlin-lea-study-001",
+  "source_url": "https://service.berlin.de/dienstleistung/305244/en",
+  "source_type": "OFFICIAL_REGIONAL_BODY",
+  "publisher": "Landesamt für Einwanderung (LEA) Berlin, via ServicePortal Berlin (berlin.de)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "Secured livelihood\n\nSufficient funds to secure your livelihood, including adequate health insurance coverage, are required. Sufficient funds are available if they correspond to the maximum BAföG funding rate.\nFor a stay for study purposes, a monthly amount of 992.00 euros must be available, i.e. 11,904.00 euros per year (current value for the year 2026).\n\n[...]\n\nProof of livelihood\n\nFor the initial issue: e.g. blocked account (Sperrkonto) at a German Bank / submission of a declaration of commitment by a third party on an official form / scholarship / notarized declaration from parents securing the livelihood for the duration of the studies with proof of the income of the parents in the last six months / employment contract for a part-time job\nFor the extension: bank statements of the last six months, proof of other income\n\nLegal basis: Aufenthaltsgesetz (AufenthG) § 16b",
+  "research_notes": "CONFIRMED from the immigration authority itself (Landesamt für Einwanderung Berlin), not a university page or an aggregator. Financial proof for a German student residence permit (studentenrechtlicher Aufenthaltstitel) requires EUR 992.00 per month, i.e. EUR 11,904.00 per year, stated on the page as the 'current value for the year 2026'. as_of = 2026. IMPORTANT NUANCE the corpus must not flatten: the LEA names the blocked account (Sperrkonto) only as ONE of several acceptable routes ('e.g. blocked account ... / declaration of commitment by a third party / scholarship / notarized declaration from parents ... / employment contract for a part-time job'). So 'Germany requires a blocked account' is an over-statement — Germany requires PROOF OF SECURED LIVELIHOOD, of which a Sperrkonto is the most common instrument. There is no national statutory 'blocked account amount' per se: this figure is the Landesamt's statement of the maximum BAföG rate as the sufficiency benchmark, and it is reproduced by the state authority. LIMITATION/GAP: I did not reach the Federal Foreign Office's own blocked-account page, which is the federal-level source referenced by the LEA page (linked as 'Information on blocked accounts (Federal Foreign Office)'); the fee page therefore evidences the Berlin LEA's benchmark amount and its equivalence to the BAföG maximum rate. Also note the Berlin LEA issues both sticker-label and electronic (eAT) residence permits at different fees; this corpus tracks study financial proof, so permit fees are not a target metric here.",
+  "claims": [
+    {
+      "claim_id": "de-financial-proof-blocked-account-amount",
+      "statement": "For a stay for study purposes in Germany, a monthly amount of 992.00 euros must be available, i.e. 11,904.00 euros per year (current value for the year 2026).",
+      "value": 11904,
+      "unit": "EUR per year",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "de-financial-proof-blocked-account-monthly",
+      "statement": "For a stay for study purposes in Germany, a monthly amount of 992.00 euros must be available; sufficient funds are those corresponding to the maximum BAföG funding rate.",
+      "value": 992,
+      "unit": "EUR per month",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "de-financial-proof-basis",
+      "statement": "Sufficient funds are available if they correspond to the maximum BAföG funding rate; the legal basis is Aufenthaltsgesetz (AufenthG) § 16b.",
+      "value": 992,
+      "unit": "EUR per month",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

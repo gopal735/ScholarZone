@@ -256,7 +256,7 @@ export default function HomePage() {
     // The description now carries the live catalogue size, so it has to be
     // rebuilt when the count arrives rather than only on mount — otherwise the
     // search snippet keeps whatever number was there on first paint.
-  }, [catalogueSize, countriesStat])
+  }, [catalogueSize, countriesStat, description])
 
   /* The story needs a stable set to step through. Taking the first few
      in directory order keeps it deterministic between renders, and the

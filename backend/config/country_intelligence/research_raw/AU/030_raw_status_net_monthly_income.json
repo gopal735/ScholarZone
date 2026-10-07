@@ -1,0 +1,35 @@
+{
+  "country": "AU",
+  "topic": "net_monthly_income",
+  "raw_status": "UNAVAILABLE",
+  "reason": "No official Australian net / take-home pay figure exists in current official statistics for graduates or for any other population. Every official Australian earnings series published by the Australian Bureau of Statistics is GROSS. The survey that used to produce an income-after-tax measure (the Survey of Income and Housing, previously Survey of Income and Housing Costs) was discontinued after reference year 2019-20, and no successor release publishes a current net/take-home value. The Australian Taxation Office publishes tax rates, levies and 'net tax' on tax returns, but taxable income is stated after deductions rather than as gross salary, so it cannot be converted into a take-home pay figure. What was found instead is a complete published tax model (see 020_net_monthly_income.json), which satisfies the 'official gross plus complete deterministic tax model' route, but it is a derivation performed by this research, not a figure published by any Australian authority.",
+  "attempted_sources": [
+    "https://www.abs.gov.au/statistics/labour/earnings-and-working-conditions/employee-earnings/latest-release",
+    "https://www.abs.gov.au/statistics/labour/earnings-and-working-conditions/personal-income-australia/latest-release",
+    "https://www.abs.gov.au/statistics/detailed-methodology-information/concepts-sources-methods/survey-income-and-housing-user-guide-australia/2019-20/income",
+    "https://www.abs.gov.au/statistics/labour/earnings-and-working-conditions/personal-income-australia/2015-16-2019-20",
+    "https://www.abs.gov.au/statistics/economy/national-accounts/australian-national-accounts-distribution-household-income-consumption-and-wealth",
+    "https://www.ato.gov.au/about-ato/research-and-statistics/in-detail/taxation-statistics/taxation-statistics-previous-editions/taxation-statistics-2021-22/statistics/individuals-statistics",
+    "https://www.ato.gov.au/tax-rates-and-codes/tax-rates-australian-residents",
+    "https://www.ato.gov.au/calculators-and-tools/income-tax-estimator",
+    "https://www.ato.gov.au/calculators-and-tools/tax-return-medicare-levy",
+    "https://treasury.gov.au/employment-whitepaper/final-report",
+    "https://treasury.gov.au/sites/default/files/2023-09/p2023-447996-working-future.pdf",
+    "https://www.fwc.gov.au/documents/sites/wage-reviews/2024-25/c2025-1-statistical-report-version-4.pdf"
+  ],
+  "what_specifically_blocked": [
+    "ABS 'Employee earnings' (Aug 2025): explicitly titled 'Weekly earnings of employees'. Read in full. Contains earnings by State, occupation, industry and qualifications, all pre-tax. No net/take-home variable under any heading. This is the current official Australian earnings release and it does not attempt a net figure.",
+    "ABS 'Personal Income in Australia' (2022-23): reports median personal income of $58,216, derived from the Linked Employer-Employee Dataset. That is taxable income reported to the ATO, i.e. income after allowable deductions, not gross salary and not take-home. Not convertible to net pay.",
+    "ABS Survey of Income and Housing 2019-20 methodology page: DOES define a net concept - read verbatim - 'Disposable income is the income available to a person or household after income tax, Medicare levy and Medicare levy surcharge (if applicable) have been deducted. Disposable income better represents the economic resources available to meet the needs of households than gross income.' However the survey itself was discontinued after 2019-20, so no current published disposable-income value exists, and even if it did, it is a 12-month retrospective household measure of all income including transfers, not a monthly take-home salary.",
+    "ABS Australian National Accounts: Distribution of Household Income, Consumption and Wealth: last release is 2019-20 financial year. Discontinued.",
+    "ATO Taxation Statistics (Individuals): publishes 'Median taxable income', 'Average net tax' and 'Median net tax'. 'Net tax' is a tax-accounting concept (tax liability after offsets), not net pay, and taxable income is post-deduction. Cannot yield a take-home figure.",
+    "ATO Income tax calculator and Medicare levy calculator: interactive calculators requiring user input. They produce no fixed published figure, and their own text says the results 'should be used as an estimate and for guidance purposes only' - which disqualifies them as evidence in any case.",
+    "Treasury 'Working Future' Employment White Paper (Sept 2023) and the Fair Work Commission Annual Wage Review 2024-25 statistical report: both were located and both are official. Neither was found to publish a take-home/net graduate earnings figure; the FWC report is built on ABS gross microdata and national-accounts compensation data.",
+    "FETCH FAILURE RECORDED: https://www.ato.gov.au/tax-rates-and-codes/tax-rates-australian-residents returned HTTP 403 to the plain web-fetch tool on two separate attempts. It was successfully retrieved and read via a browser session instead; the verbatim rate table archived in 020_net_monthly_income.json comes from that successful browser read, not from the failed fetch."
+  ],
+  "field_mapping": {
+    "net_monthly_income": "career.net_monthly_income (topic: net_monthly_income) - use the DERIVED value in 020_net_monthly_income.json instead of this artifact"
+  },
+  "notes": "This artifact records a genuine negative result, not a fetch outage: the sources were reachable and were read. The finding is that the Australian official statistical system publishes gross earnings and tax rules, but no net/take-home pay statistic. Any Australian net figure circulating online is a third-party calculator output and should not be treated as official. The corpus should treat AUD 5 777 per month (artifact 020) as DERIVED, with the full assumption list attached, and should not describe it as an official Australian statistic.",
+  "evidence_limitations": "Negative finding. Absence of a published net statistic in the ABS main releases is established from reading those releases; it is not established that no net figure exists anywhere in Australian official publishing (for example in a departmental report or a single-year archived SIH release). No figure was invented to fill this gap."
+}

@@ -1,0 +1,54 @@
+{
+  "country": "NZ",
+  "topic": "bachelor_tuition",
+  "source_id": "uoa-undergraduate-international-fees",
+  "source_url": "https://www.auckland.ac.nz/en/study/fees-and-money-matters/tuition-fees/international-student-fees/undergraduate-international-fees.html",
+  "source_type": "UNIVERSITY_OFFICIAL",
+  "publisher": "The University of Auckland (Waipapa Taumata Rau)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026 and 2027 estimated fees",
+  "raw_extract": "# Undergraduate fees for international students\n\nFind out the tuition fees you will pay as an international student for undergraduate study.\n\nThe table below shows the estimated tuition fees for 2026. This is an estimation assuming that you are studying full time for a full year (120 points), unless otherwise noted.\n\n## Fees statement\n\nAfter enrolling in courses, you will be able to generate an exact statement of your fees, through Student Services Online.\n\n## 2026 fees\n\nProgramme | Estimated fees\nBachelor of Architectural Studies | NZ$52,148\nBachelor of Arts (except performance and science-based courses) | NZ$40,225\nBachelor of Arts (performance and science-based courses) | NZ$48,133\nBachelor of Commerce | NZ$48,133\nBachelor of Communications | NZ$47,221 - NZ$48,133\nBachelor of Dance Studies | NZ$47,221\nBachelor of Design | NZ$49,226\nBachelor of Early Childhood Studies | NZ$40,496\nBachelor of Education (Teaching) | NZ$40,496\nBachelor of Engineering (Honours) | NZ$58,009\nBachelor of Fine Arts | NZ$44,974\nBachelor of Global Studies | NZ$52,148\nBachelor of Health Sciences | NZ$42,818\nBachelor of Laws | NZ$47,218\nBachelor of Medicine and Bachelor of Surgery - Year 2 onwards (for Year 1 see Bachelor of Health Sciences) | NZ$86,561\nBachelor of Medical Imaging (Honours) | NZ$55,214\nBachelor of Music | NZ$47,221\nBachelor of Nursing | NZ$42,818\nBachelor of Optometry | NZ$68,723\nBachelor of Pharmacy | NZ$55,214\nBachelor of Property | NZ$48,133\nBachelor of Science | NZ$47,221 - NZ$58,009\nBachelor of Sport, Health and Physical Education | NZ$40,496\nBachelor of Urban Planning (Honours) | NZ$47,221\nStudy Abroad | NZ$13,728**\n\n**Includes Student Services Fee. Estimate for one semester (60 points).\n\n## 2027 fees\n\nProgramme | Estimated fees\nBachelor of Architectural Studies | NZ$54,754.80\nBachelor of Arts (except performance and science-based courses) | NZ$42,236.40\nBachelor of Commerce | NZ$51,020.40\nBachelor of Engineering (Honours) | NZ$60,909.60\nBachelor of Laws | NZ$49,578.00\nBachelor of Medicine and Bachelor of Surgery - Year 2 onwards (for Year 1 see Bachelor of Health Sciences) | NZ$86,561.00\nBachelor of Optometry | NZ$72,158.40\nBachelor of Science | NZ$49,581.60 - $60,909.60\nBachelor of Urban Planning (Honours) | NZ$49,581.60\n\n### Student Services Fee\n\nIn 2026, you will also pay a Student Services Fee of $9.44 per point, estimated at $1,132.80 for full-time study (120 points).\n\nThe Student Services Fee for 2027 will be set in late 2026.\n\n## Fees for conjoint programmes\n\nThe fees for your conjoint programme will be similar to the fees given for each individual programme above. In a conjoint programme, you will usually study 135 points of courses per year, so your fees will be slightly higher. The exact fees you pay will depend on the courses you enrol into for your conjoint programme.",
+  "research_notes": "New Zealand has no single national international tuition figure, so this is one named university (the University of Auckland). Both 2026 and 2027 estimated fees are recorded because a 2027-starting applicant needs the 2027 column - the 2026 Bachelor of Science band is NZ$47,221-NZ$58,009 against NZ$49,581.60-NZ$60,909.60 for 2027, and the BA rises from NZ$40,225 to NZ$42,236.40. MEDICINE IS THE OUTLIER AND MUST NOT BE AVERAGED IN: NZ$86,561 from year two onwards is roughly twice the Bachelor of Science ceiling and more than twice the BA, so any single 'New Zealand international bachelor tuition' number is meaningless without a named programme. Note also the year-1 trap the page flags itself: for MBChB, 'Year 2 onwards (for Year 1 see Bachelor of Health Sciences)' - year one is priced as Bachelor of Health Sciences at NZ$42,818, so a three-year medical degree is NOT 3 x NZ$86,561 and is NOT 3 x NZ$42,818. LABELLED ESTIMATE, NOT A PRICE: the page says the figures are 'estimated ... assuming that you are studying full time for a full year (120 points)' and directs students to Student Services Online for 'an exact statement of your fees'. The international students' fees page (https://international.auckland.ac.nz/study/fees, also fetched) reinforces the mechanism: 'your tuition fees will be calculated based on the subjects you enrol in each semester, rather than the full programme of study you choose' and 'these are only estimates, and your fees may differ, depending on which individual subjects you decide to study'. MANDATORY ADDITIONAL COSTS recorded verbatim from the same source: a Student Services Fee of $9.44 per point, 'estimated at $1,132.80 for full-time study (120 points)' in 2026, and a compulsory Overseas Student Health Cover charge auto-enrolled on admission under the 'Studentsafe Inbound University policy by Allianz Partners' with the charge 'added to your tuition fees account' (premium amount not published on this page). Conjoint programmes study 135 points a year so cost more. CORROBORATION FOR THE SEPARATE PhD FINDING (fetched from the same university): 'Thanks to a special New Zealand Government funding scheme, if you are a new international PhD student living in New Zealand while you study, you will pay the same yearly tuition fees as other New Zealand students. The 2026 PhD tuition fee is NZ$8,847.60 per year.' That NZ$8,847.60 is the only domestic PhD fee figure I have personally seen in fetched content and it is recorded in the PhD file, not here.",
+  "claims": [
+    {
+      "claim_id": "nz-bachelor-tuition-1",
+      "statement": "The University of Auckland estimates international tuition for the Bachelor of Arts (excluding performance and science-based courses) at NZ$40,225 for 2026 and NZ$42,236.40 for 2027, for a full-time year of 120 points.",
+      "value": 40225,
+      "unit": "NZD per year (2026 estimate)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nz-bachelor-tuition-2",
+      "statement": "The University of Auckland estimates international tuition for the Bachelor of Science at NZ$47,221 to NZ$58,009 for 2026 and NZ$49,581.60 to NZ$60,909.60 for 2027, reflecting subject choice.",
+      "value": 47221,
+      "unit": "NZD per year (2026 estimate, band lower bound, BSc)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nz-bachelor-tuition-3",
+      "statement": "The University of Auckland estimates international tuition for the Bachelor of Engineering (Honours) at NZ$58,009 for 2026 and NZ$60,909.60 for 2027.",
+      "value": 58009,
+      "unit": "NZD per year (2026 estimate, BE(Hons))",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nz-bachelor-tuition-4",
+      "statement": "The University of Auckland estimates international tuition for the Bachelor of Medicine and Bachelor of Surgery at NZ$86,561 from year two onwards, with year one priced under the Bachelor of Health Sciences at NZ$42,818.",
+      "value": 86561,
+      "unit": "NZD per year from year 2 (MBChB, 2026 estimate)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "nz-bachelor-tuition-5",
+      "statement": "University of Auckland international students additionally pay a Student Services Fee of NZ$9.44 per point, estimated at NZ$1,132.80 for full-time study (120 points) in 2026, plus a compulsory health and travel insurance charge added to the tuition fees account.",
+      "value": 1132.8,
+      "unit": "NZD per year (Student Services Fee, 120 points, 2026)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

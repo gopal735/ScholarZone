@@ -1,0 +1,104 @@
+{
+  "source_title": "Erasmus Mundus Joint Masters – Programs with Portuguese Universities (2027/2028 cycle)",
+  "source_provider": "European Commission (Erasmus+) – Various consortia including Portuguese universities",
+  "source_file": "portugal_scholarships.json",
+  "researched_at": "2026-10-06T13:40:58.905186+00:00",
+  "data": {
+    "id": "research-069",
+    "title": "Erasmus Mundus Joint Masters – Programs with Portuguese Universities (2027/2028 cycle)",
+    "provider": "European Commission (Erasmus+) – Various consortia including Portuguese universities",
+    "record_type": "scholarship",
+    "official_sources": [
+      {
+        "url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+        "title": "Erasmus Mundus Joint Masters – Programs with Portuguese Universities (2027/2028 cycle)",
+        "source_type": "official_provider",
+        "source_domain": "erasmus-plus.ec.europa.eu",
+        "publication_date": null,
+        "last_modified_date": null,
+        "checked_at": "2026-10-06T13:40:58.314326+00:00",
+        "source_priority": 1
+      }
+    ],
+    "image": {
+      "url": "https://erasmus-plus.ec.europa.eu/themes/contrib/oe_theme/dist/ec/images/logo/positive/logo-ec--en.svg",
+      "source_type": "official_provider",
+      "source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+      "alt_text": "erasmus+ home page"
+    },
+    "funding": {
+      "funding_type": "Fully funded scholarship (tuition + €1,400/month + travel + insurance)",
+      "fully_funded": null,
+      "award_amount": {
+        "minimum": null,
+        "maximum": null,
+        "fixed": null,
+        "period": "unknown"
+      },
+      "currency": null
+    },
+    "eligibility": {
+      "citizenship": {
+        "required": null,
+        "eligible_countries": [],
+        "excluded_countries": [],
+        "worldwide": null
+      },
+      "age": {
+        "minimum": null,
+        "maximum": null
+      },
+      "degree": {
+        "minimum_degree": null,
+        "required_degree_field": [],
+        "final_year_allowed": null,
+        "equivalent_degree_allowed": null
+      },
+      "language": {
+        "required": true,
+        "teaching_language": [
+          "English"
+        ],
+        "accepted_tests": [],
+        "minimum_scores": {},
+        "moi_accepted": "unknown"
+      }
+    },
+    "application": {
+      "application_method": "direct",
+      "official_application_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+      "application_fee": {
+        "required": null,
+        "amount": null,
+        "currency": null,
+        "waiver_available": null
+      }
+    },
+    "deadlines": {
+      "status": "unknown",
+      "deadline_date": "Typically October 2026 – January 2027 (varies by program)",
+      "deadline_display": "Typically October 2026 – January 2027 (varies by program)",
+      "deadline_precision": "unknown"
+    },
+    "verification": {
+      "is_verified": true,
+      "verification_status": "active",
+      "last_verified_date": "2026-10-06",
+      "verified_by": "automated_research"
+    },
+    "data_quality": {
+      "coverage_level": "medium",
+      "missing_key_fields": [],
+      "unknown_fields": [],
+      "estimated_fields": [
+        "funding",
+        "eligibility",
+        "application"
+      ]
+    },
+    "research_notes": [
+      "Automated research pass completed with page fetch"
+    ],
+    "research_errors": []
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "country": "FR",
+  "topic": "net_monthly_income",
+  "source_id": "fr-bofip-pas-grille-taux-2026",
+  "source_url": "https://bofip.impots.gouv.fr/bofip/11255-PGP.html/identifiant%3DBOI-BAREME-000037-20260407",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Direction generale des Finances publiques (DGFiP) - Bulletin Officiel des Finances Publiques - Impots (BOFiP), BOI-BAREME-000037",
+  "retrieved_at": "2026-10-05",
+  "as_of": "withholding grid in force from 1 May 2026",
+  "raw_extract": "BAREME - IR - Prelevement a la source de l'impot sur le revenu - Grilles des taux par defaut et montant de l'abattement pour les contrats courts. Date de debut de publication du BOI : 07/04/2026. Identifiant juridique : BOI-BAREME-000037. I. Grille des taux par defaut applicables aux contribuables domicilies en metropole et hors de France, a compter du 1er mai 2026. Base mensuelle de prelevement | Taux applicable. Inferieure a 1 635 euros | 0 %. Superieure ou egale a 1 635 euros et inferieure a 1 698 euros | 0,5 %. Superieure ou egale a 1 698 euros et inferieure a 1 807 euros | 1,3 %. Superieure ou egale a 1 807 euros et inferieure a 1 928 euros | 2,1 %. Superieure ou egale a 1 928 euros et inferieure a 2 060 euros | 2,9 %. Superieure ou egale a 2 060 euros et inferieure a 2 170 euros | 3,5 %. Superieure ou egale a 2 170 euros et inferieure a 2 315 euros | 4,1 %. Superieure ou egale a 2 315 euros et inferieure a 2 738 euros | 5,3 %. Superieure ou egale a 2 738 euros et inferieure a 3 135 euros | 7,5 %. Superieure ou egale a 3 135 euros et inferieure a 3 571 euros | 9,9 %. Superieure ou egale a 3 571 euros et inferieure a 4 019 euros | 11,9 %. Superieure ou egale a 4 019 euros et inferieure a 4 690 euros | 13,8 %. Superieure ou egale a 4 690 euros et inferieure a 5 624 euros | 15,8 %. Superieure ou egale a 5 624 euros et inferieure a 7 037 euros | 17,9 %. Superieure ou egale a 7 037 euros et inferieure a 8 789 euros | 20 %. Superieure ou egale a 8 789 euros et inferieure a 12 200 euros | 24 %. Superieure ou egale a 12 200 euros et inferieure a 16 523 euros | 28 %. Superieure ou egale a 16 523 euros et inferieure a 25 937 euros | 33 %. Superieure ou egale a 25 937 euros et inferieure a 55 558 euros | 38 %. Superieure ou egale a 55 558 euros | 43 %. II. Grille des taux par defaut applicables aux contribuables domicilies en Guadeloupe, a La Reunion et en Martinique, a compter du 1er mai 2026: Inferieure a 1 875 euros 0 % ; 1 875-1 989 euros 0,5 % ; 1 989-2 191 euros 1,3 % ; 2 191-2 392 euros 2,1 % ; 2 392-2 642 euros 2,9 % ; 2 642-2 786 euros 3,5 % ; 2 786-2 881 euros 4,1 % ; 2 881-3 170 euros 5,3 % ; 3 170-3 920 euros 7,5 % ; 3 920-5 016 euros 9,9 % ; 5 016-5 697 euros 11,9 % ; 5 697-6 599 euros 13,8 % ; 6 599-7 907 euros 15,8 % ; 7 907-8 789 euros 17,9 % ; 8 789-9 989 euros 20 % ; 9 989-13 738 euros 24 % ; 13 738-18 253 euros 28 % ; 18 253-27 858 euros 33 % ; 27 858-60 893 euros 38 % ; 60 893 euros et au-dela 43 %. III. Grille des taux par defaut applicables aux contribuables domicilies en Guyane et a Mayotte, a compter du 1er mai 2026: Inferieure a 2 008 euros 0 % ; ... ; 64 341 euros et au-dela 43 %. IV. Montant de l'abattement pour les contrats courts. Le montant mensuel net imposable du salaire minimum de croissance s'eleve, au 1er janvier 2026, a 1 495,04 euros. Par suite, le montant de l'abattement applicable aux contrats courts en vigueur a compter de cette meme date est egal a 748 euros (1 495,04 / 2).",
+  "claims": [
+    {
+      "claim_id": "fr-pas-grid-001",
+      "value": 1.3,
+      "unit": "percent (withholding rate applicable to a monthly prelevement base of EUR 1,698.00 to EUR 1,806.99, metropolitan France)",
+      "as_of": "from 1 May 2026",
+      "statement": "Under the official DGFiP default withholding grid in force from 1 May 2026 for residents of metropolitan France or outside France, a monthly 'base mensuelle de prelevement' between EUR 1,698 and EUR 1,807 attracts a withholding rate of 1.3 per cent."
+    },
+    {
+      "claim_id": "fr-pas-grid-002",
+      "value": 1635.0,
+      "unit": "EUR per month (upper bound of the zero-withholding band, metropolitan France, from 1 May 2026)",
+      "as_of": "from 1 May 2026",
+      "statement": "On the official default grid in force from 1 May 2026 for residents of metropolitan France or outside France, a monthly prelevement base below EUR 1,635 is withheld at 0 per cent. The grid then rises through 0.5, 1.3, 2.1, 2.9, 3.5, 4.1, 5.3, 7.5, 9.9, 11.9, 13.8, 15.8, 17.9, 20, 24, 28, 33 and 38 per cent, reaching 43 per cent from EUR 55,558 per month upwards."
+    },
+    {
+      "claim_id": "fr-pas-grid-003",
+      "value": 1495.04,
+      "unit": "EUR per month (net imposable of the SMIC at 1 January 2026, from which the fixed-contracts deduction is derived)",
+      "as_of": "at 1 January 2026",
+      "statement": "The monthly net imposable of the SMIC is EUR 1,495.04 at 1 January 2026, so the deduction for fixed-term contracts in force from that date is EUR 748 (EUR 1,495.04 / 2)."
+    }
+  ],
+  "assumptions": [
+    "grid in force from 1 May 2026; the grid is reset by indexation each year, so the applicable thresholds move and must be re-read each tax year",
+    "residents of metropolitan France or outside France (section I). Separate official grids apply in Guadeloupe, La Reunion and Martinique (section II) and in Guyane and Mayotte (section III), all with higher thresholds and the same percentage sequence",
+    "this is the DEFAULT grid. The source's own framing, which I quote: it is the grid of default rates applicable where the administration has been unable to determine a rate for the taxpayer. A real employee's withholding rate is computed individually from their declared household income and applied for a September-to-August window",
+    "the 'base mensuelle de prelevement' is the revenu net imposable, i.e. AFTER social contributions - NOT gross salary. Using this grid against a gross figure would overstate withholding"
+  ],
+  "field_mapping": {
+    "net_monthly_income": "fr.career.net_monthly_income (topic: net_monthly_income) - supplies the income-tax withholding rate component used in FR/020_net_monthly_income.json; it is not itself a take-home figure"
+  },
+  "notes": "THIS IS THE OFFICIAL TAX-AUTHORITY TABLE, NOT A NET-PAY FIGURE, AND IT IS FILED HERE AS THE RATE COMPONENT THAT MAKES A NET DERIVATION POSSIBLE. No official French table exists that converts gross to net in one step: France publishes the income-tax withholding grid (this document) and publishes employee social contribution rates on a separate page (FR/020_net_monthly_income.json), but no authority publishes a published take-home table. The two official components therefore have to be combined, which is what FR/020 does. THE TWO ERRORS A READER OF THIS TABLE WILL MAKE: first, applying these percentages to a gross salary instead of to the net imposable after social contributions, which would inflate withholding several-fold, because the base is roughly 62 per cent of gross at the reference salary; second, treating the default grid as the employee's actual rate. On the second point the source is explicit that it is a fallback grid, and the surrounding DGFiP guidance states that a nil rate can be determined for taxpayers who have had nil income tax in each of the last two known years and whose reference fiscal income is below a threshold, so a genuinely low-earning early-career person may be withheld at 0 per cent rather than at the grid rate. THE DATE MATTERS: this grid took effect on 1 May 2026 under the loi de finances pour 2026, which reindexed the thresholds. Anyone using the pre-May-2026 grid would understate the rate by roughly 1 per cent of the base at the reference salary, because that grid's corresponding band began at EUR 1,683 rather than EUR 1,698.",
+  "evidence_limitations": "Default rates, not individual rates. Applies to metropolitan France only as far as the reference calculation is concerned; overseas grid thresholds are materially higher. Applies to the revenu net imposable, so it must be combined with social-contribution deductions before use. Thresholds are reindexed annually by the loi de finances and must be re-verified for the tax year in use. Says nothing about the population: it cannot distinguish a graduate from anyone else, and the tax itself is computed on household income including a quotient familial, so a single graduate and a married graduate on identical salaries owe different amounts."
+}

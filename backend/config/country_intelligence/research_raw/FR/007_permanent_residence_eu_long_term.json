@@ -1,0 +1,46 @@
+{
+  "country": "FR",
+  "topic": "permanent_residence_eu_long_term",
+  "source_id": "fr-service-public-longue-duree-ue-001",
+  "source_url": "https://www.service-public.fr/particuliers/vosdroits/F17359",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Service Public / Direction de l'information légale et administrative (DILA), Premier ministre — Ministère chargé de l'intérieur",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "Carte de résident de longue durée-UE (étranger en France depuis 5 ans)\nVérifié le 01 juin 2026 - Service Public / Direction de l'information légale et administrative (Premier ministre)\nSi vous résidez de façon légale et ininterrompue depuis au moins 5 ans en France ou si vous avez une carte bleue européenne, vous pouvez obtenir une carte de résident mention résident de longue durée - UE sous certaines conditions. Cette carte vous autorise à séjourner dans d'autres pays de l'Union européenne. Elle est valable 10 ans et est renouvelable.\n\nSéjour régulier et ininterrompu d'au moins 5 ans\n[cas général] Vous devez avoir séjourné au moins 5 ans en France avec un ou plusieurs des titres de séjour suivants :\nVisa de long séjour valant titre de séjour\nCarte de séjour temporaire visiteur\nCarte de séjour temporaire/pluriannuelle vie privée et familiale\nCarte de séjour temporaire/pluriannuelle salarié\nCarte de séjour temporaire/pluriannuelle entrepreneur/profession libérale\nCarte de séjour pluriannuelle talent (sauf salarié en mission et leur famille)\nCarte de résident.\nVotre séjour en France doit être ininterrompu. Toutefois, certaines absences sont autorisées (absence maximum de 6 mois consécutifs pour un total d'absences de 10 mois) et sont prises en compte dans le calcul des 5 ans.\n\n[\u2026] Vous devez avoir des ressources stables, suffisantes et régulières pour subvenir à vos besoins. Vos revenus doivent atteindre au moins le montant du Smic (1 867,02 \u20ac bruts mensuels).\n\n[\u2026] Connaissance suffisante du français qui doit être de niveau B1\nRéussite à l'examen civique mention « carte de résident ».\n\n[\u2026] La carte de résident de longue durée - UE est valable 10 ans. Elle est renouvelable.\n\nTextes et références : Directive 2003/109/CE du 25 novembre 2003 relative au statut des ressortissants de pays tiers résidents de longue durée",
+  "research_notes": "CONFIRMED from the French government's service portal (verified 01 June 2026), implementing Directive 2003/109/EC. This is the correct headline '5 years' figure for French long-term/permanent-style residence and it supersedes the 20-year reading for corpus purposes, because this card can then be converted to the carte de résident permanent at renewal (see the companion permanent-residence file). Minimum: 5 YEARS of legal and UNINTERRUPTED residence in France. CRITICAL CORPUS CAVEAT: the page's list of qualifying residence permits for the 5 years does NOT include a student residence permit ('carte de séjour étudiant') or the VLS-TS mention étudiant. The listed titles are visitor, private/family, employee, entrepreneur/professional, talent, and existing resident cards. So a student who spends their whole course on a student permit should NOT be told they can bank 5 years of student residence toward this card — the page does not support that. I am recording the rule exactly as published and flagging that the student-permit exclusion is inferable from the published list rather than stated in words. Other conditions: income at least the Smic (1,867.02 EUR gross monthly, as stated on the page), health insurance, French at CEFR B1, examen civique 'carte de résident'. Absences allowed: max 6 consecutive months, 10 months total, still counted within the 5 years. Card valid 10 years, renewable; lapses after 6 consecutive years outside France. Cheaper 2-year route exists for EU Blue Card holders.",
+  "claims": [
+    {
+      "claim_id": "fr-long-term-resident-min-years",
+      "statement": "A card of residence with the mention 'résident de longue durée - UE' can be obtained after at least 5 years of legal and uninterrupted residence in France.",
+      "value": 5,
+      "unit": "years",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fr-long-term-resident-permit-name",
+      "statement": "The official name is 'carte de résident mention résident de longue durée - UE', valid 10 years and renewable, implementing Directive 2003/109/EC.",
+      "value": 5,
+      "unit": "years",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fr-long-term-resident-qualifying-permits",
+      "statement": "The 5 years must have been spent on one or more of the listed residence permits — visa long séjour valant titre de séjour, carte de séjour temporaire visiteur, temporaire/pluriannuelle vie privée et familiale, salarié, entrepreneur/profession libérale, pluriannuelle talent, or carte de résident — with residence in France uninterrupted (max 6 consecutive months' absence, 10 months total).",
+      "value": 5,
+      "unit": "years",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "fr-long-term-resident-conditions",
+      "statement": "Applicants must have stable, sufficient and regular resources of at least the Smic of 1,867.02 euros gross monthly, health insurance, French at CEFR B1, and must have passed the examen civique mention 'carte de résident'.",
+      "value": 1867.02,
+      "unit": "EUR gross per month (income floor, Smic)",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

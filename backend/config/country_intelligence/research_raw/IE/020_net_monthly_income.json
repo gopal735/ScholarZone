@@ -1,0 +1,89 @@
+{
+  "country": "IE",
+  "topic": "net_monthly_income",
+  "source_id": "ie-revenue-income-tax-example-ruth-2026",
+  "source_url": "https://www.revenue.ie/en/jobs-and-pensions/calculating-your-income-tax/how-income-tax-is-calculated.aspx",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Revenue Commissioners (Revenue), Irish Government",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "Example 2\n\nRuth is a PAYE employee and is paid monthly. She is single.\n\nRuth's tax credits and rate bands for 2026\n\nCredit / Value\nSingle Person's Tax Credit / EUR 2,000\nEmployee Tax Credit / EUR 2,000\nTotal tax credits / EUR 4,000 (EUR 333.34 per month)\n\nBecause Ruth is single, her rate band is EUR 44,000 per year. The monthly amount is EUR 3,666.67 (EUR 44,000/12).\n\nRuth was given a TCC showing these tax credits and rate band. A Revenue Payroll Notification (RPN) was made available to her employer with the total amounts. Ruth earns EUR 4,000 per month.\n\nHer monthly tax is calculated by applying the standard rate of tax (20%) to the first EUR 3,666.67 (up to the limit of Ruth's rate band). The higher rate of tax (40%) is applied to the last EUR 333.33 (EUR 4,000 - EUR 3,666.67) of her income above the rate band.\n\nHow Ruth's monthly tax is calculated\n\nDescription / Income / Gross Tax\nTaxed at standard rate / EUR 3,666.67 at 20% / EUR 733.33\nTaxed at higher rate / EUR 333.33 at 40% / EUR 133.33\nGross tax / - / EUR 866.66\nDeduct tax credits / - / EUR 333.34\nTax payable / - / EUR 533.32\n\n[Page also states: 'The examples below show how this works. (Universal Social Charge (USC) is not included in them, but can be seen in Calculating your USC).']\nPage footer: 'Published: 10 February 2026'",
+  "supporting_sources": [
+    {
+      "role": "universal social charge rates and thresholds 2026",
+      "source_url": "https://www.revenue.ie/en/jobs-and-pensions/usc/standard-rates-thresholds.aspx",
+      "publisher": "Revenue Commissioners",
+      "page_published": "01 January 2026",
+      "raw_extract": "The standard rates and thresholds of USC are:\n\nStandard rates and thresholds of USC for 2026\n\nThreshold for 2026 / Rate\nFirst EUR 12,012 / 0.5%\nNext EUR 16,688 / 2%\nNext EUR 41,344 / 3%\nBalance / 8%"
+    },
+    {
+      "role": "employee PRSI contribution rate 2026 (Class A)",
+      "source_url": "https://assets.gov.ie/static/documents/cb168977/PRSI_C20260116_Contribution_Rates_and_User_Guide_-_SW_14_-_English_Version_-_January_2026_.pdf-web.pdf",
+      "publisher": "Department of Social Protection (DSP), Irish Government",
+      "raw_extract": "'Class A employee PRSI is calculated at 4.2% until 30 September 2026 (4.35% from 1 [October 2026])'\n\nPRSI contribution rates effective from 1 January 2026 for private and some public sector employments (extract, Class A / subclass A1):\n'Subclass | Weekly pay | Employee | Employer\nA1 | More than EUR 552 | All | 4.20% | 11.25%'\n\nAlso from the same document: 'A tapering PRSI Credit exists for Class A and Class H employees earning between EUR 352.01 and EUR 424 a week. The PRSI Credit reduces the amount of PRSI charged a week.' (not applicable at this income level)"
+    },
+    {
+      "role": "graduate earnings distribution context (gross)",
+      "source_url": "https://hea.ie/2025/11/27/graduate-outcomes-survey-2025/",
+      "publisher": "Higher Education Authority (HEA), Irish Government statutory body",
+      "page_published": "27 November 2025",
+      "raw_extract": "'Almost 50% of all Graduates earn over EUR 40,000 EUR.'\n\nContext read on the same page: 'Overall, 80.2% of 2024 graduates were in employment nine months after graduation'; '66.4% of all graduates were in Permanent or open-ended contracts'; 'The most common award types were Undergraduate Honours Degrees (49.8%), followed by Taught Masters (27.8%)'; survey completed 'nine months after graduation' by graduates of the Class of 2024."
+    }
+  ],
+  "derivation": {
+    "method": "DERIVED from three separate official 2026 sources. No percentage-of-gross guess was used.",
+    "gross_input_eur_per_month": 4000,
+    "gross_source": "the salary used in Revenue's own published 2026 worked example (Ruth)",
+    "step_1_income_tax_paye_eur_per_month": 533.32,
+    "step_1_note": "Taken directly from Revenue's published worked example. Not recomputed by me. Assumes full year of credits applied in the month shown (cumulative PAYE basis).",
+    "step_2_employee_prsi_eur_per_month": 168.0,
+    "step_2_working": "4.2% x EUR 4,000.00 = EUR 168.00. Class A subclass A1 applies (weekly pay more than EUR 552; EUR 4,000 per month is about EUR 923 per week), and the DSP table states the 4.20% employee rate applies to 'All' of the weekly pay.",
+    "step_3_usc_eur_per_year": 972.82,
+    "step_3_working": "Annual gross EUR 48,000. EUR 12,012 x 0.5% = EUR 60.06; next EUR 16,688 x 2% = EUR 333.76; remaining EUR 19,300 x 3% = EUR 579.00. Total EUR 972.82 per year.",
+    "step_3_usc_eur_per_month": 81.07,
+    "step_3_working_monthly": "EUR 972.82 / 12 = EUR 81.07",
+    "net_eur_per_month": 3217.61,
+    "net_working": "4,000.00 - 533.32 (PAYE) - 168.00 (PRSI) - 81.07 (USC) = EUR 3,217.61"
+  },
+  "claims": [
+    {
+      "claim_id": "ie-net-monthly-001",
+      "value": 3217.61,
+      "unit": "EUR per month",
+      "as_of": "2026",
+      "statement": "DERIVED take-home pay for a single person with no dependants earning EUR 4,000.00 gross per month in Ireland in tax year 2026: EUR 4,000.00 gross less EUR 533.32 PAYE income tax (Revenue's own published 2026 figure for exactly this salary and status), less EUR 168.00 employee PRSI at the Department of Social Protection's published 4.2% Class A rate, less EUR 81.07 Universal Social Charge (Revenue's published 2026 thresholds and rates applied to EUR 48,000 annual income) = EUR 3,217.61 net per month. This is a NET figure, not gross."
+    },
+    {
+      "claim_id": "ie-net-monthly-002",
+      "value": 3211.61,
+      "unit": "EUR per month",
+      "as_of": "2026-10-01 onwards",
+      "statement": "Same derivation, but with the employee PRSI rate that the Department of Social Protection states applies 'from 1 October 2026', i.e. 4.35% x EUR 4,000.00 = EUR 174.00, giving EUR 3,211.61 net per month. Provided so the reader does not apply the January-September 2026 PRSI rate to a full year."
+    },
+    {
+      "claim_id": "ie-income-tax-only-003",
+      "value": 533.32,
+      "unit": "EUR per month",
+      "as_of": "2026",
+      "statement": "Income tax (PAYE) only, quoted directly from Revenue: 'Tax payable ... EUR 533.32' for a single person earning EUR 4,000 per month in 2026. This excludes USC and PRSI, so it must NOT be used as a take-home figure."
+    }
+  ],
+  "assumptions": [
+    "TAX YEAR 2026 for all three components (Revenue income tax bands and credits, Revenue USC thresholds, DSP PRSI rates).",
+    "Single, unmarried, no dependants, no family credits. Uses the 'Single Person' rate band of EUR 44,000 per year, per Revenue's page.",
+    "Full EUR 4,000 (Single Person's Tax Credit EUR 2,000 + Employee Tax Credit EUR 2,000 = EUR 4,000) applied in the month. Irish PAYE is cumulative, so the tax withheld in any individual month varies through the year; EUR 533.32 is the single-month figure in Revenue's example and is representative of the annual average, not of a specific month.",
+    "Employee PRSI class A, subclass A1 (private-sector-style employment). Class B (public sector) and the self-employed Class S are different and are NOT covered by this figure.",
+    "PRSI at 4.2%, i.e. the rate for earnings up to 30 September 2026. See claim ie-net-monthly-002 for 1 October 2026 onwards.",
+    "No other income, no BIK, no rent or tax credits, no pension or additional PRSI contributions, no healthcare or childcare costs.",
+    "GROSS INPUT: EUR 4,000 per month was chosen by me, not published as a graduate salary by any source. It is Revenue's own worked-example salary. It sits at EUR 48,000 per year, which is above the HEA's finding that 'Almost 50% of all Graduates earn over EUR 40,000 EUR', so a real new graduate would usually have a LOWER net than EUR 3,217.61."
+  ],
+  "field_mapping": {
+    "net_monthly_income": "career.net_monthly_income (topic: net_monthly_income)"
+  },
+  "notes": "This is a genuine NET (take-home) figure, not gross, and not a percentage of gross. The EUR 3,217.61 is the sum of three independently published official 2026 parameters, two of which (income tax, USC thresholds) are quoted from Revenue and one of which (employee PRSI rate) is quoted from the Department of Social Protection's official 2026 contribution rate guide. The income tax component is not my calculation: it is Revenue's own published answer for a single person on exactly EUR 4,000 per month, so it can be checked line by line against the source page. Covers income tax, USC and employee PRSI only. Does NOT cover: employer PRSI (not deducted from the employee), pension auto-enrolment or PRSA contributions, union or professional subscriptions, health insurance, rent, childcare, student-loan repayment (Ireland has no income-contingent student loan, so this is not an issue), or the cost of living. PAYE is calculated on cumulative basis, so take-home in any one month will differ from this figure.",
+  "evidence_limitations": "Population covered: a hypothetical single PAYE employee with no dependants on exactly EUR 4,000 gross per month. This is NOT a measured Irish graduate salary and NOT a measured Irish graduate net salary. No Irish official source publishes a take-home median for graduates; the Higher Education Authority's Graduate Outcomes Survey 2025 (Class of 2024) publishes only a distribution statement, that 'Almost 50% of all Graduates earn over EUR 40,000 EUR', and roughly a fifth of respondents do not disclose earnings, so a true graduate median could not be constructed from it. Because the chosen gross (EUR 48,000/year) is above the HEA's 'over EUR 40,000' threshold, EUR 3,217.61 should be treated as optimistic for a first job and as closer to a 3-5 year post-graduation salary. Sector matters a great deal in Ireland: the Health Service Executive and many public bodies pay on a different scale with class B PRSI (a much lower employee rate, per the DSP guide), so a public-sector graduate would have a noticeably higher net for the same gross. A reader would be badly misled if they used the EUR 533.32 income-tax-only figure as take-home, or if they scaled this net by any assumed percentage for a different gross: Irish net is not linear in gross because the single-person rate band, the tax credits and the USC bands all create kinks.",
+  "attempted_sources_not_used": [
+    "https://www.revenue.ie/en/jobs-and-pensions/calculating-your-income-tax/paye-tax-deduction-tables.aspx - the PAYE tax deduction tables are no longer linked from Revenue's 'Calculating your Income Tax' index page and I could not locate a current 2026 PDF; the published worked example on 'How your Income Tax is calculated' was used instead, which is equivalent for a single monthly-paid employee.",
+    "https://www.cso.ie/ - not searched for a graduate-specific earnings statistic within this pass; the CSO Educational Longitudinal Database (which links HEA graduate records to Revenue salary data) is the correct next route for an official Irish graduate earnings median."
+  ]
+}

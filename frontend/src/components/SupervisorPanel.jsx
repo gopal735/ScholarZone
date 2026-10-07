@@ -32,20 +32,11 @@ import {
   updateOutreach,
 } from '../services/supervisorService'
 import './SupervisorPanel.css'
-
-const BAND_LABELS = {
-  strong_research_alignment: 'Strong research alignment',
-  moderate_research_alignment: 'Moderate research alignment',
-  related: 'Related',
-  insufficient_evidence: 'Not enough evidence to compare',
-}
-
-const AVAILABILITY_LABELS = {
-  masters_supervision: "Master's supervision",
-  phd_supervision: 'PhD supervision',
-  postdoc_supervision: 'Postdoctoral supervision',
-  funding: 'Funding',
-}
+import {
+  BAND_LABELS,
+  AVAILABILITY_LABELS,
+  OUTREACH_ACTIONS,
+} from './SupervisorPanelConstants'
 
 /* Every non-affirmative state renders the same way: named, not implied. A page
    that simply omits funding would otherwise read as "no funding", which is a
@@ -57,17 +48,6 @@ const AVAILABILITY_STATES = {
   not_published: { label: 'Not published on the official page', tone: 'neutral' },
   stale: { label: 'Published earlier — needs re-checking', tone: 'warn' },
 }
-
-const OUTREACH_ACTIONS = [
-  { value: 'draft', label: 'Save as draft' },
-  { value: 'sent', label: 'Mark as sent' },
-  { value: 'follow_up_due', label: 'Follow-up due' },
-  { value: 'replied', label: 'A reply arrived' },
-  { value: 'positive', label: 'Positive reply' },
-  { value: 'negative', label: 'Negative reply' },
-  { value: 'no_response', label: 'No response' },
-  { value: 'closed', label: 'Close this' },
-]
 
 /* Research interests are typed by the student and kept in this browser only.
    They are sent with the request and never stored server-side, because an
@@ -693,5 +673,3 @@ export default function SupervisorPanel({ scholarshipId, initialState = 'loading
     </section>
   )
 }
-
-export { BAND_LABELS, AVAILABILITY_LABELS, OUTREACH_ACTIONS }

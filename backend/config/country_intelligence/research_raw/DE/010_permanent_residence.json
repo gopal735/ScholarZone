@@ -1,0 +1,38 @@
+{
+  "country": "DE",
+  "topic": "permanent_residence",
+  "source_id": "de-aufenthg-9-001",
+  "source_url": "https://www.gesetze-im-internet.de/aufenthg_2004/__9.html",
+  "source_type": "OFFICIAL_GOVERNMENT",
+  "publisher": "Bundesministerium der Justiz / Bundesamt für Justiz — gesetze-im-internet.de (Aufenthaltsgesetz § 9)",
+  "retrieved_at": "2026-10-05",
+  "as_of": "2026",
+  "raw_extract": "§ 9 AufenthG — Niederlassungserlaubnis\n(1) Die Niederlassungserlaubnis ist ein unbefristeter Aufenthaltstitel. Sie kann nur in den durch dieses Gesetz ausdrücklich zugelassenen Fällen mit einer Nebenbestimmung versehen werden. § 47 bleibt unberührt.\n(2) Einem Ausländer ist die Niederlassungserlaubnis zu erteilen, wenn 1.er seit fünf Jahren die Aufenthaltserlaubnis besitzt, 2.sein Lebensunterhalt gesichert ist, 3.er mindestens 60 Monate Pflichtbeiträge oder freiwillige Beiträge zur gesetzlichen Rentenversicherung geleistet hat oder Aufwendungen für einen Anspruch auf vergleichbare Leistungen einer Versicherungs- oder Versorgungseinrichtung oder eines Versicherungsunternehmens nachweist; berufliche Ausfallzeiten auf Grund von Kinderbetreuung oder häuslicher Pflege werden entsprechend angerechnet, 4.Gründe der öffentlichen Sicherheit oder Ordnung [...] nicht entgegenstehen, 5.ihm die Beschäftigung erlaubt ist, sofern er Arbeitnehmer ist, 6.er im Besitz der sonstigen für eine dauernde Ausübung seiner Erwerbstätigkeit erforderlichen Erlaubnisse ist, 7.er über ausreichende Kenntnisse der deutschen Sprache verfügt, 8.er über Grundkenntnisse der Rechts- und Gesellschaftsordnung und der Lebensverhältnisse im Bundesgebiet verfügt und 9.er über ausreichenden Wohnraum für sich und die mit ihm in häuslicher Gemeinschaft lebenden Familienangehörigen verfügt.\n\n(3a) Dem Ehegatten eines Ausländers, der eine Niederlassungserlaubnis nach § 18c besitzt, ist eine Niederlassungserlaubnis zu erteilen, wenn [...] 2.er seit drei Jahren die Aufenthaltserlaubnis besitzt [...]\n\n(4) Auf die für die Erteilung einer Niederlassungserlaubnis erforderliche Zeiten des Besitzes einer Aufenthaltserlaubnis werden folgende Zeiten angerechnet: [...] 3.die Zeit eines rechtmäßigen Aufenthalts zum Zweck des Studiums oder der Berufsausbildung im Bundesgebiet zur Hälfte.",
+  "research_notes": "CONFIRMED from the primary federal statute. Germany permanent residence: minimum 5 YEARS of holding an Aufenthaltserlaubnis (§ 9(2) sentence 1 no. 1). Official name: Niederlassungserlaubnis, which per § 9(1) is an UNLIMITED-STAY residence title (unbefristeter Aufenthaltstitel). IMPORTANT CAVEAT THAT MATTERS FOR A SCHOLARSHIP CORPUS: § 9(4) no. 3 provides that lawful residence for the PURPOSE OF STUDY OR VOCATIONAL TRAINING in Germany counts only HALF ('zur Hälfte'). So a period spent on a student residence permit does NOT count 1:1 toward the 5 years for permanent residence — it counts at half. A corpus entry of '5 years' must carry this halving rule or it is misleading. Additional requirements confirmed: livelihood secured, 60 months of pension contributions, adequate German language skills (B1 per § 2(11) AufenthG), basic knowledge of German law and society, sufficient living space. A separate 3-year route exists only for spouses of holders of a Niederlassungserlaubnis under § 18c (mobile employment) — NOT a general rule and not applicable to ordinary graduates, so it is recorded but explicitly flagged as inapplicable. Halving of study periods also applies, so the practical time to Niederlassungserlaubnis for a graduate who studied the whole period in Germany is substantially longer than 5 calendar years.",
+  "claims": [
+    {
+      "claim_id": "de-permanent-residence-min-years",
+      "statement": "A Niederlassungserlaubnis must be granted if the foreign national has held an Aufenthaltserlaubnis for five years.",
+      "value": 5,
+      "unit": "years",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "de-permanent-residence-permit-name",
+      "statement": "The official German permanent residence title is the Niederlassungserlaubnis under § 9 AufenthG, which is an unlimited-stay residence title (unbefristeter Aufenthaltstitel).",
+      "value": 5,
+      "unit": "years",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    },
+    {
+      "claim_id": "de-permanent-residence-study-period-halving",
+      "statement": "Under § 9(4) no. 3 AufenthG, the period of lawful residence for the purpose of study or vocational training in Germany counts only half towards the required periods for a Niederlassungserlaubnis.",
+      "value": 50,
+      "unit": "percent of study period credited",
+      "as_of": "2026",
+      "study_level": "bachelor"
+    }
+  ]
+}

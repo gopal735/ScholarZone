@@ -1,0 +1,102 @@
+{
+  "source_title": "Camões I.P. – Research Scholarship Program 2026",
+  "source_provider": "Camões – Instituto da Cooperação e da Língua, I.P. (Ministry of Foreign Affairs)",
+  "source_file": "portugal_scholarships.json",
+  "researched_at": "2026-10-06T13:40:57.927660+00:00",
+  "data": {
+    "id": "research-063",
+    "title": "Camões I.P. – Research Scholarship Program 2026",
+    "provider": "Camões – Instituto da Cooperação e da Língua, I.P. (Ministry of Foreign Affairs)",
+    "record_type": "scholarship",
+    "official_sources": [
+      {
+        "url": "https://instituto-camoes.pt/images/bolsas/bolsas_2026/Aviso_abertura_INV_2026_ENG.pdf",
+        "title": "Camões I.P. – Research Scholarship Program 2026",
+        "source_type": "official_provider",
+        "source_domain": "instituto-camoes.pt",
+        "publication_date": null,
+        "last_modified_date": null,
+        "checked_at": "2026-10-06T13:40:56.065156+00:00",
+        "source_priority": 1
+      }
+    ],
+    "image": {
+      "url": null,
+      "source_type": null,
+      "source_url": null,
+      "alt_text": null
+    },
+    "funding": {
+      "funding_type": "Research fellowship (monthly stipend)",
+      "fully_funded": null,
+      "award_amount": {
+        "minimum": null,
+        "maximum": null,
+        "fixed": null,
+        "period": "unknown"
+      },
+      "currency": null
+    },
+    "eligibility": {
+      "citizenship": {
+        "required": null,
+        "eligible_countries": [],
+        "excluded_countries": [],
+        "worldwide": null
+      },
+      "age": {
+        "minimum": null,
+        "maximum": null
+      },
+      "degree": {
+        "minimum_degree": null,
+        "required_degree_field": [],
+        "final_year_allowed": null,
+        "equivalent_degree_allowed": null
+      },
+      "language": {
+        "required": null,
+        "teaching_language": [],
+        "accepted_tests": [],
+        "minimum_scores": {},
+        "moi_accepted": "unknown"
+      }
+    },
+    "application": {
+      "application_method": "unknown",
+      "official_application_url": "https://instituto-camoes.pt/images/bolsas/bolsas_2026/Aviso_abertura_INV_2026_ENG.pdf",
+      "application_fee": {
+        "required": null,
+        "amount": null,
+        "currency": null,
+        "waiver_available": null
+      }
+    },
+    "deadlines": {
+      "status": "unknown",
+      "deadline_date": "2026-05-18",
+      "deadline_display": "2026-05-18",
+      "deadline_precision": "unknown"
+    },
+    "verification": {
+      "is_verified": true,
+      "verification_status": "active",
+      "last_verified_date": "2026-10-06",
+      "verified_by": "automated_research"
+    },
+    "data_quality": {
+      "coverage_level": "medium",
+      "missing_key_fields": [],
+      "unknown_fields": [],
+      "estimated_fields": [
+        "funding",
+        "eligibility",
+        "application"
+      ]
+    },
+    "research_notes": [
+      "Automated research pass completed with page fetch"
+    ],
+    "research_errors": []
+  }
+}

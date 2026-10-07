@@ -1,0 +1,15 @@
+{
+  "country": "DE",
+  "topic": "de_general_public_tuition_free_claim_national_source",
+  "raw_status": "UNAVAILABLE",
+  "reason": "The widely-circulated claim that 'public universities in Germany charge no tuition for non-EU students' could NOT be confirmed from a national or federal primary source, and the fetched university evidence actively contradicts it as a general statement. Blocked/attempted: make-it-in-germany.com (the federal portal normally used for this) is behind Radware bot protection and returns no content, as warned. The Bundesministerium für Bildung und Forschung (BMBF) and the DAAD national tuition page were not reached. What WAS verified instead, from official pages: Baden-Württemberg levies EUR 1,500/semester on non-EU students via Landeshochschulgebührengesetz; Bavaria charges EUR 500-800/semester depending on the university; TUM charges usually EUR 2,000-3,000/semester. TU Berlin charges no tuition at all. Therefore the claim is not merely unsourced, it is false as a national statement. A corpus must key the German tuition metric to Land and/or institution.",
+  "attempted_sources": [
+    "https://www.make-it-in-germany.com/en/study-vocational-training/studies-in-germany/fees — BLOCKED by Radware bot protection, no content returned",
+    "https://www.uni-berlin.de/en/studies/admission/fees — HTTP 404",
+    "https://www.tu.berlin/en/studying/organizing-your-studies/financing-your-studies — FETCHED: 'There are no tuition fees to pay at TU Berlin' (institution-level only)",
+    "https://mwk.baden-wuerttemberg.de/.../tuition-fees-for-international-students — FETCHED: EUR 1,500/semester state fee for non-EU",
+    "https://www.tum.de/en/studies/fees/tuition — FETCHED: usually EUR 2,000 or 3,000/semester for non-EU Bachelor's",
+    "https://www.gesetze-im-internet.de/stag/__10.html — FETCHED but this is the nationality law, contains no tuition provision"
+  ],
+  "checked_at": "2026-10-05"
+}

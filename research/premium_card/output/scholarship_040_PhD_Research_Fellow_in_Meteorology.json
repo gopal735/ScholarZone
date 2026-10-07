@@ -1,0 +1,104 @@
+{
+  "source_title": "PhD Research Fellow in Meteorology",
+  "source_provider": "University of Oslo (UiO)",
+  "source_file": "norway_scholarships.json",
+  "researched_at": "2026-10-06T13:40:49.194988+00:00",
+  "data": {
+    "id": "research-040",
+    "title": "PhD Research Fellow in Meteorology",
+    "provider": "University of Oslo (UiO)",
+    "record_type": "scholarship",
+    "official_sources": [
+      {
+        "url": "https://www.uio.no/english/about/vacancies/academic/",
+        "title": "PhD Research Fellow in Meteorology",
+        "source_type": "official_provider",
+        "source_domain": "www.uio.no",
+        "publication_date": null,
+        "last_modified_date": null,
+        "checked_at": "2026-10-06T13:40:46.215149+00:00",
+        "source_priority": 1
+      }
+    ],
+    "image": {
+      "url": "https://www.uio.no/vrtx/dist/resources/uio2/css/images/footer/uio-logo-en.svg",
+      "source_type": "official_provider",
+      "source_url": "https://www.uio.no/english/about/vacancies/academic/",
+      "alt_text": "university of oslo logo"
+    },
+    "funding": {
+      "funding_type": "Fully funded (salary)",
+      "fully_funded": null,
+      "award_amount": {
+        "minimum": null,
+        "maximum": null,
+        "fixed": null,
+        "period": "unknown"
+      },
+      "currency": null
+    },
+    "eligibility": {
+      "citizenship": {
+        "required": null,
+        "eligible_countries": [],
+        "excluded_countries": [],
+        "worldwide": null
+      },
+      "age": {
+        "minimum": null,
+        "maximum": null
+      },
+      "degree": {
+        "minimum_degree": null,
+        "required_degree_field": [],
+        "final_year_allowed": null,
+        "equivalent_degree_allowed": null
+      },
+      "language": {
+        "required": true,
+        "teaching_language": [
+          "English"
+        ],
+        "accepted_tests": [],
+        "minimum_scores": {},
+        "moi_accepted": "unknown"
+      }
+    },
+    "application": {
+      "application_method": "direct",
+      "official_application_url": "https://www.uio.no/english/about/vacancies/academic/",
+      "application_fee": {
+        "required": null,
+        "amount": null,
+        "currency": null,
+        "waiver_available": null
+      }
+    },
+    "deadlines": {
+      "status": "unknown",
+      "deadline_date": "2026-09-15",
+      "deadline_display": "2026-09-15",
+      "deadline_precision": "unknown"
+    },
+    "verification": {
+      "is_verified": true,
+      "verification_status": "active",
+      "last_verified_date": "2026-10-06",
+      "verified_by": "automated_research"
+    },
+    "data_quality": {
+      "coverage_level": "medium",
+      "missing_key_fields": [],
+      "unknown_fields": [],
+      "estimated_fields": [
+        "funding",
+        "eligibility",
+        "application"
+      ]
+    },
+    "research_notes": [
+      "Automated research pass completed with page fetch"
+    ],
+    "research_errors": []
+  }
+}

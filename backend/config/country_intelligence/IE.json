@@ -1,0 +1,408 @@
+{
+  "contract_version": "1.0.0",
+  "country": {
+    "currency": null,
+    "iso2": "IE",
+    "name_en": "Ireland"
+  },
+  "gaps": [
+    {
+      "attempted_sources": [
+        "ucd-non-eu-undergrad-fees-2026-27"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ie.education_costs.tuition_fees.public.bachelor",
+      "reason": "5 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 22600 EUR per year (ucd-non-eu-undergrad-fees-2026-27); 29500 EUR per year (ucd-non-eu-undergrad-fees-2026-27); 63890 EUR per year (ucd-non-eu-undergrad-fees-2026-27); 23170 EUR per year (ucd-non-eu-undergrad-fees-2026-27); 5 EUR (ucd-non-eu-undergrad-fees-2026-27). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "https://www.ucd.ie/students/fees/noneucoursefees/internationalnon-euundergraduatefees202627/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ie.ie-bachelor-tuition-7",
+      "reason": "Archived evidence recorded a finding with no numeric figure: For most multi-year programmes started from the 2014/2015 academic year, UCD fees stay at the entry-year level for the duration of the programme, but Direct Entry Veterinary Medicine (DN300) and Graduate Entry Veterinary Medicine (DN301) entered from 2019/20 onwards are subject to annual fee increases."
+    },
+    {
+      "attempted_sources": [
+        "https://www.citizensinformation.ie/en/moving-country/visas-for-ireland/student-visas/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ie.ie-financial-proof-2",
+      "reason": "Archived evidence recorded a finding with no numeric figure: The EUR 10,000 must be shown 'in addition to the course fees for each of those years', and course fees must separately be paid in full - so the financial-proof threshold excludes tuition entirely."
+    },
+    {
+      "attempted_sources": [
+        "https://www.citizensinformation.ie/en/moving-country/visas-for-ireland/student-visas/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ie.ie-financial-proof-4",
+      "reason": "Archived evidence recorded a finding with no numeric figure: The financial-proof requirement applies to both visa-required and non-visa-required students; the non-visa route proves it at immigration registration rather than at a visa application."
+    },
+    {
+      "attempted_sources": [
+        "https://www.citizensinformation.ie/en/moving-country/visas-for-ireland/student-visas/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ie.ie-financial-proof-5",
+      "reason": "Archived figure recorded, but it is not a currency figure and its topic's primary field holds money. It is stored as a related figure rather than as a cost. Statement: Non-EEA students on a course on the Interim List of Eligible Programmes are limited to 20 hours part-time work per week in term time and up to 40 hours per week during college vacation periods (June to September, and 15 December to 15 January)."
+    },
+    {
+      "attempted_sources": [
+        "https://www.citizensinformation.ie/en/moving-country/working-in-ireland/employment-permits/green-card-permits/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ie.ie-permanent-residence-3",
+      "reason": "Archived evidence recorded a finding with no numeric figure: Ireland's settlement end state is citizenship by naturalisation rather than a route officially named permanent residence; the employment permit is no longer required once a Stamp 4 permission is granted at 21 months."
+    },
+    {
+      "attempted_sources": [
+        "https://www.citizensinformation.ie/en/moving-country/working-in-ireland/employment-permits/green-card-permits/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ie.ie-post-study-work-6",
+      "reason": "Archived evidence recorded a finding with no numeric figure: A Labour Market Needs Test is not required for a Critical Skills Employment Permit."
+    },
+    {
+      "attempted_sources": [
+        "cib-student-visas"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ie.one_time_costs.blocked_account",
+      "reason": "2 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 10000 EUR per year (cib-student-visas); 60 EUR (cib-student-visas). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "https://www.irishimmigration.ie/my-situation-has-changed-since-i-arrived-in-ireland/third-level-graduate-programme/",
+        "https://www.irishimmigration.ie/my-situation-has-changed-since-i-arrived-in-ireland/student-permission/",
+        "https://www.irishimmigration.ie/wp-content/uploads/2024/03/third-level-graduate-programme.pdf",
+        "https://www.citizensinformation.ie/en/moving-country/studying-in-ireland/third-level-graduate-programme/"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ie.post_study_work_graduation_route",
+      "next_review": null,
+      "reason": "Ireland's actual post-GRADUATION route is the 'Third Level Graduate Programme', which grants a Stamp 1G permission (generally 12 months for a Level 8 honours bachelor's degree, and a longer renewable initial permission for Level 9 or above) to non-EEA graduates of Irish institutions so they can seek graduate-level employment. I could not verify this from a primary source. The authoritative publisher, Immigration Service Delivery, is irishimmigration.ie, and that host was completely unreachable from this environment across six independent attempts and three different clients, so no page on it was ever fetched. Consequently I have NO fetched page containing the 12-month duration, the Level 8 / Level 9 distinction, the €300 registration fee, the six-month application window after being notified of the award, or the seven-year / eight-year aggregate student-pathway caps - and I will not write any of those numbers from memory. This is deliberately left UNAVAILABLE rather than backfilled from the search-engine snippets, which were summaries of an unread page and a 2017-revision policy PDF rather than text I retrieved. A corpus entry that filled this from memory would be unprovable."
+    },
+    {
+      "attempted_sources": [
+        "cib-critical-skills-employment-permit"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ie.residency.job_seeker_residence_permit.duration.bachelor",
+      "reason": "4 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 2 per year (cib-critical-skills-employment-permit); 40904 EUR per year (cib-critical-skills-employment-permit); 68911 EUR per year (cib-critical-skills-employment-permit); 36848 EUR per year (cib-critical-skills-employment-permit). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    },
+    {
+      "attempted_sources": [
+        "cib-critical-skills-employment-permit"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "ie.residency.permanent_residence",
+      "reason": "2 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 5 (cib-critical-skills-employment-permit); 60 (cib-critical-skills-employment-permit). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
+    }
+  ],
+  "research": {
+    "evidence_artifact_count": 7,
+    "researched_at": "2026-10-05"
+  },
+  "sections": {
+    "career": {
+      "average_starting_salary": {
+        "gross_monthly": {
+          "as_of": "Class of 2024 graduates, survey published 2025-11-27",
+          "currency": "EUR",
+          "note": "The Higher Education Authority states that 'Almost 50% of all Graduates earn over EUR 40,000 EUR', for graduates surveyed nine months after graduation. This is a threshold in a distribution, not a median or a mean.",
+          "per": "year",
+          "source_ids": [
+            "ie-hea-graduate-outcomes-2025"
+          ],
+          "value": 40000,
+          "value_status": "OFFICIAL_STATISTICS"
+        }
+      },
+      "net_monthly_income": {
+        "month": {
+          "as_of": "2026",
+          "currency": "EUR",
+          "note": "This figure is a tax-model evaluation at a chosen gross salary, not an observed net income. The arithmetic may be sound and the tax parameters official, but no source publishes a gross salary for the population this claim describes, so the result is a fact about the tax system rather than about what someone in this country would take home.",
+          "per": "month",
+          "refusal": {
+            "operation": "net from gross via published tax parameters",
+            "reason": "This figure is a tax-model evaluation at a chosen gross salary, not an observed net income. The arithmetic may be sound and the tax parameters official, but no source publishes a gross salary for the population this claim describes, so the result is a fact about the tax system rather than about what someone in this country would take home.",
+            "required_input": "A cited source publishing a gross salary for the same population, with its own URL and date."
+          },
+          "source_ids": [
+            "ie-revenue-income-tax-example-ruth-2026"
+          ],
+          "value": null,
+          "value_status": "REFUSED"
+        }
+      }
+    },
+    "education_costs": {
+      "tuition_fees": {
+        "public": {
+          "bachelor": {
+            "as_of": "2026/27",
+            "colliding_values": [
+              {
+                "as_of": "2026/27",
+                "currency": "EUR",
+                "per": "year",
+                "source_ids": [
+                  "ucd-non-eu-undergrad-fees-2026-27"
+                ],
+                "statement": "UCD charges non-EU students EUR 22,600 per year for the BSc in Psychology (DN720 - PCS2) for 2026/27 - the same rate as the BA.",
+                "value": 22600
+              },
+              {
+                "as_of": "2026/27",
+                "currency": "EUR",
+                "per": "year",
+                "source_ids": [
+                  "ucd-non-eu-undergrad-fees-2026-27"
+                ],
+                "statement": "UCD charges non-EU students EUR 29,500 per year for the BSc in Computer Science (DN201 - CSSA) and for the BSc in Science (DN200 - SCU1) for 2026/27.",
+                "value": 29500
+              },
+              {
+                "as_of": "2026/27",
+                "currency": "EUR",
+                "per": "year",
+                "source_ids": [
+                  "ucd-non-eu-undergrad-fees-2026-27"
+                ],
+                "statement": "UCD charges non-EU students EUR 63,890 per year for the undergraduate Medicine programme (MDS2) for 2026/27 - nearly three times the BA rate.",
+                "value": 63890
+              },
+              {
+                "as_of": "2026/27",
+                "currency": "EUR",
+                "per": "year",
+                "source_ids": [
+                  "ucd-non-eu-undergrad-fees-2026-27"
+                ],
+                "statement": "UCD charges non-EU students EUR 23,170 per year for the BSc in Business (DNBUS - B722) and EUR 26,200 per year for the BSc in Sustainability (DN240 - STS1) for 2026/27.",
+                "value": 23170
+              },
+              {
+                "as_of": "2026/27",
+                "currency": "EUR",
+                "per": null,
+                "source_ids": [
+                  "ucd-non-eu-undergrad-fees-2026-27"
+                ],
+                "statement": "Published UCD fees are inclusive of a Student Centre Levy but exclude a EUR5 Students Union levy; in addition, non-EU Psychology students pay an extra EUR2,000 in Year 2 and Medicine and Physiotherapy students pay an extra EUR330 Healthcare Screening charge.",
+                "value": 5
+              }
+            ],
+            "currency": "EUR",
+            "note": "UCD charges non-EU students EUR 22,600 per year for the BSc in Psychology (DN720 - PCS2) for 2026/27 - the same rate as the BA.",
+            "source_ids": [
+              "ucd-non-eu-undergrad-fees-2026-27"
+            ],
+            "value": 22600,
+            "value_status": "UNIVERSITY_OFFICIAL"
+          }
+        }
+      }
+    },
+    "one_time_costs": {
+      "blocked_account": {
+        "as_of": "2026-06-23",
+        "colliding_values": [
+          {
+            "as_of": "2026-06-23",
+            "currency": "EUR",
+            "per": "year",
+            "source_ids": [
+              "cib-student-visas"
+            ],
+            "statement": "For a course of study of one year in duration, a non-EEA student must show access to EUR 10,000 for living costs.",
+            "value": 10000
+          },
+          {
+            "as_of": "2026-06-23",
+            "currency": "EUR",
+            "per": null,
+            "source_ids": [
+              "cib-student-visas"
+            ],
+            "statement": "Standard non-refundable Irish visa application processing fees are EUR 60 for a single-journey visa and EUR 100 for a multiple-journey visa.",
+            "value": 60
+          }
+        ],
+        "currency": "EUR",
+        "note": "For a course of study of one year in duration, a non-EEA student must show access to EUR 10,000 for living costs.",
+        "source_ids": [
+          "cib-student-visas"
+        ],
+        "value": 10000,
+        "value_status": "OFFICIAL_REGIONAL_BODY"
+      }
+    },
+    "residency": {
+      "job_seeker_residence_permit": {
+        "duration": {
+          "bachelor": {
+            "as_of": "2026-04-02",
+            "colliding_values": [
+              {
+                "as_of": "2026-04-02",
+                "currency": null,
+                "per": "year",
+                "source_ids": [
+                  "cib-critical-skills-employment-permit"
+                ],
+                "statement": "Ireland's principal skilled employment route is the Critical Skills Employment Permit, which is issued for 2 years and requires a job offer of 2 years or more.",
+                "value": 2
+              },
+              {
+                "as_of": "from 2026-03-01",
+                "currency": "EUR",
+                "per": "year",
+                "source_ids": [
+                  "cib-critical-skills-employment-permit"
+                ],
+                "statement": "From 1 March 2026 the Critical Skills Employment Permit minimum annual salary is EUR 40,904 for occupations on the Critical Skills Occupation List, where a degree or higher qualification is required.",
+                "value": 40904
+              },
+              {
+                "as_of": "from 2026-03-01",
+                "currency": "EUR",
+                "per": "year",
+                "source_ids": [
+                  "cib-critical-skills-employment-permit"
+                ],
+                "statement": "The Critical Skills Employment Permit minimum annual salary is EUR 68,911 for occupations not on the Ineligible List of Occupations, where a degree or equivalent experience is required.",
+                "value": 68911
+              },
+              {
+                "as_of": "from 2026-03-01",
+                "currency": "EUR",
+                "per": "year",
+                "source_ids": [
+                  "cib-critical-skills-employment-permit"
+                ],
+                "statement": "Where the applicant obtained their qualification within the 12 months before applying and the job is on the Critical Skills Occupation List, the minimum annual salary is EUR 36,848 - a reduced recent-graduate threshold.",
+                "value": 36848
+              }
+            ],
+            "currency": "EUR",
+            "note": "Ireland's principal skilled employment route is the Critical Skills Employment Permit, which is issued for 2 years and requires a job offer of 2 years or more.",
+            "per": "year",
+            "related_figures": {
+              "ie-post-study-work-7": {
+                "as_of": "2026-04-02",
+                "currency": "EUR",
+                "note": "The Critical Skills Employment Permit application fee is EUR 1,000 (90% refunded if refused or withdrawn) and the fee for immigration registration and an Irish Residence Permit is EUR 300.",
+                "source_ids": [
+                  "cib-critical-skills-employment-permit"
+                ],
+                "study_level": "bachelor",
+                "value": 1000,
+                "value_status": "OFFICIAL_REGIONAL_BODY"
+              }
+            },
+            "source_ids": [
+              "cib-critical-skills-employment-permit"
+            ],
+            "value": 2,
+            "value_status": "OFFICIAL_REGIONAL_BODY"
+          }
+        }
+      },
+      "permanent_residence": {
+        "as_of": "2026-04-02",
+        "colliding_values": [
+          {
+            "as_of": "2026-04-02",
+            "currency": null,
+            "per": null,
+            "source_ids": [
+              "cib-critical-skills-employment-permit"
+            ],
+            "statement": "After 5 years of legal residence in Ireland a Critical Skills Employment Permit holder can apply for citizenship by naturalisation.",
+            "value": 5
+          },
+          {
+            "as_of": "2025-02-13",
+            "currency": null,
+            "per": null,
+            "source_ids": [
+              "cib-critical-skills-employment-permit"
+            ],
+            "statement": "The equivalent threshold expressed by the Department of Enterprise is 60 months of residency permission, at which point a Critical Skills Employment Permit or Green Card Employment Permit holder may apply for long-term residence.",
+            "value": 60
+          }
+        ],
+        "note": "After 5 years of legal residence in Ireland a Critical Skills Employment Permit holder can apply for citizenship by naturalisation.",
+        "source_ids": [
+          "cib-critical-skills-employment-permit"
+        ],
+        "value": 5,
+        "value_status": "OFFICIAL_REGIONAL_BODY"
+      }
+    }
+  },
+  "sources": [
+    {
+      "archived": true,
+      "as_of": "2026-04-02",
+      "confidence": null,
+      "id": "cib-critical-skills-employment-permit",
+      "notes": "Ireland has no route named 'permanent residence'. The end state for a non-EEA graduate on the Critical Skills path is CITIZENSHIP BY NATURALISATION after 5 years of legal residence - and that 5-year figure is confirmed verbatim on this page. The 5 years is counted as LEGAL RESIDENCE, not as years on a single visa, and it is reached well after the point at which the employment permit stops being needed (21 months), so a student should not model Ireland as '5 years on the work permit'. Corroborating figure from the gov.ie Department of Enterprise publication fetched in the same session, which expresses the same threshold in months: 'On achieving 60 months residency permission, Critical Skills Employment Permit or Green Card Employment Permit holders will then be permitted to make an application for long term residence'. Two independent official sources therefore agree on 5 years / 60 months, from different framings. Long-term residence (distinct from citizenship) is a separate status and the gov.ie text says the 60-month threshold permits an application for it; the distinct Irish 'long-term residence' scheme itself lives on irishimmigration.ie, which was unreachable, so its full criteria are NOT claimed here.",
+      "publisher": "Citizens Information Board (Citizens Information, Ireland) - page edited 2 April 2026",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_REGIONAL_BODY",
+      "title": "permanent_residence evidence",
+      "url": "https://www.citizensinformation.ie/en/moving-country/working-in-ireland/employment-permits/green-card-permits/"
+    },
+    {
+      "archived": true,
+      "as_of": "2026-06-23",
+      "confidence": null,
+      "id": "cib-student-visas",
+      "notes": "SOURCING CAVEAT, stated plainly: Ireland has no single government page like gov.uk's 'Money you need'. The financial-proof rule is split across the visa application criteria and the permission-to-stay registration criteria, and the page that would carry the underlying Department of Justice rules (irishimmigration.ie) was unreachable from this environment. This record therefore comes from citizensinformation.ie, the Citizens Information Board - a statutory public body of the Irish Government - rather than from the Department of Justice itself. It is an official public-body source, but it is a second-tier one for a legal requirement, and that is the correct degree of confidence to attach. THE TRAP, AND IT IS SHARPER THAN IN CANADA OR AUSTRALIA: the EUR 10,000 figure is stated as being required 'in addition to the course fees for each of those years', and course fees must separately be 'paid in full' as a separate bullet. So the EUR 10,000 is a living-cost threshold only; total funds needed for year one is EUR 10,000 PLUS the full first-year tuition PLUS private medical insurance. A budget built to EUR 10,000 alone is wrong by the entire tuition fee. The figure is ALSO time-scaled rather than flat: EUR 833 per month for courses giving a stay of 6 to 8 months (stated as EUR 4,998 for 6 months and EUR 6,665 for 8 months), rising to EUR 10,000 for a one-year course. Note that the page's own arithmetic is slightly loose - 833 x 6 = 4,998 and 833 x 8 = 6,664, but it prints 6,665 - so the monthly rate and the printed 8-month total do not agree exactly; I have recorded the printed figures verbatim rather than silently correcting them. The requirement applies to both visa-required and non-visa-required students, the latter proving it at the immigration desk on arrival rather than at a visa appointment. Course eligibility is restricted to full-time courses on the Interim List of Eligible Programmes (ILEP) at NFQ level 6 or above, with a maximum 7 years of study at that level. NOT VERIFIED AND NOT CLAIMED, because they live only on the unreachable irishimmigration.ie page: the requirement that bank statements cover six months, the rejection of fixed-term savings accounts, the education-bond alternative worth a minimum of EUR 10,000 for degree students only, the instruction to pay at least EUR 6,000 of course fees before a visa application, and the Financial Summary Form. Those came from search-engine summaries of pages I did not retrieve, so they are excluded rather than asserted. Working-hours rights on the student stamp are recorded from this page since they materially affect whether a student can fund the gap above.",
+      "publisher": "Citizens Information Board (Citizens Information, Ireland) - page edited 23 June 2026",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_REGIONAL_BODY",
+      "title": "financial_proof evidence",
+      "url": "https://www.citizensinformation.ie/en/moving-country/visas-for-ireland/student-visas/"
+    },
+    {
+      "archived": true,
+      "as_of": "2024 graduates, published 2025",
+      "confidence": null,
+      "id": "ie-hea-graduate-outcomes-2025",
+      "notes": null,
+      "publisher": "Higher Education Authority (HEA), Ireland - statutory body under the Department of Further and Higher Education, Research, Innovation and Science",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_STATISTICS",
+      "title": "gross_monthly_income evidence",
+      "url": "https://hea.ie/2025/11/27/graduate-outcomes-survey-2025/"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "ie-revenue-income-tax-example-ruth-2026",
+      "notes": null,
+      "publisher": "Revenue Commissioners (Revenue), Irish Government",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "net_monthly_income evidence",
+      "url": "https://www.revenue.ie/en/jobs-and-pensions/calculating-your-income-tax/how-income-tax-is-calculated.aspx"
+    },
+    {
+      "archived": true,
+      "as_of": "2026/27 academic year",
+      "confidence": null,
+      "id": "ucd-non-eu-undergrad-fees-2026-27",
+      "notes": "Ireland has no single national international tuition figure, so this is one named university: University College Dublin. The fee table is not in the parent page's HTML - it is loaded from the UCD Student Information System publish frame at https://sisweb.ucd.ie/usis/!W_HU_MENU.P_PUBLISH?p_tag=FEESLEVEL&RESD=NONEU&DGLEV=UG&ACYR=2026, which was fetched directly and from which the verbatim rows above are taken. An earlier webfetch of the parent page returned a variant prefatory line saying the EUR5 Students Union levy applied to students registered for the 2025-2026 academic year, whereas the browser-rendered parent page read on the same date says 2026-2027; the year of application is therefore recorded as 2026-27 from the later read and the discrepancy is flagged rather than silently reconciled. SPREAD IS THE HEADLINE POINT: across ordinary bachelor's degrees at UCD the 2026/27 non-EU rate runs from EUR 22,600 (BA, BSc Psychology, BSc Economics, BSc Social Sciences, Law, Music) through EUR 23,170 (Business/Commerce) and EUR 26,200 (BSc Sustainability) to EUR 29,500 (Computer Science, Science, Mathematics, Engineering, Physiotherapy, Nursing, Midwifery), then jumps sharply for professional programmes at EUR 36,250 (BSc Radiography), EUR 38,000 (Veterinary Medicine), EUR 44,880 (Graduate Entry Veterinary Medicine), EUR 63,890 (Medicine) and EUR 66,360 (Graduate Entry Medicine). A corpus that stored one Irish 'bachelor tuition' number would understate medicine by roughly three times. TOTALS ARE NOT SIMPLY MULTIPLY-UP: the page states fees are fixed at the entry-year level for programmes started from 2014/15 onward, EXCEPT Direct Entry Veterinary Medicine (DN300) and Graduate Entry Veterinary Medicine (DN301) which take annual increases - and its own footnote zv1 repeats this. Some programmes are also quoted per-year with different year values (BSc Radiography MDSJ: Year 1 32,880.00, Year 2 32,240.00, Year 3 16,120.00). Additional compulsory charges that a budget must carry and that are printed as footnotes: an additional Healthcare Screening charge of EUR330 for Medicine (zsa) and Physiotherapy (zsc), and an additional EUR2,000 in Year 2 for non-EU Psychology students (fb). Part-time study is priced per credit (Arts P/T BAU2: 376.70 per credit) and must not be annualised. Published figures include a Student Centre Levy but exclude the EUR5 Students Union levy. All amounts are in Euro as printed on the page.",
+      "publisher": "University College Dublin (Student Registration, Fees and Data Operations)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "UNIVERSITY_OFFICIAL",
+      "title": "bachelor_tuition evidence",
+      "url": "https://www.ucd.ie/students/fees/noneucoursefees/internationalnon-euundergraduatefees202627/"
+    }
+  ]
+}
