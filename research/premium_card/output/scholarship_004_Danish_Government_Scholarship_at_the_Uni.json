@@ -1,0 +1,104 @@
+{
+  "source_title": "Danish Government Scholarship at the University of Southern Denmark (SDU)",
+  "source_provider": "University of Southern Denmark (SDU), funded by the Danish government",
+  "source_file": "denmark_scholarships.json",
+  "researched_at": "2026-10-06T13:40:43.736373+00:00",
+  "data": {
+    "id": "research-004",
+    "title": "Danish Government Scholarship at the University of Southern Denmark (SDU)",
+    "provider": "University of Southern Denmark (SDU), funded by the Danish government",
+    "record_type": "scholarship",
+    "official_sources": [
+      {
+        "url": "https://www.sdu.dk/en/uddannelse/fees_and_funding/scholarships",
+        "title": "Danish Government Scholarship at the University of Southern Denmark (SDU)",
+        "source_type": "official_provider",
+        "source_domain": "www.sdu.dk",
+        "publication_date": null,
+        "last_modified_date": null,
+        "checked_at": "2026-10-06T13:40:42.405358+00:00",
+        "source_priority": 1
+      }
+    ],
+    "image": {
+      "url": "https://www.sdu.dk/-/media/images/uddannelse/uddannelsesforsider/mitsdu-menu.jpg",
+      "source_type": "official_provider",
+      "source_url": "https://www.sdu.dk/en/uddannelse/fees_and_funding/scholarships",
+      "alt_text": "Danish Government Scholarship at the University of Southern Denmark (SDU)"
+    },
+    "funding": {
+      "funding_type": "Full tuition fee waiver and/or monthly living stipend (fully funded)",
+      "fully_funded": false,
+      "award_amount": {
+        "minimum": null,
+        "maximum": null,
+        "fixed": null,
+        "period": "unknown"
+      },
+      "currency": null
+    },
+    "eligibility": {
+      "citizenship": {
+        "required": null,
+        "eligible_countries": [],
+        "excluded_countries": [],
+        "worldwide": null
+      },
+      "age": {
+        "minimum": null,
+        "maximum": null
+      },
+      "degree": {
+        "minimum_degree": null,
+        "required_degree_field": [],
+        "final_year_allowed": null,
+        "equivalent_degree_allowed": null
+      },
+      "language": {
+        "required": true,
+        "teaching_language": [
+          "English"
+        ],
+        "accepted_tests": [],
+        "minimum_scores": {},
+        "moi_accepted": "unknown"
+      }
+    },
+    "application": {
+      "application_method": "direct",
+      "official_application_url": "https://www.sdu.dk/en/uddannelse/fees_and_funding/scholarships",
+      "application_fee": {
+        "required": null,
+        "amount": null,
+        "currency": null,
+        "waiver_available": null
+      }
+    },
+    "deadlines": {
+      "status": "unknown",
+      "deadline_date": "Master's: February 1 (annually). Bachelor's: March 15 (with uniTEST). For 2027 intake: Master's February 1, 2027.",
+      "deadline_display": "Master's: February 1 (annually). Bachelor's: March 15 (with uniTEST). For 2027 intake: Master's February 1, 2027.",
+      "deadline_precision": "unknown"
+    },
+    "verification": {
+      "is_verified": true,
+      "verification_status": "active",
+      "last_verified_date": "2026-10-06",
+      "verified_by": "automated_research"
+    },
+    "data_quality": {
+      "coverage_level": "medium",
+      "missing_key_fields": [],
+      "unknown_fields": [],
+      "estimated_fields": [
+        "funding",
+        "eligibility",
+        "application"
+      ]
+    },
+    "research_notes": [
+      "Automated research pass completed with page fetch"
+    ],
+    "research_errors": []
+  }
+}

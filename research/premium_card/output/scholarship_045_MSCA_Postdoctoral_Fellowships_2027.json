@@ -1,0 +1,102 @@
+{
+  "source_title": "MSCA Postdoctoral Fellowships 2027",
+  "source_provider": "European Commission - Marie Skłodowska-Curie Actions",
+  "source_file": "norway_scholarships.json",
+  "researched_at": "2026-10-06T13:40:49.847689+00:00",
+  "data": {
+    "id": "research-045",
+    "title": "MSCA Postdoctoral Fellowships 2027",
+    "provider": "European Commission - Marie Skłodowska-Curie Actions",
+    "record_type": "scholarship",
+    "official_sources": [
+      {
+        "url": "https://marie-sklodowska-curie-actions.ec.europa.eu/funding/msca-postdoctoral-fellowships-2027",
+        "title": "MSCA Postdoctoral Fellowships 2027",
+        "source_type": "official_provider",
+        "source_domain": "marie-sklodowska-curie-actions.ec.europa.eu",
+        "publication_date": null,
+        "last_modified_date": null,
+        "checked_at": "2026-10-06T13:40:49.310742+00:00",
+        "source_priority": 1
+      }
+    ],
+    "image": {
+      "url": "https://marie-sklodowska-curie-actions.ec.europa.eu/themes/contrib/oe_theme/dist/ec/images/logo/positive/logo-ec--en.svg",
+      "source_type": "official_provider",
+      "source_url": "https://marie-sklodowska-curie-actions.ec.europa.eu/funding/msca-postdoctoral-fellowships-2027",
+      "alt_text": "marie skłodowska-curie actions home page"
+    },
+    "funding": {
+      "funding_type": "Fully funded",
+      "fully_funded": null,
+      "award_amount": {
+        "minimum": null,
+        "maximum": null,
+        "fixed": null,
+        "period": "unknown"
+      },
+      "currency": null
+    },
+    "eligibility": {
+      "citizenship": {
+        "required": null,
+        "eligible_countries": [],
+        "excluded_countries": [],
+        "worldwide": null
+      },
+      "age": {
+        "minimum": null,
+        "maximum": null
+      },
+      "degree": {
+        "minimum_degree": null,
+        "required_degree_field": [],
+        "final_year_allowed": null,
+        "equivalent_degree_allowed": null
+      },
+      "language": {
+        "required": null,
+        "teaching_language": [],
+        "accepted_tests": [],
+        "minimum_scores": {},
+        "moi_accepted": "unknown"
+      }
+    },
+    "application": {
+      "application_method": "direct",
+      "official_application_url": "https://marie-sklodowska-curie-actions.ec.europa.eu/funding/msca-postdoctoral-fellowships-2027",
+      "application_fee": {
+        "required": null,
+        "amount": null,
+        "currency": null,
+        "waiver_available": null
+      }
+    },
+    "deadlines": {
+      "status": "unknown",
+      "deadline_date": "2027-09-08",
+      "deadline_display": "2027-09-08",
+      "deadline_precision": "unknown"
+    },
+    "verification": {
+      "is_verified": true,
+      "verification_status": "active",
+      "last_verified_date": "2026-10-06",
+      "verified_by": "automated_research"
+    },
+    "data_quality": {
+      "coverage_level": "medium",
+      "missing_key_fields": [],
+      "unknown_fields": [],
+      "estimated_fields": [
+        "funding",
+        "eligibility",
+        "application"
+      ]
+    },
+    "research_notes": [
+      "Automated research pass completed with page fetch"
+    ],
+    "research_errors": []
+  }
+}

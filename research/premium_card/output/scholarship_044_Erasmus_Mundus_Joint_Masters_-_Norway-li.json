@@ -1,0 +1,104 @@
+{
+  "source_title": "Erasmus Mundus Joint Masters - Norway-linked programmes (2027 intake)",
+  "source_provider": "European Commission / Multiple Norwegian universities (NTNU, NMBU, UiT)",
+  "source_file": "norway_scholarships.json",
+  "researched_at": "2026-10-06T13:40:50.229790+00:00",
+  "data": {
+    "id": "research-044",
+    "title": "Erasmus Mundus Joint Masters - Norway-linked programmes (2027 intake)",
+    "provider": "European Commission / Multiple Norwegian universities (NTNU, NMBU, UiT)",
+    "record_type": "scholarship",
+    "official_sources": [
+      {
+        "url": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
+        "title": "Erasmus Mundus Joint Masters - Norway-linked programmes (2027 intake)",
+        "source_type": "official_provider",
+        "source_domain": "www.eacea.ec.europa.eu",
+        "publication_date": null,
+        "last_modified_date": null,
+        "checked_at": "2026-10-06T13:40:49.194075+00:00",
+        "source_priority": 1
+      }
+    ],
+    "image": {
+      "url": "https://www.eacea.ec.europa.eu/themes/contrib/oe_theme/dist/ec/images/logo/logo-ec--mute.svg",
+      "source_type": "official_provider",
+      "source_url": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
+      "alt_text": "european commission logo"
+    },
+    "funding": {
+      "funding_type": "Fully funded (for selected students)",
+      "fully_funded": null,
+      "award_amount": {
+        "minimum": null,
+        "maximum": null,
+        "fixed": null,
+        "period": "unknown"
+      },
+      "currency": null
+    },
+    "eligibility": {
+      "citizenship": {
+        "required": null,
+        "eligible_countries": [],
+        "excluded_countries": [],
+        "worldwide": null
+      },
+      "age": {
+        "minimum": null,
+        "maximum": null
+      },
+      "degree": {
+        "minimum_degree": null,
+        "required_degree_field": [],
+        "final_year_allowed": null,
+        "equivalent_degree_allowed": null
+      },
+      "language": {
+        "required": true,
+        "teaching_language": [
+          "English"
+        ],
+        "accepted_tests": [],
+        "minimum_scores": {},
+        "moi_accepted": "unknown"
+      }
+    },
+    "application": {
+      "application_method": "direct",
+      "official_application_url": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
+      "application_fee": {
+        "required": null,
+        "amount": null,
+        "currency": null,
+        "waiver_available": null
+      }
+    },
+    "deadlines": {
+      "status": "unknown",
+      "deadline_date": "2027-01-31",
+      "deadline_display": "2027-01-31",
+      "deadline_precision": "unknown"
+    },
+    "verification": {
+      "is_verified": true,
+      "verification_status": "active",
+      "last_verified_date": "2026-10-06",
+      "verified_by": "automated_research"
+    },
+    "data_quality": {
+      "coverage_level": "medium",
+      "missing_key_fields": [],
+      "unknown_fields": [],
+      "estimated_fields": [
+        "funding",
+        "eligibility",
+        "application"
+      ]
+    },
+    "research_notes": [
+      "Automated research pass completed with page fetch"
+    ],
+    "research_errors": []
+  }
+}
