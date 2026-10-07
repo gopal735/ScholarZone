@@ -182,6 +182,12 @@ class ApplicationFacts:
     has_notes: bool = False
     is_listed: bool = True
     verification_label: str = "Confirm with provider"
+    #: The scholarship's own official page, copied from the canonical row and never
+    #: composed here. It is what makes a deadline claim auditable: a reader can open
+    #: the page the figure came from instead of taking the mentor's word for it.
+    #: Left ``None`` wherever the canonical row was not read, so the interface shows
+    #: no link rather than an invented or borrowed one.
+    official_source_url: str | None = None
 
     @property
     def is_terminal(self) -> bool:
@@ -441,7 +447,11 @@ def build_context(
         applications = _applications_for(db, user, [application_id], saved, as_of=resolved_as_of)
     else:
         applications = _applications_from_dashboard(
-            dashboard, saved, deadline_by_id, application_by_scholarship
+            dashboard,
+            saved,
+            deadline_by_id,
+            application_by_scholarship,
+            _official_source_urls(db, dashboard),
         )
 
     # ---- student -------------------------------------------------------------
@@ -575,8 +585,37 @@ def _from_row(row: Scholarship, saved: set[int], as_of: date) -> ScholarshipFact
     )
 
 
+def _official_source_urls(db: Session, dashboard) -> dict[int, str]:
+    """Official page per scholarship id, for the dashboard's application list.
+
+    ``ApplicationItem`` does not carry the scholarship's own page, and the
+    Application Workspace is deliberately not changed to add it. The mentor still
+    needs it: without a source a deadline cannot be presented as verified, so
+    without this the general path would silently lose both the link and the
+    label that a named application gets. One read of the canonical column, keyed
+    by id, keeps the value canonical and invents nothing.
+    """
+    ids = {
+        entry.scholarship.scholarship_id
+        for entry in dashboard.applications[:MAX_EVIDENCE_APPLICATIONS]
+    }
+    ids.discard(0)
+    if not ids:
+        return {}
+    rows = db.execute(
+        select(Scholarship.id, Scholarship.official_source_url).where(
+            Scholarship.id.in_(ids)
+        )
+    ).all()
+    return {row_id: url for row_id, url in rows if url}
+
+
 def _applications_from_dashboard(
-    dashboard, saved: set[int], deadline_by_id: dict, application_by_scholarship: dict
+    dashboard,
+    saved: set[int],
+    deadline_by_id: dict,
+    application_by_scholarship: dict,
+    source_urls: dict[int, str] | None = None,
 ) -> list[ApplicationFacts]:
     """Applications from the dashboard's published list.
 
@@ -607,6 +646,7 @@ def _applications_from_dashboard(
                 saved=reference.scholarship_id in saved,
                 is_listed=getattr(reference, "is_listed", True),
                 verification_label=reference.verification_display,
+                official_source_url=(source_urls or {}).get(reference.scholarship_id),
             )
         )
     return items
@@ -676,6 +716,9 @@ def _applications_for(
                     else "No longer listed"
                 ),
                 deadline=_deadline_for_row(row, as_of) if row is not None else UNKNOWN_DEADLINE,
+                official_source_url=(
+                    row.official_source_url if row is not None else None
+                ),
             )
         )
     return results

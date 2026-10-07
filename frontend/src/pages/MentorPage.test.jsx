@@ -487,3 +487,50 @@ describe('responsive and motion', () => {
   // that have nothing to do with the stylesheet. Responsive behaviour is verified
   // in the browser instead, by measuring overflow at each real width.
 })
+  describe('evidence sources', () => {
+    // A "Verified" badge is only meaningful if the reader can open the page the
+    // figure came from. These cover both halves of that: the link appears when a
+    // source exists, and nothing is rendered when it does not.
+    async function renderWithKnown(known) {
+      askMentor.mockResolvedValue({ ...ANSWER, known })
+      await renderPage()
+      await userEvent.type(screen.getByTestId('mentor-composer-input'), 'what are my deadlines?')
+      await userEvent.click(screen.getByTestId('mentor-composer-submit'))
+      await waitFor(() => expect(screen.getByTestId('mentor-answer')).toBeInTheDocument())
+    }
+
+    it('links to the official source when the evidence carries one', async () => {
+      await renderWithKnown([
+        {
+          key: 'scholarship-7-deadline',
+          label: 'Deadline',
+          value: '30 days left.',
+          field: 'deadline',
+          basis: 'ScholarZone catalogue',
+          verification: 'Verified',
+          source_url: 'https://provider.example/programme',
+          scholarship_id: 7,
+        },
+      ])
+      const link = screen.getAllByTestId('mentor-evidence-source')[0]
+      expect(link).toHaveAttribute('href', 'https://provider.example/programme')
+      expect(link).toHaveAttribute('target', '_blank')
+      expect(link).toHaveAttribute('rel', expect.stringContaining('noreferrer'))
+    })
+
+    it('renders no source link when the evidence has none', async () => {
+      await renderWithKnown([
+        {
+          key: 'scholarship-7-deadline',
+          label: 'Deadline',
+          value: 'No published deadline to count down to.',
+          field: 'deadline',
+          basis: 'ScholarZone catalogue',
+          verification: null,
+          source_url: null,
+          scholarship_id: 7,
+        },
+      ])
+      expect(screen.queryAllByTestId('mentor-evidence-source')).toHaveLength(0)
+    })
+  })
