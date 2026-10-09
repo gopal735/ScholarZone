@@ -33,23 +33,24 @@ ADMIN_HEADERS = {"X-Admin-Secret": ADMIN_SECRET}
 
 @pytest.fixture()
 def client(monkeypatch):
-    """A client whose public universe matches production's.
+    """A client whose public universe matches the NEW production default.
 
-    ``tests/conftest.py`` deliberately switches ``SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED``
-    and ``..._IMAGE`` off process-wide, because the long-standing seed rows carry
-    no images and predate the gate. That is the right default for listing and
-    pagination tests. It is the wrong universe for this suite: the question here
-    is whether the detail endpoint honours the *same* rules as the list, and in
-    production both gates are on. So they are switched back on here and restored
-    afterwards, using the same mechanism as ``test_public_quality_gate.py``.
+    The new default has quality gates OFF (public_require_verified=false,
+    public_require_verified_image=false). This matches the new visibility
+    rules where verification and image completeness are trust signals, not
+    visibility gates.
+
+    The old fixture enabled the gates to test the old behavior; this fixture
+    reflects the new default where verification/image are trust signals, not
+    visibility gates.
     """
     path = Path(tempfile.gettempdir()) / f"scholarzone-visibility-{uuid4().hex}.db"
     monkeypatch.setenv("SCHOLARZONE_DATABASE_URL", f"sqlite:///{path.as_posix()}")
     monkeypatch.setenv("SCHOLARZONE_ENVIRONMENT", "test")
     monkeypatch.setenv("SCHOLARZONE_ADMIN_SECRET", ADMIN_SECRET)
-    # Production has both gates on; see the docstring above.
-    monkeypatch.setenv("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED", "true")
-    monkeypatch.setenv("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE", "true")
+    # NEW DEFAULT: quality gates OFF by default
+    monkeypatch.setenv("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED", "false")
+    monkeypatch.setenv("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE", "false")
     monkeypatch.setenv("SCHOLARZONE_PUBLIC_ALLOW_THIRD_PARTY_IMAGE", "false")
 
     from app.core.config import get_settings
@@ -59,9 +60,6 @@ def client(monkeypatch):
         reset_database_connections,
     )
 
-    # Defensive: this build re-reads the environment on every call, but the
-    # settings helper is cached in some, and a stale one would silently disable
-    # the gates this suite is about.
     if hasattr(get_settings, "cache_clear"):
         get_settings.cache_clear()
 
@@ -77,8 +75,6 @@ def client(monkeypatch):
         yield test_client
 
     reset_database_connections()
-    # Best effort: on Windows a SQLite file that the engine still holds open
-    # cannot be unlinked, and failing to tidy a temp file is not a test failure.
     for suffix in ("", "-wal", "-shm"):
         candidate = Path(f"{path}{suffix}")
         try:
@@ -144,7 +140,8 @@ class TestTheBypass:
         assert response.status_code == 404
         assert "ARCHIVED-CONFIDENTIAL-TITLE" not in response.text
 
-    def test_a_needs_review_record_is_not_readable_by_direct_id(self, client):
+    def test_a_needs_review_record_IS_READABLE_by_direct_id(self, client):
+        """A needs_review record IS now public (non-closed, non-archived, non-quarantined)."""
         session = _session(client)
         record = _seed(
             session,
@@ -156,8 +153,8 @@ class TestTheBypass:
 
         response = client.get(f"/scholarships/{record.id}")
 
-        assert response.status_code == 404
-        assert "NEEDS-REVIEW-CONFIDENTIAL-TITLE" not in response.text
+        assert response.status_code == 200
+        assert "NEEDS-REVIEW-CONFIDENTIAL-TITLE" in response.text
 
     def test_a_quarantined_record_is_not_readable_by_direct_id(self, client):
         session = _session(client)
@@ -170,23 +167,30 @@ class TestTheBypass:
         assert response.status_code == 404
         assert "QUARANTINED-TITLE" not in response.text
 
-    def test_an_uncertain_record_is_not_readable_by_direct_id(self, client):
-        """A status the catalogue does not define is not a public claim."""
+    def test_an_uncertain_record_IS_READABLE_by_direct_id(self, client):
+        """A status the catalogue does not define is now public (not closed/archived/quarantined)."""
         session = _session(client)
         record = _seed(session, 4, verification_status="uncertain", title="UNCERTAIN-TITLE")
 
-        assert client.get(f"/scholarships/{record.id}").status_code == 404
+        response = client.get(f"/scholarships/{record.id}")
 
-    def test_a_record_without_a_verified_image_is_not_readable_by_direct_id(self, client):
-        """The image gate is part of the canonical predicate, not an extra rule."""
+        assert response.status_code == 200
+        assert "UNCERTAIN-TITLE" in response.text
+
+    def test_a_record_without_a_verified_image_is_READABLE_by_direct_id(self, client):
+        """Missing image no longer hides a non-closed record."""
         session = _session(client)
         record = _seed(
             session, 5, image_url=None, image_verified_at=None, title="NO-IMAGE-TITLE"
         )
 
-        assert client.get(f"/scholarships/{record.id}").status_code == 404
+        response = client.get(f"/scholarships/{record.id}")
 
-    def test_a_third_party_image_only_record_is_not_readable_by_direct_id(self, client):
+        assert response.status_code == 200
+        assert "NO-IMAGE-TITLE" in response.text
+
+    def test_a_third_party_image_only_record_is_READABLE_by_direct_id(self, client):
+        """Third-party image no longer hides a non-closed record."""
         session = _session(client)
         record = _seed(
             session,
@@ -196,7 +200,10 @@ class TestTheBypass:
             title="WIKIMEDIA-ONLY-TITLE",
         )
 
-        assert client.get(f"/scholarships/{record.id}").status_code == 404
+        response = client.get(f"/scholarships/{record.id}")
+
+        assert response.status_code == 200
+        assert "WIKIMEDIA-ONLY-TITLE" in response.text
 
     def test_a_hidden_record_is_not_exposed_by_the_list_either(self, client):
         """List and detail must be one universe, not detail merely tightened."""
@@ -456,3 +463,83 @@ class TestCanonicalPredicateIsTheOneUsed:
 
         source = inspect.getsource(repository.get_scholarship_by_id)
         assert "public_visibility_conditions" not in source
+
+
+# ---------------------------------------------------------------------------
+# Additional tests for the new visibility rules
+# ---------------------------------------------------------------------------
+
+class TestNewVisibilityRules:
+    """Tests for the new visibility rules where non-closed, non-archived, non-quarantined records are public."""
+
+    def test_needs_review_record_is_public(self, client):
+        session = _session(client)
+        record = _seed(
+            session,
+            100,
+            verification_status="needs_review",
+            is_verified=True,
+            title="NEEDS-REVIEW-PUBLIC",
+        )
+
+        response = client.get(f"/scholarships/{record.id}")
+
+        assert response.status_code == 200
+        assert "NEEDS-REVIEW-PUBLIC" in response.text
+
+    def test_record_without_verified_image_is_public(self, client):
+        """Record without verified image is now public."""
+        session = _session(client)
+        record = _seed(
+            session,
+            200,
+            image_url=None,
+            image_verified_at=None,
+            title="NO-IMAGE-PUBLIC",
+        )
+
+        response = client.get(f"/scholarships/{record.id}")
+
+        assert response.status_code == 200
+        assert "NO-IMAGE-PUBLIC" in response.text
+
+    def test_third_party_image_is_public(self, client):
+        """Third-party image record is now public."""
+        session = _session(client)
+        record = _seed(
+            session,
+            200,
+            image_url="https://upload.wikimedia.org/logo.png",
+            image_source_type="wikimedia",
+            title="WIKIMEDIA-PUBLIC",
+        )
+
+        response = client.get(f"/scholarships/{record.id}")
+
+        assert response.status_code == 200
+        assert "WIKIMEDIA-PUBLIC" in response.text
+
+    def test_needs_review_record_is_in_list(self, client):
+        """needs_review record should appear in list."""
+        session = _session(client)
+        record = _seed(session, 200, verification_status="needs_review", title="LISTED-NEEDS-REVIEW")
+
+        response = client.get("/scholarships?limit=100")
+        assert response.status_code == 200
+        listed = {item["id"] for item in response.json()["items"]}
+        assert record.id in listed
+
+    def test_record_without_verified_image_is_in_list(self, client):
+        """Record without verified image appears in list."""
+        session = _session(client)
+        record = _seed(
+            session,
+            201,
+            image_url=None,
+            image_verified_at=None,
+            title="LISTED-NO-IMAGE",
+        )
+
+        response = client.get("/scholarships?limit=100")
+        listed = {item["id"] for item in response.json()["items"]}
+        assert record.id in listed

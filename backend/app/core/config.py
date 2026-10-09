@@ -31,18 +31,20 @@ class Settings:
     resend_api_key: str | None = None
     verification_secret: str | None = None
     admin_secret: str | None = None
-    # Public directory quality gate.
+    # Public directory quality gate (OBSOLETE - no longer filters public directory).
     #
-    # When enabled, a scholarship is listed publicly only if it has been
-    # verified and carries an image that passed image validation. This is a
-    # deliberate product trade-off with a large, measurable cost: a record
-    # whose official page simply has no findable logo becomes invisible rather
-    # than being shown without one. It is a setting rather than a hardcoded
-    # filter so the trade-off can be reversed without a code change, and so
-    # what the gate hides is reportable rather than silently missing.
-    public_require_verified: bool = True
-    public_require_verified_image: bool = True
-    # The image gate hides a record when it has no *verified official* image.
+    # These settings were previously used to gate public visibility behind
+    # verification and image validation. The canonical public predicate
+    # (app.repositories.scholarships.public_visibility_conditions) now
+    # excludes only quarantined, archived, and closed records.
+    #
+    # These flags are retained for:
+    # - Research/analysis scripts that compare old vs new visibility
+    # - Admin-facing features that may want to surface "quality-gated" subsets
+    # - Test fixtures that exercise legacy behaviour
+    public_require_verified: bool = False
+    public_require_verified_image: bool = False
+    # The image gate hid a record when it had no *verified official* image.
     #
     # A third-party-hosted image (currently Wikimedia) is not an official
     # image and must never satisfy this gate. If the owner later wants those
@@ -132,12 +134,12 @@ def get_settings() -> Settings:
         # new credential, no rotation, and nothing printed or committed. An
         # explicitly provided SCHOLARZONE_ADMIN_SECRET still takes precedence.
         admin_secret=os.getenv("SCHOLARZONE_ADMIN_SECRET")
-        or os.getenv("SCHOLARZONE_VERIFICATION_SECRET"),
+            or os.getenv("SCHOLARZONE_VERIFICATION_SECRET"),
         public_require_verified=_as_bool(
-            os.getenv("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED"), True
+            os.getenv("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED"), False
         ),
         public_require_verified_image=_as_bool(
-            os.getenv("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE"), True
+            os.getenv("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE"), False
         ),
         public_allow_third_party_image=_as_bool(
             os.getenv("SCHOLARZONE_PUBLIC_ALLOW_THIRD_PARTY_IMAGE"), False

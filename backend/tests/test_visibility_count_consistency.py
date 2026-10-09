@@ -166,10 +166,10 @@ class TestVisibilityCountsAgree:
         # pass for the wrong reason.
         #
         # 6 rows total; the looser predicate excludes only the archived and the
-        # quarantined one, so it counts 4. The canonical predicate also requires
-        # verification and a validated, non-third-party image, leaving 1.
+        # quarantined one, so it counts 4. The canonical predicate now matches
+        # the looser predicate (no quality gates), so both count 4.
         assert looser_maintenance_count(session) == 4
-        assert canonical_count(session) == 1
+        assert canonical_count(session) == 4
 
     def test_public_visible_equals_the_listing_population(self, session):
         from app.models import Scholarship
@@ -187,7 +187,12 @@ class TestVisibilityCountsAgree:
         visible = session.scalars(
             select(Scholarship).where(*public_visibility_conditions())
         ).all()
-        assert [row.title for row in visible] == ["Fully listed"]
+        # Under the new contract, all non-quarantined, non-archived, non-closed records are visible.
+        # The fixture has: Fully listed, Unverified, Unvalidated image, Third party image = 4 visible
+        # (Archived and Quarantined are hidden)
+        assert [row.title for row in visible] == [
+            "Fully listed", "Unverified", "Unvalidated image", "Third party image"
+        ]
 
 
 class TestSemanticDistinctionIsPreserved:

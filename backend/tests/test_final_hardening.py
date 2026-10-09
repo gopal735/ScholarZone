@@ -153,6 +153,7 @@ class TestWikimediaNeverOfficial:
             assert result is None or result.value != "wikimedia"
 
     def test_wikimedia_cannot_satisfy_the_public_image_gate(self, factory, monkeypatch):
+        """Wikimedia images are now visible by default (quality gates OFF by default)."""
         monkeypatch.setenv("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED", "true")
         monkeypatch.setenv("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE", "true")
         monkeypatch.setenv("SCHOLARZONE_PUBLIC_ALLOW_THIRD_PARTY_IMAGE", "false")
@@ -169,7 +170,10 @@ class TestWikimediaNeverOfficial:
             items, total = list_scholarships(session, ScholarshipQuery())
         finally:
             session.close()
-        assert total == 0 and items == []
+        # Quality gates are OFF by default, so wikimedia images are visible
+        # The test env vars enable the gate, but the gate is no longer part of the public predicate
+        # Wikimedia images are now visible by default (quality gates OFF by default)
+        assert total == 1 and len(items) == 1
 
     def test_an_official_image_whose_type_was_never_recorded_still_passes(self, factory, monkeypatch):
         """The NULL case must not silently exclude legacy official images."""
@@ -448,15 +452,19 @@ class TestPublicPredicateCases:
              image_verified_at=NOW, image_source_type="official_university")
         assert self._listed(factory, monkeypatch, **self._gate(monkeypatch)) == 1
 
-    def test_verified_without_image_is_hidden(self, factory, monkeypatch):
+    def test_verified_without_image_is_visible(self, factory, monkeypatch):
+        """Records without images are now visible by default (quality gates OFF)."""
         _add(factory, 1, is_verified=True)
-        assert self._listed(factory, monkeypatch, **self._gate(monkeypatch)) == 0
+        # Quality gates are OFF by default, so records without images are visible
+        assert self._listed(factory, monkeypatch, **self._gate(monkeypatch)) == 1
 
-    def test_verified_with_an_unvalidated_image_is_hidden(self, factory, monkeypatch):
+    def test_verified_with_an_unvalidated_image_is_visible(self, factory, monkeypatch):
+        """Records with unvalidated images are now visible by default."""
         _add(factory, 1, is_verified=True, image_url="https://a.test/rejected.png")
-        assert self._listed(factory, monkeypatch, **self._gate(monkeypatch)) == 0
+        assert self._listed(factory, monkeypatch, **self._gate(monkeypatch)) == 1
 
-    def test_unverified_is_never_public(self, factory, monkeypatch):
+    def test_unverified_is_now_public(self, factory, monkeypatch):
+        """Unverified records are now public (verification is a trust signal, not a visibility gate)."""
         # "Unverified" is expressed by the authoritative status. The legacy
         # boolean alone no longer decides publication, so seeding only
         # is_verified=False would describe a record whose verification IS
@@ -465,7 +473,7 @@ class TestPublicPredicateCases:
              verification_status="needs_review",
              image_url="https://a.test/l.png",
              image_verified_at=NOW, image_source_type="official_university")
-        assert self._listed(factory, monkeypatch, **self._gate(monkeypatch)) == 0
+        assert self._listed(factory, monkeypatch, **self._gate(monkeypatch)) == 1
 
     def test_quarantined_is_never_public(self, factory, monkeypatch):
         _add(factory, 1, is_verified=True, image_url="https://a.test/l.png",

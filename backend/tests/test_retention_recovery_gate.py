@@ -904,7 +904,7 @@ class TestRecoveryAndRetentionIntegration:
         by_name = {name: states[row.id] for name, row in records.items()}
 
         assert by_name["live"] == STATE_KEEP
-        assert by_name["missing_image"] == STATE_PROTECTED
+        assert by_name["missing_image"] == STATE_KEEP
         # Archived and well past retention, but never armed: this is precisely
         # GRACE_ELIGIBLE. Calling it merely "protected" would hide the fact that
         # every other deletion condition already holds.

@@ -772,16 +772,16 @@ class TestDeadlineSemantics:
         assert body["is_overdue"] is True
         assert body["is_actionable"] is False
 
-    def test_a_closed_round_is_overdue_even_with_a_future_date(self, client, db):
+    def test_a_closed_round_is_not_available_for_application(self, client, db):
         make_user(db, "closed@example.com")
         scholarship = make_scholarship(db, status="closed", deadline_date=date(2027, 1, 1))
         login(client, "closed@example.com")
-        body = start(client, scholarship.id).json()
+        response = start(client, scholarship.id)
 
-        # The stored lifecycle status is honoured before the date, exactly as
-        # evaluate_deadline does.
-        assert body["days_remaining"] is None
-        assert body["is_overdue"] is True
+        # Closed scholarships are excluded from the public catalogue and cannot
+        # be applied to. The endpoint returns 404 to avoid being an existence
+        # oracle for hidden records.
+        assert response.status_code == 404
 
     def test_month_precision_is_reported_as_month(self, client, db):
         make_user(db, "month@example.com")

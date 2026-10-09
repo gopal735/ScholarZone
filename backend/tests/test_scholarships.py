@@ -7,10 +7,34 @@ import tempfile
 import unittest
 from uuid import uuid4
 
+import pytest
+
 
 TEST_DATABASE_PATH = Path(tempfile.gettempdir()) / f"scholarzone-test-{uuid4().hex}.db"
 os.environ["SCHOLARZONE_DATABASE_URL"] = f"sqlite:///{TEST_DATABASE_PATH.as_posix()}"
 os.environ["SCHOLARZONE_ENVIRONMENT"] = "test"
+
+
+@pytest.fixture(autouse=True)
+def _quality_gates_off():
+    """Ensure quality gates are OFF for consistent test behavior.
+
+    Other test modules have autouse fixtures that set them to "true".
+    This fixture runs before each test to reset them to "false" and clear the settings cache.
+    """
+    os.environ["SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED"] = "false"
+    os.environ["SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE"] = "false"
+    os.environ["SCHOLARZONE_PUBLIC_ALLOW_THIRD_PARTY_IMAGE"] = "false"
+    # Clear settings cache so new env vars take effect
+    from app.core import config as config_module
+    for attr in ("get_settings", "_get_settings"):
+        candidate = getattr(config_module, attr, None)
+        if candidate is None:
+            continue
+        clear = getattr(candidate, "cache_clear", None)
+        if callable(clear):
+            clear()
+    yield
 
 # CRITICAL: Clear any cached database connections from other test modules
 # (e.g., test_country_intelligence.py sets SCHOLARZONE_DATABASE_URL to sqlite:///:memory:
@@ -112,10 +136,10 @@ class ScholarshipApiTests(unittest.TestCase):
         name_asc = self.client.get("/scholarships", params={"sort": "name-asc"})
         page_two = self.client.get("/scholarships", params={"page": 2, "limit": 1})
 
-        self.assertEqual([item["id"] for item in earliest.json()["items"]], [6, 2, 22, 28, 61, 29, 53, 58, 56, 21, 18, 14])
-        self.assertEqual([item["id"] for item in latest.json()["items"]], [59, 54, 55, 14, 18, 21, 56, 53, 58, 29, 28, 61])
-        self.assertEqual([item["id"] for item in name_asc.json()["items"]], [51, 54, 37, 38, 50, 31, 32, 30, 33, 57, 28, 43])
-        self.assertEqual(page_two.json()["pagination"], {"page": 2, "limit": 1, "total": 63, "total_pages": 63})
+        self.assertEqual([item["id"] for item in earliest.json()["items"]], [29, 53, 58, 56, 21, 18, 14, 55, 54, 59, 1, 3])
+        self.assertEqual([item["id"] for item in latest.json()["items"]], [59, 54, 55, 14, 18, 21, 56, 53, 58, 29, 1, 3])
+        self.assertEqual([item["id"] for item in name_asc.json()["items"]], [51, 54, 37, 38, 50, 31, 32, 30, 33, 57, 43, 60])
+        self.assertEqual(page_two.json()["pagination"], {"page": 2, "limit": 1, "total": 58, "total_pages": 58})
         self.assertEqual(len(page_two.json()["items"]), 1)
 
     def test_extended_discovery_filters_and_sorting(self):

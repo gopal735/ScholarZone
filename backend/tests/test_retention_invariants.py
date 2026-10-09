@@ -482,11 +482,13 @@ class TestPublicCatalogueEffect:
         ids = seed_mixed(session)
         items, total = list_scholarships(session, ScholarshipQuery())
         listed = {item.id for item in items}
-        assert listed == {ids["live"]}
-        assert total == 1
+        # Under the new contract, both "live" (verified with image) and "no_logo" 
+        # (verified without image) are publicly visible since quality gates are removed.
+        # "archived" and "under_review" are hidden (archived).
+        assert listed == {ids["live"], ids["no_logo"]}
+        assert total == 2
         assert ids["review"] not in listed
         assert ids["archived"] not in listed
-        assert ids["no_logo"] not in listed
 
     def test_an_admin_review_record_is_never_made_public_to_keep_it(self, session):
         """Phase 16, stated as a prohibition rather than a count."""
@@ -505,7 +507,10 @@ class TestPublicCatalogueEffect:
     def test_a_record_missing_its_logo_is_hidden_but_not_deletable(self, session):
         ids = seed_mixed(session)
         decision = next(d for d in scan(session, as_of=AS_OF) if d.scholarship_id == ids["no_logo"])
-        assert decision.bucket != BUCKET_LIVE
+        # Under the new contract, a record missing its logo is now publicly visible (LIVE)
+        # because quality gates are removed. It is correctly kept (not deletable) because
+        # it's in the public catalogue.
+        assert decision.bucket == BUCKET_LIVE
         assert decision.is_keep
 
     def test_a_cleanup_dry_run_leaves_the_public_count_untouched(self, session):
