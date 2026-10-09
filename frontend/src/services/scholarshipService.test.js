@@ -1,9 +1,6 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { fetchScholarships, fetchScholarshipById, fetchScholarshipStats } from './scholarshipService.js'
-import { loadScholarshipSnapshot, clearSnapshotCache } from './staticScholarshipService.js'
-
-// Mock fetch globally
-global.fetch = vi.fn()
+import { clearSnapshotCache } from './staticScholarshipService.js'
 
 const mockSnapshot = {
   meta: {
@@ -97,10 +94,13 @@ describe('scholarshipService with snapshot fallback', () => {
   beforeEach(() => {
     clearSnapshotCache()
     vi.resetAllMocks()
+    // @ts-ignore - Vitest provides global fetch mock
+    globalThis.fetch = vi.fn()
   })
 
   it('returns API data when API succeeds', async () => {
-    global.fetch.mockResolvedValueOnce({
+    // @ts-ignore
+    globalThis.fetch.mockResolvedValueOnce({
       ok: true,
       json: async () => ({
         items: [{ id: 1, title: 'API Scholarship', country: 'USA' }],
@@ -115,7 +115,8 @@ describe('scholarshipService with snapshot fallback', () => {
   })
 
   it('falls back to snapshot when API fails', async () => {
-    global.fetch
+    // @ts-ignore
+    globalThis.fetch
       .mockRejectedValueOnce(new Error('API unavailable'))
       .mockResolvedValueOnce({
         ok: true,
@@ -129,7 +130,8 @@ describe('scholarshipService with snapshot fallback', () => {
   })
 
   it('filters scholarships by country from snapshot', async () => {
-    global.fetch
+    // @ts-ignore
+    globalThis.fetch
       .mockRejectedValueOnce(new Error('API unavailable'))
       .mockResolvedValueOnce({
         ok: true,
@@ -142,7 +144,8 @@ describe('scholarshipService with snapshot fallback', () => {
   })
 
   it('filters scholarships by search from snapshot', async () => {
-    global.fetch
+    // @ts-ignore
+    globalThis.fetch
       .mockRejectedValueOnce(new Error('API unavailable'))
       .mockResolvedValueOnce({
         ok: true,
@@ -155,7 +158,8 @@ describe('scholarshipService with snapshot fallback', () => {
   })
 
   it('filters scholarships by status from snapshot', async () => {
-    global.fetch
+    // @ts-ignore
+    globalThis.fetch
       .mockRejectedValueOnce(new Error('API unavailable'))
       .mockResolvedValueOnce({
         ok: true,
@@ -168,7 +172,8 @@ describe('scholarshipService with snapshot fallback', () => {
   })
 
   it('paginates results from snapshot', async () => {
-    global.fetch
+    // @ts-ignore
+    globalThis.fetch
       .mockRejectedValueOnce(new Error('API unavailable'))
       .mockResolvedValueOnce({
         ok: true,
@@ -181,7 +186,8 @@ describe('scholarshipService with snapshot fallback', () => {
   })
 
   it('sorts scholarships by deadline-earliest from snapshot', async () => {
-    global.fetch
+    // @ts-ignore
+    globalThis.fetch
       .mockRejectedValueOnce(new Error('API unavailable'))
       .mockResolvedValueOnce({
         ok: true,
@@ -195,7 +201,8 @@ describe('scholarshipService with snapshot fallback', () => {
   })
 
   it('sorts scholarships by name-asc from snapshot', async () => {
-    global.fetch
+    // @ts-ignore
+    globalThis.fetch
       .mockRejectedValueOnce(new Error('API unavailable'))
       .mockResolvedValueOnce({
         ok: true,
@@ -209,7 +216,8 @@ describe('scholarshipService with snapshot fallback', () => {
   })
 
   it('fetches scholarship by ID from snapshot when API fails', async () => {
-    global.fetch
+    // @ts-ignore
+    globalThis.fetch
       .mockRejectedValueOnce(new Error('API unavailable'))
       .mockResolvedValueOnce({
         ok: true,
@@ -222,7 +230,8 @@ describe('scholarshipService with snapshot fallback', () => {
   })
 
   it('throws 404 when scholarship not found in snapshot', async () => {
-    global.fetch
+    // @ts-ignore
+    globalThis.fetch
       .mockRejectedValueOnce(new Error('API unavailable'))
       .mockResolvedValueOnce({
         ok: true,
@@ -233,7 +242,8 @@ describe('scholarshipService with snapshot fallback', () => {
   })
 
   it('fetches stats from snapshot when API fails', async () => {
-    global.fetch
+    // @ts-ignore
+    globalThis.fetch
       .mockRejectedValueOnce(new Error('API unavailable'))
       .mockResolvedValueOnce({
         ok: true,
@@ -248,7 +258,8 @@ describe('scholarshipService with snapshot fallback', () => {
   })
 
   it('does not expose internal fields from snapshot', async () => {
-    global.fetch
+    // @ts-ignore
+    globalThis.fetch
       .mockRejectedValueOnce(new Error('API unavailable'))
       .mockResolvedValueOnce({
         ok: true,

@@ -122,7 +122,7 @@ function dedupe(key, run, signal) {
    The snapshot is loaded once and cached in memory. Filtering, pagination,
    and sorting are performed client-side on the full dataset. */
 
-import { loadScholarshipSnapshot, getCachedSnapshot } from './staticScholarshipService.js'
+import { loadScholarshipSnapshot } from './staticScholarshipService.js'
 
 function filterScholarships(scholarships, query) {
   let filtered = [...scholarships]
