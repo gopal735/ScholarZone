@@ -292,25 +292,12 @@ class TestMatchEndpoint:
         assert result["data_coverage"] > 0
         assert result["detail_url"].startswith("/scholarships/")
 
-    def test_quarantined_and_archived_records_are_never_returned(self, client):
+    def test_quarantined_archived_and_closed_records_are_never_returned(self, client):
         payload = client.post("/scholarships/match", json=HIGH_PROFILE).json()
         names = {result["scholarship_name"] for result in payload["results"]}
         assert "Quarantined Scholarship" not in names
         assert "Archived Scholarship" not in names
-
-    def test_closed_round_is_ineligible_and_sorts_into_the_ineligible_tail(self, client):
-        payload = client.post("/scholarships/match", json=HIGH_PROFILE).json()
-        results = payload["results"]
-        closed = next(item for item in results if item["scholarship_name"] == "Closed Round Scholarship")
-        assert closed["eligibility"] == "INELIGIBLE"
-        assert closed["fit_label"] == "INELIGIBLE"
-
-        # Every ineligible record is at the tail, so nothing that passed the gate
-        # is pushed below something that failed it.
-        eligible_indexes = [index for index, item in enumerate(results) if item["eligibility"] != "INELIGIBLE"]
-        ineligible_indexes = [index for index, item in enumerate(results) if item["eligibility"] == "INELIGIBLE"]
-        if eligible_indexes and ineligible_indexes:
-            assert max(eligible_indexes) < min(ineligible_indexes)
+        assert "Closed Round Scholarship" not in names
 
     def test_eligible_records_rank_before_everything_else(self, client):
         payload = client.post("/scholarships/match", json=HIGH_PROFILE).json()
