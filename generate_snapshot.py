@@ -53,6 +53,26 @@ def generate_snapshot(db_path: str, output_path: str) -> dict[str, Any]:
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 
+    # Calculate all counts from the actual database
+    cursor.execute("SELECT COUNT(*) FROM scholarships")
+    source_record_count = cursor.fetchone()[0]
+
+    cursor.execute("SELECT COUNT(*) FROM scholarships WHERE status = 'closed'")
+    closed_count = cursor.fetchone()[0]
+
+    cursor.execute("SELECT COUNT(*) FROM scholarships WHERE is_archived = 1")
+    archived_count = cursor.fetchone()[0]
+
+    cursor.execute("SELECT COUNT(*) FROM scholarships WHERE verification_status = 'quarantined'")
+    quarantined_count = cursor.fetchone()[0]
+
+    # Excluded union (accounting for overlaps)
+    cursor.execute("""
+        SELECT COUNT(*) FROM scholarships 
+        WHERE status = 'closed' OR is_archived = 1 OR verification_status = 'quarantined'
+    """)
+    excluded_union = cursor.fetchone()[0]
+
     # Canonical public visibility predicate
     cursor.execute("""
         SELECT * FROM scholarships 
@@ -146,13 +166,14 @@ def generate_snapshot(db_path: str, output_path: str) -> dict[str, Any]:
         "meta": {
             "generated_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
             "source_database": Path(db_path).name,
-            "source_record_count": 695,  # Total in DB
+            "source_record_count": source_record_count,
             "public_record_count": total,
             "excluded": {
-                "closed": 12,  # From audit
-                "archived": 49,  # From audit
-                "quarantined": 47,  # From audit
+                "closed": closed_count,
+                "archived": archived_count,
+                "quarantined": quarantined_count,
             },
+            "excluded_union": excluded_union,
             "schema_version": "1.0",
             "visibility_predicate": "status != closed AND is_archived = false AND verification_status != quarantined",
         },

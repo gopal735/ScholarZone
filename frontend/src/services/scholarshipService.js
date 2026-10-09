@@ -17,6 +17,25 @@ function normalizeScholarship(scholarship) {
   }
 }
 
+/**
+ * Determines if an error should trigger the static snapshot fallback.
+ * Fallback ONLY for:
+ * - Network failures (TypeError, fetch aborted)
+ * - HTTP 5xx server errors (500, 502, 503, 504)
+ * NO fallback for 4xx client errors (400, 401, 403, 404, 422, etc.)
+ */
+function shouldFallbackToSnapshot(error) {
+  // Network failures (offline, DNS, connection refused, etc.)
+  if (error instanceof TypeError || error instanceof DOMException) {
+    return true
+  }
+  // Our custom API error with status
+  if (error instanceof ScholarshipApiError) {
+    return error.status >= 500 && error.status < 600
+  }
+  return false
+}
+
 async function request(path, searchParams, { signal } = {}) {
   const url = new URL(`${apiBaseUrl}${path}`, window.location.origin)
 
@@ -114,10 +133,14 @@ function dedupe(key, run, signal) {
 }
 
 /* ── Static snapshot fallback ──────────────────────────────────────────
-   When the API is unavailable (e.g., database quota exceeded), we fall back
-   to the version-controlled JSON snapshot. The snapshot contains all public
-   scholarships (634 records) and stats, filtered by the canonical visibility
-   predicate (excludes closed, archived, quarantined).
+   When the API is unavailable due to a server error (5xx) or network failure,
+   we fall back to the version-controlled JSON snapshot. The snapshot contains
+   all public scholarships (634 records) and stats, filtered by the canonical
+   visibility predicate (excludes closed, archived, quarantined).
+   
+   CRITICAL: We do NOT fall back on 4xx errors (400, 401, 403, 404, 422).
+   A stale snapshot must never resurrect a scholarship that the live API
+   says is hidden, invalid, or unavailable.
    
    The snapshot is loaded once and cached in memory. Filtering, pagination,
    and sorting are performed client-side on the full dataset. */
@@ -263,6 +286,19 @@ function paginate(scholarships, page, limit) {
   return { items, pagination: { page, limit, total, total_pages } }
 }
 
+async function tryApiThenSnapshot(key, send, fallbackFn, options) {
+  try {
+    return await dedupe(key, send, options?.signal)
+  } catch (apiError) {
+    if (!shouldFallbackToSnapshot(apiError)) {
+      throw apiError
+    }
+    // Fall back to static snapshot for 5xx or network failures
+    console.warn('API unavailable (5xx/network), falling back to static snapshot:', apiError.message)
+    return await fallbackFn()
+  }
+}
+
 export async function fetchScholarships(query = {}, options) {
   const key = `list:${JSON.stringify(query, Object.keys(query).sort())}`
   
@@ -274,12 +310,7 @@ export async function fetchScholarships(query = {}, options) {
       source: 'api',
     }))
 
-  try {
-    return await dedupe(key, send, options?.signal)
-  } catch (apiError) {
-    // Fall back to static snapshot
-    console.warn('API unavailable, falling back to static snapshot:', apiError.message)
-    
+  const fallbackFn = async () => {
     const snapshot = await loadScholarshipSnapshot()
     const allScholarships = snapshot.scholarships || []
     
@@ -294,34 +325,43 @@ export async function fetchScholarships(query = {}, options) {
       snapshot_meta: snapshot.meta,
     }
   }
+
+  return tryApiThenSnapshot(key, send, fallbackFn, options)
 }
 
 export async function fetchScholarshipById(id, options) {
-  try {
-    const payload = await request(`/scholarships/${encodeURIComponent(id)}`, undefined, options)
-    return normalizeScholarship(payload)
-  } catch (apiError) {
-    // Fall back to static snapshot
-    console.warn('API unavailable, falling back to static snapshot for detail:', apiError.message)
-    
+  const key = `detail:${id}`
+  
+  const send = () =>
+    request(`/scholarships/${encodeURIComponent(id)}`, undefined, options)
+      .then(normalizeScholarship)
+
+  const fallbackFn = async () => {
     const snapshot = await loadScholarshipSnapshot()
     const scholarship = (snapshot.scholarships || []).find(s => s.id === id)
     
+    // CRITICAL: A stale snapshot must never resurrect a scholarship
+    // that the live API says is hidden or unavailable.
+    // If the API returned 404, we don't fall back - we propagate the 404.
+    // This fallback only runs for 5xx/network errors, so by definition
+    // the live API couldn't give us a definitive 404.
     if (!scholarship) {
-      throw new ScholarshipApiError('Scholarship not found', 404)
+      throw new ScholarshipApiError('Scholarship not found in snapshot', 404)
     }
     
     return normalizeScholarship({ ...scholarship, _source: 'snapshot' })
   }
+
+  return tryApiThenSnapshot(key, send, fallbackFn, options)
 }
 
 export async function fetchScholarshipStats(options) {
-  try {
-    return await dedupe('stats', () => request('/scholarships/stats'), options?.signal)
-  } catch (apiError) {
-    // Fall back to static snapshot
-    console.warn('API unavailable, falling back to static snapshot for stats:', apiError.message)
-    
+  const key = 'stats'
+  
+  const send = () =>
+    request('/scholarships/stats', undefined, options)
+
+  const fallbackFn = async () => {
     const snapshot = await loadScholarshipSnapshot()
     return {
       ...snapshot.stats,
@@ -329,4 +369,6 @@ export async function fetchScholarshipStats(options) {
       snapshot_meta: snapshot.meta,
     }
   }
+
+  return tryApiThenSnapshot(key, send, fallbackFn, options)
 }
