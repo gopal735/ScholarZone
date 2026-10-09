@@ -113,24 +113,220 @@ function dedupe(key, run, signal) {
   })
 }
 
+/* ── Static snapshot fallback ──────────────────────────────────────────
+   When the API is unavailable (e.g., database quota exceeded), we fall back
+   to the version-controlled JSON snapshot. The snapshot contains all public
+   scholarships (634 records) and stats, filtered by the canonical visibility
+   predicate (excludes closed, archived, quarantined).
+   
+   The snapshot is loaded once and cached in memory. Filtering, pagination,
+   and sorting are performed client-side on the full dataset. */
+
+import { loadScholarshipSnapshot, getCachedSnapshot } from './staticScholarshipService.js'
+
+function filterScholarships(scholarships, query) {
+  let filtered = [...scholarships]
+
+  // Search filter
+  if (query.search) {
+    const search = query.search.toLowerCase()
+    filtered = filtered.filter(s =>
+      (s.title?.toLowerCase().includes(search)) ||
+      (s.description?.toLowerCase().includes(search)) ||
+      (s.country?.toLowerCase().includes(search)) ||
+      (s.degree?.toLowerCase().includes(search)) ||
+      (s.funding?.toLowerCase().includes(search))
+    )
+  }
+
+  // Country filter
+  if (query.country) {
+    const country = query.country.toLowerCase()
+    filtered = filtered.filter(s => s.country?.toLowerCase() === country)
+  }
+
+  // Degree filter
+  if (query.degree) {
+    const degree = query.degree.toLowerCase()
+    filtered = filtered.filter(s => s.degree?.toLowerCase() === degree)
+  }
+
+  // Funding filter
+  if (query.funding) {
+    const funding = query.funding.toLowerCase()
+    filtered = filtered.filter(s => s.funding?.toLowerCase() === funding)
+  }
+
+  // Deadline month filter
+  if (query.deadline_month) {
+    filtered = filtered.filter(s => {
+      if (!s.deadline_date) return false
+      const month = new Date(s.deadline_date).getMonth() + 1
+      return month === query.deadline_month
+    })
+  }
+
+  // Status filter
+  if (query.status) {
+    filtered = filtered.filter(s => s.status === query.status)
+  }
+
+  return filtered
+}
+
+function sortScholarships(scholarships, sort) {
+  const sorted = [...scholarships]
+
+  const nullDeadlineLast = (a, b) => {
+    const aNull = !a.deadline_date
+    const bNull = !b.deadline_date
+    if (aNull && !bNull) return 1
+    if (!aNull && bNull) return -1
+    return 0
+  }
+
+  switch (sort) {
+    case 'recommended':
+      sorted.sort((a, b) => {
+        // Verified first
+        if (a.verified !== b.verified) return b.verified - a.verified
+        // Status priority: open > closing-soon > others
+        const statusOrder = { open: 0, 'closing-soon': 1 }
+        const aStatus = statusOrder[a.status] ?? 2
+        const bStatus = statusOrder[b.status] ?? 2
+        if (aStatus !== bStatus) return aStatus - bStatus
+        // Recently updated
+        return new Date(b.updated_at) - new Date(a.updated_at)
+      })
+      break
+    case 'recently-added':
+      sorted.sort((a, b) => new Date(b.created_at || b.updated_at) - new Date(a.created_at || a.updated_at))
+      break
+    case 'recently-updated':
+      sorted.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
+      break
+    case 'deadline-soon':
+      sorted.sort((a, b) => {
+        const nullFirst = nullDeadlineLast(a, b)
+        if (nullFirst !== 0) return nullFirst
+        return new Date(a.deadline_date) - new Date(b.deadline_date)
+      })
+      break
+    case 'fully-funded':
+      sorted.sort((a, b) => {
+        const aFully = a.funding?.toLowerCase().includes('fully funded') && !a.funding?.toLowerCase().includes('partial')
+        const bFully = b.funding?.toLowerCase().includes('fully funded') && !b.funding?.toLowerCase().includes('partial')
+        if (aFully !== bFully) return bFully - aFully
+        return new Date(b.updated_at) - new Date(a.updated_at)
+      })
+      break
+    case 'deadline-earliest':
+      sorted.sort((a, b) => {
+        const nullFirst = nullDeadlineLast(a, b)
+        if (nullFirst !== 0) return nullFirst
+        return new Date(a.deadline_date) - new Date(b.deadline_date)
+      })
+      break
+    case 'deadline-latest':
+      sorted.sort((a, b) => {
+        const nullFirst = nullDeadlineLast(a, b)
+        if (nullFirst !== 0) return nullFirst
+        return new Date(b.deadline_date) - new Date(a.deadline_date)
+      })
+      break
+    case 'name-asc':
+      sorted.sort((a, b) => a.title.localeCompare(b.title))
+      break
+    case 'name-desc':
+      sorted.sort((a, b) => b.title.localeCompare(a.title))
+      break
+    default:
+      // default = recommended
+      sorted.sort((a, b) => {
+        if (a.verified !== b.verified) return b.verified - a.verified
+        const statusOrder = { open: 0, 'closing-soon': 1 }
+        const aStatus = statusOrder[a.status] ?? 2
+        const bStatus = statusOrder[b.status] ?? 2
+        if (aStatus !== bStatus) return aStatus - bStatus
+        return new Date(b.updated_at) - new Date(a.updated_at)
+      })
+  }
+
+  return sorted
+}
+
+function paginate(scholarships, page, limit) {
+  const total = scholarships.length
+  const total_pages = Math.ceil(total / limit) || 0
+  const offset = (page - 1) * limit
+  const items = scholarships.slice(offset, offset + limit)
+  return { items, pagination: { page, limit, total, total_pages } }
+}
+
 export async function fetchScholarships(query = {}, options) {
-  // The key is the resolved query, so two callers asking for the same page
-  // share a request and two callers asking for different pages do not.
   const key = `list:${JSON.stringify(query, Object.keys(query).sort())}`
+  
+  // Try API first
   const send = () =>
     request('/scholarships', query).then((payload) => ({
       items: Array.isArray(payload.items) ? payload.items.map(normalizeScholarship) : [],
       pagination: payload.pagination,
+      source: 'api',
     }))
 
-  return dedupe(key, send, options?.signal)
+  try {
+    return await dedupe(key, send, options?.signal)
+  } catch (apiError) {
+    // Fall back to static snapshot
+    console.warn('API unavailable, falling back to static snapshot:', apiError.message)
+    
+    const snapshot = await loadScholarshipSnapshot()
+    const allScholarships = snapshot.scholarships || []
+    
+    let filtered = filterScholarships(allScholarships, query)
+    filtered = sortScholarships(filtered, query.sort || 'default')
+    const result = paginate(filtered, query.page || 1, query.limit || 12)
+    
+    return {
+      items: result.items.map(normalizeScholarship),
+      pagination: result.pagination,
+      source: 'snapshot',
+      snapshot_meta: snapshot.meta,
+    }
+  }
 }
 
 export async function fetchScholarshipById(id, options) {
-  const payload = await request(`/scholarships/${encodeURIComponent(id)}`, undefined, options)
-  return normalizeScholarship(payload)
+  try {
+    const payload = await request(`/scholarships/${encodeURIComponent(id)}`, undefined, options)
+    return normalizeScholarship(payload)
+  } catch (apiError) {
+    // Fall back to static snapshot
+    console.warn('API unavailable, falling back to static snapshot for detail:', apiError.message)
+    
+    const snapshot = await loadScholarshipSnapshot()
+    const scholarship = (snapshot.scholarships || []).find(s => s.id === id)
+    
+    if (!scholarship) {
+      throw new ScholarshipApiError('Scholarship not found', 404)
+    }
+    
+    return normalizeScholarship({ ...scholarship, _source: 'snapshot' })
+  }
 }
 
 export async function fetchScholarshipStats(options) {
-  return dedupe('stats', () => request('/scholarships/stats'), options?.signal)
+  try {
+    return await dedupe('stats', () => request('/scholarships/stats'), options?.signal)
+  } catch (apiError) {
+    // Fall back to static snapshot
+    console.warn('API unavailable, falling back to static snapshot for stats:', apiError.message)
+    
+    const snapshot = await loadScholarshipSnapshot()
+    return {
+      ...snapshot.stats,
+      source: 'snapshot',
+      snapshot_meta: snapshot.meta,
+    }
+  }
 }
