@@ -370,12 +370,18 @@ class TestCanonicalPredicateReuse:
         assert live.id in classified
 
     def test_a_record_missing_its_logo_is_not_live_but_is_not_deletable(self, session):
-        """The image gate hides; it does not make a record junk."""
+        """The image gate hides; it does not make a record junk.
+
+        Under the new contract, quality gates are removed from public visibility.
+        A record with no image is now publicly visible (LIVE) and correctly kept.
+        """
         row = make_live(
             session, image_url=None, image_verified_at=None, title="No Logo Programme"
         )
         decision = next(d for d in scan(session, as_of=AS_OF) if d.scholarship_id == row.id)
-        assert decision.bucket != BUCKET_LIVE
+        # With quality gates removed, the record is now LIVE (publicly visible)
+        # and correctly kept because it's in the public catalogue.
+        assert decision.bucket == BUCKET_LIVE
         assert decision.is_keep
 
     def test_admin_review_covers_both_review_surfaces(self, session):
@@ -782,6 +788,7 @@ class TestConcurrencySafety:
             # from being deleted while its stored clocks look deletable.
             "became_live": lambda row: (
                 setattr(row, "is_archived", False),
+                setattr(row, "status", "open"),
                 setattr(row, "is_verified", True),
                 setattr(row, "verification_status", "active"),
                 setattr(row, "image_url", "https://old.test/logo.png"),

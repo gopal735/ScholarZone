@@ -3,10 +3,8 @@
 from sqlalchemy import case, func, or_, select
 from sqlalchemy.orm import Session
 
-from ..core.config import get_settings
 from ..models import Scholarship
 from ..schemas import ScholarshipQuery, ScholarshipSort
-from ..verification_contract import AUTHORITATIVE_VERIFIED_STATUS
 
 
 def _normalise_optional_filter(value: str | None) -> str | None:

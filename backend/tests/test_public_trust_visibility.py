@@ -27,9 +27,9 @@ _seq = iter(range(1, 10_000))
 
 @pytest.fixture()
 def session_factory(monkeypatch):
-    import app.repositories.scholarships as repo
+    from app.core.config import get_settings
 
-    real = repo.get_settings()
+    real = get_settings()
 
     class _S:
         public_require_verified = False
@@ -37,9 +37,9 @@ def session_factory(monkeypatch):
         public_allow_third_party_image = False
 
         def __getattr__(self, k):
-            return getattr(repo.get_settings(), k)
+            return getattr(real, k)
 
-    monkeypatch.setattr(repo, "get_settings", lambda: _S())
+    monkeypatch.setattr("app.core.config.get_settings", lambda: _S())
     engine = create_engine("sqlite://")
     Base.metadata.create_all(engine)
     return sessionmaker(bind=engine)
