@@ -53,31 +53,12 @@ def public_visibility_conditions() -> list:
       These are excluded from the public catalogue.
     * ``verification_status == "quarantined"`` is a security/safety exclusion.
       Quarantined records represent a genuine safety concern and remain hidden.
-    * Optional quality gates (off by default): verification and image gates.
-      These can be enabled via configuration for stricter public listing.
     """
-    settings = get_settings()
     conditions = [
         Scholarship.verification_status != "quarantined",
         Scholarship.is_archived.is_(False),
         Scholarship.status != "closed",
     ]
-
-    if settings.public_require_verified:
-        conditions.append(
-            Scholarship.verification_status == AUTHORITATIVE_VERIFIED_STATUS
-        )
-
-    if settings.public_require_verified_image:
-        conditions.append(Scholarship.image_url.isnot(None))
-        conditions.append(Scholarship.image_verified_at.isnot(None))
-        if not settings.public_allow_third_party_image:
-            conditions.append(
-                or_(
-                    Scholarship.image_source_type != "wikimedia",
-                    Scholarship.image_source_type.is_(None),
-                )
-            )
 
     return conditions
 

@@ -131,8 +131,8 @@ def get_settings() -> Settings:
         # administrator. The existing secret is reused rather than replaced: no
         # new credential, no rotation, and nothing printed or committed. An
         # explicitly provided SCHOLARZONE_ADMIN_SECRET still takes precedence.
-admin_secret=os.getenv("SCHOLARZONE_ADMIN_SECRET")
-          or os.getenv("SCHOLARZONE_VERIFICATION_SECRET"),
+        admin_secret=os.getenv("SCHOLARZONE_ADMIN_SECRET")
+            or os.getenv("SCHOLARZONE_VERIFICATION_SECRET"),
         public_require_verified=_as_bool(
             os.getenv("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED"), False
         ),
