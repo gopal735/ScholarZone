@@ -467,7 +467,6 @@ function OutreachTracker({ scholarshipId, trackedIds, onChanged }) {
 export default function SupervisorPanel({ scholarshipId, initialState = 'loading' }) {
   const [state, setState] = useState(initialState)
   const [payload, setPayload] = useState(null)
-  const [error, setError] = useState(null)
   const [trackedIds, setTrackedIds] = useState(() => new Set())
   const [interestsInput, setInterestsInput] = useState(() => readInterests().join(', '))
 
@@ -482,11 +481,23 @@ export default function SupervisorPanel({ scholarshipId, initialState = 'loading
       try {
         const result = await fetchSupervisors(scholarshipId, { interests, signal })
         setPayload(result)
-        setError(null)
         setState('ready')
       } catch (caught) {
         if (caught.name === 'AbortError') return
-        setError(caught.message || 'Could not load supervisor information.')
+        /* The reader gets a sentence, not the exception.
+
+           The deployed API answers a request whose service is down by returning
+           the app's own HTML with status 200, so the failure a student actually
+           sees is `Unexpected token '<', "<!doctype "... is not valid JSON`.
+           Rendering that names a parser and quotes their HTML at them, which is
+           alarming, meaningless, and a hint about the infrastructure rather than
+           an explanation. The explanation is that one optional lookup did not
+           answer - which is also what the panel says, and the scholarship
+           record is unaffected either way.
+
+           The technical detail is still recorded, to the console, so it remains
+           available to whoever is debugging without being part of the page. */
+        console.warn('Supervisor lookup failed for scholarship', scholarshipId, caught)
         setState('error')
       }
     },
@@ -502,12 +513,13 @@ export default function SupervisorPanel({ scholarshipId, initialState = 'loading
     fetchSupervisors(scholarshipId, { interests: readInterests(), signal: controller.signal })
       .then((result) => {
         setPayload(result)
-        setError(null)
         setState('ready')
       })
       .catch((caught) => {
         if (caught.name === 'AbortError') return
-        setError(caught.message || 'Could not load supervisor information.')
+        // Same reasoning as runFetch: a sentence for the reader, the detail for
+        // the console.
+        console.warn('Supervisor lookup failed for scholarship', scholarshipId, caught)
         setState('error')
       })
     return () => controller.abort()
@@ -588,7 +600,9 @@ export default function SupervisorPanel({ scholarshipId, initialState = 'loading
 
       {state === 'error' ? (
         <p className="sz-supervisor-panel__state sz-supervisor-panel__state--error" role="alert">
-          Supervisor information is unavailable right now. {error}
+          Supervisor information is unavailable right now. The scholarship details above are not
+          affected — this panel looks up published faculty information separately, and that lookup
+          did not succeed.
         </p>
       ) : null}
 

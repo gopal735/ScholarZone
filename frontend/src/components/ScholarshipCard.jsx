@@ -2,7 +2,6 @@ import { useCallback, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import ScholarshipImage from './ScholarshipImage'
 import ScholarshipActions from './ScholarshipActions'
-import SupervisorCta from './SupervisorCta'
 import { getDeadlineLabel, getLastVerifiedLabel, getScholarshipStatus } from '../utils/scholarshipPresentation'
 import './ScholarshipCard.css'
 
@@ -140,7 +139,13 @@ export default function ScholarshipCard({ scholarship }) {
       </dl>
 
       <div className="scholarship-card__footer">
-        <SupervisorCta scholarshipId={scholarship.id} />
+        {/* No supervisor teaser here. It cost one database request per card -
+            twelve per directory page, a hundred on a country page - for a count
+            the detail page already shows in full through SupervisorPanel. The
+            public catalogue is served from the bundled snapshot precisely so
+            that browsing does not reach the database, and a grid of cards that
+            each make a request is the opposite of that. The detail page keeps
+            the complete picture. */}
         <ScholarshipActions scholarshipId={scholarship.id} />
         <Link to={`/scholarships/${scholarship.id}`} className="scholarship-card__button">
           View details <span aria-hidden="true">&rarr;</span>

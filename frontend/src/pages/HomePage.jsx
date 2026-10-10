@@ -329,7 +329,7 @@ export default function HomePage() {
 
       {isUsingFallback && (
         <div className="sz-home__fallback-notice" role="status">
-          <span>⚠️ Live directory unavailable — showing local data.</span>
+          <span>⚠️ Catalogue snapshot unavailable — showing directory data.</span>
         </div>
       )}
 

@@ -223,6 +223,40 @@ describe('SupervisorPanel states', () => {
     expect(screen.getByText(/unavailable right now/i)).toBeTruthy()
   })
 
+  it('does not quote a backend parse error at the reader', async () => {
+    /* Found on the live deploy preview. When the API's host is serving the SPA
+       rather than the backend, a request to it answers 200 with the app's own
+       index.html, so `response.json()` throws `Unexpected token '<', "<!doctype
+       "... is not valid JSON`. That message was rendered into the page verbatim:
+       it names a parser, quotes the reader's HTML at them, and says nothing
+       about what actually failed - which is one optional lookup, not the
+       scholarship they are reading. */
+
+    const parseFailure = Object.assign(new Error('Unexpected token \'<\', "<!doctype "... is not valid JSON'), {
+      name: 'SyntaxError',
+    })
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {})
+
+    mockFetch(async () => {
+      throw parseFailure
+    })
+
+    renderPanel({ scholarshipId: 7 })
+
+    const alert = await screen.findByRole('alert')
+    expect(alert.textContent).toMatch(/unavailable right now/i)
+
+    // The detail this panel is about is on the same page, and a failure here
+    // must not read as though it went missing.
+    expect(alert.textContent).toMatch(/scholarship details above are not affected/i)
+    expect(alert.textContent).not.toMatch(/doctype/i)
+    expect(alert.textContent).not.toMatch(/Unexpected token/i)
+
+    // The technical detail is kept for whoever is debugging, not for the reader.
+    expect(warn).toHaveBeenCalled()
+    warn.mockRestore()
+  })
+
   it('shows a loading state before any response arrives', () => {
     mockFetch(() => new Promise(() => {}))
 

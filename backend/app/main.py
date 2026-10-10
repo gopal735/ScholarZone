@@ -35,6 +35,7 @@ from .routers.supervisor_internal import router as supervisor_internal_router
 from .routers.outreach import router as outreach_router
 from .routers.supervisor_email import router as supervisor_email_router
 from .routers.countries import router as countries_router
+from .routers.scholarships_static import router as scholarships_static_router
 from .services.application_workspace import WorkspaceError
 from .seed import seed_database
 
@@ -311,6 +312,10 @@ app.include_router(counts_router)
 # registering it first makes that independence structural rather than dependent on
 # scan order.
 app.include_router(supervisors_router)
+# The static snapshot router is registered before the scholarships router so its
+# literal /scholarships/snapshot paths are resolved by their own router rather than
+# being captured by the dynamic /scholarships/{scholarship_id} route.
+app.include_router(scholarships_static_router)
 app.include_router(scholarships_router)
 app.include_router(verification_router)
 app.include_router(admin_image_review_router)

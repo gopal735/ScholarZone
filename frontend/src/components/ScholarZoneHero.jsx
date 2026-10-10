@@ -17,8 +17,13 @@ const CAN_TILT =
 const MAX_PREVIEW = 4
 
 function LiveDataIndicator({ count, countries, fullyFunded, verified }) {
+  /* "Catalogue figures", not "Live directory figures". These numbers come from
+     the bundled snapshot - the same figures the provenance notice discloses -
+     and the label is what a screen-reader user hears first. Saying "live" here
+     claimed a freshness that could not be shown, on the surface where the claim
+     is least visible. */
   return (
-    <dl className="sz-hero__stats" aria-label="Live directory figures">
+    <dl className="sz-hero__stats" aria-label="Scholarship catalogue figures">
       <div className="sz-hero__stat">
         <dt>Opportunities</dt>
         <dd>{count}</dd>
@@ -248,12 +253,12 @@ export default function ScholarZoneHero() {
               )}
               {isUsingFallback && (
                 <p className="sz-hero__fallback-notice" role="status">
-                  ⚠️ Live directory unavailable — showing local data.
+                  ⚠️ Catalogue snapshot unavailable — showing directory data.
                 </p>
               )}
               {!stats && !statsLoading && !isUsingFallback && (
                 <p className="sz-hero__fallback-notice" role="status">
-                  ⚠️ Live stats unavailable — showing directory data.
+                  ⚠️ Catalogue statistics unavailable — showing directory data.
                 </p>
               )}
             </>
