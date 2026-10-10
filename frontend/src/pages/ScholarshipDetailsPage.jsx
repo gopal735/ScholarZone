@@ -1,6 +1,7 @@
 import { Children, useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import ScholarshipActions from '../components/ScholarshipActions'
+import CatalogueSourceNotice from '../components/CatalogueSourceNotice'
 import SupervisorPanel from '../components/SupervisorPanel'
 import { fetchScholarshipById, ScholarshipApiError } from '../services/scholarshipService'
 import { useScholarshipDirectory } from '../hooks/useScholarshipDirectory'
@@ -172,6 +173,7 @@ export default function ScholarshipDetailsPage() {
   const [loadState, setLoadState] = useState('loading')
   const [retryVersion, setRetryVersion] = useState(0)
   const [imageFailed, setImageFailed] = useState(false)
+  const [catalogueMeta, setCatalogueMeta] = useState(null)
   const requestIdRef = useRef(0)
   const { scholarships: allScholarships } = useScholarshipDirectory()
   const scholarshipId = Number(id)
@@ -194,6 +196,9 @@ export default function ScholarshipDetailsPage() {
         .then((response) => {
           if (controller.signal.aborted || requestId !== requestIdRef.current) return
           setScholarship(response)
+          // Kept separately from the record so the record itself stays the
+          // public schema, and so the provenance notice can read it directly.
+          setCatalogueMeta(response.snapshot_meta ?? null)
           setLoadState('success')
         })
         .catch((error) => {
@@ -208,6 +213,11 @@ export default function ScholarshipDetailsPage() {
           // at all. A successful API response is never overwritten.
           if (localScholarship) {
             setScholarship(localScholarship)
+            // No metadata is available here - this record came from the
+            // directory's in-memory list rather than from a response, so the
+            // notice is left to the explicit trust note below rather than
+            // asserting provenance it cannot evidence.
+            setCatalogueMeta(null)
             setLoadState('fallback')
             return
           }
@@ -347,6 +357,11 @@ export default function ScholarshipDetailsPage() {
 
   const showTrustNote = loadState === 'fallback'
   const providerName = readText(scholarship?.official_source)
+  // The provenance notice is driven by the response, not by a flag: if the
+  // snapshot's metadata is present then this record came from the snapshot,
+  // and it should be disclosed as such on the page where a student acts on a
+  // deadline. Without metadata there is nothing to disclose, so it stays out.
+  const isSnapshotRecord = Boolean(catalogueMeta) || scholarship?._source === 'snapshot'
 
   const related = allScholarships
     .filter((item) => item.id !== scholarshipId && (
@@ -427,6 +442,15 @@ const bestFit = readText(scholarship.best_fit)
   return (
     <article className="sz-detail">
       <BackToDirectory />
+
+      {/* Provenance first, before anything the reader might act on. The
+          catalogue is served from a static snapshot, which is what keeps it
+          available on a free tier - but this is the page where a deadline is
+          read and relied on, so it is the page that has to say the data is
+          not live and point at the official source. */}
+      {isSnapshotRecord && (
+        <CatalogueSourceNotice source="snapshot" meta={catalogueMeta} />
+      )}
 
       {showTrustNote && (
         <p className="sz-detail__notice" role="status">

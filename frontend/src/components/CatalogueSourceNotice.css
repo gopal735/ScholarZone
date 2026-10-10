@@ -1,0 +1,62 @@
+/* =========================================================
+   CatalogueSourceNotice — provenance disclosure for the
+   static snapshot that serves the public catalogue.
+
+   A quiet informational block, not an alert. It is not an
+   error state - the catalogue is meant to work this way on
+   a free tier - so it is deliberately styled as ordinary
+   page content rather than as something broken.
+   ========================================================= */
+
+.catalogue-source-notice {
+  --notice-border: var(--border);
+
+  margin: 0 0 28px;
+  padding: 18px 22px;
+  background: var(--surface);
+  border: 1px solid var(--notice-border);
+  border-left: 3px solid var(--accent-border, var(--notice-border));
+  border-radius: var(--radius-md);
+}
+
+.catalogue-source-notice__title {
+  margin: 0 0 10px;
+  font-size: 0.95rem;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  color: var(--text-primary, var(--text, inherit));
+}
+
+.catalogue-source-notice__body {
+  margin: 0 0 10px;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--text-secondary, var(--text, inherit));
+}
+
+.catalogue-source-notice__body:last-child {
+  margin-bottom: 0;
+}
+
+.catalogue-source-notice__body strong {
+  font-weight: 600;
+  color: var(--text-primary, var(--text, inherit));
+}
+
+.catalogue-source-notice__body--muted {
+  font-size: 0.8125rem;
+  color: var(--text-muted, var(--text-secondary, var(--text, inherit)));
+}
+
+/* The official-source link is the actionable part of this notice, so it keeps
+   a clear focus ring rather than inheriting a suppressed one. */
+.catalogue-source-notice a:focus-visible {
+  outline: 2px solid var(--accent-border, currentColor);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .catalogue-source-notice {
+    transition: none;
+  }
+}
