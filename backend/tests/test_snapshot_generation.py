@@ -64,6 +64,7 @@ COLUMN_DEFINITIONS = {
     "deadline_precision": "VARCHAR(20)",
     "status": "VARCHAR(20) NOT NULL",
     "is_verified": "BOOLEAN",
+    "created_at": "DATETIME NOT NULL",
     "last_verified_at": "DATE",
     "verification_status": "TEXT NOT NULL",
     "official_source_url": "VARCHAR(500)",
@@ -154,6 +155,10 @@ def base_row(**overrides):
         "official_source_url": "https://example.org/1",
         "official_source": "Example University",
         "updated_at": "2026-10-01 12:00:00",
+        # Distinct from updated_at. Several tests would otherwise be unable to
+        # tell a recent-add ordering from a recent-update ordering, because
+        # there would be nothing to tell them apart.
+        "created_at": "2026-08-01 12:00:00",
         "image_url": "https://example.org/1.png",
         "image_source_type": "official_university",
         "image_kind": "official_logo",
@@ -703,3 +708,423 @@ def test_the_committed_snapshot_matches_the_documented_public_contract(
         1 for record in snapshot["scholarships"] if record["verified"] is True
     )
     assert stats["total"] == len(snapshot["scholarships"])
+
+
+# ── Sort orderings ───────────────────────────────────────────────────────
+#
+# Two of the repository's sort keys are not public fields: `recently-added`
+# orders by `created_at`, and `recommended` (and `default`) order by the legacy
+# `is_verified` boolean. The snapshot therefore carries the orderings as ID
+# lists computed with the repository's own SQL. These tests pin that the
+# orderings are generated, that they cover exactly the public set, and that they
+# agree with the SQL the repository would run - not with a restatement of it.
+
+
+def _db_order(cursor, where: str, expressions) -> list[int]:
+    """Run the repository's ORDER BY expressions directly, as the comparison."""
+    cursor.execute(f"SELECT id FROM scholarships WHERE {where} ORDER BY {', '.join(expressions)}")
+    return [int(row[0]) for row in cursor.fetchall()]
+
+
+def test_the_repository_orders_recently_added_by_created_at(generator, tmp_path):
+    # The live rule. Stated here so the ordering test has something to compare
+    # against that is not the generator's own copy of the rule.
+    where = generator.PUBLIC_VISIBILITY_WHERE
+    make_database(
+        tmp_path / "created.db",
+        [
+            base_row(id=1, created_at="2026-01-05 09:00:00", updated_at="2026-09-01 00:00:00"),
+            base_row(id=2, created_at="2026-04-01 09:00:00", updated_at="2026-08-01 00:00:00"),
+            base_row(id=3, created_at="2026-02-01 09:00:00", updated_at="2026-10-01 00:00:00"),
+        ],
+    )
+
+    connection = sqlite3.connect(str(tmp_path / "created.db"))
+    try:
+        cursor = connection.cursor()
+        expected = _db_order(cursor, where, ["created_at DESC", "id ASC"])
+    finally:
+        connection.close()
+
+    # created_at desc is 2 (April), 3 (Feb), 1 (Jan). updated_at desc would be
+    # 3, 1, 2 - a different order, which is exactly the bug this fixes.
+    assert expected == [2, 3, 1]
+
+    snapshot = export(generator, str(tmp_path / "created.db"), tmp_path)
+    assert snapshot["meta"]["sort_orders"]["recently-added"] == [2, 3, 1]
+
+
+def test_snapshot_orders_match_the_rule_for_every_mode(generator, tmp_path):
+    make_database(
+        tmp_path / "orders.db",
+        [
+            base_row(
+                id=1,
+                title="Alpha",
+                funding="Fully Funded",
+                is_verified=1,
+                status="open",
+                created_at="2026-01-01 00:00:00",
+                updated_at="2026-03-01 00:00:00",
+                deadline_date="2026-06-01",
+            ),
+            base_row(
+                id=2,
+                title="Beta",
+                funding="Partial",
+                is_verified=0,
+                status="closing-soon",
+                created_at="2026-05-01 00:00:00",
+                updated_at="2026-05-01 00:00:00",
+                deadline_date="2027-01-01",
+            ),
+            base_row(
+                id=3,
+                title="Gamma",
+                funding="Fully Funded (4-year bond)",
+                is_verified=1,
+                status="upcoming",
+                created_at="2026-02-01 00:00:00",
+                updated_at="2026-04-01 00:00:00",
+                deadline_date=None,
+            ),
+            base_row(
+                id=4,
+                title="Delta",
+                funding="fully funded",
+                is_verified=0,
+                status="open",
+                created_at="2026-06-01 00:00:00",
+                updated_at="2026-01-01 00:00:00",
+                deadline_date="2026-05-01",
+            ),
+        ],
+    )
+
+    snapshot = export(generator, str(tmp_path / "orders.db"), tmp_path)
+    published = snapshot["meta"]["sort_orders"]
+
+    connection = sqlite3.connect(str(tmp_path / "orders.db"))
+    try:
+        cursor = connection.cursor()
+        where = generator.PUBLIC_VISIBILITY_WHERE
+        for mode in generator.SORT_MODES:
+            expected = _db_order(cursor, where, generator.SORT_MODES[mode])
+            assert published[mode] == expected, (
+                f"mode {mode!r}: published {published[mode]}, rule gives {expected}"
+            )
+    finally:
+        connection.close()
+
+
+def test_every_ordering_covers_exactly_the_public_records(generator, tmp_path):
+    make_database(
+        tmp_path / "coverage.db",
+        [
+            base_row(id=1),
+            base_row(id=2, status="closed"),
+            base_row(id=3, is_archived=1),
+            base_row(id=4, verification_status="quarantined"),
+            base_row(id=5),
+        ],
+    )
+
+    snapshot = export(generator, str(tmp_path / "coverage.db"), tmp_path)
+    public_ids = [record["id"] for record in snapshot["scholarships"]]
+    assert public_ids == [1, 5]
+
+    for mode, order in snapshot["meta"]["sort_orders"].items():
+        assert sorted(order) == public_ids, f"mode {mode!r} does not cover exactly the public set"
+        assert len(order) == len(set(order)), f"mode {mode!r} repeats an id"
+
+
+def test_the_ordering_coverage_guard_fires_when_the_sets_disagree(generator, tmp_path):
+    # The generator refuses an ordering that does not cover exactly the records
+    # it exported. The guard cannot be reached through a SORT_MODES entry alone
+    # - the queries are built from the same WHERE clause - so this exercises it
+    # directly, by handing it a set that disagrees with the database.
+    make_database(tmp_path / "guard.db", [base_row(id=1), base_row(id=2)])
+    connection = sqlite3.connect(str(tmp_path / "guard.db"))
+    try:
+        cursor = connection.cursor()
+        with pytest.raises(AssertionError, match="does not cover exactly the public records"):
+            generator._build_sort_orders(cursor, [999])
+    finally:
+        connection.close()
+
+
+def test_orderings_are_deterministic(generator, tmp_path):
+    database = make_database(
+        tmp_path / "deterministic.db",
+        [base_row(id=1), base_row(id=2), base_row(id=3)],
+    )
+
+    first = export(generator, database, tmp_path / "one")
+    second = export(generator, database, tmp_path / "two")
+
+    assert first["meta"]["sort_orders"] == second["meta"]["sort_orders"]
+    assert sorted(first["meta"]["sort_orders"]) == first["meta"]["sort_order_modes"]
+
+
+def test_the_ordering_carries_no_internal_column(generator, tmp_path):
+    make_database(tmp_path / "noprivate.db", [base_row(id=1)])
+
+    snapshot = export(generator, str(tmp_path / "noprivate.db"), tmp_path)
+    orders = snapshot["meta"]["sort_orders"]
+
+    # Only IDs, in arrays of integers. The columns the live ordering is derived
+    # from must not appear anywhere in the file.
+    assert all(isinstance(order, list) for order in orders.values())
+    assert all(
+        isinstance(entry, int)
+        for order in orders.values()
+        for entry in order
+    )
+    dumped = json.dumps(snapshot)
+    for field in ("created_at", "is_verified", "verification_notes", "archived_at"):
+        assert f'"{field}"' not in dumped, f"{field} leaked into the snapshot"
+
+
+# ── The repeatable parity verifier ───────────────────────────────────────
+
+
+@pytest.fixture
+def parity_tool():
+    """Load verify_snapshot_parity.py without adding a side effect on import."""
+    path = REPOSITORY_ROOT / "verify_snapshot_parity.py"
+    spec = importlib.util.spec_from_file_location("verify_snapshot_parity_under_test", path)
+    module = importlib.util.module_from_spec(spec)
+    assert spec.loader is not None
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+def test_the_verifier_passes_on_a_snapshot_it_was_generated_from(generator, parity_tool, tmp_path):
+    database = make_database(
+        tmp_path / "verified.db",
+        [
+            base_row(id=1, title="One", funding="Fully Funded"),
+            base_row(id=2, title="Two", funding="Partial", status="upcoming"),
+            base_row(id=3, title="Three", funding="Fully Funded", created_at="2026-05-01 00:00:00"),
+        ],
+    )
+    snapshot_path = tmp_path / "out" / "snapshot.json"
+    generator.generate_snapshot(database, str(snapshot_path))
+
+    result = parity_tool.verify(database, str(snapshot_path), generator)
+
+    assert result.ok, "\n".join(result.findings)
+    assert result.checks >= 30
+
+
+def test_the_verifier_detects_a_snapshot_from_a_different_database(
+    generator, parity_tool, tmp_path
+):
+    # The snapshot is generated from one state and checked against another. The
+    # counts happen to be equal here, which is the case that a count-only check
+    # would miss: the records themselves differ.
+    source = make_database(
+        tmp_path / "source.db",
+        [base_row(id=1, title="Original"), base_row(id=2, title="Also original")],
+    )
+    snapshot_path = tmp_path / "out" / "snapshot.json"
+    generator.generate_snapshot(source, str(snapshot_path))
+
+    other = make_database(
+        tmp_path / "other.db",
+        [base_row(id=9, title="Different record"), base_row(id=10, title="Another different")],
+    )
+
+    result = parity_tool.verify(other, str(snapshot_path), generator)
+
+    assert not result.ok
+    joined = "\n".join(result.findings)
+    assert "public ID sets match exactly" in joined
+
+
+def test_the_verifier_detects_a_missing_and_an_extra_record(generator, parity_tool, tmp_path):
+    database = make_database(
+        tmp_path / "ids.db",
+        [base_row(id=1), base_row(id=2), base_row(id=3)],
+    )
+    snapshot_path = tmp_path / "out" / "snapshot.json"
+    snapshot = generator.generate_snapshot(database, str(snapshot_path))
+
+    # Drop one record and invent another, keeping the count identical so the
+    # difference is invisible to any aggregate check.
+    snapshot["scholarships"] = [
+        snapshot["scholarships"][0],
+        {**snapshot["scholarships"][1], "id": 999},
+        snapshot["scholarships"][2],
+    ]
+    with open(snapshot_path, "w", encoding="utf-8") as handle:
+        json.dump(snapshot, handle)
+
+    result = parity_tool.verify(database, str(snapshot_path), generator)
+
+    assert not result.ok
+    findings = "\n".join(result.findings)
+    assert "999" in findings
+    assert "2" in findings
+
+
+def test_the_verifier_detects_a_stale_hidden_record(generator, parity_tool, tmp_path):
+    # A record archived after the snapshot was generated must be reported, not
+    # silently served as if it were still live.
+    database = make_database(tmp_path / "stale.db", [base_row(id=1), base_row(id=2)])
+    snapshot_path = tmp_path / "out" / "snapshot.json"
+    generator.generate_snapshot(database, str(snapshot_path))
+
+    connection = sqlite3.connect(database)
+    try:
+        connection.execute("UPDATE scholarships SET is_archived = 1 WHERE id = 2")
+        connection.commit()
+    finally:
+        connection.close()
+
+    result = parity_tool.verify(database, str(snapshot_path), generator)
+
+    assert not result.ok
+    joined = "\n".join(result.findings)
+    # The record is still exported although the database now hides it, so the
+    # counts stop agreeing and the ID sets stop agreeing with it.
+    assert "exported record count" in joined
+    assert "public ID sets match exactly" in joined
+
+
+def test_the_verifier_detects_a_changed_field(generator, parity_tool, tmp_path):
+    database = make_database(tmp_path / "fields.db", [base_row(id=1, title="Original")])
+    snapshot_path = tmp_path / "out" / "snapshot.json"
+    snapshot = generator.generate_snapshot(database, str(snapshot_path))
+
+    # A value that is genuinely different from the source row, so the check
+    # under test is separating the two rather than comparing a value with
+    # itself.
+    snapshot["scholarships"][0]["funding"] = "Partial Funding Only"
+    with open(snapshot_path, "w", encoding="utf-8") as handle:
+        json.dump(snapshot, handle)
+
+    result = parity_tool.verify(database, str(snapshot_path), generator)
+
+    assert not result.ok
+    assert any("funding" in finding for finding in result.findings)
+
+
+def test_the_verifier_detects_a_header_count_that_disagrees_with_the_database(
+    generator, parity_tool, tmp_path
+):
+    database = make_database(
+        tmp_path / "header.db",
+        [base_row(id=1), base_row(id=2, status="closed")],
+    )
+    snapshot_path = tmp_path / "out" / "snapshot.json"
+    snapshot = generator.generate_snapshot(database, str(snapshot_path))
+
+    # The database has 2 source rows. The header now claims 1, which is also the
+    # public count - so the internal arithmetic still looks self-consistent and
+    # only a comparison against the database catches it.
+    snapshot["meta"]["source_record_count"] = 1
+    with open(snapshot_path, "w", encoding="utf-8") as handle:
+        json.dump(snapshot, handle)
+
+    result = parity_tool.verify(database, str(snapshot_path), generator)
+
+    assert not result.ok
+    assert any("source_record_count" in finding for finding in result.findings)
+
+
+def test_the_verifier_detects_when_the_header_cannot_reconcile(generator, parity_tool, tmp_path):
+    database = make_database(
+        tmp_path / "unreconciled.db",
+        [base_row(id=1), base_row(id=2, status="closed")],
+    )
+    snapshot_path = tmp_path / "out" / "snapshot.json"
+    snapshot = generator.generate_snapshot(database, str(snapshot_path))
+
+    # Now the invariant itself breaks: 2 source rows, but the header says one
+    # public and no excluded union.
+    snapshot["meta"]["source_record_count"] = 2
+    snapshot["meta"]["public_record_count"] = 1
+    snapshot["meta"]["excluded_union"] = 0
+    with open(snapshot_path, "w", encoding="utf-8") as handle:
+        json.dump(snapshot, handle)
+
+    result = parity_tool.verify(database, str(snapshot_path), generator)
+
+    assert not result.ok
+    assert any("source reconciles" in finding for finding in result.findings)
+
+
+def test_the_verifier_detects_an_internal_field(generator, parity_tool, tmp_path):
+    database = make_database(tmp_path / "leak.db", [base_row(id=1)])
+    snapshot_path = tmp_path / "out" / "snapshot.json"
+    snapshot = generator.generate_snapshot(database, str(snapshot_path))
+
+    snapshot["scholarships"][0]["verification_notes"] = "internal reviewer note"
+    with open(snapshot_path, "w", encoding="utf-8") as handle:
+        json.dump(snapshot, handle)
+
+    result = parity_tool.verify(database, str(snapshot_path), generator)
+
+    assert not result.ok
+    assert any("internal workflow column" in finding for finding in result.findings)
+
+
+def test_the_verifier_detects_a_stale_ordering(generator, parity_tool, tmp_path):
+    database = make_database(tmp_path / "order.db", [base_row(id=1), base_row(id=2)])
+    snapshot_path = tmp_path / "out" / "snapshot.json"
+    snapshot = generator.generate_snapshot(database, str(snapshot_path))
+
+    snapshot["meta"]["sort_orders"]["recently-added"] = list(
+        reversed(snapshot["meta"]["sort_orders"]["recently-added"])
+    )
+    with open(snapshot_path, "w", encoding="utf-8") as handle:
+        json.dump(snapshot, handle)
+
+    result = parity_tool.verify(database, str(snapshot_path), generator)
+
+    assert not result.ok
+    assert any("recently-added" in finding for finding in result.findings)
+
+
+def test_the_verifier_writes_to_neither_source(generator, parity_tool, tmp_path, capsys):
+    # The tool must not mutate what it checks. Comparing the file contents
+    # before and after is the only way to prove that.
+    database = make_database(tmp_path / "readonly.db", [base_row(id=1), base_row(id=2)])
+    snapshot_path = tmp_path / "out" / "snapshot.json"
+    generator.generate_snapshot(database, str(snapshot_path))
+
+    db_before = Path(database).read_bytes()
+    snapshot_before = Path(snapshot_path).read_bytes()
+
+    parity_tool.verify(database, str(snapshot_path), generator)
+
+    assert Path(database).read_bytes() == db_before
+    assert Path(snapshot_path).read_bytes() == snapshot_before
+
+
+def test_the_verifier_reports_no_scholarship_content(generator, parity_tool, tmp_path, capsys):
+    # The output is meant to be safe to paste into a CI log or an issue. It must
+    # carry IDs, field names and counts only.
+    database = make_database(tmp_path / "quiet.db", [base_row(id=1, title="Unique Title 12345")])
+    snapshot_path = tmp_path / "out" / "snapshot.json"
+    generator.generate_snapshot(database, str(snapshot_path))
+
+    parsed = parity_tool.main(["--db", database, "--snapshot", str(snapshot_path)])
+    captured = capsys.readouterr().out
+
+    assert parsed == 0
+    assert "Unique Title 12345" not in captured
+
+
+def test_the_verifier_fails_when_parity_is_broken(generator, parity_tool, tmp_path):
+    # The exit status is what makes this usable as a gate.
+    database = make_database(tmp_path / "gate.db", [base_row(id=1), base_row(id=2)])
+    snapshot_path = tmp_path / "out" / "snapshot.json"
+    snapshot = generator.generate_snapshot(database, str(snapshot_path))
+    snapshot["scholarships"] = snapshot["scholarships"][:1]
+    with open(snapshot_path, "w", encoding="utf-8") as handle:
+        json.dump(snapshot, handle)
+
+    assert parity_tool.main(["--db", database, "--snapshot", str(snapshot_path)]) == 1

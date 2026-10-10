@@ -4,7 +4,7 @@ import { clearSnapshotCache } from './staticScholarshipService.js'
 
 const mockSnapshot = {
   meta: {
-    generated_at: '2026-10-09T12:41:37.970162Z',
+    generated_at: '2026-10-10T12:41:37.970162Z',
     source_database: 'scholarzone.db',
     source_record_count: 695,
     public_record_count: 634,
@@ -12,6 +12,36 @@ const mockSnapshot = {
     excluded_union: 61,
     schema_version: '1.0',
     visibility_predicate: 'status != closed AND is_archived = false AND verification_status != quarantined',
+    // Ordered ID lists, computed by the generator from the same ORDER BY
+    // expressions the repository applies to the live list. Each is defined to
+    // be exactly what the backend SQL produces for equivalent rows, so a test
+    // that passes against this fixture is asserting the live ordering and not
+    // a plausible-looking substitute.
+    sort_orders: {
+      // created_at DESC, id ASC. The narrative is id 2 newest, then 1, then 3.
+      'recently-added': [2, 1, 3],
+      // is_verified DESC, status priority ASC, updated_at DESC, id ASC.
+      // ids 1 and 3 are verified/open; id 1's updated_at is newer.
+      recommended: [1, 3, 2],
+      'recently-updated': [2, 1, 3],
+      'deadline-soon': [3, 1, 2],
+      'deadline-earliest': [3, 1, 2],
+      'deadline-latest': [2, 1, 3],
+      'fully-funded': [1, 3, 2],
+      'name-asc': [3, 1, 2],
+      'name-desc': [2, 1, 3],
+    },
+    sort_order_modes: [
+      'deadline-earliest',
+      'deadline-latest',
+      'deadline-soon',
+      'fully-funded',
+      'name-asc',
+      'name-desc',
+      'recently-added',
+      'recently-updated',
+      'recommended',
+    ],
   },
   stats: {
     total: 634,
@@ -434,7 +464,11 @@ describe('scholarshipService with snapshot fallback', () => {
     expect(result.total).toBe(634)
     expect(result.countries).toBe(74)
     expect(result.source).toBe('snapshot')
-    expect(result.snapshot_meta).toEqual(mockSnapshot.meta)
+    expect(result.snapshot_meta.generated_at).toBe(mockSnapshot.meta.generated_at)
+    // The orderings are omitted from a counts response; the rest of the header
+    // is the snapshot's own, unchanged.
+    expect(result.snapshot_meta).not.toHaveProperty('sort_orders')
+    expect(result.snapshot_meta.source_record_count).toBe(695)
   })
 
   it('does NOT fall back to snapshot for stats on HTTP 404 - propagates error', async () => {
@@ -1361,7 +1395,239 @@ async function fallbackList(query, assert) {
   return result
 }
 
-/** A snapshot carrying the given records and nothing else. */
+/**
+ * A snapshot carrying the given records and nothing else.
+ *
+ * `sort_orders` is deliberately dropped. The tests using this helper assert the
+ * comparator path - the behaviour a snapshot without a precomputed ordering for
+ * the mode falls back to - and inheriting the main fixture's orderings would
+ * silently switch them onto the other path. Use `snapshotWithOrders` when the
+ * precomputed ordering is what is under test.
+ */
 function snapshotWith(scholarships) {
-  return { meta: mockSnapshot.meta, stats: mockSnapshot.stats, scholarships }
+  const meta = { ...mockSnapshot.meta }
+  delete meta.sort_orders
+  delete meta.sort_order_modes
+  return { meta, stats: mockSnapshot.stats, scholarships }
 }
+
+/**
+ * A snapshot carrying the given records AND the given orderings.
+ *
+ * Both halves are supplied explicitly, because the point of the ordering tests
+ * is that a precomputed ordering applies to a set of records the ordering was
+ * generated from - and that the service copes when it was not.
+ */
+function snapshotWithOrders(scholarships, sortOrders) {
+  return { meta: { ...mockSnapshot.meta, sort_orders: sortOrders }, stats: mockSnapshot.stats, scholarships }
+}
+
+/* ------------------------------------------------------------------------
+   Snapshot ordering: the precomputed-order path
+
+   The repository's `_sort_expressions` orders `recently-added` by `created_at`
+   and `recommended` by the legacy `is_verified` column. Neither is a public
+   field, so before this change the fallback could not reproduce either order:
+   `recently-added` came out in a materially different order and `recommended`
+   differed on roughly four records in five.
+
+   The fix computes both orderings with the repository's own SQL and stores them
+   as ordered ID lists in `meta.sort_orders`. These tests pin that contract, and
+   each one fails if the ordering is dropped or approximated again.
+   ---------------------------------------------------------------------- */
+
+describe('snapshot ordering uses the precomputed order', () => {
+  beforeEach(() => {
+    clearSnapshotCache()
+    vi.unstubAllGlobals()
+    vi.stubGlobal('fetch', vi.fn())
+  })
+
+  /** Fail the API, then serve `snapshot`. */
+  async function fallbackWith(snapshot, query) {
+    // Persistent rather than queued: this is called once per mode in the tests
+    // below, and a queue would run dry after the first one. The two requests are
+    // told apart by the asset path, because the API URL is absolute.
+    globalThis.fetch.mockImplementation(async (url) => {
+      if (String(url).includes('scholarships-snapshot.json')) {
+        return { ok: true, status: 200, json: async () => snapshot }
+      }
+      return { ok: false, status: 503, json: async () => ({ detail: 'unavailable' }) }
+    })
+    return fetchScholarships(query)
+  }
+
+  it('recently-added follows the ordering computed from the live sort rule', async () => {
+    const result = await fallbackWith(mockSnapshot, { sort: 'recently-added' })
+
+    // The fixture's ordering is created_at DESC, id ASC. Without the ordering,
+    // the fallback had to use a timestamp it did have and produced a different
+    // list for 632 of 634 records.
+    expect(result.items.map((s) => s.id)).toEqual([2, 1, 3])
+  })
+
+  it('recommended follows the ordering computed from the live sort rule', async () => {
+    const result = await fallbackWith(mockSnapshot, { sort: 'recommended' })
+    expect(result.items.map((s) => s.id)).toEqual([1, 3, 2])
+  })
+
+  it('an unset sort resolves to the recommended ordering', async () => {
+    const result = await fallbackWith(mockSnapshot, {})
+    expect(result.items.map((s) => s.id)).toEqual([1, 3, 2])
+  })
+
+  it('default follows the recommended ordering', async () => {
+    const result = await fallbackWith(mockSnapshot, { sort: 'default' })
+    expect(result.items.map((s) => s.id)).toEqual([1, 3, 2])
+  })
+
+  it('every mode advertised by the snapshot produces that exact ordering', async () => {
+    const expected = {
+      'recently-added': [2, 1, 3],
+      'recently-updated': [2, 1, 3],
+      'deadline-soon': [3, 1, 2],
+      'deadline-earliest': [3, 1, 2],
+      'deadline-latest': [2, 1, 3],
+      'fully-funded': [1, 3, 2],
+      'name-asc': [3, 1, 2],
+      'name-desc': [2, 1, 3],
+    }
+
+    for (const [mode, ids] of Object.entries(expected)) {
+      // Separate per mode, so a failure names the mode rather than one of nine.
+      const result = await fallbackWith(mockSnapshot, { sort: mode })
+      expect(result.items.map((s) => s.id), `sort mode: ${mode}`).toEqual(ids)
+    }
+  })
+
+  it('an ordering is applied after filtering, not instead of it', async () => {
+    // Country USA leaves ids 1 and 3. The full recommended order is [1, 3, 2],
+    // so the subset must keep 1 before 3 rather than reverting to insertion or
+    // id order.
+    const result = await fallbackWith(mockSnapshot, { sort: 'recommended', country: 'USA' })
+    expect(result.items.map((s) => s.id)).toEqual([1, 3])
+  })
+
+  it('a filtered subset keeps the ordering even when the order disagrees with id', async () => {
+    // The ordering puts id 3 first. Restricting the total order to the subset
+    // must not collapse to id order, which would silently reorder everything.
+    const result = await fallbackWith(mockSnapshot, { sort: 'name-asc', country: 'USA' })
+    expect(result.items.map((s) => s.id)).toEqual([3, 1])
+  })
+
+  it('a single record survives any ordering', async () => {
+    const result = await fallbackWith(mockSnapshot, { sort: 'recently-added', status: 'upcoming' })
+    expect(result.items.map((s) => s.id)).toEqual([2])
+  })
+
+  it('an empty result set stays empty', async () => {
+    const result = await fallbackWith(mockSnapshot, { sort: 'recently-added', country: 'Nowhere' })
+    expect(result.items).toEqual([])
+    expect(result.pagination.total).toBe(0)
+  })
+
+  it('pagination applies after ordering', async () => {
+    const result = await fallbackWith(mockSnapshot, { sort: 'recently-updated', page: 2, limit: 1 })
+    expect(result.items.map((s) => s.id)).toEqual([1])
+    expect(result.pagination).toEqual({ page: 2, limit: 1, total: 3, total_pages: 3 })
+  })
+
+  it('a record absent from the ordering is placed last, not discarded', async () => {
+    // A snapshot can be stale for a subset of records: the ordering names ids the
+    // file no longer ships, and the file ships an id the ordering never saw.
+    // Neither may be dropped, and neither may be placed randomly.
+    const snapshot = snapshotWithOrders(
+      [...mockSnapshot.scholarships, { id: 99, title: 'Not In Order', country: 'Canada', funding: 'Fully Funded', updated_at: '2026-01-01T00:00:00', verified: true, status: 'open' }],
+      { 'recently-added': [2, 1, 3, 404] },
+    )
+
+    const result = await fallbackWith(snapshot, { sort: 'recently-added' })
+    expect(result.items.map((s) => s.id)).toEqual([2, 1, 3, 99])
+  })
+
+  it('an ordering that is not a list is ignored rather than throwing', async () => {
+    const snapshot = snapshotWithOrders(mockSnapshot.scholarships, { 'recently-added': 'nonsense' })
+    const result = await fallbackWith(snapshot, { sort: 'recently-added' })
+
+    // Falls back to the comparator, which uses updated_at when created_at is
+    // absent. The important part is that a malformed field cannot 500 the page.
+    expect(result.items.length).toBe(3)
+    expect(result.source).toBe('snapshot')
+  })
+
+  it('an ordering with duplicate ids still yields each record once', async () => {
+    const snapshot = snapshotWithOrders(mockSnapshot.scholarships, { 'recently-added': [2, 2, 1, 3, 1] })
+    const result = await fallbackWith(snapshot, { sort: 'recently-added' })
+
+    expect(result.items.map((s) => s.id)).toEqual([2, 1, 3])
+  })
+
+  it('an ordering of a different length does not truncate the result', async () => {
+    const snapshot = snapshotWithOrders(mockSnapshot.scholarships, { 'recently-added': [2] })
+    const result = await fallbackWith(snapshot, { sort: 'recently-added' })
+
+    expect(result.items.map((s) => s.id)).toEqual([2, 1, 3])
+  })
+
+  it('a snapshot with no orderings at all falls back to the comparators', async () => {
+    const result = await fallbackWith(snapshotWith(mockSnapshot.scholarships), { sort: 'recently-added' })
+
+    // The comparator path uses updated_at DESC (created_at is not a public
+    // field, so it cannot do better): 2 (Oct 2), 1 (Oct 1), 3 (Sep 20).
+    expect(result.items.map((s) => s.id)).toEqual([2, 1, 3])
+    expect(result.source).toBe('snapshot')
+  })
+
+  it('an unknown sort mode does not crash and resolves to the recommended order', async () => {
+    const result = await fallbackWith(mockSnapshot, { sort: 'not-a-real-mode' })
+    expect(result.items.map((s) => s.id)).toEqual([1, 3, 2])
+  })
+
+  it('the ordering is exposed for transparency but carries no private column', async () => {
+    const result = await fallbackWith(mockSnapshot, { sort: 'recently-added' })
+
+    // The orderings are IDs only. `created_at` and `is_verified` are the columns
+    // the live ordering is derived from, and neither may appear in the payload -
+    // that would widen the public schema to work around a sort mismatch.
+    expect(result.snapshot_meta.sort_orders['recently-added']).toEqual([2, 1, 3])
+    for (const record of result.items) {
+      expect(record).not.toHaveProperty('created_at')
+      expect(record).not.toHaveProperty('is_verified')
+    }
+  })
+
+  it('detail and stats requests are unaffected by the ordering change', async () => {
+    globalThis.fetch
+      .mockResolvedValueOnce({ ok: false, status: 503, json: async () => ({ detail: 'unavailable' }) })
+      .mockResolvedValueOnce({ ok: true, status: 200, json: async () => mockSnapshot })
+
+    const detail = await fetchScholarshipById(3)
+    expect(detail.id).toBe(3)
+
+    globalThis.fetch
+      .mockResolvedValueOnce({ ok: false, status: 503, json: async () => ({ detail: 'unavailable' }) })
+      .mockResolvedValueOnce({ ok: true, status: 200, json: async () => mockSnapshot })
+
+    const stats = await fetchScholarshipStats()
+    expect(stats.total).toBe(634)
+  })
+
+  it('a stats response does not carry the list orderings', async () => {
+    // The orderings are nine arrays of every public id. They exist to reproduce
+    // the API's list ordering, so they belong in a list response - a counts
+    // response should not carry the ordering of the whole catalogue with it.
+    globalThis.fetch
+      .mockResolvedValueOnce({ ok: false, status: 503, json: async () => ({ detail: 'unavailable' }) })
+      .mockResolvedValueOnce({ ok: true, status: 200, json: async () => mockSnapshot })
+
+    const stats = await fetchScholarshipStats()
+    expect(stats.source).toBe('snapshot')
+    expect(stats.snapshot_meta).not.toHaveProperty('sort_orders')
+    expect(stats.snapshot_meta.sort_order_modes).toBeDefined()
+  })
+
+  it('a list response does expose the orderings, because it needs them', async () => {
+    const result = await fallbackWith(mockSnapshot, { sort: 'recently-added' })
+    expect(result.snapshot_meta.sort_orders['recently-added']).toEqual([2, 1, 3])
+  })
+})

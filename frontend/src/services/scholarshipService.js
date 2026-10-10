@@ -334,109 +334,153 @@ function byId(a, b) {
   return a.id - b.id
 }
 
-function sortScholarships(scholarships, sort) {
-  const sorted = [...scholarships]
+/**
+ * Comparators for the modes whose keys are public fields.
+ *
+ * Each mirrors the repository's `_sort_expressions` entry, key by key, in the
+ * same order, with the same NULL placement and the same `id` tie-break. They
+ * are the fallback used when the snapshot has no precomputed ordering for a
+ * mode, so they have to stay equivalent to the SQL - but they are not the
+ * preferred path, and a difference between them and the generated order is a
+ * defect rather than something to paper over.
+ */
+const COMPARATORS = {}
 
-  switch (sort) {
-    case 'recommended':
-    case 'default':
-      sorted.sort((a, b) => {
-        // Derived from the authoritative verification status, never from the
-        // legacy boolean. The public response derives `verified` the same way
-        // (verification_contract.public_verified_from_status), so ordering on
-        // anything else would rank records in the opposite order to the badge
-        // printed beside them.
-        const aVerified = a.verified === true
-        const bVerified = b.verified === true
-        if (aVerified !== bVerified) return bVerified - aVerified
-        // Status priority: open > closing-soon > others
-        const statusOrder = { open: 0, 'closing-soon': 1 }
-        const aStatus = statusOrder[a.status] ?? 2
-        const bStatus = statusOrder[b.status] ?? 2
-        if (aStatus !== bStatus) return aStatus - bStatus
-        // Recently updated, then id
-        return compareNullableTimestamps(toTimestamp(a.updated_at), toTimestamp(b.updated_at), 'desc')
-          || byId(a, b)
-      })
-      break
-    case 'recently-added':
-      // Documented limitation. The API orders by `created_at desc`, but
-      // `created_at` is not part of the public response schema - neither
-      // ScholarshipResponse nor ScholarshipDetailResponse declares it - so the
-      // snapshot cannot carry it without widening the public contract. The
-      // fallback therefore orders by the newest timestamp it does have,
-      // `updated_at`, and that is a real difference from the live path rather
-      // than a hidden one.
-      sorted.sort((a, b) =>
-        compareNullableTimestamps(
-          toTimestamp(a.created_at || a.updated_at),
-          toTimestamp(b.created_at || b.updated_at),
-          'desc',
-        ) || byId(a, b),
-      )
-      break
-    case 'recently-updated':
-      sorted.sort((a, b) =>
-        compareNullableTimestamps(toTimestamp(a.updated_at), toTimestamp(b.updated_at), 'desc')
-          || byId(a, b),
-      )
-      break
-    case 'deadline-soon':
-      sorted.sort((a, b) => nullDeadlineLast(a, b)
-        || compareNullableTimestamps(toTimestamp(a.deadline_date), toTimestamp(b.deadline_date))
-        || byId(a, b))
-      break
-    case 'fully-funded':
-      // Exact equality, case-insensitively. This matches the repository's
-      // `_sort_expressions` predicate (`lower(funding) == 'fully funded'`) and
-      // ScholarshipList's own client-side comparator. The previous substring
-      // test admitted rows like "Fully Funded (4-year bond)" to the funded
-      // group that the API places outside it, so the same request returned a
-      // different order from the live path and from the fallback path.
-      //
-      // Note that the published `fully_funded` statistic uses the broader
-      // substring definition; that is a pre-existing disagreement inside the
-      // API itself, between its sort and its stat, and it is not changed here.
-      sorted.sort((a, b) => {
-        const aFully = isFullyFunded(a.funding)
-        const bFully = isFullyFunded(b.funding)
-        if (aFully !== bFully) return bFully - aFully
-        return compareNullableTimestamps(toTimestamp(a.updated_at), toTimestamp(b.updated_at), 'desc')
-          || byId(a, b)
-      })
-      break
-    case 'deadline-earliest':
-      sorted.sort((a, b) => nullDeadlineLast(a, b)
-        || compareNullableTimestamps(toTimestamp(a.deadline_date), toTimestamp(b.deadline_date))
-        || byId(a, b))
-      break
-    case 'deadline-latest':
-      sorted.sort((a, b) => nullDeadlineLast(a, b)
-        || compareNullableTimestamps(toTimestamp(a.deadline_date), toTimestamp(b.deadline_date), 'desc')
-        || byId(a, b))
-      break
-    case 'name-asc':
-      sorted.sort((a, b) => a.title.localeCompare(b.title, undefined, { sensitivity: 'base' }) || byId(a, b))
-      break
-    case 'name-desc':
-      sorted.sort((a, b) => b.title.localeCompare(a.title, undefined, { sensitivity: 'base' }) || byId(a, b))
-      break
-    default:
-      // default = recommended
-      sorted.sort((a, b) => {
-        const aVerified = a.verified === true
-        const bVerified = b.verified === true
-        if (aVerified !== bVerified) return bVerified - aVerified
-        const statusOrder = { open: 0, 'closing-soon': 1 }
-        const aStatus = statusOrder[a.status] ?? 2
-        const bStatus = statusOrder[b.status] ?? 2
-        if (aStatus !== bStatus) return aStatus - bStatus
-        return compareNullableTimestamps(toTimestamp(a.updated_at), toTimestamp(b.updated_at), 'desc')
-          || byId(a, b)
-      })
+/** Status priority for the recommended ordering: open, then closing-soon, then the rest. */
+function statusPriority(status) {
+  const order = { open: 0, 'closing-soon': 1 }
+  return order[status] ?? 2
+}
+
+COMPARATORS.recommended = (a, b) => {
+  // `is_verified DESC` is the legacy column. The public `verified` flag is
+  // derived from `verification_status` instead and disagrees on some rows, so a
+  // comparator built on it is an approximation of this ordering.
+  const aVerified = a.verified === true
+  const bVerified = b.verified === true
+  if (aVerified !== bVerified) return bVerified - aVerified
+  const aStatus = statusPriority(a.status)
+  const bStatus = statusPriority(b.status)
+  if (aStatus !== bStatus) return aStatus - bStatus
+  return compareNullableTimestamps(toTimestamp(a.updated_at), toTimestamp(b.updated_at), 'desc')
+    || byId(a, b)
+}
+
+COMPARATORS['recently-added'] = (a, b) => {
+  // The API orders by `created_at DESC`. `created_at` is not a public field, so
+  // when no precomputed order is available this comparator can only use a
+  // timestamp the snapshot actually carries, and the resulting order is an
+  // approximation - see SORT_MODES in generate_snapshot.py.
+  return compareNullableTimestamps(
+    toTimestamp(a.created_at || a.updated_at),
+    toTimestamp(b.created_at || b.updated_at),
+    'desc',
+  ) || byId(a, b)
+}
+
+COMPARATORS['recently-updated'] = (a, b) =>
+  compareNullableTimestamps(toTimestamp(a.updated_at), toTimestamp(b.updated_at), 'desc')
+  || byId(a, b)
+
+COMPARATORS['deadline-soon'] = (a, b) => nullDeadlineLast(a, b)
+  || compareNullableTimestamps(toTimestamp(a.deadline_date), toTimestamp(b.deadline_date))
+  || byId(a, b)
+
+COMPARATORS['deadline-earliest'] = COMPARATORS['deadline-soon']
+
+COMPARATORS['deadline-latest'] = (a, b) => nullDeadlineLast(a, b)
+  || compareNullableTimestamps(toTimestamp(a.deadline_date), toTimestamp(b.deadline_date), 'desc')
+  || byId(a, b)
+
+COMPARATORS['fully-funded'] = (a, b) => {
+  // Exact equality, case-insensitively - the repository's
+  // `case(func.lower(funding) == "fully funded", 0, else_=1)` and the same test
+  // ScholarshipList uses. A substring test would admit rows such as
+  // "Fully Funded (4-year bond)" to the funded group that the API places
+  // outside it.
+  const aFully = isFullyFunded(a.funding)
+  const bFully = isFullyFunded(b.funding)
+  if (aFully !== bFully) return bFully - aFully
+  return compareNullableTimestamps(toTimestamp(a.updated_at), toTimestamp(b.updated_at), 'desc')
+    || byId(a, b)
+}
+
+COMPARATORS['name-asc'] = (a, b) =>
+  String(a.title || '').localeCompare(String(b.title || ''), undefined, { sensitivity: 'base' })
+  || byId(a, b)
+
+COMPARATORS['name-desc'] = (a, b) =>
+  String(b.title || '').localeCompare(String(a.title || ''), undefined, { sensitivity: 'base' })
+  || byId(a, b)
+
+COMPARATORS.default = COMPARATORS.recommended
+
+/**
+ * Compare by a precomputed ordering of ids.
+ *
+ * The ordering is a total order over the whole public set, so filtering first
+ * and then applying this index yields the same relative order the API produces
+ * for that filtered subset - the API applies its ORDER BY to the filtered rows,
+ * and restricting a total order preserves relative position.
+ *
+ * An id absent from the ordering is placed after every known id and then by id
+ * ascending, so a snapshot that is stale for a subset of records cannot throw
+ * away those records or put them in a random position. That is deliberately
+ * defensive rather than an error: the alternative is an empty page.
+ */
+function sortWithPrecomputedOrder(scholarships, sort, snapshot) {
+  const order = snapshot && Array.isArray(snapshot?.meta?.sort_orders?.[sort])
+    ? snapshot.meta.sort_orders[sort]
+    : null
+
+  if (!order) {
+    return null
   }
 
-  return sorted
+  const rank = new Map()
+  order.forEach((id, index) => {
+    const numeric = Number(id)
+    if (!rank.has(numeric)) {
+      rank.set(numeric, index)
+    }
+  })
+
+  const rankOf = (record) => {
+    const numeric = Number(record.id)
+    return rank.has(numeric) ? rank.get(numeric) : Number.MAX_SAFE_INTEGER
+  }
+
+  return [...scholarships].sort((a, b) => {
+    const rankDelta = rankOf(a) - rankOf(b)
+    if (rankDelta !== 0) {
+      return rankDelta
+    }
+    // Both unranked, or - defensively - a duplicate id in the ordering.
+    return byId(a, b)
+  })
+}
+
+function sortScholarships(scholarships, sort, snapshot) {
+  const mode = sort || 'default'
+
+  // Preferred path: the ordering the generator computed with the repository's
+  // own ORDER BY expressions. Using it means the fallback list is in the live
+  // API's order, including for the two modes whose sort keys are not public
+  // fields and could not otherwise be reproduced.
+  const ordered = sortWithPrecomputedOrder(scholarships, mode, snapshot)
+  if (ordered) {
+    return ordered
+  }
+
+  const comparator = COMPARATORS[mode]
+  if (comparator) {
+    return [...scholarships].sort(comparator)
+  }
+
+  // An unrecognised mode is not silently mapped to some other order; it falls
+  // through to the recommended comparator below, which is what the repository's
+  // `_sort_expressions` does for an unrecognised enum value.
+  return [...scholarships].sort(COMPARATORS.default)
 }
 
 function paginate(scholarships, page, limit) {
@@ -482,11 +526,15 @@ export async function fetchScholarships(query = {}, options) {
   const fallbackFn = async () => {
     const snapshot = await loadScholarshipSnapshot()
     const allScholarships = snapshot.scholarships || []
-    
+
+    // Filter first, then order. The snapshot's precomputed orderings are total
+    // orders over the whole public set, so restricting one to a filtered subset
+    // keeps the same relative order the API gives that subset - the API applies
+    // its ORDER BY to the rows its filters leave, which is the same thing.
     let filtered = filterScholarships(allScholarships, query)
-    filtered = sortScholarships(filtered, query.sort || 'default')
+    filtered = sortScholarships(filtered, query.sort || 'default', snapshot)
     const result = paginate(filtered, query.page || 1, query.limit || 12)
-    
+
     return {
       items: result.items.map(normalizeScholarship),
       pagination: result.pagination,
@@ -534,16 +582,23 @@ export async function fetchScholarshipById(id, options) {
 
 export async function fetchScholarshipStats(options) {
   const key = 'stats'
-  
+
   const send = () =>
     request('/scholarships/stats', undefined)
 
   const fallbackFn = async () => {
     const snapshot = await loadScholarshipSnapshot()
+    const meta = { ...(snapshot.meta || {}) }
+    // The orderings are list-shape data: nine arrays of every public id, needed
+    // to reproduce the API's ordering and of no use to a counts consumer. They
+    // are left out here so a stats response stays about counts, rather than
+    // carrying the ordering of the whole catalogue with it.
+    delete meta.sort_orders
+
     return {
       ...snapshot.stats,
       source: 'snapshot',
-      snapshot_meta: snapshot.meta,
+      snapshot_meta: meta,
     }
   }
 

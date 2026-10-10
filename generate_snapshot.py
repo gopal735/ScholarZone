@@ -102,6 +102,13 @@ PUBLIC_FIELDS: tuple[str, ...] = (
 # Columns the export actually reads. Checked before anything is read so a
 # missing column or a missing file fails with the real reason instead of a
 # bare KeyError on row 1.
+#
+# This list covers the sort expressions as well as the record fields. Two of
+# the repository's ordering keys are not public fields - `created_at` for
+# `recently-added`, and `is_verified` for `recommended` - so a database missing
+# either would otherwise reach the sort query and raise a bare
+# `OperationalError` naming a column the operator has never heard of, after the
+# whole export had already succeeded.
 REQUIRED_COLUMNS: tuple[str, ...] = (
     "id",
     "title",
@@ -113,11 +120,12 @@ REQUIRED_COLUMNS: tuple[str, ...] = (
     "deadline_precision",
     "status",
     "verification_status",
+    "updated_at",
+    "created_at",
     "is_verified",
     "last_verified_at",
     "official_source_url",
     "official_source",
-    "updated_at",
     "image_url",
     "image_source_type",
     "image_kind",
@@ -172,6 +180,61 @@ LIST_FIELDS = (
     "documents",
     "application_method",
     "required_documents",
+)
+
+# Precomputed orderings, one per sort mode the catalogue offers.
+#
+# Two of the repository's sort keys are not public fields. `recently-added`
+# orders by `created_at`, and `recommended` (which is also `default`) orders by
+# the legacy `is_verified` boolean. Neither is part of the public response
+# schema, so the fallback had no way to reproduce the live ordering and instead
+# approximated it with a timestamp it did have - which put `recently-added` in a
+# materially different order (632 of 634 positions) and `recommended` in a
+# different one for 502 of 634 records. The badge a reader sees is derived from
+# `verification_status`, not from `is_verified`, so the mismatch was not even
+# visible as an inconsistency; it was simply a different list.
+#
+# Rather than widen the public schema to carry those two columns, or restate the
+# ordering in JavaScript and hope it stays equivalent to the SQL, the orders are
+# computed here by running the repository's own expressions over the same rows
+# and are stored as ordered ID lists under `meta.sort_orders`. An ordering is a
+# property of the dataset, not of each record, so it belongs in the snapshot's
+# metadata rather than on every scholarship object.
+#
+# Each entry is the `ORDER BY` tail only: the base filter is always the public
+# visibility predicate, applied by the caller below. NULL semantics are
+# whatever SQLite decides for the expression, which is the point - the fallback
+# inherits the backend's behaviour instead of reimplementing it.
+SORT_MODES: dict[str, tuple[str, ...]] = {
+    # Mirrors _sort_expressions: is_verified DESC, status priority ASC,
+    # updated_at DESC, id ASC. `is_verified` is the legacy column, exactly as
+    # the repository uses it, not the derived public flag.
+    "recommended": (
+        "CASE WHEN is_verified = 1 THEN 0 ELSE 1 END ASC",
+        "CASE status WHEN 'open' THEN 0 WHEN 'closing-soon' THEN 1 ELSE 2 END ASC",
+        "updated_at DESC",
+        "id ASC",
+    ),
+    "recently-added": ("created_at DESC", "id ASC"),
+    "recently-updated": ("updated_at DESC", "id ASC"),
+    # deadline-soon and deadline-earliest share the repository's own predicates.
+    "deadline-soon": ("(deadline_date IS NULL) ASC", "deadline_date ASC", "id ASC"),
+    "deadline-earliest": ("(deadline_date IS NULL) ASC", "deadline_date ASC", "id ASC"),
+    "deadline-latest": ("(deadline_date IS NULL) ASC", "deadline_date DESC", "id ASC"),
+    # Exact equality on the lower-cased value, matching the repository's
+    # `case(func.lower(funding) == "fully funded", 0, else_=1)`.
+    "fully-funded": (
+        "CASE WHEN lower(COALESCE(funding, '')) = 'fully funded' THEN 0 ELSE 1 END ASC",
+        "updated_at DESC",
+        "id ASC",
+    ),
+    "name-asc": ("lower(COALESCE(title, '')) ASC", "id ASC"),
+    "name-desc": ("lower(COALESCE(title, '')) DESC", "id ASC"),
+}
+
+# The public predicate the catalogue uses, restated for the sort queries below.
+PUBLIC_VISIBILITY_WHERE = (
+    "status != 'closed' AND is_archived = 0 AND verification_status != 'quarantined'"
 )
 
 
@@ -443,6 +506,39 @@ def _build_public_record(d: dict[str, Any]) -> dict[str, Any]:
     return record
 
 
+def _build_sort_orders(cursor: sqlite3.Cursor, public_ids: list[int]) -> dict[str, list[int]]:
+    """Order the exported records the way the repository orders the live list.
+
+    Every mode is computed by running the repository's own ORDER BY expressions
+    over exactly the rows that were exported, so the result is derived from the
+    same rule rather than restated beside it. The consequence is that a kind of
+    drift that comparators are prone to - text case-folding, date parsing, NULL
+    placement - cannot arise here, because there is only one implementation.
+
+    The returned lists are total orders over the public set. A filtered subset
+    inherits the backend's relative order, which is what makes the frontend able
+    to filter first and then apply this index without re-sorting.
+    """
+    orders: dict[str, list[int]] = {}
+    for mode, expressions in SORT_MODES.items():
+        order_by = ", ".join(expressions)
+        cursor.execute(
+            f"SELECT id FROM scholarships WHERE {PUBLIC_VISIBILITY_WHERE} ORDER BY {order_by}"
+        )
+        ids = [int(row[0]) for row in cursor.fetchall()]
+
+        # An ordering that missed or invented a record would silently reorder
+        # the catalogue, and nothing downstream would notice.
+        if sorted(ids) != sorted(public_ids):
+            raise AssertionError(
+                f"Sort order {mode!r} does not cover exactly the public records "
+                f"({len(ids)} ordered vs {len(public_ids)} exported)."
+            )
+        orders[mode] = ids
+
+    return orders
+
+
 def generate_snapshot(db_path: str, output_path: str) -> dict[str, Any]:
     """Generate the public JSON snapshot from the local database."""
     # Checked before connecting. `sqlite3.connect` happily creates an empty
@@ -507,6 +603,14 @@ def generate_snapshot(db_path: str, output_path: str) -> dict[str, Any]:
         scholarships = [
             _build_public_record(dict_from_row(cursor, row)) for row in rows
         ]
+        public_ids = [record["id"] for record in scholarships]
+
+        # Orderings, computed from the same rows by the same rule the live
+        # list uses. Two of the repository's sort keys (`created_at` for
+        # recently-added, the legacy `is_verified` for recommended/default) are
+        # not public fields, so this is what keeps the fallback's order equal
+        # to the API's order without widening the public schema.
+        sort_orders = _build_sort_orders(cursor, public_ids)
 
         # Statistics are derived from the records actually exported, using the
         # same predicates the count intelligence layer publishes, so the two
@@ -562,6 +666,11 @@ def generate_snapshot(db_path: str, output_path: str) -> dict[str, Any]:
                 "excluded_union": counts["excluded_union"],
                 "schema_version": "1.0",
                 "visibility_predicate": "status != closed AND is_archived = false AND verification_status != quarantined",
+                # Ordered ID lists, one per sort mode, so the fallback returns
+                # the live ordering without exposing the internal columns the
+                # ordering is derived from.
+                "sort_orders": sort_orders,
+                "sort_order_modes": sorted(sort_orders),
             },
             "stats": stats,
             "scholarships": scholarships,
