@@ -127,7 +127,7 @@ export default function ScholarshipsPage() {
         <ScholarshipList initialCountry={countryParam} />
         {isUsingFallback && (
           <div className="scholarships-page__fallback-notice" role="status">
-            <span>⚠️ Live directory unavailable — showing local data.</span>
+            <span>⚠️ Catalogue snapshot unavailable — showing local data.</span>
           </div>
         )}
       </div>

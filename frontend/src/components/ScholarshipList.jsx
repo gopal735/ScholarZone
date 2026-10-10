@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import ScholarshipCard from './ScholarshipCard'
+import CatalogueSourceNotice from './CatalogueSourceNotice'
 import { scholarships } from '../data/scholarships'
 import { fetchScholarships } from '../services/scholarshipService'
 import { getScholarshipStatus } from '../utils/scholarshipPresentation'
@@ -146,6 +147,7 @@ export default function ScholarshipList({ items, initialCountry }) {
   const [page, setPage] = useState(1)
   const [requestVersion, setRequestVersion] = useState(0)
   const [apiDirectory, setApiDirectory] = useState({ items: [], pagination: null })
+  const [catalogueSource, setCatalogueSource] = useState(null)
   const [loadState, setLoadState] = useState(isDirectory ? 'loading' : 'local')
   const [apiError, setApiError] = useState('')
   const searchInputRef = useRef(null)
@@ -197,13 +199,26 @@ export default function ScholarshipList({ items, initialCountry }) {
         }
 
         setApiDirectory(directory)
+        // Keep where the data came from so the provenance notice can say so,
+        // and so a live refresh is visibly different from the static snapshot.
+        setCatalogueSource({
+          source: directory.source,
+          meta: directory.snapshot_meta,
+        })
         setLoadState('success')
       } catch (error) {
         if (controller.signal.aborted || requestId !== requestIdRef.current) {
           return
         }
 
-        setApiError(error instanceof Error ? error.message : 'The live scholarship directory is unavailable.')
+        // The catalogue is served from a bundled snapshot, so a failure here
+        // means the snapshot could not be read - not that the database is down,
+        // which is no longer what ordinary browsing depends on.
+        setApiError(
+          error instanceof Error
+            ? error.message
+            : 'The bundled scholarship snapshot could not be read.',
+        )
         setLoadState('fallback')
       }
     }, delay)
@@ -247,6 +262,17 @@ export default function ScholarshipList({ items, initialCountry }) {
 
   return (
     <section className="scholarship-list" aria-label="Scholarship directory">
+      {/* Provenance. The catalogue is served from the bundled snapshot, which is
+          what keeps it working while the database has no quota - but it also
+          means a student should know the data is not live before relying on a
+          deadline. Shows only when the response came from the snapshot. */}
+      {isDirectory ? (
+        <CatalogueSourceNotice
+          source={catalogueSource?.source}
+          meta={catalogueSource?.meta}
+        />
+      ) : null}
+
       <div className="filter-section" role="search">
         <div className="filter-section__intro">
           <p>Find your fit</p>
@@ -402,8 +428,8 @@ export default function ScholarshipList({ items, initialCountry }) {
       {isUsingFallback && (
         <div className="scholarship-list__source-notice" role="status">
           <div>
-            <strong>Live directory unavailable.</strong>
-            <span>Showing local scholarship data instead.</span>
+            <strong>Catalogue snapshot unavailable.</strong>
+            <span>Showing the bundled sample listings instead.</span>
           </div>
           <button type="button" onClick={retryRequest}>Retry</button>
         </div>

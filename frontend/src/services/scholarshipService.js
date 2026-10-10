@@ -1,4 +1,67 @@
+import { loadScholarshipSnapshot } from './staticScholarshipService.js'
+
 const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL || '/api').replace(/\/$/, '')
+
+/**
+ * How public catalogue requests are answered.
+ *
+ * `static`  the bundled snapshot is the source of truth for public browsing.
+ *           No Neon round trip is made, so the catalogue renders whether or
+ *           not the database has quota, is paused, or is reachable at all.
+ * `api`     an explicit, opt-in live refresh: the API is tried first and the
+ *           snapshot is used only if the API genuinely fails.
+ *
+ * The default is `static`. That is deliberate. Public browsing used to hit the
+ * API first and fall back on failure, which meant every page load spent a
+ * request against the database before it could show anything, and every page
+ * load failed while the database had no quota. The snapshot is a
+ * version-controlled artifact in the same bundle; reading it first costs
+ * nothing and cannot be throttled.
+ *
+ * `api` stays available because some datasets do need to ask the database and
+ * the live list can differ from the snapshot. It is reached by opting in, never
+ * by a public page requiring it.
+ */
+export const CATALOGUE_MODES = Object.freeze({ STATIC: 'static', API: 'api' })
+
+let activeCatalogueMode = CATALOGUE_MODES.STATIC
+
+export function getCatalogueMode() {
+  return activeCatalogueMode
+}
+
+export function setCatalogueMode(nextMode) {
+  // An unrecognised mode is a programming error, not a silent downgrade: it
+  // would be indistinguishable from asking for the database and being denied.
+  if (!Object.prototype.hasOwnProperty.call(CATALOGUE_MODES, String(nextMode).toUpperCase())) {
+    throw new Error(
+      `Unknown catalogue mode ${JSON.stringify(nextMode)}. `
+      + `Expected one of ${Object.values(CATALOGUE_MODES).join(', ')}.`,
+    )
+  }
+  activeCatalogueMode = CATALOGUE_MODES[String(nextMode).toUpperCase()]
+  return activeCatalogueMode
+}
+
+/**
+ * Resolve which mode a call should use: the caller's explicit choice wins,
+ * otherwise the module's current setting.
+ */
+function resolveCatalogueMode(options) {
+  const requested = options && options.catalogueMode !== undefined
+    ? options.catalogueMode
+    : activeCatalogueMode
+
+  // An unknown mode is rejected rather than coerced to a default. Coercing
+  // would mean a caller who asked for the live API silently got the snapshot.
+  if (requested !== CATALOGUE_MODES.STATIC && requested !== CATALOGUE_MODES.API) {
+    throw new Error(
+      `Unknown catalogue mode ${JSON.stringify(requested)}. `
+      + `Expected one of ${Object.values(CATALOGUE_MODES).join(', ')}.`,
+    )
+  }
+  return requested
+}
 
 export class ScholarshipApiError extends Error {
   constructor(message, status) {
@@ -26,7 +89,10 @@ function isTimeoutError(error) {
 }
 
 /**
- * Determines if an error should trigger the static snapshot fallback.
+ * Determines if a failed live call should fall back to the static snapshot.
+ *
+ * This only applies on the API path. In the default static mode there is no API
+ * call to fail, so this is never consulted.
  *
  * Every error is classified explicitly, and the classification is a total
  * function with a single answer per kind of failure. Nothing here is a
@@ -202,26 +268,53 @@ function dedupe(key, run, signal) {
   })
 }
 
-/* ── Static snapshot fallback ──────────────────────────────────────────
-   When the API is unavailable due to a server error (5xx) or network failure,
-   we fall back to the version-controlled JSON snapshot. The snapshot contains
-   all public scholarships (634 records) and stats, filtered by the canonical
-   visibility predicate (excludes closed, archived, quarantined).
-   
-   CRITICAL: We do NOT fall back on 4xx errors (400, 401, 403, 404, 422).
-   A stale snapshot must never resurrect a scholarship that the live API
-   says is hidden, invalid, or unavailable.
-   
-   The snapshot is loaded once and cached in memory. Filtering, pagination,
-   and sorting are performed client-side on the full dataset. */
+/* ── The static snapshot ─────────────────────────────────────────────────
+   The version-controlled JSON snapshot is the default source for public
+   browsing. It carries all public scholarships produced by
+   generate_snapshot.py, filtered by the canonical visibility predicate
+   (excludes closed, archived and quarantined records), plus the public
+   statistics and the precomputed list orderings.
 
-import { loadScholarshipSnapshot } from './staticScholarshipService.js'
+   Reading it first means the public catalogue does not depend on the database
+   being reachable, being within quota, or being fast. The API path remains for
+   callers who explicitly opt in, and only then does the snapshot act as a
+   fallback for a genuine API failure.
+
+    Even on the API path the snapshot is never consulted for a 4xx: a stale
+    snapshot must not resurrect a scholarship the live API says is gone.
+    ────────────────────────────────────────────────────────────────────── */
+
+/**
+ * A filter value that means "no filter".
+ *
+ * The catalogue controls send the literal string `'All'` when nothing is
+ * selected. `request()` has always stripped it before building a URL, so the
+ * live API never saw it; the snapshot filter did, and matched against the
+ * literal word - a directory with every control on 'All' therefore returned
+ * zero records. That was invisible while the API answered, and became a blank
+ * homepage the moment the snapshot became the default source.
+ *
+ * Blank and 'All' are the two sentinels, case-insensitively, which is what the
+ * repository's own `_normalise_optional_filter` treats as absent.
+ */
+function isNoFilter(value) {
+  if (value === null || value === undefined) {
+    return true
+  }
+  if (typeof value !== 'string') {
+    return false
+  }
+  const normalised = value.trim()
+  // `toLowerCase`, not `casefold`: that is a Python method, and reaching for it
+  // here would be a ReferenceError on every catalogue load.
+  return normalised === '' || normalised.toLowerCase() === 'all'
+}
 
 function filterScholarships(scholarships, query) {
   let filtered = [...scholarships]
 
   // Search filter
-  if (query.search) {
+  if (!isNoFilter(query.search)) {
     const search = query.search.toLowerCase()
     filtered = filtered.filter(s =>
       (s.title?.toLowerCase().includes(search)) ||
@@ -233,34 +326,34 @@ function filterScholarships(scholarships, query) {
   }
 
   // Country filter
-  if (query.country) {
+  if (!isNoFilter(query.country)) {
     const country = query.country.toLowerCase()
     filtered = filtered.filter(s => s.country?.toLowerCase() === country)
   }
 
   // Degree filter
-  if (query.degree) {
+  if (!isNoFilter(query.degree)) {
     const degree = query.degree.toLowerCase()
     filtered = filtered.filter(s => s.degree?.toLowerCase() === degree)
   }
 
   // Funding filter
-  if (query.funding) {
+  if (!isNoFilter(query.funding)) {
     const funding = query.funding.toLowerCase()
     filtered = filtered.filter(s => s.funding?.toLowerCase() === funding)
   }
 
   // Deadline month filter
-  if (query.deadline_month) {
+  if (!isNoFilter(query.deadline_month)) {
     filtered = filtered.filter(s => {
       if (!s.deadline_date) return false
       const month = new Date(s.deadline_date).getMonth() + 1
-      return month === query.deadline_month
+      return month === Number(query.deadline_month)
     })
   }
 
   // Status filter
-  if (query.status) {
+  if (!isNoFilter(query.status)) {
     filtered = filtered.filter(s => s.status === query.status)
   }
 
@@ -510,12 +603,102 @@ async function tryApiThenSnapshot(key, send, fallbackFn, options) {
   }
 }
 
+/**
+ * The public catalogue, served from the bundled snapshot.
+ *
+ * This is the default path for public browsing and it never contacts the API,
+ * so it cannot be blocked by a database quota, a paused database, or a slow
+ * backend. The snapshot is a version-controlled artifact in the same bundle,
+ * so it is always present on a deploy that shipped the code that reads it.
+ *
+ * The caller's AbortSignal is honoured through the same de-duplication layer as
+ * the API path: concurrent readers share one snapshot load, and a consumer that
+ * unmounts cancels only its own wait.
+ */
+async function readSnapshotList(query) {
+  const snapshot = await loadScholarshipSnapshot()
+  const allScholarships = snapshot.scholarships || []
+
+  // Filter first, then order. The snapshot's precomputed orderings are total
+  // orders over the whole public set, so restricting one to a filtered subset
+  // keeps the same relative order the API gives that subset - the API applies
+  // its ORDER BY to the rows its filters leave, which is the same thing.
+  const filtered = filterScholarships(allScholarships, query)
+  const ordered = sortScholarships(filtered, query.sort || 'default', snapshot)
+  const result = paginate(ordered, query.page || 1, query.limit || 12)
+
+  return {
+    items: result.items.map(normalizeScholarship),
+    pagination: result.pagination,
+    source: 'snapshot',
+    snapshot_meta: snapshot.meta,
+  }
+}
+
+async function readSnapshotDetail(id) {
+  const snapshot = await loadScholarshipSnapshot()
+
+  // Compared numerically as well as by identity. Callers reach this from a
+  // route parameter, which React Router supplies as a string, while the
+  // snapshot carries integer ids exactly as the database does. Strict
+  // equality alone would make a string request miss a record that exists.
+  const numericId = Number(id)
+  const scholarship = (snapshot.scholarships || []).find(
+    s => s.id === id || (Number.isFinite(numericId) && s.id === numericId),
+  )
+
+  // A snapshot may not carry a record the live catalogue does. That is
+  // reported as a genuine 404 rather than as an empty record or a fabricated
+  // one, because the alternative would be advertising a scholarship that
+  // cannot be opened.
+  if (!scholarship) {
+    throw new ScholarshipApiError('Scholarship not found in snapshot', 404)
+  }
+
+  // Provenance travels with the record so a detail view can disclose that it
+  // is reading a snapshot. This is the page where a student acts on a
+  // deadline, so it is the page that most needs to say so.
+  const meta = { ...(snapshot.meta || {}) }
+  delete meta.sort_orders
+
+  return {
+    ...normalizeScholarship({ ...scholarship, _source: 'snapshot' }),
+    snapshot_meta: meta,
+  }
+}
+
+async function readSnapshotStats() {
+  const snapshot = await loadScholarshipSnapshot()
+  const meta = { ...(snapshot.meta || {}) }
+
+  // The orderings are list-shape data: nine arrays of every public id, needed
+  // to reproduce the API's ordering and of no use to a counts consumer. They
+  // are left out here so a stats response stays about counts, rather than
+  // carrying the ordering of the whole catalogue with it.
+  delete meta.sort_orders
+
+  return {
+    ...snapshot.stats,
+    source: 'snapshot',
+    snapshot_meta: meta,
+  }
+}
+
 export async function fetchScholarships(query = {}, options) {
   // The key is built from a sorted key list so that two callers who pass the
   // same filters in a different property order still share one request.
   const key = `list:${JSON.stringify(query, Object.keys(query).sort())}`
-  
-  // Try API first
+  const mode = resolveCatalogueMode(options)
+
+  // Static mode: answer entirely from the snapshot. `dedupe` still applies so
+  // that several catalogue surfaces mounting together share one load, and so a
+  // cancelled consumer rejects without starting one.
+  if (mode === CATALOGUE_MODES.STATIC) {
+    return dedupe(key, () => readSnapshotList(query), options?.signal)
+  }
+
+  // Live mode, chosen explicitly by the caller. The API is tried first and the
+  // snapshot is used only when the API genuinely cannot answer.
   const send = () =>
     request('/scholarships', query).then((payload) => ({
       items: Array.isArray(payload.items) ? payload.items.map(normalizeScholarship) : [],
@@ -523,84 +706,36 @@ export async function fetchScholarships(query = {}, options) {
       source: 'api',
     }))
 
-  const fallbackFn = async () => {
-    const snapshot = await loadScholarshipSnapshot()
-    const allScholarships = snapshot.scholarships || []
-
-    // Filter first, then order. The snapshot's precomputed orderings are total
-    // orders over the whole public set, so restricting one to a filtered subset
-    // keeps the same relative order the API gives that subset - the API applies
-    // its ORDER BY to the rows its filters leave, which is the same thing.
-    let filtered = filterScholarships(allScholarships, query)
-    filtered = sortScholarships(filtered, query.sort || 'default', snapshot)
-    const result = paginate(filtered, query.page || 1, query.limit || 12)
-
-    return {
-      items: result.items.map(normalizeScholarship),
-      pagination: result.pagination,
-      source: 'snapshot',
-      snapshot_meta: snapshot.meta,
-    }
-  }
-
-  return tryApiThenSnapshot(key, send, fallbackFn, options)
+  return tryApiThenSnapshot(key, send, () => readSnapshotList(query), options)
 }
 
 export async function fetchScholarshipById(id, options) {
   const key = `detail:${id}`
+  const mode = resolveCatalogueMode(options)
+
+  if (mode === CATALOGUE_MODES.STATIC) {
+    return dedupe(key, () => readSnapshotDetail(id), options?.signal)
+  }
 
   const send = () =>
     request(`/scholarships/${encodeURIComponent(id)}`, undefined)
       .then(normalizeScholarship)
 
-  const fallbackFn = async () => {
-    const snapshot = await loadScholarshipSnapshot()
-    // Compared numerically as well as by identity. Callers reach this from a
-    // route parameter, which React Router supplies as a string, while the
-    // snapshot carries integer ids exactly as the database does. Strict
-    // equality alone would make a string request miss a record the live API
-    // finds, and the two paths would then disagree about whether it exists.
-    const numericId = Number(id)
-    const scholarship = (snapshot.scholarships || []).find(
-      s => s.id === id || (Number.isFinite(numericId) && s.id === numericId),
-    )
-
-    // CRITICAL: A stale snapshot must never resurrect a scholarship
-    // that the live API says is hidden or unavailable.
-    // If the API returned 404, we don't fall back - we propagate the 404.
-    // This fallback only runs for 5xx/network errors, so by definition
-    // the live API couldn't give us a definitive 404.
-    if (!scholarship) {
-      throw new ScholarshipApiError('Scholarship not found in snapshot', 404)
-    }
-
-    return normalizeScholarship({ ...scholarship, _source: 'snapshot' })
-  }
-
-  return tryApiThenSnapshot(key, send, fallbackFn, options)
+  return tryApiThenSnapshot(key, send, () => readSnapshotDetail(id), options)
 }
 
 export async function fetchScholarshipStats(options) {
   const key = 'stats'
+  const mode = resolveCatalogueMode(options)
 
-  const send = () =>
-    request('/scholarships/stats', undefined)
-
-  const fallbackFn = async () => {
-    const snapshot = await loadScholarshipSnapshot()
-    const meta = { ...(snapshot.meta || {}) }
-    // The orderings are list-shape data: nine arrays of every public id, needed
-    // to reproduce the API's ordering and of no use to a counts consumer. They
-    // are left out here so a stats response stays about counts, rather than
-    // carrying the ordering of the whole catalogue with it.
-    delete meta.sort_orders
-
-    return {
-      ...snapshot.stats,
-      source: 'snapshot',
-      snapshot_meta: meta,
-    }
+  if (mode === CATALOGUE_MODES.STATIC) {
+    return dedupe(key, () => readSnapshotStats(), options?.signal)
   }
 
-  return tryApiThenSnapshot(key, send, fallbackFn, options)
+  return tryApiThenSnapshot(
+    key,
+    () => request('/scholarships/stats', undefined),
+    () => readSnapshotStats(),
+    options,
+  )
 }

@@ -1,5 +1,12 @@
-﻿import { describe, it, expect, beforeEach, vi } from 'vitest'
-import { fetchScholarships, fetchScholarshipById, fetchScholarshipStats } from './scholarshipService.js'
+﻿import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
+import {
+  fetchScholarships,
+  fetchScholarshipById,
+  fetchScholarshipStats,
+  CATALOGUE_MODES,
+  getCatalogueMode,
+  setCatalogueMode,
+} from './scholarshipService.js'
 import { clearSnapshotCache } from './staticScholarshipService.js'
 
 const mockSnapshot = {
@@ -121,12 +128,25 @@ const mockSnapshot = {
   ],
 }
 
-describe('scholarshipService with snapshot fallback', () => {
+/**
+ * The live API path.
+ *
+ * These tests are for the explicitly opted-in `api` catalogue mode, where the
+ * API is tried first and the snapshot is used only when the API genuinely
+ * cannot answer. Static mode is the default and is covered by its own describe
+ * below, which never contacts the API at all.
+ */
+describe('scholarshipService live API path (explicit catalogueMode)', () => {
   beforeEach(() => {
     clearSnapshotCache()
     vi.resetAllMocks()
+    setCatalogueMode(CATALOGUE_MODES.API)
     // @ts-ignore - Vitest provides global fetch mock
     globalThis.fetch = vi.fn()
+  })
+
+  afterEach(() => {
+    setCatalogueMode(CATALOGUE_MODES.STATIC)
   })
 
   it('returns API data when API succeeds', async () => {
@@ -558,6 +578,14 @@ function expectAbort(promise) {
   return expect(promise).rejects.toThrow(ABORT_MESSAGE)
 }
 
+/**
+ * Cancellation and de-duplication on the live API path.
+ *
+ * These pin the fallback decision (a cancelled caller must never be handed
+ * snapshot data), the isolation of one consumer's signal from another's
+ * request, and the release of the in-flight entry. The same properties are
+ * re-proven on the static path in its own describe below.
+ */
 describe('scholarshipService cancellation and request de-duplication', () => {
   beforeEach(() => {
     // A brand-new mock per test, installed with `vi.stubGlobal` rather than a
@@ -567,7 +595,12 @@ describe('scholarshipService cancellation and request de-duplication', () => {
     // next one.
     clearSnapshotCache()
     vi.unstubAllGlobals()
+    setCatalogueMode(CATALOGUE_MODES.API)
     vi.stubGlobal('fetch', vi.fn())
+  })
+
+  afterEach(() => {
+    setCatalogueMode(CATALOGUE_MODES.STATIC)
   })
 
   /* ---------------------------------------------- Caller cancellation ---------------------------------------------- */
@@ -1596,38 +1629,479 @@ describe('snapshot ordering uses the precomputed order', () => {
     }
   })
 
+  it('the "All" sentinel the catalogue controls send is not treated as a filter', async () => {
+    // The directory controls send the literal string 'All' when nothing is
+    // selected. `request()` strips it before building a URL, so the live API
+    // never saw it; the snapshot filter used to match against the word and
+    // returned zero records, which turned into a blank homepage the moment the
+    // snapshot became the default source.
+    serveSnapshotOnly(mockSnapshot)
+
+    const result = await fetchScholarships({
+      search: '',
+      country: 'All',
+      degree: 'All',
+      funding: 'All',
+      deadline_month: 'All',
+      status: 'All',
+      sort: 'recommended',
+      page: 1,
+      limit: 12,
+    })
+
+    expect(result.source).toBe('snapshot')
+    expect(result.items).toHaveLength(3)
+    expect(result.pagination.total).toBe(3)
+  })
+
+  it('a blank filter value is not treated as a filter either', async () => {
+    serveSnapshotOnly(mockSnapshot)
+
+    const result = await fetchScholarships({ country: '   ', status: '', degree: null })
+    expect(result.items).toHaveLength(3)
+  })
+
+  it('a real filter still narrows the result', async () => {
+    // The fix must not simply disable filtering.
+    serveSnapshotOnly(mockSnapshot)
+
+    const byCountry = await fetchScholarships({ country: 'USA' })
+    expect(byCountry.items.map((s) => s.id)).toEqual([1, 3])
+
+    const byStatus = await fetchScholarships({ status: 'upcoming' })
+    expect(byStatus.items.map((s) => s.id)).toEqual([2])
+
+    const byFunding = await fetchScholarships({ funding: 'Fully Funded' })
+    expect(byFunding.items.map((s) => s.id)).toEqual([1, 3])
+  })
+
+  it('a filter is applied before the ordering, so ordering is of the subset', async () => {
+    serveSnapshotOnly(mockSnapshot)
+
+    const result = await fetchScholarships({ country: 'USA', sort: 'name-asc' })
+    expect(result.items.map((s) => s.id)).toEqual([3, 1])
+  })
+
   it('detail and stats requests are unaffected by the ordering change', async () => {
-    globalThis.fetch
-      .mockResolvedValueOnce({ ok: false, status: 503, json: async () => ({ detail: 'unavailable' }) })
-      .mockResolvedValueOnce({ ok: true, status: 200, json: async () => mockSnapshot })
+    // Static mode: one snapshot request serves all three operations, and no
+    // API request is made at all.
+    globalThis.fetch.mockImplementation(async (url) => {
+      expect(String(url)).toContain('scholarships-snapshot.json')
+      return { ok: true, status: 200, json: async () => mockSnapshot }
+    })
 
     const detail = await fetchScholarshipById(3)
     expect(detail.id).toBe(3)
 
-    globalThis.fetch
-      .mockResolvedValueOnce({ ok: false, status: 503, json: async () => ({ detail: 'unavailable' }) })
-      .mockResolvedValueOnce({ ok: true, status: 200, json: async () => mockSnapshot })
-
     const stats = await fetchScholarshipStats()
     expect(stats.total).toBe(634)
+    expect(globalThis.fetch).not.toHaveBeenCalledWith(
+      expect.stringContaining('/api/'),
+      expect.anything(),
+    )
   })
 
   it('a stats response does not carry the list orderings', async () => {
     // The orderings are nine arrays of every public id. They exist to reproduce
     // the API's list ordering, so they belong in a list response - a counts
     // response should not carry the ordering of the whole catalogue with it.
-    globalThis.fetch
-      .mockResolvedValueOnce({ ok: false, status: 503, json: async () => ({ detail: 'unavailable' }) })
-      .mockResolvedValueOnce({ ok: true, status: 200, json: async () => mockSnapshot })
+    const result = await fallbackWith(mockSnapshot, {})
 
     const stats = await fetchScholarshipStats()
     expect(stats.source).toBe('snapshot')
     expect(stats.snapshot_meta).not.toHaveProperty('sort_orders')
     expect(stats.snapshot_meta.sort_order_modes).toBeDefined()
+    expect(result.source).toBe('snapshot')
   })
 
   it('a list response does expose the orderings, because it needs them', async () => {
     const result = await fallbackWith(mockSnapshot, { sort: 'recently-added' })
     expect(result.snapshot_meta.sort_orders['recently-added']).toEqual([2, 1, 3])
+  })
+})
+
+/** Fail nothing: in static mode no API request is made, so nothing to fail. */
+function serveSnapshotOnly(snapshot) {
+  globalThis.fetch.mockImplementation(async (url) => {
+    if (String(url).includes('scholarships-snapshot.json')) {
+      return { ok: true, status: 200, json: async () => snapshot }
+    }
+    // Any request to the API is a defect in static mode, and this makes it
+    // visible rather than silently returning something plausible.
+    throw new Error(`Unexpected API request in static mode: ${url}`)
+  })
+}
+
+/* ------------------------------------------------------------------------
+   Static-first: the public catalogue is served from the bundled snapshot
+
+   These tests prove the property the free-tier architecture needs: an
+   ordinary public listing, detail or stats request is answered from the
+   version-controlled snapshot without contacting the database at all.
+
+   That matters because the free-tier failure was a quota. A request that is
+   never made cannot be throttled, cannot be slow, and cannot be the reason a
+   page fails - which is the difference between a catalogue that happens to
+   work when the database is up and one that works because it does not depend
+   on the database.
+   ---------------------------------------------------------------------- */
+
+describe('static-first public catalogue', () => {
+  beforeEach(() => {
+    clearSnapshotCache()
+    vi.resetAllMocks()
+    setCatalogueMode(CATALOGUE_MODES.STATIC)
+    globalThis.fetch = vi.fn()
+  })
+
+  afterEach(() => {
+    setCatalogueMode(CATALOGUE_MODES.STATIC)
+  })
+
+  it('is in static mode by default, without any caller opting in', () => {
+    expect(getCatalogueMode()).toBe(CATALOGUE_MODES.STATIC)
+  })
+
+  it('a public listing is answered from the snapshot with no API request', async () => {
+    serveSnapshotOnly(mockSnapshot)
+
+    const result = await fetchScholarships({ page: 1, limit: 12 })
+
+    expect(result.source).toBe('snapshot')
+    expect(result.items).toHaveLength(3)
+
+    const apiCalls = globalThis.fetch.mock.calls.filter(
+      (call) => !String(call[0]).includes('scholarships-snapshot.json'),
+    )
+    expect(apiCalls).toHaveLength(0)
+    expect(String(globalThis.fetch.mock.calls[0][0])).toContain('scholarships-snapshot.json')
+  })
+
+  it('a public detail lookup is answered from the snapshot with no API request', async () => {
+    serveSnapshotOnly(mockSnapshot)
+
+    const detail = await fetchScholarshipById(2)
+
+    expect(detail.id).toBe(2)
+    expect(detail.title).toBe('Test Scholarship 2')
+    const apiCalls = globalThis.fetch.mock.calls.filter(
+      (call) => !String(call[0]).includes('scholarships-snapshot.json'),
+    )
+    expect(apiCalls).toHaveLength(0)
+  })
+
+  it('public statistics are answered from the snapshot with no API request', async () => {
+    serveSnapshotOnly(mockSnapshot)
+
+    const stats = await fetchScholarshipStats()
+
+    expect(stats.source).toBe('snapshot')
+    expect(stats.total).toBe(634)
+    const apiCalls = globalThis.fetch.mock.calls.filter(
+      (call) => !String(call[0]).includes('scholarships-snapshot.json'),
+    )
+    expect(apiCalls).toHaveLength(0)
+  })
+
+  it('the whole catalogue is usable with the API entirely unreachable', async () => {
+    // The database is over quota and the API is gone. Nothing about the
+    // catalogue should change.
+    const apiCalls = []
+    globalThis.fetch.mockImplementation(async (url) => {
+      if (String(url).includes('scholarships-snapshot.json')) {
+        return { ok: true, status: 200, json: async () => mockSnapshot }
+      }
+      apiCalls.push(url)
+      throw new TypeError('Failed to fetch')
+    })
+
+    const result = await fetchScholarships({ search: 'Scholarship', limit: 50 })
+    expect(result.source).toBe('snapshot')
+    expect(result.items.length).toBeGreaterThan(0)
+
+    const detail = await fetchScholarshipById('3')
+    expect(detail.id).toBe(3)
+
+    const stats = await fetchScholarshipStats()
+    expect(stats.total).toBe(634)
+
+    // The API was never touched, so it cannot have been the thing that failed.
+    expect(apiCalls).toHaveLength(0)
+  })
+
+  it('filtering, sorting and pagination all work without any API request', async () => {
+    serveSnapshotOnly(mockSnapshot)
+
+    const byCountry = await fetchScholarships({ country: 'USA' })
+    expect(byCountry.items.map((s) => s.id)).toEqual([1, 3])
+
+    const bySort = await fetchScholarships({ sort: 'deadline-earliest' })
+    expect(bySort.items.map((s) => s.id)).toEqual([3, 1, 2])
+
+    const pageTwo = await fetchScholarships({ page: 2, limit: 2 })
+    expect(pageTwo.items.map((s) => s.id)).toEqual([2])
+    expect(pageTwo.pagination).toEqual({ page: 2, limit: 2, total: 3, total_pages: 2 })
+  })
+
+  it('an empty result is an empty result, not an error', async () => {
+    serveSnapshotOnly(mockSnapshot)
+
+    const result = await fetchScholarships({ search: 'no such scholarship exists' })
+    expect(result.items).toEqual([])
+    expect(result.pagination.total).toBe(0)
+  })
+
+  /* ── Honesty about the data ─────────────────────────────────────── */
+
+  it('the snapshot provenance is exposed, so the UI can disclose it', async () => {
+    serveSnapshotOnly(mockSnapshot)
+
+    const result = await fetchScholarships({})
+    const meta = result.snapshot_meta
+
+    expect(meta.generated_at).toBeDefined()
+    expect(meta.source_database).toBe('scholarzone.db')
+    expect(meta.visibility_predicate).toContain('closed')
+    // And it says explicitly that the public set is a validation of the
+    // local database - not a statement about production.
+    expect(meta.source_record_count).toBe(695)
+    expect(meta.public_record_count).toBe(634)
+  })
+
+  it('verified status is derived, never fabricated', async () => {
+    // Record 2 is needs_review. It must not be reported as verified just
+    // because a UI badge wants a number of verified records to show.
+    serveSnapshotOnly(mockSnapshot)
+
+    const list = await fetchScholarships({ limit: 50 })
+    const byId = Object.fromEntries(list.items.map((s) => [s.id, s]))
+
+    expect(byId[2].verified).toBe(false)
+    expect(byId[2].verification_status).toBe('needs_review')
+    expect(byId[1].verified).toBe(true)
+    expect(byId[1].verification_status).toBe('active')
+
+    // The statistic agrees with the records rather than being its own number.
+    const stats = await fetchScholarshipStats()
+    const derived = list.items.filter((s) => s.verified === true).length
+    expect(stats.verified_active).toBeGreaterThanOrEqual(0)
+    expect(derived).toBe(2)
+  })
+
+  it('only public fields are exposed, with no internal workflow state', async () => {
+    serveSnapshotOnly(mockSnapshot)
+
+    const result = await fetchScholarships({})
+    for (const item of result.items) {
+      for (const field of [
+        'verification_notes',
+        'verified_by',
+        'next_verification_due',
+        'is_archived',
+        'archived_at',
+        'is_verified',
+        'created_at',
+      ]) {
+        expect(item).not.toHaveProperty(field)
+      }
+      // The official source link is what a student needs to confirm a
+      // deadline, so it has to survive into the response.
+      expect(item).toHaveProperty('official_source_url')
+    }
+  })
+
+  it('the notice can tell whether the source was the snapshot or the API', async () => {
+    serveSnapshotOnly(mockSnapshot)
+
+    const result = await fetchScholarships({})
+    expect(result.source).toBe('snapshot')
+    expect(result.snapshot_meta).toBeDefined()
+  })
+
+  /* ── Cancellation on the static path ────────────────────────────── */
+
+  it('an already-aborted caller starts no snapshot load', async () => {
+    const controller = new AbortController()
+    controller.abort()
+
+    await expectAbort(fetchScholarships({}, { signal: controller.signal }))
+    expect(globalThis.fetch).not.toHaveBeenCalled()
+  })
+
+  it('cancelling one static consumer does not break another', async () => {
+    // Two catalogue surfaces mount together. Unmounting one must not cancel
+    // the snapshot the other is still reading.
+    let resolveSnapshot
+    globalThis.fetch.mockReturnValueOnce(
+      new Promise((resolve) => {
+        resolveSnapshot = resolve
+      }),
+    )
+
+    const controller1 = new AbortController()
+    const controller2 = new AbortController()
+
+    const first = fetchScholarships({}, { signal: controller1.signal })
+    const second = fetchScholarships({}, { signal: controller2.signal })
+
+    controller1.abort()
+    await expectAbort(first)
+
+    resolveSnapshot({ ok: true, status: 200, json: async () => mockSnapshot })
+
+    const result = await second
+    expect(result.source).toBe('snapshot')
+    expect(result.items).toHaveLength(3)
+  })
+
+  it('a cancelled static consumer does not poison later requests', async () => {
+    let resolveSnapshot
+    globalThis.fetch.mockReturnValueOnce(
+      new Promise((resolve) => {
+        resolveSnapshot = resolve
+      }),
+    )
+
+    const controller = new AbortController()
+    const cancelled = fetchScholarships({}, { signal: controller.signal })
+    controller.abort()
+    await expectAbort(cancelled)
+
+    // Let the abandoned load settle, so the key is released.
+    resolveSnapshot({ ok: true, status: 200, json: async () => mockSnapshot })
+    await new Promise((resolve) => setTimeout(resolve, 0))
+
+    serveSnapshotOnly(mockSnapshot)
+    const later = await fetchScholarships({})
+    expect(later.items).toHaveLength(3)
+  })
+
+  /* ── Opting in to the live API is explicit ──────────────────────── */
+
+  it('the live API is reachable only by opting in', async () => {
+    serveSnapshotOnly(mockSnapshot)
+    globalThis.fetch.mockClear()
+
+    globalThis.fetch.mockResolvedValueOnce({
+      ok: true,
+      status: 200,
+      json: async () => ({
+        items: [{ id: 99, title: 'Live Record', country: 'Japan' }],
+        pagination: { page: 1, limit: 12, total: 1, total_pages: 1 },
+      }),
+    })
+
+    const result = await fetchScholarships({}, { catalogueMode: CATALOGUE_MODES.API })
+
+    expect(result.source).toBe('api')
+    expect(result.items[0].title).toBe('Live Record')
+    expect(String(globalThis.fetch.mock.calls[0][0])).toContain('/api/')
+  })
+
+  it('opting out of the API restores static mode without touching it', async () => {
+    setCatalogueMode(CATALOGUE_MODES.API)
+    expect(getCatalogueMode()).toBe(CATALOGUE_MODES.API)
+
+    setCatalogueMode(CATALOGUE_MODES.STATIC)
+    expect(getCatalogueMode()).toBe(CATALOGUE_MODES.STATIC)
+
+    serveSnapshotOnly(mockSnapshot)
+    const result = await fetchScholarships({})
+    expect(result.source).toBe('snapshot')
+  })
+
+  it('an unknown catalogue mode is rejected rather than silently coerced', async () => {
+    // Coercing would mean a caller who asked for the live API silently got the
+    // snapshot and could not tell the difference.
+    await expect(
+      fetchScholarships({}, { catalogueMode: 'production' }),
+    ).rejects.toThrow('Unknown catalogue mode')
+
+    await expect(
+      fetchScholarshipById(1, { catalogueMode: 'neon' }),
+    ).rejects.toThrow('Unknown catalogue mode')
+
+    await expect(
+      fetchScholarshipStats({ catalogueMode: 'direct' }),
+    ).rejects.toThrow('Unknown catalogue mode')
+
+    expect(() => setCatalogueMode('nonsense')).toThrow('Unknown catalogue mode')
+  })
+
+  it('an explicit static choice is honoured even when the module is set to api', async () => {
+    setCatalogueMode(CATALOGUE_MODES.API)
+    serveSnapshotOnly(mockSnapshot)
+
+    const result = await fetchScholarships({}, { catalogueMode: CATALOGUE_MODES.STATIC })
+
+    expect(result.source).toBe('snapshot')
+    const apiCalls = globalThis.fetch.mock.calls.filter(
+      (call) => !String(call[0]).includes('scholarships-snapshot.json'),
+    )
+    expect(apiCalls).toHaveLength(0)
+  })
+})
+
+/* ------------------------------------------------------------------------
+   Database-dependent features must not be presented as working
+
+   Static JSON restores public browsing and nothing else. Accounts, saved
+   scholarships, applications, matching and dashboards still need the
+   database. If those surfaces claim to work while it is unavailable, a
+   student is told a saved list was saved when it was not - which is the kind
+   of quiet failure that costs trust.
+   ---------------------------------------------------------------------- */
+
+describe('database-dependent features are honestly separate', () => {
+  beforeEach(() => {
+    clearSnapshotCache()
+    vi.resetAllMocks()
+    setCatalogueMode(CATALOGUE_MODES.STATIC)
+    globalThis.fetch = vi.fn()
+  })
+
+  it('a snapshot-only catalogue leaves no API request for a saved list', async () => {
+    serveSnapshotOnly(mockSnapshot)
+
+    await fetchScholarships({})
+
+    // There is no saved-scholarships endpoint call anywhere in the static
+    // path, because the static path has no notion of a user.
+    const apiCalls = globalThis.fetch.mock.calls.filter(
+      (call) => !String(call[0]).includes('scholarships-snapshot.json'),
+    )
+    expect(apiCalls).toHaveLength(0)
+  })
+
+  it('the snapshot carries no per-user state at all', async () => {
+    serveSnapshotOnly(mockSnapshot)
+
+    const result = await fetchScholarships({})
+    const blob = JSON.stringify(result)
+
+    for (const field of [
+      'saved_scholarships',
+      'application_records',
+      'student_profiles',
+      'student_sessions',
+      'user_sessions',
+      'users',
+      'professor_profiles',
+    ]) {
+      expect(blob).not.toContain(field)
+    }
+  })
+
+  it('a record carries no per-user or per-session marker', async () => {
+    serveSnapshotOnly(mockSnapshot)
+
+    const result = await fetchScholarships({})
+    for (const item of result.items) {
+      expect(item).not.toHaveProperty('user_id')
+      expect(item).not.toHaveProperty('session_id')
+      expect(item).not.toHaveProperty('owner_id')
+      expect(item).not.toHaveProperty('account_id')
+      expect(item).not.toHaveProperty('saved_at')
+    }
   })
 })
