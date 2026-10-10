@@ -25,7 +25,7 @@
       "framework": "vite",
       "rewrites": [
         {
-          "source": "/((?!api/|assets/).*)",
+          "source": "/((?!api/|assets/|scholarships-snapshot\\.json|favicon\\.svg|icons\\.svg|robots\\.txt|sitemap\\.xml|404\\.html).*)",
           "destination": "/index.html"
         }
       ]
