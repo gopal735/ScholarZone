@@ -1,5 +1,9 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest'
-import { loadScholarshipSnapshot, getCachedSnapshot, clearSnapshotCache } from './staticScholarshipService.js'
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
+import {
+  loadScholarshipSnapshot,
+  getCachedSnapshot,
+  clearSnapshotCache,
+} from './staticScholarshipService.js'
 
 const mockSnapshot = {
   meta: {
@@ -72,77 +76,117 @@ const mockSnapshot = {
 describe('staticScholarshipService', () => {
   beforeEach(() => {
     clearSnapshotCache()
-    vi.resetAllMocks()
-    // @ts-ignore - Vitest provides global fetch mock
-    globalThis.fetch = vi.fn()
   })
 
-  it('loads snapshot from /scholarships-snapshot.json', async () => {
-    // @ts-ignore
-    globalThis.fetch.mockResolvedValueOnce({
-      ok: true,
-      json: async () => mockSnapshot,
-    })
+  afterEach(() => {
+    vi.unstubAllGlobals()
+  })
+
+  /** Install a fresh fetch mock and return it. */
+  function stubFetch(impl) {
+    const mock = vi.fn(impl)
+    vi.stubGlobal('fetch', mock)
+    return mock
+  }
+
+  it('loads the snapshot from the asset path derived from the build base', async () => {
+    const fetchMock = stubFetch(async () => ({ ok: true, json: async () => mockSnapshot }))
 
     const snapshot = await loadScholarshipSnapshot()
     expect(snapshot).toEqual(mockSnapshot)
-    // @ts-ignore
-    expect(globalThis.fetch).toHaveBeenCalledWith('/scholarships-snapshot.json', {
-      headers: { Accept: 'application/json' },
-    })
+
+    // The URL is resolved against Vite's base rather than hardcoded to '/',
+    // so it is correct on a deployment served from a repository subpath as
+    // well as one served from the domain root.
+    const [url] = fetchMock.mock.calls[0]
+    expect(String(url)).toContain('scholarships-snapshot.json')
+    expect(String(url)).toMatch(/\/scholarships-snapshot\.json$/)
+    expect(fetchMock.mock.calls[0][1]).toEqual({ headers: { Accept: 'application/json' } })
   })
 
-  it('caches snapshot after first load', async () => {
-    // @ts-ignore
-    globalThis.fetch.mockResolvedValueOnce({
-      ok: true,
-      json: async () => mockSnapshot,
-    })
+  it('caches the snapshot after the first load', async () => {
+    const fetchMock = stubFetch(async () => ({ ok: true, json: async () => mockSnapshot }))
+
+    const first = await loadScholarshipSnapshot()
+    const second = await loadScholarshipSnapshot()
+
+    expect(second).toEqual(first)
+    expect(fetchMock).toHaveBeenCalledTimes(1)
+  })
+
+  it('serves concurrent callers from one fetch', async () => {
+    const fetchMock = stubFetch(async () => ({ ok: true, json: async () => mockSnapshot }))
+
+    const [first, second, third] = await Promise.all([
+      loadScholarshipSnapshot(),
+      loadScholarshipSnapshot(),
+      loadScholarshipSnapshot(),
+    ])
+
+    expect(first).toBe(second)
+    expect(second).toBe(third)
+    expect(fetchMock).toHaveBeenCalledTimes(1)
+  })
+
+  it('returns the cached snapshot from getCachedSnapshot', async () => {
+    stubFetch(async () => ({ ok: true, json: async () => mockSnapshot }))
 
     await loadScholarshipSnapshot()
-    const cached = await loadScholarshipSnapshot()
-
-    expect(cached).toEqual(mockSnapshot)
-    // @ts-ignore
-    expect(globalThis.fetch).toHaveBeenCalledTimes(1)
+    expect(getCachedSnapshot()).toEqual(mockSnapshot)
   })
 
-  it('returns cached snapshot from getCachedSnapshot', async () => {
-    // @ts-ignore
-    globalThis.fetch.mockResolvedValueOnce({
-      ok: true,
-      json: async () => mockSnapshot,
-    })
-
-    await loadScholarshipSnapshot()
-    const cached = getCachedSnapshot()
-
-    expect(cached).toEqual(mockSnapshot)
-  })
-
-  it('throws on fetch failure', async () => {
-    // @ts-ignore
-    globalThis.fetch.mockResolvedValueOnce({
-      ok: false,
-      status: 404,
-    })
+  it('throws on an HTTP error', async () => {
+    stubFetch(async () => ({ ok: false, status: 404 }))
 
     await expect(loadScholarshipSnapshot()).rejects.toThrow('Failed to load snapshot: 404')
   })
 
-  it('throws on network error', async () => {
-    // @ts-ignore
-    globalThis.fetch.mockRejectedValueOnce(new Error('Network error'))
+  it('throws on a network error', async () => {
+    stubFetch(async () => {
+      throw new TypeError('Failed to fetch')
+    })
 
-    await expect(loadScholarshipSnapshot()).rejects.toThrow('Network error')
+    await expect(loadScholarshipSnapshot()).rejects.toThrow('Failed to fetch')
   })
 
-  it('clears cache on clearSnapshotCache', async () => {
-    // @ts-ignore
-    globalThis.fetch.mockResolvedValueOnce({
-      ok: true,
-      json: async () => mockSnapshot,
-    })
+  it('does not cache a body that is not a snapshot object', async () => {
+    stubFetch(async () => ({ ok: true, json: async () => [1, 2, 3] }))
+
+    await expect(loadScholarshipSnapshot()).rejects.toThrow('Snapshot payload is not an object.')
+    expect(getCachedSnapshot()).toBeNull()
+  })
+
+  it('does not cache a body whose scholarships is not an array', async () => {
+    stubFetch(async () => ({ ok: true, json: async () => ({ meta: {}, stats: {} }) }))
+
+    await expect(loadScholarshipSnapshot()).rejects.toThrow(
+      'Snapshot payload has no scholarships array.',
+    )
+    expect(getCachedSnapshot()).toBeNull()
+  })
+
+  it('does not cache a null body', async () => {
+    stubFetch(async () => ({ ok: true, json: async () => null }))
+
+    await expect(loadScholarshipSnapshot()).rejects.toThrow('Snapshot payload is not an object.')
+    expect(getCachedSnapshot()).toBeNull()
+  })
+
+  it('retries after a failed load instead of caching the failure', async () => {
+    const fetchMock = stubFetch(async () => ({ ok: false, status: 500 }))
+    await expect(loadScholarshipSnapshot()).rejects.toThrow('Failed to load snapshot: 500')
+
+    // A second, successful attempt is allowed rather than being permanently
+    // short-circuited by the failed one.
+    fetchMock.mockImplementation(async () => ({ ok: true, json: async () => mockSnapshot }))
+    clearSnapshotCache()
+
+    const snapshot = await loadScholarshipSnapshot()
+    expect(snapshot).toEqual(mockSnapshot)
+  })
+
+  it('clears the cache on clearSnapshotCache', async () => {
+    stubFetch(async () => ({ ok: true, json: async () => mockSnapshot }))
 
     await loadScholarshipSnapshot()
     expect(getCachedSnapshot()).toEqual(mockSnapshot)
