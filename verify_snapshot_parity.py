@@ -358,6 +358,42 @@ def verify(db_path: str, snapshot_path: str, generator) -> Parity:
                 f"advertised {advertised!r}, present {sorted(expected_orders)}",
             )
 
+        # ---- The filter options, recomputed from the exported records.
+        print("\nFilter options")
+        # The controls must be able to select what the catalogue holds, and must
+        # not offer what it does not. A menu entry that cannot match is a filter
+        # that looks like it works and returns nothing; a missing entry is a
+        # value the catalogue has that cannot be reached from the UI. Both are
+        # checked against the records here rather than against the header, so
+        # the snapshot cannot drift from the data it ships.
+        expected_options = {
+            "countries": sorted({r.get("country") for r in records if r.get("country")}),
+            "degrees": sorted({r.get("degree") for r in records if r.get("degree")}),
+            "funding_types": sorted({r.get("funding") for r in records if r.get("funding")}),
+            "statuses": sorted({r.get("status") for r in records if r.get("status")}),
+            "deadline_months": sorted(
+                {int(r["deadline_date"][5:7]) for r in records if r.get("deadline_date")}
+            ),
+        }
+        published_options = (snapshot.get("meta") or {}).get("filter_options") or {}
+        for name, expected_values in expected_options.items():
+            published_values = published_options.get(name)
+            parity.check(
+                f"filter option '{name}' matches the exported records",
+                published_values == expected_values,
+                "menu declares a different set of values than the catalogue holds",
+            )
+
+        # No status the visibility predicate excludes may be offered. Closed
+        # records are absent from the public set by construction, so a "closed"
+        # option can never match.
+        statuses = published_options.get("statuses") or []
+        parity.check(
+            "no filter option selects a status the catalogue excludes",
+            "closed" not in statuses,
+            f"statuses={statuses}",
+        )
+
         return parity
     finally:
         connection.close()

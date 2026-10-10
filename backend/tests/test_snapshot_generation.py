@@ -1128,3 +1128,131 @@ def test_the_verifier_fails_when_parity_is_broken(generator, parity_tool, tmp_pa
         json.dump(snapshot, handle)
 
     assert parity_tool.main(["--db", database, "--snapshot", str(snapshot_path)]) == 1
+
+
+# ── Filter options ───────────────────────────────────────────────────────
+#
+# The directory's country/degree/funding/status/deadline-month menus used to be
+# hardcoded lists. Against the real catalogue that meant: a Country menu of four
+# entries when the catalogue carries 74 countries; a Degree menu whose three
+# entries matched 1, 3 and 1 records; a Funding menu of one entry out of 88; and
+# a Status menu offering `closed`, which the visibility predicate makes
+# unmatchable. They are now derived from the records the snapshot exports.
+
+
+def test_filter_options_are_derived_from_the_exported_records(generator, tmp_path):
+    make_database(
+        tmp_path / "filters.db",
+        [
+            base_row(id=1, title="One", country="Japan", degree="PhD", funding="Stipend",
+                     status="open", deadline_date="2026-01-15"),
+            base_row(id=2, title="Two", country="Japan", degree="Master", funding="Stipend",
+                     status="open", deadline_date="2026-03-20"),
+            base_row(id=3, title="Three", country="Sweden", degree="PhD", funding="Partial",
+                     status="upcoming", deadline_date="2026-01-31"),
+        ],
+    )
+
+    snapshot = export(generator, str(tmp_path / "filters.db"), tmp_path)
+    options = snapshot["meta"]["filter_options"]
+
+    assert options["countries"] == ["Japan", "Sweden"]
+    assert options["degrees"] == ["Master", "PhD"]
+    assert options["funding_types"] == ["Partial", "Stipend"]
+    assert options["statuses"] == ["open", "upcoming"]
+    # Two January deadlines and one in March. Sorted numerically, so the list is
+    # valid for the month control without further ordering.
+    assert options["deadline_months"] == [1, 3]
+
+
+def test_filter_options_exclude_a_status_the_visibility_rule_hides(generator, tmp_path):
+    # A control that can never match is worse than one that is missing: it looks
+    # like it works and returns nothing. Closed records are not in the public set,
+    # so they must not appear as a selectable status.
+    make_database(
+        tmp_path / "statuses.db",
+        [
+            base_row(id=1, status="open"),
+            base_row(id=2, status="closing-soon"),
+            base_row(id=3, status="upcoming"),
+            base_row(id=4, status="closed"),
+        ],
+    )
+
+    snapshot = export(generator, str(tmp_path / "statuses.db"), tmp_path)
+    options = snapshot["meta"]["filter_options"]
+
+    assert options["statuses"] == ["closing-soon", "open", "upcoming"]
+    assert "closed" not in options["statuses"]
+
+
+def test_filter_options_are_deterministic(generator, tmp_path):
+    database = make_database(
+        tmp_path / "det.db",
+        [
+            base_row(id=1, country="Japan", degree="PhD"),
+            base_row(id=2, country="Sweden", degree="Master"),
+            base_row(id=3, country="Japan", degree="Master"),
+        ],
+    )
+
+    first = export(generator, database, tmp_path / "one")
+    second = export(generator, database, tmp_path / "two")
+
+    assert first["meta"]["filter_options"] == second["meta"]["filter_options"]
+
+
+def test_the_verifier_detects_a_filter_option_no_record_matches(generator, parity_tool, tmp_path):
+    database = make_database(
+        tmp_path / "opt.db",
+        [base_row(id=1, country="Japan"), base_row(id=2, country="Sweden")],
+    )
+    snapshot_path = tmp_path / "out" / "snapshot.json"
+    snapshot = generator.generate_snapshot(database, str(snapshot_path))
+
+    # Europe is not a country any record holds, and was an option that could
+    # only ever return nothing.
+    snapshot["meta"]["filter_options"]["countries"] = ["Europe", "Japan", "Sweden"]
+    with open(snapshot_path, "w", encoding="utf-8") as handle:
+        json.dump(snapshot, handle)
+
+    result = parity_tool.verify(database, str(snapshot_path), generator)
+
+    assert not result.ok
+    assert any("filter option 'countries'" in finding for finding in result.findings)
+
+
+def test_the_verifier_detects_an_unmatchable_status_option(generator, parity_tool, tmp_path):
+    database = make_database(tmp_path / "unmatchable.db", [base_row(id=1, status="open")])
+    snapshot_path = tmp_path / "out" / "snapshot.json"
+    snapshot = generator.generate_snapshot(database, str(snapshot_path))
+
+    snapshot["meta"]["filter_options"]["statuses"] = ["closed", "open"]
+    with open(snapshot_path, "w", encoding="utf-8") as handle:
+        json.dump(snapshot, handle)
+
+    result = parity_tool.verify(database, str(snapshot_path), generator)
+
+    assert not result.ok
+    assert any(
+        "excludes" in finding or "statuses" in finding for finding in result.findings
+    )
+
+
+def test_the_verifier_detects_a_missing_country_option(generator, parity_tool, tmp_path):
+    database = make_database(
+        tmp_path / "missing.db",
+        [base_row(id=1, country="Japan"), base_row(id=2, country="Sweden")],
+    )
+    snapshot_path = tmp_path / "out" / "snapshot.json"
+    snapshot = generator.generate_snapshot(database, str(snapshot_path))
+
+    # Japan is in the catalogue and cannot be reached from the control.
+    snapshot["meta"]["filter_options"]["countries"] = ["Sweden"]
+    with open(snapshot_path, "w", encoding="utf-8") as handle:
+        json.dump(snapshot, handle)
+
+    result = parity_tool.verify(database, str(snapshot_path), generator)
+
+    assert not result.ok
+    assert any("filter option 'countries'" in finding for finding in result.findings)

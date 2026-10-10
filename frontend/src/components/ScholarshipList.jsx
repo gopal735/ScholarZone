@@ -10,6 +10,37 @@ const PAGE_SIZE = 12
 const SEARCH_DEBOUNCE_MS = 250
 const STATUS_ORDER = { open: 0, 'closing-soon': 1, closed: 2 }
 
+/** Prepends the "no filter" entry to a list of selectable values. */
+function All_PLUS(values) {
+  return ['All', ...values]
+}
+
+/* The previous hardcoded option lists, kept only as a fallback for a response
+   that carries no filter options. The snapshot does; an opted-in live API
+   response does not. These names are not derived from the catalogue, so some of
+   them may match nothing - which is exactly why the default path no longer uses
+   them. */
+const FALLBACK_COUNTRIES = ['India', 'Germany', 'Europe', 'South Korea']
+const FALLBACK_DEGREES = ['Bachelor', 'Master', "UG (Bachelor's/Associate)"]
+const FALLBACK_FUNDING = ['Fully Funded']
+const FALLBACK_STATUSES = ['open', 'closing-soon', 'closed']
+const FALLBACK_MONTHS = ['1', '4', '10']
+
+/* Human labels for the values that are stored as codes. Months are the stored
+   calendar month, not a name, so they need a lookup; statuses have the same
+   problem. Everything else is shown as it is stored, because the stored value
+   is what the filter matches on and renaming it would make the control lie. */
+const MONTH_NAMES = [
+  '', 'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December',
+]
+
+const STATUS_LABELS = {
+  open: 'Open',
+  'closing-soon': 'Closing soon',
+  upcoming: 'Upcoming',
+}
+
 function toValidTimestamp(value) {
   if (typeof value !== 'string' || value.trim() === '') {
     return null
@@ -29,8 +60,7 @@ function compareNullableTimestamps(firstValue, secondValue, direction = 'asc') {
   }
 
   if (secondValue === null) {
-    return -1
-  }
+    return -1  }
 
   return direction === 'asc' ? firstValue - secondValue : secondValue - firstValue
 }
@@ -157,6 +187,46 @@ export default function ScholarshipList({ items, initialCountry }) {
     () => filterLocalScholarships(localItems, { search, country, degree, funding, deadlineMonth, status, sortBy }),
     [localItems, search, country, degree, funding, deadlineMonth, status, sortBy],
   )
+
+  /* The selectable values, from the catalogue that was actually loaded.
+
+     These were hardcoded lists, and against this catalogue they were wrong in
+     both directions: they offered values no record holds - `Europe` as a
+     country, `closed` as a status, which the visibility predicate excludes by
+     construction - while omitting nearly everything the catalogue does hold, so
+     the Country menu named four of 74 countries and the Degree menu matched 1,
+     3 and 1 records.
+
+     The snapshot carries the distinct values it exports, so the menus are built
+     from those. The consequence that made this worth fixing is that a value
+     arriving in the URL is now representable: with a hardcoded list, a select
+     pointing at `Japan` had no matching option and the browser silently showed
+     the first one, so the menu read "All countries" while the results were all
+     Japan - a control that contradicted the page it was on.
+
+     When the response carries no filter options - an opted-in live API response
+     does not - the previous lists are kept rather than the menus being emptied,
+     so opting in does not remove the controls. */
+  const filterOptions = catalogueSource?.meta?.filter_options || null
+
+  const optionLists = useMemo(() => {
+    if (filterOptions) {
+      return {
+        countries: All_PLUS(filterOptions.countries),
+        degrees: All_PLUS(filterOptions.degrees),
+        fundingTypes: All_PLUS(filterOptions.funding_types),
+        statuses: All_PLUS(filterOptions.statuses),
+        deadlineMonths: All_PLUS((filterOptions.deadline_months || []).map(String)),
+      }
+    }
+    return {
+      countries: All_PLUS(FALLBACK_COUNTRIES),
+      degrees: All_PLUS(FALLBACK_DEGREES),
+      fundingTypes: All_PLUS(FALLBACK_FUNDING),
+      statuses: All_PLUS(FALLBACK_STATUSES),
+      deadlineMonths: All_PLUS(FALLBACK_MONTHS),
+    }
+  }, [filterOptions])
 
   useEffect(() => {
     if (!isDirectory) {
@@ -321,11 +391,11 @@ export default function ScholarshipList({ items, initialCountry }) {
                 setPage(1)
               }}
             >
-              <option value="All">All countries</option>
-              <option value="India">India</option>
-              <option value="Germany">Germany</option>
-              <option value="Europe">Europe</option>
-              <option value="South Korea">South Korea</option>
+              {optionLists.countries.map((value) => (
+                <option key={value} value={value}>
+                  {value === 'All' ? 'All countries' : value}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -339,10 +409,11 @@ export default function ScholarshipList({ items, initialCountry }) {
                 setPage(1)
               }}
             >
-              <option value="All">All degrees</option>
-              <option value="Bachelor">Bachelor</option>
-              <option value="Master">Master</option>
-              <option value="UG (Bachelor's/Associate)">UG (Bachelor&apos;s/Associate)</option>
+              {optionLists.degrees.map((value) => (
+                <option key={value} value={value}>
+                  {value === 'All' ? 'All degrees' : value}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -356,8 +427,11 @@ export default function ScholarshipList({ items, initialCountry }) {
                 setPage(1)
               }}
             >
-              <option value="All">All funding</option>
-              <option value="Fully Funded">Fully funded</option>
+              {optionLists.fundingTypes.map((value) => (
+                <option key={value} value={value}>
+                  {value === 'All' ? 'All funding' : value}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -371,10 +445,11 @@ export default function ScholarshipList({ items, initialCountry }) {
                 setPage(1)
               }}
             >
-              <option value="All">Any month</option>
-              <option value="1">January</option>
-              <option value="4">April</option>
-              <option value="10">October</option>
+              {optionLists.deadlineMonths.map((value) => (
+                <option key={value} value={value}>
+                  {value === 'All' ? 'Any month' : MONTH_NAMES[Number(value)] || value}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -388,10 +463,11 @@ export default function ScholarshipList({ items, initialCountry }) {
                 setPage(1)
               }}
             >
-              <option value="All">All statuses</option>
-              <option value="open">Open</option>
-              <option value="closing-soon">Closing soon</option>
-              <option value="closed">Closed</option>
+              {optionLists.statuses.map((value) => (
+                <option key={value} value={value}>
+                  {value === 'All' ? 'All statuses' : STATUS_LABELS[value] || value}
+                </option>
+              ))}
             </select>
           </div>
 

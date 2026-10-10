@@ -652,6 +652,33 @@ def generate_snapshot(db_path: str, output_path: str) -> dict[str, Any]:
             "with_official_source": with_official_source,
         }
 
+        # The values the filter controls can actually select, taken from the
+        # records that were exported.
+        #
+        # The directory's country, degree, funding, status and deadline-month
+        # controls were hardcoded lists. Against this catalogue that meant: a
+        # "Country" menu of four entries out of 74 real ones; a "Degree" menu
+        # whose three entries matched 1, 3 and 1 records while the values most of
+        # the catalogue actually holds were absent; a "Funding" menu of one entry
+        # out of 88; and a "Status" menu offering `closed`, which can never match
+        # anything because the visibility predicate excludes closed records by
+        # design.
+        #
+        # A control that cannot match is worse than a missing one: it presents
+        # itself as working and returns nothing. A URL such as
+        # ?country=Japan made the contradiction plain - the results were Japan,
+        # and the menu read "All countries", because Japan was not an option and
+        # the browser fell back to the first one.
+        filter_options = {
+            "countries": sorted({s["country"] for s in scholarships if s["country"]}),
+            "degrees": sorted({s["degree"] for s in scholarships if s["degree"]}),
+            "funding_types": sorted({s["funding"] for s in scholarships if s["funding"]}),
+            "statuses": sorted({s["status"] for s in scholarships if s["status"]}),
+            "deadline_months": sorted(
+                {int(s["deadline_date"][5:7]) for s in scholarships if s["deadline_date"]}
+            ),
+        }
+
         snapshot = {
             "meta": {
                 "generated_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
@@ -666,6 +693,9 @@ def generate_snapshot(db_path: str, output_path: str) -> dict[str, Any]:
                 "excluded_union": counts["excluded_union"],
                 "schema_version": "1.0",
                 "visibility_predicate": "status != closed AND is_archived = false AND verification_status != quarantined",
+                # Selectable values, so the filter menus describe this catalogue
+                # rather than a smaller one.
+                "filter_options": filter_options,
                 # Ordered ID lists, one per sort mode, so the fallback returns
                 # the live ordering without exposing the internal columns the
                 # ordering is derived from.

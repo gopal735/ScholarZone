@@ -58,6 +58,16 @@ const SNAPSHOT_META = {
     'recently-updated',
     'recommended',
   ],
+  // The selectable values the snapshot exports, so the filter menus are built
+  // from the catalogue rather than from a guessed list. These are the exact
+  // distinct values of the three fixture records below.
+  filter_options: {
+    countries: ['Singapore', 'Sweden', 'USA'],
+    degrees: ['Bachelor', 'Master', 'PhD'],
+    funding_types: ['Fully Funded', 'Partial'],
+    statuses: ['open', 'upcoming'],
+    deadline_months: [1, 11, 12],
+  },
 }
 
 const SNAPSHOT_STATS = {
@@ -306,6 +316,56 @@ describe('public catalogue page, static-first', () => {
   afterEach(() => {
     vi.unstubAllGlobals()
     clearSnapshotCache()
+  })
+
+  it('a country arriving in the URL is representable in the control', async () => {
+    // Found on the deploy preview. The Country menu was a hardcoded list that
+    // did not include Japan, so a select pointing at Japan had no matching
+    // option and the browser showed the first one: the menu read "All
+    // countries" while every result was Japan. The results were right and the
+    // control contradicted them.
+    stubStaticOnlyFetch()
+
+    renderCatalogue(<ScholarshipsPage />, '/scholarships?country=USA')
+
+    expect(await screen.findByText('Another USA Scholarship')).toBeTruthy()
+
+    const countrySelect = document.querySelector('#scholarship-country')
+    expect(countrySelect.value).toBe('USA')
+    expect(countrySelect.selectedOptions[0].textContent.trim()).toBe('USA')
+  })
+
+  it('offers only countries the catalogue actually holds', async () => {
+    stubStaticOnlyFetch()
+
+    renderCatalogue(<ScholarshipsPage />, '/scholarships')
+    await screen.findByText('KTH India Scholarship')
+
+    const countryOptions = Array.from(
+      document.querySelectorAll('#scholarship-country option'),
+    ).map((option) => option.value)
+
+    // 'Europe' is not a country any record holds, and it used to be an option
+    // that could never match.
+    expect(countryOptions).not.toContain('Europe')
+    expect(countryOptions).toEqual(['All', 'Singapore', 'Sweden', 'USA'])
+  })
+
+  it('does not offer a status the public catalogue excludes', async () => {
+    stubStaticOnlyFetch()
+
+    renderCatalogue(<ScholarshipsPage />, '/scholarships')
+    await screen.findByText('KTH India Scholarship')
+
+    const statusOptions = Array.from(
+      document.querySelectorAll('#scholarship-status option'),
+    ).map((option) => option.value)
+
+    // Closed records are excluded by the visibility predicate, so a "Closed"
+    // option could only ever return nothing while looking like a working
+    // filter.
+    expect(statusOptions).not.toContain('closed')
+    expect(statusOptions).toEqual(['All', 'open', 'upcoming'])
   })
 
   it('renders listings from the snapshot with no API request', async () => {
