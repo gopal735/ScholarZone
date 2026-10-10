@@ -78,12 +78,18 @@ export default function CatalogueSourceNotice({ meta, source, className }) {
         confirm the deadline and requirements before you rely on them or apply.
       </p>
 
-      {meta.visibility_predicate ? (
-        <p className="catalogue-source-notice__body catalogue-source-notice__body--muted">
-          Records shown are the ones the catalogue treats as publicly visible:
-          {meta.visibility_predicate}.
-        </p>
-      ) : null}
+      <p className="catalogue-source-notice__body catalogue-source-notice__body--muted">
+        This snapshot does not hide a scholarship for being unverified or for
+        having no image. Only the three rules above exclude a record.
+      </p>
+
+      <p className="catalogue-source-notice__body catalogue-source-notice__body--muted">
+        Records shown are the ones the catalogue treats as publicly visible:
+        {meta.visibility_predicate}
+        {meta.deadline_passed
+          ? ', and whose deadline had not passed when this snapshot was generated.'
+          : '.'}
+      </p>
 
       <p className="catalogue-source-notice__body catalogue-source-notice__body--muted">
         {meta.public_record_count !== undefined && meta.source_record_count !== undefined

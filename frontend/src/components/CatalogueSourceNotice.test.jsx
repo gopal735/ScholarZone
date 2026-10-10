@@ -19,6 +19,35 @@ describe('CatalogueSourceNotice', () => {
     cleanup()
   })
 
+  it('names the deadline rule when the snapshot excluded any', () => {
+    // The header's deadline_passed bucket is derived, not stored: records whose
+    // deadline had already gone when the snapshot was built. Saying so keeps the
+    // membership rule honest, and an absence of the phrase when the count is
+    // zero is not a claim that no deadline has ever passed.
+    render(
+      <CatalogueSourceNotice
+        source="snapshot"
+        meta={{ ...SNAPSHOT_META, deadline_passed: 12 }}
+      />,
+    )
+    expect(screen.getByText(/deadline had not passed/i)).toBeInTheDocument()
+  })
+
+  it('does not claim a deadline rule applied when none did', () => {
+    render(
+      <CatalogueSourceNotice
+        source="snapshot"
+        meta={{ ...SNAPSHOT_META, deadline_passed: 0 }}
+      />,
+    )
+    expect(screen.queryByText(/deadline had not passed/i)).not.toBeInTheDocument()
+  })
+
+  it('does not hide a record merely for being unverified or imageless', () => {
+    render(<CatalogueSourceNotice source="snapshot" meta={SNAPSHOT_META} />)
+    expect(screen.getByText(/does not hide a scholarship for being unverified/i)).toBeInTheDocument()
+  })
+
   it('renders nothing when the data came from the live API', () => {
     const { container } = render(
       <CatalogueSourceNotice source="api" meta={SNAPSHOT_META} />,

@@ -42,6 +42,7 @@ import importlib.util
 import json
 import sqlite3
 import sys
+from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -145,9 +146,9 @@ def verify(db_path: str, snapshot_path: str, generator) -> Parity:
 
         meta = snapshot.get("meta", {})
 
-        # source = public + excluded_union, which is the invariant that makes
-        # the published counts mean anything. The per-category buckets are not
-        # summed: they overlap, by design.
+        # source = public + excluded_union + deadline_passed, which is the
+        # invariant that makes the published counts mean anything. The
+        # per-category buckets are not summed: they overlap, by design.
         #
         # Checked on the header's own numbers first, because that is the claim
         # the snapshot makes. Checking the database against itself would always
@@ -155,6 +156,7 @@ def verify(db_path: str, snapshot_path: str, generator) -> Parity:
         header_source = meta.get("source_record_count")
         header_public = meta.get("public_record_count")
         header_union = meta.get("excluded_union")
+        header_deadline = meta.get("deadline_passed")
         if isinstance(header_source, int) and isinstance(header_public, int) and isinstance(header_union, int):
             parity.check(
                 "source reconciles (source = public + excluded_union)",
@@ -174,16 +176,6 @@ def verify(db_path: str, snapshot_path: str, generator) -> Parity:
             meta.get("source_record_count") == source,
             f"meta says {meta.get('source_record_count')!r}, database has {source}",
         )
-        parity.check(
-            "meta.public_record_count matches the database",
-            meta.get("public_record_count") == public,
-            f"meta says {meta.get('public_record_count')!r}, database has {public}",
-        )
-        parity.check(
-            "meta.excluded_union matches the database",
-            meta.get("excluded_union") == excluded_union,
-            f"meta says {meta.get('excluded_union')!r}, database has {excluded_union}",
-        )
         for name, value in (("closed", closed), ("archived", archived), ("quarantined", quarantined)):
             parity.check(
                 f"meta.excluded.{name} matches the database",
@@ -191,25 +183,86 @@ def verify(db_path: str, snapshot_path: str, generator) -> Parity:
                 f"meta says {meta.get('excluded', {}).get(name)!r}, database has {value}",
             )
 
-        parity.check(
-            "exported record count equals the canonical public count",
-            len(records) == public,
-            f"{len(records)} exported, {public} public in the database",
-        )
-
         # ---- The ID set. Equal counts say nothing about equal records.
         print("\nRecord IDs")
         cursor.execute(f"SELECT id FROM scholarships WHERE {PUBLIC_PREDICATE} ORDER BY id")
-        expected_ids = [int(row[0]) for row in cursor.fetchall()]
+        stored_public_ids = [int(row[0]) for row in cursor.fetchall()]
+
+        # The derived bucket. A record whose deadline has passed is closed as
+        # far as the catalogue is concerned, so it is not public even though
+        # the stored status says otherwise. It is named separately so the union
+        # still accounts for every source row, rather than the difference
+        # between the stored rule and the published set silently vanishing.
+        cursor.execute(
+            "SELECT id, deadline_date FROM scholarships "
+            f"WHERE {PUBLIC_PREDICATE}"
+        )
+        deadline_passed = []
+        for row in cursor.fetchall():
+            raw = row["deadline_date"]
+            if not raw:
+                continue
+            try:
+                deadline = date.fromisoformat(str(raw).split("T", 1)[0].split(" ", 1)[0])
+            except ValueError:
+                continue
+            if deadline < date.today():
+                deadline_passed.append(int(row["id"]))
+        deadline_passed_set = set(deadline_passed)
+
+        # The expected public set is the stored predicate minus that bucket.
+        expected_ids = [rid for rid in stored_public_ids if rid not in deadline_passed_set]
+        expected_public = public - len(deadline_passed)
+
+        parity.check(
+            "meta.deadline_passed matches the database",
+            meta.get("deadline_passed") == len(deadline_passed),
+            f"meta says {meta.get('deadline_passed')!r}, database has {len(deadline_passed)}",
+        )
+        parity.check(
+            "meta.public_record_count matches the database",
+            meta.get("public_record_count") == expected_public,
+            f"meta says {meta.get('public_record_count')!r}, database has "
+            f"{expected_public} public ({public} under the stored rule, minus "
+            f"{len(deadline_passed)} with a passed deadline)",
+        )
+        parity.check(
+            "meta.excluded_union matches the database",
+            meta.get("excluded_union") == excluded_union + len(deadline_passed),
+            f"meta says {meta.get('excluded_union')!r}, database has "
+            f"{excluded_union} plus {len(deadline_passed)} deadline-passed",
+        )
+        parity.check(
+            "source reconciles (source = public + excluded_union)",
+            source == expected_public + excluded_union + len(deadline_passed),
+            f"source={source} public={expected_public} union={excluded_union} "
+            f"deadline_passed={len(deadline_passed)} -> "
+            f"{expected_public + excluded_union + len(deadline_passed)}",
+        )
+        parity.check(
+            "exported record count equals the canonical public count",
+            len(records) == expected_public,
+            f"{len(records)} exported, {expected_public} public",
+        )
+
         actual_ids = sorted(record_ids)
 
         missing = sorted(set(expected_ids) - set(actual_ids))
         extra = sorted(set(actual_ids) - set(expected_ids))
 
+        # A record the stored predicate publishes but the deadline rule excludes
+        # is expected to be missing, not an error. A record that is neither
+        # public nor deadline-excluded and is missing IS an error.
+        unexplained_missing = [rid for rid in missing if rid not in deadline_passed_set]
         parity.check(
             "public ID sets match exactly",
-            not missing and not extra,
-            f"missing={missing[:20]} extra={extra[:20]}" if (missing or extra) else "",
+            not unexplained_missing and not extra,
+            f"unexplained missing={unexplained_missing[:20]} extra={extra[:20]}",
+        )
+        parity.check(
+            "every missing record is one the deadline rule excludes",
+            not unexplained_missing and set(missing) <= deadline_passed_set,
+            f"missing without a passed deadline: {unexplained_missing[:20]}",
         )
         parity.check(
             "no non-public ID leaked into the snapshot",
@@ -256,8 +309,23 @@ def verify(db_path: str, snapshot_path: str, generator) -> Parity:
             expected = expected_rows.get(int(record["id"]))
             if expected is None:
                 continue
+            # Use the same derivation date the snapshot used, not today. The
+            # header records it, so a comparison against a snapshot generated
+            # on another day is not silently wrong about deadlines it has
+            # passed since - and a snapshot that does not record its date is
+            # not something this tool can verify field-by-field.
+            derived_at = (snapshot.get("meta") or {}).get("status_derived_at")
+            if not isinstance(derived_at, str) or not derived_at:
+                raise SystemExit(
+                    f"{snapshot_path} has no meta.status_derived_at. Per-field "
+                    "comparison needs the date the statuses were derived on; "
+                    "regenerate the snapshot with the current generate_snapshot.py."
+                )
+            comparison_date = date.fromisoformat(derived_at)
+
             expected_record = generator._build_public_record(
-                {column: expected[column] for column in expected.keys()}
+                {column: expected[column] for column in expected.keys()},
+                comparison_date,
             )
             for field, actual in record.items():
                 # `generated_at` and friends are metadata; a record field must

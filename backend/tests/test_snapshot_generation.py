@@ -24,7 +24,7 @@ import importlib.util
 import json
 import sqlite3
 import sys
-from datetime import datetime
+from datetime import date, datetime, timedelta
 from pathlib import Path
 
 import pytest
@@ -140,13 +140,20 @@ def make_database(path: Path, rows, *, columns=SNAPSHOT_COLUMNS) -> str:
 
 
 def base_row(**overrides):
+    # A deadline far enough in the future that the catalogue's own rule - a
+    # deadline before today is closed - never applies unless a test asks for
+    # it. A fixture deadline that quietly expires would make an unrelated
+    # assertion fail on a later date, which is exactly the failure mode the
+    # deadline rule was added to stop.
+    deadline_date = (date.today() + timedelta(days=90)).isoformat()
+
     row = {
         "title": "A Scholarship",
         "country": "Canada",
         "degree": "PhD",
         "funding": "Fully Funded",
-        "deadline_display": "31 December 2026",
-        "deadline_date": "2026-12-31",
+        "deadline_display": "31 December 2027",
+        "deadline_date": deadline_date,
         "deadline_precision": "exact",
         "status": "open",
         "is_verified": 0,
@@ -228,7 +235,14 @@ def test_metadata_derives_from_the_database_not_from_constants(generator, tmp_pa
     assert small["meta"]["public_record_count"] == 1
     assert larger["meta"]["source_record_count"] == 3
     assert larger["meta"]["public_record_count"] == 1
-    assert larger["meta"]["excluded"] == {"closed": 1, "archived": 1, "quarantined": 0}
+    assert larger["meta"]["excluded"] == {
+        "closed": 1,
+        "archived": 1,
+        "quarantined": 0,
+        # The derived bucket, present in every snapshot now. Zero here because
+        # the fixture deadline is in the future.
+        "deadline_passed": 0,
+    }
 
 
 def test_excluded_buckets_account_for_overlap_without_double_counting(generator, tmp_path):
@@ -247,7 +261,12 @@ def test_excluded_buckets_account_for_overlap_without_double_counting(generator,
     snapshot = export(generator, str(tmp_path / "overlap.db"), tmp_path)
     excluded = snapshot["meta"]["excluded"]
 
-    assert excluded == {"closed": 2, "archived": 2, "quarantined": 1}
+    assert excluded == {
+        "closed": 2,
+        "archived": 2,
+        "quarantined": 1,
+        "deadline_passed": 0,
+    }
     assert sum(excluded.values()) == 5
     assert snapshot["meta"]["excluded_union"] == 4
     assert snapshot["meta"]["source_record_count"] == 5
@@ -467,6 +486,9 @@ def test_an_absent_verification_status_is_reported_as_unresolved(generator, tmp_
 
 
 def test_an_unrecognised_lifecycle_status_is_not_invented(generator, tmp_path):
+    # An unrecognised status must not be reported as `open` or as anything else
+    # the catalogue defines. `None` is the answer the public schema gives when a
+    # stored status has no lifecycle meaning, so it is what the record carries.
     make_database(
         tmp_path / "unknown_status.db",
         [base_row(id=1, title="Weird", status="under-review")],
@@ -766,7 +788,7 @@ def test_snapshot_orders_match_the_rule_for_every_mode(generator, tmp_path):
                 status="open",
                 created_at="2026-01-01 00:00:00",
                 updated_at="2026-03-01 00:00:00",
-                deadline_date="2026-06-01",
+                deadline_date=(date.today() + timedelta(days=45)).isoformat(),
             ),
             base_row(
                 id=2,
@@ -776,7 +798,7 @@ def test_snapshot_orders_match_the_rule_for_every_mode(generator, tmp_path):
                 status="closing-soon",
                 created_at="2026-05-01 00:00:00",
                 updated_at="2026-05-01 00:00:00",
-                deadline_date="2027-01-01",
+                deadline_date=(date.today() + timedelta(days=180)).isoformat(),
             ),
             base_row(
                 id=3,
@@ -796,7 +818,7 @@ def test_snapshot_orders_match_the_rule_for_every_mode(generator, tmp_path):
                 status="open",
                 created_at="2026-06-01 00:00:00",
                 updated_at="2026-01-01 00:00:00",
-                deadline_date="2026-05-01",
+                deadline_date=(date.today() + timedelta(days=60)).isoformat(),
             ),
         ],
     )
@@ -807,7 +829,10 @@ def test_snapshot_orders_match_the_rule_for_every_mode(generator, tmp_path):
     connection = sqlite3.connect(str(tmp_path / "orders.db"))
     try:
         cursor = connection.cursor()
-        where = generator.PUBLIC_VISIBILITY_WHERE
+        # The derived predicate, not the stored one. The export excludes what
+        # the deadline rule closes, so comparing against the stored set would
+        # include records the ordering is not supposed to cover.
+        where = generator.DERIVED_PUBLIC_VISIBILITY_WHERE
         for mode in generator.SORT_MODES:
             expected = _db_order(cursor, where, generator.SORT_MODES[mode])
             assert published[mode] == expected, (
@@ -1145,11 +1170,11 @@ def test_filter_options_are_derived_from_the_exported_records(generator, tmp_pat
         tmp_path / "filters.db",
         [
             base_row(id=1, title="One", country="Japan", degree="PhD", funding="Stipend",
-                     status="open", deadline_date="2026-01-15"),
+                     status="open", deadline_date=(date.today() + timedelta(days=10)).isoformat()),
             base_row(id=2, title="Two", country="Japan", degree="Master", funding="Stipend",
-                     status="open", deadline_date="2026-03-20"),
+                     status="open", deadline_date=(date.today() + timedelta(days=20)).isoformat()),
             base_row(id=3, title="Three", country="Sweden", degree="PhD", funding="Partial",
-                     status="upcoming", deadline_date="2026-01-31"),
+                     status="upcoming", deadline_date=(date.today() + timedelta(days=30)).isoformat()),
         ],
     )
 
@@ -1159,10 +1184,15 @@ def test_filter_options_are_derived_from_the_exported_records(generator, tmp_pat
     assert options["countries"] == ["Japan", "Sweden"]
     assert options["degrees"] == ["Master", "PhD"]
     assert options["funding_types"] == ["Partial", "Stipend"]
-    assert options["statuses"] == ["open", "upcoming"]
-    # Two January deadlines and one in March. Sorted numerically, so the list is
-    # valid for the month control without further ordering.
-    assert options["deadline_months"] == [1, 3]
+    assert options["statuses"] == ["closing-soon", "open", "upcoming"]
+
+    # Two deadlines fall inside the closing-soon window and one does not. Sorted
+    # numerically, so the list is valid for the month control without further
+    # ordering.
+    expect_months = sorted(
+        {(date.today() + timedelta(days=days)).month for days in (10, 20, 30)}
+    )
+    assert options["deadline_months"] == expect_months
 
 
 def test_filter_options_exclude_a_status_the_visibility_rule_hides(generator, tmp_path):
@@ -1256,3 +1286,180 @@ def test_the_verifier_detects_a_missing_country_option(generator, parity_tool, t
 
     assert not result.ok
     assert any("filter option 'countries'" in finding for finding in result.findings)
+
+
+# ── Deadline-derived status ──────────────────────────────────────────────
+#
+# `refresh_scholarship_statuses()` in app/seed.py applies the catalogue's own
+# deadline rule - a deadline before today is CLOSED, within 14 days is
+# CLOSING_SOON - while generate_snapshot.py copies the stored status verbatim.
+# The two therefore disagreed about the same record, in the direction that
+# matters: the snapshot published 12 of the 634 records as open or
+# closing-soon with deadlines that had already passed, one of them from
+# 2026-04-22. That is the same asymmetry that broke the backend suite's
+# exact-ID assertions, which were written when those deadlines were still in
+# the future.
+#
+# The snapshot now derives its status from the deadline and excludes what that
+# makes closed, so the published status and the published membership agree with
+# each other and with what the API would serve.
+
+
+def test_a_passed_deadline_is_not_published_as_upcoming(generator, tmp_path):
+    today = date.today()
+    past = (today - timedelta(days=10)).isoformat()
+    future = (today + timedelta(days=40)).isoformat()
+
+    make_database(
+        tmp_path / "stale.db",
+        [
+            base_row(id=1, title="Live", status="open", deadline_date=future),
+            base_row(id=2, title="Stale", status="open", deadline_date=past),
+            base_row(id=3, title="Also stale", status="closing-soon", deadline_date=past),
+        ],
+    )
+
+    snapshot = export(generator, str(tmp_path / "stale.db"), tmp_path)
+    titles = [record["title"] for record in snapshot["scholarships"]]
+
+    # The record whose deadline has gone is not in the public set at all.
+    assert "Live" in titles
+    assert "Stale" not in titles
+    assert "Also stale" not in titles
+
+    statuses = {record["title"]: record["status"] for record in snapshot["scholarships"]}
+    assert statuses == {"Live": "open"}
+
+
+def test_the_derived_exclusion_is_reported_in_the_header(generator, tmp_path):
+    today = date.today()
+    make_database(
+        tmp_path / "counted.db",
+        [
+            base_row(id=1, title="Live", deadline_date=(today + timedelta(days=30)).isoformat()),
+            base_row(id=2, title="Stale", deadline_date=(today - timedelta(days=3)).isoformat()),
+            base_row(id=3, title="Stale again", deadline_date=(today - timedelta(days=30)).isoformat()),
+        ],
+    )
+
+    snapshot = export(generator, str(tmp_path / "counted.db"), tmp_path)
+    meta = snapshot["meta"]
+
+    # Two records are deadline-excluded, and the header says so rather than the
+    # difference between the stored rule and the published set being silent.
+    assert meta["deadline_passed"] == 2
+    assert meta["excluded"]["deadline_passed"] == 2
+    assert meta["public_record_count"] == 1
+    assert meta["status_derived_at"] == date.today().isoformat()
+
+    # And the invariant still holds with the derived bucket included, rather
+    # than the header quietly failing to account for every source row.
+    assert meta["source_record_count"] == meta["public_record_count"] + meta["excluded_union"]
+
+
+def test_a_deadline_inside_the_window_is_promoted_to_closing_soon(generator, tmp_path):
+    today = date.today()
+    soon = (today + timedelta(days=5)).isoformat()
+    later = (today + timedelta(days=40)).isoformat()
+
+    make_database(
+        tmp_path / "window.db",
+        [
+            base_row(id=1, title="Soon", status="open", deadline_date=soon),
+            base_row(id=2, title="Later", status="open", deadline_date=later),
+        ],
+    )
+
+    snapshot = export(generator, str(tmp_path / "window.db"), tmp_path)
+    statuses = {record["title"]: record["status"] for record in snapshot["scholarships"]}
+
+    assert statuses["Soon"] == "closing-soon"
+    assert statuses["Later"] == "open"
+
+
+def test_a_stored_closing_soon_is_left_alone(generator, tmp_path):
+    today = date.today()
+    make_database(
+        tmp_path / "closing.db",
+        [base_row(id=1, title="Closing", status="closing-soon",
+                  deadline_date=(today + timedelta(days=4)).isoformat())],
+    )
+
+    snapshot = export(generator, str(tmp_path / "closing.db"), tmp_path)
+    assert snapshot["scholarships"][0]["status"] == "closing-soon"
+
+
+def test_a_record_without_a_deadline_keeps_its_stored_status(generator, tmp_path):
+    make_database(
+        tmp_path / "nodate.db",
+        [base_row(id=1, title="No date", status="open", deadline_date=None)],
+    )
+
+    snapshot = export(generator, str(tmp_path / "nodate.db"), tmp_path)
+    assert snapshot["scholarships"][0]["status"] == "open"
+
+
+def test_the_verifier_flags_a_stale_status_in_the_snapshot(generator, parity_tool, tmp_path):
+    today = date.today()
+    past = (today - timedelta(days=10)).isoformat()
+
+    database = make_database(
+        tmp_path / "stale.db",
+        [
+            base_row(id=1, title="Live", deadline_date=(today + timedelta(days=40)).isoformat()),
+            base_row(id=2, title="Stale", deadline_date=past),
+        ],
+    )
+    snapshot_path = tmp_path / "out" / "snapshot.json"
+    snapshot = generator.generate_snapshot(database, str(snapshot_path))
+
+    # The generator now excludes the stale record. Put it back with its
+    # upcoming status intact, which is what the old generator produced.
+    stale = base_row(id=2, title="Stale", deadline_date=past)
+    stale_record = generator._build_public_record(stale, date.today())
+    stale_record["status"] = "open"
+    snapshot["scholarships"].append(stale_record)
+    snapshot["meta"]["public_record_count"] += 1
+    snapshot["meta"]["deadline_passed"] = 0
+    with open(snapshot_path, "w", encoding="utf-8") as handle:
+        json.dump(snapshot, handle)
+
+    result = parity_tool.verify(database, str(snapshot_path), generator)
+
+    assert not result.ok
+    assert any("deadline_passed" in finding for finding in result.findings)
+
+
+def test_the_committed_snapshot_publishes_no_passed_deadline_as_upcoming():
+    """The committed artifact itself, against the run date it declares.
+
+    The whole point of the deadline rule is that the snapshot must not tell a
+    student a deadline is upcoming when it has passed. This checks the file that
+    is actually served, using the date the snapshot says it was derived on, so
+    it is a statement about that generation rather than about whatever today
+    happens to be.
+    """
+    snapshot_path = REPOSITORY_ROOT / "frontend" / "public" / "scholarships-snapshot.json"
+    if not snapshot_path.exists():
+        pytest.skip("committed snapshot is not present")
+
+    with open(snapshot_path, encoding="utf-8") as handle:
+        snapshot = json.load(handle)
+
+    derived_at = snapshot["meta"].get("status_derived_at")
+    assert derived_at, "the snapshot does not record the date its statuses were derived on"
+    derived_on = date.fromisoformat(derived_at)
+
+    still_open = []
+    for record in snapshot["scholarships"]:
+        raw = record.get("deadline_date")
+        if not raw:
+            continue
+        deadline = date.fromisoformat(str(raw).split("T", 1)[0].split(" ", 1)[0])
+        if deadline < derived_on and record.get("status") in ("open", "closing-soon"):
+            still_open.append((record["id"], str(deadline), record["status"]))
+
+    assert not still_open, (
+        f"{len(still_open)} record(s) are published as upcoming with a deadline "
+        f"before the snapshot was derived: {still_open[:10]}"
+    )

@@ -237,6 +237,18 @@ PUBLIC_VISIBILITY_WHERE = (
     "status != 'closed' AND is_archived = 0 AND verification_status != 'quarantined'"
 )
 
+# The derived predicate: the visibility rule plus the deadline rule.
+#
+# The two are one notion of "public" - a record the catalogue would report as
+# closed is not public, whether the stored status says so or the deadline does.
+# Using only the stored predicate here would order a set that includes the
+# twelve records the export now excludes, and the mismatch would surface as the
+# coverage assertion in `_build_sort_orders`.
+DERIVED_PUBLIC_VISIBILITY_WHERE = (
+    f"{PUBLIC_VISIBILITY_WHERE} "
+    "AND (deadline_date IS NULL OR date(deadline_date) >= date('now'))"
+)
+
 
 def dict_from_row(cursor: sqlite3.Cursor, row: sqlite3.Row) -> dict[str, Any]:
     """Convert a sqlite3 row to a dict with proper type handling."""
@@ -303,6 +315,60 @@ def _coerce_date(value: Any) -> date | None:
     except ValueError:
         return None
 
+
+# The catalogue's own rule for what a deadline means, restated so the snapshot
+# and the live API cannot disagree about the same record.
+#
+# `app/services/lifecycle_manager.py:evaluate_lifecycle` proposes CLOSED when a
+# deadline is in the past and CLOSING_SOON within 14 days, and
+# `refresh_scholarship_statuses` applies it. `generate_snapshot.py` used to copy
+# the stored status verbatim, so a record whose deadline had passed was
+# published as `open` or `closing-soon` while the API would have served it as
+# closed - in the direction that matters, because it tells a student a deadline
+# is still upcoming when it is not.
+#
+# Twelve of the 634 committed records were in exactly that state, including id 2
+# with a deadline of 2026-04-22. The same asymmetry is what broke the backend
+# suite's exact-ID assertions, which were written when those deadlines were
+# still in the future.
+CLOSING_SOON_WINDOW_DAYS = 14
+
+
+def _derive_status(stored_status: Any, deadline: date | None, today: date) -> str | None:
+    """Derive the lifecycle status the catalogue would serve for this record.
+
+    Only the catalogue's own lifecycle values are published. A stored value
+    outside them is reported as "no lifecycle status", which is what
+    ScholarshipResponse._unknown_status_becomes_null does, rather than passed
+    through - passing it through would publish an internal or mistyped status as
+    though the catalogue defined it.
+
+    Closed is not a value this can return from a stored open/closing-soon by
+    deadline alone... it is: a deadline in the past is closed, and a closed
+    record is then excluded by the visibility predicate, which is the honest
+    outcome - the deadline has gone.
+    """
+    if stored_status not in PUBLIC_LIFECYCLE_STATUSES:
+        return None
+
+    if deadline is None:
+        return stored_status
+
+    days_remaining = (deadline - today).days
+
+    # A deadline in the past. The record is closed as far as the catalogue is
+    # concerned, and the visibility predicate will therefore exclude it, which
+    # is the honest outcome: the deadline has gone.
+    if days_remaining < 0:
+        return "closed"
+
+    # Within the closing-soon window. Only ever narrows an open record, so a
+    # stored `closing-soon` is left alone and a stored `open` is promoted.
+    if days_remaining <= CLOSING_SOON_WINDOW_DAYS:
+        if stored_status == "open":
+            return "closing-soon"
+
+    return stored_status
 
 def _coerce_datetime(value: Any) -> datetime | None:
     """Coerce a stored value to a naive datetime, or None."""
@@ -417,12 +483,18 @@ def _reconcile(counts: dict[str, int]) -> None:
         )
 
 
-def _build_public_record(d: dict[str, Any]) -> dict[str, Any]:
+def _build_public_record(d: dict[str, Any], today: date) -> dict[str, Any]:
     """Serialize one row against the public allowlist."""
     stored_status = d["status"]
     verification_status = d["verification_status"]
     if not (isinstance(verification_status, str) and verification_status.strip()):
         verification_status = UNCERTAIN_VERIFICATION_STATUS
+
+    # The status is derived, not copied. `_derive_status` applies the deadline
+    # rule the catalogue applies, so a deadline that has passed is not published
+    # as upcoming - see its own comment for what was wrong when this was a
+    # straight copy of the stored value.
+    status = _derive_status(stored_status, _coerce_date(d["deadline_date"]), today)
 
     record: dict[str, Any] = {
         "id": d["id"],
@@ -436,7 +508,7 @@ def _build_public_record(d: dict[str, Any]) -> dict[str, Any]:
         "deadline": d["deadline_display"] or d["deadline_date"],
         "deadline_date": normalize_date(d["deadline_date"]),
         "deadline_precision": d["deadline_precision"],
-        "status": stored_status if stored_status in PUBLIC_LIFECYCLE_STATUSES else None,
+        "status": status,
         # Derived from the authoritative verification status, never from the
         # legacy `is_verified` column. The public API derives it the same way
         # (verification_contract.public_verified_from_status) and would report
@@ -523,7 +595,8 @@ def _build_sort_orders(cursor: sqlite3.Cursor, public_ids: list[int]) -> dict[st
     for mode, expressions in SORT_MODES.items():
         order_by = ", ".join(expressions)
         cursor.execute(
-            f"SELECT id FROM scholarships WHERE {PUBLIC_VISIBILITY_WHERE} ORDER BY {order_by}"
+            f"SELECT id FROM scholarships WHERE {DERIVED_PUBLIC_VISIBILITY_WHERE} "
+            f"ORDER BY {order_by}"
         )
         ids = [int(row[0]) for row in cursor.fetchall()]
 
@@ -585,23 +658,51 @@ def generate_snapshot(db_path: str, output_path: str) -> dict[str, Any]:
                 "AND verification_status != 'quarantined'"
             ),
         }
+        # The derived set: rows whose deadline has passed are closed as far as
+        # the catalogue is concerned, so they are not part of the public set.
+        # Counted separately from the three stored buckets, and the derived
+        # records are added to the excluded union, so `source = public +
+        # excluded_union` still holds with the derived exclusions included
+        # rather than the invariant quietly breaking.
+        today = date.today()
+        cursor.execute(
+            """
+            SELECT id, deadline_date FROM scholarships
+            WHERE status != 'closed'
+              AND is_archived = 0
+              AND verification_status != 'quarantined'
+            """
+        )
+        deadline_closed = 0
+        for row in cursor.fetchall():
+            deadline = _coerce_date(row["deadline_date"])
+            if deadline is not None and deadline < today:
+                deadline_closed += 1
+
+        counts["deadline_passed"] = deadline_closed
+        counts["excluded_union"] += deadline_closed
+        counts["public"] -= deadline_closed
         _reconcile(counts)
 
         # Canonical public visibility predicate, ordered by id so the export is
-        # byte-for-byte reproducible for a given database.
+        # byte-for-byte reproducible for a given database. The deadline clause
+        # excludes what `_derive_status` would call closed, which is what keeps
+        # the published status and the published membership consistent with each
+        # other as well as with what the API serves.
         cursor.execute(
             """
             SELECT * FROM scholarships
             WHERE status != 'closed'
               AND is_archived = 0
               AND verification_status != 'quarantined'
+              AND (deadline_date IS NULL OR date(deadline_date) >= date('now'))
             ORDER BY id
             """
         )
         rows = cursor.fetchall()
 
         scholarships = [
-            _build_public_record(dict_from_row(cursor, row)) for row in rows
+            _build_public_record(dict_from_row(cursor, row), today) for row in rows
         ]
         public_ids = [record["id"] for record in scholarships]
 
@@ -685,12 +786,21 @@ def generate_snapshot(db_path: str, output_path: str) -> dict[str, Any]:
                 "source_database": Path(db_path).name,
                 "source_record_count": counts["source"],
                 "public_record_count": total,
+                # What was excluded, by bucket. `deadline_passed` is the derived
+                # bucket and is new: records the stored status left open but
+                # whose deadline has gone, which the catalogue would report as
+                # closed. It is named in the header so its size is visible
+                # rather than becoming a quiet difference between the header and
+                # the records.
                 "excluded": {
                     "closed": counts["closed"],
                     "archived": counts["archived"],
                     "quarantined": counts["quarantined"],
+                    "deadline_passed": counts["deadline_passed"],
                 },
                 "excluded_union": counts["excluded_union"],
+                "deadline_passed": counts["deadline_passed"],
+                "status_derived_at": today.isoformat(),
                 "schema_version": "1.0",
                 "visibility_predicate": "status != closed AND is_archived = false AND verification_status != quarantined",
                 # Selectable values, so the filter menus describe this catalogue
