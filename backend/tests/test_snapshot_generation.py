@@ -96,6 +96,20 @@ COLUMN_DEFINITIONS = {
     "best_fit": "TEXT",
     "last_verified_date": "DATE",
     "notes": "TEXT",
+    # The researched enrichment columns. Published deliberately as of the
+    # 2026-10-11 research publication: the structured funding triple, the
+    # tuition-coverage flag, the authored applicant guidance, and the official
+    # provenance (official URLs + citations) held inside the research blobs.
+    # They are part of the export's REQUIRED_COLUMNS, so a test database that
+    # omits them must fail loudly rather than publish a record that is quietly
+    # missing them - which is what the allowlist is for.
+    "funding_amount": "VARCHAR(50)",
+    "funding_currency": "VARCHAR(3)",
+    "funding_period": "VARCHAR(100)",
+    "tuition_coverage": "BOOLEAN",
+    "applicant_utility": "TEXT",
+    "official_details": "TEXT",
+    "programme_verification": "TEXT",
     "is_archived": "BOOLEAN NOT NULL DEFAULT 0",
     # Internal workflow state. Present in the real table, and the whole point
     # of the allowlist tests below.
@@ -192,6 +206,19 @@ def base_row(**overrides):
         "best_fit": None,
         "last_verified_date": "2026-10-01",
         "notes": None,
+        # The researched enrichment columns default to their honest absence:
+        # no confirmed amount, no currency, no period, no coverage claim, no
+        # authored guidance and no research blobs. A record this export has
+        # nothing researched about publishes nulls, not invented values, and
+        # the tests that are not about these fields stay about what they were
+        # about.
+        "funding_amount": None,
+        "funding_currency": None,
+        "funding_period": None,
+        "tuition_coverage": None,
+        "applicant_utility": None,
+        "official_details": None,
+        "programme_verification": None,
         "is_archived": 0,
         "verification_notes": "reviewer note",
         "verified_by": "reviewer",
@@ -1463,3 +1490,427 @@ def test_the_committed_snapshot_publishes_no_passed_deadline_as_upcoming():
         f"{len(still_open)} record(s) are published as upcoming with a deadline "
         f"before the snapshot was derived: {still_open[:10]}"
     )
+
+# ── Published-baseline preservation ──────────────────────────────────────────
+#
+# The 2026-10-11 publication adds a second visibility mode to the export.
+# Strict (the original) removes a record whose deadline has passed. Preserve
+# keeps every record the deployed snapshot already served, unless the
+# database now excludes it explicitly (closed, archived, quarantined): it
+# publishes those records labelled closed instead of deleting them.
+#
+# The mode exists because the research run wrote past deadline dates into
+# published records' rows. Under strict visibility, publishing that research
+# would have silently shrunk the catalogue from 622 records to 470 - a
+# deletion nobody reviewed - and the enrichment would have vanished with the
+# records. These tests pin the property that forbids that: a published record
+# never disappears without an explicit, evidenced exclusion.
+
+
+def make_baseline(generator, path, rows):
+    """A first-generation snapshot, produced the ordinary strict way."""
+    database = make_database(path, rows)
+    output = path.parent / "baseline-snapshot.json"
+    generator.generate_snapshot(database, str(output), baseline_mode="strict")
+    return database, str(output)
+
+
+def insert_row(database: str, *, id: int, title: str, deadline_date: str, **overrides):
+    with sqlite3.connect(database) as connection:
+        columns = {
+            "id": id,
+            "title": title,
+            "country": "Canada",
+            "degree": "PhD",
+            "funding": "Fully Funded",
+            "deadline_display": "22 September 2026",
+            "deadline_date": deadline_date,
+            "deadline_precision": "exact",
+            "status": "open",
+            "is_verified": 0,
+            "created_at": "2026-08-01 12:00:00",
+            "last_verified_at": "2026-10-01",
+            "verification_status": "active",
+            "official_source_url": f"https://example.org/{id}",
+            "official_source": "Example University",
+            "updated_at": "2026-10-01 12:00:00",
+            "is_archived": 0,
+        }
+        columns.update(overrides)
+        names = ", ".join(columns)
+        placeholders = ", ".join("?" for _ in columns)
+        connection.execute(
+            f"INSERT INTO scholarships ({names}) VALUES ({placeholders})",
+            tuple(columns.values()),
+        )
+
+
+def test_a_baseline_record_past_its_deadline_stays_published_as_closed(generator, tmp_path):
+    today = date.today()
+    past = (today - timedelta(days=30)).isoformat()
+    future = (today + timedelta(days=60)).isoformat()
+
+    # The baseline, generated the ordinary strict way, so it holds the live
+    # record only.
+    database, baseline_path = make_baseline(
+        generator,
+        tmp_path / "first.db",
+        [base_row(id=1, title="Live", deadline_date=future)],
+    )
+
+    # The research pass now writes a past deadline into a second record. That
+    # record was NOT in the baseline, so it stays excluded; record 1 keeps
+    # being published, and is untouched.
+    insert_row(database, id=2, title="Researched", deadline_date=past)
+    snapshot = generator.generate_snapshot(
+        database,
+        str(tmp_path / "out" / "snapshot.json"),
+        baseline_mode="preserve",
+        baseline_path=baseline_path,
+    )
+
+    records = {record["id"]: record for record in snapshot["scholarships"]}
+    assert set(records) == {1}
+
+    meta = snapshot["meta"]
+    assert meta["baseline"]["baseline_records"] == 1
+    assert meta["baseline"]["baseline_preserved"] == 0
+    assert meta["deadline_passed"] == 1
+    assert meta["public_record_count"] == 1
+
+
+def test_a_baseline_record_whose_deadline_passes_is_labelled_closed_not_removed(
+    generator, tmp_path
+):
+    today = date.today()
+    future = (today + timedelta(days=60)).isoformat()
+    database, baseline_path = make_baseline(
+        generator,
+        tmp_path / "first.db",
+        [base_row(id=1, title="One", deadline_date=future)],
+    )
+
+    # The research pass then writes a past deadline into the very record the
+    # baseline is serving. Preservation must keep it, labelled closed - the
+    # deletion this mode forbids is exactly this case.
+    with sqlite3.connect(database) as connection:
+        connection.execute(
+            "UPDATE scholarships SET deadline_date = ?, updated_at = ? WHERE id = 1",
+            ((today - timedelta(days=5)).isoformat(), "2026-10-11 09:00:00"),
+        )
+
+    snapshot = generator.generate_snapshot(
+        database,
+        str(tmp_path / "out" / "snapshot.json"),
+        baseline_mode="preserve",
+        baseline_path=baseline_path,
+    )
+    records = {record["id"]: record for record in snapshot["scholarships"]}
+    assert set(records) == {1}
+    assert records[1]["status"] == "closed"
+    assert snapshot["meta"]["baseline"]["baseline_preserved"] == 1
+    assert snapshot["meta"]["deadline_passed"] == 0
+    assert snapshot["meta"]["public_record_count"] == 1
+    assert (
+        snapshot["meta"]["source_record_count"]
+        == snapshot["meta"]["public_record_count"] + snapshot["meta"]["excluded_union"]
+    )
+
+
+def test_baseline_preservation_does_not_protect_from_an_explicit_exclusion(
+    generator, tmp_path
+):
+    today = date.today()
+    future = (today + timedelta(days=60)).isoformat()
+
+    database, baseline_path = make_baseline(
+        generator,
+        tmp_path / "first.db",
+        [
+            base_row(id=1, title="One", deadline_date=future),
+            base_row(id=2, title="Two", deadline_date=future),
+            base_row(id=3, title="Three", deadline_date=future),
+        ],
+    )
+
+    # Each of the three is an explicit, evidenced exclusion, so each leaves
+    # the public set even though the baseline serves it.
+    with sqlite3.connect(database) as connection:
+        connection.execute("UPDATE scholarships SET status = 'closed' WHERE id = 1")
+        connection.execute(
+            "UPDATE scholarships SET verification_status = 'quarantined' WHERE id = 2"
+        )
+        connection.execute("UPDATE scholarships SET is_archived = 1 WHERE id = 3")
+
+    snapshot = generator.generate_snapshot(
+        database,
+        str(tmp_path / "out" / "snapshot.json"),
+        baseline_mode="preserve",
+        baseline_path=baseline_path,
+    )
+    assert [record["id"] for record in snapshot["scholarships"]] == []
+
+    meta = snapshot["meta"]["baseline"]
+    assert meta["baseline_records"] == 3
+    assert meta["baseline_preserved"] == 0
+    assert meta["baseline_removed"] == 3
+    assert meta["newly_public"] == 0
+
+
+def test_strict_mode_ignores_the_baseline(generator, tmp_path):
+    today = date.today()
+    past = (today - timedelta(days=10)).isoformat()
+
+    # The baseline holds a record whose deadline is already past, but strict
+    # visibility is asked for by name: the original rule applies unchanged.
+    database, baseline_path = make_baseline(
+        generator,
+        tmp_path / "first.db",
+        [base_row(id=1, title="One", deadline_date=past)],
+    )
+    snapshot = generator.generate_snapshot(
+        database,
+        str(tmp_path / "out" / "snapshot.json"),
+        baseline_mode="strict",
+        baseline_path=baseline_path,
+    )
+    assert snapshot["meta"]["baseline"]["mode"] == "strict"
+    assert snapshot["meta"]["public_record_count"] == 0
+    assert snapshot["meta"]["deadline_passed"] == 1
+
+
+def test_an_unknown_baseline_mode_is_refused(generator, tmp_path):
+    with pytest.raises(SystemExit):
+        generator.generate_snapshot(
+            str(tmp_path / "unused.db"),
+            str(tmp_path / "out" / "snapshot.json"),
+            baseline_mode="keep-everything",
+        )
+
+
+def test_the_baseline_ids_are_embedded_for_the_verifier(generator, tmp_path):
+    today = date.today()
+    database, baseline_path = make_baseline(
+        generator,
+        tmp_path / "first.db",
+        [
+            base_row(id=1, title="One", deadline_date=(today + timedelta(days=30)).isoformat()),
+            base_row(id=2, title="Two", deadline_date=(today + timedelta(days=30)).isoformat()),
+        ],
+    )
+    snapshot = generator.generate_snapshot(
+        database,
+        str(tmp_path / "out" / "snapshot.json"),
+        baseline_mode="preserve",
+        baseline_path=baseline_path,
+    )
+    assert snapshot["meta"]["baseline"]["baseline_ids"] == [1, 2]
+
+
+def test_a_missing_baseline_file_is_not_an_error(generator, tmp_path):
+    # The first publication of a catalogue has nothing to protect, and every
+    # test export writes to a fresh path. The export simply has no baseline.
+    database = make_database(
+        tmp_path / "first.db",
+        [base_row(id=1, title="One", deadline_date=(date.today() + timedelta(days=30)).isoformat())],
+    )
+    snapshot = generator.generate_snapshot(
+        database,
+        str(tmp_path / "out" / "snapshot.json"),
+        baseline_mode="preserve",
+        baseline_path=str(tmp_path / "does-not-exist.json"),
+    )
+    assert snapshot["meta"]["baseline"]["baseline_records"] == 0
+    assert snapshot["meta"]["public_record_count"] == 1
+
+
+def test_the_verifier_accepts_a_baseline_preserved_snapshot(generator, parity_tool, tmp_path):
+    today = date.today()
+    future = (today + timedelta(days=60)).isoformat()
+
+    database, baseline_path = make_baseline(
+        generator,
+        tmp_path / "first.db",
+        [base_row(id=1, title="One", deadline_date=future)],
+    )
+    with sqlite3.connect(database) as connection:
+        connection.execute(
+            "UPDATE scholarships SET deadline_date = ?, updated_at = ? WHERE id = 1",
+            ((today - timedelta(days=5)).isoformat(), "2026-10-11 09:00:00"),
+        )
+    output = tmp_path / "out" / "snapshot.json"
+    generator.generate_snapshot(
+        database, str(output), baseline_mode="preserve", baseline_path=baseline_path
+    )
+
+    result = parity_tool.verify(database, str(output), generator)
+    assert result.ok, "\n".join(result.findings)
+
+
+def test_the_verifier_flags_a_silently_vanished_baseline_record(
+    generator, parity_tool, tmp_path
+):
+    today = date.today()
+    future = (today + timedelta(days=60)).isoformat()
+
+    database, baseline_path = make_baseline(
+        generator,
+        tmp_path / "first.db",
+        [
+            base_row(id=1, title="One", deadline_date=future),
+            base_row(id=2, title="Two", deadline_date=future),
+        ],
+    )
+    output = tmp_path / "out" / "snapshot.json"
+    snapshot = generator.generate_snapshot(
+        database, str(output), baseline_mode="preserve", baseline_path=baseline_path
+    )
+
+    # A record the baseline serves and the snapshot does not, with no
+    # exclusion recorded against it: the silent deletion this mode exists to
+    # make impossible, so the verifier must name it.
+    snapshot["scholarships"] = [r for r in snapshot["scholarships"] if r["id"] != 2]
+    snapshot["meta"]["public_record_count"] -= 1
+    with open(output, "w", encoding="utf-8") as handle:
+        json.dump(snapshot, handle)
+
+    result = parity_tool.verify(database, str(output), generator)
+    assert not result.ok
+    assert any("silently vanished" in finding for finding in result.findings)
+
+
+# ── The researched enrichment fields ────────────────────────────────────────
+#
+# The 2026-10-11 publication extends the public record with the researched
+# fields: the structured funding triple, the tuition-coverage flag, the
+# authored applicant guidance, and the official provenance (citations and
+# further official URLs). Each is null-preserving - and the tests say so for
+# each field, because a field that silently invents a value is worse than a
+# field that does not exist.
+
+
+def test_the_researched_amount_currency_and_period_reach_the_export(generator, tmp_path):
+    make_database(
+        tmp_path / "funding.db",
+        [
+            base_row(
+                id=1,
+                title="Funded",
+                funding_amount="47400",
+                funding_currency="eur",
+                funding_period="per year",
+                tuition_coverage=1,
+                official_details=json.dumps(
+                    {
+                        "official_source_urls": [
+                            "https://example.org/a",
+                            "https://example.org/a",
+                            "not-a-url",
+                            "http://insecure.example.org/b",
+                        ],
+                    }
+                ),
+                programme_verification=json.dumps(
+                    {
+                        "source_citations": {
+                            "awarding body": "https://example.org/verify",
+                        },
+                    }
+                ),
+                applicant_utility=json.dumps(
+                    {
+                        "summary": "What this award is unusual about.",
+                        "alerts": ["Watch the notice board."],
+                    }
+                ),
+            ),
+            base_row(id=2, title="Unfunded", funding_amount=None, funding_currency=None),
+        ],
+    )
+
+    snapshot = export(generator, str(tmp_path / "funding.db"), tmp_path)
+    records = {record["id"]: record for record in snapshot["scholarships"]}
+
+    funded = records[1]
+    assert funded["funding_amount"] == 47400
+    assert funded["funding_currency"] == "EUR"
+    assert funded["funding_period"] == "per year"
+    assert funded["tuition_coverage"] is True
+    # Provenance: de-duplicated, absolute http(s) only, the same set the
+    # frontend renders as links.
+    assert funded["official_source_urls"] == [
+        "https://example.org/a",
+        "http://insecure.example.org/b",
+    ]
+    assert funded["source_citations"] == ["https://example.org/verify"]
+    # The authored guidance is published as-authored.
+    assert funded["applicant_utility"]["summary"] == "What this award is unusual about."
+    assert funded["applicant_utility"]["alerts"] == ["Watch the notice board."]
+
+    # And the uninformed record keeps every null, inventing nothing.
+    unfunded = records[2]
+    assert unfunded["funding_amount"] is None
+    assert unfunded["funding_currency"] is None
+    assert unfunded["funding_period"] is None
+    assert unfunded["tuition_coverage"] is None
+    assert unfunded["official_source_urls"] == []
+    assert unfunded["source_citations"] == []
+    assert unfunded["applicant_utility"] is None
+
+
+def test_a_percentage_is_never_exported_as_a_currency_amount(generator, tmp_path):
+    # A percentage-style award has no confirmed figure, and the export refuses
+    # to invent one.
+    make_database(
+        tmp_path / "percent.db",
+        [base_row(id=1, title="Percentage", funding_amount="75%", funding_currency="EUR")],
+    )
+    snapshot = export(generator, str(tmp_path / "percent.db"), tmp_path)
+    record = snapshot["scholarships"][0]
+    assert record["funding_amount"] is None
+
+
+def test_an_empty_applicant_guidance_blob_publishes_as_null(generator, tmp_path):
+    make_database(
+        tmp_path / "empty.db",
+        [base_row(id=1, title="No guidance", applicant_utility="{}")],
+    )
+    snapshot = export(generator, str(tmp_path / "empty.db"), tmp_path)
+    assert snapshot["scholarships"][0]["applicant_utility"] is None
+
+
+def test_an_internal_key_in_the_applicant_guidance_refuses_the_export(generator, tmp_path):
+    # A public file must not carry a reviewer's workflow state. The blob is
+    # free-form, so the export checks rather than trusting the pipeline.
+    make_database(
+        tmp_path / "leaky.db",
+        [
+            base_row(
+                id=1,
+                title="Leaky",
+                applicant_utility=json.dumps(
+                    {
+                        "summary": "Fine.",
+                        "verification_notes": "internal reviewer note",
+                    }
+                ),
+            ),
+        ],
+    )
+    with pytest.raises(AssertionError):
+        export(generator, str(tmp_path / "leaky.db"), tmp_path)
+
+
+def test_the_enrichment_fields_are_part_of_the_public_allowlist(generator, public_field_set):
+    # The parity verifier checks the exported records against this set, so a
+    # field this publication publishes must be declared, not smuggled in.
+    for field in (
+        "funding_amount",
+        "funding_currency",
+        "funding_period",
+        "tuition_coverage",
+        "applicant_utility",
+        "official_source_urls",
+        "source_citations",
+    ):
+        assert field in public_field_set

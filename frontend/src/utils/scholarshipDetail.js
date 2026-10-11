@@ -87,6 +87,12 @@ export function readHost(value) {
  * Builds the ordered list of official links.
  * `primary` is the one the Apply CTA should point at: an explicit
  * application link beats a generic source page.
+ *
+ * The four canonical entry points come first. The researched provenance
+ * follows: `source_citations`, the pages the research actually read (the
+ * awarding body's own pages), and any further official URLs the researcher
+ * recorded. Both are de-duplicated against the canonical set, so a citation
+ * that is the same URL as the primary source is not rendered twice.
  */
 export function buildOfficialLinks(scholarship) {
   if (!scholarship) return []
@@ -118,9 +124,112 @@ export function buildOfficialLinks(scholarship) {
     },
   ]
 
-  return candidates
-    .filter((candidate) => candidate.url)
-    .map((candidate) => ({ ...candidate, host: readHost(candidate.url) }))
+  const seen = new Set()
+  const links = []
+  for (const candidate of candidates) {
+    if (!candidate.url || seen.has(candidate.url)) continue
+    seen.add(candidate.url)
+    links.push({ ...candidate, host: readHost(candidate.url) })
+  }
+
+  const citationList = readList(readUrlList(scholarship.source_citations))
+  for (const [index, url] of citationList.entries()) {
+    if (seen.has(url)) continue
+    seen.add(url)
+    links.push({
+      id: `citation-${index + 1}`,
+      label: 'Official citation',
+      note: 'Awarding-body page this record was verified against',
+      url,
+      host: readHost(url),
+    })
+  }
+
+  const officialList = readList(readUrlList(scholarship.official_source_urls))
+  for (const [index, url] of officialList.entries()) {
+    if (seen.has(url)) continue
+    seen.add(url)
+    links.push({
+      id: `official-${index + 1}`,
+      label: 'Official page',
+      note: 'Further awarding-body page on record',
+      url,
+      host: readHost(url),
+    })
+  }
+
+  return links
+}
+
+/** A URL-only view of a value: absolute http(s) entries, order preserved. */
+function readUrlList(value) {
+  if (!Array.isArray(value)) return []
+  return value
+    .map((entry) => readUrl(entry))
+    .filter((url) => Boolean(url))
+}
+
+/* The authored applicant guidance, published from the researched
+   `applicant_utility` blob.
+
+   The blob is not display layout and not API schema: it is guidance a
+   researcher wrote for applicants, keyed by role. This module turns it into
+   sections in a fixed reading order, and drops any key whose value carries
+   nothing - so a record that was only partly researched publishes the parts
+   that were researched, rather than a half-filled template. */
+const GUIDANCE_SECTIONS = [
+  { id: 'summary', title: 'What makes this award unusual' },
+  { id: 'best_fit', title: 'Best fit' },
+  { id: 'submission_workflow', title: 'Submission workflow' },
+  { id: 'application_readiness_checklist', title: 'Readiness checklist' },
+  { id: 'common_rejection_risks', title: 'Common rejection risks' },
+  { id: 'document_audit', title: 'Document audit' },
+  { id: 'estimated_uncovered_costs', title: 'Costs the award does not cover' },
+  { id: 'alerts', title: 'Watch out for' },
+  { id: 'important_advice_for_students', title: 'Advice from the awarding body' },
+  { id: 'mistakes_to_avoid', title: 'Mistakes to avoid' },
+  { id: 'eligibility_tips', title: 'Eligibility tips' },
+  { id: 'application_tips', title: 'Application tips' },
+  { id: 'deadline_notes', title: 'Deadline notes' },
+  { id: 'referee_tracking', title: 'Referee tracking' },
+  { id: 'questions_to_ask_host', title: 'Questions to ask the host' },
+  { id: 'post_award_requirements', title: 'Post-award requirements' },
+]
+
+/** One guidance item to display text. An alert may carry trigger + message. */
+function guidanceItemText(item) {
+  if (typeof item === 'string') return readText(item)
+  if (item && typeof item === 'object') {
+    const trigger = readText(item.trigger)
+    const message = readText(item.message)
+    if (trigger && message) return `${trigger} — ${message}`
+    return message || trigger
+  }
+  return null
+}
+
+/**
+ * Turns the authored guidance blob into ordered sections, or null when the
+ * blob carries nothing usable. A section whose items are all empty is
+ * dropped rather than rendered as an empty heading.
+ */
+export function buildApplicantGuidance(applicantUtility) {
+  if (!applicantUtility || typeof applicantUtility !== 'object') return null
+
+  const sections = []
+  for (const { id, title } of GUIDANCE_SECTIONS) {
+    const value = applicantUtility[id]
+    if (value === null || value === undefined) continue
+
+    const rawItems = Array.isArray(value) ? value : [value]
+    const items = readList(rawItems.map(guidanceItemText))
+    if (items.length === 0) continue
+
+    sections.push({ id, title, items, prose: items.length === 1 })
+  }
+
+  if (sections.length === 0) return null
+  return { sections }
 }
 
 /** The single link the primary Apply control should use. */
@@ -179,6 +288,82 @@ export function imageKindLabel(value) {
 }
 
 /**
+ * Formats a researched currency amount for display, or null.
+ *
+ * The amount is the confirmed figure from the awarding body's own page. Two
+ * rules keep the display honest: the number is formatted with grouping but
+ * never rounded up or down, and a currency the formatter does not recognise
+ * is printed as an ISO code rather than dropped or guessed at. An amount
+ * that is null stays null - a percentage award and an unpublished amount
+ * are the same "no figure" state here, because neither is a currency
+ * amount the API claims to publish.
+ */
+export function formatFundingValue(amount, currency, period) {
+  if (amount === null || amount === undefined || amount === '') return null
+  const number = Number(amount)
+  if (!Number.isFinite(number)) return null
+
+  // Pad a fractional amount to two decimals so a half-unit stays a half-unit
+  // rather than dropping its trailing zero, and leave integers as integers.
+  const fractionDigits = Number.isInteger(number) ? 0 : 2
+  let formatted
+  try {
+    formatted = new Intl.NumberFormat('en-GB', {
+      minimumFractionDigits: fractionDigits,
+      maximumFractionDigits: fractionDigits,
+    }).format(number)
+  } catch {
+    formatted = String(number)
+  }
+
+  const code = typeof currency === 'string' && currency.trim() ? currency.trim().toUpperCase() : null
+  if (code && code.length === 3) {
+    const symbol = currencySymbol(code, number)
+    // Some codes format as the code itself ("CLP"); a code immediately
+    // followed by the figure reads as one token, so it gets a space instead.
+    if (symbol && symbol !== code) {
+      formatted = `${symbol}${formatted}`
+    } else {
+      formatted = `${code} ${formatted}`
+    }
+  }
+
+  const periodText = typeof period === 'string' && period.trim() ? period.trim() : null
+  return periodText ? `${formatted} ${periodText}` : formatted
+}
+
+/** The currency glyph the platform prints for a code, or null when it has none. */
+function currencySymbol(code, number) {
+  try {
+    const parts = new Intl.NumberFormat('en-GB', {
+      style: 'currency',
+      currency: code,
+    }).formatToParts(number)
+    return parts.find((part) => part.type === 'currency')?.value ?? null
+  } catch {
+    return null
+  }
+}
+
+/** Only a true coverage claim is published; a false or null stays unstated. */
+export function buildCoverageFact(scholarship) {
+  if (!scholarship) return []
+  const facts = []
+  const amount = formatFundingValue(
+    scholarship.funding_amount,
+    scholarship.funding_currency,
+    scholarship.funding_period,
+  )
+  if (amount) {
+    facts.push({ id: 'funding_amount', label: 'Funding amount', value: amount })
+  }
+  if (scholarship.tuition_coverage === true) {
+    facts.push({ id: 'tuition_coverage', label: 'Tuition coverage', value: 'Tuition covered by the award' })
+  }
+  return facts
+}
+
+/**
  * Quick facts for the overview grid.
  * Only populated fields appear, so the panel never shows a row of "—".
  */
@@ -187,6 +372,12 @@ export function buildQuickFacts(scholarship) {
 
   const facts = [
     { id: 'funding', label: 'Funding', value: readText(scholarship.funding) },
+    // The researched funding triple sits under the funding label: the text
+    // is the provider's own wording, and the amount beside it is the
+    // confirmed figure. When no figure is confirmed the row simply does
+    // not appear, which is the difference between "Fully Funded" as a
+    // label and a number nobody has verified.
+    ...buildCoverageFact(scholarship),
     { id: 'level', label: 'Study level', value: readText(scholarship.degree) },
     { id: 'country', label: 'Country', value: readText(scholarship.country) },
     { id: 'region', label: 'Region', value: readText(scholarship.region) },

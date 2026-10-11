@@ -2,6 +2,7 @@ import { useCallback, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import ScholarshipImage from './ScholarshipImage'
 import ScholarshipActions from './ScholarshipActions'
+import { formatFundingValue } from '../utils/scholarshipDetail'
 import { getDeadlineLabel, getLastVerifiedLabel, getScholarshipStatus } from '../utils/scholarshipPresentation'
 import './ScholarshipCard.css'
 
@@ -65,6 +66,15 @@ export default function ScholarshipCard({ scholarship }) {
     card.style.setProperty('--lg-hx', '50%')
     card.style.setProperty('--lg-hy', '0%')
   }, [])
+
+  /* The researched funding amount, formatted. Null whenever no figure was
+     confirmed, so the row appears only where the awarding body publishes a
+     number - the same honesty rule the detail page applies, at card scale. */
+  const fundingAmount = formatFundingValue(
+    scholarship.funding_amount,
+    scholarship.funding_currency,
+    scholarship.funding_period,
+  )
 
   return (
     <article
@@ -137,6 +147,13 @@ export default function ScholarshipCard({ scholarship }) {
           <dd>{scholarship.degree}</dd>
         </div>
       </dl>
+
+      {fundingAmount ? (
+        <p className="scholarship-card__amount">
+          <span>Funding amount</span>
+          <strong>{fundingAmount}</strong>
+        </p>
+      ) : null}
 
       <div className="scholarship-card__footer">
         {/* No supervisor teaser here. It cost one database request per card -
