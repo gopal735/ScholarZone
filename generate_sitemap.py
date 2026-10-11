@@ -37,28 +37,34 @@ STATIC_ROUTES = (
 )
 DETAIL_PRIORITY = {"changefreq": "weekly", "priority": "0.8"}
 
+# The origin the site is deployed from. It is the same value the frontend's
+# canonicalOrigin service exports and the SEO contract test enforces, and it
+# is deliberately a constant rather than derived from anything in the data: a
+# record's own catalogue_url is the awarding body's page, not our host, and
+# reading an origin from it would publish a sitemap pointing at somebody
+# else's domain.
+CANONICAL_ORIGIN = "https://visionary-cactus-600b38.netlify.app"
 
-def _static_base(existing: Path, fallback_records: list[dict]) -> str:
-    """The origin to build URLs from: the file's own, if it has one."""
+
+def _origin(existing: Path) -> str:
+    """The origin to build URLs from: the file being replaced, if it has one.
+
+    The committed sitemap already carries the deployed origin, so replacing
+    it keeps that host explicit rather than relocating every listing by
+    assumption. A missing or unparseable file falls back to the canonical
+    origin, which is what a first-ever generation should publish.
+    """
     if existing.is_file():
         try:
             root = ET.parse(existing).getroot()
         except ET.ParseError:
-            root = None
+            return CANONICAL_ORIGIN
         if root is not None:
             namespaces = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
             for loc in root.findall(".//sm:loc", namespaces) or root.findall(".//loc"):
-                if loc.text and "/scholarships/" in loc.text:
-                    origin, _, _detail = loc.text.partition("/scholarships/")
-                    if origin:
-                        return origin.rstrip("/")
-    for record in fallback_records:
-        detail = record.get("catalogue_url") or ""
-        if detail:
-            origin, _, _slug = detail.partition("/scholarships/")
-            if origin.startswith("http"):
-                return origin.rstrip("/")
-    return "https://visionary-cactus-600b38.netlify.app"
+                if loc.text and loc.text.startswith("http"):
+                    return loc.text.rstrip("/")
+    return CANONICAL_ORIGIN
 
 
 def generate(snapshot_path: Path, sitemap_path: Path) -> int:
@@ -67,7 +73,7 @@ def generate(snapshot_path: Path, sitemap_path: Path) -> int:
     records = snapshot.get("scholarships", [])
     ids = [int(record["id"]) for record in records if record.get("id") is not None]
 
-    base = _static_base(sitemap_path, records)
+    base = _origin(sitemap_path)
     # The same date the snapshot derived its statuses on: the sitemap says
     # "reflects the catalogue as published", not "as crawled today".
     lastmod = (

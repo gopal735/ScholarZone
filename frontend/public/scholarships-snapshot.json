@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-10-11T17:20:30.990108Z",
+    "generated_at": "2026-10-11T18:07:07.130138Z",
     "source_database": "scholarzone.db",
     "source_record_count": 695,
     "public_record_count": 621,
@@ -15,7 +15,7 @@
     "baseline": {
       "mode": "preserve",
       "source": "scholarships-snapshot.json",
-      "baseline_records": 623,
+      "baseline_records": 621,
       "baseline_ids": [
         1,
         3,
@@ -253,7 +253,6 @@
         276,
         277,
         278,
-        279,
         280,
         282,
         284,
@@ -638,14 +637,13 @@
         723,
         724,
         725,
-        727,
-        729
+        727
       ],
-      "baseline_preserved": 151,
-      "baseline_removed": 2,
+      "baseline_preserved": 153,
+      "baseline_removed": 0,
       "newly_public": 0
     },
-    "status_derived_at": "2026-10-11",
+    "status_derived_at": "2026-10-12",
     "schema_version": "2.0",
     "visibility_predicate": "status != closed AND is_archived = false AND verification_status != quarantined",
     "filter_options": {
@@ -6626,9 +6624,9 @@
   "stats": {
     "total": 621,
     "countries": 74,
-    "open": 310,
-    "closing_soon": 49,
-    "upcoming": 110,
+    "open": 308,
+    "closing_soon": 50,
+    "upcoming": 109,
     "verified_active": 530,
     "fully_funded": 205,
     "with_image": 449,
@@ -6780,11 +6778,7 @@
       "funding_period": "per month (doctoral candidates/postdocs: EUR 1400)",
       "tuition_coverage": false,
       "official_source_urls": [
-        "https://www.daad.de",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.daad.de"
       ],
       "source_citations": [
         "https://www.daad.de"
@@ -7156,11 +7150,7 @@
         "https://www.inde.campusfrance.org/france-excellence-charpak-scholarship-program",
         "https://www.inde.campusfrance.org/charpak-master-s-scholarship",
         "https://www.inde.campusfrance.org/france-excellence-charpak-bachelor-scholarship",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.inde.campusfrance.org/france-excellence-charpak-scholarship-program",
@@ -7461,11 +7451,7 @@
         "https://www.deutschlandstipendium.de/deutschlandstipendium/kenntnahme/auswahlkriterien",
         "https://www.deutschlandstipendium.de/deutschlandstipendium/de/stipendium/haeufig-gestellte-fragen/haeufig-gestellte-fragen_node.html",
         "https://www.deutschlandstipendium.de/deutschlandstipendium/de/stipendium/wie-es-funktioniert/wie-es-funktioniert.html",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.deutschlandstipendium.de/",
@@ -7799,11 +7785,7 @@
         "https://www.postf.org/en/asia/purpose",
         "https://www.postf.org/en/asia/abroad/purpose",
         "https://www.postf.org/en/asia/abroad/business",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.postf.org/en/asia/purpose",
@@ -8094,11 +8076,7 @@
         "https://www.epfl.ch/education/master/master-excellence-fellowships/",
         "https://www.epfl.ch/education/master/master-excellence-fellowships/how-to-apply/",
         "https://www.epfl.ch/education/master/master-excellence-fellowships",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.epfl.ch/education/master/master-excellence-fellowships/",
@@ -8222,11 +8200,7 @@
       "official_source_urls": [
         "https://marie-sklodowska-curie-actions.ec.europa.eu/actions/postdoctoral-fellowships",
         "https://marie-sklodowska-curie-actions.ec.europa.eu/resources/documents/marie-sklodowska-curie-actions-msca-work-programme-2026-2027",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://marie-sklodowska-curie-actions.ec.europa.eu/actions/postdoctoral-fellowships",
@@ -8362,11 +8336,7 @@
       "funding_period": "per month (minimum of the published EU range)",
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/studying-abroad",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/studying-abroad"
       ],
       "source_citations": [
         "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/studying-abroad"
@@ -8488,11 +8458,7 @@
         "https://marie-sklodowska-curie-actions.ec.europa.eu/funding",
         "https://euraxess.ec.europa.eu/jobs/search?f%5B0%5D=job_is_eu_founded%3A546&f%5B1%5D=job_is_eu_founded%3A548&f%5B2%5D=job_is_eu_founded%3A4348&f%5B3%5D=job_is_eu_founded%3A4349",
         "https://marie-sklodowska-curie-actions.ec.europa.eu/actions/how-to-apply",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://marie-sklodowska-curie-actions.ec.europa.eu/actions/doctoral-networks",
@@ -8833,10 +8799,6 @@
       "tuition_coverage": false,
       "official_source_urls": [
         "https://www.campusfrance.org/en/bursaries-foreign-students",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship",
         "https://aefe.gouv.fr/fr/enseignement-francais/poursuite-des-etudes-dans-le-superieur/devenir-boursier-france-excellence-major"
       ],
       "source_citations": [
@@ -8929,11 +8891,7 @@
         "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
         "https://www.daad.de/en/study-and-research-in-germany/scholarships/important-information-for-scholarship-applicants/",
         "https://www.daad.de/en/study-and-research-in-germany/scholarships/scholarship-database/",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
@@ -9089,11 +9047,7 @@
         "https://static.daad.de/media/daad_de/pdfs_nicht_barrierefrei/in-deutschland-studieren-forschen-lehren/daad_epos_deadlines.pdf",
         "https://static.daad.de/media/daad_de/pdfs_nicht_barrierefrei/in-deutschland-studieren-forschen-lehren/dac_laenderliste_epos.pdf",
         "https://static.daad.de/media/daad_de/pdfs_nicht_barrierefrei/in-deutschland-studieren-forschen-lehren/epos_faq_en.pdf",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777",
@@ -9441,11 +9395,7 @@
         "https://www.jasso.go.jp/en/ryugaku/scholarship_j/index.html",
         "https://www.jasso.go.jp/en/ryugaku/index.html",
         "https://www.jasso.go.jp/en/ryugaku/related/index.html",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.jasso.go.jp/en/ryugaku/scholarship_j/ukeire.html",
@@ -10342,11 +10292,7 @@
         "https://taiwanscholarship.moe.gov.tw/web/pages.aspx?p=15",
         "https://taiwanscholarship.moe.gov.tw/web/pages.aspx?p=7",
         "https://taiwanscholarship.moe.gov.tw/web/pages.aspx?p=12",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://taiwanscholarship.moe.gov.tw/web/pages.aspx?p=15",
@@ -10620,11 +10566,7 @@
       "funding_period": null,
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://future.utoronto.ca/pearson",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://future.utoronto.ca/pearson"
       ],
       "source_citations": [
         "https://future.utoronto.ca/pearson"
@@ -10750,11 +10692,7 @@
       "funding_period": null,
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://www.ares-ac.be/en/scholarships",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.ares-ac.be/en/scholarships"
       ],
       "source_citations": [
         "https://www.ares-ac.be/en/scholarships"
@@ -10872,11 +10810,7 @@
       "funding_period": "per month",
       "tuition_coverage": false,
       "official_source_urls": [
-        "https://www.aecid.es/es/becas-para-ciudadanos-de-paises-de-america-latina-africa-y-asia",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.aecid.es/es/becas-para-ciudadanos-de-paises-de-america-latina-africa-y-asia"
       ],
       "source_citations": [
         "https://www.aecid.es/es/becas-para-ciudadanos-de-paises-de-america-latina-africa-y-asia"
@@ -12212,11 +12146,7 @@
         "https://www.humphreyfellowship.org",
         "https://www.humphreyfellowship.org/how-to-apply/eligibility/",
         "https://www.humphreyfellowship.org/how-to-apply/fellowship-components/",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.humphreyfellowship.org",
@@ -12581,11 +12511,7 @@
       "tuition_coverage": true,
       "official_source_urls": [
         "https://www.american.edu/admissions/international/au-egls-apply.cfm",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.american.edu/admissions/international/au-egls-apply.cfm"
@@ -12731,9 +12657,7 @@
       "tuition_coverage": true,
       "official_source_urls": [
         "https://www.jeffersonscholars.org/scholarships",
-        "https://www.jeffersonscholars.org/scholarships/selection",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.jeffersonscholars.org/scholarships/selection"
       ],
       "source_citations": [
         "https://www.jeffersonscholars.org/scholarships",
@@ -12855,11 +12779,7 @@
       "tuition_coverage": true,
       "official_source_urls": [
         "https://kmsp.wisc.edu",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://kmsp.wisc.edu"
@@ -13627,11 +13547,7 @@
       "funding_period": "per year",
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://isss.uoregon.edu/icsp",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://isss.uoregon.edu/icsp"
       ],
       "source_citations": [
         "https://isss.uoregon.edu/icsp"
@@ -14168,11 +14084,7 @@
         "https://www.gatescambridge.org/faq",
         "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships",
         "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.gatescambridge.org/apply/timeline",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.gatescambridge.org/apply/timeline"
       ],
       "source_citations": [
         "https://www.gatescambridge.org/programme/the-scholarship",
@@ -14326,11 +14238,7 @@
       "funding_period": "per year",
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://www.cambridgetrust.org/postgraduate-applicants/",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.cambridgetrust.org/postgraduate-applicants/"
       ],
       "source_citations": [
         "https://www.cambridgetrust.org/postgraduate-applicants/"
@@ -14996,11 +14904,7 @@
         "https://www.lse.ac.uk/study-at-lse/Graduate/Prospective-students/How-to-Apply/When-to-apply",
         "https://www.lse.ac.uk/study-at-lse/graduate/fees-and-funding/lse-masters-awards",
         "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.lse.ac.uk/study-at-lse/Graduate/fees-and-funding/LSE-Excellence-Scholarship",
@@ -15971,11 +15875,7 @@
         "https://www.trudeaufoundation.ca/become-a-scholar/",
         "https://www.trudeaufoundation.ca/faq/",
         "https://www.trudeaufoundation.ca/end-of-the-application-period-for-the-2026-scholarship-competition/",
-        "https://www.trudeaufoundation.ca/become-a-scholar",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.trudeaufoundation.ca/become-a-scholar"
       ],
       "source_citations": [
         "https://www.trudeaufoundation.ca/scholarship/",
@@ -16200,11 +16100,7 @@
       "funding_period": "per year",
       "tuition_coverage": false,
       "official_source_urls": [
-        "https://you.ubc.ca/financial-planning/scholarships-awards-international-students",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://you.ubc.ca/financial-planning/scholarships-awards-international-students"
       ],
       "source_citations": [
         "https://you.ubc.ca/financial-planning/scholarships-awards-international-students"
@@ -16639,11 +16535,7 @@
       "tuition_coverage": false,
       "official_source_urls": [
         "https://future.mcmaster.ca/internationalawards",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://future.mcmaster.ca/internationalawards"
@@ -16907,11 +16799,7 @@
         "https://uwaterloo.ca/future-students/financing/international-scholarships",
         "https://uwaterloo.ca/future-students/admissions/timelines",
         "https://uwaterloo.ca/future-students/admissions/english-language-requirements",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://uwaterloo.ca/future-students/financing/international-scholarships",
@@ -17191,11 +17079,7 @@
       "official_source_urls": [
         "https://www.hec.edu/en/hec-paris-scholarships",
         "https://www.hec.edu/en/master-s-programs/news/funding-your-future-scholarship-opportunities-hec-paris",
-        "https://www.hec.edu/en/phd-program/financing",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.hec.edu/en/phd-program/financing"
       ],
       "source_citations": [
         "https://www.hec.edu/en/hec-paris-scholarships",
@@ -17257,7 +17141,7 @@
       "deadline": "Need-based scholarship form deadlines: Round 1 – October 26th, 2026 at 12pm (noon); Round 2 – December 21st, 2026 at 12pm (noon); Round 3 – March 16th, 2027 at 12pm (noon); Round 4 – May 18th, 2027 at 12pm (noon).",
       "deadline_date": "2026-10-26",
       "deadline_precision": "exact",
-      "status": "open",
+      "status": "closing-soon",
       "verified": true,
       "last_verified_at": "2026-10-10",
       "verification_status": "active",
@@ -17688,11 +17572,7 @@
       "tuition_coverage": true,
       "official_source_urls": [
         "https://bse.eu/masters-degrees/admissions",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://bse.eu/masters-degrees/admissions"
@@ -17855,11 +17735,7 @@
         "https://www.ie.edu/financial-aid/masters/awardsandscholarships",
         "https://www.ie.edu/financial-aid/masters/how-to-apply/",
         "https://www.ie.edu/financial-aid/scholarship-list/",
-        "https://www.ie.edu/financial-aid/masters/",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.ie.edu/financial-aid/masters/"
       ],
       "source_citations": [
         "https://www.ie.edu/financial-aid/masters/awardsandscholarships/",
@@ -19147,11 +19023,7 @@
         "https://www.ntu.edu.sg/admissions/undergraduate/scholarships/scholarship-opportunities/detail/nanyang-scholarship",
         "https://www.ntu.edu.sg/admissions/undergraduate/scholarships",
         "https://www.ntu.edu.sg/admissions/undergraduate",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.ntu.edu.sg/admissions/undergraduate/scholarships/scholarship-opportunities/detail/nanyang-scholarship",
@@ -19296,11 +19168,7 @@
       "official_source_urls": [
         "https://www.ntu.edu.sg/admissions/graduate/financialmatters/scholarships/npgs",
         "https://www.ntu.edu.sg/admissions/graduate/financialmatters/scholarships",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.ntu.edu.sg/admissions/graduate/financialmatters/scholarships/npgs",
@@ -19655,12 +19523,9 @@
       "official_source_urls": [
         "https://www.sutd.edu.sg/admissions/graduate/scholarship/sutd-graduate-fellowships-scholarships",
         "https://www.sutd.edu.sg/admissions/graduate/phd/",
-        "https://admission.sutd.edu.sg/",
         "https://www.sutd.edu.sg/admissions/graduate/scholarship/sutd-graduate-fellowships-scholarships/",
         "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships",
         "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
         "https://www.sutd.edu.sg/admissions/graduate/scholarships",
         "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
       ],
@@ -19786,11 +19651,7 @@
       "funding_period": "per month",
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://a2ascholarships.iccr.gov.in/scheme/quad-stem-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://a2ascholarships.iccr.gov.in/scheme/quad-stem-scholarship"
       ],
       "source_citations": [
         "https://a2ascholarships.iccr.gov.in/scheme/quad-stem-scholarship"
@@ -19929,11 +19790,7 @@
       "funding_period": "per month",
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://a2ascholarships.iccr.gov.in/scheme/radhakrishnan-cultural-exchange",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://a2ascholarships.iccr.gov.in/scheme/radhakrishnan-cultural-exchange"
       ],
       "source_citations": [
         "https://a2ascholarships.iccr.gov.in/scheme/radhakrishnan-cultural-exchange"
@@ -21125,11 +20982,7 @@
       "funding_period": "per month",
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://ir.iith.ac.in/#/intadm",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://ir.iith.ac.in/#/intadm"
       ],
       "source_citations": [
         "https://ir.iith.ac.in/#/intadm"
@@ -21253,8 +21106,7 @@
       "funding_period": null,
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://kiit.ac.in/scholarships-fellowships/",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://kiit.ac.in/scholarships-fellowships/"
       ],
       "source_citations": [
         "https://kiit.ac.in/scholarships-fellowships/"
@@ -21395,11 +21247,7 @@
         "https://admissions.rochester.edu/handler-scholarship",
         "https://admissions.rochester.edu/applying/dates-and-deadlines/",
         "https://admissions.enrollment.rochester.edu/register/handler",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://admissions.rochester.edu/handler-scholarship",
@@ -21570,11 +21418,7 @@
       "funding_period": "per year",
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://www.berea.edu/admissions",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.berea.edu/admissions"
       ],
       "source_citations": [
         "https://www.berea.edu/admissions"
@@ -21717,8 +21561,7 @@
       "tuition_coverage": true,
       "official_source_urls": [
         "https://ousf.duke.edu/merit-scholarships/karsh-international-scholars-program",
-        "https://ousf.duke.edu/merit-scholarships/karsh-international-scholars-program/",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://ousf.duke.edu/merit-scholarships/karsh-international-scholars-program/"
       ],
       "source_citations": [
         "https://ousf.duke.edu/merit-scholarships/karsh-international-scholars-program",
@@ -22345,11 +22188,7 @@
         "https://admission.princeton.edu/apply/first-year-application-dates-deadlines",
         "https://admission.princeton.edu/cost-aid",
         "https://admission.princeton.edu/apply/graded-written-paper",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://admission.princeton.edu/apply/international-students",
@@ -23351,11 +23190,7 @@
       "tuition_coverage": true,
       "official_source_urls": [
         "https://www.polimi.it/en/prospective-students/how-much-does-it-cost/scholarships",
-        "https://www.polimi.it/fileadmin/user_upload/futuri_studenti/borse-di-studio/Call_for_Application_for_Merit_2026-2027.pdf",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.polimi.it/fileadmin/user_upload/futuri_studenti/borse-di-studio/Call_for_Application_for_Merit_2026-2027.pdf"
       ],
       "source_citations": [
         "https://www.polimi.it/en/prospective-students/how-much-does-it-cost/scholarships",
@@ -23498,11 +23333,7 @@
         "https://www.unipd.it/en/padua-international-excellence-scholarship-programme",
         "https://www.unipd.it/en/assessement-results",
         "https://www.unipd.it/padua-international-excellence-scholarship-programme",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.unipd.it/en/padua-international-excellence-scholarship-programme",
@@ -24105,11 +23936,7 @@
         "https://www.unibocconi.it/en/applying-bocconi/bachelor-and-law-programs/funding/isu-bocconi-scholarship-first-year-students-ay-2026-27",
         "https://www.unibocconi.it/en/applying-bocconi/bachelor-and-law-programs/funding/isu-bocconi-scholarship-deadlines-and-procedures-ay-2027-28",
         "https://www.unibocconi.it/en/applying-bocconi/bachelor-and-law-programs/funding/necessary-documentation-isu-bocconi-ay-2027-28",
-        "https://www.unibocconi.it/en/applying-bocconi/bachelor-and-law-programs/funding/isu-bocconi-scholarship-first-year-students-ay-2027-28",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.unibocconi.it/en/applying-bocconi/bachelor-and-law-programs/funding/isu-bocconi-scholarship-first-year-students-ay-2027-28"
       ],
       "source_citations": [
         "https://www.unibocconi.it/en/applying-bocconi/bachelor-and-law-programs/funding/isu-bocconi-scholarship-first-year-students-ay-2026-27",
@@ -24569,11 +24396,7 @@
       "official_source_urls": [
         "https://en.mofa.gov.tw/cp.aspx?n=1325",
         "https://www.mofa.gov.tw/cp.aspx?n=72",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://en.mofa.gov.tw/cp.aspx?n=1325",
@@ -25096,11 +24919,7 @@
       "official_source_urls": [
         "https://apply.nthu.edu.tw/en/article/102-nthu-scholarship",
         "https://apply.nthu.edu.tw/en/article/70-international-students",
-        "https://oga.site.nthu.edu.tw/p/412-1524-18035.php?Lang=en",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://oga.site.nthu.edu.tw/p/412-1524-18035.php?Lang=en"
       ],
       "source_citations": [
         "https://apply.nthu.edu.tw/en/article/102-nthu-scholarship",
@@ -25380,11 +25199,7 @@
         "https://ciae2.kmu.edu.tw/index.php/en-gb/international-students1/new-students/scholarships/2425-elite-moe-scholarship-for-lecturers-from-south-and-southeast-asia-countries",
         "https://oia.tnua.edu.tw/en/news/moe-tnua-elite-scholarship-program-scholarship-for-lecturers-from-south-and-southeast-asia-%E6%96%B0%E5%8D%97%E5%90%91%E5%9F%B9%E8%8B%B1%E5%B0%88%E6%A1%88%E2%94%80%E6%95%99%E8%82%B2%E9%83%A8%E7%8D%8E",
         "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://taiwanscholarship.moe.gov.tw/web/pages.aspx?p=7",
@@ -25738,11 +25553,7 @@
       "tuition_coverage": true,
       "official_source_urls": [
         "https://www.unil.ch/unil/en/home/menuinst/etudier/mobilite-et-echange/etudiantes-et-etudiants-internationaux/etudiantes-internationaux-reguliers/bourse-de-master.html",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.unil.ch/unil/en/home/menuinst/etudier/mobilite-et-echange/etudiantes-et-etudiants-internationaux/etudiantes-internationaux-reguliers/bourse-de-master.html"
@@ -25910,11 +25721,7 @@
       "official_source_urls": [
         "https://www.unisg.ch/en/studying/orientation/advice-and-support/financing-your-studies/hsg-funds-and-excellence-scholarships",
         "https://funding.unisg.ch/en/programmes/1441",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.unisg.ch/en/studying/orientation/advice-and-support/financing-your-studies/hsg-funds-and-excellence-scholarships/",
@@ -26218,11 +26025,7 @@
       "official_source_urls": [
         "https://foundation.scg.ch/scholarships/werner-scholarship",
         "https://foundation.scg.ch/scholarships",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://foundation.scg.ch/scholarships/werner-scholarship",
@@ -26375,11 +26178,7 @@
       "official_source_urls": [
         "https://careers.cern/programmes/doctoral-studentship",
         "https://careers.cern/jobs/tsc-doct/",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://careers.cern/programmes/doctoral-studentship",
@@ -26519,11 +26318,7 @@
       "official_source_urls": [
         "https://careers.cern/programmes/research-fellowship",
         "https://home.cern/about/who-we-are/our-governance/member-states",
-        "https://careers.cern/programmes/research-fellowship/",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://careers.cern/programmes/research-fellowship/"
       ],
       "source_citations": [
         "https://careers.cern/programmes/research-fellowship",
@@ -26982,11 +26777,7 @@
       "tuition_coverage": false,
       "official_source_urls": [
         "https://www.wipo.int/en/web/working-at-wipo/fellowship-program",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.wipo.int/en/web/working-at-wipo/fellowship-program"
@@ -27466,11 +27257,7 @@
       "tuition_coverage": false,
       "official_source_urls": [
         "https://www.uibk.ac.at/en/college-service-center/scholarships",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.uibk.ac.at/en/college-service-center/scholarships"
@@ -27686,11 +27473,7 @@
       "funding_period": "per month",
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en"
       ],
       "source_citations": [
         "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en"
@@ -27809,11 +27592,7 @@
       "funding_period": "per month (doctoral stipend, gross)",
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://www.ceu.edu/admissions/financial-aid/student-scholarships",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.ceu.edu/admissions/financial-aid/student-scholarships"
       ],
       "source_citations": [
         "https://www.ceu.edu/admissions/financial-aid/student-scholarships"
@@ -28582,11 +28361,7 @@
       "tuition_coverage": false,
       "official_source_urls": [
         "https://www.eur.nl/en/education/practical-matters/scholarships-grants",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.eur.nl/en/education/practical-matters/scholarships-grants"
@@ -29194,11 +28969,7 @@
       "official_source_urls": [
         "https://www.maastrichtuniversity.nl/studeren/toelating-inschrijving/financing-your-studies/scholarships/maastricht-university-nl-high",
         "https://www.maastrichtuniversity.nl/scholarships",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.maastrichtuniversity.nl/studeren/toelating-inschrijving/financing-your-studies/scholarships/maastricht-university-nl-high",
@@ -30540,11 +30311,7 @@
       "tuition_coverage": true,
       "official_source_urls": [
         "https://adelaide.edu.au/study/scholarships/int/adelaide-academic-excellence-scholarship-50",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://adelaide.edu.au/study/scholarships/int/adelaide-academic-excellence-scholarship-50",
@@ -30767,8 +30534,7 @@
       "tuition_coverage": true,
       "official_source_urls": [
         "https://scholarships.uq.edu.au/scholarship/uq-international-excellence-scholarship",
-        "https://scholarships.uq.edu.au/sites/default/files/2026-07/UQ_International_Excellence_Scholarship_TCs_2027.pdf",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://scholarships.uq.edu.au/sites/default/files/2026-07/UQ_International_Excellence_Scholarship_TCs_2027.pdf"
       ],
       "source_citations": [
         "https://scholarships.uq.edu.au/scholarship/uq-international-excellence-scholarship",
@@ -31539,11 +31305,7 @@
       "tuition_coverage": true,
       "official_source_urls": [
         "https://www.uts.edu.au/for-students/admissions-entry/scholarships/scholarships-search/uts-vice-chancellors-international-undergraduate-scholarship",
-        "https://forms.uts.edu.au/index.cfm?FormId=870",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://forms.uts.edu.au/index.cfm?FormId=870"
       ],
       "source_citations": [
         "https://www.uts.edu.au/for-students/admissions-entry/scholarships/scholarships-search/uts-vice-chancellors-international-undergraduate-scholarship",
@@ -31815,11 +31577,7 @@
         "https://www.rmit.edu.au/scholarships/international-scholarships/future-leaders-scholarship",
         "https://www.rmit.edu.au/scholarships/international-scholarships/international-scholarships-terms-and-conditions",
         "https://www.rmit.edu.au/study-with-us/international-students/apply-to-rmit-international-students",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.rmit.edu.au/scholarships/international-scholarships/future-leaders-scholarship",
@@ -32935,11 +32693,7 @@
         "https://admission.kaist.ac.kr/intl-undergraduate/application/ApplicationGuide/ApplicationTimeline",
         "https://www.hss.de/stipendium/wen-suchen-wir",
         "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://admission.kaist.ac.kr/intl-undergraduate/support/scholarships/kaist",
@@ -33634,8 +33388,7 @@
       "funding_period": "per month",
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://ge.mofa.go.kr/ge-en/brd/m_28696/view.do?seq=118",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://ge.mofa.go.kr/ge-en/brd/m_28696/view.do?seq=118"
       ],
       "source_citations": [
         "https://ge.mofa.go.kr/ge-en/brd/m_28696/view.do?seq=118"
@@ -33896,11 +33649,7 @@
       "funding_period": "per month (October through June)",
       "tuition_coverage": false,
       "official_source_urls": [
-        "https://aai-salzburg.at/en/studies/apply",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://aai-salzburg.at/en/studies/apply"
       ],
       "source_citations": [
         "https://aai-salzburg.at/en/studies/apply"
@@ -34208,11 +33957,7 @@
         "https://phd.ista.ac.at/at-a-glance/",
         "https://phd.ista.ac.at/structure-phd/",
         "https://phd.ista.ac.at/at-a-glance",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://phd.ista.ac.at/at-a-glance/",
@@ -35509,11 +35254,7 @@
       "official_source_urls": [
         "https://www.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026397",
         "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026397"
@@ -35645,11 +35386,7 @@
         "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135744",
         "https://www.daad.de/en/studying-in-germany/scholarships/scholarship-database/subject-specific-information/",
         "https://www.daad.de/en/study-and-research-in-germany/scholarships/important-information-for-scholarship-applicants/",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135744",
@@ -35961,11 +35698,7 @@
         "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50109971",
         "https://www.daad.de/en/studying-in-germany/scholarships/scholarship-database/information-performing-arts/",
         "https://www.daad.de/en/study-and-research-in-germany/scholarships/important-information-for-scholarship-applicants/",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50109971",
@@ -36284,11 +36017,7 @@
         "https://www.studyinjapan.go.jp/en/",
         "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships",
         "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
@@ -36770,11 +36499,7 @@
         "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/yoyaku_tonichimae.html",
         "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/about.html",
         "https://www.jasso.go.jp/en/ryugaku/eju/examinee/prearrival/uni_national.html",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/yoyaku_tonichimae.html",
@@ -37247,11 +36972,7 @@
       "official_source_urls": [
         "https://yz.tsinghua.edu.cn/en/info/1027/1117.htm",
         "https://yz.tsinghua.edu.cn/en/info/1010/1413.htm",
-        "https://yz.tsinghua.edu.cn/en/",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://yz.tsinghua.edu.cn/en/"
       ],
       "source_citations": [
         "https://yz.tsinghua.edu.cn/en/info/1027/1117.htm",
@@ -38126,11 +37847,7 @@
       "funding_period": "one-off, applied to year one tuition fees only",
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://www.tcd.ie/study/international/scholarships/undergraduate/geug.php",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.tcd.ie/study/international/scholarships/undergraduate/geug.php"
       ],
       "source_citations": [
         "https://www.tcd.ie/study/international/scholarships/undergraduate/geug.php"
@@ -38254,11 +37971,7 @@
       "official_source_urls": [
         "https://www.tcd.ie/study/international/scholarships/postgraduate/gexpg.php",
         "https://www.tcd.ie/study/international/scholarships/",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.tcd.ie/study/international/scholarships/postgraduate/gexpg.php",
@@ -38384,11 +38097,7 @@
         "https://www.nzscholarships.govt.nz/international-tertiary-students/",
         "https://www.nzscholarships.govt.nz/how-to-apply-for-a-scholarship/",
         "https://www.nzscholarships.govt.nz",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.nzscholarships.govt.nz/",
@@ -38642,11 +38351,7 @@
       "official_source_urls": [
         "https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/university-of-auckland-international-student-excellence-scholarship-844-all.html",
         "https://www.auckland.ac.nz/assets/study/scholarships-and-funding/find-a-scholarship-or-award/regulations/university-of-auckland-international-student-excellence-scholarship.pdf",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/university-of-auckland-international-student-excellence-scholarship-844-all.html",
@@ -39417,11 +39122,7 @@
       "tuition_coverage": true,
       "official_source_urls": [
         "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://www.wgtn.ac.nz/scholarships",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships"
       ],
       "source_citations": [
         "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
@@ -39557,11 +39258,7 @@
       "funding_period": "one year of study",
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://www.wgtn.ac.nz/international/scholarships-fees/scholarships",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/international/scholarships-fees/scholarships"
       ],
       "source_citations": [
         "https://www.wgtn.ac.nz/international/scholarships-fees/scholarships"
@@ -39676,11 +39373,7 @@
       "tuition_coverage": true,
       "official_source_urls": [
         "https://www.aalto.fi/en/admission-services/scholarships-and-tuition-fees",
-        "https://www.aalto.fi/en/admission-services/apply-to-masters-programmes",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.aalto.fi/en/admission-services/apply-to-masters-programmes"
       ],
       "source_citations": [
         "https://www.aalto.fi/en/admission-services/scholarships-and-tuition-fees",
@@ -40299,11 +39992,7 @@
         "https://studyindenmark.dk/study-options/scholarships",
         "https://www.su.dk/foreign-citizen/gb-foreign-citizen/danish-rules",
         "https://www.su.dk/foreign-citizen/gb-foreign-citizen/eu-rules",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://studyindenmark.dk/study-options/scholarships",
@@ -40468,11 +40157,7 @@
       "funding_period": "per academic year for two years",
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://www.dtu.dk/english/education/graduate/fees-and-funding/tuition_fee_waivers",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.dtu.dk/english/education/graduate/fees-and-funding/tuition_fee_waivers"
       ],
       "source_citations": [
         "https://www.dtu.dk/english/education/graduate/fees-and-funding/tuition_fee_waivers"
@@ -41134,11 +40819,7 @@
       "funding_period": "per semester",
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-presidential-scholarships",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-presidential-scholarships"
       ],
       "source_citations": [
         "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-presidential-scholarships"
@@ -41263,11 +40944,7 @@
       "official_source_urls": [
         "https://www.bi.no/en/programmes-and-individual-courses/scholarships/master-of-science-international-scholarship--bergen",
         "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.bi.no/en/programmes-and-individual-courses/scholarships/master-of-science-international-scholarship--bergen"
@@ -42469,11 +42146,7 @@
       "official_source_urls": [
         "https://www.bme.hu/en/scolarships",
         "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.bme.hu/en/scolarships"
@@ -42595,11 +42268,7 @@
       "funding_period": "per month, plus a PLN 2,500 travel allowance",
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://nawa.gov.pl/en/students/foreign-students/the-banach-scholarship-programme/call-for-proposals",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://nawa.gov.pl/en/students/foreign-students/the-banach-scholarship-programme/call-for-proposals"
       ],
       "source_citations": [
         "https://nawa.gov.pl/en/students/foreign-students/the-banach-scholarship-programme/call-for-proposals"
@@ -42725,11 +42394,7 @@
       "funding_period": "per month",
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme/call-for-proposals-26",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme/call-for-proposals-26"
       ],
       "source_citations": [
         "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme/call-for-proposals-26"
@@ -43274,11 +42939,7 @@
       "funding_period": "per month",
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://msmt.gov.cz/eu-a-zahranici/studium-cizincu-v-cr/stipendia-vlady-cr-rozvojove-zeme-2",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://msmt.gov.cz/eu-a-zahranici/studium-cizincu-v-cr/stipendia-vlady-cr-rozvojove-zeme-2"
       ],
       "source_citations": [
         "https://msmt.gov.cz/eu-a-zahranici/studium-cizincu-v-cr/stipendia-vlady-cr-rozvojove-zeme-2"
@@ -43411,8 +43072,7 @@
       "tuition_coverage": false,
       "official_source_urls": [
         "https://cuni.cz/UKEN-1617.html",
-        "https://cuni.cz/UKEN-727.html",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://cuni.cz/UKEN-727.html"
       ],
       "source_citations": [
         "https://cuni.cz/UKEN-1617.html",
@@ -43744,11 +43404,7 @@
       "official_source_urls": [
         "https://czs.muni.cz/en/student-from-abroad/other-possibilities/visegrad-grant",
         "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://czs.muni.cz/en/student-from-abroad/other-possibilities/visegrad-grant"
@@ -44906,11 +44562,7 @@
         "https://sshrc-crsh.canada.ca/en/funding/opportunities/canada-graduate-research-scholarships/masters-program.aspx",
         "https://www.nserc-crsng.gc.ca/Students-Etudiants/PG-CS/cgrsm-besrm_eng.asp",
         "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://sshrc-crsh.canada.ca/en/funding/opportunities/canada-graduate-research-scholarships/masters-program.aspx",
@@ -46577,11 +46229,7 @@
       "funding_period": "per year",
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://yz.tsinghua.edu.cn/en/info/1027/1477.htm",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://yz.tsinghua.edu.cn/en/info/1027/1477.htm"
       ],
       "source_citations": [
         "https://yz.tsinghua.edu.cn/en/info/1027/1477.htm"
@@ -47312,11 +46960,7 @@
       "official_source_urls": [
         "https://study.fsv.cuni.cz/czech-government-scholarship-developing-countries-for-the-ay-2027-28",
         "https://msmt.gov.cz/en/scholarships/government-scholarships-developing-countries",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://study.fsv.cuni.cz/czech-government-scholarship-developing-countries-for-the-ay-2027-28",
@@ -47458,8 +47102,7 @@
       "tuition_coverage": false,
       "official_source_urls": [
         "https://cuni.cz/UKEN-2329.html",
-        "https://cuni.cz/UKEN-1617.html",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://cuni.cz/UKEN-1617.html"
       ],
       "source_citations": [
         "https://cuni.cz/UKEN-2329.html",
@@ -47632,11 +47275,7 @@
       "tuition_coverage": false,
       "official_source_urls": [
         "https://www.visegradfund.org/visegrad-scholarship-program-apply",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.visegradfund.org/visegrad-scholarship-program-apply"
@@ -47794,8 +47433,7 @@
       "tuition_coverage": false,
       "official_source_urls": [
         "https://international.cvut.cz/students/incoming-students/ctu-scholarships",
-        "https://international.cvut.cz/students/incoming-students/ctu-scholarships/",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://international.cvut.cz/students/incoming-students/ctu-scholarships/"
       ],
       "source_citations": [
         "https://international.cvut.cz/students/incoming-students/ctu-scholarships",
@@ -48857,11 +48495,7 @@
         "https://www.tuni.fi/en/node/67298",
         "https://opiskelijanopas.tuni.fi/en/tampere-university/study-right-and-annual-enrolment/tuition-fees-and-scholarships/scholarships-fee-paying-students-admitted-2026-or-later",
         "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.tuni.fi/en/tau/financial-matters/tuition-fees-and-scholarships",
@@ -49800,11 +49434,7 @@
       "official_source_urls": [
         "https://www.nokiafoundation.com/foundation-fellow",
         "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.nokiafoundation.com/foundation-fellow"
@@ -49918,11 +49548,7 @@
       "official_source_urls": [
         "https://www.nokiafoundation.com/jorma-ollila-grants",
         "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.nokiafoundation.com/jorma-ollila-grants"
@@ -50275,11 +49901,7 @@
       "funding_period": "per grant (three grants awarded for 2026-2027)",
       "tuition_coverage": false,
       "official_source_urls": [
-        "https://inlife.sorbonne-universite.fr/en/education-1/international-mobility-grants-2026-2027",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://inlife.sorbonne-universite.fr/en/education-1/international-mobility-grants-2026-2027"
       ],
       "source_citations": [
         "https://inlife.sorbonne-universite.fr/en/education-1/international-mobility-grants-2026-2027"
@@ -50397,11 +50019,7 @@
       "funding_period": null,
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://www.sciencespo.fr/students/en/fees-funding/bursaries-financial-aid/mastercard-foundation-scholarships/graduate-study",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.sciencespo.fr/students/en/fees-funding/bursaries-financial-aid/mastercard-foundation-scholarships/graduate-study"
       ],
       "source_citations": [
         "https://www.sciencespo.fr/students/en/fees-funding/bursaries-financial-aid/mastercard-foundation-scholarships/graduate-study"
@@ -52784,11 +52402,7 @@
       "funding_period": "per month",
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships"
       ],
       "source_citations": [
         "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships"
@@ -54235,11 +53849,7 @@
       "tuition_coverage": true,
       "official_source_urls": [
         "https://vu.nl/en/education/more-about/incoming-master-scholarships",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://vu.nl/en/education/more-about/incoming-master-scholarships"
@@ -54969,11 +54579,7 @@
       "tuition_coverage": true,
       "official_source_urls": [
         "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships"
@@ -55103,11 +54709,7 @@
       "official_source_urls": [
         "https://www.nwo.nl/en/calls/embassy-science-fellowship-esf-nl-2027",
         "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.nwo.nl/en/calls/embassy-science-fellowship-esf-nl-2027"
@@ -56000,11 +55602,7 @@
       "official_source_urls": [
         "https://www.ru.nl/en/education/scholarships/radboud-scholarship-programme",
         "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.ru.nl/en/education/scholarships/radboud-scholarship-programme"
@@ -56615,11 +56213,7 @@
       "funding_period": null,
       "tuition_coverage": false,
       "official_source_urls": [
-        "https://www.mbie.govt.nz/science-and-technology/space/careers-scholarships-and-awards/new-zealand-space-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.mbie.govt.nz/science-and-technology/space/careers-scholarships-and-awards/new-zealand-space-scholarship"
       ],
       "source_citations": [
         "https://www.mbie.govt.nz/science-and-technology/space/careers-scholarships-and-awards/new-zealand-space-scholarship"
@@ -58432,8 +58026,7 @@
       "funding_period": "per year (max, Junior Fellow PI remuneration)",
       "tuition_coverage": false,
       "official_source_urls": [
-        "https://nawa.gov.pl/en/scientists/top200-nawa/about-the-programme",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://nawa.gov.pl/en/scientists/top200-nawa/about-the-programme"
       ],
       "source_citations": [
         "https://nawa.gov.pl/en/scientists/top200-nawa/about-the-programme"
@@ -58561,8 +58154,7 @@
         "https://nawa.gov.pl/en/scientists/the-bekker-programme/about-the-programme",
         "https://nawa.gov.pl/en/naukowcy/program-imienia-bekkera/ogloszenie",
         "https://nawa.gov.pl/en/naukowcy/program-imienia-bekkera/informacje-dla-wnioskodawcow",
-        "https://nawa.gov.pl/en/scientists/the-bekker-programme",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://nawa.gov.pl/en/scientists/the-bekker-programme"
       ],
       "source_citations": [
         "https://nawa.gov.pl/en/scientists/the-bekker-programme/about-the-programme",
@@ -58712,11 +58304,7 @@
       "funding_period": "per month",
       "tuition_coverage": false,
       "official_source_urls": [
-        "https://nawa.gov.pl/en/scientists/the-walczak-programme/call-for-proposals",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://nawa.gov.pl/en/scientists/the-walczak-programme/call-for-proposals"
       ],
       "source_citations": [
         "https://nawa.gov.pl/en/scientists/the-walczak-programme/call-for-proposals"
@@ -59126,8 +58714,7 @@
         "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme/call-results",
         "https://nawa.gov.pl/en/students/foreign-students",
         "https://www.study.gov.pl/",
-        "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme"
       ],
       "source_citations": [
         "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme/about-the-programme",
@@ -61430,11 +61017,7 @@
       "official_source_urls": [
         "https://admissions.smu.edu.sg/financial-aid/smu-global-impact-scholarship-award",
         "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://admissions.smu.edu.sg/financial-aid/smu-global-impact-scholarship-award"
@@ -62988,11 +62571,7 @@
       "funding_period": null,
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://www.mau.se/en/education/scholarships",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.mau.se/en/education/scholarships"
       ],
       "source_citations": [
         "https://www.mau.se/en/education/scholarships"
@@ -63263,11 +62842,7 @@
       "funding_period": null,
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://www.kth.se/en/studies/master/admissions/scholarships/kth-india-scholarship-1.422144",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.kth.se/en/studies/master/admissions/scholarships/kth-india-scholarship-1.422144"
       ],
       "source_citations": [
         "https://www.kth.se/en/studies/master/admissions/scholarships/kth-india-scholarship-1.422144"
@@ -63695,11 +63270,7 @@
       "funding_period": null,
       "tuition_coverage": false,
       "official_source_urls": [
-        "https://www.studienfinanzierung.uzh.ch/en/application_deadlines.html",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.studienfinanzierung.uzh.ch/en/application_deadlines.html"
       ],
       "source_citations": [
         "https://www.studienfinanzierung.uzh.ch/en/application_deadlines.html"
@@ -66927,11 +66498,7 @@
       "official_source_urls": [
         "https://www.jwu.edu/admissions-aid/cost-aid/scholarships-grants-loans/",
         "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://www.jwu.edu/admissions-aid/cost-aid/scholarships-grants-loans/"
@@ -69325,7 +68892,7 @@
       "deadline": "Closing date 11 October 2026",
       "deadline_date": "2026-10-11",
       "deadline_precision": "exact",
-      "status": "closing-soon",
+      "status": "closed",
       "verified": false,
       "last_verified_at": "2026-10-11",
       "verification_status": "needs_review",
@@ -71860,9 +71427,7 @@
       "funding_period": null,
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://mo.ibrahim.foundation/fellowships",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://mo.ibrahim.foundation/fellowships"
       ],
       "source_citations": [
         "https://mo.ibrahim.foundation/fellowships"
@@ -76837,11 +76402,7 @@
       "official_source_urls": [
         "https://nai.uu.se/opportunities/nordic-scholarship-programme.html",
         "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://nai.uu.se/opportunities/nordic-scholarship-programme.html"
@@ -76882,7 +76443,7 @@
       "deadline": "2026-10-11",
       "deadline_date": "2026-10-11",
       "deadline_precision": "day",
-      "status": "upcoming",
+      "status": "closed",
       "verified": true,
       "last_verified_at": "2026-10-10",
       "verification_status": "active",
@@ -77352,11 +76913,7 @@
         "https://www.grips.ac.jp/en/education/inter_programs/leader/",
         "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships",
         "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.grips.ac.jp/en/education/inter_programs/leader",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.grips.ac.jp/en/education/inter_programs/leader"
       ],
       "source_citations": [
         "https://www.grips.ac.jp/en/education/inter_programs/leader/",
@@ -77475,11 +77032,7 @@
       "funding_period": "one-off tuition fee discount",
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://admission.kaist.ac.kr/intl-graduate/FinancialSupport/Scholarship/KAISTScholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://admission.kaist.ac.kr/intl-graduate/FinancialSupport/Scholarship/KAISTScholarship"
       ],
       "source_citations": [
         "https://admission.kaist.ac.kr/intl-graduate/FinancialSupport/Scholarship/KAISTScholarship"
@@ -81092,10 +80645,7 @@
       "funding_period": "per month (maintenance allowance, maximum)",
       "tuition_coverage": false,
       "official_source_urls": [
-        "https://icssr.org/data-collection-abroad",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://icssr.org/data-collection-abroad"
       ],
       "source_citations": [
         "https://icssr.org/data-collection-abroad"
@@ -81474,9 +81024,7 @@
       "funding_period": "per month",
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://aims.ac.za/academics/prospective_students",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://aims.ac.za/academics/prospective_students"
       ],
       "source_citations": [
         "https://aims.ac.za/academics/prospective_students"
@@ -81853,9 +81401,7 @@
       "funding_period": null,
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://www.gla.ac.uk/scholarships/sanctuaryscholarships",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.gla.ac.uk/scholarships/sanctuaryscholarships"
       ],
       "source_citations": [
         "https://www.gla.ac.uk/scholarships/sanctuaryscholarships"
@@ -82336,11 +81882,7 @@
       "funding_period": "per annum (2026 award rate)",
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://www.ntu.edu.sg/admissions/graduate/financialmatters/scholarships/npgs",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.ntu.edu.sg/admissions/graduate/financialmatters/scholarships/npgs"
       ],
       "source_citations": [
         "https://www.ntu.edu.sg/admissions/graduate/financialmatters/scholarships/npgs"
@@ -82684,11 +82226,7 @@
       "funding_period": null,
       "tuition_coverage": true,
       "official_source_urls": [
-        "https://nawa.gov.pl/en/scientists/top200-nawa/about-the-programme",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://nawa.gov.pl/en/scientists/top200-nawa/about-the-programme"
       ],
       "source_citations": [
         "https://nawa.gov.pl/en/scientists/top200-nawa/about-the-programme"
@@ -82824,11 +82362,7 @@
         "https://apply.ruffordsmallgrants.org/help/criteria",
         "https://www.hss.de/stipendium/wen-suchen-wir",
         "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships",
-        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
-        "https://bs.china-embassy.gov.cn/eng/sgxw/202510/t20251028_11742717.htm",
-        "https://anr.fr/fr/detail/call/appel-a-projets-m-eranet-202627-science-et-ingenierie-des-materiaux-pour-linnovation-en-europe",
-        "https://www.sutd.edu.sg/admissions/graduate/scholarships",
-        "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship"
+        "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
       ],
       "source_citations": [
         "https://apply.ruffordsmallgrants.org/help/criteria"
@@ -89359,7 +88893,7 @@
       "deadline": "26 October 2026",
       "deadline_date": "2026-10-26",
       "deadline_precision": "exact",
-      "status": "open",
+      "status": "closing-soon",
       "verified": true,
       "last_verified_at": "2026-10-11",
       "verification_status": "active",
