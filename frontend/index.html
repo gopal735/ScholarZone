@@ -21,8 +21,14 @@
       on the first render of every route - including the homepage - and the
       property would stop verifying itself. The ownership convention applies to
       tags a page rewrites; this one is a constant no page owns.
+
+      Two tokens, one per Search Console property: the original
+      scholarzone-fwzj verification, and the token for the Netlified public
+      frontend this repository now deploys from master. Both are constants, so
+      both live here as literal meta tags and both must survive the build.
     -->
     <meta name="google-site-verification" content="mzaQ_MW4nVgMwHhbSOxxTsr46gaV7sanks7vbnE7aaE" />
+    <meta name="google-site-verification" content="5ZF6ps7latuMDIU2UQgz68yePIZy2gw_klo_bQbkhds" />
 
     <!--
       The head below is the document's real metadata, not a placeholder.
@@ -52,7 +58,7 @@
       data-sz-seo="true"
     />
     <meta name="robots" content="index, follow" data-sz-seo="true" />
-    <link rel="canonical" href="https://scholarzone-fwzj.vercel.app/" data-sz-seo="true" />
+    <link rel="canonical" href="https://visionary-cactus-600b38.netlify.app/" data-sz-seo="true" />
 
     <meta property="og:type" content="website" data-sz-seo="true" />
     <meta property="og:site_name" content="ScholarZone" data-sz-seo="true" />
@@ -62,7 +68,7 @@
       content="Search verified scholarships by country, degree, funding type and deadline. Every listing has been checked against the awarding body's own official page."
       data-sz-seo="true"
     />
-    <meta property="og:url" content="https://scholarzone-fwzj.vercel.app/" data-sz-seo="true" />
+    <meta property="og:url" content="https://visionary-cactus-600b38.netlify.app/" data-sz-seo="true" />
     <meta
       property="og:locale"
       content="en"
@@ -86,12 +92,12 @@
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "ScholarZone",
-        "url": "https://scholarzone-fwzj.vercel.app/",
+        "url": "https://visionary-cactus-600b38.netlify.app/",
         "potentialAction": {
           "@type": "SearchAction",
           "target": {
             "@type": "EntryPoint",
-            "urlTemplate": "https://scholarzone-fwzj.vercel.app/scholarships?search={search_term_string}"
+            "urlTemplate": "https://visionary-cactus-600b38.netlify.app/scholarships?search={search_term_string}"
           },
           "query-input": "required name=search_term_string"
         }

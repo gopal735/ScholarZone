@@ -8,10 +8,19 @@
  *
  * The failure they had in common is the important part. robots.txt, sitemap.xml
  * and every canonical link all named `https://gopal735.github.io/ScholarZone`,
- * while the app is served from `https://scholarzone-fwzj.vercel.app`. Each file
- * was internally consistent and the set was not, so the site advertised URLs on
- * a host that does not serve the catalogue, and told crawlers to consolidate
- * onto it. No single-file test would ever have caught that.
+ * while the app is served from `https://visionary-cactus-600b38.netlify.app`.
+ * Each file was internally consistent and the set was not, so the site
+ * advertised URLs on a host that does not serve the catalogue, and told crawlers
+ * to consolidate onto it. No single-file test would ever have caught that.
+ *
+ * The same disagreement recurred once already. The canonical origin was moved to
+ * `https://scholarzone-fwzj.vercel.app` while the frontend's primary production
+ * deploy from master runs on Netlify project `visionary-cactus-600b38`. The
+ * Vercel project stayed live as a mirror and as the API host, so the set looked
+ * plausible and still named a host that is not the primary frontend. The
+ * assertions below are therefore driven by CANONICAL_ORIGIN rather than by a
+ * literal, so a future move is one deliberate change plus this file's
+ * expectation, not a silent four-file drift.
  */
 import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
@@ -23,13 +32,39 @@ const read = (relative) =>
 const ROBOTS = read('../public/robots.txt')
 const SITEMAP = read('../public/sitemap.xml')
 const INDEX_HTML = read('../index.html')
+const SNAPSHOT = JSON.parse(read('../public/scholarships-snapshot.json'))
 
 const locs = [...SITEMAP.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1])
 
+// The public ids the deployed frontend can actually resolve. The detail page
+// reads the bundled snapshot and turns a miss into a 404, so a sitemap entry
+// for an id the snapshot does not carry is a soft-404 rather than a page.
+const SNAPSHOT_IDS = new Set(
+  (SNAPSHOT.scholarships || []).map((s) => String(s.id))
+)
+
+/**
+ * The Google Search Console ownership tokens that must survive into the built
+ * document. Google fetches the served URL with a plain GET and reads the token
+ * out of the head, so a token that is absent, duplicated or injected at runtime
+ * is a property that cannot verify itself.
+ */
+const VERIFICATION_TOKENS = [
+  'mzaQ_MW4nVgMwHhbSOxxTsr46gaV7sanks7vbnE7aaE',
+  '5ZF6ps7latuMDIU2UQgz68yePIZy2gw_klo_bQbkhds',
+]
+
 describe('canonical origin', () => {
   it('is the canonical production host, not the legacy deployment', () => {
-    expect(CANONICAL_ORIGIN).toBe('https://scholarzone-fwzj.vercel.app')
+    expect(CANONICAL_ORIGIN).toBe('https://visionary-cactus-600b38.netlify.app')
     expect(CANONICAL_ORIGIN).not.toContain('github.io')
+  })
+
+  it('names no host that is a mirror or an API-only deployment', () => {
+    // The Vercel project still serves the frontend and hosts the API under
+    // /api. Advertising it as canonical would consolidate every page onto the
+    // mirror, which is the defect the previous default introduced.
+    expect(CANONICAL_ORIGIN).not.toContain('vercel.app')
   })
 
   it('has no trailing slash, so path joining cannot produce a double slash', () => {
@@ -94,6 +129,17 @@ describe('sitemap.xml', () => {
     expect(privatePaths).toEqual([])
   })
 
+  it('advertises no detail url the deployed snapshot cannot resolve', () => {
+    // 21 sitemap entries named records the free-first snapshot no longer
+    // carries. Each one resolved to the shell's not-found state on the public
+    // site, so the sitemap was advertising 21 soft-404s.
+    const unresolvable = locs
+      .filter((loc) => /\/scholarships\/\d+$/.test(loc))
+      .map((loc) => loc.match(/\/scholarships\/(\d+)$/)[1])
+      .filter((id) => !SNAPSHOT_IDS.has(id))
+    expect(unresolvable).toEqual([])
+  })
+
   it('covers the indexable routes the router actually serves', () => {
     // These three are the only non-detail routes in App.jsx that are public.
     expect(locs).toContain(`${CANONICAL_ORIGIN}/`)
@@ -151,5 +197,97 @@ describe('the served document', () => {
     for (const [name, content] of [['index.html', INDEX_HTML], ['robots.txt', ROBOTS], ['sitemap.xml', SITEMAP]]) {
       expect(content, `${name} still names the legacy host`).not.toContain('github.io')
     }
+  })
+
+  it('names no host other than the canonical one', () => {
+    // The previous canonical host is still live as a mirror. Leaving it in the
+    // served document - a canonical, an og:url or a JSON-LD url - puts a second
+    // origin in front of the crawler, which is exactly the disagreement the
+    // canonical link exists to prevent.
+    //
+    // Scoped to the attributes that declare where the page lives, not to every
+    // URL in the file: the head legitimately preconnects to the font CDN and
+    // the sitemap carries its XML namespace. Neither is a site origin.
+    const seoUrlSources = [
+      ...[...INDEX_HTML.matchAll(/<link\s+rel="canonical"\s+href="([^"]+)"/g)].map((m) => m[1]),
+      ...[...INDEX_HTML.matchAll(/<meta\s+property="og:url"\s+content="([^"]+)"/g)].map((m) => m[1]),
+      ...[...INDEX_HTML.matchAll(/<meta\s+property="og:image"\s+content="([^"]+)"/g)].map((m) => m[1]),
+      ...[...INDEX_HTML.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)]
+        .flatMap((m) => [...JSON.stringify(JSON.parse(m[1])).matchAll(/https?:\/\/[a-z0-9.-]+/gi)].map((u) => u[0])),
+      ...locs,
+      ...(ROBOTS.match(/^Sitemap:\s*(\S+)$/m) ? [ROBOTS.match(/^Sitemap:\s*(\S+)$/m)[1]] : []),
+    ]
+    const foreign = seoUrlSources
+      .filter((url) => /^https?:\/\//.test(url))
+      .map((url) => url.match(/^https?:\/\/[^/?#]+/)[0].replace(/\/$/, ''))
+      .filter((origin) => origin !== CANONICAL_ORIGIN && origin !== 'https://schema.org')
+    expect([...new Set(foreign)]).toEqual([])
+  })
+})
+
+describe('Google Search Console verification tokens', () => {
+  const tokenTags = (html) =>
+    [...html.matchAll(/<meta\s+name="google-site-verification"[^>]*>/g)].map((m) => m[0])
+
+  it('ships both tokens in the source document', () => {
+    const tags = tokenTags(INDEX_HTML)
+    const contents = tags.map((tag) => tag.match(/content="([^"]+)"/)?.[1])
+    expect(contents).toEqual(expect.arrayContaining(VERIFICATION_TOKENS))
+  })
+
+  it('ships each token exactly once', () => {
+    // A duplicate tag is not a harmless redundancy: Google reads the first
+    // match and ignores the rest, so a second copy of the same token is dead
+    // markup that looks like coverage.
+    for (const token of VERIFICATION_TOKENS) {
+      const count = tokenTags(INDEX_HTML).filter((tag) => tag.includes(`content="${token}"`)).length
+      expect(count, `token ${token} appears ${count} times`).toBe(1)
+    }
+  })
+
+  it('places the tokens inside head, so they are in the raw HTTP response', () => {
+    // Google performs an ordinary GET and parses the head. A token placed after
+    // the root div, or injected by a page effect, is invisible to that fetch.
+    const head = INDEX_HTML.slice(INDEX_HTML.indexOf('<head>'), INDEX_HTML.indexOf('</head>'))
+    expect(head).toContain('<head>')
+    for (const token of VERIFICATION_TOKENS) {
+      expect(head, `token ${token} is outside the head`).toContain(`content="${token}"`)
+      expect(INDEX_HTML.slice(INDEX_HTML.indexOf('</head>'))).not.toContain(`content="${token}"`)
+    }
+  })
+
+  it('does not mark the tokens data-sz-seo, so no page effect can remove them', () => {
+    // Every page effect in this app opens by deleting every [data-sz-seo] node
+    // before writing its own. Marking a token would delete it on the first
+    // render of every route, and the property would stop verifying itself.
+    for (const tag of tokenTags(INDEX_HTML)) {
+      expect(tag).not.toContain('data-sz-seo')
+    }
+  })
+
+  it('survives the runtime SEO sweep that deletes [data-sz-seo] nodes', () => {
+    // The failure this pins is a runtime deletion, not a missing tag: the tag
+    // is present in the document and gone by the time anything renders.
+    document.head.innerHTML = INDEX_HTML
+      .slice(INDEX_HTML.indexOf('<head>') + '<head>'.length, INDEX_HTML.indexOf('</head>'))
+    for (const node of [...document.head.querySelectorAll('[data-sz-seo]')]) {
+      node.remove()
+    }
+    for (const token of VERIFICATION_TOKENS) {
+      expect(
+        document.head.querySelector(`meta[name="google-site-verification"][content="${token}"]`),
+        `token ${token} was removed at runtime`
+      ).not.toBeNull()
+    }
+  })
+
+  it('is not swept up by the SEO tag matcher the head contract uses', () => {
+    // The contract above asserts every og/twitter/robots/description/canonical
+    // tag carries data-sz-seo. A token that ever matched that pattern would be
+    // forced to carry the attribute that gets it deleted.
+    const seoTags = tokenTags(INDEX_HTML).filter((tag) =>
+      /og:|twitter:|robots|description|canonical/.test(tag)
+    )
+    expect(seoTags).toEqual([])
   })
 })
