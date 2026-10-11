@@ -1,21 +1,21 @@
 {
   "meta": {
-    "generated_at": "2026-10-11T18:29:17.974307Z",
+    "generated_at": "2026-10-11T18:56:17.625268Z",
     "source_database": "scholarzone.db",
-    "source_record_count": 695,
+    "source_record_count": 696,
     "public_record_count": 618,
     "excluded": {
       "closed": 10,
-      "archived": 57,
+      "archived": 58,
       "quarantined": 51,
       "deadline_passed": 13
     },
-    "excluded_union": 77,
+    "excluded_union": 78,
     "deadline_passed": 13,
     "baseline": {
       "mode": "preserve",
       "source": "scholarships-snapshot.json",
-      "baseline_records": 618,
+      "baseline_records": 619,
       "baseline_ids": [
         1,
         3,
@@ -634,10 +634,11 @@
         723,
         724,
         725,
-        727
+        727,
+        730
       ],
       "baseline_preserved": 147,
-      "baseline_removed": 0,
+      "baseline_removed": 1,
       "newly_public": 0
     },
     "status_derived_at": "2026-10-12",
@@ -887,6 +888,7 @@
         "Vocational, Undergraduate, Postgraduate"
       ],
       "funding_types": [
+        "Annual stipend of HK$344,400 (approximately US$44,150) and a conference and research-related travel allowance of HK$14,400 (approximately US$1,840) per year for each awardee for a period up to three years (2026/27 figures as published by the RGC); 400 PhD Fellowships will be awarded in the 2027/28 academic year",
         "Course Fees, Accommodation and Allowance",
         "Doctoral funding package (university salary plus Perimeter top-up)",
         "Entrance scholarship, non-renewable",
@@ -941,6 +943,7 @@
         "Research Fellowship",
         "Research Funding",
         "Research Grant",
+        "Research Students stipend, 2027 English guidelines: preparatory education and non-regular students 143,000 yen per month; regular students enrolled in master's or professional degree courses 144,000 yen per month; regular students enrolled in doctoral courses 145,000 yen per month; plus a supplemental regional allowance of 2,000 yen or 3,000 yen per month.",
         "Research fellowship",
         "Salaried employment contract",
         "Salary",
@@ -999,10 +1002,12 @@
     },
     "sort_orders": {
       "recommended": [
+        727,
         517,
         423,
         301,
         302,
+        730,
         1,
         44,
         54,
@@ -1150,10 +1155,8 @@
         612,
         614,
         617,
-        727,
         76,
         199,
-        565,
         574,
         712,
         25,
@@ -1619,6 +1622,7 @@
         78
       ],
       "recently-added": [
+        730,
         727,
         724,
         725,
@@ -1833,7 +1837,6 @@
         562,
         563,
         564,
-        565,
         566,
         567,
         305,
@@ -2239,12 +2242,14 @@
         3
       ],
       "recently-updated": [
+        727,
         517,
         423,
         301,
         196,
         302,
         516,
+        730,
         1,
         4,
         5,
@@ -2545,13 +2550,11 @@
         617,
         618,
         684,
-        727,
         76,
         144,
         199,
         212,
         213,
-        565,
         569,
         571,
         574,
@@ -3172,6 +3175,7 @@
         526,
         586,
         697,
+        730,
         73,
         634,
         689,
@@ -3448,7 +3452,6 @@
         546,
         560,
         562,
-        565,
         566,
         567,
         573,
@@ -3792,6 +3795,7 @@
         526,
         586,
         697,
+        730,
         73,
         634,
         689,
@@ -4068,7 +4072,6 @@
         546,
         560,
         562,
-        565,
         566,
         567,
         573,
@@ -4252,6 +4255,7 @@
         526,
         586,
         697,
+        730,
         14,
         139,
         170,
@@ -4688,7 +4692,6 @@
         546,
         560,
         562,
-        565,
         566,
         567,
         573,
@@ -4768,7 +4771,6 @@
         475,
         485,
         510,
-        514,
         515,
         523,
         557,
@@ -4917,11 +4919,13 @@
         524,
         616,
         350,
+        727,
         517,
         423,
         301,
         196,
         302,
+        730,
         102,
         104,
         105,
@@ -4938,6 +4942,7 @@
         397,
         467,
         481,
+        514,
         599,
         608,
         261,
@@ -5095,12 +5100,10 @@
         617,
         618,
         684,
-        727,
         76,
         144,
         199,
         213,
-        565,
         569,
         571,
         574,
@@ -5581,6 +5584,7 @@
         580,
         634,
         707,
+        730,
         591,
         145,
         53,
@@ -5832,7 +5836,6 @@
         446,
         32,
         727,
-        565,
         566,
         567,
         146,
@@ -6083,7 +6086,6 @@
         146,
         567,
         566,
-        565,
         727,
         32,
         446,
@@ -6335,6 +6337,7 @@
         53,
         145,
         591,
+        730,
         707,
         634,
         580,
@@ -6598,8 +6601,8 @@
     "closing_soon": 51,
     "upcoming": 107,
     "verified_active": 527,
-    "fully_funded": 204,
-    "with_image": 446,
+    "fully_funded": 203,
+    "with_image": 445,
     "with_official_source": 616
   },
   "scholarships": [
@@ -61679,7 +61682,8 @@
       "official_source_urls": [
         "https://www.suss.edu.sg/academics/programmes/graduate-programmes/admissions/financial-assistance/scholarship",
         "https://www.suss.edu.sg/news-events/suss-news/campus-updates/detail/2026/01/07/moe-subsidies-and-research-scholarship-for-suss-graduate-by-research-programmes",
-        "https://www.suss.edu.sg/programmes/detail/doctor-of-philosophy-phdg"
+        "https://www.suss.edu.sg/programmes/detail/doctor-of-philosophy-phdg",
+        "https://web.archive.org/web/20250620050824/https://www.suss.edu.sg/academics/programmes/graduate-programmes/admissions/financial-assistance/scholarship"
       ],
       "source_citations": [
         "https://www.suss.edu.sg/academics/programmes/graduate-programmes/admissions/financial-assistance/scholarship",
@@ -61724,7 +61728,7 @@
       "deadline_precision": "day",
       "status": "closed",
       "verified": true,
-      "last_verified_at": "2026-10-10",
+      "last_verified_at": "2026-10-12",
       "verification_status": "active",
       "official_source_url": "https://www.suss.edu.sg/academics/programmes/graduate-programmes/admissions/financial-assistance/scholarship",
       "updated_at": "2026-10-10T13:34:32",
@@ -61789,7 +61793,7 @@
       "selection_notes": "Eligible applicants are evaluated on a merit basis during their admissions interviews; nominated applicants are invited by email to a panel interview for the scholarship. The decision of the SUSS Student Awards Committee is final and binding, no reasons are given for non-selection, and no appeals are entertained.",
       "program_type": "Research scholarship for PhD and Master of Applied Research in Social Sciences",
       "best_fit": "Strong social science applicants with a 2nd Upper Class Honours degree or equivalent applying to the SUSS PhD, PhD (Gerontology) or Master of Applied Research in Social Sciences, with a research topic aligned to SUSS's research focus.",
-      "last_verified_date": "2026-10-10",
+      "last_verified_date": "2026-10-12",
       "notes": "This is distinct from the separate SUSS PhD Scholarship, which is for full-time PhD study only and also covers miscellaneous fees. International students on the Research Scholarship must fulfil the Graduate Assistantship Programme (GAP) requirement and receive no remuneration for GAP hours. A government tuition subsidy is available to eligible Singapore Citizens and Permanent Residents, and International Students are eligible for the subsidy only if awarded this scholarship."
     },
     {
@@ -68850,11 +68854,11 @@
       "country": "Japan",
       "degree": "Master's, PhD",
       "degree_levels": "Master's, PhD",
-      "funding": "Fully Funded",
-      "funding_type": "Fully Funded",
-      "funding_amount": 143000,
+      "funding": "Research Students stipend, 2027 English guidelines: preparatory education and non-regular students 143,000 yen per month; regular students enrolled in master's or professional degree courses 144,000 yen per month; regular students enrolled in doctoral courses 145,000 yen per month; plus a supplemental regional allowance of 2,000 yen or 3,000 yen per month.",
+      "funding_type": "Research Students stipend, 2027 English guidelines: preparatory education and non-regular students 143,000 yen per month; regular students enrolled in master's or professional degree courses 144,000 yen per month; regular students enrolled in doctoral courses 145,000 yen per month; plus a supplemental regional allowance of 2,000 yen or 3,000 yen per month.",
+      "funding_amount": null,
       "funding_currency": "JPY",
-      "funding_period": "per month (varies by course)",
+      "funding_period": "monthly, depending on the course enrolled (2027 guidelines)",
       "tuition_coverage": true,
       "official_source_urls": [
         "https://www.mext.go.jp/a_menu/koutou/ryugaku/boshu/1415352_00008.htm",
@@ -68907,7 +68911,7 @@
       "deadline_precision": "varies",
       "status": "open",
       "verified": false,
-      "last_verified_at": "2026-10-11",
+      "last_verified_at": "2026-10-12",
       "verification_status": "needs_review",
       "official_source_url": "https://www.mext.go.jp/a_menu/koutou/ryugaku/boshu/1415352_00008.htm",
       "updated_at": "2026-10-11T08:34:06",
@@ -68977,7 +68981,7 @@
       "selection_notes": "Applicants are recruited and initially screened by the Japanese embassy or consulate general in their country, which sits its own qualifying examinations (Japanese and English for research students), conducts the interview and collects all required documents; MEXT then selects the scholarship students and allocates them to host graduate schools, subject to the host university's acceptance.",
       "program_type": "Government scholarship",
       "best_fit": "Applicants who already hold (or are close to) a bachelor's degree and can enter a Japanese graduate school's master's or doctoral programme, who are under 35, who sit the embassy/consulate's Japanese and English examinations, and whose country runs the Research Student track.",
-      "last_verified_date": "2026-10-11",
+      "last_verified_date": "2026-10-12",
       "notes": "No published deferral, renewal, return-home or clinical-restriction terms were readable on the official pages read. MEXT publishes rules on extending the scholarship period (applications for extension from newly admitted students in April 2026 and from early-completers are handled by notice), rules on combining the scholarship with other awards, and rules on part-time work by scholarship students, but these notices are in Japanese and were not readable in the English sources used for this record. Application is free of charge."
     },
     {
@@ -75055,146 +75059,6 @@
       "best_fit": "Japanese nationals with a bachelor's degree earned at least three years before the deadline and at least three years of paid development-related employment acquired within the past six years, who are admitted unconditionally (except financing) to, or already enrolled full-time in, a development-related master's or PhD programme outside Japan.",
       "last_verified_date": "2026-10-11",
       "notes": "The scholarship does NOT cover visa application costs, expenses to bring and/or support family members, extra-curricular courses or training, courses below the minimum credits required for the degree, language training not provided by the graduate program, additional travel during the study program, research or supplementary educational materials, field trips, workshops, seminars or internships, educational equipment such as computers, and the resident permit fee. The scholarship may only supplement, and does not duplicate, any other source of financial support; if you are notified of being a semi-finalist or are awarded, you must inform and document other scholarship funds to the Secretariat. After earning their degree, Japanese national scholars are expected to advance their professional career with a keen focus on the alleviation of poverty and enhanced shared prosperity in developing countries. The air travel benefit at the end of the scholarship period is conditional on having completed all requirements to earn the graduate degree, and the return ticket is to Japan or to a developing country where the scholar has secured employment. The published US$600 is a per-trip travel allowance, not the award total. The 2026 window for Japanese nationals closed on Friday 17 April 2026, so only the 2027 window is live."
-    },
-    {
-      "id": 565,
-      "title": "Swiss Government Excellence Scholarships (ESKAS)",
-      "name": "Swiss Government Excellence Scholarships (ESKAS)",
-      "country": "Switzerland",
-      "degree": "PhD, Master's",
-      "degree_levels": "PhD, Master's",
-      "funding": "Stipend",
-      "funding_type": "Stipend",
-      "funding_amount": 2450,
-      "funding_currency": "CHF",
-      "funding_period": "per month",
-      "tuition_coverage": false,
-      "official_source_urls": [
-        "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships",
-        "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships-at-a-glance"
-      ],
-      "source_citations": [
-        "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships",
-        "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships-at-a-glance"
-      ],
-      "applicant_utility": {
-        "summary": "ESKAS pays CHF 2,450 a month - basic living expenses for one person, explicitly not a salary - and deliberately does not cover tuition, so you must budget semester fees (CHF 600-2,000) and, for ETH/EPFL-type hosts, possibly reduced tuition yourself. Your single hardest task is not the paperwork but finding a Swiss academic supervisor who writes a genuine letter of support: applications without one are not considered at all, and professors can take weeks to reply. Timing is country-specific: applications open 20 August 2026 and go through your country's Swiss diplomatic representation, with decisions by end of May for a 1 September 2027 start.",
-        "best_fit": "Early-career researchers under 35 (born after 31 December 1991) who hold a Master's, have a concrete Swiss-hosted project in mind, and are not already living or studying in Switzerland.",
-        "application_readiness_checklist": [
-          "Check your country's deadline and available scholarship types in the official A-Z/regional country lists (published each August)",
-          "Find a supervisor early - a professor or lab group leader at a Swiss university, UAS or ETH Domain institute - and secure a substantive letter plus their 2-page CV",
-          "Write the research proposal on the official FCS/ESKAS form with a real timeline and a plain-language summary (max 5 pages), and the motivation letter within 2 pages",
-          "Line up two professors in your field to upload recommendation letters through the system when contacted",
-          "If you already live in Switzerland, verify you entered no earlier than 1 August 2026 and have under 13 months' residence",
-          "For graduate-school PhD scholarships, obtain the doctoral school's confirmation of admission in time to submit it with the application"
-        ],
-        "common_rejection_risks": [
-          "No Swiss supervisor or no letter of support - an automatic no",
-          "Multiple simultaneous applications to several host universities or scholarship types, or more than one research project proposal",
-          "Being over the age line (born on or before 31 December 1991) for the 2027-2028 cycle",
-          "Having lived, studied or worked in Switzerland for more than 13 months before the start",
-          "A fourth application after three unsuccessful attempts (excluded)",
-          "Informal errors or incompleteness in the file"
-        ],
-        "estimated_uncovered_costs": "Tuition and semester fees (approx. CHF 600-2,000 per semester where charged), conference participation and field research are all borne by the holder; EU/EFTA nationals also pay their own health insurance premiums and travel, and family costs have no allowance.",
-        "document_audit": [
-          "Certificates and transcripts in other languages need certified translations (India: self-certification accepted)",
-          "Dual citizens must submit copies of both passports",
-          "For cotutelle de thèse projects only the 12-month research fellowship is available, not the renewable PhD scholarship"
-        ],
-        "alerts": [
-          "SERI warns of phishing e-mails and social-media fake Swiss Government scholarship offers; the real application is free and runs only through GO ESKAS and your diplomatic representation",
-          "Scholarship holders must reside in the city or canton of the host institution, must notify the FCS of any other income, and may not supplement full-time employment",
-          "Field research outside Switzerland is not permitted during research fellowships; PhD holders may request up to six months without additional funding"
-        ],
-        "submission_workflow": "GO ESKAS online application (no e-mail or paper submissions) routed through your Swiss diplomatic representation by the country deadline; FCS assesses and decides by end of May."
-      },
-      "deadline": "Applications are open from 20 August 2026. Applications are submitted to the applicant's Swiss diplomatic representation, and the deadline is set country by country: information on application deadlines and scholarship opportunities by country of origin is published by the Federal Commission in August each year.",
-      "deadline_date": null,
-      "deadline_precision": "varies",
-      "status": "open",
-      "verified": true,
-      "last_verified_at": "2026-10-10",
-      "verification_status": "active",
-      "official_source_url": "https://www.sbfi.admin.ch",
-      "updated_at": "2026-10-10T14:04:13",
-      "image_url": "https://www.sbfi.admin.ch/images/swiss-logo-name.svg",
-      "image_source_type": "official_provider",
-      "image_kind": "official_logo",
-      "description": "The Swiss Government Excellence Scholarships are awarded annually by the Swiss Confederation to encourage international exchange and research cooperation between Switzerland and more than 180 other countries. Recipients are selected by the Federal Commission for Scholarships for Foreign Students (FCS, also known as ESKAS), an independent decentralised federal body that is not bound by directives. The programme has two components: research scholarships for talented early career researchers from abroad who have already completed a Master's degree, and art scholarships for students from a limited number of countries wishing to pursue an initial Master's degree in an artistic field in Switzerland. Applicants are aged 35 or less and the scholarship pays CHF 2,450 per month.",
-      "region": "Europe",
-      "duration": "Research fellowships: maximum 12 months (minimum 6 months), no extension possible, start 1 September 2027. PhD scholarships: 12 months, renewable twice for up to 36 months subject to academic progress, start 1 September 2027.",
-      "application_period": "Annual cycle. Applications open on 20 August 2026, country-specific deadlines apply between August and December 2026, and the Federal Commission announces its award decisions by the end of May at the latest for the following academic year.",
-      "official_source": "State Secretariat for Education, Research and Innovation (SERI) - Federal Commission for Scholarships for Foreign Students (FCS / ESKAS), Switzerland",
-      "catalogue_url": "https://www.go.eskas.ch",
-      "official_updates_url": "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships",
-      "application_link": "https://www.sbfi.admin.ch",
-      "image_source_url": "https://www.sbfi.admin.ch/en",
-      "image_verified_at": "2026-10-04T07:32:05.164655",
-      "image_alt_text": "Swiss Federal Secretariat for Education",
-      "eligibility": [
-        "Maximum age 35 (date of birth after 31 December 1991 for the 2027-2028 cycle)",
-        "Master's degree or equivalent completed by 31 July 2027 (30 June 2027 for ETH Zurich)",
-        "Applicants from one of the 183 eligible countries of origin",
-        "For PhD scholarships at graduate schools only: confirmation of admission to a doctoral school must be submitted together with the application",
-        "Letter of support from an academic supervisor in Switzerland, with a short CV of that supervisor",
-        "Applicants already residing in Switzerland must have entered Switzerland no earlier than 1 August 2026, evidenced by the registration confirmation or residence permit",
-        "For art scholarships: initial Master's degree in an artistic field in Switzerland, and nationality of one of the limited number of eligible countries"
-      ],
-      "eligibility_summary": "Open to applicants from 183 countries who are aged 35 or less and already hold a Master's degree or equivalent. Applicants must not have been living, studying or working in Switzerland for more than 13 months before the scholarship start, must not already have held a Swiss Government Excellence Scholarship, and every research scholarship application must be backed by an academic supervisor at a Swiss higher education institution.",
-      "benefits": [
-        "CHF 2,450 per month to cover basic living expenses for one person",
-        "Official note that the scholarship is not a salary and must not be treated as equivalent to regular remuneration, financially or legally",
-        "PhD scholarships renewable twice for up to 36 months, subject to academic progress"
-      ],
-      "coverage": [
-        "Monthly stipend of CHF 2,450 to cover basic living expenses for one person",
-        "Valid only for full-time research in Switzerland"
-      ],
-      "requirements": [
-        "Applications must be submitted to the Swiss diplomatic representation of the applicant's country of origin, within the country-specific deadline",
-        "Detailed research plan with a timeline specifying key milestones and activities",
-        "For PhD scholarships at graduate schools only: confirmation of admission to the doctoral school must be submitted with the application",
-        "The PhD scholarship application (with the supervisor letter) and the application for admission to a doctoral programme are two separate procedures"
-      ],
-      "documents": [
-        "Complete CV including educational background, degrees, awards, positions, publications, teaching and practical experience",
-        "Letter of motivation, maximum 2 pages",
-        "Research proposal on the FCS/ESKAS form, maximum 5 pages including a summary for non-specialists",
-        "Letter of support from an academic supervisor at a Swiss higher education institution",
-        "Short CV (max. 2 pages) of that academic supervisor",
-        "For research fellowships: short CV of the academic supervisor at the home university",
-        "E-mail addresses of two different professors in the relevant field, who upload recommendation letters through the application system",
-        "Copies of certificates and transcripts from previous universities, with certified translations if not in English, French, Italian or German",
-        "Copy of passport (both passports for dual citizens)",
-        "Copy of residence permit or registration confirmation if already residing in Switzerland",
-        "For PhD scholarships at graduate schools only: confirmation of admission to the doctoral school"
-      ],
-      "required_documents": [
-        "Complete CV including educational background, degrees, awards, positions, publications, teaching and practical experience",
-        "Letter of motivation, maximum 2 pages",
-        "Research proposal on the FCS/ESKAS form, maximum 5 pages including a summary for non-specialists",
-        "Letter of support from an academic supervisor at a Swiss higher education institution",
-        "Short CV (max. 2 pages) of that academic supervisor",
-        "For research fellowships: short CV of the academic supervisor at the home university",
-        "E-mail addresses of two different professors in the relevant field, who upload recommendation letters through the application system",
-        "Copies of certificates and transcripts from previous universities, with certified translations if not in English, French, Italian or German",
-        "Copy of passport (both passports for dual citizens)",
-        "Copy of residence permit or registration confirmation if already residing in Switzerland",
-        "For PhD scholarships at graduate schools only: confirmation of admission to the doctoral school"
-      ],
-      "english_requirement": null,
-      "application_method": [
-        "Check eligibility and the country-specific deadline on the FCS country lists",
-        "Register in Grants Online (GO ESKAS) and prepare the application",
-        "Submit the application to the Swiss diplomatic representation; applications are only accepted via the online system - not by e-mail or paper",
-        "Decisions are announced by the end of May at the latest for the following academic year"
-      ],
-      "selection_notes": "Applications are submitted to the applicant's Swiss diplomatic representation. The Federal Commission for Scholarships for Foreign Students assesses applications against three criteria: candidate profile, quality of the research project or artistic work, and synergies and potential for future research cooperation. Art scholarships are reviewed in consultation with the Federal Office of Culture.",
-      "program_type": "Government research scholarship (Federal Commission for Scholarships for Foreign Students, FCS/ESKAS)",
-      "best_fit": null,
-      "last_verified_date": "2026-10-10",
-      "notes": "Host institutions for research scholarships are Swiss cantonal universities, universities of applied sciences, ETH Zurich or EPFL, and the four research institutes within the ETH Domain (PSI, WSL, Empa, Eawag). Official phishing warning: the State Secretariat for Education, Research and Innovation warns against fake Swiss Government scholarship offers sent by e-mail or published on social media, and the application for a Swiss Government Scholarship is free of charge."
     },
     {
       "id": 566,
@@ -94643,15 +94507,15 @@
         ],
         "submission_workflow": "Secure a supervisor, assemble the dossier, register in GO ESKAS and submit online before your country's deadline; the FCS assesses and announces decisions by the end of May."
       },
-      "deadline": "Applications open 20 August 2026; country-specific deadlines vary (September to December 2026). Check go.eskas.ch for exact deadline by country of citizenship.",
+      "deadline": "Applications are open starting August 20, 2026 (Swiss Government Excellence Scholarships 2027-2028); application deadlines by country of origin are published on the official page. The FCS announces its decisions by the end of May at the latest.",
       "deadline_date": null,
       "deadline_precision": "unknown",
       "status": "open",
       "verified": true,
-      "last_verified_at": "2026-10-10",
+      "last_verified_at": "2026-10-12",
       "verification_status": "active",
       "official_source_url": "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships",
-      "updated_at": "2026-10-10T14:12:49",
+      "updated_at": "2026-10-11T18:56:05.181060",
       "image_url": null,
       "image_source_type": null,
       "image_kind": null,
@@ -94734,8 +94598,95 @@
       "selection_notes": "Selection criteria: Academic profile, research competence, and motivation; originality and methodological quality of the project; quality of supervision and potential for future collaboration. Art scholarships assess artistic profile, qualifications, motivation, and portfolio quality. Decisions announced by end of May.",
       "program_type": "Government scholarship (Federal Commission for Scholarships for Foreign Students)",
       "best_fit": "Only for PhD-track or postgraduate researchers who already have an academic connection in Switzerland - not usable for undergraduate applicants",
-      "last_verified_date": "2026-10-10",
+      "last_verified_date": "2026-10-12",
       "notes": "Application now fully online via go.eskas.ch (embassy paper submission discontinued as of 2026-27 cycle). Requires securing a Swiss academic mentor/supervisor BEFORE applying - this is the hardest and most time-consuming step, start it months in advance."
+    },
+    {
+      "id": 730,
+      "title": "Hong Kong PhD Fellowship Scheme (HKPFS) - 2027/28",
+      "name": "Hong Kong PhD Fellowship Scheme (HKPFS) - 2027/28",
+      "country": "Hong Kong",
+      "degree": "PhD",
+      "degree_levels": "PhD",
+      "funding": "Annual stipend of HK$344,400 (approximately US$44,150) and a conference and research-related travel allowance of HK$14,400 (approximately US$1,840) per year for each awardee for a period up to three years (2026/27 figures as published by the RGC); 400 PhD Fellowships will be awarded in the 2027/28 academic year",
+      "funding_type": "Annual stipend of HK$344,400 (approximately US$44,150) and a conference and research-related travel allowance of HK$14,400 (approximately US$1,840) per year for each awardee for a period up to three years (2026/27 figures as published by the RGC); 400 PhD Fellowships will be awarded in the 2027/28 academic year",
+      "funding_amount": 344400,
+      "funding_currency": "HKD",
+      "funding_period": "per year, up to three years (2026/27 published figures)",
+      "tuition_coverage": null,
+      "official_source_urls": [
+        "https://cerg1.ugc.edu.hk/hkpfs/index.html",
+        "https://cerg1.ugc.edu.hk/hkpfs/apply.html"
+      ],
+      "source_citations": [
+        "https://cerg1.ugc.edu.hk/hkpfs/index.html",
+        "https://cerg1.ugc.edu.hk/hkpfs/apply.html"
+      ],
+      "applicant_utility": {
+        "summary": "The Hong Kong PhD Fellowship Scheme (HKPFS) aims at attracting the best and brightest students in the world to pursue their PhD studies in Hong Kong's universities. 400 PhD Fellowships will be awarded in the 2027/28 academic year. The scheme is open to candidates seeking admission as new full-time PhD students at the eight UGC-funded universities, irrespective of their country of origin, prior work experience and ethnic background.",
+        "funding_summary": "per year, up to three years (2026/27 published figures)",
+        "application_readiness_checklist": [
+          "Initial Application via the HKPFS Electronic System (HKPFSES)",
+          "Admission requirements of the selected universities and PhD programmes must be met",
+          "Submit initial applications as early as possible: some universities' application deadlines immediately follow the Initial Application deadline"
+        ]
+      },
+      "deadline": "Initial Application opens 1 September 2026 at 12:00 noon Hong Kong Time; obtain the HKPFS Reference Number by 1 December 2026 (Hong Kong Time); then submit full PhD applications to one or two universities quoting the reference number before each university's own deadline (each participating university's deadline: 1 December 2026, 11:59 pm Hong Kong Time)",
+      "deadline_date": "2026-12-01",
+      "deadline_precision": "day",
+      "status": "open",
+      "verified": true,
+      "last_verified_at": "2026-10-12",
+      "verification_status": "active",
+      "official_source_url": "https://cerg1.ugc.edu.hk/hkpfs/index.html",
+      "updated_at": "2026-10-11T18:55:25.826721",
+      "image_url": null,
+      "image_source_type": null,
+      "image_kind": null,
+      "description": "The Hong Kong PhD Fellowship Scheme (HKPFS) aims at attracting the best and brightest students in the world to pursue their PhD studies in Hong Kong's universities. 400 PhD Fellowships will be awarded in the 2027/28 academic year. The scheme is open to candidates seeking admission as new full-time PhD students at the eight UGC-funded universities, irrespective of their country of origin, prior work experience and ethnic background.",
+      "region": "Asia",
+      "duration": "up to three years",
+      "application_period": "Opens 1 September 2026 (12:00 noon Hong Kong Time); Initial Application deadline 1 December 2026 (Hong Kong Time); participating university deadlines 1 December 2026 (11:59 pm Hong Kong Time)",
+      "official_source": "Research Grants Council (RGC), University Grants Committee of Hong Kong",
+      "catalogue_url": null,
+      "official_updates_url": null,
+      "application_link": "https://cerg1.ugc.edu.hk/hkpfs/apply.html",
+      "image_source_url": null,
+      "image_verified_at": null,
+      "image_alt_text": null,
+      "eligibility": [
+        "Seeking admission as a new full-time PhD student at one of the eight UGC-funded universities (City University of Hong Kong; Hong Kong Baptist University; Lingnan University; The Chinese University of Hong Kong; The Education University of Hong Kong; The Hong Kong Polytechnic University; The Hong Kong University of Science and Technology; The University of Hong Kong)",
+        "Open irrespective of country of origin, prior work experience and ethnic background",
+        "Initial Application through the HKPFS Electronic System (HKPFSES) to obtain an HKPFS Reference Number, then full PhD applications to one or two universities (up to two programmes), subject to each university's admission requirements",
+        "For awardees who need more than three years to complete the PhD, additional support may be provided by the chosen universities"
+      ],
+      "eligibility_summary": "New full-time PhD applicants to the eight UGC-funded universities in Hong Kong, from any country, any field. Applications run in two steps: an Initial Application to the RGC for an HKPFS Reference Number by 1 December 2026 (Hong Kong Time), then a full PhD admission application to the chosen universities quoting that reference number before each university's own deadline.",
+      "benefits": [
+        "Annual stipend of HK$344,400 (approximately US$44,150)",
+        "Conference and research-related travel allowance of HK$14,400 (approximately US$1,840) per year",
+        "Awarded for a period up to three years"
+      ],
+      "coverage": [
+        "Annual stipend - HK$344,400 (approximately US$44,150) per year, up to three years",
+        "Conference and research-related travel allowance - HK$14,400 (approximately US$1,840) per year"
+      ],
+      "requirements": [
+        "Initial Application via the HKPFS Electronic System (HKPFSES)",
+        "Admission requirements of the selected universities and PhD programmes must be met",
+        "Submit initial applications as early as possible: some universities' application deadlines immediately follow the Initial Application deadline"
+      ],
+      "documents": [],
+      "required_documents": [],
+      "english_requirement": null,
+      "application_method": [
+        "Step 1 - Initial Application: online through the Hong Kong PhD Fellowship Scheme Electronic System (HKPFSES) to obtain an HKPFS Reference Number by 1 December 2026 (Hong Kong Time)",
+        "Step 2 - Full Applications: apply for PhD admission to up to two programmes at one or two universities, quoting the HKPFS Reference Number, before the universities' respective deadlines"
+      ],
+      "selection_notes": "Shortlisted applications, subject to their areas of studies, will be reviewed by one of the two Selection Panels comprising experts in the relevant board areas.",
+      "program_type": null,
+      "best_fit": null,
+      "last_verified_date": "2026-10-12",
+      "notes": null
     }
   ]
 }

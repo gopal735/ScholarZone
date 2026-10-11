@@ -1,14 +1,17 @@
 {
-  "created_at": "2026-10-11T18:31:32.432055Z",
-  "next_free_id_before": 730,
-  "accepted": [],
-  "refused": [
+  "created_at": "2026-10-11T18:55:25.838329Z",
+  "next_free_id_before": 731,
+  "accepted": [
     {
-      "from": "lead_candidates.json",
-      "title": "France Excellence Eiffel scholarship program (Eiffel Excellence Scholarship)",
-      "problems": [
-        "deadline is in the past"
-      ]
+      "id": 730,
+      "title": "Hong Kong PhD Fellowship Scheme (HKPFS) - 2027/28",
+      "country": "Hong Kong",
+      "degree": "PhD",
+      "deadline_date": "2026-12-01",
+      "official_source_url": "https://cerg1.ugc.edu.hk/hkpfs/index.html",
+      "image_url": null,
+      "from": "lead_additions_hkpfs.json"
     }
-  ]
+  ],
+  "refused": []
 }

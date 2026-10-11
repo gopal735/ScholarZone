@@ -51,18 +51,23 @@ TODAY = date(2026, 10, 11)
 
 
 def _json_or_none(value: Any) -> str | None:
-    if value in (None, {}, "", []):
+    if value in (None, {}, ""):
         return None
     return json.dumps(value, ensure_ascii=False)
 
 
-def _list_field(value: Any) -> str | None:
+def _list_field(value: Any) -> str:
+    """Serialise a list field; empty stays an empty JSON array.
+
+    Several list columns are NOT NULL in the schema (documents among them),
+    so an empty list is written as [] rather than NULL.
+    """
     if isinstance(value, list):
         items = [str(v).strip() for v in value if str(v).strip()]
-        return _json_or_none(items)
+        return json.dumps(items, ensure_ascii=False)
     if isinstance(value, str) and value.strip():
-        return _json_or_none([value])
-    return None
+        return json.dumps([value], ensure_ascii=False)
+    return json.dumps([], ensure_ascii=False)
 
 
 def load_existing_identity() -> tuple[dict[int, dict], set[str]]:
