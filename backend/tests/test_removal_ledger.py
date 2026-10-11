@@ -44,6 +44,7 @@ EXPECTED_IDS = {279, 729, 182, 185, 374}
 LEDGER_FILES = [
     "removals_scholarships_ledger.json",
     "dedupe_merges_ledger.json",
+    "open_items_ledger.json",
 ]
 
 
@@ -62,8 +63,10 @@ def _ledger_ids():
         payload = json.loads(path.read_text(encoding="utf-8"))
         for entry in payload.get("removals", []):
             ids.add(entry["id"])
-        for pair in payload.get("pairs", []):
-            if pair.get("merged_away_id") is not None:
+        # The merge ledgers key their entries "pairs" (dedupe merges) or
+        # "items" (the open-items pass); both carry merged_away_id.
+        for pair in payload.get("pairs", []) + payload.get("items", []):
+            if isinstance(pair, dict) and pair.get("merged_away_id") is not None:
                 ids.add(pair["merged_away_id"])
     return ids
 
