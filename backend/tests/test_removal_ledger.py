@@ -37,7 +37,35 @@ LEDGER_PATH = (
 )
 SNAPSHOT_PATH = REPOSITORY_ROOT / "frontend" / "public" / "scholarships-snapshot.json"
 
-EXPECTED_IDS = {279, 729}
+# The only records that may leave the public catalogue: the discontinued ones
+# (removals ledger) and the duplicate rows merged into a canonical record
+# (dedupe ledger). Both are exportable and reversible.
+EXPECTED_IDS = {279, 729, 182, 185, 374}
+LEDGER_FILES = [
+    "removals_scholarships_ledger.json",
+    "dedupe_merges_ledger.json",
+]
+
+
+def _ledger_ids():
+    ids = set()
+    for name in LEDGER_FILES:
+        path = (
+            REPOSITORY_ROOT
+            / "backend"
+            / "research_output"
+            / "publish"
+            / name
+        )
+        if not path.is_file():
+            continue
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        for entry in payload.get("removals", []):
+            ids.add(entry["id"])
+        for pair in payload.get("pairs", []):
+            if pair.get("merged_away_id") is not None:
+                ids.add(pair["merged_away_id"])
+    return ids
 
 
 @pytest.fixture(scope="module")
@@ -66,8 +94,32 @@ def test_every_ledger_entry_carries_evidence(ledger):
         assert entry.get("removed_at")
 
 
-def test_the_ledger_holds_exactly_the_two_audited_removals(ledger):
-    assert {entry["id"] for entry in ledger["removals"]} == EXPECTED_IDS
+def test_the_discontinued_ledger_holds_exactly_the_two_audited_removals(ledger):
+    assert {entry["id"] for entry in ledger["removals"]} == {279, 729}
+
+
+def test_the_dedupe_ledger_documents_canonicals_and_merges():
+    """Every merged-away row names its canonical record and carries evidence."""
+    path = (
+        REPOSITORY_ROOT
+        / "backend"
+        / "research_output"
+        / "publish"
+        / "dedupe_merges_ledger.json"
+    )
+    if not path.is_file():
+        pytest.skip("the dedupe ledger is not present")
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    pairs = payload.get("pairs")
+    assert pairs, "the dedupe ledger holds no merges"
+    with open(SNAPSHOT_PATH, encoding="utf-8") as handle:
+        snapshot = json.load(handle)
+    published = {record["id"] for record in snapshot["scholarships"]}
+    for pair in pairs:
+        assert pair["canonical_id"] in published, "the canonical record must survive"
+        assert pair["merged_away_id"] not in published, "the merged-away row must be out of the public set"
+        assert pair.get("evidence"), "a merge with no official evidence is a guess"
+        assert pair.get("verdict") == "same programme, same intake"
 
 
 def test_vanier_records_its_published_successor(ledger):
@@ -89,11 +141,13 @@ def test_no_ledger_record_is_published(ledger):
         assert entry["id"] not in published
 
 
-def test_the_snapshot_removed_nothing_beyond_the_ledger():
+def test_the_snapshot_removed_nothing_beyond_the_ledgers():
     """The published set may only have shrunk by the ledger entries.
 
     Read from the generator's own baseline declaration: every baseline id
-    absent from the snapshot must be exactly the ledger ids.
+    absent from the snapshot must be exactly the ids the two ledgers name
+    (discontinued records + merged-away duplicate rows). An unledgered
+    vanishing record is a silent deletion and fails this test.
     """
     if not SNAPSHOT_PATH.is_file():
         pytest.skip("the committed snapshot is not present")
@@ -106,7 +160,11 @@ def test_the_snapshot_removed_nothing_beyond_the_ledger():
     vanished = baseline_ids - published
     if not vanished:
         pytest.skip("this snapshot has no declared baseline removals")
-    assert vanished == EXPECTED_IDS
+    # The baseline each generation declares is its own predecessor, so an
+    # earlier generation's ledger removals (279, 729) are already outside it:
+    # the invariant is that nothing vanished beyond the ledgers, and that the
+    # header's declared count matches what actually did.
+    assert vanished <= _ledger_ids()
     assert baseline.get("baseline_removed") == len(vanished)
 
 

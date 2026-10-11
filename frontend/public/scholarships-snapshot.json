@@ -1,16 +1,16 @@
 {
   "meta": {
-    "generated_at": "2026-10-11T18:07:07.130138Z",
+    "generated_at": "2026-10-11T18:17:06.816448Z",
     "source_database": "scholarzone.db",
     "source_record_count": 695,
-    "public_record_count": 621,
+    "public_record_count": 618,
     "excluded": {
       "closed": 10,
-      "archived": 54,
+      "archived": 57,
       "quarantined": 51,
       "deadline_passed": 13
     },
-    "excluded_union": 74,
+    "excluded_union": 77,
     "deadline_passed": 13,
     "baseline": {
       "mode": "preserve",
@@ -640,7 +640,7 @@
         727
       ],
       "baseline_preserved": 153,
-      "baseline_removed": 0,
+      "baseline_removed": 3,
       "newly_public": 0
     },
     "status_derived_at": "2026-10-12",
@@ -1113,7 +1113,6 @@
         165,
         166,
         171,
-        182,
         194,
         201,
         85,
@@ -1366,7 +1365,6 @@
         360,
         363,
         373,
-        374,
         375,
         422,
         467,
@@ -1420,7 +1418,6 @@
         290,
         297,
         183,
-        185,
         250,
         264,
         269,
@@ -1896,7 +1893,6 @@
         371,
         372,
         373,
-        374,
         375,
         376,
         377,
@@ -2191,10 +2187,8 @@
         179,
         180,
         181,
-        182,
         183,
         184,
-        185,
         188,
         189,
         192,
@@ -2302,7 +2296,6 @@
         360,
         363,
         373,
-        374,
         375,
         392,
         397,
@@ -2484,9 +2477,7 @@
         165,
         166,
         171,
-        182,
         183,
-        185,
         194,
         201,
         250,
@@ -3113,7 +3104,6 @@
         129,
         153,
         256,
-        382,
         400,
         480,
         483,
@@ -3221,7 +3211,6 @@
         160,
         171,
         173,
-        185,
         269,
         271,
         272,
@@ -3260,8 +3249,8 @@
         90,
         101,
         180,
-        182,
         273,
+        382,
         463,
         487,
         559,
@@ -3430,7 +3419,6 @@
         362,
         372,
         373,
-        374,
         375,
         376,
         381,
@@ -3736,7 +3724,6 @@
         129,
         153,
         256,
-        382,
         400,
         480,
         483,
@@ -3844,7 +3831,6 @@
         160,
         171,
         173,
-        185,
         269,
         271,
         272,
@@ -3883,8 +3869,8 @@
         90,
         101,
         180,
-        182,
         273,
+        382,
         463,
         487,
         559,
@@ -4053,7 +4039,6 @@
         362,
         372,
         373,
-        374,
         375,
         376,
         381,
@@ -4183,8 +4168,8 @@
         90,
         101,
         180,
-        182,
         273,
+        382,
         463,
         487,
         559,
@@ -4218,7 +4203,6 @@
         160,
         171,
         173,
-        185,
         269,
         271,
         272,
@@ -4334,7 +4318,6 @@
         129,
         153,
         256,
-        382,
         400,
         480,
         483,
@@ -4676,7 +4659,6 @@
         362,
         372,
         373,
-        374,
         375,
         376,
         381,
@@ -4782,7 +4764,6 @@
         325,
         363,
         373,
-        374,
         392,
         422,
         425,
@@ -5061,9 +5042,7 @@
         165,
         166,
         171,
-        182,
         183,
-        185,
         194,
         201,
         250,
@@ -5642,7 +5621,6 @@
         292,
         520,
         375,
-        374,
         373,
         514,
         237,
@@ -5683,7 +5661,6 @@
         215,
         413,
         458,
-        185,
         452,
         573,
         241,
@@ -5959,7 +5936,6 @@
         327,
         291,
         297,
-        182,
         382,
         260,
         261,
@@ -6009,7 +5985,6 @@
         326,
         261,
         260,
-        182,
         382,
         297,
         291,
@@ -6285,7 +6260,6 @@
         207,
         241,
         573,
-        185,
         452,
         458,
         413,
@@ -6327,7 +6301,6 @@
         237,
         514,
         373,
-        374,
         375,
         520,
         292,
@@ -6622,15 +6595,15 @@
     ]
   },
   "stats": {
-    "total": 621,
+    "total": 618,
     "countries": 74,
-    "open": 308,
+    "open": 307,
     "closing_soon": 50,
-    "upcoming": 109,
-    "verified_active": 530,
-    "fully_funded": 205,
-    "with_image": 449,
-    "with_official_source": 619
+    "upcoming": 107,
+    "verified_active": 527,
+    "fully_funded": 204,
+    "with_image": 446,
+    "with_official_source": 616
   },
   "scholarships": [
     {
@@ -29288,132 +29261,6 @@
       "notes": "The UTS is not available for the Faculty of Geo-Information Science and Earth Observation (ITC), for the pre-Master programme, for Dutch or current UT students, for EU/EEA students or for students paying the statutory tuition fee. Pre-Master students who continue into a master's programme may not apply either. Applicants can be awarded only one UT scholarship, and the Kipaji Scholarship can only be requested by applying for the UTS."
     },
     {
-      "id": 182,
-      "title": "VU Fellowship Programme (VUFP)",
-      "name": "VU Fellowship Programme (VUFP)",
-      "country": "Netherlands",
-      "degree": "Master's",
-      "degree_levels": "Master's",
-      "funding": "Tuition Fee Waiver",
-      "funding_type": "Tuition Fee Waiver",
-      "funding_amount": null,
-      "funding_currency": null,
-      "funding_period": null,
-      "tuition_coverage": true,
-      "official_source_urls": [
-        "https://vu.nl/en/education/more-about/incoming-master-scholarships"
-      ],
-      "source_citations": [
-        "https://vu.nl/en/education/more-about/incoming-master-scholarships"
-      ],
-      "applicant_utility": {
-        "summary": "Treat the VUFP as a tuition solution, not a study budget: the university's own wording is that it covers tuition only and gives no allowance for rent, food or insurance, so you must already be able to self-finance living costs in Amsterdam before you accept. The binding constraint is admission rather than the scholarship itself, because you need at least a conditional Master's offer before the VUFP form even becomes available, which is why VU tells you to apply for admission by 1 December 2026. The application is one-shot: resubmission is not allowed, and a single unanswered question or a missing transcript makes the file incomplete and therefore never evaluated. One VUFP place is reserved for a former Semester in Amsterdam student, so alumni of that programme should flag their application to the Semester in Amsterdam team.",
-        "best_fit": "Non-EU/EEA applicants whose transcript converts to a Dutch 8 or better and who can pair it with credible savings or family support for Amsterdam living costs.",
-        "application_readiness_checklist": [
-          "Get the Master's application into Studielink and the VU dashboard in early October 2026, not December - a conditional offer is a hard prerequisite",
-          "Request the bachelor transcript and a written grading-scale explanation early; foreign scales are converted by ECCTIS-style grade distribution statistics, not by a simple percentage match",
-          "Draft the motivation text covering motivation for VU and the specific programme, future ambitions and extracurriculars, since GPA is only one scoring factor",
-          "Convert everything into one PDF including the transcript pasted at the end, and proofread it before upload because there is no second submission",
-          "Note the two post-result deadlines in March 2027: the decision email and the two-week window to accept or decline"
-        ],
-        "common_rejection_risks": [
-          "Applying for admission too late to hold a conditional offer by the time the VUFP window closes",
-          "Leaving any question on the form blank, or omitting the transcript/grading scale, which makes the application non-evaluated",
-          "Treating the Dutch 8 minimum as a competitive score - it is only the threshold that lets your file be processed",
-          "Applying for a joint programme whose admission VU Amsterdam does not administer, or for a February intake",
-          "Assuming the NL Scholarship follows automatically from the VUFP - selection is separate and only a few VUFP winners receive it"
-        ],
-        "estimated_uncovered_costs": "Accommodation, food, health and liability insurance, study materials, residence-permit and travel costs, and any remaining tuition if only part of the programme is covered.",
-        "document_audit": [
-          "The transcript and grading scale explanation must be pasted into the application form itself, not sent as separate attachments",
-          "Only the bachelor GPA is considered, even if you already hold a Master's degree",
-          "If you have not yet officially graduated, the most up-to-date transcript showing your grades is what VU expects",
-          "Only the current academic year's form version is accepted - an older form is grounds for rejection",
-          "Upload must be a single PDF in the Scholarship section of the dashboard; split uploads or wrong formats are a common failure"
-        ],
-        "alerts": [
-          "Offers withdrawn automatically if you do not act within two weeks of the results email",
-          "A scholarship granted for one academic year cannot be postponed to another academic year",
-          "Students already inside a two-year Master's who missed the VUFP in 2026/2027 are barred from applying for 2027/2028",
-          "You can name only one Master's programme for the VUFP even if you hold several admission applications",
-          "If you reject the scholarship because of funding gaps, remember there is no allowance component to fall back on"
-        ],
-        "submission_workflow": "Studielink and dashboard registration first, conditional offer second, single-PDF upload to the dashboard Scholarship section third, then accept or decline online within two weeks of the March decision."
-      },
-      "deadline": "Applications are welcome from November 1st 2026. Deadline VUFP application: 1 February 2027 (23:59 CET).",
-      "deadline_date": "2027-02-01",
-      "deadline_precision": "exact",
-      "status": "open",
-      "verified": true,
-      "last_verified_at": "2026-10-10",
-      "verification_status": "active",
-      "official_source_url": "https://vu.nl/en/deducation/scholarships/vu-fellowship-programme",
-      "updated_at": "2026-10-10T20:19:41",
-      "image_url": "https://vu.nl/assets/images/VU-logo-nobg.svg",
-      "image_source_type": "official_provider",
-      "image_kind": "official_logo",
-      "description": "The VU Fellowship Programme (VUFP) is a merit-based tuition fee waiver from Vrije Universiteit Amsterdam for non-EU/EEA applicants who pay higher tuition fees. It can be granted for a one- or two-year full-time English-taught Master's programme starting in September 2027, and a second year is only extended if 100% of the ECTS of the first year are achieved. The official page states the VUFP 'covers the tuition fees only' and 'does not provide any additional allowance towards study or living costs, like rent, food, insurances'. Applications for the 2027/2028 cycle open on 1 November 2026 and close on 1 February 2027 at 23:59 CET.",
-      "region": "Europe",
-      "duration": "One- or two-year full-time English-taught Master's programme starting September 2027",
-      "application_period": "Applications open 1 November 2026 and close 1 February 2027 (23:59 CET) for September 2027 entry. VU advises applying for the Master's programme admission by 1 December 2026.",
-      "official_source": "Vrije Universiteit Amsterdam",
-      "catalogue_url": "https://vu.nl/en/education/more-about/incoming-master-scholarships",
-      "official_updates_url": "https://vu.nl/en/education/more-about/incoming-master-scholarships",
-      "application_link": "https://vu.nl/en/deducation/scholarships/vu-fellowship-programme",
-      "image_source_url": "https://vu.nl/",
-      "image_verified_at": "2026-10-04T07:32:36.344477",
-      "image_alt_text": "Vrije Universiteit Amsterdam",
-      "eligibility": [
-        "Hold a non-EU/EEA passport and not be eligible for the lower tuition fee",
-        "Not hold Dutch nationality",
-        "Prove academic excellence with a GPA equivalent to a Dutch 8",
-        "Be conditionally or unconditionally admitted to the first year of a full-time English-taught VU Amsterdam Master's programme starting September 2027",
-        "Students starting in February cannot apply",
-        "Joint programmes where VU Amsterdam does not administer the admission process are excluded",
-        "The degree for which admission is sought has not been obtained in the Netherlands",
-        "Not currently enrolled in a Bachelor or Master programme in the Netherlands",
-        "No preparatory programme required before the start of the Master's"
-      ],
-      "eligibility_summary": "Applicants must hold a non-EU/EEA passport and not be eligible for the lower Dutch tuition fee, prove academic excellence equivalent to a Dutch grade 8, and hold a conditional or unconditional offer for the first year of a full-time English-taught VU Amsterdam Master's programme starting September 2027. February starters, joint programmes VU does not administer, and applicants with a Dutch degree or current Dutch enrolment are excluded.",
-      "benefits": [
-        "Full tuition fee waiver for one or two study years",
-        "Automatic simultaneous application to the NL Scholarship living-cost contribution",
-        "Invitation to become a VU international student ambassador"
-      ],
-      "coverage": [
-        "Full tuition fees for the awarded study period",
-        "No allowance towards study or living costs (rent, food, insurance)"
-      ],
-      "requirements": [
-        "Submit the complete VUFP application form with all questions answered",
-        "Paste the GPA proof/programme transcript and grading scale explanation at the end of the form",
-        "Upload the single PDF in the Scholarship section of the personal VU dashboard",
-        "Apply for only one Master's programme for the VUFP",
-        "Submit the application only once - resubmission is not allowed"
-      ],
-      "documents": [
-        "Completed VUFP-NLS application form for the relevant academic year, saved as a single PDF",
-        "Bachelor's programme transcript or GPA proof",
-        "Grading scale explanation showing how the GPA is calculated"
-      ],
-      "required_documents": [
-        "Completed VUFP-NLS application form for the relevant academic year, saved as a single PDF",
-        "Bachelor's programme transcript or GPA proof",
-        "Grading scale explanation showing how the GPA is calculated"
-      ],
-      "english_requirement": "Admission to a full-time English-taught Master's programme at VU Amsterdam",
-      "application_method": [
-        "Register for the Master's programme in Studielink from 1 October 2026 and complete the personal VU dashboard registration",
-        "Be admitted (at least conditionally) to the programme",
-        "Complete the VUFP-NLS application form and upload the single PDF to the Scholarship section of the personal VU dashboard"
-      ],
-      "selection_notes": "The faculty of the applied Master's programme reviews all VUFP applications received by the deadline and nominates applicants to the Central Scholarship Committee, which awards scholarships to the most talented students. Results are based on academic performance and motivation; GPA is only one of several scoring factors, together with motivation for the university/specific programme, future ambitions and extracurricular activities. Results are expected mid-March 2027 and offers must be accepted by the end of March 2027.",
-      "program_type": "Merit-based tuition fee waiver for non-EU/EEA students",
-      "best_fit": "Non-EU/EEA applicants with a GPA equivalent to a Dutch 8 who already hold a conditional or unconditional offer for a September 2027 English-taught VU Amsterdam Master's programme and can self-fund living costs.",
-      "last_verified_date": "2026-10-11",
-      "notes": "The VUFP is financially supported by VUvereniging, a social network of people connected to Vrije Universiteit Amsterdam. Applying for the VUFP automatically also applies for the NL Scholarship (formerly Holland Scholarship Programme), which is a separate one-time EUR 5,000 contribution towards living costs awarded to only about 20-25 candidates per year and only for the first study year. One VUFP scholarship is reserved for applicants who previously completed a semester or full academic year at VU Amsterdam through the Semester in Amsterdam programme. Students already enrolled in a two-year Master's who were not awarded the VUFP in 2026/2027 cannot apply for 2027/2028."
-    },
-    {
       "id": 183,
       "title": "Lund University Global Scholarship",
       "name": "Lund University Global Scholarship",
@@ -29689,138 +29536,6 @@
       "best_fit": "Academically talented citizens of countries outside the EU/EEA and Switzerland who can cover their own living costs and who rank their chosen Uppsala University Master's programme first at University Admissions.",
       "last_verified_date": "2026-10-10",
       "notes": "The scholarship is funded by the Swedish Council for Higher Education, the government agency responsible for overseeing Swedish higher education. Students admitted to the Joint Nordic Master's Programme in Environmental Law, the Master's Programme in Biology NABiS, Master's Programme in Evolutionary Biology - MEME, Master's Programme in Implementation, Transformative Learning and Sustainability, Master's Programme in Religion in Peace and Conflict, Master's Programme in Transformative Game Design and Master's Programme in Turkic Studies are not eligible. The University also runs the Anders Wall Scholarship (full tuition fee for international Bachelor's or Master's students who are citizens of an African country, supported by The Beijer Foundation and Uppsala University). Uppsala runs a separate, much larger scholarship system for current students and researchers from affiliated foundations, which in 2025 distributed 79.5 million SEK across more than 500 scholarships."
-    },
-    {
-      "id": 185,
-      "title": "KTH Scholarship",
-      "name": "KTH Scholarship",
-      "country": "Sweden",
-      "degree": "Master's",
-      "degree_levels": "Master's",
-      "funding": "Tuition Fee Waiver",
-      "funding_type": "Tuition Fee Waiver",
-      "funding_amount": 385000,
-      "funding_currency": "SEK",
-      "funding_period": "covers first and second year of tuition",
-      "tuition_coverage": true,
-      "official_source_urls": [
-        "https://www.kth.se/en/studies/master/admissions/scholarships/kth-scholarship-1.72827",
-        "https://www.kth.se/en/studies/master/admissions/scholarships/scholarship-opportunities-for-master-s-studies-1.860447",
-        "https://www.kth.se/en/studies/master/admissions/how-to-apply-for-masters-studies-1.68487"
-      ],
-      "source_citations": [
-        "https://www.kth.se/en/studies/master/admissions/scholarships/kth-scholarship-1.72827",
-        "https://www.kth.se/en/studies/master/admissions/scholarships/scholarship-opportunities-for-master-s-studies-1.860447",
-        "https://www.kth.se/en/studies/master/admissions/how-to-apply-for-masters-studies-1.68487"
-      ],
-      "applicant_utility": {
-        "application_readiness_checklist": [
-          "Apply to KTH through University Admissions with the KTH programme as first priority",
-          "Pay the SEK 900 application fee before the deadline",
-          "Submit all admission documents by 2 February 2027",
-          "Write a specific sustainable-development motivation"
-        ],
-        "common_rejection_risks": [
-          "Naming the KTH programme as second or later priority",
-          "Missing the 15 January scholarship form deadline",
-          "Unsuccessful admission to the programme",
-          "Applying to an ineligible joint programme"
-        ],
-        "estimated_uncovered_costs": [
-          "Living costs and accommodation",
-          "Travel and visa",
-          "Books, equipment and course materials"
-        ],
-        "document_audit": [
-          "Confirm programme eligibility against the list of excluded joint programmes",
-          "Check that your bachelor's university ranking is stated clearly"
-        ],
-        "alerts": [
-          {
-            "trigger": "Application window opens 1 December 2026",
-            "message": "Prepare a complete University Admissions profile before the window opens, since document deadlines are tight."
-          },
-          {
-            "trigger": "Result date 1 April 2027",
-            "message": "Results arrive with admissions, so keep alternative funding options open."
-          }
-        ],
-        "submission_workflow": [
-          "Choose an eligible KTH master's programme",
-          "Apply via universityadmissions.se by 15 January 2027",
-          "Pay the application fee",
-          "Submit documents by 2 February",
-          "Submit the scholarship form after 1 December 2026",
-          "Await results on 1 April 2027"
-        ]
-      },
-      "deadline": "1 December 2026: Application opens. 15 January 2027: Application closes. 1 April 2027: Scholarship results announced.",
-      "deadline_date": "2027-01-15",
-      "deadline_precision": "exact",
-      "status": "upcoming",
-      "verified": true,
-      "last_verified_at": "2026-10-10",
-      "verification_status": "active",
-      "official_source_url": "https://www.kth.se/en/utbildning/scholarships",
-      "updated_at": "2026-10-10T20:19:41",
-      "image_url": "https://www.kth.se/polopoly_fs/1.1376857.1734452256!/image/studies2.webp",
-      "image_source_type": "official_provider",
-      "image_kind": "official_banner",
-      "description": "The KTH Scholarship covers the full tuition fee of a one- or two-year master's programme at KTH Royal Institute of Technology for fee-paying students, and does not include living costs. Applicants must first apply for a KTH master's programme through universityadmissions.se, ranking KTH as their first priority and paying the application fee. The 2027 round opens on 1 December 2026 and closes on 15 January 2027, with results announced on 1 April 2027. In 2026, 9% of scholarship applicants who were admitted to a programme were nominated for the scholarship (65 out of 718).",
-      "region": "Europe",
-      "duration": "One or two-year master's programme; the scholarship covers the tuition fee for the first and the second year provided the first-year study results are satisfactory",
-      "application_period": "The application round runs 1 December 2026 to 15 January 2027, with results announced on 1 April 2027. The universityadmissions.se programme application and the document submission deadline of 2 February run on the national Swedish schedule.",
-      "official_source": "KTH Royal Institute of Technology",
-      "catalogue_url": "https://www.kth.se/en/studies/master/admissions/scholarships/kth-scholarship-1.72827",
-      "official_updates_url": "https://www.kth.se/en/studies/master/admissions/scholarships",
-      "application_link": "https://www.kth.se/en/utbildning/scholarships",
-      "image_source_url": "https://www.kth.se/study",
-      "image_verified_at": "2026-09-27T14:40:20.647692",
-      "image_alt_text": "KTH students walking together on campus",
-      "eligibility": [
-        "Be a fee-paying student at KTH",
-        "Have applied for a master's programme at KTH via universityadmissions.se as first priority",
-        "Have paid the universityadmissions.se application fee",
-        "Only applicants who fulfil the admission requirements of the programme applied for are eligible",
-        "Eligible programmes: all master's programmes with two years spent at KTH, the joint master's in Molecular Techniques in Life Science, the joint master's in Biostatistics and Data Science, and the one-year master's in Architectural Lighting Design",
-        "Not eligible: joint Erasmus+ and EIT programmes, and the joint programme Computer Simulations for Science and Engineering"
-      ],
-      "eligibility_summary": "Applicants must be fee-paying students who have applied for a master's programme at KTH as their first priority and paid the application fee. Scholarships cannot be applied for or awarded for programmes listed as second, third or fourth priority. Eligible programmes are all two-year master's programmes at KTH, the joint master's programmes in Molecular Techniques in Life Science and Biostatistics and Data Science, and the one-year master's programme in Architectural Lighting Design. Joint Erasmus+ and EIT programmes and the joint programme Computer Simulations for Science and Engineering are excluded.",
-      "benefits": [
-        "Full tuition fee for the first year of the master's programme",
-        "Full tuition fee for the second year if first-year results are satisfactory"
-      ],
-      "coverage": [
-        "Tuition fee at KTH for the first year",
-        "Tuition fee at KTH for the second year, provided first-year study results are satisfactory",
-        "Living costs are explicitly not included"
-      ],
-      "requirements": [
-        "Apply for a master's programme at KTH through universityadmissions.se before applying for the scholarship",
-        "Rank the KTH programme as first priority - second, third and fourth priority programmes are not eligible",
-        "Pay the application fee",
-        "Submit the scholarship application using the form on the KTH Scholarship page while the round is open",
-        "Submit the universityadmissions.se supporting documents by the 2 February document submission deadline, as KTH reuses them for scholarship evaluation"
-      ],
-      "documents": [
-        "No additional documents for the scholarship application itself",
-        "Complete application and supporting documents submitted to universityadmissions.se by the 2 February document submission deadline"
-      ],
-      "required_documents": [
-        "No additional documents for the scholarship application itself",
-        "Complete application and supporting documents submitted to universityadmissions.se by the 2 February document submission deadline"
-      ],
-      "english_requirement": "The master's programme applied for must be an English-taught KTH programme meeting its admission requirements",
-      "application_method": [
-        "Apply for a master's programme at KTH via universityadmissions.se with KTH as first priority and pay the application fee",
-        "Submit all supporting documents to universityadmissions.se by the 2 February document deadline",
-        "From 1 December 2026 to 15 January 2027, submit the scholarship application using the form on the KTH Scholarship page"
-      ],
-      "selection_notes": "The scholarship is awarded primarily on the basis of academic excellence and the selection process runs in parallel with the admissions process; only applicants who fulfil the admission requirements of the programme applied for are eligible. Applicants are assessed on grades (GPA or equivalent), the ranking of the university that awarded their bachelor's degree, extracurricular research experiences or publications, relevant work experience, relevant teaching experience, awards from competitions and extracurricular activities, and their motivation for contributing to sustainable development with a KTH master's degree. In 2026, 9% of scholarship applicants admitted to a programme were nominated for the KTH Scholarship (65 out of 718).",
-      "program_type": "Merit-based tuition fee scholarship for fee-paying international students",
-      "best_fit": "Fee-paying applicants to an eligible KTH master's programme who ranked it first at universityadmissions.se and have strong academic results plus a demonstrable commitment to sustainable development.",
-      "last_verified_date": "2026-10-11",
-      "notes": "Applicants to joint Erasmus+, EIT and Computer Simulations for Science and Engineering programmes may instead be considered for the KTH Joint Programme Scholarship, which covers the tuition fee for the study period spent at KTH. KTH also runs a separate KTH One-Year Scholarship for current students covering the second year of a two-year programme, and a KTH India Scholarship. Applicants to certain joint programmes may apply for the KTH Joint Programme Scholarship."
     },
     {
       "id": 188,
@@ -52526,224 +52241,6 @@
       "notes": null
     },
     {
-      "id": 374,
-      "title": "Japanese Government (MEXT) Scholarship for 2027 (Research Students) - Embassy Recommendation",
-      "name": "Japanese Government (MEXT) Scholarship for 2027 (Research Students) - Embassy Recommendation",
-      "country": "Japan",
-      "degree": "Master's, PhD",
-      "degree_levels": "Master's, PhD",
-      "funding": "Fully Funded",
-      "funding_type": "Fully Funded",
-      "funding_amount": 144000,
-      "funding_currency": "JPY",
-      "funding_period": "per month",
-      "tuition_coverage": true,
-      "official_source_urls": [
-        "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
-        "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/examination.html",
-        "https://www.mext.go.jp/"
-      ],
-      "source_citations": [
-        "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
-        "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/examination.html",
-        "https://www.mext.go.jp/"
-      ],
-      "applicant_utility": {
-        "application_readiness_checklist": [
-          "Confirm you are under 35, which is the hard age limit for research students",
-          "Confirm you are eligible for admission to a Japanese graduate school master's or doctoral (first or second stage) programme",
-          "Contact the Japanese embassy or consulate general in your country and ask whether research-student applications are open and in which fields, because the type and field vary by country",
-          "Decide between embassy recommendation and university recommendation, and check that your target Japanese university actually holds an MEXT recommendation quota before you invest time in it",
-          "Obtain and read the latest edition of the MEXT application guidelines, because they govern where the summary page differs from them",
-          "If taking the embassy route, prepare for the Japanese and English applicant qualifying examinations",
-          "Arrange to submit all documents and sit all interviews through the embassy or diplomatic mission, which handles both",
-          "Budget your own living costs beyond the published stipend, tuition exemption and airfare, since the page says nothing further"
-        ],
-        "important_advice_for_students": [
-          "Do not rely on this summary page alone - the official page itself warns that detailed requirements exist in the application guidelines and that the guidelines prevail",
-          "Do not assume a university will accept a university-recommendation application: only a select number of MEXT-approved, outstanding universities hold quotas",
-          "Do not assume the scholarship is available in your country or in your field; the page says the type and field of application vary from country to country",
-          "Do not expect an English-only application; embassy recommendation for research students requires Japanese and English examinations",
-          "Do not count on the JPY 143,000 to 145,000 monthly figure as more than it is - it is published as a range and there is no separate housing allowance described",
-          "Do plan for arrival timing: university-recommended grantees usually arrive in September or October, and six months of preliminary Japanese training may precede the research studies",
-          "Do contact the embassy early, because the mission runs the whole recruitment, document and interview process",
-          "Do not rely on a third-party listing of MEXT scholarships; the official page is the Study in Japan / MEXT source and the mission's own guidelines govern your application"
-        ],
-        "common_rejection_risks": [
-          "Being 35 or older at application, which disqualifies research students outright",
-          "Not being eligible for admission to a Japanese graduate school master's or doctoral programme",
-          "Applying through a Japanese university with no MEXT recommendation quota",
-          "Assuming research-student applications are offered in the applicant's country when they are not, or not in the applicant's field",
-          "Failing the Japanese and English applicant qualifying examinations under the embassy route",
-          "Incomplete documentation at the embassy or mission, which conducts the document and interview stage",
-          "Relying on the summary page and missing a requirement set only in the application guidelines",
-          "Not planning for the preliminary Japanese language training stage, which applies to those who need it"
-        ],
-        "estimated_uncovered_costs": [
-          "Any accommodation or housing costs not addressed by the host institution; the official page describes only the monthly scholarship, tuition exemption and airfare",
-          "Insurance premiums and health costs",
-          "Books, equipment, conference and research costs",
-          "Family accommodation and dependants' costs",
-          "Costs arising during the six-month preliminary Japanese language training period beyond the monthly scholarship",
-          "Local transport and daily expenses beyond the monthly stipend"
-        ],
-        "document_audit": [
-          "Under embassy recommendation: the documents specified by the Japanese embassy or diplomatic mission in your country, submitted through that mission",
-          "Under university recommendation: the documents specified by the accepting Japanese university, which vary by university",
-          "The document list in the latest edition of the MEXT application guidelines, which is the controlling document",
-          "No file size limits, accepted file types, translation rules or document date rules are published on this page, so do not assume any",
-          "Keep your embassy application receipt and interview record, since the mission is the point of contact for the whole recruitment stage",
-          "If taking the university route, keep the university's screening correspondence, which evidences that your university held a quota and recommended you"
-        ],
-        "referee_tracking": [
-          {
-            "role": "Not specified on the official page",
-            "required": false,
-            "instructions": "The MEXT summary page names no referees or recommendation letters for research students. Under university recommendation the accepting university applies its own application requirements and academic standards, which may include references; under embassy recommendation the mission conducts all documents and interviews and sets its own documentary requirements. Neither was published on this page."
-          }
-        ],
-        "alerts": [
-          {
-            "trigger": "Before you plan your application",
-            "message": "Check the MEXT application guidelines for the current cycle; they override this summary page wherever the two differ."
-          },
-          {
-            "trigger": "Choosing between the two routes",
-            "message": "Verify that your chosen Japanese university holds an MEXT recommendation quota. Only a select number of MEXT-approved universities can recommend candidates."
-          },
-          {
-            "trigger": "Your country or field is not listed in embassy announcements",
-            "message": "Research-student applications may not be offered in your country or field; ask the embassy directly before investing in the route."
-          },
-          {
-            "trigger": "Your 35th birthday falls before the application is assessed",
-            "message": "Research students must be under 35, so verify the age position early rather than at the interview stage."
-          },
-          {
-            "trigger": "After selection",
-            "message": "University-recommended grantees usually arrive in September or October; some arrive late March or early April. Expect six months of preliminary Japanese training if you are one of those who need it."
-          }
-        ],
-        "submission_workflow": [
-          "Read the latest MEXT application guidelines for the current cycle",
-          "Contact the Japanese embassy or consular mission in your country to confirm research-student applications are open and in which fields",
-          "Confirm you are under 35 and eligible for admission to a Japanese graduate school master's or doctoral programme",
-          "Choose the embassy recommendation or university recommendation route",
-          "For embassy recommendation: apply through the mission, sit the Japanese and English qualifying examinations, submit all required documents and attend the interviews the mission conducts",
-          "For university recommendation: apply to a Japanese university that holds an MEXT recommendation quota and complete its screening process",
-          "If recommended by a university, await MEXT's decision on the recommendation",
-          "If selected, plan for the monthly scholarship, the tuition exemption and the round-trip airfare, and for six months of preliminary Japanese training if required"
-        ],
-        "post_award_requirements": [
-          "Pursue the research studies in the specialisation of the Japanese graduate school admitted to",
-          "Complete the preliminary Japanese language training if classified as needing it",
-          "Benefit from the tuition exemption and monthly scholarship as published for the research student category",
-          "Take up the award in the term assigned, noting arrival is usually September or October for university-recommended grantees",
-          "The official page publishes no return-home, renewal or deferral requirement, so no such obligation can be assumed or denied from this source"
-        ],
-        "questions_to_ask_host": [
-          "Does your university hold an MEXT recommendation quota, and is it currently recruiting research students?",
-          "What are your own application requirements and academic standards for research students, and by what internal deadline must I apply?",
-          "Which prior study does the MEXT programme count towards my eligibility, and how do you assess it?",
-          "Will I be required to undertake the six-month preliminary Japanese language training?",
-          "What start date and term do you enrol research students in - September, October, or late March/early April?",
-          "What housing is arranged for MEXT research students, and what is the realistic cost of living beyond the monthly scholarship?",
-          "How does your recommendation framework affect my scholarship period and eligibility compared with the embassy route?",
-          "Who do I contact at your university if my MEXT application needs documentation after submission?"
-        ]
-      },
-      "deadline": "\"Recruitment for those arriving in Japan in April 2027 or September/October 2027 is made between April and May of the previous year. First screening is conducted between May and July by the Japanese Embassies or Consulates General.\"",
-      "deadline_date": null,
-      "deadline_precision": "varies",
-      "status": "upcoming",
-      "verified": true,
-      "last_verified_at": "2026-10-11",
-      "verification_status": "active",
-      "official_source_url": "https://www.studyinjapan.go.jp/en/_mt/2026/04/0102-2027_Research_Guidelines_E.pdf",
-      "updated_at": "2026-10-11T08:34:06",
-      "image_url": "https://www.studyinjapan.go.jp/en/assets/images/common/logo_mext_en.svg",
-      "image_source_type": "official_provider",
-      "image_kind": "official_logo",
-      "description": "The Japanese Government (MEXT) Scholarship for 2027 (Research Students) funds international students who will conduct research in a master's course, doctoral course or professional graduate course at a Japanese graduate school, or research in a specialised field at an undergraduate department or attached institute. MEXT states that it \"offers scholarships to international students who wish to study in graduate courses at Japanese universities as Research Students (either regular students or non-regular students)\". The award pays a monthly scholarship, exempts tuition and provides round-trip airfare.",
-      "region": "Global",
-      "duration": "Embassy recommendation: irregular course within 2 years, or regular course of a standard school year with up to 6 months of preliminary Japanese education added; university recommendation duration depends on each university's quota, up to a standard school year",
-      "application_period": "Recruitment runs April-May of the year before arrival; embassy first screening May-July",
-      "official_source": "Ministry of Education, Culture, Sports, Science and Technology (MEXT), Japan",
-      "catalogue_url": "https://www.studyinjapan.go.jp/en/_mt/2026/04/01-2027_Research_Guidelines_E.pdf",
-      "official_updates_url": "https://www.studyinjapan.go.jp/en/smap-stopj-applications-research.html",
-      "application_link": "https://www.studyinjapan.go.jp/en/_mt/2026/04/0102-2027_Research_Guidelines_E.pdf",
-      "image_source_url": "https://www.studyinjapan.go.jp/en/",
-      "image_verified_at": "2026-10-04T07:32:05.164655",
-      "image_alt_text": "MEXT Study in Japan",
-      "eligibility": [
-        "Under 35 years of age",
-        "Eligible for admission to a master's programme or a doctoral programme (first or second stage) at a Japanese graduate school",
-        "Nationality of a country that has diplomatic relations with Japan; Japanese nationals are not eligible",
-        "Completion of at least 16 years of schooling, or an equivalent qualification, depending on academic background",
-        "Able to carry out research in a specialised field",
-        "Good health, evidenced by a physician-signed medical certificate"
-      ],
-      "eligibility_summary": "Applicants must be under 35 years of age and eligible for admission to a master's or doctoral programme at a Japanese graduate school, and must hold the nationality of a country with diplomatic relations with Japan.",
-      "benefits": [
-        "JPY 143,000 to 145,000 per month scholarship",
-        "Full tuition exemption",
-        "Round-trip airfare between the home country and Japan",
-        "Up to 6 months of preliminary Japanese education for those who need it",
-        "Research placement support and allowance for actual expenses"
-      ],
-      "coverage": [
-        "Monthly scholarship of JPY 143,000 to 145,000",
-        "Tuition exempted",
-        "Round-trip travel expenses (airfare) provided",
-        "Up to 6 months of preliminary Japanese language education where required"
-      ],
-      "requirements": [
-        "Submit the packet to the Japanese diplomatic mission of the applicant's country of nationality by the designated deadline",
-        "List no more than three universities on the Placement Preference Application Form",
-        "Obtain no more than two letters of provisional acceptance and contact no more than two universities at a time",
-        "Contact universities for a provisional acceptance letter no earlier than Wednesday 2 September 2026",
-        "Contact the division of international student affairs, not the intended supervisor",
-        "Use only the MEXT-specified format for the letter of provisional acceptance",
-        "Documents must be in Japanese or English, with a Japanese or English translation attached otherwise"
-      ],
-      "documents": [
-        "Application Form (2027 form)",
-        "Placement Preference Application Form (2027 form)",
-        "Field of Study and Research Plan (2027 form)",
-        "Academic transcripts for all academic years of university attended",
-        "Certificate of graduation or degree certificate",
-        "Recommendation letter from the president, dean or academic advisor at the current or last university attended",
-        "Medical certificate",
-        "Abstracts of theses (where applicable)",
-        "Certificate of language proficiency, 3 copies (only if held)",
-        "Recommendation letter from the present employer (only if currently employed)",
-        "Photographs of the applicant's own works of art or a digitally recorded media of musical performance (art and music applicants only)"
-      ],
-      "required_documents": [
-        "Application Form (2027 form)",
-        "Placement Preference Application Form (2027 form)",
-        "Field of Study and Research Plan (2027 form)",
-        "Academic transcripts for all academic years of university attended",
-        "Certificate of graduation or degree certificate",
-        "Recommendation letter from the president, dean or academic advisor at the current or last university attended",
-        "Medical certificate",
-        "Abstracts of theses (where applicable)",
-        "Certificate of language proficiency, 3 copies (only if held)",
-        "Recommendation letter from the present employer (only if currently employed)",
-        "Photographs of the applicant's own works of art or a digitally recorded media of musical performance (art and music applicants only)"
-      ],
-      "english_requirement": "No published IELTS/TOEFL score: the First Screening includes written examinations in Japanese and English for all applicants, and the English examination may be exempted for countries where English is the official language",
-      "application_method": [
-        "Embassy recommendation: submit the full document set to the Japanese embassy or consulate general in the applicant's country of nationality",
-        "University recommendation: apply through a Japanese university that holds an MEXT recommendation quota"
-      ],
-      "selection_notes": "First screening is conducted by the diplomatic mission (documents, written examination, interview). Applicants who pass may request up to two letters of provisional acceptance from universities. MEXT then conducts the second screening and confirms placement at one of the three preferred universities.",
-      "program_type": "Government scholarship - national study abroad programme (embassy recommendation)",
-      "best_fit": null,
-      "last_verified_date": "2026-10-11",
-      "notes": null
-    },
-    {
       "id": 375,
       "title": "Japanese Government (MEXT) Scholarship for 2026 (Japanese Studies Students)",
       "name": "Japanese Government (MEXT) Scholarship for 2026 (Japanese Studies Students)",
@@ -53929,8 +53426,8 @@
           "Accept or decline in your personal VU dashboard by the end of March 2027, and if accepted, expect an October ambassador kick-off"
         ]
       },
-      "deadline": "Master's programme application:",
-      "deadline_date": "2026-11-01",
+      "deadline": "Applications are welcome from November 1st 2026. Deadline VUFP application: 1 February 2027 (23:59 CET)",
+      "deadline_date": "2027-02-01",
       "deadline_precision": "exact",
       "status": "upcoming",
       "verified": false,
@@ -54015,7 +53512,7 @@
         "Follow the VUFP scholarship application (from 1 November 2026) Please follow the VUFP application process as described above. Deadline: 1 February 2027 (23:59 CET)"
       ],
       "selection_notes": "<li>You can prove your academic excellence (GPA equivalent to a Dutch 8).</li> All VUFP applications received by<strong> 1&nbsp;February 2027 (23:59 CET)</strong>&nbsp;will be reviewed by the faculty of the applied for Master’s programme. <p><strong>Selection<br></strong>The selection process considers three main criteria: academic quality of students, the quality of the study program, and the comparison amongst all applicants, maintaining each student’s anonymity.",
-      "program_type": "Students already enrolled in a two-year Master’s programme who have not been awarded the VUFP scholarship in 2025/2026 are not eligible to apply for the VUFP scholarship for 2026/2027.",
+      "program_type": "Merit-based tuition fee waiver for non-EU/EEA students",
       "best_fit": null,
       "last_verified_date": "2026-10-10",
       "notes": "When applying for VUFP, you automatically also apply for the NL Scholarship. No separate application is necessary. Results expected mid-March 2026."
@@ -62447,7 +61944,9 @@
       "tuition_coverage": true,
       "official_source_urls": [
         "https://www.kth.se/en/studies/master/admissions/scholarships/kth-scholarship-1.72827",
-        "https://www.kth.se/en/studies/master/admissions/application-and-tuition-fees-for-master-s-studies-1.65817"
+        "https://www.kth.se/en/studies/master/admissions/application-and-tuition-fees-for-master-s-studies-1.65817",
+        "https://www.kth.se/en/studies/master/admissions/scholarships/scholarship-opportunities-for-master-s-studies-1.860447",
+        "https://www.kth.se/en/studies/master/admissions/how-to-apply-for-masters-studies-1.68487"
       ],
       "source_citations": [
         "https://www.kth.se/en/studies/master/admissions/scholarships/kth-scholarship-1.72827",
@@ -62494,7 +61993,7 @@
           "Await results on 1 April 2027"
         ]
       },
-      "deadline": "15 January 2027: Application closes",
+      "deadline": "1 December 2026: Application opens. 15 January 2027: Application closes. 1 April 2027: Scholarship results announced",
       "deadline_date": "2027-01-15",
       "deadline_precision": "day",
       "status": "upcoming",
@@ -62552,7 +62051,7 @@
         "If you need help, our official local consultants can support you in applying free of charge."
       ],
       "selection_notes": "The ranking of the university that awarded the applicant's bachelor's degree",
-      "program_type": "Julian, KTH Scholarship awardee",
+      "program_type": "Merit-based tuition fee scholarship for fee-paying international students",
       "best_fit": null,
       "last_verified_date": "2026-10-10",
       "notes": null
@@ -69363,7 +68862,9 @@
       "official_source_urls": [
         "https://www.mext.go.jp/a_menu/koutou/ryugaku/boshu/1415352_00008.htm",
         "https://www.mext.go.jp/content/20260420-mxt-kotokoku01-000049243_02.pdf",
-        "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/"
+        "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
+        "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/examination.html",
+        "https://www.mext.go.jp/"
       ],
       "source_citations": [
         "https://www.mext.go.jp/content/20260420-mxt-kotokoku01-000049243_02.pdf"
