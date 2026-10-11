@@ -17,8 +17,9 @@ not.
 The order of operations matters more than any individual step:
 
 1. **Refuse before touching anything.** No source URL, no secret, no encryption
-   backend, or a source that looks like production each stop the run before a
-   byte is dumped. A backup that cannot be encrypted must not exist.
+   backend, no hostname allow-list, or a source that is a known production
+   endpoint each stop the run before a byte is dumped. A backup that cannot be
+   encrypted must not exist.
 2. **Dump to a temporary file outside Git**, with permissions restricted to the
    current user. The plaintext never enters the repository or the artifact.
 3. **Encrypt in memory and verify by round-trip**: the ciphertext is decrypted
@@ -26,15 +27,25 @@ The order of operations matters more than any individual step:
    the plaintext is discarded. A ciphertext that has not been proven decryptable
    is not a backup.
 4. **Record a manifest** carrying the timestamp, the ciphertext's SHA-256 and
-   size, the source's *identity* (dialect and whether a host is set - never the
-   connection string), and the outcome. This is what a restore consumes.
+   size, the source's *identity* (scheme and host - never the connection
+   string), the hosts the allow-list permitted, and the outcome. This is what a
+   restore consumes.
 5. **Remove the plaintext** and confirm it is gone.
+
+Which host is even eligible is decided by `app.services.backup_source`, not by
+this script: a source is permitted only when its hostname is named in
+`SZ_BACKUP_ALLOWED_HOSTS`, and the known production endpoints are refused
+whatever that configuration says. Substring matching was tried and is gone - a
+production Neon hostname contains no "prod" marker, so it was admitted by the
+check written to exclude it.
 
 The transfer estimate is computed before anything is uploaded, because a backup
 that exhausts the free-tier network budget to save the database has made things
-worse: the application's own traffic then fails. `--max-monthly-mib` fails the
-run when the projected monthly transfer exceeds the budget, and the default is
-conservative.
+worse: the application's own traffic then fails. `SZ_BACKUP_MAX_MONTHLY_MIB`
+fails the run when the projected monthly transfer exceeds the budget, and the
+default is conservative. The budget is configuration, not an argument: it is the
+one check standing between a backup and the free-tier allowance, so a caller
+cannot be the one who decides it.
 """
 
 from __future__ import annotations
@@ -43,7 +54,6 @@ import argparse
 import hashlib
 import json
 import os
-import stat
 import subprocess
 import sys
 import tempfile
@@ -60,18 +70,34 @@ from app.services.backup_crypto import (  # noqa: E402
     read_manifest,
     select_backend,
 )
-
-#: A database is treated as production when its URL contains any of these. A
-#: backup is a read-only operation, so this is not about write safety - it is
-#: that a *scheduled* run pointed at production would silently compete with the
-#: application for the free-tier transfer budget, which is the failure this whole
-#: architecture exists to avoid.
-PRODUCTION_MARKERS = ("prod", "production")
+from app.services.backup_source import (  # noqa: E402
+    ALLOW_LIST_ENV,
+    SourceRejected,
+    describe_allow_list,
+    resolve_source,
+)
 
 #: Default monthly transfer budget in MiB. Neon's free tier allows 5 GiB/month
 #: of outbound transfer; the application uses some of it, so a backup budget has
 #: to be a fraction rather than the whole allowance.
+#:
+#: This is a *default*, and the only thing that can change it is a repository
+#: variable. It used to be a `workflow_dispatch` input, which meant a caller
+#: could switch the budget off by choosing a large number - and this budget is
+#: the one check standing between a backup and exhausting the free-tier transfer
+#: allowance, which is the failure the whole free-first architecture exists to
+#: avoid. There is no argument that sets it, so a dispatch caller has nothing to
+#: override.
 DEFAULT_MAX_MONTHLY_MIB = 512
+
+#: The variable a repository owner sets to change the budget. Absent uses the
+#: default. Present but unparseable, non-positive, or absurd refuses.
+BUDGET_ENV = "SZ_BACKUP_MAX_MONTHLY_MIB"
+
+#: Upper bound on a configured budget, in MiB. A configuration above this is
+#: treated as a mistake rather than a decision: a value that large cannot be a
+#: fraction of a free-tier allowance, so it is almost certainly a typo.
+MAX_SANE_BUDGET_MIB = 4096
 
 
 class BackupRefused(RuntimeError):
@@ -82,37 +108,44 @@ def _sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
-def _resolve_source_url(env_name: str) -> str:
-    """Read the source URL from the named variable, refusing when absent."""
-    value = os.environ.get(env_name)
-    if not value:
+def _resolve_budget_mib() -> float:
+    """The monthly transfer ceiling, from configuration or the default.
+
+    Deliberately not a function argument and not a dispatch input. Both would
+    make the budget a caller's choice, and the point of the budget is that it is
+    not one.
+    """
+    raw = os.environ.get(BUDGET_ENV)
+    if raw is None or raw.strip() == "":
+        return float(DEFAULT_MAX_MONTHLY_MIB)
+
+    try:
+        value = float(raw.strip())
+    except ValueError:
         raise BackupRefused(
-            f"{env_name} is not set; a backup needs an explicit source. "
-            "Refusing to guess or fall back to the application's connection."
+            f"{BUDGET_ENV}={raw!r} is not a number; refusing to guess a budget "
+            "when a value has been set that cannot be read"
+        ) from None
+
+    if value != value or value in (float("inf"), float("-inf")):  # NaN and infinity
+        raise BackupRefused(f"{BUDGET_ENV}={raw!r} is not a finite number")
+
+    if value <= 0:
+        raise BackupRefused(
+            f"{BUDGET_ENV} must be a positive number of MiB; {value!r} would "
+            "disable the transfer budget, which is the one check protecting the "
+            "application's free-tier allowance"
         )
+
+    if value > MAX_SANE_BUDGET_MIB:
+        raise BackupRefused(
+            f"{BUDGET_ENV}={value} exceeds the sane ceiling of "
+            f"{MAX_SANE_BUDGET_MIB} MiB; a budget above that is not a fraction "
+            "of a free-tier allowance and is most likely a mistake"
+        )
+
     return value
 
-
-def _assert_not_production(url: str) -> str:
-    """Describe the source by identity, and refuse if it looks like production.
-
-    Returns a redacted identity string - dialect and whether a host is present -
-    that is safe to put in a manifest. The URL itself is never returned and never
-    logged.
-    """
-    lowered = url.lower()
-    if any(marker in lowered for marker in PRODUCTION_MARKERS):
-        raise BackupRefused(
-            "the source URL contains a production marker; a scheduled backup "
-            "must not compete with the application for the free-tier transfer "
-            "budget. Set SZ_BACKUP_SOURCE_URL to a non-production source."
-        )
-
-    # "postgresql://" or "postgres://"
-    dialect = url.split("://", 1)[0] if "://" in url else "unknown"
-    has_host = "@" in url or "://" in url
-    identity = f"{dialect} (host {'configured' if has_host else 'absent'})"
-    return identity
 
 
 def _dump_binary() -> str:
@@ -177,6 +210,12 @@ def _estimate_monthly_mib(dump_bytes: int, runs_per_month: int) -> float:
     An artifact upload is counted twice in practice - once for storing it and
     once for anyone downloading it - so this is deliberately pessimistic rather
     than counting the upload once and calling the budget safe.
+
+    This is a projection from a measured dump size and a stated run count. It is
+    not a measurement of monthly usage: it does not know how much of the
+    allowance the application itself consumes, and it does not know whether
+    anyone downloads the artifact. It is a ceiling on what this backup could
+    plausibly add, which is the only quantity the budget can honestly claim.
     """
     return (dump_bytes * runs_per_month * 2) / (1024 * 1024)
 
@@ -192,8 +231,19 @@ def run_backup(args: argparse.Namespace) -> dict[str, Any]:
             "a backup nobody could restore."
         )
 
-    source_url = _resolve_source_url(args.source_url_env)
-    source_identity = _assert_not_production(source_url)
+    # Resolved and validated before anything is dumped. `resolve_source` applies
+    # the allow-list and the production deny-list, and returns the URL for
+    # pg_dump alongside a redacted identity for reporting. The URL is never
+    # logged or written to the manifest.
+    try:
+        source_url, source_identity = resolve_source(args.source_url_env)
+    except SourceRejected as exc:
+        raise BackupRefused(str(exc)) from exc
+
+    # The budget comes from configuration, never from a caller. Nothing in
+    # `args` can set it, because the parser deliberately offers no argument for
+    # it: a `workflow_dispatch` input has nowhere to land.
+    budget_mib = _resolve_budget_mib()
 
     # `select_backend` raises `BackupCryptoUnavailable` when nothing can
     # encrypt. That is a refusal like any other, and a caller should not have to
@@ -217,11 +267,12 @@ def run_backup(args: argparse.Namespace) -> dict[str, Any]:
         plaintext_path.unlink(missing_ok=True)
 
     projected = _estimate_monthly_mib(dump_bytes, args.runs_per_month)
-    if projected > args.max_monthly_mib:
+    if projected > budget_mib:
         raise BackupRefused(
             f"projected monthly transfer {projected:.1f} MiB exceeds the "
-            f"{args.max_monthly_mib} MiB budget for {args.runs_per_month} runs; "
-            "reduce the schedule or the dump size before scheduling a backup."
+            f"{budget_mib:g} MiB budget for {args.runs_per_month} runs; the "
+            "budget is set by configuration and cannot be raised by a caller. "
+            "Reduce the schedule or the dump size before scheduling a backup."
         )
 
     # Encrypt, then prove the ciphertext decrypts back to the plaintext.
@@ -251,12 +302,27 @@ def run_backup(args: argparse.Namespace) -> dict[str, Any]:
             {
                 "format": FORMAT_ID,
                 "created_at": timestamp.isoformat(),
-                "source_identity": source_identity,
+                # The redacted identity only: scheme and host. Never the URL,
+                # the database name, the port, or any credential.
+                "source_identity": source_identity.describe(),
+                # Which hosts the allow-list permitted when this ran. Recorded
+                # so an artifact can be audited against the configuration that
+                # authorised it, rather than only against the host used.
+                "allowed_hosts": describe_allow_list(ALLOW_LIST_ENV),
                 "ciphertext_sha256": cipher_sha,
                 "ciphertext_bytes": len(ciphertext),
                 "plaintext_bytes": dump_bytes,
                 "projected_monthly_transfer_mib": round(projected, 2),
+                "transfer_budget_mib": round(budget_mib, 2),
                 "runs_per_month": args.runs_per_month,
+                # What is explicitly not claimed: this is a projection from a
+                # measured dump size, not a measurement of monthly usage.
+                "projection_note": (
+                    "projected_monthly_transfer_mib is a projection: measured "
+                    "dump size x runs per month x 2 (upload plus download). It "
+                    "is not a measured pg_dump size over time and not a "
+                    "verified monthly usage total."
+                ),
                 "backend": backend.name,
                 "kdf": manifest_header.get("kdf"),
                 "iterations": manifest_header.get("iterations"),
@@ -279,11 +345,12 @@ def run_backup(args: argparse.Namespace) -> dict[str, Any]:
         "ciphertext_bytes": len(ciphertext),
         "plaintext_bytes": dump_bytes,
         "projected_monthly_transfer_mib": round(projected, 2),
+        "transfer_budget_mib": round(budget_mib, 2),
         "backend": backend.name,
     }
 
 
-def main(argv: list[str] | None = None) -> int:
+def _build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--source-url-env",
@@ -307,12 +374,20 @@ def main(argv: list[str] | None = None) -> int:
         default=4,
         help="how often this backup is scheduled, for the transfer estimate",
     )
-    parser.add_argument(
-        "--max-monthly-mib",
-        type=float,
-        default=DEFAULT_MAX_MONTHLY_MIB,
-        help="fail when the projected monthly transfer exceeds this",
-    )
+    # No transfer-budget argument. It used to exist, and used to be fed by a
+    # `workflow_dispatch` input, which let anyone with dispatch rights switch
+    # the check off for a run by choosing a large number. There is nothing to
+    # accept now, so the run stops rather than honouring a number that should
+    # never have been settable in the first place.
+    return parser
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = _build_parser()
+    # No transfer-budget argument exists, so a caller - including a
+    # `workflow_dispatch` caller - has nothing to override it with. A dispatch
+    # input used to be threaded through here; it was removed precisely because
+    # it let anyone with dispatch rights switch the budget off for a run.
     args = parser.parse_args(argv)
     args.passphrase = os.environ.get(args.passphrase_env, "")
 

@@ -11,10 +11,11 @@ name: Database Backup (encrypted)
 # Three properties are load-bearing:
 #
 # 1. **It refuses rather than degrading.** No source URL, no passphrase, no
-#    encryption binary, or a source that looks like production each stop the run
-#    before anything is dumped. A backup that could not be encrypted must not be
-#    written at all - the alternative is a plaintext database in the artifacts
-#    of a public repository.
+#    encryption binary, no hostname allow-list, a source that is not on that
+#    allow-list, or a source that is a known production endpoint each stop the
+#    run before anything is dumped. A backup that could not be encrypted must
+#    not be written at all - the alternative is a plaintext database in the
+#    artifacts of a public repository.
 #
 # 2. **The plaintext never leaves the runner unencrypted.** The dump is written
 #    to a temp directory, encrypted, round-trip verified (decrypted and compared
@@ -25,7 +26,10 @@ name: Database Backup (encrypted)
 #    schedule that dumps often enough to exhaust the network allowance would
 #    take the site down to save the database. The schedule is weekly and the
 #    script projects the monthly transfer before writing anything, failing the
-#    run if it exceeds the budget.
+#    run if it exceeds the budget. That budget is configuration - a repository
+#    variable - and there is deliberately no dispatch input for it: the one
+#    check standing between a backup and the free-tier allowance is not a thing
+#    a caller who can press the button gets to change per run.
 
 on:
   workflow_dispatch:
@@ -34,10 +38,12 @@ on:
         description: "Runs per month, for the transfer estimate only"
         required: false
         default: "4"
-      max_monthly_mib:
-        description: "Fail if the projected monthly transfer exceeds this many MiB"
-        required: false
-        default: "512"
+      # There is no transfer-budget input. It used to live here, which meant
+      # anyone with dispatch rights could raise it to a number large enough to
+      # switch the check off for a run. The budget is now a repository variable
+      # (`vars.SZ_BACKUP_MAX_MONTHLY_MIB`), changeable only by someone with
+      # write access and visible in the repository's settings rather than in a
+      # per-run form.
 
   schedule:
     # Weekly on Sunday at 03:00 UTC. Chosen so the projected transfer stays a
@@ -80,21 +86,33 @@ jobs:
         env:
           SZ_BACKUP_PASSPHRASE: ${{ secrets.SZ_BACKUP_PASSPHRASE }}
           SZ_BACKUP_SOURCE_URL: ${{ secrets.SZ_BACKUP_SOURCE_URL }}
+          SZ_BACKUP_ALLOWED_HOSTS: ${{ vars.SZ_BACKUP_ALLOWED_HOSTS }}
         run: |
           # Absence is reported as a skip, not a failure. A repository that has
           # not been given a passphrase has not been given permission to make
           # a backup, and failing the workflow would make the missing secret
           # look like a broken build rather than an unconsumed capability.
+          #
+          # The allow-list is treated the same way: with no hosts named, there
+          # is nothing the script is allowed to read, so the run stops rather
+          # than proceeding with a guard that has nothing to compare against.
+          # The script refuses on its own too - this only names the reason.
           missing=()
           [ -n "$SZ_BACKUP_PASSPHRASE" ] || missing+=("SZ_BACKUP_PASSPHRASE")
           [ -n "$SZ_BACKUP_SOURCE_URL" ] || missing+=("SZ_BACKUP_SOURCE_URL")
+          [ -n "$SZ_BACKUP_ALLOWED_HOSTS" ] || missing+=("SZ_BACKUP_ALLOWED_HOSTS")
           if [ ${#missing[@]} -gt 0 ]; then
-            echo "Backup not run. Required secrets are absent: ${missing[*]}"
-            echo "Adding one of these repository secrets enables it:"
-            echo "  SZ_BACKUP_PASSPHRASE  - the encryption passphrase, stored nowhere else"
-            echo "  SZ_BACKUP_SOURCE_URL  - a NON-production source; production is"
+            echo "Backup not run. Required configuration is absent: ${missing[*]}"
+            echo "Adding these enables it:"
+            echo "  SZ_BACKUP_PASSPHRASE    - the encryption passphrase, stored nowhere else"
+            echo "  SZ_BACKUP_SOURCE_URL    - a NON-production source; production is"
             echo "                           refused so a scheduled backup cannot"
             echo "                           exhaust the free-tier transfer budget"
+            echo "  SZ_BACKUP_ALLOWED_HOSTS - comma-separated hostnames the backup"
+            echo "                           may read. Default-deny: a source host"
+            echo "                           that is not named there is refused, and"
+            echo "                           the known production endpoints are"
+            echo "                           refused whatever this says."
             echo "skipped=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
@@ -105,14 +123,23 @@ jobs:
         env:
           SZ_BACKUP_PASSPHRASE: ${{ secrets.SZ_BACKUP_PASSPHRASE }}
           SZ_BACKUP_SOURCE_URL: ${{ secrets.SZ_BACKUP_SOURCE_URL }}
+          SZ_BACKUP_ALLOWED_HOSTS: ${{ vars.SZ_BACKUP_ALLOWED_HOSTS }}
+          # Optional, and a repository variable rather than a dispatch input:
+          # absent leaves the built-in 512 MiB default in place. A malformed,
+          # empty, non-positive, or absurd value refuses the run rather than
+          # being silently ignored, so a typo cannot quietly disable the
+          # transfer budget.
+          SZ_BACKUP_MAX_MONTHLY_MIB: ${{ vars.SZ_BACKUP_MAX_MONTHLY_MIB }}
         run: |
           cd backend
+          # The budget is passed through the environment, not as an argument.
+          # There is no flag that sets it, so nothing a caller supplies can
+          # change it for this run.
           python scripts/pg_backup.py \
             --source-url-env SZ_BACKUP_SOURCE_URL \
             --passphrase-env SZ_BACKUP_PASSPHRASE \
             --output-dir ../backup-out \
             --runs-per-month "${{ github.event.inputs.runs_per_month || '4' }}" \
-            --max-monthly-mib "${{ github.event.inputs.max_monthly_mib || '512' }}" \
             | tee ../backup-out/result.json
 
       - name: Upload the ciphertext and its manifest
@@ -175,12 +202,18 @@ jobs:
           rows = [
               ("Created (UTC)", data["created_at"]),
               ("Source", data["source_identity"]),
+              # Which hosts the allow-list permitted when this ran, so the
+              # artifact can be audited against the configuration that
+              # authorised it. Not the URL: the source identity above is scheme
+              # and host only.
+              ("Allow-list permitted", ", ".join(data["allowed_hosts"] or []) or "none"),
               ("Ciphertext size", f"{data['ciphertext_bytes']:,} bytes"),
               ("Plaintext size", f"{data['plaintext_bytes']:,} bytes"),
               ("Ciphertext SHA-256", f"`{data['ciphertext_sha256']}`"),
               ("Encryption", data["backend"]),
               ("Round-trip verified", data["round_trip_verified"]),
-              ("Projected monthly transfer", f"{data['projected_monthly_transfer_mib']} MiB"),
+              ("Projected monthly transfer", f"{data['projected_monthly_transfer_mib']} MiB (projection, not measured usage)"),
+              ("Transfer budget", f"{data['transfer_budget_mib']} MiB"),
           ]
           for label, value in rows:
               print(f"| {label} | {value} |")

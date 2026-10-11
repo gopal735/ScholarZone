@@ -12,9 +12,11 @@ restore rather than performing it:
 
 * The artefact is decrypted and its digest checked, so corruption is caught
   before a restore is attempted.
-* The destination must be PostgreSQL and must not look like production.
-  Restoring over production converts a data loss into a data loss plus a
-  silent overwrite.
+* The destination must be PostgreSQL, must be on the same hostname allow-list
+  the backup reads from, and must not be a known production endpoint. Restoring
+  over production converts a data loss into a data loss plus a silent
+  overwrite - and the production Neon hostname carries no "prod" marker, so a
+  substring check would wave it straight through.
 * After `pg_restore`, the restored database is inspected: its tables, its
   scholarship count, and the same public-visibility predicate the catalogue
   applies. The outcome is written as evidence, never asserted.
@@ -41,6 +43,12 @@ from app.services.backup_crypto import (  # noqa: E402
     BackupCryptoUnavailable,
     select_backend,
 )
+from app.services.backup_source import (  # noqa: E402
+    ALLOW_LIST_ENV,
+    SourceIdentity,
+    SourceRejected,
+    validate_source,
+)
 
 #: The canonical public visibility predicate, restated for the verification
 #: query. It is the same rule `generate_snapshot.py` applies, so a restored
@@ -57,6 +65,15 @@ EXPECTED_TABLES = (
     "scholarship_reviews",
     "scholarship_verification_history",
 )
+
+
+#: The variable a repository owner sets to name the hosts a restore may write
+#: to. The same allow-list the backup reads from, because both directions of
+#: the recovery path are "not production, and not the empty recovery project
+#: either - a host we named on purpose". A restore pointed at a host the backup
+#: refuses would be the same mistake made in the more destructive direction, so
+#: there is one list for both, and both sides default-deny.
+RESTORE_ALLOW_LIST_ENV = ALLOW_LIST_ENV
 
 
 class RestoreRefused(RuntimeError):
@@ -79,13 +96,20 @@ def _destination_url(env_name: str) -> str:
     return value
 
 
-def _assert_destination_is_isolated(url: str) -> None:
-    lowered = url.lower()
-    if any(marker in lowered for marker in ("prod", "production")):
-        raise RestoreRefused(
-            "the destination URL contains a production marker. Restoring into "
-            "production would overwrite live data; use an isolated database."
-        )
+def _assert_destination_is_isolated(url: str) -> SourceIdentity:
+    """Validate the destination host against the allow-list, default-deny.
+
+    Returns the destination's redacted identity. The shared source guard is
+    used verbatim: a restore destination is held to the same standard as a
+    backup source, because writing into a database nobody named is the same
+    mistake as reading from one. The known production endpoints are refused
+    even when the allow-list names them, so an operator cannot point a restore
+    at production by editing configuration.
+    """
+    try:
+        return validate_source(url, allow_list_env=RESTORE_ALLOW_LIST_ENV)
+    except SourceRejected as exc:
+        raise RestoreRefused(str(exc)) from exc
 
 
 def _decrypt_artefact(artefact: Path, passphrase: str) -> bytes:
@@ -177,6 +201,12 @@ def run_restore(args: argparse.Namespace) -> dict[str, Any]:
     if not artefact.is_file():
         raise RestoreRefused(f"no such artefact: {artefact}")
 
+    # Decryption is checked before the destination is validated. An operator
+    # holding the wrong passphrase should hear about the passphrase rather than
+    # about a destination they have not edited - and a destination complaint
+    # masking a credential problem is a confusing way to fail.
+    plaintext = _decrypt_artefact(artefact, passphrase)
+
     # The destination is validated before the tool is looked for: an operator
     # with a typo in the destination should hear about the destination, not be
     # told about a missing binary that was never going to be reached.
@@ -187,7 +217,7 @@ def run_restore(args: argparse.Namespace) -> dict[str, Any]:
             "refuses a SQLite round-trip for the same reason - it would not be "
             "evidence about a PostgreSQL restore."
         )
-    _assert_destination_is_isolated(destination)
+    destination_identity = _assert_destination_is_isolated(destination)
 
     pg_restore = _which("pg_restore")
     if not pg_restore:
@@ -195,8 +225,6 @@ def run_restore(args: argparse.Namespace) -> dict[str, Any]:
             "pg_restore is not on PATH; a PostgreSQL restore needs it and no "
             "substitute is offered."
         )
-
-    plaintext = _decrypt_artefact(artefact, passphrase)
 
     # The digest check is what makes this a proof rather than a best effort: the
     # bytes restored must be the bytes that were backed up.
@@ -224,7 +252,8 @@ def run_restore(args: argparse.Namespace) -> dict[str, Any]:
         "artefact": artefact.name,
         "ciphertext_sha256": hashlib.sha256(artefact.read_bytes()).hexdigest(),
         "plaintext_sha256": actual,
-        "destination_identity": destination.split("://", 1)[0],
+        # The redacted identity: scheme and host. Never the URL or a credential.
+        "destination_identity": destination_identity.describe(),
         "outcome": "restored-and-verified",
     })
     return evidence
