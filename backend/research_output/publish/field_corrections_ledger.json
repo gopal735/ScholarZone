@@ -1,0 +1,40 @@
+{
+  "ledger_version": 1,
+  "created_at": "2026-10-11T18:22:03.173655Z",
+  "source_file": "backend/research_output/publish/research_agents/lead_corrections_uporto.json",
+  "applied": [
+    {
+      "id": 302,
+      "applied_at": "2026-10-11T18:22:03.162860Z",
+      "changes": {
+        "deadline_date": {
+          "from": "2026-10-02",
+          "to": "2027-05-31"
+        },
+        "deadline_display": {
+          "from": "2 October 2026",
+          "to": "Pre-registration window: 14 August 2026 to 31 May 2027; SASUP homepage on 2026-10-12: BOLSA DE ESTUDO DO IES 26/27 - CANDIDATURAS ABERTAS"
+        },
+        "status": {
+          "from": "upcoming",
+          "to": "open"
+        }
+      },
+      "evidence": [
+        {
+          "url": "https://www.up.pt/portal/en/live/student-life/scholarships-and-funding",
+          "quote": "Pre-registration window: 14 August 2026 to 31 May 2027 (enrolment/scholarship pre-registration)",
+          "checked_on": "2026-10-11"
+        },
+        {
+          "url": "https://www.sas.up.pt/",
+          "quote": "BOLSA DE ESTUDO DO IES 26/27 - CANDIDATURAS ABERTAS (IES 26/27 study scholarship, applications open)",
+          "checked_on": "2026-10-12"
+        }
+      ],
+      "confidence": 0.85,
+      "notes": "The recorded deadline 2026-10-02 was a past window; the official U.Porto scholarships page publishes the pre-registration window for the 2026/2027 academic year as 14 August 2026 - 31 May 2027, and the SASUP service page carousel confirmed on 2026-10-12 that 26/27 applications are open."
+    }
+  ],
+  "skipped": []
+}
