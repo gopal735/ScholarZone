@@ -37,8 +37,14 @@ from app.repositories.scholarships import public_visibility_conditions
 #: The canonical public frontend. Every <loc> is built from this, so the sitemap
 #: cannot advertise one host while the page's own canonical names another.
 #: Overridable so a staging build can point at itself without editing the file.
+#:
+#: The host moved from the Vercel project to the Netlify project that deploys the
+#: frontend from `master`. The Vercel project is still live and still serves the
+#: frontend, but it is a mirror and additionally hosts the API under `/api`, so
+#: advertising it would tell a crawler to consolidate onto the mirror - the same
+#: disagreement this field exists to prevent, reintroduced one host later.
 BASE_URL = os.environ.get(
-    "SCHOLARZONE_CANONICAL_ORIGIN", "https://scholarzone-fwzj.vercel.app"
+    "SCHOLARZONE_CANONICAL_ORIGIN", "https://visionary-cactus-600b38.netlify.app"
 ).rstrip("/")
 #: backend/app/data -> backend/app -> backend -> repo root. Resolved from this
 #: file rather than the working directory, so the script writes to the same
