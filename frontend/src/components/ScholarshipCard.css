@@ -414,6 +414,33 @@
   }
 }
 
+.scholarship-card__amount {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-6);
+  margin: 0;
+  border-top: 1px solid var(--surface-subtle, rgba(0, 0, 0, 0.06));
+  font-size: 0.8125rem;
+}
+
+.scholarship-card__amount span {
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.scholarship-card__amount strong {
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 640px) {
+  .scholarship-card__amount {
+    padding: var(--space-3) var(--space-5);
+  }
+}
+
 @media (max-width: 640px) {
   .scholarship-card h2 {
     font-size: 1.125rem;

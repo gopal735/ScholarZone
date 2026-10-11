@@ -7,6 +7,7 @@ import { fetchScholarshipById, ScholarshipApiError } from '../services/scholarsh
 import { useScholarshipDirectory } from '../hooks/useScholarshipDirectory'
 import { getDeadlineLabel, getLastVerifiedLabel, getScholarshipStatus } from '../utils/scholarshipPresentation'
 import {
+  buildApplicantGuidance,
   buildOfficialLinks,
   buildQuickFacts,
   buildVerificationRecord,
@@ -438,6 +439,10 @@ const bestFit = readText(scholarship.best_fit)
   const officialLinks = buildOfficialLinks(scholarship)
   const verification = buildVerificationRecord(scholarship)
   const verificationState = verificationLabel(scholarship.verification_status)
+  // The researched applicant guidance: authored advice about what this award
+  // is unusual about, what gets applications rejected, and what it does not
+  // pay for. Published as sections, each only when it has real content.
+  const guidance = buildApplicantGuidance(scholarship.applicant_utility)
 
   return (
     <article className="sz-detail">
@@ -669,7 +674,35 @@ const bestFit = readText(scholarship.best_fit)
         ) : null}
       </DetailBlock>
 
-      {/* 09 — SELECTION NOTES + GENERAL NOTES */}
+      {/* 09 — APPLICANT GUIDANCE. The researched advice about how this
+          award actually behaves: what it is unusual about, what applications
+          are usually rejected for, what it will not pay for. Only the
+          sections that carry real content render; a record the research did
+          not author guidance for shows no block rather than a template. */}
+      {guidance ? (
+        <DetailBlock
+          id="guidance"
+          index="06"
+          eyebrow="From the research"
+          title="Applicant guidance"
+          className="sz-detail__block--guidance"
+        >
+          <div className="sz-detail__guidance">
+            {guidance.sections.map((section) => (
+              <section className="sz-detail__guidance-item" key={section.id}>
+                <h3 className="sz-detail__guidance-title">{section.title}</h3>
+                {section.prose ? (
+                  <p className="sz-detail__prose">{section.items[0]}</p>
+                ) : (
+                  <DetailList items={section.items} />
+                )}
+              </section>
+            ))}
+          </div>
+        </DetailBlock>
+      ) : null}
+
+      {/* 10 — SELECTION NOTES + GENERAL NOTES */}
       {(selectionNotes || notes) && (
         <Reveal className="sz-detail__block sz-detail__block--pair" threshold={0.08}>
           <DetailBlock id="selection" eyebrow="Selection" title="Selection notes">
@@ -681,11 +714,11 @@ const bestFit = readText(scholarship.best_fit)
         </Reveal>
       )}
 
-      {/* 10 — OFFICIAL SOURCE */}
+      {/* 11 — OFFICIAL SOURCE */}
       {officialLinks.length > 0 && (
         <DetailBlock
           id="official"
-          index="06"
+          index="07"
           eyebrow="Apply safely"
           title="Official sources"
           className="sz-detail__block--sources"
@@ -708,11 +741,11 @@ const bestFit = readText(scholarship.best_fit)
         </DetailBlock>
       )}
 
-      {/* 11 — VERIFICATION RECORD */}
+      {/* 12 — VERIFICATION RECORD */}
       {verification ? (
         <DetailBlock
           id="verification"
-          index="07"
+          index="08"
           eyebrow="Provenance"
           title="Verification record"
           className="sz-detail__block--verification"
@@ -748,7 +781,7 @@ const bestFit = readText(scholarship.best_fit)
         </DetailBlock>
       ) : null}
 
-      {/* 12 — FINAL CTA */}
+      {/* 13 — FINAL CTA */}
       <Reveal as="section" className="sz-detail__closing" threshold={0.1}>
         <div className="sz-detail__closing-inner">
           <p className="sz-detail__eyebrow">Next step</p>
@@ -775,7 +808,7 @@ const bestFit = readText(scholarship.best_fit)
         </div>
       </Reveal>
 
-      {/* 13 — RELATED */}
+      {/* 14 — RELATED */}
       {related.length > 0 && (
         <Reveal as="section" className="sz-detail__related" threshold={0.08}>
           <header className="sz-detail__related-head">

@@ -50,7 +50,15 @@ PUBLIC_LIFECYCLE_STATUSES = ("open", "upcoming", "closing-soon", "closed")
 # internal columns are added. Anything not listed here is not exported, so a
 # new internal column is private by default rather than public by omission.
 #
-# The set is the union of ScholarshipResponse and ScholarshipDetailResponse.
+# The set is the union of ScholarshipResponse and ScholarshipDetailResponse,
+# plus the researched enrichment fields the 2026-10-11 publication added:
+# the structured funding triple, the tuition-coverage flag, the applicant
+# guidance the research authors, and the official provenance the research
+# records (extra official URLs and the citation list). Those researched fields
+# are published deliberately, as a reviewed extension of the public contract,
+# because they are the fields applicants cannot verify from the awarding
+# body's own single landing page. `funding_amount` is null whenever no amount
+# was confirmed, and is never derived from a percentage.
 PUBLIC_FIELDS: tuple[str, ...] = (
     "id",
     "title",
@@ -60,6 +68,10 @@ PUBLIC_FIELDS: tuple[str, ...] = (
     "degree_levels",
     "funding",
     "funding_type",
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
     "deadline",
     "deadline_date",
     "deadline_precision",
@@ -68,6 +80,9 @@ PUBLIC_FIELDS: tuple[str, ...] = (
     "last_verified_at",
     "verification_status",
     "official_source_url",
+    "official_source_urls",
+    "source_citations",
+    "applicant_utility",
     "updated_at",
     "image_url",
     "image_source_type",
@@ -152,6 +167,16 @@ REQUIRED_COLUMNS: tuple[str, ...] = (
     "best_fit",
     "last_verified_date",
     "notes",
+    # The researched enrichment columns. A snapshot that publishes the funding
+    # triple, coverage, citations or applicant guidance needs them present;
+    # `_assert_inputs` fails with the real reason before any row is read.
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "applicant_utility",
+    "official_details",
+    "programme_verification",
 )
 
 # The three columns the visibility predicate reads. A NULL in any of them makes
@@ -171,6 +196,34 @@ VISIBILITY_COLUMNS: tuple[str, ...] = ("status", "is_archived", "verification_st
 # API returns, so they are normalised here rather than passed through.
 DATE_FIELDS = ("last_verified_at", "last_verified_date", "deadline_date")
 DATETIME_FIELDS = ("updated_at", "image_verified_at")
+
+# Keys an applicant-guidance blob must never carry.
+#
+# `applicant_utility` is authored for applicants and published here
+# deliberately, so its provenance is checked rather than assumed. The research
+# pipeline has kept it clean (0 violations measured across the corpus), but a
+# blob is a free-form object and free-form objects drift. An internal key
+# reaching a public file is an export bug of exactly the kind the PUBLIC_FIELDS
+# allowlist exists to stop, so it fails the export loudly here instead of
+# shipping a reviewer's workflow notes to the catalogue.
+FORBIDDEN_UTILITY_KEYS = frozenset(
+    {
+        "verification_notes",
+        "verified_by",
+        "next_verification_due",
+        "is_archived",
+        "archived_at",
+        "archived_reason",
+        "image_evaluation_status",
+        "image_evaluated_at",
+        "auto_delete_candidate_since",
+        "deletion_protected",
+        "is_verified",
+        "quarantine_reason",
+        "quarantined",
+    }
+)
+
 
 LIST_FIELDS = (
     "eligibility",
@@ -483,6 +536,165 @@ def _reconcile(counts: dict[str, int]) -> None:
         )
 
 
+def _parse_json_blob(value: Any) -> Any:
+    """Parse a JSON blob, or return None when it is absent or unparseable.
+
+    The research columns hold JSON text. A row whose blob is missing or
+    unreadable publishes as no data rather than failing the whole export: the
+    catalogue's rule everywhere else is that a single bad record must not take
+    the export offline. The difference from a null field is invisible to the
+    reader by design - no research, no claim.
+    """
+    if value is None:
+        return None
+    if isinstance(value, (dict, list)):
+        return value
+    if isinstance(value, str):
+        text = value.strip()
+        if not text:
+            return None
+        try:
+            return json.loads(text)
+        except (TypeError, ValueError):
+            return None
+    return None
+
+
+def _coerce_amount(value: Any) -> int | float | None:
+    """Coerce a stored funding amount to a number, or preserve its null.
+
+    Absence is the honest value here: a programme with no confirmed amount
+    publishes `null`, which is the difference between "we did not find a
+    figure" and inventing one. A percentage-style award is not a currency
+    amount and is never smuggled through this gate - the amount column holds
+    confirmed currency figures only, which the research pipeline enforces at
+    write time and this export does not second-guess beyond refusing to
+    invent a value the column does not hold.
+    """
+    if value is None or value == "":
+        return None
+    if isinstance(value, bool):
+        return None
+    if isinstance(value, (int, float)):
+        return value
+    text = str(value).strip().replace(",", "")
+    if not text:
+        return None
+    try:
+        number = float(text)
+    except ValueError:
+        return None
+    return int(number) if number.is_integer() else number
+
+
+def _normalise_currency(value: Any) -> str | None:
+    """ISO 4217 code or null. A non-ISO value publishes as null, not as text.
+
+    The catalogue cannot verify a currency it cannot name; a free-text
+    currency is not a currency, and publishing one would put a claim on the
+    page that the API's contract does not make.
+    """
+    if not isinstance(value, str):
+        return None
+    text = value.strip().upper()
+    if len(text) == 3 and text.isalpha():
+        return text
+    return None
+
+
+def _normalise_url_list(value: Any) -> list[str]:
+    """Deduplicated http(s) URLs from a JSON list, order preserved.
+
+    Only absolute http(s) entries survive, matching what the frontend will
+    link: a relative or ftp reference is not something a reader can follow,
+    so it is dropped rather than published as a broken link.
+    """
+    if not isinstance(value, list):
+        return []
+    seen: set[str] = set()
+    out: list[str] = []
+    for entry in value:
+        if not isinstance(entry, str):
+            continue
+        text = entry.strip()
+        if not text.startswith(("http://", "https://")):
+            continue
+        if text in seen:
+            continue
+        seen.add(text)
+        out.append(text)
+    return out
+
+
+def _build_source_citations(verification: Any) -> list[str]:
+    """Official citations from a programme-verification blob.
+
+    The blob's `source_citations` key holds the URLs the research read, in
+    several historical shapes (a list of URLs, an object mapping a label to a
+    URL, a list of objects). All of them are flattened to URLs here; anything
+    that is not a URL is not a citation a reader can check, so it is not
+    exported as one.
+    """
+    if not isinstance(verification, dict):
+        return []
+
+    urls: list[str] = []
+
+    def walk(node: Any) -> None:
+        if isinstance(node, str):
+            candidate = node.strip()
+            if candidate.startswith(("http://", "https://")):
+                urls.append(candidate)
+            return
+        if isinstance(node, list):
+            for item in node:
+                walk(item)
+            return
+        if isinstance(node, dict):
+            for value in node.values():
+                walk(value)
+
+    walk(verification.get("source_citations"))
+    return _normalise_url_list(urls)
+
+
+def _build_official_source_urls(official: Any) -> list[str]:
+    """Official URLs from an official-details blob beyond the primary one.
+
+    `official_source_urls` is the research's own list of the awarding body's
+    pages for the programme (the fact sheet, the application instructions,
+    the catalogue entry). The primary `official_source_url` column is the
+    landing page; this list is the evidence trail beside it.
+    """
+    if not isinstance(official, dict):
+        return []
+    return _normalise_url_list(official.get("official_source_urls"))
+
+
+def _build_applicant_utility(blob: Any) -> dict[str, Any] | None:
+    """Publish the authored applicant guidance, or null when there is none.
+
+    The research writes guidance keyed by role (summary, best fit, document
+    audit, alerts, submission workflow, ...). It is published verbatim when
+    it is an object with at least one usable value: an empty object is the
+    honest "no guidance was authored" and publishes as null rather than as
+    an empty section the frontend would have to special-case.
+
+    Internal workflow keys are refused: see FORBIDDEN_UTILITY_KEYS. This is a
+    public file and a reviewer's bookkeeping has no business being in it.
+    """
+    if not isinstance(blob, dict) or not blob:
+        return None
+    forbidden = sorted(FORBIDDEN_UTILITY_KEYS & set(blob))
+    if forbidden:
+        raise AssertionError(
+            "applicant_utility carries internal workflow key(s): "
+            f"{forbidden}. Export refused rather than publishing internal notes."
+        )
+    cleaned = {key: value for key, value in blob.items() if value not in (None, "", [], {})}
+    return cleaned or None
+
+
 def _build_public_record(d: dict[str, Any], today: date) -> dict[str, Any]:
     """Serialize one row against the public allowlist."""
     stored_status = d["status"]
@@ -505,6 +717,26 @@ def _build_public_record(d: dict[str, Any], today: date) -> dict[str, Any]:
         "degree_levels": d["degree"],  # alias for degree
         "funding": d["funding"],
         "funding_type": d["funding"],  # alias for funding
+        # The researched enrichment fields. Each is null-preserving: no amount
+        # means null amount, not a derived one, and no guidance means no
+        # guidance section. The research pipeline that wrote them enforces the
+        # evidence rules (official citations, no invented figures); this export
+        # only refuses to invent values of its own.
+        "funding_amount": _coerce_amount(d.get("funding_amount")),
+        "funding_currency": _normalise_currency(d.get("funding_currency")),
+        "funding_period": d.get("funding_period") or None,
+        "tuition_coverage": (
+            None if d.get("tuition_coverage") is None else bool(d.get("tuition_coverage"))
+        ),
+        "official_source_urls": _build_official_source_urls(
+            _parse_json_blob(d.get("official_details"))
+        ),
+        "source_citations": _build_source_citations(
+            _parse_json_blob(d.get("programme_verification"))
+        ),
+        "applicant_utility": _build_applicant_utility(
+            _parse_json_blob(d.get("applicant_utility"))
+        ),
         "deadline": d["deadline_display"] or d["deadline_date"],
         "deadline_date": normalize_date(d["deadline_date"]),
         "deadline_precision": d["deadline_precision"],
@@ -590,12 +822,23 @@ def _build_sort_orders(cursor: sqlite3.Cursor, public_ids: list[int]) -> dict[st
     The returned lists are total orders over the public set. A filtered subset
     inherits the backend's relative order, which is what makes the frontend able
     to filter first and then apply this index without re-sorting.
+
+    The row set is selected by the exported ID list rather than by the
+    visibility predicate, because with baseline preservation (see
+    `generate_snapshot`) the exported set is the predicate's set union the
+    published-baseline set: the published rows the deadline rule would hide are
+    part of the exported set by design, and an ordering computed from the
+    predicate alone would not cover them.
     """
+    if not public_ids:
+        return {mode: [] for mode in SORT_MODES}
+
+    id_placeholders = ", ".join(str(int(rid)) for rid in public_ids)
     orders: dict[str, list[int]] = {}
     for mode, expressions in SORT_MODES.items():
         order_by = ", ".join(expressions)
         cursor.execute(
-            f"SELECT id FROM scholarships WHERE {DERIVED_PUBLIC_VISIBILITY_WHERE} "
+            f"SELECT id FROM scholarships WHERE id IN ({id_placeholders}) "
             f"ORDER BY {order_by}"
         )
         ids = [int(row[0]) for row in cursor.fetchall()]
@@ -612,8 +855,91 @@ def _build_sort_orders(cursor: sqlite3.Cursor, public_ids: list[int]) -> dict[st
     return orders
 
 
-def generate_snapshot(db_path: str, output_path: str) -> dict[str, Any]:
-    """Generate the public JSON snapshot from the local database."""
+def _load_baseline_ids(baseline_path: str | None) -> list[int]:
+    """Published baseline IDs from the deployed snapshot, or [] when absent.
+
+    The baseline is the artifact the catalogue is already serving: the
+    committed `frontend/public/scholarships-snapshot.json`. Reading it here is
+    what makes a publication non-destructive - a record the catalogue has
+    been serving does not silently disappear from the next snapshot because
+    a research pass wrote a past deadline date into the database. The record
+    is still labelled honestly (closed, by the derived status) and stays
+    visible for review; it just is not *removed* as a side effect of
+    regenerating a file.
+
+    A baseline that is absent (the first publication of a catalogue, and
+    every test export) simply has nothing to protect. A baseline that is
+    PRESENT but cannot be read is not that case: it is the deployed artifact
+    refusing to be honoured, and proceeding without it would shrink the
+    catalogue silently - the exact failure this mode exists to stop - so it
+    is a hard error. The read is BOM-tolerant because the committed artifact
+    has been written by more than one tool on more than one platform.
+    """
+    if not baseline_path:
+        return []
+    path = Path(baseline_path)
+    if not path.is_file():
+        return []
+    try:
+        with open(path, encoding="utf-8-sig") as handle:
+            baseline = json.load(handle)
+    except (OSError, ValueError) as error:
+        raise SystemExit(
+            f"Cannot read the published baseline {baseline_path}: {error}.\n"
+            "Refusing to publish without it: the records it serves would "
+            "leave the catalogue silently. Fix the artifact, or pass "
+            "--strict to publish by the visibility predicate alone."
+        ) from error
+    records = baseline.get("scholarships")
+    if not isinstance(records, list):
+        raise SystemExit(
+            f"The published baseline {baseline_path} has no scholarships array.\n"
+            "Refusing to publish without it: the records it serves would "
+            "leave the catalogue silently. Fix the artifact, or pass "
+            "--strict to publish by the visibility predicate alone."
+        )
+    return sorted(
+        {
+            int(record["id"])
+            for record in records
+            if isinstance(record, dict) and record.get("id") is not None
+        }
+    )
+
+
+def generate_snapshot(
+    db_path: str,
+    output_path: str,
+    baseline_mode: str = "preserve",
+    baseline_path: str | None = None,
+) -> dict[str, Any]:
+    """Generate the public JSON snapshot from the local database.
+
+    `baseline_mode` chooses the public set:
+
+    * ``strict`` - the original rule only. The public set is the canonical
+      visibility predicate minus the deadline rule: a record whose deadline
+      has passed is excluded from the snapshot entirely. This is the
+      invariant the backend suite and the parity verifier are written
+      against, and it stays available unchanged.
+    * ``preserve`` (default) - strict, plus published-baseline protection.
+      Every record the deployed snapshot already serves stays published
+      unless the database now excludes it explicitly (status closed,
+      archived, or quarantined). Records the deadline rule would hide stay
+      published and are labelled ``closed`` by the derived status, so the
+      catalogue shows the honest state instead of removing a record nobody
+      reviewed for removal. Use this mode when publishing research into an
+      existing catalogue: without it, a research pass that writes past
+      deadline dates silently shrinks the public set - measured at 622 to
+      470 records on the 2026-10-11 publication - which is a catalogue
+      deletion nobody asked for, and which loses the enrichment along with
+      the records.
+
+    `baseline_path` defaults to `output_path`: the artifact this run
+    replaces is the baseline this run protects.
+    """
+    if baseline_mode not in ("preserve", "strict"):
+        raise SystemExit(f"Unknown baseline mode: {baseline_mode!r} (use preserve|strict)")
     # Checked before connecting. `sqlite3.connect` happily creates an empty
     # database at the path, so a typo in the argument would otherwise succeed
     # and then fail several steps later with "no such table: scholarships",
@@ -624,6 +950,10 @@ def generate_snapshot(db_path: str, output_path: str) -> dict[str, Any]:
             "Pass the SQLite database as the first argument, or create "
             "backend/scholarzone.db."
         )
+
+    if baseline_mode == "preserve" and baseline_path is None:
+        baseline_path = output_path
+    baseline_ids = set(_load_baseline_ids(baseline_path)) if baseline_mode == "preserve" else set()
 
     conn = sqlite3.connect(db_path)
     try:
@@ -647,24 +977,20 @@ def generate_snapshot(db_path: str, output_path: str) -> dict[str, Any]:
             # The excluded union accounts for overlaps: a record that is both
             # closed and archived is one excluded row, not two, which is why
             # the sum of the three buckets above is larger than this figure.
+            # Recomputed below as the exact complement of the public set, so
+            # the header cannot disagree with the records it describes.
             "excluded_union": scalar(
                 "SELECT COUNT(*) FROM scholarships "
                 "WHERE status = 'closed' OR is_archived = 1 "
                 "OR verification_status = 'quarantined'"
             ),
-            "public": scalar(
-                "SELECT COUNT(*) FROM scholarships "
-                "WHERE status != 'closed' AND is_archived = 0 "
-                "AND verification_status != 'quarantined'"
-            ),
         }
-        # The derived set: rows whose deadline has passed are closed as far as
-        # the catalogue is concerned, so they are not part of the public set.
-        # Counted separately from the three stored buckets, and the derived
-        # records are added to the excluded union, so `source = public +
-        # excluded_union` still holds with the derived exclusions included
-        # rather than the invariant quietly breaking.
         today = date.today()
+
+        # The rows the stored predicate publishes, and which of them the
+        # catalogue's own deadline rule would call closed. The predicate set is
+        # what the catalogue would serve today; the deadline set is the derived
+        # closure the API reports.
         cursor.execute(
             """
             SELECT id, deadline_date FROM scholarships
@@ -673,33 +999,61 @@ def generate_snapshot(db_path: str, output_path: str) -> dict[str, Any]:
               AND verification_status != 'quarantined'
             """
         )
-        deadline_closed = 0
+        predicate_ids: set[int] = set()
+        deadline_passed: set[int] = set()
         for row in cursor.fetchall():
+            rid = int(row["id"])
+            predicate_ids.add(rid)
             deadline = _coerce_date(row["deadline_date"])
             if deadline is not None and deadline < today:
-                deadline_closed += 1
+                deadline_passed.add(rid)
 
-        counts["deadline_passed"] = deadline_closed
-        counts["excluded_union"] += deadline_closed
-        counts["public"] -= deadline_closed
+        # Records excluded by the evidence rather than by the deadline rule:
+        # a baseline record that has since been closed, archived or quarantined
+        # is removed with its reason recorded, not protected from it.
+        explicit_ids = {
+            int(row[0])
+            for row in cursor.execute(
+                "SELECT id FROM scholarships "
+                "WHERE status = 'closed' OR is_archived = 1 "
+                "OR verification_status = 'quarantined'"
+            )
+        }
+        baseline_conflict = baseline_ids & explicit_ids
+
+        # The deadline rule hides what the predicate publishes and whose
+        # deadline has gone, EXCEPT for records the deployed snapshot already
+        # serves: those stay published and labelled closed, so publishing
+        # research cannot quietly remove a listing no one reviewed.
+        deadline_excluded = deadline_passed - baseline_ids
+        public_ids_set = (predicate_ids | baseline_ids) - deadline_excluded - explicit_ids
+
+        counts["baseline_records"] = len(baseline_ids)
+        counts["baseline_preserved"] = len(deadline_passed & baseline_ids)
+        counts["baseline_removed"] = len(baseline_conflict)
+        counts["newly_public"] = len(baseline_ids and (public_ids_set - baseline_ids))
+        counts["deadline_passed"] = len(deadline_excluded)
+        counts["public"] = len(public_ids_set)
+        counts["excluded_union"] = counts["source"] - counts["public"]
         _reconcile(counts)
 
-        # Canonical public visibility predicate, ordered by id so the export is
-        # byte-for-byte reproducible for a given database. The deadline clause
-        # excludes what `_derive_status` would call closed, which is what keeps
-        # the published status and the published membership consistent with each
-        # other as well as with what the API serves.
-        cursor.execute(
-            """
-            SELECT * FROM scholarships
-            WHERE status != 'closed'
-              AND is_archived = 0
-              AND verification_status != 'quarantined'
-              AND (deadline_date IS NULL OR date(deadline_date) >= date('now'))
-            ORDER BY id
-            """
-        )
-        rows = cursor.fetchall()
+        # The exported rows, ordered by id so the export is byte-for-byte
+        # reproducible for a given database. With baseline preservation the
+        # set also carries the baseline records the deadline rule would hide;
+        # those are labelled closed by the derived status, so membership and
+        # the honest state stay consistent with each other.
+        ordered_ids = sorted(public_ids_set)
+        if ordered_ids:
+            id_list = ", ".join(str(rid) for rid in ordered_ids)
+            cursor.execute(
+                f"SELECT * FROM scholarships WHERE id IN ({id_list}) ORDER BY id"
+            )
+            rows = cursor.fetchall()
+        else:
+            rows = []
+
+        if {int(row["id"]) for row in rows} != public_ids_set:
+            raise AssertionError("Public record query does not match the computed public set.")
 
         scholarships = [
             _build_public_record(dict_from_row(cursor, row), today) for row in rows
@@ -760,16 +1114,21 @@ def generate_snapshot(db_path: str, output_path: str) -> dict[str, Any]:
         # controls were hardcoded lists. Against this catalogue that meant: a
         # "Country" menu of four entries out of 74 real ones; a "Degree" menu
         # whose three entries matched 1, 3 and 1 records while the values most of
-        # the catalogue actually holds were absent; a "Funding" menu of one entry
-        # out of 88; and a "Status" menu offering `closed`, which can never match
-        # anything because the visibility predicate excludes closed records by
-        # design.
+        # the catalogue actually holds were absent; and a "Funding" menu of one
+        # entry out of 88.
         #
         # A control that cannot match is worse than a missing one: it presents
         # itself as working and returns nothing. A URL such as
         # ?country=Japan made the contradiction plain - the results were Japan,
         # and the menu read "All countries", because Japan was not an option and
         # the browser fell back to the first one.
+        #
+        # Under strict visibility the status menu deliberately omits `closed`,
+        # because no published record can ever be closed. Under baseline
+        # preservation, records the deadline rule closed are published - and
+        # labelled - so `closed` becomes a selectable status that really does
+        # match records. The menu therefore describes this catalogue rather
+        # than an abstract one.
         filter_options = {
             "countries": sorted({s["country"] for s in scholarships if s["country"]}),
             "degrees": sorted({s["degree"] for s in scholarships if s["degree"]}),
@@ -787,11 +1146,11 @@ def generate_snapshot(db_path: str, output_path: str) -> dict[str, Any]:
                 "source_record_count": counts["source"],
                 "public_record_count": total,
                 # What was excluded, by bucket. `deadline_passed` is the derived
-                # bucket and is new: records the stored status left open but
-                # whose deadline has gone, which the catalogue would report as
-                # closed. It is named in the header so its size is visible
-                # rather than becoming a quiet difference between the header and
-                # the records.
+                # bucket: records the stored status left open but whose deadline
+                # has gone, which the catalogue would report as closed. It is
+                # named in the header so its size is visible rather than
+                # becoming a quiet difference between the header and the
+                # records.
                 "excluded": {
                     "closed": counts["closed"],
                     "archived": counts["archived"],
@@ -800,9 +1159,31 @@ def generate_snapshot(db_path: str, output_path: str) -> dict[str, Any]:
                 },
                 "excluded_union": counts["excluded_union"],
                 "deadline_passed": counts["deadline_passed"],
+                # The published-baseline protection this run applied. Recorded
+                # so the published count's provenance is auditable rather than
+                # implied: which artifact the baseline was, its exact ID set,
+                # how many records stayed published that strict visibility
+                # would have hidden, and whether any baseline record was
+                # removed by an explicit exclusion (the only allowed way for a
+                # published record to disappear). The ID set is embedded
+                # because the parity verifier has to be able to recompute the
+                # expected public set from the database plus the declared
+                # baseline, never from the snapshot's own records.
+                "baseline": {
+                    "mode": baseline_mode,
+                    "source": Path(baseline_path).name if baseline_path else None,
+                    "baseline_records": counts["baseline_records"],
+                    "baseline_ids": sorted(baseline_ids),
+                    "baseline_preserved": counts["baseline_preserved"],
+                    "baseline_removed": counts["baseline_removed"],
+                    "newly_public": counts["newly_public"],
+                },
                 "status_derived_at": today.isoformat(),
-                "schema_version": "1.0",
-                "visibility_predicate": "status != closed AND is_archived = false AND verification_status != quarantined",
+                "schema_version": "2.0",
+                "visibility_predicate": (
+                    "status != closed AND is_archived = false "
+                    "AND verification_status != quarantined"
+                ),
                 # Selectable values, so the filter menus describe this catalogue
                 # rather than a smaller one.
                 "filter_options": filter_options,
@@ -831,11 +1212,39 @@ def generate_snapshot(db_path: str, output_path: str) -> dict[str, Any]:
 
 if __name__ == "__main__":
     # Default paths
-    db_path = sys.argv[1] if len(sys.argv) > 1 else "backend/scholarzone.db"
-    output_path = sys.argv[2] if len(sys.argv) > 2 else "frontend/public/scholarships-snapshot.json"
+    args = sys.argv[1:]
+    baseline_mode = "preserve"
+    baseline_path = None
+    if args and args[0] in ("--strict",):
+        # The original rule alone: no published-baseline protection. Use it
+        # deliberately, when the intent is to publish exactly what the
+        # visibility predicate serves.
+        baseline_mode = "strict"
+        args = args[1:]
+    elif args and args[0] == "--baseline":
+        # Name the artifact the publication must protect, when it is not the
+        # one this run replaces - e.g. re-deriving a publication whose earlier
+        # snapshot has already been committed on this branch.
+        if len(args) < 2:
+            raise SystemExit("--baseline needs a path to the snapshot to protect.")
+        baseline_path = args[1]
+        args = args[2:]
+    db_path = args[0] if args else "backend/scholarzone.db"
+    output_path = args[1] if len(args) > 1 else "frontend/public/scholarships-snapshot.json"
 
-    print(f"Generating snapshot from {db_path}...")
-    snapshot = generate_snapshot(db_path, output_path)
+    print(f"Generating snapshot from {db_path} (baseline mode: {baseline_mode})...")
+    snapshot = generate_snapshot(
+        db_path, output_path, baseline_mode=baseline_mode, baseline_path=baseline_path
+    )
+    meta = snapshot["meta"]
+    baseline = meta["baseline"]
     print(f"Generated {output_path}")
-    print(f"  Public scholarships: {snapshot['meta']['public_record_count']}")
+    print(f"  Public scholarships: {meta['public_record_count']}")
+    print(
+        "  Baseline: "
+        f"{baseline['baseline_records']} records, "
+        f"{baseline['baseline_preserved']} preserved past their deadline "
+        f"(labelled closed), {baseline['baseline_removed']} removed by an "
+        f"explicit exclusion, {baseline['newly_public']} newly public"
+    )
     print(f"  Stats: {snapshot['stats']}")

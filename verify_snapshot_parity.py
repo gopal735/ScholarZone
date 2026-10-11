@@ -65,6 +65,12 @@ PUBLIC_PREDICATE = (
     "status != 'closed' AND is_archived = 0 AND verification_status != 'quarantined'"
 )
 
+# The explicit exclusions: the only evidence-based way a record leaves the
+# public catalogue. The deadline rule is derived on top of these and handled
+# separately, because whether it removes or labels a record depends on the
+# snapshot's baseline mode.
+EXPLICIT_EXCLUSION = "status = 'closed' OR is_archived = 1 OR verification_status = 'quarantined'"
+
 
 class Parity:
     """An accumulator of findings, each of which is a failed check."""
@@ -189,10 +195,13 @@ def verify(db_path: str, snapshot_path: str, generator) -> Parity:
         stored_public_ids = [int(row[0]) for row in cursor.fetchall()]
 
         # The derived bucket. A record whose deadline has passed is closed as
-        # far as the catalogue is concerned, so it is not public even though
-        # the stored status says otherwise. It is named separately so the union
-        # still accounts for every source row, rather than the difference
-        # between the stored rule and the published set silently vanishing.
+        # far as the catalogue is concerned. Under strict visibility it is not
+        # public even though the stored status says otherwise; under baseline
+        # preservation it stays published and labelled closed. Which rule
+        # applies is declared by the snapshot's own meta, and the declared
+        # baseline ID set is what the verifier recomputes against - so a
+        # published record can only survive if it was genuinely in the
+        # baseline, never because the snapshot simply kept it.
         cursor.execute(
             "SELECT id, deadline_date FROM scholarships "
             f"WHERE {PUBLIC_PREDICATE}"
@@ -210,34 +219,72 @@ def verify(db_path: str, snapshot_path: str, generator) -> Parity:
                 deadline_passed.append(int(row["id"]))
         deadline_passed_set = set(deadline_passed)
 
-        # The expected public set is the stored predicate minus that bucket.
-        expected_ids = [rid for rid in stored_public_ids if rid not in deadline_passed_set]
-        expected_public = public - len(deadline_passed)
+        baseline_meta = meta.get("baseline") if isinstance(meta.get("baseline"), dict) else {}
+        baseline_mode = baseline_meta.get("mode", "strict")
+        baseline_ids = baseline_meta.get("baseline_ids")
+        baseline_set = set(
+            int(rid) for rid in (baseline_ids or []) if isinstance(rid, int)
+        )
+        if baseline_mode == "preserve" and not isinstance(baseline_ids, list):
+            parity.check(
+                "baseline IDs are declared",
+                False,
+                "meta.baseline.mode is preserve but meta.baseline.baseline_ids is missing",
+            )
+        elif baseline_mode not in ("preserve", "strict"):
+            parity.check(
+                "baseline mode is recognised",
+                False,
+                f"meta.baseline.mode is {baseline_mode!r}",
+            )
+        else:
+            parity.check("baseline mode is recognised", True)
 
+        # The expected public set. The predicate set, minus the deadline rule's
+        # exclusions (only records that were never published), plus the
+        # declared baseline, minus the explicit exclusions.
+        explicit_ids = {
+            int(row[0]) for row in cursor.execute(f"SELECT id FROM scholarships WHERE {EXPLICIT_EXCLUSION}")
+        }
+        if baseline_mode == "preserve":
+            deadline_excluded = deadline_passed_set - baseline_set
+            expected_ids = sorted(
+                (set(stored_public_ids) | baseline_set) - deadline_excluded - explicit_ids
+            )
+            expected_public = len(expected_ids)
+        else:
+            expected_ids = [rid for rid in stored_public_ids if rid not in deadline_passed_set]
+            expected_public = public - len(deadline_passed)
+
+        # The header's deadline bucket counts the deadline rule's removals.
+        deadline_excluded_set = deadline_passed_set - baseline_set
         parity.check(
             "meta.deadline_passed matches the database",
-            meta.get("deadline_passed") == len(deadline_passed),
-            f"meta says {meta.get('deadline_passed')!r}, database has {len(deadline_passed)}",
+            meta.get("deadline_passed") == len(deadline_excluded_set),
+            f"meta says {meta.get('deadline_passed')!r}, database has "
+            f"{len(deadline_passed)} deadline-passed records, of which "
+            f"{len(deadline_passed_set & baseline_set)} are baseline-preserved",
         )
         parity.check(
             "meta.public_record_count matches the database",
             meta.get("public_record_count") == expected_public,
             f"meta says {meta.get('public_record_count')!r}, database has "
             f"{expected_public} public ({public} under the stored rule, minus "
-            f"{len(deadline_passed)} with a passed deadline)",
+            f"{len(deadline_excluded_set)} deadline-excluded"
+            + (", plus baseline preservation" if baseline_mode == "preserve" else "") + ")",
         )
         parity.check(
             "meta.excluded_union matches the database",
-            meta.get("excluded_union") == excluded_union + len(deadline_passed),
+            meta.get("excluded_union") == source - expected_public,
             f"meta says {meta.get('excluded_union')!r}, database has "
-            f"{excluded_union} plus {len(deadline_passed)} deadline-passed",
+            f"{excluded_union} plus {len(deadline_excluded_set)} deadline-excluded",
         )
         parity.check(
             "source reconciles (source = public + excluded_union)",
-            source == expected_public + excluded_union + len(deadline_passed),
+            source == expected_public + excluded_union + len(deadline_excluded_set),
             f"source={source} public={expected_public} union={excluded_union} "
-            f"deadline_passed={len(deadline_passed)} -> "
-            f"{expected_public + excluded_union + len(deadline_passed)}",
+            f"deadline_excluded={len(deadline_excluded_set)} -> "
+            f"{expected_public + excluded_union + len(deadline_excluded_set)}",
         )
         parity.check(
             "exported record count equals the canonical public count",
@@ -250,35 +297,85 @@ def verify(db_path: str, snapshot_path: str, generator) -> Parity:
         missing = sorted(set(expected_ids) - set(actual_ids))
         extra = sorted(set(actual_ids) - set(expected_ids))
 
-        # A record the stored predicate publishes but the deadline rule excludes
-        # is expected to be missing, not an error. A record that is neither
-        # public nor deadline-excluded and is missing IS an error.
-        unexplained_missing = [rid for rid in missing if rid not in deadline_passed_set]
-        parity.check(
-            "public ID sets match exactly",
-            not unexplained_missing and not extra,
-            f"unexplained missing={unexplained_missing[:20]} extra={extra[:20]}",
-        )
-        parity.check(
-            "every missing record is one the deadline rule excludes",
-            not unexplained_missing and set(missing) <= deadline_passed_set,
-            f"missing without a passed deadline: {unexplained_missing[:20]}",
-        )
+        if baseline_mode == "preserve":
+            # A record that is published without a reason - not predicate-
+            # visible, not baseline - is an unexplained extra.
+            unexplained_extra = [rid for rid in extra if rid not in baseline_set]
+            parity.check(
+                "public ID sets match exactly",
+                not missing and not unexplained_extra,
+                f"missing={missing[:20]} unexplained_extra={unexplained_extra[:20]}",
+            )
+        else:
+            # A record the stored predicate publishes but the deadline rule excludes
+            # is expected to be missing, not an error. A record that is neither
+            # public nor deadline-excluded and is missing IS an error.
+            unexplained_missing = [rid for rid in missing if rid not in deadline_passed_set]
+            parity.check(
+                "public ID sets match exactly",
+                not unexplained_missing and not extra,
+                f"unexplained missing={unexplained_missing[:20]} extra={extra[:20]}",
+            )
+            parity.check(
+                "every missing record is one the deadline rule excludes",
+                not unexplained_missing and set(missing) <= deadline_passed_set,
+                f"missing without a passed deadline: {unexplained_missing[:20]}",
+            )
         parity.check(
             "no non-public ID leaked into the snapshot",
             not extra,
             f"extra={extra[:20]}" if extra else "",
         )
 
+        if baseline_mode == "preserve":
+            # The whole point of baseline preservation: no published record
+            # disappears unless the database now excludes it explicitly, with
+            # its reason. A baseline record that is neither published nor
+            # explicitly excluded is a silently vanished listing.
+            vanished = [
+                rid
+                for rid in sorted(baseline_set - set(actual_ids))
+                if rid not in explicit_ids
+            ]
+            parity.check(
+                "no baseline record silently vanished",
+                not vanished,
+                f"baseline record(s) absent without an explicit exclusion: {vanished[:20]}",
+            )
+            recorded_removed = baseline_meta.get("baseline_removed")
+            parity.check(
+                "meta.baseline.baseline_removed matches the database",
+                recorded_removed == len(baseline_set & explicit_ids),
+                f"meta says {recorded_removed!r}, database has "
+                f"{len(baseline_set & explicit_ids)} baseline record(s) explicitly excluded",
+            )
+
         # ---- Visibility state per record. A record that was archived or
         # quarantined after the snapshot was generated must show up here.
+        # Under baseline preservation the published status is the DERIVED one
+        # (a preserved record whose deadline has passed reads 'closed'), so the
+        # comparison is against the generator's derivation, not against the
+        # stored status column - that derivation is the claim being checked.
         print("\nVisibility state")
         cursor.execute(
-            "SELECT id, status, is_archived, verification_status FROM scholarships "
+            "SELECT id, status, is_archived, verification_status, deadline_date FROM scholarships "
             f"WHERE {PUBLIC_PREDICATE}"
         )
+        comparison_day = date.today()
+        derived_at = meta.get("status_derived_at")
+        if isinstance(derived_at, str) and derived_at:
+            try:
+                comparison_day = date.fromisoformat(derived_at)
+            except ValueError:
+                comparison_day = date.today()
         expected_state = {
-            int(row["id"]): (row["status"], int(row["is_archived"] or 0), row["verification_status"])
+            int(row["id"]): (
+                generator._derive_status(
+                    row["status"], generator._coerce_date(row["deadline_date"]), comparison_day
+                ),
+                int(row["is_archived"] or 0),
+                row["verification_status"],
+            )
             for row in cursor.fetchall()
         }
         state_mismatch = []
@@ -452,15 +549,23 @@ def verify(db_path: str, snapshot_path: str, generator) -> Parity:
                 "menu declares a different set of values than the catalogue holds",
             )
 
-        # No status the visibility predicate excludes may be offered. Closed
-        # records are absent from the public set by construction, so a "closed"
-        # option can never match.
+        # No status without a matching record may be offered. Closed is
+        # offered only in baseline-preserve mode, where preserved records
+        # really are published as closed - otherwise it is an option that can
+        # never match.
         statuses = published_options.get("statuses") or []
-        parity.check(
-            "no filter option selects a status the catalogue excludes",
-            "closed" not in statuses,
-            f"statuses={statuses}",
-        )
+        if baseline_mode == "preserve":
+            parity.check(
+                "every offered status matches published records",
+                set(statuses) <= {r.get("status") for r in records},
+                f"statuses={statuses} but no record has one of them",
+            )
+        else:
+            parity.check(
+                "no filter option selects a status the catalogue excludes",
+                "closed" not in statuses,
+                f"statuses={statuses}",
+            )
 
         return parity
     finally:
