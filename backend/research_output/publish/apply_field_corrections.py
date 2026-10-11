@@ -56,7 +56,9 @@ def main(path: str) -> int:
     try:
         for entry in records:
             rid = entry.get("id")
-            proposed = entry.get("proposed") or {}
+            # Verification agents write "recommended"; the lead writes "proposed".
+            # Both shapes carry {field: value} and the same evidence block.
+            proposed = entry.get("proposed") or entry.get("recommended") or {}
             evidence = entry.get("evidence") or []
             row = conn.execute(
                 "SELECT * FROM scholarships WHERE id = ?", (rid,)
