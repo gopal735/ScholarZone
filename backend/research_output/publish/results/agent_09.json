@@ -1,0 +1,192 @@
+{
+  "agent": "agent-09",
+  "records": [
+    {
+      "id": 44,
+      "classification": "temporarily_closed_awaiting_announcement",
+      "official_evidence_urls": [
+        "https://thailand.embassy.gov.au/bkok/PR2026_MAP_Scholarships.html"
+      ],
+      "page_evidence": "Australian Embassy Thailand press release (1 February 2026): 'Applications are now open to Thai citizens for the 2027 Australia Awards Mekong-Australia Partnership Scholarships' and 'Applications for the Australia Awards Mekong-Australia Partnership Scholarships close on 30 April 2026.' The 2027-intake round closed on 30 April 2026 and the page publishes no next-round opening or closing date. All four DFAT URLs (mekong-australia-partnership, australia-awards-scholarships, myanmar participating-country page) timed out on fetch and returned no content; classification rests on the official Australian Government embassy page only.",
+      "next_deadline_or_window": null,
+      "funding_on_page": null,
+      "department_or_programme": "Australia Awards Mekong-Australia Partnership Scholarships - postgraduate (Master's level) study in Australia (Thai applicants)",
+      "logo_or_image_url": null,
+      "confidence": 0.55,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 114,
+      "classification": "temporarily_closed_awaiting_announcement",
+      "official_evidence_urls": [
+        "https://twas.org/opportunity/twas-csir-postgraduate-fellowship-programme",
+        "https://twas.org/opportunities/deadlines"
+      ],
+      "page_evidence": "TWAS programme page states 'The call is closed', 'Opening date of this fellowship: 6 March 2026' and 'Closing date of this fellowship: 6 then 20 May 2026 now extended until 3 June 2026'; 'Results of the fellowship selection should be available in at the end of 2026 or early 2027 and selected candidates will be able to start their fellowship NO earlier than 2027.' The page publishes no next opening date, and the TWAS-CSIR programme does not appear in the open-calls list on https://twas.org/opportunities/deadlines (read 11 October 2026).",
+      "next_deadline_or_window": null,
+      "funding_on_page": "'CSIR will provide a monthly stipend to cover for living costs, food and health insurance. The monthly stipend will not be convertible into foreign currency. In addition, Fellowship awardees are entitled to subsidized accommodation.' No monetary amount is stated.",
+      "department_or_programme": "TWAS-CSIR Postgraduate Fellowship Programme - PhD fellowships tenable in CSIR laboratories and institutes, India (up to 4 years)",
+      "logo_or_image_url": null,
+      "confidence": 0.6,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 196,
+      "classification": "upcoming_or_current_intake",
+      "official_evidence_urls": [
+        "https://study.anu.edu.au/scholarships/find-scholarship/anu-university-research-scholarships"
+      ],
+      "page_evidence": "ANU states: 'Application period: Open for applications. Application period is open all year round.' 'Round 1: for commencement of study or taking up of scholarship by end of March in the following year - International application deadline: 31 August; Domestic application deadline: 26 October 2026 (NOTE due to a scheduled outage the deadline has been updated from 31 October to Monday 26 October 2026 - 11.59pm).' 'Round 2: for commencement of study or taking up of scholarship by end of August in the same year.' 'No separate application is required for prospective candidates as all eligible will be considered based upon their application for admission.'",
+      "next_deadline_or_window": "Domestic Round 1 application deadline 26 October 2026, 11.59pm (for commencement by 30 March 2027); international applicants: 31 August (annual Round 1 deadline); Round 2: commencement by end of August in the same year; applications open all year round",
+      "funding_on_page": "'Value: $ 40,475 per annum (Full-time base stipend rate 2027)'; 'Payments made for 3.5 years (PhD candidates) or 1.5 years (MPhil candidates)'; 'Payments made fortnightly' (AUD)",
+      "department_or_programme": "The Australian National University - Graduate Research School (HDR: PhD, MPhil)",
+      "logo_or_image_url": null,
+      "confidence": 0.9,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 245,
+      "classification": "temporarily_closed_awaiting_announcement",
+      "official_evidence_urls": [
+        "https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid/6656-call-for-2026-chinese-government-scholarship-for-international-students-to-study-at-ucas"
+      ],
+      "page_evidence": "The page is the 'Call for 2026 Chinese Government Scholarship for International Students to Study at UCAS' and states 'APPLICATION DEADLINE January 31st, 2026 (Beijing Time)', which has passed. The fetched page is the 2026 call only and publishes no 2027 window or next-call date. It is the only official URL listed for this record and it returned content.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "'Successful PhD applicants will receive a monthly stipend of RMB 5,000, of which RMB 1,500 will be provided by the supervisor or the CAS Institute'; 'Successful Master applicants will receive a monthly stipend of RMB 3,500, of which RMB 500 will be provided by the supervisor or the CAS Institute'; tuition exemption 'RMB 40,000/year' (PhD) and 'RMB 30,000/year' (Master); accommodation subsidy 'no more than RMB 700/month' (master) and 'no more than RMB 1000/month' (doctoral); 'Medical Insurance RMB 800/person.'",
+      "department_or_programme": "UCAS International Students Office (University of Chinese Academy of Sciences), Master's and PhD",
+      "logo_or_image_url": null,
+      "confidence": 0.6,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 288,
+      "classification": "uncertain",
+      "official_evidence_urls": [
+        "https://www.bme.hu/en/scholarships"
+      ],
+      "page_evidence": "The official BME page describes outbound mobility opportunities only: 'BME offers scholarships at over 350 universities across Europe and more than 20 universities outside the European Union... We provide scholarships on an ongoing basis, even for those looking to expand their postgraduate studies.' No intake window, deadline, award amount, or specific BME-institutional scholarship terms are published on the page, so no intake status can be established from it. The remaining URLs in the record's official_urls list (anr.fr, bs.china-embassy.gov.cn, www.sutd.edu.sg, www.wgtn.ac.nz, www.wur.nl) are not Budapest University of Technology and Economics (BME) awarding-body domains and were not treated as official evidence for this record.",
+      "next_deadline_or_window": null,
+      "funding_on_page": null,
+      "department_or_programme": null,
+      "logo_or_image_url": null,
+      "confidence": 0.3,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 314,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid/6657-cas-anso-scholarship-degree-program-2026-call-for-applications-to-study-at-ucas",
+        "https://english.ucas.ac.cn/index.php/admission/international-students/notice/6805-announcement-results-of-the-2026-cas-anso-scholarship",
+        "https://www.anso.org.cn/programmes/talent/scholarship/"
+      ],
+      "page_evidence": "2026 call page: 'The 2026 CAS-ANSO Scholarship is open for application on 15th October 2025' and 'Deadline for Applicants and Referees: 31st January 2026 (Beijing Time)' (passed). Recurrence stated on the same page: 'The degree program supports 100 to 200 Master's students and 300 PhD students every year to pursue postgraduate education at the University of Science and Technology of China (USTC), the University of Chinese Academy of Sciences (UCAS) and institutes of Chinese Academy of Sciences (CAS)' and 'Each year, TWAS/UNESCO will select up to 40 PhD students from developing countries for this scholarship category.' Results notice (June 2026): 'the evaluation process for the 2026 CAS-ANSO Scholarship (including the ANSO-CAS-TWAS/UNESCO Scholarship) has now been completed.' The 2026 cycle is complete; the programme is described as running yearly, but no 2027 window is published on the fetched pages.",
+      "next_deadline_or_window": null,
+      "funding_on_page": null,
+      "department_or_programme": "CAS-ANSO Scholarship UCAS Office (phd@ucas.ac.cn for PhD; master@ucas.ac.cn for Master's) - degree programme at UCAS, USTC and CAS institutes",
+      "logo_or_image_url": null,
+      "confidence": 0.85,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 344,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://www.nokiafoundation.com/foundation-fellow"
+      ],
+      "page_evidence": "Nokia Foundation Fellow page: 'Call for applications is open from 18 May 2026 to 15 September 2026' (that window has closed). 'Grant decisions are scheduled for late October 2026. The granted research projects may begin in early 2027 and must conclude no later than August 2028.' Explicit next-cycle wording: 'For successful projects, it is possible to reapply for an extension via next year's application process.' The 2026 call is closed and a next year's application process is referenced, but no next-call dates are published.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "'Amount of the grant is 75,000 euros, and the purpose is to finance hiring a doctoral or postdoctoral researcher to work on the project.'",
+      "department_or_programme": "Nokia Foundation Fellow - ICT research projects carried out in Finnish universities, led by a tenured associate or full professor (Principal Investigator)",
+      "logo_or_image_url": null,
+      "confidence": 0.8,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 399,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://www.education.govt.nz/education-professionals/schools-year-0-13/scholarships-and-study-awards/pacific-scholarships/tuli-takes-flight-new-and-continuing-study-or-training-scholarships",
+        "https://www.education.govt.nz/education-professionals/schools-year-0-13/scholarships-and-study-awards/pacific-scholarships"
+      ],
+      "page_evidence": "Ministry of Education Tulī Takes Flight page (last updated 1 October 2026): 'Applications for the 2027 round are now closed. You will be notified of the outcome of your application by 18 March 2027.' Recurrence evidence from the Ministry's Pacific scholarships hub page: 'Each year we offer scholarships for people of Pacific descent to undertake tertiary study.' The 2027 round has closed and the scheme is run yearly; no next-round opening date is published on the fetched pages.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "'Scholarships of $12,500 each year are available for study at NZQA levels 4 to 7 (non-degree)'; 'undergraduate scholarships - $12,500 each year'; 'postgraduate scholarships - $17,500 each year' (NZD)",
+      "department_or_programme": "Tulī Takes Flight scholarships administered with the Pacific Education Foundation; New Zealand Ministry of Education",
+      "logo_or_image_url": null,
+      "confidence": 0.85,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 443,
+      "classification": "temporarily_closed_awaiting_announcement",
+      "official_evidence_urls": [
+        "https://admissions.smu.edu.sg/scholarships/prospective-students/singapore-citizens",
+        "https://admissions.smu.edu.sg/admissions-requirements/international-and-other-qualifications"
+      ],
+      "page_evidence": "SMU scholarships page lists the SMU Merit Scholarship among current SMU-administered scholarships: 'a generous package that includes a full four-year tuition fee waiver and growth opportunities allowance.' The admissions timeline page states for international and other qualifications: '17 November 2025 - 19 March 2026', 'AY2026-27 application closing date: 19 March 2026' and 'Applicants must also submit a separate application for admission online by 19 March 2026, 11.59pm Singapore Standard Time'; also 'There is no separate application form for scholarships.' The AY2026-27 cycle closed on 19 March 2026 and no AY2027-28 dates are published on the fetched pages. (https://admissions.smu.edu.sg/financial-aid/smu-merit-scholarship returned empty content on two attempts.)",
+      "next_deadline_or_window": null,
+      "funding_on_page": "'a generous package that includes a full four-year tuition fee waiver and growth opportunities allowance' (no SGD amount stated on the fetched pages)",
+      "department_or_programme": "SMU undergraduate admission, Office of Admissions & Financial Assistance (Bachelor's)",
+      "logo_or_image_url": null,
+      "confidence": 0.55,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 598,
+      "classification": "uncertain",
+      "official_evidence_urls": [],
+      "page_evidence": "Both fetch attempts of https://www.banrep.gov.co/es/contenidos/programas-estudios-el-exterior returned a Radware Bot Manager CAPTCHA page ('Nos disculpamos por los inconvenientes... pero su actividad y comportamiento nos hacen pensar que usted es un Bot') instead of the programme page. This is the only official URL listed for the record, so no official page could be read and no intake status could be verified from authoritative sources.",
+      "next_deadline_or_window": null,
+      "funding_on_page": null,
+      "department_or_programme": null,
+      "logo_or_image_url": null,
+      "confidence": 0.1,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 646,
+      "classification": "temporarily_closed_awaiting_announcement",
+      "official_evidence_urls": [
+        "https://bolashak.gov.kz/en/scholarship-program",
+        "https://bolashak.gov.kz/en/scholarship-program/requirements-bachelors-degree"
+      ],
+      "page_evidence": "Official Scholarship Program page: 'The acceptance of documents for participation in scholarship programs has started. Applicants can apply online from 30 March to 31 May 2026 until 23:59 Astana time at the following link: https://studyin.kz/admission.' The 30 March - 31 May 2026 window has closed as of 11 October 2026 (the 'has started' wording is stale), and the page publishes no next intake window. 'Number of Scholarships: 1. Bachelor's degree - 490 2. Master's degree - 50 3. PhD - 10. The operator of the Scholarship Program is JSC \"Center for International Programs\".'",
+      "next_deadline_or_window": null,
+      "funding_on_page": null,
+      "department_or_programme": "JSC 'Center for International Programs' (Bolashak) - Scholarship Program for Studying at Universities in Kazakhstan (Bachelor's 490, Master's 50, PhD 10)",
+      "logo_or_image_url": null,
+      "confidence": 0.7,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 688,
+      "classification": "temporarily_closed_awaiting_announcement",
+      "official_evidence_urls": [
+        "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-becas-nacionales-de-inclusion-2026"
+      ],
+      "page_evidence": "SECIHTI convocatoria page states: 'Periodo: 2026.' and 'Estatus de la convocatoria: Abierta.' (a stale label), with 'Inicio de recepción de solicitudes: lunes, 29 junio 2026 - 12:00 AM hora local CDMX.' and 'Conclusión de recepción de solicitudes: viernes, 25 septiembre 2026 - 11:59 PM hora local CDMX.' The reception window closed on 25 September 2026 and the page publishes no next (2027) window. Published avisos (18 August 2026 and 17 September 2026) adjusted the calendars of Terms of Reference A, B and C.",
+      "next_deadline_or_window": null,
+      "funding_on_page": null,
+      "department_or_programme": "Secretaría de Ciencia, Humanidades y Tecnología (SECIHTI) - Becas Nacionales de Inclusión 2026 (A. Becas de Licenciatura para Jefas de Familia; B. Apoyos Complementarios para Personas Indígenas; C. Apoyos Complementarios para Personas con Discapacidad)",
+      "logo_or_image_url": null,
+      "confidence": 0.75,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 729,
+      "classification": "genuinely_discontinued",
+      "official_evidence_urls": [
+        "https://vanier.gc.ca/en/home-accueil.html"
+      ],
+      "page_evidence": "Vanier CGS official site states verbatim: 'We are no longer accepting applications for the Vanier Canada Graduate Scholarships. Please refer to the Canada Graduate Research Scholarship - Doctoral program web page for information regarding the new harmonized program.' The programme has been discontinued/absorbed into the harmonized Canada Graduate Research Scholarship - Doctoral program.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "'Valued at $50,000 per year for three years during doctoral studies'",
+      "department_or_programme": "Vanier Canada Graduate Scholarships (jointly administered by CIHR, NSERC and SSHRC); replaced by the harmonized Canada Graduate Research Scholarship - Doctoral program",
+      "logo_or_image_url": null,
+      "confidence": 0.95,
+      "last_checked_date": "2026-10-11"
+    }
+  ],
+  "notes": "AUDIT ONLY - no files other than this results JSON were written; database, public snapshot, research corpus and code untouched. All fetches performed 2026-10-11. Key caveats: (1) All DFAT URLs for record 44 (Australia Awards MAP) timed out repeatedly; classification rests on the official Australian Embassy Thailand press release, so DFAT confirmation of a next round is still pending. (2) Record 598 (Banco de la República) is the only record whose single official URL was blocked by a Radware CAPTCHA on both attempts; it is classified 'uncertain' with low confidence and needs a manual check. (3) Record 288 (BME): the official BME scholarships page covers only outbound mobility and publishes no intake dates/amounts; the other URLs in the record's official_urls list belong to unrelated organisations (ANR, Chinese Embassy, SUTD, VUW, WUR) and were excluded as non-authoritative for BME. (4) logo_or_image_url is null for every record because no image asset was separately fetched and verified to render from the awarding body's own domain; logos seen in page markup (e.g. UCAS, ANU, SMU, BME, TWAS, Nokia Foundation) were deliberately not cited under this rule. (5) For record 314 (CAS-ANSO) the coverage/benefit amounts are published only as an image on the UCAS page, so funding_on_page is null rather than guessed. (6) Records 114, 245, 443, 646 and 688 show closed rounds with no published next date on the fetched official pages; several pages carry stale status wording ('call is closed' aside, SECIHTI still shows 'Abierta', Bolashak still says 'has started') which reviewers should treat with care. (7) Record 729 (Vanier CGS) is firmly discontinued per the official site and superseded by the Canada Graduate Research Scholarship - Doctoral program."
+}

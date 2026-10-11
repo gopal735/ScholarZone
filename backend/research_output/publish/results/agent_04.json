@@ -1,0 +1,192 @@
+{
+  "agent": "agent-04",
+  "records": [
+    {
+      "id": 32,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://si.se/en/apply/scholarships",
+        "https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/"
+      ],
+      "page_evidence": "Global Professionals page shows heading 'Application closed' and states: 'The scholarship is open for applications once every year, for master's studies beginning in the autumn semester.' Key dates published are for the closed 2026 round: '9-25 February 2026: Application portal for the SI Scholarships is open for two weeks. Please note that the portal closes at 14:59 CET on the final day.'; '23 April 2026: SI Scholarship announcement.' The scholarships index page links 'Find the list of 2026 Swedish Institute scholarship recipients here.' Recurrence is explicit ('once every year'); no 2027 window is published yet.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "Full tuition fee coverage (paid by SI to the Swedish university each semester); 'A monthly allowance of SEK 12,000' for living expenses; 'A travel grant of SEK 15,000 (*10,000 for scholars from Armenia, Azerbaijan, Belarus, Georgia, Moldova and Ukraine)'",
+      "department_or_programme": "SI Scholarship for Global Professionals (master's level; citizens of 34 eligible countries); 'Pioneering Women in STEM' is also listed on the scholarships index",
+      "logo_or_image_url": "https://si.se/app/themes/main/acf-field-icons/logos/si_en.svg",
+      "confidence": 0.85,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 95,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [],
+      "page_evidence": "FETCH FAILURE - no official page could be read in this run: https://www.ip-paris.fr/en/education/useful-information/scholarships returned 'Transport error' (retried twice), https://www.ip-paris.fr/en/financial-aid/ returned 'Transport error', and https://admission.ip-paris.fr/ returned only an empty JavaScript shell containing the text 'admission.ip-paris.fr'. The whole ip-paris.fr domain is unreachable from this environment. Classification therefore relies solely on the workfile's local evidence (previously verified 2026-10-11): 'IP Paris awards excellence scholarships each year to PhD Track students; the application period runs from October to January with next-session dates announced on the website', with the recorded deadline 20 January 2026 now passed. Marked LOW CONFIDENCE and flagged for re-verification; nothing on this record was confirmed on a live official page.",
+      "next_deadline_or_window": null,
+      "funding_on_page": null,
+      "department_or_programme": null,
+      "logo_or_image_url": null,
+      "confidence": 0.3,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 152,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://www.unige.ch/sciences/en/enseignements/formations/masters/excellencemasterfellowships"
+      ],
+      "page_evidence": "'The application is made online, from the beginning of January of each year.' and 'Next application deadline is 28 February, 2026 (for Masters starting September 14, 2026).' The 28 February 2026 deadline has passed as of 2026-10-11 and the page already links 'Winners 2026'. The 'each year' wording establishes recurrence; no 2027 deadline is published on the page.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "'The Excellence Fellowship consists of a grant amounting to CHF 10'000 to CHF 15'000/year (no teaching duties); it is awarded for one year and extended for the regular duration of the chosen Master's program (three or four semesters) provided the applicant is academically successful at the end of his/her first semester of studies.'",
+      "department_or_programme": "Faculty of Science, University of Geneva - Master of Science programmes in astronomy, biology, chemistry and biochemistry, computer science, mathematics, physics, pharmaceutical sciences, earth and environmental sciences",
+      "logo_or_image_url": "https://www.unige.ch/cdn/themes/unige2016/img/unige-logo.svg",
+      "confidence": 0.85,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 218,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://aai-salzburg.at/en/studies/one-world-scholarship",
+        "https://aai-salzburg.at/en/studies/apply"
+      ],
+      "page_evidence": "Apply page states verbatim: 'The call for applications for the October 2026 intake is closed. The next call is supposed to open in June 2027.' (The 15 July full-application deadline quoted in the workfile matches the page's selection-process step '3. submission of full application (until 15 July)'.) Scholarship page confirms the programme is living, with a recurring annual intake structure.",
+      "next_deadline_or_window": "Next call supposed to open in June 2027 (page wording; no exact deadline published; for the closed 2026 round the page listed online form until 12 July and full application until 15 July)",
+      "funding_on_page": "'Students receive €500 per month during the semester (October through June).' (partial scholarship, plus mentoring and educational programme)",
+      "department_or_programme": "One World Scholarship, Afro-Asian Institute Salzburg (Archdiocese of Salzburg) - Master's or PhD at a public university or university of applied sciences in Salzburg",
+      "logo_or_image_url": "https://aai-salzburg.at/fileadmin/_processed_/b/c/csm_AAI_Farbe_4C_36b4d4060a.webp",
+      "confidence": 0.9,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 277,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://www.bi.no/en/programmes-and-individual-courses/scholarships/future-african-leader-scholarship"
+      ],
+      "page_evidence": "Page (updated 6 October 2026) states: 'Application deadline is March 1.' - presented as the standing deadline of this annual entrance scholarship tied to BI's yearly admission cycle, with 'Late applications will not be considered' and 'The majority of scholarship decisions are communicated near the end of April.' As of 2026-10-11 the March 1, 2026 instance has passed. The page shows no open/closed banner and publishes no 2027 date, so a next round is expected around the standing March 1 deadline rather than an explicitly announced new window.",
+      "next_deadline_or_window": "March 1 (standing annual deadline as stated on the page; no year given - the 2026-03-01 instance has passed and no 2027 date is published)",
+      "funding_on_page": "'Scholarships will cover full tuition fees for up to two years of study in a full-time master's degree and a stipend for living expenses of NOK 50,000 per semester, if the student achieves the academic progression requirements.'",
+      "department_or_programme": "BI Norwegian Business School - full-time master's degree at campus Oslo, campus Bergen, or campus Trondheim (Future African Leader Scholarship)",
+      "logo_or_image_url": null,
+      "confidence": 0.6,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 303,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://www.instituto-camoes.pt/en/activity-camoes/what-we-do/scholarships/scholarships-camoes-i-p/pt-language-culture-scholarships/candidaturas-lingua-en",
+        "https://www.instituto-camoes.pt/en/activity-camoes/what-we-do/scholarships/scholarships-camoes-i-p/pt-language-culture-scholarships"
+      ],
+      "page_evidence": "Applications page ('Scholarships open for applications'): for every 2026 programme (Summer Courses online and in-person, Fernao Mendes Pinto, Vieira, Annual Course, Pessoa, Research) the page states 'applications are open from 5 to 18 May 2026 (until 5 p.m., Lisbon time)' and definitive result lists are now published (e.g. 'Definitive list of candidates to attend the 2026 Research Scholarship Programme'). The same page links the previous years' calls ('Scholarship 2025', 'Candidaturas de 2024', 2023, 2022, 2021), evidencing an annual cycle. The 18 May 2026 window has closed; no 2027 dates are published.",
+      "next_deadline_or_window": null,
+      "funding_on_page": null,
+      "department_or_programme": "Camoes, I.P. Portuguese Language and Culture Scholarships - Summer Course, Annual Course, Fernao Mendes Pinto, Research, Pessoa and Vieira programmes",
+      "logo_or_image_url": "https://www.instituto-camoes.pt/images/logo.png",
+      "confidence": 0.8,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 325,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://msmt.gov.cz/en/scholarships/government-scholarships-developing-countries",
+        "https://study.fsv.cuni.cz/czech-government-scholarship-developing-countries-for-the-ay-2027-28"
+      ],
+      "page_evidence": "MEYS (msmt.gov.cz): 'The applications period for the academic year 2027/2028 is from 21 August until 30 September 2026.' and 'Each applicant is obliged to fill in an electronic application form by 30 September 2026 at the latest. The successful applicants start studying in the academic year 2027/2028.' That deadline passed 11 days ago (today 2026-10-11). Recurrence evidence on the page: the programme 'has a long tradition. From the late 1950s to the present day, over 20 000 foreign nationals have completed their studies at the Czech universities with a scholarship of the Government of the Czech Republic', and the site menu lists the previous 'Scholarships for the Academic Year 2026/27' round. FSV UK page: 'For studies beginning in the academic year 2027/2028, the application deadline is September 30, 2026.' No AY 2028/29 window is published yet.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "FSV UK page: the scholarship 'fully covers tuition fees of selected Master's study programs and provides subsidies for health insurance and living expenses in Czechia' (no monetary amount stated on either fetched page)",
+      "department_or_programme": "Faculty of Social Sciences, Charles University (programmes MEF, MFDA, GPS, IEPS, MAIN, MISS) - Government of the Czech Republic scholarship for developing countries, administered by DZS",
+      "logo_or_image_url": "https://msmt.gov.cz/_next/static/media/logo-en.0v5a6y33eo7t6.svg",
+      "confidence": 0.8,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 369,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://www.uniroma1.it/en/pagina/scholarships",
+        "https://www.uniroma1.it/en/pagina/international-post-degree-scholarship"
+      ],
+      "page_evidence": "International Post-degree Scholarship page: 'Call 2026 - deadline September 16, 2026' and 'Applications must be submitted by September 16, 2026, under penalty of exclusion from the selection process.' (passed 25 days ago as of 2026-10-11). Explicit recurrence in the page Q&A: 'When will the call be published? The call is published every year in April/May.' The scholarships index page shows the programme is live with other currently open calls (e.g. 'Call 2026-2027 for reimbursement of study materials', 'Accommodation at Sapienza University Residences: new call', 'Grant for rental and healthcare costs - New call published') and states 'Scholarship payments are made throughout the year.'",
+      "next_deadline_or_window": null,
+      "funding_on_page": "'Scholarship: EUR 1,290.00 per month' - 'The monthly amount is EUR1,290.00'; Call 2026 awards '400 months of scholarships'; duration minimum 6 months, maximum 12 months",
+      "department_or_programme": "International Post-degree Scholarship, Sapienza Universita di Roma - for Sapienza Master's degree graduates (courses or advanced training at international university institutions, Law No. 398/1989)",
+      "logo_or_image_url": "https://www.uniroma1.it/sites/default/files/images/logo/sapienza-big.png",
+      "confidence": 0.85,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 416,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://nawa.gov.pl/en/scientists/top200-nawa/about-the-programme",
+        "https://nawa.gov.pl/en/scientists/top200-nawa/call-for-applications"
+      ],
+      "page_evidence": "About-the-programme page: 'Submission deadline: February 27, 2026' and 'Evaluation result by: July 31, 2026' (both passed; today 2026-10-11); 'Call budget: PLN 17 mln from NAWA'; 'Project implementation timeframe: 2026-2032'. Recurrence evidence: the same page's menu lists a previous 'Closed call - 2025' under TOP200 NAWA, i.e. the programme ran a 2025 round and then the 2026 round (deadline 27 February 2026), and the programme itself runs 2026-2032. The 'Call for applications' sub-page carries no call text, only an application-form PDF link; no new-call date is published.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "'Call budget: PLN 17 mln from NAWA'; support from the host institution includes a full-time employment contract for Junior Fellow/Senior Fellow (no per-person amount stated on the page)",
+      "department_or_programme": "TOP200 NAWA programme (Junior Fellow / Senior Fellow tracks) - open to all fields of science, hosted at Polish universities or research institutes",
+      "logo_or_image_url": "https://nawa.gov.pl/images/rozszerzenia/szablony/siteb3/logo-komputer-en.png",
+      "confidence": 0.65,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 516,
+      "classification": "upcoming_or_current_intake",
+      "official_evidence_urls": [
+        "https://www.studyinkorea.go.kr/en/plan/scholarship.do"
+      ],
+      "page_evidence": "Undergraduate GKS Selection Process on the page: '2 Application Submission - Embassy / University - Embassy Track: September / University Track: September - November', with 'Final Results NIIED December'. The 'Apply for the GKS(Global Korea Scholarship)' control returns the message 'It is not the application period.' - this concerns the Embassy Track online route via Study in Korea (the workfile's recorded 30 September 2026 Embassy Track deadline has passed). As of 2026-10-11 the page's published University Track window (September - November) is the current, still-open intake window.",
+      "next_deadline_or_window": "University Track: September - November (published Selection Process window, current as of 2026-10-11); Embassy Track: September (closed 30 September 2026 per the workfile's recorded deadline)",
+      "funding_on_page": "'Scholarship Benefits: Airfare, Korean language training fees, tuition, and monthly allowances' (no monetary amounts stated on the page)",
+      "department_or_programme": null,
+      "logo_or_image_url": "https://www.studyinkorea.go.kr/public/v3/images/plan/logo-gks-blue.svg",
+      "confidence": 0.65,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 620,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://au.int/en/announcements/20251115/pan-african-university-call-scholarships-applications-academic-year-2026-2027",
+        "https://www.au-pau.org/submission"
+      ],
+      "page_evidence": "African Union announcement (15 Nov 2025): 'The Call will be launched on 15 November and will close on 15 December 2025. Applications received after this deadline will NOT be considered.' PAU submission platform: 'Applications closed on 15/12/2025' and 'Pan African University Special Call for Applications For 2026 scholarships'. The AY 2026-2027 round is closed and no next-call date is announced. Recurrence evidence: the call is structured per academic year ('Academic Year 2026-2027') and the AU page states 'From 2014 to date, PAU issued 2549 certificates. This involves 856 females and 1693 males from 50 Members States.' - an established, periodically run scholarship programme.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "'The African Union Commission will offer full scholarships to successful candidates.' (no amounts stated on either page)",
+      "department_or_programme": "Pan African University master's and PhD programmes at four institutes: PAUSTI (Kenya), PAUGHSS (Cameroon), PAUWES (Algeria), PAULESI (Nigeria)",
+      "logo_or_image_url": "https://www.au-pau.org/submission/wp-content/uploads/2025/11/logo_PAU-70x70.png",
+      "confidence": 0.6,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 678,
+      "classification": "temporarily_closed_awaiting_announcement",
+      "official_evidence_urls": [
+        "https://ejust.edu.eg/international-scholarships",
+        "https://ejust.edu.eg/international-deadlines"
+      ],
+      "page_evidence": "Deadlines page publishes only 'Dates and Deadlines for Fall 2026 Semester': '1 Application Submission February 15, 2026 ... 4 Result announcement April 30, 2026 ... 6 Arrival in E-JUST September 18, 2026 ... 9 Start of lectures September 27, 2026' - the Fall 2026 cycle is complete. Scholarships page: 'TICAD8 Scholarships are available for applicants who wish to pursue their M.Sc. degree for Fall 2026 semester in the fields of Engineering, Computer Science and Information Technology, Basic and Applied Sciences, International Business and Humanities and Heritage Science Programs.' No Fall 2027 dates or successor call are published on either page.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "'E-JUST TICAD8 scholarship is a fully funded scholarship that covers: Tuition fees, Accommodation, Monthly stipend, Medical care, International Flight Fare (Round Tickets; from and to the applicant's home country)' (no amounts stated)",
+      "department_or_programme": "E-JUST TICAD8 African Scholarships for STI - M.Sc. in Engineering, Computer Science and Information Technology, Basic and Applied Sciences, International Business, Humanities and Heritage Science (Egypt-Japan University of Science and Technology)",
+      "logo_or_image_url": "https://ejust.edu.eg/assets/img/logo.png",
+      "confidence": 0.75,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 718,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [],
+      "page_evidence": "FETCH FAILURE - no official page could be read in this run. All attempts returned only a JavaScript-shell page containing the title 'GETFund Ghana - Ghana Education Trust Fund' and no body content: https://www.getfund.gov.gh/news/getfund-opens-applications-for-2026-2027-postgraduate-foreign-scholarships, https://www.getfund.gov.gh/scholarships/how-to-apply, https://www.getfund.gov.gh/scholarships/overview, and https://getfund.gov.gh/news/getfund-opens-applications-for-2026-2027-postgraduate-foreign-scholarships (without www) and https://www.getfund.gov.gh/scholarships. Classification therefore relies solely on the workfile's local evidence (previously verified 2026-10-10): GETFund announced applications for the 2026/2027 Postgraduate Foreign Scholarship opened 13 April 2026 and closed 30 April 2026, and GETFund runs these scholarship rounds per academic year. Marked LOW CONFIDENCE and flagged for re-verification; nothing on this record was confirmed on a live official page.",
+      "next_deadline_or_window": null,
+      "funding_on_page": null,
+      "department_or_programme": null,
+      "logo_or_image_url": null,
+      "confidence": 0.3,
+      "last_checked_date": "2026-10-11"
+    }
+  ],
+  "notes": "13 records audited on 2026-10-11 against official awarding-body pages only. Bucket counts: upcoming_or_current_intake = 1 (id 516, GKS Undergraduate - the page's published University Track window 'September - November' is current as of today; the Embassy Track window closed 30 September 2026); recurring_next_intake_expected = 11 (ids 32, 95, 152, 218, 277, 303, 325, 369, 416, 620, 718); temporarily_closed_awaiting_announcement = 1 (id 678, E-JUST TICAD8 - Fall 2026 cycle complete, no successor published); genuinely_discontinued = 0; uncertain = 0. Two records (ids 95 and 718) could NOT be verified on live official pages: every IP Paris URL returned transport errors (domain unreachable from this environment) and every GETFund URL returned only a JavaScript-rendered shell with no content; their classifications rest solely on the workfile's previously verified local notes and are marked low confidence (0.3) for re-verification. For most recurring records the awarding body has not yet published the next round's dates, so next_deadline_or_window is null even though a future round is expected; only ids 218 ('next call supposed to open in June 2027'), 277 (standing 'March 1' deadline, year not stated) and 516 (current September-November University Track window) have any published forward-looking window wording. Funding amounts were recorded only where stated verbatim on a fetched page (e.g. UNIGE CHF 10,000-15,000/yr, Sapienza EUR 1,290/month, AAI EUR 500/month, BI NOK 50,000/semester, NAWA call budget PLN 17 mln, SI SEK 12,000/month); workfile figures not confirmed on fetched pages were set to null. Logo URLs are hosted on the awarding bodies' own domains and were present in the fetched pages. Several official_urls lists in the workfile contain unrelated third-party domains (anr.fr, china-embassy.gov.cn, sutd.edu.sg, wgtn.ac.nz, universityadmissions.se); these were not treated as awarding-body evidence and were not used for classification."
+}

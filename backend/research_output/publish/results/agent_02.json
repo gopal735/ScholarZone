@@ -1,0 +1,193 @@
+{
+  "agent": "agent-02",
+  "records": [
+    {
+      "id": 19,
+      "classification": "temporarily_closed_awaiting_announcement",
+      "official_evidence_urls": [
+        "https://www.campusfrance.org/en/france-excellense-europa-scholarship-program"
+      ],
+      "page_evidence": "https://www.campusfrance.org/en/france-excellense-europa-scholarship-program - 'Updated on 07 March 2025'; 'The deadline for submitting applications is 30 April 2025.'; 'Application of the selected candidates: 06 - 20 May 2025'; 'Start of the 2025-26 academic year: 15 September - 31 October 2025'. The page's latest cycle is the 2025 edition (deadline 30 April 2025, whole calendar completed) and NO next call, window or deadline is announced anywhere on the page. Quoted page also states: 'Presented by the Ministry for Europe and Foreign Affairs, the award-winning France Excellence Europa scholarship programme...'",
+      "next_deadline_or_window": null,
+      "funding_on_page": "Payment of a half-yearly allowance of €6,850; installation allowance of €1,700; exemption from registration fees for national diplomas and from enrolment in compulsory health insurance",
+      "department_or_programme": "Master's 1 or Master 2 at a French institution of higher education (national programme run by Campus France / Ministry for Europe and Foreign Affairs; no single department)",
+      "logo_or_image_url": null,
+      "confidence": 0.85,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 77,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://www.cranfield.ac.uk/funding/funding-opportunities/great-cranfield-university-scholarship-bangladesh",
+        "https://www.cranfield.ac.uk/funding/funding-opportunities/cranfield-university-great-scholarship-2025-bangladesh"
+      ],
+      "page_evidence": "https://www.cranfield.ac.uk/funding/funding-opportunities/great-cranfield-university-scholarship-bangladesh (fetched 2026-10-11): 'This year, in partnership with the British Council and the GREAT Britain Campaign, Cranfield University is offering a scholarship to one student in Bangladesh...'; 'This scholarship scheme is part of the GREAT Scholarships campaign, which has been launched by the British Council, together with UK universities'; 'Funding value £10,000 toward tuition fees'; 'Deadline 18 May 2026'; 'Applications must be submitted by the deadline of Monday 18th May 2026 at 5pm.'; 'All applicants will be notified of the outcome of this scholarship by the end of June 2026.' The 2026 cycle is complete (18 May 2026 deadline passed; outcomes by end of June 2026). NOTE: the '2025' URL in official_urls now redirects to/serves the same 2026 edition page, so no separate 2025 text could be quoted. No 2027 date is published on the fetched page.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "£10,000 toward tuition fees",
+      "department_or_programme": "Selected full-time postgraduate Masters degrees at Cranfield University (page lists 25+ MSc courses)",
+      "logo_or_image_url": null,
+      "confidence": 0.7,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 141,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://universitycorridors.unhcr.it/"
+      ],
+      "page_evidence": "https://universitycorridors.unhcr.it/ (fetched 2026-10-11): 'Applications for UNICORE 8.0 are now open! You can submit your application until 17 April 2026.' (deadline now past - 17 April 2026 < 11 October 2026; the page still displays this 8.0 cycle); 'The University Corridors for Refugees (UNICORE) 8.0 project is promoted by Italian universities, together with UNHCR, the Italian Ministry of Foreign Affairs and International Cooperation...'; '80 Places available for students'; '40 Universities participating'. The '8.0' numbered edition designation on the live official page is the evidence that this is an established, edition-periodic project; no 9.0/next call date is announced. ALL University of Turin URLs failed (HTTP 403): https://www.unito.it/internazionalita/arrivare-unito-dallestero/ammissione-studenti-internazionali/borse-studenti , https://www.unito.it/avvisi/progetto-unicore-80-university-corridors-refugees-bando-3-borse-di-studio , https://www.unito.it/sites/default/files/2026-03/bando_unicore_8_it.pdf (403 via both the fetch tool and a direct request with a browser user-agent) - the university-level ranking notice referenced in the record could not be read or verified.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "Page states beneficiaries 'will be exempt from tuition fees at the universities participating in the programme and will receive financial support for plane tickets and visa-related expenses, as well as a study grant' (no monetary amount stated on the fetched page)",
+      "department_or_programme": null,
+      "logo_or_image_url": null,
+      "confidence": 0.65,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 211,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://admission.kaist.ac.kr/intl-graduate/Admission/YearlyTimelines",
+        "https://admission.kaist.ac.kr/intl-graduate/FinancialSupport/Scholarship/KAISTScholarship"
+      ],
+      "page_evidence": "https://admission.kaist.ac.kr/intl-graduate/Admission/YearlyTimelines (fetched 2026-10-11): 'B. Application Dates for the 2027 Entries - KAIST International Graduate Admission - Spring 2027 Entry: August 18 - September 1, 2026; Fall 2027 Entry: TBA'; recurring pattern section: 'Spring Admission: Mid August - Early September'; 'Fall Admission (Early Track): Early December - Late December'; 'Fall Admission (Regular Track): Early March - Late March' (marked TBAs for 2027 dates). https://admission.kaist.ac.kr/intl-graduate/FinancialSupport/Scholarship/KAISTScholarship: 'The scholarship provides a full waiver of tuition... including full tuition coverage, national health insurance, and a monthly stipend (dependent on research involvement).'; KAIST Global Scholarship 'monthly stipend of 1,000,000 KRW for 4 regular semesters'; KAIST Presidential Scholarship 'monthly stipend of 300,000 KRW for 8 regular semesters'; 'Available to international students admitted to all departments except the Global Technology Innovation Program (GDI-GTIP Track).' The 2027-Spring window (18 Aug - 1 Sep 2026) has closed and Fall 2027 Entry is published only as 'TBA', but the programme itself is explicitly periodic (twice-yearly tracks published year after year).",
+      "next_deadline_or_window": "Fall 2027 Entry: TBA (published recurring pattern: Fall Admission Early Track: Early December - Late December; Fall Admission Regular Track: Early March - Late March)",
+      "funding_on_page": "Full tuition coverage, national health insurance, and a monthly stipend (dependent on research involvement); KAIST Global Scholarship: monthly stipend of 1,000,000 KRW for 4 regular semesters; KAIST Presidential Scholarship: monthly stipend of 300,000 KRW for 8 regular semesters",
+      "department_or_programme": "All departments (except the Global Technology Innovation Program (GDI-GTIP Track)) - KAIST International Graduate Admission",
+      "logo_or_image_url": null,
+      "confidence": 0.9,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 275,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://www.bi.no/en/programmes-and-individual-courses/scholarships/master-of-science-international-scholarship--bergen"
+      ],
+      "page_evidence": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/master-of-science-international-scholarship--bergen (fetched 2026-10-11): 'Application deadline is March 1.' (annual recurring deadline stated without a year); 'Only candidates admitted to a Master of Science programme at campus Bergen commencing Autumn 2026 will be considered for this scholarship.'; 'Each year, the number of scholarship applications received from master's applicants demonstrating academic excellence is far greater than the number of scholarships available.'; 'The scholarship will cover full tuition fees for up to two years.' The current page cycle targets candidates commencing Autumn 2026 (deadline 1 March 2026 has passed); the page publishes the recurring 1 March deadline with no end date announced. No next intake date is published on the fetched page.",
+      "next_deadline_or_window": "March 1 (published on the page without a year; the page's current cycle covers candidates commencing Autumn 2026, so the next cycle's deadline falls on 1 March of the next application year - year not explicitly stated on the page)",
+      "funding_on_page": "The scholarship will cover full tuition fees for up to two years",
+      "department_or_programme": "Master of Science (MSc) degree programme at campus Bergen",
+      "logo_or_image_url": null,
+      "confidence": 0.85,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 301,
+      "classification": "upcoming_or_current_intake",
+      "official_evidence_urls": [
+        "https://www.novasbe.unl.pt/en/programs/scholarships-funding/masters"
+      ],
+      "page_evidence": "https://www.novasbe.unl.pt/en/programs/scholarships-funding/masters (fetched 2026-10-11): 'Applications are open for the Fall Intake and cannot be considered after the application to the Master's program has been submitted' (Nova SBE Merit Scholarship section); 'Scholarships are awarded on a rolling basis to applicants, which means that the budget available for scholarships may be used before the end of the Master's admission cycle. Due to the high volume of deserving candidates and the limited funding available for scholarships, we strongly recommend that you apply as early as possible.'; 'Applications are available for the Fall and Spring Intakes' (Continuity / Social Mobility sections). The scholarship applications are tied to the live Master's admission cycle and are open on a rolling basis now.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "Nova SBE Merit Scholarship: can cover 20% or 50% of the tuition fee value of the Master's program; Nova SBE Social Mobility Scholarship: 20%, 50% or 100% of the tuition fee value; Nova SBE Continuity Scholarship: 50% or 100% of the tuition fee value",
+      "department_or_programme": "Nova SBE Master's programs (Continuity, Social Mobility, Merit, Women in Finance scholarships; Women in Finance is for the International Master's in Finance)",
+      "logo_or_image_url": null,
+      "confidence": 0.85,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 323,
+      "classification": "temporarily_closed_awaiting_announcement",
+      "official_evidence_urls": [
+        "https://id.china-embassy.gov.cn/eng/sgdt/202510/t20251027_11741674.htm"
+      ],
+      "page_evidence": "https://id.china-embassy.gov.cn/eng/sgdt/202510/t20251027_11741674.htm (fetched 2026-10-11; dated 2025-10-27 18:36): 'The 2026/2027 Chinese Government Scholarship is now open for application. Online application (www.campuschina.org) and the corresponding application documents should be submitted in the system before February 8, 2026.'; 'February 9 to March 5, 2026 The embassy sends all recommended applications to China Scholarship Council for final review.'; 'July to August, 2026 Applicants can check the admission results in the system by themselves.' Every published step of the 2026/2027 round is in the past (today 11 October 2026) and NO next round, window or deadline is announced on the page.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "'Full scholarship' (Does not include international travel expenses); '20 Places for undergraduate/master's/doctoral programs.' (China - Indonesia Scholarship in Higher Education Program) - no monetary amount stated on the page",
+      "department_or_programme": "China - Indonesia Scholarship in Higher Education Program (marine, medical, health, tourism, education and other required majors, 270+ universities)",
+      "logo_or_image_url": null,
+      "confidence": 0.8,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 367,
+      "classification": "temporarily_closed_awaiting_announcement",
+      "official_evidence_urls": [
+        "https://www.researchireland.ie/funding/government-ireland-postdoctoral"
+      ],
+      "page_evidence": "https://www.researchireland.ie/funding/government-ireland-postdoctoral (fetched 2026-10-11): page status 'Closed'; 'Call Closes: 23rd October 2025'; 'Deadline EMAIL: 18th October 2025 4pm'; Important Dates all marked 'Achieved' including 'End of April 2026 Achieved Call outcome' and '1st September 2026 Achieved Award start date'; '2026 CALL ... The Government of Ireland Postdoctoral Fellowship Programme is an established national initiative, funded by the Department of Further and Higher Education, Research, Innovation and Science, and managed by Research Ireland.' The 2026 call is complete and NO next call date is published on the fetched page.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "A salary of €47,273 in the first year of the award and €47,880 in the second year of the award; Eligible direct research expenses of €5,000 per annum; Duration 12 - 24 months",
+      "department_or_programme": "Postdoctoral fellowship at an eligible research body in Ireland, across all disciplines",
+      "logo_or_image_url": null,
+      "confidence": 0.8,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 413,
+      "classification": "uncertain",
+      "official_evidence_urls": [
+        "https://www.gov.pl/web/bialorus/program-im-konstantego-kalinowskiego",
+        "https://study.gov.pl/pl/stypendia-dla-student-w-z-kraj-w-partnerstwa-wschodniego-oraz-z-kraj-w-postsowieckich"
+      ],
+      "page_evidence": "No fetched official page states the current intake status. https://www.gov.pl/web/bialorus/program-im-konstantego-kalinowskiego (Government of Poland notice dated 30.10.2020): 'Przyjmowanie aplikacji będzie odbywało się od 31 sierpnia 2020 r. w trybie ciągłym, aż do wyczerpania limitu miejsc.' / 'Nabór kandydatur odbywa się od 31 sierpnia do wyczerpania limitu miejsc.' / 'Program KK I ... Na uzyskanie stypendium KK I mogą liczyć ... BiałorusiniProgramem KK II ... przewidziany jest dla obywateli Białorusi ze średnim lub wyższym wykształceniem' - a continuous, open-ended recruitment described in a 2020 notice, with no closing date and no information about the current round. https://study.gov.pl/pl/stypendia-dla-student-w-z-kraj-w-partnerstwa-wschodniego-oraz-z-kraj-w-postsowieckich (NAWA/study.gov.pl portal, fetched OK): describes the programme only ('Program Stypendialny im. Konstantego Kalinowskiego ... oferuje stypendia na studiach licencjackich, magisterskich i doktoranckich oraz staże naukowe i studia podyplomowe') and states no recruitment window or current status; https://study.gov.pl/konstanty-kalinowski-scholarship-programme returned HTTP 404. The 21st-edition window (15 March - 15 May 2026) recorded in the local data is NOT stated on any fetched official page and cannot be confirmed; the programme operator is Studium Europy Wschodniej at the University of Warsaw (studium.uw.edu.pl), which is not among the record's official URLs and was not fetched.",
+      "next_deadline_or_window": null,
+      "funding_on_page": null,
+      "department_or_programme": "Programme KK I and Programme KK II (per gov.pl notice; studies in Poland, incl. one-year internships in Warsaw); study.gov.pl: bachelor's, master's and doctoral studies, scientific internships and postgraduate studies",
+      "logo_or_image_url": null,
+      "confidence": 0.4,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 473,
+      "classification": "uncertain",
+      "official_evidence_urls": [],
+      "page_evidence": "Every official URL failed with HTTP 403 Forbidden on 2026-10-11 - both via the web fetch tool and via a direct request with a browser user-agent: https://www.aauw.org/resources/programs/fellowships-grants/aauw-international-fellowships (also with trailing slash), https://www.aauw.org/resources/programs/fellowships-grants/international, https://www.aauw.org/resources/programs/fellowships-grants/start-your-application, https://www.aauw.org/resources/programs/international-fellowships. No official page content could be read, so no status, deadline, amount or department can be quoted. (The local record's assertion that the 2027-2028 application window ran Aug 17 - Sept 17 2026 and is now closed is unverified local evidence only - low confidence.)",
+      "next_deadline_or_window": null,
+      "funding_on_page": null,
+      "department_or_programme": null,
+      "logo_or_image_url": null,
+      "confidence": 0.2,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 615,
+      "classification": "temporarily_closed_awaiting_announcement",
+      "official_evidence_urls": [
+        "https://www.massey.ac.nz/study/scholarships-and-awards/massey-university-doctoral-scholarship",
+        "https://www.massey.ac.nz/study/scholarships-and-awards/scholarship-applications-advice-and-guidance/"
+      ],
+      "page_evidence": "https://www.massey.ac.nz/study/scholarships-and-awards/massey-university-doctoral-scholarship (fetched 2026-10-11): 'Status: Closed'; 'Applications open: 1 August 2026'; 'Closing date: 1 October 2026'; 'Applications open 1 August 2026 and close 1 October 2026.'; 'Value: $90,000 plus fees'; 'Duration: Three years' duration'. The 2026 round is closed (1 October 2026 closing date passed; today 11 October 2026) and NO 2027 dates are published on the page. https://www.massey.ac.nz/study/scholarships-and-awards/scholarship-applications-advice-and-guidance/: 'It can take up to 6 weeks from the closing date for us to let you know the outcome of your application.' (no next-round information; states only that the portal list 'will only show scholarships that are currently open for applications').",
+      "next_deadline_or_window": null,
+      "funding_on_page": "$90,000 plus fees; duration three years (current page value differs from the record's 30,000 NZD/year figure)",
+      "department_or_programme": "Doctor of Philosophy (PhD), Doctor of Clinical Psychology (DClinPsych) or Doctor of Social Work (DSW) at Massey University",
+      "logo_or_image_url": null,
+      "confidence": 0.8,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 674,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://www.hec.gov.rw/updates/scholarships",
+        "https://www.hec.gov.rw/updates/scholarships?tx_news_pi1%5Bcontroller%5D=News&tx_news_pi1%5BcurrentPage%5D=4&cHash=0691e9769097055de82673ecb2a11ee4",
+        "https://www.hec.gov.rw/fileadmin/user_upload/HEC/Scholarships/KINGDOM_OF_MOROCCO_-__GOVERNMENT_OF_RWANDA_SCHOLARSHIPS.pdf"
+      ],
+      "page_evidence": "HEC (Rwanda Higher Education Council) scholarships listings (fetched 2026-10-11): the 2026/2027 round - 'KINGDOM OF MOROCCO - GOVERNMENT OF RWANDA SCHOLARSHIPS', 'Wednesday, 26 August, 2026' (current listing, now past its application window - the record states closing 29 August 2026, which could NOT be verified because the PDF text could not be extracted by the available tools: the file was downloaded and returned HTTP 200 with 333,068 bytes, but neither the web fetch tool (raw binary only) nor the PDF reader could extract its text). Recurrence evidence: on the same official listing, page 4 shows a previous round - 'KINGDOM OF MOROCCO - GOVERNMENT OF RWANDA', 'Friday, 19 September, 2025' and 'EXTENSION OF DEADLINES FOR COMMONWEALTH AND MOROCCO SCHOLARSHIPS', 'Tuesday, 30 September, 2025' - i.e. the bilateral Morocco-Rwanda call ran in 2025 and again in 2026. No 2027/2028 call date is published on the fetched pages.",
+      "next_deadline_or_window": null,
+      "funding_on_page": null,
+      "department_or_programme": null,
+      "logo_or_image_url": null,
+      "confidence": 0.7,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 713,
+      "classification": "temporarily_closed_awaiting_announcement",
+      "official_evidence_urls": [
+        "https://scholarships.gov.gh/opportunities/the-joint-algeriaghana-government-scholarship-awards-for-the-20262027-academic-year-tenable-in-algeria",
+        "https://scholarships.gov.gh/opportunities"
+      ],
+      "page_evidence": "https://scholarships.gov.gh/opportunities/the-joint-algeriaghana-government-scholarship-awards-for-the-20262027-academic-year-tenable-in-algeria (fetched 2026-10-11): 'Status Open; Deadline September 21, 2026; Published September 05, 2026'; 'Applications are invited from interested and qualified candidates, who wish to be considered for scholarship awards for undergraduate studies, vocational/technical education and religious studies for the 2026/2027 academic year, tenable in Algeria.' The detail page's status label 'Open' is stale: the opportunities index at https://scholarships.gov.gh/opportunities shows the same notice as 'Notice Open Deadline: Sep 21 Closed' - the 21 September 2026 deadline has passed (today 11 October 2026). No next-round call or date is published.",
+      "next_deadline_or_window": null,
+      "funding_on_page": null,
+      "department_or_programme": "Undergraduate university studies (Science and Technology, Mathematics, Computer Science, Architecture, Medicine, Veterinary Sciences, Dentistry, Agricultural Sciences, Pharmacy, Urban Planning); Vocational Education and Technical Training (2 years Professional Certificate); Religious Studies (3 years Imam Training); Masters in Islamic Studies (2 years)",
+      "logo_or_image_url": null,
+      "confidence": 0.85,
+      "last_checked_date": "2026-10-11"
+    }
+  ],
+  "notes": "Bucket counts: upcoming_or_current_intake = 1 (id 301); recurring_next_intake_expected = 5 (ids 77, 141, 211, 275, 674); temporarily_closed_awaiting_announcement = 5 (ids 19, 323, 367, 615, 713); genuinely_discontinued = 0; uncertain = 2 (ids 413, 473). Caveats: (1) logo_or_image_url is null for every record - no image was actually fetched/verified to render from an official awarding-body domain, per the audit rule. (2) All four unito.it URLs (id 141) and all four aauw.org URLs (id 473) returned HTTP 403 to both the fetch tool and a direct browser-user-agent request, so those records rely on other official pages or are marked uncertain. (3) For id 674 the Morocco-Rwanda PDF returned HTTP 200 (333,068 bytes) but its text could not be extracted (the model cannot read PDF input), so the 29 August 2026 closing date in the local data is unverified - the classification rests on the HEC listing pages. (4) The Cranfield '2025' URL now redirects to the 2026 edition page, so recurrence evidence for id 77 rests on the page's 'This year ... is offering a scholarship' / recurring GREAT Scholarships campaign wording; no 2027 date is published. (5) The gov.pl Kalinowski notice is dated 30.10.2020 and study.gov.pl states no dates; the 21st-edition window (15 Mar - 15 May 2026) in the local data could not be confirmed on any fetched official page - the actual operator (studium.uw.edu.pl, University of Warsaw) is not in the record's official URL list. (6) Some pages may serve cached content (Campus France page 'Updated on 07 March 2025'; the UNICORE page still displays the 8.0 call). (7) Only URLs listed in each record's official_urls/official_source_url (plus pagination of the same official HEC listing page) were fetched; nothing else in the repository, database or snapshot was read or modified."
+}
