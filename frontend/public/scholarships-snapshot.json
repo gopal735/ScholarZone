@@ -1,21 +1,21 @@
 {
   "meta": {
-    "generated_at": "2026-10-11T13:43:19.104946Z",
+    "generated_at": "2026-10-11T17:20:30.990108Z",
     "source_database": "scholarzone.db",
     "source_record_count": 695,
-    "public_record_count": 623,
+    "public_record_count": 621,
     "excluded": {
       "closed": 10,
-      "archived": 52,
+      "archived": 54,
       "quarantined": 51,
       "deadline_passed": 13
     },
-    "excluded_union": 72,
+    "excluded_union": 74,
     "deadline_passed": 13,
     "baseline": {
       "mode": "preserve",
-      "source": "deployed_baseline.json",
-      "baseline_records": 622,
+      "source": "scholarships-snapshot.json",
+      "baseline_records": 623,
       "baseline_ids": [
         1,
         3,
@@ -28,6 +28,7 @@
         13,
         14,
         15,
+        16,
         17,
         18,
         19,
@@ -640,9 +641,9 @@
         727,
         729
       ],
-      "baseline_preserved": 153,
-      "baseline_removed": 0,
-      "newly_public": 1
+      "baseline_preserved": 151,
+      "baseline_removed": 2,
+      "newly_public": 0
     },
     "status_derived_at": "2026-10-11",
     "schema_version": "2.0",
@@ -841,7 +842,6 @@
         "PhD",
         "PhD (terminal degree required; postdoctoral researchers and doctoral candidates are not eligible)",
         "PhD and above",
-        "PhD only",
         "PhD, DMedSc, DClinPsy, DocFA, EdD, DHSc",
         "PhD, MLitt, one-year postgraduate (Master's)",
         "PhD, MPhil (Master's by Research)",
@@ -1062,7 +1062,6 @@
         720,
         646,
         723,
-        729,
         598,
         682,
         505,
@@ -1566,7 +1565,6 @@
         508,
         513,
         543,
-        279,
         147,
         498,
         592,
@@ -1630,7 +1628,6 @@
       ],
       "recently-added": [
         727,
-        729,
         724,
         725,
         694,
@@ -2042,7 +2039,6 @@
         276,
         277,
         278,
-        279,
         228,
         229,
         230,
@@ -2381,7 +2377,6 @@
         709,
         723,
         725,
-        729,
         598,
         637,
         643,
@@ -2476,7 +2471,6 @@
         273,
         276,
         278,
-        279,
         288,
         290,
         291,
@@ -2879,8 +2873,6 @@
         96
       ],
       "deadline-soon": [
-        279,
-        729,
         311,
         19,
         422,
@@ -3504,8 +3496,6 @@
         727
       ],
       "deadline-earliest": [
-        279,
-        729,
         311,
         19,
         422,
@@ -4587,8 +4577,6 @@
         422,
         19,
         311,
-        729,
-        279,
         1,
         3,
         5,
@@ -4838,7 +4826,6 @@
         704,
         706,
         725,
-        729,
         637,
         677,
         678,
@@ -4867,7 +4854,6 @@
         224,
         254,
         276,
-        279,
         290,
         131,
         115,
@@ -5777,7 +5763,6 @@
         344,
         343,
         510,
-        279,
         301,
         479,
         149,
@@ -5967,7 +5952,6 @@
         51,
         466,
         463,
-        729,
         612,
         407,
         512,
@@ -6038,7 +6022,6 @@
         512,
         407,
         612,
-        729,
         463,
         466,
         51,
@@ -6228,7 +6211,6 @@
         149,
         479,
         301,
-        279,
         510,
         343,
         344,
@@ -6642,15 +6624,15 @@
     ]
   },
   "stats": {
-    "total": 623,
+    "total": 621,
     "countries": 74,
     "open": 310,
     "closing_soon": 49,
     "upcoming": 110,
-    "verified_active": 532,
-    "fully_funded": 207,
-    "with_image": 450,
-    "with_official_source": 620
+    "verified_active": 530,
+    "fully_funded": 205,
+    "with_image": 449,
+    "with_official_source": 619
   },
   "scholarships": [
     {
@@ -41865,117 +41847,6 @@
       "selection_notes": "Assessment is continuous through the academic year and is not restricted to the start of a term. NTNU requires a strong academic record and a confirmed funding plan; at least one supervisor must be employed at NTNU.",
       "program_type": "Doctoral employment position",
       "best_fit": "Research-oriented PhD candidates seeking salaried positions at NTNU",
-      "last_verified_date": "2026-10-11",
-      "notes": null
-    },
-    {
-      "id": 279,
-      "title": "NORPART – Norwegian Partnership Programme",
-      "name": "NORPART – Norwegian Partnership Programme",
-      "country": "Norway",
-      "degree": "Master's, PhD",
-      "degree_levels": "Master's, PhD",
-      "funding": "Fully Funded",
-      "funding_type": "Fully Funded",
-      "funding_amount": 35000000,
-      "funding_currency": "NOK",
-      "funding_period": "per year (programme budget 2024-2028)",
-      "tuition_coverage": true,
-      "official_source_urls": [
-        "https://hkdir.no/en/programmer-og-tilskuddsordninger/norpart",
-        "https://hkdir.no/en/sok-om-tilskudd"
-      ],
-      "source_citations": [
-        "https://hkdir.no/en/programmer-og-tilskuddsordninger/norpart",
-        "https://hkdir.no/en/sok-om-tilskudd"
-      ],
-      "applicant_utility": {
-        "summary": "This is not a scholarship you can apply for. NORPART funds collaboration projects between institutions, and the applicant has to be an accredited Norwegian higher education institution that includes a partner institution from a NORPART partner country, so as an individual student there is nothing to submit and nothing to track. The programme page currently shows no open calls, and the Directorate states that the Norwegian government has proposed to end support for NORPART, with only about seven projects receiving funding in the October allocation out of the NOK 35 million allocated for 2024. If Bangladesh is your country of interest, note that it is listed as a possible NORPART partner country, so your realistic route is to ask a Bangladeshi partner university or a Norwegian university in your field whether they hold a running NORPART project and can place you through its mobility, rather than applying yourself.",
-        "best_fit": "Norwegian and partner-country higher education institutions, and students and staff who can join mobility already funded under a running NORPART project.",
-        "application_readiness_checklist": [
-          "Check with Norwegian or partner-country universities in your field whether an active NORPART project covers your mobility",
-          "If you are institutional, confirm you are an accredited Norwegian higher education institution and identify an accredited partner in a NORPART partner country",
-          "Prepare to apply through HK-dir in English when a call for applications is published",
-          "Do not budget personal student funding against NORPART, since no per-student amount is published"
-        ],
-        "common_rejection_risks": [
-          "Applying individually as a student, when only accredited Norwegian institutions may apply",
-          "Relying on NORPART as your funding source when no calls are open and support is proposed to end",
-          "Assuming a partner-country institution can apply on its own, when the application must include a Norwegian applicant",
-          "Using the dead uhr.no URL for current information instead of the HK-dir page"
-        ],
-        "estimated_uncovered_costs": "Unknown from the official page, since no per-student award terms are published; treat any student costs as uncovered unless a host project states otherwise.",
-        "document_audit": [
-          "Institutions should apply in English through the HK-dir application portal, as required by the awarding body",
-          "Verify accreditation status of both the Norwegian applicant and the partner institution before applying"
-        ],
-        "alerts": [
-          "The government has proposed to end support for NORPART, so no new award should be assumed in coming cycles",
-          "The page lists 'Grants you can apply for now: 0', confirming there is no open call",
-          "Ongoing projects continue to be funded in accordance with their agreements, so existing mobility is protected but no new project funding is available"
-        ],
-        "submission_workflow": "No student submission workflow exists; institutions apply through HK-dir when a call is published, and students join existing projects through their home and host universities."
-      },
-      "deadline": "3 June 2024, 12:00 CEST",
-      "deadline_date": "2024-06-03",
-      "deadline_precision": "day",
-      "status": "closed",
-      "verified": true,
-      "last_verified_at": "2026-10-10",
-      "verification_status": "active",
-      "official_source_url": "https://www.uhr.no/programmes-and-agreements/norpart-norwegian-partnership-programme",
-      "updated_at": "2026-10-10T20:29:06",
-      "image_url": "https://uhr.no/handlers/bv.ashx/i481f1620-7552-4dd8-aa72-62c7c5ed7dea/uhr_logo_positiv.png",
-      "image_source_type": "official_university",
-      "image_kind": "official_logo",
-      "description": "NORPART, the Norwegian Partnership Programme for Global Academic Exchange, is an institutional scheme run by HK-dir that supports collaboration between Norwegian and partner-country higher education institutions. The applicant must be an accredited Norwegian higher education institution and the application must include an accredited partner institution in a NORPART partner country. The page lists no open calls, states that the government has proposed to end support for the programme, and describes the target groups as HEIs in Norway and partner countries, including their Master's and PhD students.",
-      "region": "Europe",
-      "duration": "Funded projects under the 2024 call had to start between 1 November and 31 December 2024 and end by 31 December 2028; individual exchange stays are capped at 12 months (master) and 18 months (PhD).",
-      "application_period": null,
-      "official_source": "Norwegian Directorate for Higher Education and Skills (HK-dir)",
-      "catalogue_url": "https://hkdir.no/en/programmes-and-grant-schemes/norpart",
-      "official_updates_url": "https://hkdir.no/en/nyheter",
-      "application_link": "https://www.uhr.no/programmes-and-agreements/norpart-norwegian-partnership-programme",
-      "image_source_url": "https://uhr.no/",
-      "image_verified_at": "2026-10-04T07:32:05.164655",
-      "image_alt_text": "University Recruitment Norway",
-      "eligibility": [
-        "The applicant must be an accredited Norwegian higher education institution",
-        "The application must include at least one accredited partner higher education institution from a NORPART partner country"
-      ],
-      "eligibility_summary": "Supports academic cooperation and student mobility between Norwegian universities and partner institutions in developing countries. Covers tuition, travel, and living costs. Open to students from Ethiopia, Ghana, Kenya, Malawi, Mozambique, Nigeria, Rwanda, South Africa, Tanzania, Uganda. Bangladesh NOT currently listed as NORPART partner country — verify with home institution. Students can only access through home institution's partnership agreement — no individual applications.",
-      "benefits": [
-        "Tuition fees",
-        "Travel costs",
-        "Living costs (varies by partnership)"
-      ],
-      "coverage": [
-        "Tuition fees",
-        "Travel costs",
-        "Living costs (varies by partnership)"
-      ],
-      "requirements": [
-        "Applicants must apply through the HK-dir call for applications after confirming their eligibility and project criteria",
-        "Applications must be submitted in English"
-      ],
-      "documents": [
-        "A signed version of HK-dir's declaration of participation from the person in the applicant organisation with legal responsibility for the application.",
-        "Letters of commitment from all project partners, excluding the applicant institution, documenting their interest in and commitment to the project by the leadership at the relevant level.",
-        "A curriculum vitae (CV) for the project coordinator at the applicant institution."
-      ],
-      "required_documents": [
-        "A signed version of HK-dir's declaration of participation from the person in the applicant organisation with legal responsibility for the application.",
-        "Letters of commitment from all project partners, excluding the applicant institution, documenting their interest in and commitment to the project by the leadership at the relevant level.",
-        "A curriculum vitae (CV) for the project coordinator at the applicant institution."
-      ],
-      "english_requirement": "Applications must be submitted in English",
-      "application_method": [
-        "Only accredited Norwegian higher education institutions may apply, and the deadline is set in the call for applications",
-        "Applications are submitted through the HK-dir application portal in English"
-      ],
-      "selection_notes": "Relevance of the project (30%)\nQuality of project design and implementation (30%)\nQuality of the project group and collaborative structures (20%)\nProject impact (20%)\nTo qualify for a grant, all final sub-grades must be higher than 2, and at least three out of four sub-grades must be 4 or higher.",
-      "program_type": "Norwegian Directorate for Higher Education and Skills institutional collaboration grant, not a student scholarship",
-      "best_fit": "Students at institutions with NORPART partnership agreements (Bangladesh needs_review)",
       "last_verified_date": "2026-10-11",
       "notes": null
     },
@@ -95833,111 +95704,6 @@
       "best_fit": "Only for PhD-track or postgraduate researchers who already have an academic connection in Switzerland - not usable for undergraduate applicants",
       "last_verified_date": "2026-10-10",
       "notes": "Application now fully online via go.eskas.ch (embassy paper submission discontinued as of 2026-27 cycle). Requires securing a Swiss academic mentor/supervisor BEFORE applying - this is the hardest and most time-consuming step, start it months in advance."
-    },
-    {
-      "id": 729,
-      "title": "Vanier Canada Graduate Scholarship",
-      "name": "Vanier Canada Graduate Scholarship",
-      "country": "Canada",
-      "degree": "PhD only",
-      "degree_levels": "PhD only",
-      "funding": "Fully Funded",
-      "funding_type": "Fully Funded",
-      "funding_amount": 50000,
-      "funding_currency": "CAD",
-      "funding_period": "per year",
-      "tuition_coverage": null,
-      "official_source_urls": [
-        "https://vanier.gc.ca/en/home-accueil.html"
-      ],
-      "source_citations": [
-        "https://vanier.gc.ca/en/home-accueil.html"
-      ],
-      "applicant_utility": {
-        "summary": "Read the first line of the official homepage before anything else: Vanier is no longer accepting applications, and the tri-agencies now run doctoral funding through the harmonized Canada Graduate Research Scholarship - Doctoral programme instead. If you are building a Canadian PhD funding plan in this cycle, direct your effort at CGRS-D and your target university's internal nomination process. The $50,000-per-year figure remains useful only as historical context for what Vanier awarded and as a benchmark when comparing current university packages.",
-        "best_fit": "Historically, doctoral students whom a Canadian institution chose to nominate; the live successor route is now CGRS-D.",
-        "application_readiness_checklist": [
-          "Open the Canada Graduate Research Scholarship - Doctoral page on NSERC's site and re-target your plan there",
-          "Ask prospective supervisors whether their department submits internal nominations and by what internal date",
-          "Keep evidence of academic excellence, research potential and leadership ready - the old Vanier weighting is the best preview of how the harmonized programme assesses candidates",
-          "Check that your university holds a quota before scheduling around national dates"
-        ],
-        "common_rejection_risks": [
-          "Applying directly as an individual - Vanier-style awards require the institution to nominate",
-          "Relying on third-party listings that still describe the programme as open",
-          "Confusing the closed federal award with university-funded doctoral packages"
-        ],
-        "document_audit": [
-          "The institution handles nomination, so the real gate is your department's internal deadline, which sits well before any national date"
-        ],
-        "alerts": [
-          "Vanier CGS no longer accepts applications - any page still soliciting them is out of date",
-          "The successor CGRS-D may carry different values and rules; verify them there rather than relying on the $50,000 figure"
-        ],
-        "submission_workflow": "Institution-nominated only; with Vanier closed, the equivalent route is the harmonized CGRS-D applied for through the Canadian institution."
-      },
-      "deadline": "30 October 2024, 20:00 Eastern (last published cycle - programme now closed)",
-      "deadline_date": "2024-10-30",
-      "deadline_precision": "day",
-      "status": "closed",
-      "verified": true,
-      "last_verified_at": "2026-10-11",
-      "verification_status": "active",
-      "official_source_url": "https://vanier.gc.ca",
-      "updated_at": "2026-10-11T07:55:16",
-      "image_url": null,
-      "image_source_type": null,
-      "image_kind": null,
-      "description": "Named after Major-General Georges P. Vanier, the Vanier Canada Graduate Scholarships program helps Canadian institutions attract highly qualified doctoral students, and is jointly administered by CIHR, NSERC and SSHRC.",
-      "region": "Canada",
-      "duration": "Three years at $50,000 per year during doctoral studies",
-      "application_period": null,
-      "official_source": null,
-      "catalogue_url": null,
-      "official_updates_url": "https://vanier.gc.ca/en/nomination_process-processus_de_mise_en_candidature_overview.html",
-      "application_link": "https://vanier.gc.ca",
-      "image_source_url": null,
-      "image_verified_at": null,
-      "image_alt_text": null,
-      "eligibility": [
-        "Candidates must be nominated by a Canadian institution holding a Vanier quota",
-        "Citizenship: Canadian citizens, permanent residents of Canada, or foreign citizens",
-        "Areas of research: health research, natural sciences and/or engineering, or social sciences and humanities"
-      ],
-      "eligibility_summary": "Nominated by Canadian university, first year of PhD, world-class academic record, leadership",
-      "benefits": [
-        "CAD 50,000/year for 3 years"
-      ],
-      "coverage": [
-        "CAD 50,000/year for 3 years"
-      ],
-      "requirements": [
-        "Candidates should seek a nomination only from the institution at which they want to study"
-      ],
-      "documents": [
-        "University nomination required",
-        "Transcripts",
-        "Research proposal",
-        "References",
-        "Leadership CV"
-      ],
-      "required_documents": [
-        "University nomination required",
-        "Transcripts",
-        "Research proposal",
-        "References",
-        "Leadership CV"
-      ],
-      "english_requirement": "As per nominating university",
-      "application_method": [
-        "Gain admission to a doctoral programme at a Canadian institution",
-        "Seek the institution's internal nomination; the institution forwards the candidate to the national competition within its quota"
-      ],
-      "selection_notes": "Academic Excellence\nResearch Potential\nLeadership (potential and demonstrated ability)",
-      "program_type": "Federal doctoral scholarship (tri-agency)",
-      "best_fit": "Elite PhD researchers — cannot apply directly, must be nominated",
-      "last_verified_date": "2026-10-11",
-      "notes": "Cannot apply directly. Must first gain admission to a Canadian university PhD program and be nominated."
     }
   ]
 }

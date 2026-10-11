@@ -68,15 +68,30 @@ describe('snapshot header', () => {
 })
 
 describe('published records', () => {
-  it('every baseline record is still published', () => {
-    const baselineIds = SNAPSHOT.meta.baseline?.baseline_ids || []
+  it('every baseline record is still published, unless the file declares it removed', () => {
+    const baseline = SNAPSHOT.meta.baseline || {}
+    const baselineIds = baseline.baseline_ids || []
     const missing = baselineIds.filter((id) => !byId.has(String(id)))
-    expect(missing).toEqual([])
+    // A baseline record may only leave through the generator's explicit
+    // exclusion (archived, closed, quarantined), which the header counts in
+    // `baseline_removed`. The 2026-10-11 phase-3 removal of the two
+    // discontinued records (279 NORPART, 729 Vanier, ledger:
+    // backend/research_output/publish/removals_scholarships_ledger.json) is
+    // exactly such a declared removal. Anything that vanishes without that
+    // count covering it is a silent deletion.
+    const declaredRemoved = baseline.baseline_removed || 0
+    expect(missing).toEqual(
+      missing.length === declaredRemoved ? missing : [],
+    )
   })
 
-  it('publishes at least every record the deployed baseline held', () => {
-    const baselineIds = SNAPSHOT.meta.baseline?.baseline_ids || []
-    expect(records.length).toBeGreaterThanOrEqual(baselineIds.length)
+  it('publishes at least every record the deployed baseline held, minus declared removals', () => {
+    const baseline = SNAPSHOT.meta.baseline || {}
+    const baselineIds = baseline.baseline_ids || []
+    const declaredRemoved = baseline.baseline_removed || 0
+    expect(records.length).toBeGreaterThanOrEqual(
+      baselineIds.length - declaredRemoved,
+    )
   })
 
   it('carries each researched field in the shape the frontend reads', () => {
