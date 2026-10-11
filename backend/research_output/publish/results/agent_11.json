@@ -1,0 +1,179 @@
+{
+  "agent": "agent-11",
+  "records": [
+    {
+      "id": 71,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://www.ucl.ac.uk/scholarships/ucl-global-masters-scholarship",
+        "https://www.ucl.ac.uk/scholarships/international-masters-awards"
+      ],
+      "page_evidence": "Scholarship page: \"Deadline: 5pm BST, Thursday 7 May 2026\" (passed; today 2026-10-11); \"Results: Shortlisted candidates will be contacted mid May... successful candidates will typically be informed by late June\" (2026/27 round completed). UCL International Masters Awards page (the application umbrella under which this scholarship sits): \"we are able to offer a variety of awards to international Masters students each year\" and \"Listed below are the schemes that are available to those starting in the academic year 2026/27\" with \"Deadline: 5pm BST, Thursday 7 May 2026\". Recurrence evidence: 'variety of awards to international Masters students each year'; no 2027/28 deadline is published as of 2026-10-11, so next deadline is null.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "£15,000 (for one year); \"There are up to 85 (eighty-five) scholarships available in 2026/27\"",
+      "department_or_programme": "UCL Global Master's Scholarship for international students from lower income backgrounds on all UCL postgraduate taught (Master's) programmes; applied for via the UCL International Masters Awards",
+      "logo_or_image_url": "https://cdn.ucl.ac.uk/indigo/images/ucl-logo.svg",
+      "confidence": 0.75,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 134,
+      "classification": "temporarily_closed_awaiting_announcement",
+      "official_evidence_urls": [
+        "https://bandi.unibo.it/s/diri/bando-international-talents-unibo-borse-di-studio-per-studenti-internazionali-che-si-immatricolano-ai-corsi-di-laurea-magistrale-dell-universita-di-bologna-per-l-a-a-2025-26",
+        "https://bandi.unibo.it/agevolazioni/opportunita",
+        "https://bandi.unibo.it/agevolazioni/opportunita/scadute/"
+      ],
+      "page_evidence": "The published a.a. 2025/26 call page shows \"scadenza: 30 maggio 2025, 12:00\" (deadline passed 30 May 2025). The call is titled \"Bando International Talents @unibo borse di studio per studenti internazionali che si immatricolano ai Corsi di Laurea Magistrale dell'Università di Bologna, per l'a.a. 2025/26\" (per-academic-year edition). The bandi portal's open opportunities list (\"81 opportunità disponibili\", 63 open bandi, fetched 2026-10-11) contains NO International Talents call, and the 2026 expired-calls archive (199 scaduti; pages covering all 2026 expiry dates through ~May 2026 inspected) shows no 2026/27 International Talents edition. No successor call and no next application date are announced on the portal. The scheme is established and issued per academic year, but with no 2026/27 edition published even though that academic year has begun, recurrence could not be evidenced from the pages, so it is classified closed-awaiting-announcement rather than recurring.",
+      "next_deadline_or_window": null,
+      "funding_on_page": null,
+      "department_or_programme": "Bando International Talents @unibo — scholarships for international students enrolling in second-cycle degree programmes (Corsi di Laurea Magistrale) of the Università di Bologna, administered by the university's bandi portal (Di.R.I.)",
+      "logo_or_image_url": null,
+      "confidence": 0.55,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 204,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://www.mq.edu.au/research/phd-and-research-degrees/how-to-apply/scholarship-opportunities/scholarship-search/international-scholarship-round"
+      ],
+      "page_evidence": "Page: \"Applications open 15 June 2026, close 31 July 2026 at 11pm\" (closed); \"Outcomes will be available in early October 2026. If you do not receive an outcome notification by 15 November 2026, please consider your application as unsuccessful\"; \"please note that we cannot hold over your application to the next round\"; \"If you miss the deadline you will need to re-apply for the next round\" (explicit expectation of a next round). Annual RTP rounds. No next-round date is published as of 2026-10-11, so next deadline is null.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "\"living allowance stipend for up to three years ($40,900 per annum (2026 rate))\"; table shows \"Stipend $40,900 p.a. (2027 rate)\"; plus tuition fees offsets and a travel concession",
+      "department_or_programme": "International Research Training Program (iRTP), Australian Government Research Training Program (RTP) scheme administered by the Macquarie University Research Office; for MRes/Master of Philosophy and PhD research degrees with a principal supervisor",
+      "logo_or_image_url": null,
+      "confidence": 0.9,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 248,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://hea.ie/policy/internationalisation/goi-ies"
+      ],
+      "page_evidence": "Headline: \"Government of Ireland International Education Scholarships 2026 Call Closed\". Key dates table: \"2026 Application deadline 5pm (Irish time) 12 March 2026\" (passed); \"2026 Call outcome Early June 2026\" (done). Overview: \"60 scholarships are awarded each year for one year of full-time study\" (explicit annual recurrence); \"The programme started in 2010 and under the Global Citizens 2030 strategy... has been expanded and linked to Global Citizens 2030\". No 2027 call dates published as of 2026-10-11, so next deadline is null.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "\"The Scholarship provides an annual stipend to selected Scholars for the year of study... These awards provide a stipend for a period of one year... providing scholars with a €10,000 stipend and a fee waiver from the relevant Higher Education Institution\"",
+      "department_or_programme": "Government of Ireland International Education Scholarships (GOI-IES), administered by the Higher Education Authority (HEA) of Ireland; any full-time taught Master's or PhD programme at an eligible Irish higher education institution",
+      "logo_or_image_url": "https://hea.ie/assets/themes/hea/images/funders/gov.svg",
+      "confidence": 0.85,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 290,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme/about-the-programme",
+        "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme/call-for-proposals-26"
+      ],
+      "page_evidence": "Call-for-proposals page body: \"ANNOUNCEMENT OF THE CALL FOR APPLICATIONS FOR PARTICIPATION IN THE Poland My First Choice NAWA programme No 19/2026 of 30th April 2026\" with a linked announcement PDF (the PDF returned unreadable binary to the fetch tool, so its exact submission deadline could not be re-verified from the page). The 2026 call (announced 30 April 2026) has passed; the page carries no 2027 call as of 2026-10-11. Recurrence evidence: the programme menu lists \"Call results\" and \"Closed calls\" sections for this programme, and the call page links announcement PDFs for previous years (\"no 13/2025 of 13th march 2025\", \"Ogloszenie_PMFC_2024_EN-2025\"), i.e. annual call editions. About-the-programme page describes an ongoing scheme.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "\"The Programme offers a scholarship during the statutory period of full-time second-cycle studies at academic HEIs... In addition, the Programme provides an exemption from tuition fees at public universities\" (no PLN amount stated on the fetched pages)",
+      "department_or_programme": "Poland My First Choice NAWA programme - scholarships for foreign students to undertake second-cycle (Master's) studies at Polish university-type higher education institutions, administered by the Polish National Agency for Academic Exchange (NAWA)",
+      "logo_or_image_url": "https://nawa.gov.pl/images/rozszerzenia/szablony/siteb3/logo-komputer-en.png",
+      "confidence": 0.75,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 317,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://yz.tsinghua.edu.cn/en/info/1027/1477.htm"
+      ],
+      "page_evidence": "Page title: \"2026 Asian Future Leaders Scholarship Program (Scholarship for 2027 is coming soon)\". Body: \"Application period will be 16th December 2025 to 1st March 2026\"; \"The deadline for applications is March 1, 2026\" (Beijing Time, passed); \"The selected results will be informed by the end of May 2026\" (round completed). Explicit next-call wording in title and body: \"**2026 Asian Future Leaders Scholarship Program（Scholarship for 2027 is coming soon）**\". No 2027 date is published, so next deadline is null.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "\"The AFLSP offers successful candidates scholarships for one or two years including: Tuition fees; Living allowance (including accommodation, books or other materials, etc) and other fees\" (no monetary amount stated on the page)",
+      "department_or_programme": "Asian Future Leaders Scholarship Program (AFLSP), co-sponsored by BXAI (Bai Xian Asia Institute), for full-time international master's students at Tsinghua University; applications are submitted through the target dept/school of the applicant's chosen master's programme",
+      "logo_or_image_url": "https://yz.tsinghua.edu.cn/en/image/logo.png",
+      "confidence": 0.9,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 360,
+      "classification": "uncertain",
+      "official_evidence_urls": [
+        "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/"
+      ],
+      "page_evidence": "The official JASSO/Study in Japan government page (studyinjapan.go.jp) was read: it describes \"7 types of Japanese Government (MEXT) Scholarships\" (Research Students; Undergraduate Students; Trainee-Teachers/Specialized Training; Japanese Studies Students; Young Leaders Students; College of Technology; Graduate Students) and application via \"a Japanese diplomatic mission abroad (embassy or consulate)\" or university recommendation, with \"Research students will be provided with a monthly stipend of ¥143,000～145,000\", tuition fees exempted and round-trip airfare - but it publishes NO application window, deadline, or open/closed status for the current cycle. The Embassy of Japan in India page (https://www.in.emb-japan.go.jp/education/japanese_government_scholarships.html), which per the record carried the status table, returned HTTP 403 on two attempts and could not be read. Since no fetched official page states the current status, this record is uncertain. Local record evidence (prior verification of the embassy page, not re-verifiable): the 2027 Research Student row showed \"Applications closed for 2027\"; MEXT scholarships are an annual government scheme, but that cannot be confirmed from the pages fetched today.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "\"Research students will be provided with a monthly stipend of ¥143,000～145,000\"; \"The University will... School fees are exempted\"; \"round-trip airfare... will be provided\"",
+      "department_or_programme": "Japanese Government (MEXT) Scholarship - seven categories (Research Students, Undergraduate Students, Trainee-Teachers/Specialized Training, Japanese Studies Students, Young Leaders Students, College of Technology Students, Graduate Students via university recommendation); administered by the Japanese Ministry of Education, Culture, Sports, Science and Technology (MEXT)",
+      "logo_or_image_url": null,
+      "confidence": 0.35,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 402,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://www.rhodeshouse.ox.ac.uk/scholarships/applications/",
+        "https://www.rhodeshouse.ox.ac.uk/scholarships/new-zealand/",
+        "https://www.universitiesnz.ac.nz/scholarships/rhodes-scholarship-new-zealand",
+        "https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship/"
+      ],
+      "page_evidence": "Rhodes Trust applications page: \"Applications for the Rhodes Scholarship are now closed. You can sign up to our mailing list to be notified when applications reopen in 2027, for entry to University of Oxford in 2028.\" (explicit next-call expected wording). Rhodes New Zealand page: \"Opening date: 1 June 2026; Closing date: 23:50 New Zealand Standard Time, 4 August 2026\" (passed); \"There are 3 Scholarships available each year for New Zealand\". Universities NZ page: \"Established in 1903...\"; \"Up to three scholars are elected from New Zealand each year\"; \"Opening date 1 June 2026. Closing date 4 August 2026. Decisions made November 2026.\" Next exact date not published, so next deadline is null.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "\"For the 2025-26 academic year, the stipend is £20,400 per annum (£1,700 per month)\"; \"The Rhodes Scholarship covers University of Oxford course fees, as well as providing an annual stipend\"; also covers the Oxford application fee, student visa/IHS fees and two economy-class flights",
+      "department_or_programme": "Rhodes Scholarship for New Zealand - the Rhodes Trust (Rhodes House, University of Oxford) with Universities New Zealand; fully-funded postgraduate study at the University of Oxford",
+      "logo_or_image_url": "https://www.rhodeshouse.ox.ac.uk/modern/images/rhodes-logo-main-dark.3ba69162169c8985b226.svg",
+      "confidence": 0.9,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 449,
+      "classification": "upcoming_or_current_intake",
+      "official_evidence_urls": [],
+      "page_evidence": "FAILURE: all three listed official SUSS URLs returned HTTP 403 (bot-blocked) on 2026-10-11 - https://www.suss.edu.sg/academics/programmes/graduate-programmes/admissions/financial-assistance/scholarship, the 7 January 2026 SUSS news page (moe-subsidies-and-research-scholarship-for-suss-graduate-by-research-programmes), and https://www.suss.edu.sg/programmes/detail/doctor-of-philosophy-phdg. No official page could be read, so per the audit rule this concludes from local record evidence at low confidence: the record's official_status_note (from a prior verification of these same official pages) states that all applications for the Jan 2027 intake had to be submitted and complete by 31 August 2026 and that \"The next window is the July semester, with applications due by 28 February 2027\" - i.e. a living/next intake window applies to the July semester with a 28 February 2027 deadline.",
+      "next_deadline_or_window": "July semester intake - applications due by 28 February 2027 (from the record's prior verification of the official page; suss.edu.sg returned HTTP 403 and could not be re-read at audit time)",
+      "funding_on_page": null,
+      "department_or_programme": null,
+      "logo_or_image_url": null,
+      "confidence": 0.4,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 609,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://www.kdischool.ac.kr/menu.es?mid=a40203000000",
+        "https://www.kdischool.ac.kr/menu.es?mid=a40201000000"
+      ],
+      "page_evidence": "KDI School Scholarships page: \"Seoul G20 Global Leaders Scholarship... Admissions Period: Spring & Fall Admissions (Master only)\"; \"Benefits: Full tuition waiver, monthly stipend, and round-trip airfare\"; \"No separate application for scholarship is required\" (explicit periodicity: offered in each Spring and Fall admission round). KDI School Admission Calendar (October 2026 view): \"09.28 ~ 10.02 [Spring 2027] Interview Period\"; \"10.19 [Spring 2027] Final Result Announcement\" - the Spring 2027 round has passed its application period (per record: 5-14 August 2026) and is in selection. No Fall 2027 application dates are published as of 2026-10-11, so next deadline is null.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "\"Full tuition waiver, monthly stipend, and round-trip airfare\" (no amounts stated on the page)",
+      "department_or_programme": "Seoul G20 Global Leaders Scholarship at the KDI School of Public Policy and Management - full-time Master's programmes (about 1.5 years, 4 semesters); aimed at public-sector professionals/global leaders from G20 and non-G20 countries",
+      "logo_or_image_url": "https://www.kdischool.ac.kr/admissions/img/layout/logo.png",
+      "confidence": 0.7,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 661,
+      "classification": "temporarily_closed_awaiting_announcement",
+      "official_evidence_urls": [
+        "https://aurorafoundation.com.au/cancer-scholarship",
+        "https://aurorafoundation.com.au/our-work/indigenous-pathways-portal/scholarships/first-nations-cancer-scholarship"
+      ],
+      "page_evidence": "Aurora Indigenous Pathways Portal scholarship-details page shows \"Open: 16/06/2026\", \"Close: 11/09/2026\", status \"Closed\" and \"$120000 approx. total\", \"3 Years\", \"4 scholarships offered\" - the 2026 round closed 11 September 2026 with no next dates published. Programme page FAQ: \"Up to four scholarships will be awarded yearly from 2024 to 2026\" - the funded rounds are stated to run 2024 to 2026; neither page announces a 2027 round or dates. Reviewer note: the \"from 2024 to 2026\" funding statement may mean the programme's funded rounds conclude in 2026, so this should be re-checked in 2027 before treating it as an annually recurring round.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "\"each scholarship is valued at up to $120,000 AUD per year, for up to three years\"; \"up to $5,000 AUD per year in tailored academic and wellbeing support\"; \"The First Nations Cancer Scholarship Program is funded by the Australian Government through Cancer Australia\"",
+      "department_or_programme": "First Nations Cancer Scholarship - established by the Aurora Education Foundation (Aurora) with Cancer Australia; for Aboriginal and Torres Strait Islander graduate students, health professionals and early-career researchers undertaking full-time postgraduate study or research in a cancer-related field at recognised universities/institutes in Australia, the US or UK",
+      "logo_or_image_url": "https://aurorafoundation.com.au/wp-content/themes/aurora-foundation/assets/programs/graphics/aurora-fncs_transparent.svg",
+      "confidence": 0.7,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 704,
+      "classification": "uncertain",
+      "official_evidence_urls": [],
+      "page_evidence": "FAILURE: both listed HEC official URLs returned transport errors (site unreachable from this environment) on repeated attempts on 2026-10-11: https://www.hec.gov.pk/english/scholarshipsgrants/CAFC/AMIC/Pages/default.aspx and https://www.hec.gov.pk/english/scholarshipsgrants/CAFC/Pages/default.aspx. No official page could be read, so per the audit rule this concludes from local record evidence at low confidence: the record's official_status_note states that HEC's pages describe the programme and its benefits but publish no open application window, and that \"the scheme is delivered as a multi-year programme rather than a single annual round\"; the record itself states \"No deadline published; HEC runs the scheme as a multi-year programme\", so the catalogue's closed label rests on a recorded deadline (2026-08-10) that is not published by HEC. Current intake status could not be verified.",
+      "next_deadline_or_window": null,
+      "funding_on_page": null,
+      "department_or_programme": null,
+      "logo_or_image_url": null,
+      "confidence": 0.3,
+      "last_checked_date": "2026-10-11"
+    }
+  ],
+  "notes": "Audit date 2026-10-11; 12 records audited. Bucket counts: recurring_next_intake_expected 7 (ids 71, 204, 248, 290, 317, 402, 609); temporarily_closed_awaiting_announcement 2 (ids 134, 661); upcoming_or_current_intake 1 (id 449, low confidence); uncertain 2 (ids 360, 704); genuinely_discontinued 0. Key reviewer caveats: (1) ids 449, 360, 704 could not be verified live - all listed suss.edu.sg URLs returned HTTP 403, the Embassy of Japan in India page returned HTTP 403, and both hec.gov.pk URLs returned transport errors; only the JASSO studyinjapan.go.jp MEXT page was readable and it states no intake status. Their classifications rest on the records' prior local evidence, marked low confidence. (2) For id 290 (NAWA) the linked 2026 announcement PDF returned unreadable binary to the fetch tool, so the 2026 call's exact submission deadline was not re-verified from the page; the classification relies on the announcement itself (No 19/2026 of 30 April 2026), the programme's 'Closed calls'/'Call results' history and previous-year announcement links. (3) For id 134 (unibo), no 2026/27 International Talents edition exists in the portal's open list or 2026 expired-calls archive (pages covering all expiry dates through ~May 2026 inspected), 499 days after the last deadline - recurrence could not be evidenced from the pages, hence closed-awaiting-announcement rather than recurring. (4) For id 609 (KDI), the record's official_urls list includes non-awarding-body URLs (aims.ac.za, sutd.edu.sg); per the awarding-body-only rule these were excluded and the KDI School official_source_url plus the KDI admission calendar (same official domain) were used. Similarly, non-awarding-body URLs in lists for ids 134 (siss.it, uts.edu.au), 290 (anr.fr, china-embassy, sutd.edu.sg, aims.ac.za) and 661 (study.csp.work et al.) were excluded. (5) id 661 (Aurora) page states 'Up to four scholarships will be awarded yearly from 2024 to 2026' - the 2026 round is closed with no announced next date; the funding horizon may indicate conclusion after 2026, so re-check in 2027. (6) Logos are included only where the image URL was fetched and rendered from the awarding body's own domain: UCL, HEA/Government of Ireland, NAWA, Tsinghua yz, Rhodes Trust, KDI School, Aurora. (7) No records show authoritative evidence of discontinuation; no deadlines, amounts, departments or logos were invented - unverifiable fields are null with the reason in page_evidence."
+}

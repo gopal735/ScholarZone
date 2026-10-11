@@ -1,0 +1,179 @@
+{
+  "agent": "agent-12",
+  "records": [
+    {
+      "id": 72,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://www.ucl.ac.uk/scholarships/ucl-humanitarian-scholarship",
+        "https://www.ucl.ac.uk/scholarships/international-masters-awards"
+      ],
+      "page_evidence": "Humanitarian Scholarship page: 'Deadline: 5pm BST, Thursday 7 May 2026' and 'successful candidates will typically be informed by late June'; 'There are up to 3 (three) scholarships available in 2026/27'. The 2026/27 round has closed (7 May 2026 passed). Recurrence evidence from the International Masters Awards page, which lists the Humanitarian Scholarship among its schemes: 'we are able to offer a variety of awards to international Masters students each year' and 'the schemes that are available to those starting in the academic year 2026/27'. No 2027/28 deadline is published yet.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "Tuition fees and a maintenance payment to cover accommodation and living costs (approx. £20,000) for the normal course duration; allowance to cover the Immigration Health Surcharge, visa fees and one return flight; tenable one year only unless the programme is 2yrs.",
+      "department_or_programme": "UCL Humanitarian Scholarship, administered by the UCL Student Funding Office within the International Masters Awards; eligible programmes: all postgraduate taught full-time programmes.",
+      "logo_or_image_url": "https://cdn.ucl.ac.uk/indigo/images/ucl-logo.svg",
+      "confidence": 0.75,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 138,
+      "classification": "temporarily_closed_awaiting_announcement",
+      "official_evidence_urls": [
+        "https://apply.unimib.it/en_GB/news/new/38-scholarship-programs",
+        "https://apply.unimib.it/en_GB/news/new/46-scholarship-rankings",
+        "https://apply.unimib.it/en_GB/news/new/39-apply-202627-admission-calls-and-deadlines"
+      ],
+      "page_evidence": "SCHOLARSHIP Programs (15 Sept 2026): 'The scholarship amounts to €10,000 per year (gross), plus an exemption from tuition fees.' SCHOLARSHIP Rankings (5 Sept 2026): 'the rankings for the Bicocca International Scholarship Program (BISP) for Master's degrees with open access have been published' - the 2026/27 round is complete, and the portal's admission-calls page lists only 2026/27 calls (latest: 7 July - 7 September 2026), all closed. No 2027/2028 dates are published. The en.unimib.it pages and the Bando BISP PDF returned HTTP 403 on every attempt, so status was verified through the university's own official application portal apply.unimib.it.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "€10,000 per year (gross), plus an exemption from tuition fees.",
+      "department_or_programme": "Bicocca International Scholarship Programme (BISP) - awarded to the top student for each Bachelor's and Master's degree programme taught in English, including single-cycle degree programmes; no separate application required.",
+      "logo_or_image_url": null,
+      "confidence": 0.65,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 208,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://en.snu.ac.kr/admission/graduate/scholarships/before_application"
+      ],
+      "page_evidence": "SNU President Fellowship Program (SPF) section: 'Application Period: During admission period for international students every semester' and page introduction: 'The annual announcement will be posted on this website.' Also: 'Living expenses: 1, 500,000 KRW ~ 2,000,000 KRW per month for 3~4 years' and 'Tuition fee: full tuition exemption for a maximum of 6 semesters'. The July 2026 application window has closed; the programme runs every semester with annual announcements, so a next intake is expected, but no future dates are published on this page (the other listed URLs, /admission/graduate/financial_support/scholarships and oga.snu.ac.kr/en/notice/view/1940, returned 404).",
+      "next_deadline_or_window": null,
+      "funding_on_page": "Full tuition exemption for a maximum of 6 semesters; living expenses of 1,500,000 KRW ~ 2,000,000 KRW per month for 3-4 years; round-trip airfare (economy class); Korean language training; National Health Insurance fee reimbursement.",
+      "department_or_programme": "SNU President Fellowship Program (SPF) - PhD study at Seoul National University, applied via the Office of Graduate Admission / Office of Global Affairs.",
+      "logo_or_image_url": null,
+      "confidence": 0.8,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 251,
+      "classification": "temporarily_closed_awaiting_announcement",
+      "official_evidence_urls": [
+        "https://www.tcd.ie/study/international/scholarships/undergraduate/geug.php",
+        "https://www.tcd.ie/study/international/scholarships/undergraduate/"
+      ],
+      "page_evidence": "'Final deadlines for each region are listed below... Africa: 1 May 2026; Central, North and South America: 1 April 2026; South East Asia and Oceania: 15 July 2026; All other regions: 15 June 2026' - all four regional deadlines for the 2026/2027 cycle have passed; eligibility text refers to a course offer 'for academic year 2026/2027'; page footer 'Updated 3 June 2026'. Neither this page nor the parent international undergraduate scholarships listing publishes any 2027/2028 dates.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "Scholarships range in value between €2,000 and €5,000 depending on the region; applied as a reduction to the year one tuition fees of a full-time undergraduate programme.",
+      "department_or_programme": "Global Excellence Undergraduate Scholarships - Trinity College Dublin, The University of Dublin; full-time undergraduate degree programmes (academic year 2026/2027).",
+      "logo_or_image_url": null,
+      "confidence": 0.7,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 294,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://msmt.gov.cz/eu-a-zahranici/studium-cizincu-v-cr/stipendia-vlady-cr-rozvojove-zeme-2"
+      ],
+      "page_evidence": "'Termín pro podání přihlášek na akademický rok 2027/2028 je 30. září 2026.' (The application deadline for the 2027/2028 academic year is 30 September 2026 - now passed) and 'Žádost o stipendium se podává elektronicky nejpozději do 30. září 2026. Úspěšný uchazeč nastupuje ke studiu v akademickém roce 2027/2028.' Recurrence evidence: the programme 'má dlouhodobou tradici' (has a long-standing tradition) and 'Od konce 50. let minulého století do současnosti absolvovalo studium na vysokých školách se stipendiem vlády České republiky více než 20 tisíc cizinců' (more than 20,000 foreign graduates since the late 1950s). No next-call date is published yet. The English URL recorded in the catalogue now returns 'Stránka nenalezena' (404); the official Czech-language MŠMT page was used.",
+      "next_deadline_or_window": null,
+      "funding_on_page": null,
+      "department_or_programme": "Scholarships of the Government of the Czech Republic for students from developing countries - selected follow-up Master's programmes (in English, or in Czech with a one-year preparatory course) and selected Doctoral programmes at public higher education institutions; administered by the Ministry of Education, Youth and Sports (MŠMT) with Dům zahraniční spolupráce (DZS).",
+      "logo_or_image_url": "https://msmt.gov.cz/_next/static/media/logo-cs.1qdm9b5a7bra9.svg",
+      "confidence": 0.65,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 319,
+      "classification": "temporarily_closed_awaiting_announcement",
+      "official_evidence_urls": [
+        "https://iso.fudan.edu.cn/isoenglish/82/fe/c17458a754430/page.htm",
+        "https://iso.fudan.edu.cn/isoenglish/51337/list.htm",
+        "https://iso.fudan.edu.cn/isoenglish/51314/list.htm"
+      ],
+      "page_evidence": "The official notice page is titled '2026 Chinese Government Scholarship（Chinese University Program）for International Students of Fudan University' with 'Publisher：张向荣 Publish Time：2025-10-31' - it is the 2026-cycle call (application period October-December 2025), which is long past. The notice body is delivered as page images, so its dates/amounts are not machine-readable from the fetched page. The ISO admissions list and scholarship documents list (latest entries dated 2025-07-09; unrelated forms dated 2026-10-09) show no newer 2027 call, and no next-cycle date is published.",
+      "next_deadline_or_window": null,
+      "funding_on_page": null,
+      "department_or_programme": "Chinese Government Scholarship (Chinese University Program) at Fudan University - International Students Office (ISO); undergraduate, master's and doctoral programmes.",
+      "logo_or_image_url": null,
+      "confidence": 0.6,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 363,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://www.ireland.ie/en/ireland-fellows-programme/applying-for-the-ireland-fellows-programme/",
+        "https://www.ireland.ie/en/ireland-fellows-programme/"
+      ],
+      "page_evidence": "Applicants page: 'Applications for 2027/28 are now closed for the Africa, Latin America, SIDS, and Asia streams.' Programme overview: 'The Ireland Fellows Programme is one of Irish Aid's most longstanding programmes' and 'Almost 4,000 people have studied in Ireland over the past 50+ years as part of the programme' and 'The programme is fully funded by the Irish Government and is offered under the auspices of the Department of Foreign Affairs and Trade.' The 2027/28 round is closed and no next-round date is published; recurrence rests on the programme's 50+ year track record. Note: the page also advertises the separate Ireland-Palestine Scholarship Programme as 'currently open for applications... until October 20, 2026' - that is a different programme, not the Ireland Fellows Programme.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "The programme is fully funded by the Irish Government (no monetary amount stated on the page).",
+      "department_or_programme": "Ireland Fellows Programme - Department of Foreign Affairs and Trade (Irish Aid), Government of Ireland; one-year Master's-level study in Ireland.",
+      "logo_or_image_url": "https://assets.ireland.ie/images/EFP-logo-reverseDESK.original.png",
+      "confidence": 0.7,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 403,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://www.education.govt.nz/parents-and-caregivers/tertiary/available-assistance/ngarimu-vc-and-28th-maori-battalion-memorial-scholarships"
+      ],
+      "page_evidence": "'Applications to support study in 2027 closed on Sunday 19 July 2026. We expect to notify all applicants of outcomes by late November 2026.' and 'Applications to support study in 2028 will open mid-2027.' Also: 'The board awards scholarships every year to exceptional Māori students for vocational or tertiary study.' (Page last updated 30 July 2026.)",
+      "next_deadline_or_window": "Applications to support study in 2028 will open mid-2027 (exact opening date not published).",
+      "funding_on_page": "14 scholarships each year, funded by the Ngarimu VC and 28th (Māori) Battalion Memorial Scholarship Fund Board (NZ): 5 VET scholarships each valued at $10,000; 4 undergraduate scholarships each valued up to $30,000 ($10,000 per year of full-time study for up to 3 years); 3 master's scholarships valued up to $20,000; 1 Master of Education research scholarship valued up to $20,000; 1 doctoral scholarship valued up to $40,000 ($20,000 per year for up to 2 years).",
+      "department_or_programme": "Ngarimu VC and 28th (Māori) Battalion Memorial Scholarships - New Zealand Ministry of Education; vocational (NZQA levels 4-7), undergraduate, master's and doctoral scholarships.",
+      "logo_or_image_url": "https://www.education.govt.nz/_next/static/media/te-tahuhu-logo-black.8322ade7.svg",
+      "confidence": 0.9,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 450,
+      "classification": "temporarily_closed_awaiting_announcement",
+      "official_evidence_urls": [
+        "https://www.ntu.edu.sg/admissions/undergraduate/scholarships/scholarship-opportunities/detail/short-term-scholarships-administered-by-ntu"
+      ],
+      "page_evidence": "'Application for AY26-27 will open from 1 July to 31 July 2026.' - that window has closed; 'Scholarship interviews will take place in August to early October. Only shortlisted applicants will be informed via email by end-September to attend the interviews.' The page publishes no AY27-28 dates. Note the scholarship is for current NTU undergraduates/freshmen on subsidised tuition fees, not external applicants.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "The value of the scholarship ranges from $3,000 to $16,000 (SGD); tenable for one academic year.",
+      "department_or_programme": "Short Term Scholarships Administered by NTU - Office of Admissions, Student & Academic Services Department, Nanyang Technological University.",
+      "logo_or_image_url": "https://www.ntu.edu.sg/ResourcePackages/NTU/assets/images/NTU_Logo.png",
+      "confidence": 0.65,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 611,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://www.aciar.gov.au/sites/default/files/2025-12/John%20Allwright%20Fellowship_Factsheet.pdf"
+      ],
+      "page_evidence": "The live ACIAR page (https://www.aciar.gov.au/scholarships/john-allwright-fellowship) returned HTTP 403 and one factsheet URL returned 404; the official John Allwright Fellowship factsheet PDF (created 12 December 2025) returned content and states: 'Applications open 1 February - 30 April' and 'Apply: Online Australia Scholarship Information System', and describes the JAF as 'an opportunity to obtain formal postgraduate qualifications, such as a Master by Research or PhD degree at an Australian tertiary institution' - a fixed annual February-April window. The round documented by this factsheet closed on 30 April 2026; no dated next window is published in the fetched document.",
+      "next_deadline_or_window": null,
+      "funding_on_page": null,
+      "department_or_programme": "John Allwright Fellowship (JAF) - Australian Centre for International Agricultural Research (ACIAR); Master by Research or PhD at an Australian tertiary institution.",
+      "logo_or_image_url": null,
+      "confidence": 0.6,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 671,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://iucea.org/two-year-funded-masters-scholarships-for-cohort-4"
+      ],
+      "page_evidence": "'Opening date 20 August 2026' and 'Closing date 10 September 2026 · 17:00 EAT' - the Cohort 4 window has closed. Recurrence evidence: 'The Programme was launched in 2018 and has already supported 180 Master's students from across the East African Community through its first Phase. Building on the success of Phase I, Phase II commenced in October 2025 and is expected to support at least 280 students across three cohorts.' Timeline continues: 'Communication of successful students and host universities - December 2026' and 'Acceptance of scholarship offers and signing of scholarship agreements - December 2026'. No Cohort 5 dates are published.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "Up to 120 scholarships under this cohort: monthly stipend of EUR 380; arrival allowance EUR 200; lump-sum allowance of EUR 650 for study materials; one-time EUR 1,500 study and research allowance; full tuition fees payable directly to the host university; medical insurance; one return economy-class air ticket; visa/entry fee where required.",
+      "department_or_programme": "EAC Scholarship Programme (EACSP) Phase II, Cohort 4 - two-year funded Master's scholarships (KfW-funded), implemented by the Inter-University Council for East Africa (IUCEA); Master's programmes in Mathematics, Engineering, Informatics, Science, Technology and Business Science at EAC partner-state universities.",
+      "logo_or_image_url": "https://iucea.org/wp-content/uploads/2020/02/logo-2-1-1.png",
+      "confidence": 0.8,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 706,
+      "classification": "uncertain",
+      "official_evidence_urls": [],
+      "page_evidence": "Every official URL failed on 2026-10-11: 'Transport error (GET https://www.hec.gov.pk/english/scholarshipsgrants/pshecp/aiss/Pages/default.aspx)' and 'Transport error (GET https://www.hec.gov.pk/english/scholarshipsgrants/pshecp/Pages/default.aspx)'. No official Higher Education Commission (HEC) page could be read, so the current intake status cannot be confirmed from an authoritative source. Local catalogue evidence only (not verified by fetch): recorded deadline 25 June 2026.",
+      "next_deadline_or_window": null,
+      "funding_on_page": null,
+      "department_or_programme": null,
+      "logo_or_image_url": null,
+      "confidence": 0.2,
+      "last_checked_date": "2026-10-11"
+    }
+  ],
+  "notes": "Counts: recurring_next_intake_expected = 7 (ids 72, 208, 294, 363, 403, 611, 671); temporarily_closed_awaiting_announcement = 4 (ids 138, 251, 319, 450); genuinely_discontinued = 0; upcoming_or_current_intake = 0; uncertain = 1 (id 706). Reviewer notes: (1) id 706 (HEC Pakistan) is unverifiable - hec.gov.cz-style transport errors blocked both official URLs, so it is 'uncertain' at low confidence; do not flip to 'closed' without a successful official fetch. (2) id 294 (Czech) and id 363 (Ireland Fellows) are classified 'recurring' on long-running-programme evidence (since the 1950s / 50+ years) although neither page publishes a next-round date; both could equally be read as 'temporarily closed awaiting announcement' - treat as borderline. (3) id 611 (ACIAR) was verified via the official factsheet PDF only, because the live page returned HTTP 403; its classification rests on the fixed '1 February - 30 April' annual window stated in that PDF. (4) id 319 (Fudan) notice body is image-based; application dates/amounts could not be machine-read from the official page, so funding_on_page is null. (5) id 138 (BISP): en.unimib.it and its call PDF returned HTTP 403; evidence taken from the university's own application portal apply.unimib.it. (6) Several records' official_urls lists contain non-awarding-body URLs (anr.fr, bs.china-embassy.gov.cn, sutd.edu.sg) which were ignored. (7) Logo URLs were included only where the asset was fetched/verified with HTTP 200 from the awarding body's own domain (UCL CDN, education.govt.nz, NTU, assets.ireland.ie, msmt.gov.cz, iucea.org); all others are null. (8) The SNU OGA notice URL and the SNU financial_support URL both returned 404; the Czech English URL also 404s (site migrated to a new CMS)."
+}
