@@ -112,7 +112,7 @@
   opacity: 0.72;
 }
 
-/* ── Recently viewed / timeline lists ──────────────────────────────── */
+/* â”€â”€ Recently viewed / timeline lists â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 .plan-page__record-list,
 .plan-page__timeline,
@@ -128,6 +128,22 @@
   gap: 0.5rem;
 }
 
+/* A grid item's automatic minimum size is its min-content width, so a row
+   containing one unbreakable span can never shrink below that span â€” the
+   single `auto` track below grew to the row's min-content and the page
+   scrolled sideways. `min-width: 0` releases that floor. */
+.plan-page__record-list li,
+.plan-page__timeline ul li {
+  min-width: 0;
+}
+
+/* The row's children need the same release, and the title needs to be able
+   to break a long unbroken token. */
+.plan-page__record-list li > *,
+.plan-page__timeline ul li > * {
+  min-width: 0;
+}
+
 .plan-page__record-list li {
   display: flex;
   flex-wrap: wrap;
@@ -139,11 +155,25 @@
   border: 1px solid var(--border-subtle, rgba(15, 23, 42, 0.1));
 }
 
+/* The deadline label is the provider's own sentence â€” 244 characters on the
+   longest record in the catalogue. `white-space: nowrap` here made that
+   sentence the row's min-content, so the track could not shrink and the page
+   gained a horizontal scrollbar of roughly a thousand pixels. Wrapping keeps
+   the whole sentence on screen and legible, which a truncation with the rest
+   behind a tooltip would not; `overflow-wrap: anywhere` keeps a single long
+   token (a hyphenated programme name) from re-opening the same hole. */
 .plan-page__record-list li span,
-.plan-page__timeline li ul li span {
+.plan-page__timeline ul li span {
   font-size: 0.875rem;
   opacity: 0.72;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.plan-page__record-list li a,
+.plan-page__timeline ul li a {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .plan-page__timeline {
@@ -151,10 +181,20 @@
   gap: 1.25rem;
 }
 
+/* Grid items again: the automatic minimum size is the min-content of the
+   row, which a long deadline label used to make wider than the page. */
+.plan-page__timeline > li {
+  min-width: 0;
+}
+
+/* The group heading is a month, but its rows carry award names that run to
+   244 characters; a long token must be breakable. */
 .plan-page__timeline > li > h3 {
   margin: 0 0 0.5rem;
   font-size: 1rem;
   letter-spacing: 0.01em;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .plan-page__timeline ul {
@@ -174,14 +214,18 @@
   gap: 0.5rem;
 }
 
-/* ── Checklists ────────────────────────────────────────────────────── */
+/* â”€â”€ Checklists â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 .plan-page__checklists {
   display: grid;
   gap: 1.25rem;
 }
 
+/* One checklist per saved award, in a grid: the automatic minimum size of a
+   grid item is its min-content, so a long scholarship title in the heading
+   forced the grid â€” and then the page â€” to 424px against a 261px track. */
 .plan-page__checklist {
+  min-width: 0;
   padding: 1rem 1.1rem;
   border-radius: var(--radius-md, 12px);
   border: 1px solid var(--border-subtle, rgba(15, 23, 42, 0.1));
@@ -195,21 +239,31 @@
   gap: 0.5rem;
 }
 
+/* The heading carries the award's full name, which runs to 244 characters in
+   the catalogue's longest record. `min-width: 0` releases the flex item's
+   automatic minimum and `overflow-wrap: anywhere` lets a single long token
+   break, so the heading wraps inside its own card. */
 .plan-page__checklist-head h3 {
+  min-width: 0;
   margin: 0;
   font-size: 1.05rem;
+  overflow-wrap: anywhere;
 }
 
+/* Short ("3 of 8 done"), but it shares the same row model, so it wraps
+   rather than reserving a nowrap slot that a narrow viewport cannot fit. */
 .plan-page__checklist-progress {
   font-size: 0.875rem;
   opacity: 0.72;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .plan-page__checklist-funding {
   margin: 0.35rem 0 0.85rem;
   font-size: 0.9375rem;
   opacity: 0.8;
+  overflow-wrap: anywhere;
 }
 
 .plan-page__checkitems {
@@ -224,11 +278,17 @@
   display: flex;
   align-items: flex-start;
   gap: 0.6rem;
+  min-width: 0;
   /* One box on its own line at narrow widths, so a missed tap is a miss
      rather than a tap on the neighbouring row. */
   padding: 0.4rem 0.5rem;
   border-radius: var(--radius-sm, 8px);
   cursor: pointer;
+}
+
+.plan-page__checkitems label span {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .plan-page__checkitems label:hover {
@@ -263,7 +323,7 @@
   cursor: not-allowed;
 }
 
-/* ── Notes ─────────────────────────────────────────────────────────── */
+/* â”€â”€ Notes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 .plan-page__notes {
   display: grid;
@@ -274,6 +334,9 @@
   display: block;
   margin-bottom: 0.35rem;
   font-weight: 600;
+  /* The label is a scholarship name, which can run long; let it break rather
+     than push the page sideways. */
+  overflow-wrap: anywhere;
 }
 
 .plan-page__notes textarea {
@@ -295,7 +358,7 @@
   outline-offset: 1px;
 }
 
-/* ── Backup ────────────────────────────────────────────────────────── */
+/* â”€â”€ Backup â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 .plan-page__backup {
   display: flex;
@@ -317,12 +380,19 @@
 .plan-page__import {
   display: inline-flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 0.6rem;
+  /* A file input has a wide intrinsic width, and "Import a plan file" plus the
+     unshrinkable control was 331px against a ~298px line at 390px â€” 13px past
+     the viewport. The label now wraps and the control can shrink. */
+  max-width: 100%;
   cursor: pointer;
 }
 
 .plan-page__import input {
   font-size: 0.875rem;
+  flex: 1 1 auto;
+  min-width: 0;
   max-width: 15rem;
 }
 

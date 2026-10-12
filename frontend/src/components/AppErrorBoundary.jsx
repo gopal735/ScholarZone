@@ -81,3 +81,94 @@ export class AppErrorBoundary extends Component {
     )
   }
 }
+
+/**
+ * The same guard, one level down: around whatever a route renders.
+ *
+ * The app boundary above wraps the whole tree, so a throw inside one route
+ * takes the header, the navigation and the footer with it and leaves a single
+ * full-page panel. This one replaces only the route's own content, so the
+ * shell stays up, the user can still navigate, and "Try again" remounts the
+ * route — an in-place retry instead of a reload that throws away the session.
+ *
+ * Inline styles rather than a stylesheet class: a stylesheet that failed to
+ * load is one of the things this boundary has to survive.
+ */
+export class RouteErrorBoundary extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { error: null, attempt: 0 }
+  }
+
+  static getDerivedStateFromError(error) {
+    return { error }
+  }
+
+  componentDidCatch(error, info) {
+    console.error('ScholarZone could not render this section:', error, info?.componentStack)
+  }
+
+  render() {
+    if (!this.state.error) {
+      // `attempt` is only read to force a remount of the children after a
+      // failure: React treats a changed key as a new subtree.
+      return <div key={`ok-${this.state.attempt}`} style={{ display: 'contents' }}>{this.props.children}</div>
+    }
+
+    return (
+      <div
+        role="alert"
+        data-testid="route-error"
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.75rem',
+          padding: '1.5rem',
+          border: '1px solid rgba(20, 19, 15, 0.18)',
+          borderRadius: '4px',
+          background: 'var(--surface-raised, #fff)',
+          color: 'var(--text-primary, #14130f)',
+          fontFamily: 'Inter, system-ui, sans-serif',
+        }}
+      >
+        <h1 style={{ fontSize: '1.25rem', margin: 0 }}>This section could not be displayed</h1>
+        <p style={{ margin: 0, maxWidth: '52ch', color: 'var(--text-secondary, #24221c)' }}>
+          Something in it failed to render, so it has been left out rather than left blank. The
+          rest of the page still works, and you can try the section again.
+        </p>
+        <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+          <button
+            type="button"
+            onClick={() => this.setState((state) => ({ error: null, attempt: state.attempt + 1 }))}
+            style={{
+              padding: '0.5rem 1rem',
+              borderRadius: '2px',
+              border: '1px solid var(--accent, #1b3a5c)',
+              background: 'var(--accent, #1b3a5c)',
+              color: '#fff',
+              cursor: 'pointer',
+              font: 'inherit',
+            }}
+          >
+            Try again
+          </button>
+          <button
+            type="button"
+            onClick={() => window.location.reload()}
+            style={{
+              padding: '0.5rem 1rem',
+              borderRadius: '2px',
+              border: '1px solid var(--border-strong, rgba(20, 19, 15, 0.24))',
+              background: 'transparent',
+              color: 'inherit',
+              cursor: 'pointer',
+              font: 'inherit',
+            }}
+          >
+            Reload the page
+          </button>
+        </div>
+      </div>
+    )
+  }
+}
