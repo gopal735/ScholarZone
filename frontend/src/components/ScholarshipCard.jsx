@@ -35,9 +35,9 @@ export default function ScholarshipCard({ scholarship }) {
   const isVerified = verificationState === 'active'
 
   /* Provenance, not decoration. image_kind is the honest signal: an image_url
-     exists on many records but only some are validated official_logo, and
-     the difference is exactly what the title rule's fill has to tell the
-     truth about. */
+     exists on 445 of the 618 public records but only 404 of them are
+     validated official_logo, and the difference is exactly what the title
+     rule's fill and the provenance line both have to tell the truth about. */
   const hasOfficialLogo = scholarship.image_kind === 'official_logo'
 
   /* Writes two custom properties straight to the node. No React state
@@ -136,10 +136,14 @@ export default function ScholarshipCard({ scholarship }) {
 
         {/* The Provenance Rule. The square is the identity: filled when the
             record carries a validated official logo, hollow when it does not.
-            Keyed on image_kind rather than image_url on purpose — 401 records
-            carry an image but only 387 of them are official_logo, and the rest
+            Keyed on image_kind rather than image_url on purpose — 445 records
+            carry an image but only 404 of them are official_logo, and the rest
             must read as unproven rather than borrow a mark they have not
-            earned. The hollow state is part of the design, not a gap. */}
+            earned. The hollow state is part of the design, not a gap.
+
+            It stays `aria-hidden` because the same fact is now stated in words
+            in the signals row below; the fill is the visual half, not a
+            replacement for it. */}
         <div
           className={`scholarship-card__title-rule${
             hasOfficialLogo ? '' : ' scholarship-card__title-rule--unverified'
@@ -156,6 +160,23 @@ export default function ScholarshipCard({ scholarship }) {
           {scholarship.last_verified_at && (
             <span className="scholarship-card__verification-date">{getLastVerifiedLabel(scholarship)}</span>
           )}
+          {/* Provenance of the image, as text.
+
+              The crowded citation line that used to sit here named this
+              explicitly - "Official source captured", "No official logo" - and
+              removing it left the title-rule's fill as the only signal, which
+              is `aria-hidden` and therefore invisible to a screen reader. A
+              student who cannot see the fill has no way to know whether the
+              image above is a validated official logo or a stock picture, which
+              is exactly the distinction the record carries.
+
+              So it is said once, in words, at the smallest size on the card.
+              The numbers are the shipped snapshot's: 445 records carry an image
+              and 404 of them are validated official_logo, so the negative is
+              the common case and has to be as legible as the positive. */}
+          <span className="scholarship-card__provenance">
+            {hasOfficialLogo ? 'Official logo captured' : 'No official logo'}
+          </span>
         </div>
       </div>
 

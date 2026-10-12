@@ -281,6 +281,21 @@
   font-variant-numeric: tabular-nums;
 }
 
+/* Provenance of the image, said once in the smallest size on the card.
+   Restores the wording the removed citation line carried - "Official source
+   captured" / "No official logo" - as real text rather than as the title
+   rule's fill alone, which is `aria-hidden` and invisible to a screen reader. */
+.scholarship-card__provenance {
+  color: var(--text-faint);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
 /* ── Facts ─────────────────────────────────────────────────────── */
 .scholarship-card__details {
   display: flex;

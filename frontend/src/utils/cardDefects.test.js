@@ -14,12 +14,148 @@
  *     not import it - the table caption rendered as visible text
  */
 
+import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
-import { fundingBadgeLabel, matchesTuitionCoverage } from './fundingFacts.js'
+import {
+  fundingBadgeLabel,
+  isFullyFundedStatement,
+  matchesTuitionCoverage,
+} from './fundingFacts.js'
 import { formatDeadlineDate, presentCardDeadline } from './cardDeadlinePresentation.js'
 
-describe('funding badge text is never silently clipped', () => {
-  it('shortens a long published funding string to a badge that fits', () => {
+/**
+ * Category inference is conservative.
+ *
+ * These pin the review finding: a substring matcher reads "fully funded"
+ * inside a sentence that says the opposite of it. "This award is not fully
+ * funded, but includes a monthly stipend" would receive a "Fully funded"
+ * badge, which is the one claim this product cannot afford to assert loosely.
+ */
+describe('a negated funding statement is never classified as fully funded', () => {
+  it('rejects a negation standing in front of the funding term', () => {
+    for (const text of [
+      'This award is not fully funded, but includes a monthly stipend',
+      'Not fully funded; tuition waiver only',
+      'This is not a fully funded award',
+      'No full funding available for this programme',
+      'The programme is never fully funded',
+      'It is not a fully funded scholarship despite the title',
+      'This is not a fully funded scholarship, only a partial tuition waiver',
+    ]) {
+      expect(isFullyFundedStatement(text), text).toBe(false)
+    }
+  })
+
+  it('rejects a funding-level partial qualifier that void the claim', () => {
+    for (const text of [
+      'Fully funded or partially funded depending on the faculty',
+      'Fully funded or part funded depending on your college',
+      'The award may be funded fully or in part depending on the department',
+    ]) {
+      expect(isFullyFundedStatement(text), text).toBe(false)
+    }
+  })
+
+  it('does not let a later clause rescue a negated first one', () => {
+    // Clause-level splitter: the second clause is affirmative, the first denies.
+    expect(isFullyFundedStatement('Not fully funded; a monthly stipend is available')).toBe(false)
+    expect(isFullyFundedStatement('Not fully funded, but a stipend is included')).toBe(false)
+  })
+
+  it('still accepts an affirmative statement that happens to contain "no"', () => {
+    // The proximate-negation rule exists for this case: a broad "no" test would
+    // reject an unambiguously fully funded award.
+    expect(isFullyFundedStatement('The award is fully funded with no obligation')).toBe(true)
+    expect(isFullyFundedStatement('Fully Funded, no commitment required')).toBe(true)
+  })
+
+  it('accepts a qualifier that applies to a component rather than the award', () => {
+    // "partial living stipend" qualifies the stipend; the award is still fully
+    // funded per the provider's own field. Audited record id=472.
+    expect(isFullyFundedStatement('Full funding (partial living stipend)')).toBe(true)
+  })
+
+  it('accepts the four categories the snapshot actually uses', () => {
+    // The real records, so the guard is known not to over-reject.
+    for (const text of [
+      'Fully Funded (full tuition up to two years plus a NOK 50,000 per semester living-expense stipend)',
+      'Fully Funded (salaried employment as a PhD research fellow / stipendiat)',
+      'Fully funded government scholarship (tuition + stipend + airfare + insurance)',
+      'Fully Funded with Repayment Obligation at Associate and Bachelor\'s Level',
+    ]) {
+      expect(isFullyFundedStatement(text), text).toBe(true)
+    }
+  })
+
+  it('is total for a non-string or a blank value', () => {
+    for (const bad of [null, undefined, '', '   ', 42, {}]) {
+      expect(isFullyFundedStatement(bad)).toBe(false)
+    }
+  })
+})
+
+describe('a negated statement gets a truthful badge, not a fully funded one', () => {
+  it('labels a negated full-funding claim by what the award does cover', () => {
+    // The reviewer's exact sentence. The truthful badge names the stipend, not
+    // the funding it denies.
+    const out = fundingBadgeLabel({
+      funding: 'This award is not fully funded, but includes a monthly stipend for living costs',
+    })
+    expect(out.label).not.toBe('Fully funded')
+    expect(out.full).toBe('This award is not fully funded, but includes a monthly stipend for living costs')
+  })
+
+  it('uses a neutral label when the statement supports no category at all', () => {
+    const out = fundingBadgeLabel({
+      funding: 'An award that is not fully funded and whose other terms are unconfirmed',
+    })
+    expect(out.label).not.toBe('Fully funded')
+    // Neutral: a truncated phrase of the record's own words, not an assertion.
+    expect(out.full).toBe('An award that is not fully funded and whose other terms are unconfirmed')
+    expect(out.truncated).toBe(true)
+  })
+
+  it('a conflicting statement is never fully funded', () => {
+    const out = fundingBadgeLabel({ funding: 'Fully funded or partially funded depending on the faculty' })
+    expect(out.label).not.toBe('Fully funded')
+  })
+
+  it('still labels an unambiguous full funding award correctly', () => {
+    const out = fundingBadgeLabel({ funding: 'Fully Funded (3-year service commitment)' })
+    expect(out.label).toBe('Fully funded')
+    expect(out.full).toBe('Fully Funded (3-year service commitment)')
+  })
+
+  it('recovers a full funding award that the substring matcher mislabelled', () => {
+    // id=472 in the shipped snapshot: "Full funding (partial living stipend)"
+    // was labelled "Stipend" because the word "fully" was missing.
+    const out = fundingBadgeLabel({ funding: 'Full funding (partial living stipend)' })
+    expect(out.label).toBe('Fully funded')
+  })
+})
+
+describe('tuition is never inferred as covered', () => {
+  it('says "support", not "coverage", for a partial waiver', () => {
+    // The label is the weaker of the two claims on purpose. A 20% waiver is
+    // tuition support and is not tuition coverage.
+    expect(fundingBadgeLabel({ funding: 'Tuition Fee Waiver (20% of tuition fees)' }).label).toBe('Tuition support')
+    expect(fundingBadgeLabel({ funding: 'Tuition Fee Waiver (50% of tuition fees)' }).label).toBe('Tuition support')
+  })
+
+  it('says support for a waiver whose extent the record does not state', () => {
+    expect(fundingBadgeLabel({ funding: 'Tuition Fee Waiver (full or part; some faculties add a grant)' }).label)
+      .toBe('Tuition support')
+  })
+
+  it('never derives coverage from a mention alone', () => {
+    // No funding word at all in the tuition direction, and no coverage claim.
+    const out = fundingBadgeLabel({ funding: 'Monthly stipend, housing grant, health insurance, and travel card' })
+    expect(out.label).toBe('Stipend')
+    expect(out.label).not.toContain('Tuition')
+  })
+})
+
+describe('funding badge text is never silently clipped', () => {  it('shortens a long published funding string to a badge that fits', () => {
     // The exact record that measured clipped: 65 characters of the ESKAS award.
     const out = fundingBadgeLabel({
       funding: 'Monthly stipend, housing grant, health insurance, and travel card',
@@ -85,6 +221,74 @@ describe('funding badge text is never silently clipped', () => {
     // This is the bound that keeps a "shortened" label from defeating the fix.
     const long = 'Annual stipend of HK$344,400 for the 2027/28 academic year awarded to 400 PhD Fellowships across all faculties'
     expect(fundingBadgeLabel({ funding: long }).label.length).toBeLessThanOrEqual(68)
+  })
+})
+
+/**
+ * Whole-catalogue guard.
+ *
+ * The assertions above are about the rule; this is about the data it is applied
+ * to. It reads the shipped snapshot - which this change must not modify - and
+ * pins the badge for every record whose funding text is long enough for
+ * inference to happen, so a change to the matcher that reclassifies a real
+ * award fails here rather than reaching a card.
+ */
+describe('the whole public catalogue classifies conservatively', () => {
+  const snapshot = JSON.parse(readFileSync('public/scholarships-snapshot.json', 'utf8'))
+
+  const inferred = []
+  for (const record of snapshot.scholarships) {
+    const out = fundingBadgeLabel(record)
+    if (out.truncated) {
+      inferred.push({ id: record.id, label: out.label, funding: record.funding })
+    }
+  }
+
+  it('has a known population of inferable funding statements', () => {
+    // The count is pinned so a snapshot regeneration that changes which records
+    // need a shortened label is a deliberate decision rather than a surprise.
+    expect(inferred.length).toBe(40)
+  })
+
+  it('never labels a record fully funded when its text denies it', () => {
+    const denied = inferred.filter(
+      (entry) => entry.label === 'Fully funded' && !isFullyFundedStatement(entry.funding),
+    )
+    expect(denied.map((entry) => entry.id)).toEqual([])
+  })
+
+  it('labels only records whose text affirms full funding', () => {
+    const fullyFunded = inferred.filter((entry) => entry.label === 'Fully funded')
+    expect(fullyFunded.map((entry) => entry.id)).toEqual([277, 278, 360, 437, 472, 692])
+  })
+
+  it('labels no record fully funded from a negated or partial statement', () => {
+    // The whole safety property, stated as a scan over the data.
+    const negatedOrPartial = snapshot.scholarships.filter((record) => (
+      typeof record.funding === 'string'
+      && /not\s+(?:a\s+)?(?:fully\s+)?fund|partial(ly)?\s+(funding|funded)|part[\s-]?funded/i.test(record.funding)
+    ))
+    for (const record of negatedOrPartial) {
+      expect(fundingBadgeLabel(record).label, `record ${record.id}`).not.toBe('Fully funded')
+    }
+  })
+
+  it('preserves the full published funding text for every record', () => {
+    for (const record of snapshot.scholarships) {
+      const out = fundingBadgeLabel(record)
+      const published = record.funding
+      const isBlank = typeof published !== 'string' || published.trim() === ''
+
+      if (isBlank) {
+        // Nothing to preserve, so nothing is invented either.
+        expect(out.full).toBeNull()
+        continue
+      }
+
+      // The card's tooltip and screen-reader text carry `full`, so it has to be
+      // the record's own wording, byte for byte.
+      expect(out.full).toBe(published)
+    }
   })
 })
 
