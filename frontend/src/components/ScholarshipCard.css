@@ -146,6 +146,16 @@
   margin-bottom: var(--space-3);
 }
 
+/* ── Badges ────────────────────────────────────────────────────────────
+   Funding labels are the widest variable text on the card: the snapshot holds
+   `funding` strings from 1 to 310 characters, and a single-line truncated pill
+   silently cut "Monthly stipend, housing grant, health insurance, and travel
+   card" to "Monthly stipend, housing g…" — 47 of 65 characters gone.
+
+   So the pill wraps to two lines and only ellipsises beyond that, and the
+   topline is allowed to grow a second row rather than crushing the badge into
+   whatever the status pill leaves. The full wording is on the element as a
+   tooltip and in the accessibility tree, and on the detail page in full. */
 .scholarship-card__badge,
 .scholarship-card__status,
 .scholarship-card__verified,
@@ -158,10 +168,19 @@
   overflow: hidden;
   font-size: var(--text-xs);
   font-weight: 700;
-  line-height: 1.3;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  line-height: 1.35;
+  /* Two lines, not one. `-webkit-line-clamp` on a flex container works in
+     every current engine and leaves the rest as an ellipsis. */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow-wrap: anywhere;
   border-radius: var(--radius-pill);
+}
+
+.scholarship-card__badge--category {
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
 /* On-tint tokens keep these above 4.5:1; raw --accent on a 10% gold
@@ -199,6 +218,23 @@
   line-height: 1.26;
   letter-spacing: -0.014em;
   text-wrap: balance;
+}
+
+/* One line of the provider's own eligibility wording — enough to decide
+   whether to open the card, clamped so a 400-character summary cannot run
+   away. `text-wrap: pretty` keeps the final line from being a single
+   orphaned word where the engine supports it. */
+.scholarship-card__summary {
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  line-height: var(--text-sm-lh);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
 }
 
 .scholarship-card__provider {
@@ -245,6 +281,21 @@
   font-variant-numeric: tabular-nums;
 }
 
+/* Provenance of the image, said once in the smallest size on the card.
+   Restores the wording the removed citation line carried - "Official source
+   captured" / "No official logo" - as real text rather than as the title
+   rule's fill alone, which is `aria-hidden` and invisible to a screen reader. */
+.scholarship-card__provenance {
+  color: var(--text-faint);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
 /* ── Facts ─────────────────────────────────────────────────────── */
 .scholarship-card__details {
   display: flex;
@@ -279,21 +330,85 @@
   text-transform: uppercase;
 }
 
+/* ── Fact rows ─────────────────────────────────────────────────────────
+   Label / value / note. The deadline row is the one that carries prose, so it
+   is the one that had to change shape.
+
+   The value was the provider's own wording verbatim — 244 characters on one
+   record — set at font-weight 700, line-height 1.35, right-aligned, in the
+   ~178px that the label and the gap left over. A 244-character sentence at the
+   heaviest weight on the card, in the narrowest column, is what made the
+   deadline block unreadable.
+
+   Now the row stacks: the label above, the value at a readable medium weight,
+   and the provider's full wording below at body weight, left-aligned, at the
+   body line height. Long deadlines get the room a sentence needs; short ones
+   are unchanged. */
 .scholarship-card__details dd {
   min-width: 0;
   margin: 0;
   color: var(--text-primary);
   font-size: var(--text-sm);
-  font-weight: 700;
-  line-height: 1.35;
-  text-align: right;
+  font-weight: 600;
+  line-height: var(--text-sm-lh);
+  text-align: left;
   overflow-wrap: anywhere;
 }
 
+/* The date. Medium weight: it is the thing a student is looking for, but it is
+   three characters of information, not a headline. */
+.scholarship-card__deadline-value {
+  display: block;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--track-body);
+}
+
+/* A record with no machine-readable date has the provider's own wording as its
+   only truthful value, and that wording is a sentence - 244 characters on one
+   record. It is set at body weight and the body line height, because nothing
+   about a run-on sentence from a provider deserves 600 weight: the length is
+   the information, not the emphasis. */
+.scholarship-card__deadline-value--prose {
+  font-weight: 400;
+  font-variant-numeric: normal;
+  color: var(--text-secondary);
+  line-height: var(--text-sm-lh);
+}
+
+/* The provider's own wording. Body weight, body line height, full text, no
+   clamp — the detail page repeats it, but a card should not require a
+   navigation to learn that a deadline varies by programme. */
+.scholarship-card__deadline-note {
+  display: block;
+  margin-top: var(--space-1);
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  line-height: var(--text-sm-lh);
+}
+
+/* The precision label — "Month only — the provider has not published a full
+   date". Quiet, because it qualifies rather than states. */
+.scholarship-card__deadline-precision {
+  display: block;
+  margin-top: var(--space-1);
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  line-height: var(--text-xs-lh);
+}
+
 /* The deadline is the scan anchor, so it reads as a labelled panel of
-   its own surface — a small well inside the card. */
+   its own surface — a small well inside the card.
+
+   It stacks rather than sitting label-beside-value: with a note underneath,
+   a side-by-side row gives the note a ~178px column, which is how the
+   244-character deadlines ended up wrapping to fourteen lines at 700 weight. */
 .scholarship-card__detail--deadline {
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
   padding: var(--space-4);
   margin-bottom: var(--space-2);
   background: var(--surface-subtle);

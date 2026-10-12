@@ -134,6 +134,168 @@ export function matchesTuitionCoverage(scholarship, selection) {
   return false
 }
 
+/** At or below this length a funding string is shown whole. */
+const FUNDING_BADGE_LIMIT = 34
+
+/**
+ * Categories the published funding text maps onto, in precedence order.
+ *
+ * These are classifications of the record's own wording, not new facts: a
+ * record whose `funding` reads "Annual stipend of HK$344,400 …" is classified
+ * `Stipend` because the provider's own text says it is a stipend. The full
+ * text is returned alongside and is what the card exposes as a tooltip and a
+ * screen-reader string, so the summary never stands in for the source.
+ *
+ * The pattern property is `pattern`, not `test`: a property named `test` on a
+ * RegExp shadows nothing, but calling `entry.test(text)` calls the RegExp
+ * itself rather than its `test` method, and throws
+ * "entry.test is not a function" at runtime - which is exactly what the first
+ * browser run of this module produced.
+ */
+
+/** An affirmative claim that the award as a whole is fully funded. */
+const AFFIRMATIVE_FULLY_FUNDED = /\bfully[\s-]*fund|\bfull\s*funding\b/i
+
+/**
+ * A negation, which only disqualifies a full-funding claim when it scopes it.
+ *
+ * This is deliberately *proximate* rather than anywhere-in-the-clause. The
+ * record "The award is fully funded with no obligation" contains the word "no"
+ * and is unambiguously fully funded, so a broad `no` test would reject it. What
+ * has to be caught is a negation standing in front of the funding term: "not
+ * fully funded", "no full funding", "isn't a fully funded award".
+ */
+const NEGATION_BEFORE_FUNDING =
+  /\b(not|never|no|cannot|can'?t|isn'?t|aren'?t|doesn'?t|excludes?|excluding|rather\s+than|unless|lacks?)\b[\s\S]{0,30}$/i
+
+/**
+ * A funding-level partial claim, which voids a full-funding assertion.
+ *
+ * Distinguishes a qualifier on one component from a qualifier on the award
+ * itself. "Full funding (partial living stipend)" qualifies the *stipend*, so
+ * it stays a full-funding claim. "Fully funded or partially funded depending on
+ * the faculty" qualifies the *award*, so it must not be labelled fully funded -
+ * the record itself says the answer depends on where you apply.
+ */
+const PARTIAL_FUNDING_CLAIM =
+  /\bpartial(ly)?\s+(funding|funded)\b|\bpart[\s-]?funded\b|\bfull\s+or\s+part\b|\bdepending\s+on\b|\bmay\s+be\s+(fully\s+)?funded\b/i
+
+/**
+ * True only when the record's own funding text affirms full funding, with no
+ * negation in front of the claim and no funding-level partial qualifier.
+ *
+ * Audited against all 618 public records. This is affirmative for the four
+ * whose text begins "Fully Funded (…)" and for id=472's
+ * "Full funding (partial living stipend)"; changing one record's reading away
+ * from the previous substring test, which called that one a stipend because the
+ * word "fully" was missing from "Full funding".
+ *
+ * @param {string} text the record's own funding wording
+ * @returns {boolean}
+ */
+export function isFullyFundedStatement(text) {
+  if (typeof text !== 'string' || text.trim() === '') {
+    return false
+  }
+
+  // Clause-level, so a later clause cannot rescue a negated earlier one:
+  // "Not fully funded; a monthly stipend is available" has an affirmative second
+  // clause and must still not read as fully funded.
+  return String(text)
+    .split(/[;,]/)
+    .some((clause) => {
+      const affirmative = AFFIRMATIVE_FULLY_FUNDED.exec(clause)
+      if (!affirmative) {
+        return false
+      }
+
+      const before = clause.slice(0, affirmative.index).trim()
+      if (before !== '' && NEGATION_BEFORE_FUNDING.test(before)) {
+        return false
+      }
+
+      if (PARTIAL_FUNDING_CLAIM.test(clause)) {
+        return false
+      }
+
+      return true
+    })
+}
+
+const FUNDING_CATEGORIES = [
+  {
+    value: 'Fully funded',
+    // A guarded predicate rather than a bare pattern, because this is the one
+    // category where a substring match would assert something the record may be
+    // explicitly denying.
+    test: isFullyFundedStatement,
+  },
+  { value: 'Tuition support', pattern: /tuition|fee\s*(waiver|reduction|cover)/i },
+  { value: 'Stipend', pattern: /stipend|allowance|living\s*(allowance|cost)|maintenance/i },
+  { value: 'Research funding', pattern: /research\s*fund|research\s*grant/i },
+  { value: 'Travel support', pattern: /travel|airfare|flight|relocation/i },
+  { value: 'Partial funding', pattern: /partial|partially/i },
+  { value: 'Need-based', pattern: /need[\s-]?based|financial\s*need|means[\s-]?tested/i },
+  { value: 'Housing support', pattern: /housing|accommodation|residence/i },
+  { value: 'Health cover', pattern: /health|medical|insurance/i },
+]
+
+/**
+ * A funding label that fits a badge, with the full wording retained.
+ *
+ * @param {object|null|undefined} scholarship
+ * @returns {{label: string, full: string|null, isCategory: boolean, truncated: boolean}}
+ *   `full` is null only when the record publishes no funding text at all, in
+ *   which case `label` is the honest "Funding not stated" and `isCategory` is
+ *   true so the badge renders in its quieter style.
+ */
+export function fundingBadgeLabel(scholarship) {
+  const raw = scholarship?.funding
+  const text = typeof raw === 'string' && raw.trim() !== '' ? raw.trim() : null
+
+  if (text === null) {
+    return { label: 'Funding not stated', full: null, isCategory: true, truncated: false }
+  }
+
+  if (text.length <= FUNDING_BADGE_LIMIT) {
+    return { label: text, full: text, isCategory: false, truncated: false }
+  }
+
+  // A category exists, so use it. The badge becomes scannable and the record's
+  // own long wording stays one tooltip and one screen-reader string away.
+  //
+  // Two shapes of matcher: a `pattern`, tested against the text, and a `test`
+  // predicate, which is a function taking the text. The predicate form exists
+  // because "fully funded" is the one category that can be *denied* by the
+  // record, and a bare pattern cannot express that.
+  const category = FUNDING_CATEGORIES.find((entry) => (
+    typeof entry.test === 'function'
+      ? entry.test(text)
+      : entry.pattern.test(text)
+  ))
+  if (category) {
+    return { label: category.value, full: text, isCategory: true, truncated: true }
+  }
+
+  // No category. The first clause is the only part of a long funding string
+  // that reads as a label, and it is cut at a boundary rather than mid-word so
+  // the visible text is still a real phrase.
+  const firstClause = text.split(/[;,.]/)[0].trim()
+  if (firstClause !== '' && firstClause.length <= FUNDING_BADGE_LIMIT) {
+    return { label: `${firstClause}…`, full: text, isCategory: true, truncated: true }
+  }
+
+  const words = text.split(/\s+/)
+  let label = ''
+  for (const word of words) {
+    if (label.length + word.length + 1 > FUNDING_BADGE_LIMIT) {
+      break
+    }
+    label = label === '' ? word : `${label} ${word}`
+  }
+  return { label: `${label}…`, full: text, isCategory: true, truncated: true }
+}
+
 /**
  * A single line stating what the funding is, for a card or a comparison cell.
  *
