@@ -119,6 +119,30 @@ function FindingRow({ finding }) {
   )
 }
 
+/**
+ * A section-completion row.
+ *
+ * A sibling of `FindingRow`, deliberately not the same component: this is the
+ * *guidance* channel, not a finding. It carries no severity badge, because a
+ * section with nothing in it is a fact about the draft rather than a defect in
+ * the writing, and printing it with a severity marker is what made an untouched
+ * draft look like a failing one. The tag on the right says which of the two
+ * states the section is in.
+ */
+function GuidanceRow({ guidance }) {
+  const section = SOP_SECTIONS.find((entry) => entry.id === guidance.sectionId)
+  const tag = guidance.status === 'empty' ? 'not written yet' : `${guidance.words} words`
+  return (
+    <li className={`sop-guidance sop-guidance--${guidance.status}`}>
+      <p className="sop-guidance__title">
+        {section ? section.title : guidance.sectionId}
+        <span className="sop-guidance__tag">{tag}</span>
+      </p>
+      <p className="sop-guidance__detail">{guidance.detail}</p>
+    </li>
+  )
+}
+
 /** One claim in the ledger, with the student's own evidence or removal. */
 function ClaimRow({ claim, record, onSubstantiate, onClear }) {
   const [draftEvidence, setDraftEvidence] = useState(
@@ -593,7 +617,11 @@ export default function SopBuilderPage() {
 
       {/* ── Step 4: review ────────────────────────────────────────── */}
       <section className="sop-step" aria-labelledby="sop-review-heading">
-        <StepHeader step={4} title="Review your draft" count={`${review.findings.length} checks flagged`} />
+        <StepHeader
+          step={4}
+          title="Review your draft"
+          count={review.notStarted ? 'not started' : `${review.findings.length} checks flagged`}
+        />
 
         <p className="sop-review__disclaimer">{REVIEW_DISCLAIMER}</p>
 
@@ -626,16 +654,39 @@ export default function SopBuilderPage() {
           </p>
         ) : null}
 
+        {/*
+          The not-started state. One sentence, no findings list, no severity
+          markers: an empty draft is a draft nobody could object to yet, and the
+          old behaviour reported it as seven separate problems. The section
+          progress indicator is untouched by this branch - it is in Step 3 and
+          in the "sections started" figure above, both of which already read
+          correctly at zero.
+        */}
+        {review.notStarted ? (
+          <div className="sop-not-started">
+            <h3 className="sop-not-started__title">Your draft hasn&rsquo;t started yet</h3>
+            <p className="sop-not-started__lede">
+              Nothing has been written in any of the six sections, so there is no text for
+              the checks to look at. Write a section in step 3 and this panel will fill in
+              automatically — nothing is hidden while the draft is empty.
+            </p>
+            <p className="sop-not-started__hint">
+              The checks below run on text you have actually written. They do not guess, fill
+              in, or reword anything.
+            </p>
+          </div>
+        ) : null}
+
         <h3 className="sop-review__dimensions-title">What the checks look at</h3>
         <ul className="sop-dimensions">
           {REVIEW_DIMENSIONS.map((dimension) => {
-            const findings = review.byDimension[dimension.id]
+            const entries = review.byDimension[dimension.id]
             return (
               <li key={dimension.id} className="sop-dimension">
                 <p className="sop-dimension__title">
                   {dimension.label}
                   <span className="sop-dimension__count">
-                    {findings.length === 0 ? 'nothing flagged' : `${findings.length} flagged`}
+                    {entries.length === 0 ? 'nothing flagged' : `${entries.length} flagged`}
                   </span>
                 </p>
                 <p className="sop-dimension__summary">{dimension.summary}</p>
@@ -644,11 +695,29 @@ export default function SopBuilderPage() {
           })}
         </ul>
 
+        {/*
+          Section completion, kept separate from the text-review findings. This
+          is guidance about what is still to write, never a verdict on the
+          writing, which is why it is its own list with its own renderer and no
+          severity markers.
+        */}
+        {review.sectionGuidance.length > 0 ? (
+          <>
+            <h3 className="sop-review__dimensions-title">Sections still to write</h3>
+            <ul className="sop-guidance-list">
+              {review.sectionGuidance.map((guidance) => (
+                <GuidanceRow guidance={guidance} key={guidance.id} />
+              ))}
+            </ul>
+          </>
+        ) : null}
+
         <h3 className="sop-review__dimensions-title">Findings</h3>
         {review.findings.length === 0 ? (
           <p className="sop-empty">
-            No findings. That is not a statement that the draft is good — it is a statement that
-            these particular checks did not fire. Read it yourself.
+            {review.notStarted
+              ? 'No text findings yet. These checks run over writing, and writing is what is missing rather than what is wrong.'
+              : 'No findings. That is not a statement that the draft is good — it is a statement that these particular checks did not fire. Read it yourself.'}
           </p>
         ) : (
           <ul className="sop-findings">
@@ -671,8 +740,8 @@ export default function SopBuilderPage() {
           The checks above found statements that a reader would expect you to be able to
           evidence. For each one: confirm it with the evidence you actually have, or decide to
           take it out. Either is a complete answer, and ScholarZone will not write the answer
-          for you — an invented achievement in a statement of purpose is the fastest way to
-          lose a place you were otherwise going to get.
+          for you — include only the claims you can substantiate, so that everything in the
+          draft is something you can stand behind.
         </p>
 
         {review.claims.length === 0 ? (
@@ -709,9 +778,9 @@ export default function SopBuilderPage() {
               onChange={onToggleApproval}
             />
             <span>
-              I have read this whole draft and the claims in it are mine. I understand that
-              approving it here is my own statement about my own work, and that nothing in
-              ScholarZone has assessed it or can assess it.
+              I have read this whole draft and the claims in it are mine. I understand that the
+              checks above are a limited set of automated writing rules over my own words — not a
+              human assessment, and not a prediction of any admission or award.
             </span>
           </label>
           {approved ? (

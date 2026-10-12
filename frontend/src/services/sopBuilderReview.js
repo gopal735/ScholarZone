@@ -316,62 +316,85 @@ const CLAIM_PATTERNS = Object.freeze([
  * absent part is not finitely different from one with a thin part - the reader
  * notices the hole, and the student should too before they send it.
  */
+/**
+ * Structure: which sections have real text, as *section-completion guidance*.
+ *
+ * This is deliberately **not** a review finding, and that is the whole point of
+ * the check. An empty section is not something a reader could object to in a
+ * draft that does not exist yet, so reporting it as a finding made an untouched
+ * draft look like a draft in trouble: seven alarming "no text yet" entries for
+ * a document the student had not opened the editor for. The alarm was about the
+ * *screen*, not about the *writing*.
+ *
+ * So section completion is its own channel, `sectionGuidance`, reported to the
+ * UI as its own block. It carries one entry per section that is empty or thin,
+ * with a calm instruction rather than a severity, and the not-yet-started state
+ * is a single boolean (`notStarted`) the UI renders as one clear sentence.
+ *
+ * `findings` therefore holds only what a reader could actually object to in a
+ * draft that exists: clarity, specificity, relevance and repetition. The
+ * 'structure' dimension in `REVIEW_DIMENSIONS` maps onto `sectionGuidance`, so
+ * the dimension tile still says what it looks at.
+ *
+ * The distinction the check preserves, and why it matters: an absent section is
+ * reported as *absent*, never as *thin*. "Too short" is a judgement about
+ * writing; "not written" is a statement of fact, and only the second is true of
+ * an empty draft.
+ *
+ * @returns {{guidance: Array, totalWords: number, notStarted: boolean}}
+ */
 function checkStructure(draft) {
-  const findings = []
+  const guidance = []
+  let totalWords = 0
 
   for (const section of SOP_SECTIONS) {
-    const text = draft.sections[section.id]?.text || ''
+    const text = draft.sections?.[section.id]?.text || ''
     const words = wordCount(text)
+    totalWords += words
 
     if (words === 0) {
-      findings.push({
+      guidance.push({
         id: `structure:${section.id}:empty`,
         dimension: 'structure',
-        severity: SEVERITY.IMPORTANT,
+        // No severity. A severity here is what made an empty draft read as a
+        // failing one, and a section with nothing in it is not a defect.
+        severity: null,
         sectionId: section.id,
-        title: `${section.title}: no text yet`,
+        status: 'empty',
+        words: 0,
+        title: `${section.title}: nothing written yet`,
         detail:
-          'This section is empty. It is reported as absent rather than as weak, ' +
-          'because nothing has been written to be weak about.',
+          'Nothing has been written here. Start with whichever section you ' +
+          'already know the most about - the order on the page is reading ' +
+          'order, not a requirement to write in sequence.',
       })
       continue
     }
 
     if (words < section.minimumWords) {
-      findings.push({
+      guidance.push({
         id: `structure:${section.id}:thin`,
         dimension: 'structure',
-        severity: SEVERITY.ATTENTION,
+        severity: null,
         sectionId: section.id,
+        status: 'thin',
+        words,
         title: `${section.title}: ${words} words so far`,
         detail:
-          `This section has started. ${section.minimumWords} words is roughly ` +
-          'where a section of this kind begins to say something, but it is a ' +
-          'floor rather than a target - a short section that is complete is ' +
-          'better than a long one that is padded.',
+          `${section.minimumWords} words is roughly where a section of this ` +
+          'kind begins to say something, but it is a floor rather than a ' +
+          'target - a short section that is complete is better than a long ' +
+          'one that is padded.',
       })
     }
   }
 
-  const totalWords = SOP_SECTION_IDS.reduce(
-    (sum, id) => sum + wordCount(draft.sections[id]?.text || ''),
-    0,
-  )
-  if (totalWords === 0) {
-    findings.push({
-      id: 'structure:draft:empty',
-      dimension: 'structure',
-      severity: SEVERITY.IMPORTANT,
-      sectionId: null,
-      title: 'Your draft is empty',
-      detail:
-        'Nothing has been written yet. Start with the section you already know ' +
-        'the most about - the order on the page is reading order, not a ' +
-        'requirement to write in sequence.',
-    })
+  return {
+    guidance,
+    totalWords,
+    // One flag, not seven findings. The UI turns this into a single sentence.
+    notStarted: totalWords === 0,
   }
-
-  return findings
 }
 
 /**
@@ -745,7 +768,8 @@ function labelOf(sectionId) {
  * not silently change the review a student sees.
  *
  * @param {object} draft a normalised draft from `sopBuilderStorage`
- * @returns {{findings: Array, claims: Array, claimsOutstanding: Array,
+ * @returns {{notStarted: boolean, findings: Array, sectionGuidance: Array,
+ *            claims: Array, claimsOutstanding: Array,
  *            byDimension: Object, summary: Object}}
  */
 export function reviewDraft(draft) {
@@ -753,8 +777,12 @@ export function reviewDraft(draft) {
   const sections = safe.sections || {}
   const substantiation = safe.substantiation || {}
 
+  // Section completion is a separate channel, not a finding. See checkStructure
+  // for why: seven "no text yet" findings turn an untouched draft into a draft
+  // that looks broken.
+  const structure = checkStructure({ ...safe, sections })
+
   const findings = [
-    ...checkStructure({ ...safe, sections }),
     ...checkClarity({ ...safe, sections }),
     ...checkSpecificity({ ...safe, sections }),
     ...checkRelevance({ ...safe, sections }),
@@ -772,27 +800,29 @@ export function reviewDraft(draft) {
 
   const byDimension = {}
   for (const dimension of REVIEW_DIMENSIONS) {
-    byDimension[dimension.id] = findings.filter((finding) => finding.dimension === dimension.id)
+    // 'structure' maps onto the guidance channel, so the dimension tile still
+    // reports what it looks at without those entries entering the findings list.
+    byDimension[dimension.id] = dimension.id === 'structure'
+      ? structure.guidance
+      : findings.filter((finding) => finding.dimension === dimension.id)
   }
 
-  const started = SOP_SECTIONS.filter(
-    (section) => wordCount(sections[section.id]?.text || '') > 0,
-  )
-
-  const totalWords = SOP_SECTIONS.reduce(
-    (sum, section) => sum + wordCount(sections[section.id]?.text || ''),
-    0,
-  )
+  const totalWords = structure.totalWords
 
   return {
+    notStarted: structure.notStarted,
     findings,
+    sectionGuidance: structure.guidance,
     claims,
     claimsOutstanding,
     byDimension,
     summary: {
       totalWords,
-      sectionsStarted: started.length,
+      sectionsStarted: SOP_SECTIONS.filter(
+        (section) => wordCount(sections[section.id]?.text || '') > 0,
+      ).length,
       sectionsTotal: SOP_SECTIONS.length,
+      sectionsRemaining: structure.guidance.filter((entry) => entry.status === 'empty').length,
       claimsDetected: claims.length,
       claimsOutstanding: claimsOutstanding.length,
       findingsImportant: findings.filter((finding) => finding.severity === SEVERITY.IMPORTANT).length,
