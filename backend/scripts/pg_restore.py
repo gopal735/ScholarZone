@@ -53,8 +53,14 @@ from app.services.backup_source import (  # noqa: E402
 #: The canonical public visibility predicate, restated for the verification
 #: query. It is the same rule `generate_snapshot.py` applies, so a restored
 #: database is judged by the same standard the catalogue is.
+#:
+#: ``NOT is_archived`` rather than ``is_archived = 0``: the latter is a
+#: SQLite integer comparison, and PostgreSQL rejects
+#: ``boolean = integer`` outright - which the first real-PostgreSQL drill
+#: run proved by failing on it. ``NOT`` means the same thing on both
+#: dialects, which is the property the migration tooling depends on.
 PUBLIC_VISIBILITY = (
-    "status != 'closed' AND is_archived = 0 AND verification_status != 'quarantined'"
+    "status != 'closed' AND NOT is_archived AND verification_status != 'quarantined'"
 )
 
 #: Tables a restore is expected to reproduce. Named rather than discovered: a
