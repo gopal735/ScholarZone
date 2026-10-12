@@ -15,9 +15,16 @@
  *
  * The same disagreement recurred once already. The canonical origin was moved to
  * `https://scholarzone-fwzj.vercel.app` while the frontend's primary production
- * deploy from master runs on Netlify project `visionary-cactus-600b38`. The
- * Vercel project stayed live as a mirror and as the API host, so the set looked
- * plausible and still named a host that is not the primary frontend. The
+ * deploy from master runs on Netlify. The Vercel project stayed live as a mirror
+ * and as the API host, so the set looked
+ * plausible and still named a host that is not the primary frontend.
+ *
+ * It then recurred a third time in a subtler way, and that one is why the
+ * literal below names a live host rather than the project's old subdomain. The
+ * default was left on the Netlify project's default subdomain after the site was
+ * published at `https://schollarzone.netlify.app`, and that subdomain now
+ * returns HTTP 404. Every artefact still agreed with each other and with this
+ * test, and the site advertised a host that serves nothing at all. The
  * assertions below are therefore driven by CANONICAL_ORIGIN rather than by a
  * literal, so a future move is one deliberate change plus this file's
  * expectation, not a silent four-file drift.
@@ -55,16 +62,23 @@ const VERIFICATION_TOKENS = [
 ]
 
 describe('canonical origin', () => {
-  it('is the canonical production host, not the legacy deployment', () => {
-    expect(CANONICAL_ORIGIN).toBe('https://visionary-cactus-600b38.netlify.app')
+  it('is the published production host, not the legacy deployment', () => {
+    // The host the Netlify deployment actually answers on. The previous default
+    // was that project's default subdomain, which now returns HTTP 404, so this
+    // assertion is what stops the set drifting back onto a host that serves
+    // nothing.
+    expect(CANONICAL_ORIGIN).toBe('https://schollarzone.netlify.app')
     expect(CANONICAL_ORIGIN).not.toContain('github.io')
   })
 
-  it('names no host that is a mirror or an API-only deployment', () => {
+  it('names no host that is a mirror, an API-only deployment, or a dead host', () => {
     // The Vercel project still serves the frontend and hosts the API under
     // /api. Advertising it as canonical would consolidate every page onto the
-    // mirror, which is the defect the previous default introduced.
+    // mirror, which is the defect the previous default introduced. The
+    // visionary-cactus-600b38 subdomain is excluded because it no longer
+    // resolves: naming it publishes canonicals nothing can fetch.
     expect(CANONICAL_ORIGIN).not.toContain('vercel.app')
+    expect(CANONICAL_ORIGIN).not.toContain('visionary-cactus-600b38')
   })
 
   it('has no trailing slash, so path joining cannot produce a double slash', () => {

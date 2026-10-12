@@ -43,7 +43,11 @@ DETAIL_PRIORITY = {"changefreq": "weekly", "priority": "0.8"}
 # record's own catalogue_url is the awarding body's page, not our host, and
 # reading an origin from it would publish a sitemap pointing at somebody
 # else's domain.
-CANONICAL_ORIGIN = "https://visionary-cactus-600b38.netlify.app"
+#
+# It is the host that actually serves the site. The previous value was the
+# Netlify project's default subdomain, which is dead now: it answers HTTP 404,
+# so a sitemap built from it advertised nothing a crawler could fetch.
+CANONICAL_ORIGIN = "https://schollarzone.netlify.app"
 
 
 def _origin(existing: Path) -> str:
