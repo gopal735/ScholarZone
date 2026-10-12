@@ -152,7 +152,32 @@
 }
 
 [data-theme='dark'] .nav-links a.active {
-  background: rgba(196, 216, 240, 0.1);
+  background: rgba(196, 216, 240, 0.14);
+}
+
+/* The "New" marker on the applicant journey link.
+   Text, not colour, so it survives a greyscale or forced-colors render —
+   and aria-hidden, so a screen reader hears the link's own name without the
+   decoration being spelled out after it. */
+.nav-badge--new {
+  margin-inline-start: var(--space-1);
+  padding: 1px var(--space-2);
+  border: 1px solid var(--sz-accent-border, var(--border-strong));
+  border-radius: var(--radius-pill);
+  background: var(--sz-accent-soft, var(--surface-subtle));
+  color: var(--sz-ink);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+/* The journey link is labelled "BD Journey" in the bar because the bar has
+   a fixed width, but it is a full name in the accessible tree: the bar's
+   label is the abbreviation, so the aria-label carries the rest. */
+a.nav-link--journey {
+  white-space: nowrap;
 }
 
 .nav-links a:focus-visible {
