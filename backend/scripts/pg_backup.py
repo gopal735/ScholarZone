@@ -78,6 +78,7 @@ from app.services.backup_source import (  # noqa: E402
     describe_allow_list,
     resolve_source,
     source_kind,
+    validate_source,
 )
 
 #: Default monthly transfer budget in MiB. Neon's free tier allows 5 GiB/month
