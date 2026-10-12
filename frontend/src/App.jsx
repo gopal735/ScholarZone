@@ -8,6 +8,7 @@ import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import SavedScholarshipsPage from './pages/SavedScholarshipsPage'
 import PlanPage from './pages/PlanPage'
+import SopBuilderPage from './pages/SopBuilderPage'
 import ComparePage from './pages/ComparePage'
 import DashboardPage from './pages/DashboardPage'
 import ApplicationsPage from './pages/ApplicationsPage'
@@ -44,6 +45,11 @@ function App() {
             anonymous half of the workspace, so it sits outside the routes that
             resolve their own server session. */}
         <Route path="/plan" element={<PlanPage />} />
+        {/* The statement-of-purpose builder. Declared before the catch-all, and
+            deliberately beside /plan rather than inside it: it is the second
+            browser-local workspace, with no server, no account and no sync, so
+            it needs no session resolution of its own. */}
+        <Route path="/statement" element={<SopBuilderPage />} />
         {/* Declared before the catch-all. The dashboard resolves its own access
             state from the server session rather than wrapping the route in a
             client-side guard, because the guard would only be able to trust a

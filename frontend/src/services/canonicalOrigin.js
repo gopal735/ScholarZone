@@ -21,18 +21,26 @@
  * 2. `https://scholarzone-fwzj.vercel.app` - the previous default. That project
  *    is still live and still serves the frontend, but it is a mirror: the
  *    frontend's automated production deploy from `master` runs on the Netlify
- *    project `visionary-cactus-600b38` (PR #32 fixed its Vite base path for
- *    exactly that reason), while the Vercel project additionally hosts the API
- *    under `/api`. Leaving the canonical there told every crawler to
- *    consolidate onto the mirror rather than the primary frontend, which is the
- *    same class of disagreement entry 1 describes.
+ *    project, while the Vercel project additionally hosts the API under `/api`.
+ *    Leaving the canonical there told every crawler to consolidate onto the
+ *    mirror rather than the primary frontend, which is the same class of
+ *    disagreement entry 1 describes.
  *
- * The default is now the primary public frontend's stable production host. It is
- * chosen over the per-deployment hostname deliberately: the alias is held by the
- * deployment and survives every future build, while a deployment URL does not.
- * The frontend is built with Vite base `/` and the Netlify SPA rewrite already
+ * 3. `https://visionary-cactus-600b38.netlify.app` - the default this replaces.
+ *    That was the Netlify project's default subdomain, and it is now dead: the
+ *    host returns HTTP 404 and serves no document at all. It survived here only
+ *    because it was written when the project was named that, and the site has
+ *    since been published at `https://schollarzone.netlify.app`. The default
+ *    and every artefact downstream of it named a host that does not resolve,
+ *    so a crawler following a canonical was sent to a 404.
+ *
+ * The default is now the primary public frontend's published hostname. Unlike
+ * entry 3, this one is the host that actually serves the site: verified live
+ * as the domain the deployment answers on, and chosen over a per-deployment
+ * hostname because a Netlify subdomain is renamed with the project. The
+ * frontend is built with Vite base `/` and the Netlify SPA rewrite already
  * resolves that host at the domain root.
  */
 export const CANONICAL_ORIGIN = (
-  import.meta.env.VITE_CANONICAL_ORIGIN || 'https://visionary-cactus-600b38.netlify.app'
+  import.meta.env.VITE_CANONICAL_ORIGIN || 'https://schollarzone.netlify.app'
 ).replace(/\/$/, '')
