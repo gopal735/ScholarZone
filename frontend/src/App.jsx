@@ -20,6 +20,8 @@ import SopBuilderPage from './pages/SopBuilderPage'
 import CountryPage from './pages/CountryPage'
 import NotFoundPage from './pages/NotFoundPage'
 import { useScrollReveal } from './hooks/useScrollReveal'
+import ConsistencyAuditorPage from './features/consistency-auditor/pages/ConsistencyAuditorPage'
+import { enabled as consistencyAuditorEnabled } from './features/consistency-auditor'
 import './App.css'
 
 /**
@@ -90,6 +92,14 @@ function App() {
             a client-side guard that could only trust a browser-supplied value. */}
         <Route path="/mentor" element={<MentorPage />} />
         <Route path="/compare" element={<ComparePage />} />
+        {/* The application consistency review. Declared before the catch-all,
+            and inert while the feature's own ``enabled`` flag is false, so the
+            route renders the not-found page and the navigation link is absent.
+            The page is code-split: it is only fetched when the flag is on and
+            the route is actually visited. */}
+        {consistencyAuditorEnabled && (
+          <Route path="/consistency-review" element={<ConsistencyAuditorPage />} />
+        )}
         {/* The applicant journey, behind Suspense because it is code-split.
             The fallback keeps the route's own region quiet rather than
             replacing the page, so the header and footer stay put while the
