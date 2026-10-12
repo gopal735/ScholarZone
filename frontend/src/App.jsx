@@ -22,6 +22,7 @@ import NotFoundPage from './pages/NotFoundPage'
 import { useScrollReveal } from './hooks/useScrollReveal'
 import ConsistencyAuditorPage from './features/consistency-auditor/pages/ConsistencyAuditorPage'
 import { enabled as consistencyAuditorEnabled } from './features/consistency-auditor'
+import { enabled as strategistEnabled } from './features/strategist/flags.js'
 import './App.css'
 
 /**
@@ -39,6 +40,11 @@ const JourneyPage = lazy(() =>
 
 const JourneyProvider = lazy(() =>
   import('./features/journey').then((module) => ({ default: module.JourneyProvider })),
+)
+
+// The strategist is a named export, so the lazy chunk maps it to default.
+const StrategistPage = lazy(() =>
+  import('./features/strategist').then((module) => ({ default: module.StrategistPage })),
 )
 
 function JourneyFallback() {
@@ -99,6 +105,22 @@ function App() {
             the route is actually visited. */}
         {consistencyAuditorEnabled && (
           <Route path="/consistency-review" element={<ConsistencyAuditorPage />} />
+        )}
+        {/* Global Study-to-Career Strategist. Inert while the feature's own
+            ``enabled`` flag is false (the default), so the route renders the
+            not-found page and no navigation link exists. Code-split so the wizard
+            and its Bangla dictionary only download when the flag is on and the
+            route is visited. The backend serves /v2/strategist only behind its own
+            independent switch; with either off the feature is unreachable. */}
+        {strategistEnabled && (
+          <Route
+            path="/strategist"
+            element={
+              <Suspense fallback={<JourneyFallback />}>
+                <StrategistPage />
+              </Suspense>
+            }
+          />
         )}
         {/* The applicant journey, behind Suspense because it is code-split.
             The fallback keeps the route's own region quiet rather than

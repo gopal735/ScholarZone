@@ -536,6 +536,21 @@ TOPIC_PATHS: dict[str, tuple[str, ...]] = {
     # Career
     "career": ("career", "employment_outcomes"),
     "salary": ("career", "average_starting_salary", "bachelor"),
+    # Subject-level (occupation-level) pay. A country average is NOT this, and the
+    # loader (services/country_intelligence/occupation_salary.py) refuses any cell
+    # that is not PRIMARY_VERIFIED, basis gross, official-statistics and metric-
+    # named before it can be promoted. Keyed by occupation slug so two subjects
+    # never collide on one field. Reviewed addition for the Study-to-Career
+    # Strategist; promotion into the country files is gated behind the same guard.
+    "occupation_salary_software_developer": (
+        "career", "occupation_salary", "software_developer",
+    ),
+    "occupation_salary_data_scientist": (
+        "career", "occupation_salary", "data_scientist",
+    ),
+    "occupation_salary_civil_engineer": (
+        "career", "occupation_salary", "civil_engineer",
+    ),
     "net_income": ("career", "net_monthly_income"),
     # The net-income track writes these topic names. Both map to the same
     # contract-validated slot; "net_income" is kept as an alias so artifacts
