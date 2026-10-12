@@ -75,6 +75,14 @@ export default function Navigation() {
             <NavLink to="/plan" className={({ isActive }) => `nav-utility-link ${isActive ? 'active' : ''}`}>
               Plan
             </NavLink>
+            {/* The statement-of-purpose builder: the second browser-local
+                workspace, with no account, no server and no sync. It sits beside
+                Plan rather than under it, because it answers a different question
+                and a student drafting a statement should not have to go through
+                the checklist to reach it. */}
+            <NavLink to="/statement" className={({ isActive }) => `nav-utility-link ${isActive ? 'active' : ''}`}>
+              Statement
+            </NavLink>
             <CountedUtilityLink to="/compare" label="Compare" count={compareIds.length} className="nav-utility-link" animate={!prefersReducedMotion} />
             {/* The mentor is a reading surface over the records the three links
                 above already point at, so it sits with them rather than in the
