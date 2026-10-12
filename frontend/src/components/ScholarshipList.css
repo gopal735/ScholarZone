@@ -19,6 +19,98 @@
   background: var(--sz-glass-solid-2);
 }
 
+/* ── Active-filter chips ──────────────────────────────────────────────
+   One chip per active filter, each removable on its own. The panel used to
+   offer a single "Reset all", which was the only way to undo one filter and
+   also reset the search box, the sort order and the page - so correcting a
+   mistyped country cost the rest of the view. Each chip is a button with an
+   accessible name that says what it removes, because the visible "×" is
+   decorative and would otherwise leave the control with no name. */
+
+.filter-chips {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 32px;
+  padding: 0.3rem 0.7rem;
+  color: var(--text-primary);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  background: var(--sz-input-bg);
+  border: 1px solid var(--sz-input-border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background var(--duration-micro) var(--timing-micro);
+}
+
+.filter-chip:hover,
+.filter-chip:focus-visible {
+  background: color-mix(in srgb, currentColor 12%, transparent);
+}
+
+.filter-chip__remove {
+  opacity: 0.7;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* ── Empty state ──────────────────────────────────────────────────────
+   Says what the search did, so an empty result is diagnosable rather than a
+   dead end, and offers the single most likely fix next to the full reset. */
+
+.empty-state__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: center;
+}
+
+.empty-state__link {
+  display: inline-block;
+  margin-top: var(--space-2);
+  font-weight: 600;
+}
+
+/* ── Pagination ───────────────────────────────────────────────────────
+   Numbered pages beside Prev/Next. Page 4 of 22 was previously three clicks
+   away and the current page was only bold, with nothing marking it for
+   assistive technology. */
+
+.scholarship-pagination__pages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.scholarship-pagination__pages li {
+  display: flex;
+}
+
+.scholarship-pagination__pages button {
+  min-width: 40px;
+  min-height: 40px;
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+
+.scholarship-pagination__pages button.is-current[aria-current='page'] {
+  font-weight: 700;
+  background: color-mix(in srgb, currentColor 14%, transparent);
+  border-color: currentColor;
+}
+
 .filter-section__intro p {
   color: var(--text-primary);
   font-size: var(--text-lg);

@@ -7,6 +7,7 @@ import ScholarshipDetailsPage from './pages/ScholarshipDetailsPage'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import SavedScholarshipsPage from './pages/SavedScholarshipsPage'
+import PlanPage from './pages/PlanPage'
 import ComparePage from './pages/ComparePage'
 import DashboardPage from './pages/DashboardPage'
 import ApplicationsPage from './pages/ApplicationsPage'
@@ -35,6 +36,11 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/saved" element={<SavedScholarshipsPage />} />
+        {/* The local planning workspace: recently viewed, checklist, deadlines,
+            notes and a backup. Declared before the catch-all. It is the
+            anonymous half of the workspace, so it sits outside the routes that
+            resolve their own server session. */}
+        <Route path="/plan" element={<PlanPage />} />
         {/* Declared before the catch-all. The dashboard resolves its own access
             state from the server session rather than wrapping the route in a
             client-side guard, because the guard would only be able to trust a

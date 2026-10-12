@@ -235,11 +235,14 @@ function OverviewPanel({ scholarship, matchResult }) {
   const matchScore = deriveMatchScore(scholarship, matchResult)
   const nextAction = deriveNextAction(scholarship, matchResult)
   const recordKind = deriveRecordKind(scholarship)
-  const verifiedOn = scholarship.last_verified_at || scholarship.last_verified_date || null
   const hasOfficialLogo = scholarship.image_kind === 'official_logo'
+  // `verifiedOn` was read here only to be passed to the verification badge,
+  // which now asks for the whole record: the badge has to be able to tell a
+  // re-checked listing from one whose status says "confirm with provider", and
+  // it cannot do that from a date alone.
   const providerName = coerceText(scholarship.provider?.name) || coerceText(scholarship.provider) || coerceText(scholarship.official_source)
-  const degreeText = scholarship.degree
-  const destinationText = scholarship.country
+  const degreeText = coerceText(scholarship.degree)
+  const destinationText = coerceText(scholarship.country)
 
   return (
     <div className={`premium-card__panel ${levelClassName(1)}`}>
@@ -253,7 +256,7 @@ function OverviewPanel({ scholarship, matchResult }) {
             )}
             {providerName ? <p className="premium-card__provider">{providerName}</p> : null}
             <div className="premium-card__signals">
-              <VerifiedBadge status={scholarship.verification_status} date={getLastVerifiedLabel(verifiedOn)} />
+              <VerifiedBadge status={scholarship.verification_status} date={getLastVerifiedLabel(scholarship)} />
               {hasOfficialLogo ? (
                 <Badge tone="success">Official logo</Badge>
               ) : (
@@ -266,7 +269,15 @@ function OverviewPanel({ scholarship, matchResult }) {
       </div>
 
       <dl className="premium-card__data premium-card__data--primary">
-        <DataRow label="Degree · Destination" value={`${degreeText} · ${destinationText}`} />
+        {/* Composed from the parts that actually exist, rather than from a
+            template that would render "PhD · undefined" when either is
+            missing - `coerceText` passes a non-empty string straight through,
+            so the literal word "undefined" reached the screen as a value. A
+            record with only one of the two still shows the one it has. */}
+        <DataRow
+          label="Degree · Destination"
+          value={[degreeText, destinationText].filter(Boolean).join(' · ')}
+        />
         <DataRow
           label="Funding"
           value={fundingAmount.display ? `${fundingAmount.display}${fundingAmount.period ? ` / ${fundingAmount.period}` : ''}` : fundingTruth.label}

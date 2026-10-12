@@ -2,7 +2,10 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ScholarshipCard from './ScholarshipCard'
 import ScholarshipCardSkeleton from './ScholarshipCardSkeleton'
-import { getDeadlineLabel } from '../utils/scholarshipPresentation'
+import {
+  getDeadlineLabel,
+  getDeadlinePrecisionLabel,
+} from '../utils/scholarshipPresentation'
 import { useScholarshipDirectory } from '../hooks/useScholarshipDirectory'
 import { fetchScholarshipStats, fetchScholarships } from '../services/scholarshipService'
 import './ScholarZoneHero.css'
@@ -76,7 +79,7 @@ function HeroShowcase({ scholarship, ref, onPointerMove, onPointerLeave }) {
                   <span className="sz-hero__chip-label">Deadline</span>
                   <strong className="sz-hero__chip-value">{getDeadlineLabel(scholarship)}</strong>
                   <span className="sz-hero__chip-note">
-                    {scholarship.deadline_precision === 'month' ? 'Month only' : 'Confirmed date'}
+                    {getDeadlinePrecisionLabel(scholarship) ?? 'Deadline precision not stated'}
                   </span>
                 </aside>
 
@@ -94,8 +97,15 @@ function HeroShowcase({ scholarship, ref, onPointerMove, onPointerLeave }) {
         </div>
 
         <p className="sz-hero__showcase-note">
-          Every listing is checked against the awarding body&rsquo;s own page before it
-          appears here.
+          {/* Only what the catalogue supports. This previously read "Every
+              listing is checked against the awarding body's own page before it
+              appears here", which is not true of the 81 public records whose
+              `verification_status` is `needs_review` - and those records are
+              the ones the catalogue deliberately publishes as "Confirm with
+              provider" rather than withheld. A blanket claim here contradicted
+              the badge on the card directly above it. */}
+          Each listing states whether its details were re-checked against the awarding
+          body&rsquo;s own page.
         </p>
       </div>
     </div>

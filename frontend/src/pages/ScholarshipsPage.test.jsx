@@ -26,6 +26,7 @@ import { CompareProvider } from '../context/CompareContext.jsx'
 import { SavedScholarshipsProvider } from '../context/SavedScholarshipsContext.jsx'
 import { AuthContext } from '../context/authContext'
 import { clearSnapshotCache } from '../services/staticScholarshipService'
+import { NO_FILTER } from '../services/catalogueQuery.js'
 
 const SNAPSHOT_META = {
   generated_at: '2026-10-10T12:41:37.970162Z',
@@ -348,7 +349,10 @@ describe('public catalogue page, static-first', () => {
     // 'Europe' is not a country any record holds, and it used to be an option
     // that could never match.
     expect(countryOptions).not.toContain('Europe')
-    expect(countryOptions).toEqual(['All', 'Singapore', 'Sweden', 'USA'])
+    // The sentinel is lower-case: it is the value the URL module writes, so a
+    // select whose value does not match it would silently desync from the
+    // address bar.
+    expect(countryOptions).toEqual([NO_FILTER, 'Singapore', 'Sweden', 'USA'])
   })
 
   it('does not offer a status the public catalogue excludes', async () => {
@@ -365,7 +369,7 @@ describe('public catalogue page, static-first', () => {
     // option could only ever return nothing while looking like a working
     // filter.
     expect(statusOptions).not.toContain('closed')
-    expect(statusOptions).toEqual(['All', 'open', 'upcoming'])
+    expect(statusOptions).toEqual([NO_FILTER, 'open', 'upcoming'])
   })
 
   it('renders listings from the snapshot with no API request', async () => {
@@ -463,7 +467,9 @@ describe('public catalogue page, static-first', () => {
     const sortSelect = screen.getByLabelText(/Sort by/i)
     expect(sortSelect).toBeInTheDocument()
 
-    const countrySelect = screen.getByLabelText(/All countries|Country/i)
+    // By id, not by label text: the search field's own label mentions every
+    // filter by name, so a label-text query is ambiguous by construction.
+    const countrySelect = document.getElementById('scholarship-country')
     expect(countrySelect).toBeInTheDocument()
   })
 
