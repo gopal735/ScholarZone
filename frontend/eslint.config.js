@@ -33,4 +33,14 @@ export default defineConfig([
       globals: { ...globals.node },
     },
   },
+  // Test files also run in Node under vitest, and the snapshot-backed suites
+  // read public/ from the working directory to calibrate their assertions
+  // against the real data. Same scoping rule as the tooling block: application
+  // code keeps browser globals.
+  {
+    files: ['src/**/*.test.{js,jsx}'],
+    languageOptions: {
+      globals: { ...globals.browser, ...globals.node },
+    },
+  },
 ])

@@ -24,7 +24,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.sz-sr-only {
+/* Screen-reader-only text. Two names for one thing, on purpose: `sz-sr-only`
+   is the long-standing name in this codebase, and `visually-hidden` is the
+   name three separate components use without importing the stylesheet that
+   happened to define it. ComparePage's table caption was rendering as visible
+   text on a direct load of /compare for exactly that reason.
+
+   The clip-path form is the one that survives `display: inline` and keeps the
+   node in the accessibility tree, so it is used for both names. */
+.sz-sr-only,
+.visually-hidden {
   position: absolute;
   width: 1px;
   height: 1px;

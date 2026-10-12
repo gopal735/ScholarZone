@@ -134,6 +134,83 @@ export function matchesTuitionCoverage(scholarship, selection) {
   return false
 }
 
+/** At or below this length a funding string is shown whole. */
+const FUNDING_BADGE_LIMIT = 34
+
+/**
+ * Categories the published funding text maps onto, in precedence order.
+ *
+ * These are classifications of the record's own wording, not new facts: a
+ * record whose `funding` reads "Annual stipend of HK$344,400 …" is classified
+ * `Stipend` because the provider's own text says it is a stipend. The full
+ * text is returned alongside and is what the card exposes as a tooltip and a
+ * screen-reader string, so the summary never stands in for the source.
+ *
+ * The pattern property is `pattern`, not `test`: a property named `test` on a
+ * RegExp shadows nothing, but calling `entry.test(text)` calls the RegExp
+ * itself rather than its `test` method, and throws
+ * "entry.test is not a function" at runtime - which is exactly what the first
+ * browser run of this module produced.
+ */
+const FUNDING_CATEGORIES = [
+  { value: 'Fully funded', pattern: /fully\s*fund/i },
+  { value: 'Tuition support', pattern: /tuition|fee\s*(waiver|reduction|cover)/i },
+  { value: 'Stipend', pattern: /stipend|allowance|living\s*(allowance|cost)|maintenance/i },
+  { value: 'Research funding', pattern: /research\s*fund|research\s*grant/i },
+  { value: 'Travel support', pattern: /travel|airfare|flight|relocation/i },
+  { value: 'Partial funding', pattern: /partial|partially/i },
+  { value: 'Need-based', pattern: /need[\s-]?based|financial\s*need|means[\s-]?tested/i },
+  { value: 'Housing support', pattern: /housing|accommodation|residence/i },
+  { value: 'Health cover', pattern: /health|medical|insurance/i },
+]
+
+/**
+ * A funding label that fits a badge, with the full wording retained.
+ *
+ * @param {object|null|undefined} scholarship
+ * @returns {{label: string, full: string|null, isCategory: boolean, truncated: boolean}}
+ *   `full` is null only when the record publishes no funding text at all, in
+ *   which case `label` is the honest "Funding not stated" and `isCategory` is
+ *   true so the badge renders in its quieter style.
+ */
+export function fundingBadgeLabel(scholarship) {
+  const raw = scholarship?.funding
+  const text = typeof raw === 'string' && raw.trim() !== '' ? raw.trim() : null
+
+  if (text === null) {
+    return { label: 'Funding not stated', full: null, isCategory: true, truncated: false }
+  }
+
+  if (text.length <= FUNDING_BADGE_LIMIT) {
+    return { label: text, full: text, isCategory: false, truncated: false }
+  }
+
+  // A category exists, so use it. The badge becomes scannable and the record's
+  // own long wording stays one tooltip and one screen-reader string away.
+  const category = FUNDING_CATEGORIES.find((entry) => entry.pattern.test(text))
+  if (category) {
+    return { label: category.value, full: text, isCategory: true, truncated: true }
+  }
+
+  // No category. The first clause is the only part of a long funding string
+  // that reads as a label, and it is cut at a boundary rather than mid-word so
+  // the visible text is still a real phrase.
+  const firstClause = text.split(/[;,.]/)[0].trim()
+  if (firstClause !== '' && firstClause.length <= FUNDING_BADGE_LIMIT) {
+    return { label: `${firstClause}…`, full: text, isCategory: true, truncated: true }
+  }
+
+  const words = text.split(/\s+/)
+  let label = ''
+  for (const word of words) {
+    if (label.length + word.length + 1 > FUNDING_BADGE_LIMIT) {
+      break
+    }
+    label = label === '' ? word : `${label} ${word}`
+  }
+  return { label: `${label}…`, full: text, isCategory: true, truncated: true }
+}
+
 /**
  * A single line stating what the funding is, for a card or a comparison cell.
  *

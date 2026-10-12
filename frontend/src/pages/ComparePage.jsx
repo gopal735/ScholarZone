@@ -50,29 +50,45 @@ export default function ComparePage() {
         </div>
       ) : (
         <>
-          <div className="compare-page__toolbar">
-            <p>
-              Selections are saved on this device.
-              {' '}
-              {NOT_STATED} means the provider has not published the detail &mdash; it is not the same as
-              a confirmed &ldquo;no&rdquo;.
-            </p>
-            <button type="button" onClick={clearCompare}>Clear comparison</button>
-          </div>
+      <div className="compare-page__toolbar">
+        <p>
+          Selections are saved on this device.
+          {' '}
+          {NOT_STATED} means the provider has not published the detail &mdash; it is not the same as
+          a confirmed &ldquo;no&rdquo;.
+        </p>
+        <button type="button" onClick={clearCompare}>Clear comparison</button>
+      </div>
 
-          {/* A selection that cannot be resolved is reported, not hidden. The
-              most likely cause is an export restored on a device whose
-              snapshot is older, and the student needs to know which side is
-              missing rather than wondering where the row went. */}
-          {unresolved.length > 0 && (
-            <p className="compare-page__unresolved" role="status">
-              {unresolved.length === 1
-                ? 'One selected scholarship is not in this device&rsquo;s catalogue.'
-                : `${unresolved.length} selected scholarships are not in this device&rsquo;s catalogue.`}
-              {' '}
-              Remove it from the comparison to clear this notice.
-            </p>
-          )}
+      {/* A selection that cannot be resolved is reported, not hidden. The
+          cause is almost always an export restored on a device whose snapshot
+          is older, and the student needs to know which side is missing rather
+          than wondering where the row went.
+
+          The control that removes them used to not exist: the only remove
+          button on this page is rendered per *resolved* scholarship, so an
+          unresolved id could never be cleared and the notice was permanent. */}
+      {unresolved.length > 0 && (
+        <div className="compare-page__unresolved" role="status">
+          <p>
+            {unresolved.length === 1
+              ? 'One selected scholarship is not in this device\u2019s catalogue.'
+              : `${unresolved.length} selected scholarships are not in this device\u2019s catalogue.`}
+            {' '}
+            They were saved on a device whose catalogue had newer records.
+          </p>
+          <button
+            type="button"
+            onClick={() => {
+              for (const id of unresolved) {
+                toggleCompare(id)
+              }
+            }}
+          >
+            Remove {unresolved.length === 1 ? 'it' : 'them'}
+          </button>
+        </div>
+      )}
 
           <div className="compare-page__table-wrap" tabIndex={0} role="region" aria-label="Scholarship comparison table">
             <table className="compare-page__table">
@@ -96,9 +112,35 @@ export default function ComparePage() {
                 {COMPARISON_ROWS.map((row) => (
                   <tr key={row.key}>
                     <th scope="row">{row.label}</th>
-                    {selectedScholarships.map((scholarship) => (
-                      <td key={scholarship.id}>{renderComparisonCell(row, scholarship)}</td>
-                    ))}
+                    {selectedScholarships.map((scholarship) => {
+                      const cell = renderComparisonCell(row, scholarship)
+                      const isUnknown = cell === NOT_STATED
+                      return (
+                        <td
+                          key={scholarship.id}
+                          /* The distinction has to survive the styling, not
+                             only the toolbar sentence beside the table. A
+                             populated cell and an unknown one used to render
+                             identically, so the page explained that "not
+                             stated" is not a "no" and then drew them the same
+                             way. The marker is colour-weight and a text cue,
+                             so it does not rely on colour alone. */
+                          className={isUnknown ? 'compare-page__cell--unknown' : undefined}
+                          data-value={isUnknown ? 'not-stated' : undefined}
+                        >
+                          {isUnknown ? (
+                            <>
+                              <span className="compare-page__unknown-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                  <path d="M9.9 9a2.1 2.1 0 1 1 3.4 1.7c-.8.5-1.3 1-1.3 2M12 17h.01" />
+                                </svg>
+                              </span>
+                              {cell}
+                            </>
+                          ) : cell}
+                        </td>
+                      )
+                    })}
                   </tr>
                 ))}
               </tbody>

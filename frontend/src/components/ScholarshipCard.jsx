@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom'
 import ScholarshipImage from './ScholarshipImage'
 import ScholarshipActions from './ScholarshipActions'
 import { formatFundingValue } from '../utils/scholarshipDetail'
-import { getDeadlineLabel, getLastVerifiedLabel, getScholarshipStatus } from '../utils/scholarshipPresentation'
+import { getLastVerifiedLabel, getScholarshipStatus } from '../utils/scholarshipPresentation'
+import { presentCardDeadline } from '../utils/cardDeadlinePresentation'
+import { fundingBadgeLabel } from '../utils/fundingFacts'
 import './ScholarshipCard.css'
 
 /* Pointer input is ignored on touch and coarse pointers — there is no
@@ -23,8 +25,7 @@ export default function ScholarshipCard({ scholarship }) {
 
      Every record in the catalogue has verified === true, because `verified`
      records that a source was read at some point. It says nothing about
-     whether this record's details have since been checked: 228 of the 400
-     public listings are verification_status 'needs_review'. Reading the flag
+     whether this record's details have since been checked. Reading the flag
      made every card claim "Verified official source", which is the one claim
      this product cannot afford to make loosely.
 
@@ -32,13 +33,12 @@ export default function ScholarshipCard({ scholarship }) {
      plainly instead of borrowing a pass mark. */
   const verificationState = scholarship.verification_status || 'needs_review'
   const isVerified = verificationState === 'active'
-  const needsReview = !isVerified
 
   /* Provenance, not decoration. image_kind is the honest signal: an image_url
-     exists on 400 records but only 384 are validated official_logo, and the
-     difference is exactly what this line has to tell the truth about. */
+     exists on many records but only some are validated official_logo, and
+     the difference is exactly what the title rule's fill has to tell the
+     truth about. */
   const hasOfficialLogo = scholarship.image_kind === 'official_logo'
-  const verifiedOn = scholarship.last_verified_at || null
 
   /* Writes two custom properties straight to the node. No React state
      and no animation loop, so a pointer sweep across a grid only costs a
@@ -76,6 +76,25 @@ export default function ScholarshipCard({ scholarship }) {
     scholarship.funding_period,
   )
 
+  /* The funding indicator and the deadline, split into a value and a note.
+
+     Both used to render the raw provider string directly. `funding` reaches 310
+     characters on the shipped snapshot and `deadline` reaches 244, and each was
+     set at the card's heaviest weight in a one-line truncated pill. The split
+     keeps the scannable part scannable and gives the long part room, and the
+     full text stays available - in the badge's own tooltip and screen-reader
+     text, and in full on the detail page. */
+  const funding = fundingBadgeLabel(scholarship)
+  const deadline = presentCardDeadline(scholarship)
+
+  /* A short, own-words-free summary. The detail page holds the whole
+     eligibility summary; the card needs one line that tells a student whether
+     this is worth opening, so it is clamped rather than truncated mid-word. */
+  const summary = typeof scholarship.eligibility_summary === 'string'
+    && scholarship.eligibility_summary.trim() !== ''
+    ? scholarship.eligibility_summary.trim()
+    : null
+
   return (
     <article
       ref={cardRef}
@@ -90,10 +109,30 @@ export default function ScholarshipCard({ scholarship }) {
       <div className="scholarship-card__header">
         <div className="scholarship-card__topline">
           <span className={`scholarship-card__status scholarship-card__status--${deadlineStatus.className}`}>{deadlineStatus.label}</span>
-          <span className="scholarship-card__badge">{scholarship.funding}</span>
+          {/* The funding indicator. It is a badge, so it has to fit one, and
+              the label is chosen to: a scannable category when the provider's
+              funding text supports one, the short text itself when it is already
+              short. The full published wording is never discarded - it is on the
+              element as a tooltip, in the accessibility tree, and on the detail
+              page - so nothing is hidden behind a truncation. */}
+          <span
+            className={`scholarship-card__badge${funding.isCategory ? ' scholarship-card__badge--category' : ''}`}
+            title={funding.truncated ? funding.full : undefined}
+          >
+            {funding.label}
+            {funding.truncated && (
+              <span className="visually-hidden"> ({funding.full})</span>
+            )}
+          </span>
         </div>
 
         <h2>{scholarship.title}</h2>
+
+        {summary && <p className="scholarship-card__summary">{summary}</p>}
+
+        {scholarship.provider && (
+          <p className="scholarship-card__provider">{scholarship.provider}</p>
+        )}
 
         {/* The Provenance Rule. The square is the identity: filled when the
             record carries a validated official logo, hollow when it does not.
@@ -107,19 +146,6 @@ export default function ScholarshipCard({ scholarship }) {
           }`}
           aria-hidden="true"
         />
-        <small className="scholarship-card__citation">
-          ↳ {needsReview
-            ? 'Not yet re-checked against the official page'
-            : hasOfficialLogo
-              ? 'Official source captured'
-              : 'No official logo'}
-          {verifiedOn ? ` · last checked ${verifiedOn}` : ''}
-        </small>
-
-        {scholarship.provider && (
-          <p className="scholarship-card__provider">{scholarship.provider}</p>
-        )}
-
         <div className="scholarship-card__signals">
           <span className={isVerified ? 'scholarship-card__verified' : 'scholarship-card__unverified'}>
             <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -133,10 +159,26 @@ export default function ScholarshipCard({ scholarship }) {
         </div>
       </div>
 
+      {/* The deadline, split three ways.
+            - label: what the row is
+            - value: the date, when there is one
+            - note: the provider's own wording, at body weight, left-aligned,
+              with a line height that a 244-character sentence can be read at.
+          A record with no date keeps its provider text as the value rather than
+          being promoted to a headline, and a record with no date and no text
+          says so. Nothing is invented to fill the space. */}
       <dl className="scholarship-card__details">
         <div className={`scholarship-card__detail scholarship-card__detail--deadline scholarship-card__detail--${deadlineStatus.className}`}>
           <dt>Deadline</dt>
-          <dd>{getDeadlineLabel(scholarship)}</dd>
+          <dd>
+            <span className={`scholarship-card__deadline-value${deadline.isProse ? ' scholarship-card__deadline-value--prose' : ''}`}>{deadline.value}</span>
+            {deadline.note && (
+              <span className="scholarship-card__deadline-note">{deadline.note}</span>
+            )}
+            {deadline.precisionLabel && (
+              <span className="scholarship-card__deadline-precision">{deadline.precisionLabel}</span>
+            )}
+          </dd>
         </div>
         <div className="scholarship-card__detail">
           <dt>Location</dt>
