@@ -432,6 +432,7 @@ class ScholarshipRestoreRecord(Base):
     restored_fields: Mapped[list[str]] = mapped_column(JSON, nullable=False, default=list)
     outcome: Mapped[str] = mapped_column(String(16), nullable=False)
     error_detail: Mapped[str | None] = mapped_column(Text, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
 
 
 class ScholarshipAdminAudit(Base):
@@ -468,7 +469,6 @@ class ScholarshipAdminAudit(Base):
     recorded_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), nullable=False, server_default=func.now()
     )
-    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
 
 
 class MaintenanceCursor(Base):
