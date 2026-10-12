@@ -1,0 +1,70 @@
+name: Database keep-alive
+
+# The free tier of the recommended PostgreSQL host pauses a project after a
+# week of inactivity, and a paused database answers every connection with a
+# refusal that reads exactly like an outage. This workflow is the smallest
+# thing that prevents the pause: a SELECT 1, once a week, and a report of
+# the identity it reached (dialect and host only - never the credentials,
+# which are never printed and never written to the log).
+#
+# It is deliberately unable to write: the connection is opened with
+# default_transaction_read_only=on, so even a bug in the probe cannot touch
+# a row. If the check fails, the run fails and the reason is in the log -
+# a paused project can be restored from the dashboard by the owner.
+#
+# When the host is a paid tier that never pauses, the workflow stays green
+# and costs nothing; when the host is not configured at all, it is skipped
+# rather than reported as a failure, because an unconfigured repository is
+# not a broken database.
+
+on:
+  schedule:
+    - cron: "17 6 * * 1" # Mondays at 06:17 UTC: inside the pause window
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: database-keepalive
+  cancel-in-progress: false
+
+jobs:
+  keepalive:
+    name: keep the configured database awake
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Probe the configured database (read only)
+        working-directory: backend
+        env:
+          SCHOLARZONE_DATABASE_URL: ${{ secrets.SCHOLARZONE_DATABASE_URL }}
+        run: |
+          if [ -z "$SCHOLARZONE_DATABASE_URL" ]; then
+            echo "SCHOLARZONE_DATABASE_URL is not configured; nothing to keep alive."
+            exit 0
+          fi
+          python - <<'PY'
+          import os
+          from sqlalchemy import create_engine, text
+
+          dsn = os.environ["SCHOLARZONE_DATABASE_URL"]
+          engine = create_engine(dsn, connect_args={"options": "-c default_transaction_read_only=on"})
+          with engine.connect() as connection:
+              value = connection.execute(text("SELECT 1")).scalar()
+              version = connection.execute(text("SHOW server_version")).scalar()
+          # Identity only: dialect and host. The URL's credentials are never
+          # printed, and the engine object is not stringified anywhere.
+          from urllib.parse import urlparse
+          parsed = urlparse(dsn)
+          print(f"reachable: SELECT 1 -> {value}; server {version}; "
+                f"dialect {engine.dialect.name}; host {parsed.hostname}")
+          assert value == 1, "SELECT 1 did not return 1"
+          PY
