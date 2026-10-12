@@ -18,6 +18,8 @@ import AdminScholarshipPage from './pages/AdminScholarshipManager'
 import CountryPage from './pages/CountryPage'
 import NotFoundPage from './pages/NotFoundPage'
 import { useScrollReveal } from './hooks/useScrollReveal'
+import ConsistencyAuditorPage from './features/consistency-auditor/pages/ConsistencyAuditorPage'
+import { enabled as consistencyAuditorEnabled } from './features/consistency-auditor'
 import './App.css'
 
 function App() {
@@ -58,6 +60,14 @@ function App() {
             a client-side guard that could only trust a browser-supplied value. */}
         <Route path="/mentor" element={<MentorPage />} />
         <Route path="/compare" element={<ComparePage />} />
+        {/* The application consistency review. Declared before the catch-all,
+            and inert while the feature's own ``enabled`` flag is false, so the
+            route renders the not-found page and the navigation link is absent.
+            The page is code-split: it is only fetched when the flag is on and
+            the route is actually visited. */}
+        {consistencyAuditorEnabled && (
+          <Route path="/consistency-review" element={<ConsistencyAuditorPage />} />
+        )}
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/admin/verification" element={<AdminVerificationPage />} />
         <Route path="/admin/scholarships" element={<AdminScholarshipPage />} />
