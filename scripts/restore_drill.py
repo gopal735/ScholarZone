@@ -54,8 +54,10 @@ FIXTURE_ROWS = [
 PASSPHRASE = "drill-passphrase-not-a-secret"
 
 
-def _run(command: list[str], env: dict[str, str] | None = None, expect_ok: bool = True):
-    completed = subprocess.run(command, capture_output=True, text=True, check=False, env=env or os.environ.copy())
+def _run(command: list[str], env: dict[str, str] | None = None, expect_ok: bool = True, cwd: Path | None = None):
+    completed = subprocess.run(
+        command, capture_output=True, text=True, check=False, env=env or os.environ.copy(), cwd=cwd
+    )
     if expect_ok and completed.returncode != 0:
         raise SystemExit(
             f"command failed: {' '.join(command[:3])}...\n{completed.stdout[-500:]}\n{completed.stderr[-800:]}"
