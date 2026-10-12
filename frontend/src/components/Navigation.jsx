@@ -64,6 +64,17 @@ export default function Navigation() {
             <NavLink to="/scholarships" className={({ isActive }) => (isActive ? 'active' : '')}>Scholarships</NavLink>
             <NavLink to="/match" className={({ isActive }) => (isActive ? 'active' : '')}>Match</NavLink>
             <NavLink to="/countries" className={({ isActive }) => (isActive ? 'active' : '')}>Countries</NavLink>
+            {/* The applicant journey. It sits in the primary row because it is a
+                destination in its own right, not an account utility, and the
+                "New" marker is a plain span rather than a count — there is
+                nothing to count, and a badge that says "New" forever is a lie
+                the moment the feature stops being new. It is marked
+                aria-hidden so the accessible name stays the link's own label,
+                and the route is announced as "Bangladesh Journey" alone. */}
+            <NavLink to="/bangladesh-journey" className={({ isActive }) => `nav-utility-link nav-link--journey ${isActive ? 'active' : ''}`}>
+              BD Journey
+              <span className="nav-badge nav-badge--new" aria-hidden="true">New</span>
+            </NavLink>
           </div>
 
           <div className="nav-utilities">
