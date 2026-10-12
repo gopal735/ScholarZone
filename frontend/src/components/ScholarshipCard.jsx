@@ -128,7 +128,7 @@ export default function ScholarshipCard({ scholarship }) {
             {isVerified ? 'Verified official source' : 'Confirm with provider'}
           </span>
           {scholarship.last_verified_at && (
-            <span className="scholarship-card__verification-date">{getLastVerifiedLabel(scholarship.last_verified_at)}</span>
+            <span className="scholarship-card__verification-date">{getLastVerifiedLabel(scholarship)}</span>
           )}
         </div>
       </div>

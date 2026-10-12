@@ -1,4 +1,8 @@
 import { loadScholarshipSnapshot } from './staticScholarshipService.js'
+import { searchRecords } from './catalogueSearch.js'
+import { matchesStudyLevel } from '../utils/studyLevel.js'
+import { matchesTuitionCoverage } from '../utils/fundingFacts.js'
+import { getScholarshipStatusCode } from '../utils/scholarshipPresentation.js'
 
 const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL || '/api').replace(/\/$/, '')
 
@@ -310,19 +314,31 @@ function isNoFilter(value) {
   return normalised === '' || normalised.toLowerCase() === 'all'
 }
 
+/**
+ * The status a record is filtered by.
+ *
+ * The record's own `status` wins. When it is absent, the same status the card
+ * displays is derived from the deadline - because filtering by a status the
+ * card does not show is the bug where a "Closing soon" pill sits inside a view
+ * filtered to "Open", which is a filter contradicting the page it is on.
+ *
+ * One public record carries `"status": null`. Before this, it matched no status
+ * filter at all, so a student filtering to "open" never saw it and a student
+ * filtering to "closed" never saw it either: a published record that every
+ * status view silently excluded.
+ */
+function statusKeyOf(scholarship) {
+  return getScholarshipStatusCode(scholarship)
+}
+
 function filterScholarships(scholarships, query) {
   let filtered = [...scholarships]
 
-  // Search filter
+  // Search. Tokenised AND matching across a wider field set than the previous
+  // five, so "daad germany" matches on terms in any order and any field, and
+  // "  daad " and "daad." match like "daad".
   if (!isNoFilter(query.search)) {
-    const search = query.search.toLowerCase()
-    filtered = filtered.filter(s =>
-      (s.title?.toLowerCase().includes(search)) ||
-      (s.description?.toLowerCase().includes(search)) ||
-      (s.country?.toLowerCase().includes(search)) ||
-      (s.degree?.toLowerCase().includes(search)) ||
-      (s.funding?.toLowerCase().includes(search))
-    )
+    filtered = searchRecords(filtered, query.search)
   }
 
   // Country filter
@@ -331,7 +347,14 @@ function filterScholarships(scholarships, query) {
     filtered = filtered.filter(s => s.country?.toLowerCase() === country)
   }
 
-  // Degree filter
+  // Study level. A bucket, not a literal: the catalogue holds 164 distinct
+  // degree strings, most of them held by a single record, so a menu over the
+  // literals is 164 entries that mostly match one scholarship.
+  if (!isNoFilter(query.level)) {
+    filtered = filtered.filter(s => matchesStudyLevel(s, query.level))
+  }
+
+  // Degree filter (the exact published string, kept for precision)
   if (!isNoFilter(query.degree)) {
     const degree = query.degree.toLowerCase()
     filtered = filtered.filter(s => s.degree?.toLowerCase() === degree)
@@ -341,6 +364,18 @@ function filterScholarships(scholarships, query) {
   if (!isNoFilter(query.funding)) {
     const funding = query.funding.toLowerCase()
     filtered = filtered.filter(s => s.funding?.toLowerCase() === funding)
+  }
+
+  // Region. A nine-value grouping the snapshot carries on every record, which
+  // sits between "any country" and "one of 74 countries".
+  if (!isNoFilter(query.region)) {
+    const region = query.region.toLowerCase()
+    filtered = filtered.filter(s => s.region?.toLowerCase() === region)
+  }
+
+  // Tuition coverage, as a three-state fact rather than a two-state one.
+  if (!isNoFilter(query.tuition)) {
+    filtered = filtered.filter(s => matchesTuitionCoverage(s, query.tuition))
   }
 
   // Deadline month filter
@@ -354,7 +389,7 @@ function filterScholarships(scholarships, query) {
 
   // Status filter
   if (!isNoFilter(query.status)) {
-    filtered = filtered.filter(s => s.status === query.status)
+    filtered = filtered.filter(s => statusKeyOf(s) === query.status)
   }
 
   return filtered
@@ -708,6 +743,51 @@ export async function fetchScholarships(query = {}, options) {
 
   return tryApiThenSnapshot(key, send, () => readSnapshotList(query), options)
 }
+
+/**
+ * The whole public catalogue, unpaginated.
+ *
+ * This exists because the shortlist, the comparison and the detail page's
+ * offline fallback all resolve user-selected ids against a list they were
+ * given, and that list used to be the first page of the directory - 12 records
+ * in the catalogue view, and 100 in the shared directory hook. The snapshot
+ * holds 618. A student who saved record 500 was shown an empty shortlist, and
+ * a student who compared it was shown an empty comparison, because the ids
+ * they chose were not in the window those pages happened to fetch.
+ *
+ * The cost of not paginating is bounded and already paid: the snapshot is a
+ * single 8 MB JSON asset that the module loads once and shares through
+ * `dedupe`, and every consumer below already held a reference to it. Filtering
+ * in memory over 618 records is not the slow part of these pages; fetching the
+ * wrong 100 of them is the defect.
+ *
+ * Returns records in the catalogue's recommended order, so a consumer that
+ * renders them without sorting shows the same order the directory does.
+ */
+export async function fetchAllScholarships(options) {
+  // The same de-duplication layer every other read goes through, so several
+  // surfaces mounting together share one snapshot load, and a consumer that
+  // unmounts cancels only its own wait for it.
+  return dedupe('all', async () => {
+    const snapshot = await loadScholarshipSnapshot()
+    const ordered = sortScholarships(
+      snapshot.scholarships || [],
+      DEFAULT_SORT_MODE,
+      snapshot,
+    )
+    return ordered.map(normalizeScholarship)
+  }, options?.signal)
+}
+
+export async function fetchAllScholarshipIds() {
+  const snapshot = await loadScholarshipSnapshot()
+  return new Set((snapshot.scholarships || []).map((record) => String(record.id)))
+}
+
+/** A fixed page size for catalogue pages that do not page at all. */
+export const UNPAGINATED = 0
+
+const DEFAULT_SORT_MODE = 'recommended'
 
 export async function fetchScholarshipById(id, options) {
   const key = `detail:${id}`

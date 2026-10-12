@@ -69,6 +69,12 @@ export default function Navigation() {
           <div className="nav-utilities">
             <CountedUtilityLink to="/applications" label="Applications" className="nav-utility-link" animate={!prefersReducedMotion} />
             <CountedUtilityLink to="/saved" label="Saved" count={savedIds.length} className="nav-utility-link" animate={!prefersReducedMotion} />
+            {/* The local planning surface: checklist, deadlines, notes and a
+                backup. It is the anonymous half of the workspace, so it is
+                reachable without an account. */}
+            <NavLink to="/plan" className={({ isActive }) => `nav-utility-link ${isActive ? 'active' : ''}`}>
+              Plan
+            </NavLink>
             <CountedUtilityLink to="/compare" label="Compare" count={compareIds.length} className="nav-utility-link" animate={!prefersReducedMotion} />
             {/* The mentor is a reading surface over the records the three links
                 above already point at, so it sits with them rather than in the

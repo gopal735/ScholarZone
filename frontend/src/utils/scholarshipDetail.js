@@ -11,6 +11,13 @@
  *      preview, and never a placeholder standing in for absent data.
  */
 
+// The precision labels live beside the status derivation in
+// scholarshipPresentation so that the detail page, the card and the comparison
+// row all describe the same deadline the same way. Importing them here rather
+// than restating the ternary is what stops the page claiming a full provider
+// date for a record whose precision is "unknown".
+import { getDeadlinePrecisionLabel } from './scholarshipPresentation.js'
+
 /** Trims to a non-empty string, or null. Treats "" and whitespace as absent. */
 export function readText(value) {
   if (typeof value === 'number') return Number.isFinite(value) ? String(value) : null
@@ -139,7 +146,14 @@ export function buildOfficialLinks(scholarship) {
     links.push({
       id: `citation-${index + 1}`,
       label: 'Official citation',
-      note: 'Awarding-body page this record was verified against',
+      // Only the awarded-body page this record was verified against if it was
+      // verified. 81 of the 618 public records carry
+      // `verification_status: "needs_review"`, whose pill on the same page
+      // says "Confirm with provider" - so the previous fixed wording claimed a
+      // verification that the record itself disclaims.
+      note: scholarship.verification_status === 'active'
+        ? 'Awarding-body page this record was verified against'
+        : 'Awarding-body page this record cites; re-check before relying on it',
       url,
       host: readHost(url),
     })
@@ -413,9 +427,19 @@ export function buildVerificationRecord(scholarship) {
     {
       id: 'precision',
       label: 'Deadline precision',
-      value: scholarship.deadline_precision === 'month'
-        ? 'Month only — the provider has not published a full date'
-        : 'Full date provided by the provider',
+      // Whatever the record's own precision says, and nothing more.
+      //
+      // This used to be a two-way ternary that resolved every precision other
+      // than `month` to "Full date provided by the provider". Eight of the
+      // eleven values the catalogue holds are not that: `unknown`, `varies`,
+      // `rolling`, `recurring`, `year`, `approximate`, `day_and_time` and a
+      // missing value. The record that made it unambiguous carries
+      // `"deadline": null, "deadline_date": null, "deadline_precision":
+      // "unknown"` and rendered "Deadline to be confirmed" in the summary a
+      // few hundred lines above this row - so the page stated two
+      // contradictory things about the same deadline. A precision the record
+      // does not state is unknown, not exact.
+      value: getDeadlinePrecisionLabel(scholarship),
     },
   ].filter((entry) => entry.value)
 

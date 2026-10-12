@@ -1,21 +1,23 @@
 import { Link } from 'react-router-dom'
 import { useScholarshipDirectory } from '../hooks/useScholarshipDirectory'
 import { useCompare } from '../hooks/useCompare'
-import { getDeadlineLabel } from '../utils/scholarshipPresentation'
+import { COMPARISON_ROWS, NOT_STATED, renderComparisonCell } from '../services/comparisonRows.js'
 import './ComparePage.css'
-
-const comparisonRows = [
-  ['Country / region', 'country'],
-  ['Degree level', 'degree'],
-  ['Funding', 'funding'],
-  ['Application deadline', getDeadlineLabel],
-]
 
 export default function ComparePage() {
   const { compareIds, clearCompare, maxItems, toggleCompare } = useCompare()
+  // The full catalogue, not a window of it. The previous implementation
+  // resolved ids against the first 100 records, so anything outside that
+  // window silently vanished from this table.
   const { scholarships, isLoading } = useScholarshipDirectory()
+  const byId = new Map(scholarships.map((scholarship) => [String(scholarship.id), scholarship]))
+
+  // An id that is not in this device's catalogue is reported as such rather
+  // than dropped. Dropping it is what made the old version look like the
+  // selection had been lost.
+  const unresolved = compareIds.filter((id) => !byId.has(id))
   const selectedScholarships = compareIds
-    .map((compareId) => scholarships.find((scholarship) => String(scholarship.id) === compareId))
+    .map((id) => byId.get(id))
     .filter(Boolean)
 
   return (
@@ -24,14 +26,14 @@ export default function ComparePage() {
         <div>
           <p className="compare-page__eyebrow">Decision support</p>
           <h1>Compare scholarships</h1>
-          <p>Review the key details side by side before deciding what to explore next.</p>
+          <p>Review the decision-relevant details side by side, and see plainly where an award does not say.</p>
         </div>
         <span className="compare-page__count">{selectedScholarships.length} of {maxItems} selected</span>
       </div>
 
       {isLoading ? (
         <div className="compare-page__empty" aria-busy="true">
-          <h2>Loading comparison…</h2>
+          <h2>Loading comparison&hellip;</h2>
         </div>
       ) : selectedScholarships.length === 0 ? (
         <div className="compare-page__empty">
@@ -49,15 +51,37 @@ export default function ComparePage() {
       ) : (
         <>
           <div className="compare-page__toolbar">
-            <p>Selections are saved on this device.</p>
+            <p>
+              Selections are saved on this device.
+              {' '}
+              {NOT_STATED} means the provider has not published the detail &mdash; it is not the same as
+              a confirmed &ldquo;no&rdquo;.
+            </p>
             <button type="button" onClick={clearCompare}>Clear comparison</button>
           </div>
 
-          <div className="compare-page__table-wrap" tabIndex="0" aria-label="Scholarship comparison table">
+          {/* A selection that cannot be resolved is reported, not hidden. The
+              most likely cause is an export restored on a device whose
+              snapshot is older, and the student needs to know which side is
+              missing rather than wondering where the row went. */}
+          {unresolved.length > 0 && (
+            <p className="compare-page__unresolved" role="status">
+              {unresolved.length === 1
+                ? 'One selected scholarship is not in this device&rsquo;s catalogue.'
+                : `${unresolved.length} selected scholarships are not in this device&rsquo;s catalogue.`}
+              {' '}
+              Remove it from the comparison to clear this notice.
+            </p>
+          )}
+
+          <div className="compare-page__table-wrap" tabIndex={0} role="region" aria-label="Scholarship comparison table">
             <table className="compare-page__table">
+              <caption className="visually-hidden">
+                {selectedScholarships.length} scholarships compared across {COMPARISON_ROWS.length} attributes.
+              </caption>
               <thead>
                 <tr>
-                  <th scope="col">Scholarship</th>
+                  <th scope="col">Attribute</th>
                   {selectedScholarships.map((scholarship) => (
                     <th scope="col" key={scholarship.id}>
                       <Link to={`/scholarships/${scholarship.id}`}>{scholarship.title}</Link>
@@ -69,17 +93,25 @@ export default function ComparePage() {
                 </tr>
               </thead>
               <tbody>
-                {comparisonRows.map(([label, field]) => (
-                  <tr key={label}>
-                    <th scope="row">{label}</th>
+                {COMPARISON_ROWS.map((row) => (
+                  <tr key={row.key}>
+                    <th scope="row">{row.label}</th>
                     {selectedScholarships.map((scholarship) => (
-                      <td key={scholarship.id}>{typeof field === 'function' ? field(scholarship) : scholarship[field]}</td>
+                      <td key={scholarship.id}>{renderComparisonCell(row, scholarship)}</td>
                     ))}
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
+
+          {/* Funding amount is absent from the table on purpose, and saying so
+              keeps a future contributor from "fixing" the omission by adding a
+              column that compares a EUR monthly rate against a KRW total. */}
+          <p className="compare-page__note">
+            Funding amounts are not compared: the catalogue publishes them in 42 currencies against
+            228 different period descriptions, so the figures are not on one scale.
+          </p>
         </>
       )}
     </section>

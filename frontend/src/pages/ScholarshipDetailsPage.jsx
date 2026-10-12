@@ -4,6 +4,7 @@ import ScholarshipActions from '../components/ScholarshipActions'
 import CatalogueSourceNotice from '../components/CatalogueSourceNotice'
 import SupervisorPanel from '../components/SupervisorPanel'
 import { fetchScholarshipById, ScholarshipApiError } from '../services/scholarshipService'
+import { pushRecentlyViewed } from '../services/planStorage.js'
 import { useScholarshipDirectory } from '../hooks/useScholarshipDirectory'
 import { getDeadlineLabel, getLastVerifiedLabel, getScholarshipStatus } from '../utils/scholarshipPresentation'
 import {
@@ -183,6 +184,12 @@ export default function ScholarshipDetailsPage() {
   useEffect(() => {
     if (!hasValidScholarshipId) return undefined
 
+    // Recorded on the way in, before the fetch settles, so a detail page that
+    // fails still counts as visited and appears in "Recently viewed". The write
+    // is deliberately not awaited: it is browser-local bookkeeping, and a
+    // student should not wait on it to see the record.
+    pushRecentlyViewed(String(scholarshipId))
+
     const controller = new AbortController()
     const requestId = requestIdRef.current + 1
     requestIdRef.current = requestId
@@ -330,7 +337,18 @@ export default function ScholarshipDetailsPage() {
           ...(scholarship.last_verified_at
             ? { dateModified: String(scholarship.last_verified_at).slice(0, 10) }
             : {}),
-          isAccessibleForFree: true,
+          // Only included when the catalogue actually states it.
+          //
+          // This used to be a bare `isAccessibleForFree: true` on every
+          // record, which told a machine reader that every listing is free to
+          // take up - including the ones whose funding is a partial waiver, a
+          // fee reduction, a stipend only, or a bond. The catalogue does carry
+          // a real signal, `tuition_coverage`, but it is a three-state field
+          // (true on 375 records, false on 215, absent on 28), so a missing
+          // value is omitted rather than resolved in either direction: an
+          // omitted property is silence, and a wrong one is a claim.
+          ...(scholarship.tuition_coverage === true ? { isAccessibleForFree: true } : {}),
+          ...(scholarship.tuition_coverage === false ? { isAccessibleForFree: false } : {}),
         },
         {
           '@type': 'BreadcrumbList',
@@ -430,7 +448,18 @@ export default function ScholarshipDetailsPage() {
   const eligibilitySummary = readText(scholarship.eligibility_summary)
   const eligibility = readList(scholarship.eligibility)
   const requirements = readList(scholarship.requirements)
-  const documents = readList(scholarship.documents) || readList(scholarship.required_documents)
+  // `documents` and `required_documents` are two fields the catalogue
+  // publishes for the same paperwork. `documents` is the one this page has
+  // always rendered, so it stays first.
+  //
+  // The fallback used to be `readList(scholarship.documents) || readList(scholarship.required_documents)`,
+  // which could never fire: `readList` returns `[]` for an empty input and `[]`
+  // is truthy, so the right-hand side was unreachable. A record with an empty
+  // `documents` and a populated `required_documents` would have rendered no
+  // Documents block at all while silently holding a real list.
+  const documents = readList(scholarship.documents).length > 0
+    ? readList(scholarship.documents)
+    : readList(scholarship.required_documents)
   const applicationMethod = readList(scholarship.application_method)
   const englishRequirement = readText(scholarship.english_requirement)
 const bestFit = readText(scholarship.best_fit)
@@ -802,7 +831,7 @@ const bestFit = readText(scholarship.best_fit)
             </Link>
           </div>
           <p className="sz-detail__closing-meta">
-            {getLastVerifiedLabel(scholarship.last_verified_at)}
+            {getLastVerifiedLabel(scholarship)}
             {readDate(scholarship.updated_at) ? ` · updated ${readDate(scholarship.updated_at)}` : ''}
           </p>
         </div>
