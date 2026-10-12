@@ -485,7 +485,12 @@ export default function ScholarshipList({ items, initialCountry }) {
         || Math.abs(candidate - page) <= window
       ) {
         pages.push(candidate)
-      } else if (pages[pages.length - 1] !== 'ellipsis-start') {
+      } else if (pages[pages.length - 1] !== 'ellipsis-start' && pages[pages.length - 1] !== 'ellipsis-end') {
+        // A run of candidates outside the window collapses to one marker. The
+        // guard checks both markers: two consecutive candidates past the end
+        // used to push "ellipsis-end" twice, handing React duplicate keys —
+        // which logs an error on every catalogue page with a wide-enough gap
+        // and leaves React free to drop or duplicate the page buttons.
         pages.push(candidate > page ? 'ellipsis-end' : 'ellipsis-start')
       }
     }

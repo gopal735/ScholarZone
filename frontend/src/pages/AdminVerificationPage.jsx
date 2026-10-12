@@ -233,7 +233,10 @@ export default function AdminVerificationPage() {
   )
 
   return (
-    <main className="avc">
+    // A section, not a main: Layout renders the document's single main
+    // landmark, and nesting a second one inside it is invalid HTML that
+    // leaves assistive tech with two "main" landmarks to choose between.
+    <section className="avc">
       <header className="avc-header">
         <div>
           <p className="avc-eyebrow">ScholarZone administration</p>
@@ -582,6 +585,6 @@ export default function AdminVerificationPage() {
           the server accepts it.
         </p>
       )}
-    </main>
+    </section>
   )
 }

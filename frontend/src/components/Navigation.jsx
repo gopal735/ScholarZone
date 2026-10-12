@@ -12,7 +12,10 @@ const ENTER_TRANSITION = { duration: 0.45, ease: [0.16, 1, 0.3, 1] }
 const COUNT_SPRING = { type: 'spring', stiffness: 520, damping: 28 }
 
 function UtilityCount({ count, animate }) {
-  if (count <= 0) return null
+  // A link with no real count — Applications — passes nothing. `undefined <= 0`
+  // is false, so the old guard let an absent count through and the nav rendered
+  // an empty pill whose accessible name read "Applications: undefined".
+  if (typeof count !== 'number' || count <= 0) return null
 
   if (!animate) {
     return <span>{count}</span>
@@ -31,8 +34,15 @@ function UtilityCount({ count, animate }) {
 }
 
 function CountedUtilityLink({ to, label, count, className, animate }) {
+  // The count is only part of the accessible name when there is one, so a
+  // countless link reads as its own label.
+  const hasCount = typeof count === 'number' && count > 0
   return (
-    <NavLink to={to} className={({ isActive }) => `${className} ${isActive ? 'active' : ''}`} aria-label={`${label}: ${count}`}>
+    <NavLink
+      to={to}
+      className={({ isActive }) => `${className} ${isActive ? 'active' : ''}`}
+      aria-label={hasCount ? `${label}: ${count}` : undefined}
+    >
       {label}
       <UtilityCount count={count} animate={animate} />
     </NavLink>

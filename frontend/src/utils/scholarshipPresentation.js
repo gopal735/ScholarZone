@@ -175,6 +175,14 @@ export function getLastVerifiedLabel(scholarship, options = {}) {
     year: 'numeric',
   }).format(verifiedDate)
 
+  // `compact` drops the trailing instruction. A card prints it next to the
+  // "Confirm with provider" badge, and once the row reads
+  // "Confirm with provider | Last checked 10 Oct 2026; confirm with provider"
+  // the three signals stop reading as three facts.
+  if (options.compact) {
+    return isVerified ? `Verified ${formatted}` : `Last checked ${formatted}`
+  }
+
   return isVerified ? `Verified ${formatted}` : `Last checked ${formatted}; confirm with the provider`
 }
 
