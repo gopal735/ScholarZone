@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import { enabled as consistencyAuditorEnabled } from '../features/consistency-auditor'
 import { LazyMotion, domAnimation, m } from 'motion/react'
 import { useAuth } from '../hooks/useAuth'
 import { useCompare } from '../hooks/useCompare'
@@ -92,6 +93,17 @@ export default function Navigation() {
             <NavLink to="/mentor" className={({ isActive }) => `nav-utility-link ${isActive ? 'active' : ''}`}>
               Mentor
             </NavLink>
+            {/* The consistency review runs entirely in the browser and is
+                gated by its own module flag, so the link is absent while the
+                feature is off - nothing dead in the navigation. */}
+            {consistencyAuditorEnabled && (
+              <NavLink
+                to="/consistency-review"
+                className={({ isActive }) => `nav-utility-link ${isActive ? 'active' : ''}`}
+              >
+                Review
+              </NavLink>
+            )}
             {status === 'checking' ? (
               <span className="nav-session-status">Checking&hellip;</span>
             ) : status === 'authenticated' ? (
