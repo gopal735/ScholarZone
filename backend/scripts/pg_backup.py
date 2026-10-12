@@ -80,7 +80,6 @@ from app.services.backup_source import (  # noqa: E402
     source_kind,
     validate_source,
 )
-
 #: Default monthly transfer budget in MiB. Neon's free tier allows 5 GiB/month
 #: of outbound transfer; the application uses some of it, so a backup budget has
 #: to be a fraction rather than the whole allowance.
@@ -162,10 +161,64 @@ def _dump_binary() -> str:
     return binary
 
 
-def _which(name: str) -> str | None:
+def _which(name: str) -> str:
     import shutil
 
     return shutil.which(name)
+
+
+def _credential_env(source_url: str) -> tuple[dict[str, str], "Path | None"]:
+    """Build the child environment for libpq **without** a credential in argv.
+
+    A connection string passed as `pg_dump --dbname <url>` is visible to
+    every process on the host through /proc, `ps`, and any process
+    supervisor that logs argv. libpq's own mechanism avoids all of that:
+    the split parts are supplied through the environment
+    (`PGPASSWORD`/`PGHOST`/`PGPORT`/`PGUSER`/`PGDATABASE`), which is
+    visible only to the same user and to root.
+
+    The password is additionally written to a temporary pgpass file with
+    0600 permissions and referenced by `PGPASSFILE`, so the same credential
+    works unchanged on hosts that disable in-environment passwords, and the
+    file is deleted by the caller on every exit path. When the URL carries
+    no password at all (trust authentication, or an already-safe peer
+    connection), no file is created and nothing is cleaned up - the absence
+    of a secret is not a reason to create one.
+
+    Returns `(env, passfile_or_None)`.
+    """
+    import tempfile
+    from pathlib import Path
+
+    from app.services.backup_source import parse_source_url
+
+    identity = parse_source_url(source_url, with_parts=True)
+    # A parsed URL without a password means nothing to protect; libpq then
+    # resolves whatever the host itself specifies.
+    parts = identity.parts()
+    env = dict(os.environ)
+    env.setdefault("PGPASSFILE", os.devnull)
+    env["PGHOST"] = parts.host
+    env["PGPORT"] = str(parts.port)
+    env["PGUSER"] = parts.username or ""
+    env["PGDATABASE"] = parts.database or ""
+    if not parts.password:
+        return env, None
+
+    handle, name = tempfile.mkstemp(prefix="pgpass-", text=True)
+    passfile = Path(name)
+    try:
+        with os.fdopen(handle, "w", encoding="utf-8") as stream:
+            # pgpass format: hostname:port:database:username:password
+            stream.write(f"{identity.hostname}:{parts.port or 5432}:{parts.database}:{parts.username}:{parts.password}\n")
+        # Owner-only: pg refuses a world-readable passfile anyway, and a
+        # file that holds a credential gets no wider than it must.
+        os.chmod(passfile, 0o600)
+    except OSError:
+        passfile.unlink(missing_ok=True)
+        raise BackupRefused("could not write the temporary pass file; refusing to fall back to argv")
+    env["PGPASSFILE"] = str(passfile)
+    return env, passfile
 
 
 def _dump(source_url: str, destination: Path) -> int:
@@ -175,24 +228,33 @@ def _dump(source_url: str, destination: Path) -> int:
     `pg_restore` consumes, which is what the restore path needs. `--no-owner`
     and `--no-privileges` make the dump restorable into an isolated destination
     that has no matching roles.
+
+    The connection parameters are passed through `PG*` environment variables
+    and a 0600 temporary pass file; the URL never appears in argv, so the
+    credential cannot be read from a process listing. The pass file is
+    removed on every path out of this function, including failure.
     """
     binary = _dump_binary()
-    # The URL is passed through the environment of the child process rather than
-    # as an argument, so it never appears in the process table.
-    env = dict(os.environ)
-    env["PGPASSFILE"] = os.devnull
-    proc = subprocess.run(
-        [
-            binary,
-            "--format=custom",
-            "--no-owner",
-            "--no-privileges",
-            "--dbname", source_url,
-            "--file", str(destination),
-        ],
-        env=env,
-        capture_output=True,
-    )
+    env, passfile = _credential_env(source_url)
+    try:
+        proc = subprocess.run(
+            [
+                binary,
+                "--format=custom",
+                "--no-owner",
+                "--no-privileges",
+                "--host", env["PGHOST"],
+                "--port", str(env["PGPORT"]),
+                "--username", env["PGUSER"],
+                "--dbname", env["PGDATABASE"],
+                "--file", str(destination),
+            ],
+            env=env,
+            capture_output=True,
+        )
+    finally:
+        if passfile is not None:
+            passfile.unlink(missing_ok=True)
     if proc.returncode != 0:
         stderr = proc.stderr.decode("utf-8", "replace")
         raise BackupRefused(
@@ -374,13 +436,16 @@ def run_backup(args: argparse.Namespace) -> dict[str, Any]:
         )
 
     # Resolved and validated before anything is dumped. `resolve_source` applies
-    # the allow-list and the production authorization, and returns the URL for
-    # pg_dump alongside a redacted identity for reporting. The URL is never
-    # logged or written to the manifest.
+    # the allow-list, and returns the URL for pg_dump alongside a redacted
+    # identity for reporting. The URL is never logged or written to the manifest.
     try:
-        source_url, source_identity = resolve_source(args.source_url_env)
+        source_url, source_identity = resolve_source(
+            args.source_url_env, mode=getattr(args, "authorization_mode", "scheduled")
+        )
         kind = source_kind(source_identity)
-        authorization = authorization_for(kind)
+        authorization = authorization_for(
+            kind, mode=getattr(args, "authorization_mode", "scheduled")
+        )
     except SourceRejected as exc:
         raise BackupRefused(str(exc)) from exc
 
@@ -478,6 +543,11 @@ def run_backup(args: argparse.Namespace) -> dict[str, Any]:
                 # the authorization reference that permitted it.
                 "source_kind": kind,
                 "production_authorization": authorization,
+                # What authorised this run: a person (workflow_dispatch) or a
+                # schedule. Recorded so an artifact can be audited against the
+                # policy that admitted it, and so a scheduled run's refusal of
+                # a production source is visible rather than inferred.
+                "authorization_mode": getattr(args, "authorization_mode", "scheduled"),
                 # The restore proof, when one was taken. False means the
                 # ciphertext decrypts (round_trip_verified) but nobody has
                 # restored it: an artifact in that state must not satisfy a
@@ -556,6 +626,20 @@ def _build_parser() -> argparse.ArgumentParser:
         "unproven production backup is not a backup.",
     )
     parser.add_argument(
+        "--authorization-mode",
+        choices=("manual", "scheduled"),
+        default="scheduled",
+        help=(
+            "How this run is authorised. 'manual' (a human pressed the button) "
+            "accepts SZ_BACKUP_PRODUCTION_AUTHORIZATION for a production "
+            "source; 'scheduled' refuses a production source whatever the "
+            "configuration says, because a production backup is authorised by "
+            "a person, never by a cron entry. Defaults to 'scheduled' - the "
+            "fail-closed direction: a caller that does not say it is a human "
+            "gets the unattended policy."
+        ),
+    )
+    parser.add_argument(
         "--runs-per-month",
         type=int,
         default=4,
@@ -580,6 +664,10 @@ def main(argv: list[str] | None = None) -> int:
 
     try:
         result = run_backup(args)
+    except SourceRejected as exc:
+        # The source policy is the caller-facing refusal, reported as such.
+        print(f"BACKUP REFUSED: {exc}", file=sys.stderr)
+        return 3
     except (BackupRefused, BackupCryptoUnavailable, BackupCryptoError) as exc:
         # A refusal is a normal, reportable outcome - not a crash. The message
         # states the reason without restating any connection string.

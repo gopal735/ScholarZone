@@ -105,14 +105,17 @@ jobs:
             echo "Backup not run. Required configuration is absent: ${missing[*]}"
             echo "Adding these enables it:"
             echo "  SZ_BACKUP_PASSPHRASE    - the encryption passphrase, stored nowhere else"
-            echo "  SZ_BACKUP_SOURCE_URL    - a NON-production source; production is"
-            echo "                           refused so a scheduled backup cannot"
-            echo "                           exhaust the free-tier transfer budget"
+            echo "  SZ_BACKUP_SOURCE_URL    - the source connection string. A PRODUCTION"
+            echo "                           source is refused on this schedule"
+            echo "                           whatever the configuration says; it is"
+            echo "                           permitted only on a manual dispatch with"
+            echo "                           SZ_BACKUP_PRODUCTION_AUTHORIZATION recorded."
             echo "  SZ_BACKUP_ALLOWED_HOSTS - comma-separated hostnames the backup"
             echo "                           may read. Default-deny: a source host"
-            echo "                           that is not named there is refused, and"
-            echo "                           the known production endpoints are"
-            echo "                           refused whatever this says."
+            echo "                           that is not named there is refused."
+            echo "  SZ_BACKUP_RESTORE_URI   - optional non-production empty target the"
+            echo "                           backup is restored into, so the manifest"
+            echo "                           can say restore_verified: true."
             echo "skipped=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
@@ -142,9 +145,26 @@ jobs:
           SZ_BACKUP_MAX_MONTHLY_MIB: ${{ vars.SZ_BACKUP_MAX_MONTHLY_MIB }}
         run: |
           cd backend
-          # The budget is passed through the environment, not as an argument.
-          # There is no flag that sets it, so nothing a caller supplies can
-          # change it for this run.
+          # The output directory must exist before `tee` opens a file inside
+          # it. `tee ../backup-out/result.json` fails on a clean runner with
+          # "no such file or directory" - because the script's
+          # output_dir.mkdir() has not run yet, and the run reports a
+          # pipeline failure that looks like a backup failure. Creating it
+          # here, with the same name the script would have used, makes the
+          # clean-runner path deterministic: `mkdir -p` is a no-op when the
+          # directory already exists, so a re-run behaves identically.
+          mkdir -p ../backup-out
+          # The authorization mode comes from WHAT TRIGGERED THIS RUN, not from
+          # a string anybody can set: workflow_dispatch is a person, schedule is
+          # not. Under the scheduled policy a production source is refused
+          # whatever the allow-list and the authorization say, so the weekly
+          # job cannot silently become the production backup the policy
+          # reserves for a human.
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            auth_mode=manual
+          else
+            auth_mode=scheduled
+          fi
           verify_args=()
           if [ -n "${SZ_BACKUP_RESTORE_URI:-}" ]; then
             # The restore target is configured, so the backup is proven this
@@ -157,6 +177,7 @@ jobs:
           python scripts/pg_backup.py \
             --source-url-env SZ_BACKUP_SOURCE_URL \
             --passphrase-env SZ_BACKUP_PASSPHRASE \
+            --authorization-mode "$auth_mode" \
             --output-dir ../backup-out \
             "${verify_args[@]}" \
             --runs-per-month "${{ github.event.inputs.runs_per_month || '4' }}" \

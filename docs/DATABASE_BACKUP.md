@@ -48,6 +48,27 @@ An unknown or misconfigured source fails closed. A production source that
 is allow-listed but unauthorized is refused with "not authorized", which is
 a different message from "not permitted" on purpose.
 
+### Manual-only production authorization, enforced
+
+The policy is executable, not prose. ackend/scripts/pg_backup.py takes
+--authorization-mode manual|scheduled (default scheduled, the
+fail-closed direction), and uthorization_for() refuses a production
+source unless the mode is **manual** *and* the authorization reference is
+set. The workflow derives the mode from the trigger itself -
+workflow_dispatch yields manual, the weekly schedule yields
+scheduled - so **a scheduled run can never perform a production backup**,
+even if the allow-list names the production host and the authorization
+variable happens to be configured. Every manifest records the
+uthorization_mode that admitted the run, so an artifact is auditable
+against the policy that produced it. The value of the connection string is
+never logged, and the credential never enters pg_dump's argv: the parts
+travel through PG* environment variables and a 0600 temporary pass file
+deleted on every exit path.
+
+A restore target may **never** be production in either mode: verifying a
+backup by restoring it into the database it may have to survive is how a
+drill becomes an incident.
+
 ## What "verified" means
 
 Three claims, deliberately separate:

@@ -167,8 +167,10 @@ class TestProductionDenyList:
         host = "ep-broad-block-ayrx86zn-pooler.c-5.us-east-2.aws.neon.tech"
         monkeypatch.setenv(ALLOW_LIST_ENV, host)
         monkeypatch.delenv(PRODUCTION_AUTHORIZATION_ENV, raising=False)
+        # Even under the manual policy, a production source with no recorded
+        # authorization is refused.
         with pytest.raises(SourceRejected, match="authorization"):
-            validate_source(PRODUCTION_URL)
+            validate_source(PRODUCTION_URL, mode="manual")
 
     def test_a_listed_production_host_is_classified_production_even_without_a_prod_substring(self):
         assert source_kind(parse_source_url(PRODUCTION_URL)) == "production"
@@ -179,22 +181,28 @@ class TestProductionDenyList:
         for host in KNOWN_PRODUCTION_HOSTS:
             assert "prod" not in host
 
-    def test_authorization_permits_the_production_host_and_records_it(self, monkeypatch):
+    def test_a_scheduled_run_refuses_production_even_with_authorization_set(self, monkeypatch):
+        """The manual-only policy, enforced: a schedule must never become the
+        authorised production backup by having the variable present."""
         host = "ep-broad-block-ayrx86zn-pooler.c-5.us-east-2.aws.neon.tech"
         monkeypatch.setenv(ALLOW_LIST_ENV, host)
-        monkeypatch.setenv(
-            PRODUCTION_AUTHORIZATION_ENV, "owner-approval-2026-10-12"
-        )
-        identity = validate_source(PRODUCTION_URL)
-        assert identity.hostname == host
-        assert authorization_for(source_kind(identity)) == "owner-approval-2026-10-12"
+        monkeypatch.setenv(PRODUCTION_AUTHORIZATION_ENV, "owner-approval-2026-10-12")
+        with pytest.raises(SourceRejected, match="authorised by a person, never by a schedule"):
+            authorization_for("production", mode="scheduled")
+
+    def test_a_manual_run_permits_the_production_host_and_records_it(self, monkeypatch):
+        monkeypatch.setenv(ALLOW_LIST_ENV, "ep-broad-block-ayrx86zn-pooler.c-5.us-east-2.aws.neon.tech")
+        monkeypatch.setenv(PRODUCTION_AUTHORIZATION_ENV, "owner-approval-2026-10-12")
+        identity = validate_source(PRODUCTION_URL, mode="manual")
+        assert identity.hostname == identity.hostname
+        assert authorization_for(source_kind(identity), mode="manual") == "owner-approval-2026-10-12"
 
     def test_a_non_production_source_ignores_the_production_authorization(self, monkeypatch):
         """Setting the authorization must not smuggle a second source in."""
         monkeypatch.setenv(ALLOW_LIST_ENV, "backup-a.example.com")
         monkeypatch.setenv(PRODUCTION_AUTHORIZATION_ENV, "approval-that-does-not-apply")
         identity = validate_source("postgresql://u:p@backup-a.example.com/db")
-        assert authorization_for(source_kind(identity)) is None
+        assert authorization_for(source_kind(identity), mode="scheduled") is None
         assert source_kind(identity) == "non-production"
 
     def test_a_missing_variable_is_a_distinct_refusal(self, monkeypatch):
