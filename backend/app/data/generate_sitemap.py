@@ -43,8 +43,13 @@ from app.repositories.scholarships import public_visibility_conditions
 #: frontend, but it is a mirror and additionally hosts the API under `/api`, so
 #: advertising it would tell a crawler to consolidate onto the mirror - the same
 #: disagreement this field exists to prevent, reintroduced one host later.
+#:
+#: That Netlify default subdomain is itself dead now: it returns HTTP 404 and
+#: serves no document, because the project was published at its current public
+#: hostname. This default therefore names the host that actually serves the
+#: site, so the sitemap cannot advertise a host that does not resolve.
 BASE_URL = os.environ.get(
-    "SCHOLARZONE_CANONICAL_ORIGIN", "https://visionary-cactus-600b38.netlify.app"
+    "SCHOLARZONE_CANONICAL_ORIGIN", "https://schollarzone.netlify.app"
 ).rstrip("/")
 #: backend/app/data -> backend/app -> backend -> repo root. Resolved from this
 #: file rather than the working directory, so the script writes to the same
