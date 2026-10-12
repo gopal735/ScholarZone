@@ -46,3 +46,59 @@ export function setReducedMotion(matches) {
     },
   })
 }
+
+/**
+ * `IntersectionObserver` — a lifecycle-only stub, for the same reason.
+ *
+ * `ScholarshipDetailsPage` reveals its sections on scroll through
+ * `useReveal` (`src/pages/ScholarshipDetailsPage.jsx:42`), and `Layout`,
+ * `HomePage`, `TrustFlow`, `useScrollReveal` and `useReveal` all construct
+ * one directly. jsdom implements neither the observer nor `IntersectionObserverEntry`,
+ * so any test that renders one of those throws
+ * `ReferenceError: IntersectionObserver is not defined` at the first
+ * `new IntersectionObserver(...)` — reported against ScholarshipDetailsPage,
+ * but the reference is shared.
+ *
+ * The stub records what it was told and never invokes the callback.
+ * That is deliberate and is the limit of what it asserts: it makes the
+ * observer *exist*, so a component's effects can run and a reveal can be
+ * left un-triggered. It does not simulate scrolling, so a test must not
+ * read a `sz-reveal` element's `is-visible` class as evidence that anything
+ * scrolled — that would be asserting on the stub, not the browser. The one
+ * existing test that needs a callback to fire (`ScholarshipsPage.test.jsx`)
+ * supplies its own immediate stub and is unaffected.
+ *
+ * Guarded on `globalThis` so a future jsdom that ships the real parser wins,
+ * and mirrored onto `window` because the components reach for it there.
+ */
+if (typeof globalThis.IntersectionObserver === 'undefined') {
+  class IntersectionObserverMock {
+    constructor(callback, options) {
+      this.callback = callback
+      this.options = options
+      this.targets = new Set()
+    }
+
+    observe(target) {
+      this.targets.add(target)
+    }
+
+    unobserve(target) {
+      this.targets.delete(target)
+    }
+
+    disconnect() {
+      this.targets.clear()
+    }
+
+    takeRecords() {
+      return []
+    }
+  }
+
+  globalThis.IntersectionObserver = IntersectionObserverMock
+
+  if (typeof window !== 'undefined') {
+    window.IntersectionObserver = IntersectionObserverMock
+  }
+}

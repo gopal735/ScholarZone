@@ -23,7 +23,6 @@ import ConsistencyAuditorPage from './pages/ConsistencyAuditorPage.jsx';
 import AnalysisErrorBoundary from './components/AnalysisErrorBoundary.jsx';
 import { createStorage, STORAGE_PREFIX } from './state/storage.js';
 import { createReviewState } from './state/reviewState.js';
-import { review } from './engine/index.js';
 
 const UNRELATED_KEY = 'sz.unrelated.app.state';
 const OTHER_PREFIX_KEY = 'scholarzone.other.thing';
