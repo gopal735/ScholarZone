@@ -98,6 +98,19 @@ def main() -> int:
     parser.add_argument("--output-dir", default="backups")
     args = parser.parse_args()
 
+    # The runner's PostgreSQL service container speaks no TLS, and the
+    # application enforces sslmode=require for every PostgreSQL URL that does
+    # not say otherwise (it must, for managed providers). The drill names the
+    # container's reality explicitly rather than weakening the application's
+    # default: a drill against a managed target would use the TLS it has.
+    def _drill_uri(uri: str) -> str:
+        separator = "&" if "?" in uri else "?"
+        return f"{uri}{separator}sslmode=disable"
+
+    args.source = _drill_uri(args.source)
+    args.verify_target = _drill_uri(args.verify_target)
+    args.restore_target = _drill_uri(args.restore_target)
+
     for name, uri in (("source", args.source), ("verify target", args.verify_target), ("restore target", args.restore_target)):
         if _relations(uri) != 0:
             raise SystemExit(f"the {name} database is not empty; a drill needs disposable targets")
