@@ -109,15 +109,42 @@ _IMAGE_AUDIT_CONTEXT = "scholarship_image_audit_context"
 
 
 def _is_image_audit_context(sql: str) -> bool:
-    # DML whose target is the image audit context table
+    """Return True if the statement targets the audit context table.
+
+    For DML (INSERT/UPDATE/DELETE), checks the target table.
+    For SELECT, only ignores if the query is a simple SELECT from
+    ONLY the audit context table (no JOINs, no other tables in FROM).
+    This allows legitimate queries that JOIN the audit context table
+    with other tables to pass through.
+    """
+    # Check DML target
     if _target(sql) == _IMAGE_AUDIT_CONTEXT:
         return True
 
-    # SELECT statements that reference ONLY the image audit context table
-    if _verb(sql) != "SELECT":
+    # For SELECT, only ignore if it's a simple SELECT from ONLY the audit context table
+    sql_lower = sql.lower().strip()
+    if not sql_lower.startswith("select"):
         return False
 
-    return _referenced_tables(sql) == {_IMAGE_AUDIT_CONTEXT}
+    # Check for JOIN clauses - if present, don't ignore
+    if re.search(r"\bJOIN\s+", sql, re.IGNORECASE):
+        return False
+
+    # Check FROM clause - if it references tables other than the audit context, don't ignore
+    from_match = re.search(r"\bFROM\s+(\S+)(?:\s+(?:WHERE|GROUP|ORDER|LIMIT|HAVING)|$)", sql, re.IGNORECASE)
+    if from_match:
+        from_clause = from_match.group(1).strip()
+        # Check if there are multiple tables (comma-separated or JOINs)
+        # Simple heuristic: if there's a comma or JOIN keyword in FROM clause, it's multi-table
+        if ',' in from_clause or re.search(r"\bJOIN\s+", from_clause, re.IGNORECASE):
+            return False
+        
+        # Check if the single table is the audit context
+        from_table = from_match.group(1).strip().strip('"').strip('`').split()[0].lower()
+        if from_table == _IMAGE_AUDIT_CONTEXT:
+            return True
+
+    return False
 
 
 def seed(session, tag: str = "") -> dict[str, int]:
