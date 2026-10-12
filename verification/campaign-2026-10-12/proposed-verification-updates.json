@@ -1,0 +1,931 @@
+{
+  "campaign": "2026-10-12",
+  "proposals": [
+    {
+      "id": "131",
+      "title": "Rotary Peace Fellowship",
+      "current_status": "active",
+      "evidence_verdict": "needs_review",
+      "confidence": "medium",
+      "checked_at": "2026-10-12T20:02:02.239Z",
+      "suggested_status": "needs_review",
+      "field_updates": {
+        "official_source_url": null,
+        "deadline_text": "Application opens February 2027 for the 2028-29 fellowship; the 2027-28 application is closed",
+        "deadline_date": null,
+        "verification_notes": "Spot-checked live on rotary.org on 2026-10-12. Programme, funding and levels confirmed. The 15 May deadline is not published on this page: the page only states the 2027-28 round closed and that the 2028-29 application opens in February 2027. The 15 May date is stable across past Rotary cycles but is not confirmable from the page, so it stays as a reviewer decision."
+      },
+      "source_urls": [
+        "https://www.rotary.org/en/our-programs/peace-fellowships"
+      ]
+    },
+    {
+      "id": "147",
+      "title": "International Industrial Talents Education Special Program (INTENSE Program)",
+      "current_status": "needs_review",
+      "evidence_verdict": "conflicting",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:30:00Z",
+      "suggested_status": "conflicting",
+      "field_updates": {
+        "official_source_url": "https://english.moe.gov.tw/cp-48-39791-964aa-1.html",
+        "deadline_text": "No single INTENSE deadline - each participating university sets its own application window per intake. Verified windows: NCHU 2027 Spring, Sep. 10, 2026, 10:00 AM - Oct. 12, 2026, 5:00 PM (GMT+8) (Semiconductor programme: Oct. 6 - Oct. 30, 2026); NCU 2027 Spring, October 1 to October 22, 2026; KMU 2027 Spring, September 21, 2026 9:00 - October 23, 2026 17:00 (Taiwan time); NCU sister windows e.g. NCKU Spring 2027 Sep 23 - Oct 13, 2026; NTUT (Taipei Tech) 2027 Fall student nomination deadline: March 10, 2027.",
+        "deadline_date": null,
+        "verification_notes": "Programme verified live on 2026-10-12 against the MOE policy page and five partner-university pages. Deadline claim is exactly right and per-university; it changes every cycle, so re-check each university's own INTENSE/admissions page rather than any central page (the MOE page publishes no deadline). Known cycle for 2027 Spring: NCHU window closed 2026-10-12; NCU closed 2026-10-22; KMU closed 2026-10-23; next anchor date is NTUT's 2027 Fall nomination deadline of 2027-03-10. One eligibility claim needs correcting: Chinese-taught admission requirement is TOCFL A2 (not B1); TOCFL B1 is only required by the 3rd semester/second year to continue the scholarship. Recorded official_source_url (gocfs.ntu.edu.tw) is NTU's overseas-compatriot advising division homepage and carries no INTENSE content; it was replaced with the MOE programme page. Windows shift each intake (e.g. NCHU's 2027 Spring window differs from its general international-student window of Aug 15 - Sep 30, 2026)."
+      },
+      "source_urls": [
+        "https://gocfs.ntu.edu.tw",
+        "https://english.moe.gov.tw/cp-48-39791-964aa-1.html",
+        "https://www.oia.nchu.edu.tw/index.php/1-2-news-en/1-2-news-en/3944-%E3%80%90oia%E3%80%91-international-industrial-talents-education-special-program-intense-program",
+        "https://iss.nchu.edu.tw/target/intense-program",
+        "https://cis.ncu.edu.tw/admissions/content/view/sn/83",
+        "https://enroll.kmu.edu.tw/admission-application/intense-program",
+        "https://oia.ntut.edu.tw/p/412-1032-18818.php?Lang=en",
+        "https://admissions.ntust.edu.tw/"
+      ]
+    },
+    {
+      "id": "16",
+      "title": "Marie Skłodowska-Curie Actions (MSCA) Postdoctoral Fellowships",
+      "current_status": "outdated",
+      "evidence_verdict": "conflicting",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:05:03Z",
+      "suggested_status": "conflicting",
+      "field_updates": {
+        "official_source_url": null,
+        "deadline_text": "The call will close on 9 September 2026",
+        "deadline_date": "2026-09-09",
+        "verification_notes": "Official MSCA pages (updated 30 Sep / 12 Oct 2026) show the 2026 Postdoctoral Fellowships cycle opened 9 April 2026 and closed 9 September 2026, 17:00 CEST, with results expected February 2027 and first projects starting May 2027. No 2027 call, opening date or deadline is published on any official page as of 12 October 2026; the Funding & Tenders portal's HORIZON-MSCA-2026-PF-01-01 page is a JavaScript app that could not be fetched for direct reading. Next re-check in spring 2027: expect HORIZON-MSCA-2027-PF-01-01 on the portal (calls typically open in April and close the second week of September). The stored deadline_date 2027-09-08 does not match any official publication and should not be treated as an open cycle. Also note eligibility includes a cap of 8 years' research experience after the PhD (career breaks, non-research years, and third-country research years for EU/associated-country nationals reintegrating to Europe do not count)."
+      },
+      "source_urls": [
+        "https://marie-sklodowska-curie-actions.ec.europa.eu/actions/postdoctoral-fellowships",
+        "https://marie-sklodowska-curie-actions.ec.europa.eu/whats-new/news/msca-opens-eur399-million-call-for-postdoctoral-fellowships",
+        "https://marie-sklodowska-curie-actions.ec.europa.eu/funding/msca-postdoctoral-fellowships-2026",
+        "https://marie-sklodowska-curie-actions.ec.europa.eu/actions/postdoctoral-fellowships/6-steps-to-prepare-your-application-postdoctoral-fellowships-call",
+        "https://rea.ec.europa.eu/funding-and-grants/horizon-europe-marie-sklodowska-curie-actions/horizon-europe-msca-how-apply_en"
+      ]
+    },
+    {
+      "id": "189",
+      "title": "Umeå University Scholarship for International Students",
+      "current_status": "active",
+      "evidence_verdict": "needs_review",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:23:01Z",
+      "suggested_status": "needs_review",
+      "field_updates": {
+        "official_source_url": "https://www.umu.se/en/education/application-and-admission/scholarships/",
+        "deadline_text": "4 March (23:59 CET): Deadline to register interest for a scholarship — 2026 cycle page wording; that cycle is closed and the page (last updated 2025-12-18) does not yet publish the next cycle's timeline",
+        "deadline_date": null,
+        "verification_notes": "Read live on 12 October 2026. The recorded URL /en/education/scholarships returns HTTP 404; the canonical page is now /en/education/application-and-admission/scholarships/ (update the URL). All substantive fields (awarding body, eligibility, funding = tuition-fee waiver, degree levels Bachelor's/Master's) confirmed verbatim against that page, so the record is factually accurate. The recorded deadline 2026-03-04 matches the page's 'Timeline for 2026' exactly but that cycle closed on 4 March 2026; the next admissions round (Autumn 2027) opens 16 October 2026 with an application deadline of 15 January 2027, so a new register-interest deadline (expected around early March 2027 by the pattern of previous cycles) is not yet published. Re-check the same page in late October 2026, once the 2027 timeline is posted. Also note the record omits the page's exclusion of the Master's Programme in Sustainability Reporting and Financial Analysis (double degree) from scholarship eligibility."
+      },
+      "source_urls": [
+        "https://www.umu.se/en/education/application-and-admission/scholarships/",
+        "https://www.umu.se/en/education/application-and-admission/scholarships/faq-scholarships/",
+        "https://www.umu.se/en/education/application-and-admission/key-dates-and-deadlines/",
+        "https://www.umu.se/en/education/scholarships"
+      ]
+    },
+    {
+      "id": "23",
+      "title": "DAAD Development-Related Postgraduate Courses (EPOS)",
+      "current_status": "partial",
+      "evidence_verdict": "active",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:10:29Z",
+      "suggested_status": "active",
+      "field_updates": {
+        "official_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777",
+        "deadline_text": "Depending on chosen study programme; please check scholarship brochure or the website of your chosen study programme. (Current open cycle: winter semester 2027/2028; per-course deadlines are published in the DAAD 'List of all Postgraduate courses with application deadlines 2027/2028'.)",
+        "deadline_date": null,
+        "verification_notes": "Confirmed active against DAAD's live EPOS entry on 2026-10-12. Deadlines are set per course and roughly one year ahead, so there is no single date; re-check the course-deadlines list each cycle. Applications go directly to the chosen course, not to DAAD. Monthly stipend amounts are revised (doctoral-candidate rate rose to 1,400 EUR from February 2026), so re-read the 'Value' section each time. DAAD also offers a clean canonical shortlink for this entry: https://daad.de/go/en/stipa50076777 (resolves to the same page)."
+      },
+      "source_urls": [
+        "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777",
+        "https://static.daad.de/media/daad_de/pdfs_nicht_barrierefrei/in-deutschland-studieren-forschen-lehren/daad_epos_deadlines.pdf"
+      ]
+    },
+    {
+      "id": "245",
+      "title": "UCAS Chinese Government Scholarship (University of Chinese Academy of Sciences)",
+      "current_status": "active",
+      "evidence_verdict": "needs_review",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:24:32Z",
+      "suggested_status": "needs_review",
+      "field_updates": {
+        "official_source_url": null,
+        "deadline_text": "APPLICATION DEADLINE January 31st, 2026 (Beijing Time) - deadline of the 2026 cycle, which has closed; no 2027 deadline was published on UCAS's site as of 12 October 2026",
+        "deadline_date": "2026-01-31",
+        "verification_notes": "Checked 2026-10-12 by reading UCAS's official 2026 call page in full. Every material field of the record (awarding body, eligibility, funding, degree levels) matches the live page verbatim; the deadline_label also matches the page exactly. The sole issue is timing: the page's only published deadline is January 31st, 2026 (Beijing Time) for the 2026 cycle, which is now in the past, and UCAS has not yet published a 2027 call (confirmed against the Financial Aids index, the deadline page and the notices page, whose latest items are 2026 results announcements). The record's facts are accurate; what could not be confirmed is a currently-open cycle. Re-check when UCAS publishes the next call, historically around late 2026/early 2027 with a January 31 deadline."
+      },
+      "source_urls": [
+        "https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid/6656-call-for-2026-chinese-government-scholarship-for-international-students-to-study-at-ucas",
+        "https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid",
+        "https://english.ucas.ac.cn/index.php/admission/international-students/deadline",
+        "https://english.ucas.ac.cn/index.php/admission/international-students/notice"
+      ]
+    },
+    {
+      "id": "288",
+      "title": "Budapest University of Technology and Economics (BME) Scholarships",
+      "current_status": "conflicting",
+      "evidence_verdict": "conflicting",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:01:51Z",
+      "suggested_status": "conflicting",
+      "field_updates": {
+        "official_source_url": "https://www.bme.hu/en/scolarships",
+        "deadline_text": "\"15th January 2026, 2 pm (CET)\" - Stipendium Hungaricum 2026/27 application deadline; this deadline has passed and no 2027/28 deadline is published as of 2026-10-12",
+        "deadline_date": "2026-01-15",
+        "verification_notes": "Re-checked live 2026-10-12. The record's official_source_url (bme.hu/en/scholarships) is BME's outbound mobility page for enrolled BME students; BME's inbound scholarships page sits at the misspelled URL bme.hu/en/scolarships. No BME-awarded inbound scholarship exists - bme.hu lists only Hungarian state programmes (Stipendium Hungaricum, Hungarian Diaspora Scholarship, Scholarship for Christian Young People, Students at Risk). The record's deadline and funding wording come from Stipendium Hungaricum, a Hungarian Government programme managed by Tempus Public Foundation (BME is one host institution). The SH 2026/27 call closed 15 Jan 2026 14:00 CET; the next call was not yet published at check time (historically opens ~November, deadline mid-January). Do not present the record as an open BME award without human re-attribution."
+      },
+      "source_urls": [
+        "https://www.bme.hu/en/scholarships",
+        "https://www.bme.hu/en/scolarships",
+        "https://www.bme.hu/en/application_and_admission",
+        "https://stipendiumhungaricum.hu/apply/",
+        "https://www.bme.hu/aktualis-osztondijak"
+      ]
+    },
+    {
+      "id": "303",
+      "title": "Camoes, I.P. Portuguese Language and Culture Scholarships",
+      "current_status": "active",
+      "evidence_verdict": "conflicting",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:31:00Z",
+      "suggested_status": "conflicting",
+      "field_updates": {
+        "official_source_url": "https://www.instituto-camoes.pt/en/activity-camoes/what-we-do/scholarships/scholarships-camoes-i-p/pt-language-culture-scholarships",
+        "deadline_text": "Applications may be submitted between 5 and 18 May 2026 (until 17:00, Lisbon time). [2026 cycle - closed; results published]",
+        "deadline_date": "2026-05-18",
+        "verification_notes": "The Camões, I.P. site was restructured; the recorded /en/scholarships URL now 404s and the live pages sit under /en/activity-camoes/what-we-do/scholarships/scholarships-camoes-i-p/... . This is an annual programme family with a single spring application window (2026 cycle: 5-18 May 2026, 17:00 Lisbon time; historically the window opens around March-May and results are published within 30 working days). Funding is NOT full funding: Research Programme pays €990/month (max 11 monthly payments per year); in-person Summer Course pays €1,150/month; online Summer Course covers only the registration/tuition fee. In every variant except the online summer course, tuition, travel and accommodation are the scholarship holder's own responsibility. As of the check date (2026-10-12) the 2026 cycle has closed with definitive results published and no 2027 cycle has been announced - re-check in spring 2027 for the next cycle."
+      },
+      "source_urls": [
+        "https://www.instituto-camoes.pt/en/scholarships",
+        "https://www.instituto-camoes.pt/en/activity-camoes/what-we-do/scholarships/scholarships-camoes-i-p",
+        "https://www.instituto-camoes.pt/en/activity-camoes/what-we-do/scholarships/scholarships-camoes-i-p/pt-language-culture-scholarships",
+        "https://www.instituto-camoes.pt/en/activity-camoes/what-we-do/scholarships/scholarships-camoes-i-p/pt-language-culture-scholarships/candidaturas-lingua-en",
+        "https://www.instituto-camoes.pt/en/activity-camoes/what-we-do/scholarships/scholarships-camoes-i-p/pt-language-culture-scholarships/faq-s",
+        "https://www.instituto-camoes.pt/images/bolsas/bolsas_2026/Aviso_abertura_INV_2026_ENG.pdf",
+        "https://www.instituto-camoes.pt/images/bolsas/bolsas_2026/Aviso_abertura_Verao_2026_ENG.pdf"
+      ]
+    },
+    {
+      "id": "31",
+      "title": "Netherlands Fellowship Programme (NFP/OTS)",
+      "current_status": "conflicting",
+      "evidence_verdict": "quarantined",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:10:00Z",
+      "suggested_status": "quarantined",
+      "field_updates": {
+        "official_source_url": null,
+        "deadline_text": null,
+        "deadline_date": null,
+        "verification_notes": "Checked 12 Oct 2026. The stored official_source_url (studyinnl.org/finances/ots-scholarships) is a dead link (HTTP 404) with no archived snapshot in the Wayback Machine. No live official page for the Netherlands Fellowship Programme exists on nuffic.nl or studyinnl.org; Nuffic lists 'NICHE/NFP' only under 'Programmes previously managed by Nuffic:'. The closest official statements of the programme's status are https://www.studyinnl.org/finances/scholarships ('In 2024, the Orange Knowledge Programme ended. That means that there are no new application rounds for this programme.') and https://www.nuffic.nl/en/international/impact-and-results-of-the-orange-knowledge-programme (OKP described in the past tense, 2017-2024). The NFP itself stopped running when its successor OKP was implemented (2018-2024). Do not move this record to active without a new official page appearing; a future re-check should start from the Nuffic programmes page and the Study in NL scholarships overview."
+      },
+      "source_urls": [
+        "https://www.studyinnl.org/finances/ots-scholarships",
+        "https://www.studyinnl.org/finances/scholarships",
+        "https://www.nuffic.nl/en/international/international-programmes",
+        "https://www.nuffic.nl/en/international/impact-and-results-of-the-orange-knowledge-programme",
+        "https://www.studyinnl.org/scholarship-and-funding-for-non-eu-students"
+      ]
+    },
+    {
+      "id": "366",
+      "title": "DCU International Scholarships for Non-EU Students",
+      "current_status": "active",
+      "evidence_verdict": "active",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:21:49Z",
+      "suggested_status": "active",
+      "field_updates": {
+        "official_source_url": "https://www.dcu.ie/global/dcu-international-scholarships-non-eu-students-2027-28",
+        "deadline_text": "No scholarship deadline is published; consideration is automatic on applying as a non-EU student to DCU. The operative date is the DCU international admissions deadline for the 2027-28 cycle (closing date 1st July for international undergraduate programmes per DCU Registry; postgraduate applicants should check programme-level deadlines).",
+        "deadline_date": "2027-07-01",
+        "verification_notes": "Re-read live on 2026-10-12; page live and current for 2027-28. All eligible programme codes and per-faculty reduction amounts (EUR 1,850 to EUR 6,100) agree with the record, including DC204 BSc Athletic Therapy and Training at EUR 3,100 and the EUR 4,500 Science and Health Psychology awards. The deadline_date 2027-07-01 is the international undergraduate admissions closing date, not a scholarship deadline. Next re-check should re-read the page when DCU rolls it to the 2028-29 cycle: amounts and eligible programme codes change annually and the URL year suffix must be updated."
+      },
+      "source_urls": [
+        "https://www.dcu.ie/global/dcu-international-scholarships-non-eu-students-2027-28",
+        "https://www.dcu.ie/registry/how-to-apply-dcu"
+      ]
+    },
+    {
+      "id": "422",
+      "title": "UNESCO/Poland Co-Sponsored Fellowships in Engineering",
+      "current_status": "active",
+      "evidence_verdict": "conflicting",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:15:00Z",
+      "suggested_status": "conflicting",
+      "field_updates": {
+        "official_source_url": "https://www.unesco.org/en/fellowships/poland-engineering",
+        "deadline_text": "by Monday 26 May 2025, Midnight Paris time at the latest (2025 edition - now closed)",
+        "deadline_date": "2025-05-26",
+        "verification_notes": "UNESCO/Poland Co-Sponsored Fellowships in ENGINEERING: latest published edition is 2025 (28 fellowships at AGH Krakow; deadline 26 May 2025) and it is CLOSED; upstream Last update 13 June 2025 with no 2026/2027 call yet. The record's cited study.gov.pl mirror is stale (still shows the 2023 edition: 30 fellowships, 71 states, deadline 9 June 2023, BSc allowance 1500 PLN) - prefer the UNESCO page. Do not confuse with the separate UNESCO/Poland Archaeology & Conservation programme, which has its own 2026-2027 edition. awarding_body should be corrected from 'Gov.Pl' to 'UNESCO (co-sponsored with the Polish National Commission for UNESCO / Government of Poland)'. Because the 2025 cycle closed with no open successor, the record must not be shown to users as currently open/active; re-check for a new engineering call before reinstating active."
+      },
+      "source_urls": [
+        "https://www.unesco.org/en/fellowships/poland-engineering",
+        "https://study.gov.pl/unescopoland-co-sponsored-fellowships-programme-engineering",
+        "http://www.unesco.agh.edu.pl/en/",
+        "https://www.unesco.org/en/fellowships",
+        "https://www.unesco.org/en/fellowships/poland-archaeology-conservation"
+      ]
+    },
+    {
+      "id": "492",
+      "title": "SA-TIED Request for Research Proposals: Public revenue mobilization; Poverty, inequality, and labour markets",
+      "current_status": "needs_review",
+      "evidence_verdict": "needs_review",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:09:32Z",
+      "suggested_status": "needs_review",
+      "field_updates": {
+        "official_source_url": null,
+        "deadline_text": "Closing date: 15 October 2026, 23:59 (UTC+2). Submit questions by 8 October 2026.",
+        "deadline_date": "2026-10-15",
+        "verification_notes": "Call closes 15 October 2026 23:59 (UTC+2) — three days after this check, so this record must not be shown as open past that moment. Awarding body, deadline, eligibility wording and the US$3,000–10,000 research honorarium are all confirmed from the UNU-WIDER announcement page, the full RfRP PDF and the live submission form. One claim remains unsupported: the record's degree_levels value 'Postgraduate'. The official pages describe a research grant for 'qualified researchers' and the submission form explicitly offers 'Professional', 'Student' and 'Early career researcher (awarded PhD in the last 5 years)' as applicant categories, so a postgraduate-only degree level is not evidenced. Reviewers should either change degree_levels to a value reflecting a non-degree research grant (e.g. 'Not a degree programme - research grant for qualified researchers') or mark it as unspecified. Questions deadline (8 Oct 2026) has already passed."
+      },
+      "source_urls": [
+        "https://www.wider.unu.edu/opportunity/public-revenue-mobilization-poverty-inequality-and-labour-markets",
+        "https://www.wider.unu.edu/project/southern-africa-towards-inclusive-economic-development-sa-tied",
+        "https://www2.wider.unu.edu/rfrp-individuals-public-revenue-mobilization-poverty-inequality-and-labour-markets-09-2026",
+        "https://sa-tied.wider.unu.edu/sites/default/files/Request%20for%20research%20proposals%20Sept%202026%20WS2%263_JB.pdf"
+      ]
+    },
+    {
+      "id": "497",
+      "title": "Chevening Europe Defence and Security Fellowship",
+      "current_status": "needs_review",
+      "evidence_verdict": "needs_review",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:07:00Z",
+      "suggested_status": "needs_review",
+      "field_updates": {
+        "official_source_url": null,
+        "deadline_text": "Closed for applications",
+        "deadline_date": null,
+        "verification_notes": "Official page read in full on 12 Oct 2026 ~19:00 UTC. Programme exists and matches the record on awarding body, eligibility substance, funding and degree level: funded by the UK FCDO, delivered by Cranfield University at the Defence Academy, Shrivenham; six-week non-degree fellowship; fully funded (programme fees, living expenses with accommodation, return airfare). BUT the page shows 'Closed for applications' / 'Applications are closed': the cycle the record describes as open until 12 October 2026 11:00 UTC closed before this check, so the record must not be published as a currently-open opportunity. Next cohorts are confirmed for 2027 (25 Jan - 5 Mar 2027 and 15 Mar - 23 Apr 2027). Re-check the programme page for the next application window (expected late 2026 for subsequent cohorts) before re-listing as open. The eligibility list on the page names 36 countries/territories (including Gibraltar and Holy See); the record's summary says 35 - update the wording on the next revision."
+      },
+      "source_urls": [
+        "https://www.chevening.org/fellowship/chevening-europe-defence-and-security-fellowship/",
+        "https://www.chevening.org/fellowships/who-can-apply/fellowships-eligibility/"
+      ]
+    },
+    {
+      "id": "508",
+      "title": "Flanders Trainee Programme (Flanders Traineeship Programme)",
+      "current_status": "needs_review",
+      "evidence_verdict": "conflicting",
+      "confidence": "high",
+      "checked_at": "2026-10-12T20:02:02.239Z",
+      "suggested_status": "conflicting",
+      "field_updates": {
+        "official_source_url": null,
+        "deadline_text": "No fixed closing date: apply up to one day before the internship starts, at any time of year while budget remains",
+        "deadline_date": null,
+        "verification_notes": "Verified live on vlaanderen.be on 2026-10-12. Two material facts: (1) there is no 1 March closing date - applications are rolling and budget-limited, so any fixed deadline_date is wrong; (2) the 2026 budget is exhausted (\"No more grants for 2026 ... A budget will be available again in 2027. You can reapply for internships taking place in 2027 as from January 2027\"), so the programme is not currently open even though the record is not marked closed."
+      },
+      "source_urls": [
+        "https://www.vlaanderen.be/en/studying/flanders-trainee-programme",
+        "https://www.vlaanderen.be/en/studying/flanders-trainee-programme/flanders-trainee-programme-application-and-procedure"
+      ]
+    },
+    {
+      "id": "510",
+      "title": "Nordic Scholarship Programme (Nordic Africa Institute)",
+      "current_status": "needs_review",
+      "evidence_verdict": "needs_review",
+      "confidence": "high",
+      "checked_at": "2026-10-12T20:02:02.239Z",
+      "suggested_status": "needs_review",
+      "field_updates": {
+        "official_source_url": null,
+        "deadline_text": "Closed for applications: the deadline for the 2027 programme has passed",
+        "deadline_date": null,
+        "verification_notes": "Verified live on nai.uu.se on 2026-10-12. The 2027 round closed (deadline had passed at the time of checking); the next cycle's dates are not published. Outcomes \"by the end of November 2026 the latest\". The award is a one-month research-visit scholarship (travel, accommodation, SEK 450/day allowance) - it is not a fully funded degree scholarship, so the funding_type \"Fully Funded\" overstates it."
+      },
+      "source_urls": [
+        "https://nai.uu.se/opportunities/nordic-scholarship-programme.html"
+      ]
+    },
+    {
+      "id": "514",
+      "title": "Japanese Government (MEXT) Scholarship for 2027 - Research Students (Embassy Recommendation)",
+      "current_status": "needs_review",
+      "evidence_verdict": "needs_review",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:15:00Z",
+      "suggested_status": "needs_review",
+      "field_updates": {
+        "official_source_url": null,
+        "deadline_text": "No central deadline is published. The official Study in Japan page states: \"Recruitment for those arriving in Japan in April 2027 or September/October 2027 is made between April and May of the previous year. First screening is conducted between May and July by the Japanese Embassies or Consulates General. As the application process and specific schedule differ according to the country of your nationality, please inquire the Japanese Embassy or Consulate General in your country for details.\" For the 2027 cycle the embassy windows ran roughly May-June 2026 (e.g., Hong Kong: 05 May 2026 to 10 June 2026, now closed; Pakistan: last date 26 May 2026) and are now closed.",
+        "deadline_date": null,
+        "verification_notes": "Re-check when the next cycle's guidelines publish (MEXT/Study in Japan typically post the following year's Research Students guidelines in spring; English entry point: https://www.studyinjapan.go.jp/en/smap-stopj-applications-research.html). 2027-cycle facts confirmed on 2026-10-12: age limit born on or after 1992-04-02; stipend 143,000/144,000/145,000 yen per month by enrolment status plus 2,000/3,000 yen regional allowance; embassy recommendation only (no direct applications to MEXT). The 2027 embassy-recommendation window has closed at the embassy stage, so the record should not be flipped to active until the next cycle opens."
+      },
+      "source_urls": [
+        "https://www.mext.go.jp/a_menu/koutou/ryugaku/boshu/1415352_00008.htm",
+        "https://www.studyinjapan.go.jp/en/smap-stopj-applications-research.html",
+        "https://www.mext.go.jp/content/20260420-mxt-kotokoku01-000049243_02.pdf",
+        "https://www.hk.emb-japan.go.jp/itpr_en/MEXT_RS.html",
+        "https://www.pk.emb-japan.go.jp/itpr_en/MEXT_Research_Scholarship.html"
+      ]
+    },
+    {
+      "id": "520",
+      "title": "Japan Africa Dream Scholarship (JADS) Program",
+      "current_status": "needs_review",
+      "evidence_verdict": "needs_review",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:13:09Z",
+      "suggested_status": "needs_review",
+      "field_updates": {
+        "official_source_url": null,
+        "deadline_text": "No central AfDB deadline is published; all applications go through the JADS partner universities. As at 12 October 2026 the currently open cycle is 2027 enrollment: APU Ritsumeikan Asia Pacific University - 'For September 2027 enrollment, please submit your application by November 5, 2026 or January 8, 2027.' (the April 2027 enrollment deadline of September 15, 2026 has passed); Hiroshima University - 'The application deadline for IAAS for October 2027 enrollment is January 29, 2027, at 17:00 (JST).' (October enrollment only); The University of Tokyo Graduate School of Frontier Sciences - 'Schedule B / Application Period: November' for October enrollment of the following year (Schedule A is June, for April enrollment); Sophia University - September entry only, 'The web entry period is from middle of March to early April' (next window falls in 2027, not currently open). Kyoto University and Kogakuin University publish no JADS deadline on the AfDB page.",
+        "deadline_date": null,
+        "verification_notes": "Awarding body, eligibility, funding and degree levels are all confirmed against the AfDB's own JADS pages; the record's official_source_url is unchanged and still live. The only unresolved item is the deadline for the currently-open cycle. Do NOT reuse the AfDB 'List of Universities' table quoted in the current deadline_label: that page is 'Last updated: 09-Nov-2022' and its partner windows have been overtaken by events. Its APU window ('April Enrollment: October / September Enrollment: April') is contradicted by APU's live page (April 2027 deadline was September 15, 2026; September 2027 deadline is November 5, 2026 or January 8, 2027), and its Hiroshima windows list April intake although Hiroshima states JADS there is October enrollment only with an October 2027 deadline of January 29, 2027. Only the Sophia window (web entry mid-March to early April) still matches its university's page. AfDB page freshness at check time: main page 11-Sep-2024; Eligibility Criteria, Application Procedures and List of Universities 09-Nov-2022; Scholarship Benefits 26-Oct-2021. Note also that the AfDB list still contains only Japanese universities and says it 'will be completed with African universities once the Bank finalizes the agreement process', while the Eligibility Criteria page already accepts 'a Japanese or African partner university' and an AfDB press release of 14-Sep-2026 describes JADS as supporting study 'at both African and Japanese universities' - that press release could not be read (HTTP 403), so treat the African partner expansion as unverified. One minor record defect: the deadline_label attributes 'Please refer to the program website.' to Kogakuin University, but on the AfDB page that sentence sits under Kyoto University's approved-course list; Kogakuin appears only with a contact and a brochure PDF link."
+      },
+      "source_urls": [
+        "https://www.afdb.org/en/about-us/careers/japan-africa-dream-scholarship-jads-program",
+        "https://www.afdb.org/en/about-us/careers/japan-africa-dream-scholarship-jads-program/who-is-eligible-to-apply",
+        "https://www.afdb.org/en/about-us/careers/japan-africa-dream-scholarship-jads-program/application-procedures",
+        "https://www.afdb.org/en/about-us/careers/japan-africa-dream-scholarship-jads-program/list-of-universities",
+        "https://www.afdb.org/en/about-us/careers/japan-africa-dream-scholarship-jads-program/scholarship-benefits",
+        "https://admissions.apu.ac.jp/graduate/how_to_apply/external_scholarship/AfDB_JADS",
+        "https://www.hiroshima-u.ac.jp/en/iao/JADS",
+        "https://www.k.u-tokyo.ac.jp/en/exam/master/foreign_research_students/afdb_jads",
+        "https://piloti.sophia.ac.jp/eng/studyabroad/jads"
+      ]
+    },
+    {
+      "id": "523",
+      "title": "UNHCR Tertiary Refugee Scholarship Programme (DAFI) - Albert Einstein German Academic Refugee Initiative",
+      "current_status": "needs_review",
+      "evidence_verdict": "needs_review",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:11:20Z",
+      "suggested_status": "needs_review",
+      "field_updates": {
+        "official_source_url": "https://www.unhcr.org/what-we-do/build-better-futures/education/higher-education-and-skills/dafi-tertiary-scholarship-0",
+        "deadline_text": "No global deadline is published. Each UNHCR country operation publishes its own call window on the UNHCR Help country pages; applicants must check their own country operation. Windows read on 12 October 2026, all closed: Kyrgyzstan 'Application Period: 7 July - 31 July 2026 (until 23:59 Bishkek time)'; Rwanda 'Applications will be accepted from 15 July to 7 August 2026. Please note that late applications will not be considered.'",
+        "deadline_date": null,
+        "verification_notes": "Re-check against UNHCR's global DAFI page and the help.unhcr.org country pages at re-check time. The programme is live and recurring (annual report published for 2024; 2026/2027 country calls ran July-September 2026), but DAFI has no open cycle at any fixed calendar date, so the record cannot be marked active on a fixed deadline alone - mark active only when a specific country call is currently open, and quote that call's window verbatim. Do not treat the scholarshipsplatform.com URL as the programme's official page: it is the application portal, requires JavaScript, and carries no terms; the global DAFI page above is the canonical source. The record's Kyrgyzstan example (21 August 2026) conflicts with the current Kyrgyzstan page (31 July 2026) - a search snippet of that URL showed 21 August, so re-quote country windows rather than copying the record's examples."
+      },
+      "source_urls": [
+        "https://unhcr-dafi-tertiary.scholarshipsplatform.com/page/ynXGvbmb",
+        "https://help.unhcr.org/rwanda/2026/07/15/call-for-application-for-dafi-scholarship-programme-for-academic-year-2026-2027",
+        "https://help.unhcr.org/centralasia/kyrgyzstan/dafi-scholarship-programme-2026/",
+        "https://www.unhcr.org/what-we-do/build-better-futures/education/higher-education-and-skills/dafi-tertiary-scholarship-0"
+      ]
+    },
+    {
+      "id": "525",
+      "title": "University of Glasgow Sanctuary Scholarship",
+      "current_status": "needs_review",
+      "evidence_verdict": "needs_review",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:10:26Z",
+      "suggested_status": "needs_review",
+      "field_updates": {
+        "official_source_url": null,
+        "deadline_text": "Applications for this scholarship for the 2027-28 academic session will open soon. In the meantime please provide your details and we will be in touch when the scholarship is open for applications.",
+        "deadline_date": null,
+        "verification_notes": "Checked 12 Oct 2026 against https://www.gla.ac.uk/scholarships/sanctuaryscholarships (read in full; no PDF involved). The stored official_source_url is correct and needs no change — the trailing-slash variant also resolves. Do not set this record to 'active': the page publishes no deadline, no opening date and no application form, only a register-your-interest form, so there is no currently-open cycle to verify a deadline against. The record's deadline_label is a verbatim match of the page's 'How to apply' sentence and can stay as-is. Two things a human should resolve before the next re-check: (1) funding_type 'Tuition Fee Waiver' omits the stipend and the page contradicts itself on its size (£4,000 per year in the body and 'Value' sections vs £5,000 in the two 'students with refugee status and access to funding' paragraphs); (2) the eligibility bullet reads 'Hold a firm conditional or unconditional offer for full time study at the University of Glasgow for 2027/26' while the rest of the page says 2027/28, so the year is almost certainly a typo on the provider's page. Re-check when the 2027/28 cycle opens; the University's 'How to apply for a scholarship' page states that 'All eligibility details, application deadlines and links are posted on individual scholarship webpages', so the date will appear on this same URL."
+      },
+      "source_urls": [
+        "https://www.gla.ac.uk/scholarships/sanctuaryscholarships",
+        "https://www.gla.ac.uk/explore/sanctuary/",
+        "https://www.gla.ac.uk/scholarships/",
+        "https://www.gla.ac.uk/scholarships/howtoapply/"
+      ]
+    },
+    {
+      "id": "526",
+      "title": "Ernst Mach Grant – worldwide",
+      "current_status": "needs_review",
+      "evidence_verdict": "active",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:11:22Z",
+      "suggested_status": "active",
+      "field_updates": {
+        "official_source_url": "https://oead.at/en/study-research-teaching/overview-grants-and-scholarships/ernst-mach-grant/",
+        "deadline_text": "The application deadline for this grant is December 1st, 2026, 23:59 (CET - Central European Time) for all applications for stays during the academic year 2027/28. Online application is possible from September to December 1st.",
+        "deadline_date": "2026-12-01",
+        "verification_notes": "Call for the Austrian academic year 2027/28 is open (applications September 2026 to 1 December 2026, 23:59 CET); results expected at the beginning of July 2027. Grant funds a 1-9 month research stay in Austria only - no degree enrolment. Own funds are required (partial funding). Monthly grant rate is not stated on the OeAD pages; check the grant regulations (Sonderrichtlinie Incoming PDF) or the application portal for the current rate. The recorded grants.at deep link no longer resolves to the programme entry - use the OeAD programme page and the worldwide FAQ page above."
+      },
+      "source_urls": [
+        "https://oead.at/en/study-research-teaching/overview-grants-and-scholarships/ernst-mach-grant/faq-ernst-mach-grant-worldwide",
+        "https://oead.at/en/study-research-teaching/overview-grants-and-scholarships/ernst-mach-grant/",
+        "https://oead.at/en/the-oead/our-programmes-from-a-to-z",
+        "https://grants.at/en/?=MTcxMTVfMTgxMjlfOQ=="
+      ]
+    },
+    {
+      "id": "580",
+      "title": "HFA Research and Training Grants Programme (Heart Failure Association of the European Society of Cardiology)",
+      "current_status": "needs_review",
+      "evidence_verdict": "needs_review",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:10:42Z",
+      "suggested_status": "needs_review",
+      "field_updates": {
+        "official_source_url": null,
+        "deadline_text": "Application period is 10 April to 30 September. The online application form must be submitted between 10 April and 30 September each year.",
+        "deadline_date": null,
+        "verification_notes": "Official pages read on 12 October 2026 and both are live and consistent. The programme's wording, eligibility criteria, funding amount and awarding body all agree with the record. Two things block an 'active' verdict. (1) The application window runs 10 April - 30 September every year and the 2026 window closed on 30 September 2026, twelve days before this check, so the record describes a closed cycle and must not be presented to users as currently accepting applications; re-check from 10 April 2027. (2) The page publishes no degree level and the award is a 3-12 month research/training exchange, not a degree, so the 'Postdoctoral' degree-level label cannot be confirmed from the source. Also worth carrying forward: the record's eligibility summary omits the 20% selection weight for 'Citizenship or permanent residence in a low/middle-income country as defined by the World Bank', which materially narrows the pool; and the record's country 'Switzerland' does not match the awarding body, whose own offices page lists the European Heart House in Sophia Antipolis, France and a Brussels office in Belgium."
+      },
+      "source_urls": [
+        "https://www.escardio.org/education/career-development/grants/hfa-grants-programme",
+        "https://www.escardio.org/education/career-development/grants/hfa-grants-programme/conditions-and-regulations-of-the-hfa-grants-programme/",
+        "https://www.escardio.org/education/career-development/grants/",
+        "https://www.escardio.org/about-us/who-we-are/our-offices/"
+      ]
+    },
+    {
+      "id": "583",
+      "title": "Maria Leptin | EMBO Science Journalism Fellowships",
+      "current_status": "needs_review",
+      "evidence_verdict": "needs_review",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:10:35Z",
+      "suggested_status": "needs_review",
+      "field_updates": {
+        "official_source_url": "https://www.embo.org/funding/fellowships-grants-and-career-support/maria-leptin-embo-science-journalism-fellowships/",
+        "deadline_text": "Fully completed applications must be registered in the EMBO application portal by 23:59 Central European Summer Time on 30 October of each year",
+        "deadline_date": "2026-10-30",
+        "verification_notes": "Re-checked 2026-10-12 against embo.org; the recorded official_source_url resolves and served the full programme, so only the trailing-slash canonical form used by EMBO's own navigation is recommended. Awarding body, deadline (30 October, 23:59 CEST, annual, applications accepted at any time before then) and the stipend funding claim all confirmed verbatim from the official pages; the 2026 cycle is open as of 12 October 2026 with results by mid-November. Two open items: (1) the record's degree_levels 'Postgraduate, Professional' is not supported by any statement on the page - this is a placement fellowship that awards no degree, with only a 'master's degree or higher' entry requirement on the researcher track and no degree requirement on the journalist track, so a human should decide whether to relabel the field; (2) the eligibility_summary omits the EMBC Member State residence-and-placement restriction, which is the single most screening-relevant rule on the page (32 EMBC Member States, in-person placements only, virtual placements ineligible, no age limit) - a candidate reading only the card could wrongly conclude they may apply from anywhere. The exact daily stipend amount is not published on the HTML pages; it is delegated to https://www.embo.org/documents/SEG/SEG_subsistence_rates_and_travel_allowance.pdf, which returned compressed binary and could not be read, so the stipend value is unverified. Next re-check should re-read the Application tab (deadline wording is stable but should be confirmed annually around September) and open the subsistence-rates PDF in a reader."
+      },
+      "source_urls": [
+        "https://www.embo.org/funding/fellowships-grants-and-career-support/maria-leptin-embo-science-journalism-fellowships",
+        "https://www.embo.org/funding/fellowships-grants-and-career-support/maria-leptin-embo-science-journalism-fellowships/eligibility/",
+        "https://www.embo.org/funding/fellowships-grants-and-career-support/maria-leptin-embo-science-journalism-fellowships/benefits/",
+        "https://www.embo.org/funding/fellowships-grants-and-career-support/maria-leptin-embo-science-journalism-fellowships/application/",
+        "https://www.embo.org/funding/fellowships-grants-and-career-support/maria-leptin-embo-science-journalism-fellowships/selection/",
+        "https://www.embo.org/about-embo/embc/",
+        "https://www.embo.org/documents/SEG/SEG_subsistence_rates_and_travel_allowance.pdf"
+      ]
+    },
+    {
+      "id": "611",
+      "title": "John Allwright Fellowship",
+      "current_status": "needs_review",
+      "evidence_verdict": "needs_review",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:12:00Z",
+      "suggested_status": "needs_review",
+      "field_updates": {
+        "official_source_url": null,
+        "deadline_text": "Annual application window (official factsheet): 'Applications open 1 February - 30 April'. As of 12 October 2026 the ACIAR page shows 'Applications closed' - applications for the 2027 intake closed on 30 April 2026 and the next intake (expected 2028) is due to open around 1 February 2027.",
+        "deadline_date": null,
+        "verification_notes": "All substantive claims (awarding body, eligibility, funding, degree levels) confirmed against aciar.gov.au on 12 October 2026. The only blocker for an 'active' verdict is that the annual application window (1 February - 30 April) is closed: the 2027 intake closed 30 April 2026, confirmed by the ACIAR page banner and the DFAT OASIS news page. Re-check when the next intake opens, historically 1 February each year (expect the 2028 intake, closing 30 April 2027). Note for future automated re-checks: aciar.gov.au returns HTTP 403 to scripted fetchers; read via a normal browser or live search crawl. Degree levels: Master by Research or PhD only - Masters by coursework is explicitly not eligible."
+      },
+      "source_urls": [
+        "https://www.aciar.gov.au/scholarships/john-allwright-fellowship",
+        "https://www.aciar.gov.au/sites/default/files/2025-12/John%20Allwright%20Fellowship_Factsheet.pdf",
+        "https://oasis.dfat.gov.au/Function/Home/Default.aspx?q=F3A0CEECED7046AC8C0F3293C5DC603A4C445F791C3C5635188D067873117BD5A53B8E252389BC13774FFDEB5575F43152A46360696EB55D72E542EB5601FBAB2A5019B98616AF7EC919B2E7FDA5163092CE4BC9089DB5CC0350181C4B7C03CF227A444F33F979B57AD505FB29C73B966822272FFAE20568442A2A1B923DB04E0CCD6C661A2B626E56F20A5C7C5342BD4BD27EAADB7D48845D82FF229F03DF65FE501FDB"
+      ]
+    },
+    {
+      "id": "615",
+      "title": "Massey University Doctoral Scholarship",
+      "current_status": "needs_review",
+      "evidence_verdict": "needs_review",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:10:00Z",
+      "suggested_status": "needs_review",
+      "field_updates": {
+        "official_source_url": null,
+        "deadline_text": "Applications open 1 August 2026 and close 1 October 2026.",
+        "deadline_date": "2026-10-01",
+        "verification_notes": "Awarding body, eligibility, funding and degree-level claims all confirmed against the official page on 12 October 2026. The stated 2026 cycle closed 1 October 2026 (page Status: Closed); the award appears annual (opens 1 August), so do not mark active until a currently-open cycle's page is read. Re-check around August 2027."
+      },
+      "source_urls": [
+        "https://www.massey.ac.nz/study/scholarships-and-awards/massey-university-doctoral-scholarship"
+      ]
+    },
+    {
+      "id": "626",
+      "title": "ERS Visiting Mid-Career Investigator Travel (VISIT) Grant",
+      "current_status": "needs_review",
+      "evidence_verdict": "needs_review",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:17:47Z",
+      "suggested_status": "needs_review",
+      "field_updates": {
+        "official_source_url": null,
+        "deadline_text": "Application deadline: 31 October, 2026 (guidance: 'The deadline for submitting applications is 31 October 2026 at 23:59 pm CET.')",
+        "deadline_date": "2026-10-31",
+        "verification_notes": "Official ERS page and the linked ERS VISIT Grant Application Guidance 2026 (09.06.2026/V1, Box) both read on 2026-10-12. Deadline and awarding body verified: 2026 cycle is open (call opened 13 July 2026, deadline 31 October 2026 23:59 CET, decisions mid-February 2027, visits may start 1 March 2027 and must finish within 12 months). Two claims could not be confirmed and need a human decision before the record can go active: (1) degree_levels 'Postdoctoral' - this is a travel/mobility grant, not a degree programme, and eligible applicants are mid-career (within 5 years of Associate Professor/Reader appointment; professor title holders ineligible); (2) eligibility_summary - the PhD/MD requirement applies only to clinicians and researchers; allied healthcare professionals need only an MSc, and two requirements are missing entirely: ERS active membership for at least one year, and the 5-years-from-Associate-Professor career-stage rule. Funding confirmed partial: EUR 600 travel (Europe-Europe) or EUR 2,000 (long distance) plus EUR 200/day accommodation-meals, no tuition or stipend. Applications go to scientific@ersnet.org, not via an online portal."
+      },
+      "source_urls": [
+        "https://www.ersnet.org/education-and-professional-development/ers-visit-grant",
+        "https://www.ersnet.org/education-and-professional-development/funding-opportunities-fellowship-programmes/",
+        "https://ers.box.com/s/hxefcfvjafjk0qfe86k4f8u9ntxupzgl",
+        "https://www.ersnet.org/wp-content/uploads/2026/07/ERS_VISIT_Application-Form_2026.docx"
+      ]
+    },
+    {
+      "id": "631",
+      "title": "Beca al Talento Académico Internacional",
+      "current_status": "needs_review",
+      "evidence_verdict": "active",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:12:04Z",
+      "suggested_status": "active",
+      "field_updates": {
+        "official_source_url": "https://tec.mx/es/profesional/becas",
+        "deadline_text": "Postúlate a partir del 24 de agosto de 2026. Límite de admisión: 20 de enero de 2027. Cierre de convocatoria: 22 de enero de 2027. Conoce el resultado el 18 de febrero de 2027. Límite para aceptar el apoyo: 4 de marzo de 2027.",
+        "deadline_date": "2027-01-22",
+        "verification_notes": "Read 12 Oct 2026. Recorded URL /es/profesional/becas/internacional redirects to the main Becas page anchored at #estudiantes-internacionales — same content, either URL works. This is the INTERNATIONAL variant of Beca al Talento Académico: 40–60% of tuition, restricted to applicants from 21 named Latin American/Caribbean countries. Do not confuse with the domestic Beca al Talento Académico on the same page (20–60% of tuition, no country list) — they share the same dates. Call runs once a year for August–December entry; re-check in summer 2027 for the next cycle."
+      },
+      "source_urls": [
+        "https://tec.mx/es/profesional/becas"
+      ]
+    },
+    {
+      "id": "643",
+      "title": "Programa de Becas de Investigacion para Estudiantes 2026-2027 (FCM UNCUYO)",
+      "current_status": "needs_review",
+      "evidence_verdict": "active",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:15:00Z",
+      "suggested_status": "active",
+      "field_updates": {
+        "official_source_url": "https://fcm.uncuyo.edu.ar/convocatoria-2026-2027-a-becas-de-investigacion-para-estudiantes",
+        "deadline_text": "2° etapa, destinada a la inscripción estudiantil: 9 al 20 de noviembre de 2026. (Adjudicación definitiva de becas: diciembre de 2026. Inicio de becas: 1 de febrero de 2027.)",
+        "deadline_date": "2026-11-20",
+        "verification_notes": "Re-checked live 2026-10-12 against three official FCM UNCUYO pages: the record's URL (news item of 28 de septiembre de 2026), the programme page /becas-de-investigacion-para-estudiantes-de-la-fcm-convocatoria-20262027, and the 22-page bases PDF at /upload/89ececf7539f108e646845ab471874b8.pdf. Awarding unit, deadline, eligibility, funding and degree levels all agree with the record. Awarding body is internal to FCM (Dirección de Investigación y Relaciones Institucionales, Secretaría de Desarrollo Institucional) and the award is a research stipend, not a tuition waiver: 20 scholarships of ARS 151.637,14 each for 210 clock-hours (10h methodology course + 200h project, max 6 months). Stage 1 (projects/directors) ran 5-16 October 2026; admitted projects are published 2-6 November; student registration 9-20 November 2026; evaluation 30 November-11 December 2026; awards December 2026; scholarships start 1 February 2027. Caveat for the catalogue: applicants must already be regular, currently enrolled FCM UNCUYO students, so this is an internal award and is not open to prospective or international applicants. Next re-check: this cycle closes 20 November 2026 - re-check after mid-December 2026 for the award list, and around September-October 2027 for the 2027-2028 call."
+      },
+      "source_urls": [
+        "https://fcm.uncuyo.edu.ar/convocatoria-2026-2027-a-becas-de-investigacion-para-estudiantes",
+        "https://fcm.uncuyo.edu.ar/becas-de-investigacion-para-estudiantes-de-la-fcm-convocatoria-20262027",
+        "https://fcm.uncuyo.edu.ar/upload/89ececf7539f108e646845ab471874b8.pdf"
+      ]
+    },
+    {
+      "id": "657",
+      "title": "AICTE - Pragati Scholarship Scheme For Girl Students (Technical Degree)",
+      "current_status": "needs_review",
+      "evidence_verdict": "active",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:20:00Z",
+      "suggested_status": "active",
+      "field_updates": {
+        "official_source_url": "https://scholarships.gov.in/public/schemeGuidelines/AICTE/AICTE_2010_G.pdf",
+        "deadline_text": "Scheme Open from : 01-06-2026 Student Application Open till : 31-10-2026",
+        "deadline_date": "2026-10-31",
+        "verification_notes": "Scheme listing on the National Scholarship Portal page 'Schemes on NSP' (scholarships.gov.in/All-Scholarships) under All India Council For Technical Education; official scheme guidelines (Degree) are linked there as Specifications. The 2026-27 cycle opened 01-06-2026 and closed student applications 31-10-2026; institutional/state verification stages closed 15-11-2026 and 30-11-2026. A new application window opens around June each year, so re-check the NSP listing each June for the next cycle. Funding is Rs 50,000 per annum as a lump sum (fee/computer/books etc.), paid via DBT by AICTE; 'Partially Funded' remains correct - hostel and medical charges are explicitly excluded. The guidelines PDF is dated 2020-21 but is the standing specification still linked on the NSP page; watch for a newer revision."
+      },
+      "source_urls": [
+        "https://scholarships.gov.in/All-Scholarships",
+        "https://scholarships.gov.in/public/schemeGuidelines/AICTE/AICTE_2010_G.pdf"
+      ]
+    },
+    {
+      "id": "661",
+      "title": "First Nations Cancer Scholarship",
+      "current_status": "needs_review",
+      "evidence_verdict": "needs_review",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:20:00Z",
+      "suggested_status": "needs_review",
+      "field_updates": {
+        "official_source_url": null,
+        "deadline_text": "Open: 16/06/2026 / Close: 11/09/2026 / Closed (Indigenous Pathways Portal, 2026 round; no successor round dates published)",
+        "deadline_date": "2026-09-11",
+        "verification_notes": "Awarding body, eligibility, funding and degree levels re-confirmed on 12 Oct 2026 from Aurora's own programme page and Indigenous Pathways Portal listing; the record's official_source_url is live and unchanged. The 2026 round closed on 11 September 2026 and the portal status reads 'Closed'; no 2027 dates are published, so the record cannot be shown as an open cycle. Note a conflict between the two official bodies on the award window: Aurora states 'Up to four scholarships will be awarded yearly from 2024 to 2026', while Cancer Australia's programme page states 'Scholarships will be awarded each year from 2024 - 2027' (that page could not be fetched from this environment, so that wording comes from the search index only). Re-check the Indigenous Pathways Portal around mid-2027 for a new round."
+      },
+      "source_urls": [
+        "https://aurorafoundation.com.au/cancer-scholarship",
+        "https://aurorafoundation.com.au/our-work/indigenous-pathways-portal/scholarships/first-nations-cancer-scholarship",
+        "https://aurorafoundation.com.au/our-work/indigenous-pathways-portal/scholarships"
+      ]
+    },
+    {
+      "id": "665",
+      "title": "ACU Stipend Scholarship",
+      "current_status": "needs_review",
+      "evidence_verdict": "needs_review",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:18:00Z",
+      "suggested_status": "needs_review",
+      "field_updates": {
+        "official_source_url": null,
+        "deadline_text": "Applications open twice per annum in April and October. Round 1 Application deadline: Wednesday 1 April 2026, 11:59 PM (AEDT); Round 2 Application deadline: Thursday 1 October 2026, 11:59 PM (AEST)",
+        "deadline_date": null,
+        "verification_notes": "Official ACU page read 2026-10-12. Awarding body, eligibility, funding (fully funded: stipend AUD $34,315 p.a. + full fee offset ~AUD $34,728 p.a. + OSHC/relocation for internationals) and degree levels (Research Doctorate / Research Masters) all confirmed. Both published deadlines are in the past (1 Apr 2026 and 1 Oct 2026); as of the check no round was open. The record's '1 April 2027 (next round)' follows the page's stated twice-yearly April/October pattern but is not published on the page. Re-check when ACU posts the 2027 Round 1 dates, expected by around April 2027."
+      },
+      "source_urls": [
+        "https://www.acu.edu.au/research-and-enterprise/graduate-research-school/scholarships/acu-stipend-scholarship"
+      ]
+    },
+    {
+      "id": "668",
+      "title": "COMSTECH Fellowships for Research and Trainings in Human Nutrition, Nutraceuticals and Food Sciences",
+      "current_status": "needs_review",
+      "evidence_verdict": "needs_review",
+      "confidence": "high",
+      "checked_at": "2026-10-13T01:18:05Z",
+      "suggested_status": "needs_review",
+      "field_updates": {
+        "official_source_url": null,
+        "deadline_text": "No closing date published. Call Status: 'The call is currently open.' 'COMSTECH will accept applications on a yearly basis and select the candidates based on the pre-approved selection criteria.' 'Only 10 fellowships are available and will be awarded on a first-come, first-served basis, subject to eligibility.'",
+        "deadline_date": null,
+        "verification_notes": "Page read live on the campaign date; the recorded URL is still the live, canonical official page and needs no change. Awarding body, rolling open call, eligibility and partial funding all match the record verbatim. The single unresolved item is degree_levels: the record says 'PhD', but the page states a minimum qualification of MS/Ph.D., applies age limits of 35 (Master's studies) and 45 (doctoral studies), and also accepts Bachelor's holders with 5 years' professional experience. Also note for any re-check: (a) the flyer PDF on the page is behind a Google Drive login wall and was not read, so a cycle-specific closing date published only in the flyer would be missed; (b) the record's 'region: Africa' understates the scope, which is all OIC member states across Africa, the Middle East and Asia; (c) the record's eligibility summary omits the age limits (35 / 45) and the named 21-country OIC LDC list, both of which are stated on the page."
+      },
+      "source_urls": [
+        "https://comstech.org/comstech-fellowships-for-research-and-trainings-in-human",
+        "https://drive.google.com/file/d/1MIUGUB8WHnvR3REz8JMwpnR9-c1CJapB/view?usp=drive_link"
+      ]
+    },
+    {
+      "id": "669",
+      "title": "COMSTECH Fellowships for Research and Advanced Training in Virology and Vaccine Technologies",
+      "current_status": "needs_review",
+      "evidence_verdict": "needs_review",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:15:00Z",
+      "suggested_status": "needs_review",
+      "field_updates": {
+        "official_source_url": null,
+        "deadline_text": "The call is currently open (no closing date published; applications by email or the online form to the COMSTECH Secretariat, Islamabad)",
+        "deadline_date": null,
+        "verification_notes": "Page read live 2026-10-12; call status 'currently open', rolling, no closing date. Funding is partial: COMSTECH covers international low-cost airfare for a maximum three-month visit at a host centre of excellence in another OIC country; host institutions provide subsistence and supervision. Degree levels in the record ('PhD') are imprecise: the call has graduate (minimum M.S., age limit 35) and post-graduate (minimum Ph.D., age limit 45) tracks and awards no degree. Country 'Multiple' is consistent with 'Eligible Countries: All OIC member states'; the record's region 'Middle East' understates this."
+      },
+      "source_urls": [
+        "https://comstech.org/comstech-fellowship"
+      ]
+    },
+    {
+      "id": "670",
+      "title": "COMSTECH Research Fellowships for Women Scientists in Least Developed Countries (LDCs) in the OIC",
+      "current_status": "needs_review",
+      "evidence_verdict": "needs_review",
+      "confidence": "high",
+      "checked_at": "2026-10-13T01:12:59Z",
+      "suggested_status": "needs_review",
+      "field_updates": {
+        "official_source_url": null,
+        "deadline_text": "Applications /Nominations are open all around the year",
+        "deadline_date": null,
+        "verification_notes": "Official page read in full on 2026-10-13. Call stated open for 2026 with rolling applications all year ('The call is currently open'). Awarding body, eligibility and partial-funding claims all match the page verbatim. Open item: degree_levels — the page states 'M.S./Ph.D. or equivalent' with separate graduate (M.S., age <=35) and post-graduate (Ph.D., age <=45) tracks, while the record lists only 'PhD'. The supplementary flyer is a Google Drive PDF behind a sign-in wall and was not read."
+      },
+      "source_urls": [
+        "https://comstech.org/comstech-research-fellowships-for-women-scientists-ldc-oic",
+        "https://drive.google.com/file/d/12_Fxb25x5_fT_NG-O0qCWo9ow425Hg8F/view?usp=drive_link"
+      ]
+    },
+    {
+      "id": "671",
+      "title": "EAC Scholarship Programme (EACSP) - Two-Year Funded Master's Scholarships, Cohort 4 (Phase II)",
+      "current_status": "needs_review",
+      "evidence_verdict": "needs_review",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:17:16Z",
+      "suggested_status": "needs_review",
+      "field_updates": {
+        "official_source_url": null,
+        "deadline_text": "Closing date 10 September 2026 · 17:00 EAT",
+        "deadline_date": "2026-09-10",
+        "verification_notes": "Record is factually accurate but describes a closed cycle. Cohort 4 ran 20 August - 10 September 2026 (17:00 EAT) and closed 32 days before this check; results were to be communicated in December 2026. As of 12 October 2026 no EACSP cohort call is open: IUCEA's Phase II page (https://iucea.org/eacsp2/) states 'Applications are not yet open' and the call index (https://iucea.org/call-for-applications/) still lists the 13 August 2026 Cohort 4 call as the latest. Do not present this record as an open opportunity; monitor the IUCEA call-for-applications index for the next cohort. Companion note for the next re-check: the 60 eligible programmes sit at host universities in Kenya, Rwanda, Uganda and Tanzania only, although applicants may come from all eight EAC Partner States."
+      },
+      "source_urls": [
+        "https://iucea.org/two-year-funded-masters-scholarships-for-cohort-4",
+        "https://iucea.org/eacsp2/",
+        "https://iucea.org/call-for-applications/",
+        "https://www.kcau.ac.ke/east-african-community-scholarship-programme",
+        "https://www.udsm.ac.tz/announcement/eac-scholarship-call-applications-two-year-funded-masters-scholarships"
+      ]
+    },
+    {
+      "id": "672",
+      "title": "COMSTECH Research Fellowships for Least Developed Countries (LDCs) in the OIC",
+      "current_status": "needs_review",
+      "evidence_verdict": "needs_review",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:16:40Z",
+      "suggested_status": "needs_review",
+      "field_updates": {
+        "official_source_url": null,
+        "deadline_text": "Applications / Nominations are open all around the year",
+        "deadline_date": null,
+        "verification_notes": "Official comstech.org page read in full on 2026-10-12; the call is currently open. Awarding body, rolling deadline and eligibility are all confirmed. Funding is partial: COMSTECH pays only the international low-cost airfare and accommodation/subsistence are only 'expected' from the host (no stipend or tuition). Flag for the next re-check: the degree_levels field reads 'PhD' but the page admits M.S. holders (graduate-studies track) as well as Ph.D. holders (post-graduate track) and confers no degree — broaden it. Keep current_verification_status at needs_review until a reviewer resolves the degree_levels field."
+      },
+      "source_urls": [
+        "https://comstech.org/comstech-research-fellowships-for-least-developed-countries-2"
+      ]
+    },
+    {
+      "id": "674",
+      "title": "Kingdom of Morocco – Government of Rwanda Scholarships (2026/2027)",
+      "current_status": "needs_review",
+      "evidence_verdict": "needs_review",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:15:20Z",
+      "suggested_status": "needs_review",
+      "field_updates": {
+        "official_source_url": null,
+        "deadline_text": "Application deadline: 29/08/2026",
+        "deadline_date": "2026-08-29",
+        "verification_notes": "Official HEC Rwanda PDF read in full on 2026-10-12; every record claim matches the announcement. Cycle is closed: deadline 29/08/2026 has passed and HEC's scholarships feed shows no newer Morocco-Rwanda call as of 2026-10-12, so do not list the record as an open opportunity. Announcement is silent on funding coverage - do not upgrade funding_type beyond 'Not specified' without a further source. Next re-check around Aug/Sep 2027 for the 2027/2028 Morocco-Rwanda announcement (note: the previous cycle, published 19/09/2025, was bachelor's-only with deadline 30/09/2025). Applications for the closed 2026/2027 cycle were submitted via https://hecmis.hec.gov.rw/."
+      },
+      "source_urls": [
+        "https://www.hec.gov.rw/fileadmin/user_upload/HEC/Scholarships/KINGDOM_OF_MOROCCO_-__GOVERNMENT_OF_RWANDA_SCHOLARSHIPS.pdf",
+        "https://www.hec.gov.rw/updates/scholarships"
+      ]
+    },
+    {
+      "id": "679",
+      "title": "AUF Virtual Mobility Grant for International Distance Degree Programmes (FOAD/IFIC call 2026/27)",
+      "current_status": "needs_review",
+      "evidence_verdict": "needs_review",
+      "confidence": "high",
+      "checked_at": "2026-10-13T01:18:29Z",
+      "suggested_status": "needs_review",
+      "field_updates": {
+        "official_source_url": null,
+        "deadline_text": "Clôture : 14/09/2026 à 23h59 (fuseau horaire : Europe/Paris) — formations débutant en janvier / février 2027 ; 9 juin 2026 pour les formations débutant en septembre / octobre 2026",
+        "deadline_date": "2026-09-14",
+        "verification_notes": "All record claims confirmed against the AUF's official call page (campaign check date 12 October 2026); the only blocker for 'active' is that the 2026/27 cycle closed on 14 September 2026 at 23:59 Europe/Paris, so no cycle is currently open. The AUF runs this call annually (the 2026/27 edition launched 07/04/2026), so a 2027/28 edition is expected around April 2027 with a likely mid-September 2027 closing. Re-check then via the same platform URL; programme contact is foad@auf.org. The funding is partial tuition/registration-fee coverage only — never present as fully funded. The JS catalogue behind l.auf.org/FOAD-FD could not be rendered; if the exact list of the 13 countries matters, re-check with a browser. Note that the platform home page mis-links this call's 'More information' entry to a different (qualifying-programme) call, but the canonical URL in the record works and shows the correct page."
+      },
+      "source_urls": [
+        "https://appels-propositions.auf.org/appel-a-candidatures-2026-27-formations-diplomantes-internationales-a-distance",
+        "https://appels-propositions.auf.org/en/appel-a-candidatures-2026-27-formations-diplomantes-internationales-a-distance",
+        "https://appels-propositions.auf.org/",
+        "https://l.auf.org/FOAD-FD"
+      ]
+    },
+    {
+      "id": "684",
+      "title": "Mauritius-Africa Scholarship Scheme (MASS)",
+      "current_status": "needs_review",
+      "evidence_verdict": "conflicting",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:22:06Z",
+      "suggested_status": "conflicting",
+      "field_updates": {
+        "official_source_url": "https://tertiaryeducation.govmu.org/te/index.php/mass/",
+        "deadline_text": "Applicants submit through their country's Nominating Agency by a deadline that Nominating Agency sets ('This should be done by a deadline to be determined by the Nominating Agency and communicated to prospective applicants'), while the Ministry itself sets one central closing date per edition: for MASS 2026 (July/September 2026 intake) the Call for Applications required nominating agencies to 'submit the duly completed application forms by 27 March 2026'. That date is past; no 2027 edition was published as at 12 October 2026.",
+        "deadline_date": "2026-03-27",
+        "verification_notes": "Deadline 2026-03-27 belongs to the closed MASS 2026 edition and must not be shown as an open deadline. As at 12 October 2026 the live Ministry MASS page publishes only 'Edition 2026' and 'Archive 2025' with no 2027 call, so the programme has no currently-open cycle. The HEI application windows in Section 8 of the 2026 Guidelines also closed between 27 February and end of March 2026. Re-check from late October 2026 onward, when the 2027 edition is expected to appear on https://tertiaryeducation.govmu.org/te/index.php/mass/ on the historical annual pattern. Also worth a field fix: the degree_levels list is missing the combined 'MPhil/PhD' route. A reviewer should decide whether an 'open/closed' flag is needed, since every MASS edition runs a roughly October-to-March window and the record is otherwise accurate."
+      },
+      "source_urls": [
+        "https://tertiaryeducation.govmu.org/te/wp-content/uploads/2025/10/Call-for-Application.pdf",
+        "https://tertiaryeducation.govmu.org/te/index.php/mass/",
+        "https://tertiaryeducation.govmu.org/te/wp-content/uploads/2025/10/Guidelines-for-Applicants-undergraduate-2026.pdf",
+        "https://tertiaryeducation.govmu.org/te/wp-content/uploads/2025/11/Guidelines-for-Applicants-PhD-2026.pdf",
+        "https://tertiaryeducation.govmu.org/te/wp-content/uploads/2025/10/Guidelines-for-Nominating-Agencies-2026.pdf"
+      ]
+    },
+    {
+      "id": "693",
+      "title": "Errol Walton Barrow Scholarships",
+      "current_status": "needs_review",
+      "evidence_verdict": "needs_review",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:18:00Z",
+      "suggested_status": "needs_review",
+      "field_updates": {
+        "official_source_url": null,
+        "deadline_text": "Completed application forms must be submitted no later than August 6, 2026. (2026 cycle - closed. A second official page for the same scholarship, https://education.gov.bb/errol-walton-barrow-scholarships-2026/, states 'no later than July 3rd, 2026'. No 2027 cycle had been published as of 12 October 2026.)",
+        "deadline_date": "2026-08-06",
+        "verification_notes": "Checked live on 2026-10-12. The record's official_source_url resolved on the Ministry of Education Transformation's own site (education.gov.bb) and was read in full; awarding body, eligibility, funding and degree levels all agree with the record. The verdict is needs_review, not active, solely because there is no open cycle: the only published deadlines are in the past. Two official pages for the same scholarship disagree on the 2026 closing date (August 6, 2026 on the page the record cites; July 3rd, 2026 on the duplicate page that the Ministry's Financial Aid index links to), and the GOVERNMENT NOTICE 2026-EWB.pdf that would settle it sits on a mesgovbb-my.sharepoint.com link that returned only a redirect and could not be read. Next re-check should happen around May-June 2027, when the ministry historically calls the next cycle (the 2026 page was posted 3 June 2026), and should confirm (a) whether a 2027 call has been published, (b) which of the two duplicate official pages is canonical, and (c) whether the restricted areas of study (Marine Studies, Aeronautics, Culinary Arts) and the Barbados-citizenship-plus-newer-secondary-school eligibility rules are unchanged. The eligibility summary should also be widened to mention the three proposed areas of study, which are absent from it. Living-allowance figures are published only for study in the USA, Canada and the United Kingdom."
+      },
+      "source_urls": [
+        "https://education.gov.bb/2026-errol-walton-barrow-scholarships",
+        "https://education.gov.bb/errol-walton-barrow-scholarships-2026/",
+        "https://education.gov.bb/financial-aid/",
+        "https://education.gov.bb/announcements/",
+        "https://mesgovbb-my.sharepoint.com/:b:/g/personal/information_mes_gov_bb/IQD2tHP-TsxgS4-h17cM9gKtAZ8ATSPJEinb1SPTvb0ytVs?e=zS7uM6"
+      ]
+    },
+    {
+      "id": "695",
+      "title": "Killam Fellowships Program (Fulbright Canada)",
+      "current_status": "needs_review",
+      "evidence_verdict": "needs_review",
+      "confidence": "low",
+      "checked_at": "2026-10-12T19:25:15Z",
+      "suggested_status": "needs_review",
+      "field_updates": {
+        "official_source_url": null,
+        "deadline_text": "The deadline for the open competition for the 2027-28 Killam Fellowships competition is January 31, 2027.",
+        "deadline_date": "2027-01-31",
+        "verification_notes": "Live fetch of www.fulbright.ca fails from this environment (TCP connection timeout via webfetch, PowerShell Invoke-WebRequest, and Playwright; DNS resolves to 50.87.91.83; no Wayback Machine snapshot exists). Every claim in the record matches exact sentences from the awarding body's own pages as indexed by the search engine on 2026-08-15, so a successful live re-read should most likely return verdict 'active'. Recheck the live site first; verdict is needs_review only because the page itself could not be read."
+      },
+      "source_urls": [
+        "https://www.fulbright.ca/programs/killam-fellowships",
+        "https://www.fulbright.ca/programs/killam-fellowships/canadians/application-deadlines",
+        "https://www.fulbright.ca/programs/killam-fellowships/canadians/eligibility",
+        "https://html.duckduckgo.com/html/?q=site%3Afulbright.ca+killam+fellowships+award+%22%246%2C000%22"
+      ]
+    },
+    {
+      "id": "710",
+      "title": "New Horizons for Women: Hine Kahukura Education Awards",
+      "current_status": "needs_review",
+      "evidence_verdict": "needs_review",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:21:00Z",
+      "suggested_status": "needs_review",
+      "field_updates": {
+        "official_source_url": null,
+        "deadline_text": "Applications closed 11.59 pm Tuesday 25 August 2026 (round for study in 2027); 'All applications will receive a response in October 2026'; all general award applications closed until 2027",
+        "deadline_date": "2026-08-25",
+        "verification_notes": "Official site live and accurate on 12 Oct 2026. The 2026 round closed 25 Aug 2026 and the next general round reopens in 2027 (deadlines historically late August), so re-check around May-July 2027 for the next cycle. The Education Awards page itself shows no deadline date; the exact closing time (11.59 pm, Tuesday 25 August 2026) is stated only on /faqs.html. The FAQ page's HTML title tag oddly reads 'Research Awards' though the content is correct. Award values ($1,000/$1,500/$3,000 by NZQA level) may change year to year per the page."
+      },
+      "source_urls": [
+        "https://newhorizonsforwomen.org.nz/education-awards.html",
+        "https://newhorizonsforwomen.org.nz/faqs.html",
+        "https://newhorizonsforwomen.org.nz/awards.html"
+      ]
+    },
+    {
+      "id": "711",
+      "title": "Sonja Davies Peace Award Fund",
+      "current_status": "needs_review",
+      "evidence_verdict": "needs_review",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:22:50Z",
+      "suggested_status": "needs_review",
+      "field_updates": {
+        "official_source_url": null,
+        "deadline_text": "The Sonja Davies Peace Award Application is OPEN NOW! Closes 30th October",
+        "deadline_date": "2026-10-30",
+        "verification_notes": "Award page re-checked live on 12 October 2026: application open, closes 30th October 2026 (year given in context of the 'Hine Kahukura 2026 Awards' banner). General award applications are closed until 2027, so at the next re-check confirm whether the Sonja Davies Peace Award runs again in the 2027 cycle or is discontinued. The catalogue's degree_levels value is wrong: this is an initiative award (max $4,000) open to informal/formal groups and a woman enrolled at a tertiary institution, not an Undergraduate/Master's/PhD study scholarship. Correct that field at the next update."
+      },
+      "source_urls": [
+        "https://newhorizonsforwomen.org.nz/awards.html",
+        "https://newhorizonsforwomen.org.nz/",
+        "https://newhorizonsforwomen.org.nz/faqs.html"
+      ]
+    },
+    {
+      "id": "721",
+      "title": "Toloa Tertiary Scholarship (Toloa Scholarships - tertiary stream, Ministry for Pacific Peoples)",
+      "current_status": "needs_review",
+      "evidence_verdict": "needs_review",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:22:30Z",
+      "suggested_status": "needs_review",
+      "field_updates": {
+        "official_source_url": null,
+        "deadline_text": "5 pm, Monday 9 February 2026 (tertiary applications closed; no 2027 round dates published as at 12 October 2026)",
+        "deadline_date": "2026-02-09",
+        "verification_notes": "All record claims check out against the Ministry's own page and Le Va's administration page; only 10 tertiary awards are offered per year. The 2026 round closed 9 February 2026 (applications had opened 10am Tuesday 18 November 2025); as of 12 October 2026 no 2027 cycle dates are published, so the record cannot be marked active. Next re-check should occur around November 2026 for the 2027 round on the MPP education page and the Le Va Toloa page. Also note: eligibility includes New Zealand citizenship or permanent residency plus Pacific descent, students eligible for the government final-year fees-free scheme are excluded, and the award is up to $10,000 paid to the institution covering tuition and other approved study costs - the funding_type label 'Tuition Fee Waiver' understates the coverage."
+      },
+      "source_urls": [
+        "https://www.mpp.govt.nz/programmes-and-funding/education/toloa-scholarships",
+        "https://www.leva.co.nz/scholarships-funding/toloa-scholarship/"
+      ]
+    },
+    {
+      "id": "75",
+      "title": "Global Futures Scholarship (South Asia) ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â University of Manchester",
+      "current_status": "active",
+      "evidence_verdict": "active",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:35:00Z",
+      "suggested_status": "active",
+      "field_updates": {
+        "official_source_url": "https://documents.manchester.ac.uk/display.aspx?DocID=79917",
+        "deadline_text": "You must hold an offer (conditional or unconditional) to study a full-time master's course at Manchester and submit an online scholarship application form by 25 April 2027. (Terms PDF wording: 'Applicants must apply for the scholarship via an online form by 25th April 2027 ... Applicants must hold a conditional or unconditional offer to study a full-time on-campus course at The University of Manchester by the above deadline of 25th April 2027'.)",
+        "deadline_date": "2027-04-25",
+        "verification_notes": "Re-checked live on 2026-10-12. All record claims confirmed against the University of Manchester's own pages and the 2027-edition South Asia Master's terms PDF (DocID=79917, GBP 12,000, deadline 25 April 2027, notification by 1 June 2027). The previously stored URL (DocID=73264) is the same server but the 2025-edition terms (GBP 8,000, deadline 24 April 2025, notification by 30 May 2025) - replaced with the current DocID=79917; on each new cycle the University republishes this document with the year incremented, so the next re-check should locate the then-current edition and confirm the amount (GBP 8,000 -> GBP 12,000 for 2025 -> 2027) and deadline date. Domicile list for the master's award is Bangladesh, Pakistan and Sri Lanka (India appears only in the South Asia undergraduate awards for 2027, and was additionally listed in the 2025-edition master's terms); eligibility is by domicile, not nationality."
+      },
+      "source_urls": [
+        "https://www.manchester.ac.uk/study/international/finance-and-scholarships/funding/global-futures-scholarship/",
+        "https://www.manchester.ac.uk/study/international/country-specific-information/bangladesh/scholarships/",
+        "https://www.manchester.ac.uk/study/international/country-specific-information/sri-lanka/scholarships/",
+        "https://documents.manchester.ac.uk/display.aspx?DocID=79917",
+        "https://documents.manchester.ac.uk/display.aspx?DocID=73264"
+      ]
+    },
+    {
+      "id": "79",
+      "title": "Edinburgh Global Research Scholarship",
+      "current_status": "unverified",
+      "evidence_verdict": "quarantined",
+      "confidence": "high",
+      "checked_at": "2026-10-12T19:06:00Z",
+      "suggested_status": "quarantined",
+      "field_updates": {
+        "official_source_url": null,
+        "deadline_text": null,
+        "deadline_date": null,
+        "verification_notes": "The recorded official_source_url is a generic 'Funding for international students' landing page that does not mention the Edinburgh Global Research Scholarship. No live official page for the programme exists on ed.ac.uk: plausible paths (e.g. /student-funding/postgraduate/global-research-scholarship) return 404, and it is absent from the international postgraduate funding navigation, the multi-regional awards listing, and the scholarship search. The only official trace is the Research Explorer prize record for a 2019 award. The University's current flagship PhD scheme for international students is the Edinburgh Doctoral College Scholarships (University tuition fee plus UKRI-rate stipend; open to UK and overseas students; 2027-2028 cycle with per-school deadlines from 16 November 2026). Aggregator pages still advertise a February-deadline cycle but point back to the generic page and are not authoritative. Treat this record as a historical programme unless a live official page appears."
+      },
+      "source_urls": [
+        "https://www.ed.ac.uk/student-funding/postgraduate/international",
+        "https://www.research.ed.ac.uk/en/prizes/edinburgh-global-research-scholarship/",
+        "https://registryservices.ed.ac.uk/student-funding/postgraduate/international/other-funding/doctoral-college",
+        "https://registryservices.ed.ac.uk/student-funding/postgraduate/international/region/multi-regional-awards",
+        "https://www.globaladmissions.com/scholarship/edinburgh-scholarship"
+      ]
+    }
+  ]
+}

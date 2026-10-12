@@ -1,0 +1,52 @@
+{
+  "id": "502",
+  "verdict": "active",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:15:50Z",
+  "sources": [
+    {
+      "url": "https://www.fes.de/studienfoerderung/stipendium/promotionsfoerderung-fuer-auslaender-innen",
+      "kind": "official",
+      "note": "Friedrich-Ebert-Stiftung's own programme page 'Promotionsförderung für Ausländer:innen' (fes.de, Studienförderung > Stipendium). Read in full."
+    },
+    {
+      "url": "https://www.fes.de/studienfoerderung/bewerbung",
+      "kind": "official",
+      "note": "FES online-application page. Lists a live 'Promotionsförderung für Ausländer:innen' application form and states deadlines are set by the chosen Stipendienprogramm. Read in full."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The page lives on fes.de, the Friedrich-Ebert-Stiftung's own domain, under Studienförderung > Stipendium, and is signed '© Friedrich-Ebert-Stiftung e.V.' This is the awarding body's own programme page, not a news article, blog, aggregator, or mirror.",
+      "quote": "Stipendienprogramme der Friedrich-Ebert-Stiftung ... © Friedrich-Ebert-Stiftung e.V."
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "No fixed calendar deadline is published; applications are rolling. The programme page gives only a timing criterion (apply up to about two years before submission of the dissertation) and the application page routes applicants to their chosen Stipendienprogramm for the deadlines, while listing a live online application form for 'Promotionsförderung für Ausländer:innen'. This matches the record's 'no fixed calendar deadline / varies'. The current cycle is open - the form is published.",
+      "quote": "Der richtige Zeitpunkt für die Bewerbung - bis circa zwei Jahre vor Abgabe der Dissertation ... Die Fristen finden Sie bei dem von Ihnen gewählten Stipendienprogramm. ... Promotionsförderung für Ausländer:innen [Bewerbungsformular]"
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "Every distinct claim in the record is confirmed verbatim: applicants come from abroad, are admitted to doctoral study at a German higher education institution, have very good German skills (B2 accepted even without certificate, and a proof of German is required even if the dissertation is written in English), are socio-politically engaged, identify with the values of social democracy, completed their studies with above-average results quickly, and propose research making a significant contribution to research; all disciplines except medicine.",
+      "quote": "Dieses Förderprogramm kommt infrage für alle, die - aus dem Ausland kommen - an einer deutschen Hochschule zur Promotion zugelassen sind - sehr gute deutsche Sprachkenntnisse haben - gesellschaftspolitisch engagiert sind - sich mit den Werten der Sozialen Demokratie identifizieren - das Studium mit überdurchschnittlichem Ergebnis zügig abgeschlossen haben - deren wissenschaftliches Vorhaben einen bedeutsamen Beitrag zur Forschung leistet ... Ein Nachweis über deutsche Sprachkenntnisse ist auch notwendig, wenn die Dissertation in englischer Sprache verfasst wird. Wir akzeptieren ein Sprachniveau von B2, auch ohne Zertifikat. ... Mit Ausnahme von Promotionen im Bereich Medizin fördern wir Promotionen in allen Studiengängen."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The award is a scholarship (Stipend), matching the record's funding_type. Recipients of the Promotionsförderung für Ausländer:innen receive EUR 1,500 per month plus a contribution to statutory health insurance, normally for three and a half years (extendable in justified cases, at most until the final examination), and it is non-repayable. It covers living costs, not tuition; the record does not overclaim 'Fully Funded'.",
+      "quote": "Stipendiat:innen der Promotionsförderung für Ausländer:innen erhalten monatlich 1.500 Euro und einen Zuschuss zur gesetzlichen Krankenversicherung. Die Dauer der Förderung beträgt in der Regel dreieinhalb Jahre. ... Das Stipendium muss nicht zurückgezahlt werden."
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "Doctoral level only. The programme is aimed at Promovierende at a German university; FES's bachelor's/master's (Grundförderung) and vocational (Ausbildungsförderung) schemes are presented on the same page as separate programmes.",
+      "quote": "Die Promotionsförderung für Ausländer:innen richtet sich an Promovierende an einer deutschen Hochschule."
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "No fixed deadline; apply as early as possible - 'Der richtige Zeitpunkt für die Bewerbung: bis circa zwei Jahre vor Abgabe der Dissertation'",
+    "deadline_date": null,
+    "verification_notes": "Re-checked 2026-10-12 against fes.de. Rolling applications, no calendar deadline; the timing criterion is up to ~2 years before dissertation submission. Eligibility, funding (EUR 1,500/month + statutory health-insurance contribution, typically 3.5 years, non-repayable, medicine excluded) and Doctoral-only degree level all confirmed verbatim from the official page. A live application form for 'Promotionsförderung für Ausländer:innen' is linked from fes.de/studienfoerderung/bewerbung (parameter pFprog=3&pkn=A). Next re-check should confirm the form link is still live and that the monthly amount has not changed."
+  },
+  "notes_for_reviewer": null
+}

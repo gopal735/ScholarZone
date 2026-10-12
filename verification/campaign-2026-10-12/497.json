@@ -1,0 +1,52 @@
+{
+  "id": "497",
+  "verdict": "needs_review",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:07:00Z",
+  "sources": [
+    {
+      "url": "https://www.chevening.org/fellowship/chevening-europe-defence-and-security-fellowship/",
+      "kind": "official",
+      "note": "Chevening's own programme page for the Chevening Europe Defence and Security Fellowship. The record's official_source_url (same URL without the trailing slash) resolves to this canonical page. Page title 'Chevening Europe Defence and Security Fellowship | Chevening'."
+    },
+    {
+      "url": "https://www.chevening.org/fellowships/who-can-apply/fellowships-eligibility/",
+      "kind": "official",
+      "note": "Chevening's general Fellowships eligibility criteria page, linked from the programme page as 'our standard eligibility criteria'."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The page is Chevening's own and states the fellowship is funded by the UK FCDO and delivered by Cranfield University at the Defence Academy of the United Kingdom, Shrivenham - exactly the awarding-body relationship in the record.",
+      "quote": "The Chevening Europe Defence and Security Fellowship is funded by the UK Foreign, Commonwealth and Development Office (FCDO) and delivered by Cranfield University at the Defence Academy of the United Kingdom, Shrivenham."
+    },
+    "deadline": {
+      "status": "contradicted",
+      "detail": "The page shows no open application window at all: the header badge reads 'Closed for applications' and the applications section is headed 'Applications are closed'. As read at ~19:00 UTC on 12 October 2026, the record's stated open window ('until 12 October 2026, at 11:00 (UTC)') has already closed, so the record cannot be verified as currently open. The page does not publish the next application deadline; it only confirms the next two cohorts (25 January - 5 March 2027 and 15 March - 23 April 2027).",
+      "quote": "Closed for applications"
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "Confirmed on the programme page: citizenship of and residence in a listed European country at the point of application (the page lists 36 countries/territories including Gibraltar and Holy See - the record's '35 listed European countries' is likely one out of date); a postgraduate qualification (or equivalent professional training or experience in a relevant field); at least five years' relevant professional experience; employment in a security-related mid-career role; and a role with potential to influence organisational capability, policy, strategy, or operational effectiveness. The general Chevening Fellowship criteria (citizenship of a fellowship-eligible country, leadership/influence potential, two-year return, not British/dual British, no UK Government scholarship in last five years) were also confirmed on the criteria page the programme page links to.",
+      "quote": "Be a citizen of and resident in one of the following countries at the point of application: Andorra, Austria, Belgium, Bulgaria, Croatia, Cyprus, Czechia, Denmark, Estonia, Finland, France, Germany, Gibraltar, Greece, Holy See, Hungary, Iceland, Ireland, Italy, Latvia, Liechtenstein, Lithuania, Luxembourg, Malta, Monaco, the Netherlands, Norway, Poland, Portugal, Romania, San Marino, Slovakia, Slovenia, Spain, Sweden, or Switzerland."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The page lists what each fellowship includes - full programme fees, living expenses for the duration of the fellowship (including pre-arranged accommodation) and return economy airfare - which supports the 'Fully Funded' classification. This is a fully funded non-degree fellowship, not a tuition-only award.",
+      "quote": "Each fellowship includes: Full programme fees / Living expenses for the duration of the fellowship, including pre-arranged accommodation close to Oxford / Return economy airfare"
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "The page describes a six-week non-degree professional fellowship with teaching, site visits, an individual research project presented to the FCDO in London, and no academic qualification awarded - matching the record's 'Non-degree / Professional Fellowship'.",
+      "quote": "The duration of this fellowship is six weeks and there will be two cohorts: Cohort 1: 25 January - 5 March 2027; Cohort 2: 15 March - 23 April 2027"
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "Closed for applications",
+    "deadline_date": null,
+    "verification_notes": "Official page read in full on 12 Oct 2026 ~19:00 UTC. Programme exists and matches the record on awarding body, eligibility substance, funding and degree level: funded by the UK FCDO, delivered by Cranfield University at the Defence Academy, Shrivenham; six-week non-degree fellowship; fully funded (programme fees, living expenses with accommodation, return airfare). BUT the page shows 'Closed for applications' / 'Applications are closed': the cycle the record describes as open until 12 October 2026 11:00 UTC closed before this check, so the record must not be published as a currently-open opportunity. Next cohorts are confirmed for 2027 (25 Jan - 5 Mar 2027 and 15 Mar - 23 Apr 2027). Re-check the programme page for the next application window (expected late 2026 for subsequent cohorts) before re-listing as open. The eligibility list on the page names 36 countries/territories (including Gibraltar and Holy See); the record's summary says 35 - update the wording on the next revision."
+  },
+  "notes_for_reviewer": "Verdict is needs_review, not conflicting, because the official page does not publish a different deadline - it publishes no deadline at all ('Closed for applications'); every other claim in the record was confirmed. Not quarantined either: the programme demonstrably exists with confirmed 2027 cohorts. Fetch note: the plain HTTP fetcher timed out on chevening.org throughout (both webfetch and the first browser navigation returned errors), so both pages were read in a real browser via redirect from https://www.chevening.org/fellowships/chevening-europe-defence-and-security-fellowship to the canonical URL with trailing slash. A human may want to decide whether to keep the historical deadline (12 October 2026, 11:00 UTC) visible on the card as a closed-cycle note rather than nulling deadline_date outright."
+}

@@ -1,0 +1,67 @@
+{
+  "id": "75",
+  "verdict": "active",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:35:00Z",
+  "sources": [
+    {
+      "url": "https://www.manchester.ac.uk/study/international/finance-and-scholarships/funding/global-futures-scholarship/",
+      "kind": "official",
+      "note": "The University of Manchester's own Global Futures Scholarship hub page (manchester.ac.uk, International > Finance and scholarships > Funding). Read in full. Confirms the programme is live for 2027 entry and lists the country profiles, including Bangladesh, Pakistan and Sri Lanka."
+    },
+    {
+      "url": "https://www.manchester.ac.uk/study/international/country-specific-information/bangladesh/scholarships/",
+      "kind": "official",
+      "note": "University's official Bangladesh country profile, 'Global Futures Scholarships 2027' section, including the South Asia Master's awards subsection that carries the region-wide criteria. Read in full."
+    },
+    {
+      "url": "https://www.manchester.ac.uk/study/international/country-specific-information/sri-lanka/scholarships/",
+      "kind": "official",
+      "note": "University's official Sri Lanka country profile with the identical South Asia Master's awards subsection. Read in full as a consistency cross-check across the eligible region."
+    },
+    {
+      "url": "https://documents.manchester.ac.uk/display.aspx?DocID=79917",
+      "kind": "official",
+      "note": "Official University documents server: 'The University of Manchester Global Futures Scholarship Eligibility and Application Criteria - 2027 awards, South Asia - Master's Scholarships' PDF, linked as the full terms and conditions from both country profiles. Downloaded and text-extracted in full (3 pages)."
+    },
+    {
+      "url": "https://documents.manchester.ac.uk/display.aspx?DocID=73264",
+      "kind": "official",
+      "note": "The URL recorded in the catalogue. Downloaded and text-extracted in full: it is the University's own documents server, but this DocID is the previous cycle's document ('2025 awards', award value GBP 8,000, deadline 24 April 2025). Still the awarding body's own page, but one cycle out of date."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "All pages read are on manchester.ac.uk and documents.manchester.ac.uk, The University of Manchester's own domains; the terms document is titled 'The University of Manchester Global Futures Scholarship Eligibility and Application Criteria'. This is the awarding body's own publication, not a news article, blog, aggregator or mirror.",
+      "quote": "The University of Manchester Global Futures Scholarship Eligibility and Application Criteria – 2027 awards ... South Asia – Master's Scholarships"
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "The currently open cycle (September 2027 entry) has deadline 25 April 2027 for both holding the offer and submitting the online scholarship application form, exactly matching the record's deadline_date 2027-04-25. Application forms are emailed to eligible offer-holders (from December 2026 to the closing date) and successful applicants are notified by 1 June 2027, so the cycle is open as of today, 12 October 2026. Note the URL stored in the record is the 2025-edition terms PDF (deadline 24 April 2025, now past); the 2027 edition carries the same date with the incremented year.",
+      "quote": "You must hold a conditional or unconditional offer to study a full-time, on-campus master's course at The University of Manchester starting in September 2027 by 25 April 2027, and submit an online scholarship application form by the same deadline. ... Applicants must apply for the scholarship via an online form by 25th April 2027"
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "Every distinct claim in the record's eligibility_summary is confirmed: international fee-paying applicants domiciled in Bangladesh, Pakistan or Sri Lanka; a conditional or unconditional offer for a full-time, on-campus master's course at Manchester starting September 2027; submission of the online scholarship application form by 25 April 2027; self-funded (not sponsored); bachelor's degree taken within South Asia (those who studied a bachelor's outside South Asia are not eligible).",
+      "quote": "Applications will be considered from international fee-paying students domiciled in Bangladesh, Pakistan and Sri Lanka. ... You must hold a conditional or unconditional offer to study a full-time, on-campus master's course at The University of Manchester starting in September 2027 by 25 April 2027, and submit an online scholarship application form by the same deadline. ... You must be self-funded (not sponsored). ... Those who've studied a Bachelor's degree outside of South Asia."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The record's 'Partially Funded' is correct: the award is GBP 12,000 for the 2027 cycle, made as a discount on published overseas/international tuition fees with no payment to the awardee - it is not full funding. For courses longer than one year the discount applies to the first year of tuition fees only. The 2025 edition of the terms (the URL stored in the record) valued the same award at GBP 8,000; the record carries no amount, so this year-on-year change is not a contradiction, but the value has risen.",
+      "quote": "The value of The Global Futures Scholarships for South Asian students is £12,000. Scholarships will be awarded as a discount on published overseas tuition fees. ... Award Value: £12,000 for high performing students from the countries listed below. ... The award will be made as a discount on international tuition fees and no payment will be made to the awardee."
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "Master's only, as the record states. The terms document is explicitly 'South Asia - Master's Scholarships', the country profiles present the award under 'Master's awards', and eligibility requires a full-time, on-campus master's course. (South Asia undergraduate Global Futures awards exist as a separate scheme on the same pages but are not this record.)",
+      "quote": "South Asia – Master's Scholarships ... You must hold a conditional or unconditional offer to study a full-time, on-campus master's course at The University of Manchester starting in September 2027"
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": "https://documents.manchester.ac.uk/display.aspx?DocID=79917",
+    "deadline_text": "You must hold an offer (conditional or unconditional) to study a full-time master's course at Manchester and submit an online scholarship application form by 25 April 2027. (Terms PDF wording: 'Applicants must apply for the scholarship via an online form by 25th April 2027 ... Applicants must hold a conditional or unconditional offer to study a full-time on-campus course at The University of Manchester by the above deadline of 25th April 2027'.)",
+    "deadline_date": "2027-04-25",
+    "verification_notes": "Re-checked live on 2026-10-12. All record claims confirmed against the University of Manchester's own pages and the 2027-edition South Asia Master's terms PDF (DocID=79917, GBP 12,000, deadline 25 April 2027, notification by 1 June 2027). The previously stored URL (DocID=73264) is the same server but the 2025-edition terms (GBP 8,000, deadline 24 April 2025, notification by 30 May 2025) - replaced with the current DocID=79917; on each new cycle the University republishes this document with the year incremented, so the next re-check should locate the then-current edition and confirm the amount (GBP 8,000 -> GBP 12,000 for 2025 -> 2027) and deadline date. Domicile list for the master's award is Bangladesh, Pakistan and Sri Lanka (India appears only in the South Asia undergraduate awards for 2027, and was additionally listed in the 2025-edition master's terms); eligibility is by domicile, not nationality."
+  },
+  "notes_for_reviewer": "The record's stored official_source_url pointed at the previous (2025) edition of the terms; the current 2027 edition is at https://documents.manchester.ac.uk/display.aspx?DocID=79917 (linked from the University's Bangladesh/Pakistan/Sri Lanka country profiles). The 2025-edition document also listed India among eligible countries for the South Asia master's award, whereas the 2027 edition does not; the record's eligibility summary (Bangladesh, Pakistan, Sri Lanka only) matches the current edition. The record title in the campaign manifests contains mojibake where an em dash should be ('Global Futures Scholarship (South Asia) ... University of Manchester') - cosmetic, in the campaign files only."
+}

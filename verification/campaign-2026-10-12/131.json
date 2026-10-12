@@ -1,0 +1,47 @@
+{
+  "id": "131",
+  "verdict": "needs_review",
+  "confidence": "medium",
+  "checked_at": "2026-10-12T20:02:02.239Z",
+  "sources": [
+    {
+      "url": "https://www.rotary.org/en/our-programs/peace-fellowships",
+      "kind": "official",
+      "note": "Rotary International peace fellowships page with the application timeline"
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The source URL resolves to Rotary Internationals own site (rotary.org), The Rotary Foundation programme. Official.",
+      "quote": "Each year, The Rotary Foundation awards up to 50 fellowships for masters degrees and up to 120 for certificate studies at premier universities."
+    },
+    "deadline": {
+      "status": "unconfirmed",
+      "detail": "The record publishes \"Submit your application between February and 15 May\" with deadline_date 2027-05-15. The page states the 2027-28 application is now closed and that the 2028-29 application \"will be available online in February 2027\" — it confirms the February application window pattern but publishes no 15 May deadline. The exact day cannot be confirmed from this page.",
+      "quote": "The 2027-28 Rotary Peace Fellowship application is now closed. The 2028-29 Rotary Peace Fellowship application will be available online in February 2027."
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "The page describes leaders with work experience in peace and development committed to community and international service; the master programmes run 15-24 months with a field study, the certificate is a one-year blended programme for working professionals. The record matches; the detailed exclusions (no doctoral study, Rotary relationship restrictions) live on the eligibility pages.",
+      "quote": "The Rotary Peace Fellowship is designed for leaders with work experience in peace and development. Our fellows are committed to community and international service and the pursuit of peace."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The fellowships cover tuition and fees, room and board, round-trip transportation, and internship and field-study expenses, and Rotary awards up to 170 funded fellowships a year. Fully Funded is accurate.",
+      "quote": "The fellowships cover tuition and fees, room and board, round-trip transportation, and internship and field-study expenses."
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "Master's degrees (up to 50 fellowships) and the professional development certificate (up to 120) match the record.",
+      "quote": "up to 50 fellowships for masters degrees and up to 120 for certificate studies"
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "Application opens February 2027 for the 2028-29 fellowship; the 2027-28 application is closed",
+    "deadline_date": null,
+    "verification_notes": "Spot-checked live on rotary.org on 2026-10-12. Programme, funding and levels confirmed. The 15 May deadline is not published on this page: the page only states the 2027-28 round closed and that the 2028-29 application opens in February 2027. The 15 May date is stable across past Rotary cycles but is not confirmable from the page, so it stays as a reviewer decision."
+  },
+  "notes_for_reviewer": "This is a spot check of a record already marked active. Everything is confirmed except the deadline day, which the official page does not publish. The record stays active on the strength of the rest; the 15 May date should be re-read from the application announcement when it appears in February 2027."
+}

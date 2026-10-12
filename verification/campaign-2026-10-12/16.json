@@ -1,0 +1,67 @@
+{
+  "id": "16",
+  "verdict": "conflicting",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:05:03Z",
+  "sources": [
+    {
+      "url": "https://marie-sklodowska-curie-actions.ec.europa.eu/actions/postdoctoral-fellowships",
+      "kind": "official",
+      "note": "The record's official_source_url: MSCA programme page for Postdoctoral Fellowships, on the European Commission's domain, 'Last updated: 30 September 2026'. Read in full."
+    },
+    {
+      "url": "https://marie-sklodowska-curie-actions.ec.europa.eu/whats-new/news/msca-opens-eur399-million-call-for-postdoctoral-fellowships",
+      "kind": "official",
+      "note": "Official MSCA news item announcing the 2026 Postdoctoral Fellowships call, published 9 Apr 2026, 'Last updated: 12 October 2026'. States the call opened 9 April 2026, closes 9 September 2026, EUR 434 million budget, indicative timeline."
+    },
+    {
+      "url": "https://marie-sklodowska-curie-actions.ec.europa.eu/funding/msca-postdoctoral-fellowships-2026",
+      "kind": "official",
+      "note": "Official 2026 Postdoctoral Fellowships call page on the MSCA site: indicative timeline, eligibility wording, EUR 434 million indicative budget. Read in full."
+    },
+    {
+      "url": "https://marie-sklodowska-curie-actions.ec.europa.eu/actions/postdoctoral-fellowships/6-steps-to-prepare-your-application-postdoctoral-fellowships-call",
+      "kind": "official",
+      "note": "Official MSCA guidance page, 'Last updated: 29 May 2026'. Restates eligibility and states the 2026 call 'opened on 9 April 2026 and will close on 9 September 2026, 17.00, CEST'."
+    },
+    {
+      "url": "https://rea.ec.europa.eu/funding-and-grants/horizon-europe-marie-sklodowska-curie-actions/horizon-europe-msca-how-apply_en",
+      "kind": "official",
+      "note": "European Research Executive Agency (the Commission agency managing MSCA) 'How to apply' page. Lists 'Postdoctoral Fellowships - call 2026' as the current call with portal resources; no 2027 call is announced."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The pages are the European Commission's own MSCA programme site (ec.europa.eu domain), matching the record's awarding body 'European Commission (Marie Skłodowska-Curie Actions)'.",
+      "quote": "This site is managed by the European Commission, Directorate-General for Education, Youth, Sport and Culture"
+    },
+    "deadline": {
+      "status": "contradicted",
+      "detail": "The official pages publish only the 2026 cycle: opened 9 April 2026, deadline 9 September 2026 (now past), results expected February 2027. No 2027 cycle or 2027-09-08 deadline is stated anywhere on the official pages, and no cycle is currently open as of 12 October 2026. The record's deadline_date 2027-09-08 (day precision) is therefore contradicted by the official calendar. The record's deadline_label wording itself does match the PF page's bullet points.",
+      "quote": "9 September 2026: deadline to submit proposals (TBC)"
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "All distinct claims in the record are confirmed: any nationality ('open to excellent researchers of any nationality'), PhD required ('should have a PhD degree at the time of the deadline for applications'), the 12-month-in-36-months mobility rule (quoted verbatim below), and openness to 'researchers wishing to reintegrate in Europe, to those who are displaced by conflict'. Note the official page also states an 8-year post-PhD research-experience cap ('must have a maximum of eight years experience in research') that the record's summary does not mention.",
+      "quote": "should comply with mobility rules: they must not have resided or carried out their main activity (work, studies, etc.) in the country of the beneficiary (for European Postdoctoral Fellowships), or the host organisation for the outgoing phase (for Global Postdoctoral Fellowships) for more than 12 months in the 36 months immediately before the call deadline"
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The award is fully funded: the EU contribution is a living allowance plus a mobility allowance, plus (where applicable) family, long-term leave and special needs allowances, with additional funding for research, training and networking activities and for management and indirect costs. Indicative budget of the 2026 call: EUR 434 million. Not tuition-only.",
+      "quote": "The EU provides support for the recruited researcher in the form of a living allowance, a mobility allowance, if applicable, family, long-term leave and special needs allowances"
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "Postdoctoral is correct: the action targets researchers who already hold a PhD and is not itself a degree programme. European Fellowships last 12-24 months; Global Fellowships 12-24 months outgoing plus a mandatory 12-month return phase.",
+      "quote": "The Postdoctoral Fellowships action targets researchers holding a PhD who wish to carry out their research activities abroad, acquire new skills and develop their careers."
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "The call will close on 9 September 2026",
+    "deadline_date": "2026-09-09",
+    "verification_notes": "Official MSCA pages (updated 30 Sep / 12 Oct 2026) show the 2026 Postdoctoral Fellowships cycle opened 9 April 2026 and closed 9 September 2026, 17:00 CEST, with results expected February 2027 and first projects starting May 2027. No 2027 call, opening date or deadline is published on any official page as of 12 October 2026; the Funding & Tenders portal's HORIZON-MSCA-2026-PF-01-01 page is a JavaScript app that could not be fetched for direct reading. Next re-check in spring 2027: expect HORIZON-MSCA-2027-PF-01-01 on the portal (calls typically open in April and close the second week of September). The stored deadline_date 2027-09-08 does not match any official publication and should not be treated as an open cycle. Also note eligibility includes a cap of 8 years' research experience after the PhD (career breaks, non-research years, and third-country research years for EU/associated-country nationals reintegrating to Europe do not count)."
+  },
+  "notes_for_reviewer": "A human must decide how to present the record during the between-cycles window: the 2026 cycle closed 9 September 2026 and the next call is expected around spring-September 2027 but is not yet officially scheduled. The record's 2027-09-08 date has no official basis found. Minor detail: one web-search snippet quoting the EU portal listed the 2026 deadline as 08 September 2026 while the MSCA site pages say 9 September 2026; both are past, so the verdict is unaffected, but the day-precision value 2026-09-09 comes from the MSCA site's own news and call pages."
+}

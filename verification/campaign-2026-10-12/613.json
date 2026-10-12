@@ -1,0 +1,47 @@
+{
+  "id": "613",
+  "verdict": "active",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:12:17Z",
+  "sources": [
+    {
+      "url": "https://www.griffith.edu.au/international/scholarships-finance/scholarships/international-academic-merit-scholarship",
+      "kind": "official",
+      "note": "Griffith University's own programme page for the International Academic Merit Scholarship (award value, duration, level of study, start, eligibility, how to apply, terms and conditions). Page served live and matched the record's URL exactly. Footer confirms the institution's Australian registration: 'CRICOS - 00233E', 'TEQSA - PRV12076'."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The page is on Griffith University's own domain (griffith.edu.au) and presents the scholarship the university itself awards; the page title, breadcrumb and footer registration details all identify Griffith University. No agency, aggregator or third party is involved. This matches the record's awarding body exactly.",
+      "quote": "The International Academic Merit Scholarship recognises international students with strong academic results applying for undergraduate and postgraduate coursework programs at Griffith University."
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "The page publishes no closing date at all. The scholarship is not separately applied for; it is assessed against a student's application to study at Griffith, so eligibility is governed by the commencement window rather than an application deadline. The commencement window is 'Commence study in Trimester 3, 2025 or any trimester in 2026 or 2027', which is still open as of 12 October 2026 (Trimester 3 2026 begins in November 2026 and 2027 trimesters follow). The record's 'no closing date / assessed automatically' wording and its null deadline date are therefore accurate.",
+      "quote": "You don't need to apply for the scholarship, we've kept it as easy as possible. Just apply to study at Griffith and we will let you know if you have been successful."
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "Every distinct eligibility claim in the record appears verbatim on the official page: citizenship of a country other than Australia or New Zealand; a minimum GPA of 4.5 on a 7-point scale or equivalent; meeting the academic and English-language entry requirements of the chosen coursework programme; and being a full-time student commencing in Trimester 3 2025 or any trimester in 2026 or 2027. The page adds restrictions the record does not list, but these are additive rather than contradictory: a list of excluded programmes (Bachelor of Medical Science, Bachelor of Dental Health Science, Doctor of Medicine, Master of Dentistry, Master of Speech Pathology, MBA, Graduate Diploma of Flight Management and others), an ongoing full-time enrolment and pass-all-courses requirement, and a requirement to hold International Fee Paying status.",
+      "quote": "To be eligible you must: - Be a citizen of a country other than Australia or New Zealand. - Have a minimum GPA in previous studies of 4.5 on a 7 point scale or equivalent. - Satisfy all academic and English language entry requirements for your chosen undergraduate or postgraduate coursework program. - Be a full-time student starting in Trimester 3, 2025 or any trimester in 2026 or 2027."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The award is a partial tuition waiver, and the record describes it correctly as such rather than as fully funded. The page states the award value as 20% of tuition fees, applies for the duration of the programme, and the terms and conditions restrict it to tuition fees only - there is no airfare, stipend, health cover or living allowance. A tuition-only award is not fully funded, and the record's 'Tuition Fee Waiver (20% of tuition fees)' wording matches the provider exactly.",
+      "quote": "Award value: 20% of tuition fees ... The scholarship covers 20% of undergraduate or postgraduate coursework tuition fees only for the 'Duration' of the program on meeting the ongoing enrolment requirements (see below)."
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "The page covers undergraduate and postgraduate coursework study, which includes the master's level the record lists, and it explicitly excludes Higher Degree Research (so no PhD). The page's own 'Level of study' wording is broader than the record's label - 'Most undergraduate and postgraduate coursework programs (some exclusions apply)' rather than 'Undergraduate, Master's' - because other postgraduate coursework qualifications besides the master's also qualify. This is a narrower summary on the record's part, not a contradiction: nothing on the page contradicts 'Undergraduate, Master's', but the record understates the eligible scope. Flagged for the reviewer below.",
+      "quote": "Level of study: Most undergraduate and postgraduate coursework programs (some exclusions apply)"
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "No closing date - the page publishes no application deadline: 'You don't need to apply for the scholarship, we've kept it as easy as possible. Just apply to study at Griffith and we will let you know if you have been successful.' Eligibility is tied to commencement: 'Commence study in Trimester 3, 2025 or any trimester in 2026 or 2027.'",
+    "deadline_date": null,
+    "verification_notes": "All substantive claims confirmed against griffith.edu.au on 12 October 2026; the URL in the record is live, canonical and unchanged. The commencement window will need refreshing: the page still permits commencement in Trimester 3 2025 (already past) as well as any trimester in 2026 or 2027, and the terms state 'Students who defer commencement to 2028 or later are not eligible to receive the scholarship', so this page is on a finite clock and must be re-checked before the 2028 intake. Funding is partial only: 20% of tuition fees, tuition only - the record correctly does not call it fully funded. Note for automated re-checks: the scholarship page fetches fine, but the parent listing page https://www.griffith.edu.au/international/scholarships-finance/scholarships returns HTTP 403 to scripted fetchers. Two things a catalogue reader may want but the card omits: the enumerated excluded programmes (Bachelor of Medical Science, Bachelor of Dental Health Science, Doctor of Medicine, Master of Dentistry, Master of Speech Pathology, MBA, Graduate Diploma of Flight Management, plus Diploma programs, Masters Qualifying, Higher Degree Research, non-award, Study Abroad, English language programs, part-time-only and partner-delivered programmes), and that a student awarded a Griffith scholarship worth more than 20% receives the higher-value scholarship instead of this one."
+  },
+  "notes_for_reviewer": "One precision issue worth a human decision, though it does not change the verdict: the record's degree_levels reads 'Undergraduate, Master's' while the page's 'Level of study' is 'Most undergraduate and postgraduate coursework programs (some exclusions apply)'. The record is accurate as far as it goes (undergraduate and master's both qualify, and Higher Degree Research is explicitly excluded so no PhD), but it understates the field - other postgraduate coursework qualifications are eligible too. I have marked the finding confirmed rather than contradicted because no claim in the record is false and it does not assert exclusivity; a reviewer may prefer to reword the field to the provider's own wording. Separately, the eligibility and commencement windows quoted on the page (Trimester 3 2025, any trimester in 2026 or 2027) are a snapshot that will expire: the terms state students commencing in 2028 or later are ineligible, so this record needs re-checking well before the 2028 intake."
+}

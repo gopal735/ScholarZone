@@ -1,0 +1,52 @@
+{
+  "id": "547",
+  "verdict": "active",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:16:17Z",
+  "sources": [
+    {
+      "url": "https://www.campusfrance.org/en/mopga-2027",
+      "kind": "official",
+      "note": "Campus France's own page for the MOPGA 2027 Visiting Fellowship Program for Early Career Researchers (page states 'Updated on 15 September 2026'). Read in full: it is the implementing body's own page and carries the open-cycle announcement, research themes, eligibility requirements, fellowship terms, selection process, required documents, application link, timeline and FAQ."
+    },
+    {
+      "url": "https://www.campusfrance.org/fr/mopga-2027",
+      "kind": "official",
+      "note": "French-language version of the same official page ('Mise a jour le 15 septembre 2026'). Read as a cross-check; it states the same dates, eligibility window, allowance amounts and postdoctoral-only scope in French, so the two language versions agree."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The page is on campusfrance.org, the implementing organisation's own domain, and states the programme is funded by the French Ministry for Europe and Foreign Affairs (MEAE) in partnership with the Ministry of Higher Education, Research and Space (MESRE) and implemented by Campus France - exactly the awarding body recorded for this entry. The fellowship is paid directly by Campus France and fellows hold French Government Scholarship holder (BGF) status.",
+      "quote": "This tenth call for applications, funded by the French Ministry for Europe and Foreign Affairs (MEAE), in partnership with the Ministry of Higher Education, Research and Space (MESRE), and implemented by Campus France, will enable young international researchers to carry out a research project in France, thereby fostering collaboration with leading French research institutions."
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "The page's TIMELINE gives 15 September 2026 as the opening of applications and 15 December 2026 as the application deadline, with results notified May-June 2027 and stays starting between September and December 2027. Today is 12 October 2026, so applications are open and the deadline is in the future: the record's deadline of 15 December 2026 is the currently-open cycle and is exact.",
+      "quote": "15 September 2026: Applications open - 15 December 2026: Application deadline - May–June 2027: Notification of results - Between September and December 2027: Successful applicants arrive in France and begin their research stay at French host institutions"
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "Every distinct claim in the record's eligibility summary is confirmed verbatim: the PhD-defence window (December 2021 to December 2026 inclusive), foreign nationality only (all nationalities except French), applying from outside France for a research stay in France. The page adds two further requirements that the record's summary does not mention - no previous MOPGA fellowship, and not residing/professionally active in France at the time of application - which are additive, not contradictory. A maternity-leave exception can extend the five-year eligibility window by 18 months per child.",
+      "quote": "Applicants must: Hold a doctoral degree awarded less than five years before the application deadline, i.e. have defended their PhD thesis between December 2021 and December 2026 inclusive; Be exclusively of foreign nationality (all nationalities are eligible except French nationality); Apply for the purpose of undertaking international mobility to France; Not be residing and professionally active in France at the time of application; Not have previously received a MOPGA fellowship."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The record's 'Stipend' funding type is accurate. The award is a 12-month living allowance of EUR 2,500 per month plus a EUR 500 settling-in allowance and health coverage (health insurance, civil liability insurance and repatriation assistance, then supplementary health insurance once registered with French social security). It is not a fully funded award: international travel to France is explicitly not covered, and the host laboratory receives no funding. There is no tuition element because this is a visiting research stay, not a degree.",
+      "quote": "Fellowships are awarded for a period of 12 months. Each fellowship includes, exclusively: A monthly allowance of €2,500; A €500 settling-in allowance; Health coverage: health insurance, civil liability insurance and repatriation assistance, followed by supplementary health insurance once the fellow has been registered with the French social security system. ... Is travel to France covered? No. International travel costs are not covered by the programme."
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "Confirmed as postdoctoral only. The page describes MOPGA as a flagship programme for postdoctoral mobility, requires a doctoral degree defended within five years, and its FAQ explicitly states there is no MOPGA call for Master's or PhD students. This matches the record's 'Postdoc' level.",
+      "quote": "MOPGA has become a flagship programme for postdoctoral mobility in France ... Are there MOPGA fellowships for Master's or PhD students? No. There is no MOPGA call for applications for Master's or PhD students."
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "15 December 2026: Application deadline",
+    "deadline_date": "2026-12-15",
+    "verification_notes": "Confirmed live on 2026-10-12 against the Campus France page (marked 'Updated on 15 September 2026'); the French-language version of the same page states identical dates and amounts. The tenth MOPGA call is currently open: applications opened 15 September 2026 and close 15 December 2026, results May-June 2027, stays begin September-December 2027. Funding is stipend only - EUR 2,500/month for 12 months plus a EUR 500 settling-in allowance and health coverage - and international travel is NOT covered, so the record must not be described as fully funded. Applications are accepted only through https://campusfrance.smapply.io/prog/mopga_2027/ ('Applications sent by email will not be considered'); contact mopga@campusfrance.org. The page links an application guide PDF (/system/files/medias/documents/2026-09/MOPGA 2027 - Application Guide.pdf) which exists and downloads, but its text is not machine-extractable (subset font encoding); no claim in this record depends on it because the official page states them inline. Next re-check after 15 December 2026: the call will likely close or roll to the next edition, so re-read the page rather than assuming the EUR 2,500 allowance and the December 2021-December 2026 defence window carry over to the 2028 cycle."
+  },
+  "notes_for_reviewer": null
+}

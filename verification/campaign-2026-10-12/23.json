@@ -1,0 +1,52 @@
+{
+  "id": "23",
+  "verdict": "active",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:10:29Z",
+  "sources": [
+    {
+      "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777",
+      "kind": "official",
+      "note": "DAAD's own live scholarship-database entry for Development-Related Postgraduate Courses (EPOS), hosted on www2.daad.de. Read in full; the awarding body's own page, not an aggregator or news article."
+    },
+    {
+      "url": "https://static.daad.de/media/daad_de/pdfs_nicht_barrierefrei/in-deutschland-studieren-forschen-lehren/daad_epos_deadlines.pdf",
+      "kind": "official",
+      "note": "The 'List of all Postgraduate courses with application deadlines 2027/2028' that the EPOS entry links to. It is a per-course table produced from Excel; I confirmed it exists and is the current-cycle list, but its per-course dates are not machine-readable here, so deadlines were not quoted from it."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The page is DAAD's own (www2.daad.de) and its heading reads 'Development-Related Postgraduate Courses (EPOS) • DAAD'; the text names DAAD (Deutscher Akademischer Austauschdienst, the German Academic Exchange Service) as the awarding organisation. This matches the record. The BMZ-funding detail is consistent with the programme's development focus but is not stated verbatim on this entry page.",
+      "quote": "Development-Related Postgraduate Courses (EPOS) • DAAD — With its development-oriented postgraduate study programmes, the DAAD promotes the training of specialists from development and newly industrialised countries."
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "The entry states there is no single deadline and that it depends on the chosen course, exactly matching the record's 'Varies by course'. The currently open cycle is the winter-semester 2027/2028 intake, for which DAAD publishes a per-course deadlines list (e.g. the linked Freiburg MSc Environmental Governance EPOS course is open until 15 October 2026), so a live cycle is open today.",
+      "quote": "Application deadline — Depending on chosen study programme; please check scholarship brochure or the website of your chosen study programme."
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "Every distinct eligibility claim in the record is confirmed on the page: graduates from development and newly industrialised countries (eligible-country/DAC list is linked), at least two years' professional experience, far-above-average academic results (upper third), development-related motivation, and the 15-month Germany residence exclusion.",
+      "quote": "Graduates with at least two years' professional experience from the following countries ... Applicants who have been resident in Germany for longer than 15 months at the application deadline cannot be considered."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The award is genuinely fully funded and far more than tuition: a monthly stipend (992 EUR for graduates; 1,300 EUR, rising to 1,400 EUR from February 2026, for doctoral candidates), health/accident/liability insurance, and a travel allowance, with a possible rent subsidy and family allowance. This is a comprehensive living-cost package, not a tuition-only or partial award.",
+      "quote": "Depending on academic level, monthly payments of 992 euros for graduates or 1,300 euros (1,400 euros beginning with February 2026) for doctoral candidates — Payments towards health, accident and personal liability insurance cover — Travel allowance ..."
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "The programme funds a postgraduate/Master's degree as the norm and a doctoral (PhD) degree only in exceptional cases; degree levels are Master's and PhD. The record's 'Master's, PhD' is accurate, with the caveat that the PhD pathway is exceptional. Funding duration is 12 to 42 months.",
+      "quote": "... the chance to take a postgraduate or Master's degree at a state or state-recognised German university, and in exceptional cases to take a doctoral degree, and to obtain a university qualification (Master's/PhD) in Germany."
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777",
+    "deadline_text": "Depending on chosen study programme; please check scholarship brochure or the website of your chosen study programme. (Current open cycle: winter semester 2027/2028; per-course deadlines are published in the DAAD 'List of all Postgraduate courses with application deadlines 2027/2028'.)",
+    "deadline_date": null,
+    "verification_notes": "Confirmed active against DAAD's live EPOS entry on 2026-10-12. Deadlines are set per course and roughly one year ahead, so there is no single date; re-check the course-deadlines list each cycle. Applications go directly to the chosen course, not to DAAD. Monthly stipend amounts are revised (doctoral-candidate rate rose to 1,400 EUR from February 2026), so re-read the 'Value' section each time. DAAD also offers a clean canonical shortlink for this entry: https://daad.de/go/en/stipa50076777 (resolves to the same page)."
+  },
+  "notes_for_reviewer": "Record is safe to move to active; all five categories agree with the awarding body's live page and a 2027/2028 cycle is open. Two soft caveats, not contradictions: (1) the PhD track is funded only 'in exceptional cases', so 'Master's, PhD' is accurate but Master's is the normal level; (2) the catalog deadline_label's parenthetical 'typically August-November annually for next intake' is a reasonable generalisation that is NOT stated verbatim on the entry page — the page only says the deadline depends on the chosen programme and points to the 2027/2028 list. Next re-check should refresh per-course deadlines and the stipend figures in the 'Value' section."
+}

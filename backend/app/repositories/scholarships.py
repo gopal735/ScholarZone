@@ -3,6 +3,7 @@
 from sqlalchemy import case, func, or_, select
 from sqlalchemy.orm import Session
 
+from ..core import config
 from ..models import Scholarship
 from ..schemas import ScholarshipQuery, ScholarshipSort
 
@@ -51,12 +52,28 @@ def public_visibility_conditions() -> list:
       These are excluded from the public catalogue.
     * ``verification_status == "quarantined"`` is a security/safety exclusion.
       Quarantined records represent a genuine safety concern and remain hidden.
+
+    ``SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED`` is the one switch over the trust
+    question. The default behaviour keeps a not-yet-re-checked record visible
+    with an honest label, because a scholarship being unverified is not the
+    same as it being wrong, and hiding them would quietly shorten the
+    catalogue by 91 records on the day the flag is turned on.
+
+    When the owner does want a verified-only catalogue — after the live
+    verification campaign has evidence for those records — the flag is here,
+    and it is by environment rather than by code so the decision can be made
+    and reversed without a redeploy. The setting is read on every call rather
+    than cached, so an operator can change it in the process environment and
+    have the directory follow.
     """
     conditions = [
         Scholarship.verification_status != "quarantined",
         Scholarship.is_archived.is_(False),
         Scholarship.status != "closed",
     ]
+
+    if config.get_settings().public_require_verified:
+        conditions.append(Scholarship.verification_status == "active")
 
     return conditions
 

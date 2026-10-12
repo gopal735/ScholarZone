@@ -1,0 +1,52 @@
+{
+  "id": "12",
+  "verdict": "active",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:22:00Z",
+  "sources": [
+    {
+      "url": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/about.html",
+      "kind": "official",
+      "note": "JASSO's own page 'The Monbukagakusho Honors Scholarship for Privately-Financed International Students' on jasso.go.jp, branded 'JASSO Japan Student Services Organization'. Full page content was read."
+    },
+    {
+      "url": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/index.html",
+      "kind": "official",
+      "note": "JASSO's programme index page for the same scholarship, linking the detailed-information page above; confirms the record's official_source_url is the awarding body's current official page."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The page is on jasso.go.jp, the Japan Student Services Organization's own domain, and is JASSO's own programme page for this scholarship. It is not an aggregator, news article, blog, or mirror. The record's awarding body 'Japan Student Services Organization (JASSO)' agrees.",
+      "quote": "Copyright ©JASSO. All rights reserved."
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "The page publishes no central application deadline; applications are made through the student's own enrolled institution, which matches the record's 'Varies by institution' label with null date and unknown precision. The programme is currently operating: the page states no universities or Japanese language institutes have suspended applications, and 2026 selection results were published in June 2026.",
+      "quote": "Please ask the staff at the educational institution in which you are enrolled"
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "All of the record's eligibility claims are confirmed by the page: privately-financed international students, excellent academic and character records, enrolled in a Japanese educational institution, facing financial difficulties, and the income criterion of the supporter's annual income being under 5 million yen. The page states the income condition applies when the candidate has a financial supporter in Japan. The record's phrase 'about to enroll' is not on this page; it corresponds to the separate Reservation Program pages linked from the same programme section.",
+      "quote": "This is a scholarship program for privately-financed international students with excellent academic and character records who are enrolled in undergraduate schools, graduate schools, junior colleges, colleges of technology, specialized course in specialized training colleges, university preparatory courses or Japanese language institutes in Japan"
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The award is a partial monthly stipend, exactly as the record's 'Partial' funding type says: 48,000 yen per month at graduate/undergraduate level and 30,000 yen per month for Japanese language institutes, for 12 months (April to March) or 6 months (October to March). It does not cover tuition or enrolment fees, so it is not fully funded.",
+      "quote": "Graduate/undergraduate level : 48,000 yen per month"
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "Every level listed in the record (Undergraduate, Graduate, Japanese Language Institute, College of Technology, Specialized Training College) appears on the page. The page additionally names junior colleges and university preparatory courses, which the record's list omits; this is an omission, not a contradiction.",
+      "quote": "The candidate is enrolled as a full-time student in an undergraduate school, junior college, college of technology (3rd year or above) or specialized course in a specialized training college in Japan."
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "Varies by institution - \"Please ask the staff at the educational institution in which you are enrolled\" (no centralised deadline is published)",
+    "deadline_date": null,
+    "verification_notes": "Checked 2026-10-12 against JASSO's official programme page, read in full. No single published deadline: students apply via the institution where they are enrolled. Award is a partial monthly stipend (48,000 yen/month graduate-undergraduate; 30,000 yen/month Japanese language institutes; 12 or 6 month period). Page states no institutions are currently suspending applications and 2026 selection results were posted June 2026, so the programme is operating. Record's degree level list omits junior colleges and university preparatory courses, which the page also covers."
+  },
+  "notes_for_reviewer": "Record is accurate as it stands and the active status is supported. Two harmless nuances if the catalogue is ever refined: (1) the page also lists junior colleges and university preparatory courses among eligible institution types, so degree_levels could be broadened; (2) the under-5-million-yen income condition applies only 'If the candidate has a financial supporter in Japan'. Nothing contradicts the record."
+}

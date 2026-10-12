@@ -1,0 +1,57 @@
+{
+  "id": "691",
+  "verdict": "active",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:25:00Z",
+  "sources": [
+    {
+      "url": "https://www.wi.org.nz/Site/scholarships/BW_Memorial_Foundation.aspx",
+      "kind": "official",
+      "note": "New Zealand Federation of Women's Institutes (wi.org.nz) official scholarship page for the Barbara Wood Memorial Foundation Scholarship - the awarding body's own site."
+    },
+    {
+      "url": "https://www.wi.org.nz/download/105629/BWM2%20Conditions%20of%20application.doc",
+      "kind": "official",
+      "note": "Official 'Conditions of Application for 2027' Word document linked from the page above; contains the exact closing date/time and application requirements."
+    },
+    {
+      "url": "https://www.wi.org.nz/Site/scholarships/Default.aspx",
+      "kind": "official",
+      "note": "Scholarships index page on the same federation site, confirming this is one of two scholarship programmes the Federation administers."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The page is the New Zealand Federation of Women's Institutes' own site and presents the scholarships as 'Scholarships from the Barbara Wood Memorial Foundation', with the application conditions issued by the 'Barbara Wood Memorial Foundation Trust'. This matches the record's 'Barbara Wood Memorial Foundation, administered by the New Zealand Federation of Women's Institutes'.",
+      "quote": "Scholarships from the Barbara Wood Memorial Foundation ... Barbara Wood Memorial Foundation Trust / P O Box 137 / WELLINGTON 6140"
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "The currently open cycle is the 2027 round: the page states applications for the 2026 academic year have closed and give the 2027 closing date as 1 February 2027, confirmed by the conditions document as 3.00 p.m. Monday 1 February 2027. This exactly matches the record's deadline_label '1 February 2027' / deadline_date 2027-02-01, and it is a live, open cycle as of today (12 October 2026).",
+      "quote": "Applications close on 1 February 2027 - ensure your applicatIon has covered all criteria requested. ... Applications must reach the Secretary by 3.00 p.m. Monday 1 February 2027 on the official application form (BWM 1)."
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "The page confirms every distinct claim in the record's eligibility_summary: open to tertiary students of any gender ('both female and male'), born in the South Pacific region, which the Federation defines as the island nations of the Pacific plus New Zealand and Australia, and wishing to study in New Zealand or anywhere in the South Pacific.",
+      "quote": "The scholarships are available to tertiary students, both female and male, who were born in the South Pacific region which not only includes the island nations of the Pacific but also New Zealand and Australia. Students born in the South Pacific wishing to study in New Zealand or anywhere in the South Pacific are eligible for the scholarship."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The award is partial and modest: grants of up to $1,000 a year, depending on need and course cost, at the Trustees' discretion. It does not cover full tuition or living costs, so the record's 'Partially Funded' classification is correct; the conditions ask applicants for a full course budget and their own financial contribution, confirming the award tops up rather than fully funds study.",
+      "quote": "Scholarships up to $1,000 a year are granted depending on the need and cost of the course being undertaken and are granted at the discretion of the Trustees of the Barbara Wood Memorial Foundation."
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "The page addresses 'tertiary students' generally and the conditions require an 'accredited educational or training course', but the published list of successful 2026 applicants shows every award taken at Diploma or Bachelor's level, consistent with the record's 'Diploma, Bachelor's'. No page content contradicts those levels.",
+      "quote": "Pearl Lolesi, Bachelor of Applied Social Work / Janette Richardson, Diploma of Mental Health and Addictions / Bridget Trott, Diploma of Veterinarian Nursing / Alysha Williams, Bachelor of Midwifery / Indy Wood, Bachelor of Science"
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "Applications close on 1 February 2027 (conditions: 'Applications must reach the Secretary by 3.00 p.m. Monday 1 February 2027 on the official application form (BWM 1)')",
+    "deadline_date": "2027-02-01",
+    "verification_notes": "Record verified live on 12 October 2026 against the awarding body's own page and its 2027 Conditions of Application document. The 2026 cycle has closed; the 2027 round is open until 1 February 2027 (3.00 p.m.). The deadline rolls annually on 1 February, so after 1 February 2027 re-check the same page for the 2028 cycle wording. The 2027 application form (BWM 1) and conditions (BWM 2) are downloaded from the same page. Funding is small and partial (up to $1,000/year, Trustees' discretion) - keep it out of any 'fully funded' framing. Eligibility (any gender, born in South Pacific incl. NZ/Australia, studying in NZ or the South Pacific) and administering body (Barbara Wood Memorial Foundation Trust, c/o NZ Federation of Women's Institutes, exec@wi.org.nz) are unchanged and confirmed verbatim."
+  },
+  "notes_for_reviewer": "Degree levels 'Diploma, Bachelor's' are supported by the published 2026 recipient list rather than an explicit level restriction - the conditions only require an 'accredited educational or training course'. A human may wish to broaden the wording to 'tertiary (recent awards at Diploma and Bachelor's level)'. Otherwise the record matches the live official page in every material respect and can be set to verification_status: active."
+}
