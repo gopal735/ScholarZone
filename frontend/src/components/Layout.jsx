@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import Navigation from './Navigation'
+import { RouteErrorBoundary } from './AppErrorBoundary'
 
 export default function Layout() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -45,7 +46,14 @@ export default function Layout() {
       </header>
 
       <main className="app-content">
-        <Outlet />
+        {/* A throw inside a route is contained here: the header, the
+            navigation and the footer above and below this boundary stay
+            mounted, so the page is never left blank and the user can still
+            get somewhere. The app-level boundary in main.jsx remains the
+            last line of defence for a failure outside the route itself. */}
+        <RouteErrorBoundary>
+          <Outlet />
+        </RouteErrorBoundary>
       </main>
 
       <footer className="app-footer">

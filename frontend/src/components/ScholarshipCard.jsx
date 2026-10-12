@@ -158,7 +158,12 @@ export default function ScholarshipCard({ scholarship }) {
             {isVerified ? 'Verified official source' : 'Confirm with provider'}
           </span>
           {scholarship.last_verified_at && (
-            <span className="scholarship-card__verification-date">{getLastVerifiedLabel(scholarship)}</span>
+            <span className="scholarship-card__verification-date">
+              {/* Compact: the badge beside it already says "Confirm with
+                  provider", and printing the instruction again here left three
+                  badges in the row saying two things. */}
+              {getLastVerifiedLabel(scholarship, { compact: true })}
+            </span>
           )}
           {/* Provenance of the image, as text.
 
