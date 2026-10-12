@@ -24,6 +24,7 @@ from .routers.admin_image_review import router as admin_image_review_router
 from .routers.discovery import router as discovery_router
 from .routers.admin_dashboard import router as admin_dashboard_router
 from .routers.admin_verification import router as admin_verification_router
+from .routers.admin_scholarships import router as admin_scholarships_router
 from .routers.enrichment import router as enrichment_router
 from .routers.auth import router as auth_router
 from .routers.dashboard import router as dashboard_router
@@ -320,6 +321,7 @@ app.include_router(scholarships_router)
 app.include_router(verification_router)
 app.include_router(admin_image_review_router)
 app.include_router(admin_verification_router)
+app.include_router(admin_scholarships_router)
 app.include_router(discovery_router)
 app.include_router(admin_dashboard_router)
 app.include_router(enrichment_router)
