@@ -156,10 +156,19 @@ def _verify_restored(destination: str) -> dict[str, Any]:
 
     Uses SQLAlchemy because it is already a dependency, so the restore path does
     not require a separate PostgreSQL client driver to be installed.
-    """
-    from sqlalchemy import create_engine, inspect, text
 
-    engine = create_engine(destination)
+    The engine is built by the application's own factory rather than a bare
+    ``create_engine``: a bare one resolves SQLAlchemy's default psycopg2
+    dialect, which is not installed here (the repository standardised on
+    psycopg3 and rewrites ``postgresql://`` to ``postgresql+psycopg://``),
+    and the restore verification would fail on a missing driver rather than
+    on anything about the restore.
+    """
+    from sqlalchemy import inspect, text
+
+    from app.database import engine_for
+
+    engine = engine_for(destination)
     try:
         with engine.connect() as connection:
             tables = set(inspect(connection).get_table_names())
