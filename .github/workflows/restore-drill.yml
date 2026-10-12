@@ -1,18 +1,27 @@
 name: Restore drill
 
-# Prove the backup and restore procedures every month, against a throwaway
-# PostgreSQL database on the runner.
+# Prove the real backup and restore procedure every month, against throwaway
+# PostgreSQL databases on the runner.
 #
-# The failure this exists to prevent is discovering during an incident that
-# the backup nobody had restored does not restore. The drill runs the same
-# script the real backup uses (scripts/pg_backup.py), with the same
-# verification branch, so a green run here is evidence about the procedure,
-# not about production data - production parity additionally needs a
-# production dump, which remains a separate, explicitly authorised action.
+# The drill exercises the CANONICAL pipeline (backend/scripts/pg_backup.py +
+# backend/scripts/pg_restore.py, encrypted) - the same scripts the production
+# backup workflow runs - and then tries to break it:
+#
+#   * a backup taken with restore verification (--verify-restore-into);
+#   * the same artifact restored independently into a second target by the
+#     documented restore command, with row counts reconciled;
+#   * pg_restore --list on the decrypted archive;
+#   * a gzip-wrapped custom archive is REFUSED (the defect this drill was
+#     written after: an outer gzip layer handed to pg_restore);
+#   * a corrupted artifact, a wrong passphrase and a non-empty restore target
+#     are each refused.
+#
+# A green run is evidence about the procedure. It is NOT evidence about
+# production data or production migration parity: the source is seeded here.
 
 on:
   schedule:
-    - cron: "0 4 1 * *" # monthly, first Sunday-adjacent slot: 04:00 UTC on the 1st
+    - cron: "0 4 1 * *" # monthly: 04:00 UTC on the 1st
   workflow_dispatch:
 
 permissions:
@@ -26,7 +35,7 @@ jobs:
   drill:
     name: backup and restore drill
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     services:
       postgres:
         image: postgres:16
@@ -56,27 +65,21 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install dependencies
-        working-directory: backend
+      - name: Prepare the three disposable databases
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          createdb drill_source
+          createdb drill_verify
+          createdb drill_restore
 
-      - name: Prepare the scratch databases
-        run: |
-          createdb scratch_source
-          createdb restore_target
-          createdb restore_target_2
-
-      - name: Run the drill (backup, verified restore, second restore, reconcile)
+      - name: Run the drill (backup, verified restore, second restore, negative cases)
         run: |
           python scripts/restore_drill.py \
-            --scratch "postgresql://drill:drill@127.0.0.1:5432/scratch_source" \
-            --restore-target "postgresql://drill:drill@127.0.0.1:5432/restore_target" \
-            --restore-target-2 "postgresql://drill:drill@127.0.0.1:5432/restore_target_2" \
+            --source "postgresql://drill:drill@127.0.0.1:5432/drill_source" \
+            --verify-target "postgresql://drill:drill@127.0.0.1:5432/drill_verify" \
+            --restore-target "postgresql://drill:drill@127.0.0.1:5432/drill_restore" \
             --output-dir backups
 
-      - name: Upload the drill artifact and manifest
+      - name: Upload the drill summary, manifest and artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:

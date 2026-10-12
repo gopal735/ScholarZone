@@ -15,11 +15,66 @@ One artifact per run, in a build artifact store:
 | File | Contents |
 | --- | --- |
 | `scholarzone-<utc-timestamp>.szbak` | The encrypted dump. A short text header naming the cipher and KDF, then raw AES-256-GCM ciphertext. |
-| `scholarzone-<utc-timestamp>.manifest.json` | Timestamp, ciphertext SHA-256 and size, plaintext size and digest, the source's *identity* (dialect only — never a connection string), the projected monthly transfer, and the outcome. |
+| `scholarzone-<utc-timestamp>.manifest.json` | Timestamp, ciphertext SHA-256 and size, plaintext size and digest, the source's *identity* (dialect and host only — never a connection string), the **source class** decided by host policy, the **production authorization** that admitted it, the projected monthly transfer, and the outcome. |
+
+The archive inside the ciphertext is the **PostgreSQL custom-format dump
+itself** -- `--format=custom`, which libpq compresses -- with no outer gzip
+layer. There is nothing to unwrap, and the SHA-256 in the manifest is the
+digest of the very bytes `pg_restore` reads. (An earlier revision of the
+*drill* tool wrapped its dump in gzip and handed the resulting file straight
+to `pg_restore`, which refuses it; the tool now fails on that input instead
+of producing a manifest that claims a restore nobody performed, and
+`scripts/restore_drill.py` asserts the refusal against a real PostgreSQL.)
 
 The decryption passphrase lives only in the repository secret
 `SZ_BACKUP_PASSPHRASE`. It is not in the artifact, not in the manifest, and not
 in the logs.
+
+## Source classification and authorization
+
+A source is classified by *host policy*, never by a substring in its name:
+the audited production host contains no "prod" and the old substring guard
+admitted it. The hosts this component knows to be production are named
+explicitly; a source on one of them needs a second, separate fact -- an
+authorization record:
+
+| Variable | Meaning |
+| --- | --- |
+| `SZ_BACKUP_SOURCE_URL` | The source connection string. In a repository secret only. |
+| `SZ_BACKUP_ALLOWED_HOSTS` | Comma-separated hostnames a backup may **read** and a restore may **write**. Default-deny: an unlisted host is refused. |
+| `SZ_BACKUP_PRODUCTION_AUTHORIZATION` | The operator's audit reference (who approved a production backup and when). **Required** when the source is a known production host; meaningless for a non-production source. Its value is written to the manifest, the connection string never is. |
+
+An unknown or misconfigured source fails closed. A production source that
+is allow-listed but unauthorized is refused with "not authorized", which is
+a different message from "not permitted" on purpose.
+
+## What "verified" means
+
+Three claims, deliberately separate:
+
+* **round-trip verified** -- the ciphertext decrypts back to the plaintext.
+  Always true on a successful run.
+* **restore_verified** -- the dump was *restored* into a non-production
+  target during the same run (`--verify-restore-into`), and the manifest
+  carries the target's identity and table row counts. A production source
+  *requires* this: an unproven production backup is refused, not written.
+* **drill proven** -- the whole procedure ran against disposable databases,
+  including the negative cases (`scripts/restore_drill.py`).
+
+Only the second and third say anything about whether the backup can be
+brought back. An artifact with `restore_verified: false` is a decryptable
+backup, and must not satisfy a migration or deletion gate.
+
+## Retention, honestly
+
+The artifact is stored as a **14-day build artifact**. That is a recovery
+window, not a retention policy: after two weeks the artifact is gone and
+what remains is the *ability* to make a new one. The passphrase lives only
+in the repository secret, and the two are not stored together -- the
+artifact is reachable by URL within the workflow run, the secret is not
+part of it. If independent out-of-band storage were required, it would need
+either a paid plan or the operator downloading the artifact by hand; this
+repository will not enable either automatically.
 
 ## How it refuses
 
@@ -54,7 +109,7 @@ Add two repository secrets and one repository variable. Nothing is requested in
 chat, and nothing is stored in the repository:
 
 ```
-SZ_BACKUP_SOURCE_URL    A NON-production PostgreSQL connection string.
+SZ_BACKUP_SOURCE_URL    The PostgreSQL connection string to back up. A production source additionally requires SZ_BACKUP_PRODUCTION_AUTHORIZATION.
 SZ_BACKUP_PASSPHRASE   The encryption passphrase. Nowhere else.
 SZ_BACKUP_ALLOWED_HOSTS  Comma-separated hostnames the backup may read.
                          Default-deny: the source host must be named here,

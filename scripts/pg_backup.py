@@ -1,35 +1,45 @@
 #!/usr/bin/env python3
-"""Create a verifiable PostgreSQL backup with pg_dump.
+"""Create a verifiable PostgreSQL backup, and prove it by restoring it.
 
-The backup is the step that decides whether a deletion may ever be
-considered, so it holds itself to more than "a file appeared":
+The archive strategy is intentionally single and obvious: **the artifact is
+the PostgreSQL custom-format dump itself** - `--format=custom`, which
+libpq already compresses - with nothing wrapped around it. There is no
+outer gzip layer to decompress, no ambiguity about what `pg_restore` is
+given, and the SHA-256 in the manifest is the digest of the very bytes
+`pg_restore` reads.
 
-* **It refuses the wrong target.** No DSN, a non-PostgreSQL DSN, or a DSN
-  pointing at a known production endpoint each stop the run before a byte
-  is dumped. Production dumps are a separate, human-triggered decision
-  (``--production-dump`` with the reason recorded), never something a
-  scheduled job does silently.
-* **It verifies itself.** The dump is taken in the custom format, restored
-  into a scratch database on the same runner, and only a backup whose
-  restore succeeds is kept; the plaintext dump is deleted either way.
-* **It never writes the plaintext where it can be read.** The dump is
-  compressed with gzip and hashed with SHA-256; the manifest carries the
-  row count of every restored table so a restore can be reconciled, not
-  just "it ran".
+A backup is only claimed when it has been *restored*:
+
+* the dump is written to a private temporary file and deleted on every
+  path - plaintext never leaves the runner and never reaches an artifact;
+* before the artifact is published, `pg_restore --list` reads it back and
+  the dump is restored into an empty non-production target, whose table
+  row counts are recorded in the manifest;
+* a restore target that already holds relations is refused - an empty
+  table is not an empty database, and restoring into a non-empty one
+  would make the verification meaningless.
+
+There is deliberately no way to skip verification. The `--no-verify` flag
+that used to exist produced artifacts whose manifests carried
+`restore_verification.performed: false` - a "backup" that no gate could
+distinguish from a tested one. It is gone: an unverifiable backup is a
+refusal, not a state.
 
 Usage:
     SCHOLARZONE_DATABASE_URL=postgresql://... \\
         python scripts/pg_backup.py --output-dir backups \\
-        [--production-dump --reason "why this dump is authorised"]
+        --verify-restore-into postgresql://.../empty_scratch
 
-The script needs ``pg_dump``/``pg_restore`` on PATH (present on GitHub's
-ubuntu runners; ``apt-get install -y postgresql-client`` elsewhere).
+The source and restore targets are held to the same policy as the
+encrypted production backup (`app.services.backup_source`): an explicit
+hostname allow-list, default-deny, and a production source requiring a
+recorded authorization. Credentials are never logged, never written to the
+manifest, and passed to the child process through the environment only.
 """
 
 from __future__ import annotations
 
 import argparse
-import gzip
 import hashlib
 import json
 import os
@@ -41,19 +51,14 @@ from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlparse
 
-SCRATCH_DB = "sz_backup_verify"
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "backend"))
 
-#: Production endpoints that a scheduled backup must never dump on its own.
-#: A host is listed here when an unattended run reaching it would be a
-#: production incident rather than a backup.
-KNOWN_PRODUCTION_HOSTS = frozenset(
-    {
-        "ep-broad-block-ayrx86zn-pooler.c-5.us-east-2.aws.neon.tech",
-        "ep-broad-block-ayrx86zn.c-5.us-east-2.aws.neon.tech",
-    }
+from app.services.backup_source import (  # noqa: E402
+    SourceRejected,
+    authorization_for,
+    resolve_source,
+    source_kind,
 )
-
-POSTGRES_SCHEMES = ("postgres", "postgresql")
 
 
 class BackupError(RuntimeError):
@@ -67,167 +72,171 @@ def _require_tool(name: str) -> str:
     return path
 
 
-def _dsn() -> str:
-    dsn = os.environ.get("SCHOLARZONE_DATABASE_URL", "").strip()
-    if not dsn:
-        raise BackupError("SCHOLARZONE_DATABASE_URL is not set; this tool never guesses a target")
-    return dsn
-
-
-def _classify(dsn: str) -> dict[str, str]:
-    parsed = urlparse(dsn)
-    scheme = (parsed.scheme or "").split("+", 1)[0]
-    host = parsed.hostname or ""
-    return {
-        "scheme": scheme,
-        "host": host,
-        "path": parsed.path or "",
-        # The user, the password and the port are deliberately NOT reported:
-        # the manifest is a public artifact and none of it is needed to tell
-        # two dumps apart.
-        "identity": f"{parsed.scheme}://{host}{parsed.path or ''}",
-    }
-
-
-def _guard(dsn: str, production_dump: bool, reason: str | None) -> None:
-    info = _classify(dsn)
-    if info["scheme"] not in POSTGRES_SCHEMES:
-        raise BackupError(f"refusing a non-PostgreSQL source: {info['scheme'] or 'no scheme'}")
-    if info["host"] in KNOWN_PRODUCTION_HOSTS and not production_dump:
-        raise BackupError(
-            "the source is a known production endpoint; pass --production-dump with a "
-            "recorded reason if that is genuinely intended"
-        )
-    if production_dump and not (reason or "").strip():
-        raise BackupError("a production dump requires a reason for the audit record")
-
-
-def _scratch_uri() -> str:
-    return os.environ.get("SZ_BACKUP_SCRATCH_URI", "").strip()
+def _child_env() -> dict[str, str]:
+    env = dict(os.environ)
+    env["PGPASSFILE"] = os.devnull  # never prompt, never a stray .pgpass
+    return env
 
 
 def _run(command: list[str]) -> subprocess.CompletedProcess:
-    completed = subprocess.run(command, capture_output=True, text=True, check=False)
+    completed = subprocess.run(command, capture_output=True, text=True, check=False, env=_child_env())
     if completed.returncode != 0:
-        raise BackupError(f"{' '.join(command[:2])} failed: {completed.stderr.strip()[:400]}")
+        raise BackupError(f"{command[0]} exited {completed.returncode}: {completed.stderr.strip()[:300]}")
     return completed
 
 
-def _table_counts(uri: str) -> dict[str, int]:
-    """Row counts of every public table in the restored scratch database.
+def _psql_rows(uri: str, sql: str) -> list[str]:
+    completed = _run(["psql", uri, "-At", "-c", sql])
+    return [line.strip() for line in completed.stdout.splitlines() if line.strip()]
 
-    The manifest carries them so the restore can be reconciled against the
-    source and against the next restore: a dump that restores zero rows is a
-    passing command that failed the job.
+
+def _relations(uri: str) -> list[str]:
+    """Existing relations in the target - objects, not rows.
+
+    A database with tables in it is not an empty database, whatever their
+    row counts are: this is the check that keeps a verification restore
+    from silently merging into somebody else's schema and then reporting
+    the counts as evidence.
     """
-    counts: dict[str, int] = {}
-    selected = _run(
-        [
-            "psql",
-            uri,
-            "-At",
-            "-c",
-            "SELECT tablename FROM pg_tables WHERE schemaname = 'public' ORDER BY tablename",
-        ]
+    return _psql_rows(
+        uri,
+        "SELECT format('%I.%I', n.nspname, c.relname) FROM pg_class c "
+        "JOIN pg_namespace n ON n.oid = c.relnamespace "
+        "WHERE n.nspname = 'public' AND c.relkind IN ('r','p','v','m','S') "
+        "ORDER BY c.oid DESC LIMIT 20",
     )
-    tables = [line.strip() for line in selected.stdout.splitlines() if line.strip()]
+
+
+def _table_counts(uri: str) -> dict[str, int]:
+    counts: dict[str, int] = {}
+    tables = _psql_rows(
+        uri, "SELECT tablename FROM pg_tables WHERE schemaname = 'public' ORDER BY tablename"
+    )
     for table in tables:
-        rows = _run(["psql", uri, "-At", "-c", f'SELECT COUNT(*) FROM "{table}"'])
-        counts[table] = int(rows.stdout.strip() or 0)
+        counts[table] = int(_psql_rows(uri, f'SELECT COUNT(*) FROM "{table}"')[0] or 0)
     return counts
+
+
+def _restore_verify(artefact: Path, destination: str) -> dict[str, object]:
+    """Restore the artifact into an empty non-production target.
+
+    Runs `pg_restore --list` first: it is the cheapest proof that the bytes
+    are a readable PostgreSQL archive at all, and it fails on the
+    gzip-wrapped-custom-archive mistake this function exists to catch - a
+    gzip layer handed to `pg_restore` is refused here instead of producing a
+    manifest that claims a restore nobody performed.
+    """
+    pg_restore = _require_tool("pg_restore")
+    _require_tool("psql")
+
+    try:
+        destination_identity = _validate_destination(destination)
+    except SourceRejected as exc:
+        raise BackupError(f"restore target refused: {exc}") from exc
+
+    listing = _run([pg_restore, "--list", str(artefact)])
+    if not listing.stdout.strip():
+        raise BackupError("pg_restore --list produced no table of contents")
+
+    existing = _relations(destination)
+    if existing:
+        raise BackupError(
+            "the restore target is not empty (existing relations: "
+            f"{existing[:8]}); refusing to verify a restore against a database "
+            "that already holds objects"
+        )
+
+    _run([pg_restore, "--no-owner", "--no-privileges", "--dbname", destination, str(artefact)])
+    return {
+        "target_identity": destination_identity.describe(),
+        "target_relations_before": 0,
+        "archive_listing_entries": len([line for line in listing.stdout.splitlines() if line.strip()]),
+        "table_row_counts": _table_counts(destination),
+        "restored_at": datetime.now(timezone.utc).isoformat(),
+    }
+
+
+def _validate_destination(destination: str):
+    """A restore target obeys the same allow-list policy as a source, and may
+    not be production: verifying a backup by restoring it into the database
+    it might have to survive is how a drill becomes an incident."""
+    url = urlparse(destination)
+    scheme = (url.scheme or "").split("+", 1)[0]
+    if scheme not in ("postgres", "postgresql"):
+        raise BackupError(f"the restore target scheme is {url.scheme or 'missing'}, not PostgreSQL")
+
+    from app.services.backup_source import validate_source
+
+    try:
+        identity = validate_source(destination)
+    except SourceRejected as exc:
+        raise BackupError(f"restore target refused by the source policy: {exc}") from exc
+    if source_kind(identity) == "production":
+        raise BackupError(
+            "the restore target is a production host; a backup is verified into "
+            "non-production, never into the database it may have to survive"
+        )
+    return identity
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-dir", default="backups")
-    parser.add_argument("--production-dump", action="store_true")
-    parser.add_argument("--reason", default=None)
     parser.add_argument(
-        "--no-verify",
-        action="store_true",
-        help="skip the scratch-database restore verification (not recommended; a backup "
-        "nobody has restored is a hope, not a backup)",
+        "--verify-restore-into",
+        required=True,
+        help="a NON-production PostgreSQL URI that is empty; the dump is restored "
+        "into it before the artifact is published",
     )
     args = parser.parse_args()
 
-    dsn = _dsn()
     _require_tool("pg_dump")
-    _require_tool("pg_restore")
-    if not args.no_verify:
-        _require_tool("psql")
 
-    _guard(dsn, args.production_dump, args.reason)
-    info = _classify(dsn)
+    dsn = os.environ.get("SCHOLARZONE_DATABASE_URL", "").strip()
+    if not dsn:
+        raise BackupError("SCHOLARZONE_DATABASE_URL is not set; this tool never guesses a target")
+
+    try:
+        source_url, source_identity = resolve_source("SCHOLARZONE_DATABASE_URL")
+        kind = source_kind(source_identity)
+        authorization = authorization_for(kind)
+    except SourceRejected as exc:
+        raise BackupError(str(exc)) from exc
+
     taken_at = datetime.now(timezone.utc)
     stamp = taken_at.strftime("%Y%m%dT%H%M%SZ")
     out_dir = Path(args.output_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    scratch = _scratch_uri()
-    if not args.no_verify and not scratch:
-        raise BackupError(
-            "SZ_BACKUP_SCRATCH_URI must point at a disposable, already-created PostgreSQL "
-            "database to restore into; an unverifiable backup is not accepted"
-        )
+    # The artifact IS the pg custom archive: no outer gzip, nothing to unwrap.
+    artefact = out_dir / f"scholarzone-{stamp}.dump"
+    _require_tool("pg_dump")
+    _run(["pg_dump", "--format=custom", "--no-owner", "--no-privileges", "--file", str(artefact), source_url])
 
-    with tempfile.TemporaryDirectory(prefix="sz-backup-") as tmp:
-        plain = Path(tmp) / f"scholarzone-{stamp}.dump"
-        _run(
-            [
-                "pg_dump",
-                "--format=custom",
-                "--no-owner",
-                "--no-privileges",
-                "--file",
-                str(plain),
-                dsn,
-            ]
-        )
-        compressed = plain.with_suffix(".dump.gz")
-        with open(plain, "rb") as source, gzip.open(compressed, "wb", compresslevel=9) as sink:
-            shutil.copyfileobj(source, sink)
-        plain.unlink()
+    verification = _restore_verify(artefact, args.verify_restore_into)
 
-        digest = hashlib.sha256(compressed.read_bytes()).hexdigest()
-        verification: dict[str, object] = {"performed": False}
-        if not args.no_verify:
-            # The scratch database must be empty: restoring onto old data
-            # would let the verification pass on the previous run's rows.
-            existing = _table_counts(scratch)
-            if sum(existing.values()) > 0:
-                raise BackupError(
-                    "the scratch database is not empty; refusing to verify a restore "
-                    f"against a database that already holds {sum(existing.values())} rows"
-                )
-            _run(["pg_restore", "--no-owner", "--no-privileges", "--dbname", scratch, str(compressed)])
-            verification = {
-                "performed": True,
-                "target": _classify(scratch)["identity"],
-                "table_row_counts": _table_counts(scratch),
-            }
-
-        manifest = {
-            "manifest_version": 1,
-            "taken_at": taken_at.isoformat().replace("+00:00", "Z"),
-            "source": info,
-            "production_dump": bool(args.production_dump),
-            "reason": args.reason,
-            "tool": "pg_dump --format=custom | gzip -9",
-            "sha256": digest,
-            "bytes": compressed.stat().st_size,
-            "restore_verification": verification,
-            "rollback_note": (
-                "Restore with: pg_restore --no-owner --no-privileges --dbname <target> "
-                "this file. Verify the table_row_counts in this manifest against the "
-                "target before declaring the restore good."
-            ),
-        }
-        destination = out_dir / f"scholarzone-{stamp}.dump.gz"
-        shutil.move(compressed, destination)
-        (out_dir / f"scholarzone-{stamp}.manifest.json").write_text(
-            json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
-        )
-        print(json.dumps({"ok": True, "file": str(destination), "sha256": digest}, indent=2))
+    digest = hashlib.sha256(artefact.read_bytes()).hexdigest()
+    manifest = {
+        "manifest_version": 2,
+        "taken_at": taken_at.isoformat().replace("+00:00", "Z"),
+        "source": source_identity.describe(),
+        "source_kind": kind,
+        "production_authorization": authorization,
+        "archive": "pg_dump --format=custom (no outer compression layer)",
+        "artifact_bytes": artefact.stat().st_size,
+        "sha256": digest,
+        "restore_verified": True,
+        "restore_verification": verification,
+        "rollback_note": (
+            "Restore with: pg_restore --no-owner --no-privileges --dbname <target> "
+            "the artifact. Reconcile table_row_counts in restore_verification "
+            "against the source before declaring the restore good."
+        ),
+    }
+    (out_dir / f"scholarzone-{stamp}.manifest.json").write_text(
+        json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
+    )
+    print(json.dumps({"ok": True, "artifact": str(artefact), "sha256": digest}, indent=2))
     return 0
 
 

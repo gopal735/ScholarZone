@@ -36,12 +36,22 @@ import os
 from dataclasses import dataclass
 from urllib.parse import urlsplit
 
-#: Hostnames that are refused regardless of configuration. Not a fallback for a
-#: missing allow-list - a belt over the braces: even if this host were added to
-#: an allow-list by mistake, the backup still refuses.
+#: Hostnames that are refused *as a silent non-production source*: they name
+#: production, so a backup that reaches one must be explicitly authorised as a
+#: production backup. This is not a fallback for a missing allow-list - a belt
+#: over the braces: even if this host were added to an allow-list by mistake,
+#: the backup still refuses until the authorization variable below is set.
 KNOWN_PRODUCTION_HOSTS = frozenset({
     "ep-broad-block-ayrx86zn-pooler.c-5.us-east-2.aws.neon.tech",
 })
+
+#: The variable an operator sets to record that a *production* backup is
+#: authorised, with a reference they can audit (who approved it, when). Its
+#: absence is the refusal: a production backup that nobody claimed
+#: responsibility for is exactly the unattended production access this module
+#: exists to prevent. Its value is written to the manifest as the
+#: authorization record - deliberately not the operator's secret itself.
+PRODUCTION_AUTHORIZATION_ENV = "SZ_BACKUP_PRODUCTION_AUTHORIZATION"
 
 #: Only PostgreSQL is a valid backup source. `postgres` is accepted as well as
 #: `postgresql` because libpq accepts both.
@@ -185,8 +195,8 @@ def resolve_source(env_name: str = "SZ_BACKUP_SOURCE_URL") -> tuple[str, SourceI
     reporting. The URL is never returned to anything that logs.
 
     Refuses, in order: a missing variable, a missing allow-list, an
-    unparseable URL, a non-PostgreSQL URL, a host matching the deny-list, and
-    a host absent from the allow-list.
+    unparseable URL, a non-PostgreSQL URL, a production host without an
+    authorization record, and a host absent from the allow-list.
     """
     url = os.environ.get(env_name)
     if not url:
@@ -195,27 +205,47 @@ def resolve_source(env_name: str = "SZ_BACKUP_SOURCE_URL") -> tuple[str, SourceI
     return url, validate_source(url)
 
 
+def source_kind(identity: SourceIdentity) -> str:
+    """Classify a source as ``production`` or ``non-production``.
+
+    The classification is explicit and host-based, never a substring guess:
+    a host named in the known-production set is production even when its
+    name contains no "prod" - which is the exact failure this module was
+    written after (the audited Neon host carries no such substring).
+    """
+    return "production" if identity.hostname in KNOWN_PRODUCTION_HOSTS else "non-production"
+
+
+def authorization_for(kind: str) -> str | None:
+    """The recorded authorization for a *production* backup, if any.
+
+    A non-production source needs no authorization and must never inherit
+    one: the variable is read only when the kind is production, so setting
+    it cannot smuggle a second source in behind the non-production path.
+    """
+    if kind != "production":
+        return None
+    value = os.environ.get(PRODUCTION_AUTHORIZATION_ENV, "").strip()
+    if not value:
+        raise SourceRejected(
+            "the source is a known production endpoint, so a backup of it needs an "
+            f"explicit authorization: set {PRODUCTION_AUTHORIZATION_ENV} to the "
+            "operator's audit reference (who approved this backup and when). "
+            "Refusing to back up production unattended."
+        )
+    return value
+
+
 def validate_source(url: str, allow_list_env: str = ALLOW_LIST_ENV) -> SourceIdentity:
     """Validate one source URL against the configured allow-list."""
     identity = parse_source_url(url)
-
-    # The production denial runs before the allow-list is even read. Its reason
-    # should not be replaceable by "the allow-list is unset", which would read
-    # as a configuration problem rather than as a decision about this host.
-    if identity.hostname in KNOWN_PRODUCTION_HOSTS:
-        raise SourceRejected(
-            f"the source host is a known production endpoint "
-            f"({identity.hostname}) and is refused regardless of configuration. "
-            "A scheduled backup must not compete with the application for the "
-            "free-tier transfer budget."
-        )
 
     allow_list = _read_allow_list(os.environ.get(allow_list_env))
     if not allow_list:
         raise SourceRejected(
             f"{allow_list_env} is not set or is empty; a backup requires an "
             "explicit hostname allow-list, and default-deny applies. Add the "
-            "non-production backup host there."
+            "backup host there."
         )
 
     if identity.hostname not in allow_list:
@@ -224,6 +254,11 @@ def validate_source(url: str, allow_list_env: str = ALLOW_LIST_ENV) -> SourceIde
             f"{allow_list_env} (default-deny: only explicitly named hosts are "
             f"permitted). Permitted hosts configured: {sorted(allow_list)}"
         )
+
+    # The kind is decided after the allow-list, so an unlisted host fails as
+    # "not permitted" and a listed production host fails as "not authorized":
+    # the two refusals mean different things to the operator.
+    authorization_for(source_kind(identity))
 
     return identity
 

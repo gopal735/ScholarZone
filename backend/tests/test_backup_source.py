@@ -25,10 +25,13 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from app.services.backup_source import (  # noqa: E402
     ALLOW_LIST_ENV,
     KNOWN_PRODUCTION_HOSTS,
+    PRODUCTION_AUTHORIZATION_ENV,
     SourceIdentity,
     SourceRejected,
+    authorization_for,
     parse_source_url,
     resolve_source,
+    source_kind,
     validate_source,
 )
 
@@ -153,21 +156,46 @@ class TestAllowListMatching:
 
 
 class TestProductionDenyList:
-    def test_the_audited_production_hostname_is_refused(self, monkeypatch):
+    def test_the_audited_production_hostname_is_refused_without_authorization(self, monkeypatch):
         """Even when the allow-list names it explicitly.
 
         This is the case the substring guard failed: the host carries no "prod"
-        marker, so the only thing that excludes it is an explicit denial.
+        marker, so the only thing that classifies it is an explicit decision.
+        The refusal is now "not authorized" rather than "never": production is
+        reachable only through the authorization variable, deliberately.
         """
         host = "ep-broad-block-ayrx86zn-pooler.c-5.us-east-2.aws.neon.tech"
         monkeypatch.setenv(ALLOW_LIST_ENV, host)
-        with pytest.raises(SourceRejected, match="known production endpoint"):
+        monkeypatch.delenv(PRODUCTION_AUTHORIZATION_ENV, raising=False)
+        with pytest.raises(SourceRejected, match="authorization"):
             validate_source(PRODUCTION_URL)
 
-    def test_the_refused_hostname_carries_no_production_substring(self):
-        """Documents the failure the old guard could not see."""
+    def test_a_listed_production_host_is_classified_production_even_without_a_prod_substring(self):
+        assert source_kind(parse_source_url(PRODUCTION_URL)) == "production"
+
+    def test_a_named_host_without_a_prod_substring_is_still_production(self):
+        """The failure the old substring guard could not see: the host is
+        production by policy, not by name."""
         for host in KNOWN_PRODUCTION_HOSTS:
             assert "prod" not in host
+
+    def test_authorization_permits_the_production_host_and_records_it(self, monkeypatch):
+        host = "ep-broad-block-ayrx86zn-pooler.c-5.us-east-2.aws.neon.tech"
+        monkeypatch.setenv(ALLOW_LIST_ENV, host)
+        monkeypatch.setenv(
+            PRODUCTION_AUTHORIZATION_ENV, "owner-approval-2026-10-12"
+        )
+        identity = validate_source(PRODUCTION_URL)
+        assert identity.hostname == host
+        assert authorization_for(source_kind(identity)) == "owner-approval-2026-10-12"
+
+    def test_a_non_production_source_ignores_the_production_authorization(self, monkeypatch):
+        """Setting the authorization must not smuggle a second source in."""
+        monkeypatch.setenv(ALLOW_LIST_ENV, "backup-a.example.com")
+        monkeypatch.setenv(PRODUCTION_AUTHORIZATION_ENV, "approval-that-does-not-apply")
+        identity = validate_source("postgresql://u:p@backup-a.example.com/db")
+        assert authorization_for(source_kind(identity)) is None
+        assert source_kind(identity) == "non-production"
 
     def test_a_missing_variable_is_a_distinct_refusal(self, monkeypatch):
         monkeypatch.delenv("SZ_BACKUP_SOURCE_URL", raising=False)

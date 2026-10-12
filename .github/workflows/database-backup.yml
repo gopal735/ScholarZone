@@ -124,6 +124,16 @@ jobs:
           SZ_BACKUP_PASSPHRASE: ${{ secrets.SZ_BACKUP_PASSPHRASE }}
           SZ_BACKUP_SOURCE_URL: ${{ secrets.SZ_BACKUP_SOURCE_URL }}
           SZ_BACKUP_ALLOWED_HOSTS: ${{ vars.SZ_BACKUP_ALLOWED_HOSTS }}
+          # The non-production database a backup is restored into to prove it.
+          # A repository variable, never a secret: it names a host. When it is
+          # unset the run is reported below as "restore verification not
+          # configured" rather than as a verified backup.
+          SZ_BACKUP_RESTORE_URI: ${{ vars.SZ_BACKUP_RESTORE_URI }}
+          # Set by the repository owner to record that a PRODUCTION source is
+          # authorised (who approved it and when). Absent means a production
+          # host cannot be backed up at all - the path exists for the owner to
+          # use deliberately, not for a schedule to discover.
+          SZ_BACKUP_PRODUCTION_AUTHORIZATION: ${{ vars.SZ_BACKUP_PRODUCTION_AUTHORIZATION }}
           # Optional, and a repository variable rather than a dispatch input:
           # absent leaves the built-in 512 MiB default in place. A malformed,
           # empty, non-positive, or absurd value refuses the run rather than
@@ -135,10 +145,20 @@ jobs:
           # The budget is passed through the environment, not as an argument.
           # There is no flag that sets it, so nothing a caller supplies can
           # change it for this run.
+          verify_args=()
+          if [ -n "${SZ_BACKUP_RESTORE_URI:-}" ]; then
+            # The restore target is configured, so the backup is proven this
+            # run and the manifest says so. With no target configured the run
+            # still produces a decryptable artifact, but its manifest records
+            # restore_verified: false - a state that must not satisfy a
+            # migration or deletion gate.
+            verify_args+=(--verify-restore-into "$SZ_BACKUP_RESTORE_URI")
+          fi
           python scripts/pg_backup.py \
             --source-url-env SZ_BACKUP_SOURCE_URL \
             --passphrase-env SZ_BACKUP_PASSPHRASE \
             --output-dir ../backup-out \
+            "${verify_args[@]}" \
             --runs-per-month "${{ github.event.inputs.runs_per_month || '4' }}" \
             | tee ../backup-out/result.json
 
@@ -200,21 +220,29 @@ jobs:
           import json, sys
           data = json.load(open(sys.argv[1], encoding="utf-8"))
           rows = [
-              ("Created (UTC)", data["created_at"]),
-              ("Source", data["source_identity"]),
-              # Which hosts the allow-list permitted when this ran, so the
-              # artifact can be audited against the configuration that
-              # authorised it. Not the URL: the source identity above is scheme
-              # and host only.
-              ("Allow-list permitted", ", ".join(data["allowed_hosts"] or []) or "none"),
-              ("Ciphertext size", f"{data['ciphertext_bytes']:,} bytes"),
-              ("Plaintext size", f"{data['plaintext_bytes']:,} bytes"),
-              ("Ciphertext SHA-256", f"`{data['ciphertext_sha256']}`"),
-              ("Encryption", data["backend"]),
-              ("Round-trip verified", data["round_trip_verified"]),
-              ("Projected monthly transfer", f"{data['projected_monthly_transfer_mib']} MiB (projection, not measured usage)"),
-              ("Transfer budget", f"{data['transfer_budget_mib']} MiB"),
-          ]
+               ("Created (UTC)", data["created_at"]),
+               ("Source", data["source_identity"]),
+               # Which hosts the allow-list permitted when this ran, so the
+               # artifact can be audited against the configuration that
+               # authorised it. Not the URL: the source identity above is scheme
+               # and host only.
+               ("Allow-list permitted", ", ".join(data["allowed_hosts"] or []) or "none"),
+               # What class of database this came from, by host policy rather
+               # than by a substring in its name, and the authorization that
+               # admitted a production source (None for non-production).
+               ("Source class", data.get("source_kind", "non-production")),
+               ("Production authorization", data.get("production_authorization") or "n/a (non-production)"),
+               ("Round-trip verified", data["round_trip_verified"]),
+               # The claim that matters in an incident: restored, or merely
+               # decryptable. A False here is a backup nobody has proven.
+               ("Restored and verified", data.get("restore_verified", False)),
+               ("Ciphertext size", f"{data['ciphertext_bytes']:,} bytes"),
+               ("Plaintext size", f"{data['plaintext_bytes']:,} bytes"),
+               ("Ciphertext SHA-256", f"`{data['ciphertext_sha256']}`"),
+               ("Encryption", data["backend"]),
+               ("Projected monthly transfer", f"{data['projected_monthly_transfer_mib']} MiB (projection, not measured usage)"),
+               ("Transfer budget", f"{data['transfer_budget_mib']} MiB"),
+           ]
           for label, value in rows:
               print(f"| {label} | {value} |")
           PY
