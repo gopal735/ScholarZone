@@ -52,6 +52,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import shutil
 import json
 import os
 import subprocess
@@ -73,10 +74,12 @@ from app.services.backup_crypto import (  # noqa: E402
 from app.services.backup_source import (  # noqa: E402
     ALLOW_LIST_ENV,
     SourceRejected,
+    authorization_for,
     describe_allow_list,
     resolve_source,
+    source_kind,
+    validate_source,
 )
-
 #: Default monthly transfer budget in MiB. Neon's free tier allows 5 GiB/month
 #: of outbound transfer; the application uses some of it, so a backup budget has
 #: to be a fraction rather than the whole allowance.
@@ -158,10 +161,64 @@ def _dump_binary() -> str:
     return binary
 
 
-def _which(name: str) -> str | None:
+def _which(name: str) -> str:
     import shutil
 
     return shutil.which(name)
+
+
+def _credential_env(source_url: str) -> tuple[dict[str, str], "Path | None"]:
+    """Build the child environment for libpq **without** a credential in argv.
+
+    A connection string passed as `pg_dump --dbname <url>` is visible to
+    every process on the host through /proc, `ps`, and any process
+    supervisor that logs argv. libpq's own mechanism avoids all of that:
+    the split parts are supplied through the environment
+    (`PGPASSWORD`/`PGHOST`/`PGPORT`/`PGUSER`/`PGDATABASE`), which is
+    visible only to the same user and to root.
+
+    The password is additionally written to a temporary pgpass file with
+    0600 permissions and referenced by `PGPASSFILE`, so the same credential
+    works unchanged on hosts that disable in-environment passwords, and the
+    file is deleted by the caller on every exit path. When the URL carries
+    no password at all (trust authentication, or an already-safe peer
+    connection), no file is created and nothing is cleaned up - the absence
+    of a secret is not a reason to create one.
+
+    Returns `(env, passfile_or_None)`.
+    """
+    import tempfile
+    from pathlib import Path
+
+    from app.services.backup_source import parse_source_url
+
+    identity = parse_source_url(source_url, with_parts=True)
+    # A parsed URL without a password means nothing to protect; libpq then
+    # resolves whatever the host itself specifies.
+    parts = identity.parts()
+    env = dict(os.environ)
+    env.setdefault("PGPASSFILE", os.devnull)
+    env["PGHOST"] = parts.host
+    env["PGPORT"] = str(parts.port)
+    env["PGUSER"] = parts.username or ""
+    env["PGDATABASE"] = parts.database or ""
+    if not parts.password:
+        return env, None
+
+    handle, name = tempfile.mkstemp(prefix="pgpass-", text=True)
+    passfile = Path(name)
+    try:
+        with os.fdopen(handle, "w", encoding="utf-8") as stream:
+            # pgpass format: hostname:port:database:username:password
+            stream.write(f"{identity.hostname}:{parts.port or 5432}:{parts.database}:{parts.username}:{parts.password}\n")
+        # Owner-only: pg refuses a world-readable passfile anyway, and a
+        # file that holds a credential gets no wider than it must.
+        os.chmod(passfile, 0o600)
+    except OSError:
+        passfile.unlink(missing_ok=True)
+        raise BackupRefused("could not write the temporary pass file; refusing to fall back to argv")
+    env["PGPASSFILE"] = str(passfile)
+    return env, passfile
 
 
 def _dump(source_url: str, destination: Path) -> int:
@@ -171,24 +228,33 @@ def _dump(source_url: str, destination: Path) -> int:
     `pg_restore` consumes, which is what the restore path needs. `--no-owner`
     and `--no-privileges` make the dump restorable into an isolated destination
     that has no matching roles.
+
+    The connection parameters are passed through `PG*` environment variables
+    and a 0600 temporary pass file; the URL never appears in argv, so the
+    credential cannot be read from a process listing. The pass file is
+    removed on every path out of this function, including failure.
     """
     binary = _dump_binary()
-    # The URL is passed through the environment of the child process rather than
-    # as an argument, so it never appears in the process table.
-    env = dict(os.environ)
-    env["PGPASSFILE"] = os.devnull
-    proc = subprocess.run(
-        [
-            binary,
-            "--format=custom",
-            "--no-owner",
-            "--no-privileges",
-            "--dbname", source_url,
-            "--file", str(destination),
-        ],
-        env=env,
-        capture_output=True,
-    )
+    env, passfile = _credential_env(source_url)
+    try:
+        proc = subprocess.run(
+            [
+                binary,
+                "--format=custom",
+                "--no-owner",
+                "--no-privileges",
+                "--host", env["PGHOST"],
+                "--port", str(env["PGPORT"]),
+                "--username", env["PGUSER"],
+                "--dbname", env["PGDATABASE"],
+                "--file", str(destination),
+            ],
+            env=env,
+            capture_output=True,
+        )
+    finally:
+        if passfile is not None:
+            passfile.unlink(missing_ok=True)
     if proc.returncode != 0:
         stderr = proc.stderr.decode("utf-8", "replace")
         raise BackupRefused(
@@ -220,6 +286,144 @@ def _estimate_monthly_mib(dump_bytes: int, runs_per_month: int) -> float:
     return (dump_bytes * runs_per_month * 2) / (1024 * 1024)
 
 
+def _restore_verify(plaintext: bytes, destination: str) -> dict[str, Any]:
+    """Restore the dump into a non-production target and report the evidence.
+
+    Two rules, both learned from a backup that looked done and was not:
+
+    * The target must be **empty of relations**, not merely of rows. A table
+      with zero rows still answers a `pg_restore` that restores a different
+      schema's tables into a database that already has objects - the restore
+      "works" and the verification is meaningless. Existing relations of any
+      kind refuse the verification.
+    * A restore that fails fails the backup. The plaintext is still in memory
+      here, so a failed verification raises before the ciphertext is written;
+      the artifact is never produced in a state whose manifest would have to
+      lie about it.
+
+    Returns the evidence that goes into the manifest: the target's redacted
+    identity, the table row counts, and the SHA-256 of the plaintext dump the
+    restore consumed.
+    """
+    if not _which("pg_restore"):
+        raise BackupRefused(
+            "pg_restore is not on PATH; the restore verification the manifest "
+            "claims needs it, and there is no substitute"
+        )
+
+    try:
+        destination_identity = validate_source(destination)
+    except SourceRejected as exc:
+        raise BackupRefused(f"restore target refused: {exc}") from exc
+
+    # The target must not be production either: verifying a backup by
+    # restoring it into the same class of database it came from is how a
+    # drill turns into an incident.
+    if source_kind(destination_identity) == "production":
+        raise BackupRefused(
+            "the restore target is a production host; a backup is verified into "
+            "non-production, never into the database it may have to survive"
+        )
+
+    psql = _which("psql")
+    tmpdir = Path(tempfile.mkdtemp(prefix="sz-verify-"))
+    try:
+        dump_path = tmpdir / "verify.dump"
+        _write_private(dump_path, plaintext)
+        if psql:
+            existing = _relations(destination, psql)
+            if existing:
+                raise BackupRefused(
+                    "the restore target is not empty (existing relations: "
+                    f"{existing[:8]}); a restore into a non-empty database is "
+                    "not a verification of this backup and is refused"
+                )
+        proc = subprocess.run(
+            [
+                _which("pg_restore"),
+                "--no-owner",
+                "--no-privileges",
+                "--dbname",
+                destination,
+                str(dump_path),
+            ],
+            env={**os.environ, "PGPASSFILE": os.devnull},
+            capture_output=True,
+            text=True,
+        )
+        if proc.returncode != 0:
+            raise BackupRefused(
+                f"restore verification failed: pg_restore exited "
+                f"{proc.returncode}: {proc.stderr.strip()[:300]}"
+            )
+        counts = _table_rows(destination, psql) if psql else {}
+    finally:
+        shutil.rmtree(tmpdir, ignore_errors=True)
+
+    return {
+        "target_identity": destination_identity.describe(),
+        "target_relations_before": 0,
+        "table_row_counts": counts,
+        "plaintext_sha256": _sha256_bytes(plaintext),
+        "restored_at": datetime.now(timezone.utc).isoformat(),
+    }
+
+
+def _relations(destination: str, psql: str) -> list[str]:
+    """The names of existing relations in the target database, most recently
+    created first. The count of *objects*, not of rows: a target with tables
+    in it is not a target this verification may write into."""
+    proc = subprocess.run(
+        [
+            psql,
+            destination,
+            "-At",
+            "-c",
+            "SELECT format('%I.%I', n.nspname, c.relname) FROM pg_class c "
+            "JOIN pg_namespace n ON n.oid = c.relnamespace "
+            "WHERE n.nspname = 'public' AND c.relkind IN ('r','p','v','m','S') "
+            "ORDER BY c.oid DESC LIMIT 20",
+        ],
+        env={**os.environ, "PGPASSFILE": os.devnull},
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if proc.returncode != 0:
+        raise BackupRefused(
+            f"could not inspect the restore target: {proc.stderr.strip()[:200]}"
+        )
+    return [line for line in proc.stdout.splitlines() if line.strip()]
+
+
+def _table_rows(destination: str, psql: str) -> dict[str, int]:
+    """Row counts per table in the restored database, for reconciliation."""
+    proc = subprocess.run(
+        [
+            psql,
+            destination,
+            "-At",
+            "-c",
+            "SELECT tablename FROM pg_tables WHERE schemaname = 'public' ORDER BY tablename",
+        ],
+        env={**os.environ, "PGPASSFILE": os.devnull},
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    counts: dict[str, int] = {}
+    for table in [line.strip() for line in proc.stdout.splitlines() if line.strip()]:
+        rows = subprocess.run(
+            [psql, destination, "-At", "-c", f'SELECT COUNT(*) FROM "{table}"'],
+            env={**os.environ, "PGPASSFILE": os.devnull},
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        counts[table] = int(rows.stdout.strip() or 0)
+    return counts
+
+
 def run_backup(args: argparse.Namespace) -> dict[str, Any]:
     """Execute one backup. Returns the manifest that was written."""
     started = datetime.now(timezone.utc)
@@ -232,11 +436,16 @@ def run_backup(args: argparse.Namespace) -> dict[str, Any]:
         )
 
     # Resolved and validated before anything is dumped. `resolve_source` applies
-    # the allow-list and the production deny-list, and returns the URL for
-    # pg_dump alongside a redacted identity for reporting. The URL is never
-    # logged or written to the manifest.
+    # the allow-list, and returns the URL for pg_dump alongside a redacted
+    # identity for reporting. The URL is never logged or written to the manifest.
     try:
-        source_url, source_identity = resolve_source(args.source_url_env)
+        source_url, source_identity = resolve_source(
+            args.source_url_env, mode=getattr(args, "authorization_mode", "scheduled")
+        )
+        kind = source_kind(source_identity)
+        authorization = authorization_for(
+            kind, mode=getattr(args, "authorization_mode", "scheduled")
+        )
     except SourceRejected as exc:
         raise BackupRefused(str(exc)) from exc
 
@@ -285,6 +494,28 @@ def run_backup(args: argparse.Namespace) -> dict[str, Any]:
             "ciphertext did not decrypt back to the original dump; refusing to "
             "keep an unverifiable backup"
         )
+
+    # Round-trip decryption proves the ciphertext is well-formed. It does not
+    # prove the backup is restorable, and the difference is the one that
+    # matters in an incident: a manifest claiming a verified backup that was
+    # never restored is how a migration gets approved against a file that will
+    # not restore. When a non-production restore target is configured, the
+    # backup is restored into it here - before the plaintext is discarded - and
+    # the manifest says so with the evidence. Without one, the artifact is
+    # still produced (a decryptable backup is better than none) but is marked
+    # `restore_verified: false`, a state the migration and deletion gates must
+    # reject.
+    restore_evidence: dict[str, Any] | None = None
+    if getattr(args, "verify_restore_into", None):
+        restore_evidence = _restore_verify(plaintext, args.verify_restore_into)
+    elif kind == "production":
+        raise BackupRefused(
+            "a production backup requires a restore target "
+            "(--verify-restore-into <non-production-uri>): the artifact is "
+            "kept only when it has been proven to restore. Set one, or take a "
+            "non-production backup instead."
+        )
+
     del plaintext
 
     manifest_header = read_manifest(ciphertext)
@@ -305,6 +536,24 @@ def run_backup(args: argparse.Namespace) -> dict[str, Any]:
                 # The redacted identity only: scheme and host. Never the URL,
                 # the database name, the port, or any credential.
                 "source_identity": source_identity.describe(),
+                # Which class of database this came from, decided by the host
+                # policy rather than by a substring in its name - the audited
+                # production host contains no "prod" and the previous substring
+                # guard admitted it. A production backup additionally records
+                # the authorization reference that permitted it.
+                "source_kind": kind,
+                "production_authorization": authorization,
+                # What authorised this run: a person (workflow_dispatch) or a
+                # schedule. Recorded so an artifact can be audited against the
+                # policy that admitted it, and so a scheduled run's refusal of
+                # a production source is visible rather than inferred.
+                "authorization_mode": getattr(args, "authorization_mode", "scheduled"),
+                # The restore proof, when one was taken. False means the
+                # ciphertext decrypts (round_trip_verified) but nobody has
+                # restored it: an artifact in that state must not satisfy a
+                # migration or deletion gate.
+                "restore_verified": restore_evidence is not None,
+                "restore_verification": restore_evidence,
                 # Which hosts the allow-list permitted when this ran. Recorded
                 # so an artifact can be audited against the configuration that
                 # authorised it, rather than only against the host used.
@@ -369,6 +618,28 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--output-dir", default="./backup-out")
     parser.add_argument(
+        "--verify-restore-into",
+        default=None,
+        help="a NON-production PostgreSQL URI that is empty; the dump is "
+        "restored into it before the artifact is written, and the manifest "
+        "records the verification. Required for a production source: an "
+        "unproven production backup is not a backup.",
+    )
+    parser.add_argument(
+        "--authorization-mode",
+        choices=("manual", "scheduled"),
+        default="scheduled",
+        help=(
+            "How this run is authorised. 'manual' (a human pressed the button) "
+            "accepts SZ_BACKUP_PRODUCTION_AUTHORIZATION for a production "
+            "source; 'scheduled' refuses a production source whatever the "
+            "configuration says, because a production backup is authorised by "
+            "a person, never by a cron entry. Defaults to 'scheduled' - the "
+            "fail-closed direction: a caller that does not say it is a human "
+            "gets the unattended policy."
+        ),
+    )
+    parser.add_argument(
         "--runs-per-month",
         type=int,
         default=4,
@@ -393,6 +664,10 @@ def main(argv: list[str] | None = None) -> int:
 
     try:
         result = run_backup(args)
+    except SourceRejected as exc:
+        # The source policy is the caller-facing refusal, reported as such.
+        print(f"BACKUP REFUSED: {exc}", file=sys.stderr)
+        return 3
     except (BackupRefused, BackupCryptoUnavailable, BackupCryptoError) as exc:
         # A refusal is a normal, reportable outcome - not a crash. The message
         # states the reason without restating any connection string.
