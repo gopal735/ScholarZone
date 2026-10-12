@@ -13,6 +13,7 @@ import ApplicationsPage from './pages/ApplicationsPage'
 import MentorPage from './pages/MentorPage'
 import AdminPage from './pages/AdminPage'
 import AdminVerificationPage from './pages/AdminVerificationPage'
+import AdminScholarshipPage from './pages/AdminScholarshipManager'
 import CountryPage from './pages/CountryPage'
 import NotFoundPage from './pages/NotFoundPage'
 import { useScrollReveal } from './hooks/useScrollReveal'
@@ -53,6 +54,7 @@ function App() {
         <Route path="/compare" element={<ComparePage />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/admin/verification" element={<AdminVerificationPage />} />
+        <Route path="/admin/scholarships" element={<AdminScholarshipPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
