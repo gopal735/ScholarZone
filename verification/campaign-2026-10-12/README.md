@@ -16,12 +16,16 @@ sentences the verdict rests on.
 
 ## Results
 
-| verdict | meaning | count |
-| --- | --- | --- |
-| `active` | awarding body, deadline, eligibility, funding and levels all agree with the record, for a currently-open cycle | **62** |
-| `needs_review` | official page read, but a claim cannot be confirmed from it | **29** |
-| `conflicting` | the official page contradicts the record materially | **7** |
-| `quarantined` | no official page can be found | **2** |
+The 100 checks, split by what each one was. The counts are recomputed from the
+`<id>.json` evidence files by `backend/tests/test_campaign_report_consistency.py`,
+so a document that drifts from the data fails CI.
+
+| verdict | meaning | all 100 | 91 newly researched | 9 spot-checks |
+| --- | --- | --- | --- | --- |
+| `active` | awarding body, deadline, eligibility, funding and levels all agree with the record, for a currently-open cycle | **62** | **58** | 4 |
+| `needs_review` | official page read, but a claim cannot be confirmed from it | **29** | **26** | 3 |
+| `conflicting` | the official page contradicts the record materially | **7** | **5** | 2 |
+| `quarantined` | no official page can be found | **2** | **2** | 0 |
 
 Confidence: 98 high, 1 medium, 1 low. No verdict was recorded from a search
 snippet alone.
@@ -31,7 +35,7 @@ snippet alone.
 **The spot check: 9 records already marked active were re-read at random. 5 of
 9 did not survive.** Two contradictions and three unconfirmable deadlines were
 found among records the catalogue presents as verified (ids 303 and 422
-contradicted; 131, 189 and 245 unconfirmed). A 5-in-9 failure rate in a small
+contradicted; 131, 189, 245 unconfirmed). A 5-in-9 failure rate in a small
 random sample is not a rounding error — the existing `active` state should not
 be treated as trustworthy, for the users who are being asked to trust it.
 
@@ -40,12 +44,15 @@ off by default:
 
 - **Before**, an unverified record was visible with an honest label ("Confirm
   with provider") and a date.
-- **If the flag is switched on today**, those 91 disappear — and 62 of them
-  carry fresh evidence that they are correct.
+- **If the flag is switched on today**, those 91 disappear — and **58 of those
+  91**, not 62, carry fresh evidence that they are correct. (The 62 figure is
+  the total across all 100 checks; 4 of them are spot-checks of records that
+  were already active.)
 
-Promoting the 62 on their evidence, and asking what the other 29 should
-become, is the human decision that follows this campaign. This PR deliberately
-does not make it.
+Promoting the 58 on their evidence, and asking what the other 33 should
+become, is the human decision that follows this campaign. `ROLLOUT.md` sets out
+the order in which those decisions have to be made, and what happens if the flag
+is switched on before them. This PR deliberately makes none of them.
 
 ## What the evidence found
 
@@ -68,26 +75,33 @@ in `app/repositories/scholarships.py`: when it is on,
 `verification_status == "active"`. Default off — no behaviour change, and the
 existing test suite passes unchanged for the default path.
 
-Turning it on with this evidence applied would show a catalogue whose every
-record had been re-checked. Turning it on **today** would cut 91 records that
-have never been re-checked, including 62 this campaign just confirmed. That
-choice belongs to the catalog's owner, and it is reversible in the environment
-without a redeploy.
+Turning it on would show a catalogue whose every record carried `active` — the
+status the catalogue writes, not the status the evidence supports. Those are not
+the same thing today, and the difference is exactly the five spot-check records
+that are still `active` in the database while this campaign's evidence says
+otherwise. Read `ROLLOUT.md` before setting the variable: merging this PR
+applies nothing, and switching the flag on before a reviewed status update
+would keep those five exposed while hiding records this research just supported.
 
 ## What this PR does not do
 
 It writes no database, changes no record, and deploys nothing. The proposed
-updates are in `proposed-verification-updates.json`, per record, for review.
-Applying them is a separate, human decision.
+updates are in `proposed-verification-updates.json`, per record, for review;
+`RECONCILIATION-PLAN.md` is how to walk them. Applying them is a separate,
+human decision, record by record — a verdict label is not a promotion.
 
 ## Files
 
 - `BRIEF.md` — the method every agent followed
+- `ROLLOUT.md` — the order in which the decisions have to be made, and what
+  breaks if they are not
+- `RECONCILIATION-PLAN.md` — the per-record plan for the 45 proposed updates,
+  with what needs a human at each step
 - `index.json` — the 100 tasks (record, kind, title, country, source URL)
 - `tasks-to-verify.json` / `tasks-spot-check.json` — the record fields each
   agent was given
 - `<id>.json` — one evidence file per record, same schema for all 100
-- `<id>.md` — the same finding as a short memo for a person to read
+- `<id>.md` — the same finding as a memo for a person to read
 - `campaign-report.json` — the aggregate, including which records are missing
   evidence and which verdicts disagreed
 - `proposed-verification-updates.json` — the 45 records whose status or fields

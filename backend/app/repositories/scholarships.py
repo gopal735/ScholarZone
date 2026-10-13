@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 from ..core import config
 from ..models import Scholarship
 from ..schemas import ScholarshipQuery, ScholarshipSort
+from ..verification_contract import AUTHORITATIVE_VERIFIED_STATUS
 
 
 def _normalise_optional_filter(value: str | None) -> str | None:
@@ -73,7 +74,12 @@ def public_visibility_conditions() -> list:
     ]
 
     if config.get_settings().public_require_verified:
-        conditions.append(Scholarship.verification_status == "active")
+        # The one status meaning "re-checked and confirmed", taken from the
+        # contract rather than written here. A literal would let this gate
+        # drift from the definition of verified that the rest of the app uses.
+        conditions.append(
+            Scholarship.verification_status == AUTHORITATIVE_VERIFIED_STATUS
+        )
 
     return conditions
 

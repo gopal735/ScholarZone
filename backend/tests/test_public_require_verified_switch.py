@@ -14,6 +14,7 @@ from __future__ import annotations
 
 from datetime import datetime, timezone
 
+import inspect
 import pytest
 from sqlalchemy import create_engine, select
 from sqlalchemy.orm import sessionmaker
@@ -96,8 +97,6 @@ def test_unverified_record_stays_visible_by_default(engine_factory):
 
 
 def test_default_does_not_add_a_verification_condition(engine_factory):
-    import inspect
-
     engine, settings = engine_factory
     _row(engine, verification_status="needs_review")
     conditions = public_visibility_conditions()
@@ -107,7 +106,6 @@ def test_default_does_not_add_a_verification_condition(engine_factory):
     # And they are SQL expressions, not a Python-side filter that the
     # directory's count query would quietly bypass.
     assert all(hasattr(c, "compile") for c in conditions)
-    del inspect
 
 
 # ── the switch, when the owner turns it on ──────────────────────────────
@@ -164,6 +162,22 @@ def test_verified_only_condition_is_part_of_the_query_not_a_python_filter(engine
     conditions = public_visibility_conditions()
     assert len(conditions) == 4
     assert all(hasattr(c, "compile") for c in conditions)
+
+
+def test_the_gate_uses_the_verification_contract_constant():
+    """The flag must not define "verified" itself.
+
+    A literal here would outlive a change to the contract, and the gate would
+    quietly filter on a status whose meaning the rest of the app no longer
+    shares.
+    """
+    import app.repositories.scholarships as repository
+    from app.verification_contract import AUTHORITATIVE_VERIFIED_STATUS
+
+    conditions_source = inspect.getsource(repository.public_visibility_conditions)
+    assert "AUTHORITATIVE_VERIFIED_STATUS" in conditions_source
+    assert '"active"' not in conditions_source
+    assert AUTHORITATIVE_VERIFIED_STATUS == "active"
 
 
 def test_the_setting_is_read_on_every_call_not_captured_at_import():
