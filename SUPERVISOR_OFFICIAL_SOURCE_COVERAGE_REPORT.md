@@ -1,6 +1,6 @@
 # Supervisor coverage report - official source verification
 
-* Generated 2026-10-13T18:18:05.719079+00:00 against `sqlite:///C:/Users/GopaL/AppData/Local/Temp/kilo/sz-cov-data/catalogue.db`.
+* Generated 2026-10-13T18:42:16.708221+00:00 against `a local SQLite database (catalogue.db)`.
 * Every number below is computed from the supervisor tables in that database. Nothing is estimated, and a record with no evidence is counted as unresolved rather than as a negative.
 
 ## Totals
@@ -13,19 +13,32 @@
 | Distinct published professors | 2 |
 | Professors with a verified official email | 0 |
 | Scholarships marked not applicable | 2 |
-| Official contacts recorded | 80 |
-| Contacts with a verified official email | 27 |
+| Official contacts recorded | 132 |
+| Contacts with a verified official email | 50 |
 | Source-evidence rows | 2 |
+
+## Two different counts, and why they differ
+
+The coverage table and the batch audit log answer different questions, and they are not expected to match:
+
+* **Coverage rows** are *states*, one row per scholarship, mutually exclusive and summing exactly to the scope above. They are cumulative: a record whose discovery finished once holds its outcome forever until it is re-run.
+* **Audit lines** are *events*, one line per scholarship per run, appending across runs. A re-run adds a second line for the same scholarship, so the log can exceed the row count while the row count does not move.
+
+The audit log is written beside each item's persistence, so a run that is interrupted leaves both agreeing; a mismatch is a defect and is treated as one, not explained away.
+
+Against the supplied audit log: 275 records named, 286 persisted. **13 persisted record(s) are not named in the log** (e.g. 319, 322, 323, 324, 325, 326, 327, 328).
+
+Those are records written by a run that was interrupted between persistence and bookkeeping. Their coverage states are real and the report below is computed from them; their audit lines were lost when the process died, which is the defect fixed by writing the log beside the record rather than after the batch.
 
 ## Coverage by state
 
 | State | Records |
 | --- | ---: |
-| `no_verified_supervisor_found` | 87 |
+| `no_verified_supervisor_found` | 129 |
 | `not_applicable` | 2 |
-| `search_pending` | 439 |
-| `source_blocked` | 85 |
-| `source_requires_rendering` | 21 |
+| `search_pending` | 350 |
+| `source_blocked` | 127 |
+| `source_requires_rendering` | 26 |
 | `verified_supervisors` | 2 |
 
 ## Unresolved categories
@@ -34,33 +47,33 @@ Each category is listed with the records it contains and the official source URL
 
 | Category | Records |
 | --- | ---: |
-| Discovery pending (never searched) | 439 |
-| Source blocked or inaccessible | 85 |
-| JavaScript-rendered source requiring separate review | 21 |
+| Discovery pending (never searched) | 350 |
+| Source blocked or inaccessible | 127 |
+| JavaScript-rendered source requiring separate review | 26 |
 | Candidates requiring verification | 0 |
-| No verified supervisor found | 87 |
+| No verified supervisor found | 129 |
 | Supervisor information not applicable (evidence-based) | 2 |
 
-### Discovery pending (never searched) (439)
+### Discovery pending (never searched) (350)
 
 First records, by scholarship id:
 
-- `230` DAAD Helmut-Schmidt-Programme (Master's Scholarships for Public Policy and Good Governance - PPGG) - assessed against https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026397
-- `231` DAAD Postgraduate Studies in the Field of Architecture - assessed against https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135744
-- `232` DAAD Study Scholarships - Postgraduate Studies in the Fields of Fine Art, Design, Visual Communication and Film - assessed against https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135742
-- `234` DAAD Study Scholarships - Postgraduate Studies in the Field of the Performing Arts - assessed against https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50109971
-- `235` Heinrich Böll Foundation Scholarship - assessed against https://www.boell.de/en/scholarships
-- `236` Japanese Government (MEXT) Scholarship for Undergraduate Students (Embassy Recommendation) - assessed against https://www.mext.go.jp/en/policy/education/highered/title02/detail02/sdetail02/1373897.htm
-- `237` Japanese Government (MEXT) Scholarship for Research Students (University Recommendation) - assessed against https://www.mext.go.jp/content/20251205-mxt_kotokoku01-000046164_2.pdf
-- `239` Young Leaders Program (YLP) Students - Japanese Government (MEXT) Scholarship - assessed against https://www.studyinjapan.go.jp/en/planning/scholarships/about-scholarships
-- `240` JASSO Reservation Program for Monbukagakusho Honors Scholarship for Privately-Financed International Students by Pre-arrival Admission - assessed against https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/yoyaku_tonichimae.html
-- `241` Kyushu University International Scholarship - assessed against https://www.kyushu-u.ac.jp/en/admission/financial_aid/scholarship
-- `243` MOFCOM Scholarship - CSC Program (Ministry of Commerce of China and China Scholarship Council Joint Program) - assessed against https://sl.china-embassy.gov.cn/eng/xwdt/202604/P020260403009201102513.pdf
-- `244` Chinese Government Scholarship - Tsinghua University Program (Type B) - assessed against https://yz.tsinghua.edu.cn/en/info/1027/1117.htm
+- `335` Aalto University Excellence Scholarship (100% tuition fee waiver) - assessed against https://www.aalto.fi/en/international-students/scholarships-study-right-started-on-or-after-1-august-2025
+- `336` Tampere University tuition fee scholarship (50%) and early bird offer - assessed against https://www.tuni.fi/en/tau/financial-matters/tuition-fees-and-scholarships
+- `337` University of Oulu Early Bird Discount and Tuition Fee Waiver Scholarship - assessed against https://www.oulu.fi/en/apply/how-apply/university-oulu-tuition-fees-and-scholarships-for-international-applicants
+- `338` University of Eastern Finland Early Bird Discount (30%) and Tuition Waivers - assessed against https://www.uef.fi/en/tuition-fees-waivers-and-scholarships
+- `339` University of Turku Merit Scholarship (50% of tuition) and Early Bird Discount - assessed against https://www.utu.fi/en/study-at-utu/scholarships-and-tuition-fees
+- `340` Åbo Akademi University tuition fee scholarship - early commitment offer and second-year reduction - assessed against https://www.abo.fi/en/study/apply/international-master-programmes/scholarship-programme-for-master-students
+- `342` Hanken GBSN Honor Scholarship (GBSN Scholarship for students from developing countries) - assessed against https://www.hanken.fi/en/apply/study-hanken/international-students/tuition-fees-and-scholarships
+- `343` Nokia Scholarship - assessed against https://www.nokiafoundation.com/nokia-scholarship-info
+- `344` Nokia Foundation Fellow - assessed against https://www.nokiafoundation.com/foundation-fellow
+- `345` Jorma Ollila Grant - assessed against https://www.nokiafoundation.com/jorma-ollila-grants
+- `350` Erasmus Mundus Joint Master Scholarship - Bioceb (European Master in Biological and Chemical Engineering for a Sustainable Bioeconomy) - assessed against https://www.master-bioceb.eu
+- `352` France-South Africa Scholarship Programme 2027 - assessed against https://southafrica-france-scholarships.com
 
-...and 427 more in this category.
+...and 338 more in this category.
 
-### Source blocked or inaccessible (85)
+### Source blocked or inaccessible (127)
 
 First records, by scholarship id:
 
@@ -77,9 +90,9 @@ First records, by scholarship id:
 - `19` France Excellence Europa Scholarship - assessed against https://www.campusfrance.org/en/france-excellence-europa-scholarship-program
 - `25` JASSO Student Exchange Support Program - assessed against https://www.jasso.go.jp/en/ryugaku/scholarship_j/ukeire.html
 
-...and 73 more in this category.
+...and 115 more in this category.
 
-### JavaScript-rendered source requiring separate review (21)
+### JavaScript-rendered source requiring separate review (26)
 
 First records, by scholarship id:
 
@@ -96,13 +109,13 @@ First records, by scholarship id:
 - `139` ISU Bocconi Scholarship — First-Year Students a.y. 2027-28 (Right to University Education Scholarship) - assessed against https://www.unibocconi.it/en/applying-bocconi/bachelor-and-law-programs/funding/isu-bocconi-scholarship-first-year-students-ay-2027-28
 - `154` Excellence Scholarship for Bachelor Students (University of St.Gallen) - assessed against https://www.unisg.ch/en/studying/orientation/advice-and-support/financing-your-studies/hsg-funds-and-excellence-scholarships
 
-...and 9 more in this category.
+...and 14 more in this category.
 
 ### Candidates requiring verification (0)
 
 None.
 
-### No verified supervisor found (87)
+### No verified supervisor found (129)
 
 First records, by scholarship id:
 
@@ -119,7 +132,7 @@ First records, by scholarship id:
 - `36` MAECI Italian Government Scholarship - assessed against https://www.esteri.it/en/opportunita/borse-di-studio
 - `48` University of Sydney Vice-Chancellor's International Scholarships Scheme - assessed against https://www.sydney.edu.au/scholarships/e/vice-chancellor-international-scholarships-scheme.html
 
-...and 75 more in this category.
+...and 117 more in this category.
 
 ### Supervisor information not applicable (evidence-based) (2)
 

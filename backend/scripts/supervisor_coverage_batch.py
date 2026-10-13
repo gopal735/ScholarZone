@@ -46,7 +46,6 @@ from app.services.supervisor_batch import (  # noqa: E402
 )
 from app.services.supervisor_status import (  # noqa: E402
     INCONCLUSIVE_COVERAGE_STATUSES,
-    SupervisorCoverageStatus,
 )
 
 

@@ -16,6 +16,8 @@ it. A total that cannot be walked back to a row is not reported at all.
 from __future__ import annotations
 
 import argparse
+import json
+import logging
 import sys
 from collections import Counter
 from datetime import datetime, timezone
@@ -24,7 +26,9 @@ from urllib.parse import urlparse
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from sqlalchemy import func, select, text  # noqa: E402
+logger = logging.getLogger(__name__)
+
+from sqlalchemy import func, select  # noqa: E402
 
 from app.models import Scholarship  # noqa: E402
 from app.models_supervisor import (  # noqa: E402
@@ -53,7 +57,52 @@ def _table_exists(engine, name: str) -> bool:
     return inspect(engine).has_table(name)
 
 
-def build_report(engine) -> dict:
+def _describe_database(database_url: str) -> str:
+    """Return a commit-safe description of the database the report was read from.
+
+    A path is a local fact, not part of the finding: a full SQLite URL on this
+    machine carries the operator's username and a temporary directory, neither
+    of which belongs in a committed artefact. What a reader needs is the
+    filename and the dialect, so this returns those and nothing else.
+    """
+    if not database_url:
+        return "the configured database"
+    lowered = database_url.lower()
+    if lowered.startswith("sqlite"):
+        tail = database_url.rsplit("/", 1)[-1] or database_url
+        return f"a local SQLite database ({tail})"
+    scheme = lowered.split(":", 1)[0]
+    if scheme in ("postgresql", "postgres"):
+        return "a PostgreSQL database"
+    return f"a {scheme} database"
+
+
+def _read_audit_ids(path: Path | None) -> set[int] | None:
+    """Return the scholarship ids an audit log records, or ``None`` if unread.
+
+    ``None`` means "not supplied", which the report states explicitly rather
+    than silently skipping the reconciliation. An audit log written beside each
+    item must name every persisted record; where it does not, that is a
+    disclosed defect and not a rounding difference.
+    """
+    if path is None:
+        return None
+    if not Path(path).exists():
+        raise SystemExit(f"Audit log not found: {path}")
+    ids: set[int] = set()
+    with Path(path).open(encoding="utf-8") as handle:
+        for line in handle:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                ids.add(json.loads(line)["scholarship_id"])
+            except (ValueError, KeyError, TypeError) as exc:
+                raise SystemExit(f"Malformed audit line in {path}: {exc}") from exc
+    return ids
+
+
+def build_report(engine, audit_path: Path | None = None) -> dict:
     """Return the whole coverage picture for the database ``engine`` reads."""
     from sqlalchemy.orm import sessionmaker
 
@@ -87,6 +136,33 @@ def build_report(engine) -> dict:
             row.status for row in coverage_rows.values()
         )
         status_counts[str(SupervisorCoverageStatus.SEARCH_PENDING)] += len(never_searched)
+
+        # --- integrity, asserted rather than hoped for -----------------------
+        # A coverage state is mutually exclusive and exhaustive over the scope,
+        # so the counts must sum to it exactly. If they do not, the numbers
+        # below are not a partition and no total in this report can be trusted.
+        partition_total = sum(status_counts.values())
+        if partition_total != len(scope_ids):
+            raise SystemExit(
+                "Coverage states do not partition the scope: "
+                f"{partition_total} counted vs {len(scope_ids)} in scope. "
+                f"counts={dict(sorted(status_counts.items()))}"
+            )
+        # Every status must also be one this product defines. A sum that adds up
+        # while counting a state nobody defined would still be a partition - of
+        # the wrong thing - and the unresolved categories below would not name it.
+        known_statuses = {str(status) for status in SupervisorCoverageStatus}
+        unknown_statuses = sorted(set(status_counts) - known_statuses)
+        if unknown_statuses:
+            raise SystemExit(
+                f"Coverage rows carry undefined state(s): {unknown_statuses}. "
+                f"Known states are {sorted(known_statuses)}."
+            )
+        # Contacts are their own population. They are counted as offices, never
+        # folded into a professor or relationship total, and a reader who adds
+        # the two blocks must not double-count.
+        if contacts_table_present is False:
+            logger.warning("Contact table absent: contact counts reported as zero by absence")
 
         # --- professors and relationships that actually publish.
         links = session.execute(
@@ -139,11 +215,38 @@ def build_report(engine) -> dict:
             1 for contact in contacts if contact.contact_email_verified and contact.contact_email
         )
 
+        # --- a second integrity assertion, on the separation itself ----------
+        # Official contacts are a different population from professors, so the
+        # two counts may not overlap. Asserted, because a schema with a
+        # scholarship_id on both sides makes it structurally possible to blur
+        # them - and blurring them is how an office becomes a "supervisor".
+        contact_scholarship_ids = {
+            contact.scholarship_id for contact in contacts
+        }
+        professor_scholarship_ids = {link.scholarship_id for link in publishable_links}
+        overlap = contact_scholarship_ids & professor_scholarship_ids
+        if overlap:
+            raise SystemExit(
+                "Official contacts overlap with professor relationships on "
+                f"{len(overlap)} scholarship(s): {sorted(overlap)[:10]}. A record "
+                "with a professor list must not also publish a contact."
+            )
+
         # --- evidence rows, for the provenance total.
         evidence_count = session.execute(
             select(func.count())
             .select_from(SupervisorSourceEvidence)
         ).scalar_one()
+
+        # --- reconciliation with the audit log, when one is supplied ---------
+        # The two are different units - states versus events - but every
+        # persisted record must still be named in the log. A record that is
+        # persisted and unaudited means a run died between the two, which is a
+        # defect to disclose rather than a difference to explain away.
+        audited_ids = _read_audit_ids(audit_path)
+        unaudited: list[int] = []
+        if audited_ids is not None:
+            unaudited = sorted(set(coverage_rows) - audited_ids)
 
         # --- the unresolved buckets, each with the ids and the URLs behind them.
         def sample(scholarship_ids, limit=12):
@@ -172,6 +275,13 @@ def build_report(engine) -> dict:
             "scope": {
                 "public_scholarships": len(scope_ids),
                 "never_searched": len(never_searched),
+            },
+            "reconciliation": {
+                "audit_log_supplied": audited_ids is not None,
+                "audited_records": len(audited_ids) if audited_ids is not None else None,
+                "persisted_records": len(coverage_rows),
+                "persisted_without_audit_line": len(unaudited),
+                "unaudited_scholarship_ids": unaudited[:50],
             },
             "professors": {
                 "published_professors": len(professor_ids),
@@ -263,6 +373,59 @@ def render_markdown(report: dict, database_description: str) -> str:
             "are zero by absence of the table rather than by absence of contacts."
         )
     lines.append("")
+    lines.append("## Two different counts, and why they differ")
+    lines.append("")
+    lines.append(
+        "The coverage table and the batch audit log answer different questions, and "
+        "they are not expected to match:"
+    )
+    lines.append("")
+    lines.append(
+        "* **Coverage rows** are *states*, one row per scholarship, mutually "
+        "exclusive and summing exactly to the scope above. They are cumulative: a "
+        "record whose discovery finished once holds its outcome forever until it is "
+        "re-run."
+    )
+    lines.append(
+        "* **Audit lines** are *events*, one line per scholarship per run, appending "
+        "across runs. A re-run adds a second line for the same scholarship, so the "
+        "log can exceed the row count while the row count does not move."
+    )
+    lines.append("")
+    lines.append(
+        "The audit log is written beside each item's persistence, so a run that is "
+        "interrupted leaves both agreeing; a mismatch is a defect and is treated as "
+        "one, not explained away."
+    )
+    lines.append("")
+    reconciliation = report.get("reconciliation") or {}
+    if reconciliation.get("audit_log_supplied"):
+        lines.append(
+            f"Against the supplied audit log: {reconciliation['audited_records']} records "
+            f"named, {reconciliation['persisted_records']} persisted. "
+            f"**{reconciliation['persisted_without_audit_line']} persisted record(s) are "
+            "not named in the log**"
+            + (
+                f" (e.g. {', '.join(str(i) for i in reconciliation['unaudited_scholarship_ids'][:8])})."
+                if reconciliation["persisted_without_audit_line"]
+                else "."
+            )
+        )
+        if reconciliation["persisted_without_audit_line"]:
+            lines.append("")
+            lines.append(
+                "Those are records written by a run that was interrupted between "
+                "persistence and bookkeeping. Their coverage states are real and the "
+                "report below is computed from them; their audit lines were lost when "
+                "the process died, which is the defect fixed by writing the log beside "
+                "the record rather than after the batch."
+            )
+    else:
+        lines.append(
+            "No audit log was supplied to this run, so the persisted-to-log "
+            "reconciliation was **not checked**. Pass `--audit` to check it."
+        )
+    lines.append("")
 
     lines.append("## Coverage by state")
     lines.append("")
@@ -335,6 +498,14 @@ def render_markdown(report: dict, database_description: str) -> str:
 
 
 def main(argv: list[str] | None = None) -> int:
+    # Scholarship titles carry characters the Windows console cannot encode.
+    # Printing to a pipeline must not be the reason a report fails, so the
+    # stream is reconfigured rather than the report trimmed.
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, OSError):  # pragma: no cover - non-Windows pipes
+        pass
+
     parser = argparse.ArgumentParser(
         prog="supervisor_coverage_report.py",
         description="Read-only supervisor coverage report for one database.",
@@ -349,6 +520,15 @@ def main(argv: list[str] | None = None) -> int:
     )
     parser.add_argument("--out", type=Path, default=None, help="Write the markdown report here.")
     parser.add_argument("--json-out", type=Path, default=None, help="Write the raw totals here.")
+    parser.add_argument(
+        "--audit",
+        type=Path,
+        default=None,
+        help=(
+            "Batch audit log to reconcile against. When supplied, the report "
+            "counts persisted records the log does not name."
+        ),
+    )
     args = parser.parse_args(argv)
 
     from sqlalchemy import create_engine
@@ -357,9 +537,11 @@ def main(argv: list[str] | None = None) -> int:
 
     database_url = args.database_url or get_settings().database_url
     engine = create_engine(database_url)
-    report = build_report(engine)
+    report = build_report(engine, audit_path=args.audit)
 
-    markdown = render_markdown(report, database_url)
+    # The committed report names the database, never where it lives on a
+    # machine.
+    markdown = render_markdown(report, _describe_database(database_url))
     if args.out is not None:
         args.out.parent.mkdir(parents=True, exist_ok=True)
         args.out.write_text(markdown, encoding="utf-8")

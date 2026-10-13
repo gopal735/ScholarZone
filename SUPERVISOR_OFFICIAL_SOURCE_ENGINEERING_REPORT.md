@@ -12,14 +12,14 @@ resumable from the recorded audit trail, and the report at
 | Initial SHA (shared checkout HEAD) | `9a6805cf57438cba9baa05f0d8a2a89d59f1260c` |
 | Branch at start | `fix/public-catalogue-non-closed-visibility` |
 | Upstream | `git@github.com:gopal735/ScholarZone.git` (org `gopal735`) |
-| Worktree | `C:\Users\GopaL\AppData\Local\Temp\kilo\sz-supervisor-coverage` (new, isolated) |
+| Worktree | a new isolated `git worktree` (path omitted; see `git worktree list`) |
 | Feature branch | `feat/supervisor-official-source-coverage` |
 | Working tree before work | dirty (untracked artefacts only; no modified tracked files) |
 
 The shared checkout was never reset, cleaned, switched, or checked out
 destructively. All work happened in a separate `git worktree` on a new branch.
 No production data was accessed: discovery ran against a *copy* of the local
-SQLite catalogue at `%TEMP%\kilo\sz-cov-data\catalogue.db`, never
+SQLite catalogue (filename `catalogue.db` in a scratch directory), never
 `backend/scholarzone.db` or Neon.
 
 ## What was built
@@ -92,15 +92,61 @@ tests pass standalone; the full suite itself is green.
 
 ## Coverage summary (snapshot)
 
-636 public scholarships are in scope. 175 were processed by the final gates
-before this report; 439 remain `search_pending` and are disclosed, not hidden.
-Totals: 2 scholarships with verified supervisors (2 professors: Prof Leon Terry,
-Cranfield University; Prof Bushra Ateeq, IIT Kanpur), 0 verified professor
-emails, 2 not applicable, 80 official contacts (27 with verified official
-emails), 85 blocked, 21 JavaScript-rendered, 87 completed negatives.
+636 public scholarships are in scope. 286 have a persisted coverage state; 350
+remain `search_pending` and are disclosed, not hidden. Totals: 2 scholarships
+with verified supervisors (2 professors: Prof Leon Terry, Cranfield University;
+Prof Bushra Ateeq, IIT Kanpur), 0 verified professor emails, 2 not applicable,
+127 blocked, 26 JavaScript-rendered, 129 completed negatives, 132 official
+contacts (50 with verified official emails).
+
+### The two metrics that looked inconsistent
+
+An earlier revision of this section reported 175 "processed" alongside 197
+records in a non-pending state. They are **not** the same measure, and neither
+was a counting bug:
+
+- **Coverage rows are states.** One row per scholarship, mutually exclusive,
+  summing exactly to the scope, asserted by the generator:
+  `no_verified 129 + not_applicable 2 + pending 350 + blocked 127 + rendering 26
+  + verified 2 = 636`. They are cumulative - a record keeps its outcome until it
+  is re-run.
+- **Audit lines are events.** One line per scholarship per run. A re-run adds a
+  second line for the same record, so the log can exceed the row count while the
+  row count does not move.
+
+The apparent mismatch had a specific cause: the batch loop was still running
+while the numbers were being read, and 175 was the audit count at one moment
+versus 197 coverage rows several minutes later.
+
+The *real* defect the exercise exposed was durability. Under the original
+bookkeeping order, the audit line and state file were written **after** the
+whole batch drained, so a process killed mid-batch left 16 records persisted in
+the database with no audit line at all. Those coverage states are real; their
+log entries were lost. Re-running a completed negative is not permitted by
+design, so they were disclosed rather than reconstructed.
+
+The fix is structural: `_advance_cursor` now writes the audit line and the state
+file in the same iteration that persists an item, and the cursor only advances
+over a **contiguous prefix** of completed ids, so an out-of-order worker cannot
+make a resume skip a record. Three regression tests pin the ordering, the cursor
+prefix, and the log-to-database reconciliation. The report generator now takes
+`--audit` and reports any persisted record the log does not name instead of
+hiding it.
 
 See `SUPERVISOR_OFFICIAL_SOURCE_COVERAGE_REPORT.md` for the generated totals,
 per-category listings and source URLs.
+
+## Master synchronisation
+
+The branch was created from a checkout that was already 72 commits behind
+master, so GitHub reported the PR as `CONFLICTING` and `DIRTY`. `origin/master`
+was merged into the feature branch in the worktree (no history rewrite, no
+force-push, no destructive reset). The only conflict was `NEW_TABLE_INDEXES` in
+`backend/app/supervisor_ddl.py`: master added `scholarship_admin_audit` and this
+branch added `scholarship_official_contacts` in the same region, so both entries
+are kept. Both tables are additive, and the retained indexes belong to their own
+tables, so there is no shared state to reconcile. `SupervisorPanel.jsx` and its
+test auto-merged; this branch's contact rendering is additive on top of master's.
 
 ## Deliberately not done
 

@@ -56,7 +56,7 @@ from __future__ import annotations
 import json
 import logging
 import uuid
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
@@ -478,13 +478,66 @@ def _process_with_caller_session(db, scholarship, options: BatchOptions) -> Batc
         )
 
 
+def _advance_cursor(
+    options: BatchOptions,
+    run_id: str,
+    item: BatchItemResult,
+    completed_ids: set[int],
+    cursor_id: int | None,
+) -> int | None:
+    """Write the audit line and the state file for one finished item.
+
+    Called inside the same loop that does the work, never after the batch, so a
+    process that dies part-way through leaves the audit log and the database
+    agreeing. An earlier version bookkept after the executor drained, and a
+    SIGKILL during a batch left sixteen persisted records with no audit line at
+    all: the database could not be reconciled with the log, and the log is the
+    only record of what a run claimed.
+
+    The cursor advances over a *contiguous prefix* of this run's completed ids
+    rather than over the latest id to arrive. With several workers in flight a
+    later id can finish first, and resuming from it would silently skip the
+    earlier ones - re-doing them is safe, skipping them is not.
+    """
+    completed_ids.add(item.scholarship_id)
+    # A run that started from the beginning has no baseline, so the prefix is
+    # measured from zero rather than from None.
+    if cursor_id is None:
+        cursor_id = 0
+    while (cursor_id + 1) in completed_ids:
+        cursor_id += 1
+
+    if options.dry_run:
+        return cursor_id
+    if options.audit_path is not None:
+        _append_audit(options.audit_path, {"run_id": run_id, **vars(item)})
+    if options.state_path is not None:
+        _write_state(
+            options.state_path,
+            {
+                "run_id": run_id,
+                "last_scholarship_id": cursor_id,
+                "completed": len(completed_ids),
+                "updated_at": datetime.now(timezone.utc).isoformat(),
+            },
+        )
+    return cursor_id
+
+
 def run_supervisor_batch(db, options: BatchOptions) -> BatchReport:
     """Run one bounded batch and return its report. The batch entry point.
 
-    The state file is advanced after every item, which is what makes an
-    interrupted run resumable rather than merely restartable, and each item
-    commits its own work so a failure cannot roll back the records that
-    already succeeded.
+    Two properties are enforced by the *order* of the work rather than by
+    documentation:
+
+    **Each item is persisted and audited together.** The audit line and the
+    state cursor are written in the same iteration that produced the item, so
+    an interrupted run leaves the log consistent with the database and a resume
+    starts exactly where the run stopped.
+
+    **The cursor only advances over a contiguous prefix.** With more than one
+    worker the ids finish out of order; advancing to the latest finished id
+    would skip the earlier ones on resume.
     """
     started = datetime.now(timezone.utc)
     run_id = uuid.uuid4().hex
@@ -498,37 +551,34 @@ def run_supervisor_batch(db, options: BatchOptions) -> BatchReport:
 
     scholarships = select_batch_candidates(db, options)
     workers = max(1, min(options.workers, MAX_WORKERS))
-    if workers == 1:
-        items = [_process_with_caller_session(db, row, options) for row in scholarships]
-    else:
-        # pool.map preserves input order, so the report and the cursor remain
-        # deterministic however many universities are in flight.
-        with ThreadPoolExecutor(max_workers=workers) as pool:
-            items = list(
-                pool.map(lambda row: _process_with_own_session(row, options), scholarships)
-            )
+    completed_ids: set[int] = set()
+    cursor_id = options.after_id
 
-    for item in items:
-        report.items.append(item)
-        if options.dry_run:
-            continue
-        if options.state_path is not None:
-            _write_state(
-                options.state_path,
-                {
-                    "run_id": run_id,
-                    "last_scholarship_id": item.scholarship_id,
-                    "completed": len(report.items),
-                    "updated_at": datetime.now(timezone.utc).isoformat(),
-                },
-            )
-        if options.audit_path is not None:
-            _append_audit(options.audit_path, {"run_id": run_id, **vars(item)})
+    if workers == 1:
+        for row in scholarships:
+            item = _process_with_caller_session(db, row, options)
+            report.items.append(item)
+            cursor_id = _advance_cursor(options, run_id, item, completed_ids, cursor_id)
+    else:
+        # as_completed, not map: bookkeeping has to happen as each university
+        # finishes, or a death mid-batch leaves persisted work unaudited. The
+        # report order is then completion order, which the totals do not depend
+        # on and the audit log does not either.
+        with ThreadPoolExecutor(max_workers=workers) as pool:
+            futures = [
+                pool.submit(_process_with_own_session, row, options) for row in scholarships
+            ]
+            for future in as_completed(futures):
+                item = future.result()
+                report.items.append(item)
+                cursor_id = _advance_cursor(options, run_id, item, completed_ids, cursor_id)
 
     report.selection_exhausted = len(scholarships) < max(1, options.limit)
-    report.next_cursor = (
-        report.items[-1].scholarship_id if report.items else options.after_id
-    )
+    # When every selected record completed, resume after the last of them; the
+    # contiguous-prefix cursor is the same thing expressed safely.
+    if report.items and len(completed_ids) == len(scholarships):
+        cursor_id = max(completed_ids)
+    report.next_cursor = cursor_id if report.items else options.after_id
     report.finished_at = datetime.now(timezone.utc).isoformat()
     logger.info(
         "Supervisor batch %s (%s): processed=%s totals=%s",

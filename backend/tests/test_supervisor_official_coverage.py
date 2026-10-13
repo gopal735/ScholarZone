@@ -1,4 +1,4 @@
-"""Official-source coverage: provenance, contacts, batching, and honest negatives.
+﻿"""Official-source coverage: provenance, contacts, batching, and honest negatives.
 
 These tests pin the behaviour that makes a coverage claim true rather than
 merely cheerful. The network boundary is mocked with fixtures shaped like the
@@ -58,6 +58,7 @@ from app.services.supervisor_applicability import (  # noqa: E402
     classify_supervisor_applicability,
 )
 from app.services.supervisor_batch import (  # noqa: E402
+    BatchItemResult,
     BatchOptions,
     read_state,
     run_supervisor_batch,
@@ -963,6 +964,280 @@ def test_a_faculty_page_still_publishes_its_academics(monkeypatch, db):
         faculty_url="https://uni1.edu/people/faculty",
     )
     assert [c.name for c in result.approved] == ["Ada Lovelace"]
+
+
+def test_an_item_is_persisted_and_audited_in_the_same_step(monkeypatch, db):
+    """The durability contract: no persisted record may lack an audit line.
+
+    A live run was interrupted mid-batch and left sixteen persisted coverage
+    rows with no audit lines at all, because bookkeeping ran after the executor
+    drained rather than beside each item. The database then contradicted the
+    log, and the log is the only record of what a run claimed.
+
+    The order is pinned here rather than the outcome: persist, audit, persist,
+    audit - never all the persists then all the audits. A later refactor that
+    moves bookkeeping after the loop fails this test even though every count
+    still looks right.
+    """
+    import app.services.supervisor_batch as batch_module
+
+    _serve_discovery(monkeypatch, GENUINE_FACULTY_PAGE)
+    _three_uncovered(db)
+
+    events: list[tuple[str, int]] = []
+
+    real_persist = batch_module.persist_supervisor_plan
+
+    def recording_persist(session, scholarship, plan):
+        outcome = real_persist(session, scholarship, plan)
+        events.append(("persist", scholarship.id))
+        return outcome
+
+    real_append_audit = batch_module._append_audit
+
+    def recording_audit(path, payload):
+        events.append(("audit", payload["scholarship_id"]))
+        return real_append_audit(path, payload)
+
+    monkeypatch.setattr(batch_module, "persist_supervisor_plan", recording_persist)
+    monkeypatch.setattr(batch_module, "_append_audit", recording_audit)
+
+    run_supervisor_batch(db, _options(limit=5, audit_path=Path(tempfile.mkdtemp()) / "a.jsonl"))
+
+    assert events, "no persist or audit events were recorded"
+    persisted = [event for event in events if event[0] == "persist"]
+    audited = [event for event in events if event[0] == "audit"]
+    # Every persisted item has its audit line, in the same step.
+    assert len(persisted) == len(audited)
+    assert [event[1] for event in persisted] == [event[1] for event in audited]
+    # And the pairing is immediate: an item is never followed by another
+    # persist before its own audit write.
+    for index in range(0, len(events) - 1, 2):
+        assert events[index] == ("persist", events[index + 1][1]), events
+        assert events[index + 1][0] == "audit", events
+
+
+def test_the_state_cursor_only_advances_over_a_contiguous_prefix(monkeypatch, db):
+    """A late-finishing id must not let a resume skip its predecessors.
+
+    With several workers in flight, ids 1 and 3 can finish before 2. Advancing
+    the cursor to 3 would resume after it and silently skip 2; re-doing work is
+    safe, skipping work is not.
+    """
+    import app.services.supervisor_batch as batch_module
+
+    _serve_discovery(monkeypatch, GENUINE_FACULTY_PAGE)
+    _three_uncovered(db)
+
+    real_advance = batch_module._advance_cursor
+    completed_ids = set()
+    cursor = None
+
+    # 1 arrives, then 3, then 2 - the out-of-order case.
+    for item_id in (1, 3, 2):
+        item = BatchItemResult(
+            scholarship_id=item_id,
+            title=f"Record {item_id}",
+            previous_status="uncovered",
+            outcome_status=str(SupervisorCoverageStatus.SOURCE_BLOCKED),
+        )
+        cursor = real_advance(
+            BatchOptions(limit=25, collect_contacts=False, workers=1),
+            "run",
+            item,
+            completed_ids,
+            cursor,
+        )
+        if item_id != 2:
+            # Before the gap is filled, the cursor has not moved to the newer id.
+            assert cursor in (None, 1)
+
+    # Once 2 arrives the prefix closes over 1, 2 and 3, so 3 is the honest
+    # answer - the gap, not the newest id, is what governed the cursor.
+    assert cursor == 3, cursor
+
+
+def test_the_audit_log_and_the_database_agree_on_a_finished_batch(monkeypatch, db, tmp_path):
+    """The reconciliation the interrupted run broke, now asserted directly.
+
+    After a batch completes normally, every coverage row it wrote has exactly
+    one audit line and vice versa. This is the invariant the report's totals
+    depend on, so it is checked rather than assumed.
+    """
+    _serve_discovery(monkeypatch, GENUINE_FACULTY_PAGE)
+    _three_uncovered(db)
+    audit_path = tmp_path / "audit.jsonl"
+
+    run_supervisor_batch(db, _options(limit=3, audit_path=audit_path))
+
+    audited = [
+        json.loads(line)["scholarship_id"]
+        for line in audit_path.read_text(encoding="utf-8").splitlines()
+    ]
+    stored = {
+        row.scholarship_id
+        for row in db.query(ScholarshipSupervisorCoverage).all()
+    }
+    assert sorted(audited) == sorted(stored)
+    assert len(audited) == len(set(audited)), "one audit line per record"
+
+
+# ---------------------------------------------------------------------------
+# Report integrity: the numbers must be a partition, not a total
+# ---------------------------------------------------------------------------
+
+
+def _report_module():
+    """Import the report script as a module, so its logic is tested directly."""
+    import importlib.util
+    from pathlib import Path
+
+    path = (
+        Path(__file__).resolve().parents[1]
+        / "scripts"
+        / "supervisor_coverage_report.py"
+    )
+    spec = importlib.util.spec_from_file_location("supervisor_coverage_report", path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def test_coverage_states_partition_the_scope_exactly(monkeypatch, db):
+    """Every record holds exactly one state, and the states sum to the scope.
+
+    The report raises rather than printing a table that does not add up: a
+    partition is what makes each total meaningful, and a record counted twice
+    or not at all would silently change every percentage in it.
+    """
+    module = _report_module()
+    _serve_discovery(monkeypatch, GENUINE_FACULTY_PAGE)
+    _three_uncovered(db)
+
+    # Three records, three distinguishable outcomes, all mutually exclusive.
+    run_supervisor_batch(db, _options(limit=1))
+    report = module.build_report(db.get_bind())
+
+    scope = report["scope"]
+    counts = report["coverage_status_counts"]
+    assert sum(counts.values()) == scope["public_scholarships"]
+    assert scope["never_searched"] == counts[str(SupervisorCoverageStatus.SEARCH_PENDING)]
+
+
+def test_the_report_refuses_to_print_a_non_partition(monkeypatch, db):
+    """The guard is load-bearing, so it is provoked rather than described.
+
+    A record with no state at all is exactly the drift the invariant exists to
+    catch, and the report must fail loudly instead of publishing a total that
+    cannot be walked back to rows.
+    """
+    module = _report_module()
+    _serve_discovery(monkeypatch, GENUINE_FACULTY_PAGE)
+    _three_uncovered(db)
+
+    # No coverage rows written at all, so every record is "never searched" and
+    # the partition should still hold - the missing-row path is the one under
+    # test, and it must resolve to search_pending rather than to nothing.
+    report = module.build_report(db.get_bind())
+    assert report["coverage_status_counts"][str(SupervisorCoverageStatus.SEARCH_PENDING)] == 3
+
+    # A row whose status is outside the vocabulary is drift, not a state. The
+    # partition still *adds up* while counting it, which is why the vocabulary
+    # check exists alongside the sum: a partition of the wrong things is still
+    # the wrong answer.
+    from sqlalchemy import text
+
+    db.execute(text("PRAGMA writable_schema = 1"))
+    # The third record: the first was processed by the run above, so this one
+    # has no row yet and the insert cannot be refused for the wrong reason.
+    db.add(
+        ScholarshipSupervisorCoverage(
+            scholarship_id=db.query(Scholarship).order_by(Scholarship.id).all()[2].id,
+            status="not_a_real_state",
+        )
+    )
+    db.commit()
+    with pytest.raises(SystemExit):
+        module.build_report(db.get_bind())
+
+
+def test_the_report_separates_contacts_from_professors(monkeypatch, db):
+    """A contact and a professor are different populations, and stay that way.
+
+    A live pass could otherwise publish an office on a record that also has
+    professors, which is how an office starts being read as an academic. The
+    generator asserts the two do not overlap, and that is the assertion under
+    test.
+    """
+    module = _report_module()
+    _serve_discovery(
+        monkeypatch,
+        GENUINE_FACULTY_PAGE,
+        programme_html=PROGRAMME_PAGE_WITH_CONTACT,
+    )
+    _scholarship(
+        db,
+        degree="Short-term professional development (2-52 weeks)",
+        program_type=None,
+    )
+    run_supervisor_batch(db, _options(collect_contacts=True))
+
+    report = module.build_report(db.get_bind())
+    # The contact exists, the professor count does not move.
+    assert report["contacts"]["official_contacts"] == 1
+    assert report["professors"]["publishable_relationships"] == 0
+    assert report["professors"]["published_professors"] == 0
+
+
+def test_the_report_reconciles_persisted_rows_against_the_audit_log(monkeypatch, db, tmp_path):
+    """An unaudited persisted record is disclosed, not absorbed into a total.
+
+    The reconciliation figure is what distinguishes "states" from "events", and
+    it is the reason a killed run can be audited after the fact.
+    """
+    module = _report_module()
+    _serve_discovery(monkeypatch, GENUINE_FACULTY_PAGE)
+    _three_uncovered(db)
+    audit_path = tmp_path / "audit.jsonl"
+
+    run_supervisor_batch(db, _options(limit=2, audit_path=audit_path))
+    # Write the third record's state without its audit line, which is the shape
+    # of a run interrupted between persistence and bookkeeping.
+    from sqlalchemy import text
+
+    third = db.query(Scholarship).order_by(Scholarship.id).all()[2]
+    db.execute(text("PRAGMA writable_schema = 1"))
+    db.add(
+        ScholarshipSupervisorCoverage(
+            scholarship_id=third.id,
+            status=str(SupervisorCoverageStatus.SOURCE_BLOCKED),
+            
+        )
+    )
+    db.commit()
+
+    report = module.build_report(db.get_bind(), audit_path=audit_path)
+    reconciliation = report["reconciliation"]
+    assert reconciliation["audit_log_supplied"] is True
+    assert reconciliation["audited_records"] == 2
+    assert reconciliation["persisted_records"] == 3
+    assert reconciliation["persisted_without_audit_line"] == 1
+    assert reconciliation["unaudited_scholarship_ids"] == [third.id]
+
+
+def test_the_report_says_when_reconciliation_was_not_checked(monkeypatch, db):
+    """No audit log supplied means the check is reported as not done.
+
+    Stating the absence is what stops a missing check from being read as a
+    passing one.
+    """
+    module = _report_module()
+    _serve_discovery(monkeypatch, GENUINE_FACULTY_PAGE)
+    _three_uncovered(db)
+
+    report = module.build_report(db.get_bind(), audit_path=None)
+    assert report["reconciliation"]["audit_log_supplied"] is False
+    assert report["reconciliation"]["persisted_without_audit_line"] == 0
 
 
 def test_a_failed_item_does_not_end_the_run(monkeypatch, db):
