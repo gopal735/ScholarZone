@@ -1,0 +1,47 @@
+{
+  "id": "669",
+  "verdict": "needs_review",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:15:00Z",
+  "sources": [
+    {
+      "url": "https://comstech.org/comstech-fellowship",
+      "kind": "official",
+      "note": "COMSTECH's own programme page for the Fellowships for Research and Advanced Training in Virology and Vaccine Technologies, read in full (comstech.org is the organisation's own domain; the page carries the Secretariat's address and @comstech.org contacts)."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The page is hosted on COMSTECH's own domain and names COMSTECH (with the Host Institutions Joint Fellowships Committee) as the awarder, matching the record's awarding body.",
+      "quote": "Fellowships are awarded by COMSTECH, along with Host Institutions Joint Fellowships Committee, based on scientific merit."
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "No closing date is published. Under 'Call Status' the page states the call is currently open, matching the record's rolling deadline label exactly (checked 12 October 2026).",
+      "quote": "The call is currently open"
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "All record claims confirmed: citizens of OIC member states; young scientists employed by a research institution in an OIC country; M.S. in Biomedical/Health Sciences for graduate studies or Ph.D. for post-graduate studies; age limits 35 (graduate) and 45 (post-graduate); preference for women scientists, early-career scientists, and those working in OIC LDCs or Muslim-majority areas in non-OIC states.",
+      "quote": "Eligible applicants for the fellowships are young scientists working in any area of biomedical sciences who are citizens of an OIC country, and are employed by a research institution in an OIC country."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "Partially funded, as the record says: COMSTECH provides international low-cost airfare for a visit of at most three months; the host institution is expected to provide subsistence, supervision and training. No tuition, stipend or full-cost support is covered.",
+      "quote": "COMSTECH will provide international low-cost airfare. The host institutions are expected to provide subsistence supervision, and mentor local trainings."
+    },
+    "degree_levels": {
+      "status": "unconfirmed",
+      "detail": "The record's single 'PhD' level cannot be confirmed as stated. The page describes a 3-month research and advanced training fellowship (no degree is awarded) with two applicant tracks: graduate studies (minimum M.S. in Biomedical/Health Sciences, age limit 35) and post-graduate studies (minimum Ph.D. in Biomedical/Health Sciences, age limit 45). 'PhD' omits the graduate/M.S. track.",
+      "quote": "They are offered to young scientists holding at least an M.S. in Biomedical/Health Sciences or equivalent degree for graduate studies, and Ph.D. in Biomedical/Health Sciences for post-graduate studies."
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "The call is currently open (no closing date published; applications by email or the online form to the COMSTECH Secretariat, Islamabad)",
+    "deadline_date": null,
+    "verification_notes": "Page read live 2026-10-12; call status 'currently open', rolling, no closing date. Funding is partial: COMSTECH covers international low-cost airfare for a maximum three-month visit at a host centre of excellence in another OIC country; host institutions provide subsistence and supervision. Degree levels in the record ('PhD') are imprecise: the call has graduate (minimum M.S., age limit 35) and post-graduate (minimum Ph.D., age limit 45) tracks and awards no degree. Country 'Multiple' is consistent with 'Eligible Countries: All OIC member states'; the record's region 'Middle East' understates this."
+  },
+  "notes_for_reviewer": "A human should decide the degree_levels value: the page supports 'M.S./Ph.D. (short research training fellowship; no degree awarded)' rather than 'PhD' alone, and whether region should be 'Multiple' instead of 'Middle East'. Everything else (awarding body, rolling open call, eligibility, partial funding) matches the record verbatim."
+}

@@ -1,0 +1,57 @@
+{
+  "id": "677",
+  "verdict": "active",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:20:00Z",
+  "sources": [
+    {
+      "url": "https://uct.ac.za/mastercardfdn/apply-mastercard-foundation-scholars-program",
+      "kind": "official",
+      "note": "The University of Cape Town's own 'Apply to The Mastercard Foundation Scholars Program' page (the record's official_source_url). It loaded directly; no fallback search was needed. States the 2027 intake is open for postgraduate applicants with a 31 October 2026 deadline."
+    },
+    {
+      "url": "https://uct.ac.za/mastercardfdn/scholarship-overview",
+      "kind": "official",
+      "note": "UCT's own 'About the Program' page, linked from the apply page's programme menu. Read to confirm what the funding actually covers (the apply page does not itemise it)."
+    },
+    {
+      "url": "https://uct.ac.za/mastercardfdn/frequently-asked-questions",
+      "kind": "official",
+      "note": "UCT's own FAQ page for the programme, read for the funding itemisation. NOTE: this page carries stale content referencing 2022 and 2024 intakes and a 30 April 2024 deadline; the apply page governs the current cycle."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The page is on UCT's own domain (uct.ac.za) and is the university's own description of the Mastercard Foundation Scholars Program it runs in partnership with the Mastercard Foundation. It is not an aggregator, news article, blog or Wikipedia mirror.",
+      "quote": "The University of Cape Town (UCT), in partnership with the Mastercard Foundation, provides scholarships and comprehensive support to academically talented young people who face significant social and economic barriers to accessing higher education."
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "The page states applications for the 2027 intake are open for postgraduate applicants and close 31 October 2026, which matches the record's deadline_label and deadline_date exactly. Today (12 October 2026) falls inside that open window, so the cycle is currently open. Undergraduate applications for 2027 are separately stated as closed (30 September 2026), consistent with the record's postgraduate title.",
+      "quote": "Applications for Postgraduate closes 31 October 2026. ... For applicants to an eligible postgraduate diploma in the Faculty of Health Sciences or an honours degree or master's programme at UCT, the Mastercard Foundation Scholars Program application deadline is 31 October 2026."
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "Every distinct eligibility claim in the record is confirmed on the page: citizenship of an African country, facing significant social and economic barriers, applying for a first bachelor's degree, a Faculty of Health Sciences postgraduate diploma, an honours degree or a coursework master's degree, and UCT's explicit encouragement of young women, people living with disabilities, refugees and forcibly displaced youth.",
+      "quote": "Be a citizen of an African country, including South Africa; ... Be applying for their first bachelor's degree or an eligible taught postgraduate programme at UCT including: o a postgraduate diploma offered by the Faculty of Health Sciences; o an honours degree offered by any of UCT's six faculties; or o a coursework master's programme offered by any of UCT's six faculties ... Face significant social and economic barriers to accessing higher education ... We encourage applications from young women, people living with disabilities, refugees, forcibly displaced youth and all young people whose access to opportunity has been impeded by social and economic barriers."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The record's 'Fully Funded' claim is confirmed and is not tuition-only. UCT's programme page itemises comprehensive financial support: tuition fees, a laptop, campus accommodation, living expenses, medical aid, a study visa where applicable, and annual travel to and from UCT. The FAQ calls the award full-cost and lists full tuition and international student fees, accommodation, meals, medical cover, a living stipend, a book allowance, visa costs and an air ticket home.",
+      "quote": "Comprehensive financial support covering tuition fees for your chosen programme of study, a laptop, accommodation on UCT's campuses, living expenses, medical aid, a study visa (where applicable) and annual travel to and from UCT."
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "The levels the programme actually offers include the record's Bachelor's and Master's: the page states it is available to students applying for their first bachelor's degree or an eligible postgraduate diploma, honours degree or master's degree. Note the page explicitly excludes part-time study and qualifications by research only, and the record's degree-levels field omits the postgraduate diploma and honours levels the page also lists (an omission, not a contradiction).",
+      "quote": "The Mastercard Foundation Scholars Program is available to students applying for their first bachelor's degree, or for an eligible postgraduate diploma, honours degree or master's degree at UCT."
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "For applicants to an eligible postgraduate diploma in the Faculty of Health Sciences or an honours degree or master's programme at UCT, the Mastercard Foundation Scholars Program application deadline is 31 October 2026.",
+    "deadline_date": "2026-10-31",
+    "verification_notes": "Official UCT page read in full on 12 October 2026; the recorded 31 October 2026 deadline matches the page verbatim and applies to the currently-open 2027 postgraduate intake, so the record is active. Undergraduate applications for the 2027 intake closed earlier (30 September 2026). The record's degree_levels field ('Bachelor's, Master's') is incomplete: the current page also offers an eligible Faculty of Health Sciences postgraduate diploma and honours degrees, and explicitly excludes part-time study and research-only qualifications (Master's by dissertation or PhD). Two pages on the same official site were also read: the programme overview (funding itemisation) and the FAQ, which is stale and still references 2022/2024 intakes and a 30 April 2024 deadline - do not trust the FAQ for cycle dates. Re-check the same URL after 31 October 2026 for the next cycle."
+  },
+  "notes_for_reviewer": "All five claims check out and the cycle is open, so the record can be marked active. Two things a human should decide. (1) The FAQ page on UCT's own site is badly out of date - it says only 'Masters (by Research only)' are available, that undergraduate, honours, coursework master's, postgraduate diploma, MBA and PhD applications 'will not be accepted', and repeats a 30 April 2024 deadline. None of that matches the current apply page, which offers taught postgraduate programmes and closes 31 October 2026; a human may want to ask UCT to update or remove the FAQ, and should not let a future re-check read the FAQ's dates. (2) The record's degree_levels field omits the postgraduate diploma and honours degrees that the programme also funds; if the catalogue's degree-level lists are meant to be exhaustive, that field should be expanded. Minor wording note: the programme overview page describes scholars as coming 'from Sub-Saharan Africa' while the apply page's eligibility list says 'Be a citizen of an African country, including South Africa' - the apply page governs and supports the record's wording."
+}

@@ -1,0 +1,62 @@
+{
+  "id": "245",
+  "verdict": "needs_review",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:24:32Z",
+  "sources": [
+    {
+      "url": "https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid/6656-call-for-2026-chinese-government-scholarship-for-international-students-to-study-at-ucas",
+      "kind": "official",
+      "note": "The record's official_source_url, read in full: 'Call for 2026 Chinese Government Scholarship for International Students to Study at UCAS' on the University of Chinese Academy of Sciences' own site (english.ucas.ac.cn)."
+    },
+    {
+      "url": "https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid",
+      "kind": "official",
+      "note": "UCAS Financial Aids index for international students. Lists the most recent calls; the newest Chinese Government Scholarship call is the 2026 one (item 6656) and no 2027 call is published as of 12 October 2026."
+    },
+    {
+      "url": "https://english.ucas.ac.cn/index.php/admission/international-students/deadline",
+      "kind": "official",
+      "note": "UCAS international-students deadline page, listing 'Chinese Government Scholarship 2026-01-31' as that programme's deadline."
+    },
+    {
+      "url": "https://english.ucas.ac.cn/index.php/admission/international-students/notice",
+      "kind": "official",
+      "note": "UCAS international-students notices page. Most recent items are 2026-cycle results announcements, confirming the 2026 admission cycle has concluded; no 2027 call notice exists."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The page is on english.ucas.ac.cn, the University of Chinese Academy of Sciences' own domain, and is UCAS's own call page for this scholarship. It states UCAS recruits scholars entrusted by China's Ministry of Education and runs applications through the China Scholarship Council's system (csc.edu.cn, agency number 80001), matching the record's 'University of Chinese Academy of Sciences (UCAS) & China Scholarship Council (CSC)'.",
+      "quote": "Entrusted by the Ministry of Education of the People's Republic of China, University of Chinese Academy of Sciences (hereinafter referred to as 'UCAS') will recruit outstanding young graduate students from all over the world and provide them full scholarships."
+    },
+    "deadline": {
+      "status": "unconfirmed",
+      "detail": "The page states one deadline, 'January 31st, 2026 (Beijing Time)', which matches the record's deadline_label verbatim. However, as of today (12 October 2026) that deadline is in the past: it governed the 2026 call, for which UCAS has now announced results (notice page lists 'Results of the 2026 CAS-ANSO Scholarship' and 'Candidates of 2026 Excellent International Students of UCAS'). UCAS's Financial Aids index and deadline page show no newer cycle, so no published deadline for a currently-open cycle could be confirmed, and per the campaign brief the record is not verifiable as open.",
+      "quote": "APPLICATION DEADLINE January 31st, 2026 (Beijing Time)"
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "Every eligibility claim in the record is confirmed by the page, point for point: non-Chinese citizenship with valid passport, friendliness to China and compliance with Chinese law and UCAS rules, English or Mandarin proficiency, bachelor's-equivalent degree for Master's applicants aged 35 or under, master's-equivalent degree for PhD applicants aged 40 or under, no other sponsorship held at application or during the scholarship, and full-time study in the enrolled research institute.",
+      "quote": "Be non-Chinese citizens with a valid passport, friendly to China and abiding by the laws and decrees of China, and UCAS rules and regulations; Be proficient in English or Mandarin; ... Applicants for master's programs must have held a degree or diploma equivalent to a Chinese bachelor's degree and the applicant should be no more than 35 years old. Applicants for PhD programs must have held a degree or diploma equivalent to a Chinese master's degree and the applicant should be no more than 40 years old. ... Applicants must not have accepted any other sponsorship at the time of application and cannot accept any other sponsorship during the period of this scholarship."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The award is fully funded as the record says: tuition fee exemption (RMB 40,000/year PhD, RMB 30,000/year Master), application fee exemption (RMB 600), monthly stipend (RMB 5,000 PhD / RMB 3,500 Master), free UCAS campus housing or an off-campus accommodation subsidy (up to RMB 1,000/month doctoral, RMB 700/month master's), and medical insurance of RMB 800 per person.",
+      "quote": "Successful PhD students who are awarded a scholarship are exempted from the tuition fee of RMB 40,000/year. ... Successful Master students who are awarded a scholarship are exempted from the tuition fee of RMB 30,000/year. ... Successful PhD applicants will receive a monthly stipend of RMB 5,000 ... Medical Insurance RMB 800/person."
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "The programme covers exactly the two levels in the record - Master's and PhD - with different tuition, stipend and sponsorship terms for each. No other degree levels are offered in this call.",
+      "quote": "Sponsorship Period Master students: 36 months (with no extension) PhD students: 36 months (with permitted extension of no more than 12 months)"
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "APPLICATION DEADLINE January 31st, 2026 (Beijing Time) - deadline of the 2026 cycle, which has closed; no 2027 deadline was published on UCAS's site as of 12 October 2026",
+    "deadline_date": "2026-01-31",
+    "verification_notes": "Checked 2026-10-12 by reading UCAS's official 2026 call page in full. Every material field of the record (awarding body, eligibility, funding, degree levels) matches the live page verbatim; the deadline_label also matches the page exactly. The sole issue is timing: the page's only published deadline is January 31st, 2026 (Beijing Time) for the 2026 cycle, which is now in the past, and UCAS has not yet published a 2027 call (confirmed against the Financial Aids index, the deadline page and the notices page, whose latest items are 2026 results announcements). The record's facts are accurate; what could not be confirmed is a currently-open cycle. Re-check when UCAS publishes the next call, historically around late 2026/early 2027 with a January 31 deadline."
+  },
+  "notes_for_reviewer": "A human must decide how to treat an annually recurring scholarship whose current cycle has closed. Options: keep 'active' (the programme exists, the site is live, and every fact in the record is confirmed verbatim) or demote to needs_review/closed until the 2027 call appears. Under this campaign's rule ('If the page shows a past deadline, the record is not verifiable as open') the honest verdict is needs_review; nothing on the page contradicts the record itself. Note the page also still references 'the 2025 Enrollment Guide for international students', which is a stale pointer on UCAS's own page but does not affect the record."
+}

@@ -1,0 +1,57 @@
+{
+  "id": "593",
+  "verdict": "active",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:15:00Z",
+  "sources": [
+    {
+      "url": "https://perimeterinstitute.ca/training/phd-students",
+      "kind": "official",
+      "note": "Perimeter Institute's own programme page for Resident PhD students and the PhD Residency Program Award: partner universities, supervision model, funding, and annual application timeline."
+    },
+    {
+      "url": "https://perimeterinstitute.ca/training/phd-students/how-to-apply-for-phd-award",
+      "kind": "official",
+      "note": "Perimeter Institute's own 'How to Apply for PhD Award' page: application steps, Expression of Interest deadline rule, and the link to the current Expression of Interest listing."
+    },
+    {
+      "url": "https://academicjobsonline.org/ajo/jobs/32457",
+      "kind": "official",
+      "note": "The Institute's own award posting on the AcademicJobsOnline platform, linked from its How to Apply page: '2027 Expression of Interest for PhD Residency Award', appl deadline 'none', posted 2026/08/13 and currently open."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "Both pages read are on perimeterinstitute.ca, the Perimeter Institute for Theoretical Physics' own domain (footer: 'Copyright © 2000-2026 Perimeter Institute for Theoretical Physics', Waterloo, Ontario). This is the awarding organisation's own programme page, not an aggregator or news page.",
+      "quote": "Resident PhD students are supervised by a Faculty, Associate Faculty, or Senior Researcher located at Perimeter Institute but receive their degree from a partnering university where their supervisor has a full or adjunct appointment."
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "The record correctly carries no exact deadline (deadline_precision 'recurring'). The official page states no fixed date: the Expression of Interest deadline follows each partner university's application deadline, and the award posting itself is listed with 'Appl Deadline: none (posted 2026/08/13)' for the 2027 cycle. The cycle is currently open as of 12 October 2026 — the 2027 Expression of Interest is live with an Apply button and no deadline, consistent with the page's annual timeline (November–January submissions for the Fall start).",
+      "quote": "NOTE: The Expression of Interest deadline is based on the application deadline of the university you are applying to. Your Expression of Interest must be submitted within one week of submitting your university application (for multiple university applications, use the earliest application date)."
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "All eligibility claims confirmed. The page lists exactly the seven partner universities named in the record (Dalhousie, McMaster, University of Guelph, University of Toronto, University of Waterloo, Western University, York University), requires a Perimeter-affiliated supervisor, and requires a separate Expression of Interest to the Residency Award in addition to the university PhD application. The award posting adds that a Residency Award requires acceptance to a partner-university PhD program, acceptance by a Perimeter faculty member, and awards-committee approval.",
+      "quote": "Interested students must submit an application for the Perimeter PhD Residency Award in addition to a separate PhD application submitted to one of the partner universities listed above."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "Confirmed as a doctoral funding package of university support plus a Perimeter top-up, exactly as the record states. The page says resident PhD students are financially supported through their home university (typically 4 years / 12 academic terms) and the Residency Award provides a top-up to $30,000 per year after fees and tuition until Term 12, building on the university department's standard funding package. The award also includes non-cash benefits (desk, facilities access, technology grant, mentorship). The $30,000 figure applies to the top-up, not the total package.",
+      "quote": "Top-up funding to $30,000 per year (after fees and tuition) until Term 12. This is based on a September – August academic year and builds on the university department's standard funding package."
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "The programme is PhD-level only; the page is Perimeter's 'PhD Students' page for the PhD Residency Program Award, and the award posting is an 'Academic admissions' posting for PhD residency. The record's 'PhD' matches.",
+      "quote": "Perimeter Institute invites graduate students to express their interest in obtaining a PhD Residency Award while pursuing their PhD from a partner university where their supervisor has a full or adjunct appointment."
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "No fixed deadline: the Expression of Interest deadline is based on the application deadline of the university being applied to, and must be submitted within one week of the university application. The 2027 Expression of Interest posting (posted 2026/08/13) lists 'Appl Deadline: none'. Residency start is generally tied to the Fall intake cycle.",
+    "deadline_date": null,
+    "verification_notes": "Programme and all record claims re-verified against perimeterinstitute.ca on 2026-10-12; keep official_source_url. At the next re-check, confirm a new Expression of Interest posting has replaced the 2027 listing on AcademicJobsOnline (typically posted around August for the following year) and that the $30,000 top-up amount and Term-12 limit are unchanged. Minor wording tension to be aware of: the How to Apply page says the Expression of Interest is due within one week of the university application, while the award posting says it 'must be submitted to Perimeter at the same time as an application to a partner university'."
+  },
+  "notes_for_reviewer": null
+}

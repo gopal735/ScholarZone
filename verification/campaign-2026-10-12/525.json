@@ -1,0 +1,62 @@
+{
+  "id": "525",
+  "verdict": "needs_review",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:10:26Z",
+  "sources": [
+    {
+      "url": "https://www.gla.ac.uk/scholarships/sanctuaryscholarships",
+      "kind": "official",
+      "note": "The awarding body's own page for the Sanctuary Scholarship (University of Glasgow, gla.ac.uk). Read in full on 12 Oct 2026: intro, eligibility criteria, documentation requirements, number of scholarships, eligible countries, eligible programmes, value and the 'How to apply' section."
+    },
+    {
+      "url": "https://www.gla.ac.uk/explore/sanctuary/",
+      "kind": "official",
+      "note": "University of Glasgow's 'University of Sanctuary' hub, linked from the scholarship page. Confirms the award exists as a UK-based UG and PGT scheme for applicants seeking sanctuary and points to the same scholarship URL."
+    },
+    {
+      "url": "https://www.gla.ac.uk/scholarships/",
+      "kind": "official",
+      "note": "University of Glasgow scholarships index, reached from the record's page. Confirms the recording URL is the institutional canonical location for scholarship pages and links the University of Sanctuary section."
+    },
+    {
+      "url": "https://www.gla.ac.uk/scholarships/howtoapply/",
+      "kind": "official",
+      "note": "University of Glasgow's 'How to apply for a scholarship' page, which states that eligibility details, application deadlines and links are posted on individual scholarship webpages — used to confirm that the absence of a date on the scholarship page is the provider's actual position, not a page error."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The record's official_source_url resolves on gla.ac.uk, the University of Glasgow's own domain, and is the University's own scholarship page for this award (breadcrumb: Scholarships & funding > Sanctuary Scholarships). The University of Sanctuary hub on the same domain links to it as 'The Sanctuary Scholarship is available to UG & PGT applicants, currently seeking sanctuary in the UK'.",
+      "quote": "The University of Glasgow Sanctuary Scholarship has been created to support applicants with Refugee or Asylum Seeker status who are currently living in the UK and hold an offer to study with us in the 2027/28 academic year."
+    },
+    "deadline": {
+      "status": "unconfirmed",
+      "detail": "The page publishes no deadline and no application opening date. Its 'How to apply' section says only that applications for the 2027-28 session 'will open soon' and offers a register-your-interest form, so as of 12 October 2026 there is no currently-open cycle to quote a deadline for. The record's deadline_label is a verbatim copy of that sentence, so the wording itself matches the page exactly — the unconfirmed element is that no date exists anywhere on the page.",
+      "quote": "Applications for this scholarship for the 2027-28 academic session will open soon. In the meantime please provide your details and we will be in touch when the scholarship is open for applications."
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "Every distinct claim in the record's eligibility_summary is confirmed: UK-based applicants ('You must currently be located in the United Kingdom and have Home or RUK fee status'), refugee or asylum seeker status (asylum claim submitted, appeal pending, or Refugee Status / Humanitarian Protection / Discretionary Leave granted), arrival through a named UK resettlement scheme (UKRS, Afghan Citizens Resettlement Scheme, ARAP, VPRS, Ukraine Sponsorship Scheme, Ukraine Family Scheme), a firm offer for full-time study at Glasgow, and ineligibility for mainstream student finance (the full waiver is for those unable to access SAAS or Student Finance). One caveat: the offer bullet on the page reads 'for 2027/26', which appears to be a typo against the '2027/28' used everywhere else on the same page, and the page additionally requires a programme application before a scholarship application.",
+      "quote": "Hold a firm conditional or unconditional offer for full time study at the University of Glasgow for 2027/26 - You must currently be located in the United Kingdom and have Home or RUK fee status. - Have submitted a claim for asylum in the UK OR are actively appealing a negative decision on claim for asylum in the UK OR have been granted Refugee Status, Humanitarian Protection (HP) or Discretionary Leave (DL) by the Home Office, as a result of an asylum claim."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The record's 'Tuition Fee Waiver' is confirmed as a real component: the page states a full tuition fee waiver for the duration of the programme. However the record materially understates the award — the same page also gives a cash stipend ('£4,000 per year stipend, to assist with study costs') and explicitly excludes accommodation, so this is not a tuition-only award but it is also not a fully funded award in the accommodation sense. The page is additionally self-contradictory on the stipend amount: two places say £4,000 per year while the two 'students with refugee status and access to funding' paragraphs say a £5,000 stipend. The amount cannot be settled from this page.",
+      "quote": "The Sanctuary Scholarship also provides a £4,000 per year stipend, to assist with study costs."
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "Confirmed at the level the record states. The page is open to 'prospective undergraduate and postgraduate taught students' applying for September 2027/28 entry, which covers Undergraduate and taught Master's. Two nuances for the catalogue: the page's 'postgraduate taught' is broader than 'Master's' (the eligible-programmes list includes MRes and PGDE-type awards), and it explicitly excludes PGdip, PDGE and part-time programmes. There is no postgraduate research (PhD) route.",
+      "quote": "The scholarship is open to prospective undergraduate and postgraduate taught students at the University of Glasgow applying for entry in September 2027/28. Please note that you must have applied to the University before submitting an application for this scholarship."
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "Applications for this scholarship for the 2027-28 academic session will open soon. In the meantime please provide your details and we will be in touch when the scholarship is open for applications.",
+    "deadline_date": null,
+    "verification_notes": "Checked 12 Oct 2026 against https://www.gla.ac.uk/scholarships/sanctuaryscholarships (read in full; no PDF involved). The stored official_source_url is correct and needs no change — the trailing-slash variant also resolves. Do not set this record to 'active': the page publishes no deadline, no opening date and no application form, only a register-your-interest form, so there is no currently-open cycle to verify a deadline against. The record's deadline_label is a verbatim match of the page's 'How to apply' sentence and can stay as-is. Two things a human should resolve before the next re-check: (1) funding_type 'Tuition Fee Waiver' omits the stipend and the page contradicts itself on its size (£4,000 per year in the body and 'Value' sections vs £5,000 in the two 'students with refugee status and access to funding' paragraphs); (2) the eligibility bullet reads 'Hold a firm conditional or unconditional offer for full time study at the University of Glasgow for 2027/26' while the rest of the page says 2027/28, so the year is almost certainly a typo on the provider's page. Re-check when the 2027/28 cycle opens; the University's 'How to apply for a scholarship' page states that 'All eligibility details, application deadlines and links are posted on individual scholarship webpages', so the date will appear on this same URL."
+  },
+  "notes_for_reviewer": "Verdict is needs_review rather than active only because the programme is not open: the awarding body, eligibility, degree levels and the existence of a tuition fee waiver are all confirmed on the University's own page, but the page carries no deadline at all — applications for the 2027-28 session 'will open soon'. Two editorial decisions are needed. First, funding: the page offers a full tuition fee waiver plus a stipend, but states the stipend as £4,000 per year in two places and £5,000 in two others, so the funding_type 'Tuition Fee Waiver' is incomplete and the stipend figure is ambiguous on the provider's own page; accommodation is expressly not covered. Second, degree levels: the page says 'postgraduate taught', which is broader than the record's 'Master's' (MRes and PGDE-type programmes appear in the eligible list) and expressly excludes PGdip, PDGE and part-time study, with no PhD route. Also note the record's eligibility text says applicants must hold a firm offer, and the page adds that a programme application must be submitted to the University before a scholarship application, plus supporting ARC/BRP, Immigration Bail Reporting Notice or share-code documentation."
+}

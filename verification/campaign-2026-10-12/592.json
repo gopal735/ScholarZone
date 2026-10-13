@@ -1,0 +1,52 @@
+{
+  "id": "592",
+  "verdict": "active",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:12:00Z",
+  "sources": [
+    {
+      "url": "https://indspire.ca/programs/students/bursaries-scholarships",
+      "kind": "official",
+      "note": "Indspire's own Bursaries & Scholarships page (Programs > Students) describing the Building Brighter Futures programme for the current cycle."
+    },
+    {
+      "url": "https://indspire.ca/programs/students/bursaries-scholarships/faqs/",
+      "kind": "official",
+      "note": "Indspire's official Building Brighter Futures FAQ page with application window, consideration dates, eligibility and award-amount details."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The URL resolves to Indspire's own website (indspire.ca), titled 'Bursaries & Scholarships | Indspire', and the page states 'Indspire's Building Brighter Futures: Bursaries and Scholarships (BBF) program opens doors through education.' The site footer reads 'Copyright © 2026 Indspire. Charity BN/Registration #11883 4696 RR0001'. This is the awarding organisation's own page, not an aggregator or news article.",
+      "quote": "Indspire's Building Brighter Futures: Bursaries and Scholarships (BBF) program opens doors through education."
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "The page states the deadlines exactly as recorded: 'Deadlines: August 1, November 1, February 1 at 11:59 p.m. EST.' The page covers the currently-open cycle ('September 2026 to August 2027 academic year'), and the FAQ adds 'Applications are accepted continuously from May 1st through February 1st; however, consideration dates are August 1st, November 1st and February 1st.' with the cycle closing 'February 1, 2027'. Today (12 October 2026) the next consideration date is 1 November 2026, matching the record's deadline_date of 2026-11-01.",
+      "quote": "Deadlines: August 1, November 1, February 1 at 11:59 p.m. EST."
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "Confirmed: First Nations, Inuit and Métis students ('Indspire has provided over $313 million in financial support ... to First Nations, Inuit and Métis students'); 'Full and part time studies in college, university, skilled trades, apprenticeships, and technology programs.'; skilled-trades 'part-time or full-time certificate or diploma programs (1 month to 4 year programs)'; and 'There is one application for all of Indspire's bursaries and scholarships ... You only need to complete the application once to be considered for all applicable bursaries and scholarships.' Supporting nuance from the FAQ: part-time is limited ('minimum course-load requirement of 60% (or 40% with a disability-related accommodation)') and the programme is Canada-based, with the exception that 'Students studying outside of Canada must be enrolled in a graduate-level program to be eligible.'",
+      "quote": "Full and part time studies in college, university, skilled trades, apprenticeships, and technology programs."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "Consistent with 'Partially Funded': awards are variable bursaries/discretionary funds, not a full-ride or tuition-only package. 'Building Brighter Futures' funding model is unlike any other in the country, wherever possible funds are awarded to a student to use as they wish – tuition, childcare, food, cultural support, shelter, travel, etc.' The FAQ states 'Amounts vary based on several factors, including the assessed financial need of applicants, the number of applicants, fields of study, and the availability of funds.' and the page warns 'we're not able to fund every student that applies.'",
+      "quote": "Amounts vary based on several factors, including the assessed financial need of applicants, the number of applicants, fields of study, and the availability of funds."
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "The record's 'College Certificate, Diploma, Bachelor's' is supported by the page's 'Full and part time studies in college, university, skilled trades, apprenticeships, and technology programs.' and 'part-time or full-time certificate or diploma programs (1 month to 4 year programs)'. Note the page frames offerings as programme types rather than degree levels, and the FAQ references graduate-level study ('Students studying outside of Canada must be enrolled in a graduate-level program to be eligible.'), so the record's list looks like a floor rather than a cap.",
+      "quote": "Full and part time studies in college, university, skilled trades, apprenticeships, and technology programs."
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "Deadlines: August 1, November 1, February 1 at 11:59 p.m. EST. Applications are accepted continuously from May 1st through February 1st; however, consideration dates are August 1st, November 1st and February 1st.",
+    "deadline_date": "2026-11-01",
+    "verification_notes": "Page live and current on 2026-10-12: cycle stated as 'September 2026 to August 2027 academic year', next consideration date 1 November 2026, cycle closes 1 February 2027. For the next re-check: confirm the page still carries the 2027-2028 cycle wording after 1 Feb 2027; note part-time has a 60% course-load minimum (40% with disability accommodation); note degree-levels field may be incomplete (university/graduate study referenced in FAQ); BBF Program Policy PDF (Revised_BBF_Policy_Nov_2_2025.pdf) is linked from the page for full rules."
+  },
+  "notes_for_reviewer": "Record is accurate as recorded; optional refinements: (1) degree_levels lists 'College Certificate, Diploma, Bachelor's' but the page frames offerings as programme types (college, university, skilled trades, apprenticeships, technology) and the FAQ implies graduate-level eligibility for study abroad, so the list may understate coverage; (2) eligibility_summary says 'full-time or part-time' as the page does, but the FAQ limits part-time to a 60% course load (40% with accommodation) — worth a one-line caveat for applicants; (3) application window opens 1 May each year, so this is a recurring cycle rather than a one-off competition."
+}

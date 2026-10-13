@@ -1,0 +1,62 @@
+{
+  "id": "679",
+  "verdict": "needs_review",
+  "confidence": "high",
+  "checked_at": "2026-10-13T01:18:29Z",
+  "sources": [
+    {
+      "url": "https://appels-propositions.auf.org/appel-a-candidatures-2026-27-formations-diplomantes-internationales-a-distance",
+      "kind": "official",
+      "note": "Official call page on the AUF's own 'Appels a Propositions' platform (appels-propositions.auf.org, footer '© AUF 2026 - Tous droits réservés', powered by eMundus). This is the awarding body's own page and it was read in full."
+    },
+    {
+      "url": "https://appels-propositions.auf.org/en/appel-a-candidatures-2026-27-formations-diplomantes-internationales-a-distance",
+      "kind": "official",
+      "note": "English version of the same official call page; identical body text (the platform states the French version is authoritative). Used to confirm the content is not language-variant."
+    },
+    {
+      "url": "https://appels-propositions.auf.org/",
+      "kind": "official",
+      "note": "Platform home page listing all current AUF calls. Confirms the 2026/27 FOAD call is now marked 'Closed' and that no successor 2027/28 call has been published as of the check date."
+    },
+    {
+      "url": "https://l.auf.org/FOAD-FD",
+      "kind": "official",
+      "note": "Catalogue of the 150+ FOAD programmes, linked from the call page. It is a JavaScript application whose content could not be rendered, so it was not used as evidence for any claim."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The page is the Agence universitaire de la Francophonie's own platform, and the text credits the AUF with the support of its Institut de la Formation à Distance de la Francophonie (IFIC), exactly as the record states.",
+      "quote": "Avec l'appui de l'IFIC, l'Agence Universitaire de la Francophonie (AUF) soutient les étudiants francophones par :"
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "The published closing date matches the record exactly: 14/09/2026 at 23:59 Europe/Paris for programmes starting January/February 2027, and 9 June 2026 for programmes starting September/October 2026. However, both dates are in the past as of 12 October 2026, and the platform's call listing marks the programme 'Closed', so the deadline is not for a currently-open cycle.",
+      "quote": "Clôture : 14/09/2026 à 23h59 ; Fuseau horaire : Europe/Paris — Formations débutant en septembre / octobre 2026 : Clôture des candidatures : 9 juin 2026 — Formations débutant en janvier / février 2027 : Clôture des candidatures : 14 septembre 2026"
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "Confirmed: the call is addressed to Francophone students, the allowance targets the highest-achieving or resource-limited students, and the offer covers 150+ international distance programmes run by 45+ AUF member institutions in 13 countries — all matching the record's eligibility_summary.",
+      "quote": "Vous êtes étudiant.e Francophone ? Vous souhaitez intégrer une formation diplômante internationale à distance (FOAD) et obtenir un diplôme universitaire sans quitter votre pays de résidence ? Plus de 150 formations universitaires diplômantes allant de la licence au doctorat, proposées par plus de 45 établissements membres de l'AUF de 13 pays !"
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The award is an international virtual-mobility allowance that partially covers registration fees only — no living costs, travel or full tuition coverage is offered. The record's 'Partially Funded' is correct; this is not a fully funded award.",
+      "quote": "Une allocation de mobilité virtuelle internationale sous forme d'une prise en charge partielle des frais d'inscription pour les étudiants les plus méritants ou ayant des ressources limitées ;"
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "The catalogue spans from licence (bachelor's) to doctorate, matching the record's Bachelor's, Master's, Doctorate.",
+      "quote": "Plus de 150 formations universitaires diplômantes allant de la licence au doctorat"
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "Clôture : 14/09/2026 à 23h59 (fuseau horaire : Europe/Paris) — formations débutant en janvier / février 2027 ; 9 juin 2026 pour les formations débutant en septembre / octobre 2026",
+    "deadline_date": "2026-09-14",
+    "verification_notes": "All record claims confirmed against the AUF's official call page (campaign check date 12 October 2026); the only blocker for 'active' is that the 2026/27 cycle closed on 14 September 2026 at 23:59 Europe/Paris, so no cycle is currently open. The AUF runs this call annually (the 2026/27 edition launched 07/04/2026), so a 2027/28 edition is expected around April 2027 with a likely mid-September 2027 closing. Re-check then via the same platform URL; programme contact is foad@auf.org. The funding is partial tuition/registration-fee coverage only — never present as fully funded. The JS catalogue behind l.auf.org/FOAD-FD could not be rendered; if the exact list of the 13 countries matters, re-check with a browser. Note that the platform home page mis-links this call's 'More information' entry to a different (qualifying-programme) call, but the canonical URL in the record works and shows the correct page."
+    },
+    "notes_for_reviewer": "The record's five verified claims (awarding body, deadline, eligibility, funding, degree levels) all match the official page exactly, so the content fields are trustworthy. The human decision needed is display status: since the cycle closed 14 September 2026 and the next edition is not yet published, the record should not be shown as an open opportunity today; it is a recurring annual programme that reopens around April each year. Secondary point: the record's 'region: Africa' is not stated on the call page, which describes AUF member institutions in 13 countries without an Africa-only restriction — worth a human glance, but it does not affect the verdict."
+}

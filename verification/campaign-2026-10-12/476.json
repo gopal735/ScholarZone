@@ -1,0 +1,62 @@
+{
+  "id": "476",
+  "verdict": "active",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:06:00Z",
+  "sources": [
+    {
+      "url": "https://www.gilmanscholarship.org",
+      "kind": "official",
+      "note": "Official Gilman Program homepage. States 'This is the official Gilman Program website', identifies the awarding body, and carries the 'Gilman app closed / Application Closed' notice with the Fall 2026 deadline of October 1, 2026 at 11:59PM PT."
+    },
+    {
+      "url": "https://www.gilmanscholarship.org/applicants/deadlines-and-timeline/",
+      "kind": "official",
+      "note": "Official Deadlines & Timeline page. Confirms the Fall 2026 cycle is closed (student deadline October 1, 2026, advisor certification October 8, 2026) and publishes the Spring 2027 cycle: opens mid-January 2027, student deadline February 25, 2027 11:59pm PT, advisor certification March 4, 2027."
+    },
+    {
+      "url": "https://www.gilmanscholarship.org/applicants/eligibility/",
+      "kind": "official",
+      "note": "Official Eligibility page. Lists the applicant requirements (citizenship, study level, Federal Pell Grant, credit-bearing study abroad or internship programme)."
+    },
+    {
+      "url": "https://www.gilmanscholarship.org/program/program-overview/",
+      "kind": "official",
+      "note": "Official Program Overview page. States the award amount ('up to $5,000'), the 'high financial need' criterion, and the expenses the award defrays."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "gilmanscholarship.org is the programme's own official site ('This is the official Gilman Program website'), with footer links to state.gov/eca.state.gov and iie.org and official correspondence on the iie.org domain. It states the programme is a U.S. Department of State Bureau of Educational and Cultural Affairs programme administered by the Institute of International Education since 2001, exactly matching the record's awarding body.",
+      "quote": "The Gilman Program is congressionally funded and named after the late Congressman Benjamin A. Gilman (R-NY). It is a program of the U.S. Department of State's Bureau of Educational and Cultural Affairs and has been administered by the Institute of International Education since 2001."
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "The Deadlines & Timeline page confirms the record's deadline_label word for word: the Fall 2026 cycle closed (student deadline Thursday, October 1, 2026, 11:59pm PT; advisor certification October 8, 2026) and the Spring 2027 application opens mid-January 2027 with student deadline Thursday, February 25, 2027, 11:59pm PT and advisor certification deadline Thursday, March 4, 2027. The record's deadline_date 2027-02-25 matches the published future deadline exactly. As of the check date the programme is between cycles, which the record already states.",
+      "quote": "The application deadline is Thursday, February 25, 2027, at 11:59pm Pacific Time, and the advisor certification deadline is Thursday, March 4, 2027."
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "All distinct claims in the record's eligibility_summary were confirmed: U.S. citizens/nationals; undergraduate students (two-year and four-year accredited U.S. institutions) with high financial need; receiving, or able to prove they will receive, a Federal Pell Grant; and applying to/accepted to a credit-bearing study abroad or internship programme abroad. The Program Overview page also uses the 'high financial need' wording verbatim.",
+      "quote": "To be eligible for a Gilman scholarship, an applicant must be: A citizen or national of the United States; An undergraduate student in good standing at an accredited institution of higher education in the United States (including both two-year and four-year institutions); Receiving a Federal Pell Grant during the time of application or provide proof that they will be receiving a Pell Grant during the term of their study abroad program or internship; In the process of applying to, or accepted to, a credit-bearing study abroad or internship program."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "'Partially Funded' is accurate. The standard award is up to $5,000 (nearly 3,000 awards per academic year) and is a capped defrayment of eligible costs - programme tuition, room and board, books, local transportation, insurance, international airfare, passport and visa fees - not full funding. Limited supplemental STEM and Critical Need Language awards exist on top of the standard award.",
+      "quote": "The U.S. Department of State's Benjamin A. Gilman International Scholarship Program (Gilman Program) provides up to $5,000 in merit-based scholarships to outstanding American undergraduate students with high financial need to pursue credit-bearing academic studies and career-oriented internships abroad."
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "The programme is undergraduate only: American/U.S.-citizen undergraduates at accredited U.S. two-year and four-year institutions. No graduate level is offered. The new Gilman Skills for America Scholarship is also aimed at two-year college students (undergraduate level), so 'Undergraduate' remains correct.",
+      "quote": "Nearly 3,000 scholarships of up to $5,000 will be awarded this academic year for U.S. citizen undergraduates to study or intern abroad."
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "Spring 2027 Application: opens mid-January 2027; student deadline Thursday, February 25, 2027, 11:59pm PT; advisor certification deadline Thursday, March 4, 2027. Fall 2026 cycle closed (student deadline was Thursday, October 1, 2026, 11:59pm PT; advisor certification October 8, 2026).",
+    "deadline_date": "2027-02-25",
+    "verification_notes": "Checked 2026-10-12 against the official Deadlines & Timeline page; the record's deadline_label matches the page. As of the check date the programme is between cycles: the Fall 2026 application closed October 1, 2026 (notifications December 2026) and the Spring 2027 application opens mid-January 2027, with deadline February 25, 2027 11:59pm PT, advisor certification March 4, 2027, notification May 2027. Standard award remains up to $5,000, so 'Partially Funded' stays correct; supplemental STEM and Critical Need Language awards add limited extra funding. A new Gilman Skills for America Scholarship (up to $5,000, two-year college students, no extra essay) appears on the Program Overview page - still undergraduate level. Homepage countdown banner renders as unrendered template text ('{day} Days : {hour} Hours'); cosmetic site issue only. Deadline is Pacific Time; late applications are not accepted."
+  },
+  "notes_for_reviewer": "No material conflict - all five fields confirmed on the awarding body's own pages. One nuance for a human: as of 12 October 2026 no application window is open (the Fall 2026 cycle closed 1 October 2026 and the Spring 2027 cycle opens mid-January 2027). If the catalogue distinguishes 'open now' from 'between cycles', the card should show the programme as between cycles; the record's deadline_label already states this accurately."
+}

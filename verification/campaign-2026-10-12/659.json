@@ -1,0 +1,47 @@
+{
+  "id": "659",
+  "verdict": "active",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:20:00Z",
+  "sources": [
+    {
+      "url": "https://www.massey.ac.nz/study/scholarships-and-awards/postgraduate-international-study-grants",
+      "kind": "official",
+      "note": "Massey University's own scholarships-and-awards page for the Postgraduate International Study Grants, on the university's massey.ac.nz domain. Read in full (not a snippet)."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The page is on Massey University's own massey.ac.nz domain, is titled 'Postgraduate International Study Grants', and the overview explicitly names 'The Massey University Postgraduate International Study Grants'. This is the awarding body's own page, not an aggregator.",
+      "quote": "The Massey University Postgraduate International Study Grants support new to Massey students through a tuition fee contribution of NZ$10,000."
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "There is no fixed application deadline. The page shows 'Status: Open' and states the grant is assessed at the point of admission for a 2027 intake, which matches the record's rolling / no-deadline claim and is a currently-open cycle.",
+      "quote": "Status: Open ... For international students enrolling at Massey University for the first time in a postgraduate degree starting in any intake in 2027. ... There is no separate application for the International Study Grant; you will be assessed at the point of admission, and, if successful, the grant will display on your admission offer of place."
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "Confirmed: new international students (any region), full-time, new to Massey, 2027 intake, onshore in New Zealand, and exclusion of students holding a fully funded government scholarship (Fed Aid, SACM, Manaaki, TSLS or similar). One minor mismatch: the live page lists 21 eligible Master's degrees, whereas the record's eligibility_summary says 'twenty-two'. This is a count-metadata discrepancy only; the substance of the eligibility criteria is confirmed.",
+      "quote": "You will be new to Massey and enrolling full time in one of the following postgraduate degrees in 2027 ... Students who have received fully funded government scholarships are not eligible for the study grant. This includes but is not limited to Fed Aid, SACM, Manaaki, or TSLS."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The award is a NZ$10,000 tuition-fee contribution (a partial tuition waiver), not fully funded. This agrees with the record's 'Tuition Fee Waiver (NZ$10,000 towards tuition fees)'. A tuition-only award is correctly not listed as fully funded.",
+      "quote": "Value: NZ$10,000 towards tuition fees ... The Massey University Postgraduate International Study Grants support new to Massey students through a tuition fee contribution of NZ$10,000."
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "The page specifies 'Full-time, Masters' and every listed programme is a Master's degree, matching the record's Master's degree level.",
+      "quote": "Type of study: Full-time, Masters"
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "No separate application; assessed at the point of admission for any 2027 intake (Status: Open).",
+    "deadline_date": null,
+    "verification_notes": "Live page Status: Open for 2027 intake; rolling/assessed-at-admission with no fixed deadline. The eligible-programme list on the page currently numbers 21 Master's degrees, while the record's eligibility_summary says 'twenty-two'; correct the count to the current official list on the next edit. All other claims verified against the live official page."
+  },
+  "notes_for_reviewer": "The record is substantively correct and the grant is currently open for the 2027 intake. The only discrepancy found is that the live page lists 21 eligible Master's degrees rather than the 'twenty-two' stated in the record's eligibility_summary; recommend updating that count. Everything else (awarding body = Massey University; NZ$10,000 tuition contribution, i.e. partially funded; Master's level; international, full-time, new-to-Massey, 2027 intake, onshore; exclusion of fully funded government scholarship holders) matches the live official page exactly."
+}

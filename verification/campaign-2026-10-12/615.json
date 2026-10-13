@@ -1,0 +1,47 @@
+{
+  "id": "615",
+  "verdict": "needs_review",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:10:00Z",
+  "sources": [
+    {
+      "url": "https://www.massey.ac.nz/study/scholarships-and-awards/massey-university-doctoral-scholarship",
+      "kind": "official",
+      "note": "Massey University's own page for the Massey University Doctoral Scholarship, on massey.ac.nz. Page read in full; it shows Status: Closed for the 2026 cycle."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The page is on Massey University's own domain (massey.ac.nz) and is the university's own description of this scholarship, not an aggregator, news article or blog.",
+      "quote": "Massey University Doctoral Scholarships are awarded to high achieving students to provide financial support for their doctoral study."
+    },
+    "deadline": {
+      "status": "unconfirmed",
+      "detail": "The page states the 2026 cycle closes 1 October 2026, which matches the record's deadline exactly, but that date is 11 days in the past today and the page's Status is 'Closed'. There is no currently-open cycle, so per the campaign rules the record is not verifiable as open.",
+      "quote": "Status: Closed ... Applications open: 1 August 2026 ... Closing date: 1 October 2026"
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "All recorded eligibility claims are confirmed: candidates enrolled in (or holding an offer of place for) the PhD, DClinPsych or DSW at Massey at the closing date, a GPA of 7.0 or higher, a research topic of strategic value to the University, and agreement to the scholarship regulations.",
+      "quote": "You should: be enrolled in the first 12 months of doctoral study, or have an offer of place for doctoral study at Massey University; have a GPA of 7.0 or higher; be researching a topic of strategic value to the University; agree to the conditions of the scholarship as outlined in the scholarship regulations"
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The award is fully funded: a $90,000 stipend plus fees over three years, matching the record's 'Fully Funded' claim. It is not tuition-only.",
+      "quote": "Value: $90,000 plus fees ... This is a scholarship for a stipend plus fees."
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "Doctoral level only, full-time or part-time: Doctor of Philosophy (PhD), Doctor of Clinical Psychology (DClinPsych) and Doctor of Social Work (DSW), consistent with the record's 'PhD'.",
+      "quote": "The Massey University Doctoral Scholarship is available to full-time and part-time candidates enrolled in the Doctor of Philosophy (PhD), Doctor of Clinical Psychology (DClinPsych) or Doctor of Social Work (DSW)."
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "Applications open 1 August 2026 and close 1 October 2026.",
+    "deadline_date": "2026-10-01",
+    "verification_notes": "Awarding body, eligibility, funding and degree-level claims all confirmed against the official page on 12 October 2026. The stated 2026 cycle closed 1 October 2026 (page Status: Closed); the award appears annual (opens 1 August), so do not mark active until a currently-open cycle's page is read. Re-check around August 2027."
+  },
+  "notes_for_reviewer": "The recorded deadline (1 October 2026) is correct but already past as of 12 October 2026, and the official page shows Status: Closed, so the record is factually accurate but not currently open. Kept at needs_review per the campaign rule that a past deadline is not verifiable as open; a human should decide whether to relabel the award as annual/recurring and when to re-check."
+}

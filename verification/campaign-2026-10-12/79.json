@@ -1,0 +1,67 @@
+{
+  "id": "79",
+  "verdict": "quarantined",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:06:00Z",
+  "sources": [
+    {
+      "url": "https://www.ed.ac.uk/student-funding/postgraduate/international",
+      "kind": "official",
+      "note": "The record's official_source_url. University of Edinburgh 'Funding for international students' landing page. It never mentions the Edinburgh Global Research Scholarship, so it cannot evidence any claim for this record."
+    },
+    {
+      "url": "https://www.research.ed.ac.uk/en/prizes/edinburgh-global-research-scholarship/",
+      "kind": "official",
+      "note": "University of Edinburgh Research Explorer prize record for the Edinburgh Global Research Scholarship (a 2019 award). Confirms the prize existed and was granted by the University of Edinburgh, but is a historical record, not a live programme page."
+    },
+    {
+      "url": "https://registryservices.ed.ac.uk/student-funding/postgraduate/international/other-funding/doctoral-college",
+      "kind": "official",
+      "note": "University of Edinburgh Scholarships and Student Funding site: Edinburgh Doctoral College Scholarships — the University's current flagship PhD scheme (tuition fee + UKRI stipend, open to UK and overseas students), with a live 2027-2028 cycle and per-school deadlines (e.g. Biological Sciences 16 November 2026, Business School 2 February 2027)."
+    },
+    {
+      "url": "https://registryservices.ed.ac.uk/student-funding/postgraduate/international/region/multi-regional-awards",
+      "kind": "official",
+      "note": "University of Edinburgh 'Multi-regional awards' listing for international postgraduates. Lists Chevening, Commonwealth schemes, Edinburgh Doctoral College Scholarships, GREAT and Garden Scholarships; the Edinburgh Global Research Scholarship is not listed."
+    },
+    {
+      "url": "https://www.globaladmissions.com/scholarship/edinburgh-scholarship",
+      "kind": "aggregator",
+      "note": "Aggregator page advertising an 'Edinburgh Global Research Scholarship 2026-2027' with a 1 February 2026 deadline (a past cycle) and an internally inconsistent 'estimated 30 April 2027' note. Its stated 'Official Website' is the generic funding page above. Read only as corroboration; not treated as evidence."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The University's own Research Explorer prize record names the granting organisation as the University of Edinburgh, matching the record. However, this confirms only the historical prize (2019 award); no current official page for the programme exists on ed.ac.uk.",
+      "quote": "Granting Organisations: University of Edinburgh, United Kingdom"
+    },
+    "deadline": {
+      "status": "unconfirmed",
+      "detail": "No live official page publishes any deadline for the Edinburgh Global Research Scholarship. Plausible URLs on ed.ac.uk return 404, and the programme is absent from the scholarship site navigation and listings, so no currently-open cycle deadline can be quoted.",
+      "quote": null
+    },
+    "eligibility": {
+      "status": "unconfirmed",
+      "detail": "The record's eligibility wording ('Financial means, nationality and the proposed field of study are not taken into account') closely mirrors the Edinburgh Doctoral College Scholarships criteria page ('Other factors such as financial status, nationality and the proposed field of study are not taken into account.'), but that is the successor scheme, not this scholarship. The record's GRS-specific claims (overseas fee liability, offer/admission to a full-time Edinburgh PhD, outstanding merit, any subject) cannot be confirmed from any current official page.",
+      "quote": "Other factors such as financial status, nationality and the proposed field of study are not taken into account."
+    },
+    "funding": {
+      "status": "unconfirmed",
+      "detail": "The Research Explorer prize record fingerprint 'Tuition Fee 100%' is consistent with the record's 'Tuition Fee Waiver' classification, and the historical scholarship covered the overseas tuition fee differential rather than living costs. However, this is metadata on a 2019 prize record, not a live programme page, so the funding claim cannot be confirmed for any current cycle.",
+      "quote": "Tuition Fee 100%"
+    },
+    "degree_levels": {
+      "status": "unconfirmed",
+      "detail": "The record claims PhD. The Research Explorer description ('internationally competitive, merit-based award | selected amongst 6000+ researchers, 30+ institutes') is consistent with a doctoral research award, but no current official page states the degree levels offered.",
+      "quote": "internationally competitive, merit-based award | selected amongst 6000+ researchers, 30+ institutes."
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": null,
+    "deadline_date": null,
+    "verification_notes": "The recorded official_source_url is a generic 'Funding for international students' landing page that does not mention the Edinburgh Global Research Scholarship. No live official page for the programme exists on ed.ac.uk: plausible paths (e.g. /student-funding/postgraduate/global-research-scholarship) return 404, and it is absent from the international postgraduate funding navigation, the multi-regional awards listing, and the scholarship search. The only official trace is the Research Explorer prize record for a 2019 award. The University's current flagship PhD scheme for international students is the Edinburgh Doctoral College Scholarships (University tuition fee plus UKRI-rate stipend; open to UK and overseas students; 2027-2028 cycle with per-school deadlines from 16 November 2026). Aggregator pages still advertise a February-deadline cycle but point back to the generic page and are not authoritative. Treat this record as a historical programme unless a live official page appears."
+  },
+  "notes_for_reviewer": "Human decision needed: the catalogue record describes a programme (Edinburgh Global Research Scholarship, tuition-differential award for overseas PhD students) that the University of Edinburgh no longer advertises anywhere on its live site. Options are to retire the record, relabel it as historical, or repoint applicants to the Edinburgh Doctoral College Scholarships page (https://registryservices.ed.ac.uk/student-funding/postgraduate/international/other-funding/doctoral-college), which covers tuition plus a stipend for UK and overseas students. Aggregators (globaladmissions.com, scholarwing.com) still list a live cycle with a 1 February deadline; none is an official source and their own 'official website' links resolve to the generic funding page that does not mention the scholarship."
+}

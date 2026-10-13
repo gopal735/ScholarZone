@@ -1,0 +1,62 @@
+{
+  "id": "523",
+  "verdict": "needs_review",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:11:20Z",
+  "sources": [
+    {
+      "url": "https://unhcr-dafi-tertiary.scholarshipsplatform.com/page/ynXGvbmb",
+      "kind": "other",
+      "note": "The official_source_url recorded in the catalogue. This is the third-party 'DAFI Programme Management Platform' (Good Grants) run by Creative Force Ltd, not UNHCR's own page. It did not render: fetch returned only the JavaScript-block/maintenance shell of the application platform, so no programme content could be read from it. UNHCR country pages link to this platform as the application portal, but it carries no programme terms."
+    },
+    {
+      "url": "https://help.unhcr.org/rwanda/2026/07/15/call-for-application-for-dafi-scholarship-programme-for-academic-year-2026-2027",
+      "kind": "official",
+      "note": "UNHCR's own Help platform (help.unhcr.org, UNHCR Rwanda): the current 2026-2027 DAFI call for applications, read in full. Contains programme description, funding scope, ISCED levels, eligibility criteria and the application window."
+    },
+    {
+      "url": "https://help.unhcr.org/centralasia/kyrgyzstan/dafi-scholarship-programme-2026/",
+      "kind": "official",
+      "note": "UNHCR's own Help platform (help.unhcr.org, UNHCR Central Asia, Kyrgyzstan): the 2026 DAFI call, read in full. Contains programme history, funding scope, award duration, selection criteria and the application window."
+    },
+    {
+      "url": "https://www.unhcr.org/what-we-do/build-better-futures/education/higher-education-and-skills/dafi-tertiary-scholarship-0",
+      "kind": "official",
+      "note": "UNHCR's global DAFI Tertiary Scholarship Programme page. Direct fetch was blocked (HTTP 403), so its text was only seen through search-result excerpts, not read in full; no quote in this report is taken from it. It is the canonical global page the catalogue should point to instead of the application platform."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "Both pages read in full are on UNHCR's own domains (help.unhcr.org country operations), and both present DAFI as UNHCR's programme: 'UNHCR's Tertiary Refugee Scholarship Programme (DAFI)'. The record's description (UNHCR-run, German-origin funded, implemented by UNHCR country operations and partners) matches the pages: the programme began as a German initiative in 1992 and is run by UNHCR with education partners. The record's donor detail naming the Governments of Denmark and the Czech Republic and private donors is not confirmed on the pages read (Germany is confirmed; Denmark/private donors appeared only in search snippets of pages I could not fetch directly). This donor detail is not material to the record's core claim.",
+      "quote": "UNHCR's Tertiary Refugee Scholarship Programme (DAFI) offers qualified refugee and returnee (in selected countries*) students the possibility to earn an undergraduate degree in their country of asylum or home country."
+    },
+    "deadline": {
+      "status": "unconfirmed",
+      "detail": "The record's structural claim is correct: UNHCR publishes no single global DAFI deadline; each country operation sets and publishes its own application window on the UNHCR Help country pages. However, as of 12 October 2026 every 2026/2027 country window I could read has already closed: Kyrgyzstan 'Application Period: 7 July - 31 July 2026', Rwanda 'Applications will be accepted from 15 July to 7 August 2026' (Kazakhstan and Tajikistan also closed 31 July 2026, seen only in search snippets; a partner-posted Yemen call closed 14 September 2026). No currently-open country call could be found, so there is no deadline for a currently-open cycle to quote today. Separately, the record's Kyrgyzstan example date (21 August 2026) does not match the Kyrgyzstan page as it stands today (7 July - 31 July 2026); a search snippet of the same URL showed 21 August, so the page may have been edited.",
+      "quote": "Application Period: 7 July – 31 July 2026 (until 23:59 Bishkek time)."
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "The record's eligibility claims are confirmed on the official pages: recognised refugees (asylum-seekers registered with the state authority are also eligible per the Kyrgyzstan criteria) and, in selected countries, returnees; undergraduate ISCED level 6 or short-cycle tertiary/TVET at ISCED level 5 of two years or more, in the country of asylum or home country; and applicants receiving another higher-education scholarship are excluded. The official pages add criteria the record omits without contradicting it: maximum age 28 at the start of studies (exceptions possible), no other family member receiving a DAFI scholarship, completed secondary education, and demonstrated financial need.",
+      "quote": "DAFI covers programmes at International Standard Classification of Education (ISCED) level 6, bachelor's degrees or equivalent level qualifications. ... DAFI can also cover short-cycle tertiary education, ISCED level 5 courses. ... Applicants currently benefiting from another Higher Education scholarship programmes, are not eligible to apply for DAFI scholarship."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The 'Fully Funded' claim is supported: the award is a full support package, not tuition-only. The Rwanda page states the package covers tuition, study materials, food, transportation and accommodation; the Kyrgyzstan page specifies tuition fees plus a monthly living stipend and a one-time educational-materials allowance. Coverage varies somewhat by country ('The scholarship package varies from country to country').",
+      "quote": "The scholarship package varies from country to country and covers a range of costs including tuition and study materials, food, transportation, and accommodation."
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "Undergraduate only, as the record states. The Kyrgyzstan page caps awards at four years of undergraduate or equivalent study and rules out master's; the Rwanda page repeats that master's degrees are not covered.",
+      "quote": "DAFI scholarships are awarded for a maximum of four years of undergraduate or equivalent degree studies at accredited higher education institutions. The programme does not support master's degree studies."
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": "https://www.unhcr.org/what-we-do/build-better-futures/education/higher-education-and-skills/dafi-tertiary-scholarship-0",
+    "deadline_text": "No global deadline is published. Each UNHCR country operation publishes its own call window on the UNHCR Help country pages; applicants must check their own country operation. Windows read on 12 October 2026, all closed: Kyrgyzstan 'Application Period: 7 July - 31 July 2026 (until 23:59 Bishkek time)'; Rwanda 'Applications will be accepted from 15 July to 7 August 2026. Please note that late applications will not be considered.'",
+    "deadline_date": null,
+    "verification_notes": "Re-check against UNHCR's global DAFI page and the help.unhcr.org country pages at re-check time. The programme is live and recurring (annual report published for 2024; 2026/2027 country calls ran July-September 2026), but DAFI has no open cycle at any fixed calendar date, so the record cannot be marked active on a fixed deadline alone - mark active only when a specific country call is currently open, and quote that call's window verbatim. Do not treat the scholarshipsplatform.com URL as the programme's official page: it is the application portal, requires JavaScript, and carries no terms; the global DAFI page above is the canonical source. The record's Kyrgyzstan example (21 August 2026) conflicts with the current Kyrgyzstan page (31 July 2026) - a search snippet of that URL showed 21 August, so re-quote country windows rather than copying the record's examples."
+  },
+  "notes_for_reviewer": "Every substantive claim in the record (awarding body, eligibility, fully funded coverage, undergraduate-only levels) was confirmed against UNHCR's own pages, so this is not a data problem - the only reason it stays needs_review is that no DAFI call is open today (12 October 2026): every 2026/2027 country window I could read closed between 31 July and 14 September 2026, and the next per-country calls are not yet published. A human may reasonably decide to mark this active as a standing programme if the house convention treats rolling per-country programmes as perpetually open. Two items a human should confirm by opening pages in a browser: (1) UNHCR's DAFI FAQ page (services.unhcr.org/opportunities/frequently-asked-questions/dafi-scholarship-programme-faqs) is JavaScript-rendered and could not be read here - its text (age cap of 28, partial sponsorship possible where a candidate has another funding source) is known only from search snippets and may be worth adding to the eligibility summary; (2) the Czech Republic donor detail in the awarding-body field was not confirmable on any page I could read in full."
+}

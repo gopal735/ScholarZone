@@ -1,0 +1,52 @@
+{
+  "id": "508",
+  "verdict": "conflicting",
+  "confidence": "high",
+  "checked_at": "2026-10-12T20:02:02.239Z",
+  "sources": [
+    {
+      "url": "https://www.vlaanderen.be/en/studying/flanders-trainee-programme",
+      "kind": "official",
+      "note": "Government of Flanders programme page"
+    },
+    {
+      "url": "https://www.vlaanderen.be/en/studying/flanders-trainee-programme/flanders-trainee-programme-application-and-procedure",
+      "kind": "official",
+      "note": "Official application and procedure page carrying the deadline statement"
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The source URL resolves to the Government of Flanders own site (vlaanderen.be), programme page administered by the Department of Foreign Affairs (contact stages.dkbuza@vlaanderen.be). Not an aggregator.",
+      "quote": "Flanders Trainee Programme ... stages.dkbuza@vlaanderen.be ... Koning Albert II-laan 15 bus 207, 1210 Brussel, België"
+    },
+    "deadline": {
+      "status": "contradicted",
+      "detail": "The record publishes \"Closing date for applications: 1st March\" (2027-03-01). The official application page states there is no fixed closing date: applications are accepted up to one day before the internship starts, in principle at any time of the year, and only while budget remains. No 1 March date appears anywhere on the pages read.",
+      "quote": "You can submit your grant application up to six months in advance until one day before the start of your internship. ... In principle, you can apply for a grant at any time of the year, but you can only get a grant if there is still budget available."
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "The record requirement set (under 35 at internship start, diploma from a Flemish institution, an internship of at least two months with an approved organisation) matches the programme conditions; the application page requires the identity card, the Flemish diploma and the acceptance letter, and an attestation from the internship supervisor.",
+      "quote": "copy of your identity card - diploma obtained at a Flemish educational institution - letter of acceptance from the organisation"
+    },
+    "funding": {
+      "status": "unconfirmed",
+      "detail": "The record says \"Stipend\". The main page links a \"Grant amounts\" sub-page but the amounts themselves are not stated on either page read, so the amount cannot be confirmed. The programme is described as \"financial support for an internship with a multilateral organisation\", which is consistent with a stipend but does not confirm the figure.",
+      "quote": "Flanders offers young global citizens financial support for an internship with a multilateral organisation."
+    },
+    "degree_levels": {
+      "status": "unconfirmed",
+      "detail": "The record lists Undergraduate and Masters. The programme is an internship grant and is not degree-specific on the pages read; eligibility rests on holding a secondary or higher education diploma from Flanders rather than on being enrolled in a degree programme.",
+      "quote": "diploma obtained at a Flemish educational institution"
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "No fixed closing date: apply up to one day before the internship starts, at any time of year while budget remains",
+    "deadline_date": null,
+    "verification_notes": "Verified live on vlaanderen.be on 2026-10-12. Two material facts: (1) there is no 1 March closing date - applications are rolling and budget-limited, so any fixed deadline_date is wrong; (2) the 2026 budget is exhausted (\"No more grants for 2026 ... A budget will be available again in 2027. You can reapply for internships taking place in 2027 as from January 2027\"), so the programme is not currently open even though the record is not marked closed."
+  },
+  "notes_for_reviewer": "The deadline model in the record is materially wrong for this programme: rolling, budget-dependent, no closing date. The 2026 grant budget is exhausted and reopens January 2027, which is also a lifecycle question (closed for the current round) that a reviewer must decide separately."
+}
