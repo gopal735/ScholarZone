@@ -3,6 +3,7 @@ import ScholarshipList from '../components/ScholarshipList'
 import { useScholarshipDirectory } from '../hooks/useScholarshipDirectory'
 import { useSavedScholarships } from '../hooks/useSavedScholarships'
 import { SyncNotice } from '../components/SyncNotice'
+import { HowToUse } from '../features/tutorials'
 import './SavedScholarshipsPage.css'
 
 export default function SavedScholarshipsPage() {
@@ -23,6 +24,9 @@ export default function SavedScholarshipsPage() {
 
   return (
     <section className="saved-scholarships-page">
+      {/* Contextual help, above the heading and the sync notice so it does not
+          displace either: the notice is the live state a reader must act on. */}
+      <HowToUse route="/saved" />
       <div className="saved-scholarships-page__heading">
         <div>
           <p className="saved-scholarships-page__eyebrow">Your shortlist</p>

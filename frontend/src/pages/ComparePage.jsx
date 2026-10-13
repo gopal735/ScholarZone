@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useScholarshipDirectory } from '../hooks/useScholarshipDirectory'
 import { useCompare } from '../hooks/useCompare'
 import { COMPARISON_ROWS, NOT_STATED, renderComparisonCell } from '../services/comparisonRows.js'
+import { HowToUse } from '../features/tutorials'
 import './ComparePage.css'
 
 export default function ComparePage() {
@@ -22,6 +23,9 @@ export default function ComparePage() {
 
   return (
     <section className="compare-page">
+      {/* Contextual help, above the heading and the selection count. The count is
+          a live figure, so the guide sits clear of it. */}
+      <HowToUse route="/compare" />
       <div className="compare-page__heading">
         <div>
           <p className="compare-page__eyebrow">Decision support</p>

@@ -37,6 +37,7 @@ import {
   setApplicationState,
 } from '../services/dashboardService'
 import './DashboardPage.css'
+import { HowToUse } from '../features/tutorials'
 
 /** Explicit load states. See the module comment for why this is not a boolean. */
 const DASHBOARD_STATUS = Object.freeze({
@@ -225,6 +226,10 @@ export default function DashboardPage() {
 
   return (
     <div className={`dashboard${reducedMotion ? ' is-reduced-motion' : ''}`}>
+      {/* What the panels mean and what they deliberately do not claim is the
+          first question a returning reader has, so the entry sits above the
+          heading rather than beside it. */}
+      <HowToUse route="/dashboard" />
       <div className="dashboard__inner">
         <header className="dashboard__header">
           <div>

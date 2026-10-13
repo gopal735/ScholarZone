@@ -29,6 +29,7 @@ import {
 import { sourceLabel } from '../services/mentorPresentation'
 
 import './MentorPage.css'
+import { HowToUse } from '../features/tutorials'
 
 const PAGE_STATUS = Object.freeze({
   LOADING: 'loading',
@@ -199,6 +200,9 @@ export default function MentorPage() {
 
   return (
     <div className={`mentor-page${reducedMotion ? ' is-reduced-motion' : ''}`}>
+      {/* An answer without a source is the risk on this page, so the guide
+          explaining how to read the citations goes above the heading. */}
+      <HowToUse route="/mentor" />
       <div className="mentor-page__inner">
         <p className="sz-sr-only" role="status" aria-live="polite">
           {asking ? 'ScholarZone is preparing a grounded answer' : notice ? notice.message : ''}
