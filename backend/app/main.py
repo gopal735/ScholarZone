@@ -36,6 +36,7 @@ from .routers.supervisor_internal import router as supervisor_internal_router
 from .routers.outreach import router as outreach_router
 from .routers.supervisor_email import router as supervisor_email_router
 from .routers.countries import router as countries_router
+from .routers.strategist import router as strategist_router
 from .routers.scholarships_static import router as scholarships_static_router
 from .services.application_workspace import WorkspaceError
 from .seed import seed_database
@@ -372,6 +373,14 @@ app.include_router(internal_maintenance_router)
 # else - no country, no batch, no caller-supplied URL.
 app.include_router(supervisor_internal_router)
 app.include_router(countries_router)
+
+# The Study-to-Career Strategist is registered only when its flag is on. With the
+# flag off (the default, in every environment) the /v2/strategist/* paths are not
+# registered at all, so they 404 as an absence rather than a disabled feature that
+# hints at what it would show. This is the single backend on-switch; the frontend
+# has its own independent flag.
+if get_settings().strategist_enabled:
+    app.include_router(strategist_router)
 
 
 @app.get("/debug/fix-null-lists")

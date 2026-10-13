@@ -1,0 +1,59 @@
+{
+  "artifact": "occupation_salary_and_demand_evidence",
+  "wave": 3,
+  "purpose": "Continuation of the country x subject occupation-salary research matrix. Same integrity rule: only occupation- or occupation-class-level sources from an OFFICIAL statistics publisher may populate a subject figure. Employer/survey sites (StepStone, kununu, PayScale, SEEK, Indeed, SalaryExpert/ERI, Jobted, Glassdoor, Randstad, Adzuna) are AGGREGATOR/CROWDSOURCED and are NEVER recorded as official, even when convenient.",
+  "harvested_at": "2026-10-12",
+  "sources": {
+    "nl-cbs-odata-85517ned": {
+      "publisher": "Statistics Netherlands (CBS) - StatLine table 85517NED (uurloonpercentielen per beroep, preliminary)",
+      "source_type": "OFFICIAL_STATISTICS",
+      "url": "https://opendata.cbs.nl/statline/",
+      "occupation_code_system": "CBS occupation class 0811 Software- en applicatieontwikkelaars",
+      "extraction_note": "Figure located via a secondary page that cites the exact CBS OData table; marked for primary confirmation against CBS StatLine before corpus promotion. Gross monthly/overtime-excluded; holiday allowance and allowances not included."
+    },
+    "de-ba-entgeltatlas": {
+      "publisher": "Bundesagentur für Arbeit - Entgeltatlas (Statistik der Bundesagentur für Arbeit)",
+      "source_type": "OFFICIAL_STATISTICS",
+      "url": "https://web.arbeitsagentur.de/entgeltatlas",
+      "occupation_code_system": "KldB 2010 / Berufsaggregate",
+      "extraction_note": "Official occupation-class monthly gross medians (employees subject to social insurance, full-time), derived from reported social-insurance earnings. The web tool is JavaScript-rendered; the exact figure per occupation class was NOT retrieved in this tranche. Employer/survey figures for German software developers (StepStone EUR 50,300; kununu EUR 60,900; profiling-institut EUR 72,000) are AGGREGATOR/CROWDSOURCED and are deliberately NOT recorded."
+    },
+    "au-jsa-osca-2026-04": {
+      "publisher": "Jobs and Skills Australia (JSA/ABS)",
+      "source_type": "OFFICIAL_STATISTICS",
+      "url": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles",
+      "note": "Employment counts by occupation are published; median weekly earnings are not produced for many detailed occupations."
+    }
+  },
+  "claims": [
+    {
+      "occupation_slug": "software_developer",
+      "subject_keys": ["computer_science", "software_engineering"],
+      "occupation_label": "Software- en applicatieontwikkelaars (software and application developers)",
+      "country_iso2": "NL",
+      "source_id": "nl-cbs-odata-85517ned",
+      "occupation_code": "CBS occupation class 0811",
+      "statement": "In the Netherlands, software and application developers (CBS occupation class 0811) had a median gross monthly wage of about EUR 6,032 at a 40-hour week (about EUR 72,384 per year), with the 25th-75th percentile band of about EUR 4,680 to EUR 7,523 per month, from CBS StatLine wage percentiles (preliminary).",
+      "value": 72384,
+      "per": "year",
+      "monthly_median_40h": 6032,
+      "monthly_p25_40h": 4680,
+      "monthly_p75_40h": 7522.67,
+      "currency": "EUR",
+      "basis": "gross",
+      "value_status": "OFFICIAL_STATISTICS",
+      "as_of": "CBS preliminary (referenced via secondary page, 2026)",
+      "url": "https://opendata.cbs.nl/statline/",
+      "granularity": "occupation-class-level, full-time 40h",
+      "needs_primary_confirmation": true
+    }
+  ],
+  "pending_or_gaps": [
+    {"country_iso2": "DE", "subject_key": "computer_science", "reason": "Official source identified (BA Entgeltatlas), but the occupation-class median was not retrieved in this tranche (JS-rendered table). Recorded as NOT-ESTABLISHED rather than filled from employer/survey sites.", "value_status": "UNKNOWN", "official_source_available": true},
+    {"country_iso2": "DE", "subject_key": "civil_engineering", "reason": "Official source identified (BA Entgeltatlas) but figure not retrieved; no occupation-class median captured.", "value_status": "UNKNOWN", "official_source_available": true},
+    {"country_iso2": "NZ", "subject_key": "computer_science", "reason": "No official occupation-level source located. Stats NZ / official DoL does not publish a citable occupation median here; only private aggregators (SalaryExpert/ERI, Indeed, SEEK, PayScale) exist, which are AGGREGATOR/CROWDSOURCED and not used for a subject figure.", "value_status": "UNKNOWN", "official_source_available": false},
+    {"country_iso2": "NZ", "subject_key": "civil_engineering", "reason": "Same as NZ computer_science: only private aggregators (Jobted NZ$91,800; PayScale NZ$78,232; Randstad ~NZ$105,000; SEEK ~NZ$100k) exist, none official. Recorded as a gap for official subject-level pay.", "value_status": "UNKNOWN", "official_source_available": false},
+    {"country_iso2": "NL", "subject_key": "civil_engineering", "reason": "CBS occupation class for civil/structural engineers not retrieved in this tranche.", "value_status": "UNKNOWN", "official_source_available": true},
+    {"country_iso2": "NL", "subject_key": "data_science", "reason": "CBS occupation class for data/AI roles not retrieved in this tranche.", "value_status": "UNKNOWN", "official_source_available": true}
+  ]
+}
