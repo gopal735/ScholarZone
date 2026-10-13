@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react'
+﻿import { useCallback, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useScholarshipDirectory } from '../hooks/useScholarshipDirectory'
 import { useSavedScholarships } from '../hooks/useSavedScholarships'
@@ -18,6 +18,7 @@ import {
 } from '../services/planStorage.js'
 import { describeFunding } from '../utils/fundingFacts.js'
 import { getDeadlineLabel } from '../utils/scholarshipPresentation.js'
+import { HowToUse } from '../features/tutorials'
 import './PlanPage.css'
 
 /** ISO month bucket a record's deadline falls in, or null when unknown. */
@@ -177,11 +178,15 @@ export default function PlanPage() {
   }
 
   return (
-    <section className="plan-page">
-      <header className="plan-page__heading">
-        <div>
-          <p className="plan-page__eyebrow">Your plan</p>
-          <h1>Planning workspace</h1>
+        <section className="plan-page">
+          {/* Contextual help, before the heading and the local-storage notice.
+              The notice is the load-bearing claim on this page — that nothing is
+              synced — so the guide must not appear between it and the reader. */}
+          <HowToUse route="/plan" />
+          <header className="plan-page__heading">
+            <div>
+              <p className="plan-page__eyebrow">Your plan</p>
+              <h1>Planning workspace</h1>
           <p>
             {/* Stated plainly, because it is the one thing a student might
                 otherwise assume. A server-backed workspace exists once signed

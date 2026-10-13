@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+﻿import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import {
@@ -24,6 +24,7 @@ import {
   writeSubstantiation,
 } from '../services/sopBuilderStorage.js'
 import { SEVERITY, reviewDraft } from '../services/sopBuilderReview.js'
+import { HowToUse } from '../features/tutorials'
 import { exportFileName, toMarkdown, toPlainText } from '../services/sopBuilderExport.js'
 import './SopBuilderPage.css'
 
@@ -59,7 +60,7 @@ import './SopBuilderPage.css'
  * a judgement will trust the wrong one.
  */
 
-/* ── Small presentational pieces ───────────────────────────────────── */
+/* â”€â”€ Small presentational pieces â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 /** A word count that never reads as a quota. */
 function WordCount({ words }) {
@@ -109,7 +110,7 @@ function FindingRow({ finding }) {
     <li className={`sop-finding sop-finding--${finding.severity}`}>
       <p className="sop-finding__title">
         <span className="sop-finding__severity" aria-hidden="true">
-          {finding.severity === SEVERITY.IMPORTANT ? '!' : finding.severity === SEVERITY.ATTENTION ? '•' : '·'}
+          {finding.severity === SEVERITY.IMPORTANT ? '!' : finding.severity === SEVERITY.ATTENTION ? 'â€¢' : 'Â·'}
         </span>
         {finding.title}
       </p>
@@ -227,7 +228,7 @@ function ClaimRow({ claim, record, onSubstantiate, onClear }) {
   )
 }
 
-/* ── The page ──────────────────────────────────────────────────────── */
+/* â”€â”€ The page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 export default function SopBuilderPage() {
   const [draft, setDraft] = useState(() => readDraft())
@@ -245,7 +246,7 @@ export default function SopBuilderPage() {
   }, [])
 
   useEffect(() => {
-    document.title = 'Statement builder · ScholarZone'
+    document.title = 'Statement builder Â· ScholarZone'
     return () => {
       document.title = ''
     }
@@ -359,6 +360,10 @@ export default function SopBuilderPage() {
 
   return (
     <section className="sop-page">
+      {/* Contextual help, above the heading and the "saved in this browser only"
+          notice. The notice is the load-bearing claim on this page, so the guide
+          must not appear between it and the reader. */}
+      <HowToUse route="/statement" />
       <header className="sop-page__heading">
         <div>
           <p className="sop-page__eyebrow">Statement builder</p>
@@ -378,7 +383,7 @@ export default function SopBuilderPage() {
 
       <StatusLine status={status} />
 
-      {/* ── Step 1: what this statement is for ─────────────────────── */}
+      {/* â”€â”€ Step 1: what this statement is for â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="sop-step" aria-labelledby="sop-context-heading">
         <StepHeader step={1} title="What this statement is for" />
 
@@ -502,7 +507,7 @@ export default function SopBuilderPage() {
         </p>
       </section>
 
-      {/* ── Step 2: your background ───────────────────────────────── */}
+      {/* â”€â”€ Step 2: your background â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="sop-step" aria-labelledby="sop-background-heading">
         <StepHeader step={2} title="Your background" count="yours to write" />
 
@@ -529,7 +534,7 @@ export default function SopBuilderPage() {
         </div>
       </section>
 
-      {/* ── Step 3: the writing school ────────────────────────────── */}
+      {/* â”€â”€ Step 3: the writing school â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="sop-step" aria-labelledby="sop-school-heading">
         <StepHeader
           step={3}
@@ -615,7 +620,7 @@ export default function SopBuilderPage() {
         </div>
       </section>
 
-      {/* ── Step 4: review ────────────────────────────────────────── */}
+      {/* â”€â”€ Step 4: review â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="sop-step" aria-labelledby="sop-review-heading">
         <StepHeader
           step={4}
@@ -649,8 +654,8 @@ export default function SopBuilderPage() {
             Against your recorded limit of {wordLimit}: {totalWords} words
             {' '}
             {totalWords > wordLimit
-              ? `— ${totalWords - wordLimit} over. Check the source before you cut.`
-              : `— ${wordLimit - totalWords} to spare.`}
+              ? `â€” ${totalWords - wordLimit} over. Check the source before you cut.`
+              : `â€” ${wordLimit - totalWords} to spare.`}
           </p>
         ) : null}
 
@@ -668,7 +673,7 @@ export default function SopBuilderPage() {
             <p className="sop-not-started__lede">
               Nothing has been written in any of the six sections, so there is no text for
               the checks to look at. Write a section in step 3 and this panel will fill in
-              automatically — nothing is hidden while the draft is empty.
+              automatically â€” nothing is hidden while the draft is empty.
             </p>
             <p className="sop-not-started__hint">
               The checks below run on text you have actually written. They do not guess, fill
@@ -717,7 +722,7 @@ export default function SopBuilderPage() {
           <p className="sop-empty">
             {review.notStarted
               ? 'No text findings yet. These checks run over writing, and writing is what is missing rather than what is wrong.'
-              : 'No findings. That is not a statement that the draft is good — it is a statement that these particular checks did not fire. Read it yourself.'}
+              : 'No findings. That is not a statement that the draft is good â€” it is a statement that these particular checks did not fire. Read it yourself.'}
           </p>
         ) : (
           <ul className="sop-findings">
@@ -728,7 +733,7 @@ export default function SopBuilderPage() {
         )}
       </section>
 
-      {/* ── Step 5: substantiate your claims ──────────────────────── */}
+      {/* â”€â”€ Step 5: substantiate your claims â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="sop-step" aria-labelledby="sop-claims-heading">
         <StepHeader
           step={5}
@@ -740,14 +745,14 @@ export default function SopBuilderPage() {
           The checks above found statements that a reader would expect you to be able to
           evidence. For each one: confirm it with the evidence you actually have, or decide to
           take it out. Either is a complete answer, and ScholarZone will not write the answer
-          for you — include only the claims you can substantiate, so that everything in the
+          for you â€” include only the claims you can substantiate, so that everything in the
           draft is something you can stand behind.
         </p>
 
         {review.claims.length === 0 ? (
           <p className="sop-empty">
             No claims were detected. If you have stated something measurable about yourself,
-            check that you could evidence it anyway — this check is a fixed phrase list, not a
+            check that you could evidence it anyway â€” this check is a fixed phrase list, not a
             reader.
           </p>
         ) : (
@@ -765,7 +770,7 @@ export default function SopBuilderPage() {
         )}
       </section>
 
-      {/* ── Step 6: approve, export, manage ───────────────────────── */}
+      {/* â”€â”€ Step 6: approve, export, manage â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="sop-step" aria-labelledby="sop-finish-heading">
         <StepHeader step={6} title="Approve, export and manage" />
 
@@ -779,7 +784,7 @@ export default function SopBuilderPage() {
             />
             <span>
               I have read this whole draft and the claims in it are mine. I understand that the
-              checks above are a limited set of automated writing rules over my own words — not a
+              checks above are a limited set of automated writing rules over my own words â€” not a
               human assessment, and not a prediction of any admission or award.
             </span>
           </label>
@@ -794,7 +799,7 @@ export default function SopBuilderPage() {
               {review.summary.claimsOutstanding} claim
               {review.summary.claimsOutstanding === 1 ? '' : 's'} above still need
               {review.summary.claimsOutstanding === 1 ? 's' : ''} your answer. You can approve
-              anyway — it is your draft — but the export will say so.
+              anyway â€” it is your draft â€” but the export will say so.
             </p>
           ) : null}
         </div>
@@ -825,7 +830,7 @@ export default function SopBuilderPage() {
           </p>
           <pre className="sop-preview" aria-label="Preview of the plain-text export">
             {toPlainText(draft).slice(0, 600)}
-            {toPlainText(draft).length > 600 ? '\n…' : ''}
+            {toPlainText(draft).length > 600 ? '\nâ€¦' : ''}
           </pre>
         </div>
 

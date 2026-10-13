@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+﻿import { useEffect, useRef, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 import { useMatchProfile, MATCH_MODE, MATCH_STATUS } from '../hooks/useMatchProfile'
@@ -12,6 +12,7 @@ import MatchResults from '../components/match/MatchResults'
 import ProfileStrengthPanel from '../components/match/ProfileStrengthPanel'
 import ProfileTextParser from '../components/match/ProfileTextParser'
 import HowThisIsCalculated from '../components/match/HowThisIsCalculated'
+import { HowToUse } from '../features/tutorials'
 import './MatchPage.css'
 
 const DEEP_LINK_KEYS = {
@@ -148,8 +149,12 @@ export function MatchPage() {
     // A section, not a main: Layout already renders the document's single
     // main landmark, and a second one inside it is invalid HTML that leaves
     // assistive tech with two "main" landmarks to choose between.
-    <section className="match-page">
-      <div className="match-page__inner">
+        <section className="match-page">
+          {/* Contextual help, above the form. The profile form is the primary
+              task here, so the guide sits above it rather than between the form
+              and the run button. */}
+          <HowToUse route="/match" />
+          <div className="match-page__inner">
         <h1 className="match-page__title">Match</h1>
         <p className="match-page__lede">
           Tell ScholarZone about yourself and it will check every published eligibility rule

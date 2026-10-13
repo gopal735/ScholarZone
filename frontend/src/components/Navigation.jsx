@@ -125,6 +125,15 @@ export default function Navigation() {
                 Review
               </NavLink>
             )}
+            {/* Tutorials and help. In the utility row rather than the primary
+                row because it is reference material rather than a destination:
+                a student comes to the catalogue to act, and to help when they
+                are unsure how. Its label carries the Bangla as a visually hidden
+                line so the accessible name is the one the reader chose. */}
+            <NavLink to="/help" className={({ isActive }) => `nav-utility-link ${isActive ? 'active' : ''}`}>
+              <span className="sz-sr-only">Help and tutorials: </span>
+              Help
+            </NavLink>
             {status === 'checking' ? (
               <span className="nav-session-status">Checking&hellip;</span>
             ) : status === 'authenticated' ? (

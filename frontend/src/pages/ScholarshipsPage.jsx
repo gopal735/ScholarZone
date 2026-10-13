@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { useScholarshipDirectory } from '../hooks/useScholarshipDirectory'
 import ScholarshipList from '../components/ScholarshipList'
+import { HowToUse } from '../features/tutorials'
 import './ScholarshipsPage.css'
 import { CANONICAL_ORIGIN } from '../services/canonicalOrigin.js'
 
@@ -94,6 +95,10 @@ export default function ScholarshipsPage() {
   return (
     <div className="scholarships-page">
       <div className="scholarships-page__content">
+        {/* Contextual help, before the heading, so it is found first and below
+            the primary controls rather than competing with them. It renders
+            nothing while there is no tutorial for this route. */}
+        <HowToUse route="/scholarships" />
         <div className="page-heading">
           <div>
             <p className="page-eyebrow">Scholarship discovery</p>
