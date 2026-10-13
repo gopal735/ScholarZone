@@ -22,6 +22,7 @@ import {
   fetchApplications,
 } from '../services/applicationsService'
 import './ApplicationsPage.css'
+import { HowToUse } from '../features/tutorials'
 
 const PAGE_STATUS = Object.freeze({
   LOADING: 'loading',
@@ -151,6 +152,10 @@ export default function ApplicationsPage() {
 
   return (
     <div className="applications-page">
+      {/* Which checklist items are award requirements and which are generic
+          guidance is the question that decides whether a reader trusts the
+          progress figure, so the entry goes above the heading. */}
+      <HowToUse route="/applications" />
       <div className="applications-page__inner">
         <header className="applications-page__header">
           <div>

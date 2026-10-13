@@ -21,6 +21,7 @@ import {
 } from '../utils/scholarshipDetail'
 import './ScholarshipDetailsPage.css'
 import { CANONICAL_ORIGIN } from '../services/canonicalOrigin'
+import { HowToUse } from '../features/tutorials'
 
 /* Reveal on scroll, once. Each section plays a different role so the page
    does not read as one animation repeated down the column: headings
@@ -476,6 +477,13 @@ const bestFit = readText(scholarship.best_fit)
   return (
     <article className="sz-detail">
       <BackToDirectory />
+
+      {/* Reading one scholarship properly is the task this page exists for, and
+          the mistakes that cost people an application are made here - treating
+          "not stated" as "none", and planning around a rolling deadline. The
+          guide goes above the provenance notice so it is the first thing after
+          the back link, and it renders nothing if the tutorial is ever removed. */}
+      <HowToUse route="/scholarships/:id" />
 
       {/* Provenance first, before anything the reader might act on. The
           catalogue is served from a static snapshot, which is what keeps it

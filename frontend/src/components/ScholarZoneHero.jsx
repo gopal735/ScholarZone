@@ -238,6 +238,15 @@ export default function ScholarZoneHero() {
             <Link to="/countries" className="sz-hero__cta sz-hero__cta--secondary">
               Browse by country
             </Link>
+            {/* Discoverability, not decoration: this is the entry point a
+                first-time visitor actually needs, so it sits beside the two
+                primary actions rather than behind the navigation. The deep link
+                carries the tutorial id, so the Home guide is already open on
+                arrival instead of a reader landing on the directory and having
+                to know which card to choose. */}
+            <Link to="/help?tutorial=home" className="sz-hero__cta sz-hero__cta--secondary">
+              How to use ScholarZone
+            </Link>
           </div>
 
           {isLoading ? (

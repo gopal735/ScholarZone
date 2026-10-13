@@ -128,11 +128,16 @@ export default function Navigation() {
             {/* Tutorials and help. In the utility row rather than the primary
                 row because it is reference material rather than a destination:
                 a student comes to the catalogue to act, and to help when they
-                are unsure how. Its label carries the Bangla as a visually hidden
-                line so the accessible name is the one the reader chose. */}
+                are unsure how.
+
+                The visible label is "Help & Tutorials" and it is the accessible
+                name too. A previous version showed "Help" and carried
+                "Help and tutorials:" in a screen-reader-only span, so a sighted
+                reader on a narrow viewport got a word that does not say what the
+                link is for while a screen-reader user got the full phrase. One
+                label for both, because the visible text is the label. */}
             <NavLink to="/help" className={({ isActive }) => `nav-utility-link ${isActive ? 'active' : ''}`}>
-              <span className="sz-sr-only">Help and tutorials: </span>
-              Help
+              Help &amp; Tutorials
             </NavLink>
             {status === 'checking' ? (
               <span className="nav-session-status">Checking&hellip;</span>
