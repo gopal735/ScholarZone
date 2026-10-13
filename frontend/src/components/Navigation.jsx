@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import { enabled as consistencyAuditorEnabled } from '../features/consistency-auditor'
+import { enabled as strategistEnabled } from '../features/strategist/flags.js'
 import { LazyMotion, domAnimation, m } from 'motion/react'
 import { useAuth } from '../hooks/useAuth'
 import { useCompare } from '../hooks/useCompare'
@@ -139,6 +140,21 @@ export default function Navigation() {
             <NavLink to="/help" className={({ isActive }) => `nav-utility-link ${isActive ? 'active' : ''}`}>
               Help &amp; Tutorials
             </NavLink>
+            {/* The Study Abroad Planner compares countries on cost, funding,
+                career outcome and work route. It reads the strategist's own
+                module flag - the same one App.jsx uses for the route - so the
+                link cannot exist for a route that does not, and a route that is
+                enabled is never left undiscoverable. Both directions matter: a
+                link with no route is a dead end, a route with no link is a
+                feature nobody can find. */}
+            {strategistEnabled && (
+              <NavLink
+                to="/strategist"
+                className={({ isActive }) => `nav-utility-link ${isActive ? 'active' : ''}`}
+              >
+                Study Abroad Planner
+              </NavLink>
+            )}
             {status === 'checking' ? (
               <span className="nav-session-status">Checking&hellip;</span>
             ) : status === 'authenticated' ? (

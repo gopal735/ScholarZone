@@ -14,7 +14,6 @@ import DashboardPage from './pages/DashboardPage'
 import ApplicationsPage from './pages/ApplicationsPage'
 import MentorPage from './pages/MentorPage'
 import AdminPage from './pages/AdminPage'
-import AdminVerificationPage from './pages/AdminVerificationPage'
 import AdminScholarshipPage from './pages/AdminScholarshipManager'
 import SopBuilderPage from './pages/SopBuilderPage'
 import CountryPage from './pages/CountryPage'
@@ -30,6 +29,7 @@ import { enabled as consistencyAuditorEnabled } from './features/consistency-aud
  * because it is rendered as the layout route's element rather than inside one,
  * and the whole shell suspended. */
 import { TutorialLanguageProvider } from './features/tutorials'
+import { enabled as strategistEnabled } from './features/strategist/flags.js'
 import './App.css'
 
 /**
@@ -59,6 +59,11 @@ const JourneyProvider = lazy(() =>
  */
 const HelpCenterPage = lazy(() =>
   import('./features/tutorials').then((module) => ({ default: module.HelpCenterPage })),
+)
+
+// The strategist is a named export, so the lazy chunk maps it to default.
+const StrategistPage = lazy(() =>
+  import('./features/strategist').then((module) => ({ default: module.StrategistPage })),
 )
 
 function JourneyFallback() {
@@ -147,6 +152,22 @@ function App() {
         {consistencyAuditorEnabled && (
           <Route path="/consistency-review" element={<ConsistencyAuditorPage />} />
         )}
+        {/* Global Study-to-Career Strategist. Inert while the feature's own
+            ``enabled`` flag is false (the default), so the route renders the
+            not-found page and no navigation link exists. Code-split so the wizard
+            and its Bangla dictionary only download when the flag is on and the
+            route is visited. The backend serves /v2/strategist only behind its own
+            independent switch; with either off the feature is unreachable. */}
+        {strategistEnabled && (
+          <Route
+            path="/strategist"
+            element={
+              <Suspense fallback={<JourneyFallback />}>
+                <StrategistPage />
+              </Suspense>
+            }
+          />
+        )}
         {/* The applicant journey, behind Suspense because it is code-split.
             The fallback keeps the route's own region quiet rather than
             replacing the page, so the header and footer stay put while the
@@ -177,7 +198,6 @@ function App() {
           }
         />
         <Route path="/admin" element={<AdminPage />} />
-        <Route path="/admin/verification" element={<AdminVerificationPage />} />
         <Route path="/admin/scholarships" element={<AdminScholarshipPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
