@@ -1,0 +1,47 @@
+{
+  "id": "665",
+  "verdict": "needs_review",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:18:00Z",
+  "sources": [
+    {
+      "url": "https://www.acu.edu.au/research-and-enterprise/graduate-research-school/scholarships/acu-stipend-scholarship",
+      "kind": "official",
+      "note": "Australian Catholic University's own page for the ACU Stipend Scholarship (recorded official_source_url; read directly via a browser session on 12 October 2026)."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The page is on acu.edu.au and is ACU's own scholarship page; it states the scholarship is offered and funded by the Australian Catholic University.",
+      "quote": "The Australian Catholic University offers stipend scholarships to support domestic and international candidates undertaking a Research Doctorate or Research Masters degree."
+    },
+    "deadline": {
+      "status": "unconfirmed",
+      "detail": "The page states the rounds run twice a year and lists only 2026 deadlines, both now past as of the check date: Round 1 'Wednesday 1 April 2026, 11:59 PM (AEDT)' and Round 2 'Thursday 1 October 2026, 11:59 PM (AEST)'. The record's '1 April 2027 (next round)' is consistent with the published twice-yearly April/October pattern but the page does not state any 2027 date, so that exact deadline cannot be confirmed from it. No cycle was open at check time.",
+      "quote": "Applications open twice per annum in April and October."
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "Confirmed both claims: open to all applicants (domestic or overseas) and enrolled in an accredited research higher degree at ACU, with research aligned to ACU's broad areas of expertise.",
+      "quote": "A student must be a domestic student or an overseas student enrolled in an accredited research higher degree at ACU."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The award is fully funded: a living stipend plus a full fee offset, and an Overseas Student Health Care Policy and relocation allowance for international applicants.",
+      "quote": "Stipend scholarship of AUD $34,315* per annum (full-time) Full fee offset valued at approximately AUD $34,728 per annum"
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "The page offers the scholarship for a Research Doctorate or Research Masters degree (PhD and MPhil per ACU's graduate research pages), matching the record's 'PhD, Master's'.",
+      "quote": "The Australian Catholic University offers stipend scholarships to support domestic and international candidates undertaking a Research Doctorate or Research Masters degree."
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "Applications open twice per annum in April and October. Round 1 Application deadline: Wednesday 1 April 2026, 11:59 PM (AEDT); Round 2 Application deadline: Thursday 1 October 2026, 11:59 PM (AEST)",
+    "deadline_date": null,
+    "verification_notes": "Official ACU page read 2026-10-12. Awarding body, eligibility, funding (fully funded: stipend AUD $34,315 p.a. + full fee offset ~AUD $34,728 p.a. + OSHC/relocation for internationals) and degree levels (Research Doctorate / Research Masters) all confirmed. Both published deadlines are in the past (1 Apr 2026 and 1 Oct 2026); as of the check no round was open. The record's '1 April 2027 (next round)' follows the page's stated twice-yearly April/October pattern but is not published on the page. Re-check when ACU posts the 2027 Round 1 dates, expected by around April 2027."
+  },
+  "notes_for_reviewer": "The only open question is the next-cycle deadline. The record lists 2027-04-01, which is a reasonable inference from 'Applications open twice per annum in April and October' (Round 1 has been a 1 April deadline), but ACU had not published any 2027 date on this page as of 12 October 2026 — the page still displayed the 2026 rounds. A human may wish to keep the inferred 1 April 2027 date with a 'next round' label, or wait for the 2027 dates to be announced before re-verifying."
+}

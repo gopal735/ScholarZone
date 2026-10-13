@@ -1,0 +1,57 @@
+{
+  "id": "608",
+  "verdict": "active",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:12:06Z",
+  "sources": [
+    {
+      "url": "https://asian-university.org/admissions/scholarships-financial-aid",
+      "kind": "official",
+      "note": "AUW's own Scholarships & Financial Aid page - states full and partial scholarships, what a full scholarship covers, the Financial Aid Committee assessment process, and shows the 'ADMISSIONS ARE OPEN!' banner."
+    },
+    {
+      "url": "https://asian-university.org/admissions/who-can-apply/",
+      "kind": "official",
+      "note": "AUW's own Who Can Apply page - Charter recruitment region, stateless students and applicants from outside Asia, and the academic admission criteria (10+2, 60% in Grade X/XII, age within 22 years)."
+    },
+    {
+      "url": "https://asian-university.org/admissions/how-to-apply/",
+      "kind": "official",
+      "note": "AUW's own How to Apply page - intake structure (three intakes per year) and the undergraduate / pre-undergraduate (Pathways) program structure financial aid is awarded against."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "All pages read are asian-university.org, the university's own domain. The footer identifies AUW as an independent international university in Chittagong, Bangladesh, chartered by the Parliament of Bangladesh in 2006 - the awarding body named in the record.",
+      "quote": "Asian University for Women (AUW) is an independent, international university in Chittagong, Bangladesh. It was chartered by the Parliament of Bangladesh in 2006."
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "No closing date is published on any AUW admissions page, matching the record's claim. The site states admissions are currently open and AUW intakes students three times per year (Spring class start January, Summer May, Fall September), i.e. a recurring cycle, which matches the record's deadline_precision 'recurring' and its 'admissions are open' statement.",
+      "quote": "AUW intakes students three times per year:"
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "Every distinct claim in the record was confirmed: women applicants; 10+2 / 12 years of education; 60% of marks or equivalent in final Grade X and XII with 60% in English and Maths individually; age within 22 years; Charter-mandated recruitment primarily from South, Southeast, West Asia and the Middle East; stateless students and applicants from outside Asia accepted; financial aid decided by the Financial Aid Committee on assessed family circumstances, not admission merit. (The page additionally lists an IB minimum of 24 points, which the record does not mention but does not contradict.)",
+      "quote": "1. Have completed 10+2, a total of 12 years of education 2. 60% of marks or equivalent grades in the final examinations of grade X & XII, including a minimum score of of 60% in English & Maths individually ... 5. Age must be within 22 years"
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The record's 'Fully Funded, Partially Funded' is confirmed: AUW offers full and partial scholarships based on assessed financial need. A full scholarship covers tuition, room and board, course supplies, student activities, and primary healthcare - genuinely fully funded, not tuition-only. 85% of AUW students receive scholarship support. Travel grants (one-way ticket to Chittagong, return ticket after graduation) may be awarded to qualifying international students.",
+      "quote": "AUW strives to meet the demonstrated financial need of each admitted student and offers full and partial scholarships based on each student's financial circumstances. Full scholarships cover tuition, room and board, course supplies, student activities, and primary healthcare."
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "Financial aid is awarded for the Pre-Undergraduate (Pathways for Promise) and the Undergraduate Program, exactly the record's levels. The How to Apply page confirms the Pre-undergraduate/Pathways route exists for applicants needing academic preparation; no master's financial aid is described on the scholarships page.",
+      "quote": "All financial aid awards are assessed prior to the beginning of each academic program (i.e., Pathways for Promise, or the Undergraduate Program)."
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "No closing date is published. The site states 'ADMISSIONS ARE OPEN!' and that 'AUW intakes students three times per year:' - Spring Season (Class starts in January), Summer Season (Class starts in May) and Fall Season (Class starts in September).",
+    "deadline_date": null,
+    "verification_notes": "Rolling/recurring admission: no published closing date, three intakes per year. Re-check the 'ADMISSIONS ARE OPEN!' banner and the Scholarships & Financial Aid page each cycle; if AUW ever publishes a specific intake deadline or closing date, record it as the deadline and give the record exact deadline_precision. Note also: transfer students are ineligible for financial aid, and aid recipients must maintain a CGPA of 2.5 each year to keep it."
+  },
+  "notes_for_reviewer": null
+}

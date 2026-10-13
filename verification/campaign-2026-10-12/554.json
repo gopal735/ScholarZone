@@ -1,0 +1,57 @@
+{
+  "id": "554",
+  "verdict": "active",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:15:00Z",
+  "sources": [
+    {
+      "url": "https://www.oas.org/es/becas/Mexico/Convocatoria_Secihti_OEA2026.pdf",
+      "kind": "official",
+      "note": "Awarding body's (OAS) own hosted copy of 'CONVOCATORIA 2026 APOYO COMPLEMENTARIO SECIHTI-OEA', issued 28 August 2026, 10 pages. Downloaded and read in full (text extracted with pypdf 6.19.0)."
+    },
+    {
+      "url": "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-2026-apoyo-complementario-secihti-oea/",
+      "kind": "official",
+      "note": "Secihti's own landing page for the same call; states 'Estatus de la convocatoria: Abierta', published 'viernes, 28 agosto 2026', and links 'Descargar convocatoria'. Read 12 Oct 2026."
+    },
+    {
+      "url": "https://secihti.mx/wp-content/uploads/2026/08/Convocatoria_Secihti_OEA_2026-20260828T210839.pdf",
+      "kind": "official",
+      "note": "Secihti-hosted copy of the convocatoria; byte-identical to the OAS copy (SHA-256 C5CFB3224A0CA51C576908BA1EB8B41BAEBD6A237E09A580AC41770707E6600F), so both awarding bodies publish the same document."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The convocatoria is issued jointly by the Secihti (through its Dirección General de Becas y Apoyos a la Comunidad Científica y Humanística) and the Organización de los Estados Americanos, under a cooperation agreement signed 12 November 2025. The OAS evaluates, selects, publishes results and disburses; Secihti validates the eligible candidate list. The record URL is the OAS's own domain (oas.org), not an aggregator.",
+      "quote": "La Secretaría de Ciencia, Humanidades, Tecnología e Innovación (Secihti), a través de la Dirección General de Becas y Apoyos a la Comunidad Científica y Humanística (DGBACCYH) ... en el marco del Acuerdo de cooperación para la creación e implementación del Programa de Becas y apoyos complementarios entre la Secihti y la Organización de los Estados Americanos, firmado el 12 de noviembre de 2025"
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "The calendar (Tercera. Procedimiento de selección de beneficiarios, I. Calendario) states 'Fecha de cierre del proceso: 30 de noviembre de 2026', exactly matching the record's deadline_label and deadline_date 2026-11-30. The date is in the future as of the 12 October 2026 check, and Secihti's own page currently lists the call as 'Abierta' (open), so this is the cycle open today. Note the calendar also shows notification 4–10 September 2026 and formalisation 7–18 September 2026, i.e. the selection stages have already run; 30 November 2026 is the process-end/close-out date.",
+      "quote": "Fecha de cierre del proceso  30 de noviembre de 2026"
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "All three distinct claims confirmed: (1) must already hold a Secihti national scholarship — 'Haber obtenido una Beca Secihti Nacional' from the listed 2025 second-period / 2026 first-period convocatorias, and be a 'persona becaria nacional vigente'; (2) admitted and enrolled full-time in a listed subject area — 'Ser persona becaria nacional admitida e inscrita en áreas de Física, Matemáticas y Ciencias de la Tierra, Biología y Química, Ingenierías, Medicina y Ciencias de la Salud (a excepción de la formación de especialidades y subespecialidades médicas) Biotecnología y Ciencias Agropecuarias' in a 'programa de posgrado escolarizado'; (3) OAS Member State nationals other than Mexico — 'tener la nacionalidad de alguno de los Estados Miembros de la OEA, con excepción de México'. Exclusion: previous OEA complementary-support recipients are barred.",
+      "quote": "a) Declarar en su perfil único tener la nacionalidad de alguno de los Estados Miembros de la OEA, con excepción de México. b) Haber obtenido una Beca Secihti Nacional en el marco de las siguientes convocatorias"
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The record's 'Stipend' claim is confirmed and precise: the Secihti side continues 'Apoyo económico mensual, de acuerdo con el Tabulador de Becas Nacionales 2026' plus ISSSTE medical cover, and the OAS adds 'Un aporte único con valor de $1,200 USD ... pagados en pesos mexicanos ... para gastos de instalación'. This is a complementary top-up to an existing Secihti national scholarship, not a standalone fully funded award — no tuition, travel (beyond the installation stipend) or full living costs are promised by the OEA portion.",
+      "quote": "1. Por parte de la OEA — Un aporte único con valor de $1,200 USD (Mil doscientos dólares estadounidenses), pagados en pesos mexicanos, de acuerdo al tipo de cambio oficial del día del depósito efectuado por la OEA a la cuenta bancaria de la persona beneficiaria. / 2. Por parte de la Secihti — 1. Apoyo económico mensual, de acuerdo con el Tabulador de Becas Nacionales 2026. 2. Servicio médico proporcionado por el Instituto de Seguridad y Servicios Sociales de los Trabajadores del Estado (ISSSTE)."
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "The call covers full-time ('escolarizado') postgraduate (posgrado) study, and the selection criteria explicitly weigh both levels: 'Nivel de estudio (doctorado sobre maestría)'. Master's and PhD as recorded are both covered.",
+      "quote": "Ser persona becaria nacional vigente en un programa de posgrado escolarizado ... 8. Nivel de estudio (doctorado sobre maestría)."
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "Fecha de cierre del proceso: 30 de noviembre de 2026",
+    "deadline_date": "2026-11-30",
+    "verification_notes": "Indirect-access call: no open external application — Secihti screens current national-scholarship holders and sends the eligible list to the OAS, which selects and disburses. Calendar: publication 28 Aug 2026; Secihti list to OAS 28 Aug 2026; assignment-committee deliberation 3 Sep 2026; notification 4–10 Sep 2026; formalisation 7–18 Sep 2026; process close 30 Nov 2026. Award = existing Secihti monthly stipend (Tabulador 2026) + ISSSTE medical cover + one-off USD 1,200 OEA installation grant; it is a complement, not fully funded. Conflicts: previous OEA complementary-support recipients and S190 defaulters excluded. Contacts: asignacionbn@secihti.mx, scholarships@oas.org. Status 'Abierta' on secihti.mx at check time; re-check after 30 Nov 2026 (process should move to results/closed) and watch for a 2027 edition under the same OAS cooperation agreement."
+  },
+  "notes_for_reviewer": "One nuance a human may want to weigh: although the call is officially 'Abierta' and its process-close date (30 Nov 2026) is in the future, the selection and formalisation windows already ran in September 2026, so a new applicant today cannot realistically join this cycle — the record's deadline is the administrative close-out date. Also worth flagging on the card: funding is a top-up to an existing Secihti national scholarship (monthly stipend + USD 1,200 settlement grant), not a fully funded standalone scholarship. quote fields were transcribed from a pypdf text extraction of the PDF; minor spacing artefacts in the extraction were normalised, wording is unchanged."
+}

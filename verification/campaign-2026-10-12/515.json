@@ -1,0 +1,62 @@
+{
+  "id": "515",
+  "verdict": "active",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:12:00Z",
+  "sources": [
+    {
+      "url": "https://www.grips.ac.jp/en/education/inter_programs/leader",
+      "kind": "official",
+      "note": "GRIPS Young Leaders Program (School of Government, School of Local Governance) programme page — the host university's own page for the MEXT scholarship"
+    },
+    {
+      "url": "https://www.grips.ac.jp/uploads/about/2026/07/YLP_2027-2028.pdf",
+      "kind": "official",
+      "note": "GRIPS YLP 2027-2028 brochure (12 pages): funding, eligibility, admissions and application procedures for the current cycle"
+    },
+    {
+      "url": "https://www.mext.go.jp/en/policy/education/highered/title02/detail02/sdetail02/1374094.htm",
+      "kind": "official",
+      "note": "MEXT (the awarding ministry) Young Leaders' Program page, listing 'COURSES and APPLIACATION GUIDELINES for 2027-2028' and the five YLP courses"
+    },
+    {
+      "url": "https://www.mext.go.jp/en/policy/education/highered/title02/detail02/sdetail02/sdetail02/20260806-mxt-kotokoku01-1.pdf",
+      "kind": "official",
+      "note": "MEXT Application Guidelines for 2027, Young Leaders' Program (School of Government), published 2026-08-13 — the cycle currently being recruited"
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The programme is the Japanese Government (MEXT) scholarship hosted at the National Graduate Institute for Policy Studies (GRIPS), exactly as the record states. The GRIPS programme page names MEXT as the scholarship provider, and MEXT's own 2027 guidelines name GRIPS as host university.",
+      "quote": "Scholarship (for International Students Only) : Japanese Government (Ministry of Education, Culture, Sports, Science and Technology [MEXT]) — GRIPS programme page; \"3. Host University National Graduate Institute for Policy Studies (GRIPS)\" — MEXT 2027 guidelines"
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "No single central deadline is published, matching the record. MEXT's 2027 guidelines state recruitment runs through the recommending authorities of each eligible country and that documents must reach the recommending authority by its designated deadline; applicants are directed to the Japanese Embassy for details. The current cycle (2027 admission, October 2027 commencement) is the one advertised on the MEXT page and GRIPS pages as of 12 October 2026.",
+      "quote": "Method of Recruitment Recruitment will be conducted through the recommending authorities of each eligible country. Please ask the Japanese Embassy for further information. ... A complete set of your required application documents must reach your recommending authority by the designated deadline."
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "All eligibility claims in the record are confirmed: young public administrators and government officials, bachelor's degree holders, in principle under 40 years of age, with at least 3 years of full-time work experience in public administration (5+ preferred). The MEXT 2027 guidelines operationalise the age rule as under 40 as of October 1, 2027 (born on or after October 2, 1987), and the GRIPS brochure repeats the under-40 rule.",
+      "quote": "Applicants must be, in principle, under 40 years of age as of October 1, 2027 (i.e. born on or after October 2, 1987). ... Applicants must hold a Bachelor's degree or equivalent from a recognized/accredited university or college ... At least 3 years of full-time work experience in total as of October 1, 2027, in public administration (preferably 5 years or more)."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The 'Fully Funded' claim is confirmed: the GRIPS brochure states the programme is fully supported with full scholarships for all students by the Japanese government. The MEXT 2027 guidelines detail what it covers: a monthly allowance of 242,000 yen, economy-class airfare to and from Japan, and waiver of entrance examination, matriculation and tuition fees, with accommodation arranged at TIEC.",
+      "quote": "It is fully supported, including full scholarships for all students, by the Japanese government. — GRIPS brochure; \"Allowance: 242,000 yen per month. Due to the situation of the Japanese Government's budget, the amount of payment may be subject to change each fiscal year.\" and \"Education Fees: Fees for the entrance examination, matriculation and tuition are waivered.\" — MEXT 2027 guidelines"
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "The programme is a one-year master's programme; the GRIPS programme page states the degree offered is the Master of Public Policy, and MEXT's guidelines confirm the one-year duration and degree conferred.",
+      "quote": "Degrees Offered: Master of Public Policy — GRIPS programme page; \"Course duration is one year, resulting in the conferral of a Master's Degree in Public Policy by GRIPS.\" — MEXT 2027 guidelines"
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "No central deadline is published. MEXT 2027 guidelines: \"Recruitment will be conducted through the recommending authorities of each eligible country. Please ask the Japanese Embassy for further information.\" Applicants must ensure \"A complete set of your required application documents must reach your recommending authority by the designated deadline.\" Deadlines are set per country by each recommending authority (typically the Japanese embassy).",
+    "deadline_date": null,
+    "verification_notes": "Verified 2026-10-12 against grips.ac.jp and mext.go.jp. Currently advertised cycle is the 2027 intake (MEXT guidelines published 2026-08-13; commencement October 2027; scholarship period October 2027-September 2028). Allowance 242,000 yen/month (FY2026 amount, subject to change), tuition/examination/admission fees waivered, round-trip economy airfare provided. Age limit: under 40 as of October 1, 2027. Minimum 3 years (preferably 5+) full-time work experience in public administration. Note: the YLP exists in five courses (Government, Local Governance at GRIPS; Healthcare Administration at Nagoya University; Business Administration at Hitotsubashi; Law at Kyushu University); this record covers only the GRIPS School of Government / School of Local Governance course. The per-country recommending-authority deadlines are not published on the MEXT or GRIPS pages — applicants must ask their Japanese embassy, so the deadline cannot be narrowed further than 'varies by country'."
+  },
+  "notes_for_reviewer": null
+}

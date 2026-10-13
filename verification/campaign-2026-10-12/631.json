@@ -1,0 +1,47 @@
+{
+  "id": "631",
+  "verdict": "active",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:12:04Z",
+  "sources": [
+    {
+      "url": "https://tec.mx/es/profesional/becas",
+      "kind": "official",
+      "note": "Tecnológico de Monterrey's own scholarships page (tec.mx). The recorded URL https://tec.mx/es/profesional/becas/internacional 301-redirects (final URL https://tec.mx/es/profesional/becas#estudiantes-internacionales) and serves the same page, which contains a dedicated 'Beca al Talento Académico Internacional' section. Read in full on 12 October 2026."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The page is hosted on tec.mx, the Tecnológico de Monterrey's own domain, under Admisiones Educación Profesional, and the scholarship section is written by the institution itself (first person 'En el Tec...'). Not an aggregator, news article, or mirror.",
+      "quote": "En el Tec reconocemos el compromiso, la dedicación y la excelencia académica de quienes buscan transformar su entorno a través del conocimiento. La Beca al Talento Académico Internacional impulsa tu desarrollo para que continúes alcanzando tus metas y formes parte de una comunidad comprometida con generar un impacto positivo en el mundo"
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "The currently-open cycle (August–December 2027 entry) matches the record exactly: applications open 24 August 2026, admission deadline 20 January 2027, call closes 22 January 2027, results 18 February 2027. As of the check date (12 October 2026) the call is open, so the record is verifiable as open. Recorded deadline_date 2027-01-22 matches the page's 'Cierre de convocatoria'.",
+      "quote": "Postúlate a partir del 24 de agosto de 2026. / Límite de admisión: 20 de enero de 2027 / Cierre de convocatoria: 22 de enero de 2027. / Conoce el resultado el 18 de febrero de 2027."
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "All distinct claims in the record were confirmed on the page: final-year or completed bachillerato/high school; applicants from institutions in a named list of Latin American and Caribbean countries/territories (El Salvador, Colombia, Bolivia, Nicaragua, Perú, Costa Rica, Panamá, República Dominicana, Brasil, Argentina, Chile, Venezuela, Honduras, Ecuador, Guatemala, Paraguay, Uruguay, Cuba, Trinidad y Tobago, Puerto Rico, Haití); under 21 at application; average of at least 90/100; admitted to a professional programme at Tec starting August 2027; PAA score of at least 1,360 or the equivalent converted SAT/ACT score.",
+      "quote": "Podrán postularse quienes estén cursando el último año o hayan concluido sus estudios de bachillerato o high school... Estar admitida o admitido para iniciar un programa o carrera profesional en agosto de 2027 en el Tecnológico de Monterrey. / Contar con un promedio igual o mayor a 90/100... / Presentar la Prueba de Aptitud Académica (PAA) y obtener un puntaje mínimo de 1,360 puntos... *En caso de presentar SAT o ACT, se considerará el puntaje equivalente convertido a la escala de la PAA, debiendo cumplir igualmente con el mínimo de 1,360 puntos. / Al momento de postularte, debes tener menos de 21 años."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The award is a partial tuition waiver, as the record states: the page says the scholarship grants 40% to 60% off the cost of tuition, valid only for the campus of admission. It covers no living costs, travel, or fees, so it is not fully funded — consistent with the record's 'Partial tuition waiver'.",
+      "quote": "La beca puede otorgar un apoyo de entre 40% y 60% sobre el costo de la colegiatura, válido para el campus al que hayas sido admitido."
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "The page states applicants must be admitted to a 'programa o carrera profesional' (professional/bachelor's programme) starting August 2027, matching the record's 'Bachelor's'. No graduate levels are mentioned for this scholarship.",
+      "quote": "Estar admitida o admitido para iniciar un programa o carrera profesional en agosto de 2027 en el Tecnológico de Monterrey."
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": "https://tec.mx/es/profesional/becas",
+    "deadline_text": "Postúlate a partir del 24 de agosto de 2026. Límite de admisión: 20 de enero de 2027. Cierre de convocatoria: 22 de enero de 2027. Conoce el resultado el 18 de febrero de 2027. Límite para aceptar el apoyo: 4 de marzo de 2027.",
+    "deadline_date": "2027-01-22",
+    "verification_notes": "Read 12 Oct 2026. Recorded URL /es/profesional/becas/internacional redirects to the main Becas page anchored at #estudiantes-internacionales — same content, either URL works. This is the INTERNATIONAL variant of Beca al Talento Académico: 40–60% of tuition, restricted to applicants from 21 named Latin American/Caribbean countries. Do not confuse with the domestic Beca al Talento Académico on the same page (20–60% of tuition, no country list) — they share the same dates. Call runs once a year for August–December entry; re-check in summer 2027 for the next cycle."
+  },
+  "notes_for_reviewer": null
+}

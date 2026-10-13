@@ -1,0 +1,52 @@
+{
+  "id": "452",
+  "verdict": "active",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:03:28Z",
+  "sources": [
+    {
+      "url": "https://www.kth.se/en/studies/master/admissions/scholarships/kth-scholarship-1.72827",
+      "kind": "official",
+      "note": "KTH's own KTH Scholarship page (kth.se, page responsible: KTH International Student Recruitment; last changed Sep 23, 2026)."
+    },
+    {
+      "url": "https://www.kth.se/en/studies/master/admissions/application-and-tuition-fees-for-master-s-studies-1.65817",
+      "kind": "official",
+      "note": "KTH's own fee page, read to substantiate the 'fee-paying (non-EU/EEA/Swiss)' requirement on the scholarship page."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The record's source URL resolves to KTH's own page on kth.se, titled 'KTH Scholarship'; the page footer identifies KTH Royal Institute of Technology, Sweden, and the page is managed by KTH International Student Recruitment. The awarding body is genuinely KTH, not an aggregator or third party.",
+      "quote": "KTH Royal Institute of Technology, SE-100 44 Stockholm, Sweden"
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "The page publishes the upcoming cycle's timeline: application opens 1 December 2026, closes 15 January 2027, results announced 1 April 2027. All three dates lie in the future relative to today (12 October 2026), so the deadline is for the currently relevant (2027 intake) cycle, and it matches the record's deadline_label exactly and its deadline_date (2027-01-15).",
+      "quote": "1 December 2026: Application opens / 15 January 2027: Application closes / 1 April 2027: Scholarship results announced"
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "The page confirms the record's claims: applicants must be fee-paying students, apply to a master's programme at KTH as first priority via universityadmissions.se, and have paid the application fee; selection focuses on academic excellence and drive to contribute to sustainable development. KTH's fee page confirms that fee-paying students are non-EU/EEA/Swiss citizens. One additional condition appears on the page that the record does not list: only applicants who fulfil the programme's admission requirements are eligible, and the scholarship is not available for joint Erasmus+/EIT programmes or Computer Simulations for Science and Engineering.",
+      "quote": "To be eligible for the scholarship you must be a fee-paying student and have applied for a master's programme at KTH as your first priority and paid the application fee. -- If you are not a citizen of EU, EEA or Switzerland, you usually have to pay application and tuition fees, with some exceptions."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The award covers the full tuition fee for the first and second years of the programme ( subject to satisfactory first-year results) and explicitly excludes living costs. The record's funding_type 'Full tuition waiver' is accurate; it is not a fully funded award with living stipend.",
+      "quote": "The KTH Scholarship covers the full tuition fee of a one or two year master's programme. -- The scholarship does not include living costs."
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "The scholarship applies to KTH master's (MSc) programmes, confirming the record's 'Master' level: two-year programmes with both years at KTH, the named joint programmes, and the one-year Architectural Lighting Design programme.",
+      "quote": "KTH Scholarships are available for applicants to all master's programmes with two years spent at KTH, the joint master's programmes in Molecular Techniques in Life Science, and Biostatistics and Data Science, and the one-year master's programme in Architectural Lighting Design."
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "1 December 2026: Application opens. 15 January 2027: Application closes. 1 April 2027: Scholarship results announced",
+    "deadline_date": "2027-01-15",
+    "verification_notes": "Verified live on kth.se on 2026-10-12 against the awarder's own page. Dates are for the autumn-2027 intake cycle; KTH publishes this timeline in early autumn and it rolls forward annually, so the application dates on this page will need re-checking in December 2026/January 2027. Note the second- and first-year funding condition ('provided that the study results during the first year are satisfactory') and the stated exclusions (no joint Erasmus+/EIT programmes, no Computer Simulations for Science and Engineering for this scholarship; those programmes point to the KTH Joint Programme Scholarship). eligibility_summary may be extended with: applicants must also fulfil the programme's admission requirements; living costs are not covered, so applicants must show separate funds."
+  },
+  "notes_for_reviewer": "The awarding_body field value 'Kth.Se' is a domain-style label, not the organisation's name; suggest normalising to 'KTH Royal Institute of Technology'. Funding is tuition-only (SEK ~385,000 over two years for most programmes) with no living allowance; keep it distinct from the Swedish Institute scholarships which cover living costs. The eligibility_summary's '(non-EU/EEA/Swiss)' gloss is supported by KTH's fee rules but the fee page says students 'usually'/'with some exceptions' pay fees, so a strict nationality claim would need the University Admissions fee-check tool."
+}

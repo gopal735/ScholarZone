@@ -1,0 +1,52 @@
+{
+  "id": "546",
+  "verdict": "active",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:11:47Z",
+  "sources": [
+    {
+      "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?status=&origin=&subjectGrps=&daad=&intention=&q=development&page=1&detail=50076777",
+      "kind": "official",
+      "note": "DAAD's own scholarship-database page for Development-Related Postgraduate Courses (EPOS), awarding body's own site, read in full on 12 October 2026."
+    },
+    {
+      "url": "https://static.daad.de/media/daad_de/pdfs_nicht_barrierefrei/in-deutschland-studieren-forschen-lehren/daad_epos_deadlines.pdf",
+      "kind": "official",
+      "note": "DAAD's official EPOS deadlines list linked from that page (document ST42, 'List of Application Deadlines', created 10 August 2026, currently 'Stand 06/2026' for intake 2027/2028); text extracted and read."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The page is the German Academic Exchange Service's own scholarship database entry, headed 'Development-Related Postgraduate Courses (EPOS) - DAAD', on the daad.de domain, with the DAAD application portal and contact links. Not a mirror or aggregator.",
+      "quote": "Development-Related Postgraduate Courses (EPOS) • DAAD"
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "There is no single programme-wide deadline. The DAAD page states the deadline depends on the chosen study programme, exactly as the record says, and points to the official per-course deadlines list. I read that list (ST42, Stand 06/2026): it is 'Application Deadlines for Intake 2027/2028' and every course's deadline column reads 'see website of the course'. The 2027/2028 intake is the cycle currently open as of 12 October 2026, so the record's 'varies' deadline description is accurate for a live cycle.",
+      "quote": "Application deadline: Depending on chosen study programme; please check scholarship brochure or the website of your chosen study programme."
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "Each distinct claim in the record was confirmed: graduates with at least two years' professional experience; from the DAAD's list of developing and newly industrialised countries (the page embeds the country list, e.g. Afghanistan, Bangladesh, Ghana, India, Kenya, Nigeria, South Africa, Vietnam, ~130 countries, and links the full list PDF); a relevant Bachelor degree (normally four years) with far above average results (upper third); degrees normally not more than six years old. Also confirmed: applications go directly to the course, not to the DAAD, and applicants resident in Germany longer than 15 months cannot apply.",
+      "quote": "The Typical Scholarship Holder - ... holds a Bachelor's degree (normally four years) in a related subject. - has completed an academic degree with far above average results (upper third) and at least two years of related professional experience after the first degree (bachelor) at the time of application. - His/her academic degrees should normally not be more than six years old."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The record's funding type 'Stipend' is confirmed. The page's Value section covers living costs (monthly payments of 992 euros for graduates, 1,300 euros for doctoral candidates, rising to 1,400 euros from February 2026), plus payments towards health, accident and personal liability insurance, and a travel allowance, with possible monthly rent subsidy and family allowance - substantively fully funded; no tuition fees are mentioned (German public universities charge none). Duration 12 to 42 months depending on the programme.",
+      "quote": "Depending on academic level, monthly payments of 992 euros for graduates or 1,300 euros (1,400 euros beginning with February 2026) for doctoral candidates - Payments towards health, accident and personal liability insurance cover - Travel allowance, unless these expenses are covered by the home country or another source of funding"
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "Confirmed: a postgraduate or Master's degree at a state or state-recognised German university, and in exceptional cases a doctoral degree - i.e. Master's (primary) and PhD (exceptional), matching the record's 'Master's, PhD'. The deadlines list shows the participating courses are overwhelmingly MSc/MEng/MBA/MA level.",
+      "quote": "The scholarships offer foreign graduates from development and newly industrialised countries from all disciplines and with at least two years' professional experience the chance to take a postgraduate or Master's degree at a state or state-recognised German university, and in exceptional cases to take a doctoral degree, and to obtain a university qualification (Master's/PhD) in Germany."
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "Depending on chosen study programme; please check scholarship brochure or the website of your chosen study programme. (Per-course deadlines are published in the DAAD EPOS deadlines list, currently 'Application Deadlines for Intake 2027/2028', Stand 06/2026; each course's entry reads 'see website of the course'.)",
+    "deadline_date": null,
+    "verification_notes": "Deadline genuinely varies per host course - do not expect a single date. Each re-check should read the DAAD EPOS page plus the linked deadlines list (document ST42; currently 'Stand 06/2026' for intake 2027/2028), and note the 'Stand' date changes each cycle; also watch the doctoral stipend rate (rose to 1,400 euros in February 2026) and the eligible-country list (dac_laenderliste_epos.pdf). Applications go directly to the course, never to the DAAD."
+  },
+  "notes_for_reviewer": null
+}

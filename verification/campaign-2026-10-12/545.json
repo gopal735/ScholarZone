@@ -1,0 +1,52 @@
+{
+  "id": "545",
+  "verdict": "active",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:14:00Z",
+  "sources": [
+    {
+      "url": "https://www.kas.de/de/web/begabtenfoerderung-und-kultur/stipendien-fuer-gefluechtete",
+      "kind": "official",
+      "note": "Konrad-Adenauer-Stiftung's own 'Stipendien für Gefluechtete' page on kas.de, read in full. It is the page recorded as official_source_url. Content is served as a bilingual English/Ukrainian FAQ with a German breadcrumb and German site chrome; all five catalogue claims are stated verbatim on this page."
+    },
+    {
+      "url": "https://www.kas.de/de/web/begabtenfoerderung-und-kultur/promotionsfoerderung",
+      "kind": "official",
+      "note": "KAS 'Promotionsfoerderung' page on kas.de, linked from the refugees page and read to corroborate the PhD-side claims: selection criteria (academic performance, values, volunteering, initiative), funding amount, and the 15 January annual closing date."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The page is on kas.de, the Konrad-Adenauer-Stiftung's own domain, under its 'Begabtenfoerderung und Kultur' section, and the page itself names the awarding body and addresses refugees in Germany. No aggregator, news site or third party is involved.",
+      "quote": "As a refugee in Germany you are entitled under the specific legal requirements to study and to apply for a scholarship - for instance with the Konrad-Adenauer-Stiftung."
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "The page states the deadline in the same annual, twice-yearly form the record carries: apply online on campus.kas.de until 15 January or 15 July annually. The Promotionsfoerderung page independently corroborates the January date ('Jaehrlicher Bewerbungsschluss ist jeweils der 15. Januar'). At the check time of 12 October 2026 the 15 July 2026 date has already passed, so the deadline for the currently open cycle is 15 January 2027, which matches the record's deadline_date 2027-01-15.",
+      "quote": "Please apply online on campus.kas.de until 15 January or 15 July annually. -- Jährlicher Bewerbungsschluss ist jeweils der 15. Januar."
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "Every claim in the record's eligibility_summary is confirmed. Residence status: the page sets out the two legal routes, with holders of a permit under section 24 AufenthG or section 61 BAföG applying to Studienfoerderung (Bachelors/Masters) and Promotionsfoerderung (PhD), and holders of a permit under section 16 or section 18 AufenthG routed to the separate international programme. Academic performance, identification with KAS values, voluntary engagement and initiative are all listed as explicit criteria. Not confirmed (and not claimed by the record, but material to any applicant): the page requires German language proof - B2 for the study scholarship and at least Goethe-Zertifikat C1 for the PhD scholarship.",
+      "quote": "Students with a residence permit in accordance with §24 AufenthG or §61 BAföG can apply at Studienförderung (Bachelors and Masters) as well as Promotionsförderung (PhD). -- Students with a residence permit in accordance with §16 AufenthG and §18 AufenthG can apply for our international programme (Masters and PhD) -- above average learning or academic achievements at school or university -- Values: You identify with the political stances represented by the Konrad Aden Foundation. -- Volunteering: You are involved in voluntary work in political, social and cultural areas. -- Initiative: You are willing to actively participate in our scholarship programmm."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The funding type 'Stipend' is confirmed: a monthly, non-repayable stipend toward living costs plus a flat allowance, not tuition funding. The page states up to 752 Euros per month (income-dependent) plus 300 Euro for study-related expenses for the study scholarship, and 1350 Euros per month plus 100 Euro for research-related expenses for the PhD scholarship, with seminars, alumni network and career counselling as the non-financial part. Because it is a living-cost stipend rather than tuition, the award should not be described as 'Fully Funded' in the tuition sense; the record's 'Stipend' wording is accurate.",
+      "quote": "financial support (depending on your income or the income of your parents) up to 752 Euros per month plus 300 Euro for study-related expenses (books, writing material etc.) -- financial support of 1350 Euros per month plus 100 Euro for research-related expenses (further allowances possible)"
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "The page states the three levels exactly as the record does, and splits the offer into 'Scholarships for undergraduate and graduate students' and 'Scholarship for PhD candidates'.",
+      "quote": "The Konrad-Adenauer-Stiftung supports undergraduate (Bachelor), graduate (Master) and postgraduate (PhD) students."
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "Please apply online on campus.kas.de until 15 January or 15 July annually.",
+    "deadline_date": "2027-01-15",
+    "verification_notes": "All five catalogue claims re-confirmed on kas.de on 2026-10-12; the record can be set to active. For the next re-check: (1) the record's eligibility_summary omits the mandatory German language requirement - B2 for the undergraduate/graduate scholarship and at least Goethe-Zertifikat C1 for the PhD scholarship, with a language certificate required at application - which is a material gap for applicants; (2) the refugees page states 1350 Euros per month for the PhD scholarship while the Promotionsfoerderung page states 1.650 Euro per month (plus 100 Euro research costs) funded from BMBF funds - the catalogue claims no amounts, so this internal site discrepancy does not affect the verdict, but pin the figure from the Promotionsfoerderung page before quoting any sum; (3) the residence-permit routing matters: section 24 AufenthG / section 61 BAföG go to Studienfoerderung + Promotionsfoerderung, while section 16 / section 18 AufenthG are routed to the separate international programme (Master and PhD) at .../auslaenderfoerderung; (4) the recorded URL is a German path but the page body is served in English with a Ukrainian translation, so re-checks should not be alarmed by the absence of German body text; (5) the deadline is a recurring annual pair, so the record's deadline_date must be re-pointed to the next upcoming 15 January or 15 July at each re-check."
+  },
+  "notes_for_reviewer": "Record is correct as published and the evidence supports 'active' with high confidence. Two points a human should weigh: (a) the eligibility_summary is accurate but incomplete - the German language proof (B2 study / C1 PhD) is mandatory and is not mentioned, so an applicant reading only the record would apply without it and be rejected; (b) at the check time of 12 October 2026 the 15 July 2026 deadline had already passed, so the live deadline is 15 January 2027 and applications for that window are open now. Nothing on the page contradicts the record."
+}

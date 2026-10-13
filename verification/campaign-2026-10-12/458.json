@@ -1,0 +1,47 @@
+{
+  "id": "458",
+  "verdict": "active",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:05:00Z",
+  "sources": [
+    {
+      "url": "https://www.kth.se/en/studies/master/admissions/scholarships/kth-india-scholarship-1.422144",
+      "kind": "official",
+      "note": "KTH Royal Institute of Technology's own page for the KTH India Scholarship, under Studies > Master's studies > Admissions > Scholarships. Page responsible: KTH International Student Recruitment. Last changed: Sep 23, 2026."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The page is on kth.se, the awarding institution's own domain, in the master's admissions scholarships section. The award is run by the KTH India Scholarship Foundation, established at KTH in 2012 through an anonymous donation. The record's body label 'Kth.Se' is the institution's domain shorthand; the awarding organisation is KTH Royal Institute of Technology, and the page is genuinely its own, not an aggregator or news article.",
+      "quote": "The KTH India Scholarship Foundation was established in 2012 through a donation made by an anonymous donor."
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "The page publishes the full key-dates schedule for the 2027 cycle, and the record's 15 January 2027 deadline matches the published application-closing date exactly. As of the check date (12 October 2026) the window has not opened yet - it opens 1 December 2026 - but the published date is for the upcoming cycle, not a past one. Note the record's deadline_precision is 'unknown' while the page states an exact day.",
+      "quote": "1 December 2026: Application opens 15 January 2027: Application closes 1 April 2027: Scholarship results announced"
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "Indian citizenship claim confirmed: applicants must be Indian citizens who completed their undergraduate programme in India, must be fee-paying students, and must have applied for a master's programme at KTH as first priority via universityadmissions.se with the application fee paid; only applicants who fulfil the admission requirements are eligible. The Mumbai Metropolitan Area and Pune priority is confirmed and is a prioritisation, not a restriction, so the record's point that other Indian applicants remain eligible also holds. Minor discrepancy: the record says 'one award offered in 2026' while the page says the foundation is awarding one scholarship in 2027 and that in 2026 2 out of 23 admitted applicants (9 %) were nominated - the competitiveness claim is supported, only the year is off.",
+      "quote": "You must also be an Indian citizen who has completed your undergraduate programme in India. Applicants from Mumbai Metropolitan Area and Pune will be prioritized according to the foundation’s statutes."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The award covers tuition fees for both years of the two-year master's programme, conditional on satisfactory first-year results, plus a monthly living allowance during the academic year (10 months). This matches the record's 'Full tuition waiver + monthly living allowance'.",
+      "quote": "The KTH India Scholarship covers the tuition fee for the first and the second year, provided that the study results during the first year are satisfactory. The scholarship also includes a monthly living allowance during the academic year (10 months)."
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "The scholarship is for applicants to a two-year master's programme at KTH - Master level only, matching the record's 'Master'.",
+      "quote": "The scholarship covered the tuition fee of a two year master’s programme."
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "1 December 2026: Application opens. 15 January 2027: Application closes. 1 April 2027: Scholarship results announced",
+    "deadline_date": "2027-01-15",
+    "verification_notes": "Page read in full on 12 Oct 2026 (kth.se page last changed 23 Sep 2026). Deadline is an exact day, so deadline_precision should be corrected from 'unknown' to exact/day. The application window opens 1 December 2026 and closes 15 January 2027, so the scholarship is not yet open for applications as of the check date. Requirements missing from the record's eligibility_summary: applicant must be a fee-paying student, must have applied for a master's programme at KTH as first priority via universityadmissions.se and paid the application fee, must have completed the undergraduate programme in India, and the award is not available for joint master's programmes or programmes with obligatory exchange studies (e.g. Railway Engineering). The foundation is awarding one scholarship in 2027. Applicants from Mumbai Metropolitan Area and Pune are prioritised per the foundation's statutes. Indian citizens may also apply for the KTH Scholarship."
+  },
+  "notes_for_reviewer": null
+}

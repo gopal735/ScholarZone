@@ -41,16 +41,17 @@ def _reset_settings_cache() -> None:
 def session():
     """A throwaway database holding one row per visibility outcome.
 
-    The production visibility gates are forced on. ``tests/conftest.py`` turns
-    them off by default so other suites can use unverified fixtures, and with
-    them off the canonical rule collapses to "not archived and not quarantined"
-    - identical to the loose predicate that caused the discrepancy. A
-    regression test that runs with the gates off would pass while production is
-    still wrong.
+    The image gates are forced on, as they were when this module was written.
+    ``SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED`` is not: it used to be inert, and
+    this module relied on that to make the canonical and the loose predicate
+    comparable. It is wired to the canonical predicate now, so leaving it on
+    would make the two predicates differ for the verified-only reason rather
+    than for the maintenance-report reason this module exists to guard. Its own
+    behaviour is pinned in tests/test_public_require_verified_switch.py.
     """
     from app.models import Base, Scholarship
 
-    os.environ["SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED"] = "true"
+    os.environ["SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED"] = "false"
     os.environ["SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE"] = "true"
     os.environ["SCHOLARZONE_PUBLIC_ALLOW_THIRD_PARTY_IMAGE"] = "false"
     _reset_settings_cache()

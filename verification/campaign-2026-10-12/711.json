@@ -1,0 +1,57 @@
+{
+  "id": "711",
+  "verdict": "needs_review",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:22:50Z",
+  "sources": [
+    {
+      "url": "https://newhorizonsforwomen.org.nz/awards.html",
+      "kind": "official",
+      "note": "Awarding body's own awards page; carries the Sonja Davies Peace Award Fund listing, value, eligibility and application status."
+    },
+    {
+      "url": "https://newhorizonsforwomen.org.nz/",
+      "kind": "official",
+      "note": "Awarding body's home page; confirms the organisation is a nationwide charitable trust and that the Sonja Davies Peace Award application is open, closing 30th October."
+    },
+    {
+      "url": "https://newhorizonsforwomen.org.nz/faqs.html",
+      "kind": "official",
+      "note": "Awarding body's FAQ page; confirms application outcome notifications go out by end of October 2026 and general award cycle timing."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The page is on the New Horizons for Women: Hine Kahukura trust's own domain and the home page states the organisation is a nationwide charitable trust, matching the record's awarding body.",
+      "quote": "New Horizons for Women: Hine Kahukura is a nationwide charitable trust."
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "The page shows the Sonja Davies Peace Award application open today (12 October 2026) and closing 30 October, matching the record's 30 October 2026 deadline for a currently open cycle. The year is stated only as '30th October' on the page, framed by the 'Hine Kahukura 2026 Awards' banner; the FAQ confirms outcomes are notified 'by the end of October 2026'.",
+      "quote": "The Sonja Davies Peace Award Application is OPEN NOW! Closes 30th October"
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "All recorded eligibility claims were confirmed on the awards page: open to a woman or a group led by a woman developing an initiative that advances peace in New Zealand; the three eligible categories (informal group, individual enrolled at a tertiary institution, formal group); New Zealand citizenship or resident class visa with current New Zealand residence; and no previous New Horizons for Women: Hine Kahukura award.",
+      "quote": "This award promotes initiatives that advance peace in New Zealand and is available to a woman or group led by a woman who is developing an initiative that will help them create a more peaceful world at home, school, the workplace, or in the community. ... Open to one of the following: An informal group with peace promotion among its stated aims; An individual enrolled at a tertiary institution; A formal group ... Is a New Zealand citizen or holds a resident class visa and currently lives in New Zealand ... Has not previously received a New Horizons for Women: Hine Kahukura Award"
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The award is a one-off grant of a maximum of $4,000 toward a peace initiative, not tuition/stipend coverage for a degree. This is consistent with the record's 'Partially Funded' funding type.",
+      "quote": "Value of the award: maximum of $4000."
+    },
+    "degree_levels": {
+      "status": "unconfirmed",
+      "detail": "The page states no degree levels for this award. It is not a study scholarship: eligibility is by applicant type (informal group, formal group, or an individual enrolled at a tertiary institution at any level), with no undergraduate/master's/PhD restriction. The record's 'Undergraduate, Master's, PhD' cannot be confirmed and appears to be a mis-classification of the catalogue metadata.",
+      "quote": "An individual enrolled at a tertiary institution"
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "The Sonja Davies Peace Award Application is OPEN NOW! Closes 30th October",
+    "deadline_date": "2026-10-30",
+    "verification_notes": "Award page re-checked live on 12 October 2026: application open, closes 30th October 2026 (year given in context of the 'Hine Kahukura 2026 Awards' banner). General award applications are closed until 2027, so at the next re-check confirm whether the Sonja Davies Peace Award runs again in the 2027 cycle or is discontinued. The catalogue's degree_levels value is wrong: this is an initiative award (max $4,000) open to informal/formal groups and a woman enrolled at a tertiary institution, not an Undergraduate/Master's/PhD study scholarship. Correct that field at the next update."
+  },
+  "notes_for_reviewer": "Verdict is needs_review despite a fully matching deadline, body, eligibility and funding, solely because the record's degree_levels claim ('Undergraduate, Master's, PhD') cannot be confirmed: the official page describes no degree levels for this award and eligibility is open to informal and formal groups as well as an individual enrolled at a tertiary institution of any level. Recommend correcting degree_levels to 'Not applicable (initiative award; open to groups and tertiary-enrolled individuals)'. Separately, the campaign manifests disagree: index.json row 89 lists id 711 as kind 'spot-check' with status 'active', but the record only exists in tasks-to-verify.json with current_verification_status 'needs_review' and is absent from tasks-spot-check.json; this should be reconciled by the campaign owner."
+}

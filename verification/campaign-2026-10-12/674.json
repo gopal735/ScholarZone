@@ -1,0 +1,52 @@
+{
+  "id": "674",
+  "verdict": "needs_review",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:15:20Z",
+  "sources": [
+    {
+      "url": "https://www.hec.gov.rw/fileadmin/user_upload/HEC/Scholarships/KINGDOM_OF_MOROCCO_-__GOVERNMENT_OF_RWANDA_SCHOLARSHIPS.pdf",
+      "kind": "official",
+      "note": "Awarding publisher's own announcement: PUBLIC ANNOUNCEMENT from Rwanda's Higher Education Council (hec.gov.rw), digitally signed by Dr. Edward KADOZI, Director General, 'Done at Kigali, 26/08/2026'. Downloaded in full (HTTP 200, 1 page) and read as extracted text."
+    },
+    {
+      "url": "https://www.hec.gov.rw/updates/scholarships",
+      "kind": "official",
+      "note": "HEC Rwanda's own Scholarships updates feed. Confirms the Morocco-Rwanda call listed is the one dated Wednesday, 26 August 2026, and shows no newer Kingdom of Morocco announcement as of 12 October 2026 (newest scholarships listed: Government Study Loan - January 2027 intake, 02 October 2026; Algeria-Rwanda, 24 September 2026)."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The page is the Higher Education Council (HEC) of Rwanda's own signed public announcement on the .gov.rw domain, announcing scholarships offered by the Kingdom of Morocco to the Government of Rwanda. This matches the record's 'Kingdom of Morocco, scholarship call published by the Higher Education Council (HEC) of Rwanda'. It is not an aggregator or news page.",
+      "quote": "The Higher Education Council (HEC) wishes to inform the general public that the Kingdom of Morocco has offered to the Government of Rwanda scholarships at Diploma, Bachelors, Masters and PhD level commencing in academic year 2026/2027 taught in French from Moroccan public training institutions/ universities."
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "The page states one deadline: 29/08/2026, which matches the record exactly ('29 August 2026 (2026/2027 cycle)'). However, the announcement was signed on 26/08/2026 and the deadline (29 August 2026) has already passed as of the check date 12 October 2026, so there is no currently-open cycle for this programme; HEC's scholarships feed shows no newer Morocco call. The record therefore cannot be verified as open.",
+      "quote": "Application deadline: 29/08/2026"
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "All three academic requirements in the record match the page: Diploma (Technical and Vocational) requires Technical Secondary School completion with STEM combinations in 2024/2025 and at least 70% in the 2025 national examinations; Bachelors (General Education) requires secondary STEM studies in 2024/2025 with at least 70% in the 2025 national examinations; Masters/PhD require 14/20 (2nd Class Upper Division) or equivalent in the previous level completed. The record's 'Rwandan nationals applying through HEC' is implicit rather than stated as a nationality clause: the call is issued by HEC Rwanda, applications go to the Director General of HEC via HECMIS, and eligibility is keyed to Rwanda's 2025 national examinations, but no sentence says 'Rwandan citizens only'.",
+      "quote": "1. Candidates applying for Diploma (in Technical and Vocational) Programs must have completed from Technical Secondary School (TSS) and STEM related combinations in the school year 2024/2025 and must have obtained at least 70% in the National examination results of 2025. 2. Candidates applying for Bachelors' Degree (in General Education) Programs must have completed their secondary studies in STEM related combinations in the school year 2024/2025 and must have obtained at least 70% in the National examination results of 2025. 3. Candidates applying for Masters' Degree and PhD Programs must have obtained 14/20 (2nd Class Upper Division) or equivalent in the previous level completed."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The record's funding_type 'Not specified' is confirmed: the announcement is entirely silent on what the award covers - no mention of tuition, stipend, accommodation, travel or insurance anywhere in the text. The single sentence describing the award gives only the levels, academic year, language and host institutions. This silence matches the record; nothing supports calling it fully or partially funded. (For contrast, other HEC announcements on the same site, e.g. the MOFCOM China call dated 16/04/2026, explicitly say 'fully funded' and list coverage - this one does not.)",
+      "quote": "the Kingdom of Morocco has offered to the Government of Rwanda scholarships at Diploma, Bachelors, Masters and PhD level commencing in academic year 2026/2027 taught in French from Moroccan public training institutions/ universities."
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "The page offers Diploma, Bachelors, Masters and PhD level, matching the record's 'Diploma, Bachelor's, Master's, PhD'. Taught in French at Moroccan public training institutions/universities for academic year 2026/2027.",
+      "quote": "scholarships at Diploma, Bachelors, Masters and PhD level commencing in academic year 2026/2027 taught in French from Moroccan public training institutions/ universities."
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "Application deadline: 29/08/2026",
+    "deadline_date": "2026-08-29",
+    "verification_notes": "Official HEC Rwanda PDF read in full on 2026-10-12; every record claim matches the announcement. Cycle is closed: deadline 29/08/2026 has passed and HEC's scholarships feed shows no newer Morocco-Rwanda call as of 2026-10-12, so do not list the record as an open opportunity. Announcement is silent on funding coverage - do not upgrade funding_type beyond 'Not specified' without a further source. Next re-check around Aug/Sep 2027 for the 2027/2028 Morocco-Rwanda announcement (note: the previous cycle, published 19/09/2025, was bachelor's-only with deadline 30/09/2025). Applications for the closed 2026/2027 cycle were submitted via https://hecmis.hec.gov.rw/."
+  },
+  "notes_for_reviewer": "The record is accurate but the cycle it describes closed on 29 August 2026, so it must not be shown as currently open; verdict is needs_review rather than active solely for that reason. Funding coverage is genuinely unstated on the official page - a human may want to ask HEC Rwanda (info@hec.gov.rw, call centre 0786823101) what the Morocco award covers (tuition, stipend, travel) before filling in any funding detail. The 'Rwandan nationals' element of the eligibility summary is inferred from context (HEC Rwanda call, HECMIS portal, 2025 Rwanda national exams) and is not an explicit written nationality clause - keep that caveat if the record is re-published."
+}

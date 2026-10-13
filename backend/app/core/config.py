@@ -120,6 +120,13 @@ def get_settings() -> Settings:
     for fixed in (
         "https://scholarzone-fwzj.vercel.app",
         "https://scholarzone.vercel.app",
+        # The production Netlify frontend (``schollarzone.netlify.app``, the
+        # canonical host the site is served from). It must be an explicit allowed
+        # origin or every request it makes is blocked by CORS - including the admin
+        # calls - which surfaces in the browser as "Failed to fetch". It is added
+        # alongside, not instead of, the origins above, so no existing legitimate
+        # origin is removed.
+        "https://schollarzone.netlify.app",
     ):
         if fixed not in allowed_origins:
             allowed_origins = allowed_origins + (fixed,)

@@ -1,0 +1,62 @@
+{
+  "id": "494",
+  "verdict": "active",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:05:00Z",
+  "sources": [
+    {
+      "url": "https://science.osti.gov/wdts/scgsr",
+      "kind": "official",
+      "note": "U.S. DOE Office of Science - SCGSR programme main page; carries the open-application deadline notice and names the sponsoring and administering offices."
+    },
+    {
+      "url": "https://science.osti.gov/wdts/scgsr/Eligibility",
+      "kind": "official",
+      "note": "U.S. DOE Office of Science - SCGSR eligibility requirements page (age/citizenship, academic status, qualified programme, collaborating scientist)."
+    },
+    {
+      "url": "https://science.osti.gov/wdts/scgsr/Key-Dates",
+      "kind": "official",
+      "note": "U.S. DOE Office of Science - SCGSR key dates table for 2026 Solicitation 1, 2026 Solicitation 2 and (tentative) 2027 Solicitation 1."
+    },
+    {
+      "url": "https://science.osti.gov/wdts/scgsr/Benefits",
+      "kind": "official",
+      "note": "U.S. DOE Office of Science - SCGSR benefits page describing what the supplemental award actually covers (living stipend and transportation)."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The page is the DOE Office of Science's own programme page (science.osti.gov, .gov domain). It states the SCGSR programme is sponsored and managed by the Office of Science's Office of Workforce Development for Teachers and Scientists (WDTS), with ORISE under ORAU providing online application and awards administration support - matching the record exactly.",
+      "quote": "The SCGSR program is sponsored and managed by the DOE Office of Science's Office of Workforce Development for Teachers and Scientists (WDTS), in collaboration with the six Office of Science research programs, the Isotope R&D and production program, and the DOE National Laboratories and User Facilities. Online application and awards administration support is provided by Oak Ridge Institute of Science and Education (ORISE) under Oak Ridge Associated Universities (ORAU)."
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "The currently open cycle is 2026 Solicitation 2 (application portal opened August 12, 2026). Applications are due November 4, 2026, at 5:00 PM ET - the same date and time, and the same solicitation, as the record. The Key Dates page also confirms the online system closes at 5:00 PM ET with no additional materials accepted after, and that 2027 Solicitation 1 dates (opens February 2027, due May 2027) are all tentative, as the record states. Deadline is for a cycle open today (12 October 2026).",
+      "quote": "The Office of Science Graduate Student Research (SCGSR) program is now open for applications. Applications are due November 4, 2026, at 5:00PM ET. ... At the submission deadline (shown in red), the online application system will close after which no additional materials will be accepted. The online application system closes at 5:00 PM Eastern Time, so please plan accordingly."
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "Each distinct claim in the record is confirmed: U.S. citizen or lawful permanent resident status, age 18+, full-time enrolment in a qualified thesis-based Ph.D. programme in a DOE Office of Science-aligned STEM field, obtained Ph.D. candidacy with an approved thesis topic and thesis advisor, and identifying a collaborating scientist at a participating DOE national laboratory/facility. Master's-terminal and non-thesis programmes are explicitly ineligible.",
+      "quote": "Applicants must be U.S. Citizens or Lawful Permanent Residents (LPR) at the time of application and be at least 18 years of age at the time of applying. ... Applicants must be enrolled full-time in a Qualified Graduate Program with the Ph.D. as their degree objective. At the time of application, applicants must have obtained the Ph.D. candidacy at their home institution, and must have established a defined graduate thesis project and graduate thesis advisor. ... The applicant and their primary graduate thesis advisor are responsible for identifying a collaborating research scientist at a DOE laboratory and jointly developing the research proposal as part of the SCGSR application process."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The record's funding_type of 'Research Funding' is accurate: SCGSR is a supplemental research award, not a fully funded scholarship and not tuition support. It covers a living stipend of up to $3,600 per month and inbound/outbound transportation of up to $3,000 per award (host lab more than 50 miles from home institution); it explicitly does not fund supplies, materials, or other project travel.",
+      "quote": "The SCGSR program provides supplemental awards to support part of a graduate student's thesis research to be conducted at a DOE laboratory/facility. Supplemental awards are intended to cover incremental costs associated with living and travel expenses during the award period. ... Awardees are eligible to receive a monthly stipend in the amount of up to $3,600 for general living expenses ... limited to a total travel benefit of up to $3,000 per award."
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "The programme is for Ph.D. students only, as the record states. Applicants must be pursuing a Ph.D. as their degree objective in a qualified thesis/dissertation programme; applicants in Master's terminal programmes or without thesis requirements are not eligible, and joint degrees such as MD/PhD, JD/PhD, MBA, DVM are excluded.",
+      "quote": "Graduate students currently pursuing Ph.D. degrees in areas of physics, chemistry, material sciences, geosciences, biology (non-medical), mathematics, engineering, computer or computational sciences, or specific areas of environmental sciences that are aligned with the mission of the Office of Science are eligible to apply for the supplemental research awards provided by the SCGSR program."
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "Applications are due November 4, 2026, at 5:00PM ET. (2026 Solicitation 2; online application system closes at 5:00 PM Eastern Time, after which no additional materials will be accepted. 2027 Solicitation 1 dates - application opens February 2027, applications due May 2027 - are all tentative.)",
+    "deadline_date": "2026-11-04",
+    "verification_notes": "Re-checked against science.osti.gov/wdts/scgsr on 2026-10-12; all claims confirmed, cycle open (2026 Solicitation 2). 2026 Solicitation 1 already closed (May 6, 2026) - do not cite it. After 2026-11-04 the deadlines roll to 2027 Solicitation 1 (tentative: opens February 2027, due May 2027); re-read the Key Dates page rather than copying this deadline forward. Funding is supplemental only - living stipend up to $3,600/month plus up to $3,000 travel - never describe it as fully funded or tuition-covering."
+  },
+  "notes_for_reviewer": null
+}

@@ -1,0 +1,47 @@
+{
+  "id": "510",
+  "verdict": "needs_review",
+  "confidence": "high",
+  "checked_at": "2026-10-12T20:02:02.239Z",
+  "sources": [
+    {
+      "url": "https://nai.uu.se/opportunities/nordic-scholarship-programme.html",
+      "kind": "official",
+      "note": "Nordic Africa Institute programme page stating the round is closed"
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The source URL resolves to the Nordic Africa Institute (nai.uu.se, Uppsala), which runs the programme itself. Official.",
+      "quote": "Nordic Scholarship Programme - The Nordic Africa Institute"
+    },
+    "deadline": {
+      "status": "contradicted",
+      "detail": "The record carries \"Closing date 11 October 2026\" (exact, 2026-10-11). The page does not print a numeric deadline; it states the round is closed, which is consistent with a deadline that has just passed, but the exact date cannot be read from the page. The record itself was last verified 2026-10-11.",
+      "quote": "Closed for applications ** The deadline to apply for the 2027 programme has passed."
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "Africa-oriented studies/research in the social sciences or humanities; any citizenship but affiliation to and based at a university or research centre in Sweden, Finland, Denmark or Iceland both at application and at the time of the stay; master students, PhD candidates, postdocs and mid-career researchers. The record matches.",
+      "quote": "You must be pursuing Africa-oriented studies/research within the fields of social sciences or humanities. You may apply regardless of citizenship, but you must be affiliated to and based at a university or research centre in Sweden, Finland, Denmark or Iceland."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "Travel for the least expensive fare, accommodation, a workspace, and a subsistence allowance of SEK 450 per day. That is a travel/subsistence award, not a fully funded scholarship in the sense of tuition and living costs for a degree.",
+      "quote": "The scholarship also includes a subsistence allowance of SEK 450 per day. The scholarship does not include health care insurance or other insurances."
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "The page accepts master students, PhD candidates, postdoctoral and mid-career researchers, so Master and PhD are correct — but the award funds a one-month research visit, not a degree.",
+      "quote": "You can be a master student, PhD candidate, postdoctoral or mid-career researcher."
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "Closed for applications: the deadline for the 2027 programme has passed",
+    "deadline_date": null,
+    "verification_notes": "Verified live on nai.uu.se on 2026-10-12. The 2027 round closed (deadline had passed at the time of checking); the next cycle's dates are not published. Outcomes \"by the end of November 2026 the latest\". The award is a one-month research-visit scholarship (travel, accommodation, SEK 450/day allowance) - it is not a fully funded degree scholarship, so the funding_type \"Fully Funded\" overstates it."
+  },
+  "notes_for_reviewer": "Two things a reviewer must decide: the funding label (\"Fully Funded\" is wrong for a one-month visit award that covers travel, accommodation and a SEK 450/day allowance) and the lifecycle (the round has closed; the next window is unpublished)."
+}

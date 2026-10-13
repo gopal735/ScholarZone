@@ -1,0 +1,67 @@
+{
+  "id": "693",
+  "verdict": "needs_review",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:18:00Z",
+  "sources": [
+    {
+      "url": "https://education.gov.bb/2026-errol-walton-barrow-scholarships",
+      "kind": "official",
+      "note": "The record's listed official_source_url: the Barbados Ministry of Education Transformation's own page for the 2026 Errol Walton Barrow Scholarships. Carries the eligibility rules, the value of the award, the bond obligation, the August 6, 2026 deadline, and links to the list of newer secondary schools, the application form and GOVERNMENT NOTICE 2026-EWB.pdf."
+    },
+    {
+      "url": "https://education.gov.bb/errol-walton-barrow-scholarships-2026/",
+      "kind": "official",
+      "note": "A second official page for the same scholarship, and the one the Ministry's Financial Aid index links to. Same awarding body, same eligibility, same value and bond; the qualifying newer secondary schools are listed by name. States a DIFFERENT deadline: 'no later than July 3rd, 2026.'"
+    },
+    {
+      "url": "https://education.gov.bb/financial-aid/",
+      "kind": "official",
+      "note": "The Ministry's scholarship/financial-aid index. Its most recent entry for this programme is 'Errol Walton Barrow Scholarships 2026' dated June 3, 2026; no 2027 or later cycle is listed."
+    },
+    {
+      "url": "https://education.gov.bb/announcements/",
+      "kind": "official",
+      "note": "The Ministry's announcements page, read to look for a newer cycle. Most recent item is dated October 9, 2026; it contains no Errol Walton Barrow scholarship call for 2027."
+    },
+    {
+      "url": "https://mesgovbb-my.sharepoint.com/:b:/g/personal/information_mes_gov_bb/IQD2tHP-TsxgS4-h17cM9gKtAZ8ATSPJEinb1SPTvb0ytVs?e=zS7uM6",
+      "kind": "other",
+      "note": "The GOVERNMENT NOTICE 2026-EWB.pdf linked from the scholarship page. NOT READ: the fetch returned only a redirect and no document content, so the notice could not be adjudicated."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The page is on education.gov.bb, the Government of Barbados's own domain for its education ministry, and the call is issued by that Ministry's Tertiary Section (contact address: Elsie Payne Complex, Constitution Road, St. Michael; tertiary@mes.gov.bb; 535-0863/850-4802). This matches the record's 'Ministry of Education Transformation, Government of Barbados'. One caveat for the reviewer: the site's own branding is inconsistent across pages - 'Ministry of Education Technological and Vocational Training' in page titles, 'Ministry of Technological and Vocational Training' in body text, and a mes.gov.bb contact domain - but these all denote the same Barbadian ministry, and it is unambiguously the awarding body rather than an aggregator, news article or student blog.",
+      "quote": "© 2026 Ministry of Education Transformation, Barbados. All Rights Reserved."
+    },
+    "deadline": {
+      "status": "unconfirmed",
+      "detail": "No deadline for a currently-open cycle can be confirmed, so the record cannot be verified as open. The page at the record's own official_source_url states 'no later than August 6, 2026', which is in the past as of today (12 October 2026) and matches the record's 2026-08-06. But a second official page for the same scholarship, the one the Ministry's Financial Aid index links to, states 'no later than July 3rd, 2026' - the two official pages contradict each other on the 2026 closing date. The GOVERNMENT NOTICE 2026-EWB.pdf that would settle this is behind a SharePoint link that returns only a redirect and could not be read. And no later cycle has been published: the Ministry's Financial Aid index still lists 'Errol Walton Barrow Scholarships 2026' (June 3, 2026) and its announcements page, current to October 9, 2026, carries no 2027 call.",
+      "quote": "Completed application forms must be submitted no later than August 6, 2026."
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "All three distinct claims in the record's eligibility_summary were confirmed on the official page: Barbadian citizenship, acceptance at an accredited institution, and being a student of a listed newer secondary school. The second official page names the twelve qualifying schools (Daryll Jordan, Deighton Griffith, Ellerslie, Frederick Smith, Grantley Adams Memorial, Graydon Sealy, Lester Vaughan, Parkinson Memorial, Princess Margaret, Springer Memorial, St. George Secondary, St. Leonard's Boys). Two material restrictions appear on the page that the record's summary does not mention and that a reader should see: the award may be made only in three proposed areas of study - Marine Studies, Aeronautics, Culinary Arts - and the living allowance is quantified only for study in the USA, Canada and the United Kingdom.",
+      "quote": "Applicants must: be citizens of Barbados; have been accepted at an accredited institution"
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The record's funding_type is accurate and the award is not tuition-only. The official page states the scholarship covers full tuition fees payable directly to the University, one direct economy-class ticket to the country of study at the commencement of the course plus one return ticket to Barbados on completion, and an annual living allowance of $6,300.00 for study in the USA, $5,880.00 for Canada and $7,560.00 for the United Kingdom. The '(bonded)' element in the record is confirmed: successful applicants must enter a bond with sureties to return to and work in Barbados for one year for each year of the award.",
+      "quote": "Full tuition fees, payable directly to the University. Living allowance of: $6,300.00 per annum for students pursuing studies in the USA. $5,880.00 per annum for students pursuing studies in Canada. $7,560.00 per annum for students pursuing studies in the United Kingdom."
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "The page offers the scholarships 'at undergraduate and postgraduate levels', which is consistent with the record's 'Bachelor's, Master's'. The page does not use the words 'Bachelor's' or \"Master's\" and does not say whether 'postgraduate' is limited to master's level, so the record's specific labelling is a reasonable inference from the page's broader wording rather than a verbatim claim; it is not contradicted.",
+      "quote": "Applications are invited from suitably qualified Barbadians for the 2026 Errol Walton Barrow Scholarships at undergraduate and postgraduate levels, for students of newer secondary schools"
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "Completed application forms must be submitted no later than August 6, 2026. (2026 cycle - closed. A second official page for the same scholarship, https://education.gov.bb/errol-walton-barrow-scholarships-2026/, states 'no later than July 3rd, 2026'. No 2027 cycle had been published as of 12 October 2026.)",
+    "deadline_date": "2026-08-06",
+    "verification_notes": "Checked live on 2026-10-12. The record's official_source_url resolved on the Ministry of Education Transformation's own site (education.gov.bb) and was read in full; awarding body, eligibility, funding and degree levels all agree with the record. The verdict is needs_review, not active, solely because there is no open cycle: the only published deadlines are in the past. Two official pages for the same scholarship disagree on the 2026 closing date (August 6, 2026 on the page the record cites; July 3rd, 2026 on the duplicate page that the Ministry's Financial Aid index links to), and the GOVERNMENT NOTICE 2026-EWB.pdf that would settle it sits on a mesgovbb-my.sharepoint.com link that returned only a redirect and could not be read. Next re-check should happen around May-June 2027, when the ministry historically calls the next cycle (the 2026 page was posted 3 June 2026), and should confirm (a) whether a 2027 call has been published, (b) which of the two duplicate official pages is canonical, and (c) whether the restricted areas of study (Marine Studies, Aeronautics, Culinary Arts) and the Barbados-citizenship-plus-newer-secondary-school eligibility rules are unchanged. The eligibility summary should also be widened to mention the three proposed areas of study, which are absent from it. Living-allowance figures are published only for study in the USA, Canada and the United Kingdom."
+  },
+  "notes_for_reviewer": "Two things need a human decision. First, the record should not be presented as an open 2026-cycle opportunity: its deadline (6 August 2026) is two months past as of the check date, and the record's own deadline_label already says '2026 cycle - closed', so its verification status should stay non-active until the next cycle is called rather than being promoted. Second, the Ministry publishes two different pages for this same scholarship with two different 2026 deadlines (6 August 2026 at the URL the record cites, 3 July 2026 at the URL its Financial Aid index links to), and the Government Notice PDF that would resolve the conflict is behind an unreadable SharePoint redirect; someone should contact the Tertiary Section (tertiary@mes.gov.bb, 535-0863/850-4802) or read the notice to establish which date was authoritative. Also note the award is limited to three fields of study (Marine Studies, Aeronautics, Culinary Arts) and to students of twelve named newer secondary schools - a narrower programme than the record's eligibility summary implies."
+}
