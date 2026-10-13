@@ -17,7 +17,10 @@ function _fixtureMode() {
     const q = new URLSearchParams(window.location.search).get('fixture')
     if (q === '1' || q === 'true') return true
   }
-  return String(import.meta.env.VITE_STATEGIST_FIXTURE || '').toLowerCase() === 'true'
+  // Spelled as documented. A typo here (_STATEGIST_) made the build-time switch
+  // silently inert: a reviewer setting VITE_STRATEGIST_FIXTURE=true would have got
+  // the live network and a 404, with nothing to say why.
+  return String(import.meta.env.VITE_STRATEGIST_FIXTURE || '').toLowerCase() === 'true'
 }
 const FIXTURE = _fixtureMode()
 

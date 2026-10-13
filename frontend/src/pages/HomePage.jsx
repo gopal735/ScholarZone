@@ -7,6 +7,7 @@ import SaveCompareSteps from '../components/SaveCompareSteps'
 import FeaturedStory from '../components/FeaturedStory'
 import { useScholarshipDirectory } from '../hooks/useScholarshipDirectory'
 import { useScholarshipStats } from '../hooks/useScholarshipStats'
+import { enabled as strategistEnabled } from '../features/strategist/flags.js'
 import './HomePage.css'
 import { CANONICAL_ORIGIN } from '../services/canonicalOrigin'
 
@@ -598,6 +599,24 @@ export default function HomePage() {
               Explore by Country
             </Link>
           </div>
+          {/* The Study Abroad Planner is the one path that puts the four
+              decisions side by side - country, cost, funding and what the
+              degree does for a career - so it earns a call of its own here
+              rather than a fourth peer of the three above. Gated on the
+              strategist's own flag for the same reason the route is: an
+              advert for a route that does not exist is a dead end. It promises
+              a comparison, never a recommendation - the planner shows what is
+              sourced per country and says so where it is not. */}
+          {strategistEnabled && (
+            <div className="sz-cta-banner__actions">
+              <Link to="/strategist" className="sz-cta sz-cta--primary" data-testid="home-strategist-cta">
+                Compare Countries on Cost, Funding and Career
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 12h14M13 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
+          )}
         </ScrollReveal>
       </section>
     </div>
