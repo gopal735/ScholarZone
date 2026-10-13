@@ -33,11 +33,23 @@ Bangladesh Bank **USD/BDT 123.2254 (2026-10-11)**, composed with the ECB table (
 - Weg-exact digit locale differs between `en-GB`/`bn-BD` rendering.
 
 ## Verification (exact commands + observed results)
-- Backend: `python -m pytest -q` → **6572 passed, 12 skipped, 1 xfailed**; 1 pre-existing collection error in `scripts/artifact_smoke_test.py::test_endpoint` (a helper function mis-collected by pytest, **not touched by this PR**, present on baseline). Strategist suite `tests/test_strategist.py` → **28 passed** (rules 1–7 + API + flag-off + FX + loader guards).
-- Frontend: `npx vitest run` → **1010 passed (39 files)**; strategist `StrategistPage.test.jsx` → **10 passed** (all UI states, integrity, privacy).
+- Backend: `python -m pytest -q` → **6575 passed, 12 skipped, 1 xfailed**; strategist `tests/test_strategist.py` → **36 passed** (integrity rules + budget/funding scenarios + coverage-based selection + essential alignment + API auth). The single `scripts/artifact_smoke_test.py::test_endpoint` collection error is pre-existing (a helper function mis-collected by pytest, **not touched by this PR**, present on baseline) and is not part of CI.
+- Frontend: `npx vitest run` → **1020 passed (40 files)**; strategist `StrategistPage.test.jsx` → **13 passed** (all UI states incl. offline, essential criteria, budget fit, funding reality, privacy) and `lib/api.test.js` → **7 passed** (bounded cache: TTL, keying, stale-on-failure, never-invents, bounded eviction).
+- E2E (committed, run locally): `npx playwright test -c e2e/playwright.strategist.config.js` → **4 passed** (happy + insufficient-data × mobile + desktop). `@playwright/test` is a devDependency.
 - `npm run lint` (eslint) → **0 problems**. `npm run build` → success, `strategist` chunk code-split, no warnings.
-- a11y: axe-core 4.10 (wcag2a/2aa/21a/21aa + best-practice) on the live results page → **0 violations, 43 passes, 1 incomplete**. Zero serious/moderate.
+- a11y: axe-core 4.10 (wcag2a/2aa/21a/21aa + best-practice) on the live results page → **0 violations, 42 passes**.
 - Screenshots: `docs/strategist/screenshots/` (mobile results, desktop results, insufficient-data/not-ranked region).
 
+## Review findings addressed (this revision)
+1. **Admin auth on `/v2/strategist/gaps`** — now requires `X-Admin-Secret` (same as `admin_dashboard`); the flag being on no longer makes the internal report public. Tested unauth/non-admin/authorized.
+2. **Budget + funding now affect the comparison honestly** — budget is scored **per cost cell** (years of tuition, never summed with months of living) and surfaced as "Budget fit"; missing/unconvertible costs stay "Insufficient/unavailable" with a reason (never 0). Funding model drives a "Funding reality" note from **measured** degree-level counts (never fabricated, never subject-matched). What-if re-runs reflect both. Tested across budget/funding scenarios.
+3. **Deterministic evidence-coverage selection** — the default set is the top-6 countries by evidence completeness (ties by ISO), computed not sliced; `selection_rule` is published and tested. An explicit `iso2s` list is still supported.
+4. **Essential-criteria alignment** — essential = `subject_salary` + `post_study_work`, consistent across flags, `_essential_complete`, the published `request.essential_criteria`, `ranking_rule`, the UI and tests. Missing cost lowers completeness + raises a risk note but does not block ranking; missing an essential criterion removes the overall rank.
+5. **Committed E2E + offline-state + bounded cache** — Playwright E2E (happy + insufficient, mobile + desktop), an offline-state component test, and a bounded (TTL + max-entries) plan/subjects cache that serves a known answer disclosed as stale on failure and never invents one. Cache failure/invalidation behavior is tested.
+
+## Residual gaps (honest, per task §5)
+- E2E requires Playwright's browser binaries. They are installed for the local run (Chromium downloaded) but **are not pre-provisioned in the project's CI**, so the E2E job is not wired into the GitHub workflow in this PR (it is committed and runnable via `npm run test:e2e:strategist` after `npx playwright install chromium`). CI still runs unit/component tests, lint and build.
+- Occupation-salary promotion into the production country corpus files + full re-ingest remains deferred (guarded mapping + tests added; verified subset served from `occupation_salary/verified.json`). See earlier section.
+
 ## Data-integrity hostile self-review
-Confirmed across diff + tests: no path turns UNKNOWN into 0; a stipend/gross is never shown as net/take-home; a country average never stands in for subject pay; no admission/visa/citizenship probability is produced; shared URLs/export carry only choices (no PII); stale/undated cells raise a re-verify warning.
+Confirmed across diff + tests: no path turns UNKNOWN into 0; a stipend/gross is never shown as net/take-home; a country average never stands in for subject pay; no admission/visa/citizenship probability is produced; budget/funding change interpretation only and never filter or zeroize; shared URLs/export carry only choices (no PII); stale/undated cells raise a re-verify warning; the gap report is admin-gated.

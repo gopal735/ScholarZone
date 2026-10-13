@@ -277,6 +277,13 @@ export function StrategistPage() {
               <>
                 <SectionTitle id="results-title"><BiText pair={t('results.title')} mode={mode} /></SectionTitle>
                 <p className="strategist-note"><BiText pair={t('results.noSame')} mode={mode} /></p>
+                <p className="strategist-note" data-testid="essential-criteria">
+                  <strong><BiText pair={t('results.essential')} mode={mode} />:</strong>{' '}
+                  {(plan.request?.essential_criteria || []).join(', ')}
+                </p>
+                {plan.selection_rule && (
+                  <p className="strategist-note" data-testid="selection-rule">{plan.selection_rule}</p>
+                )}
 
                 <div className="strategist-actions">
                   <button type="button" className="strategist-btn" onClick={doShare}>{t('shortlist.share').en}</button>
@@ -420,6 +427,18 @@ function CountryResult({ country, plan, t, mode, formatBdt, formatNumber, shortl
                 <span className="strategist-insufficient">
                   <StatusBadge status="bad">{t('insufficient').en}</StatusBadge>
                   <span className="strategist-reason">{cell.reason}</span>
+                </span>
+              )}
+              {(meta.key === 'tuition' || meta.key === 'living_cost') && cell.budget_interpretation && (
+                <span className="strategist-budget" data-testid={`budget-${meta.key}`}>
+                  <span className="strategist-cell-label"><BiText pair={t('results.budget')} mode={mode} /></span>
+                  <span className="strategist-meta"> {cell.budget_interpretation.note}</span>
+                </span>
+              )}
+              {cell.scenario && (
+                <span className="strategist-funding" data-testid="funding-scenario">
+                  <span className="strategist-cell-label"><BiText pair={t('results.funding')} mode={mode} /></span>
+                  <span className="strategist-meta"> {cell.scenario.note}{cell.scenario.model_note ? ` ${cell.scenario.model_note}` : ''}</span>
                 </span>
               )}
             </li>

@@ -37,8 +37,12 @@ from app.services.country_intelligence.occupation_salary import (  # noqa: E402
     reload_verified_cells,
 )
 from app.services.strategist.service import (  # noqa: E402
+    MAX_COMPARE_COUNTRIES,
     ValidationError,
+    budget_interpretation,
     coverage_matrix,
+    essential_criteria,
+    funding_scenario,
     pathway_timeline,
     plan,
 )
@@ -324,6 +328,105 @@ def test_plan_rejects_unknown_degree():
 
 
 # --------------------------------------------------------------------------
+# Review F4: essential criteria are aligned across flags, gate, API and text.
+# --------------------------------------------------------------------------
+
+def test_essential_criteria_are_subject_salary_and_post_study_work():
+    assert essential_criteria() == ("subject_salary", "post_study_work")
+
+
+def test_ranking_rule_matches_essential_flags():
+    res = plan(None, subject_key="computer_science", degree="master", iso2s=["US"])
+    request = res["request"]
+    assert request["essential_criteria"] == ["subject_salary", "post_study_work"]
+    rule = res["ranking_rule"]
+    # The published rule names exactly the essential criteria and does not claim
+    # tuition is essential.
+    assert "subject_salary" in rule and "post_study_work" in rule
+    assert "cost cells are shown" in rule.lower()
+
+
+def test_missing_cost_does_not_block_ranking_but_lowers_completeness():
+    # Canada has subject salary + post-study work (essential) but no sourced
+    # tuition/living: it must still be ranked, with cost shown as insufficient.
+    res = plan(None, subject_key="computer_science", degree="master", iso2s=["CA"])
+    ca = res["comparison"][0]
+    assert ca["ranked"] is True
+    assert ca["cells"]["tuition"]["status"] == "insufficient"
+    assert ca["evidence_completeness"]["sourced"] < ca["evidence_completeness"]["total"]
+    # The cost gap is visible as a risk, not hidden.
+    assert any("not sourced" in r.lower() or "insufficient" in r.lower() for r in ca["why"]["risks"])
+
+
+# --------------------------------------------------------------------------
+# Review F3: default selection is computed from evidence coverage, not a slice.
+# --------------------------------------------------------------------------
+
+def test_default_selection_is_evidence_coverage_based():
+    res = plan(None, subject_key="computer_science", degree="master")
+    shown = [c["iso2"] for c in res["comparison"]] + [c["iso2"] for c in res["insufficient_data"]]
+    # Recompute the intended rule independently: measure every corpus country's
+    # completeness (one call each, since a country list is capped at six), sort by
+    # completeness then ISO, and take the top six.
+    from app.services.country_intelligence.corpus import get_corpus
+    per_country: dict[str, int] = {}
+    for code in get_corpus().iso2_codes:
+        one = plan(None, subject_key="computer_science", degree="master", iso2s=[code])
+        entry = (one["comparison"] + one["insufficient_data"])[0]
+        per_country[code] = entry["evidence_completeness"]["sourced"]
+    expected = [c for c, _ in sorted(per_country.items(), key=lambda kv: (-kv[1], kv[0]))][:MAX_COMPARE_COUNTRIES]
+    assert set(shown) == set(expected)
+    assert res["selection_rule"] and "completeness" in res["selection_rule"].lower()
+
+
+# --------------------------------------------------------------------------
+# Review F2: budget and funding change the interpretation, never fabricate/zero/filter.
+# --------------------------------------------------------------------------
+
+def test_budget_interpretation_changes_with_budget_and_never_zeroes_missing():
+    cell = {"criterion": "tuition", "status": "sourced", "value": 20000, "per": "year",
+            "currency": "EUR", "bdt": {"value": 2500000}}
+    big = budget_interpretation(cell, 3000000)
+    small = budget_interpretation(cell, 500000)
+    assert big["status"] == "computed" and small["status"] == "computed"
+    assert big["value"] > small["value"]  # a bigger budget covers strictly more
+    missing = budget_interpretation({"criterion": "living_cost", "status": "insufficient", "reason": "no data"}, 3000000)
+    assert missing["status"] == "insufficient"
+    assert missing.get("value") is None  # missing is never converted to 0
+
+
+def test_funding_scenario_changes_with_model_and_never_fabricates():
+    funded = funding_scenario(None, "master", "fully_funded")
+    self_ = funding_scenario(None, "master", "self_funded")
+    # No measured data: no invented count, count is 0, and it is flagged as not
+    # subject-matched.
+    assert funded["fully_funded_count"] == 0 and funded["subject_matched"] is False
+    assert funded["model_note"] != self_["model_note"]  # the model changes the reading
+
+    class Facts:  # a measured-plane stub, like the real catalogue fact object
+        fully_funded = 4
+        scholarships = 20
+    measured = funding_scenario(Facts(), "master", "fully_funded")
+    assert measured["fully_funded_count"] == 4 and measured["total_count"] == 20
+    assert "not matched to your subject" in measured["note"]  # rule 5: no subject claim
+
+
+def test_budget_and_funding_never_filter_out_missing_evidence():
+    # Two different budgets/funding models must keep the same set of countries
+    # (no filtering), only change the interpretation; a country missing evidence
+    # still appears rather than being dropped.
+    a = plan(None, subject_key="computer_science", degree="master", budget_bdt=3_000_000, funding_model="self_funded", iso2s=["US"])
+    b = plan(None, subject_key="computer_science", degree="master", budget_bdt=300, funding_model="fully_funded", iso2s=["US"])
+    assert [c["iso2"] for c in a["insufficient_data"]] == ["US"]
+    assert [c["iso2"] for c in b["insufficient_data"]] == ["US"]
+    # A country with no cost data keeps budget interpretation "insufficient"/"unavailable",
+    # never a computed number, under either budget.
+    for plan_ in (a, b):
+        bi = plan_["insufficient_data"][0]["cells"]["tuition"]["budget_interpretation"]
+        assert bi["status"] in {"insufficient", "unavailable", "no_budget"}
+
+
+# --------------------------------------------------------------------------
 # API layer.
 # --------------------------------------------------------------------------
 
@@ -352,9 +455,19 @@ def test_api_pathway(client):
     assert body["iso2"] == "DE" and body["steps"]
 
 
-def test_api_gaps_reports_matrix(client):
-    body = client.get("/v2/strategist/gaps").json()
-    assert any(gap["country_iso2"] == "IE" and gap["subject_key"] == "data_science" for gap in body["gaps"])
+def test_api_gaps_rejects_without_admin_secret(client):
+    # The feature flag being on must not make the internal gap report public.
+    assert client.get("/v2/strategist/gaps").status_code == 401
+    assert client.get("/v2/strategist/gaps", headers={"X-Admin-Secret": "wrong"}).status_code == 401
+
+
+def test_api_gaps_requires_admin_secret_even_when_flag_on(client, monkeypatch):
+    # A wrong secret is refused; the correct one (from settings) is accepted.
+    monkeypatch.setenv("SCHOLARZONE_ADMIN_SECRET", "s3cr3t")
+    assert client.get("/v2/strategist/gaps", headers={"X-Admin-Secret": "nope"}).status_code == 401
+    body = client.get("/v2/strategist/gaps", headers={"X-Admin-Secret": "s3cr3t"})
+    assert body.status_code == 200
+    assert any(gap["country_iso2"] == "IE" and gap["subject_key"] == "data_science" for gap in body.json()["gaps"])
 
 
 # --------------------------------------------------------------------------

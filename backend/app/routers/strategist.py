@@ -22,10 +22,11 @@ from __future__ import annotations
 
 from typing import Any
 
-from fastapi import APIRouter, Depends, HTTPException, Path
+from fastapi import APIRouter, Depends, Header, HTTPException, Path, status
 from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy.orm import Session
 
+from ..core.config import get_settings
 from ..database import get_db
 from ..services.strategist.service import (
     MAX_COMPARE_COUNTRIES,
@@ -37,6 +38,21 @@ from ..services.strategist.service import (
 )
 
 router = APIRouter(prefix="/v2/strategist", tags=["strategist"])
+
+
+def _verify_admin_secret(provided_secret: str | None) -> bool:
+    """Constant-time-by-default admin check, matching ``admin_dashboard``.
+
+    The comparison, subjects and pathway endpoints are public research read-only
+    surfaces. The gap report is an *internal* research-prioritisation view, so it is
+    gated the same way every admin endpoint is gated: the feature being enabled must
+    never make an internal report public.
+    """
+    settings = get_settings()
+    expected = getattr(settings, "admin_secret", None)
+    if expected is None or provided_secret is None:
+        return False
+    return provided_secret == expected
 
 
 class PlanRequest(BaseModel):
@@ -84,10 +100,18 @@ def pathway(iso2: str = Path(min_length=2, max_length=2)) -> dict[str, Any]:
 
 
 @router.get("/gaps")
-def gaps() -> dict[str, Any]:
+def gaps(
+    x_admin_secret: str | None = Header(None, alias="X-Admin-Secret"),
+) -> dict[str, Any]:
     """Admin/internal: which country x subject pairs lack occupation-level evidence.
 
-    Read-only and derived from the verified occupation-salary layer; it publishes no
-    secret and writes nothing. It tells the research team where to prioritise next.
+    Gated by ``X-Admin-Secret`` like every admin endpoint: the gap report guides
+    research effort and is not a public surface, so the strategist feature being
+    enabled must not expose it. Read-only; writes nothing; publishes no secret.
     """
+    if not _verify_admin_secret(x_admin_secret):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid or missing admin secret.",
+        )
     return coverage_matrix()

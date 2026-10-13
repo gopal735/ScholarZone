@@ -38,21 +38,26 @@
    "subject_name_en": "Computer Science / AI",
    "degree": "master",
    "funding_model": "self_funded",
-   "budget_bdt": 3000000,
+   "budget_bdt": 3000000.0,
    "weights": {
     "cost": 20,
     "funding": 15,
     "career": 40,
     "pathway": 25
    },
-   "max_countries": 6
+   "max_countries": 6,
+   "essential_criteria": [
+    "subject_salary",
+    "post_study_work"
+   ]
   },
-  "ranking_rule": "No single composite score is shown. Comparison is criterion-by-criterion. Only countries whose essential criteria (tuition, subject-level salary, post-study work) are all sourced appear in the ranked comparison; the rest are listed with their missing-data reasons. Weights above are the ones you set and they are echoed back unchanged.",
+  "ranking_rule": "No single composite score is shown. Comparison is criterion-by-criterion. A country appears in 'comparison' only when every essential criterion is sourced; the essential criteria are ['subject_salary', 'post_study_work']. Cost cells are shown and weighted, but a missing cost lowers the evidence meter and raises a risk note rather than removing a country. Weights above are the ones you set, echoed back unchanged.",
+  "selection_rule": "Explicit country list supplied by you; capped at six.",
   "subject_coverage_note_en": "Occupation-level pay is officially sourced in the US, Canada, Germany and Australia; other launch countries show 'Insufficient data' rather than a country average.",
   "criteria": [
    {
     "key": "tuition",
-    "label_en": "Tuition (public, per year)",
+    "label_en": "Tuition (public, gross, per year)",
     "category": "cost",
     "essential": false,
     "higher_is_better": false,
@@ -131,12 +136,12 @@
     "cells": {
      "tuition": {
       "criterion": "tuition",
-      "label_en": "Tuition (public, per year)",
+      "label_en": "Tuition (public, gross, per year)",
       "category": "cost",
       "essential": false,
       "higher_is_better": false,
       "status": "insufficient",
-      "reason": "Public tuition for master is not sourced for this country (NO_RESEARCHED_DATA). No zero is assumed and no country average is substituted; check university or state fee schedules directly.",
+      "reason": "Public tuition for master is not sourced for this country. No zero is assumed and no country average is substituted; check university or state fee schedules directly.",
       "value": null,
       "currency": null,
       "per": null,
@@ -147,7 +152,12 @@
       "freshness": null,
       "stale_warning": false,
       "sources": [],
-      "bdt": null
+      "bdt": null,
+      "budget_interpretation": {
+       "status": "insufficient",
+       "bdt_budget": 3000000.0,
+       "note": "Cannot assess budget coverage: Public tuition for master is not sourced for this country. No zero is assumed and no country average is substituted; check university or state fee schedules directly.. No zero is assumed."
+      }
      },
      "living_cost": {
       "criterion": "living_cost",
@@ -156,7 +166,7 @@
       "essential": false,
       "higher_is_better": false,
       "status": "insufficient",
-      "reason": "A medium monthly living-cost total is not sourced for this country (NO_RESEARCHED_DATA). No national average is substituted, so budget entirely from other sources.",
+      "reason": "A medium monthly living-cost total is not sourced for this country. No national average is substituted, so budget entirely from other sources.",
       "value": null,
       "currency": null,
       "per": null,
@@ -167,7 +177,12 @@
       "freshness": null,
       "stale_warning": false,
       "sources": [],
-      "bdt": null
+      "bdt": null,
+      "budget_interpretation": {
+       "status": "insufficient",
+       "bdt_budget": 3000000.0,
+       "note": "Cannot assess budget coverage: A medium monthly living-cost total is not sourced for this country. No national average is substituted, so budget entirely from other sources.. No zero is assumed."
+      }
      },
      "funding_opportunities": {
       "criterion": "funding_opportunities",
@@ -176,7 +191,7 @@
       "essential": false,
       "higher_is_better": true,
       "status": "insufficient",
-      "reason": "No fully-funded scholarship listings at this degree level are currently measured for this country. This is a count of listed opportunities, not a value, and is kept separate from cost and pay.",
+      "reason": "No scholarship listings are currently measured for this degree level. This is a measurement of listings, kept separate from cost and pay.",
       "value": null,
       "currency": null,
       "per": null,
@@ -187,7 +202,16 @@
       "freshness": null,
       "stale_warning": false,
       "sources": [],
-      "bdt": null
+      "bdt": null,
+      "scenario": {
+       "funding_model": "self_funded",
+       "degree": "master",
+       "fully_funded_count": 0,
+       "total_count": 0,
+       "subject_matched": false,
+       "note": "No master scholarships are currently measured for this country in the catalogue. That is a measurement of listings, not a statement that none exist; search each programme directly.",
+       "model_note": "You plan to self-fund, so budget coverage against tuition and living (shown separately) matters most; fully-funded listings appear only as an alternative."
+      }
      },
      "subject_salary": {
       "criterion": "subject_salary",
@@ -340,21 +364,21 @@
       "bdt": null
      }
     },
+    "ranked": true,
     "why": {
      "recommended": [
       "Prioritised subject-level salary (gross, occupation-level) is sourced (but stale - re-verify).",
       "Prioritised post-study work (job-seeker) route is sourced and currently dated."
      ],
      "risks": [
-      "Tuition (public, per year): not sourced in the corpus.",
+      "Tuition (public, gross, per year): not sourced in the corpus.",
       "Living cost (monthly, medium): not sourced in the corpus.",
       "Fully-funded scholarships (count): not sourced in the corpus.",
       "Subject-level salary (gross, occupation-level) is stale/undated (UNDATED); re-verify before relying on it.",
       "Permanent residence route is stale/undated (UNDATED); re-verify before relying on it.",
       "Citizenship / naturalisation: not sourced in the corpus."
      ]
-    },
-    "ranked": true
+    }
    },
    {
     "iso2": "AU",
@@ -379,12 +403,12 @@
     "cells": {
      "tuition": {
       "criterion": "tuition",
-      "label_en": "Tuition (public, per year)",
+      "label_en": "Tuition (public, gross, per year)",
       "category": "cost",
       "essential": false,
       "higher_is_better": false,
       "status": "insufficient",
-      "reason": "Public tuition for master is not sourced for this country (NO_RESEARCHED_DATA). No zero is assumed and no country average is substituted; check university or state fee schedules directly.",
+      "reason": "Public tuition for master is not sourced for this country. No zero is assumed and no country average is substituted; check university or state fee schedules directly.",
       "value": null,
       "currency": null,
       "per": null,
@@ -395,7 +419,12 @@
       "freshness": null,
       "stale_warning": false,
       "sources": [],
-      "bdt": null
+      "bdt": null,
+      "budget_interpretation": {
+       "status": "insufficient",
+       "bdt_budget": 3000000.0,
+       "note": "Cannot assess budget coverage: Public tuition for master is not sourced for this country. No zero is assumed and no country average is substituted; check university or state fee schedules directly.. No zero is assumed."
+      }
      },
      "living_cost": {
       "criterion": "living_cost",
@@ -404,7 +433,7 @@
       "essential": false,
       "higher_is_better": false,
       "status": "insufficient",
-      "reason": "A medium monthly living-cost total is not sourced for this country (NO_RESEARCHED_DATA). No national average is substituted, so budget entirely from other sources.",
+      "reason": "A medium monthly living-cost total is not sourced for this country. No national average is substituted, so budget entirely from other sources.",
       "value": null,
       "currency": null,
       "per": null,
@@ -415,7 +444,12 @@
       "freshness": null,
       "stale_warning": false,
       "sources": [],
-      "bdt": null
+      "bdt": null,
+      "budget_interpretation": {
+       "status": "insufficient",
+       "bdt_budget": 3000000.0,
+       "note": "Cannot assess budget coverage: A medium monthly living-cost total is not sourced for this country. No national average is substituted, so budget entirely from other sources.. No zero is assumed."
+      }
      },
      "funding_opportunities": {
       "criterion": "funding_opportunities",
@@ -424,7 +458,7 @@
       "essential": false,
       "higher_is_better": true,
       "status": "insufficient",
-      "reason": "No fully-funded scholarship listings at this degree level are currently measured for this country. This is a count of listed opportunities, not a value, and is kept separate from cost and pay.",
+      "reason": "No scholarship listings are currently measured for this degree level. This is a measurement of listings, kept separate from cost and pay.",
       "value": null,
       "currency": null,
       "per": null,
@@ -435,7 +469,16 @@
       "freshness": null,
       "stale_warning": false,
       "sources": [],
-      "bdt": null
+      "bdt": null,
+      "scenario": {
+       "funding_model": "self_funded",
+       "degree": "master",
+       "fully_funded_count": 0,
+       "total_count": 0,
+       "subject_matched": false,
+       "note": "No master scholarships are currently measured for this country in the catalogue. That is a measurement of listings, not a statement that none exist; search each programme directly.",
+       "model_note": "You plan to self-fund, so budget coverage against tuition and living (shown separately) matters most; fully-funded listings appear only as an alternative."
+      }
      },
      "subject_salary": {
       "criterion": "subject_salary",
@@ -583,19 +626,19 @@
       "bdt": null
      }
     },
+    "ranked": true,
     "why": {
      "recommended": [
       "Prioritised subject-level salary (gross, occupation-level) is sourced and currently dated.",
       "Prioritised post-study work (job-seeker) route is sourced and currently dated."
      ],
      "risks": [
-      "Tuition (public, per year): not sourced in the corpus.",
+      "Tuition (public, gross, per year): not sourced in the corpus.",
       "Living cost (monthly, medium): not sourced in the corpus.",
       "Fully-funded scholarships (count): not sourced in the corpus.",
       "Citizenship / naturalisation: not sourced in the corpus."
      ]
-    },
-    "ranked": true
+    }
    }
   ],
   "insufficient_data": [
@@ -622,12 +665,12 @@
     "cells": {
      "tuition": {
       "criterion": "tuition",
-      "label_en": "Tuition (public, per year)",
+      "label_en": "Tuition (public, gross, per year)",
       "category": "cost",
       "essential": false,
       "higher_is_better": false,
       "status": "insufficient",
-      "reason": "Public tuition for master is not sourced for this country (NO_RESEARCHED_DATA). No zero is assumed and no country average is substituted; check university or state fee schedules directly.",
+      "reason": "Public tuition for master is not sourced for this country. No zero is assumed and no country average is substituted; check university or state fee schedules directly.",
       "value": null,
       "currency": null,
       "per": null,
@@ -638,7 +681,12 @@
       "freshness": null,
       "stale_warning": false,
       "sources": [],
-      "bdt": null
+      "bdt": null,
+      "budget_interpretation": {
+       "status": "insufficient",
+       "bdt_budget": 3000000.0,
+       "note": "Cannot assess budget coverage: Public tuition for master is not sourced for this country. No zero is assumed and no country average is substituted; check university or state fee schedules directly.. No zero is assumed."
+      }
      },
      "living_cost": {
       "criterion": "living_cost",
@@ -647,7 +695,7 @@
       "essential": false,
       "higher_is_better": false,
       "status": "insufficient",
-      "reason": "A medium monthly living-cost total is not sourced for this country (NO_RESEARCHED_DATA). No national average is substituted, so budget entirely from other sources.",
+      "reason": "A medium monthly living-cost total is not sourced for this country. No national average is substituted, so budget entirely from other sources.",
       "value": null,
       "currency": null,
       "per": null,
@@ -658,7 +706,12 @@
       "freshness": null,
       "stale_warning": false,
       "sources": [],
-      "bdt": null
+      "bdt": null,
+      "budget_interpretation": {
+       "status": "insufficient",
+       "bdt_budget": 3000000.0,
+       "note": "Cannot assess budget coverage: A medium monthly living-cost total is not sourced for this country. No national average is substituted, so budget entirely from other sources.. No zero is assumed."
+      }
      },
      "funding_opportunities": {
       "criterion": "funding_opportunities",
@@ -667,7 +720,7 @@
       "essential": false,
       "higher_is_better": true,
       "status": "insufficient",
-      "reason": "No fully-funded scholarship listings at this degree level are currently measured for this country. This is a count of listed opportunities, not a value, and is kept separate from cost and pay.",
+      "reason": "No scholarship listings are currently measured for this degree level. This is a measurement of listings, kept separate from cost and pay.",
       "value": null,
       "currency": null,
       "per": null,
@@ -678,7 +731,16 @@
       "freshness": null,
       "stale_warning": false,
       "sources": [],
-      "bdt": null
+      "bdt": null,
+      "scenario": {
+       "funding_model": "self_funded",
+       "degree": "master",
+       "fully_funded_count": 0,
+       "total_count": 0,
+       "subject_matched": false,
+       "note": "No master scholarships are currently measured for this country in the catalogue. That is a measurement of listings, not a statement that none exist; search each programme directly.",
+       "model_note": "You plan to self-fund, so budget coverage against tuition and living (shown separately) matters most; fully-funded listings appear only as an alternative."
+      }
      },
      "subject_salary": {
       "criterion": "subject_salary",
@@ -767,12 +829,13 @@
       "source_missing_reason": "This route is present in the corpus but no official source link is attached at this step; verify directly with the immigration authority."
      }
     },
+    "ranked": false,
     "why": {
      "recommended": [
       "Prioritised post-study work (job-seeker) route is sourced (but stale - re-verify)."
      ],
      "risks": [
-      "Tuition (public, per year): not sourced in the corpus.",
+      "Tuition (public, gross, per year): not sourced in the corpus.",
       "Living cost (monthly, medium): not sourced in the corpus.",
       "Fully-funded scholarships (count): not sourced in the corpus.",
       "Subject-level salary (gross, occupation-level): No occupation-level pay figure is officially sourced for this country and subject. A country salary average is not used here because it is not a subject-level figure.",
@@ -781,8 +844,7 @@
       "Citizenship / naturalisation is stale/undated (UNDATED); re-verify before relying on it."
      ]
     },
-    "ranked": false,
-    "not_ranked_reason": "An essential criterion is missing, so this country is not given an overall rank and is never claimed as 'best'."
+    "not_ranked_reason": "An essential criterion (subject_salary or post_study_work) is missing, so this country is not given an overall rank and is never claimed as 'best'."
    },
    {
     "iso2": "IE",
@@ -807,12 +869,12 @@
     "cells": {
      "tuition": {
       "criterion": "tuition",
-      "label_en": "Tuition (public, per year)",
+      "label_en": "Tuition (public, gross, per year)",
       "category": "cost",
       "essential": false,
       "higher_is_better": false,
       "status": "insufficient",
-      "reason": "Public tuition for master is not sourced for this country (NO_RESEARCHED_DATA). No zero is assumed and no country average is substituted; check university or state fee schedules directly.",
+      "reason": "Public tuition for master is not sourced for this country. No zero is assumed and no country average is substituted; check university or state fee schedules directly.",
       "value": null,
       "currency": null,
       "per": null,
@@ -823,7 +885,12 @@
       "freshness": null,
       "stale_warning": false,
       "sources": [],
-      "bdt": null
+      "bdt": null,
+      "budget_interpretation": {
+       "status": "insufficient",
+       "bdt_budget": 3000000.0,
+       "note": "Cannot assess budget coverage: Public tuition for master is not sourced for this country. No zero is assumed and no country average is substituted; check university or state fee schedules directly.. No zero is assumed."
+      }
      },
      "living_cost": {
       "criterion": "living_cost",
@@ -832,7 +899,7 @@
       "essential": false,
       "higher_is_better": false,
       "status": "insufficient",
-      "reason": "A medium monthly living-cost total is not sourced for this country (NO_RESEARCHED_DATA). No national average is substituted, so budget entirely from other sources.",
+      "reason": "A medium monthly living-cost total is not sourced for this country. No national average is substituted, so budget entirely from other sources.",
       "value": null,
       "currency": null,
       "per": null,
@@ -843,7 +910,12 @@
       "freshness": null,
       "stale_warning": false,
       "sources": [],
-      "bdt": null
+      "bdt": null,
+      "budget_interpretation": {
+       "status": "insufficient",
+       "bdt_budget": 3000000.0,
+       "note": "Cannot assess budget coverage: A medium monthly living-cost total is not sourced for this country. No national average is substituted, so budget entirely from other sources.. No zero is assumed."
+      }
      },
      "funding_opportunities": {
       "criterion": "funding_opportunities",
@@ -852,7 +924,7 @@
       "essential": false,
       "higher_is_better": true,
       "status": "insufficient",
-      "reason": "No fully-funded scholarship listings at this degree level are currently measured for this country. This is a count of listed opportunities, not a value, and is kept separate from cost and pay.",
+      "reason": "No scholarship listings are currently measured for this degree level. This is a measurement of listings, kept separate from cost and pay.",
       "value": null,
       "currency": null,
       "per": null,
@@ -863,7 +935,16 @@
       "freshness": null,
       "stale_warning": false,
       "sources": [],
-      "bdt": null
+      "bdt": null,
+      "scenario": {
+       "funding_model": "self_funded",
+       "degree": "master",
+       "fully_funded_count": 0,
+       "total_count": 0,
+       "subject_matched": false,
+       "note": "No master scholarships are currently measured for this country in the catalogue. That is a measurement of listings, not a statement that none exist; search each programme directly.",
+       "model_note": "You plan to self-fund, so budget coverage against tuition and living (shown separately) matters most; fully-funded listings appear only as an alternative."
+      }
      },
      "subject_salary": {
       "criterion": "subject_salary",
@@ -958,20 +1039,20 @@
       "bdt": null
      }
     },
+    "ranked": false,
     "why": {
      "recommended": [
       "Prioritised post-study work (job-seeker) route is sourced and currently dated."
      ],
      "risks": [
-      "Tuition (public, per year): not sourced in the corpus.",
+      "Tuition (public, gross, per year): not sourced in the corpus.",
       "Living cost (monthly, medium): not sourced in the corpus.",
       "Fully-funded scholarships (count): not sourced in the corpus.",
       "Subject-level salary (gross, occupation-level): No occupation-level pay figure is officially sourced for this country and subject. A country salary average is not used here because it is not a subject-level figure.",
       "Citizenship / naturalisation: not sourced in the corpus."
      ]
     },
-    "ranked": false,
-    "not_ranked_reason": "An essential criterion is missing, so this country is not given an overall rank and is never claimed as 'best'."
+    "not_ranked_reason": "An essential criterion (subject_salary or post_study_work) is missing, so this country is not given an overall rank and is never claimed as 'best'."
    },
    {
     "iso2": "US",
@@ -996,12 +1077,12 @@
     "cells": {
      "tuition": {
       "criterion": "tuition",
-      "label_en": "Tuition (public, per year)",
+      "label_en": "Tuition (public, gross, per year)",
       "category": "cost",
       "essential": false,
       "higher_is_better": false,
       "status": "insufficient",
-      "reason": "Public tuition for master is not sourced for this country (NO_RESEARCHED_DATA). No zero is assumed and no country average is substituted; check university or state fee schedules directly.",
+      "reason": "Public tuition for master is not sourced for this country. No zero is assumed and no country average is substituted; check university or state fee schedules directly.",
       "value": null,
       "currency": null,
       "per": null,
@@ -1012,7 +1093,12 @@
       "freshness": null,
       "stale_warning": false,
       "sources": [],
-      "bdt": null
+      "bdt": null,
+      "budget_interpretation": {
+       "status": "insufficient",
+       "bdt_budget": 3000000.0,
+       "note": "Cannot assess budget coverage: Public tuition for master is not sourced for this country. No zero is assumed and no country average is substituted; check university or state fee schedules directly.. No zero is assumed."
+      }
      },
      "living_cost": {
       "criterion": "living_cost",
@@ -1021,7 +1107,7 @@
       "essential": false,
       "higher_is_better": false,
       "status": "insufficient",
-      "reason": "A medium monthly living-cost total is not sourced for this country (NO_RESEARCHED_DATA). No national average is substituted, so budget entirely from other sources.",
+      "reason": "A medium monthly living-cost total is not sourced for this country. No national average is substituted, so budget entirely from other sources.",
       "value": null,
       "currency": null,
       "per": null,
@@ -1032,7 +1118,12 @@
       "freshness": null,
       "stale_warning": false,
       "sources": [],
-      "bdt": null
+      "bdt": null,
+      "budget_interpretation": {
+       "status": "insufficient",
+       "bdt_budget": 3000000.0,
+       "note": "Cannot assess budget coverage: A medium monthly living-cost total is not sourced for this country. No national average is substituted, so budget entirely from other sources.. No zero is assumed."
+      }
      },
      "funding_opportunities": {
       "criterion": "funding_opportunities",
@@ -1041,7 +1132,7 @@
       "essential": false,
       "higher_is_better": true,
       "status": "insufficient",
-      "reason": "No fully-funded scholarship listings at this degree level are currently measured for this country. This is a count of listed opportunities, not a value, and is kept separate from cost and pay.",
+      "reason": "No scholarship listings are currently measured for this degree level. This is a measurement of listings, kept separate from cost and pay.",
       "value": null,
       "currency": null,
       "per": null,
@@ -1052,7 +1143,16 @@
       "freshness": null,
       "stale_warning": false,
       "sources": [],
-      "bdt": null
+      "bdt": null,
+      "scenario": {
+       "funding_model": "self_funded",
+       "degree": "master",
+       "fully_funded_count": 0,
+       "total_count": 0,
+       "subject_matched": false,
+       "note": "No master scholarships are currently measured for this country in the catalogue. That is a measurement of listings, not a statement that none exist; search each programme directly.",
+       "model_note": "You plan to self-fund, so budget coverage against tuition and living (shown separately) matters most; fully-funded listings appear only as an alternative."
+      }
      },
      "subject_salary": {
       "criterion": "subject_salary",
@@ -1179,12 +1279,13 @@
       "bdt": null
      }
     },
+    "ranked": false,
     "why": {
      "recommended": [
       "Prioritised subject-level salary (gross, occupation-level) is sourced and currently dated."
      ],
      "risks": [
-      "Tuition (public, per year): not sourced in the corpus.",
+      "Tuition (public, gross, per year): not sourced in the corpus.",
       "Living cost (monthly, medium): not sourced in the corpus.",
       "Fully-funded scholarships (count): not sourced in the corpus.",
       "Post-study work (job-seeker) route: No sourced post-study work (job-seeker) route route is recorded for this country. This is informational and is not a statement that the route does or does not exist; verify with the official immigration authority.",
@@ -1192,8 +1293,7 @@
       "Citizenship / naturalisation: not sourced in the corpus."
      ]
     },
-    "ranked": false,
-    "not_ranked_reason": "An essential criterion is missing, so this country is not given an overall rank and is never claimed as 'best'."
+    "not_ranked_reason": "An essential criterion (subject_salary or post_study_work) is missing, so this country is not given an overall rank and is never claimed as 'best'."
    },
    {
     "iso2": "NL",
@@ -1218,12 +1318,12 @@
     "cells": {
      "tuition": {
       "criterion": "tuition",
-      "label_en": "Tuition (public, per year)",
+      "label_en": "Tuition (public, gross, per year)",
       "category": "cost",
       "essential": false,
       "higher_is_better": false,
       "status": "insufficient",
-      "reason": "Public tuition for master is not sourced for this country (NO_RESEARCHED_DATA). No zero is assumed and no country average is substituted; check university or state fee schedules directly.",
+      "reason": "Public tuition for master is not sourced for this country. No zero is assumed and no country average is substituted; check university or state fee schedules directly.",
       "value": null,
       "currency": null,
       "per": null,
@@ -1234,7 +1334,12 @@
       "freshness": null,
       "stale_warning": false,
       "sources": [],
-      "bdt": null
+      "bdt": null,
+      "budget_interpretation": {
+       "status": "insufficient",
+       "bdt_budget": 3000000.0,
+       "note": "Cannot assess budget coverage: Public tuition for master is not sourced for this country. No zero is assumed and no country average is substituted; check university or state fee schedules directly.. No zero is assumed."
+      }
      },
      "living_cost": {
       "criterion": "living_cost",
@@ -1243,7 +1348,7 @@
       "essential": false,
       "higher_is_better": false,
       "status": "insufficient",
-      "reason": "A medium monthly living-cost total is not sourced for this country (NO_RESEARCHED_DATA). No national average is substituted, so budget entirely from other sources.",
+      "reason": "A medium monthly living-cost total is not sourced for this country. No national average is substituted, so budget entirely from other sources.",
       "value": null,
       "currency": null,
       "per": null,
@@ -1254,7 +1359,12 @@
       "freshness": null,
       "stale_warning": false,
       "sources": [],
-      "bdt": null
+      "bdt": null,
+      "budget_interpretation": {
+       "status": "insufficient",
+       "bdt_budget": 3000000.0,
+       "note": "Cannot assess budget coverage: A medium monthly living-cost total is not sourced for this country. No national average is substituted, so budget entirely from other sources.. No zero is assumed."
+      }
      },
      "funding_opportunities": {
       "criterion": "funding_opportunities",
@@ -1263,7 +1373,7 @@
       "essential": false,
       "higher_is_better": true,
       "status": "insufficient",
-      "reason": "No fully-funded scholarship listings at this degree level are currently measured for this country. This is a count of listed opportunities, not a value, and is kept separate from cost and pay.",
+      "reason": "No scholarship listings are currently measured for this degree level. This is a measurement of listings, kept separate from cost and pay.",
       "value": null,
       "currency": null,
       "per": null,
@@ -1274,7 +1384,16 @@
       "freshness": null,
       "stale_warning": false,
       "sources": [],
-      "bdt": null
+      "bdt": null,
+      "scenario": {
+       "funding_model": "self_funded",
+       "degree": "master",
+       "fully_funded_count": 0,
+       "total_count": 0,
+       "subject_matched": false,
+       "note": "No master scholarships are currently measured for this country in the catalogue. That is a measurement of listings, not a statement that none exist; search each programme directly.",
+       "model_note": "You plan to self-fund, so budget coverage against tuition and living (shown separately) matters most; fully-funded listings appear only as an alternative."
+      }
      },
      "subject_salary": {
       "criterion": "subject_salary",
@@ -1379,12 +1498,13 @@
       "note": "At the time of application, during the procedure and on the day of the ceremony you must hold an asylum or regular permanent residence permit, a long-term EU resident permit, or a temporary residence permit with a non-temporary purpose of stay — a temporary study permit does not qualify on its own."
      }
     },
+    "ranked": false,
     "why": {
      "recommended": [
       "Prioritised post-study work (job-seeker) route is sourced (but stale - re-verify)."
      ],
      "risks": [
-      "Tuition (public, per year): not sourced in the corpus.",
+      "Tuition (public, gross, per year): not sourced in the corpus.",
       "Living cost (monthly, medium): not sourced in the corpus.",
       "Fully-funded scholarships (count): not sourced in the corpus.",
       "Subject-level salary (gross, occupation-level): No occupation-level pay figure is officially sourced for this country and subject. A country salary average is not used here because it is not a subject-level figure.",
@@ -1393,10 +1513,10 @@
       "Citizenship / naturalisation is stale/undated (UNDATED); re-verify before relying on it."
      ]
     },
-    "ranked": false,
-    "not_ranked_reason": "An essential criterion is missing, so this country is not given an overall rank and is never claimed as 'best'."
+    "not_ranked_reason": "An essential criterion (subject_salary or post_study_work) is missing, so this country is not given an overall rank and is never claimed as 'best'."
    }
   ],
+  "skipped_iso2": [],
   "disclaimer": "Informational only. This is not legal, immigration, financial or admission advice, and no admission, visa or citizenship outcome is predicted."
  },
  "plan_civil": {
@@ -1404,7 +1524,7 @@
    "subject_key": "civil_engineering",
    "subject_name_en": "Civil Engineering",
    "degree": "master",
-   "funding_model": null,
+   "funding_model": "fully_funded",
    "budget_bdt": null,
    "weights": {
     "cost": 25,
@@ -1412,14 +1532,19 @@
     "career": 30,
     "pathway": 30
    },
-   "max_countries": 6
+   "max_countries": 6,
+   "essential_criteria": [
+    "subject_salary",
+    "post_study_work"
+   ]
   },
-  "ranking_rule": "No single composite score is shown. Comparison is criterion-by-criterion. Only countries whose essential criteria (tuition, subject-level salary, post-study work) are all sourced appear in the ranked comparison; the rest are listed with their missing-data reasons. Weights above are the ones you set and they are echoed back unchanged.",
+  "ranking_rule": "No single composite score is shown. Comparison is criterion-by-criterion. A country appears in 'comparison' only when every essential criterion is sourced; the essential criteria are ['subject_salary', 'post_study_work']. Cost cells are shown and weighted, but a missing cost lowers the evidence meter and raises a risk note rather than removing a country. Weights above are the ones you set, echoed back unchanged.",
+  "selection_rule": "Explicit country list supplied by you; capped at six.",
   "subject_coverage_note_en": "Occupation-level pay is officially sourced in the US, Canada, Germany and Australia; elsewhere 'Insufficient data'.",
   "criteria": [
    {
     "key": "tuition",
-    "label_en": "Tuition (public, per year)",
+    "label_en": "Tuition (public, gross, per year)",
     "category": "cost",
     "essential": false,
     "higher_is_better": false,
@@ -1498,12 +1623,12 @@
     "cells": {
      "tuition": {
       "criterion": "tuition",
-      "label_en": "Tuition (public, per year)",
+      "label_en": "Tuition (public, gross, per year)",
       "category": "cost",
       "essential": false,
       "higher_is_better": false,
       "status": "insufficient",
-      "reason": "Public tuition for master is not sourced for this country (NO_RESEARCHED_DATA). No zero is assumed and no country average is substituted; check university or state fee schedules directly.",
+      "reason": "Public tuition for master is not sourced for this country. No zero is assumed and no country average is substituted; check university or state fee schedules directly.",
       "value": null,
       "currency": null,
       "per": null,
@@ -1514,7 +1639,11 @@
       "freshness": null,
       "stale_warning": false,
       "sources": [],
-      "bdt": null
+      "bdt": null,
+      "budget_interpretation": {
+       "status": "no_budget",
+       "note": "No budget provided, so coverage against your budget is not assessed."
+      }
      },
      "living_cost": {
       "criterion": "living_cost",
@@ -1523,7 +1652,7 @@
       "essential": false,
       "higher_is_better": false,
       "status": "insufficient",
-      "reason": "A medium monthly living-cost total is not sourced for this country (NO_RESEARCHED_DATA). No national average is substituted, so budget entirely from other sources.",
+      "reason": "A medium monthly living-cost total is not sourced for this country. No national average is substituted, so budget entirely from other sources.",
       "value": null,
       "currency": null,
       "per": null,
@@ -1534,7 +1663,11 @@
       "freshness": null,
       "stale_warning": false,
       "sources": [],
-      "bdt": null
+      "bdt": null,
+      "budget_interpretation": {
+       "status": "no_budget",
+       "note": "No budget provided, so coverage against your budget is not assessed."
+      }
      },
      "funding_opportunities": {
       "criterion": "funding_opportunities",
@@ -1543,7 +1676,7 @@
       "essential": false,
       "higher_is_better": true,
       "status": "insufficient",
-      "reason": "No fully-funded scholarship listings at this degree level are currently measured for this country. This is a count of listed opportunities, not a value, and is kept separate from cost and pay.",
+      "reason": "No scholarship listings are currently measured for this degree level. This is a measurement of listings, kept separate from cost and pay.",
       "value": null,
       "currency": null,
       "per": null,
@@ -1554,7 +1687,16 @@
       "freshness": null,
       "stale_warning": false,
       "sources": [],
-      "bdt": null
+      "bdt": null,
+      "scenario": {
+       "funding_model": "fully_funded",
+       "degree": "master",
+       "fully_funded_count": 0,
+       "total_count": 0,
+       "subject_matched": false,
+       "note": "No master scholarships are currently measured for this country in the catalogue. That is a measurement of listings, not a statement that none exist; search each programme directly.",
+       "model_note": "You want a fully-funded place: prioritise countries with the most fully-funded listings, but read each award on its own terms."
+      }
      },
      "subject_salary": {
       "criterion": "subject_salary",
@@ -1701,13 +1843,14 @@
       "source_missing_reason": "This route is present in the corpus but no official source link is attached at this step; verify directly with the immigration authority."
      }
     },
+    "ranked": true,
     "why": {
      "recommended": [
       "Prioritised subject-level salary (gross, occupation-level) is sourced (but stale - re-verify).",
       "Prioritised post-study work (job-seeker) route is sourced (but stale - re-verify)."
      ],
      "risks": [
-      "Tuition (public, per year): not sourced in the corpus.",
+      "Tuition (public, gross, per year): not sourced in the corpus.",
       "Living cost (monthly, medium): not sourced in the corpus.",
       "Fully-funded scholarships (count): not sourced in the corpus.",
       "Subject-level salary (gross, occupation-level) is stale/undated (UNDATED); re-verify before relying on it.",
@@ -1715,8 +1858,7 @@
       "Permanent residence route is stale/undated (UNDATED); re-verify before relying on it.",
       "Citizenship / naturalisation is stale/undated (UNDATED); re-verify before relying on it."
      ]
-    },
-    "ranked": true
+    }
    },
    {
     "iso2": "CA",
@@ -1741,12 +1883,12 @@
     "cells": {
      "tuition": {
       "criterion": "tuition",
-      "label_en": "Tuition (public, per year)",
+      "label_en": "Tuition (public, gross, per year)",
       "category": "cost",
       "essential": false,
       "higher_is_better": false,
       "status": "insufficient",
-      "reason": "Public tuition for master is not sourced for this country (NO_RESEARCHED_DATA). No zero is assumed and no country average is substituted; check university or state fee schedules directly.",
+      "reason": "Public tuition for master is not sourced for this country. No zero is assumed and no country average is substituted; check university or state fee schedules directly.",
       "value": null,
       "currency": null,
       "per": null,
@@ -1757,7 +1899,11 @@
       "freshness": null,
       "stale_warning": false,
       "sources": [],
-      "bdt": null
+      "bdt": null,
+      "budget_interpretation": {
+       "status": "no_budget",
+       "note": "No budget provided, so coverage against your budget is not assessed."
+      }
      },
      "living_cost": {
       "criterion": "living_cost",
@@ -1766,7 +1912,7 @@
       "essential": false,
       "higher_is_better": false,
       "status": "insufficient",
-      "reason": "A medium monthly living-cost total is not sourced for this country (NO_RESEARCHED_DATA). No national average is substituted, so budget entirely from other sources.",
+      "reason": "A medium monthly living-cost total is not sourced for this country. No national average is substituted, so budget entirely from other sources.",
       "value": null,
       "currency": null,
       "per": null,
@@ -1777,7 +1923,11 @@
       "freshness": null,
       "stale_warning": false,
       "sources": [],
-      "bdt": null
+      "bdt": null,
+      "budget_interpretation": {
+       "status": "no_budget",
+       "note": "No budget provided, so coverage against your budget is not assessed."
+      }
      },
      "funding_opportunities": {
       "criterion": "funding_opportunities",
@@ -1786,7 +1936,7 @@
       "essential": false,
       "higher_is_better": true,
       "status": "insufficient",
-      "reason": "No fully-funded scholarship listings at this degree level are currently measured for this country. This is a count of listed opportunities, not a value, and is kept separate from cost and pay.",
+      "reason": "No scholarship listings are currently measured for this degree level. This is a measurement of listings, kept separate from cost and pay.",
       "value": null,
       "currency": null,
       "per": null,
@@ -1797,7 +1947,16 @@
       "freshness": null,
       "stale_warning": false,
       "sources": [],
-      "bdt": null
+      "bdt": null,
+      "scenario": {
+       "funding_model": "fully_funded",
+       "degree": "master",
+       "fully_funded_count": 0,
+       "total_count": 0,
+       "subject_matched": false,
+       "note": "No master scholarships are currently measured for this country in the catalogue. That is a measurement of listings, not a statement that none exist; search each programme directly.",
+       "model_note": "You want a fully-funded place: prioritise countries with the most fully-funded listings, but read each award on its own terms."
+      }
      },
      "subject_salary": {
       "criterion": "subject_salary",
@@ -1950,21 +2109,21 @@
       "bdt": null
      }
     },
+    "ranked": true,
     "why": {
      "recommended": [
       "Prioritised subject-level salary (gross, occupation-level) is sourced (but stale - re-verify).",
       "Prioritised post-study work (job-seeker) route is sourced and currently dated."
      ],
      "risks": [
-      "Tuition (public, per year): not sourced in the corpus.",
+      "Tuition (public, gross, per year): not sourced in the corpus.",
       "Living cost (monthly, medium): not sourced in the corpus.",
       "Fully-funded scholarships (count): not sourced in the corpus.",
       "Subject-level salary (gross, occupation-level) is stale/undated (UNDATED); re-verify before relying on it.",
       "Permanent residence route is stale/undated (UNDATED); re-verify before relying on it.",
       "Citizenship / naturalisation: not sourced in the corpus."
      ]
-    },
-    "ranked": true
+    }
    },
    {
     "iso2": "AU",
@@ -1989,12 +2148,12 @@
     "cells": {
      "tuition": {
       "criterion": "tuition",
-      "label_en": "Tuition (public, per year)",
+      "label_en": "Tuition (public, gross, per year)",
       "category": "cost",
       "essential": false,
       "higher_is_better": false,
       "status": "insufficient",
-      "reason": "Public tuition for master is not sourced for this country (NO_RESEARCHED_DATA). No zero is assumed and no country average is substituted; check university or state fee schedules directly.",
+      "reason": "Public tuition for master is not sourced for this country. No zero is assumed and no country average is substituted; check university or state fee schedules directly.",
       "value": null,
       "currency": null,
       "per": null,
@@ -2005,7 +2164,11 @@
       "freshness": null,
       "stale_warning": false,
       "sources": [],
-      "bdt": null
+      "bdt": null,
+      "budget_interpretation": {
+       "status": "no_budget",
+       "note": "No budget provided, so coverage against your budget is not assessed."
+      }
      },
      "living_cost": {
       "criterion": "living_cost",
@@ -2014,7 +2177,7 @@
       "essential": false,
       "higher_is_better": false,
       "status": "insufficient",
-      "reason": "A medium monthly living-cost total is not sourced for this country (NO_RESEARCHED_DATA). No national average is substituted, so budget entirely from other sources.",
+      "reason": "A medium monthly living-cost total is not sourced for this country. No national average is substituted, so budget entirely from other sources.",
       "value": null,
       "currency": null,
       "per": null,
@@ -2025,7 +2188,11 @@
       "freshness": null,
       "stale_warning": false,
       "sources": [],
-      "bdt": null
+      "bdt": null,
+      "budget_interpretation": {
+       "status": "no_budget",
+       "note": "No budget provided, so coverage against your budget is not assessed."
+      }
      },
      "funding_opportunities": {
       "criterion": "funding_opportunities",
@@ -2034,7 +2201,7 @@
       "essential": false,
       "higher_is_better": true,
       "status": "insufficient",
-      "reason": "No fully-funded scholarship listings at this degree level are currently measured for this country. This is a count of listed opportunities, not a value, and is kept separate from cost and pay.",
+      "reason": "No scholarship listings are currently measured for this degree level. This is a measurement of listings, kept separate from cost and pay.",
       "value": null,
       "currency": null,
       "per": null,
@@ -2045,7 +2212,16 @@
       "freshness": null,
       "stale_warning": false,
       "sources": [],
-      "bdt": null
+      "bdt": null,
+      "scenario": {
+       "funding_model": "fully_funded",
+       "degree": "master",
+       "fully_funded_count": 0,
+       "total_count": 0,
+       "subject_matched": false,
+       "note": "No master scholarships are currently measured for this country in the catalogue. That is a measurement of listings, not a statement that none exist; search each programme directly.",
+       "model_note": "You want a fully-funded place: prioritise countries with the most fully-funded listings, but read each award on its own terms."
+      }
      },
      "subject_salary": {
       "criterion": "subject_salary",
@@ -2193,19 +2369,19 @@
       "bdt": null
      }
     },
+    "ranked": true,
     "why": {
      "recommended": [
       "Prioritised subject-level salary (gross, occupation-level) is sourced and currently dated.",
       "Prioritised post-study work (job-seeker) route is sourced and currently dated."
      ],
      "risks": [
-      "Tuition (public, per year): not sourced in the corpus.",
+      "Tuition (public, gross, per year): not sourced in the corpus.",
       "Living cost (monthly, medium): not sourced in the corpus.",
       "Fully-funded scholarships (count): not sourced in the corpus.",
       "Citizenship / naturalisation: not sourced in the corpus."
      ]
-    },
-    "ranked": true
+    }
    }
   ],
   "insufficient_data": [
@@ -2232,12 +2408,12 @@
     "cells": {
      "tuition": {
       "criterion": "tuition",
-      "label_en": "Tuition (public, per year)",
+      "label_en": "Tuition (public, gross, per year)",
       "category": "cost",
       "essential": false,
       "higher_is_better": false,
       "status": "insufficient",
-      "reason": "Public tuition for master is not sourced for this country (NO_RESEARCHED_DATA). No zero is assumed and no country average is substituted; check university or state fee schedules directly.",
+      "reason": "Public tuition for master is not sourced for this country. No zero is assumed and no country average is substituted; check university or state fee schedules directly.",
       "value": null,
       "currency": null,
       "per": null,
@@ -2248,7 +2424,11 @@
       "freshness": null,
       "stale_warning": false,
       "sources": [],
-      "bdt": null
+      "bdt": null,
+      "budget_interpretation": {
+       "status": "no_budget",
+       "note": "No budget provided, so coverage against your budget is not assessed."
+      }
      },
      "living_cost": {
       "criterion": "living_cost",
@@ -2257,7 +2437,7 @@
       "essential": false,
       "higher_is_better": false,
       "status": "insufficient",
-      "reason": "A medium monthly living-cost total is not sourced for this country (NO_RESEARCHED_DATA). No national average is substituted, so budget entirely from other sources.",
+      "reason": "A medium monthly living-cost total is not sourced for this country. No national average is substituted, so budget entirely from other sources.",
       "value": null,
       "currency": null,
       "per": null,
@@ -2268,7 +2448,11 @@
       "freshness": null,
       "stale_warning": false,
       "sources": [],
-      "bdt": null
+      "bdt": null,
+      "budget_interpretation": {
+       "status": "no_budget",
+       "note": "No budget provided, so coverage against your budget is not assessed."
+      }
      },
      "funding_opportunities": {
       "criterion": "funding_opportunities",
@@ -2277,7 +2461,7 @@
       "essential": false,
       "higher_is_better": true,
       "status": "insufficient",
-      "reason": "No fully-funded scholarship listings at this degree level are currently measured for this country. This is a count of listed opportunities, not a value, and is kept separate from cost and pay.",
+      "reason": "No scholarship listings are currently measured for this degree level. This is a measurement of listings, kept separate from cost and pay.",
       "value": null,
       "currency": null,
       "per": null,
@@ -2288,7 +2472,16 @@
       "freshness": null,
       "stale_warning": false,
       "sources": [],
-      "bdt": null
+      "bdt": null,
+      "scenario": {
+       "funding_model": "fully_funded",
+       "degree": "master",
+       "fully_funded_count": 0,
+       "total_count": 0,
+       "subject_matched": false,
+       "note": "No master scholarships are currently measured for this country in the catalogue. That is a measurement of listings, not a statement that none exist; search each programme directly.",
+       "model_note": "You want a fully-funded place: prioritise countries with the most fully-funded listings, but read each award on its own terms."
+      }
      },
      "subject_salary": {
       "criterion": "subject_salary",
@@ -2383,22 +2576,23 @@
       "bdt": null
      }
     },
+    "ranked": false,
     "why": {
      "recommended": [
       "Prioritised post-study work (job-seeker) route is sourced and currently dated."
      ],
      "risks": [
-      "Tuition (public, per year): not sourced in the corpus.",
+      "Tuition (public, gross, per year): not sourced in the corpus.",
       "Living cost (monthly, medium): not sourced in the corpus.",
       "Fully-funded scholarships (count): not sourced in the corpus.",
       "Subject-level salary (gross, occupation-level): No occupation-level pay figure is officially sourced for this country and subject. A country salary average is not used here because it is not a subject-level figure.",
       "Citizenship / naturalisation: not sourced in the corpus."
      ]
     },
-    "ranked": false,
-    "not_ranked_reason": "An essential criterion is missing, so this country is not given an overall rank and is never claimed as 'best'."
+    "not_ranked_reason": "An essential criterion (subject_salary or post_study_work) is missing, so this country is not given an overall rank and is never claimed as 'best'."
    }
   ],
+  "skipped_iso2": [],
   "disclaimer": "Informational only. This is not legal, immigration, financial or admission advice, and no admission, visa or citizenship outcome is predicted."
  },
  "pathway_de": {
