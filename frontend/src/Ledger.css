@@ -1,4 +1,4 @@
-/* ── The Ledger: density, identity, motion ──────────────────────────────────
+/* â”€â”€ The Ledger: density, identity, motion â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    Applied last, so it wins over component defaults without editing twelve
    files. Every number here is measured, not chosen.
 
@@ -8,7 +8,7 @@
    was read. The negative state is part of the identity, not a gap to fill, so
    nothing is ever substituted for a missing logo. */
 
-/* ── Container and grid ──────────────────────────────────────────────────
+/* â”€â”€ Container and grid â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    1200px at a 1440 viewport discarded 240px of the window and could not
    produce a fourth column. 4 columns needs 4x300 + 3x20 = 1260px. */
 .scholarships-page__content {
@@ -49,9 +49,9 @@
 
 /* The card's own vertical rhythm.
 
-   This used to be three overlapping blocks — a header rule at 10/12/6, then
+   This used to be three overlapping blocks â€” a header rule at 10/12/6, then
    the same selector again at 12/14/8, then a footer at 4/10/6 overwritten by
-   another at 6/14/8 — with the winners arriving last. The result was a card
+   another at 6/14/8 â€” with the winners arriving last. The result was a card
    whose internal padding had been squeezed to 8px top and bottom and 14px
    sides so that a 965px card would fit a row, and that squeeze is what read
    as "packed".
@@ -76,7 +76,7 @@
 
 /* The shield row says "Verified official source" plus a date. The citation
    line introduced by the Provenance Rule now says the same thing, so in the
-   grid it is redundant duplication — and it was the largest block in the
+   grid it is redundant duplication â€” and it was the largest block in the
    header at 179px. Kept on the hero and detail pages, where there is room. */
 
 .scholarship-grid .scholarship-card__header {
@@ -91,7 +91,7 @@
 
 /* 17px, down from 15px. At 15px a card title in the display serif was
    rendering at the same optical size as the metadata directly beneath it,
-   so the card had no hierarchy at all — the thing the mission calls a
+   so the card had no hierarchy at all â€” the thing the mission calls a
    weak hierarchy on every card. */
 .scholarship-grid .scholarship-card__header h2 {
   font-size: 1.0625rem;
@@ -121,7 +121,7 @@
 
 /* The published deadline is a sentence, not a date. "27 February - 22 April
    2026 (AY 2026-27 applications open)" is what the awarding body says, and
-   it used to be clamped to two lines with no ellipsis and no reveal — at
+   it used to be clamped to two lines with no ellipsis and no reveal â€” at
    390px that silently discarded 19px of text on one record and 170px on
    another, on the single row the mission ranks fourth in the card's
    hierarchy (deadline / key condition).
@@ -173,7 +173,7 @@
    letting the button take the remainder puts them on one line.
 
    The tap target used to be recovered with a `::after { inset: -12px }`
-   pseudo-element — twelve pixels of invisible overflow hanging off every
+   pseudo-element â€” twelve pixels of invisible overflow hanging off every
    card in the directory, overlapping whatever sat next to it. The targets
    are now genuinely 44px tall, which is the same guarantee without the
    overlap. */
@@ -201,7 +201,7 @@
 
 /* Below this the card cannot hold the action group and the button side by
    side. Measured at 320px: the footer was 231px, the Save/Compare group took
-   178px of it, and "View details" was left 34px wide and 60px tall — a
+   178px of it, and "View details" was left 34px wide and 60px tall â€” a
    control with the aspect ratio of a bookmark. The button takes its own row
    rather than sharing one it does not fit in.
 
@@ -217,7 +217,7 @@
   }
 }
 
-/* ── The Provenance Rule ──────────────────────────────────────────────────
+/* â”€â”€ The Provenance Rule â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    A hairline under the title that terminates in a 6x2px square. Filled when the
    record has a validated official logo, hollow when it does not. */
 .scholarship-card__title-rule {
@@ -260,7 +260,7 @@
   text-overflow: ellipsis;
 }
 
-/* ── Motion ──────────────────────────────────────────────────────────────
+/* â”€â”€ Motion â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    One easing, four durations, from the consolidated spec. Transform reacts
    faster than the surface it changes, which is what makes it feel responsive
    rather than soft. */
@@ -275,8 +275,8 @@
    wall arriving at once.
 
    The hidden state is gated behind .js-reveal, which the hook only sets once an
-   observer is actually attached. Gating it the other way round — hiding by
-   default — means a card stays at opacity 0 forever whenever the hook runs
+   observer is actually attached. Gating it the other way round â€” hiding by
+   default â€” means a card stays at opacity 0 forever whenever the hook runs
    before the list exists, or when IntersectionObserver is unavailable. Invisible
    content is a far worse failure than content that arrives without animating. */
 html.js-reveal .scholarship-card {
@@ -330,20 +330,52 @@ html.js-reveal .sz-reveal.is-in {
   }
 }
 
-/* ── Hero satellites ──────────────────────────────────────────────────────
+/* â”€â”€ Hero satellites â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    The deadline chip is absolutely positioned and has no max-width, so the
    published deadline sentence expanded it to 609px inside a 569px card and
    left: -7% pushed it 40px clear of the card's own edge. It spilled left over
    the headline and was clipped on the far side.
 
-   The overlap is part of the composition, so it is kept — but it now stays
+   The overlap is part of the composition, so it is kept â€” but it now stays
    inside the card's width and off the card's own text. */
-/* The showcase card keeps its own 3/2 ratio, which at 569px is 379px tall —
-   the logo is cropped to a fragment. Capped so the card reads as a card. */
+/* The showcase card keeps its own 3/2 ratio, which at 569px is 379px tall â€”
+   the logo is cropped to a fragment. Capped so the card reads as a card.
+
+   250px rather than 176px: the band has to be deep enough to hold the two
+   satellites in its upper corners AND the logo below them AND the provenance
+   pill in its bottom-right corner, with the logo not covered by any of the
+   three. */
 .sz-hero__showcase-card .scholarship-image {
-  max-height: 176px;
+  max-height: 250px;
 }
 
+/* â”€â”€ Logo placement, on the hero card only â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   A contained mark fills the band's full width by default, which is how the
+   pill came to sit on top of the wordmark and how a satellite came to cover
+   it. The mark is now inset from the top by the satellites' height and from
+   the bottom by the pill's, so it paints in a clear zone of its own. */
+.sz-hero__showcase-card .scholarship-image[data-fit='contain'] .scholarship-image__img {
+  padding: var(--space-15) var(--space-4) var(--space-12);
+}
+
+/* â”€â”€ Satellites, on the hero card only â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   Measured on the shipped catalogue at 1440/1280/1024:
+
+   - the funding satellite rode the card's upper-right corner down far enough
+     to cover the provenance pill;
+   - the deadline satellite crossed the card's LOWER-left corner, which put it
+     on the card's own deadline row and on the caption below the card.
+
+   The band is only the top third of the card, so a satellite crossing the
+   card's bottom edge always lands on the card's text rows. Both satellites
+   therefore cross the card's TOP corners instead â€” they still read as a
+   layered composition over the media plane, and they overlap media only: no
+   card text, no pill and no caption is covered at any width. The offsets are
+   negative by a hair rather than by a card height, so they do not hang above
+   the card where the sticky header would cover them.
+
+   These sit after the base block below so they win the cascade at equal
+   specificity. */
 .sz-hero__chip {
   max-width: 58%;
   box-sizing: border-box;
@@ -361,11 +393,26 @@ html.js-reveal .sz-reveal.is-in {
   left: -3%;
 }
 
+/* Left satellite â€” crosses the card's upper-left corner. `bottom: auto`
+   releases the lower-edge anchoring that put it on the card's deadline row. */
+.sz-hero__chip--deadline {
+  top: -3%;
+  bottom: auto;
+  max-width: 46%;
+}
+
+/* Right satellite â€” rides the card's upper-right corner, clear of the
+   provenance pill in the opposite corner. */
+.sz-hero__chip--funding {
+  top: -3%;
+  max-width: 44%;
+}
+
 /* Three lines rather than two, and no mid-word cut.
 
    The funding chip reads "Varies by consortium/programme" and the deadline
    chip reads the published sentence. At two lines with overflow hidden and no
-   ellipsis, "Varies by consortium/programme" lost 124px of itself at 320px —
+   ellipsis, "Varies by consortium/programme" lost 124px of itself at 320px â€”
    the text simply stopped, with nothing to indicate that it had. Three lines
    fits the longest published deadline in the catalogue inside the chip's
    58% cap, and the chips sit on the showcase card rather than in the flow, so
@@ -397,7 +444,7 @@ html.js-reveal .sz-reveal.is-in {
   }
 }
 
-/* ── Country discovery ──────────────────────────────────────────────────
+/* â”€â”€ Country discovery â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    Country chips are built from the live catalogue, so this section is dense:
    47 countries have to sit in a strip without becoming a wall. Counts are
    shown because "which of these has enough to be worth clicking" is the actual
@@ -406,7 +453,7 @@ html.js-reveal .sz-reveal.is-in {
   gap: 6px;
 }
 
-/* 5px 9px produced a 30px chip — below the 44px touch guideline, on the one
+/* 5px 9px produced a 30px chip â€” below the 44px touch guideline, on the one
    control the directory offers a phone user for narrowing by country, degree
    or funding. The chip grows here rather than being padded out afterwards with
    a pseudo-element, so the tap target and the visible box are the same thing. */
@@ -452,7 +499,7 @@ html.js-reveal .sz-reveal.is-in {
   font-weight: 600;
 }
 
-/* ── Motion: parallax, sphere, spin ─────────────────────────────────────
+/* â”€â”€ Motion: parallax, sphere, spin â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    These live in the hero's decorative layer, never behind the listing. A
    catalogue is a comparison tool, and content that drifts under the viewport
    cannot be compared across rows. */

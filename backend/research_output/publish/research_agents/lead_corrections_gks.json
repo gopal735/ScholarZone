@@ -1,0 +1,29 @@
+{
+  "researched_at": "2026-10-12",
+  "records": [
+    {
+      "id": 516,
+      "reachable": true,
+      "evidence": [
+        {
+          "url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
+          "quote": "Selection Process: 1. Announcement NIIED September / 2. Application Submission Embassy University: 'Embassy Track: September / University Track: September - November' / 3. Screening and Selection October - December / 4. Final Results NIIED December. How to Apply: 'Embassy Track Apply online through Study in Korea'; 'University Track Apply directly to a GKS university'.",
+          "checked_on": "2026-10-12"
+        },
+        {
+          "url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
+          "quote": "Scholarship Benefits: Airfare, Korean language training fees, tuition, and monthly allowances. Selection Quota: Approximately 280 undergraduate students (including associate degree students) + 1,600 graduate students.",
+          "checked_on": "2026-10-12"
+        }
+      ],
+      "proposed": {
+        "deadline_date": "2026-11-30",
+        "deadline_display": "Embassy Track: September / University Track: September - November (2026 intake; monthly precision - the page states the month, not a day)",
+        "deadline_precision": "month",
+        "status": "open"
+      },
+      "confidence": 0.9,
+      "notes": "Re-fetched live 2026-10-12. The recorded deadline 2026-09-30 was the Embassy Track's online-application deadline (30 September 2026, 18:00 KST), which has now passed; the University Track window the official page publishes (September - November) is open today. The page publishes the month range without an exact closing day, so the date is the end of the stated November window at month precision."
+    }
+  ]
+}

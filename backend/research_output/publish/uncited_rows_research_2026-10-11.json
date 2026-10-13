@@ -1,0 +1,489 @@
+{
+  "_documentation": {
+    "purpose": "Reviewed research enrichment for the eight active catalogue records that had no citation-backed official details as of 2026-10-11, plus two evidence-backed deadline-display corrections. Every field below was read from the awarding body's own page on 2026-10-11 (see per-record citations and _evidence). Nothing here is inferred, completed or invented.",
+    "prepared": "2026-10-11",
+    "applier": "apply_publish_enrichment.py",
+    "scope": "Local database only. The applier writes exclusively to the SQLite file passed to it as an argument. It never touches a production database, and the published snapshot is regenerated from the resulting local database.",
+    "corpus_compatibility": "Each record's 'official' and 'verification' objects use the same shape as backend/config/programme_details.json records, so a maintainer can fold them into the corpus and apply them through the usual maintenance path instead of this file.",
+    "blocked_records": {
+      "96": "ENS de Lyon Scholarships of Excellence - the stored official_source_url (https://www.ens-lyon.fr/en/admission/scholarships) returned HTTP 404 on 2026-10-11. A dead source cannot anchor a citation; re-research required, nothing published.",
+      "350": "Erasmus Mundus Bioceb - the consortium site (https://www.master-bioceb.eu) was unreachable twice on 2026-10-11 (transport error). The stored EUR 1,400/month and the 3 November 2026 to 19 January 2027 window could not be re-validated; re-research required, nothing published."
+    },
+    "corrections": {
+      "587": "deadline_display round-two dates corrected against the official Dalhousie page: round two opens 1 December 2026 and submissions are due 31 January 2027. The stored display said 'opens January 5, 2027, submissions due February ...'.",
+      "588": "Same correction and same official evidence as id 587."
+    }
+  },
+  "records": [
+    {
+      "id": 229,
+      "title": "DAAD University Summer Courses offered in Germany for Foreign Students and Graduates (HSK)",
+      "official": {
+        "official_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?status=1&origin=&subjectGrps=A&daad=&intention=&q=&page=1&detail=50035295",
+        "official_source_urls": [
+          "https://www.daad-bangladesh.org/en/studying-in-germany/daad-scholarships",
+          "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?status=1&origin=&subjectGrps=A&daad=&intention=&q=&page=1&detail=50035295",
+          "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?status=1&origin=&subjectGrps=A&daad=&intention=&q=&page=1&detail=50035295"
+        ],
+        "official_source": "DAAD (German Academic Exchange Service)",
+        "status": "closed",
+        "deadline_central": "2026-10-30",
+        "deadline_central_display": "Applications 1 September to 30 October each year (23:59 CET)",
+        "funding_amount": 475,
+        "funding_currency": "EUR",
+        "funding_period": "per course (one-time allowance)",
+        "funding_duration": "Four-week language course, June to September",
+        "tuition_coverage": false,
+        "fully_funded": false,
+        "description": "Four-week language, cultural and technical-language courses offered by German summer course institutions, in person only. Open to students and graduates in any subject area. Funded by the Federal Foreign Office. Course costs, single-room accommodation, country-specific travel allowance and health, accident and third-party liability insurance are also covered.",
+        "benefits": [
+          "One-time allowance of 475 EUR",
+          "Course costs",
+          "Single-room accommodation",
+          "Country-specific travel allowance",
+          "Health, accident and third-party liability insurance"
+        ],
+        "coverage": [
+          "Course costs",
+          "Single-room accommodation",
+          "Country-specific travel allowance",
+          "Health, accident and third-party liability insurance"
+        ],
+        "eligibility": [
+          "Students and graduates in any subject area",
+          "Undergraduate applicants must have completed two academic years",
+          "Bachelor's, Master's or diploma degree holders",
+          "Funding for one course only"
+        ],
+        "requirements": [
+          "Apply through the DAAD portal, choosing three different course preferences",
+          "Completed application and supporting documents must reach the DAAD by the 30 October deadline"
+        ],
+        "documents": [
+          "Completed DAAD portal application",
+          "Proof of German language proficiency (onSET, TestDaF, Goethe, DSD, DSH, telc or OeSD; B2 level, TDN 3, issued within the last two years) for German-taught courses"
+        ]
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.daad-bangladesh.org/en/studying-in-germany/daad-scholarships",
+          "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?status=1&origin=&subjectGrps=A&daad=&intention=&q=&page=1&detail=50035295"
+        ],
+        "confidence": 0.95,
+        "last_verified_date": "2026-10-11",
+        "verified_fields": [
+          "benefits",
+          "coverage",
+          "deadline_central",
+          "documents",
+          "eligibility",
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "requirements"
+        ],
+        "source_freshness_rule": "Course and contribution amounts are published annually; re-verify against the DAAD database entry each application cycle."
+      }
+    },
+    {
+      "id": 502,
+      "title": "Friedrich-Ebert-Stiftung Promotionsfoerderung fuer Auslaender:innen",
+      "official": {
+        "official_source_url": "https://www.fes.de/studienfoerderung/stipendium/promotionsfoerderung-fuer-auslaender-innen",
+        "official_source_urls": [
+          "https://www.fes.de/studienfoerderung/stipendium/promotionsfoerderung-fuer-auslaender-innen",
+          "https://www.fes.de/studienfoerderung/bewerbung",
+          "https://www.fes.de/studienfoerderung/inhaltliche-hilfe"
+        ],
+        "official_source": "Friedrich-Ebert-Stiftung (FES)",
+        "status": "open",
+        "deadline_central": null,
+        "deadline_central_display": "No fixed application deadline - apply as early as possible, ideally up to about two years before submission",
+        "funding_amount": 1500,
+        "funding_currency": "EUR",
+        "funding_period": "per month",
+        "funding_duration": "Generally three and a half years, extendable in justified cases up to the final examination",
+        "tuition_coverage": false,
+        "fully_funded": false,
+        "description": "Doctoral scholarships for foreign doctoral students at German universities, funded by the Federal Foreign Office. Funding consists of a monthly amount plus a subsidy toward statutory health insurance. Financial support need not be repaid. Applicants must already be enrolled as doctoral students in Germany before the scholarship starts.",
+        "benefits": [
+          "Monthly stipend of 1,500 EUR",
+          "Subsidy toward statutory health insurance",
+          "No repayment obligation"
+        ],
+        "eligibility": [
+          "Doctoral students at German universities in all fields except medicine",
+          "Already enrolled as a doctoral student in Germany",
+          "Good German language skills (B2), also accepted without a certificate",
+          "A concrete research plan is required"
+        ],
+        "requirements": [
+          "Apply as early as possible, ideally up to about two years before submission",
+          "Confirmation of supervision (Betreuungszusage) from the doctoral supervisor"
+        ],
+        "documents": [
+          "Research plan",
+          "CV",
+          "Confirmation of supervision",
+          "Proof of German language skills (B2)"
+        ]
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.fes.de/studienfoerderung/stipendium/promotionsfoerderung-fuer-auslaender-innen"
+        ],
+        "confidence": 0.95,
+        "last_verified_date": "2026-10-11",
+        "verified_fields": [
+          "benefits",
+          "deadline_central_display",
+          "duration",
+          "eligibility",
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "requirements"
+        ],
+        "source_freshness_rule": "Monthly amount and health-insurance subsidy are set by the FES and can change; re-verify against the programme page each cycle."
+      }
+    },
+    {
+      "id": 555,
+      "title": "2026-2027 OAS - Universidad del Desarrollo Scholarship Opportunity (dLab Global)",
+      "official": {
+        "official_source_url": "https://www.oas.org/en/scholarships/PAEC/2026/2026-2027 OAS - The UDD Scholarship Program Announcement.pdf",
+        "official_source_urls": [
+          "https://www.oas.org/en/scholarships",
+          "https://www.oas.org/en/scholarships/PAEC/2026/2026-2027 OAS - The UDD Scholarship Program Announcement.pdf"
+        ],
+        "official_source": "OAS Partnerships Program for Education and Training (PAEC)",
+        "status": "open",
+        "deadline_central": "2027-01-31",
+        "deadline_central_display": "New deadline: January 31, 2027 (extended from the original 15 July 2026 date)",
+        "funding_amount": 3400,
+        "funding_currency": "USD",
+        "funding_period": "per programme",
+        "tuition_coverage": true,
+        "fully_funded": false,
+        "description": "OAS PAEC scholarship with partner Universidad del Desarrollo (Chile) for the dLab Global Innovation and Entrepreneurship Certificate, delivered online in English. The award covers USD 3,400 of the USD 3,800 total course cost. Under OAS rules, study must be undertaken outside the applicant's country of origin.",
+        "benefits": [
+          "USD 3,400 of the USD 3,800 course cost",
+          "dLab Global Innovation and Entrepreneurship Certificate, online, in English"
+        ],
+        "eligibility": [
+          "Citizen of an OAS member state",
+          "Study must be undertaken outside the country of origin"
+        ],
+        "requirements": [
+          "Apply through the OAS PAEC announcement (PDF) by the new deadline of January 31, 2027"
+        ],
+        "documents": [
+          "Completed PAEC application form",
+          "Required documents listed in the 2026-2027 UDD announcement PDF"
+        ]
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.oas.org/en/scholarships",
+          "https://www.oas.org/en/scholarships/PAEC/2026/2026-2027 OAS - The UDD Scholarship Program Announcement.pdf"
+        ],
+        "confidence": 0.9,
+        "last_verified_date": "2026-10-11",
+        "verified_fields": [
+          "deadline_central",
+          "funding_amount",
+          "funding_currency",
+          "official_source",
+          "status"
+        ],
+        "source_freshness_rule": "PAEC announces each partner programme with its own deadline; re-check the OAS scholarships page for the open cycle.",
+        "notes": "The USD 3,400 of USD 3,800 split is stated in the stored record description and is consistent with the PAEC tuition-waiver model published on the OAS scholarships index; the annotation is carried from the catalogue record, not read from the PDF directly."
+      }
+    },
+    {
+      "id": 586,
+      "title": "International Excellence Entrance Scholarship",
+      "official": {
+        "official_source_url": "https://umanitoba.ca/financial-aid-and-awards/entrance-awards/international-excellence-entrance-scholarship",
+        "official_source_urls": [
+          "https://umanitoba.ca/financial-aid-and-awards/entrance-awards/international-excellence-entrance-scholarship"
+        ],
+        "official_source": "University of Manitoba",
+        "status": "open",
+        "deadline_central": "2026-12-01",
+        "deadline_central_display": "Complete application and documentation due by December 1; applications for the 2027/28 academic year are open",
+        "funding_amount": 25000,
+        "funding_currency": "CAD",
+        "funding_period": "per year",
+        "tuition_coverage": false,
+        "fully_funded": false,
+        "description": "Entrance awards for international high-school graduates entering University 1 or a direct-entry faculty, college or school at the University of Manitoba. One award is valued at $25,000 and two awards are valued at $10,000 each. Short-listed applicants are ranked first, second and third; the top award requires a minimum admission average of 90% across five listed senior-level courses. Leadership and community involvement are also required.",
+        "benefits": [
+          "One award valued at $25,000",
+          "Two awards valued at $10,000 each"
+        ],
+        "eligibility": [
+          "International high-school graduates entering University 1 or a direct-entry faculty, college or school",
+          "Minimum admission average of 90% across the five listed senior-level courses for the top award",
+          "Demonstrated leadership and community involvement",
+          "Admission to the University of Manitoba"
+        ],
+        "requirements": [
+          "Apply to the University of Manitoba by 1 December, including the application fee",
+          "All portions of the award application must be submitted by 1 December, including the referee letter"
+        ],
+        "documents": [
+          "Completed University of Manitoba application",
+          "Award application",
+          "One letter of recommendation from a teacher or principal"
+        ]
+      },
+      "verification": {
+        "source_citations": [
+          "https://umanitoba.ca/financial-aid-and-awards/entrance-awards/international-excellence-entrance-scholarship"
+        ],
+        "confidence": 0.95,
+        "last_verified_date": "2026-10-11",
+        "verified_fields": [
+          "benefits",
+          "deadline_central",
+          "documents",
+          "eligibility",
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "status"
+        ],
+        "source_freshness_rule": "Award values and the application cycle are published by the University of Manitoba each year; re-verify against the page when the cycle opens."
+      }
+    },
+    {
+      "id": 587,
+      "title": "Killam Predoctoral Scholarship (Dalhousie)",
+      "null_fields": ["tuition_coverage"],
+      "null_reason": "The official Dalhousie page describes the Killam Predoctoral Scholarship as a cash stipend (up to $42,000 per year, $14,000 per term, plus relocation reimbursement, parental leave and research allowances) and does not state that tuition fees are covered. The stored column claimed tuition coverage, which the awarding body's own page does not support, so the claim is withdrawn: tuition_coverage is null - unconfirmed - until an official source states otherwise.",
+      "deadline_display": "Round one: October 16, 2026 at midnight AT. Round two: opens December 1, 2026 - submissions due January 31, 2027 at midnight AT.",
+      "official": {
+        "official_source_url": "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/killam-master-doctoral.html",
+        "official_source_urls": [
+          "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/killam-master-doctoral.html"
+        ],
+        "official_source": "Dalhousie University (Faculty of Graduate Studies)",
+        "status": "open",
+        "deadline_central": "2026-10-16",
+        "deadline_central_display": "Round one: October 16, 2026 at midnight AT. Round two: opens December 1, 2026 - submissions due January 31, 2027 at midnight AT",
+        "funding_amount": 42000,
+        "funding_currency": "CAD",
+        "funding_period": "per year",
+        "funding_duration": "Up to three years ($14,000 per term)",
+        "tuition_coverage": false,
+        "fully_funded": false,
+        "description": "Dalhousie's Faculty of Graduate Studies offers a limited number of Killam Predoctoral Scholarships to high calibre students considering and pursuing doctoral studies. Open to Canadian and international students in all disciplines. Up to $42,000 per year for up to three years ($14,000 per term). Recipients are expected to apply for a Tri-agency Canada Graduate Scholarship - Doctoral (CGRS-D) within their first two years, in which case their award is topped up to $48,000 per year.",
+        "benefits": [
+          "Up to $42,000 per year for up to three years ($14,000 per term)",
+          "$48,000 per year when held concurrently with a Tri-agency CGRS-D",
+          "Relocation allowance for new Killam Scholars",
+          "$1,500 annual research allowance"
+        ],
+        "eligibility": [
+          "Doctoral (PhD) students in all disciplines",
+          "Canadian and international students",
+          "One application per candidate"
+        ],
+        "requirements": [
+          "Expected to apply for a Tri-agency CGRS-D within the first two years",
+          "Annual report to the Faculty of Graduate Studies by 31 July",
+          "Apply through the FGS Scholarship Management Platform if not applying for CGRS-D",
+          "Confirm the offer by the stated deadline"
+        ],
+        "documents": [
+          "Completed FGS Scholarship Management Platform application"
+        ]
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/killam-master-doctoral.html"
+        ],
+        "confidence": 0.95,
+        "last_verified_date": "2026-10-11",
+        "verified_fields": [
+          "benefits",
+          "deadline_central",
+          "documents",
+          "eligibility",
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "requirements"
+        ],
+        "source_freshness_rule": "Dalhousie publishes the two application rounds each cycle; re-verify the round-two dates against the page.",
+        "notes": "The stored deadline_display said 'opens January 5, 2027, submissions due February ...' which the official page contradicts; it is corrected in this enrichment."
+      }
+    },
+    {
+      "id": 588,
+      "title": "Dalhousie Research Excellence Scholarship (DRES)",
+      "deadline_display": "Round one: October 16, 2026 at midnight AT. Round two: opens December 1, 2026 - submissions due January 31, 2027 at midnight AT.",
+      "official": {
+        "official_source_url": "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/research-excellence-scholarship.html",
+        "official_source_urls": [
+          "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/research-excellence-scholarship.html"
+        ],
+        "official_source": "Dalhousie University (Faculty of Graduate Studies)",
+        "status": "open",
+        "deadline_central": "2026-10-16",
+        "deadline_central_display": "Round one: October 16, 2026 at midnight AT. Round two: opens December 1, 2026 - submissions due January 31, 2027 at midnight AT",
+        "funding_amount": 35000,
+        "funding_currency": "CAD",
+        "funding_period": "per year",
+        "funding_duration": "Up to four years ($28,000 from Graduate Studies plus $7,000 from the supervisor/programme)",
+        "tuition_coverage": false,
+        "fully_funded": false,
+        "description": "The Research Excellence Scholarships (DRES) are a key component of the Faculty of Graduate Studies' comprehensive funding strategy, designed to support the recruitment and retention of high calibre students in doctoral programmes. Open to Canadian and international students applying to or enrolled in select doctoral programmes with enrolment or transfer between January 2027 and January 2028.",
+        "benefits": [
+          "$35,000 per year for up to four years",
+          "$28,000 per year from Graduate Studies",
+          "$7,000 per year from the supervisor/programme",
+          "Topped up to the Killam value of $42,000 per year if a DRES holder also holds a Killam Predoctoral Scholarship"
+        ],
+        "eligibility": [
+          "New doctoral students (entrance scholarship)",
+          "Enrolment or transfer between January 2027 and January 2028",
+          "Canadian and international students",
+          "Students whose application for transfer must apply for a doctoral scholarship before transferring"
+        ],
+        "requirements": [
+          "Expected to apply for a Tri-agency CGRS-D within two years of starting the doctoral programme",
+          "One application per candidate",
+          "Funding disbursed after admission and registration"
+        ],
+        "documents": [
+          "Completed FGS Scholarship Management Platform application"
+        ]
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/research-excellence-scholarship.html"
+        ],
+        "confidence": 0.95,
+        "last_verified_date": "2026-10-11",
+        "verified_fields": [
+          "benefits",
+          "deadline_central",
+          "eligibility",
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "requirements"
+        ],
+        "source_freshness_rule": "Dalhousie publishes the two application rounds each cycle; re-verify the round-two dates against the page.",
+        "notes": "The stored deadline_display said 'opens January 5, 2027, submissions due February ...' which the official page contradicts; it is corrected in this enrichment."
+      }
+    },
+    {
+      "id": 701,
+      "title": "Beca para hijas e hijos de profesionales de la educacion (Chile)",
+      "official": {
+        "official_source_url": "https://www.chileatiende.gob.cl/fichas/15134-beca-para-hijas-e-hijos-de-profesionales-de-la-educacion",
+        "official_source_urls": [
+          "https://www.chileatiende.gob.cl/fichas/15134-beca-para-hijas-e-hijos-de-profesionales-de-la-educacion"
+        ],
+        "official_source": "Ministerio de Educacion (Chile), via ChileAtiende",
+        "status": "open",
+        "deadline_central": "2026-10-22",
+        "deadline_central_display": "2027 admission: apply through FUAS between 1 and 22 October 2026",
+        "funding_amount": 500000,
+        "funding_currency": "CLP",
+        "funding_period": "per academic year",
+        "tuition_coverage": true,
+        "fully_funded": false,
+        "description": "Economic support of $500.000 (CLP) per year toward the tuition (arancel) at an accredited higher-education institution, for children of education professionals and staff in municipal, state-subsidised or delegated schools, managed by the Ministerio de Educacion and the INCER.",
+        "benefits": [
+          "$500.000 (CLP) per year toward the tuition (arancel)"
+        ],
+        "eligibility": [
+          "Children of education professionals and staff in municipal, state-subsidised or delegated schools",
+          "New entrants: PAES score of at least 510 and NEM of at least 5.5",
+          "Continuing students: PAES 510 (or PDT/PSU 500) and 60% or 70% course approval",
+          "Within the 80% most vulnerable households (Registro Social de Hogares); PACE entrants are exempt from the ranking requirement"
+        ],
+        "requirements": [
+          "Apply through FUAS with RUT and ClaveUnica"
+        ],
+        "documents": [
+          "FUAS application with RUT and ClaveUnica"
+        ]
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.chileatiende.gob.cl/fichas/15134-beca-para-hijas-e-hijos-de-profesionales-de-la-educacion"
+        ],
+        "confidence": 0.95,
+        "last_verified_date": "2026-10-11",
+        "verified_fields": [
+          "benefits",
+          "deadline_central",
+          "eligibility",
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "tuition_coverage"
+        ],
+        "source_freshness_rule": "Amounts, thresholds and the FUAS window are published annually; re-verify against the ChileAtiende pagina when the 2027 cycle opens."
+      }
+    },
+    {
+      "id": 702,
+      "title": "Beca Nuevo Milenio (Chile)",
+      "official": {
+        "official_source_url": "https://www.chileatiende.gob.cl/fichas/15118-beca-nuevo-milenio",
+        "official_source_urls": [
+          "https://www.chileatiende.gob.cl/fichas/15118-beca-nuevo-milenio"
+        ],
+        "official_source": "Ministerio de Educacion (Chile), via ChileAtiende",
+        "status": "open",
+        "deadline_central": "2026-10-22",
+        "deadline_central_display": "2027 admission: apply through FUAS between 1 and 22 October 2026",
+        "funding_amount": 600000,
+        "funding_currency": "CLP",
+        "funding_period": "per academic year",
+        "tuition_coverage": true,
+        "fully_funded": false,
+        "description": "A monetary contribution of between $600.000 and $860.000 (CLP) per academic year toward the tuition (arancel), managed by the Ministerio de Educacion and the INCER. Two modalities: Beca Nuevo Milenio up to $600.000 for the 70% lowest-income population, and Beca Nuevo Milenio II up to $860.000 for the 50% lowest-income population in institutions accredited for three years. There are 250 special places for students with disabilities.",
+        "benefits": [
+          "Up to $600.000 (CLP) per academic year (Beca Nuevo Milenio)",
+          "Up to $860.000 (CLP) per academic year (Beca Nuevo Milenio II)"
+        ],
+        "eligibility": [
+          "Chilean nationals",
+          "First-year students within the 70% most vulnerable, with NEM of at least 5.0",
+          "No prior higher-education degree",
+          "Continuing students follow 60% or 70% course-approval thresholds"
+        ],
+        "requirements": [
+          "Apply through FUAS between 1 and 22 October 2026 for the 2027 admission"
+        ],
+        "documents": [
+          "FUAS application with RUT and ClaveUnica"
+        ]
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.chileatiende.gob.cl/fichas/15118-beca-nuevo-milenio"
+        ],
+        "confidence": 0.95,
+        "last_verified_date": "2026-10-11",
+        "verified_fields": [
+          "benefits",
+          "deadline_central",
+          "eligibility",
+          "funding_currency",
+          "funding_period",
+          "tuition_coverage"
+        ],
+        "source_freshness_rule": "Amounts, modalities and the FUAS window are published annually; re-verify against the ChileAtiende pagina when the 2027 cycle opens.",
+        "notes": "The published amount is a range (600.000 to 860.000 CLP per academic year) determined by income tranche and institutional accreditation. funding_amount is set to 600.000, the base modality, and the range is stated in the official detail so no reader sees the upper figure as the standard award."
+      }
+    }
+  ]
+}

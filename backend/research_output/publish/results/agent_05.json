@@ -1,0 +1,187 @@
+{
+  "agent": "agent-05",
+  "records": [
+    {
+      "id": 33,
+      "classification": "uncertain",
+      "official_evidence_urls": [],
+      "page_evidence": "All three official CSC URLs failed: https://www.campuschina.org/ returned HTTP 412, https://www.csc.edu.cn/ returned HTTP 412, https://www.studyinchina.csc.edu.cn/ returned a transport error (no content). No official page could be read, so the current intake status cannot be verified. Local corpus snapshot claims the authoritative CSC Windows page posts Type B rolling deadline 30 April 2026 and Type A agency deadlines Feb-Apr 2026 - this is UNVERIFIED local evidence, low confidence.",
+      "next_deadline_or_window": null,
+      "funding_on_page": null,
+      "department_or_programme": null,
+      "logo_or_image_url": null,
+      "confidence": 0.1,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 100,
+      "classification": "uncertain",
+      "official_evidence_urls": [],
+      "page_evidence": "All University of Barcelona official URLs returned HTTP 403 (bot-blocked, no content returned): https://www.ub.edu/en/, https://www.ub.edu/en/estudis/masters/admissions/financial-aid/, and the official source URL https://web.ub.edu/en/web/beques-graus-masters/beques-m%C3%A0ster-ub. Status quote could not be verified live. Local corpus snapshot states the first 2026/2027 call closed 26 June 2026 and the round is in the resolution/documentation-claim stage - UNVERIFIED local evidence, low confidence.",
+      "next_deadline_or_window": null,
+      "funding_on_page": null,
+      "department_or_programme": null,
+      "logo_or_image_url": null,
+      "confidence": 0.2,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 165,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://www.uibk.ac.at/en/college-service-center/scholarships"
+      ],
+      "page_evidence": "The record's official_source_url https://www.uibk.ac.at/en/studies/scholarships returned HTTP 404; the other listed official URL was fetched. Verbatim: 'Applications for performance-based scholarships for the academic year 2024/25 can be submitted from September 01st, 2025 until October 03rd, 2025 inclusive.' and 'Scholarships for scientific theses for the academic year 2024/25 can be submitted between May 05th, 2025 and May 23th, 2025 as well as between September 15th, 2025 and October 03rd, 2025.' Both latest published windows are closed. Recurrence evidence: the page publishes statistics per academic year from 2016/17 through 2024/25 and an archive of previous years, i.e. an established annual cycle, with applications opening each September; the 2026/27 window has not yet been published on the page as of the fetch date.",
+      "next_deadline_or_window": null,
+      "funding_on_page": null,
+      "department_or_programme": "College Service Center, University of Innsbruck (contact on page: Gritt Maaß, fakultaetenservicestelle[at]uibk.ac[dot]at)",
+      "logo_or_image_url": "https://www.uibk.ac.at/static/uniweb/images/logo-uibk.90f7ae9bbfac.svg",
+      "confidence": 0.75,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 219,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://www.uibk.ac.at/en/research/research-funding/phd/doctoral-scholarship",
+        "https://www.uibk.ac.at/en/research/research-funding/"
+      ],
+      "page_evidence": "Verbatim from the official page: '3rd tranche 2026: The submission period for the 3rd tranche 2026 is from August 24, 2026 to October 9, 2026 inclusive.' (closed as of today 2026-10-11) and, in the FAQ 'When will the next call for tenders be issued?': 'The next call is expected to be published in late 2026/early 2027.' The eligibility pages confirm the programme normally runs submission periods from mid-August to early October. Funding: 'doctoral scholarship of 1.150 euros monthly... The maximum duration of funding is 24 months'.",
+      "next_deadline_or_window": "Next call expected to be published in late 2026/early 2027 (no exact date published on the page)",
+      "funding_on_page": "Monthly scholarship of 1,150 euros for doctoral students; maximum duration of funding 24 months (EUR)",
+      "department_or_programme": "Vice-Rectorate for Research, University of Innsbruck (doctoral scholarship for doctoral students)",
+      "logo_or_image_url": "https://www.uibk.ac.at/static/uniweb/images/logo-uibk.90f7ae9bbfac.svg",
+      "confidence": 0.95,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 279,
+      "classification": "genuinely_discontinued",
+      "official_evidence_urls": [
+        "https://hkdir.no/en/programmer-og-tilskuddsordninger/norpart"
+      ],
+      "page_evidence": "Verbatim from the official HK-dir page: 'Grants you can apply for now: 0' and 'The Norwegian government has proposed to end support for the NORPART-programme in the 2025 National Budget. This means that only around seven projects will receive funding in the planned allocation in October, based on the NOK 35 million that was allocated to the programme for 2024.' The page also shows 'Last application deadline (time): 3 June 2024 at 14:00' under 'Previous calls' with no new call since. The awarding body states the programme's support is being ended (2025 National Budget), zero grants available, and it was already converted into NORPART International for active projects.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "NOK 35 million allocated to the programme for 2024 (about seven funded projects, per the page)",
+      "department_or_programme": "Norwegian Directorate for Higher Education and Competence (HK-dir), NORPART programme",
+      "logo_or_image_url": null,
+      "confidence": 0.85,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 309,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://frq.gouv.qc.ca/en/program/merit-scholarship-program-for-foreign-students-pbeee-2026-2027-2"
+      ],
+      "page_evidence": "Verbatim from the official FRQ page: 'These program rules are out of competition' and 'Deadline: December 2nd, 2025 at 16:00 (EST)' with 'The competition results are advertised at the end of April' - i.e. the 2026-2027 round closed 2 December 2025 and was decided in April 2026. Recurrence evidence: the programme is administered through an annual competition cycle - the rules state they 'apply to the 2026-2027 fiscal year', universities set annual preselection dates and 'can recommend one candidate per year' per component. No dates for the 2027-2028 round are published on the fetched page.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "Annual scholarship values stated in the programme rules (Canadian dollars): master's research scholarship (VM) $20,000; doctoral (V1) $25,000 per year; doctoral initial training and postdoctoral $35,000; short-term programme $3,000 per month; short-term with Indian scholarship $1,500 per month",
+      "department_or_programme": "Fonds de recherche du Québec - Programme de bourses d'excellence pour étudiants étrangers (PBEEE)",
+      "logo_or_image_url": "https://frq.gouv.qc.ca/app/themes/webit/assets/img/logo-qc.png",
+      "confidence": 0.8,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 333,
+      "classification": "temporarily_closed_awaiting_announcement",
+      "official_evidence_urls": [
+        "https://www.helsinki.fi/en/research/doctoral-school/resdoc-project",
+        "https://www.helsinki.fi/en/research/asema-competitive-funding-strengthening-profile-areas-multidisciplinary-research/university-funded-doctoral-researcher-positions"
+      ],
+      "page_evidence": "Verbatim from the official University of Helsinki page: 'RESDOC runs from 2027 to 2031 and offers a unique opportunity to complete a fully funded doctoral degree at the University of Helsinki for international students.' and 'A total of 30 doctoral researchers will be recruited in 2026. The call has been closed and the evaluation phase started in September 2026.' The 2026 recruitment call (24 August - 7 September 2026 per the page) has closed and is in evaluation; the page states no future recruitment call or date. The page also notes RESDOC positions are third-party funded and dependent on external funding availability. No next call announced.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "'a fully funded doctoral degree at the University of Helsinki' (no amount stated on the page)",
+      "department_or_programme": "RESDOC (Resilient and Just Systems Doctoral Project), University of Helsinki doctoral school, Vice Rector for Research",
+      "logo_or_image_url": null,
+      "confidence": 0.85,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 383,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://www.eur.nl/en/ese/education/master/fees-and-scholarships/scholarships-and-grants"
+      ],
+      "page_evidence": "The dedicated Trustfonds URL in the record (https://www.eur.nl/en/ese/education/master/fees-and-solarships/scholarships-and-grants/erasmus-trustfonds-scholarship and its corrected spelling) returned HTTP 404; the parent official scholarships page was fetched. Verbatim: 'Below you can find the available scholarships for academic year 2027-2028' and 'Erasmus Trustfonds Scholarship - This scholarship is designed for full-time first-year Master students with excellent results, both from EEA and non-EEA countries. The scholarship amounts to a maximum of € 17.500 for prospective Master students for the year 2027-2028.' Recurrence evidence: the awarding body now advertises the scholarship as available for the 2027-2028 year, i.e. a next annual cycle is already published; no application window dates are stated on the fetched pages.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "Maximum of €17,500 for prospective Master students for the year 2027-2028 (EUR)",
+      "department_or_programme": "Erasmus School of Economics (ESE), Erasmus University Rotterdam",
+      "logo_or_image_url": null,
+      "confidence": 0.85,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 417,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://nawa.gov.pl/en/scientists/the-bekker-programme",
+        "https://nawa.gov.pl/en/naukowcy/program-imienia-bekkera/ogloszenie",
+        "https://nawa.gov.pl/en/naukowcy/program-imienia-bekkera/wyniki-naboru"
+      ],
+      "page_evidence": "Verbatim from the official NAWA pages: 'ANNOUNCEMENT OF THE CALL FOR APPLICATIONS FOR PARTICIPATION IN PROGRAMME BEKKER NAWA No 12/2025 of March 13th, 2026' (current call for the 2026 edition announced 13 March 2026) and 'nabór wniosków w programie Bekker NAWA 2025 został rozstrzygnięty w dniu 14 stycznia 2026' (the 2025 call was resolved on 14 January 2026). Recurrence evidence: the programme site's 'Closed calls' menu lists annual editions 2020, 2021, 2022, 2023, 2024 and 2025 ('Nabor zakonczony' = call concluded), confirming a yearly cycle. The 2026 call is over its submission phase and its results are not yet published on the results page; the exact 2026 deadline appears only inside the linked PDF 'Call for applications Bekker NAWA 2026' (binary file, not text-extractable in this session), so no exact deadline is quoted here. No 2027 dates are published yet; next edition expected per the annual pattern.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "'Research fellowships (3 to 24 months)' with funding 'to cover scholarship holder's living expenses related to the stay in the foreign Host Center and the mobility allowance'; the amount may be increased for a spouse and/or underage children (no PLN/EUR amount stated on the fetched pages)",
+      "department_or_programme": "The Bekker NAWA Programme, Department of Programmes for Scientists, Polish National Agency for Academic Exchange (NAWA)",
+      "logo_or_image_url": "https://nawa.gov.pl/images/rozszerzenia/szablony/siteb3/logo-komputer-en.png",
+      "confidence": 0.8,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 517,
+      "classification": "upcoming_or_current_intake",
+      "official_evidence_urls": [
+        "https://icssr.org/participation-international-seminar-abroad"
+      ],
+      "page_evidence": "Verbatim from the official ICSSR page: '3.1 Applications can be submitted online throughout the year.' and '3.2 The applications should be uploaded at least three months before the due date of the Conference.' The scheme is a rolling/continuous call - the awarding body is currently accepting applications at any time, provided the application is uploaded at least three months before the selected conference date.",
+      "next_deadline_or_window": "Applications can be submitted online throughout the year; each application must be uploaded at least three months before the conference date",
+      "funding_on_page": "Assistance up to 50 percent of the total cost of visit (including registration fee up to US$200 and boarding/lodging); full assistance for SC/ST/PwD/PG/doctoral scholars without salary protection (includible for TA/DA calculation)",
+      "department_or_programme": "International Collaboration (ICG) Division, Indian Council of Social Science Research (ICSSR)",
+      "logo_or_image_url": "https://icssr.org/themes/custom/icssr/images/Emblem.svg",
+      "confidence": 0.9,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 621,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://www.turkiyeburslari.gov.tr/announcements/turkiye-scholarships-2026-applications-121",
+        "https://www.turkiyeburslari.gov.tr/calendar"
+      ],
+      "page_evidence": "Verbatim from the official Türkiye Scholarships announcement page: 'Application Dates: 10 January - 20 February 2026' and 'Türkiye Scholarships applications for 2026 will be received in one period, and applications will be open between 10th January- 20th February 2026' (the 2026 round closed 20 February 2026). Recurrence evidence from the official Application Calendar page: 'General Application Period - Application Period: January 10 - February 20' followed by the fixed annual evaluation pipeline ('Evaluation Process: March-April', 'Announcement of Results: Early August'), i.e. an established annual cycle. The 2027-specific announcement is not yet published on the fetched pages.",
+      "next_deadline_or_window": "General Application Period January 10 - February 20 (fixed annual cycle per the official Application Calendar; 2027-specific dates not yet announced on the fetched pages)",
+      "funding_on_page": "Türkiye Scholarships provide 'financial support, tuition fee, accommodation and health insurance' for associate, bachelor's, master's and doctoral degrees (no TRY amount stated on the fetched pages)",
+      "department_or_programme": "Türkiye Scholarships (Türkiye Bursları), Presidency for Turks Abroad and Related Communities (YTB), Government of the Republic of Türkiye",
+      "logo_or_image_url": "https://www.turkiyeburslari.gov.tr/YTB/images/logo/tb-logo.png",
+      "confidence": 0.9,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 679,
+      "classification": "temporarily_closed_awaiting_announcement",
+      "official_evidence_urls": [
+        "https://appels-propositions.auf.org/appel-a-candidatures-2026-27-formations-diplomantes-internationales-a-distance"
+      ],
+      "page_evidence": "Verbatim from the official AUF calls page: 'Lancement : 07/04/2026 à 00h01' and 'Clôture : 14/09/2026 à 23h59' ('Fuseau horaire : Europe/Paris'), with the calendar 'Formations débutant en janvier / février 2027: Clôture des candidatures: 14 septembre 2026' - the call closed 14 September 2026 (before today 2026-10-11) and the page publishes no next call or date. The programme itself is described as recurring ('l'Université numérique accompagne ce projet depuis plus de 25 ans'), but no future call is announced, so the round is closed awaiting announcement.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "'une allocation de mobilité virtuelle internationale sous forme d'une prise en charge partielle des frais d'inscription pour les étudiants les plus méritants ou ayant des ressources limitées' (partial coverage of registration fees)",
+      "department_or_programme": "Université numérique - Formations diplômantes internationales à distance, Agence universitaire de la Francophonie (AUF)",
+      "logo_or_image_url": "https://appels-propositions.auf.org/images/custom/logo_custom.png",
+      "confidence": 0.9,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 719,
+      "classification": "uncertain",
+      "official_evidence_urls": [],
+      "page_evidence": "All official USP URLs returned HTTP 403 with no content: https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships/pacific-scholarship-for-excellence-in-research-innovation-pseri/, https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships/ and https://www.usp.ac.fj/research/. The status quote could not be verified live. Local corpus snapshot claims the page is headed 'Pacific Scholarship for Excellence in Research & Innovation (PSERI) CLOSED' with the 2026 round closed 5 January 2026 - UNVERIFIED local evidence, low confidence.",
+      "next_deadline_or_window": null,
+      "funding_on_page": null,
+      "department_or_programme": null,
+      "logo_or_image_url": null,
+      "confidence": 0.15,
+      "last_checked_date": "2026-10-11"
+    }
+  ],
+  "notes": "Audit performed 2026-10-11 using official awarding-body/university/government domains only. 13 records audited: 1 upcoming_or_current_intake, 6 recurring_next_intake_expected, 2 temporarily_closed_awaiting_announcement, 1 genuinely_discontinued, 3 uncertain. Reviewer must know: (1) id 33 (CSC), id 100 (UB) and id 719 (USP) could not be verified - all their official URLs failed (HTTP 412/412, HTTP 403/403/403, HTTP 403/403/403 respectively) and their classifications rely solely on unverified local corpus evidence, so they must not be relabelled from this audit. (2) id 165: the record's official_source_url /en/studies/scholarships returned HTTP 404; the sibling College Service Center scholarships page was used, and that page still shows the 2024/25 cycle as its latest published call despite annual statistics through 2024/25, so treat with mild caution. (3) id 417: the exact 2026 deadline exists only inside the linked 'Call for applications Bekker NAWA 2026' PDF, which could not be text-extracted in this session; the recorded 2026-05-29 deadline was therefore not confirmed from the page. (4) id 383: the dedicated Erasmus Trustfonds page 404'd; classification comes from the parent official scholarships-and-grants page, which advertises the scholarship for 2027-2028 without application dates. (5) id 279 classification 'genuinely_discontinued' rests on the official statement that the government 'proposed to end support for the NORPART-programme in the 2025 National Budget' combined with 'Grants you can apply for now: 0' and no call since June 2024. (6) All logo URLs were fetched and confirmed to render from the official domains; records without a logo had none stated/captured on the fetched official pages."
+}

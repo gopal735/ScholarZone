@@ -1,0 +1,1712 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   Bangladesh Applicant Journey
+   ---------------------------------------------------------------------
+   Every value comes from design tokens. The vocabulary used here is the
+   one the tracked stylesheet (src/theme.css) actually defines —
+   --text-xs/--text-base/--text-2xl, --text-*-lh, --duration-*,
+   --radius-*, --space-*, --surface, --accent — rather than the newer
+   names in the untracked tokens stylesheet, because this feature has to
+   render correctly from a clean checkout of master, where only the
+   tracked tokens exist.
+
+   Names the tracked theme does not define are declared once in the
+   .jpage block below and never used raw, so there is exactly one place to
+   look for a feature-local fallback. Where a token exists in both places
+   the tracked one wins and the untracked stylesheet's newer scale simply
+   is not consulted — that keeps this file deterministic in either state.
+
+   No colour, size, radius, duration or layer is invented outside that
+   block, so light and dark mode both work without this file knowing
+   either exists.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.jpage {
+  /* ── Feature-local fallbacks for names the tracked theme lacks ──────
+     Each prefers a tracked token when one exists, so the feature renders
+     identically whether or not a richer token sheet is later added. */
+  --j-bangla:
+    'Noto Sans Bengali', 'Nirmala UI', 'Hind Siliguri', Vrinda, 'Noto Sans',
+    Inter, ui-sans-serif, system-ui, sans-serif;
+  --j-surface-subtle: var(--surface-subtle, rgba(20, 19, 15, 0.035));
+  --j-surface-sunken: var(--surface-sunken, rgba(20, 19, 15, 0.07));
+  --j-surface-hover: var(--surface-hover, rgba(20, 19, 15, 0.055));
+  --j-border-input: var(--border-input, rgba(20, 19, 15, 0.42));
+  --j-border-strong: var(--border-strong, rgba(20, 19, 15, 0.26));
+  --j-accent-soft: var(--accent-soft, rgba(44, 90, 122, 0.1));
+  --j-accent-border: var(--accent-border, rgba(44, 90, 122, 0.32));
+
+  /* Text-on-tint variants. The tracked theme defines the solid and soft
+     fills but not a readable text colour on top of them, and a soft hue
+     used directly as text is unreadable — the most common token mistake. */
+  --j-success-text: var(--success-text, #245c3d);
+  --j-warning-text: var(--warning-text, #7a4e0c);
+  --j-danger-text: var(--danger-text, #8a3232);
+  --j-info-text: var(--info-text, #27506c);
+  --j-success-soft: var(--success-soft, rgba(47, 107, 79, 0.1));
+  --j-warning-soft: var(--warning-soft, rgba(138, 90, 18, 0.12));
+  --j-danger-soft: var(--danger-soft, rgba(154, 63, 63, 0.1));
+  --j-info-soft: var(--info-soft, rgba(44, 90, 122, 0.1));
+  --j-success-border: var(--success-border, rgba(47, 107, 79, 0.3));
+  --j-warning-border: var(--warning-border, rgba(138, 90, 18, 0.32));
+  --j-danger-border: var(--danger-border, rgba(154, 63, 63, 0.32));
+  --j-info-border: var(--info-border, rgba(44, 90, 122, 0.3));
+
+  --j-focus-ring: var(--focus-ring, rgba(27, 58, 92, 0.55));
+  --j-scrim: var(--scrim, rgba(16, 15, 13, 0.5));
+  --j-shadow-floating: var(--shadow-floating, 0 12px 32px rgba(20, 19, 15, 0.14));
+  --j-ease: cubic-bezier(0.2, 0, 0, 1);
+  --j-press: 0.98;
+  --j-measure: 66ch;
+  --j-touch: 44px;
+  --j-input-font: var(--text-base, 1rem);
+
+  /* The solid control. Inverted against its canvas in both themes, so it
+     stays the strongest object on the page: a near-white button on a
+     near-white canvas reads as a disabled control. */
+  --j-solid-bg: #1a1714;
+  --j-solid-bg-hover: #050403;
+  --j-solid-ink: #faf8f3;
+}
+
+[data-theme='dark'] .jpage,
+.jpage[data-theme='dark'] {
+  --j-surface-subtle: rgba(240, 235, 225, 0.06);
+  --j-surface-sunken: rgba(240, 235, 225, 0.08);
+  --j-surface-hover: rgba(240, 235, 225, 0.1);
+  --j-border-input: rgba(240, 235, 225, 0.4);
+  --j-border-strong: rgba(240, 235, 225, 0.28);
+  --j-success-text: #8ccfa6;
+  --j-warning-text: #e4b761;
+  --j-danger-text: #ee9494;
+  --j-info-text: #a8cfe4;
+  --j-focus-ring: rgba(143, 196, 172, 0.7);
+  --j-solid-bg: #f0ebe1;
+  --j-solid-bg-hover: #ffffff;
+  --j-solid-ink: #100f0d;
+}
+
+.jpage {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6, 24px);
+  padding-block-end: var(--space-11, 48px);
+}
+
+/* ── Header ─────────────────────────────────────────────────────────── */
+
+.jpage__head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3, 12px);
+  padding-block-start: var(--space-8, 32px);
+}
+
+.jpage__eyebrow {
+  margin: 0;
+  font-size: var(--text-2xs, 0.75rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted, #6e6a61);
+}
+
+.jpage__title {
+  margin: 0;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: var(--text-2xl, 1.75rem);
+  font-weight: 430;
+  line-height: var(--text-2xl-lh, 1.14);
+  letter-spacing: -0.015em;
+  color: var(--text-primary, #14130f);
+}
+
+.jpage__tagline {
+  margin: 0;
+  font-size: var(--text-base, 1rem);
+  line-height: var(--text-base-lh, 1.65);
+  color: var(--text-secondary, #24221c);
+  max-width: var(--j-measure);
+}
+
+.jpage__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--space-5, 20px);
+  margin-block-start: var(--space-4, 16px);
+}
+
+.jprogress {
+  flex: 1 1 260px;
+  min-width: 0;
+}
+
+.jprogress__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3, 12px);
+  font-size: var(--text-sm, 0.875rem);
+  line-height: var(--text-sm-lh, 1.55);
+  color: var(--text-secondary, #24221c);
+}
+
+.jprogress__value {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--text-primary, #14130f);
+}
+
+.jprogress__track {
+  margin-block-start: var(--space-2, 8px);
+  block-size: 8px;
+  border-radius: var(--radius-pill, 2px);
+  background: var(--j-surface-sunken);
+  overflow: hidden;
+}
+
+.jprogress__fill {
+  block-size: 100%;
+  background: var(--accent, #2c5a7a);
+  border-radius: var(--radius-pill, 2px);
+  transition: width var(--duration-hover, 200ms) var(--j-ease);
+}
+
+.jpage__steps-done {
+  margin: 0;
+  font-size: var(--text-sm, 0.875rem);
+  color: var(--text-muted, #6e6a61);
+}
+
+.jlang {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2, 8px);
+  margin: 0;
+  padding: var(--space-2, 8px);
+  border: 1px solid var(--border, rgba(20, 19, 15, 0.13));
+  border-radius: var(--radius-md, 3px);
+  background: var(--surface, #ffffff);
+}
+
+.jlang__legend {
+  padding-inline: var(--space-2, 8px);
+  font-size: var(--text-2xs, 0.75rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted, #6e6a61);
+}
+
+.jlang__option {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1, 4px);
+  min-block-size: var(--j-touch);
+  padding-inline: var(--space-3, 12px);
+  border-radius: var(--radius-sm, 2px);
+  font-size: var(--text-sm, 0.875rem);
+  color: var(--text-secondary, #24221c);
+  cursor: pointer;
+}
+
+.jlang__option.is-active {
+  background: var(--j-accent-soft);
+  color: var(--text-primary, #14130f);
+  font-weight: 600;
+}
+
+/* ── Three-region body ─────────────────────────────────────────────── */
+
+.jpage__body {
+  display: grid;
+  grid-template-columns: minmax(0, 210px) minmax(0, 1fr) minmax(0, 290px);
+  gap: var(--j-gap);
+  align-items: start;
+}
+
+/* Every region of the grid is allowed to be narrower than its content.
+   A grid item defaults to `min-width: auto`, which lets a wide child push the
+   track — and therefore the whole page — wider than the viewport. The stepper
+   strip is exactly that case at 360px: its seven items overflow their scroll
+   container and, without this floor, the container grew instead of scrolling. */
+.jpage__rail,
+.jpage__main,
+.jpage__side {
+  min-inline-size: 0;
+}
+
+.jpage {
+  --j-gap: var(--space-6, 24px);
+}
+
+/* ── Stepper ───────────────────────────────────────────────────────── */
+
+.jstepper {
+  position: sticky;
+  top: var(--space-6, 24px);
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+.jstepper__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1, 4px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.jstepper__button {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-2, 8px);
+  inline-size: 100%;
+  min-block-size: var(--j-touch);
+  padding: var(--space-2, 8px) var(--space-3, 12px);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md, 3px);
+  background: transparent;
+  color: var(--text-secondary, #24221c);
+  text-align: start;
+  cursor: pointer;
+}
+
+.jstepper__button:hover {
+  background: var(--j-surface-hover);
+}
+
+.jstepper__button.is-active {
+  border-color: var(--j-accent-border);
+  background: var(--surface, #ffffff);
+  color: var(--text-primary, #14130f);
+}
+
+.jstepper__index {
+  font-size: var(--text-xs, 0.75rem);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted, #6e6a61);
+}
+
+.jstepper__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-inline-size: 0;
+}
+
+.jstepper__label {
+  font-family: var(--j-bangla);
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: 600;
+  line-height: var(--text-sm-lh, 1.55);
+}
+
+.jstepper__meta {
+  font-size: var(--text-2xs, 0.75rem);
+  color: var(--text-muted, #6e6a61);
+}
+
+.jstepper__rail {
+  grid-column: 1 / -1;
+  block-size: 3px;
+  margin-block-start: var(--space-1, 4px);
+  border-radius: var(--radius-pill, 2px);
+  background: var(--j-surface-sunken);
+  overflow: hidden;
+}
+
+.jstepper__rail-fill {
+  display: block;
+  block-size: 100%;
+  background: var(--accent, #2c5a7a);
+  transition: width var(--duration-hover, 200ms) var(--j-ease);
+}
+
+/* ── Module panel ──────────────────────────────────────────────────── */
+
+.jpage__main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6, 24px);
+  min-inline-size: 0;
+}
+
+.jpage__crumb {
+  margin: 0;
+  font-size: var(--text-2xs, 0.75rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted, #6e6a61);
+}
+
+.jpage__pager {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3, 12px);
+  padding-block-start: var(--space-4, 16px);
+  border-block-start: 1px solid var(--border, rgba(20, 19, 15, 0.13));
+}
+
+.jpage__tools {
+  padding-block-start: var(--space-4, 16px);
+  border-block-start: 1px solid var(--border, rgba(20, 19, 15, 0.13));
+}
+
+.jpage__side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5, 20px);
+  position: sticky;
+  top: var(--space-6, 24px);
+}
+
+.jmodule {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5, 20px);
+  padding: var(--space-6, 24px);
+  border: 1px solid var(--border, rgba(20, 19, 15, 0.13));
+  border-radius: var(--radius-card, 3px);
+  background: var(--surface, #ffffff);
+}
+
+.jmodule__head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2, 8px);
+}
+
+.jmodule__title {
+  margin: 0;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: var(--text-xl, 1.25rem);
+  font-weight: 430;
+  line-height: var(--text-xl-lh, 1.32);
+  letter-spacing: -0.01em;
+  color: var(--text-primary, #14130f);
+}
+
+.jmodule__intro {
+  margin: 0;
+  font-family: var(--j-bangla);
+  font-size: var(--text-base, 1rem);
+  line-height: var(--text-base-lh, 1.65);
+  color: var(--text-secondary, #24221c);
+  max-width: var(--j-measure);
+}
+
+.jmodule__footnote,
+.jmodule__count {
+  margin: 0;
+  font-size: var(--text-sm, 0.875rem);
+  line-height: var(--text-sm-lh, 1.55);
+  color: var(--text-muted, #6e6a61);
+}
+
+/* Radios and checkboxes.
+   The application's global stylesheet sets `appearance: none` on every input
+   (index.css), which strips the native indicator and leaves a radio at zero
+   intrinsic size — an unclickable, unfocusable control. Every radio in this
+   feature therefore carries an explicit size and draws its own indicator, so
+   the selection is visible rather than implied by the label alone. */
+.jpage input[type='radio'],
+.jpage input[type='checkbox'] {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: 0 0 auto;
+  inline-size: 20px;
+  block-size: 20px;
+  margin: 0;
+  border: 1px solid var(--j-border-input);
+  border-radius: 50%;
+  background: var(--surface, #ffffff);
+  cursor: pointer;
+  transition:
+    border-color var(--duration-micro, 180ms) var(--j-ease),
+    box-shadow var(--duration-micro, 180ms) var(--j-ease);
+}
+
+.jpage input[type='checkbox'] {
+  border-radius: var(--radius-sm, 2px);
+}
+
+.jpage input[type='radio']:checked,
+.jpage input[type='checkbox']:checked {
+  border-color: var(--accent, #2c5a7a);
+  /* The indicator is a box-shadow rather than a ::before pseudo-element so it
+     inherits the control's own contrast in both themes without a second rule. */
+  box-shadow: inset 0 0 0 5px var(--accent, #2c5a7a);
+}
+
+.jpage input[type='radio']:focus-visible,
+.jpage input[type='checkbox']:focus-visible {
+  outline: 2px solid var(--j-focus-ring);
+  outline-offset: 2px;
+}
+
+/* ── Forms ─────────────────────────────────────────────────────────── */
+
+.jform {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4, 16px);
+}
+
+.jform--inline {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--space-3, 12px);
+}
+
+.jform--inline > .jfield {
+  flex: 1 1 220px;
+}
+
+.jform__row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4, 16px);
+}
+
+.jform__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3, 12px);
+}
+
+.jfield {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1, 4px);
+  min-inline-size: 0;
+}
+
+.jfield__label {
+  font-family: var(--j-bangla);
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: 600;
+  color: var(--text-primary, #14130f);
+}
+
+.jfield__required {
+  color: var(--j-danger-text);
+}
+
+.jfield__hint {
+  margin: 0;
+  font-family: var(--j-bangla);
+  font-size: var(--text-xs, 0.75rem);
+  line-height: var(--text-xs-lh, 1.45);
+  color: var(--text-muted, #6e6a61);
+}
+
+.jfield__error {
+  margin: 0;
+  font-family: var(--j-bangla);
+  font-size: var(--text-xs, 0.75rem);
+  line-height: var(--text-xs-lh, 1.45);
+  color: var(--j-danger-text);
+}
+
+/* A Bangla-capable stack on every control, because a keyboard set to
+   Bangla is the normal case for this feature's users and a Latin-only
+   stack would silently drop the digits. */
+.jinput,
+.jselect {
+  inline-size: 100%;
+  min-block-size: var(--j-touch);
+  padding: var(--space-2, 8px) var(--space-3, 12px);
+  border: 1px solid var(--j-border-input);
+  border-radius: var(--radius-sm, 2px);
+  background: var(--surface, #ffffff);
+  color: var(--text-primary, #14130f);
+  font-family: var(--j-bangla);
+  font-size: var(--j-input-font);
+  line-height: var(--text-base-lh, 1.65);
+}
+
+.jinput--area {
+  min-block-size: 88px;
+  resize: vertical;
+}
+
+.jinput--date,
+.jinput--currency {
+  inline-size: auto;
+  min-inline-size: 140px;
+}
+
+.jinput[aria-invalid='true'] {
+  border-color: var(--j-danger-text);
+}
+
+.jinput:focus-visible,
+.jselect:focus-visible,
+.jbtn:focus-visible,
+.jstepper__button:focus-visible,
+.jnext__link:focus-visible {
+  outline: 2px solid var(--j-focus-ring);
+  outline-offset: 2px;
+}
+
+.jselect-label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1, 4px);
+  font-family: var(--j-bangla);
+  font-size: var(--text-xs, 0.75rem);
+  line-height: var(--text-xs-lh, 1.45);
+  color: var(--text-muted, #6e6a61);
+}
+
+.jselect-label .jselect {
+  min-block-size: var(--j-touch);
+}
+
+.jfieldset {
+  margin: 0;
+  padding: var(--space-4, 16px);
+  border: 1px solid var(--border, rgba(20, 19, 15, 0.13));
+  border-radius: var(--radius-md, 3px);
+}
+
+.jfieldset__legend {
+  padding-inline: var(--space-2, 8px);
+  font-family: var(--j-bangla);
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: 600;
+  color: var(--text-primary, #14130f);
+}
+
+.jtrust {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2, 8px);
+}
+
+.jtrust__option {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-2, 8px);
+  align-items: start;
+  min-block-size: var(--j-touch);
+  font-family: var(--j-bangla);
+  font-size: var(--text-sm, 0.875rem);
+}
+
+.jtrust__label {
+  font-weight: 600;
+  color: var(--text-primary, #14130f);
+}
+
+.jtrust__help {
+  grid-column: 2;
+  font-size: var(--text-xs, 0.75rem);
+  line-height: var(--text-xs-lh, 1.45);
+  color: var(--text-muted, #6e6a61);
+}
+
+.jradio {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2, 8px);
+  min-block-size: var(--j-touch);
+  font-family: var(--j-bangla);
+  font-size: var(--text-sm, 0.875rem);
+  color: var(--text-secondary, #24221c);
+}
+
+/* ── Buttons ───────────────────────────────────────────────────────── */
+
+.jbtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2, 8px);
+  min-block-size: var(--j-touch);
+  padding-inline: var(--space-4, 16px);
+  border: 1px solid var(--j-border-input);
+  border-radius: var(--radius-sm, 2px);
+  background: var(--surface, #ffffff);
+  color: var(--text-primary, #14130f);
+  font-family: var(--j-bangla);
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--duration-micro, 180ms) var(--j-ease);
+}
+
+.jbtn:hover {
+  background: var(--j-surface-hover);
+}
+
+.jbtn:active {
+  transform: scale(var(--j-press));
+}
+
+.jbtn--primary {
+  background: var(--j-solid-bg);
+  border-color: var(--j-solid-bg);
+  color: var(--j-solid-ink);
+}
+
+.jbtn--primary:hover {
+  background: var(--j-solid-bg-hover);
+}
+
+.jbtn--danger {
+  border-color: var(--j-danger-border);
+  color: var(--j-danger-text);
+}
+
+.jbtn--danger:hover {
+  background: var(--j-danger-soft);
+}
+
+.jbtn--quiet {
+  border-color: var(--border, rgba(20, 19, 15, 0.13));
+  background: transparent;
+}
+
+.jbtn--icon {
+  min-inline-size: var(--j-touch);
+  padding-inline: var(--space-2, 8px);
+  font-size: var(--text-lg, 1.1875rem);
+  line-height: 1;
+}
+
+.jbtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Chips, notices, links ─────────────────────────────────────────── */
+
+.jchip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1, 4px);
+  padding: 2px var(--space-2, 8px);
+  border: 1px solid var(--border, rgba(20, 19, 15, 0.13));
+  border-radius: var(--radius-pill, 2px);
+  background: var(--j-surface-subtle);
+  font-family: var(--j-bangla);
+  font-size: var(--text-2xs, 0.75rem);
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--text-secondary, #24221c);
+}
+
+.jchip--success {
+  border-color: var(--j-success-border);
+  background: var(--j-success-soft);
+  color: var(--j-success-text);
+}
+
+.jchip--warning {
+  border-color: var(--j-warning-border);
+  background: var(--j-warning-soft);
+  color: var(--j-warning-text);
+}
+
+.jchip--danger {
+  border-color: var(--j-danger-border);
+  background: var(--j-danger-soft);
+  color: var(--j-danger-text);
+}
+
+.jchip--info {
+  border-color: var(--j-info-border);
+  background: var(--j-info-soft);
+  color: var(--j-info-text);
+}
+
+.jnotice {
+  margin: 0;
+  padding: var(--space-3, 12px) var(--space-4, 16px);
+  border: 1px solid var(--j-info-border);
+  border-radius: var(--radius-sm, 2px);
+  background: var(--j-info-soft);
+  font-family: var(--j-bangla);
+  font-size: var(--text-sm, 0.875rem);
+  line-height: var(--text-sm-lh, 1.55);
+  color: var(--j-info-text);
+}
+
+.jnotice--warning {
+  border-color: var(--j-warning-border);
+  background: var(--j-warning-soft);
+  color: var(--j-warning-text);
+}
+
+.jnotice__title {
+  margin: 0;
+  font-weight: 600;
+}
+
+.jnotice__body {
+  margin: var(--space-1, 4px) 0 0;
+}
+
+.jmuted {
+  color: var(--text-muted, #6e6a61);
+}
+
+.jlink__icon {
+  margin-inline-start: var(--space-1, 4px);
+}
+
+/* ── Cards ─────────────────────────────────────────────────────────── */
+
+.jcards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4, 16px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.jcard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3, 12px);
+  padding: var(--space-4, 16px);
+  border: 1px solid var(--border, rgba(20, 19, 15, 0.13));
+  border-radius: var(--radius-card, 3px);
+  background: var(--j-surface-subtle);
+}
+
+.jcard--sample {
+  border-style: dashed;
+  border-color: var(--j-warning-border);
+  background: var(--j-warning-soft);
+}
+
+.jcard__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2, 8px);
+}
+
+.jcard__title {
+  margin: 0;
+  flex: 1 1 auto;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: var(--text-lg, 1.1875rem);
+  font-weight: 430;
+  line-height: var(--text-lg-lh, 1.7);
+  color: var(--text-primary, #14130f);
+  overflow-wrap: anywhere;
+}
+
+.jcard__sample-note {
+  margin: 0;
+  font-family: var(--j-bangla);
+  font-size: var(--text-sm, 0.875rem);
+  line-height: var(--text-sm-lh, 1.55);
+  color: var(--j-warning-text);
+}
+
+.jcard__facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-3, 12px);
+  margin: 0;
+}
+
+.jcard__facts dt {
+  font-family: var(--j-bangla);
+  font-size: var(--text-2xs, 0.75rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted, #6e6a61);
+}
+
+.jcard__facts dd {
+  margin: 2px 0 0;
+  font-family: var(--j-bangla);
+  font-size: var(--text-sm, 0.875rem);
+  line-height: var(--text-sm-lh, 1.55);
+  color: var(--text-primary, #14130f);
+  overflow-wrap: anywhere;
+}
+
+.jcard__note-inline,
+.jcard__flag {
+  color: var(--text-muted, #6e6a61);
+}
+
+.jcard__source,
+.jcard__notes,
+.jcard__hint,
+.jcard__category {
+  margin: 0;
+  font-family: var(--j-bangla);
+  font-size: var(--text-sm, 0.875rem);
+  line-height: var(--text-sm-lh, 1.55);
+  overflow-wrap: anywhere;
+}
+
+.jcard__hint {
+  font-size: var(--text-xs, 0.75rem);
+  color: var(--text-muted, #6e6a61);
+}
+
+.jcard__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--space-3, 12px);
+  padding-block-start: var(--space-2, 8px);
+  border-block-start: 1px solid var(--border, rgba(20, 19, 15, 0.13));
+}
+
+.jcard__controls .jselect {
+  min-block-size: var(--j-touch);
+}
+
+/* ── Table (stacked on narrow screens) ─────────────────────────────── */
+
+.jtable {
+  inline-size: 100%;
+  border-collapse: collapse;
+  font-family: var(--j-bangla);
+  font-size: var(--text-sm, 0.875rem);
+}
+
+.jtable th,
+.jtable td {
+  padding: var(--space-3, 12px);
+  border-block-end: 1px solid var(--border, rgba(20, 19, 15, 0.13));
+  text-align: start;
+  vertical-align: top;
+}
+
+.jtable thead th {
+  font-size: var(--text-2xs, 0.75rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted, #6e6a61);
+  font-weight: 600;
+}
+
+.jtable__title {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1, 4px);
+  font-weight: 600;
+  color: var(--text-primary, #14130f);
+  overflow-wrap: anywhere;
+}
+
+.jtable__row--template .jtable__title-text {
+  color: var(--text-muted, #6e6a61);
+}
+
+.jtable__note,
+.jtable__hint {
+  display: block;
+  font-family: var(--j-bangla);
+  font-size: var(--text-xs, 0.75rem);
+  line-height: var(--text-xs-lh, 1.45);
+  font-weight: 400;
+  color: var(--text-muted, #6e6a61);
+}
+
+/* ── Costs ─────────────────────────────────────────────────────────── */
+
+.jcosts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4, 16px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.jcosts__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3, 12px);
+  padding: var(--space-4, 16px);
+  border: 1px solid var(--border, rgba(20, 19, 15, 0.13));
+  border-radius: var(--radius-card, 3px);
+  background: var(--j-surface-subtle);
+}
+
+.jcosts__row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-3, 12px);
+  align-items: end;
+}
+
+.jcosts__remove {
+  align-self: end;
+}
+
+.jrate,
+.jbdt,
+.jtotals {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2, 8px);
+  padding: var(--space-4, 16px);
+  border: 1px solid var(--border, rgba(20, 19, 15, 0.13));
+  border-radius: var(--radius-card, 3px);
+  background: var(--surface, #ffffff);
+}
+
+.jrate__row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-3, 12px);
+}
+
+.jrate__title,
+.jbdt__title,
+.jtotals__title {
+  margin: 0;
+  font-family: var(--j-bangla);
+  font-size: var(--text-2xs, 0.75rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--text-muted, #6e6a61);
+}
+
+.jrate__body,
+.jtotals__flag,
+.jbdt__meta,
+.jbdt__warning,
+.jbdt__none {
+  margin: 0;
+  font-family: var(--j-bangla);
+  font-size: var(--text-sm, 0.875rem);
+  line-height: var(--text-sm-lh, 1.55);
+  color: var(--text-muted, #6e6a61);
+}
+
+.jtotals__value {
+  margin: 0 0 var(--space-2, 8px);
+  font-family: var(--font-body, Inter, sans-serif);
+  font-size: var(--text-xl, 1.25rem);
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  line-height: var(--text-xl-lh, 1.32);
+  color: var(--text-primary, #14130f);
+}
+
+.jprovenance {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2, 8px);
+}
+
+.jbdt__line {
+  margin: 0;
+  font-family: var(--j-bangla);
+  font-size: var(--text-sm, 0.875rem);
+  line-height: var(--text-sm-lh, 1.55);
+  color: var(--text-primary, #14130f);
+}
+
+/* ── Rail panels ───────────────────────────────────────────────────── */
+
+.jnext,
+.jcheck,
+.jtools {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3, 12px);
+  padding: var(--space-4, 16px);
+  border: 1px solid var(--border, rgba(20, 19, 15, 0.13));
+  border-radius: var(--radius-card, 3px);
+  background: var(--surface, #ffffff);
+}
+
+.jnext__heading,
+.jcheck__heading,
+.jtools__heading {
+  margin: 0;
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted, #6e6a61);
+}
+
+.jnext__list,
+.jcheck__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3, 12px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.jnext__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1, 4px);
+  padding-block-end: var(--space-3, 12px);
+  border-block-end: 1px solid var(--border, rgba(20, 19, 15, 0.13));
+}
+
+.jnext__item:last-child {
+  padding-block-end: 0;
+  border-block-end: none;
+}
+
+.jnext__text {
+  margin: 0;
+  font-family: var(--j-bangla);
+  font-size: var(--text-sm, 0.875rem);
+  line-height: var(--text-sm-lh, 1.55);
+  color: var(--text-primary, #14130f);
+}
+
+.jnext__link {
+  align-self: flex-start;
+  min-block-size: var(--j-touch);
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--accent, #2c5a7a);
+  font-family: var(--j-bangla);
+  font-size: var(--text-xs, 0.75rem);
+  font-weight: 600;
+  text-align: start;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.jnext__empty-title {
+  margin: 0;
+  font-family: var(--j-bangla);
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: 600;
+  color: var(--text-primary, #14130f);
+}
+
+.jnext__empty-body {
+  margin: 0;
+  font-family: var(--j-bangla);
+  font-size: var(--text-sm, 0.875rem);
+  line-height: var(--text-sm-lh, 1.55);
+  color: var(--text-muted, #6e6a61);
+}
+
+.jcheck__row.is-active .jcheck__button {
+  background: var(--j-accent-soft);
+}
+
+.jcheck__button {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: var(--space-2, 8px);
+  align-items: center;
+  inline-size: 100%;
+  min-block-size: var(--j-touch);
+  padding: var(--space-1, 4px) var(--space-2, 8px);
+  border: none;
+  border-radius: var(--radius-sm, 2px);
+  background: transparent;
+  color: var(--text-secondary, #24221c);
+  font-family: var(--j-bangla);
+  font-size: var(--text-sm, 0.875rem);
+  text-align: start;
+  cursor: pointer;
+}
+
+.jcheck__index {
+  font-size: var(--text-2xs, 0.75rem);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted, #6e6a61);
+}
+
+.jcheck__count {
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted, #6e6a61);
+}
+
+.jcheck__empty {
+  margin: 0;
+  font-family: var(--j-bangla);
+  font-size: var(--text-sm, 0.875rem);
+  color: var(--text-muted, #6e6a61);
+}
+
+/* ── Tools, dialogs, empty states ──────────────────────────────────── */
+
+.jtools__body {
+  margin: 0;
+  font-family: var(--j-bangla);
+  font-size: var(--text-sm, 0.875rem);
+  line-height: var(--text-sm-lh, 1.55);
+  color: var(--text-muted, #6e6a61);
+}
+
+.jtools__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3, 12px);
+}
+
+.jtools__message,
+.jtools__error {
+  margin: 0;
+  font-family: var(--j-bangla);
+  font-size: var(--text-sm, 0.875rem);
+  line-height: var(--text-sm-lh, 1.55);
+}
+
+.jtools__error {
+  color: var(--j-danger-text);
+}
+
+.jscrim {
+  position: fixed;
+  inset: 0;
+  z-index: 35;
+  display: grid;
+  place-items: center;
+  padding: var(--space-4, 16px);
+  background: var(--j-scrim);
+}
+
+.jdialog {
+  position: relative;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4, 16px);
+  inline-size: min(520px, 100%);
+  max-block-size: 90vh;
+  overflow: auto;
+  padding: var(--space-6, 24px);
+  border: 1px solid var(--j-border-strong);
+  border-radius: var(--radius-panel, 4px);
+  background: var(--surface, #ffffff);
+  box-shadow: var(--j-shadow-floating);
+}
+
+.jdialog__title {
+  margin: 0;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: var(--text-lg, 1.1875rem);
+  line-height: var(--text-lg-lh, 1.7);
+  color: var(--text-primary, #14130f);
+}
+
+.jdialog__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3, 12px);
+  font-family: var(--j-bangla);
+  font-size: var(--text-sm, 0.875rem);
+  line-height: var(--text-sm-lh, 1.55);
+  color: var(--text-secondary, #24221c);
+}
+
+.jdialog__body p {
+  margin: 0;
+}
+
+.jdialog__en {
+  color: var(--text-muted, #6e6a61);
+}
+
+.jdialog__warning {
+  color: var(--j-danger-text);
+}
+
+.jdialog__file {
+  font-family: var(--font-mono, monospace);
+  font-size: var(--text-xs, 0.75rem);
+  overflow-wrap: anywhere;
+}
+
+.jdialog__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-3, 12px);
+}
+
+.jempty {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2, 8px);
+  padding: var(--space-6, 24px);
+  border: 1px dashed var(--j-border-strong);
+  border-radius: var(--radius-card, 3px);
+}
+
+.jempty__title {
+  margin: 0;
+  font-family: var(--j-bangla);
+  font-weight: 600;
+  color: var(--text-primary, #14130f);
+}
+
+.jempty__body {
+  margin: 0;
+  font-family: var(--j-bangla);
+  font-size: var(--text-sm, 0.875rem);
+  line-height: var(--text-sm-lh, 1.55);
+  color: var(--text-muted, #6e6a61);
+}
+
+.jempty__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3, 12px);
+  margin-block-start: var(--space-2, 8px);
+}
+
+.jlist__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3, 12px);
+}
+
+.jlegend {
+  display: block;
+  font-family: var(--j-bangla);
+  font-size: var(--text-xs, 0.75rem);
+  line-height: var(--text-xs-lh, 1.45);
+  color: var(--text-muted, #6e6a61);
+}
+
+.jsort {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3, 12px);
+}
+
+.jsort__label {
+  font-family: var(--j-bangla);
+  font-size: var(--text-2xs, 0.75rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted, #6e6a61);
+}
+
+.jsummary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3, 12px);
+  padding: var(--space-4, 16px);
+  border: 1px solid var(--border, rgba(20, 19, 15, 0.13));
+  border-radius: var(--radius-card, 3px);
+  background: var(--j-surface-subtle);
+}
+
+.jsummary__title {
+  margin: 0;
+  font-family: var(--j-bangla);
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: 600;
+  color: var(--text-primary, #14130f);
+}
+
+.jsummary__body,
+.jsummary__list {
+  margin: 0;
+  font-family: var(--j-bangla);
+  font-size: var(--text-sm, 0.875rem);
+  line-height: var(--text-sm-lh, 1.55);
+  color: var(--text-secondary, #24221c);
+}
+
+.jsummary__list {
+  padding-inline-start: var(--space-5, 20px);
+}
+
+.jsummary__count {
+  margin: 0;
+  font-family: var(--j-bangla);
+  font-size: var(--text-sm, 0.875rem);
+  color: var(--text-primary, #14130f);
+}
+
+.jerror {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4, 16px);
+  padding: var(--space-8, 32px);
+  border: 1px solid var(--j-danger-border);
+  border-radius: var(--radius-card, 3px);
+  background: var(--surface, #ffffff);
+}
+
+.jerror__title {
+  margin: 0;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: var(--text-xl, 1.25rem);
+  color: var(--text-primary, #14130f);
+}
+
+.jerror__body {
+  margin: 0;
+  font-family: var(--j-bangla);
+  font-size: var(--text-sm, 0.875rem);
+  line-height: var(--text-sm-lh, 1.55);
+  color: var(--text-secondary, #24221c);
+}
+
+.jerror__actions {
+  display: flex;
+  gap: var(--space-3, 12px);
+}
+
+.jroute-fallback {
+  padding: var(--space-12, 56px) var(--space-6, 24px);
+  text-align: center;
+  color: var(--text-muted, #6e6a61);
+  font-size: var(--text-sm, 0.875rem);
+}
+
+/* ── Bilingual text ────────────────────────────────────────────────── */
+
+.jbilingual {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-inline-size: 0;
+}
+
+.jbilingual__primary {
+  font-family: var(--j-bangla);
+  line-height: var(--text-base-lh, 1.65);
+}
+
+.jbilingual__secondary {
+  font-family: var(--font-body, Inter, sans-serif);
+  font-size: 0.88em;
+  line-height: var(--text-base-lh, 1.65);
+  color: var(--text-muted, #6e6a61);
+}
+
+.jdisclaimer__en {
+  display: block;
+  margin-block-start: var(--space-2, 8px);
+  color: var(--text-muted, #6e6a61);
+}
+
+.jdisclaimer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4, 16px);
+  padding: var(--space-5, 20px);
+  border: 1px solid var(--j-info-border);
+  border-radius: var(--radius-card, 3px);
+  background: var(--j-info-soft);
+}
+
+.jdisclaimer__block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2, 8px);
+}
+
+.jdisclaimer__title {
+  margin: 0;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: var(--text-lg, 1.1875rem);
+  line-height: var(--text-lg-lh, 1.7);
+  color: var(--text-primary, #14130f);
+}
+
+.jdisclaimer__subtitle {
+  margin: 0;
+  font-family: var(--j-bangla);
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: 600;
+  color: var(--text-primary, #14130f);
+}
+
+.jdisclaimer__body {
+  margin: 0;
+  font-family: var(--j-bangla);
+  font-size: var(--text-sm, 0.875rem);
+  line-height: var(--text-sm-lh, 1.55);
+  color: var(--j-info-text);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   Responsive
+   The rail moves below the module rather than beside it, so every form
+   control keeps a full-width touch target instead of being squeezed into
+   a 290px column inside a 360px viewport.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1100px) {
+  .jpage__body {
+    grid-template-columns: minmax(0, 200px) minmax(0, 1fr);
+  }
+
+  .jpage__side {
+    position: static;
+    grid-column: 1 / -1;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .jpage__side > * {
+    flex: 1 1 320px;
+  }
+}
+
+@media (max-width: 760px) {
+  .jpage__body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .jstepper {
+    position: static;
+  }
+
+  /* The stepper becomes one horizontal strip that scrolls inside its own
+     box, rather than seven stacked buttons: a vertical strip at 360px costs
+     roughly 480px of vertical space before any scholarship content. */
+  .jstepper__list {
+    flex-direction: row;
+    overflow-x: auto;
+    max-inline-size: 100%;
+    padding-block-end: var(--space-2, 8px);
+    overscroll-behavior-x: contain;
+  }
+
+  .jstepper__item {
+    flex: 0 0 auto;
+  }
+
+  .jstepper__button {
+    grid-template-columns: auto;
+    min-inline-size: 64px;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .jstepper__meta {
+    display: none;
+  }
+
+  .jform__row,
+  .jrate__row,
+  .jcosts__row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .jpage__side {
+    flex-direction: column;
+  }
+
+  .jpage__pager {
+    flex-direction: column;
+  }
+
+  .jpage__pager .jbtn {
+    inline-size: 100%;
+  }
+
+  /* The table becomes stacked rows: the header is visually hidden but the
+     cells are replayed with their own column labels, because a five-column
+     table at 360px cannot show its headers and its data at once. */
+  .jtable thead {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .jtable,
+  .jtable tbody,
+  .jtable tr,
+  .jtable td,
+  .jtable th {
+    display: block;
+    inline-size: 100%;
+  }
+
+  .jtable tr {
+    padding: var(--space-3, 12px);
+    border: 1px solid var(--border, rgba(20, 19, 15, 0.13));
+    border-radius: var(--radius-card, 3px);
+    background: var(--j-surface-subtle);
+    margin-block-end: var(--space-3, 12px);
+  }
+
+  .jtable td,
+  .jtable th {
+    border-block-end: none;
+    padding: var(--space-1, 4px) 0;
+  }
+
+  /* Each cell replays its column name, because the header row is hidden. */
+  .jtable td::before {
+    content: attr(data-label);
+    display: block;
+    font-family: var(--j-bangla);
+    font-size: var(--text-2xs, 0.75rem);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted, #6e6a61);
+    margin-block-end: var(--space-1, 4px);
+  }
+}
+
+@media (max-width: 380px) {
+  .jpage__bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .jmodule,
+  .jcard,
+  .jcosts__item {
+    padding: var(--space-4, 16px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jprogress__fill,
+  .jstepper__rail-fill,
+  .jbtn {
+    transition-duration: 1ms;
+  }
+
+  .jbtn:active {
+    transform: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   Print / Save as PDF
+   A readable black-on-white report. Navigation, action buttons, stepper
+   rails, the sort controls and the currency converter are all removed,
+   because none of them carry information a printed copy needs. The two
+   date fields keep their own headings, so an official deadline and a
+   personal target date stay distinguishable on paper exactly as on screen.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@media print {
+  .jstepper,
+  .jpage__pager,
+  .jpage__tools,
+  .jsort,
+  .jbdt,
+  .jbtn,
+  .jlang,
+  .jempty__actions,
+  .jlist__actions,
+  .jprogress__track {
+    display: none !important;
+  }
+
+  .jpage {
+    gap: var(--space-4, 16px);
+    padding: 0;
+  }
+
+  .jpage__body {
+    display: block;
+  }
+
+  .jpage__side {
+    position: static;
+    flex-direction: column;
+  }
+
+  .jpage__side > * {
+    flex: none;
+  }
+
+  .jmodule,
+  .jcard,
+  .jcosts__item,
+  .jnext,
+  .jcheck,
+  .jtools,
+  .jsummary,
+  .jrate,
+  .jtotals,
+  .jdisclaimer {
+    break-inside: avoid;
+    border-color: #000;
+    background: #fff;
+    box-shadow: none;
+  }
+
+  .jpage__title,
+  .jmodule__title,
+  .jcard__title,
+  .jtotals__value,
+  .jdisclaimer__title,
+  .jdisclaimer__body {
+    color: #000;
+  }
+
+  /* Estimate labels must survive the move to greyscale, because the point
+     of printing them is a paper copy that can be handed to someone who has
+     never opened the app. */
+  .jchip {
+    border-color: #000;
+    background: #fff;
+    color: #000;
+    font-weight: 700;
+  }
+
+  .jtable thead {
+    display: table-header-group;
+    position: static;
+    inline-size: auto;
+    block-size: auto;
+    overflow: visible;
+    clip-path: none;
+    white-space: normal;
+  }
+
+  .jtable,
+  .jtable tr,
+  .jtable td,
+  .jtable th {
+    display: table;
+    inline-size: auto;
+  }
+
+  .jtable tr {
+    display: table-row;
+    border: none;
+    background: #fff;
+    padding: 0;
+    margin: 0;
+  }
+
+  .jtable td,
+  .jtable th {
+    display: table-cell;
+    border-block-end: 1px solid #000;
+  }
+
+  .jcard__facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sz-sr-only {
+    position: static;
+    inline-size: auto;
+    block-size: auto;
+    overflow: visible;
+    clip-path: none;
+    white-space: normal;
+  }
+}

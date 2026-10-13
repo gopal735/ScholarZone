@@ -1,0 +1,192 @@
+{
+  "agent": "agent-07",
+  "records": [
+    {
+      "id": 40,
+      "classification": "uncertain",
+      "official_evidence_urls": [],
+      "page_evidence": "All official ARES URLs failed. https://www.ares-ac.be/en/cooperation-au-developpement/bourses returned an empty body; https://www.ares-ac.be/en/scholarships returned only an F5/TSPD bot-challenge interstitial ('Please enable JavaScript to view the page content. Your support ID is: ...'), not the scholarship page. No other ARES (awarding-body) URL exists in the record's list (remaining URLs are unrelated domains: anr.fr, bs.china-embassy.gov.cn, sutd.edu.sg). The record's local note ('The 2027-2028 scholarship call for applications is now closed; the next call is expected in August 2027') could NOT be verified against any official page and is therefore not used for classification.",
+      "next_deadline_or_window": null,
+      "funding_on_page": null,
+      "department_or_programme": null,
+      "logo_or_image_url": null,
+      "confidence": 0.3,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 111,
+      "classification": "temporarily_closed_awaiting_announcement",
+      "official_evidence_urls": [
+        "https://a2ascholarships.iccr.gov.in/scheme/radhakrishnan-cultural-exchange"
+      ],
+      "page_evidence": "The official A2A (ICCR) portal page opens a dialog titled 'Registration Closed' with the message: 'Scholarship registration for the academic year 2026-27 is closed.' The rest of the fetched page renders only an error image (500-error.png) and boilerplate ('Last Updated On: 25-02-2025'); no next registration date for 2027-28 is announced anywhere on the fetched page. Funding amounts are not stated on the fetched page, so the local record's INR 22,000/month figure could not be verified.",
+      "next_deadline_or_window": null,
+      "funding_on_page": null,
+      "department_or_programme": null,
+      "logo_or_image_url": "https://a2ascholarships.iccr.gov.in/assets/site/main/images/mea-logo.png",
+      "confidence": 0.6,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 188,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://liu.se/en/article/scholarships"
+      ],
+      "page_evidence": "'The application period for LiU Scholarships opens each year on the day students receive the Notification of Selection Results, and is only open for a short window. In 2026, the application period is as follows: 26 March - Application period opens. 30 March - Application period will close at 23:59 CET. 10 April - Scholarship recipients will be published on this page.' The page also shows 'Winners announced 2026 / List of LiU International Scholarship recipients for 2026 / Congratulations to all new scholarship holders!' - the 2026 round closed 30 March 2026 and recipients were published. The page states the window 'opens each year', so a next round is expected, but no 2027 dates are published.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "The tuition fees for a student awarded a LiU International Scholarship are normally reduced by 50%.",
+      "department_or_programme": "LiU International Scholarship - for international master's degree students required to pay tuition fees (limited number, new students)",
+      "logo_or_image_url": null,
+      "confidence": 0.9,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 227,
+      "classification": "temporarily_closed_awaiting_announcement",
+      "official_evidence_urls": [
+        "https://careers.univie.ac.at/en/praedoc/praedoc-ssh",
+        "https://careers.univie.ac.at/en/praedoc/praedoc-ssh/faqs-to-the-ssh-call"
+      ],
+      "page_evidence": "'Update: The application deadline was 2 March, 14:00 CET. You can still access your submitted application via the Application Portal. Please do not inquire about the status of your application. All candidates will be informed of the outcome of the selection process as soon as possible.' Short facts: 'Positions: At least 40 fully funded Predoctoral positions (4 years, 30h/week, collective bargaining agreement: 48 VwGr. B1)'; 'Application period: 7 January - 2 March 2026, 14:00 CET'; 'Start of employment: 1 October 2026 (early start from July possible)'. The FAQ page covers the SSH Call 2026 only. No next call date is announced on either fetched page.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "At least 40 fully funded predoctoral positions, 4 years, 30h/week (collective bargaining agreement 48 VwGr. B1); no monetary salary amount is stated on the fetched pages",
+      "department_or_programme": "Doctoral Recruitment Call 2026 - Social Sciences, Humanities & Cultural Studies (SSH Call), across multiple participating doctoral schools and faculties of the University of Vienna",
+      "logo_or_image_url": null,
+      "confidence": 0.6,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 282,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://www.kuleuven.be/scholarships/year/2026-2027/inspiring-the-outstanding-scholarship",
+        "https://www.kuleuven.be/scholarships/year/2026-2027"
+      ],
+      "page_evidence": "Scholarship page (Academic year 2026-2027): 'Applications open 15 October 2025'; 'Application deadline 15 January 2026, 23.59 CET'; page stamp 'Last update: Apr 20, 2026'. The 2026-2027 deadline has passed and no 2027-2028 dates are published for this scholarship. The KU Leuven scholarships hub organises scholarships per academic year and its 'Academic year' filter already lists 'Academic year 2027-2028' alongside 'Academic year 2026-2027', showing the scheme runs in yearly editions and a next round is expected.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "Incoming students will receive a scholarship of EUR 13,200 per academic year, for a maximum of two academic years; full tuition fee waiver with only an annual administration fee of circa EUR 140; 1 scholarship available",
+      "department_or_programme": "Inspiring the Outstanding Scholarship - available for all master's and advanced master's programmes at KU Leuven, financed by the KU Leuven International Scholarship Fund",
+      "logo_or_image_url": "https://www.kuleuven.be/scholarships/year/2026-2027/inspiring-the-outstanding-scholarship/@@images/image-1200-ae34d39572662c3bd579bca8c7c8cd60.jpeg",
+      "confidence": 0.7,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 311,
+      "classification": "temporarily_closed_awaiting_announcement",
+      "official_evidence_urls": [
+        "https://www.educanada.ca/scholarships-bourses/can/institutions/asean-anase.aspx?lang=eng"
+      ],
+      "page_evidence": "'Application period for 2025 is closed.' 'The deadline for Canadian institutions to submit online applications on behalf of candidates is 11:59 p.m. EDT, March 31, 2025.' 'Only applications for Fall 2025 will be accepted. Selected candidates may arrive as early as August 1, 2025 and no later than October 1, 2025.' Page footer: 'Date modified: 2025-12-31'. No later cycle or next deadline is announced on the page.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "Award value $10,200 per scholarship (Canadian government page; currency not explicitly labelled), duration four months or one academic term, for college/undergraduate and graduate (Masters and PhD) exchanges; Canadian institutions also receive $500 per recipient for administrative costs",
+      "department_or_programme": "Canada-ASEAN Scholarships and Educational Exchanges for Development (SEED) - short-term exchange programme offered by Global Affairs Canada",
+      "logo_or_image_url": null,
+      "confidence": 0.65,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 339,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://www.utu.fi/en/study-at-utu/scholarships-and-tuition-fees"
+      ],
+      "page_evidence": "'Information on this page is for students admitted in 2026. If you have been admitted in 2025 or before, please refer to this page.' 'To receive the discount in 2026, the final date to accept the study offer and pay the tuition fee is 24 April.' '(Information updated 10 March 2026)'. Merit scholarship: 'The admission services of the University will invite all eligible applicants to apply for the scholarship when the application round opens in spring.' The 2026 Early Bird date (24 April 2026) has passed and no 2027 date is published, but the page is maintained per admitted cohort/year, so a next round is expected.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "Early Bird discount of 2,000 EUR for newly admitted master's degree students (accept offer and pay tuition fee within 28 days of admission decisions); Merit Scholarship covers 50% of the tuition fee for the next study year (master's: 50% of the 2nd-year tuition fee)",
+      "department_or_programme": "The University of Turku Merit Scholarship and Early Bird discount - university-wide, for bachelor's and master's students subject to tuition fees",
+      "logo_or_image_url": null,
+      "confidence": 0.75,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 388,
+      "classification": "temporarily_closed_awaiting_announcement",
+      "official_evidence_urls": [
+        "https://www.nwo.nl/en/calls/embassy-science-fellowship-esf-nl-2027"
+      ],
+      "page_evidence": "Characteristics box: 'Status: Closed'; 'Closing date full application: 10 September 2026, 14:00 hrs.' Timeline ('When to apply'): '2 July 2026 Informative webinar'; '10 September 2026 before 14:00:00 CEST Deadline for proposals'; 'October 2026 Assessment committee meeting'; 'November 2026 Decision by the NWO Executive Board'; '1 March 2027 Start period Fellowships'; '29 February 2028 End period Fellowships'. The page announces no next call.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "'The available budget for this Call for proposals is EUR 390,000. It is possible to apply for a grant with a maximum of EUR 30,000.' (the page's characteristics box separately shows 'Budget EUR 360,000')",
+      "department_or_programme": "Embassy Science Fellowship (ESF-NL) - 12 positions for 1 to 3 months at Dutch missions; NWO Domains Social Sciences and Humanities (SSH) and Science; run by NWO and the Ministry of Foreign Affairs",
+      "logo_or_image_url": null,
+      "confidence": 0.65,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 422,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://www.unesco.org/en/fellowships/poland-engineering?hub=986",
+        "https://study.gov.pl/unescopoland-co-sponsored-fellowships-programme-engineering"
+      ],
+      "page_evidence": "UNESCO page ('Last update: 13 June 2025'): 'The 2025 edition of this Programme is closed for applications.' The 2025 edition offered 'twenty-eight (28) fellowships ... for a duration of 6 months between 1 October 2025 and 31 March 2026' at the AGH University of Krakow, with nomination deadline 'Monday 26 May 2025, Midnight Paris time at the latest'. The NAWA/study.gov.pl page documents a successive earlier edition: '30 fellowships of six months duration, starting on 2nd October 2023' with candidatures to be submitted 'by midnight (Central Europe time), 9 June 2023'. Two official pages show successive editions (2023, 2025), so the programme is established and periodic, but no next edition date is announced.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "Monthly allowance of 1800 PLN for BSc and 2200 PLN for MSc students; one-time special allowance of 1800/2200 PLN upon arrival; free tuition for six months; international travel expenses; health insurance; one-time special pocket allowance of US$120",
+      "department_or_programme": "UNESCO/Poland Co-Sponsored Fellowships Programme in Engineering - UNESCO Chair for Science, Technology, and Engineering at the AGH University of Krakow (individual research in Science, Technology and Engineering)",
+      "logo_or_image_url": null,
+      "confidence": 0.6,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 578,
+      "classification": "temporarily_closed_awaiting_announcement",
+      "official_evidence_urls": [
+        "https://easl.eu/fellowships/",
+        "https://easl.eu/fellowship/mobility-research-fellowship-programme/"
+      ],
+      "page_evidence": "Overview page states, against 'EASL Mobility / Research Fellowship Programme': 'Applications are now closed'. Programme page timeline: 'Call for applications: 15 July - 1 September 2026'; 'Application review: 5 September - 3 October 2026'; 'Award notifications: November 2026'. Introduction: 'EASL is launching a new Fellowship Programme'. The 2026 application window closed on 1 September 2026 and no next call is announced.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "Number of Awards: 3; Duration: 6 months; Funding: Up to EUR 25,000 per fellowship",
+      "department_or_programme": "EASL Mobility / Research Fellowship Programme (Mobility Fellowships and Research Fellowships), European Association for the Study of the Liver",
+      "logo_or_image_url": null,
+      "confidence": 0.7,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 623,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://scholarship.ptdf.gov.ng/news/13/2026-overseas-postgraduate-scholarship-scheme-for-universities-in-the-united-kingdom--germany--france--and-malaysia",
+        "https://scholarship.ptdf.gov.ng/how-to-apply"
+      ],
+      "page_evidence": "News page (posted January 18, 2026): 'The Petroleum Technology Development Fund (PTDF) ... invites applications for its 2026 Overseas MSc and PhD Scholarships'; 'The closing date for applications is 27th February 2026 (six weeks from the date of this publication)'; 'The scholarship is for the 2026 academic session.' Prior cycles are evidenced by the eligibility rule 'Candidates previously sponsored by the Fund for a scholarship category (MSc/PhD) are ineligible to apply again for the same or lower category.' The how-to-apply page carries no dates. No 2027 call is published.",
+      "next_deadline_or_window": null,
+      "funding_on_page": null,
+      "department_or_programme": "Overseas Postgraduate Scholarship Scheme (MSc/PhD) - PTDF partner universities in the United Kingdom, Germany, France and Malaysia; UK PhD awards limited to split-site programmes with CPESK (Robert Gordon University, University of Strathclyde, University of Portsmouth)",
+      "logo_or_image_url": null,
+      "confidence": 0.55,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 681,
+      "classification": "temporarily_closed_awaiting_announcement",
+      "official_evidence_urls": [
+        "https://www.mfa.gov.bn/Pages/online-bdgs.aspx",
+        "https://www.mfa.gov.bn/pages/scholarship.aspx"
+      ],
+      "page_evidence": "The BDGS page still publishes the 2026/2027 session notice: 'Applications for THE GOVERNMENT OF BRUNEI DARUSSALAM SCHOLARSHIP FOR FOREIGN STUDENTS TENABLE IN BRUNEI DARUSSALAM (BDGS) for the academic session 2026 / 2027 will open on 15 December 2025' and '1. The closing date for application of the Scholarship is 15 February 2026.' The ministry scholarship index lists 'THE GOVERNMENT OF BRUNEI DARUSSALAM SCHOLARSHIP FOR FOREIGN STUDENTS TENABLE IN BRUNEI DARUSSALAM (BDGS) ACADEMIC SESSION 2026/2027' as the current notice. No dates for the 2027/2028 session are published.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "Monthly personal allowance of BND$500.00; monthly meals allowance of BND$150.00; annual book allowance of BND$600.00; exemption from tuition fees; economy-class air tickets; accommodation at residential college; baggage allowance; comprehensive insurance",
+      "department_or_programme": "Government of Brunei Darussalam Scholarship to Foreign Students Tenable in Brunei Darussalam (BDGS) - Diploma, Undergraduate Degree and Postgraduate Master's at UBD, UNISSA, UTB, KUPU SB and Politeknik Brunei",
+      "logo_or_image_url": null,
+      "confidence": 0.6,
+      "last_checked_date": "2026-10-11"
+    },
+    {
+      "id": 721,
+      "classification": "recurring_next_intake_expected",
+      "official_evidence_urls": [
+        "https://www.leva.co.nz/scholarships-funding/toloa-scholarship/"
+      ],
+      "page_evidence": "Le Va, which 'administers the Toloa Secondary and Tertiary School Scholarships on behalf of the Ministry for Pacific Peoples', states: 'Applications for the 2026 Toloa Scholarships are now closed.'; 'There are 400 secondary scholarships and 10 tertiary scholarships on offer for the 2026 academic year.'; 'Applications open at 10am Tuesday 18 November 2025. Applications for secondary students close at 5pm Friday 23 January 2026. Applications for tertiary students close at 5pm Monday 9 February 2026. Tertiary students will be notified of the outcome in late February 2026.' Recurrence is evidenced by the reference to prior rounds: 'This year's secondary scholarships will no longer include digital devices as part of the non-monetary benefits, unlike in previous years.' The Ministry for Pacific Peoples page (https://www.mpp.govt.nz/programmes-and-funding/education/toloa-scholarships) could not be read - HTTP 403.",
+      "next_deadline_or_window": null,
+      "funding_on_page": "Tertiary students in STEM courses can receive up to $10,000 (NZD) for one year of full-time study",
+      "department_or_programme": "Toloa Tertiary Scholarship (tertiary stream; second year or beyond of a full-time STEM degree) - Ministry for Pacific Peoples, administered by Le Va",
+      "logo_or_image_url": null,
+      "confidence": 0.6,
+      "last_checked_date": "2026-10-11"
+    }
+  ],
+  "notes": "13 records audited on 2026-10-11. No record qualified as 'upcoming_or_current_intake' and none as 'genuinely_discontinued'. ARES (id 40): both official ares-ac.be URLs failed (empty body and an F5/TSPD bot-challenge interstitial), so the record is classified 'uncertain' - the local note claiming a closed 2027-2028 call with the next call expected in August 2027 could not be verified against any official page. Toloa (id 721): the Ministry for Pacific Peoples page returned HTTP 403, so evidence comes from Le Va, the named administrator acting on behalf of MPP. Several official_urls lists in the workfile contain unrelated domains (anr.fr, bs.china-embassy.gov.cn, sutd.edu.sg, wgtn.ac.nz, wur.nl) that are not awarding-body pages for their records; they were not used as evidence where a genuine awarding-body page was available. Where a page states only the closed round with no next date, the record is classified 'temporarily_closed_awaiting_announcement' even when the scheme is historically annual; 'recurring_next_intake_expected' was used only where the fetched official page itself evidences recurrence (annual wording, per-year editions, or explicit prior-round references)."
+}

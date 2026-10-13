@@ -70,6 +70,13 @@ class Settings:
     # trigger, so the capability is opt-in rather than something a deploy
     # inherits by being reachable.
     supervisor_discovery_enabled: bool = False
+    # Global Study-to-Career Strategist. Default OFF in every environment, matching
+    # supervisor_discovery_enabled: an unconfigured deployment does not expose the
+    # strategist endpoints, so the experience is opt-in rather than inherited by
+    # being reachable. The router is only registered when this is on, so with it off
+    # the /v2/strategist/* paths return 404 (an absence, not a disabled feature that
+    # hints at what it would show). Frontend access is separately flag-gated.
+    strategist_enabled: bool = False
 
 
 def get_settings() -> Settings:
@@ -113,6 +120,13 @@ def get_settings() -> Settings:
     for fixed in (
         "https://scholarzone-fwzj.vercel.app",
         "https://scholarzone.vercel.app",
+        # The production Netlify frontend (``schollarzone.netlify.app``, the
+        # canonical host the site is served from). It must be an explicit allowed
+        # origin or every request it makes is blocked by CORS - including the admin
+        # calls - which surfaces in the browser as "Failed to fetch". It is added
+        # alongside, not instead of, the origins above, so no existing legitimate
+        # origin is removed.
+        "https://schollarzone.netlify.app",
     ):
         if fixed not in allowed_origins:
             allowed_origins = allowed_origins + (fixed,)
@@ -146,5 +160,8 @@ def get_settings() -> Settings:
         ),
         supervisor_discovery_enabled=_as_bool(
             os.getenv("SCHOLARZONE_SUPERVISOR_DISCOVERY_ENABLED"), False
+        ),
+        strategist_enabled=_as_bool(
+            os.getenv("SCHOLARZONE_STRATEGIST_ENABLED"), False
         ),
     )

@@ -3,6 +3,12 @@ annotated-types==0.8.0
 anyio==4.14.2
 click==8.4.2
 colorama==0.4.6
+# Declared for the backup path. It was previously present only transitively
+# through pdfminer.six, which made the encrypted-backup fallback backend
+# depend on an unrelated library still being installed. A range rather than an
+# exact pin because the API used (AESGCM) is stable and old wheels remain
+# installable on the platforms this runs on.
+cryptography>=42,<51
 fastapi==0.141.1
 h11==0.16.0
 idna==3.18

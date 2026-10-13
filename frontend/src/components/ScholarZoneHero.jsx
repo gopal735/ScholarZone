@@ -2,7 +2,10 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ScholarshipCard from './ScholarshipCard'
 import ScholarshipCardSkeleton from './ScholarshipCardSkeleton'
-import { getDeadlineLabel } from '../utils/scholarshipPresentation'
+import {
+  getDeadlineLabel,
+  getDeadlinePrecisionLabel,
+} from '../utils/scholarshipPresentation'
 import { useScholarshipDirectory } from '../hooks/useScholarshipDirectory'
 import { fetchScholarshipStats, fetchScholarships } from '../services/scholarshipService'
 import './ScholarZoneHero.css'
@@ -17,8 +20,13 @@ const CAN_TILT =
 const MAX_PREVIEW = 4
 
 function LiveDataIndicator({ count, countries, fullyFunded, verified }) {
+  /* "Catalogue figures", not "Live directory figures". These numbers come from
+     the bundled snapshot - the same figures the provenance notice discloses -
+     and the label is what a screen-reader user hears first. Saying "live" here
+     claimed a freshness that could not be shown, on the surface where the claim
+     is least visible. */
   return (
-    <dl className="sz-hero__stats" aria-label="Live directory figures">
+    <dl className="sz-hero__stats" aria-label="Scholarship catalogue figures">
       <div className="sz-hero__stat">
         <dt>Opportunities</dt>
         <dd>{count}</dd>
@@ -71,7 +79,7 @@ function HeroShowcase({ scholarship, ref, onPointerMove, onPointerLeave }) {
                   <span className="sz-hero__chip-label">Deadline</span>
                   <strong className="sz-hero__chip-value">{getDeadlineLabel(scholarship)}</strong>
                   <span className="sz-hero__chip-note">
-                    {scholarship.deadline_precision === 'month' ? 'Month only' : 'Confirmed date'}
+                    {getDeadlinePrecisionLabel(scholarship) ?? 'Deadline precision not stated'}
                   </span>
                 </aside>
 
@@ -89,8 +97,15 @@ function HeroShowcase({ scholarship, ref, onPointerMove, onPointerLeave }) {
         </div>
 
         <p className="sz-hero__showcase-note">
-          Every listing is checked against the awarding body&rsquo;s own page before it
-          appears here.
+          {/* Only what the catalogue supports. This previously read "Every
+              listing is checked against the awarding body's own page before it
+              appears here", which is not true of the 81 public records whose
+              `verification_status` is `needs_review` - and those records are
+              the ones the catalogue deliberately publishes as "Confirm with
+              provider" rather than withheld. A blanket claim here contradicted
+              the badge on the card directly above it. */}
+          Each listing states whether its details were re-checked against the awarding
+          body&rsquo;s own page.
         </p>
       </div>
     </div>
@@ -223,6 +238,15 @@ export default function ScholarZoneHero() {
             <Link to="/countries" className="sz-hero__cta sz-hero__cta--secondary">
               Browse by country
             </Link>
+            {/* Discoverability, not decoration: this is the entry point a
+                first-time visitor actually needs, so it sits beside the two
+                primary actions rather than behind the navigation. The deep link
+                carries the tutorial id, so the Home guide is already open on
+                arrival instead of a reader landing on the directory and having
+                to know which card to choose. */}
+            <Link to="/help?tutorial=home" className="sz-hero__cta sz-hero__cta--secondary">
+              How to use ScholarZone
+            </Link>
           </div>
 
           {isLoading ? (
@@ -248,12 +272,12 @@ export default function ScholarZoneHero() {
               )}
               {isUsingFallback && (
                 <p className="sz-hero__fallback-notice" role="status">
-                  ⚠️ Live directory unavailable — showing local data.
+                  ⚠️ Catalogue snapshot unavailable — showing directory data.
                 </p>
               )}
               {!stats && !statsLoading && !isUsingFallback && (
                 <p className="sz-hero__fallback-notice" role="status">
-                  ⚠️ Live stats unavailable — showing directory data.
+                  ⚠️ Catalogue statistics unavailable — showing directory data.
                 </p>
               )}
             </>

@@ -188,3 +188,63 @@ class TestRouterBasenameFollowsTheDeployTarget:
         # nothing and is not an error boundary at all.
         assert "componentDidCatch" in source
         assert "getDerivedStateFromError" in source
+
+
+class TestBackendBuildCommands:
+    """The backend build steps must each do one thing.
+
+    `vercel.json` used to declare the backend's install command as
+    ``pip install -r requirements.txt && python scripts/embed_build_revision.py``.
+    Installing dependencies then ran the build-identity script as well, which
+    made dependency installation depend on something that is not a dependency.
+
+    The identity script fails the build when the platform supplies no usable
+    commit SHA - deliberately, because an artefact that cannot name its commit
+    must not be published. Invoking it from the install step meant that a
+    platform which had not yet supplied the SHA failed the whole install, and
+    the observed message named the install command:
+
+        BUILD FAILED: Refusing to publish a build with no usable commit identity:
+        VERCEL_GIT_COMMIT_SHA='' is not a full 40-character commit SHA.
+        Error: Command "pip install -r requirements.txt && python ..." exited with 1
+
+    Installing packages has no business requiring a commit identity. The script
+    belongs in the build step, where identity is the thing being produced.
+    """
+
+    @pytest.fixture(scope="class")
+    def vercel_config(self) -> dict:
+        import json
+
+        text = (REPO / "vercel.json").read_text(encoding="utf-8")
+        return json.loads(text)
+
+    @pytest.fixture(scope="class")
+    def backend_service(self, vercel_config) -> dict:
+        return vercel_config["services"]["backend"]
+
+    def test_install_command_only_installs(self, backend_service):
+        # Installing dependencies must not run the build-identity script.
+        install = backend_service["installCommand"]
+        assert "embed_build_revision" not in install, (
+            "the install command runs the build-identity script, so a platform "
+            "without a commit SHA fails dependency installation itself"
+        )
+
+    def test_install_command_still_installs_requirements(self, backend_service):
+        install = backend_service["installCommand"]
+        assert "pip install" in install and "requirements.txt" in install
+
+    def test_build_command_embeds_the_identity(self, backend_service):
+        build = backend_service["buildCommand"]
+        assert "embed_build_revision" in build, (
+            "the build step must embed the build identity; without it the "
+            "artefact cannot name the commit it was built from"
+        )
+
+    def test_build_command_is_the_script_itself(self, backend_service):
+        # Not a chain, and not a shell pipeline: a single step whose failure is
+        # the identity failure rather than something it was combined with.
+        assert backend_service["buildCommand"].strip() == (
+            "python scripts/embed_build_revision.py"
+        )

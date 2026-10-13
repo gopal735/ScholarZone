@@ -1,11 +1,14 @@
 import { Children, useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import ScholarshipActions from '../components/ScholarshipActions'
+import CatalogueSourceNotice from '../components/CatalogueSourceNotice'
 import SupervisorPanel from '../components/SupervisorPanel'
 import { fetchScholarshipById, ScholarshipApiError } from '../services/scholarshipService'
+import { pushRecentlyViewed } from '../services/planStorage.js'
 import { useScholarshipDirectory } from '../hooks/useScholarshipDirectory'
 import { getDeadlineLabel, getLastVerifiedLabel, getScholarshipStatus } from '../utils/scholarshipPresentation'
 import {
+  buildApplicantGuidance,
   buildOfficialLinks,
   buildQuickFacts,
   buildVerificationRecord,
@@ -18,6 +21,7 @@ import {
 } from '../utils/scholarshipDetail'
 import './ScholarshipDetailsPage.css'
 import { CANONICAL_ORIGIN } from '../services/canonicalOrigin'
+import { HowToUse } from '../features/tutorials'
 
 /* Reveal on scroll, once. Each section plays a different role so the page
    does not read as one animation repeated down the column: headings
@@ -172,6 +176,7 @@ export default function ScholarshipDetailsPage() {
   const [loadState, setLoadState] = useState('loading')
   const [retryVersion, setRetryVersion] = useState(0)
   const [imageFailed, setImageFailed] = useState(false)
+  const [catalogueMeta, setCatalogueMeta] = useState(null)
   const requestIdRef = useRef(0)
   const { scholarships: allScholarships } = useScholarshipDirectory()
   const scholarshipId = Number(id)
@@ -179,6 +184,12 @@ export default function ScholarshipDetailsPage() {
 
   useEffect(() => {
     if (!hasValidScholarshipId) return undefined
+
+    // Recorded on the way in, before the fetch settles, so a detail page that
+    // fails still counts as visited and appears in "Recently viewed". The write
+    // is deliberately not awaited: it is browser-local bookkeeping, and a
+    // student should not wait on it to see the record.
+    pushRecentlyViewed(String(scholarshipId))
 
     const controller = new AbortController()
     const requestId = requestIdRef.current + 1
@@ -194,6 +205,9 @@ export default function ScholarshipDetailsPage() {
         .then((response) => {
           if (controller.signal.aborted || requestId !== requestIdRef.current) return
           setScholarship(response)
+          // Kept separately from the record so the record itself stays the
+          // public schema, and so the provenance notice can read it directly.
+          setCatalogueMeta(response.snapshot_meta ?? null)
           setLoadState('success')
         })
         .catch((error) => {
@@ -208,6 +222,11 @@ export default function ScholarshipDetailsPage() {
           // at all. A successful API response is never overwritten.
           if (localScholarship) {
             setScholarship(localScholarship)
+            // No metadata is available here - this record came from the
+            // directory's in-memory list rather than from a response, so the
+            // notice is left to the explicit trust note below rather than
+            // asserting provenance it cannot evidence.
+            setCatalogueMeta(null)
             setLoadState('fallback')
             return
           }
@@ -319,7 +338,18 @@ export default function ScholarshipDetailsPage() {
           ...(scholarship.last_verified_at
             ? { dateModified: String(scholarship.last_verified_at).slice(0, 10) }
             : {}),
-          isAccessibleForFree: true,
+          // Only included when the catalogue actually states it.
+          //
+          // This used to be a bare `isAccessibleForFree: true` on every
+          // record, which told a machine reader that every listing is free to
+          // take up - including the ones whose funding is a partial waiver, a
+          // fee reduction, a stipend only, or a bond. The catalogue does carry
+          // a real signal, `tuition_coverage`, but it is a three-state field
+          // (true on 375 records, false on 215, absent on 28), so a missing
+          // value is omitted rather than resolved in either direction: an
+          // omitted property is silence, and a wrong one is a claim.
+          ...(scholarship.tuition_coverage === true ? { isAccessibleForFree: true } : {}),
+          ...(scholarship.tuition_coverage === false ? { isAccessibleForFree: false } : {}),
         },
         {
           '@type': 'BreadcrumbList',
@@ -347,6 +377,11 @@ export default function ScholarshipDetailsPage() {
 
   const showTrustNote = loadState === 'fallback'
   const providerName = readText(scholarship?.official_source)
+  // The provenance notice is driven by the response, not by a flag: if the
+  // snapshot's metadata is present then this record came from the snapshot,
+  // and it should be disclosed as such on the page where a student acts on a
+  // deadline. Without metadata there is nothing to disclose, so it stays out.
+  const isSnapshotRecord = Boolean(catalogueMeta) || scholarship?._source === 'snapshot'
 
   const related = allScholarships
     .filter((item) => item.id !== scholarshipId && (
@@ -414,7 +449,18 @@ export default function ScholarshipDetailsPage() {
   const eligibilitySummary = readText(scholarship.eligibility_summary)
   const eligibility = readList(scholarship.eligibility)
   const requirements = readList(scholarship.requirements)
-  const documents = readList(scholarship.documents) || readList(scholarship.required_documents)
+  // `documents` and `required_documents` are two fields the catalogue
+  // publishes for the same paperwork. `documents` is the one this page has
+  // always rendered, so it stays first.
+  //
+  // The fallback used to be `readList(scholarship.documents) || readList(scholarship.required_documents)`,
+  // which could never fire: `readList` returns `[]` for an empty input and `[]`
+  // is truthy, so the right-hand side was unreachable. A record with an empty
+  // `documents` and a populated `required_documents` would have rendered no
+  // Documents block at all while silently holding a real list.
+  const documents = readList(scholarship.documents).length > 0
+    ? readList(scholarship.documents)
+    : readList(scholarship.required_documents)
   const applicationMethod = readList(scholarship.application_method)
   const englishRequirement = readText(scholarship.english_requirement)
 const bestFit = readText(scholarship.best_fit)
@@ -423,10 +469,30 @@ const bestFit = readText(scholarship.best_fit)
   const officialLinks = buildOfficialLinks(scholarship)
   const verification = buildVerificationRecord(scholarship)
   const verificationState = verificationLabel(scholarship.verification_status)
+  // The researched applicant guidance: authored advice about what this award
+  // is unusual about, what gets applications rejected, and what it does not
+  // pay for. Published as sections, each only when it has real content.
+  const guidance = buildApplicantGuidance(scholarship.applicant_utility)
 
   return (
     <article className="sz-detail">
       <BackToDirectory />
+
+      {/* Reading one scholarship properly is the task this page exists for, and
+          the mistakes that cost people an application are made here - treating
+          "not stated" as "none", and planning around a rolling deadline. The
+          guide goes above the provenance notice so it is the first thing after
+          the back link, and it renders nothing if the tutorial is ever removed. */}
+      <HowToUse route="/scholarships/:id" />
+
+      {/* Provenance first, before anything the reader might act on. The
+          catalogue is served from a static snapshot, which is what keeps it
+          available on a free tier - but this is the page where a deadline is
+          read and relied on, so it is the page that has to say the data is
+          not live and point at the official source. */}
+      {isSnapshotRecord && (
+        <CatalogueSourceNotice source="snapshot" meta={catalogueMeta} />
+      )}
 
       {showTrustNote && (
         <p className="sz-detail__notice" role="status">
@@ -645,7 +711,35 @@ const bestFit = readText(scholarship.best_fit)
         ) : null}
       </DetailBlock>
 
-      {/* 09 — SELECTION NOTES + GENERAL NOTES */}
+      {/* 09 — APPLICANT GUIDANCE. The researched advice about how this
+          award actually behaves: what it is unusual about, what applications
+          are usually rejected for, what it will not pay for. Only the
+          sections that carry real content render; a record the research did
+          not author guidance for shows no block rather than a template. */}
+      {guidance ? (
+        <DetailBlock
+          id="guidance"
+          index="06"
+          eyebrow="From the research"
+          title="Applicant guidance"
+          className="sz-detail__block--guidance"
+        >
+          <div className="sz-detail__guidance">
+            {guidance.sections.map((section) => (
+              <section className="sz-detail__guidance-item" key={section.id}>
+                <h3 className="sz-detail__guidance-title">{section.title}</h3>
+                {section.prose ? (
+                  <p className="sz-detail__prose">{section.items[0]}</p>
+                ) : (
+                  <DetailList items={section.items} />
+                )}
+              </section>
+            ))}
+          </div>
+        </DetailBlock>
+      ) : null}
+
+      {/* 10 — SELECTION NOTES + GENERAL NOTES */}
       {(selectionNotes || notes) && (
         <Reveal className="sz-detail__block sz-detail__block--pair" threshold={0.08}>
           <DetailBlock id="selection" eyebrow="Selection" title="Selection notes">
@@ -657,11 +751,11 @@ const bestFit = readText(scholarship.best_fit)
         </Reveal>
       )}
 
-      {/* 10 — OFFICIAL SOURCE */}
+      {/* 11 — OFFICIAL SOURCE */}
       {officialLinks.length > 0 && (
         <DetailBlock
           id="official"
-          index="06"
+          index="07"
           eyebrow="Apply safely"
           title="Official sources"
           className="sz-detail__block--sources"
@@ -684,11 +778,11 @@ const bestFit = readText(scholarship.best_fit)
         </DetailBlock>
       )}
 
-      {/* 11 — VERIFICATION RECORD */}
+      {/* 12 — VERIFICATION RECORD */}
       {verification ? (
         <DetailBlock
           id="verification"
-          index="07"
+          index="08"
           eyebrow="Provenance"
           title="Verification record"
           className="sz-detail__block--verification"
@@ -724,7 +818,7 @@ const bestFit = readText(scholarship.best_fit)
         </DetailBlock>
       ) : null}
 
-      {/* 12 — FINAL CTA */}
+      {/* 13 — FINAL CTA */}
       <Reveal as="section" className="sz-detail__closing" threshold={0.1}>
         <div className="sz-detail__closing-inner">
           <p className="sz-detail__eyebrow">Next step</p>
@@ -745,13 +839,13 @@ const bestFit = readText(scholarship.best_fit)
             </Link>
           </div>
           <p className="sz-detail__closing-meta">
-            {getLastVerifiedLabel(scholarship.last_verified_at)}
+            {getLastVerifiedLabel(scholarship)}
             {readDate(scholarship.updated_at) ? ` · updated ${readDate(scholarship.updated_at)}` : ''}
           </p>
         </div>
       </Reveal>
 
-      {/* 13 — RELATED */}
+      {/* 14 — RELATED */}
       {related.length > 0 && (
         <Reveal as="section" className="sz-detail__related" threshold={0.08}>
           <header className="sz-detail__related-head">

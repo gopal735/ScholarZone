@@ -1,0 +1,85 @@
+name: Restore drill
+
+# Prove the backup and restore procedures every month, against a throwaway
+# PostgreSQL database on the runner.
+#
+# The failure this exists to prevent is discovering during an incident that
+# the backup nobody had restored does not restore. The drill runs the same
+# script the real backup uses (scripts/pg_backup.py), with the same
+# verification branch, so a green run here is evidence about the procedure,
+# not about production data - production parity additionally needs a
+# production dump, which remains a separate, explicitly authorised action.
+
+on:
+  schedule:
+    - cron: "0 4 1 * *" # monthly, first Sunday-adjacent slot: 04:00 UTC on the 1st
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: restore-drill
+  cancel-in-progress: false
+
+jobs:
+  drill:
+    name: backup and restore drill
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: drill
+          POSTGRES_PASSWORD: drill
+          POSTGRES_DB: drill
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      SCHOLARZONE_ENVIRONMENT: test
+      SCHOLARZONE_VERIFICATION_SECRET: drill-secret
+      PGUSER: drill
+      PGPASSWORD: drill
+      PGHOST: 127.0.0.1
+      PGPORT: "5432"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        working-directory: backend
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Prepare the scratch databases
+        run: |
+          createdb scratch_source
+          createdb restore_target
+          createdb restore_target_2
+
+      - name: Run the drill (backup, verified restore, second restore, reconcile)
+        run: |
+          python scripts/restore_drill.py \
+            --scratch "postgresql://drill:drill@127.0.0.1:5432/scratch_source" \
+            --restore-target "postgresql://drill:drill@127.0.0.1:5432/restore_target" \
+            --restore-target-2 "postgresql://drill:drill@127.0.0.1:5432/restore_target_2" \
+            --output-dir backups
+
+      - name: Upload the drill artifact and manifest
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: restore-drill
+          path: backups/
+          if-no-files-found: warn

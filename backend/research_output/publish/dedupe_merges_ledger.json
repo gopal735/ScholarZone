@@ -1,0 +1,125 @@
+{
+  "merged_at": "2026-10-11T18:17:01.880651Z",
+  "pairs": [
+    {
+      "pair": "182/382",
+      "programme": "VU Fellowship Programme (VUFP)",
+      "verdict": "same programme, same intake",
+      "canonical_id": 382,
+      "merged_away_id": 182,
+      "evidence": [
+        {
+          "url": "https://vu.nl/en/education/more-about/incoming-master-scholarships",
+          "quote": "Our own VU Fellowship Programme (VUFP) is a merit-based tuition fee waiver... Call to apply: 1st November 2026... Applications are welcome from November 1st 2026... Deadline VUFP application: 1 February 2027 (23:59 CET)",
+          "checked_on": "2026-10-11"
+        },
+        {
+          "url": "https://vu.nl/en/deducation/scholarships/vu-fellowship-programme",
+          "quote": "HTTP 404 - record 182's recorded official page no longer exists.",
+          "checked_on": "2026-10-11"
+        }
+      ],
+      "changes_on_canonical": [
+        {
+          "field": "deadline_date",
+          "from": "2026-11-01",
+          "to": "2027-02-01",
+          "why": "Official page: 'Deadline VUFP application: 1 February 2027 (23:59 CET)'; the merged-away record carried this same date, the canonical one carried the opening date 1 November 2026 as its deadline."
+        },
+        {
+          "field": "deadline_display",
+          "from": "Master's programme application:",
+          "to": "Applications are welcome from November 1st 2026. Deadline VUFP application: 1 February 2027 (23:59 CET)",
+          "why": "Official page wording, both dates."
+        },
+        {
+          "field": "program_type",
+          "from": "Students already enrolled in a two-year Master’s programme who have not been awarded the VUFP scholarship in 2025/2026 are not eligible to apply for the VUFP scholarship for 2026/2027.",
+          "to": "Merit-based tuition fee waiver for non-EU/EEA students",
+          "why": "The canonical record carried an eligibility sentence in this field; the official page names it 'a merit-based tuition fee waiver' for non-EU/EEA students."
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "pair": "185/452",
+      "programme": "KTH Scholarship",
+      "verdict": "same programme, same intake",
+      "canonical_id": 452,
+      "merged_away_id": 185,
+      "evidence": [
+        {
+          "url": "https://www.kth.se/en/studies/master/admissions/scholarships/kth-scholarship-1.72827",
+          "quote": "Application deadlines for the KTH Scholarship / 1 December 2026: Application opens / 15 January 2027: Application closes / 1 April 2027: Scholarship results announced. The KTH Scholarship covers the full tuition fee of a one or two year master's programme.",
+          "checked_on": "2026-10-11"
+        },
+        {
+          "url": "https://www.kth.se/en/utbildning/scholarships",
+          "quote": "HTTP 404 - record 185's recorded official page no longer exists.",
+          "checked_on": "2026-10-11"
+        }
+      ],
+      "changes_on_canonical": [
+        {
+          "field": "deadline_display",
+          "from": "15 January 2027: Application closes",
+          "to": "1 December 2026: Application opens. 15 January 2027: Application closes. 1 April 2027: Scholarship results announced",
+          "why": "Verbatim from the official page; the canonical record listed only the closing date."
+        },
+        {
+          "field": "program_type",
+          "from": "Julian, KTH Scholarship awardee",
+          "to": "Merit-based tuition fee scholarship for fee-paying international students",
+          "why": "The canonical record carried a student testimonial ('Julian, KTH Scholarship awardee') in this field; the official page's scholarship description supports this category phrase."
+        },
+        {
+          "field": "official_source_urls",
+          "added": [
+            "https://www.kth.se/en/studies/master/admissions/scholarships/scholarship-opportunities-for-master-s-studies-1.860447",
+            "https://www.kth.se/en/studies/master/admissions/how-to-apply-for-masters-studies-1.68487"
+          ],
+          "why": "carried over from the merged-away record"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "pair": "374/514",
+      "programme": "Japanese Government (MEXT) Scholarship for 2027 (Research Students) - Embassy Recommendation",
+      "verdict": "same programme, same intake",
+      "canonical_id": 514,
+      "merged_away_id": 374,
+      "evidence": [
+        {
+          "url": "https://www.mext.go.jp/a_menu/koutou/ryugaku/boshu/1415352_00008.htm",
+          "quote": "2027年度大使館推薦による国費外国人留学生（研究留学生）の募集について - JAPANESE GOVERNMENT (MEXT) SCHOLARSHIP FOR 2027 (RESEARCH STUDENTS) (PDF:403KB) [the official announcement page linking the English guidelines]",
+          "checked_on": "2026-10-11"
+        },
+        {
+          "url": "https://www.studyinjapan.go.jp/en/_mt/2026/04/0102-2027_Research_Guidelines_E.pdf",
+          "quote": "Official English application guidelines PDF, linked from the MEXT page (fetched as PDF; the stipend figure could not be read from it today).",
+          "checked_on": "2026-10-11"
+        }
+      ],
+      "changes_on_canonical": [
+        {
+          "field": "official_source_urls",
+          "added": [
+            "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/examination.html",
+            "https://www.mext.go.jp/"
+          ],
+          "why": "carried over from the merged-away record"
+        }
+      ],
+      "unresolved": [
+        {
+          "fields": [
+            "funding_amount",
+            "region"
+          ],
+          "note": "Records disagree (143,000 vs 144,000 JPY per month; region Global vs Asia). The official page that would settle it is the English guidelines PDF, which does not resolve as fetchable text. The canonical record's existing values are kept untouched and the discrepancy is referred to the next verification pass; no value is guessed."
+        }
+      ]
+    }
+  ]
+}

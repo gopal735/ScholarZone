@@ -153,6 +153,35 @@ NEW_TABLE_DDL: dict[str, dict[str, str]] = {
                 UNIQUE (scholarship_id, professor_id, relationship_type)
         """,
     },
+    "scholarship_admin_audit": {
+        # No REFERENCES clause on purpose: the audit row must outlive the
+        # scholarship row it describes, because a deletion is the moment the
+        # audit is actually needed. See the model's docstring.
+        "postgresql": """
+            id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+            scholarship_id INTEGER NOT NULL,
+            scholarship_title VARCHAR(512),
+            action VARCHAR(24) NOT NULL,
+            changed_fields JSON NOT NULL DEFAULT '[]',
+            before_values JSON,
+            after_values JSON,
+            operator VARCHAR(120) NOT NULL,
+            reason TEXT,
+            recorded_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+        """,
+        "sqlite": """
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            scholarship_id INTEGER NOT NULL,
+            scholarship_title TEXT,
+            action VARCHAR(24) NOT NULL,
+            changed_fields JSON NOT NULL DEFAULT '[]',
+            before_values JSON,
+            after_values JSON,
+            operator VARCHAR(120) NOT NULL,
+            reason TEXT,
+            recorded_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+        """,
+    },
     "supervisor_source_evidence": {
         "postgresql": """
             id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
@@ -335,6 +364,10 @@ NEW_TABLE_INDEXES: dict[str, list[str]] = {
     "scholarship_official_contacts": [
         "ix_official_contacts_scholarship_id ON scholarship_official_contacts (scholarship_id)",
         "ix_official_contacts_kind ON scholarship_official_contacts (contact_kind)",
+    ],
+    "scholarship_admin_audit": [
+        "ix_admin_audit_scholarship_action ON scholarship_admin_audit (scholarship_id, action)",
+        "ix_admin_audit_recorded_at ON scholarship_admin_audit (recorded_at)",
     ],
     "professor_outreach_records": [
         "ix_outreach_user_status ON professor_outreach_records (user_id, status)",

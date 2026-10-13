@@ -1,0 +1,432 @@
+/* The planning workspace.
+   Follows the existing glass/token conventions in theme.css rather than
+   introducing a second visual language: the same surface, radius, border and
+   type ramp, so the page reads as the same product. */
+
+.plan-page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 4vw, 2rem) 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.plan-page__heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.plan-page__eyebrow,
+.plan-page__section-head h2 {
+  margin: 0;
+}
+
+.plan-page__eyebrow {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+.plan-page__heading h1 {
+  margin: 0.35rem 0 0.5rem;
+}
+
+.plan-page__heading > div > p {
+  margin: 0;
+  max-width: 62ch;
+  opacity: 0.8;
+}
+
+.plan-page__dashboard-link {
+  flex: none;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.plan-page__dashboard-link:hover,
+.plan-page__dashboard-link:focus-visible {
+  background: color-mix(in srgb, currentColor 10%, transparent);
+}
+
+.plan-page__section {
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border-radius: var(--radius-lg, 18px);
+  border: 1px solid var(--border-subtle, rgba(15, 23, 42, 0.12));
+  background: var(--surface-1, rgba(255, 255, 255, 0.72));
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.plan-page__section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.plan-page__section-head h2 {
+  font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+}
+
+.plan-page__section-head span {
+  font-size: 0.875rem;
+  opacity: 0.72;
+}
+
+.plan-page__section-head button {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.875rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle, rgba(15, 23, 42, 0.16));
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.plan-page__section-head button:hover,
+.plan-page__section-head button:focus-visible {
+  background: color-mix(in srgb, currentColor 8%, transparent);
+}
+
+.plan-page__empty,
+.plan-page__note {
+  margin: 0;
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+.plan-page__note {
+  font-size: 0.9rem;
+  opacity: 0.72;
+}
+
+/* â”€â”€ Recently viewed / timeline lists â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+
+.plan-page__record-list,
+.plan-page__timeline,
+.plan-page__notes,
+.plan-page__checklists {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.plan-page__record-list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+/* A grid item's automatic minimum size is its min-content width, so a row
+   containing one unbreakable span can never shrink below that span â€” the
+   single `auto` track below grew to the row's min-content and the page
+   scrolled sideways. `min-width: 0` releases that floor. */
+.plan-page__record-list li,
+.plan-page__timeline ul li {
+  min-width: 0;
+}
+
+/* The row's children need the same release, and the title needs to be able
+   to break a long unbroken token. */
+.plan-page__record-list li > *,
+.plan-page__timeline ul li > * {
+  min-width: 0;
+}
+
+.plan-page__record-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: var(--radius-md, 12px);
+  border: 1px solid var(--border-subtle, rgba(15, 23, 42, 0.1));
+}
+
+/* The deadline label is the provider's own sentence â€” 244 characters on the
+   longest record in the catalogue. `white-space: nowrap` here made that
+   sentence the row's min-content, so the track could not shrink and the page
+   gained a horizontal scrollbar of roughly a thousand pixels. Wrapping keeps
+   the whole sentence on screen and legible, which a truncation with the rest
+   behind a tooltip would not; `overflow-wrap: anywhere` keeps a single long
+   token (a hyphenated programme name) from re-opening the same hole. */
+.plan-page__record-list li span,
+.plan-page__timeline ul li span {
+  font-size: 0.875rem;
+  opacity: 0.72;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.plan-page__record-list li a,
+.plan-page__timeline ul li a {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.plan-page__timeline {
+  display: grid;
+  gap: 1.25rem;
+}
+
+/* Grid items again: the automatic minimum size is the min-content of the
+   row, which a long deadline label used to make wider than the page. */
+.plan-page__timeline > li {
+  min-width: 0;
+}
+
+/* The group heading is a month, but its rows carry award names that run to
+   244 characters; a long token must be breakable. */
+.plan-page__timeline > li > h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.plan-page__timeline ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 1rem;
+  border-left: 2px solid var(--border-subtle, rgba(15, 23, 42, 0.14));
+  display: grid;
+  gap: 0.5rem;
+}
+
+.plan-page__timeline ul li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+/* â”€â”€ Checklists â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+
+.plan-page__checklists {
+  display: grid;
+  gap: 1.25rem;
+}
+
+/* One checklist per saved award, in a grid: the automatic minimum size of a
+   grid item is its min-content, so a long scholarship title in the heading
+   forced the grid â€” and then the page â€” to 424px against a 261px track. */
+.plan-page__checklist {
+  min-width: 0;
+  padding: 1rem 1.1rem;
+  border-radius: var(--radius-md, 12px);
+  border: 1px solid var(--border-subtle, rgba(15, 23, 42, 0.1));
+}
+
+.plan-page__checklist-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+/* The heading carries the award's full name, which runs to 244 characters in
+   the catalogue's longest record. `min-width: 0` releases the flex item's
+   automatic minimum and `overflow-wrap: anywhere` lets a single long token
+   break, so the heading wraps inside its own card. */
+.plan-page__checklist-head h3 {
+  min-width: 0;
+  margin: 0;
+  font-size: 1.05rem;
+  overflow-wrap: anywhere;
+}
+
+/* Short ("3 of 8 done"), but it shares the same row model, so it wraps
+   rather than reserving a nowrap slot that a narrow viewport cannot fit. */
+.plan-page__checklist-progress {
+  font-size: 0.875rem;
+  opacity: 0.72;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.plan-page__checklist-funding {
+  margin: 0.35rem 0 0.85rem;
+  font-size: 0.9375rem;
+  opacity: 0.8;
+  overflow-wrap: anywhere;
+}
+
+.plan-page__checkitems {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.plan-page__checkitems label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  min-width: 0;
+  /* One box on its own line at narrow widths, so a missed tap is a miss
+     rather than a tap on the neighbouring row. */
+  padding: 0.4rem 0.5rem;
+  border-radius: var(--radius-sm, 8px);
+  cursor: pointer;
+}
+
+.plan-page__checkitems label span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.plan-page__checkitems label:hover {
+  background: color-mix(in srgb, currentColor 5%, transparent);
+}
+
+.plan-page__checkitems input[type="checkbox"] {
+  /* 1.25rem, the touch-target floor used by the rest of the app. */
+  width: 1.25rem;
+  height: 1.25rem;
+  flex: none;
+  margin-top: 0.1rem;
+  cursor: pointer;
+}
+
+.plan-page__checklist-actions {
+  margin-top: 0.75rem;
+}
+
+.plan-page__checklist-actions button {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.875rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle, rgba(15, 23, 42, 0.16));
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.plan-page__checklist-actions button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* â”€â”€ Notes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+
+.plan-page__notes {
+  display: grid;
+  gap: 1rem;
+}
+
+.plan-page__notes label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+  /* The label is a scholarship name, which can run long; let it break rather
+     than push the page sideways. */
+  overflow-wrap: anywhere;
+}
+
+.plan-page__notes textarea {
+  width: 100%;
+  min-height: 4.5rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: var(--radius-md, 12px);
+  border: 1px solid var(--border-subtle, rgba(15, 23, 42, 0.16));
+  background: var(--surface-0, rgba(255, 255, 255, 0.6));
+  color: inherit;
+  font: inherit;
+  line-height: 1.55;
+  resize: vertical;
+}
+
+.plan-page__notes textarea:focus-visible,
+.plan-page__import input:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 1px;
+}
+
+/* â”€â”€ Backup â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+
+.plan-page__backup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.plan-page__backup button,
+.plan-page__import {
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.plan-page__import {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  /* A file input has a wide intrinsic width, and "Import a plan file" plus the
+     unshrinkable control was 331px against a ~298px line at 390px â€” 13px past
+     the viewport. The label now wraps and the control can shrink. */
+  max-width: 100%;
+  cursor: pointer;
+}
+
+.plan-page__import input {
+  font-size: 0.875rem;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 15rem;
+}
+
+.plan-page__status {
+  margin: 0;
+  font-size: 0.9rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm, 8px);
+}
+
+.plan-page__status.is-ok {
+  background: color-mix(in srgb, #16a34a 14%, transparent);
+}
+
+.plan-page__status.is-error {
+  background: color-mix(in srgb, #dc2626 14%, transparent);
+}
+
+@media (max-width: 640px) {
+  .plan-page__record-list li,
+  .plan-page__timeline ul li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .plan-page__record-list li span,
+  .plan-page__timeline ul li span {
+    white-space: normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plan-page * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

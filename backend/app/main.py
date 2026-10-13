@@ -24,6 +24,7 @@ from .routers.admin_image_review import router as admin_image_review_router
 from .routers.discovery import router as discovery_router
 from .routers.admin_dashboard import router as admin_dashboard_router
 from .routers.admin_verification import router as admin_verification_router
+from .routers.admin_scholarships import router as admin_scholarships_router
 from .routers.enrichment import router as enrichment_router
 from .routers.auth import router as auth_router
 from .routers.dashboard import router as dashboard_router
@@ -35,6 +36,8 @@ from .routers.supervisor_internal import router as supervisor_internal_router
 from .routers.outreach import router as outreach_router
 from .routers.supervisor_email import router as supervisor_email_router
 from .routers.countries import router as countries_router
+from .routers.strategist import router as strategist_router
+from .routers.scholarships_static import router as scholarships_static_router
 from .services.application_workspace import WorkspaceError
 from .seed import seed_database
 
@@ -175,7 +178,15 @@ if allowed_origins:
         # is still explicit rather than a wildcard, and the origin list is
         # unchanged.
         allow_methods=["GET", "POST", "PUT", "DELETE"],
-        allow_headers=["Accept", "Content-Type"],
+        # X-Admin-Secret must be listed here or the browser's preflight for the
+        # Admin Verification Centre rejects it and the request fails with a network
+        # ("Failed to fetch") error before it is ever sent - the server would have
+        # authorised it fine, but CORS never let it reach it. The admin services
+        # (``frontend/src/services/admin*.js``) send this header on every admin call,
+        # so it is added alongside Content-Type. The header is a credential the
+        # browser supplies on a per-call basis; ``allow_origins`` below is still an
+        # explicit list, never a wildcard, and ``allow_credentials`` stays True.
+        allow_headers=["Accept", "Content-Type", "X-Admin-Secret"],
     )
 
 # Added last so it runs outermost: it has to see the path as the platform sent
@@ -311,10 +322,15 @@ app.include_router(counts_router)
 # registering it first makes that independence structural rather than dependent on
 # scan order.
 app.include_router(supervisors_router)
+# The static snapshot router is registered before the scholarships router so its
+# literal /scholarships/snapshot paths are resolved by their own router rather than
+# being captured by the dynamic /scholarships/{scholarship_id} route.
+app.include_router(scholarships_static_router)
 app.include_router(scholarships_router)
 app.include_router(verification_router)
 app.include_router(admin_image_review_router)
 app.include_router(admin_verification_router)
+app.include_router(admin_scholarships_router)
 app.include_router(discovery_router)
 app.include_router(admin_dashboard_router)
 app.include_router(enrichment_router)
@@ -357,6 +373,14 @@ app.include_router(internal_maintenance_router)
 # else - no country, no batch, no caller-supplied URL.
 app.include_router(supervisor_internal_router)
 app.include_router(countries_router)
+
+# The Study-to-Career Strategist is registered only when its flag is on. With the
+# flag off (the default, in every environment) the /v2/strategist/* paths are not
+# registered at all, so they 404 as an absence rather than a disabled feature that
+# hints at what it would show. This is the single backend on-switch; the frontend
+# has its own independent flag.
+if get_settings().strategist_enabled:
+    app.include_router(strategist_router)
 
 
 @app.get("/debug/fix-null-lists")

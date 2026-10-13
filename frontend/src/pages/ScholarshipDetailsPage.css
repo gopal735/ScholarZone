@@ -1130,3 +1130,37 @@
     background: var(--surface-subtle);
   }
 }
+
+/* ── Applicant guidance ───────────────────────────────────────────── */
+/* Sections of the researched guidance blob. The grid keeps a single item
+   from stretching the full measure, and pairs collapse to one column rather
+   than stretching. Section titles use the eyebrow scale so a field with many
+   sections still reads as one block. */
+.sz-detail__block--guidance .sz-detail__guidance {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-6, 1.5rem) var(--space-8, 2rem);
+}
+
+.sz-detail__guidance-item {
+  min-width: 0;
+}
+
+.sz-detail__guidance-title {
+  margin: 0 0 var(--space-2, 0.5rem);
+  color: var(--text-primary, inherit);
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.sz-detail__guidance-item .sz-detail__prose,
+.sz-detail__guidance-item .sz-detail__list {
+  max-width: none;
+}
+
+@media (max-width: 760px) {
+  .sz-detail__block--guidance .sz-detail__guidance {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

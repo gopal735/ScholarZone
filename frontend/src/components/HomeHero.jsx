@@ -10,7 +10,7 @@ function LiveIndicator({ stats, isLoading, isUnavailable }) {
     return (
       <div className="home-hero__indicator home-hero__indicator--offline" role="status">
         <span className="home-hero__indicator-dot" aria-hidden="true" />
-        <span>Live directory unavailable</span>
+        <span>Catalogue unavailable</span>
       </div>
     )
   }
@@ -19,15 +19,21 @@ function LiveIndicator({ stats, isLoading, isUnavailable }) {
     return (
       <div className="home-hero__indicator home-hero__indicator--loading" aria-busy="true">
         <span className="home-hero__indicator-dot" aria-hidden="true" />
-        <span>Loading live data…</span>
+        <span>Loading catalogue…</span>
       </div>
     )
   }
 
+  /* "Catalogue", not "Live directory". The counts come from the bundled snapshot,
+     which is what makes the catalogue render while the database is over quota;
+     calling it live claimed a freshness the snapshot cannot be shown to have.
+     `verified_active` is a count of records whose verification status is
+     'active', not a count of deadlines confirmed today - the provenance notice
+     on the directory says so where it matters. */
   return (
     <div className="home-hero__indicator" role="status" aria-live="polite">
       <span className="home-hero__indicator-dot" aria-hidden="true" />
-      <span className="home-hero__indicator-label">Live directory</span>
+      <span className="home-hero__indicator-label">Scholarship catalogue</span>
       <span className="home-hero__indicator-sep" aria-hidden="true">|</span>
       <strong>{stats.total}</strong> opportunities
       <span className="home-hero__indicator-sep" aria-hidden="true">|</span>

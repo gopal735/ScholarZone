@@ -1,9 +1,10 @@
-import { useSearchParams, Link } from 'react-router-dom'
 import { useEffect } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 import { useScholarshipDirectory } from '../hooks/useScholarshipDirectory'
 import ScholarshipList from '../components/ScholarshipList'
+import { HowToUse } from '../features/tutorials'
 import './ScholarshipsPage.css'
-import { CANONICAL_ORIGIN } from '../services/canonicalOrigin'
+import { CANONICAL_ORIGIN } from '../services/canonicalOrigin.js'
 
 export default function ScholarshipsPage() {
   const [searchParams] = useSearchParams()
@@ -13,8 +14,7 @@ export default function ScholarshipsPage() {
   // Every variant of this route - country, degree, funding, search, sort,
   // status, page - is the same catalogue at a different offset. The clean URL is
   // the only one that should be indexed, which is also what robots.txt already
-  // enforces with `Disallow: /*?*`. A boolean rather than the params object,
-  // because useSearchParams returns a fresh instance each render.
+  // enforces with `Disallow: /*?*`.
   const hasQueryVariant = searchParams.toString().length > 0
 
   const headerTitle = countryParam || 'All Scholarships'
@@ -95,6 +95,10 @@ export default function ScholarshipsPage() {
   return (
     <div className="scholarships-page">
       <div className="scholarships-page__content">
+        {/* Contextual help, before the heading, so it is found first and below
+            the primary controls rather than competing with them. It renders
+            nothing while there is no tutorial for this route. */}
+        <HowToUse route="/scholarships" />
         <div className="page-heading">
           <div>
             <p className="page-eyebrow">Scholarship discovery</p>
@@ -127,7 +131,7 @@ export default function ScholarshipsPage() {
         <ScholarshipList initialCountry={countryParam} />
         {isUsingFallback && (
           <div className="scholarships-page__fallback-notice" role="status">
-            <span>⚠️ Live directory unavailable — showing local data.</span>
+            <span>⚠️ Catalogue snapshot unavailable — showing local data.</span>
           </div>
         )}
       </div>
