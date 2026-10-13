@@ -35,6 +35,7 @@ import './SupervisorPanel.css'
 import {
   BAND_LABELS,
   AVAILABILITY_LABELS,
+  CONTACT_KIND_LABELS,
   OUTREACH_ACTIONS,
 } from './SupervisorPanelConstants'
 
@@ -325,6 +326,52 @@ function ProfessorCard({ professor, onTrack, tracked }) {
   )
 }
 
+/* The official administrative contact for a scholarship with no supervisor.
+
+   Rendered only where the coverage state leaves no professor list, and worded
+   so it cannot be mistaken for one: these are offices that administer an
+   award, not academics who might supervise research. The heading says so, and
+   every email carries the same verified gate the professor cards carry - an
+   address the server has not confirmed against an official page is never
+   shown, however the response was assembled. */
+function OfficialContacts({ contacts }) {
+  if (!contacts?.length) return null
+  return (
+    <div className="sz-supervisor-panel__contacts">
+      <h4>Official contact for this award</h4>
+      <p className="sz-supervisor-panel__contacts-note">
+        This is an administrative office, not a research supervisor. Contact it about the
+        award itself — eligibility, deadlines and applications — not about research supervision.
+      </p>
+      <ul className="sz-supervisor-panel__contact-list">
+        {contacts.map((contact) => (
+          <li key={`${contact.kind}-${contact.url}`}>
+            <span className="sz-supervisor-panel__contact-kind">
+              {CONTACT_KIND_LABELS[contact.kind] || contact.kind}
+            </span>
+            <a href={contact.url} target="_blank" rel="noreferrer noopener">
+              {contact.label || contact.url}
+            </a>
+            {contact.email_verified && contact.email ? (
+              <a href={`mailto:${contact.email}`} className="sz-supervisor-panel__contact-email">
+                {contact.email}
+              </a>
+            ) : null}
+            <a
+              href={contact.evidence_source_url}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="sz-supervisor-panel__contact-source"
+            >
+              Source
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
 /* The student's private tracker for this scholarship.
  *
  * Entirely separate from the public list above it: what is rendered here is the
@@ -542,6 +589,10 @@ export default function SupervisorPanel({ scholarshipId, initialState = 'loading
     ...professor,
     scholarshipId,
   }))
+  /* Only offered where there is no professor list to dilute. The server applies
+     the same rule, and the component repeats it so a hand-edited payload cannot
+     put an office next to the academics. */
+  const officialContacts = supervisors.length > 0 ? [] : payload?.official_contacts || []
 
   return (
     <section className="sz-supervisor-panel" aria-labelledby="sz-supervisor-heading">
@@ -630,7 +681,9 @@ export default function SupervisorPanel({ scholarshipId, initialState = 'loading
 
           {coverage.coverage_status === 'not_applicable' ? (
             <p className="sz-supervisor-panel__state">
-              This institution does not publish faculty supervision information for this award.
+              This award is not a supervised degree or research programme, so there is no research
+              supervisor to find. The official contact for the award is listed below — it is an
+              office that administers the award, not an academic.
             </p>
           ) : null}
 
@@ -661,7 +714,9 @@ export default function SupervisorPanel({ scholarshipId, initialState = 'loading
                 ))}
               </div>
             </>
-          ) : null}
+          ) : (
+            <OfficialContacts contacts={officialContacts} />
+          )}
 
           <OutreachTracker
             scholarshipId={scholarshipId}

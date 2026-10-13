@@ -35,6 +35,7 @@ function coverageResponse({
   count = 1,
   pending = false,
   supervisors = [],
+  officialContacts = [],
 } = {}) {
   return {
     ok: true,
@@ -49,6 +50,7 @@ function coverageResponse({
         discovery_pending: pending,
       },
       supervisors,
+      official_contacts: officialContacts,
     }),
   }
 }
@@ -263,5 +265,81 @@ describe('SupervisorPanel states', () => {
     await screen.findByText('Dr Ada Lovelace')
 
     expect(screen.queryByText('guess@uni1.edu')).toBeNull()
+  })
+})
+
+/* The administrative contact that stands in for a supervisor on awards where
+   supervision does not apply. What is pinned here is the distinction: the
+   contact is an office, it is labelled as one, and it never appears where a
+   professor list does. A panel that rendered the two interchangeably would be
+   telling a student to email a scholarship office about research supervision. */
+describe('SupervisorPanel official contacts', () => {
+  const scholarshipOffice = {
+    kind: 'scholarship_office',
+    label: 'Scholarships and Financial Aid',
+    url: 'https://uni1.edu/scholarships/contact',
+    email: 'scholarships@uni1.edu',
+    email_verified: true,
+    evidence_source_url: 'https://uni1.edu/scholarships/msc',
+    evidence_source_type: 'official_programme_page',
+    retrieved_at: '2026-09-01T00:00:00+00:00',
+  }
+
+  it('shows the official contact on a not-applicable award, labelled as an office', async () => {
+    mockFetch(async () =>
+      coverageResponse({
+        status: 'not_applicable',
+        count: 0,
+        supervisors: [],
+        officialContacts: [scholarshipOffice],
+      }),
+    )
+
+    renderPanel({ scholarshipId: 7 })
+
+    expect(await screen.findByText('Official contact for this award')).toBeTruthy()
+    // The office is named as what it is, and the note says what it is not.
+    expect(screen.getByText('Scholarship office')).toBeTruthy()
+    expect(screen.getByText(/administrative office, not a research supervisor/i)).toBeTruthy()
+    // And no professor-card affordances appear for it. Scoped to the badge
+    // class: the panel heading contains the word "supervisors" for every
+    // state, and an unscoped match would pass whichever of the two rendered.
+    expect(document.querySelector('.sz-supervisor__relationship')).toBeNull()
+    expect(document.querySelector('.sz-supervisor__button')).toBeNull()
+  })
+
+  it('does not render a contact email the server has not verified', async () => {
+    mockFetch(async () =>
+      coverageResponse({
+        status: 'not_applicable',
+        count: 0,
+        supervisors: [],
+        officialContacts: [{ ...scholarshipOffice, email: null, email_verified: false }],
+      }),
+    )
+
+    renderPanel({ scholarshipId: 7 })
+    await screen.findByText('Official contact for this award')
+
+    expect(screen.queryByText('scholarships@uni1.edu')).toBeNull()
+    // The page the contact was read from is still shown, so the office stays
+    // reachable without an address being invented for it.
+    expect(screen.getByText('Scholarships and Financial Aid')).toBeTruthy()
+  })
+
+  it('never shows a contact next to a verified professor list', async () => {
+    mockFetch(async () =>
+      coverageResponse({
+        count: 1,
+        supervisors: [professor()],
+        officialContacts: [scholarshipOffice],
+      }),
+    )
+
+    renderPanel({ scholarshipId: 7 })
+    await screen.findByText('Dr Ada Lovelace')
+
+    expect(screen.queryByText('Official contact for this award')).toBeNull()
+    expect(screen.queryByText('scholarships@uni1.edu')).toBeNull()
   })
 })

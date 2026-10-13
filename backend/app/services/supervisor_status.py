@@ -184,6 +184,25 @@ class AvailabilityScope(StrEnum):
     FUNDING = "funding"
 
 
+class OfficialContactKind(StrEnum):
+    """What kind of official contact a non-research scholarship points at.
+
+    The vocabulary exists so a programme office is never rendered as an
+    academic. Every value names an administrative function, and the public
+    response keeps ``kind`` next to the label so a reader can see which one it
+    is without inferring it from wording.
+    """
+
+    #: The office that administers the scholarship itself.
+    SCHOLARSHIP_OFFICE = "scholarship_office"
+    #: The office that administers the programme the award attaches to.
+    PROGRAMME_OFFICE = "programme_office"
+    #: The university's admissions office.
+    ADMISSIONS = "admissions"
+    #: The awarding body's general enquiries route.
+    GENERAL_ENQUIRIES = "general_enquiries"
+
+
 class AvailabilityState(StrEnum):
     """An availability answer, including the two honest non-answers.
 
@@ -317,6 +336,7 @@ __all__ = [
     "AvailabilityScope",
     "AvailabilityState",
     "CoverageEvidenceState",
+    "OfficialContactKind",
     "OutreachStatus",
     "ProfessorProfileStatus",
     "ProfessorRelationshipType",

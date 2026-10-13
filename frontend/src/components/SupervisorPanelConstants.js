@@ -15,6 +15,16 @@ export const AVAILABILITY_LABELS = {
   funding: 'Funding',
 }
 
+/* Administrative contacts, published in place of a supervisor. The wording is
+   deliberately flat: these are offices, not academics, and a label that
+   flattered them into looking like professors would misrepresent them. */
+export const CONTACT_KIND_LABELS = {
+  scholarship_office: 'Scholarship office',
+  programme_office: 'Programme office',
+  admissions: 'Admissions office',
+  general_enquiries: 'General enquiries',
+}
+
 export const OUTREACH_ACTIONS = [
   { value: 'draft', label: 'Save as draft' },
   { value: 'sent', label: 'Mark as sent' },

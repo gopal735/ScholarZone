@@ -102,6 +102,12 @@ MAX_PAGES_PER_SCHOLARSHIP = 6
 MAX_CANDIDATES_PER_SCHOLARSHIP = 40
 MAX_HTML_BYTES = 400_000
 
+#: How many times one label must appear on a directory page before it is
+#: furniture. A person's name anchors one or two links; a call to action anchors
+#: one per person on the page. The threshold is deliberately above a photo-plus-
+#: name pair so a real person listed twice is not dropped with the CTA.
+_REPEATED_FURNITURE_THRESHOLD = 3
+
 #: A faculty *listing* is a page whose path names a group of people. Matching a
 #: bare word like "academic" is not enough: the real pilot found /academics and
 #: /academics/research on a large university site being selected as faculty
@@ -580,6 +586,18 @@ def extract_faculty_candidates(
     candidates: list[FacultyCandidate] = []
     seen_urls: set[str] = set()
 
+    # Furniture counts, taken from this document rather than from a word list.
+    # A listing page anchors a CTA - "Read More", "View Profile" - once per
+    # person, and a real person's name once or twice. Sixteen identical "Read
+    # More" links on a Princeton/Admission page produced sixteen professors, and
+    # no word list would have caught the phrase a university invents next. What
+    # generalises is the count.
+    label_counts: dict[str, int] = {}
+    for anchor in soup.find_all("a", href=True):
+        text = _clean_text(anchor.get_text(" ", strip=True))
+        if text:
+            label_counts[text.casefold()] = label_counts.get(text.casefold(), 0) + 1
+
     for anchor in soup.find_all("a", href=True):
         href = anchor.get("href", "")
         absolute = urljoin(page_url, href)
@@ -590,6 +608,13 @@ def extract_faculty_candidates(
 
         anchor_text = _clean_text(anchor.get_text(" ", strip=True))
         if not anchor_text:
+            continue
+        if label_counts.get(anchor_text.casefold(), 0) >= _REPEATED_FURNITURE_THRESHOLD:
+            logger.info(
+                "Skipping repeated link furniture (%s occurrences): %s",
+                label_counts[anchor_text.casefold()],
+                anchor_text[:80],
+            )
             continue
 
         # Personhood is decided by positive evidence - a stated academic role, or a
