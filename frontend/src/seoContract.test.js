@@ -174,7 +174,18 @@ describe('the served document', () => {
   it('carries a canonical for the homepage before any script runs', () => {
     // A crawler receives this HTML first. With an empty <div id="root"> and no
     // head metadata, everything indexable depended on the bundle running.
-    const canonical = INDEX_HTML.match(/<link rel="canonical" href="([^"]+)"/)?.[1]
+    //
+    // The link tag is matched as a whole element rather than as one literal
+    // string, because the requirement is about the document and not about how
+    // the author happened to wrap the attributes. A single-line regex silently
+    // returned undefined for the multi-line tag this file ships, which is the
+    // same as the tag being absent: a false "missing" that would have been
+    // "fixed" by reformatting the HTML rather than by anything about SEO.
+    const canonicalTag = [...INDEX_HTML.matchAll(/<link\b[^>]*>/g)]
+      .map((match) => match[0])
+      .find((tag) => /\brel=("|')canonical\1/.test(tag))
+    const canonical = canonicalTag?.match(/\bhref=("|')([^"']+)\1/)?.[2]
+    expect(canonicalTag).toBeTruthy()
     expect(canonical).toBe(`${CANONICAL_ORIGIN}/`)
   })
 

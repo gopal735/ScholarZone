@@ -51,10 +51,15 @@
       data-sz-seo="true"
     />
 
-    <!-- Vercel is the preferred public website URL -->
+    <!-- The canonical public frontend host. robots.txt, sitemap.xml and
+         src/services/canonicalOrigin.js all name it, and a crawler receives
+         this document before any script runs. It is deliberately not the
+         Vercel host: that project serves the API and a mirror of the
+         frontend, so naming it here would tell a crawler to consolidate onto
+         the mirror. -->
     <link
       rel="canonical"
-      href="https://scholarzone-fwzj.vercel.app/"
+      href="https://schollarzone.netlify.app/"
       data-sz-seo="true"
     />
 
@@ -86,7 +91,7 @@
 
     <meta
       property="og:url"
-      content="https://scholarzone-fwzj.vercel.app/"
+      content="https://schollarzone.netlify.app/"
       data-sz-seo="true"
     />
 
@@ -126,12 +131,12 @@
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "ScholarZone",
-        "url": "https://scholarzone-fwzj.vercel.app/",
+        "url": "https://schollarzone.netlify.app/",
         "potentialAction": {
           "@type": "SearchAction",
           "target": {
             "@type": "EntryPoint",
-            "urlTemplate": "https://scholarzone-fwzj.vercel.app/scholarships?search={search_term_string}"
+            "urlTemplate": "https://schollarzone.netlify.app/scholarships?search={search_term_string}"
           },
           "query-input": "required name=search_term_string"
         }
